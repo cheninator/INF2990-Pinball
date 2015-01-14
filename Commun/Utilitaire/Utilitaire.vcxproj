@@ -142,6 +142,9 @@
     <ClInclude Include="Vue\Vue.h" />
     <ClInclude Include="Vue\VueOrtho.h" />
   </ItemGroup>
+  <ItemGroup>
+    <None Include="Diagramme Utilitaire.cd" />
+  </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
   </ImportGroup>

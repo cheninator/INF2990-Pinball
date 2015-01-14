@@ -1,0 +1,102 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Class Name="FacadeModele" Collapsed="true">
+    <Position X="10" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAYAAAhAAACAIAAAAAAAABBAAkBCQAAAAAQkAgCgAQA=</HashCode>
+      <FileName>Application\FacadeModele.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ConfigScene" Collapsed="true">
+    <Position X="11.75" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAQAAAAAAAAAAAAAAgAgAAABAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Configuration\ConfigScene.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ArbreRendu" Collapsed="true">
+    <Position X="2.75" Y="3.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AQAAAEAgAAkAAAAAAAAAAAAAAAAAQAAAAABAAAAAAAA=</HashCode>
+      <FileName>Arbre\ArbreRendu.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ArbreRenduINF2990" Collapsed="true">
+    <Position X="2.75" Y="4.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAEAAAAAAAAAQAAAAAACAAAAAkAAAAAAA=</HashCode>
+      <FileName>Arbre\ArbreRenduINF2990.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="UsineNoeudAraignee" Collapsed="true">
+    <Position X="5.25" Y="5.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAIEAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Arbre\Usines\UsineNoeudAraignee.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="UsineNoeudConeCube" Collapsed="true">
+    <Position X="7.5" Y="5.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAEAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Arbre\Usines\UsineNoeudConeCube.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="UsineNoeud" Collapsed="true">
+    <Position X="6.5" Y="4.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAEAAQAEAAAEAACAAAAgAAAAAAAAAAAAAAABAAAA=</HashCode>
+      <FileName>Arbre\Usines\UsineNoeud.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="NoeudAraignee" Collapsed="true">
+    <Position X="5" Y="3.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAEAAAAAAAAAAAAAAAAAAAAAAAAIAAAAAAAAIDAAAA=</HashCode>
+      <FileName>Arbre\Noeuds\NoeudAraignee.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="NoeudConeCube" Collapsed="true">
+    <Position X="0.5" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAEAAAAACAAIAAAAAAAAIAAAAAAAAAAAQAAAACAAAA=</HashCode>
+      <FileName>Arbre\Noeuds\NoeudConeCube.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="NoeudAbstrait" Collapsed="true">
+    <Position X="2.75" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AGiEsAJAQGgTAAEAAARAEAAEAECRUDAAgDIAAmCICAA=</HashCode>
+      <FileName>Arbre\Noeuds\NoeudAbstrait.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="NoeudComposite" Collapsed="true">
+    <Position X="3.75" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AGCEAABAACADAAAAAARAAAAAAAAAIBAAADAAAACYAAA=</HashCode>
+      <FileName>Arbre\Noeuds\NoeudComposite.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="BancTests" Collapsed="true">
+    <Position X="10" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAQAAAAAABAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Tests\BancTests.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ConfigSceneTest" Collapsed="true">
+    <Position X="13.5" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAEBAAAICAAAAAAAEAAAAAAAAAQAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Tests\ConfigSceneTest.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="NoeudAbstraitTest" Collapsed="true">
+    <Position X="11.75" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAUAAAAICBAAAAAAEAAAAAAAAAQAQAAAAAAAAAAEAAA=</HashCode>
+      <FileName>Tests\NoeudAbstraitTest.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>
