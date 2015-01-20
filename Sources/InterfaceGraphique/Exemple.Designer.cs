@@ -33,6 +33,9 @@
             this.fichierToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.nouveauToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.quitterToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.loLToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.sauvagarderToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.sauvegarderEnTantQueToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.panel1.SuspendLayout();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
@@ -40,20 +43,23 @@
             // panel1
             // 
             this.panel1.BackColor = System.Drawing.SystemColors.ActiveCaption;
+            this.panel1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.panel1.Controls.Add(this.menuStrip1);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel1.Location = new System.Drawing.Point(0, 0);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(623, 428);
             this.panel1.TabIndex = 0;
+            this.panel1.Paint += new System.Windows.Forms.PaintEventHandler(this.panel1_Paint);
             // 
             // menuStrip1
             // 
             this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.fichierToolStripMenuItem});
+            this.fichierToolStripMenuItem,
+            this.loLToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
-            this.menuStrip1.Size = new System.Drawing.Size(623, 24);
+            this.menuStrip1.Size = new System.Drawing.Size(621, 24);
             this.menuStrip1.TabIndex = 0;
             this.menuStrip1.Text = "menuStrip1";
             // 
@@ -61,24 +67,46 @@
             // 
             this.fichierToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.nouveauToolStripMenuItem,
+            this.sauvagarderToolStripMenuItem,
+            this.sauvegarderEnTantQueToolStripMenuItem,
             this.quitterToolStripMenuItem});
             this.fichierToolStripMenuItem.Name = "fichierToolStripMenuItem";
             this.fichierToolStripMenuItem.Size = new System.Drawing.Size(54, 20);
             this.fichierToolStripMenuItem.Text = "Fichier";
+            this.fichierToolStripMenuItem.Click += new System.EventHandler(this.fichierToolStripMenuItem_Click);
             // 
             // nouveauToolStripMenuItem
             // 
             this.nouveauToolStripMenuItem.Name = "nouveauToolStripMenuItem";
-            this.nouveauToolStripMenuItem.Size = new System.Drawing.Size(122, 22);
+            this.nouveauToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
             this.nouveauToolStripMenuItem.Text = "Nouveau";
             this.nouveauToolStripMenuItem.Click += new System.EventHandler(this.nouveauToolStripMenuItem_Click);
             // 
             // quitterToolStripMenuItem
             // 
             this.quitterToolStripMenuItem.Name = "quitterToolStripMenuItem";
-            this.quitterToolStripMenuItem.Size = new System.Drawing.Size(122, 22);
+            this.quitterToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.X)));
+            this.quitterToolStripMenuItem.Size = new System.Drawing.Size(202, 22);
             this.quitterToolStripMenuItem.Text = "Quitter";
             this.quitterToolStripMenuItem.Click += new System.EventHandler(this.quitterToolStripMenuItem_Click);
+            // 
+            // loLToolStripMenuItem
+            // 
+            this.loLToolStripMenuItem.Name = "loLToolStripMenuItem";
+            this.loLToolStripMenuItem.Size = new System.Drawing.Size(38, 20);
+            this.loLToolStripMenuItem.Text = "LoL";
+            // 
+            // sauvagarderToolStripMenuItem
+            // 
+            this.sauvagarderToolStripMenuItem.Name = "sauvagarderToolStripMenuItem";
+            this.sauvagarderToolStripMenuItem.Size = new System.Drawing.Size(202, 22);
+            this.sauvagarderToolStripMenuItem.Text = "Sauvagarder";
+            // 
+            // sauvegarderEnTantQueToolStripMenuItem
+            // 
+            this.sauvegarderEnTantQueToolStripMenuItem.Name = "sauvegarderEnTantQueToolStripMenuItem";
+            this.sauvegarderEnTantQueToolStripMenuItem.Size = new System.Drawing.Size(202, 22);
+            this.sauvegarderEnTantQueToolStripMenuItem.Text = "Sauvegarder en tant que";
             // 
             // Exemple
             // 
@@ -105,6 +133,9 @@
         private System.Windows.Forms.ToolStripMenuItem fichierToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem nouveauToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem quitterToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem loLToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem sauvagarderToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem sauvegarderEnTantQueToolStripMenuItem;
     }
 }
 

@@ -9,12 +9,15 @@ using System.Text;
 using System.Windows.Forms;
 using System.Runtime.InteropServices;
 
+
+
+
 // test
 namespace InterfaceGraphique
 {
     public partial class Exemple : Form
     {
-
+        FullScreen fs = new FullScreen();
         public Exemple()
         {
             this.KeyPress += new KeyPressEventHandler(ToucheEnfonce);
@@ -22,12 +25,16 @@ namespace InterfaceGraphique
             InitialiserAnimation();
         }
 
+
+
         public void InitialiserAnimation()
         {
             this.DoubleBuffered = false;
+            this.StartPosition = FormStartPosition.WindowsDefaultBounds;
             FonctionsNatives.initialiserOpenGL(panel1.Handle);
             FonctionsNatives.dessinerOpenGL();
         }
+
 
         public void MettreAJour(double tempsInterAffichage)
         {
@@ -50,6 +57,17 @@ namespace InterfaceGraphique
             if (e.KeyChar == (char)Keys.Space)
             {
                 System.Console.WriteLine("Barre d'espacement appuyée.");
+                              
+            }
+            System.Console.WriteLine(e.KeyChar);
+            if (e.KeyChar == 'f')
+            {
+                if (fs.IsFullScreen(this))
+                {
+                    fs.LeaveFullScreenMode(this);
+                }
+                else
+                    fs.EnterFullScreenMode(this);
             }
         }
 
@@ -61,6 +79,7 @@ namespace InterfaceGraphique
         private void quitterToolStripMenuItem_Click(object sender, EventArgs e)
         {
             System.Console.WriteLine("Quitter");
+            this.Close();
         }
 
         private void Exemple_FormClosing(object sender, FormClosingEventArgs e)
@@ -71,7 +90,47 @@ namespace InterfaceGraphique
                 Program.peutAfficher = false;
             }
         }
+
+        private void panel1_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            ;
+        }
+
+        private void fichierToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+
+        }
+
+      
     }
+    // Full Screen
+
+    class FullScreen
+    {
+        public void EnterFullScreenMode(Form targetForm)
+        {
+
+            targetForm.WindowState = FormWindowState.Normal;
+            targetForm.FormBorderStyle = FormBorderStyle.None;
+            targetForm.WindowState = FormWindowState.Maximized;
+        }
+
+        public void LeaveFullScreenMode(Form targetForm)
+        {
+            targetForm.FormBorderStyle = System.Windows.Forms.FormBorderStyle.Sizable;
+            targetForm.WindowState = FormWindowState.Normal;
+        }
+
+        public bool IsFullScreen(Form targetForm)
+        {
+            return (targetForm.WindowState == FormWindowState.Maximized);
+        }
+    } 
 
     static partial class FonctionsNatives
     {
