@@ -141,6 +141,8 @@
     <ClCompile Include="Tests\BancTests.cpp" />
     <ClCompile Include="Tests\ConfigSceneTest.cpp" />
     <ClCompile Include="Tests\NoeudAbstraitTest.cpp" />
+    <ClCompile Include="VisiteurAbstrait.cpp" />
+    <ClCompile Include="VisiteurDeplacement.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Application\FacadeModele.h" />
@@ -158,6 +160,9 @@
     <ClInclude Include="Tests\BancTests.h" />
     <ClInclude Include="Tests\ConfigSceneTest.h" />
     <ClInclude Include="Tests\NoeudAbstraitTest.h" />
+    <ClInclude Include="UsineNoeudButoir.h" />
+    <ClInclude Include="VisiteurAbstrait.h" />
+    <ClInclude Include="VisiteurDeplacement.h" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\..\Commun\Utilitaire\Utilitaire.vcxproj">

@@ -55,6 +55,12 @@
     <Filter Include="Source Files\Tests">
       <UniqueIdentifier>{d13df2a5-057c-4e3f-b7b4-d458ca9ae3b6}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Header Files\Visiteurs">
+      <UniqueIdentifier>{cb6c0b55-33b3-451e-b3cd-21f090a4fecc}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Visiteurs">
+      <UniqueIdentifier>{41f69bc3-3b6b-43f1-a252-b0933053dc84}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Application\FacadeModele.cpp">
@@ -92,6 +98,12 @@
     </ClCompile>
     <ClCompile Include="Interface\FacadeInterfaceNative.cpp">
       <Filter>Source Files\Interface</Filter>
+    </ClCompile>
+    <ClCompile Include="VisiteurAbstrait.cpp">
+      <Filter>Source Files\Visiteurs</Filter>
+    </ClCompile>
+    <ClCompile Include="VisiteurDeplacement.cpp">
+      <Filter>Source Files\Visiteurs</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -140,5 +152,17 @@
     <ClInclude Include="Interface\FacadeInterfaceNative.h">
       <Filter>Header Files\Interface</Filter>
     </ClInclude>
+    <ClInclude Include="VisiteurAbstrait.h">
+      <Filter>Header Files\Visiteurs</Filter>
+    </ClInclude>
+    <ClInclude Include="VisiteurDeplacement.h">
+      <Filter>Header Files\Visiteurs</Filter>
+    </ClInclude>
+    <ClInclude Include="UsineNoeudButoir.h">
+      <Filter>Header Files\Arbre\Usines</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Diagramme Noyau.cd" />
   </ItemGroup>
 </Project>

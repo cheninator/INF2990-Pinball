@@ -43,7 +43,7 @@
     </TypeIdentifier>
   </Class>
   <Class Name="UsineNoeud" Collapsed="true">
-    <Position X="6.5" Y="4.5" Width="1.5" />
+    <Position X="7.5" Y="4.5" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAEAAQAEAAAEAACAAAAgAAAAAAAAAAAAAAABAAAA=</HashCode>
       <FileName>Arbre\Usines\UsineNoeud.h</FileName>
@@ -96,6 +96,27 @@
     <TypeIdentifier>
       <HashCode>AAUAAAAICBAAAAAAEAAAAAAAAAQAQAAAAAAAAAAEAAA=</HashCode>
       <FileName>Tests\NoeudAbstraitTest.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="VisiteurAbstrait" Collapsed="true">
+    <Position X="7" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAQAAAAAAAgAAAAA=</HashCode>
+      <FileName>VisiteurAbstrait.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="VisiteurDeplacement" Collapsed="true">
+    <Position X="7" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAEAAAAAAEAAgAAAAA=</HashCode>
+      <FileName>VisiteurDeplacement.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="UsineNoeudButoir" Collapsed="true">
+    <Position X="10" Y="5.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAEAAAAAQAAAAAAQAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>UsineNoeudButoir.h</FileName>
     </TypeIdentifier>
   </Class>
   <Font Name="Segoe UI" Size="9" />
