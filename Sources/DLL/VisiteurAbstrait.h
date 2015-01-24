@@ -9,14 +9,14 @@ public:
 	virtual ~VisiteurAbstrait() = 0;
 
 	// Traiter l'operation sur un type d'objet
-	virtual void traiter(Butoir& butoir);
-	virtual void traiter(Palette& palette);
-	virtual void traiter(Mur& mur);
-	virtual void traiter(Cible& cible);
-	virtual void traiter(Portail& portail);
-	virtual void traiter(Ressort& ressort);
-	virtual void traiter(Trou& trou);
-	virtual void traiter(Generateur& generateur);
+	virtual void traiter(NoeudButoir& butoir);
+	virtual void traiter(NoeudPalette& palette);
+	virtual void traiter(NoeudMur& mur);
+	virtual void traiter(NoeudCible& cible);
+	virtual void traiter(NoeudPortail& portail);
+	virtual void traiter(NoeudRessort& ressort);
+	virtual void traiter(NoeudTrou& trou);
+	virtual void traiter(NoeudGenerateur& generateur);
 
 };
 

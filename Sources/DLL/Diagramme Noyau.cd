@@ -15,42 +15,42 @@
     </TypeIdentifier>
   </Class>
   <Class Name="ArbreRendu" Collapsed="true">
-    <Position X="2.75" Y="3.25" Width="1.5" />
+    <Position X="2" Y="3.25" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AQAAAEAgAAkAAAAAAAAAAAAAAAAAQAAAAABAAAAAAAA=</HashCode>
       <FileName>Arbre\ArbreRendu.h</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="ArbreRenduINF2990" Collapsed="true">
-    <Position X="2.75" Y="4.75" Width="1.5" />
+    <Position X="2" Y="4.75" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAEAAAAAAAAAQAAAAAACAAAAAkAAAAAAA=</HashCode>
       <FileName>Arbre\ArbreRenduINF2990.h</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="UsineNoeudAraignee" Collapsed="true">
-    <Position X="5.25" Y="5.75" Width="1.5" />
+    <Position X="8.25" Y="5.5" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAIEAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
       <FileName>Arbre\Usines\UsineNoeudAraignee.h</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="UsineNoeudConeCube" Collapsed="true">
-    <Position X="7.5" Y="5.75" Width="1.5" />
+    <Position X="10" Y="5.5" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAEAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
       <FileName>Arbre\Usines\UsineNoeudConeCube.h</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="UsineNoeud" Collapsed="true">
-    <Position X="7.5" Y="4.5" Width="1.5" />
+    <Position X="10" Y="4.25" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAEAAQAEAAAEAACAAAAgAAAAAAAAAAAAAAABAAAA=</HashCode>
       <FileName>Arbre\Usines\UsineNoeud.h</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="NoeudAraignee" Collapsed="true">
-    <Position X="5" Y="3.25" Width="1.5" />
+    <Position X="3.75" Y="3.25" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAEAAAAAAAAAAAAAAAAAAAAAAAAIAAAAAAAAIDAAAA=</HashCode>
       <FileName>Arbre\Noeuds\NoeudAraignee.h</FileName>
@@ -113,10 +113,17 @@
     </TypeIdentifier>
   </Class>
   <Class Name="UsineNoeudButoir" Collapsed="true">
-    <Position X="10" Y="5.75" Width="1.5" />
+    <Position X="11.75" Y="5.5" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAEAAAAAQAAAAAAQAAAAAAAAAAAAAAAAAAA=</HashCode>
       <FileName>UsineNoeudButoir.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="NoeudButoir" Collapsed="true">
+    <Position X="5.5" Y="3.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAQEAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAADAACA=</HashCode>
+      <FileName>NoeudButoir.h</FileName>
     </TypeIdentifier>
   </Class>
   <Font Name="Segoe UI" Size="9" />
