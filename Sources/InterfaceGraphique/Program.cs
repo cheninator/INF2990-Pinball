@@ -44,12 +44,13 @@ namespace InterfaceGraphique
             Application.SetCompatibleTextRenderingDefault(false);
             exemple = new Exemple();
             Application.Run(exemple);
+            
         }
 
         static void ExecuterQuandInactif(object sender, EventArgs e)
         {
             FonctionsNatives.Message message;
-
+           
             while (!FonctionsNatives.PeekMessage(out message, IntPtr.Zero, 0, 0, 0))
             {
                 TimeSpan currentTime = chrono.Elapsed;
@@ -60,7 +61,7 @@ namespace InterfaceGraphique
 
                 if (tempsAccumule >= tempsEcouleVoulu)
                 {
-                    lock (unLock)
+                   lock (unLock)
                     {
                         if (exemple != null && peutAfficher)
                             exemple.MettreAJour((double)tempsAccumule.Ticks / TimeSpan.TicksPerSecond);
@@ -68,6 +69,7 @@ namespace InterfaceGraphique
                     tempsAccumule = TimeSpan.Zero;
                 }
             }
+         
         }
     }
     static partial class FonctionsNatives

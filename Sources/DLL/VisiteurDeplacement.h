@@ -9,6 +9,7 @@ public:
 	~VisiteurDeplacement();
 
 	// Traiter un déplacement selon le type d'objet
+	/*
 	virtual void traiter(Butoir& butoir);
 	virtual void traiter(Palette& palette);
 	virtual void traiter(Mur& mur);
@@ -17,7 +18,7 @@ public:
 	virtual void traiter(Ressort& ressort);
 	virtual void traiter(Trou& trou);
 	virtual void traiter(Generateur& generateur);
-
+	*/
 
 };
 

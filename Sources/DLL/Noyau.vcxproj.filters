@@ -105,9 +105,6 @@
     <ClCompile Include="VisiteurDeplacement.cpp">
       <Filter>Source Files\Visiteurs</Filter>
     </ClCompile>
-    <ClCompile Include="NoeudButoir.cpp">
-      <Filter>Source Files\Arbre\Noeuds</Filter>
-    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Application\FacadeModele.h">

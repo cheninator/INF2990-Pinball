@@ -8,31 +8,41 @@ using System.Linq;
 using System.Text;
 using System.Windows.Forms;
 using System.Runtime.InteropServices;
+using System.Media;
+
+
 
 // test
 namespace InterfaceGraphique
 {
     public partial class Exemple : Form
     {
-
+        FullScreen fs = new FullScreen();
         public Exemple()
         {
             this.KeyPress += new KeyPressEventHandler(ToucheEnfonce);
+            this.Icon = Properties.Resources.Pinball;
             InitializeComponent();
             InitialiserAnimation();
         }
 
+
+
         public void InitialiserAnimation()
         {
             this.DoubleBuffered = false;
+            this.StartPosition = FormStartPosition.WindowsDefaultBounds;
             FonctionsNatives.initialiserOpenGL(panel1.Handle);
             FonctionsNatives.dessinerOpenGL();
         }
 
+
         public void MettreAJour(double tempsInterAffichage)
         {
+
             try
             {
+
                 this.Invoke((MethodInvoker)delegate
                 {
                     FonctionsNatives.animer(tempsInterAffichage);
@@ -42,6 +52,9 @@ namespace InterfaceGraphique
             catch (Exception)
             {
             }
+         
+
+    
             
         }
 
@@ -49,18 +62,31 @@ namespace InterfaceGraphique
         {
             if (e.KeyChar == (char)Keys.Space)
             {
-                System.Console.WriteLine("Barre d'espacement appuyée.");
+             //   System.Console.WriteLine("Barre d'espacement appuyée.");
+                              
             }
+            System.Console.WriteLine(e.KeyChar);
+            if (e.KeyChar == 'f')
+            {
+                if (fs.IsFullScreen(this))
+                {
+                    fs.LeaveFullScreenMode(this);
+                }
+                else
+                    fs.EnterFullScreenMode(this);
+            }
+          
         }
 
         private void nouveauToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            System.Console.WriteLine("Nouveau");            
+          //  System.Console.WriteLine("Nouveau");            
         }
         
         private void quitterToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            System.Console.WriteLine("Quitter");
+          //  System.Console.WriteLine("Quitter");
+            this.Close();
         }
 
         private void Exemple_FormClosing(object sender, FormClosingEventArgs e)
@@ -71,7 +97,88 @@ namespace InterfaceGraphique
                 Program.peutAfficher = false;
             }
         }
+
+        private void panel1_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
+
+       
+        private void Aide_MenuItem_Click(object sender, EventArgs e)
+        {
+            BackgroundWorker bw = new BackgroundWorker();
+            bw.WorkerReportsProgress = true;
+            bw.DoWork += new DoWorkEventHandler(
+        delegate(object o, DoWorkEventArgs args)
+        {
+            Aide aide = new Aide();
+            aide.StartPosition = FormStartPosition.CenterScreen;
+            aide.ShowDialog();
+        });
+        bw.RunWorkerAsync();   
+        }
+
+        private void Ouvrir_MenuItem_Click(object sender, EventArgs e)
+        {
+
+            OpenFileDialog ouvrir_fichier = new OpenFileDialog();
+            ouvrir_fichier.Filter = "Fichiers XML (*.xml)| *.xml | All Files(*.*)|(*.*)";
+            ouvrir_fichier.ShowDialog();
+        }
+
+        private void EnregistrerS_MenuItem_Click(object sender, EventArgs e)
+        {
+            SaveFileDialog enregistrer_fichier = new SaveFileDialog();
+            enregistrer_fichier.Filter = "Fichiers XML (*.xml)| *.xml | All Files(*.*)|(*.*)";
+            enregistrer_fichier.ShowDialog();
+            
+        }
+
+     
+        private void helpToolStripButton_Click(object sender, EventArgs e)
+        {
+            Aide_MenuItem_Click(this,e);
+        }
+
+        private void Selectionner_BO_Click(object sender, EventArgs e)
+        {
+            if (Creation_Panel.Visible)
+                Creation_Panel.Hide();
+            else
+                Creation_Panel.Show();
+        }
+
+        private void panel1_Click(object sender, EventArgs e)
+        {
+            Console.Write(Cursor.Position.X);
+           
+        }
+
+      
     }
+    // Full Screen
+
+    class FullScreen
+    {
+        public void EnterFullScreenMode(Form targetForm)
+        {
+
+            targetForm.WindowState = FormWindowState.Normal;
+            targetForm.FormBorderStyle = FormBorderStyle.None;
+            targetForm.WindowState = FormWindowState.Maximized;
+        }
+
+        public void LeaveFullScreenMode(Form targetForm)
+        {
+            targetForm.FormBorderStyle = System.Windows.Forms.FormBorderStyle.Sizable;
+            targetForm.WindowState = FormWindowState.Normal;
+        }
+
+        public bool IsFullScreen(Form targetForm)
+        {
+            return (targetForm.WindowState == FormWindowState.Maximized);
+        }
+    } 
 
     static partial class FonctionsNatives
     {
