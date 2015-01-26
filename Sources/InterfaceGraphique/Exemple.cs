@@ -23,7 +23,9 @@ namespace InterfaceGraphique
             this.KeyPress += new KeyPressEventHandler(ToucheEnfonce);
             this.Icon = Properties.Resources.Pinball;
             InitializeComponent();
+            
             InitialiserAnimation();
+            
         }
 
 
@@ -74,6 +76,10 @@ namespace InterfaceGraphique
                 }
                 else
                     fs.EnterFullScreenMode(this);
+            }
+            if (e.KeyChar == 's')
+            {
+                Selection_MenuItem_Click(this,e);
             }
           
         }
@@ -151,6 +157,26 @@ namespace InterfaceGraphique
         private void panel1_Click(object sender, EventArgs e)
         {
             Console.Write(this.PointToClient(MousePosition));
+        }
+
+        private void Selection_MenuItem_Click(object sender, EventArgs e)
+        {
+            Console.WriteLine("Outil Selection.");
+        }
+
+        private void Selection_BO_Click(object sender, EventArgs e)
+        {
+            Selection_MenuItem_Click(this, e);
+        }
+
+        private void Rotation_MenuItem_Click(object sender, EventArgs e)
+        {
+            Console.WriteLine("Outil Rotation");
+        }
+
+        private void Rotation_BO_Click(object sender, EventArgs e)
+        {
+            Rotation_MenuItem_Click(this, e);
         }
 
       
