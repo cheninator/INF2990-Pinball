@@ -150,8 +150,7 @@ namespace InterfaceGraphique
 
         private void panel1_Click(object sender, EventArgs e)
         {
-            Console.Write(Cursor.Position.X);
-           
+            Console.Write(this.PointToClient(MousePosition));
         }
 
       
