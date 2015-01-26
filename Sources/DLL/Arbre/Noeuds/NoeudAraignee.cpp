@@ -67,6 +67,12 @@ void NoeudAraignee::afficherConcret() const
 	glPushMatrix();
 	// Révolution autour du centre.
 	glRotatef(35, sqrtf(2), sqrtf(2), 0);
+	glBegin(GL_TRIANGLE_FAN);
+	glVertex3f(100, 100, 100);
+	glVertex3f(200, 200, 200);
+	glVertex3f(300, 300, 300);
+	glVertex3f(400, 400, 400);
+	glEnd();
 	// Affichage du modèle.
 	liste_->dessiner();
 	// Restauration de la matrice.
