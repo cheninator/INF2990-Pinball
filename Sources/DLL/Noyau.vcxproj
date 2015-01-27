@@ -150,6 +150,7 @@
     <ClCompile Include="Tests\ConfigSceneTest.cpp" />
     <ClCompile Include="Tests\NoeudAbstraitTest.cpp" />
     <ClCompile Include="Visiteurs\VisiteurDeplacement.cpp" />
+    <ClCompile Include="Visiteurs\VisiteurRotation.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Application\FacadeModele.h" />
@@ -185,6 +186,7 @@
     <ClInclude Include="Tests\NoeudAbstraitTest.h" />
     <ClInclude Include="Visiteurs\VisiteurAbstrait.h" />
     <ClInclude Include="Visiteurs\VisiteurDeplacement.h" />
+    <ClInclude Include="Visiteurs\VisiteurRotation.h" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\..\Commun\Utilitaire\Utilitaire.vcxproj">
