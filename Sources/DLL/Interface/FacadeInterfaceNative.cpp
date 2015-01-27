@@ -24,10 +24,10 @@ extern "C"
 	///
 	/// __declspec(dllexport) void __cdecl initialiserOpenGL(int* handle)
 	///
-	/// Cette fonction initialise un contexte OpenGL dans la fenêtre
-	/// identifiée par le handle passé en paramètre.  Cette fonction doit
-	/// être la première à être appelée, car la création de l'objet du modèle
-	/// C++ s'attend à avoir un contexte OpenGL valide.
+	/// Cette fonction initialise un contexte OpenGL dans la fenÃªtre
+	/// identifiÃ©e par le handle passÃ© en paramÃ¨tre.  Cette fonction doit
+	/// Ãªtre la premiÃ¨re Ã  Ãªtre appelÃ©e, car la crÃ©ation de l'objet du modÃ¨le
+	/// C++ s'attend Ã  avoir un contexte OpenGL valide.
 	///
 	/// @param[in] handle : Le handle.
 	///
@@ -47,8 +47,8 @@ extern "C"
 	///
 	/// @fn __declspec(dllexport) void __cdecl libererOpenGL()
 	///
-	/// Cette fonction libère le contexte OpenGL. Cette fonction doit être la
-	/// dernière à être appelée, car elle libère également l'objet du modèle
+	/// Cette fonction libÃ¨re le contexte OpenGL. Cette fonction doit Ãªtre la
+	/// derniÃ¨re Ã  Ãªtre appelÃ©e, car elle libÃ¨re Ã©galement l'objet du modÃ¨le
 	/// C++.
 	///
 	/// @return Aucune.
@@ -58,9 +58,9 @@ extern "C"
 	{
 		FacadeModele::obtenirInstance()->libererOpenGL();
 
-		// Désinitialisation de la façade.  Le fait de le faire après la
-		// désinitialisation du contexte OpenGL aura pour conséquence que la
-		// libération des listes d'affichages, par exemple, sera faite une fois que
+		// DÃ©sinitialisation de la faÃ§ade.  Le fait de le faire aprÃ¨s la
+		// dÃ©sinitialisation du contexte OpenGL aura pour consÃ©quence que la
+		// libÃ©ration des listes d'affichages, par exemple, sera faite une fois que
 		// le contexte n'existera plus, et sera donc sans effet.
 		FacadeModele::libererInstance();
 	}
@@ -70,17 +70,17 @@ extern "C"
 	///
 	/// @fn __declspec(dllexport) void __cdecl dessinerOpenGL()
 	///
-	/// Cette fonction affiche la scène.
+	/// Cette fonction affiche la scÃ¨ne.
 	///
 	/// @return Aucune.
 	///
 	////////////////////////////////////////////////////////////////////////
 	__declspec(dllexport) void __cdecl dessinerOpenGL()
 	{
-		// Affiche la scène.
+		// Affiche la scÃ¨ne.
 		FacadeModele::obtenirInstance()->afficher();
 
-		// Temporaire: pour détecter les erreurs OpenGL
+		// Temporaire: pour dÃ©tecter les erreurs OpenGL
 		aidegl::verifierErreurOpenGL();
 	}
 
@@ -89,12 +89,12 @@ extern "C"
 	///
 	/// __declspec(dllexport) void __cdecl redimensionnerFenetre(int largeur, int hauteur)
 	///
-	/// Cette fonction doit être appelée lorsque la fenêtre est
-	/// redimensionnée afin d'ajuster les paramètres de la machine à états
-	/// d'OpenGL pour correspondre aux nouvelles dimensions de la fenêtre.
+	/// Cette fonction doit Ãªtre appelÃ©e lorsque la fenÃªtre est
+	/// redimensionnÃ©e afin d'ajuster les paramÃ¨tres de la machine Ã  Ã©tats
+	/// d'OpenGL pour correspondre aux nouvelles dimensions de la fenÃªtre.
 	///
-	/// @param[in] largeur : La nouvelle largeur de la fenêtre.
-	/// @param[in] hauteur : La nouvelle hauteur de la fenêtre.
+	/// @param[in] largeur : La nouvelle largeur de la fenÃªtre.
+	/// @param[in] hauteur : La nouvelle hauteur de la fenÃªtre.
 	///
 	/// @return Aucune.
 	///
@@ -112,8 +112,8 @@ extern "C"
 	///
 	/// @fn __declspec(dllexport) void __cdecl animer(double temps)
 	///
-	/// Cette fonction effectue les différents calculs d'animations
-	/// nécessaires pour le mode jeu, tel que les différents calculs de
+	/// Cette fonction effectue les diffÃ©rents calculs d'animations
+	/// nÃ©cessaires pour le mode jeu, tel que les diffÃ©rents calculs de
 	/// physique du jeu.
 	///
 	/// @param[in] temps : Intervalle de temps sur lequel effectuer le calcul.
@@ -131,7 +131,7 @@ extern "C"
 	///
 	/// @fn __declspec(dllexport) void __cdecl zoomIn()
 	///
-	/// Cette fonction applique un zoom avant sur le présent volume de vision.
+	/// Cette fonction applique un zoom avant sur le prÃ©sent volume de vision.
 	///
 	/// @return Aucune.
 	///
@@ -146,7 +146,7 @@ extern "C"
 	///
 	/// @fn __declspec(dllexport) void __cdecl zoomOut()
 	///
-	/// Cette fonction applique un zoom arrière sur le présent volume de vision.
+	/// Cette fonction applique un zoom arriÃ¨re sur le prÃ©sent volume de vision.
 	///
 	/// @return Aucune.
 	///
@@ -176,9 +176,9 @@ extern "C"
 	///
 	/// @fn __declspec(dllexport) bool __cdecl executerTests()
 	///
-	/// Cette fonction permet d'exécuter l'ensemble des tests unitaires
+	/// Cette fonction permet d'exÃ©cuter l'ensemble des tests unitaires
 	///
-	/// @return 0 si tous les tests ont réussi, 1 si au moins un test a échoué
+	/// @return 0 si tous les tests ont rÃ©ussi, 1 si au moins un test a Ã©chouÃ©
 	///
 	////////////////////////////////////////////////////////////////////////
 	__declspec(dllexport) bool __cdecl executerTests()
@@ -186,6 +186,27 @@ extern "C"
 		bool reussite = BancTests::obtenirInstance()->executer();
 		return reussite ? 0 : 1;
 	}
+
+	
+	////////////////////////////////////////////////////////////////////////
+	///
+	/// @fn __declspec(dllexport) int __cdecl creerObjet()
+	///
+	/// Cette fonction permet de cree un objet 3D
+	///
+	/// @return 0 si tous les tests ont rÃ©ussi, 1 si au moins un test a Ã©chouÃ©
+	///
+	////////////////////////////////////////////////////////////////////////
+	__declspec(dllexport) bool __cdecl creerObjet(char* value, int length, int x, int y, float rotation)
+	{
+		std::string nomObjet (value);
+		NoeudAbstrait* objet = FacadeModele::obtenirInstance()->obtenirArbreRenduINF2990()->creerNoeud(nomObjet);
+		if (objet == nullptr)
+			return false;
+		objet->assignerPositionRelative({ x, y, 0 });
+		return FacadeModele::obtenirInstance()->obtenirArbreRenduINF2990()->ajouter(objet);
+	}
+	
 }
 
 
