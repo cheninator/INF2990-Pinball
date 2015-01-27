@@ -16,8 +16,8 @@ namespace InterfaceGraphique
         public static Object unLock = new Object();
         public static bool peutAfficher = true;
 
-        private static BackgroundWorker bw;
         private static Exemple exemple;
+        private static mm menu;
         private static TimeSpan dernierTemps;
         private static TimeSpan tempsAccumule;
         private static Stopwatch chrono = Stopwatch.StartNew();
@@ -41,76 +41,21 @@ namespace InterfaceGraphique
                 }
 
             chrono.Start();
-            //Application.Idle += ExecuterQuandInactif;
+            Application.Idle += ExecuterQuandInactif;
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            exemple = new Exemple();
+            menu = new mm();
+           // exemple = new Exemple();
+              
+                      
+            Application.Run(menu);
 
-            bw = new BackgroundWorker
-            {
-                WorkerReportsProgress = true,
-                WorkerSupportsCancellation = true
-            };
-
-            bw.DoWork += BackgroundWorkerOnDoWork;
-            bw.ProgressChanged += BackgroundWorkerOnProgressChanged;
-
-            bw.RunWorkerAsync();
-
-            Application.Run(exemple);
-
-            Application.ApplicationExit += OnApplicationExit;
+        
 
             
         }
 
-        static void OnApplicationExit(object sender, EventArgs e)
-        {
-            bw.Dispose();
-            Application.Exit();
-            exemple.Close();
-        }
-
-        static void BackgroundWorkerOnProgressChanged(object sender, ProgressChangedEventArgs e)
-        {
-            object userObject = e.UserState;
-            int percentage = e.ProgressPercentage;
-        }
-
-        static void BackgroundWorkerOnDoWork(object sender, DoWorkEventArgs e)
-        {
-            BackgroundWorker worker = (BackgroundWorker)sender;
-            while (!worker.CancellationPending)
-            {
-                //Do your stuff here
-                FonctionsNatives.Message message;
-
-                while (!FonctionsNatives.PeekMessage(out message, IntPtr.Zero, 0, 0, 0))
-                {
-                    TimeSpan currentTime = chrono.Elapsed;
-                    TimeSpan elapsedTime = currentTime - dernierTemps;
-                    dernierTemps = currentTime;
-
-                    tempsAccumule += elapsedTime;
-
-                    if (tempsAccumule >= tempsEcouleVoulu)
-                    {
-                        lock (unLock)
-                        {
-                            if (exemple != null && peutAfficher)
-                                exemple.MettreAJour((double)tempsAccumule.Ticks / TimeSpan.TicksPerSecond);
-
-                        }
-                        tempsAccumule = TimeSpan.Zero;
-                    }
-                }
-                //
-                worker.ReportProgress(0, "AN OBJECT TO PASS TO THE UI-THREAD");
-            }
-        }
-
-
-        static void ExecuterQuandInactif(object sender, EventArgs e)
+       static void ExecuterQuandInactif(object sender, EventArgs e)
         {
             FonctionsNatives.Message message;
 
@@ -126,8 +71,8 @@ namespace InterfaceGraphique
                 {
                     lock (unLock)
                     {
-                        if (exemple != null && peutAfficher)
-                            exemple.MettreAJour((double)tempsAccumule.Ticks / TimeSpan.TicksPerSecond);
+                        if ( menu.a != null && peutAfficher)
+                            menu.a.MettreAJour((double)tempsAccumule.Ticks / TimeSpan.TicksPerSecond);
 
                     }
                     tempsAccumule = TimeSpan.Zero;

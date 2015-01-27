@@ -81,6 +81,12 @@
     <Compile Include="Exemple.Designer.cs">
       <DependentUpon>Exemple.cs</DependentUpon>
     </Compile>
+    <Compile Include="mm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="mm.Designer.cs">
+      <DependentUpon>mm.cs</DependentUpon>
+    </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="Aide.resx">
@@ -88,6 +94,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Exemple.resx">
       <DependentUpon>Exemple.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="mm.resx">
+      <DependentUpon>mm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>

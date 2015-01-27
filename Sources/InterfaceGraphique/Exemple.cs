@@ -23,6 +23,7 @@ namespace InterfaceGraphique
             this.KeyPress += new KeyPressEventHandler(ToucheEnfonce);
             this.Icon = Properties.Resources.Pinball;
             InitializeComponent();
+            Program.peutAfficher = true;
             
             InitialiserAnimation();
             
@@ -93,6 +94,7 @@ namespace InterfaceGraphique
         {
           //  System.Console.WriteLine("Quitter");
             this.Close();
+            
         }
 
         private void Exemple_FormClosing(object sender, FormClosingEventArgs e)
