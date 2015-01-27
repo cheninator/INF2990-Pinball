@@ -182,7 +182,13 @@ namespace InterfaceGraphique
         {
             Rotation_MenuItem_Click(this, e);
         }
-
+        
+        private void button1_Click(object sender, EventArgs e)
+        {
+            StringBuilder myChar = new StringBuilder("conecube");
+            Console.WriteLine(FonctionsNatives.creerObjet(myChar, myChar.Capacity, -12, 30));
+        }
+        
         private void groupBox1_Enter(object sender, EventArgs e)
         {
 
@@ -252,5 +258,9 @@ namespace InterfaceGraphique
 
         [DllImport(@"Noyau.dll", CallingConvention = CallingConvention.Cdecl)]
         public static extern void animer(double temps);
+        
+         [DllImport(@"Noyau.dll", CallingConvention = CallingConvention.Cdecl)]
+        public static extern bool creerObjet(StringBuilder value, int length, int x = 0, int y = 0, float rotation = 0); 
+    
     }
 }
