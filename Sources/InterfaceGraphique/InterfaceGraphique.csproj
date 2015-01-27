@@ -81,11 +81,11 @@
     <Compile Include="Exemple.Designer.cs">
       <DependentUpon>Exemple.cs</DependentUpon>
     </Compile>
-    <Compile Include="Form1.cs">
+    <Compile Include="MenuPrincipal.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Form1.Designer.cs">
-      <DependentUpon>Form1.cs</DependentUpon>
+    <Compile Include="MenuPrincipal.Designer.cs">
+      <DependentUpon>MenuPrincipal.cs</DependentUpon>
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -95,8 +95,8 @@
     <EmbeddedResource Include="Exemple.resx">
       <DependentUpon>Exemple.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Form1.resx">
-      <DependentUpon>Form1.cs</DependentUpon>
+    <EmbeddedResource Include="MenuPrincipal.resx">
+      <DependentUpon>MenuPrincipal.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
@@ -174,6 +174,24 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\button-29.wav" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\cible.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\mur.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\plunger.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\portail.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\ressort.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Trou.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>

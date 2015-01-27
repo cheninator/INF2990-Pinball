@@ -66,7 +66,7 @@
             this.bouton_edit.TabIndex = 1;
             this.bouton_edit.Text = "Mode Edition";
             this.bouton_edit.UseVisualStyleBackColor = true;
-            this.bouton_edit.Click += new System.EventHandler(this.button2_Click);
+            this.bouton_edit.Click += new System.EventHandler(this.bouton_edit_Click);
             this.bouton_edit.MouseEnter += new System.EventHandler(this.bouton_edit_MouseEnter);
             this.bouton_edit.MouseLeave += new System.EventHandler(this.bouton_edit_MouseLeave);
             // 

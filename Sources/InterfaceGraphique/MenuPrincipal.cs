@@ -51,10 +51,13 @@ namespace InterfaceGraphique
 
         }
 
-        private void button2_Click(object sender, EventArgs e)
+        private void bouton_edit_Click(object sender, EventArgs e)
         {
+            this.Hide();
             modeEdit = new Exemple();
-            modeEdit.Show();
+            modeEdit.ShowDialog();
+            this.Show();
+            
            }
 
         private void bouton_edit_MouseEnter(object sender, EventArgs e)

@@ -23,7 +23,9 @@ namespace InterfaceGraphique
             this.KeyPress += new KeyPressEventHandler(ToucheEnfonce);
             this.Icon = Properties.Resources.Pinball;
             InitializeComponent();
+           
             Program.peutAfficher = true;
+            panel_GL.Focus();
             
             InitialiserAnimation();
             
@@ -35,7 +37,7 @@ namespace InterfaceGraphique
         {
             this.DoubleBuffered = false;
             this.StartPosition = FormStartPosition.WindowsDefaultBounds;
-            FonctionsNatives.initialiserOpenGL(panel1.Handle);
+            FonctionsNatives.initialiserOpenGL(panel_GL.Handle);
             FonctionsNatives.dessinerOpenGL();
         }
 
@@ -180,6 +182,32 @@ namespace InterfaceGraphique
         {
             Rotation_MenuItem_Click(this, e);
         }
+
+        private void groupBox1_Enter(object sender, EventArgs e)
+        {
+
+        }
+
+        private void bouton_Selection_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void bouton_Creation_Click(object sender, EventArgs e)
+        {
+
+            if (Creation_Panel.Visible)
+                Creation_Panel.Visible = false;
+            else
+                Creation_Panel.Visible = true;
+        }
+
+        private void panel_GL_MouseClick(object sender, MouseEventArgs e)
+        {
+            Console.Write(this.PointToClient(MousePosition));
+        }
+
+       
 
       
     }

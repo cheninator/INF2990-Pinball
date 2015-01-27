@@ -30,6 +30,18 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Exemple));
             this.panel1 = new System.Windows.Forms.Panel();
+            this.panel_GL = new System.Windows.Forms.Panel();
+            this.flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
+            this.Groupe_Outils = new System.Windows.Forms.GroupBox();
+            this.label_Zoom = new System.Windows.Forms.Label();
+            this.bouton_Creation = new System.Windows.Forms.Button();
+            this.bouton_Duplication = new System.Windows.Forms.Button();
+            this.zoom_Bar = new System.Windows.Forms.TrackBar();
+            this.bouton_Scaling = new System.Windows.Forms.Button();
+            this.bouton_Rotation = new System.Windows.Forms.Button();
+            this.bouton_Deplacement = new System.Windows.Forms.Button();
+            this.bouton_Selection = new System.Windows.Forms.Button();
+            this.Groupe_Proprietes = new System.Windows.Forms.GroupBox();
             this.Creation_Panel = new System.Windows.Forms.FlowLayoutPanel();
             this.Groupe_Palettes = new System.Windows.Forms.GroupBox();
             this.PDJ2_bouton = new System.Windows.Forms.Button();
@@ -37,17 +49,9 @@
             this.PDJ1_bouton = new System.Windows.Forms.Button();
             this.PGJ1_bouton = new System.Windows.Forms.Button();
             this.Group_Butoir = new System.Windows.Forms.GroupBox();
+            this.button1 = new System.Windows.Forms.Button();
             this.butoirD_bouton = new System.Windows.Forms.Button();
             this.butoireG_bouton = new System.Windows.Forms.Button();
-            this.barre_outils = new System.Windows.Forms.ToolStrip();
-            this.toolStripSeparator = new System.Windows.Forms.ToolStripSeparator();
-            this.toolStripSeparator2 = new System.Windows.Forms.ToolStripSeparator();
-            this.Selectionner_BO = new System.Windows.Forms.ToolStripButton();
-            this.Deplacer_BO = new System.Windows.Forms.ToolStripButton();
-            this.Selection_BO = new System.Windows.Forms.ToolStripButton();
-            this.Rotation_BO = new System.Windows.Forms.ToolStripButton();
-            this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
-            this.helpToolStripButton = new System.Windows.Forms.ToolStripButton();
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.fichierToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.Nouveau_MenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -86,12 +90,13 @@
             this.Information_MenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.Aide_MenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.printPreviewDialog1 = new System.Windows.Forms.PrintPreviewDialog();
-            this.button1 = new System.Windows.Forms.Button();
             this.panel1.SuspendLayout();
+            this.flowLayoutPanel1.SuspendLayout();
+            this.Groupe_Outils.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.zoom_Bar)).BeginInit();
             this.Creation_Panel.SuspendLayout();
             this.Groupe_Palettes.SuspendLayout();
             this.Group_Butoir.SuspendLayout();
-            this.barre_outils.SuspendLayout();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -99,16 +104,140 @@
             // 
             this.panel1.BackColor = System.Drawing.SystemColors.ActiveCaption;
             this.panel1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.panel1.Controls.Add(this.panel_GL);
+            this.panel1.Controls.Add(this.flowLayoutPanel1);
             this.panel1.Controls.Add(this.Creation_Panel);
-            this.panel1.Controls.Add(this.barre_outils);
             this.panel1.Controls.Add(this.menuStrip1);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel1.Location = new System.Drawing.Point(0, 0);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(623, 428);
+            this.panel1.Size = new System.Drawing.Size(956, 639);
             this.panel1.TabIndex = 0;
             this.panel1.Click += new System.EventHandler(this.panel1_Click);
             this.panel1.Paint += new System.Windows.Forms.PaintEventHandler(this.panel1_Paint);
+            // 
+            // panel_GL
+            // 
+            this.panel_GL.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            this.panel_GL.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panel_GL.Location = new System.Drawing.Point(168, 24);
+            this.panel_GL.Name = "panel_GL";
+            this.panel_GL.Size = new System.Drawing.Size(561, 613);
+            this.panel_GL.TabIndex = 4;
+            this.panel_GL.MouseClick += new System.Windows.Forms.MouseEventHandler(this.panel_GL_MouseClick);
+            // 
+            // flowLayoutPanel1
+            // 
+            this.flowLayoutPanel1.BackColor = System.Drawing.SystemColors.InactiveBorder;
+            this.flowLayoutPanel1.Controls.Add(this.Groupe_Outils);
+            this.flowLayoutPanel1.Controls.Add(this.Groupe_Proprietes);
+            this.flowLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Left;
+            this.flowLayoutPanel1.Location = new System.Drawing.Point(0, 24);
+            this.flowLayoutPanel1.Name = "flowLayoutPanel1";
+            this.flowLayoutPanel1.Size = new System.Drawing.Size(168, 613);
+            this.flowLayoutPanel1.TabIndex = 3;
+            // 
+            // Groupe_Outils
+            // 
+            this.Groupe_Outils.Controls.Add(this.label_Zoom);
+            this.Groupe_Outils.Controls.Add(this.bouton_Creation);
+            this.Groupe_Outils.Controls.Add(this.bouton_Duplication);
+            this.Groupe_Outils.Controls.Add(this.zoom_Bar);
+            this.Groupe_Outils.Controls.Add(this.bouton_Scaling);
+            this.Groupe_Outils.Controls.Add(this.bouton_Rotation);
+            this.Groupe_Outils.Controls.Add(this.bouton_Deplacement);
+            this.Groupe_Outils.Controls.Add(this.bouton_Selection);
+            this.Groupe_Outils.Location = new System.Drawing.Point(3, 3);
+            this.Groupe_Outils.Name = "Groupe_Outils";
+            this.Groupe_Outils.Size = new System.Drawing.Size(159, 278);
+            this.Groupe_Outils.TabIndex = 0;
+            this.Groupe_Outils.TabStop = false;
+            this.Groupe_Outils.Text = "Outils";
+            this.Groupe_Outils.Enter += new System.EventHandler(this.groupBox1_Enter);
+            // 
+            // label_Zoom
+            // 
+            this.label_Zoom.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label_Zoom.Location = new System.Drawing.Point(13, 209);
+            this.label_Zoom.Name = "label_Zoom";
+            this.label_Zoom.Size = new System.Drawing.Size(130, 14);
+            this.label_Zoom.TabIndex = 6;
+            this.label_Zoom.Text = "(-)        Zoom        (+)";
+            this.label_Zoom.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
+            // 
+            // bouton_Creation
+            // 
+            this.bouton_Creation.Location = new System.Drawing.Point(13, 176);
+            this.bouton_Creation.Name = "bouton_Creation";
+            this.bouton_Creation.Size = new System.Drawing.Size(130, 24);
+            this.bouton_Creation.TabIndex = 5;
+            this.bouton_Creation.Text = "Création";
+            this.bouton_Creation.UseVisualStyleBackColor = true;
+            this.bouton_Creation.Click += new System.EventHandler(this.bouton_Creation_Click);
+            // 
+            // bouton_Duplication
+            // 
+            this.bouton_Duplication.Location = new System.Drawing.Point(13, 146);
+            this.bouton_Duplication.Name = "bouton_Duplication";
+            this.bouton_Duplication.Size = new System.Drawing.Size(130, 24);
+            this.bouton_Duplication.TabIndex = 4;
+            this.bouton_Duplication.Text = "Duplication";
+            this.bouton_Duplication.UseVisualStyleBackColor = true;
+            // 
+            // zoom_Bar
+            // 
+            this.zoom_Bar.AutoSize = false;
+            this.zoom_Bar.Location = new System.Drawing.Point(13, 226);
+            this.zoom_Bar.Name = "zoom_Bar";
+            this.zoom_Bar.Size = new System.Drawing.Size(130, 40);
+            this.zoom_Bar.TabIndex = 2;
+            // 
+            // bouton_Scaling
+            // 
+            this.bouton_Scaling.Location = new System.Drawing.Point(13, 116);
+            this.bouton_Scaling.Name = "bouton_Scaling";
+            this.bouton_Scaling.Size = new System.Drawing.Size(130, 24);
+            this.bouton_Scaling.TabIndex = 3;
+            this.bouton_Scaling.Text = "Mise à échelle";
+            this.bouton_Scaling.UseVisualStyleBackColor = true;
+            // 
+            // bouton_Rotation
+            // 
+            this.bouton_Rotation.Location = new System.Drawing.Point(13, 86);
+            this.bouton_Rotation.Name = "bouton_Rotation";
+            this.bouton_Rotation.Size = new System.Drawing.Size(130, 24);
+            this.bouton_Rotation.TabIndex = 2;
+            this.bouton_Rotation.Text = "Rotation";
+            this.bouton_Rotation.UseVisualStyleBackColor = true;
+            // 
+            // bouton_Deplacement
+            // 
+            this.bouton_Deplacement.Location = new System.Drawing.Point(13, 55);
+            this.bouton_Deplacement.Name = "bouton_Deplacement";
+            this.bouton_Deplacement.Size = new System.Drawing.Size(130, 24);
+            this.bouton_Deplacement.TabIndex = 1;
+            this.bouton_Deplacement.Text = "Déplacement";
+            this.bouton_Deplacement.UseVisualStyleBackColor = true;
+            // 
+            // bouton_Selection
+            // 
+            this.bouton_Selection.Location = new System.Drawing.Point(13, 25);
+            this.bouton_Selection.Name = "bouton_Selection";
+            this.bouton_Selection.Size = new System.Drawing.Size(130, 24);
+            this.bouton_Selection.TabIndex = 0;
+            this.bouton_Selection.Text = "Sélection";
+            this.bouton_Selection.UseVisualStyleBackColor = true;
+            this.bouton_Selection.Click += new System.EventHandler(this.bouton_Selection_Click);
+            // 
+            // Groupe_Proprietes
+            // 
+            this.Groupe_Proprietes.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.Groupe_Proprietes.Location = new System.Drawing.Point(3, 287);
+            this.Groupe_Proprietes.Name = "Groupe_Proprietes";
+            this.Groupe_Proprietes.Size = new System.Drawing.Size(159, 250);
+            this.Groupe_Proprietes.TabIndex = 1;
+            this.Groupe_Proprietes.TabStop = false;
+            this.Groupe_Proprietes.Text = "Propriétés";
             // 
             // Creation_Panel
             // 
@@ -117,9 +246,9 @@
             this.Creation_Panel.Controls.Add(this.Groupe_Palettes);
             this.Creation_Panel.Controls.Add(this.Group_Butoir);
             this.Creation_Panel.Dock = System.Windows.Forms.DockStyle.Right;
-            this.Creation_Panel.Location = new System.Drawing.Point(398, 50);
+            this.Creation_Panel.Location = new System.Drawing.Point(729, 24);
             this.Creation_Panel.Name = "Creation_Panel";
-            this.Creation_Panel.Size = new System.Drawing.Size(223, 376);
+            this.Creation_Panel.Size = new System.Drawing.Size(225, 613);
             this.Creation_Panel.TabIndex = 2;
             this.Creation_Panel.Visible = false;
             // 
@@ -193,6 +322,16 @@
             this.Group_Butoir.TabStop = false;
             this.Group_Butoir.Text = "Butoirs";
             // 
+            // button1
+            // 
+            this.button1.BackgroundImage = global::InterfaceGraphique.Properties.Resources.but;
+            this.button1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.button1.Location = new System.Drawing.Point(62, 76);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(98, 48);
+            this.button1.TabIndex = 2;
+            this.button1.UseVisualStyleBackColor = true;
+            // 
             // butoirD_bouton
             // 
             this.butoirD_bouton.BackgroundImage = global::InterfaceGraphique.Properties.Resources.butoirD;
@@ -214,91 +353,6 @@
             this.butoireG_bouton.TabIndex = 0;
             this.butoireG_bouton.UseVisualStyleBackColor = true;
             // 
-            // barre_outils
-            // 
-            this.barre_outils.AutoSize = false;
-            this.barre_outils.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.toolStripSeparator,
-            this.toolStripSeparator2,
-            this.Rotation_BO,
-            this.Deplacer_BO,
-            this.Selection_BO,
-            this.Selectionner_BO,
-            this.toolStripSeparator1,
-            this.helpToolStripButton});
-            this.barre_outils.Location = new System.Drawing.Point(0, 24);
-            this.barre_outils.Name = "barre_outils";
-            this.barre_outils.Size = new System.Drawing.Size(621, 26);
-            this.barre_outils.TabIndex = 1;
-            // 
-            // toolStripSeparator
-            // 
-            this.toolStripSeparator.Name = "toolStripSeparator";
-            this.toolStripSeparator.Size = new System.Drawing.Size(6, 26);
-            // 
-            // toolStripSeparator2
-            // 
-            this.toolStripSeparator2.Name = "toolStripSeparator2";
-            this.toolStripSeparator2.Size = new System.Drawing.Size(6, 26);
-            // 
-            // Selectionner_BO
-            // 
-            this.Selectionner_BO.CheckOnClick = true;
-            this.Selectionner_BO.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.Selectionner_BO.Image = ((System.Drawing.Image)(resources.GetObject("Selectionner_BO.Image")));
-            this.Selectionner_BO.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.Selectionner_BO.Name = "Selectionner_BO";
-            this.Selectionner_BO.Size = new System.Drawing.Size(23, 23);
-            this.Selectionner_BO.Text = "Création";
-            this.Selectionner_BO.Click += new System.EventHandler(this.Selectionner_BO_Click);
-            // 
-            // Deplacer_BO
-            // 
-            this.Deplacer_BO.CheckOnClick = true;
-            this.Deplacer_BO.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.Deplacer_BO.Image = ((System.Drawing.Image)(resources.GetObject("Deplacer_BO.Image")));
-            this.Deplacer_BO.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.Deplacer_BO.Name = "Deplacer_BO";
-            this.Deplacer_BO.Size = new System.Drawing.Size(23, 23);
-            this.Deplacer_BO.Text = "Deplacement";
-            // 
-            // Selection_BO
-            // 
-            this.Selection_BO.CheckOnClick = true;
-            this.Selection_BO.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.Selection_BO.Image = ((System.Drawing.Image)(resources.GetObject("Selection_BO.Image")));
-            this.Selection_BO.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.Selection_BO.Name = "Selection_BO";
-            this.Selection_BO.Size = new System.Drawing.Size(23, 23);
-            this.Selection_BO.Text = "Selection";
-            this.Selection_BO.Click += new System.EventHandler(this.Selection_BO_Click);
-            // 
-            // Rotation_BO
-            // 
-            this.Rotation_BO.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.Rotation_BO.Image = ((System.Drawing.Image)(resources.GetObject("Rotation_BO.Image")));
-            this.Rotation_BO.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.Rotation_BO.Name = "Rotation_BO";
-            this.Rotation_BO.Size = new System.Drawing.Size(23, 23);
-            this.Rotation_BO.Text = "Rotation";
-            this.Rotation_BO.Click += new System.EventHandler(this.Rotation_BO_Click);
-            // 
-            // toolStripSeparator1
-            // 
-            this.toolStripSeparator1.Name = "toolStripSeparator1";
-            this.toolStripSeparator1.Size = new System.Drawing.Size(6, 26);
-            // 
-            // helpToolStripButton
-            // 
-            this.helpToolStripButton.Alignment = System.Windows.Forms.ToolStripItemAlignment.Right;
-            this.helpToolStripButton.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.helpToolStripButton.Image = ((System.Drawing.Image)(resources.GetObject("helpToolStripButton.Image")));
-            this.helpToolStripButton.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.helpToolStripButton.Name = "helpToolStripButton";
-            this.helpToolStripButton.Size = new System.Drawing.Size(23, 23);
-            this.helpToolStripButton.Text = "&Aide";
-            this.helpToolStripButton.Click += new System.EventHandler(this.helpToolStripButton_Click);
-            // 
             // menuStrip1
             // 
             this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
@@ -309,7 +363,7 @@
             this.Information_MenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
-            this.menuStrip1.Size = new System.Drawing.Size(621, 24);
+            this.menuStrip1.Size = new System.Drawing.Size(954, 24);
             this.menuStrip1.TabIndex = 0;
             this.menuStrip1.Text = "menuStrip1";
             // 
@@ -388,7 +442,7 @@
             // 
             this.Supprimer_MenuItem.Name = "Supprimer_MenuItem";
             this.Supprimer_MenuItem.ShortcutKeys = System.Windows.Forms.Keys.Delete;
-            this.Supprimer_MenuItem.Size = new System.Drawing.Size(153, 22);
+            this.Supprimer_MenuItem.Size = new System.Drawing.Size(167, 22);
             this.Supprimer_MenuItem.Text = "Supprimer";
             // 
             // Outils_MenuItem
@@ -589,34 +643,25 @@
             this.printPreviewDialog1.Name = "printPreviewDialog1";
             this.printPreviewDialog1.Visible = false;
             // 
-            // button1
-            // 
-            this.button1.BackgroundImage = global::InterfaceGraphique.Properties.Resources.but;
-            this.button1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            this.button1.Location = new System.Drawing.Point(62, 76);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(98, 48);
-            this.button1.TabIndex = 2;
-            this.button1.UseVisualStyleBackColor = true;
-            // 
             // Exemple
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(623, 428);
+            this.ClientSize = new System.Drawing.Size(956, 639);
             this.Controls.Add(this.panel1);
             this.MainMenuStrip = this.menuStrip1;
-            this.MinimumSize = new System.Drawing.Size(400, 400);
+            this.MinimumSize = new System.Drawing.Size(972, 678);
             this.Name = "Exemple";
             this.Text = "Mode Edition";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.Exemple_FormClosing);
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
+            this.flowLayoutPanel1.ResumeLayout(false);
+            this.Groupe_Outils.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.zoom_Bar)).EndInit();
             this.Creation_Panel.ResumeLayout(false);
             this.Groupe_Palettes.ResumeLayout(false);
             this.Group_Butoir.ResumeLayout(false);
-            this.barre_outils.ResumeLayout(false);
-            this.barre_outils.PerformLayout();
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
             this.ResumeLayout(false);
@@ -663,15 +708,6 @@
         private System.Windows.Forms.ToolStripMenuItem Ressort_MenuItem;
         private System.Windows.Forms.ToolStripMenuItem GB_MenuItem;
         private System.Windows.Forms.ToolStripMenuItem Trou_MenuItem;
-        private System.Windows.Forms.ToolStrip barre_outils;
-        private System.Windows.Forms.ToolStripButton Selectionner_BO;
-        private System.Windows.Forms.ToolStripButton Deplacer_BO;
-        private System.Windows.Forms.ToolStripButton Selection_BO;
-        private System.Windows.Forms.ToolStripButton Rotation_BO;
-        private System.Windows.Forms.ToolStripSeparator toolStripSeparator;
-        private System.Windows.Forms.ToolStripSeparator toolStripSeparator1;
-        private System.Windows.Forms.ToolStripButton helpToolStripButton;
-        private System.Windows.Forms.ToolStripSeparator toolStripSeparator2;
         private System.Windows.Forms.FlowLayoutPanel Creation_Panel;
         private System.Windows.Forms.GroupBox Groupe_Palettes;
         private System.Windows.Forms.PrintPreviewDialog printPreviewDialog1;
@@ -683,6 +719,18 @@
         private System.Windows.Forms.Button butoirD_bouton;
         private System.Windows.Forms.Button butoireG_bouton;
         private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel1;
+        private System.Windows.Forms.Panel panel_GL;
+        private System.Windows.Forms.GroupBox Groupe_Outils;
+        private System.Windows.Forms.GroupBox Groupe_Proprietes;
+        private System.Windows.Forms.Button bouton_Selection;
+        private System.Windows.Forms.Button bouton_Creation;
+        private System.Windows.Forms.Button bouton_Duplication;
+        private System.Windows.Forms.Button bouton_Scaling;
+        private System.Windows.Forms.Button bouton_Rotation;
+        private System.Windows.Forms.Button bouton_Deplacement;
+        private System.Windows.Forms.TrackBar zoom_Bar;
+        private System.Windows.Forms.Label label_Zoom;
     }
 }
 
