@@ -27,3 +27,14 @@ void NoeudPortail::animer(float temps)
 {
 }
 
+bool NoeudPortail::accepterVisiteur(VisiteurAbstrait* vis)
+{
+	bool reussi = false;
+
+	if (vis->traiter(*this))
+		reussi = true;
+
+	return reussi;
+
+}
+

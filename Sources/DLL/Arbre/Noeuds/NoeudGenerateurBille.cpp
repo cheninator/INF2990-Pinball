@@ -27,3 +27,13 @@ void NoeudGenerateurBille::animer(float temps)
 {
 }
 
+bool NoeudGenerateurBille::accepterVisiteur(VisiteurAbstrait* vis)
+{
+	bool reussi = false;
+
+	if (vis->traiter(*this))
+		reussi = true;
+
+	return reussi;
+}
+

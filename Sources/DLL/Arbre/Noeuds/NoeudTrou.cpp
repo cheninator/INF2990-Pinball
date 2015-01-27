@@ -27,3 +27,13 @@ void NoeudTrou::animer(float temps)
 {
 }
 
+bool NoeudTrou::accepterVisiteur(VisiteurAbstrait* vis)
+{
+	bool reussi = false;
+
+	if (vis->traiter(*this))
+		reussi = true;
+
+	return reussi;
+}
+

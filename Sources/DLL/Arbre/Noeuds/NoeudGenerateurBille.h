@@ -17,6 +17,8 @@ public:
 	// Surchage de la méthode qui anime l'objet
 	virtual void animer(float temps);
 
+	virtual bool accepterVisiteur(VisiteurAbstrait* vis);
+
 private:
 	// TODO(Emilio): Insérer les attributs propres à chaque type d'objet
 

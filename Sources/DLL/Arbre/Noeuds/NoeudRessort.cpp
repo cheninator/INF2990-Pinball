@@ -27,3 +27,13 @@ void NoeudRessort::animer(float temps)
 {
 }
 
+bool NoeudRessort::accepterVisiteur(VisiteurAbstrait* vis)
+{
+	bool reussi = false;
+
+	if (vis->traiter(*this))
+		reussi = true;
+
+	return reussi;
+}
+

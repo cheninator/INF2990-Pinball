@@ -27,3 +27,12 @@ void NoeudPalette::animer(float temps)
 {
 }
 
+bool NoeudPalette::accepterVisiteur(VisiteurAbstrait* vis)
+{
+	bool reussi = false;
+
+	if (vis->traiter(*this))
+		reussi = true;
+
+	return reussi;
+}
