@@ -16,6 +16,7 @@
 #include <string>
 
 #include "glm\glm.hpp"
+#include "../../Visiteurs/VisiteurAbstrait.h"
 
 /// Déclarations avancées pour contenir un pointeur vers un modèle3D et sa liste
 /// d'affichage
@@ -132,6 +133,8 @@ public:
 	virtual void afficherConcret() const;
 	/// Anime le noeud.
 	virtual void animer(float dt);
+
+	virtual bool accepterVisiteur(VisiteurAbstrait* vis){ return false; };
 
 protected:
 	/// Type du noeud.

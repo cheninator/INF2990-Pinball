@@ -13,7 +13,6 @@
 
 #include "NoeudComposite.h"
 
-
 ///////////////////////////////////////////////////////////////////////////
 /// @class NoeudButoir
 /// @brief Classe qui représente un butoir
@@ -36,6 +35,8 @@ public:
 
 	/// Effectue l'animation du butoir.
 	virtual void animer(float temps);
+
+	virtual bool accepterVisiteur(VisiteurAbstrait* vis);
 
 private:
 

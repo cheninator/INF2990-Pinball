@@ -27,3 +27,13 @@ void NoeudMur::animer(float temps)
 {
 }
 
+bool NoeudMur::accepterVisiteur(VisiteurAbstrait* vis)
+{
+	bool reussi = false;
+
+	if (vis->traiter(*this))
+		reussi = true;
+
+	return reussi;
+}
+

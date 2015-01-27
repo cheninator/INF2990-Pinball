@@ -27,3 +27,13 @@ void NoeudButoir::animer(float temps)
 {
 }
 
+bool NoeudButoir::accepterVisiteur(VisiteurAbstrait* vis)
+{
+	bool reussi = false;
+
+	if (vis->traiter(*this))
+		reussi = true;
+
+	return reussi;
+}
+
