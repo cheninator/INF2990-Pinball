@@ -16,8 +16,9 @@ namespace InterfaceGraphique
         public static Object unLock = new Object();
         public static bool peutAfficher = true;
 
-        private static Exemple exemple;
-        private static mm menu;
+        //private static Exemple exemple;
+       // private static mm menu;
+        private static MainMenu mMenu;
         private static TimeSpan dernierTemps;
         private static TimeSpan tempsAccumule;
         private static Stopwatch chrono = Stopwatch.StartNew();
@@ -44,11 +45,12 @@ namespace InterfaceGraphique
             Application.Idle += ExecuterQuandInactif;
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            menu = new mm();
+           // menu = new mm();
+            mMenu = new MainMenu();
            // exemple = new Exemple();
               
                       
-            Application.Run(menu);
+            Application.Run(mMenu);
 
         
 
@@ -71,8 +73,8 @@ namespace InterfaceGraphique
                 {
                     lock (unLock)
                     {
-                        if ( menu.a != null && peutAfficher)
-                            menu.a.MettreAJour((double)tempsAccumule.Ticks / TimeSpan.TicksPerSecond);
+                        if ( mMenu.modeEdit != null && peutAfficher)
+                            mMenu.modeEdit.MettreAJour((double)tempsAccumule.Ticks / TimeSpan.TicksPerSecond);
 
                     }
                     tempsAccumule = TimeSpan.Zero;
