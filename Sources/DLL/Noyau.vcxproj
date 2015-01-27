@@ -149,8 +149,7 @@
     <ClCompile Include="Tests\BancTests.cpp" />
     <ClCompile Include="Tests\ConfigSceneTest.cpp" />
     <ClCompile Include="Tests\NoeudAbstraitTest.cpp" />
-    <ClCompile Include="VisiteurAbstrait.cpp" />
-    <ClCompile Include="VisiteurDeplacement.cpp" />
+    <ClCompile Include="Visiteurs\VisiteurDeplacement.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Application\FacadeModele.h" />
@@ -165,7 +164,15 @@
     <ClInclude Include="Arbre\Noeuds\NoeudRessort.h" />
     <ClInclude Include="Arbre\Noeuds\NoeudTrou.h" />
     <ClInclude Include="Arbre\Usines\UsineNoeudAraignee.h" />
+    <ClInclude Include="Arbre\Usines\UsineNoeudButoir.h" />
+    <ClInclude Include="Arbre\Usines\UsineNoeudCible.h" />
     <ClInclude Include="Arbre\Usines\UsineNoeudConeCube.h" />
+    <ClInclude Include="Arbre\Usines\UsineNoeudGenerateurBille.h" />
+    <ClInclude Include="Arbre\Usines\UsineNoeudMur.h" />
+    <ClInclude Include="Arbre\Usines\UsineNoeudPalette.h" />
+    <ClInclude Include="Arbre\Usines\UsineNoeudPortail.h" />
+    <ClInclude Include="Arbre\Usines\UsineNoeudRessort.h" />
+    <ClInclude Include="Arbre\Usines\UsineNoeudTrou.h" />
     <ClInclude Include="Configuration\ConfigScene.h" />
     <ClInclude Include="Arbre\ArbreRendu.h" />
     <ClInclude Include="Arbre\ArbreRenduINF2990.h" />
@@ -173,13 +180,11 @@
     <ClInclude Include="Arbre\Noeuds\NoeudAbstrait.h" />
     <ClInclude Include="Arbre\Noeuds\NoeudComposite.h" />
     <ClInclude Include="Interface\FacadeInterfaceNative.h" />
-    <ClInclude Include="NoeudButoir.h" />
     <ClInclude Include="Tests\BancTests.h" />
     <ClInclude Include="Tests\ConfigSceneTest.h" />
     <ClInclude Include="Tests\NoeudAbstraitTest.h" />
-    <ClInclude Include="UsineNoeudButoir.h" />
-    <ClInclude Include="VisiteurAbstrait.h" />
-    <ClInclude Include="VisiteurDeplacement.h" />
+    <ClInclude Include="Visiteurs\VisiteurAbstrait.h" />
+    <ClInclude Include="Visiteurs\VisiteurDeplacement.h" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\..\Commun\Utilitaire\Utilitaire.vcxproj">

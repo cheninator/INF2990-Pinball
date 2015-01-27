@@ -1,30 +1,52 @@
-#ifndef __ARBRES_NOEUDS_NOEUDBUTOIR_H__
-#define __ARBRES_NOEUDS_NOEUDBUTOIR_H__
+///////////////////////////////////////////////////////////////////////////
+/// @file NoeudButoir.h
+/// @author Yonni Chen
+/// @date 2015-01-24
+/// @version 1.0
+///
+/// @addtogroup inf2990 INF2990
+/// @{
+///////////////////////////////////////////////////////////////////////////
+#ifndef __ARBRE_NOEUDS_NOEUDBUTOIR_H__
+#define __ARBRE_NOEUDS_NOEUDBUTOIR_H__
+
 
 #include "NoeudComposite.h"
-#include "Gl/gl.h"
 
+
+///////////////////////////////////////////////////////////////////////////
+/// @class NoeudButoir
+/// @brief Classe qui représente un butoir
+///
+/// @author Julien Gascon-Samson
+/// @date 2011-05-19
+///////////////////////////////////////////////////////////////////////////
 class NoeudButoir : public NoeudComposite
 {
 public:
-	// Constructeur
+
+	/// Constructeur à partir du type du noeud.
 	NoeudButoir(const std::string& typeNoeud);
-	// Destructeur 
+
+	/// Destructeur.
 	~NoeudButoir();
 
-	// Surchage de la méthode qui affiche l'objet
+	/// Affiche le butoir.
 	virtual void afficherConcret() const;
-	// Surchage de la méthode qui anime l'objet
+
+	/// Effectue l'animation du butoir.
 	virtual void animer(float temps);
 
 private:
-	// TODO(Emilio): Insérer les attributs propres à chaque type d'objet
-	/// Angle selon l'axe des X.
-	float angleX_{ 0.f };
-	/// Angle selon l'axe des Y.
-	float angleY_{ 0.f };
-	/// Angle de rotation.
-	float angleRotation_{ 0.f };
+
+	/// Angle dans le sinus de l'oscillation
+	float angle_{ 0 };
+
 };
 
 #endif // __ARBRE_NOEUDS_NOEUDBUTOIR_H__
+
+
+///////////////////////////////////////////////////////////////////////////////
+/// @}
+///////////////////////////////////////////////////////////////////////////////
