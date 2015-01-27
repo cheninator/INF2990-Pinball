@@ -204,7 +204,11 @@ namespace InterfaceGraphique
 
         private void panel_GL_MouseClick(object sender, MouseEventArgs e)
         {
-            Console.Write(this.PointToClient(MousePosition));
+            Console.Write(panel_GL.PointToClient(MousePosition));
+
+            Xbox.Text = panel_GL.PointToClient(MousePosition).X.ToString();
+            Ybox.Text = panel_GL.PointToClient(MousePosition).Y.ToString();
+
         }
 
        

@@ -42,6 +42,16 @@
             this.bouton_Deplacement = new System.Windows.Forms.Button();
             this.bouton_Selection = new System.Windows.Forms.Button();
             this.Groupe_Proprietes = new System.Windows.Forms.GroupBox();
+            this.Annuler_prop_boutn = new System.Windows.Forms.Button();
+            this.OK_prop_bouton = new System.Windows.Forms.Button();
+            this.Anglebox = new System.Windows.Forms.TextBox();
+            this.Angle_label = new System.Windows.Forms.Label();
+            this.FMEbox = new System.Windows.Forms.TextBox();
+            this.FME_label = new System.Windows.Forms.Label();
+            this.Ybox = new System.Windows.Forms.TextBox();
+            this.Y_label = new System.Windows.Forms.Label();
+            this.Xbox = new System.Windows.Forms.TextBox();
+            this.X_label = new System.Windows.Forms.Label();
             this.Creation_Panel = new System.Windows.Forms.FlowLayoutPanel();
             this.Groupe_Palettes = new System.Windows.Forms.GroupBox();
             this.PDJ2_bouton = new System.Windows.Forms.Button();
@@ -94,6 +104,7 @@
             this.flowLayoutPanel1.SuspendLayout();
             this.Groupe_Outils.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.zoom_Bar)).BeginInit();
+            this.Groupe_Proprietes.SuspendLayout();
             this.Creation_Panel.SuspendLayout();
             this.Groupe_Palettes.SuspendLayout();
             this.Group_Butoir.SuspendLayout();
@@ -232,12 +243,104 @@
             // Groupe_Proprietes
             // 
             this.Groupe_Proprietes.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.Groupe_Proprietes.Controls.Add(this.Annuler_prop_boutn);
+            this.Groupe_Proprietes.Controls.Add(this.OK_prop_bouton);
+            this.Groupe_Proprietes.Controls.Add(this.Anglebox);
+            this.Groupe_Proprietes.Controls.Add(this.Angle_label);
+            this.Groupe_Proprietes.Controls.Add(this.FMEbox);
+            this.Groupe_Proprietes.Controls.Add(this.FME_label);
+            this.Groupe_Proprietes.Controls.Add(this.Ybox);
+            this.Groupe_Proprietes.Controls.Add(this.Y_label);
+            this.Groupe_Proprietes.Controls.Add(this.Xbox);
+            this.Groupe_Proprietes.Controls.Add(this.X_label);
             this.Groupe_Proprietes.Location = new System.Drawing.Point(3, 287);
             this.Groupe_Proprietes.Name = "Groupe_Proprietes";
-            this.Groupe_Proprietes.Size = new System.Drawing.Size(159, 250);
+            this.Groupe_Proprietes.Size = new System.Drawing.Size(159, 173);
             this.Groupe_Proprietes.TabIndex = 1;
             this.Groupe_Proprietes.TabStop = false;
-            this.Groupe_Proprietes.Text = "Propriétés";
+            this.Groupe_Proprietes.Text = "Propriétés spaciales";
+            // 
+            // Annuler_prop_boutn
+            // 
+            this.Annuler_prop_boutn.Location = new System.Drawing.Point(84, 137);
+            this.Annuler_prop_boutn.Name = "Annuler_prop_boutn";
+            this.Annuler_prop_boutn.Size = new System.Drawing.Size(65, 23);
+            this.Annuler_prop_boutn.TabIndex = 9;
+            this.Annuler_prop_boutn.Text = "Annuler";
+            this.Annuler_prop_boutn.UseVisualStyleBackColor = true;
+            // 
+            // OK_prop_bouton
+            // 
+            this.OK_prop_bouton.Location = new System.Drawing.Point(8, 137);
+            this.OK_prop_bouton.Name = "OK_prop_bouton";
+            this.OK_prop_bouton.Size = new System.Drawing.Size(65, 23);
+            this.OK_prop_bouton.TabIndex = 8;
+            this.OK_prop_bouton.Text = "Accepter";
+            this.OK_prop_bouton.UseVisualStyleBackColor = true;
+            // 
+            // Anglebox
+            // 
+            this.Anglebox.Location = new System.Drawing.Point(93, 74);
+            this.Anglebox.Name = "Anglebox";
+            this.Anglebox.Size = new System.Drawing.Size(50, 20);
+            this.Anglebox.TabIndex = 7;
+            // 
+            // Angle_label
+            // 
+            this.Angle_label.Location = new System.Drawing.Point(17, 74);
+            this.Angle_label.Name = "Angle_label";
+            this.Angle_label.Size = new System.Drawing.Size(67, 20);
+            this.Angle_label.TabIndex = 6;
+            this.Angle_label.Text = "Angle:";
+            this.Angle_label.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // FMEbox
+            // 
+            this.FMEbox.Location = new System.Drawing.Point(92, 101);
+            this.FMEbox.Name = "FMEbox";
+            this.FMEbox.Size = new System.Drawing.Size(51, 20);
+            this.FMEbox.TabIndex = 5;
+            // 
+            // FME_label
+            // 
+            this.FME_label.Location = new System.Drawing.Point(17, 102);
+            this.FME_label.Name = "FME_label";
+            this.FME_label.Size = new System.Drawing.Size(67, 19);
+            this.FME_label.TabIndex = 4;
+            this.FME_label.Text = "Scale:";
+            this.FME_label.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // Ybox
+            // 
+            this.Ybox.Location = new System.Drawing.Point(93, 47);
+            this.Ybox.Name = "Ybox";
+            this.Ybox.Size = new System.Drawing.Size(51, 20);
+            this.Ybox.TabIndex = 3;
+            // 
+            // Y_label
+            // 
+            this.Y_label.Location = new System.Drawing.Point(14, 46);
+            this.Y_label.Name = "Y_label";
+            this.Y_label.Size = new System.Drawing.Size(73, 20);
+            this.Y_label.TabIndex = 2;
+            this.Y_label.Text = "Position en Y:";
+            this.Y_label.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // Xbox
+            // 
+            this.Xbox.Location = new System.Drawing.Point(93, 21);
+            this.Xbox.Name = "Xbox";
+            this.Xbox.Size = new System.Drawing.Size(51, 20);
+            this.Xbox.TabIndex = 1;
+            // 
+            // X_label
+            // 
+            this.X_label.Location = new System.Drawing.Point(14, 21);
+            this.X_label.Name = "X_label";
+            this.X_label.Size = new System.Drawing.Size(73, 20);
+            this.X_label.TabIndex = 0;
+            this.X_label.Text = "Position en X:";
+            this.X_label.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // Creation_Panel
             // 
@@ -414,7 +517,7 @@
             // 
             this.Proprietes_MenuItem.Name = "Proprietes_MenuItem";
             this.Proprietes_MenuItem.Size = new System.Drawing.Size(198, 22);
-            this.Proprietes_MenuItem.Text = "Proprietes";
+            this.Proprietes_MenuItem.Text = "Proprietés";
             // 
             // ModeTest_MenuItem
             // 
@@ -659,6 +762,8 @@
             this.flowLayoutPanel1.ResumeLayout(false);
             this.Groupe_Outils.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.zoom_Bar)).EndInit();
+            this.Groupe_Proprietes.ResumeLayout(false);
+            this.Groupe_Proprietes.PerformLayout();
             this.Creation_Panel.ResumeLayout(false);
             this.Groupe_Palettes.ResumeLayout(false);
             this.Group_Butoir.ResumeLayout(false);
@@ -731,6 +836,16 @@
         private System.Windows.Forms.Button bouton_Deplacement;
         private System.Windows.Forms.TrackBar zoom_Bar;
         private System.Windows.Forms.Label label_Zoom;
+        private System.Windows.Forms.TextBox Anglebox;
+        private System.Windows.Forms.Label Angle_label;
+        private System.Windows.Forms.TextBox FMEbox;
+        private System.Windows.Forms.Label FME_label;
+        private System.Windows.Forms.TextBox Ybox;
+        private System.Windows.Forms.Label Y_label;
+        private System.Windows.Forms.TextBox Xbox;
+        private System.Windows.Forms.Label X_label;
+        private System.Windows.Forms.Button Annuler_prop_boutn;
+        private System.Windows.Forms.Button OK_prop_bouton;
     }
 }
 
