@@ -20,7 +20,7 @@ extern "C" {
 	__declspec(dllexport) void zoomOut();
 	__declspec(dllexport) int obtenirAffichagesParSeconde();
 	__declspec(dllexport) bool executerTests();
-
+	__declspec(dllexport) bool creerObjet(char* value, int length, int x = 0, int y = 0, float rotation = 0);
 }
 
 #endif // __FACADE_INTERFACE_NATIVE_H__
