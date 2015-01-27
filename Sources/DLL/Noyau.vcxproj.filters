@@ -99,12 +99,6 @@
     <ClCompile Include="Interface\FacadeInterfaceNative.cpp">
       <Filter>Source Files\Interface</Filter>
     </ClCompile>
-    <ClCompile Include="VisiteurAbstrait.cpp">
-      <Filter>Source Files\Visiteurs</Filter>
-    </ClCompile>
-    <ClCompile Include="VisiteurDeplacement.cpp">
-      <Filter>Source Files\Visiteurs</Filter>
-    </ClCompile>
     <ClCompile Include="Arbre\Noeuds\NoeudButoir.cpp">
       <Filter>Source Files\Arbre\Noeuds</Filter>
     </ClCompile>
@@ -128,6 +122,9 @@
     </ClCompile>
     <ClCompile Include="Arbre\Noeuds\NoeudCible.cpp">
       <Filter>Source Files\Arbre\Noeuds</Filter>
+    </ClCompile>
+    <ClCompile Include="Visiteurs\VisiteurDeplacement.cpp">
+      <Filter>Source Files\Visiteurs</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -176,21 +173,6 @@
     <ClInclude Include="Interface\FacadeInterfaceNative.h">
       <Filter>Header Files\Interface</Filter>
     </ClInclude>
-    <ClInclude Include="VisiteurAbstrait.h">
-      <Filter>Header Files\Visiteurs</Filter>
-    </ClInclude>
-    <ClInclude Include="VisiteurDeplacement.h">
-      <Filter>Header Files\Visiteurs</Filter>
-    </ClInclude>
-    <ClInclude Include="UsineNoeudButoir.h">
-      <Filter>Header Files\Arbre\Usines</Filter>
-    </ClInclude>
-    <ClInclude Include="NoeudButoir.h">
-      <Filter>Header Files\Arbre\Usines</Filter>
-    </ClInclude>
-    <ClInclude Include="Arbre\Noeuds\NoeudButoir.h">
-      <Filter>Header Files\Arbre\Noeuds</Filter>
-    </ClInclude>
     <ClInclude Include="Arbre\Noeuds\NoeudCible.h">
       <Filter>Header Files\Arbre\Noeuds</Filter>
     </ClInclude>
@@ -211,6 +193,39 @@
     </ClInclude>
     <ClInclude Include="Arbre\Noeuds\NoeudTrou.h">
       <Filter>Header Files\Arbre\Noeuds</Filter>
+    </ClInclude>
+    <ClInclude Include="Arbre\Usines\UsineNoeudButoir.h">
+      <Filter>Header Files\Arbre\Usines</Filter>
+    </ClInclude>
+    <ClInclude Include="Arbre\Usines\UsineNoeudCible.h">
+      <Filter>Header Files\Arbre\Usines</Filter>
+    </ClInclude>
+    <ClInclude Include="Arbre\Usines\UsineNoeudGenerateurBille.h">
+      <Filter>Header Files\Arbre\Usines</Filter>
+    </ClInclude>
+    <ClInclude Include="Arbre\Usines\UsineNoeudMur.h">
+      <Filter>Header Files\Arbre\Usines</Filter>
+    </ClInclude>
+    <ClInclude Include="Arbre\Usines\UsineNoeudPalette.h">
+      <Filter>Header Files\Arbre\Usines</Filter>
+    </ClInclude>
+    <ClInclude Include="Arbre\Usines\UsineNoeudPortail.h">
+      <Filter>Header Files\Arbre\Usines</Filter>
+    </ClInclude>
+    <ClInclude Include="Arbre\Usines\UsineNoeudRessort.h">
+      <Filter>Header Files\Arbre\Usines</Filter>
+    </ClInclude>
+    <ClInclude Include="Arbre\Usines\UsineNoeudTrou.h">
+      <Filter>Header Files\Arbre\Usines</Filter>
+    </ClInclude>
+    <ClInclude Include="Arbre\Noeuds\NoeudButoir.h">
+      <Filter>Header Files\Arbre\Noeuds</Filter>
+    </ClInclude>
+    <ClInclude Include="Visiteurs\VisiteurAbstrait.h">
+      <Filter>Header Files\Visiteurs</Filter>
+    </ClInclude>
+    <ClInclude Include="Visiteurs\VisiteurDeplacement.h">
+      <Filter>Header Files\Visiteurs</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
