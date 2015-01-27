@@ -182,13 +182,7 @@ namespace InterfaceGraphique
         {
             Rotation_MenuItem_Click(this, e);
         }
-        
-        private void button1_Click(object sender, EventArgs e)
-        {
-            StringBuilder myChar = new StringBuilder("conecube");
-            Console.WriteLine(FonctionsNatives.creerObjet(myChar, myChar.Capacity, -12, 30));
-        }
-        
+                
         private void groupBox1_Enter(object sender, EventArgs e)
         {
 
@@ -215,6 +209,19 @@ namespace InterfaceGraphique
             Xbox.Text = panel_GL.PointToClient(MousePosition).X.ToString();
             Ybox.Text = panel_GL.PointToClient(MousePosition).Y.ToString();
 
+        }
+
+        private void button1_Click_1(object sender, EventArgs e)
+        {
+            StringBuilder myChar = new StringBuilder("conecube");
+            Console.WriteLine(FonctionsNatives.creerObjet(myChar, myChar.Capacity));
+        }
+
+        private void Proprietes_MenuItem_Click(object sender, EventArgs e)
+        {
+            Proprietes proprietes = new Proprietes();
+            proprietes.StartPosition = FormStartPosition.CenterScreen;
+            proprietes.Show();
         }
 
        

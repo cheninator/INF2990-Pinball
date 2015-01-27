@@ -16,5 +16,10 @@ namespace InterfaceGraphique
         {
             InitializeComponent();
         }
+
+        private void propAnnuler_Bouton_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
     }
 }

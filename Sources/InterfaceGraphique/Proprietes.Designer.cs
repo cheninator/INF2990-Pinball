@@ -35,7 +35,14 @@
             this.pts_Cible = new System.Windows.Forms.Label();
             this.pts_ButoirTriangulaire = new System.Windows.Forms.Label();
             this.pts_ButoirCirculaire = new System.Windows.Forms.Label();
-            this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.ptsVictoire_Label = new System.Windows.Forms.Label();
+            this.ptsFreeBall_Label = new System.Windows.Forms.Label();
+            this.difficulte_Label = new System.Windows.Forms.Label();
+            this.ptsVictoire_Box = new System.Windows.Forms.TextBox();
+            this.ptsFreeBall_Box = new System.Windows.Forms.TextBox();
+            this.difficulte_ComboBox = new System.Windows.Forms.ComboBox();
+            this.propConfirm_Bouton = new System.Windows.Forms.Button();
+            this.propAnnuler_Bouton = new System.Windows.Forms.Button();
             this.groupe_Collisions.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -49,28 +56,28 @@
             this.groupe_Collisions.Controls.Add(this.pts_ButoirCirculaire);
             this.groupe_Collisions.Location = new System.Drawing.Point(6, 10);
             this.groupe_Collisions.Name = "groupe_Collisions";
-            this.groupe_Collisions.Size = new System.Drawing.Size(212, 101);
+            this.groupe_Collisions.Size = new System.Drawing.Size(225, 101);
             this.groupe_Collisions.TabIndex = 0;
             this.groupe_Collisions.TabStop = false;
             this.groupe_Collisions.Text = "Points par collision";
             // 
             // ptsCible_Box
             // 
-            this.ptsCible_Box.Location = new System.Drawing.Point(109, 71);
+            this.ptsCible_Box.Location = new System.Drawing.Point(143, 71);
             this.ptsCible_Box.Name = "ptsCible_Box";
             this.ptsCible_Box.Size = new System.Drawing.Size(61, 20);
             this.ptsCible_Box.TabIndex = 5;
             // 
             // ptsButTri_Box
             // 
-            this.ptsButTri_Box.Location = new System.Drawing.Point(109, 49);
+            this.ptsButTri_Box.Location = new System.Drawing.Point(143, 49);
             this.ptsButTri_Box.Name = "ptsButTri_Box";
             this.ptsButTri_Box.Size = new System.Drawing.Size(61, 20);
             this.ptsButTri_Box.TabIndex = 4;
             // 
             // ptsButCirc_Box
             // 
-            this.ptsButCirc_Box.Location = new System.Drawing.Point(109, 27);
+            this.ptsButCirc_Box.Location = new System.Drawing.Point(143, 27);
             this.ptsButCirc_Box.Name = "ptsButCirc_Box";
             this.ptsButCirc_Box.Size = new System.Drawing.Size(61, 20);
             this.ptsButCirc_Box.TabIndex = 3;
@@ -105,27 +112,107 @@
             this.pts_ButoirCirculaire.Text = "Butoir circulaire:";
             this.pts_ButoirCirculaire.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
-            // groupBox1
+            // ptsVictoire_Label
             // 
-            this.groupBox1.Location = new System.Drawing.Point(231, 17);
-            this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(200, 100);
-            this.groupBox1.TabIndex = 1;
-            this.groupBox1.TabStop = false;
-            this.groupBox1.Text = "groupBox1";
+            this.ptsVictoire_Label.AutoSize = true;
+            this.ptsVictoire_Label.Location = new System.Drawing.Point(12, 129);
+            this.ptsVictoire_Label.Name = "ptsVictoire_Label";
+            this.ptsVictoire_Label.Size = new System.Drawing.Size(99, 13);
+            this.ptsVictoire_Label.TabIndex = 1;
+            this.ptsVictoire_Label.Text = "Points pour gagner:";
+            // 
+            // ptsFreeBall_Label
+            // 
+            this.ptsFreeBall_Label.AutoSize = true;
+            this.ptsFreeBall_Label.Location = new System.Drawing.Point(12, 159);
+            this.ptsFreeBall_Label.Name = "ptsFreeBall_Label";
+            this.ptsFreeBall_Label.Size = new System.Drawing.Size(122, 13);
+            this.ptsFreeBall_Label.TabIndex = 2;
+            this.ptsFreeBall_Label.Text = "Points pour bille gratuite:";
+            // 
+            // difficulte_Label
+            // 
+            this.difficulte_Label.AutoSize = true;
+            this.difficulte_Label.Location = new System.Drawing.Point(12, 202);
+            this.difficulte_Label.Name = "difficulte_Label";
+            this.difficulte_Label.Size = new System.Drawing.Size(51, 13);
+            this.difficulte_Label.TabIndex = 3;
+            this.difficulte_Label.Text = "Difficulté:";
+            // 
+            // ptsVictoire_Box
+            // 
+            this.ptsVictoire_Box.Location = new System.Drawing.Point(137, 126);
+            this.ptsVictoire_Box.Name = "ptsVictoire_Box";
+            this.ptsVictoire_Box.Size = new System.Drawing.Size(73, 20);
+            this.ptsVictoire_Box.TabIndex = 4;
+            // 
+            // ptsFreeBall_Box
+            // 
+            this.ptsFreeBall_Box.Location = new System.Drawing.Point(137, 156);
+            this.ptsFreeBall_Box.Name = "ptsFreeBall_Box";
+            this.ptsFreeBall_Box.Size = new System.Drawing.Size(73, 20);
+            this.ptsFreeBall_Box.TabIndex = 5;
+            // 
+            // difficulte_ComboBox
+            // 
+            this.difficulte_ComboBox.FormattingEnabled = true;
+            this.difficulte_ComboBox.Items.AddRange(new object[] {
+            "1",
+            "2",
+            "3",
+            "4",
+            "5",
+            "6",
+            "7",
+            "8",
+            "9",
+            "10"});
+            this.difficulte_ComboBox.Location = new System.Drawing.Point(69, 199);
+            this.difficulte_ComboBox.MaxDropDownItems = 10;
+            this.difficulte_ComboBox.Name = "difficulte_ComboBox";
+            this.difficulte_ComboBox.Size = new System.Drawing.Size(56, 21);
+            this.difficulte_ComboBox.TabIndex = 6;
+            // 
+            // propConfirm_Bouton
+            // 
+            this.propConfirm_Bouton.Location = new System.Drawing.Point(54, 247);
+            this.propConfirm_Bouton.Name = "propConfirm_Bouton";
+            this.propConfirm_Bouton.Size = new System.Drawing.Size(75, 23);
+            this.propConfirm_Bouton.TabIndex = 7;
+            this.propConfirm_Bouton.Text = "Confirmer";
+            this.propConfirm_Bouton.UseVisualStyleBackColor = true;
+            // 
+            // propAnnuler_Bouton
+            // 
+            this.propAnnuler_Bouton.Location = new System.Drawing.Point(135, 247);
+            this.propAnnuler_Bouton.Name = "propAnnuler_Bouton";
+            this.propAnnuler_Bouton.Size = new System.Drawing.Size(75, 23);
+            this.propAnnuler_Bouton.TabIndex = 8;
+            this.propAnnuler_Bouton.Text = "Annuler";
+            this.propAnnuler_Bouton.UseVisualStyleBackColor = true;
+            this.propAnnuler_Bouton.Click += new System.EventHandler(this.propAnnuler_Bouton_Click);
             // 
             // Proprietes
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(436, 299);
-            this.Controls.Add(this.groupBox1);
+            this.ClientSize = new System.Drawing.Size(238, 276);
+            this.Controls.Add(this.propAnnuler_Bouton);
+            this.Controls.Add(this.propConfirm_Bouton);
+            this.Controls.Add(this.difficulte_ComboBox);
+            this.Controls.Add(this.ptsFreeBall_Box);
+            this.Controls.Add(this.ptsVictoire_Box);
+            this.Controls.Add(this.difficulte_Label);
+            this.Controls.Add(this.ptsFreeBall_Label);
+            this.Controls.Add(this.ptsVictoire_Label);
             this.Controls.Add(this.groupe_Collisions);
+            this.Icon = global::InterfaceGraphique.Properties.Resources.Pinball;
             this.Name = "Proprietes";
-            this.Text = "Proprietes";
+            this.Text = "Propriétés";
             this.groupe_Collisions.ResumeLayout(false);
             this.groupe_Collisions.PerformLayout();
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
@@ -138,6 +225,13 @@
         private System.Windows.Forms.TextBox ptsCible_Box;
         private System.Windows.Forms.TextBox ptsButTri_Box;
         private System.Windows.Forms.TextBox ptsButCirc_Box;
-        private System.Windows.Forms.GroupBox groupBox1;
+        private System.Windows.Forms.Label ptsVictoire_Label;
+        private System.Windows.Forms.Label ptsFreeBall_Label;
+        private System.Windows.Forms.Label difficulte_Label;
+        private System.Windows.Forms.TextBox ptsVictoire_Box;
+        private System.Windows.Forms.TextBox ptsFreeBall_Box;
+        private System.Windows.Forms.ComboBox difficulte_ComboBox;
+        private System.Windows.Forms.Button propConfirm_Bouton;
+        private System.Windows.Forms.Button propAnnuler_Bouton;
     }
 }
