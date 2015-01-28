@@ -865,7 +865,7 @@
             this.Name = "Exemple";
             this.Text = "Mode Edition";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.Exemple_FormClosing);
-            this.SizeChanged += new System.EventHandler(this.butoirG_bouton_Click);
+            this.SizeChanged += new System.EventHandler(this.Fenetre_Redimension);
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
             this.flowLayoutPanel1.ResumeLayout(false);

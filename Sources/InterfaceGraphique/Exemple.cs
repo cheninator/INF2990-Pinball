@@ -227,14 +227,9 @@ namespace InterfaceGraphique
             proprietes.Show();
         }
 
-        // Afin de ne pas tout le temps redimensionner l'écran dans le rendu, 
-        // (pour les tests), je fais ce traitement ici. Il faut éventuellement
-        // replacer le call dans un event qui sera appelé à chaque redimensionnement
-        // (en ce moment, chaque red. c# est lié à ce bouton).
         private void butoirG_bouton_Click(object sender, EventArgs e)
         {
-            Console.Write("Width to send : " + panel_GL.Width.ToString() + "\n" + "Height to send : " + panel_GL.Height.ToString() + "\n");
-            FonctionsNatives.redimensionnerFenetre(panel_GL.Width, panel_GL.Height);
+            myObjectName = new StringBuilder("vide");
         }
 
         private void OK_prop_bouton_Click(object sender, EventArgs e)
@@ -270,6 +265,11 @@ namespace InterfaceGraphique
             Console.WriteLine(FonctionsNatives.creerObjet(myObjectName, myObjectName.Capacity, positionX, positionY, scale));
         }
 
+        private void Fenetre_Redimension(object sender, EventArgs e)
+        {
+            Console.Write("Width to send : " + panel_GL.Width.ToString() + "\n" + "Height to send : " + panel_GL.Height.ToString() + "\n");
+            FonctionsNatives.redimensionnerFenetre(panel_GL.Width, panel_GL.Height);
+        }
         private void Annuler_prop_boutn_Click(object sender, EventArgs e)
         {
             myObjectName = new StringBuilder("vide");
