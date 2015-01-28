@@ -211,9 +211,8 @@ namespace InterfaceGraphique
             Ybox.Text = panel_GL.PointToClient(MousePosition).Y.ToString();
             
             // Les deux prochaines lignes sont temporaires : elles affichent la taille de l'écran
-            Anglebox.Text = panel_GL.Width.ToString();
-            FMEbox.Text = panel_GL.Height.ToString();
-
+            // Anglebox.Text = panel_GL.Width.ToString();
+            // FMEbox.Text = panel_GL.Height.ToString();
         }
 
         private void button1_Click_1(object sender, EventArgs e)
@@ -240,10 +239,35 @@ namespace InterfaceGraphique
 
         private void OK_prop_bouton_Click(object sender, EventArgs e)
         {
-            int positionX = Convert.ToInt32(Xbox.Text == "" ? null : Xbox.Text);
-            int positionY = Convert.ToInt32(Ybox.Text == "" ? null : Ybox.Text);
+            string scalingRead = FMEbox.Text;
+            scalingRead = scalingRead.Replace(",", ".");
 
-            Console.WriteLine(FonctionsNatives.creerObjet(myObjectName, myObjectName.Capacity, positionX, positionY));
+            int positionX;
+            int positionY;
+            float scale;
+
+            if (Xbox.Text == "")
+                Xbox.Text = "0";;
+            if (Ybox.Text == "")
+                Ybox.Text = "0";;
+            if (FMEbox.Text == "")
+                FMEbox.Text = "1"; ;
+
+            DataTable dt = new DataTable();
+            try { scalingRead = dt.Compute(scalingRead, "").ToString(); }
+            catch { return; }
+
+            if (!int.TryParse(Xbox.Text, out positionX))
+                return;
+            if (!int.TryParse(Ybox.Text, out positionY))
+                return;
+            if (!float.TryParse(scalingRead, out scale))
+                return;
+
+            if (positionX < 0 || positionY < 0 || scale < 0)
+                return;
+
+            Console.WriteLine(FonctionsNatives.creerObjet(myObjectName, myObjectName.Capacity, positionX, positionY, scale));
         }
 
         private void Annuler_prop_boutn_Click(object sender, EventArgs e)
@@ -293,7 +317,7 @@ namespace InterfaceGraphique
         public static extern void redimensionnerFenetre(int largeur, int hauteur);
         
         [DllImport(@"Noyau.dll", CallingConvention = CallingConvention.Cdecl)]
-        public static extern bool creerObjet(StringBuilder value, int length, int x = 0, int y = 0, double rotation = 0.0); 
+        public static extern bool creerObjet(StringBuilder value, int length, int x = 0, int y = 0, float scale = 1, double rotation = 0.0); 
     
     }
 }

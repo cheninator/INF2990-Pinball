@@ -44,8 +44,7 @@ class NoeudAbstrait
 public:
 	/// Constructeur.
 	NoeudAbstrait(
-		const std::string& type = std::string{ "" }
-	);
+		const std::string& type = std::string{ "" }	);
 	/// Destructeur.
 	virtual ~NoeudAbstrait();
 
@@ -78,6 +77,8 @@ public:
 	inline bool estSelectionne() const;
 	/// Écrit si le noeud peut être sélectionné ou non.
 	inline void assignerEstSelectionnable(bool selectionnable);
+	/// Écrit le zoom sur le noeud.
+	inline void assignerEchelle(glm::dvec3 scale);
 	/// Vérifie si le noeud est sélectionnable.
 	inline bool estSelectionnable() const;
 	/// Écrit si le noeud peut être enregistré ou non.
@@ -145,6 +146,9 @@ protected:
 
 	/// Position relative du noeud.
 	glm::dvec3         positionRelative_;
+
+	// Zoom
+	glm::dvec3 		scale_;
 
 	/// Vrai si on doit afficher le noeud.
 	bool             affiche_{ true };
@@ -322,6 +326,22 @@ inline void NoeudAbstrait::assignerSelection(bool selectionne)
 	selectionne_ = (selectionne && selectionnable_);
 }
 
+
+////////////////////////////////////////////////////////////////////////
+///
+/// @fn inline void NoeudAbstrait::assignerEchelle( double scale )
+///
+/// Cette fonction permet d'assigner un zoom a l'objet.
+///
+/// @param selectionne : L'echelle a appliquee.
+///
+/// @return Aucune
+///
+////////////////////////////////////////////////////////////////////////
+inline void NoeudAbstrait::assignerEchelle(glm::dvec3 scale)
+{
+	scale_ = scale;
+}
 
 ////////////////////////////////////////////////////////////////////////
 ///

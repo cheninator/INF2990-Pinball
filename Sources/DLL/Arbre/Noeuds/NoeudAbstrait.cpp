@@ -27,6 +27,7 @@ NoeudAbstrait::NoeudAbstrait(
 	) :
 	type_( type )
 {
+	scale_ = { 1.0, 1.0, 1.0 };
 }
 
 
@@ -394,6 +395,8 @@ void NoeudAbstrait::afficher() const
 		glTranslated(
 			positionRelative_[0], positionRelative_[1], positionRelative_[2]
 			);
+
+		glScalef(scale_[0], scale_[1], scale_[2]);
 
 		// Assignation du mode d'affichage des polygones
 		glPolygonMode(GL_FRONT_AND_BACK, modePolygones_);
