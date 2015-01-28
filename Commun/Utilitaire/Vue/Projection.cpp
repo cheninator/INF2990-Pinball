@@ -68,10 +68,11 @@ namespace vue {
 	////////////////////////////////////////////////////////////////////////
 	void Projection::mettreAJourCloture() const
 	{
-		glViewport(xMinCloture_,
-			yMinCloture_,
-			GLint{ xMaxCloture_ - xMinCloture_ },
-			GLint{ yMaxCloture_ - yMinCloture_ });
+		glViewport(int(xMinCloture_),
+			int(yMinCloture_),
+			GLint{ int(xMaxCloture_ - xMinCloture_) },
+			GLint{ int(yMaxCloture_ - yMinCloture_) }
+		);
 	}
 
 

@@ -61,7 +61,7 @@ namespace vue {
 		inline glm::ivec2 obtenirDimensionCloture() const;
 		/// Obtention des coordonnées de la fenêtre de clôture.
 		inline void obtenirCoordonneesCloture(
-			int& xMin, int& xMax, int& yMin, int& yMax
+			double& xMin, double& xMax, double& yMin, double& yMax
 			) const;
 
 		/// Vérification de si la projection est perspective.
@@ -70,13 +70,13 @@ namespace vue {
 
 	protected:
 		/// Coordonnée inférieur de la clôture en X.
-		int xMinCloture_;
+		double xMinCloture_;
 		/// Coordonnée supérieur de la clôture en X.
-		int xMaxCloture_;
+		double xMaxCloture_;
 		/// Coordonnée inférieur de la clôture en Y.
-		int yMinCloture_;
+		double yMinCloture_;
 		/// Coordonnée supérieur de la clôture en Y.
-		int yMaxCloture_;
+		double yMaxCloture_;
 
 		/// Avant du volume de visualisation.
 		double zAvant_;
@@ -128,7 +128,7 @@ namespace vue {
 	///
 	////////////////////////////////////////////////////////////////////////
 	inline void Projection::obtenirCoordonneesCloture(
-		int& xMin, int& xMax, int& yMin, int& yMax
+		double &xMin, double& xMax, double& yMin, double& yMax
 		) const
 	{
 		xMin = xMinCloture_;

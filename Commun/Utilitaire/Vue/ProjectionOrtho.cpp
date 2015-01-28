@@ -149,7 +149,7 @@ namespace vue {
 			yMaxFenetre_ += (yScaleFactor - 1.0) * (yMaxFenetre_ - yMinFenetre_);
 		else if (yScaleFactor < 1)
 			yMaxFenetre_ -= (1.0 - yScaleFactor) * (yMaxFenetre_ - yMinFenetre_);
-
+		//  le (int)( /* ... */  sert a cast en int pour eviter les warnings
 		// On sauvegarde la nouvelle taille de la clotûre : 
 		if (xScaleFactor > 1)
 			xMaxCloture_ += (xScaleFactor - 1.0) * (xMaxCloture_ - xMinCloture_);
