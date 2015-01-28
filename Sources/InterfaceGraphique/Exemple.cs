@@ -18,6 +18,7 @@ namespace InterfaceGraphique
     public partial class Exemple : Form
     {
         FullScreen fs = new FullScreen();
+        StringBuilder myObjectName = new StringBuilder("vide");
         public Exemple()
         {
             this.KeyPress += new KeyPressEventHandler(ToucheEnfonce);
@@ -217,8 +218,7 @@ namespace InterfaceGraphique
 
         private void button1_Click_1(object sender, EventArgs e)
         {
-            StringBuilder myChar = new StringBuilder("conecube");
-            Console.WriteLine(FonctionsNatives.creerObjet(myChar, myChar.Capacity));
+            myObjectName = new StringBuilder("generateurbille");
         }
 
         private void Proprietes_MenuItem_Click(object sender, EventArgs e)
@@ -238,9 +238,18 @@ namespace InterfaceGraphique
             FonctionsNatives.redimensionnerFenetre(panel_GL.Width, panel_GL.Height);
         }
 
-       
+        private void OK_prop_bouton_Click(object sender, EventArgs e)
+        {
+            int positionX = Convert.ToInt32(Xbox.Text == "" ? null : Xbox.Text);
+            int positionY = Convert.ToInt32(Ybox.Text == "" ? null : Ybox.Text);
 
-      
+            Console.WriteLine(FonctionsNatives.creerObjet(myObjectName, myObjectName.Capacity, positionX, positionY));
+        }
+
+        private void Annuler_prop_boutn_Click(object sender, EventArgs e)
+        {
+            myObjectName = new StringBuilder("vide");
+        }
     }
     // Full Screen
 
@@ -284,7 +293,7 @@ namespace InterfaceGraphique
         public static extern void redimensionnerFenetre(int largeur, int hauteur);
         
         [DllImport(@"Noyau.dll", CallingConvention = CallingConvention.Cdecl)]
-        public static extern bool creerObjet(StringBuilder value, int length, int x = 0, int y = 0, float rotation = 0); 
+        public static extern bool creerObjet(StringBuilder value, int length, int x = 0, int y = 0, double rotation = 0.0); 
     
     }
 }

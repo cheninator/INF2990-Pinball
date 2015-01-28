@@ -197,13 +197,18 @@ extern "C"
 	/// @return 0 si tous les tests ont réussi, 1 si au moins un test a échoué
 	///
 	////////////////////////////////////////////////////////////////////////
-	__declspec(dllexport) bool __cdecl creerObjet(char* value, int length, int x, int y, float rotation)
+	__declspec(dllexport) bool __cdecl creerObjet(char* value, int length, int x, int y, double rotation)
 	{
 		std::string nomObjet (value);
 		NoeudAbstrait* objet = FacadeModele::obtenirInstance()->obtenirArbreRenduINF2990()->creerNoeud(nomObjet);
 		if (objet == nullptr)
 			return false;
-		objet->assignerPositionRelative({ x, y, 0 });
+		// Ca ne sert a rien de rajouter un Node "vide" dans l'arbre
+		else if (nomObjet == "vide")
+			return true;
+		glm::dvec3 maPosition;
+		FacadeModele::obtenirInstance()->obtenirVue()->convertirClotureAVirtuelle(x, y, maPosition);
+		objet->assignerPositionRelative({ maPosition.x, maPosition.y, 0 });
 		return FacadeModele::obtenirInstance()->obtenirArbreRenduINF2990()->ajouter(objet);
 	}
 	

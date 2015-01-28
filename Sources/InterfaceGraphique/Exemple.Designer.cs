@@ -278,6 +278,7 @@
             this.Annuler_prop_boutn.TabIndex = 9;
             this.Annuler_prop_boutn.Text = "Annuler";
             this.Annuler_prop_boutn.UseVisualStyleBackColor = true;
+            this.Annuler_prop_boutn.Click += new System.EventHandler(this.Annuler_prop_boutn_Click);
             // 
             // OK_prop_bouton
             // 
@@ -287,6 +288,7 @@
             this.OK_prop_bouton.TabIndex = 8;
             this.OK_prop_bouton.Text = "Accepter";
             this.OK_prop_bouton.UseVisualStyleBackColor = true;
+            this.OK_prop_bouton.Click += new System.EventHandler(this.OK_prop_bouton_Click);
             // 
             // Anglebox
             // 
