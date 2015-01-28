@@ -8,16 +8,22 @@ class UsineNoeudMur : public UsineNoeud
 {
 public:
 	// Constructeur
-	UsineNoeudMur(const std::string& nom);
+	inline UsineNoeudMur(const std::string& nom);
 	// Création d'un noeud
-	virtual NoeudAbstrait* creerNoeud() const;
+	inline virtual NoeudAbstrait* creerNoeud() const;
 };
 
 
-UsineNoeudMur::UsineNoeudMur(const std::string& nom)
+inline UsineNoeudMur::UsineNoeudMur(const std::string& nom)
 	: UsineNoeud(nom, std::string("media/Mur.obj"))
 {}
 
+NoeudAbstrait* UsineNoeudMur::creerNoeud() const
+{
+	auto noeud = new NoeudMur{ obtenirNom() };
+	noeud->assignerObjetRendu(&modele_, &liste_);
+	return noeud;
+}
 
 
 

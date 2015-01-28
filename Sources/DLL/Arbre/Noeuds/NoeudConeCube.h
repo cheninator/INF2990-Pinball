@@ -11,7 +11,7 @@
 #define __ARBRE_NOEUDS_NOEUDCONECUBE_H__
 
 
-#include "NoeudAbstrait.h"
+#include "NoeudComposite.h"
 #include <GL/gl.h>
 
 
@@ -22,7 +22,7 @@
 /// @author Julien Gascon-Samson
 /// @date 2011-05-19
 ///////////////////////////////////////////////////////////////////////////
-class NoeudConeCube : public NoeudAbstrait
+class NoeudConeCube : public NoeudComposite
 {
 public:
    /// Constructeur à partir du type du noeud.
@@ -35,6 +35,7 @@ public:
    /// Effectue l'animation du cube.
    virtual void animer( float temps );
 
+   virtual bool accepterVisiteur(VisiteurAbstrait* vis);
 
 private:
    /// Angle selon l'axe des X.

@@ -8,16 +8,22 @@ class UsineNoeudRessort : public UsineNoeud
 {
 public:
 	// Constructeur
-	UsineNoeudRessort(const std::string& nom);
+	inline UsineNoeudRessort(const std::string& nom);
 	// Création d'un noeud
-	virtual NoeudAbstrait* creerNoeud() const;
+	inline virtual NoeudAbstrait* creerNoeud() const;
 };
 
 
-UsineNoeudRessort::UsineNoeudRessort(const std::string& nom)
+inline UsineNoeudRessort::UsineNoeudRessort(const std::string& nom)
 	: UsineNoeud(nom, std::string("media/Ressort.obj"))
 {}
 
+NoeudAbstrait* UsineNoeudRessort::creerNoeud() const
+{
+	auto noeud = new NoeudRessort{ obtenirNom() };
+	noeud->assignerObjetRendu(&modele_, &liste_);
+	return noeud;
+}
 
 
 

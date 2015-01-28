@@ -2,22 +2,28 @@
 #define __ARBRE_USINES_USINENOEUDPORTAIL_H__
 
 #include "UsineNoeud.h"
-#include "NoeudPortail.h"
+#include "NoeudTrou.h"
 
 class UsineNoeudPortail : public UsineNoeud
 {
 public:
 	// Constructeur
-	UsineNoeudPortail(const std::string& nom);
+	inline UsineNoeudPortail(const std::string& nom);
 	// Création d'un noeud
-	virtual NoeudAbstrait* creerNoeud() const;
+	inline virtual NoeudAbstrait* creerNoeud() const;
 };
 
 
-UsineNoeudPortail::UsineNoeudPortail(const std::string& nom)
+inline UsineNoeudPortail::UsineNoeudPortail(const std::string& nom)
 	: UsineNoeud(nom, std::string("media/Portail.obj"))
 {}
 
+NoeudAbstrait* UsineNoeudPortail::creerNoeud() const
+{
+	auto noeud = new NoeudTrou{ obtenirNom() };
+	noeud->assignerObjetRendu(&modele_, &liste_);
+	return noeud;
+}
 
 
 

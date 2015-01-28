@@ -23,6 +23,7 @@
 /// @author Julien Gascon-Samson
 /// @date 2011-05-19
 ///////////////////////////////////////////////////////////////////////////
+
 class UsineNoeudAraignee : public UsineNoeud
 {
 public:

@@ -29,7 +29,7 @@
 ///
 ////////////////////////////////////////////////////////////////////////
 NoeudConeCube::NoeudConeCube(const std::string& typeNoeud)
-: NoeudAbstrait{ typeNoeud }
+: NoeudComposite{ typeNoeud }
 {
 }
 
@@ -92,6 +92,10 @@ void NoeudConeCube::afficherConcret() const
 ////////////////////////////////////////////////////////////////////////
 void NoeudConeCube::animer(float temps)
 {
+	for (NoeudAbstrait * enfant : enfants_) {
+		enfant->animer(temps);
+	}
+	/* Animation ici */
 	// Le cube effectue un tour à toutes les 7 secondes sur l'axe des X.
 	angleX_ = fmod(angleX_ + temps / 7.0f * 360.0f, 360.0f);
 	// Le cube effectue un tour à toutes les 3 secondes sur l'axe des Y.
@@ -100,6 +104,15 @@ void NoeudConeCube::animer(float temps)
 	angleRotation_ = fmod(angleRotation_ + temps / 15.0f * 360.0f, 360.0f);
 }
 
+bool NoeudConeCube::accepterVisiteur(VisiteurAbstrait* vis)
+{
+	bool reussi = false;
+
+	if (vis->traiter(this))
+		reussi = true;
+
+	return reussi;
+}
 
 ///////////////////////////////////////////////////////////////////////////////
 /// @}

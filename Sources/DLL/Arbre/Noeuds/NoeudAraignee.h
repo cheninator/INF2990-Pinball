@@ -35,6 +35,7 @@ public:
    /// Effectue l'animation du cube.
    virtual void animer( float temps );
 
+   bool NoeudAraignee::accepterVisiteur(VisiteurAbstrait* vis);
 
 private:
    /// Angle dans le sinus de l'oscillation

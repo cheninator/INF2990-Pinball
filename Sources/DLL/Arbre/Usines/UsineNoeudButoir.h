@@ -8,16 +8,22 @@ class UsineNoeudButoir : public UsineNoeud
 {
 public:
 	// Constructeur
-	UsineNoeudButoir(const std::string& nom);
+	inline UsineNoeudButoir(const std::string& nom);
 	// Création d'un noeud
-	virtual NoeudAbstrait* creerNoeud() const;
+	inline virtual NoeudAbstrait* creerNoeud() const;
 };
 
 
-UsineNoeudButoir::UsineNoeudButoir(const std::string& nom)
-	: UsineNoeud(nom, std::string("media/Butoir.obj"))
+inline UsineNoeudButoir::UsineNoeudButoir(const std::string& nom)
+	: UsineNoeud(nom, std::string("media/butoir.obj"))
 {}
 
+NoeudAbstrait* UsineNoeudButoir::creerNoeud() const
+{
+	auto noeud = new NoeudButoir{ obtenirNom() };
+	noeud->assignerObjetRendu(&modele_, &liste_);
+	return noeud;
+}
 
 
 

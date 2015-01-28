@@ -8,17 +8,22 @@ class UsineNoeudPalette : public UsineNoeud
 {
 public:
 	// Constructeur
-	UsineNoeudPalette(const std::string& nom);
+	inline UsineNoeudPalette(const std::string& nom);
 	// Création d'un noeud
-	virtual NoeudAbstrait* creerNoeud() const;
+	inline virtual NoeudAbstrait* creerNoeud() const;
 };
 
 
-UsineNoeudPalette::UsineNoeudPalette(const std::string& nom)
+inline UsineNoeudPalette::UsineNoeudPalette(const std::string& nom)
 	: UsineNoeud(nom, std::string("media/Palette.obj"))
 {}
 
-
+NoeudAbstrait* UsineNoeudPalette::creerNoeud() const
+{
+	auto noeud = new NoeudPalette{ obtenirNom() };
+	noeud->assignerObjetRendu(&modele_, &liste_);
+	return noeud;
+}
 
 
 #endif // __ARBRE_USINES_USINENOEUDPALETTE_H__

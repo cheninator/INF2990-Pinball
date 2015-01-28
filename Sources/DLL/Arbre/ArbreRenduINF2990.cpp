@@ -8,16 +8,34 @@
 /// @{
 ///////////////////////////////////////////////////////////////////////////
 #include "ArbreRenduINF2990.h"
+
 #include "Usines/UsineNoeudAraignee.h"
+#include "Usines/UsineNoeudButoir.h"
+#include "Usines/UsineNoeudCible.h"
 #include "Usines/UsineNoeudConeCube.h"
+#include "Usines/UsineNoeudGenerateurBille.h"
+#include "Usines/UsineNoeudMur.h"
+#include "Usines/UsineNoeudPalette.h"
+#include "Usines/UsineNoeudPortail.h"
+#include "Usines/UsineNoeudRessort.h"
+#include "Usines/UsineNoeudTrou.h"
+#include "Usines/UsineNoeudVide.h"
+
 #include "EtatOpenGL.h"
 
 
-/// La chaîne représentant le type des araignées.
+/// La chaîne représentant les types
 const std::string ArbreRenduINF2990::NOM_ARAIGNEE{ "araignee" };
-/// La chaîne représentant le type des cones-cubes.
+const std::string ArbreRenduINF2990::NOM_BUTOIR{ "butoir" };
+const std::string ArbreRenduINF2990::NOM_CIBLE{ "cible" };
 const std::string ArbreRenduINF2990::NOM_CONECUBE{ "conecube" };
-
+const std::string ArbreRenduINF2990::NOM_GENERATEURBILLE{ "generateurbille" };
+const std::string ArbreRenduINF2990::NOM_MUR{ "mur" };
+const std::string ArbreRenduINF2990::NOM_PALETTE{ "palette" };
+const std::string ArbreRenduINF2990::NOM_PORTAIL{ "portail" };
+const std::string ArbreRenduINF2990::NOM_RESSORT{ "ressort" };
+const std::string ArbreRenduINF2990::NOM_TROU{ "trou" };
+const std::string ArbreRenduINF2990::NOM_VIDE{ "vide" };
 
 ////////////////////////////////////////////////////////////////////////
 ///
@@ -35,7 +53,16 @@ ArbreRenduINF2990::ArbreRenduINF2990()
 {
 	// Construction des usines
 	ajouterUsine(NOM_ARAIGNEE, new UsineNoeudAraignee{ NOM_ARAIGNEE });
+	ajouterUsine(NOM_BUTOIR, new UsineNoeudButoir{ NOM_BUTOIR });
+	ajouterUsine(NOM_CIBLE, new UsineNoeudCible{ NOM_CIBLE });
 	ajouterUsine(NOM_CONECUBE, new UsineNoeudConeCube{ NOM_CONECUBE });
+	ajouterUsine(NOM_GENERATEURBILLE, new UsineNoeudGenerateurBille{ NOM_GENERATEURBILLE });
+	ajouterUsine(NOM_MUR, new UsineNoeudMur{ NOM_MUR });
+	ajouterUsine(NOM_PALETTE, new UsineNoeudPalette{ NOM_PALETTE });
+	ajouterUsine(NOM_PORTAIL, new UsineNoeudPortail{ NOM_PORTAIL });
+	ajouterUsine(NOM_RESSORT, new UsineNoeudRessort{ NOM_RESSORT });
+	ajouterUsine(NOM_TROU, new UsineNoeudTrou{ NOM_TROU });
+	ajouterUsine(NOM_VIDE, new UsineNoeudTrou{ NOM_VIDE });
 }
 
 

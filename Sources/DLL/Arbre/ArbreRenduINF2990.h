@@ -40,11 +40,18 @@ public:
    void initialiser();
 
 
-	/// La chaîne représentant le type des araignées.
+	/// La chaîne représentant led typrs
    static const std::string NOM_ARAIGNEE;
-	/// La chaîne représentant le type des cones-cubes.
+   static const std::string NOM_BUTOIR;
+   static const std::string NOM_CIBLE;
    static const std::string NOM_CONECUBE;
-
+   static const std::string NOM_GENERATEURBILLE;
+   static const std::string NOM_MUR;
+   static const std::string NOM_PALETTE;
+   static const std::string NOM_PORTAIL;
+   static const std::string NOM_RESSORT;
+   static const std::string NOM_TROU;	
+   static const std::string NOM_VIDE;
 };
 
 

@@ -65,16 +65,18 @@ void NoeudAraignee::afficherConcret() const
 
 	// Sauvegarde de la matrice.
 	glPushMatrix();
-	// Ligne pour tester le redimensionnement : 
-	glScalef(8, 8, 1);
 	// Révolution autour du centre.
 	glRotatef(35, sqrtf(2), sqrtf(2), 0);
+	/*
+	// Ligne pour tester le redimensionnement :
+	glScalef(8, 8, 1);
 	glBegin(GL_TRIANGLE_FAN);
 	glVertex3f(100, 100, 100);
 	glVertex3f(200, 200, 200);
 	glVertex3f(300, 300, 300);
 	glVertex3f(400, 400, 400);
 	glEnd();
+	*/
 	// Affichage du modèle.
 	liste_->dessiner();
 	// Restauration de la matrice.
@@ -97,15 +99,27 @@ void NoeudAraignee::afficherConcret() const
 void NoeudAraignee::animer(float temps)
 {
 	// Appel à la version de la classe de base pour l'animation des enfants.
-	NoeudComposite::animer(temps);
+	// Seulement si utile (si on as des enfants)
+	for (NoeudAbstrait * enfant : enfants_) {
+		enfant->animer(temps);
+	}
+	/* Animation ici */
 
 	// L'araignée oscille selon une période de 4 secondes.
-	/*angle_ = fmod(angle_ + temps / 4.0f * 360.0f, 360.0f);
+	angle_ = fmod(angle_ + temps / 4.0f * 360.0f, 360.0f);
 	positionRelative_[0] = 5 * cos(utilitaire::DEG_TO_RAD(angle_));
-	positionRelative_[1] = 40 * sin(utilitaire::DEG_TO_RAD(angle_));*/
+	positionRelative_[1] = 40 * sin(utilitaire::DEG_TO_RAD(angle_));
 }
 
+bool NoeudAraignee::accepterVisiteur(VisiteurAbstrait* vis)
+{
+	bool reussi = false;
 
+	if (vis->traiter(this))
+		reussi = true;
+
+	return reussi;
+}
 ///////////////////////////////////////////////////////////////////////////////
 /// @}
 ///////////////////////////////////////////////////////////////////////////////

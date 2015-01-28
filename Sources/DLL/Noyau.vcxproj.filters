@@ -129,6 +129,9 @@
     <ClCompile Include="Visiteurs\VisiteurRotation.cpp">
       <Filter>Source Files\Visiteurs</Filter>
     </ClCompile>
+    <ClCompile Include="Arbre\Noeuds\NoeudVide.cpp">
+      <Filter>Source Files\Arbre\Noeuds</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Application\FacadeModele.h">
@@ -232,6 +235,12 @@
     </ClInclude>
     <ClInclude Include="Visiteurs\VisiteurRotation.h">
       <Filter>Header Files\Visiteurs</Filter>
+    </ClInclude>
+    <ClInclude Include="Arbre\Noeuds\NoeudVide.h">
+      <Filter>Header Files\Arbre\Noeuds</Filter>
+    </ClInclude>
+    <ClInclude Include="Arbre\Usines\UsineNoeudVide.h">
+      <Filter>Header Files\Arbre\Usines</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
