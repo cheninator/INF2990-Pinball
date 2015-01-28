@@ -8,15 +8,15 @@ class VisiteurRotation : public VisiteurAbstrait
 {
 public:
 
-	VisiteurRotation::VisiteurRotation(float angle)
-	{
-		angle_ = angle;
-	}
+	VisiteurRotation(float angle);
 	~VisiteurRotation();
 
-	void setRotation(double angle) {};
+	void setRotation(double angle) { angle_ = angle; };
+	void setAxe(char axe) { axe_ = axe; }
+	void setSens(bool estPositif){ sensPositif_ = estPositif; }
 
 	// Traiter une opération selon le type spécifique de l'objet en paramètre
+	virtual bool traiter(NoeudAbstrait* noeud);
 	virtual bool traiter(NoeudButoir& butoir);
 	virtual bool traiter(NoeudCible& cible);
 	virtual bool traiter(NoeudGenerateurBille& generateur);
@@ -28,7 +28,9 @@ public:
 
 private:
 
-	float angle_;
+	double angle_;
+	char axe_;
+	bool sensPositif_;
 
 };
 
