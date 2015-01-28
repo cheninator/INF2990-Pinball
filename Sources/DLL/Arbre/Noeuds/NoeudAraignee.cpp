@@ -65,6 +65,8 @@ void NoeudAraignee::afficherConcret() const
 
 	// Sauvegarde de la matrice.
 	glPushMatrix();
+	// Ligne pour tester le redimensionnement : 
+	glScalef(8, 8, 1);
 	// Révolution autour du centre.
 	glRotatef(35, sqrtf(2), sqrtf(2), 0);
 	glBegin(GL_TRIANGLE_FAN);
@@ -98,9 +100,9 @@ void NoeudAraignee::animer(float temps)
 	NoeudComposite::animer(temps);
 
 	// L'araignée oscille selon une période de 4 secondes.
-	angle_ = fmod(angle_ + temps / 4.0f * 360.0f, 360.0f);
+	/*angle_ = fmod(angle_ + temps / 4.0f * 360.0f, 360.0f);
 	positionRelative_[0] = 5 * cos(utilitaire::DEG_TO_RAD(angle_));
-	positionRelative_[1] = 40 * sin(utilitaire::DEG_TO_RAD(angle_));
+	positionRelative_[1] = 40 * sin(utilitaire::DEG_TO_RAD(angle_));*/
 }
 
 

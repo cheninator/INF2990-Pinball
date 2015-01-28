@@ -18,7 +18,7 @@ extern "C" {
 	__declspec(dllexport) void animer(double temps);
 	__declspec(dllexport) void zoomIn();
 	__declspec(dllexport) void zoomOut();
-	__declspec(dllexport) int obtenirAffichagesParSeconde();
+	__declspec(dllexport) int  obtenirAffichagesParSeconde();
 	__declspec(dllexport) bool executerTests();
 	__declspec(dllexport) bool creerObjet(char* value, int length, int x = 0, int y = 0, float rotation = 0);
 }

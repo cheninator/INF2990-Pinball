@@ -208,6 +208,10 @@ namespace InterfaceGraphique
 
             Xbox.Text = panel_GL.PointToClient(MousePosition).X.ToString();
             Ybox.Text = panel_GL.PointToClient(MousePosition).Y.ToString();
+            
+            // Les deux prochaines lignes sont temporaires : elles affichent la taille de l'écran
+            Anglebox.Text = panel_GL.Width.ToString();
+            FMEbox.Text = panel_GL.Height.ToString();
 
         }
 
@@ -222,6 +226,16 @@ namespace InterfaceGraphique
             Proprietes proprietes = new Proprietes();
             proprietes.StartPosition = FormStartPosition.CenterScreen;
             proprietes.Show();
+        }
+
+        // Afin de ne pas tout le temps redimensionner l'écran dans le rendu, 
+        // (pour les tests), je fais ce traitement ici. Il faut éventuellement
+        // replacer le call dans un event qui sera appelé à chaque redimensionnement
+        // (en ce moment, chaque red. c# est lié à ce bouton).
+        private void butoirG_bouton_Click(object sender, EventArgs e)
+        {
+            Console.Write("Width to send : " + panel_GL.Width.ToString() + "\n" + "Height to send : " + panel_GL.Height.ToString() + "\n");
+            FonctionsNatives.redimensionnerFenetre(panel_GL.Width, panel_GL.Height);
         }
 
        
@@ -266,7 +280,10 @@ namespace InterfaceGraphique
         [DllImport(@"Noyau.dll", CallingConvention = CallingConvention.Cdecl)]
         public static extern void animer(double temps);
         
-         [DllImport(@"Noyau.dll", CallingConvention = CallingConvention.Cdecl)]
+        [DllImport(@"Noyau.dll", CallingConvention = CallingConvention.Cdecl)]
+        public static extern void redimensionnerFenetre(int largeur, int hauteur);
+        
+        [DllImport(@"Noyau.dll", CallingConvention = CallingConvention.Cdecl)]
         public static extern bool creerObjet(StringBuilder value, int length, int x = 0, int y = 0, float rotation = 0); 
     
     }

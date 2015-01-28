@@ -12,6 +12,7 @@
 #include <GL/gl.h>
 #include "ProjectionOrtho.h"
 
+#include <iostream>
 
 namespace vue {
 
@@ -115,7 +116,59 @@ namespace vue {
 	void ProjectionOrtho::redimensionnerFenetre(const glm::ivec2& coinMin,
 		const glm::ivec2& coinMax)
 	{
-		// À IMPLANTER.
+		
+		// coinMax contient les dimensions de la nouvelle fenêtree, car coinMin
+		// est essentiellement tout le temps à zéro. on établi le facteur qu'il
+		// faut élargir le viewport vers la gauche et la droite en fonction des
+		// valeurs précédentes: 
+		double xScaleFactor = coinMax[0] * 1.0 / ((xMaxCloture_ - xMinCloture_) * 1.0);
+		double yScaleFactor = coinMax[1] * 1.0 / ((yMaxCloture_ - yMinCloture_) * 1.0);
+
+		std::cout << "xMin | xMax Cloture : " << xMinCloture_ << " | " << xMaxCloture_ << "\n";
+		std::cout << "yMin | yMax Cloture : " << yMinCloture_ << " | " << yMaxCloture_ << "\n";
+		
+		std::cout << "xMin | xMax Fenetre: " << xMinFenetre_ << " | " << xMaxFenetre_ << "\n";
+		std::cout << "yMin | yMax Fenetre: " << yMinFenetre_ << " | " << yMaxFenetre_ << "\n";
+		
+		// Affichage de débug :
+		if (xScaleFactor != 1 || yScaleFactor != 1 )
+		std::cout << "xScaleFactor : " << xScaleFactor << std::endl 
+			<< "yScaleFactor :" << yScaleFactor << std::endl;
+
+		// On fait en sorte que le rendu soit de la bonne taille en multipliant
+		// par le facteur de scale. Puisque la fenêtre virtuelle peut avoir des
+		// coordonnées négatives, il faut s'assurer que les calculs mathématiques
+		// s'appliquent dans tous les cas. On teste premièrement si on agrandit 
+		// ou rapetisse la fenêtre virtuelle : 
+		if (xScaleFactor > 1)
+			xMaxFenetre_ += (xScaleFactor - 1.0) * (xMaxFenetre_ - xMinFenetre_);
+		else if (xScaleFactor < 1)
+			xMaxFenetre_ -= (1.0 - xScaleFactor) * (xMaxFenetre_ - xMinFenetre_);
+		
+		if (yScaleFactor > 1)
+			yMaxFenetre_ += (yScaleFactor - 1.0) * (yMaxFenetre_ - yMinFenetre_);
+		else if (yScaleFactor < 1)
+			yMaxFenetre_ -= (1.0 - yScaleFactor) * (yMaxFenetre_ - yMinFenetre_);
+
+		// On sauvegarde la nouvelle taille de la clotûre : 
+		if (xScaleFactor > 1)
+			xMaxCloture_ += (xScaleFactor - 1.0) * (xMaxCloture_ - xMinCloture_);
+		else if (xScaleFactor < 1)
+			xMaxCloture_ -= (1.0 - xScaleFactor) * (xMaxCloture_ - xMinCloture_);
+
+		if (yScaleFactor > 1)
+			yMaxCloture_ += (yScaleFactor - 1.0) * (yMaxCloture_ - yMinCloture_);
+		else if (yScaleFactor < 1)
+			yMaxCloture_ -= (1.0 - yScaleFactor) * (yMaxCloture_ - yMinCloture_);
+
+		std::cout << "xMin | xMax Cloture : " << xMinCloture_ << " | " << xMaxCloture_ << "\n";
+		std::cout << "yMin | yMax Cloture : " << yMinCloture_ << " | " << yMaxCloture_ << "\n";
+		
+		std::cout << "xMin | xMax Fenetre: " << xMinFenetre_ << " | " << xMaxFenetre_ << "\n";
+		std::cout << "yMin | yMax Fenetre: " << yMinFenetre_ << " | " << yMaxFenetre_ << "\n";
+		// On update le rendu
+		appliquer();
+		mettreAJourCloture();
 	}
 
 
