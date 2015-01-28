@@ -8,50 +8,61 @@
 #include "../Arbre/Noeuds/NoeudRessort.h"
 #include "../Arbre/Noeuds/NoeudTrou.h"
 
+VisiteurRotation::VisiteurRotation(float angle)
+{
+	angle_ = angle;
+}
+
+VisiteurRotation::~VisiteurRotation()
+{
+
+}
+
+//
+// TO DO
+//
+
+bool VisiteurRotation::traiter(NoeudAbstrait* noeud)
+{
+	return true;
+}
+
 bool VisiteurRotation::traiter(NoeudButoir& noeud)
 {
-	noeud.setAngle(angle_);
 	return true;
 }
 
 bool VisiteurRotation::traiter(NoeudCible& noeud)
 {
-	noeud.setAngle(angle_);
 	return true;
 }
 
 bool VisiteurRotation::traiter(NoeudGenerateurBille& noeud)
 {
-	noeud.setAngle(angle_);
 	return true;
 }
 
 bool VisiteurRotation::traiter(NoeudMur& noeud)
 {
-	noeud.setAngle(angle_);
 	return true;
 }
 
 bool VisiteurRotation::traiter(NoeudPalette& noeud)
 {
-	noeud.setAngle(angle_);
 	return true;
 }
 
 bool VisiteurRotation::traiter(NoeudPortail& noeud)
 {
-	noeud.setAngle(angle_);
 	return true;
 }
 
 bool VisiteurRotation::traiter(NoeudRessort& noeud)
 {
-	noeud.setAngle(angle_);
 	return true;
 }
 
 bool VisiteurRotation::traiter(NoeudTrou& noeud)
 {
-	noeud.setAngle(angle_);
 	return true;
 }
