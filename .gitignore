@@ -323,3 +323,7 @@ tramp
 .~lock.*#
 Exe/Noyau.dll
 Exe/InterfaceGraphique.exe
+Exe/InterfaceGraphique.exe
+Exe/Noyau.dll
+Exe/Noyau.exp
+Exe/Noyau.lib
