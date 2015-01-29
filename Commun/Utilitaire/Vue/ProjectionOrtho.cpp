@@ -254,8 +254,8 @@ namespace vue {
 		double xTailleCourante = xMaxFenetre_ - xMinFenetre_;
 		double yTailleCourante = yMaxFenetre_ - yMinFenetre_;
 
-		double deltaX = deplacementX * xTailleCourante;
-		double deltaY = deplacementY * yTailleCourante;
+		double deltaX = deplacementX * xTailleCourante / 100.0;
+		double deltaY = deplacementY * yTailleCourante / 100.0;
 
 		xMaxFenetre_ += deltaX;
 		xMinFenetre_ += deltaX;

@@ -21,6 +21,7 @@ extern "C" {
 	__declspec(dllexport) int  obtenirAffichagesParSeconde();
 	__declspec(dllexport) bool executerTests();
 	__declspec(dllexport) bool creerObjet(char* value, int length, int x = 0, int y = 0, float scale = 1.0, double rotation = 0.0);
+	__declspec(dllexport) void translater(double deplacementX, double deplacementY);
 }
 
 #endif // __FACADE_INTERFACE_NATIVE_H__

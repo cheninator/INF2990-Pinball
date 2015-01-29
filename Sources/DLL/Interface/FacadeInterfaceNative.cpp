@@ -213,6 +213,10 @@ extern "C"
 		return FacadeModele::obtenirInstance()->obtenirArbreRenduINF2990()->ajouter(objet);
 	}
 	
+	__declspec(dllexport) void __cdecl translater(double deplacementX, double deplacementY)
+	{
+		FacadeModele::obtenirInstance()->obtenirVue()->deplacerXY(deplacementX, deplacementY);
+	}
 }
 
 

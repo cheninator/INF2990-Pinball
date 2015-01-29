@@ -540,6 +540,7 @@
             this.Trou_bouton.Size = new System.Drawing.Size(98, 48);
             this.Trou_bouton.TabIndex = 5;
             this.Trou_bouton.UseVisualStyleBackColor = false;
+            this.Trou_bouton.Click += new System.EventHandler(this.Trou_bouton_Click);
             // 
             // Generateur_bouton
             // 
@@ -551,6 +552,7 @@
             this.Generateur_bouton.Size = new System.Drawing.Size(100, 54);
             this.Generateur_bouton.TabIndex = 4;
             this.Generateur_bouton.UseVisualStyleBackColor = false;
+            this.Generateur_bouton.Click += new System.EventHandler(this.Generateur_bouton_Click);
             // 
             // Ressort_bouton
             // 
@@ -562,6 +564,7 @@
             this.Ressort_bouton.Size = new System.Drawing.Size(100, 54);
             this.Ressort_bouton.TabIndex = 3;
             this.Ressort_bouton.UseVisualStyleBackColor = false;
+            this.Ressort_bouton.Click += new System.EventHandler(this.Ressort_bouton_Click);
             // 
             // menuStrip1
             // 
@@ -865,6 +868,7 @@
             this.Name = "Exemple";
             this.Text = "Mode Edition";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.Exemple_FormClosing);
+            this.Load += new System.EventHandler(this.Exemple_Load);
             this.SizeChanged += new System.EventHandler(this.Fenetre_Redimension);
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();

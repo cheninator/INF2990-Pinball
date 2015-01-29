@@ -23,7 +23,9 @@ namespace InterfaceGraphique
         {
             this.KeyPress += new KeyPressEventHandler(ToucheEnfonce);
             this.Icon = Properties.Resources.Pinball;
-            InitializeComponent();
+
+            //panel_GL.KeyPress += new KeyPressEventHandler(ToucheEnfonce);
+                InitializeComponent();
            
             Program.peutAfficher = true;
             panel_GL.Focus();
@@ -66,9 +68,21 @@ namespace InterfaceGraphique
 
         private void ToucheEnfonce(Object o, KeyPressEventArgs e)
         {
+            if (e.KeyChar == (char)Keys.Left)
+                FonctionsNatives.translater(-10, 0);
+
+            if (e.KeyChar == (char)Keys.Right)
+                FonctionsNatives.translater(10, 0);
+
+            if (e.KeyChar == (char)Keys.Up)
+                FonctionsNatives.translater(0, 10);
+
+            if (e.KeyChar == (char)Keys.Down)
+                FonctionsNatives.translater(0, -10);
+
             if (e.KeyChar == (char)Keys.Space)
             {
-             //   System.Console.WriteLine("Barre d'espacement appuyée.");
+                System.Console.WriteLine("Barre d'espacement appuyée.");
                               
             }
             System.Console.WriteLine(e.KeyChar);
@@ -209,7 +223,7 @@ namespace InterfaceGraphique
 
             Xbox.Text = panel_GL.PointToClient(MousePosition).X.ToString();
             Ybox.Text = (panel_GL.PointToClient(MousePosition).Y).ToString();
-            
+            panel_GL.Focus();
             // Les deux prochaines lignes sont temporaires : elles affichent la taille de l'écran
             // Anglebox.Text = panel_GL.Width.ToString();
             // FMEbox.Text = panel_GL.Height.ToString();
@@ -274,6 +288,26 @@ namespace InterfaceGraphique
         {
             myObjectName = new StringBuilder("vide");
         }
+
+        private void Exemple_Load(object sender, EventArgs e)
+        {
+
+        }
+
+        private void Ressort_bouton_Click(object sender, EventArgs e)
+        {
+            FonctionsNatives.translater(-10, 0);
+        }
+
+        private void Generateur_bouton_Click(object sender, EventArgs e)
+        {
+            FonctionsNatives.translater(10, 0);
+        }
+
+        private void Trou_bouton_Click(object sender, EventArgs e)
+        {
+            FonctionsNatives.translater(0, -10);
+        }
     }
     // Full Screen
 
@@ -317,7 +351,9 @@ namespace InterfaceGraphique
         public static extern void redimensionnerFenetre(int largeur, int hauteur);
         
         [DllImport(@"Noyau.dll", CallingConvention = CallingConvention.Cdecl)]
-        public static extern bool creerObjet(StringBuilder value, int length, int x = 0, int y = 0, float scale = 1, double rotation = 0.0); 
-    
+        public static extern bool creerObjet(StringBuilder value, int length, int x = 0, int y = 0, float scale = 1, double rotation = 0.0);
+
+        [DllImport(@"Noyau.dll", CallingConvention = CallingConvention.Cdecl)]
+        public static extern void translater(double deplacementX, double deplacementY);
     }
 }
