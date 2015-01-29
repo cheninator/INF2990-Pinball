@@ -268,7 +268,7 @@ namespace InterfaceGraphique
         private void Fenetre_Redimension(object sender, EventArgs e)
         {
             Console.Write("Width to send : " + panel_GL.Width.ToString() + "\n" + "Height to send : " + panel_GL.Height.ToString() + "\n");
-            FonctionsNatives.redimensionnerFenetre(panel_GL.Width, panel_GL.Height);
+            FonctionsNatives.redimensionnerFenetre(panel_GL.Width == 0 ? 1 : panel_GL.Width, panel_GL.Height == 0 ? 1 : panel_GL.Height);
         }
         private void Annuler_prop_boutn_Click(object sender, EventArgs e)
         {
