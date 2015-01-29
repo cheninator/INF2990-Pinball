@@ -22,8 +22,9 @@ namespace InterfaceGraphique
         public Exemple()
         {
             this.KeyPress += new KeyPressEventHandler(ToucheEnfonce);
+            this.KeyDown+= new KeyEventHandler(ToucheDown);
             this.Icon = Properties.Resources.Pinball;
-
+            this.KeyPreview = true;
             //panel_GL.KeyPress += new KeyPressEventHandler(ToucheEnfonce);
                 InitializeComponent();
            
@@ -65,20 +66,29 @@ namespace InterfaceGraphique
     
             
         }
+        private void ToucheDown(Object o, KeyEventArgs e){
+            if (panel_GL.Focused)
+            {
+                if (e.KeyData == Keys.Left)
+                {
+                    FonctionsNatives.translater(-10, 0);
+                }
+                if (e.KeyData == Keys.Right)
+                    FonctionsNatives.translater(10, 0);
 
+                if (e.KeyData == Keys.Up)
+                    FonctionsNatives.translater(0, 10);
+
+                if (e.KeyData == Keys.Down)
+                    FonctionsNatives.translater(0, -10);
+            }
+
+
+
+        }
         private void ToucheEnfonce(Object o, KeyPressEventArgs e)
         {
-            if (e.KeyChar == (char)Keys.Left)
-                FonctionsNatives.translater(-10, 0);
-
-            if (e.KeyChar == (char)Keys.Right)
-                FonctionsNatives.translater(10, 0);
-
-            if (e.KeyChar == (char)Keys.Up)
-                FonctionsNatives.translater(0, 10);
-
-            if (e.KeyChar == (char)Keys.Down)
-                FonctionsNatives.translater(0, -10);
+                    
 
             if (e.KeyChar == (char)Keys.Space)
             {
