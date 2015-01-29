@@ -18,9 +18,9 @@ public:
 	~VisiteurDeplacement();
 
 	// Méthode d'acces
-	float getDeplacementX() { return deplacement_[0]; };
-	float getDeplacementY() { return deplacement_[1]; };
-	float getDeplacementZ() { return deplacement_[2]; };
+	double getDeplacementX() { return deplacement_[0]; };
+	double getDeplacementY() { return deplacement_[1]; };
+	double getDeplacementZ() { return deplacement_[2]; };
 	glm::dvec3 getDeplacement() { return deplacement_; };
 
 	// Méthode de modifications

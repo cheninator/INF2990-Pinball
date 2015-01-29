@@ -20,7 +20,7 @@ public:
 	// Méthode d'accès
 	double getRotation() { return angle_; };
 	char getAxe() { return axe_; };
-	bool getSens() { return sensPositif_ };
+	bool getSens() { return sensPositif_; };
 
 	// Méthode de modifications
 	void setRotation(double angle) { angle_ = angle; };
