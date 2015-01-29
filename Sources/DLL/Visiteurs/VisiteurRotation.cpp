@@ -8,9 +8,19 @@
 #include "../Arbre/Noeuds/NoeudRessort.h"
 #include "../Arbre/Noeuds/NoeudTrou.h"
 
-VisiteurRotation::VisiteurRotation(float angle)
+
+VisiteurRotation::VisiteurRotation()
+{
+	angle_ = 0.0;
+	axe_ = 'x';
+	sensPositif_ = true;
+}
+
+VisiteurRotation::VisiteurRotation(float angle, char axe, bool sensPositif)
 {
 	angle_ = angle;
+	axe_ = axe;
+	sensPositif_ = sensPositif;
 }
 
 VisiteurRotation::~VisiteurRotation()
@@ -22,7 +32,7 @@ VisiteurRotation::~VisiteurRotation()
 // TO DO
 //
 
-bool VisiteurRotation::traiter(NoeudAbstrait* noeud)
+bool VisiteurRotation::traiter(NoeudAbstrait& noeud)
 {
 	return true;
 }

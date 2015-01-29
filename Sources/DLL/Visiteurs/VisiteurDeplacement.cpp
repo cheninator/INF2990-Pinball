@@ -8,6 +8,13 @@
 #include "../Arbre/Noeuds/NoeudRessort.h"
 #include "../Arbre/Noeuds/NoeudTrou.h"
 
+VisiteurDeplacement::VisiteurDeplacement()
+{
+	deplacement_[0] = 0.0;
+	deplacement_[1] = 0.0;
+	deplacement_[2] = 0.0;
+}
+
 VisiteurDeplacement::VisiteurDeplacement(glm::dvec3 dep)
 {
 	deplacement_ = dep;
@@ -18,9 +25,9 @@ VisiteurDeplacement::~VisiteurDeplacement()
 
 }
 
-bool VisiteurDeplacement::traiter(NoeudAbstrait* noeud)
+bool VisiteurDeplacement::traiter(NoeudAbstrait& noeud)
 {
-	noeud->assignerPositionRelative(deplacement_);
+	noeud.assignerPositionRelative(deplacement_);
 	return true;
 }
 
