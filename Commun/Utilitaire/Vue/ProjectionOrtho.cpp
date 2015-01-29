@@ -146,9 +146,9 @@ namespace vue {
 			xMaxFenetre_ -= (1.0 - xScaleFactor) * (xMaxFenetre_ - xMinFenetre_);
 		
 		if (yScaleFactor > 1)
-			yMaxFenetre_ += (yScaleFactor - 1.0) * (yMaxFenetre_ - yMinFenetre_);
+			yMinFenetre_ -= (yScaleFactor - 1.0) * (yMaxFenetre_ - yMinFenetre_);
 		else if (yScaleFactor < 1)
-			yMaxFenetre_ -= (1.0 - yScaleFactor) * (yMaxFenetre_ - yMinFenetre_);
+			yMinFenetre_ += (1.0 - yScaleFactor) * (yMaxFenetre_ - yMinFenetre_);
 		//  le (int)( /* ... */  sert a cast en int pour eviter les warnings
 		// On sauvegarde la nouvelle taille de la clotûre : 
 		if (xScaleFactor > 1)
@@ -249,6 +249,19 @@ namespace vue {
 	void ProjectionOrtho::translater(double deplacementX, double deplacementY)
 	{
 		// À IMPLANTER.
+		std::cout << "Facteurs de deplacement : " <<
+			"X : " << deplacementX << " Y: " << deplacementY << std::endl;
+		double xTailleCourante = xMaxFenetre_ - xMinFenetre_;
+		double yTailleCourante = yMaxFenetre_ - yMinFenetre_;
+
+		double deltaX = deplacementX * xTailleCourante;
+		double deltaY = deplacementY * yTailleCourante;
+
+		xMaxFenetre_ += deltaX;
+		xMinFenetre_ += deltaX;
+
+		yMaxFenetre_ += deltaY;
+		yMinFenetre_ += deltaY;
 	}
 
 
@@ -267,6 +280,9 @@ namespace vue {
 	void ProjectionOrtho::translater(const glm::ivec2& deplacement)
 	{
 		// À IMPLANTER.
+		// Il faut calculer la variattion que notre déplacement
+		// en coordonnées de cloture engendre en coordonnées virtuelles
+		//
 	}
 
 
