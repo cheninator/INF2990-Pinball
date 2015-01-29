@@ -8,6 +8,9 @@
 # Build Debug specific
 /Exe/*.config
 /Exe/*.vshos*
+/Exe/InterfaceGraphique*
+/Exe/Noyau.*
+/Exe/*.exe
 
 
 # User-specific files
@@ -321,9 +324,3 @@ tramp
 ### LibreOffice ###
 # LibreOffice locks
 .~lock.*#
-Exe/Noyau.dll
-Exe/InterfaceGraphique.exe
-Exe/InterfaceGraphique.exe
-Exe/Noyau.dll
-Exe/Noyau.exp
-Exe/Noyau.lib
