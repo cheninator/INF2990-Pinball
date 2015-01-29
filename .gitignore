@@ -321,3 +321,5 @@ tramp
 ### LibreOffice ###
 # LibreOffice locks
 .~lock.*#
+Exe/Noyau.dll
+Exe/InterfaceGraphique.exe
