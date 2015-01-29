@@ -40,9 +40,7 @@ namespace InterfaceGraphique
 
        private void bouton_quit_Click(object sender, EventArgs e)
         {
-            var confirmer = MessageBox.Show("Voulez-vous quitter?", "Fermeture", MessageBoxButtons.YesNo);
-           if(confirmer == DialogResult.Yes)
-            this.Dispose();
+          this.Dispose();
         }
 
         private void pictureBox1_Click(object sender, EventArgs e)

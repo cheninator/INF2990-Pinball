@@ -295,7 +295,7 @@
             this.Anglebox.Location = new System.Drawing.Point(93, 74);
             this.Anglebox.Name = "Anglebox";
             this.Anglebox.Size = new System.Drawing.Size(50, 20);
-            this.Anglebox.TabIndex = 7;
+            this.Anglebox.TabIndex = 5;
             // 
             // Angle_label
             // 
@@ -311,7 +311,7 @@
             this.FMEbox.Location = new System.Drawing.Point(92, 101);
             this.FMEbox.Name = "FMEbox";
             this.FMEbox.Size = new System.Drawing.Size(51, 20);
-            this.FMEbox.TabIndex = 5;
+            this.FMEbox.TabIndex = 7;
             // 
             // FME_label
             // 

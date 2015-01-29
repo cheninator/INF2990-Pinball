@@ -208,7 +208,7 @@ namespace InterfaceGraphique
             Console.Write(panel_GL.PointToClient(MousePosition));
 
             Xbox.Text = panel_GL.PointToClient(MousePosition).X.ToString();
-            Ybox.Text = panel_GL.PointToClient(MousePosition).Y.ToString();
+            Ybox.Text = (panel_GL.Height - panel_GL.PointToClient(MousePosition).Y).ToString();
             
             // Les deux prochaines lignes sont temporaires : elles affichent la taille de l'écran
             // Anglebox.Text = panel_GL.Width.ToString();
