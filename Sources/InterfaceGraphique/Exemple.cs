@@ -295,6 +295,8 @@ namespace InterfaceGraphique
         private void Ressort_bouton_Click(object sender, EventArgs e)
         {
             Console.WriteLine("Ressort");
+            myObjectName = new StringBuilder("ressort");
+           // myObjectName = new StringBuilder("generateurbille");
             // TO DO
         }
 
