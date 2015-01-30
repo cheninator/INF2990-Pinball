@@ -22,15 +22,13 @@ namespace InterfaceGraphique
         public Exemple()
         {
             this.KeyPress += new KeyPressEventHandler(ToucheEnfonce);
+            // Pour le deplacement de la vue
+            // besoin de nouveau event parce que C#....
             this.KeyDown+= new KeyEventHandler(ToucheDown);
             this.Icon = Properties.Resources.Pinball;
-            this.KeyPreview = true;
-            //panel_GL.KeyPress += new KeyPressEventHandler(ToucheEnfonce);
-                InitializeComponent();
-           
+            InitializeComponent();
             Program.peutAfficher = true;
             panel_GL.Focus();
-            
             InitialiserAnimation();
             
         }
@@ -69,6 +67,7 @@ namespace InterfaceGraphique
         private void ToucheDown(Object o, KeyEventArgs e){
             if (panel_GL.Focused)
             {
+               
                 if (e.KeyData == Keys.Left)
                 {
                     FonctionsNatives.translater(-10, 0);
@@ -90,11 +89,6 @@ namespace InterfaceGraphique
         {
                     
 
-            if (e.KeyChar == (char)Keys.Space)
-            {
-                System.Console.WriteLine("Barre d'espacement appuyée.");
-                              
-            }
             System.Console.WriteLine(e.KeyChar);
             if (e.KeyChar == 'f')
             {
@@ -109,20 +103,13 @@ namespace InterfaceGraphique
             {
                 Selection_MenuItem_Click(this,e);
             }
-          
-        }
-
-        private void nouveauToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-          //  System.Console.WriteLine("Nouveau");            
-        }
-        
-        private void quitterToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-          //  System.Console.WriteLine("Quitter");
-            this.Close();
+           
             
         }
+
+        
+        
+   
 
         private void Exemple_FormClosing(object sender, FormClosingEventArgs e)
         {
@@ -190,7 +177,8 @@ namespace InterfaceGraphique
 
         private void Selection_MenuItem_Click(object sender, EventArgs e)
         {
-            Console.WriteLine("Outil Selection.");
+            
+            bouton_Selection_Click(this, e);
         }
 
         private void Selection_BO_Click(object sender, EventArgs e)
@@ -200,7 +188,7 @@ namespace InterfaceGraphique
 
         private void Rotation_MenuItem_Click(object sender, EventArgs e)
         {
-            Console.WriteLine("Outil Rotation");
+            bouton_Rotation_Click(this, e);
         }
 
         private void Rotation_BO_Click(object sender, EventArgs e)
@@ -208,19 +196,17 @@ namespace InterfaceGraphique
             Rotation_MenuItem_Click(this, e);
         }
                 
-        private void groupBox1_Enter(object sender, EventArgs e)
-        {
-
-        }
+      
 
         private void bouton_Selection_Click(object sender, EventArgs e)
         {
-
+            // TO DO
+            Console.WriteLine("Outil Selection.");
         }
 
         private void bouton_Creation_Click(object sender, EventArgs e)
         {
-
+            Console.WriteLine("Outil Creation.");
             if (Creation_Panel.Visible)
                 Creation_Panel.Visible = false;
             else
@@ -230,16 +216,15 @@ namespace InterfaceGraphique
         private void panel_GL_MouseClick(object sender, MouseEventArgs e)
         {
             Console.Write(panel_GL.PointToClient(MousePosition));
-
             Xbox.Text = panel_GL.PointToClient(MousePosition).X.ToString();
             Ybox.Text = (panel_GL.PointToClient(MousePosition).Y).ToString();
+            if(e.Button == MouseButtons.Left)
+                FonctionsNatives.creerObjet(myObjectName, myObjectName.Capacity, panel_GL.PointToClient(MousePosition).X, panel_GL.PointToClient(MousePosition).Y, 2);  
             panel_GL.Focus();
-            // Les deux prochaines lignes sont temporaires : elles affichent la taille de l'écran
-            // Anglebox.Text = panel_GL.Width.ToString();
-            // FMEbox.Text = panel_GL.Height.ToString();
+            
         }
 
-        private void button1_Click_1(object sender, EventArgs e)
+        private void butourCirc_bouton_Click(object sender, EventArgs e)
         {
             myObjectName = new StringBuilder("generateurbille");
         }
@@ -253,7 +238,10 @@ namespace InterfaceGraphique
 
         private void butoirG_bouton_Click(object sender, EventArgs e)
         {
-            myObjectName = new StringBuilder("vide");
+            //myObjectName = new StringBuilder("vide");
+            Console.WriteLine("Palette Gauche.");
+            // TO DO
+
         }
 
         private void OK_prop_bouton_Click(object sender, EventArgs e)
@@ -306,17 +294,221 @@ namespace InterfaceGraphique
 
         private void Ressort_bouton_Click(object sender, EventArgs e)
         {
-            FonctionsNatives.translater(-10, 0);
+            Console.WriteLine("Ressort");
+            // TO DO
         }
 
         private void Generateur_bouton_Click(object sender, EventArgs e)
         {
-            FonctionsNatives.translater(10, 0);
+            Console.WriteLine("Generateur");
+            // TO DO
         }
 
         private void Trou_bouton_Click(object sender, EventArgs e)
         {
-            FonctionsNatives.translater(0, -10);
+            Console.WriteLine("Trou");
+            // TO DO
+        }
+
+        private void bouton_Deplacement_Click(object sender, EventArgs e)
+        {
+            Console.WriteLine("Outil Deplacement.");
+            // TO DO
+        }
+
+        private void Deplacement_MenuItem_Click(object sender, EventArgs e)
+        {
+            bouton_Deplacement_Click(this, e);
+        }
+
+        private void MenuP_MenuItem_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
+
+        private void bouton_Rotation_Click(object sender, EventArgs e)
+        {
+            Console.WriteLine("Outil Rotation.");
+            // TO DO
+        }
+
+        private void bouton_Scaling_Click(object sender, EventArgs e)
+        {
+            Console.WriteLine("Outil Mise a echelle.");
+            // TO DO
+        }
+
+        private void MiseE_MenuItem_Click(object sender, EventArgs e)
+        {
+            bouton_Scaling_Click(this, e);
+        }
+
+        private void Zoom_MenuItem_Click(object sender, EventArgs e)
+        {
+            Console.WriteLine("Outil Zoom.");
+            // TO DO
+            
+            if (zoom_Bar.Enabled)
+                zoom_Bar.Enabled = false;
+            else
+                zoom_Bar.Enabled = true;
+        }
+
+        private void bouton_Duplication_Click(object sender, EventArgs e)
+        {
+            Console.WriteLine("Outil Duplication.");
+            // TO DO
+        }
+
+        private void Duplication_MenuItem_Click(object sender, EventArgs e)
+        {
+            bouton_Duplication_Click(this, e);
+        }
+
+        private void Creation_MenuItem_Click(object sender, EventArgs e)
+        {
+            bouton_Creation_Click(this, e);
+        }
+
+        private void BC_MenuItem_Click(object sender, EventArgs e)
+        {
+            butourCirc_bouton_Click(this, e);
+        }
+
+        private void Orthographique_MenuItem_Click(object sender, EventArgs e)
+        {
+            Console.WriteLine("Vue Orthoraphique.");
+            // TO DO
+        }
+
+        private void Orbite_MenuItem_Click(object sender, EventArgs e)
+        {
+            Console.WriteLine("Vue Orbitale.");
+            // TO DO
+        }
+
+        private void Supprimer_MenuItem_Click(object sender, EventArgs e)
+        {
+            Console.WriteLine("Supprimer.");
+            // TO DO
+        }
+
+        private void ModeTest_MenuItem_Click(object sender, EventArgs e)
+        {
+            Console.WriteLine("Mode Test.");
+            // TO DO
+        }
+
+        private void PGJ1_bouton_Click(object sender, EventArgs e)
+        {
+            Console.WriteLine("Palette gauche J1.");
+            //myObjectName = new StringBuilder("palette");
+            //FonctionsNatives.creerObjet(myObjectName, myObjectName.Capacity, 100, 100, 1);
+            // TO DO
+        }
+
+        private void PG_J1_MenuItem_Click(object sender, EventArgs e)
+        {
+            PGJ1_bouton_Click(this, e);
+        }
+
+        private void PDJ1_bouton_Click(object sender, EventArgs e)
+        {
+            Console.WriteLine("Palette droite J1.");
+            //myObjectName = new StringBuilder("palette");
+            //FonctionsNatives.creerObjet(myObjectName, myObjectName.Capacity, 100, 100, 1);
+            // TO DO
+        }
+
+        private void PD_J1_MenuItem_Click(object sender, EventArgs e)
+        {
+            PDJ1_bouton_Click(this, e);
+        }
+
+        private void PGJ2_bouton_Click(object sender, EventArgs e)
+        {
+            Console.WriteLine("Palette gauche J2.");
+            // TO DO
+        }
+
+        private void PG_J2_MenuItem_Click(object sender, EventArgs e)
+        {
+            PGJ2_bouton_Click(this,e);
+        }
+
+        private void PDJ2_bouton_Click(object sender, EventArgs e)
+        {
+            Console.WriteLine("Palette droite J2.");
+            // TO DO
+        }
+
+        private void PD_J2_MenuItem_Click(object sender, EventArgs e)
+        {
+            PDJ2_bouton_Click(this, e);
+        }
+
+        private void BTG_MenuItem_Click(object sender, EventArgs e)
+        {
+            butoirG_bouton_Click(this, e);
+        }
+
+        private void butoirD_bouton_Click(object sender, EventArgs e)
+        {
+            Console.WriteLine("Butoir Droit.");
+            // TO DO
+        }
+
+        private void BTD_MenuItem_Click(object sender, EventArgs e)
+        {
+            butoirD_bouton_Click(this, e);
+        }
+
+        private void Cible_bouton_Click(object sender, EventArgs e)
+        {
+            Console.WriteLine("Cible.");
+            // TO DO
+        }
+
+        private void Cible_MenuItem_Click(object sender, EventArgs e)
+        {
+            Cible_bouton_Click(this, e);
+        }
+
+        private void Portails_bouton_Click(object sender, EventArgs e)
+        {
+            Console.WriteLine("Portail");
+            // TO DO
+        }
+
+        private void Portails_MenuItem_Click(object sender, EventArgs e)
+        {
+            Portails_bouton_Click(this, e);
+        }
+
+        private void Mur_bouton_Click(object sender, EventArgs e)
+        {
+            Console.WriteLine("Mur");
+            // TO DO
+        }
+
+        private void Mur_MenuItem_Click(object sender, EventArgs e)
+        {
+            Mur_bouton_Click(this, e);
+        }
+
+        private void Ressort_MenuItem_Click(object sender, EventArgs e)
+        {
+            Ressort_bouton_Click(this, e);
+        }
+
+        private void GB_MenuItem_Click(object sender, EventArgs e)
+        {
+            Generateur_bouton_Click(this, e);
+        }
+
+        private void Trou_MenuItem_Click(object sender, EventArgs e)
+        {
+            Trou_bouton_Click(this, e);
         }
     }
     // Full Screen
