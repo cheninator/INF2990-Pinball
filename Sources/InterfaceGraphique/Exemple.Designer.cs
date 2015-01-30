@@ -893,6 +893,7 @@
             this.panel_GL.Size = new System.Drawing.Size(954, 638);
             this.panel_GL.TabIndex = 4;
             this.panel_GL.MouseClick += new System.Windows.Forms.MouseEventHandler(this.panel_GL_MouseClick);
+            this.panel_GL.MouseDown += new System.Windows.Forms.MouseEventHandler(this.panel_GL_MouseDown);
             // 
             // button2
             // 

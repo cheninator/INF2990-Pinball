@@ -191,11 +191,7 @@ namespace InterfaceGraphique
             Console.Write(panel_GL.PointToClient(MousePosition));
             Xbox.Text = panel_GL.PointToClient(MousePosition).X.ToString();
             Ybox.Text = (panel_GL.PointToClient(MousePosition).Y).ToString();
-            if(e.Button == MouseButtons.Left)
-            {
-                Afficher_Objet();
-                FonctionsNatives.positionObjet(panel_GL.PointToClient(MousePosition).X, panel_GL.PointToClient(MousePosition).Y);
-            }
+           
             panel_GL.Focus();
         }
 
@@ -555,6 +551,15 @@ namespace InterfaceGraphique
         private void Nouveau_MenuItem_Click(object sender, EventArgs e)
         {
             FonctionsNatives.purgeAll();
+        }
+
+        private void panel_GL_MouseDown(object sender, MouseEventArgs e)
+        {
+            if (e.Button == MouseButtons.Left)
+            {
+                Afficher_Objet();
+                FonctionsNatives.positionObjet(panel_GL.PointToClient(MousePosition).X, panel_GL.PointToClient(MousePosition).Y);
+            }
         }
     }
     // Full Screen
