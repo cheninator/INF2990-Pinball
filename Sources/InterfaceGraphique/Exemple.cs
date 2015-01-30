@@ -19,6 +19,10 @@ namespace InterfaceGraphique
     {
         FullScreen fs = new FullScreen();
         StringBuilder myObjectName = new StringBuilder("vide");
+        Point origin;
+        private int difference = 100;
+        private int xPosition;
+        private int yPosition;
         public Exemple()
         {
             this.KeyPress += new KeyPressEventHandler(ToucheEnfonce);
@@ -555,10 +559,44 @@ namespace InterfaceGraphique
 
         private void panel_GL_MouseDown(object sender, MouseEventArgs e)
         {
+
+           
             if (e.Button == MouseButtons.Left)
+            {
+                origin = panel_GL.PointToClient(MousePosition);
+            }
+            if (e.Button == MouseButtons.Right)
+            {
+                panel_GL.MouseMove += new MouseEventHandler(panel_MouseMove);
+                xPosition = e.X;
+                yPosition = e.Y;
+
+            }
+
+        }
+        private void panel_MouseMove(object sender, MouseEventArgs e)
+        {
+           if (e.X < xPosition - difference
+        || e.X > xPosition + difference
+        || e.Y < yPosition - difference
+        || e.Y > yPosition + difference)
+           {
+               Console.WriteLine("DRAGN AND DROP");
+               panel_GL.MouseMove -= panel_MouseMove;
+           }
+        }
+
+        private void panel_GL_MouseUp(object sender, MouseEventArgs e)
+        {
+            Point destination = panel_GL.PointToClient(MousePosition);
+            if ( (Math.Abs(destination.X - origin.X) < 3 ) 
+                 &&
+                 (Math.Abs(destination.Y - origin.Y) < 3 )           
+                )
             {
                 Afficher_Objet();
                 FonctionsNatives.positionObjet(panel_GL.PointToClient(MousePosition).X, panel_GL.PointToClient(MousePosition).Y);
+                Console.WriteLine("Good Spawn");
             }
         }
     }
