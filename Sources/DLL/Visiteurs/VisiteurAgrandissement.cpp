@@ -79,3 +79,8 @@ bool VisiteurAgrandissement::traiter(NoeudTrou& noeud)
 	noeud.assignerEchelle(homothetie_);
 	return true;
 }
+
+bool VisiteurAgrandissement::traiter(NoeudTable& noeud)
+{
+	return false;
+}

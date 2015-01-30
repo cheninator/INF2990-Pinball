@@ -76,3 +76,8 @@ bool VisiteurRotation::traiter(NoeudTrou& noeud)
 {
 	return true;
 }
+
+bool VisiteurRotation::traiter(NoeudTable& noeud)
+{
+	return false;
+}

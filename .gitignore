@@ -324,3 +324,4 @@ tramp
 ### LibreOffice ###
 # LibreOffice locks
 .~lock.*#
+Exe/InterfaceGraphique.exe

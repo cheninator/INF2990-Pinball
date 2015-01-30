@@ -78,3 +78,8 @@ bool VisiteurDeplacement::traiter(NoeudTrou& noeud)
 	noeud.assignerPositionRelative(deplacement_);
 	return true;
 }
+
+bool VisiteurDeplacement::traiter(NoeudTable& noeud)
+{
+	return false;
+}

@@ -39,6 +39,7 @@ public:
 	virtual bool traiter(NoeudPortail& portail);
 	virtual bool traiter(NoeudRessort& ressort);
 	virtual bool traiter(NoeudTrou& trou);
+	virtual bool traiter(NoeudTable& table);
 
 private:
 
