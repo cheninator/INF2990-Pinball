@@ -23,6 +23,9 @@ namespace InterfaceGraphique
         private int difference = 100;
         private int xPosition;
         private int yPosition;
+        private float angle = 0F;
+        private float scale = 1F;
+        private char couleur = 'x';
         public Exemple()
         {
             this.KeyPress += new KeyPressEventHandler(ToucheEnfonce);
@@ -218,7 +221,7 @@ namespace InterfaceGraphique
             Console.WriteLine("Palette Gauche.");
             myObjectName = new StringBuilder("butoir");
             // Afficher_Objet();
-            // DO STUFF
+            
 
         }
 
@@ -430,7 +433,8 @@ namespace InterfaceGraphique
         private void PGJ1_bouton_Click(object sender, EventArgs e)
         {
             Console.WriteLine("Palette gauche J1.");
-            myObjectName = new StringBuilder("butoir");
+            myObjectName = new StringBuilder("palette");
+            angle = 180;
             // Afficher_Objet();
             // DO STUFF
         }
@@ -443,7 +447,7 @@ namespace InterfaceGraphique
         private void PDJ1_bouton_Click(object sender, EventArgs e)
         {
             Console.WriteLine("Palette droite J1.");
-            myObjectName = new StringBuilder("butoir");
+            myObjectName = new StringBuilder("palette");
             // Afficher_Objet();
             // DO STUFF
         }
@@ -456,7 +460,8 @@ namespace InterfaceGraphique
         private void PGJ2_bouton_Click(object sender, EventArgs e)
         {
             Console.WriteLine("Palette gauche J2.");
-            myObjectName = new StringBuilder("butoir");
+            myObjectName = new StringBuilder("palette");
+            angle = 180;
             // Afficher_Objet();
             // DO STUFF
         }
@@ -596,6 +601,10 @@ namespace InterfaceGraphique
             {
                 Afficher_Objet();
                 FonctionsNatives.positionObjet(panel_GL.PointToClient(MousePosition).X, panel_GL.PointToClient(MousePosition).Y);
+                FonctionsNatives.rotate(angle);
+                FonctionsNatives.scaleObjet(scale);
+                angle = 0;
+                scale = 1;
                 Console.WriteLine("Good Spawn");
             }
         }
