@@ -30,7 +30,6 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Exemple));
             this.panel1 = new System.Windows.Forms.Panel();
-            this.panel_GL = new System.Windows.Forms.Panel();
             this.Creation_Panel = new System.Windows.Forms.FlowLayoutPanel();
             this.Groupe_Palettes = new System.Windows.Forms.GroupBox();
             this.PDJ2_bouton = new System.Windows.Forms.Button();
@@ -49,6 +48,27 @@
             this.Trou_bouton = new System.Windows.Forms.Button();
             this.Generateur_bouton = new System.Windows.Forms.Button();
             this.Ressort_bouton = new System.Windows.Forms.Button();
+            this.flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
+            this.Groupe_Outils = new System.Windows.Forms.GroupBox();
+            this.label_Zoom = new System.Windows.Forms.Label();
+            this.bouton_Creation = new System.Windows.Forms.Button();
+            this.bouton_Duplication = new System.Windows.Forms.Button();
+            this.zoom_Bar = new System.Windows.Forms.TrackBar();
+            this.bouton_Scaling = new System.Windows.Forms.Button();
+            this.bouton_Rotation = new System.Windows.Forms.Button();
+            this.bouton_Deplacement = new System.Windows.Forms.Button();
+            this.bouton_Selection = new System.Windows.Forms.Button();
+            this.Groupe_Proprietes = new System.Windows.Forms.GroupBox();
+            this.Annuler_prop_boutn = new System.Windows.Forms.Button();
+            this.OK_prop_bouton = new System.Windows.Forms.Button();
+            this.Anglebox = new System.Windows.Forms.TextBox();
+            this.Angle_label = new System.Windows.Forms.Label();
+            this.FMEbox = new System.Windows.Forms.TextBox();
+            this.FME_label = new System.Windows.Forms.Label();
+            this.Ybox = new System.Windows.Forms.TextBox();
+            this.Y_label = new System.Windows.Forms.Label();
+            this.Xbox = new System.Windows.Forms.TextBox();
+            this.X_label = new System.Windows.Forms.Label();
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.fichierToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.Nouveau_MenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -86,53 +106,31 @@
             this.Orbite_MenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.Information_MenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.Aide_MenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
-            this.Groupe_Outils = new System.Windows.Forms.GroupBox();
-            this.label_Zoom = new System.Windows.Forms.Label();
-            this.bouton_Creation = new System.Windows.Forms.Button();
-            this.bouton_Duplication = new System.Windows.Forms.Button();
-            this.zoom_Bar = new System.Windows.Forms.TrackBar();
-            this.bouton_Scaling = new System.Windows.Forms.Button();
-            this.bouton_Rotation = new System.Windows.Forms.Button();
-            this.bouton_Deplacement = new System.Windows.Forms.Button();
-            this.bouton_Selection = new System.Windows.Forms.Button();
-            this.Groupe_Proprietes = new System.Windows.Forms.GroupBox();
-            this.comboBox1 = new System.Windows.Forms.ComboBox();
-            this.Annuler_prop_boutn = new System.Windows.Forms.Button();
-            this.OK_prop_bouton = new System.Windows.Forms.Button();
-            this.Anglebox = new System.Windows.Forms.TextBox();
-            this.Angle_label = new System.Windows.Forms.Label();
-            this.FMEbox = new System.Windows.Forms.TextBox();
-            this.FME_label = new System.Windows.Forms.Label();
-            this.Ybox = new System.Windows.Forms.TextBox();
-            this.Y_label = new System.Windows.Forms.Label();
-            this.Xbox = new System.Windows.Forms.TextBox();
-            this.X_label = new System.Windows.Forms.Label();
-            this.printPreviewDialog1 = new System.Windows.Forms.PrintPreviewDialog();
-            this.button1 = new System.Windows.Forms.Button();
+            this.panel_GL = new System.Windows.Forms.Panel();
             this.button2 = new System.Windows.Forms.Button();
+            this.printPreviewDialog1 = new System.Windows.Forms.PrintPreviewDialog();
             this.panel1.SuspendLayout();
-            this.panel_GL.SuspendLayout();
             this.Creation_Panel.SuspendLayout();
             this.Groupe_Palettes.SuspendLayout();
             this.Group_Butoir.SuspendLayout();
             this.Group_Elements.SuspendLayout();
             this.Group_Element2.SuspendLayout();
-            this.menuStrip1.SuspendLayout();
             this.flowLayoutPanel1.SuspendLayout();
             this.Groupe_Outils.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.zoom_Bar)).BeginInit();
             this.Groupe_Proprietes.SuspendLayout();
+            this.menuStrip1.SuspendLayout();
+            this.panel_GL.SuspendLayout();
             this.SuspendLayout();
             // 
             // panel1
             // 
             this.panel1.BackColor = System.Drawing.SystemColors.ActiveCaption;
             this.panel1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.panel1.Controls.Add(this.panel_GL);
             this.panel1.Controls.Add(this.Creation_Panel);
-            this.panel1.Controls.Add(this.menuStrip1);
             this.panel1.Controls.Add(this.flowLayoutPanel1);
+            this.panel1.Controls.Add(this.menuStrip1);
+            this.panel1.Controls.Add(this.panel_GL);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel1.Location = new System.Drawing.Point(0, 0);
             this.panel1.Name = "panel1";
@@ -140,17 +138,6 @@
             this.panel1.TabIndex = 0;
             this.panel1.Click += new System.EventHandler(this.panel1_Click);
             this.panel1.Paint += new System.Windows.Forms.PaintEventHandler(this.panel1_Paint);
-            // 
-            // panel_GL
-            // 
-            this.panel_GL.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.panel_GL.Controls.Add(this.button2);
-            this.panel_GL.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel_GL.Location = new System.Drawing.Point(168, 24);
-            this.panel_GL.Name = "panel_GL";
-            this.panel_GL.Size = new System.Drawing.Size(561, 614);
-            this.panel_GL.TabIndex = 4;
-            this.panel_GL.MouseClick += new System.Windows.Forms.MouseEventHandler(this.panel_GL_MouseClick);
             // 
             // Creation_Panel
             // 
@@ -372,6 +359,225 @@
             this.Ressort_bouton.UseVisualStyleBackColor = false;
             this.Ressort_bouton.Click += new System.EventHandler(this.Ressort_bouton_Click);
             // 
+            // flowLayoutPanel1
+            // 
+            this.flowLayoutPanel1.BackColor = System.Drawing.SystemColors.InactiveBorder;
+            this.flowLayoutPanel1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.flowLayoutPanel1.Controls.Add(this.Groupe_Outils);
+            this.flowLayoutPanel1.Controls.Add(this.Groupe_Proprietes);
+            this.flowLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Left;
+            this.flowLayoutPanel1.Location = new System.Drawing.Point(0, 24);
+            this.flowLayoutPanel1.Name = "flowLayoutPanel1";
+            this.flowLayoutPanel1.Size = new System.Drawing.Size(163, 614);
+            this.flowLayoutPanel1.TabIndex = 3;
+            // 
+            // Groupe_Outils
+            // 
+            this.Groupe_Outils.Controls.Add(this.label_Zoom);
+            this.Groupe_Outils.Controls.Add(this.bouton_Creation);
+            this.Groupe_Outils.Controls.Add(this.bouton_Duplication);
+            this.Groupe_Outils.Controls.Add(this.zoom_Bar);
+            this.Groupe_Outils.Controls.Add(this.bouton_Scaling);
+            this.Groupe_Outils.Controls.Add(this.bouton_Rotation);
+            this.Groupe_Outils.Controls.Add(this.bouton_Deplacement);
+            this.Groupe_Outils.Controls.Add(this.bouton_Selection);
+            this.Groupe_Outils.Location = new System.Drawing.Point(3, 3);
+            this.Groupe_Outils.Name = "Groupe_Outils";
+            this.Groupe_Outils.Size = new System.Drawing.Size(159, 278);
+            this.Groupe_Outils.TabIndex = 0;
+            this.Groupe_Outils.TabStop = false;
+            this.Groupe_Outils.Text = "Outils";
+            // 
+            // label_Zoom
+            // 
+            this.label_Zoom.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label_Zoom.Location = new System.Drawing.Point(13, 209);
+            this.label_Zoom.Name = "label_Zoom";
+            this.label_Zoom.Size = new System.Drawing.Size(130, 14);
+            this.label_Zoom.TabIndex = 6;
+            this.label_Zoom.Text = "(-)        Zoom        (+)";
+            this.label_Zoom.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
+            // 
+            // bouton_Creation
+            // 
+            this.bouton_Creation.Location = new System.Drawing.Point(13, 176);
+            this.bouton_Creation.Name = "bouton_Creation";
+            this.bouton_Creation.Size = new System.Drawing.Size(130, 24);
+            this.bouton_Creation.TabIndex = 5;
+            this.bouton_Creation.Text = "Création";
+            this.bouton_Creation.UseVisualStyleBackColor = true;
+            this.bouton_Creation.Click += new System.EventHandler(this.bouton_Creation_Click);
+            // 
+            // bouton_Duplication
+            // 
+            this.bouton_Duplication.Enabled = false;
+            this.bouton_Duplication.Location = new System.Drawing.Point(13, 146);
+            this.bouton_Duplication.Name = "bouton_Duplication";
+            this.bouton_Duplication.Size = new System.Drawing.Size(130, 24);
+            this.bouton_Duplication.TabIndex = 4;
+            this.bouton_Duplication.Text = "Duplication";
+            this.bouton_Duplication.UseVisualStyleBackColor = true;
+            this.bouton_Duplication.Click += new System.EventHandler(this.bouton_Duplication_Click);
+            // 
+            // zoom_Bar
+            // 
+            this.zoom_Bar.AutoSize = false;
+            this.zoom_Bar.Location = new System.Drawing.Point(13, 226);
+            this.zoom_Bar.Name = "zoom_Bar";
+            this.zoom_Bar.Size = new System.Drawing.Size(130, 40);
+            this.zoom_Bar.TabIndex = 2;
+            // 
+            // bouton_Scaling
+            // 
+            this.bouton_Scaling.Enabled = false;
+            this.bouton_Scaling.Location = new System.Drawing.Point(13, 116);
+            this.bouton_Scaling.Name = "bouton_Scaling";
+            this.bouton_Scaling.Size = new System.Drawing.Size(130, 24);
+            this.bouton_Scaling.TabIndex = 3;
+            this.bouton_Scaling.Text = "Mise à échelle";
+            this.bouton_Scaling.UseVisualStyleBackColor = true;
+            this.bouton_Scaling.Click += new System.EventHandler(this.bouton_Scaling_Click);
+            // 
+            // bouton_Rotation
+            // 
+            this.bouton_Rotation.Enabled = false;
+            this.bouton_Rotation.Location = new System.Drawing.Point(13, 86);
+            this.bouton_Rotation.Name = "bouton_Rotation";
+            this.bouton_Rotation.Size = new System.Drawing.Size(130, 24);
+            this.bouton_Rotation.TabIndex = 2;
+            this.bouton_Rotation.Text = "Rotation";
+            this.bouton_Rotation.UseVisualStyleBackColor = true;
+            this.bouton_Rotation.Click += new System.EventHandler(this.bouton_Rotation_Click);
+            // 
+            // bouton_Deplacement
+            // 
+            this.bouton_Deplacement.Enabled = false;
+            this.bouton_Deplacement.Location = new System.Drawing.Point(13, 55);
+            this.bouton_Deplacement.Name = "bouton_Deplacement";
+            this.bouton_Deplacement.Size = new System.Drawing.Size(130, 24);
+            this.bouton_Deplacement.TabIndex = 1;
+            this.bouton_Deplacement.Text = "Déplacement";
+            this.bouton_Deplacement.UseVisualStyleBackColor = true;
+            this.bouton_Deplacement.Click += new System.EventHandler(this.bouton_Deplacement_Click);
+            // 
+            // bouton_Selection
+            // 
+            this.bouton_Selection.Location = new System.Drawing.Point(13, 25);
+            this.bouton_Selection.Name = "bouton_Selection";
+            this.bouton_Selection.Size = new System.Drawing.Size(130, 24);
+            this.bouton_Selection.TabIndex = 0;
+            this.bouton_Selection.Text = "Sélection";
+            this.bouton_Selection.UseVisualStyleBackColor = true;
+            this.bouton_Selection.Click += new System.EventHandler(this.bouton_Selection_Click);
+            // 
+            // Groupe_Proprietes
+            // 
+            this.Groupe_Proprietes.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.Groupe_Proprietes.Controls.Add(this.Annuler_prop_boutn);
+            this.Groupe_Proprietes.Controls.Add(this.OK_prop_bouton);
+            this.Groupe_Proprietes.Controls.Add(this.Anglebox);
+            this.Groupe_Proprietes.Controls.Add(this.Angle_label);
+            this.Groupe_Proprietes.Controls.Add(this.FMEbox);
+            this.Groupe_Proprietes.Controls.Add(this.FME_label);
+            this.Groupe_Proprietes.Controls.Add(this.Ybox);
+            this.Groupe_Proprietes.Controls.Add(this.Y_label);
+            this.Groupe_Proprietes.Controls.Add(this.Xbox);
+            this.Groupe_Proprietes.Controls.Add(this.X_label);
+            this.Groupe_Proprietes.Location = new System.Drawing.Point(3, 287);
+            this.Groupe_Proprietes.Name = "Groupe_Proprietes";
+            this.Groupe_Proprietes.Size = new System.Drawing.Size(159, 193);
+            this.Groupe_Proprietes.TabIndex = 1;
+            this.Groupe_Proprietes.TabStop = false;
+            this.Groupe_Proprietes.Text = "Propriétés spaciales";
+            // 
+            // Annuler_prop_boutn
+            // 
+            this.Annuler_prop_boutn.Location = new System.Drawing.Point(84, 137);
+            this.Annuler_prop_boutn.Name = "Annuler_prop_boutn";
+            this.Annuler_prop_boutn.Size = new System.Drawing.Size(65, 23);
+            this.Annuler_prop_boutn.TabIndex = 9;
+            this.Annuler_prop_boutn.Text = "Annuler";
+            this.Annuler_prop_boutn.UseVisualStyleBackColor = true;
+            this.Annuler_prop_boutn.Click += new System.EventHandler(this.Annuler_prop_boutn_Click);
+            // 
+            // OK_prop_bouton
+            // 
+            this.OK_prop_bouton.Location = new System.Drawing.Point(8, 137);
+            this.OK_prop_bouton.Name = "OK_prop_bouton";
+            this.OK_prop_bouton.Size = new System.Drawing.Size(65, 23);
+            this.OK_prop_bouton.TabIndex = 8;
+            this.OK_prop_bouton.Text = "Accepter";
+            this.OK_prop_bouton.UseVisualStyleBackColor = true;
+            this.OK_prop_bouton.Click += new System.EventHandler(this.OK_prop_bouton_Click);
+            // 
+            // Anglebox
+            // 
+            this.Anglebox.Location = new System.Drawing.Point(93, 73);
+            this.Anglebox.Name = "Anglebox";
+            this.Anglebox.Size = new System.Drawing.Size(51, 20);
+            this.Anglebox.TabIndex = 5;
+            this.Anglebox.Text = "0";
+            // 
+            // Angle_label
+            // 
+            this.Angle_label.Location = new System.Drawing.Point(14, 73);
+            this.Angle_label.Name = "Angle_label";
+            this.Angle_label.Size = new System.Drawing.Size(50, 20);
+            this.Angle_label.TabIndex = 6;
+            this.Angle_label.Text = "Angle:";
+            this.Angle_label.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // FMEbox
+            // 
+            this.FMEbox.Location = new System.Drawing.Point(92, 101);
+            this.FMEbox.Name = "FMEbox";
+            this.FMEbox.Size = new System.Drawing.Size(51, 20);
+            this.FMEbox.TabIndex = 7;
+            this.FMEbox.Text = "1.0";
+            // 
+            // FME_label
+            // 
+            this.FME_label.Location = new System.Drawing.Point(17, 102);
+            this.FME_label.Name = "FME_label";
+            this.FME_label.Size = new System.Drawing.Size(67, 19);
+            this.FME_label.TabIndex = 4;
+            this.FME_label.Text = "Scale:";
+            this.FME_label.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // Ybox
+            // 
+            this.Ybox.Location = new System.Drawing.Point(93, 47);
+            this.Ybox.Name = "Ybox";
+            this.Ybox.Size = new System.Drawing.Size(51, 20);
+            this.Ybox.TabIndex = 3;
+            this.Ybox.Text = "0";
+            // 
+            // Y_label
+            // 
+            this.Y_label.Location = new System.Drawing.Point(14, 46);
+            this.Y_label.Name = "Y_label";
+            this.Y_label.Size = new System.Drawing.Size(73, 20);
+            this.Y_label.TabIndex = 2;
+            this.Y_label.Text = "Position en Y:";
+            this.Y_label.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // Xbox
+            // 
+            this.Xbox.Location = new System.Drawing.Point(93, 21);
+            this.Xbox.Name = "Xbox";
+            this.Xbox.Size = new System.Drawing.Size(51, 20);
+            this.Xbox.TabIndex = 1;
+            this.Xbox.Text = "0";
+            // 
+            // X_label
+            // 
+            this.X_label.Location = new System.Drawing.Point(14, 21);
+            this.X_label.Name = "X_label";
+            this.X_label.Size = new System.Drawing.Size(73, 20);
+            this.X_label.TabIndex = 0;
+            this.X_label.Text = "Position en X:";
+            this.X_label.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
             // menuStrip1
             // 
             this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
@@ -380,9 +586,9 @@
             this.Outils_MenuItem,
             this.Vues_MenuItem,
             this.Information_MenuItem});
-            this.menuStrip1.Location = new System.Drawing.Point(168, 0);
+            this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
-            this.menuStrip1.Size = new System.Drawing.Size(786, 24);
+            this.menuStrip1.Size = new System.Drawing.Size(954, 24);
             this.menuStrip1.TabIndex = 0;
             this.menuStrip1.Text = "menuStrip1";
             // 
@@ -403,8 +609,10 @@
             // Nouveau_MenuItem
             // 
             this.Nouveau_MenuItem.Name = "Nouveau_MenuItem";
+            this.Nouveau_MenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.N)));
             this.Nouveau_MenuItem.Size = new System.Drawing.Size(198, 22);
             this.Nouveau_MenuItem.Text = "Nouveau";
+            this.Nouveau_MenuItem.Click += new System.EventHandler(this.Nouveau_MenuItem_Click);
             // 
             // Ouvrir_MenuItem
             // 
@@ -675,239 +883,23 @@
             this.Aide_MenuItem.Text = "Aide";
             this.Aide_MenuItem.Click += new System.EventHandler(this.Aide_MenuItem_Click);
             // 
-            // flowLayoutPanel1
+            // panel_GL
             // 
-            this.flowLayoutPanel1.BackColor = System.Drawing.SystemColors.InactiveBorder;
-            this.flowLayoutPanel1.Controls.Add(this.Groupe_Outils);
-            this.flowLayoutPanel1.Controls.Add(this.Groupe_Proprietes);
-            this.flowLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Left;
-            this.flowLayoutPanel1.Location = new System.Drawing.Point(0, 0);
-            this.flowLayoutPanel1.Name = "flowLayoutPanel1";
-            this.flowLayoutPanel1.Size = new System.Drawing.Size(168, 638);
-            this.flowLayoutPanel1.TabIndex = 3;
+            this.panel_GL.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            this.panel_GL.Controls.Add(this.button2);
+            this.panel_GL.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panel_GL.Location = new System.Drawing.Point(0, 0);
+            this.panel_GL.Name = "panel_GL";
+            this.panel_GL.Size = new System.Drawing.Size(954, 638);
+            this.panel_GL.TabIndex = 4;
+            this.panel_GL.MouseClick += new System.Windows.Forms.MouseEventHandler(this.panel_GL_MouseClick);
             // 
-            // Groupe_Outils
+            // button2
             // 
-            this.Groupe_Outils.Controls.Add(this.label_Zoom);
-            this.Groupe_Outils.Controls.Add(this.bouton_Creation);
-            this.Groupe_Outils.Controls.Add(this.bouton_Duplication);
-            this.Groupe_Outils.Controls.Add(this.zoom_Bar);
-            this.Groupe_Outils.Controls.Add(this.bouton_Scaling);
-            this.Groupe_Outils.Controls.Add(this.bouton_Rotation);
-            this.Groupe_Outils.Controls.Add(this.bouton_Deplacement);
-            this.Groupe_Outils.Controls.Add(this.bouton_Selection);
-            this.Groupe_Outils.Location = new System.Drawing.Point(3, 3);
-            this.Groupe_Outils.Name = "Groupe_Outils";
-            this.Groupe_Outils.Size = new System.Drawing.Size(159, 278);
-            this.Groupe_Outils.TabIndex = 0;
-            this.Groupe_Outils.TabStop = false;
-            this.Groupe_Outils.Text = "Outils";
-            // 
-            // label_Zoom
-            // 
-            this.label_Zoom.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label_Zoom.Location = new System.Drawing.Point(13, 209);
-            this.label_Zoom.Name = "label_Zoom";
-            this.label_Zoom.Size = new System.Drawing.Size(130, 14);
-            this.label_Zoom.TabIndex = 6;
-            this.label_Zoom.Text = "(-)        Zoom        (+)";
-            this.label_Zoom.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
-            // 
-            // bouton_Creation
-            // 
-            this.bouton_Creation.Location = new System.Drawing.Point(13, 176);
-            this.bouton_Creation.Name = "bouton_Creation";
-            this.bouton_Creation.Size = new System.Drawing.Size(130, 24);
-            this.bouton_Creation.TabIndex = 5;
-            this.bouton_Creation.Text = "Création";
-            this.bouton_Creation.UseVisualStyleBackColor = true;
-            this.bouton_Creation.Click += new System.EventHandler(this.bouton_Creation_Click);
-            // 
-            // bouton_Duplication
-            // 
-            this.bouton_Duplication.Enabled = false;
-            this.bouton_Duplication.Location = new System.Drawing.Point(13, 146);
-            this.bouton_Duplication.Name = "bouton_Duplication";
-            this.bouton_Duplication.Size = new System.Drawing.Size(130, 24);
-            this.bouton_Duplication.TabIndex = 4;
-            this.bouton_Duplication.Text = "Duplication";
-            this.bouton_Duplication.UseVisualStyleBackColor = true;
-            this.bouton_Duplication.Click += new System.EventHandler(this.bouton_Duplication_Click);
-            // 
-            // zoom_Bar
-            // 
-            this.zoom_Bar.AutoSize = false;
-            this.zoom_Bar.Location = new System.Drawing.Point(13, 226);
-            this.zoom_Bar.Name = "zoom_Bar";
-            this.zoom_Bar.Size = new System.Drawing.Size(130, 40);
-            this.zoom_Bar.TabIndex = 2;
-            // 
-            // bouton_Scaling
-            // 
-            this.bouton_Scaling.Enabled = false;
-            this.bouton_Scaling.Location = new System.Drawing.Point(13, 116);
-            this.bouton_Scaling.Name = "bouton_Scaling";
-            this.bouton_Scaling.Size = new System.Drawing.Size(130, 24);
-            this.bouton_Scaling.TabIndex = 3;
-            this.bouton_Scaling.Text = "Mise à échelle";
-            this.bouton_Scaling.UseVisualStyleBackColor = true;
-            this.bouton_Scaling.Click += new System.EventHandler(this.bouton_Scaling_Click);
-            // 
-            // bouton_Rotation
-            // 
-            this.bouton_Rotation.Enabled = false;
-            this.bouton_Rotation.Location = new System.Drawing.Point(13, 86);
-            this.bouton_Rotation.Name = "bouton_Rotation";
-            this.bouton_Rotation.Size = new System.Drawing.Size(130, 24);
-            this.bouton_Rotation.TabIndex = 2;
-            this.bouton_Rotation.Text = "Rotation";
-            this.bouton_Rotation.UseVisualStyleBackColor = true;
-            this.bouton_Rotation.Click += new System.EventHandler(this.bouton_Rotation_Click);
-            // 
-            // bouton_Deplacement
-            // 
-            this.bouton_Deplacement.Enabled = false;
-            this.bouton_Deplacement.Location = new System.Drawing.Point(13, 55);
-            this.bouton_Deplacement.Name = "bouton_Deplacement";
-            this.bouton_Deplacement.Size = new System.Drawing.Size(130, 24);
-            this.bouton_Deplacement.TabIndex = 1;
-            this.bouton_Deplacement.Text = "Déplacement";
-            this.bouton_Deplacement.UseVisualStyleBackColor = true;
-            this.bouton_Deplacement.Click += new System.EventHandler(this.bouton_Deplacement_Click);
-            // 
-            // bouton_Selection
-            // 
-            this.bouton_Selection.Location = new System.Drawing.Point(13, 25);
-            this.bouton_Selection.Name = "bouton_Selection";
-            this.bouton_Selection.Size = new System.Drawing.Size(130, 24);
-            this.bouton_Selection.TabIndex = 0;
-            this.bouton_Selection.Text = "Sélection";
-            this.bouton_Selection.UseVisualStyleBackColor = true;
-            this.bouton_Selection.Click += new System.EventHandler(this.bouton_Selection_Click);
-            // 
-            // Groupe_Proprietes
-            // 
-            this.Groupe_Proprietes.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.Groupe_Proprietes.Controls.Add(this.button1);
-            this.Groupe_Proprietes.Controls.Add(this.comboBox1);
-            this.Groupe_Proprietes.Controls.Add(this.Annuler_prop_boutn);
-            this.Groupe_Proprietes.Controls.Add(this.OK_prop_bouton);
-            this.Groupe_Proprietes.Controls.Add(this.Anglebox);
-            this.Groupe_Proprietes.Controls.Add(this.Angle_label);
-            this.Groupe_Proprietes.Controls.Add(this.FMEbox);
-            this.Groupe_Proprietes.Controls.Add(this.FME_label);
-            this.Groupe_Proprietes.Controls.Add(this.Ybox);
-            this.Groupe_Proprietes.Controls.Add(this.Y_label);
-            this.Groupe_Proprietes.Controls.Add(this.Xbox);
-            this.Groupe_Proprietes.Controls.Add(this.X_label);
-            this.Groupe_Proprietes.Location = new System.Drawing.Point(3, 287);
-            this.Groupe_Proprietes.Name = "Groupe_Proprietes";
-            this.Groupe_Proprietes.Size = new System.Drawing.Size(159, 193);
-            this.Groupe_Proprietes.TabIndex = 1;
-            this.Groupe_Proprietes.TabStop = false;
-            this.Groupe_Proprietes.Text = "Propriétés spaciales";
-            // 
-            // comboBox1
-            // 
-            this.comboBox1.FormattingEnabled = true;
-            this.comboBox1.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.comboBox1.Items.AddRange(new object[] {
-            "x",
-            "y",
-            "z"});
-            this.comboBox1.Location = new System.Drawing.Point(113, 73);
-            this.comboBox1.Name = "comboBox1";
-            this.comboBox1.Size = new System.Drawing.Size(30, 21);
-            this.comboBox1.TabIndex = 10;
-            this.comboBox1.Text = "x";
-            // 
-            // Annuler_prop_boutn
-            // 
-            this.Annuler_prop_boutn.Location = new System.Drawing.Point(84, 137);
-            this.Annuler_prop_boutn.Name = "Annuler_prop_boutn";
-            this.Annuler_prop_boutn.Size = new System.Drawing.Size(65, 23);
-            this.Annuler_prop_boutn.TabIndex = 9;
-            this.Annuler_prop_boutn.Text = "Annuler";
-            this.Annuler_prop_boutn.UseVisualStyleBackColor = true;
-            this.Annuler_prop_boutn.Click += new System.EventHandler(this.Annuler_prop_boutn_Click);
-            // 
-            // OK_prop_bouton
-            // 
-            this.OK_prop_bouton.Location = new System.Drawing.Point(8, 137);
-            this.OK_prop_bouton.Name = "OK_prop_bouton";
-            this.OK_prop_bouton.Size = new System.Drawing.Size(65, 23);
-            this.OK_prop_bouton.TabIndex = 8;
-            this.OK_prop_bouton.Text = "Accepter";
-            this.OK_prop_bouton.UseVisualStyleBackColor = true;
-            this.OK_prop_bouton.Click += new System.EventHandler(this.OK_prop_bouton_Click);
-            // 
-            // Anglebox
-            // 
-            this.Anglebox.Location = new System.Drawing.Point(65, 73);
-            this.Anglebox.Name = "Anglebox";
-            this.Anglebox.Size = new System.Drawing.Size(42, 20);
-            this.Anglebox.TabIndex = 5;
-            this.Anglebox.Text = "0";
-            // 
-            // Angle_label
-            // 
-            this.Angle_label.Location = new System.Drawing.Point(14, 73);
-            this.Angle_label.Name = "Angle_label";
-            this.Angle_label.Size = new System.Drawing.Size(50, 20);
-            this.Angle_label.TabIndex = 6;
-            this.Angle_label.Text = "Angle:";
-            this.Angle_label.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
-            // FMEbox
-            // 
-            this.FMEbox.Location = new System.Drawing.Point(92, 101);
-            this.FMEbox.Name = "FMEbox";
-            this.FMEbox.Size = new System.Drawing.Size(51, 20);
-            this.FMEbox.TabIndex = 7;
-            this.FMEbox.Text = "1.0";
-            // 
-            // FME_label
-            // 
-            this.FME_label.Location = new System.Drawing.Point(17, 102);
-            this.FME_label.Name = "FME_label";
-            this.FME_label.Size = new System.Drawing.Size(67, 19);
-            this.FME_label.TabIndex = 4;
-            this.FME_label.Text = "Scale:";
-            this.FME_label.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
-            // Ybox
-            // 
-            this.Ybox.Location = new System.Drawing.Point(93, 47);
-            this.Ybox.Name = "Ybox";
-            this.Ybox.Size = new System.Drawing.Size(51, 20);
-            this.Ybox.TabIndex = 3;
-            this.Ybox.Text = "0";
-            // 
-            // Y_label
-            // 
-            this.Y_label.Location = new System.Drawing.Point(14, 46);
-            this.Y_label.Name = "Y_label";
-            this.Y_label.Size = new System.Drawing.Size(73, 20);
-            this.Y_label.TabIndex = 2;
-            this.Y_label.Text = "Position en Y:";
-            this.Y_label.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
-            // Xbox
-            // 
-            this.Xbox.Location = new System.Drawing.Point(93, 21);
-            this.Xbox.Name = "Xbox";
-            this.Xbox.Size = new System.Drawing.Size(51, 20);
-            this.Xbox.TabIndex = 1;
-            this.Xbox.Text = "0";
-            // 
-            // X_label
-            // 
-            this.X_label.Location = new System.Drawing.Point(14, 21);
-            this.X_label.Name = "X_label";
-            this.X_label.Size = new System.Drawing.Size(73, 20);
-            this.X_label.TabIndex = 0;
-            this.X_label.Text = "Position en X:";
-            this.X_label.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.button2.Location = new System.Drawing.Point(0, 0);
+            this.button2.Name = "button2";
+            this.button2.Size = new System.Drawing.Size(75, 23);
+            this.button2.TabIndex = 0;
             // 
             // printPreviewDialog1
             // 
@@ -918,26 +910,6 @@
             this.printPreviewDialog1.Icon = ((System.Drawing.Icon)(resources.GetObject("printPreviewDialog1.Icon")));
             this.printPreviewDialog1.Name = "printPreviewDialog1";
             this.printPreviewDialog1.Visible = false;
-            // 
-            // button1
-            // 
-            this.button1.Location = new System.Drawing.Point(32, 166);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(75, 23);
-            this.button1.TabIndex = 11;
-            this.button1.Text = "Enlever";
-            this.button1.UseVisualStyleBackColor = true;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
-            // 
-            // button2
-            // 
-            this.button2.Location = new System.Drawing.Point(492, 0);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(73, 25);
-            this.button2.TabIndex = 2;
-            this.button2.Text = "PURGE";
-            this.button2.UseVisualStyleBackColor = true;
-            this.button2.Click += new System.EventHandler(this.button2_Click);
             // 
             // Exemple
             // 
@@ -955,19 +927,19 @@
             this.SizeChanged += new System.EventHandler(this.Fenetre_Redimension);
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
-            this.panel_GL.ResumeLayout(false);
             this.Creation_Panel.ResumeLayout(false);
             this.Groupe_Palettes.ResumeLayout(false);
             this.Group_Butoir.ResumeLayout(false);
             this.Group_Elements.ResumeLayout(false);
             this.Group_Element2.ResumeLayout(false);
-            this.menuStrip1.ResumeLayout(false);
-            this.menuStrip1.PerformLayout();
             this.flowLayoutPanel1.ResumeLayout(false);
             this.Groupe_Outils.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.zoom_Bar)).EndInit();
             this.Groupe_Proprietes.ResumeLayout(false);
             this.Groupe_Proprietes.PerformLayout();
+            this.menuStrip1.ResumeLayout(false);
+            this.menuStrip1.PerformLayout();
+            this.panel_GL.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -1053,8 +1025,6 @@
         private System.Windows.Forms.Button Trou_bouton;
         private System.Windows.Forms.Button Generateur_bouton;
         private System.Windows.Forms.Button Ressort_bouton;
-        internal System.Windows.Forms.ComboBox comboBox1;
-        private System.Windows.Forms.Button button1;
         private System.Windows.Forms.Button button2;
     }
 }

@@ -291,9 +291,6 @@ namespace InterfaceGraphique
             try { angleRead = dt.Compute(angleRead, "").ToString(); }
             catch { return; }
 
-            if (!float.TryParse(angleRead, out angle))
-                return;
-            FonctionsNatives.rotate(angle, this.comboBox1.Text[0]);
             Anglebox.Text = "0.0";
         }
 
@@ -416,6 +413,7 @@ namespace InterfaceGraphique
         private void Supprimer_MenuItem_Click(object sender, EventArgs e)
         {
             Console.WriteLine("Supprimer.");
+            FonctionsNatives.removeObject();
             // TO DO
         }
 
@@ -549,12 +547,8 @@ namespace InterfaceGraphique
             Trou_bouton_Click(this, e);
         }
 
-        private void button1_Click(object sender, EventArgs e)
-        {
-            FonctionsNatives.removeObject();
-        }
 
-        private void button2_Click(object sender, EventArgs e)
+        private void Nouveau_MenuItem_Click(object sender, EventArgs e)
         {
             FonctionsNatives.purgeAll();
         }
