@@ -79,6 +79,10 @@ public:
 	inline void assignerEstSelectionnable(bool selectionnable);
 	/// Écrit le zoom sur le noeud.
 	inline void assignerEchelle(glm::dvec3 scale);
+	/// Écrit le rotation sur le noeud.
+	inline void assignerRotation(glm::dvec3 rotation);
+	/// Écrit le rotation 0,0,0 sur le noeud.
+	inline void resetRotation();
 	/// Vérifie si le noeud est sélectionnable.
 	inline bool estSelectionnable() const;
 	/// Écrit si le noeud peut être enregistré ou non.
@@ -147,8 +151,11 @@ protected:
 	/// Position relative du noeud.
 	glm::dvec3         positionRelative_;
 
-	// Zoom
+	/// Rescale relatif du noeud.
 	glm::dvec3 		scale_;
+
+	/// Rotation relative du noeud.
+	glm::dvec3 		rotation_;
 
 	/// Vrai si on doit afficher le noeud.
 	bool             affiche_{ true };
@@ -342,6 +349,41 @@ inline void NoeudAbstrait::assignerEchelle(glm::dvec3 scale)
 {
 	scale_ = scale;
 }
+
+
+////////////////////////////////////////////////////////////////////////
+///
+/// @fn inline void NoeudAbstrait::assignerEchelle( foloat rotation )
+///
+/// Cette fonction permet d'assigner une rotation a l'objet.
+///
+/// @param selectionne : La rotation a appliquee.
+///
+/// @return Aucune
+///
+////////////////////////////////////////////////////////////////////////
+inline void NoeudAbstrait::assignerRotation(glm::dvec3 rotation)
+{
+	rotation_ += rotation;
+}
+
+
+////////////////////////////////////////////////////////////////////////
+///
+/// @fn inline void NoeudAbstrait::assignerEchelle( foloat rotation )
+///
+/// Cette fonction permet d'assigner une rotation a l'objet.
+///
+/// @param selectionne : La rotation a appliquee.
+///
+/// @return Aucune
+///
+////////////////////////////////////////////////////////////////////////
+inline void NoeudAbstrait::resetRotation()
+{
+	rotation_ = { 0.0, 0.0, 0.0 };
+}
+
 
 ////////////////////////////////////////////////////////////////////////
 ///

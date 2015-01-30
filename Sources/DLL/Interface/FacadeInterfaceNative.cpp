@@ -16,10 +16,14 @@
 #include "ArbreRenduINF2990.h"
 #include "CompteurAffichage.h"
 
+#include <iostream>
+
 #include "BancTests.h"
 
 extern "C"
 {
+	static NoeudAbstrait* objet = new NoeudAbstrait();
+
 	////////////////////////////////////////////////////////////////////////
 	///
 	/// __declspec(dllexport) void __cdecl initialiserOpenGL(int* handle)
@@ -190,29 +194,165 @@ extern "C"
 	
 	////////////////////////////////////////////////////////////////////////
 	///
-	/// @fn __declspec(dllexport) int __cdecl creerObjet()
+	/// @fn __declspec(dllexport) void* __cdecl creerObjet()
+	///
+	/// @param[in]  value : Nom de l'objet
+	/// @param[in]  length : Taille du nom de l'objet
 	///
 	/// Cette fonction permet de cree un objet 3D
 	///
-	/// @return 0 si tous les tests ont réussi, 1 si au moins un test a échoué
+	/// @return Aucun
 	///
 	////////////////////////////////////////////////////////////////////////
-	__declspec(dllexport) bool __cdecl creerObjet(char* value, int length, int x, int y, float scale, double rotation)
+	__declspec(dllexport) void __cdecl creerObjet(char* value, int length)
 	{
 		std::string nomObjet (value);
-		NoeudAbstrait* objet = FacadeModele::obtenirInstance()->obtenirArbreRenduINF2990()->creerNoeud(nomObjet);
+		objet = FacadeModele::obtenirInstance()->obtenirArbreRenduINF2990()->creerNoeud(nomObjet);
 		if (objet == nullptr)
-			return false;
+			return;
 		// Ca ne sert a rien de rajouter un Node "vide" dans l'arbre
 		else if (nomObjet == "vide")
-			return true;
+			return;
+		FacadeModele::obtenirInstance()->obtenirArbreRenduINF2990()->ajouter(objet);
+	}
+
+	////////////////////////////////////////////////////////////////////////
+	///
+	/// @fn void VueOrtho::positionObjet(int x, int y, int z)
+	///
+	/// @param[in]  x : La positon en x
+	/// @param[in]  y : La positon en y
+	/// @param[in]  z : La positon en z
+	///
+	/// Permet de deplacer un objet en x y et/ou z
+	///
+	/// @return Aucune.
+	///
+	////////////////////////////////////////////////////////////////////////
+	__declspec(dllexport) void __cdecl positionObjet(int x, int y, int z)
+	{
 		glm::dvec3 maPosition;
 		FacadeModele::obtenirInstance()->obtenirVue()->convertirClotureAVirtuelle(x, y, maPosition);
-		objet->assignerPositionRelative({ maPosition.x, maPosition.y, 0 });
-		objet->assignerEchelle({ scale, scale, scale });
-		return FacadeModele::obtenirInstance()->obtenirArbreRenduINF2990()->ajouter(objet);
+		objet->assignerPositionRelative({ maPosition.x, maPosition.y, z });
 	}
-	
+
+	////////////////////////////////////////////////////////////////////////
+	///
+	/// @fn void VueOrtho::scaleObjet(double scale)
+	///
+	/// @param[in]  scale : La multiplication en x
+	///
+	/// Permet de resize un objet uniformement
+	///
+	/// @return Aucune.
+	///
+	////////////////////////////////////////////////////////////////////////
+	__declspec(dllexport) void __cdecl scaleObjet(double scale)
+	{
+		objet->assignerEchelle({ scale, scale, scale });
+	}
+
+	////////////////////////////////////////////////////////////////////////
+	///
+	/// @fn void VueOrtho::scaleObjetXYZ(double x, double y, double z)
+	///
+	/// @param[in]  x : La multiplication en x
+	/// @param[in]  y : La multiplication en y
+	/// @param[in]  z : La multiplication en z
+	///
+	/// Permet de resize un objet en x y z
+	///
+	/// @return Aucune.
+	///
+	////////////////////////////////////////////////////////////////////////
+	__declspec(dllexport) void __cdecl scaleObjetXYZ(double x, double y, double z)
+	{
+		objet->assignerEchelle({ x, y, z });
+	}
+
+	////////////////////////////////////////////////////////////////////////
+	///
+	/// @fn void VueOrtho::rotate(float angle, char direction)
+	///
+	/// @param[in]  angle : L'angle de rotation
+	/// @param[in]  direction : La direction dans la quel on applique la rotation.
+	///
+	/// Permet de faire tourner notre objet
+	///
+	/// @return Aucune.
+	///
+	////////////////////////////////////////////////////////////////////////
+	__declspec(dllexport) void __cdecl rotate(float angle, char direction)
+	{
+		std::cout << direction;
+		if (direction == 'x' || direction == 'X' || direction == '0')
+			objet->assignerRotation({ angle, 0.0, 0.0 });
+		else if (direction == 'y' || direction == 'Y' || direction == '1')
+			objet->assignerRotation({ 0.0, angle, 0.0 });
+		else if (direction == 'z' || direction == 'Z' || direction == '2')
+			objet->assignerRotation({ 0.0, 0.0, angle });
+	}
+
+
+	////////////////////////////////////////////////////////////////////////
+	///
+	/// @fn void VueOrtho::resetObject(void)
+	///
+	/// Remet les donnees d'un objet a 0
+	///
+	/// @return Aucune.
+	///
+	////////////////////////////////////////////////////////////////////////
+	__declspec(dllexport) void resetObject(void) 
+	{
+		objet->assignerPositionRelative({ 0, 0, 0 });
+		objet->assignerEchelle({ 1, 1, 1 });
+		objet->resetRotation();
+	}
+
+
+	////////////////////////////////////////////////////////////////////////
+	///
+	/// @fn void VueOrtho::removeObject(void)
+	///
+	/// Remet les donnees d'un objet a 0
+	///
+	/// @return Aucune.
+	///
+	////////////////////////////////////////////////////////////////////////
+	__declspec(dllexport) void removeObject(void)
+	{
+		objet->~NoeudAbstrait();
+	}
+
+
+	////////////////////////////////////////////////////////////////////////
+	///
+	/// @fn void VueOrtho::purgeAll(void)
+	///
+	/// Detruit l'arbre de rendu
+	///
+	/// @return Aucune.
+	///
+	////////////////////////////////////////////////////////////////////////
+	__declspec(dllexport) void purgeAll(void)
+	{
+		FacadeModele::obtenirInstance()->obtenirArbreRenduINF2990()->vider();
+	}
+
+
+	////////////////////////////////////////////////////////////////////////
+	///
+	/// @fn void VueOrtho::translater(double deplacementX, double deplacementY)
+	///
+	/// @param[in]  deplacementX : Déplacement en pourcentage de la largeur.
+	/// @param[in]  deplacementY : Déplacement en pourcentage de la hauteur.
+	///
+	/// Permet de faire un "pan" d'un certain pourcentage.
+	///
+	/// @return Aucune.
+	///
+	////////////////////////////////////////////////////////////////////////
 	__declspec(dllexport) void __cdecl translater(double deplacementX, double deplacementY)
 	{
 		FacadeModele::obtenirInstance()->obtenirVue()->deplacerXY(deplacementX, deplacementY);

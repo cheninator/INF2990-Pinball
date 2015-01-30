@@ -21,6 +21,13 @@ NoeudPalette::~NoeudPalette()
 
 void NoeudPalette::afficherConcret() const
 {
+	NoeudComposite::afficherConcret();
+	// Sauvegarde de la matrice.
+	glPushMatrix();
+	// Affichage du modèle.
+	liste_->dessiner();
+	// Restauration de la matrice.
+	glPopMatrix();
 }
 
 void NoeudPalette::animer(float temps)

@@ -21,6 +21,13 @@ NoeudTrou::~NoeudTrou()
 
 void NoeudTrou::afficherConcret() const
 {
+	NoeudComposite::afficherConcret();
+	// Sauvegarde de la matrice.
+	glPushMatrix();
+	// Affichage du modèle.
+	liste_->dessiner();
+	// Restauration de la matrice.
+	glPopMatrix();
 }
 
 void NoeudTrou::animer(float temps)

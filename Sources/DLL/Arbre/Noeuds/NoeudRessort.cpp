@@ -21,11 +21,10 @@ NoeudRessort::~NoeudRessort()
 
 void NoeudRessort::afficherConcret() const
 {
-
+	NoeudComposite::afficherConcret();
 	// Sauvegarde de la matrice.
 	glPushMatrix();
 	// Affichage du modèle.
-	glScalef(10, 10, 10);
 	liste_->dessiner();
 	// Restauration de la matrice.
 	glPopMatrix();

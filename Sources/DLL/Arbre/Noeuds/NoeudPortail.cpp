@@ -21,6 +21,13 @@ NoeudPortail::~NoeudPortail()
 
 void NoeudPortail::afficherConcret() const
 {
+	NoeudComposite::afficherConcret();
+	// Sauvegarde de la matrice.
+	glPushMatrix();
+	// Affichage du modèle.
+	liste_->dessiner();
+	// Restauration de la matrice.
+	glPopMatrix();
 }
 
 void NoeudPortail::animer(float temps)

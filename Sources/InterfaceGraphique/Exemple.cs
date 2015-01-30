@@ -30,10 +30,7 @@ namespace InterfaceGraphique
             Program.peutAfficher = true;
             panel_GL.Focus();
             InitialiserAnimation();
-            
         }
-
-
 
         public void InitialiserAnimation()
         {
@@ -43,13 +40,10 @@ namespace InterfaceGraphique
             FonctionsNatives.dessinerOpenGL();
         }
 
-
         public void MettreAJour(double tempsInterAffichage)
         {
-
             try
             {
-
                 this.Invoke((MethodInvoker)delegate
                 {
                     FonctionsNatives.animer(tempsInterAffichage);
@@ -58,16 +52,11 @@ namespace InterfaceGraphique
             }
             catch (Exception)
             {
-            }
-         
-
-    
-            
+            } 
         }
         private void ToucheDown(Object o, KeyEventArgs e){
             if (panel_GL.Focused)
             {
-               
                 if (e.KeyData == Keys.Left)
                 {
                     FonctionsNatives.translater(-10, 0);
@@ -81,14 +70,10 @@ namespace InterfaceGraphique
                 if (e.KeyData == Keys.Down)
                     FonctionsNatives.translater(0, -10);
             }
-
-
-
         }
         private void ToucheEnfonce(Object o, KeyPressEventArgs e)
         {
-                    
-
+                   
             System.Console.WriteLine(e.KeyChar);
             if (e.KeyChar == 'f')
             {
@@ -102,15 +87,8 @@ namespace InterfaceGraphique
             if (e.KeyChar == 's')
             {
                 Selection_MenuItem_Click(this,e);
-            }
-           
-            
+            }   
         }
-
-        
-        
-   
-
         private void Exemple_FormClosing(object sender, FormClosingEventArgs e)
         {
             lock(Program.unLock)
@@ -124,8 +102,7 @@ namespace InterfaceGraphique
         {
 
         }
-
-       
+    
         private void Aide_MenuItem_Click(object sender, EventArgs e)
         {
             BackgroundWorker bw = new BackgroundWorker();
@@ -153,10 +130,8 @@ namespace InterfaceGraphique
             SaveFileDialog enregistrer_fichier = new SaveFileDialog();
             enregistrer_fichier.Filter = "Fichiers XML (*.xml)| *.xml | All Files(*.*)|(*.*)";
             enregistrer_fichier.ShowDialog();
-            
         }
 
-     
         private void helpToolStripButton_Click(object sender, EventArgs e)
         {
             Aide_MenuItem_Click(this,e);
@@ -195,8 +170,6 @@ namespace InterfaceGraphique
         {
             Rotation_MenuItem_Click(this, e);
         }
-                
-      
 
         private void bouton_Selection_Click(object sender, EventArgs e)
         {
@@ -219,14 +192,18 @@ namespace InterfaceGraphique
             Xbox.Text = panel_GL.PointToClient(MousePosition).X.ToString();
             Ybox.Text = (panel_GL.PointToClient(MousePosition).Y).ToString();
             if(e.Button == MouseButtons.Left)
-                FonctionsNatives.creerObjet(myObjectName, myObjectName.Capacity, panel_GL.PointToClient(MousePosition).X, panel_GL.PointToClient(MousePosition).Y, 2);  
+            {
+                Afficher_Objet();
+                FonctionsNatives.positionObjet(panel_GL.PointToClient(MousePosition).X, panel_GL.PointToClient(MousePosition).Y);
+            }
             panel_GL.Focus();
-            
         }
 
         private void butourCirc_bouton_Click(object sender, EventArgs e)
         {
+            Console.WriteLine("Generateur Bille");
             myObjectName = new StringBuilder("generateurbille");
+            //Afficher_Objet();
         }
 
         private void Proprietes_MenuItem_Click(object sender, EventArgs e)
@@ -238,25 +215,53 @@ namespace InterfaceGraphique
 
         private void butoirG_bouton_Click(object sender, EventArgs e)
         {
-            //myObjectName = new StringBuilder("vide");
             Console.WriteLine("Palette Gauche.");
-            // TO DO
+            myObjectName = new StringBuilder("butoir");
+            // Afficher_Objet();
+            // DO STUFF
 
         }
 
         private void OK_prop_bouton_Click(object sender, EventArgs e)
         {
-            string scalingRead = FMEbox.Text;
-            scalingRead = scalingRead.Replace(",", ".");
+            Positionner_Objet();
+            Scale_Objet();
+            Rotate_Object();
+        }
+
+        public void Afficher_Objet()
+        {
+            Console.WriteLine(myObjectName);
+            FonctionsNatives.creerObjet(myObjectName, myObjectName.Capacity);
+        }
+
+        public void Positionner_Objet()
+        {
 
             int positionX;
             int positionY;
-            float scale;
 
             if (Xbox.Text == "")
-                Xbox.Text = "0";;
+                Xbox.Text = "0"; ;
             if (Ybox.Text == "")
-                Ybox.Text = "0";;
+                Ybox.Text = "0"; ;
+
+            if (!int.TryParse(Xbox.Text, out positionX))
+                return;
+            if (!int.TryParse(Ybox.Text, out positionY))
+                return;
+
+            if (positionX < 0 || positionY < 0)
+                return;
+
+            FonctionsNatives.positionObjet(positionX, positionY);
+        }
+        public void Scale_Objet()
+        {
+            string scalingRead = FMEbox.Text;
+            scalingRead = scalingRead.Replace(",", ".");
+            float scale;
+
             if (FMEbox.Text == "")
                 FMEbox.Text = "1"; ;
 
@@ -264,17 +269,32 @@ namespace InterfaceGraphique
             try { scalingRead = dt.Compute(scalingRead, "").ToString(); }
             catch { return; }
 
-            if (!int.TryParse(Xbox.Text, out positionX))
-                return;
-            if (!int.TryParse(Ybox.Text, out positionY))
-                return;
             if (!float.TryParse(scalingRead, out scale))
                 return;
 
-            if (positionX < 0 || positionY < 0 || scale < 0)
+            if (scale < 0)
                 return;
 
-            Console.WriteLine(FonctionsNatives.creerObjet(myObjectName, myObjectName.Capacity, positionX, positionY, scale));
+            FonctionsNatives.scaleObjet(scale);
+        }
+
+        public void Rotate_Object()
+        {
+            string angleRead = Anglebox.Text;
+            angleRead = angleRead.Replace(",", ".");
+            float angle;
+
+            if (Anglebox.Text == "")
+                Anglebox.Text = "0.0"; ;
+
+            DataTable dt = new DataTable();
+            try { angleRead = dt.Compute(angleRead, "").ToString(); }
+            catch { return; }
+
+            if (!float.TryParse(angleRead, out angle))
+                return;
+            FonctionsNatives.rotate(angle, this.comboBox1.Text[0]);
+            Anglebox.Text = "0.0";
         }
 
         private void Fenetre_Redimension(object sender, EventArgs e)
@@ -284,7 +304,8 @@ namespace InterfaceGraphique
         }
         private void Annuler_prop_boutn_Click(object sender, EventArgs e)
         {
-            myObjectName = new StringBuilder("vide");
+            //myObjectName = new StringBuilder("vide");
+            FonctionsNatives.resetObject();
         }
 
         private void Exemple_Load(object sender, EventArgs e)
@@ -296,20 +317,23 @@ namespace InterfaceGraphique
         {
             Console.WriteLine("Ressort");
             myObjectName = new StringBuilder("ressort");
-           // myObjectName = new StringBuilder("generateurbille");
-            // TO DO
+            // Afficher_Objet();
+            // DO STUFF
         }
 
         private void Generateur_bouton_Click(object sender, EventArgs e)
         {
             Console.WriteLine("Generateur");
-            // TO DO
+            // Afficher_Objet();
+            // DO STUFF
         }
 
         private void Trou_bouton_Click(object sender, EventArgs e)
         {
             Console.WriteLine("Trou");
-            // TO DO
+            myObjectName = new StringBuilder("trou");
+            // Afficher_Objet();
+            // DO STUFF
         }
 
         private void bouton_Deplacement_Click(object sender, EventArgs e)
@@ -404,9 +428,9 @@ namespace InterfaceGraphique
         private void PGJ1_bouton_Click(object sender, EventArgs e)
         {
             Console.WriteLine("Palette gauche J1.");
-            //myObjectName = new StringBuilder("palette");
-            //FonctionsNatives.creerObjet(myObjectName, myObjectName.Capacity, 100, 100, 1);
-            // TO DO
+            myObjectName = new StringBuilder("butoir");
+            // Afficher_Objet();
+            // DO STUFF
         }
 
         private void PG_J1_MenuItem_Click(object sender, EventArgs e)
@@ -417,9 +441,9 @@ namespace InterfaceGraphique
         private void PDJ1_bouton_Click(object sender, EventArgs e)
         {
             Console.WriteLine("Palette droite J1.");
-            //myObjectName = new StringBuilder("palette");
-            //FonctionsNatives.creerObjet(myObjectName, myObjectName.Capacity, 100, 100, 1);
-            // TO DO
+            myObjectName = new StringBuilder("butoir");
+            // Afficher_Objet();
+            // DO STUFF
         }
 
         private void PD_J1_MenuItem_Click(object sender, EventArgs e)
@@ -430,7 +454,9 @@ namespace InterfaceGraphique
         private void PGJ2_bouton_Click(object sender, EventArgs e)
         {
             Console.WriteLine("Palette gauche J2.");
-            // TO DO
+            myObjectName = new StringBuilder("butoir");
+            // Afficher_Objet();
+            // DO STUFF
         }
 
         private void PG_J2_MenuItem_Click(object sender, EventArgs e)
@@ -441,7 +467,9 @@ namespace InterfaceGraphique
         private void PDJ2_bouton_Click(object sender, EventArgs e)
         {
             Console.WriteLine("Palette droite J2.");
-            // TO DO
+            myObjectName = new StringBuilder("palette");
+            // Afficher_Objet();
+            // DO STUFF
         }
 
         private void PD_J2_MenuItem_Click(object sender, EventArgs e)
@@ -457,7 +485,9 @@ namespace InterfaceGraphique
         private void butoirD_bouton_Click(object sender, EventArgs e)
         {
             Console.WriteLine("Butoir Droit.");
-            // TO DO
+            myObjectName = new StringBuilder("butoir");
+            // Afficher_Objet();
+            // DO STUFF
         }
 
         private void BTD_MenuItem_Click(object sender, EventArgs e)
@@ -468,7 +498,9 @@ namespace InterfaceGraphique
         private void Cible_bouton_Click(object sender, EventArgs e)
         {
             Console.WriteLine("Cible.");
-            // TO DO
+            myObjectName = new StringBuilder("cible");
+            // Afficher_Objet();
+            // DO STUFF
         }
 
         private void Cible_MenuItem_Click(object sender, EventArgs e)
@@ -479,7 +511,9 @@ namespace InterfaceGraphique
         private void Portails_bouton_Click(object sender, EventArgs e)
         {
             Console.WriteLine("Portail");
-            // TO DO
+            myObjectName = new StringBuilder("portail");
+            // Afficher_Objet();
+            // DO STUFF
         }
 
         private void Portails_MenuItem_Click(object sender, EventArgs e)
@@ -490,7 +524,9 @@ namespace InterfaceGraphique
         private void Mur_bouton_Click(object sender, EventArgs e)
         {
             Console.WriteLine("Mur");
-            // TO DO
+            myObjectName = new StringBuilder("mur");
+            // Afficher_Objet();
+            // DO STUFF
         }
 
         private void Mur_MenuItem_Click(object sender, EventArgs e)
@@ -511,6 +547,16 @@ namespace InterfaceGraphique
         private void Trou_MenuItem_Click(object sender, EventArgs e)
         {
             Trou_bouton_Click(this, e);
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            FonctionsNatives.removeObject();
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            FonctionsNatives.purgeAll();
         }
     }
     // Full Screen
@@ -555,7 +601,28 @@ namespace InterfaceGraphique
         public static extern void redimensionnerFenetre(int largeur, int hauteur);
         
         [DllImport(@"Noyau.dll", CallingConvention = CallingConvention.Cdecl)]
-        public static extern bool creerObjet(StringBuilder value, int length, int x = 0, int y = 0, float scale = 1, double rotation = 0.0);
+        public static extern void creerObjet(StringBuilder value, int length);
+
+        [DllImport(@"Noyau.dll", CallingConvention = CallingConvention.Cdecl)]
+        public static extern void positionObjet(int x, int y, int z = 0);
+
+        [DllImport(@"Noyau.dll", CallingConvention = CallingConvention.Cdecl)]
+        public static extern void scaleObjet(double scale);
+
+        [DllImport(@"Noyau.dll", CallingConvention = CallingConvention.Cdecl)]
+        public static extern void scaleXYZObjet(double x, double y, double z);
+
+        [DllImport(@"Noyau.dll", CallingConvention = CallingConvention.Cdecl)]
+        public static extern void rotate(float angle, char direction);
+
+        [DllImport(@"Noyau.dll", CallingConvention = CallingConvention.Cdecl)]
+        public static extern void resetObject();
+
+        [DllImport(@"Noyau.dll", CallingConvention = CallingConvention.Cdecl)]
+        public static extern void removeObject();
+
+        [DllImport(@"Noyau.dll", CallingConvention = CallingConvention.Cdecl)]
+        public static extern void purgeAll();
 
         [DllImport(@"Noyau.dll", CallingConvention = CallingConvention.Cdecl)]
         public static extern void translater(double deplacementX, double deplacementY);
