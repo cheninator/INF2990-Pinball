@@ -291,7 +291,11 @@ namespace InterfaceGraphique
             try { angleRead = dt.Compute(angleRead, "").ToString(); }
             catch { return; }
 
-            Anglebox.Text = "0.0";
+            if (!float.TryParse(angleRead, out angle))
+                return;
+
+            FonctionsNatives.rotate(angle);
+            //Anglebox.Text = "0.0";
         }
 
         private void Fenetre_Redimension(object sender, EventArgs e)
@@ -607,7 +611,7 @@ namespace InterfaceGraphique
         public static extern void scaleXYZObjet(double x, double y, double z);
 
         [DllImport(@"Noyau.dll", CallingConvention = CallingConvention.Cdecl)]
-        public static extern void rotate(float angle, char direction);
+        public static extern void rotate(float angle, char direction = 'x');
 
         [DllImport(@"Noyau.dll", CallingConvention = CallingConvention.Cdecl)]
         public static extern void resetObject();

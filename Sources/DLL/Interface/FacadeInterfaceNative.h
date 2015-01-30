@@ -26,7 +26,7 @@ extern "C" {
 	__declspec(dllexport) void positionObjet(int x, int y, int z = 0);
 	__declspec(dllexport) void scaleObjet(double scale);
 	__declspec(dllexport) void scaleXYZObjet(double x, double y, double z);
-	__declspec(dllexport) void rotate(float angle, char direction);
+	__declspec(dllexport) void rotate(float angle, char direction = 'x');
 	__declspec(dllexport) void resetObject(void);
 	__declspec(dllexport) void removeObject(void);
 	__declspec(dllexport) void purgeAll(void);

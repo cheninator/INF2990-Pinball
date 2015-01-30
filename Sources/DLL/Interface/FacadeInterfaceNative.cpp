@@ -286,11 +286,11 @@ extern "C"
 	{
 		std::cout << direction;
 		if (direction == 'x' || direction == 'X' || direction == '0')
-			objet->assignerRotation({ angle, 0.0, 0.0 });
-		else if (direction == 'y' || direction == 'Y' || direction == '1')
-			objet->assignerRotation({ 0.0, angle, 0.0 });
-		else if (direction == 'z' || direction == 'Z' || direction == '2')
 			objet->assignerRotation({ 0.0, 0.0, angle });
+		else if (direction == 'y' || direction == 'Y' || direction == '1')
+			objet->assignerRotation({ angle, 0.0, 0.0 });
+		else if (direction == 'z' || direction == 'Z' || direction == '2')
+			objet->assignerRotation({ 0.0, angle, 0.0 });
 	}
 
 
