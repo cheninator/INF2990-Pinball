@@ -31,6 +31,7 @@ extern "C" {
 	__declspec(dllexport) void removeObject(void);
 	__declspec(dllexport) void purgeAll(void);
 	__declspec(dllexport) void translater(double deplacementX, double deplacementY);
+
 }
 
 #endif // __FACADE_INTERFACE_NATIVE_H__

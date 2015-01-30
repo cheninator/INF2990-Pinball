@@ -19,6 +19,7 @@ class NoeudPalette;
 class NoeudPortail;
 class NoeudRessort;
 class NoeudTrou;
+class NoeudTable;
 
 class VisiteurAbstrait
 {
@@ -39,6 +40,7 @@ public:
 	virtual bool traiter(NoeudPortail& portail) { return false; };
 	virtual bool traiter(NoeudRessort& ressort) { return false; };
 	virtual bool traiter(NoeudTrou& trou) { return false; };
+	virtual bool traiter(NoeudTable& table) { return false; };
 };
 
 

@@ -139,6 +139,7 @@
     <ClCompile Include="Arbre\Noeuds\NoeudPalette.cpp" />
     <ClCompile Include="Arbre\Noeuds\NoeudPortail.cpp" />
     <ClCompile Include="Arbre\Noeuds\NoeudRessort.cpp" />
+    <ClCompile Include="Arbre\Noeuds\NoeudTable.cpp" />
     <ClCompile Include="Arbre\Noeuds\NoeudTrou.cpp" />
     <ClCompile Include="Arbre\Noeuds\NoeudVide.cpp" />
     <ClCompile Include="Configuration\ConfigScene.cpp" />
@@ -165,6 +166,7 @@
     <ClInclude Include="Arbre\Noeuds\NoeudPalette.h" />
     <ClInclude Include="Arbre\Noeuds\NoeudPortail.h" />
     <ClInclude Include="Arbre\Noeuds\NoeudRessort.h" />
+    <ClInclude Include="Arbre\Noeuds\NoeudTable.h" />
     <ClInclude Include="Arbre\Noeuds\NoeudTrou.h" />
     <ClInclude Include="Arbre\Noeuds\NoeudVide.h" />
     <ClInclude Include="Arbre\Usines\UsineNoeudAraignee.h" />
@@ -176,6 +178,7 @@
     <ClInclude Include="Arbre\Usines\UsineNoeudPalette.h" />
     <ClInclude Include="Arbre\Usines\UsineNoeudPortail.h" />
     <ClInclude Include="Arbre\Usines\UsineNoeudRessort.h" />
+    <ClInclude Include="Arbre\Usines\UsineNoeudTable.h" />
     <ClInclude Include="Arbre\Usines\UsineNoeudTrou.h" />
     <ClInclude Include="Arbre\Usines\UsineNoeudVide.h" />
     <ClInclude Include="Configuration\ConfigScene.h" />

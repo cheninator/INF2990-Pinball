@@ -52,6 +52,7 @@ public:
    static const std::string NOM_RESSORT;
    static const std::string NOM_TROU;	
    static const std::string NOM_VIDE;
+   static const std::string NOM_TABLE;
 };
 
 
