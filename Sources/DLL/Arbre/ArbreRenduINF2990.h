@@ -39,8 +39,11 @@ public:
    /// Initialise l'arbre de rendu à son état initial.
    void initialiser();
 
+   // Obtenir le ième enfant de l'arbre
+   NoeudAbstrait* getEnfant(int position);
 
-	/// La chaîne représentant led typrs
+
+	/// La chaîne représentant les types
    static const std::string NOM_ARAIGNEE;
    static const std::string NOM_BUTOIR;
    static const std::string NOM_CIBLE;

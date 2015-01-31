@@ -20,6 +20,7 @@
 #include "Usines/UsineNoeudRessort.h"
 #include "Usines/UsineNoeudTrou.h"
 #include "Usines/UsineNoeudVide.h"
+#include "Usines/UsineNoeudTable.h"
 
 #include "EtatOpenGL.h"
 
@@ -36,6 +37,7 @@ const std::string ArbreRenduINF2990::NOM_PORTAIL{ "portail" };
 const std::string ArbreRenduINF2990::NOM_RESSORT{ "ressort" };
 const std::string ArbreRenduINF2990::NOM_TROU{ "trou" };
 const std::string ArbreRenduINF2990::NOM_VIDE{ "vide" };
+const std::string ArbreRenduINF2990::NOM_TABLE{ "table" };
 
 ////////////////////////////////////////////////////////////////////////
 ///
@@ -63,6 +65,7 @@ ArbreRenduINF2990::ArbreRenduINF2990()
 	ajouterUsine(NOM_RESSORT, new UsineNoeudRessort{ NOM_RESSORT });
 	ajouterUsine(NOM_TROU, new UsineNoeudTrou{ NOM_TROU });
 	ajouterUsine(NOM_VIDE, new UsineNoeudTrou{ NOM_VIDE });
+	ajouterUsine(NOM_TABLE, new UsineNoeudTable{ NOM_TABLE });
 }
 
 
@@ -101,6 +104,18 @@ void ArbreRenduINF2990::initialiser()
 //	noeud->ajouter(creerNoeud(NOM_CONECUBE));
 //	ajouter(noeud);
 }
+
+NoeudAbstrait* ArbreRenduINF2990::getEnfant(int position)
+{
+	if (position > enfants_.size() || position < 0)
+		return nullptr;
+	else
+		return enfants_[position];
+}
+
+
+
+
 ///////////////////////////////////////////////////////////////////////////////
 /// @}
 ///////////////////////////////////////////////////////////////////////////////

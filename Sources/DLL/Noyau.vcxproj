@@ -154,6 +154,7 @@
     <ClCompile Include="Visiteurs\VisiteurAgrandissement.cpp" />
     <ClCompile Include="Visiteurs\VisiteurDeplacement.cpp" />
     <ClCompile Include="Visiteurs\VisiteurRotation.cpp" />
+    <ClCompile Include="Visiteurs\VisiteurSelection.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Application\FacadeModele.h" />
@@ -195,6 +196,7 @@
     <ClInclude Include="Visiteurs\VisiteurAgrandissement.h" />
     <ClInclude Include="Visiteurs\VisiteurDeplacement.h" />
     <ClInclude Include="Visiteurs\VisiteurRotation.h" />
+    <ClInclude Include="Visiteurs\VisiteurSelection.h" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\..\Commun\Utilitaire\Utilitaire.vcxproj">
