@@ -131,14 +131,14 @@ namespace InterfaceGraphique
         {
 
             OpenFileDialog ouvrir_fichier = new OpenFileDialog();
-            ouvrir_fichier.Filter = "Fichiers XML (*.xml)| *.xml | All Files(*.*)|(*.*)";
+            ouvrir_fichier.Filter = "Fichier XML(*.xml)| *.xml| All files(*.*)|*.*";
             ouvrir_fichier.ShowDialog();
         }
 
         private void EnregistrerS_MenuItem_Click(object sender, EventArgs e)
         {
             SaveFileDialog enregistrer_fichier = new SaveFileDialog();
-            enregistrer_fichier.Filter = "Fichiers XML (*.xml)| *.xml | All Files(*.*)|(*.*)";
+            enregistrer_fichier.Filter = "Fichier XML(*.xml)| *.xml| All files(*.*)|*.*";
             enregistrer_fichier.ShowDialog();
         }
 
@@ -224,7 +224,7 @@ namespace InterfaceGraphique
 
         private void butoirG_bouton_Click(object sender, EventArgs e)
         {
-            Console.WriteLine("Palette Gauche.");
+            Console.WriteLine("Butoir Gauche.");
             myObjectName = new StringBuilder("butoir");
             angleX = 0;
             angleY = 0;
@@ -449,9 +449,9 @@ namespace InterfaceGraphique
         {
             Console.WriteLine("Palette gauche J1.");
             myObjectName = new StringBuilder("palette");
-            angleX = 0;
+            angleX = 180;
             angleY = 0;
-            angleZ = 180;
+            angleZ = 0;
             color = 'r';
             // Afficher_Objet();
             // DO STUFF
@@ -481,7 +481,7 @@ namespace InterfaceGraphique
         {
             Console.WriteLine("Palette gauche J2.");
             myObjectName = new StringBuilder("palette");
-            angleX = 0;
+            angleX = 180;
             angleY = 0;
             angleZ = 0;
             color = 'b';
@@ -530,7 +530,7 @@ namespace InterfaceGraphique
         private void Cible_bouton_Click(object sender, EventArgs e)
         {
             Console.WriteLine("Cible.");
-            myObjectName = new StringBuilder("cible");
+           myObjectName = new StringBuilder("cible");
             angleX = 0;
             angleY = 0;
             angleZ = 0;
@@ -545,7 +545,7 @@ namespace InterfaceGraphique
         private void Portails_bouton_Click(object sender, EventArgs e)
         {
             Console.WriteLine("Portail");
-            myObjectName = new StringBuilder("portail");
+            //myObjectName = new StringBuilder("portail");
             angleX = 0;
             angleY = 0;
             angleZ = 0;
@@ -560,7 +560,7 @@ namespace InterfaceGraphique
         private void Mur_bouton_Click(object sender, EventArgs e)
         {
             Console.WriteLine("Mur");
-            myObjectName = new StringBuilder("mur");
+            //myObjectName = new StringBuilder("mur");
             angleX = 0;
             angleY = 0;
             angleZ = 0;
