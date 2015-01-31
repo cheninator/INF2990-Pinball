@@ -23,15 +23,17 @@ namespace InterfaceGraphique
         private int difference = 100;
         private int xPosition;
         private int yPosition;
-        private float angle = 0F;
+        private float angleX = 0F;
+        private float angleY = 0F;
+        private float angleZ = 0F;
         private float scale = 1F;
-        private char couleur = 'x';
+        private char color = 'x';
         public Exemple()
         {
             this.KeyPress += new KeyPressEventHandler(ToucheEnfonce);
             // Pour le deplacement de la vue
             // besoin de nouveau event parce que C#....
-            this.KeyDown+= new KeyEventHandler(ToucheDown);
+            this.KeyDown += new KeyEventHandler(ToucheDown);
             this.Icon = Properties.Resources.Pinball;
             InitializeComponent();
             Program.peutAfficher = true;
@@ -59,9 +61,10 @@ namespace InterfaceGraphique
             }
             catch (Exception)
             {
-            } 
+            }
         }
-        private void ToucheDown(Object o, KeyEventArgs e){
+        private void ToucheDown(Object o, KeyEventArgs e)
+        {
             if (panel_GL.Focused)
             {
                 if (e.KeyData == Keys.Left)
@@ -80,7 +83,7 @@ namespace InterfaceGraphique
         }
         private void ToucheEnfonce(Object o, KeyPressEventArgs e)
         {
-                   
+
             System.Console.WriteLine(e.KeyChar);
             if (e.KeyChar == 'f')
             {
@@ -93,12 +96,12 @@ namespace InterfaceGraphique
             }
             if (e.KeyChar == 's')
             {
-                Selection_MenuItem_Click(this,e);
-            }   
+                Selection_MenuItem_Click(this, e);
+            }
         }
         private void Exemple_FormClosing(object sender, FormClosingEventArgs e)
         {
-            lock(Program.unLock)
+            lock (Program.unLock)
             {
                 FonctionsNatives.libererOpenGL();
                 Program.peutAfficher = false;
@@ -109,19 +112,19 @@ namespace InterfaceGraphique
         {
 
         }
-    
+
         private void Aide_MenuItem_Click(object sender, EventArgs e)
         {
             BackgroundWorker bw = new BackgroundWorker();
             bw.WorkerReportsProgress = true;
             bw.DoWork += new DoWorkEventHandler(
-        delegate(object o, DoWorkEventArgs args)
+        delegate (object o, DoWorkEventArgs args)
         {
             Aide aide = new Aide();
             aide.StartPosition = FormStartPosition.CenterScreen;
             aide.ShowDialog();
         });
-        bw.RunWorkerAsync();   
+            bw.RunWorkerAsync();
         }
 
         private void Ouvrir_MenuItem_Click(object sender, EventArgs e)
@@ -141,7 +144,7 @@ namespace InterfaceGraphique
 
         private void helpToolStripButton_Click(object sender, EventArgs e)
         {
-            Aide_MenuItem_Click(this,e);
+            Aide_MenuItem_Click(this, e);
         }
 
         private void Selectionner_BO_Click(object sender, EventArgs e)
@@ -159,7 +162,7 @@ namespace InterfaceGraphique
 
         private void Selection_MenuItem_Click(object sender, EventArgs e)
         {
-            
+
             bouton_Selection_Click(this, e);
         }
 
@@ -198,7 +201,7 @@ namespace InterfaceGraphique
             Console.Write(panel_GL.PointToClient(MousePosition));
             Xbox.Text = panel_GL.PointToClient(MousePosition).X.ToString();
             Ybox.Text = (panel_GL.PointToClient(MousePosition).Y).ToString();
-           
+
             panel_GL.Focus();
         }
 
@@ -206,7 +209,10 @@ namespace InterfaceGraphique
         {
             Console.WriteLine("Generateur Bille");
             myObjectName = new StringBuilder("generateurbille");
-            //Afficher_Objet();
+            angleX = 0;
+            angleY = 0;
+            angleZ = 0;
+            color = 'x';
         }
 
         private void Proprietes_MenuItem_Click(object sender, EventArgs e)
@@ -220,8 +226,10 @@ namespace InterfaceGraphique
         {
             Console.WriteLine("Palette Gauche.");
             myObjectName = new StringBuilder("butoir");
-            // Afficher_Objet();
-            
+            angleX = 0;
+            angleY = 0;
+            angleZ = 180;
+            color = 'x';
 
         }
 
@@ -309,7 +317,8 @@ namespace InterfaceGraphique
         private void Annuler_prop_boutn_Click(object sender, EventArgs e)
         {
             //myObjectName = new StringBuilder("vide");
-            FonctionsNatives.resetObject();
+            //FonctionsNatives.resetObject();
+            FonctionsNatives.removeObject();
         }
 
         private void Exemple_Load(object sender, EventArgs e)
@@ -321,23 +330,29 @@ namespace InterfaceGraphique
         {
             Console.WriteLine("Ressort");
             myObjectName = new StringBuilder("ressort");
-            // Afficher_Objet();
-            // DO STUFF
+            angleX = 0;
+            angleY = 0;
+            angleZ = 0;
+            color = 'x';
         }
 
         private void Generateur_bouton_Click(object sender, EventArgs e)
         {
             Console.WriteLine("Generateur");
-            // Afficher_Objet();
-            // DO STUFF
+            angleX = 0;
+            angleY = 0;
+            angleZ = 0;
+            color = 'x';
         }
 
         private void Trou_bouton_Click(object sender, EventArgs e)
         {
             Console.WriteLine("Trou");
             myObjectName = new StringBuilder("trou");
-            // Afficher_Objet();
-            // DO STUFF
+            angleX = 0;
+            angleY = 0;
+            angleZ = 0;
+            color = 'x';
         }
 
         private void bouton_Deplacement_Click(object sender, EventArgs e)
@@ -377,7 +392,7 @@ namespace InterfaceGraphique
         {
             Console.WriteLine("Outil Zoom.");
             // TO DO
-            
+
             if (zoom_Bar.Enabled)
                 zoom_Bar.Enabled = false;
             else
@@ -434,7 +449,10 @@ namespace InterfaceGraphique
         {
             Console.WriteLine("Palette gauche J1.");
             myObjectName = new StringBuilder("palette");
-            angle = 180;
+            angleX = 0;
+            angleY = 0;
+            angleZ = 180;
+            color = 'r';
             // Afficher_Objet();
             // DO STUFF
         }
@@ -448,8 +466,10 @@ namespace InterfaceGraphique
         {
             Console.WriteLine("Palette droite J1.");
             myObjectName = new StringBuilder("palette");
-            // Afficher_Objet();
-            // DO STUFF
+            angleX = 0;
+            angleY = 0;
+            angleZ = 0;
+            color = 'r';
         }
 
         private void PD_J1_MenuItem_Click(object sender, EventArgs e)
@@ -461,22 +481,25 @@ namespace InterfaceGraphique
         {
             Console.WriteLine("Palette gauche J2.");
             myObjectName = new StringBuilder("palette");
-            angle = 180;
-            // Afficher_Objet();
-            // DO STUFF
+            angleX = 0;
+            angleY = 0;
+            angleZ = 0;
+            color = 'b';
         }
 
         private void PG_J2_MenuItem_Click(object sender, EventArgs e)
         {
-            PGJ2_bouton_Click(this,e);
+            PGJ2_bouton_Click(this, e);
         }
 
         private void PDJ2_bouton_Click(object sender, EventArgs e)
         {
             Console.WriteLine("Palette droite J2.");
             myObjectName = new StringBuilder("palette");
-            // Afficher_Objet();
-            // DO STUFF
+            angleX = 0;
+            angleY = 0;
+            angleZ = 0;
+            color = 'b';
         }
 
         private void PD_J2_MenuItem_Click(object sender, EventArgs e)
@@ -493,8 +516,10 @@ namespace InterfaceGraphique
         {
             Console.WriteLine("Butoir Droit.");
             myObjectName = new StringBuilder("butoir");
-            // Afficher_Objet();
-            // DO STUFF
+            angleX = 0;
+            angleY = 0;
+            angleZ = 0;
+            color = 'x';
         }
 
         private void BTD_MenuItem_Click(object sender, EventArgs e)
@@ -506,8 +531,10 @@ namespace InterfaceGraphique
         {
             Console.WriteLine("Cible.");
             myObjectName = new StringBuilder("cible");
-            // Afficher_Objet();
-            // DO STUFF
+            angleX = 0;
+            angleY = 0;
+            angleZ = 0;
+            color = 'x';
         }
 
         private void Cible_MenuItem_Click(object sender, EventArgs e)
@@ -519,8 +546,10 @@ namespace InterfaceGraphique
         {
             Console.WriteLine("Portail");
             myObjectName = new StringBuilder("portail");
-            // Afficher_Objet();
-            // DO STUFF
+            angleX = 0;
+            angleY = 0;
+            angleZ = 0;
+            color = 'x';
         }
 
         private void Portails_MenuItem_Click(object sender, EventArgs e)
@@ -532,8 +561,10 @@ namespace InterfaceGraphique
         {
             Console.WriteLine("Mur");
             myObjectName = new StringBuilder("mur");
-            // Afficher_Objet();
-            // DO STUFF
+            angleX = 0;
+            angleY = 0;
+            angleZ = 0;
+            color = 'x';
         }
 
         private void Mur_MenuItem_Click(object sender, EventArgs e)
@@ -565,7 +596,7 @@ namespace InterfaceGraphique
         private void panel_GL_MouseDown(object sender, MouseEventArgs e)
         {
 
-           
+
             if (e.Button == MouseButtons.Left)
             {
                 origin = panel_GL.PointToClient(MousePosition);
@@ -581,30 +612,30 @@ namespace InterfaceGraphique
         }
         private void panel_MouseMove(object sender, MouseEventArgs e)
         {
-           if (e.X < xPosition - difference
-        || e.X > xPosition + difference
-        || e.Y < yPosition - difference
-        || e.Y > yPosition + difference)
-           {
-               Console.WriteLine("DRAGN AND DROP");
-               panel_GL.MouseMove -= panel_MouseMove;
-           }
+            if (e.X < xPosition - difference
+         || e.X > xPosition + difference
+         || e.Y < yPosition - difference
+         || e.Y > yPosition + difference)
+            {
+                Console.WriteLine("DRAGN AND DROP");
+                panel_GL.MouseMove -= panel_MouseMove;
+            }
         }
 
         private void panel_GL_MouseUp(object sender, MouseEventArgs e)
         {
             Point destination = panel_GL.PointToClient(MousePosition);
-            if ( (Math.Abs(destination.X - origin.X) < 3 ) 
+            if ((Math.Abs(destination.X - origin.X) < 3)
                  &&
-                 (Math.Abs(destination.Y - origin.Y) < 3 )           
+                 (Math.Abs(destination.Y - origin.Y) < 3)
                 )
             {
                 Afficher_Objet();
                 FonctionsNatives.positionObjet(panel_GL.PointToClient(MousePosition).X, panel_GL.PointToClient(MousePosition).Y);
-                FonctionsNatives.rotate(angle);
+                FonctionsNatives.rotate(angleX, 'x');
+                FonctionsNatives.rotate(angleY, 'y');
+                FonctionsNatives.rotate(angleZ, 'z');
                 FonctionsNatives.scaleObjet(scale);
-                angle = 0;
-                scale = 1;
                 Console.WriteLine("Good Spawn");
             }
         }
@@ -631,7 +662,7 @@ namespace InterfaceGraphique
         {
             return (targetForm.WindowState == FormWindowState.Maximized);
         }
-    } 
+    }
 
     static partial class FonctionsNatives
     {
@@ -646,10 +677,10 @@ namespace InterfaceGraphique
 
         [DllImport(@"Noyau.dll", CallingConvention = CallingConvention.Cdecl)]
         public static extern void animer(double temps);
-        
+
         [DllImport(@"Noyau.dll", CallingConvention = CallingConvention.Cdecl)]
         public static extern void redimensionnerFenetre(int largeur, int hauteur);
-        
+
         [DllImport(@"Noyau.dll", CallingConvention = CallingConvention.Cdecl)]
         public static extern void creerObjet(StringBuilder value, int length);
 
