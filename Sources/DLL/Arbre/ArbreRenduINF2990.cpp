@@ -99,10 +99,11 @@ void ArbreRenduINF2990::initialiser()
 	// On vide l'arbre
 	vider();
 
+
 	// On ajoute un noeud bidon seulement pour que quelque chose s'affiche.
-//	NoeudAbstrait* noeud{ creerNoeud(NOM_ARAIGNEE) };
-//	noeud->ajouter(creerNoeud(NOM_CONECUBE));
-//	ajouter(noeud);
+	NoeudAbstrait* noeud{ creerNoeud(NOM_TABLE) };
+	//noeud->ajouter(creerNoeud(NOM_CONECUBE));
+	ajouter(noeud);
 }
 
 NoeudAbstrait* ArbreRenduINF2990::getEnfant(int position)
