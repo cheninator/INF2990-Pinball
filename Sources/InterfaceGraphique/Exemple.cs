@@ -207,8 +207,8 @@ namespace InterfaceGraphique
 
         private void butourCirc_bouton_Click(object sender, EventArgs e)
         {
-            Console.WriteLine("Bille");
-            myObjectName = new StringBuilder("bille");
+            Console.WriteLine("Cible");
+            myObjectName = new StringBuilder("Cible");
             angleX = 0;
             angleY = 0;
             angleZ = 0;
@@ -341,8 +341,8 @@ namespace InterfaceGraphique
             Console.WriteLine("Generateur");
             myObjectName = new StringBuilder("generateurbille");
             angleX = 0;
-            angleY = 0;
-            angleZ = 0;
+            angleY = 0;// 90;
+            angleZ = 0;//180;
             color = 'x';
         }
 
