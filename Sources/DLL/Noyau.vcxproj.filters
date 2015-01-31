@@ -144,6 +144,9 @@
     <ClCompile Include="Arbre\Noeuds\NoeudBille.cpp">
       <Filter>Source Files\Arbre\Noeuds</Filter>
     </ClCompile>
+    <ClCompile Include="Arbre\Noeuds\NoeudButoirCirculaire.cpp">
+      <Filter>Source Files\Arbre\Noeuds</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Application\FacadeModele.h">
@@ -271,6 +274,12 @@
     </ClInclude>
     <ClInclude Include="Arbre\Noeuds\NoeudBille.h">
       <Filter>Header Files\Arbre\Noeuds</Filter>
+    </ClInclude>
+    <ClInclude Include="Arbre\Noeuds\NoeudButoirCirculaire.h">
+      <Filter>Header Files\Arbre\Noeuds</Filter>
+    </ClInclude>
+    <ClInclude Include="Arbre\Usines\UsineNoeudButoirCirculaire.h">
+      <Filter>Header Files\Arbre\Usines</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

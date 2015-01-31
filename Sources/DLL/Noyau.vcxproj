@@ -133,6 +133,7 @@
     <ClCompile Include="Arbre\Noeuds\NoeudAraignee.cpp" />
     <ClCompile Include="Arbre\Noeuds\NoeudBille.cpp" />
     <ClCompile Include="Arbre\Noeuds\NoeudButoir.cpp" />
+    <ClCompile Include="Arbre\Noeuds\NoeudButoirCirculaire.cpp" />
     <ClCompile Include="Arbre\Noeuds\NoeudCible.cpp" />
     <ClCompile Include="Arbre\Noeuds\NoeudConeCube.cpp" />
     <ClCompile Include="Arbre\Noeuds\NoeudGenerateurBille.cpp" />
@@ -162,6 +163,7 @@
     <ClInclude Include="Arbre\Noeuds\NoeudAraignee.h" />
     <ClInclude Include="Arbre\Noeuds\NoeudBille.h" />
     <ClInclude Include="Arbre\Noeuds\NoeudButoir.h" />
+    <ClInclude Include="Arbre\Noeuds\NoeudButoirCirculaire.h" />
     <ClInclude Include="Arbre\Noeuds\NoeudCible.h" />
     <ClInclude Include="Arbre\Noeuds\NoeudConeCube.h" />
     <ClInclude Include="Arbre\Noeuds\NoeudGenerateurBille.h" />
@@ -175,6 +177,7 @@
     <ClInclude Include="Arbre\Usines\UsineNoeudAraignee.h" />
     <ClInclude Include="Arbre\Usines\UsineNoeudBille.h" />
     <ClInclude Include="Arbre\Usines\UsineNoeudButoir.h" />
+    <ClInclude Include="Arbre\Usines\UsineNoeudButoirCirculaire.h" />
     <ClInclude Include="Arbre\Usines\UsineNoeudCible.h" />
     <ClInclude Include="Arbre\Usines\UsineNoeudConeCube.h" />
     <ClInclude Include="Arbre\Usines\UsineNoeudGenerateurBille.h" />

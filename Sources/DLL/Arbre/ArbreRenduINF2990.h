@@ -46,6 +46,7 @@ public:
 	/// La chaîne représentant les types
    static const std::string NOM_ARAIGNEE;
    static const std::string NOM_BUTOIR;
+   static const std::string NOM_BUTOIRCIRCULAIRE;
    static const std::string NOM_CIBLE;
    static const std::string NOM_CONECUBE;
    static const std::string NOM_BILLE;

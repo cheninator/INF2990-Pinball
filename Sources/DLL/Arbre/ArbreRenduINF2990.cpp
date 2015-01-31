@@ -11,6 +11,7 @@
 
 #include "Usines/UsineNoeudAraignee.h"
 #include "Usines/UsineNoeudButoir.h"
+#include "Usines/UsineNoeudButoirCirculaire.h"
 #include "Usines/UsineNoeudCible.h"
 #include "Usines/UsineNoeudConeCube.h"
 #include "Usines/UsineNoeudBille.h"
@@ -29,6 +30,7 @@
 /// La chaîne représentant les types
 const std::string ArbreRenduINF2990::NOM_ARAIGNEE{ "araignee" };
 const std::string ArbreRenduINF2990::NOM_BUTOIR{ "butoir" };
+const std::string ArbreRenduINF2990::NOM_BUTOIRCIRCULAIRE{ "butoircirculaire" };
 const std::string ArbreRenduINF2990::NOM_CIBLE{ "cible" };
 const std::string ArbreRenduINF2990::NOM_CONECUBE{ "conecube" };
 const std::string ArbreRenduINF2990::NOM_BILLE{ "bille" };
@@ -58,6 +60,7 @@ ArbreRenduINF2990::ArbreRenduINF2990()
 	// Construction des usines
 	ajouterUsine(NOM_ARAIGNEE, new UsineNoeudAraignee{ NOM_ARAIGNEE });
 	ajouterUsine(NOM_BUTOIR, new UsineNoeudButoir{ NOM_BUTOIR });
+	ajouterUsine(NOM_BUTOIRCIRCULAIRE, new UsineNoeudButoirCirculaire{ NOM_BUTOIRCIRCULAIRE });
 	ajouterUsine(NOM_CIBLE, new UsineNoeudCible{ NOM_CIBLE });
 	ajouterUsine(NOM_CONECUBE, new UsineNoeudConeCube{ NOM_CONECUBE });
 	ajouterUsine(NOM_BILLE, new UsineNoeudBille{ NOM_BILLE });
