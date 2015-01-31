@@ -339,6 +339,7 @@ namespace InterfaceGraphique
         private void Generateur_bouton_Click(object sender, EventArgs e)
         {
             Console.WriteLine("Generateur");
+            myObjectName = new StringBuilder("generateurbille");
             angleX = 0;
             angleY = 0;
             angleZ = 0;
