@@ -107,7 +107,6 @@
             this.Information_MenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.Aide_MenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.panel_GL = new System.Windows.Forms.Panel();
-            this.button2 = new System.Windows.Forms.Button();
             this.printPreviewDialog1 = new System.Windows.Forms.PrintPreviewDialog();
             this.panel1.SuspendLayout();
             this.Creation_Panel.SuspendLayout();
@@ -120,17 +119,16 @@
             ((System.ComponentModel.ISupportInitialize)(this.zoom_Bar)).BeginInit();
             this.Groupe_Proprietes.SuspendLayout();
             this.menuStrip1.SuspendLayout();
-            this.panel_GL.SuspendLayout();
             this.SuspendLayout();
             // 
             // panel1
             // 
             this.panel1.BackColor = System.Drawing.SystemColors.ActiveCaption;
             this.panel1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.panel1.Controls.Add(this.panel_GL);
             this.panel1.Controls.Add(this.Creation_Panel);
             this.panel1.Controls.Add(this.flowLayoutPanel1);
             this.panel1.Controls.Add(this.menuStrip1);
-            this.panel1.Controls.Add(this.panel_GL);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel1.Location = new System.Drawing.Point(0, 0);
             this.panel1.Name = "panel1";
@@ -886,22 +884,14 @@
             // panel_GL
             // 
             this.panel_GL.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.panel_GL.Controls.Add(this.button2);
             this.panel_GL.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel_GL.Location = new System.Drawing.Point(0, 0);
+            this.panel_GL.Location = new System.Drawing.Point(163, 24);
             this.panel_GL.Name = "panel_GL";
-            this.panel_GL.Size = new System.Drawing.Size(954, 638);
+            this.panel_GL.Size = new System.Drawing.Size(566, 614);
             this.panel_GL.TabIndex = 4;
             this.panel_GL.MouseClick += new System.Windows.Forms.MouseEventHandler(this.panel_GL_MouseClick);
             this.panel_GL.MouseDown += new System.Windows.Forms.MouseEventHandler(this.panel_GL_MouseDown);
             this.panel_GL.MouseUp += new System.Windows.Forms.MouseEventHandler(this.panel_GL_MouseUp);
-            // 
-            // button2
-            // 
-            this.button2.Location = new System.Drawing.Point(0, 0);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(75, 23);
-            this.button2.TabIndex = 0;
             // 
             // printPreviewDialog1
             // 
@@ -941,7 +931,6 @@
             this.Groupe_Proprietes.PerformLayout();
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
-            this.panel_GL.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -1027,7 +1016,6 @@
         private System.Windows.Forms.Button Trou_bouton;
         private System.Windows.Forms.Button Generateur_bouton;
         private System.Windows.Forms.Button Ressort_bouton;
-        private System.Windows.Forms.Button button2;
     }
 }
 

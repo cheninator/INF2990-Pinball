@@ -546,7 +546,7 @@ namespace InterfaceGraphique
         private void Portails_bouton_Click(object sender, EventArgs e)
         {
             Console.WriteLine("Portail");
-            //myObjectName = new StringBuilder("portail");
+            myObjectName = new StringBuilder("portail");
             angleX = 0;
             angleY = 0;
             angleZ = 0;
@@ -561,7 +561,7 @@ namespace InterfaceGraphique
         private void Mur_bouton_Click(object sender, EventArgs e)
         {
             Console.WriteLine("Mur");
-            //myObjectName = new StringBuilder("mur");
+            myObjectName = new StringBuilder("mur");
             angleX = 0;
             angleY = 0;
             angleZ = 0;
