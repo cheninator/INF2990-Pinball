@@ -1,4 +1,5 @@
 #include "VisiteurAgrandissement.h"
+#include "../Arbre/ArbreRenduINF2990.h"
 #include "../Arbre/Noeuds/NoeudButoir.h"
 #include "../Arbre/Noeuds/NoeudCible.h"
 #include "../Arbre/Noeuds/NoeudGenerateurBille.h"
@@ -25,6 +26,22 @@ VisiteurAgrandissement::~VisiteurAgrandissement()
 {
 
 }
+
+bool VisiteurAgrandissement::traiter(ArbreRenduINF2990& noeud)
+{
+	for (unsigned int i = 0; i < noeud.obtenirNombreEnfants(); i++)
+	{
+		// Déplacer UNIQUEMENT les noeuds selectionnes
+		if (noeud.getEnfant(i) != nullptr && noeud.getEnfant(i)->estSelectionnable())
+			noeud.getEnfant(i)->accepterVisiteur(this);
+
+		else
+			return false;
+	}
+
+	return true;
+}
+
 
 bool VisiteurAgrandissement::traiter(NoeudAbstrait& noeud)
 {

@@ -30,6 +30,7 @@ public:
 	void setAgrandissement(glm::dvec3 homothetie) { homothetie_ = homothetie; };
 
 	// Traiter une opération selon le type spécifique de l'objet en paramètre
+	virtual bool traiter(ArbreRenduINF2990& arbre);
 	virtual bool traiter(NoeudAbstrait& noeud);
 	virtual bool traiter(NoeudButoir& butoir);
 	virtual bool traiter(NoeudCible& cible);

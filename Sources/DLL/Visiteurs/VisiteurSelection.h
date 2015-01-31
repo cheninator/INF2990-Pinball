@@ -4,8 +4,6 @@
 #include "VisiteurAbstrait.h"
 #include "glm\glm.hpp"
 
-class ArbreRenduINF2990;
-
 class VisiteurSelection : public VisiteurAbstrait
 {
 public:

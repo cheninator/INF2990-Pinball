@@ -20,14 +20,19 @@ VisiteurSelection::~VisiteurSelection()
 
 }
 
-
 bool VisiteurSelection::traiter(ArbreRenduINF2990& arbre)
 {
-	for (int i = 0; i < arbre.obtenirNombreEnfants(); i++)
+	for (unsigned int i = 0; i < arbre.obtenirNombreEnfants(); i++)
 	{
-		if (arbre.getEnfant(i) != nullptr)
+		// Déplacer UNIQUEMENT les noeuds selectionnes
+		if (arbre.getEnfant(i) != nullptr && arbre.getEnfant(i)->estSelectionnable())
 			arbre.getEnfant(i)->accepterVisiteur(this);
+
+		else
+			return false;
 	}
+
+	return true;
 }
 
 bool VisiteurSelection::traiter(NoeudAbstrait& noeud)
