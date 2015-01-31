@@ -13,6 +13,7 @@
 #include "Usines/UsineNoeudButoir.h"
 #include "Usines/UsineNoeudCible.h"
 #include "Usines/UsineNoeudConeCube.h"
+#include "Usines/UsineNoeudBille.h"
 #include "Usines/UsineNoeudGenerateurBille.h"
 #include "Usines/UsineNoeudMur.h"
 #include "Usines/UsineNoeudPalette.h"
@@ -30,6 +31,7 @@ const std::string ArbreRenduINF2990::NOM_ARAIGNEE{ "araignee" };
 const std::string ArbreRenduINF2990::NOM_BUTOIR{ "butoir" };
 const std::string ArbreRenduINF2990::NOM_CIBLE{ "cible" };
 const std::string ArbreRenduINF2990::NOM_CONECUBE{ "conecube" };
+const std::string ArbreRenduINF2990::NOM_BILLE{ "bille" };
 const std::string ArbreRenduINF2990::NOM_GENERATEURBILLE{ "generateurbille" };
 const std::string ArbreRenduINF2990::NOM_MUR{ "mur" };
 const std::string ArbreRenduINF2990::NOM_PALETTE{ "palette" };
@@ -58,6 +60,7 @@ ArbreRenduINF2990::ArbreRenduINF2990()
 	ajouterUsine(NOM_BUTOIR, new UsineNoeudButoir{ NOM_BUTOIR });
 	ajouterUsine(NOM_CIBLE, new UsineNoeudCible{ NOM_CIBLE });
 	ajouterUsine(NOM_CONECUBE, new UsineNoeudConeCube{ NOM_CONECUBE });
+	ajouterUsine(NOM_BILLE, new UsineNoeudBille{ NOM_BILLE });
 	ajouterUsine(NOM_GENERATEURBILLE, new UsineNoeudGenerateurBille{ NOM_GENERATEURBILLE });
 	ajouterUsine(NOM_MUR, new UsineNoeudMur{ NOM_MUR });
 	ajouterUsine(NOM_PALETTE, new UsineNoeudPalette{ NOM_PALETTE });
@@ -98,7 +101,6 @@ void ArbreRenduINF2990::initialiser()
 {
 	// On vide l'arbre
 	vider();
-
 
 	// On ajoute un noeud bidon seulement pour que quelque chose s'affiche.
 	NoeudAbstrait* noeud{ creerNoeud(NOM_TABLE) };

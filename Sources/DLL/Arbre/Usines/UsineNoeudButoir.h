@@ -15,7 +15,7 @@ public:
 
 
 inline UsineNoeudButoir::UsineNoeudButoir(const std::string& nom)
-	: UsineNoeud(nom, std::string("media/Butoir.obj"))
+	: UsineNoeud(nom, std::string("media/objets/Butoir.obj"))
 {}
 
 NoeudAbstrait* UsineNoeudButoir::creerNoeud() const

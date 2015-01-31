@@ -15,7 +15,7 @@ public:
 
 
 inline UsineNoeudTrou::UsineNoeudTrou(const std::string& nom)
-	: UsineNoeud(nom, std::string("media/Trou.obj"))
+	: UsineNoeud(nom, std::string("media/objets/Trou.obj"))
 {}
 
 NoeudAbstrait* UsineNoeudTrou::creerNoeud() const

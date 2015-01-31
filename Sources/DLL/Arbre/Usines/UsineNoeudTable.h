@@ -15,7 +15,7 @@ public:
 
 
 inline UsineNoeudTable::UsineNoeudTable(const std::string& nom)
-	: UsineNoeud(nom, std::string("media/Table.obj"))
+	: UsineNoeud(nom, std::string("media/objets/Table.obj"))
 {}
 
 NoeudAbstrait* UsineNoeudTable::creerNoeud() const

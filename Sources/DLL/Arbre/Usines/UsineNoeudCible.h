@@ -15,7 +15,7 @@ public:
 
 
 inline UsineNoeudCible::UsineNoeudCible(const std::string& nom)
-	: UsineNoeud(nom, std::string("media/Cible.obj"))
+	: UsineNoeud(nom, std::string("media/objets/Cible.obj"))
 {}
 
 NoeudAbstrait* UsineNoeudCible::creerNoeud() const

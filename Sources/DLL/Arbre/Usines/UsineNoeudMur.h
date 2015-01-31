@@ -15,7 +15,7 @@ public:
 
 
 inline UsineNoeudMur::UsineNoeudMur(const std::string& nom)
-	: UsineNoeud(nom, std::string("media/Mur.obj"))
+	: UsineNoeud(nom, std::string("media/objets/Mur.obj"))
 {}
 
 NoeudAbstrait* UsineNoeudMur::creerNoeud() const

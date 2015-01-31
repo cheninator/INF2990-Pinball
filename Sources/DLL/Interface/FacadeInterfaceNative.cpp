@@ -337,7 +337,7 @@ extern "C"
 	////////////////////////////////////////////////////////////////////////
 	__declspec(dllexport) void purgeAll(void)
 	{
-		FacadeModele::obtenirInstance()->obtenirArbreRenduINF2990()->vider();
+		FacadeModele::obtenirInstance()->obtenirArbreRenduINF2990()->initialiser();
 	}
 
 

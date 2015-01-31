@@ -15,7 +15,7 @@ public:
 
 
 inline UsineNoeudPalette::UsineNoeudPalette(const std::string& nom)
-	: UsineNoeud(nom, std::string("media/Palette.obj"))
+	: UsineNoeud(nom, std::string("media/objets/Palette.obj"))
 {}
 
 NoeudAbstrait* UsineNoeudPalette::creerNoeud() const
