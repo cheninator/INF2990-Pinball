@@ -50,7 +50,7 @@ public:
 ///
 ////////////////////////////////////////////////////////////////////////
 inline UsineNoeudAraignee::UsineNoeudAraignee(const std::string& nom)
-: UsineNoeud(nom, std::string{"media/spider.obj"})
+: UsineNoeud(nom, std::string{"media/Spider.obj"})
 {
 }
 

@@ -49,7 +49,7 @@ public:
 ///
 ////////////////////////////////////////////////////////////////////////
 inline UsineNoeudConeCube::UsineNoeudConeCube(const std::string& nom)
-: UsineNoeud(nom, std::string{"media/cubecone.obj"})
+: UsineNoeud(nom, std::string{"media/Cubecone.obj"})
 {
 }
 
