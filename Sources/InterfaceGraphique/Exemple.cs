@@ -207,8 +207,8 @@ namespace InterfaceGraphique
 
         private void butourCirc_bouton_Click(object sender, EventArgs e)
         {
-            Console.WriteLine("Cible");
-            myObjectName = new StringBuilder("cible");
+            Console.WriteLine("ButoirCirculaire");
+            myObjectName = new StringBuilder("butoircirculaire");
             angleX = 0;
             angleY = 0;
             angleZ = 0;
