@@ -24,8 +24,8 @@ void NoeudTable::afficherConcret() const
 	NoeudComposite::afficherConcret();
 	// Sauvegarde de la matrice.
 	glPushMatrix();
-	glRotatef(90, 0, 0, 1);
-	glTranslatef(-75, -225, 0);
+	glTranslatef(200, -50, 0);
+	glRotatef(-90, 0, 0, 1);
 	// Affichage du modèle.
 	liste_->dessiner();
 	// Restauration de la matrice.
