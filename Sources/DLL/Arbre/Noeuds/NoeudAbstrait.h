@@ -138,8 +138,13 @@ public:
 	virtual void afficherConcret() const;
 	/// Anime le noeud.
 	virtual void animer(float dt);
-
+	// Accepter un visiteur
 	virtual bool accepterVisiteur(VisiteurAbstrait* vis){ return false; };
+
+
+	inline const glm::dvec3& obtenirAgrandissement() const;
+
+	inline const glm::dvec3& NoeudAbstrait::obtenirRotation() const;
 
 protected:
 	/// Type du noeud.
@@ -482,6 +487,38 @@ inline void NoeudAbstrait::assignerObjetRendu(modele::Modele3D const* modele, mo
 	modele_ = modele;
 	liste_ = liste;
 }
+
+////////////////////////////////////////////////////////////////////////
+///
+/// @fn inline const glm::dvec3& NoeudAbstrait::obtenirAgrandissement() const
+///
+/// Cette fonction retourne l'agrandissement du noeud par rapport
+/// à son parent.
+///
+/// @return La position relative.
+///
+////////////////////////////////////////////////////////////////////////
+inline const glm::dvec3& NoeudAbstrait::obtenirAgrandissement() const
+{
+	return scale_;
+}
+
+
+////////////////////////////////////////////////////////////////////////
+///
+/// @fn inline const glm::dvec3& NoeudAbstrait::obtenirRotation() const
+///
+/// Cette fonction retourne l'agrandissement du noeud par rapport
+/// à son parent.
+///
+/// @return La position relative.
+///
+////////////////////////////////////////////////////////////////////////
+inline const glm::dvec3& NoeudAbstrait::obtenirRotation() const
+{
+	return rotation_;
+}
+
 #endif // __ARBRE_NOEUDS_NOEUDABSTRAIT_H__
 
 

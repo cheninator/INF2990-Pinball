@@ -52,6 +52,15 @@ bool VisiteurXML::traiter(NoeudAbstrait* noeud, tinyxml2::XMLElement* parent)
 		element->SetAttribute("posY", noeud->obtenirPositionRelative().y);
 		element->SetAttribute("posZ", noeud->obtenirPositionRelative().z);
 
+		
+		element->SetAttribute("scaleX", noeud->obtenirAgrandissement().x);
+		element->SetAttribute("scaleY", noeud->obtenirAgrandissement().y);
+		element->SetAttribute("scaleZ", noeud->obtenirAgrandissement().z);
+		element->SetAttribute("angleX", noeud->obtenirRotation().x);
+		element->SetAttribute("angleY", noeud->obtenirRotation().y);
+		element->SetAttribute("angleZ", noeud->obtenirRotation().z);
+		
+
 		for (unsigned int i = 0; i < noeud->obtenirNombreEnfants(); i++)
 		{
 			traiter(noeud->chercher(i), element);
@@ -65,6 +74,14 @@ bool VisiteurXML::traiter(NoeudAbstrait* noeud, tinyxml2::XMLElement* parent)
 		element->SetAttribute("posX", noeud->obtenirPositionRelative().x);
 		element->SetAttribute("posY", noeud->obtenirPositionRelative().y);
 		element->SetAttribute("posZ", noeud->obtenirPositionRelative().z);
+		
+		element->SetAttribute("scaleX", noeud->obtenirAgrandissement().x);
+		element->SetAttribute("scaleY", noeud->obtenirAgrandissement().y);
+		element->SetAttribute("scaleZ", noeud->obtenirAgrandissement().z);
+		element->SetAttribute("angleX", noeud->obtenirRotation().x);
+		element->SetAttribute("angleY", noeud->obtenirRotation().y);
+		element->SetAttribute("angleZ", noeud->obtenirRotation().z);
+		
 
 		parent->LinkEndChild(element);
 	}
