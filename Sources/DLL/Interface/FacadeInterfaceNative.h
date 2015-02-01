@@ -24,7 +24,9 @@ extern "C" {
 	__declspec(dllexport) bool executerTests();
 	__declspec(dllexport) void creerObjet(char* value, int length);
 	__declspec(dllexport) void positionObjet(int x, int y, int z = 0);
+	__declspec(dllexport) void translateObjet(int x, int y, int z = 0);
 	__declspec(dllexport) void scaleObjet(double scale);
+	__declspec(dllexport) void addScaleObjet(int myScale);
 	__declspec(dllexport) void scaleXYZObjet(double x, double y, double z);
 	__declspec(dllexport) void rotate(float angle, char direction = 'x');
 	__declspec(dllexport) void resetObject(void);

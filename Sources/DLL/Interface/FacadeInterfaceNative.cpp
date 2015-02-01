@@ -20,9 +20,36 @@
 
 #include "BancTests.h"
 
+
+
 extern "C"
 {
 	static NoeudAbstrait* objet = new NoeudAbstrait();
+	static double facteurDeTransition; // DONT ASK WHY
+
+
+	////////////////////////////////////////////////////////////////////////
+	///
+	/// static void calculerTransition(void)
+	///
+	/// Cette fonction interne permet d'assigner un facteur de
+	/// transition (qui est une variable static interne a la librairie
+	/// pour permettre de garder la meme "vitesse" de mouvement entre
+	/// le rendu openGL et la fenetre ne pixel C#
+	///
+	/// @param[in] Aucun
+	///
+	/// @return Aucune. (assigne une valeur a une variable globale a l'interne)
+	///
+	////////////////////////////////////////////////////////////////////////
+	static void calculerTransition(void)
+	{
+		glm::dvec3 positionZero;
+		glm::dvec3 positionUn;
+		FacadeModele::obtenirInstance()->obtenirVue()->convertirClotureAVirtuelle(0, 0, positionZero);
+		FacadeModele::obtenirInstance()->obtenirVue()->convertirClotureAVirtuelle(100, 100, positionUn);
+		facteurDeTransition = (((positionUn.y - positionZero.y) / 100 ) + ((positionUn.y - positionZero.y)/100))/(-2);
+	}
 
 	////////////////////////////////////////////////////////////////////////
 	///
@@ -193,7 +220,7 @@ extern "C"
 	
 	////////////////////////////////////////////////////////////////////////
 	///
-	/// @fn __declspec(dllexport) void* __cdecl creerObjet()
+	/// @fn __declspec(dllexport) void __cdecl creerObjet()
 	///
 	/// @param[in]  value : Nom de l'objet
 	/// @param[in]  length : Taille du nom de l'objet
@@ -217,7 +244,7 @@ extern "C"
 
 	////////////////////////////////////////////////////////////////////////
 	///
-	/// @fn void VueOrtho::positionObjet(int x, int y, int z)
+	/// @fn __declspec(dllexport) void __cdecl positionObjet(int x, int y, int z)
 	///
 	/// @param[in]  x : La positon en x
 	/// @param[in]  y : La positon en y
@@ -236,6 +263,31 @@ extern "C"
 		std::cout << std::endl << "x: " << maPosition.x << "y: " << maPosition.y << "z: " << maPosition.z << std::endl;
 	}
 
+
+	////////////////////////////////////////////////////////////////////////
+	///
+	/// @fn __declspec(dllexport) void __cdecl translateObjet(int x, int y, int z)
+	///
+	/// @param[in]  x : La positon en x
+	/// @param[in]  y : La positon en y
+	/// @param[in]  z : La positon en z
+	///
+	/// Permet de deplacer un objet en x y et/ou z
+	///
+	/// @return Aucune.
+	///
+	////////////////////////////////////////////////////////////////////////
+	__declspec(dllexport) void __cdecl translateObjet(int x, int y, int z)
+	{
+		calculerTransition();
+		glm::dvec3 maPositionPresente;
+		maPositionPresente = objet->obtenirPositionRelative();
+		objet->assignerPositionRelative({ maPositionPresente.x + x * facteurDeTransition ,
+										  maPositionPresente.y + y * facteurDeTransition ,
+										  0 });
+	}
+	
+
 	////////////////////////////////////////////////////////////////////////
 	///
 	/// @fn void VueOrtho::scaleObjet(double scale)
@@ -252,6 +304,37 @@ extern "C"
 		objet->assignerEchelle({ scale, scale, scale });
 	}
 
+	////////////////////////////////////////////////////////////////////////
+	///
+	/// @fn void VueOrtho::scaleObjet(double scale)
+	///
+	/// @param[in]  scale : La multiplication en x
+	///
+	/// Permet de resize un objet uniformement
+	///
+	/// @return Aucune.
+	///
+	////////////////////////////////////////////////////////////////////////
+	
+	__declspec(dllexport) void __cdecl addScaleObjet(int myScale)
+	{
+		calculerTransition();
+
+		glm::dvec3 monScalePresent;
+		float deltaScale = (float)myScale;
+		monScalePresent = objet->obtenirAgrandissement();
+		monScalePresent.x += myScale * facteurDeTransition;
+		monScalePresent.y += myScale * facteurDeTransition;
+		monScalePresent.z += myScale * facteurDeTransition;
+		if (monScalePresent.x <= 0)
+			monScalePresent.x -= myScale * facteurDeTransition;
+		if (monScalePresent.y <= 0)
+			monScalePresent.y -= myScale * facteurDeTransition;
+		if (monScalePresent.z <= 0)
+			monScalePresent.z -= myScale * facteurDeTransition;
+		objet->assignerEchelle({ monScalePresent.x, monScalePresent.y, monScalePresent.z });
+	}
+	
 	////////////////////////////////////////////////////////////////////////
 	///
 	/// @fn void VueOrtho::scaleObjetXYZ(double x, double y, double z)

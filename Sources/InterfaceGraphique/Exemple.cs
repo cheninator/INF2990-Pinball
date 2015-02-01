@@ -20,11 +20,8 @@ namespace InterfaceGraphique
         FullScreen fs = new FullScreen();
         StringBuilder myObjectName = new StringBuilder("vide");
         Point origin;
-        Point spawnP;
-        private int difference = 100;
+        Point previousP, currentP;
         private char state = 's';
-        private int xPosition;
-        private int yPosition;
         private float angleX = 0F;
         private float angleY = 0F;
         private float angleZ = 0F;
@@ -616,10 +613,10 @@ namespace InterfaceGraphique
             if (e.Button == MouseButtons.Right)
             {
                 panel_GL.MouseMove += new MouseEventHandler(panel_MouseMove);
-                spawnP.X = e.X;
-                spawnP.Y = e.Y;
-                xPosition = e.X;
-                yPosition = e.Y;
+                previousP.X = e.X;
+                previousP.Y = e.Y;
+                currentP.X = e.X;
+                currentP.Y = e.Y;
 
 
             }
@@ -631,48 +628,26 @@ namespace InterfaceGraphique
           
             if (state == 'd')
             {
-                int deltaX = origin.X - xPosition;
-                int deltaY = origin.Y - yPosition;
-                FonctionsNatives.positionObjet(spawnP.X -(deltaX), spawnP.Y -(deltaY));
-                
-                origin.X = xPosition;
-                origin.Y = yPosition;
-                xPosition = e.X;
-                yPosition = e.Y;
-               // spawnP.X = spawnP.X + deltaX;
-               // spawnP.Y = spawnP.Y + deltaY;
-                spawnP.X = e.X;
-                spawnP.Y = e.Y;
-                
-                //FonctionsNatives.positionObjet(xPosition, yPosition);
-               
-                //xPosition = e.Location.X;
-                //yPosition = e.Location.Y;
-                
+                int deltaX = (currentP.X - previousP.X) ;
+                int deltaY = -(currentP.Y - previousP.Y) ;
+                FonctionsNatives.translateObjet(deltaX, deltaY);
+
+                previousP.X = currentP.X;
+                previousP.Y = currentP.Y;
+                currentP.X = e.X;
+                currentP.Y = e.Y;
             }
 
 
             if (state == 'e')
             {
-                scale = deltaY(e.Location.Y, yPosition);
-                if (scale == 1)
-                {
-                    Console.WriteLine("WTF IS THIS?");
-                }
-                if (scale <= 0)
-                {
-                    FonctionsNatives.scaleObjet(Math.Abs(1 / scale));
-                }
-                if (scale >= 0)
-                {
-                    FonctionsNatives.scaleObjet(scale);
-                }
-            }
-           
+                int deltaY = -(currentP.Y - previousP.Y);
+                FonctionsNatives.addScaleObjet(deltaY);
+                previousP.Y = currentP.Y;
+                currentP.Y = e.Y;
+                
+          }
           //  scale = 1;
-            
-           
-            
         }
 
         private void panel_GL_MouseUp(object sender, MouseEventArgs e)
@@ -693,8 +668,8 @@ namespace InterfaceGraphique
                     FonctionsNatives.rotate(angleY, 'y');
                     FonctionsNatives.rotate(angleZ, 'z');
                     FonctionsNatives.scaleObjet(scale);
-                    spawnP.X = panel_GL.PointToClient(MousePosition).X;
-                    spawnP.Y = panel_GL.PointToClient(MousePosition).Y;
+                    previousP.X = panel_GL.PointToClient(MousePosition).X;
+                    previousP.Y = panel_GL.PointToClient(MousePosition).Y;
                     Console.WriteLine("Good Spawn");
                 }
             }
@@ -753,7 +728,13 @@ namespace InterfaceGraphique
         public static extern void positionObjet(int x, int y, int z = 0);
 
         [DllImport(@"Noyau.dll", CallingConvention = CallingConvention.Cdecl)]
+        public static extern void translateObjet(int x, int y, int z = 0);
+
+        [DllImport(@"Noyau.dll", CallingConvention = CallingConvention.Cdecl)]
         public static extern void scaleObjet(double scale);
+
+        [DllImport(@"Noyau.dll", CallingConvention = CallingConvention.Cdecl)]
+        public static extern void addScaleObjet(int myScale);
 
         [DllImport(@"Noyau.dll", CallingConvention = CallingConvention.Cdecl)]
         public static extern void scaleXYZObjet(double x, double y, double z);
