@@ -22,7 +22,7 @@ namespace InterfaceGraphique
         Point origin;
         Point spawnP;
         private int difference = 100;
-        private char state = 'n';
+        private char state = 's';
         private int xPosition;
         private int yPosition;
         private float angleX = 0F;
@@ -99,6 +99,14 @@ namespace InterfaceGraphique
             if (e.KeyChar == 's')
             {
                 Selection_MenuItem_Click(this, e);
+            }
+            if( e.KeyChar == 'd')
+            {
+                state = 'd';
+            }
+            if (e.KeyChar == 'e')
+            {
+                state = 'e';
             }
         }
         private void Exemple_FormClosing(object sender, FormClosingEventArgs e)
@@ -621,16 +629,21 @@ namespace InterfaceGraphique
         {
             
           
-            if (state == 'n')
+            if (state == 'd')
             {
-                FonctionsNatives.positionObjet(spawnP.X +(origin.X - xPosition), spawnP.Y +(origin.Y - yPosition));
-               
-                origin.X = e.X;
-                origin.Y = e.Y;
+                int deltaX = origin.X - xPosition;
+                int deltaY = origin.Y - yPosition;
+                FonctionsNatives.positionObjet(spawnP.X -(deltaX), spawnP.Y -(deltaY));
+                
+                origin.X = xPosition;
+                origin.Y = yPosition;
                 xPosition = e.X;
                 yPosition = e.Y;
+               // spawnP.X = spawnP.X + deltaX;
+               // spawnP.Y = spawnP.Y + deltaY;
                 spawnP.X = e.X;
                 spawnP.Y = e.Y;
+                
                 //FonctionsNatives.positionObjet(xPosition, yPosition);
                
                 //xPosition = e.Location.X;
@@ -639,7 +652,7 @@ namespace InterfaceGraphique
             }
 
 
-            if (state == 's')
+            if (state == 'e')
             {
                 scale = deltaY(e.Location.Y, yPosition);
                 if (scale == 1)
