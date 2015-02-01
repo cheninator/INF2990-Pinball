@@ -18,6 +18,7 @@
 
 #include <windows.h>
 #include <cassert>
+#include <iostream>
 
 #include "GL/glew.h"
 #include "FreeImage.h"
@@ -351,3 +352,19 @@ void FacadeModele::animer(float temps)
 ///////////////////////////////////////////////////////////////////////////////
 /// @}
 ///////////////////////////////////////////////////////////////////////////////
+NoeudAbstrait* FacadeModele::trouverObjetSousPointClique(int i, int j)
+{
+	glm::dvec3 pointDansLeMonde;
+	vue_->convertirClotureAVirtuelle(i, j, pointDansLeMonde);
+	std::cout << "Position du click : " << i << "," << j << std::endl;
+	FacadeModele::obtenirInstance()->obtenirVue()->convertirClotureAVirtuelle(i, j, pointDansLeMonde);
+
+	// Creer un visiteur,
+		
+	// Passer le visisteur a l<arbre
+
+	// Demander au visiteur ce qu'il a trouvé et faire quelque chose en conséquence
+
+	std::cout << "Aucun noeud trouvé" << std::endl;
+	return 0;
+}

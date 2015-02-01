@@ -23,6 +23,12 @@
 extern "C"
 {
 	static NoeudAbstrait* objet = new NoeudAbstrait();
+	static NoeudAbstrait* objetCourrant = new NoeudAbstrait();
+
+	__declspec(dllexport) void __cdecl trouverObjetSousPointClique(int i, int j)
+	{
+		objetCourrant = FacadeModele::obtenirInstance()->trouverObjetSousPointClique(i, j);
+	}
 
 	////////////////////////////////////////////////////////////////////////
 	///
