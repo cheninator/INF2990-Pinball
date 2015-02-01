@@ -83,7 +83,6 @@ extern "C"
 	{
 		// Affiche la scène.
 		FacadeModele::obtenirInstance()->afficher();
-
 		// Temporaire: pour détecter les erreurs OpenGL
 		aidegl::verifierErreurOpenGL();
 	}
@@ -234,6 +233,7 @@ extern "C"
 		glm::dvec3 maPosition;
 		FacadeModele::obtenirInstance()->obtenirVue()->convertirClotureAVirtuelle(x, y, maPosition);
 		objet->assignerPositionRelative({ maPosition.x, maPosition.y, z });
+		std::cout << std::endl << "x: " << maPosition.x << "y: " << maPosition.y << "z: " << maPosition.z << std::endl;
 	}
 
 	////////////////////////////////////////////////////////////////////////
