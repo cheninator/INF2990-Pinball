@@ -1,6 +1,6 @@
 # Blender v2.73 (sub 0) OBJ File: ''
 # www.blender.org
-mtllib Cible.mtl
+mtllib ../materiaux/Cible.mtl
 o Cube.001
 v 31.326605 3.580960 -31.326593
 v -31.326593 3.580960 -31.326605

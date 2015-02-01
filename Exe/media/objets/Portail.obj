@@ -1,6 +1,6 @@
 # Blender v2.73 (sub 0) OBJ File: ''
 # www.blender.org
-mtllib Portail.mtl
+mtllib ../materiaux/Portail.mtl
 o Cylinder
 v 10.000000 0.000000 0.820528
 v 9.807853 -1.950903 0.820528

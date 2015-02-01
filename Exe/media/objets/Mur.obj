@@ -1,6 +1,6 @@
 # Blender v2.73 (sub 0) OBJ File: ''
 # www.blender.org
-mtllib Mur.mtl
+mtllib ../materiaux/Mur.mtl
 o Cube_Cube.001
 v -10.000000 37.161770 -1.824379
 v 10.000000 37.161770 -1.824379

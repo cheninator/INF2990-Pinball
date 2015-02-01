@@ -1,6 +1,6 @@
 # Blender v2.73 (sub 0) OBJ File: ''
 # www.blender.org
-mtllib Trou.mtl
+mtllib ../materiaux/Trou.mtl
 o Torus.003
 v 17.985617 -0.024317 -0.007277
 v 17.506113 -0.024317 0.620800

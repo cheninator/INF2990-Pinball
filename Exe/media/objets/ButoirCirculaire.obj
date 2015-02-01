@@ -1,6 +1,6 @@
 # Blender v2.73 (sub 0) OBJ File: ''
 # www.blender.org
-mtllib ButoirCirculaire.mtl
+mtllib ../materiaux/ButoirCirculaire.mtl
 o Cylinder
 v 10.198126 -0.720376 -9.671885
 v 10.198126 -0.720376 19.086428
