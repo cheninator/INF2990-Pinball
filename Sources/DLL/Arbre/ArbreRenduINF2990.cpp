@@ -107,21 +107,20 @@ void ArbreRenduINF2990::initialiser()
 
 	// On ajoute un noeud bidon seulement pour que quelque chose s'affiche.
 	NoeudAbstrait* noeud{ creerNoeud(NOM_TABLE) };
-	//noeud->ajouter(creerNoeud(NOM_CONECUBE));
 	ajouter(noeud);
-
-	NoeudAbstrait* noeud2{ creerNoeud(NOM_BUTOIR) };
-	NoeudAbstrait* noeud3{ creerNoeud(NOM_RESSORT) };
-	NoeudAbstrait* noeud4{ creerNoeud(NOM_BUTOIR) };
-	noeud2->assignerPositionRelative({ 20.0, 30.0, 40.0 });
-	noeud3->assignerPositionRelative({ 50.0, 60.0, 70.0 });
-	noeud4->assignerPositionRelative({ 80.0, 90.0, 100.0 });
-
-	noeud->ajouter(noeud2);
-	noeud->ajouter(noeud3);
-	noeud->ajouter(noeud4);
 }
 
+
+////////////////////////////////////////////////////////////////////////
+///
+/// @fn NoeudAbstrait* ArbreRenduINF2990::getEnfant(int position)
+///
+/// Cette fonction retourne un NoeudAbstrait* qui correspond
+///	à l'enfant de la position passé en paramètre.
+///
+/// @return NoeudAbstrait*
+///
+////////////////////////////////////////////////////////////////////////
 NoeudAbstrait* ArbreRenduINF2990::getEnfant(int position)
 {
 	if (position > enfants_.size() || position < 0)
@@ -130,12 +129,48 @@ NoeudAbstrait* ArbreRenduINF2990::getEnfant(int position)
 		return enfants_[position];
 }
 
+
+////////////////////////////////////////////////////////////////////////
+///
+/// @fn bool ArbreRenduINF2990::accepterVisiteur(VisiteurAbstrait* vis)
+///
+/// Cette fonction appelle la méthode traiter du visiteur
+///
+/// @return Retourne toujours true
+///
+////////////////////////////////////////////////////////////////////////
 bool ArbreRenduINF2990::accepterVisiteur(VisiteurAbstrait* vis)
 {
 	vis->traiter(this);
-
 	return true;
 }
+
+
+////////////////////////////////////////////////////////////////////////
+///
+/// @fn bool ArbreRenduINF2990::accepterVisiteur(VisiteurAbstrait* vis)
+///
+/// Cette fonction appelle la méthode traiter du visiteur
+///
+/// @return Retourne toujours true
+///
+////////////////////////////////////////////////////////////////////////
+bool ArbreRenduINF2990::initialiserXML(std::string nomFichier)
+{
+	bool fichierTrouve = false;
+	tinyxml2::XMLDocument document;
+
+	tinyxml2::XMLError resultat = document.LoadFile(nomFichier.c_str());
+
+	if (!resultat)
+	{
+
+		fichierTrouve = true;
+	}
+
+	return fichierTrouve;
+}
+
 
 ///////////////////////////////////////////////////////////////////////////////
 /// @}

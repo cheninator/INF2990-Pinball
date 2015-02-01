@@ -15,6 +15,7 @@
 
 #include <map>
 #include <string>
+#include "tinyxml2.h"
 
 
 ///////////////////////////////////////////////////////////////////////////
@@ -42,7 +43,11 @@ public:
    // Obtenir le ième enfant de l'arbre
    NoeudAbstrait* getEnfant(int position);
 
+   // Accepter un visiteur
    virtual bool accepterVisiteur(VisiteurAbstrait* vis);
+
+   // Initialiser l'arbre avec un fichier XML
+   bool initialiserXML(std::string nomFichier);
 
 	/// La chaîne représentant les types
    static const std::string NOM_ARAIGNEE;
