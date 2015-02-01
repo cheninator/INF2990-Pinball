@@ -20,6 +20,8 @@ public:
 
 	virtual bool accepterVisiteur(VisiteurAbstrait* vis);
 
+	virtual NoeudAbstrait* getEnfant(int i) { return NoeudComposite::getEnfant(i); };
+
 private:
 	// TODO(Emilio): Insérer les attributs propres à chaque type d'objet
 	/// Angle selon l'axe des X.

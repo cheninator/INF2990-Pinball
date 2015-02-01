@@ -11,9 +11,9 @@
 #include "../Arbre/Noeuds/NoeudTable.h"
 
 
-VisiteurXML::VisiteurXML()
+VisiteurXML::VisiteurXML(std::string nom)
 {
-
+	nomFichier = nom;
 }
 
 VisiteurXML::~VisiteurXML()
@@ -29,6 +29,7 @@ bool VisiteurXML::traiter(ArbreRenduINF2990* arbre)
 	for (unsigned int i = 0; i < arbre->obtenirNombreEnfants(); i++)
 	{
 		traiter(arbre->getEnfant(i), elementArbreRendu);
+		std::cout << "Je suis dans l'arbre ";
 	}
 
 	document.LinkEndChild(elementArbreRendu);
@@ -48,6 +49,7 @@ bool VisiteurXML::traiter(NoeudTable* noeud, tinyxml2::XMLElement* parent)
 	for (unsigned int i = 0; i < noeud->obtenirNombreEnfants(); i++)
 	{
 		traiter(noeud->getEnfant(i), elementTable);
+		std::cout << "Je traite la table. Je visite mes enfants ";
 	}
 
 	parent->LinkEndChild(elementTable);

@@ -10,7 +10,7 @@ class VisiteurXML : public VisiteurAbstrait
 public:
 
 	// Constructeur par défaut : aucun déplacement
-	VisiteurXML();
+	VisiteurXML(std::string nomFichier);
 
 	// Destructeur
 	~VisiteurXML();

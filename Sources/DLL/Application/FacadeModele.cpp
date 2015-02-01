@@ -41,6 +41,7 @@
 
 #include "glm/glm.hpp"
 #include "glm/gtc/type_ptr.hpp"
+#include "../Visiteurs/VisiteurXML.h"
 
 /// Pointeur vers l'instance unique de la classe.
 FacadeModele* FacadeModele::instance_{ nullptr };
@@ -160,7 +161,12 @@ void FacadeModele::initialiserOpenGL(HWND hWnd)
 	// d'avoir une bonne raison de faire autrement, il est plus sage de créer
 	// l'arbre après avoir créé le contexte OpenGL.
 	arbre_ = new ArbreRenduINF2990;
+
+	VisiteurXML* vis = new VisiteurXML("testXML.xml");
+
 	arbre_->initialiser();
+
+	arbre_->accepterVisiteur(vis);
 
 	// On crée une vue par défaut.
 	vue_ = new vue::VueOrtho{
@@ -172,6 +178,8 @@ void FacadeModele::initialiserOpenGL(HWND hWnd)
 				1, 1000, 1, 10000, 1.25,
 				-100, 100, -100, 100 }
 	};
+
+	delete vis;
 }
 
 

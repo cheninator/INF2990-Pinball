@@ -20,13 +20,13 @@ VisiteurSelection::~VisiteurSelection()
 
 }
 
-bool VisiteurSelection::traiter(ArbreRenduINF2990& arbre)
+bool VisiteurSelection::traiter(ArbreRenduINF2990* arbre)
 {
-	for (unsigned int i = 0; i < arbre.obtenirNombreEnfants(); i++)
+	for (unsigned int i = 0; i < arbre->obtenirNombreEnfants(); i++)
 	{
 		// Déplacer UNIQUEMENT les noeuds selectionnes
-		if (arbre.getEnfant(i) != nullptr && arbre.getEnfant(i)->estSelectionnable())
-			arbre.getEnfant(i)->accepterVisiteur(this);
+		if (arbre->getEnfant(i) != nullptr && arbre->getEnfant(i)->estSelectionnable())
+			arbre->getEnfant(i)->accepterVisiteur(this);
 
 		else
 			return false;
@@ -35,56 +35,56 @@ bool VisiteurSelection::traiter(ArbreRenduINF2990& arbre)
 	return true;
 }
 
-bool VisiteurSelection::traiter(NoeudAbstrait& noeud)
+bool VisiteurSelection::traiter(NoeudAbstrait* noeud)
 {
 
 	return true;
 }
 
-bool VisiteurSelection::traiter(NoeudButoir& noeud)
+bool VisiteurSelection::traiter(NoeudButoir* noeud)
 {
 	return true;
 }
 
-bool VisiteurSelection::traiter(NoeudCible& noeud)
+bool VisiteurSelection::traiter(NoeudCible* noeud)
 {
 	return true;
 }
 
-bool VisiteurSelection::traiter(NoeudGenerateurBille& noeud)
+bool VisiteurSelection::traiter(NoeudGenerateurBille* noeud)
 {
 	return true;
 }
 
-bool VisiteurSelection::traiter(NoeudMur& noeud)
+bool VisiteurSelection::traiter(NoeudMur* noeud)
 {
 	return true;
 }
 
-bool VisiteurSelection::traiter(NoeudPalette& noeud)
+bool VisiteurSelection::traiter(NoeudPalette* noeud)
 {
 	return true;
 }
 
-bool VisiteurSelection::traiter(NoeudPortail& noeud)
-{
-
-	return true;
-}
-
-bool VisiteurSelection::traiter(NoeudRessort& noeud)
+bool VisiteurSelection::traiter(NoeudPortail* noeud)
 {
 
 	return true;
 }
 
-bool VisiteurSelection::traiter(NoeudTrou& noeud)
+bool VisiteurSelection::traiter(NoeudRessort* noeud)
 {
 
 	return true;
 }
 
-bool VisiteurSelection::traiter(NoeudTable& noeud)
+bool VisiteurSelection::traiter(NoeudTrou* noeud)
+{
+
+	return true;
+}
+
+bool VisiteurSelection::traiter(NoeudTable* noeud)
 {
 	return false;
 }

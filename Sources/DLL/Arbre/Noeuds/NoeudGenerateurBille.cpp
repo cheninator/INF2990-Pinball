@@ -38,7 +38,7 @@ bool NoeudGenerateurBille::accepterVisiteur(VisiteurAbstrait* vis)
 {
 	bool reussi = false;
 
-	if (vis->traiter(*this))
+	if (vis->traiter(this))
 		reussi = true;
 
 	return reussi;

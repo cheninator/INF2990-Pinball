@@ -32,17 +32,17 @@ public:
 	virtual ~VisiteurAbstrait(){};
 
 	// Traiter une opération selon le type spécifique de l'objet en paramètre
-	virtual bool traiter(ArbreRenduINF2990& arbre) { return false; };
-	virtual bool traiter(NoeudAbstrait& noeud) { return false; };
-	virtual bool traiter(NoeudButoir& butoir) { return false; };
-	virtual bool traiter(NoeudCible& cible) { return false; };
-	virtual bool traiter(NoeudGenerateurBille& generateur) { return false; };
-	virtual bool traiter(NoeudMur& mur) { return false; };
-	virtual bool traiter(NoeudPalette& palette) { return false; };
-	virtual bool traiter(NoeudPortail& portail) { return false; };
-	virtual bool traiter(NoeudRessort& ressort) { return false; };
-	virtual bool traiter(NoeudTrou& trou) { return false; };
-	virtual bool traiter(NoeudTable& table) { return false; };
+	virtual bool traiter(ArbreRenduINF2990* arbre) { return false; };
+	virtual bool traiter(NoeudAbstrait* noeud) { return false; };
+	virtual bool traiter(NoeudButoir* butoir) { return false; };
+	virtual bool traiter(NoeudCible* cible) { return false; };
+	virtual bool traiter(NoeudGenerateurBille* generateur) { return false; };
+	virtual bool traiter(NoeudMur* mur) { return false; };
+	virtual bool traiter(NoeudPalette* palette) { return false; };
+	virtual bool traiter(NoeudPortail* portail) { return false; };
+	virtual bool traiter(NoeudRessort* ressort) { return false; };
+	virtual bool traiter(NoeudTrou* trou) { return false; };
+	virtual bool traiter(NoeudTable* table) { return false; };
 };
 
 

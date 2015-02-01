@@ -147,6 +147,9 @@
     <ClCompile Include="Arbre\Noeuds\NoeudButoirCirculaire.cpp">
       <Filter>Source Files\Arbre\Noeuds</Filter>
     </ClCompile>
+    <ClCompile Include="Visiteurs\VisiteurXML.cpp">
+      <Filter>Source Files\Visiteurs</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Application\FacadeModele.h">
@@ -280,6 +283,9 @@
     </ClInclude>
     <ClInclude Include="Arbre\Usines\UsineNoeudButoirCirculaire.h">
       <Filter>Header Files\Arbre\Usines</Filter>
+    </ClInclude>
+    <ClInclude Include="Visiteurs\VisiteurXML.h">
+      <Filter>Header Files\Visiteurs</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
