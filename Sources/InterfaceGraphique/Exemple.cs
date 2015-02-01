@@ -601,6 +601,7 @@ namespace InterfaceGraphique
             if (e.Button == MouseButtons.Left)
             {
                 origin = panel_GL.PointToClient(MousePosition);
+                
             }
             if (e.Button == MouseButtons.Right)
             {
@@ -613,6 +614,7 @@ namespace InterfaceGraphique
         }
         private void panel_MouseMove(object sender, MouseEventArgs e)
         {
+           /* 
             if (e.X < xPosition - difference
          || e.X > xPosition + difference
          || e.Y < yPosition - difference
@@ -621,24 +623,53 @@ namespace InterfaceGraphique
                 Console.WriteLine("DRAGN AND DROP");
                 panel_GL.MouseMove -= panel_MouseMove;
             }
+           */
+            scale = deltaY(e.Location.Y, yPosition);
+            if (scale == 1)
+            {
+                Console.WriteLine("WTF IS THIS?");
+            }
+            if (scale <= 0)
+            {
+                FonctionsNatives.scaleObjet(Math.Abs(1 / scale));
+            }
+           if(scale >= 0)
+            {
+                FonctionsNatives.scaleObjet(scale);
+            }
+           
+          //  scale = 1;
+            
+           
+            
         }
 
         private void panel_GL_MouseUp(object sender, MouseEventArgs e)
         {
-            Point destination = panel_GL.PointToClient(MousePosition);
-            if ((Math.Abs(destination.X - origin.X) < 3)
-                 &&
-                 (Math.Abs(destination.Y - origin.Y) < 3)
-                )
+            if(e.Button == MouseButtons.Right)
+                panel_GL.MouseMove -= panel_MouseMove;
+            if (e.Button == MouseButtons.Left)
             {
-                Afficher_Objet();
-                FonctionsNatives.positionObjet(panel_GL.PointToClient(MousePosition).X, panel_GL.PointToClient(MousePosition).Y);
-                FonctionsNatives.rotate(angleX, 'x');
-                FonctionsNatives.rotate(angleY, 'y');
-                FonctionsNatives.rotate(angleZ, 'z');
-                FonctionsNatives.scaleObjet(scale);
-                Console.WriteLine("Good Spawn");
+                Point destination = panel_GL.PointToClient(MousePosition);
+                if ((Math.Abs(destination.X - origin.X) < 3)
+                     &&
+                     (Math.Abs(destination.Y - origin.Y) < 3)
+                    )
+                {
+                    Afficher_Objet();
+                    FonctionsNatives.positionObjet(panel_GL.PointToClient(MousePosition).X, panel_GL.PointToClient(MousePosition).Y);
+                    FonctionsNatives.rotate(angleX, 'x');
+                    FonctionsNatives.rotate(angleY, 'y');
+                    FonctionsNatives.rotate(angleZ, 'z');
+                    FonctionsNatives.scaleObjet(scale);
+                    Console.WriteLine("Good Spawn");
+                }
             }
+        }
+
+        private float deltaY(float originY, float destY)
+        {
+            return (destY - originY) / 10;
         }
     }
     // Full Screen
