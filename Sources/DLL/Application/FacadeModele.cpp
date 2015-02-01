@@ -25,6 +25,9 @@
 
 #include "FacadeModele.h"
 
+// Voulait vraiment pas marcher sans que je mette le chemin.
+#include "../Visiteurs/VisiteurSelection.h"
+
 #include "VueOrtho.h"
 #include "Camera.h"
 #include "Projection.h"
@@ -356,13 +359,15 @@ NoeudAbstrait* FacadeModele::trouverObjetSousPointClique(int i, int j)
 {
 	glm::dvec3 pointDansLeMonde;
 	vue_->convertirClotureAVirtuelle(i, j, pointDansLeMonde);
-	std::cout << "Position du click : " << i << "," << j << std::endl;
+	std::cout << "Position du click dans l'ecran : (" << i << ", " << j << ")" << std::endl;
+
 	FacadeModele::obtenirInstance()->obtenirVue()->convertirClotureAVirtuelle(i, j, pointDansLeMonde);
+	std::cout << "Position du click dans le monde : (" << pointDansLeMonde.x << ", " << pointDansLeMonde.y << ", 0)" << std::endl;
 
 	// Creer un visiteur,
-		
+	VisiteurSelection visSel(pointDansLeMonde);
 	// Passer le visisteur a l<arbre
-
+	arbre_->accepterVisiteur(&visSel);
 	// Demander au visiteur ce qu'il a trouvé et faire quelque chose en conséquence
 
 	std::cout << "Aucun noeud trouvé" << std::endl;

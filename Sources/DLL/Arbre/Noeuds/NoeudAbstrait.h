@@ -139,7 +139,7 @@ public:
 	/// Anime le noeud.
 	virtual void animer(float dt);
 
-	virtual bool accepterVisiteur(VisiteurAbstrait* vis){ return false; };
+	virtual bool accepterVisiteur(VisiteurAbstrait* vis);
 
 protected:
 	/// Type du noeud.

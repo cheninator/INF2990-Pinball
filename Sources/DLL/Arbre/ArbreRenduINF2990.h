@@ -42,6 +42,8 @@ public:
    // Obtenir le ième enfant de l'arbre
    NoeudAbstrait* getEnfant(int position);
 
+   bool accepterVisiteur(VisiteurAbstrait* vis);
+
 
 	/// La chaîne représentant les types
    static const std::string NOM_ARAIGNEE;

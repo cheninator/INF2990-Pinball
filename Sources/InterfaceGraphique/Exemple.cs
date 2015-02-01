@@ -663,6 +663,7 @@ namespace InterfaceGraphique
                     FonctionsNatives.rotate(angleZ, 'z');
                     FonctionsNatives.scaleObjet(scale);
                     Console.WriteLine("Good Spawn");
+                    FonctionsNatives.trouverObjetSousPointClique(panel_GL.PointToClient(MousePosition).X, panel_GL.PointToClient(MousePosition).Y);
                 }
             }
         }
@@ -739,5 +740,7 @@ namespace InterfaceGraphique
 
         [DllImport(@"Noyau.dll", CallingConvention = CallingConvention.Cdecl)]
         public static extern void translater(double deplacementX, double deplacementY);
+        [DllImport(@"Noyau.dll", CallingConvention = CallingConvention.Cdecl)]
+        public static extern void trouverObjetSousPointClique(int i, int j);
     }
 }
