@@ -147,6 +147,9 @@ namespace InterfaceGraphique
             SaveFileDialog enregistrer_fichier = new SaveFileDialog();
             enregistrer_fichier.Filter = "Fichier XML(*.xml)| *.xml| All files(*.*)|*.*";
             enregistrer_fichier.ShowDialog();
+            StringBuilder pathXML = new StringBuilder(enregistrer_fichier.FileName);
+            FonctionsNatives.creerXML(pathXML, pathXML.Capacity);
+
         }
 
         private void helpToolStripButton_Click(object sender, EventArgs e)
@@ -753,5 +756,8 @@ namespace InterfaceGraphique
 
         [DllImport(@"Noyau.dll", CallingConvention = CallingConvention.Cdecl)]
         public static extern void translater(double deplacementX, double deplacementY);
+
+        [DllImport(@"Noyau.dll", CallingConvention = CallingConvention.Cdecl)]
+        public static extern void creerXML(StringBuilder path, int taille);
     }
 }

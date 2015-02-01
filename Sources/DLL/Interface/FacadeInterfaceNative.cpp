@@ -15,6 +15,7 @@
 #include "Vue.h"
 #include "ArbreRenduINF2990.h"
 #include "CompteurAffichage.h"
+#include "../Visiteurs/VisiteurXML.h"
 
 #include <iostream>
 
@@ -439,6 +440,25 @@ extern "C"
 	__declspec(dllexport) void __cdecl translater(double deplacementX, double deplacementY)
 	{
 		FacadeModele::obtenirInstance()->obtenirVue()->deplacerXY(deplacementX, deplacementY);
+	}
+
+
+	////////////////////////////////////////////////////////////////////////
+	///
+	/// @fn __declspec(dllexport) void __cdecl creerObjet()
+	///
+	/// @param[in]  position : Nom du path
+	/// @param[in]  length : Taille du nom du path
+	///
+	/// Sauvegarde le path
+	///
+	/// @return Aucun
+	///
+	////////////////////////////////////////////////////////////////////////
+	__declspec(dllexport) void __cdecl creerXML(char* path, int length)
+	{
+		std::cout << std::string(path);
+		VisiteurXML* visiteur(std::string(path));
 	}
 }
 
