@@ -20,7 +20,9 @@ namespace InterfaceGraphique
         FullScreen fs = new FullScreen();
         StringBuilder myObjectName = new StringBuilder("vide");
         Point origin;
+        Point spawnP;
         private int difference = 100;
+        private char state = 'n';
         private int xPosition;
         private int yPosition;
         private float angleX = 0F;
@@ -597,45 +599,61 @@ namespace InterfaceGraphique
         private void panel_GL_MouseDown(object sender, MouseEventArgs e)
         {
 
-
+            origin = panel_GL.PointToClient(MousePosition);
             if (e.Button == MouseButtons.Left)
             {
-                origin = panel_GL.PointToClient(MousePosition);
+                
                 
             }
             if (e.Button == MouseButtons.Right)
             {
                 panel_GL.MouseMove += new MouseEventHandler(panel_MouseMove);
+                spawnP.X = e.X;
+                spawnP.Y = e.Y;
                 xPosition = e.X;
                 yPosition = e.Y;
+
 
             }
 
         }
         private void panel_MouseMove(object sender, MouseEventArgs e)
         {
-           /* 
-            if (e.X < xPosition - difference
-         || e.X > xPosition + difference
-         || e.Y < yPosition - difference
-         || e.Y > yPosition + difference)
+            
+          
+            if (state == 'n')
             {
-                Console.WriteLine("DRAGN AND DROP");
-                panel_GL.MouseMove -= panel_MouseMove;
+                FonctionsNatives.positionObjet(spawnP.X +(origin.X - xPosition), spawnP.Y +(origin.Y - yPosition));
+               
+                origin.X = e.X;
+                origin.Y = e.Y;
+                xPosition = e.X;
+                yPosition = e.Y;
+                spawnP.X = e.X;
+                spawnP.Y = e.Y;
+                //FonctionsNatives.positionObjet(xPosition, yPosition);
+               
+                //xPosition = e.Location.X;
+                //yPosition = e.Location.Y;
+                
             }
-           */
-            scale = deltaY(e.Location.Y, yPosition);
-            if (scale == 1)
+
+
+            if (state == 's')
             {
-                Console.WriteLine("WTF IS THIS?");
-            }
-            if (scale <= 0)
-            {
-                FonctionsNatives.scaleObjet(Math.Abs(1 / scale));
-            }
-           if(scale >= 0)
-            {
-                FonctionsNatives.scaleObjet(scale);
+                scale = deltaY(e.Location.Y, yPosition);
+                if (scale == 1)
+                {
+                    Console.WriteLine("WTF IS THIS?");
+                }
+                if (scale <= 0)
+                {
+                    FonctionsNatives.scaleObjet(Math.Abs(1 / scale));
+                }
+                if (scale >= 0)
+                {
+                    FonctionsNatives.scaleObjet(scale);
+                }
             }
            
           //  scale = 1;
@@ -662,6 +680,8 @@ namespace InterfaceGraphique
                     FonctionsNatives.rotate(angleY, 'y');
                     FonctionsNatives.rotate(angleZ, 'z');
                     FonctionsNatives.scaleObjet(scale);
+                    spawnP.X = panel_GL.PointToClient(MousePosition).X;
+                    spawnP.Y = panel_GL.PointToClient(MousePosition).Y;
                     Console.WriteLine("Good Spawn");
                 }
             }

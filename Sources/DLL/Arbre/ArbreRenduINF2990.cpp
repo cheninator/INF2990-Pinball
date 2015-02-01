@@ -109,6 +109,7 @@ void ArbreRenduINF2990::initialiser()
 	NoeudAbstrait* noeud{ creerNoeud(NOM_TABLE) };
 	//noeud->ajouter(creerNoeud(NOM_CONECUBE));
 	ajouter(noeud);
+	
 }
 
 NoeudAbstrait* ArbreRenduINF2990::getEnfant(int position)
