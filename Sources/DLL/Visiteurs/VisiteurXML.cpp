@@ -29,7 +29,6 @@ bool VisiteurXML::traiter(ArbreRenduINF2990* arbre)
 	for (unsigned int i = 0; i < arbre->obtenirNombreEnfants(); i++)
 	{
 		traiter(arbre->getEnfant(i), elementArbreRendu);
-		std::cout << "Je suis dans l'arbre ";
 	}
 
 	document.LinkEndChild(elementArbreRendu);
@@ -38,131 +37,37 @@ bool VisiteurXML::traiter(ArbreRenduINF2990* arbre)
 	return true;
 }
 
-bool VisiteurXML::traiter(NoeudTable* noeud, tinyxml2::XMLElement* parent)
-{
-	// Créer le noeud 'elementTable'
-	tinyxml2::XMLElement* elementTable{ document.NewElement("table") };
-	elementTable->SetAttribute("posX", noeud->obtenirPositionRelative().x);
-	elementTable->SetAttribute("posY", noeud->obtenirPositionRelative().y);
-	elementTable->SetAttribute("posZ", noeud->obtenirPositionRelative().z);
-
-	for (unsigned int i = 0; i < noeud->obtenirNombreEnfants(); i++)
-	{
-		traiter(noeud->getEnfant(i), elementTable);
-		std::cout << "Je traite la table. Je visite mes enfants ";
-	}
-
-	parent->LinkEndChild(elementTable);
-
-	return true;
-}
-
 bool VisiteurXML::traiter(NoeudAbstrait* noeud, tinyxml2::XMLElement* parent)
 {
-	return false;
-}
+	// Connaitre le type du noeud
+	std::string nom = noeud->obtenirType();
 
-bool VisiteurXML::traiter(NoeudButoir* noeud, tinyxml2::XMLElement* parent)
-{
-	// Créer le noeud 'elementButoir'
-	tinyxml2::XMLElement* elementButoir{ document.NewElement("butoir") };
-	elementButoir->SetAttribute("posX", noeud->obtenirPositionRelative().x);
-	elementButoir->SetAttribute("posY", noeud->obtenirPositionRelative().y);
-	elementButoir->SetAttribute("posZ", noeud->obtenirPositionRelative().z);
-
-	parent->LinkEndChild(elementButoir);
-
-
-	return true;
-}
-
-bool VisiteurXML::traiter(NoeudCible* noeud, tinyxml2::XMLElement* parent)
-{
 	// Créer le noeud 'element'
-	tinyxml2::XMLElement* element{ document.NewElement("cible") };
-	element->SetAttribute("posX", noeud->obtenirPositionRelative().x);
-	element->SetAttribute("posY", noeud->obtenirPositionRelative().y);
-	element->SetAttribute("posZ", noeud->obtenirPositionRelative().z);
+	tinyxml2::XMLElement* element{ document.NewElement(nom.c_str()) };
 
-	parent->LinkEndChild(element);
+	// Si l'élément est une table, visiter ses enfants
+	if (nom == "table")
+	{
+		element->SetAttribute("posX", noeud->obtenirPositionRelative().x);
+		element->SetAttribute("posY", noeud->obtenirPositionRelative().y);
+		element->SetAttribute("posZ", noeud->obtenirPositionRelative().z);
 
-	return true;
-}
+		for (unsigned int i = 0; i < noeud->obtenirNombreEnfants(); i++)
+		{
+			traiter(noeud->chercher(i), element);
+		}
 
-bool VisiteurXML::traiter(NoeudGenerateurBille* noeud, tinyxml2::XMLElement* parent)
-{
-	// Créer le noeud 'element'
-	tinyxml2::XMLElement* element{ document.NewElement("GenerateurBille") };
-	element->SetAttribute("posX", noeud->obtenirPositionRelative().x);
-	element->SetAttribute("posY", noeud->obtenirPositionRelative().y);
-	element->SetAttribute("posZ", noeud->obtenirPositionRelative().z);
+		parent->LinkEndChild(element);
+	}
 
-	parent->LinkEndChild(element);
+	else
+	{
+		element->SetAttribute("posX", noeud->obtenirPositionRelative().x);
+		element->SetAttribute("posY", noeud->obtenirPositionRelative().y);
+		element->SetAttribute("posZ", noeud->obtenirPositionRelative().z);
 
-	return true;
-}
-
-bool VisiteurXML::traiter(NoeudMur* noeud, tinyxml2::XMLElement* parent)
-{
-	// Créer le noeud 'element'
-	tinyxml2::XMLElement* element{ document.NewElement("mur") };
-	element->SetAttribute("posX", noeud->obtenirPositionRelative().x);
-	element->SetAttribute("posY", noeud->obtenirPositionRelative().y);
-	element->SetAttribute("posZ", noeud->obtenirPositionRelative().z);
-
-	parent->LinkEndChild(element);
-
-	return true;
-}
-
-bool VisiteurXML::traiter(NoeudPalette* noeud, tinyxml2::XMLElement* parent)
-{
-	// Créer le noeud 'element'
-	tinyxml2::XMLElement* element{ document.NewElement("palette") };
-	element->SetAttribute("posX", noeud->obtenirPositionRelative().x);
-	element->SetAttribute("posY", noeud->obtenirPositionRelative().y);
-	element->SetAttribute("posZ", noeud->obtenirPositionRelative().z);
-
-	parent->LinkEndChild(element);
-
-	return true;
-}
-
-bool VisiteurXML::traiter(NoeudPortail* noeud, tinyxml2::XMLElement* parent)
-{
-	// Créer le noeud 'element'
-	tinyxml2::XMLElement* element{ document.NewElement("portail") };
-	element->SetAttribute("posX", noeud->obtenirPositionRelative().x);
-	element->SetAttribute("posY", noeud->obtenirPositionRelative().y);
-	element->SetAttribute("posZ", noeud->obtenirPositionRelative().z);
-
-	parent->LinkEndChild(element);
-
-	return true;
-}
-
-bool VisiteurXML::traiter(NoeudRessort* noeud, tinyxml2::XMLElement* parent)
-{
-	// Créer le noeud 'element'
-	tinyxml2::XMLElement* element{ document.NewElement("ressort") };
-	element->SetAttribute("posX", noeud->obtenirPositionRelative().x);
-	element->SetAttribute("posY", noeud->obtenirPositionRelative().y);
-	element->SetAttribute("posZ", noeud->obtenirPositionRelative().z);
-
-	parent->LinkEndChild(element);
-
-	return true;
-}
-
-bool VisiteurXML::traiter(NoeudTrou* noeud, tinyxml2::XMLElement* parent)
-{
-	// Créer le noeud 'element'
-	tinyxml2::XMLElement* element{ document.NewElement("trou") };
-	element->SetAttribute("posX", noeud->obtenirPositionRelative().x);
-	element->SetAttribute("posY", noeud->obtenirPositionRelative().y);
-	element->SetAttribute("posZ", noeud->obtenirPositionRelative().z);
-
-	parent->LinkEndChild(element);
-
+		parent->LinkEndChild(element);
+	}
+		
 	return true;
 }
