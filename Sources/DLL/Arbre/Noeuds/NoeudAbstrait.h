@@ -139,7 +139,7 @@ public:
 	/// Anime le noeud.
 	virtual void animer(float dt);
 	// Accepter un visiteur
-	virtual bool accepterVisiteur(VisiteurAbstrait* vis){ return false; };
+	virtual bool accepterVisiteur(VisiteurAbstrait* vis);
 
 
 	inline const glm::dvec3& obtenirAgrandissement() const;

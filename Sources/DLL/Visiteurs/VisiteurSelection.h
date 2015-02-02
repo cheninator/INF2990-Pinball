@@ -1,6 +1,8 @@
 #ifndef __VISITEURS_VISITEURSELECTION_H__
 #define __VISITEURS_VISITEURSELECTION_H__
 
+#include "NoeudAbstrait.h"
+#include "NoeudComposite.h"
 #include "VisiteurAbstrait.h"
 #include "glm\glm.hpp"
 
@@ -9,7 +11,7 @@ class VisiteurSelection : public VisiteurAbstrait
 public:
 
 	// Constructeur par défaut : aucun déplacement
-	VisiteurSelection();
+	VisiteurSelection(glm::dvec3 pointDansLeMonde);
 
 	// Destructeur
 	~VisiteurSelection();
@@ -30,7 +32,8 @@ public:
 private:
 	
 	// Paramètre spécifiques?
-
+	NoeudComposite* noeudSelection_;
+	glm::dvec3 pointDansLeMonde_;
 };
 
 

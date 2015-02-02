@@ -674,6 +674,7 @@ namespace InterfaceGraphique
                     previousP.X = panel_GL.PointToClient(MousePosition).X;
                     previousP.Y = panel_GL.PointToClient(MousePosition).Y;
                     Console.WriteLine("Good Spawn");
+                    FonctionsNatives.trouverObjetSousPointClique(panel_GL.PointToClient(MousePosition).X, panel_GL.PointToClient(MousePosition).Y);
                 }
             }
         }
@@ -759,5 +760,7 @@ namespace InterfaceGraphique
 
         [DllImport(@"Noyau.dll", CallingConvention = CallingConvention.Cdecl)]
         public static extern void creerXML(StringBuilder path, int taille);
+        [DllImport(@"Noyau.dll", CallingConvention = CallingConvention.Cdecl)]
+        public static extern void trouverObjetSousPointClique(int i, int j);
     }
 }

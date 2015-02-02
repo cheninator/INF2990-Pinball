@@ -51,6 +51,12 @@ extern "C"
 		FacadeModele::obtenirInstance()->obtenirVue()->convertirClotureAVirtuelle(100, 100, positionUn);
 		facteurDeTransition = (((positionUn.y - positionZero.y) / 100 ) + ((positionUn.y - positionZero.y)/100))/(-2);
 	}
+	static NoeudAbstrait* objetCourrant = new NoeudAbstrait();
+
+	__declspec(dllexport) void __cdecl trouverObjetSousPointClique(int i, int j)
+	{
+		objetCourrant = FacadeModele::obtenirInstance()->trouverObjetSousPointClique(i, j);
+	}
 
 	////////////////////////////////////////////////////////////////////////
 	///
