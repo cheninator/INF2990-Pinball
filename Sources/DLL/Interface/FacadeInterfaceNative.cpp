@@ -53,6 +53,19 @@ extern "C"
 	}
 	static NoeudAbstrait* objetCourrant = new NoeudAbstrait();
 
+
+	////////////////////////////////////////////////////////////////////////
+	///
+	/// __declspec(dllexport) void __cdecl trouverObjetSousPointClique(int i, int j)
+	///
+	/// Appel la fonction trouverObjetSousPointClique
+	///
+	/// @param[in] i: valeur en i dans l'ecran
+	/// @param[in] j: valeur en j dans l'ecran
+	///
+	/// @return Aucune.
+	///
+	////////////////////////////////////////////////////////////////////////
 	__declspec(dllexport) void __cdecl trouverObjetSousPointClique(int i, int j)
 	{
 		objetCourrant = FacadeModele::obtenirInstance()->trouverObjetSousPointClique(i, j);

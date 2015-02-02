@@ -451,7 +451,22 @@ void NoeudAbstrait::animer(float dt)
 }
 
 
+////////////////////////////////////////////////////////////////////////
+///
+/// @fn bool NoeudAbstrait::accepterVisiteur(VisiteurAbstrait* vis)
+///
+///
+/// Cette fonction permet d'accepter un visiteur (voir le livre de Gamma)
+///
+/// @param[in] dt : Prend un bisiteur abstrait.
+///
+/// @return reusiite ou echec.
+///
+////////////////////////////////////////////////////////////////////////
+bool NoeudAbstrait::accepterVisiteur(VisiteurAbstrait* vis) 
+{
+	vis->traiter(this); return false; 
+}
 ////////////////////////////////////////////////
 /// @}
 ////////////////////////////////////////////////
-bool NoeudAbstrait::accepterVisiteur(VisiteurAbstrait* vis){ vis->traiter(this); return false; }
