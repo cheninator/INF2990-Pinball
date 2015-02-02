@@ -31,6 +31,7 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Exemple));
             this.panel1 = new System.Windows.Forms.Panel();
             this.panel_GL = new System.Windows.Forms.Panel();
+            this.label1 = new System.Windows.Forms.Label();
             this.Creation_Panel = new System.Windows.Forms.FlowLayoutPanel();
             this.Groupe_Palettes = new System.Windows.Forms.GroupBox();
             this.PDJ2_bouton = new System.Windows.Forms.Button();
@@ -140,6 +141,7 @@
             // panel_GL
             // 
             this.panel_GL.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            this.panel_GL.BackColor = System.Drawing.Color.Transparent;
             this.panel_GL.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel_GL.Location = new System.Drawing.Point(163, 24);
             this.panel_GL.Name = "panel_GL";
@@ -149,6 +151,18 @@
             this.panel_GL.MouseDown += new System.Windows.Forms.MouseEventHandler(this.panel_GL_MouseDown);
             this.panel_GL.MouseUp += new System.Windows.Forms.MouseEventHandler(this.panel_GL_MouseUp);
             this.panel_GL.MouseWheel += new System.Windows.Forms.MouseEventHandler(this.panel_GL_MouseWheel);
+            // 
+            // label1
+            // 
+            this.label1.BackColor = System.Drawing.Color.Transparent;
+            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.Location = new System.Drawing.Point(3, 445);
+            this.label1.Name = "label1";
+            this.label1.Padding = new System.Windows.Forms.Padding(0, 3, 3, 0);
+            this.label1.Size = new System.Drawing.Size(159, 160);
+            this.label1.TabIndex = 0;
+            this.label1.Text = resources.GetString("label1.Text");
+            this.label1.Click += new System.EventHandler(this.label1_Click);
             // 
             // Creation_Panel
             // 
@@ -376,6 +390,7 @@
             this.flowLayoutPanel1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.flowLayoutPanel1.Controls.Add(this.Groupe_Outils);
             this.flowLayoutPanel1.Controls.Add(this.Groupe_Proprietes);
+            this.flowLayoutPanel1.Controls.Add(this.label1);
             this.flowLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Left;
             this.flowLayoutPanel1.Location = new System.Drawing.Point(0, 24);
             this.flowLayoutPanel1.Name = "flowLayoutPanel1";
@@ -394,7 +409,7 @@
             this.Groupe_Outils.Controls.Add(this.bouton_Selection);
             this.Groupe_Outils.Location = new System.Drawing.Point(3, 3);
             this.Groupe_Outils.Name = "Groupe_Outils";
-            this.Groupe_Outils.Size = new System.Drawing.Size(159, 278);
+            this.Groupe_Outils.Size = new System.Drawing.Size(159, 265);
             this.Groupe_Outils.TabIndex = 0;
             this.Groupe_Outils.TabStop = false;
             this.Groupe_Outils.Text = "Outils";
@@ -495,9 +510,9 @@
             this.Groupe_Proprietes.Controls.Add(this.Y_label);
             this.Groupe_Proprietes.Controls.Add(this.Xbox);
             this.Groupe_Proprietes.Controls.Add(this.X_label);
-            this.Groupe_Proprietes.Location = new System.Drawing.Point(3, 287);
+            this.Groupe_Proprietes.Location = new System.Drawing.Point(3, 274);
             this.Groupe_Proprietes.Name = "Groupe_Proprietes";
-            this.Groupe_Proprietes.Size = new System.Drawing.Size(159, 193);
+            this.Groupe_Proprietes.Size = new System.Drawing.Size(159, 168);
             this.Groupe_Proprietes.TabIndex = 1;
             this.Groupe_Proprietes.TabStop = false;
             this.Groupe_Proprietes.Text = "Propriétés spaciales";
@@ -1018,6 +1033,7 @@
         private System.Windows.Forms.Button Trou_bouton;
         private System.Windows.Forms.Button Generateur_bouton;
         private System.Windows.Forms.Button Ressort_bouton;
+        private System.Windows.Forms.Label label1;
     }
 }
 

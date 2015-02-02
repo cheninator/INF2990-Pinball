@@ -125,6 +125,13 @@ namespace InterfaceGraphique
             {
                 state = 'o';
             }
+            if (e.KeyChar == 'h')
+            {
+                if (label1.Visible)
+                    label1.Hide();
+                else
+                    label1.Show();
+            }
         }
         private void Exemple_FormClosing(object sender, FormClosingEventArgs e)
         {
@@ -728,6 +735,11 @@ namespace InterfaceGraphique
         private float deltaY(float originY, float destY)
         {
             return (destY - originY) / 10;
+        }
+
+        private void label1_Click(object sender, EventArgs e)
+        {
+            label1.Hide();
         }
     }
     // Full Screen
