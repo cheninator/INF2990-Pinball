@@ -67,11 +67,9 @@ namespace InterfaceGraphique
         private void ToucheDown(Object o, KeyEventArgs e){
             if (panel_GL.Focused)
             {
-               
                 if (e.KeyData == Keys.Left)
-                {
                     FonctionsNatives.translater(-10, 0);
-                }
+
                 if (e.KeyData == Keys.Right)
                     FonctionsNatives.translater(10, 0);
 
@@ -80,6 +78,15 @@ namespace InterfaceGraphique
 
                 if (e.KeyData == Keys.Down)
                     FonctionsNatives.translater(0, -10);
+
+                if (e.KeyData == Keys.Down)
+                    FonctionsNatives.translater(0, -10);
+
+                if (e.KeyData == Keys.Add)
+                    FonctionsNatives.zoomIn();
+
+                if (e.KeyData == Keys.Subtract)
+                    FonctionsNatives.zoomOut();
             }
 
 
@@ -557,5 +564,11 @@ namespace InterfaceGraphique
 
         [DllImport(@"Noyau.dll", CallingConvention = CallingConvention.Cdecl)]
         public static extern void translater(double deplacementX, double deplacementY);
+        
+        [DllImport(@"Noyau.dll", CallingConvention = CallingConvention.Cdecl)]
+        public static extern void zoomIn();
+
+        [DllImport(@"Noyau.dll", CallingConvention = CallingConvention.Cdecl)]
+        public static extern void zoomOut();
     }
 }

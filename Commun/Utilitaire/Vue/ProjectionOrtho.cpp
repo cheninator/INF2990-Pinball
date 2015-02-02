@@ -75,7 +75,16 @@ namespace vue {
 	////////////////////////////////////////////////////////////////////////
 	void ProjectionOrtho::zoomerIn()
 	{
-		// À IMPLANTER.
+		double diminutionX = (incrementZoom_ - 1.0) * 0.5 * (xMaxFenetre_ - xMinFenetre_);
+		double diminutionY = (incrementZoom_ - 1.0) * 0.5 * (yMaxFenetre_ - yMinFenetre_);
+		xMinFenetre_ += diminutionX;
+		xMaxFenetre_ -= diminutionX;
+		
+		yMinFenetre_ += diminutionY;
+		yMaxFenetre_ -= diminutionY;
+
+		std::cout << "Taille de la fenetre virtuelle : " <<
+			(xMaxFenetre_ - xMinFenetre_) << "x" << (yMaxFenetre_ - yMinFenetre_) << std::endl;
 	}
 
 
@@ -91,6 +100,17 @@ namespace vue {
 	void ProjectionOrtho::zoomerOut()
 	{
 		// À IMPLANTER.
+		double augmentationX = (incrementZoom_ - 1.0) * 0.5 * (xMaxFenetre_ - xMinFenetre_);
+		double augmentationY = (incrementZoom_ - 1.0) * 0.5 * (yMaxFenetre_ - yMinFenetre_);
+		
+		xMinFenetre_ -= augmentationX;
+		xMaxFenetre_ += augmentationX;
+
+		yMinFenetre_ -= augmentationY;
+		yMaxFenetre_ += augmentationY;
+		
+		std::cout << "Taille de la fenetre virtuelle : " <<
+			(xMaxFenetre_ - xMinFenetre_) << "x" << (yMaxFenetre_ - yMinFenetre_) << std::endl;
 	}
 
 
