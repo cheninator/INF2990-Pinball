@@ -114,6 +114,10 @@ namespace InterfaceGraphique
             {
                 state = 'v';
             }
+            if (e.KeyChar == 'z')
+            {
+                state = 'z';
+            }
         }
         private void Exemple_FormClosing(object sender, FormClosingEventArgs e)
         {
@@ -697,6 +701,18 @@ namespace InterfaceGraphique
                 }
             }
         }
+
+        private void panel_GL_MouseWheel(object sender, MouseEventArgs e)
+        {
+            if (state == 'z')
+            {
+                if (e.Delta > 0)
+                    FonctionsNatives.zoomIn();
+                else
+                    FonctionsNatives.zoomOut();
+            }
+        }
+
 
         private float deltaY(float originY, float destY)
         {
