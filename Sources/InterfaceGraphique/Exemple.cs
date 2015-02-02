@@ -66,10 +66,15 @@ namespace InterfaceGraphique
         {
             if (panel_GL.Focused)
             {
+                if (e.KeyData == Keys.Subtract)
+                    FonctionsNatives.zoomOut();
+
+                if (e.KeyData == Keys.Add)
+                    FonctionsNatives.zoomIn();
+
                 if (e.KeyData == Keys.Left)
-                {
                     FonctionsNatives.translater(-10, 0);
-                }
+
                 if (e.KeyData == Keys.Right)
                     FonctionsNatives.translater(10, 0);
 
@@ -104,6 +109,10 @@ namespace InterfaceGraphique
             if (e.KeyChar == 'e')
             {
                 state = 'e';
+            }
+            if (e.KeyChar == 'v')
+            {
+                state = 'v';
             }
         }
         private void Exemple_FormClosing(object sender, FormClosingEventArgs e)
@@ -627,8 +636,18 @@ namespace InterfaceGraphique
         }
         private void panel_MouseMove(object sender, MouseEventArgs e)
         {
-            
-          
+            if (state == 'v')
+            {
+                double deltaX = (-(currentP.X - previousP.X)) * 100.0 / panel_GL.Size.Width;
+                double deltaY = ((currentP.Y - previousP.Y)) * 100.0 / panel_GL.Size.Height;
+                FonctionsNatives.translater(deltaX, deltaY);
+
+                previousP.X = currentP.X;
+                previousP.Y = currentP.Y;
+                currentP.X = e.X;
+                currentP.Y = e.Y;
+            }
+
             if (state == 'd')
             {
                 int deltaX = (currentP.X - previousP.X) ;
@@ -649,7 +668,7 @@ namespace InterfaceGraphique
                 previousP.Y = currentP.Y;
                 currentP.Y = e.Y;
                 
-          }
+            }
           //  scale = 1;
         }
 
@@ -762,5 +781,11 @@ namespace InterfaceGraphique
         public static extern void creerXML(StringBuilder path, int taille);
         [DllImport(@"Noyau.dll", CallingConvention = CallingConvention.Cdecl)]
         public static extern void trouverObjetSousPointClique(int i, int j);
+
+        [DllImport(@"Noyau.dll", CallingConvention = CallingConvention.Cdecl)]
+        public static extern void zoomIn();
+
+        [DllImport(@"Noyau.dll", CallingConvention = CallingConvention.Cdecl)]
+        public static extern void zoomOut();
     }
 }

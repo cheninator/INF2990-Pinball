@@ -343,15 +343,15 @@ extern "C"
 		glm::dvec3 monScalePresent;
 		float deltaScale = (float)myScale;
 		monScalePresent = objet->obtenirAgrandissement();
-		monScalePresent.x += myScale * facteurDeTransition;
-		monScalePresent.y += myScale * facteurDeTransition;
-		monScalePresent.z += myScale * facteurDeTransition;
-		if (monScalePresent.x <= 0)
-			monScalePresent.x -= myScale * facteurDeTransition;
-		if (monScalePresent.y <= 0)
-			monScalePresent.y -= myScale * facteurDeTransition;
-		if (monScalePresent.z <= 0)
-			monScalePresent.z -= myScale * facteurDeTransition;
+		monScalePresent.x += myScale/10.0 * facteurDeTransition;
+		monScalePresent.y += myScale/10.0 * facteurDeTransition;
+		monScalePresent.z += myScale/10.0 * facteurDeTransition;
+		if (monScalePresent.x < 0)
+			monScalePresent.x -= myScale/10.0 * facteurDeTransition;
+		if (monScalePresent.y < 0)
+			monScalePresent.y -= myScale/10.0 * facteurDeTransition;
+		if (monScalePresent.z < 0)
+			monScalePresent.z -= myScale/10.0 * facteurDeTransition;
 		objet->assignerEchelle({ monScalePresent.x, monScalePresent.y, monScalePresent.z });
 	}
 	
