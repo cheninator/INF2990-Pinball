@@ -1,3 +1,12 @@
+///////////////////////////////////////////////////////////////////////////////
+/// @file VisiteurSelection.h
+/// @author The Ballers
+/// @date 2015-02-01
+/// @version 1.0
+///
+/// @addtogroup inf2990 INF2990
+/// @{
+///////////////////////////////////////////////////////////////////////////////
 #ifndef __VISITEURS_VISITEURSELECTION_H__
 #define __VISITEURS_VISITEURSELECTION_H__
 
@@ -6,6 +15,17 @@
 #include "VisiteurAbstrait.h"
 #include "glm\glm.hpp"
 
+///////////////////////////////////////////////////////////////////////////
+/// @class VisiteurSelection
+/// @brief Classe pour selectionner les objets de l'arbre de rendu
+///
+///        Instancier cette classe avec en paramètre le point cliqué
+///		   Ensuite, appelez la méthode accepterVisiteur() de l'arbre de 
+///		   rendu et lui fournir CE visiteur en paramètre
+///
+/// @author Yonni Chen
+/// @date 2015-02-02
+///////////////////////////////////////////////////////////////////////////
 class VisiteurSelection : public VisiteurAbstrait
 {
 public:
@@ -16,23 +36,16 @@ public:
 	// Destructeur
 	~VisiteurSelection();
 
-	// Traiter une opération selon le type spécifique de l'objet en paramètre
+	// Traiter une opération sur l'arbre de rendu et ses enfants
 	virtual bool traiter(ArbreRenduINF2990* arbre);
 	virtual bool traiter(NoeudAbstrait* noeud);
-	virtual bool traiter(NoeudButoir* butoir);
-	virtual bool traiter(NoeudCible* cible);
-	virtual bool traiter(NoeudGenerateurBille* generateur);
-	virtual bool traiter(NoeudMur* mur);
-	virtual bool traiter(NoeudPalette* palette);
-	virtual bool traiter(NoeudPortail* portail);
-	virtual bool traiter(NoeudRessort* ressort);
-	virtual bool traiter(NoeudTrou* trou);
-	virtual bool traiter(NoeudTable* table);
 
 private:
 	
-	// Paramètre spécifiques?
-	NoeudComposite* noeudSelection_;
+	// Ne touchez pas au constructeur par défaut
+	VisiteurSelection();
+	
+	// Point cliqué
 	glm::dvec3 pointDansLeMonde_;
 };
 

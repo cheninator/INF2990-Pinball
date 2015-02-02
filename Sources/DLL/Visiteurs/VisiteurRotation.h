@@ -1,50 +1,58 @@
+///////////////////////////////////////////////////////////////////////////////
+/// @file VisiteurRotation.h
+/// @author The Ballers
+/// @date 2015-02-01
+/// @version 1.0
+///
+/// @addtogroup inf2990 INF2990
+/// @{
+///////////////////////////////////////////////////////////////////////////////
 #ifndef __VISITEURS_VISITEURROTATION_H__
 #define __VISITEURS_VISITEURROTATION_H__
 
 #include "VisiteurAbstrait.h"
 #include "glm\glm.hpp"
 
+
+///////////////////////////////////////////////////////////////////////////
+/// @class VisiteurRotation
+/// @brief Classe pour effectuer une rotation sur des objets seletionnés de
+///		   l'arbre de rendu.
+///
+///        Instancier cette classe avec en paramètre les angles de rotation.
+///		   Ensuite, appelez la méthode accepterVisiteur() de l'arbre de rendu 
+///		   et lui fournir CE visiteur en paramètre.
+///
+/// @author Yonni Chen
+/// @date 2015-02-02
+///////////////////////////////////////////////////////////////////////////
 class VisiteurRotation : public VisiteurAbstrait
 {
 public:
 
-	// Constructeur par défaut : Aucune rotation
-	VisiteurRotation();
-
 	// Constructeur par paramètre : spécifiez l'angle, l'axe et le sens
-	VisiteurRotation(float angle, char axe, bool sensPositif);
+	VisiteurRotation(glm::dvec3 angles);
 
 	// Destructeur
 	~VisiteurRotation();
 
 	// Méthode d'accès
-	double getRotation() { return angle_; };
-	char getAxe() { return axe_; };
-	bool getSens() { return sensPositif_; };
+	glm::dvec3 getRotation() { return angles_; };
 
 	// Méthode de modifications
-	void setRotation(double angle) { angle_ = angle; };
-	void setAxe(char axe) { axe_ = axe; }
-	void setSens(bool estPositif){ sensPositif_ = estPositif; }
+	void setRotation(glm::dvec3 dep) { angles_ = dep; };
 
-	// Traiter une opération selon le type spécifique de l'objet en paramètre
+	// Traiter une opération sur l'arbre de rendu et ses enfants
 	virtual bool traiter(ArbreRenduINF2990* arbre);
 	virtual bool traiter(NoeudAbstrait* noeud);
-	virtual bool traiter(NoeudButoir* butoir);
-	virtual bool traiter(NoeudCible* cible);
-	virtual bool traiter(NoeudGenerateurBille* generateur);
-	virtual bool traiter(NoeudMur* mur);
-	virtual bool traiter(NoeudPalette* palette);
-	virtual bool traiter(NoeudPortail* portail);
-	virtual bool traiter(NoeudRessort* ressort);
-	virtual bool traiter(NoeudTrou* trou);
-	virtual bool traiter(NoeudTable* table);
 
 private:
 
-	double angle_;
-	char axe_;
-	bool sensPositif_;
+	// Ne touchez pas au constructeur par défaut
+	VisiteurRotation();
+
+	// Angles de rotation en x, y et z
+	glm::dvec3 angles_;
 
 };
 

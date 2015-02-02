@@ -1,103 +1,121 @@
+////////////////////////////////////////////////
+/// @file   VisiteurAgrandissement.cpp
+/// @author Yonni Chen
+/// @date   2015-02-01
+///
+/// @addtogroup inf2990 INF2990
+/// @{
+////////////////////////////////////////////////
+
 #include "VisiteurAgrandissement.h"
 #include "../Arbre/ArbreRenduINF2990.h"
-#include "../Arbre/Noeuds/NoeudButoir.h"
-#include "../Arbre/Noeuds/NoeudCible.h"
-#include "../Arbre/Noeuds/NoeudGenerateurBille.h"
-#include "../Arbre/Noeuds/NoeudMur.h"
-#include "../Arbre/Noeuds/NoeudPalette.h"
-#include "../Arbre/Noeuds/NoeudPortail.h"
-#include "../Arbre/Noeuds/NoeudRessort.h"
-#include "../Arbre/Noeuds/NoeudTrou.h"
 
+
+////////////////////////////////////////////////////////////////////////
+///
+/// @fn VisiteurAgrandissement::VisiteurAgrandissement()
+///
+/// VIDE
+///
+/// @return Aucune (constructeur).
+///
+////////////////////////////////////////////////////////////////////////
 VisiteurAgrandissement::VisiteurAgrandissement()
 {
-	// Aucun agrandissement par défaut
-	homothetie_[0] = 1.0;
-	homothetie_[1] = 1.0;
-	homothetie_[2] = 1.0;
+
 }
 
+
+////////////////////////////////////////////////////////////////////////
+///
+/// @fn VisiteurAgrandissement::VisiteurAgrandissement(glm::dvec3 homothethie)
+///
+/// Ne fait qu'initialiser les variables membres de la classe.
+///
+/// @param[in] homothethie : Le facteur d'agrandissement
+///
+/// @return Aucune (constructeur).
+///
+////////////////////////////////////////////////////////////////////////
 VisiteurAgrandissement::VisiteurAgrandissement(glm::dvec3 homothethie)
 {
 	homothetie_ = homothethie;
 }
 
+
+////////////////////////////////////////////////////////////////////////
+///
+/// @fn VisiteurAgrandissement::~VisiteurAgrandissement()
+///
+/// Destructeur vide 
+///
+/// @return Aucune (destructeur).
+///
+////////////////////////////////////////////////////////////////////////
 VisiteurAgrandissement::~VisiteurAgrandissement()
 {
 
 }
 
+
+////////////////////////////////////////////////////////////////////////
+///
+/// @fn bool VisiteurAgrandissement::traiter(ArbreRenduINF2990* arbre)
+///
+/// Cette fonction traite l'arbre de rendu pour effectuer un agrandissement
+/// sur les objets selectionnés
+///
+/// Cette fonction retourne true pour dire que l'opération s'est
+/// fait correctement
+///
+/// @return Retourne toujours true
+///
+////////////////////////////////////////////////////////////////////////
 bool VisiteurAgrandissement::traiter(ArbreRenduINF2990* noeud)
 {
 	for (unsigned int i = 0; i < noeud->obtenirNombreEnfants(); i++)
 	{
-		// Déplacer UNIQUEMENT les noeuds selectionnes
-		if (noeud->getEnfant(i) != nullptr && noeud->getEnfant(i)->estSelectionnable())
-			noeud->getEnfant(i)->accepterVisiteur(this);
-
-		else
-			return false;
+		traiter(noeud->getEnfant(i));
 	}
 
 	return true;
 }
 
 
+////////////////////////////////////////////////////////////////////////
+///
+/// @fn bool VisiteurAgrandissement::traiter(NoeudAbstrait* arbre)
+///
+/// Cette fonction traite les enfants de l'arbre de rendu pour effectuer 
+/// un agrandissement
+///
+/// Cette fonction retourne true pour dire que l'opération s'est
+/// fait correctement
+///
+/// @return Retourne toujours true
+///
+////////////////////////////////////////////////////////////////////////
 bool VisiteurAgrandissement::traiter(NoeudAbstrait* noeud)
 {
-	noeud->assignerEchelle(homothetie_);
-	return true;
-}
+	// Connaitre le type du noeud
+	std::string nom = noeud->obtenirType();
 
-bool VisiteurAgrandissement::traiter(NoeudButoir* noeud)
-{
-	noeud->assignerEchelle(homothetie_);
-	return true;
-}
+	// Si l'élément est une table, visiter ses enfants
+	if (nom == "table")
+	{
+		// Traiter les enfants selectionnés de la table
+		for (unsigned int i = 0; i < noeud->obtenirNombreEnfants(); i++)
+		{
+			if (noeud->chercher(i)->estSelectionne())
+				traiter(noeud->chercher(i));
+		}
+	}
 
-bool VisiteurAgrandissement::traiter(NoeudCible* noeud)
-{
-	noeud->assignerEchelle(homothetie_);
-	return true;
-}
+	else
+	{
+		// LOGIQUE D'AGRANDISSEMENT
+		noeud->assignerEchelle(homothetie_);
+	}
 
-bool VisiteurAgrandissement::traiter(NoeudGenerateurBille* noeud)
-{
-	noeud->assignerEchelle(homothetie_);
 	return true;
-}
-
-bool VisiteurAgrandissement::traiter(NoeudMur* noeud)
-{
-	noeud->assignerEchelle(homothetie_);
-	return true;
-}
-
-bool VisiteurAgrandissement::traiter(NoeudPalette* noeud)
-{
-	noeud->assignerEchelle(homothetie_);
-	return true;
-}
-
-bool VisiteurAgrandissement::traiter(NoeudPortail* noeud)
-{
-	noeud->assignerEchelle(homothetie_);
-	return true;
-}
-
-bool VisiteurAgrandissement::traiter(NoeudRessort* noeud)
-{
-	noeud->assignerEchelle(homothetie_);;
-	return true;
-}
-
-bool VisiteurAgrandissement::traiter(NoeudTrou* noeud)
-{
-	noeud->assignerEchelle(homothetie_);
-	return true;
-}
-
-bool VisiteurAgrandissement::traiter(NoeudTable* noeud)
-{
-	return false;
 }

@@ -1,15 +1,32 @@
+///////////////////////////////////////////////////////////////////////////////
+/// @file VisiteurDeplacement.h
+/// @author The Ballers
+/// @date 2015-02-01
+/// @version 1.0
+///
+/// @addtogroup inf2990 INF2990
+/// @{
+///////////////////////////////////////////////////////////////////////////////
 #ifndef __VISITEURS_VISITEURDEPLACEMENT_H__
 #define __VISITEURS_VISITEURDEPLACEMENT_H__
 
 #include "VisiteurAbstrait.h"
 #include "glm\glm.hpp"
 
+///////////////////////////////////////////////////////////////////////////
+/// @class VisiteurDeplacement
+/// @brief Classe pour deplacer les objets selectionnés de l'arbre de rendu
+///
+///        Instancier cette classe avec en paramètre le vecteur de 
+///		   déplacement. Ensuite, appelez la méthode accepterVisiteur()
+///		   de l'arbre de rendu et lui fournir CE visiteur en paramètre
+///
+/// @author Yonni Chen
+/// @date 2015-02-02
+///////////////////////////////////////////////////////////////////////////
 class VisiteurDeplacement : public VisiteurAbstrait
 {
 public:
-
-	// Constructeur par défaut : aucun déplacement
-	VisiteurDeplacement();
 
 	// Constructeur par paramètre : spécifiez un vecteur de déplacement
 	VisiteurDeplacement(glm::dvec3 dep);
@@ -18,32 +35,21 @@ public:
 	~VisiteurDeplacement();
 
 	// Méthode d'acces
-	double getDeplacementX() { return deplacement_[0]; };
-	double getDeplacementY() { return deplacement_[1]; };
-	double getDeplacementZ() { return deplacement_[2]; };
 	glm::dvec3 getDeplacement() { return deplacement_; };
 
 	// Méthode de modifications
-	void setDeplacementX(float x) { deplacement_[0] = x; };
-	void setDeplacementY(float y) { deplacement_[1] = y; };
-	void setDeplacementZ(float z) { deplacement_[2] = z; };
 	void setDeplacement(glm::dvec3 dep) { deplacement_ = dep; };
 
-	// Traiter une opération selon le type spécifique de l'objet en paramètre
+	// Traiter une opération sur l'arbre de rendu et ses enfants
 	virtual bool traiter(ArbreRenduINF2990* arbre);
 	virtual bool traiter(NoeudAbstrait* noeud);
-	virtual bool traiter(NoeudButoir* butoir);
-	virtual bool traiter(NoeudCible* cible);
-	virtual bool traiter(NoeudGenerateurBille* generateur);
-	virtual bool traiter(NoeudMur* mur);
-	virtual bool traiter(NoeudPalette* palette);
-	virtual bool traiter(NoeudPortail* portail);
-	virtual bool traiter(NoeudRessort* ressort);
-	virtual bool traiter(NoeudTrou* trou);
-	virtual bool traiter(NoeudTable* table);
 
 private:
 
+	// Ne touchez pas au constructeur de déplacement
+	VisiteurDeplacement();
+
+	// Vecteur de déplacement
 	glm::dvec3 deplacement_;
 
 };

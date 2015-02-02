@@ -1,101 +1,121 @@
+////////////////////////////////////////////////
+/// @file   VisiteurRotation.cpp
+/// @author Yonni Chen
+/// @date   2015-02-01
+///
+/// @addtogroup inf2990 INF2990
+/// @{
+////////////////////////////////////////////////
+
 #include "VisiteurRotation.h"
 #include "../Arbre/ArbreRenduINF2990.h"
-#include "../Arbre/Noeuds/NoeudButoir.h"
-#include "../Arbre/Noeuds/NoeudCible.h"
-#include "../Arbre/Noeuds/NoeudGenerateurBille.h"
-#include "../Arbre/Noeuds/NoeudMur.h"
-#include "../Arbre/Noeuds/NoeudPalette.h"
-#include "../Arbre/Noeuds/NoeudPortail.h"
-#include "../Arbre/Noeuds/NoeudRessort.h"
-#include "../Arbre/Noeuds/NoeudTrou.h"
 
 
+////////////////////////////////////////////////////////////////////////
+///
+/// @fn VisiteurRotation::VisiteurRotation()
+///
+/// VIDE
+///
+/// @return Aucune (constructeur).
+///
+////////////////////////////////////////////////////////////////////////
 VisiteurRotation::VisiteurRotation()
 {
-	angle_ = 0.0;
-	axe_ = 'x';
-	sensPositif_ = true;
+
 }
 
-VisiteurRotation::VisiteurRotation(float angle, char axe, bool sensPositif)
+
+////////////////////////////////////////////////////////////////////////
+///
+/// @fn VisiteurRotation::VisiteurRotation(glm::dvec3 dep)
+///
+/// Ne fait qu'initialiser les variables membres de la classe.
+///
+/// @param[in] dev : Le vecteur de rotation
+///
+/// @return Aucune (constructeur).
+///
+////////////////////////////////////////////////////////////////////////
+VisiteurRotation::VisiteurRotation(glm::dvec3 angles)
 {
-	angle_ = angle;
-	axe_ = axe;
-	sensPositif_ = sensPositif;
+	angles_ = angles;
 }
 
+
+////////////////////////////////////////////////////////////////////////
+///
+/// @fn VisiteurRotation::~VisiteurRotation()
+///
+/// Destructeur vide 
+///
+/// @return Aucune (destructeur).
+///
+////////////////////////////////////////////////////////////////////////
 VisiteurRotation::~VisiteurRotation()
 {
 
 }
 
+
+////////////////////////////////////////////////////////////////////////
+///
+/// @fn bool VisiteurRotation::traiter(ArbreRenduINF2990* noeud)
+///
+/// Cette fonction traite l'arbre de rendu pour effectuer une rotation sur ses enfants
+/// selectionnés
+///
+/// Cette fonction retourne true pour dire que l'opération s'est
+/// fait correctement
+///
+/// @return Retourne toujours true
+///
+////////////////////////////////////////////////////////////////////////
 bool VisiteurRotation::traiter(ArbreRenduINF2990* noeud)
 {
 	for (unsigned int i = 0; i < noeud->obtenirNombreEnfants(); i++)
 	{
-		// Déplacer UNIQUEMENT les noeuds selectionnes
-		if (noeud->getEnfant(i) != nullptr && noeud->getEnfant(i)->estSelectionnable())
-			noeud->getEnfant(i)->accepterVisiteur(this);
-
-		else
-			return false;
+		traiter(noeud->getEnfant(i));
 	}
 
 	return true;
 }
 
 
-
-////////////// TO DO
-
-
+////////////////////////////////////////////////////////////////////////
+///
+/// @fn bool VisiteurRotation::traiter(NoeudAbstrait* noeud)
+///
+/// Cette fonction traite les enfants de l'arbre de rendu. Si ses enfants ont des enfants
+/// ils seront aussi traités.
+///
+/// Cette fonction retourne true pour dire que l'opération s'est
+/// fait correctement
+///
+/// @return Retourne toujours true
+///
+////////////////////////////////////////////////////////////////////////
 bool VisiteurRotation::traiter(NoeudAbstrait* noeud)
 {
+	// Connaitre le type du noeud
+	std::string nom = noeud->obtenirType();
+
+	// Si l'élément est une table, visiter ses enfants
+	if (nom == "table")
+	{
+		// Traiter les enfants selectionnés de la table
+		for (unsigned int i = 0; i < noeud->obtenirNombreEnfants(); i++)
+		{
+			if (noeud->chercher(i)->estSelectionne())
+				traiter(noeud->chercher(i));
+		}
+	}
+
+	else
+	{
+		// LOGIQUE DE ROTATION
+		noeud->assignerRotation(angles_);
+	}
 
 	return true;
-}
-
-bool VisiteurRotation::traiter(NoeudButoir* noeud)
-{
-	return true;
-}
-
-bool VisiteurRotation::traiter(NoeudCible* noeud)
-{
-	return true;
-}
-
-bool VisiteurRotation::traiter(NoeudGenerateurBille* noeud)
-{
-	return true;
-}
-
-bool VisiteurRotation::traiter(NoeudMur* noeud)
-{
-	return true;
-}
-
-bool VisiteurRotation::traiter(NoeudPalette* noeud)
-{
-	return true;
-}
-
-bool VisiteurRotation::traiter(NoeudPortail* noeud)
-{
-	return true;
-}
-
-bool VisiteurRotation::traiter(NoeudRessort* noeud)
-{
-	return true;
-}
-
-bool VisiteurRotation::traiter(NoeudTrou* noeud)
-{
-	return true;
-}
-
-bool VisiteurRotation::traiter(NoeudTable* noeud)
-{
-	return false;
 }
