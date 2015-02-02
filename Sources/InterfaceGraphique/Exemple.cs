@@ -110,9 +110,9 @@ namespace InterfaceGraphique
             {
                 state = 'e';
             }
-            if (e.KeyChar == 'z')
+            if (e.KeyChar == 'v')
             {
-                state = 'z';
+                state = 'v';
             }
         }
         private void Exemple_FormClosing(object sender, FormClosingEventArgs e)
@@ -636,11 +636,11 @@ namespace InterfaceGraphique
         }
         private void panel_MouseMove(object sender, MouseEventArgs e)
         {
-            if (state == 'z')
+            if (state == 'v')
             {
-                int deltaX = (currentP.X - previousP.X);
-                int deltaY = -(currentP.Y - previousP.Y);
-                FonctionsNatives.translater(deltaX/10.0, deltaY/10.0);
+                double deltaX = (-(currentP.X - previousP.X)) * 100.0 / panel_GL.Size.Width;
+                double deltaY = ((currentP.Y - previousP.Y)) * 100.0 / panel_GL.Size.Height;
+                FonctionsNatives.translater(deltaX, deltaY);
 
                 previousP.X = currentP.X;
                 previousP.Y = currentP.Y;
