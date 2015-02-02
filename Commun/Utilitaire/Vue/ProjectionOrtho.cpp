@@ -75,13 +75,18 @@ namespace vue {
 	////////////////////////////////////////////////////////////////////////
 	void ProjectionOrtho::zoomerIn()
 	{
-		double diminutionX = (incrementZoom_ - 1.0) * 0.5 * (xMaxFenetre_ - xMinFenetre_);
-		double diminutionY = (incrementZoom_ - 1.0) * 0.5 * (yMaxFenetre_ - yMinFenetre_);
-		xMinFenetre_ += diminutionX;
-		xMaxFenetre_ -= diminutionX;
-		
-		yMinFenetre_ += diminutionY;
-		yMaxFenetre_ -= diminutionY;
+		double xMaxCopie = xMaxFenetre_;
+		double xMinCopie = xMinFenetre_;
+		double yMaxCopie = yMaxFenetre_;
+		double yMinCopie = yMinFenetre_;
+
+		// Formules qui proviennent de la résolution d'un système d'équation
+		// Bless you, based Wolfram Alpha !
+		xMaxFenetre_ = ((xMaxCopie * incrementZoom_) + xMaxCopie + xMinCopie * incrementZoom_ - xMinCopie) / (2 * incrementZoom_);
+		xMinFenetre_ = (xMaxCopie * (incrementZoom_ - 1) + xMinCopie * (incrementZoom_ + 1.0)) / (2 * incrementZoom_);
+
+		yMaxFenetre_ = ((yMaxCopie * incrementZoom_) + yMaxCopie + yMinCopie * incrementZoom_ - yMinCopie) / (2 * incrementZoom_);;
+		yMinFenetre_ = (yMaxCopie * (incrementZoom_ - 1) + yMinCopie * (incrementZoom_ + 1.0)) / (2 * incrementZoom_);
 
 		std::cout << "Taille de la fenetre virtuelle : " <<
 			(xMaxFenetre_ - xMinFenetre_) << "x" << (yMaxFenetre_ - yMinFenetre_) << std::endl;

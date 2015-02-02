@@ -66,10 +66,15 @@ namespace InterfaceGraphique
         {
             if (panel_GL.Focused)
             {
+                if (e.KeyData == Keys.Subtract)
+                    FonctionsNatives.zoomOut();
+
+                if (e.KeyData == Keys.Add)
+                    FonctionsNatives.zoomIn();
+
                 if (e.KeyData == Keys.Left)
-                {
                     FonctionsNatives.translater(-10, 0);
-                }
+
                 if (e.KeyData == Keys.Right)
                     FonctionsNatives.translater(10, 0);
 
@@ -762,5 +767,11 @@ namespace InterfaceGraphique
         public static extern void creerXML(StringBuilder path, int taille);
         [DllImport(@"Noyau.dll", CallingConvention = CallingConvention.Cdecl)]
         public static extern void trouverObjetSousPointClique(int i, int j);
+
+        [DllImport(@"Noyau.dll", CallingConvention = CallingConvention.Cdecl)]
+        public static extern void zoomIn();
+
+        [DllImport(@"Noyau.dll", CallingConvention = CallingConvention.Cdecl)]
+        public static extern void zoomOut();
     }
 }
