@@ -65,12 +65,16 @@ namespace InterfaceGraphique
         {
             if (panel_GL.Focused)
             {
-                if (e.KeyData == Keys.Subtract)
+                if (e.KeyData == Keys.Subtract && zoom_Bar.Value > 0)
+                {
                     FonctionsNatives.zoomOut();
-
-                if (e.KeyData == Keys.Add)
+                    zoom_Bar.Value -= 1;
+                }
+                if (e.KeyData == Keys.Add && zoom_Bar.Value < 10)
+                {
                     FonctionsNatives.zoomIn();
-
+                    zoom_Bar.Value += 1;
+                }
                 if (e.KeyData == Keys.Left)
                     FonctionsNatives.translater(-10, 0);
 
@@ -706,10 +710,17 @@ namespace InterfaceGraphique
         {
             if (state == 'z')
             {
-                if (e.Delta > 0)
+                if (e.Delta > 0 && zoom_Bar.Value < 10)
+                {
+                   
                     FonctionsNatives.zoomIn();
-                else
-                    FonctionsNatives.zoomOut();
+                    zoom_Bar.Value += 1;
+                }
+                else if (e.Delta < 0 && zoom_Bar.Value > 0)
+                {
+                        FonctionsNatives.zoomOut();
+                        zoom_Bar.Value -= 1;
+                }
             }
         }
 

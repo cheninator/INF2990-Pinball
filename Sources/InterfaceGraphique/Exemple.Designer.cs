@@ -30,6 +30,7 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Exemple));
             this.panel1 = new System.Windows.Forms.Panel();
+            this.panel_GL = new System.Windows.Forms.Panel();
             this.Creation_Panel = new System.Windows.Forms.FlowLayoutPanel();
             this.Groupe_Palettes = new System.Windows.Forms.GroupBox();
             this.PDJ2_bouton = new System.Windows.Forms.Button();
@@ -106,7 +107,6 @@
             this.Orbite_MenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.Information_MenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.Aide_MenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.panel_GL = new System.Windows.Forms.Panel();
             this.printPreviewDialog1 = new System.Windows.Forms.PrintPreviewDialog();
             this.panel1.SuspendLayout();
             this.Creation_Panel.SuspendLayout();
@@ -136,6 +136,19 @@
             this.panel1.TabIndex = 0;
             this.panel1.Click += new System.EventHandler(this.panel1_Click);
             this.panel1.Paint += new System.Windows.Forms.PaintEventHandler(this.panel1_Paint);
+            // 
+            // panel_GL
+            // 
+            this.panel_GL.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            this.panel_GL.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panel_GL.Location = new System.Drawing.Point(163, 24);
+            this.panel_GL.Name = "panel_GL";
+            this.panel_GL.Size = new System.Drawing.Size(566, 614);
+            this.panel_GL.TabIndex = 4;
+            this.panel_GL.MouseClick += new System.Windows.Forms.MouseEventHandler(this.panel_GL_MouseClick);
+            this.panel_GL.MouseDown += new System.Windows.Forms.MouseEventHandler(this.panel_GL_MouseDown);
+            this.panel_GL.MouseUp += new System.Windows.Forms.MouseEventHandler(this.panel_GL_MouseUp);
+            this.panel_GL.MouseWheel += new System.Windows.Forms.MouseEventHandler(this.panel_GL_MouseWheel);
             // 
             // Creation_Panel
             // 
@@ -424,6 +437,7 @@
             this.zoom_Bar.Name = "zoom_Bar";
             this.zoom_Bar.Size = new System.Drawing.Size(130, 40);
             this.zoom_Bar.TabIndex = 2;
+            this.zoom_Bar.Value = 5;
             // 
             // bouton_Scaling
             // 
@@ -880,19 +894,6 @@
             this.Aide_MenuItem.Size = new System.Drawing.Size(98, 22);
             this.Aide_MenuItem.Text = "Aide";
             this.Aide_MenuItem.Click += new System.EventHandler(this.Aide_MenuItem_Click);
-            // 
-            // panel_GL
-            // 
-            this.panel_GL.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.panel_GL.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel_GL.Location = new System.Drawing.Point(163, 24);
-            this.panel_GL.Name = "panel_GL";
-            this.panel_GL.Size = new System.Drawing.Size(566, 614);
-            this.panel_GL.TabIndex = 4;
-            this.panel_GL.MouseClick += new System.Windows.Forms.MouseEventHandler(this.panel_GL_MouseClick);
-            this.panel_GL.MouseDown += new System.Windows.Forms.MouseEventHandler(this.panel_GL_MouseDown);
-            this.panel_GL.MouseUp += new System.Windows.Forms.MouseEventHandler(this.panel_GL_MouseUp);
-            this.panel_GL.MouseWheel += new System.Windows.Forms.MouseEventHandler(this.panel_GL_MouseWheel);
             // 
             // printPreviewDialog1
             // 
