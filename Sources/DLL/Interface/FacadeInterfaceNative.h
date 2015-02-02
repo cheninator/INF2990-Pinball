@@ -9,6 +9,8 @@
 #ifndef __FACADE_INTERFACE_NATIVE_H__
 #define __FACADE_INTERFACE_NATIVE_H__
 
+#include "NoeudAbstrait.h"
+
 extern "C" {
 
 	__declspec(dllexport) void initialiserOpenGL(int * handle);
@@ -20,8 +22,19 @@ extern "C" {
 	__declspec(dllexport) void zoomOut();
 	__declspec(dllexport) int  obtenirAffichagesParSeconde();
 	__declspec(dllexport) bool executerTests();
-	__declspec(dllexport) bool creerObjet(char* value, int length, int x = 0, int y = 0, float scale = 1.0, double rotation = 0.0);
+	__declspec(dllexport) void creerObjet(char* value, int length);
+	__declspec(dllexport) void positionObjet(int x, int y, int z = 0);
+	__declspec(dllexport) void translateObjet(int x, int y, int z = 0);
+	__declspec(dllexport) void scaleObjet(double scale);
+	__declspec(dllexport) void addScaleObjet(int myScale);
+	__declspec(dllexport) void scaleXYZObjet(double x, double y, double z);
+	__declspec(dllexport) void rotate(float angle, char direction = 'x');
+	__declspec(dllexport) void resetObject(void);
+	__declspec(dllexport) void removeObject(void);
+	__declspec(dllexport) void purgeAll(void);
 	__declspec(dllexport) void translater(double deplacementX, double deplacementY);
+	__declspec(dllexport) void creerXML(char* path, int length);
+	__declspec(dllexport) void trouverObjetSousPointClique(int i, int j);
 }
 
 #endif // __FACADE_INTERFACE_NATIVE_H__

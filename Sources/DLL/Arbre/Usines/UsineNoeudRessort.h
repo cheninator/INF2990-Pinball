@@ -15,7 +15,7 @@ public:
 
 
 inline UsineNoeudRessort::UsineNoeudRessort(const std::string& nom)
-	: UsineNoeud(nom, std::string("media/Ressort.obj"))
+	: UsineNoeud(nom, std::string("media/objets/Ressort.obj"))
 {}
 
 NoeudAbstrait* UsineNoeudRessort::creerNoeud() const

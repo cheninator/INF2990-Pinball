@@ -18,9 +18,9 @@ public:
 	~VisiteurAgrandissement();
 
 	// Méthode d'accès
-	float getAgrandissementX() { return homothetie_[0]; };
-	float getAgrandissementY() { return homothetie_[1]; };
-	float getAgrandissementZ() { return homothetie_[2]; };
+	double getAgrandissementX() { return homothetie_[0]; };
+	double getAgrandissementY() { return homothetie_[1]; };
+	double getAgrandissementZ() { return homothetie_[2]; };
 	glm::dvec3 getAgrandissement() { return homothetie_; };
 
 	// Méthode de modifications
@@ -30,15 +30,17 @@ public:
 	void setAgrandissement(glm::dvec3 homothetie) { homothetie_ = homothetie; };
 
 	// Traiter une opération selon le type spécifique de l'objet en paramètre
-	virtual bool traiter(NoeudAbstrait& noeud);
-	virtual bool traiter(NoeudButoir& butoir);
-	virtual bool traiter(NoeudCible& cible);
-	virtual bool traiter(NoeudGenerateurBille& generateur);
-	virtual bool traiter(NoeudMur& mur);
-	virtual bool traiter(NoeudPalette& palette);
-	virtual bool traiter(NoeudPortail& portail);
-	virtual bool traiter(NoeudRessort& ressort);
-	virtual bool traiter(NoeudTrou& trou);
+	virtual bool traiter(ArbreRenduINF2990* arbre);
+	virtual bool traiter(NoeudAbstrait* noeud);
+	virtual bool traiter(NoeudButoir* butoir);
+	virtual bool traiter(NoeudCible* cible);
+	virtual bool traiter(NoeudGenerateurBille* generateur);
+	virtual bool traiter(NoeudMur* mur);
+	virtual bool traiter(NoeudPalette* palette);
+	virtual bool traiter(NoeudPortail* portail);
+	virtual bool traiter(NoeudRessort* ressort);
+	virtual bool traiter(NoeudTrou* trou);
+	virtual bool traiter(NoeudTable* table);
 
 private:
 

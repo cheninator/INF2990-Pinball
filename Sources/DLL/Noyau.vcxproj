@@ -131,7 +131,9 @@
   <ItemGroup>
     <ClCompile Include="Application\FacadeModele.cpp" />
     <ClCompile Include="Arbre\Noeuds\NoeudAraignee.cpp" />
+    <ClCompile Include="Arbre\Noeuds\NoeudBille.cpp" />
     <ClCompile Include="Arbre\Noeuds\NoeudButoir.cpp" />
+    <ClCompile Include="Arbre\Noeuds\NoeudButoirCirculaire.cpp" />
     <ClCompile Include="Arbre\Noeuds\NoeudCible.cpp" />
     <ClCompile Include="Arbre\Noeuds\NoeudConeCube.cpp" />
     <ClCompile Include="Arbre\Noeuds\NoeudGenerateurBille.cpp" />
@@ -139,6 +141,7 @@
     <ClCompile Include="Arbre\Noeuds\NoeudPalette.cpp" />
     <ClCompile Include="Arbre\Noeuds\NoeudPortail.cpp" />
     <ClCompile Include="Arbre\Noeuds\NoeudRessort.cpp" />
+    <ClCompile Include="Arbre\Noeuds\NoeudTable.cpp" />
     <ClCompile Include="Arbre\Noeuds\NoeudTrou.cpp" />
     <ClCompile Include="Arbre\Noeuds\NoeudVide.cpp" />
     <ClCompile Include="Configuration\ConfigScene.cpp" />
@@ -153,11 +156,15 @@
     <ClCompile Include="Visiteurs\VisiteurAgrandissement.cpp" />
     <ClCompile Include="Visiteurs\VisiteurDeplacement.cpp" />
     <ClCompile Include="Visiteurs\VisiteurRotation.cpp" />
+    <ClCompile Include="Visiteurs\VisiteurSelection.cpp" />
+    <ClCompile Include="Visiteurs\VisiteurXML.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Application\FacadeModele.h" />
     <ClInclude Include="Arbre\Noeuds\NoeudAraignee.h" />
+    <ClInclude Include="Arbre\Noeuds\NoeudBille.h" />
     <ClInclude Include="Arbre\Noeuds\NoeudButoir.h" />
+    <ClInclude Include="Arbre\Noeuds\NoeudButoirCirculaire.h" />
     <ClInclude Include="Arbre\Noeuds\NoeudCible.h" />
     <ClInclude Include="Arbre\Noeuds\NoeudConeCube.h" />
     <ClInclude Include="Arbre\Noeuds\NoeudGenerateurBille.h" />
@@ -165,10 +172,13 @@
     <ClInclude Include="Arbre\Noeuds\NoeudPalette.h" />
     <ClInclude Include="Arbre\Noeuds\NoeudPortail.h" />
     <ClInclude Include="Arbre\Noeuds\NoeudRessort.h" />
+    <ClInclude Include="Arbre\Noeuds\NoeudTable.h" />
     <ClInclude Include="Arbre\Noeuds\NoeudTrou.h" />
     <ClInclude Include="Arbre\Noeuds\NoeudVide.h" />
     <ClInclude Include="Arbre\Usines\UsineNoeudAraignee.h" />
+    <ClInclude Include="Arbre\Usines\UsineNoeudBille.h" />
     <ClInclude Include="Arbre\Usines\UsineNoeudButoir.h" />
+    <ClInclude Include="Arbre\Usines\UsineNoeudButoirCirculaire.h" />
     <ClInclude Include="Arbre\Usines\UsineNoeudCible.h" />
     <ClInclude Include="Arbre\Usines\UsineNoeudConeCube.h" />
     <ClInclude Include="Arbre\Usines\UsineNoeudGenerateurBille.h" />
@@ -176,6 +186,7 @@
     <ClInclude Include="Arbre\Usines\UsineNoeudPalette.h" />
     <ClInclude Include="Arbre\Usines\UsineNoeudPortail.h" />
     <ClInclude Include="Arbre\Usines\UsineNoeudRessort.h" />
+    <ClInclude Include="Arbre\Usines\UsineNoeudTable.h" />
     <ClInclude Include="Arbre\Usines\UsineNoeudTrou.h" />
     <ClInclude Include="Arbre\Usines\UsineNoeudVide.h" />
     <ClInclude Include="Configuration\ConfigScene.h" />
@@ -192,6 +203,8 @@
     <ClInclude Include="Visiteurs\VisiteurAgrandissement.h" />
     <ClInclude Include="Visiteurs\VisiteurDeplacement.h" />
     <ClInclude Include="Visiteurs\VisiteurRotation.h" />
+    <ClInclude Include="Visiteurs\VisiteurSelection.h" />
+    <ClInclude Include="Visiteurs\VisiteurXML.h" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\..\Commun\Utilitaire\Utilitaire.vcxproj">

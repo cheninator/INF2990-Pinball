@@ -1,0 +1,84 @@
+# Blender MTL File: 'None'
+# Material Count: 8
+
+newmtl Eyeball
+Ns 415.686275
+Ka 0.000000 0.000000 0.000000
+Kd 0.512000 0.512000 0.512000
+Ks 2.000000 2.000000 2.000000
+Ni 1.407409
+d 0.000000
+illum 2
+map_Kd materiaux/texture/generateurbille/eye.png
+map_d materiaux/texture/generateurbille/eye.png
+
+newmtl Eyeball.001
+Ns 415.686275
+Ka 0.000000 0.000000 0.000000
+Kd 0.512000 0.512000 0.512000
+Ks 2.000000 2.000000 2.000000
+Ni 1.407409
+d 0.000000
+illum 2
+map_Kd materiaux/texture/generateurbille/eye.png
+map_d materiaux/texture/generateurbille/eye.png
+
+newmtl Iris
+Ns 0.000000
+Ka 0.000000 0.000000 0.000000
+Kd 0.271114 0.153931 0.061498
+Ks 0.000000 0.000000 0.000000
+Ni 1.000000
+d 1.000000
+illum 2
+map_Kd materiaux/texture/generateurbille/eye.png
+
+newmtl Iris.001
+Ns 0.000000
+Ka 0.000000 0.000000 0.000000
+Kd 0.271114 0.153931 0.061498
+Ks 0.000000 0.000000 0.000000
+Ni 1.000000
+d 1.000000
+illum 2
+map_Kd materiaux/texture/generateurbille/eye.png
+
+newmtl Material.002
+Ns 500
+Ka 0.500000 0.500000 1.500000
+Kd 1.000000 1.000000 1.000000
+Ks 0.500000 0.500000 0.500000
+Ni 1.000000
+d 1.000000
+illum 1
+map_Kd materiaux/texture/generateurbille/bones.jpg
+map_d materiaux/texture/generateurbille/bones.jpg
+
+newmtl Material.003
+Ns 450
+Ka 0.500000 0.500000 1.500000
+Kd 0.750000 0.705000 0.750000
+Ks 0.000000 0.000000 0.000000
+Ni 1.000000
+d 1.000000
+illum 1
+map_Kd materiaux/texture/generateurbille/bones.jpg
+map_d materiaux/texture/generateurbille/bones.jpg
+
+newmtl Pupil
+Ns 0.000000
+Ka 0.000000 0.000000 0.000000
+Kd 0.000000 0.000000 0.000000
+Ks 0.000000 0.000000 0.000000
+Ni 1.000000
+d 1.000000
+illum 1
+
+newmtl Pupil.001
+Ns 0.000000
+Ka 0.000000 0.000000 0.000000
+Kd 0.000000 0.000000 0.000000
+Ks 0.000000 0.000000 0.000000
+Ni 1.000000
+d 1.000000
+illum 2

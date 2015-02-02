@@ -15,7 +15,7 @@ public:
 
 
 inline UsineNoeudVide::UsineNoeudVide(const std::string& nom)
-	: UsineNoeud(nom, std::string("media/Vide.obj"))
+	: UsineNoeud(nom, std::string("media/objets/Vide.obj"))
 {}
 
 #endif // __ARBRE_USINES_USINENOEUDVIDE_H__

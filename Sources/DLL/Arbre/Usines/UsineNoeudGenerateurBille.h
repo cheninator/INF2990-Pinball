@@ -15,7 +15,7 @@ public:
 
 
 inline UsineNoeudGenerateurBille::UsineNoeudGenerateurBille(const std::string& nom)
-	: UsineNoeud(nom, std::string("media/GenerateurBille.obj"))
+	: UsineNoeud(nom, std::string("media/objets/GenerateurBille.obj"))
 {}
 
 NoeudAbstrait* UsineNoeudGenerateurBille::creerNoeud() const

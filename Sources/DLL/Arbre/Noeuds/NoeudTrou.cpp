@@ -21,6 +21,13 @@ NoeudTrou::~NoeudTrou()
 
 void NoeudTrou::afficherConcret() const
 {
+	NoeudComposite::afficherConcret();
+	// Sauvegarde de la matrice.
+	glPushMatrix();
+	// Affichage du modèle.
+	liste_->dessiner();
+	// Restauration de la matrice.
+	glPopMatrix();
 }
 
 void NoeudTrou::animer(float temps)
@@ -31,7 +38,7 @@ bool NoeudTrou::accepterVisiteur(VisiteurAbstrait* vis)
 {
 	bool reussi = false;
 
-	if (vis->traiter(*this))
+	if (vis->traiter(this))
 		reussi = true;
 
 	return reussi;

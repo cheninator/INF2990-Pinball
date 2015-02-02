@@ -21,10 +21,10 @@ NoeudGenerateurBille::~NoeudGenerateurBille()
 
 void NoeudGenerateurBille::afficherConcret() const
 {
+	NoeudComposite::afficherConcret();
 	// Sauvegarde de la matrice.
 	glPushMatrix();
 	// Affichage du modèle.
-	glScalef(10, 10, 10);
 	liste_->dessiner();
 	// Restauration de la matrice.
 	glPopMatrix();
@@ -38,7 +38,7 @@ bool NoeudGenerateurBille::accepterVisiteur(VisiteurAbstrait* vis)
 {
 	bool reussi = false;
 
-	if (vis->traiter(*this))
+	if (vis->traiter(this))
 		reussi = true;
 
 	return reussi;

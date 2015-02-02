@@ -1,4 +1,5 @@
 #include "VisiteurRotation.h"
+#include "../Arbre/ArbreRenduINF2990.h"
 #include "../Arbre/Noeuds/NoeudButoir.h"
 #include "../Arbre/Noeuds/NoeudCible.h"
 #include "../Arbre/Noeuds/NoeudGenerateurBille.h"
@@ -28,51 +29,73 @@ VisiteurRotation::~VisiteurRotation()
 
 }
 
-//
-// TO DO
-//
+bool VisiteurRotation::traiter(ArbreRenduINF2990* noeud)
+{
+	for (unsigned int i = 0; i < noeud->obtenirNombreEnfants(); i++)
+	{
+		// Déplacer UNIQUEMENT les noeuds selectionnes
+		if (noeud->getEnfant(i) != nullptr && noeud->getEnfant(i)->estSelectionnable())
+			noeud->getEnfant(i)->accepterVisiteur(this);
 
-bool VisiteurRotation::traiter(NoeudAbstrait& noeud)
+		else
+			return false;
+	}
+
+	return true;
+}
+
+
+
+////////////// TO DO
+
+
+bool VisiteurRotation::traiter(NoeudAbstrait* noeud)
+{
+
+	return true;
+}
+
+bool VisiteurRotation::traiter(NoeudButoir* noeud)
 {
 	return true;
 }
 
-bool VisiteurRotation::traiter(NoeudButoir& noeud)
+bool VisiteurRotation::traiter(NoeudCible* noeud)
 {
 	return true;
 }
 
-bool VisiteurRotation::traiter(NoeudCible& noeud)
+bool VisiteurRotation::traiter(NoeudGenerateurBille* noeud)
 {
 	return true;
 }
 
-bool VisiteurRotation::traiter(NoeudGenerateurBille& noeud)
+bool VisiteurRotation::traiter(NoeudMur* noeud)
 {
 	return true;
 }
 
-bool VisiteurRotation::traiter(NoeudMur& noeud)
+bool VisiteurRotation::traiter(NoeudPalette* noeud)
 {
 	return true;
 }
 
-bool VisiteurRotation::traiter(NoeudPalette& noeud)
+bool VisiteurRotation::traiter(NoeudPortail* noeud)
 {
 	return true;
 }
 
-bool VisiteurRotation::traiter(NoeudPortail& noeud)
+bool VisiteurRotation::traiter(NoeudRessort* noeud)
 {
 	return true;
 }
 
-bool VisiteurRotation::traiter(NoeudRessort& noeud)
+bool VisiteurRotation::traiter(NoeudTrou* noeud)
 {
 	return true;
 }
 
-bool VisiteurRotation::traiter(NoeudTrou& noeud)
+bool VisiteurRotation::traiter(NoeudTable* noeud)
 {
-	return true;
+	return false;
 }

@@ -69,7 +69,6 @@
             this.Y_label = new System.Windows.Forms.Label();
             this.Xbox = new System.Windows.Forms.TextBox();
             this.X_label = new System.Windows.Forms.Label();
-            this.panel_GL = new System.Windows.Forms.Panel();
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.fichierToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.Nouveau_MenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -107,6 +106,7 @@
             this.Orbite_MenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.Information_MenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.Aide_MenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.panel_GL = new System.Windows.Forms.Panel();
             this.printPreviewDialog1 = new System.Windows.Forms.PrintPreviewDialog();
             this.panel1.SuspendLayout();
             this.Creation_Panel.SuspendLayout();
@@ -127,8 +127,8 @@
             this.panel1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.panel1.Controls.Add(this.panel_GL);
             this.panel1.Controls.Add(this.Creation_Panel);
-            this.panel1.Controls.Add(this.menuStrip1);
             this.panel1.Controls.Add(this.flowLayoutPanel1);
+            this.panel1.Controls.Add(this.menuStrip1);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel1.Location = new System.Drawing.Point(0, 0);
             this.panel1.Name = "panel1";
@@ -360,12 +360,13 @@
             // flowLayoutPanel1
             // 
             this.flowLayoutPanel1.BackColor = System.Drawing.SystemColors.InactiveBorder;
+            this.flowLayoutPanel1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.flowLayoutPanel1.Controls.Add(this.Groupe_Outils);
             this.flowLayoutPanel1.Controls.Add(this.Groupe_Proprietes);
             this.flowLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Left;
-            this.flowLayoutPanel1.Location = new System.Drawing.Point(0, 0);
+            this.flowLayoutPanel1.Location = new System.Drawing.Point(0, 24);
             this.flowLayoutPanel1.Name = "flowLayoutPanel1";
-            this.flowLayoutPanel1.Size = new System.Drawing.Size(168, 638);
+            this.flowLayoutPanel1.Size = new System.Drawing.Size(163, 614);
             this.flowLayoutPanel1.TabIndex = 3;
             // 
             // Groupe_Outils
@@ -482,7 +483,7 @@
             this.Groupe_Proprietes.Controls.Add(this.X_label);
             this.Groupe_Proprietes.Location = new System.Drawing.Point(3, 287);
             this.Groupe_Proprietes.Name = "Groupe_Proprietes";
-            this.Groupe_Proprietes.Size = new System.Drawing.Size(159, 173);
+            this.Groupe_Proprietes.Size = new System.Drawing.Size(159, 193);
             this.Groupe_Proprietes.TabIndex = 1;
             this.Groupe_Proprietes.TabStop = false;
             this.Groupe_Proprietes.Text = "Propriétés spaciales";
@@ -509,16 +510,17 @@
             // 
             // Anglebox
             // 
-            this.Anglebox.Location = new System.Drawing.Point(93, 74);
+            this.Anglebox.Location = new System.Drawing.Point(93, 73);
             this.Anglebox.Name = "Anglebox";
-            this.Anglebox.Size = new System.Drawing.Size(50, 20);
+            this.Anglebox.Size = new System.Drawing.Size(51, 20);
             this.Anglebox.TabIndex = 5;
+            this.Anglebox.Text = "0";
             // 
             // Angle_label
             // 
-            this.Angle_label.Location = new System.Drawing.Point(17, 74);
+            this.Angle_label.Location = new System.Drawing.Point(14, 73);
             this.Angle_label.Name = "Angle_label";
-            this.Angle_label.Size = new System.Drawing.Size(67, 20);
+            this.Angle_label.Size = new System.Drawing.Size(50, 20);
             this.Angle_label.TabIndex = 6;
             this.Angle_label.Text = "Angle:";
             this.Angle_label.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -529,6 +531,7 @@
             this.FMEbox.Name = "FMEbox";
             this.FMEbox.Size = new System.Drawing.Size(51, 20);
             this.FMEbox.TabIndex = 7;
+            this.FMEbox.Text = "1.0";
             // 
             // FME_label
             // 
@@ -545,6 +548,7 @@
             this.Ybox.Name = "Ybox";
             this.Ybox.Size = new System.Drawing.Size(51, 20);
             this.Ybox.TabIndex = 3;
+            this.Ybox.Text = "0";
             // 
             // Y_label
             // 
@@ -561,6 +565,7 @@
             this.Xbox.Name = "Xbox";
             this.Xbox.Size = new System.Drawing.Size(51, 20);
             this.Xbox.TabIndex = 1;
+            this.Xbox.Text = "0";
             // 
             // X_label
             // 
@@ -571,16 +576,6 @@
             this.X_label.Text = "Position en X:";
             this.X_label.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
-            // panel_GL
-            // 
-            this.panel_GL.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.panel_GL.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel_GL.Location = new System.Drawing.Point(168, 24);
-            this.panel_GL.Name = "panel_GL";
-            this.panel_GL.Size = new System.Drawing.Size(561, 614);
-            this.panel_GL.TabIndex = 4;
-            this.panel_GL.MouseClick += new System.Windows.Forms.MouseEventHandler(this.panel_GL_MouseClick);
-            // 
             // menuStrip1
             // 
             this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
@@ -589,9 +584,9 @@
             this.Outils_MenuItem,
             this.Vues_MenuItem,
             this.Information_MenuItem});
-            this.menuStrip1.Location = new System.Drawing.Point(168, 0);
+            this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
-            this.menuStrip1.Size = new System.Drawing.Size(786, 24);
+            this.menuStrip1.Size = new System.Drawing.Size(954, 24);
             this.menuStrip1.TabIndex = 0;
             this.menuStrip1.Text = "menuStrip1";
             // 
@@ -612,8 +607,10 @@
             // Nouveau_MenuItem
             // 
             this.Nouveau_MenuItem.Name = "Nouveau_MenuItem";
+            this.Nouveau_MenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.N)));
             this.Nouveau_MenuItem.Size = new System.Drawing.Size(198, 22);
             this.Nouveau_MenuItem.Text = "Nouveau";
+            this.Nouveau_MenuItem.Click += new System.EventHandler(this.Nouveau_MenuItem_Click);
             // 
             // Ouvrir_MenuItem
             // 
@@ -883,6 +880,18 @@
             this.Aide_MenuItem.Size = new System.Drawing.Size(98, 22);
             this.Aide_MenuItem.Text = "Aide";
             this.Aide_MenuItem.Click += new System.EventHandler(this.Aide_MenuItem_Click);
+            // 
+            // panel_GL
+            // 
+            this.panel_GL.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            this.panel_GL.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panel_GL.Location = new System.Drawing.Point(163, 24);
+            this.panel_GL.Name = "panel_GL";
+            this.panel_GL.Size = new System.Drawing.Size(566, 614);
+            this.panel_GL.TabIndex = 4;
+            this.panel_GL.MouseClick += new System.Windows.Forms.MouseEventHandler(this.panel_GL_MouseClick);
+            this.panel_GL.MouseDown += new System.Windows.Forms.MouseEventHandler(this.panel_GL_MouseDown);
+            this.panel_GL.MouseUp += new System.Windows.Forms.MouseEventHandler(this.panel_GL_MouseUp);
             // 
             // printPreviewDialog1
             // 

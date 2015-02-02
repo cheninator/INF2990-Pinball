@@ -65,6 +65,9 @@ public:
    void animer(float temps);
 
 
+   NoeudAbstrait* trouverObjetSousPointClique(int i,int j);
+
+
 private:
    /// Constructeur par défaut.
    FacadeModele() = default;

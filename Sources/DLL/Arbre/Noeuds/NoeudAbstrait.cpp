@@ -398,6 +398,10 @@ void NoeudAbstrait::afficher() const
 
 		glScalef(scale_[0], scale_[1], scale_[2]);
 
+		glRotatef(rotation_[0], 1, 0, 0);
+		glRotatef(rotation_[1], 0, 1, 0);
+		glRotatef(rotation_[2], 0, 0, 1);
+
 		// Assignation du mode d'affichage des polygones
 		glPolygonMode(GL_FRONT_AND_BACK, modePolygones_);
 
@@ -447,6 +451,22 @@ void NoeudAbstrait::animer(float dt)
 }
 
 
+////////////////////////////////////////////////////////////////////////
+///
+/// @fn bool NoeudAbstrait::accepterVisiteur(VisiteurAbstrait* vis)
+///
+///
+/// Cette fonction permet d'accepter un visiteur (voir le livre de Gamma)
+///
+/// @param[in] dt : Prend un bisiteur abstrait.
+///
+/// @return reusiite ou echec.
+///
+////////////////////////////////////////////////////////////////////////
+bool NoeudAbstrait::accepterVisiteur(VisiteurAbstrait* vis) 
+{
+	vis->traiter(this); return false; 
+}
 ////////////////////////////////////////////////
 /// @}
 ////////////////////////////////////////////////

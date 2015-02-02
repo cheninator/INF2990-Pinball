@@ -21,6 +21,12 @@ NoeudCible::~NoeudCible()
 
 void NoeudCible::afficherConcret() const
 {
+	// Sauvegarde de la matrice.
+	glPushMatrix();
+	// Affichage du modèle.
+	liste_->dessiner();
+	// Restauration de la matrice.
+	glPopMatrix();
 }
 
 void NoeudCible::animer(float temps)
@@ -31,7 +37,7 @@ bool  NoeudCible::accepterVisiteur(VisiteurAbstrait* vis)
 {
 	bool reussi = false;
 
-	if (vis->traiter(*this))
+	if (vis->traiter(this))
 		reussi = true;
 
 	return reussi;

@@ -18,11 +18,15 @@
 
 #include <windows.h>
 #include <cassert>
+#include <iostream>
 
 #include "GL/glew.h"
 #include "FreeImage.h"
 
 #include "FacadeModele.h"
+
+// Voulait vraiment pas marcher sans que je mette le chemin.
+#include "../Visiteurs/VisiteurSelection.h"
 
 #include "VueOrtho.h"
 #include "Camera.h"
@@ -41,6 +45,7 @@
 
 #include "glm/glm.hpp"
 #include "glm/gtc/type_ptr.hpp"
+#include "../Visiteurs/VisiteurXML.h"
 
 /// Pointeur vers l'instance unique de la classe.
 FacadeModele* FacadeModele::instance_{ nullptr };
@@ -133,7 +138,7 @@ void FacadeModele::initialiserOpenGL(HWND hWnd)
 	FreeImage_Initialise();
 
 	// La couleur de fond
-	glClearColor(1.0f, 1.0f, 1.0f, 0.2f);
+	glClearColor(0.0f, 0.0f, 0.0f, 0.1f);
 
 	// Les lumières
 	glEnable(GL_LIGHTING);
@@ -172,6 +177,7 @@ void FacadeModele::initialiserOpenGL(HWND hWnd)
 				1, 1000, 1, 10000, 1.25,
 				-100, 100, -100, 100 }
 	};
+
 }
 
 
@@ -347,6 +353,37 @@ void FacadeModele::animer(float temps)
 	vue_->animer(temps);
 }
 
+
+////////////////////////////////////////////////////////////////////////
+///
+/// @fn NoeudAbstrait* FacadeModele::trouverObjetSousPointClique(int i, int j)
+///
+/// Cette fonction permet de selectionner un objet
+///
+/// @param[in] i : Position souris i
+/// @param[in] j : Position souris j
+///
+/// @return NoeudAbstrait.
+///
+////////////////////////////////////////////////////////////////////////
+NoeudAbstrait* FacadeModele::trouverObjetSousPointClique(int i, int j)
+{
+	glm::dvec3 pointDansLeMonde;
+	vue_->convertirClotureAVirtuelle(i, j, pointDansLeMonde);
+	std::cout << "Position du click dans l'ecran : (" << i << ", " << j << ")" << std::endl;
+
+	FacadeModele::obtenirInstance()->obtenirVue()->convertirClotureAVirtuelle(i, j, pointDansLeMonde);
+	std::cout << "Position du click dans le monde : (" << pointDansLeMonde.x << ", " << pointDansLeMonde.y << ", 0)" << std::endl;
+
+	// Creer un visiteur,
+	VisiteurSelection visSel(pointDansLeMonde);
+	// Passer le visisteur a l<arbre
+	arbre_->accepterVisiteur(&visSel);
+	// Demander au visiteur ce qu'il a trouvé et faire quelque chose en conséquence
+
+	std::cout << "Aucun noeud trouvé" << std::endl;
+	return 0;
+}
 
 ///////////////////////////////////////////////////////////////////////////////
 /// @}

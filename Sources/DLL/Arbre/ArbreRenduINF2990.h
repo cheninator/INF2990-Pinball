@@ -15,6 +15,7 @@
 
 #include <map>
 #include <string>
+#include "tinyxml2.h"
 
 
 ///////////////////////////////////////////////////////////////////////////
@@ -39,12 +40,22 @@ public:
    /// Initialise l'arbre de rendu à son état initial.
    void initialiser();
 
+   // Obtenir le ième enfant de l'arbre
+   NoeudAbstrait* getEnfant(int position);
 
-	/// La chaîne représentant led typrs
+   // Accepter un visiteur
+   virtual bool accepterVisiteur(VisiteurAbstrait* vis);
+
+   // Initialiser l'arbre avec un fichier XML
+   bool initialiserXML(std::string nomFichier);
+
+	/// La chaîne représentant les types
    static const std::string NOM_ARAIGNEE;
    static const std::string NOM_BUTOIR;
+   static const std::string NOM_BUTOIRCIRCULAIRE;
    static const std::string NOM_CIBLE;
    static const std::string NOM_CONECUBE;
+   static const std::string NOM_BILLE;
    static const std::string NOM_GENERATEURBILLE;
    static const std::string NOM_MUR;
    static const std::string NOM_PALETTE;
@@ -52,6 +63,7 @@ public:
    static const std::string NOM_RESSORT;
    static const std::string NOM_TROU;	
    static const std::string NOM_VIDE;
+   static const std::string NOM_TABLE;
 };
 
 

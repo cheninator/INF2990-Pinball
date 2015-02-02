@@ -1,4 +1,5 @@
 #include "VisiteurAgrandissement.h"
+#include "../Arbre/ArbreRenduINF2990.h"
 #include "../Arbre/Noeuds/NoeudButoir.h"
 #include "../Arbre/Noeuds/NoeudCible.h"
 #include "../Arbre/Noeuds/NoeudGenerateurBille.h"
@@ -26,56 +27,77 @@ VisiteurAgrandissement::~VisiteurAgrandissement()
 
 }
 
-bool VisiteurAgrandissement::traiter(NoeudAbstrait& noeud)
+bool VisiteurAgrandissement::traiter(ArbreRenduINF2990* noeud)
 {
-	noeud.assignerEchelle(homothetie_);
+	for (unsigned int i = 0; i < noeud->obtenirNombreEnfants(); i++)
+	{
+		// Déplacer UNIQUEMENT les noeuds selectionnes
+		if (noeud->getEnfant(i) != nullptr && noeud->getEnfant(i)->estSelectionnable())
+			noeud->getEnfant(i)->accepterVisiteur(this);
+
+		else
+			return false;
+	}
+
 	return true;
 }
 
-bool VisiteurAgrandissement::traiter(NoeudButoir& noeud)
+
+bool VisiteurAgrandissement::traiter(NoeudAbstrait* noeud)
 {
-	noeud.assignerEchelle(homothetie_);
+	noeud->assignerEchelle(homothetie_);
 	return true;
 }
 
-bool VisiteurAgrandissement::traiter(NoeudCible& noeud)
+bool VisiteurAgrandissement::traiter(NoeudButoir* noeud)
 {
-	noeud.assignerEchelle(homothetie_);
+	noeud->assignerEchelle(homothetie_);
 	return true;
 }
 
-bool VisiteurAgrandissement::traiter(NoeudGenerateurBille& noeud)
+bool VisiteurAgrandissement::traiter(NoeudCible* noeud)
 {
-	noeud.assignerEchelle(homothetie_);
+	noeud->assignerEchelle(homothetie_);
 	return true;
 }
 
-bool VisiteurAgrandissement::traiter(NoeudMur& noeud)
+bool VisiteurAgrandissement::traiter(NoeudGenerateurBille* noeud)
 {
-	noeud.assignerEchelle(homothetie_);
+	noeud->assignerEchelle(homothetie_);
 	return true;
 }
 
-bool VisiteurAgrandissement::traiter(NoeudPalette& noeud)
+bool VisiteurAgrandissement::traiter(NoeudMur* noeud)
 {
-	noeud.assignerEchelle(homothetie_);
+	noeud->assignerEchelle(homothetie_);
 	return true;
 }
 
-bool VisiteurAgrandissement::traiter(NoeudPortail& noeud)
+bool VisiteurAgrandissement::traiter(NoeudPalette* noeud)
 {
-	noeud.assignerEchelle(homothetie_);
+	noeud->assignerEchelle(homothetie_);
 	return true;
 }
 
-bool VisiteurAgrandissement::traiter(NoeudRessort& noeud)
+bool VisiteurAgrandissement::traiter(NoeudPortail* noeud)
 {
-	noeud.assignerEchelle(homothetie_);;
+	noeud->assignerEchelle(homothetie_);
 	return true;
 }
 
-bool VisiteurAgrandissement::traiter(NoeudTrou& noeud)
+bool VisiteurAgrandissement::traiter(NoeudRessort* noeud)
 {
-	noeud.assignerEchelle(homothetie_);
+	noeud->assignerEchelle(homothetie_);;
 	return true;
+}
+
+bool VisiteurAgrandissement::traiter(NoeudTrou* noeud)
+{
+	noeud->assignerEchelle(homothetie_);
+	return true;
+}
+
+bool VisiteurAgrandissement::traiter(NoeudTable* noeud)
+{
+	return false;
 }

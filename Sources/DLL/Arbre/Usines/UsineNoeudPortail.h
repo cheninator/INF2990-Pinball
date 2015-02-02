@@ -15,7 +15,7 @@ public:
 
 
 inline UsineNoeudPortail::UsineNoeudPortail(const std::string& nom)
-	: UsineNoeud(nom, std::string("media/Portail.obj"))
+	: UsineNoeud(nom, std::string("media/objets/Portail.obj"))
 {}
 
 NoeudAbstrait* UsineNoeudPortail::creerNoeud() const

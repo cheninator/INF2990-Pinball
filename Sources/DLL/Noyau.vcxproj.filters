@@ -135,6 +135,21 @@
     <ClCompile Include="Visiteurs\VisiteurAgrandissement.cpp">
       <Filter>Source Files\Visiteurs</Filter>
     </ClCompile>
+    <ClCompile Include="Arbre\Noeuds\NoeudTable.cpp">
+      <Filter>Source Files\Arbre\Noeuds</Filter>
+    </ClCompile>
+    <ClCompile Include="Visiteurs\VisiteurSelection.cpp">
+      <Filter>Source Files\Visiteurs</Filter>
+    </ClCompile>
+    <ClCompile Include="Arbre\Noeuds\NoeudBille.cpp">
+      <Filter>Source Files\Arbre\Noeuds</Filter>
+    </ClCompile>
+    <ClCompile Include="Arbre\Noeuds\NoeudButoirCirculaire.cpp">
+      <Filter>Source Files\Arbre\Noeuds</Filter>
+    </ClCompile>
+    <ClCompile Include="Visiteurs\VisiteurXML.cpp">
+      <Filter>Source Files\Visiteurs</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Application\FacadeModele.h">
@@ -246,6 +261,30 @@
       <Filter>Header Files\Arbre\Usines</Filter>
     </ClInclude>
     <ClInclude Include="Visiteurs\VisiteurAgrandissement.h">
+      <Filter>Header Files\Visiteurs</Filter>
+    </ClInclude>
+    <ClInclude Include="Arbre\Noeuds\NoeudTable.h">
+      <Filter>Header Files\Arbre\Noeuds</Filter>
+    </ClInclude>
+    <ClInclude Include="Arbre\Usines\UsineNoeudTable.h">
+      <Filter>Header Files\Arbre\Usines</Filter>
+    </ClInclude>
+    <ClInclude Include="Visiteurs\VisiteurSelection.h">
+      <Filter>Header Files\Visiteurs</Filter>
+    </ClInclude>
+    <ClInclude Include="Arbre\Usines\UsineNoeudBille.h">
+      <Filter>Header Files\Arbre\Usines</Filter>
+    </ClInclude>
+    <ClInclude Include="Arbre\Noeuds\NoeudBille.h">
+      <Filter>Header Files\Arbre\Noeuds</Filter>
+    </ClInclude>
+    <ClInclude Include="Arbre\Noeuds\NoeudButoirCirculaire.h">
+      <Filter>Header Files\Arbre\Noeuds</Filter>
+    </ClInclude>
+    <ClInclude Include="Arbre\Usines\UsineNoeudButoirCirculaire.h">
+      <Filter>Header Files\Arbre\Usines</Filter>
+    </ClInclude>
+    <ClInclude Include="Visiteurs\VisiteurXML.h">
       <Filter>Header Files\Visiteurs</Filter>
     </ClInclude>
   </ItemGroup>

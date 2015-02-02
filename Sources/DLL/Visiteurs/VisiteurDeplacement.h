@@ -30,15 +30,17 @@ public:
 	void setDeplacement(glm::dvec3 dep) { deplacement_ = dep; };
 
 	// Traiter une opération selon le type spécifique de l'objet en paramètre
-	virtual bool traiter(NoeudAbstrait& noeud);
-	virtual bool traiter(NoeudButoir& butoir);
-	virtual bool traiter(NoeudCible& cible);
-	virtual bool traiter(NoeudGenerateurBille& generateur);
-	virtual bool traiter(NoeudMur& mur);
-	virtual bool traiter(NoeudPalette& palette);
-	virtual bool traiter(NoeudPortail& portail);
-	virtual bool traiter(NoeudRessort& ressort);
-	virtual bool traiter(NoeudTrou& trou);
+	virtual bool traiter(ArbreRenduINF2990* arbre);
+	virtual bool traiter(NoeudAbstrait* noeud);
+	virtual bool traiter(NoeudButoir* butoir);
+	virtual bool traiter(NoeudCible* cible);
+	virtual bool traiter(NoeudGenerateurBille* generateur);
+	virtual bool traiter(NoeudMur* mur);
+	virtual bool traiter(NoeudPalette* palette);
+	virtual bool traiter(NoeudPortail* portail);
+	virtual bool traiter(NoeudRessort* ressort);
+	virtual bool traiter(NoeudTrou* trou);
+	virtual bool traiter(NoeudTable* table);
 
 private:
 
