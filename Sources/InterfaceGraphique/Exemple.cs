@@ -26,7 +26,6 @@ namespace InterfaceGraphique
         private float angleY = 0F;
         private float angleZ = 0F;
         private float scale = 1F;
-        private char color = 'x';
         public Exemple()
         {
             this.KeyPress += new KeyPressEventHandler(ToucheEnfonce);
@@ -117,6 +116,10 @@ namespace InterfaceGraphique
             if (e.KeyChar == 'z')
             {
                 state = 'z';
+            }
+            if (e.KeyChar == 'o')
+            {
+                state = 'o';
             }
         }
         private void Exemple_FormClosing(object sender, FormClosingEventArgs e)
@@ -235,7 +238,6 @@ namespace InterfaceGraphique
             angleX = 0;
             angleY = 0;
             angleZ = 0;
-            color = 'x';
         }
 
         private void Proprietes_MenuItem_Click(object sender, EventArgs e)
@@ -252,7 +254,6 @@ namespace InterfaceGraphique
             angleX = 0;
             angleY = 0;
             angleZ = 180;
-            color = 'x';
 
         }
 
@@ -356,7 +357,6 @@ namespace InterfaceGraphique
             angleX = 0;
             angleY = 0;
             angleZ = 0;
-            color = 'x';
         }
 
         private void Generateur_bouton_Click(object sender, EventArgs e)
@@ -366,7 +366,6 @@ namespace InterfaceGraphique
             angleX = 0;
             angleY = 0;// 90;
             angleZ = 0;//180;
-            color = 'x';
         }
 
         private void Trou_bouton_Click(object sender, EventArgs e)
@@ -376,7 +375,6 @@ namespace InterfaceGraphique
             angleX = 0;
             angleY = 0;
             angleZ = 0;
-            color = 'x';
         }
 
         private void bouton_Deplacement_Click(object sender, EventArgs e)
@@ -476,9 +474,6 @@ namespace InterfaceGraphique
             angleX = 180;
             angleY = 0;
             angleZ = 0;
-            color = 'r';
-            // Afficher_Objet();
-            // DO STUFF
         }
 
         private void PG_J1_MenuItem_Click(object sender, EventArgs e)
@@ -493,7 +488,6 @@ namespace InterfaceGraphique
             angleX = 0;
             angleY = 0;
             angleZ = 0;
-            color = 'r';
         }
 
         private void PD_J1_MenuItem_Click(object sender, EventArgs e)
@@ -508,7 +502,6 @@ namespace InterfaceGraphique
             angleX = 180;
             angleY = 0;
             angleZ = 0;
-            color = 'b';
         }
 
         private void PG_J2_MenuItem_Click(object sender, EventArgs e)
@@ -523,7 +516,6 @@ namespace InterfaceGraphique
             angleX = 0;
             angleY = 0;
             angleZ = 0;
-            color = 'b';
         }
 
         private void PD_J2_MenuItem_Click(object sender, EventArgs e)
@@ -543,7 +535,6 @@ namespace InterfaceGraphique
             angleX = 0;
             angleY = 0;
             angleZ = 0;
-            color = 'x';
         }
 
         private void BTD_MenuItem_Click(object sender, EventArgs e)
@@ -558,7 +549,6 @@ namespace InterfaceGraphique
             angleX = 0;
             angleY = 0;
             angleZ = 0;
-            color = 'x';
         }
 
         private void Cible_MenuItem_Click(object sender, EventArgs e)
@@ -573,7 +563,6 @@ namespace InterfaceGraphique
             angleX = 0;
             angleY = 0;
             angleZ = 0;
-            color = 'x';
         }
 
         private void Portails_MenuItem_Click(object sender, EventArgs e)
@@ -588,7 +577,6 @@ namespace InterfaceGraphique
             angleX = 0;
             angleY = 0;
             angleZ = 0;
-            color = 'x';
         }
 
         private void Mur_MenuItem_Click(object sender, EventArgs e)
@@ -673,7 +661,19 @@ namespace InterfaceGraphique
                 currentP.Y = e.Y;
                 
             }
-          //  scale = 1;
+
+
+            if (state == 'o')
+            {
+                int deltaX = (currentP.X - previousP.X);
+                int deltaY = -(currentP.Y - previousP.Y);
+
+                 FonctionsNatives.orbite(deltaX, deltaY);
+
+                //phi = CLIP(phi, MINPHI, MAXPHI);
+                currentP.X = e.X;
+                currentP.Y = e.Y;
+            }
         }
 
         private void panel_GL_MouseUp(object sender, MouseEventArgs e)
@@ -803,5 +803,8 @@ namespace InterfaceGraphique
 
         [DllImport(@"Noyau.dll", CallingConvention = CallingConvention.Cdecl)]
         public static extern void zoomOut();
+
+        [DllImport(@"Noyau.dll", CallingConvention = CallingConvention.Cdecl)]
+        public static extern void orbite(double phi, double theta);
     }
 }

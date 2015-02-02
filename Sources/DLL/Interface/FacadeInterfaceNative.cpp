@@ -27,6 +27,8 @@ extern "C"
 {
 	static NoeudAbstrait* objet = new NoeudAbstrait();
 	static double facteurDeTransition; // DONT ASK WHY
+	static double theta = 0;
+	static double phi = 0;
 
 
 	////////////////////////////////////////////////////////////////////////
@@ -478,6 +480,23 @@ extern "C"
 	{
 		std::cout << std::string(path);
 		VisiteurXML* visiteur(std::string(path));
+	}
+
+
+
+
+
+	__declspec(dllexport) void __cdecl orbite(double x, double y)
+	{
+		glm::dvec3 maPosition;
+		FacadeModele::obtenirInstance()->obtenirVue()->convertirClotureAVirtuelle(x, y, maPosition);
+
+		theta += maPosition.x / 100.0;
+		phi += maPosition.y / 100.0;
+		double dist = 200.0;
+
+		// A revori avec phil
+		FacadeModele::obtenirInstance()->obtenirVue()->obtenirCamera().orbiterXY(dist * cos(-theta)* cos(phi), dist * cos(-theta)*sin(phi));
 	}
 }
 

@@ -12,6 +12,7 @@
 #include <GL/glu.h>
 #include "Utilitaire.h"
 #include "Camera.h"
+#include <iostream>
 
 
 namespace vue {
@@ -131,6 +132,23 @@ namespace vue {
 		bool   empecheInversion //=true
 		)
 	{
+		position_[0] = rotationX ;
+		position_[1] = rotationY ;
+		std::cout << std::endl << "position_[0] : " << position_[0];
+		std::cout << std::endl << "position_[1] : " << position_[1];
+		std::cout << std::endl << "position_[2] : " << position_[2];
+		std::cout << std::endl;
+		std::cout << std::endl << "pointVise_[0] : " << pointVise_[0];
+		std::cout << std::endl << "pointVise_[1] : " << pointVise_[1];
+		std::cout << std::endl << "pointVise_[2] : " << pointVise_[2];
+		std::cout << std::endl;
+		std::cout << std::endl << "directionHaut_[0] : " << directionHaut_[0];
+		std::cout << std::endl << "directionHaut_[1] : " << directionHaut_[1];
+		std::cout << std::endl << "directionHaut_[2] : " << directionHaut_[2];
+		std::cout << std::endl;
+		std::cout << std::endl;
+		std::cout << std::endl;
+		std::cout << std::endl;
 	}
 
 

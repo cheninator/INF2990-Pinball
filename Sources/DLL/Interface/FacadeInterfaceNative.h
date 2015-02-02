@@ -35,6 +35,7 @@ extern "C" {
 	__declspec(dllexport) void translater(double deplacementX, double deplacementY);
 	__declspec(dllexport) void creerXML(char* path, int length);
 	__declspec(dllexport) void trouverObjetSousPointClique(int i, int j);
+	__declspec(dllexport) void orbite(double phi, double theta);
 }
 
 #endif // __FACADE_INTERFACE_NATIVE_H__
