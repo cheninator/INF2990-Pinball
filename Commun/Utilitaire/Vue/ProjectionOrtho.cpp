@@ -104,7 +104,6 @@ namespace vue {
 	//////////////////////////////////////////////////////////////////////// 
 	void ProjectionOrtho::zoomerOut()
 	{
-		// À IMPLANTER.
 		double augmentationX = (incrementZoom_ - 1.0) * 0.5 * (xMaxFenetre_ - xMinFenetre_);
 		double augmentationY = (incrementZoom_ - 1.0) * 0.5 * (yMaxFenetre_ - yMinFenetre_);
 		
@@ -224,6 +223,8 @@ namespace vue {
 	/// Ainsi la région délimitée par le rectangle deviendra la fenêtre
 	/// virtuelle.  La fenêtre résultante est ajustée pour respecter le rapport
 	/// d'aspect.
+	/// 
+	/// Les coordonnées reçues sont en coordonnées OpenGL (coord. de Fenêtre)
 	///
 	/// @param[in]  coin1 : Le premier coin du rectangle.
 	/// @param[in]  coin2 : Le deuxième coin du rectangle.
@@ -234,6 +235,41 @@ namespace vue {
 	void ProjectionOrtho::zoomerIn(const glm::ivec2& coin1, const glm::ivec2& coin2)
 	{
 		// À IMPLANTER.
+
+		// 1) Déterminer quel side est le plus grand (rapport aspect)
+		// Si le rapport d'aspect est plus grand que 1 la longueur en x est plus grand que celle en y
+		double rapportAspectCourant = (xMaxFenetre_ - xMinFenetre_) / (yMaxFenetre_ - yMinFenetre_);
+		double rapportAspectSelection = (abs(coin2.x - coin1.x) / abs(coin2.y - coin1.y));
+
+		double pointMilieuX = (xMaxFenetre_ + xMinFenetre_) / 2.0;
+		double pointMilieuY = (yMaxFenetre_ + yMinFenetre_) / 2.0;
+
+		double facteurMultiplication = 0.0;
+		double deltaX = 0.0;
+		double deltaY = 0.0;
+
+		// On doit voir quel est le ratio le plus grand de la sélection :
+		if (rapportAspectSelection > 1) // x est plus long que y
+		{
+			// On trouve le ratio de la fenêtre courante 
+			facteurMultiplication = abs(xMaxFenetre_ - xMinFenetre_) / abs(coin2.x - coin1.x);
+		}
+		else // y est plus long que x
+		{
+			facteurMultiplication = abs(yMaxFenetre_ - yMinFenetre_) / abs(coin2.y - coin1.y);
+		}
+		// Le côté est donc facteurMultiplication x taille de la sélection
+		// On doit ajouter une partie en x positive et négative
+		deltaX = (facteurMultiplication - 1.0) * abs(coin2.x - coin1.x) / 2.0;
+		deltaY = (facteurMultiplication - 1.0) * abs(coin2.y - coin1.y) / 2.0;
+
+		xMinFenetre_ += deltaX;
+		xMaxFenetre_ -= deltaX;
+
+		yMinFenetre_ += deltaY;
+		yMaxFenetre_ -= deltaY;
+		// La fenêtre étant de la bonne taille, on se centre sur le bon point.
+		centrerSurPoint(glm::ivec2(pointMilieuX, pointMilieuY));
 	}
 
 
@@ -305,7 +341,7 @@ namespace vue {
 	void ProjectionOrtho::translater(const glm::ivec2& deplacement)
 	{
 		// À IMPLANTER.
-		// Il faut calculer la variattion que notre déplacement
+		// Il faut calculer la variation que notre déplacement
 		// en coordonnées de cloture engendre en coordonnées virtuelles
 		//
 	}
@@ -327,6 +363,18 @@ namespace vue {
 	void ProjectionOrtho::centrerSurPoint(const glm::ivec2& pointCentre)
 	{
 		// À IMPLANTER.
+		// N.B: Puisque le fonction existante 'translater' suppose que les 
+		// déplacements sont faites à partir des coordonnées de clôtures,
+		// je fais le translate ici.
+		glm::ivec2 currentPoint((xMinFenetre_ + xMaxFenetre_) / 2.0, (yMinFenetre_ + yMaxFenetre_) / 2.0);
+		glm::ivec2 deplacement(pointCentre - currentPoint);
+
+		// Déplacement (en supposant que le vecteur est bon)
+		xMinFenetre_ += deplacement.x;
+		xMaxFenetre_ += deplacement.x;
+
+		yMinFenetre_ += deplacement.y;
+		yMaxFenetre_ += deplacement.y;
 	}
 
 
