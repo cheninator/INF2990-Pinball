@@ -125,9 +125,9 @@ bool VisiteurSelection::traiter(NoeudAbstrait* noeud)
 	//std::cout << "visite d'un noeudAbstrait avec identifiant " << noeud->getNumero() << std::endl;
 	//std::cout << noeud->obtenirPositionRelative().x << ","<< noeud->obtenirPositionRelative().y << "," << noeud->obtenirPositionRelative().z << ",      Distance:" << distance << std::endl;
 
-	if (distance < 30 && noeud->estSelectionnable())
+	if (valeurStencil_ == noeud->getNumero())
 	{
-		//std::cout << "noeud Selectionne !" << std::endl;
+		std::cout << "Noeud de type " << noeud->getType() << " selectionne " << std::endl;
 		noeud->assignerSelection(true);
 	}
 	else

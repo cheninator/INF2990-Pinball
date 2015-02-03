@@ -881,7 +881,7 @@ namespace InterfaceGraphique
         public void creationObjet(MouseEventArgs e)
         {
             Afficher_Objet();
-            FonctionsNatives.positionObjet(panel_GL.PointToClient(MousePosition).X, panel_GL.PointToClient(MousePosition).Y);
+            FonctionsNatives.positionObjet(panel_GL.PointToClient(MousePosition).X, panel_GL.PointToClient(MousePosition).Y,0);
             FonctionsNatives.rotate(angleX, 'x');
             FonctionsNatives.rotate(angleY, 'y');
             FonctionsNatives.rotate(angleZ, 'z');

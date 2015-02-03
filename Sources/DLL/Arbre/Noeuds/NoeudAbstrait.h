@@ -148,6 +148,7 @@ public:
 
 	inline const glm::dvec3& NoeudAbstrait::obtenirRotation() const;
 
+	std::string getType(){ return type_; }
 protected:
 	/// Type du noeud.
 	std::string      type_;
