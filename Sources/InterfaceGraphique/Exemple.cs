@@ -874,6 +874,7 @@ namespace InterfaceGraphique
 
         public void selection(MouseEventArgs e) 
         {
+            // TODO PHIL : Faire que ceci n'arrive que quand on relâche le bouton de gauche et qu'on n'a pas bougé de plus de 3 pixels.
             FonctionsNatives.trouverObjetSousPointClique(panel_GL.PointToClient(MousePosition).X, panel_GL.PointToClient(MousePosition).Y,panel_GL.Height , panel_GL.Height);
 
         }
