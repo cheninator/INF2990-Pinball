@@ -31,7 +31,6 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Exemple));
             this.panel1 = new System.Windows.Forms.Panel();
             this.panel_GL = new System.Windows.Forms.Panel();
-            this.label1 = new System.Windows.Forms.Label();
             this.Creation_Panel = new System.Windows.Forms.FlowLayoutPanel();
             this.Groupe_Palettes = new System.Windows.Forms.GroupBox();
             this.PDJ2_bouton = new System.Windows.Forms.Button();
@@ -71,6 +70,7 @@
             this.Y_label = new System.Windows.Forms.Label();
             this.Xbox = new System.Windows.Forms.TextBox();
             this.X_label = new System.Windows.Forms.Label();
+            this.label1 = new System.Windows.Forms.Label();
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.fichierToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.Nouveau_MenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -151,18 +151,6 @@
             this.panel_GL.MouseDown += new System.Windows.Forms.MouseEventHandler(this.panel_GL_MouseDown);
             this.panel_GL.MouseUp += new System.Windows.Forms.MouseEventHandler(this.panel_GL_MouseUp);
             this.panel_GL.MouseWheel += new System.Windows.Forms.MouseEventHandler(this.panel_GL_MouseWheel);
-            // 
-            // label1
-            // 
-            this.label1.BackColor = System.Drawing.Color.Transparent;
-            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(3, 445);
-            this.label1.Name = "label1";
-            this.label1.Padding = new System.Windows.Forms.Padding(0, 3, 3, 0);
-            this.label1.Size = new System.Drawing.Size(159, 160);
-            this.label1.TabIndex = 0;
-            this.label1.Text = resources.GetString("label1.Text");
-            this.label1.Click += new System.EventHandler(this.label1_Click);
             // 
             // Creation_Panel
             // 
@@ -605,6 +593,18 @@
             this.X_label.Text = "Position en X:";
             this.X_label.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
+            // label1
+            // 
+            this.label1.BackColor = System.Drawing.Color.Transparent;
+            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.Location = new System.Drawing.Point(3, 445);
+            this.label1.Name = "label1";
+            this.label1.Padding = new System.Windows.Forms.Padding(0, 3, 3, 0);
+            this.label1.Size = new System.Drawing.Size(159, 160);
+            this.label1.TabIndex = 0;
+            this.label1.Text = resources.GetString("label1.Text");
+            this.label1.Click += new System.EventHandler(this.label1_Click);
+            // 
             // menuStrip1
             // 
             this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
@@ -665,7 +665,6 @@
             // 
             // Proprietes_MenuItem
             // 
-            this.Proprietes_MenuItem.Enabled = false;
             this.Proprietes_MenuItem.Name = "Proprietes_MenuItem";
             this.Proprietes_MenuItem.Size = new System.Drawing.Size(198, 22);
             this.Proprietes_MenuItem.Text = "Propriétés";

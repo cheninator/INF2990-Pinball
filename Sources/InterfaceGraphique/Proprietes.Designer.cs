@@ -181,6 +181,7 @@
             this.propConfirm_Bouton.TabIndex = 7;
             this.propConfirm_Bouton.Text = "Confirmer";
             this.propConfirm_Bouton.UseVisualStyleBackColor = true;
+            this.propConfirm_Bouton.Click += new System.EventHandler(this.propConfirm_Bouton_Click);
             // 
             // propAnnuler_Bouton
             // 

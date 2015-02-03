@@ -9,6 +9,7 @@ using System.Text;
 using System.Windows.Forms;
 using System.Runtime.InteropServices;
 using System.Media;
+using System.IO;
 
 
 
@@ -22,6 +23,7 @@ namespace InterfaceGraphique
         Point origin;
         Point previousP, currentP;
         private char state = 's';
+        public List<int> propZJ = new List<int>{10,10,10,10,10,1};
         private float angleX = 0F;
         private float angleY = 0F;
         private float angleZ = 0F;
@@ -175,6 +177,7 @@ namespace InterfaceGraphique
             enregistrer_fichier.Filter = "Fichier XML(*.xml)| *.xml| All files(*.*)|*.*";
             enregistrer_fichier.ShowDialog();
             StringBuilder pathXML = new StringBuilder(enregistrer_fichier.FileName);
+           // Console.WriteLine(new FileInfo(enregistrer_fichier.FileName).Name);
             FonctionsNatives.creerXML(pathXML, pathXML.Capacity);
 
         }
@@ -253,9 +256,14 @@ namespace InterfaceGraphique
 
         private void Proprietes_MenuItem_Click(object sender, EventArgs e)
         {
-            Proprietes proprietes = new Proprietes();
+            Proprietes proprietes = new Proprietes(this.propZJ);
+            //proprietes.Parent = this;
             proprietes.StartPosition = FormStartPosition.CenterScreen;
-            proprietes.Show();
+            proprietes.ShowDialog();
+            for (int i = 0; i < 6; i++)
+            {
+                Console.WriteLine(propZJ[i]);
+            }
         }
 
         private void butoirG_bouton_Click(object sender, EventArgs e)
