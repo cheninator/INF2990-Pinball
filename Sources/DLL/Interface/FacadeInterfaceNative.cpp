@@ -261,7 +261,7 @@ extern "C"
 		// Ca ne sert a rien de rajouter un Node "vide" dans l'arbre
 		else if (nomObjet == "vide")
 			return;
-		FacadeModele::obtenirInstance()->obtenirArbreRenduINF2990()->ajouter(objet);
+		FacadeModele::obtenirInstance()->obtenirArbreRenduINF2990()->getEnfant(0)->ajouter(objet);
 	}
 
 	////////////////////////////////////////////////////////////////////////
@@ -498,7 +498,7 @@ extern "C"
 	////////////////////////////////////////////////////////////////////////
 	__declspec(dllexport) void __cdecl ouvrirXML(char* path, int length)
 	{
-		std::cout << std::string(path);
+		FacadeModele::obtenirInstance()->obtenirArbreRenduINF2990()->vider();
 		FacadeModele::obtenirInstance()->obtenirArbreRenduINF2990()->initialiserXML(std::string(path));
 	}
 
