@@ -181,6 +181,9 @@ protected:
 	modele::Modele3D const* modele_;
 	/// Storage pour le dessin du modèle
 	modele::opengl_storage::OpenGL_Liste const* liste_;
+
+	/// Nombre unique identifiant chaque Noeud
+	static unsigned int id;
 };
 
 

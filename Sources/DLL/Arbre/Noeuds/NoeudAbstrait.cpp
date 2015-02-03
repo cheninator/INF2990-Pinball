@@ -10,7 +10,7 @@
 #include "NoeudAbstrait.h"
 #include "Utilitaire.h"
 
-
+unsigned int NoeudAbstrait::id = 0;
 ////////////////////////////////////////////////////////////////////////
 ///
 /// @fn NoeudAbstrait::NoeudAbstrait(const std::string& type)
@@ -27,6 +27,7 @@ NoeudAbstrait::NoeudAbstrait(
 	) :
 	type_( type )
 {
+	id += 1;
 	scale_ = { 1.0, 1.0, 1.0 };
 }
 
