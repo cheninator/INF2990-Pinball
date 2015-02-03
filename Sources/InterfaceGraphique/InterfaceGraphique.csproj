@@ -76,7 +76,7 @@
     <Compile Include="Aide.Designer.cs">
       <DependentUpon>Aide.cs</DependentUpon>
     </Compile>
-    <Compile Include="Etats\EtatAbstrait.cs" />
+    <Compile Include="Etats\Etat.cs" />
     <Compile Include="Exemple.cs">
       <SubType>Form</SubType>
     </Compile>

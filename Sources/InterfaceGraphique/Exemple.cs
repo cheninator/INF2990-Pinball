@@ -12,6 +12,7 @@ using System.Media;
 
 
 
+
 // test
 namespace InterfaceGraphique
 {
@@ -19,13 +20,23 @@ namespace InterfaceGraphique
     {
         FullScreen fs = new FullScreen();
         StringBuilder myObjectName = new StringBuilder("vide");
-        Point origin;
-        Point previousP, currentP;
-        private char state = 's';
+        
+
+        public Point origin;
+        
+        public Point previousP, currentP;
+
+        public int panelHeight;
+        public int panelWidth;
+        
+        // private char state = 's';
         private float angleX = 0F;
         private float angleY = 0F;
         private float angleZ = 0F;
         private float scale = 1F;
+
+        private Etat etat {get; set;}
+
         public Exemple()
         {
             this.KeyPress += new KeyPressEventHandler(ToucheEnfonce);
@@ -37,6 +48,10 @@ namespace InterfaceGraphique
             Program.peutAfficher = true;
             panel_GL.Focus();
             InitialiserAnimation();
+
+            panelHeight = panel_GL.Size.Height;
+            panelWidth = panel_GL.Size.Width;
+            etat = new EtatNone(this);
         }
 
         public void InitialiserAnimation()
@@ -107,23 +122,35 @@ namespace InterfaceGraphique
             }
             if( e.KeyChar == 'd')
             {
-                state = 'd';
+                etat = null;
+                etat = new EtatDeplacement(this);
+                
+                //state = 'd';
             }
             if (e.KeyChar == 'e')
             {
-                state = 'e';
+                etat = null;
+                etat = new EtatScale(this);
+                
+                //state = 'e';
             }
             if (e.KeyChar == 'v')
             {
-                state = 'v';
+                etat = null;
+                etat = new EtatDeplacementVue(this);
+               
+                //state = 'v';
             }
             if (e.KeyChar == 'z')
             {
-                state = 'z';
+                etat = null;
+                etat = new EtatZoom(this);
+
+                //state = 'z';
             }
             if (e.KeyChar == 'o')
             {
-                state = 'o';
+                // state = 'o';
             }
             if (e.KeyChar == 'h')
             {
@@ -220,7 +247,9 @@ namespace InterfaceGraphique
 
         private void bouton_Selection_Click(object sender, EventArgs e)
         {
-            // TO DO
+            etat = null;
+            etat = new EtatSelection(this);
+
             Console.WriteLine("Outil Selection.");
         }
 
@@ -639,7 +668,10 @@ namespace InterfaceGraphique
         }
         private void panel_MouseMove(object sender, MouseEventArgs e)
         {
-            if (state == 'v')
+
+            etat.traiterSouris(e);
+
+            /*if (state == 'v')
             {
                 double deltaX = (-(currentP.X - previousP.X)) * 100.0 / panel_GL.Size.Width;
                 double deltaY = ((currentP.Y - previousP.Y)) * 100.0 / panel_GL.Size.Height;
@@ -678,13 +710,13 @@ namespace InterfaceGraphique
             {
                 int deltaX = (currentP.X - previousP.X);
                 int deltaY = -(currentP.Y - previousP.Y);
-
-                 FonctionsNatives.orbite(deltaX, deltaY);
+            
+                FonctionsNatives.orbite(deltaX, deltaY);
 
                 //phi = CLIP(phi, MINPHI, MAXPHI);
                 currentP.X = e.X;
                 currentP.Y = e.Y;
-            }
+            }*/
         }
 
         private void panel_GL_MouseUp(object sender, MouseEventArgs e)
@@ -715,7 +747,9 @@ namespace InterfaceGraphique
 
         private void panel_GL_MouseWheel(object sender, MouseEventArgs e)
         {
-            if (state == 'z')
+            etat.traiterRoulette(e);
+            
+            /*if (state == 'z')
             {
                 if (e.Delta > 0 && zoom_Bar.Value < 10)
                 {
@@ -728,7 +762,7 @@ namespace InterfaceGraphique
                         FonctionsNatives.zoomOut();
                         zoom_Bar.Value -= 1;
                 }
-            }
+            }*/
         }
 
 
@@ -741,6 +775,57 @@ namespace InterfaceGraphique
         {
             label1.Hide();
         }
+
+        /* Fonctionnalités des états */
+
+        public void deplacementSouris(MouseEventArgs e)
+        {
+            int deltaX = (currentP.X - previousP.X);
+            int deltaY = -(currentP.Y - previousP.Y);
+            FonctionsNatives.translateObjet(deltaX, deltaY);
+
+            previousP.X = currentP.X;
+            previousP.Y = currentP.Y;
+            currentP.X = e.X;
+            currentP.Y = e.Y;
+        }
+
+        public void deplacementVueSouris(MouseEventArgs e)
+        {
+            double deltaX = (-(currentP.X - previousP.X)) * 100.0 / panelWidth;
+            double deltaY = ((currentP.Y - previousP.Y)) * 100.0 / panelHeight;
+            FonctionsNatives.translater(deltaX, deltaY);
+
+            previousP.X = currentP.X;
+            previousP.Y = currentP.Y;
+            currentP.X = e.X;
+            currentP.Y = e.Y;
+        }
+
+        public void scaleSouris(MouseEventArgs e)
+        {
+            int deltaY = -(currentP.Y - previousP.Y);
+            FonctionsNatives.addScaleObjet(deltaY);
+            previousP.Y = currentP.Y;
+            currentP.Y = e.Y;
+        }
+
+        public void zoomRoulette(MouseEventArgs e)
+        {
+            if (e.Delta > 0 && zoom_Bar.Value < 10)
+            {
+
+                FonctionsNatives.zoomIn();
+                zoom_Bar.Value += 1;
+            }
+            else if (e.Delta < 0 && zoom_Bar.Value > 0)
+            {
+                FonctionsNatives.zoomOut();
+                zoom_Bar.Value -= 1;
+            }
+        }
+
+
     }
     // Full Screen
 
