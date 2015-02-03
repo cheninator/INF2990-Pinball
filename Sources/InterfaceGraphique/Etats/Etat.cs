@@ -46,7 +46,8 @@ namespace InterfaceGraphique
 
         public override bool traiterSouris(MouseEventArgs e)
         {
-            form_.deplacementSouris(e);
+            if(e.Button == MouseButtons.Left)
+                form_.deplacementSouris(e);
             if (e.Button == MouseButtons.Right)
                 form_.deplacementVueSouris(e);
             return true;
@@ -69,7 +70,8 @@ namespace InterfaceGraphique
 
         public override bool traiterSouris(MouseEventArgs e)
         {
-            form_.selection(e);
+            if(e.Button== MouseButtons.Left)
+                form_.selection(e);
             if (e.Button == MouseButtons.Right)
                 form_.deplacementVueSouris(e);
             return true;
@@ -128,11 +130,13 @@ namespace InterfaceGraphique
 
         public override bool traiterSouris(MouseEventArgs e)
         {
-           if(e.Button == MouseButtons.Left)
-            form_.creationObjet(e);
-            if(e.Button == MouseButtons.Right)
+
+            if (e.Button == MouseButtons.Left)
+                form_.creationObjet(e);
+            else if (e.Button == MouseButtons.Right)
                 form_.deplacementVueSouris(e);
            
+           // form_.creationObjet(e);
             return true;
         }
     }

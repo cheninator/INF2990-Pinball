@@ -258,7 +258,6 @@ namespace InterfaceGraphique
 
         private void bouton_Selection_Click(object sender, EventArgs e)
         {
-            etat = null;
             etat = new EtatSelection(this);
 
             Console.WriteLine("Outil Selection.");
@@ -679,18 +678,24 @@ namespace InterfaceGraphique
         {
 
             origin = panel_GL.PointToClient(MousePosition);
-            if (e.Button == MouseButtons.Left)
-            {
+            //if( !(etat is EtatCreation))
+            //    panel_GL.MouseMove += new MouseEventHandler(panel_MouseMove);
+            previousP.X = e.X;
+            previousP.Y = e.Y;
+            currentP.X = e.X;
+            currentP.Y = e.Y;
+            if (e.Button == MouseButtons.Left &&
+            (etat is EtatSelection || etat is EtatDeplacement || etat is EtatRotation
+                    || etat is EtatScale)
+            )
+                {
+                    panel_GL.MouseMove += new MouseEventHandler(panel_MouseMove);
+                }
                 
-                
-            }
+            
             if (e.Button == MouseButtons.Right)
             {
                 panel_GL.MouseMove += new MouseEventHandler(panel_MouseMove);
-                previousP.X = e.X;
-                previousP.Y = e.Y;
-                currentP.X = e.X;
-                currentP.Y = e.Y;
 
 
             }
@@ -698,8 +703,8 @@ namespace InterfaceGraphique
         }
         private void panel_MouseMove(object sender, MouseEventArgs e)
         {
-           etat.traiterSouris(e);
-
+            etat.traiterSouris(e);
+            //deplacementVueSouris(e);
             /*if (state == 'v')
             {
                 double deltaX = (-(currentP.X - previousP.X)) * 100.0 / panel_GL.Size.Width;
@@ -750,16 +755,18 @@ namespace InterfaceGraphique
 
         private void panel_GL_MouseUp(object sender, MouseEventArgs e)
         {
-            if(e.Button == MouseButtons.Right)
-                panel_GL.MouseMove -= panel_MouseMove;
+            panel_GL.MouseMove -= panel_MouseMove;
+                         
             if (e.Button == MouseButtons.Left)
             {
                 Point destination = panel_GL.PointToClient(MousePosition);
+               
                 if ((Math.Abs(destination.X - origin.X) < 3)
                      &&
                      (Math.Abs(destination.Y - origin.Y) < 3)
                     )
                 {
+                    
                     etat.traiterSouris(e);
                     /*Afficher_Objet();
                     FonctionsNatives.positionObjet(panel_GL.PointToClient(MousePosition).X, panel_GL.PointToClient(MousePosition).Y);
@@ -794,11 +801,6 @@ namespace InterfaceGraphique
             }*/
         }
 
-
-        private float deltaY(float originY, float destY)
-        {
-            return (destY - originY) / 10;
-        }
 
         private void label1_Click(object sender, EventArgs e)
         {
