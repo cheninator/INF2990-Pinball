@@ -200,13 +200,11 @@ bool ArbreRenduINF2990::lireXML(tinyxml2::XMLDocument& doc)
 
 	if (elementArbre != nullptr) 
 	{
-		std::cout << "trouve arbre ";
 		// Tenter d'obtenir l'élément table, puis l'attribut nbEnfants
 		const tinyxml2::XMLElement* elementTable{ elementArbre->FirstChildElement("table") };
 		
 		if (elementTable != nullptr)
 		{
-			std::cout << "trouve table ";
 			// Créer la table et l'ajouter à l'arbre de rendu
 			NoeudAbstrait* table{ creerNoeud(elementTable->Name()) };
 			this->ajouter(table);
