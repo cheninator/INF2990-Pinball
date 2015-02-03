@@ -35,7 +35,7 @@ namespace InterfaceGraphique
         private float angleY = 0F;
         private float angleZ = 0F;
         private float scale = 1F;
-
+        private StringBuilder pathXML = new StringBuilder("");
         private Etat etat {get; set;}
 
         public Exemple()
@@ -82,12 +82,16 @@ namespace InterfaceGraphique
         {
             if (panel_GL.Focused)
             {
-                if (e.KeyData == Keys.Subtract && zoom_Bar.Value > 0)
+                if ((e.KeyData == Keys.Subtract ||
+                    e.KeyCode == Keys.OemMinus)
+                    && zoom_Bar.Value > 0)
                 {
                     FonctionsNatives.zoomOut();
                     zoom_Bar.Value -= 1;
                 }
-                if (e.KeyData == Keys.Add && zoom_Bar.Value < 10)
+                if ((e.KeyData == Keys.Add ||
+                    e.KeyCode == Keys.Oemplus && e.Modifiers == Keys.Shift)
+                    && zoom_Bar.Value < 10)
                 {
                     FonctionsNatives.zoomIn();
                     zoom_Bar.Value += 1;
@@ -194,16 +198,21 @@ namespace InterfaceGraphique
             OpenFileDialog ouvrir_fichier = new OpenFileDialog();
             ouvrir_fichier.Filter = "Fichier XML(*.xml)| *.xml| All files(*.*)|*.*";
             ouvrir_fichier.ShowDialog();
-            StringBuilder pathXML = new StringBuilder(ouvrir_fichier.FileName);
+            pathXML = new StringBuilder(ouvrir_fichier.FileName);
             FonctionsNatives.ouvrirXML(pathXML, pathXML.Capacity);
         }
 
         private void EnregistrerS_MenuItem_Click(object sender, EventArgs e)
         {
+            EnregistrerSous();
+        }
+
+        private void EnregistrerSous()
+        {
             SaveFileDialog enregistrer_fichier = new SaveFileDialog();
             enregistrer_fichier.Filter = "Fichier XML(*.xml)| *.xml| All files(*.*)|*.*";
             enregistrer_fichier.ShowDialog();
-            StringBuilder pathXML = new StringBuilder(enregistrer_fichier.FileName);
+            pathXML = new StringBuilder(enregistrer_fichier.FileName);
             FonctionsNatives.creerXML(pathXML, pathXML.Capacity);
 
         }
@@ -862,8 +871,14 @@ namespace InterfaceGraphique
             previousP.X = panel_GL.PointToClient(MousePosition).X;
             previousP.Y = panel_GL.PointToClient(MousePosition).Y;
             FonctionsNatives.trouverObjetSousPointClique(panel_GL.PointToClient(MousePosition).X, panel_GL.PointToClient(MousePosition).Y);
+        }
 
-              
+        private void Enregistrer_MenuItem_Click(object sender, EventArgs e)
+        {
+            if (pathXML.ToString() == "")
+                EnregistrerSous();
+            else
+                FonctionsNatives.creerXML(pathXML, pathXML.Capacity);
         }
 
 
