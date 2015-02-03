@@ -169,6 +169,8 @@ namespace InterfaceGraphique
             OpenFileDialog ouvrir_fichier = new OpenFileDialog();
             ouvrir_fichier.Filter = "Fichier XML(*.xml)| *.xml| All files(*.*)|*.*";
             ouvrir_fichier.ShowDialog();
+            StringBuilder pathXML = new StringBuilder(ouvrir_fichier.FileName);
+            FonctionsNatives.ouvrirXML(pathXML, pathXML.Capacity);
         }
 
         private void EnregistrerS_MenuItem_Click(object sender, EventArgs e)
@@ -177,7 +179,6 @@ namespace InterfaceGraphique
             enregistrer_fichier.Filter = "Fichier XML(*.xml)| *.xml| All files(*.*)|*.*";
             enregistrer_fichier.ShowDialog();
             StringBuilder pathXML = new StringBuilder(enregistrer_fichier.FileName);
-           // Console.WriteLine(new FileInfo(enregistrer_fichier.FileName).Name);
             FonctionsNatives.creerXML(pathXML, pathXML.Capacity);
 
         }
@@ -826,6 +827,10 @@ namespace InterfaceGraphique
 
         [DllImport(@"Noyau.dll", CallingConvention = CallingConvention.Cdecl)]
         public static extern void creerXML(StringBuilder path, int taille);
+
+        [DllImport(@"Noyau.dll", CallingConvention = CallingConvention.Cdecl)]
+        public static extern void ouvrirXML(StringBuilder path, int taille);
+
         [DllImport(@"Noyau.dll", CallingConvention = CallingConvention.Cdecl)]
         public static extern void trouverObjetSousPointClique(int i, int j);
 
