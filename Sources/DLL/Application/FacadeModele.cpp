@@ -165,7 +165,7 @@ void FacadeModele::initialiserOpenGL(HWND hWnd)
 	// d'avoir une bonne raison de faire autrement, il est plus sage de créer
 	// l'arbre après avoir créé le contexte OpenGL.
 	arbre_ = new ArbreRenduINF2990;
-	arbre_->initialiser();
+	arbre_->initialiserXML("TestXML.xml");
 
 	// On crée une vue par défaut.
 	vue_ = new vue::VueOrtho{

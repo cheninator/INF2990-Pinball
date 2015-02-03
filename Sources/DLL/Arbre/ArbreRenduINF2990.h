@@ -64,6 +64,11 @@ public:
    static const std::string NOM_TROU;	
    static const std::string NOM_VIDE;
    static const std::string NOM_TABLE;
+
+private:
+
+	// Lire un fichier XML
+	bool lireXML(tinyxml2::XMLDocument& doc);
 };
 
 
