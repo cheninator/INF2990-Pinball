@@ -496,7 +496,7 @@ extern "C"
 		double dist = 200.0;
 
 		// A revori avec phil
-		FacadeModele::obtenirInstance()->obtenirVue()->obtenirCamera().orbiterXY(dist * cos(-theta)* cos(phi), dist * cos(-theta)*sin(phi));
+		FacadeModele::obtenirInstance()->obtenirVue()->obtenirCamera().orbiterXY(phi, theta);
 	}
 }
 
