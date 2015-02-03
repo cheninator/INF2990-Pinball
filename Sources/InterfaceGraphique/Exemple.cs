@@ -311,10 +311,13 @@ namespace InterfaceGraphique
             //proprietes.Parent = this;
             proprietes.StartPosition = FormStartPosition.CenterScreen;
             proprietes.ShowDialog();
-            for (int i = 0; i < 6; i++)
-            {
-                Console.WriteLine(propZJ[i]);
-            }
+            propZJ = proprietes.getProps();
+                for (int i = 0; i < 6; i++)
+                {
+                    Console.WriteLine(propZJ[i]);
+                }
+                proprietes.Close();
+            
         }
 
         private void butoirG_bouton_Click(object sender, EventArgs e)
@@ -684,6 +687,7 @@ namespace InterfaceGraphique
         private void Nouveau_MenuItem_Click(object sender, EventArgs e)
         {
             FonctionsNatives.purgeAll();
+            propZJ = new List<int> { 10, 10, 10, 10, 10, 1 };
         }
 
         private void panel_GL_MouseDown(object sender, MouseEventArgs e)

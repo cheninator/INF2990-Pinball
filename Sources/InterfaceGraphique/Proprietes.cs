@@ -67,23 +67,26 @@ namespace InterfaceGraphique
         }
         private void propAnnuler_Bouton_Click(object sender, EventArgs e)
         {
-            this.Close();
+            this.Close();        
+
         }
 
+        public List<int> getProps()
+        {
+            return mesProp;
+        }
         private void propConfirm_Bouton_Click(object sender, EventArgs e)
         {
 
             if (checkValue())
             {
-                
-                
-                mesProp.Add(Convert.ToInt32(ptsButCirc_Box.Text));
-                mesProp.Add(Convert.ToInt32(ptsButTri_Box.Text));
-                mesProp.Add(Convert.ToInt32(ptsCible_Box.Text));
-                mesProp.Add(Convert.ToInt32(ptsVictoire_Box.Text));
-                mesProp.Add(Convert.ToInt32(ptsFreeBall_Box.Text));
-                mesProp.Add(Convert.ToInt32(difficulte_ComboBox.Text));
-                this.Close();
+                mesProp[0] = Convert.ToInt32(ptsButCirc_Box.Text);
+                mesProp[1] = Convert.ToInt32(ptsButTri_Box.Text);
+                mesProp[2] = (Convert.ToInt32(ptsCible_Box.Text));
+                mesProp[3] =(Convert.ToInt32(ptsVictoire_Box.Text));
+                mesProp[4] = (Convert.ToInt32(ptsFreeBall_Box.Text));
+                mesProp[5] = (Convert.ToInt32(difficulte_ComboBox.Text));
+                this.Hide();
             }
             else
             {
