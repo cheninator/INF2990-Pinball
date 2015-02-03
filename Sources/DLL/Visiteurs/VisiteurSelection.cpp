@@ -8,6 +8,7 @@
 ////////////////////////////////////////////////
 #include "VisiteurSelection.h"
 #include "../Arbre/ArbreRenduINF2990.h"
+#include "../Arbre/Noeuds/NoeudTable.h"
 #include <iostream>
 
 ////////////////////////////////////////////////////////////////////////
@@ -72,14 +73,33 @@ VisiteurSelection::~VisiteurSelection()
 bool VisiteurSelection::traiter(ArbreRenduINF2990* arbre)
 {
 	// Visiter les enfants de l'arbre
+	std::cout << "Visite d'un ArbreRenduINF2990 avec " << arbre->obtenirNombreEnfants() << " enfants" << std::endl;
 	for (unsigned int i = 0; i < arbre->obtenirNombreEnfants(); i++)
 	{
 		// Traiter les enfants de l'arbre de rendu
-		traiter(arbre->getEnfant(i));
+		std::cout << "appel de accepterVisiteur sur l'enfant " << i << " de l'ArbreRendu2990" << std::endl;
+		arbre->getEnfant(i)->accepterVisiteur(this);
+
+		// Puisque getEnfant(i) retourne un NoeudAbstrait*, traiter va faire le traiter de NoeudAbstrait donc ce qui suit ne marche pas
+		// std::cout << "appel de traiter sur l'enfant " << i << " de l'ArbreRendu2990" << std::endl;
+		// traiter(arbre->getEnfant(i));
+
 	}
 
 	return true;
 
+}
+
+bool VisiteurSelection::traiter(NoeudTable* table)
+{
+	std::cout << "Visite d'une table avec " << table->obtenirNombreEnfants() << " enfants" << std::endl;
+	// Traiter les enfants selectionnés de la table
+	for (unsigned int i = 0; i < table->obtenirNombreEnfants(); i++)
+	{
+		std::cout << "appel de accepterVisiteur sur l'enfant " << i << " de la table" << std::endl;
+		table->getEnfant(i)->accepterVisiteur(this);
+	}
+	return true;
 }
 
 
@@ -98,38 +118,24 @@ bool VisiteurSelection::traiter(ArbreRenduINF2990* arbre)
 ////////////////////////////////////////////////////////////////////////
 bool VisiteurSelection::traiter(NoeudAbstrait* noeud)
 {
-	// Connaitre le type du noeud
-	std::string nom = noeud->obtenirType();
 
-	// Si l'élément est une table, visiter ses enfants
-	if (nom == "table")
+	double distance = glm::dot(pointDansLeMonde_ - noeud->obtenirPositionRelative(), pointDansLeMonde_ - noeud->obtenirPositionRelative());
+	distance = sqrt(distance);
+	std::cout << "visite d'un noeudAbstrait" << " a la position : ";
+	std::cout << noeud->obtenirPositionRelative().x << ","
+		<< noeud->obtenirPositionRelative().y << ","
+		<< noeud->obtenirPositionRelative().z << ",      Distance:" << distance << std::endl;
+
+	if (distance < 30 && noeud->estSelectionnable())
 	{
-		// Traiter les enfants selectionnés de la table
-		for (unsigned int i = 0; i < noeud->obtenirNombreEnfants(); i++)
-		{
-			if (noeud->chercher(i)->estSelectionnable())
-				traiter(noeud->chercher(i));
-		}
+		std::cout << "noeud Selectionne !" << std::endl;
+		noeud->assignerSelection(true);
 	}
-
 	else
 	{
-		// LOGIQUE DE SÉLECTION
-
-		double distance = glm::dot(pointDansLeMonde_ - noeud->obtenirPositionRelative(), pointDansLeMonde_ - noeud->obtenirPositionRelative());
-		distance = sqrt(distance);
-		std::cout << "visite d'un noeudAbstrait" << " a la position : ";
-		std::cout << noeud->obtenirPositionRelative().x << ","
-			<< noeud->obtenirPositionRelative().y << ","
-			<< noeud->obtenirPositionRelative().z << ",      Distance:" << distance << std::endl;
-
-		if (distance < 30)
-		{
-			std::cout << "noeud Selectionne !" << std::endl;
-			noeud->assignerSelection(true);
-		}
-		
+		noeud->assignerSelection(false);
 	}
+
 
 	return true;
 
