@@ -25,6 +25,7 @@
 
 extern "C"
 {
+	// TO DO : SUPPRIMER CETTE VARIABLE QUAND PLUS NECESSAIRE
 	static NoeudAbstrait* objet = new NoeudAbstrait();
 	static double facteurDeTransition; // DONT ASK WHY
 	static double theta = 0;
@@ -427,8 +428,12 @@ extern "C"
 	////////////////////////////////////////////////////////////////////////
 	__declspec(dllexport) void removeObject(void)
 	{
-		if (objet->estEnregistrable())
-			objet->~NoeudAbstrait();
+		
+		if (objet->estEnregistrable() && objet != nullptr)
+		{
+			FacadeModele::obtenirInstance()->obtenirArbreRenduINF2990()->effacer(objet);
+			//objet = nullptr;
+		}
 	}
 
 
