@@ -37,9 +37,10 @@ VisiteurSelection::VisiteurSelection()
 /// @return Aucune (constructeur).
 ///
 ////////////////////////////////////////////////////////////////////////
-VisiteurSelection::VisiteurSelection(glm::dvec3 pointDansLeMonde)
+VisiteurSelection::VisiteurSelection(glm::dvec3 pointDansLeMonde, int valeurStencil)
 {
 	pointDansLeMonde_ = pointDansLeMonde;
+	valeurStencil_ = valeurStencil;
 }
 
 
@@ -73,11 +74,11 @@ VisiteurSelection::~VisiteurSelection()
 bool VisiteurSelection::traiter(ArbreRenduINF2990* arbre)
 {
 	// Visiter les enfants de l'arbre
-	std::cout << "Visite d'un ArbreRenduINF2990 avec " << arbre->obtenirNombreEnfants() << " enfants" << std::endl;
+	//std::cout << "Visite d'un ArbreRenduINF2990 avec " << arbre->obtenirNombreEnfants() << " enfants" << std::endl;
 	for (unsigned int i = 0; i < arbre->obtenirNombreEnfants(); i++)
 	{
 		// Traiter les enfants de l'arbre de rendu
-		std::cout << "appel de accepterVisiteur sur l'enfant " << i << " de l'ArbreRendu2990" << std::endl;
+		//std::cout << "appel de accepterVisiteur sur l'enfant " << i << " de l'ArbreRendu2990" << std::endl;
 		arbre->getEnfant(i)->accepterVisiteur(this);
 
 		// Puisque getEnfant(i) retourne un NoeudAbstrait*, traiter va faire le traiter de NoeudAbstrait donc ce qui suit ne marche pas
@@ -92,11 +93,11 @@ bool VisiteurSelection::traiter(ArbreRenduINF2990* arbre)
 
 bool VisiteurSelection::traiter(NoeudTable* table)
 {
-	std::cout << "Visite d'une table avec " << table->obtenirNombreEnfants() << " enfants" << std::endl;
+	//std::cout << "Visite d'une table avec " << table->obtenirNombreEnfants() << " enfants" << std::endl;
 	// Traiter les enfants selectionnés de la table
 	for (unsigned int i = 0; i < table->obtenirNombreEnfants(); i++)
 	{
-		std::cout << "appel de accepterVisiteur sur l'enfant " << i << " de la table" << std::endl;
+		//std::cout << "appel de accepterVisiteur sur l'enfant " << i << " de la table" << std::endl;
 		table->getEnfant(i)->accepterVisiteur(this);
 	}
 	return true;
@@ -121,14 +122,12 @@ bool VisiteurSelection::traiter(NoeudAbstrait* noeud)
 
 	double distance = glm::dot(pointDansLeMonde_ - noeud->obtenirPositionRelative(), pointDansLeMonde_ - noeud->obtenirPositionRelative());
 	distance = sqrt(distance);
-	std::cout << "visite d'un noeudAbstrait" << " a la position : ";
-	std::cout << noeud->obtenirPositionRelative().x << ","
-		<< noeud->obtenirPositionRelative().y << ","
-		<< noeud->obtenirPositionRelative().z << ",      Distance:" << distance << std::endl;
+	//std::cout << "visite d'un noeudAbstrait avec identifiant " << noeud->getNumero() << std::endl;
+	//std::cout << noeud->obtenirPositionRelative().x << ","<< noeud->obtenirPositionRelative().y << "," << noeud->obtenirPositionRelative().z << ",      Distance:" << distance << std::endl;
 
 	if (distance < 30 && noeud->estSelectionnable())
 	{
-		std::cout << "noeud Selectionne !" << std::endl;
+		//std::cout << "noeud Selectionne !" << std::endl;
 		noeud->assignerSelection(true);
 	}
 	else

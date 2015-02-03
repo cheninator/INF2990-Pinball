@@ -31,7 +31,7 @@ class VisiteurSelection : public VisiteurAbstrait
 public:
 
 	// Constructeur par défaut : aucun déplacement
-	VisiteurSelection(glm::dvec3 pointDansLeMonde);
+	VisiteurSelection(glm::dvec3 pointDansLeMonde, int valeurStencil);
 
 	// Destructeur
 	~VisiteurSelection();
@@ -48,6 +48,8 @@ private:
 	
 	// Point cliqué
 	glm::dvec3 pointDansLeMonde_;
+
+	int valeurStencil_;
 };
 
 

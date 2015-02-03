@@ -69,9 +69,9 @@ extern "C"
 	/// @return Aucune.
 	///
 	////////////////////////////////////////////////////////////////////////
-	__declspec(dllexport) void __cdecl trouverObjetSousPointClique(int i, int j)
+	__declspec(dllexport) void __cdecl trouverObjetSousPointClique(int i, int j,int hauteur, int largeur)
 	{
-		objetCourrant = FacadeModele::obtenirInstance()->trouverObjetSousPointClique(i, j);
+		objetCourrant = FacadeModele::obtenirInstance()->trouverObjetSousPointClique(i, j,hauteur,largeur);
 	}
 
 	////////////////////////////////////////////////////////////////////////

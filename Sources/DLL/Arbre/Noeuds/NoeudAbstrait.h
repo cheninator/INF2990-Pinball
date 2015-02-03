@@ -116,6 +116,8 @@ public:
 	virtual bool ajouter(NoeudAbstrait* enfant);
 	/// Obtient le nombre d'enfants du noeud.
 	virtual unsigned int obtenirNombreEnfants() const;
+	/// Obtient le numero du noeud.
+	int getNumero(){ return numeroNoeud_; };
 
 	/// Changer la sélection du noeud.
 	virtual void inverserSelection();
@@ -182,8 +184,11 @@ protected:
 	/// Storage pour le dessin du modèle
 	modele::opengl_storage::OpenGL_Liste const* liste_;
 
-	/// Nombre unique identifiant chaque Noeud
-	static unsigned int id;
+	/// Compteur d'instances;
+	static unsigned int compteurNoeuds_;
+
+	/// Numéro d'instance.
+	int numeroNoeud_;
 };
 
 

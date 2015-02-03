@@ -874,7 +874,7 @@ namespace InterfaceGraphique
 
         public void selection(MouseEventArgs e) 
         {
-            FonctionsNatives.trouverObjetSousPointClique(panel_GL.PointToClient(MousePosition).X, panel_GL.PointToClient(MousePosition).Y);
+            FonctionsNatives.trouverObjetSousPointClique(panel_GL.PointToClient(MousePosition).X, panel_GL.PointToClient(MousePosition).Y,panel_GL.Height , panel_GL.Height);
 
         }
 
@@ -888,7 +888,6 @@ namespace InterfaceGraphique
             FonctionsNatives.scaleObjet(scale);
             previousP.X = panel_GL.PointToClient(MousePosition).X;
             previousP.Y = panel_GL.PointToClient(MousePosition).Y;
-            FonctionsNatives.trouverObjetSousPointClique(panel_GL.PointToClient(MousePosition).X, panel_GL.PointToClient(MousePosition).Y);
         }
 
         private void Enregistrer_MenuItem_Click(object sender, EventArgs e)
@@ -982,7 +981,7 @@ namespace InterfaceGraphique
         public static extern IntPtr ouvrirXML(StringBuilder path, int taille);
 
         [DllImport(@"Noyau.dll", CallingConvention = CallingConvention.Cdecl)]
-        public static extern void trouverObjetSousPointClique(int i, int j);
+        public static extern void trouverObjetSousPointClique(int i, int j,int largeur, int hauteur);
 
         [DllImport(@"Noyau.dll", CallingConvention = CallingConvention.Cdecl)]
         public static extern void zoomIn();

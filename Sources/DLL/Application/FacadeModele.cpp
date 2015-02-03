@@ -140,6 +140,12 @@ void FacadeModele::initialiserOpenGL(HWND hWnd)
 	// La couleur de fond
 	glClearColor(0.0f, 0.0f, 0.0f, 0.1f);
 
+	// Initialiser le stencil a 0.
+	glClearStencil(0);
+
+	glEnable(GL_STENCIL_TEST);
+	glStencilOp(GL_KEEP,GL_KEEP,  GL_REPLACE);
+
 	// Les lumières
 	glEnable(GL_LIGHTING);
 	glLightModelf(GL_LIGHT_MODEL_LOCAL_VIEWER, GL_TRUE);
@@ -366,22 +372,30 @@ void FacadeModele::animer(float temps)
 /// @return NoeudAbstrait.
 ///
 ////////////////////////////////////////////////////////////////////////
-NoeudAbstrait* FacadeModele::trouverObjetSousPointClique(int i, int j)
+NoeudAbstrait* FacadeModele::trouverObjetSousPointClique(int i, int j, int hauteur, int largeur)
 {
 	glm::dvec3 pointDansLeMonde;
 	vue_->convertirClotureAVirtuelle(i, j, pointDansLeMonde);
-	std::cout << "Position du click dans l'ecran : (" << i << ", " << j << ")" << std::endl;
+	// std::cout << "Position du click dans l'ecran : (" << i << ", " << j << ")" << std::endl;
 
 	FacadeModele::obtenirInstance()->obtenirVue()->convertirClotureAVirtuelle(i, j, pointDansLeMonde);
-	std::cout << "Position du click dans le monde : (" << pointDansLeMonde.x << ", " << pointDansLeMonde.y << ", 0)" << std::endl;
+	// std::cout << "Position du click dans le monde : (" << pointDansLeMonde.x << ", " << pointDansLeMonde.y << ", 0)" << std::endl;
+	
+
+	int valeurStencil = 0;
+
+	glReadPixels(i ,hauteur -j , 1, 1, GL_STENCIL_INDEX, GL_UNSIGNED_INT, &valeurStencil);
+
+	std::cout << "Valeur du stencil:" << valeurStencil << std::endl;
+
+
 
 	// Creer un visiteur,
-	VisiteurSelection visSel(pointDansLeMonde);
+	VisiteurSelection visSel(pointDansLeMonde, valeurStencil);
 	// Passer le visisteur a l<arbre
 	arbre_->accepterVisiteur(&visSel);
 	// Demander au visiteur ce qu'il a trouvé et faire quelque chose en conséquence
 
-	std::cout << "Aucun noeud trouvé" << std::endl;
 	return 0;
 }
 
