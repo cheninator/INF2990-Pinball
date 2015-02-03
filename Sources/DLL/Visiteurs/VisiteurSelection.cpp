@@ -107,7 +107,7 @@ bool VisiteurSelection::traiter(NoeudAbstrait* noeud)
 		// Traiter les enfants selectionnés de la table
 		for (unsigned int i = 0; i < noeud->obtenirNombreEnfants(); i++)
 		{
-			if (noeud->chercher(i)->estSelectionne())
+			if (noeud->chercher(i)->estSelectionnable())
 				traiter(noeud->chercher(i));
 		}
 	}
