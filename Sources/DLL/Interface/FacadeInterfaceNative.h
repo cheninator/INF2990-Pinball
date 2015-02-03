@@ -33,8 +33,8 @@ extern "C" {
 	__declspec(dllexport) void removeObject(void);
 	__declspec(dllexport) void purgeAll(void);
 	__declspec(dllexport) void translater(double deplacementX, double deplacementY);
-	__declspec(dllexport) void creerXML(char* path, int length);
-	__declspec(dllexport) void ouvrirXML(char* path, int length);
+	__declspec(dllexport) void creerXML(char* path, int length, int prop[6]);
+	__declspec(dllexport) int* ouvrirXML(char* path, int length);
 	__declspec(dllexport) void trouverObjetSousPointClique(int i, int j);
 	__declspec(dllexport) void orbite(double phi, double theta);
 }

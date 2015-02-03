@@ -22,9 +22,12 @@
 /// @return Aucune (constructeur).
 ///
 ////////////////////////////////////////////////////////////////////////
-VisiteurXML::VisiteurXML(std::string nom)
+VisiteurXML::VisiteurXML(std::string nom, int proprietes[])
 {
 	nomFichier = nom;
+
+	for (int i = 0; i < 6; i++)
+		proprietes_[i] = proprietes[i];
 }
 
 
@@ -39,7 +42,7 @@ VisiteurXML::VisiteurXML(std::string nom)
 ////////////////////////////////////////////////////////////////////////
 VisiteurXML::~VisiteurXML()
 {
-
+	delete proprietes_;
 }
 
 
@@ -58,6 +61,36 @@ VisiteurXML::~VisiteurXML()
 ////////////////////////////////////////////////////////////////////////
 bool VisiteurXML::traiter(ArbreRenduINF2990* arbre)
 {
+	// Creer le noeud propriété
+	tinyxml2::XMLElement* elementPropriete{ document.NewElement("Proprietes") };
+
+	tinyxml2::XMLElement* elementButoir{ document.NewElement("PointsButoir") };
+	elementButoir->SetAttribute("Nombre", proprietes_[0]);
+	elementPropriete->LinkEndChild(elementButoir);
+
+	tinyxml2::XMLElement* elementTriangulaire{ document.NewElement("PointsTriangulaire") };
+	elementTriangulaire->SetAttribute("Nombre", proprietes_[1]);
+	elementPropriete->LinkEndChild(elementTriangulaire);
+
+	tinyxml2::XMLElement* elementCible{ document.NewElement("PointsCible") };
+	elementCible->SetAttribute("Nombre", proprietes_[2]);
+	elementPropriete->LinkEndChild(elementCible);
+
+	tinyxml2::XMLElement* elementVictoire{ document.NewElement("PointsVictoire") };
+	elementVictoire->SetAttribute("Nombre", proprietes_[3]);
+	elementPropriete->LinkEndChild(elementVictoire);
+
+	tinyxml2::XMLElement* elementBille{ document.NewElement("PointsBilleGratuite") };
+	elementBille->SetAttribute("Nombre", proprietes_[4]);
+	elementPropriete->LinkEndChild(elementBille);
+
+	tinyxml2::XMLElement* elementDifficulte{ document.NewElement("Difficulte") };
+	elementDifficulte->SetAttribute("Nombre", proprietes_[5]);
+	elementPropriete->LinkEndChild(elementDifficulte);
+
+	document.LinkEndChild(elementPropriete);
+
+
 	// Créer le noeud 'elementArbreRendu'
 	tinyxml2::XMLElement* elementArbreRendu{ document.NewElement("arbreRenduINF2990") };
 

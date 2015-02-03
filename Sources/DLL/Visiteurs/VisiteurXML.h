@@ -30,8 +30,9 @@ class VisiteurXML : public VisiteurAbstrait
 {
 public:
 
-	// Constructeur par paramètre : fournir le nom du fichier de sauvegarde
-	VisiteurXML(std::string nomFichier);
+	// Constructeur par paramètre : fournir le nom du fichier de sauvegarde et les 
+	// propriétés du jeu
+	VisiteurXML(std::string nomFichier, int proprietes[]);
 
 	// Destructeur
 	~VisiteurXML();
@@ -47,6 +48,7 @@ private:
 
 	tinyxml2::XMLDocument document;
 	std::string nomFichier;
+	int* proprietes_ = new int[6];
 	
 };
 

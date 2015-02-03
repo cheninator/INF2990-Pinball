@@ -12,7 +12,7 @@ namespace InterfaceGraphique
 {
     public partial class Proprietes : Form
     {
-        List<int> mesProp;
+        public List<int> mesProp;
         string errorMessage = "";
         public Proprietes(List<int> a)
         {

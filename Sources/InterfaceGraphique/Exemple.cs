@@ -38,6 +38,8 @@ namespace InterfaceGraphique
         private StringBuilder pathXML = new StringBuilder("");
         private Etat etat {get; set;}
 
+        private int[] prop = new int[6];
+
         public Exemple()
         {
             this.KeyPress += new KeyPressEventHandler(ToucheEnfonce);
@@ -199,7 +201,13 @@ namespace InterfaceGraphique
             ouvrir_fichier.Filter = "Fichier XML(*.xml)| *.xml| All files(*.*)|*.*";
             ouvrir_fichier.ShowDialog();
             pathXML = new StringBuilder(ouvrir_fichier.FileName);
-            FonctionsNatives.ouvrirXML(pathXML, pathXML.Capacity);
+
+            IntPtr prop = FonctionsNatives.ouvrirXML(pathXML, pathXML.Capacity);
+            int[] result = new int[6];
+            Marshal.Copy(prop, result, 0, 6);
+
+            for (int i = 0; i < 6; i++)
+                propZJ[i] = result[i];
         }
 
         private void EnregistrerS_MenuItem_Click(object sender, EventArgs e)
@@ -213,7 +221,11 @@ namespace InterfaceGraphique
             enregistrer_fichier.Filter = "Fichier XML(*.xml)| *.xml| All files(*.*)|*.*";
             enregistrer_fichier.ShowDialog();
             pathXML = new StringBuilder(enregistrer_fichier.FileName);
-            FonctionsNatives.creerXML(pathXML, pathXML.Capacity);
+
+            for(int i = 0; i < 6; i++)
+                prop[i] = propZJ[i];
+
+            FonctionsNatives.creerXML(pathXML, pathXML.Capacity, prop);
 
         }
 
@@ -880,7 +892,7 @@ namespace InterfaceGraphique
             if (pathXML.ToString() == "")
                 EnregistrerSous();
             else
-                FonctionsNatives.creerXML(pathXML, pathXML.Capacity);
+                FonctionsNatives.creerXML(pathXML, pathXML.Capacity, prop);
         }
 
 
@@ -960,10 +972,10 @@ namespace InterfaceGraphique
         public static extern void translater(double deplacementX, double deplacementY);
 
         [DllImport(@"Noyau.dll", CallingConvention = CallingConvention.Cdecl)]
-        public static extern void creerXML(StringBuilder path, int taille);
+        public static extern void creerXML(StringBuilder path, int taille, int[] prop);
 
         [DllImport(@"Noyau.dll", CallingConvention = CallingConvention.Cdecl)]
-        public static extern void ouvrirXML(StringBuilder path, int taille);
+        public static extern IntPtr ouvrirXML(StringBuilder path, int taille);
 
         [DllImport(@"Noyau.dll", CallingConvention = CallingConvention.Cdecl)]
         public static extern void trouverObjetSousPointClique(int i, int j);

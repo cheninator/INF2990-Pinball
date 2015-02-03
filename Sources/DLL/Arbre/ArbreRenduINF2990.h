@@ -65,10 +65,15 @@ public:
    static const std::string NOM_VIDE;
    static const std::string NOM_TABLE;
 
+   int* obtenirProprietes() { return proprietes_; };
+
 private:
 
 	// Lire un fichier XML
 	bool lireXML(tinyxml2::XMLDocument& doc);
+
+	int* proprietes_ = new int[6];
+
 };
 
 

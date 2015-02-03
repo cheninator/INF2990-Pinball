@@ -482,10 +482,10 @@ extern "C"
 	/// @return Aucun
 	///
 	////////////////////////////////////////////////////////////////////////
-	__declspec(dllexport) void __cdecl creerXML(char* path, int length)
+	__declspec(dllexport) void __cdecl creerXML(char* path, int length, int prop[6])
 	{
 		std::cout << std::string(path);
-		VisiteurXML* visiteur = new VisiteurXML(std::string(path));
+		VisiteurXML* visiteur = new VisiteurXML(std::string(path), prop);
 		FacadeModele::obtenirInstance()->obtenirArbreRenduINF2990()->accepterVisiteur(visiteur);
 	}
 
@@ -502,10 +502,12 @@ extern "C"
 	/// @return Aucun
 	///
 	////////////////////////////////////////////////////////////////////////
-	__declspec(dllexport) void __cdecl ouvrirXML(char* path, int length)
+	__declspec(dllexport) int* __cdecl ouvrirXML(char* path, int length)
 	{
 		FacadeModele::obtenirInstance()->obtenirArbreRenduINF2990()->vider();
 		FacadeModele::obtenirInstance()->obtenirArbreRenduINF2990()->initialiserXML(std::string(path));
+		
+		return FacadeModele::obtenirInstance()->obtenirArbreRenduINF2990()->obtenirProprietes();
 	}
 
 
