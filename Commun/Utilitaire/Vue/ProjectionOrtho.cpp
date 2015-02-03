@@ -310,8 +310,8 @@ namespace vue {
 	void ProjectionOrtho::translater(double deplacementX, double deplacementY)
 	{
 		// À IMPLANTER.
-		std::cout << "Facteurs de deplacement : " <<
-			"X : " << deplacementX << " Y: " << deplacementY << std::endl;
+		//std::cout << "Facteurs de deplacement : " <<
+		//	"X : " << deplacementX << " Y: " << deplacementY << std::endl;
 		double xTailleCourante = xMaxFenetre_ - xMinFenetre_;
 		double yTailleCourante = yMaxFenetre_ - yMinFenetre_;
 

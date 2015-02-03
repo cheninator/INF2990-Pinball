@@ -116,6 +116,10 @@ void ArbreRenduINF2990::initialiser()
 	noeudRessort->assignerPositionRelative({ 247.00, -171.28, 0.0 });
 	noeudTrou->assignerPositionRelative({ 184.60, -181.68, 0.0 });
 
+	noeudGenerateur->assignerEstEnregistrable(false);
+	noeudRessort->assignerEstEnregistrable(false);
+	noeudTrou->assignerEstEnregistrable(false);
+
 	noeud->ajouter(noeudGenerateur);
 	noeud->ajouter(noeudRessort);
 	noeud->ajouter(noeudTrou);

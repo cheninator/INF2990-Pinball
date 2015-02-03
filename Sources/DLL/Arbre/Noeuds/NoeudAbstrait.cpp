@@ -45,6 +45,7 @@ NoeudAbstrait::NoeudAbstrait(
 ////////////////////////////////////////////////////////////////////////
 NoeudAbstrait::~NoeudAbstrait()
 {
+	this->vider();
 }
 
 
