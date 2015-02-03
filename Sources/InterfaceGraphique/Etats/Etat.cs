@@ -21,6 +21,8 @@ namespace InterfaceGraphique
 
         public virtual bool traiterSouris(MouseEventArgs e)
         {
+            if (e.Button == MouseButtons.Right)
+                form_.deplacementVueSouris(e);
             return true;
         }
 
@@ -45,30 +47,15 @@ namespace InterfaceGraphique
         public override bool traiterSouris(MouseEventArgs e)
         {
             form_.deplacementSouris(e);
-
+            if (e.Button == MouseButtons.Right)
+                form_.deplacementVueSouris(e);
             return true;
+           
         }
 
     }
 
-    class EtatDeplacementVue : Etat
-    {
-
-        public EtatDeplacementVue(Exemple form) : base(form) { }
-
-        public override bool traiterClavier(KeyEventArgs e)
-        {
-            return base.traiterClavier(e);
-        }
-
-        public override bool traiterSouris(MouseEventArgs e)
-        {
-            form_.deplacementVueSouris(e);
-
-            return true;
-        }
-    }
-
+ 
 
     class EtatSelection : Etat 
     {
@@ -82,7 +69,11 @@ namespace InterfaceGraphique
 
         public override bool traiterSouris(MouseEventArgs e)
         {
-            return base.traiterSouris(e);
+            form_.selection(e);
+            if (e.Button == MouseButtons.Right)
+                form_.deplacementVueSouris(e);
+            return true;
+           
         }
     }
 
@@ -98,7 +89,9 @@ namespace InterfaceGraphique
 
         public override bool traiterSouris(MouseEventArgs e)
         {
-            return base.traiterSouris(e);
+            if (e.Button == MouseButtons.Right)
+                form_.deplacementVueSouris(e);
+            return true;
         }
     }
 
@@ -114,9 +107,12 @@ namespace InterfaceGraphique
 
         public override bool traiterSouris(MouseEventArgs e)
         {
-            form_.scaleSouris(e);
-
+           if(e.Button == MouseButtons.Left)
+                form_.scaleSouris(e);
+           if (e.Button == MouseButtons.Right)
+                form_.deplacementVueSouris(e);
             return true;
+            
         }
     }
 
@@ -132,7 +128,12 @@ namespace InterfaceGraphique
 
         public override bool traiterSouris(MouseEventArgs e)
         {
-            return base.traiterSouris(e);
+           if(e.Button == MouseButtons.Left)
+            form_.creationObjet(e);
+            if(e.Button == MouseButtons.Right)
+                form_.deplacementVueSouris(e);
+           
+            return true;
         }
     }
 
@@ -150,13 +151,32 @@ namespace InterfaceGraphique
         public override bool traiterSouris(MouseEventArgs e)
         {
 
-            return base.traiterSouris(e);
+            if (e.Button == MouseButtons.Right)
+                form_.deplacementVueSouris(e);
+            return true;
         }
 
         public override bool traiterRoulette(MouseEventArgs e)
         {
             form_.zoomRoulette(e);
             
+            return true;
+        }
+    }
+
+    class EtatDuplication : Etat
+    {
+        public EtatDuplication(Exemple form) : base(form) { }
+
+        public override bool traiterClavier(KeyEventArgs e)
+        {
+            return base.traiterClavier(e);
+        }
+
+        public override bool traiterSouris(MouseEventArgs e)
+        {
+            if (e.Button == MouseButtons.Right)
+                form_.deplacementVueSouris(e);
             return true;
         }
     }
@@ -173,7 +193,9 @@ namespace InterfaceGraphique
 
         public override bool traiterSouris(MouseEventArgs e)
         {
-            return base.traiterSouris(e);
+            if(e.Button == MouseButtons.Right)
+                form_.deplacementVueSouris(e);
+            return true;
         }
     }
 

@@ -47,6 +47,7 @@ namespace InterfaceGraphique
             this.Icon = Properties.Resources.Pinball;
             InitializeComponent();
             Program.peutAfficher = true;
+            etat = new EtatNone(this);
             panel_GL.Focus();
             InitialiserAnimation();
 
@@ -111,7 +112,11 @@ namespace InterfaceGraphique
         private void ToucheEnfonce(Object o, KeyPressEventArgs e)
         {
 
-            System.Console.WriteLine(e.KeyChar);
+            if( e.KeyChar == (char)Keys.Escape)
+            {
+                etat = null;
+                etat = new EtatNone(this);
+            }
             if (e.KeyChar == 'f')
             {
                 if (fs.IsFullScreen(this))
@@ -139,13 +144,7 @@ namespace InterfaceGraphique
                 
                 //state = 'e';
             }
-            if (e.KeyChar == 'v')
-            {
-                etat = null;
-                etat = new EtatDeplacementVue(this);
-               
-                //state = 'v';
-            }
+           
             if (e.KeyChar == 'z')
             {
                 etat = null;
@@ -272,6 +271,9 @@ namespace InterfaceGraphique
                 Creation_Panel.Visible = false;
             else
                 Creation_Panel.Visible = true;
+
+            etat = null;
+            etat = new EtatCreation(this);
         }
 
         private void panel_GL_MouseClick(object sender, MouseEventArgs e)
@@ -438,6 +440,8 @@ namespace InterfaceGraphique
         {
             Console.WriteLine("Outil Deplacement.");
             // TO DO
+            etat = null;
+            etat = new EtatDeplacement(this);
         }
 
         private void Deplacement_MenuItem_Click(object sender, EventArgs e)
@@ -454,12 +458,16 @@ namespace InterfaceGraphique
         {
             Console.WriteLine("Outil Rotation.");
             // TO DO
+            etat = null;
+            etat = new EtatRotation(this);
         }
 
         private void bouton_Scaling_Click(object sender, EventArgs e)
         {
             Console.WriteLine("Outil Mise a echelle.");
             // TO DO
+            etat = null;
+            etat = new EtatScale(this);
         }
 
         private void MiseE_MenuItem_Click(object sender, EventArgs e)
@@ -476,12 +484,17 @@ namespace InterfaceGraphique
                 zoom_Bar.Enabled = false;
             else
                 zoom_Bar.Enabled = true;
+
+            etat = null;
+            etat = new EtatZoom(this);
         }
 
         private void bouton_Duplication_Click(object sender, EventArgs e)
         {
             Console.WriteLine("Outil Duplication.");
             // TO DO
+            etat = null;
+            etat = new EtatDuplication(this);
         }
 
         private void Duplication_MenuItem_Click(object sender, EventArgs e)
@@ -685,8 +698,7 @@ namespace InterfaceGraphique
         }
         private void panel_MouseMove(object sender, MouseEventArgs e)
         {
-
-            etat.traiterSouris(e);
+           etat.traiterSouris(e);
 
             /*if (state == 'v')
             {
@@ -748,7 +760,8 @@ namespace InterfaceGraphique
                      (Math.Abs(destination.Y - origin.Y) < 3)
                     )
                 {
-                    Afficher_Objet();
+                    etat.traiterSouris(e);
+                    /*Afficher_Objet();
                     FonctionsNatives.positionObjet(panel_GL.PointToClient(MousePosition).X, panel_GL.PointToClient(MousePosition).Y);
                     FonctionsNatives.rotate(angleX, 'x');
                     FonctionsNatives.rotate(angleY, 'y');
@@ -756,8 +769,7 @@ namespace InterfaceGraphique
                     FonctionsNatives.scaleObjet(scale);
                     previousP.X = panel_GL.PointToClient(MousePosition).X;
                     previousP.Y = panel_GL.PointToClient(MousePosition).Y;
-                    Console.WriteLine("Good Spawn");
-                    FonctionsNatives.trouverObjetSousPointClique(panel_GL.PointToClient(MousePosition).X, panel_GL.PointToClient(MousePosition).Y);
+                    Console.WriteLine("Good Spawn");*/
                 }
             }
         }
@@ -840,6 +852,25 @@ namespace InterfaceGraphique
                 FonctionsNatives.zoomOut();
                 zoom_Bar.Value -= 1;
             }
+        }
+
+        public void selection(MouseEventArgs e) 
+        {
+            FonctionsNatives.trouverObjetSousPointClique(panel_GL.PointToClient(MousePosition).X, panel_GL.PointToClient(MousePosition).Y);
+
+        }
+
+        public void creationObjet(MouseEventArgs e)
+        {
+            Afficher_Objet();
+            FonctionsNatives.positionObjet(panel_GL.PointToClient(MousePosition).X, panel_GL.PointToClient(MousePosition).Y);
+            FonctionsNatives.rotate(angleX, 'x');
+            FonctionsNatives.rotate(angleY, 'y');
+            FonctionsNatives.rotate(angleZ, 'z');
+            FonctionsNatives.scaleObjet(scale);
+            previousP.X = panel_GL.PointToClient(MousePosition).X;
+            previousP.Y = panel_GL.PointToClient(MousePosition).Y;
+            FonctionsNatives.trouverObjetSousPointClique(panel_GL.PointToClient(MousePosition).X, panel_GL.PointToClient(MousePosition).Y);
         }
 
         private void Enregistrer_MenuItem_Click(object sender, EventArgs e)
