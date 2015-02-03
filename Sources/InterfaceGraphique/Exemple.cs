@@ -9,6 +9,7 @@ using System.Text;
 using System.Windows.Forms;
 using System.Runtime.InteropServices;
 using System.Media;
+using System.IO;
 
 
 
@@ -20,8 +21,7 @@ namespace InterfaceGraphique
     {
         FullScreen fs = new FullScreen();
         StringBuilder myObjectName = new StringBuilder("vide");
-        
-
+   
         public Point origin;
         
         public Point previousP, currentP;
@@ -30,6 +30,7 @@ namespace InterfaceGraphique
         public int panelWidth;
         
         // private char state = 's';
+        public List<int> propZJ = new List<int>{10,10,10,10,10,1};
         private float angleX = 0F;
         private float angleY = 0F;
         private float angleZ = 0F;
@@ -194,6 +195,8 @@ namespace InterfaceGraphique
             OpenFileDialog ouvrir_fichier = new OpenFileDialog();
             ouvrir_fichier.Filter = "Fichier XML(*.xml)| *.xml| All files(*.*)|*.*";
             ouvrir_fichier.ShowDialog();
+            StringBuilder pathXML = new StringBuilder(ouvrir_fichier.FileName);
+            FonctionsNatives.ouvrirXML(pathXML, pathXML.Capacity);
         }
 
         private void EnregistrerS_MenuItem_Click(object sender, EventArgs e)
@@ -282,9 +285,14 @@ namespace InterfaceGraphique
 
         private void Proprietes_MenuItem_Click(object sender, EventArgs e)
         {
-            Proprietes proprietes = new Proprietes();
+            Proprietes proprietes = new Proprietes(this.propZJ);
+            //proprietes.Parent = this;
             proprietes.StartPosition = FormStartPosition.CenterScreen;
-            proprietes.Show();
+            proprietes.ShowDialog();
+            for (int i = 0; i < 6; i++)
+            {
+                Console.WriteLine(propZJ[i]);
+            }
         }
 
         private void butoirG_bouton_Click(object sender, EventArgs e)
@@ -903,6 +911,10 @@ namespace InterfaceGraphique
 
         [DllImport(@"Noyau.dll", CallingConvention = CallingConvention.Cdecl)]
         public static extern void creerXML(StringBuilder path, int taille);
+
+        [DllImport(@"Noyau.dll", CallingConvention = CallingConvention.Cdecl)]
+        public static extern void ouvrirXML(StringBuilder path, int taille);
+
         [DllImport(@"Noyau.dll", CallingConvention = CallingConvention.Cdecl)]
         public static extern void trouverObjetSousPointClique(int i, int j);
 

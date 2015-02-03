@@ -466,7 +466,7 @@ extern "C"
 
 	////////////////////////////////////////////////////////////////////////
 	///
-	/// @fn __declspec(dllexport) void __cdecl creerObjet()
+	/// @fn __declspec(dllexport) void __cdecl creerXML(char* path, int length)
 	///
 	/// @param[in]  position : Nom du path
 	/// @param[in]  length : Taille du nom du path
@@ -479,13 +479,42 @@ extern "C"
 	__declspec(dllexport) void __cdecl creerXML(char* path, int length)
 	{
 		std::cout << std::string(path);
-		VisiteurXML* visiteur(std::string(path));
+		VisiteurXML* visiteur = new VisiteurXML(std::string(path));
+		FacadeModele::obtenirInstance()->obtenirArbreRenduINF2990()->accepterVisiteur(visiteur);
 	}
 
 
+	////////////////////////////////////////////////////////////////////////
+	///
+	/// @fn __declspec(dllexport) void __cdecl ouvrirXML(char* path, int length)
+	///
+	/// @param[in]  position : Nom du path
+	/// @param[in]  length : Taille du nom du path
+	///
+	/// Sauvegarde le path
+	///
+	/// @return Aucun
+	///
+	////////////////////////////////////////////////////////////////////////
+	__declspec(dllexport) void __cdecl ouvrirXML(char* path, int length)
+	{
+		std::cout << std::string(path);
+		FacadeModele::obtenirInstance()->obtenirArbreRenduINF2990()->initialiserXML(std::string(path));
+	}
 
 
-
+	////////////////////////////////////////////////////////////////////////
+	///
+	/// @fn __declspec(dllexport) void __cdecl orbite(double x, double y)
+	///
+	/// @param[in]  x :
+	/// @param[in]  y : 
+	///
+	/// Vue orbite TO DO INCOMPLETE
+	///
+	/// @return Aucun
+	///
+	////////////////////////////////////////////////////////////////////////
 	__declspec(dllexport) void __cdecl orbite(double x, double y)
 	{
 		glm::dvec3 maPosition;
@@ -496,7 +525,7 @@ extern "C"
 		double dist = 200.0;
 
 		// A revori avec phil
-		FacadeModele::obtenirInstance()->obtenirVue()->obtenirCamera().orbiterXY(dist * cos(-theta)* cos(phi), dist * cos(-theta)*sin(phi));
+		FacadeModele::obtenirInstance()->obtenirVue()->obtenirCamera().orbiterXY(phi, theta);
 	}
 }
 

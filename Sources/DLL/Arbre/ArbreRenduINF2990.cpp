@@ -148,9 +148,9 @@ bool ArbreRenduINF2990::accepterVisiteur(VisiteurAbstrait* vis)
 
 ////////////////////////////////////////////////////////////////////////
 ///
-/// @fn bool ArbreRenduINF2990::accepterVisiteur(VisiteurAbstrait* vis)
+/// @fn bool ArbreRenduINF2990::initialiserXML(VisiteurAbstrait* vis)
 ///
-/// Cette fonction appelle la méthode traiter du visiteur
+/// 
 ///
 /// @return Retourne toujours true
 ///
@@ -160,16 +160,97 @@ bool ArbreRenduINF2990::initialiserXML(std::string nomFichier)
 	bool fichierTrouve = false;
 	tinyxml2::XMLDocument document;
 
-	tinyxml2::XMLError resultat = document.LoadFile(nomFichier.c_str());
-
-	if (!resultat)
+	// Si le fichier n'existe pas, envoyer une erreur
+	if (!utilitaire::fichierExiste(nomFichier))
+		std::cout << "Fichier n'existe pas. ";
+		
+	else
 	{
-
+		document.LoadFile(nomFichier.c_str());
+		lireXML(document);
 		fichierTrouve = true;
 	}
 
 	return fichierTrouve;
 }
+
+
+bool ArbreRenduINF2990::lireXML(tinyxml2::XMLDocument& doc)
+{
+	bool lecture = false;
+
+	const char* positionX = "posX";
+	const char* positionY = "posY";
+	const char* positionZ = "posZ";
+	const char* scaleX = "scaleX";
+	const char* scaleY = "scaleY";
+	const char* scaleZ = "scaleZ";
+	const char* angleX = "angleX";
+	const char* angleY = "angleY";
+	const char* angleZ = "angleZ";
+
+	// TO DO: Lire les propriétés de la zone de jeu
+
+	//////////////////////////////////////////////////
+	// Lecture de l'arbre ainsi que ses enfants
+	//////////////////////////////////////////////////
+
+	// Obtenir l'élément "arbreRenduINF2990"
+	tinyxml2::XMLElement* elementArbre = doc.FirstChildElement("arbreRenduINF2990");
+
+	if (elementArbre != nullptr) 
+	{
+		// Tenter d'obtenir l'élément table, puis l'attribut nbEnfants
+		const tinyxml2::XMLElement* elementTable{ elementArbre->FirstChildElement("table") };
+		
+		if (elementTable != nullptr)
+		{
+			// Créer la table et l'ajouter à l'arbre de rendu
+			NoeudAbstrait* table{ creerNoeud(elementTable->Name()) };
+			this->ajouter(table);
+
+			// Récupérer le nombre d'enfants
+			int nombreEnfants = elementTable->FirstAttribute()->IntValue();
+
+			// Premier enfant de la table
+			const tinyxml2::XMLElement* enfant{ elementTable->FirstChildElement() };
+
+			// Créer les enfants et les ajouter à la table
+			for (int i = 0; i < nombreEnfants; i++)
+			{
+				// Construire le noeud concret
+				NoeudAbstrait* enfantTable{ creerNoeud(enfant->Name()) };
+
+				// Assigner les propriétés de l'enfant
+				enfantTable->assignerPositionRelative({ enfant->FindAttribute(positionX)->DoubleValue(),
+					enfant->FindAttribute(positionY)->DoubleValue(),
+					enfant->FindAttribute(positionZ)->DoubleValue() });
+
+				enfantTable->assignerEchelle({ enfant->FindAttribute(scaleX)->DoubleValue(),
+					enfant->FindAttribute(scaleY)->DoubleValue(),
+					enfant->FindAttribute(scaleZ)->DoubleValue() });
+
+				enfantTable->assignerRotation({ enfant->FindAttribute(angleX)->DoubleValue(),
+					enfant->FindAttribute(angleY)->DoubleValue(),
+					enfant->FindAttribute(angleZ)->DoubleValue() });
+
+				// Ajouter l'enfant à la table
+				table->ajouter(enfantTable);
+
+				// Traiter le frère de droite de l'enfant
+				enfant = enfant->NextSiblingElement();
+			}
+
+			lecture = true;
+
+		}
+
+	}
+
+	return lecture;
+}
+
+
 
 
 ///////////////////////////////////////////////////////////////////////////////
