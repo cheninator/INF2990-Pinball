@@ -81,12 +81,16 @@ namespace InterfaceGraphique
         {
             if (panel_GL.Focused)
             {
-                if (e.KeyData == Keys.Subtract && zoom_Bar.Value > 0)
+                if ((e.KeyData == Keys.Subtract ||
+                    e.KeyCode == Keys.OemMinus)
+                    && zoom_Bar.Value > 0)
                 {
                     FonctionsNatives.zoomOut();
                     zoom_Bar.Value -= 1;
                 }
-                if (e.KeyData == Keys.Add && zoom_Bar.Value < 10)
+                if ((e.KeyData == Keys.Add ||
+                    e.KeyCode == Keys.Oemplus && e.Modifiers == Keys.Shift)
+                    && zoom_Bar.Value < 10)
                 {
                     FonctionsNatives.zoomIn();
                     zoom_Bar.Value += 1;
