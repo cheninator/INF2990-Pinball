@@ -652,14 +652,17 @@
             // Enregistrer_MenuItem
             // 
             this.Enregistrer_MenuItem.Name = "Enregistrer_MenuItem";
-            this.Enregistrer_MenuItem.Size = new System.Drawing.Size(198, 22);
+            this.Enregistrer_MenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.S)));
+            this.Enregistrer_MenuItem.Size = new System.Drawing.Size(226, 22);
             this.Enregistrer_MenuItem.Text = "Enregistrer";
+            this.Enregistrer_MenuItem.Click += new System.EventHandler(this.Enregistrer_MenuItem_Click);
             // 
             // EnregistrerS_MenuItem
             // 
             this.EnregistrerS_MenuItem.Name = "EnregistrerS_MenuItem";
-            this.EnregistrerS_MenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.S)));
-            this.EnregistrerS_MenuItem.Size = new System.Drawing.Size(198, 22);
+            this.EnregistrerS_MenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)(((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.Shift) 
+            | System.Windows.Forms.Keys.S)));
+            this.EnregistrerS_MenuItem.Size = new System.Drawing.Size(226, 22);
             this.EnregistrerS_MenuItem.Text = "Enregistrer Sous";
             this.EnregistrerS_MenuItem.Click += new System.EventHandler(this.EnregistrerS_MenuItem_Click);
             // 
@@ -697,7 +700,7 @@
             // 
             this.Supprimer_MenuItem.Name = "Supprimer_MenuItem";
             this.Supprimer_MenuItem.ShortcutKeys = System.Windows.Forms.Keys.Delete;
-            this.Supprimer_MenuItem.Size = new System.Drawing.Size(153, 22);
+            this.Supprimer_MenuItem.Size = new System.Drawing.Size(167, 22);
             this.Supprimer_MenuItem.Text = "Supprimer";
             this.Supprimer_MenuItem.Click += new System.EventHandler(this.Supprimer_MenuItem_Click);
             // 

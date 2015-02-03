@@ -35,7 +35,7 @@ namespace InterfaceGraphique
         private float angleY = 0F;
         private float angleZ = 0F;
         private float scale = 1F;
-
+        private StringBuilder pathXML = new StringBuilder("");
         private Etat etat {get; set;}
 
         public Exemple()
@@ -195,16 +195,21 @@ namespace InterfaceGraphique
             OpenFileDialog ouvrir_fichier = new OpenFileDialog();
             ouvrir_fichier.Filter = "Fichier XML(*.xml)| *.xml| All files(*.*)|*.*";
             ouvrir_fichier.ShowDialog();
-            StringBuilder pathXML = new StringBuilder(ouvrir_fichier.FileName);
+            pathXML = new StringBuilder(ouvrir_fichier.FileName);
             FonctionsNatives.ouvrirXML(pathXML, pathXML.Capacity);
         }
 
         private void EnregistrerS_MenuItem_Click(object sender, EventArgs e)
         {
+            EnregistrerSous();
+        }
+
+        private void EnregistrerSous()
+        {
             SaveFileDialog enregistrer_fichier = new SaveFileDialog();
             enregistrer_fichier.Filter = "Fichier XML(*.xml)| *.xml| All files(*.*)|*.*";
             enregistrer_fichier.ShowDialog();
-            StringBuilder pathXML = new StringBuilder(enregistrer_fichier.FileName);
+            pathXML = new StringBuilder(enregistrer_fichier.FileName);
             FonctionsNatives.creerXML(pathXML, pathXML.Capacity);
 
         }
@@ -831,6 +836,14 @@ namespace InterfaceGraphique
                 FonctionsNatives.zoomOut();
                 zoom_Bar.Value -= 1;
             }
+        }
+
+        private void Enregistrer_MenuItem_Click(object sender, EventArgs e)
+        {
+            if (pathXML.ToString() == "")
+                EnregistrerSous();
+            else
+                FonctionsNatives.creerXML(pathXML, pathXML.Capacity);
         }
 
 
