@@ -427,7 +427,8 @@ extern "C"
 	////////////////////////////////////////////////////////////////////////
 	__declspec(dllexport) void removeObject(void)
 	{
-		objet->~NoeudAbstrait();
+		if (objet->estEnregistrable())
+			objet->~NoeudAbstrait();
 	}
 
 
