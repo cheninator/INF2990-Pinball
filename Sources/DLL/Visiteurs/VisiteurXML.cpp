@@ -94,24 +94,12 @@ bool VisiteurXML::traiter(NoeudAbstrait* noeud, tinyxml2::XMLElement* parent)
 	// Créer le noeud 'element'
 	tinyxml2::XMLElement* element{document.NewElement(nom.c_str())};
 
-	// Attributs pour la position du noeud
-	element->SetAttribute("posX", noeud->obtenirPositionRelative().x);
-	element->SetAttribute("posY", noeud->obtenirPositionRelative().y);
-	element->SetAttribute("posZ", noeud->obtenirPositionRelative().z);
-
-	// Attributs pour le scale
-	element->SetAttribute("scaleX", noeud->obtenirAgrandissement().x);
-	element->SetAttribute("scaleY", noeud->obtenirAgrandissement().y);
-	element->SetAttribute("scaleZ", noeud->obtenirAgrandissement().z);
-
-	// Attributs pour l'angle
-	element->SetAttribute("angleX", noeud->obtenirRotation().x);
-	element->SetAttribute("angleY", noeud->obtenirRotation().y);
-	element->SetAttribute("angleZ", noeud->obtenirRotation().z);
-
 	// Si l'élément est une table, visiter ses enfants
 	if (nom == "table")
 	{
+		// Nombre d'enfants de la table
+		element->SetAttribute("nbEnfants", noeud->obtenirNombreEnfants());
+
 		// Traiter les enfants de la table
 		for (unsigned int i = 0; i < noeud->obtenirNombreEnfants(); i++)
 		{
@@ -123,6 +111,21 @@ bool VisiteurXML::traiter(NoeudAbstrait* noeud, tinyxml2::XMLElement* parent)
 
 	else
 	{
+		// Attributs pour la position du noeud
+		element->SetAttribute("posX", noeud->obtenirPositionRelative().x);
+		element->SetAttribute("posY", noeud->obtenirPositionRelative().y);
+		element->SetAttribute("posZ", noeud->obtenirPositionRelative().z);
+
+		// Attributs pour le scale
+		element->SetAttribute("scaleX", noeud->obtenirAgrandissement().x);
+		element->SetAttribute("scaleY", noeud->obtenirAgrandissement().y);
+		element->SetAttribute("scaleZ", noeud->obtenirAgrandissement().z);
+
+		// Attributs pour l'angle
+		element->SetAttribute("angleX", noeud->obtenirRotation().x);
+		element->SetAttribute("angleY", noeud->obtenirRotation().y);
+		element->SetAttribute("angleZ", noeud->obtenirRotation().z);
+
 		parent->LinkEndChild(element);
 	}
 
