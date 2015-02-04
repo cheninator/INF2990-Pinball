@@ -93,6 +93,8 @@ namespace InterfaceGraphique
         {
             if (e.Button == MouseButtons.Right)
                 form_.deplacementVueSouris(e);
+            if (e.Button == MouseButtons.Left)
+                form_.tournerSelectionSouris(e);
             return true;
         }
     }

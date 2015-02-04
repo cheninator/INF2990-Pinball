@@ -28,6 +28,7 @@
 // Voulait vraiment pas marcher sans que je mette le chemin.
 #include "../Visiteurs/VisiteurSelection.h"
 #include "../Visiteurs/VisiteurDeplacement.h"
+#include "../Visiteurs/VisiteurRotation.h"
 
 #include "VueOrtho.h"
 #include "Camera.h"
@@ -377,10 +378,10 @@ NoeudAbstrait* FacadeModele::trouverObjetSousPointClique(int i, int j, int haute
 {
 	glm::dvec3 pointDansLeMonde;
 	vue_->convertirClotureAVirtuelle(i, j, pointDansLeMonde);
-	// std::cout << "Position du click dans l'ecran : (" << i << ", " << j << ")" << std::endl;
+	std::cout << "Position du click dans l'ecran : (" << i << ", " << j << ")" << std::endl;
 
 	FacadeModele::obtenirInstance()->obtenirVue()->convertirClotureAVirtuelle(i, j, pointDansLeMonde);
-	// std::cout << "Position du click dans le monde : (" << pointDansLeMonde.x << ", " << pointDansLeMonde.y << ", 0)" << std::endl;
+	std::cout << "Position du click dans le monde : (" << pointDansLeMonde.x << ", " << pointDansLeMonde.y << ", 0)" << std::endl;
 	
 
 	int valeurStencil = 0;
@@ -427,5 +428,38 @@ void FacadeModele::deplacerSelection(int x1, int y1 ,int x2, int y2)
 
 	VisiteurDeplacement visDep(positionFinale - positionInitiale);
 	arbre_->accepterVisiteur(&visDep);
+
+}
+
+
+
+
+void FacadeModele::tournerSelectionSouris(int x1, int y1, int x2, int y2)
+{
+	glm::dvec3 positionInitiale, positionFinale;
+
+
+	FacadeModele::obtenirInstance()->obtenirVue()->convertirClotureAVirtuelle(x1, y1, positionInitiale);
+	FacadeModele::obtenirInstance()->obtenirVue()->convertirClotureAVirtuelle(x2, y2, positionFinale);
+
+	// Calculer l'angle correspondant à donner au visiteur
+	glm::dvec3 angles{ 0, 0, (y2 - y1) /2.0 }; // Pas super ...
+
+	 VisiteurRotation visRot(angles);
+	 arbre_->accepterVisiteur(&visRot);
+
+
+	 // Autre possiblité
+
+	 // Commencer par trouver un centre de rotation 
+		// glm::dvec3 centre{a,b,c}
+		// Visiter l'arbre pour trouver le centre de masse des noeuds selectionnés
+
+	 // Faire un visiteurRotation plus sophistiqué qui va tourner les noeuds visités autour du point donné.
+		// Déterminer l'angle à tourner en 
+	 
+		// VisiteurRotationPoint(angles, point) 
+			// Si on tourne un noeud autour d'un point, on ajuste sa position et son orientation.
+		
 
 }

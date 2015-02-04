@@ -901,6 +901,7 @@ namespace InterfaceGraphique
                 FonctionsNatives.creerXML(pathXML, pathXML.Capacity, prop);
         }
 
+
         private bool clickValide(Point origin, Point destination)
         {
             return ((Math.Abs(destination.X - origin.X) < 3)
@@ -908,6 +909,16 @@ namespace InterfaceGraphique
                     (Math.Abs(destination.Y - origin.Y) < 3));
                     
         }
+
+
+        public void tournerSelectionSouris(MouseEventArgs e)
+        {
+            FonctionsNatives.tournerSelectionSouris(previousP.X, previousP.Y, currentP.X, currentP.Y);
+            previousP = currentP;
+            currentP = panel_GL.PointToClient(MousePosition);
+        }
+
+
 
 
     }
@@ -934,6 +945,8 @@ namespace InterfaceGraphique
             return (targetForm.WindowState == FormWindowState.Maximized);
         }
     }
+
+
 
     static partial class FonctionsNatives
     {
@@ -1005,6 +1018,10 @@ namespace InterfaceGraphique
 
         [DllImport(@"Noyau.dll", CallingConvention = CallingConvention.Cdecl)]
         public static extern void deplacerSelection(int x1, int y1, int x2, int y2);
+
+        [DllImport(@"Noyau.dll", CallingConvention = CallingConvention.Cdecl)]
+        public static extern void tournerSelectionSouris(int x1, int y1, int x2, int y2);
+
         [DllImport(@"Noyau.dll", CallingConvention = CallingConvention.Cdecl)]
         public static extern void zoomElastique(int xCoin1, int yCoin1, int xCoin2, int yCoin2);
     }

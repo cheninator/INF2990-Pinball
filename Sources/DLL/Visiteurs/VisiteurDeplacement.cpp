@@ -112,8 +112,13 @@ bool VisiteurDeplacement::traiter(NoeudAbstrait* noeud)
 	else
 	{
 		// LOGIQUE DE DÉPLACEMENT
-		if (noeud->estSelectionne())
-			noeud->assignerPositionRelative(noeud->obtenirPositionRelative() + deplacement_);
+		glm::dvec3 nouvellePosition{ noeud->obtenirPositionRelative() + deplacement_ };
+		if (noeud->estSelectionne() 
+			// Respecter les dimensions de la table.
+			&& 108 < nouvellePosition.x && nouvellePosition.x < 272
+			&& -190 < nouvellePosition.y && nouvellePosition.y < 96
+			)
+			noeud->assignerPositionRelative(nouvellePosition);
 	}
 
 	return true;
