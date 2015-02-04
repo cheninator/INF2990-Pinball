@@ -70,6 +70,9 @@ public:
    /// Deplacement des noeuds selectionnés dans l'arbre de rendu.
    void deplacerSelection(int x1, int y1, int x2, int y2);
 
+   /// Rotation des noeuds sélectionnés
+   void tournerSelectionSouris(int x1, int y1, int x2, int y2);
+
 private:
    /// Constructeur par défaut.
    FacadeModele() = default;

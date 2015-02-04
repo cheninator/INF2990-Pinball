@@ -455,7 +455,7 @@
             // 
             // bouton_Rotation
             // 
-            this.bouton_Rotation.Enabled = false;
+            this.bouton_Rotation.Enabled = true;
             this.bouton_Rotation.Location = new System.Drawing.Point(13, 86);
             this.bouton_Rotation.Name = "bouton_Rotation";
             this.bouton_Rotation.Size = new System.Drawing.Size(130, 24);
