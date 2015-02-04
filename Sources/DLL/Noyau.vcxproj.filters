@@ -150,6 +150,9 @@
     <ClCompile Include="Visiteurs\VisiteurXML.cpp">
       <Filter>Source Files\Visiteurs</Filter>
     </ClCompile>
+    <ClCompile Include="Visiteurs\VisiteurCentreDeMasse.cpp">
+      <Filter>Source Files\Visiteurs</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Application\FacadeModele.h">
@@ -285,6 +288,9 @@
       <Filter>Header Files\Arbre\Usines</Filter>
     </ClInclude>
     <ClInclude Include="Visiteurs\VisiteurXML.h">
+      <Filter>Header Files\Visiteurs</Filter>
+    </ClInclude>
+    <ClInclude Include="Visiteurs\VisiteurCentreDeMasse.h">
       <Filter>Header Files\Visiteurs</Filter>
     </ClInclude>
   </ItemGroup>
