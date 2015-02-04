@@ -65,7 +65,7 @@ public:
    void animer(float temps);
 
 
-   NoeudAbstrait* trouverObjetSousPointClique(int i,int j);
+   NoeudAbstrait* trouverObjetSousPointClique(int i, int j, int largeur, int hauteur);
 
 
 private:

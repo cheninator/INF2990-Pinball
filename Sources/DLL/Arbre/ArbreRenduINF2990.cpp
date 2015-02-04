@@ -86,6 +86,7 @@ ArbreRenduINF2990::ArbreRenduINF2990()
 ////////////////////////////////////////////////////////////////////////
 ArbreRenduINF2990::~ArbreRenduINF2990()
 {
+	delete proprietes_;
 }
 
 
@@ -193,6 +194,8 @@ bool ArbreRenduINF2990::initialiserXML(std::string nomFichier)
 }
 
 
+
+
 bool ArbreRenduINF2990::lireXML(tinyxml2::XMLDocument& doc)
 {
 	bool lecture = false;
@@ -207,7 +210,16 @@ bool ArbreRenduINF2990::lireXML(tinyxml2::XMLDocument& doc)
 	const char* angleY = "angleY";
 	const char* angleZ = "angleZ";
 
-	// TO DO: Lire les propriétés de la zone de jeu
+
+	// Charger les propriétés de la zone de jeu
+	tinyxml2::XMLElement* elementPropriete = doc.FirstChildElement("Proprietes");
+	tinyxml2::XMLElement* element = elementPropriete->FirstChildElement("PointsButoir");
+
+	for (int i = 0; i < 6; i++)
+	{
+		proprietes_[i] = element->FirstAttribute()->IntValue();
+		element = element->NextSiblingElement();
+	}
 
 	//////////////////////////////////////////////////
 	// Lecture de l'arbre ainsi que ses enfants

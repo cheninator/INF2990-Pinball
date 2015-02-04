@@ -31,7 +31,7 @@ class VisiteurSelection : public VisiteurAbstrait
 public:
 
 	// Constructeur par défaut : aucun déplacement
-	VisiteurSelection(glm::dvec3 pointDansLeMonde);
+	VisiteurSelection(glm::dvec3 pointDansLeMonde, int valeurStencil);
 
 	// Destructeur
 	~VisiteurSelection();
@@ -39,6 +39,7 @@ public:
 	// Traiter une opération sur l'arbre de rendu et ses enfants
 	virtual bool traiter(ArbreRenduINF2990* arbre);
 	virtual bool traiter(NoeudAbstrait* noeud);
+	virtual bool VisiteurSelection::traiter(NoeudTable* table);
 
 private:
 	
@@ -47,6 +48,8 @@ private:
 	
 	// Point cliqué
 	glm::dvec3 pointDansLeMonde_;
+
+	int valeurStencil_;
 };
 
 

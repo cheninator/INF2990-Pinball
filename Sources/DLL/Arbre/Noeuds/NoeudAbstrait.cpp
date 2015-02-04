@@ -10,7 +10,7 @@
 #include "NoeudAbstrait.h"
 #include "Utilitaire.h"
 
-unsigned int NoeudAbstrait::id = 0;
+unsigned int NoeudAbstrait::compteurNoeuds_ = 0;
 ////////////////////////////////////////////////////////////////////////
 ///
 /// @fn NoeudAbstrait::NoeudAbstrait(const std::string& type)
@@ -27,7 +27,8 @@ NoeudAbstrait::NoeudAbstrait(
 	) :
 	type_( type )
 {
-	id += 1;
+	compteurNoeuds_ += 1;
+	numeroNoeud_ = compteurNoeuds_;
 	scale_ = { 1.0, 1.0, 1.0 };
 }
 
@@ -408,6 +409,7 @@ void NoeudAbstrait::afficher() const
 		glPolygonMode(GL_FRONT_AND_BACK, modePolygones_);
 
 		// Affichage concret
+		glStencilFunc(GL_ALWAYS, numeroNoeud_, -1);
 		afficherConcret();
 
 		// Restauration

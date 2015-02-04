@@ -38,6 +38,8 @@ namespace InterfaceGraphique
         private StringBuilder pathXML = new StringBuilder("");
         private Etat etat {get; set;}
 
+        private int[] prop = new int[6];
+
         public Exemple()
         {
             this.KeyPress += new KeyPressEventHandler(ToucheEnfonce);
@@ -199,7 +201,13 @@ namespace InterfaceGraphique
             ouvrir_fichier.Filter = "Fichier XML(*.xml)| *.xml| All files(*.*)|*.*";
             ouvrir_fichier.ShowDialog();
             pathXML = new StringBuilder(ouvrir_fichier.FileName);
-            FonctionsNatives.ouvrirXML(pathXML, pathXML.Capacity);
+
+            IntPtr prop = FonctionsNatives.ouvrirXML(pathXML, pathXML.Capacity);
+            int[] result = new int[6];
+            Marshal.Copy(prop, result, 0, 6);
+
+            for (int i = 0; i < 6; i++)
+                propZJ[i] = result[i];
         }
 
         private void EnregistrerS_MenuItem_Click(object sender, EventArgs e)
@@ -213,7 +221,11 @@ namespace InterfaceGraphique
             enregistrer_fichier.Filter = "Fichier XML(*.xml)| *.xml| All files(*.*)|*.*";
             enregistrer_fichier.ShowDialog();
             pathXML = new StringBuilder(enregistrer_fichier.FileName);
-            FonctionsNatives.creerXML(pathXML, pathXML.Capacity);
+
+            for(int i = 0; i < 6; i++)
+                prop[i] = propZJ[i];
+
+            FonctionsNatives.creerXML(pathXML, pathXML.Capacity, prop);
 
         }
 
@@ -299,10 +311,13 @@ namespace InterfaceGraphique
             //proprietes.Parent = this;
             proprietes.StartPosition = FormStartPosition.CenterScreen;
             proprietes.ShowDialog();
-            for (int i = 0; i < 6; i++)
-            {
-                Console.WriteLine(propZJ[i]);
-            }
+            propZJ = proprietes.getProps();
+                for (int i = 0; i < 6; i++)
+                {
+                    Console.WriteLine(propZJ[i]);
+                }
+                proprietes.Close();
+            
         }
 
         private void butoirG_bouton_Click(object sender, EventArgs e)
@@ -672,6 +687,7 @@ namespace InterfaceGraphique
         private void Nouveau_MenuItem_Click(object sender, EventArgs e)
         {
             FonctionsNatives.purgeAll();
+            propZJ = new List<int> { 10, 10, 10, 10, 10, 1 };
         }
 
         private void panel_GL_MouseDown(object sender, MouseEventArgs e)
@@ -861,21 +877,21 @@ namespace InterfaceGraphique
 
         public void selection(MouseEventArgs e) 
         {
-            FonctionsNatives.trouverObjetSousPointClique(panel_GL.PointToClient(MousePosition).X, panel_GL.PointToClient(MousePosition).Y);
+            // TODO PHIL : Faire que ceci n'arrive que quand on relâche le bouton de gauche et qu'on n'a pas bougé de plus de 3 pixels.
+            FonctionsNatives.trouverObjetSousPointClique(panel_GL.PointToClient(MousePosition).X, panel_GL.PointToClient(MousePosition).Y,panel_GL.Height , panel_GL.Height);
 
         }
 
         public void creationObjet(MouseEventArgs e)
         {
             Afficher_Objet();
-            FonctionsNatives.positionObjet(panel_GL.PointToClient(MousePosition).X, panel_GL.PointToClient(MousePosition).Y);
+            FonctionsNatives.positionObjet(panel_GL.PointToClient(MousePosition).X, panel_GL.PointToClient(MousePosition).Y,0);
             FonctionsNatives.rotate(angleX, 'x');
             FonctionsNatives.rotate(angleY, 'y');
             FonctionsNatives.rotate(angleZ, 'z');
             FonctionsNatives.scaleObjet(scale);
             previousP.X = panel_GL.PointToClient(MousePosition).X;
             previousP.Y = panel_GL.PointToClient(MousePosition).Y;
-            FonctionsNatives.trouverObjetSousPointClique(panel_GL.PointToClient(MousePosition).X, panel_GL.PointToClient(MousePosition).Y);
         }
 
         private void Enregistrer_MenuItem_Click(object sender, EventArgs e)
@@ -883,7 +899,7 @@ namespace InterfaceGraphique
             if (pathXML.ToString() == "")
                 EnregistrerSous();
             else
-                FonctionsNatives.creerXML(pathXML, pathXML.Capacity);
+                FonctionsNatives.creerXML(pathXML, pathXML.Capacity, prop);
         }
 
 
@@ -963,13 +979,13 @@ namespace InterfaceGraphique
         public static extern void translater(double deplacementX, double deplacementY);
 
         [DllImport(@"Noyau.dll", CallingConvention = CallingConvention.Cdecl)]
-        public static extern void creerXML(StringBuilder path, int taille);
+        public static extern void creerXML(StringBuilder path, int taille, int[] prop);
 
         [DllImport(@"Noyau.dll", CallingConvention = CallingConvention.Cdecl)]
-        public static extern void ouvrirXML(StringBuilder path, int taille);
+        public static extern IntPtr ouvrirXML(StringBuilder path, int taille);
 
         [DllImport(@"Noyau.dll", CallingConvention = CallingConvention.Cdecl)]
-        public static extern void trouverObjetSousPointClique(int i, int j);
+        public static extern void trouverObjetSousPointClique(int i, int j,int largeur, int hauteur);
 
         [DllImport(@"Noyau.dll", CallingConvention = CallingConvention.Cdecl)]
         public static extern void zoomIn();

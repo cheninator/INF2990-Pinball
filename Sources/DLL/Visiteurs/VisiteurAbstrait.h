@@ -12,6 +12,7 @@
 
 class NoeudAbstrait;
 class ArbreRenduINF2990;
+class NoeudTable;
 
 
 ///////////////////////////////////////////////////////////////////////////
@@ -36,6 +37,7 @@ public:
 
 	// Traiter une opération sur l'arbre de rendu et ses enfants
 	virtual bool traiter(ArbreRenduINF2990* arbre) { return false; };
+	virtual bool traiter(NoeudTable* noeud) { return false; };
 	virtual bool traiter(NoeudAbstrait* noeud) { return false; };
 
 };
