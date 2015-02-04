@@ -109,6 +109,10 @@ namespace InterfaceGraphique
 
                 if (e.KeyData == Keys.Down)
                     FonctionsNatives.translater(0, -10);
+                if (e.Modifiers == Keys.Control)
+                {
+                    Console.WriteLine("CONTROL");
+                }
             }
         }
         private void ToucheEnfonce(Object o, KeyPressEventArgs e)
@@ -312,11 +316,7 @@ namespace InterfaceGraphique
             proprietes.StartPosition = FormStartPosition.CenterScreen;
             proprietes.ShowDialog();
             propZJ = proprietes.getProps();
-                for (int i = 0; i < 6; i++)
-                {
-                    Console.WriteLine(propZJ[i]);
-                }
-                proprietes.Close();
+            proprietes.Close();
             
         }
 
@@ -780,10 +780,7 @@ namespace InterfaceGraphique
                {
                    FonctionsNatives.zoomElastique(origin.X, origin.Y, destination.X, destination.Y);
                }
-                if ((Math.Abs(destination.X - origin.X) < 3)
-                     &&
-                     (Math.Abs(destination.Y - origin.Y) < 3)
-                    )
+                if(clickValide(origin,destination))
                 {
                     
                     etat.traiterSouris(e);
@@ -824,6 +821,7 @@ namespace InterfaceGraphique
         private void label1_Click(object sender, EventArgs e)
         {
             label1.Hide();
+            
         }
 
         /* Fonctionnalités des états */
@@ -901,6 +899,14 @@ namespace InterfaceGraphique
                 EnregistrerSous();
             else
                 FonctionsNatives.creerXML(pathXML, pathXML.Capacity, prop);
+        }
+
+        private bool clickValide(Point origin, Point destination)
+        {
+            return ((Math.Abs(destination.X - origin.X) < 3)
+                     &&
+                    (Math.Abs(destination.Y - origin.Y) < 3));
+                    
         }
 
 
