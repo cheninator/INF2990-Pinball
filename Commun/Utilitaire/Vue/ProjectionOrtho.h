@@ -63,7 +63,7 @@ namespace vue {
 		/// Translater la fenêtre virtuelle d'un vecteur
 		void translater(const glm::ivec2& deplacement);
 		/// Centrer la fenêtre virtuelle sur un point
-		void centrerSurPoint(const glm::ivec2& pointCentre);
+		void centrerSurPoint(const glm::dvec2& pointCentre);
 
 		/// Obtenir les coordonnées de la fenêtre virtuelle.
 		inline void obtenirCoordonneesFenetreVirtuelle(

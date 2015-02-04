@@ -760,7 +760,10 @@ namespace InterfaceGraphique
             if (e.Button == MouseButtons.Left)
             {
                 Point destination = panel_GL.PointToClient(MousePosition);
-               
+               if (etat is EtatZoom)
+               {
+                   FonctionsNatives.zoomElastique(origin.X, origin.Y, destination.X, destination.Y);
+               }
                 if ((Math.Abs(destination.X - origin.X) < 3)
                      &&
                      (Math.Abs(destination.Y - origin.Y) < 3)
@@ -976,5 +979,8 @@ namespace InterfaceGraphique
 
         [DllImport(@"Noyau.dll", CallingConvention = CallingConvention.Cdecl)]
         public static extern void orbite(double phi, double theta);
+
+        [DllImport(@"Noyau.dll", CallingConvention = CallingConvention.Cdecl)]
+        public static extern void zoomElastique(int xCoin1, int yCoin1, int xCoin2, int yCoin2);
     }
 }

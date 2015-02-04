@@ -37,6 +37,7 @@ extern "C" {
 	__declspec(dllexport) void ouvrirXML(char* path, int length);
 	__declspec(dllexport) void trouverObjetSousPointClique(int i, int j);
 	__declspec(dllexport) void orbite(double phi, double theta);
+	__declspec(dllexport) void zoomElastique(int xCoin1, int yCoin1, int xCoin2, int yCoin2);
 }
 
 #endif // __FACADE_INTERFACE_NATIVE_H__
