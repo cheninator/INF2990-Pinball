@@ -827,6 +827,12 @@ namespace InterfaceGraphique
 
         public void deplacementSouris(MouseEventArgs e)
         {
+            // On va calculer un point precedent et un point courrant pour faire le deplacement.
+
+            // Ce point est dans les coordonnees d'affichage d'openGL pour pouvoir calculer un deplacement
+            // en coordonnees du monde en utilisant convertirClotureAVirtuelle(...) comme ça on n'a pas 
+            // besoin de ce facteur mistérieux.  Et aussi, cette technique devrait bien marcher 
+            // quand on sera rendu avec la vue orbite.
             FonctionsNatives.deplacerSelection(previousP.X, previousP.Y, currentP.X, currentP.Y);;
             previousP = currentP;
             currentP = panel_GL.PointToClient(MousePosition);

@@ -401,12 +401,27 @@ NoeudAbstrait* FacadeModele::trouverObjetSousPointClique(int i, int j, int haute
 }
 
 ///////////////////////////////////////////////////////////////////////////////
-/// @}
+///
+/// @fn void deplacerSelection(int x1, int y1, int x2, int y2)
+///		deplace les noeuds selectionnes d'un déplacement calculé en coordonnées du monde
+///		à partir des points initiaux et terminaux dans les coordonnées d'affichage OpenGL
+///
+///
+/// @param[in]  x1 : abcisse du point initial
+/// @param[in]  y1 : ordonnee du point initial
+///
+/// @param[in]  x2 : abcisse du point initial
+/// @param[in]  y2 : ordonnee du point initial
+///
+/// @return Aucun
+///
 ///////////////////////////////////////////////////////////////////////////////
 void FacadeModele::deplacerSelection(int x1, int y1 ,int x2, int y2)
 {
 
 	glm::dvec3 positionInitiale, positionFinale;
+	
+	// Calcul des coordonnées dans le monde pour pas avoir besoin du facteur mistérieux !
 	FacadeModele::obtenirInstance()->obtenirVue()->convertirClotureAVirtuelle(x1, y1, positionInitiale);
 	FacadeModele::obtenirInstance()->obtenirVue()->convertirClotureAVirtuelle(x2, y2, positionFinale);
 
