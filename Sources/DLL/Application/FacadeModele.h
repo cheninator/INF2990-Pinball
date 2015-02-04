@@ -67,6 +67,7 @@ public:
 
    NoeudAbstrait* trouverObjetSousPointClique(int i, int j, int largeur, int hauteur);
 
+   void deplacerSelection(int x1, int y1, int x2, int y2);
 
 private:
    /// Constructeur par défaut.

@@ -112,7 +112,8 @@ bool VisiteurDeplacement::traiter(NoeudAbstrait* noeud)
 	else
 	{
 		// LOGIQUE DE DÉPLACEMENT
-		noeud->assignerPositionRelative(deplacement_);
+		if (noeud->estSelectionne())
+			noeud->assignerPositionRelative(noeud->obtenirPositionRelative() + deplacement_);
 	}
 
 	return true;

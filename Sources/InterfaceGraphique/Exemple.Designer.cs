@@ -466,7 +466,7 @@
             // 
             // bouton_Deplacement
             // 
-            this.bouton_Deplacement.Enabled = false;
+            this.bouton_Deplacement.Enabled = true;
             this.bouton_Deplacement.Location = new System.Drawing.Point(13, 55);
             this.bouton_Deplacement.Name = "bouton_Deplacement";
             this.bouton_Deplacement.Size = new System.Drawing.Size(130, 24);

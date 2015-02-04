@@ -27,6 +27,7 @@
 
 // Voulait vraiment pas marcher sans que je mette le chemin.
 #include "../Visiteurs/VisiteurSelection.h"
+#include "../Visiteurs/VisiteurDeplacement.h"
 
 #include "VueOrtho.h"
 #include "Camera.h"
@@ -402,3 +403,14 @@ NoeudAbstrait* FacadeModele::trouverObjetSousPointClique(int i, int j, int haute
 ///////////////////////////////////////////////////////////////////////////////
 /// @}
 ///////////////////////////////////////////////////////////////////////////////
+void FacadeModele::deplacerSelection(int x1, int y1 ,int x2, int y2)
+{
+
+	glm::dvec3 positionInitiale, positionFinale;
+	FacadeModele::obtenirInstance()->obtenirVue()->convertirClotureAVirtuelle(x1, y1, positionInitiale);
+	FacadeModele::obtenirInstance()->obtenirVue()->convertirClotureAVirtuelle(x2, y2, positionFinale);
+
+	VisiteurDeplacement visDep(positionFinale - positionInitiale);
+	arbre_->accepterVisiteur(&visDep);
+
+}

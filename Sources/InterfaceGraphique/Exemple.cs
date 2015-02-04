@@ -827,14 +827,9 @@ namespace InterfaceGraphique
 
         public void deplacementSouris(MouseEventArgs e)
         {
-            int deltaX = (currentP.X - previousP.X);
-            int deltaY = -(currentP.Y - previousP.Y);
-            FonctionsNatives.translateObjet(deltaX, deltaY);
-
-            previousP.X = currentP.X;
-            previousP.Y = currentP.Y;
-            currentP.X = e.X;
-            currentP.Y = e.Y;
+            FonctionsNatives.deplacerSelection(previousP.X, previousP.Y, currentP.X, currentP.Y);;
+            previousP = currentP;
+            currentP = panel_GL.PointToClient(MousePosition);
         }
 
         public void deplacementVueSouris(MouseEventArgs e)
@@ -992,5 +987,8 @@ namespace InterfaceGraphique
 
         [DllImport(@"Noyau.dll", CallingConvention = CallingConvention.Cdecl)]
         public static extern void orbite(double phi, double theta);
+
+        [DllImport(@"Noyau.dll", CallingConvention = CallingConvention.Cdecl)]
+        public static extern void deplacerSelection(int x1, int y1, int x2, int y2);
     }
 }
