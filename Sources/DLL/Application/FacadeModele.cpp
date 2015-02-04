@@ -443,10 +443,23 @@ void FacadeModele::tournerSelectionSouris(int x1, int y1, int x2, int y2)
 	FacadeModele::obtenirInstance()->obtenirVue()->convertirClotureAVirtuelle(x2, y2, positionFinale);
 
 	// Calculer l'angle correspondant à donner au visiteur
-	double angle = 0;
+	glm::dvec3 angles{ 0, 0, (y2 - y1) /2.0 }; // Pas super ...
+
+	 VisiteurRotation visRot(angles);
+	 arbre_->accepterVisiteur(&visRot);
 
 
+	 // Autre possiblité
 
-	// VisiteurRotation visRot(angle);
-	// arbre_->accepterVisiteur(&visRot);
+	 // Commencer par trouver un centre de rotation 
+		// glm::dvec3 centre{a,b,c}
+		// Visiter l'arbre pour trouver le centre de masse des noeuds selectionnés
+
+	 // Faire un visiteurRotation plus sophistiqué qui va tourner les noeuds visités autour du point donné.
+		// Déterminer l'angle à tourner en 
+	 
+		// VisiteurRotationPoint(angles, point) 
+			// Si on tourne un noeud autour d'un point, on ajuste sa position et son orientation.
+		
+
 }
