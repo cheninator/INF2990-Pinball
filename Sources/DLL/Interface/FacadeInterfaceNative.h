@@ -38,6 +38,7 @@ extern "C" {
 	__declspec(dllexport) void trouverObjetSousPointClique(int i, int j,int largeur, int hauteur);
 	__declspec(dllexport) void orbite(double phi, double theta);
 	__declspec(dllexport) void deplacerSelection(int x1, int y1, int x2, int y2);
+	__declspec(dllexport) void zoomElastique(int xCoin1, int yCoin1, int xCoin2, int yCoin2);
 }
 
 #endif // __FACADE_INTERFACE_NATIVE_H__

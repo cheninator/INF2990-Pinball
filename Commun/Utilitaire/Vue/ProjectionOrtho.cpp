@@ -234,42 +234,26 @@ namespace vue {
 	////////////////////////////////////////////////////////////////////////
 	void ProjectionOrtho::zoomerIn(const glm::ivec2& coin1, const glm::ivec2& coin2)
 	{
-		// À IMPLANTER.
-
-		// 1) Déterminer quel side est le plus grand (rapport aspect)
-		// Si le rapport d'aspect est plus grand que 1 la longueur en x est plus grand que celle en y
-		double rapportAspectCourant = (xMaxFenetre_ - xMinFenetre_) / (yMaxFenetre_ - yMinFenetre_);
-		double rapportAspectSelection = (abs(coin2.x - coin1.x) / abs(coin2.y - coin1.y));
-
-		double pointMilieuX = (xMaxFenetre_ + xMinFenetre_) / 2.0;
-		double pointMilieuY = (yMaxFenetre_ + yMinFenetre_) / 2.0;
-
-		double facteurMultiplication = 0.0;
-		double deltaX = 0.0;
-		double deltaY = 0.0;
-
-		// On doit voir quel est le ratio le plus grand de la sélection :
-		if (rapportAspectSelection > 1) // x est plus long que y
+		if (abs(coin2.x - coin1.x) < 5 || abs(coin2.y - coin1.y) < 5)
 		{
-			// On trouve le ratio de la fenêtre courante 
-			facteurMultiplication = abs(xMaxFenetre_ - xMinFenetre_) / abs(coin2.x - coin1.x);
+			std::cout << "Rectangle trop petit, pas de zoom \n";
+			return;
 		}
-		else // y est plus long que x
-		{
-			facteurMultiplication = abs(yMaxFenetre_ - yMinFenetre_) / abs(coin2.y - coin1.y);
-		}
-		// Le côté est donc facteurMultiplication x taille de la sélection
-		// On doit ajouter une partie en x positive et négative
-		deltaX = (facteurMultiplication - 1.0) * abs(coin2.x - coin1.x) / 2.0;
-		deltaY = (facteurMultiplication - 1.0) * abs(coin2.y - coin1.y) / 2.0;
 
-		xMinFenetre_ += deltaX;
-		xMaxFenetre_ -= deltaX;
-
-		yMinFenetre_ += deltaY;
-		yMaxFenetre_ -= deltaY;
-		// La fenêtre étant de la bonne taille, on se centre sur le bon point.
-		centrerSurPoint(glm::ivec2(pointMilieuX, pointMilieuY));
+		double pointMilieuSelectionX = (coin1.x + coin2.x) / 2.0;
+		double pointMilieuSelectionY = (coin1.y + coin2.y) / 2.0;
+		
+		// L'astuce est simple : on fixe les valeurs de coordonnées
+		// de fenêtre aux coordonnées OpenGL données, puis on corrige
+		// le rapport d'aspect
+		xMinFenetre_ = (coin1.x < coin2.x ? coin1.x : coin2.x);
+		xMaxFenetre_ = (coin1.x > coin2.x ? coin1.x : coin2.x);
+		
+		yMinFenetre_ = (coin1.y < coin2.y ? coin1.y : coin2.y);
+		yMaxFenetre_ = (coin1.y > coin2.y ? coin1.y : coin2.y);
+		
+		ajusterRapportAspect();
+		centrerSurPoint(glm::dvec2(pointMilieuSelectionX, pointMilieuSelectionY));
 	}
 
 
@@ -360,15 +344,17 @@ namespace vue {
 	/// @return Aucune.
 	///
 	////////////////////////////////////////////////////////////////////////
-	void ProjectionOrtho::centrerSurPoint(const glm::ivec2& pointCentre)
+	void ProjectionOrtho::centrerSurPoint(const glm::dvec2& pointCentre)
 	{
 		// À IMPLANTER.
 		// N.B: Puisque le fonction existante 'translater' suppose que les 
 		// déplacements sont faites à partir des coordonnées de clôtures,
 		// je fais le translate ici.
-		glm::ivec2 currentPoint((xMinFenetre_ + xMaxFenetre_) / 2.0, (yMinFenetre_ + yMaxFenetre_) / 2.0);
-		glm::ivec2 deplacement(pointCentre - currentPoint);
+		
+		glm::dvec2 currentPoint((xMinFenetre_ + xMaxFenetre_) / 2.0, (yMinFenetre_ + yMaxFenetre_) / 2.0);
+		glm::dvec2 deplacement(pointCentre - currentPoint);
 
+		std::cout << "\n Vecteur de deplacemnt: (" << deplacement.x << ", " << deplacement.y << ") \n";
 		// Déplacement (en supposant que le vecteur est bon)
 		xMinFenetre_ += deplacement.x;
 		xMaxFenetre_ += deplacement.x;
@@ -390,7 +376,37 @@ namespace vue {
 	////////////////////////////////////////////////////////////////////////
 	void ProjectionOrtho::ajusterRapportAspect()
 	{
-		// À IMPLANTER.
+		// Déterminer quelle est la composante la plus large
+		double delta = 0.0;
+
+		double longueurVerticaleRequise = 0.0;
+		double longueurHorizontaleRequise = 0.0;
+
+		double rapportAspect = abs(xMaxCloture_ - xMinCloture_) / abs(yMaxCloture_ - yMinCloture_);
+		double rapportAspectVirtuel = (xMaxFenetre_ - xMinFenetre_) / (yMaxFenetre_ - yMinFenetre_);
+
+		if (abs(rapportAspect - rapportAspectVirtuel) / rapportAspect < (0.0001 * rapportAspect))
+		{
+			std::cout << "\n Rapports aspects sont egaux : pas d'ajustation \n";
+			return; // Les deux rapports d'aspects sont considérés dans la marge d'erreur
+		}
+		if (rapportAspectVirtuel > 1.0)
+		{
+			longueurVerticaleRequise = abs(xMaxFenetre_ - xMinFenetre_) / rapportAspect;
+			delta = (longueurVerticaleRequise - abs(yMaxFenetre_ - yMinFenetre_)) / 2.0;
+
+			yMaxFenetre_ += delta;
+			yMinFenetre_ -= delta;
+			
+		}
+		else // if (rapportAspectVirtuel < 1.0)
+		{
+			longueurHorizontaleRequise = abs(yMaxFenetre_ - yMinFenetre_) * rapportAspect;
+			delta = (longueurHorizontaleRequise - abs(xMaxFenetre_ - xMinFenetre_)) / 2.0;
+
+			xMaxFenetre_ += delta;
+			xMinFenetre_ -= delta;
+		}
 	}
 
 }; // Fin du namespace vue.
