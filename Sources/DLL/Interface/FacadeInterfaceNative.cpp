@@ -318,9 +318,11 @@ extern "C"
 		calculerTransition();
 		glm::dvec3 maPosition;
 		FacadeModele::obtenirInstance()->obtenirVue()->convertirClotureAVirtuelle(x, y, maPosition);
-		objet->assignerPositionRelative({ maPosition.x, maPosition.y, z });
-		std::cout << std::endl << "x: " << maPosition.x << "y: " << maPosition.y << "z: " << maPosition.z << std::endl;
-	}
+		if (maPosition.x > 108 && maPosition.x < 272 && maPosition.y > -190 && maPosition.y < 96){
+			objet->assignerPositionRelative({ maPosition.x, maPosition.y, z });
+			std::cout << std::endl << "x: " << maPosition.x << "y: " << maPosition.y << "z: " << maPosition.z << std::endl;
+		}
+		}
 
 
 	////////////////////////////////////////////////////////////////////////

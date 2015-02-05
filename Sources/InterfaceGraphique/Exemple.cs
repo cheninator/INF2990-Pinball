@@ -756,6 +756,16 @@ namespace InterfaceGraphique
             origin = panel_GL.PointToClient(MousePosition);
             //if( !(etat is EtatCreation))
             //    panel_GL.MouseMove += new MouseEventHandler(panel_MouseMove);
+           
+            
+            
+            
+           // creationObjet(e);
+            
+            
+            
+            
+            
             previousP.X = e.X;
             previousP.Y = e.Y;
             currentP.X = e.X;
@@ -900,14 +910,15 @@ namespace InterfaceGraphique
 
         public void creationObjet(MouseEventArgs e)
         {
-            Afficher_Objet();
-            FonctionsNatives.positionObjet(panel_GL.PointToClient(MousePosition).X, panel_GL.PointToClient(MousePosition).Y,0);
-            FonctionsNatives.rotate(angleX, 'x');
-            FonctionsNatives.rotate(angleY, 'y');
-            FonctionsNatives.rotate(angleZ, 'z');
-            FonctionsNatives.scaleObjet(scale);
-            previousP.X = panel_GL.PointToClient(MousePosition).X;
-            previousP.Y = panel_GL.PointToClient(MousePosition).Y;
+                Afficher_Objet();
+                FonctionsNatives.positionObjet(panel_GL.PointToClient(MousePosition).X, panel_GL.PointToClient(MousePosition).Y, 0);
+                FonctionsNatives.rotate(angleX, 'x');
+                FonctionsNatives.rotate(angleY, 'y');
+                FonctionsNatives.rotate(angleZ, 'z');
+                FonctionsNatives.scaleObjet(scale);
+                previousP.X = panel_GL.PointToClient(MousePosition).X;
+                previousP.Y = panel_GL.PointToClient(MousePosition).Y;
+           
         }
 
         private void Enregistrer_MenuItem_Click(object sender, EventArgs e)
