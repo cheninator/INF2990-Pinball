@@ -29,6 +29,8 @@
 #include "../Visiteurs/VisiteurSelection.h"
 #include "../Visiteurs/VisiteurDeplacement.h"
 #include "../Visiteurs/VisiteurRotation.h"
+#include "../Visiteurs/VisiteurCentreDeMasse.h"
+// #include "../Visiteurs/VisiteurRotationPoint.h"
 
 #include "VueOrtho.h"
 #include "Camera.h"
@@ -445,15 +447,21 @@ void FacadeModele::tournerSelectionSouris(int x1, int y1, int x2, int y2)
 	// Calculer l'angle correspondant à donner au visiteur
 	glm::dvec3 angles{ 0, 0, (y2 - y1) /2.0 }; // Pas super ...
 
-	 VisiteurRotation visRot(angles);
-	 arbre_->accepterVisiteur(&visRot);
+	VisiteurRotation visRot(angles);
+	arbre_->accepterVisiteur(&visRot);
 
 
-	 // Autre possiblité
+	// Autre possiblité
 
-	 // Commencer par trouver un centre de rotation 
-		// glm::dvec3 centre{a,b,c}
-		// Visiter l'arbre pour trouver le centre de masse des noeuds selectionnés
+	// Commencer par trouver un centre de rotation 
+	glm::dvec3 centreRotation{ 0, 0, 0 };
+
+	// Visiter l'arbre pour trouver le centre de masse des noeuds selectionnés
+	VisiteurCentreDeMasse visCM;
+	arbre_->accepterVisiteur(&visCM);
+
+	centreRotation = visCM.obtenirCentreDeMasse();
+	std::cout << "Centre de masse : " << centreRotation.x << ", " << centreRotation.y << std::endl;
 
 	 // Faire un visiteurRotation plus sophistiqué qui va tourner les noeuds visités autour du point donné.
 		// Déterminer l'angle à tourner en 

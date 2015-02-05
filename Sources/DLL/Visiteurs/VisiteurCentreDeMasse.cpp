@@ -9,6 +9,7 @@
 
 #include "VisiteurCentreDeMasse.h"
 #include "../Arbre/ArbreRenduINF2990.h"
+#include <iostream>
 
 
 
@@ -21,6 +22,8 @@
 ///
 ////////////////////////////////////////////////////////////////////////
 VisiteurCentreDeMasse::VisiteurCentreDeMasse()
+:centreDeMasse_{ 0, 0, 0 },
+nbNoeuds_{ 0 }
 {
 }
 
@@ -85,6 +88,10 @@ bool VisiteurCentreDeMasse::traiter(NoeudAbstrait* noeud)
 	else
 	{
 		// LOGIQUE DE TROUVER LE CENTRE DE MASSE
+		
+		centreDeMasse_ += noeud->obtenirPositionRelative();
+		nbNoeuds_++;
+		std::cout << "VisiteurCentreDeMasse::nbNoeuds_  : " << nbNoeuds_ << std::endl;
 	}
 
 	return true;

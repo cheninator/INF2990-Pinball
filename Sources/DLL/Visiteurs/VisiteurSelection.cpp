@@ -132,7 +132,7 @@ bool VisiteurSelection::traiter(NoeudAbstrait* noeud)
 	}
 	else
 	{
-		noeud->assignerSelection(false);
+		// noeud->assignerSelection(false);
 	}
 
 

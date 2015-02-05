@@ -35,9 +35,16 @@ public:
 	virtual bool traiter(ArbreRenduINF2990* arbre);
 	virtual bool traiter(NoeudAbstrait* noeud);
 
+	glm::dvec3 obtenirCentreDeMasse(){
+		return glm::dvec3{ centreDeMasse_.x / nbNoeuds_,
+							centreDeMasse_.y / nbNoeuds_,
+							centreDeMasse_.z / nbNoeuds_};
+	}
+
 private:
 	
 	glm::dvec3 centreDeMasse_;
+	int nbNoeuds_;
 	
 };
 
