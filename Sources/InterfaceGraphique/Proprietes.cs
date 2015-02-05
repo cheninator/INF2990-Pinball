@@ -33,7 +33,7 @@ namespace InterfaceGraphique
           
             if( !(int.TryParse(ptsButCirc_Box.Text, out n))){
                 isValid = false;
-                errorMessage += "\n La valeur de butoir circulaire est invalide";
+                errorMessage += "\nLa valeur de butoir circulaire est invalide";
             }
             else
             {
@@ -47,7 +47,7 @@ namespace InterfaceGraphique
             if (!(int.TryParse(ptsButTri_Box.Text, out n)))
             {
                 isValid = false;
-                errorMessage += "\n La valeur de butoir triangulaire est invalide";
+                errorMessage += "\nLa valeur de butoir triangulaire est invalide";
             }
             else
             {
@@ -61,7 +61,7 @@ namespace InterfaceGraphique
             if (!(int.TryParse(ptsCible_Box.Text, out n)))
             {
                 isValid = false;
-                errorMessage += "\n La valeur de la cible est invalide";
+                errorMessage += "\nLa valeur de la cible est invalide";
             }
             else
             {
@@ -75,7 +75,7 @@ namespace InterfaceGraphique
             if (!(int.TryParse(ptsVictoire_Box.Text, out n)))
             {
                 isValid = false;
-                errorMessage += "\n La valeur de la victoire est invalide";
+                errorMessage += "\nLa valeur de la victoire est invalide";
             }
             else
             {
@@ -89,7 +89,7 @@ namespace InterfaceGraphique
             if (!(int.TryParse(ptsFreeBall_Box.Text, out n)))
             {
                 isValid = false;
-                errorMessage += "\n La valeur de la balle gratuite est invalide";
+                errorMessage += "\nLa valeur de la balle gratuite est invalide";
             }
             else
             {
@@ -103,7 +103,7 @@ namespace InterfaceGraphique
             if (!(int.TryParse(difficulte_ComboBox.Text, out n)))
             {
                 isValid = false;
-                errorMessage += "\n La valeur de la difficulte est invalide";
+                errorMessage += "\nLa valeur de la difficulte est invalide";
             }
             else
             {
