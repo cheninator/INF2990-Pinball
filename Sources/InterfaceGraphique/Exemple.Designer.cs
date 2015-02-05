@@ -453,12 +453,15 @@
             // zoom_Bar
             // 
             this.zoom_Bar.AutoSize = false;
+            this.zoom_Bar.LargeChange = 1;
             this.zoom_Bar.Location = new System.Drawing.Point(13, 226);
+            this.zoom_Bar.Maximum = 12;
             this.zoom_Bar.Name = "zoom_Bar";
             this.zoom_Bar.Size = new System.Drawing.Size(130, 40);
             this.zoom_Bar.TabIndex = 2;
             this.zoom_Bar.TabStop = false;
             this.zoom_Bar.Value = 5;
+            this.zoom_Bar.Scroll += new System.EventHandler(this.zoom_Bar_Scroll);
             // 
             // bouton_Scaling
             // 

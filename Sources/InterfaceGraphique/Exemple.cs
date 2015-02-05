@@ -12,8 +12,6 @@ using System.Media;
 using System.IO;
 
 
-
-
 // test
 namespace InterfaceGraphique
 {
@@ -36,6 +34,8 @@ namespace InterfaceGraphique
         private float angleY = 0F;
         private float angleZ = 0F;
         private float scale = 1F;
+        private int currentZoom = 5;
+        private int previousZoom = 5;
         private StringBuilder pathXML = new StringBuilder("");
         private Etat etat {get; set;}
 
@@ -94,6 +94,8 @@ namespace InterfaceGraphique
                 {
                     FonctionsNatives.zoomOut();
                     zoom_Bar.Value -= 1;
+                    currentZoom = zoom_Bar.Value;
+                    previousZoom = zoom_Bar.Value;
                 }
                 if ((e.KeyData == Keys.Add ||
                     e.KeyCode == Keys.Oemplus && e.Modifiers == Keys.Shift)
@@ -101,6 +103,8 @@ namespace InterfaceGraphique
                 {
                     FonctionsNatives.zoomIn();
                     zoom_Bar.Value += 1;
+                    currentZoom = zoom_Bar.Value;
+                    previousZoom = zoom_Bar.Value;
                 }
                 if (e.KeyData == Keys.Left)
                     FonctionsNatives.translater(-10, 0);
@@ -860,17 +864,18 @@ namespace InterfaceGraphique
 
         public void zoomRoulette(MouseEventArgs e)
         {
-            if (e.Delta > 0 && zoom_Bar.Value < 10)
+            if (e.Delta > 0 && zoom_Bar.Value < zoom_Bar.Maximum)
             {
-
                 FonctionsNatives.zoomIn();
                 zoom_Bar.Value += 1;
             }
-            else if (e.Delta < 0 && zoom_Bar.Value > 0)
+            else if (e.Delta < 0 && zoom_Bar.Value > zoom_Bar.Minimum)
             {
                 FonctionsNatives.zoomOut();
                 zoom_Bar.Value -= 1;
             }
+            currentZoom = zoom_Bar.Value;
+            previousZoom = zoom_Bar.Value;
         }
 
         public void selection(MouseEventArgs e) 
@@ -928,6 +933,17 @@ namespace InterfaceGraphique
             FonctionsNatives.tournerSelectionSouris(previousP.X, previousP.Y, currentP.X, currentP.Y);
             previousP = currentP;
             currentP = panel_GL.PointToClient(MousePosition);
+        }
+
+        private void zoom_Bar_Scroll(object sender, EventArgs e)
+        {
+            previousZoom = currentZoom;
+            currentZoom = zoom_Bar.Value;
+            int deltaZoom = currentZoom - previousZoom;
+            if (deltaZoom < 0)
+                FonctionsNatives.zoomOut();
+            else
+                FonctionsNatives.zoomIn();
         }
 
 

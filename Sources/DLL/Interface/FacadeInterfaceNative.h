@@ -41,6 +41,7 @@ extern "C" {
 	__declspec(dllexport) void deplacerSelection(int x1, int y1, int x2, int y2);
 	__declspec(dllexport) void tournerSelectionSouris(int x1, int y1, int x2, int y2);
 	__declspec(dllexport) void zoomElastique(int xCoin1, int yCoin1, int xCoin2, int yCoin2);
+	__declspec(dllexport) float currentZoom(void);
 }
 
 #endif // __FACADE_INTERFACE_NATIVE_H__
