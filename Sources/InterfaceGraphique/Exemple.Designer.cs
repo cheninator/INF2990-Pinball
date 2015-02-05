@@ -262,6 +262,8 @@
             this.butoirD_bouton.Name = "butoirD_bouton";
             this.butoirD_bouton.Size = new System.Drawing.Size(100, 54);
             this.butoirD_bouton.TabIndex = 1;
+            this.butoirD_bouton.Text = "Droit";
+            this.butoirD_bouton.TextAlign = System.Drawing.ContentAlignment.TopLeft;
             this.butoirD_bouton.UseVisualStyleBackColor = true;
             this.butoirD_bouton.Click += new System.EventHandler(this.butoirD_bouton_Click);
             // 
@@ -273,6 +275,8 @@
             this.butoirG_bouton.Name = "butoirG_bouton";
             this.butoirG_bouton.Size = new System.Drawing.Size(101, 54);
             this.butoirG_bouton.TabIndex = 0;
+            this.butoirG_bouton.Text = "Gauche";
+            this.butoirG_bouton.TextAlign = System.Drawing.ContentAlignment.TopRight;
             this.butoirG_bouton.UseVisualStyleBackColor = true;
             this.butoirG_bouton.Click += new System.EventHandler(this.butoirG_bouton_Click);
             // 
@@ -297,6 +301,8 @@
             this.Mur_bouton.Name = "Mur_bouton";
             this.Mur_bouton.Size = new System.Drawing.Size(98, 48);
             this.Mur_bouton.TabIndex = 2;
+            this.Mur_bouton.Text = "Mur";
+            this.Mur_bouton.TextAlign = System.Drawing.ContentAlignment.TopRight;
             this.Mur_bouton.UseVisualStyleBackColor = false;
             this.Mur_bouton.Click += new System.EventHandler(this.Mur_bouton_Click);
             // 
@@ -309,6 +315,8 @@
             this.Portails_bouton.Name = "Portails_bouton";
             this.Portails_bouton.Size = new System.Drawing.Size(100, 54);
             this.Portails_bouton.TabIndex = 1;
+            this.Portails_bouton.Text = "Portail";
+            this.Portails_bouton.TextAlign = System.Drawing.ContentAlignment.TopRight;
             this.Portails_bouton.UseVisualStyleBackColor = false;
             this.Portails_bouton.Click += new System.EventHandler(this.Portails_bouton_Click);
             // 
@@ -321,6 +329,8 @@
             this.Cible_bouton.Name = "Cible_bouton";
             this.Cible_bouton.Size = new System.Drawing.Size(100, 54);
             this.Cible_bouton.TabIndex = 0;
+            this.Cible_bouton.Text = "Cible";
+            this.Cible_bouton.TextAlign = System.Drawing.ContentAlignment.TopRight;
             this.Cible_bouton.UseVisualStyleBackColor = false;
             this.Cible_bouton.Click += new System.EventHandler(this.Cible_bouton_Click);
             // 
@@ -345,6 +355,9 @@
             this.Trou_bouton.Name = "Trou_bouton";
             this.Trou_bouton.Size = new System.Drawing.Size(98, 48);
             this.Trou_bouton.TabIndex = 5;
+            this.Trou_bouton.Tag = "Hole";
+            this.Trou_bouton.Text = "Trou";
+            this.Trou_bouton.TextAlign = System.Drawing.ContentAlignment.TopRight;
             this.Trou_bouton.UseVisualStyleBackColor = false;
             this.Trou_bouton.Click += new System.EventHandler(this.Trou_bouton_Click);
             // 
@@ -357,6 +370,8 @@
             this.Generateur_bouton.Name = "Generateur_bouton";
             this.Generateur_bouton.Size = new System.Drawing.Size(100, 54);
             this.Generateur_bouton.TabIndex = 4;
+            this.Generateur_bouton.Text = "Generateur";
+            this.Generateur_bouton.TextAlign = System.Drawing.ContentAlignment.TopRight;
             this.Generateur_bouton.UseVisualStyleBackColor = false;
             this.Generateur_bouton.Click += new System.EventHandler(this.Generateur_bouton_Click);
             // 
@@ -369,6 +384,8 @@
             this.Ressort_bouton.Name = "Ressort_bouton";
             this.Ressort_bouton.Size = new System.Drawing.Size(100, 54);
             this.Ressort_bouton.TabIndex = 3;
+            this.Ressort_bouton.Text = "Ressort";
+            this.Ressort_bouton.TextAlign = System.Drawing.ContentAlignment.TopRight;
             this.Ressort_bouton.UseVisualStyleBackColor = false;
             this.Ressort_bouton.Click += new System.EventHandler(this.Ressort_bouton_Click);
             // 
@@ -418,7 +435,7 @@
             this.bouton_Creation.Name = "bouton_Creation";
             this.bouton_Creation.Size = new System.Drawing.Size(130, 24);
             this.bouton_Creation.TabIndex = 5;
-            this.bouton_Creation.Text = "Création";
+            this.bouton_Creation.Text = "Paneau Création";
             this.bouton_Creation.UseVisualStyleBackColor = true;
             this.bouton_Creation.Click += new System.EventHandler(this.bouton_Creation_Click);
             // 
@@ -440,6 +457,7 @@
             this.zoom_Bar.Name = "zoom_Bar";
             this.zoom_Bar.Size = new System.Drawing.Size(130, 40);
             this.zoom_Bar.TabIndex = 2;
+            this.zoom_Bar.TabStop = false;
             this.zoom_Bar.Value = 5;
             // 
             // bouton_Scaling
@@ -455,7 +473,6 @@
             // 
             // bouton_Rotation
             // 
-            this.bouton_Rotation.Enabled = true;
             this.bouton_Rotation.Location = new System.Drawing.Point(13, 86);
             this.bouton_Rotation.Name = "bouton_Rotation";
             this.bouton_Rotation.Size = new System.Drawing.Size(130, 24);
@@ -466,7 +483,6 @@
             // 
             // bouton_Deplacement
             // 
-            this.bouton_Deplacement.Enabled = true;
             this.bouton_Deplacement.Location = new System.Drawing.Point(13, 55);
             this.bouton_Deplacement.Name = "bouton_Deplacement";
             this.bouton_Deplacement.Size = new System.Drawing.Size(130, 24);
@@ -511,6 +527,7 @@
             this.Annuler_prop_boutn.Name = "Annuler_prop_boutn";
             this.Annuler_prop_boutn.Size = new System.Drawing.Size(65, 23);
             this.Annuler_prop_boutn.TabIndex = 9;
+            this.Annuler_prop_boutn.TabStop = false;
             this.Annuler_prop_boutn.Text = "Annuler";
             this.Annuler_prop_boutn.UseVisualStyleBackColor = true;
             this.Annuler_prop_boutn.Click += new System.EventHandler(this.Annuler_prop_boutn_Click);
@@ -521,6 +538,7 @@
             this.OK_prop_bouton.Name = "OK_prop_bouton";
             this.OK_prop_bouton.Size = new System.Drawing.Size(65, 23);
             this.OK_prop_bouton.TabIndex = 8;
+            this.OK_prop_bouton.TabStop = false;
             this.OK_prop_bouton.Text = "Accepter";
             this.OK_prop_bouton.UseVisualStyleBackColor = true;
             this.OK_prop_bouton.Click += new System.EventHandler(this.OK_prop_bouton_Click);
@@ -531,6 +549,7 @@
             this.Anglebox.Name = "Anglebox";
             this.Anglebox.Size = new System.Drawing.Size(51, 20);
             this.Anglebox.TabIndex = 5;
+            this.Anglebox.TabStop = false;
             this.Anglebox.Text = "0";
             // 
             // Angle_label
@@ -548,6 +567,7 @@
             this.FMEbox.Name = "FMEbox";
             this.FMEbox.Size = new System.Drawing.Size(51, 20);
             this.FMEbox.TabIndex = 7;
+            this.FMEbox.TabStop = false;
             this.FMEbox.Text = "1.0";
             // 
             // FME_label
@@ -565,6 +585,7 @@
             this.Ybox.Name = "Ybox";
             this.Ybox.Size = new System.Drawing.Size(51, 20);
             this.Ybox.TabIndex = 3;
+            this.Ybox.TabStop = false;
             this.Ybox.Text = "0";
             // 
             // Y_label
@@ -582,6 +603,7 @@
             this.Xbox.Name = "Xbox";
             this.Xbox.Size = new System.Drawing.Size(51, 20);
             this.Xbox.TabIndex = 1;
+            this.Xbox.TabStop = false;
             this.Xbox.Text = "0";
             // 
             // X_label
@@ -637,7 +659,7 @@
             // 
             this.Nouveau_MenuItem.Name = "Nouveau_MenuItem";
             this.Nouveau_MenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.N)));
-            this.Nouveau_MenuItem.Size = new System.Drawing.Size(198, 22);
+            this.Nouveau_MenuItem.Size = new System.Drawing.Size(230, 22);
             this.Nouveau_MenuItem.Text = "Nouveau";
             this.Nouveau_MenuItem.Click += new System.EventHandler(this.Nouveau_MenuItem_Click);
             // 
@@ -645,7 +667,7 @@
             // 
             this.Ouvrir_MenuItem.Name = "Ouvrir_MenuItem";
             this.Ouvrir_MenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.O)));
-            this.Ouvrir_MenuItem.Size = new System.Drawing.Size(198, 22);
+            this.Ouvrir_MenuItem.Size = new System.Drawing.Size(230, 22);
             this.Ouvrir_MenuItem.Text = "Ouvrir";
             this.Ouvrir_MenuItem.Click += new System.EventHandler(this.Ouvrir_MenuItem_Click);
             // 
@@ -653,7 +675,7 @@
             // 
             this.Enregistrer_MenuItem.Name = "Enregistrer_MenuItem";
             this.Enregistrer_MenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.S)));
-            this.Enregistrer_MenuItem.Size = new System.Drawing.Size(226, 22);
+            this.Enregistrer_MenuItem.Size = new System.Drawing.Size(230, 22);
             this.Enregistrer_MenuItem.Text = "Enregistrer";
             this.Enregistrer_MenuItem.Click += new System.EventHandler(this.Enregistrer_MenuItem_Click);
             // 
@@ -662,21 +684,21 @@
             this.EnregistrerS_MenuItem.Name = "EnregistrerS_MenuItem";
             this.EnregistrerS_MenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)(((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.Shift) 
             | System.Windows.Forms.Keys.S)));
-            this.EnregistrerS_MenuItem.Size = new System.Drawing.Size(226, 22);
+            this.EnregistrerS_MenuItem.Size = new System.Drawing.Size(230, 22);
             this.EnregistrerS_MenuItem.Text = "Enregistrer Sous";
             this.EnregistrerS_MenuItem.Click += new System.EventHandler(this.EnregistrerS_MenuItem_Click);
             // 
             // Proprietes_MenuItem
             // 
             this.Proprietes_MenuItem.Name = "Proprietes_MenuItem";
-            this.Proprietes_MenuItem.Size = new System.Drawing.Size(198, 22);
+            this.Proprietes_MenuItem.Size = new System.Drawing.Size(230, 22);
             this.Proprietes_MenuItem.Text = "Propriétés";
             this.Proprietes_MenuItem.Click += new System.EventHandler(this.Proprietes_MenuItem_Click);
             // 
             // ModeTest_MenuItem
             // 
             this.ModeTest_MenuItem.Name = "ModeTest_MenuItem";
-            this.ModeTest_MenuItem.Size = new System.Drawing.Size(198, 22);
+            this.ModeTest_MenuItem.Size = new System.Drawing.Size(230, 22);
             this.ModeTest_MenuItem.Text = "Mode Test";
             this.ModeTest_MenuItem.Click += new System.EventHandler(this.ModeTest_MenuItem_Click);
             // 
@@ -684,7 +706,7 @@
             // 
             this.MenuP_MenuItem.Name = "MenuP_MenuItem";
             this.MenuP_MenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.Q)));
-            this.MenuP_MenuItem.Size = new System.Drawing.Size(198, 22);
+            this.MenuP_MenuItem.Size = new System.Drawing.Size(230, 22);
             this.MenuP_MenuItem.Text = "Menu Principal";
             this.MenuP_MenuItem.Click += new System.EventHandler(this.MenuP_MenuItem_Click);
             // 
@@ -700,7 +722,7 @@
             // 
             this.Supprimer_MenuItem.Name = "Supprimer_MenuItem";
             this.Supprimer_MenuItem.ShortcutKeys = System.Windows.Forms.Keys.Delete;
-            this.Supprimer_MenuItem.Size = new System.Drawing.Size(167, 22);
+            this.Supprimer_MenuItem.Size = new System.Drawing.Size(153, 22);
             this.Supprimer_MenuItem.Text = "Supprimer";
             this.Supprimer_MenuItem.Click += new System.EventHandler(this.Supprimer_MenuItem_Click);
             // 

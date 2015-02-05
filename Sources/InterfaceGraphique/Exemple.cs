@@ -28,7 +28,8 @@ namespace InterfaceGraphique
 
         public int panelHeight;
         public int panelWidth;
-        
+        private bool ctrlDown = false;
+        private bool altDown = true;
         // private char state = 's';
         public List<int> propZJ = new List<int>{10,10,10,10,10,1};
         private float angleX = 0F;
@@ -46,11 +47,12 @@ namespace InterfaceGraphique
             // Pour le deplacement de la vue
             // besoin de nouveau event parce que C#....
             this.KeyDown += new KeyEventHandler(ToucheDown);
+            this.KeyUp += new KeyEventHandler(ToucheUp);
             this.Icon = Properties.Resources.Pinball;
             InitializeComponent();
             Program.peutAfficher = true;
             etat = new EtatNone(this);
-            panel_GL.Focus();
+            panel_GL.Focus();   
             InitialiserAnimation();
 
             panelHeight = panel_GL.Size.Height;
@@ -80,10 +82,21 @@ namespace InterfaceGraphique
             {
             }
         }
+
+        private void ToucheUp(Object o, KeyEventArgs e)
+        {
+            if (e.KeyData == Keys.Alt)
+            {
+                altDown = false;
+            }
+            if (e.KeyData == Keys.Control)
+            {
+                ctrlDown = false;
+            }
+        }
         private void ToucheDown(Object o, KeyEventArgs e)
         {
-            if (panel_GL.Focused)
-            {
+           
                 if ((e.KeyData == Keys.Subtract ||
                     e.KeyCode == Keys.OemMinus)
                     && zoom_Bar.Value > 0)
@@ -111,9 +124,13 @@ namespace InterfaceGraphique
                     FonctionsNatives.translater(0, -10);
                 if (e.Modifiers == Keys.Control)
                 {
-                    Console.WriteLine("CONTROL");
+                    ctrlDown = true;
                 }
-            }
+                if (e.Modifiers == Keys.Alt)
+                {
+                    altDown = true;
+                }
+            
         }
         private void ToucheEnfonce(Object o, KeyPressEventArgs e)
         {
@@ -149,6 +166,11 @@ namespace InterfaceGraphique
                 etat = new EtatScale(this);
                 
                 //state = 'e';
+            }
+            if( e.KeyChar == 'r')
+            {
+                etat = null;
+                etat = new EtatRotation(this);
             }
            
             if (e.KeyChar == 'z')
@@ -287,8 +309,6 @@ namespace InterfaceGraphique
             else
                 Creation_Panel.Visible = true;
 
-            etat = null;
-            etat = new EtatCreation(this);
         }
 
         private void panel_GL_MouseClick(object sender, MouseEventArgs e)
@@ -302,6 +322,7 @@ namespace InterfaceGraphique
 
         private void butourCirc_bouton_Click(object sender, EventArgs e)
         {
+            etat = new EtatCreation(this);
             Console.WriteLine("ButoirCirculaire");
             myObjectName = new StringBuilder("butoircirculaire");
             angleX = 0;
@@ -322,6 +343,7 @@ namespace InterfaceGraphique
 
         private void butoirG_bouton_Click(object sender, EventArgs e)
         {
+            etat = new EtatCreation(this);
             Console.WriteLine("Butoir Gauche.");
             myObjectName = new StringBuilder("butoir");
             angleX = 0;
@@ -413,8 +435,6 @@ namespace InterfaceGraphique
         }
         private void Annuler_prop_boutn_Click(object sender, EventArgs e)
         {
-            //myObjectName = new StringBuilder("vide");
-            //FonctionsNatives.resetObject();
             FonctionsNatives.removeObject();
         }
 
@@ -425,6 +445,7 @@ namespace InterfaceGraphique
 
         private void Ressort_bouton_Click(object sender, EventArgs e)
         {
+            etat = new EtatCreation(this);
             Console.WriteLine("Ressort");
             myObjectName = new StringBuilder("ressort");
             angleX = 0;
@@ -434,6 +455,7 @@ namespace InterfaceGraphique
 
         private void Generateur_bouton_Click(object sender, EventArgs e)
         {
+            etat = new EtatCreation(this);
             Console.WriteLine("Generateur");
             myObjectName = new StringBuilder("generateurbille");
             angleX = 0;
@@ -443,6 +465,8 @@ namespace InterfaceGraphique
 
         private void Trou_bouton_Click(object sender, EventArgs e)
         {
+            
+            etat = new EtatCreation(this);
             Console.WriteLine("Trou");
             myObjectName = new StringBuilder("trou");
             angleX = 0;
@@ -614,6 +638,7 @@ namespace InterfaceGraphique
 
         private void butoirD_bouton_Click(object sender, EventArgs e)
         {
+            etat = new EtatCreation(this);
             Console.WriteLine("Butoir Droit.");
             myObjectName = new StringBuilder("butoir");
             angleX = 0;
@@ -628,6 +653,7 @@ namespace InterfaceGraphique
 
         private void Cible_bouton_Click(object sender, EventArgs e)
         {
+            etat = new EtatCreation(this);
             Console.WriteLine("Cible.");
            myObjectName = new StringBuilder("cible");
             angleX = 0;
@@ -642,6 +668,7 @@ namespace InterfaceGraphique
 
         private void Portails_bouton_Click(object sender, EventArgs e)
         {
+            etat = new EtatCreation(this);
             Console.WriteLine("Portail");
             myObjectName = new StringBuilder("portail");
             angleX = 0;
@@ -656,6 +683,7 @@ namespace InterfaceGraphique
 
         private void Mur_bouton_Click(object sender, EventArgs e)
         {
+            etat = new EtatCreation(this);
             Console.WriteLine("Mur");
             myObjectName = new StringBuilder("mur");
             angleX = 0;
@@ -719,54 +747,12 @@ namespace InterfaceGraphique
         }
         private void panel_MouseMove(object sender, MouseEventArgs e)
         {
+            if (!(clickValide(origin, panel_GL.PointToClient(MousePosition))) && (etat is EtatSelection) && !(etat is EtatSelectionMultiple))
+            {
+                etat = new EtatSelectionMultiple(this);
+            }
             etat.traiterSouris(e);
-            //deplacementVueSouris(e);
-            /*if (state == 'v')
-            {
-                double deltaX = (-(currentP.X - previousP.X)) * 100.0 / panel_GL.Size.Width;
-                double deltaY = ((currentP.Y - previousP.Y)) * 100.0 / panel_GL.Size.Height;
-                FonctionsNatives.translater(deltaX, deltaY);
-
-                previousP.X = currentP.X;
-                previousP.Y = currentP.Y;
-                currentP.X = e.X;
-                currentP.Y = e.Y;
-            }
-
-            if (state == 'd')
-            {
-                int deltaX = (currentP.X - previousP.X) ;
-                int deltaY = -(currentP.Y - previousP.Y) ;
-                FonctionsNatives.translateObjet(deltaX, deltaY);
-
-                previousP.X = currentP.X;
-                previousP.Y = currentP.Y;
-                currentP.X = e.X;
-                currentP.Y = e.Y;
-            }
-
-
-            if (state == 'e')
-            {
-                int deltaY = -(currentP.Y - previousP.Y);
-                FonctionsNatives.addScaleObjet(deltaY);
-                previousP.Y = currentP.Y;
-                currentP.Y = e.Y;
-                
-            }
-
-
-            if (state == 'o')
-            {
-                int deltaX = (currentP.X - previousP.X);
-                int deltaY = -(currentP.Y - previousP.Y);
             
-                FonctionsNatives.orbite(deltaX, deltaY);
-
-                //phi = CLIP(phi, MINPHI, MAXPHI);
-                currentP.X = e.X;
-                currentP.Y = e.Y;
-            }*/
         }
 
         private void panel_GL_MouseUp(object sender, MouseEventArgs e)
@@ -775,24 +761,19 @@ namespace InterfaceGraphique
                          
             if (e.Button == MouseButtons.Left)
             {
-                Point destination = panel_GL.PointToClient(MousePosition);
+               Point destination = panel_GL.PointToClient(MousePosition);
                if (etat is EtatZoom)
                {
                    FonctionsNatives.zoomElastique(origin.X, origin.Y, destination.X, destination.Y);
+               }
+               if (etat is EtatSelectionMultiple)
+               {
+                   etat = new EtatSelection(this);
                }
                 if(clickValide(origin,destination))
                 {
                     
                     etat.traiterSouris(e);
-                    /*Afficher_Objet();
-                    FonctionsNatives.positionObjet(panel_GL.PointToClient(MousePosition).X, panel_GL.PointToClient(MousePosition).Y);
-                    FonctionsNatives.rotate(angleX, 'x');
-                    FonctionsNatives.rotate(angleY, 'y');
-                    FonctionsNatives.rotate(angleZ, 'z');
-                    FonctionsNatives.scaleObjet(scale);
-                    previousP.X = panel_GL.PointToClient(MousePosition).X;
-                    previousP.Y = panel_GL.PointToClient(MousePosition).Y;
-                    Console.WriteLine("Good Spawn");*/
                 }
             }
         }
@@ -801,20 +782,6 @@ namespace InterfaceGraphique
         {
             etat.traiterRoulette(e);
             
-            /*if (state == 'z')
-            {
-                if (e.Delta > 0 && zoom_Bar.Value < 10)
-                {
-                   
-                    FonctionsNatives.zoomIn();
-                    zoom_Bar.Value += 1;
-                }
-                else if (e.Delta < 0 && zoom_Bar.Value > 0)
-                {
-                        FonctionsNatives.zoomOut();
-                        zoom_Bar.Value -= 1;
-                }
-            }*/
         }
 
 
@@ -918,6 +885,8 @@ namespace InterfaceGraphique
             currentP = panel_GL.PointToClient(MousePosition);
         }
 
+
+   
 
 
 
