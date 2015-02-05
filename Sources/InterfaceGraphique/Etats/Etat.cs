@@ -220,7 +220,7 @@ namespace InterfaceGraphique
             
             if (e.Button == MouseButtons.Left)
             {
-                
+               
              /*
              * TO DO
              * Vous pouvez faire form_.selectionMultiple(e); ou le nom de la fonction voulue

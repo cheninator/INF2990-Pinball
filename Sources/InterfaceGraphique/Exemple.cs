@@ -747,7 +747,7 @@ namespace InterfaceGraphique
         }
         private void panel_MouseMove(object sender, MouseEventArgs e)
         {
-            if (!(clickValide(origin, panel_GL.PointToClient(MousePosition))) && !(etat is EtatSelectionMultiple))
+            if (!(clickValide(origin, panel_GL.PointToClient(MousePosition))) && (etat is EtatSelection) && !(etat is EtatSelectionMultiple))
             {
                 etat = new EtatSelectionMultiple(this);
             }
