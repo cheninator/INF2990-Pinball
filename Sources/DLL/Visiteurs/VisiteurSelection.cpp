@@ -38,6 +38,7 @@ VisiteurSelection::VisiteurSelection()
 ///
 ////////////////////////////////////////////////////////////////////////
 VisiteurSelection::VisiteurSelection(glm::dvec3 pointDansLeMonde, int valeurStencil)
+:nbObjetsSelectionne_{ 0 }
 {
 	pointDansLeMonde_ = pointDansLeMonde;
 	valeurStencil_ = valeurStencil;
@@ -132,8 +133,10 @@ bool VisiteurSelection::traiter(NoeudAbstrait* noeud)
 	}
 	else
 	{
-		noeud->assignerSelection(false);
+		// noeud->assignerSelection(false);
 	}
+
+	if (noeud->estSelectionne()) nbObjetsSelectionne_++;
 
 	return true;
 

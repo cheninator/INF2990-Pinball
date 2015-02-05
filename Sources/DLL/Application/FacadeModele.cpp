@@ -376,7 +376,7 @@ void FacadeModele::animer(float temps)
 /// @return NoeudAbstrait.
 ///
 ////////////////////////////////////////////////////////////////////////
-NoeudAbstrait* FacadeModele::trouverObjetSousPointClique(int i, int j, int hauteur, int largeur)
+int FacadeModele::trouverObjetSousPointClique(int i, int j, int hauteur, int largeur)
 {
 	glm::dvec3 pointDansLeMonde;
 	vue_->convertirClotureAVirtuelle(i, j, pointDansLeMonde);
@@ -400,7 +400,7 @@ NoeudAbstrait* FacadeModele::trouverObjetSousPointClique(int i, int j, int haute
 	arbre_->accepterVisiteur(&visSel);
 	// Demander au visiteur ce qu'il a trouvé et faire quelque chose en conséquence
 
-	return 0;
+	return visSel.obtenirNbObjetsSelectionne();
 }
 
 

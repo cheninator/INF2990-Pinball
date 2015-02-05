@@ -991,7 +991,7 @@ namespace InterfaceGraphique
         public static extern IntPtr ouvrirXML(StringBuilder path, int taille);
 
         [DllImport(@"Noyau.dll", CallingConvention = CallingConvention.Cdecl)]
-        public static extern void trouverObjetSousPointClique(int i, int j,int largeur, int hauteur);
+        public static extern int trouverObjetSousPointClique(int i, int j,int largeur, int hauteur);
 
         [DllImport(@"Noyau.dll", CallingConvention = CallingConvention.Cdecl)]
         public static extern void zoomIn();

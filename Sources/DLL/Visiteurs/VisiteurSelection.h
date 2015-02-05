@@ -41,6 +41,8 @@ public:
 	virtual bool traiter(NoeudAbstrait* noeud);
 	virtual bool VisiteurSelection::traiter(NoeudTable* table);
 
+	int obtenirNbObjetsSelectionne(){ return nbObjetsSelectionne_; }
+
 private:
 	
 	// Ne touchez pas au constructeur par défaut
@@ -50,6 +52,8 @@ private:
 	glm::dvec3 pointDansLeMonde_;
 
 	int valeurStencil_;
+
+	int nbObjetsSelectionne_;
 };
 
 
