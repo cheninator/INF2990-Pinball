@@ -43,6 +43,7 @@ namespace InterfaceGraphique
 
         public Exemple()
         {
+            this.KeyPreview = true;
             this.KeyPress += new KeyPressEventHandler(ToucheEnfonce);
             // Pour le deplacement de la vue
             // besoin de nouveau event parce que C#....
@@ -83,17 +84,7 @@ namespace InterfaceGraphique
             }
         }
 
-        private void ToucheUp(Object o, KeyEventArgs e)
-        {
-            if (e.KeyData == Keys.Alt)
-            {
-                altDown = false;
-            }
-            if (e.KeyData == Keys.Control)
-            {
-                ctrlDown = false;
-            }
-        }
+       
         private void ToucheDown(Object o, KeyEventArgs e)
         {
            
@@ -125,12 +116,28 @@ namespace InterfaceGraphique
                 if (e.Modifiers == Keys.Control)
                 {
                     ctrlDown = true;
+                  
                 }
-                if (e.Modifiers == Keys.Alt)
+                if (e.Alt)
                 {
+                    e.Handled = true;
+                   
                     altDown = true;
                 }
             
+        }
+
+        private void ToucheUp(Object o, KeyEventArgs e)
+        {
+           
+            if (e.KeyData.ToString() == "Menu")
+            {
+                altDown = false;
+            }   
+            if (e.KeyData.ToString() == "ControlKey")
+            {
+                ctrlDown = false;
+            }
         }
         private void ToucheEnfonce(Object o, KeyPressEventArgs e)
         {
