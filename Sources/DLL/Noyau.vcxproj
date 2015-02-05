@@ -157,6 +157,7 @@
     <ClCompile Include="Visiteurs\VisiteurCentreDeMasse.cpp" />
     <ClCompile Include="Visiteurs\VisiteurDeplacement.cpp" />
     <ClCompile Include="Visiteurs\VisiteurRotation.cpp" />
+    <ClCompile Include="Visiteurs\VisiteurRotationPoint.cpp" />
     <ClCompile Include="Visiteurs\VisiteurSelection.cpp" />
     <ClCompile Include="Visiteurs\VisiteurXML.cpp" />
   </ItemGroup>
@@ -205,6 +206,7 @@
     <ClInclude Include="Visiteurs\VisiteurCentreDeMasse.h" />
     <ClInclude Include="Visiteurs\VisiteurDeplacement.h" />
     <ClInclude Include="Visiteurs\VisiteurRotation.h" />
+    <ClInclude Include="Visiteurs\VisiteurRotationPoint.h" />
     <ClInclude Include="Visiteurs\VisiteurSelection.h" />
     <ClInclude Include="Visiteurs\VisiteurXML.h" />
   </ItemGroup>
