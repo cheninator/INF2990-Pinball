@@ -376,13 +376,13 @@ void FacadeModele::animer(float temps)
 /// @return NoeudAbstrait.
 ///
 ////////////////////////////////////////////////////////////////////////
-int FacadeModele::trouverObjetSousPointClique(int i, int j, int hauteur, int largeur)
+int FacadeModele::selectionnerObjetSousPointClique(int i, int j, int hauteur, int largeur)
 {
 	glm::dvec3 pointDansLeMonde;
 	vue_->convertirClotureAVirtuelle(i, j, pointDansLeMonde);
 	std::cout << "Position du click dans l'ecran : (" << i << ", " << j << ")" << std::endl;
 
-	FacadeModele::obtenirInstance()->obtenirVue()->convertirClotureAVirtuelle(i, j, pointDansLeMonde);
+	vue_->convertirClotureAVirtuelle(i, j, pointDansLeMonde);
 	std::cout << "Position du click dans le monde : (" << pointDansLeMonde.x << ", " << pointDansLeMonde.y << ", 0)" << std::endl;
 	
 
@@ -399,7 +399,6 @@ int FacadeModele::trouverObjetSousPointClique(int i, int j, int hauteur, int lar
 	// Passer le visisteur a l<arbre
 	arbre_->accepterVisiteur(&visSel);
 	// Demander au visiteur ce qu'il a trouvé et faire quelque chose en conséquence
-
 	return visSel.obtenirNbObjetsSelectionne();
 }
 

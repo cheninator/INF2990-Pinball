@@ -65,7 +65,7 @@ public:
    void animer(float temps);
 
 
-   int trouverObjetSousPointClique(int i, int j, int largeur, int hauteur);
+   int selectionnerObjetSousPointClique(int i, int j, int largeur, int hauteur);
 
    /// Deplacement des noeuds selectionnés dans l'arbre de rendu.
    void deplacerSelection(int x1, int y1, int x2, int y2);

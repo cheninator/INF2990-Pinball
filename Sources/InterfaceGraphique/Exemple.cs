@@ -861,7 +861,7 @@ namespace InterfaceGraphique
         public void selection(MouseEventArgs e) 
         {
             // TODO PHIL : Faire que ceci n'arrive que quand on relâche le bouton de gauche et qu'on n'a pas bougé de plus de 3 pixels.
-            FonctionsNatives.trouverObjetSousPointClique(panel_GL.PointToClient(MousePosition).X, panel_GL.PointToClient(MousePosition).Y,panel_GL.Height , panel_GL.Height);
+            FonctionsNatives.selectionnerObjetSousPointClique(panel_GL.PointToClient(MousePosition).X, panel_GL.PointToClient(MousePosition).Y, panel_GL.Height, panel_GL.Height);
 
         }
 
@@ -991,7 +991,7 @@ namespace InterfaceGraphique
         public static extern IntPtr ouvrirXML(StringBuilder path, int taille);
 
         [DllImport(@"Noyau.dll", CallingConvention = CallingConvention.Cdecl)]
-        public static extern int trouverObjetSousPointClique(int i, int j,int largeur, int hauteur);
+        public static extern int selectionnerObjetSousPointClique(int i, int j, int largeur, int hauteur);
 
         [DllImport(@"Noyau.dll", CallingConvention = CallingConvention.Cdecl)]
         public static extern void zoomIn();
