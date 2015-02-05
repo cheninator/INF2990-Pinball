@@ -461,7 +461,7 @@ void FacadeModele::tournerSelectionSouris(int x1, int y1, int x2, int y2)
 	arbre_->accepterVisiteur(&visCM);
 
 	centreRotation = visCM.obtenirCentreDeMasse();
-	std::cout << "Centre de masse : " << centreRotation.x << ", " << centreRotation.y << std::endl;
+	// std::cout << "Centre de masse : " << centreRotation.x << ", " << centreRotation.y << std::endl;
 
 	 // Faire un visiteurRotation plus sophistiqué qui va tourner les noeuds visités autour du point donné.
 		// Déterminer l'angle à tourner en 

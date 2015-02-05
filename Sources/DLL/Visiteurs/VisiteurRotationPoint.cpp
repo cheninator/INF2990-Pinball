@@ -121,14 +121,14 @@ bool VisiteurRotationPoint::traiter(NoeudAbstrait* noeud)
 			// Changer la position du noeud
 			glm::dvec3 positionInitiale = noeud->obtenirPositionRelative();
 			glm::dvec3 vecteurInitial = positionInitiale - centreRotation_;
-			std::cout << "VecteurInitial: " << vecteurInitial.x << ", " << vecteurInitial.y << std::endl;
+			// std::cout << "VecteurInitial: " << vecteurInitial.x << ", " << vecteurInitial.y << std::endl;
 			double angleEnRadian = -angles_[2] * 2 * 3.14156 / 360;
 			glm::dmat3 transform = glm::dmat3{ glm::dvec3{ cos(angleEnRadian), -sin(angleEnRadian), 0.0 },
 												glm::dvec3{ sin(angleEnRadian), cos(angleEnRadian), 0.0f },
 												glm::dvec3{       0.0      ,       0.0        , 1.0 } };
 
 			glm::dvec3 vecteurFinal = transform * vecteurInitial;
-			std::cout << "VecteurFinal: " << vecteurFinal.x << ", " << vecteurFinal.y << std::endl;
+			// std::cout << "VecteurFinal: " << vecteurFinal.x << ", " << vecteurFinal.y << std::endl;
 			glm::dvec3 positionFinale = centreRotation_ + vecteurFinal;
 
 			noeud->assignerPositionRelative(positionFinale);

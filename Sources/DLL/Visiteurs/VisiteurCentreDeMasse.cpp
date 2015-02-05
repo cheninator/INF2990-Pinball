@@ -91,7 +91,7 @@ bool VisiteurCentreDeMasse::traiter(NoeudAbstrait* noeud)
 		
 		centreDeMasse_ += noeud->obtenirPositionRelative();
 		nbNoeuds_++;
-		std::cout << "VisiteurCentreDeMasse::nbNoeuds_  : " << nbNoeuds_ << std::endl;
+		// std::cout << "VisiteurCentreDeMasse::nbNoeuds_  : " << nbNoeuds_ << std::endl;
 	}
 
 	return true;
