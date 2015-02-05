@@ -25,7 +25,7 @@
 
 #include "FacadeModele.h"
 
-// Voulait vraiment pas marcher sans que je mette le chemin.
+
 #include "../Visiteurs/VisiteurSelection.h"
 #include "../Visiteurs/VisiteurDeplacement.h"
 #include "../Visiteurs/VisiteurRotation.h"
@@ -437,38 +437,28 @@ void FacadeModele::deplacerSelection(int x1, int y1 ,int x2, int y2)
 
 void FacadeModele::tournerSelectionSouris(int x1, int y1, int x2, int y2)
 {
+	
+
+	// Visiter l'arbre pour trouver le centre de masse des noeuds selectionnés
+	glm::dvec3 centreRotation{ 0, 0, 0 };
+	VisiteurCentreDeMasse visCM;
+	arbre_->accepterVisiteur(&visCM);
+	centreRotation = visCM.obtenirCentreDeMasse();
+
+	// Calcul de l'angle de rotation
 	glm::dvec3 positionInitiale, positionFinale;
-
-
 	FacadeModele::obtenirInstance()->obtenirVue()->convertirClotureAVirtuelle(x1, y1, positionInitiale);
 	FacadeModele::obtenirInstance()->obtenirVue()->convertirClotureAVirtuelle(x2, y2, positionFinale);
 
-	// Calculer l'angle correspondant à donner au visiteur
-	glm::dvec3 angles{ 0, 0, (y2 - y1) /2.0 }; // Pas super ...
+	glm::dvec3 vecteurInitial = positionInitiale - centreRotation;
+	glm::dvec3 vecteurFinal = positionFinale - centreRotation;
+	glm::dvec3 produitVectoriel = glm::cross(vecteurInitial, vecteurFinal);
 
-	//VisiteurRotation visRot(angles);
-	//arbre_->accepterVisiteur(&visRot);
+	double sinAngle = glm::length(produitVectoriel) / glm::length(vecteurInitial) / glm::length(vecteurInitial);
+	double angle = produitVectoriel.z > 0 ? asin(sinAngle) : -asin(sinAngle);
 
-
-	// Autre possiblité
-
-	// Commencer par trouver un centre de rotation 
-	glm::dvec3 centreRotation{ 0, 0, 0 };
-
-	// Visiter l'arbre pour trouver le centre de masse des noeuds selectionnés
-	VisiteurCentreDeMasse visCM;
-	arbre_->accepterVisiteur(&visCM);
-
-	centreRotation = visCM.obtenirCentreDeMasse();
-	// std::cout << "Centre de masse : " << centreRotation.x << ", " << centreRotation.y << std::endl;
-
-	 // Faire un visiteurRotation plus sophistiqué qui va tourner les noeuds visités autour du point donné.
-		// Déterminer l'angle à tourner en 
-	 
+	// Visiter l'arbre et faire la rotation.
+	glm::dvec3 angles{ 0, 0,360 / 2 / 3.14156 * angle};
 	VisiteurRotationPoint visSP(angles, centreRotation);
 	arbre_->accepterVisiteur(&visSP);
-		// VisiteurRotationPoint(angles, point) 
-			// Si on tourne un noeud autour d'un point, on ajuste sa position et son orientation.
-		
-
 }
