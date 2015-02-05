@@ -550,7 +550,7 @@ extern "C"
 	/// @return Aucun
 	///
 	////////////////////////////////////////////////////////////////////////
-	__declspec(dllexport) void zoomElastique(int xCoin1, int yCoin1, int xCoin2, int yCoin2)
+	__declspec(dllexport) void zoomInElastique(int xCoin1, int yCoin1, int xCoin2, int yCoin2)
 	{
 		glm::dvec3 positionSouris1(xCoin1, yCoin1, 0.0);
 		glm::dvec3 positionSouris2(xCoin2, yCoin2, 0.0);
@@ -564,6 +564,31 @@ extern "C"
 
 }
 
+////////////////////////////////////////////////////////////////////////
+///
+/// @fn __declspec(dllexport) void zoomElastique(int xCoin1, int yCoin1, int xCoin2, int yCoin2)
+///
+/// @param[in]  xCoin1 :
+/// @param[in]  yCoin1 :
+/// @param[in]  xCoin2 :
+/// @param[in]  yCoin2 : 
+///
+/// Permet de centrer l'écran sur la région définie par les points passés
+///
+/// @return Aucun
+///
+////////////////////////////////////////////////////////////////////////
+__declspec(dllexport) void zoomOutElastique(int xCoin1, int yCoin1, int xCoin2, int yCoin2)
+{
+	glm::dvec3 positionSouris1(xCoin1, yCoin1, 0.0);
+	glm::dvec3 positionSouris2(xCoin2, yCoin2, 0.0);
+	FacadeModele::obtenirInstance()->obtenirVue()->convertirClotureAVirtuelle(xCoin1, yCoin1, positionSouris1);
+	FacadeModele::obtenirInstance()->obtenirVue()->convertirClotureAVirtuelle(xCoin2, yCoin2, positionSouris2);
+
+	glm::ivec2 coin1(positionSouris1.x, positionSouris1.y);
+	glm::ivec2 coin2(positionSouris2.x, positionSouris2.y);
+	FacadeModele::obtenirInstance()->obtenirVue()->zoomerOutElastique(coin1, coin2);
+}
 
 ///////////////////////////////////////////////////////////////////////////////
 ///

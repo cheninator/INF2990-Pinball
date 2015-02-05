@@ -764,7 +764,7 @@ namespace InterfaceGraphique
                Point destination = panel_GL.PointToClient(MousePosition);
                if (etat is EtatZoom)
                {
-                   FonctionsNatives.zoomElastique(origin.X, origin.Y, destination.X, destination.Y);
+                  FonctionsNatives.zoomOutElastique(origin.X, origin.Y, destination.X, destination.Y);
                }
                if (etat is EtatSelectionMultiple)
                {
@@ -992,6 +992,9 @@ namespace InterfaceGraphique
         public static extern void tournerSelectionSouris(int x1, int y1, int x2, int y2);
 
         [DllImport(@"Noyau.dll", CallingConvention = CallingConvention.Cdecl)]
-        public static extern void zoomElastique(int xCoin1, int yCoin1, int xCoin2, int yCoin2);
+        public static extern void zoomInElastique(int xCoin1, int yCoin1, int xCoin2, int yCoin2);
+
+        [DllImport(@"Noyau.dll", CallingConvention = CallingConvention.Cdecl)]
+        public static extern void zoomOutElastique(int xCoin1, int yCoin1, int xCoin2, int yCoin2);
     }
 }

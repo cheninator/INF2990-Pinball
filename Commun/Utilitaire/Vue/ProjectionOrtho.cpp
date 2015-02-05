@@ -275,6 +275,29 @@ namespace vue {
 	void ProjectionOrtho::zoomerOut(const glm::ivec2& coin1, const glm::ivec2& coin2)
 	{
 		// À IMPLANTER.
+		const double longueurFenetreActuelle = (xMaxFenetre_ - xMinFenetre_);
+		const double xGaucheCoin = (coin1.x < coin2.x ? coin1.x : coin2.x);
+		const double xDroiteCoin = (coin1.x > coin2.x ? coin1.x : coin2.x);
+		const double ratioSelectionFenetreActuelle = (xDroiteCoin - xGaucheCoin) / longueurFenetreActuelle;
+
+
+
+		double longueurFenetreSelection = abs(xDroiteCoin - xGaucheCoin);
+		double nouvelleLongueurX = longueurFenetreActuelle / ratioSelectionFenetreActuelle;
+		double proportionRelativeCoinGauche = (xGaucheCoin - xMinFenetre_) / longueurFenetreActuelle;
+
+		// On place notre fenetre virtuelle a la longueur proportionnelle
+		double nouveauXMinFenetre = (xMinFenetre_) - (proportionRelativeCoinGauche)* (nouvelleLongueurX);
+		double nouveauXMaxFenetre = xMaxFenetre_ + (nouveauXMinFenetre + (proportionRelativeCoinGauche + ratioSelectionFenetreActuelle) * nouvelleLongueurX);
+
+		double nouveauYMinFenetre = (coin1.y < coin2.y ? coin1.y : coin2.y);
+		double nouveauYMaxFenetre = (coin1.y > coin2.y ? coin1.y : coin2.y);
+
+		xMinFenetre_ = nouveauXMinFenetre;
+		xMaxFenetre_ = nouveauXMaxFenetre;
+		yMinFenetre_ = nouveauYMinFenetre;
+		yMaxFenetre_ = nouveauXMaxFenetre;
+		//ajusterRapportAspect();
 	}
 
 
