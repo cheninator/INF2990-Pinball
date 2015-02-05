@@ -453,6 +453,7 @@
             // zoom_Bar
             // 
             this.zoom_Bar.AutoSize = false;
+            this.zoom_Bar.Enabled = false;
             this.zoom_Bar.Location = new System.Drawing.Point(13, 226);
             this.zoom_Bar.Name = "zoom_Bar";
             this.zoom_Bar.Size = new System.Drawing.Size(130, 40);
@@ -700,6 +701,7 @@
             // ModeTest_MenuItem
             // 
             this.ModeTest_MenuItem.Name = "ModeTest_MenuItem";
+            this.ModeTest_MenuItem.ShortcutKeyDisplayString = "t";
             this.ModeTest_MenuItem.Size = new System.Drawing.Size(230, 22);
             this.ModeTest_MenuItem.Text = "Mode Test";
             this.ModeTest_MenuItem.Click += new System.EventHandler(this.ModeTest_MenuItem_Click);
@@ -717,6 +719,7 @@
             this.Edition_MenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.Supprimer_MenuItem});
             this.Edition_MenuItem.Name = "Edition_MenuItem";
+            this.Edition_MenuItem.ShortcutKeyDisplayString = "Delete";
             this.Edition_MenuItem.Size = new System.Drawing.Size(56, 20);
             this.Edition_MenuItem.Text = "Édition";
             // 
@@ -745,36 +748,40 @@
             // Selection_MenuItem
             // 
             this.Selection_MenuItem.Name = "Selection_MenuItem";
-            this.Selection_MenuItem.Size = new System.Drawing.Size(186, 22);
+            this.Selection_MenuItem.ShortcutKeyDisplayString = "s";
+            this.Selection_MenuItem.Size = new System.Drawing.Size(164, 22);
             this.Selection_MenuItem.Text = "Sélection";
             this.Selection_MenuItem.Click += new System.EventHandler(this.Selection_MenuItem_Click);
             // 
             // Deplacement_MenuItem
             // 
             this.Deplacement_MenuItem.Name = "Deplacement_MenuItem";
-            this.Deplacement_MenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.D)));
-            this.Deplacement_MenuItem.Size = new System.Drawing.Size(186, 22);
+            this.Deplacement_MenuItem.ShortcutKeyDisplayString = "d";
+            this.Deplacement_MenuItem.Size = new System.Drawing.Size(164, 22);
             this.Deplacement_MenuItem.Text = "Déplacement";
             this.Deplacement_MenuItem.Click += new System.EventHandler(this.Deplacement_MenuItem_Click);
             // 
             // Rotation_MenuItem
             // 
             this.Rotation_MenuItem.Name = "Rotation_MenuItem";
-            this.Rotation_MenuItem.Size = new System.Drawing.Size(186, 22);
+            this.Rotation_MenuItem.ShortcutKeyDisplayString = "r";
+            this.Rotation_MenuItem.Size = new System.Drawing.Size(164, 22);
             this.Rotation_MenuItem.Text = "Rotation";
             this.Rotation_MenuItem.Click += new System.EventHandler(this.Rotation_MenuItem_Click);
             // 
             // MiseE_MenuItem
             // 
             this.MiseE_MenuItem.Name = "MiseE_MenuItem";
-            this.MiseE_MenuItem.Size = new System.Drawing.Size(186, 22);
+            this.MiseE_MenuItem.ShortcutKeyDisplayString = "e";
+            this.MiseE_MenuItem.Size = new System.Drawing.Size(164, 22);
             this.MiseE_MenuItem.Text = "Mise à échelle";
             this.MiseE_MenuItem.Click += new System.EventHandler(this.MiseE_MenuItem_Click);
             // 
             // Duplication_MenuItem
             // 
             this.Duplication_MenuItem.Name = "Duplication_MenuItem";
-            this.Duplication_MenuItem.Size = new System.Drawing.Size(186, 22);
+            this.Duplication_MenuItem.ShortcutKeyDisplayString = "c";
+            this.Duplication_MenuItem.Size = new System.Drawing.Size(164, 22);
             this.Duplication_MenuItem.Text = "Duplication";
             this.Duplication_MenuItem.Click += new System.EventHandler(this.Duplication_MenuItem_Click);
             // 
@@ -795,7 +802,7 @@
             this.GB_MenuItem,
             this.Trou_MenuItem});
             this.Creation_MenuItem.Name = "Creation_MenuItem";
-            this.Creation_MenuItem.Size = new System.Drawing.Size(186, 22);
+            this.Creation_MenuItem.Size = new System.Drawing.Size(164, 22);
             this.Creation_MenuItem.Text = "Création d\'objets";
             this.Creation_MenuItem.Click += new System.EventHandler(this.Creation_MenuItem_Click);
             // 
@@ -893,7 +900,8 @@
             // Zoom_MenuItem
             // 
             this.Zoom_MenuItem.Name = "Zoom_MenuItem";
-            this.Zoom_MenuItem.Size = new System.Drawing.Size(186, 22);
+            this.Zoom_MenuItem.ShortcutKeyDisplayString = "z";
+            this.Zoom_MenuItem.Size = new System.Drawing.Size(164, 22);
             this.Zoom_MenuItem.Text = "Zoom";
             this.Zoom_MenuItem.Click += new System.EventHandler(this.Zoom_MenuItem_Click);
             // 
@@ -909,14 +917,16 @@
             // Orthographique_MenuItem
             // 
             this.Orthographique_MenuItem.Name = "Orthographique_MenuItem";
-            this.Orthographique_MenuItem.Size = new System.Drawing.Size(159, 22);
+            this.Orthographique_MenuItem.ShortcutKeyDisplayString = "1";
+            this.Orthographique_MenuItem.Size = new System.Drawing.Size(172, 22);
             this.Orthographique_MenuItem.Text = "Orthographique";
             this.Orthographique_MenuItem.Click += new System.EventHandler(this.Orthographique_MenuItem_Click);
             // 
             // Orbite_MenuItem
             // 
             this.Orbite_MenuItem.Name = "Orbite_MenuItem";
-            this.Orbite_MenuItem.Size = new System.Drawing.Size(159, 22);
+            this.Orbite_MenuItem.ShortcutKeyDisplayString = "2";
+            this.Orbite_MenuItem.Size = new System.Drawing.Size(172, 22);
             this.Orbite_MenuItem.Text = "Orbite";
             this.Orbite_MenuItem.Click += new System.EventHandler(this.Orbite_MenuItem_Click);
             // 

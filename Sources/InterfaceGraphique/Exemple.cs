@@ -541,12 +541,12 @@ namespace InterfaceGraphique
         {
             Console.WriteLine("Outil Zoom.");
             // TO DO
-
+            /*
             if (zoom_Bar.Enabled)
                 zoom_Bar.Enabled = false;
             else
                 zoom_Bar.Enabled = true;
-
+            */
             etat = null;
             etat = new EtatZoom(this);
         }
