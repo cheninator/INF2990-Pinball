@@ -25,7 +25,7 @@ void NoeudTable::afficherConcret() const
 	// Sauvegarde de la matrice.
 	glPushMatrix();
 	glTranslatef(200, -50, 0);
-	//glRotatef(-90, 0, 0, 1);
+	//glRotatef(180, 0, 0, 1);
 	// Affichage du modèle.
 	glStencilFunc(GL_ALWAYS, 0, -1);
 	liste_->dessiner();
