@@ -30,9 +30,7 @@ namespace InterfaceGraphique
         {
             int n;
             bool isValid = true;
-            DataTable dt = new DataTable();
-            //try { ptsButCirc_Box.Text = dt.Compute(ptsButCirc_Box.Text, "").ToString(); }
-            //catch { Console.WriteLine("false");; }
+          
             if( !(int.TryParse(ptsButCirc_Box.Text, out n))){
                 isValid = false;
                 errorMessage += "\n La valeur de butoir circulaire est invalide";

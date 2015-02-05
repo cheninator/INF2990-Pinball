@@ -243,16 +243,23 @@ namespace InterfaceGraphique
 
         private void EnregistrerSous()
         {
-            SaveFileDialog enregistrer_fichier = new SaveFileDialog();
-            enregistrer_fichier.Filter = "Fichier XML(*.xml)| *.xml| All files(*.*)|*.*";
-            enregistrer_fichier.ShowDialog();
-            pathXML = new StringBuilder(enregistrer_fichier.FileName);
+            if (true)
+            {
+                MessageBox.Show("INSERT MESSAGE HERE", "messsage d'erreur",
+               MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            else
+            {
+                SaveFileDialog enregistrer_fichier = new SaveFileDialog();
+                enregistrer_fichier.Filter = "Fichier XML(*.xml)| *.xml| All files(*.*)|*.*";
+                enregistrer_fichier.ShowDialog();
+                pathXML = new StringBuilder(enregistrer_fichier.FileName);
 
-            for(int i = 0; i < 6; i++)
-                prop[i] = propZJ[i];
+                for (int i = 0; i < 6; i++)
+                    prop[i] = propZJ[i];
 
-            FonctionsNatives.creerXML(pathXML, pathXML.Capacity, prop);
-
+                FonctionsNatives.creerXML(pathXML, pathXML.Capacity, prop);
+            }
         }
 
         private void helpToolStripButton_Click(object sender, EventArgs e)
