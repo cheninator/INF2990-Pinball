@@ -45,11 +45,9 @@ namespace InterfaceGraphique
             Application.Idle += ExecuterQuandInactif;
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-           // menu = new mm();
+          
             mMenu = new MainMenu();
-           // exemple = new Exemple();
-              
-                      
+                            
             Application.Run(mMenu);
 
         

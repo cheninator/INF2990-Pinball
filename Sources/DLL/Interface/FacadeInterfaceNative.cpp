@@ -466,7 +466,8 @@ extern "C"
 	////////////////////////////////////////////////////////////////////////
 	__declspec(dllexport) void __cdecl translater(double deplacementX, double deplacementY)
 	{
-		FacadeModele::obtenirInstance()->obtenirVue()->deplacerXY(deplacementX, deplacementY);
+	
+	FacadeModele::obtenirInstance()->obtenirVue()->deplacerXY(deplacementX, deplacementY);
 	}
 
 
