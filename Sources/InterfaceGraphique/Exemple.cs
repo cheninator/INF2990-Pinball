@@ -243,12 +243,15 @@ namespace InterfaceGraphique
 
         private void EnregistrerSous()
         {
-            if (true)
+            int sauvegarde = FonctionsNatives.creerXML(pathXML, pathXML.Capacity, prop);
+
+            if (sauvegarde == 0)
             {
-                MessageBox.Show("INSERT MESSAGE HERE", "messsage d'erreur",
-               MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Il doit avoir au moins un trou, un générateur de bille et un ressort dans la zone de jeu!", "ERREUR DE SAUVEGARDE",
+                MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
-            else
+
+            else if (sauvegarde == 1)
             {
                 SaveFileDialog enregistrer_fichier = new SaveFileDialog();
                 enregistrer_fichier.Filter = "Fichier XML(*.xml)| *.xml| All files(*.*)|*.*";
@@ -260,7 +263,14 @@ namespace InterfaceGraphique
 
                 FonctionsNatives.creerXML(pathXML, pathXML.Capacity, prop);
             }
-        }
+
+            else
+            {
+                MessageBox.Show("Vous ne pouvez pas sauvegarder la zone de jeu par défaut. Rajoutez des objets!", "ERREUR DE SAUVEGARDE",
+                MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+
+        } 
 
         private void helpToolStripButton_Click(object sender, EventArgs e)
         {
@@ -975,7 +985,7 @@ namespace InterfaceGraphique
         public static extern void translater(double deplacementX, double deplacementY);
 
         [DllImport(@"Noyau.dll", CallingConvention = CallingConvention.Cdecl)]
-        public static extern void creerXML(StringBuilder path, int taille, int[] prop);
+        public static extern int creerXML(StringBuilder path, int taille, int[] prop);
 
         [DllImport(@"Noyau.dll", CallingConvention = CallingConvention.Cdecl)]
         public static extern IntPtr ouvrirXML(StringBuilder path, int taille);

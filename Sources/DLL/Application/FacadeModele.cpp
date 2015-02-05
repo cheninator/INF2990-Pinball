@@ -403,6 +403,7 @@ NoeudAbstrait* FacadeModele::trouverObjetSousPointClique(int i, int j, int haute
 	return 0;
 }
 
+
 ///////////////////////////////////////////////////////////////////////////////
 ///
 /// @fn void deplacerSelection(int x1, int y1, int x2, int y2)
@@ -432,7 +433,6 @@ void FacadeModele::deplacerSelection(int x1, int y1 ,int x2, int y2)
 	arbre_->accepterVisiteur(&visDep);
 
 }
-
 
 
 
