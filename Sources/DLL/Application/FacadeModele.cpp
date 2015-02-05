@@ -30,7 +30,7 @@
 #include "../Visiteurs/VisiteurDeplacement.h"
 #include "../Visiteurs/VisiteurRotation.h"
 #include "../Visiteurs/VisiteurCentreDeMasse.h"
-// #include "../Visiteurs/VisiteurRotationPoint.h"
+#include "../Visiteurs/VisiteurRotationPoint.h"
 
 #include "VueOrtho.h"
 #include "Camera.h"
@@ -447,8 +447,8 @@ void FacadeModele::tournerSelectionSouris(int x1, int y1, int x2, int y2)
 	// Calculer l'angle correspondant à donner au visiteur
 	glm::dvec3 angles{ 0, 0, (y2 - y1) /2.0 }; // Pas super ...
 
-	VisiteurRotation visRot(angles);
-	arbre_->accepterVisiteur(&visRot);
+	//VisiteurRotation visRot(angles);
+	//arbre_->accepterVisiteur(&visRot);
 
 
 	// Autre possiblité
@@ -466,6 +466,8 @@ void FacadeModele::tournerSelectionSouris(int x1, int y1, int x2, int y2)
 	 // Faire un visiteurRotation plus sophistiqué qui va tourner les noeuds visités autour du point donné.
 		// Déterminer l'angle à tourner en 
 	 
+	VisiteurRotationPoint visSP(angles, centreRotation);
+	arbre_->accepterVisiteur(&visSP);
 		// VisiteurRotationPoint(angles, point) 
 			// Si on tourne un noeud autour d'un point, on ajuste sa position et son orientation.
 		
