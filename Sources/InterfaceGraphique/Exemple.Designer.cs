@@ -462,7 +462,7 @@
             // 
             // bouton_Scaling
             // 
-            this.bouton_Scaling.Enabled = true;
+            this.bouton_Scaling.Enabled = false;
             this.bouton_Scaling.Location = new System.Drawing.Point(13, 116);
             this.bouton_Scaling.Name = "bouton_Scaling";
             this.bouton_Scaling.Size = new System.Drawing.Size(130, 24);
@@ -473,6 +473,7 @@
             // 
             // bouton_Rotation
             // 
+            this.bouton_Rotation.Enabled = false;
             this.bouton_Rotation.Location = new System.Drawing.Point(13, 86);
             this.bouton_Rotation.Name = "bouton_Rotation";
             this.bouton_Rotation.Size = new System.Drawing.Size(130, 24);
@@ -483,6 +484,7 @@
             // 
             // bouton_Deplacement
             // 
+            this.bouton_Deplacement.Enabled = false;
             this.bouton_Deplacement.Location = new System.Drawing.Point(13, 55);
             this.bouton_Deplacement.Name = "bouton_Deplacement";
             this.bouton_Deplacement.Size = new System.Drawing.Size(130, 24);

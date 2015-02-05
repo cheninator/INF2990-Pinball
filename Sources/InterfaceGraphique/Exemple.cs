@@ -869,8 +869,21 @@ namespace InterfaceGraphique
         public void selection(MouseEventArgs e) 
         {
             // TODO PHIL : Faire que ceci n'arrive que quand on relâche le bouton de gauche et qu'on n'a pas bougé de plus de 3 pixels.
-            FonctionsNatives.selectionnerObjetSousPointClique(panel_GL.PointToClient(MousePosition).X, panel_GL.PointToClient(MousePosition).Y, panel_GL.Height, panel_GL.Height);
-
+            int selection = FonctionsNatives.selectionnerObjetSousPointClique(panel_GL.PointToClient(MousePosition).X, panel_GL.PointToClient(MousePosition).Y, panel_GL.Height, panel_GL.Height);
+            if (selection != 0)
+            {
+                bouton_Deplacement.Enabled = true;
+                bouton_Rotation.Enabled = true;
+                bouton_Scaling.Enabled = true;
+                bouton_Duplication.Enabled = true;
+            }
+            else
+            {
+                bouton_Deplacement.Enabled = false;
+                bouton_Rotation.Enabled = false;
+                bouton_Scaling.Enabled = false;
+                bouton_Duplication.Enabled = false;
+            }
         }
 
         public void creationObjet(MouseEventArgs e)
