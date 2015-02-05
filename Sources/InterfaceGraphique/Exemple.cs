@@ -594,6 +594,7 @@ namespace InterfaceGraphique
 
         private void PGJ1_bouton_Click(object sender, EventArgs e)
         {
+            etat = new EtatCreation(this);
             Console.WriteLine("Palette gauche J1.");
             myObjectName = new StringBuilder("palette");
             angleX = 180;
@@ -608,6 +609,7 @@ namespace InterfaceGraphique
 
         private void PDJ1_bouton_Click(object sender, EventArgs e)
         {
+            etat = new EtatCreation(this);
             Console.WriteLine("Palette droite J1.");
             myObjectName = new StringBuilder("palette");
             angleX = 0;
@@ -622,6 +624,7 @@ namespace InterfaceGraphique
 
         private void PGJ2_bouton_Click(object sender, EventArgs e)
         {
+            etat = new EtatCreation(this);
             Console.WriteLine("Palette gauche J2.");
             myObjectName = new StringBuilder("palette");
             angleX = 180;
@@ -636,6 +639,7 @@ namespace InterfaceGraphique
 
         private void PDJ2_bouton_Click(object sender, EventArgs e)
         {
+            etat = new EtatCreation(this);
             Console.WriteLine("Palette droite J2.");
             myObjectName = new StringBuilder("palette");
             angleX = 0;
