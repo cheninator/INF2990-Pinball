@@ -36,6 +36,7 @@ extern "C" {
 	__declspec(dllexport) int creerXML(char* path, int length, int prop[6]);
 	__declspec(dllexport) int* ouvrirXML(char* path, int length);
 	__declspec(dllexport) int selectionnerObjetSousPointClique(int i, int j, int largeur, int hauteur);
+	__declspec(dllexport) void agrandirSelection(int x1, int y1, int x2, int y2);
 	__declspec(dllexport) void orbite(double phi, double theta);
 	__declspec(dllexport) void deplacerSelection(int x1, int y1, int x2, int y2);
 	__declspec(dllexport) void tournerSelectionSouris(int x1, int y1, int x2, int y2);

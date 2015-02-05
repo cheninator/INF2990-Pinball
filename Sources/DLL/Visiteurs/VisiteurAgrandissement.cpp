@@ -114,7 +114,9 @@ bool VisiteurAgrandissement::traiter(NoeudAbstrait* noeud)
 	else
 	{
 		// LOGIQUE D'AGRANDISSEMENT
-		noeud->assignerEchelle(homothetie_);
+		glm::dvec3 scaleInit = noeud->obtenirAgrandissement();
+		glm::dvec3 scaleFinal = glm::dvec3{ scaleInit[0] * homothetie_[0], scaleInit[1] * homothetie_[1], scaleInit[2] * homothetie_[2] };
+		noeud->assignerEchelle(scaleFinal);
 	}
 
 	return true;

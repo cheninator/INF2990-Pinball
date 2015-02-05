@@ -31,6 +31,7 @@
 #include "../Visiteurs/VisiteurRotation.h"
 #include "../Visiteurs/VisiteurCentreDeMasse.h"
 #include "../Visiteurs/VisiteurRotationPoint.h"
+#include "../Visiteurs/VisiteurAgrandissement.h"
 
 #include "VueOrtho.h"
 #include "Camera.h"
@@ -437,15 +438,13 @@ void FacadeModele::deplacerSelection(int x1, int y1 ,int x2, int y2)
 
 void FacadeModele::tournerSelectionSouris(int x1, int y1, int x2, int y2)
 {
-	
-
 	// Visiter l'arbre pour trouver le centre de masse des noeuds selectionnés
 	glm::dvec3 centreRotation{ 0, 0, 0 };
 	VisiteurCentreDeMasse visCM;
 	arbre_->accepterVisiteur(&visCM);
 	centreRotation = visCM.obtenirCentreDeMasse();
 
-	// Calcul de l'angle de rotation
+	// Calcul de l'angle de rotation (Sin(angleAB) = |A x B|/(|A|*|B|))
 	glm::dvec3 positionInitiale, positionFinale;
 	FacadeModele::obtenirInstance()->obtenirVue()->convertirClotureAVirtuelle(x1, y1, positionInitiale);
 	FacadeModele::obtenirInstance()->obtenirVue()->convertirClotureAVirtuelle(x2, y2, positionFinale);
@@ -455,10 +454,35 @@ void FacadeModele::tournerSelectionSouris(int x1, int y1, int x2, int y2)
 	glm::dvec3 produitVectoriel = glm::cross(vecteurInitial, vecteurFinal);
 
 	double sinAngle = glm::length(produitVectoriel) / glm::length(vecteurInitial) / glm::length(vecteurInitial);
-	double angle = produitVectoriel.z > 0 ? asin(sinAngle) : -asin(sinAngle);
+	// Le signe de la composante en z donne le sens dans le quel on doit tourner
+	double angle = produitVectoriel.z > 0 ? asin(sinAngle) : - asin(sinAngle); 
 
 	// Visiter l'arbre et faire la rotation.
 	glm::dvec3 angles{ 0, 0,360 / 2 / 3.14156 * angle};
 	VisiteurRotationPoint visSP(angles, centreRotation);
 	arbre_->accepterVisiteur(&visSP);
+}
+
+
+void FacadeModele::agrandirSelection(int x1, int y1, int x2, int y2)
+{
+	// Visiter l'arbre pour trouver le centre de masse des noeuds selectionnés
+	glm::dvec3 centreDeMasse{ 0, 0, 0 };
+	VisiteurCentreDeMasse visCM;
+	arbre_->accepterVisiteur(&visCM);
+	centreDeMasse = visCM.obtenirCentreDeMasse();
+
+	// Calcul du facteur de scale
+	glm::dvec3 positionInitiale, positionFinale;
+	FacadeModele::obtenirInstance()->obtenirVue()->convertirClotureAVirtuelle(x1, y1, positionInitiale);
+	FacadeModele::obtenirInstance()->obtenirVue()->convertirClotureAVirtuelle(x2, y2, positionFinale);
+
+	glm::dvec3 vecteurInitial = positionInitiale - centreDeMasse;
+	glm::dvec3 vecteurFinal = positionFinale - centreDeMasse;
+
+	double scale = glm::length(vecteurFinal) / glm::length(vecteurInitial);
+
+	VisiteurAgrandissement visAgr(glm::dvec3{ scale, scale, scale });
+	arbre_->accepterVisiteur(&visAgr);
+
 }

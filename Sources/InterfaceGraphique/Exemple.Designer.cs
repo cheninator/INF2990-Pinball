@@ -462,7 +462,7 @@
             // 
             // bouton_Scaling
             // 
-            this.bouton_Scaling.Enabled = false;
+            this.bouton_Scaling.Enabled = true;
             this.bouton_Scaling.Location = new System.Drawing.Point(13, 116);
             this.bouton_Scaling.Name = "bouton_Scaling";
             this.bouton_Scaling.Size = new System.Drawing.Size(130, 24);

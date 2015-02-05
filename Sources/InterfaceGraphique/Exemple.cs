@@ -837,10 +837,14 @@ namespace InterfaceGraphique
 
         public void scaleSouris(MouseEventArgs e)
         {
-            int deltaY = -(currentP.Y - previousP.Y);
-            FonctionsNatives.addScaleObjet(deltaY);
-            previousP.Y = currentP.Y;
-            currentP.Y = e.Y;
+            //int deltaY = -(currentP.Y - previousP.Y);
+            //FonctionsNatives.addScaleObjet(deltaY);
+            //previousP.Y = currentP.Y;
+            //currentP.Y = e.Y;
+
+            FonctionsNatives.agrandirSelection(previousP.X, previousP.Y, currentP.X, currentP.Y);
+            previousP = currentP;
+            currentP = panel_GL.PointToClient(MousePosition);
         }
 
         public void zoomRoulette(MouseEventArgs e)
@@ -991,7 +995,7 @@ namespace InterfaceGraphique
         public static extern IntPtr ouvrirXML(StringBuilder path, int taille);
 
         [DllImport(@"Noyau.dll", CallingConvention = CallingConvention.Cdecl)]
-        public static extern int selectionnerObjetSousPointClique(int i, int j, int largeur, int hauteur);
+        public static extern int selectionnerObjetSousPointClique(int i, int j,int largeur, int hauteur);
 
         [DllImport(@"Noyau.dll", CallingConvention = CallingConvention.Cdecl)]
         public static extern void zoomIn();
@@ -1010,5 +1014,8 @@ namespace InterfaceGraphique
 
         [DllImport(@"Noyau.dll", CallingConvention = CallingConvention.Cdecl)]
         public static extern void zoomElastique(int xCoin1, int yCoin1, int xCoin2, int yCoin2);
+
+        [DllImport(@"Noyau.dll", CallingConvention = CallingConvention.Cdecl)]
+        public static extern void agrandirSelection(int x1, int y1, int x2, int y2);
     }
 }

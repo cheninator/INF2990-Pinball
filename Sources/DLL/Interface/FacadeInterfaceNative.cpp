@@ -327,6 +327,8 @@ extern "C"
 		objet->assignerEchelle({ scale, scale, scale });
 	}
 
+
+
 	////////////////////////////////////////////////////////////////////////
 	///
 	/// @fn void VueOrtho::scaleObjet(double scale)
@@ -613,4 +615,10 @@ __declspec(dllexport) void __cdecl deplacerSelection(int x1, int y1, int x2, int
 __declspec(dllexport) void tournerSelectionSouris(int x1, int y1, int x2, int y2)
 {
 	FacadeModele::obtenirInstance()->tournerSelectionSouris(x1, y1, x2, y2);
+}
+
+
+__declspec(dllexport) void agrandirSelection(int x1, int y1, int x2, int y2)
+{
+	FacadeModele::obtenirInstance()->agrandirSelection(x1, y1, x2, y2);
 }
