@@ -92,9 +92,21 @@ bool VisiteurSelection::traiter(ArbreRenduINF2990* arbre)
 
 }
 
+
+////////////////////////////////////////////////////////////////////////
+///
+/// @fn bool VisiteurSelection::traiter(ArbreRenduINF2990* noeud)
+///
+/// Cette fonction traite la table de l'arbre de rendu.
+///
+/// Cette fonction retourne true pour dire que l'opération s'est
+/// fait correctement
+///
+/// @return Retourne toujours true
+///
+////////////////////////////////////////////////////////////////////////
 bool VisiteurSelection::traiter(NoeudTable* table)
 {
-	//std::cout << "Visite d'une table avec " << table->obtenirNombreEnfants() << " enfants" << std::endl;
 	// Traiter les enfants selectionnés de la table
 	for (unsigned int i = 0; i < table->obtenirNombreEnfants(); i++)
 	{

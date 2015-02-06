@@ -115,7 +115,7 @@ bool VisiteurRotationPoint::traiter(NoeudAbstrait* noeud)
 
 	else
 	{
-		if (noeud->estSelectionne())
+		if (noeud->estSelectionne() /*&& noeud->estModifiable()*/ )
 		{
 			// LOGIQUE DE ROTATION AUTOUR D'UN POINT
 			// Changer la position du noeud
