@@ -41,13 +41,16 @@ public:
    void initialiser();
 
    // Obtenir le ième enfant de l'arbre
-   NoeudAbstrait* getEnfant(int position);
+   NoeudAbstrait* getEnfant(int position) const;
 
    // Accepter un visiteur
    virtual bool accepterVisiteur(VisiteurAbstrait* vis);
 
    // Initialiser l'arbre avec un fichier XML
    bool initialiserXML(std::string nomFichier);
+
+   // Obtenir les propriétés de la zone de jeu
+   int* obtenirProprietes() const { return proprietes_; };
 
 	/// La chaîne représentant les types
    static const std::string NOM_ARAIGNEE;
@@ -65,13 +68,12 @@ public:
    static const std::string NOM_VIDE;
    static const std::string NOM_TABLE;
 
-   int* obtenirProprietes() { return proprietes_; };
-
 private:
 
 	// Lire un fichier XML
 	bool lireXML(tinyxml2::XMLDocument& doc);
 
+	// Propriétés de la zone de jeu
 	int* proprietes_ = new int[6];
 
 };
