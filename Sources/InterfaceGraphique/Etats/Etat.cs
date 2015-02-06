@@ -54,9 +54,7 @@ namespace InterfaceGraphique
            
         }
 
-    }
-
- 
+    } 
 
     class EtatSelection : Etat 
     {
@@ -204,32 +202,23 @@ namespace InterfaceGraphique
             return true;
         }
     }
+
     class EtatSelectionMultiple : Etat
     {
         public EtatSelectionMultiple(Exemple form) : base(form) { }
 
         public override bool traiterClavier(KeyEventArgs e)
         {
-
-            // Traiter le déplacement par clavier
             return base.traiterClavier(e);
         }
 
         public override bool traiterSouris(MouseEventArgs e)
         {
-            
-            /*if (e.Button == MouseButtons.Left)
-                form_.selectionMultiple();  */             
-            if (e.Button == MouseButtons.Right)
-                form_.deplacementVueSouris(e);
+            if (e.Button == MouseButtons.Left)
+                form_.selectionMultiple();
+
             return true;
         }
-
-        public void rafraichirRectangle()
-        {
-            form_.selectionMultiple();
-        }
-
     }
 }
 

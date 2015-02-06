@@ -25,8 +25,8 @@
 
 #include "FacadeModele.h"
 
-
 #include "../Visiteurs/VisiteurSelection.h"
+#include "../Visiteurs/VisiteurSelectionMultiple.h"
 #include "../Visiteurs/VisiteurDeplacement.h"
 #include "../Visiteurs/VisiteurRotation.h"
 #include "../Visiteurs/VisiteurCentreDeMasse.h"
@@ -48,7 +48,6 @@
 // Julien Gascon-Samson, été 2011
 #include "tinyxml2.h"
 
-#include "glm/glm.hpp"
 #include "glm/gtc/type_ptr.hpp"
 #include "../Visiteurs/VisiteurXML.h"
 
@@ -404,6 +403,14 @@ int FacadeModele::selectionnerObjetSousPointClique(int i, int j, int hauteur, in
 	return visSel.obtenirNbObjetsSelectionne();
 }
 
+int FacadeModele::selectionMultiple()
+{
+	VisiteurSelectionMultiple visSelMul(selectionBasGauche_, selectionHautDroit_);
+	arbre_->accepterVisiteur(&visSelMul);
+
+	return visSelMul.obtenirNbObjetsSelectionne();
+}
+
 
 ///////////////////////////////////////////////////////////////////////////////
 ///
@@ -501,33 +508,33 @@ void FacadeModele::agrandirSelection(int x1, int y1, int x2, int y2)
 
 void FacadeModele::rectangleElastique(int x1, int y1, int x2, int y2)
 {
-	glm::dvec3 positionInitiale, positionActuelle, coinBasGauche, coinHautDroit;
+	glm::dvec3 positionInitiale, positionActuelle;
 	vue_->convertirClotureAVirtuelle(x1, y1, positionInitiale);
 	vue_->convertirClotureAVirtuelle(x2, y2, positionActuelle);
 
 	if (positionInitiale.x < positionActuelle.x && positionInitiale.y < positionActuelle.y)
 	{
-		coinBasGauche = positionInitiale;
-		coinHautDroit = positionActuelle;
+		selectionBasGauche_ = positionInitiale;
+		selectionHautDroit_ = positionActuelle;
 	}
 	else if (positionInitiale.x > positionActuelle.x && positionInitiale.y > positionActuelle.y)
 	{
-		coinBasGauche = positionActuelle;
-		coinHautDroit = positionInitiale;
+		selectionBasGauche_ = positionActuelle;
+		selectionHautDroit_ = positionInitiale;
 	}
 	else if (positionInitiale.x < positionActuelle.x && positionInitiale.y > positionActuelle.y)
 	{
-		coinBasGauche.x = positionInitiale.x;
-		coinBasGauche.y = positionActuelle.y;
-		coinHautDroit.x = positionActuelle.x;
-		coinHautDroit.y = positionInitiale.y;
+		selectionBasGauche_.x = positionInitiale.x;
+		selectionBasGauche_.y = positionActuelle.y;
+		selectionHautDroit_.x = positionActuelle.x;
+		selectionHautDroit_.y = positionInitiale.y;
 	}
 	else if (positionInitiale.x > positionActuelle.x && positionInitiale.y < positionActuelle.y)
 	{
-		coinBasGauche.x = positionActuelle.x;
-		coinBasGauche.y = positionInitiale.y;
-		coinHautDroit.x = positionInitiale.x;
-		coinHautDroit.y = positionActuelle.y;
+		selectionBasGauche_.x = positionActuelle.x;
+		selectionBasGauche_.y = positionInitiale.y;
+		selectionHautDroit_.x = positionInitiale.x;
+		selectionHautDroit_.y = positionActuelle.y;
 	}
 
 	glDrawBuffer(GL_FRONT);
@@ -537,7 +544,7 @@ void FacadeModele::rectangleElastique(int x1, int y1, int x2, int y2)
 
 	glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
 	glColor4f(0.0, 1.0, 0.0, 0.2);
-	glRectd(coinBasGauche.x, coinBasGauche.y, coinHautDroit.x, coinHautDroit.y);
+	glRectd(selectionBasGauche_.x, selectionBasGauche_.y, selectionHautDroit_.x, selectionHautDroit_.y);
 
 	glDisable(GL_BLEND);
 	glEnable(GL_TEXTURE_2D);	

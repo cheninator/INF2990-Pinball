@@ -156,6 +156,9 @@
     <ClCompile Include="Visiteurs\VisiteurRotationPoint.cpp">
       <Filter>Source Files\Visiteurs</Filter>
     </ClCompile>
+    <ClCompile Include="Visiteurs\VisiteurSelectionMultiple.cpp">
+      <Filter>Source Files\Visiteurs</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Application\FacadeModele.h">
@@ -297,6 +300,9 @@
       <Filter>Header Files\Visiteurs</Filter>
     </ClInclude>
     <ClInclude Include="Visiteurs\VisiteurRotationPoint.h">
+      <Filter>Header Files\Visiteurs</Filter>
+    </ClInclude>
+    <ClInclude Include="Visiteurs\VisiteurSelectionMultiple.h">
       <Filter>Header Files\Visiteurs</Filter>
     </ClInclude>
   </ItemGroup>

@@ -143,6 +143,7 @@ public:
 	// Accepter un visiteur
 	virtual bool accepterVisiteur(VisiteurAbstrait* vis);
 
+	modele::Modele3D const* obtenirModele() const;
 
 	inline const glm::dvec3& obtenirAgrandissement() const;
 
@@ -208,7 +209,6 @@ inline NoeudAbstrait* NoeudAbstrait::obtenirParent()
 {
 	return parent_;
 }
-
 
 ////////////////////////////////////////////////////////////////////////
 ///

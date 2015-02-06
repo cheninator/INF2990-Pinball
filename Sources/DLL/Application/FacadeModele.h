@@ -13,6 +13,7 @@
 
 #include <windows.h>
 #include <string>
+#include "glm/glm.hpp"
 
 class NoeudAbstrait;
 class ArbreRenduINF2990;
@@ -79,6 +80,10 @@ public:
    /// xxxxx
    void rectangleElastique(int x1, int y1, int x2, int y2);
 
+
+   /// xxxxx
+   int selectionMultiple();
+
    /// Vérifier si un point cliqué est dans la table
    bool verifierCliqueDansTable(int x, int y);
 
@@ -110,6 +115,7 @@ private:
    /// Arbre de rendu contenant les différents objets de la scène.
    ArbreRenduINF2990* arbre_{ nullptr };
 
+   glm::dvec3 selectionBasGauche_, selectionHautDroit_;
 };
 
 
