@@ -677,6 +677,8 @@ extern "C"
 	///
 	/// @return Aucun
 	///
+	/// @remark : On doit donner des x,y qui ont été transformés par panel_GL.PointToClient(...)
+	///
 	///////////////////////////////////////////////////////////////////////////////
 	__declspec(dllexport) void __cdecl deplacerSelection(int x1, int y1, int x2, int y2)
 	{
@@ -685,9 +687,18 @@ extern "C"
 
 	///////////////////////////////////////////////////////////////////////////////
 	///
-	/// @fn __declspec(dllexport) void __cdecl 
+	/// @fn __declspec(dllexport) void __cdecl tournerSelectionSouris(int x1, int y1, int x2, int y2)
+	///		L'angle de rotation est calculé à partir du déplacement
+	///
+	/// @param[in]  x1 : abcisse du point initial
+	/// @param[in]  y1 : ordonnee du point initial
+	///
+	/// @param[in]  x2 : abcisse du point initial
+	/// @param[in]  y2 : ordonnee du point initial
 	///
 	/// @return Aucun
+	///
+	/// @remark : On doit donner des x,y qui ont été transformés par panel_GL.PointToClient(...)
 	///
 	///////////////////////////////////////////////////////////////////////////////
 	__declspec(dllexport) void tournerSelectionSouris(int x1, int y1, int x2, int y2)
@@ -697,9 +708,17 @@ extern "C"
 
 	///////////////////////////////////////////////////////////////////////////////
 	///
-	/// @fn __declspec(dllexport) void __cdecl 
+	/// @fn __declspec(dllexport) void __cdecl agrandirSelection(int x1, int y1, int x2, int y2)
+	///
+	/// @param[in]  x1 : abcisse du point initial
+	/// @param[in]  y1 : ordonnee du point initial
+	///
+	/// @param[in]  x2 : abcisse du point initial
+	/// @param[in]  y2 : ordonnee du point initial
 	///
 	/// @return Aucun
+	///
+	/// @remark : On doit donner des x,y qui ont été transformés par panel_GL.PointToClient(...)
 	///
 	///////////////////////////////////////////////////////////////////////////////
 	__declspec(dllexport) void agrandirSelection(int x1, int y1, int x2, int y2)
@@ -722,9 +741,14 @@ extern "C"
 
 	///////////////////////////////////////////////////////////////////////////////
 	///
-	/// @fn __declspec(dllexport) void __cdecl 
+	/// @fn __declspec(dllexport) bool __cdecl verifierCliqueDansTable(int x, int y)
+	///
+	/// @param[in]  x : abcisse du point initial 
+	/// @param[in]  y : ordonnee du point initial
 	///
 	/// @return Aucun
+	///
+	/// @remark : On doit donner des x,y qui ont été transformés par panel_GL.PointToClient(...)
 	///
 	///////////////////////////////////////////////////////////////////////////////
 	__declspec(dllexport) bool verifierCliqueDansTable(int x, int y)

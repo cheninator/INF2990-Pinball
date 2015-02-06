@@ -79,7 +79,7 @@ public:
    /// xxxxx
    void rectangleElastique(int x1, int y1, int x2, int y2);
 
-   ///
+   /// Vérifier si un point cliqué est dans la table
    bool verifierCliqueDansTable(int x, int y);
 
 private:
