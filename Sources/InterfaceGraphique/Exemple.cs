@@ -77,6 +77,9 @@ namespace InterfaceGraphique
                 {
                     FonctionsNatives.animer(tempsInterAffichage);
                     FonctionsNatives.dessinerOpenGL();
+
+                    if (etat is EtatSelectionMultiple)
+                        selectionMultiple();
                 });
             }
             catch (Exception)
@@ -752,17 +755,13 @@ namespace InterfaceGraphique
 
         private void panel_GL_MouseDown(object sender, MouseEventArgs e)
         {
-
             origin = panel_GL.PointToClient(MousePosition);
             //if( !(etat is EtatCreation))
-            //    panel_GL.MouseMove += new MouseEventHandler(panel_MouseMove);
-           
+            //    panel_GL.MouseMove += new MouseEventHandler(panel_MouseMove);   
             
             
             
-           // creationObjet(e);
-            
-            
+           // creationObjet(e);            
             
             
             
@@ -789,12 +788,15 @@ namespace InterfaceGraphique
         }
         private void panel_MouseMove(object sender, MouseEventArgs e)
         {
-            if (!(clickValide(origin, panel_GL.PointToClient(MousePosition))) && (etat is EtatSelection) && !(etat is EtatSelectionMultiple))
+            currentP = panel_GL.PointToClient(MousePosition);
+
+            if (!(clickValide(origin, currentP)) && (etat is EtatSelection) && !(etat is EtatSelectionMultiple))
             {
                 etat = new EtatSelectionMultiple(this);
             }
-            etat.traiterSouris(e);
-            
+
+            if (!(etat is EtatSelectionMultiple))
+                etat.traiterSouris(e);
         }
 
         private void panel_GL_MouseUp(object sender, MouseEventArgs e)
@@ -803,18 +805,17 @@ namespace InterfaceGraphique
                          
             if (e.Button == MouseButtons.Left)
             {
-               Point destination = panel_GL.PointToClient(MousePosition);
-               if (etat is EtatZoom)
-               {
-                   FonctionsNatives.zoomElastique(origin.X, origin.Y, destination.X, destination.Y);
-               }
-               if (etat is EtatSelectionMultiple)
-               {
-                   etat = new EtatSelection(this);
-               }
-                if(clickValide(origin,destination))
+                Point destination = panel_GL.PointToClient(MousePosition);
+                if (etat is EtatZoom)
                 {
-                    
+                    FonctionsNatives.zoomElastique(origin.X, origin.Y, destination.X, destination.Y);
+                }
+                if (etat is EtatSelectionMultiple)
+                {
+                    etat = new EtatSelection(this);
+                }
+                if(clickValide(origin,destination))
+                {                    
                     etat.traiterSouris(e);
                 }
             }
@@ -906,6 +907,11 @@ namespace InterfaceGraphique
                 bouton_Scaling.Enabled = false;
                 bouton_Duplication.Enabled = false;
             }
+        }
+
+        public void selectionMultiple()
+        {
+            FonctionsNatives.rectangleElastique(origin.X, origin.Y, currentP.X, currentP.Y);
         }
 
         public void creationObjet(MouseEventArgs e)
@@ -1068,5 +1074,8 @@ namespace InterfaceGraphique
 
         [DllImport(@"Noyau.dll", CallingConvention = CallingConvention.Cdecl)]
         public static extern void agrandirSelection(int x1, int y1, int x2, int y2);
+
+        [DllImport(@"Noyau.dll", CallingConvention = CallingConvention.Cdecl)]
+        public static extern void rectangleElastique(int x1, int y1, int x2, int y2);
     }
 }

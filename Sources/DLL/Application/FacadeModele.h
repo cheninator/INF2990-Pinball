@@ -76,6 +76,9 @@ public:
    /// Scale de la sélection
    void agrandirSelection(int x1, int y1, int x2, int y2);
 
+   /// xxxxx
+   void rectangleElastique(int x1, int y1, int x2, int y2);
+
 private:
    /// Constructeur par défaut.
    FacadeModele() = default;

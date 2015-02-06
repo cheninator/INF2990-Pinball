@@ -218,24 +218,16 @@ namespace InterfaceGraphique
         public override bool traiterSouris(MouseEventArgs e)
         {
             
-            if (e.Button == MouseButtons.Left)
-            {
-               
-             /*
-             * TO DO
-             * Vous pouvez faire form_.selectionMultiple(e); ou le nom de la fonction voulue
-             * 
-             * 
-             * 
-             */
-            }
-                
+            /*if (e.Button == MouseButtons.Left)
+                form_.selectionMultiple();  */             
             if (e.Button == MouseButtons.Right)
                 form_.deplacementVueSouris(e);
             return true;
+        }
 
-          
-
+        public void rafraichirRectangle()
+        {
+            form_.selectionMultiple();
         }
 
     }

@@ -637,22 +637,22 @@ extern "C"
 
 
 
-///////////////////////////////////////////////////////////////////////////////
-///
-/// @fn __declspec(dllexport) void __cdecl deplacerSelection(int x1, int y1, int x2, int y2)
-///		deplace les noeuds selectionnes d'un déplacement calculé en coordonnées du monde
-///		à partir des points initiaux et terminaux dans les coordonnées d'affichage OpenGL
-///
-///
-/// @param[in]  x1 : abcisse du point initial
-/// @param[in]  y1 : ordonnee du point initial
-///
-/// @param[in]  x2 : abcisse du point initial
-/// @param[in]  y2 : ordonnee du point initial
-///
-/// @return Aucun
-///
-///////////////////////////////////////////////////////////////////////////////
+	///////////////////////////////////////////////////////////////////////////////
+	///
+	/// @fn __declspec(dllexport) void __cdecl deplacerSelection(int x1, int y1, int x2, int y2)
+	///		deplace les noeuds selectionnes d'un déplacement calculé en coordonnées du monde
+	///		à partir des points initiaux et terminaux dans les coordonnées d'affichage OpenGL
+	///
+	///
+	/// @param[in]  x1 : abcisse du point initial
+	/// @param[in]  y1 : ordonnee du point initial
+	///
+	/// @param[in]  x2 : abcisse du point initial
+	/// @param[in]  y2 : ordonnee du point initial
+	///
+	/// @return Aucun
+	///
+	///////////////////////////////////////////////////////////////////////////////
 	__declspec(dllexport) void __cdecl deplacerSelection(int x1, int y1, int x2, int y2)
 	{
 		calculerTransition();
@@ -671,6 +671,12 @@ extern "C"
 	{
 		calculerTransition();
 		FacadeModele::obtenirInstance()->agrandirSelection(x1, y1, x2, y2);
+	}
+
+	__declspec(dllexport) void rectangleElastique(int x1, int y1, int x2, int y2)
+	{
+		calculerTransition();
+		FacadeModele::obtenirInstance()->rectangleElastique(x1, y1, x2, y2);
 	}
 
 }

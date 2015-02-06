@@ -486,3 +486,49 @@ void FacadeModele::agrandirSelection(int x1, int y1, int x2, int y2)
 	arbre_->accepterVisiteur(&visAgr);
 
 }
+
+void FacadeModele::rectangleElastique(int x1, int y1, int x2, int y2)
+{
+	glm::dvec3 positionInitiale, positionActuelle, coinBasGauche, coinHautDroit;
+	vue_->convertirClotureAVirtuelle(x1, y1, positionInitiale);
+	vue_->convertirClotureAVirtuelle(x2, y2, positionActuelle);
+
+	if (positionInitiale.x < positionActuelle.x && positionInitiale.y < positionActuelle.y)
+	{
+		coinBasGauche = positionInitiale;
+		coinHautDroit = positionActuelle;
+	}
+	else if (positionInitiale.x > positionActuelle.x && positionInitiale.y > positionActuelle.y)
+	{
+		coinBasGauche = positionActuelle;
+		coinHautDroit = positionInitiale;
+	}
+	else if (positionInitiale.x < positionActuelle.x && positionInitiale.y > positionActuelle.y)
+	{
+		coinBasGauche.x = positionInitiale.x;
+		coinBasGauche.y = positionActuelle.y;
+		coinHautDroit.x = positionActuelle.x;
+		coinHautDroit.y = positionInitiale.y;
+	}
+	else if (positionInitiale.x > positionActuelle.x && positionInitiale.y < positionActuelle.y)
+	{
+		coinBasGauche.x = positionActuelle.x;
+		coinBasGauche.y = positionInitiale.y;
+		coinHautDroit.x = positionInitiale.x;
+		coinHautDroit.y = positionActuelle.y;
+	}
+
+	glDrawBuffer(GL_FRONT);
+	glClear(GL_DEPTH_BUFFER_BIT);
+	glDisable(GL_TEXTURE_2D);
+	glEnable(GL_BLEND);
+
+	glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
+	glColor4f(0.0, 1.0, 0.0, 0.2);
+	glRectd(coinBasGauche.x, coinBasGauche.y, coinHautDroit.x, coinHautDroit.y);
+
+	glDisable(GL_BLEND);
+	glEnable(GL_TEXTURE_2D);	
+	glFlush();
+	glDrawBuffer(GL_BACK);
+}
