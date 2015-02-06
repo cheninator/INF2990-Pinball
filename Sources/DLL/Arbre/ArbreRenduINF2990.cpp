@@ -109,10 +109,12 @@ void ArbreRenduINF2990::initialiser()
 	// On ajoute un noeud bidon seulement pour que quelque chose s'affiche.
 	NoeudAbstrait* noeud{ creerNoeud(NOM_TABLE) };
 	
+	// Créer les 3 objets obligatoires
 	NoeudAbstrait* noeudGenerateur{ creerNoeud(NOM_GENERATEURBILLE) };
 	NoeudAbstrait* noeudRessort{ creerNoeud(NOM_RESSORT) };
 	NoeudAbstrait* noeudTrou{ creerNoeud(NOM_TROU) };
 
+	// Assigner positions
 	noeudGenerateur->assignerPositionRelative({ 247.40, -140.88, 0.0 });
 	noeudRessort->assignerPositionRelative({ 247.00, -171.28, 0.0 });
 	noeudTrou->assignerPositionRelative({ 184.60, -181.68, 0.0 });
@@ -121,6 +123,7 @@ void ArbreRenduINF2990::initialiser()
 	noeudRessort->assignerEstEnregistrable(false);
 	noeudTrou->assignerEstEnregistrable(false);
 
+	// Ajouter les objets à la table
 	noeud->ajouter(noeudGenerateur);
 	noeud->ajouter(noeudRessort);
 	noeud->ajouter(noeudTrou);
@@ -160,19 +163,26 @@ NoeudAbstrait* ArbreRenduINF2990::getEnfant(int position)
 ////////////////////////////////////////////////////////////////////////
 bool ArbreRenduINF2990::accepterVisiteur(VisiteurAbstrait* vis)
 {
-	vis->traiter(this);
-	return true;
+	bool operationReussi = false;
+
+	if (vis->traiter(this))
+		operationReussi = true;
+
+	return operationReussi;
 }
 
 
 ////////////////////////////////////////////////////////////////////////
 ///
-/// @fn bool ArbreRenduINF2990::initialiserXML(VisiteurAbstrait* vis)
+/// @fn bool ArbreRenduINF2990::initialiserXML(std::string nomFichier)
 ///
-/// 
+/// @param[in] nomFichier : Le nom du fichier XML à ouvrir
 ///
-/// @return Retourne toujours true
+/// Cette fonction crée la structure de base de l'arbre de rendu, c'est-à-dire
+/// avec les noeuds structurants (pour les objets, les murs, les billes,
+/// les parties statiques, etc.) en lisant un fichier XML
 ///
+/// @return TRUE : fichier trouvé. Autrement FALSE
 ////////////////////////////////////////////////////////////////////////
 bool ArbreRenduINF2990::initialiserXML(std::string nomFichier)
 {
@@ -194,8 +204,17 @@ bool ArbreRenduINF2990::initialiserXML(std::string nomFichier)
 }
 
 
-
-
+////////////////////////////////////////////////////////////////////////
+///
+/// @fn bool ArbreRenduINF2990::lireXML(tinyxml2::XMLDocument& doc)
+///
+/// @param[in] doc : un document XML
+///
+/// Cette fonction lit un fichier XML et créer les objets de l'arbre.
+///	Il lit également les propriétés de la zone de jeu.
+///
+/// @return TRUE : lecture correct. Autrement FALSE
+////////////////////////////////////////////////////////////////////////
 bool ArbreRenduINF2990::lireXML(tinyxml2::XMLDocument& doc)
 {
 	bool lecture = false;

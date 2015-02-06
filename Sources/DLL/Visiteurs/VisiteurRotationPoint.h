@@ -31,7 +31,7 @@ class VisiteurRotationPoint : public VisiteurAbstrait
 public:
 
 	// Constructeur par paramètre : spécifiez l'angle, l'axe et le sens
-	VisiteurRotationPoint(glm::dvec3 angles);
+	VisiteurRotationPoint(glm::dvec3 angles ,glm::dvec3 centreRotation);
 
 	// Destructeur
 	~VisiteurRotationPoint();
@@ -53,6 +53,8 @@ private:
 
 	// Angles de rotation en x, y et z
 	glm::dvec3 angles_;
+
+	glm::dvec3 centreRotation_;
 
 };
 

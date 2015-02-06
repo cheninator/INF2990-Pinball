@@ -30,7 +30,7 @@
 #include "../Visiteurs/VisiteurDeplacement.h"
 #include "../Visiteurs/VisiteurRotation.h"
 #include "../Visiteurs/VisiteurCentreDeMasse.h"
-// #include "../Visiteurs/VisiteurRotationPoint.h"
+#include "../Visiteurs/VisiteurRotationPoint.h"
 
 #include "VueOrtho.h"
 #include "Camera.h"
@@ -403,6 +403,7 @@ NoeudAbstrait* FacadeModele::trouverObjetSousPointClique(int i, int j, int haute
 	return 0;
 }
 
+
 ///////////////////////////////////////////////////////////////////////////////
 ///
 /// @fn void deplacerSelection(int x1, int y1, int x2, int y2)
@@ -435,7 +436,6 @@ void FacadeModele::deplacerSelection(int x1, int y1 ,int x2, int y2)
 
 
 
-
 void FacadeModele::tournerSelectionSouris(int x1, int y1, int x2, int y2)
 {
 	glm::dvec3 positionInitiale, positionFinale;
@@ -447,8 +447,8 @@ void FacadeModele::tournerSelectionSouris(int x1, int y1, int x2, int y2)
 	// Calculer l'angle correspondant à donner au visiteur
 	glm::dvec3 angles{ 0, 0, (y2 - y1) /2.0 }; // Pas super ...
 
-	VisiteurRotation visRot(angles);
-	arbre_->accepterVisiteur(&visRot);
+	//VisiteurRotation visRot(angles);
+	//arbre_->accepterVisiteur(&visRot);
 
 
 	// Autre possiblité
@@ -461,11 +461,13 @@ void FacadeModele::tournerSelectionSouris(int x1, int y1, int x2, int y2)
 	arbre_->accepterVisiteur(&visCM);
 
 	centreRotation = visCM.obtenirCentreDeMasse();
-	std::cout << "Centre de masse : " << centreRotation.x << ", " << centreRotation.y << std::endl;
+	// std::cout << "Centre de masse : " << centreRotation.x << ", " << centreRotation.y << std::endl;
 
 	 // Faire un visiteurRotation plus sophistiqué qui va tourner les noeuds visités autour du point donné.
 		// Déterminer l'angle à tourner en 
 	 
+	VisiteurRotationPoint visSP(angles, centreRotation);
+	arbre_->accepterVisiteur(&visSP);
 		// VisiteurRotationPoint(angles, point) 
 			// Si on tourne un noeud autour d'un point, on ajuste sa position et son orientation.
 		

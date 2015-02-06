@@ -54,9 +54,9 @@ VisiteurXML::~VisiteurXML()
 /// dans un fichier XML.
 ///
 /// Cette fonction retourne true pour dire que l'opération s'est
-/// fait correctement
+/// fait correctement. Ou false si on ne permet pas la sauvegarde
 ///
-/// @return Retourne toujours true
+/// @return Retourne true ou false
 ///
 ////////////////////////////////////////////////////////////////////////
 bool VisiteurXML::traiter(ArbreRenduINF2990* arbre)
@@ -103,6 +103,7 @@ bool VisiteurXML::traiter(ArbreRenduINF2990* arbre)
 	document.SaveFile(nomFichier.c_str());
 
 	return true;
+
 }
 
 
