@@ -106,6 +106,7 @@ void ArbreRenduINF2990::initialiser()
 	// On vide l'arbre
 	vider();
 
+	// Charger la zone de jeu par défaut
 	initialiserXML("default.xml");
 
 }
@@ -267,6 +268,10 @@ bool ArbreRenduINF2990::lireXML(tinyxml2::XMLDocument& doc)
 				// Traiter le frère de droite de l'enfant
 				enfant = enfant->NextSiblingElement();
 			}
+
+			getEnfant(0)->chercher("generateurbille")->assignerEstModifiable(false);
+			getEnfant(0)->chercher("ressort")->assignerEstModifiable(false);
+			getEnfant(0)->chercher("trou")->assignerEstModifiable(false);
 
 			lecture = true;
 

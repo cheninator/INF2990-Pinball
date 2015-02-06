@@ -90,6 +90,11 @@ public:
 	/// Vérifie si le noeud est enregistrable.
 	inline bool estEnregistrable() const;
 
+	/// Écrit si le noeud peut être modifié ou non.
+	void assignerEstModifiable(bool modif) { modifiable_ = modif; };
+	/// Vérifie si le noeud est modifiable.
+	bool estModifiable() const { return modifiable_; };
+
 	/// Assigne le modèle3D et la liste d'affichage du noeud courant
 	inline void assignerObjetRendu(modele::Modele3D const* modele, modele::opengl_storage::OpenGL_Liste const* liste);
 
@@ -177,6 +182,9 @@ protected:
 
 	/// Détermine si l'objet peut être sauvegardé en XML.
 	bool             enregistrable_{ true };
+
+	/// Détermine si l'objet peut être modifié
+	bool             modifiable_{ true };
 
 	/// Pointeur vers le parent.
 	NoeudAbstrait*   parent_{ nullptr };
