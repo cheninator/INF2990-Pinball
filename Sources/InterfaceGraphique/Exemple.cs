@@ -239,15 +239,17 @@ namespace InterfaceGraphique
 
             OpenFileDialog ouvrir_fichier = new OpenFileDialog();
             ouvrir_fichier.Filter = "Fichier XML(*.xml)| *.xml| All files(*.*)|*.*";
-            ouvrir_fichier.ShowDialog();
-            pathXML = new StringBuilder(ouvrir_fichier.FileName);
+            if (ouvrir_fichier.ShowDialog() == DialogResult.OK)
+            {
+                pathXML = new StringBuilder(ouvrir_fichier.FileName);
 
-            IntPtr prop = FonctionsNatives.ouvrirXML(pathXML, pathXML.Capacity);
-            int[] result = new int[6];
-            Marshal.Copy(prop, result, 0, 6);
+                IntPtr prop = FonctionsNatives.ouvrirXML(pathXML, pathXML.Capacity);
+                int[] result = new int[6];
+                Marshal.Copy(prop, result, 0, 6);
 
-            for (int i = 0; i < 6; i++)
-                propZJ[i] = result[i];
+                for (int i = 0; i < 6; i++)
+                    propZJ[i] = result[i];
+            }
         }
 
         private void EnregistrerS_MenuItem_Click(object sender, EventArgs e)
@@ -271,11 +273,11 @@ namespace InterfaceGraphique
                 enregistrer_fichier.Filter = "Fichier XML(*.xml)| *.xml| All files(*.*)|*.*";
                 enregistrer_fichier.ShowDialog();
                 pathXML = new StringBuilder(enregistrer_fichier.FileName);
-
                 for (int i = 0; i < 6; i++)
                     prop[i] = propZJ[i];
 
-                FonctionsNatives.creerXML(pathXML, pathXML.Capacity, prop);
+                int a = FonctionsNatives.creerXML(pathXML, pathXML.Capacity, prop);
+                
             }
 
             else
