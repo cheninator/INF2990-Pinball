@@ -2,9 +2,9 @@
 # Material Count: 4
 
 newmtl Material.001
-Ns 80.392157
+Ns 78.431373
 Ka 0.000000 0.000000 0.000000
-Kd 0.209715 0.209715 0.209715
+Kd 0.167772 0.167772 0.167772
 Ks 0.500000 0.500000 0.500000
 Ni 1.000000
 d 1.000000
@@ -13,9 +13,9 @@ map_Kd materiaux\texture\table\rust.jpg
 map_d materiaux\\texture\\table\\rust.jpg
 
 newmtl Top.001
-Ns 80.392157
+Ns 78.431373
 Ka 0.000000 0.000000 0.000000
-Kd 0.209715 0.209715 0.209715
+Kd 0.167772 0.167772 0.167772
 Ks 0.500000 0.500000 0.500000
 Ni 1.000000
 d 1.000000
@@ -24,9 +24,9 @@ map_Kd materiaux\texture\table\marbre.jpg
 map_d materiaux\\texture\\table\\marbre.jpg
 
 newmtl Top_NONE.001
-Ns 80.392157
+Ns 78.431373
 Ka 0.000000 0.000000 0.000000
-Kd 0.209715 0.209715 0.209715
+Kd 0.167772 0.167772 0.167772
 Ks 0.500000 0.500000 0.500000
 Ni 1.000000
 d 1.000000
@@ -35,9 +35,9 @@ map_Kd materiaux\texture\table\marbre.jpg
 map_d materiaux\\texture\\table\\marbre.jpg
 
 newmtl _2.001
-Ns 80.392157
+Ns 78.431373
 Ka 0.000000 0.000000 0.000000
-Kd 0.262144 0.000000 0.000000
+Kd 0.209715 0.000000 0.000000
 Ks 0.165000 0.165000 0.165000
 Ni 1.000000
 d 1.000000
