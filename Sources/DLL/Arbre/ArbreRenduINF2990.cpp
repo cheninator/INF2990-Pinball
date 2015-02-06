@@ -106,29 +106,7 @@ void ArbreRenduINF2990::initialiser()
 	// On vide l'arbre
 	vider();
 
-	// On ajoute un noeud bidon seulement pour que quelque chose s'affiche.
-	NoeudAbstrait* noeud{ creerNoeud(NOM_TABLE) };
-	
-	// Créer les 3 objets obligatoires
-	NoeudAbstrait* noeudGenerateur{ creerNoeud(NOM_GENERATEURBILLE) };
-	NoeudAbstrait* noeudRessort{ creerNoeud(NOM_RESSORT) };
-	NoeudAbstrait* noeudTrou{ creerNoeud(NOM_TROU) };
-
-	// Assigner positions
-	noeudGenerateur->assignerPositionRelative({ 247.40, -140.88, 0.0 });
-	noeudRessort->assignerPositionRelative({ 247.00, -171.28, 0.0 });
-	noeudTrou->assignerPositionRelative({ 184.60, -181.68, 0.0 });
-
-	noeudGenerateur->assignerEstEnregistrable(false);
-	noeudRessort->assignerEstEnregistrable(false);
-	noeudTrou->assignerEstEnregistrable(false);
-
-	// Ajouter les objets à la table
-	noeud->ajouter(noeudGenerateur);
-	noeud->ajouter(noeudRessort);
-	noeud->ajouter(noeudTrou);
-
-	ajouter(noeud);
+	initialiserXML("default.xml");
 
 }
 
@@ -143,7 +121,7 @@ void ArbreRenduINF2990::initialiser()
 /// @return NoeudAbstrait*
 ///
 ////////////////////////////////////////////////////////////////////////
-NoeudAbstrait* ArbreRenduINF2990::getEnfant(int position)
+NoeudAbstrait* ArbreRenduINF2990::getEnfant(int position) const
 {
 	if (position > enfants_.size() || position < 0)
 		return nullptr;
@@ -298,8 +276,6 @@ bool ArbreRenduINF2990::lireXML(tinyxml2::XMLDocument& doc)
 
 	return lecture;
 }
-
-
 
 
 ///////////////////////////////////////////////////////////////////////////////

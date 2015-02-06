@@ -143,7 +143,7 @@ void FacadeModele::initialiserOpenGL(HWND hWnd)
 	FreeImage_Initialise();
 
 	// La couleur de fond
-	glClearColor(0.0f, 0.0f, 0.0f, 0.1f);
+	glClearColor(0.7843f, 0.7843f, 0.7843f, 0.0f);
 
 	// Initialiser le stencil a 0.
 	glClearStencil(0);
