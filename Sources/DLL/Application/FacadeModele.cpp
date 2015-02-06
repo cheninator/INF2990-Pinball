@@ -569,6 +569,7 @@ void FacadeModele::rectangleElastique(int x1, int y1, int x2, int y2)
 ///////////////////////////////////////////////////////////////////////////////
 bool FacadeModele::verifierCliqueDansTable(int x, int y)
 {
+	
 	glm::dvec3 positionDansLeMonde;
 	obtenirInstance()->obtenirVue()->convertirClotureAVirtuelle(x, y, positionDansLeMonde);
 	if (    108 < positionDansLeMonde.x && positionDansLeMonde.x < 272
