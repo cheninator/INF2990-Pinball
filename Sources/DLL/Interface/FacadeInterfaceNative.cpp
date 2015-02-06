@@ -532,7 +532,6 @@ extern "C"
 	{
 		int sauvegardeAutorise;
 		calculerTransition();
-		std::string defaut = "default.xml";
 
 		// Ne pas permettre la sauvegarde si la zone ne contient pas au minimum les 3 objets
 		if (FacadeModele::obtenirInstance()->obtenirArbreRenduINF2990()->getEnfant(0)->obtenirNombreEnfants() < 3)
@@ -540,18 +539,14 @@ extern "C"
 			sauvegardeAutorise = 0;
 		}
 
-		// Ne pas permettre la sauvegarde si l'utilisateur tente d'écraser le fichier de zone de jeu par défaut
-		else if (defaut.compare(path))
+		// Ne pas permettre de sauvegarder la zone de jeu par défaut
+		else if (FacadeModele::obtenirInstance()->obtenirArbreRenduINF2990()->getEnfant(0)->chercher("generateurbille")
+			&& FacadeModele::obtenirInstance()->obtenirArbreRenduINF2990()->getEnfant(0)->chercher("trou")
+			&& FacadeModele::obtenirInstance()->obtenirArbreRenduINF2990()->getEnfant(0)->chercher("ressort")
+			&& FacadeModele::obtenirInstance()->obtenirArbreRenduINF2990()->getEnfant(0)->obtenirNombreEnfants() == 3)
 		{
 			sauvegardeAutorise = 1;
 		}
-
-		// Ne pas permettre de sauvegarder la zone de jeu par défaut
-		/*if ()
-		{
-			sauvegardeAutorise = 2;
-		}*/
-
 
 		// Permettre la sauvegarde que lorsque il y a les 3 objets obligatoires + d'autres objets
 		else if (FacadeModele::obtenirInstance()->obtenirArbreRenduINF2990()->getEnfant(0)->chercher("generateurbille")
@@ -561,21 +556,7 @@ extern "C"
 		{
 			VisiteurXML* visiteur = new VisiteurXML(std::string(path), prop);
 			FacadeModele::obtenirInstance()->obtenirArbreRenduINF2990()->accepterVisiteur(visiteur);
-			sauvegardeAutorise = 3;
-
-			delete visiteur;
-		}
-
-		// Permettre la sauvegarde que lorsque il y a les 3 objets obligatoires qui ont subi des modifications
-		else if (FacadeModele::obtenirInstance()->obtenirArbreRenduINF2990()->getEnfant(0)->chercher("generateurbille")
-			&& FacadeModele::obtenirInstance()->obtenirArbreRenduINF2990()->getEnfant(0)->chercher("trou")
-			&& FacadeModele::obtenirInstance()->obtenirArbreRenduINF2990()->getEnfant(0)->chercher("ressort")
-			&& FacadeModele::obtenirInstance()->obtenirArbreRenduINF2990()->getEnfant(0)->obtenirNombreEnfants() == 3
-			)
-		{
-			VisiteurXML* visiteur = new VisiteurXML(std::string(path), prop);
-			FacadeModele::obtenirInstance()->obtenirArbreRenduINF2990()->accepterVisiteur(visiteur);
-			sauvegardeAutorise = 4;
+			sauvegardeAutorise = 2;
 
 			delete visiteur;
 		}

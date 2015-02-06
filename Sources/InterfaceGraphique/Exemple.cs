@@ -267,7 +267,7 @@ namespace InterfaceGraphique
                 MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
 
-            else if (sauvegarde == 1)
+            else if (sauvegarde == 2)
             {
                 SaveFileDialog enregistrer_fichier = new SaveFileDialog();
                 enregistrer_fichier.Filter = "Fichier XML(*.xml)| *.xml| All files(*.*)|*.*";
