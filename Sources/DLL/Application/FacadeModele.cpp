@@ -399,6 +399,7 @@ int FacadeModele::selectionnerObjetSousPointClique(int i, int j, int hauteur, in
 	// Passer le visisteur a l<arbre
 	arbre_->accepterVisiteur(&visSel);
 	// Demander au visiteur ce qu'il a trouvé et faire quelque chose en conséquence
+	std::cout << "Valeur de retour de la sélection : " << visSel.obtenirNbObjetsSelectionne() << std::endl;
 	return visSel.obtenirNbObjetsSelectionne();
 }
 
@@ -426,6 +427,8 @@ int FacadeModele::selectionMultiple()
 ///
 /// @return Aucun
 ///
+/// @remark : On doit donner des x,y qui ont été transformés par panel_GL.PointToClient(...)
+///
 ///////////////////////////////////////////////////////////////////////////////
 void FacadeModele::deplacerSelection(int x1, int y1 ,int x2, int y2)
 {
@@ -442,52 +445,61 @@ void FacadeModele::deplacerSelection(int x1, int y1 ,int x2, int y2)
 }
 
 
-
+///////////////////////////////////////////////////////////////////////////////
+///
+/// @fn void tournerSelectionSouris(int x1, int y1, int x2, int y2)
+///		Fait une rotation des objets sélectionnés autour de leur centre de masse.
+///		L'angle est calculé en fonction du déplacement de (x1,y1) à (x2,y2):
+///		Présentement, l'angle est proportionnel à (y1 - y2).
+///
+/// @param[in]  x1 : abcisse du point initial
+/// @param[in]  y1 : ordonnee du point initial
+///
+/// @param[in]  x2 : abcisse du point initial
+/// @param[in]  y2 : ordonnee du point initial
+///
+/// @return Aucun
+///
+/// @remark : On doit donner des x,y qui ont été transformés par panel_GL.PointToClient(...)
+///
+///////////////////////////////////////////////////////////////////////////////
 void FacadeModele::tournerSelectionSouris(int x1, int y1, int x2, int y2)
 {
 	// Visiter l'arbre pour trouver le centre de masse des noeuds selectionnés
-	glm::dvec3 centreRotation{ 0, 0, 0 };
 	VisiteurCentreDeMasse visCM;
 	arbre_->accepterVisiteur(&visCM);
-	centreRotation = visCM.obtenirCentreDeMasse();
-
-	// Calcul de l'angle de rotation (Sin(angleAB) = |A x B|/(|A|*|B|))
-	glm::dvec3 positionInitiale, positionFinale;
-	FacadeModele::obtenirInstance()->obtenirVue()->convertirClotureAVirtuelle(x1, y1, positionInitiale);
-	FacadeModele::obtenirInstance()->obtenirVue()->convertirClotureAVirtuelle(x2, y2, positionFinale);
-
-	glm::dvec3 vecteurInitial = positionInitiale - centreRotation;
-	glm::dvec3 vecteurFinal = positionFinale - centreRotation;
-	glm::dvec3 produitVectoriel = glm::cross(vecteurInitial, vecteurFinal);
-
-	double sinAngle = glm::length(produitVectoriel) / glm::length(vecteurInitial) / glm::length(vecteurInitial);
-	// Le signe de la composante en z donne le sens dans le quel on doit tourner
-	double angle = produitVectoriel.z > 0 ? asin(sinAngle) : - asin(sinAngle); 
 
 	// Visiter l'arbre et faire la rotation.
-	glm::dvec3 angles{ 0, 0,360 / 2 / 3.14156 * angle};
-	VisiteurRotationPoint visSP(angles, centreRotation);
+	VisiteurRotationPoint visSP(glm::dvec3{ 0, 0, (y2 - y1) /3.0} , visCM.obtenirCentreDeMasse());
 	arbre_->accepterVisiteur(&visSP);
 }
 
-
+///////////////////////////////////////////////////////////////////////////////
+///
+/// @fn void agrandirSelection(int x1, int y1, int x2, int y2)
+///		Fait un agrandissement des objets sélectionnés.
+///		L'agrandissement est calculé en fonction du déplacement de (x1,y1) à (x2,y2)
+///
+/// @param[in]  x1 : abcisse du point initial
+/// @param[in]  y1 : ordonnee du point initial
+///
+/// @param[in]  x2 : abcisse du point initial
+/// @param[in]  y2 : ordonnee du point initial
+///
+/// @return Aucun
+///
+/// @remark : On doit donner des x,y qui ont été transformés par panel_GL.PointToClient(...)
+///
+///////////////////////////////////////////////////////////////////////////////
 void FacadeModele::agrandirSelection(int x1, int y1, int x2, int y2)
 {
-	// Visiter l'arbre pour trouver le centre de masse des noeuds selectionnés
-	glm::dvec3 centreDeMasse{ 0, 0, 0 };
-	VisiteurCentreDeMasse visCM;
-	arbre_->accepterVisiteur(&visCM);
-	centreDeMasse = visCM.obtenirCentreDeMasse();
+	double scale = glm::exp((y1 - y2) * glm::log(1.003)); // exp(b log(a)) = a^b
+	// Pour agrandir on multiplie le scale courrant par 1.003 et ce une fois pour chaque déplacement en y
+	// donc on multiplie par 1.003^(y1-y2).
+	// Si (y1-y2) est négatif, ceci va nous faire diviser par 1.003, donc l'objet va rapetisser.
 
-	// Calcul du facteur de scale
-	glm::dvec3 positionInitiale, positionFinale;
-	FacadeModele::obtenirInstance()->obtenirVue()->convertirClotureAVirtuelle(x1, y1, positionInitiale);
-	FacadeModele::obtenirInstance()->obtenirVue()->convertirClotureAVirtuelle(x2, y2, positionFinale);
-
-	glm::dvec3 vecteurInitial = positionInitiale - centreDeMasse;
-	glm::dvec3 vecteurFinal = positionFinale - centreDeMasse;
-
-	double scale = glm::length(vecteurFinal) / glm::length(vecteurInitial);
+	// Au final, on multiplie le scale courrant par 1.003 une fois pour chaque déplacement élémentaire vers le haut,
+	// On divise par 1.003 pour chaque déplacement élémentaire vers le bas.
 
 	VisiteurAgrandissement visAgr(glm::dvec3{ scale, scale, scale });
 	arbre_->accepterVisiteur(&visAgr);
@@ -538,4 +550,30 @@ void FacadeModele::rectangleElastique(int x1, int y1, int x2, int y2)
 	glEnable(GL_TEXTURE_2D);	
 	glFlush();
 	glDrawBuffer(GL_BACK);
+}
+
+
+///////////////////////////////////////////////////////////////////////////////
+///
+/// @fn void verifierCliqueDansTable(int x, int y)
+///		Vérifie si le point du monde correspondant à (x,y) est dans la table de
+///		façon empirique ou heuristique.
+///
+/// @param[in]  x : abcisse du point cliqué
+/// @param[in]  y : ordonnee du point cliqué
+///
+/// @return Aucun
+///
+/// @remark : On doit donner des x,y qui ont été transformés par panel_GL.PointToClient(...)
+///
+///////////////////////////////////////////////////////////////////////////////
+bool FacadeModele::verifierCliqueDansTable(int x, int y)
+{
+	glm::dvec3 positionDansLeMonde;
+	obtenirInstance()->obtenirVue()->convertirClotureAVirtuelle(x, y, positionDansLeMonde);
+	if (    108 < positionDansLeMonde.x && positionDansLeMonde.x < 272
+		&& -190 < positionDansLeMonde.y && positionDansLeMonde.y < 96  )
+		return true;
+	else
+		return false;
 }

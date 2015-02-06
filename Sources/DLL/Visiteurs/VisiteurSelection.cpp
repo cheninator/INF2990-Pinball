@@ -141,3 +141,4 @@ bool VisiteurSelection::traiter(NoeudAbstrait* noeud)
 	return true;
 
 }
+
