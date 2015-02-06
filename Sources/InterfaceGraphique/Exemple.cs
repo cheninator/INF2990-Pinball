@@ -934,6 +934,9 @@ namespace InterfaceGraphique
 
         public void creationObjet(MouseEventArgs e)
         {
+
+            if (FonctionsNatives.verifierCliqueDansTable(origin.X, origin.Y))
+            {
                 Afficher_Objet();
                 FonctionsNatives.positionObjet(panel_GL.PointToClient(MousePosition).X, panel_GL.PointToClient(MousePosition).Y, 0);
                 FonctionsNatives.rotate(angleX, 'x');
@@ -947,7 +950,7 @@ namespace InterfaceGraphique
                     Console.WriteLine("Click dans la table");
                 else
                     Console.WriteLine("Click dans pas la table");
-
+            }
         }
 
         private void Enregistrer_MenuItem_Click(object sender, EventArgs e)
