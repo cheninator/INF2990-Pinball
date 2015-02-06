@@ -468,21 +468,13 @@ void FacadeModele::tournerSelectionSouris(int x1, int y1, int x2, int y2)
 
 void FacadeModele::agrandirSelection(int x1, int y1, int x2, int y2)
 {
-	// Visiter l'arbre pour trouver le centre de masse des noeuds selectionnés
-	glm::dvec3 centreDeMasse{ 0, 0, 0 };
-	VisiteurCentreDeMasse visCM;
-	arbre_->accepterVisiteur(&visCM);
-	centreDeMasse = visCM.obtenirCentreDeMasse();
+	double scale = glm::exp((y1 - y2) * glm::log(1.003)); // exp(b log(a)) = a^b
+	// Pour agrandir on multiplie le scale courrant par 1.003 et ce une fois pour chaque déplacement en y
+	// donc on multiplie par 1.003^(y1-y2).
+	// Si (y1-y2) est négatif, ceci va nous faire diviser par 1.003, donc l'objet va rapetisser.
 
-	// Calcul du facteur de scale
-	glm::dvec3 positionInitiale, positionFinale;
-	FacadeModele::obtenirInstance()->obtenirVue()->convertirClotureAVirtuelle(x1, y1, positionInitiale);
-	FacadeModele::obtenirInstance()->obtenirVue()->convertirClotureAVirtuelle(x2, y2, positionFinale);
-
-	glm::dvec3 vecteurInitial = positionInitiale - centreDeMasse;
-	glm::dvec3 vecteurFinal = positionFinale - centreDeMasse;
-
-	double scale = glm::length(vecteurFinal) / glm::length(vecteurInitial);
+	// Au final, on multiplie le scale courrant par 1.003 une fois pour chaque déplacement élémentaire vers le haut,
+	// On divise par 1.003 pour chaque déplacement élémentaire vers le bas.
 
 	VisiteurAgrandissement visAgr(glm::dvec3{ scale, scale, scale });
 	arbre_->accepterVisiteur(&visAgr);
