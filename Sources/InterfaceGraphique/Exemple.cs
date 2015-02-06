@@ -896,19 +896,15 @@ namespace InterfaceGraphique
         {
             // TODO PHIL : Faire que ceci n'arrive que quand on relâche le bouton de gauche et qu'on n'a pas bougé de plus de 3 pixels.
             int selection = FonctionsNatives.selectionnerObjetSousPointClique(panel_GL.PointToClient(MousePosition).X, panel_GL.PointToClient(MousePosition).Y, panel_GL.Height, panel_GL.Height);
-            if (selection != 0)
+            if (selection == 0)
             {
-                bouton_Deplacement.Enabled = true;
-                bouton_Rotation.Enabled = true;
-                bouton_Scaling.Enabled = true;
-                bouton_Duplication.Enabled = true;
+                outilsEnable(false);
+                proprietesEnable(false);
             }
             else
             {
-                bouton_Deplacement.Enabled = false;
-                bouton_Rotation.Enabled = false;
-                bouton_Scaling.Enabled = false;
-                bouton_Duplication.Enabled = false;
+                outilsEnable(true);
+                proprietesEnable(true);
             }
         }
 
@@ -920,21 +916,20 @@ namespace InterfaceGraphique
         public void selectionMultiple()
         {
             int selection = FonctionsNatives.selectionMultiple();
+            proprietesEnable(false);
+            if (selection == 0)
+            {
+                outilsEnable(false);
+            }
+            else 
+            {
+                if (selection == 1)
+                {
+                    proprietesEnable(true);
+                }
+                outilsEnable(true);
+            }
 
-            if (selection != 0)
-            {
-                bouton_Deplacement.Enabled = true;
-                bouton_Rotation.Enabled = true;
-                bouton_Scaling.Enabled = true;
-                bouton_Duplication.Enabled = true;
-            }
-            else
-            {
-                bouton_Deplacement.Enabled = false;
-                bouton_Rotation.Enabled = false;
-                bouton_Scaling.Enabled = false;
-                bouton_Duplication.Enabled = false;
-            }
         }
 
         public void creationObjet(MouseEventArgs e)
@@ -963,7 +958,22 @@ namespace InterfaceGraphique
                 FonctionsNatives.creerXML(pathXML, pathXML.Capacity, prop);
         }
 
-
+        private void proprietesEnable(bool active)
+        {
+            Xbox.Enabled = active;
+            Ybox.Enabled = active;
+            Anglebox.Enabled = active;
+            FMEbox.Enabled = active;
+            OK_prop_bouton.Enabled = active;
+            Annuler_prop_boutn.Enabled = active;
+        }
+        private void outilsEnable(bool active)
+        {
+            bouton_Deplacement.Enabled = active;
+            bouton_Rotation.Enabled = active;
+            bouton_Scaling.Enabled = active;
+            bouton_Duplication.Enabled = active;
+        }
         private bool clickValide(Point origin, Point destination)
         {
             return ((Math.Abs(destination.X - origin.X) < 3)
