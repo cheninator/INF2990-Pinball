@@ -133,7 +133,7 @@ bool VisiteurSelection::traiter(NoeudAbstrait* noeud)
 	}
 	else
 	{
-		// noeud->assignerSelection(false);
+		noeud->assignerSelection(false);
 	}
 
 	if (noeud->estSelectionne()) nbObjetsSelectionne_++;
@@ -141,3 +141,4 @@ bool VisiteurSelection::traiter(NoeudAbstrait* noeud)
 	return true;
 
 }
+

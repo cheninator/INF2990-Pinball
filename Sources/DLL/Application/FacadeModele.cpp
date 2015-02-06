@@ -455,10 +455,12 @@ void FacadeModele::tournerSelectionSouris(int x1, int y1, int x2, int y2)
 
 	double sinAngle = glm::length(produitVectoriel) / glm::length(vecteurInitial) / glm::length(vecteurInitial);
 	// Le signe de la composante en z donne le sens dans le quel on doit tourner
-	double angle = produitVectoriel.z > 0 ? asin(sinAngle) : - asin(sinAngle); 
+	double angle = produitVectoriel.z > 0 ? asin(sinAngle) : -asin(sinAngle);
 
 	// Visiter l'arbre et faire la rotation.
-	glm::dvec3 angles{ 0, 0,360 / 2 / 3.14156 * angle};
+	// glm::dvec3 angles{ 0, 0,360 / 2 / 3.14156 * angle};
+	glm::dvec3 angles{ 0, 0, (y2 - y1) /3.0};
+
 	VisiteurRotationPoint visSP(angles, centreRotation);
 	arbre_->accepterVisiteur(&visSP);
 }
