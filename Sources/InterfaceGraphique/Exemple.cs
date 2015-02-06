@@ -792,7 +792,7 @@ namespace InterfaceGraphique
         {
             currentP = panel_GL.PointToClient(MousePosition);
 
-            if (!(clickValide(origin, currentP)) && (etat is EtatSelection) && !(etat is EtatSelectionMultiple))
+            if (!(clickValide(origin, currentP)) && (etat is EtatSelection) && !(etat is EtatSelectionMultiple) && e.Button == MouseButtons.Left)
             {
                 etat = new EtatSelectionMultiple(this);
             }
