@@ -13,6 +13,7 @@
 
 #include <windows.h>
 #include <string>
+#include "glm/glm.hpp"
 
 class NoeudAbstrait;
 class ArbreRenduINF2990;
@@ -79,6 +80,9 @@ public:
    /// xxxxx
    void rectangleElastique(int x1, int y1, int x2, int y2);
 
+   /// xxxxx
+   int selectionMultiple();
+
 private:
    /// Constructeur par défaut.
    FacadeModele() = default;
@@ -107,6 +111,7 @@ private:
    /// Arbre de rendu contenant les différents objets de la scène.
    ArbreRenduINF2990* arbre_{ nullptr };
 
+   glm::dvec3 selectionBasGauche_, selectionHautDroit_;
 };
 
 

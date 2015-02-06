@@ -112,12 +112,20 @@ bool VisiteurSelectionMultiple::traiter(NoeudTable* table)
 ////////////////////////////////////////////////////////////////////////
 bool VisiteurSelectionMultiple::traiter(NoeudAbstrait* noeud)
 {
-	std::cout << "visite d'un noeudAbstrait avec identifiant " << noeud->getNumero() << std::endl;
+	glm::dvec3 origine = noeud->obtenirPositionRelative();
 
-	glm::dvec3 origineNoeud = noeud->obtenirPositionRelative();
+	utilitaire::BoiteEnglobante boite = utilitaire::calculerBoiteEnglobante(*noeud->obtenirModele());
 
-	if (utilitaire::DANS_LIMITESXY(origineNoeud.x, selectionBasGauche_.x, selectionBasGauche_.x,
-		                           origineNoeud.y, selectionBasGauche_.y, selectionBasGauche_.y))
+	std::cout << "huehue " << boite.coinMin.x << "  " << boite.coinMin.y << "  " << boite.coinMax.x << "  " << boite.coinMax.y << "  " << std::endl;
+
+	if (utilitaire::DANS_LIMITESXY(boite.coinMin.x + origine.x, selectionBasGauche_.x, selectionHautDroit_.x,
+		                           boite.coinMin.y + origine.y, selectionBasGauche_.y, selectionHautDroit_.y) ||
+		utilitaire::DANS_LIMITESXY(boite.coinMax.x + origine.x, selectionBasGauche_.x, selectionHautDroit_.x,
+		                           boite.coinMin.y + origine.y, selectionBasGauche_.y, selectionHautDroit_.y) ||
+		utilitaire::DANS_LIMITESXY(boite.coinMin.x + origine.x, selectionBasGauche_.x, selectionHautDroit_.x,
+								   boite.coinMax.y + origine.y, selectionBasGauche_.y, selectionHautDroit_.y) ||
+		utilitaire::DANS_LIMITESXY(boite.coinMax.x + origine.x, selectionBasGauche_.x, selectionHautDroit_.x,
+								   boite.coinMax.y + origine.y, selectionBasGauche_.y, selectionHautDroit_.y))
 	{
 		std::cout << "Noeud de type " << noeud->getType() << " selectionne " << std::endl;
 		noeud->assignerSelection(true);

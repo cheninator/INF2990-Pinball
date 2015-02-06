@@ -12,7 +12,7 @@
 
 #include "NoeudAbstrait.h"
 #include "NoeudComposite.h"
-#include "Visiteurs/VisiteurAbstrait.h"
+#include "VisiteurAbstrait.h"
 #include "glm\glm.hpp"
 
 ///////////////////////////////////////////////////////////////////////////

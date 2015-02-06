@@ -685,23 +685,29 @@ extern "C"
 	}
 
 
-	__declspec(dllexport) void tournerSelectionSouris(int x1, int y1, int x2, int y2)
+	__declspec(dllexport) void __cdecl tournerSelectionSouris(int x1, int y1, int x2, int y2)
 	{
 		calculerTransition();
 		FacadeModele::obtenirInstance()->tournerSelectionSouris(x1, y1, x2, y2);
 	}
 
 
-	__declspec(dllexport) void agrandirSelection(int x1, int y1, int x2, int y2)
+	__declspec(dllexport) void __cdecl agrandirSelection(int x1, int y1, int x2, int y2)
 	{
 		calculerTransition();
 		FacadeModele::obtenirInstance()->agrandirSelection(x1, y1, x2, y2);
 	}
 
-	__declspec(dllexport) void rectangleElastique(int x1, int y1, int x2, int y2)
+	__declspec(dllexport) void __cdecl rectangleElastique(int x1, int y1, int x2, int y2)
 	{
 		calculerTransition();
 		FacadeModele::obtenirInstance()->rectangleElastique(x1, y1, x2, y2);
+	}
+
+	__declspec(dllexport) int __cdecl selectionMultiple(void)
+	{
+		calculerTransition();
+		return FacadeModele::obtenirInstance()->selectionMultiple();
 	}
 
 }

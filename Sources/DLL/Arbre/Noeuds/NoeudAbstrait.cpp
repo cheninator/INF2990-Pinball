@@ -230,6 +230,10 @@ unsigned int NoeudAbstrait::obtenirNombreEnfants() const
 	return 0;
 }
 
+modele::Modele3D const* NoeudAbstrait::obtenirModele() const
+{
+	return modele_;
+}
 
 ////////////////////////////////////////////////////////////////////////
 ///

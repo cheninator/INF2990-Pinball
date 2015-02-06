@@ -79,7 +79,7 @@ namespace InterfaceGraphique
                     FonctionsNatives.dessinerOpenGL();
 
                     if (etat is EtatSelectionMultiple)
-                        selectionMultiple();
+                        rectangleElastique();
                 });
             }
             catch (Exception)
@@ -810,11 +810,12 @@ namespace InterfaceGraphique
                 {
                     FonctionsNatives.zoomElastique(origin.X, origin.Y, destination.X, destination.Y);
                 }
-                if (etat is EtatSelectionMultiple)
+                else if (etat is EtatSelectionMultiple)
                 {
+                    etat.traiterSouris(e);
                     etat = new EtatSelection(this);
                 }
-                if(clickValide(origin,destination))
+                else if(clickValide(origin,destination))
                 {                    
                     etat.traiterSouris(e);
                 }
@@ -909,9 +910,29 @@ namespace InterfaceGraphique
             }
         }
 
-        public void selectionMultiple()
+        public void rectangleElastique()
         {
             FonctionsNatives.rectangleElastique(origin.X, origin.Y, currentP.X, currentP.Y);
+        }
+
+        public void selectionMultiple()
+        {
+            int selection = FonctionsNatives.selectionMultiple();
+
+            if (selection != 0)
+            {
+                bouton_Deplacement.Enabled = true;
+                bouton_Rotation.Enabled = true;
+                bouton_Scaling.Enabled = true;
+                bouton_Duplication.Enabled = true;
+            }
+            else
+            {
+                bouton_Deplacement.Enabled = false;
+                bouton_Rotation.Enabled = false;
+                bouton_Scaling.Enabled = false;
+                bouton_Duplication.Enabled = false;
+            }
         }
 
         public void creationObjet(MouseEventArgs e)
@@ -962,9 +983,6 @@ namespace InterfaceGraphique
             else
                 FonctionsNatives.zoomIn();
         }
-
-
-   
 
 
 
@@ -1077,5 +1095,8 @@ namespace InterfaceGraphique
 
         [DllImport(@"Noyau.dll", CallingConvention = CallingConvention.Cdecl)]
         public static extern void rectangleElastique(int x1, int y1, int x2, int y2);
+
+        [DllImport(@"Noyau.dll", CallingConvention = CallingConvention.Cdecl)]
+        public static extern int selectionMultiple();
     }
 }
