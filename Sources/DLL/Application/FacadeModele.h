@@ -79,6 +79,9 @@ public:
    /// xxxxx
    void rectangleElastique(int x1, int y1, int x2, int y2);
 
+   ///
+   bool verifierCliqueDansTable(int x, int y);
+
 private:
    /// Constructeur par défaut.
    FacadeModele() = default;

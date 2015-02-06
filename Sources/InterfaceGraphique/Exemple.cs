@@ -924,7 +924,12 @@ namespace InterfaceGraphique
                 FonctionsNatives.scaleObjet(scale);
                 previousP.X = panel_GL.PointToClient(MousePosition).X;
                 previousP.Y = panel_GL.PointToClient(MousePosition).Y;
-           
+
+                if (FonctionsNatives.verifierCliqueDansTable(panel_GL.PointToClient(MousePosition).X, panel_GL.PointToClient(MousePosition).Y))
+                    Console.WriteLine("Click dans la table");
+                else
+                    Console.WriteLine("Click dans pas la table");
+
         }
 
         private void Enregistrer_MenuItem_Click(object sender, EventArgs e)
@@ -1077,5 +1082,8 @@ namespace InterfaceGraphique
 
         [DllImport(@"Noyau.dll", CallingConvention = CallingConvention.Cdecl)]
         public static extern void rectangleElastique(int x1, int y1, int x2, int y2);
+
+        [DllImport(@"Noyau.dll", CallingConvention = CallingConvention.Cdecl)]
+        public static extern bool verifierCliqueDansTable(int x, int y);
     }
 }

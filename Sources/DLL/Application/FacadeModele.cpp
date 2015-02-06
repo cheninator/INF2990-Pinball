@@ -400,6 +400,7 @@ int FacadeModele::selectionnerObjetSousPointClique(int i, int j, int hauteur, in
 	// Passer le visisteur a l<arbre
 	arbre_->accepterVisiteur(&visSel);
 	// Demander au visiteur ce qu'il a trouvé et faire quelque chose en conséquence
+	std::cout << "Valeur de retour de la sélection : " << visSel.obtenirNbObjetsSelectionne() << std::endl;
 	return visSel.obtenirNbObjetsSelectionne();
 }
 
@@ -525,4 +526,17 @@ void FacadeModele::rectangleElastique(int x1, int y1, int x2, int y2)
 	glEnable(GL_TEXTURE_2D);	
 	glFlush();
 	glDrawBuffer(GL_BACK);
+}
+
+
+
+bool FacadeModele::verifierCliqueDansTable(int x, int y)
+{
+	glm::dvec3 positionDansLeMonde;
+	obtenirInstance()->obtenirVue()->convertirClotureAVirtuelle(x, y, positionDansLeMonde);
+	if (    108 < positionDansLeMonde.x && positionDansLeMonde.x < 272
+		&& -190 < positionDansLeMonde.y && positionDansLeMonde.y < 96  )
+		return true;
+	else
+		return false;
 }

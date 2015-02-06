@@ -680,28 +680,57 @@ extern "C"
 	///////////////////////////////////////////////////////////////////////////////
 	__declspec(dllexport) void __cdecl deplacerSelection(int x1, int y1, int x2, int y2)
 	{
-		calculerTransition();
 		FacadeModele::obtenirInstance()->deplacerSelection(x1, y1, x2, y2);
 	}
 
-
+	///////////////////////////////////////////////////////////////////////////////
+	///
+	/// @fn __declspec(dllexport) void __cdecl 
+	///
+	/// @return Aucun
+	///
+	///////////////////////////////////////////////////////////////////////////////
 	__declspec(dllexport) void tournerSelectionSouris(int x1, int y1, int x2, int y2)
 	{
-		calculerTransition();
 		FacadeModele::obtenirInstance()->tournerSelectionSouris(x1, y1, x2, y2);
 	}
 
-
+	///////////////////////////////////////////////////////////////////////////////
+	///
+	/// @fn __declspec(dllexport) void __cdecl 
+	///
+	/// @return Aucun
+	///
+	///////////////////////////////////////////////////////////////////////////////
 	__declspec(dllexport) void agrandirSelection(int x1, int y1, int x2, int y2)
 	{
-		calculerTransition();
 		FacadeModele::obtenirInstance()->agrandirSelection(x1, y1, x2, y2);
 	}
 
+	///////////////////////////////////////////////////////////////////////////////
+	///
+	/// @fn __declspec(dllexport) void __cdecl 
+	///
+	/// @return Aucun
+	///
+	///////////////////////////////////////////////////////////////////////////////
 	__declspec(dllexport) void rectangleElastique(int x1, int y1, int x2, int y2)
 	{
 		calculerTransition();
 		FacadeModele::obtenirInstance()->rectangleElastique(x1, y1, x2, y2);
 	}
+
+	///////////////////////////////////////////////////////////////////////////////
+	///
+	/// @fn __declspec(dllexport) void __cdecl 
+	///
+	/// @return Aucun
+	///
+	///////////////////////////////////////////////////////////////////////////////
+	__declspec(dllexport) bool verifierCliqueDansTable(int x, int y)
+	{
+		return FacadeModele::obtenirInstance()->verifierCliqueDansTable(x, y);
+	}
+
 
 }
