@@ -40,7 +40,8 @@ VisiteurDuplication::VisiteurDuplication()
 VisiteurDuplication::VisiteurDuplication(glm::dvec3 pointDansLeMonde)
 {
 	pointDansLeMonde_ = pointDansLeMonde;
-	minX = maxX = minY = maxY = 0;
+	maxX = maxY = 0;
+	minX = minY = std::numeric_limits<int>::max();
 }
 
 
@@ -55,7 +56,10 @@ VisiteurDuplication::VisiteurDuplication(glm::dvec3 pointDansLeMonde)
 ////////////////////////////////////////////////////////////////////////
 VisiteurDuplication::~VisiteurDuplication()
 {
+	for (unsigned int i = 0; i < copies_.size(); i++)
+		delete copies_[i];
 
+	copies_.clear();
 }
 
 
@@ -101,8 +105,25 @@ bool VisiteurDuplication::traiter(NoeudTable* table)
 	// Traiter les enfants selectionnés de la table
 	for (unsigned int i = 0; i < table->obtenirNombreEnfants(); i++)
 	{
+		// Effectuer une copie des enfants selectionnés et les ajouter à la structure de donnée
 		table->getEnfant(i)->accepterVisiteur(this);
 	}
+
+	// Si la structure ne contient qu'un seul objet
+	if (copies_.size() == 1)
+	{
+		copies_[0]->assignerPositionRelative(pointDansLeMonde_);
+	}
+
+	// Si la structure contient plusieurs objets, trouver le centre de selection
+	else if (copies_.size() > 1)
+	{
+		double centreX = (maxX - minX) / 2.0;
+		double centreY = (maxY - minY) / 2.0;
+	}
+
+
+
 	return true;
 }
 
@@ -122,7 +143,27 @@ bool VisiteurDuplication::traiter(NoeudTable* table)
 ////////////////////////////////////////////////////////////////////////
 bool VisiteurDuplication::traiter(NoeudAbstrait* noeud)
 {
+	if (noeud->estSelectionne())
+	{
+		NoeudAbstrait* copie = new NoeudAbstrait();
+		copie->assignerRotation(noeud->obtenirRotation());
+		copie->assignerEchelle(noeud->obtenirAgrandissement());
+		copie->assignerPositionRelative(noeud->obtenirPositionRelative());
 
+		if (maxX < noeud->obtenirPositionRelative().x)
+			maxX = noeud->obtenirPositionRelative().x;
+
+		if (minX > noeud->obtenirPositionRelative().x)
+			minX = noeud->obtenirPositionRelative().x;
+
+		if (maxY < noeud->obtenirPositionRelative().y)
+			maxY = noeud->obtenirPositionRelative().y;
+
+		if (minY > noeud->obtenirPositionRelative().y)
+			minY = noeud->obtenirPositionRelative().y;
+
+		copies_.push_back(copie);
+	}
 
 	return true;
 
