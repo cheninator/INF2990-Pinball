@@ -894,7 +894,7 @@ namespace InterfaceGraphique
         {
             // TODO PHIL : Faire que ceci n'arrive que quand on relâche le bouton de gauche et qu'on n'a pas bougé de plus de 3 pixels.
             int selection = FonctionsNatives.selectionnerObjetSousPointClique(panel_GL.PointToClient(MousePosition).X, panel_GL.PointToClient(MousePosition).Y, panel_GL.Height, panel_GL.Height,ctrlDown);
-            if (selection == 0)
+            if (selection  == 0)
             {
                 outilsEnable(false);
                 proprietesEnable(false);
