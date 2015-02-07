@@ -153,6 +153,8 @@ namespace InterfaceGraphique
             {
                 etat = null;
                 etat = new EtatNone(this);
+                int selection = FonctionsNatives.selectionnerObjetSousPointClique(0,0, panel_GL.Height, panel_GL.Height, false);
+
             }
             if (e.KeyChar == 'f')
             {
@@ -895,7 +897,7 @@ namespace InterfaceGraphique
         public void selection(MouseEventArgs e) 
         {
             // TODO PHIL : Faire que ceci n'arrive que quand on relâche le bouton de gauche et qu'on n'a pas bougé de plus de 3 pixels.
-            int selection = FonctionsNatives.selectionnerObjetSousPointClique(panel_GL.PointToClient(MousePosition).X, panel_GL.PointToClient(MousePosition).Y, panel_GL.Height, panel_GL.Height);
+            int selection = FonctionsNatives.selectionnerObjetSousPointClique(panel_GL.PointToClient(MousePosition).X, panel_GL.PointToClient(MousePosition).Y, panel_GL.Height, panel_GL.Height,ctrlDown);
             if (selection == 0)
             {
                 outilsEnable(false);
@@ -961,7 +963,7 @@ namespace InterfaceGraphique
                 FonctionsNatives.creerXML(pathXML, pathXML.Capacity, prop);
         }
 
-        private void proprietesEnable(bool active)
+        public void proprietesEnable(bool active)
         {
             Xbox.Enabled = active;
             Ybox.Enabled = active;
@@ -970,7 +972,7 @@ namespace InterfaceGraphique
             OK_prop_bouton.Enabled = active;
             Annuler_prop_boutn.Enabled = active;
         }
-        private void outilsEnable(bool active)
+        public void outilsEnable(bool active)
         {
             bouton_Deplacement.Enabled = active;
             bouton_Rotation.Enabled = active;
@@ -1004,6 +1006,12 @@ namespace InterfaceGraphique
                 FonctionsNatives.zoomIn();
         }
 
+        public void deselection()
+        {
+          //  FonctionsNatives.selectionnerObjetSousPointClique(400, 400, panel_GL.Height, panel_GL.Width);
+            proprietesEnable(false);
+            outilsEnable(false);
+        }
 
 
     }
@@ -1090,7 +1098,7 @@ namespace InterfaceGraphique
         public static extern IntPtr ouvrirXML(StringBuilder path, int taille);
 
         [DllImport(@"Noyau.dll", CallingConvention = CallingConvention.Cdecl)]
-        public static extern int selectionnerObjetSousPointClique(int i, int j,int largeur, int hauteur);
+        public static extern int selectionnerObjetSousPointClique(int i, int j,int largeur, int hauteur,bool ctrlDown = false);
 
         [DllImport(@"Noyau.dll", CallingConvention = CallingConvention.Cdecl)]
         public static extern void zoomIn();

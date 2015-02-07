@@ -37,11 +37,12 @@ VisiteurSelection::VisiteurSelection()
 /// @return Aucune (constructeur).
 ///
 ////////////////////////////////////////////////////////////////////////
-VisiteurSelection::VisiteurSelection(glm::dvec3 pointDansLeMonde, int valeurStencil)
+VisiteurSelection::VisiteurSelection(glm::dvec3 pointDansLeMonde, int valeurStencil, bool ctrlDown)
 :nbObjetsSelectionne_{ 0 }
 {
 	pointDansLeMonde_ = pointDansLeMonde;
 	valeurStencil_ = valeurStencil;
+	ctrlDown_ = ctrlDown;
 }
 
 
@@ -132,6 +133,11 @@ bool VisiteurSelection::traiter(NoeudTable* table)
 ////////////////////////////////////////////////////////////////////////
 bool VisiteurSelection::traiter(NoeudAbstrait* noeud)
 {
+	if (ctrlDown_ == true)
+	{
+		traiterCtrl(noeud);
+		return true;
+	}
 
 	double distance = glm::dot(pointDansLeMonde_ - noeud->obtenirPositionRelative(), pointDansLeMonde_ - noeud->obtenirPositionRelative());
 	distance = sqrt(distance);
@@ -154,3 +160,47 @@ bool VisiteurSelection::traiter(NoeudAbstrait* noeud)
 
 }
 
+
+////////////////////////////////////////////////////////////////////////
+///
+/// @fn bool VisiteurSelection::traiterCtrl(NoeudAbstrait* noeud)
+///
+/// Cette fonction traite les enfants de l'arbre de rendu. Si ses enfants ont des enfants
+/// ils seront aussi traités. C'est le cas special du CONTROL KEY
+///
+/// Cette fonction retourne true pour dire que l'opération s'est
+/// fait correctement
+///
+/// @return Retourne toujours true
+///
+////////////////////////////////////////////////////////////////////////
+
+bool VisiteurSelection::traiterCtrl(NoeudAbstrait* noeud)
+{
+
+	double distance = glm::dot(pointDansLeMonde_ - noeud->obtenirPositionRelative(), pointDansLeMonde_ - noeud->obtenirPositionRelative());
+	distance = sqrt(distance);
+	//std::cout << "visite d'un noeudAbstrait avec identifiant " << noeud->getNumero() << std::endl;
+	//std::cout << noeud->obtenirPositionRelative().x << ","<< noeud->obtenirPositionRelative().y << "," << noeud->obtenirPositionRelative().z << ",      Distance:" << distance << std::endl;
+
+	if (valeurStencil_ == noeud->getNumero() && noeud->estSelectionnable())
+	{
+		if (noeud->estSelectionne())
+		{
+			std::cout << "Noeud de type " << noeud->getType() << " selectionne  AVEC CTRL" << std::endl;
+
+			noeud->assignerSelection(false);
+			if (!(noeud->estSelectionne()))
+				nbObjetsSelectionne_--;
+		}
+		else
+		{
+			std::cout << "Noeud de type " << noeud->getType() << " deselectionne " << std::endl;
+
+			noeud->assignerSelection(true);
+			if (noeud->estSelectionne())
+				nbObjetsSelectionne_++;
+		}
+	}
+	return true;
+}

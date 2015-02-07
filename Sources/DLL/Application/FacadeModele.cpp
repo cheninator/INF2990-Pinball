@@ -376,7 +376,7 @@ void FacadeModele::animer(float temps)
 /// @return NoeudAbstrait.
 ///
 ////////////////////////////////////////////////////////////////////////
-int FacadeModele::selectionnerObjetSousPointClique(int i, int j, int hauteur, int largeur)
+int FacadeModele::selectionnerObjetSousPointClique(int i, int j, int hauteur, int largeur, bool ctrlDown)
 {
 	glm::dvec3 pointDansLeMonde;
 	vue_->convertirClotureAVirtuelle(i, j, pointDansLeMonde);
@@ -395,7 +395,7 @@ int FacadeModele::selectionnerObjetSousPointClique(int i, int j, int hauteur, in
 
 
 	// Creer un visiteur,
-	VisiteurSelection visSel(pointDansLeMonde, valeurStencil);
+	VisiteurSelection visSel(pointDansLeMonde, valeurStencil, ctrlDown);
 	// Passer le visisteur a l<arbre
 	arbre_->accepterVisiteur(&visSel);
 	// Demander au visiteur ce qu'il a trouvé et faire quelque chose en conséquence

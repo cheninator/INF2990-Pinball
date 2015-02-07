@@ -88,10 +88,10 @@ extern "C"
 	/// @return Aucune.
 	///
 	////////////////////////////////////////////////////////////////////////
-	__declspec(dllexport) int __cdecl selectionnerObjetSousPointClique(int i, int j,int hauteur, int largeur)
+	__declspec(dllexport) int __cdecl selectionnerObjetSousPointClique(int i, int j, int hauteur, int largeur, bool ctrlDown)
 	{
 		calculerTransition();
-		return FacadeModele::obtenirInstance()->selectionnerObjetSousPointClique(i, j, hauteur, largeur);
+		return FacadeModele::obtenirInstance()->selectionnerObjetSousPointClique(i, j, hauteur, largeur, ctrlDown);
 	}
 
 	////////////////////////////////////////////////////////////////////////

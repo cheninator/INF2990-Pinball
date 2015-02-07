@@ -121,7 +121,9 @@ namespace InterfaceGraphique
     class EtatCreation : Etat
     {
 
-        public EtatCreation(Exemple form) : base(form) { }
+        public EtatCreation(Exemple form) : base(form) {
+          
+        }
 
         public override bool traiterClavier(KeyEventArgs e)
         {
@@ -188,7 +190,10 @@ namespace InterfaceGraphique
     class EtatNone : Etat
     {
 
-        public EtatNone(Exemple form) : base(form) { }
+        public EtatNone(Exemple form) : base(form) {
+
+            form_.deselection();
+            }
 
         public override bool traiterClavier(KeyEventArgs e)
         {
