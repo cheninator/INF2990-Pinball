@@ -756,8 +756,6 @@ extern "C"
 		FacadeModele::obtenirInstance()->obtenirArbreRenduINF2990()->getEnfant(0)->deselectionnerTout();
 	}
 
-<<<<<<< HEAD
-
 	///////////////////////////////////////////////////////////////////////////////
 	///
 	/// @fn __declspec(dllexport)  void dupliquer(void)
@@ -768,9 +766,9 @@ extern "C"
 	///////////////////////////////////////////////////////////////////////////////
 	__declspec(dllexport) void dupliquer()
 	{
-
 		FacadeModele::obtenirInstance()->obtenirArbreRenduINF2990();
-=======
+	}
+
 	///////////////////////////////////////////////////////////////////////////////
 	///
 	/// @fn __declspec(dllexport)  int getPositionX(void)
@@ -817,6 +815,5 @@ extern "C"
 		}
 
 		return positionY;
->>>>>>> 2d738fcaed7e9ef37c4611c4a466ad6cf37422ae
 	}
 }
