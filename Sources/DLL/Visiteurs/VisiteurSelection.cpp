@@ -191,7 +191,10 @@ bool VisiteurSelection::traiterCtrl(NoeudAbstrait* noeud)
 
 			noeud->assignerSelection(false);
 			if (!(noeud->estSelectionne()))
-				nbObjetsSelectionne_--;
+			{
+
+			}	
+			
 		}
 		else
 		{
