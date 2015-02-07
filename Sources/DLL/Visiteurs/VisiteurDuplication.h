@@ -52,7 +52,7 @@ private:
 	std::vector<NoeudAbstrait*> copies_;
 
 	// Pour le cas ou il y a eu selection multiple
-	int minX, maxX, minY, maxY;
+	double minX, maxX, minY, maxY;
 
 };
 

@@ -118,11 +118,26 @@ bool VisiteurDuplication::traiter(NoeudTable* table)
 	// Si la structure contient plusieurs objets, trouver le centre de selection
 	else if (copies_.size() > 1)
 	{
+		// Il faudra assigner la position relative des objets copiés en fonction du centre de selection
 		double centreX = (maxX - minX) / 2.0;
 		double centreY = (maxY - minY) / 2.0;
+
+		// Difference entre la position de l'objet et le centre de selection
+		double deltaX, deltaY;
+		double posX, posY;
+
+		for (unsigned int i = 0; i < copies_.size(); i++)
+		{
+			posX = copies_[i]->obtenirPositionRelative().x;
+			posY = copies_[i]->obtenirPositionRelative().y;
+
+			deltaX = posX - centreX;
+			deltaY = posY - centreY;
+
+			copies_[i]->assignerPositionRelative({posX + pointDansLeMonde_.x, posY + pointDansLeMonde_.y, 0.0});
+		}
+
 	}
-
-
 
 	return true;
 }
