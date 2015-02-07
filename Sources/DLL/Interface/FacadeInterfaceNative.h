@@ -46,6 +46,8 @@ extern "C" {
 	__declspec(dllexport) void rectangleElastique(int x1, int y1, int x2, int y2);
 	__declspec(dllexport) int selectionMultiple(void);
 	__declspec(dllexport) bool verifierCliqueDansTable(int x, int y);
+
+	__declspec(dllexport) void dupliquer();
 }
 
 #endif // __FACADE_INTERFACE_NATIVE_H__

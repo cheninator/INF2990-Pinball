@@ -79,13 +79,15 @@ public:
 
    /// xxxxx
    void rectangleElastique(int x1, int y1, int x2, int y2);
-
-
+   
    /// xxxxx
    int selectionMultiple();
 
    /// Vérifier si un point cliqué est dans la table
    bool verifierCliqueDansTable(int x, int y);
+
+   // Pour la duplication d'objets selectionnés
+   void dupliquer();
 
 private:
    /// Constructeur par défaut.

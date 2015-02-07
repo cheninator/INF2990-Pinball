@@ -32,6 +32,7 @@
 #include "../Visiteurs/VisiteurCentreDeMasse.h"
 #include "../Visiteurs/VisiteurRotationPoint.h"
 #include "../Visiteurs/VisiteurAgrandissement.h"
+#include "../Visiteurs/VisiteurDuplication.h"
 
 #include "VueOrtho.h"
 #include "Camera.h"
@@ -385,21 +386,20 @@ int FacadeModele::selectionnerObjetSousPointClique(int i, int j, int hauteur, in
 	vue_->convertirClotureAVirtuelle(i, j, pointDansLeMonde);
 	std::cout << "Position du click dans le monde : (" << pointDansLeMonde.x << ", " << pointDansLeMonde.y << ", 0)" << std::endl;
 	
-
 	int valeurStencil = 0;
-
 	glReadPixels(i ,hauteur -j , 1, 1, GL_STENCIL_INDEX, GL_UNSIGNED_INT, &valeurStencil);
 
 	std::cout << "Valeur du stencil:" << valeurStencil << std::endl;
 
-
-
 	// Creer un visiteur,
 	VisiteurSelection visSel(pointDansLeMonde, valeurStencil, ctrlDown);
-	// Passer le visisteur a l<arbre
+
+	// Passer le visisteur a l'arbre
 	arbre_->accepterVisiteur(&visSel);
+
 	// Demander au visiteur ce qu'il a trouvé et faire quelque chose en conséquence
 	std::cout << "Valeur de retour de la sélection : " << visSel.obtenirNbObjetsSelectionne() << std::endl;
+
 	return visSel.obtenirNbObjetsSelectionne();
 }
 
@@ -506,6 +506,7 @@ void FacadeModele::agrandirSelection(int x1, int y1, int x2, int y2)
 
 }
 
+
 void FacadeModele::rectangleElastique(int x1, int y1, int x2, int y2)
 {
 	glm::dvec3 positionInitiale, positionActuelle;
@@ -577,4 +578,19 @@ bool FacadeModele::verifierCliqueDansTable(int x, int y)
 		return true;
 	else
 		return false;
+}
+
+
+///////////////////////////////////////////////////////////////////////////////
+///
+/// @fn void dupliquer()
+///		Duplique les objets selectionnés
+///
+/// @return Aucun
+///
+///////////////////////////////////////////////////////////////////////////////
+void FacadeModele::dupliquer()
+{
+	glm::dvec3 positionDansLeMonde;
+	
 }

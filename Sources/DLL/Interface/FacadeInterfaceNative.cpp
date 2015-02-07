@@ -473,10 +473,9 @@ extern "C"
 	__declspec(dllexport) void removeObject(void)
 	{
 		calculerTransition();
-		if (objet->estEnregistrable() && objet != nullptr)
+		if (objet->estModifiable() && objet != nullptr)
 		{
 			FacadeModele::obtenirInstance()->obtenirArbreRenduINF2990()->effacer(objet);
-			//objet = nullptr;
 		}
 	}
 
@@ -755,5 +754,20 @@ extern "C"
 	__declspec(dllexport) void deselectAll(void)
 	{
 		FacadeModele::obtenirInstance()->obtenirArbreRenduINF2990()->getEnfant(0)->deselectionnerTout();
+	}
+
+
+	///////////////////////////////////////////////////////////////////////////////
+	///
+	/// @fn __declspec(dllexport)  void dupliquer(void)
+	/// @return Aucun
+	///
+	/// @remark : Ça duplique les objets selectionnés
+	///
+	///////////////////////////////////////////////////////////////////////////////
+	__declspec(dllexport) void dupliquer()
+	{
+
+		FacadeModele::obtenirInstance()->obtenirArbreRenduINF2990();
 	}
 }
