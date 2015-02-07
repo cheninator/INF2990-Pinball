@@ -348,8 +348,8 @@ namespace InterfaceGraphique
         private void panel_GL_MouseClick(object sender, MouseEventArgs e)
         {
             Console.Write(panel_GL.PointToClient(MousePosition));
-            Xbox.Text = panel_GL.PointToClient(MousePosition).X.ToString();
-            Ybox.Text = (panel_GL.PointToClient(MousePosition).Y).ToString();
+          //  Xbox.Text = panel_GL.PointToClient(MousePosition).X.ToString();
+          //  Ybox.Text = (panel_GL.PointToClient(MousePosition).Y).ToString();
 
             panel_GL.Focus();
         }
@@ -550,13 +550,7 @@ namespace InterfaceGraphique
         private void Zoom_MenuItem_Click(object sender, EventArgs e)
         {
             Console.WriteLine("Outil Zoom.");
-            // TO DO
-            /*
-            if (zoom_Bar.Enabled)
-                zoom_Bar.Enabled = false;
-            else
-                zoom_Bar.Enabled = true;
-            */
+            
             etat = null;
             etat = new EtatZoom(this);
         }
@@ -845,7 +839,8 @@ namespace InterfaceGraphique
             // en coordonnees du monde en utilisant convertirClotureAVirtuelle(...) comme ça on n'a pas 
             // besoin de ce facteur mistérieux.  Et aussi, cette technique devrait bien marcher 
             // quand on sera rendu avec la vue orbite.
-            FonctionsNatives.deplacerSelection(previousP.X, previousP.Y, currentP.X, currentP.Y);;
+            FonctionsNatives.deplacerSelection(previousP.X, previousP.Y, currentP.X, currentP.Y);
+            //Xbox.Text = currentP.X.ToString();
             previousP = currentP;
             currentP = panel_GL.PointToClient(MousePosition);
         }
@@ -855,7 +850,7 @@ namespace InterfaceGraphique
             double deltaX = (-(currentP.X - previousP.X)) * 100.0 / panelWidth;
             double deltaY = ((currentP.Y - previousP.Y)) * 100.0 / panelHeight;
             FonctionsNatives.translater(deltaX, deltaY);
-
+            
             previousP.X = currentP.X;
             previousP.Y = currentP.Y;
             currentP.X = e.X;
@@ -903,6 +898,8 @@ namespace InterfaceGraphique
             {
                 outilsEnable(true);
                 proprietesEnable(true);
+                Xbox.Text = FonctionsNatives.getPositionX().ToString();
+                Ybox.Text = FonctionsNatives.getPositionY().ToString();
             }
         }
 
@@ -924,6 +921,8 @@ namespace InterfaceGraphique
                 if (selection == 1)
                 {
                     proprietesEnable(true);
+                    Xbox.Text = FonctionsNatives.getPositionX().ToString();
+                    Ybox.Text = FonctionsNatives.getPositionY().ToString();
                 }
                 outilsEnable(true);
             }
@@ -1128,6 +1127,12 @@ namespace InterfaceGraphique
         
         [DllImport(@"Noyau.dll", CallingConvention = CallingConvention.Cdecl)]
         public static extern void deselectAll();
+
+        [DllImport(@"Noyau.dll", CallingConvention = CallingConvention.Cdecl)]
+        public static extern int getPositionX();
+
+        [DllImport(@"Noyau.dll", CallingConvention = CallingConvention.Cdecl)]
+        public static extern int getPositionY();
 
     }
 }

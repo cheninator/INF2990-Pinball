@@ -756,6 +756,7 @@ extern "C"
 		FacadeModele::obtenirInstance()->obtenirArbreRenduINF2990()->getEnfant(0)->deselectionnerTout();
 	}
 
+<<<<<<< HEAD
 
 	///////////////////////////////////////////////////////////////////////////////
 	///
@@ -769,5 +770,53 @@ extern "C"
 	{
 
 		FacadeModele::obtenirInstance()->obtenirArbreRenduINF2990();
+=======
+	///////////////////////////////////////////////////////////////////////////////
+	///
+	/// @fn __declspec(dllexport)  int getPositionX(void)
+	/// @return la position en X
+	///
+	/// @remark : 
+	///
+	///////////////////////////////////////////////////////////////////////////////
+	__declspec(dllexport) int getPositionX(void){
+		int positionX;
+		for (int j = 0; j < FacadeModele::obtenirInstance()->obtenirArbreRenduINF2990()->getEnfant(0)->obtenirNombreEnfants(); j++)
+			{
+				if (
+					FacadeModele::obtenirInstance()->obtenirArbreRenduINF2990()->getEnfant(0)->chercher(j)->estSelectionne()
+					){
+					objet = FacadeModele::obtenirInstance()->obtenirArbreRenduINF2990()->getEnfant(0)->chercher(j);
+					positionX = objet->obtenirPositionRelative().x;
+				}
+			}
+		
+		return positionX;
+	}
+
+
+
+	///////////////////////////////////////////////////////////////////////////////
+	///
+	/// @fn __declspec(dllexport)  int getPositionY(void)
+	/// @return la position en Y
+	///
+	/// @remark : 
+	///
+	///////////////////////////////////////////////////////////////////////////////
+	__declspec(dllexport) int getPositionY(void){
+		int positionY;
+		for (int j = 0; j < FacadeModele::obtenirInstance()->obtenirArbreRenduINF2990()->getEnfant(0)->obtenirNombreEnfants(); j++)
+		{
+			if (
+				FacadeModele::obtenirInstance()->obtenirArbreRenduINF2990()->getEnfant(0)->chercher(j)->estSelectionne()
+				){
+				objet = FacadeModele::obtenirInstance()->obtenirArbreRenduINF2990()->getEnfant(0)->chercher(j);
+				positionY = objet->obtenirPositionRelative().y;
+			}
+		}
+
+		return positionY;
+>>>>>>> 2d738fcaed7e9ef37c4611c4a466ad6cf37422ae
 	}
 }
