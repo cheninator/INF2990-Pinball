@@ -12,6 +12,7 @@
 
 #include "NoeudAbstrait.h"
 #include "VisiteurAbstrait.h"
+#include <vector>
 
 ///////////////////////////////////////////////////////////////////////////
 /// @class VisiteurDuplication
@@ -28,8 +29,8 @@ class VisiteurDuplication : public VisiteurAbstrait
 {
 public:
 
-	// Constructeur par défaut : aucun déplacement
-	VisiteurDuplication();
+	// Constructeur par paramètre
+	VisiteurDuplication(glm::dvec3 pointDansLeMonde);
 
 	// Destructeur
 	~VisiteurDuplication();
@@ -44,7 +45,15 @@ private:
 	// Ne touchez pas au constructeur par défaut
 	VisiteurDuplication();
 
-	int nbObjetsSelectionne_;
+	// Point où il y a eu le clic de la souris
+	glm::dvec3 pointDansLeMonde_;
+
+	// Contient les copies des objets selectionnés
+	std::vector<NoeudAbstrait*> copies_;
+
+	// Pour le cas ou il y a eu selection multiple
+	int minX, maxX, minY, maxY;
+
 };
 
 
