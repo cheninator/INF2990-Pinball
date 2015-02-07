@@ -153,8 +153,7 @@ namespace InterfaceGraphique
             {
                 etat = null;
                 etat = new EtatNone(this);
-                int selection = FonctionsNatives.selectionnerObjetSousPointClique(0,0, panel_GL.Height, panel_GL.Height, false);
-
+                deselection();
             }
             if (e.KeyChar == 'f')
             {
@@ -764,10 +763,7 @@ namespace InterfaceGraphique
             //    panel_GL.MouseMove += new MouseEventHandler(panel_MouseMove);   
             
             
-            
-           // creationObjet(e);            
-            
-            
+                    
             
             previousP.X = e.X;
             previousP.Y = e.Y;
@@ -1008,7 +1004,7 @@ namespace InterfaceGraphique
 
         public void deselection()
         {
-          //  FonctionsNatives.selectionnerObjetSousPointClique(400, 400, panel_GL.Height, panel_GL.Width);
+            FonctionsNatives.deselectAll();
             proprietesEnable(false);
             outilsEnable(false);
         }
@@ -1129,5 +1125,9 @@ namespace InterfaceGraphique
 
         [DllImport(@"Noyau.dll", CallingConvention = CallingConvention.Cdecl)]
         public static extern bool verifierCliqueDansTable(int x, int y);
+        
+        [DllImport(@"Noyau.dll", CallingConvention = CallingConvention.Cdecl)]
+        public static extern void deselectAll();
+
     }
 }

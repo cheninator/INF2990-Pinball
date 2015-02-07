@@ -32,6 +32,7 @@ extern "C" {
 	__declspec(dllexport) void resetObject(void);
 	__declspec(dllexport) void removeObject(void);
 	__declspec(dllexport) void purgeAll(void);
+	__declspec(dllexport) void deselectAll(void);
 	__declspec(dllexport) void translater(double deplacementX, double deplacementY);
 	__declspec(dllexport) int creerXML(char* path, int length, int prop[6]);
 	__declspec(dllexport) int* ouvrirXML(char* path, int length);

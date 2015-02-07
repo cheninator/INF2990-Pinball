@@ -513,6 +513,7 @@ extern "C"
 	{
 		calculerTransition();
 		FacadeModele::obtenirInstance()->obtenirVue()->deplacerXY(deplacementX, deplacementY);
+		
 	}
 
 
@@ -743,4 +744,16 @@ extern "C"
 		return FacadeModele::obtenirInstance()->verifierCliqueDansTable(x, y);
 	}
 
+	///////////////////////////////////////////////////////////////////////////////
+	///
+	/// @fn __declspec(dllexport)  void deselectAll(void)
+	/// @return Aucun
+	///
+	/// @remark : Ca deselectionne tout
+	///
+	///////////////////////////////////////////////////////////////////////////////
+	__declspec(dllexport) void deselectAll(void)
+	{
+		FacadeModele::obtenirInstance()->obtenirArbreRenduINF2990()->getEnfant(0)->deselectionnerTout();
+	}
 }
