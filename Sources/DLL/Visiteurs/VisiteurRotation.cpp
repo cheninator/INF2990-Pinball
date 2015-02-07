@@ -114,7 +114,7 @@ bool VisiteurRotation::traiter(NoeudAbstrait* noeud)
 	else
 	{
 		// LOGIQUE DE ROTATION
-		if (noeud->estSelectionne());
+		if (noeud->estSelectionne())
 			noeud->assignerRotation(angles_);
 	}
 
