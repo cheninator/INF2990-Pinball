@@ -25,7 +25,9 @@ void NoeudCouvercle::afficherConcret() const
 	// Sauvegarde de la matrice.
 	glPushMatrix();
 	glTranslatef(200, -50, 0);
-	//glRotatef(180, 0, 0, 1);
+	// To remove for animation
+	glTranslatef( -117, 0, 0 );
+	glRotatef(-45.0, 0, 1, 0 );
 	// Affichage du modèle.
 	glStencilFunc(GL_ALWAYS, 0, -1);
 	liste_->dessiner();
@@ -42,7 +44,7 @@ void NoeudCouvercle::animer(float temps)
 	angleY_ = fmod(angleY_ + temps / 3.0f * 360.0f, 360.0f);
 	// Le cube effectue une révolution à toutes les 15 secondes.
 	angleRotation_ = fmod(angleRotation_ + temps / 15.0f * 360.0f, 360.0f);
-//	glTranslatef( -17, 0, 0 );
+//	glTranslatef( -117, 0, 0 );
 //	glRotatef(-45.0, 0, 1, 0 );
 	*/
 }
