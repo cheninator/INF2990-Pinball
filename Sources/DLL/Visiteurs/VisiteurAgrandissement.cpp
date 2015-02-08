@@ -85,10 +85,9 @@ bool VisiteurAgrandissement::traiter(ArbreRenduINF2990* noeud)
 
 ////////////////////////////////////////////////////////////////////////
 ///
-/// @fn bool VisiteurAgrandissement::traiter(ArbreRenduINF2990* arbre)
+/// @fn bool VisiteurAgrandissement::traiter(NoeudTable* arbre)
 ///
-/// Cette fonction traite l'arbre de rendu pour effectuer un agrandissement
-/// sur les objets selectionnés
+/// Cette fonction traite la table pour en visitant ses enfants
 ///
 /// Cette fonction retourne true pour dire que l'opération s'est
 /// fait correctement
@@ -106,7 +105,6 @@ bool VisiteurAgrandissement::traiter(NoeudTable* noeud)
 	return true;
 }
 
-
 ////////////////////////////////////////////////////////////////////////
 ///
 /// @fn bool VisiteurAgrandissement::traiter(NoeudAbstrait* arbre)
@@ -122,13 +120,6 @@ bool VisiteurAgrandissement::traiter(NoeudTable* noeud)
 ////////////////////////////////////////////////////////////////////////
 bool VisiteurAgrandissement::traiter(NoeudAbstrait* noeud)
 {
-
-		// LOGIQUE D'AGRANDISSEMENT
-		// REMARQUE: LE SCALE EST QUELQUE CHOSE DE MULTIPLICATIF
-		// et on utilise un déplacement pour la définir, qui est "additif". 
-		// Qu'est-ce qui transforme l'addition en multiplication? A^(x + y) = (A^x) * (A^y)
-		// c'est pour ça qu'il y a une exponentielle dans la fonction de facadeModele qui calcule le scale a donner au visiteur.
-	
 	if (noeud->estSelectionne())
 	{
 		glm::dvec3 scaleInit = noeud->obtenirAgrandissement();
