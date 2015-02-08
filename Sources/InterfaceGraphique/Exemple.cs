@@ -18,7 +18,7 @@ namespace InterfaceGraphique
     public partial class Exemple : Form
     {
         FullScreen fs = new FullScreen();
-        StringBuilder myObjectName = new StringBuilder("vide");
+        static public StringBuilder myObjectName = new StringBuilder("vide");
    
         public Point origin;
         
@@ -393,10 +393,10 @@ namespace InterfaceGraphique
             Rotate_Object();
         }
 
-        public void Afficher_Objet()
+        public void Afficher_Objet(bool twin)
         {
             Console.WriteLine(myObjectName);
-            FonctionsNatives.creerObjet(myObjectName, myObjectName.Capacity);
+            FonctionsNatives.creerObjet(myObjectName, myObjectName.Capacity, twin);
         }
 
         public void Positionner_Objet()
@@ -929,12 +929,12 @@ namespace InterfaceGraphique
 
         }
 
-        public void creationObjet(MouseEventArgs e)
+        public void creationObjet(MouseEventArgs e, bool twin = false)
         {
 
             if (FonctionsNatives.verifierCliqueDansTable(origin.X, origin.Y))
             {
-                Afficher_Objet();
+                Afficher_Objet(twin);
                 FonctionsNatives.positionObjet(panel_GL.PointToClient(MousePosition).X, panel_GL.PointToClient(MousePosition).Y, 0);
                 FonctionsNatives.rotate(angleX, 'x');
                 FonctionsNatives.rotate(angleY, 'y');
@@ -1054,7 +1054,7 @@ namespace InterfaceGraphique
         public static extern void redimensionnerFenetre(int largeur, int hauteur);
 
         [DllImport(@"Noyau.dll", CallingConvention = CallingConvention.Cdecl)]
-        public static extern void creerObjet(StringBuilder value, int length);
+        public static extern void creerObjet(StringBuilder value, int length, bool isTwin = false);
 
         [DllImport(@"Noyau.dll", CallingConvention = CallingConvention.Cdecl)]
         public static extern void positionObjet(int x, int y, int z = 0);

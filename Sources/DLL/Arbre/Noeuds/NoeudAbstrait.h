@@ -145,8 +145,12 @@ public:
 	virtual void afficherConcret() const;
 	/// Anime le noeud.
 	virtual void animer(float dt);
-	// Accepter un visiteur
+	/// Accepter un visiteur
 	virtual bool accepterVisiteur(VisiteurAbstrait* vis);
+	/// Obtenir jumeau
+	virtual NoeudAbstrait* getTwin();
+	/// Ajouter jumeau
+	virtual void setTwin(NoeudAbstrait* twin);
 
 	modele::Modele3D const* obtenirModele() const;
 
@@ -156,6 +160,9 @@ public:
 
 	std::string getType(){ return type_; }
 protected:
+	/// Si jumeau
+	NoeudAbstrait* twin_;
+
 	/// Type du noeud.
 	std::string      type_;
 

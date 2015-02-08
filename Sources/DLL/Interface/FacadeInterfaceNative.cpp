@@ -26,6 +26,8 @@ extern "C"
 {
 	// TO DO : SUPPRIMER CETTE VARIABLE QUAND PLUS NECESSAIRE
 	static NoeudAbstrait* objet = new NoeudAbstrait();
+	static NoeudAbstrait* objet_temp = new NoeudAbstrait();
+
 	static double facteurDeTransition; // DONT ASK WHY
 	static double theta = 0;
 	static double phi = 0; 
@@ -287,15 +289,21 @@ extern "C"
 	/// @return Aucun
 	///
 	////////////////////////////////////////////////////////////////////////
-	__declspec(dllexport) void __cdecl creerObjet(char* value, int length)
+	__declspec(dllexport) void __cdecl creerObjet(char* value, int length, bool isTwin)
 	{
 		calculerTransition();
 		std::string nomObjet (value);
-		objet = FacadeModele::obtenirInstance()->obtenirArbreRenduINF2990()->creerNoeud(nomObjet);
+		if (isTwin == true) {
+			objet_temp = FacadeModele::obtenirInstance()->obtenirArbreRenduINF2990()->creerNoeud(nomObjet);
+			if (objet == nullptr)
+				return;
+			objet_temp->setTwin(objet);
+			objet->setTwin(objet_temp);
+			objet = objet_temp;
+		}
+		else
+			objet = FacadeModele::obtenirInstance()->obtenirArbreRenduINF2990()->creerNoeud(nomObjet);
 		if (objet == nullptr)
-			return;
-		// Ca ne sert a rien de rajouter un Node "vide" dans l'arbre
-		else if (nomObjet == "vide")
 			return;
 		FacadeModele::obtenirInstance()->obtenirArbreRenduINF2990()->getEnfant(0)->ajouter(objet);
 	}
@@ -473,9 +481,17 @@ extern "C"
 	__declspec(dllexport) void removeObject(void)
 	{
 		calculerTransition();
-		if (objet->estModifiable() && objet != nullptr)
+		if (objet == nullptr)
+			return;
+		if (objet->estModifiable())
 		{
+			if (objet->getType() == "portail")
+			{
+				if (objet->getTwin() != nullptr)
+					FacadeModele::obtenirInstance()->obtenirArbreRenduINF2990()->effacer(objet->getTwin());
+			}
 			FacadeModele::obtenirInstance()->obtenirArbreRenduINF2990()->effacer(objet);
+			objet = nullptr;
 		}
 	}
 

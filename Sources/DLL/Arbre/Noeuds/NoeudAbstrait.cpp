@@ -30,6 +30,7 @@ NoeudAbstrait::NoeudAbstrait(
 	compteurNoeuds_ += 1;
 	numeroNoeud_ = compteurNoeuds_;
 	scale_ = { 1.0, 1.0, 1.0 };
+	twin_ = nullptr;
 }
 
 
@@ -466,14 +467,48 @@ void NoeudAbstrait::animer(float dt)
 ///
 /// Cette fonction permet d'accepter un visiteur (voir le livre de Gamma)
 ///
-/// @param[in] dt : Prend un bisiteur abstrait.
+/// @param[in] vis : Prend un visiteur abstrait.
 ///
-/// @return reusiite ou echec.
+/// @return reusite ou echec.
 ///
 ////////////////////////////////////////////////////////////////////////
 bool NoeudAbstrait::accepterVisiteur(VisiteurAbstrait* vis) 
 {
 	vis->traiter(this); return false; 
+}
+
+
+////////////////////////////////////////////////////////////////////////
+///
+/// @fn NoeudAbstrait* NoeudAbstrait::getTwin()
+///
+/// Retourne le noeud jumueau
+///
+/// @param[in] Aucun.
+///
+/// @return NoeudAbstrait jumeau.
+///
+////////////////////////////////////////////////////////////////////////
+NoeudAbstrait* NoeudAbstrait::getTwin()
+{
+	return twin_;
+}
+
+
+////////////////////////////////////////////////////////////////////////
+///
+/// @fn void NoeudAbstrait::setTwin()
+///
+/// Cette fonction permet de definir un noeud jumeau
+///
+/// @param[in] dt : Prend un noeud abstrait.
+///
+/// @return Aucune
+///
+////////////////////////////////////////////////////////////////////////
+void NoeudAbstrait::setTwin(NoeudAbstrait* twin)
+{
+	twin_ = twin;
 }
 ////////////////////////////////////////////////
 /// @}
