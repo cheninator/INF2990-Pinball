@@ -9,6 +9,7 @@
 
 #include "VisiteurAgrandissement.h"
 #include "../Arbre/ArbreRenduINF2990.h"
+#include <iostream>
 
 
 ////////////////////////////////////////////////////////////////////////
@@ -121,6 +122,7 @@ bool VisiteurAgrandissement::traiter(NoeudAbstrait* noeud)
 		glm::dvec3 scaleInit = noeud->obtenirAgrandissement();
 		glm::dvec3 scaleFinal = glm::dvec3{ scaleInit[0] * homothetie_[0], scaleInit[1] * homothetie_[1], scaleInit[2] * homothetie_[2] };
 		noeud->assignerEchelle(scaleFinal);
+		
 	}
 
 	return true;

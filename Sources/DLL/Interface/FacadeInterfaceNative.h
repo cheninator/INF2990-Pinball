@@ -35,6 +35,8 @@ extern "C" {
 	__declspec(dllexport) void deselectAll(void);
 	__declspec(dllexport) int getPositionX(void);
 	__declspec(dllexport) int getPositionY(void);
+	__declspec(dllexport) int getAngle(void);
+	__declspec(dllexport) double getScale(void);
 	__declspec(dllexport) void translater(double deplacementX, double deplacementY);
 	__declspec(dllexport) int creerXML(char* path, int length, int prop[6]);
 	__declspec(dllexport) int* ouvrirXML(char* path, int length);
