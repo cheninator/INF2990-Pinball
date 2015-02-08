@@ -4,7 +4,7 @@
 #include <windows.h>
 #include <GL/gl.h>
 #include <cmath>
-
+#include <iostream>
 #include "Modele3D.h"
 #include "OpenGL_Storage/ModeleStorage_Liste.h"
 
@@ -44,9 +44,14 @@ void NoeudCouvercle::animer(float temps)
 	angleY_ = fmod(angleY_ + temps / 3.0f * 360.0f, 360.0f);
 	// Le cube effectue une révolution à toutes les 15 secondes.
 	angleRotation_ = fmod(angleRotation_ + temps / 15.0f * 360.0f, 360.0f);
-//	glTranslatef( -117, 0, 0 );
-//	glRotatef(-45.0, 0, 1, 0 );
+	//	glTranslatef( -117, 0, 0 );
+	//	glRotatef(-45.0, 0, 1, 0 );
 	*/
+	positionRelative_.x++;
+	positionRelative_.y++;
+	
+	
+
 }
 
 bool NoeudCouvercle::accepterVisiteur(VisiteurAbstrait* vis)
