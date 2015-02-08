@@ -33,7 +33,9 @@ Auteurs Aymen Dje
 
 #include "FacadeModele.h"
 
+#include "../Visiteurs/VisiteurAbstrait.h"
 #include "../Visiteurs/VisiteurSelection.h"
+#include "../Visiteurs/VisiteurSelectionInverse.h"
 #include "../Visiteurs/VisiteurSelectionMultiple.h"
 #include "../Visiteurs/VisiteurDeplacement.h"
 #include "../Visiteurs/VisiteurRotation.h"
@@ -393,22 +395,34 @@ int FacadeModele::selectionnerObjetSousPointClique(int i, int j, int hauteur, in
 
 	vue_->convertirClotureAVirtuelle(i, j, pointDansLeMonde);
 	std::cout << "Position du click dans le monde : (" << pointDansLeMonde.x << ", " << pointDansLeMonde.y << ", 0)" << std::endl;
-	
+
 	int valeurStencil = 0;
 	glReadPixels(i ,hauteur -j , 1, 1, GL_STENCIL_INDEX, GL_UNSIGNED_INT, &valeurStencil);
 
 	std::cout << "Valeur du stencil:" << valeurStencil << std::endl;
 
-	// Creer un visiteur,
-	VisiteurSelection visSel(pointDansLeMonde, valeurStencil, ctrlDown);
+	
+	if (!ctrlDown)
+	{
+		std::cout << "FacadeModele::selectionnerObjetSousPointClique( ) avec ctrlDown = FALSE" << std::endl;
+		VisiteurSelection visSel(pointDansLeMonde, valeurStencil);
+		arbre_->accepterVisiteur(&visSel);
+		// Demander au visiteur ce qu'il a trouvé et faire quelque chose en conséquence
+		std::cout << "Valeur de retour de la sélection : " << visSel.obtenirNbObjetsSelectionne() << std::endl;
 
-	// Passer le visisteur a l'arbre
-	arbre_->accepterVisiteur(&visSel);
+		return visSel.obtenirNbObjetsSelectionne();
+	}
+	else
+	{
+		std::cout << "FacadeModele::selectionnerObjetSousPointClique() avec ctrlDown = TRUE" << std::endl;
+		VisiteurSelectionInverse visSelInverse(pointDansLeMonde, valeurStencil);
+		arbre_->accepterVisiteur(&visSelInverse);
+		// Demander au visiteur ce qu'il a trouvé et faire quelque chose en conséquence
+		std::cout << "Valeur de retour de la sélection : " << visSelInverse.obtenirNbObjetsSelectionne() << std::endl;
 
-	// Demander au visiteur ce qu'il a trouvé et faire quelque chose en conséquence
-	std::cout << "Valeur de retour de la sélection : " << visSel.obtenirNbObjetsSelectionne() << std::endl;
+		return visSelInverse.obtenirNbObjetsSelectionne();
+	}
 
-	return visSel.obtenirNbObjetsSelectionne();
 }
 
 ///////////////////////////////////////////////////////////////////////////////

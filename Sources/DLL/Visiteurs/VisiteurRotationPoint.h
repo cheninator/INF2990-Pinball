@@ -17,7 +17,7 @@
 ///////////////////////////////////////////////////////////////////////////
 /// @class VisiteurRotation
 /// @brief Classe pour effectuer une rotation sur des objets seletionnés de
-///		   l'arbre de rendu.
+///		   l'arbre de rendu autour d'un point donné
 ///
 ///        Instancier cette classe avec en paramètre les angles de rotation.
 ///		   Ensuite, appelez la méthode accepterVisiteur() de l'arbre de rendu 
@@ -45,6 +45,7 @@ public:
 	// Traiter une opération sur l'arbre de rendu et ses enfants
 	virtual bool traiter(ArbreRenduINF2990* arbre);
 	virtual bool traiter(NoeudAbstrait* noeud);
+	virtual bool traiter(NoeudTable* noeud);
 
 private:
 

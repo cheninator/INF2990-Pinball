@@ -9,6 +9,7 @@
 
 #include "VisiteurRotationPoint.h"
 #include "../Arbre/ArbreRenduINF2990.h"
+#include "../Arbre/Noeuds/NoeudTable.h"
 #include <iostream>
 
 
@@ -33,7 +34,9 @@ VisiteurRotationPoint::VisiteurRotationPoint()
 ///
 /// Ne fait qu'initialiser les variables membres de la classe.
 ///
-/// @param[in] dev : Le vecteur de rotation
+/// @param[in] dev : Le vecteur des rotation
+///
+/// @param[in] centreRotation : Point autour duquel tourner les objets
 ///
 /// @return Aucune (constructeur).
 ///
@@ -77,12 +80,35 @@ bool VisiteurRotationPoint::traiter(ArbreRenduINF2990* noeud)
 {
 	for (unsigned int i = 0; i < noeud->obtenirNombreEnfants(); i++)
 	{
-		traiter(noeud->getEnfant(i));
+		noeud->getEnfant(i)->accepterVisiteur(this);
 	}
 
 	return true;
 }
 
+
+////////////////////////////////////////////////////////////////////////
+///
+/// @fn bool VisiteurRotationPoint::traiter(NoeudTable* noeud)
+///
+/// Cette fonction traite la table pour effectuer une rotation sur ses enfants
+/// selectionnés
+///
+/// Cette fonction retourne true pour dire que l'opération s'est
+/// fait correctement
+///
+/// @return Retourne toujours true
+///
+////////////////////////////////////////////////////////////////////////
+bool VisiteurRotationPoint::traiter(NoeudTable* noeud)
+{
+	for (unsigned int i = 0; i < noeud->obtenirNombreEnfants(); i++)
+	{
+		noeud->getEnfant(i)->accepterVisiteur(this);
+	}
+
+	return true;
+}
 
 ////////////////////////////////////////////////////////////////////////
 ///
@@ -99,36 +125,18 @@ bool VisiteurRotationPoint::traiter(ArbreRenduINF2990* noeud)
 ////////////////////////////////////////////////////////////////////////
 bool VisiteurRotationPoint::traiter(NoeudAbstrait* noeud)
 {
-	// Connaitre le type du noeud
-	std::string nom = noeud->obtenirType();
-
-	// Si l'élément est une table, visiter ses enfants
-	if (nom == "table")
-	{
-		// Traiter les enfants selectionnés de la table
-		for (unsigned int i = 0; i < noeud->obtenirNombreEnfants(); i++)
-		{
-			if (noeud->chercher(i)->estSelectionne())
-				traiter(noeud->chercher(i));
-		}
-	}
-
-	else
-	{
 		if (noeud->estSelectionne() /*&& noeud->estModifiable()*/ )
 		{
 			// LOGIQUE DE ROTATION AUTOUR D'UN POINT
 			// Changer la position du noeud
 			glm::dvec3 positionInitiale = noeud->obtenirPositionRelative();
 			glm::dvec3 vecteurInitial = positionInitiale - centreRotation_;
-			// std::cout << "VecteurInitial: " << vecteurInitial.x << ", " << vecteurInitial.y << std::endl;
 			double angleEnRadian = -angles_[2] * 2 * 3.14156 / 360;
 			glm::dmat3 transform = glm::dmat3{ glm::dvec3{ cos(angleEnRadian), -sin(angleEnRadian), 0.0 },
 												glm::dvec3{ sin(angleEnRadian), cos(angleEnRadian), 0.0f },
 												glm::dvec3{       0.0      ,       0.0        , 1.0 } };
 
 			glm::dvec3 vecteurFinal = transform * vecteurInitial;
-			// std::cout << "VecteurFinal: " << vecteurFinal.x << ", " << vecteurFinal.y << std::endl;
 			glm::dvec3 positionFinale = centreRotation_ + vecteurFinal;
 
 			noeud->assignerPositionRelative(positionFinale);
@@ -136,7 +144,6 @@ bool VisiteurRotationPoint::traiter(NoeudAbstrait* noeud)
 			// Changer l'orientation du noeud
 			noeud->assignerRotation(angles_);
 		}
-	}
 
 	return true;
 }

@@ -11,12 +11,14 @@
 #define __VISITEURS_VISITEURCENTREDEMASSE_H__
 
 #include "VisiteurAbstrait.h"
+#include "../Arbre/ArbreRenduINF2990.h"
+#include "../Arbre/Noeuds/NoeudTable.h"
 #include "glm\glm.hpp"
 
 
 ///////////////////////////////////////////////////////////////////////////
 /// @class VisiteurCentreDeMasse
-/// @brief 
+/// @brief Utilisé pour calculer le centre de masse des noeuds sélectionnés
 ///
 /// @author Philippe Carphin
 /// @date 2015-02-02
@@ -33,6 +35,7 @@ public:
 	
 	// Traiter une opération sur l'arbre de rendu et ses enfants
 	virtual bool traiter(ArbreRenduINF2990* arbre);
+	virtual bool traiter(NoeudTable* table);
 	virtual bool traiter(NoeudAbstrait* noeud);
 
 	glm::dvec3 obtenirCentreDeMasse()

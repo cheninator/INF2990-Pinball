@@ -6,55 +6,35 @@
 /// @addtogroup inf2990 INF2990
 /// @{
 ////////////////////////////////////////////////
-#include "VisiteurSelection.h"
+#include "VisiteurDeselectionnerTout.h"
 #include "../Arbre/ArbreRenduINF2990.h"
 #include "../Arbre/Noeuds/NoeudTable.h"
 #include <iostream>
 
 ////////////////////////////////////////////////////////////////////////
 ///
-/// @fn VisiteurSelection::VisiteurSelection()
+/// @fn VisiteurDeselectionnerTout::VisiteurDeselectionnerTout()
 ///
 /// VIDE
 ///
 /// @return Aucune (constructeur).
 ///
 ////////////////////////////////////////////////////////////////////////
-VisiteurSelection::VisiteurSelection()
+VisiteurDeselectionnerTout::VisiteurDeselectionnerTout()
 {
 
 }
 
-
 ////////////////////////////////////////////////////////////////////////
 ///
-/// @fn VisiteurDeplacement::VisiteurSelection(glm::dvec3 pointDansLeMonde)
-///
-/// Ne fait qu'initialiser les variables membres de la classe.
-///
-/// @param[in] dev : Le vecteur de deplacement
-///
-/// @return Aucune (constructeur).
-///
-////////////////////////////////////////////////////////////////////////
-VisiteurSelection::VisiteurSelection(glm::dvec3 pointDansLeMonde, int valeurStencil)
-:nbObjetsSelectionne_{ 0 }
-{
-	pointDansLeMonde_ = pointDansLeMonde;
-	valeurStencil_ = valeurStencil;
-}
-
-
-////////////////////////////////////////////////////////////////////////
-///
-/// @fn VisiteurSelection::~VisiteurSelection()
+/// @fn VisiteurDeselectionnerTout::~VisiteurDeselectionnerTout()
 ///
 /// Destructeur vide 
 ///
 /// @return Aucune (destructeur).
 ///
 ////////////////////////////////////////////////////////////////////////
-VisiteurSelection::~VisiteurSelection()
+VisiteurDeselectionnerTout::~VisiteurDeselectionnerTout()
 {
 
 }
@@ -62,7 +42,7 @@ VisiteurSelection::~VisiteurSelection()
 
 ////////////////////////////////////////////////////////////////////////
 ///
-/// @fn bool VisiteurSelection::traiter(ArbreRenduINF2990* noeud)
+/// @fn bool VisiteurDeselectionnerTout::traiter(ArbreRenduINF2990* noeud)
 ///
 /// Cette fonction traite l'arbre de rendu pour visiter ses enfants
 ///
@@ -72,19 +52,21 @@ VisiteurSelection::~VisiteurSelection()
 /// @return Retourne toujours true
 ///
 ////////////////////////////////////////////////////////////////////////
-bool VisiteurSelection::traiter(ArbreRenduINF2990* arbre)
+bool VisiteurDeselectionnerTout::traiter(ArbreRenduINF2990* arbre)
 {
 	for (unsigned int i = 0; i < arbre->obtenirNombreEnfants(); i++)
 	{
 		arbre->getEnfant(i)->accepterVisiteur(this);
 	}
+
 	return true;
+
 }
 
 
 ////////////////////////////////////////////////////////////////////////
 ///
-/// @fn bool VisiteurSelection::traiter(ArbreRenduINF2990* noeud)
+/// @fn bool VisiteurDeselectionnerTout::traiter(NoeudTable* noeud)
 ///
 /// Cette fonction traite la table de l'arbre de rendu.
 ///
@@ -94,7 +76,7 @@ bool VisiteurSelection::traiter(ArbreRenduINF2990* arbre)
 /// @return Retourne toujours true
 ///
 ////////////////////////////////////////////////////////////////////////
-bool VisiteurSelection::traiter(NoeudTable* table)
+bool VisiteurDeselectionnerTout::traiter(NoeudTable* table)
 {
 	for (unsigned int i = 0; i < table->obtenirNombreEnfants(); i++)
 	{
@@ -106,26 +88,16 @@ bool VisiteurSelection::traiter(NoeudTable* table)
 
 ////////////////////////////////////////////////////////////////////////
 ///
-/// @fn bool VisiteurSelection::traiter(NoeudAbstrait* noeud)
+/// @fn bool VisiteurDeselectionnerTout::traiter(NoeudAbstrait* noeud)
 ///
-/// Cette fonction traite les enfants de l'arbre de rendu. 
-///
-/// Cette fonction retourne true pour dire que l'opération s'est
-/// fait correctement
+/// Ce visiteur désélectionne tous les noeuds
 ///
 /// @return Retourne toujours true
 ///
 ////////////////////////////////////////////////////////////////////////
-bool VisiteurSelection::traiter(NoeudAbstrait* noeud)
+bool VisiteurDeselectionnerTout::traiter(NoeudAbstrait* noeud)
 {
-	if (valeurStencil_ == noeud->getNumero() && noeud->estSelectionnable() /*&& noeud->estModifiable()*/)
-		noeud->assignerSelection(true);
-	else
-		noeud->assignerSelection(false);
-
-	if (noeud->estSelectionne()) 
-		nbObjetsSelectionne_++;
-
+	noeud->assignerSelection(false);
 	return true;
 }
 
