@@ -25,7 +25,11 @@ void NoeudMur::afficherConcret() const
 	// Sauvegarde de la matrice.
 	glPushMatrix();
 	// Affichage du modèle.
+	glPushAttrib(GL_ALL_ATTRIB_BITS);
+	if (selectionne_)
+		glTexEnvf(GL_TEXTURE_ENV, GL_TEXTURE_ENV_MODE, GL_ADD);
 	liste_->dessiner();
+	glPopAttrib();
 	// Restauration de la matrice.
 	glPopMatrix();
 }

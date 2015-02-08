@@ -53,11 +53,11 @@ public:
    int* obtenirProprietes() const { return proprietes_; };
 
 	/// La chaîne représentant les types
-   static const std::string NOM_ARAIGNEE;
+   //static const std::string NOM_ARAIGNEE;
    static const std::string NOM_BUTOIR;
    static const std::string NOM_BUTOIRCIRCULAIRE;
    static const std::string NOM_CIBLE;
-   static const std::string NOM_CONECUBE;
+   //static const std::string NOM_CONECUBE;
    static const std::string NOM_BILLE;
    static const std::string NOM_GENERATEURBILLE;
    static const std::string NOM_MUR;
@@ -66,6 +66,7 @@ public:
    static const std::string NOM_RESSORT;
    static const std::string NOM_TROU;	
    static const std::string NOM_VIDE;
+   static const std::string NOM_COUVERCLE;
    static const std::string NOM_TABLE;
 
 private:

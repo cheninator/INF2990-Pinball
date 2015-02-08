@@ -1,6 +1,6 @@
 # Blender v2.73 (sub 0) OBJ File: ''
 # www.blender.org
-mtllib Butoir.mtl
+mtllib ../materiaux/Butoir.mtl
 o Cube_Cube.002
 v 18.404593 46.556450 -7.668146
 v 16.477133 -13.108325 -7.668167

@@ -27,4 +27,4 @@ NoeudAbstrait* UsineNoeudTable::creerNoeud() const
 
 
 
-#endif // __ARBRE_USINES_USINENOEUDBUTOIR_H__
+#endif // __ARBRE_USINES_USINENOEUDTABLE_H__

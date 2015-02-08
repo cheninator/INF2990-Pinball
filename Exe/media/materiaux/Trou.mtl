@@ -1,24 +1,24 @@
 # Blender MTL File: 'None'
 # Material Count: 2
 
-newmtl Material.004
-Ns 500
-Ka 0.500000 0.500000 1.500000
-Kd 1.000000 1.000000 1.000000
+newmtl Material.001
+Ns 92.156863
+Ka 0.000000 0.000000 0.000000
+Kd 0.512000 0.512000 0.512000
 Ks 0.500000 0.500000 0.500000
 Ni 1.000000
 d 1.000000
-illum 1
-map_Kd materiaux/texture/portail/warp.jpg
-map_d materiaux/texture/portail/warp.jpg
+illum 2
+map_Kd materiaux\texture\trou\bloodsplat.png
+map_d materiaux\texture\trou\bloodsplat.png
 
-newmtl Material.003
-Ns 500
-Ka 0.500000 0.500000 1.500000
-Kd 1.000000 1.000000 1.000000
+newmtl Trippy
+Ns 96.078431
+Ka 0.000000 0.000000 0.000000
+Kd 0.640000 0.640000 0.640000
 Ks 0.500000 0.500000 0.500000
 Ni 1.000000
 d 1.000000
-illum 1
-map_Kd materiaux/texture/portail/warp.jpg
-map_d materiaux/texture/portail/warp.jpg
+illum 2
+map_Kd materiaux\texture\trou\trippy.jpg
+map_d materiaux\texture\trou\trippy.jpg

@@ -9,8 +9,8 @@ Ks 2.000000 2.000000 2.000000
 Ni 1.407409
 d 0.000000
 illum 2
-map_Kd materiaux/texture/generateurbille/eye.png
-map_d materiaux/texture/generateurbille/eye.png
+map_Kd materiaux/texture/bille/eye.png
+map_d materiaux/texture/bille/eye.png
 
 newmtl Eyeball.001
 Ns 415.686275
@@ -20,8 +20,8 @@ Ks 2.000000 2.000000 2.000000
 Ni 1.407409
 d 0.000000
 illum 2
-map_Kd materiaux/texture/generateurbille/eye.png
-map_d materiaux/texture/generateurbille/eye.png
+map_Kd materiaux/texture/bille/eye.png
+map_d materiaux/texture/bille/eye.png
 
 newmtl Iris
 Ns 0.000000
@@ -31,7 +31,8 @@ Ks 0.000000 0.000000 0.000000
 Ni 1.000000
 d 1.000000
 illum 2
-map_Kd materiaux/texture/generateurbille/eye.png
+map_Kd materiaux/texture/bille/eye.png
+map_d materiaux/texture/bille/eye.png
 
 newmtl Iris.001
 Ns 0.000000
@@ -41,8 +42,8 @@ Ks 0.000000 0.000000 0.000000
 Ni 1.000000
 d 1.000000
 illum 2
-map_Kd materiaux/texture/generateurbille/eye.png
-
+map_Kd materiaux/texture/bille/eye.png
+map_d materiaux/texture/bille/eye.png
 newmtl Material.002
 Ns 500
 Ka 0.500000 0.500000 1.500000
