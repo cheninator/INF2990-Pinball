@@ -14,6 +14,16 @@
 
 @mainpage Projet intégrateur de deuxième année -- INF2990
 
+Painball
+
+Auteurs Aymen Dje
+		Nikolay Radoev
+		Yonni Chen
+		Emilio Rivera
+		Philippe Carpin
+		Kim Piché
+		Samuel Millette
+
 */
 
 #include <windows.h>
@@ -45,7 +55,7 @@
 #include "ConfigScene.h"
 #include "CompteurAffichage.h"
 
-// Remlacement de EnveloppeXML/XercesC par TinyXML
+// Remplacement de EnveloppeXML/XercesC par TinyXML
 // Julien Gascon-Samson, été 2011
 #include "tinyxml2.h"
 
@@ -205,13 +215,13 @@ void FacadeModele::initialiserOpenGL(HWND hWnd)
 ////////////////////////////////////////////////////////////////////////
 void FacadeModele::chargerConfiguration() const
 {
-	// Vérification de l'existance du ficher
+	// Vérification de l'existence du ficher
 
 	// Si le fichier n'existe pas, on le crée.
 	if (!utilitaire::fichierExiste(FICHIER_CONFIGURATION)) {
 		enregistrerConfiguration();
 	}
-	// si le fichier existe on le lit
+	// Si le fichier existe on le lit
 	else {
 		tinyxml2::XMLDocument document;
 
@@ -312,7 +322,7 @@ void FacadeModele::afficher() const
 /// Cette fonction affiche la base du contenu de la scène, c'est-à-dire
 /// qu'elle met en place l'éclairage et affiche les objets.
 ///
-/// @return Aucune.
+/// @return Aucun
 ///
 ////////////////////////////////////////////////////////////////////////
 void FacadeModele::afficherBase() const
@@ -403,6 +413,16 @@ int FacadeModele::selectionnerObjetSousPointClique(int i, int j, int hauteur, in
 	return visSel.obtenirNbObjetsSelectionne();
 }
 
+///////////////////////////////////////////////////////////////////////////////
+///
+/// int FacadeModele::selectionMultiple()
+///		Ajouter une decription
+///
+/// @return Aucune.
+///
+/// @remark : Ajouter si nécessaire
+///
+///////////////////////////////////////////////////////////////////////////////
 int FacadeModele::selectionMultiple()
 {
 	VisiteurSelectionMultiple visSelMul(selectionBasGauche_, selectionHautDroit_);
@@ -425,7 +445,7 @@ int FacadeModele::selectionMultiple()
 /// @param[in]  x2 : abcisse du point initial
 /// @param[in]  y2 : ordonnee du point initial
 ///
-/// @return Aucun
+/// @return Aucune.
 ///
 /// @remark : On doit donner des x,y qui ont été transformés par panel_GL.PointToClient(...)
 ///
@@ -458,7 +478,7 @@ void FacadeModele::deplacerSelection(int x1, int y1 ,int x2, int y2)
 /// @param[in]  x2 : abcisse du point initial
 /// @param[in]  y2 : ordonnee du point initial
 ///
-/// @return Aucun
+/// @return Aucune.
 ///
 /// @remark : On doit donner des x,y qui ont été transformés par panel_GL.PointToClient(...)
 ///
@@ -486,7 +506,7 @@ void FacadeModele::tournerSelectionSouris(int x1, int y1, int x2, int y2)
 /// @param[in]  x2 : abcisse du point initial
 /// @param[in]  y2 : ordonnee du point initial
 ///
-/// @return Aucun
+/// @return Aucune.
 ///
 /// @remark : On doit donner des x,y qui ont été transformés par panel_GL.PointToClient(...)
 ///
@@ -507,6 +527,22 @@ void FacadeModele::agrandirSelection(int x1, int y1, int x2, int y2)
 }
 
 
+///////////////////////////////////////////////////////////////////////////////
+///
+/// void FacadeModele::rectangleElastique(int x1, int y1, int x2, int y2)
+///		Ajouter une decription
+///
+/// @param[in]  x1 : abcisse du point initial
+/// @param[in]  y1 : ordonnee du point initial
+///
+/// @param[in]  x2 : abcisse du point initial
+/// @param[in]  y2 : ordonnee du point initial
+///
+/// @return Aucune.
+///
+/// @remark : On doit donner des x,y qui ont été transformés par panel_GL.PointToClient(...)
+///
+///////////////////////////////////////////////////////////////////////////////
 void FacadeModele::rectangleElastique(int x1, int y1, int x2, int y2)
 {
 	glm::dvec3 positionInitiale, positionActuelle;
@@ -563,7 +599,7 @@ void FacadeModele::rectangleElastique(int x1, int y1, int x2, int y2)
 /// @param[in]  x : abcisse du point cliqué
 /// @param[in]  y : ordonnee du point cliqué
 ///
-/// @return Aucun
+/// @return Aucune.
 ///
 /// @remark : On doit donner des x,y qui ont été transformés par panel_GL.PointToClient(...)
 ///
@@ -586,7 +622,7 @@ bool FacadeModele::verifierCliqueDansTable(int x, int y)
 /// @fn void dupliquer()
 ///		Duplique les objets selectionnés
 ///
-/// @return Aucun
+/// @return Aucune.
 ///
 ///////////////////////////////////////////////////////////////////////////////
 void FacadeModele::dupliquer()

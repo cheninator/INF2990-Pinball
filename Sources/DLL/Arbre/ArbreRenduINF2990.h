@@ -40,49 +40,41 @@ public:
    /// Initialise l'arbre de rendu à son état initial.
    void initialiser();
 
-   // Obtenir le ième enfant de l'arbre
+   /// Obtenir le ième enfant de l'arbre
    NoeudAbstrait* getEnfant(int position) const;
 
-   // Accepter un visiteur
+   /// Accepter un visiteur
    virtual bool accepterVisiteur(VisiteurAbstrait* vis);
 
-   // Initialiser l'arbre avec un fichier XML
+   /// Initialiser l'arbre avec un fichier XML
    bool initialiserXML(std::string nomFichier);
 
-   // Obtenir les propriétés de la zone de jeu
+   /// Obtenir les propriétés de la zone de jeu
    int* obtenirProprietes() const { return proprietes_; };
 
-	/// La chaîne représentant les types
-   //static const std::string NOM_ARAIGNEE;
-   static const std::string NOM_BUTOIR;
-   static const std::string NOM_BUTOIRCIRCULAIRE;
-   static const std::string NOM_CIBLE;
-   //static const std::string NOM_CONECUBE;
-   static const std::string NOM_BILLE;
-   static const std::string NOM_GENERATEURBILLE;
-   static const std::string NOM_MUR;
-   static const std::string NOM_PALETTE;
-   static const std::string NOM_PORTAIL;
-   static const std::string NOM_RESSORT;
-   static const std::string NOM_TROU;	
-   static const std::string NOM_VIDE;
-   static const std::string NOM_COUVERCLE;
-   static const std::string NOM_TABLE;
+   static const std::string NOM_BUTOIR; ///< Représente le type Butoir
+   static const std::string NOM_BUTOIRCIRCULAIRE; ///< Représente le type Butoir circulaire
+   static const std::string NOM_CIBLE; ///< Représente le type Cible
+   static const std::string NOM_BILLE; ///< Représente le type Bille
+   static const std::string NOM_GENERATEURBILLE; ///< Représente le type Generateur bille
+   static const std::string NOM_MUR; ///< Représente le type Mur
+   static const std::string NOM_PALETTE; ///< Représente le type Palette
+   static const std::string NOM_PORTAIL; ///< Représente le type Portail
+   static const std::string NOM_RESSORT; ///< Représente le type Ressort
+   static const std::string NOM_TROU; ///< Représente le type Trou
+   static const std::string NOM_VIDE; ///< Représente le type Vide
+   static const std::string NOM_COUVERCLE; ///< Représente le type Couvercle
+   static const std::string NOM_TABLE; ///< Représente le type Table
 
 private:
 
-	// Lire un fichier XML
+	/// Lire un fichier XML
 	bool lireXML(tinyxml2::XMLDocument& doc);
 
-	// Propriétés de la zone de jeu
+	/// Propriétés de la zone de jeu
 	int* proprietes_ = new int[6];
 
 };
 
 
 #endif // __ARBRE_ARBRERENDUINF2990_H__
-
-
-///////////////////////////////////////////////////////////////////////////////
-/// @}
-///////////////////////////////////////////////////////////////////////////////

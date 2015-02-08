@@ -86,7 +86,7 @@ public:
    /// Vérifier si un point cliqué est dans la table
    bool verifierCliqueDansTable(int x, int y);
 
-   // Pour la duplication d'objets selectionnés
+   /// Pour la duplication d'objets selectionnés
    void dupliquer();
 
 private:
@@ -99,23 +99,16 @@ private:
    /// Opérateur d'assignation désactivé.
    FacadeModele& operator =(const FacadeModele&) = delete;
 
-   /// Nom du fichier XML dans lequel doit se trouver la configuration.
-   static const std::string FICHIER_CONFIGURATION;
+   static const std::string FICHIER_CONFIGURATION; /**< Nom du fichier XML dans lequel doit se trouver la configuration. */
 
-   /// Pointeur vers l'instance unique de la classe.
-   static FacadeModele* instance_;
+   static FacadeModele* instance_; ///< Pointeur vers l'instance unique de la classe. */
 
-   /// Poignée ("handle") vers la fenêtre où l'affichage se fait.
-   HWND  hWnd_{ nullptr };
-   /// Poignée ("handle") vers le contexte OpenGL.
-   HGLRC hGLRC_{ nullptr };
-   /// Poignée ("handle") vers le "device context".
-   HDC   hDC_{ nullptr };
+   HWND  hWnd_{ nullptr }; ///< Poignée ("handle") vers la fenêtre où l'affichage se fait.
+   HGLRC hGLRC_{ nullptr }; ///< Poignée ("handle") vers le contexte OpenGL.
+   HDC   hDC_{ nullptr }; ///< Poignée ("handle") vers le "device context".
 
-   /// Vue courante de la scène.
-   vue::Vue* vue_{ nullptr };
-   /// Arbre de rendu contenant les différents objets de la scène.
-   ArbreRenduINF2990* arbre_{ nullptr };
+   vue::Vue* vue_{ nullptr }; ///< Vue courante de la scène. */
+   ArbreRenduINF2990* arbre_{ nullptr }; ///< Arbre de rendu contenant les différents objets de la scène. */
 
    glm::dvec3 selectionBasGauche_, selectionHautDroit_;
 };
@@ -172,8 +165,3 @@ inline ArbreRenduINF2990* FacadeModele::obtenirArbreRenduINF2990()
 
 
 #endif // __APPLICATION_FACADEMODELE_H__
-
-
-///////////////////////////////////////////////////////////////////////////////
-/// @}
-///////////////////////////////////////////////////////////////////////////////
