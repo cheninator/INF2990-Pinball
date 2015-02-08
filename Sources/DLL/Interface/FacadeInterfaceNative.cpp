@@ -608,8 +608,8 @@ __declspec(dllexport) void zoomOutElastique(int xCoin1, int yCoin1, int xCoin2, 
 	FacadeModele::obtenirInstance()->obtenirVue()->convertirClotureAVirtuelle(xCoin1, yCoin1, positionSouris1);
 	FacadeModele::obtenirInstance()->obtenirVue()->convertirClotureAVirtuelle(xCoin2, yCoin2, positionSouris2);
 
-	glm::ivec2 coin1(positionSouris1.x, positionSouris1.y);
-	glm::ivec2 coin2(positionSouris2.x, positionSouris2.y);
+	glm::dvec2 coin1(positionSouris1.x, positionSouris1.y);
+	glm::dvec2 coin2(positionSouris2.x, positionSouris2.y);
 	FacadeModele::obtenirInstance()->obtenirVue()->zoomerOutElastique(coin1, coin2);
 }
 

@@ -272,31 +272,48 @@ namespace vue {
 	/// @return Aucune.
 	///
 	////////////////////////////////////////////////////////////////////////
-	void ProjectionOrtho::zoomerOut(const glm::ivec2& coin1, const glm::ivec2& coin2)
+	void ProjectionOrtho::zoomerOut(const glm::dvec2& coin1, const glm::dvec2& coin2)
 	{
 		// À IMPLANTER.
 		const double longueurFenetreActuelle = (xMaxFenetre_ - xMinFenetre_);
 		const double xGaucheCoin = (coin1.x < coin2.x ? coin1.x : coin2.x);
 		const double xDroiteCoin = (coin1.x > coin2.x ? coin1.x : coin2.x);
-		const double ratioSelectionFenetreActuelle = (xDroiteCoin - xGaucheCoin) / longueurFenetreActuelle;
+		const double xRatioSelectionFenetreActuelle = (xDroiteCoin - xGaucheCoin) * 1.0 / longueurFenetreActuelle;
+		
+		std::cout << "xCoinGauche | xCoinDroite " << xGaucheCoin << " | " << xDroiteCoin << "\n \n";
 
-
-
+		std::cout << "xMin | xMax Fenetre: " << xMinFenetre_ << " | " << xMaxFenetre_ << "\n";
+		std::cout << "yMin | yMax Fenetre: " << yMinFenetre_ << " | " << yMaxFenetre_ << "\n \n";
+		/// Section pour X ///
 		double longueurFenetreSelection = abs(xDroiteCoin - xGaucheCoin);
-		double nouvelleLongueurX = longueurFenetreActuelle / ratioSelectionFenetreActuelle;
+		double nouvelleLongueurX = longueurFenetreActuelle / xRatioSelectionFenetreActuelle;
 		double proportionRelativeCoinGauche = (xGaucheCoin - xMinFenetre_) / longueurFenetreActuelle;
 
 		// On place notre fenetre virtuelle a la longueur proportionnelle
-		double nouveauXMinFenetre = (xMinFenetre_) - (proportionRelativeCoinGauche)* (nouvelleLongueurX);
-		double nouveauXMaxFenetre = xMaxFenetre_ + (nouveauXMinFenetre + (proportionRelativeCoinGauche + ratioSelectionFenetreActuelle) * nouvelleLongueurX);
-
-		double nouveauYMinFenetre = (coin1.y < coin2.y ? coin1.y : coin2.y);
-		double nouveauYMaxFenetre = (coin1.y > coin2.y ? coin1.y : coin2.y);
+		double nouveauXMinFenetre = xMinFenetre_ - (proportionRelativeCoinGauche * nouvelleLongueurX);
+		double nouveauXMaxFenetre = xMinFenetre_ + (nouvelleLongueurX - (xMinFenetre_ - nouveauXMinFenetre));
 
 		xMinFenetre_ = nouveauXMinFenetre;
 		xMaxFenetre_ = nouveauXMaxFenetre;
+
+		///TODO(Emilio): Penser à faire une méthode afin de ne pas dupliquer le code
+		/// Section pour Y ///
+		const double hauteurFenetreActuelle = yMaxFenetre_ - yMinFenetre_;
+		const double yMinCoin = (coin1.y < coin2.y ? coin1.y : coin2.y);
+		const double yMaxCoin = (coin1.y > coin2.y ? coin1.y : coin2.y);
+		const double yRatioSelectionFenetreActuelle = (yMaxCoin - yMinCoin) * 1.0 / hauteurFenetreActuelle;
+		double nouvelleLongueurY = hauteurFenetreActuelle / yRatioSelectionFenetreActuelle;
+		double proportionRelativeCoinBas = (yMinCoin - yMinFenetre_) / hauteurFenetreActuelle;
+
+		double nouveauYMinFenetre = yMinFenetre_ - (proportionRelativeCoinBas * nouvelleLongueurY);
+		double nouveauYMaxFenetre = yMinFenetre_ + (nouvelleLongueurY - (yMinFenetre_ - nouveauYMinFenetre));;
+
 		yMinFenetre_ = nouveauYMinFenetre;
-		yMaxFenetre_ = nouveauXMaxFenetre;
+		yMaxFenetre_ = nouveauYMaxFenetre;
+
+		std::cout << "xMin | xMax Fenetre: " << xMinFenetre_ << " | " << xMaxFenetre_ << "\n";
+		std::cout << "yMin | yMax Fenetre: " << yMinFenetre_ << " | " << yMaxFenetre_ << "\n \n";
+
 		//ajusterRapportAspect();
 	}
 

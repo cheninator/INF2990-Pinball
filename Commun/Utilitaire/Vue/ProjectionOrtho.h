@@ -54,7 +54,7 @@ namespace vue {
 
 
 		/// Zoom out élastique, sur un rectangle.
-		void zoomerOut(const glm::ivec2& coin1, const glm::ivec2& coin2);
+		void zoomerOut(const glm::dvec2& coin1, const glm::dvec2& coin2);
 		/// Zoom in élatique, sur un rectangle.
 		void zoomerIn(const glm::ivec2& coin1, const glm::ivec2& coin2);
 
