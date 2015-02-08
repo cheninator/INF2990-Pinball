@@ -41,6 +41,7 @@ public:
 	virtual bool traiter(NoeudAbstrait* noeud);
 	virtual bool traiter(NoeudTable* table);
 
+	// Nombre d'objets sélectionnés disponnible pour les clients
 	int obtenirNbObjetsSelectionne(){ return nbObjetsSelectionne_; }
 
 private:
@@ -51,7 +52,10 @@ private:
 	// Point cliqué
 	glm::dvec3 pointDansLeMonde_;
 
+	// Valeur du stencil à comparer au numéro des noeuds
 	int valeurStencil_;
+
+	// Nombre d'objets sélectionnés disponnible pour les clients
 	int nbObjetsSelectionne_;
 };
 

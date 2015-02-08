@@ -84,6 +84,7 @@ bool VisiteurCentreDeMasse::traiter(NoeudTable* table)
 ///
 /// @fn bool VisiteurCentreDeMasse::traiter(NoeudAbstrait* arbre)
 ///
+/// @brief Calcule le centre de masse (tous les noeuds ont une masse de 1)
 ///
 /// @return Retourne toujours true
 ///

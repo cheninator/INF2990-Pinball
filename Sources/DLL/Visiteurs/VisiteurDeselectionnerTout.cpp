@@ -13,7 +13,7 @@
 
 ////////////////////////////////////////////////////////////////////////
 ///
-/// @fn VisiteurSelection::VisiteurSelection()
+/// @fn VisiteurDeselectionnerTout::VisiteurDeselectionnerTout()
 ///
 /// VIDE
 ///
@@ -25,24 +25,9 @@ VisiteurDeselectionnerTout::VisiteurDeselectionnerTout()
 
 }
 
-
 ////////////////////////////////////////////////////////////////////////
 ///
-/// @fn VisiteurDeplacement::VisiteurSelection(glm::dvec3 pointDansLeMonde)
-///
-/// Ne fait qu'initialiser les variables membres de la classe.
-///
-/// @param[in] dev : Le vecteur de deplacement
-///
-/// @return Aucune (constructeur).
-///
-////////////////////////////////////////////////////////////////////////
-
-
-
-////////////////////////////////////////////////////////////////////////
-///
-/// @fn VisiteurSelection::~VisiteurSelection()
+/// @fn VisiteurDeselectionnerTout::~VisiteurDeselectionnerTout()
 ///
 /// Destructeur vide 
 ///
@@ -57,9 +42,9 @@ VisiteurDeselectionnerTout::~VisiteurDeselectionnerTout()
 
 ////////////////////////////////////////////////////////////////////////
 ///
-/// @fn bool VisiteurSelection::traiter(ArbreRenduINF2990* noeud)
+/// @fn bool VisiteurDeselectionnerTout::traiter(ArbreRenduINF2990* noeud)
 ///
-/// Cette fonction traite l'arbre de rendu pour selectionner ses enfants
+/// Cette fonction traite l'arbre de rendu pour visiter ses enfants
 ///
 /// Cette fonction retourne true pour dire que l'opération s'est
 /// fait correctement
@@ -81,7 +66,7 @@ bool VisiteurDeselectionnerTout::traiter(ArbreRenduINF2990* arbre)
 
 ////////////////////////////////////////////////////////////////////////
 ///
-/// @fn bool VisiteurSelection::traiter(ArbreRenduINF2990* noeud)
+/// @fn bool VisiteurDeselectionnerTout::traiter(NoeudTable* noeud)
 ///
 /// Cette fonction traite la table de l'arbre de rendu.
 ///
@@ -103,13 +88,9 @@ bool VisiteurDeselectionnerTout::traiter(NoeudTable* table)
 
 ////////////////////////////////////////////////////////////////////////
 ///
-/// @fn bool VisiteurSelection::traiter(NoeudAbstrait* noeud)
+/// @fn bool VisiteurDeselectionnerTout::traiter(NoeudAbstrait* noeud)
 ///
-/// Cette fonction traite les enfants de l'arbre de rendu. Si ses enfants ont des enfants
-/// ils seront aussi traités.
-///
-/// Cette fonction retourne true pour dire que l'opération s'est
-/// fait correctement
+/// Ce visiteur désélectionne tous les noeuds
 ///
 /// @return Retourne toujours true
 ///

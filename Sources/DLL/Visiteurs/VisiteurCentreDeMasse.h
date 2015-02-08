@@ -18,7 +18,7 @@
 
 ///////////////////////////////////////////////////////////////////////////
 /// @class VisiteurCentreDeMasse
-/// @brief 
+/// @brief Utilisé pour calculer le centre de masse des noeuds sélectionnés
 ///
 /// @author Philippe Carphin
 /// @date 2015-02-02

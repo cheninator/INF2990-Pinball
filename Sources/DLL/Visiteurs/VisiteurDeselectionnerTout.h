@@ -17,11 +17,7 @@
 
 ///////////////////////////////////////////////////////////////////////////
 /// @class VisiteurSelection
-/// @brief Classe pour selectionner les objets de l'arbre de rendu
-///
-///        Instancier cette classe avec en paramètre le point cliqué
-///		   Ensuite, appelez la méthode accepterVisiteur() de l'arbre de 
-///		   rendu et lui fournir CE visiteur en paramètre
+/// @brief Classe pour désélectionner tous les objets de la table de rendu
 ///
 /// @author Yonni Chen
 /// @date 2015-02-02
