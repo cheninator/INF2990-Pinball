@@ -36,6 +36,7 @@ namespace InterfaceGraphique
         private float scale = 1F;
         private int currentZoom = 5;
         private int previousZoom = 5;
+        private int nbSelection;
         private StringBuilder pathXML = new StringBuilder("");
         private Etat etat {get; set;}
 
@@ -388,9 +389,14 @@ namespace InterfaceGraphique
 
         private void OK_prop_bouton_Click(object sender, EventArgs e)
         {
-            Positionner_Objet();
-            Scale_Objet();
-            Rotate_Object();
+            FonctionsNatives.deplacerSelection(
+                FonctionsNatives.getPositionX(),
+                FonctionsNatives.getPositionY(),
+                Convert.ToInt32(Xbox.Text), 
+                Convert.ToInt32(Ybox.Text));
+            
+           
+            
         }
 
         public void Afficher_Objet(bool twin)
@@ -783,7 +789,20 @@ namespace InterfaceGraphique
         private void panel_MouseMove(object sender, MouseEventArgs e)
         {
             currentP = panel_GL.PointToClient(MousePosition);
-
+            if (etat is EtatDeplacement && nbSelection == 1) 
+            {
+                Xbox.Text = FonctionsNatives.getPositionX().ToString();
+                Ybox.Text = FonctionsNatives.getPositionY().ToString();
+                
+            }
+            if (etat is EtatRotation && nbSelection == 1)
+            {
+                Anglebox.Text = FonctionsNatives.getAngle().ToString();
+            }
+            if ( etat is EtatScale && nbSelection == 1)
+            {
+                FMEbox.Text = FonctionsNatives.getScale().ToString();
+            }
             if (!(clickValide(origin, currentP)) && (etat is EtatSelection) && !(etat is EtatSelectionMultiple) && e.Button == MouseButtons.Left)
             {
                 etat = new EtatSelectionMultiple(this);
@@ -888,8 +907,8 @@ namespace InterfaceGraphique
         public void selection(MouseEventArgs e) 
         {
             // TODO PHIL : Faire que ceci n'arrive que quand on relâche le bouton de gauche et qu'on n'a pas bougé de plus de 3 pixels.
-            int selection = FonctionsNatives.selectionnerObjetSousPointClique(panel_GL.PointToClient(MousePosition).X, panel_GL.PointToClient(MousePosition).Y, panel_GL.Height, panel_GL.Height,ctrlDown);
-            if (selection  == 0)
+            nbSelection = FonctionsNatives.selectionnerObjetSousPointClique(panel_GL.PointToClient(MousePosition).X, panel_GL.PointToClient(MousePosition).Y, panel_GL.Height, panel_GL.Height,ctrlDown);
+            if (nbSelection == 0)
             {
                 outilsEnable(false);
                 proprietesEnable(false);
@@ -900,6 +919,8 @@ namespace InterfaceGraphique
                 proprietesEnable(true);
                 Xbox.Text = FonctionsNatives.getPositionX().ToString();
                 Ybox.Text = FonctionsNatives.getPositionY().ToString();
+                Anglebox.Text = FonctionsNatives.getAngle().ToString();
+                FMEbox.Text = FonctionsNatives.getScale().ToString();
             }
         }
 
@@ -910,19 +931,21 @@ namespace InterfaceGraphique
 
         public void selectionMultiple()
         {
-            int selection = FonctionsNatives.selectionMultiple();
+            nbSelection = FonctionsNatives.selectionMultiple();
             proprietesEnable(false);
-            if (selection == 0)
+            if (nbSelection == 0)
             {
                 outilsEnable(false);
             }
             else 
             {
-                if (selection == 1)
+                if (nbSelection == 1)
                 {
                     proprietesEnable(true);
                     Xbox.Text = FonctionsNatives.getPositionX().ToString();
                     Ybox.Text = FonctionsNatives.getPositionY().ToString();
+                    Anglebox.Text = FonctionsNatives.getAngle().ToString();
+                    FMEbox.Text = FonctionsNatives.getScale().ToString();
                 }
                 outilsEnable(true);
             }
@@ -1133,6 +1156,12 @@ namespace InterfaceGraphique
 
         [DllImport(@"Noyau.dll", CallingConvention = CallingConvention.Cdecl)]
         public static extern int getPositionY();
+
+        [DllImport(@"Noyau.dll", CallingConvention = CallingConvention.Cdecl)]
+        public static extern int getAngle();
+
+        [DllImport(@"Noyau.dll", CallingConvention = CallingConvention.Cdecl)]
+        public static extern double getScale();
 
     }
 }

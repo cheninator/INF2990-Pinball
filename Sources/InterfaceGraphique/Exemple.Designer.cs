@@ -528,6 +528,7 @@
             // 
             // Annuler_prop_boutn
             // 
+            this.Annuler_prop_boutn.Enabled = false;
             this.Annuler_prop_boutn.Location = new System.Drawing.Point(84, 137);
             this.Annuler_prop_boutn.Name = "Annuler_prop_boutn";
             this.Annuler_prop_boutn.Size = new System.Drawing.Size(65, 23);
@@ -539,6 +540,7 @@
             // 
             // OK_prop_bouton
             // 
+            this.OK_prop_bouton.Enabled = false;
             this.OK_prop_bouton.Location = new System.Drawing.Point(8, 137);
             this.OK_prop_bouton.Name = "OK_prop_bouton";
             this.OK_prop_bouton.Size = new System.Drawing.Size(65, 23);
@@ -550,6 +552,7 @@
             // 
             // Anglebox
             // 
+            this.Anglebox.Enabled = false;
             this.Anglebox.Location = new System.Drawing.Point(93, 73);
             this.Anglebox.Name = "Anglebox";
             this.Anglebox.Size = new System.Drawing.Size(51, 20);
@@ -559,6 +562,7 @@
             // 
             // Angle_label
             // 
+            this.Angle_label.Enabled = false;
             this.Angle_label.Location = new System.Drawing.Point(14, 73);
             this.Angle_label.Name = "Angle_label";
             this.Angle_label.Size = new System.Drawing.Size(50, 20);
@@ -568,6 +572,7 @@
             // 
             // FMEbox
             // 
+            this.FMEbox.Enabled = false;
             this.FMEbox.Location = new System.Drawing.Point(92, 101);
             this.FMEbox.Name = "FMEbox";
             this.FMEbox.Size = new System.Drawing.Size(51, 20);
@@ -577,6 +582,7 @@
             // 
             // FME_label
             // 
+            this.FME_label.Enabled = false;
             this.FME_label.Location = new System.Drawing.Point(17, 102);
             this.FME_label.Name = "FME_label";
             this.FME_label.Size = new System.Drawing.Size(67, 19);
@@ -586,6 +592,7 @@
             // 
             // Ybox
             // 
+            this.Ybox.Enabled = false;
             this.Ybox.Location = new System.Drawing.Point(93, 47);
             this.Ybox.Name = "Ybox";
             this.Ybox.Size = new System.Drawing.Size(51, 20);
@@ -595,6 +602,7 @@
             // 
             // Y_label
             // 
+            this.Y_label.Enabled = false;
             this.Y_label.Location = new System.Drawing.Point(14, 46);
             this.Y_label.Name = "Y_label";
             this.Y_label.Size = new System.Drawing.Size(73, 20);
@@ -604,6 +612,7 @@
             // 
             // Xbox
             // 
+            this.Xbox.Enabled = false;
             this.Xbox.Location = new System.Drawing.Point(93, 21);
             this.Xbox.Name = "Xbox";
             this.Xbox.Size = new System.Drawing.Size(51, 20);
@@ -613,6 +622,7 @@
             // 
             // X_label
             // 
+            this.X_label.Enabled = false;
             this.X_label.Location = new System.Drawing.Point(14, 21);
             this.X_label.Name = "X_label";
             this.X_label.Size = new System.Drawing.Size(73, 20);
