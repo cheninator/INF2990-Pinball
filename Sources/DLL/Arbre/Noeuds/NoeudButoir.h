@@ -4,9 +4,9 @@
 /// @date 2015-01-24
 /// @version 1.0
 ///
-/// @addtogroup inf2990 INF2990
-/// @{
+/// @ingroup Noeud
 ///////////////////////////////////////////////////////////////////////////
+
 #ifndef __ARBRE_NOEUDS_NOEUDBUTOIR_H__
 #define __ARBRE_NOEUDS_NOEUDBUTOIR_H__
 
@@ -15,10 +15,11 @@
 
 ///////////////////////////////////////////////////////////////////////////
 /// @class NoeudButoir
-/// @brief Classe qui représente un butoir
+/// @brief Classe qui représente un butoir.
 ///
 /// @author Julien Gascon-Samson
 /// @date 2011-05-19
+/// @ingroup Noeud
 ///////////////////////////////////////////////////////////////////////////
 class NoeudButoir : public NoeudComposite
 {
@@ -36,6 +37,7 @@ public:
 	/// Effectue l'animation du butoir.
 	virtual void animer(float temps);
 
+	/// Accepte un visiteur.
 	virtual bool accepterVisiteur(VisiteurAbstrait* vis);
 
 private:
@@ -46,8 +48,3 @@ private:
 };
 
 #endif // __ARBRE_NOEUDS_NOEUDBUTOIR_H__
-
-
-///////////////////////////////////////////////////////////////////////////////
-/// @}
-///////////////////////////////////////////////////////////////////////////////

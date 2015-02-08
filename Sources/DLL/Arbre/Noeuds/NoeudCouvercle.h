@@ -1,25 +1,45 @@
+///////////////////////////////////////////////////////////////////////////
+/// @file NoeudCouvercle.h
+/// @author Yonni Chen
+/// @date 2015-01-24
+/// @version 1.0
+///
+/// @ingroup Noeud
+///////////////////////////////////////////////////////////////////////////
+
 #ifndef  __ARBRE_NOEUDS_NOEUDCOUVERCLE_H__
 #define  __ARBRE_NOEUDS_NOEUDCOUVERCLE_H__
 
 #include "NoeudComposite.h"
 #include "Gl/gl.h"
 
+///////////////////////////////////////////////////////////////////////////
+/// @class NoeudCouvercle
+/// @brief Classe qui représente un couvercle.
+///
+/// @author Yonni Chen
+/// @date 2015-01-24
+/// @ingroup Noeud
+///////////////////////////////////////////////////////////////////////////
 class NoeudCouvercle : public NoeudComposite
 {
 public:
-	// Constructeur
+	/// Constructeur
 	NoeudCouvercle(const std::string& typeNoeud);
 
-	// Destructeur 
+	/// Destructeur 
 	~NoeudCouvercle();
 
-	// Surchage de la méthode qui affiche l'objet
+	/// Surchage de la méthode qui affiche l'objet
 	virtual void afficherConcret() const;
-	// Surchage de la méthode qui anime l'objet
+
+	/// Surchage de la méthode qui anime l'objet
 	virtual void animer(float temps);
 
+	/// Accepte un visiteur.
 	virtual bool accepterVisiteur(VisiteurAbstrait* vis);
 
+	/// Retourne l'enfant du noeud courant.
 	virtual NoeudAbstrait* getEnfant(int i) { return NoeudComposite::getEnfant(i); };
 	 
 private:

@@ -4,9 +4,13 @@
 /// @date 2007-01-28
 /// @version 1.0
 ///
-/// @addtogroup inf2990 INF2990
-/// @{
+/// @ingroup Arbre
 ///////////////////////////////////////////////////////////////////////////////
+
+/** @defgroup Arbre Arbre
+*	@ingroup Noyau
+*/
+
 #ifndef __ARBRE_ARBRERENDU_H__
 #define __ARBRE_ARBRERENDU_H__
 
@@ -36,6 +40,7 @@ class UsineNoeud;
 ///
 /// @author Martin Bisson
 /// @date 2007-01-28
+/// @ingroup Arbre
 ///////////////////////////////////////////////////////////////////////////
 class ArbreRendu : public NoeudComposite
 {
@@ -66,8 +71,7 @@ public:
 
 
 private:
-   /// Définition du type pour l'association du nom d'un type vers l'usine
-   /// correspondante.
+   /// Définition du type pour l'association du nom d'un type vers l'usine correspondante.
 	using RegistreUsines = std::map< std::string, const UsineNoeud* >;
    /// Association du nom d'un type vers l'usine correspondante.
    RegistreUsines usines_;
@@ -98,8 +102,3 @@ inline void ArbreRendu::ajouterUsine(
 
 
 #endif // __ARBRE_ARBRERENDU_H__
-
-
-///////////////////////////////////////////////////////////////////////////////
-/// @}
-///////////////////////////////////////////////////////////////////////////////

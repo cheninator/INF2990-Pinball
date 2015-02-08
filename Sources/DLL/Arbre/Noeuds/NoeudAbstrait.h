@@ -4,9 +4,13 @@
 /// @date 2007-01-24
 /// @version 1.0
 ///
-/// @addtogroup inf2990 INF2990
-/// @{
+/// @ingroup Noeud
 ///////////////////////////////////////////////////////////////////////////////
+
+/** @defgroup Noeud Noeud
+*	@ingroup Arbre
+*/
+
 #ifndef __ARBRE_NOEUDS_NOEUDABSTRAIT_H__
 #define __ARBRE_NOEUDS_NOEUDABSTRAIT_H__
 
@@ -38,6 +42,7 @@ namespace modele{
 ///
 /// @author DGI-2990
 /// @date 2007-01-24
+/// @ingroup Noeud
 ///////////////////////////////////////////////////////////////////////////
 class NoeudAbstrait
 {
@@ -544,8 +549,3 @@ inline const glm::dvec3& NoeudAbstrait::obtenirRotation() const
 }
 
 #endif // __ARBRE_NOEUDS_NOEUDABSTRAIT_H__
-
-
-///////////////////////////////////////////////////////////////////////////////
-/// @}
-///////////////////////////////////////////////////////////////////////////////

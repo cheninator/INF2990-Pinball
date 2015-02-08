@@ -3,8 +3,7 @@
 /// @author DGI-2990
 /// @date   2007-01-24
 ///
-/// @addtogroup inf2990 INF2990
-/// @{
+/// @ingroup Noeud
 ////////////////////////////////////////////////
 
 #include "NoeudAbstrait.h"
@@ -510,6 +509,3 @@ void NoeudAbstrait::setTwin(NoeudAbstrait* twin)
 {
 	twin_ = twin;
 }
-////////////////////////////////////////////////
-/// @}
-////////////////////////////////////////////////

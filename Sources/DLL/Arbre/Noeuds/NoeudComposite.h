@@ -4,8 +4,7 @@
 /// @date 2007-01-25
 /// @version 1.0
 ///
-/// @addtogroup inf2990 INF2990
-/// @{
+/// @ingroup Noeud
 ///////////////////////////////////////////////////////////////////////////////
 #ifndef __ARBRE_NOEUDS_NOEUDCOMPOSITE_H__
 #define __ARBRE_NOEUDS_NOEUDCOMPOSITE_H__
@@ -26,6 +25,7 @@
 ///
 /// @author DGI-2990
 /// @date 2007-01-24
+/// @ingroup Noeud
 ///////////////////////////////////////////////////////////////////////////
 class NoeudComposite : public NoeudAbstrait
 {

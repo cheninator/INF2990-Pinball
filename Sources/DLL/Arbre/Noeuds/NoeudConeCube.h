@@ -4,8 +4,7 @@
 /// @date 2011-05-19
 /// @version 1.0
 ///
-/// @addtogroup inf2990 INF2990
-/// @{
+/// @ingroup Noeud
 ///////////////////////////////////////////////////////////////////////////
 #ifndef __ARBRE_NOEUDS_NOEUDCONECUBE_H__
 #define __ARBRE_NOEUDS_NOEUDCONECUBE_H__
@@ -21,6 +20,7 @@
 ///
 /// @author Julien Gascon-Samson
 /// @date 2011-05-19
+/// @ingroup Noeud
 ///////////////////////////////////////////////////////////////////////////
 class NoeudConeCube : public NoeudComposite
 {
@@ -32,9 +32,11 @@ public:
 
    /// Affiche le cube.
    virtual void afficherConcret() const;
+
    /// Effectue l'animation du cube.
    virtual void animer( float temps );
 
+   /// Accepte un visiteur.
    virtual bool accepterVisiteur(VisiteurAbstrait* vis);
 
 private:
@@ -49,8 +51,3 @@ private:
 
 
 #endif // __ARBRE_NOEUDS_NOEUDCONECUBE_H__
-
-
-///////////////////////////////////////////////////////////////////////////////
-/// @}
-///////////////////////////////////////////////////////////////////////////////

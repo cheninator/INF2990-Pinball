@@ -1,22 +1,41 @@
+///////////////////////////////////////////////////////////////////////////
+/// @file NoeudPortail.h
+/// @author Yonni Chen
+/// @date 2015-01-24
+/// @version 1.0
+///
+/// @ingroup Noeud
+///////////////////////////////////////////////////////////////////////////
+
 #ifndef  __ARBRE_NOEUDS_NOEUDPORTAIL_H__
 #define  __ARBRE_NOEUDS_NOEUDPORTAIL_H__
 
 #include "NoeudComposite.h"
 #include "Gl/gl.h"
 
+///////////////////////////////////////////////////////////////////////////
+/// @class NoeudPortail
+/// @brief Classe qui représente un portail.
+///
+/// @author Yonni Chen
+/// @date 2015-01-24
+/// @ingroup Noeud
+///////////////////////////////////////////////////////////////////////////
 class NoeudPortail : public NoeudComposite
 {
 public:
-	// Constructeur
+	/// Constructeur
 	NoeudPortail(const std::string& typeNoeud);
-	// Destructeur 
+	/// Destructeur 
 	~NoeudPortail();
 
-	// Surchage de la méthode qui affiche l'objet
+	/// Surchage de la méthode qui affiche l'objet.
 	virtual void afficherConcret() const;
-	// Surchage de la méthode qui anime l'objet
+
+	/// Surchage de la méthode qui anime l'objet.
 	virtual void animer(float temps);
 
+	/// Accepte un visiteur.
 	virtual bool accepterVisiteur(VisiteurAbstrait* vis);
 
 private:
