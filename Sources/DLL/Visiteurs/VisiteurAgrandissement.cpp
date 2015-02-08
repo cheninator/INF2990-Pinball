@@ -9,6 +9,7 @@
 
 #include "VisiteurAgrandissement.h"
 #include "../Arbre/ArbreRenduINF2990.h"
+#include "../Arbre/Noeuds/NoeudTable.h"
 #include <iostream>
 
 
@@ -82,6 +83,16 @@ bool VisiteurAgrandissement::traiter(ArbreRenduINF2990* noeud)
 	return true;
 }
 
+
+bool VisiteurAgrandissement::traiter(NoeudTable* noeud)
+{
+	for (unsigned int i = 0; i < noeud->obtenirNombreEnfants(); i++)
+	{
+		noeud->getEnfant(i)->accepterVisiteur(this);
+	}
+
+	return true;
+}
 
 ////////////////////////////////////////////////////////////////////////
 ///
