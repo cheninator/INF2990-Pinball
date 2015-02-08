@@ -54,12 +54,31 @@ bool VisiteurCentreDeMasse::traiter(ArbreRenduINF2990* noeud)
 {
 	for (unsigned int i = 0; i < noeud->obtenirNombreEnfants(); i++)
 	{
-		traiter(noeud->getEnfant(i));
+		noeud->getEnfant(i)->accepterVisiteur(this);
 	}
 
 	return true;
 }
-
+////////////////////////////////////////////////////////////////////////
+///
+/// @fn bool VisiteurSelection::traiter(NoeudTable* noeud)
+///
+/// Cette fonction traite la table de l'arbre de rendu.
+///
+/// Cette fonction retourne true pour dire que l'opération s'est
+/// fait correctement
+///
+/// @return Retourne toujours true
+///
+////////////////////////////////////////////////////////////////////////
+bool VisiteurCentreDeMasse::traiter(NoeudTable* table)
+{
+	for (unsigned int i = 0; i < table->obtenirNombreEnfants(); i++)
+	{
+		table->getEnfant(i)->accepterVisiteur(this);
+	}
+	return true;
+}
 
 ////////////////////////////////////////////////////////////////////////
 ///
@@ -71,27 +90,10 @@ bool VisiteurCentreDeMasse::traiter(ArbreRenduINF2990* noeud)
 ////////////////////////////////////////////////////////////////////////
 bool VisiteurCentreDeMasse::traiter(NoeudAbstrait* noeud)
 {
-	// Connaitre le type du noeud
-	std::string nom = noeud->obtenirType();
-
-	// Si l'élément est une table, visiter ses enfants
-	if (nom == "table")
+	if (noeud->estSelectionne())
 	{
-		// Traiter les enfants selectionnés de la table
-		for (unsigned int i = 0; i < noeud->obtenirNombreEnfants(); i++)
-		{
-			if (noeud->chercher(i)->estSelectionne())
-				traiter(noeud->chercher(i));
-		}
-	}
-
-	else
-	{
-		// LOGIQUE DE TROUVER LE CENTRE DE MASSE
-		
 		centreDeMasse_ += noeud->obtenirPositionRelative();
 		nbNoeuds_++;
-		// std::cout << "VisiteurCentreDeMasse::nbNoeuds_  : " << nbNoeuds_ << std::endl;
 	}
 
 	return true;

@@ -11,6 +11,8 @@
 #define __VISITEURS_VISITEURCENTREDEMASSE_H__
 
 #include "VisiteurAbstrait.h"
+#include "../Arbre/ArbreRenduINF2990.h"
+#include "../Arbre/Noeuds/NoeudTable.h"
 #include "glm\glm.hpp"
 
 
@@ -33,6 +35,7 @@ public:
 	
 	// Traiter une opération sur l'arbre de rendu et ses enfants
 	virtual bool traiter(ArbreRenduINF2990* arbre);
+	virtual bool traiter(NoeudTable* table);
 	virtual bool traiter(NoeudAbstrait* noeud);
 
 	glm::dvec3 obtenirCentreDeMasse()
