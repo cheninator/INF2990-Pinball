@@ -13,6 +13,8 @@
 NoeudCouvercle::NoeudCouvercle(const std::string& typeNoeud)
 	: NoeudComposite{ typeNoeud }
 {
+	selectionnable_ = false;
+	modifiable_ = false;
 }
 
 NoeudCouvercle::~NoeudCouvercle()
@@ -50,8 +52,8 @@ bool NoeudCouvercle::accepterVisiteur(VisiteurAbstrait* vis)
 {
 	bool reussi = false;
 
-	if (vis->traiter(this))
-		reussi = true;
+	//if (vis->traiter(this))
+	//	reussi = true;
 
 	return reussi;
 }

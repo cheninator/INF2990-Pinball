@@ -610,7 +610,7 @@ namespace InterfaceGraphique
             myObjectName = new StringBuilder("palette");
             angleX = 180;
             angleY = 0;
-            angleZ = 0;
+            angleZ = 180;
         }
 
         private void PG_J1_MenuItem_Click(object sender, EventArgs e)
@@ -623,7 +623,7 @@ namespace InterfaceGraphique
             etat = new EtatCreation(this);
             Console.WriteLine("Palette droite J1.");
             myObjectName = new StringBuilder("palette");
-            angleX = 0;
+            angleX = 180;
             angleY = 0;
             angleZ = 0;
         }
@@ -640,7 +640,7 @@ namespace InterfaceGraphique
             myObjectName = new StringBuilder("palette");
             angleX = 180;
             angleY = 0;
-            angleZ = 0;
+            angleZ = 180;
         }
 
         private void PG_J2_MenuItem_Click(object sender, EventArgs e)
@@ -653,7 +653,7 @@ namespace InterfaceGraphique
             etat = new EtatCreation(this);
             Console.WriteLine("Palette droite J2.");
             myObjectName = new StringBuilder("palette");
-            angleX = 0;
+            angleX = 180;
             angleY = 0;
             angleZ = 0;
         }
