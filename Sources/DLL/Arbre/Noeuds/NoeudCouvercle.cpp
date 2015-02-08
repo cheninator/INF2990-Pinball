@@ -26,8 +26,8 @@ void NoeudCouvercle::afficherConcret() const
 	glPushMatrix();
 	glTranslatef(200, -50, 0);
 	// To remove for animation
-	glTranslatef( -117, 0, 0 );
-	glRotatef(-45.0, 0, 1, 0 );
+	//glTranslatef( -117, 0, 0 );
+	// glRotatef(-45.0, 0, 1, 0 );
 	// Affichage du modèle.
 	glStencilFunc(GL_ALWAYS, 0, -1);
 	liste_->dessiner();
@@ -37,21 +37,13 @@ void NoeudCouvercle::afficherConcret() const
 
 void NoeudCouvercle::animer(float temps)
 {
-	/* Animation ici 
-	// Le cube effectue un tour à toutes les 7 secondes sur l'axe des X.
-	angleX_ = fmod(angleX_ + temps / 7.0f * 360.0f, 360.0f);
-	// Le cube effectue un tour à toutes les 3 secondes sur l'axe des Y.
-	angleY_ = fmod(angleY_ + temps / 3.0f * 360.0f, 360.0f);
-	// Le cube effectue une révolution à toutes les 15 secondes.
-	angleRotation_ = fmod(angleRotation_ + temps / 15.0f * 360.0f, 360.0f);
-	//	glTranslatef( -117, 0, 0 );
-	//	glRotatef(-45.0, 0, 1, 0 );
-	*/
-	positionRelative_.x++;
-	positionRelative_.y++;
-	
-	
-
+	// Appel à la version de la classe de base pour l'animation des enfants.
+	NoeudComposite::animer(temps);
+	if (positionRelative_.x > -130.0) {
+		positionRelative_.x -= 1;
+		rotation_.y -= 22.5 / (130.0);
+		positionRelative_.z -= 0.5;
+	}
 }
 
 bool NoeudCouvercle::accepterVisiteur(VisiteurAbstrait* vis)

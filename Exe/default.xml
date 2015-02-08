@@ -8,10 +8,9 @@
 </Proprietes>
 
 <arbreRenduINF2990>
-    <table nbEnfants="4">
-        <generateurbille posX="247.40000000000001" posY="-140.88" posZ="0" scaleX="1" scaleY="1" scaleZ="1" angleX="0" angleY="0" angleZ="0"/>
-        <ressort posX="242.28497319108655" posY="-182.95360025382814" posZ="0" scaleX="1" scaleY="1" scaleZ="1" angleX="0" angleY="0" angleZ="0"/>
-        <trou posX="170.6599207388646" posY="-164.08719961703125" posZ="0" scaleX="1" scaleY="1" scaleZ="1" angleX="0" angleY="0" angleZ="0"/>
-        <trou posX="156.21593489290285" posY="-48.761563867341899" posZ="0" scaleX="1" scaleY="1" scaleZ="1" angleX="0" angleY="0" angleZ="0"/>
+    <table nbEnfants="3">
+        <generateurbille posX="245.0" posY="-140.0" posZ="0" scaleX="1" scaleY="1" scaleZ="1" angleX="0" angleY="0" angleZ="0"/>
+        <ressort posX="240.0" posY="-180.0" posZ="0" scaleX="1" scaleY="1" scaleZ="1" angleX="0" angleY="0" angleZ="0"/>
+        <trou posX="170.0" posY="-164.0" posZ="0" scaleX="1" scaleY="1" scaleZ="1" angleX="0" angleY="0" angleZ="0"/>
     </table>
 </arbreRenduINF2990>
