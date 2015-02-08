@@ -7,8 +7,8 @@
 /// @addtogroup inf2990 INF2990
 /// @{
 ///////////////////////////////////////////////////////////////////////////////
-#ifndef __VISITEURS_VISITEURSELECTION_H__
-#define __VISITEURS_VISITEURSELECTION_H__
+#ifndef __VISITEURS_VISITEURSELECTIONINVERSE_H__
+#define __VISITEURS_VISITEURSELECTIONINVERSE_H__
 
 #include "NoeudAbstrait.h"
 #include "NoeudComposite.h"
@@ -26,15 +26,15 @@
 /// @author Yonni Chen
 /// @date 2015-02-02
 ///////////////////////////////////////////////////////////////////////////
-class VisiteurSelection : public VisiteurAbstrait
+class VisiteurSelectionInverse : public VisiteurAbstrait
 {
 public:
 
 	// Constructeur par défaut : aucun déplacement
-	VisiteurSelection(glm::dvec3 pointDansLeMonde, int valeurStencil);
+	VisiteurSelectionInverse(glm::dvec3 pointDansLeMonde, int valeurStencil);
 
 	// Destructeur
-	~VisiteurSelection();
+	~VisiteurSelectionInverse();
 
 	// Traiter une opération sur l'arbre de rendu et ses enfants
 	virtual bool traiter(ArbreRenduINF2990* arbre);
@@ -44,10 +44,10 @@ public:
 	int obtenirNbObjetsSelectionne(){ return nbObjetsSelectionne_; }
 
 private:
-	
+
 	// Ne touchez pas au constructeur par défaut
-	VisiteurSelection();
-	
+	VisiteurSelectionInverse();
+
 	// Point cliqué
 	glm::dvec3 pointDansLeMonde_;
 
@@ -56,4 +56,4 @@ private:
 };
 
 
-#endif //__VISITEURS_VISITEURSELECTION_H__
+#endif //__VISITEURS_VISITEURSELECTIONINVERSE_H__
