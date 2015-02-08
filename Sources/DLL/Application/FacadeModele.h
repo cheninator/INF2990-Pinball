@@ -4,9 +4,24 @@
 /// @date 2005-06-15
 /// @version 1.0 
 ///
-/// @addtogroup inf2990 INF2990
-/// @{
+/// @ingroup Application
 //////////////////////////////////////////////////////////////////////////////
+
+/**
+*  @defgroup INF2990 INF2990
+*
+*/
+
+/**
+*	@defgroup Noyau Noyau
+*	@ingroup INF2990
+*  Ce module contient le coeur de l'application.
+*/
+
+/** @defgroup Application Application
+*	@ingroup Noyau
+*/
+
 #ifndef __APPLICATION_FACADEMODELE_H__
 #define __APPLICATION_FACADEMODELE_H__
 
@@ -30,6 +45,7 @@ namespace vue {
 ///
 /// @author Martin Bisson
 /// @date 2007-02-20
+/// @ingroup Application
 ///////////////////////////////////////////////////////////////////////////
 class FacadeModele
 {

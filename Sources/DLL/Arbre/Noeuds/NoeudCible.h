@@ -1,22 +1,41 @@
+///////////////////////////////////////////////////////////////////////////
+/// @file NoeudCible.h
+/// @author Yonni Chen
+/// @date 2015-01-24
+/// @version 1.0
+///
+/// @ingroup Noeud
+///////////////////////////////////////////////////////////////////////////
+
 #ifndef __ARBRES_NOEUDS_NOEUDCIBLE_H__
 #define __ARBRES_NOEUDS_NOEUDCIBLE_H__
 
 #include "NoeudComposite.h"
 #include "Gl/gl.h"
 
+///////////////////////////////////////////////////////////////////////////
+/// @class NoeudCible
+/// @brief Classe qui représente une cible.
+///
+/// @author Yonni Chen
+/// @date 2015-01-24
+/// @ingroup Noeud
+///////////////////////////////////////////////////////////////////////////
 class NoeudCible : public NoeudComposite
 {
 public:
-	// Constructeur
+	/// Constructeur
 	NoeudCible(const std::string& typeNoeud);
-	// Destructeur 
+	/// Destructeur 
 	~NoeudCible();
 
-	// Surchage de la méthode qui affiche l'objet
+	/// Surchage de la méthode qui affiche l'objet.
 	virtual void afficherConcret() const;
-	// Surchage de la méthode qui anime l'objet
+
+	/// Surchage de la méthode qui anime l'objet.
 	virtual void animer(float temps);
 
+	/// Accepte un visiteur.
 	virtual bool accepterVisiteur(VisiteurAbstrait* vis);
 
 private:

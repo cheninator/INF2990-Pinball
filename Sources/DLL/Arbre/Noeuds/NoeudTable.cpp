@@ -1,3 +1,12 @@
+///////////////////////////////////////////////////////////////////////////
+/// @file NoeudTable.cpp
+/// @author Yonni Chen
+/// @date 2015-01-24
+/// @version 1.0
+///
+/// @ingroup Noeud
+///////////////////////////////////////////////////////////////////////////
+
 #include "NoeudTable.h"
 #include "Utilitaire.h"
 
@@ -9,16 +18,47 @@
 #include "OpenGL_Storage/ModeleStorage_Liste.h"
 
 
-
+////////////////////////////////////////////////////////////////////////
+///
+/// @fn NoeudTable::NoeudTable(const std::string& typeNoeud)
+///
+/// @param[in] typeNoeud :  le type du noeud à créer.
+///
+/// Ce constructeur ne fait qu'appeler la version de la classe et base
+/// et donner des valeurs par défaut aux variables membres.
+///
+/// @return Aucune (constructeur).
+///
+////////////////////////////////////////////////////////////////////////
 NoeudTable::NoeudTable(const std::string& typeNoeud)
 	: NoeudComposite{ typeNoeud }
 {
+
 }
 
+////////////////////////////////////////////////////////////////////////
+///
+/// @fn NoeudTable::~NoeudTable()
+///
+/// Ce destructeur désallouee la liste d'affichage du noeud.
+///
+/// @return Aucune (destructeur).
+///
+////////////////////////////////////////////////////////////////////////
 NoeudTable::~NoeudTable()
 {
+
 }
 
+////////////////////////////////////////////////////////////////////////
+///
+/// @fn void NoeudTable::afficherConcret() const
+///
+/// Cette fonction effectue le véritable rendu de l'objet.
+///
+/// @return Aucune.
+///
+////////////////////////////////////////////////////////////////////////
 void NoeudTable::afficherConcret() const
 {
 	NoeudComposite::afficherConcret();
@@ -33,6 +73,18 @@ void NoeudTable::afficherConcret() const
 	glPopMatrix();
 }
 
+////////////////////////////////////////////////////////////////////////
+///
+/// @fn void NoeudTable::animer(float temps)
+///
+/// Cette fonction effectue l'animation du noeud pour un certain
+/// intervalle de temps.
+///
+/// @param[in] temps : Intervalle de temps sur lequel faire l'animation.
+///
+/// @return Aucune.
+///
+////////////////////////////////////////////////////////////////////////
 void NoeudTable::animer(float temps)
 {
 	for (NoeudAbstrait * enfant : enfants_) {
@@ -40,6 +92,15 @@ void NoeudTable::animer(float temps)
 	}
 }
 
+////////////////////////////////////////////////////////////////////////
+///
+/// @fn bool NoeudTable::accepterVisiteur(VisiteurAbstrait* vis)
+///
+/// Cette fonction appelle la méthode traiter du visiteur.
+///
+/// @return reussi (TRUE)
+///
+////////////////////////////////////////////////////////////////////////
 bool NoeudTable::accepterVisiteur(VisiteurAbstrait* vis)
 {
 	bool reussi = false;

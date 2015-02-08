@@ -4,8 +4,7 @@
 /// @date 2007-03-23
 /// @version 1.0
 ///
-/// @addtogroup inf2990 INF2990
-/// @{
+/// @ingroup Arbre
 ///////////////////////////////////////////////////////////////////////////
 #ifndef __ARBRE_ARBRERENDUINF2990_H__
 #define __ARBRE_ARBRERENDUINF2990_H__
@@ -28,6 +27,7 @@
 ///
 /// @author Martin Bisson
 /// @date 2007-03-23
+/// @ingroup Arbre
 ///////////////////////////////////////////////////////////////////////////
 class ArbreRenduINF2990 : public ArbreRendu
 {

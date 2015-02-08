@@ -4,10 +4,8 @@
 /// @date 2007-05-22
 /// @version 1.0
 ///
-/// @addtogroup inf2990 INF2990
-/// @{
+/// @ingroup Application
 ///////////////////////////////////////////////////////////////////////////////
-
 
 // Commentaire Doxygen mis sur la première page de la documentation Doxygen.
 /**

@@ -3,8 +3,7 @@
 /// @author Martin Bisson
 /// @date   2007-01-28
 ///
-/// @addtogroup inf2990 INF2990
-/// @{
+/// @ingroup Arbre
 ////////////////////////////////////////////////
 
 #include "ArbreRendu.h"
@@ -66,12 +65,6 @@ NoeudAbstrait* ArbreRendu::creerNoeud(
 		return nullptr;
 	}
 
-	// Pour une raison que je ne comprends pas, la ligne suivante ne
-	// compile pas:
-	//
-	// const UsineNoeud* usine = usines_[typeNouveauNoeud];
-	//
-	// On utilisera donc:
 	const UsineNoeud* usine{ (*(usines_.find(typeNouveauNoeud))).second };
 
 	return usine->creerNoeud();
@@ -136,8 +129,3 @@ unsigned int ArbreRendu::calculerProfondeurMaximale()
 
 	return (profondeurPileMatrice < profondeurPileNoms) ? profondeurPileMatrice : profondeurPileNoms;
 }
-
-
-////////////////////////////////////////////////
-/// @}
-////////////////////////////////////////////////
