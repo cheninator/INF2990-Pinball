@@ -372,6 +372,7 @@ extern "C"
 	{
 		calculerTransition();
 		objet->assignerEchelle({ scale, scale, scale });
+		
 	}
 
 
@@ -832,4 +833,53 @@ extern "C"
 
 		return positionY;
 	}
+	
+	///////////////////////////////////////////////////////////////////////////////
+	///
+	/// @fn __declspec(dllexport)  int getAngle(void)
+	/// @return l'angle de l'objet
+	///
+	/// @remark : 
+	///
+	///////////////////////////////////////////////////////////////////////////////
+	__declspec(dllexport) int getAngle(void)
+	{
+		int angle;
+		for (int j = 0; j < FacadeModele::obtenirInstance()->obtenirArbreRenduINF2990()->getEnfant(0)->obtenirNombreEnfants(); j++)
+		{
+			if (
+				FacadeModele::obtenirInstance()->obtenirArbreRenduINF2990()->getEnfant(0)->chercher(j)->estSelectionne()
+				){
+				objet = FacadeModele::obtenirInstance()->obtenirArbreRenduINF2990()->getEnfant(0)->chercher(j);
+				angle = objet->obtenirRotation().z;
+			}
+		}
+
+		return  -angle;
+	}
+
+	///////////////////////////////////////////////////////////////////////////////
+	///
+	/// @fn __declspec(dllexport)  int getScale(void)
+	/// @return la taille de l'objet
+	///
+	/// @remark : 
+	///
+	///////////////////////////////////////////////////////////////////////////////
+	__declspec(dllexport) double getScale(void)
+	{
+		double scale;
+		for (int j = 0; j < FacadeModele::obtenirInstance()->obtenirArbreRenduINF2990()->getEnfant(0)->obtenirNombreEnfants(); j++)
+		{
+			if (
+				FacadeModele::obtenirInstance()->obtenirArbreRenduINF2990()->getEnfant(0)->chercher(j)->estSelectionne()
+				){
+				objet = FacadeModele::obtenirInstance()->obtenirArbreRenduINF2990()->getEnfant(0)->chercher(j);
+				scale = objet->obtenirAgrandissement().y;
+			}
+		}
+
+		return  scale;
+	}
+
 }

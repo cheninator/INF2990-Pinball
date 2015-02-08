@@ -143,6 +143,8 @@ bool VisiteurRotationPoint::traiter(NoeudAbstrait* noeud)
 
 			// Changer l'orientation du noeud
 			noeud->assignerRotation(angles_);
+			
+
 		}
 
 	return true;
