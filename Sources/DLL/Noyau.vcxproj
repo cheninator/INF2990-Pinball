@@ -157,6 +157,7 @@
     <ClCompile Include="Visiteurs\VisiteurAgrandissement.cpp" />
     <ClCompile Include="Visiteurs\VisiteurCentreDeMasse.cpp" />
     <ClCompile Include="Visiteurs\VisiteurDeplacement.cpp" />
+    <ClCompile Include="Visiteurs\VisiteurDeselectionnerTout.cpp" />
     <ClCompile Include="Visiteurs\VisiteurDuplication.cpp" />
     <ClCompile Include="Visiteurs\VisiteurRotation.cpp" />
     <ClCompile Include="Visiteurs\VisiteurRotationPoint.cpp" />
@@ -211,6 +212,7 @@
     <ClInclude Include="Visiteurs\VisiteurAgrandissement.h" />
     <ClInclude Include="Visiteurs\VisiteurCentreDeMasse.h" />
     <ClInclude Include="Visiteurs\VisiteurDeplacement.h" />
+    <ClInclude Include="Visiteurs\VisiteurDeselectionnerTout.h" />
     <ClInclude Include="Visiteurs\VisiteurDuplication.h" />
     <ClInclude Include="Visiteurs\VisiteurRotation.h" />
     <ClInclude Include="Visiteurs\VisiteurRotationPoint.h" />
