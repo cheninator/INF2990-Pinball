@@ -165,11 +165,11 @@
     <ClCompile Include="Arbre\Noeuds\NoeudCouvercle.cpp">
       <Filter>Source Files\Arbre\Noeuds</Filter>
     </ClCompile>
-    <ClCompile Include="Visiteurs\VisiteurDeselectionnerTout.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="Visiteurs\VisiteurSelectionInverse.cpp">
-      <Filter>Source Files</Filter>
+      <Filter>Source Files\Visiteurs</Filter>
+    </ClCompile>
+    <ClCompile Include="Visiteurs\VisiteurDeselectionnerTout.cpp">
+      <Filter>Source Files\Visiteurs</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

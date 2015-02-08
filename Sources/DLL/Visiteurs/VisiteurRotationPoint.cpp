@@ -9,6 +9,7 @@
 
 #include "VisiteurRotationPoint.h"
 #include "../Arbre/ArbreRenduINF2990.h"
+#include "../Arbre/Noeuds/NoeudTable.h"
 #include <iostream>
 
 
@@ -77,12 +78,35 @@ bool VisiteurRotationPoint::traiter(ArbreRenduINF2990* noeud)
 {
 	for (unsigned int i = 0; i < noeud->obtenirNombreEnfants(); i++)
 	{
-		traiter(noeud->getEnfant(i));
+		noeud->getEnfant(i)->accepterVisiteur(this);
 	}
 
 	return true;
 }
 
+
+////////////////////////////////////////////////////////////////////////
+///
+/// @fn bool VisiteurRotationPoint::traiter(NoeudTable* noeud)
+///
+/// Cette fonction traite l'arbre de rendu pour effectuer une rotation sur ses enfants
+/// selectionnés
+///
+/// Cette fonction retourne true pour dire que l'opération s'est
+/// fait correctement
+///
+/// @return Retourne toujours true
+///
+////////////////////////////////////////////////////////////////////////
+bool VisiteurRotationPoint::traiter(NoeudTable* noeud)
+{
+	for (unsigned int i = 0; i < noeud->obtenirNombreEnfants(); i++)
+	{
+		noeud->getEnfant(i)->accepterVisiteur(this);
+	}
+
+	return true;
+}
 
 ////////////////////////////////////////////////////////////////////////
 ///
@@ -99,22 +123,6 @@ bool VisiteurRotationPoint::traiter(ArbreRenduINF2990* noeud)
 ////////////////////////////////////////////////////////////////////////
 bool VisiteurRotationPoint::traiter(NoeudAbstrait* noeud)
 {
-	// Connaitre le type du noeud
-	std::string nom = noeud->obtenirType();
-
-	// Si l'élément est une table, visiter ses enfants
-	if (nom == "table")
-	{
-		// Traiter les enfants selectionnés de la table
-		for (unsigned int i = 0; i < noeud->obtenirNombreEnfants(); i++)
-		{
-			if (noeud->chercher(i)->estSelectionne())
-				traiter(noeud->chercher(i));
-		}
-	}
-
-	else
-	{
 		if (noeud->estSelectionne() /*&& noeud->estModifiable()*/ )
 		{
 			// LOGIQUE DE ROTATION AUTOUR D'UN POINT
@@ -136,7 +144,6 @@ bool VisiteurRotationPoint::traiter(NoeudAbstrait* noeud)
 			// Changer l'orientation du noeud
 			noeud->assignerRotation(angles_);
 		}
-	}
 
 	return true;
 }
