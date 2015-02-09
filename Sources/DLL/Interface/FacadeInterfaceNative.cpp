@@ -913,6 +913,9 @@ extern "C"
 
 	__declspec(dllexport) void __cdecl playSound(char* value, int length, bool stop)
 	{
+		// MERCI
+		// http://openclassrooms.com/courses/apprenez-a-programmer-en-c/jouer-du-son-avec-fmod
+		// MUCH LOVE
 		static FMOD_SYSTEM* system;
 		static bool init = false;
 		static std::vector< std::pair<std::string, FMOD_SOUND *> > soundTable;
@@ -945,20 +948,24 @@ extern "C"
 			FMOD_System_CreateSound(system, "media/SFX/stone.wav", FMOD_CREATESAMPLE, 0, &soundTable.back().second);
 		}
 
+
+		FMOD_CHANNELGROUP *canal;
+		FMOD_System_GetMasterChannelGroup(system, &canal);
+		if (stop) {
+			FMOD_ChannelGroup_SetPaused(canal, 1);
+			return;
+		}
+		else {
+			FMOD_ChannelGroup_SetPaused(canal, 0);
+			if (playing == "")
+				return;
+		}
+
 		int i;
 		for (i = 0; i < soundTable.size(); i++) {		
 			if (soundTable[i].first == std::string(value)) {
 					FMOD_System_PlaySound(system, FMOD_CHANNEL_FREE, soundTable[i].second, 0, NULL);
-					if (stop) {
-						// NO IDEA HOW TO STOP IT
-						// Pis si j'appel le destructeur
-						// Ben ca fonctionne
-						// Mais si tu relance depuis le menu ca crash ...
-						/* Destructeur:
-						FMOD_System_Close(system);
-						FMOD_System_Release(system);
-						*/
-					}
+
 				return;
 			}
 		}

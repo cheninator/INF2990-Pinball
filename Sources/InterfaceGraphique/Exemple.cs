@@ -59,6 +59,7 @@ namespace InterfaceGraphique
             etat = new EtatNone(this);
 
             //Musique
+            playSound(""); // Initialise le son
             playSound("music");
             playSound("stone"); // Pause probleme quand on ferme puis rouvre la fenetre
         }
@@ -219,7 +220,7 @@ namespace InterfaceGraphique
                 FonctionsNatives.libererOpenGL();
                 Program.peutAfficher = false;
             }
-            playSound("music", true);
+            playSound("", true);    // Stop le son
         }
 
         private void panel1_Paint(object sender, PaintEventArgs e)
@@ -1089,7 +1090,11 @@ namespace InterfaceGraphique
         // Music
         private void playSound(String name, bool stop = false)
         {
-            String path = "media/SFX/" + name + ".wav";
+            String path;
+            if (name == "")
+                path = "";
+            else
+                path = "media/SFX/" + name + ".wav";
             StringBuilder music = new StringBuilder(path);
             FonctionsNatives.playSound(music, music.Capacity, stop);
         }
