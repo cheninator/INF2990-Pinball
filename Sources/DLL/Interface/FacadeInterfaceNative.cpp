@@ -15,6 +15,7 @@
 #include "ArbreRenduINF2990.h"
 #include "CompteurAffichage.h"
 #include "../Visiteurs/VisiteurXML.h"
+#include "../Visiteurs/VisiteurSuppression.h"
 
 #include <iostream>
 #include "BancTests.h"
@@ -483,6 +484,7 @@ extern "C"
 	////////////////////////////////////////////////////////////////////////
 	__declspec(dllexport) void removeObject(void)
 	{
+		/*
 		calculerTransition();
 		if (objet == nullptr)
 			return;
@@ -495,7 +497,12 @@ extern "C"
 			}
 			FacadeModele::obtenirInstance()->obtenirArbreRenduINF2990()->effacer(objet);
 			objet = nullptr;
-		}
+		}*/
+
+		VisiteurSuppression* visiteur = new VisiteurSuppression();
+		FacadeModele::obtenirInstance()->obtenirArbreRenduINF2990()->accepterVisiteur(visiteur);
+		delete visiteur;
+
 	}
 
 
