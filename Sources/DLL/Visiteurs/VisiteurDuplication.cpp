@@ -110,6 +110,7 @@ bool VisiteurDuplication::traiter(NoeudTable* table)
 	if (copies_.size() == 1)
 	{
 		copies_[0]->assignerPositionRelative(pointDansLeMonde_);
+		table->ajouter(copies_[0]);
 	}
 
 	// Si la structure contient plusieurs objets, trouver le centre de selection
@@ -132,6 +133,7 @@ bool VisiteurDuplication::traiter(NoeudTable* table)
 			deltaY = posY - centreY;
 
 			copies_[i]->assignerPositionRelative({posX + pointDansLeMonde_.x, posY + pointDansLeMonde_.y, 0.0});
+			table->ajouter(copies_[i]);
 		}
 	}
 
@@ -154,11 +156,12 @@ bool VisiteurDuplication::traiter(NoeudTable* table)
 ////////////////////////////////////////////////////////////////////////
 bool VisiteurDuplication::traiter(NoeudAbstrait* noeud)
 {
-	std::cout << "X-";
+	ArbreRenduINF2990* arbreTemporaire = new ArbreRenduINF2990();
 
-	if (noeud->estSelectionne())
+	if (noeud->estSelectionne() && noeud->estModifiable())
 	{
-		NoeudAbstrait* copie = new NoeudAbstrait();
+		NoeudAbstrait* copie = arbreTemporaire->creerNoeud(noeud->obtenirType());
+
 		copie->assignerRotation(noeud->obtenirRotation());
 		copie->assignerEchelle(noeud->obtenirAgrandissement());
 		copie->assignerPositionRelative(noeud->obtenirPositionRelative());
@@ -177,6 +180,9 @@ bool VisiteurDuplication::traiter(NoeudAbstrait* noeud)
 
 		copies_.push_back(copie);
 	}
+
+	arbreTemporaire->vider();
+	delete arbreTemporaire;
 
 	return true;
 
