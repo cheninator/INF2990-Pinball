@@ -85,11 +85,7 @@ namespace InterfaceGraphique
         {
             bouton_quit.FlatAppearance.BorderSize = 0;
             bouton_quit.ForeColor = Color.Black;
-        }
-        
-       
-
-    
+        } 
  
     }
                                        
