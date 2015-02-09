@@ -9,5 +9,5 @@ Ks 2.000000 2.000000 2.000000
 Ni 1.407409
 d 0.000000
 illum 2
-map_Kd materiaux\texture\butoircirculaire\veiny_ish.jpg
-map_d materiaux\\texture\\butoircirculaire\\veiny_ish.jpg
+map_Kd materiaux/texture/butoircirculaire/veiny_ish.jpg
+map_d materiaux/texture/butoircirculaire/veiny_ish.jpg

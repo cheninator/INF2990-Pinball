@@ -139,9 +139,6 @@ namespace InterfaceGraphique
                 if (Exemple.myObjectName.ToString() == "portail")
                 {
                     form_.creationObjet(e, true);
-                    // TO DO: Selectionner l'endroit sur le quel se trouve presentement la souris
-                    // Vu que form_.selection(e); ne selectionne pas l'objet
-                    form_.selection(e);
                 }
             }
             else if (e.Button == MouseButtons.Right)
@@ -190,7 +187,9 @@ namespace InterfaceGraphique
 
         public override bool traiterSouris(MouseEventArgs e)
         {
-            if (e.Button == MouseButtons.Right)
+            if (e.Button == MouseButtons.Left)
+                form_.dupliquerSelection();
+            else if (e.Button == MouseButtons.Right)
                 form_.deplacementVueSouris(e);
             return true;
         }

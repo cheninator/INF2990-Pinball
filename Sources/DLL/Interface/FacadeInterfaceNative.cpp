@@ -300,6 +300,7 @@ extern "C"
 				return;
 			objet_temp->setTwin(objet);
 			objet->setTwin(objet_temp);
+			objet->assignerSelection(true);
 			objet = objet_temp;
 		}
 		else
@@ -782,9 +783,9 @@ extern "C"
 	/// @remark : Ça duplique les objets selectionnés
 	///
 	///////////////////////////////////////////////////////////////////////////////
-	__declspec(dllexport) void dupliquer()
+	__declspec(dllexport) void __cdecl dupliquerSelection(int i, int j)
 	{
-		FacadeModele::obtenirInstance()->obtenirArbreRenduINF2990();
+		FacadeModele::obtenirInstance()->dupliquerSelection(i, j);
 	}
 
 	///////////////////////////////////////////////////////////////////////////////

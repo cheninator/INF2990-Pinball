@@ -76,7 +76,7 @@ bool VisiteurAgrandissement::traiter(ArbreRenduINF2990* noeud)
 {
 	for (unsigned int i = 0; i < noeud->obtenirNombreEnfants(); i++)
 	{
-		traiter(noeud->getEnfant(i));
+		noeud->getEnfant(i)->accepterVisiteur(this);
 	}
 
 	return true;
@@ -120,21 +120,8 @@ bool VisiteurAgrandissement::traiter(NoeudTable* noeud)
 ////////////////////////////////////////////////////////////////////////
 bool VisiteurAgrandissement::traiter(NoeudAbstrait* noeud)
 {
-	// Connaitre le type du noeud
-	std::string nom = noeud->obtenirType();
 
-	// Si l'élément est une table, visiter ses enfants
-	if (nom == "table")
-	{
-		// Traiter les enfants selectionnés de la table
-		for (unsigned int i = 0; i < noeud->obtenirNombreEnfants(); i++)
-		{
-			if (noeud->chercher(i)->estSelectionne())
-				traiter(noeud->chercher(i));
-		}
-	}
-
-	else
+	if (noeud->estSelectionne())
 	{
 		// LOGIQUE D'AGRANDISSEMENT
 		// REMARQUE: LE SCALE EST QUELQUE CHOSE DE MULTIPLICATIF

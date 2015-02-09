@@ -124,7 +124,7 @@ bool VisiteurSelectionMultiple::traiter(NoeudAbstrait* noeud)
 
 	utilitaire::BoiteEnglobante boite = utilitaire::calculerBoiteEnglobante(*noeud->obtenirModele());
 
-	std::cout << "huehue " << boite.coinMin.x << "  " << boite.coinMin.y << "  " << boite.coinMax.x << "  " << boite.coinMax.y << "  " << std::endl;
+	//std::cout << "huehue " << boite.coinMin.x << "  " << boite.coinMin.y << "  " << boite.coinMax.x << "  " << boite.coinMax.y << "  " << std::endl;
 
 	if (utilitaire::DANS_LIMITESXY(boite.coinMin.x + origine.x, selectionBasGauche_.x, selectionHautDroit_.x,
 		                           boite.coinMin.y + origine.y, selectionBasGauche_.y, selectionHautDroit_.y) ||

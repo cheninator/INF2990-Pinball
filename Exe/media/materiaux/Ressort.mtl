@@ -9,5 +9,5 @@ Ks 0.500000 0.500000 0.500000
 Ni 1.000000
 d 1.000000
 illum 2
-map_Kd materiaux\texture\ressort\gore.png
-map_d materiaux\texture\ressort\gore.png
+map_Kd materiaux/texture/ressort/gore.jpg
+map_d materiaux/texture/ressort/gore.jpg

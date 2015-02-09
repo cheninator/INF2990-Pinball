@@ -408,7 +408,7 @@ int FacadeModele::selectionnerObjetSousPointClique(int i, int j, int hauteur, in
 		VisiteurSelection visSel(pointDansLeMonde, valeurStencil);
 		arbre_->accepterVisiteur(&visSel);
 		// Demander au visiteur ce qu'il a trouvé et faire quelque chose en conséquence
-		std::cout << "Valeur de retour de la sélection : " << visSel.obtenirNbObjetsSelectionne() << std::endl;
+		std::cout << "Nombre d'objets selectionnes: " << visSel.obtenirNbObjetsSelectionne() << std::endl;
 
 		return visSel.obtenirNbObjetsSelectionne();
 	}
@@ -418,7 +418,7 @@ int FacadeModele::selectionnerObjetSousPointClique(int i, int j, int hauteur, in
 		VisiteurSelectionInverse visSelInverse(pointDansLeMonde, valeurStencil);
 		arbre_->accepterVisiteur(&visSelInverse);
 		// Demander au visiteur ce qu'il a trouvé et faire quelque chose en conséquence
-		std::cout << "Valeur de retour de la sélection : " << visSelInverse.obtenirNbObjetsSelectionne() << std::endl;
+		std::cout << "Nombre d'objets selectionnes: " << visSelInverse.obtenirNbObjetsSelectionne() << std::endl;
 
 		return visSelInverse.obtenirNbObjetsSelectionne();
 	}
@@ -637,8 +637,17 @@ bool FacadeModele::verifierCliqueDansTable(int x, int y)
 /// @return Aucune.
 ///
 ///////////////////////////////////////////////////////////////////////////////
-void FacadeModele::dupliquer()
+void FacadeModele::dupliquerSelection(int i, int j)
 {
 	glm::dvec3 positionDansLeMonde;
-	
+	obtenirInstance()->obtenirVue()->convertirClotureAVirtuelle(i, j, positionDansLeMonde);
+	positionDansLeMonde.z = 0.0;
+
+	// Visiter l'arbre pour trouver le centre de masse des noeuds selectionnés
+	//VisiteurCentreDeMasse visCM;
+	//arbre_->accepterVisiteur(&visCM);
+
+	// Visiter l'arbre et faire la duplication.
+	VisiteurDuplication visD(positionDansLeMonde);
+	arbre_->accepterVisiteur(&visD);
 }

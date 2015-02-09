@@ -133,7 +133,6 @@ bool VisiteurDuplication::traiter(NoeudTable* table)
 
 			copies_[i]->assignerPositionRelative({posX + pointDansLeMonde_.x, posY + pointDansLeMonde_.y, 0.0});
 		}
-
 	}
 
 	return true;
@@ -155,6 +154,8 @@ bool VisiteurDuplication::traiter(NoeudTable* table)
 ////////////////////////////////////////////////////////////////////////
 bool VisiteurDuplication::traiter(NoeudAbstrait* noeud)
 {
+	std::cout << "X-";
+
 	if (noeud->estSelectionne())
 	{
 		NoeudAbstrait* copie = new NoeudAbstrait();
