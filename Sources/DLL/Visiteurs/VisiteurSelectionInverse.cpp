@@ -143,14 +143,18 @@ bool VisiteurSelectionInverse::traiter(NoeudAbstrait* noeud)
 		if (noeud->estSelectionne())
 		{
 			noeud->assignerSelection(false);
-			nbObjetsSelectionne_--;
 		}
 		else
 		{
 			noeud->assignerSelection(true);
-			nbObjetsSelectionne_++;
 		}
 	}
+
+		if (noeud->estSelectionne())
+		{
+			nbObjetsSelectionne_++;
+		}
+
 	// voir requi 3.2.4.2 
 
 	return true;
