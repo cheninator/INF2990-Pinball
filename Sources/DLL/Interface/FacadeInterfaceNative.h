@@ -56,7 +56,7 @@ extern "C" {
 	__declspec(dllexport) int selectionMultiple(void);
 	__declspec(dllexport) bool verifierCliqueDansTable(int x, int y);
 	__declspec(dllexport) void dupliquerSelection(int i, int j);
-
+	__declspec(dllexport) void playSound(char* value, int length, bool stop = false);
 }
 
 #endif // __FACADE_INTERFACE_NATIVE_H__

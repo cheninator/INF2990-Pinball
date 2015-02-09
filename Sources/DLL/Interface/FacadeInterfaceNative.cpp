@@ -5,6 +5,8 @@
 ///
 /// @ingroup Interface
 ////////////////////////////////////////////////
+#include <fmod.h>
+
 #include "FacadeInterfaceNative.h"
 #include "FacadeModele.h"
 
@@ -27,35 +29,35 @@ extern "C"
 	// TO DO : SUPPRIMER CETTE VARIABLE QUAND PLUS NECESSAIRE
 	static NoeudAbstrait* objet = new NoeudAbstrait();
 	static NoeudAbstrait* objet_temp = new NoeudAbstrait();
-	
+
 	// DON'T ASK WHY
 	static double facteurDeTransition; ///< Facteur de transition
-	
+
 	static double theta = 0; ///< Angle Theta
 	static double phi = 0;  /// < angle Phi
 
 
-	////////////////////////////////////////////////////////////////////////
-	///
-	/// @fn static void calculerTransition(void)
-	///
-	/// Cette fonction interne permet d'assigner un facteur de
-	/// transition (qui est une variable static interne a la librairie
-	/// pour permettre de garder la meme "vitesse" de mouvement entre
-	/// le rendu openGL et la fenetre ne pixel C#
-	///
-	/// @param[in] Aucun
-	///
-	/// @return Aucune. (assigne une valeur a une variable globale a l'interne)
-	///
-	////////////////////////////////////////////////////////////////////////
+							////////////////////////////////////////////////////////////////////////
+							///
+							/// @fn static void calculerTransition(void)
+							///
+							/// Cette fonction interne permet d'assigner un facteur de
+							/// transition (qui est une variable static interne a la librairie
+							/// pour permettre de garder la meme "vitesse" de mouvement entre
+							/// le rendu openGL et la fenetre ne pixel C#
+							///
+							/// @param[in] Aucun
+							///
+							/// @return Aucune. (assigne une valeur a une variable globale a l'interne)
+							///
+							////////////////////////////////////////////////////////////////////////
 	static float calculerTransition(void)
 	{
 		glm::dvec3 positionZero;
 		glm::dvec3 positionUn;
 		FacadeModele::obtenirInstance()->obtenirVue()->convertirClotureAVirtuelle(0, 0, positionZero);
 		FacadeModele::obtenirInstance()->obtenirVue()->convertirClotureAVirtuelle(100, 100, positionUn);
-		facteurDeTransition = (((positionUn.y - positionZero.y) / 100 ) + ((positionUn.y - positionZero.y)/100))/(-2);
+		facteurDeTransition = (((positionUn.y - positionZero.y) / 100) + ((positionUn.y - positionZero.y) / 100)) / (-2);
 		return facteurDeTransition;
 	}
 	static NoeudAbstrait* objetCourrant = new NoeudAbstrait();
@@ -117,7 +119,7 @@ extern "C"
 		if (handle == nullptr)
 			return;
 
-		FacadeModele::obtenirInstance()->initialiserOpenGL((HWND) handle);
+		FacadeModele::obtenirInstance()->initialiserOpenGL((HWND)handle);
 	}
 
 
@@ -201,7 +203,7 @@ extern "C"
 	////////////////////////////////////////////////////////////////////////
 	__declspec(dllexport) void __cdecl animer(double temps)
 	{
-		FacadeModele::obtenirInstance()->animer((float) temps);
+		FacadeModele::obtenirInstance()->animer((float)temps);
 	}
 
 
@@ -275,7 +277,7 @@ extern "C"
 		return reussite ? 0 : 1;
 	}
 
-	
+
 	////////////////////////////////////////////////////////////////////////
 	///
 	/// @fn __declspec(dllexport) void __cdecl creerObjet()
@@ -291,7 +293,7 @@ extern "C"
 	__declspec(dllexport) void __cdecl creerObjet(char* value, int length, bool isTwin)
 	{
 		calculerTransition();
-		std::string nomObjet (value);
+		std::string nomObjet(value);
 		if (isTwin == true) {
 			objet_temp = FacadeModele::obtenirInstance()->obtenirArbreRenduINF2990()->creerNoeud(nomObjet);
 			if (objet == nullptr)
@@ -326,11 +328,11 @@ extern "C"
 		calculerTransition();
 		glm::dvec3 maPosition;
 		FacadeModele::obtenirInstance()->obtenirVue()->convertirClotureAVirtuelle(x, y, maPosition);
-		if (maPosition.x > 108 && maPosition.x < 272 && maPosition.y > -190 && maPosition.y < 96){
+		if (maPosition.x > 108 && maPosition.x < 272 && maPosition.y > -190 && maPosition.y < 96) {
 			objet->assignerPositionRelative({ maPosition.x, maPosition.y, z });
 			std::cout << std::endl << "x: " << maPosition.x << "y: " << maPosition.y << "z: " << maPosition.z << std::endl;
 		}
-		}
+	}
 
 
 	////////////////////////////////////////////////////////////////////////
@@ -352,10 +354,10 @@ extern "C"
 		glm::dvec3 maPositionPresente;
 		maPositionPresente = objet->obtenirPositionRelative();
 		objet->assignerPositionRelative({ maPositionPresente.x + x * facteurDeTransition ,
-										  maPositionPresente.y + y * facteurDeTransition ,
-										  0 });
+			maPositionPresente.y + y * facteurDeTransition ,
+			0 });
 	}
-	
+
 
 	////////////////////////////////////////////////////////////////////////
 	///
@@ -372,7 +374,7 @@ extern "C"
 	{
 		calculerTransition();
 		objet->assignerEchelle({ scale, scale, scale });
-		
+
 	}
 
 
@@ -388,7 +390,7 @@ extern "C"
 	/// @return Aucune.
 	///
 	////////////////////////////////////////////////////////////////////////
-	
+
 	__declspec(dllexport) void __cdecl addScaleObjet(int myScale)
 	{
 		calculerTransition();
@@ -396,18 +398,18 @@ extern "C"
 		glm::dvec3 monScalePresent;
 		float deltaScale = (float)myScale;
 		monScalePresent = objet->obtenirAgrandissement();
-		monScalePresent.x += myScale/10.0 * facteurDeTransition;
-		monScalePresent.y += myScale/10.0 * facteurDeTransition;
-		monScalePresent.z += myScale/10.0 * facteurDeTransition;
+		monScalePresent.x += myScale / 10.0 * facteurDeTransition;
+		monScalePresent.y += myScale / 10.0 * facteurDeTransition;
+		monScalePresent.z += myScale / 10.0 * facteurDeTransition;
 		if (monScalePresent.x < 0)
-			monScalePresent.x -= myScale/10.0 * facteurDeTransition;
+			monScalePresent.x -= myScale / 10.0 * facteurDeTransition;
 		if (monScalePresent.y < 0)
-			monScalePresent.y -= myScale/10.0 * facteurDeTransition;
+			monScalePresent.y -= myScale / 10.0 * facteurDeTransition;
 		if (monScalePresent.z < 0)
-			monScalePresent.z -= myScale/10.0 * facteurDeTransition;
+			monScalePresent.z -= myScale / 10.0 * facteurDeTransition;
 		objet->assignerEchelle({ monScalePresent.x, monScalePresent.y, monScalePresent.z });
 	}
-	
+
 	////////////////////////////////////////////////////////////////////////
 	///
 	/// @fn void VueOrtho::scaleObjetXYZ(double x, double y, double z)
@@ -461,7 +463,7 @@ extern "C"
 	/// @return Aucune.
 	///
 	////////////////////////////////////////////////////////////////////////
-	__declspec(dllexport) void resetObject(void) 
+	__declspec(dllexport) void resetObject(void)
 	{
 		calculerTransition();
 		objet->assignerPositionRelative({ 0, 0, 0 });
@@ -587,7 +589,7 @@ extern "C"
 	{
 		FacadeModele::obtenirInstance()->obtenirArbreRenduINF2990()->vider();
 		FacadeModele::obtenirInstance()->obtenirArbreRenduINF2990()->initialiserXML(std::string(path));
-		
+
 		return FacadeModele::obtenirInstance()->obtenirArbreRenduINF2990()->obtenirProprietes();
 	}
 
@@ -647,31 +649,31 @@ extern "C"
 	}
 
 
-////////////////////////////////////////////////////////////////////////
-///
-/// @fn __declspec(dllexport) void zoomElastique(int xCoin1, int yCoin1, int xCoin2, int yCoin2)
-///
-/// @param[in]  xCoin1 :
-/// @param[in]  yCoin1 :
-/// @param[in]  xCoin2 :
-/// @param[in]  yCoin2 : 
-///
-/// Permet de centrer l'écran sur la région définie par les points passés
-///
-/// @return Aucun
-///
-////////////////////////////////////////////////////////////////////////
-__declspec(dllexport) void zoomOutElastique(int xCoin1, int yCoin1, int xCoin2, int yCoin2)
-{
-	glm::dvec3 positionSouris1(xCoin1, yCoin1, 0.0);
-	glm::dvec3 positionSouris2(xCoin2, yCoin2, 0.0);
-	FacadeModele::obtenirInstance()->obtenirVue()->convertirClotureAVirtuelle(xCoin1, yCoin1, positionSouris1);
-	FacadeModele::obtenirInstance()->obtenirVue()->convertirClotureAVirtuelle(xCoin2, yCoin2, positionSouris2);
+	////////////////////////////////////////////////////////////////////////
+	///
+	/// @fn __declspec(dllexport) void zoomElastique(int xCoin1, int yCoin1, int xCoin2, int yCoin2)
+	///
+	/// @param[in]  xCoin1 :
+	/// @param[in]  yCoin1 :
+	/// @param[in]  xCoin2 :
+	/// @param[in]  yCoin2 : 
+	///
+	/// Permet de centrer l'écran sur la région définie par les points passés
+	///
+	/// @return Aucun
+	///
+	////////////////////////////////////////////////////////////////////////
+	__declspec(dllexport) void zoomOutElastique(int xCoin1, int yCoin1, int xCoin2, int yCoin2)
+	{
+		glm::dvec3 positionSouris1(xCoin1, yCoin1, 0.0);
+		glm::dvec3 positionSouris2(xCoin2, yCoin2, 0.0);
+		FacadeModele::obtenirInstance()->obtenirVue()->convertirClotureAVirtuelle(xCoin1, yCoin1, positionSouris1);
+		FacadeModele::obtenirInstance()->obtenirVue()->convertirClotureAVirtuelle(xCoin2, yCoin2, positionSouris2);
 
-	glm::dvec2 coin1(positionSouris1.x, positionSouris1.y);
-	glm::dvec2 coin2(positionSouris2.x, positionSouris2.y);
-	FacadeModele::obtenirInstance()->obtenirVue()->zoomerOutElastique(coin1, coin2);
-}
+		glm::dvec2 coin1(positionSouris1.x, positionSouris1.y);
+		glm::dvec2 coin2(positionSouris2.x, positionSouris2.y);
+		FacadeModele::obtenirInstance()->obtenirVue()->zoomerOutElastique(coin1, coin2);
+	}
 
 
 	///////////////////////////////////////////////////////////////////////////////
@@ -808,18 +810,18 @@ __declspec(dllexport) void zoomOutElastique(int xCoin1, int yCoin1, int xCoin2, 
 	/// @remark : 
 	///
 	///////////////////////////////////////////////////////////////////////////////
-	__declspec(dllexport) int getPositionX(void){
+	__declspec(dllexport) int getPositionX(void) {
 		int positionX;
 		for (int j = 0; j < FacadeModele::obtenirInstance()->obtenirArbreRenduINF2990()->getEnfant(0)->obtenirNombreEnfants(); j++)
-			{
-				if (
-					FacadeModele::obtenirInstance()->obtenirArbreRenduINF2990()->getEnfant(0)->chercher(j)->estSelectionne()
-					){
-					objet = FacadeModele::obtenirInstance()->obtenirArbreRenduINF2990()->getEnfant(0)->chercher(j);
-					positionX = objet->obtenirPositionRelative().x;
-				}
+		{
+			if (
+				FacadeModele::obtenirInstance()->obtenirArbreRenduINF2990()->getEnfant(0)->chercher(j)->estSelectionne()
+				) {
+				objet = FacadeModele::obtenirInstance()->obtenirArbreRenduINF2990()->getEnfant(0)->chercher(j);
+				positionX = objet->obtenirPositionRelative().x;
 			}
-		
+		}
+
 		return positionX;
 	}
 
@@ -833,13 +835,13 @@ __declspec(dllexport) void zoomOutElastique(int xCoin1, int yCoin1, int xCoin2, 
 	/// @remark : 
 	///
 	///////////////////////////////////////////////////////////////////////////////
-	__declspec(dllexport) int getPositionY(void){
+	__declspec(dllexport) int getPositionY(void) {
 		int positionY;
 		for (int j = 0; j < FacadeModele::obtenirInstance()->obtenirArbreRenduINF2990()->getEnfant(0)->obtenirNombreEnfants(); j++)
 		{
 			if (
 				FacadeModele::obtenirInstance()->obtenirArbreRenduINF2990()->getEnfant(0)->chercher(j)->estSelectionne()
-				){
+				) {
 				objet = FacadeModele::obtenirInstance()->obtenirArbreRenduINF2990()->getEnfant(0)->chercher(j);
 				positionY = objet->obtenirPositionRelative().y;
 			}
@@ -847,7 +849,7 @@ __declspec(dllexport) void zoomOutElastique(int xCoin1, int yCoin1, int xCoin2, 
 
 		return positionY;
 	}
-	
+
 	///////////////////////////////////////////////////////////////////////////////
 	///
 	/// @fn __declspec(dllexport)  int getAngle(void)
@@ -863,7 +865,7 @@ __declspec(dllexport) void zoomOutElastique(int xCoin1, int yCoin1, int xCoin2, 
 		{
 			if (
 				FacadeModele::obtenirInstance()->obtenirArbreRenduINF2990()->getEnfant(0)->chercher(j)->estSelectionne()
-				){
+				) {
 				objet = FacadeModele::obtenirInstance()->obtenirArbreRenduINF2990()->getEnfant(0)->chercher(j);
 				angle = objet->obtenirRotation().z;
 			}
@@ -887,7 +889,7 @@ __declspec(dllexport) void zoomOutElastique(int xCoin1, int yCoin1, int xCoin2, 
 		{
 			if (
 				FacadeModele::obtenirInstance()->obtenirArbreRenduINF2990()->getEnfant(0)->chercher(j)->estSelectionne()
-				){
+				) {
 				objet = FacadeModele::obtenirInstance()->obtenirArbreRenduINF2990()->getEnfant(0)->chercher(j);
 				scale = objet->obtenirAgrandissement().y;
 			}
@@ -895,5 +897,73 @@ __declspec(dllexport) void zoomOutElastique(int xCoin1, int yCoin1, int xCoin2, 
 
 		return  scale;
 	}
+
+	////////////////////////////////////////////////////////////////////////
+	///
+	/// @fn __declspec(dllexport) void __cdecl playSound()
+	///
+	/// @param[in]  value : Nom du son
+	/// @param[in]  length : Taille du nom
+	///
+	/// Cette fonction permet de jouer un son ou de l'arreter
+	///
+	/// @return Aucun
+	///
+	////////////////////////////////////////////////////////////////////////
+
+	__declspec(dllexport) void __cdecl playSound(char* value, int length, bool stop)
+	{
+		static FMOD_SYSTEM* system;
+		static bool init = false;
+		static std::vector< std::pair<std::string, FMOD_SOUND *> > soundTable;
+		std::string playing(value) ;
+
+		if (init == false)
+		{
+			FMOD_System_Create(&system);
+			FMOD_System_Init(system, 1024, FMOD_INIT_NORMAL, NULL);
+			init = true;
+
+			// Initialiser tout les bruits (fuck off, je fais pas d'usine);
+			// Au debut, je voulais les initialiser au fur et a mesure des call
+			// Mais ils prennent 3-4 sec a etre cree, a chaque fois, faik tu avais
+			//  d'énorme delay c'etais chiant...
+			std::pair<std::string, FMOD_SOUND *> apair0("media/SFX/ambiant.wav", NULL);
+			soundTable.push_back(apair0);
+			FMOD_System_CreateSound(system, "media/SFX/ambiant.wav", FMOD_CREATESAMPLE, 0, &soundTable.back().second);
+
+			std::pair<std::string, FMOD_SOUND *> apair1("media/SFX/music.wav", NULL);
+			soundTable.push_back(apair1);
+			FMOD_System_CreateSound(system, "media/SFX/music.wav", FMOD_LOOP_NORMAL, 0, &soundTable.back().second);
+
+			std::pair<std::string, FMOD_SOUND *> apair2("media/SFX/no.wav", NULL);
+			soundTable.push_back(apair2);
+			FMOD_System_CreateSound(system, "media/SFX/no.wav", FMOD_CREATESAMPLE, 0, &soundTable.back().second);
+
+			std::pair<std::string, FMOD_SOUND *> apair3("media/SFX/stone.wav", NULL);
+			soundTable.push_back(apair3);
+			FMOD_System_CreateSound(system, "media/SFX/stone.wav", FMOD_CREATESAMPLE, 0, &soundTable.back().second);
+		}
+
+		int i;
+		for (i = 0; i < soundTable.size(); i++) {		
+			if (soundTable[i].first == std::string(value)) {
+					FMOD_System_PlaySound(system, FMOD_CHANNEL_FREE, soundTable[i].second, 0, NULL);
+					if (stop) {
+						// NO IDEA HOW TO STOP IT
+						// Pis si j'appel le destructeur
+						// Ben ca fonctionne
+						// Mais si tu relance depuis le menu ca crash ...
+						/* Destructeur:
+						FMOD_System_Close(system);
+						FMOD_System_Release(system);
+						*/
+					}
+				return;
+			}
+		}
+	}
+
+
 
 }

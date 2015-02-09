@@ -38,9 +38,7 @@ namespace InterfaceGraphique
         private int nbSelection;
         private StringBuilder pathXML = new StringBuilder("");
         private Etat etat {get; set;}
-
         private int[] prop = new int[6];
-
         public Exemple()
         {
             this.KeyPreview = true;
@@ -61,10 +59,8 @@ namespace InterfaceGraphique
             etat = new EtatNone(this);
 
             //Musique
-            //var bgm = new WMPLib.WindowsMediaPlayer();
-            //bgm.URL = @"media/SFX/music.wav";
-            System.Media.SoundPlayer player = new System.Media.SoundPlayer(@"media/SFX/stone.wav");
-            player.Play();
+            playSound("music");
+            playSound("stone"); // Pause probleme quand on ferme puis rouvre la fenetre
         }
 
         public void InitialiserAnimation()
@@ -73,7 +69,6 @@ namespace InterfaceGraphique
             this.StartPosition = FormStartPosition.WindowsDefaultBounds;
             FonctionsNatives.initialiserOpenGL(panel_GL.Handle);
             FonctionsNatives.dessinerOpenGL();
-
         }
 
         public void MettreAJour(double tempsInterAffichage)
@@ -224,6 +219,7 @@ namespace InterfaceGraphique
                 FonctionsNatives.libererOpenGL();
                 Program.peutAfficher = false;
             }
+            playSound("music", true);
         }
 
         private void panel1_Paint(object sender, PaintEventArgs e)
@@ -274,8 +270,6 @@ namespace InterfaceGraphique
 
             if (sauvegarde == 0)
             {
-                System.Media.SoundPlayer player = new System.Media.SoundPlayer(@"media/SFX/no.wav");
-                player.Play();
                 MessageBox.Show("Il doit avoir au moins un trou, un générateur de bille et un ressort dans la zone de jeu!", "ERREUR DE SAUVEGARDE",
                 MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
@@ -953,10 +947,7 @@ namespace InterfaceGraphique
                 outilsEnable(false);
                 proprietesEnable(false);
                 if (isSelected == 0)
-                {
-                    System.Media.SoundPlayer player = new System.Media.SoundPlayer(@"media/SFX/no.wav");
-                    player.Play();
-                }
+                    playSound("no");
             }
             else
             {
@@ -1095,8 +1086,15 @@ namespace InterfaceGraphique
             
         }
 
+        // Music
+        private void playSound(String name, bool stop = false)
+        {
+            String path = "media/SFX/" + name + ".wav";
+            StringBuilder music = new StringBuilder(path);
+            FonctionsNatives.playSound(music, music.Capacity, stop);
+        }
 
-    }
+}
     // Full Screen
 
     class FullScreen
@@ -1232,5 +1230,8 @@ namespace InterfaceGraphique
 
         [DllImport(@"Noyau.dll", CallingConvention = CallingConvention.Cdecl)]
         public static extern void dupliquerSelection(int i, int j);
+
+        [DllImport(@"Noyau.dll", CallingConvention = CallingConvention.Cdecl)]
+        public static extern void playSound(StringBuilder value, int length, bool stop = false);
     }
 }
