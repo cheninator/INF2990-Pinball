@@ -137,17 +137,21 @@ bool VisiteurSelectionInverse::traiter(NoeudAbstrait* noeud)
 	std::cout << "VisiteurSelectionInverse::traiter() d'un noeudAbstrait avec identifiant " << noeud->getNumero() << std::endl;
 	std::cout << noeud->obtenirPositionRelative().x << ","<< noeud->obtenirPositionRelative().y << "," << noeud->obtenirPositionRelative().z << ",      Distance:" << distance << std::endl;
 
-	if (valeurStencil_ != noeud->getNumero() && noeud->estSelectionnable() /*&& noeud->estModifiable()*/)
+	if (valeurStencil_ == noeud->getNumero() && noeud->estSelectionnable() /*&& noeud->estModifiable()*/)
 	{
 		std::cout << "Noeud de type " << noeud->getType() << " selectionne avec CTRL CLICK " << std::endl;
-		noeud->assignerSelection(true);
+		if (noeud->estSelectionne())
+		{
+			noeud->assignerSelection(false);
+			nbObjetsSelectionne_--;
+		}
+		else
+		{
+			noeud->assignerSelection(true);
+			nbObjetsSelectionne_++;
+		}
 	}
-	else
-	{
-		noeud->assignerSelection(false);
-	}
-
-	if (noeud->estSelectionne()) nbObjetsSelectionne_++;
+	// voir requi 3.2.4.2 
 
 	return true;
 
