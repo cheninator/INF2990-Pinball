@@ -53,7 +53,7 @@ inline UsineNoeudRessort::UsineNoeudRessort(const std::string& nom)
 /// @fn NoeudAbstrait* UsineNoeudRessort::creerNoeud() const
 ///
 /// Cette fonction retourne un noeud nouvellement créé du type produit
-/// par cette usine, soit un butoir circulaire.
+/// par cette usine, soit un ressort.
 ///
 /// @return Le noeud nouvellement créé.
 ///
