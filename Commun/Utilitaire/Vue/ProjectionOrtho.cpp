@@ -60,7 +60,7 @@ namespace vue {
 		yMinFenetre_{ yMinFenetre },
 		yMaxFenetre_{ yMaxFenetre }
 	{
-		ajusterRapportAspect();
+		ajusterRapportAspect(DirectionAgrandissement::POSITIF);
 	}
 
 
@@ -252,7 +252,7 @@ namespace vue {
 		yMinFenetre_ = (coin1.y < coin2.y ? coin1.y : coin2.y);
 		yMaxFenetre_ = (coin1.y > coin2.y ? coin1.y : coin2.y);
 		
-		ajusterRapportAspect();
+		ajusterRapportAspect(DirectionAgrandissement::POSITIF);
 		centrerSurPoint(glm::dvec2(pointMilieuSelectionX, pointMilieuSelectionY));
 	}
 
@@ -314,7 +314,7 @@ namespace vue {
 		std::cout << "xMin | xMax Fenetre: " << xMinFenetre_ << " | " << xMaxFenetre_ << "\n";
 		std::cout << "yMin | yMax Fenetre: " << yMinFenetre_ << " | " << yMaxFenetre_ << "\n \n";
 
-		//ajusterRapportAspect();
+		ajusterRapportAspect(DirectionAgrandissement::NEGATIF);
 	}
 
 
@@ -411,10 +411,17 @@ namespace vue {
 	/// Permet d'ajuster les coordonnées de la fenêtre virtuelle en fonction
 	/// de la clôture de façon à ce que le rapport d'aspect soit respecté.
 	///
+	/// Cette méthode est appelée lorsque le zoomIn est effectué : 
+	/// puisque le zoomIn mets les extrêmums de la fenêtre aux points 
+	/// désignés par le rectangle élastique, le rapport d'aspect n'est pas 
+	/// considéré. C'est pour cette raison que dans cette méthode, il est
+	/// possible de simplement tenir compte si le rapport d'aspect est 
+	/// inférieur ou supérieur à 1.
+	///
 	/// @return Aucune.
 	///
 	////////////////////////////////////////////////////////////////////////
-	void ProjectionOrtho::ajusterRapportAspect()
+	void ProjectionOrtho::ajusterRapportAspect(DirectionAgrandissement dir)
 	{
 		// Déterminer quelle est la composante la plus large
 		double delta = 0.0;
@@ -424,29 +431,57 @@ namespace vue {
 
 		double rapportAspect = abs(xMaxCloture_ - xMinCloture_) / abs(yMaxCloture_ - yMinCloture_);
 		double rapportAspectVirtuel = (xMaxFenetre_ - xMinFenetre_) / (yMaxFenetre_ - yMinFenetre_);
-
+		std::cout << "------Avant Correction Rapport d'aspect Fenetre : " << rapportAspectVirtuel<< "\n \n";
 		if (abs(rapportAspect - rapportAspectVirtuel) / rapportAspect < (0.0001 * rapportAspect))
 		{
 			std::cout << "\n Rapports aspects sont egaux : pas d'ajustation \n";
 			return; // Les deux rapports d'aspects sont considérés dans la marge d'erreur
 		}
-		if (rapportAspectVirtuel > 1.0)
+		if (dir == POSITIF) // On est en ZoomInElastique 
 		{
-			longueurVerticaleRequise = abs(xMaxFenetre_ - xMinFenetre_) / rapportAspect;
-			delta = (longueurVerticaleRequise - abs(yMaxFenetre_ - yMinFenetre_)) / 2.0;
+			if (rapportAspectVirtuel > 1.0)
+			{
+				longueurVerticaleRequise = abs(xMaxFenetre_ - xMinFenetre_) / rapportAspect;
+				delta = (longueurVerticaleRequise - abs(yMaxFenetre_ - yMinFenetre_)) / 2.0;
 
-			yMaxFenetre_ += delta;
-			yMinFenetre_ -= delta;
-			
+				yMaxFenetre_ += delta;
+				yMinFenetre_ -= delta;
+
+			}
+			else // if (rapportAspectVirtuel < 1.0)
+			{
+				longueurVerticaleRequise = abs(xMaxFenetre_ - xMinFenetre_) / rapportAspect;
+				delta = (longueurVerticaleRequise - abs(yMaxFenetre_ - yMinFenetre_)) / 2.0;
+
+				yMaxFenetre_ += delta;
+				yMinFenetre_ -= delta;
+
+			}
 		}
-		else // if (rapportAspectVirtuel < 1.0)
+		else if (dir == NEGATIF) // On est en ZoomOutElastique
 		{
-			longueurHorizontaleRequise = abs(yMaxFenetre_ - yMinFenetre_) * rapportAspect;
-			delta = (longueurHorizontaleRequise - abs(xMaxFenetre_ - xMinFenetre_)) / 2.0;
+			if (rapportAspectVirtuel > 1.0)
+			{
+				longueurVerticaleRequise = abs(xMaxFenetre_ - xMinFenetre_) / rapportAspect;
+				delta = (longueurVerticaleRequise - abs(yMaxFenetre_ - yMinFenetre_)) / 2.0;
+				std::cout << "delta : " << delta;
+				yMaxFenetre_ += delta;
+				yMinFenetre_ -= delta;
 
-			xMaxFenetre_ += delta;
-			xMinFenetre_ -= delta;
+			}
+			else // if (rapportAspectVirtuel < 1.0)
+			{
+				longueurHorizontaleRequise = abs(yMaxFenetre_ - yMinFenetre_) * rapportAspect;
+				delta = (longueurHorizontaleRequise - abs(xMaxFenetre_ - xMinFenetre_)) / 2.0;
+				std::cout << "delta : " << delta;
+				xMaxFenetre_ += delta;
+				xMinFenetre_ -= delta;
+			}
 		}
+
+		std::cout << "\n Rapport d'aspect Virtuel : " << (xMaxFenetre_ - xMinFenetre_) / (yMaxFenetre_ - yMinFenetre_) << '\n';
+		std::cout << "Rapport d'aspect Cloture : " << rapportAspect << "\n \n";
+
 	}
 
 }; // Fin du namespace vue.
