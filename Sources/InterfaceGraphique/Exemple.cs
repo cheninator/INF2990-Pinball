@@ -800,18 +800,20 @@ namespace InterfaceGraphique
         private void panel_MouseMove(object sender, MouseEventArgs e)
         {
             currentP = panel_GL.PointToClient(MousePosition);
-            if (!(FonctionsNatives.verifierCliqueDansTable(e.X, e.Y)))
+            if (etat is EtatCreation)
             {
-                Cursor = Cursors.No;
-                
-            }
-            else
-            {
-                Cursor = Cursors.Arrow;
-                
-            }
+                if (!(FonctionsNatives.verifierCliqueDansTable(e.X, e.Y)))
+                {
+                    Cursor = Cursors.No;
 
+                }
+                else
+                {
+                    Cursor = Cursors.Arrow;
 
+                }
+
+            }
 
             if (etat is EtatDeplacement && nbSelection == 1) 
             {
