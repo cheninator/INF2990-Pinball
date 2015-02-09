@@ -11,6 +11,7 @@
 
 #include "VisiteurAbstrait.h"
 #include <string>
+#include <vector>
 
 ///////////////////////////////////////////////////////////////////////////
 /// @class VisiteurSuppression
@@ -47,6 +48,8 @@ public:
 private:
 
 	ArbreRenduINF2990* arbreTemp;
+
+	std::vector<NoeudAbstrait*> suppression;
 
 };
 

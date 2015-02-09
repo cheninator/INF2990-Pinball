@@ -91,6 +91,11 @@ bool VisiteurSuppression::traiter(NoeudTable* table)
 		table->getEnfant(i)->accepterVisiteur(this);
 	}
 
+	for (unsigned int i = 0; i < suppression.size(); i++)
+	{
+		arbreTemp->effacer(suppression[i]);
+	}
+
 	return true;
 }
 
@@ -113,9 +118,9 @@ bool VisiteurSuppression::traiter(NoeudAbstrait* noeud)
 	if (noeud->estSelectionne() && noeud->estModifiable())
 	{
 		if ((noeud->obtenirType() == "portail") && (noeud->getTwin() != nullptr))
-			arbreTemp->effacer(noeud->getTwin());
+			suppression.push_back(noeud->getTwin());
 
-		arbreTemp->effacer(noeud);
+		suppression.push_back(noeud);
 	}
 
 	return true;
