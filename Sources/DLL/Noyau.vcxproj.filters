@@ -171,6 +171,9 @@
     <ClCompile Include="Visiteurs\VisiteurDeselectionnerTout.cpp">
       <Filter>Source Files\Visiteurs</Filter>
     </ClCompile>
+    <ClCompile Include="Visiteurs\VisiteurSuppression.cpp">
+      <Filter>Source Files\Visiteurs</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Application\FacadeModele.h">
@@ -330,6 +333,9 @@
       <Filter>Header Files\Visiteurs</Filter>
     </ClInclude>
     <ClInclude Include="Visiteurs\VisiteurDeselectionnerTout.h">
+      <Filter>Header Files\Visiteurs</Filter>
+    </ClInclude>
+    <ClInclude Include="Visiteurs\VisiteurSuppression.h">
       <Filter>Header Files\Visiteurs</Filter>
     </ClInclude>
   </ItemGroup>

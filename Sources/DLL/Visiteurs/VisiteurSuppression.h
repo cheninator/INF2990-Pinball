@@ -6,8 +6,8 @@
 ///
 /// @ingroup Visiteur
 ///////////////////////////////////////////////////////////////////////////////
-#ifndef __VISITEURS_VISITEURXML_H__
-#define __VISITEURS_VISITEURXML_H__
+#ifndef __VISITEURS_VISITEURSUPPRESSION_H__
+#define __VISITEURS_VISITEURSUPPRESSION_H__
 
 #include "VisiteurAbstrait.h"
 #include <string>
@@ -29,8 +29,8 @@ class VisiteurSuppression : public VisiteurAbstrait
 {
 public:
 
-	/// Constructeur par paramètre : fournir le nom du fichier de sauvegarde et les propriétés du jeu
-	VisiteurSuppression(std::string nomFichier, int proprietes[]);
+	/// Constructeur par défaut
+	VisiteurSuppression();
 
 	/// Destructeur
 	~VisiteurSuppression();
@@ -46,12 +46,8 @@ public:
 
 private:
 
-	/// Constructeur par défaut
-	VisiteurSuppression();
-
-	std::string nomFichier; ///< Nom du fichier à lire ou à écrire.
-	int* proprietes_ = new int[6]; ///< Propriétés de la partie à lire ou écrire
+	ArbreRenduINF2990* arbreTemp;
 
 };
 
-#endif //__VISITEURS_VISITEURXML_H__
+#endif //__VISITEURS_VISITEURSUPPRESSION_H__
