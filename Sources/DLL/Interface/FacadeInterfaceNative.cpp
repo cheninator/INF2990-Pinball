@@ -178,12 +178,10 @@ extern "C"
 	////////////////////////////////////////////////////////////////////////
 	__declspec(dllexport) void __cdecl redimensionnerFenetre(int largeur, int hauteur)
 	{
-		calculerTransition();
 		FacadeModele::obtenirInstance()->obtenirVue()->redimensionnerFenetre(
 			glm::ivec2{ 0, 0 },
 			glm::ivec2{ largeur, hauteur }
 		);
-		calculerTransition();
 	}
 
 
@@ -202,7 +200,6 @@ extern "C"
 	////////////////////////////////////////////////////////////////////////
 	__declspec(dllexport) void __cdecl animer(double temps)
 	{
-		calculerTransition();
 		FacadeModele::obtenirInstance()->animer((float) temps);
 	}
 
