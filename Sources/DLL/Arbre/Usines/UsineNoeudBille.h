@@ -44,14 +44,25 @@ public:
 ////////////////////////////////////////////////////////////////////////
 inline UsineNoeudBille::UsineNoeudBille(const std::string& nom)
 	: UsineNoeud(nom, std::string("media/objets/Bille.obj"))
-{}
+{
 
+}
+
+////////////////////////////////////////////////////////////////////////
+///
+/// @fn NoeudAbstrait* UsineNoeudBille::creerNoeud() const
+///
+/// Cette fonction retourne un noeud nouvellement créé du type produit
+/// par cette usine, soit une bille.
+///
+/// @return Le noeud nouvellement créé.
+///
+////////////////////////////////////////////////////////////////////////
 NoeudAbstrait* UsineNoeudBille::creerNoeud() const
 {
 	auto noeud = new NoeudBille{ obtenirNom() };
 	noeud->assignerObjetRendu(&modele_, &liste_);
 	return noeud;
 }
-
 
 #endif // __ARBRE_USINES_USINENOEUDBILLE_H__

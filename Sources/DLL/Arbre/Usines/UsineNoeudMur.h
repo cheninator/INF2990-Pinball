@@ -33,15 +33,25 @@ public:
 
 inline UsineNoeudMur::UsineNoeudMur(const std::string& nom)
 	: UsineNoeud(nom, std::string("media/objets/Mur.obj"))
-{}
+{
 
+}
+
+////////////////////////////////////////////////////////////////////////
+///
+/// @fn NoeudAbstrait* UsineNoeudMur::creerNoeud() const
+///
+/// Cette fonction retourne un noeud nouvellement créé du type produit
+/// par cette usine, soit un mur.
+///
+/// @return Le noeud nouvellement créé.
+///
+////////////////////////////////////////////////////////////////////////
 NoeudAbstrait* UsineNoeudMur::creerNoeud() const
 {
 	auto noeud = new NoeudMur{ obtenirNom() };
 	noeud->assignerObjetRendu(&modele_, &liste_);
 	return noeud;
 }
-
-
 
 #endif // __ARBRE_USINES_USINENOEUDMUR_H__

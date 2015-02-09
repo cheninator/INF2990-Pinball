@@ -79,5 +79,4 @@ inline const std::string& UsineNoeud::obtenirNom() const
    return nom_;
 }
 
-
 #endif // __ARBRE_USINES_USINENOEUD_H__

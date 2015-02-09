@@ -44,15 +44,25 @@ public:
 ///////////////////////////////////////////////////////////////////////////
 inline UsineNoeudTrou::UsineNoeudTrou(const std::string& nom)
 	: UsineNoeud(nom, std::string("media/objets/Trou.obj"))
-{}
+{
 
+}
+
+////////////////////////////////////////////////////////////////////////
+///
+/// @fn NoeudAbstrait* UsineNoeudTrou::creerNoeud() const
+///
+/// Cette fonction retourne un noeud nouvellement créé du type produit
+/// par cette usine, soit un trou.
+///
+/// @return Le noeud nouvellement créé.
+///
+////////////////////////////////////////////////////////////////////////
 NoeudAbstrait* UsineNoeudTrou::creerNoeud() const
 {
 	auto noeud = new NoeudTrou{ obtenirNom() };
 	noeud->assignerObjetRendu(&modele_, &liste_);
 	return noeud;
 }
-
-
 
 #endif // __ARBRE_USINES_USINENOEUDTROU_H__

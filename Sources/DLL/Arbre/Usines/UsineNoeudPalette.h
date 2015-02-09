@@ -44,14 +44,25 @@ public:
 ///////////////////////////////////////////////////////////////////////////
 inline UsineNoeudPalette::UsineNoeudPalette(const std::string& nom)
 	: UsineNoeud(nom, std::string("media/objets/Palette.obj"))
-{}
+{
 
+}
+
+////////////////////////////////////////////////////////////////////////
+///
+/// @fn NoeudAbstrait* UsineNoeudPalette::creerNoeud() const
+///
+/// Cette fonction retourne un noeud nouvellement créé du type produit
+/// par cette usine, soit une palette.
+///
+/// @return Le noeud nouvellement créé.
+///
+////////////////////////////////////////////////////////////////////////
 NoeudAbstrait* UsineNoeudPalette::creerNoeud() const
 {
 	auto noeud = new NoeudPalette{ obtenirNom() };
 	noeud->assignerObjetRendu(&modele_, &liste_);
 	return noeud;
 }
-
 
 #endif // __ARBRE_USINES_USINENOEUDPALETTE_H__
