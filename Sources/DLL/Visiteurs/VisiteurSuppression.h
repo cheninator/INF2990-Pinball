@@ -1,5 +1,5 @@
 ///////////////////////////////////////////////////////////////////////////////
-/// @file VisiteurXML.h
+/// @file VisiteurSuppression.h
 /// @author The Ballers
 /// @date 2015-02-01
 /// @version 1.0
@@ -10,11 +10,10 @@
 #define __VISITEURS_VISITEURXML_H__
 
 #include "VisiteurAbstrait.h"
-#include "tinyxml2.h"
 #include <string>
 
 ///////////////////////////////////////////////////////////////////////////
-/// @class VisiteurXML
+/// @class VisiteurSuppression
 /// @brief Classe pour enregistrer l'information de l'arbre de rendu
 ///		   dans un fichier XML.
 ///
@@ -26,30 +25,33 @@
 /// @date 2015-02-02
 /// @ingroup Visiteur
 ///////////////////////////////////////////////////////////////////////////
-class VisiteurXML : public VisiteurAbstrait
+class VisiteurSuppression : public VisiteurAbstrait
 {
 public:
 
 	/// Constructeur par paramètre : fournir le nom du fichier de sauvegarde et les propriétés du jeu
-	VisiteurXML(std::string nomFichier, int proprietes[]);
+	VisiteurSuppression(std::string nomFichier, int proprietes[]);
 
 	/// Destructeur
-	~VisiteurXML();
+	~VisiteurSuppression();
 
 	/// Traiter un arbre de rendu et ses enfants
 	virtual bool traiter(ArbreRenduINF2990* arbre);
-	/// Traiter un arbre de rendu et ses enfants
-	virtual bool traiter(NoeudAbstrait* noeud, tinyxml2::XMLElement* parent);
+
+	/// Traiter la table de l'arbre de rendu
+	virtual bool traiter(NoeudTable* table);
+
+	/// Traiter une feuille
+	virtual bool traiter(NoeudAbstrait* noeud);
 
 private:
 
 	/// Constructeur par défaut
-	VisiteurXML();
+	VisiteurSuppression();
 
-	tinyxml2::XMLDocument document; ///< Document XML pour l'écriture
-	std::string nomFichier;			///< Nom du fichier à écrire.
-	int* proprietes_ = new int[6];	///< Propriétés de la partie à écrire
-	
+	std::string nomFichier; ///< Nom du fichier à lire ou à écrire.
+	int* proprietes_ = new int[6]; ///< Propriétés de la partie à lire ou écrire
+
 };
 
 #endif //__VISITEURS_VISITEURXML_H__
