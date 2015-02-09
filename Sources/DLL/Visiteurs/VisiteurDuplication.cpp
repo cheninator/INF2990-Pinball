@@ -41,6 +41,7 @@ VisiteurDuplication::VisiteurDuplication(glm::dvec3 pointDansLeMonde)
 	pointDansLeMonde_ = pointDansLeMonde;
 	maxX = maxY = 0;
 	minX = minY = std::numeric_limits<int>::max();
+	arbreTemp = nullptr;
 }
 
 
@@ -59,6 +60,8 @@ VisiteurDuplication::~VisiteurDuplication()
 		delete copies_[i];
 
 	copies_.clear();
+
+	delete arbreTemp;
 }
 
 
@@ -75,12 +78,16 @@ VisiteurDuplication::~VisiteurDuplication()
 ////////////////////////////////////////////////////////////////////////
 bool VisiteurDuplication::traiter(ArbreRenduINF2990* arbre)
 {
+	arbreTemp = arbre;
+
 	// Visiter les enfants de l'arbre
 	for (unsigned int i = 0; i < arbre->obtenirNombreEnfants(); i++)
 	{
 		// Traiter les enfants de l'arbre de rendu
 		arbre->getEnfant(i)->accepterVisiteur(this);
 	}
+
+	arbreTemp = nullptr;
 
 	return true;
 }
@@ -156,11 +163,11 @@ bool VisiteurDuplication::traiter(NoeudTable* table)
 ////////////////////////////////////////////////////////////////////////
 bool VisiteurDuplication::traiter(NoeudAbstrait* noeud)
 {
-	ArbreRenduINF2990* arbreTemporaire = new ArbreRenduINF2990();
-
 	if (noeud->estSelectionne() && noeud->estModifiable())
 	{
-		NoeudAbstrait* copie = arbreTemporaire->creerNoeud(noeud->obtenirType());
+		NoeudAbstrait* copie = arbreTemp->creerNoeud(noeud->obtenirType());
+
+		std::cout << "J'ai cree un noeud de type : " << noeud->obtenirType();
 
 		copie->assignerRotation(noeud->obtenirRotation());
 		copie->assignerEchelle(noeud->obtenirAgrandissement());
@@ -180,9 +187,6 @@ bool VisiteurDuplication::traiter(NoeudAbstrait* noeud)
 
 		copies_.push_back(copie);
 	}
-
-	arbreTemporaire->vider();
-	delete arbreTemporaire;
 
 	return true;
 
