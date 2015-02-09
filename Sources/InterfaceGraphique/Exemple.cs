@@ -946,7 +946,8 @@ namespace InterfaceGraphique
             int isSelected = nbSelection;
             // TODO PHIL : Faire que ceci n'arrive que quand on relâche le bouton de gauche et qu'on n'a pas bougé de plus de 3 pixels.
             nbSelection = FonctionsNatives.selectionnerObjetSousPointClique( x, y, h, w, c);
-            if (nbSelection == 0)
+            Console.WriteLine("SELECTION: " + nbSelection);
+            if (nbSelection != 1)
             {
                 outilsEnable(false);
                 proprietesEnable(false);
@@ -973,7 +974,7 @@ namespace InterfaceGraphique
         {
             nbSelection = FonctionsNatives.selectionMultiple();
             proprietesEnable(false);
-            if (nbSelection == 0)
+            if (nbSelection != 1)
             {
                 outilsEnable(false);
             }
@@ -1073,6 +1074,7 @@ namespace InterfaceGraphique
         public void deselection()
         {
             FonctionsNatives.deselectAll();
+            nbSelection = 0;
             proprietesEnable(false);
             outilsEnable(false);
         }
