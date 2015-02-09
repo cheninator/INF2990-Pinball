@@ -92,10 +92,11 @@ namespace InterfaceGraphique
        
         private void ToucheDown(Object o, KeyEventArgs e)
         {
-           
+            if (etat is EtatZoom)
+            {
                 if ((e.KeyData == Keys.Subtract ||
-                    e.KeyCode == Keys.OemMinus)
-                    && zoom_Bar.Value > 0)
+                   e.KeyCode == Keys.OemMinus)
+                   && zoom_Bar.Value > 0)
                 {
                     FonctionsNatives.zoomOut();
                     zoom_Bar.Value -= 1;
@@ -111,6 +112,8 @@ namespace InterfaceGraphique
                     currentZoom = zoom_Bar.Value;
                     previousZoom = zoom_Bar.Value;
                 }
+            }
+               
                 if (e.KeyData == Keys.Left)
                     FonctionsNatives.translater(-10, 0);
 
