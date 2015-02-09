@@ -22,7 +22,7 @@ namespace InterfaceGraphique
         public Point origin;
         
         public Point previousP, currentP;
-
+        
         public int panelHeight;
         public int panelWidth;
         private bool ctrlDown = false;
@@ -55,7 +55,7 @@ namespace InterfaceGraphique
             etat = new EtatNone(this);
             panel_GL.Focus();   
             InitialiserAnimation();
-
+            
             panelHeight = panel_GL.Size.Height;
             panelWidth = panel_GL.Size.Width;
             etat = new EtatNone(this);
@@ -85,6 +85,7 @@ namespace InterfaceGraphique
                     FonctionsNatives.animer(tempsInterAffichage);
                     FonctionsNatives.dessinerOpenGL();
 
+                  
                     if (etat is EtatSelectionMultiple)
                         rectangleElastique();
                 });
@@ -97,9 +98,11 @@ namespace InterfaceGraphique
        
         private void ToucheDown(Object o, KeyEventArgs e)
         {
+            if (etat is EtatZoom)
+            {
                 if ((e.KeyData == Keys.Subtract ||
-                    e.KeyCode == Keys.OemMinus)
-                    && zoom_Bar.Value > 0)
+                   e.KeyCode == Keys.OemMinus)
+                   && zoom_Bar.Value > 0)
                 {
                     FonctionsNatives.zoomOut();
                     zoom_Bar.Value -= 1;
@@ -115,6 +118,8 @@ namespace InterfaceGraphique
                     currentZoom = zoom_Bar.Value;
                     previousZoom = zoom_Bar.Value;
                 }
+            }
+               
                 if (e.KeyData == Keys.Left)
                     FonctionsNatives.translater(-10, 0);
 
@@ -795,6 +800,19 @@ namespace InterfaceGraphique
         private void panel_MouseMove(object sender, MouseEventArgs e)
         {
             currentP = panel_GL.PointToClient(MousePosition);
+            if (!(FonctionsNatives.verifierCliqueDansTable(e.X, e.Y)))
+            {
+                Cursor = Cursors.No;
+                
+            }
+            else
+            {
+                Cursor = Cursors.Arrow;
+                
+            }
+
+
+
             if (etat is EtatDeplacement && nbSelection == 1) 
             {
                 Xbox.Text = FonctionsNatives.getPositionX().ToString();
@@ -820,8 +838,10 @@ namespace InterfaceGraphique
 
         private void panel_GL_MouseUp(object sender, MouseEventArgs e)
         {
-            panel_GL.MouseMove -= panel_MouseMove;
-                         
+            if (!(etat is EtatCreation))
+            {
+                panel_GL.MouseMove -= panel_MouseMove;
+            }           
             if (e.Button == MouseButtons.Left)
             {
                 Point destination = panel_GL.PointToClient(MousePosition);
@@ -1054,6 +1074,19 @@ namespace InterfaceGraphique
             FonctionsNatives.deselectAll();
             proprietesEnable(false);
             outilsEnable(false);
+        }
+
+        public void trackCursor(bool enable ){
+            if (enable)
+            {
+                panel_GL.MouseMove += new MouseEventHandler(panel_MouseMove);
+            }
+            else
+            {
+                panel_GL.MouseMove -= new MouseEventHandler(panel_MouseMove);
+            }
+         
+            
         }
 
 

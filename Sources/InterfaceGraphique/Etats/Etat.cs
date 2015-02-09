@@ -12,7 +12,11 @@ namespace InterfaceGraphique
     {
         protected Exemple form_;
 
-        public Etat(Exemple form) { form_ = form;}
+        public Etat(Exemple form) { 
+            form_ = form;
+            form_.Cursor = Cursors.Arrow;
+            form_.trackCursor(false);
+        }
 
         public virtual bool traiterClavier(KeyEventArgs e) 
         {  
@@ -100,7 +104,9 @@ namespace InterfaceGraphique
     class EtatScale : Etat
     {
 
-        public EtatScale(Exemple form) : base(form) { }
+        public EtatScale(Exemple form) : base(form) {
+            form_.Cursor = Cursors.Arrow;
+        }
 
         public override bool traiterClavier(KeyEventArgs e)
         {
@@ -123,6 +129,7 @@ namespace InterfaceGraphique
 
         public EtatCreation(Exemple form) : base(form) {
             form_.deselection();
+            form_.trackCursor(true);
         }
 
         public override bool traiterClavier(KeyEventArgs e)
@@ -132,7 +139,7 @@ namespace InterfaceGraphique
 
         public override bool traiterSouris(MouseEventArgs e)
         {
-
+            
             if (e.Button == MouseButtons.Left)
             {
                 form_.creationObjet(e);
