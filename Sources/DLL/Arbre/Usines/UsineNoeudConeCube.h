@@ -49,6 +49,7 @@ public:
 inline UsineNoeudConeCube::UsineNoeudConeCube(const std::string& nom)
 : UsineNoeud(nom, std::string{"media/objets/Cubecone.obj"})
 {
+
 }
 
 
@@ -57,7 +58,7 @@ inline UsineNoeudConeCube::UsineNoeudConeCube(const std::string& nom)
 /// @fn NoeudAbstrait* UsineNoeudConeCube::creerNoeud() const
 ///
 /// Cette fonction retourne un noeud nouvellement créé du type produit
-/// par cette usine, soit une araignée.
+/// par cette usine, soit un cone cube.
 ///
 /// @return Le noeud nouvellement créé.
 ///
@@ -69,10 +70,4 @@ NoeudAbstrait* UsineNoeudConeCube::creerNoeud() const
 	return noeud;
 }
 
-
 #endif // __ARBRE_USINES_USINENOEUDCONECUBE_H__
-
-
-///////////////////////////////////////////////////////////////////////////////
-/// @}
-///////////////////////////////////////////////////////////////////////////////

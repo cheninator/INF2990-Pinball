@@ -44,15 +44,25 @@ public:
 ///////////////////////////////////////////////////////////////////////////
 inline UsineNoeudCouvercle::UsineNoeudCouvercle(const std::string& nom)
 	: UsineNoeud(nom, std::string("media/objets/Couvercle.obj"))
-{}
+{
 
+}
+
+////////////////////////////////////////////////////////////////////////
+///
+/// @fn NoeudAbstrait* UsineNoeudCouvercle::creerNoeud() const
+///
+/// Cette fonction retourne un noeud nouvellement créé du type produit
+/// par cette usine, soit un couvercle.
+///
+/// @return Le noeud nouvellement créé.
+///
+////////////////////////////////////////////////////////////////////////
 NoeudAbstrait* UsineNoeudCouvercle::creerNoeud() const
 {
 	auto noeud = new NoeudCouvercle{ obtenirNom() };
 	noeud->assignerObjetRendu(&modele_, &liste_);
 	return noeud;
 }
-
-
 
 #endif // __ARBRE_USINES_USINENOEUDCOUVERCLE_H__

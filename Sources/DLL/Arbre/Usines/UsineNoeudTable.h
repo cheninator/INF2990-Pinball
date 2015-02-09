@@ -44,15 +44,25 @@ public:
 ///////////////////////////////////////////////////////////////////////////
 inline UsineNoeudTable::UsineNoeudTable(const std::string& nom)
 	: UsineNoeud(nom, std::string("media/objets/Table.obj"))
-{}
+{
 
+}
+
+////////////////////////////////////////////////////////////////////////
+///
+/// @fn NoeudAbstrait* UsineNoeudTable::creerNoeud() const
+///
+/// Cette fonction retourne un noeud nouvellement créé du type produit
+/// par cette usine, soit une table.
+///
+/// @return Le noeud nouvellement créé.
+///
+////////////////////////////////////////////////////////////////////////
 NoeudAbstrait* UsineNoeudTable::creerNoeud() const
 {
 	auto noeud = new NoeudTable{ obtenirNom() };
 	noeud->assignerObjetRendu(&modele_, &liste_);
 	return noeud;
 }
-
-
 
 #endif // __ARBRE_USINES_USINENOEUDTABLE_H__

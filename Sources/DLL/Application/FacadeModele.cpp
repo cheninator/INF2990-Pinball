@@ -408,7 +408,7 @@ int FacadeModele::selectionnerObjetSousPointClique(int i, int j, int hauteur, in
 		VisiteurSelection visSel(pointDansLeMonde, valeurStencil);
 		arbre_->accepterVisiteur(&visSel);
 		// Demander au visiteur ce qu'il a trouvé et faire quelque chose en conséquence
-		std::cout << "Valeur de retour de la sélection : " << visSel.obtenirNbObjetsSelectionne() << std::endl;
+		std::cout << "Nombre d'objets selectionnes: " << visSel.obtenirNbObjetsSelectionne() << std::endl;
 
 		return visSel.obtenirNbObjetsSelectionne();
 	}
@@ -418,7 +418,7 @@ int FacadeModele::selectionnerObjetSousPointClique(int i, int j, int hauteur, in
 		VisiteurSelectionInverse visSelInverse(pointDansLeMonde, valeurStencil);
 		arbre_->accepterVisiteur(&visSelInverse);
 		// Demander au visiteur ce qu'il a trouvé et faire quelque chose en conséquence
-		std::cout << "Valeur de retour de la sélection : " << visSelInverse.obtenirNbObjetsSelectionne() << std::endl;
+		std::cout << "Nombre d'objets selectionnes: " << visSelInverse.obtenirNbObjetsSelectionne() << std::endl;
 
 		return visSelInverse.obtenirNbObjetsSelectionne();
 	}

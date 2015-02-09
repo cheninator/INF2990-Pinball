@@ -44,15 +44,25 @@ public:
 ///////////////////////////////////////////////////////////////////////////
 inline UsineNoeudButoir::UsineNoeudButoir(const std::string& nom)
 	: UsineNoeud(nom, std::string("media/objets/Butoir.obj"))
-{}
+{
 
+}
+
+////////////////////////////////////////////////////////////////////////
+///
+/// @fn NoeudAbstrait* UsineNoeudButoir::creerNoeud() const
+///
+/// Cette fonction retourne un noeud nouvellement créé du type produit
+/// par cette usine, soit un butoir.
+///
+/// @return Le noeud nouvellement créé.
+///
+////////////////////////////////////////////////////////////////////////
 NoeudAbstrait* UsineNoeudButoir::creerNoeud() const
 {
 	auto noeud = new NoeudButoir{ obtenirNom() };
 	noeud->assignerObjetRendu(&modele_, &liste_);
 	return noeud;
 }
-
-
 
 #endif // __ARBRE_USINES_USINENOEUDBUTOIR_H__

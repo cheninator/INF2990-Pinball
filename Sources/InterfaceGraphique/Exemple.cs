@@ -906,8 +906,14 @@ namespace InterfaceGraphique
 
         public void selection(MouseEventArgs e) 
         {
+            int x = panel_GL.PointToClient(MousePosition).X;
+            int y = panel_GL.PointToClient(MousePosition).Y;
+            int h = panel_GL.Width;
+            int w = panel_GL.Height;
+            bool c = ctrlDown;
+
             // TODO PHIL : Faire que ceci n'arrive que quand on relâche le bouton de gauche et qu'on n'a pas bougé de plus de 3 pixels.
-            nbSelection = FonctionsNatives.selectionnerObjetSousPointClique(panel_GL.PointToClient(MousePosition).X, panel_GL.PointToClient(MousePosition).Y, panel_GL.Height, panel_GL.Height,ctrlDown);
+            nbSelection = FonctionsNatives.selectionnerObjetSousPointClique( x, y, w, h, c);
             if (nbSelection == 0)
             {
                 outilsEnable(false);

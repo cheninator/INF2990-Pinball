@@ -299,6 +299,7 @@ extern "C"
 				return;
 			objet_temp->setTwin(objet);
 			objet->setTwin(objet_temp);
+			objet->assignerSelection(true);
 			objet = objet_temp;
 		}
 		else
