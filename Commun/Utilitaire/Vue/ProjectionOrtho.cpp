@@ -274,7 +274,6 @@ namespace vue {
 	////////////////////////////////////////////////////////////////////////
 	void ProjectionOrtho::zoomerOut(const glm::dvec2& coin1, const glm::dvec2& coin2)
 	{
-		// À IMPLANTER.
 		const double longueurFenetreActuelle = (xMaxFenetre_ - xMinFenetre_);
 		const double xGaucheCoin = (coin1.x < coin2.x ? coin1.x : coin2.x);
 		const double xDroiteCoin = (coin1.x > coin2.x ? coin1.x : coin2.x);
@@ -437,52 +436,44 @@ namespace vue {
 			std::cout << "\n Rapports aspects sont egaux : pas d'ajustation \n";
 			return; // Les deux rapports d'aspects sont considérés dans la marge d'erreur
 		}
-		if (dir == POSITIF) // On est en ZoomInElastique 
+		if (rapportAspectVirtuel > 1.0)
 		{
-			if (rapportAspectVirtuel > 1.0)
-			{
-				longueurVerticaleRequise = abs(xMaxFenetre_ - xMinFenetre_) / rapportAspect;
-				delta = (longueurVerticaleRequise - abs(yMaxFenetre_ - yMinFenetre_)) / 2.0;
-
-				yMaxFenetre_ += delta;
-				yMinFenetre_ -= delta;
-
-			}
-			else // if (rapportAspectVirtuel < 1.0)
-			{
-				longueurVerticaleRequise = abs(xMaxFenetre_ - xMinFenetre_) / rapportAspect;
-				delta = (longueurVerticaleRequise - abs(yMaxFenetre_ - yMinFenetre_)) / 2.0;
-
-				yMaxFenetre_ += delta;
-				yMinFenetre_ -= delta;
-
-			}
+			if (dir == POSITIF)
+				ajusterRapportAspectX(rapportAspect);
+			else if (dir == NEGATIF)
+				ajusterRapportAspectY(rapportAspect);
 		}
-		else if (dir == NEGATIF) // On est en ZoomOutElastique
+		else // if (rapportAspectVirtuel < 1.0)
 		{
-			if (rapportAspectVirtuel > 1.0)
-			{
-				longueurVerticaleRequise = abs(xMaxFenetre_ - xMinFenetre_) / rapportAspect;
-				delta = (longueurVerticaleRequise - abs(yMaxFenetre_ - yMinFenetre_)) / 2.0;
-				std::cout << "delta : " << delta;
-				yMaxFenetre_ += delta;
-				yMinFenetre_ -= delta;
-
-			}
-			else // if (rapportAspectVirtuel < 1.0)
-			{
-				longueurHorizontaleRequise = abs(yMaxFenetre_ - yMinFenetre_) * rapportAspect;
-				delta = (longueurHorizontaleRequise - abs(xMaxFenetre_ - xMinFenetre_)) / 2.0;
-				std::cout << "delta : " << delta;
-				xMaxFenetre_ += delta;
-				xMinFenetre_ -= delta;
-			}
+			if (dir == POSITIF)
+				ajusterRapportAspectY(rapportAspect);
+			else if (dir == NEGATIF)
+				ajusterRapportAspectX(rapportAspect);
 		}
-
+	
 		std::cout << "\n Rapport d'aspect Virtuel : " << (xMaxFenetre_ - xMinFenetre_) / (yMaxFenetre_ - yMinFenetre_) << '\n';
 		std::cout << "Rapport d'aspect Cloture : " << rapportAspect << "\n \n";
 
 	}
+
+	void ProjectionOrtho::ajusterRapportAspectY(double rapportAspect)
+	{
+		double longueurVerticaleRequise = abs(xMaxFenetre_ - xMinFenetre_) / rapportAspect;
+		double delta = (longueurVerticaleRequise - abs(yMaxFenetre_ - yMinFenetre_)) / 2.0;
+		std::cout << "delta : " << delta;
+		yMaxFenetre_ += delta;
+		yMinFenetre_ -= delta;
+	}
+	void ProjectionOrtho::ajusterRapportAspectX(double rapportAspect)
+	{
+		double longueurHorizontaleRequise = abs(yMaxFenetre_ - yMinFenetre_) * rapportAspect;
+		double delta = (longueurHorizontaleRequise - abs(xMaxFenetre_ - xMinFenetre_)) / 2.0;
+		std::cout << "delta : " << delta;
+		xMaxFenetre_ += delta;
+		xMinFenetre_ -= delta;
+	}
+
+
 
 }; // Fin du namespace vue.
 
