@@ -908,12 +908,14 @@ namespace InterfaceGraphique
         {
             int x = panel_GL.PointToClient(MousePosition).X;
             int y = panel_GL.PointToClient(MousePosition).Y;
-            int h = panel_GL.Width;
-            int w = panel_GL.Height;
+         
+            int h = panel_GL.Height;
+            int w = panel_GL.Width;
+
             bool c = ctrlDown;
 
             // TODO PHIL : Faire que ceci n'arrive que quand on relâche le bouton de gauche et qu'on n'a pas bougé de plus de 3 pixels.
-            nbSelection = FonctionsNatives.selectionnerObjetSousPointClique( x, y, w, h, c);
+            nbSelection = FonctionsNatives.selectionnerObjetSousPointClique( x, y, h, w, c);
             if (nbSelection == 0)
             {
                 outilsEnable(false);
@@ -1128,7 +1130,7 @@ namespace InterfaceGraphique
         public static extern IntPtr ouvrirXML(StringBuilder path, int taille);
 
         [DllImport(@"Noyau.dll", CallingConvention = CallingConvention.Cdecl)]
-        public static extern int selectionnerObjetSousPointClique(int i, int j,int largeur, int hauteur,bool ctrlDown = false);
+        public static extern int selectionnerObjetSousPointClique(int i, int j,int hauteur, int largeur, bool ctrlDown = false);
 
         [DllImport(@"Noyau.dll", CallingConvention = CallingConvention.Cdecl)]
         public static extern void zoomIn();
