@@ -4,9 +4,13 @@
 /// @date 2015-01-26
 /// @version 1.0
 ///
-/// @addtogroup inf2990 INF2990
-/// @{
+/// @ingroup Visiteur
 ///////////////////////////////////////////////////////////////////////////////
+
+/** @defgroup Visiteur Visiteur
+*	@ingroup Noyau
+*/
+
 #ifndef __VISITEURS_VISITEURABSTRAIT_H__
 #define __VISITEURS_VISITEURABSTRAIT_H__
 
@@ -20,24 +24,27 @@ class NoeudTable;
 ///
 /// @brief Interface du patron Visiteur
 ///
-///        Dérivez les visiteurs concrets de cette classe de base
+/// Classe de base de laquelle dérivent les visiteurs.
 ///
 /// @author Yonni Chen
 /// @date 2015-02-02
+/// @ingroup Visiteur
 ///////////////////////////////////////////////////////////////////////////
 class VisiteurAbstrait
 {
 public:
 
-	// Constructeur par défaut
+	/// Constructeur par défaut
 	VisiteurAbstrait(){};
 
-	// Classe abstraite
+	/// Classe abstraite
 	virtual ~VisiteurAbstrait(){};
 
-	// Traiter une opération sur l'arbre de rendu et ses enfants
+	/// Traiter une opération sur l'arbre de rendu et ses enfants
 	virtual bool traiter(ArbreRenduINF2990* arbre) { return false; };
+	/// Traiter une opération sur l'arbre de rendu et ses enfants
 	virtual bool traiter(NoeudTable* noeud) { return false; };
+	/// Traiter une opération sur l'arbre de rendu et ses enfants
 	virtual bool traiter(NoeudAbstrait* noeud) { return false; };
 
 };

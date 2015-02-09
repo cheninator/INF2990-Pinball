@@ -12,20 +12,18 @@ using System.Media;
 using System.IO;
 
 
-
-
 // test
 namespace InterfaceGraphique
 {
     public partial class Exemple : Form
     {
         FullScreen fs = new FullScreen();
-        StringBuilder myObjectName = new StringBuilder("vide");
+        static public StringBuilder myObjectName = new StringBuilder("vide");
    
         public Point origin;
         
         public Point previousP, currentP;
-
+        
         public int panelHeight;
         public int panelWidth;
         private bool ctrlDown = false;
@@ -36,6 +34,9 @@ namespace InterfaceGraphique
         private float angleY = 0F;
         private float angleZ = 0F;
         private float scale = 1F;
+        private int currentZoom = 5;
+        private int previousZoom = 5;
+        private int nbSelection;
         private StringBuilder pathXML = new StringBuilder("");
         private Etat etat {get; set;}
 
@@ -43,6 +44,7 @@ namespace InterfaceGraphique
 
         public Exemple()
         {
+            this.KeyPreview = true;
             this.KeyPress += new KeyPressEventHandler(ToucheEnfonce);
             // Pour le deplacement de la vue
             // besoin de nouveau event parce que C#....
@@ -54,7 +56,7 @@ namespace InterfaceGraphique
             etat = new EtatNone(this);
             panel_GL.Focus();   
             InitialiserAnimation();
-
+            
             panelHeight = panel_GL.Size.Height;
             panelWidth = panel_GL.Size.Width;
             etat = new EtatNone(this);
@@ -76,6 +78,10 @@ namespace InterfaceGraphique
                 {
                     FonctionsNatives.animer(tempsInterAffichage);
                     FonctionsNatives.dessinerOpenGL();
+
+                  
+                    if (etat is EtatSelectionMultiple)
+                        rectangleElastique();
                 });
             }
             catch (Exception)
@@ -83,17 +89,7 @@ namespace InterfaceGraphique
             }
         }
 
-        private void ToucheUp(Object o, KeyEventArgs e)
-        {
-            if (e.KeyData == Keys.Alt)
-            {
-                altDown = false;
-            }
-            if (e.KeyData == Keys.Control)
-            {
-                ctrlDown = false;
-            }
-        }
+       
         private void ToucheDown(Object o, KeyEventArgs e)
         {
            
@@ -103,6 +99,8 @@ namespace InterfaceGraphique
                 {
                     FonctionsNatives.zoomOut();
                     zoom_Bar.Value -= 1;
+                    currentZoom = zoom_Bar.Value;
+                    previousZoom = zoom_Bar.Value;
                 }
                 if ((e.KeyData == Keys.Add ||
                     e.KeyCode == Keys.Oemplus && e.Modifiers == Keys.Shift)
@@ -110,6 +108,8 @@ namespace InterfaceGraphique
                 {
                     FonctionsNatives.zoomIn();
                     zoom_Bar.Value += 1;
+                    currentZoom = zoom_Bar.Value;
+                    previousZoom = zoom_Bar.Value;
                 }
                 if (e.KeyData == Keys.Left)
                     FonctionsNatives.translater(-10, 0);
@@ -125,12 +125,28 @@ namespace InterfaceGraphique
                 if (e.Modifiers == Keys.Control)
                 {
                     ctrlDown = true;
+                  
                 }
-                if (e.Modifiers == Keys.Alt)
+                if (e.Alt)
                 {
+                    e.Handled = true;
+                   
                     altDown = true;
                 }
             
+        }
+
+        private void ToucheUp(Object o, KeyEventArgs e)
+        {
+           
+            if (e.KeyData.ToString() == "Menu")
+            {
+                altDown = false;
+            }   
+            if (e.KeyData.ToString() == "ControlKey")
+            {
+                ctrlDown = false;
+            }
         }
         private void ToucheEnfonce(Object o, KeyPressEventArgs e)
         {
@@ -139,6 +155,7 @@ namespace InterfaceGraphique
             {
                 etat = null;
                 etat = new EtatNone(this);
+                deselection();
             }
             if (e.KeyChar == 'f')
             {
@@ -225,15 +242,17 @@ namespace InterfaceGraphique
 
             OpenFileDialog ouvrir_fichier = new OpenFileDialog();
             ouvrir_fichier.Filter = "Fichier XML(*.xml)| *.xml| All files(*.*)|*.*";
-            ouvrir_fichier.ShowDialog();
-            pathXML = new StringBuilder(ouvrir_fichier.FileName);
+            if (ouvrir_fichier.ShowDialog() == DialogResult.OK)
+            {
+                pathXML = new StringBuilder(ouvrir_fichier.FileName);
 
-            IntPtr prop = FonctionsNatives.ouvrirXML(pathXML, pathXML.Capacity);
-            int[] result = new int[6];
-            Marshal.Copy(prop, result, 0, 6);
+                IntPtr prop = FonctionsNatives.ouvrirXML(pathXML, pathXML.Capacity);
+                int[] result = new int[6];
+                Marshal.Copy(prop, result, 0, 6);
 
-            for (int i = 0; i < 6; i++)
-                propZJ[i] = result[i];
+                for (int i = 0; i < 6; i++)
+                    propZJ[i] = result[i];
+            }
         }
 
         private void EnregistrerS_MenuItem_Click(object sender, EventArgs e)
@@ -251,17 +270,17 @@ namespace InterfaceGraphique
                 MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
 
-            else if (sauvegarde == 1)
+            else if (sauvegarde == 2)
             {
                 SaveFileDialog enregistrer_fichier = new SaveFileDialog();
                 enregistrer_fichier.Filter = "Fichier XML(*.xml)| *.xml| All files(*.*)|*.*";
                 enregistrer_fichier.ShowDialog();
                 pathXML = new StringBuilder(enregistrer_fichier.FileName);
-
                 for (int i = 0; i < 6; i++)
                     prop[i] = propZJ[i];
 
-                FonctionsNatives.creerXML(pathXML, pathXML.Capacity, prop);
+                int a = FonctionsNatives.creerXML(pathXML, pathXML.Capacity, prop);
+                
             }
 
             else
@@ -331,8 +350,8 @@ namespace InterfaceGraphique
         private void panel_GL_MouseClick(object sender, MouseEventArgs e)
         {
             Console.Write(panel_GL.PointToClient(MousePosition));
-            Xbox.Text = panel_GL.PointToClient(MousePosition).X.ToString();
-            Ybox.Text = (panel_GL.PointToClient(MousePosition).Y).ToString();
+          //  Xbox.Text = panel_GL.PointToClient(MousePosition).X.ToString();
+          //  Ybox.Text = (panel_GL.PointToClient(MousePosition).Y).ToString();
 
             panel_GL.Focus();
         }
@@ -371,15 +390,20 @@ namespace InterfaceGraphique
 
         private void OK_prop_bouton_Click(object sender, EventArgs e)
         {
-            Positionner_Objet();
-            Scale_Objet();
-            Rotate_Object();
+            FonctionsNatives.deplacerSelection(
+                FonctionsNatives.getPositionX(),
+                FonctionsNatives.getPositionY(),
+                Convert.ToInt32(Xbox.Text), 
+                Convert.ToInt32(Ybox.Text));
+            
+           
+            
         }
 
-        public void Afficher_Objet()
+        public void Afficher_Objet(bool twin)
         {
             Console.WriteLine(myObjectName);
-            FonctionsNatives.creerObjet(myObjectName, myObjectName.Capacity);
+            FonctionsNatives.creerObjet(myObjectName, myObjectName.Capacity, twin);
         }
 
         public void Positionner_Objet()
@@ -533,13 +557,7 @@ namespace InterfaceGraphique
         private void Zoom_MenuItem_Click(object sender, EventArgs e)
         {
             Console.WriteLine("Outil Zoom.");
-            // TO DO
-
-            if (zoom_Bar.Enabled)
-                zoom_Bar.Enabled = false;
-            else
-                zoom_Bar.Enabled = true;
-
+            
             etat = null;
             etat = new EtatZoom(this);
         }
@@ -594,11 +612,12 @@ namespace InterfaceGraphique
 
         private void PGJ1_bouton_Click(object sender, EventArgs e)
         {
+            etat = new EtatCreation(this);
             Console.WriteLine("Palette gauche J1.");
             myObjectName = new StringBuilder("palette");
             angleX = 180;
             angleY = 0;
-            angleZ = 0;
+            angleZ = 180;
         }
 
         private void PG_J1_MenuItem_Click(object sender, EventArgs e)
@@ -608,9 +627,10 @@ namespace InterfaceGraphique
 
         private void PDJ1_bouton_Click(object sender, EventArgs e)
         {
+            etat = new EtatCreation(this);
             Console.WriteLine("Palette droite J1.");
             myObjectName = new StringBuilder("palette");
-            angleX = 0;
+            angleX = 180;
             angleY = 0;
             angleZ = 0;
         }
@@ -622,11 +642,12 @@ namespace InterfaceGraphique
 
         private void PGJ2_bouton_Click(object sender, EventArgs e)
         {
+            etat = new EtatCreation(this);
             Console.WriteLine("Palette gauche J2.");
             myObjectName = new StringBuilder("palette");
             angleX = 180;
             angleY = 0;
-            angleZ = 0;
+            angleZ = 180;
         }
 
         private void PG_J2_MenuItem_Click(object sender, EventArgs e)
@@ -636,9 +657,10 @@ namespace InterfaceGraphique
 
         private void PDJ2_bouton_Click(object sender, EventArgs e)
         {
+            etat = new EtatCreation(this);
             Console.WriteLine("Palette droite J2.");
             myObjectName = new StringBuilder("palette");
-            angleX = 0;
+            angleX = 180;
             angleY = 0;
             angleZ = 0;
         }
@@ -737,10 +759,13 @@ namespace InterfaceGraphique
 
         private void panel_GL_MouseDown(object sender, MouseEventArgs e)
         {
-
             origin = panel_GL.PointToClient(MousePosition);
             //if( !(etat is EtatCreation))
-            //    panel_GL.MouseMove += new MouseEventHandler(panel_MouseMove);
+            //    panel_GL.MouseMove += new MouseEventHandler(panel_MouseMove);   
+            
+            
+                    
+            
             previousP.X = e.X;
             previousP.Y = e.Y;
             currentP.X = e.X;
@@ -764,18 +789,49 @@ namespace InterfaceGraphique
         }
         private void panel_MouseMove(object sender, MouseEventArgs e)
         {
-            if (!(clickValide(origin, panel_GL.PointToClient(MousePosition))) && (etat is EtatSelection) && !(etat is EtatSelectionMultiple))
+            currentP = panel_GL.PointToClient(MousePosition);
+            if (!(FonctionsNatives.verifierCliqueDansTable(e.X, e.Y)))
+            {
+                Cursor = Cursors.No;
+                
+            }
+            else
+            {
+                Cursor = Cursors.Arrow;
+                
+            }
+
+
+
+            if (etat is EtatDeplacement && nbSelection == 1) 
+            {
+                Xbox.Text = FonctionsNatives.getPositionX().ToString();
+                Ybox.Text = FonctionsNatives.getPositionY().ToString();
+                
+            }
+            if (etat is EtatRotation && nbSelection == 1)
+            {
+                Anglebox.Text = FonctionsNatives.getAngle().ToString();
+            }
+            if ( etat is EtatScale && nbSelection == 1)
+            {
+                FMEbox.Text = FonctionsNatives.getScale().ToString();
+            }
+            if (!(clickValide(origin, currentP)) && (etat is EtatSelection) && !(etat is EtatSelectionMultiple) && e.Button == MouseButtons.Left)
             {
                 etat = new EtatSelectionMultiple(this);
             }
-            etat.traiterSouris(e);
-            
+
+            if (!(etat is EtatSelectionMultiple))
+                etat.traiterSouris(e);
         }
 
         private void panel_GL_MouseUp(object sender, MouseEventArgs e)
         {
-            panel_GL.MouseMove -= panel_MouseMove;
-                         
+            if (!(etat is EtatCreation))
+            {
+                panel_GL.MouseMove -= panel_MouseMove;
+            }           
             if (e.Button == MouseButtons.Left)
             {
                Point destination = panel_GL.PointToClient(MousePosition);
@@ -783,13 +839,17 @@ namespace InterfaceGraphique
                {
                   FonctionsNatives.zoomOutElastique(origin.X, origin.Y, destination.X, destination.Y);
                }
-               if (etat is EtatSelectionMultiple)
+               else if (etat is EtatSelectionMultiple)
                {
                    etat = new EtatSelection(this);
                }
                 if(clickValide(origin,destination))
                 {
-                    
+                    etat.traiterSouris(e);
+                    etat = new EtatSelection(this);
+                }
+                else if(clickValide(origin,destination))
+                {                    
                     etat.traiterSouris(e);
                 }
             }
@@ -818,7 +878,8 @@ namespace InterfaceGraphique
             // en coordonnees du monde en utilisant convertirClotureAVirtuelle(...) comme ça on n'a pas 
             // besoin de ce facteur mistérieux.  Et aussi, cette technique devrait bien marcher 
             // quand on sera rendu avec la vue orbite.
-            FonctionsNatives.deplacerSelection(previousP.X, previousP.Y, currentP.X, currentP.Y);;
+            FonctionsNatives.deplacerSelection(previousP.X, previousP.Y, currentP.X, currentP.Y);
+            //Xbox.Text = currentP.X.ToString();
             previousP = currentP;
             currentP = panel_GL.PointToClient(MousePosition);
         }
@@ -828,7 +889,7 @@ namespace InterfaceGraphique
             double deltaX = (-(currentP.X - previousP.X)) * 100.0 / panelWidth;
             double deltaY = ((currentP.Y - previousP.Y)) * 100.0 / panelHeight;
             FonctionsNatives.translater(deltaX, deltaY);
-
+            
             previousP.X = currentP.X;
             previousP.Y = currentP.Y;
             currentP.X = e.X;
@@ -837,44 +898,113 @@ namespace InterfaceGraphique
 
         public void scaleSouris(MouseEventArgs e)
         {
-            int deltaY = -(currentP.Y - previousP.Y);
-            FonctionsNatives.addScaleObjet(deltaY);
-            previousP.Y = currentP.Y;
-            currentP.Y = e.Y;
+            //int deltaY = -(currentP.Y - previousP.Y);
+            //FonctionsNatives.addScaleObjet(deltaY);
+            //previousP.Y = currentP.Y;
+            //currentP.Y = e.Y;
+
+            FonctionsNatives.agrandirSelection(previousP.X, previousP.Y, currentP.X, currentP.Y);
+            previousP = currentP;
+            currentP = panel_GL.PointToClient(MousePosition);
         }
 
         public void zoomRoulette(MouseEventArgs e)
         {
-            if (e.Delta > 0 && zoom_Bar.Value < 10)
+            if (e.Delta > 0 && zoom_Bar.Value < zoom_Bar.Maximum)
             {
-
                 FonctionsNatives.zoomIn();
                 zoom_Bar.Value += 1;
             }
-            else if (e.Delta < 0 && zoom_Bar.Value > 0)
+            else if (e.Delta < 0 && zoom_Bar.Value > zoom_Bar.Minimum)
             {
                 FonctionsNatives.zoomOut();
                 zoom_Bar.Value -= 1;
             }
+            currentZoom = zoom_Bar.Value;
+            previousZoom = zoom_Bar.Value;
         }
 
         public void selection(MouseEventArgs e) 
         {
+            int x = panel_GL.PointToClient(MousePosition).X;
+            int y = panel_GL.PointToClient(MousePosition).Y;
+         
+            int h = panel_GL.Height;
+            int w = panel_GL.Width;
+
+            bool c = ctrlDown;
+
             // TODO PHIL : Faire que ceci n'arrive que quand on relâche le bouton de gauche et qu'on n'a pas bougé de plus de 3 pixels.
-            FonctionsNatives.trouverObjetSousPointClique(panel_GL.PointToClient(MousePosition).X, panel_GL.PointToClient(MousePosition).Y,panel_GL.Height , panel_GL.Height);
+            nbSelection = FonctionsNatives.selectionnerObjetSousPointClique( x, y, h, w, c);
+            if (nbSelection == 0)
+            {
+                outilsEnable(false);
+                proprietesEnable(false);
+            }
+            else
+            {
+                outilsEnable(true);
+                proprietesEnable(true);
+                Xbox.Text = FonctionsNatives.getPositionX().ToString();
+                Ybox.Text = FonctionsNatives.getPositionY().ToString();
+                Anglebox.Text = FonctionsNatives.getAngle().ToString();
+                FMEbox.Text = FonctionsNatives.getScale().ToString();
+            }
+        }
+
+        public void rectangleElastique()
+        {
+            FonctionsNatives.rectangleElastique(origin.X, origin.Y, currentP.X, currentP.Y);
+        }
+
+        public void selectionMultiple()
+        {
+            nbSelection = FonctionsNatives.selectionMultiple();
+            proprietesEnable(false);
+            if (nbSelection == 0)
+            {
+                outilsEnable(false);
+            }
+            else 
+            {
+                if (nbSelection == 1)
+                {
+                    proprietesEnable(true);
+                    Xbox.Text = FonctionsNatives.getPositionX().ToString();
+                    Ybox.Text = FonctionsNatives.getPositionY().ToString();
+                    Anglebox.Text = FonctionsNatives.getAngle().ToString();
+                    FMEbox.Text = FonctionsNatives.getScale().ToString();
+                }
+                outilsEnable(true);
+            }
 
         }
 
-        public void creationObjet(MouseEventArgs e)
+        public void dupliquerSelection()
         {
-            Afficher_Objet();
-            FonctionsNatives.positionObjet(panel_GL.PointToClient(MousePosition).X, panel_GL.PointToClient(MousePosition).Y,0);
-            FonctionsNatives.rotate(angleX, 'x');
-            FonctionsNatives.rotate(angleY, 'y');
-            FonctionsNatives.rotate(angleZ, 'z');
-            FonctionsNatives.scaleObjet(scale);
-            previousP.X = panel_GL.PointToClient(MousePosition).X;
-            previousP.Y = panel_GL.PointToClient(MousePosition).Y;
+            currentP = panel_GL.PointToClient(MousePosition);
+            FonctionsNatives.dupliquerSelection(currentP.X, currentP.Y);
+        }
+
+        public void creationObjet(MouseEventArgs e, bool twin = false)
+        {
+
+            if (FonctionsNatives.verifierCliqueDansTable(origin.X, origin.Y))
+            {
+                Afficher_Objet(twin);
+                FonctionsNatives.positionObjet(panel_GL.PointToClient(MousePosition).X, panel_GL.PointToClient(MousePosition).Y, 0);
+                FonctionsNatives.rotate(angleX, 'x');
+                FonctionsNatives.rotate(angleY, 'y');
+                FonctionsNatives.rotate(angleZ, 'z');
+                FonctionsNatives.scaleObjet(scale);
+                previousP.X = panel_GL.PointToClient(MousePosition).X;
+                previousP.Y = panel_GL.PointToClient(MousePosition).Y;
+
+                if (FonctionsNatives.verifierCliqueDansTable(panel_GL.PointToClient(MousePosition).X, panel_GL.PointToClient(MousePosition).Y))
+                    Console.WriteLine("Click dans la table");
+                else
+                    Console.WriteLine("Click dans pas la table");
+            }
         }
 
         private void Enregistrer_MenuItem_Click(object sender, EventArgs e)
@@ -885,7 +1015,22 @@ namespace InterfaceGraphique
                 FonctionsNatives.creerXML(pathXML, pathXML.Capacity, prop);
         }
 
-
+        public void proprietesEnable(bool active)
+        {
+            Xbox.Enabled = active;
+            Ybox.Enabled = active;
+            Anglebox.Enabled = active;
+            FMEbox.Enabled = active;
+            OK_prop_bouton.Enabled = active;
+            Annuler_prop_boutn.Enabled = active;
+        }
+        public void outilsEnable(bool active)
+        {
+            bouton_Deplacement.Enabled = active;
+            bouton_Rotation.Enabled = active;
+            bouton_Scaling.Enabled = active;
+            bouton_Duplication.Enabled = active;
+        }
         private bool clickValide(Point origin, Point destination)
         {
             return ((Math.Abs(destination.X - origin.X) < 3)
@@ -902,9 +1047,36 @@ namespace InterfaceGraphique
             currentP = panel_GL.PointToClient(MousePosition);
         }
 
+        private void zoom_Bar_Scroll(object sender, EventArgs e)
+        {
+            previousZoom = currentZoom;
+            currentZoom = zoom_Bar.Value;
+            int deltaZoom = currentZoom - previousZoom;
+            if (deltaZoom < 0)
+                FonctionsNatives.zoomOut();
+            else
+                FonctionsNatives.zoomIn();
+        }
 
-   
+        public void deselection()
+        {
+            FonctionsNatives.deselectAll();
+            proprietesEnable(false);
+            outilsEnable(false);
+        }
 
+        public void trackCursor(bool enable ){
+            if (enable)
+            {
+                panel_GL.MouseMove += new MouseEventHandler(panel_MouseMove);
+            }
+            else
+            {
+                panel_GL.MouseMove -= new MouseEventHandler(panel_MouseMove);
+            }
+         
+            
+        }
 
 
     }
@@ -952,7 +1124,7 @@ namespace InterfaceGraphique
         public static extern void redimensionnerFenetre(int largeur, int hauteur);
 
         [DllImport(@"Noyau.dll", CallingConvention = CallingConvention.Cdecl)]
-        public static extern void creerObjet(StringBuilder value, int length);
+        public static extern void creerObjet(StringBuilder value, int length, bool isTwin = false);
 
         [DllImport(@"Noyau.dll", CallingConvention = CallingConvention.Cdecl)]
         public static extern void positionObjet(int x, int y, int z = 0);
@@ -991,7 +1163,7 @@ namespace InterfaceGraphique
         public static extern IntPtr ouvrirXML(StringBuilder path, int taille);
 
         [DllImport(@"Noyau.dll", CallingConvention = CallingConvention.Cdecl)]
-        public static extern void trouverObjetSousPointClique(int i, int j,int largeur, int hauteur);
+        public static extern int selectionnerObjetSousPointClique(int i, int j,int hauteur, int largeur, bool ctrlDown = false);
 
         [DllImport(@"Noyau.dll", CallingConvention = CallingConvention.Cdecl)]
         public static extern void zoomIn();
@@ -1013,5 +1185,36 @@ namespace InterfaceGraphique
 
         [DllImport(@"Noyau.dll", CallingConvention = CallingConvention.Cdecl)]
         public static extern void zoomOutElastique(int xCoin1, int yCoin1, int xCoin2, int yCoin2);
+
+        [DllImport(@"Noyau.dll", CallingConvention = CallingConvention.Cdecl)]
+        public static extern void agrandirSelection(int x1, int y1, int x2, int y2);
+
+        [DllImport(@"Noyau.dll", CallingConvention = CallingConvention.Cdecl)]
+        public static extern void rectangleElastique(int x1, int y1, int x2, int y2);
+
+        [DllImport(@"Noyau.dll", CallingConvention = CallingConvention.Cdecl)]
+        public static extern int selectionMultiple();
+
+        [DllImport(@"Noyau.dll", CallingConvention = CallingConvention.Cdecl)]
+        public static extern bool verifierCliqueDansTable(int x, int y);
+        
+        [DllImport(@"Noyau.dll", CallingConvention = CallingConvention.Cdecl)]
+        public static extern void deselectAll();
+
+        [DllImport(@"Noyau.dll", CallingConvention = CallingConvention.Cdecl)]
+        public static extern int getPositionX();
+
+        [DllImport(@"Noyau.dll", CallingConvention = CallingConvention.Cdecl)]
+        public static extern int getPositionY();
+
+        [DllImport(@"Noyau.dll", CallingConvention = CallingConvention.Cdecl)]
+        public static extern int getAngle();
+
+        [DllImport(@"Noyau.dll", CallingConvention = CallingConvention.Cdecl)]
+        public static extern double getScale();
+
+        [DllImport(@"Noyau.dll", CallingConvention = CallingConvention.Cdecl)]
+        public static extern void dupliquerSelection(int i, int j);
+
     }
 }

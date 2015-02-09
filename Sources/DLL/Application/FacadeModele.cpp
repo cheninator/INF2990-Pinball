@@ -4,15 +4,23 @@
 /// @date 2007-05-22
 /// @version 1.0
 ///
-/// @addtogroup inf2990 INF2990
-/// @{
+/// @ingroup Application
 ///////////////////////////////////////////////////////////////////////////////
-
 
 // Commentaire Doxygen mis sur la première page de la documentation Doxygen.
 /**
 
 @mainpage Projet intégrateur de deuxième année -- INF2990
+
+Painball
+
+Auteurs Aymen Dje
+		Nikolay Radoev
+		Yonni Chen
+		Emilio Rivera
+		Philippe Carpin
+		Kim Piché
+		Samuel Millette
 
 */
 
@@ -25,12 +33,16 @@
 
 #include "FacadeModele.h"
 
-// Voulait vraiment pas marcher sans que je mette le chemin.
+#include "../Visiteurs/VisiteurAbstrait.h"
 #include "../Visiteurs/VisiteurSelection.h"
+#include "../Visiteurs/VisiteurSelectionInverse.h"
+#include "../Visiteurs/VisiteurSelectionMultiple.h"
 #include "../Visiteurs/VisiteurDeplacement.h"
 #include "../Visiteurs/VisiteurRotation.h"
 #include "../Visiteurs/VisiteurCentreDeMasse.h"
 #include "../Visiteurs/VisiteurRotationPoint.h"
+#include "../Visiteurs/VisiteurAgrandissement.h"
+#include "../Visiteurs/VisiteurDuplication.h"
 
 #include "VueOrtho.h"
 #include "Camera.h"
@@ -43,11 +55,10 @@
 #include "ConfigScene.h"
 #include "CompteurAffichage.h"
 
-// Remlacement de EnveloppeXML/XercesC par TinyXML
+// Remplacement de EnveloppeXML/XercesC par TinyXML
 // Julien Gascon-Samson, été 2011
 #include "tinyxml2.h"
 
-#include "glm/glm.hpp"
 #include "glm/gtc/type_ptr.hpp"
 #include "../Visiteurs/VisiteurXML.h"
 
@@ -142,7 +153,7 @@ void FacadeModele::initialiserOpenGL(HWND hWnd)
 	FreeImage_Initialise();
 
 	// La couleur de fond
-	glClearColor(0.0f, 0.0f, 0.0f, 0.1f);
+	glClearColor(0.7843f, 0.7843f, 0.7843f, 0.0f);
 
 	// Initialiser le stencil a 0.
 	glClearStencil(0);
@@ -204,13 +215,13 @@ void FacadeModele::initialiserOpenGL(HWND hWnd)
 ////////////////////////////////////////////////////////////////////////
 void FacadeModele::chargerConfiguration() const
 {
-	// Vérification de l'existance du ficher
+	// Vérification de l'existence du ficher
 
 	// Si le fichier n'existe pas, on le crée.
 	if (!utilitaire::fichierExiste(FICHIER_CONFIGURATION)) {
 		enregistrerConfiguration();
 	}
-	// si le fichier existe on le lit
+	// Si le fichier existe on le lit
 	else {
 		tinyxml2::XMLDocument document;
 
@@ -311,7 +322,7 @@ void FacadeModele::afficher() const
 /// Cette fonction affiche la base du contenu de la scène, c'est-à-dire
 /// qu'elle met en place l'éclairage et affiche les objets.
 ///
-/// @return Aucune.
+/// @return Aucun
 ///
 ////////////////////////////////////////////////////////////////////////
 void FacadeModele::afficherBase() const
@@ -376,31 +387,60 @@ void FacadeModele::animer(float temps)
 /// @return NoeudAbstrait.
 ///
 ////////////////////////////////////////////////////////////////////////
-NoeudAbstrait* FacadeModele::trouverObjetSousPointClique(int i, int j, int hauteur, int largeur)
+int FacadeModele::selectionnerObjetSousPointClique(int i, int j, int hauteur, int largeur, bool ctrlDown)
 {
 	glm::dvec3 pointDansLeMonde;
 	vue_->convertirClotureAVirtuelle(i, j, pointDansLeMonde);
 	std::cout << "Position du click dans l'ecran : (" << i << ", " << j << ")" << std::endl;
 
-	FacadeModele::obtenirInstance()->obtenirVue()->convertirClotureAVirtuelle(i, j, pointDansLeMonde);
+	vue_->convertirClotureAVirtuelle(i, j, pointDansLeMonde);
 	std::cout << "Position du click dans le monde : (" << pointDansLeMonde.x << ", " << pointDansLeMonde.y << ", 0)" << std::endl;
-	
 
 	int valeurStencil = 0;
-
 	glReadPixels(i ,hauteur -j , 1, 1, GL_STENCIL_INDEX, GL_UNSIGNED_INT, &valeurStencil);
 
 	std::cout << "Valeur du stencil:" << valeurStencil << std::endl;
 
+	
+	if (!ctrlDown)
+	{
+		std::cout << "FacadeModele::selectionnerObjetSousPointClique( ) avec ctrlDown = FALSE" << std::endl;
+		VisiteurSelection visSel(pointDansLeMonde, valeurStencil);
+		arbre_->accepterVisiteur(&visSel);
+		// Demander au visiteur ce qu'il a trouvé et faire quelque chose en conséquence
+		std::cout << "Nombre d'objets selectionnes: " << visSel.obtenirNbObjetsSelectionne() << std::endl;
 
+		return visSel.obtenirNbObjetsSelectionne();
+	}
+	else
+	{
+		std::cout << "FacadeModele::selectionnerObjetSousPointClique() avec ctrlDown = TRUE" << std::endl;
+		VisiteurSelectionInverse visSelInverse(pointDansLeMonde, valeurStencil);
+		arbre_->accepterVisiteur(&visSelInverse);
+		// Demander au visiteur ce qu'il a trouvé et faire quelque chose en conséquence
+		std::cout << "Nombre d'objets selectionnes: " << visSelInverse.obtenirNbObjetsSelectionne() << std::endl;
 
-	// Creer un visiteur,
-	VisiteurSelection visSel(pointDansLeMonde, valeurStencil);
-	// Passer le visisteur a l<arbre
-	arbre_->accepterVisiteur(&visSel);
-	// Demander au visiteur ce qu'il a trouvé et faire quelque chose en conséquence
+		return visSelInverse.obtenirNbObjetsSelectionne();
+	}
 
-	return 0;
+}
+
+///////////////////////////////////////////////////////////////////////////////
+///
+/// int FacadeModele::selectionMultiple()
+///		Ajouter une decription
+///
+/// @return Aucune.
+///
+/// @remark : Ajouter si nécessaire
+///
+///////////////////////////////////////////////////////////////////////////////
+int FacadeModele::selectionMultiple()
+{
+	VisiteurSelectionMultiple visSelMul(selectionBasGauche_, selectionHautDroit_);
+	arbre_->accepterVisiteur(&visSelMul);
+
+	return visSelMul.obtenirNbObjetsSelectionne();
 }
 
 
@@ -417,7 +457,9 @@ NoeudAbstrait* FacadeModele::trouverObjetSousPointClique(int i, int j, int haute
 /// @param[in]  x2 : abcisse du point initial
 /// @param[in]  y2 : ordonnee du point initial
 ///
-/// @return Aucun
+/// @return Aucune.
+///
+/// @remark : On doit donner des x,y qui ont été transformés par panel_GL.PointToClient(...)
 ///
 ///////////////////////////////////////////////////////////////////////////////
 void FacadeModele::deplacerSelection(int x1, int y1 ,int x2, int y2)
@@ -435,41 +477,177 @@ void FacadeModele::deplacerSelection(int x1, int y1 ,int x2, int y2)
 }
 
 
-
+///////////////////////////////////////////////////////////////////////////////
+///
+/// @fn void tournerSelectionSouris(int x1, int y1, int x2, int y2)
+///		Fait une rotation des objets sélectionnés autour de leur centre de masse.
+///		L'angle est calculé en fonction du déplacement de (x1,y1) à (x2,y2):
+///		Présentement, l'angle est proportionnel à (y1 - y2).
+///
+/// @param[in]  x1 : abcisse du point initial
+/// @param[in]  y1 : ordonnee du point initial
+///
+/// @param[in]  x2 : abcisse du point initial
+/// @param[in]  y2 : ordonnee du point initial
+///
+/// @return Aucune.
+///
+/// @remark : On doit donner des x,y qui ont été transformés par panel_GL.PointToClient(...)
+///
+///////////////////////////////////////////////////////////////////////////////
 void FacadeModele::tournerSelectionSouris(int x1, int y1, int x2, int y2)
 {
-	glm::dvec3 positionInitiale, positionFinale;
-
-
-	FacadeModele::obtenirInstance()->obtenirVue()->convertirClotureAVirtuelle(x1, y1, positionInitiale);
-	FacadeModele::obtenirInstance()->obtenirVue()->convertirClotureAVirtuelle(x2, y2, positionFinale);
-
-	// Calculer l'angle correspondant à donner au visiteur
-	glm::dvec3 angles{ 0, 0, (y2 - y1) /2.0 }; // Pas super ...
-
-	//VisiteurRotation visRot(angles);
-	//arbre_->accepterVisiteur(&visRot);
-
-
-	// Autre possiblité
-
-	// Commencer par trouver un centre de rotation 
-	glm::dvec3 centreRotation{ 0, 0, 0 };
-
 	// Visiter l'arbre pour trouver le centre de masse des noeuds selectionnés
 	VisiteurCentreDeMasse visCM;
 	arbre_->accepterVisiteur(&visCM);
 
-	centreRotation = visCM.obtenirCentreDeMasse();
-	// std::cout << "Centre de masse : " << centreRotation.x << ", " << centreRotation.y << std::endl;
-
-	 // Faire un visiteurRotation plus sophistiqué qui va tourner les noeuds visités autour du point donné.
-		// Déterminer l'angle à tourner en 
-	 
-	VisiteurRotationPoint visSP(angles, centreRotation);
+	// Visiter l'arbre et faire la rotation.
+	VisiteurRotationPoint visSP(glm::dvec3{ 0, 0, (y2 - y1) /3.0} , visCM.obtenirCentreDeMasse());
 	arbre_->accepterVisiteur(&visSP);
-		// VisiteurRotationPoint(angles, point) 
-			// Si on tourne un noeud autour d'un point, on ajuste sa position et son orientation.
-		
+}
 
+///////////////////////////////////////////////////////////////////////////////
+///
+/// @fn void agrandirSelection(int x1, int y1, int x2, int y2)
+///		Fait un agrandissement des objets sélectionnés.
+///		L'agrandissement est calculé en fonction du déplacement de (x1,y1) à (x2,y2)
+///
+/// @param[in]  x1 : abcisse du point initial
+/// @param[in]  y1 : ordonnee du point initial
+///
+/// @param[in]  x2 : abcisse du point initial
+/// @param[in]  y2 : ordonnee du point initial
+///
+/// @return Aucune.
+///
+/// @remark : On doit donner des x,y qui ont été transformés par panel_GL.PointToClient(...)
+///
+///////////////////////////////////////////////////////////////////////////////
+void FacadeModele::agrandirSelection(int x1, int y1, int x2, int y2)
+{
+	double scale = glm::exp((y1 - y2) * glm::log(1.003)); // exp(b log(a)) = a^b
+	// Pour agrandir on multiplie le scale courrant par 1.003 et ce une fois pour chaque déplacement en y
+	// donc on multiplie par 1.003^(y1-y2).
+	// Si (y1-y2) est négatif, ceci va nous faire diviser par 1.003, donc l'objet va rapetisser.
+
+	// Au final, on multiplie le scale courrant par 1.003 une fois pour chaque déplacement élémentaire vers le haut,
+	// On divise par 1.003 pour chaque déplacement élémentaire vers le bas.
+
+	VisiteurAgrandissement visAgr(glm::dvec3{ scale, scale, scale });
+	arbre_->accepterVisiteur(&visAgr);
+
+}
+
+
+///////////////////////////////////////////////////////////////////////////////
+///
+/// void FacadeModele::rectangleElastique(int x1, int y1, int x2, int y2)
+///		Ajouter une decription
+///
+/// @param[in]  x1 : abcisse du point initial
+/// @param[in]  y1 : ordonnee du point initial
+///
+/// @param[in]  x2 : abcisse du point initial
+/// @param[in]  y2 : ordonnee du point initial
+///
+/// @return Aucune.
+///
+/// @remark : On doit donner des x,y qui ont été transformés par panel_GL.PointToClient(...)
+///
+///////////////////////////////////////////////////////////////////////////////
+void FacadeModele::rectangleElastique(int x1, int y1, int x2, int y2)
+{
+	glm::dvec3 positionInitiale, positionActuelle;
+	vue_->convertirClotureAVirtuelle(x1, y1, positionInitiale);
+	vue_->convertirClotureAVirtuelle(x2, y2, positionActuelle);
+
+	if (positionInitiale.x < positionActuelle.x && positionInitiale.y < positionActuelle.y)
+	{
+		selectionBasGauche_ = positionInitiale;
+		selectionHautDroit_ = positionActuelle;
+	}
+	else if (positionInitiale.x > positionActuelle.x && positionInitiale.y > positionActuelle.y)
+	{
+		selectionBasGauche_ = positionActuelle;
+		selectionHautDroit_ = positionInitiale;
+	}
+	else if (positionInitiale.x < positionActuelle.x && positionInitiale.y > positionActuelle.y)
+	{
+		selectionBasGauche_.x = positionInitiale.x;
+		selectionBasGauche_.y = positionActuelle.y;
+		selectionHautDroit_.x = positionActuelle.x;
+		selectionHautDroit_.y = positionInitiale.y;
+	}
+	else if (positionInitiale.x > positionActuelle.x && positionInitiale.y < positionActuelle.y)
+	{
+		selectionBasGauche_.x = positionActuelle.x;
+		selectionBasGauche_.y = positionInitiale.y;
+		selectionHautDroit_.x = positionInitiale.x;
+		selectionHautDroit_.y = positionActuelle.y;
+	}
+
+	glDrawBuffer(GL_FRONT);
+	glClear(GL_DEPTH_BUFFER_BIT);
+	glDisable(GL_TEXTURE_2D);
+	glEnable(GL_BLEND);
+
+	glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
+	glColor4f(0.0, 1.0, 0.0, 0.2);
+	glRectd(selectionBasGauche_.x, selectionBasGauche_.y, selectionHautDroit_.x, selectionHautDroit_.y);
+
+	glDisable(GL_BLEND);
+	glEnable(GL_TEXTURE_2D);	
+	glFlush();
+	glDrawBuffer(GL_BACK);
+}
+
+
+///////////////////////////////////////////////////////////////////////////////
+///
+/// @fn void verifierCliqueDansTable(int x, int y)
+///		Vérifie si le point du monde correspondant à (x,y) est dans la table de
+///		façon empirique ou heuristique.
+///
+/// @param[in]  x : abcisse du point cliqué
+/// @param[in]  y : ordonnee du point cliqué
+///
+/// @return Aucune.
+///
+/// @remark : On doit donner des x,y qui ont été transformés par panel_GL.PointToClient(...)
+///
+///////////////////////////////////////////////////////////////////////////////
+bool FacadeModele::verifierCliqueDansTable(int x, int y)
+{
+	
+	glm::dvec3 positionDansLeMonde;
+	obtenirInstance()->obtenirVue()->convertirClotureAVirtuelle(x, y, positionDansLeMonde);
+	if (    108 < positionDansLeMonde.x && positionDansLeMonde.x < 272
+		&& -190 < positionDansLeMonde.y && positionDansLeMonde.y < 96  )
+		return true;
+	else
+		return false;
+}
+
+
+///////////////////////////////////////////////////////////////////////////////
+///
+/// @fn void dupliquer()
+///		Duplique les objets selectionnés
+///
+/// @return Aucune.
+///
+///////////////////////////////////////////////////////////////////////////////
+void FacadeModele::dupliquerSelection(int i, int j)
+{
+	glm::dvec3 positionDansLeMonde;
+	obtenirInstance()->obtenirVue()->convertirClotureAVirtuelle(i, j, positionDansLeMonde);
+	positionDansLeMonde.z = 0.0;
+
+	// Visiter l'arbre pour trouver le centre de masse des noeuds selectionnés
+	//VisiteurCentreDeMasse visCM;
+	//arbre_->accepterVisiteur(&visCM);
+
+	// Visiter l'arbre et faire la duplication.
+	VisiteurDuplication visD(positionDansLeMonde);
+	arbre_->accepterVisiteur(&visD);
 }

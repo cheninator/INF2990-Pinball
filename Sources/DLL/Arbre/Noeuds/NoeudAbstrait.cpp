@@ -3,8 +3,7 @@
 /// @author DGI-2990
 /// @date   2007-01-24
 ///
-/// @addtogroup inf2990 INF2990
-/// @{
+/// @ingroup Noeud
 ////////////////////////////////////////////////
 
 #include "NoeudAbstrait.h"
@@ -30,6 +29,7 @@ NoeudAbstrait::NoeudAbstrait(
 	compteurNoeuds_ += 1;
 	numeroNoeud_ = compteurNoeuds_;
 	scale_ = { 1.0, 1.0, 1.0 };
+	twin_ = nullptr;
 }
 
 
@@ -230,6 +230,10 @@ unsigned int NoeudAbstrait::obtenirNombreEnfants() const
 	return 0;
 }
 
+modele::Modele3D const* NoeudAbstrait::obtenirModele() const
+{
+	return modele_;
+}
 
 ////////////////////////////////////////////////////////////////////////
 ///
@@ -462,15 +466,46 @@ void NoeudAbstrait::animer(float dt)
 ///
 /// Cette fonction permet d'accepter un visiteur (voir le livre de Gamma)
 ///
-/// @param[in] dt : Prend un bisiteur abstrait.
+/// @param[in] vis : Prend un visiteur abstrait.
 ///
-/// @return reusiite ou echec.
+/// @return reusite ou echec.
 ///
 ////////////////////////////////////////////////////////////////////////
 bool NoeudAbstrait::accepterVisiteur(VisiteurAbstrait* vis) 
 {
 	vis->traiter(this); return false; 
 }
-////////////////////////////////////////////////
-/// @}
-////////////////////////////////////////////////
+
+
+////////////////////////////////////////////////////////////////////////
+///
+/// @fn NoeudAbstrait* NoeudAbstrait::getTwin()
+///
+/// Retourne le noeud jumueau
+///
+/// @param[in] Aucun.
+///
+/// @return NoeudAbstrait jumeau.
+///
+////////////////////////////////////////////////////////////////////////
+NoeudAbstrait* NoeudAbstrait::getTwin()
+{
+	return twin_;
+}
+
+
+////////////////////////////////////////////////////////////////////////
+///
+/// @fn void NoeudAbstrait::setTwin()
+///
+/// Cette fonction permet de definir un noeud jumeau
+///
+/// @param[in] dt : Prend un noeud abstrait.
+///
+/// @return Aucune
+///
+////////////////////////////////////////////////////////////////////////
+void NoeudAbstrait::setTwin(NoeudAbstrait* twin)
+{
+	twin_ = twin;
+}

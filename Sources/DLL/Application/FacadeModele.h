@@ -4,15 +4,31 @@
 /// @date 2005-06-15
 /// @version 1.0 
 ///
-/// @addtogroup inf2990 INF2990
-/// @{
+/// @ingroup Application
 //////////////////////////////////////////////////////////////////////////////
+
+/**
+*  @defgroup INF2990 INF2990
+* Painball
+*/
+
+/**
+*	@defgroup Noyau Noyau
+*	@ingroup INF2990
+*  Ce module contient le coeur de l'application.
+*/
+
+/** @defgroup Application Application
+*	@ingroup Noyau
+*/
+
 #ifndef __APPLICATION_FACADEMODELE_H__
 #define __APPLICATION_FACADEMODELE_H__
 
 
 #include <windows.h>
 #include <string>
+#include "glm/glm.hpp"
 
 class NoeudAbstrait;
 class ArbreRenduINF2990;
@@ -29,6 +45,7 @@ namespace vue {
 ///
 /// @author Martin Bisson
 /// @date 2007-02-20
+/// @ingroup Application
 ///////////////////////////////////////////////////////////////////////////
 class FacadeModele
 {
@@ -65,13 +82,28 @@ public:
    void animer(float temps);
 
 
-   NoeudAbstrait* trouverObjetSousPointClique(int i, int j, int largeur, int hauteur);
+   int selectionnerObjetSousPointClique(int i, int j, int largeur, int hauteur, bool ctrlDown = false);
 
    /// Deplacement des noeuds selectionnés dans l'arbre de rendu.
    void deplacerSelection(int x1, int y1, int x2, int y2);
 
    /// Rotation des noeuds sélectionnés
    void tournerSelectionSouris(int x1, int y1, int x2, int y2);
+
+   /// Scale de la sélection
+   void agrandirSelection(int x1, int y1, int x2, int y2);
+
+   /// xxxxx
+   void rectangleElastique(int x1, int y1, int x2, int y2);
+   
+   /// xxxxx
+   int selectionMultiple();
+
+   /// Vérifier si un point cliqué est dans la table
+   bool verifierCliqueDansTable(int x, int y);
+
+   /// Pour la duplication d'objets selectionnés
+   void dupliquerSelection(int i, int j);
 
 private:
    /// Constructeur par défaut.
@@ -83,24 +115,18 @@ private:
    /// Opérateur d'assignation désactivé.
    FacadeModele& operator =(const FacadeModele&) = delete;
 
-   /// Nom du fichier XML dans lequel doit se trouver la configuration.
-   static const std::string FICHIER_CONFIGURATION;
+   static const std::string FICHIER_CONFIGURATION; /**< Nom du fichier XML dans lequel doit se trouver la configuration. */
 
-   /// Pointeur vers l'instance unique de la classe.
-   static FacadeModele* instance_;
+   static FacadeModele* instance_; ///< Pointeur vers l'instance unique de la classe. */
 
-   /// Poignée ("handle") vers la fenêtre où l'affichage se fait.
-   HWND  hWnd_{ nullptr };
-   /// Poignée ("handle") vers le contexte OpenGL.
-   HGLRC hGLRC_{ nullptr };
-   /// Poignée ("handle") vers le "device context".
-   HDC   hDC_{ nullptr };
+   HWND  hWnd_{ nullptr }; ///< Poignée ("handle") vers la fenêtre où l'affichage se fait.
+   HGLRC hGLRC_{ nullptr }; ///< Poignée ("handle") vers le contexte OpenGL.
+   HDC   hDC_{ nullptr }; ///< Poignée ("handle") vers le "device context".
 
-   /// Vue courante de la scène.
-   vue::Vue* vue_{ nullptr };
-   /// Arbre de rendu contenant les différents objets de la scène.
-   ArbreRenduINF2990* arbre_{ nullptr };
+   vue::Vue* vue_{ nullptr }; ///< Vue courante de la scène. */
+   ArbreRenduINF2990* arbre_{ nullptr }; ///< Arbre de rendu contenant les différents objets de la scène. */
 
+   glm::dvec3 selectionBasGauche_, selectionHautDroit_;
 };
 
 
@@ -155,8 +181,3 @@ inline ArbreRenduINF2990* FacadeModele::obtenirArbreRenduINF2990()
 
 
 #endif // __APPLICATION_FACADEMODELE_H__
-
-
-///////////////////////////////////////////////////////////////////////////////
-/// @}
-///////////////////////////////////////////////////////////////////////////////

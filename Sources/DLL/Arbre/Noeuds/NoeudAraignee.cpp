@@ -4,8 +4,7 @@
 /// @date 2011-05-19
 /// @version 1.0
 ///
-/// @addtogroup inf2990 INF2990
-/// @{
+/// @ingroup Noeud
 ///////////////////////////////////////////////////////////////////////////////
 #include "NoeudAraignee.h"
 #include "Utilitaire.h"
@@ -39,7 +38,7 @@ NoeudAraignee::NoeudAraignee(const std::string& typeNoeud)
 ///
 /// @fn NoeudAraignee::~NoeudAraignee()
 ///
-/// Ce destructeur désallouee la liste d'affichage du cube.
+/// Ce destructeur désallouee la liste d'affichage de l'araignée.
 ///
 /// @return Aucune (destructeur).
 ///
@@ -86,7 +85,7 @@ void NoeudAraignee::afficherConcret() const
 
 ////////////////////////////////////////////////////////////////////////
 ///
-/// @fn void NoeudCube::animer(float temps)
+/// @fn void NoeudAraignee::animer(float temps)
 ///
 /// Cette fonction effectue l'animation du noeud pour un certain
 /// intervalle de temps.
@@ -120,6 +119,3 @@ bool NoeudAraignee::accepterVisiteur(VisiteurAbstrait* vis)
 
 	return reussi;
 }
-///////////////////////////////////////////////////////////////////////////////
-/// @}
-///////////////////////////////////////////////////////////////////////////////

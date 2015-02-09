@@ -453,12 +453,15 @@
             // zoom_Bar
             // 
             this.zoom_Bar.AutoSize = false;
+            this.zoom_Bar.LargeChange = 1;
             this.zoom_Bar.Location = new System.Drawing.Point(13, 226);
+            this.zoom_Bar.Maximum = 12;
             this.zoom_Bar.Name = "zoom_Bar";
             this.zoom_Bar.Size = new System.Drawing.Size(130, 40);
             this.zoom_Bar.TabIndex = 2;
             this.zoom_Bar.TabStop = false;
             this.zoom_Bar.Value = 5;
+            this.zoom_Bar.Scroll += new System.EventHandler(this.zoom_Bar_Scroll);
             // 
             // bouton_Scaling
             // 
@@ -473,6 +476,7 @@
             // 
             // bouton_Rotation
             // 
+            this.bouton_Rotation.Enabled = false;
             this.bouton_Rotation.Location = new System.Drawing.Point(13, 86);
             this.bouton_Rotation.Name = "bouton_Rotation";
             this.bouton_Rotation.Size = new System.Drawing.Size(130, 24);
@@ -483,6 +487,7 @@
             // 
             // bouton_Deplacement
             // 
+            this.bouton_Deplacement.Enabled = false;
             this.bouton_Deplacement.Location = new System.Drawing.Point(13, 55);
             this.bouton_Deplacement.Name = "bouton_Deplacement";
             this.bouton_Deplacement.Size = new System.Drawing.Size(130, 24);
@@ -523,6 +528,7 @@
             // 
             // Annuler_prop_boutn
             // 
+            this.Annuler_prop_boutn.Enabled = false;
             this.Annuler_prop_boutn.Location = new System.Drawing.Point(84, 137);
             this.Annuler_prop_boutn.Name = "Annuler_prop_boutn";
             this.Annuler_prop_boutn.Size = new System.Drawing.Size(65, 23);
@@ -534,6 +540,7 @@
             // 
             // OK_prop_bouton
             // 
+            this.OK_prop_bouton.Enabled = false;
             this.OK_prop_bouton.Location = new System.Drawing.Point(8, 137);
             this.OK_prop_bouton.Name = "OK_prop_bouton";
             this.OK_prop_bouton.Size = new System.Drawing.Size(65, 23);
@@ -545,6 +552,7 @@
             // 
             // Anglebox
             // 
+            this.Anglebox.Enabled = false;
             this.Anglebox.Location = new System.Drawing.Point(93, 73);
             this.Anglebox.Name = "Anglebox";
             this.Anglebox.Size = new System.Drawing.Size(51, 20);
@@ -554,6 +562,7 @@
             // 
             // Angle_label
             // 
+            this.Angle_label.Enabled = false;
             this.Angle_label.Location = new System.Drawing.Point(14, 73);
             this.Angle_label.Name = "Angle_label";
             this.Angle_label.Size = new System.Drawing.Size(50, 20);
@@ -563,6 +572,7 @@
             // 
             // FMEbox
             // 
+            this.FMEbox.Enabled = false;
             this.FMEbox.Location = new System.Drawing.Point(92, 101);
             this.FMEbox.Name = "FMEbox";
             this.FMEbox.Size = new System.Drawing.Size(51, 20);
@@ -572,6 +582,7 @@
             // 
             // FME_label
             // 
+            this.FME_label.Enabled = false;
             this.FME_label.Location = new System.Drawing.Point(17, 102);
             this.FME_label.Name = "FME_label";
             this.FME_label.Size = new System.Drawing.Size(67, 19);
@@ -581,6 +592,7 @@
             // 
             // Ybox
             // 
+            this.Ybox.Enabled = false;
             this.Ybox.Location = new System.Drawing.Point(93, 47);
             this.Ybox.Name = "Ybox";
             this.Ybox.Size = new System.Drawing.Size(51, 20);
@@ -590,6 +602,7 @@
             // 
             // Y_label
             // 
+            this.Y_label.Enabled = false;
             this.Y_label.Location = new System.Drawing.Point(14, 46);
             this.Y_label.Name = "Y_label";
             this.Y_label.Size = new System.Drawing.Size(73, 20);
@@ -599,6 +612,7 @@
             // 
             // Xbox
             // 
+            this.Xbox.Enabled = false;
             this.Xbox.Location = new System.Drawing.Point(93, 21);
             this.Xbox.Name = "Xbox";
             this.Xbox.Size = new System.Drawing.Size(51, 20);
@@ -608,6 +622,7 @@
             // 
             // X_label
             // 
+            this.X_label.Enabled = false;
             this.X_label.Location = new System.Drawing.Point(14, 21);
             this.X_label.Name = "X_label";
             this.X_label.Size = new System.Drawing.Size(73, 20);
@@ -698,6 +713,7 @@
             // ModeTest_MenuItem
             // 
             this.ModeTest_MenuItem.Name = "ModeTest_MenuItem";
+            this.ModeTest_MenuItem.ShortcutKeyDisplayString = "t";
             this.ModeTest_MenuItem.Size = new System.Drawing.Size(230, 22);
             this.ModeTest_MenuItem.Text = "Mode Test";
             this.ModeTest_MenuItem.Click += new System.EventHandler(this.ModeTest_MenuItem_Click);
@@ -715,6 +731,7 @@
             this.Edition_MenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.Supprimer_MenuItem});
             this.Edition_MenuItem.Name = "Edition_MenuItem";
+            this.Edition_MenuItem.ShortcutKeyDisplayString = "Delete";
             this.Edition_MenuItem.Size = new System.Drawing.Size(56, 20);
             this.Edition_MenuItem.Text = "Édition";
             // 
@@ -743,36 +760,40 @@
             // Selection_MenuItem
             // 
             this.Selection_MenuItem.Name = "Selection_MenuItem";
-            this.Selection_MenuItem.Size = new System.Drawing.Size(186, 22);
+            this.Selection_MenuItem.ShortcutKeyDisplayString = "s";
+            this.Selection_MenuItem.Size = new System.Drawing.Size(164, 22);
             this.Selection_MenuItem.Text = "Sélection";
             this.Selection_MenuItem.Click += new System.EventHandler(this.Selection_MenuItem_Click);
             // 
             // Deplacement_MenuItem
             // 
             this.Deplacement_MenuItem.Name = "Deplacement_MenuItem";
-            this.Deplacement_MenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.D)));
-            this.Deplacement_MenuItem.Size = new System.Drawing.Size(186, 22);
+            this.Deplacement_MenuItem.ShortcutKeyDisplayString = "d";
+            this.Deplacement_MenuItem.Size = new System.Drawing.Size(164, 22);
             this.Deplacement_MenuItem.Text = "Déplacement";
             this.Deplacement_MenuItem.Click += new System.EventHandler(this.Deplacement_MenuItem_Click);
             // 
             // Rotation_MenuItem
             // 
             this.Rotation_MenuItem.Name = "Rotation_MenuItem";
-            this.Rotation_MenuItem.Size = new System.Drawing.Size(186, 22);
+            this.Rotation_MenuItem.ShortcutKeyDisplayString = "r";
+            this.Rotation_MenuItem.Size = new System.Drawing.Size(164, 22);
             this.Rotation_MenuItem.Text = "Rotation";
             this.Rotation_MenuItem.Click += new System.EventHandler(this.Rotation_MenuItem_Click);
             // 
             // MiseE_MenuItem
             // 
             this.MiseE_MenuItem.Name = "MiseE_MenuItem";
-            this.MiseE_MenuItem.Size = new System.Drawing.Size(186, 22);
+            this.MiseE_MenuItem.ShortcutKeyDisplayString = "e";
+            this.MiseE_MenuItem.Size = new System.Drawing.Size(164, 22);
             this.MiseE_MenuItem.Text = "Mise à échelle";
             this.MiseE_MenuItem.Click += new System.EventHandler(this.MiseE_MenuItem_Click);
             // 
             // Duplication_MenuItem
             // 
             this.Duplication_MenuItem.Name = "Duplication_MenuItem";
-            this.Duplication_MenuItem.Size = new System.Drawing.Size(186, 22);
+            this.Duplication_MenuItem.ShortcutKeyDisplayString = "c";
+            this.Duplication_MenuItem.Size = new System.Drawing.Size(164, 22);
             this.Duplication_MenuItem.Text = "Duplication";
             this.Duplication_MenuItem.Click += new System.EventHandler(this.Duplication_MenuItem_Click);
             // 
@@ -793,7 +814,7 @@
             this.GB_MenuItem,
             this.Trou_MenuItem});
             this.Creation_MenuItem.Name = "Creation_MenuItem";
-            this.Creation_MenuItem.Size = new System.Drawing.Size(186, 22);
+            this.Creation_MenuItem.Size = new System.Drawing.Size(164, 22);
             this.Creation_MenuItem.Text = "Création d\'objets";
             this.Creation_MenuItem.Click += new System.EventHandler(this.Creation_MenuItem_Click);
             // 
@@ -891,7 +912,8 @@
             // Zoom_MenuItem
             // 
             this.Zoom_MenuItem.Name = "Zoom_MenuItem";
-            this.Zoom_MenuItem.Size = new System.Drawing.Size(186, 22);
+            this.Zoom_MenuItem.ShortcutKeyDisplayString = "z";
+            this.Zoom_MenuItem.Size = new System.Drawing.Size(164, 22);
             this.Zoom_MenuItem.Text = "Zoom";
             this.Zoom_MenuItem.Click += new System.EventHandler(this.Zoom_MenuItem_Click);
             // 
@@ -907,14 +929,16 @@
             // Orthographique_MenuItem
             // 
             this.Orthographique_MenuItem.Name = "Orthographique_MenuItem";
-            this.Orthographique_MenuItem.Size = new System.Drawing.Size(159, 22);
+            this.Orthographique_MenuItem.ShortcutKeyDisplayString = "1";
+            this.Orthographique_MenuItem.Size = new System.Drawing.Size(172, 22);
             this.Orthographique_MenuItem.Text = "Orthographique";
             this.Orthographique_MenuItem.Click += new System.EventHandler(this.Orthographique_MenuItem_Click);
             // 
             // Orbite_MenuItem
             // 
             this.Orbite_MenuItem.Name = "Orbite_MenuItem";
-            this.Orbite_MenuItem.Size = new System.Drawing.Size(159, 22);
+            this.Orbite_MenuItem.ShortcutKeyDisplayString = "2";
+            this.Orbite_MenuItem.Size = new System.Drawing.Size(172, 22);
             this.Orbite_MenuItem.Text = "Orbite";
             this.Orbite_MenuItem.Click += new System.EventHandler(this.Orbite_MenuItem_Click);
             // 

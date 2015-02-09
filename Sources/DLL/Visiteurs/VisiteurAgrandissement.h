@@ -4,8 +4,7 @@
 /// @date 2015-02-01
 /// @version 1.0
 ///
-/// @addtogroup inf2990 INF2990
-/// @{
+/// @ingroup Visiteur
 ///////////////////////////////////////////////////////////////////////////////
 #ifndef __VISITEURS_VISITEURAGRANDISSEMENT_H__
 #define __VISITEURS_VISITEURAGRANDISSEMENT_H__
@@ -19,41 +18,43 @@
 ///		   l'arbre de rendu.
 ///
 ///        Instancier cette classe avec en paramètre le facteur d'agrandissement
-///		   en x, y et z. Ensuite, appelez la méthode accepterVisiteur()
+///		   en x, y et z. Ensuite, appeler la méthode accepterVisiteur()
 ///		   de l'arbre de rendu et lui fournir CE visiteur en paramètre
 ///
 /// @author Yonni Chen
 /// @date 2015-02-02
+/// @ingroup Visiteur
 ///////////////////////////////////////////////////////////////////////////
 class VisiteurAgrandissement : public VisiteurAbstrait
 {
 public:
 	
-	// Constructeur par paramètre : spécifiez l'agrandissement avec un glm::dvec3
+	/// Constructeur par paramètre
 	VisiteurAgrandissement(glm::dvec3 homothetie);
 
-	// Destructeur
+	/// Destructeur
 	~VisiteurAgrandissement();
 
-	// Méthode d'accès
+	/// Méthode d'accès
 	glm::dvec3 getAgrandissement() { return homothetie_; };
 
-	// Méthode de modifications
+	/// Méthode de modifications
 	void setAgrandissement(glm::dvec3 homothetie) { homothetie_ = homothetie; };
 
-	// Traiter une opération sur l'arbre de rendu et ses enfants
+	/// Traiter une opération sur l'arbre de rendu et ses enfants
 	virtual bool traiter(ArbreRenduINF2990* arbre);
+	/// Traiter une opération sur l'arbre de rendu et ses enfants
+	virtual bool traiter(NoeudTable* noeud);
+	/// Traiter une opération sur l'arbre de rendu et ses enfants
 	virtual bool traiter(NoeudAbstrait* noeud);
 
 private:
 
-	// Ne touchez pas au constructeur par défaut
+	/// Constructeur par défaut
 	VisiteurAgrandissement();
 
-	// Facteur d'agrandissement en x, y et z
-	glm::dvec3 homothetie_;
+	glm::dvec3 homothetie_; ///< Facteur d'agrandissement en x, y et z
 
 };
-
 
 #endif //__VISITEURS_VISITEURAGRANDISSEMENT_H__

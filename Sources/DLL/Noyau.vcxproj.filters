@@ -156,6 +156,21 @@
     <ClCompile Include="Visiteurs\VisiteurRotationPoint.cpp">
       <Filter>Source Files\Visiteurs</Filter>
     </ClCompile>
+    <ClCompile Include="Visiteurs\VisiteurSelectionMultiple.cpp">
+      <Filter>Source Files\Visiteurs</Filter>
+    </ClCompile>
+    <ClCompile Include="Visiteurs\VisiteurDuplication.cpp">
+      <Filter>Source Files\Visiteurs</Filter>
+    </ClCompile>
+    <ClCompile Include="Arbre\Noeuds\NoeudCouvercle.cpp">
+      <Filter>Source Files\Arbre\Noeuds</Filter>
+    </ClCompile>
+    <ClCompile Include="Visiteurs\VisiteurSelectionInverse.cpp">
+      <Filter>Source Files\Visiteurs</Filter>
+    </ClCompile>
+    <ClCompile Include="Visiteurs\VisiteurDeselectionnerTout.cpp">
+      <Filter>Source Files\Visiteurs</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Application\FacadeModele.h">
@@ -297,6 +312,24 @@
       <Filter>Header Files\Visiteurs</Filter>
     </ClInclude>
     <ClInclude Include="Visiteurs\VisiteurRotationPoint.h">
+      <Filter>Header Files\Visiteurs</Filter>
+    </ClInclude>
+    <ClInclude Include="Visiteurs\VisiteurSelectionMultiple.h">
+      <Filter>Header Files\Visiteurs</Filter>
+    </ClInclude>
+    <ClInclude Include="Visiteurs\VisiteurDuplication.h">
+      <Filter>Header Files\Visiteurs</Filter>
+    </ClInclude>
+    <ClInclude Include="Arbre\Noeuds\NoeudCouvercle.h">
+      <Filter>Header Files\Arbre\Noeuds</Filter>
+    </ClInclude>
+    <ClInclude Include="Arbre\Usines\UsineNoeudCouvercle.h">
+      <Filter>Header Files\Arbre\Usines</Filter>
+    </ClInclude>
+    <ClInclude Include="Visiteurs\VisiteurSelectionInverse.h">
+      <Filter>Header Files\Visiteurs</Filter>
+    </ClInclude>
+    <ClInclude Include="Visiteurs\VisiteurDeselectionnerTout.h">
       <Filter>Header Files\Visiteurs</Filter>
     </ClInclude>
   </ItemGroup>

@@ -12,7 +12,11 @@ namespace InterfaceGraphique
     {
         protected Exemple form_;
 
-        public Etat(Exemple form) { form_ = form;}
+        public Etat(Exemple form) { 
+            form_ = form;
+            form_.Cursor = Cursors.Arrow;
+            form_.trackCursor(false);
+        }
 
         public virtual bool traiterClavier(KeyEventArgs e) 
         {  
@@ -54,9 +58,7 @@ namespace InterfaceGraphique
            
         }
 
-    }
-
- 
+    } 
 
     class EtatSelection : Etat 
     {
@@ -102,7 +104,9 @@ namespace InterfaceGraphique
     class EtatScale : Etat
     {
 
-        public EtatScale(Exemple form) : base(form) { }
+        public EtatScale(Exemple form) : base(form) {
+            form_.Cursor = Cursors.Arrow;
+        }
 
         public override bool traiterClavier(KeyEventArgs e)
         {
@@ -123,7 +127,10 @@ namespace InterfaceGraphique
     class EtatCreation : Etat
     {
 
-        public EtatCreation(Exemple form) : base(form) { }
+        public EtatCreation(Exemple form) : base(form) {
+            form_.deselection();
+            form_.trackCursor(true);
+        }
 
         public override bool traiterClavier(KeyEventArgs e)
         {
@@ -132,9 +139,15 @@ namespace InterfaceGraphique
 
         public override bool traiterSouris(MouseEventArgs e)
         {
-
+            
             if (e.Button == MouseButtons.Left)
+            {
                 form_.creationObjet(e);
+                if (Exemple.myObjectName.ToString() == "portail")
+                {
+                    form_.creationObjet(e, true);
+                }
+            }
             else if (e.Button == MouseButtons.Right)
                 form_.deplacementVueSouris(e);
            
@@ -181,7 +194,9 @@ namespace InterfaceGraphique
 
         public override bool traiterSouris(MouseEventArgs e)
         {
-            if (e.Button == MouseButtons.Right)
+            if (e.Button == MouseButtons.Left)
+                form_.dupliquerSelection();
+            else if (e.Button == MouseButtons.Right)
                 form_.deplacementVueSouris(e);
             return true;
         }
@@ -190,7 +205,10 @@ namespace InterfaceGraphique
     class EtatNone : Etat
     {
 
-        public EtatNone(Exemple form) : base(form) { }
+        public EtatNone(Exemple form) : base(form) 
+        {
+           // form_.deselection();
+        }
 
         public override bool traiterClavier(KeyEventArgs e)
         {
@@ -204,40 +222,23 @@ namespace InterfaceGraphique
             return true;
         }
     }
+
     class EtatSelectionMultiple : Etat
     {
         public EtatSelectionMultiple(Exemple form) : base(form) { }
 
         public override bool traiterClavier(KeyEventArgs e)
         {
-
-            // Traiter le déplacement par clavier
             return base.traiterClavier(e);
         }
 
         public override bool traiterSouris(MouseEventArgs e)
         {
-            
             if (e.Button == MouseButtons.Left)
-            {
-               
-             /*
-             * TO DO
-             * Vous pouvez faire form_.selectionMultiple(e); ou le nom de la fonction voulue
-             * 
-             * 
-             * 
-             */
-            }
-                
-            if (e.Button == MouseButtons.Right)
-                form_.deplacementVueSouris(e);
+                form_.selectionMultiple();
+
             return true;
-
-          
-
         }
-
     }
 }
 

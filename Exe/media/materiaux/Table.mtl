@@ -1,4 +1,4 @@
-# Blender MTL File: 'Grave.blend'
+# Blender MTL File: 'None'
 # Material Count: 2
 
 newmtl Material.002
@@ -9,10 +9,10 @@ Ks 0.500000 0.500000 0.500000
 Ni 1.000000
 d 1.000000
 illum 2
-map_Kd materiaux/texture/table/rust.jpg
-map_d materiaux/texture/table/rust.jpg
+map_Kd materiaux/texture/table/bloodSplatter.jpg
+map_d materiaux/texture/table/bloodSplatter.jpg
 
-newmtl Top
+newmtl Material.003
 Ns 96.078431
 Ka 0.000000 0.000000 0.000000
 Kd 0.640000 0.640000 0.640000
@@ -20,5 +20,5 @@ Ks 0.500000 0.500000 0.500000
 Ni 1.000000
 d 1.000000
 illum 2
-map_Kd materiaux/texture/table/marbre.jpg
-map_d materiaux/texture/table/marbre.jpg	
+map_Kd materiaux/texture/table/flesh.jpg
+map_d materiaux/texture/table/flesh.jpg

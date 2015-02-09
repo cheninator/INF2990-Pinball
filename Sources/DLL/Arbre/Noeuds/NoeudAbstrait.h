@@ -4,9 +4,13 @@
 /// @date 2007-01-24
 /// @version 1.0
 ///
-/// @addtogroup inf2990 INF2990
-/// @{
+/// @ingroup Noeud
 ///////////////////////////////////////////////////////////////////////////////
+
+/** @defgroup Noeud Noeud
+*	@ingroup Arbre
+*/
+
 #ifndef __ARBRE_NOEUDS_NOEUDABSTRAIT_H__
 #define __ARBRE_NOEUDS_NOEUDABSTRAIT_H__
 
@@ -38,6 +42,7 @@ namespace modele{
 ///
 /// @author DGI-2990
 /// @date 2007-01-24
+/// @ingroup Noeud
 ///////////////////////////////////////////////////////////////////////////
 class NoeudAbstrait
 {
@@ -90,6 +95,11 @@ public:
 	/// Vérifie si le noeud est enregistrable.
 	inline bool estEnregistrable() const;
 
+	/// Écrit si le noeud peut être modifié ou non.
+	void assignerEstModifiable(bool modif) { modifiable_ = modif; };
+	/// Vérifie si le noeud est modifiable.
+	bool estModifiable() const { return modifiable_; };
+
 	/// Assigne le modèle3D et la liste d'affichage du noeud courant
 	inline void assignerObjetRendu(modele::Modele3D const* modele, modele::opengl_storage::OpenGL_Liste const* liste);
 
@@ -140,9 +150,14 @@ public:
 	virtual void afficherConcret() const;
 	/// Anime le noeud.
 	virtual void animer(float dt);
-	// Accepter un visiteur
+	/// Accepter un visiteur
 	virtual bool accepterVisiteur(VisiteurAbstrait* vis);
+	/// Obtenir jumeau
+	virtual NoeudAbstrait* getTwin();
+	/// Ajouter jumeau
+	virtual void setTwin(NoeudAbstrait* twin);
 
+	modele::Modele3D const* obtenirModele() const;
 
 	inline const glm::dvec3& obtenirAgrandissement() const;
 
@@ -150,6 +165,9 @@ public:
 
 	std::string getType(){ return type_; }
 protected:
+	/// Si jumeau
+	NoeudAbstrait* twin_;
+
 	/// Type du noeud.
 	std::string      type_;
 
@@ -176,6 +194,9 @@ protected:
 
 	/// Détermine si l'objet peut être sauvegardé en XML.
 	bool             enregistrable_{ true };
+
+	/// Détermine si l'objet peut être modifié
+	bool             modifiable_{ true };
 
 	/// Pointeur vers le parent.
 	NoeudAbstrait*   parent_{ nullptr };
@@ -208,7 +229,6 @@ inline NoeudAbstrait* NoeudAbstrait::obtenirParent()
 {
 	return parent_;
 }
-
 
 ////////////////////////////////////////////////////////////////////////
 ///
@@ -529,8 +549,3 @@ inline const glm::dvec3& NoeudAbstrait::obtenirRotation() const
 }
 
 #endif // __ARBRE_NOEUDS_NOEUDABSTRAIT_H__
-
-
-///////////////////////////////////////////////////////////////////////////////
-/// @}
-///////////////////////////////////////////////////////////////////////////////

@@ -1,22 +1,20 @@
 ////////////////////////////////////////////////
-/// @file   VisiteurAgrandissement.cpp
+/// @file   VisiteurCentreDeMasse.cpp
 /// @author Yonni Chen
 /// @date   2015-02-01
 ///
-/// @addtogroup inf2990 INF2990
-/// @{
+/// @ingroup Visiteur
 ////////////////////////////////////////////////
 
 #include "VisiteurCentreDeMasse.h"
 #include "../Arbre/ArbreRenduINF2990.h"
 #include <iostream>
 
-
-
-
 ////////////////////////////////////////////////////////////////////////
 ///
-/// @fn VisiteurCentreDeMasse::VisiteurCentreDeMasse(glm::dvec3 homothethie)
+/// @fn VisiteurCentreDeMasse::VisiteurCentreDeMasse()
+///
+/// Constructeur.
 ///
 /// @return Aucune (constructeur).
 ///
@@ -25,14 +23,14 @@ VisiteurCentreDeMasse::VisiteurCentreDeMasse()
 :centreDeMasse_{ 0, 0, 0 },
 nbNoeuds_{ 0 }
 {
-}
 
+}
 
 ////////////////////////////////////////////////////////////////////////
 ///
 /// @fn VisiteurCentreDeMasse::~VisiteurCentreDeMasse()
 ///
-/// Destructeur vide 
+/// Destructeur vide.
 ///
 /// @return Aucune (destructeur).
 ///
@@ -45,7 +43,7 @@ VisiteurCentreDeMasse::~VisiteurCentreDeMasse()
 
 ////////////////////////////////////////////////////////////////////////
 ///
-/// @fn bool VisiteurCentreDeMasse::traiter(ArbreRenduINF2990* arbre)
+/// @fn bool VisiteurCentreDeMasse::traiter(ArbreRenduINF2990* noeud)
 ///
 /// @return Retourne toujours true
 ///
@@ -54,44 +52,45 @@ bool VisiteurCentreDeMasse::traiter(ArbreRenduINF2990* noeud)
 {
 	for (unsigned int i = 0; i < noeud->obtenirNombreEnfants(); i++)
 	{
-		traiter(noeud->getEnfant(i));
+		noeud->getEnfant(i)->accepterVisiteur(this);
 	}
 
 	return true;
 }
-
+////////////////////////////////////////////////////////////////////////
+///
+/// @fn bool VisiteurCentreDeMasse::traiter(NoeudTable* table)
+/// @brief Cette fonction traite la table de l'arbre de rendu.
+///
+/// Cette fonction retourne true pour dire que l'opération s'est
+/// faite correctement
+///
+/// @return Retourne toujours true
+///
+////////////////////////////////////////////////////////////////////////
+bool VisiteurCentreDeMasse::traiter(NoeudTable* table)
+{
+	for (unsigned int i = 0; i < table->obtenirNombreEnfants(); i++)
+	{
+		table->getEnfant(i)->accepterVisiteur(this);
+	}
+	return true;
+}
 
 ////////////////////////////////////////////////////////////////////////
 ///
-/// @fn bool VisiteurCentreDeMasse::traiter(NoeudAbstrait* arbre)
-///
+/// @fn bool VisiteurCentreDeMasse::traiter(NoeudAbstrait* noeud)
+/// @brief Calcule le centre de masse (tous les noeuds ont une masse de 1)
 ///
 /// @return Retourne toujours true
 ///
 ////////////////////////////////////////////////////////////////////////
 bool VisiteurCentreDeMasse::traiter(NoeudAbstrait* noeud)
 {
-	// Connaitre le type du noeud
-	std::string nom = noeud->obtenirType();
-
-	// Si l'élément est une table, visiter ses enfants
-	if (nom == "table")
+	if (noeud->estSelectionne())
 	{
-		// Traiter les enfants selectionnés de la table
-		for (unsigned int i = 0; i < noeud->obtenirNombreEnfants(); i++)
-		{
-			if (noeud->chercher(i)->estSelectionne())
-				traiter(noeud->chercher(i));
-		}
-	}
-
-	else
-	{
-		// LOGIQUE DE TROUVER LE CENTRE DE MASSE
-		
 		centreDeMasse_ += noeud->obtenirPositionRelative();
 		nbNoeuds_++;
-		// std::cout << "VisiteurCentreDeMasse::nbNoeuds_  : " << nbNoeuds_ << std::endl;
 	}
 
 	return true;

@@ -4,8 +4,7 @@
 /// @date 2011-05-19
 /// @version 1.0
 ///
-/// @addtogroup inf2990 INF2990
-/// @{
+/// @ingroup Noeud
 ///////////////////////////////////////////////////////////////////////////////
 #include "NoeudConeCube.h"
 
@@ -31,6 +30,7 @@
 NoeudConeCube::NoeudConeCube(const std::string& typeNoeud)
 : NoeudComposite{ typeNoeud }
 {
+
 }
 
 
@@ -45,6 +45,7 @@ NoeudConeCube::NoeudConeCube(const std::string& typeNoeud)
 ////////////////////////////////////////////////////////////////////////
 NoeudConeCube::~NoeudConeCube()
 {
+
 }
 
 

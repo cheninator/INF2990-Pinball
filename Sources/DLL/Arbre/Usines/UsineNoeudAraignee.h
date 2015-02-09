@@ -4,8 +4,7 @@
 /// @date 2011-05-19
 /// @version 1.0
 ///
-/// @addtogroup inf2990 INF2990
-/// @{
+/// @ingroup Usine
 ///////////////////////////////////////////////////////////////////////////
 #ifndef __ARBRE_USINES_USINENOEUDARAIGNEE_H__
 #define __ARBRE_USINES_USINENOEUDARAIGNEE_H__
@@ -22,8 +21,8 @@
 ///
 /// @author Julien Gascon-Samson
 /// @date 2011-05-19
+/// @ingroup Usine
 ///////////////////////////////////////////////////////////////////////////
-
 class UsineNoeudAraignee : public UsineNoeud
 {
 public:
@@ -39,10 +38,10 @@ public:
 
 ////////////////////////////////////////////////////////////////////////
 ///
-/// @fn UsineNoeudAraignee::UsineNoeudAraignee(const std::string& nom)
+/// @fn inline UsineNoeudAraignee::UsineNoeudAraignee(const std::string& nom)
 ///
 /// Ce constructeur ne fait qu'appeler la version de la classe et base
-/// et donner des valeurs par défaut aux variables membres..
+/// et donner des valeurs par défaut aux variables membres.
 ///
 /// @param[in] nom   : Le nom de l'usine qui correspond au type de noeuds créés.
 ///
@@ -74,8 +73,3 @@ NoeudAbstrait* UsineNoeudAraignee::creerNoeud() const
 
 
 #endif // __ARBRE_USINES_USINENOEUDARAIGNEE_H__
-
-
-///////////////////////////////////////////////////////////////////////////////
-/// @}
-///////////////////////////////////////////////////////////////////////////////

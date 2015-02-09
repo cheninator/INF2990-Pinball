@@ -4,8 +4,7 @@
 /// @date 2007-03-23
 /// @version 1.0
 ///
-/// @addtogroup inf2990 INF2990
-/// @{
+/// @ingroup Arbre
 ///////////////////////////////////////////////////////////////////////////
 #include "ArbreRenduINF2990.h"
 
@@ -22,17 +21,15 @@
 #include "Usines/UsineNoeudRessort.h"
 #include "Usines/UsineNoeudTrou.h"
 #include "Usines/UsineNoeudVide.h"
+#include "Usines/UsineNoeudCouvercle.h"
 #include "Usines/UsineNoeudTable.h"
 
 #include "EtatOpenGL.h"
 
 
-/// La chaîne représentant les types
-const std::string ArbreRenduINF2990::NOM_ARAIGNEE{ "araignee" };
 const std::string ArbreRenduINF2990::NOM_BUTOIR{ "butoir" };
 const std::string ArbreRenduINF2990::NOM_BUTOIRCIRCULAIRE{ "butoircirculaire" };
 const std::string ArbreRenduINF2990::NOM_CIBLE{ "cible" };
-const std::string ArbreRenduINF2990::NOM_CONECUBE{ "conecube" };
 const std::string ArbreRenduINF2990::NOM_BILLE{ "bille" };
 const std::string ArbreRenduINF2990::NOM_GENERATEURBILLE{ "generateurbille" };
 const std::string ArbreRenduINF2990::NOM_MUR{ "mur" };
@@ -41,6 +38,7 @@ const std::string ArbreRenduINF2990::NOM_PORTAIL{ "portail" };
 const std::string ArbreRenduINF2990::NOM_RESSORT{ "ressort" };
 const std::string ArbreRenduINF2990::NOM_TROU{ "trou" };
 const std::string ArbreRenduINF2990::NOM_VIDE{ "vide" };
+const std::string ArbreRenduINF2990::NOM_COUVERCLE{ "couvercle" };
 const std::string ArbreRenduINF2990::NOM_TABLE{ "table" };
 
 ////////////////////////////////////////////////////////////////////////
@@ -58,11 +56,9 @@ const std::string ArbreRenduINF2990::NOM_TABLE{ "table" };
 ArbreRenduINF2990::ArbreRenduINF2990()
 {
 	// Construction des usines
-	ajouterUsine(NOM_ARAIGNEE, new UsineNoeudAraignee{ NOM_ARAIGNEE });
 	ajouterUsine(NOM_BUTOIR, new UsineNoeudButoir{ NOM_BUTOIR });
 	ajouterUsine(NOM_BUTOIRCIRCULAIRE, new UsineNoeudButoirCirculaire{ NOM_BUTOIRCIRCULAIRE });
 	ajouterUsine(NOM_CIBLE, new UsineNoeudCible{ NOM_CIBLE });
-	ajouterUsine(NOM_CONECUBE, new UsineNoeudConeCube{ NOM_CONECUBE });
 	ajouterUsine(NOM_BILLE, new UsineNoeudBille{ NOM_BILLE });
 	ajouterUsine(NOM_GENERATEURBILLE, new UsineNoeudGenerateurBille{ NOM_GENERATEURBILLE });
 	ajouterUsine(NOM_MUR, new UsineNoeudMur{ NOM_MUR });
@@ -71,6 +67,7 @@ ArbreRenduINF2990::ArbreRenduINF2990()
 	ajouterUsine(NOM_RESSORT, new UsineNoeudRessort{ NOM_RESSORT });
 	ajouterUsine(NOM_TROU, new UsineNoeudTrou{ NOM_TROU });
 	ajouterUsine(NOM_VIDE, new UsineNoeudTrou{ NOM_VIDE });
+	ajouterUsine(NOM_COUVERCLE, new UsineNoeudCouvercle{ NOM_COUVERCLE });
 	ajouterUsine(NOM_TABLE, new UsineNoeudTable{ NOM_TABLE });
 }
 
@@ -106,28 +103,9 @@ void ArbreRenduINF2990::initialiser()
 	// On vide l'arbre
 	vider();
 
-	// On ajoute un noeud bidon seulement pour que quelque chose s'affiche.
-	NoeudAbstrait* noeud{ creerNoeud(NOM_TABLE) };
-	
-	// Créer les 3 objets obligatoires
-	NoeudAbstrait* noeudGenerateur{ creerNoeud(NOM_GENERATEURBILLE) };
-	NoeudAbstrait* noeudRessort{ creerNoeud(NOM_RESSORT) };
-	NoeudAbstrait* noeudTrou{ creerNoeud(NOM_TROU) };
-
-	// Assigner positions
-	noeudGenerateur->assignerPositionRelative({ 247.40, -140.88, 0.0 });
-	noeudRessort->assignerPositionRelative({ 247.00, -171.28, 0.0 });
-	noeudTrou->assignerPositionRelative({ 184.60, -181.68, 0.0 });
-
-	noeudGenerateur->assignerEstEnregistrable(false);
-	noeudRessort->assignerEstEnregistrable(false);
-	noeudTrou->assignerEstEnregistrable(false);
-
-	// Ajouter les objets à la table
-	noeud->ajouter(noeudGenerateur);
-	noeud->ajouter(noeudRessort);
-	noeud->ajouter(noeudTrou);
-
+	// Charger la zone de jeu par défaut
+	initialiserXML("default.xml");
+	NoeudAbstrait* noeud = creerNoeud("couvercle");
 	ajouter(noeud);
 
 }
@@ -143,7 +121,7 @@ void ArbreRenduINF2990::initialiser()
 /// @return NoeudAbstrait*
 ///
 ////////////////////////////////////////////////////////////////////////
-NoeudAbstrait* ArbreRenduINF2990::getEnfant(int position)
+NoeudAbstrait* ArbreRenduINF2990::getEnfant(int position) const
 {
 	if (position > enfants_.size() || position < 0)
 		return nullptr;
@@ -158,17 +136,17 @@ NoeudAbstrait* ArbreRenduINF2990::getEnfant(int position)
 ///
 /// Cette fonction appelle la méthode traiter du visiteur
 ///
-/// @return Retourne toujours true
+/// @return operationReussie (TRUE)
 ///
 ////////////////////////////////////////////////////////////////////////
 bool ArbreRenduINF2990::accepterVisiteur(VisiteurAbstrait* vis)
 {
-	bool operationReussi = false;
+	bool operationReussie = false;
 
 	if (vis->traiter(this))
-		operationReussi = true;
+		operationReussie = true;
 
-	return operationReussi;
+	return operationReussie;
 }
 
 
@@ -182,7 +160,7 @@ bool ArbreRenduINF2990::accepterVisiteur(VisiteurAbstrait* vis)
 /// avec les noeuds structurants (pour les objets, les murs, les billes,
 /// les parties statiques, etc.) en lisant un fichier XML
 ///
-/// @return TRUE : fichier trouvé. Autrement FALSE
+/// @return TRUE : fichier trouvé. Autrement, FALSE
 ////////////////////////////////////////////////////////////////////////
 bool ArbreRenduINF2990::initialiserXML(std::string nomFichier)
 {
@@ -213,7 +191,8 @@ bool ArbreRenduINF2990::initialiserXML(std::string nomFichier)
 /// Cette fonction lit un fichier XML et créer les objets de l'arbre.
 ///	Il lit également les propriétés de la zone de jeu.
 ///
-/// @return TRUE : lecture correct. Autrement FALSE
+/// @return TRUE : lecture correcte. Autrement, FALSE
+///
 ////////////////////////////////////////////////////////////////////////
 bool ArbreRenduINF2990::lireXML(tinyxml2::XMLDocument& doc)
 {
@@ -290,6 +269,10 @@ bool ArbreRenduINF2990::lireXML(tinyxml2::XMLDocument& doc)
 				enfant = enfant->NextSiblingElement();
 			}
 
+			getEnfant(0)->chercher("generateurbille")->assignerEstModifiable(false);
+			getEnfant(0)->chercher("ressort")->assignerEstModifiable(false);
+			getEnfant(0)->chercher("trou")->assignerEstModifiable(false);
+
 			lecture = true;
 
 		}
@@ -298,10 +281,3 @@ bool ArbreRenduINF2990::lireXML(tinyxml2::XMLDocument& doc)
 
 	return lecture;
 }
-
-
-
-
-///////////////////////////////////////////////////////////////////////////////
-/// @}
-///////////////////////////////////////////////////////////////////////////////

@@ -3,8 +3,7 @@
 /// @author INF2990
 /// @date   2014-08-16
 ///
-/// @addtogroup inf2990 INF2990
-/// @{
+/// @ingroup Interface
 ////////////////////////////////////////////////
 #include "FacadeInterfaceNative.h"
 #include "FacadeModele.h"
@@ -18,7 +17,6 @@
 #include "../Visiteurs/VisiteurXML.h"
 
 #include <iostream>
-
 #include "BancTests.h"
 
 
@@ -27,14 +25,18 @@ extern "C"
 {
 	// TO DO : SUPPRIMER CETTE VARIABLE QUAND PLUS NECESSAIRE
 	static NoeudAbstrait* objet = new NoeudAbstrait();
-	static double facteurDeTransition; // DONT ASK WHY
-	static double theta = 0;
-	static double phi = 0; 
+	static NoeudAbstrait* objet_temp = new NoeudAbstrait();
+	
+	// DON'T ASK WHY
+	static double facteurDeTransition; ///< Facteur de transition
+	
+	static double theta = 0; ///< Angle Theta
+	static double phi = 0;  /// < angle Phi
 
 
 	////////////////////////////////////////////////////////////////////////
 	///
-	/// static void calculerTransition(void)
+	/// @fn static void calculerTransition(void)
 	///
 	/// Cette fonction interne permet d'assigner un facteur de
 	/// transition (qui est une variable static interne a la librairie
@@ -46,20 +48,40 @@ extern "C"
 	/// @return Aucune. (assigne une valeur a une variable globale a l'interne)
 	///
 	////////////////////////////////////////////////////////////////////////
-	static void calculerTransition(void)
+	static float calculerTransition(void)
 	{
 		glm::dvec3 positionZero;
 		glm::dvec3 positionUn;
 		FacadeModele::obtenirInstance()->obtenirVue()->convertirClotureAVirtuelle(0, 0, positionZero);
 		FacadeModele::obtenirInstance()->obtenirVue()->convertirClotureAVirtuelle(100, 100, positionUn);
 		facteurDeTransition = (((positionUn.y - positionZero.y) / 100 ) + ((positionUn.y - positionZero.y)/100))/(-2);
+		return facteurDeTransition;
 	}
 	static NoeudAbstrait* objetCourrant = new NoeudAbstrait();
 
 
 	////////////////////////////////////////////////////////////////////////
 	///
-	/// __declspec(dllexport) void __cdecl trouverObjetSousPointClique(int i, int j)
+	/// @fn __declspec(dllexport) float __cdecl currentZoom(void)
+	///
+	/// Cette fonction interne permet d'assigner un facteur de
+	/// transition (qui est une variable static interne a la librairie
+	/// pour permettre de garder la meme "vitesse" de mouvement entre
+	/// le rendu openGL et la fenetre ne pixel C#
+	///
+	/// @param[in] Aucun
+	///
+	/// @return La valeur du facteur de transition courant
+	///
+	////////////////////////////////////////////////////////////////////////
+	__declspec(dllexport) float __cdecl currentZoom(void)
+	{
+		return calculerTransition();
+	}
+
+	////////////////////////////////////////////////////////////////////////
+	///
+	/// @fn __declspec(dllexport) void __cdecl trouverObjetSousPointClique(int i, int j)
 	///
 	/// Appel la fonction trouverObjetSousPointClique
 	///
@@ -69,14 +91,15 @@ extern "C"
 	/// @return Aucune.
 	///
 	////////////////////////////////////////////////////////////////////////
-	__declspec(dllexport) void __cdecl trouverObjetSousPointClique(int i, int j,int hauteur, int largeur)
+	__declspec(dllexport) int __cdecl selectionnerObjetSousPointClique(int i, int j, int hauteur, int largeur, bool ctrlDown)
 	{
-		objetCourrant = FacadeModele::obtenirInstance()->trouverObjetSousPointClique(i, j,hauteur,largeur);
+		calculerTransition();
+		return FacadeModele::obtenirInstance()->selectionnerObjetSousPointClique(i, j, hauteur, largeur, ctrlDown);
 	}
 
 	////////////////////////////////////////////////////////////////////////
 	///
-	/// __declspec(dllexport) void __cdecl initialiserOpenGL(int* handle)
+	/// @fn __declspec(dllexport) void __cdecl initialiserOpenGL(int* handle)
 	///
 	/// Cette fonction initialise un contexte OpenGL dans la fenêtre
 	/// identifiée par le handle passé en paramètre.  Cette fonction doit
@@ -135,12 +158,13 @@ extern "C"
 		FacadeModele::obtenirInstance()->afficher();
 		// Temporaire: pour détecter les erreurs OpenGL
 		aidegl::verifierErreurOpenGL();
+		calculerTransition();
 	}
 
 
 	////////////////////////////////////////////////////////////////////////
 	///
-	/// __declspec(dllexport) void __cdecl redimensionnerFenetre(int largeur, int hauteur)
+	/// @fn __declspec(dllexport) void __cdecl redimensionnerFenetre(int largeur, int hauteur)
 	///
 	/// Cette fonction doit être appelée lorsque la fenêtre est
 	/// redimensionnée afin d'ajuster les paramètres de la machine à états
@@ -154,10 +178,12 @@ extern "C"
 	////////////////////////////////////////////////////////////////////////
 	__declspec(dllexport) void __cdecl redimensionnerFenetre(int largeur, int hauteur)
 	{
+		calculerTransition();
 		FacadeModele::obtenirInstance()->obtenirVue()->redimensionnerFenetre(
 			glm::ivec2{ 0, 0 },
 			glm::ivec2{ largeur, hauteur }
 		);
+		calculerTransition();
 	}
 
 
@@ -176,6 +202,7 @@ extern "C"
 	////////////////////////////////////////////////////////////////////////
 	__declspec(dllexport) void __cdecl animer(double temps)
 	{
+		calculerTransition();
 		FacadeModele::obtenirInstance()->animer((float) temps);
 	}
 
@@ -191,7 +218,12 @@ extern "C"
 	////////////////////////////////////////////////////////////////////////
 	__declspec(dllexport) void __cdecl zoomIn()
 	{
+		calculerTransition();
 		FacadeModele::obtenirInstance()->obtenirVue()->zoomerIn();
+		calculerTransition();
+		if (facteurDeTransition < 0.1)
+			zoomOut();
+		calculerTransition();
 	}
 
 
@@ -206,7 +238,12 @@ extern "C"
 	////////////////////////////////////////////////////////////////////////
 	__declspec(dllexport) void __cdecl zoomOut()
 	{
+		calculerTransition();
 		FacadeModele::obtenirInstance()->obtenirVue()->zoomerOut();
+		calculerTransition();
+		if (facteurDeTransition > 1)
+			zoomIn();
+		calculerTransition();
 	}
 
 
@@ -253,14 +290,22 @@ extern "C"
 	/// @return Aucun
 	///
 	////////////////////////////////////////////////////////////////////////
-	__declspec(dllexport) void __cdecl creerObjet(char* value, int length)
+	__declspec(dllexport) void __cdecl creerObjet(char* value, int length, bool isTwin)
 	{
+		calculerTransition();
 		std::string nomObjet (value);
-		objet = FacadeModele::obtenirInstance()->obtenirArbreRenduINF2990()->creerNoeud(nomObjet);
+		if (isTwin == true) {
+			objet_temp = FacadeModele::obtenirInstance()->obtenirArbreRenduINF2990()->creerNoeud(nomObjet);
+			if (objet == nullptr)
+				return;
+			objet_temp->setTwin(objet);
+			objet->setTwin(objet_temp);
+			objet->assignerSelection(true);
+			objet = objet_temp;
+		}
+		else
+			objet = FacadeModele::obtenirInstance()->obtenirArbreRenduINF2990()->creerNoeud(nomObjet);
 		if (objet == nullptr)
-			return;
-		// Ca ne sert a rien de rajouter un Node "vide" dans l'arbre
-		else if (nomObjet == "vide")
 			return;
 		FacadeModele::obtenirInstance()->obtenirArbreRenduINF2990()->getEnfant(0)->ajouter(objet);
 	}
@@ -280,11 +325,14 @@ extern "C"
 	////////////////////////////////////////////////////////////////////////
 	__declspec(dllexport) void __cdecl positionObjet(int x, int y, int z)
 	{
+		calculerTransition();
 		glm::dvec3 maPosition;
 		FacadeModele::obtenirInstance()->obtenirVue()->convertirClotureAVirtuelle(x, y, maPosition);
-		objet->assignerPositionRelative({ maPosition.x, maPosition.y, z });
-		std::cout << std::endl << "x: " << maPosition.x << "y: " << maPosition.y << "z: " << maPosition.z << std::endl;
-	}
+		if (maPosition.x > 108 && maPosition.x < 272 && maPosition.y > -190 && maPosition.y < 96){
+			objet->assignerPositionRelative({ maPosition.x, maPosition.y, z });
+			std::cout << std::endl << "x: " << maPosition.x << "y: " << maPosition.y << "z: " << maPosition.z << std::endl;
+		}
+		}
 
 
 	////////////////////////////////////////////////////////////////////////
@@ -324,8 +372,12 @@ extern "C"
 	////////////////////////////////////////////////////////////////////////
 	__declspec(dllexport) void __cdecl scaleObjet(double scale)
 	{
+		calculerTransition();
 		objet->assignerEchelle({ scale, scale, scale });
+		
 	}
+
+
 
 	////////////////////////////////////////////////////////////////////////
 	///
@@ -373,6 +425,7 @@ extern "C"
 	////////////////////////////////////////////////////////////////////////
 	__declspec(dllexport) void __cdecl scaleObjetXYZ(double x, double y, double z)
 	{
+		calculerTransition();
 		objet->assignerEchelle({ x, y, z });
 	}
 
@@ -390,6 +443,7 @@ extern "C"
 	////////////////////////////////////////////////////////////////////////
 	__declspec(dllexport) void __cdecl rotate(float angle, char direction)
 	{
+		calculerTransition();
 		std::cout << direction;
 		if (direction == 'x' || direction == 'X' || direction == '0')
 			objet->assignerRotation({ 0.0, 0.0, angle });
@@ -411,6 +465,7 @@ extern "C"
 	////////////////////////////////////////////////////////////////////////
 	__declspec(dllexport) void resetObject(void) 
 	{
+		calculerTransition();
 		objet->assignerPositionRelative({ 0, 0, 0 });
 		objet->assignerEchelle({ 1, 1, 1 });
 		objet->resetRotation();
@@ -428,11 +483,18 @@ extern "C"
 	////////////////////////////////////////////////////////////////////////
 	__declspec(dllexport) void removeObject(void)
 	{
-		
-		if (objet->estEnregistrable() && objet != nullptr)
+		calculerTransition();
+		if (objet == nullptr)
+			return;
+		if (objet->estModifiable())
 		{
+			if (objet->getType() == "portail")
+			{
+				if (objet->getTwin() != nullptr)
+					FacadeModele::obtenirInstance()->obtenirArbreRenduINF2990()->effacer(objet->getTwin());
+			}
 			FacadeModele::obtenirInstance()->obtenirArbreRenduINF2990()->effacer(objet);
-			//objet = nullptr;
+			objet = nullptr;
 		}
 	}
 
@@ -449,6 +511,7 @@ extern "C"
 	__declspec(dllexport) void purgeAll(void)
 	{
 		FacadeModele::obtenirInstance()->obtenirArbreRenduINF2990()->initialiser();
+		calculerTransition();
 	}
 
 
@@ -466,8 +529,9 @@ extern "C"
 	////////////////////////////////////////////////////////////////////////
 	__declspec(dllexport) void __cdecl translater(double deplacementX, double deplacementY)
 	{
-	
-	FacadeModele::obtenirInstance()->obtenirVue()->deplacerXY(deplacementX, deplacementY);
+		calculerTransition();
+		FacadeModele::obtenirInstance()->obtenirVue()->deplacerXY(deplacementX, deplacementY);
+		
 	}
 
 
@@ -486,11 +550,21 @@ extern "C"
 	__declspec(dllexport) int __cdecl creerXML(char* path, int length, int prop[6])
 	{
 		int sauvegardeAutorise;
+		calculerTransition();
 
 		// Ne pas permettre la sauvegarde si la zone ne contient pas au minimum les 3 objets
 		if (FacadeModele::obtenirInstance()->obtenirArbreRenduINF2990()->getEnfant(0)->obtenirNombreEnfants() < 3)
 		{
 			sauvegardeAutorise = 0;
+		}
+
+		// Ne pas permettre de sauvegarder la zone de jeu par défaut
+		else if (FacadeModele::obtenirInstance()->obtenirArbreRenduINF2990()->getEnfant(0)->chercher("generateurbille")
+			&& FacadeModele::obtenirInstance()->obtenirArbreRenduINF2990()->getEnfant(0)->chercher("trou")
+			&& FacadeModele::obtenirInstance()->obtenirArbreRenduINF2990()->getEnfant(0)->chercher("ressort")
+			&& FacadeModele::obtenirInstance()->obtenirArbreRenduINF2990()->getEnfant(0)->obtenirNombreEnfants() == 3)
+		{
+			sauvegardeAutorise = 1;
 		}
 
 		// Permettre la sauvegarde que lorsque il y a les 3 objets obligatoires + d'autres objets
@@ -501,13 +575,9 @@ extern "C"
 		{
 			VisiteurXML* visiteur = new VisiteurXML(std::string(path), prop);
 			FacadeModele::obtenirInstance()->obtenirArbreRenduINF2990()->accepterVisiteur(visiteur);
-			sauvegardeAutorise = 1;
-		}
-
-		// Ne pas permettre de sauvegarder la zone de jeu par défaut
-		else
-		{
 			sauvegardeAutorise = 2;
+
+			delete visiteur;
 		}
 
 		return sauvegardeAutorise;
@@ -549,6 +619,7 @@ extern "C"
 	////////////////////////////////////////////////////////////////////////
 	__declspec(dllexport) void __cdecl orbite(double x, double y)
 	{
+		calculerTransition();
 		glm::dvec3 maPosition;
 		FacadeModele::obtenirInstance()->obtenirVue()->convertirClotureAVirtuelle(x, y, maPosition);
 
@@ -558,6 +629,7 @@ extern "C"
 
 		// A revori avec phil
 		FacadeModele::obtenirInstance()->obtenirVue()->obtenirCamera().orbiterXY(phi, theta);
+		calculerTransition();
 	}
 	////////////////////////////////////////////////////////////////////////
 	///
@@ -575,6 +647,7 @@ extern "C"
 	////////////////////////////////////////////////////////////////////////
 	__declspec(dllexport) void zoomInElastique(int xCoin1, int yCoin1, int xCoin2, int yCoin2)
 	{
+		calculerTransition();
 		glm::dvec3 positionSouris1(xCoin1, yCoin1, 0.0);
 		glm::dvec3 positionSouris2(xCoin2, yCoin2, 0.0);
 		FacadeModele::obtenirInstance()->obtenirVue()->convertirClotureAVirtuelle(xCoin1, yCoin1, positionSouris1);
@@ -583,9 +656,9 @@ extern "C"
 		glm::ivec2 coin1(positionSouris1.x, positionSouris1.y);
 		glm::ivec2 coin2(positionSouris2.x, positionSouris2.y);
 		FacadeModele::obtenirInstance()->obtenirVue()->zoomerInElastique(coin1, coin2);
+		calculerTransition();
 	}
 
-}
 
 ////////////////////////////////////////////////////////////////////////
 ///
@@ -613,29 +686,227 @@ __declspec(dllexport) void zoomOutElastique(int xCoin1, int yCoin1, int xCoin2, 
 	FacadeModele::obtenirInstance()->obtenirVue()->zoomerOutElastique(coin1, coin2);
 }
 
-///////////////////////////////////////////////////////////////////////////////
-///
-/// @fn __declspec(dllexport) void __cdecl deplacerSelection(int x1, int y1, int x2, int y2)
-///		deplace les noeuds selectionnes d'un déplacement calculé en coordonnées du monde
-///		à partir des points initiaux et terminaux dans les coordonnées d'affichage OpenGL
-///
-///
-/// @param[in]  x1 : abcisse du point initial
-/// @param[in]  y1 : ordonnee du point initial
-///
-/// @param[in]  x2 : abcisse du point initial
-/// @param[in]  y2 : ordonnee du point initial
-///
-/// @return Aucun
-///
-///////////////////////////////////////////////////////////////////////////////
-__declspec(dllexport) void __cdecl deplacerSelection(int x1, int y1, int x2, int y2)
-{
-	FacadeModele::obtenirInstance()->deplacerSelection(x1, y1, x2, y2);
-}
+
+	///////////////////////////////////////////////////////////////////////////////
+	///
+	/// @fn __declspec(dllexport) void __cdecl deplacerSelection(int x1, int y1, int x2, int y2)
+	///		deplace les noeuds selectionnes d'un déplacement calculé en coordonnées du monde
+	///		à partir des points initiaux et terminaux dans les coordonnées d'affichage OpenGL
+	///
+	///
+	/// @param[in]  x1 : abcisse du point initial
+	/// @param[in]  y1 : ordonnee du point initial
+	///
+	/// @param[in]  x2 : abcisse du point initial
+	/// @param[in]  y2 : ordonnee du point initial
+	///
+	/// @return Aucun
+	///
+	/// @remark : On doit donner des x,y qui ont été transformés par panel_GL.PointToClient(...)
+	///
+	///////////////////////////////////////////////////////////////////////////////
+	__declspec(dllexport) void __cdecl deplacerSelection(int x1, int y1, int x2, int y2)
+	{
+		FacadeModele::obtenirInstance()->deplacerSelection(x1, y1, x2, y2);
+	}
+
+	///////////////////////////////////////////////////////////////////////////////
+	///
+	/// @fn __declspec(dllexport) void __cdecl tournerSelectionSouris(int x1, int y1, int x2, int y2)
+	///		L'angle de rotation est calculé à partir du déplacement
+	///
+	/// @param[in]  x1 : abcisse du point initial
+	/// @param[in]  y1 : ordonnee du point initial
+	///
+	/// @param[in]  x2 : abcisse du point initial
+	/// @param[in]  y2 : ordonnee du point initial
+	///
+	/// @return Aucun
+	///
+	/// @remark : On doit donner des x,y qui ont été transformés par panel_GL.PointToClient(...)
+	///
+	///////////////////////////////////////////////////////////////////////////////
+	__declspec(dllexport) void __cdecl tournerSelectionSouris(int x1, int y1, int x2, int y2)
+	{
+		FacadeModele::obtenirInstance()->tournerSelectionSouris(x1, y1, x2, y2);
+	}
+
+	///////////////////////////////////////////////////////////////////////////////
+	///
+	/// @fn __declspec(dllexport) void __cdecl agrandirSelection(int x1, int y1, int x2, int y2)
+	///
+	/// @param[in]  x1 : abcisse du point initial
+	/// @param[in]  y1 : ordonnee du point initial
+	///
+	/// @param[in]  x2 : abcisse du point initial
+	/// @param[in]  y2 : ordonnee du point initial
+	///
+	/// @return Aucun
+	///
+	/// @remark : On doit donner des x,y qui ont été transformés par panel_GL.PointToClient(...)
+	///
+	///////////////////////////////////////////////////////////////////////////////
+	__declspec(dllexport) void __cdecl agrandirSelection(int x1, int y1, int x2, int y2)
+	{
+		FacadeModele::obtenirInstance()->agrandirSelection(x1, y1, x2, y2);
+	}
+
+	///////////////////////////////////////////////////////////////////////////////
+	///
+	/// @fn __declspec(dllexport) void __cdecl 
+	///
+	/// @return Aucun
+	///
+	///////////////////////////////////////////////////////////////////////////////
+	__declspec(dllexport) void __cdecl rectangleElastique(int x1, int y1, int x2, int y2)
+	{
+		calculerTransition();
+		FacadeModele::obtenirInstance()->rectangleElastique(x1, y1, x2, y2);
+	}
+
+	__declspec(dllexport) int __cdecl selectionMultiple(void)
+	{
+		calculerTransition();
+		return FacadeModele::obtenirInstance()->selectionMultiple();
+	}
+
+	///////////////////////////////////////////////////////////////////////////////
+	///
+	/// @fn __declspec(dllexport) bool __cdecl verifierCliqueDansTable(int x, int y)
+	///
+	/// @param[in]  x : abcisse du point initial 
+	/// @param[in]  y : ordonnee du point initial
+	///
+	/// @return Aucun
+	///
+	/// @remark : On doit donner des x,y qui ont été transformés par panel_GL.PointToClient(...)
+	///
+	///////////////////////////////////////////////////////////////////////////////
+	__declspec(dllexport) bool verifierCliqueDansTable(int x, int y)
+	{
+		return FacadeModele::obtenirInstance()->verifierCliqueDansTable(x, y);
+	}
+
+	///////////////////////////////////////////////////////////////////////////////
+	///
+	/// @fn __declspec(dllexport)  void deselectAll(void)
+	/// @return Aucun
+	///
+	/// @remark : Ca deselectionne tout
+	///
+	///////////////////////////////////////////////////////////////////////////////
+	__declspec(dllexport) void deselectAll(void)
+	{
+		FacadeModele::obtenirInstance()->obtenirArbreRenduINF2990()->getEnfant(0)->deselectionnerTout();
+	}
+
+	///////////////////////////////////////////////////////////////////////////////
+	///
+	/// @fn __declspec(dllexport)  void dupliquer(void)
+	/// @return Aucun
+	///
+	/// @remark : Ça duplique les objets selectionnés
+	///
+	///////////////////////////////////////////////////////////////////////////////
+	__declspec(dllexport) void __cdecl dupliquerSelection(int i, int j)
+	{
+		FacadeModele::obtenirInstance()->dupliquerSelection(i, j);
+	}
+
+	///////////////////////////////////////////////////////////////////////////////
+	///
+	/// @fn __declspec(dllexport)  int getPositionX(void)
+	/// @return la position en X
+	///
+	/// @remark : 
+	///
+	///////////////////////////////////////////////////////////////////////////////
+	__declspec(dllexport) int getPositionX(void){
+		int positionX;
+		for (int j = 0; j < FacadeModele::obtenirInstance()->obtenirArbreRenduINF2990()->getEnfant(0)->obtenirNombreEnfants(); j++)
+			{
+				if (
+					FacadeModele::obtenirInstance()->obtenirArbreRenduINF2990()->getEnfant(0)->chercher(j)->estSelectionne()
+					){
+					objet = FacadeModele::obtenirInstance()->obtenirArbreRenduINF2990()->getEnfant(0)->chercher(j);
+					positionX = objet->obtenirPositionRelative().x;
+				}
+			}
+		
+		return positionX;
+	}
 
 
-__declspec(dllexport) void tournerSelectionSouris(int x1, int y1, int x2, int y2)
-{
-	FacadeModele::obtenirInstance()->tournerSelectionSouris(x1, y1, x2, y2);
+
+	///////////////////////////////////////////////////////////////////////////////
+	///
+	/// @fn __declspec(dllexport)  int getPositionY(void)
+	/// @return la position en Y
+	///
+	/// @remark : 
+	///
+	///////////////////////////////////////////////////////////////////////////////
+	__declspec(dllexport) int getPositionY(void){
+		int positionY;
+		for (int j = 0; j < FacadeModele::obtenirInstance()->obtenirArbreRenduINF2990()->getEnfant(0)->obtenirNombreEnfants(); j++)
+		{
+			if (
+				FacadeModele::obtenirInstance()->obtenirArbreRenduINF2990()->getEnfant(0)->chercher(j)->estSelectionne()
+				){
+				objet = FacadeModele::obtenirInstance()->obtenirArbreRenduINF2990()->getEnfant(0)->chercher(j);
+				positionY = objet->obtenirPositionRelative().y;
+			}
+		}
+
+		return positionY;
+	}
+	
+	///////////////////////////////////////////////////////////////////////////////
+	///
+	/// @fn __declspec(dllexport)  int getAngle(void)
+	/// @return l'angle de l'objet
+	///
+	/// @remark : 
+	///
+	///////////////////////////////////////////////////////////////////////////////
+	__declspec(dllexport) int getAngle(void)
+	{
+		int angle;
+		for (int j = 0; j < FacadeModele::obtenirInstance()->obtenirArbreRenduINF2990()->getEnfant(0)->obtenirNombreEnfants(); j++)
+		{
+			if (
+				FacadeModele::obtenirInstance()->obtenirArbreRenduINF2990()->getEnfant(0)->chercher(j)->estSelectionne()
+				){
+				objet = FacadeModele::obtenirInstance()->obtenirArbreRenduINF2990()->getEnfant(0)->chercher(j);
+				angle = objet->obtenirRotation().z;
+			}
+		}
+
+		return  -angle;
+	}
+
+	///////////////////////////////////////////////////////////////////////////////
+	///
+	/// @fn __declspec(dllexport)  int getScale(void)
+	/// @return la taille de l'objet
+	///
+	/// @remark : 
+	///
+	///////////////////////////////////////////////////////////////////////////////
+	__declspec(dllexport) double getScale(void)
+	{
+		double scale;
+		for (int j = 0; j < FacadeModele::obtenirInstance()->obtenirArbreRenduINF2990()->getEnfant(0)->obtenirNombreEnfants(); j++)
+		{
+			if (
+				FacadeModele::obtenirInstance()->obtenirArbreRenduINF2990()->getEnfant(0)->chercher(j)->estSelectionne()
+				){
+				objet = FacadeModele::obtenirInstance()->obtenirArbreRenduINF2990()->getEnfant(0)->chercher(j);
+				scale = objet->obtenirAgrandissement().y;
+			}
+		}
+
+		return  scale;
+	}
+
 }

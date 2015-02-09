@@ -90,7 +90,7 @@ void NoeudAbstraitTest::testPositionRelative()
 void NoeudAbstraitTest::testType()
 {
 	CPPUNIT_ASSERT(noeud->obtenirType() == ArbreRenduINF2990::NOM_VIDE);
-	CPPUNIT_ASSERT(noeud->obtenirType() != ArbreRenduINF2990::NOM_ARAIGNEE);
+	CPPUNIT_ASSERT(noeud->obtenirType() != ArbreRenduINF2990::NOM_TABLE);
 }
 
 ////////////////////////////////////////////////////////////////////////

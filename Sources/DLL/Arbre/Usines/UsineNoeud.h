@@ -4,9 +4,13 @@
 /// @date 2007-01-28
 /// @version 1.0
 ///
-/// @addtogroup inf2990 INF2990
-/// @{
+/// @ingroup Usine
 ///////////////////////////////////////////////////////////////////////////////
+
+/** @defgroup Usine Usine
+*	@ingroup Arbre
+*/
+
 #ifndef __ARBRE_USINES_USINENOEUD_H__
 #define __ARBRE_USINES_USINENOEUD_H__
 
@@ -25,6 +29,7 @@ class NoeudAbstrait;
 ///
 /// @author Martin Bisson
 /// @date 2007-01-28
+/// @ingroup Usine
 ///////////////////////////////////////////////////////////////////////////
 class UsineNoeud
 {
@@ -59,9 +64,6 @@ private:
    std::string nom_;
 };
 
-
-
-
 ////////////////////////////////////////////////////////////////////////
 ///
 /// @fn inline const std::string& UsineNoeud::obtenirNom() const
@@ -77,10 +79,4 @@ inline const std::string& UsineNoeud::obtenirNom() const
    return nom_;
 }
 
-
 #endif // __ARBRE_USINES_USINENOEUD_H__
-
-
-///////////////////////////////////////////////////////////////////////////////
-/// @}
-///////////////////////////////////////////////////////////////////////////////
