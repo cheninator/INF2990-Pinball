@@ -846,12 +846,16 @@ namespace InterfaceGraphique
             }           
             if (e.Button == MouseButtons.Left)
             {
-                Point destination = panel_GL.PointToClient(MousePosition);
-                if (etat is EtatZoom)
-                {
-                    FonctionsNatives.zoomElastique(origin.X, origin.Y, destination.X, destination.Y);
-                }
-                else if (etat is EtatSelectionMultiple)
+               Point destination = panel_GL.PointToClient(MousePosition);
+               if (etat is EtatZoom)
+               {
+                  FonctionsNatives.zoomOutElastique(origin.X, origin.Y, destination.X, destination.Y);
+               }
+               else if (etat is EtatSelectionMultiple)
+               {
+                   etat = new EtatSelection(this);
+               }
+                if(clickValide(origin,destination))
                 {
                     etat.traiterSouris(e);
                     etat = new EtatSelection(this);
@@ -1194,7 +1198,10 @@ namespace InterfaceGraphique
         public static extern void tournerSelectionSouris(int x1, int y1, int x2, int y2);
 
         [DllImport(@"Noyau.dll", CallingConvention = CallingConvention.Cdecl)]
-        public static extern void zoomElastique(int xCoin1, int yCoin1, int xCoin2, int yCoin2);
+        public static extern void zoomInElastique(int xCoin1, int yCoin1, int xCoin2, int yCoin2);
+
+        [DllImport(@"Noyau.dll", CallingConvention = CallingConvention.Cdecl)]
+        public static extern void zoomOutElastique(int xCoin1, int yCoin1, int xCoin2, int yCoin2);
 
         [DllImport(@"Noyau.dll", CallingConvention = CallingConvention.Cdecl)]
         public static extern void agrandirSelection(int x1, int y1, int x2, int y2);

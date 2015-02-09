@@ -49,12 +49,14 @@ extern "C" {
 	__declspec(dllexport) void orbite(double phi, double theta);
 	__declspec(dllexport) void deplacerSelection(int x1, int y1, int x2, int y2);
 	__declspec(dllexport) void tournerSelectionSouris(int x1, int y1, int x2, int y2);
-	__declspec(dllexport) void zoomElastique(int xCoin1, int yCoin1, int xCoin2, int yCoin2);
+	__declspec(dllexport) void zoomInElastique(int xCoin1, int yCoin1, int xCoin2, int yCoin2);
+	__declspec(dllexport) void zoomOutElastique(int xCoin1, int yCoin1, int xCoin2, int yCoin2);
 	__declspec(dllexport) float currentZoom(void);
 	__declspec(dllexport) void rectangleElastique(int x1, int y1, int x2, int y2);
 	__declspec(dllexport) int selectionMultiple(void);
 	__declspec(dllexport) bool verifierCliqueDansTable(int x, int y);
 	__declspec(dllexport) void dupliquerSelection(int i, int j);
+
 }
 
 #endif // __FACADE_INTERFACE_NATIVE_H__

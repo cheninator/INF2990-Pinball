@@ -60,7 +60,7 @@ namespace vue {
 		yMinFenetre_{ yMinFenetre },
 		yMaxFenetre_{ yMaxFenetre }
 	{
-		ajusterRapportAspect();
+		ajusterRapportAspect(DirectionZoom::IN_);
 	}
 
 
@@ -252,7 +252,7 @@ namespace vue {
 		yMinFenetre_ = (coin1.y < coin2.y ? coin1.y : coin2.y);
 		yMaxFenetre_ = (coin1.y > coin2.y ? coin1.y : coin2.y);
 		
-		ajusterRapportAspect();
+		ajusterRapportAspect(DirectionZoom::IN_);
 		centrerSurPoint(glm::dvec2(pointMilieuSelectionX, pointMilieuSelectionY));
 	}
 
@@ -272,9 +272,48 @@ namespace vue {
 	/// @return Aucune.
 	///
 	////////////////////////////////////////////////////////////////////////
-	void ProjectionOrtho::zoomerOut(const glm::ivec2& coin1, const glm::ivec2& coin2)
+	void ProjectionOrtho::zoomerOut(const glm::dvec2& coin1, const glm::dvec2& coin2)
 	{
-		// À IMPLANTER.
+		const double longueurFenetreActuelle = (xMaxFenetre_ - xMinFenetre_);
+		const double xGaucheCoin = (coin1.x < coin2.x ? coin1.x : coin2.x);
+		const double xDroiteCoin = (coin1.x > coin2.x ? coin1.x : coin2.x);
+		const double xRatioSelectionFenetreActuelle = (xDroiteCoin - xGaucheCoin) * 1.0 / longueurFenetreActuelle;
+		
+		std::cout << "xCoinGauche | xCoinDroite " << xGaucheCoin << " | " << xDroiteCoin << "\n \n";
+
+		std::cout << "xMin | xMax Fenetre: " << xMinFenetre_ << " | " << xMaxFenetre_ << "\n";
+		std::cout << "yMin | yMax Fenetre: " << yMinFenetre_ << " | " << yMaxFenetre_ << "\n \n";
+		/// Section pour X ///
+		double longueurFenetreSelection = abs(xDroiteCoin - xGaucheCoin);
+		double nouvelleLongueurX = longueurFenetreActuelle / xRatioSelectionFenetreActuelle;
+		double proportionRelativeCoinGauche = (xGaucheCoin - xMinFenetre_) / longueurFenetreActuelle;
+
+		// On place notre fenetre virtuelle a la longueur proportionnelle
+		double nouveauXMinFenetre = xMinFenetre_ - (proportionRelativeCoinGauche * nouvelleLongueurX);
+		double nouveauXMaxFenetre = xMinFenetre_ + (nouvelleLongueurX - (xMinFenetre_ - nouveauXMinFenetre));
+
+		xMinFenetre_ = nouveauXMinFenetre;
+		xMaxFenetre_ = nouveauXMaxFenetre;
+
+		///TODO(Emilio): Penser à faire une méthode afin de ne pas dupliquer le code
+		/// Section pour Y ///
+		const double hauteurFenetreActuelle = yMaxFenetre_ - yMinFenetre_;
+		const double yMinCoin = (coin1.y < coin2.y ? coin1.y : coin2.y);
+		const double yMaxCoin = (coin1.y > coin2.y ? coin1.y : coin2.y);
+		const double yRatioSelectionFenetreActuelle = (yMaxCoin - yMinCoin) * 1.0 / hauteurFenetreActuelle;
+		double nouvelleLongueurY = hauteurFenetreActuelle / yRatioSelectionFenetreActuelle;
+		double proportionRelativeCoinBas = (yMinCoin - yMinFenetre_) / hauteurFenetreActuelle;
+
+		double nouveauYMinFenetre = yMinFenetre_ - (proportionRelativeCoinBas * nouvelleLongueurY);
+		double nouveauYMaxFenetre = yMinFenetre_ + (nouvelleLongueurY - (yMinFenetre_ - nouveauYMinFenetre));;
+
+		yMinFenetre_ = nouveauYMinFenetre;
+		yMaxFenetre_ = nouveauYMaxFenetre;
+
+		std::cout << "xMin | xMax Fenetre: " << xMinFenetre_ << " | " << xMaxFenetre_ << "\n";
+		std::cout << "yMin | yMax Fenetre: " << yMinFenetre_ << " | " << yMaxFenetre_ << "\n \n";
+
+		ajusterRapportAspect(DirectionZoom::OUT_);
 	}
 
 
@@ -366,25 +405,24 @@ namespace vue {
 
 	////////////////////////////////////////////////////////////////////////
 	///
-	/// @fn void ProjectionOrtho::ajusterRapportAspect()
+	/// @fn void ProjectionOrtho::ajusterRapportAspect(DirectionZoom)
 	///
 	/// Permet d'ajuster les coordonnées de la fenêtre virtuelle en fonction
 	/// de la clôture de façon à ce que le rapport d'aspect soit respecté.
 	///
+	/// @param[in]	dir : Spécifie s'il s'agit d'un zoomIn ou d'un zoomOut
+	///
 	/// @return Aucune.
 	///
 	////////////////////////////////////////////////////////////////////////
-	void ProjectionOrtho::ajusterRapportAspect()
+	void ProjectionOrtho::ajusterRapportAspect(DirectionZoom dir)
 	{
-		// Déterminer quelle est la composante la plus large
 		double delta = 0.0;
-
-		double longueurVerticaleRequise = 0.0;
-		double longueurHorizontaleRequise = 0.0;
-
 		double rapportAspect = abs(xMaxCloture_ - xMinCloture_) / abs(yMaxCloture_ - yMinCloture_);
 		double rapportAspectVirtuel = (xMaxFenetre_ - xMinFenetre_) / (yMaxFenetre_ - yMinFenetre_);
 
+		std::cout << "------Avant Correction Rapport d'aspect Fenetre : " << rapportAspectVirtuel<< "\n \n";
+		
 		if (abs(rapportAspect - rapportAspectVirtuel) / rapportAspect < (0.0001 * rapportAspect))
 		{
 			std::cout << "\n Rapports aspects sont egaux : pas d'ajustation \n";
@@ -392,22 +430,69 @@ namespace vue {
 		}
 		if (rapportAspectVirtuel > 1.0)
 		{
-			longueurVerticaleRequise = abs(xMaxFenetre_ - xMinFenetre_) / rapportAspect;
-			delta = (longueurVerticaleRequise - abs(yMaxFenetre_ - yMinFenetre_)) / 2.0;
-
-			yMaxFenetre_ += delta;
-			yMinFenetre_ -= delta;
-			
+			if (dir == IN_)
+				ajusterRapportAspectX(rapportAspect);
+			else if (dir == OUT_)
+				ajusterRapportAspectY(rapportAspect);
 		}
 		else // if (rapportAspectVirtuel < 1.0)
 		{
-			longueurHorizontaleRequise = abs(yMaxFenetre_ - yMinFenetre_) * rapportAspect;
-			delta = (longueurHorizontaleRequise - abs(xMaxFenetre_ - xMinFenetre_)) / 2.0;
-
-			xMaxFenetre_ += delta;
-			xMinFenetre_ -= delta;
+			if (dir == IN_)
+				ajusterRapportAspectY(rapportAspect);
+			else if (dir == OUT_)
+				ajusterRapportAspectX(rapportAspect);
 		}
+	
+		std::cout << "\n Rapport d'aspect Virtuel : " << (xMaxFenetre_ - xMinFenetre_) / (yMaxFenetre_ - yMinFenetre_) << '\n';
+		std::cout << "Rapport d'aspect Cloture : " << rapportAspect << "\n \n";
+
 	}
+
+	////////////////////////////////////////////////////////////////////////
+	///
+	/// @fn void ProjectionOrtho::ajusterRapportAspectY(double rapportAspect)
+	///
+	/// Permet d'ajuster les coordonnées de la fenêtre virtuelle en fonction
+	/// du rapport d'aspect de la clotûre. Ceci est fait en augmentant la
+	/// vue verticalement.
+	///
+	/// @param[in]	rapportAspect : Valeur du rapport d'aspect de la clotûre
+	///
+	/// @return Aucune.
+	///
+	////////////////////////////////////////////////////////////////////////
+	void ProjectionOrtho::ajusterRapportAspectY(double rapportAspect)
+	{
+		double longueurVerticaleRequise = abs(xMaxFenetre_ - xMinFenetre_) / rapportAspect;
+		double delta = (longueurVerticaleRequise - abs(yMaxFenetre_ - yMinFenetre_)) / 2.0;
+		std::cout << "delta : " << delta;
+		yMaxFenetre_ += delta;
+		yMinFenetre_ -= delta;
+	}
+
+	////////////////////////////////////////////////////////////////////////
+	///
+	/// @fn void ProjectionOrtho::ajusterRapportAspectX(double rapportAspect)
+	///
+	/// Permet d'ajuster les coordonnées de la fenêtre virtuelle en fonction
+	/// du rapport d'aspect de la clotûre. Ceci est fait en augmentant la
+	/// vue horizontalement.
+	///
+	/// @param[in]	rapportAspect : Valeur du rapport d'aspect de la clotûre
+	///
+	/// @return Aucune.
+	///
+	////////////////////////////////////////////////////////////////////////
+	void ProjectionOrtho::ajusterRapportAspectX(double rapportAspect)
+	{
+		double longueurHorizontaleRequise = abs(yMaxFenetre_ - yMinFenetre_) * rapportAspect;
+		double delta = (longueurHorizontaleRequise - abs(xMaxFenetre_ - xMinFenetre_)) / 2.0;
+		std::cout << "delta : " << delta;
+		xMaxFenetre_ += delta;
+		xMinFenetre_ -= delta;
+	}
+
+
 
 }; // Fin du namespace vue.
 

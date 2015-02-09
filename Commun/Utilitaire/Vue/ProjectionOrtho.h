@@ -13,7 +13,7 @@
 
 #include "Projection.h"
 
-
+enum DirectionZoom { IN_ = 1, OUT_= -1 };
 namespace vue {
 
 
@@ -54,7 +54,7 @@ namespace vue {
 
 
 		/// Zoom out élastique, sur un rectangle.
-		void zoomerOut(const glm::ivec2& coin1, const glm::ivec2& coin2);
+		void zoomerOut(const glm::dvec2& coin1, const glm::dvec2& coin2);
 		/// Zoom in élatique, sur un rectangle.
 		void zoomerIn(const glm::ivec2& coin1, const glm::ivec2& coin2);
 
@@ -72,8 +72,14 @@ namespace vue {
 
 
 	private:
-		/// Ajuste la fenêtre virtuelle pour respecter le rapport d'aspect.
-		void ajusterRapportAspect();
+		/// Décide la direction de correction en fonction du zoom.
+		void ajusterRapportAspect(DirectionZoom dir);
+
+		/// Ajuste la fenêtre en modifiant la portée verticale
+		void ajusterRapportAspectY(double rapportAspect);
+
+		/// Ajuste la fenêtre en modifiant la portée horizontale
+		void ajusterRapportAspectX(double rapportAspect);
 
 		/// Borne inférieure en X de la fenêtre virtuelle.
 		double xMinFenetre_;
