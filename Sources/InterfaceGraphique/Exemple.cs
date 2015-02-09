@@ -952,6 +952,12 @@ namespace InterfaceGraphique
 
         }
 
+        public void dupliquerSelection()
+        {
+            currentP = panel_GL.PointToClient(MousePosition);
+            FonctionsNatives.dupliquerSelection(currentP.X, currentP.Y);
+        }
+
         public void creationObjet(MouseEventArgs e, bool twin = false)
         {
 
@@ -1162,6 +1168,9 @@ namespace InterfaceGraphique
 
         [DllImport(@"Noyau.dll", CallingConvention = CallingConvention.Cdecl)]
         public static extern double getScale();
+
+        [DllImport(@"Noyau.dll", CallingConvention = CallingConvention.Cdecl)]
+        public static extern void dupliquerSelection(int i, int j);
 
     }
 }

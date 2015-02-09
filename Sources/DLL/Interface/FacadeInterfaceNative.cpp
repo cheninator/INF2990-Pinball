@@ -781,9 +781,9 @@ extern "C"
 	/// @remark : Ça duplique les objets selectionnés
 	///
 	///////////////////////////////////////////////////////////////////////////////
-	__declspec(dllexport) void dupliquer()
+	__declspec(dllexport) void __cdecl dupliquerSelection(int i, int j)
 	{
-		FacadeModele::obtenirInstance()->obtenirArbreRenduINF2990();
+		FacadeModele::obtenirInstance()->dupliquerSelection(i, j);
 	}
 
 	///////////////////////////////////////////////////////////////////////////////

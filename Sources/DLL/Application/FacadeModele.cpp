@@ -637,8 +637,17 @@ bool FacadeModele::verifierCliqueDansTable(int x, int y)
 /// @return Aucune.
 ///
 ///////////////////////////////////////////////////////////////////////////////
-void FacadeModele::dupliquer()
+void FacadeModele::dupliquerSelection(int i, int j)
 {
 	glm::dvec3 positionDansLeMonde;
-	
+	obtenirInstance()->obtenirVue()->convertirClotureAVirtuelle(i, j, positionDansLeMonde);
+	positionDansLeMonde.z = 0.0;
+
+	// Visiter l'arbre pour trouver le centre de masse des noeuds selectionnés
+	//VisiteurCentreDeMasse visCM;
+	//arbre_->accepterVisiteur(&visCM);
+
+	// Visiter l'arbre et faire la duplication.
+	VisiteurDuplication visD(positionDansLeMonde);
+	arbre_->accepterVisiteur(&visD);
 }

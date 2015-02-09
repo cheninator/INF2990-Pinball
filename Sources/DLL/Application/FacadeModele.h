@@ -103,7 +103,7 @@ public:
    bool verifierCliqueDansTable(int x, int y);
 
    /// Pour la duplication d'objets selectionnés
-   void dupliquer();
+   void dupliquerSelection(int i, int j);
 
 private:
    /// Constructeur par défaut.
