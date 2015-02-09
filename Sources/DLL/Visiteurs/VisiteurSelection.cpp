@@ -3,8 +3,7 @@
 /// @author The Ballers
 /// @date   2015-02-01
 ///
-/// @addtogroup inf2990 INF2990
-/// @{
+/// @ingroup Visiteur
 ////////////////////////////////////////////////
 #include "VisiteurSelection.h"
 #include "../Arbre/ArbreRenduINF2990.h"
@@ -15,7 +14,7 @@
 ///
 /// @fn VisiteurSelection::VisiteurSelection()
 ///
-/// VIDE
+/// Constructeur par défaut (vide).
 ///
 /// @return Aucune (constructeur).
 ///
@@ -28,9 +27,9 @@ VisiteurSelection::VisiteurSelection()
 
 ////////////////////////////////////////////////////////////////////////
 ///
-/// @fn VisiteurDeplacement::VisiteurSelection(glm::dvec3 pointDansLeMonde)
+/// @fn VisiteurSelection::VisiteurSelection(glm::dvec3 pointDansLeMonde, int valeurStencil)
 ///
-/// Ne fait qu'initialiser les variables membres de la classe.
+/// Constructeur qui initialise les variables membres de la classe.
 ///
 /// @param[in] dev : Le vecteur de deplacement
 ///
@@ -62,9 +61,8 @@ VisiteurSelection::~VisiteurSelection()
 
 ////////////////////////////////////////////////////////////////////////
 ///
-/// @fn bool VisiteurSelection::traiter(ArbreRenduINF2990* noeud)
-///
-/// Cette fonction traite l'arbre de rendu pour visiter ses enfants
+/// @fn bool VisiteurSelection::traiter(ArbreRenduINF2990* arbre)
+/// @brief Cette fonction traite l'arbre de rendu pour visiter ses enfants
 ///
 /// Cette fonction retourne true pour dire que l'opération s'est
 /// fait correctement
@@ -84,9 +82,8 @@ bool VisiteurSelection::traiter(ArbreRenduINF2990* arbre)
 
 ////////////////////////////////////////////////////////////////////////
 ///
-/// @fn bool VisiteurSelection::traiter(ArbreRenduINF2990* noeud)
-///
-/// Cette fonction traite la table de l'arbre de rendu.
+/// @fn bool VisiteurSelection::traiter(NoeudTable* table)
+/// @brief Cette fonction traite la table de l'arbre de rendu.
 ///
 /// Cette fonction retourne true pour dire que l'opération s'est
 /// fait correctement
@@ -107,8 +104,7 @@ bool VisiteurSelection::traiter(NoeudTable* table)
 ////////////////////////////////////////////////////////////////////////
 ///
 /// @fn bool VisiteurSelection::traiter(NoeudAbstrait* noeud)
-///
-/// Cette fonction traite les enfants de l'arbre de rendu. 
+/// @brief Cette fonction traite les enfants de l'arbre de rendu. 
 ///
 /// Cette fonction retourne true pour dire que l'opération s'est
 /// fait correctement

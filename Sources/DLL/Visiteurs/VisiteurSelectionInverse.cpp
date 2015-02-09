@@ -3,8 +3,7 @@
 /// @author The Ballers
 /// @date   2015-02-01
 ///
-/// @addtogroup inf2990 INF2990
-/// @{
+/// @ingroup Visiteur
 ////////////////////////////////////////////////
 #include "VisiteurSelectionInverse.h"
 #include "../Arbre/ArbreRenduINF2990.h"
@@ -13,9 +12,9 @@
 
 ////////////////////////////////////////////////////////////////////////
 ///
-/// @fn VisiteurSelection::VisiteurSelection()
+/// @fn VisiteurSelectionInverse::VisiteurSelectionInverse()
 ///
-/// VIDE
+/// Constructeur par défaut (vide).
 ///
 /// @return Aucune (constructeur).
 ///
@@ -28,11 +27,12 @@ VisiteurSelectionInverse::VisiteurSelectionInverse()
 
 ////////////////////////////////////////////////////////////////////////
 ///
-/// @fn VisiteurDeplacement::VisiteurSelection(glm::dvec3 pointDansLeMonde)
+/// @fn VisiteurSelectionInverse::VisiteurSelectionInverse(glm::dvec3 pointDansLeMonde, int valeurStencil)
 ///
-/// Ne fait qu'initialiser les variables membres de la classe.
+/// Constructeur qui initialise les variables membres de la classe.
 ///
-/// @param[in] dev : Le vecteur de deplacement
+/// @param[in] pointDansLeMonde : Le point de l'espace
+/// @param[in] int : La valeur du stencil
 ///
 /// @return Aucune (constructeur).
 ///
@@ -47,7 +47,7 @@ VisiteurSelectionInverse::VisiteurSelectionInverse(glm::dvec3 pointDansLeMonde, 
 
 ////////////////////////////////////////////////////////////////////////
 ///
-/// @fn VisiteurSelection::~VisiteurSelection()
+/// @fn VisiteurSelectionInverse::~VisiteurSelectionInverse()
 ///
 /// Destructeur vide 
 ///
@@ -62,12 +62,13 @@ VisiteurSelectionInverse::~VisiteurSelectionInverse()
 
 ////////////////////////////////////////////////////////////////////////
 ///
-/// @fn bool VisiteurSelection::traiter(ArbreRenduINF2990* noeud)
-///
-/// Cette fonction traite l'arbre de rendu pour selectionner ses enfants
+/// @fn bool VisiteurSelectionInverse::traiter(ArbreRenduINF2990* arbre)
+/// @brief Cette fonction traite l'arbre de rendu pour selectionner ses enfants.
 ///
 /// Cette fonction retourne true pour dire que l'opération s'est
-/// fait correctement
+/// fait correctement.
+///
+/// @param[in] arbre : l'arbre de rendu à parcourir.
 ///
 /// @return Retourne toujours true
 ///
@@ -95,12 +96,13 @@ bool VisiteurSelectionInverse::traiter(ArbreRenduINF2990* arbre)
 
 ////////////////////////////////////////////////////////////////////////
 ///
-/// @fn bool VisiteurSelection::traiter(ArbreRenduINF2990* noeud)
-///
-/// Cette fonction traite la table de l'arbre de rendu.
+/// @fn bool VisiteurSelectionInverse::traiter(NoeudTable* table)
+/// @brief Cette fonction traite la table de l'arbre de rendu.
 ///
 /// Cette fonction retourne true pour dire que l'opération s'est
-/// fait correctement
+/// fait correctement.
+///
+/// @param[in] table : Le noeud de type Table à traiter.
 ///
 /// @return Retourne toujours true
 ///
@@ -119,13 +121,13 @@ bool VisiteurSelectionInverse::traiter(NoeudTable* table)
 
 ////////////////////////////////////////////////////////////////////////
 ///
-/// @fn bool VisiteurSelection::traiter(NoeudAbstrait* noeud)
-///
-/// Cette fonction traite les enfants de l'arbre de rendu. Si ses enfants ont des enfants
-/// ils seront aussi traités.
+/// @fn bool VisiteurSelectionInverse::traiter(NoeudAbstrait* noeud)
+/// @brief Cette fonction traite les enfants de l'arbre de rendu. Si ses enfants ont des enfants, ils seront aussi traités.
 ///
 /// Cette fonction retourne true pour dire que l'opération s'est
-/// fait correctement
+/// fait correctement.
+///
+/// @param[in] noeud : Le noeuf à traiter.
 ///
 /// @return Retourne toujours true
 ///

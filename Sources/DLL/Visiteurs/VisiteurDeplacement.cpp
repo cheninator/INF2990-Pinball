@@ -3,8 +3,7 @@
 /// @author Yonni Chen
 /// @date   2015-02-01
 ///
-/// @addtogroup inf2990 INF2990
-/// @{
+/// @ingroup Visiteur
 ////////////////////////////////////////////////
 #include "VisiteurDeplacement.h"
 #include "../Arbre/ArbreRenduINF2990.h"
@@ -13,7 +12,7 @@
 ///
 /// @fn VisiteurDeplacement::VisiteurDeplacement()
 ///
-/// VIDE
+/// Constructeur par défaut (vide).
 ///
 /// @return Aucune (constructeur).
 ///
@@ -28,7 +27,7 @@ VisiteurDeplacement::VisiteurDeplacement()
 ///
 /// @fn VisiteurDeplacement::VisiteurDeplacement(glm::dvec3 dep)
 ///
-/// Ne fait qu'initialiser les variables membres de la classe.
+/// Constructeur qui initialise les variables membres de la classe.
 ///
 /// @param[in] dev : Le vecteur de deplacement
 ///
@@ -59,8 +58,7 @@ VisiteurDeplacement::~VisiteurDeplacement()
 ////////////////////////////////////////////////////////////////////////
 ///
 /// @fn bool VisiteurDeplacement::traiter(ArbreRenduINF2990* noeud)
-///
-/// Cette fonction traite l'arbre de rendu pour deplacer ses enfants
+/// @brief Cette fonction traite l'arbre de rendu pour deplacer ses enfants
 /// selectionnés
 ///
 /// Cette fonction retourne true pour dire que l'opération s'est

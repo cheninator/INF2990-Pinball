@@ -3,8 +3,7 @@
 /// @author Yonni Chen
 /// @date   2015-02-01
 ///
-/// @addtogroup inf2990 INF2990
-/// @{
+/// @ingroup Visiteur
 ////////////////////////////////////////////////
 
 #include "VisiteurXML.h"
@@ -15,9 +14,10 @@
 ///
 /// @fn VisiteurXML::VisiteurXML(std::string nomFichier)
 ///
-/// Ne fait qu'initialiser les variables membres de la classe.
+/// Constructeur qui initialise les variables membres de la classe.
 ///
 /// @param[in] nomFichier : Le nom de sauvegarde du fichier
+/// @param[in] proprietes : Les prorietes de la partie
 ///
 /// @return Aucune (constructeur).
 ///
@@ -35,7 +35,7 @@ VisiteurXML::VisiteurXML(std::string nom, int proprietes[])
 ///
 /// @fn VisiteurXML::~VisiteurXML()
 ///
-/// Destructeur vide 
+/// Destructeur vide .
 ///
 /// @return Aucune (destructeur).
 ///
@@ -54,7 +54,7 @@ VisiteurXML::~VisiteurXML()
 /// dans un fichier XML.
 ///
 /// Cette fonction retourne true pour dire que l'opération s'est
-/// fait correctement. Ou false si on ne permet pas la sauvegarde
+/// fait correctement, ou false si on ne permet pas la sauvegarde
 ///
 /// @return Retourne true ou false
 ///
@@ -115,7 +115,10 @@ bool VisiteurXML::traiter(ArbreRenduINF2990* arbre)
 /// ils seront aussi traités.
 ///
 /// Cette fonction retourne true pour dire que l'opération s'est
-/// fait correctement
+/// fait correctement.
+///
+/// @param[in] noeud : Le noeud à traiter
+/// @param[in] parant : Le parent
 ///
 /// @return Retourne toujours true
 ///

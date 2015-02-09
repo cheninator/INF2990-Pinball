@@ -3,8 +3,7 @@
 /// @author The Ballers
 /// @date   2015-02-01
 ///
-/// @addtogroup inf2990 INF2990
-/// @{
+/// @ingroup Visiteur
 ////////////////////////////////////////////////
 #include "VisiteurSelectionMultiple.h"
 #include "../Arbre/ArbreRenduINF2990.h"
@@ -16,7 +15,7 @@
 ///
 /// @fn VisiteurSelection::VisiteurSelection()
 ///
-/// VIDE
+/// Constructeur par défaut (vide).
 ///
 /// @return Aucune (constructeur).
 ///
@@ -29,11 +28,12 @@ VisiteurSelectionMultiple::VisiteurSelectionMultiple()
 
 ////////////////////////////////////////////////////////////////////////
 ///
-/// @fn VisiteurDeplacement::VisiteurSelection(glm::dvec3 pointDansLeMonde)
+/// @fn VisiteurSelectionMultiple::VisiteurSelectionMultiple(glm::dvec3 selectionBasGauche, glm::dvec3 selectionHautDroit)
 ///
-/// Ne fait qu'initialiser les variables membres de la classe.
+/// Constructeur qui initialise les variables membres de la classe.
 ///
-/// @param[in] dev : Le vecteur de deplacement
+/// @param[in] selectionBasGauche : Le vecteur de sélection
+/// @param[in] selectionHautDroit : Le vecteur de sélection
 ///
 /// @return Aucune (constructeur).
 ///
@@ -63,9 +63,8 @@ VisiteurSelectionMultiple::~VisiteurSelectionMultiple()
 
 ////////////////////////////////////////////////////////////////////////
 ///
-/// @fn bool VisiteurSelection::traiter(ArbreRenduINF2990* noeud)
-///
-/// Cette fonction traite l'arbre de rendu pour selectionner ses enfants
+/// @fn bool VisiteurSelectionMultiple::traiter(ArbreRenduINF2990* arbre)
+/// @brief Cette fonction traite l'arbre de rendu pour selectionner ses enfants
 ///
 /// Cette fonction retourne true pour dire que l'opération s'est
 /// fait correctement
@@ -85,6 +84,17 @@ bool VisiteurSelectionMultiple::traiter(ArbreRenduINF2990* arbre)
 	return true;
 }
 
+////////////////////////////////////////////////////////////////////////
+///
+/// @fn bool VisiteurSelectionMultiple::traiter(NoeudTable* table)
+/// @brief Cette fonction traite l'arbre de rendu pour selectionner ses enfants
+///
+/// Cette fonction retourne true pour dire que l'opération s'est
+/// fait correctement
+///
+/// @return Retourne toujours true
+///
+////////////////////////////////////////////////////////////////////////
 bool VisiteurSelectionMultiple::traiter(NoeudTable* table)
 {;
 	// Traiter les enfants selectionnés de la table
@@ -99,10 +109,8 @@ bool VisiteurSelectionMultiple::traiter(NoeudTable* table)
 
 ////////////////////////////////////////////////////////////////////////
 ///
-/// @fn bool VisiteurSelection::traiter(NoeudAbstrait* noeud)
-///
-/// Cette fonction traite les enfants de l'arbre de rendu. Si ses enfants ont des enfants
-/// ils seront aussi traités.
+/// @fn bool VisiteurSelectionMultiple::traiter(NoeudAbstrait* noeud)
+/// @brief Cette fonction traite les enfants de l'arbre de rendu. Si ses enfants ont des enfants, ils seront aussi traités.
 ///
 /// Cette fonction retourne true pour dire que l'opération s'est
 /// fait correctement

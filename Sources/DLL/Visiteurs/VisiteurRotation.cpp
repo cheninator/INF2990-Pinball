@@ -3,8 +3,7 @@
 /// @author Yonni Chen
 /// @date   2015-02-01
 ///
-/// @addtogroup inf2990 INF2990
-/// @{
+/// @ingroup Visiteur
 ////////////////////////////////////////////////
 
 #include "VisiteurRotation.h"
@@ -15,7 +14,7 @@
 ///
 /// @fn VisiteurRotation::VisiteurRotation()
 ///
-/// VIDE
+/// Constructeur par défaut (vide).
 ///
 /// @return Aucune (constructeur).
 ///
@@ -28,9 +27,9 @@ VisiteurRotation::VisiteurRotation()
 
 ////////////////////////////////////////////////////////////////////////
 ///
-/// @fn VisiteurRotation::VisiteurRotation(glm::dvec3 dep)
+/// @fn VisiteurRotation::VisiteurRotation(glm::dvec3 angles)
 ///
-/// Ne fait qu'initialiser les variables membres de la classe.
+/// Constructeur qui initialise les variables membres de la classe.
 ///
 /// @param[in] dev : Le vecteur de rotation
 ///

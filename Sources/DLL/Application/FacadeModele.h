@@ -9,7 +9,7 @@
 
 /**
 *  @defgroup INF2990 INF2990
-*
+* Painball
 */
 
 /**

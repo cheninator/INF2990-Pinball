@@ -4,8 +4,7 @@
 /// @date 2015-02-01
 /// @version 1.0
 ///
-/// @addtogroup inf2990 INF2990
-/// @{
+/// @ingroup Visiteur
 ///////////////////////////////////////////////////////////////////////////////
 #ifndef __VISITEURS_VISITEURDUPLICATION_H__
 #define __VISITEURS_VISITEURDUPLICATION_H__
@@ -19,40 +18,41 @@
 /// @brief Classe pour selectionner les objets de l'arbre de rendu
 ///
 ///        Instancier cette classe avec en paramètre le point cliqué
-///		   Ensuite, appelez la méthode accepterVisiteur() de l'arbre de 
+///		   Ensuite, appeler la méthode accepterVisiteur() de l'arbre de 
 ///		   rendu et lui fournir CE visiteur en paramètre
 ///
 /// @author The Ballers
 /// @date 2015-02-02
+/// @ingroup Visiteur
 ///////////////////////////////////////////////////////////////////////////
 class VisiteurDuplication : public VisiteurAbstrait
 {
 public:
 
-	// Constructeur par paramètre
+	/// Constructeur par paramètre
 	VisiteurDuplication(glm::dvec3 pointDansLeMonde);
 
-	// Destructeur
+	/// Destructeur
 	~VisiteurDuplication();
 
-	// Traiter une opération sur l'arbre de rendu et ses enfants
+	/// Traiter une opération sur l'arbre de rendu et ses enfants
 	virtual bool traiter(ArbreRenduINF2990* arbre);
 	virtual bool traiter(NoeudAbstrait* noeud);
 	virtual bool traiter(NoeudTable* table);
 
 private:
 
-	// Ne touchez pas au constructeur par défaut
+	/// Constructeur par défaut
 	VisiteurDuplication();
 
-	// Point où il y a eu le clic de la souris
-	glm::dvec3 pointDansLeMonde_;
+	glm::dvec3 pointDansLeMonde_; ///< Point où le clic de la souris a eu lieu
 
-	// Contient les copies des objets selectionnés
-	std::vector<NoeudAbstrait*> copies_;
+	std::vector<NoeudAbstrait*> copies_; ///< Contient les copies des objets selectionnés
 
-	// Pour le cas ou il y a eu selection multiple
-	double minX, maxX, minY, maxY;
+	double minX; ///< Pour le cas ou il y a eu selection multiple
+	double maxX; ///< Pour le cas ou il y a eu selection multiple
+	double minY; ///< Pour le cas ou il y a eu selection multiple
+	double maxY; ///< Pour le cas ou il y a eu selection multiple
 
 };
 

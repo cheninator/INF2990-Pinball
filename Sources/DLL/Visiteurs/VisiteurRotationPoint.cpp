@@ -3,8 +3,7 @@
 /// @author Yonni Chen
 /// @date   2015-02-01
 ///
-/// @addtogroup inf2990 INF2990
-/// @{
+/// @ingroup Visiteur
 ////////////////////////////////////////////////
 
 #include "VisiteurRotationPoint.h"
@@ -30,9 +29,9 @@ VisiteurRotationPoint::VisiteurRotationPoint()
 
 ////////////////////////////////////////////////////////////////////////
 ///
-/// @fn VisiteurRotationPoint::VisiteurRotationPoint(glm::dvec3 dep)
+/// @fn VisiteurRotationPoint::VisiteurRotationPoint(glm::dvec3 angles, glm::dvec3 centreRotation)
 ///
-/// Ne fait qu'initialiser les variables membres de la classe.
+/// Constructeur qui initialise les variables membres de la classe.
 ///
 /// @param[in] dev : Le vecteur des rotation
 ///
@@ -68,10 +67,10 @@ VisiteurRotationPoint::~VisiteurRotationPoint()
 /// @fn bool VisiteurRotationPoint::traiter(ArbreRenduINF2990* noeud)
 ///
 /// Cette fonction traite l'arbre de rendu pour effectuer une rotation sur ses enfants
-/// selectionnés
+/// selectionnés.
 ///
 /// Cette fonction retourne true pour dire que l'opération s'est
-/// fait correctement
+/// fait correctement.
 ///
 /// @return Retourne toujours true
 ///
@@ -92,10 +91,10 @@ bool VisiteurRotationPoint::traiter(ArbreRenduINF2990* noeud)
 /// @fn bool VisiteurRotationPoint::traiter(NoeudTable* noeud)
 ///
 /// Cette fonction traite la table pour effectuer une rotation sur ses enfants
-/// selectionnés
+/// selectionnés.
 ///
 /// Cette fonction retourne true pour dire que l'opération s'est
-/// fait correctement
+/// fait correctement.
 ///
 /// @return Retourne toujours true
 ///
@@ -118,7 +117,7 @@ bool VisiteurRotationPoint::traiter(NoeudTable* noeud)
 /// ils seront aussi traités.
 ///
 /// Cette fonction retourne true pour dire que l'opération s'est
-/// fait correctement
+/// fait correctement.
 ///
 /// @return Retourne toujours true
 ///

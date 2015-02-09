@@ -3,8 +3,7 @@
 /// @author INF2990
 /// @date   2014-08-16
 ///
-/// @addtogroup inf2990 INF2990
-/// @{
+/// @ingroup Interface
 ////////////////////////////////////////////////
 #include "FacadeInterfaceNative.h"
 #include "FacadeModele.h"
@@ -27,15 +26,17 @@ extern "C"
 	// TO DO : SUPPRIMER CETTE VARIABLE QUAND PLUS NECESSAIRE
 	static NoeudAbstrait* objet = new NoeudAbstrait();
 	static NoeudAbstrait* objet_temp = new NoeudAbstrait();
-
-	static double facteurDeTransition; // DONT ASK WHY
-	static double theta = 0;
-	static double phi = 0; 
+	
+	// DON'T ASK WHY
+	static double facteurDeTransition; ///< Facteur de transition
+	
+	static double theta = 0; ///< Angle Theta
+	static double phi = 0;  /// < angle Phi
 
 
 	////////////////////////////////////////////////////////////////////////
 	///
-	/// static void calculerTransition(void)
+	/// @fn static void calculerTransition(void)
 	///
 	/// Cette fonction interne permet d'assigner un facteur de
 	/// transition (qui est une variable static interne a la librairie
@@ -61,7 +62,7 @@ extern "C"
 
 	////////////////////////////////////////////////////////////////////////
 	///
-	/// __declspec(dllexport) float __cdecl currentZoom(void)
+	/// @fn __declspec(dllexport) float __cdecl currentZoom(void)
 	///
 	/// Cette fonction interne permet d'assigner un facteur de
 	/// transition (qui est une variable static interne a la librairie
@@ -80,7 +81,7 @@ extern "C"
 
 	////////////////////////////////////////////////////////////////////////
 	///
-	/// __declspec(dllexport) void __cdecl trouverObjetSousPointClique(int i, int j)
+	/// @fn __declspec(dllexport) void __cdecl trouverObjetSousPointClique(int i, int j)
 	///
 	/// Appel la fonction trouverObjetSousPointClique
 	///
@@ -98,7 +99,7 @@ extern "C"
 
 	////////////////////////////////////////////////////////////////////////
 	///
-	/// __declspec(dllexport) void __cdecl initialiserOpenGL(int* handle)
+	/// @fn __declspec(dllexport) void __cdecl initialiserOpenGL(int* handle)
 	///
 	/// Cette fonction initialise un contexte OpenGL dans la fenêtre
 	/// identifiée par le handle passé en paramètre.  Cette fonction doit
@@ -163,7 +164,7 @@ extern "C"
 
 	////////////////////////////////////////////////////////////////////////
 	///
-	/// __declspec(dllexport) void __cdecl redimensionnerFenetre(int largeur, int hauteur)
+	/// @fn __declspec(dllexport) void __cdecl redimensionnerFenetre(int largeur, int hauteur)
 	///
 	/// Cette fonction doit être appelée lorsque la fenêtre est
 	/// redimensionnée afin d'ajuster les paramètres de la machine à états

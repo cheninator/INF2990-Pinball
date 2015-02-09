@@ -4,8 +4,7 @@
 /// @date 2015-02-01
 /// @version 1.0
 ///
-/// @addtogroup inf2990 INF2990
-/// @{
+/// @ingroup Visiteur
 ///////////////////////////////////////////////////////////////////////////////
 #ifndef __VISITEURS_VISITEURDEPLACEMENT_H__
 #define __VISITEURS_VISITEURDEPLACEMENT_H__
@@ -18,39 +17,40 @@
 /// @brief Classe pour deplacer les objets selectionnés de l'arbre de rendu
 ///
 ///        Instancier cette classe avec en paramètre le vecteur de 
-///		   déplacement. Ensuite, appelez la méthode accepterVisiteur()
+///		   déplacement. Ensuite, appeler la méthode accepterVisiteur()
 ///		   de l'arbre de rendu et lui fournir CE visiteur en paramètre
 ///
 /// @author Yonni Chen
 /// @date 2015-02-02
+/// @ingroup Visiteur
 ///////////////////////////////////////////////////////////////////////////
 class VisiteurDeplacement : public VisiteurAbstrait
 {
 public:
 
-	// Constructeur par paramètre : spécifiez un vecteur de déplacement
+	/// Constructeur par paramètre : spécifiez un vecteur de déplacement
 	VisiteurDeplacement(glm::dvec3 dep);
 
-	// Destructeur
+	/// Destructeur
 	~VisiteurDeplacement();
 
-	// Méthode d'acces
+	/// Méthode d'acces
 	glm::dvec3 getDeplacement() { return deplacement_; };
 
-	// Méthode de modifications
+	/// Méthode de modifications
 	void setDeplacement(glm::dvec3 dep) { deplacement_ = dep; };
 
-	// Traiter une opération sur l'arbre de rendu et ses enfants
+	/// Traiter une opération sur l'arbre de rendu et ses enfants
 	virtual bool traiter(ArbreRenduINF2990* arbre);
+	/// Traiter une opération sur l'arbre de rendu et ses enfants
 	virtual bool traiter(NoeudAbstrait* noeud);
 
 private:
 
-	// Ne touchez pas au constructeur de déplacement
+	/// Constructeur par défaut
 	VisiteurDeplacement();
 
-	// Vecteur de déplacement
-	glm::dvec3 deplacement_;
+	glm::dvec3 deplacement_; ///< Vecteur de déplacement
 
 };
 

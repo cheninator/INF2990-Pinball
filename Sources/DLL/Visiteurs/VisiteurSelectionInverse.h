@@ -1,11 +1,10 @@
 ///////////////////////////////////////////////////////////////////////////////
-/// @file VisiteurSelection.h
+/// @file VisiteurSelectionInverse.h
 /// @author The Ballers
 /// @date 2015-02-01
 /// @version 1.0
 ///
-/// @addtogroup inf2990 INF2990
-/// @{
+/// @ingroup Visiteur
 ///////////////////////////////////////////////////////////////////////////////
 #ifndef __VISITEURS_VISITEURSELECTIONINVERSE_H__
 #define __VISITEURS_VISITEURSELECTIONINVERSE_H__
@@ -16,43 +15,55 @@
 #include "glm\glm.hpp"
 
 ///////////////////////////////////////////////////////////////////////////
-/// @class VisiteurSelection
+/// @class VisiteurSelectionInverse
 /// @brief Classe pour selectionner les objets de l'arbre de rendu
 ///
 ///        Instancier cette classe avec en paramètre le point cliqué
-///		   Ensuite, appelez la méthode accepterVisiteur() de l'arbre de 
+///		   Ensuite, appeler la méthode accepterVisiteur() de l'arbre de 
 ///		   rendu et lui fournir CE visiteur en paramètre
 ///
 /// @author Yonni Chen
 /// @date 2015-02-02
+/// @ingroup Visiteur
 ///////////////////////////////////////////////////////////////////////////
 class VisiteurSelectionInverse : public VisiteurAbstrait
 {
 public:
 
-	// Constructeur par défaut : aucun déplacement
+	/// Constructeur par défaut : aucun déplacement
 	VisiteurSelectionInverse(glm::dvec3 pointDansLeMonde, int valeurStencil);
 
-	// Destructeur
+	/// Destructeur
 	~VisiteurSelectionInverse();
 
-	// Traiter une opération sur l'arbre de rendu et ses enfants
+	/// Traiter une opération sur l'arbre de rendu et ses enfants
 	virtual bool traiter(ArbreRenduINF2990* arbre);
+	/// Traiter une opération sur l'arbre de rendu et ses enfants
 	virtual bool traiter(NoeudAbstrait* noeud);
+	/// Traiter une opération sur l'arbre de rendu et ses enfants
 	virtual bool traiter(NoeudTable* table);
 
-	int obtenirNbObjetsSelectionne(){ return nbObjetsSelectionne_; }
+	//////////////////////////////////////////////////////////////////////////
+	///
+	/// @fn int obtenirNbObjetsSelectionne()
+	///
+	/// Méthode get pour l'attribut nbObjetsSelectionne_.
+	///
+	/// @return Nombre d'objets sélectionnés (attribut).
+	///
+	//////////////////////////////////////////////////////////////////////////
+	int obtenirNbObjetsSelectionne() 
+	{ return nbObjetsSelectionne_; }
 
 private:
 
-	// Ne touchez pas au constructeur par défaut
+	/// Constructeur par défaut
 	VisiteurSelectionInverse();
 
-	// Point cliqué
-	glm::dvec3 pointDansLeMonde_;
+	glm::dvec3 pointDansLeMonde_; ///< Point cliqué
 
-	int valeurStencil_;
-	int nbObjetsSelectionne_;
+	int valeurStencil_; ///< Valeur du stencil
+	int nbObjetsSelectionne_; ///< Nombre d'objets sélectionnés
 };
 
 

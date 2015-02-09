@@ -3,9 +3,13 @@
 /// @author INF2990
 /// @date   2014-08-16
 ///
-/// @addtogroup inf2990 INF2990
-/// @{
+/// @ingroup Interface
 ////////////////////////////////////////////////
+
+/** @defgroup Interface Interface
+*	@ingroup Noyau
+*/
+
 #ifndef __FACADE_INTERFACE_NATIVE_H__
 #define __FACADE_INTERFACE_NATIVE_H__
 

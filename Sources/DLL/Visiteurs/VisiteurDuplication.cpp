@@ -3,8 +3,7 @@
 /// @author The Ballers
 /// @date   2015-02-01
 ///
-/// @addtogroup inf2990 INF2990
-/// @{
+/// @ingroup Visiteur
 ////////////////////////////////////////////////
 #include "VisiteurDuplication.h"
 #include "../Arbre/ArbreRenduINF2990.h"
@@ -15,7 +14,7 @@
 ///
 /// @fn VisiteurDuplication::VisiteurDuplication()
 ///
-/// VIDE
+/// Constructeur par défaut (vide).
 ///
 /// @return Aucune (constructeur).
 ///
@@ -30,7 +29,7 @@ VisiteurDuplication::VisiteurDuplication()
 ///
 /// @fn VisiteurDuplication::VisiteurDuplication(glm::dvec3 pointDansLeMonde)
 ///
-/// Ne fait qu'initialiser les variables membres de la classe.
+/// Constructeur qui initialise les variables membres de la classe.
 ///
 /// @param[in] pointDansLeMonde : Le point ou il y a eu le clic
 ///
@@ -65,9 +64,8 @@ VisiteurDuplication::~VisiteurDuplication()
 
 ////////////////////////////////////////////////////////////////////////
 ///
-/// @fn bool VisiteurDuplication::traiter(ArbreRenduINF2990* noeud)
-///
-/// Cette fonction traite l'arbre de rendu pour dupliquer ses enfants selectionnés
+/// @fn bool VisiteurDuplication::traiter(ArbreRenduINF2990* arbre)
+/// @brief Cette fonction traite l'arbre de rendu pour dupliquer ses enfants selectionnés
 ///
 /// Cette fonction retourne true pour dire que l'opération s'est
 /// fait correctement
@@ -91,8 +89,7 @@ bool VisiteurDuplication::traiter(ArbreRenduINF2990* arbre)
 ////////////////////////////////////////////////////////////////////////
 ///
 /// @fn bool VisiteurDuplication::traiter(NoeudTable* table)
-///
-/// Cette fonction traite la table de l'arbre de rendu.
+/// @brief Cette fonction traite la table de l'arbre de rendu.
 ///
 /// Cette fonction retourne true pour dire que l'opération s'est
 /// fait correctement

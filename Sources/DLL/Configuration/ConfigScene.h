@@ -4,9 +4,13 @@
 /// @date 2007-01-10
 /// @version 1.0
 ///
-/// @addtogroup inf2990 INF2990
-/// @{
+/// @ingroup Configuration
 //////////////////////////////////////////////////////////////////////////////
+
+/** @defgroup Configuration Configuration
+*	@ingroup Noyau
+*/
+
 #ifndef __CONFIGURATION_CONFIGSCENE_H__
 #define __CONFIGURATION_CONFIGSCENE_H__
 
@@ -21,6 +25,7 @@
 ///
 /// @author Jean-François Pérusse
 /// @date 2007-01-10
+/// @ingroup Configuration
 ///////////////////////////////////////////////////////////////////////////
 class ConfigScene : public Singleton<ConfigScene>
 {
@@ -40,10 +45,4 @@ public:
 
 };
 
-
 #endif // __CONFIGURATION_CONFIGSCENE_H__
-
-
-///////////////////////////////////////////////////////////////////////////////
-/// @}
-///////////////////////////////////////////////////////////////////////////////

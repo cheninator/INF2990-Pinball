@@ -3,8 +3,7 @@
 /// @author The Ballers
 /// @date   2015-02-01
 ///
-/// @addtogroup inf2990 INF2990
-/// @{
+/// @ingroup Visiteur
 ////////////////////////////////////////////////
 #include "VisiteurDeselectionnerTout.h"
 #include "../Arbre/ArbreRenduINF2990.h"
@@ -15,7 +14,7 @@
 ///
 /// @fn VisiteurDeselectionnerTout::VisiteurDeselectionnerTout()
 ///
-/// VIDE
+/// Constructeur par défaut (vide).
 ///
 /// @return Aucune (constructeur).
 ///
@@ -42,9 +41,8 @@ VisiteurDeselectionnerTout::~VisiteurDeselectionnerTout()
 
 ////////////////////////////////////////////////////////////////////////
 ///
-/// @fn bool VisiteurDeselectionnerTout::traiter(ArbreRenduINF2990* noeud)
-///
-/// Cette fonction traite l'arbre de rendu pour visiter ses enfants
+/// @fn bool VisiteurDeselectionnerTout::traiter(ArbreRenduINF2990* arbre)
+/// @brief Cette fonction traite l'arbre de rendu pour visiter ses enfants
 ///
 /// Cette fonction retourne true pour dire que l'opération s'est
 /// fait correctement
@@ -66,9 +64,8 @@ bool VisiteurDeselectionnerTout::traiter(ArbreRenduINF2990* arbre)
 
 ////////////////////////////////////////////////////////////////////////
 ///
-/// @fn bool VisiteurDeselectionnerTout::traiter(NoeudTable* noeud)
-///
-/// Cette fonction traite la table de l'arbre de rendu.
+/// @fn bool VisiteurDeselectionnerTout::traiter(NoeudTable* table)
+/// @brief Cette fonction traite la table de l'arbre de rendu.
 ///
 /// Cette fonction retourne true pour dire que l'opération s'est
 /// fait correctement

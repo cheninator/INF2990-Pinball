@@ -3,8 +3,7 @@
 /// @author Yonni Chen
 /// @date   2015-02-01
 ///
-/// @addtogroup inf2990 INF2990
-/// @{
+/// @ingroup Visiteur
 ////////////////////////////////////////////////
 
 #include "VisiteurAgrandissement.h"
@@ -17,7 +16,7 @@
 ///
 /// @fn VisiteurAgrandissement::VisiteurAgrandissement()
 ///
-/// VIDE
+/// Constructeur par défaut (Vide).
 ///
 /// @return Aucune (constructeur).
 ///
@@ -32,7 +31,7 @@ VisiteurAgrandissement::VisiteurAgrandissement()
 ///
 /// @fn VisiteurAgrandissement::VisiteurAgrandissement(glm::dvec3 homothethie)
 ///
-/// Ne fait qu'initialiser les variables membres de la classe.
+/// Constructeur qui initialise les variables membres de la classe.
 ///
 /// @param[in] homothethie : Le facteur d'agrandissement
 ///
@@ -62,7 +61,7 @@ VisiteurAgrandissement::~VisiteurAgrandissement()
 
 ////////////////////////////////////////////////////////////////////////
 ///
-/// @fn bool VisiteurAgrandissement::traiter(ArbreRenduINF2990* arbre)
+/// @fn bool VisiteurAgrandissement::traiter(ArbreRenduINF2990* noeud)
 ///
 /// Cette fonction traite l'arbre de rendu pour effectuer un agrandissement
 /// sur les objets selectionnés
@@ -83,7 +82,19 @@ bool VisiteurAgrandissement::traiter(ArbreRenduINF2990* noeud)
 	return true;
 }
 
-
+////////////////////////////////////////////////////////////////////////
+///
+/// @fn bool VisiteurAgrandissement::traiter(NoeudTable* noeud)
+///
+/// Cette fonction traite l'arbre de rendu pour effectuer un agrandissement
+/// sur un noeud.
+///
+/// Cette fonction retourne true si l'opération s'est
+/// fait correctement.
+///
+/// @return Retourne toujours true
+///
+////////////////////////////////////////////////////////////////////////
 bool VisiteurAgrandissement::traiter(NoeudTable* noeud)
 {
 	for (unsigned int i = 0; i < noeud->obtenirNombreEnfants(); i++)
@@ -96,7 +107,7 @@ bool VisiteurAgrandissement::traiter(NoeudTable* noeud)
 
 ////////////////////////////////////////////////////////////////////////
 ///
-/// @fn bool VisiteurAgrandissement::traiter(NoeudAbstrait* arbre)
+/// @fn bool VisiteurAgrandissement::traiter(NoeudAbstrait* noeud)
 ///
 /// Cette fonction traite les enfants de l'arbre de rendu pour effectuer 
 /// un agrandissement

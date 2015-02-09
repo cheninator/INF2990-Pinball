@@ -4,8 +4,7 @@
 /// @date 2015-02-01
 /// @version 1.0
 ///
-/// @addtogroup inf2990 INF2990
-/// @{
+/// @ingroup Visiteur
 ///////////////////////////////////////////////////////////////////////////////
 #ifndef __VISITEURS_VISITEURSELECTION_H__
 #define __VISITEURS_VISITEURSELECTION_H__
@@ -20,43 +19,41 @@
 /// @brief Classe pour selectionner les objets de l'arbre de rendu
 ///
 ///        Instancier cette classe avec en paramètre le point cliqué
-///		   Ensuite, appelez la méthode accepterVisiteur() de l'arbre de 
+///		   Ensuite, appeler la méthode accepterVisiteur() de l'arbre de 
 ///		   rendu et lui fournir CE visiteur en paramètre
 ///
 /// @author Yonni Chen
 /// @date 2015-02-02
+/// @ingroup Visiteur
 ///////////////////////////////////////////////////////////////////////////
 class VisiteurSelection : public VisiteurAbstrait
 {
 public:
 
-	// Constructeur par défaut : aucun déplacement
+	/// Constructeur par défaut : aucun déplacement
 	VisiteurSelection(glm::dvec3 pointDansLeMonde, int valeurStencil);
 
-	// Destructeur
+	/// Destructeur
 	~VisiteurSelection();
 
-	// Traiter une opération sur l'arbre de rendu et ses enfants
+	/// Traiter une opération sur l'arbre de rendu et ses enfants
 	virtual bool traiter(ArbreRenduINF2990* arbre);
 	virtual bool traiter(NoeudAbstrait* noeud);
 	virtual bool traiter(NoeudTable* table);
 
-	// Nombre d'objets sélectionnés disponnible pour les clients
+	/// Nombre d'objets sélectionnés disponnible pour les clients
 	int obtenirNbObjetsSelectionne(){ return nbObjetsSelectionne_; }
 
 private:
 	
-	// Ne touchez pas au constructeur par défaut
+	/// Constructeur par défaut
 	VisiteurSelection();
 	
-	// Point cliqué
-	glm::dvec3 pointDansLeMonde_;
+	glm::dvec3 pointDansLeMonde_; ///> Point cliqué
 
-	// Valeur du stencil à comparer au numéro des noeuds
-	int valeurStencil_;
+	int valeurStencil_; ///> Valeur du stencil à comparer au numéro des noeuds
 
-	// Nombre d'objets sélectionnés disponnible pour les clients
-	int nbObjetsSelectionne_;
+	int nbObjetsSelectionne_; ///> Nombre d'objets sélectionnés disponnible pour les clients
 };
 
 

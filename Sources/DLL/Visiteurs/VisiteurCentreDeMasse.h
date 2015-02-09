@@ -4,8 +4,7 @@
 /// @date 2015-02-01
 /// @version 1.0
 ///
-/// @addtogroup inf2990 INF2990
-/// @{
+/// @ingroup Visiteur
 ///////////////////////////////////////////////////////////////////////////////
 #ifndef __VISITEURS_VISITEURCENTREDEMASSE_H__
 #define __VISITEURS_VISITEURCENTREDEMASSE_H__
@@ -22,22 +21,35 @@
 ///
 /// @author Philippe Carphin
 /// @date 2015-02-02
+/// @ingroup Visiteur
 ///////////////////////////////////////////////////////////////////////////
 class VisiteurCentreDeMasse : public VisiteurAbstrait
 {
 public:
 
-	// Constructeur
+	/// Constructeur
 	VisiteurCentreDeMasse();
 
-	// Destructeur
+	/// Destructeur
 	~VisiteurCentreDeMasse();
 	
-	// Traiter une opération sur l'arbre de rendu et ses enfants
+	/// Traiter une opération sur l'arbre de rendu et ses enfants
 	virtual bool traiter(ArbreRenduINF2990* arbre);
 	virtual bool traiter(NoeudTable* table);
 	virtual bool traiter(NoeudAbstrait* noeud);
 
+	////////////////////////////////////////////////////////////////////////
+	///
+	/// @fn glm::dvec3 obtenirCentreDeMasse()
+	///
+	/// Cette fonction retourne les coordonnées du centre de masse 
+	/// du noeud visité.
+	///
+	/// @param[in] Aucun
+	///
+	/// @return Coordonnées de centre de masse d'un noeud (dvec3)
+	///
+	////////////////////////////////////////////////////////////////////////
 	glm::dvec3 obtenirCentreDeMasse()
 	{
 		return glm::dvec3{ centreDeMasse_.x / nbNoeuds_,
@@ -47,8 +59,8 @@ public:
 
 private:
 	
-	glm::dvec3 centreDeMasse_;
-	int nbNoeuds_;
+	glm::dvec3 centreDeMasse_; ///< Centre de masse d'un noeud
+	int nbNoeuds_; ///< Nombre de noeuds
 	
 };
 
