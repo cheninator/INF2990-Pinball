@@ -81,9 +81,9 @@ namespace InterfaceGraphique
                     FonctionsNatives.animer(tempsInterAffichage);
                     FonctionsNatives.dessinerOpenGL();
 
-                  
+
                     if (etat is EtatSelectionMultiple)
-                        rectangleElastique();
+                       rectangleElastique();
                 });
             }
             catch (Exception)
@@ -848,6 +848,8 @@ namespace InterfaceGraphique
                }
                else if (etat is EtatSelectionMultiple)
                {
+                   Console.WriteLine("BOUNCE BITCH");
+                   etat.traiterSouris(e);
                    etat = new EtatSelection(this);
                }
                 if(clickValide(origin,destination))
