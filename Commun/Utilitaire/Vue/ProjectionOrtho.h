@@ -75,6 +75,9 @@ namespace vue {
 		/// Ajuste la fenêtre virtuelle pour respecter le rapport d'aspect.
 		void ajusterRapportAspect(DirectionAgrandissement dir);
 
+		void ajusterRapportAspectY(double rapportAspect);
+		void ajusterRapportAspectX(double rapportAspect);
+
 		/// Borne inférieure en X de la fenêtre virtuelle.
 		double xMinFenetre_;
 		/// Borne supérieure en X de la fenêtre virtuelle.
