@@ -853,12 +853,13 @@ namespace InterfaceGraphique
                 if(clickValide(origin,destination))
                 {
                     etat.traiterSouris(e);
-                    etat = new EtatSelection(this);
+                 //   etat = new EtatSelection(this);
                 }
-                else if(clickValide(origin,destination))
+                /*else if(clickValide(origin,destination))
                 {                    
                     etat.traiterSouris(e);
                 }
+                 * */
             }
         }
 
