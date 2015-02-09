@@ -15,7 +15,7 @@ namespace InterfaceGraphique
         public Etat(Exemple form) { 
             form_ = form;
             form_.Cursor = Cursors.Arrow;
-            form_.trackCursor(false);
+          
         }
 
         public virtual bool traiterClavier(KeyEventArgs e) 
@@ -169,7 +169,10 @@ namespace InterfaceGraphique
 
         public override bool traiterSouris(MouseEventArgs e)
         {
-
+            if (e.Button == MouseButtons.Left)
+            {
+                Console.WriteLine("LEFT CLICK!!");
+            }
             if (e.Button == MouseButtons.Right)
                 form_.deplacementVueSouris(e);
             return true;
@@ -207,7 +210,7 @@ namespace InterfaceGraphique
 
         public EtatNone(Exemple form) : base(form) 
         {
-           // form_.deselection();
+           
         }
 
         public override bool traiterClavier(KeyEventArgs e)

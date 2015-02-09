@@ -824,7 +824,7 @@ namespace InterfaceGraphique
             {
                 FMEbox.Text = FonctionsNatives.getScale().ToString();
             }
-            if (!(clickValide(origin, currentP)) && (etat is EtatSelection) && !(etat is EtatSelectionMultiple) && e.Button == MouseButtons.Left)
+            if (!(clickValide(origin, currentP)) && (etat is EtatSelection) && e.Button == MouseButtons.Left)
             {
                 etat = new EtatSelectionMultiple(this);
             }
@@ -842,7 +842,7 @@ namespace InterfaceGraphique
             if (e.Button == MouseButtons.Left)
             {
                Point destination = panel_GL.PointToClient(MousePosition);
-               if (etat is EtatZoom)
+               if (etat is EtatZoom && !(clickValide(origin,destination)))
                {
                   FonctionsNatives.zoomOutElastique(origin.X, origin.Y, destination.X, destination.Y);
                }
