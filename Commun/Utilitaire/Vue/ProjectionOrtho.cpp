@@ -60,7 +60,7 @@ namespace vue {
 		yMinFenetre_{ yMinFenetre },
 		yMaxFenetre_{ yMaxFenetre }
 	{
-		ajusterRapportAspect(DirectionAgrandissement::POSITIF);
+		ajusterRapportAspect(DirectionZoom::IN_);
 	}
 
 
@@ -252,7 +252,7 @@ namespace vue {
 		yMinFenetre_ = (coin1.y < coin2.y ? coin1.y : coin2.y);
 		yMaxFenetre_ = (coin1.y > coin2.y ? coin1.y : coin2.y);
 		
-		ajusterRapportAspect(DirectionAgrandissement::POSITIF);
+		ajusterRapportAspect(DirectionZoom::IN_);
 		centrerSurPoint(glm::dvec2(pointMilieuSelectionX, pointMilieuSelectionY));
 	}
 
@@ -313,7 +313,7 @@ namespace vue {
 		std::cout << "xMin | xMax Fenetre: " << xMinFenetre_ << " | " << xMaxFenetre_ << "\n";
 		std::cout << "yMin | yMax Fenetre: " << yMinFenetre_ << " | " << yMaxFenetre_ << "\n \n";
 
-		ajusterRapportAspect(DirectionAgrandissement::NEGATIF);
+		ajusterRapportAspect(DirectionZoom::OUT_);
 	}
 
 
@@ -405,32 +405,24 @@ namespace vue {
 
 	////////////////////////////////////////////////////////////////////////
 	///
-	/// @fn void ProjectionOrtho::ajusterRapportAspect()
+	/// @fn void ProjectionOrtho::ajusterRapportAspect(DirectionZoom)
 	///
 	/// Permet d'ajuster les coordonnées de la fenêtre virtuelle en fonction
 	/// de la clôture de façon à ce que le rapport d'aspect soit respecté.
 	///
-	/// Cette méthode est appelée lorsque le zoomIn est effectué : 
-	/// puisque le zoomIn mets les extrêmums de la fenêtre aux points 
-	/// désignés par le rectangle élastique, le rapport d'aspect n'est pas 
-	/// considéré. C'est pour cette raison que dans cette méthode, il est
-	/// possible de simplement tenir compte si le rapport d'aspect est 
-	/// inférieur ou supérieur à 1.
+	/// @param[in]	dir : Spécifie s'il s'agit d'un zoomIn ou d'un zoomOut
 	///
 	/// @return Aucune.
 	///
 	////////////////////////////////////////////////////////////////////////
-	void ProjectionOrtho::ajusterRapportAspect(DirectionAgrandissement dir)
+	void ProjectionOrtho::ajusterRapportAspect(DirectionZoom dir)
 	{
-		// Déterminer quelle est la composante la plus large
 		double delta = 0.0;
-
-		double longueurVerticaleRequise = 0.0;
-		double longueurHorizontaleRequise = 0.0;
-
 		double rapportAspect = abs(xMaxCloture_ - xMinCloture_) / abs(yMaxCloture_ - yMinCloture_);
 		double rapportAspectVirtuel = (xMaxFenetre_ - xMinFenetre_) / (yMaxFenetre_ - yMinFenetre_);
+
 		std::cout << "------Avant Correction Rapport d'aspect Fenetre : " << rapportAspectVirtuel<< "\n \n";
+		
 		if (abs(rapportAspect - rapportAspectVirtuel) / rapportAspect < (0.0001 * rapportAspect))
 		{
 			std::cout << "\n Rapports aspects sont egaux : pas d'ajustation \n";
@@ -438,16 +430,16 @@ namespace vue {
 		}
 		if (rapportAspectVirtuel > 1.0)
 		{
-			if (dir == POSITIF)
+			if (dir == IN_)
 				ajusterRapportAspectX(rapportAspect);
-			else if (dir == NEGATIF)
+			else if (dir == OUT_)
 				ajusterRapportAspectY(rapportAspect);
 		}
 		else // if (rapportAspectVirtuel < 1.0)
 		{
-			if (dir == POSITIF)
+			if (dir == IN_)
 				ajusterRapportAspectY(rapportAspect);
-			else if (dir == NEGATIF)
+			else if (dir == OUT_)
 				ajusterRapportAspectX(rapportAspect);
 		}
 	
@@ -456,6 +448,19 @@ namespace vue {
 
 	}
 
+	////////////////////////////////////////////////////////////////////////
+	///
+	/// @fn void ProjectionOrtho::ajusterRapportAspectY(double rapportAspect)
+	///
+	/// Permet d'ajuster les coordonnées de la fenêtre virtuelle en fonction
+	/// du rapport d'aspect de la clotûre. Ceci est fait en augmentant la
+	/// vue verticalement.
+	///
+	/// @param[in]	rapportAspect : Valeur du rapport d'aspect de la clotûre
+	///
+	/// @return Aucune.
+	///
+	////////////////////////////////////////////////////////////////////////
 	void ProjectionOrtho::ajusterRapportAspectY(double rapportAspect)
 	{
 		double longueurVerticaleRequise = abs(xMaxFenetre_ - xMinFenetre_) / rapportAspect;
@@ -464,6 +469,20 @@ namespace vue {
 		yMaxFenetre_ += delta;
 		yMinFenetre_ -= delta;
 	}
+
+	////////////////////////////////////////////////////////////////////////
+	///
+	/// @fn void ProjectionOrtho::ajusterRapportAspectX(double rapportAspect)
+	///
+	/// Permet d'ajuster les coordonnées de la fenêtre virtuelle en fonction
+	/// du rapport d'aspect de la clotûre. Ceci est fait en augmentant la
+	/// vue horizontalement.
+	///
+	/// @param[in]	rapportAspect : Valeur du rapport d'aspect de la clotûre
+	///
+	/// @return Aucune.
+	///
+	////////////////////////////////////////////////////////////////////////
 	void ProjectionOrtho::ajusterRapportAspectX(double rapportAspect)
 	{
 		double longueurHorizontaleRequise = abs(yMaxFenetre_ - yMinFenetre_) * rapportAspect;

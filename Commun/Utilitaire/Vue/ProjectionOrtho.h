@@ -13,7 +13,7 @@
 
 #include "Projection.h"
 
-enum DirectionAgrandissement { POSITIF = 1, NEGATIF= -1 };
+enum DirectionZoom { IN_ = 1, OUT_= -1 };
 namespace vue {
 
 
@@ -72,10 +72,13 @@ namespace vue {
 
 
 	private:
-		/// Ajuste la fenêtre virtuelle pour respecter le rapport d'aspect.
-		void ajusterRapportAspect(DirectionAgrandissement dir);
+		/// Décide la direction de correction en fonction du zoom.
+		void ajusterRapportAspect(DirectionZoom dir);
 
+		/// Ajuste la fenêtre en modifiant la portée verticale
 		void ajusterRapportAspectY(double rapportAspect);
+
+		/// Ajuste la fenêtre en modifiant la portée horizontale
 		void ajusterRapportAspectX(double rapportAspect);
 
 		/// Borne inférieure en X de la fenêtre virtuelle.
