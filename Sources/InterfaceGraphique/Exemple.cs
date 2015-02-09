@@ -11,7 +11,6 @@ using System.Runtime.InteropServices;
 using System.Media;
 using System.IO;
 
-
 // test
 namespace InterfaceGraphique
 {
@@ -60,6 +59,12 @@ namespace InterfaceGraphique
             panelHeight = panel_GL.Size.Height;
             panelWidth = panel_GL.Size.Width;
             etat = new EtatNone(this);
+
+            //Musique
+            //var bgm = new WMPLib.WindowsMediaPlayer();
+            //bgm.URL = @"media/SFX/music.wav";
+            System.Media.SoundPlayer player = new System.Media.SoundPlayer(@"media/SFX/stone.wav");
+            player.Play();
         }
 
         public void InitialiserAnimation()
@@ -68,6 +73,7 @@ namespace InterfaceGraphique
             this.StartPosition = FormStartPosition.WindowsDefaultBounds;
             FonctionsNatives.initialiserOpenGL(panel_GL.Handle);
             FonctionsNatives.dessinerOpenGL();
+
         }
 
         public void MettreAJour(double tempsInterAffichage)
@@ -91,7 +97,6 @@ namespace InterfaceGraphique
        
         private void ToucheDown(Object o, KeyEventArgs e)
         {
-           
                 if ((e.KeyData == Keys.Subtract ||
                     e.KeyCode == Keys.OemMinus)
                     && zoom_Bar.Value > 0)
@@ -131,8 +136,7 @@ namespace InterfaceGraphique
                     e.Handled = true;
                    
                     altDown = true;
-                }
-            
+                }  
         }
 
         private void ToucheUp(Object o, KeyEventArgs e)
@@ -265,6 +269,8 @@ namespace InterfaceGraphique
 
             if (sauvegarde == 0)
             {
+                System.Media.SoundPlayer player = new System.Media.SoundPlayer(@"media/SFX/no.wav");
+                player.Play();
                 MessageBox.Show("Il doit avoir au moins un trou, un générateur de bille et un ressort dans la zone de jeu!", "ERREUR DE SAUVEGARDE",
                 MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
@@ -913,13 +919,18 @@ namespace InterfaceGraphique
             int w = panel_GL.Width;
 
             bool c = ctrlDown;
-
+            int isSelected = nbSelection;
             // TODO PHIL : Faire que ceci n'arrive que quand on relâche le bouton de gauche et qu'on n'a pas bougé de plus de 3 pixels.
             nbSelection = FonctionsNatives.selectionnerObjetSousPointClique( x, y, h, w, c);
             if (nbSelection == 0)
             {
                 outilsEnable(false);
                 proprietesEnable(false);
+                if (isSelected == 0)
+                {
+                    System.Media.SoundPlayer player = new System.Media.SoundPlayer(@"media/SFX/no.wav");
+                    player.Play();
+                }
             }
             else
             {
@@ -1179,6 +1190,5 @@ namespace InterfaceGraphique
 
         [DllImport(@"Noyau.dll", CallingConvention = CallingConvention.Cdecl)]
         public static extern void dupliquerSelection(int i, int j);
-
     }
 }
