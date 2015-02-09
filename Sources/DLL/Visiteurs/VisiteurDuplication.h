@@ -45,7 +45,7 @@ private:
 	/// Constructeur par défaut
 	VisiteurDuplication();
 
-	glm::dvec3 pointDansLeMonde_; ///< Point où le clic de la souris a eu lieu
+	glm::dvec3 pointDansLeMonde_;		///< Point où le clic de la souris a eu lieu
 
 	std::vector<NoeudAbstrait*> copies_; ///< Contient les copies des objets selectionnés
 
@@ -53,6 +53,8 @@ private:
 	double maxX; ///< Pour le cas ou il y a eu selection multiple
 	double minY; ///< Pour le cas ou il y a eu selection multiple
 	double maxY; ///< Pour le cas ou il y a eu selection multiple
+
+	ArbreRenduINF2990* arbreTemp;
 
 };
 

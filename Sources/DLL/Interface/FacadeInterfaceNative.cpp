@@ -484,25 +484,9 @@ extern "C"
 	////////////////////////////////////////////////////////////////////////
 	__declspec(dllexport) void removeObject(void)
 	{
-		/*
-		calculerTransition();
-		if (objet == nullptr)
-			return;
-		if (objet->estModifiable())
-		{
-			if (objet->getType() == "portail")
-			{
-				if (objet->getTwin() != nullptr)
-					FacadeModele::obtenirInstance()->obtenirArbreRenduINF2990()->effacer(objet->getTwin());
-			}
-			FacadeModele::obtenirInstance()->obtenirArbreRenduINF2990()->effacer(objet);
-			objet = nullptr;
-		}*/
-
 		VisiteurSuppression* visiteur = new VisiteurSuppression();
 		FacadeModele::obtenirInstance()->obtenirArbreRenduINF2990()->accepterVisiteur(visiteur);
 		delete visiteur;
-
 	}
 
 
@@ -538,7 +522,6 @@ extern "C"
 	{
 		calculerTransition();
 		FacadeModele::obtenirInstance()->obtenirVue()->deplacerXY(deplacementX, deplacementY);
-		
 	}
 
 
