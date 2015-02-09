@@ -807,6 +807,10 @@ namespace InterfaceGraphique
                     Cursor = Cursors.Arrow;
 
                 }
+                if (e.Button == MouseButtons.Right)
+                {
+                    deplacementVueSouris(e);
+                }
 
             }
 
@@ -829,7 +833,8 @@ namespace InterfaceGraphique
                 etat = new EtatSelectionMultiple(this);
             }
 
-            if (!(etat is EtatSelectionMultiple))
+            if (!(etat is EtatSelectionMultiple ) && !(etat is EtatCreation))
+                
                 etat.traiterSouris(e);
         }
 
