@@ -252,16 +252,21 @@ namespace InterfaceGraphique
 
             OpenFileDialog ouvrir_fichier = new OpenFileDialog();
             ouvrir_fichier.Filter = "Fichier XML(*.xml)| *.xml| All files(*.*)|*.*";
+            string initPath = Application.StartupPath + @"\Zones_de_jeu";
+            ouvrir_fichier.InitialDirectory = Path.GetFullPath(initPath);
+            ouvrir_fichier.RestoreDirectory = true;
             if (ouvrir_fichier.ShowDialog() == DialogResult.OK)
             {
-                pathXML = new StringBuilder(ouvrir_fichier.FileName);
+               
+                    pathXML = new StringBuilder(ouvrir_fichier.FileName);
 
-                IntPtr prop = FonctionsNatives.ouvrirXML(pathXML, pathXML.Capacity);
-                int[] result = new int[6];
-                Marshal.Copy(prop, result, 0, 6);
+                    IntPtr prop = FonctionsNatives.ouvrirXML(pathXML, pathXML.Capacity);
+                    int[] result = new int[6];
+                    Marshal.Copy(prop, result, 0, 6);
 
-                for (int i = 0; i < 6; i++)
-                    propZJ[i] = result[i];
+                    for (int i = 0; i < 6; i++)
+                        propZJ[i] = result[i];
+               
             }
         }
 
@@ -284,12 +289,33 @@ namespace InterfaceGraphique
             {
                 SaveFileDialog enregistrer_fichier = new SaveFileDialog();
                 enregistrer_fichier.Filter = "Fichier XML(*.xml)| *.xml| All files(*.*)|*.*";
+                
+                //Console.WriteLine(initial);
+                string initPath = Application.StartupPath + @"\Zones_de_jeu";
+                enregistrer_fichier.InitialDirectory = Path.GetFullPath(initPath);
+                enregistrer_fichier.RestoreDirectory = true;
+                enregistrer_fichier.OverwritePrompt = false;
                 enregistrer_fichier.ShowDialog();
-                pathXML = new StringBuilder(enregistrer_fichier.FileName);
-                for (int i = 0; i < 6; i++)
-                    prop[i] = propZJ[i];
+                
+                string fileName = Path.GetFileName(enregistrer_fichier.FileName);
+                Console.WriteLine(fileName);
+                if(!(fileName == "default.xml"))
+                {
+                    enregistrer_fichier.OverwritePrompt = true;
+                    pathXML = new StringBuilder(enregistrer_fichier.FileName);
+                    for (int i = 0; i < 6; i++)
+                        prop[i] = propZJ[i];
 
-                int a = FonctionsNatives.creerXML(pathXML, pathXML.Capacity, prop);
+                    int a = FonctionsNatives.creerXML(pathXML, pathXML.Capacity, prop);
+                }
+                else
+                {
+                  
+                    MessageBox.Show("Vous ne pouvez pas sauvegarder sur la zone de jeu par défaut!", "ERREUR DE SAUVEGARDE",
+               MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+
+               
                 
             }
 
@@ -1065,7 +1091,15 @@ namespace InterfaceGraphique
             if (pathXML.ToString() == "")
                 EnregistrerSous();
             else
-                FonctionsNatives.creerXML(pathXML, pathXML.Capacity, prop);
+                if (pathXML.ToString().Substring(pathXML.ToString().Length - 11) == "default.xml")
+                {
+                    MessageBox.Show("Il ne faut pas sauvegarder par dessus la zone par defaut", "ERREUR DE SAUVEGARDE",
+                MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+                else
+                {
+                    FonctionsNatives.creerXML(pathXML, pathXML.Capacity, prop);
+                }
         }
 
         public void proprietesEnable(bool active)
