@@ -60,6 +60,8 @@ namespace vue {
 		yMinFenetre_{ yMinFenetre },
 		yMaxFenetre_{ yMaxFenetre }
 	{
+		std::cout << "\n Zoom in Maximal : " << zoomInMax
+			<< "\n Zoom out Maximale: " << zoomOutMax << '\n';
 		ajusterRapportAspect(DirectionZoom::IN_);
 	}
 
@@ -88,6 +90,14 @@ namespace vue {
 		yMaxFenetre_ = ((yMaxCopie * incrementZoom_) + yMaxCopie + yMinCopie * incrementZoom_ - yMinCopie) / (2 * incrementZoom_);;
 		yMinFenetre_ = (yMaxCopie * (incrementZoom_ - 1) + yMinCopie * (incrementZoom_ + 1.0)) / (2 * incrementZoom_);
 
+		if (zoomInValide(xMinFenetre_, xMaxFenetre_, yMinFenetre_, yMaxFenetre_) == false)
+		{
+			xMaxFenetre_ = xMaxCopie;
+			xMinFenetre_ = xMinCopie;
+			yMaxFenetre_ = yMaxCopie;
+			yMinFenetre_ = yMinCopie;
+		}
+
 		std::cout << "Taille de la fenetre virtuelle : " <<
 			(xMaxFenetre_ - xMinFenetre_) << "x" << (yMaxFenetre_ - yMinFenetre_) << std::endl;
 	}
@@ -106,7 +116,13 @@ namespace vue {
 	{
 		double augmentationX = (incrementZoom_ - 1.0) * 0.5 * (xMaxFenetre_ - xMinFenetre_);
 		double augmentationY = (incrementZoom_ - 1.0) * 0.5 * (yMaxFenetre_ - yMinFenetre_);
-		
+
+		if (zoomOutValide((xMinFenetre_ - augmentationX), (xMaxFenetre_ + augmentationX),
+			(yMinFenetre_ - augmentationY), (yMaxFenetre_ + augmentationY)) == false)
+		{
+			return;
+		}
+
 		xMinFenetre_ -= augmentationX;
 		xMaxFenetre_ += augmentationX;
 
@@ -274,12 +290,15 @@ namespace vue {
 	////////////////////////////////////////////////////////////////////////
 	void ProjectionOrtho::zoomerOut(const glm::dvec2& coin1, const glm::dvec2& coin2)
 	{
+		if (coin1.x == coin2.x || coin1.y == coin2.y)
+			return;
+
 		const double longueurFenetreActuelle = (xMaxFenetre_ - xMinFenetre_);
 		const double xGaucheCoin = (coin1.x < coin2.x ? coin1.x : coin2.x);
 		const double xDroiteCoin = (coin1.x > coin2.x ? coin1.x : coin2.x);
 		const double xRatioSelectionFenetreActuelle = (xDroiteCoin - xGaucheCoin) * 1.0 / longueurFenetreActuelle;
 		
-		std::cout << "xCoinGauche | xCoinDroite " << xGaucheCoin << " | " << xDroiteCoin << "\n \n";
+		std::cout << "WARNING : xCoinGauche | xCoinDroite " << xGaucheCoin << " | " << xDroiteCoin << "\n \n";
 
 		std::cout << "xMin | xMax Fenetre: " << xMinFenetre_ << " | " << xMaxFenetre_ << "\n";
 		std::cout << "yMin | yMax Fenetre: " << yMinFenetre_ << " | " << yMaxFenetre_ << "\n \n";
@@ -291,9 +310,6 @@ namespace vue {
 		// On place notre fenetre virtuelle a la longueur proportionnelle
 		double nouveauXMinFenetre = xMinFenetre_ - (proportionRelativeCoinGauche * nouvelleLongueurX);
 		double nouveauXMaxFenetre = xMinFenetre_ + (nouvelleLongueurX - (xMinFenetre_ - nouveauXMinFenetre));
-
-		xMinFenetre_ = nouveauXMinFenetre;
-		xMaxFenetre_ = nouveauXMaxFenetre;
 
 		///TODO(Emilio): Penser à faire une méthode afin de ne pas dupliquer le code
 		/// Section pour Y ///
@@ -307,6 +323,15 @@ namespace vue {
 		double nouveauYMinFenetre = yMinFenetre_ - (proportionRelativeCoinBas * nouvelleLongueurY);
 		double nouveauYMaxFenetre = yMinFenetre_ + (nouvelleLongueurY - (yMinFenetre_ - nouveauYMinFenetre));;
 
+		if (zoomOutValide(nouveauXMinFenetre, nouveauXMaxFenetre,
+			nouveauYMinFenetre, nouveauYMaxFenetre) == false)
+		{
+			return;
+		}
+
+		// On applique les nouvelles dimenstions 
+		xMinFenetre_ = nouveauXMinFenetre;
+		xMaxFenetre_ = nouveauXMaxFenetre;
 		yMinFenetre_ = nouveauYMinFenetre;
 		yMaxFenetre_ = nouveauYMaxFenetre;
 
@@ -492,7 +517,45 @@ namespace vue {
 		xMinFenetre_ -= delta;
 	}
 
+	////////////////////////////////////////////////////////////////////////
+	///
+	/// @fn bool bornesSontValide(double xBorneMin, double xBorneMax, double yBorneMin, double yBorneMax);
+	///
+	/// Vérfie que les nouvelles bornes qui tentent d'être appliquées 
+	/// respecteront les bornes établies lors de la création de la Vue.
+	///
+	/// @param[in]	xBorneMin : Borne inférieure en X
+	/// @param[in]	xBorneMin : Borne supérieure en X
+	/// @param[in]	xBorneMin : Borne inférieure en Y
+	/// @param[in]	xBorneMin : Borne supérieure en Y
+	///
+	/// @return L'indication pour procéder au zoom
+	///
+	////////////////////////////////////////////////////////////////////////
+	bool ProjectionOrtho::zoomOutValide(double xBorneMin, double xBorneMax, double yBorneMin, double yBorneMax)
+	{
+		bool valide = false;
+		if (xBorneMax - xBorneMin >= zoomOutMax_ || yMaxFenetre_ - yMinFenetre_ >= zoomOutMax_)
+		{
+			std::cout << "La fenetre serait trop petite: zoom annulé ! \n";
+		}
+		else
+			valide = true;
 
+		return valide;
+	}
+
+	bool ProjectionOrtho::zoomInValide(double xBorneMin, double xBorneMax, double yBorneMin, double yBorneMax)
+	{
+		bool valide = false;
+		if (xBorneMax - xBorneMin <= zoomInMax_ || yMaxFenetre_ - yMinFenetre_ <= zoomInMax_)
+		{
+			std::cout << "La fenetre serait trop petite: zoom annulé ! \n";
+		}
+		else
+			valide = true;
+		return valide;
+	}
 
 }; // Fin du namespace vue.
 
