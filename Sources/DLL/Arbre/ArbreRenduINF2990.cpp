@@ -105,8 +105,8 @@ void ArbreRenduINF2990::initialiser()
 
 	// Charger la zone de jeu par défaut
 	initialiserXML("Zones_de_jeu/default.xml");
-	NoeudAbstrait* noeud = creerNoeud("couvercle");
-	ajouter(noeud);
+	/*NoeudAbstrait* noeud = creerNoeud("couvercle");
+	ajouter(noeud);*/
 
 }
 
@@ -270,10 +270,19 @@ bool ArbreRenduINF2990::lireXML(tinyxml2::XMLDocument& doc)
 			}
 
 			lecture = true;
+		}
+		
+		// Tenter d'obtenir l'élément table, puis l'attribut nbEnfants
+		const tinyxml2::XMLElement* elementCouvercle{ elementArbre->LastChildElement("couvercle")};
 
+		if (elementCouvercle != nullptr)
+		{
+			NoeudAbstrait* couvercle{ creerNoeud(elementCouvercle->Name()) };
+			this->ajouter(couvercle);
 		}
 
 	}
+
 	assignerDefaut();
 
 	return lecture;

@@ -130,7 +130,7 @@ bool VisiteurXML::traiter(NoeudAbstrait* noeud, tinyxml2::XMLElement* parent)
 	tinyxml2::XMLElement* element{document.NewElement(nom.c_str())};
 
 	// Si l'élément est une table, visiter ses enfants
-	if (nom == "table")
+	if (nom == "table" || nom == "couvercle")
 	{
 		// Nombre d'enfants de la table
 		element->SetAttribute("nbEnfants", noeud->obtenirNombreEnfants());

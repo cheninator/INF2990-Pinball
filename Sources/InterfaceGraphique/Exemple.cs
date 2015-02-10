@@ -299,24 +299,22 @@ namespace InterfaceGraphique
                 
                 string fileName = Path.GetFileName(enregistrer_fichier.FileName);
                 Console.WriteLine(fileName);
-                if(!(fileName == "default.xml"))
+
+                if (!(fileName == "default.xml"))
                 {
                     enregistrer_fichier.OverwritePrompt = true;
                     pathXML = new StringBuilder(enregistrer_fichier.FileName);
                     for (int i = 0; i < 6; i++)
                         prop[i] = propZJ[i];
 
-                    int a = FonctionsNatives.creerXML(pathXML, pathXML.Capacity, prop);
-                }
-                else
-                {
-                  
-                    MessageBox.Show("Vous ne pouvez pas sauvegarder sur la zone de jeu par défaut!", "ERREUR DE SAUVEGARDE",
-               MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    FonctionsNatives.creerXML(pathXML, pathXML.Capacity, prop);
                 }
 
-               
-                
+                else
+                {
+                    MessageBox.Show("Vous ne pouvez pas sauvegarder sur la zone de jeu par défaut!", "ERREUR DE SAUVEGARDE",
+                    MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
             }
 
             else
@@ -1091,6 +1089,7 @@ namespace InterfaceGraphique
             if (pathXML.ToString() == "")
                 EnregistrerSous();
             else
+            {
                 if (pathXML.ToString().Substring(pathXML.ToString().Length - 11) == "default.xml")
                 {
                     MessageBox.Show("Il ne faut pas sauvegarder par dessus la zone par defaut", "ERREUR DE SAUVEGARDE",
@@ -1100,6 +1099,7 @@ namespace InterfaceGraphique
                 {
                     FonctionsNatives.creerXML(pathXML, pathXML.Capacity, prop);
                 }
+            }
         }
 
         public void proprietesEnable(bool active)
