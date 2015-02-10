@@ -39,7 +39,7 @@ VisiteurDuplication::VisiteurDuplication()
 VisiteurDuplication::VisiteurDuplication(glm::dvec3 pointDansLeMonde)
 {
 	pointDansLeMonde_ = pointDansLeMonde;
-	maxX = maxY = 0;
+	maxX = maxY = std::numeric_limits<int>::min();
 	minX = minY = std::numeric_limits<int>::max();
 	arbreTemp = nullptr;
 }
@@ -116,19 +116,17 @@ bool VisiteurDuplication::traiter(NoeudTable* table)
 	// Si la structure ne contient qu'un seul objet
 	if (copies_.size() == 1)
 	{
-		std::cout << "Nombre d'objets : " << table->obtenirNombreEnfants() << std::endl;
 		copies_.front()->assignerPositionRelative(pointDansLeMonde_);
 		table->ajouter(copies_.back());
 		copies_.pop_back();
-		std::cout << "Nombre d'objets maintenant : " << table->obtenirNombreEnfants() << std::endl;
 	}
 
 	// Si la structure contient plusieurs objets, trouver le centre de selection
 	else if (copies_.size() > 1)
 	{
 		// Il faudra assigner la position relative des objets copiés en fonction du centre de selection
-		double centreX = (maxX - minX) / 2.0;
-		double centreY = (maxY - minY) / 2.0;
+		double centreX = ((maxX - minX) / 2.0 ) + minX;
+		double centreY = ((maxY - minY) / 2.0 ) + minY;
 
 		// Difference entre la position de l'objet et le centre de selection
 		double deltaX, deltaY;
@@ -142,7 +140,7 @@ bool VisiteurDuplication::traiter(NoeudTable* table)
 			deltaX = posX - centreX;
 			deltaY = posY - centreY;
 
-			copies_[i]->assignerPositionRelative({posX + pointDansLeMonde_.x, posY + pointDansLeMonde_.y, 0.0});
+			copies_[i]->assignerPositionRelative({(deltaX + pointDansLeMonde_.x), (deltaY + pointDansLeMonde_.y), 0.0});
 			table->ajouter(copies_[i]);
 		}
 
@@ -182,16 +180,16 @@ bool VisiteurDuplication::traiter(NoeudAbstrait* noeud)
 		copie->assignerPositionRelative(noeud->obtenirPositionRelative());
 
 		if (maxX < noeud->obtenirPositionRelative().x)
-		maxX = noeud->obtenirPositionRelative().x;
+			maxX = noeud->obtenirPositionRelative().x;
 
 		if (minX > noeud->obtenirPositionRelative().x)
-		minX = noeud->obtenirPositionRelative().x;
+			minX = noeud->obtenirPositionRelative().x;
 
 		if (maxY < noeud->obtenirPositionRelative().y)
-		maxY = noeud->obtenirPositionRelative().y;
+			maxY = noeud->obtenirPositionRelative().y;
 
 		if (minY > noeud->obtenirPositionRelative().y)
-		minY = noeud->obtenirPositionRelative().y;
+			minY = noeud->obtenirPositionRelative().y;
 
 		copies_.push_back(copie);
 	}
