@@ -66,7 +66,7 @@ ArbreRenduINF2990::ArbreRenduINF2990()
 	ajouterUsine(NOM_PORTAIL, new UsineNoeudPortail{ NOM_PORTAIL });
 	ajouterUsine(NOM_RESSORT, new UsineNoeudRessort{ NOM_RESSORT });
 	ajouterUsine(NOM_TROU, new UsineNoeudTrou{ NOM_TROU });
-	ajouterUsine(NOM_VIDE, new UsineNoeudTrou{ NOM_VIDE });
+	ajouterUsine(NOM_VIDE, new UsineNoeudVide{ NOM_VIDE });
 	ajouterUsine(NOM_COUVERCLE, new UsineNoeudCouvercle{ NOM_COUVERCLE });
 	ajouterUsine(NOM_TABLE, new UsineNoeudTable{ NOM_TABLE });
 }

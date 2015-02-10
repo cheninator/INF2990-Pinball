@@ -48,4 +48,22 @@ inline UsineNoeudVide::UsineNoeudVide(const std::string& nom)
 
 }
 
+
+////////////////////////////////////////////////////////////////////////
+///
+/// @fn NoeudAbstrait* UsineNoeudVide::creerNoeud() const
+///
+/// Cette fonction retourne un noeud nouvellement créé du type produit
+/// par cette usine, soit une araignée.
+///
+/// @return Le noeud nouvellement créé.
+///
+////////////////////////////////////////////////////////////////////////
+NoeudAbstrait* UsineNoeudVide::creerNoeud() const
+{
+	auto noeud = new NoeudVide{ obtenirNom() };
+	noeud->assignerObjetRendu(&modele_, &liste_);
+	return noeud;
+}
+
 #endif // __ARBRE_USINES_USINENOEUDVIDE_H__
