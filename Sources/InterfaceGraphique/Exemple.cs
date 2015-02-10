@@ -822,7 +822,8 @@ namespace InterfaceGraphique
             //    panel_GL.MouseMove += new MouseEventHandler(panel_MouseMove);   
             if (etat is EtatPortail)
             {
-                etat = new EtatSelection(this);
+                etat = new EtatNone(this);
+                deselection();
             }
 
             if (e.Button == MouseButtons.Left)
