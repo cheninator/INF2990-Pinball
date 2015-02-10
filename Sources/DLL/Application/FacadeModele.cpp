@@ -591,7 +591,7 @@ void FacadeModele::rectangleElastique(int x1, int y1, int x2, int y2)
 	glEnable(GL_BLEND);
 
 	glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
-	glColor4f(0.0, 1.0, 0.0, 0.2);
+	glColor4f(0.0F, 1.0F, 0.0F, 0.2F);
 	glRectd(selectionBasGauche_.x, selectionBasGauche_.y, selectionHautDroit_.x, selectionHautDroit_.y);
 
 	glDisable(GL_BLEND);
