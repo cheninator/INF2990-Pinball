@@ -51,7 +51,8 @@ namespace InterfaceGraphique
             InitializeComponent();
             Program.peutAfficher = true;
             etat = new EtatNone(this);
-            panel_GL.Focus();   
+            panel_GL.Select();
+            
             InitialiserAnimation();
             
             panelHeight = panel_GL.Size.Height;
@@ -386,9 +387,6 @@ namespace InterfaceGraphique
         private void panel_GL_MouseClick(object sender, MouseEventArgs e)
         {
             Console.Write(panel_GL.PointToClient(MousePosition));
-          //  Xbox.Text = panel_GL.PointToClient(MousePosition).X.ToString();
-          //  Ybox.Text = (panel_GL.PointToClient(MousePosition).Y).ToString();
-
             panel_GL.Focus();
         }
 
