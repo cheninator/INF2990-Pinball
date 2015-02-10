@@ -15,7 +15,7 @@ namespace InterfaceGraphique
         public Etat(Exemple form) { 
             form_ = form;
             form_.Cursor = Cursors.Arrow;
-          
+            form_.enableZoom(false);
         }
 
         public virtual bool traiterClavier(KeyEventArgs e) 
@@ -159,7 +159,9 @@ namespace InterfaceGraphique
     class EtatZoom : Etat
     {
 
-        public EtatZoom(Exemple form) : base(form) { }
+        public EtatZoom(Exemple form) : base(form) {
+            form_.enableZoom(true);
+        }
 
 
         public override bool traiterClavier(KeyEventArgs e)
@@ -188,7 +190,9 @@ namespace InterfaceGraphique
 
     class EtatDuplication : Etat
     {
-        public EtatDuplication(Exemple form) : base(form) { }
+        public EtatDuplication(Exemple form) : base(form) {
+          
+        }
 
         public override bool traiterClavier(KeyEventArgs e)
         {

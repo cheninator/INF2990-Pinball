@@ -165,7 +165,6 @@ namespace InterfaceGraphique
                 etat = null;
                 etat = new EtatNone(this);
                 deselection();
-                zoom_Bar.Enabled = false;
             }
             if (e.KeyChar == 'f')
             {
@@ -179,13 +178,13 @@ namespace InterfaceGraphique
             if (e.KeyChar == 's')
             {
                 Selection_MenuItem_Click(this, e);
-                zoom_Bar.Enabled = false;
+       
             }
             if( e.KeyChar == 'd')
             {
                 etat = null;
                 etat = new EtatDeplacement(this);
-                zoom_Bar.Enabled = false;
+         
                 
               
             }
@@ -193,7 +192,7 @@ namespace InterfaceGraphique
             {
                 etat = null;
                 etat = new EtatScale(this);
-                zoom_Bar.Enabled = false;
+        
                 
               
             }
@@ -201,22 +200,21 @@ namespace InterfaceGraphique
             {
                 etat = null;
                 etat = new EtatRotation(this);
-                zoom_Bar.Enabled = false;
+           
             }
            
             if (e.KeyChar == 'z')
             {
                 etat = null;
                 etat = new EtatZoom(this);
-                zoom_Bar.Enabled = true;
-
+          
                 
             }
             if (e.KeyChar == 'c')
             {
                 etat = null;
                 etat = new EtatDuplication(this);
-                zoom_Bar.Enabled = false;
+           
             }
             if (e.KeyChar == 'h')
             {
@@ -1199,7 +1197,10 @@ namespace InterfaceGraphique
         {
             Cursor = Cursors.Arrow;
         }
-
+        public void enableZoom(bool active)
+        {
+            zoom_Bar.Enabled = active;
+        }
 }
     // Full Screen
 
