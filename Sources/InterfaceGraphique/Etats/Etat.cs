@@ -238,7 +238,11 @@ namespace InterfaceGraphique
         public override bool traiterSouris(MouseEventArgs e)
         {
             if (e.Button == MouseButtons.Left)
+            {
+                form_.terminerRectangleElastique();
                 form_.selectionMultiple();
+            }
+                
 
             return true;
         }

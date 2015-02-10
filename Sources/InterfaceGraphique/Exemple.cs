@@ -77,14 +77,18 @@ namespace InterfaceGraphique
             {
                 this.Invoke((MethodInvoker)delegate
                 {
-                    FonctionsNatives.animer(tempsInterAffichage);
-                    FonctionsNatives.dessinerOpenGL();
+                    if (etat is EtatSelectionMultiple)
+                        rectangleElastique();
+                    else
+                    {
+                        FonctionsNatives.animer(tempsInterAffichage);
+                        FonctionsNatives.dessinerOpenGL();
+                    }                    
 
+                    //A MODIFIER
                     if (etat is EtatZoom && sourisBoutonGaucheActive)
                         rectangleElastique();
 
-                    if (etat is EtatSelectionMultiple)
-                       rectangleElastique();
                 });
             }
             catch (Exception)
@@ -779,10 +783,12 @@ namespace InterfaceGraphique
 
             if (e.Button == MouseButtons.Left)
                 sourisBoutonGaucheActive = true;
+
             previousP.X = e.X;
             previousP.Y = e.Y;
             currentP.X = e.X;
             currentP.Y = e.Y;
+
             if (e.Button == MouseButtons.Left &&
             (etat is EtatSelection || etat is EtatDeplacement || etat is EtatRotation
                     || etat is EtatScale || etat is EtatZoom)
@@ -844,13 +850,13 @@ namespace InterfaceGraphique
             if (!(clickValide(origin, currentP)) && (etat is EtatSelection) && e.Button == MouseButtons.Left)
             {
                 etat = new EtatSelectionMultiple(this);
+                FonctionsNatives.initialiserRectangleElastique(origin.X, origin.Y);
             }
             if (!(clickValide(origin, currentP)) && (etat is EtatZoom) && e.Button == MouseButtons.Left)
             {
                 etat = new EtatZoom(this);
             }
-            if (!(etat is EtatSelectionMultiple ) && !(etat is EtatCreation) && !(etat is EtatSelection))
-                
+            if (!(etat is EtatSelectionMultiple ) && !(etat is EtatCreation) && !(etat is EtatSelection))                
                 etat.traiterSouris(e);
         }
 
@@ -872,8 +878,7 @@ namespace InterfaceGraphique
                        FonctionsNatives.zoomOutElastique(origin.X, origin.Y, destination.X, destination.Y);
                }
                else if (etat is EtatSelectionMultiple)
-               {
-                   
+               {                   
                    etat.traiterSouris(e);
                    etat = new EtatSelection(this);
                }
@@ -1006,12 +1011,17 @@ namespace InterfaceGraphique
 
         public void rectangleElastique()
         {
-            FonctionsNatives.rectangleElastique(origin.X, origin.Y, currentP.X, currentP.Y);
+            FonctionsNatives.rectangleElastique(currentP.X, currentP.Y);            
+        }
+
+        public void terminerRectangleElastique()
+        {
+            FonctionsNatives.terminerRectangleElastique();
         }
 
         public void selectionMultiple()
         {
-            nbSelection = FonctionsNatives.selectionMultiple();
+            nbSelection = FonctionsNatives.selectionMultiple(ctrlDown);
             proprietesEnable(false);
             if (nbSelection == 0)
             {
@@ -1030,7 +1040,6 @@ namespace InterfaceGraphique
                 }
                 outilsEnable(true);
             }
-
         }
 
         public void dupliquerSelection()
@@ -1272,10 +1281,10 @@ namespace InterfaceGraphique
         public static extern void agrandirSelection(int x1, int y1, int x2, int y2);
 
         [DllImport(@"Noyau.dll", CallingConvention = CallingConvention.Cdecl)]
-        public static extern void rectangleElastique(int x1, int y1, int x2, int y2);
+        public static extern void rectangleElastique(int i, int j);
 
         [DllImport(@"Noyau.dll", CallingConvention = CallingConvention.Cdecl)]
-        public static extern int selectionMultiple();
+        public static extern int selectionMultiple(bool c);
 
         [DllImport(@"Noyau.dll", CallingConvention = CallingConvention.Cdecl)]
         public static extern bool verifierCliqueDansTable(int x, int y);
@@ -1300,5 +1309,11 @@ namespace InterfaceGraphique
 
         [DllImport(@"Noyau.dll", CallingConvention = CallingConvention.Cdecl)]
         public static extern void playSound(StringBuilder value, int length, bool stop = false);
+
+        [DllImport(@"Noyau.dll", CallingConvention = CallingConvention.Cdecl)]
+        public static extern void initialiserRectangleElastique(int i, int j);
+
+        [DllImport(@"Noyau.dll", CallingConvention = CallingConvention.Cdecl)]
+        public static extern void terminerRectangleElastique();
     }
 }

@@ -5,7 +5,7 @@
 ///
 /// @ingroup Visiteur
 ////////////////////////////////////////////////
-#include "VisiteurSelectionMultiple.h"
+#include "VisiteurSelectionInverseMultiple.h"
 #include "../Arbre/ArbreRenduINF2990.h"
 #include "../Arbre/Noeuds/NoeudTable.h"
 #include <iostream>
@@ -20,7 +20,7 @@
 /// @return Aucune (constructeur).
 ///
 ////////////////////////////////////////////////////////////////////////
-VisiteurSelectionMultiple::VisiteurSelectionMultiple()
+VisiteurSelectionInverseMultiple::VisiteurSelectionInverseMultiple()
 {
 
 }
@@ -28,7 +28,7 @@ VisiteurSelectionMultiple::VisiteurSelectionMultiple()
 
 ////////////////////////////////////////////////////////////////////////
 ///
-/// @fn VisiteurSelectionMultiple::VisiteurSelectionMultiple(glm::dvec3 selectionBasGauche, glm::dvec3 selectionHautDroit)
+/// @fn VisiteurSelectionInverseMultiple::VisiteurSelectionInverseMultiple(glm::dvec3 selectionBasGauche, glm::dvec3 selectionHautDroit)
 ///
 /// Constructeur qui initialise les variables membres de la classe.
 ///
@@ -38,7 +38,7 @@ VisiteurSelectionMultiple::VisiteurSelectionMultiple()
 /// @return Aucune (constructeur).
 ///
 ////////////////////////////////////////////////////////////////////////
-VisiteurSelectionMultiple::VisiteurSelectionMultiple(glm::dvec3 selectionBasGauche, glm::dvec3 selectionHautDroit)
+VisiteurSelectionInverseMultiple::VisiteurSelectionInverseMultiple(glm::dvec3 selectionBasGauche, glm::dvec3 selectionHautDroit)
 :nbObjetsSelectionne_{ 0 }
 {
 	selectionBasGauche_ = selectionBasGauche;
@@ -55,7 +55,7 @@ VisiteurSelectionMultiple::VisiteurSelectionMultiple(glm::dvec3 selectionBasGauc
 /// @return Aucune (destructeur).
 ///
 ////////////////////////////////////////////////////////////////////////
-VisiteurSelectionMultiple::~VisiteurSelectionMultiple()
+VisiteurSelectionInverseMultiple::~VisiteurSelectionInverseMultiple()
 {
 
 }
@@ -63,7 +63,7 @@ VisiteurSelectionMultiple::~VisiteurSelectionMultiple()
 
 ////////////////////////////////////////////////////////////////////////
 ///
-/// @fn bool VisiteurSelectionMultiple::traiter(ArbreRenduINF2990* arbre)
+/// @fn bool VisiteurSelectionInverseMultiple::traiter(ArbreRenduINF2990* arbre)
 /// @brief Cette fonction traite l'arbre de rendu pour selectionner ses enfants.
 ///
 /// Cette fonction retourne true pour dire que l'opération s'est
@@ -72,7 +72,7 @@ VisiteurSelectionMultiple::~VisiteurSelectionMultiple()
 /// @return Retourne toujours true.
 ///
 ////////////////////////////////////////////////////////////////////////
-bool VisiteurSelectionMultiple::traiter(ArbreRenduINF2990* arbre)
+bool VisiteurSelectionInverseMultiple::traiter(ArbreRenduINF2990* arbre)
 {
 	// Visiter les enfants de l'arbre
 	for (unsigned int i = 0; i < arbre->obtenirNombreEnfants(); i++)
@@ -86,7 +86,7 @@ bool VisiteurSelectionMultiple::traiter(ArbreRenduINF2990* arbre)
 
 ////////////////////////////////////////////////////////////////////////
 ///
-/// @fn bool VisiteurSelectionMultiple::traiter(NoeudTable* table)
+/// @fn bool VisiteurSelectionInverseMultiple::traiter(NoeudTable* table)
 /// @brief Cette fonction traite la table de l'arbre de rendu.
 ///
 /// Cette fonction retourne true pour dire que l'opération s'est
@@ -97,8 +97,9 @@ bool VisiteurSelectionMultiple::traiter(ArbreRenduINF2990* arbre)
 /// @return Retourne toujours true.
 ///
 ////////////////////////////////////////////////////////////////////////
-bool VisiteurSelectionMultiple::traiter(NoeudTable* table)
-{;
+bool VisiteurSelectionInverseMultiple::traiter(NoeudTable* table)
+{
+	;
 	// Traiter les enfants selectionnés de la table
 	for (unsigned int i = 0; i < table->obtenirNombreEnfants(); i++)
 	{
@@ -111,7 +112,7 @@ bool VisiteurSelectionMultiple::traiter(NoeudTable* table)
 
 ////////////////////////////////////////////////////////////////////////
 ///
-/// @fn bool VisiteurSelectionMultiple::traiter(NoeudAbstrait* noeud)
+/// @fn bool VisiteurSelectionInverseMultiple::traiter(NoeudAbstrait* noeud)
 ///
 ///	Cette fonction traite les enfants de l'arbre de rendu. Si ses enfants 
 /// ont des enfants, ils seront aussi traités. Cette fonction retourne true 
@@ -122,30 +123,34 @@ bool VisiteurSelectionMultiple::traiter(NoeudTable* table)
 /// @return Retourne toujours true
 ///
 ////////////////////////////////////////////////////////////////////////
-bool VisiteurSelectionMultiple::traiter(NoeudAbstrait* noeud)
+bool VisiteurSelectionInverseMultiple::traiter(NoeudAbstrait* noeud)
 {
 	glm::dvec3 origine = noeud->obtenirPositionRelative();
 
 	utilitaire::BoiteEnglobante boite = utilitaire::calculerBoiteEnglobante(*noeud->obtenirModele());
 
-	std::cout << selectionBasGauche_.x << " " << selectionBasGauche_.y << " " << selectionHautDroit_.x << " " << selectionHautDroit_.y << std::endl;
+	//std::cout << "huehue " << boite.coinMin.x << "  " << boite.coinMin.y << "  " << boite.coinMax.x << "  " << boite.coinMax.y << "  " << std::endl;
 
 	if ((utilitaire::DANS_LIMITESXY(boite.coinMin.x + origine.x, selectionBasGauche_.x, selectionHautDroit_.x,
-		                           boite.coinMin.y + origine.y, selectionBasGauche_.y, selectionHautDroit_.y) ||
+		                            boite.coinMin.y + origine.y, selectionBasGauche_.y, selectionHautDroit_.y) ||
 		utilitaire::DANS_LIMITESXY(boite.coinMax.x + origine.x, selectionBasGauche_.x, selectionHautDroit_.x,
 		                           boite.coinMin.y + origine.y, selectionBasGauche_.y, selectionHautDroit_.y) ||
 		utilitaire::DANS_LIMITESXY(boite.coinMin.x + origine.x, selectionBasGauche_.x, selectionHautDroit_.x,
-								   boite.coinMax.y + origine.y, selectionBasGauche_.y, selectionHautDroit_.y) ||
+		                           boite.coinMax.y + origine.y, selectionBasGauche_.y, selectionHautDroit_.y) ||
 		utilitaire::DANS_LIMITESXY(boite.coinMax.x + origine.x, selectionBasGauche_.x, selectionHautDroit_.x,
-								   boite.coinMax.y + origine.y, selectionBasGauche_.y, selectionHautDroit_.y)) &&
+		                           boite.coinMax.y + origine.y, selectionBasGauche_.y, selectionHautDroit_.y)) &&
 		noeud->estSelectionnable())
 	{
-		std::cout << "Noeud de type " << noeud->getType() << " selectionne " << std::endl;
-		noeud->assignerSelection(true);
-	}
-	else
-	{
-		noeud->assignerSelection(false);
+		if (noeud->estSelectionne())
+		{
+			std::cout << "Noeud de type " << noeud->getType() << " deselectionne " << std::endl;
+			noeud->assignerSelection(false);
+		}
+		else
+		{
+			std::cout << "Noeud de type " << noeud->getType() << " selectionne " << std::endl;
+			noeud->assignerSelection(true);
+		}		
 	}
 
 	if (noeud->estSelectionne())

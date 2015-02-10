@@ -720,16 +720,16 @@ extern "C"
 	/// @return Aucun
 	///
 	///////////////////////////////////////////////////////////////////////////////
-	__declspec(dllexport) void __cdecl rectangleElastique(int x1, int y1, int x2, int y2)
+	__declspec(dllexport) void __cdecl rectangleElastique(int i, int j)
 	{
 		calculerTransition();
-		FacadeModele::obtenirInstance()->rectangleElastique(x1, y1, x2, y2);
+		FacadeModele::obtenirInstance()->rectangleElastique(i, j);
 	}
 
-	__declspec(dllexport) int __cdecl selectionMultiple(void)
+	__declspec(dllexport) int __cdecl selectionMultiple(bool c)
 	{
 		calculerTransition();
-		return FacadeModele::obtenirInstance()->selectionMultiple();
+		return FacadeModele::obtenirInstance()->selectionMultiple(c);
 	}
 
 	///////////////////////////////////////////////////////////////////////////////
@@ -944,6 +944,13 @@ extern "C"
 		}
 	}
 
+	__declspec(dllexport) void __cdecl initialiserRectangleElastique(int i, int j)
+	{
+		FacadeModele::obtenirInstance()->initialiserRectangleElastique(i, j);
+	}
 
-
+	__declspec(dllexport) void __cdecl terminerRectangleElastique()
+	{
+		FacadeModele::obtenirInstance()->terminerRectangleElastique();
+	}
 }

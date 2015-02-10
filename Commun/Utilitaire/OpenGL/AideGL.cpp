@@ -186,7 +186,7 @@ namespace aidegl {
 
 		// On trace le rectangle en pointillés.
 		glEnable(GL_LINE_STIPPLE);
-		glLineStipple(1, 0x3333);
+		glLineStipple(facteur, patron);
 
 		// On choisit la couleur blanche pour que le XOR soit une inversion des
 		// bits de la couleur déjà présente dans la mémoire de trame.

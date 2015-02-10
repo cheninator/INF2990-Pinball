@@ -37,6 +37,7 @@ Auteurs Aymen Dje
 #include "../Visiteurs/VisiteurSelection.h"
 #include "../Visiteurs/VisiteurSelectionInverse.h"
 #include "../Visiteurs/VisiteurSelectionMultiple.h"
+#include "../Visiteurs/VisiteurSelectionInverseMultiple.h"
 #include "../Visiteurs/VisiteurDeplacement.h"
 #include "../Visiteurs/VisiteurRotation.h"
 #include "../Visiteurs/VisiteurCentreDeMasse.h"
@@ -392,8 +393,6 @@ int FacadeModele::selectionnerObjetSousPointClique(int i, int j, int hauteur, in
 	glm::dvec3 pointDansLeMonde;
 	vue_->convertirClotureAVirtuelle(i, j, pointDansLeMonde);
 	std::cout << "Position du click dans l'ecran : (" << i << ", " << j << ")" << std::endl;
-
-	vue_->convertirClotureAVirtuelle(i, j, pointDansLeMonde);
 	std::cout << "Position du click dans le monde : (" << pointDansLeMonde.x << ", " << pointDansLeMonde.y << ", 0)" << std::endl;
 
 	int valeurStencil = 0;
@@ -424,25 +423,6 @@ int FacadeModele::selectionnerObjetSousPointClique(int i, int j, int hauteur, in
 	}
 
 }
-
-///////////////////////////////////////////////////////////////////////////////
-///
-/// int FacadeModele::selectionMultiple()
-///		Ajouter une decription
-///
-/// @return Aucune.
-///
-/// @remark : Ajouter si nécessaire
-///
-///////////////////////////////////////////////////////////////////////////////
-int FacadeModele::selectionMultiple()
-{
-	VisiteurSelectionMultiple visSelMul(selectionBasGauche_, selectionHautDroit_);
-	arbre_->accepterVisiteur(&visSelMul);
-
-	return visSelMul.obtenirNbObjetsSelectionne();
-}
-
 
 ///////////////////////////////////////////////////////////////////////////////
 ///
@@ -538,27 +518,30 @@ void FacadeModele::agrandirSelection(int x1, int y1, int x2, int y2)
 }
 
 
-///////////////////////////////////////////////////////////////////////////////
-///
-/// void FacadeModele::rectangleElastique(int x1, int y1, int x2, int y2)
-///		Ajouter une decription
-///
-/// @param[in]  x1 : abcisse du point initial
-/// @param[in]  y1 : ordonnee du point initial
-///
-/// @param[in]  x2 : abcisse du point initial
-/// @param[in]  y2 : ordonnee du point initial
-///
-/// @return Aucune.
-///
-/// @remark : On doit donner des x,y qui ont été transformés par panel_GL.PointToClient(...)
-///
-///////////////////////////////////////////////////////////////////////////////
-void FacadeModele::rectangleElastique(int x1, int y1, int x2, int y2)
+void FacadeModele::initialiserRectangleElastique(int i, int j)
 {
+	pointInitial_.x = i;
+	pointInitial_.y = j;
+	pointAvant_.x = i;
+	pointAvant_.y = j;
+	aidegl::initialiserRectangleElastique(pointAvant_, 0x3333, 5);
+}
+
+void FacadeModele::rectangleElastique(int i, int j)
+{
+	glm::ivec2 pointApres(i, j);
+	aidegl::mettreAJourRectangleElastique(pointInitial_, pointAvant_, pointApres);
+	pointAvant_.x = pointApres.x;
+	pointAvant_.y = pointApres.y;
+}
+
+void FacadeModele::terminerRectangleElastique()
+{
+	aidegl::terminerRectangleElastique(pointInitial_, pointAvant_);
+
 	glm::dvec3 positionInitiale, positionActuelle;
-	vue_->convertirClotureAVirtuelle(x1, y1, positionInitiale);
-	vue_->convertirClotureAVirtuelle(x2, y2, positionActuelle);
+	vue_->convertirClotureAVirtuelle(pointInitial_.x, pointInitial_.y, positionInitiale);
+	vue_->convertirClotureAVirtuelle(pointAvant_.x, pointAvant_.y, positionActuelle);
 
 	if (positionInitiale.x < positionActuelle.x && positionInitiale.y < positionActuelle.y)
 	{
@@ -584,22 +567,26 @@ void FacadeModele::rectangleElastique(int x1, int y1, int x2, int y2)
 		selectionHautDroit_.x = positionInitiale.x;
 		selectionHautDroit_.y = positionActuelle.y;
 	}
-
-	glDrawBuffer(GL_FRONT);
-	glClear(GL_DEPTH_BUFFER_BIT);
-	glDisable(GL_TEXTURE_2D);
-	glEnable(GL_BLEND);
-
-	glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
-	glColor4f(0.0F, 1.0F, 0.0F, 0.2F);
-	glRectd(selectionBasGauche_.x, selectionBasGauche_.y, selectionHautDroit_.x, selectionHautDroit_.y);
-
-	glDisable(GL_BLEND);
-	glEnable(GL_TEXTURE_2D);	
-	glFlush();
-	glDrawBuffer(GL_BACK);
 }
 
+
+int FacadeModele::selectionMultiple(bool c)
+{
+	if (c)
+	{
+		VisiteurSelectionInverseMultiple visSelInvMul(selectionBasGauche_, selectionHautDroit_);
+		arbre_->accepterVisiteur(&visSelInvMul);
+
+		return visSelInvMul.obtenirNbObjetsSelectionne();
+	}
+	else
+	{
+		VisiteurSelectionMultiple visSelMul(selectionBasGauche_, selectionHautDroit_);
+		arbre_->accepterVisiteur(&visSelMul);
+
+		return visSelMul.obtenirNbObjetsSelectionne();
+	}
+}
 
 ///////////////////////////////////////////////////////////////////////////////
 ///

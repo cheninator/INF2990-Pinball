@@ -163,6 +163,7 @@
     <ClCompile Include="Visiteurs\VisiteurRotationPoint.cpp" />
     <ClCompile Include="Visiteurs\VisiteurSelection.cpp" />
     <ClCompile Include="Visiteurs\VisiteurSelectionInverse.cpp" />
+    <ClCompile Include="Visiteurs\VisiteurSelectionInverseMultiple.cpp" />
     <ClCompile Include="Visiteurs\VisiteurSelectionMultiple.cpp" />
     <ClCompile Include="Visiteurs\VisiteurSuppression.cpp" />
     <ClCompile Include="Visiteurs\VisiteurXML.cpp" />
@@ -219,6 +220,7 @@
     <ClInclude Include="Visiteurs\VisiteurRotationPoint.h" />
     <ClInclude Include="Visiteurs\VisiteurSelection.h" />
     <ClInclude Include="Visiteurs\VisiteurSelectionInverse.h" />
+    <ClInclude Include="Visiteurs\VisiteurSelectionInverseMultiple.h" />
     <ClInclude Include="Visiteurs\VisiteurSelectionMultiple.h" />
     <ClInclude Include="Visiteurs\VisiteurSuppression.h" />
     <ClInclude Include="Visiteurs\VisiteurXML.h" />

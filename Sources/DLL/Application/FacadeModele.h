@@ -94,10 +94,14 @@ public:
    void agrandirSelection(int x1, int y1, int x2, int y2);
 
    /// xxxxx
-   void rectangleElastique(int x1, int y1, int x2, int y2);
+   void rectangleElastique(int i, int j);
    
    /// xxxxx
-   int selectionMultiple();
+   int selectionMultiple(bool c);
+
+   void initialiserRectangleElastique(int i, int j);
+
+   void terminerRectangleElastique();
 
    /// Vérifier si un point cliqué est dans la table
    bool verifierCliqueDansTable(int x, int y);
@@ -130,6 +134,7 @@ private:
    ArbreRenduINF2990* arbre_{ nullptr }; ///< Arbre de rendu contenant les différents objets de la scène. */
 
    glm::dvec3 selectionBasGauche_, selectionHautDroit_;
+   glm::ivec2 pointInitial_, pointAvant_;
 };
 
 
