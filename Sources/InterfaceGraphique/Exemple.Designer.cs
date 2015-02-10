@@ -759,6 +759,7 @@
             // 
             // Selection_MenuItem
             // 
+            this.Selection_MenuItem.Enabled = false;
             this.Selection_MenuItem.Name = "Selection_MenuItem";
             this.Selection_MenuItem.ShortcutKeyDisplayString = "s";
             this.Selection_MenuItem.Size = new System.Drawing.Size(164, 22);
@@ -767,6 +768,7 @@
             // 
             // Deplacement_MenuItem
             // 
+            this.Deplacement_MenuItem.Enabled = false;
             this.Deplacement_MenuItem.Name = "Deplacement_MenuItem";
             this.Deplacement_MenuItem.ShortcutKeyDisplayString = "d";
             this.Deplacement_MenuItem.Size = new System.Drawing.Size(164, 22);
@@ -775,6 +777,7 @@
             // 
             // Rotation_MenuItem
             // 
+            this.Rotation_MenuItem.Enabled = false;
             this.Rotation_MenuItem.Name = "Rotation_MenuItem";
             this.Rotation_MenuItem.ShortcutKeyDisplayString = "r";
             this.Rotation_MenuItem.Size = new System.Drawing.Size(164, 22);
@@ -783,6 +786,7 @@
             // 
             // MiseE_MenuItem
             // 
+            this.MiseE_MenuItem.Enabled = false;
             this.MiseE_MenuItem.Name = "MiseE_MenuItem";
             this.MiseE_MenuItem.ShortcutKeyDisplayString = "e";
             this.MiseE_MenuItem.Size = new System.Drawing.Size(164, 22);
@@ -791,6 +795,7 @@
             // 
             // Duplication_MenuItem
             // 
+            this.Duplication_MenuItem.Enabled = false;
             this.Duplication_MenuItem.Name = "Duplication_MenuItem";
             this.Duplication_MenuItem.ShortcutKeyDisplayString = "c";
             this.Duplication_MenuItem.Size = new System.Drawing.Size(164, 22);

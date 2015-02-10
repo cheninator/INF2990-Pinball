@@ -27,7 +27,7 @@ namespace InterfaceGraphique
         public int panelWidth;
         private bool ctrlDown = false;
         private bool altDown = true;
-        // private char state = 's';
+        
         public List<int> propZJ = new List<int>{10,10,10,10,10,1};
         private float angleX = 0F;
         private float angleY = 0F;
@@ -201,9 +201,10 @@ namespace InterfaceGraphique
 
                 //state = 'z';
             }
-            if (e.KeyChar == 'o')
+            if (e.KeyChar == 'c')
             {
-                // state = 'o';
+                etat = null;
+                etat = new EtatDuplication(this);
             }
             if (e.KeyChar == 'h')
             {
@@ -954,7 +955,14 @@ namespace InterfaceGraphique
             Console.WriteLine("SELECTION: " + nbSelection);
             if (nbSelection != 1)
             {
-                outilsEnable(false);
+                if (nbSelection == 0)
+                {
+                    outilsEnable(false);
+                }
+                else
+                {
+                    outilsEnable(true);
+                }
                 proprietesEnable(false);
                 if (isSelected == 0)
                     playSound("no");
@@ -979,7 +987,7 @@ namespace InterfaceGraphique
         {
             nbSelection = FonctionsNatives.selectionMultiple();
             proprietesEnable(false);
-            if (nbSelection != 1)
+            if (nbSelection == 0)
             {
                 outilsEnable(false);
             }
@@ -1048,6 +1056,11 @@ namespace InterfaceGraphique
             bouton_Rotation.Enabled = active;
             bouton_Scaling.Enabled = active;
             bouton_Duplication.Enabled = active;
+            Duplication_MenuItem.Enabled = active;
+            Rotation_MenuItem.Enabled = active;
+            MiseE_MenuItem.Enabled = active;
+            Deplacement_MenuItem.Enabled = active;
+
         }
         private bool clickValide(Point origin, Point destination)
         {
