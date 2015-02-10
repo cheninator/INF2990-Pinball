@@ -51,7 +51,8 @@ namespace InterfaceGraphique
             InitializeComponent();
             Program.peutAfficher = true;
             etat = new EtatNone(this);
-            panel_GL.Focus();   
+            panel_GL.Select();
+            
             InitialiserAnimation();
             
             panelHeight = panel_GL.Size.Height;
@@ -177,38 +178,43 @@ namespace InterfaceGraphique
             if (e.KeyChar == 's')
             {
                 Selection_MenuItem_Click(this, e);
+       
             }
             if( e.KeyChar == 'd')
             {
                 etat = null;
                 etat = new EtatDeplacement(this);
+         
                 
-                //state = 'd';
+              
             }
             if (e.KeyChar == 'e')
             {
                 etat = null;
                 etat = new EtatScale(this);
+        
                 
-                //state = 'e';
+              
             }
             if( e.KeyChar == 'r')
             {
                 etat = null;
                 etat = new EtatRotation(this);
+           
             }
            
             if (e.KeyChar == 'z')
             {
                 etat = null;
                 etat = new EtatZoom(this);
-
-                //state = 'z';
+          
+                
             }
             if (e.KeyChar == 'c')
             {
                 etat = null;
                 etat = new EtatDuplication(this);
+           
             }
             if (e.KeyChar == 'h')
             {
@@ -384,9 +390,6 @@ namespace InterfaceGraphique
         private void panel_GL_MouseClick(object sender, MouseEventArgs e)
         {
             Console.Write(panel_GL.PointToClient(MousePosition));
-          //  Xbox.Text = panel_GL.PointToClient(MousePosition).X.ToString();
-          //  Ybox.Text = (panel_GL.PointToClient(MousePosition).Y).ToString();
-
             panel_GL.Focus();
         }
 
@@ -1194,7 +1197,10 @@ namespace InterfaceGraphique
         {
             Cursor = Cursors.Arrow;
         }
-
+        public void enableZoom(bool active)
+        {
+            zoom_Bar.Enabled = active;
+        }
 }
     // Full Screen
 
