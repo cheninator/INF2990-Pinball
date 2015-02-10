@@ -26,8 +26,8 @@ namespace InterfaceGraphique
         public int panelHeight;
         public int panelWidth;
         private bool ctrlDown = false;
-        private bool altDown = true;
-        
+        private bool altDown = false;
+        private bool sourisBoutonGaucheActive = false;
         public List<int> propZJ = new List<int>{10,10,10,10,10,1};
         private float angleX = 0F;
         private float angleY = 0F;
@@ -81,6 +81,8 @@ namespace InterfaceGraphique
                     FonctionsNatives.animer(tempsInterAffichage);
                     FonctionsNatives.dessinerOpenGL();
 
+                    if (etat is EtatZoom && sourisBoutonGaucheActive)
+                        rectangleElastique();
 
                     if (etat is EtatSelectionMultiple)
                        rectangleElastique();
@@ -114,6 +116,9 @@ namespace InterfaceGraphique
                     currentZoom = zoom_Bar.Value;
                     previousZoom = zoom_Bar.Value;
                 }
+                if (e.KeyData == Keys.Alt)
+                    altDown = true;
+
             }
                
                 if (e.KeyData == Keys.Left)
@@ -768,10 +773,10 @@ namespace InterfaceGraphique
             origin = panel_GL.PointToClient(MousePosition);
             //if( !(etat is EtatCreation))
             //    panel_GL.MouseMove += new MouseEventHandler(panel_MouseMove);   
-            
-            
-                    
-            
+
+
+            if (e.Button == MouseButtons.Left)
+                sourisBoutonGaucheActive = true;
             previousP.X = e.X;
             previousP.Y = e.Y;
             currentP.X = e.X;
@@ -847,10 +852,14 @@ namespace InterfaceGraphique
             }           
             if (e.Button == MouseButtons.Left)
             {
+               sourisBoutonGaucheActive = false;    
                Point destination = panel_GL.PointToClient(MousePosition);
                if (etat is EtatZoom && !(clickValide(origin,destination)))
                {
-                  FonctionsNatives.zoomOutElastique(origin.X, origin.Y, destination.X, destination.Y);
+                   if (!altDown)
+                       FonctionsNatives.zoomInElastique(origin.X, origin.Y, destination.X, destination.Y);
+                   else if (altDown) 
+                       FonctionsNatives.zoomOutElastique(origin.X, origin.Y, destination.X, destination.Y);
                }
                else if (etat is EtatSelectionMultiple)
                {
