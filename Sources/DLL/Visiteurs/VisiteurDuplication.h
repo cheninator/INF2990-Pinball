@@ -52,6 +52,8 @@ private:
 
 	ArbreRenduINF2990* arbreTemp;
 
+	double centreX, centreY;
+
 };
 
 #endif //__VISITEURS_VISITEURDUPLICATION_H__
