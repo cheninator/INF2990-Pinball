@@ -917,8 +917,8 @@ namespace InterfaceGraphique
 
         public void deplacementVueSouris(MouseEventArgs e)
         {
-            double deltaX = (-(currentP.X - previousP.X)) * 100.0 / panelWidth;
-            double deltaY = ((currentP.Y - previousP.Y)) * 100.0 / panelHeight;
+            double deltaX = (-(currentP.X - previousP.X)) * 100.0 / panel_GL.Size.Width;
+            double deltaY = ((currentP.Y - previousP.Y)) * 100.0 / panel_GL.Size.Height;
             FonctionsNatives.translater(deltaX, deltaY);
             
             previousP.X = currentP.X;
