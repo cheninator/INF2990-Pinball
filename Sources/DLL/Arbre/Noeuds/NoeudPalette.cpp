@@ -33,7 +33,7 @@
 NoeudPalette::NoeudPalette(const std::string& typeNoeud)
 	: NoeudComposite{ typeNoeud }
 {
-
+	ajustable_ = false;
 }
 
 ////////////////////////////////////////////////////////////////////////

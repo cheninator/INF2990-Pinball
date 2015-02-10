@@ -51,7 +51,7 @@ public:
 	/// Constructeur.
 	NoeudAbstrait(
 		const std::string& type = std::string{ "" }
-				);
+	);
 	/// Destructeur.
 	virtual ~NoeudAbstrait();
 
@@ -99,9 +99,12 @@ public:
 
 	/// Écrit si le noeud peut être modifié ou non.
 	void assignerEstModifiable(bool modif) { modifiable_ = modif; };
+
+	void assignerEstAjustable(bool ajust) { ajustable_ = ajust; };
 	/// Vérifie si le noeud est modifiable.
 	bool estModifiable() const { return modifiable_; };
-
+	// Vérifie qu'on peut agrandir l'objet
+	bool estAjustable() const{ return ajustable_; }
 	/// Assigne le modèle3D et la liste d'affichage du noeud courant
 	inline void assignerObjetRendu(modele::Modele3D const* modele, modele::opengl_storage::OpenGL_Liste const* liste);
 
@@ -210,6 +213,8 @@ protected:
 
 	/// Détermine si l'objet peut être modifié
 	bool             modifiable_{ true };
+
+	bool			ajustable_{ true };
 
 	/// Pointeur vers le parent.
 	NoeudAbstrait*   parent_{ nullptr };
