@@ -247,23 +247,36 @@ bool ArbreRenduINF2990::lireXML(tinyxml2::XMLDocument& doc)
 			for (int i = 0; i < nombreEnfants; i++)
 			{
 				// Construire le noeud concret
-				NoeudAbstrait* enfantTable{ creerNoeud(enfant->Name()) };
+				NoeudAbstrait* noeudConcret{ creerNoeud(enfant->Name()) };
 
 				// Assigner les propriétés de l'enfant
-				enfantTable->assignerPositionRelative({ enfant->FindAttribute(positionX)->DoubleValue(),
+				noeudConcret->assignerPositionRelative({ enfant->FindAttribute(positionX)->DoubleValue(),
 					enfant->FindAttribute(positionY)->DoubleValue(),
 					enfant->FindAttribute(positionZ)->DoubleValue() });
 
-				enfantTable->assignerEchelle({ enfant->FindAttribute(scaleX)->DoubleValue(),
+				noeudConcret->assignerEchelle({ enfant->FindAttribute(scaleX)->DoubleValue(),
 					enfant->FindAttribute(scaleY)->DoubleValue(),
 					enfant->FindAttribute(scaleZ)->DoubleValue() });
 
-				enfantTable->assignerRotation({ enfant->FindAttribute(angleX)->DoubleValue(),
+				noeudConcret->assignerRotation({ enfant->FindAttribute(angleX)->DoubleValue(),
 					enfant->FindAttribute(angleY)->DoubleValue(),
 					enfant->FindAttribute(angleZ)->DoubleValue() });
 
+				if (enfant->Name() == "portail")
+				{
+					// Nombre actuel d'enfants de la table
+					int enfantsTable = getEnfant(0)->obtenirNombreEnfants();
+
+					if (getEnfant(0)->chercher(enfantsTable - 1)->obtenirType() == "portail" 
+						&& getEnfant(0)->chercher(enfantsTable - 1)->getTwin() != nullptr)
+					{
+						noeudConcret->setTwin(getEnfant(0)->chercher(enfantsTable - 1));
+						getEnfant(0)->chercher(enfantsTable - 1)->setTwin(noeudConcret);
+					}
+				}
+
 				// Ajouter l'enfant à la table
-				table->ajouter(enfantTable);
+				table->ajouter(noeudConcret);
 
 				// Traiter le frère de droite de l'enfant
 				enfant = enfant->NextSiblingElement();
