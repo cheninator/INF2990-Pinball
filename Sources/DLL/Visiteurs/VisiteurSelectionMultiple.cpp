@@ -50,7 +50,7 @@ VisiteurSelectionMultiple::VisiteurSelectionMultiple(glm::dvec3 selectionBasGauc
 ///
 /// @fn VisiteurSelection::~VisiteurSelection()
 ///
-/// Destructeur vide 
+/// Destructeur vide.
 ///
 /// @return Aucune (destructeur).
 ///
@@ -64,12 +64,12 @@ VisiteurSelectionMultiple::~VisiteurSelectionMultiple()
 ////////////////////////////////////////////////////////////////////////
 ///
 /// @fn bool VisiteurSelectionMultiple::traiter(ArbreRenduINF2990* arbre)
-/// @brief Cette fonction traite l'arbre de rendu pour selectionner ses enfants
+/// @brief Cette fonction traite l'arbre de rendu pour selectionner ses enfants.
 ///
 /// Cette fonction retourne true pour dire que l'opération s'est
-/// fait correctement
+/// fait correctement.
 ///
-/// @return Retourne toujours true
+/// @return Retourne toujours true.
 ///
 ////////////////////////////////////////////////////////////////////////
 bool VisiteurSelectionMultiple::traiter(ArbreRenduINF2990* arbre)
@@ -87,12 +87,14 @@ bool VisiteurSelectionMultiple::traiter(ArbreRenduINF2990* arbre)
 ////////////////////////////////////////////////////////////////////////
 ///
 /// @fn bool VisiteurSelectionMultiple::traiter(NoeudTable* table)
-/// @brief Cette fonction traite l'arbre de rendu pour selectionner ses enfants
+/// @brief Cette fonction traite la table de l'arbre de rendu.
 ///
 /// Cette fonction retourne true pour dire que l'opération s'est
-/// fait correctement
+/// fait correctement.
 ///
-/// @return Retourne toujours true
+/// @param[in] table : Le noeud de type Table à traiter.
+///
+/// @return Retourne toujours true.
 ///
 ////////////////////////////////////////////////////////////////////////
 bool VisiteurSelectionMultiple::traiter(NoeudTable* table)
@@ -110,10 +112,12 @@ bool VisiteurSelectionMultiple::traiter(NoeudTable* table)
 ////////////////////////////////////////////////////////////////////////
 ///
 /// @fn bool VisiteurSelectionMultiple::traiter(NoeudAbstrait* noeud)
-/// @brief Cette fonction traite les enfants de l'arbre de rendu. Si ses enfants ont des enfants, ils seront aussi traités.
 ///
-/// Cette fonction retourne true pour dire que l'opération s'est
-/// fait correctement
+///	Cette fonction traite les enfants de l'arbre de rendu. Si ses enfants 
+/// ont des enfants, ils seront aussi traités. Cette fonction retourne true 
+/// si l'opération s'est faite correctement.
+///
+/// @param[in] noeud : Noeud de l'arbre à traiter.
 ///
 /// @return Retourne toujours true
 ///

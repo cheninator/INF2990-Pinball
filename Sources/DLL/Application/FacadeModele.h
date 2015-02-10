@@ -105,6 +105,9 @@ public:
    /// Pour la duplication d'objets selectionnés
    void dupliquerSelection(int i, int j);
 
+   /// Pour la sauvegarde de fichier XML
+   int creerXML(char* path, int prop[6]);
+
 private:
    /// Constructeur par défaut.
    FacadeModele() = default;

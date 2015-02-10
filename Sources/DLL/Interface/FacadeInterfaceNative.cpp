@@ -541,38 +541,7 @@ extern "C"
 	////////////////////////////////////////////////////////////////////////
 	__declspec(dllexport) int __cdecl creerXML(char* path, int length, int prop[6])
 	{
-		int sauvegardeAutorise;
-		calculerTransition();
-
-		// Ne pas permettre la sauvegarde si la zone ne contient pas au minimum les 3 objets
-		if (FacadeModele::obtenirInstance()->obtenirArbreRenduINF2990()->getEnfant(0)->obtenirNombreEnfants() < 3)
-		{
-			sauvegardeAutorise = 0;
-		}
-
-		// Ne pas permettre de sauvegarder la zone de jeu par défaut
-		else if (FacadeModele::obtenirInstance()->obtenirArbreRenduINF2990()->getEnfant(0)->chercher("generateurbille")
-			&& FacadeModele::obtenirInstance()->obtenirArbreRenduINF2990()->getEnfant(0)->chercher("trou")
-			&& FacadeModele::obtenirInstance()->obtenirArbreRenduINF2990()->getEnfant(0)->chercher("ressort")
-			&& FacadeModele::obtenirInstance()->obtenirArbreRenduINF2990()->getEnfant(0)->obtenirNombreEnfants() == 3)
-		{
-			sauvegardeAutorise = 1;
-		}
-
-		// Permettre la sauvegarde que lorsque il y a les 3 objets obligatoires + d'autres objets
-		else if (FacadeModele::obtenirInstance()->obtenirArbreRenduINF2990()->getEnfant(0)->chercher("generateurbille")
-			&& FacadeModele::obtenirInstance()->obtenirArbreRenduINF2990()->getEnfant(0)->chercher("trou")
-			&& FacadeModele::obtenirInstance()->obtenirArbreRenduINF2990()->getEnfant(0)->chercher("ressort")
-			&& FacadeModele::obtenirInstance()->obtenirArbreRenduINF2990()->getEnfant(0)->obtenirNombreEnfants() > 3)
-		{
-			VisiteurXML* visiteur = new VisiteurXML(std::string(path), prop);
-			FacadeModele::obtenirInstance()->obtenirArbreRenduINF2990()->accepterVisiteur(visiteur);
-			sauvegardeAutorise = 2;
-
-			delete visiteur;
-		}
-
-		return sauvegardeAutorise;
+		return FacadeModele::obtenirInstance()->creerXML(path, prop);
 	}
 
 
@@ -846,6 +815,7 @@ extern "C"
 				) {
 				objet = FacadeModele::obtenirInstance()->obtenirArbreRenduINF2990()->getEnfant(0)->chercher(j);
 				positionY = objet->obtenirPositionRelative().y;
+				
 			}
 		}
 

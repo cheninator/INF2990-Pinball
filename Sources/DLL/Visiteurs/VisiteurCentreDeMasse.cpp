@@ -43,16 +43,22 @@ VisiteurCentreDeMasse::~VisiteurCentreDeMasse()
 
 ////////////////////////////////////////////////////////////////////////
 ///
-/// @fn bool VisiteurCentreDeMasse::traiter(ArbreRenduINF2990* noeud)
+/// @fn bool VisiteurCentreDeMasse::traiter(ArbreRenduINF2990* arbre)
 ///
-/// @return Retourne toujours true
+/// Cette fonction traite l'arbre de rendu pour effectuer un agrandissement
+/// sur les objets selectionnés. Cette fonction retourne true pour dire que 
+/// l'opération s'est faite correctement.
+///
+/// @param[in] arbre : L'arbre de rendu à traiter.
+///
+/// @return Retourne toujours true.
 ///
 ////////////////////////////////////////////////////////////////////////
-bool VisiteurCentreDeMasse::traiter(ArbreRenduINF2990* noeud)
+bool VisiteurCentreDeMasse::traiter(ArbreRenduINF2990* arbre)
 {
-	for (unsigned int i = 0; i < noeud->obtenirNombreEnfants(); i++)
+	for (unsigned int i = 0; i < arbre->obtenirNombreEnfants(); i++)
 	{
-		noeud->getEnfant(i)->accepterVisiteur(this);
+		arbre->getEnfant(i)->accepterVisiteur(this);
 	}
 
 	return true;
@@ -63,7 +69,9 @@ bool VisiteurCentreDeMasse::traiter(ArbreRenduINF2990* noeud)
 /// @brief Cette fonction traite la table de l'arbre de rendu.
 ///
 /// Cette fonction retourne true pour dire que l'opération s'est
-/// faite correctement
+/// faite correctement.
+///
+/// @param[in] table : Le noeud de type Table à traiter.
 ///
 /// @return Retourne toujours true
 ///
@@ -80,7 +88,12 @@ bool VisiteurCentreDeMasse::traiter(NoeudTable* table)
 ////////////////////////////////////////////////////////////////////////
 ///
 /// @fn bool VisiteurCentreDeMasse::traiter(NoeudAbstrait* noeud)
-/// @brief Calcule le centre de masse (tous les noeuds ont une masse de 1)
+/// @brief Calcule le centre de masse (tous les noeuds ont une masse de 1).
+///
+/// Cette fonction retourne true pour dire que l'opération s'est
+/// faite correctement.
+///
+/// @param[in] noeud : noeud à traiter.
 ///
 /// @return Retourne toujours true
 ///

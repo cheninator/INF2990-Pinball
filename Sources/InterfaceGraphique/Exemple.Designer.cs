@@ -149,6 +149,7 @@
             this.panel_GL.TabIndex = 4;
             this.panel_GL.MouseClick += new System.Windows.Forms.MouseEventHandler(this.panel_GL_MouseClick);
             this.panel_GL.MouseDown += new System.Windows.Forms.MouseEventHandler(this.panel_GL_MouseDown);
+            this.panel_GL.MouseLeave += new System.EventHandler(this.panel_GL_MouseLeave);
             this.panel_GL.MouseUp += new System.Windows.Forms.MouseEventHandler(this.panel_GL_MouseUp);
             this.panel_GL.MouseWheel += new System.Windows.Forms.MouseEventHandler(this.panel_GL_MouseWheel);
             // 
@@ -166,6 +167,7 @@
             this.Creation_Panel.Size = new System.Drawing.Size(225, 614);
             this.Creation_Panel.TabIndex = 2;
             this.Creation_Panel.Visible = false;
+            this.Creation_Panel.MouseEnter += new System.EventHandler(this.Creation_Panel_MouseEnter);
             // 
             // Groupe_Palettes
             // 

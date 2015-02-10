@@ -35,7 +35,7 @@ VisiteurXML::VisiteurXML(std::string nom, int proprietes[])
 ///
 /// @fn VisiteurXML::~VisiteurXML()
 ///
-/// Destructeur vide .
+/// Destructeur vide.
 ///
 /// @return Aucune (destructeur).
 ///
@@ -51,12 +51,10 @@ VisiteurXML::~VisiteurXML()
 /// @fn bool VisiteurXML::traiter(ArbreRenduINF2990* arbre)
 ///
 /// Cette fonction traite l'arbre de rendu pour enregistrer ses enfants
-/// dans un fichier XML.
+/// dans un fichier XML. Cette fonction retourne true pour dire que l'opération s'est
+/// faite correctement, ou false si on ne permet pas la sauvegarde
 ///
-/// Cette fonction retourne true pour dire que l'opération s'est
-/// fait correctement, ou false si on ne permet pas la sauvegarde
-///
-/// @return Retourne true ou false
+/// @return Retourne true ou false.
 ///
 ////////////////////////////////////////////////////////////////////////
 bool VisiteurXML::traiter(ArbreRenduINF2990* arbre)
@@ -117,8 +115,8 @@ bool VisiteurXML::traiter(ArbreRenduINF2990* arbre)
 /// Cette fonction retourne true pour dire que l'opération s'est
 /// fait correctement.
 ///
-/// @param[in] noeud : Le noeud à traiter
-/// @param[in] parant : Le parent
+/// @param[in] noeud : Le noeud à traiter.
+/// @param[in] parant : L'élément parent du noeud.
 ///
 /// @return Retourne toujours true
 ///

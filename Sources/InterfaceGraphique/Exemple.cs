@@ -295,7 +295,7 @@ namespace InterfaceGraphique
 
             else
             {
-                MessageBox.Show("Vous ne pouvez pas sauvegarder la zone de jeu par défaut. Rajoutez des objets!", "ERREUR DE SAUVEGARDE",
+                MessageBox.Show("Vous ne pouvez pas sauvegarder la zone de jeu par défaut!", "ERREUR DE SAUVEGARDE",
                 MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
 
@@ -400,14 +400,14 @@ namespace InterfaceGraphique
 
         private void OK_prop_bouton_Click(object sender, EventArgs e)
         {
-            FonctionsNatives.deplacerSelection(
+          /*  FonctionsNatives.deplacerSelection(
                 FonctionsNatives.getPositionX(),
                 FonctionsNatives.getPositionY(),
                 Convert.ToInt32(Xbox.Text), 
                 Convert.ToInt32(Ybox.Text));
             
            
-            
+            */
         }
 
         public void Afficher_Objet(bool twin)
@@ -486,9 +486,9 @@ namespace InterfaceGraphique
         }
         private void Annuler_prop_boutn_Click(object sender, EventArgs e)
         {
-            Xbox.Text = FonctionsNatives.getPositionX().ToString();
-            Ybox.Text = FonctionsNatives.getPositionY().ToString();
-            Anglebox.Text = FonctionsNatives.getAngle().ToString();
+            Xbox.Text = Math.Round(FonctionsNatives.getPositionX()).ToString();
+            Ybox.Text = Math.Round(FonctionsNatives.getPositionY()).ToString();
+            Anglebox.Text = Math.Round(FonctionsNatives.getAngle()).ToString();
             FMEbox.Text = FonctionsNatives.getScale().ToString();
         }
 
@@ -803,6 +803,11 @@ namespace InterfaceGraphique
         private void panel_MouseMove(object sender, MouseEventArgs e)
         {
             currentP = panel_GL.PointToClient(MousePosition);
+            if (e.Button == MouseButtons.Right)
+            {
+                deplacementVueSouris(e);
+            }
+
             if (etat is EtatCreation)
             {
                 if (!(FonctionsNatives.verifierCliqueDansTable(e.X, e.Y)))
@@ -824,13 +829,13 @@ namespace InterfaceGraphique
 
             if (etat is EtatDeplacement && nbSelection == 1) 
             {
-                Xbox.Text = FonctionsNatives.getPositionX().ToString();
-                Ybox.Text = FonctionsNatives.getPositionY().ToString();
+                Xbox.Text = Math.Round(FonctionsNatives.getPositionX()).ToString();
+                Ybox.Text = Math.Round(FonctionsNatives.getPositionY()).ToString();
                 
             }
             if (etat is EtatRotation && nbSelection == 1)
             {
-                Anglebox.Text = FonctionsNatives.getAngle().ToString();
+                Anglebox.Text = Math.Round(FonctionsNatives.getAngle()).ToString();
             }
             if ( etat is EtatScale && nbSelection == 1)
             {
@@ -844,7 +849,7 @@ namespace InterfaceGraphique
             {
                 etat = new EtatZoom(this);
             }
-            if (!(etat is EtatSelectionMultiple ) && !(etat is EtatCreation))
+            if (!(etat is EtatSelectionMultiple ) && !(etat is EtatCreation) && !(etat is EtatSelection))
                 
                 etat.traiterSouris(e);
         }
@@ -868,7 +873,7 @@ namespace InterfaceGraphique
                }
                else if (etat is EtatSelectionMultiple)
                {
-                   Console.WriteLine("BOUNCE BITCH");
+                   
                    etat.traiterSouris(e);
                    etat = new EtatSelection(this);
                }
@@ -985,10 +990,17 @@ namespace InterfaceGraphique
             {
                 outilsEnable(true);
                 proprietesEnable(true);
-                Xbox.Text = FonctionsNatives.getPositionX().ToString();
-                Ybox.Text = FonctionsNatives.getPositionY().ToString();
-                Anglebox.Text = FonctionsNatives.getAngle().ToString();
+                Xbox.Text = Math.Round(FonctionsNatives.getPositionX()).ToString();
+               
+                Ybox.Text = Math.Round(FonctionsNatives.getPositionY()).ToString();
+               
+
+                Anglebox.Text = Math.Round(FonctionsNatives.getAngle()).ToString();
+               
+
                 FMEbox.Text = FonctionsNatives.getScale().ToString();
+           
+
             }
         }
 
@@ -1010,10 +1022,11 @@ namespace InterfaceGraphique
                 if (nbSelection == 1)
                 {
                     proprietesEnable(true);
-                    Xbox.Text = FonctionsNatives.getPositionX().ToString();
-                    Ybox.Text = FonctionsNatives.getPositionY().ToString();
-                    Anglebox.Text = FonctionsNatives.getAngle().ToString();
+                    Xbox.Text = Math.Round(FonctionsNatives.getPositionX()).ToString();
+                    Ybox.Text = Math.Round(FonctionsNatives.getPositionY()).ToString();
+                    Anglebox.Text = Math.Round(FonctionsNatives.getAngle()).ToString();
                     FMEbox.Text = FonctionsNatives.getScale().ToString();
+                   
                 }
                 outilsEnable(true);
             }
@@ -1136,6 +1149,16 @@ namespace InterfaceGraphique
                 path = "media/SFX/" + name + ".wav";
             StringBuilder music = new StringBuilder(path);
             FonctionsNatives.playSound(music, music.Capacity, stop);
+        }
+
+        private void Creation_Panel_MouseEnter(object sender, EventArgs e)
+        {
+            Cursor = Cursors.Arrow;
+        }
+
+        private void panel_GL_MouseLeave(object sender, EventArgs e)
+        {
+            Cursor = Cursors.Arrow;
         }
 
 }
@@ -1261,13 +1284,13 @@ namespace InterfaceGraphique
         public static extern void deselectAll();
 
         [DllImport(@"Noyau.dll", CallingConvention = CallingConvention.Cdecl)]
-        public static extern int getPositionX();
+        public static extern double getPositionX();
 
         [DllImport(@"Noyau.dll", CallingConvention = CallingConvention.Cdecl)]
-        public static extern int getPositionY();
+        public static extern double getPositionY();
 
         [DllImport(@"Noyau.dll", CallingConvention = CallingConvention.Cdecl)]
-        public static extern int getAngle();
+        public static extern double getAngle();
 
         [DllImport(@"Noyau.dll", CallingConvention = CallingConvention.Cdecl)]
         public static extern double getScale();

@@ -44,7 +44,7 @@ VisiteurDeplacement::VisiteurDeplacement(glm::dvec3 dep)
 ///
 /// @fn VisiteurDeplacement::~VisiteurDeplacement()
 ///
-/// Destructeur vide 
+/// Destructeur vide.
 ///
 /// @return Aucune (destructeur).
 ///
@@ -55,23 +55,24 @@ VisiteurDeplacement::~VisiteurDeplacement()
 }
 
 
-////////////////////////////////////////////////////////////////////////
+//////////////////////////////////////////////////////////////////////////////////
 ///
-/// @fn bool VisiteurDeplacement::traiter(ArbreRenduINF2990* noeud)
-/// @brief Cette fonction traite l'arbre de rendu pour deplacer ses enfants
-/// selectionnés
+/// @fn bool VisiteurDeplacement::traiter(ArbreRenduINF2990* arbre)
+/// @brief Cette fonction traite l'arbre de rendu pour deplacer ses enfants selectionnés.
 ///
 /// Cette fonction retourne true pour dire que l'opération s'est
-/// fait correctement
+/// fait correctement.
 ///
-/// @return Retourne toujours true
+/// @param[in] arbre : L'arbre de rendu à traiter.
 ///
-////////////////////////////////////////////////////////////////////////
-bool VisiteurDeplacement::traiter(ArbreRenduINF2990* noeud)
+/// @return Retourne toujours true.
+///
+//////////////////////////////////////////////////////////////////////////////////
+bool VisiteurDeplacement::traiter(ArbreRenduINF2990* arbre)
 {
-	for (unsigned int i = 0; i < noeud->obtenirNombreEnfants(); i++)
+	for (unsigned int i = 0; i < arbre->obtenirNombreEnfants(); i++)
 	{
-		traiter(noeud->getEnfant(i));
+		traiter(arbre->getEnfant(i));
 	}
 
 	return true;
@@ -82,11 +83,11 @@ bool VisiteurDeplacement::traiter(ArbreRenduINF2990* noeud)
 ///
 /// @fn bool VisiteurDeplacement::traiter(NoeudAbstrait* noeud)
 ///
-/// Cette fonction traite les enfants de l'arbre de rendu. Si ses enfants ont des enfants
-/// ils seront aussi traités.
+/// Cette fonction traite un noeud de l'arbre de rendu. Si ses enfants ont 
+/// des enfants, ils seront aussi traités. Cette fonction retourne true pour dire 
+/// que l'opération s'est faite correctement
 ///
-/// Cette fonction retourne true pour dire que l'opération s'est
-/// fait correctement
+/// @param[in] noeud : Noeud de l'arbre à traiter.
 ///
 /// @return Retourne toujours true
 ///

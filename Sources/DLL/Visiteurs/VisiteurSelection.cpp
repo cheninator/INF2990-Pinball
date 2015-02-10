@@ -25,7 +25,7 @@ VisiteurSelection::VisiteurSelection()
 }
 
 
-////////////////////////////////////////////////////////////////////////
+//////////////////////////////////////////////////////////////////////////////////
 ///
 /// @fn VisiteurSelection::VisiteurSelection(glm::dvec3 pointDansLeMonde, int valeurStencil)
 ///
@@ -35,7 +35,7 @@ VisiteurSelection::VisiteurSelection()
 ///
 /// @return Aucune (constructeur).
 ///
-////////////////////////////////////////////////////////////////////////
+//////////////////////////////////////////////////////////////////////////////////
 VisiteurSelection::VisiteurSelection(glm::dvec3 pointDansLeMonde, int valeurStencil)
 :nbObjetsSelectionne_{ 0 }
 {
@@ -62,12 +62,14 @@ VisiteurSelection::~VisiteurSelection()
 ////////////////////////////////////////////////////////////////////////
 ///
 /// @fn bool VisiteurSelection::traiter(ArbreRenduINF2990* arbre)
-/// @brief Cette fonction traite l'arbre de rendu pour visiter ses enfants
+/// @brief Cette fonction traite l'arbre de rendu pour visiter ses enfants.
 ///
 /// Cette fonction retourne true pour dire que l'opération s'est
-/// fait correctement
+/// fait correctement.
 ///
-/// @return Retourne toujours true
+/// @param[in] arbre : L'arbre de rendu à traiter.
+///
+/// @return Retourne toujours true.
 ///
 ////////////////////////////////////////////////////////////////////////
 bool VisiteurSelection::traiter(ArbreRenduINF2990* arbre)
@@ -86,7 +88,9 @@ bool VisiteurSelection::traiter(ArbreRenduINF2990* arbre)
 /// @brief Cette fonction traite la table de l'arbre de rendu.
 ///
 /// Cette fonction retourne true pour dire que l'opération s'est
-/// fait correctement
+/// fait correctement.
+///
+/// @param[in] table : Le noeud de type Table à traiter.
 ///
 /// @return Retourne toujours true
 ///
@@ -107,7 +111,9 @@ bool VisiteurSelection::traiter(NoeudTable* table)
 /// @brief Cette fonction traite les enfants de l'arbre de rendu. 
 ///
 /// Cette fonction retourne true pour dire que l'opération s'est
-/// fait correctement
+/// faite correctement.
+///
+/// @param[in] noeud : Noeud de l'arbre à traiter.
 ///
 /// @return Retourne toujours true
 ///

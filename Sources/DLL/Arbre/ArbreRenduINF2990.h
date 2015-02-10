@@ -66,6 +66,8 @@ public:
    static const std::string NOM_COUVERCLE; ///< Représente le type Couvercle
    static const std::string NOM_TABLE; ///< Représente le type Table
 
+   bool estDefaut() const;
+
 private:
 
 	/// Lire un fichier XML
@@ -73,6 +75,19 @@ private:
 
 	/// Propriétés de la zone de jeu
 	int* proprietes_ = new int[6];
+
+	// Zone de jeu par défaut
+	glm::dvec3 posRessort;
+	glm::dvec3 scaleRessort;
+	glm::dvec3 angleRessort;
+	glm::dvec3 posTrou;
+	glm::dvec3 scaleTrou;
+	glm::dvec3 angleTrou;
+	glm::dvec3 posGenerateur;
+	glm::dvec3 scaleGenerateur;
+	glm::dvec3 angleGenerateur;
+
+	void assignerDefaut();
 
 };
 
