@@ -737,6 +737,7 @@
             // 
             // Supprimer_MenuItem
             // 
+            this.Supprimer_MenuItem.Enabled = false;
             this.Supprimer_MenuItem.Name = "Supprimer_MenuItem";
             this.Supprimer_MenuItem.ShortcutKeys = System.Windows.Forms.Keys.Delete;
             this.Supprimer_MenuItem.Size = new System.Drawing.Size(153, 22);

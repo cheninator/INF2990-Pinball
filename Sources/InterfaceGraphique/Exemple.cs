@@ -80,7 +80,7 @@ namespace InterfaceGraphique
                 {
                     FonctionsNatives.animer(tempsInterAffichage);
                     FonctionsNatives.dessinerOpenGL();
-
+                  
 
                     if (etat is EtatSelectionMultiple)
                        rectangleElastique();
@@ -482,7 +482,10 @@ namespace InterfaceGraphique
         }
         private void Annuler_prop_boutn_Click(object sender, EventArgs e)
         {
-            FonctionsNatives.removeObject();
+            Xbox.Text = FonctionsNatives.getPositionX().ToString();
+            Ybox.Text = FonctionsNatives.getPositionY().ToString();
+            Anglebox.Text = FonctionsNatives.getAngle().ToString();
+            FMEbox.Text = FonctionsNatives.getScale().ToString();
         }
 
         private void Exemple_Load(object sender, EventArgs e)
@@ -1060,6 +1063,8 @@ namespace InterfaceGraphique
             Rotation_MenuItem.Enabled = active;
             MiseE_MenuItem.Enabled = active;
             Deplacement_MenuItem.Enabled = active;
+            Supprimer_MenuItem.Enabled = active;
+
 
         }
         private bool clickValide(Point origin, Point destination)
