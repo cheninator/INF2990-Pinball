@@ -510,3 +510,78 @@ void NoeudAbstrait::setTwin(NoeudAbstrait* twin)
 {
 	//	twin_ = twin;
 }
+
+////////////////////////////////////////////////////////////////////////
+///
+/// @fn void NoeudAbstrait::setTwin()
+///
+/// Cette fonction permet de definir un noeud jumeau
+///
+/// @param[in] dt : Prend un noeud abstrait.
+///
+/// @return Aucune
+///
+////////////////////////////////////////////////////////////////////////
+void NoeudAbstrait::obtenirVecteursBoite(glm::dvec3 &v1, glm::dvec3 &v2, glm::dvec3 &v3, glm::dvec3 &v4)
+{
+	//initialiser les vecteurs
+	v1 = boite_.coinMin;
+	v2.x = boite_.coinMin.x;
+	v2.y = boite_.coinMax.y;
+	v3 = boite_.coinMax;
+	v4.x = boite_.coinMax.x;
+	v4.y = boite_.coinMin.y;
+
+	//mise a l'echelle des vecteurs
+	v1 = v1 * scale_.x;
+	v2 = v2 * scale_.x;
+	v3 = v3 * scale_.x;
+	v4 = v4 * scale_.x;
+
+	//calcul matrice de rotation
+	double angleEnRadian = rotation_[2] * 2 * 3.14156 / 360;
+	glm::dmat3 transform = glm::dmat3{ glm::dvec3{ cos(angleEnRadian), -sin(angleEnRadian), 0.0 },
+										 glm::dvec3{ sin(angleEnRadian), cos(angleEnRadian), 0.0f },
+										 glm::dvec3{ 0.0, 0.0, 1.0 } };
+	
+	//applique la rotation aux vecteurs
+	v1 = transform * v1;
+	v2 = transform * v2;
+	v3 = transform * v3;
+	v4 = transform * v4;
+}
+
+////////////////////////////////////////////////////////////////////////
+///
+/// @fn void NoeudAbstrait::setTwin()
+///
+/// Cette fonction permet de definir un noeud jumeau
+///
+/// @param[in] dt : Prend un noeud abstrait.
+///
+/// @return Aucune
+///
+////////////////////////////////////////////////////////////////////////
+bool NoeudAbstrait::pointEstDansBoite(glm::dvec3 point)
+{
+	glm::dvec3 vecOP = point - positionRelative_;
+
+	//calcul matrice de rotation inverse
+	double angleEnRadian = -rotation_[2] * 2 * 3.14156 / 360;
+	glm::dmat3 transform = glm::dmat3{ glm::dvec3{ cos(angleEnRadian), -sin(angleEnRadian), 0.0 },
+		glm::dvec3{ sin(angleEnRadian), cos(angleEnRadian), 0.0f },
+		glm::dvec3{ 0.0, 0.0, 1.0 } };
+
+	//appliquer rotation inverse au vecteur
+	vecOP = transform * vecOP;
+
+	//appliquer la mise a l'echelle inverse
+	vecOP = vecOP / scale_.x;
+
+	//verifie si le vecteur est dans la boite
+	if (vecOP.x > boite_.coinMin.x && vecOP.x < boite_.coinMax.x &&
+		vecOP.y > boite_.coinMin.y && vecOP.y < boite_.coinMax.y)
+		return true;
+	else
+		return false;
+}

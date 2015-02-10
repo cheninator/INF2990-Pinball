@@ -21,6 +21,7 @@
 
 #include "glm\glm.hpp"
 #include "../../Visiteurs/VisiteurAbstrait.h"
+#include "Utilitaire.h"
 
 /// Déclarations avancées pour contenir un pointeur vers un modèle3D et sa liste
 /// d'affichage
@@ -156,6 +157,10 @@ public:
 	virtual NoeudAbstrait* getTwin();
 	/// Ajouter jumeau
 	virtual void setTwin(NoeudAbstrait* twin);
+	//Obtenir les 4 vecteurs de la boite englobante modifie
+	virtual void obtenirVecteursBoite(glm::dvec3 &v1, glm::dvec3 &v2, glm::dvec3 &v3, glm::dvec3 &v4);
+	//Verifie si un point est dans la boite englobante
+	virtual bool pointEstDansBoite(glm::dvec3 point);
 
 	modele::Modele3D const* obtenirModele() const;
 
@@ -164,6 +169,7 @@ public:
 	inline const glm::dvec3& NoeudAbstrait::obtenirRotation() const;
 
 	std::string getType(){ return type_; }
+
 protected:
 	/// Si jumeau
 	NoeudAbstrait* twin_;
@@ -211,6 +217,9 @@ protected:
 
 	/// Numéro d'instance.
 	int numeroNoeud_;
+
+	//boite englobante
+	utilitaire::BoiteEnglobante boite_;
 };
 
 
@@ -515,6 +524,7 @@ inline void NoeudAbstrait::assignerObjetRendu(modele::Modele3D const* modele, mo
 {
 	modele_ = modele;
 	liste_ = liste;
+	boite_ = utilitaire::calculerBoiteEnglobante(*modele_);
 }
 
 ////////////////////////////////////////////////////////////////////////
