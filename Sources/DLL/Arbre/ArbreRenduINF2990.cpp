@@ -262,21 +262,21 @@ bool ArbreRenduINF2990::lireXML(tinyxml2::XMLDocument& doc)
 					enfant->FindAttribute(angleY)->DoubleValue(),
 					enfant->FindAttribute(angleZ)->DoubleValue() });
 
-				if (enfant->Name() == "portail")
-				{
-					// Nombre actuel d'enfants de la table
-					int enfantsTable = getEnfant(0)->obtenirNombreEnfants();
-
-					if (getEnfant(0)->chercher(enfantsTable - 1)->obtenirType() == "portail" 
-						&& getEnfant(0)->chercher(enfantsTable - 1)->getTwin() != nullptr)
-					{
-						noeudConcret->setTwin(getEnfant(0)->chercher(enfantsTable - 1));
-						getEnfant(0)->chercher(enfantsTable - 1)->setTwin(noeudConcret);
-					}
-				}
-
 				// Ajouter l'enfant à la table
 				table->ajouter(noeudConcret);
+
+				if (noeudConcret->obtenirType() == "portail")
+				{
+					// Nombre actuel d'enfants de la table
+					unsigned int enfantsTable = getEnfant(0)->obtenirNombreEnfants();
+
+					if (table->chercher(enfantsTable - 2)->obtenirType() == "portail"
+						&& table->chercher(enfantsTable - 2)->getTwin() == nullptr)
+					{
+						noeudConcret->setTwin(table->chercher(enfantsTable - 2 ));
+						table->chercher(enfantsTable - 2)->setTwin(noeudConcret);
+					}
+				}
 
 				// Traiter le frère de droite de l'enfant
 				enfant = enfant->NextSiblingElement();
