@@ -296,7 +296,7 @@ namespace InterfaceGraphique
 
             else
             {
-                MessageBox.Show("Vous ne pouvez pas sauvegarder la zone de jeu par défaut. Rajoutez des objets!", "ERREUR DE SAUVEGARDE",
+                MessageBox.Show("Vous ne pouvez pas sauvegarder la zone de jeu par défaut!", "ERREUR DE SAUVEGARDE",
                 MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
 

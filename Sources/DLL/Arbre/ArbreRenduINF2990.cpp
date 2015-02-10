@@ -269,15 +269,46 @@ bool ArbreRenduINF2990::lireXML(tinyxml2::XMLDocument& doc)
 				enfant = enfant->NextSiblingElement();
 			}
 
-			getEnfant(0)->chercher("generateurbille")->assignerEstModifiable(false);
-			getEnfant(0)->chercher("ressort")->assignerEstModifiable(false);
-			getEnfant(0)->chercher("trou")->assignerEstModifiable(false);
-
 			lecture = true;
 
 		}
 
 	}
+	assignerDefaut();
 
 	return lecture;
+}
+
+
+
+bool ArbreRenduINF2990::estDefaut() const
+{
+	if (posRessort == chercher("ressort")->obtenirPositionRelative()
+		&& angleRessort == chercher("ressort")->obtenirRotation()
+		&& scaleRessort == chercher("ressort")->obtenirAgrandissement()
+		&& posTrou == chercher("trou")->obtenirPositionRelative()
+		&& angleTrou == chercher("trou")->obtenirRotation()
+		&& scaleTrou == chercher("trou")->obtenirAgrandissement()
+		&& posGenerateur == chercher("generateurbille")->obtenirPositionRelative()
+		&& angleGenerateur == chercher("generateurbille")->obtenirRotation()
+		&& scaleGenerateur == chercher("generateurbille")->obtenirAgrandissement()
+		)
+		return true;
+
+	else
+		return false;
+}
+
+
+void ArbreRenduINF2990::assignerDefaut()
+{
+	posRessort = chercher("ressort")->obtenirPositionRelative();
+	angleRessort = chercher("ressort")->obtenirRotation();
+	scaleRessort = chercher("ressort")->obtenirAgrandissement();
+	posTrou = chercher("trou")->obtenirPositionRelative();
+	angleTrou = chercher("trou")->obtenirRotation();
+	scaleTrou = chercher("trou")->obtenirAgrandissement();
+	posGenerateur = chercher("generateurbille")->obtenirPositionRelative();
+	angleGenerateur = chercher("generateurbille")->obtenirRotation();
+	scaleGenerateur = chercher("generateurbille")->obtenirAgrandissement();
 }
