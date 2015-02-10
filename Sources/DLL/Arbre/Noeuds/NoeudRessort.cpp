@@ -33,7 +33,7 @@
 NoeudRessort::NoeudRessort(const std::string& typeNoeud)
 	: NoeudComposite{ typeNoeud }
 {
-
+	assignerEstAjustable(false);
 }
 
 ////////////////////////////////////////////////////////////////////////

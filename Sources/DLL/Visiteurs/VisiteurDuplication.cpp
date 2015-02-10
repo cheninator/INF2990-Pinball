@@ -171,28 +171,85 @@ bool VisiteurDuplication::traiter(NoeudAbstrait* noeud)
 {
 	if (noeud->estSelectionne())
 	{
-		// Effectuer la copie
-		NoeudAbstrait* copie = arbreTemp->creerNoeud(noeud->obtenirType());
-		copie->assignerRotation(noeud->obtenirRotation());
-		copie->assignerEchelle(noeud->obtenirAgrandissement());
-		copie->assignerPositionRelative(noeud->obtenirPositionRelative());
+		// Copier le jumeau si il est selectionné
+		if (noeud->obtenirType() == "portail" && noeud->getTwin()->estSelectionne())
+		{
+			// Effectuer la copie du portail selectionné
+			NoeudAbstrait* copie = arbreTemp->creerNoeud(noeud->obtenirType());
+			copie->assignerRotation(noeud->obtenirRotation());
+			copie->assignerEchelle(noeud->obtenirAgrandissement());
+			copie->assignerPositionRelative(noeud->obtenirPositionRelative());
 
-		// Trouver les mins et max afin de trouver le centre de selection
-		if (maxX < noeud->obtenirPositionRelative().x)
-			maxX = noeud->obtenirPositionRelative().x;
+			// Effectuer la copie du jumeau
+			NoeudAbstrait* copieJumeau = arbreTemp->creerNoeud(noeud->obtenirType());
+			copieJumeau->assignerRotation(noeud->getTwin()->obtenirRotation());
+			copieJumeau->assignerEchelle(noeud->getTwin()->obtenirAgrandissement());
+			copieJumeau->assignerPositionRelative(noeud->getTwin()->obtenirPositionRelative());
 
-		if (minX > noeud->obtenirPositionRelative().x)
-			minX = noeud->obtenirPositionRelative().x;
+			// Relier les jumeaux
+			copieJumeau->setTwin(copie);
+			copie->setTwin(copieJumeau);
 
-		if (maxY < noeud->obtenirPositionRelative().y)
-			maxY = noeud->obtenirPositionRelative().y;
+			// Ajouter la copie dans une structure de donnée afin de traiter la duplication 
+			// multiple par la suite.
+			copies_.push_back(copie);
+			copies_.push_back(copieJumeau);
 
-		if (minY > noeud->obtenirPositionRelative().y)
-			minY = noeud->obtenirPositionRelative().y;
+			// Trouver les mins et max afin de trouver le centre de selection
+			if (maxX < noeud->obtenirPositionRelative().x)
+				maxX = noeud->obtenirPositionRelative().x;
 
-		// Ajouter la copie dans une structure de donnée afin de traiter la duplication 
-		// multiple par la suite.
-		copies_.push_back(copie);
+			if (minX > noeud->obtenirPositionRelative().x)
+				minX = noeud->obtenirPositionRelative().x;
+
+			if (maxY < noeud->obtenirPositionRelative().y)
+				maxY = noeud->obtenirPositionRelative().y;
+
+			if (minY > noeud->obtenirPositionRelative().y)
+				minY = noeud->obtenirPositionRelative().y;
+
+			if (maxX < noeud->getTwin()->obtenirPositionRelative().x)
+				maxX = noeud->getTwin()->obtenirPositionRelative().x;
+
+			if (minX > noeud->getTwin()->obtenirPositionRelative().x)
+				minX = noeud->getTwin()->obtenirPositionRelative().x;
+
+			if (maxY < noeud->getTwin()->obtenirPositionRelative().y)
+				maxY = noeud->getTwin()->obtenirPositionRelative().y;
+
+			if (minY > noeud->getTwin()->obtenirPositionRelative().y)
+				minY = noeud->getTwin()->obtenirPositionRelative().y;
+
+			noeud->getTwin()->assignerSelection(false);
+		}
+
+		else if (noeud->obtenirType() != "portail")
+		{
+			// Effectuer la copie
+			NoeudAbstrait* copie = arbreTemp->creerNoeud(noeud->obtenirType());
+			copie->assignerRotation(noeud->obtenirRotation());
+			copie->assignerEchelle(noeud->obtenirAgrandissement());
+			copie->assignerPositionRelative(noeud->obtenirPositionRelative());
+
+			// Ajouter la copie dans une structure de donnée afin de traiter la duplication 
+			// multiple par la suite.
+			copies_.push_back(copie);
+
+			// Trouver les mins et max afin de trouver le centre de selection
+			if (maxX < noeud->obtenirPositionRelative().x)
+				maxX = noeud->obtenirPositionRelative().x;
+
+			if (minX > noeud->obtenirPositionRelative().x)
+				minX = noeud->obtenirPositionRelative().x;
+
+			if (maxY < noeud->obtenirPositionRelative().y)
+				maxY = noeud->obtenirPositionRelative().y;
+
+			if (minY > noeud->obtenirPositionRelative().y)
+				minY = noeud->obtenirPositionRelative().y;
+		}
+
+		noeud->assignerSelection(false);
 	}
 
 	return true;

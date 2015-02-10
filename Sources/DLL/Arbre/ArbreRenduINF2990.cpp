@@ -270,9 +270,11 @@ bool ArbreRenduINF2990::lireXML(tinyxml2::XMLDocument& doc)
 					// Nombre actuel d'enfants de la table
 					unsigned int enfantsTable = getEnfant(0)->obtenirNombreEnfants();
 
+					// Interrogé l'enfant au dessus de lui
 					if (table->chercher(enfantsTable - 2)->obtenirType() == "portail"
 						&& table->chercher(enfantsTable - 2)->getTwin() == nullptr)
 					{
+						// Si c'est un portail et qu'il n'est pas relié, les relier tous les deux
 						noeudConcret->setTwin(table->chercher(enfantsTable - 2 ));
 						table->chercher(enfantsTable - 2)->setTwin(noeudConcret);
 					}
