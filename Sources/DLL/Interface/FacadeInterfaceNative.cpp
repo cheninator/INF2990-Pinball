@@ -285,6 +285,7 @@ extern "C"
 	///
 	/// @param[in]  value : Nom de l'objet
 	/// @param[in]  length : Taille du nom de l'objet
+	/// @param[in]  twin : si a un jumeau
 	///
 	/// Cette fonction permet de cree un objet 3D
 	///

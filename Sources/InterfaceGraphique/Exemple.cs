@@ -410,7 +410,7 @@ namespace InterfaceGraphique
             */
         }
 
-        public void Afficher_Objet(bool twin)
+        public void afficher_Objet(bool twin)
         {
             Console.WriteLine(myObjectName);
             FonctionsNatives.creerObjet(myObjectName, myObjectName.Capacity, twin);
@@ -1044,7 +1044,7 @@ namespace InterfaceGraphique
 
             if (FonctionsNatives.verifierCliqueDansTable(origin.X, origin.Y))
             {
-                Afficher_Objet(twin);
+                afficher_Objet(twin);
                 FonctionsNatives.positionObjet(panel_GL.PointToClient(MousePosition).X, panel_GL.PointToClient(MousePosition).Y, 0);
                 FonctionsNatives.rotate(angleX, 'x');
                 FonctionsNatives.rotate(angleY, 'y');
