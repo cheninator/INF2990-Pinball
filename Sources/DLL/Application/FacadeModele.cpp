@@ -645,5 +645,4 @@ void FacadeModele::dupliquerSelection(int i, int j)
 	// Visiter l'arbre et faire la duplication.
 	VisiteurDuplication visiteur(positionDansLeMonde);
 	arbre_->accepterVisiteur(&visiteur);
-	
 }

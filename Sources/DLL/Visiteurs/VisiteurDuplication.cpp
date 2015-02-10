@@ -118,7 +118,8 @@ bool VisiteurDuplication::traiter(NoeudTable* table)
 	{
 		std::cout << "Nombre d'objets : " << table->obtenirNombreEnfants() << std::endl;
 		copies_.front()->assignerPositionRelative(pointDansLeMonde_);
-		table->ajouter(copies_.front());
+		table->ajouter(copies_.back());
+		copies_.pop_back();
 		std::cout << "Nombre d'objets maintenant : " << table->obtenirNombreEnfants() << std::endl;
 	}
 
@@ -144,6 +145,8 @@ bool VisiteurDuplication::traiter(NoeudTable* table)
 			copies_[i]->assignerPositionRelative({posX + pointDansLeMonde_.x, posY + pointDansLeMonde_.y, 0.0});
 			table->ajouter(copies_[i]);
 		}
+
+		copies_.clear();
 	}
 
 	return true;
@@ -179,20 +182,19 @@ bool VisiteurDuplication::traiter(NoeudAbstrait* noeud)
 		copie->assignerPositionRelative(noeud->obtenirPositionRelative());
 
 		if (maxX < noeud->obtenirPositionRelative().x)
-			maxX = noeud->obtenirPositionRelative().x;
+		maxX = noeud->obtenirPositionRelative().x;
 
 		if (minX > noeud->obtenirPositionRelative().x)
-			minX = noeud->obtenirPositionRelative().x;
+		minX = noeud->obtenirPositionRelative().x;
 
 		if (maxY < noeud->obtenirPositionRelative().y)
-			maxY = noeud->obtenirPositionRelative().y;
+		maxY = noeud->obtenirPositionRelative().y;
 
 		if (minY > noeud->obtenirPositionRelative().y)
-			minY = noeud->obtenirPositionRelative().y;
+		minY = noeud->obtenirPositionRelative().y;
 
 		copies_.push_back(copie);
 	}
 
 	return true;
-
 }

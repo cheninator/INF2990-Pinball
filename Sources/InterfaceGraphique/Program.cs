@@ -47,7 +47,7 @@ namespace InterfaceGraphique
             Application.SetCompatibleTextRenderingDefault(false);
           
             mMenu = new MainMenu();
-                            
+
             Application.Run(mMenu);
 
         
