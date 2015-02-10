@@ -165,7 +165,7 @@ bool VisiteurDuplication::traiter(NoeudTable* table)
 ////////////////////////////////////////////////////////////////////////
 bool VisiteurDuplication::traiter(NoeudAbstrait* noeud)
 {
-	if (noeud->estSelectionne() && noeud->estModifiable())
+	if (noeud->estSelectionne())
 	{
 		// Effectuer la copie
 		NoeudAbstrait* copie = arbreTemp->creerNoeud(noeud->obtenirType());
