@@ -783,7 +783,7 @@ namespace InterfaceGraphique
             currentP.Y = e.Y;
             if (e.Button == MouseButtons.Left &&
             (etat is EtatSelection || etat is EtatDeplacement || etat is EtatRotation
-                    || etat is EtatScale)
+                    || etat is EtatScale || etat is EtatZoom)
             )
                 {
                     panel_GL.MouseMove += new MouseEventHandler(panel_MouseMove);
@@ -838,7 +838,10 @@ namespace InterfaceGraphique
             {
                 etat = new EtatSelectionMultiple(this);
             }
-
+            if (!(clickValide(origin, currentP)) && (etat is EtatZoom) && e.Button == MouseButtons.Left)
+            {
+                etat = new EtatZoom(this);
+            }
             if (!(etat is EtatSelectionMultiple ) && !(etat is EtatCreation))
                 
                 etat.traiterSouris(e);
