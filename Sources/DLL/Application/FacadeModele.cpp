@@ -349,6 +349,7 @@ void FacadeModele::reinitialiser()
 {
 	// Réinitialisation de la scène.
 	arbre_->initialiser();
+
 }
 
 
@@ -591,7 +592,7 @@ void FacadeModele::rectangleElastique(int x1, int y1, int x2, int y2)
 	glEnable(GL_BLEND);
 
 	glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
-	glColor4f(0.0, 1.0, 0.0, 0.2);
+	glColor4f(0.0F, 1.0F, 0.0F, 0.2F);
 	glRectd(selectionBasGauche_.x, selectionBasGauche_.y, selectionHautDroit_.x, selectionHautDroit_.y);
 
 	glDisable(GL_BLEND);
@@ -645,4 +646,58 @@ void FacadeModele::dupliquerSelection(int i, int j)
 	// Visiter l'arbre et faire la duplication.
 	VisiteurDuplication visiteur(positionDansLeMonde);
 	arbre_->accepterVisiteur(&visiteur);
+}
+
+
+///////////////////////////////////////////////////////////////////////////////
+///
+/// @fn void creerXML(char* path, int prop[6])
+///		Enregistre une zone de jeu en fichier XML
+///
+/// @return Aucune.
+///
+///////////////////////////////////////////////////////////////////////////////
+int FacadeModele::creerXML(char* path, int prop[6])
+{
+	int sauvegardeAutorise;
+
+	// Ne pas permettre la sauvegarde si la zone ne contient pas au minimum les 3 objets
+	if (FacadeModele::obtenirInstance()->obtenirArbreRenduINF2990()->getEnfant(0)->obtenirNombreEnfants() < 3)
+	{
+		sauvegardeAutorise = 0;
+	}
+
+	// Ne pas permettre de sauvegarder la zone de jeu par défaut
+	else if (FacadeModele::obtenirInstance()->obtenirArbreRenduINF2990()->getEnfant(0)->chercher("generateurbille")
+		&& FacadeModele::obtenirInstance()->obtenirArbreRenduINF2990()->getEnfant(0)->chercher("trou")
+		&& FacadeModele::obtenirInstance()->obtenirArbreRenduINF2990()->getEnfant(0)->chercher("ressort")
+		&& FacadeModele::obtenirInstance()->obtenirArbreRenduINF2990()->getEnfant(0)->obtenirNombreEnfants() == 3)
+	{
+		if (FacadeModele::obtenirInstance()->obtenirArbreRenduINF2990()->estDefaut())
+			sauvegardeAutorise = 1;
+
+		else
+		{
+			VisiteurXML* visiteur = new VisiteurXML(std::string(path), prop);
+			FacadeModele::obtenirInstance()->obtenirArbreRenduINF2990()->accepterVisiteur(visiteur);
+			sauvegardeAutorise = 2;
+
+			delete visiteur;
+		}
+	}
+
+	// Permettre la sauvegarde que lorsque il y a les 3 objets obligatoires + d'autres objets
+	else if (FacadeModele::obtenirInstance()->obtenirArbreRenduINF2990()->getEnfant(0)->chercher("generateurbille")
+		&& FacadeModele::obtenirInstance()->obtenirArbreRenduINF2990()->getEnfant(0)->chercher("trou")
+		&& FacadeModele::obtenirInstance()->obtenirArbreRenduINF2990()->getEnfant(0)->chercher("ressort")
+		&& FacadeModele::obtenirInstance()->obtenirArbreRenduINF2990()->getEnfant(0)->obtenirNombreEnfants() > 3)
+	{
+		VisiteurXML* visiteur = new VisiteurXML(std::string(path), prop);
+		FacadeModele::obtenirInstance()->obtenirArbreRenduINF2990()->accepterVisiteur(visiteur);
+		sauvegardeAutorise = 2;
+
+		delete visiteur;
+	}
+
+	return sauvegardeAutorise;
 }

@@ -66,7 +66,7 @@ ArbreRenduINF2990::ArbreRenduINF2990()
 	ajouterUsine(NOM_PORTAIL, new UsineNoeudPortail{ NOM_PORTAIL });
 	ajouterUsine(NOM_RESSORT, new UsineNoeudRessort{ NOM_RESSORT });
 	ajouterUsine(NOM_TROU, new UsineNoeudTrou{ NOM_TROU });
-	ajouterUsine(NOM_VIDE, new UsineNoeudTrou{ NOM_VIDE });
+	ajouterUsine(NOM_VIDE, new UsineNoeudVide{ NOM_VIDE });
 	ajouterUsine(NOM_COUVERCLE, new UsineNoeudCouvercle{ NOM_COUVERCLE });
 	ajouterUsine(NOM_TABLE, new UsineNoeudTable{ NOM_TABLE });
 }
@@ -104,9 +104,9 @@ void ArbreRenduINF2990::initialiser()
 	vider();
 
 	// Charger la zone de jeu par défaut
-	initialiserXML("default.xml");
-	NoeudAbstrait* noeud = creerNoeud("couvercle");
-	ajouter(noeud);
+	initialiserXML("Zones_de_jeu/default.xml");
+	/*NoeudAbstrait* noeud = creerNoeud("couvercle");
+	ajouter(noeud);*/
 
 }
 
@@ -247,37 +247,108 @@ bool ArbreRenduINF2990::lireXML(tinyxml2::XMLDocument& doc)
 			for (int i = 0; i < nombreEnfants; i++)
 			{
 				// Construire le noeud concret
-				NoeudAbstrait* enfantTable{ creerNoeud(enfant->Name()) };
+				NoeudAbstrait* noeudConcret{ creerNoeud(enfant->Name()) };
 
 				// Assigner les propriétés de l'enfant
-				enfantTable->assignerPositionRelative({ enfant->FindAttribute(positionX)->DoubleValue(),
+				noeudConcret->assignerPositionRelative({ enfant->FindAttribute(positionX)->DoubleValue(),
 					enfant->FindAttribute(positionY)->DoubleValue(),
 					enfant->FindAttribute(positionZ)->DoubleValue() });
 
-				enfantTable->assignerEchelle({ enfant->FindAttribute(scaleX)->DoubleValue(),
+				noeudConcret->assignerEchelle({ enfant->FindAttribute(scaleX)->DoubleValue(),
 					enfant->FindAttribute(scaleY)->DoubleValue(),
 					enfant->FindAttribute(scaleZ)->DoubleValue() });
 
-				enfantTable->assignerRotation({ enfant->FindAttribute(angleX)->DoubleValue(),
+				noeudConcret->assignerRotation({ enfant->FindAttribute(angleX)->DoubleValue(),
 					enfant->FindAttribute(angleY)->DoubleValue(),
 					enfant->FindAttribute(angleZ)->DoubleValue() });
 
+				if (enfant->Name() == "portail")
+				{
+					// Nombre actuel d'enfants de la table
+					int enfantsTable = getEnfant(0)->obtenirNombreEnfants();
+
+					if (getEnfant(0)->chercher(enfantsTable - 1)->obtenirType() == "portail" 
+						&& getEnfant(0)->chercher(enfantsTable - 1)->getTwin() != nullptr)
+					{
+						noeudConcret->setTwin(getEnfant(0)->chercher(enfantsTable - 1));
+						getEnfant(0)->chercher(enfantsTable - 1)->setTwin(noeudConcret);
+					}
+				}
+
 				// Ajouter l'enfant à la table
-				table->ajouter(enfantTable);
+				table->ajouter(noeudConcret);
 
 				// Traiter le frère de droite de l'enfant
 				enfant = enfant->NextSiblingElement();
 			}
 
-			getEnfant(0)->chercher("generateurbille")->assignerEstModifiable(false);
-			getEnfant(0)->chercher("ressort")->assignerEstModifiable(false);
-			getEnfant(0)->chercher("trou")->assignerEstModifiable(false);
-
 			lecture = true;
+		}
+		
+		// Tenter d'obtenir l'élément table, puis l'attribut nbEnfants
+		const tinyxml2::XMLElement* elementCouvercle{ elementArbre->LastChildElement("couvercle")};
 
+		if (elementCouvercle != nullptr)
+		{
+			NoeudAbstrait* couvercle{ creerNoeud(elementCouvercle->Name()) };
+			this->ajouter(couvercle);
 		}
 
 	}
 
+	assignerDefaut();
+
 	return lecture;
+}
+
+
+////////////////////////////////////////////////////////////////////////
+///
+/// @fn bool ArbreRenduINF2990::estDefaut()
+///
+/// Cette fonction dit si les elements de l'arbre constituent la 
+///	zone de jeu par défaut
+///
+/// @return TRUE : la zone est une zone par défaut. Autrement, FALSE
+///
+////////////////////////////////////////////////////////////////////////
+bool ArbreRenduINF2990::estDefaut() const
+{
+	if (posRessort == chercher("ressort")->obtenirPositionRelative()
+		&& angleRessort == chercher("ressort")->obtenirRotation()
+		&& scaleRessort == chercher("ressort")->obtenirAgrandissement()
+		&& posTrou == chercher("trou")->obtenirPositionRelative()
+		&& angleTrou == chercher("trou")->obtenirRotation()
+		&& scaleTrou == chercher("trou")->obtenirAgrandissement()
+		&& posGenerateur == chercher("generateurbille")->obtenirPositionRelative()
+		&& angleGenerateur == chercher("generateurbille")->obtenirRotation()
+		&& scaleGenerateur == chercher("generateurbille")->obtenirAgrandissement()
+		)
+		return true;
+
+	else
+		return false;
+}
+
+
+////////////////////////////////////////////////////////////////////////
+///
+/// @fn bool ArbreRenduINF2990::assignerDefaut()
+///
+/// Cette fonction définit ce qu'est une zone de jeu par défaut
+///
+/// @return VOID
+///
+////////////////////////////////////////////////////////////////////////
+void ArbreRenduINF2990::assignerDefaut()
+{
+	posRessort = chercher("ressort")->obtenirPositionRelative();
+	angleRessort = chercher("ressort")->obtenirRotation();
+	scaleRessort = chercher("ressort")->obtenirAgrandissement();
+	posTrou = chercher("trou")->obtenirPositionRelative();
+	angleTrou = chercher("trou")->obtenirRotation();
+	scaleTrou = chercher("trou")->obtenirAgrandissement();
+	posGenerateur = chercher("generateurbille")->obtenirPositionRelative();
+	angleGenerateur = chercher("generateurbille")->obtenirRotation();
+	scaleGenerateur = chercher("generateurbille")->obtenirAgrandissement();
 }

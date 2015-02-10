@@ -10,7 +10,7 @@
 #ifndef  __ARBRE_NOEUDS_NOEUDVIDE_H__
 #define  __ARBRE_NOEUDS_NOEUDVIDE_H__
 
-#include "NoeudComposite.h"
+#include "NoeudAbstrait.h"
 #include "Gl/gl.h"
 
 ///////////////////////////////////////////////////////////////////////////
@@ -48,4 +48,4 @@ private:
 	float angleRotation_{ 0.f };
 };
 
-#endif // __ARBRE_NOEUDS_NOEUDTROU_H__
+#endif // __ARBRE_NOEUDS_NOEUDVIDE_H__

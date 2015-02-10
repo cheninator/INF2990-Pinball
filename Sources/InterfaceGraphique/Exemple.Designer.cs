@@ -149,6 +149,7 @@
             this.panel_GL.TabIndex = 4;
             this.panel_GL.MouseClick += new System.Windows.Forms.MouseEventHandler(this.panel_GL_MouseClick);
             this.panel_GL.MouseDown += new System.Windows.Forms.MouseEventHandler(this.panel_GL_MouseDown);
+            this.panel_GL.MouseLeave += new System.EventHandler(this.panel_GL_MouseLeave);
             this.panel_GL.MouseUp += new System.Windows.Forms.MouseEventHandler(this.panel_GL_MouseUp);
             this.panel_GL.MouseWheel += new System.Windows.Forms.MouseEventHandler(this.panel_GL_MouseWheel);
             // 
@@ -166,6 +167,7 @@
             this.Creation_Panel.Size = new System.Drawing.Size(225, 614);
             this.Creation_Panel.TabIndex = 2;
             this.Creation_Panel.Visible = false;
+            this.Creation_Panel.MouseEnter += new System.EventHandler(this.Creation_Panel_MouseEnter);
             // 
             // Groupe_Palettes
             // 
@@ -453,6 +455,7 @@
             // zoom_Bar
             // 
             this.zoom_Bar.AutoSize = false;
+            this.zoom_Bar.Enabled = false;
             this.zoom_Bar.LargeChange = 1;
             this.zoom_Bar.Location = new System.Drawing.Point(13, 226);
             this.zoom_Bar.Maximum = 12;
@@ -637,7 +640,7 @@
             this.label1.Location = new System.Drawing.Point(3, 445);
             this.label1.Name = "label1";
             this.label1.Padding = new System.Windows.Forms.Padding(0, 3, 3, 0);
-            this.label1.Size = new System.Drawing.Size(159, 160);
+            this.label1.Size = new System.Drawing.Size(159, 227);
             this.label1.TabIndex = 0;
             this.label1.Text = resources.GetString("label1.Text");
             this.label1.Click += new System.EventHandler(this.label1_Click);
@@ -737,6 +740,7 @@
             // 
             // Supprimer_MenuItem
             // 
+            this.Supprimer_MenuItem.Enabled = false;
             this.Supprimer_MenuItem.Name = "Supprimer_MenuItem";
             this.Supprimer_MenuItem.ShortcutKeys = System.Windows.Forms.Keys.Delete;
             this.Supprimer_MenuItem.Size = new System.Drawing.Size(153, 22);

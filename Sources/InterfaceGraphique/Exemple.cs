@@ -51,7 +51,8 @@ namespace InterfaceGraphique
             InitializeComponent();
             Program.peutAfficher = true;
             etat = new EtatNone(this);
-            panel_GL.Focus();   
+            panel_GL.Select();
+            
             InitialiserAnimation();
             
             panelHeight = panel_GL.Size.Height;
@@ -59,7 +60,6 @@ namespace InterfaceGraphique
             etat = new EtatNone(this);
 
             //Musique
-            playSound(""); // Initialise le son
             playSound("music");
             playSound("stone"); // Pause probleme quand on ferme puis rouvre la fenetre
         }
@@ -109,7 +109,7 @@ namespace InterfaceGraphique
                 }
                 if ((e.KeyData == Keys.Add ||
                     e.KeyCode == Keys.Oemplus && e.Modifiers == Keys.Shift)
-                    && zoom_Bar.Value < 10)
+                    && zoom_Bar.Value < 12)
                 {
                     FonctionsNatives.zoomIn();
                     zoom_Bar.Value += 1;
@@ -162,6 +162,10 @@ namespace InterfaceGraphique
 
             if( e.KeyChar == (char)Keys.Escape)
             {
+                if (etat is EtatPortail)
+                {
+                    FonctionsNatives.removeObject();
+                }
                 etat = null;
                 etat = new EtatNone(this);
                 deselection();
@@ -178,38 +182,43 @@ namespace InterfaceGraphique
             if (e.KeyChar == 's')
             {
                 Selection_MenuItem_Click(this, e);
+       
             }
             if( e.KeyChar == 'd')
             {
                 etat = null;
                 etat = new EtatDeplacement(this);
+         
                 
-                //state = 'd';
+              
             }
             if (e.KeyChar == 'e')
             {
                 etat = null;
                 etat = new EtatScale(this);
+        
                 
-                //state = 'e';
+              
             }
             if( e.KeyChar == 'r')
             {
                 etat = null;
                 etat = new EtatRotation(this);
+           
             }
            
             if (e.KeyChar == 'z')
             {
                 etat = null;
                 etat = new EtatZoom(this);
-
-                //state = 'z';
+          
+                
             }
             if (e.KeyChar == 'c')
             {
                 etat = null;
                 etat = new EtatDuplication(this);
+           
             }
             if (e.KeyChar == 'h')
             {
@@ -253,16 +262,21 @@ namespace InterfaceGraphique
 
             OpenFileDialog ouvrir_fichier = new OpenFileDialog();
             ouvrir_fichier.Filter = "Fichier XML(*.xml)| *.xml| All files(*.*)|*.*";
+            string initPath = Application.StartupPath + @"\Zones_de_jeu";
+            ouvrir_fichier.InitialDirectory = Path.GetFullPath(initPath);
+            ouvrir_fichier.RestoreDirectory = true;
             if (ouvrir_fichier.ShowDialog() == DialogResult.OK)
             {
-                pathXML = new StringBuilder(ouvrir_fichier.FileName);
+               
+                    pathXML = new StringBuilder(ouvrir_fichier.FileName);
 
-                IntPtr prop = FonctionsNatives.ouvrirXML(pathXML, pathXML.Capacity);
-                int[] result = new int[6];
-                Marshal.Copy(prop, result, 0, 6);
+                    IntPtr prop = FonctionsNatives.ouvrirXML(pathXML, pathXML.Capacity);
+                    int[] result = new int[6];
+                    Marshal.Copy(prop, result, 0, 6);
 
-                for (int i = 0; i < 6; i++)
-                    propZJ[i] = result[i];
+                    for (int i = 0; i < 6; i++)
+                        propZJ[i] = result[i];
+               
             }
         }
 
@@ -285,18 +299,37 @@ namespace InterfaceGraphique
             {
                 SaveFileDialog enregistrer_fichier = new SaveFileDialog();
                 enregistrer_fichier.Filter = "Fichier XML(*.xml)| *.xml| All files(*.*)|*.*";
-                enregistrer_fichier.ShowDialog();
-                pathXML = new StringBuilder(enregistrer_fichier.FileName);
-                for (int i = 0; i < 6; i++)
-                    prop[i] = propZJ[i];
-
-                int a = FonctionsNatives.creerXML(pathXML, pathXML.Capacity, prop);
                 
+                //Console.WriteLine(initial);
+                string initPath = Application.StartupPath + @"\Zones_de_jeu";
+                enregistrer_fichier.InitialDirectory = Path.GetFullPath(initPath);
+                enregistrer_fichier.RestoreDirectory = true;
+                enregistrer_fichier.OverwritePrompt = false;
+                enregistrer_fichier.ShowDialog();
+                
+                string fileName = Path.GetFileName(enregistrer_fichier.FileName);
+                Console.WriteLine(fileName);
+
+                if (!(fileName == "default.xml"))
+                {
+                    enregistrer_fichier.OverwritePrompt = true;
+                    pathXML = new StringBuilder(enregistrer_fichier.FileName);
+                    for (int i = 0; i < 6; i++)
+                        prop[i] = propZJ[i];
+
+                    FonctionsNatives.creerXML(pathXML, pathXML.Capacity, prop);
+                }
+
+                else
+                {
+                    MessageBox.Show("Vous ne pouvez pas sauvegarder sur la zone de jeu par défaut!", "ERREUR DE SAUVEGARDE",
+                    MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
             }
 
             else
             {
-                MessageBox.Show("Vous ne pouvez pas sauvegarder la zone de jeu par défaut. Rajoutez des objets!", "ERREUR DE SAUVEGARDE",
+                MessageBox.Show("Vous ne pouvez pas sauvegarder la zone de jeu par défaut!", "ERREUR DE SAUVEGARDE",
                 MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
 
@@ -361,9 +394,6 @@ namespace InterfaceGraphique
         private void panel_GL_MouseClick(object sender, MouseEventArgs e)
         {
             Console.Write(panel_GL.PointToClient(MousePosition));
-          //  Xbox.Text = panel_GL.PointToClient(MousePosition).X.ToString();
-          //  Ybox.Text = (panel_GL.PointToClient(MousePosition).Y).ToString();
-
             panel_GL.Focus();
         }
 
@@ -401,17 +431,17 @@ namespace InterfaceGraphique
 
         private void OK_prop_bouton_Click(object sender, EventArgs e)
         {
-            FonctionsNatives.deplacerSelection(
+          /*  FonctionsNatives.deplacerSelection(
                 FonctionsNatives.getPositionX(),
                 FonctionsNatives.getPositionY(),
                 Convert.ToInt32(Xbox.Text), 
                 Convert.ToInt32(Ybox.Text));
             
            
-            
+            */
         }
 
-        public void Afficher_Objet(bool twin)
+        public void afficher_Objet(bool twin)
         {
             Console.WriteLine(myObjectName);
             FonctionsNatives.creerObjet(myObjectName, myObjectName.Capacity, twin);
@@ -487,7 +517,10 @@ namespace InterfaceGraphique
         }
         private void Annuler_prop_boutn_Click(object sender, EventArgs e)
         {
-            FonctionsNatives.removeObject();
+            Xbox.Text = Math.Round(FonctionsNatives.getPositionX()).ToString();
+            Ybox.Text = Math.Round(FonctionsNatives.getPositionY()).ToString();
+            Anglebox.Text = Math.Round(FonctionsNatives.getAngle()).ToString();
+            FMEbox.Text = FonctionsNatives.getScale().ToString();
         }
 
         private void Exemple_Load(object sender, EventArgs e)
@@ -773,7 +806,10 @@ namespace InterfaceGraphique
             origin = panel_GL.PointToClient(MousePosition);
             //if( !(etat is EtatCreation))
             //    panel_GL.MouseMove += new MouseEventHandler(panel_MouseMove);   
-
+            if (etat is EtatPortail)
+            {
+                etat = new EtatSelection(this);
+            }
 
             if (e.Button == MouseButtons.Left)
                 sourisBoutonGaucheActive = true;
@@ -801,6 +837,11 @@ namespace InterfaceGraphique
         private void panel_MouseMove(object sender, MouseEventArgs e)
         {
             currentP = panel_GL.PointToClient(MousePosition);
+            if (e.Button == MouseButtons.Right)
+            {
+                deplacementVueSouris(e);
+            }
+
             if (etat is EtatCreation)
             {
                 if (!(FonctionsNatives.verifierCliqueDansTable(e.X, e.Y)))
@@ -822,13 +863,13 @@ namespace InterfaceGraphique
 
             if (etat is EtatDeplacement && nbSelection == 1) 
             {
-                Xbox.Text = FonctionsNatives.getPositionX().ToString();
-                Ybox.Text = FonctionsNatives.getPositionY().ToString();
+                Xbox.Text = Math.Round(FonctionsNatives.getPositionX()).ToString();
+                Ybox.Text = Math.Round(FonctionsNatives.getPositionY()).ToString();
                 
             }
             if (etat is EtatRotation && nbSelection == 1)
             {
-                Anglebox.Text = FonctionsNatives.getAngle().ToString();
+                Anglebox.Text = Math.Round(FonctionsNatives.getAngle()).ToString();
             }
             if ( etat is EtatScale && nbSelection == 1)
             {
@@ -842,7 +883,7 @@ namespace InterfaceGraphique
             {
                 etat = new EtatZoom(this);
             }
-            if (!(etat is EtatSelectionMultiple ) && !(etat is EtatCreation))
+            if (!(etat is EtatSelectionMultiple ) && !(etat is EtatCreation) && !(etat is EtatSelection))
                 
                 etat.traiterSouris(e);
         }
@@ -866,7 +907,7 @@ namespace InterfaceGraphique
                }
                else if (etat is EtatSelectionMultiple)
                {
-                   Console.WriteLine("BOUNCE BITCH");
+                   
                    etat.traiterSouris(e);
                    etat = new EtatSelection(this);
                }
@@ -914,8 +955,8 @@ namespace InterfaceGraphique
 
         public void deplacementVueSouris(MouseEventArgs e)
         {
-            double deltaX = (-(currentP.X - previousP.X)) * 100.0 / panelWidth;
-            double deltaY = ((currentP.Y - previousP.Y)) * 100.0 / panelHeight;
+            double deltaX = (-(currentP.X - previousP.X)) * 100.0 / panel_GL.Size.Width;
+            double deltaY = ((currentP.Y - previousP.Y)) * 100.0 / panel_GL.Size.Height;
             FonctionsNatives.translater(deltaX, deltaY);
             
             previousP.X = currentP.X;
@@ -983,10 +1024,17 @@ namespace InterfaceGraphique
             {
                 outilsEnable(true);
                 proprietesEnable(true);
-                Xbox.Text = FonctionsNatives.getPositionX().ToString();
-                Ybox.Text = FonctionsNatives.getPositionY().ToString();
-                Anglebox.Text = FonctionsNatives.getAngle().ToString();
+                Xbox.Text = Math.Round(FonctionsNatives.getPositionX()).ToString();
+               
+                Ybox.Text = Math.Round(FonctionsNatives.getPositionY()).ToString();
+               
+
+                Anglebox.Text = Math.Round(FonctionsNatives.getAngle()).ToString();
+               
+
                 FMEbox.Text = FonctionsNatives.getScale().ToString();
+           
+
             }
         }
 
@@ -1008,10 +1056,11 @@ namespace InterfaceGraphique
                 if (nbSelection == 1)
                 {
                     proprietesEnable(true);
-                    Xbox.Text = FonctionsNatives.getPositionX().ToString();
-                    Ybox.Text = FonctionsNatives.getPositionY().ToString();
-                    Anglebox.Text = FonctionsNatives.getAngle().ToString();
+                    Xbox.Text = Math.Round(FonctionsNatives.getPositionX()).ToString();
+                    Ybox.Text = Math.Round(FonctionsNatives.getPositionY()).ToString();
+                    Anglebox.Text = Math.Round(FonctionsNatives.getAngle()).ToString();
                     FMEbox.Text = FonctionsNatives.getScale().ToString();
+                   
                 }
                 outilsEnable(true);
             }
@@ -1029,7 +1078,7 @@ namespace InterfaceGraphique
 
             if (FonctionsNatives.verifierCliqueDansTable(origin.X, origin.Y))
             {
-                Afficher_Objet(twin);
+                afficher_Objet(twin);
                 FonctionsNatives.positionObjet(panel_GL.PointToClient(MousePosition).X, panel_GL.PointToClient(MousePosition).Y, 0);
                 FonctionsNatives.rotate(angleX, 'x');
                 FonctionsNatives.rotate(angleY, 'y');
@@ -1050,7 +1099,17 @@ namespace InterfaceGraphique
             if (pathXML.ToString() == "")
                 EnregistrerSous();
             else
-                FonctionsNatives.creerXML(pathXML, pathXML.Capacity, prop);
+            {
+                if (pathXML.ToString().Substring(pathXML.ToString().Length - 11) == "default.xml")
+                {
+                    MessageBox.Show("Il ne faut pas sauvegarder par dessus la zone par defaut", "ERREUR DE SAUVEGARDE",
+                MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+                else
+                {
+                    FonctionsNatives.creerXML(pathXML, pathXML.Capacity, prop);
+                }
+            }
         }
 
         public void proprietesEnable(bool active)
@@ -1072,6 +1131,8 @@ namespace InterfaceGraphique
             Rotation_MenuItem.Enabled = active;
             MiseE_MenuItem.Enabled = active;
             Deplacement_MenuItem.Enabled = active;
+            Supprimer_MenuItem.Enabled = active;
+
 
         }
         private bool clickValide(Point origin, Point destination)
@@ -1134,6 +1195,23 @@ namespace InterfaceGraphique
             FonctionsNatives.playSound(music, music.Capacity, stop);
         }
 
+        private void Creation_Panel_MouseEnter(object sender, EventArgs e)
+        {
+            Cursor = Cursors.Arrow;
+        }
+
+        private void panel_GL_MouseLeave(object sender, EventArgs e)
+        {
+            Cursor = Cursors.Arrow;
+        }
+        public void enableZoom(bool active)
+        {
+            zoom_Bar.Enabled = active;
+        }
+        public void statePortail()
+        {
+            etat = new EtatPortail(this);
+        }
 }
     // Full Screen
 
@@ -1257,13 +1335,13 @@ namespace InterfaceGraphique
         public static extern void deselectAll();
 
         [DllImport(@"Noyau.dll", CallingConvention = CallingConvention.Cdecl)]
-        public static extern int getPositionX();
+        public static extern double getPositionX();
 
         [DllImport(@"Noyau.dll", CallingConvention = CallingConvention.Cdecl)]
-        public static extern int getPositionY();
+        public static extern double getPositionY();
 
         [DllImport(@"Noyau.dll", CallingConvention = CallingConvention.Cdecl)]
-        public static extern int getAngle();
+        public static extern double getAngle();
 
         [DllImport(@"Noyau.dll", CallingConvention = CallingConvention.Cdecl)]
         public static extern double getScale();

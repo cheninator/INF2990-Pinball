@@ -44,7 +44,7 @@
             this.bouton_config.FlatAppearance.BorderSize = 0;
             this.bouton_config.FlatAppearance.MouseOverBackColor = System.Drawing.Color.ForestGreen;
             this.bouton_config.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.bouton_config.Font = new System.Drawing.Font("OCR A Extended", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.bouton_config.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.bouton_config.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
             this.bouton_config.Location = new System.Drawing.Point(0, 391);
             this.bouton_config.Name = "bouton_config";
@@ -58,7 +58,7 @@
             this.bouton_edit.FlatAppearance.BorderSize = 0;
             this.bouton_edit.FlatAppearance.MouseOverBackColor = System.Drawing.SystemColors.ButtonFace;
             this.bouton_edit.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.bouton_edit.Font = new System.Drawing.Font("OCR A Extended", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.bouton_edit.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.bouton_edit.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.bouton_edit.Location = new System.Drawing.Point(0, 322);
             this.bouton_edit.Name = "bouton_edit";
@@ -75,7 +75,7 @@
             this.bouton_quit.FlatAppearance.BorderSize = 0;
             this.bouton_quit.FlatAppearance.MouseOverBackColor = System.Drawing.SystemColors.ButtonFace;
             this.bouton_quit.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.bouton_quit.Font = new System.Drawing.Font("OCR A Extended", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.bouton_quit.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.bouton_quit.Location = new System.Drawing.Point(0, 463);
             this.bouton_quit.Name = "bouton_quit";
             this.bouton_quit.Size = new System.Drawing.Size(384, 71);
@@ -104,7 +104,7 @@
             this.bouton_pRapide.FlatAppearance.BorderSize = 0;
             this.bouton_pRapide.FlatAppearance.MouseOverBackColor = System.Drawing.Color.ForestGreen;
             this.bouton_pRapide.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.bouton_pRapide.Font = new System.Drawing.Font("OCR A Extended", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.bouton_pRapide.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.bouton_pRapide.Location = new System.Drawing.Point(0, 247);
             this.bouton_pRapide.Name = "bouton_pRapide";
             this.bouton_pRapide.Size = new System.Drawing.Size(384, 75);
@@ -118,7 +118,7 @@
             this.bouton_campagne.FlatAppearance.BorderSize = 0;
             this.bouton_campagne.FlatAppearance.MouseOverBackColor = System.Drawing.Color.ForestGreen;
             this.bouton_campagne.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.bouton_campagne.Font = new System.Drawing.Font("OCR A Extended", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.bouton_campagne.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.bouton_campagne.Location = new System.Drawing.Point(0, 176);
             this.bouton_campagne.Name = "bouton_campagne";
             this.bouton_campagne.Size = new System.Drawing.Size(384, 73);
@@ -145,6 +145,7 @@
             this.MinimumSize = new System.Drawing.Size(400, 300);
             this.Name = "MainMenu";
             this.Text = "PainBall";
+            this.Shown += new System.EventHandler(this.MainMenu_Shown);
             this.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.Form1_KeyPress);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);

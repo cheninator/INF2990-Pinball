@@ -15,7 +15,7 @@ namespace InterfaceGraphique
         public Etat(Exemple form) { 
             form_ = form;
             form_.Cursor = Cursors.Arrow;
-          
+            form_.enableZoom(false);
         }
 
         public virtual bool traiterClavier(KeyEventArgs e) 
@@ -58,7 +58,29 @@ namespace InterfaceGraphique
            
         }
 
+    }
+
+    class EtatPortail : Etat
+    {
+        public EtatPortail(Exemple form) : base(form) { }
+
+        public override bool traiterClavier(KeyEventArgs e)
+        {
+
+            // Traiter le déplacement par clavier
+            return base.traiterClavier(e);
+        }
+
+        public override bool traiterSouris(MouseEventArgs e)
+        {
+            form_.deplacementSouris(e);
+            return true;
+
+        }
+
     } 
+
+
 
     class EtatSelection : Etat 
     {
@@ -146,6 +168,7 @@ namespace InterfaceGraphique
                 if (Exemple.myObjectName.ToString() == "portail")
                 {
                     form_.creationObjet(e, true);
+                    form_.statePortail();
                 }
             }
             else if (e.Button == MouseButtons.Right)
@@ -159,7 +182,9 @@ namespace InterfaceGraphique
     class EtatZoom : Etat
     {
 
-        public EtatZoom(Exemple form) : base(form) { }
+        public EtatZoom(Exemple form) : base(form) {
+            form_.enableZoom(true);
+        }
 
 
         public override bool traiterClavier(KeyEventArgs e)
@@ -188,7 +213,9 @@ namespace InterfaceGraphique
 
     class EtatDuplication : Etat
     {
-        public EtatDuplication(Exemple form) : base(form) { }
+        public EtatDuplication(Exemple form) : base(form) {
+          
+        }
 
         public override bool traiterClavier(KeyEventArgs e)
         {

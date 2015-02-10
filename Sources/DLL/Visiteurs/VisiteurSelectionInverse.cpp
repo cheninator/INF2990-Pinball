@@ -25,7 +25,7 @@ VisiteurSelectionInverse::VisiteurSelectionInverse()
 }
 
 
-////////////////////////////////////////////////////////////////////////
+//////////////////////////////////////////////////////////////////////////////////
 ///
 /// @fn VisiteurSelectionInverse::VisiteurSelectionInverse(glm::dvec3 pointDansLeMonde, int valeurStencil)
 ///
@@ -36,7 +36,7 @@ VisiteurSelectionInverse::VisiteurSelectionInverse()
 ///
 /// @return Aucune (constructeur).
 ///
-////////////////////////////////////////////////////////////////////////
+//////////////////////////////////////////////////////////////////////////////////
 VisiteurSelectionInverse::VisiteurSelectionInverse(glm::dvec3 pointDansLeMonde, int valeurStencil)
 :nbObjetsSelectionne_{ 0 }
 {
@@ -68,7 +68,7 @@ VisiteurSelectionInverse::~VisiteurSelectionInverse()
 /// Cette fonction retourne true pour dire que l'opération s'est
 /// fait correctement.
 ///
-/// @param[in] arbre : l'arbre de rendu à parcourir.
+/// @param[in] arbre : L'arbre de rendu à traiter.
 ///
 /// @return Retourne toujours true
 ///
@@ -122,12 +122,12 @@ bool VisiteurSelectionInverse::traiter(NoeudTable* table)
 ////////////////////////////////////////////////////////////////////////
 ///
 /// @fn bool VisiteurSelectionInverse::traiter(NoeudAbstrait* noeud)
-/// @brief Cette fonction traite les enfants de l'arbre de rendu. Si ses enfants ont des enfants, ils seront aussi traités.
 ///
-/// Cette fonction retourne true pour dire que l'opération s'est
-/// fait correctement.
+/// Cette fonction traite un noeud de l'arbre de rendu. Si ses enfants ont 
+/// des enfants ils seront aussi traités. Cette fonction retourne true pour dire que 
+/// l'opération s'est faite correctement.
 ///
-/// @param[in] noeud : Le noeuf à traiter.
+/// @param[in] noeud : Noeud de l'arbre à traiter.
 ///
 /// @return Retourne toujours true
 ///

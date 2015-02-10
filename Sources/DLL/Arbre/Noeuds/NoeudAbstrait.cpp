@@ -403,11 +403,11 @@ void NoeudAbstrait::afficher() const
 			positionRelative_[0], positionRelative_[1], positionRelative_[2]
 			);
 
-		glScalef(scale_[0], scale_[1], scale_[2]);
+		glScaled(scale_[0], scale_[1], scale_[2]);
 
-		glRotatef(rotation_[0], 1.0, 0.0, 0.0);
-		glRotatef(rotation_[1], 0.0, 1.0, 0.0);
-		glRotatef(rotation_[2], 0.0, 0.0, 1.0);
+		glRotated(rotation_[0], 1.0F, 0.0F, 0.0F);
+		glRotated(rotation_[1], 0.0F, 1.0F, 0.0F);
+		glRotated(rotation_[2], 0.0F, 0.0F, 1.0F);
 
 		// Assignation du mode d'affichage des polygones
 		glPolygonMode(GL_FRONT_AND_BACK, modePolygones_);
@@ -490,7 +490,8 @@ bool NoeudAbstrait::accepterVisiteur(VisiteurAbstrait* vis)
 ////////////////////////////////////////////////////////////////////////
 NoeudAbstrait* NoeudAbstrait::getTwin()
 {
-	return twin_;
+	return NULL;
+	//	return twin_;
 }
 
 
@@ -507,5 +508,5 @@ NoeudAbstrait* NoeudAbstrait::getTwin()
 ////////////////////////////////////////////////////////////////////////
 void NoeudAbstrait::setTwin(NoeudAbstrait* twin)
 {
-	twin_ = twin;
+	//	twin_ = twin;
 }

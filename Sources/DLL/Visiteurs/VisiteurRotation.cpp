@@ -46,7 +46,7 @@ VisiteurRotation::VisiteurRotation(glm::dvec3 angles)
 ///
 /// @fn VisiteurRotation::~VisiteurRotation()
 ///
-/// Destructeur vide 
+/// Destructeur vide.
 ///
 /// @return Aucune (destructeur).
 ///
@@ -59,22 +59,22 @@ VisiteurRotation::~VisiteurRotation()
 
 ////////////////////////////////////////////////////////////////////////
 ///
-/// @fn bool VisiteurRotation::traiter(ArbreRenduINF2990* noeud)
+/// @fn bool VisiteurRotation::traiter(ArbreRenduINF2990* arbre)
 ///
 /// Cette fonction traite l'arbre de rendu pour effectuer une rotation sur ses enfants
-/// selectionnés
+/// selectionnés. Cette fonction retourne true pour dire que l'opération s'est
+/// faite correctement.
 ///
-/// Cette fonction retourne true pour dire que l'opération s'est
-/// fait correctement
+/// @param[in] arbre : L'arbre de rendu à traiter.
 ///
-/// @return Retourne toujours true
+/// @return Retourne toujours true.
 ///
 ////////////////////////////////////////////////////////////////////////
-bool VisiteurRotation::traiter(ArbreRenduINF2990* noeud)
+bool VisiteurRotation::traiter(ArbreRenduINF2990* arbre)
 {
-	for (unsigned int i = 0; i < noeud->obtenirNombreEnfants(); i++)
+	for (unsigned int i = 0; i < arbre->obtenirNombreEnfants(); i++)
 	{
-		traiter(noeud->getEnfant(i));
+		traiter(arbre->getEnfant(i));
 	}
 
 	return true;

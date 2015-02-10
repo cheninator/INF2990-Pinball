@@ -8,7 +8,6 @@
 #include "VisiteurDuplication.h"
 #include "../Arbre/ArbreRenduINF2990.h"
 #include "../Arbre/Noeuds/NoeudTable.h"
-#include <iostream>
 
 ////////////////////////////////////////////////////////////////////////
 ///
@@ -31,7 +30,7 @@ VisiteurDuplication::VisiteurDuplication()
 ///
 /// Constructeur qui initialise les variables membres de la classe.
 ///
-/// @param[in] pointDansLeMonde : Le point ou il y a eu le clic
+/// @param[in] pointDansLeMonde : Le point ou le clic a lieu.
 ///
 /// @return Aucune (constructeur).
 ///
@@ -49,7 +48,7 @@ VisiteurDuplication::VisiteurDuplication(glm::dvec3 pointDansLeMonde)
 ///
 /// @fn VisiteurDuplication::~VisiteurDuplication()
 ///
-/// Destructeur vide 
+/// Desallocation de memoire.
 ///
 /// @return Aucune (destructeur).
 ///
@@ -65,17 +64,19 @@ VisiteurDuplication::~VisiteurDuplication()
 }
 
 
-////////////////////////////////////////////////////////////////////////
+//////////////////////////////////////////////////////////////////////////////////
 ///
 /// @fn bool VisiteurDuplication::traiter(ArbreRenduINF2990* arbre)
-/// @brief Cette fonction traite l'arbre de rendu pour dupliquer ses enfants selectionnés
+/// @brief Cette fonction traite l'arbre de rendu pour dupliquer ses enfants selectionnés.
 ///
 /// Cette fonction retourne true pour dire que l'opération s'est
-/// fait correctement
+/// faite correctement.
 ///
-/// @return Retourne toujours true
+/// @param[in] arbre : L'arbre de rendu à traiter.
 ///
-////////////////////////////////////////////////////////////////////////
+/// @return Retourne toujours true.
+///
+//////////////////////////////////////////////////////////////////////////////////
 bool VisiteurDuplication::traiter(ArbreRenduINF2990* arbre)
 {
 	arbreTemp = arbre;
@@ -99,23 +100,25 @@ bool VisiteurDuplication::traiter(ArbreRenduINF2990* arbre)
 /// @brief Cette fonction traite la table de l'arbre de rendu.
 ///
 /// Cette fonction retourne true pour dire que l'opération s'est
-/// fait correctement
+/// fait correctement.
+///
+/// @param[in] table : Le noeud de type Table à traiter.
 ///
 /// @return Retourne toujours true
 ///
 ////////////////////////////////////////////////////////////////////////
 bool VisiteurDuplication::traiter(NoeudTable* table)
 {
-	// Traiter les enfants selectionnés de la table
+	// Traiter les enfants de la table
 	for (unsigned int i = 0; i < table->obtenirNombreEnfants(); i++)
 	{
-		// Effectuer une copie des enfants selectionnés et les ajouter à la structure de donnée
 		table->getEnfant(i)->accepterVisiteur(this);
 	}
 
 	// Si la structure ne contient qu'un seul objet
 	if (copies_.size() == 1)
 	{
+		// Centre de selection = clic de souris
 		copies_.front()->assignerPositionRelative(pointDansLeMonde_);
 		table->ajouter(copies_.back());
 		copies_.pop_back();
@@ -128,7 +131,7 @@ bool VisiteurDuplication::traiter(NoeudTable* table)
 		double centreX = ((maxX - minX) / 2.0 ) + minX;
 		double centreY = ((maxY - minY) / 2.0 ) + minY;
 
-		// Difference entre la position de l'objet et le centre de selection
+		// Difference entre la position courante de l'objet et le centre de selection
 		double deltaX, deltaY;
 		double posX, posY;
 
@@ -155,30 +158,26 @@ bool VisiteurDuplication::traiter(NoeudTable* table)
 ///
 /// @fn bool VisiteurDuplication::traiter(NoeudAbstrait* noeud)
 ///
-/// Cette fonction traite les enfants de l'arbre de rendu. Si ses enfants ont des enfants
-/// ils seront aussi traités.
+/// Cette fonction traite un noeud de l'arbre de rendu. Si ses enfants ont 
+/// des enfants, ils seront aussi traités. Cette fonction retourne true pour dire 
+/// que l'opération s'est faite correctement
 ///
-/// Cette fonction retourne true pour dire que l'opération s'est
-/// fait correctement
+/// @param[in] noeud : Noeud de l'arbre à traiter.
 ///
 /// @return Retourne toujours true
 ///
 ////////////////////////////////////////////////////////////////////////
 bool VisiteurDuplication::traiter(NoeudAbstrait* noeud)
 {
-	if (noeud->estSelectionne() && noeud->estModifiable())
+	if (noeud->estSelectionne())
 	{
-		std::cout << "Noeud a copier : " << noeud->getNumero() << std::endl;
-
+		// Effectuer la copie
 		NoeudAbstrait* copie = arbreTemp->creerNoeud(noeud->obtenirType());
-
-		std::cout << "J'ai cree un noeud de type : " << noeud->obtenirType() << std::endl;
-		std::cout << "Le nouveau noeud est : " << copie->getNumero() << std::endl;
-
 		copie->assignerRotation(noeud->obtenirRotation());
 		copie->assignerEchelle(noeud->obtenirAgrandissement());
 		copie->assignerPositionRelative(noeud->obtenirPositionRelative());
 
+		// Trouver les mins et max afin de trouver le centre de selection
 		if (maxX < noeud->obtenirPositionRelative().x)
 			maxX = noeud->obtenirPositionRelative().x;
 
@@ -191,6 +190,8 @@ bool VisiteurDuplication::traiter(NoeudAbstrait* noeud)
 		if (minY > noeud->obtenirPositionRelative().y)
 			minY = noeud->obtenirPositionRelative().y;
 
+		// Ajouter la copie dans une structure de donnée afin de traiter la duplication 
+		// multiple par la suite.
 		copies_.push_back(copie);
 	}
 

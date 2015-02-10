@@ -111,3 +111,37 @@ bool NoeudPortail::accepterVisiteur(VisiteurAbstrait* vis)
 
 }
 
+
+
+////////////////////////////////////////////////////////////////////////
+///
+/// @fn NoeudAbstrait* NoeudAbstrait::getTwin()
+///
+/// Retourne le noeud jumueau
+///
+/// @param[in] Aucun.
+///
+/// @return NoeudAbstrait jumeau.
+///
+////////////////////////////////////////////////////////////////////////
+NoeudAbstrait* NoeudPortail::getTwin()
+{
+	return twin_;
+}
+
+
+////////////////////////////////////////////////////////////////////////
+///
+/// @fn void NoeudAbstrait::setTwin()
+///
+/// Cette fonction permet de definir un noeud jumeau
+///
+/// @param[in] dt : Prend un noeud abstrait.
+///
+/// @return Aucune
+///
+////////////////////////////////////////////////////////////////////////
+void NoeudPortail::setTwin(NoeudAbstrait* twin)
+{
+	twin_ = twin;
+}

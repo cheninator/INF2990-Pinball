@@ -38,21 +38,21 @@ extern "C"
 	static double phi = 0;  /// < angle Phi
 
 
-							////////////////////////////////////////////////////////////////////////
-							///
-							/// @fn static void calculerTransition(void)
-							///
-							/// Cette fonction interne permet d'assigner un facteur de
-							/// transition (qui est une variable static interne a la librairie
-							/// pour permettre de garder la meme "vitesse" de mouvement entre
-							/// le rendu openGL et la fenetre ne pixel C#
-							///
-							/// @param[in] Aucun
-							///
-							/// @return Aucune. (assigne une valeur a une variable globale a l'interne)
-							///
-							////////////////////////////////////////////////////////////////////////
-	static float calculerTransition(void)
+	////////////////////////////////////////////////////////////////////////
+	///
+	/// @fn static void calculerTransition(void)
+	///
+	/// Cette fonction interne permet d'assigner un facteur de
+	/// transition (qui est une variable static interne a la librairie
+	/// pour permettre de garder la meme "vitesse" de mouvement entre
+	/// le rendu openGL et la fenetre ne pixel C#
+	///
+	/// @param[in] Aucun
+	///
+	/// @return Aucune. (assigne une valeur a une variable globale a l'interne)
+	///
+	////////////////////////////////////////////////////////////////////////
+	static double calculerTransition(void)
 	{
 		glm::dvec3 positionZero;
 		glm::dvec3 positionUn;
@@ -78,7 +78,7 @@ extern "C"
 	/// @return La valeur du facteur de transition courant
 	///
 	////////////////////////////////////////////////////////////////////////
-	__declspec(dllexport) float __cdecl currentZoom(void)
+	__declspec(dllexport) double __cdecl currentZoom(void)
 	{
 		return calculerTransition();
 	}
@@ -285,6 +285,7 @@ extern "C"
 	///
 	/// @param[in]  value : Nom de l'objet
 	/// @param[in]  length : Taille du nom de l'objet
+	/// @param[in]  twin : si a un jumeau
 	///
 	/// Cette fonction permet de cree un objet 3D
 	///
@@ -541,38 +542,7 @@ extern "C"
 	////////////////////////////////////////////////////////////////////////
 	__declspec(dllexport) int __cdecl creerXML(char* path, int length, int prop[6])
 	{
-		int sauvegardeAutorise;
-		calculerTransition();
-
-		// Ne pas permettre la sauvegarde si la zone ne contient pas au minimum les 3 objets
-		if (FacadeModele::obtenirInstance()->obtenirArbreRenduINF2990()->getEnfant(0)->obtenirNombreEnfants() < 3)
-		{
-			sauvegardeAutorise = 0;
-		}
-
-		// Ne pas permettre de sauvegarder la zone de jeu par défaut
-		else if (FacadeModele::obtenirInstance()->obtenirArbreRenduINF2990()->getEnfant(0)->chercher("generateurbille")
-			&& FacadeModele::obtenirInstance()->obtenirArbreRenduINF2990()->getEnfant(0)->chercher("trou")
-			&& FacadeModele::obtenirInstance()->obtenirArbreRenduINF2990()->getEnfant(0)->chercher("ressort")
-			&& FacadeModele::obtenirInstance()->obtenirArbreRenduINF2990()->getEnfant(0)->obtenirNombreEnfants() == 3)
-		{
-			sauvegardeAutorise = 1;
-		}
-
-		// Permettre la sauvegarde que lorsque il y a les 3 objets obligatoires + d'autres objets
-		else if (FacadeModele::obtenirInstance()->obtenirArbreRenduINF2990()->getEnfant(0)->chercher("generateurbille")
-			&& FacadeModele::obtenirInstance()->obtenirArbreRenduINF2990()->getEnfant(0)->chercher("trou")
-			&& FacadeModele::obtenirInstance()->obtenirArbreRenduINF2990()->getEnfant(0)->chercher("ressort")
-			&& FacadeModele::obtenirInstance()->obtenirArbreRenduINF2990()->getEnfant(0)->obtenirNombreEnfants() > 3)
-		{
-			VisiteurXML* visiteur = new VisiteurXML(std::string(path), prop);
-			FacadeModele::obtenirInstance()->obtenirArbreRenduINF2990()->accepterVisiteur(visiteur);
-			sauvegardeAutorise = 2;
-
-			delete visiteur;
-		}
-
-		return sauvegardeAutorise;
+		return FacadeModele::obtenirInstance()->creerXML(path, prop);
 	}
 
 
@@ -613,7 +583,7 @@ extern "C"
 	{
 		calculerTransition();
 		glm::dvec3 maPosition;
-		FacadeModele::obtenirInstance()->obtenirVue()->convertirClotureAVirtuelle(x, y, maPosition);
+		FacadeModele::obtenirInstance()->obtenirVue()->convertirClotureAVirtuelle((int)x, (int)y, maPosition);
 
 		theta += maPosition.x / 100.0;
 		phi += maPosition.y / 100.0;
@@ -813,9 +783,9 @@ extern "C"
 	/// @remark : 
 	///
 	///////////////////////////////////////////////////////////////////////////////
-	__declspec(dllexport) int getPositionX(void) {
-		int positionX;
-		for (int j = 0; j < FacadeModele::obtenirInstance()->obtenirArbreRenduINF2990()->getEnfant(0)->obtenirNombreEnfants(); j++)
+	__declspec(dllexport) double getPositionX(void) {
+		double positionX;
+		for (unsigned int j = 0; j < FacadeModele::obtenirInstance()->obtenirArbreRenduINF2990()->getEnfant(0)->obtenirNombreEnfants(); j++)
 		{
 			if (
 				FacadeModele::obtenirInstance()->obtenirArbreRenduINF2990()->getEnfant(0)->chercher(j)->estSelectionne()
@@ -824,7 +794,6 @@ extern "C"
 				positionX = objet->obtenirPositionRelative().x;
 			}
 		}
-
 		return positionX;
 	}
 
@@ -838,15 +807,16 @@ extern "C"
 	/// @remark : 
 	///
 	///////////////////////////////////////////////////////////////////////////////
-	__declspec(dllexport) int getPositionY(void) {
-		int positionY;
-		for (int j = 0; j < FacadeModele::obtenirInstance()->obtenirArbreRenduINF2990()->getEnfant(0)->obtenirNombreEnfants(); j++)
+	__declspec(dllexport) double getPositionY(void) {
+		double positionY;
+		for (unsigned int j = 0; j < FacadeModele::obtenirInstance()->obtenirArbreRenduINF2990()->getEnfant(0)->obtenirNombreEnfants(); j++)
 		{
 			if (
 				FacadeModele::obtenirInstance()->obtenirArbreRenduINF2990()->getEnfant(0)->chercher(j)->estSelectionne()
 				) {
 				objet = FacadeModele::obtenirInstance()->obtenirArbreRenduINF2990()->getEnfant(0)->chercher(j);
 				positionY = objet->obtenirPositionRelative().y;
+				
 			}
 		}
 
@@ -861,10 +831,10 @@ extern "C"
 	/// @remark : 
 	///
 	///////////////////////////////////////////////////////////////////////////////
-	__declspec(dllexport) int getAngle(void)
+	__declspec(dllexport) double getAngle(void)
 	{
-		int angle;
-		for (int j = 0; j < FacadeModele::obtenirInstance()->obtenirArbreRenduINF2990()->getEnfant(0)->obtenirNombreEnfants(); j++)
+		double angle;
+		for (unsigned int j = 0; j < FacadeModele::obtenirInstance()->obtenirArbreRenduINF2990()->getEnfant(0)->obtenirNombreEnfants(); j++)
 		{
 			if (
 				FacadeModele::obtenirInstance()->obtenirArbreRenduINF2990()->getEnfant(0)->chercher(j)->estSelectionne()
@@ -888,7 +858,7 @@ extern "C"
 	__declspec(dllexport) double getScale(void)
 	{
 		double scale;
-		for (int j = 0; j < FacadeModele::obtenirInstance()->obtenirArbreRenduINF2990()->getEnfant(0)->obtenirNombreEnfants(); j++)
+		for (unsigned int j = 0; j < FacadeModele::obtenirInstance()->obtenirArbreRenduINF2990()->getEnfant(0)->obtenirNombreEnfants(); j++)
 		{
 			if (
 				FacadeModele::obtenirInstance()->obtenirArbreRenduINF2990()->getEnfant(0)->chercher(j)->estSelectionne()
