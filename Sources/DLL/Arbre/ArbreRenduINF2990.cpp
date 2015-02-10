@@ -104,7 +104,7 @@ void ArbreRenduINF2990::initialiser()
 	vider();
 
 	// Charger la zone de jeu par défaut
-	initialiserXML("default.xml");
+	initialiserXML("../Zones de jeu/default.xml");
 	NoeudAbstrait* noeud = creerNoeud("couvercle");
 	ajouter(noeud);
 
