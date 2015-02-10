@@ -289,7 +289,16 @@ bool ArbreRenduINF2990::lireXML(tinyxml2::XMLDocument& doc)
 }
 
 
-
+////////////////////////////////////////////////////////////////////////
+///
+/// @fn bool ArbreRenduINF2990::estDefaut()
+///
+/// Cette fonction dit si les elements de l'arbre constituent la 
+///	zone de jeu par défaut
+///
+/// @return TRUE : la zone est une zone par défaut. Autrement, FALSE
+///
+////////////////////////////////////////////////////////////////////////
 bool ArbreRenduINF2990::estDefaut() const
 {
 	if (posRessort == chercher("ressort")->obtenirPositionRelative()
@@ -309,6 +318,15 @@ bool ArbreRenduINF2990::estDefaut() const
 }
 
 
+////////////////////////////////////////////////////////////////////////
+///
+/// @fn bool ArbreRenduINF2990::assignerDefaut()
+///
+/// Cette fonction définit ce qu'est une zone de jeu par défaut
+///
+/// @return VOID
+///
+////////////////////////////////////////////////////////////////////////
 void ArbreRenduINF2990::assignerDefaut()
 {
 	posRessort = chercher("ressort")->obtenirPositionRelative();
