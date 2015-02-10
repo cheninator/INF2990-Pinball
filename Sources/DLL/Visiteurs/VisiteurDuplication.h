@@ -15,7 +15,7 @@
 
 ///////////////////////////////////////////////////////////////////////////
 /// @class VisiteurDuplication
-/// @brief Classe pour selectionner les objets de l'arbre de rendu
+/// @brief Classe pour dupliquer les objets selectionnés de l'arbre de rendu
 ///
 ///        Instancier cette classe avec en paramètre le point cliqué
 ///		   Ensuite, appeler la méthode accepterVisiteur() de l'arbre de 
@@ -42,21 +42,16 @@ public:
 
 private:
 
-	/// Constructeur par défaut
-	VisiteurDuplication();
+	VisiteurDuplication();					/// Constructeur par défaut
 
-	glm::dvec3 pointDansLeMonde_;		///< Point où le clic de la souris a eu lieu
+	glm::dvec3 pointDansLeMonde_;			///< Point où le clic de la souris a eu lieu
 
-	std::vector<NoeudAbstrait*> copies_; ///< Contient les copies des objets selectionnés
+	std::vector<NoeudAbstrait*> copies_;	///< Contient les copies des objets selectionnés
 
-	double minX; ///< Pour le cas ou il y a eu selection multiple
-	double maxX; ///< Pour le cas ou il y a eu selection multiple
-	double minY; ///< Pour le cas ou il y a eu selection multiple
-	double maxY; ///< Pour le cas ou il y a eu selection multiple
+	double minX, maxX, minY, maxY;			///< Pour le cas ou il y a eu selection multiple
 
 	ArbreRenduINF2990* arbreTemp;
 
 };
-
 
 #endif //__VISITEURS_VISITEURDUPLICATION_H__

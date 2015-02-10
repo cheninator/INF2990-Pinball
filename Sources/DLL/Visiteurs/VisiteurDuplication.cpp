@@ -8,7 +8,6 @@
 #include "VisiteurDuplication.h"
 #include "../Arbre/ArbreRenduINF2990.h"
 #include "../Arbre/Noeuds/NoeudTable.h"
-#include <iostream>
 
 ////////////////////////////////////////////////////////////////////////
 ///
@@ -49,7 +48,7 @@ VisiteurDuplication::VisiteurDuplication(glm::dvec3 pointDansLeMonde)
 ///
 /// @fn VisiteurDuplication::~VisiteurDuplication()
 ///
-/// Destructeur vide 
+/// Desallocation de memoire
 ///
 /// @return Aucune (destructeur).
 ///
@@ -106,16 +105,16 @@ bool VisiteurDuplication::traiter(ArbreRenduINF2990* arbre)
 ////////////////////////////////////////////////////////////////////////
 bool VisiteurDuplication::traiter(NoeudTable* table)
 {
-	// Traiter les enfants selectionnés de la table
+	// Traiter les enfants de la table
 	for (unsigned int i = 0; i < table->obtenirNombreEnfants(); i++)
 	{
-		// Effectuer une copie des enfants selectionnés et les ajouter à la structure de donnée
 		table->getEnfant(i)->accepterVisiteur(this);
 	}
 
 	// Si la structure ne contient qu'un seul objet
 	if (copies_.size() == 1)
 	{
+		// Centre de selection = clic de souris
 		copies_.front()->assignerPositionRelative(pointDansLeMonde_);
 		table->ajouter(copies_.back());
 		copies_.pop_back();
@@ -128,7 +127,7 @@ bool VisiteurDuplication::traiter(NoeudTable* table)
 		double centreX = ((maxX - minX) / 2.0 ) + minX;
 		double centreY = ((maxY - minY) / 2.0 ) + minY;
 
-		// Difference entre la position de l'objet et le centre de selection
+		// Difference entre la position courante de l'objet et le centre de selection
 		double deltaX, deltaY;
 		double posX, posY;
 
@@ -168,17 +167,13 @@ bool VisiteurDuplication::traiter(NoeudAbstrait* noeud)
 {
 	if (noeud->estSelectionne() && noeud->estModifiable())
 	{
-		std::cout << "Noeud a copier : " << noeud->getNumero() << std::endl;
-
+		// Effectuer la copie
 		NoeudAbstrait* copie = arbreTemp->creerNoeud(noeud->obtenirType());
-
-		std::cout << "J'ai cree un noeud de type : " << noeud->obtenirType() << std::endl;
-		std::cout << "Le nouveau noeud est : " << copie->getNumero() << std::endl;
-
 		copie->assignerRotation(noeud->obtenirRotation());
 		copie->assignerEchelle(noeud->obtenirAgrandissement());
 		copie->assignerPositionRelative(noeud->obtenirPositionRelative());
 
+		// Trouver les mins et max afin de trouver le centre de selection
 		if (maxX < noeud->obtenirPositionRelative().x)
 			maxX = noeud->obtenirPositionRelative().x;
 
@@ -191,6 +186,8 @@ bool VisiteurDuplication::traiter(NoeudAbstrait* noeud)
 		if (minY > noeud->obtenirPositionRelative().y)
 			minY = noeud->obtenirPositionRelative().y;
 
+		// Ajouter la copie dans une structure de donnée afin de traiter la duplication 
+		// multiple par la suite.
 		copies_.push_back(copie);
 	}
 
