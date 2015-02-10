@@ -50,7 +50,8 @@ class NoeudAbstrait
 public:
 	/// Constructeur.
 	NoeudAbstrait(
-		const std::string& type = std::string{ "" }	);
+		const std::string& type = std::string{ "" }
+				);
 	/// Destructeur.
 	virtual ~NoeudAbstrait();
 
@@ -162,6 +163,12 @@ public:
 	//Verifie si un point est dans la boite englobante
 	virtual bool pointEstDansBoite(glm::dvec3 point);
 
+	/// Obtenir couleur
+	virtual bool getColorShift();
+
+	/// Selectionner couleur
+	virtual void setColorShift(bool colorShift);
+
 	modele::Modele3D const* obtenirModele() const;
 
 	inline const glm::dvec3& obtenirAgrandissement() const;
@@ -172,7 +179,7 @@ public:
 
 protected:
 	/// Si jumeau
-	NoeudAbstrait* twin_;
+	NoeudAbstrait* twin_{ nullptr };
 
 	/// Type du noeud.
 	std::string      type_;
@@ -220,6 +227,9 @@ protected:
 
 	//boite englobante
 	utilitaire::BoiteEnglobante boite_;
+
+	// Couleur du noeud
+	bool colorShift_;
 };
 
 

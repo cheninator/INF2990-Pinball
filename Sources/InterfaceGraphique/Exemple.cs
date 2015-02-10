@@ -36,6 +36,7 @@ namespace InterfaceGraphique
         private int currentZoom = 5;
         private int previousZoom = 5;
         private int nbSelection;
+        private bool colorShift = false;
         private StringBuilder pathXML = new StringBuilder("");
         private Etat etat {get; set;}
         private int[] prop = new int[6];
@@ -109,7 +110,7 @@ namespace InterfaceGraphique
                 }
                 if ((e.KeyData == Keys.Add ||
                     e.KeyCode == Keys.Oemplus && e.Modifiers == Keys.Shift)
-                    && zoom_Bar.Value < 10)
+                    && zoom_Bar.Value < 12)
                 {
                     FonctionsNatives.zoomIn();
                     zoom_Bar.Value += 1;
@@ -162,6 +163,10 @@ namespace InterfaceGraphique
 
             if( e.KeyChar == (char)Keys.Escape)
             {
+                if (etat is EtatPortail)
+                {
+                    FonctionsNatives.removeObject();
+                }
                 etat = null;
                 etat = new EtatNone(this);
                 deselection();
@@ -178,38 +183,43 @@ namespace InterfaceGraphique
             if (e.KeyChar == 's')
             {
                 Selection_MenuItem_Click(this, e);
+       
             }
             if( e.KeyChar == 'd')
             {
                 etat = null;
                 etat = new EtatDeplacement(this);
+         
                 
-                //state = 'd';
+              
             }
             if (e.KeyChar == 'e')
             {
                 etat = null;
                 etat = new EtatScale(this);
+        
                 
-                //state = 'e';
+              
             }
             if( e.KeyChar == 'r')
             {
                 etat = null;
                 etat = new EtatRotation(this);
+           
             }
            
             if (e.KeyChar == 'z')
             {
                 etat = null;
                 etat = new EtatZoom(this);
-
-                //state = 'z';
+          
+                
             }
             if (e.KeyChar == 'c')
             {
                 etat = null;
                 etat = new EtatDuplication(this);
+           
             }
             if (e.KeyChar == 'h')
             {
@@ -300,24 +310,22 @@ namespace InterfaceGraphique
                 
                 string fileName = Path.GetFileName(enregistrer_fichier.FileName);
                 Console.WriteLine(fileName);
-                if(!(fileName == "default.xml"))
+
+                if (!(fileName == "default.xml"))
                 {
                     enregistrer_fichier.OverwritePrompt = true;
                     pathXML = new StringBuilder(enregistrer_fichier.FileName);
                     for (int i = 0; i < 6; i++)
                         prop[i] = propZJ[i];
 
-                    int a = FonctionsNatives.creerXML(pathXML, pathXML.Capacity, prop);
-                }
-                else
-                {
-                  
-                    MessageBox.Show("Vous ne pouvez pas sauvegarder sur la zone de jeu par défaut!", "ERREUR DE SAUVEGARDE",
-               MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    FonctionsNatives.creerXML(pathXML, pathXML.Capacity, prop);
                 }
 
-               
-                
+                else
+                {
+                    MessageBox.Show("Vous ne pouvez pas sauvegarder sur la zone de jeu par défaut!", "ERREUR DE SAUVEGARDE",
+                    MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
             }
 
             else
@@ -395,6 +403,7 @@ namespace InterfaceGraphique
             etat = new EtatCreation(this);
             Console.WriteLine("ButoirCirculaire");
             myObjectName = new StringBuilder("butoircirculaire");
+            colorShift = false;
             angleX = 0;
             angleY = 0;
             angleZ = 0;
@@ -416,6 +425,7 @@ namespace InterfaceGraphique
             etat = new EtatCreation(this);
             Console.WriteLine("Butoir Gauche.");
             myObjectName = new StringBuilder("butoir");
+            colorShift = false;
             angleX = 0;
             angleY = 0;
             angleZ = 180;
@@ -437,7 +447,7 @@ namespace InterfaceGraphique
         public void afficher_Objet(bool twin)
         {
             Console.WriteLine(myObjectName);
-            FonctionsNatives.creerObjet(myObjectName, myObjectName.Capacity, twin);
+            FonctionsNatives.creerObjet(myObjectName, myObjectName.Capacity, twin, colorShift);
         }
 
         public void Positionner_Objet()
@@ -526,6 +536,7 @@ namespace InterfaceGraphique
             etat = new EtatCreation(this);
             Console.WriteLine("Ressort");
             myObjectName = new StringBuilder("ressort");
+            colorShift = false;
             angleX = 0;
             angleY = 0;
             angleZ = 0;
@@ -536,6 +547,7 @@ namespace InterfaceGraphique
             etat = new EtatCreation(this);
             Console.WriteLine("Generateur");
             myObjectName = new StringBuilder("generateurbille");
+            colorShift = false;
             angleX = 0;
             angleY = 0;// 90;
             angleZ = 0;//180;
@@ -547,6 +559,7 @@ namespace InterfaceGraphique
             etat = new EtatCreation(this);
             Console.WriteLine("Trou");
             myObjectName = new StringBuilder("trou");
+            colorShift = false;
             angleX = 0;
             angleY = 0;
             angleZ = 0;
@@ -655,6 +668,7 @@ namespace InterfaceGraphique
             angleX = 180;
             angleY = 0;
             angleZ = 180;
+            colorShift = false;
         }
 
         private void PG_J1_MenuItem_Click(object sender, EventArgs e)
@@ -670,6 +684,7 @@ namespace InterfaceGraphique
             angleX = 180;
             angleY = 0;
             angleZ = 0;
+            colorShift = false;
         }
 
         private void PD_J1_MenuItem_Click(object sender, EventArgs e)
@@ -682,6 +697,7 @@ namespace InterfaceGraphique
             etat = new EtatCreation(this);
             Console.WriteLine("Palette gauche J2.");
             myObjectName = new StringBuilder("palette");
+            colorShift = true;
             angleX = 180;
             angleY = 0;
             angleZ = 180;
@@ -697,6 +713,7 @@ namespace InterfaceGraphique
             etat = new EtatCreation(this);
             Console.WriteLine("Palette droite J2.");
             myObjectName = new StringBuilder("palette");
+            colorShift = true;
             angleX = 180;
             angleY = 0;
             angleZ = 0;
@@ -717,6 +734,7 @@ namespace InterfaceGraphique
             etat = new EtatCreation(this);
             Console.WriteLine("Butoir Droit.");
             myObjectName = new StringBuilder("butoir");
+            colorShift = false;
             angleX = 0;
             angleY = 0;
             angleZ = 0;
@@ -731,7 +749,8 @@ namespace InterfaceGraphique
         {
             etat = new EtatCreation(this);
             Console.WriteLine("Cible.");
-           myObjectName = new StringBuilder("cible");
+            myObjectName = new StringBuilder("cible");
+            colorShift = false;
             angleX = 0;
             angleY = 0;
             angleZ = 0;
@@ -747,6 +766,7 @@ namespace InterfaceGraphique
             etat = new EtatCreation(this);
             Console.WriteLine("Portail");
             myObjectName = new StringBuilder("portail");
+            colorShift = false;
             angleX = 0;
             angleY = 0;
             angleZ = 0;
@@ -762,6 +782,7 @@ namespace InterfaceGraphique
             etat = new EtatCreation(this);
             Console.WriteLine("Mur");
             myObjectName = new StringBuilder("mur");
+            colorShift = false;
             angleX = 0;
             angleY = 0;
             angleZ = 0;
@@ -799,7 +820,11 @@ namespace InterfaceGraphique
             origin = panel_GL.PointToClient(MousePosition);
             //if( !(etat is EtatCreation))
             //    panel_GL.MouseMove += new MouseEventHandler(panel_MouseMove);   
-
+            if (etat is EtatPortail)
+            {
+                etat = new EtatNone(this);
+                deselection();
+            }
 
             if (e.Button == MouseButtons.Left)
                 sourisBoutonGaucheActive = true;
@@ -1089,6 +1114,7 @@ namespace InterfaceGraphique
             if (pathXML.ToString() == "")
                 EnregistrerSous();
             else
+            {
                 if (pathXML.ToString().Substring(pathXML.ToString().Length - 11) == "default.xml")
                 {
                     MessageBox.Show("Il ne faut pas sauvegarder par dessus la zone par defaut", "ERREUR DE SAUVEGARDE",
@@ -1098,6 +1124,7 @@ namespace InterfaceGraphique
                 {
                     FonctionsNatives.creerXML(pathXML, pathXML.Capacity, prop);
                 }
+            }
         }
 
         public void proprietesEnable(bool active)
@@ -1192,7 +1219,14 @@ namespace InterfaceGraphique
         {
             Cursor = Cursors.Arrow;
         }
-
+        public void enableZoom(bool active)
+        {
+            zoom_Bar.Enabled = active;
+        }
+        public void statePortail()
+        {
+            etat = new EtatPortail(this);
+        }
 }
     // Full Screen
 
@@ -1238,7 +1272,7 @@ namespace InterfaceGraphique
         public static extern void redimensionnerFenetre(int largeur, int hauteur);
 
         [DllImport(@"Noyau.dll", CallingConvention = CallingConvention.Cdecl)]
-        public static extern void creerObjet(StringBuilder value, int length, bool isTwin = false);
+        public static extern void creerObjet(StringBuilder value, int length, bool isTwin = false, bool colorShift = false);
 
         [DllImport(@"Noyau.dll", CallingConvention = CallingConvention.Cdecl)]
         public static extern void positionObjet(int x, int y, int z = 0);

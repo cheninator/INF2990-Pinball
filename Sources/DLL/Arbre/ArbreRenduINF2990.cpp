@@ -105,8 +105,8 @@ void ArbreRenduINF2990::initialiser()
 
 	// Charger la zone de jeu par défaut
 	initialiserXML("Zones_de_jeu/default.xml");
-	NoeudAbstrait* noeud = creerNoeud("couvercle");
-	ajouter(noeud);
+	/*NoeudAbstrait* noeud = creerNoeud("couvercle");
+	ajouter(noeud);*/
 
 }
 
@@ -247,40 +247,71 @@ bool ArbreRenduINF2990::lireXML(tinyxml2::XMLDocument& doc)
 			for (int i = 0; i < nombreEnfants; i++)
 			{
 				// Construire le noeud concret
-				NoeudAbstrait* enfantTable{ creerNoeud(enfant->Name()) };
+				NoeudAbstrait* noeudConcret{ creerNoeud(enfant->Name()) };
 
 				// Assigner les propriétés de l'enfant
-				enfantTable->assignerPositionRelative({ enfant->FindAttribute(positionX)->DoubleValue(),
+				noeudConcret->assignerPositionRelative({ enfant->FindAttribute(positionX)->DoubleValue(),
 					enfant->FindAttribute(positionY)->DoubleValue(),
 					enfant->FindAttribute(positionZ)->DoubleValue() });
 
-				enfantTable->assignerEchelle({ enfant->FindAttribute(scaleX)->DoubleValue(),
+				noeudConcret->assignerEchelle({ enfant->FindAttribute(scaleX)->DoubleValue(),
 					enfant->FindAttribute(scaleY)->DoubleValue(),
 					enfant->FindAttribute(scaleZ)->DoubleValue() });
 
-				enfantTable->assignerRotation({ enfant->FindAttribute(angleX)->DoubleValue(),
+				noeudConcret->assignerRotation({ enfant->FindAttribute(angleX)->DoubleValue(),
 					enfant->FindAttribute(angleY)->DoubleValue(),
 					enfant->FindAttribute(angleZ)->DoubleValue() });
 
 				// Ajouter l'enfant à la table
-				table->ajouter(enfantTable);
+				table->ajouter(noeudConcret);
+
+				if (noeudConcret->obtenirType() == "portail")
+				{
+					// Nombre actuel d'enfants de la table
+					unsigned int enfantsTable = getEnfant(0)->obtenirNombreEnfants();
+
+					if (table->chercher(enfantsTable - 2)->obtenirType() == "portail"
+						&& table->chercher(enfantsTable - 2)->getTwin() == nullptr)
+					{
+						noeudConcret->setTwin(table->chercher(enfantsTable - 2 ));
+						table->chercher(enfantsTable - 2)->setTwin(noeudConcret);
+					}
+				}
 
 				// Traiter le frère de droite de l'enfant
 				enfant = enfant->NextSiblingElement();
 			}
 
 			lecture = true;
+		}
+		
+		// Tenter d'obtenir l'élément table, puis l'attribut nbEnfants
+		const tinyxml2::XMLElement* elementCouvercle{ elementArbre->LastChildElement("couvercle")};
 
+		if (elementCouvercle != nullptr)
+		{
+			NoeudAbstrait* couvercle{ creerNoeud(elementCouvercle->Name()) };
+			this->ajouter(couvercle);
 		}
 
 	}
+
 	assignerDefaut();
 
 	return lecture;
 }
 
 
-
+////////////////////////////////////////////////////////////////////////
+///
+/// @fn bool ArbreRenduINF2990::estDefaut()
+///
+/// Cette fonction dit si les elements de l'arbre constituent la 
+///	zone de jeu par défaut
+///
+/// @return TRUE : la zone est une zone par défaut. Autrement, FALSE
+///
+////////////////////////////////////////////////////////////////////////
 bool ArbreRenduINF2990::estDefaut() const
 {
 	if (posRessort == chercher("ressort")->obtenirPositionRelative()
@@ -300,6 +331,15 @@ bool ArbreRenduINF2990::estDefaut() const
 }
 
 
+////////////////////////////////////////////////////////////////////////
+///
+/// @fn bool ArbreRenduINF2990::assignerDefaut()
+///
+/// Cette fonction définit ce qu'est une zone de jeu par défaut
+///
+/// @return VOID
+///
+////////////////////////////////////////////////////////////////////////
 void ArbreRenduINF2990::assignerDefaut()
 {
 	posRessort = chercher("ressort")->obtenirPositionRelative();

@@ -66,7 +66,9 @@ void NoeudPalette::afficherConcret() const
 	glPushMatrix();
 	// Affichage du modèle.
 	glPushAttrib(GL_ALL_ATTRIB_BITS);
-	glTexEnvf(GL_TEXTURE_ENV, GL_TEXTURE_ENV_MODE, GL_BLEND);
+	if (colorShift_){
+		glTexEnvf(GL_TEXTURE_ENV, GL_TEXTURE_ENV_MODE, GL_BLEND);
+	}
 	if (selectionne_){
 		glTexEnvf(GL_TEXTURE_ENV, GL_TEXTURE_ENV_MODE, GL_ADD);
 	}

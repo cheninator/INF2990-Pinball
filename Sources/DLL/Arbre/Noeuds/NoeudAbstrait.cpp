@@ -24,8 +24,9 @@ unsigned int NoeudAbstrait::compteurNoeuds_ = 0;
 NoeudAbstrait::NoeudAbstrait(
 	const std::string& type //= std::string{ "" }
 	) :
-	type_( type )
+	type_(type)
 {
+	colorShift_ = false;
 	compteurNoeuds_ += 1;
 	numeroNoeud_ = compteurNoeuds_;
 	scale_ = { 1.0, 1.0, 1.0 };
@@ -490,8 +491,7 @@ bool NoeudAbstrait::accepterVisiteur(VisiteurAbstrait* vis)
 ////////////////////////////////////////////////////////////////////////
 NoeudAbstrait* NoeudAbstrait::getTwin()
 {
-	return NULL;
-	//	return twin_;
+	return twin_;
 }
 
 
@@ -508,7 +508,7 @@ NoeudAbstrait* NoeudAbstrait::getTwin()
 ////////////////////////////////////////////////////////////////////////
 void NoeudAbstrait::setTwin(NoeudAbstrait* twin)
 {
-	//	twin_ = twin;
+	twin_ = twin;
 }
 
 ////////////////////////////////////////////////////////////////////////
@@ -553,6 +553,22 @@ void NoeudAbstrait::obtenirVecteursBoite(glm::dvec3 &v1, glm::dvec3 &v2, glm::dv
 
 ////////////////////////////////////////////////////////////////////////
 ///
+/// @fn NoeudAbstrait* NoeudAbstrait::getTwin()
+///
+/// Retourne le noeud jumueau
+///
+/// @param[in] Aucun.
+///
+/// @return NoeudAbstrait jumeau.
+///
+////////////////////////////////////////////////////////////////////////
+bool NoeudAbstrait::getColorShift()
+{
+	return colorShift_;
+}
+
+////////////////////////////////////////////////////////////////////////
+///
 /// @fn void NoeudAbstrait::setTwin()
 ///
 /// Cette fonction permet de definir un noeud jumeau
@@ -562,6 +578,7 @@ void NoeudAbstrait::obtenirVecteursBoite(glm::dvec3 &v1, glm::dvec3 &v2, glm::dv
 /// @return Aucune
 ///
 ////////////////////////////////////////////////////////////////////////
+
 bool NoeudAbstrait::pointEstDansBoite(glm::dvec3 point)
 {
 	glm::dvec3 vecOP = point - positionRelative_;
@@ -584,4 +601,9 @@ bool NoeudAbstrait::pointEstDansBoite(glm::dvec3 point)
 		return true;
 	else
 		return false;
+}
+
+void NoeudAbstrait::setColorShift(bool colorShift)
+{
+	colorShift_ = colorShift;
 }
