@@ -5,11 +5,12 @@ using System.Data;
 using System.Drawing;
 using System.Linq;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 using System.Media;
 using System.Windows.Forms;
 using System.Diagnostics;
-
+using System.Runtime.InteropServices;
 
 namespace InterfaceGraphique
 {
@@ -17,8 +18,8 @@ namespace InterfaceGraphique
     public partial class MainMenu : Form
     {
        System.Media.SoundPlayer player = new System.Media.SoundPlayer(Properties.Resources.button_29);
-       public Exemple modeEdit;  
- 
+       public Exemple modeEdit;
+       private Thread myThread; 
         public MainMenu()
         {
             this.KeyPress += new KeyPressEventHandler(Form1_KeyPress);
@@ -27,10 +28,7 @@ namespace InterfaceGraphique
             pictureBox1.Image = Properties.Resources.pinball1;
             this.KeyPreview = true;
             StartPosition = FormStartPosition.CenterScreen;
-         
-           
-            
-            
+            StringBuilder initSound = new StringBuilder("");
         }
 
        private void Form1_KeyPress(object sender, KeyPressEventArgs e)
@@ -45,12 +43,15 @@ namespace InterfaceGraphique
 
         private void pictureBox1_Click(object sender, EventArgs e)
         {
-            
-
         }
 
         private void bouton_edit_Click(object sender, EventArgs e)
         {
+            while (myThread.IsAlive)
+            {
+                Thread.Sleep(1500);
+                Console.WriteLine("Loading...");
+            }
             this.Hide();
             modeEdit = new Exemple();
             modeEdit.ShowDialog();
@@ -85,8 +86,19 @@ namespace InterfaceGraphique
         {
             bouton_quit.FlatAppearance.BorderSize = 0;
             bouton_quit.ForeColor = Color.Black;
+        }
+
+        private void MainMenu_Shown(object sender, EventArgs e)
+        {
+            myThread = new Thread(new ThreadStart(initMusic));
+            myThread.Start();
+
         } 
- 
-    }
-                                       
+         private void initMusic()
+        {
+            StringBuilder initSound = new StringBuilder("");
+            InterfaceGraphique.FonctionsNatives.playSound(initSound, initSound.Capacity, false); // Initialise le son
+            
+        } 
+    }                                  
 }

@@ -490,7 +490,8 @@ bool NoeudAbstrait::accepterVisiteur(VisiteurAbstrait* vis)
 ////////////////////////////////////////////////////////////////////////
 NoeudAbstrait* NoeudAbstrait::getTwin()
 {
-	return twin_;
+	return NULL;
+	//	return twin_;
 }
 
 
@@ -507,5 +508,5 @@ NoeudAbstrait* NoeudAbstrait::getTwin()
 ////////////////////////////////////////////////////////////////////////
 void NoeudAbstrait::setTwin(NoeudAbstrait* twin)
 {
-	twin_ = twin;
+	//	twin_ = twin;
 }

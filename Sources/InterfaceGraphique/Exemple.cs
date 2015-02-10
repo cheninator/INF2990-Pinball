@@ -59,7 +59,6 @@ namespace InterfaceGraphique
             etat = new EtatNone(this);
 
             //Musique
-            playSound(""); // Initialise le son
             playSound("music");
             playSound("stone"); // Pause probleme quand on ferme puis rouvre la fenetre
         }
