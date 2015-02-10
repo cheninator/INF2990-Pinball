@@ -1152,6 +1152,16 @@ namespace InterfaceGraphique
             FonctionsNatives.playSound(music, music.Capacity, stop);
         }
 
+        private void Creation_Panel_MouseEnter(object sender, EventArgs e)
+        {
+            Cursor = Cursors.Arrow;
+        }
+
+        private void panel_GL_MouseLeave(object sender, EventArgs e)
+        {
+            Cursor = Cursors.Arrow;
+        }
+
 }
     // Full Screen
 

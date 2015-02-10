@@ -30,7 +30,7 @@ VisiteurDuplication::VisiteurDuplication()
 ///
 /// Constructeur qui initialise les variables membres de la classe.
 ///
-/// @param[in] pointDansLeMonde : Le point ou il y a eu le clic
+/// @param[in] pointDansLeMonde : Le point ou le clic a lieu.
 ///
 /// @return Aucune (constructeur).
 ///
@@ -48,7 +48,7 @@ VisiteurDuplication::VisiteurDuplication(glm::dvec3 pointDansLeMonde)
 ///
 /// @fn VisiteurDuplication::~VisiteurDuplication()
 ///
-/// Desallocation de memoire
+/// Desallocation de memoire.
 ///
 /// @return Aucune (destructeur).
 ///
@@ -64,17 +64,19 @@ VisiteurDuplication::~VisiteurDuplication()
 }
 
 
-////////////////////////////////////////////////////////////////////////
+//////////////////////////////////////////////////////////////////////////////////
 ///
 /// @fn bool VisiteurDuplication::traiter(ArbreRenduINF2990* arbre)
-/// @brief Cette fonction traite l'arbre de rendu pour dupliquer ses enfants selectionnés
+/// @brief Cette fonction traite l'arbre de rendu pour dupliquer ses enfants selectionnés.
 ///
 /// Cette fonction retourne true pour dire que l'opération s'est
-/// fait correctement
+/// faite correctement.
 ///
-/// @return Retourne toujours true
+/// @param[in] arbre : L'arbre de rendu à traiter.
 ///
-////////////////////////////////////////////////////////////////////////
+/// @return Retourne toujours true.
+///
+//////////////////////////////////////////////////////////////////////////////////
 bool VisiteurDuplication::traiter(ArbreRenduINF2990* arbre)
 {
 	arbreTemp = arbre;
@@ -98,7 +100,9 @@ bool VisiteurDuplication::traiter(ArbreRenduINF2990* arbre)
 /// @brief Cette fonction traite la table de l'arbre de rendu.
 ///
 /// Cette fonction retourne true pour dire que l'opération s'est
-/// fait correctement
+/// fait correctement.
+///
+/// @param[in] table : Le noeud de type Table à traiter.
 ///
 /// @return Retourne toujours true
 ///
@@ -154,11 +158,11 @@ bool VisiteurDuplication::traiter(NoeudTable* table)
 ///
 /// @fn bool VisiteurDuplication::traiter(NoeudAbstrait* noeud)
 ///
-/// Cette fonction traite les enfants de l'arbre de rendu. Si ses enfants ont des enfants
-/// ils seront aussi traités.
+/// Cette fonction traite un noeud de l'arbre de rendu. Si ses enfants ont 
+/// des enfants, ils seront aussi traités. Cette fonction retourne true pour dire 
+/// que l'opération s'est faite correctement
 ///
-/// Cette fonction retourne true pour dire que l'opération s'est
-/// fait correctement
+/// @param[in] noeud : Noeud de l'arbre à traiter.
 ///
 /// @return Retourne toujours true
 ///

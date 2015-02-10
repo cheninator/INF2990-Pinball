@@ -48,7 +48,7 @@ VisiteurAgrandissement::VisiteurAgrandissement(glm::dvec3 homothethie)
 ///
 /// @fn VisiteurAgrandissement::~VisiteurAgrandissement()
 ///
-/// Destructeur vide 
+/// Destructeur vide.
 ///
 /// @return Aucune (destructeur).
 ///
@@ -61,22 +61,22 @@ VisiteurAgrandissement::~VisiteurAgrandissement()
 
 ////////////////////////////////////////////////////////////////////////
 ///
-/// @fn bool VisiteurAgrandissement::traiter(ArbreRenduINF2990* noeud)
+/// @fn bool VisiteurAgrandissement::traiter(ArbreRenduINF2990* arbre)
 ///
 /// Cette fonction traite l'arbre de rendu pour effectuer un agrandissement
-/// sur les objets selectionnés
+/// sur les objets selectionnés. Cette fonction retourne true pour dire que 
+/// l'opération s'est faite correctement.
 ///
-/// Cette fonction retourne true pour dire que l'opération s'est
-/// fait correctement
+/// @param[in] arbre : L'arbre de rendu à traiter.
 ///
-/// @return Retourne toujours true
+/// @return Retourne toujours true.
 ///
 ////////////////////////////////////////////////////////////////////////
-bool VisiteurAgrandissement::traiter(ArbreRenduINF2990* noeud)
+bool VisiteurAgrandissement::traiter(ArbreRenduINF2990* arbre)
 {
-	for (unsigned int i = 0; i < noeud->obtenirNombreEnfants(); i++)
+	for (unsigned int i = 0; i < arbre->obtenirNombreEnfants(); i++)
 	{
-		noeud->getEnfant(i)->accepterVisiteur(this);
+		arbre->getEnfant(i)->accepterVisiteur(this);
 	}
 
 	return true;
@@ -84,22 +84,22 @@ bool VisiteurAgrandissement::traiter(ArbreRenduINF2990* noeud)
 
 ////////////////////////////////////////////////////////////////////////
 ///
-/// @fn bool VisiteurAgrandissement::traiter(NoeudTable* noeud)
+/// @fn bool VisiteurAgrandissement::traiter(NoeudTable* table)
 ///
 /// Cette fonction traite l'arbre de rendu pour effectuer un agrandissement
-/// sur un noeud.
+/// sur un noeud de type table. Cette fonction retourne true si l'opération s'est
+/// faite correctement.
 ///
-/// Cette fonction retourne true si l'opération s'est
-/// fait correctement.
+/// @param[in] table : Le noeud de type Table à traiter.
 ///
-/// @return Retourne toujours true
+/// @return Retourne toujours true.
 ///
 ////////////////////////////////////////////////////////////////////////
-bool VisiteurAgrandissement::traiter(NoeudTable* noeud)
+bool VisiteurAgrandissement::traiter(NoeudTable* table)
 {
-	for (unsigned int i = 0; i < noeud->obtenirNombreEnfants(); i++)
+	for (unsigned int i = 0; i < table->obtenirNombreEnfants(); i++)
 	{
-		noeud->getEnfant(i)->accepterVisiteur(this);
+		table->getEnfant(i)->accepterVisiteur(this);
 	}
 
 	return true;
@@ -109,13 +109,13 @@ bool VisiteurAgrandissement::traiter(NoeudTable* noeud)
 ///
 /// @fn bool VisiteurAgrandissement::traiter(NoeudAbstrait* noeud)
 ///
-/// Cette fonction traite les enfants de l'arbre de rendu pour effectuer 
-/// un agrandissement
+/// Cette fonction traite un noeud de l'arbre de rendu pour effectuer 
+/// un agrandissement. Cette fonction retourne true pour dire que l'opération 
+/// s'est faite correctement.
 ///
-/// Cette fonction retourne true pour dire que l'opération s'est
-/// fait correctement
+/// @param[in] noeud : Noeud de l'arbre de rendu à traiter.
 ///
-/// @return Retourne toujours true
+/// @return Retourne toujours true.
 ///
 ////////////////////////////////////////////////////////////////////////
 bool VisiteurAgrandissement::traiter(NoeudAbstrait* noeud)
@@ -127,7 +127,7 @@ bool VisiteurAgrandissement::traiter(NoeudAbstrait* noeud)
 		// REMARQUE: LE SCALE EST QUELQUE CHOSE DE MULTIPLICATIF
 		// et on utilise un déplacement pour la définir, qui est "additif". 
 		// Qu'est-ce qui transforme l'addition en multiplication? A^(x + y) = (A^x) * (A^y)
-		// c'est pour ça qu'il y a une exponentielle dans la fonction de facadeModele qui calcule le scale a donner au visiteur.
+		// c'est pour ça qu'il y a une exponentielle dans la fonction de facadeModele qui calcule le scale à donner au visiteur.
 		glm::dvec3 scaleInit = noeud->obtenirAgrandissement();
 		glm::dvec3 scaleFinal = glm::dvec3{ scaleInit[0] * homothetie_[0], scaleInit[1] * homothetie_[1], scaleInit[2] * homothetie_[2] };
 		noeud->assignerEchelle(scaleFinal);

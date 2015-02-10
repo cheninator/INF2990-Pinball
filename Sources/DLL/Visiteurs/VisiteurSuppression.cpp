@@ -30,7 +30,7 @@ VisiteurSuppression::VisiteurSuppression()
 ///
 /// @fn VisiteurSuppression::~VisiteurSuppression()
 ///
-/// Destructeur vide .
+/// Destructeur vide.
 ///
 /// @return Aucune (destructeur).
 ///
@@ -77,7 +77,9 @@ bool VisiteurSuppression::traiter(ArbreRenduINF2990* arbre)
 /// @brief Cette fonction traite la table de l'arbre de rendu.
 ///
 /// Cette fonction retourne true pour dire que l'opération s'est
-/// fait correctement
+/// fait correctement.
+///
+/// @param[in] table : Le noeud de type Table à traiter.
 ///
 /// @return Retourne toujours true
 ///
@@ -105,12 +107,12 @@ bool VisiteurSuppression::traiter(NoeudTable* table)
 /// @fn bool VisiteurSuppression::traiter(NoeudAbstrait* noeud)
 ///
 /// Cette fonction traite les enfants de l'arbre de rendu. Si ses enfants ont des enfants
-/// ils seront aussi traités.
-///
-/// Cette fonction retourne true pour dire que l'opération s'est
+/// ils seront aussi traités. Cette fonction retourne true pour dire que l'opération s'est
 /// fait correctement.
 ///
-/// @return Retourne toujours true
+/// @param[in] noeud : Noeud de l'arbre à traiter.
+///
+/// @return Retourne toujours true.
 ///
 ////////////////////////////////////////////////////////////////////////
 bool VisiteurSuppression::traiter(NoeudAbstrait* noeud)
