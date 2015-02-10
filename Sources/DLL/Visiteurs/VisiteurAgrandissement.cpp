@@ -121,7 +121,7 @@ bool VisiteurAgrandissement::traiter(NoeudTable* table)
 bool VisiteurAgrandissement::traiter(NoeudAbstrait* noeud)
 {
 
-	if (noeud->estSelectionne())
+	if (noeud->estSelectionne() && noeud->estAjustable() && noeud->estModifiable())
 	{
 		// LOGIQUE D'AGRANDISSEMENT
 		// REMARQUE: LE SCALE EST QUELQUE CHOSE DE MULTIPLICATIF

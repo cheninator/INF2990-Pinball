@@ -124,9 +124,9 @@ bool VisiteurSelectionMultiple::traiter(NoeudTable* table)
 ////////////////////////////////////////////////////////////////////////
 bool VisiteurSelectionMultiple::traiter(NoeudAbstrait* noeud)
 {
-	glm::dvec3 origine = noeud->obtenirPositionRelative();
+	/*glm::dvec3 origine = noeud->obtenirPositionRelative();
 
-	utilitaire::BoiteEnglobante boite = utilitaire::calculerBoiteEnglobante(*noeud->obtenirModele());
+	utilitaire::BoiteEnglobante boite = utilitaire::calculerBoiteEnglobante(*noeud->obtenirModele());   
 
 	//std::cout << "huehue " << boite.coinMin.x << "  " << boite.coinMin.y << "  " << boite.coinMax.x << "  " << boite.coinMax.y << "  " << std::endl;
 
@@ -137,7 +137,9 @@ bool VisiteurSelectionMultiple::traiter(NoeudAbstrait* noeud)
 		utilitaire::DANS_LIMITESXY(boite.coinMin.x + origine.x, selectionBasGauche_.x, selectionHautDroit_.x,
 								   boite.coinMax.y + origine.y, selectionBasGauche_.y, selectionHautDroit_.y) ||
 		utilitaire::DANS_LIMITESXY(boite.coinMax.x + origine.x, selectionBasGauche_.x, selectionHautDroit_.x,
-								   boite.coinMax.y + origine.y, selectionBasGauche_.y, selectionHautDroit_.y))
+								   boite.coinMax.y + origine.y, selectionBasGauche_.y, selectionHautDroit_.y))*/
+
+	if (noeud->pointEstDansBoite(selectionBasGauche_))
 	{
 		std::cout << "Noeud de type " << noeud->getType() << " selectionne " << std::endl;
 		noeud->assignerSelection(true);

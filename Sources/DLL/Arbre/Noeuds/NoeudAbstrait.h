@@ -21,6 +21,7 @@
 
 #include "glm\glm.hpp"
 #include "../../Visiteurs/VisiteurAbstrait.h"
+#include "Utilitaire.h"
 
 /// Déclarations avancées pour contenir un pointeur vers un modèle3D et sa liste
 /// d'affichage
@@ -50,7 +51,7 @@ public:
 	/// Constructeur.
 	NoeudAbstrait(
 		const std::string& type = std::string{ "" }
-				);
+	);
 	/// Destructeur.
 	virtual ~NoeudAbstrait();
 
@@ -98,9 +99,12 @@ public:
 
 	/// Écrit si le noeud peut être modifié ou non.
 	void assignerEstModifiable(bool modif) { modifiable_ = modif; };
+
+	void assignerEstAjustable(bool ajust) { ajustable_ = ajust; };
 	/// Vérifie si le noeud est modifiable.
 	bool estModifiable() const { return modifiable_; };
-
+	// Vérifie qu'on peut agrandir l'objet
+	bool estAjustable() const{ return ajustable_; }
 	/// Assigne le modèle3D et la liste d'affichage du noeud courant
 	inline void assignerObjetRendu(modele::Modele3D const* modele, modele::opengl_storage::OpenGL_Liste const* liste);
 
@@ -157,8 +161,14 @@ public:
 	virtual NoeudAbstrait* getTwin();
 	/// Ajouter jumeau
 	virtual void setTwin(NoeudAbstrait* twin);
+	//Obtenir les 4 vecteurs de la boite englobante modifie
+	virtual void obtenirVecteursBoite(glm::dvec3 &v1, glm::dvec3 &v2, glm::dvec3 &v3, glm::dvec3 &v4);
+	//Verifie si un point est dans la boite englobante
+	virtual bool pointEstDansBoite(glm::dvec3 point);
+
 	/// Obtenir couleur
 	virtual bool getColorShift();
+
 	/// Selectionner couleur
 	virtual void setColorShift(bool colorShift);
 
@@ -169,6 +179,7 @@ public:
 	inline const glm::dvec3& NoeudAbstrait::obtenirRotation() const;
 
 	std::string getType(){ return type_; }
+
 protected:
 	/// Si jumeau
 	NoeudAbstrait* twin_{ nullptr };
@@ -203,6 +214,8 @@ protected:
 	/// Détermine si l'objet peut être modifié
 	bool             modifiable_{ true };
 
+	bool			ajustable_{ true };
+
 	/// Pointeur vers le parent.
 	NoeudAbstrait*   parent_{ nullptr };
 
@@ -216,6 +229,10 @@ protected:
 
 	/// Numéro d'instance.
 	int numeroNoeud_;
+
+	//boite englobante
+	utilitaire::BoiteEnglobante boite_;
+
 	// Couleur du noeud
 	bool colorShift_;
 };
@@ -522,6 +539,7 @@ inline void NoeudAbstrait::assignerObjetRendu(modele::Modele3D const* modele, mo
 {
 	modele_ = modele;
 	liste_ = liste;
+	boite_ = utilitaire::calculerBoiteEnglobante(*modele_);
 }
 
 ////////////////////////////////////////////////////////////////////////

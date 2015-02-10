@@ -38,7 +38,7 @@ namespace InterfaceGraphique
                     else
                         System.Console.WriteLine("Tests réussis.");
 
-                    return;
+                   return;
                 }
 
             chrono.Start();
