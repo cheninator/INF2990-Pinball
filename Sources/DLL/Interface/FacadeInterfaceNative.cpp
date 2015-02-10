@@ -815,6 +815,7 @@ extern "C"
 				) {
 				objet = FacadeModele::obtenirInstance()->obtenirArbreRenduINF2990()->getEnfant(0)->chercher(j);
 				positionY = objet->obtenirPositionRelative().y;
+				
 			}
 		}
 
