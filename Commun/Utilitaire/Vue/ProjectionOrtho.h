@@ -81,6 +81,12 @@ namespace vue {
 		/// Ajuste la fenêtre en modifiant la portée horizontale
 		void ajusterRapportAspectX(double rapportAspect);
 
+		/// Vérifie si les nouvelles bornes de la fanêtre viole les bornes des facteurs de zoom
+		bool zoomInValide(double xBorneMin, double xBorneMax, double yBorneMin, double yBorneMax);
+
+		/// Vérifie si les nouvelles bornes de la fanêtre viole les bornes des facteurs de zoom
+		bool zoomOutValide(double xBorneMin, double xBorneMax, double yBorneMin, double yBorneMax);
+
 		/// Borne inférieure en X de la fenêtre virtuelle.
 		double xMinFenetre_;
 		/// Borne supérieure en X de la fenêtre virtuelle.

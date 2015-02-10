@@ -455,6 +455,7 @@
             // zoom_Bar
             // 
             this.zoom_Bar.AutoSize = false;
+            this.zoom_Bar.Enabled = false;
             this.zoom_Bar.LargeChange = 1;
             this.zoom_Bar.Location = new System.Drawing.Point(13, 226);
             this.zoom_Bar.Maximum = 12;
@@ -639,7 +640,7 @@
             this.label1.Location = new System.Drawing.Point(3, 445);
             this.label1.Name = "label1";
             this.label1.Padding = new System.Windows.Forms.Padding(0, 3, 3, 0);
-            this.label1.Size = new System.Drawing.Size(159, 160);
+            this.label1.Size = new System.Drawing.Size(159, 227);
             this.label1.TabIndex = 0;
             this.label1.Text = resources.GetString("label1.Text");
             this.label1.Click += new System.EventHandler(this.label1_Click);

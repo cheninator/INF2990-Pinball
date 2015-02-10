@@ -126,7 +126,7 @@ bool VisiteurSelectionMultiple::traiter(NoeudAbstrait* noeud)
 {
 	glm::dvec3 origine = noeud->obtenirPositionRelative();
 
-	utilitaire::BoiteEnglobante boite = utilitaire::calculerBoiteEnglobante(*noeud->obtenirModele());
+	utilitaire::BoiteEnglobante boite = utilitaire::calculerBoiteEnglobante(*noeud->obtenirModele());   
 
 	std::cout << selectionBasGauche_.x << " " << selectionBasGauche_.y << " " << selectionHautDroit_.x << " " << selectionHautDroit_.y << std::endl;
 

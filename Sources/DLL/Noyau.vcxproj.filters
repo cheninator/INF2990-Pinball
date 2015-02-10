@@ -174,8 +174,13 @@
     <ClCompile Include="Visiteurs\VisiteurSuppression.cpp">
       <Filter>Source Files\Visiteurs</Filter>
     </ClCompile>
+<<<<<<< HEAD
     <ClCompile Include="Visiteurs\VisiteurSelectionInverseMultiple.cpp">
       <Filter>Source Files\Visiteurs</Filter>
+=======
+    <ClCompile Include="Tests\NoeudCompositeTest.cpp">
+      <Filter>Source Files\Tests</Filter>
+>>>>>>> 594d02d73094faec9402cfe40b14e0bd8daad0c5
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -341,8 +346,13 @@
     <ClInclude Include="Visiteurs\VisiteurSuppression.h">
       <Filter>Header Files\Visiteurs</Filter>
     </ClInclude>
+<<<<<<< HEAD
     <ClInclude Include="Visiteurs\VisiteurSelectionInverseMultiple.h">
       <Filter>Header Files\Visiteurs</Filter>
+=======
+    <ClInclude Include="Tests\NoeudCompositeTest.h">
+      <Filter>Header Files\Tests</Filter>
+>>>>>>> 594d02d73094faec9402cfe40b14e0bd8daad0c5
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

@@ -121,10 +121,10 @@
     <value>Touches:
 F = Plein Ecran
 S = Selection
-V = Translation vue (souris)
+C = Duplication
+R = Rotation Objet (souris)
 D = Translation Objet (souris)
 E = Zoom objet (souris)
-O = Vue Orbitale (souris)
 Z = Zoom vue (roue)
 + = Zoom vue avant
 - = Zoom vue arriere

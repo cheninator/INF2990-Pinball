@@ -286,18 +286,20 @@ extern "C"
 	/// @param[in]  value : Nom de l'objet
 	/// @param[in]  length : Taille du nom de l'objet
 	/// @param[in]  twin : si a un jumeau
+	/// @param[in]  colorShift : la couleur
 	///
 	/// Cette fonction permet de cree un objet 3D
 	///
 	/// @return Aucun
 	///
 	////////////////////////////////////////////////////////////////////////
-	__declspec(dllexport) void __cdecl creerObjet(char* value, int length, bool isTwin)
+	__declspec(dllexport) void __cdecl creerObjet(char* value, int length, bool isTwin, bool colorShift)
 	{
-		calculerTransition();
 		std::string nomObjet(value);
 		if (isTwin == true) {
+			std::cout << isTwin;
 			objet_temp = FacadeModele::obtenirInstance()->obtenirArbreRenduINF2990()->creerNoeud(nomObjet);
+			objet_temp->setColorShift(colorShift);
 			if (objet == nullptr)
 				return;
 			objet_temp->setTwin(objet);
@@ -305,10 +307,13 @@ extern "C"
 			objet->assignerSelection(true);
 			objet = objet_temp;
 		}
-		else
+		else {
 			objet = FacadeModele::obtenirInstance()->obtenirArbreRenduINF2990()->creerNoeud(nomObjet);
+			objet->setColorShift(colorShift);
+		}
 		if (objet == nullptr)
 			return;
+
 		FacadeModele::obtenirInstance()->obtenirArbreRenduINF2990()->getEnfant(0)->ajouter(objet);
 	}
 

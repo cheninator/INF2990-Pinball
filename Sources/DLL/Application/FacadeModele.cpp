@@ -196,7 +196,7 @@ void FacadeModele::initialiserOpenGL(HWND hWnd)
 			glm::dvec3(0, 1, 0),   glm::dvec3(0, 1, 0)},
 		vue::ProjectionOrtho{ 
 				0, 500, 0, 500,
-				1, 1000, 1, 10000, 1.25,
+				1, 1000, 10, 5000, 1.25,
 				-100, 100, -100, 100 }
 	};
 
@@ -350,6 +350,7 @@ void FacadeModele::reinitialiser()
 {
 	// Réinitialisation de la scène.
 	arbre_->initialiser();
+
 }
 
 
@@ -661,8 +662,15 @@ int FacadeModele::creerXML(char* path, int prop[6])
 	{
 		if (FacadeModele::obtenirInstance()->obtenirArbreRenduINF2990()->estDefaut())
 			sauvegardeAutorise = 1;
+
 		else
+		{
+			VisiteurXML* visiteur = new VisiteurXML(std::string(path), prop);
+			FacadeModele::obtenirInstance()->obtenirArbreRenduINF2990()->accepterVisiteur(visiteur);
 			sauvegardeAutorise = 2;
+
+			delete visiteur;
+		}
 	}
 
 	// Permettre la sauvegarde que lorsque il y a les 3 objets obligatoires + d'autres objets

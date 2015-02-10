@@ -38,11 +38,6 @@ public:
 	/// Accepte un visiteur.
 	virtual bool accepterVisiteur(VisiteurAbstrait* vis);
 
-	/// Obtenir jumeau
-	virtual NoeudAbstrait* getTwin();
-	/// Ajouter jumeau
-	virtual void setTwin(NoeudAbstrait* twin);
-
 private:
 	// TODO(Emilio): Insérer les attributs propres à chaque type d'objet
 	/// Angle selon l'axe des X.
