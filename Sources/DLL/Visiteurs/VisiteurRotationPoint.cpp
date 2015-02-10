@@ -16,7 +16,7 @@
 ///
 /// @fn VisiteurRotationPoint::VisiteurRotationPoint()
 ///
-/// VIDE
+/// Constructeur par défaut (Vide).
 ///
 /// @return Aucune (constructeur).
 ///
@@ -33,9 +33,9 @@ VisiteurRotationPoint::VisiteurRotationPoint()
 ///
 /// Constructeur qui initialise les variables membres de la classe.
 ///
-/// @param[in] dev : Le vecteur des rotation
+/// @param[in] dev : Le vecteur des rotations.
 ///
-/// @param[in] centreRotation : Point autour duquel tourner les objets
+/// @param[in] centreRotation : Point autour duquel tournent les objetss
 ///
 /// @return Aucune (constructeur).
 ///
@@ -51,7 +51,7 @@ VisiteurRotationPoint::VisiteurRotationPoint(glm::dvec3 angles, glm::dvec3 centr
 ///
 /// @fn VisiteurRotationPoint::~VisiteurRotationPoint()
 ///
-/// Destructeur vide 
+/// Destructeur vide.
 ///
 /// @return Aucune (destructeur).
 ///
@@ -64,22 +64,22 @@ VisiteurRotationPoint::~VisiteurRotationPoint()
 
 ////////////////////////////////////////////////////////////////////////
 ///
-/// @fn bool VisiteurRotationPoint::traiter(ArbreRenduINF2990* noeud)
+/// @fn bool VisiteurRotationPoint::traiter(ArbreRenduINF2990* arbre)
 ///
-/// Cette fonction traite l'arbre de rendu pour effectuer une rotation sur ses enfants
-/// selectionnés.
+/// Cette fonction traite l'arbre de rendu pour effectuer une rotation sur 
+///	les enfants selectionnés. Cette fonction retourne true pour dire que 
+/// l'opération s'est faite correctement.
+//
+/// @param[in] arbre : L'arbre de rendu à traiter.
 ///
-/// Cette fonction retourne true pour dire que l'opération s'est
-/// fait correctement.
-///
-/// @return Retourne toujours true
+/// @return Retourne toujours true.
 ///
 ////////////////////////////////////////////////////////////////////////
-bool VisiteurRotationPoint::traiter(ArbreRenduINF2990* noeud)
+bool VisiteurRotationPoint::traiter(ArbreRenduINF2990* arbre)
 {
-	for (unsigned int i = 0; i < noeud->obtenirNombreEnfants(); i++)
+	for (unsigned int i = 0; i < arbre->obtenirNombreEnfants(); i++)
 	{
-		noeud->getEnfant(i)->accepterVisiteur(this);
+		arbre->getEnfant(i)->accepterVisiteur(this);
 	}
 
 	return true;
@@ -88,22 +88,22 @@ bool VisiteurRotationPoint::traiter(ArbreRenduINF2990* noeud)
 
 ////////////////////////////////////////////////////////////////////////
 ///
-/// @fn bool VisiteurRotationPoint::traiter(NoeudTable* noeud)
+/// @fn bool VisiteurRotationPoint::traiter(NoeudTable* table)
 ///
 /// Cette fonction traite la table pour effectuer une rotation sur ses enfants
-/// selectionnés.
+/// selectionnés. Cette fonction retourne true pour dire que l'opération s'est
+/// faite correctement.
 ///
-/// Cette fonction retourne true pour dire que l'opération s'est
-/// fait correctement.
+/// @param[in] table : Le noeud de type Table à traiter.
 ///
 /// @return Retourne toujours true
 ///
 ////////////////////////////////////////////////////////////////////////
-bool VisiteurRotationPoint::traiter(NoeudTable* noeud)
+bool VisiteurRotationPoint::traiter(NoeudTable* table)
 {
-	for (unsigned int i = 0; i < noeud->obtenirNombreEnfants(); i++)
+	for (unsigned int i = 0; i < table->obtenirNombreEnfants(); i++)
 	{
-		noeud->getEnfant(i)->accepterVisiteur(this);
+		table->getEnfant(i)->accepterVisiteur(this);
 	}
 
 	return true;
@@ -113,11 +113,11 @@ bool VisiteurRotationPoint::traiter(NoeudTable* noeud)
 ///
 /// @fn bool VisiteurRotationPoint::traiter(NoeudAbstrait* noeud)
 ///
-/// Cette fonction traite les enfants de l'arbre de rendu. Si ses enfants ont des enfants
-/// ils seront aussi traités.
+/// Cette fonction traite un noeud de l'arbre de rendu. Si ses enfants ont 
+/// des enfants, ils seront aussi traités. Cette fonction retourne true 
+/// si l'opération s'est faite correctement.
 ///
-/// Cette fonction retourne true pour dire que l'opération s'est
-/// fait correctement.
+/// @param[in] noeud : Noeud de l'arbre à traiter.
 ///
 /// @return Retourne toujours true
 ///
