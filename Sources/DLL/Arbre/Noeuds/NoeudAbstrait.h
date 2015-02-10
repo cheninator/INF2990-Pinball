@@ -49,7 +49,8 @@ class NoeudAbstrait
 public:
 	/// Constructeur.
 	NoeudAbstrait(
-		const std::string& type = std::string{ "" }	);
+		const std::string& type = std::string{ "" }
+				);
 	/// Destructeur.
 	virtual ~NoeudAbstrait();
 
@@ -156,6 +157,10 @@ public:
 	virtual NoeudAbstrait* getTwin();
 	/// Ajouter jumeau
 	virtual void setTwin(NoeudAbstrait* twin);
+	/// Obtenir couleur
+	virtual bool getColorShift();
+	/// Selectionner couleur
+	virtual void setColorShift(bool colorShift);
 
 	modele::Modele3D const* obtenirModele() const;
 
@@ -166,7 +171,7 @@ public:
 	std::string getType(){ return type_; }
 protected:
 	/// Si jumeau
-	NoeudAbstrait* twin_;
+	NoeudAbstrait* twin_{ nullptr };
 
 	/// Type du noeud.
 	std::string      type_;
@@ -211,6 +216,8 @@ protected:
 
 	/// Numéro d'instance.
 	int numeroNoeud_;
+	// Couleur du noeud
+	bool colorShift_;
 };
 
 
