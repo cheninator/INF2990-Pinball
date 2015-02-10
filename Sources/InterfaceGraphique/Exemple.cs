@@ -109,7 +109,7 @@ namespace InterfaceGraphique
                 }
                 if ((e.KeyData == Keys.Add ||
                     e.KeyCode == Keys.Oemplus && e.Modifiers == Keys.Shift)
-                    && zoom_Bar.Value < 10)
+                    && zoom_Bar.Value < 12)
                 {
                     FonctionsNatives.zoomIn();
                     zoom_Bar.Value += 1;
@@ -162,6 +162,10 @@ namespace InterfaceGraphique
 
             if( e.KeyChar == (char)Keys.Escape)
             {
+                if (etat is EtatPortail)
+                {
+                    FonctionsNatives.removeObject();
+                }
                 etat = null;
                 etat = new EtatNone(this);
                 deselection();
@@ -802,7 +806,10 @@ namespace InterfaceGraphique
             origin = panel_GL.PointToClient(MousePosition);
             //if( !(etat is EtatCreation))
             //    panel_GL.MouseMove += new MouseEventHandler(panel_MouseMove);   
-
+            if (etat is EtatPortail)
+            {
+                etat = new EtatSelection(this);
+            }
 
             if (e.Button == MouseButtons.Left)
                 sourisBoutonGaucheActive = true;
@@ -1200,6 +1207,10 @@ namespace InterfaceGraphique
         public void enableZoom(bool active)
         {
             zoom_Bar.Enabled = active;
+        }
+        public void statePortail()
+        {
+            etat = new EtatPortail(this);
         }
 }
     // Full Screen

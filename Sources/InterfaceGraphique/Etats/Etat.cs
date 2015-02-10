@@ -58,7 +58,29 @@ namespace InterfaceGraphique
            
         }
 
+    }
+
+    class EtatPortail : Etat
+    {
+        public EtatPortail(Exemple form) : base(form) { }
+
+        public override bool traiterClavier(KeyEventArgs e)
+        {
+
+            // Traiter le déplacement par clavier
+            return base.traiterClavier(e);
+        }
+
+        public override bool traiterSouris(MouseEventArgs e)
+        {
+            form_.deplacementSouris(e);
+            return true;
+
+        }
+
     } 
+
+
 
     class EtatSelection : Etat 
     {
@@ -146,6 +168,7 @@ namespace InterfaceGraphique
                 if (Exemple.myObjectName.ToString() == "portail")
                 {
                     form_.creationObjet(e, true);
+                    form_.statePortail();
                 }
             }
             else if (e.Button == MouseButtons.Right)
