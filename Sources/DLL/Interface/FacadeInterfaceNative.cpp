@@ -18,6 +18,7 @@
 #include "CompteurAffichage.h"
 #include "../Visiteurs/VisiteurXML.h"
 #include "../Visiteurs/VisiteurSuppression.h"
+#include "../Visiteurs/VisiteurDuplication.h"
 
 #include <iostream>
 #include "BancTests.h"
@@ -350,12 +351,14 @@ extern "C"
 	////////////////////////////////////////////////////////////////////////
 	__declspec(dllexport) void __cdecl translateObjet(int x, int y, int z)
 	{
+	
 		calculerTransition();
 		glm::dvec3 maPositionPresente;
 		maPositionPresente = objet->obtenirPositionRelative();
-		objet->assignerPositionRelative({ maPositionPresente.x + x * facteurDeTransition ,
-			maPositionPresente.y + y * facteurDeTransition ,
+		objet->assignerPositionRelative({ maPositionPresente.x + x * facteurDeTransition,
+			maPositionPresente.y + y * facteurDeTransition,
 			0 });
+
 	}
 
 

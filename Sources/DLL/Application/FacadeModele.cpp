@@ -464,7 +464,6 @@ int FacadeModele::selectionMultiple()
 ///////////////////////////////////////////////////////////////////////////////
 void FacadeModele::deplacerSelection(int x1, int y1 ,int x2, int y2)
 {
-
 	glm::dvec3 positionInitiale, positionFinale;
 	
 	// Calcul des coordonnées dans le monde pour pas avoir besoin du facteur mistérieux !
@@ -473,7 +472,7 @@ void FacadeModele::deplacerSelection(int x1, int y1 ,int x2, int y2)
 
 	VisiteurDeplacement visDep(positionFinale - positionInitiale);
 	arbre_->accepterVisiteur(&visDep);
-
+	
 }
 
 
@@ -642,11 +641,9 @@ void FacadeModele::dupliquerSelection(int i, int j)
 	glm::dvec3 positionDansLeMonde;
 	obtenirInstance()->obtenirVue()->convertirClotureAVirtuelle(i, j, positionDansLeMonde);
 	positionDansLeMonde.z = 0.0;
-
-	/*
+	
 	// Visiter l'arbre et faire la duplication.
-	VisiteurDuplication* visiteur = new VisiteurDuplication(positionDansLeMonde);
-	arbre_->accepterVisiteur(visiteur);
-	delete visiteur;
-	*/
+	VisiteurDuplication visiteur(positionDansLeMonde);
+	arbre_->accepterVisiteur(&visiteur);
+	
 }

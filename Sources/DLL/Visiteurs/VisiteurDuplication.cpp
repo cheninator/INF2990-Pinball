@@ -116,8 +116,10 @@ bool VisiteurDuplication::traiter(NoeudTable* table)
 	// Si la structure ne contient qu'un seul objet
 	if (copies_.size() == 1)
 	{
-		copies_[0]->assignerPositionRelative(pointDansLeMonde_);
-		table->ajouter(copies_[0]);
+		std::cout << "Nombre d'objets : " << table->obtenirNombreEnfants() << std::endl;
+		copies_.front()->assignerPositionRelative(pointDansLeMonde_);
+		table->ajouter(copies_.front());
+		std::cout << "Nombre d'objets maintenant : " << table->obtenirNombreEnfants() << std::endl;
 	}
 
 	// Si la structure contient plusieurs objets, trouver le centre de selection
@@ -165,9 +167,12 @@ bool VisiteurDuplication::traiter(NoeudAbstrait* noeud)
 {
 	if (noeud->estSelectionne() && noeud->estModifiable())
 	{
+		std::cout << "Noeud a copier : " << noeud->getNumero() << std::endl;
+
 		NoeudAbstrait* copie = arbreTemp->creerNoeud(noeud->obtenirType());
 
-		std::cout << "J'ai cree un noeud de type : " << noeud->obtenirType();
+		std::cout << "J'ai cree un noeud de type : " << noeud->obtenirType() << std::endl;
+		std::cout << "Le nouveau noeud est : " << copie->getNumero() << std::endl;
 
 		copie->assignerRotation(noeud->obtenirRotation());
 		copie->assignerEchelle(noeud->obtenirAgrandissement());
