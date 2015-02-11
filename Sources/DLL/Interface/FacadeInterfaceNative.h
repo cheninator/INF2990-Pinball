@@ -57,6 +57,7 @@ extern "C" {
 	__declspec(dllexport) bool verifierCliqueDansTable(int x, int y);
 	__declspec(dllexport) void dupliquerSelection(int i, int j);
 	__declspec(dllexport) void playSound(char* value, int length, bool stop = false);
+	__declspec(dllexport) void obligerTransparence(bool transparence);
 	__declspec(dllexport) void initialiserRectangleElastique(int i, int j);
 	__declspec(dllexport) void terminerRectangleElastique();
 }

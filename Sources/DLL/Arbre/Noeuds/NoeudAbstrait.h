@@ -168,9 +168,13 @@ public:
 
 	/// Obtenir couleur
 	virtual bool getColorShift();
-
 	/// Selectionner couleur
 	virtual void setColorShift(bool colorShift);
+
+	/// Obtenir couleur
+	virtual bool getTransparent();
+	/// Selectionner couleur
+	virtual void setTransparent(bool transparent);
 
 	modele::Modele3D const* obtenirModele() const;
 
@@ -235,6 +239,9 @@ protected:
 
 	// Couleur du noeud
 	bool colorShift_;
+
+	// Transparence
+	bool transparent_;
 };
 
 

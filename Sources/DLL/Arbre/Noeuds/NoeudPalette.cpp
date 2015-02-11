@@ -69,9 +69,12 @@ void NoeudPalette::afficherConcret() const
 	if (colorShift_){
 		glTexEnvf(GL_TEXTURE_ENV, GL_TEXTURE_ENV_MODE, GL_BLEND);
 	}
-	if (selectionne_){
-		glTexEnvf(GL_TEXTURE_ENV, GL_TEXTURE_ENV_MODE, GL_ADD);
+	if (selectionne_ && transparent_){
+		glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
+		glEnable(GL_BLEND);
 	}
+	else if (selectionne_)
+		glTexEnvf(GL_TEXTURE_ENV, GL_TEXTURE_ENV_MODE, GL_ADD);
 	liste_->dessiner();
 	glPopAttrib();
 	// Restauration de la matrice.

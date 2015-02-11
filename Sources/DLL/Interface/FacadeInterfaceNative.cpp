@@ -305,6 +305,7 @@ extern "C"
 			objet_temp->setTwin(objet);
 			objet->setTwin(objet_temp);
 			objet->assignerSelection(true);
+			objet->setTransparent(true);
 			objet = objet_temp;
 		}
 		else {
@@ -947,6 +948,28 @@ extern "C"
 				return;
 			}
 		}
+	}
+
+	///////////////////////////////////////////////////////////////////////////////
+	///
+	/// @fn __declspec(dllexport) bool __cdecl verifierCliqueDansTable(int x, int y)
+	///
+	/// @param[in]  x : abcisse du point initial 
+	/// @param[in]  y : ordonnee du point initial
+	///
+	/// @return Aucun
+	///
+	/// @remark : On doit donner des x,y qui ont été transformés par panel_GL.PointToClient(...)
+	///
+	///////////////////////////////////////////////////////////////////////////////
+	__declspec(dllexport) void __cdecl obligerTransparence(bool transparence)
+	{
+		// Il faut faire un visiteur par contre
+		objet->setTransparent(transparence);
+		if (objet->getTwin() != NULL)
+			objet->getTwin()->setTransparent(transparence);
+			if (objet->getTwin()->getTwin() != NULL)
+				objet->getTwin()->getTwin()->setTransparent(transparence);
 	}
 
 	__declspec(dllexport) void __cdecl initialiserRectangleElastique(int i, int j)

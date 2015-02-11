@@ -31,6 +31,7 @@ NoeudAbstrait::NoeudAbstrait(
 	numeroNoeud_ = compteurNoeuds_;
 	scale_ = { 1.0, 1.0, 1.0 };
 	twin_ = nullptr;
+	transparent_ = false;
 }
 
 
@@ -553,18 +554,69 @@ void NoeudAbstrait::obtenirVecteursBoite(glm::dvec3 &v1, glm::dvec3 &v2, glm::dv
 
 ////////////////////////////////////////////////////////////////////////
 ///
-/// @fn NoeudAbstrait* NoeudAbstrait::getTwin()
+/// @fn NoeudAbstrait* NoeudAbstrait::getColorShift()
 ///
-/// Retourne le noeud jumueau
+/// Retourne si la couleur est modifier ou non
 ///
 /// @param[in] Aucun.
 ///
-/// @return NoeudAbstrait jumeau.
+/// @return Bool.
 ///
 ////////////////////////////////////////////////////////////////////////
 bool NoeudAbstrait::getColorShift()
 {
 	return colorShift_;
+}
+
+
+////////////////////////////////////////////////////////////////////////
+///
+/// @fn NoeudAbstrait* NoeudAbstrait::setColorShift(bool colorShift)
+///
+/// Change de couleur
+///
+/// @param[in] colorShift: activer ou desactiver le changement de couleur
+///
+/// @return Aucun.
+///
+////////////////////////////////////////////////////////////////////////
+void NoeudAbstrait::setColorShift(bool colorShift)
+{
+	colorShift_ = colorShift;
+}
+
+
+////////////////////////////////////////////////////////////////////////
+///
+/// @fn NoeudAbstrait* NoeudAbstrait::getColorShift()
+///
+/// Retourne si l'objet est transparent ou non
+///
+/// @param[in] Aucun.
+///
+/// @return Bool.
+///
+////////////////////////////////////////////////////////////////////////
+bool NoeudAbstrait::getTransparent()
+{
+	return transparent_;
+}
+
+
+////////////////////////////////////////////////////////////////////////
+///
+/// @fn NoeudAbstrait* NoeudAbstrait::setTransparent(bool transparent)
+///
+/// Change de transparence
+///
+/// @param[in] transparent: activer ou desactiver la transparence
+///
+/// @return Aucun.
+///
+////////////////////////////////////////////////////////////////////////
+void NoeudAbstrait::setTransparent(bool transparent)
+{
+	transparent_ = transparent;
 }
 
 ////////////////////////////////////////////////////////////////////////
@@ -601,9 +653,4 @@ bool NoeudAbstrait::pointEstDansBoite(glm::dvec3 point)
 		return true;
 	else
 		return false;
-}
-
-void NoeudAbstrait::setColorShift(bool colorShift)
-{
-	colorShift_ = colorShift;
 }

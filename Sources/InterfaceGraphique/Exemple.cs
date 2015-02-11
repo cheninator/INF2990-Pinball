@@ -827,6 +827,7 @@ namespace InterfaceGraphique
             if (etat is EtatPortail)
             {
                 etat = new EtatNone(this);
+                FonctionsNatives.obligerTransparence(false);
                 deselection();
             }
 
@@ -1375,6 +1376,9 @@ namespace InterfaceGraphique
 
         [DllImport(@"Noyau.dll", CallingConvention = CallingConvention.Cdecl)]
         public static extern void playSound(StringBuilder value, int length, bool stop = false);
+
+        [DllImport(@"Noyau.dll", CallingConvention = CallingConvention.Cdecl)]
+        public static extern void obligerTransparence(bool transparence);
 
         [DllImport(@"Noyau.dll", CallingConvention = CallingConvention.Cdecl)]
         public static extern void initialiserRectangleElastique(int i, int j);
