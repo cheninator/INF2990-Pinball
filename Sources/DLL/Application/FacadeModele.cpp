@@ -44,6 +44,7 @@ Auteurs Aymen Dje
 #include "../Visiteurs/VisiteurRotationPoint.h"
 #include "../Visiteurs/VisiteurAgrandissement.h"
 #include "../Visiteurs/VisiteurDuplication.h"
+#include "../Visiteurs/VisiteurLimitesSelection.h"
 
 #include "VueOrtho.h"
 #include "Camera.h"
@@ -445,14 +446,36 @@ int FacadeModele::selectionnerObjetSousPointClique(int i, int j, int hauteur, in
 ///////////////////////////////////////////////////////////////////////////////
 void FacadeModele::deplacerSelection(int x1, int y1 ,int x2, int y2)
 {
+
+
 	glm::dvec3 positionInitiale, positionFinale;
-	
+
 	// Calcul des coordonnées dans le monde pour pas avoir besoin du facteur mistérieux !
 	FacadeModele::obtenirInstance()->obtenirVue()->convertirClotureAVirtuelle(x1, y1, positionInitiale);
 	FacadeModele::obtenirInstance()->obtenirVue()->convertirClotureAVirtuelle(x2, y2, positionFinale);
 
-	VisiteurDeplacement visDep(positionFinale - positionInitiale);
-	arbre_->accepterVisiteur(&visDep);
+	glm::dvec3 deplacement{ positionFinale - positionInitiale };
+
+	// Visiter l'arbre pour trouver les limites d'une boite
+	// minX, minY, maxX, maxY
+	VisiteurLimitesSelection VisLimSel;
+	arbre_->accepterVisiteur(&VisLimSel);
+
+	// Comparer le Deplacement et minX,maxX... aux limites de la table.
+
+	// LOGIQUE DE DÉPLACEMENT
+	if (// Respecter les dimensions de la table.
+		108 < VisLimSel.getXMin() + deplacement.x && deplacement.x + VisLimSel.getXMax() < 272
+		&& -190 < VisLimSel.getYMin() + deplacement.y && deplacement.y + VisLimSel.getYMax() < 96
+		)
+	{
+		VisiteurDeplacement visDep(deplacement);
+		arbre_->accepterVisiteur(&visDep);
+	}
+
+
+	
+
 	
 }
 
@@ -688,3 +711,8 @@ int FacadeModele::creerXML(char* path, int prop[6])
 
 	return sauvegardeAutorise;
 }
+
+
+
+
+
