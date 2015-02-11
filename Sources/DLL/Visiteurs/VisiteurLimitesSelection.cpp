@@ -90,19 +90,29 @@ bool VisiteurLimitesSelection::traiter(NoeudTable* table)
 bool VisiteurLimitesSelection::traiter(NoeudAbstrait* noeud)
 {
 	glm::dvec3 position{ noeud->obtenirPositionRelative() };
+
+	glm::dvec3 coinsEnglobant[4];
+
+
 	if (noeud->estSelectionne())
-	{
-		if (position.x > xMax_)
-			xMax_ = position.x;
+	{	
+		noeud->obtenirVecteursBoite(coinsEnglobant[0], coinsEnglobant[1], coinsEnglobant[2], coinsEnglobant[3]);
+		for (int i = 0; i < 4; i++)
+		{
+			coinsEnglobant[i] += noeud->obtenirPositionRelative();
 
-		if (position.x < xMin_)
-			xMin_ = position.x;
+			if (coinsEnglobant[i].x > xMax_)
+				xMax_ = coinsEnglobant[i].x;
 
-		if (position.y > yMax_)
-			yMax_ = position.y;
+			if (coinsEnglobant[i].x < xMin_)
+				xMin_ = coinsEnglobant[i].x;
 
-		if (position.y < yMin_)
-			yMin_ = position.y;
+			if (coinsEnglobant[i].y > yMax_)
+				yMax_ = coinsEnglobant[i].y;
+
+			if (coinsEnglobant[i].y < yMin_)
+				yMin_ = coinsEnglobant[i].y;
+		}
 	}
 
 	return true;
