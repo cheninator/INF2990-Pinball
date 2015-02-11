@@ -1,4 +1,13 @@
-﻿using System;
+﻿//////////////////////////////////////////////////////////////////////////////
+/// @file Exemple.cs
+/// @author Ballers
+/// @date 2015-01-13
+/// @version 1.0 
+///
+/// @ingroup InterfaceGraphique
+//////////////////////////////////////////////////////////////////////////////
+
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -11,9 +20,17 @@ using System.Runtime.InteropServices;
 using System.Media;
 using System.IO;
 
-// test
 namespace InterfaceGraphique
 {
+    ///////////////////////////////////////////////////////////////////////////
+    /// @class Exemple
+    /// @brief Main window de l'éditeur du jeu.
+    ///
+    /// @author The Ballers
+    /// @date 2015-01-13
+    /// 
+    /// @ingroup InterfaceGraphique
+    ///////////////////////////////////////////////////////////////////////////
     public partial class Exemple : Form
     {
         FullScreen fs = new FullScreen();
@@ -23,23 +40,32 @@ namespace InterfaceGraphique
         
         public Point previousP, currentP;
         
-        public int panelHeight;
-        public int panelWidth;
+        public int panelHeight; ///< Hauteur de la fenetre
+        public int panelWidth; ///< Largeur de la fenetre
         private bool ctrlDown = false;
         private bool altDown = false;
         private bool sourisBoutonGaucheActive = false;
-        public List<int> propZJ = new List<int>{10,10,10,10,10,1};
-        private float angleX = 0F;
-        private float angleY = 0F;
-        private float angleZ = 0F;
-        private float scale = 1F;
-        private int currentZoom = 5;
-        private int previousZoom = 5;
+        public List<int> propZJ = new List<int> { 10, 10, 10, 10, 10, 1 }; ///< Une liste de choses
+        private float angleX = 0F; ///< Position en X
+        private float angleY = 0F; ///< Position en Y
+        private float angleZ = 0F; ///< Position en Z
+        private float scale = 1F; ///< Mise a echelle
+        private int currentZoom = 5; ///< Zoom courant
+        private int previousZoom = 5; ///< Zoom precedent
         private int nbSelection;
         private bool colorShift = false;
-        private StringBuilder pathXML = new StringBuilder("");
-        private Etat etat {get; set;}
-        private int[] prop = new int[6];
+        private StringBuilder pathXML = new StringBuilder(""); ///< Chemin pour la lecture/sauvegarde XML
+        private Etat etat { get; set; } ///< Machine a etat
+        private int[] prop = new int[6]; ///< Proprietes du jeu a sauvegarder
+
+        ////////////////////////////////////////////////////////////////////////
+        ///
+        /// @fn static public Exemple()
+        /// @brief Constructeur de la fenêtre.
+        /// 
+        /// @return Aucune (constructeur).
+        ///
+        ////////////////////////////////////////////////////////////////////////
         public Exemple()
         {
             this.KeyPreview = true;
@@ -65,6 +91,14 @@ namespace InterfaceGraphique
             playSound("stone"); // Pause probleme quand on ferme puis rouvre la fenetre
         }
 
+        ////////////////////////////////////////////////////////////////////////
+        ///
+        /// @fn static public void InitialiserAnimation()
+        /// @brief Initialise openGL et l'animation.
+        /// 
+        /// @return Aucune (constructeur).
+        ///
+        ////////////////////////////////////////////////////////////////////////
         public void InitialiserAnimation()
         {
             this.DoubleBuffered = false;
@@ -73,6 +107,16 @@ namespace InterfaceGraphique
             FonctionsNatives.dessinerOpenGL();
         }
 
+        ////////////////////////////////////////////////////////////////////////
+        ///
+        /// @fn public void MettreAJour(double tempsInterAffichage)
+        /// @brief Taches effectuées lors d'un rafraichissement d'écran.
+        /// 
+        /// @param[in] tempsInterAffichage : Temps entre deux affichages.
+        /// 
+        /// @return Aucune.
+        ///
+        ////////////////////////////////////////////////////////////////////////
         public void MettreAJour(double tempsInterAffichage)
         {
             try
@@ -98,7 +142,17 @@ namespace InterfaceGraphique
             }
         }
 
-       
+        ////////////////////////////////////////////////////////////////////////
+        ///
+        /// @fn private void ToucheDown(Object o, KeyEventArgs e)
+        /// @brief Gestion des états lorsqu'une touche est enfoncée.
+        /// 
+        /// @param[in] sender : Objet duquel provient un événement
+        /// @param[in] e : Événement qui lance la fonction.
+        /// 
+        /// @return Aucune.
+        ///
+        ////////////////////////////////////////////////////////////////////////
         private void ToucheDown(Object o, KeyEventArgs e)
         {
             if (etat is EtatZoom)
@@ -150,6 +204,17 @@ namespace InterfaceGraphique
                 }  
         }
 
+        ////////////////////////////////////////////////////////////////////////
+        ///
+        /// @fn private void ToucheUp(Object o, KeyEventArgs e)
+        /// @brief Gestion des états lorsqu'une touche est relâchée.
+        /// 
+        /// @param[in] sender : Objet duquel provient un événement
+        /// @param[in] e : Événement qui lance la fonction.
+        /// 
+        /// @return Aucune.
+        ///
+        ////////////////////////////////////////////////////////////////////////
         private void ToucheUp(Object o, KeyEventArgs e)
         {
            
@@ -162,6 +227,18 @@ namespace InterfaceGraphique
                 ctrlDown = false;
             }
         }
+
+        ////////////////////////////////////////////////////////////////////////
+        ///
+        /// @fn private void ToucheEnfonce(Object o, KeyPressEventArgs e)
+        /// @brief Gestion des états lorsqu'une touche est enfoncée.
+        /// 
+        /// @param[in] sender : Objet duquel provient un événement
+        /// @param[in] e : Événement qui lance la fonction.
+        /// 
+        /// @return Aucune.
+        ///
+        ////////////////////////////////////////////////////////////////////////
         private void ToucheEnfonce(Object o, KeyPressEventArgs e)
         {
 
@@ -233,6 +310,18 @@ namespace InterfaceGraphique
                     label1.Show();
             }
         }
+
+        ////////////////////////////////////////////////////////////////////////
+        ///
+        /// @fn  private void Exemple_FormClosing(object sender, FormClosingEventArgs e)
+        /// @brief Gestion des événements lorsque la fenêtre est fermée.
+        /// 
+        /// @param[in] sender : Objet duquel provient un événement
+        /// @param[in] e : Événement qui lance la fonction.
+        /// 
+        /// @return Aucune.
+        ///
+        ////////////////////////////////////////////////////////////////////////
         private void Exemple_FormClosing(object sender, FormClosingEventArgs e)
         {
             lock (Program.unLock)
