@@ -101,16 +101,14 @@ bool VisiteurListeEnglobante::traiter(NoeudTable* table)
 ////////////////////////////////////////////////////////////////////////
 bool VisiteurListeEnglobante::traiter(NoeudAbstrait* noeud)
 {
-
 	if (noeud->estSelectionne())
 	{
 		glm::dvec3 coinsEnglobant[4];
 		noeud->obtenirVecteursBoite(coinsEnglobant[0], coinsEnglobant[1], coinsEnglobant[2], coinsEnglobant[3]);
 		for (int i = 0; i < 4; i++)
 		{
-			pointsEnglobant_.push_back(coinsEnglobant[i]);
+			pointsEnglobant_.push_back(coinsEnglobant[i] + noeud->obtenirPositionRelative());
 		}
-
 	}
 	return true;
 }
