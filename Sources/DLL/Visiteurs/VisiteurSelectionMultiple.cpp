@@ -124,33 +124,62 @@ bool VisiteurSelectionMultiple::traiter(NoeudTable* table)
 ////////////////////////////////////////////////////////////////////////
 bool VisiteurSelectionMultiple::traiter(NoeudAbstrait* noeud)
 {
-	glm::dvec3 origine = noeud->obtenirPositionRelative();
-
-	utilitaire::BoiteEnglobante boite = utilitaire::calculerBoiteEnglobante(*noeud->obtenirModele());   
-
-	std::cout << selectionBasGauche_.x << " " << selectionBasGauche_.y << " " << selectionHautDroit_.x << " " << selectionHautDroit_.y << std::endl;
-
-	if ((utilitaire::DANS_LIMITESXY(boite.coinMin.x + origine.x, selectionBasGauche_.x, selectionHautDroit_.x,
-		                           boite.coinMin.y + origine.y, selectionBasGauche_.y, selectionHautDroit_.y) ||
-		utilitaire::DANS_LIMITESXY(boite.coinMax.x + origine.x, selectionBasGauche_.x, selectionHautDroit_.x,
-		                           boite.coinMin.y + origine.y, selectionBasGauche_.y, selectionHautDroit_.y) ||
-		utilitaire::DANS_LIMITESXY(boite.coinMin.x + origine.x, selectionBasGauche_.x, selectionHautDroit_.x,
-								   boite.coinMax.y + origine.y, selectionBasGauche_.y, selectionHautDroit_.y) ||
-		utilitaire::DANS_LIMITESXY(boite.coinMax.x + origine.x, selectionBasGauche_.x, selectionHautDroit_.x,
-								   boite.coinMax.y + origine.y, selectionBasGauche_.y, selectionHautDroit_.y)) &&
-		noeud->estSelectionnable())
+	if (noeud->estSelectionnable())
 	{
-		std::cout << "Noeud de type " << noeud->getType() << " selectionne " << std::endl;
-		noeud->assignerSelection(true);
-	}
-	else
-	{
-		noeud->assignerSelection(false);
-	}
+		//obtenir origine du noeud
+		glm::dvec3 origine = noeud->obtenirPositionRelative();
 
-	if (noeud->estSelectionne())
-	{
-		nbObjetsSelectionne_++;
+		//obtenir les 4 coins de la boite englobante
+		glm::dvec3 v1, v2, v3, v4;
+		noeud->obtenirVecteursBoite(v1, v2, v3, v4);
+
+		bool estASelectionner = false;
+
+		//verifier si un des coin est a l'interieur du rectangle elastique
+		if (utilitaire::DANS_LIMITESXY(v1.x + origine.x, selectionBasGauche_.x, selectionHautDroit_.x,
+			v1.y + origine.y, selectionBasGauche_.y, selectionHautDroit_.y) ||
+			utilitaire::DANS_LIMITESXY(v2.x + origine.x, selectionBasGauche_.x, selectionHautDroit_.x,
+			v2.y + origine.y, selectionBasGauche_.y, selectionHautDroit_.y) ||
+			utilitaire::DANS_LIMITESXY(v3.x + origine.x, selectionBasGauche_.x, selectionHautDroit_.x,
+			v3.y + origine.y, selectionBasGauche_.y, selectionHautDroit_.y) ||
+			utilitaire::DANS_LIMITESXY(v4.x + origine.x, selectionBasGauche_.x, selectionHautDroit_.x,
+			v4.y + origine.y, selectionBasGauche_.y, selectionHautDroit_.y))
+		{
+			estASelectionner = true;
+		}
+		else
+		{
+			glm::dvec3 selectionHautGauche(selectionBasGauche_.x, selectionHautDroit_.y, 0.0);
+			glm::dvec3 selectionBasDroit(selectionHautDroit_.x, selectionBasGauche_.y, 0.0);
+
+			//verifier si un des coin du rectangle elastique est a l'interieur de la boite du noeud
+			if (noeud->pointEstDansBoite(selectionBasGauche_) ||
+				noeud->pointEstDansBoite(selectionHautDroit_) ||
+				noeud->pointEstDansBoite(selectionHautGauche) ||
+				noeud->pointEstDansBoite(selectionBasDroit))
+			{
+				estASelectionner = true;
+			}
+			else
+			{
+				//reste a faire : verifier si il y a intersection des segments du rectangle elastique
+			}
+		}
+
+		if (estASelectionner)
+		{
+			std::cout << "Noeud de type " << noeud->getType() << " selectionne " << std::endl;
+			noeud->assignerSelection(true);
+		}
+		else
+		{
+			noeud->assignerSelection(false);
+		}
+
+		if (noeud->estSelectionne())
+		{
+			nbObjetsSelectionne_++;
+		}
 	}
 
 	return true;
