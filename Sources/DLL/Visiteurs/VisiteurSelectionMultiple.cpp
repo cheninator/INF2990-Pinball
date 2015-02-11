@@ -174,22 +174,22 @@ bool VisiteurSelectionMultiple::traiter(NoeudAbstrait* noeud)
 			{
 				//verifier s'il y a intersection entre un des segments du carre elastique
 				//et un des cotes de la boite englobante du noeud
-				if (intersectionDeuxSegments(selectionBasGauche_, selectionHautGauche, v1, v2) ||
-					intersectionDeuxSegments(selectionBasGauche_, selectionHautGauche, v2, v3) ||
-					intersectionDeuxSegments(selectionBasGauche_, selectionHautGauche, v3, v4) ||
-					intersectionDeuxSegments(selectionBasGauche_, selectionHautGauche, v4, v1) ||
-					intersectionDeuxSegments(selectionHautGauche, selectionHautDroit_, v1, v2) ||
-					intersectionDeuxSegments(selectionHautGauche, selectionHautDroit_, v2, v3) ||
-					intersectionDeuxSegments(selectionHautGauche, selectionHautDroit_, v3, v4) ||
-					intersectionDeuxSegments(selectionHautGauche, selectionHautDroit_, v4, v1) ||
-					intersectionDeuxSegments(selectionHautDroit_, selectionBasDroit, v1, v2) ||
-					intersectionDeuxSegments(selectionHautDroit_, selectionBasDroit, v2, v3) ||
-					intersectionDeuxSegments(selectionHautDroit_, selectionBasDroit, v3, v4) ||
-					intersectionDeuxSegments(selectionHautDroit_, selectionBasDroit, v4, v1) ||
-					intersectionDeuxSegments(selectionBasDroit, selectionBasGauche_, v1, v2) ||
-					intersectionDeuxSegments(selectionBasDroit, selectionBasGauche_, v2, v3) ||
-					intersectionDeuxSegments(selectionBasDroit, selectionBasGauche_, v3, v4) ||
-					intersectionDeuxSegments(selectionBasDroit, selectionBasGauche_, v4, v1))
+				if (utilitaire::intersectionDeuxSegments(selectionBasGauche_, selectionHautGauche, v1, v2) ||
+					utilitaire::intersectionDeuxSegments(selectionBasGauche_, selectionHautGauche, v2, v3) ||
+					utilitaire::intersectionDeuxSegments(selectionBasGauche_, selectionHautGauche, v3, v4) ||
+					utilitaire::intersectionDeuxSegments(selectionBasGauche_, selectionHautGauche, v4, v1) ||
+					utilitaire::intersectionDeuxSegments(selectionHautGauche, selectionHautDroit_, v1, v2) ||
+					utilitaire::intersectionDeuxSegments(selectionHautGauche, selectionHautDroit_, v2, v3) ||
+					utilitaire::intersectionDeuxSegments(selectionHautGauche, selectionHautDroit_, v3, v4) ||
+					utilitaire::intersectionDeuxSegments(selectionHautGauche, selectionHautDroit_, v4, v1) ||
+					utilitaire::intersectionDeuxSegments(selectionHautDroit_, selectionBasDroit, v1, v2) ||
+					utilitaire::intersectionDeuxSegments(selectionHautDroit_, selectionBasDroit, v2, v3) ||
+					utilitaire::intersectionDeuxSegments(selectionHautDroit_, selectionBasDroit, v3, v4) ||
+					utilitaire::intersectionDeuxSegments(selectionHautDroit_, selectionBasDroit, v4, v1) ||
+					utilitaire::intersectionDeuxSegments(selectionBasDroit, selectionBasGauche_, v1, v2) ||
+					utilitaire::intersectionDeuxSegments(selectionBasDroit, selectionBasGauche_, v2, v3) ||
+					utilitaire::intersectionDeuxSegments(selectionBasDroit, selectionBasGauche_, v3, v4) ||
+					utilitaire::intersectionDeuxSegments(selectionBasDroit, selectionBasGauche_, v4, v1))
 				{
 					estASelectionner = true;
 				}
@@ -213,28 +213,4 @@ bool VisiteurSelectionMultiple::traiter(NoeudAbstrait* noeud)
 	}
 
 	return true;
-}
-
-bool VisiteurSelectionMultiple::intersectionDeuxSegments(glm::dvec3 p1, glm::dvec3 p2, glm::dvec3 p3, glm::dvec3 p4)
-{
-	glm::dvec2 CmP(p3.x - p1.x, p3.y - p1.y);
-	glm::dvec2 p(p2.x - p1.x, p2.y - p1.y);
-	glm::dvec2 q(p4.x - p3.x, p4.y - p3.y);
-
-	double CmPxr = CmP.x * p.y - CmP.y * p.x;
-	double CmPxs = CmP.x * q.y - CmP.y * q.x;
-	double rxs = p.x * q.y - p.y * q.x;
-
-	if (CmPxr == 0.0)
-		return ((p3.x - p1.x < 0.0) != (p3.x - p2.x < 0.0))
-			|| ((p3.y - p1.y < 0.0) != (p3.y - p2.y < 0.0));
-
-	if (rxs == 0.0)
-		return false;
-
-	double rxsr = 1.0 / rxs;
-	double t = CmPxs * rxsr;
-	double u = CmPxr * rxsr;
-
-	return (t >= 0.0) && (t <= 1.0) && (u >= 0.0) && (u <= 1.0);
 }

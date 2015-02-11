@@ -507,6 +507,30 @@ namespace utilitaire {
 		}
 	}
 
+	bool intersectionDeuxSegments(glm::dvec3 p1, glm::dvec3 p2, glm::dvec3 p3, glm::dvec3 p4)
+	{
+		glm::dvec2 CmP(p3.x - p1.x, p3.y - p1.y);
+		glm::dvec2 p(p2.x - p1.x, p2.y - p1.y);
+		glm::dvec2 q(p4.x - p3.x, p4.y - p3.y);
+
+		double CmPxr = CmP.x * p.y - CmP.y * p.x;
+		double CmPxs = CmP.x * q.y - CmP.y * q.x;
+		double rxs = p.x * q.y - p.y * q.x;
+
+		if (CmPxr == 0.0)
+			return ((p3.x - p1.x < 0.0) != (p3.x - p2.x < 0.0))
+			|| ((p3.y - p1.y < 0.0) != (p3.y - p2.y < 0.0));
+
+		if (rxs == 0.0)
+			return false;
+
+		double rxsr = 1.0 / rxs;
+		double t = CmPxs * rxsr;
+		double u = CmPxr * rxsr;
+
+		return (t >= 0.0) && (t <= 1.0) && (u >= 0.0) && (u <= 1.0);
+	}
+
 }; // Fin de l'espace de nom utilitaire.
 
 

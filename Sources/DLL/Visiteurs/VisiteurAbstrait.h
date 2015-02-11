@@ -46,7 +46,6 @@ public:
 	virtual bool traiter(NoeudTable* noeud) { return false; };
 	/// Traiter une opération sur l'arbre de rendu et ses enfants
 	virtual bool traiter(NoeudAbstrait* noeud) { return false; };
-
 };
 
 
