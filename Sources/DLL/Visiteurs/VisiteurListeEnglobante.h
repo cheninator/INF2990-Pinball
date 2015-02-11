@@ -39,6 +39,7 @@ public:
 	/// Traiter une opération sur l'arbre de rendu et ses enfants
 	virtual bool traiter(NoeudTable* table);
 
+	std::vector<glm::dvec3> obtenirListeEnglobante(){ return pointsEnglobant_; };
 
 private:
 

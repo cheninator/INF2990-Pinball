@@ -45,6 +45,7 @@ Auteurs Aymen Dje
 #include "../Visiteurs/VisiteurAgrandissement.h"
 #include "../Visiteurs/VisiteurDuplication.h"
 #include "../Visiteurs/VisiteurLimitesSelection.h"
+#include "../Visiteurs/VisiteurListeEnglobante.h"
 
 #include "VueOrtho.h"
 #include "Camera.h"
@@ -486,7 +487,12 @@ void FacadeModele::deplacerSelection(int x1, int y1 ,int x2, int y2)
 ///		Fait une rotation des objets sélectionnés autour de leur centre de masse.
 ///		L'angle est calculé en fonction du déplacement de (x1,y1) à (x2,y2):
 ///		Présentement, l'angle est proportionnel à (y1 - y2).
-///
+///		
+///		Pour tester si la rotation est faisable, on prend tous les points des boîtes
+///		englobantes.  Si un seul de ces points, une fois transformé, n'est pas dans la 
+///		table, on ne fait pas la rotation.
+///		
+///		
 /// @param[in]  x1 : abcisse du point initial
 /// @param[in]  y1 : ordonnee du point initial
 ///
@@ -504,9 +510,41 @@ void FacadeModele::tournerSelectionSouris(int x1, int y1, int x2, int y2)
 	VisiteurCentreDeMasse visCM;
 	arbre_->accepterVisiteur(&visCM);
 
+
+	bool onTourne = true;
+	double angle = (y2 - y1) / 3.0;
+
+	VisiteurListeEnglobante visLE;
+	arbre_->accepterVisiteur(&visLE);
+	glm::dvec3 centreRotation = visCM.obtenirCentreDeMasse();
+	double angleEnRadian = angle * 2 * 3.14156 / 360;
+	glm::dmat3 transform = glm::dmat3{ glm::dvec3{ cos(-angleEnRadian), -sin(-angleEnRadian), 0 },
+										glm::dvec3{ sin(-angleEnRadian), cos(-angleEnRadian), 0 },
+										glm::dvec3{ 0, 0, 1 } };
+
+	std::vector<glm::dvec3> listeEnglobante = visLE.obtenirListeEnglobante();
+	glm::dvec3 vecteur;
+	glm::dvec3 pointTransforme;
+	for (glm::dvec3 point : listeEnglobante)
+	{
+		vecteur = point - centreRotation;
+		vecteur =  vecteur;
+		pointTransforme = centreRotation + transform *(point - centreRotation);
+
+		if (// Respecter les dimensions de la table.
+			108 > pointTransforme.x || pointTransforme.x > 272
+			|| -190 > pointTransforme.y || pointTransforme.y > 96
+			)
+			onTourne = false;
+	}
+
 	// Visiter l'arbre et faire la rotation.
-	VisiteurRotationPoint visSP(glm::dvec3{ 0, 0, (y2 - y1) /3.0} , visCM.obtenirCentreDeMasse());
-	arbre_->accepterVisiteur(&visSP);
+	if (onTourne)
+	{
+		VisiteurRotationPoint visSP(glm::dvec3{ 0, 0, angle }, centreRotation);
+		arbre_->accepterVisiteur(&visSP);
+	}
+
 }
 
 ///////////////////////////////////////////////////////////////////////////////
