@@ -163,6 +163,7 @@
     <ClCompile Include="Visiteurs\VisiteurDeselectionnerTout.cpp" />
     <ClCompile Include="Visiteurs\VisiteurDuplication.cpp" />
     <ClCompile Include="Visiteurs\VisiteurLimitesSelection.cpp" />
+    <ClCompile Include="Visiteurs\VisiteurListeEnglobante.cpp" />
     <ClCompile Include="Visiteurs\VisiteurRotation.cpp" />
     <ClCompile Include="Visiteurs\VisiteurRotationPoint.cpp" />
     <ClCompile Include="Visiteurs\VisiteurSelection.cpp" />
@@ -222,6 +223,7 @@
     <ClInclude Include="Visiteurs\VisiteurDeselectionnerTout.h" />
     <ClInclude Include="Visiteurs\VisiteurDuplication.h" />
     <ClInclude Include="Visiteurs\VisiteurLimitesSelection.h" />
+    <ClInclude Include="Visiteurs\VisiteurListeEnglobante.h" />
     <ClInclude Include="Visiteurs\VisiteurRotation.h" />
     <ClInclude Include="Visiteurs\VisiteurRotationPoint.h" />
     <ClInclude Include="Visiteurs\VisiteurSelection.h" />
