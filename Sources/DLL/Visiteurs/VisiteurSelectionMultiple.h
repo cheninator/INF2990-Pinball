@@ -64,6 +64,8 @@ private:
 	glm::dvec3 selectionHautDroit_; ///< Point cliqué (haut droit)
 
 	int nbObjetsSelectionne_; ///< Nombre d'objets sélectionnés
+
+	bool intersectionDeuxSegments(glm::dvec3 p1, glm::dvec3 p2, glm::dvec3 p3, glm::dvec3 p4);
 };
 
 

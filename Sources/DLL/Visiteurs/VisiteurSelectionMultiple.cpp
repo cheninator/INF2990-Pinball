@@ -10,6 +10,7 @@
 #include "../Arbre/Noeuds/NoeudTable.h"
 #include <iostream>
 #include "Utilitaire.h"
+#include <algorithm>
 
 ////////////////////////////////////////////////////////////////////////
 ///
@@ -132,18 +133,27 @@ bool VisiteurSelectionMultiple::traiter(NoeudAbstrait* noeud)
 		//obtenir les 4 coins de la boite englobante
 		glm::dvec3 v1, v2, v3, v4;
 		noeud->obtenirVecteursBoite(v1, v2, v3, v4);
+		//definir leur position dans le monde
+		v1.x = v1.x + origine.x;
+		v1.y = v1.y + origine.y;
+		v2.x = v2.x + origine.x;
+		v2.y = v2.y + origine.y;
+		v3.x = v3.x + origine.x;
+		v3.y = v3.y + origine.y;
+		v4.x = v4.x + origine.x;
+		v4.y = v4.y + origine.y;
 
 		bool estASelectionner = false;
 
 		//verifier si un des coin est a l'interieur du rectangle elastique
-		if (utilitaire::DANS_LIMITESXY(v1.x + origine.x, selectionBasGauche_.x, selectionHautDroit_.x,
-			v1.y + origine.y, selectionBasGauche_.y, selectionHautDroit_.y) ||
-			utilitaire::DANS_LIMITESXY(v2.x + origine.x, selectionBasGauche_.x, selectionHautDroit_.x,
-			v2.y + origine.y, selectionBasGauche_.y, selectionHautDroit_.y) ||
-			utilitaire::DANS_LIMITESXY(v3.x + origine.x, selectionBasGauche_.x, selectionHautDroit_.x,
-			v3.y + origine.y, selectionBasGauche_.y, selectionHautDroit_.y) ||
-			utilitaire::DANS_LIMITESXY(v4.x + origine.x, selectionBasGauche_.x, selectionHautDroit_.x,
-			v4.y + origine.y, selectionBasGauche_.y, selectionHautDroit_.y))
+		if (utilitaire::DANS_LIMITESXY(v1.x, selectionBasGauche_.x, selectionHautDroit_.x,
+			                           v1.y, selectionBasGauche_.y, selectionHautDroit_.y) ||
+			utilitaire::DANS_LIMITESXY(v2.x, selectionBasGauche_.x, selectionHautDroit_.x,
+			                           v2.y, selectionBasGauche_.y, selectionHautDroit_.y) ||
+			utilitaire::DANS_LIMITESXY(v3.x, selectionBasGauche_.x, selectionHautDroit_.x,
+			                           v3.y, selectionBasGauche_.y, selectionHautDroit_.y) ||
+			utilitaire::DANS_LIMITESXY(v4.x, selectionBasGauche_.x, selectionHautDroit_.x,
+			                           v4.y, selectionBasGauche_.y, selectionHautDroit_.y))
 		{
 			estASelectionner = true;
 		}
@@ -162,7 +172,27 @@ bool VisiteurSelectionMultiple::traiter(NoeudAbstrait* noeud)
 			}
 			else
 			{
-				//reste a faire : verifier si il y a intersection des segments du rectangle elastique
+				//verifier s'il y a intersection entre un des segments du carre elastique
+				//et un des cotes de la boite englobante du noeud
+				if (intersectionDeuxSegments(selectionBasGauche_, selectionHautGauche, v1, v2) ||
+					intersectionDeuxSegments(selectionBasGauche_, selectionHautGauche, v2, v3) ||
+					intersectionDeuxSegments(selectionBasGauche_, selectionHautGauche, v3, v4) ||
+					intersectionDeuxSegments(selectionBasGauche_, selectionHautGauche, v4, v1) ||
+					intersectionDeuxSegments(selectionHautGauche, selectionHautDroit_, v1, v2) ||
+					intersectionDeuxSegments(selectionHautGauche, selectionHautDroit_, v2, v3) ||
+					intersectionDeuxSegments(selectionHautGauche, selectionHautDroit_, v3, v4) ||
+					intersectionDeuxSegments(selectionHautGauche, selectionHautDroit_, v4, v1) ||
+					intersectionDeuxSegments(selectionHautDroit_, selectionBasDroit, v1, v2) ||
+					intersectionDeuxSegments(selectionHautDroit_, selectionBasDroit, v2, v3) ||
+					intersectionDeuxSegments(selectionHautDroit_, selectionBasDroit, v3, v4) ||
+					intersectionDeuxSegments(selectionHautDroit_, selectionBasDroit, v4, v1) ||
+					intersectionDeuxSegments(selectionBasDroit, selectionBasGauche_, v1, v2) ||
+					intersectionDeuxSegments(selectionBasDroit, selectionBasGauche_, v2, v3) ||
+					intersectionDeuxSegments(selectionBasDroit, selectionBasGauche_, v3, v4) ||
+					intersectionDeuxSegments(selectionBasDroit, selectionBasGauche_, v4, v1))
+				{
+					estASelectionner = true;
+				}
 			}
 		}
 
@@ -183,4 +213,28 @@ bool VisiteurSelectionMultiple::traiter(NoeudAbstrait* noeud)
 	}
 
 	return true;
+}
+
+bool VisiteurSelectionMultiple::intersectionDeuxSegments(glm::dvec3 p1, glm::dvec3 p2, glm::dvec3 p3, glm::dvec3 p4)
+{
+	glm::dvec2 CmP(p3.x - p1.x, p3.y - p1.y);
+	glm::dvec2 p(p2.x - p1.x, p2.y - p1.y);
+	glm::dvec2 q(p4.x - p3.x, p4.y - p3.y);
+
+	double CmPxr = CmP.x * p.y - CmP.y * p.x;
+	double CmPxs = CmP.x * q.y - CmP.y * q.x;
+	double rxs = p.x * q.y - p.y * q.x;
+
+	if (CmPxr == 0.0)
+		return ((p3.x - p1.x < 0.0) != (p3.x - p2.x < 0.0))
+			|| ((p3.y - p1.y < 0.0) != (p3.y - p2.y < 0.0));
+
+	if (rxs == 0.0)
+		return false;
+
+	double rxsr = 1.0 / rxs;
+	double t = CmPxs * rxsr;
+	double u = CmPxr * rxsr;
+
+	return (t >= 0.0) && (t <= 1.0) && (u >= 0.0) && (u <= 1.0);
 }
