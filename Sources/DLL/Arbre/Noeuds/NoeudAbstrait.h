@@ -181,12 +181,16 @@ public:
 	/// Selectionner rouge
 	virtual void setImpossible(bool impossible);
 
+	/// Obtenir modele
 	modele::Modele3D const* obtenirModele() const;
 
+	/// Obtenir agrandissement
 	inline const glm::dvec3& obtenirAgrandissement() const;
 
+	/// Obtenir rotation
 	inline const glm::dvec3& NoeudAbstrait::obtenirRotation() const;
 
+	/// Obtenir le type
 	std::string getType(){ return type_; }
 
 protected:
