@@ -241,72 +241,80 @@ namespace InterfaceGraphique
         private void ToucheEnfonce(Object o, KeyPressEventArgs e)
         {
 
-            if( e.KeyChar == (char)Keys.Escape)
-            {
-                if (etat is EtatPortail)
-                {
-                    FonctionsNatives.removeObject();
-                }
-                etat = null;
-                etat = new EtatNone(this);
-                deselection();
-            }
-            if (e.KeyChar == 'f')
-            {
-                if (fs.IsFullScreen(this))
-                {
-                    fs.LeaveFullScreenMode(this);
-                }
-                else
-                    fs.EnterFullScreenMode(this);
-            }
-            if (e.KeyChar == 's')
-            {
-                Selection_MenuItem_Click(this, e);
-       
-            }
-            if( e.KeyChar == 'd')
-            {
-                etat = null;
-                etat = new EtatDeplacement(this);
-         
-                
-              
-            }
-            if (e.KeyChar == 'e')
-            {
-                etat = null;
-                etat = new EtatScale(this);
-        
-                
-              
-            }
-            if( e.KeyChar == 'r')
-            {
-                etat = null;
-                etat = new EtatRotation(this);
            
-            }
-           
-            if (e.KeyChar == 'z')
+            if (!(etat is EtatZoomElastique))
             {
-                etat = null;
-                etat = new EtatZoom(this);
+                if (e.KeyChar == (char)Keys.Escape)
+                {
+                    if (etat is EtatPortail)
+                    {
+                        FonctionsNatives.removeObject();
+                    }
+                    etat = null;
+                    etat = new EtatNone(this);
+                    deselection();
+                }
+                else if (e.KeyChar == 'f')
+                {
+                    if (fs.IsFullScreen(this))
+                    {
+                        fs.LeaveFullScreenMode(this);
+                    }
+                    else
+                        fs.EnterFullScreenMode(this);
+                }      
           
-                
+                else if (e.KeyChar == 's')
+                {
+                    Selection_MenuItem_Click(this, e);
+
+                }
+                else if (e.KeyChar == 'd')
+                {
+                    etat = null;
+                    etat = new EtatDeplacement(this);
+
+
+
+                }
+                else if (e.KeyChar == 'e')
+                {
+                    etat = null;
+                    etat = new EtatScale(this);
+
+
+
+                }
+                else if (e.KeyChar == 'r')
+                {
+                    etat = null;
+                    etat = new EtatRotation(this);
+
+                }
+
+                else if (e.KeyChar == 'c')
+                {
+                    bouton_Duplication_Click(this, e);
+
+                }
+                else if (e.KeyChar == 'h')
+                {
+                    if (label1.Visible)
+                        label1.Hide();
+                    else
+                        label1.Show();
+                }
+
+                else if (e.KeyChar == 'z')
+                {
+                    etat = null;
+                    etat = new EtatZoom(this);
+
+
+                }
             }
-            if (e.KeyChar == 'c')
-            {
-                bouton_Duplication_Click(this, e);
-               
-            }
-            if (e.KeyChar == 'h')
-            {
-                if (label1.Visible)
-                    label1.Hide();
-                else
-                    label1.Show();
-            }
+           
+            
         }
 
         ////////////////////////////////////////////////////////////////////////
@@ -1636,8 +1644,6 @@ namespace InterfaceGraphique
             if (e.Button == MouseButtons.Right)
             {
                 panel_GL.MouseMove += new MouseEventHandler(panel_MouseMove);
-
-
             }
 
         }
@@ -1678,7 +1684,7 @@ namespace InterfaceGraphique
                 {
                     deplacementVueSouris(e);
                 }
-
+                
             }
 
             if (etat is EtatDeplacement && nbSelection == 1) 

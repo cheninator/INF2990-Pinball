@@ -333,7 +333,7 @@ namespace InterfaceGraphique
         {
             if (e.Button == MouseButtons.Right)
                 form_.deplacementVueSouris(e);
-            if (e.Button == MouseButtons.Left)
+            else if (e.Button == MouseButtons.Left)
                 form_.tournerSelectionSouris(e);
             return true;
         }
@@ -612,10 +612,7 @@ namespace InterfaceGraphique
             if (e.Button == MouseButtons.Left)
             {
                 
-                form_.trackCursor(false);
-                
-               // form_.statePortail();
-          
+                form_.trackCursor(false);     
 
             }
             else if (e.Button == MouseButtons.Right)

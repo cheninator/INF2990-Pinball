@@ -69,5 +69,6 @@ namespace InterfaceGraphique
         private System.Windows.Forms.Label label1;
 
 
+
     }
 }
