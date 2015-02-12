@@ -513,7 +513,7 @@ void FacadeModele::tournerSelectionSouris(int x1, int y1, int x2, int y2)
 
 	// On calcule l'angle de la rotation:
 	double angle = (y2 - y1) / 3.0;
-	double angleEnRadian = angle * 2 * 3.14156 / 360;
+	double angleEnRadian = angle * 2 * 3.1415926535897932384626433832795 / 360;
 	glm::dmat3 transform = glm::dmat3{ glm::dvec3{ cos(-angleEnRadian), -sin(-angleEnRadian), 0 },
 		glm::dvec3{ sin(-angleEnRadian), cos(-angleEnRadian), 0 },
 		glm::dvec3{ 0, 0, 1 } };
