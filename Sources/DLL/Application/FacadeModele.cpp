@@ -570,9 +570,24 @@ void FacadeModele::agrandirSelection(int x1, int y1, int x2, int y2)
 	// Pour agrandir on multiplie le scale courrant par 1.003 et ce une fois pour chaque déplacement en y
 	// donc on multiplie par 1.003^(y1-y2).
 	// Si (y1-y2) est négatif, ceci va nous faire diviser par 1.003, donc l'objet va rapetisser.
-
+	
 	// Au final, on multiplie le scale courrant par 1.003 une fois pour chaque déplacement élémentaire vers le haut,
 	// On divise par 1.003 pour chaque déplacement élémentaire vers le bas.
+
+	VisiteurListeEnglobante visLE;
+	arbre_->accepterVisiteur(&visLE);
+
+	glm::dvec3 pointTransforme;
+	for (conteneur_boite_englobante boite : visLE.obtenirListeEnglobante())
+	{
+		for (glm::dvec3 vecteur : boite.first)
+		{
+			glm::dvec3 point = boite.second->obtenirPositionRelative();
+			pointTransforme = point + scale*vecteur;
+			if (!estDansTable(pointTransforme))
+				return;
+		}
+	}
 
 	VisiteurAgrandissement visAgr(glm::dvec3{ scale, scale, scale });
 	arbre_->accepterVisiteur(&visAgr);
