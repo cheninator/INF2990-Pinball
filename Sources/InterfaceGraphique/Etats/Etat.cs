@@ -74,6 +74,7 @@ namespace InterfaceGraphique
         public override bool traiterSouris(MouseEventArgs e)
         {
             form_.deplacementSouris(e);
+           
             return true;
 
         }
@@ -225,7 +226,14 @@ namespace InterfaceGraphique
         public override bool traiterSouris(MouseEventArgs e)
         {
             if (e.Button == MouseButtons.Left)
+            {
+                
                 form_.dupliquerSelection();
+                form_.statePortail();
+          
+              
+             //form_.deplacementSouris(e);
+            }
             else if (e.Button == MouseButtons.Right)
                 form_.deplacementVueSouris(e);
             return true;

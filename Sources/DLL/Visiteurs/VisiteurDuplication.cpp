@@ -188,6 +188,8 @@ bool VisiteurDuplication::traiter(NoeudAbstrait* noeud)
 
 			// Relier les jumeaux
 			copieJumeau->setTwin(copie);
+			copie->assignerSelection(true);
+			copieJumeau->assignerSelection(true);
 			copie->setTwin(copieJumeau);
 
 			// Ajouter la copie dans une structure de donnée afin de traiter la duplication 
@@ -219,7 +221,8 @@ bool VisiteurDuplication::traiter(NoeudAbstrait* noeud)
 
 			if (minY > noeud->getTwin()->obtenirPositionRelative().y)
 				minY = noeud->getTwin()->obtenirPositionRelative().y;
-
+			
+			
 			noeud->getTwin()->assignerSelection(false);
 		}
 
@@ -230,7 +233,7 @@ bool VisiteurDuplication::traiter(NoeudAbstrait* noeud)
 			copie->assignerRotation(noeud->obtenirRotation());
 			copie->assignerEchelle(noeud->obtenirAgrandissement());
 			copie->assignerPositionRelative(noeud->obtenirPositionRelative());
-
+			copie->assignerSelection(true);
 			// Ajouter la copie dans une structure de donnée afin de traiter la duplication 
 			// multiple par la suite.
 			copies_.push_back(copie);

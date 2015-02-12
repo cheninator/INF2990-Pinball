@@ -298,9 +298,8 @@ namespace InterfaceGraphique
             }
             if (e.KeyChar == 'c')
             {
-                etat = null;
-                etat = new EtatDuplication(this);
-           
+                bouton_Duplication_Click(this, e);
+               
             }
             if (e.KeyChar == 'h')
             {
@@ -913,13 +912,14 @@ namespace InterfaceGraphique
             origin = panel_GL.PointToClient(MousePosition);
             //if( !(etat is EtatCreation))
             //    panel_GL.MouseMove += new MouseEventHandler(panel_MouseMove);   
-            if (etat is EtatPortail)
+            if (etat is EtatPortail && e.Button == MouseButtons.Left)
             {
-                etat = new EtatNone(this);
-                FonctionsNatives.obligerTransparence(false);
-                deselection();
+              etat = new EtatNone(this);
+             //  FonctionsNatives.obligerTransparence(false);
+             deselection();
             }
-
+          
+               
             if (e.Button == MouseButtons.Left)
                 sourisBoutonGaucheActive = true;
 
@@ -930,7 +930,7 @@ namespace InterfaceGraphique
 
             if (e.Button == MouseButtons.Left &&
             (etat is EtatSelection || etat is EtatDeplacement || etat is EtatRotation
-                    || etat is EtatScale || etat is EtatZoom)
+                    || etat is EtatScale || etat is EtatZoom || etat is EtatDuplication)
             )
                 {
                     panel_GL.MouseMove += new MouseEventHandler(panel_MouseMove);
@@ -952,7 +952,7 @@ namespace InterfaceGraphique
             {
                 deplacementVueSouris(e);
             }
-
+          
             if (etat is EtatCreation)
             {
                 if (!(FonctionsNatives.verifierCliqueDansTable(e.X, e.Y)))
@@ -1021,7 +1021,7 @@ namespace InterfaceGraphique
                    etat.traiterSouris(e);
                    etat = new EtatSelection(this);
                }
-                if(clickValide(origin,destination))
+                if(clickValide(origin,destination)) 
                 {
                     etat.traiterSouris(e);
                  //   etat = new EtatSelection(this);
@@ -1325,6 +1325,9 @@ namespace InterfaceGraphique
         public void statePortail()
         {
             etat = new EtatPortail(this);
+            panel_GL.MouseMove += new MouseEventHandler(panel_MouseMove);
+
+
         }
 }
     // Full Screen
