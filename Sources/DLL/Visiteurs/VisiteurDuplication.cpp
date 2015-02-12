@@ -224,6 +224,8 @@ bool VisiteurDuplication::traiter(NoeudAbstrait* noeud)
 			
 			
 			noeud->getTwin()->assignerSelection(false);
+			copie->setColorShift(noeud->getColorShift());
+			copie->getTwin()->setColorShift(noeud->getTwin()->getColorShift());
 		}
 
 		else if (noeud->obtenirType() != "portail")
@@ -250,6 +252,9 @@ bool VisiteurDuplication::traiter(NoeudAbstrait* noeud)
 
 			if (minY > noeud->obtenirPositionRelative().y)
 				minY = noeud->obtenirPositionRelative().y;
+
+			noeud->assignerSelection(false);
+			copie->setColorShift(noeud->getColorShift());
 		}
 
 		noeud->assignerSelection(false);

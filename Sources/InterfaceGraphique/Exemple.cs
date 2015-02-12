@@ -711,11 +711,11 @@ namespace InterfaceGraphique
         {
             etat = new EtatCreation(this);
             Console.WriteLine("Butoir Gauche.");
-            myObjectName = new StringBuilder("butoir");
+            myObjectName = new StringBuilder("butoirg");
             colorShift = false;
             angleX = 0;
             angleY = 0;
-            angleZ = 180;
+            angleZ = 0;
 
         }
 
@@ -1205,10 +1205,10 @@ namespace InterfaceGraphique
         {
             etat = new EtatCreation(this);
             Console.WriteLine("Palette gauche J1.");
-            myObjectName = new StringBuilder("palette");
+            myObjectName = new StringBuilder("paletteg");
             angleX = 180;
             angleY = 0;
-            angleZ = 180;
+            angleZ = 0;
             colorShift = false;
         }
 
@@ -1245,7 +1245,7 @@ namespace InterfaceGraphique
         {
             etat = new EtatCreation(this);
             Console.WriteLine("Palette droite J1.");
-            myObjectName = new StringBuilder("palette");
+            myObjectName = new StringBuilder("paletted");
             angleX = 180;
             angleY = 0;
             angleZ = 0;
@@ -1285,11 +1285,11 @@ namespace InterfaceGraphique
         {
             etat = new EtatCreation(this);
             Console.WriteLine("Palette gauche J2.");
-            myObjectName = new StringBuilder("palette");
+            myObjectName = new StringBuilder("paletteg");
             colorShift = true;
             angleX = 180;
             angleY = 0;
-            angleZ = 180;
+            angleZ = 0;
         }
 
         ////////////////////////////////////////////////////////////////////////
@@ -1325,7 +1325,7 @@ namespace InterfaceGraphique
         {
             etat = new EtatCreation(this);
             Console.WriteLine("Palette droite J2.");
-            myObjectName = new StringBuilder("palette");
+            myObjectName = new StringBuilder("paletted");
             colorShift = true;
             angleX = 180;
             angleY = 0;
@@ -1382,7 +1382,7 @@ namespace InterfaceGraphique
         {
             etat = new EtatCreation(this);
             Console.WriteLine("Butoir Droit.");
-            myObjectName = new StringBuilder("butoir");
+            myObjectName = new StringBuilder("butoird");
             colorShift = false;
             angleX = 0;
             angleY = 0;

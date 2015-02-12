@@ -9,14 +9,16 @@
 #include "ArbreRenduINF2990.h"
 
 #include "Usines/UsineNoeudAraignee.h"
-#include "Usines/UsineNoeudButoir.h"
+#include "Usines/UsineNoeudButoirD.h"
+#include "Usines/UsineNoeudButoirG.h"
 #include "Usines/UsineNoeudButoirCirculaire.h"
 #include "Usines/UsineNoeudCible.h"
 #include "Usines/UsineNoeudConeCube.h"
 #include "Usines/UsineNoeudBille.h"
 #include "Usines/UsineNoeudGenerateurBille.h"
 #include "Usines/UsineNoeudMur.h"
-#include "Usines/UsineNoeudPalette.h"
+#include "Usines/UsineNoeudPaletteD.h"
+#include "Usines/UsineNoeudPaletteG.h"
 #include "Usines/UsineNoeudPortail.h"
 #include "Usines/UsineNoeudRessort.h"
 #include "Usines/UsineNoeudTrou.h"
@@ -27,13 +29,15 @@
 #include "EtatOpenGL.h"
 
 
-const std::string ArbreRenduINF2990::NOM_BUTOIR{ "butoir" };
+const std::string ArbreRenduINF2990::NOM_BUTOIRD{ "butoird" };
+const std::string ArbreRenduINF2990::NOM_BUTOIRG{ "butoirg" };
 const std::string ArbreRenduINF2990::NOM_BUTOIRCIRCULAIRE{ "butoircirculaire" };
 const std::string ArbreRenduINF2990::NOM_CIBLE{ "cible" };
 const std::string ArbreRenduINF2990::NOM_BILLE{ "bille" };
 const std::string ArbreRenduINF2990::NOM_GENERATEURBILLE{ "generateurbille" };
 const std::string ArbreRenduINF2990::NOM_MUR{ "mur" };
-const std::string ArbreRenduINF2990::NOM_PALETTE{ "palette" };
+const std::string ArbreRenduINF2990::NOM_PALETTED{ "paletted" };
+const std::string ArbreRenduINF2990::NOM_PALETTEG{ "paletteg" };
 const std::string ArbreRenduINF2990::NOM_PORTAIL{ "portail" };
 const std::string ArbreRenduINF2990::NOM_RESSORT{ "ressort" };
 const std::string ArbreRenduINF2990::NOM_TROU{ "trou" };
@@ -56,13 +60,15 @@ const std::string ArbreRenduINF2990::NOM_TABLE{ "table" };
 ArbreRenduINF2990::ArbreRenduINF2990()
 {
 	// Construction des usines
-	ajouterUsine(NOM_BUTOIR, new UsineNoeudButoir{ NOM_BUTOIR });
+	ajouterUsine(NOM_BUTOIRD, new UsineNoeudButoirD{ NOM_BUTOIRD });
+	ajouterUsine(NOM_BUTOIRG, new UsineNoeudButoirG{ NOM_BUTOIRG });
 	ajouterUsine(NOM_BUTOIRCIRCULAIRE, new UsineNoeudButoirCirculaire{ NOM_BUTOIRCIRCULAIRE });
 	ajouterUsine(NOM_CIBLE, new UsineNoeudCible{ NOM_CIBLE });
 	ajouterUsine(NOM_BILLE, new UsineNoeudBille{ NOM_BILLE });
 	ajouterUsine(NOM_GENERATEURBILLE, new UsineNoeudGenerateurBille{ NOM_GENERATEURBILLE });
 	ajouterUsine(NOM_MUR, new UsineNoeudMur{ NOM_MUR });
-	ajouterUsine(NOM_PALETTE, new UsineNoeudPalette{ NOM_PALETTE });
+	ajouterUsine(NOM_PALETTED, new UsineNoeudPaletteD{ NOM_PALETTED });
+	ajouterUsine(NOM_PALETTEG, new UsineNoeudPaletteG{ NOM_PALETTEG });
 	ajouterUsine(NOM_PORTAIL, new UsineNoeudPortail{ NOM_PORTAIL });
 	ajouterUsine(NOM_RESSORT, new UsineNoeudRessort{ NOM_RESSORT });
 	ajouterUsine(NOM_TROU, new UsineNoeudTrou{ NOM_TROU });

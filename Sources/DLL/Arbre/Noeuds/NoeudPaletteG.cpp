@@ -1,5 +1,5 @@
 ///////////////////////////////////////////////////////////////////////////
-/// @file NoeudPalette.cpp
+/// @file NoeudPaletteG.cpp
 /// @author Yonni Chen
 /// @date 2015-01-24
 /// @version 1.0
@@ -7,7 +7,7 @@
 /// @ingroup Noeud
 ///////////////////////////////////////////////////////////////////////////
 
-#include "NoeudPalette.h"
+#include "NoeudPaletteG.h"
 #include "Utilitaire.h"
 
 #include <windows.h>
@@ -20,7 +20,7 @@
 
 ////////////////////////////////////////////////////////////////////////
 ///
-/// @fn NoeudPalette::NoeudPalette(const std::string& typeNoeud)
+/// @fn NoeudPaletteG::NoeudPaletteG(const std::string& typeNoeud)
 ///
 /// @param[in] typeNoeud :  le type du noeud à créer.
 ///
@@ -30,7 +30,7 @@
 /// @return Aucune (constructeur).
 ///
 ////////////////////////////////////////////////////////////////////////
-NoeudPalette::NoeudPalette(const std::string& typeNoeud)
+NoeudPaletteG::NoeudPaletteG(const std::string& typeNoeud)
 	: NoeudComposite{ typeNoeud }
 {
 	ajustable_ = false;
@@ -38,28 +38,28 @@ NoeudPalette::NoeudPalette(const std::string& typeNoeud)
 
 ////////////////////////////////////////////////////////////////////////
 ///
-/// @fn NoeudPalette::~NoeudPalette()
+/// @fn NoeudPaletteG::~NoeudPaletteG()
 ///
 /// Ce destructeur désallouee la liste d'affichage du noeud.
 ///
 /// @return Aucune (destructeur).
 ///
 ////////////////////////////////////////////////////////////////////////
-NoeudPalette::~NoeudPalette()
+NoeudPaletteG::~NoeudPaletteG()
 {
 
 }
 
 ////////////////////////////////////////////////////////////////////////
 ///
-/// @fn void NoeudPalette::afficherConcret() const
+/// @fn void NoeudPaletteG::afficherConcret() const
 ///
 /// Cette fonction effectue le véritable rendu de l'objet.
 ///
 /// @return Aucune.
 ///
 ////////////////////////////////////////////////////////////////////////
-void NoeudPalette::afficherConcret() const
+void NoeudPaletteG::afficherConcret() const
 {
 	NoeudComposite::afficherConcret();
 	// Sauvegarde de la matrice.
@@ -83,7 +83,7 @@ void NoeudPalette::afficherConcret() const
 
 ////////////////////////////////////////////////////////////////////////
 ///
-/// @fn void NoeudPalette::animer(float temps)
+/// @fn void NoeudPaletteG::animer(float temps)
 ///
 /// Cette fonction effectue l'animation du noeud pour un certain
 /// intervalle de temps. Pas d'animation pour ce type de noeud.
@@ -93,21 +93,21 @@ void NoeudPalette::afficherConcret() const
 /// @return Aucune.
 ///
 ////////////////////////////////////////////////////////////////////////
-void NoeudPalette::animer(float temps)
+void NoeudPaletteG::animer(float temps)
 {
 
 }
 
 ////////////////////////////////////////////////////////////////////////
 ///
-/// @fn bool NoeudPalette::accepterVisiteur(VisiteurAbstrait* vis)
+/// @fn bool NoeudPaletteG::accepterVisiteur(VisiteurAbstrait* vis)
 ///
 /// Cette fonction appelle la méthode traiter du visiteur.
 ///
 /// @return reussi (TRUE)
 ///
 ////////////////////////////////////////////////////////////////////////
-bool NoeudPalette::accepterVisiteur(VisiteurAbstrait* vis)
+bool NoeudPaletteG::accepterVisiteur(VisiteurAbstrait* vis)
 {
 	bool reussi = false;
 

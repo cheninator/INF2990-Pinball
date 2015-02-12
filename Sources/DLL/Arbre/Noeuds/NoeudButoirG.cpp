@@ -1,5 +1,5 @@
 ///////////////////////////////////////////////////////////////////////////
-/// @file NoeudButoir.cpp
+/// @file NoeudButoirG.cpp
 /// @author Yonni Chen
 /// @date 2015-01-24
 /// @version 1.0
@@ -7,7 +7,7 @@
 /// @ingroup Noeud
 ///////////////////////////////////////////////////////////////////////////
 
-#include "NoeudButoir.h"
+#include "NoeudButoirG.h"
 #include "Utilitaire.h"
 
 #include <windows.h>
@@ -20,7 +20,7 @@
 
 ////////////////////////////////////////////////////////////////////////
 ///
-/// @fn NoeudButoir::NoeudButoir(const std::string& typeNoeud)
+/// @fn NoeudButoirG::NoeudButoirG(const std::string& typeNoeud)
 ///
 /// @param[in] typeNoeud :  le type du noeud à créer.
 ///
@@ -30,7 +30,7 @@
 /// @return Aucune (constructeur).
 ///
 ////////////////////////////////////////////////////////////////////////
-NoeudButoir::NoeudButoir(const std::string& typeNoeud)
+NoeudButoirG::NoeudButoirG(const std::string& typeNoeud)
 	: NoeudComposite{ typeNoeud }
 {
 
@@ -38,28 +38,28 @@ NoeudButoir::NoeudButoir(const std::string& typeNoeud)
 
 ////////////////////////////////////////////////////////////////////////
 ///
-/// @fn NoeudButoir::~NoeudButoir()
+/// @fn NoeudButoirD::~NoeudButoirD()
 ///
 /// Ce destructeur désallouee la liste d'affichage du noeud.
 ///
 /// @return Aucune (destructeur).
 ///
 ////////////////////////////////////////////////////////////////////////
-NoeudButoir::~NoeudButoir()
+NoeudButoirG::~NoeudButoirG()
 {
 
 }
 
 ////////////////////////////////////////////////////////////////////////
 ///
-/// @fn void NoeudButoir::afficherConcret() const
+/// @fn void NoeudButoirG::afficherConcret() const
 ///
 /// Cette fonction effectue le véritable rendu de l'objet.
 ///
 /// @return Aucune.
 ///
 ////////////////////////////////////////////////////////////////////////
-void NoeudButoir::afficherConcret() const
+void NoeudButoirG::afficherConcret() const
 {
 	NoeudComposite::afficherConcret();
 	// Sauvegarde de la matrice.
@@ -80,7 +80,7 @@ void NoeudButoir::afficherConcret() const
 
 ////////////////////////////////////////////////////////////////////////
 ///
-/// @fn void NoeudButoir::animer(float temps)
+/// @fn void NoeudButoirG::animer(float temps)
 ///
 /// Cette fonction effectue l'animation du noeud pour un certain
 /// intervalle de temps. Pas d'animation pour ce type de noeud.
@@ -90,21 +90,21 @@ void NoeudButoir::afficherConcret() const
 /// @return Aucune.
 ///
 ////////////////////////////////////////////////////////////////////////
-void NoeudButoir::animer(float temps)
+void NoeudButoirG::animer(float temps)
 {
 
 }
 
 ////////////////////////////////////////////////////////////////////////
 ///
-/// @fn bool NoeudButoir::accepterVisiteur(VisiteurAbstrait* vis)
+/// @fn bool NoeudButoirG::accepterVisiteur(VisiteurAbstrait* vis)
 ///
 /// Cette fonction appelle la méthode traiter du visiteur.
 ///
 /// @return reussi (TRUE)
 ///
 ////////////////////////////////////////////////////////////////////////
-bool NoeudButoir::accepterVisiteur(VisiteurAbstrait* vis)
+bool NoeudButoirG::accepterVisiteur(VisiteurAbstrait* vis)
 {
 	bool reussi = false;
 
@@ -113,4 +113,3 @@ bool NoeudButoir::accepterVisiteur(VisiteurAbstrait* vis)
 
 	return reussi;
 }
-

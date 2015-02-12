@@ -102,9 +102,6 @@
     <ClCompile Include="Interface\FacadeInterfaceNative.cpp">
       <Filter>Source Files\Interface</Filter>
     </ClCompile>
-    <ClCompile Include="Arbre\Noeuds\NoeudButoir.cpp">
-      <Filter>Source Files\Arbre\Noeuds</Filter>
-    </ClCompile>
     <ClCompile Include="Arbre\Noeuds\NoeudTrou.cpp">
       <Filter>Source Files\Arbre\Noeuds</Filter>
     </ClCompile>
@@ -112,9 +109,6 @@
       <Filter>Source Files\Arbre\Noeuds</Filter>
     </ClCompile>
     <ClCompile Include="Arbre\Noeuds\NoeudPortail.cpp">
-      <Filter>Source Files\Arbre\Noeuds</Filter>
-    </ClCompile>
-    <ClCompile Include="Arbre\Noeuds\NoeudPalette.cpp">
       <Filter>Source Files\Arbre\Noeuds</Filter>
     </ClCompile>
     <ClCompile Include="Arbre\Noeuds\NoeudMur.cpp">
@@ -186,6 +180,18 @@
     <ClCompile Include="Visiteurs\VisiteurListeEnglobante.cpp">
       <Filter>Source Files\Visiteurs</Filter>
     </ClCompile>
+    <ClCompile Include="Arbre\Noeuds\NoeudPaletteD.cpp">
+      <Filter>Source Files\Arbre\Noeuds</Filter>
+    </ClCompile>
+    <ClCompile Include="Arbre\Noeuds\NoeudPaletteG.cpp">
+      <Filter>Source Files\Arbre\Noeuds</Filter>
+    </ClCompile>
+    <ClCompile Include="Arbre\Noeuds\NoeudButoirD.cpp">
+      <Filter>Source Files\Arbre\Noeuds</Filter>
+    </ClCompile>
+    <ClCompile Include="Arbre\Noeuds\NoeudButoirG.cpp">
+      <Filter>Source Files\Arbre\Noeuds</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Application\FacadeModele.h">
@@ -245,9 +251,6 @@
     <ClInclude Include="Arbre\Noeuds\NoeudMur.h">
       <Filter>Header Files\Arbre\Noeuds</Filter>
     </ClInclude>
-    <ClInclude Include="Arbre\Noeuds\NoeudPalette.h">
-      <Filter>Header Files\Arbre\Noeuds</Filter>
-    </ClInclude>
     <ClInclude Include="Arbre\Noeuds\NoeudPortail.h">
       <Filter>Header Files\Arbre\Noeuds</Filter>
     </ClInclude>
@@ -256,9 +259,6 @@
     </ClInclude>
     <ClInclude Include="Arbre\Noeuds\NoeudTrou.h">
       <Filter>Header Files\Arbre\Noeuds</Filter>
-    </ClInclude>
-    <ClInclude Include="Arbre\Usines\UsineNoeudButoir.h">
-      <Filter>Header Files\Arbre\Usines</Filter>
     </ClInclude>
     <ClInclude Include="Arbre\Usines\UsineNoeudCible.h">
       <Filter>Header Files\Arbre\Usines</Filter>
@@ -269,9 +269,6 @@
     <ClInclude Include="Arbre\Usines\UsineNoeudMur.h">
       <Filter>Header Files\Arbre\Usines</Filter>
     </ClInclude>
-    <ClInclude Include="Arbre\Usines\UsineNoeudPalette.h">
-      <Filter>Header Files\Arbre\Usines</Filter>
-    </ClInclude>
     <ClInclude Include="Arbre\Usines\UsineNoeudPortail.h">
       <Filter>Header Files\Arbre\Usines</Filter>
     </ClInclude>
@@ -280,9 +277,6 @@
     </ClInclude>
     <ClInclude Include="Arbre\Usines\UsineNoeudTrou.h">
       <Filter>Header Files\Arbre\Usines</Filter>
-    </ClInclude>
-    <ClInclude Include="Arbre\Noeuds\NoeudButoir.h">
-      <Filter>Header Files\Arbre\Noeuds</Filter>
     </ClInclude>
     <ClInclude Include="Visiteurs\VisiteurAbstrait.h">
       <Filter>Header Files\Visiteurs</Filter>
@@ -361,6 +355,30 @@
     </ClInclude>
     <ClInclude Include="Visiteurs\VisiteurListeEnglobante.h">
       <Filter>Header Files\Visiteurs</Filter>
+    </ClInclude>
+    <ClInclude Include="Arbre\Usines\UsineNoeudPaletteD.h">
+      <Filter>Header Files\Arbre\Usines</Filter>
+    </ClInclude>
+    <ClInclude Include="Arbre\Noeuds\NoeudPaletteD.h">
+      <Filter>Header Files\Arbre\Noeuds</Filter>
+    </ClInclude>
+    <ClInclude Include="Arbre\Usines\UsineNoeudPaletteG.h">
+      <Filter>Header Files\Arbre\Usines</Filter>
+    </ClInclude>
+    <ClInclude Include="Arbre\Usines\UsineNoeudButoirD.h">
+      <Filter>Header Files\Arbre\Usines</Filter>
+    </ClInclude>
+    <ClInclude Include="Arbre\Noeuds\NoeudButoirD.h">
+      <Filter>Header Files\Arbre\Noeuds</Filter>
+    </ClInclude>
+    <ClInclude Include="Noeuds\NoeudButoirG.h">
+      <Filter>Header Files\Arbre\Noeuds</Filter>
+    </ClInclude>
+    <ClInclude Include="Arbre\Usines\UsineNoeudButoirG.h">
+      <Filter>Header Files\Arbre\Usines</Filter>
+    </ClInclude>
+    <ClInclude Include="Arbre\Noeuds\NoeudButoirG.h">
+      <Filter>Header Files\Arbre\Noeuds</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

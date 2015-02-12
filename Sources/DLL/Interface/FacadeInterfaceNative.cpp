@@ -310,11 +310,10 @@ extern "C"
 		}
 		else {
 			objet = FacadeModele::obtenirInstance()->obtenirArbreRenduINF2990()->creerNoeud(nomObjet);
+			if (objet == nullptr)
+				return;
 			objet->setColorShift(colorShift);
 		}
-		if (objet == nullptr)
-			return;
-
 		FacadeModele::obtenirInstance()->obtenirArbreRenduINF2990()->getEnfant(0)->ajouter(objet);
 	}
 
@@ -333,6 +332,8 @@ extern "C"
 	////////////////////////////////////////////////////////////////////////
 	__declspec(dllexport) void __cdecl positionObjet(int x, int y, int z)
 	{
+		if (objet == nullptr)
+			return;
 		calculerTransition();
 		glm::dvec3 maPosition;
 		FacadeModele::obtenirInstance()->obtenirVue()->convertirClotureAVirtuelle(x, y, maPosition);
@@ -358,7 +359,8 @@ extern "C"
 	////////////////////////////////////////////////////////////////////////
 	__declspec(dllexport) void __cdecl translateObjet(int x, int y, int z)
 	{
-	
+		if (objet == nullptr)
+			return;
 		calculerTransition();
 		glm::dvec3 maPositionPresente;
 		maPositionPresente = objet->obtenirPositionRelative();
@@ -382,6 +384,8 @@ extern "C"
 	////////////////////////////////////////////////////////////////////////
 	__declspec(dllexport) void __cdecl scaleObjet(double scale)
 	{
+		if (objet == nullptr)
+			return;
 		calculerTransition();
 		objet->assignerEchelle({ scale, scale, scale });
 
@@ -404,7 +408,8 @@ extern "C"
 	__declspec(dllexport) void __cdecl addScaleObjet(int myScale)
 	{
 		calculerTransition();
-
+		if (objet == nullptr)
+			return;
 		glm::dvec3 monScalePresent;
 		float deltaScale = (float)myScale;
 		monScalePresent = objet->obtenirAgrandissement();
@@ -436,6 +441,8 @@ extern "C"
 	__declspec(dllexport) void __cdecl scaleObjetXYZ(double x, double y, double z)
 	{
 		calculerTransition();
+		if (objet == nullptr)
+			return;
 		objet->assignerEchelle({ x, y, z });
 	}
 
@@ -454,6 +461,8 @@ extern "C"
 	__declspec(dllexport) void __cdecl rotate(float angle, char direction)
 	{
 		calculerTransition();
+		if (objet == nullptr)
+			return;
 		std::cout << direction;
 		if (direction == 'x' || direction == 'X' || direction == '0')
 			objet->assignerRotation({ 0.0, 0.0, angle });
@@ -476,6 +485,8 @@ extern "C"
 	__declspec(dllexport) void resetObject(void)
 	{
 		calculerTransition();
+		if (objet == nullptr)
+			return;
 		objet->assignerPositionRelative({ 0, 0, 0 });
 		objet->assignerEchelle({ 1, 1, 1 });
 		objet->resetRotation();
@@ -791,6 +802,8 @@ extern "C"
 	///////////////////////////////////////////////////////////////////////////////
 	__declspec(dllexport) double getPositionX(void) {
 		double positionX;
+		if (objet == nullptr)
+			return false;
 		for (unsigned int j = 0; j < FacadeModele::obtenirInstance()->obtenirArbreRenduINF2990()->getEnfant(0)->obtenirNombreEnfants(); j++)
 		{
 			if (
@@ -815,6 +828,8 @@ extern "C"
 	///////////////////////////////////////////////////////////////////////////////
 	__declspec(dllexport) double getPositionY(void) {
 		double positionY;
+		if (objet == nullptr)
+			return false;
 		for (unsigned int j = 0; j < FacadeModele::obtenirInstance()->obtenirArbreRenduINF2990()->getEnfant(0)->obtenirNombreEnfants(); j++)
 		{
 			if (
@@ -839,6 +854,8 @@ extern "C"
 	///////////////////////////////////////////////////////////////////////////////
 	__declspec(dllexport) double getAngle(void)
 	{
+		if (objet == nullptr)
+			return false;
 		double angle;
 		for (unsigned int j = 0; j < FacadeModele::obtenirInstance()->obtenirArbreRenduINF2990()->getEnfant(0)->obtenirNombreEnfants(); j++)
 		{
@@ -864,6 +881,8 @@ extern "C"
 	__declspec(dllexport) double getScale(void)
 	{
 		double scale;
+		if (objet == nullptr)
+			return false;
 		for (unsigned int j = 0; j < FacadeModele::obtenirInstance()->obtenirArbreRenduINF2990()->getEnfant(0)->obtenirNombreEnfants(); j++)
 		{
 			if (
@@ -964,12 +983,15 @@ extern "C"
 	///////////////////////////////////////////////////////////////////////////////
 	__declspec(dllexport) void __cdecl obligerTransparence(bool transparence)
 	{
+		if (objet == nullptr)
+			return;
 		// Il faut faire un visiteur par contre
 		objet->setTransparent(transparence);
-		if (objet->getTwin() != NULL)
+		if (objet->getTwin() != NULL && objet->getTwin() != nullptr){
 			objet->getTwin()->setTransparent(transparence);
-			if (objet->getTwin()->getTwin() != NULL)
+			if (objet->getTwin()->getTwin() != NULL  && objet->getTwin() != nullptr)
 				objet->getTwin()->getTwin()->setTransparent(transparence);
+		}
 	}
 
 	__declspec(dllexport) void __cdecl initialiserRectangleElastique(int i, int j)
