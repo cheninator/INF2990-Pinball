@@ -242,7 +242,11 @@ namespace InterfaceGraphique
         {
 
            
-            if (!(etat is EtatZoomElastique))
+            if ((etat is EtatZoomElastique) || ( etat is EtatSelectionMultiple))
+            {
+                return;
+            }
+            else
             {
                 if (e.KeyChar == (char)Keys.Escape)
                 {
