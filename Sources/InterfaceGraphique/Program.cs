@@ -53,7 +53,7 @@ namespace InterfaceGraphique
         /// @fn static void Main(string[] args)
         /// @brief Le point d'entrée de l'application.
         /// 
-        /// @param[in] args : argument passé à la compilation (démarre les tests)
+        /// @param[in] args : argument passé à la compilation (permet de ddémarrer les tests)
         /// 
         /// @return Aucune.
         ///
