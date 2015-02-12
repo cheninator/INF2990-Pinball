@@ -636,7 +636,7 @@ bool NoeudAbstrait::pointEstDansBoite(glm::dvec3 point)
 	glm::dvec3 vecOP = point - positionRelative_;
 
 	//calcul matrice de rotation inverse
-	double angleEnRadian = -rotation_[2] * 2 * 3.14156 / 360;
+	double angleEnRadian = rotation_[2] * 2 * 3.14156 / 360;
 	glm::dmat3 transform = glm::dmat3{ glm::dvec3{ cos(angleEnRadian), -sin(angleEnRadian), 0.0 },
 		glm::dvec3{ sin(angleEnRadian), cos(angleEnRadian), 0.0f },
 		glm::dvec3{ 0.0, 0.0, 1.0 } };

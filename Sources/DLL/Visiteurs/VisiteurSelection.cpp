@@ -120,14 +120,23 @@ bool VisiteurSelection::traiter(NoeudTable* table)
 ////////////////////////////////////////////////////////////////////////
 bool VisiteurSelection::traiter(NoeudAbstrait* noeud)
 {
-	if (valeurStencil_ == noeud->getNumero() && noeud->estSelectionnable() /*&& noeud->estModifiable()*/)
+//	if (valeurStencil_ == noeud->getNumero() && noeud->estSelectionnable() /*&& noeud->estModifiable()*/)
+//		noeud->assignerSelection(true);
+//	else
+//		noeud->assignerSelection(false);
+
+
+
+	if (noeud->pointEstDansBoite(pointDansLeMonde_) && noeud->estSelectionnable())
+	{
+		std::cout << " ============== Le point clique est dans la boite du noeud=================" << std::endl;
 		noeud->assignerSelection(true);
+	}
 	else
 		noeud->assignerSelection(false);
 
 	if (noeud->estSelectionne()) 
 		nbObjetsSelectionne_++;
-
 	return true;
 }
 
