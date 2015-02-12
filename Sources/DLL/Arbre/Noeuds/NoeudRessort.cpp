@@ -72,7 +72,6 @@ void NoeudRessort::afficherConcret() const
 	}
 	else if (selectionne_)
 		glTexEnvf(GL_TEXTURE_ENV, GL_TEXTURE_ENV_MODE, GL_ADD);
-	glTranslatef(-6, -15, 0);
 	liste_->dessiner();
 	glPopAttrib();
 	// Restauration de la matrice.
