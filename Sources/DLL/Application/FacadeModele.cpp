@@ -688,6 +688,7 @@ bool FacadeModele::verifierCliqueDansTable(int x, int y)
 ///////////////////////////////////////////////////////////////////////////////
 void FacadeModele::dupliquerSelection(int i, int j)
 {
+	
 	glm::dvec3 positionDansLeMonde;
 	obtenirInstance()->obtenirVue()->convertirClotureAVirtuelle(i, j, positionDansLeMonde);
 	positionDansLeMonde.z = 0.0;
@@ -696,6 +697,8 @@ void FacadeModele::dupliquerSelection(int i, int j)
 	VisiteurDuplication visiteur(positionDansLeMonde);
 	arbre_->accepterVisiteur(&visiteur);
 }
+
+
 
 
 ///////////////////////////////////////////////////////////////////////////////
