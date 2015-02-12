@@ -105,10 +105,15 @@ bool VisiteurListeEnglobante::traiter(NoeudAbstrait* noeud)
 	{
 		glm::dvec3 coinsEnglobant[4];
 		noeud->obtenirVecteursBoite(coinsEnglobant[0], coinsEnglobant[1], coinsEnglobant[2], coinsEnglobant[3]);
+		conteneur_boite_englobante boite;
+		
 		for (int i = 0; i < 4; i++)
 		{
-			pointsEnglobant_.push_back(coinsEnglobant[i] + noeud->obtenirPositionRelative());
+			boite.first.push_back(coinsEnglobant[i]);
 		}
+		boite.second = noeud;
+
+		boitesEnglobantes_.push_back(boite);
 	}
 	return true;
 }

@@ -112,6 +112,9 @@ public:
    /// Pour la sauvegarde de fichier XML
    int creerXML(char* path, int prop[6]);
 
+   ///
+   bool estDansTable(glm::dvec3 pointDuMonde);
+
 private:
    /// Constructeur par défaut.
    FacadeModele() = default;
