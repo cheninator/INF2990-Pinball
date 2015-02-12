@@ -12,15 +12,17 @@
 
 @mainpage Projet intégrateur de deuxième année -- INF2990
 
-Painball
-
-Auteurs Aymen Dje
-		Nikolay Radoev
-		Yonni Chen
-		Emilio Rivera
-		Philippe Carpin
-		Kim Piché
-		Samuel Millette
+PAINBALL
+<BR>
+<BR>
+Auteurs:<BR>
+Aymen Dje <BR>
+Nikolay Radoev <BR>
+Yonni Chen <BR>
+Emilio Rivera <BR>
+Philippe Carpin <BR>
+Kim Piché <BR>
+Samuel Millette <BR>
 
 */
 
