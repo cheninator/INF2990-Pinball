@@ -1615,7 +1615,7 @@ namespace InterfaceGraphique
             if (etat is EtatPortail && e.Button == MouseButtons.Left)
             {
               etat = new EtatNone(this);
-             //  FonctionsNatives.obligerTransparence(false);
+              FonctionsNatives.obligerTransparence(false);
              deselection();
             }
           
