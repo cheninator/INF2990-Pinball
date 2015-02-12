@@ -1617,10 +1617,7 @@ namespace InterfaceGraphique
               FonctionsNatives.obligerTransparence(false);
              deselection();
             }
-          
-               
-            if (e.Button == MouseButtons.Left)
-                sourisBoutonGaucheActive = true;
+
 
             previousP.X = e.X;
             previousP.Y = e.Y;
