@@ -124,7 +124,7 @@ void ArbreRenduINF2990::initialiser()
 /// Cette fonction retourne un NoeudAbstrait* qui correspond
 ///	à l'enfant de la position passé en paramètre.
 ///
-/// @return NoeudAbstrait*
+/// @return NoeudAbstrait* L'enfant en question.
 ///
 ////////////////////////////////////////////////////////////////////////
 NoeudAbstrait* ArbreRenduINF2990::getEnfant(int position) const
@@ -133,6 +133,20 @@ NoeudAbstrait* ArbreRenduINF2990::getEnfant(int position) const
 		return nullptr;
 	else
 		return enfants_[position];
+}
+
+////////////////////////////////////////////////////////////////////////
+///
+/// @fn glm::dvec3 ArbreRenduINF2990::getPosRessort()
+///
+/// Cette fonction retourne la position par défaut du ressort. (Test)
+///
+/// @return Le vecteur de position du ressort.
+///
+////////////////////////////////////////////////////////////////////////
+glm::dvec3 ArbreRenduINF2990::getPosRessort()
+{
+	return posRessort;
 }
 
 
@@ -276,7 +290,7 @@ bool ArbreRenduINF2990::lireXML(tinyxml2::XMLDocument& doc)
 					// Nombre actuel d'enfants de la table
 					unsigned int enfantsTable = getEnfant(0)->obtenirNombreEnfants();
 
-					// Interrogé l'enfant au dessus de lui
+					// Interroger l'enfant au dessus de lui
 					if (table->chercher(enfantsTable - 2)->obtenirType() == "portail"
 						&& table->chercher(enfantsTable - 2)->getTwin() == nullptr)
 					{

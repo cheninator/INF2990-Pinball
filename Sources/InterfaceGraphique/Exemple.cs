@@ -44,7 +44,6 @@ namespace InterfaceGraphique
         public int panelWidth; ///< Largeur de la fenetre
         private bool ctrlDown = false;
         private bool altDown = false;
-        private bool sourisBoutonGaucheActive = false;
         public List<int> propZJ = new List<int> { 10, 10, 10, 10, 10, 1 }; ///< Une liste de choses
         private float angleX = 0F; ///< Position en X
         private float angleY = 0F; ///< Position en Y
@@ -125,15 +124,15 @@ namespace InterfaceGraphique
                 {
                     if (etat is EtatSelectionMultiple)
                         rectangleElastique();
+
+                    else if (etat is EtatZoomElastique)
+                        rectangleElastique();
                     else
                     {
                         FonctionsNatives.animer(tempsInterAffichage);
                         FonctionsNatives.dessinerOpenGL();
                     }                    
 
-                    //A MODIFIER
-                    if (etat is EtatZoom && sourisBoutonGaucheActive)
-                        rectangleElastique();
 
                 });
             }
@@ -1618,10 +1617,7 @@ namespace InterfaceGraphique
               FonctionsNatives.obligerTransparence(false);
              deselection();
             }
-          
-               
-            if (e.Button == MouseButtons.Left)
-                sourisBoutonGaucheActive = true;
+
 
             previousP.X = e.X;
             previousP.Y = e.Y;
@@ -1706,9 +1702,10 @@ namespace InterfaceGraphique
             }
             if (!(clickValide(origin, currentP)) && (etat is EtatZoom) && e.Button == MouseButtons.Left)
             {
-                etat = new EtatZoom(this);
+                etat = new EtatZoomElastique(this);
+                FonctionsNatives.initialiserRectangleElastique(origin.X, origin.Y);
             }
-            if (!(etat is EtatSelectionMultiple ) && !(etat is EtatCreation) && !(etat is EtatSelection))                
+            if (!(etat is EtatSelectionMultiple ) && !(etat is EtatCreation) && !(etat is EtatSelection)  && !(etat is EtatZoomElastique))              
                 etat.traiterSouris(e);
         }
 
@@ -1732,21 +1729,18 @@ namespace InterfaceGraphique
             }           
             if (e.Button == MouseButtons.Left)
             {
-               sourisBoutonGaucheActive = false;    
                Point destination = panel_GL.PointToClient(MousePosition);
-               if (etat is EtatZoom && !(clickValide(origin,destination)))
+               if (etat is EtatZoomElastique)
                {
-                   if (!altDown)
-                       FonctionsNatives.zoomInElastique(origin.X, origin.Y, destination.X, destination.Y);
-                   else if (altDown) 
-                       FonctionsNatives.zoomOutElastique(origin.X, origin.Y, destination.X, destination.Y);
+                   etat.traiterSouris(e);
+                   etat = new EtatZoom(this);
                }
-               else if (etat is EtatSelectionMultiple)
+               if (etat is EtatSelectionMultiple)
                {                   
                    etat.traiterSouris(e);
                    etat = new EtatSelection(this);
                }
-                if(clickValide(origin,destination)) 
+               else if(clickValide(origin,destination)) 
                 {
                     etat.traiterSouris(e);
                  //   etat = new EtatSelection(this);
@@ -2001,6 +1995,16 @@ namespace InterfaceGraphique
                 }
                 outilsEnable(true);
             }
+        }
+
+
+        public void zoomElastique()
+        {
+            Point destination = panel_GL.PointToClient(MousePosition);
+            if (!altDown)
+                FonctionsNatives.zoomInElastique(origin.X, origin.Y, destination.X, destination.Y);
+            else if (altDown)
+                FonctionsNatives.zoomOutElastique(origin.X, origin.Y, destination.X, destination.Y);
         }
 
         ////////////////////////////////////////////////////////////////////////
@@ -2306,7 +2310,8 @@ namespace InterfaceGraphique
 
 
         }
-}
+
+    }
 
     ///////////////////////////////////////////////////////////////////////////
     /// @class FullScreen

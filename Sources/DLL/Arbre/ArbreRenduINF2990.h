@@ -43,6 +43,9 @@ public:
    /// Obtenir le ième enfant de l'arbre
    NoeudAbstrait* getEnfant(int position) const;
 
+   /// Methode de test
+   glm::dvec3 getPosRessort();
+
    /// Accepter un visiteur
    virtual bool accepterVisiteur(VisiteurAbstrait* vis);
 

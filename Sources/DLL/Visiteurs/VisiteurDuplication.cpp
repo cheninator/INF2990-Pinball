@@ -8,6 +8,7 @@
 #include "VisiteurDuplication.h"
 #include "../Arbre/ArbreRenduINF2990.h"
 #include "../Arbre/Noeuds/NoeudTable.h"
+#include <iostream>
 
 ////////////////////////////////////////////////////////////////////////
 ///
@@ -109,6 +110,8 @@ bool VisiteurDuplication::traiter(ArbreRenduINF2990* arbre)
 ////////////////////////////////////////////////////////////////////////
 bool VisiteurDuplication::traiter(NoeudTable* table)
 {
+	std::cout << "Nombre defants : " << table->obtenirNombreEnfants();
+
 	// Traiter les enfants de la table
 	for (unsigned int i = 0; i < table->obtenirNombreEnfants(); i++)
 	{
@@ -119,7 +122,7 @@ bool VisiteurDuplication::traiter(NoeudTable* table)
 	if (copies_.size() == 1)
 	{
 		// Centre de selection = clic de souris
-		copies_.front()->assignerPositionRelative(pointDansLeMonde_);
+		//copies_.front()->assignerPositionRelative(pointDansLeMonde_);
 		table->ajouter(copies_.back());
 		copies_.pop_back();
 	}
@@ -127,28 +130,31 @@ bool VisiteurDuplication::traiter(NoeudTable* table)
 	// Si la structure contient plusieurs objets, trouver le centre de selection
 	else if (copies_.size() > 1)
 	{
-		// Il faudra assigner la position relative des objets copiés en fonction du centre de selection
+		/*// Il faudra assigner la position relative des objets copiés en fonction du centre de selection
 		double centreX = ((maxX - minX) / 2.0 ) + minX;
 		double centreY = ((maxY - minY) / 2.0 ) + minY;
 
 		// Difference entre la position courante de l'objet et le centre de selection
 		double deltaX, deltaY;
 		double posX, posY;
-
+		*/
 		for (unsigned int i = 0; i < copies_.size(); i++)
 		{
-			posX = copies_[i]->obtenirPositionRelative().x;
-			posY = copies_[i]->obtenirPositionRelative().y;
+			//posX = copies_[i]->obtenirPositionRelative().x;
+			//posY = copies_[i]->obtenirPositionRelative().y;
 
-			deltaX = posX - centreX;
-			deltaY = posY - centreY;
+			//deltaX = posX - centreX;
+			//deltaY = posY - centreY;
 
-			copies_[i]->assignerPositionRelative({(deltaX + pointDansLeMonde_.x), (deltaY + pointDansLeMonde_.y), 0.0});
+			//copies_[i]->assignerPositionRelative({(deltaX + pointDansLeMonde_.x), (deltaY + pointDansLeMonde_.y), 0.0});
+			copies_[i]->assignerSelection(true);
 			table->ajouter(copies_[i]);
 		}
 
 		copies_.clear();
 	}
+
+	std::cout << "Nombre defants : " << table->obtenirNombreEnfants();
 
 	return true;
 }
@@ -197,6 +203,7 @@ bool VisiteurDuplication::traiter(NoeudAbstrait* noeud)
 			copies_.push_back(copie);
 			copies_.push_back(copieJumeau);
 
+			/*
 			// Trouver les mins et max afin de trouver le centre de selection
 			if (maxX < noeud->obtenirPositionRelative().x)
 				maxX = noeud->obtenirPositionRelative().x;
@@ -222,7 +229,7 @@ bool VisiteurDuplication::traiter(NoeudAbstrait* noeud)
 			if (minY > noeud->getTwin()->obtenirPositionRelative().y)
 				minY = noeud->getTwin()->obtenirPositionRelative().y;
 			
-			
+			*/
 			noeud->getTwin()->assignerSelection(false);
 			copie->setColorShift(noeud->getColorShift());
 			copie->getTwin()->setColorShift(noeud->getTwin()->getColorShift());
@@ -235,11 +242,13 @@ bool VisiteurDuplication::traiter(NoeudAbstrait* noeud)
 			copie->assignerRotation(noeud->obtenirRotation());
 			copie->assignerEchelle(noeud->obtenirAgrandissement());
 			copie->assignerPositionRelative(noeud->obtenirPositionRelative());
+
 			copie->assignerSelection(true);
 			// Ajouter la copie dans une structure de donnée afin de traiter la duplication 
 			// multiple par la suite.
 			copies_.push_back(copie);
 
+			/*
 			// Trouver les mins et max afin de trouver le centre de selection
 			if (maxX < noeud->obtenirPositionRelative().x)
 				maxX = noeud->obtenirPositionRelative().x;
@@ -252,10 +261,12 @@ bool VisiteurDuplication::traiter(NoeudAbstrait* noeud)
 
 			if (minY > noeud->obtenirPositionRelative().y)
 				minY = noeud->obtenirPositionRelative().y;
-
+							*/
 			noeud->assignerSelection(false);
 			copie->setColorShift(noeud->getColorShift());
+
 		}
+
 
 		noeud->assignerSelection(false);
 	}

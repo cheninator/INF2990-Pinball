@@ -450,7 +450,7 @@ void NoeudAbstrait::afficherConcret() const
 /// Cette fonction effectue l'animation du noeud pour un certain
 /// intervalle de temps.
 ///
-/// Elle ne fait rien pour cette classe et vise à être surcharger par
+/// Elle ne fait rien pour cette classe et vise à être surchargée par
 /// les classes dérivées.
 ///
 /// @param[in] dt : Intervalle de temps sur lequel faire l'animation.
@@ -460,6 +460,7 @@ void NoeudAbstrait::afficherConcret() const
 ////////////////////////////////////////////////////////////////////////
 void NoeudAbstrait::animer(float dt)
 {
+
 }
 
 
@@ -472,7 +473,7 @@ void NoeudAbstrait::animer(float dt)
 ///
 /// @param[in] vis : Prend un visiteur abstrait.
 ///
-/// @return reusite ou echec.
+/// @return Reusite ou echec.
 ///
 ////////////////////////////////////////////////////////////////////////
 bool NoeudAbstrait::accepterVisiteur(VisiteurAbstrait* vis) 
@@ -516,11 +517,14 @@ void NoeudAbstrait::setTwin(NoeudAbstrait* twin)
 
 ////////////////////////////////////////////////////////////////////////
 ///
-/// @fn void NoeudAbstrait::setTwin()
+/// @fn void NoeudAbstrait::obtenirVecteursBoite(glm::dvec3 &v1, glm::dvec3 &v2, glm::dvec3 &v3, glm::dvec3 &v4)
 ///
-/// Cette fonction permet de definir un noeud jumeau
+/// Cette fonction obtient les vecteurs de la boite.
 ///
-/// @param[in] dt : Prend un noeud abstrait.
+/// @param[out] v1 : Vecteur 1.
+/// @param[out] v2 : Vecteur 2.
+/// @param[out] v3 : Vecteur 3.
+/// @param[out] v4 : Vecteur 4.
 ///
 /// @return Aucune
 ///
@@ -655,18 +659,17 @@ void NoeudAbstrait::setImpossible(bool impossible)
 {
 	impossible_ = impossible;
 }
-////////////////////////////////////////////////////////////////////////
-///
-/// @fn void NoeudAbstrait::setTwin()
-///
-/// Cette fonction permet de definir un noeud jumeau
-///
-/// @param[in] dt : Prend un noeud abstrait.
-///
-/// @return Aucune
-///
-////////////////////////////////////////////////////////////////////////
 
+////////////////////////////////////////////////////////////////////////
+///
+/// @fn bool NoeudAbstrait::pointEstDansBoite(glm::dvec3 point)
+/// @brief Cette fonction teste si un point se trouve dans al boîte englobante.
+///
+/// @param[in] point : Point à tester.
+///
+/// @return True si le test réussit, false sinon
+///
+////////////////////////////////////////////////////////////////////////
 bool NoeudAbstrait::pointEstDansBoite(glm::dvec3 point)
 {
 	glm::dvec3 vecOP = point - positionRelative_;
