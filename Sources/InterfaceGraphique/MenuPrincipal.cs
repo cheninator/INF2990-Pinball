@@ -1,4 +1,13 @@
-﻿using System;
+﻿//////////////////////////////////////////////////////////////////////////////
+/// @file MenuPrincipal.cs
+/// @author Ballers
+/// @date 2015-01-18
+/// @version 1.0 
+///
+/// @ingroup InterfaceGraphique
+//////////////////////////////////////////////////////////////////////////////
+
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -14,12 +23,29 @@ using System.Runtime.InteropServices;
 
 namespace InterfaceGraphique
 {
-
+    ///////////////////////////////////////////////////////////////////////////
+    /// @class MainMenu
+    /// @brief Main Menu du jeu.
+    ///
+    /// @author The Ballers
+    /// @date 2015-01-18
+    /// 
+    /// @ingroup InterfaceGraphique
+    ///////////////////////////////////////////////////////////////////////////
     public partial class MainMenu : Form
     {
-       System.Media.SoundPlayer player = new System.Media.SoundPlayer(Properties.Resources.button_29);
-       public Exemple modeEdit;
-       private Thread myThread; 
+        System.Media.SoundPlayer player = new System.Media.SoundPlayer(Properties.Resources.button_29); ///< Sound player
+        public Exemple modeEdit; ///< Form du mode édition
+        private Thread myThread; ///< Une thread
+
+        ////////////////////////////////////////////////////////////////////////
+        ///
+        /// @fn public MainMenu()
+        /// @brief Constructeur de la fenêtre.
+        /// 
+        /// @return Aucune (constructeur).
+        ///
+        ////////////////////////////////////////////////////////////////////////
         public MainMenu()
         {
             this.KeyPress += new KeyPressEventHandler(Form1_KeyPress);
@@ -29,13 +55,25 @@ namespace InterfaceGraphique
             this.KeyPreview = true;
             StartPosition = FormStartPosition.CenterScreen;
             StringBuilder initSound = new StringBuilder("");
-        }
+       }
 
        private void Form1_KeyPress(object sender, KeyPressEventArgs e)
-        {
-           
-        }
+       {
+   
+       }
 
+       ////////////////////////////////////////////////////////////////////////
+       ///
+       /// @fn private void bouton_quit_Click(object sender, EventArgs e)
+       /// @brief Gestion des événements lorsque l'utilisateur clique sur 
+       ///        le bouton Quitter.
+       /// 
+       /// @param[in] sender : Objet duquel provient un événement
+       /// @param[in] e : Événement qui lance la fonction.
+       /// 
+       /// @return Aucune.
+       ///
+       ////////////////////////////////////////////////////////////////////////
        private void bouton_quit_Click(object sender, EventArgs e)
         {
           this.Dispose();
@@ -43,8 +81,21 @@ namespace InterfaceGraphique
 
         private void pictureBox1_Click(object sender, EventArgs e)
         {
+
         }
 
+        ////////////////////////////////////////////////////////////////////////
+        ///
+        /// @fn private void bouton_edit_Click(object sender, EventArgs e)
+        /// @brief Gestion des événements lorsque l'utilisateur clique sur 
+        ///        le bouton Editeur.
+        /// 
+        /// @param[in] sender : Objet duquel provient un événement
+        /// @param[in] e : Événement qui lance la fonction.
+        /// 
+        /// @return Aucune.
+        ///
+        ////////////////////////////////////////////////////////////////////////
         private void bouton_edit_Click(object sender, EventArgs e)
         {
             while (myThread.IsAlive)
@@ -59,6 +110,18 @@ namespace InterfaceGraphique
             
            }
 
+        ////////////////////////////////////////////////////////////////////////
+        ///
+        /// @fn private void bouton_edit_MouseEnter(object sender, EventArgs e)
+        /// @brief Gestion des événements lorsque l'utilisateur place la 
+        ///        souris sur le bouton Editeur.
+        /// 
+        /// @param[in] sender : Objet duquel provient un événement
+        /// @param[in] e : Événement qui lance la fonction.
+        /// 
+        /// @return Aucune.
+        ///
+        ////////////////////////////////////////////////////////////////////////
         private void bouton_edit_MouseEnter(object sender, EventArgs e)
         {
             bouton_edit.ForeColor = Color.Green;
@@ -67,12 +130,36 @@ namespace InterfaceGraphique
             player.Play();
         }
 
+        ////////////////////////////////////////////////////////////////////////
+        ///
+        /// @fn private void bouton_edit_MouseLeave(object sender, EventArgs e)
+        /// @brief Gestion des événements lorsque l'utilisateur enlève la 
+        ///        souris du bouton Editeur.
+        /// 
+        /// @param[in] sender : Objet duquel provient un événement
+        /// @param[in] e : Événement qui lance la fonction.
+        /// 
+        /// @return Aucune.
+        ///
+        ////////////////////////////////////////////////////////////////////////
         private void bouton_edit_MouseLeave(object sender, EventArgs e)
         {
             bouton_edit.ForeColor = Color.Black;
             bouton_edit.FlatAppearance.BorderSize = 0;
         }
 
+        ////////////////////////////////////////////////////////////////////////
+        ///
+        /// @fn private void bouton_quit_MouseEnter(object sender, EventArgs e)
+        /// @brief Gestion des événements lorsque l'utilisateur place la 
+        ///        souris sur le bouton Quitter.
+        /// 
+        /// @param[in] sender : Objet duquel provient un événement
+        /// @param[in] e : Événement qui lance la fonction.
+        /// 
+        /// @return Aucune.
+        ///
+        ////////////////////////////////////////////////////////////////////////
         private void bouton_quit_MouseEnter(object sender, EventArgs e)
         {
             bouton_quit.FlatAppearance.BorderSize = 1;
@@ -82,23 +169,60 @@ namespace InterfaceGraphique
             
         }
 
+        ////////////////////////////////////////////////////////////////////////
+        ///
+        /// @fn private void bouton_quit_MouseLeave(object sender, EventArgs e)
+        /// @brief Gestion des événements lorsque l'utilisateur enlève la 
+        ///        souris du bouton Quitter.
+        /// 
+        /// @param[in] sender : Objet duquel provient un événement
+        /// @param[in] e : Événement qui lance la fonction.
+        /// 
+        /// @return Aucune.
+        ///
+        ////////////////////////////////////////////////////////////////////////
         private void bouton_quit_MouseLeave(object sender, EventArgs e)
         {
             bouton_quit.FlatAppearance.BorderSize = 0;
             bouton_quit.ForeColor = Color.Black;
         }
 
+        ////////////////////////////////////////////////////////////////////////
+        ///
+        /// @fn private void MainMenu_Shown(object sender, EventArgs e)
+        /// @brief Gestion des événements lorsque le menu s'ouvre. La musique
+        ///        joue sur un autre Thread.
+        /// 
+        /// @param[in] sender : Objet duquel provient un événement
+        /// @param[in] e : Événement qui lance la fonction.
+        /// 
+        /// @return Aucune.
+        ///
+        ////////////////////////////////////////////////////////////////////////
         private void MainMenu_Shown(object sender, EventArgs e)
         {
             myThread = new Thread(new ThreadStart(initMusic));
             myThread.Start();
 
-        } 
-         private void initMusic()
+        }
+        ////////////////////////////////////////////////////////////////////////
+        ///
+        /// @fn private void initMusic()
+        /// @brief Joue un son.
+        /// 
+        /// @return Aucune.
+        ///
+        ////////////////////////////////////////////////////////////////////////
+        private void initMusic()
         {
             StringBuilder initSound = new StringBuilder("");
             InterfaceGraphique.FonctionsNatives.playSound(initSound, initSound.Capacity, false); // Initialise le son
             
+        }
+
+        private void bouton_campagne_Click(object sender, EventArgs e)
+        {
+
         } 
     }                                  
 }

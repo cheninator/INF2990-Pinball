@@ -1,4 +1,13 @@
-﻿using System;
+﻿//////////////////////////////////////////////////////////////////////////////
+/// @file Proprietes.cs
+/// @author Ballers
+/// @date 2015-01-27
+/// @version 1.0 
+///
+/// @ingroup InterfaceGraphique
+//////////////////////////////////////////////////////////////////////////////
+
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -10,10 +19,30 @@ using System.Windows.Forms;
 
 namespace InterfaceGraphique
 {
+    ///////////////////////////////////////////////////////////////////////////
+    /// @class Proprietes
+    /// @brief Fenêtre des propriétés de la partie.
+    ///
+    /// @author The Ballers
+    /// @date 2015-01-27
+    /// 
+    /// @ingroup InterfaceGraphique
+    ///////////////////////////////////////////////////////////////////////////
     public partial class Proprietes : Form
     {
-        public List<int> mesProp;
+        public List<int> mesProp; ///< Liste des propriétés
         string errorMessage = "";
+
+        ////////////////////////////////////////////////////////////////////////
+        ///
+        /// @fn public Proprietes(List<int> a)
+        /// @brief Constructeur par paramèetre de la fenêtre.
+        /// 
+        /// param[in] a : liste des propriétés à instancier.
+        /// 
+        /// @return Aucune (constructeur).
+        ///
+        ////////////////////////////////////////////////////////////////////////
         public Proprietes(List<int> a)
         {
             InitializeComponent();
@@ -26,6 +55,15 @@ namespace InterfaceGraphique
             difficulte_ComboBox.Text = mesProp[5].ToString();
             
         }
+
+        ////////////////////////////////////////////////////////////////////////
+        ///
+        /// @fn private bool checkValue()
+        /// @brief Vérifie que les valeurs entrées par l'utilisateur sont valides.
+        /// 
+        /// @return True si les valeurs entrées sont valides, false sinon.
+        ///
+        ////////////////////////////////////////////////////////////////////////
         private bool checkValue()
         {
             int n;
@@ -117,16 +155,50 @@ namespace InterfaceGraphique
 
             return isValid;
         }
+
+        ////////////////////////////////////////////////////////////////////////
+        ///
+        /// @fn private void propAnnuler_Bouton_Click(object sender, EventArgs e)
+        /// @brief Gestion des événements lorsque l'utilisateur clique sur 
+        ///        le bouton Annuler.
+        /// 
+        /// @param[in] sender : Objet duquel provient un événement
+        /// @param[in] e : Événement qui lance la fonction.
+        /// 
+        /// @return Aucune.
+        ///
+        ////////////////////////////////////////////////////////////////////////
         private void propAnnuler_Bouton_Click(object sender, EventArgs e)
         {
             this.Close();        
 
         }
 
+        ////////////////////////////////////////////////////////////////////////
+        ///
+        /// @fn public List<int> getProps()
+        /// @brief Accesseur de l'attribut des propriétés.
+        /// 
+        /// @return La liste des propriétés de jeu.
+        ///
+        ////////////////////////////////////////////////////////////////////////
         public List<int> getProps()
         {
             return mesProp;
         }
+
+        ////////////////////////////////////////////////////////////////////////
+        ///
+        /// @fn private void propConfirm_Bouton_Click(object sender, EventArgs e)
+        /// @brief Gestion des événements lorsque l'utilisateur clique sur 
+        ///        le bouton Confirmer.
+        /// 
+        /// @param[in] sender : Objet duquel provient un événement
+        /// @param[in] e : Événement qui lance la fonction.
+        /// 
+        /// @return Aucune.
+        ///
+        ////////////////////////////////////////////////////////////////////////
         private void propConfirm_Bouton_Click(object sender, EventArgs e)
         {
 
