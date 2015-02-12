@@ -525,7 +525,8 @@ namespace InterfaceGraphique
         {
             if (e.Button == MouseButtons.Left)
             {
-                Console.WriteLine("LEFT CLICK!!");
+                //form_.zoomElastique();
+                //form_.terminerRectangleElastique();
             }
             if (e.Button == MouseButtons.Right)
                 form_.deplacementVueSouris(e);
@@ -737,6 +738,56 @@ namespace InterfaceGraphique
             }
                 
 
+            return true;
+        }
+    }
+
+    class EtatZoomElastique : Etat
+    {
+        ////////////////////////////////////////////////////////////////////////
+        ///
+        /// @fn public EtatSelectionMultiple(Exemple form)
+        /// @brief Constructeur par paramètre de l'état.
+        /// 
+        /// param[in] form : Form associée à l'état.
+        /// 
+        /// @return Aucune (constructeur).
+        ///
+        ////////////////////////////////////////////////////////////////////////
+        public EtatZoomElastique(Exemple form) : base(form) { }
+
+        ////////////////////////////////////////////////////////////////////////
+        ///
+        /// @fn public override bool traiterClavier(KeyEventArgs e)
+        /// @brief Traiter le changement d'état suite à une action du clavier
+        /// 
+        /// param[in] e : Événement du clavier qui lance la fonction
+        /// 
+        /// @return True ou false selon la réussite des opérations.
+        ///
+        ////////////////////////////////////////////////////////////////////////
+        public override bool traiterClavier(KeyEventArgs e)
+        {
+            return base.traiterClavier(e);
+        }
+
+        ////////////////////////////////////////////////////////////////////////
+        ///
+        /// @fn public override bool traiterSouris(MouseEventArgs e)
+        /// @brief Traiter le changement d'état suite à une action du clavier
+        /// 
+        /// param[in] e : Événement de la souris qui lance la fonction
+        /// 
+        /// @return True ou false selon la réussite des opérations.
+        ///
+        ////////////////////////////////////////////////////////////////////////
+        public override bool traiterSouris(MouseEventArgs e)
+        {
+            if (e.Button == MouseButtons.Left)
+            {
+                form_.terminerRectangleElastique();
+                form_.zoomElastique();
+            }
             return true;
         }
     }
