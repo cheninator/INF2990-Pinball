@@ -171,10 +171,15 @@ public:
 	/// Selectionner couleur
 	virtual void setColorShift(bool colorShift);
 
-	/// Obtenir couleur
+	/// Obtenir transparence
 	virtual bool getTransparent();
-	/// Selectionner couleur
+	/// Selectionner transparence
 	virtual void setTransparent(bool transparent);
+
+	/// Obtenir rouge
+	virtual bool getImpossible();
+	/// Selectionner rouge
+	virtual void setImpossible(bool impossible);
 
 	modele::Modele3D const* obtenirModele() const;
 
@@ -234,14 +239,17 @@ protected:
 	/// Numéro d'instance.
 	int numeroNoeud_;
 
-	//boite englobante
+	///boite englobante
 	utilitaire::BoiteEnglobante boite_;
 
-	// Couleur du noeud
+	/// Couleur du noeud
 	bool colorShift_;
 
-	// Transparence
+	/// Transparence
 	bool transparent_;
+
+	/// Impossibilité de position
+	bool impossible_;
 };
 
 

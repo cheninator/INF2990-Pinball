@@ -32,6 +32,7 @@ NoeudAbstrait::NoeudAbstrait(
 	scale_ = { 1.0, 1.0, 1.0 };
 	twin_ = nullptr;
 	transparent_ = false;
+	impossible_ = false;
 }
 
 
@@ -416,6 +417,7 @@ void NoeudAbstrait::afficher() const
 
 		// Affichage concret
 		glStencilFunc(GL_ALWAYS, numeroNoeud_, -1);
+
 		afficherConcret();
 
 		// Restauration
@@ -619,6 +621,40 @@ void NoeudAbstrait::setTransparent(bool transparent)
 	transparent_ = transparent;
 }
 
+
+
+////////////////////////////////////////////////////////////////////////
+///
+/// @fn NoeudAbstrait* NoeudAbstrait::getImpossible()
+///
+/// Retourne si l'objet rouge (impossible de poser) ou non
+///
+/// @param[in] Aucun.
+///
+/// @return Bool.
+///
+////////////////////////////////////////////////////////////////////////
+bool NoeudAbstrait::getImpossible()
+{
+	return impossible_;
+}
+
+
+////////////////////////////////////////////////////////////////////////
+///
+/// @fn NoeudAbstrait* NoeudAbstrait::setImpossible(bool transparent)
+///
+/// Change de transparence
+///
+/// @param[in] transparent: activer ou desactiver le rouge (impossible de poser)
+///
+/// @return Aucun.
+///
+////////////////////////////////////////////////////////////////////////
+void NoeudAbstrait::setImpossible(bool impossible)
+{
+	impossible_ = impossible;
+}
 ////////////////////////////////////////////////////////////////////////
 ///
 /// @fn void NoeudAbstrait::setTwin()
