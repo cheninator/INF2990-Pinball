@@ -663,7 +663,7 @@ void NoeudAbstrait::setImpossible(bool impossible)
 ////////////////////////////////////////////////////////////////////////
 ///
 /// @fn bool NoeudAbstrait::pointEstDansBoite(glm::dvec3 point)
-/// @brief Cette fonction teste si un point se trouve dans al boîte englobante.
+/// @brief Cette fonction teste si un point se trouve dans la boîte englobante.
 ///
 /// @param[in] point : Point à tester.
 ///

@@ -1,32 +1,31 @@
 //////////////////////////////////////////////////////////////////////////////
-/// @file NoeudCompositeTest.h
+/// @file ArbreRenduINF2990Test.h
 /// @author Samuel Millette
-/// @date 2015-02-10
+/// @date 2015-02-12
 /// @version 1.0
 ///
 /// @ingroup Test
 //////////////////////////////////////////////////////////////////////////////
 
-#ifndef _TESTS_NOEUDCOMPOSITETEST_H
-#define _TESTS_NOEUDCOMPOSITETEST_H
+#ifndef _TESTS_ARBRERENDUINF2990TEST_H
+#define _TESTS_ARBRERENDUINF2990TEST_H
 
 #include <cppunit/extensions/HelperMacros.h>
 #include <memory>
 
-class NoeudComposite;
-class NoeudCible;
-class NoeudTable;
+class ArbreRenduINF2990;
+#include "ArbreRenduINF2990.h"
 
 ///////////////////////////////////////////////////////////////////////////
-/// @class NoeudCompositeTest
+/// @class ArbreRenduINF2990Test
 /// @brief Classe de test cppunit pour tester le bon fonctionnement des
-///        méthodes de la classe NoeudComposite.
+///        méthodes de la classe ArbreRenduINF2990.
 ///
 /// @author Samuel Millette
-/// @date 2015-02-10
+/// @date 2015-02-12
 /// @ingroup Test
 ///////////////////////////////////////////////////////////////////////////
-class NoeudCompositeTest : public CppUnit::TestFixture
+class ArbreRenduINF2990Test : public CppUnit::TestFixture
 {
 
 	// =================================================================
@@ -35,8 +34,13 @@ class NoeudCompositeTest : public CppUnit::TestFixture
 	// Important, vous devez définir chacun de vos cas de tests à l'aide
 	// de la macro CPPUNIT_TEST sinon ce dernier ne sera pas exécuté !
 	// =================================================================
-	CPPUNIT_TEST_SUITE(NoeudCompositeTest);
-	CPPUNIT_TEST(testEnfants);
+	CPPUNIT_TEST_SUITE(ArbreRenduINF2990Test);
+	CPPUNIT_TEST(testArbreDefaut);
+	CPPUNIT_TEST(testXmlInexistant);
+	CPPUNIT_TEST(testPortails);
+	CPPUNIT_TEST(creerNoeudParUsine);
+	CPPUNIT_TEST(boiteEnglobante);
+	CPPUNIT_TEST(assignerDefault);
 	CPPUNIT_TEST_SUITE_END();
 
 public:
@@ -56,18 +60,30 @@ public:
 	// Définissez ici les différents cas de tests...
 	// =================================================================
 
-	/// Cas de test: type de noeud
-	void testType();
+	/// Cas de test: Initialiser l'arbre par défaut.
+	void testArbreDefaut();
 
-	/// Cas de test: s'assurer que le noeud abstrait n'a pas d'enfant
-	void testEnfants();
+	/// Cas de test: Le fichier XML chargé est n'existe pas.
+	void testXmlInexistant();
+
+	/// Cas de test: Deux portails sont liés lorsque créés.
+	void testPortails();
+
+	/// Cas de test: Créer un noeud de type inexistant.
+	void creerNoeudParUsine();
+
+	/// Cas de test: Test boîte englobante.
+	void boiteEnglobante();
+
+	/// Cas de test: Assigner une position relative qui change le default layout.
+	void assignerDefault();
 
 private:
-	/// Instance d'un noeud composite
-	std::unique_ptr<NoeudComposite> noeud;
+	/// Instance d'un arbre
+	std::unique_ptr<ArbreRenduINF2990> arbre;
 };
 
-#endif // _TESTS_NOEUDCOMPOSITETEST_H
+#endif // _TESTS_ARBRERENDUINF2990_H
 
 
 ///////////////////////////////////////////////////////////////////////////////

@@ -112,7 +112,7 @@ public:
    /// Pour la sauvegarde de fichier XML
    int creerXML(char* path, int prop[6]);
 
-   ///
+   /// Vérifier si un point cliqué est dans la table 
    bool estDansTable(glm::dvec3 pointDuMonde);
 
 private:

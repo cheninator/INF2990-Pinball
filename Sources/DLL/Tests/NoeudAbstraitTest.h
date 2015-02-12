@@ -14,6 +14,7 @@
 #include <memory>
 
 class NoeudAbstrait;
+class ArbreRenduINF2990;
 
 ///////////////////////////////////////////////////////////////////////////
 /// @class NoeudAbstraitTest

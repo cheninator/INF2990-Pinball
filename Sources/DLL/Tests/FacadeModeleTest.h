@@ -1,32 +1,31 @@
 //////////////////////////////////////////////////////////////////////////////
-/// @file NoeudCompositeTest.h
+/// @file FacadeModeleTest.h
 /// @author Samuel Millette
-/// @date 2015-02-10
+/// @date 2015-02-12
 /// @version 1.0
 ///
 /// @ingroup Test
 //////////////////////////////////////////////////////////////////////////////
 
-#ifndef _TESTS_NOEUDCOMPOSITETEST_H
-#define _TESTS_NOEUDCOMPOSITETEST_H
+#ifndef _TESTS_FACADEMODELETEST_H
+#define _TESTS_FACADEMODELETEST_H
 
 #include <cppunit/extensions/HelperMacros.h>
 #include <memory>
 
-class NoeudComposite;
-class NoeudCible;
-class NoeudTable;
+class FacadeModele;
+#include "FacadeModele.h"
 
 ///////////////////////////////////////////////////////////////////////////
-/// @class NoeudCompositeTest
+/// @class FacadeModeleTest
 /// @brief Classe de test cppunit pour tester le bon fonctionnement des
-///        méthodes de la classe NoeudComposite.
+///        méthodes de la classe FacadeModele.
 ///
 /// @author Samuel Millette
-/// @date 2015-02-10
+/// @date 2015-02-12
 /// @ingroup Test
 ///////////////////////////////////////////////////////////////////////////
-class NoeudCompositeTest : public CppUnit::TestFixture
+class FacadeModeleTest : public CppUnit::TestFixture
 {
 
 	// =================================================================
@@ -35,8 +34,8 @@ class NoeudCompositeTest : public CppUnit::TestFixture
 	// Important, vous devez définir chacun de vos cas de tests à l'aide
 	// de la macro CPPUNIT_TEST sinon ce dernier ne sera pas exécuté !
 	// =================================================================
-	CPPUNIT_TEST_SUITE(NoeudCompositeTest);
-	CPPUNIT_TEST(testEnfants);
+	CPPUNIT_TEST_SUITE(FacadeModeleTest);
+	CPPUNIT_TEST(enregistrerXML);
 	CPPUNIT_TEST_SUITE_END();
 
 public:
@@ -56,20 +55,13 @@ public:
 	// Définissez ici les différents cas de tests...
 	// =================================================================
 
-	/// Cas de test: type de noeud
-	void testType();
+	/// Cas de test: ...
+	void enregistrerXML();
 
-	/// Cas de test: s'assurer que le noeud abstrait n'a pas d'enfant
-	void testEnfants();
 
 private:
-	/// Instance d'un noeud composite
-	std::unique_ptr<NoeudComposite> noeud;
+	/// Instance d'un noeud abstrait
+	// std::unique_ptr<ArbreRenduINF2990> arbre;
 };
 
-#endif // _TESTS_NOEUDCOMPOSITETEST_H
-
-
-///////////////////////////////////////////////////////////////////////////////
-/// @}
-///////////////////////////////////////////////////////////////////////////////
+#endif // _TESTS_FACADEMODELETEST_H
