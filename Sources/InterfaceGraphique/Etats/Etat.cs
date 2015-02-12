@@ -575,6 +575,7 @@ namespace InterfaceGraphique
         public EtatDuplication(Exemple form) : base(form) {
             
             form_.dupliquerSelection();
+            form_.trackCursor(true);
 
         }
 
@@ -605,13 +606,14 @@ namespace InterfaceGraphique
         ////////////////////////////////////////////////////////////////////////
         public override bool traiterSouris(MouseEventArgs e)
         {
-            Console.WriteLine("Salut");
+            
             form_.deplacementSouris(e);
 
             if (e.Button == MouseButtons.Left)
             {
                 
-               
+                form_.trackCursor(false);
+                
                // form_.statePortail();
           
 

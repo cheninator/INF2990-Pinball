@@ -1661,7 +1661,7 @@ namespace InterfaceGraphique
             {
                 deplacementVueSouris(e);
             }
-          
+           
             if (etat is EtatCreation)
             {
                 if (!(FonctionsNatives.verifierCliqueDansTable(e.X, e.Y)))
@@ -1726,7 +1726,11 @@ namespace InterfaceGraphique
             if (!(etat is EtatCreation))
             {
                 panel_GL.MouseMove -= panel_MouseMove;
-            }           
+            }
+            if (etat is EtatDuplication)
+            {
+                etat = new EtatSelection(this);
+            }
             if (e.Button == MouseButtons.Left)
             {
                Point destination = panel_GL.PointToClient(MousePosition);
