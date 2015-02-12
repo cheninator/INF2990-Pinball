@@ -509,33 +509,32 @@ void FacadeModele::tournerSelectionSouris(int x1, int y1, int x2, int y2)
 	// Visiter l'arbre pour trouver le centre de masse des noeuds selectionnés
 	VisiteurCentreDeMasse visCM;
 	arbre_->accepterVisiteur(&visCM);
-
-
-	bool onTourne = true;
-	double angle = (y2 - y1) / 3.0;
-
-	VisiteurListeEnglobante visLE;
-	arbre_->accepterVisiteur(&visLE);
 	glm::dvec3 centreRotation = visCM.obtenirCentreDeMasse();
+
+	// On calcule l'angle de la rotation:
+	double angle = (y2 - y1) / 3.0;
 	double angleEnRadian = angle * 2 * 3.14156 / 360;
 	glm::dmat3 transform = glm::dmat3{ glm::dvec3{ cos(-angleEnRadian), -sin(-angleEnRadian), 0 },
-										glm::dvec3{ sin(-angleEnRadian), cos(-angleEnRadian), 0 },
-										glm::dvec3{ 0, 0, 1 } };
+		glm::dvec3{ sin(-angleEnRadian), cos(-angleEnRadian), 0 },
+		glm::dvec3{ 0, 0, 1 } };
 
-	std::vector<glm::dvec3> listeEnglobante = visLE.obtenirListeEnglobante();
-	glm::dvec3 vecteur;
+	// On décide si la rotation peut se faire
+	bool onTourne = true;
+	// Obtenir une liste des points englobants des noeud sélectionnés
+	VisiteurListeEnglobante visLE;
+	arbre_->accepterVisiteur(&visLE);
+
 	glm::dvec3 pointTransforme;
-	for (glm::dvec3 point : listeEnglobante)
+	for (glm::dvec3 point : visLE.obtenirListeEnglobante())
 	{
-		vecteur = point - centreRotation;
-		vecteur =  vecteur;
 		pointTransforme = centreRotation + transform *(point - centreRotation);
 
 		if (// Respecter les dimensions de la table.
 			108 > pointTransforme.x || pointTransforme.x > 272
 			|| -190 > pointTransforme.y || pointTransforme.y > 96
 			)
-			onTourne = false;
+			// Si un des points est hors de la table on aborte
+			return;
 	}
 
 	// Visiter l'arbre et faire la rotation.
