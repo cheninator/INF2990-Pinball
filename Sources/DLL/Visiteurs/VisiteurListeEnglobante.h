@@ -14,6 +14,7 @@
 #include "VisiteurAbstrait.h"
 #include "glm\glm.hpp"
 
+using conteneur_boite_englobante = std::pair<std::vector<glm::dvec3>,NoeudAbstrait*>;
 ///////////////////////////////////////////////////////////////////////////
 /// @class VisiteurDeselectionnerTout
 /// @brief Classe pour désélectionner tous les objets de la table de rendu.
@@ -39,11 +40,14 @@ public:
 	/// Traiter une opération sur l'arbre de rendu et ses enfants
 	virtual bool traiter(NoeudTable* table);
 
-	std::vector<glm::dvec3> obtenirListeEnglobante(){ return pointsEnglobant_; };
+	std::vector<conteneur_boite_englobante> obtenirListeEnglobante(){ return boitesEnglobantes_; };
 
 private:
 
-	std::vector<glm::dvec3> pointsEnglobant_;
+	
+	/// Le choix du conteneur pour les enfants.
+
+	std::vector<conteneur_boite_englobante> boitesEnglobantes_;
 };
 
 #endif //__VISITEURS_VISITEURDESELECTIONNERTOUT_H__

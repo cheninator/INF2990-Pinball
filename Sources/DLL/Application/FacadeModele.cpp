@@ -525,18 +525,17 @@ void FacadeModele::tournerSelectionSouris(int x1, int y1, int x2, int y2)
 	// Obtenir une liste des points englobants des noeud sélectionnés
 	VisiteurListeEnglobante visLE;
 	arbre_->accepterVisiteur(&visLE);
-
+	
 	glm::dvec3 pointTransforme;
-	for (glm::dvec3 point : visLE.obtenirListeEnglobante())
+	for (conteneur_boite_englobante boite : visLE.obtenirListeEnglobante())
 	{
-		pointTransforme = centreRotation + transform *(point - centreRotation);
-
-		if (// Respecter les dimensions de la table.
-			108 > pointTransforme.x || pointTransforme.x > 272
-			|| -190 > pointTransforme.y || pointTransforme.y > 96
-			)
-			// Si un des points est hors de la table on aborte
-			return;
+		for (glm::dvec3 vecteur : boite.first)
+		{
+			glm::dvec3 point = boite.second->obtenirPositionRelative() + vecteur ;
+			pointTransforme = centreRotation + transform *(point - centreRotation);
+			if (!estDansTable(pointTransforme))
+				return;
+		}
 	}
 
 	// Visiter l'arbre et faire la rotation.
@@ -751,6 +750,20 @@ int FacadeModele::creerXML(char* path, int prop[6])
 	return sauvegardeAutorise;
 }
 
+
+
+
+
+
+
+bool FacadeModele::estDansTable(glm::dvec3 pointDuMonde)
+{
+	if (108 < pointDuMonde.x && pointDuMonde.x < 272
+		&& -190 < pointDuMonde.y && pointDuMonde.y < 96)
+		return true;
+	else 
+		return false;
+}
 
 
 
