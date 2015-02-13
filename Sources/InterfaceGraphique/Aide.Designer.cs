@@ -1,4 +1,13 @@
-﻿using System.IO;
+﻿//////////////////////////////////////////////////////////////////////////////
+/// @file Aide.cs
+/// @author Ballers
+/// @date 2015-01-27
+/// @version 1.0 
+///
+/// @ingroup InterfaceGraphique
+//////////////////////////////////////////////////////////////////////////////
+
+using System.IO;
 namespace InterfaceGraphique
 {
     partial class Aide
@@ -58,6 +67,7 @@ namespace InterfaceGraphique
         #endregion
 
         private System.Windows.Forms.Label label1;
+
 
 
     }

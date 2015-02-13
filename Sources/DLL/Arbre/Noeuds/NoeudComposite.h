@@ -62,9 +62,6 @@ public:
    /// Obtient le nombre d'enfants du noeud.
    virtual unsigned int obtenirNombreEnfants() const;
 
-   // Changer la sélection du noeud: on prend la version de la classe de
-   // base.
-   // virtual void inverserSelection();
    /// Efface les enfants sélectionnés.
    virtual void effacerSelection();
    /// Sélectionne tous les enfants de même que le noeud.
@@ -78,14 +75,14 @@ public:
    virtual void changerModePolygones( bool estForce );
    /// Assigne le mode d'affichage des polygones.
    virtual void assignerModePolygones( GLenum modePolygones );
-   // Affiche le noeud: on prend la version de la classe de base.
-   // virtual void afficher() const;
    /// Affiche le noeud de manière concrète.
    virtual void afficherConcret() const;
    /// Anime le noeud.
    virtual void animer( float dt );
 
    virtual NoeudAbstrait* getEnfant(int i) { return enfants_[i]; };
+
+   virtual int getSizeEnfants() { return enfants_.size(); };
 
 protected:
    /// Le choix du conteneur pour les enfants.

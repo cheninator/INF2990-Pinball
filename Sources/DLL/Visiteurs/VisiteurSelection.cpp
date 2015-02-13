@@ -120,14 +120,13 @@ bool VisiteurSelection::traiter(NoeudTable* table)
 ////////////////////////////////////////////////////////////////////////
 bool VisiteurSelection::traiter(NoeudAbstrait* noeud)
 {
-	if (valeurStencil_ == noeud->getNumero() && noeud->estSelectionnable() /*&& noeud->estModifiable()*/)
+	if (valeurStencil_ == noeud->getNumero() && noeud->estSelectionnable())
 		noeud->assignerSelection(true);
 	else
 		noeud->assignerSelection(false);
 
 	if (noeud->estSelectionne()) 
 		nbObjetsSelectionne_++;
-
 	return true;
 }
 

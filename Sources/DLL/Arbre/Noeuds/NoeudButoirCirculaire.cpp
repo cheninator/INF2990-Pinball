@@ -65,7 +65,11 @@ void NoeudButoirCirculaire::afficherConcret() const
 	glPushMatrix();
 	// Affichage du modèle.
 	glPushAttrib(GL_ALL_ATTRIB_BITS);
-	if (selectionne_)
+	if (selectionne_ && transparent_){
+		glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
+		glEnable(GL_BLEND);
+	}
+	else if (selectionne_)
 		glTexEnvf(GL_TEXTURE_ENV, GL_TEXTURE_ENV_MODE, GL_ADD);
 	liste_->dessiner();
 	glPopAttrib();

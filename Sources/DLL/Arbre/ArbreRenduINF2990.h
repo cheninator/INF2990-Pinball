@@ -43,6 +43,9 @@ public:
    /// Obtenir le ième enfant de l'arbre
    NoeudAbstrait* getEnfant(int position) const;
 
+   /// Methode de test
+   glm::dvec3 getPosRessort();
+
    /// Accepter un visiteur
    virtual bool accepterVisiteur(VisiteurAbstrait* vis);
 
@@ -52,13 +55,15 @@ public:
    /// Obtenir les propriétés de la zone de jeu
    int* obtenirProprietes() const { return proprietes_; };
 
-   static const std::string NOM_BUTOIR; ///< Représente le type Butoir
+   static const std::string NOM_BUTOIRD; ///< Représente le type Butoir droit
+   static const std::string NOM_BUTOIRG; ///< Représente le type Butoir gauche
    static const std::string NOM_BUTOIRCIRCULAIRE; ///< Représente le type Butoir circulaire
    static const std::string NOM_CIBLE; ///< Représente le type Cible
    static const std::string NOM_BILLE; ///< Représente le type Bille
    static const std::string NOM_GENERATEURBILLE; ///< Représente le type Generateur bille
    static const std::string NOM_MUR; ///< Représente le type Mur
-   static const std::string NOM_PALETTE; ///< Représente le type Palette
+   static const std::string NOM_PALETTED; ///< Représente le type Palette droite
+   static const std::string NOM_PALETTEG; ///< Représente le type Palette gauche
    static const std::string NOM_PORTAIL; ///< Représente le type Portail
    static const std::string NOM_RESSORT; ///< Représente le type Ressort
    static const std::string NOM_TROU; ///< Représente le type Trou

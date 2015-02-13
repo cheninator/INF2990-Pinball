@@ -26,7 +26,7 @@ extern "C" {
 	__declspec(dllexport) void zoomOut();
 	__declspec(dllexport) int  obtenirAffichagesParSeconde();
 	__declspec(dllexport) bool executerTests();
-	__declspec(dllexport) void creerObjet(char* value, int length, bool isTwin = false);
+	__declspec(dllexport) void creerObjet(char* value, int length, bool isTwin = false, bool colorShift = false);
 	__declspec(dllexport) void positionObjet(int x, int y, int z = 0);
 	__declspec(dllexport) void translateObjet(int x, int y, int z = 0);
 	__declspec(dllexport) void scaleObjet(double scale);
@@ -41,6 +41,7 @@ extern "C" {
 	__declspec(dllexport) double getPositionY(void);
 	__declspec(dllexport) double getAngle(void);
 	__declspec(dllexport) double getScale(void);
+	__declspec(dllexport) void creerMur(int x1, int y1, int x2, int y2);
 	__declspec(dllexport) void translater(double deplacementX, double deplacementY);
 	__declspec(dllexport) int creerXML(char* path, int length, int prop[6]);
 	__declspec(dllexport) int* ouvrirXML(char* path, int length);
@@ -52,11 +53,14 @@ extern "C" {
 	__declspec(dllexport) void zoomInElastique(int xCoin1, int yCoin1, int xCoin2, int yCoin2);
 	__declspec(dllexport) void zoomOutElastique(int xCoin1, int yCoin1, int xCoin2, int yCoin2);
 	__declspec(dllexport) double currentZoom(void);
-	__declspec(dllexport) void rectangleElastique(int x1, int y1, int x2, int y2);
-	__declspec(dllexport) int selectionMultiple(void);
+	__declspec(dllexport) void rectangleElastique(int i, int j);
+	__declspec(dllexport) int selectionMultiple(bool c);
 	__declspec(dllexport) bool verifierCliqueDansTable(int x, int y);
 	__declspec(dllexport) void dupliquerSelection(int i, int j);
 	__declspec(dllexport) void playSound(char* value, int length, bool stop = false);
+	__declspec(dllexport) void obligerTransparence(bool transparence);
+	__declspec(dllexport) void initialiserRectangleElastique(int i, int j);
+	__declspec(dllexport) void terminerRectangleElastique();
 }
 
 #endif // __FACADE_INTERFACE_NATIVE_H__

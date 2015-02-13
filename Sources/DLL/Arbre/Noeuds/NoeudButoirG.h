@@ -1,5 +1,5 @@
 ///////////////////////////////////////////////////////////////////////////
-/// @file NoeudButoir.h
+/// @file NoeudButoirG.h
 /// @author Yonni Chen
 /// @date 2015-01-24
 /// @version 1.0
@@ -7,29 +7,29 @@
 /// @ingroup Noeud
 ///////////////////////////////////////////////////////////////////////////
 
-#ifndef __ARBRE_NOEUDS_NOEUDBUTOIR_H__
-#define __ARBRE_NOEUDS_NOEUDBUTOIR_H__
+#ifndef __ARBRE_NOEUDS_NOEUDBUTOIRG_H__
+#define __ARBRE_NOEUDS_NOEUDBUTOIRG_H__
 
 
 #include "NoeudComposite.h"
 
 ///////////////////////////////////////////////////////////////////////////
-/// @class NoeudButoir
+/// @class NoeudButoirG
 /// @brief Classe qui représente un butoir.
 ///
 /// @author Julien Gascon-Samson
 /// @date 2011-05-19
 /// @ingroup Noeud
 ///////////////////////////////////////////////////////////////////////////
-class NoeudButoir : public NoeudComposite
+class NoeudButoirG : public NoeudComposite
 {
 public:
 
 	/// Constructeur à partir du type du noeud.
-	NoeudButoir(const std::string& typeNoeud);
+	NoeudButoirG(const std::string& typeNoeud);
 
 	/// Destructeur.
-	~NoeudButoir();
+	~NoeudButoirG();
 
 	/// Affiche le butoir.
 	virtual void afficherConcret() const;
@@ -47,4 +47,4 @@ private:
 
 };
 
-#endif // __ARBRE_NOEUDS_NOEUDBUTOIR_H__
+#endif // __ARBRE_NOEUDS_NOEUDBUTOIRG_H__

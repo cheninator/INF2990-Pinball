@@ -96,11 +96,11 @@
     <ClCompile Include="Tests\BancTests.cpp">
       <Filter>Source Files\Tests</Filter>
     </ClCompile>
+    <ClCompile Include="Tests\NoeudCompositeTest.cpp">
+      <Filter>Source Files\Tests</Filter>
+    </ClCompile>
     <ClCompile Include="Interface\FacadeInterfaceNative.cpp">
       <Filter>Source Files\Interface</Filter>
-    </ClCompile>
-    <ClCompile Include="Arbre\Noeuds\NoeudButoir.cpp">
-      <Filter>Source Files\Arbre\Noeuds</Filter>
     </ClCompile>
     <ClCompile Include="Arbre\Noeuds\NoeudTrou.cpp">
       <Filter>Source Files\Arbre\Noeuds</Filter>
@@ -109,9 +109,6 @@
       <Filter>Source Files\Arbre\Noeuds</Filter>
     </ClCompile>
     <ClCompile Include="Arbre\Noeuds\NoeudPortail.cpp">
-      <Filter>Source Files\Arbre\Noeuds</Filter>
-    </ClCompile>
-    <ClCompile Include="Arbre\Noeuds\NoeudPalette.cpp">
       <Filter>Source Files\Arbre\Noeuds</Filter>
     </ClCompile>
     <ClCompile Include="Arbre\Noeuds\NoeudMur.cpp">
@@ -174,6 +171,30 @@
     <ClCompile Include="Visiteurs\VisiteurSuppression.cpp">
       <Filter>Source Files\Visiteurs</Filter>
     </ClCompile>
+    <ClCompile Include="Visiteurs\VisiteurSelectionInverseMultiple.cpp">
+      <Filter>Source Files\Visiteurs</Filter>
+    </ClCompile>
+    <ClCompile Include="Visiteurs\VisiteurLimitesSelection.cpp">
+      <Filter>Source Files\Visiteurs</Filter>
+    </ClCompile>
+    <ClCompile Include="Visiteurs\VisiteurListeEnglobante.cpp">
+      <Filter>Source Files\Visiteurs</Filter>
+    </ClCompile>
+    <ClCompile Include="Arbre\Noeuds\NoeudPaletteD.cpp">
+      <Filter>Source Files\Arbre\Noeuds</Filter>
+    </ClCompile>
+    <ClCompile Include="Arbre\Noeuds\NoeudPaletteG.cpp">
+      <Filter>Source Files\Arbre\Noeuds</Filter>
+    </ClCompile>
+    <ClCompile Include="Arbre\Noeuds\NoeudButoirD.cpp">
+      <Filter>Source Files\Arbre\Noeuds</Filter>
+    </ClCompile>
+    <ClCompile Include="Arbre\Noeuds\NoeudButoirG.cpp">
+      <Filter>Source Files\Arbre\Noeuds</Filter>
+    </ClCompile>
+    <ClCompile Include="Visiteurs\VisiteurPossibilite.cpp">
+      <Filter>Source Files\Visiteurs</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Application\FacadeModele.h">
@@ -218,6 +239,9 @@
     <ClInclude Include="Tests\BancTests.h">
       <Filter>Header Files\Tests</Filter>
     </ClInclude>
+    <ClInclude Include="Tests\NoeudCompositeTest.h">
+      <Filter>Header Files\Tests</Filter>
+    </ClInclude>
     <ClInclude Include="Interface\FacadeInterfaceNative.h">
       <Filter>Header Files\Interface</Filter>
     </ClInclude>
@@ -230,9 +254,6 @@
     <ClInclude Include="Arbre\Noeuds\NoeudMur.h">
       <Filter>Header Files\Arbre\Noeuds</Filter>
     </ClInclude>
-    <ClInclude Include="Arbre\Noeuds\NoeudPalette.h">
-      <Filter>Header Files\Arbre\Noeuds</Filter>
-    </ClInclude>
     <ClInclude Include="Arbre\Noeuds\NoeudPortail.h">
       <Filter>Header Files\Arbre\Noeuds</Filter>
     </ClInclude>
@@ -241,9 +262,6 @@
     </ClInclude>
     <ClInclude Include="Arbre\Noeuds\NoeudTrou.h">
       <Filter>Header Files\Arbre\Noeuds</Filter>
-    </ClInclude>
-    <ClInclude Include="Arbre\Usines\UsineNoeudButoir.h">
-      <Filter>Header Files\Arbre\Usines</Filter>
     </ClInclude>
     <ClInclude Include="Arbre\Usines\UsineNoeudCible.h">
       <Filter>Header Files\Arbre\Usines</Filter>
@@ -254,9 +272,6 @@
     <ClInclude Include="Arbre\Usines\UsineNoeudMur.h">
       <Filter>Header Files\Arbre\Usines</Filter>
     </ClInclude>
-    <ClInclude Include="Arbre\Usines\UsineNoeudPalette.h">
-      <Filter>Header Files\Arbre\Usines</Filter>
-    </ClInclude>
     <ClInclude Include="Arbre\Usines\UsineNoeudPortail.h">
       <Filter>Header Files\Arbre\Usines</Filter>
     </ClInclude>
@@ -265,9 +280,6 @@
     </ClInclude>
     <ClInclude Include="Arbre\Usines\UsineNoeudTrou.h">
       <Filter>Header Files\Arbre\Usines</Filter>
-    </ClInclude>
-    <ClInclude Include="Arbre\Noeuds\NoeudButoir.h">
-      <Filter>Header Files\Arbre\Noeuds</Filter>
     </ClInclude>
     <ClInclude Include="Visiteurs\VisiteurAbstrait.h">
       <Filter>Header Files\Visiteurs</Filter>
@@ -336,6 +348,42 @@
       <Filter>Header Files\Visiteurs</Filter>
     </ClInclude>
     <ClInclude Include="Visiteurs\VisiteurSuppression.h">
+      <Filter>Header Files\Visiteurs</Filter>
+    </ClInclude>
+    <ClInclude Include="Visiteurs\VisiteurSelectionInverseMultiple.h">
+      <Filter>Header Files\Visiteurs</Filter>
+    </ClInclude>
+    <ClInclude Include="Visiteurs\VisiteurLimitesSelection.h">
+      <Filter>Header Files\Visiteurs</Filter>
+    </ClInclude>
+    <ClInclude Include="Visiteurs\VisiteurListeEnglobante.h">
+      <Filter>Header Files\Visiteurs</Filter>
+    </ClInclude>
+    <ClInclude Include="Arbre\Usines\UsineNoeudPaletteD.h">
+      <Filter>Header Files\Arbre\Usines</Filter>
+    </ClInclude>
+    <ClInclude Include="Arbre\Noeuds\NoeudPaletteD.h">
+      <Filter>Header Files\Arbre\Noeuds</Filter>
+    </ClInclude>
+    <ClInclude Include="Arbre\Usines\UsineNoeudPaletteG.h">
+      <Filter>Header Files\Arbre\Usines</Filter>
+    </ClInclude>
+    <ClInclude Include="Arbre\Usines\UsineNoeudButoirD.h">
+      <Filter>Header Files\Arbre\Usines</Filter>
+    </ClInclude>
+    <ClInclude Include="Arbre\Noeuds\NoeudButoirD.h">
+      <Filter>Header Files\Arbre\Noeuds</Filter>
+    </ClInclude>
+    <ClInclude Include="Noeuds\NoeudButoirG.h">
+      <Filter>Header Files\Arbre\Noeuds</Filter>
+    </ClInclude>
+    <ClInclude Include="Arbre\Usines\UsineNoeudButoirG.h">
+      <Filter>Header Files\Arbre\Usines</Filter>
+    </ClInclude>
+    <ClInclude Include="Arbre\Noeuds\NoeudButoirG.h">
+      <Filter>Header Files\Arbre\Noeuds</Filter>
+    </ClInclude>
+    <ClInclude Include="Visiteurs\VisiteurPossibilite.h">
       <Filter>Header Files\Visiteurs</Filter>
     </ClInclude>
   </ItemGroup>

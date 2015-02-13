@@ -21,6 +21,7 @@
 
 #include "glm\glm.hpp"
 #include "../../Visiteurs/VisiteurAbstrait.h"
+#include "Utilitaire.h"
 
 /// Déclarations avancées pour contenir un pointeur vers un modèle3D et sa liste
 /// d'affichage
@@ -49,7 +50,8 @@ class NoeudAbstrait
 public:
 	/// Constructeur.
 	NoeudAbstrait(
-		const std::string& type = std::string{ "" }	);
+		const std::string& type = std::string{ "" }
+	);
 	/// Destructeur.
 	virtual ~NoeudAbstrait();
 
@@ -80,6 +82,10 @@ public:
 	inline void assignerSelection(bool selectionne);
 	/// Vérifie si le noeud est sélectionné.
 	inline bool estSelectionne() const;
+	/// Vérifie si la positin du noeud est illégale
+	inline bool estImpossible() const;
+	/// Assigner le statut de possibilite
+	inline void assignerImpossible(bool impossible);
 	/// Écrit si le noeud peut être sélectionné ou non.
 	inline void assignerEstSelectionnable(bool selectionnable);
 	/// Écrit le zoom sur le noeud.
@@ -97,9 +103,12 @@ public:
 
 	/// Écrit si le noeud peut être modifié ou non.
 	void assignerEstModifiable(bool modif) { modifiable_ = modif; };
+
+	void assignerEstAjustable(bool ajust) { ajustable_ = ajust; };
 	/// Vérifie si le noeud est modifiable.
 	bool estModifiable() const { return modifiable_; };
-
+	// Vérifie qu'on peut agrandir l'objet
+	bool estAjustable() const{ return ajustable_; }
 	/// Assigne le modèle3D et la liste d'affichage du noeud courant
 	inline void assignerObjetRendu(modele::Modele3D const* modele, modele::opengl_storage::OpenGL_Liste const* liste);
 
@@ -156,17 +165,41 @@ public:
 	virtual NoeudAbstrait* getTwin();
 	/// Ajouter jumeau
 	virtual void setTwin(NoeudAbstrait* twin);
+	//Obtenir les 4 vecteurs de la boite englobante modifie
+	virtual void obtenirVecteursBoite(glm::dvec3 &v1, glm::dvec3 &v2, glm::dvec3 &v3, glm::dvec3 &v4);
+	//Verifie si un point est dans la boite englobante
+	virtual bool pointEstDansBoite(glm::dvec3 point);
 
+	/// Obtenir couleur
+	virtual bool getColorShift();
+	/// Selectionner couleur
+	virtual void setColorShift(bool colorShift);
+
+	/// Obtenir transparence
+	virtual bool getTransparent();
+	/// Selectionner transparence
+	virtual void setTransparent(bool transparent);
+
+	/// Obtenir rouge
+	virtual bool getImpossible();
+	/// Selectionner rouge
+	virtual void setImpossible(bool impossible);
+
+	/// Obtenir modele
 	modele::Modele3D const* obtenirModele() const;
 
+	/// Obtenir agrandissement
 	inline const glm::dvec3& obtenirAgrandissement() const;
 
+	/// Obtenir rotation
 	inline const glm::dvec3& NoeudAbstrait::obtenirRotation() const;
 
+	/// Obtenir le type
 	std::string getType(){ return type_; }
+
 protected:
 	/// Si jumeau
-	NoeudAbstrait* twin_;
+	NoeudAbstrait* twin_{ nullptr };
 
 	/// Type du noeud.
 	std::string      type_;
@@ -198,6 +231,8 @@ protected:
 	/// Détermine si l'objet peut être modifié
 	bool             modifiable_{ true };
 
+	bool			ajustable_{ true };
+
 	/// Pointeur vers le parent.
 	NoeudAbstrait*   parent_{ nullptr };
 
@@ -211,6 +246,18 @@ protected:
 
 	/// Numéro d'instance.
 	int numeroNoeud_;
+
+	///boite englobante
+	utilitaire::BoiteEnglobante boite_;
+
+	/// Couleur du noeud
+	bool colorShift_;
+
+	/// Transparence
+	bool transparent_;
+
+	/// Impossibilité de position
+	bool impossible_;
 };
 
 
@@ -455,6 +502,40 @@ inline void NoeudAbstrait::assignerEstSelectionnable(bool selectionnable)
 
 ////////////////////////////////////////////////////////////////////////
 ///
+/// @fn inline void NoeudAbstrait::assignerImpossible( bool impossible )
+///
+/// Cette fonction permet d'assigner l'état d'être impossible ou non du noeud.
+///
+/// @param selectionnable : L'état impossible ou non.
+///
+/// @return Aucune
+///
+////////////////////////////////////////////////////////////////////////
+inline void NoeudAbstrait::assignerImpossible(bool impossible)
+{
+	impossible_ = impossible;
+}
+
+
+////////////////////////////////////////////////////////////////////////
+///
+/// @fn inline void NoeudAbstrait::estImpossible( bool impossible )
+///
+/// Cette fonction permet d'obtenir l'état d'être impossible ou non du noeud.
+///
+/// @param selectionnable : L'état impossible ou non.
+///
+/// @return Aucune
+///
+////////////////////////////////////////////////////////////////////////
+inline bool NoeudAbstrait::estImpossible() const
+{
+	return impossible_;
+}
+
+
+////////////////////////////////////////////////////////////////////////
+///
 /// @fn inline bool NoeudAbstrait::estSelectionnable() const
 ///
 /// Cette fonction retourne l'état d'être sélectionnable ou non du noeud.
@@ -515,6 +596,7 @@ inline void NoeudAbstrait::assignerObjetRendu(modele::Modele3D const* modele, mo
 {
 	modele_ = modele;
 	liste_ = liste;
+	boite_ = utilitaire::calculerBoiteEnglobante(*modele_);
 }
 
 ////////////////////////////////////////////////////////////////////////

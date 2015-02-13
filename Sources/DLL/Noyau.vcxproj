@@ -81,6 +81,7 @@
       </DataExecutionPrevention>
       <TargetMachine>MachineX64</TargetMachine>
       <AdditionalOptions>/NODEFAULTLIB:LIBCMT %(AdditionalOptions)</AdditionalOptions>
+      <AssemblyDebug>true</AssemblyDebug>
     </Link>
     <PostBuildEvent>
       <Command>
@@ -118,6 +119,7 @@
       </DataExecutionPrevention>
       <TargetMachine>MachineX64</TargetMachine>
       <AdditionalOptions>/NODEFAULTLIB:LIBCMT %(AdditionalOptions)</AdditionalOptions>
+      <AssemblyDebug>true</AssemblyDebug>
     </Link>
     <PostBuildEvent>
       <Command>
@@ -132,14 +134,16 @@
     <ClCompile Include="Application\FacadeModele.cpp" />
     <ClCompile Include="Arbre\Noeuds\NoeudAraignee.cpp" />
     <ClCompile Include="Arbre\Noeuds\NoeudBille.cpp" />
-    <ClCompile Include="Arbre\Noeuds\NoeudButoir.cpp" />
+    <ClCompile Include="Arbre\Noeuds\NoeudButoirD.cpp" />
     <ClCompile Include="Arbre\Noeuds\NoeudButoirCirculaire.cpp" />
+    <ClCompile Include="Arbre\Noeuds\NoeudButoirG.cpp" />
     <ClCompile Include="Arbre\Noeuds\NoeudCible.cpp" />
     <ClCompile Include="Arbre\Noeuds\NoeudConeCube.cpp" />
     <ClCompile Include="Arbre\Noeuds\NoeudCouvercle.cpp" />
     <ClCompile Include="Arbre\Noeuds\NoeudGenerateurBille.cpp" />
     <ClCompile Include="Arbre\Noeuds\NoeudMur.cpp" />
-    <ClCompile Include="Arbre\Noeuds\NoeudPalette.cpp" />
+    <ClCompile Include="Arbre\Noeuds\NoeudPaletteD.cpp" />
+    <ClCompile Include="Arbre\Noeuds\NoeudPaletteG.cpp" />
     <ClCompile Include="Arbre\Noeuds\NoeudPortail.cpp" />
     <ClCompile Include="Arbre\Noeuds\NoeudRessort.cpp" />
     <ClCompile Include="Arbre\Noeuds\NoeudTable.cpp" />
@@ -151,6 +155,9 @@
     <ClCompile Include="Arbre\Noeuds\NoeudAbstrait.cpp" />
     <ClCompile Include="Arbre\Noeuds\NoeudComposite.cpp" />
     <ClCompile Include="Interface\FacadeInterfaceNative.cpp" />
+    <ClCompile Include="Tests\ArbreRenduINF2990Test.cpp" />
+    <ClCompile Include="Tests\FacadeModeleTest.cpp" />
+    <ClCompile Include="Tests\NoeudCompositeTest.cpp" />
     <ClCompile Include="Tests\BancTests.cpp" />
     <ClCompile Include="Tests\ConfigSceneTest.cpp" />
     <ClCompile Include="Tests\NoeudAbstraitTest.cpp" />
@@ -159,10 +166,14 @@
     <ClCompile Include="Visiteurs\VisiteurDeplacement.cpp" />
     <ClCompile Include="Visiteurs\VisiteurDeselectionnerTout.cpp" />
     <ClCompile Include="Visiteurs\VisiteurDuplication.cpp" />
+    <ClCompile Include="Visiteurs\VisiteurLimitesSelection.cpp" />
+    <ClCompile Include="Visiteurs\VisiteurListeEnglobante.cpp" />
+    <ClCompile Include="Visiteurs\VisiteurPossibilite.cpp" />
     <ClCompile Include="Visiteurs\VisiteurRotation.cpp" />
     <ClCompile Include="Visiteurs\VisiteurRotationPoint.cpp" />
     <ClCompile Include="Visiteurs\VisiteurSelection.cpp" />
     <ClCompile Include="Visiteurs\VisiteurSelectionInverse.cpp" />
+    <ClCompile Include="Visiteurs\VisiteurSelectionInverseMultiple.cpp" />
     <ClCompile Include="Visiteurs\VisiteurSelectionMultiple.cpp" />
     <ClCompile Include="Visiteurs\VisiteurSuppression.cpp" />
     <ClCompile Include="Visiteurs\VisiteurXML.cpp" />
@@ -171,14 +182,15 @@
     <ClInclude Include="Application\FacadeModele.h" />
     <ClInclude Include="Arbre\Noeuds\NoeudAraignee.h" />
     <ClInclude Include="Arbre\Noeuds\NoeudBille.h" />
-    <ClInclude Include="Arbre\Noeuds\NoeudButoir.h" />
+    <ClInclude Include="Arbre\Noeuds\NoeudButoirD.h" />
     <ClInclude Include="Arbre\Noeuds\NoeudButoirCirculaire.h" />
+    <ClInclude Include="Arbre\Noeuds\NoeudButoirG.h" />
     <ClInclude Include="Arbre\Noeuds\NoeudCible.h" />
     <ClInclude Include="Arbre\Noeuds\NoeudConeCube.h" />
     <ClInclude Include="Arbre\Noeuds\NoeudCouvercle.h" />
     <ClInclude Include="Arbre\Noeuds\NoeudGenerateurBille.h" />
     <ClInclude Include="Arbre\Noeuds\NoeudMur.h" />
-    <ClInclude Include="Arbre\Noeuds\NoeudPalette.h" />
+    <ClInclude Include="Arbre\Noeuds\NoeudPaletteD.h" />
     <ClInclude Include="Arbre\Noeuds\NoeudPortail.h" />
     <ClInclude Include="Arbre\Noeuds\NoeudRessort.h" />
     <ClInclude Include="Arbre\Noeuds\NoeudTable.h" />
@@ -186,14 +198,16 @@
     <ClInclude Include="Arbre\Noeuds\NoeudVide.h" />
     <ClInclude Include="Arbre\Usines\UsineNoeudAraignee.h" />
     <ClInclude Include="Arbre\Usines\UsineNoeudBille.h" />
-    <ClInclude Include="Arbre\Usines\UsineNoeudButoir.h" />
+    <ClInclude Include="Arbre\Usines\UsineNoeudButoirD.h" />
     <ClInclude Include="Arbre\Usines\UsineNoeudButoirCirculaire.h" />
+    <ClInclude Include="Arbre\Usines\UsineNoeudButoirG.h" />
     <ClInclude Include="Arbre\Usines\UsineNoeudCible.h" />
     <ClInclude Include="Arbre\Usines\UsineNoeudConeCube.h" />
     <ClInclude Include="Arbre\Usines\UsineNoeudCouvercle.h" />
     <ClInclude Include="Arbre\Usines\UsineNoeudGenerateurBille.h" />
     <ClInclude Include="Arbre\Usines\UsineNoeudMur.h" />
-    <ClInclude Include="Arbre\Usines\UsineNoeudPalette.h" />
+    <ClInclude Include="Arbre\Usines\UsineNoeudPaletteD.h" />
+    <ClInclude Include="Arbre\Usines\UsineNoeudPaletteG.h" />
     <ClInclude Include="Arbre\Usines\UsineNoeudPortail.h" />
     <ClInclude Include="Arbre\Usines\UsineNoeudRessort.h" />
     <ClInclude Include="Arbre\Usines\UsineNoeudTable.h" />
@@ -206,6 +220,10 @@
     <ClInclude Include="Arbre\Noeuds\NoeudAbstrait.h" />
     <ClInclude Include="Arbre\Noeuds\NoeudComposite.h" />
     <ClInclude Include="Interface\FacadeInterfaceNative.h" />
+    <ClInclude Include="Noeuds\NoeudButoirG.h" />
+    <ClInclude Include="Tests\ArbreRenduINF2990Test.h" />
+    <ClInclude Include="Tests\FacadeModeleTest.h" />
+    <ClInclude Include="Tests\NoeudCompositeTest.h" />
     <ClInclude Include="Tests\BancTests.h" />
     <ClInclude Include="Tests\ConfigSceneTest.h" />
     <ClInclude Include="Tests\NoeudAbstraitTest.h" />
@@ -215,10 +233,14 @@
     <ClInclude Include="Visiteurs\VisiteurDeplacement.h" />
     <ClInclude Include="Visiteurs\VisiteurDeselectionnerTout.h" />
     <ClInclude Include="Visiteurs\VisiteurDuplication.h" />
+    <ClInclude Include="Visiteurs\VisiteurLimitesSelection.h" />
+    <ClInclude Include="Visiteurs\VisiteurListeEnglobante.h" />
+    <ClInclude Include="Visiteurs\VisiteurPossibilite.h" />
     <ClInclude Include="Visiteurs\VisiteurRotation.h" />
     <ClInclude Include="Visiteurs\VisiteurRotationPoint.h" />
     <ClInclude Include="Visiteurs\VisiteurSelection.h" />
     <ClInclude Include="Visiteurs\VisiteurSelectionInverse.h" />
+    <ClInclude Include="Visiteurs\VisiteurSelectionInverseMultiple.h" />
     <ClInclude Include="Visiteurs\VisiteurSelectionMultiple.h" />
     <ClInclude Include="Visiteurs\VisiteurSuppression.h" />
     <ClInclude Include="Visiteurs\VisiteurXML.h" />

@@ -24,12 +24,15 @@ unsigned int NoeudAbstrait::compteurNoeuds_ = 0;
 NoeudAbstrait::NoeudAbstrait(
 	const std::string& type //= std::string{ "" }
 	) :
-	type_( type )
+	type_(type)
 {
+	colorShift_ = false;
 	compteurNoeuds_ += 1;
 	numeroNoeud_ = compteurNoeuds_;
 	scale_ = { 1.0, 1.0, 1.0 };
 	twin_ = nullptr;
+	transparent_ = false;
+	impossible_ = false;
 }
 
 
@@ -403,17 +406,20 @@ void NoeudAbstrait::afficher() const
 			positionRelative_[0], positionRelative_[1], positionRelative_[2]
 			);
 
-		glScaled(scale_[0], scale_[1], scale_[2]);
+		
 
 		glRotated(rotation_[0], 1.0F, 0.0F, 0.0F);
 		glRotated(rotation_[1], 0.0F, 1.0F, 0.0F);
 		glRotated(rotation_[2], 0.0F, 0.0F, 1.0F);
+
+		glScaled(scale_[0], scale_[1], scale_[2]);
 
 		// Assignation du mode d'affichage des polygones
 		glPolygonMode(GL_FRONT_AND_BACK, modePolygones_);
 
 		// Affichage concret
 		glStencilFunc(GL_ALWAYS, numeroNoeud_, -1);
+
 		afficherConcret();
 
 		// Restauration
@@ -446,7 +452,7 @@ void NoeudAbstrait::afficherConcret() const
 /// Cette fonction effectue l'animation du noeud pour un certain
 /// intervalle de temps.
 ///
-/// Elle ne fait rien pour cette classe et vise à être surcharger par
+/// Elle ne fait rien pour cette classe et vise à être surchargée par
 /// les classes dérivées.
 ///
 /// @param[in] dt : Intervalle de temps sur lequel faire l'animation.
@@ -456,6 +462,7 @@ void NoeudAbstrait::afficherConcret() const
 ////////////////////////////////////////////////////////////////////////
 void NoeudAbstrait::animer(float dt)
 {
+
 }
 
 
@@ -468,12 +475,13 @@ void NoeudAbstrait::animer(float dt)
 ///
 /// @param[in] vis : Prend un visiteur abstrait.
 ///
-/// @return reusite ou echec.
+/// @return Reusite ou echec.
 ///
 ////////////////////////////////////////////////////////////////////////
 bool NoeudAbstrait::accepterVisiteur(VisiteurAbstrait* vis) 
 {
-	vis->traiter(this); return false; 
+	vis->traiter(this); 
+	return false; 
 }
 
 
@@ -490,8 +498,7 @@ bool NoeudAbstrait::accepterVisiteur(VisiteurAbstrait* vis)
 ////////////////////////////////////////////////////////////////////////
 NoeudAbstrait* NoeudAbstrait::getTwin()
 {
-	return NULL;
-	//	return twin_;
+	return twin_;
 }
 
 
@@ -508,5 +515,191 @@ NoeudAbstrait* NoeudAbstrait::getTwin()
 ////////////////////////////////////////////////////////////////////////
 void NoeudAbstrait::setTwin(NoeudAbstrait* twin)
 {
-	//	twin_ = twin;
+	twin_ = twin;
+}
+
+////////////////////////////////////////////////////////////////////////
+///
+/// @fn void NoeudAbstrait::obtenirVecteursBoite(glm::dvec3 &v1, glm::dvec3 &v2, glm::dvec3 &v3, glm::dvec3 &v4)
+///
+/// Cette fonction obtient les vecteurs de la boite.
+///
+/// @param[out] v1 : Vecteur 1.
+/// @param[out] v2 : Vecteur 2.
+/// @param[out] v3 : Vecteur 3.
+/// @param[out] v4 : Vecteur 4.
+///
+/// @return Aucune
+///
+////////////////////////////////////////////////////////////////////////
+void NoeudAbstrait::obtenirVecteursBoite(glm::dvec3 &v1, glm::dvec3 &v2, glm::dvec3 &v3, glm::dvec3 &v4)
+{
+	//initialiser les vecteurs
+	v1 = boite_.coinMin;
+	v2.x = boite_.coinMin.x;
+	v2.y = boite_.coinMax.y;
+	v3 = boite_.coinMax;
+	v4.x = boite_.coinMax.x;
+	v4.y = boite_.coinMin.y;
+
+	glm::dmat3 echelle = glm::dmat3{ glm::dvec3{ scale_.x, 0, 0.0 },
+		glm::dvec3{ 0, scale_.y , 0.0f },
+		glm::dvec3{ 0.0, 0.0, scale_.z } };
+
+	//mise a l'echelle des vecteurs
+	v1 = echelle * v1;
+	v2 = echelle * v2;
+	v3 = echelle * v3;
+	v4 = echelle * v4;
+
+	//calcul matrice de rotation
+	double angleEnRadian = -rotation_[2] * 2 * 3.1415926535897932384626433832795 / 360;
+	glm::dmat3 transform = glm::dmat3{ glm::dvec3{ cos(angleEnRadian), -sin(angleEnRadian), 0.0 },
+										 glm::dvec3{ sin(angleEnRadian), cos(angleEnRadian), 0.0f },
+										 glm::dvec3{ 0.0, 0.0, 1.0 } };
+	
+	//applique la rotation aux vecteurs
+	v1 = transform * v1;
+	v2 = transform * v2;
+	v3 = transform * v3;
+	v4 = transform * v4;
+}
+
+////////////////////////////////////////////////////////////////////////
+///
+/// @fn NoeudAbstrait* NoeudAbstrait::getColorShift()
+///
+/// Retourne si la couleur est modifier ou non
+///
+/// @param[in] Aucun.
+///
+/// @return Bool.
+///
+////////////////////////////////////////////////////////////////////////
+bool NoeudAbstrait::getColorShift()
+{
+	return colorShift_;
+}
+
+
+////////////////////////////////////////////////////////////////////////
+///
+/// @fn NoeudAbstrait* NoeudAbstrait::setColorShift(bool colorShift)
+///
+/// Change de couleur
+///
+/// @param[in] colorShift: activer ou desactiver le changement de couleur
+///
+/// @return Aucun.
+///
+////////////////////////////////////////////////////////////////////////
+void NoeudAbstrait::setColorShift(bool colorShift)
+{
+	colorShift_ = colorShift;
+}
+
+
+////////////////////////////////////////////////////////////////////////
+///
+/// @fn NoeudAbstrait* NoeudAbstrait::getColorShift()
+///
+/// Retourne si l'objet est transparent ou non
+///
+/// @param[in] Aucun.
+///
+/// @return Bool.
+///
+////////////////////////////////////////////////////////////////////////
+bool NoeudAbstrait::getTransparent()
+{
+	return transparent_;
+}
+
+
+////////////////////////////////////////////////////////////////////////
+///
+/// @fn NoeudAbstrait* NoeudAbstrait::setTransparent(bool transparent)
+///
+/// Change de transparence
+///
+/// @param[in] transparent: activer ou desactiver la transparence
+///
+/// @return Aucun.
+///
+////////////////////////////////////////////////////////////////////////
+void NoeudAbstrait::setTransparent(bool transparent)
+{
+	transparent_ = transparent;
+}
+
+
+
+////////////////////////////////////////////////////////////////////////
+///
+/// @fn NoeudAbstrait* NoeudAbstrait::getImpossible()
+///
+/// Retourne si l'objet rouge (impossible de poser) ou non
+///
+/// @param[in] Aucun.
+///
+/// @return Bool.
+///
+////////////////////////////////////////////////////////////////////////
+bool NoeudAbstrait::getImpossible()
+{
+	return impossible_;
+}
+
+
+////////////////////////////////////////////////////////////////////////
+///
+/// @fn NoeudAbstrait* NoeudAbstrait::setImpossible(bool transparent)
+///
+/// Change de transparence
+///
+/// @param[in] transparent: activer ou desactiver le rouge (impossible de poser)
+///
+/// @return Aucun.
+///
+////////////////////////////////////////////////////////////////////////
+void NoeudAbstrait::setImpossible(bool impossible)
+{
+	impossible_ = impossible;
+}
+
+////////////////////////////////////////////////////////////////////////
+///
+/// @fn bool NoeudAbstrait::pointEstDansBoite(glm::dvec3 point)
+/// @brief Cette fonction teste si un point se trouve dans la boîte englobante.
+///
+/// @param[in] point : Point à tester.
+///
+/// @return True si le test réussit, false sinon
+///
+////////////////////////////////////////////////////////////////////////
+bool NoeudAbstrait::pointEstDansBoite(glm::dvec3 point)
+{
+	glm::dvec3 vecOP = point - positionRelative_;
+
+	//calcul matrice de rotation inverse
+	double angleEnRadian = rotation_[2] * 2 * 3.1415926535897932384626433832795 / 360;
+	glm::dmat3 transform = glm::dmat3{ glm::dvec3{ cos(angleEnRadian), -sin(angleEnRadian), 0.0 },
+		glm::dvec3{ sin(angleEnRadian), cos(angleEnRadian), 0.0f },
+		glm::dvec3{ 0.0, 0.0, 1.0 } };
+
+	//appliquer rotation inverse au vecteur
+	vecOP = transform * vecOP;
+
+	//appliquer la mise a l'echelle inverse
+	glm::dmat3 echelle = glm::dmat3{ glm::dvec3{ 1/scale_.x, 0, 0.0 },
+		glm::dvec3{ 0, 1/scale_.y, 0.0f },
+		glm::dvec3{ 0.0, 0.0,1/ scale_.z } };
+	vecOP = echelle * vecOP;
+
+	//verifie si le vecteur est dans la boite
+	if (vecOP.x > boite_.coinMin.x && vecOP.x < boite_.coinMax.x &&
+		vecOP.y > boite_.coinMin.y && vecOP.y < boite_.coinMax.y)
+		return true;
+	else
+		return false;
 }

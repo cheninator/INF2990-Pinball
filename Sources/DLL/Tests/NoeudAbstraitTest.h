@@ -4,8 +4,7 @@
 /// @date 2011-07-16
 /// @version 1.0
 ///
-/// @addtogroup inf2990 INF2990
-/// @{
+/// @ingroup Test
 //////////////////////////////////////////////////////////////////////////////
 
 #ifndef _TESTS_NOEUDABSTRAITTEST_H
@@ -15,6 +14,7 @@
 #include <memory>
 
 class NoeudAbstrait;
+class ArbreRenduINF2990;
 
 ///////////////////////////////////////////////////////////////////////////
 /// @class NoeudAbstraitTest
@@ -23,6 +23,7 @@ class NoeudAbstrait;
 ///
 /// @author Julien Gascon-Samson
 /// @date 2011-07-16
+/// @ingroup Test
 ///////////////////////////////////////////////////////////////////////////
 class NoeudAbstraitTest : public CppUnit::TestFixture
 {

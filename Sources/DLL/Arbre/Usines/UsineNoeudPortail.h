@@ -10,7 +10,7 @@
 #define __ARBRE_USINES_USINENOEUDPORTAIL_H__
 
 #include "UsineNoeud.h"
-#include "NoeudTrou.h"
+#include "NoeudPortail.h"
 
 ///////////////////////////////////////////////////////////////////////////
 /// @class UsineNoeudPortail
@@ -60,7 +60,7 @@ inline UsineNoeudPortail::UsineNoeudPortail(const std::string& nom)
 ////////////////////////////////////////////////////////////////////////
 NoeudAbstrait* UsineNoeudPortail::creerNoeud() const
 {
-	auto noeud = new NoeudTrou{ obtenirNom() };
+	auto noeud = new NoeudPortail{ obtenirNom() };
 	noeud->assignerObjetRendu(&modele_, &liste_);
 	return noeud;
 }

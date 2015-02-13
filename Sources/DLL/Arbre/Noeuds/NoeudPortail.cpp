@@ -66,8 +66,24 @@ void NoeudPortail::afficherConcret() const
 	glPushMatrix();
 	// Affichage du modèle.
 	glPushAttrib(GL_ALL_ATTRIB_BITS);
-	if (selectionne_)
+	if (impossible_)
+		glColorMask(0, 1, 1, 1);
+	if (selectionne_) {
 		glTexEnvf(GL_TEXTURE_ENV, GL_TEXTURE_ENV_MODE, GL_ADD);
+		if (twin_ != nullptr && twin_ != NULL)
+			twin_->setTransparent(true);
+
+	}
+	else if (transparent_) {
+		glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
+		glEnable(GL_BLEND);
+	}
+	else
+		if (twin_ != nullptr && twin_ != NULL)
+			twin_->setTransparent(false);
+	if (twin_ != nullptr && twin_ != NULL)
+		if(!selectionne_ && !twin_->estSelectionne())
+			twin_->setTransparent(false);
 	liste_->dessiner();
 	glPopAttrib();
 	// Restauration de la matrice.
@@ -109,39 +125,4 @@ bool NoeudPortail::accepterVisiteur(VisiteurAbstrait* vis)
 
 	return reussi;
 
-}
-
-
-
-////////////////////////////////////////////////////////////////////////
-///
-/// @fn NoeudAbstrait* NoeudAbstrait::getTwin()
-///
-/// Retourne le noeud jumueau
-///
-/// @param[in] Aucun.
-///
-/// @return NoeudAbstrait jumeau.
-///
-////////////////////////////////////////////////////////////////////////
-NoeudAbstrait* NoeudPortail::getTwin()
-{
-	return twin_;
-}
-
-
-////////////////////////////////////////////////////////////////////////
-///
-/// @fn void NoeudAbstrait::setTwin()
-///
-/// Cette fonction permet de definir un noeud jumeau
-///
-/// @param[in] dt : Prend un noeud abstrait.
-///
-/// @return Aucune
-///
-////////////////////////////////////////////////////////////////////////
-void NoeudPortail::setTwin(NoeudAbstrait* twin)
-{
-	twin_ = twin;
 }

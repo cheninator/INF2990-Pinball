@@ -1,5 +1,5 @@
 ///////////////////////////////////////////////////////////////////////////
-/// @file NoeudButoir.cpp
+/// @file NoeudPaletteG.cpp
 /// @author Yonni Chen
 /// @date 2015-01-24
 /// @version 1.0
@@ -7,7 +7,7 @@
 /// @ingroup Noeud
 ///////////////////////////////////////////////////////////////////////////
 
-#include "NoeudButoir.h"
+#include "NoeudPaletteG.h"
 #include "Utilitaire.h"
 
 #include <windows.h>
@@ -20,7 +20,7 @@
 
 ////////////////////////////////////////////////////////////////////////
 ///
-/// @fn NoeudButoir::NoeudButoir(const std::string& typeNoeud)
+/// @fn NoeudPaletteG::NoeudPaletteG(const std::string& typeNoeud)
 ///
 /// @param[in] typeNoeud :  le type du noeud à créer.
 ///
@@ -30,43 +30,50 @@
 /// @return Aucune (constructeur).
 ///
 ////////////////////////////////////////////////////////////////////////
-NoeudButoir::NoeudButoir(const std::string& typeNoeud)
+NoeudPaletteG::NoeudPaletteG(const std::string& typeNoeud)
 	: NoeudComposite{ typeNoeud }
 {
-
+	ajustable_ = false;
 }
 
 ////////////////////////////////////////////////////////////////////////
 ///
-/// @fn NoeudButoir::~NoeudButoir()
+/// @fn NoeudPaletteG::~NoeudPaletteG()
 ///
 /// Ce destructeur désallouee la liste d'affichage du noeud.
 ///
 /// @return Aucune (destructeur).
 ///
 ////////////////////////////////////////////////////////////////////////
-NoeudButoir::~NoeudButoir()
+NoeudPaletteG::~NoeudPaletteG()
 {
 
 }
 
 ////////////////////////////////////////////////////////////////////////
 ///
-/// @fn void NoeudButoir::afficherConcret() const
+/// @fn void NoeudPaletteG::afficherConcret() const
 ///
 /// Cette fonction effectue le véritable rendu de l'objet.
 ///
 /// @return Aucune.
 ///
 ////////////////////////////////////////////////////////////////////////
-void NoeudButoir::afficherConcret() const
+void NoeudPaletteG::afficherConcret() const
 {
 	NoeudComposite::afficherConcret();
 	// Sauvegarde de la matrice.
 	glPushMatrix();
 	// Affichage du modèle.
 	glPushAttrib(GL_ALL_ATTRIB_BITS);
-	if (selectionne_)
+	if (colorShift_){
+		glTexEnvf(GL_TEXTURE_ENV, GL_TEXTURE_ENV_MODE, GL_BLEND);
+	}
+	if (selectionne_ && transparent_){
+		glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
+		glEnable(GL_BLEND);
+	}
+	else if (selectionne_)
 		glTexEnvf(GL_TEXTURE_ENV, GL_TEXTURE_ENV_MODE, GL_ADD);
 	liste_->dessiner();
 	glPopAttrib();
@@ -76,7 +83,7 @@ void NoeudButoir::afficherConcret() const
 
 ////////////////////////////////////////////////////////////////////////
 ///
-/// @fn void NoeudButoir::animer(float temps)
+/// @fn void NoeudPaletteG::animer(float temps)
 ///
 /// Cette fonction effectue l'animation du noeud pour un certain
 /// intervalle de temps. Pas d'animation pour ce type de noeud.
@@ -86,21 +93,21 @@ void NoeudButoir::afficherConcret() const
 /// @return Aucune.
 ///
 ////////////////////////////////////////////////////////////////////////
-void NoeudButoir::animer(float temps)
+void NoeudPaletteG::animer(float temps)
 {
 
 }
 
 ////////////////////////////////////////////////////////////////////////
 ///
-/// @fn bool NoeudButoir::accepterVisiteur(VisiteurAbstrait* vis)
+/// @fn bool NoeudPaletteG::accepterVisiteur(VisiteurAbstrait* vis)
 ///
 /// Cette fonction appelle la méthode traiter du visiteur.
 ///
 /// @return reussi (TRUE)
 ///
 ////////////////////////////////////////////////////////////////////////
-bool NoeudButoir::accepterVisiteur(VisiteurAbstrait* vis)
+bool NoeudPaletteG::accepterVisiteur(VisiteurAbstrait* vis)
 {
 	bool reussi = false;
 
@@ -109,4 +116,3 @@ bool NoeudButoir::accepterVisiteur(VisiteurAbstrait* vis)
 
 	return reussi;
 }
-

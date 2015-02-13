@@ -141,7 +141,7 @@ bool VisiteurRotationPoint::traiter(NoeudAbstrait* noeud)
 			noeud->assignerPositionRelative(positionFinale);
 
 			// Changer l'orientation du noeud
-			noeud->assignerRotation(angles_);
+			noeud->assignerRotation(noeud->obtenirRotation().y == 0 ? angles_ : -angles_);
 			
 
 		}

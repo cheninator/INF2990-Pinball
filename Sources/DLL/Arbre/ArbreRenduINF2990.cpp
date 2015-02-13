@@ -9,14 +9,16 @@
 #include "ArbreRenduINF2990.h"
 
 #include "Usines/UsineNoeudAraignee.h"
-#include "Usines/UsineNoeudButoir.h"
+#include "Usines/UsineNoeudButoirD.h"
+#include "Usines/UsineNoeudButoirG.h"
 #include "Usines/UsineNoeudButoirCirculaire.h"
 #include "Usines/UsineNoeudCible.h"
 #include "Usines/UsineNoeudConeCube.h"
 #include "Usines/UsineNoeudBille.h"
 #include "Usines/UsineNoeudGenerateurBille.h"
 #include "Usines/UsineNoeudMur.h"
-#include "Usines/UsineNoeudPalette.h"
+#include "Usines/UsineNoeudPaletteD.h"
+#include "Usines/UsineNoeudPaletteG.h"
 #include "Usines/UsineNoeudPortail.h"
 #include "Usines/UsineNoeudRessort.h"
 #include "Usines/UsineNoeudTrou.h"
@@ -27,13 +29,15 @@
 #include "EtatOpenGL.h"
 
 
-const std::string ArbreRenduINF2990::NOM_BUTOIR{ "butoir" };
+const std::string ArbreRenduINF2990::NOM_BUTOIRD{ "butoird" };
+const std::string ArbreRenduINF2990::NOM_BUTOIRG{ "butoirg" };
 const std::string ArbreRenduINF2990::NOM_BUTOIRCIRCULAIRE{ "butoircirculaire" };
 const std::string ArbreRenduINF2990::NOM_CIBLE{ "cible" };
 const std::string ArbreRenduINF2990::NOM_BILLE{ "bille" };
 const std::string ArbreRenduINF2990::NOM_GENERATEURBILLE{ "generateurbille" };
 const std::string ArbreRenduINF2990::NOM_MUR{ "mur" };
-const std::string ArbreRenduINF2990::NOM_PALETTE{ "palette" };
+const std::string ArbreRenduINF2990::NOM_PALETTED{ "paletted" };
+const std::string ArbreRenduINF2990::NOM_PALETTEG{ "paletteg" };
 const std::string ArbreRenduINF2990::NOM_PORTAIL{ "portail" };
 const std::string ArbreRenduINF2990::NOM_RESSORT{ "ressort" };
 const std::string ArbreRenduINF2990::NOM_TROU{ "trou" };
@@ -56,13 +60,15 @@ const std::string ArbreRenduINF2990::NOM_TABLE{ "table" };
 ArbreRenduINF2990::ArbreRenduINF2990()
 {
 	// Construction des usines
-	ajouterUsine(NOM_BUTOIR, new UsineNoeudButoir{ NOM_BUTOIR });
+	ajouterUsine(NOM_BUTOIRD, new UsineNoeudButoirD{ NOM_BUTOIRD });
+	ajouterUsine(NOM_BUTOIRG, new UsineNoeudButoirG{ NOM_BUTOIRG });
 	ajouterUsine(NOM_BUTOIRCIRCULAIRE, new UsineNoeudButoirCirculaire{ NOM_BUTOIRCIRCULAIRE });
 	ajouterUsine(NOM_CIBLE, new UsineNoeudCible{ NOM_CIBLE });
 	ajouterUsine(NOM_BILLE, new UsineNoeudBille{ NOM_BILLE });
 	ajouterUsine(NOM_GENERATEURBILLE, new UsineNoeudGenerateurBille{ NOM_GENERATEURBILLE });
 	ajouterUsine(NOM_MUR, new UsineNoeudMur{ NOM_MUR });
-	ajouterUsine(NOM_PALETTE, new UsineNoeudPalette{ NOM_PALETTE });
+	ajouterUsine(NOM_PALETTED, new UsineNoeudPaletteD{ NOM_PALETTED });
+	ajouterUsine(NOM_PALETTEG, new UsineNoeudPaletteG{ NOM_PALETTEG });
 	ajouterUsine(NOM_PORTAIL, new UsineNoeudPortail{ NOM_PORTAIL });
 	ajouterUsine(NOM_RESSORT, new UsineNoeudRessort{ NOM_RESSORT });
 	ajouterUsine(NOM_TROU, new UsineNoeudTrou{ NOM_TROU });
@@ -118,7 +124,7 @@ void ArbreRenduINF2990::initialiser()
 /// Cette fonction retourne un NoeudAbstrait* qui correspond
 ///	à l'enfant de la position passé en paramètre.
 ///
-/// @return NoeudAbstrait*
+/// @return NoeudAbstrait* L'enfant en question.
 ///
 ////////////////////////////////////////////////////////////////////////
 NoeudAbstrait* ArbreRenduINF2990::getEnfant(int position) const
@@ -127,6 +133,20 @@ NoeudAbstrait* ArbreRenduINF2990::getEnfant(int position) const
 		return nullptr;
 	else
 		return enfants_[position];
+}
+
+////////////////////////////////////////////////////////////////////////
+///
+/// @fn glm::dvec3 ArbreRenduINF2990::getPosRessort()
+///
+/// Cette fonction retourne la position par défaut du ressort. (Test)
+///
+/// @return Le vecteur de position du ressort.
+///
+////////////////////////////////////////////////////////////////////////
+glm::dvec3 ArbreRenduINF2990::getPosRessort()
+{
+	return posRessort;
 }
 
 
@@ -262,21 +282,23 @@ bool ArbreRenduINF2990::lireXML(tinyxml2::XMLDocument& doc)
 					enfant->FindAttribute(angleY)->DoubleValue(),
 					enfant->FindAttribute(angleZ)->DoubleValue() });
 
-				if (enfant->Name() == "portail")
-				{
-					// Nombre actuel d'enfants de la table
-					int enfantsTable = getEnfant(0)->obtenirNombreEnfants();
-
-					if (getEnfant(0)->chercher(enfantsTable - 1)->obtenirType() == "portail" 
-						&& getEnfant(0)->chercher(enfantsTable - 1)->getTwin() != nullptr)
-					{
-						noeudConcret->setTwin(getEnfant(0)->chercher(enfantsTable - 1));
-						getEnfant(0)->chercher(enfantsTable - 1)->setTwin(noeudConcret);
-					}
-				}
-
 				// Ajouter l'enfant à la table
 				table->ajouter(noeudConcret);
+
+				if (noeudConcret->obtenirType() == "portail")
+				{
+					// Nombre actuel d'enfants de la table
+					unsigned int enfantsTable = getEnfant(0)->obtenirNombreEnfants();
+
+					// Interroger l'enfant au dessus de lui
+					if (table->chercher(enfantsTable - 2)->obtenirType() == "portail"
+						&& table->chercher(enfantsTable - 2)->getTwin() == nullptr)
+					{
+						// Si c'est un portail et qu'il n'est pas relié, les relier tous les deux
+						noeudConcret->setTwin(table->chercher(enfantsTable - 2 ));
+						table->chercher(enfantsTable - 2)->setTwin(noeudConcret);
+					}
+				}
 
 				// Traiter le frère de droite de l'enfant
 				enfant = enfant->NextSiblingElement();

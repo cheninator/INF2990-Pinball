@@ -33,7 +33,9 @@
 NoeudTable::NoeudTable(const std::string& typeNoeud)
 	: NoeudComposite{ typeNoeud }
 {
-
+	assignerSelection(false);
+	selectionnable_ = false;
+	modifiable_ = false;
 }
 
 ////////////////////////////////////////////////////////////////////////

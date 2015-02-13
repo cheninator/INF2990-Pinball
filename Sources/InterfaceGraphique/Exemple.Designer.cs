@@ -1,4 +1,13 @@
-﻿namespace InterfaceGraphique
+﻿//////////////////////////////////////////////////////////////////////////////
+/// @file Exemple.Designer.cs
+/// @author Ballers
+/// @date 2015-01-13
+/// @version 1.0 
+///
+/// @ingroup InterfaceGraphique
+//////////////////////////////////////////////////////////////////////////////
+
+namespace InterfaceGraphique
 {
     partial class Exemple
     {
@@ -136,7 +145,6 @@
             this.panel1.Size = new System.Drawing.Size(956, 640);
             this.panel1.TabIndex = 0;
             this.panel1.Click += new System.EventHandler(this.panel1_Click);
-            this.panel1.Paint += new System.Windows.Forms.PaintEventHandler(this.panel1_Paint);
             // 
             // panel_GL
             // 

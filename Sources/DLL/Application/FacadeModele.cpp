@@ -12,15 +12,17 @@
 
 @mainpage Projet intégrateur de deuxième année -- INF2990
 
-Painball
-
-Auteurs Aymen Dje
-		Nikolay Radoev
-		Yonni Chen
-		Emilio Rivera
-		Philippe Carpin
-		Kim Piché
-		Samuel Millette
+PAINBALL
+<BR>
+<BR>
+Auteurs:<BR>
+Aymen Dje <BR>
+Nikolay Radoev <BR>
+Yonni Chen <BR>
+Emilio Rivera <BR>
+Philippe Carpin <BR>
+Kim Piché <BR>
+Samuel Millette <BR>
 
 */
 
@@ -37,12 +39,16 @@ Auteurs Aymen Dje
 #include "../Visiteurs/VisiteurSelection.h"
 #include "../Visiteurs/VisiteurSelectionInverse.h"
 #include "../Visiteurs/VisiteurSelectionMultiple.h"
+#include "../Visiteurs/VisiteurSelectionInverseMultiple.h"
 #include "../Visiteurs/VisiteurDeplacement.h"
 #include "../Visiteurs/VisiteurRotation.h"
 #include "../Visiteurs/VisiteurCentreDeMasse.h"
 #include "../Visiteurs/VisiteurRotationPoint.h"
 #include "../Visiteurs/VisiteurAgrandissement.h"
 #include "../Visiteurs/VisiteurDuplication.h"
+#include "../Visiteurs/VisiteurLimitesSelection.h"
+#include "../Visiteurs/VisiteurListeEnglobante.h"
+#include "../Visiteurs/VisiteurPossibilite.h"
 
 #include "VueOrtho.h"
 #include "Camera.h"
@@ -65,9 +71,10 @@ Auteurs Aymen Dje
 /// Pointeur vers l'instance unique de la classe.
 FacadeModele* FacadeModele::instance_{ nullptr };
 
+/*
 /// Chaîne indiquant le nom du fichier de configuration du projet.
 const std::string FacadeModele::FICHIER_CONFIGURATION{ "configuration.xml" };
-
+*/
 
 
 ////////////////////////////////////////////////////////////////////////
@@ -146,9 +153,6 @@ void FacadeModele::initialiserOpenGL(HWND hWnd)
 	// Initialisation des extensions de OpenGL
 	glewInit();
 
-	// Initialisation de la configuration
-	chargerConfiguration();
-
 	// FreeImage, utilisée par le chargeur, doit être initialisée
 	FreeImage_Initialise();
 
@@ -195,66 +199,10 @@ void FacadeModele::initialiserOpenGL(HWND hWnd)
 			glm::dvec3(0, 1, 0),   glm::dvec3(0, 1, 0)},
 		vue::ProjectionOrtho{ 
 				0, 500, 0, 500,
-				1, 1000, 1, 10000, 1.25,
+				1, 1000, 10, 5000, 1.25,
 				-100, 100, -100, 100 }
 	};
 
-}
-
-
-////////////////////////////////////////////////////////////////////////
-///
-/// @fn void FacadeModele::chargerConfiguration() const
-///
-/// Cette fonction charge la configuration à partir d'un fichier XML si
-/// ce dernier existe.  Sinon, le fichier de configuration est généré à
-/// partir de valeurs par défaut directement dans le code.
-///
-/// @return Aucune.
-///
-////////////////////////////////////////////////////////////////////////
-void FacadeModele::chargerConfiguration() const
-{
-	// Vérification de l'existence du ficher
-
-	// Si le fichier n'existe pas, on le crée.
-	if (!utilitaire::fichierExiste(FICHIER_CONFIGURATION)) {
-		enregistrerConfiguration();
-	}
-	// Si le fichier existe on le lit
-	else {
-		tinyxml2::XMLDocument document;
-
-		// Lire à partir du fichier de configuration
-		document.LoadFile(FacadeModele::FICHIER_CONFIGURATION.c_str());
-
-		// On lit les différentes configurations.
-		ConfigScene::obtenirInstance()->lireDOM(document);
-	}
-}
-
-
-////////////////////////////////////////////////////////////////////////
-///
-/// @fn void FacadeModele::enregistrerConfiguration() const
-///
-/// Cette fonction génère un fichier XML de configuration à partir de
-/// valeurs par défaut directement dans le code.
-///
-/// @return Aucune.
-///
-////////////////////////////////////////////////////////////////////////
-void FacadeModele::enregistrerConfiguration() const
-{
-	tinyxml2::XMLDocument document;
-	// Écrire la déclaration XML standard...
-	document.NewDeclaration(R"(?xml version="1.0" standalone="yes"?)");
-	
-	// On enregistre les différentes configurations.
-	ConfigScene::obtenirInstance()->creerDOM(document);
-
-	// Écrire dans le fichier
-	document.SaveFile(FacadeModele::FICHIER_CONFIGURATION.c_str());
 }
 
 
@@ -270,10 +218,6 @@ void FacadeModele::enregistrerConfiguration() const
 void FacadeModele::libererOpenGL()
 {
 	utilitaire::CompteurAffichage::libererInstance();
-
-	// On libère les instances des différentes configurations.
-	ConfigScene::libererInstance();
-
 
 	bool succes{ aidegl::detruireContexteGL(hWnd_, hDC_, hGLRC_) };
 	assert(succes && "Le contexte OpenGL n'a pu être détruit.");
@@ -393,8 +337,6 @@ int FacadeModele::selectionnerObjetSousPointClique(int i, int j, int hauteur, in
 	glm::dvec3 pointDansLeMonde;
 	vue_->convertirClotureAVirtuelle(i, j, pointDansLeMonde);
 	std::cout << "Position du click dans l'ecran : (" << i << ", " << j << ")" << std::endl;
-
-	vue_->convertirClotureAVirtuelle(i, j, pointDansLeMonde);
 	std::cout << "Position du click dans le monde : (" << pointDansLeMonde.x << ", " << pointDansLeMonde.y << ", 0)" << std::endl;
 
 	int valeurStencil = 0;
@@ -428,25 +370,6 @@ int FacadeModele::selectionnerObjetSousPointClique(int i, int j, int hauteur, in
 
 ///////////////////////////////////////////////////////////////////////////////
 ///
-/// int FacadeModele::selectionMultiple()
-///		Ajouter une decription
-///
-/// @return Aucune.
-///
-/// @remark : Ajouter si nécessaire
-///
-///////////////////////////////////////////////////////////////////////////////
-int FacadeModele::selectionMultiple()
-{
-	VisiteurSelectionMultiple visSelMul(selectionBasGauche_, selectionHautDroit_);
-	arbre_->accepterVisiteur(&visSelMul);
-
-	return visSelMul.obtenirNbObjetsSelectionne();
-}
-
-
-///////////////////////////////////////////////////////////////////////////////
-///
 /// @fn void deplacerSelection(int x1, int y1, int x2, int y2)
 ///		deplace les noeuds selectionnes d'un déplacement calculé en coordonnées du monde
 ///		à partir des points initiaux et terminaux dans les coordonnées d'affichage OpenGL
@@ -465,14 +388,36 @@ int FacadeModele::selectionMultiple()
 ///////////////////////////////////////////////////////////////////////////////
 void FacadeModele::deplacerSelection(int x1, int y1 ,int x2, int y2)
 {
+
+
 	glm::dvec3 positionInitiale, positionFinale;
-	
+
 	// Calcul des coordonnées dans le monde pour pas avoir besoin du facteur mistérieux !
 	FacadeModele::obtenirInstance()->obtenirVue()->convertirClotureAVirtuelle(x1, y1, positionInitiale);
 	FacadeModele::obtenirInstance()->obtenirVue()->convertirClotureAVirtuelle(x2, y2, positionFinale);
 
-	VisiteurDeplacement visDep(positionFinale - positionInitiale);
-	arbre_->accepterVisiteur(&visDep);
+	glm::dvec3 deplacement{ positionFinale - positionInitiale };
+
+	// Visiter l'arbre pour trouver les limites d'une boite
+	// minX, minY, maxX, maxY
+	VisiteurLimitesSelection VisLimSel;
+	arbre_->accepterVisiteur(&VisLimSel);
+
+	// Comparer le Deplacement et minX,maxX... aux limites de la table.
+
+	// LOGIQUE DE DÉPLACEMENT
+	if (// Respecter les dimensions de la table.
+		108 < VisLimSel.getXMin() + deplacement.x && deplacement.x + VisLimSel.getXMax() < 272
+		&& -190 < VisLimSel.getYMin() + deplacement.y && deplacement.y + VisLimSel.getYMax() < 96
+		)
+	{
+		VisiteurDeplacement visDep(deplacement);
+		arbre_->accepterVisiteur(&visDep);
+	}
+
+
+	
+
 	
 }
 
@@ -483,7 +428,12 @@ void FacadeModele::deplacerSelection(int x1, int y1 ,int x2, int y2)
 ///		Fait une rotation des objets sélectionnés autour de leur centre de masse.
 ///		L'angle est calculé en fonction du déplacement de (x1,y1) à (x2,y2):
 ///		Présentement, l'angle est proportionnel à (y1 - y2).
-///
+///		
+///		Pour tester si la rotation est faisable, on prend tous les points des boîtes
+///		englobantes.  Si un seul de ces points, une fois transformé, n'est pas dans la 
+///		table, on ne fait pas la rotation.
+///		
+///		
 /// @param[in]  x1 : abcisse du point initial
 /// @param[in]  y1 : ordonnee du point initial
 ///
@@ -500,10 +450,40 @@ void FacadeModele::tournerSelectionSouris(int x1, int y1, int x2, int y2)
 	// Visiter l'arbre pour trouver le centre de masse des noeuds selectionnés
 	VisiteurCentreDeMasse visCM;
 	arbre_->accepterVisiteur(&visCM);
+	glm::dvec3 centreRotation = visCM.obtenirCentreDeMasse();
+
+	// On calcule l'angle de la rotation:
+	double angle = (y2 - y1) / 3.0;
+	double angleEnRadian = angle * 2 * 3.1415926535897932384626433832795 / 360;
+	glm::dmat3 transform = glm::dmat3{ glm::dvec3{ cos(-angleEnRadian), -sin(-angleEnRadian), 0 },
+		glm::dvec3{ sin(-angleEnRadian), cos(-angleEnRadian), 0 },
+		glm::dvec3{ 0, 0, 1 } };
+
+	// On décide si la rotation peut se faire
+	bool onTourne = true;
+	// Obtenir une liste des points englobants des noeud sélectionnés
+	VisiteurListeEnglobante visLE;
+	arbre_->accepterVisiteur(&visLE);
+	
+	glm::dvec3 pointTransforme;
+	for (conteneur_boite_englobante boite : visLE.obtenirListeEnglobante())
+	{
+		for (glm::dvec3 vecteur : boite.first)
+		{
+			glm::dvec3 point = boite.second->obtenirPositionRelative() + vecteur ;
+			pointTransforme = centreRotation + transform *(point - centreRotation);
+			if (!estDansTable(pointTransforme))
+				return;
+		}
+	}
 
 	// Visiter l'arbre et faire la rotation.
-	VisiteurRotationPoint visSP(glm::dvec3{ 0, 0, (y2 - y1) /3.0} , visCM.obtenirCentreDeMasse());
-	arbre_->accepterVisiteur(&visSP);
+	if (onTourne)
+	{
+		VisiteurRotationPoint visSP(glm::dvec3{ 0, 0, angle }, centreRotation);
+		arbre_->accepterVisiteur(&visSP);
+	}
+
 }
 
 ///////////////////////////////////////////////////////////////////////////////
@@ -529,9 +509,24 @@ void FacadeModele::agrandirSelection(int x1, int y1, int x2, int y2)
 	// Pour agrandir on multiplie le scale courrant par 1.003 et ce une fois pour chaque déplacement en y
 	// donc on multiplie par 1.003^(y1-y2).
 	// Si (y1-y2) est négatif, ceci va nous faire diviser par 1.003, donc l'objet va rapetisser.
-
+	
 	// Au final, on multiplie le scale courrant par 1.003 une fois pour chaque déplacement élémentaire vers le haut,
 	// On divise par 1.003 pour chaque déplacement élémentaire vers le bas.
+
+	VisiteurListeEnglobante visLE;
+	arbre_->accepterVisiteur(&visLE);
+
+	glm::dvec3 pointTransforme;
+	for (conteneur_boite_englobante boite : visLE.obtenirListeEnglobante())
+	{
+		for (glm::dvec3 vecteur : boite.first)
+		{
+			glm::dvec3 point = boite.second->obtenirPositionRelative();
+			pointTransforme = point + scale*vecteur;
+			if (!estDansTable(pointTransforme))
+				return;
+		}
+	}
 
 	VisiteurAgrandissement visAgr(glm::dvec3{ scale, scale, scale });
 	arbre_->accepterVisiteur(&visAgr);
@@ -539,27 +534,30 @@ void FacadeModele::agrandirSelection(int x1, int y1, int x2, int y2)
 }
 
 
-///////////////////////////////////////////////////////////////////////////////
-///
-/// void FacadeModele::rectangleElastique(int x1, int y1, int x2, int y2)
-///		Ajouter une decription
-///
-/// @param[in]  x1 : abcisse du point initial
-/// @param[in]  y1 : ordonnee du point initial
-///
-/// @param[in]  x2 : abcisse du point initial
-/// @param[in]  y2 : ordonnee du point initial
-///
-/// @return Aucune.
-///
-/// @remark : On doit donner des x,y qui ont été transformés par panel_GL.PointToClient(...)
-///
-///////////////////////////////////////////////////////////////////////////////
-void FacadeModele::rectangleElastique(int x1, int y1, int x2, int y2)
+void FacadeModele::initialiserRectangleElastique(int i, int j)
 {
+	pointInitial_.x = i;
+	pointInitial_.y = j;
+	pointAvant_.x = i;
+	pointAvant_.y = j;
+	aidegl::initialiserRectangleElastique(pointAvant_, 0x3333, 5);
+}
+
+void FacadeModele::rectangleElastique(int i, int j)
+{
+	glm::ivec2 pointApres(i, j);
+	aidegl::mettreAJourRectangleElastique(pointInitial_, pointAvant_, pointApres);
+	pointAvant_.x = pointApres.x;
+	pointAvant_.y = pointApres.y;
+}
+
+void FacadeModele::terminerRectangleElastique()
+{
+	aidegl::terminerRectangleElastique(pointInitial_, pointAvant_);
+
 	glm::dvec3 positionInitiale, positionActuelle;
-	vue_->convertirClotureAVirtuelle(x1, y1, positionInitiale);
-	vue_->convertirClotureAVirtuelle(x2, y2, positionActuelle);
+	vue_->convertirClotureAVirtuelle(pointInitial_.x, pointInitial_.y, positionInitiale);
+	vue_->convertirClotureAVirtuelle(pointAvant_.x, pointAvant_.y, positionActuelle);
 
 	if (positionInitiale.x < positionActuelle.x && positionInitiale.y < positionActuelle.y)
 	{
@@ -585,22 +583,26 @@ void FacadeModele::rectangleElastique(int x1, int y1, int x2, int y2)
 		selectionHautDroit_.x = positionInitiale.x;
 		selectionHautDroit_.y = positionActuelle.y;
 	}
-
-	glDrawBuffer(GL_FRONT);
-	glClear(GL_DEPTH_BUFFER_BIT);
-	glDisable(GL_TEXTURE_2D);
-	glEnable(GL_BLEND);
-
-	glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
-	glColor4f(0.0F, 1.0F, 0.0F, 0.2F);
-	glRectd(selectionBasGauche_.x, selectionBasGauche_.y, selectionHautDroit_.x, selectionHautDroit_.y);
-
-	glDisable(GL_BLEND);
-	glEnable(GL_TEXTURE_2D);	
-	glFlush();
-	glDrawBuffer(GL_BACK);
 }
 
+
+int FacadeModele::selectionMultiple(bool c)
+{
+	if (c)
+	{
+		VisiteurSelectionInverseMultiple visSelInvMul(selectionBasGauche_, selectionHautDroit_);
+		arbre_->accepterVisiteur(&visSelInvMul);
+
+		return visSelInvMul.obtenirNbObjetsSelectionne();
+	}
+	else
+	{
+		VisiteurSelectionMultiple visSelMul(selectionBasGauche_, selectionHautDroit_);
+		arbre_->accepterVisiteur(&visSelMul);
+
+		return visSelMul.obtenirNbObjetsSelectionne();
+	}
+}
 
 ///////////////////////////////////////////////////////////////////////////////
 ///
@@ -639,14 +641,13 @@ bool FacadeModele::verifierCliqueDansTable(int x, int y)
 ///////////////////////////////////////////////////////////////////////////////
 void FacadeModele::dupliquerSelection(int i, int j)
 {
-	glm::dvec3 positionDansLeMonde;
-	obtenirInstance()->obtenirVue()->convertirClotureAVirtuelle(i, j, positionDansLeMonde);
-	positionDansLeMonde.z = 0.0;
-	
 	// Visiter l'arbre et faire la duplication.
-	VisiteurDuplication visiteur(positionDansLeMonde);
-	arbre_->accepterVisiteur(&visiteur);
+	VisiteurDuplication* visiteur = new VisiteurDuplication();
+	arbre_->accepterVisiteur(visiteur);
+	delete visiteur;
 }
+
+
 
 
 ///////////////////////////////////////////////////////////////////////////////
@@ -700,4 +701,77 @@ int FacadeModele::creerXML(char* path, int prop[6])
 	}
 
 	return sauvegardeAutorise;
+}
+
+
+
+
+
+
+
+bool FacadeModele::estDansTable(glm::dvec3 pointDuMonde)
+{
+	if (108 < pointDuMonde.x && pointDuMonde.x < 272
+		&& -190 < pointDuMonde.y && pointDuMonde.y < 96)
+		return true;
+	else 
+		return false;
+}
+
+
+
+
+
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+// Les points (x1,y1) et (x2,y2) ont passé par PanelGL.PointToClient (voir l'appel de cette fonction dans le C#).
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+// Pour les deux opérations, tu utilises les mêmes vecteurFinal et vecteurInitial, donc ça pourrais être quelque chose comme
+void FacadeModele::FaireQuelquechose(int x1, int y1, int x2, int y2, NoeudAbstrait* noeud)
+{
+	glm::dvec3 positionInitiale, positionFinale;
+	FacadeModele::obtenirInstance()->obtenirVue()->convertirClotureAVirtuelle(x1, y1, positionInitiale);
+	FacadeModele::obtenirInstance()->obtenirVue()->convertirClotureAVirtuelle(x2, y2, positionFinale);
+	//std:: cout << noeud->getType() << std:: endl;
+	//std::cout << "X:" <<noeud->obtenirAgrandissement().x << std::endl;
+	//std::cout << "Y:" << noeud->obtenirAgrandissement().y << std::endl;
+	//std::cout << "Z:"<<noeud->obtenirAgrandissement().z << std::endl;
+	glm::dvec3 vecteurInitial = glm::dvec3{ 1, 0, 0 }; // CHANGEMENT
+	glm::dvec3 vecteurFinal = positionFinale - noeud->obtenirPositionRelative();
+//	std::cout << "VF X:" << vecteurFinal.x << std::endl;
+//	std::cout << "VF Y:" << vecteurFinal.y<< std::endl;
+//	std::cout << "VF Z:" << vecteurFinal.z << std::endl;
+
+	glm::dvec3 produitVectoriel = glm::cross(vecteurInitial, vecteurFinal);
+
+
+	// CALCUL DE L'ANGLE;
+	double sinAngle = glm::length(produitVectoriel) / glm::length(vecteurInitial) / glm::length(vecteurInitial);
+	// Le signe de la composante en z donne le sens dans le quel on doit tourner
+	double angleRadian = produitVectoriel.z > 0 ? asin(sinAngle) : -asin(sinAngle);
+	// L'angle est en radian, on doit le convertir
+	double angleDegre = 360 / 2 / 3.14156 * angleRadian;
+	//std::cout << "ANGLE:" << asin(sinAngle) << std::endl;
+	glm::dvec3 angles{ 0, 0, angleDegre };// A passer en paramètre à assignerRotation
+
+	// CALCUL DU SCALE
+	double scale = glm::length(vecteurFinal) / glm::length(vecteurInitial);
+	glm::dvec3 scaleInit = noeud->obtenirAgrandissement();
+	
+	//glm::dvec3 scaleInit = { 1, 1, 1 };
+	glm::dvec3 scaleFinal = glm::dvec3{ scaleInit[0] * scale, scaleInit[1] * scale, scaleInit[2] * scale };
+	// Vu que c'est pour le mur, tu voudrais probablement scaler en x, donc glm::dvec3 scaleFinal = glm::dvec3{ scaleInit[0] * scale, scaleInit[1] , scaleInit[2]};
+
+	// APPLICATION DES DEUX TRANSFORMATIONS;
+
+	// Application du scale
+	noeud->assignerEchelle(scaleFinal);
+
+	// Application de la rotation
+
+	// Assigner la rotation avec = au lieu de +=
+	noeud->assignerRotation(angles);
+
+
+	// NOTE IMPORTANTE: J'ai pas a prendre ses anciens angles et ajouter angles parce que la fonction assignerRotation fait un += avec le paramètre. C'est la seule fonction assigner qui fonctionne comme ça.
+
 }

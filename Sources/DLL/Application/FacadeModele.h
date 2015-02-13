@@ -50,28 +50,31 @@ namespace vue {
 class FacadeModele
 {
 public:
+
    /// Obtient l'instance unique de la classe.
    static FacadeModele* obtenirInstance();
+
    /// Libère l'instance unique de la classe.
    static void libererInstance();
 
    /// Crée un contexte OpenGL et initialise celui-ci.
    void initialiserOpenGL(HWND hWnd);
-   /// Charge la configuration à partir d'un fichier XML.
-   void chargerConfiguration() const;
-   /// Enregistre la configuration courante dans un fichier XML.
-   void enregistrerConfiguration() const;
+
    /// Libère le contexte OpenGL.
    void libererOpenGL();
+
    /// Affiche le contenu du modèle.
    void afficher() const;
+
    /// Affiche la base du contenu du modèle.
    void afficherBase() const;
  
    /// Retourne la vue courante.
    inline vue::Vue* obtenirVue();
+
    /// Retourne l'arbre de rendu.
    inline const ArbreRenduINF2990* obtenirArbreRenduINF2990() const;
+
    /// Retourne l'arbre de rendu.
    inline ArbreRenduINF2990* obtenirArbreRenduINF2990();
 
@@ -80,7 +83,6 @@ public:
 
    /// Anime la scène.
    void animer(float temps);
-
 
    int selectionnerObjetSousPointClique(int i, int j, int largeur, int hauteur, bool ctrlDown = false);
 
@@ -94,10 +96,14 @@ public:
    void agrandirSelection(int x1, int y1, int x2, int y2);
 
    /// xxxxx
-   void rectangleElastique(int x1, int y1, int x2, int y2);
+   void rectangleElastique(int i, int j);
    
    /// xxxxx
-   int selectionMultiple();
+   int selectionMultiple(bool c);
+
+   void initialiserRectangleElastique(int i, int j);
+
+   void terminerRectangleElastique();
 
    /// Vérifier si un point cliqué est dans la table
    bool verifierCliqueDansTable(int x, int y);
@@ -107,6 +113,11 @@ public:
 
    /// Pour la sauvegarde de fichier XML
    int creerXML(char* path, int prop[6]);
+
+   /// Vérifier si un point cliqué est dans la table 
+   bool estDansTable(glm::dvec3 pointDuMonde);
+   static void FaireQuelquechose(int x1, int y1, int x2, int y2, NoeudAbstrait* noeud);
+
 
 private:
    /// Constructeur par défaut.
@@ -130,6 +141,7 @@ private:
    ArbreRenduINF2990* arbre_{ nullptr }; ///< Arbre de rendu contenant les différents objets de la scène. */
 
    glm::dvec3 selectionBasGauche_, selectionHautDroit_;
+   glm::ivec2 pointInitial_, pointAvant_;
 };
 
 

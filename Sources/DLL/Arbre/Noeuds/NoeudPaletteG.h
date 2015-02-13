@@ -1,5 +1,5 @@
 ///////////////////////////////////////////////////////////////////////////
-/// @file NoeudPalette.h
+/// @file NoeudPaletteG.h
 /// @author Yonni Chen
 /// @date 2015-01-24
 /// @version 1.0
@@ -7,27 +7,27 @@
 /// @ingroup Noeud
 ///////////////////////////////////////////////////////////////////////////
 
-#ifndef  __ARBRE_NOEUDS_NOEUDPALETTE_H__
-#define  __ARBRE_NOEUDS_NOEUDPALETTE_H__
+#ifndef  __ARBRE_NOEUDS_NOEUDPALETTEG_H__
+#define  __ARBRE_NOEUDS_NOEUDPALETTEG_H__
 
 #include "NoeudComposite.h"
 #include "Gl/gl.h"
 
 ///////////////////////////////////////////////////////////////////////////
-/// @class NoeudPalette
+/// @class NoeudPaletteG
 /// @brief Classe qui représente une palette.
 ///
 /// @author Yonni Chen
 /// @date 2015-01-24
 /// @ingroup Noeud
 ///////////////////////////////////////////////////////////////////////////
-class NoeudPalette : public NoeudComposite
+class NoeudPaletteG : public NoeudComposite
 {
 public:
 	/// Constructeur
-	NoeudPalette(const std::string& typeNoeud);
+	NoeudPaletteG(const std::string& typeNoeud);
 	/// Destructeur 
-	~NoeudPalette();
+	~NoeudPaletteG();
 
 	/// Surchage de la méthode qui affiche l'objet.
 	virtual void afficherConcret() const;
@@ -48,4 +48,4 @@ private:
 	float angleRotation_{ 0.f };
 };
 
-#endif // __ARBRE_NOEUDS_NOEUDPALETTE_H__
+#endif // __ARBRE_NOEUDS_NOEUDPALETTEG_H__

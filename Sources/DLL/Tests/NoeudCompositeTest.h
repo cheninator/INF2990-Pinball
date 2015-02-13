@@ -1,27 +1,32 @@
 //////////////////////////////////////////////////////////////////////////////
-/// @file ConfigSceneTest.h
-/// @author Julien Gascon-Samson
-/// @date 2011-07-16
+/// @file NoeudCompositeTest.h
+/// @author Samuel Millette
+/// @date 2015-02-10
 /// @version 1.0
 ///
-/// @addtogroup inf2990 INF2990
-/// @{
+/// @ingroup Test
 //////////////////////////////////////////////////////////////////////////////
 
-#ifndef _TESTS_CONFIGSCENETEST_H
-#define _TESTS_CONFIGSCENETEST_H
+#ifndef _TESTS_NOEUDCOMPOSITETEST_H
+#define _TESTS_NOEUDCOMPOSITETEST_H
 
 #include <cppunit/extensions/HelperMacros.h>
+#include <memory>
+
+class NoeudComposite;
+class NoeudCible;
+class NoeudTable;
 
 ///////////////////////////////////////////////////////////////////////////
-/// @class ConfigSceneTest
+/// @class NoeudCompositeTest
 /// @brief Classe de test cppunit pour tester le bon fonctionnement des
-///        méthodes de la classe ConfigScene
+///        méthodes de la classe NoeudComposite.
 ///
-/// @author Julien Gascon-Samson
-/// @date 2011-07-16
+/// @author Samuel Millette
+/// @date 2015-02-10
+/// @ingroup Test
 ///////////////////////////////////////////////////////////////////////////
-class ConfigSceneTest : public CppUnit::TestFixture
+class NoeudCompositeTest : public CppUnit::TestFixture
 {
 
 	// =================================================================
@@ -30,9 +35,9 @@ class ConfigSceneTest : public CppUnit::TestFixture
 	// Important, vous devez définir chacun de vos cas de tests à l'aide
 	// de la macro CPPUNIT_TEST sinon ce dernier ne sera pas exécuté !
 	// =================================================================
-   CPPUNIT_TEST_SUITE( ConfigSceneTest );
-   CPPUNIT_TEST( testSauvegardeChargement );
-   CPPUNIT_TEST_SUITE_END();
+	CPPUNIT_TEST_SUITE(NoeudCompositeTest);
+	CPPUNIT_TEST(testEnfants);
+	CPPUNIT_TEST_SUITE_END();
 
 public:
 
@@ -46,16 +51,23 @@ public:
 	/// Traitement à effectuer pour 'finaliser' cette suite de tests
 	void tearDown();
 
+
 	// =================================================================
 	// Définissez ici les différents cas de tests...
 	// =================================================================
 
-	/// Cas de test: sauvegarde et chargement XML de la configuration
-	void testSauvegardeChargement();
+	/// Cas de test: type de noeud
+	void testType();
 
+	/// Cas de test: s'assurer que le noeud abstrait n'a pas d'enfant
+	void testEnfants();
+
+private:
+	/// Instance d'un noeud composite
+	std::unique_ptr<NoeudComposite> noeud;
 };
 
-#endif // _TESTS_CONFIGSCENETEST_H
+#endif // _TESTS_NOEUDCOMPOSITETEST_H
 
 
 ///////////////////////////////////////////////////////////////////////////////

@@ -117,6 +117,8 @@ namespace utilitaire {
 	   glm::dvec3& yMin, glm::dvec3& yMax, 
 	   glm::dvec3& zMin, glm::dvec3& zMax);
 
+   //Permet de trouver si il y a intersection entre 2 segments
+   bool intersectionDeuxSegments(glm::dvec3 p1, glm::dvec3 p2, glm::dvec3 p3, glm::dvec3 p4);
 
 
    ////////////////////////////////////////////////////////////////////////

@@ -1,4 +1,13 @@
-﻿namespace InterfaceGraphique
+﻿//////////////////////////////////////////////////////////////////////////////
+/// @file MenuPrincipal.Designer.cs
+/// @author Ballers
+/// @date 2015-01-18
+/// @version 1.0 
+///
+/// @ingroup InterfaceGraphique
+//////////////////////////////////////////////////////////////////////////////
+
+namespace InterfaceGraphique
 {
     partial class MainMenu
     {
@@ -125,6 +134,7 @@
             this.bouton_campagne.TabIndex = 5;
             this.bouton_campagne.Text = "Campagne";
             this.bouton_campagne.UseVisualStyleBackColor = true;
+            this.bouton_campagne.Click += new System.EventHandler(this.bouton_campagne_Click);
             // 
             // MainMenu
             // 
