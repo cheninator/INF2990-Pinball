@@ -8,6 +8,7 @@
 ////////////////////////////////////////////////////////////////////////////////////
 
 #include "FacadeModeleTest.h"
+#include "FacadeModele.h"
 #include "ArbreRenduINF2990.h"
 #include "NoeudAbstrait.h"
 #include "NoeudComposite.h"
@@ -30,8 +31,7 @@ CPPUNIT_TEST_SUITE_REGISTRATION(FacadeModeleTest);
 ////////////////////////////////////////////////////////////////////////
 void FacadeModeleTest::setUp()
 {
-	// Nous pourrions initialiser l'objet, mais puisqu'il s'agit d'un singleton,
-	// aucune initialisation n'est requise.
+
 }
 
 ////////////////////////////////////////////////////////////////////////
@@ -49,8 +49,7 @@ void FacadeModeleTest::setUp()
 ////////////////////////////////////////////////////////////////////////
 void FacadeModeleTest::tearDown()
 {
-	// Nous pourrions libérer l'objet, mais puisqu'il s'agit d'un singleton,
-	// aucune libération n'est requise.
+
 }
 
 ////////////////////////////////////////////////////////////////////////
@@ -65,6 +64,4 @@ void FacadeModeleTest::tearDown()
 void FacadeModeleTest::enregistrerXML()
 {
 	CPPUNIT_ASSERT(true);
-
-	//FacadeModele::obtenirInstance()->obtenirArbreRenduINF2990()->creerNoeud(ArbreRenduINF2990::NOM_BUTOIR);
 }

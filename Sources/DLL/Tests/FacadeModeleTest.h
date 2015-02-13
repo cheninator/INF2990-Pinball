@@ -35,7 +35,6 @@ class FacadeModeleTest : public CppUnit::TestFixture
 	// de la macro CPPUNIT_TEST sinon ce dernier ne sera pas exécuté !
 	// =================================================================
 	CPPUNIT_TEST_SUITE(FacadeModeleTest);
-	CPPUNIT_TEST(enregistrerXML);
 	CPPUNIT_TEST_SUITE_END();
 
 public:
@@ -60,8 +59,7 @@ public:
 
 
 private:
-	/// Instance d'un noeud abstrait
-	// std::unique_ptr<ArbreRenduINF2990> arbre;
+
 };
 
 #endif // _TESTS_FACADEMODELETEST_H

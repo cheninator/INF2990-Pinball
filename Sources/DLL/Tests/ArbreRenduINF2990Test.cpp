@@ -8,6 +8,9 @@
 ////////////////////////////////////////////////////////////////////////////////////
 
 #include "ArbreRenduINF2990Test.h"
+#include "../Visiteurs/VisiteurAbstrait.h"
+#include "../Visiteurs/VisiteurRotation.h"
+#include "../Visiteurs/VisiteurDeselectionnerTout.h"
 #include "NoeudAbstrait.h"
 #include "NoeudComposite.h"
 
@@ -185,7 +188,7 @@ void ArbreRenduINF2990Test::boiteEnglobante()
 	arbre->vider();
 }
 
-void ArbreRenduINF2990Test::assignerDefault()
+void ArbreRenduINF2990Test::selectionTable()
 {
 	// On initialise l'arbre avec le fichier XML par défaut
 	arbre->initialiser();
@@ -193,10 +196,12 @@ void ArbreRenduINF2990Test::assignerDefault()
 	// On vérifie que les éléments par défaut sont dans l'arbre.
 	CPPUNIT_ASSERT(arbre->estDefaut() == true);
 
+	// On cherche une table.
 	NoeudAbstrait* noeudTable = arbre->chercher(ArbreRenduINF2990::NOM_TABLE);
 
-	CPPUNIT_ASSERT(noeudTable->estSelectionnable()); // DEVRAIT ECHOUER - A VERIFIER
+	CPPUNIT_ASSERT(!noeudTable->estSelectionnable());
 
+	// On cherche un ressort.
 	NoeudAbstrait* noeudRessort = arbre->chercher(ArbreRenduINF2990::NOM_RESSORT);
 
 	CPPUNIT_ASSERT(noeudRessort->estSelectionnable());
@@ -205,4 +210,44 @@ void ArbreRenduINF2990Test::assignerDefault()
 	arbre->vider();
 }
 
+void ArbreRenduINF2990Test::testDeselection()
+{
 
+}
+
+void ArbreRenduINF2990Test::testRotation()
+{
+	// On initialise l'arbre avec le fichier XML par défaut
+	arbre->initialiser();
+
+	// On cherche un ressort.
+	NoeudAbstrait* noeudRessort = arbre->chercher(ArbreRenduINF2990::NOM_RESSORT);
+
+	// Sélectionner l'objet
+	noeudRessort->assignerSelection(true);
+
+	// Rotation originale.
+	glm::dvec3 rotOriginale = noeudRessort->obtenirRotation();
+
+	glm::dvec3 vecteur;
+	vecteur[0] = 0;
+	vecteur[1] = 0;
+	vecteur[2] = 30;
+
+	VisiteurAbstrait* visiteurRot = new VisiteurRotation(vecteur);
+
+	// Test du visiteur.
+	CPPUNIT_ASSERT(noeudRessort->accepterVisiteur(visiteurRot));
+
+	// Nouvelle valeur de rotation.
+	glm::dvec3 nouvRotation = noeudRessort->obtenirRotation();
+
+	// Il y a eu une rotation.
+	CPPUNIT_ASSERT(rotOriginale != nouvRotation);
+
+	// Nettoyage.
+	delete visiteurRot;
+
+	// On vide l'arbre.
+	arbre->vider();
+}

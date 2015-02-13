@@ -13,8 +13,10 @@
 #include <cppunit/extensions/HelperMacros.h>
 #include <memory>
 
+class VisiteurAbstrait;
 class ArbreRenduINF2990;
 #include "ArbreRenduINF2990.h"
+
 
 ///////////////////////////////////////////////////////////////////////////
 /// @class ArbreRenduINF2990Test
@@ -40,7 +42,9 @@ class ArbreRenduINF2990Test : public CppUnit::TestFixture
 	CPPUNIT_TEST(testPortails);
 	CPPUNIT_TEST(creerNoeudParUsine);
 	CPPUNIT_TEST(boiteEnglobante);
-	CPPUNIT_TEST(assignerDefault);
+	CPPUNIT_TEST(selectionTable);
+	CPPUNIT_TEST(testDeselection);
+	CPPUNIT_TEST(testRotation);
 	CPPUNIT_TEST_SUITE_END();
 
 public:
@@ -75,8 +79,14 @@ public:
 	/// Cas de test: Test boîte englobante.
 	void boiteEnglobante();
 
-	/// Cas de test: Assigner une position relative qui change le default layout.
-	void assignerDefault();
+	/// Cas de test: Sélectionner un objet non sélectionnable (table).
+	void selectionTable();
+
+	/// Cas de test: Désélectionner tout.
+	void testDeselection();
+
+	/// Cas de test: Rotation en x / y / z
+	void testRotation();
 
 private:
 	/// Instance d'un arbre

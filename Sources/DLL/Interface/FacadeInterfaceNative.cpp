@@ -591,7 +591,7 @@ extern "C"
 	/// @param[in]  x :
 	/// @param[in]  y : 
 	///
-	/// Vue orbite TO DO INCOMPLETE
+	/// Vue orbite TO DO, INCOMPLETE
 	///
 	/// @return Aucun
 	///

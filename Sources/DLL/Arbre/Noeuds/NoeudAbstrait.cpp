@@ -478,7 +478,8 @@ void NoeudAbstrait::animer(float dt)
 ////////////////////////////////////////////////////////////////////////
 bool NoeudAbstrait::accepterVisiteur(VisiteurAbstrait* vis) 
 {
-	vis->traiter(this); return false; 
+	vis->traiter(this); 
+	return false; 
 }
 
 
