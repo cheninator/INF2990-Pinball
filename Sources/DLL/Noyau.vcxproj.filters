@@ -192,6 +192,9 @@
     <ClCompile Include="Arbre\Noeuds\NoeudButoirG.cpp">
       <Filter>Source Files\Arbre\Noeuds</Filter>
     </ClCompile>
+    <ClCompile Include="Visiteurs\VisiteurPossibilite.cpp">
+      <Filter>Source Files\Visiteurs</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Application\FacadeModele.h">
@@ -379,6 +382,9 @@
     </ClInclude>
     <ClInclude Include="Arbre\Noeuds\NoeudButoirG.h">
       <Filter>Header Files\Arbre\Noeuds</Filter>
+    </ClInclude>
+    <ClInclude Include="Visiteurs\VisiteurPossibilite.h">
+      <Filter>Header Files\Visiteurs</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
