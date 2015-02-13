@@ -8,7 +8,7 @@
 #include "VisiteurDuplication.h"
 #include "../Arbre/ArbreRenduINF2990.h"
 #include "../Arbre/Noeuds/NoeudTable.h"
-
+#include <iostream>
 
 ////////////////////////////////////////////////////////////////////////
 ///
@@ -123,6 +123,7 @@ bool VisiteurDuplication::traiter(NoeudTable* table)
 ////////////////////////////////////////////////////////////////////////
 bool VisiteurDuplication::traiter(NoeudAbstrait* noeud)
 {
+
 	if (noeud->estSelectionne())
 	{
 		// Effectuer la copie du noeud
@@ -136,8 +137,9 @@ bool VisiteurDuplication::traiter(NoeudAbstrait* noeud)
 		// Copier le jumeau du portail si il est selectionné
 		if (noeud->obtenirType() == "portail" && noeud->getTwin()->estSelectionne())
 		{
+			std::cout << "Le portail a un jumeau selectionne! ";
 			// Effectuer la copie du jumeau
-			NoeudAbstrait* copieJumeau = arbreTemp->creerNoeud(noeud->obtenirType());
+			NoeudAbstrait* copieJumeau = arbreTemp->creerNoeud(noeud->getTwin()->obtenirType());
 			copieJumeau->assignerRotation(noeud->getTwin()->obtenirRotation());
 			copieJumeau->assignerEchelle(noeud->getTwin()->obtenirAgrandissement());
 			copieJumeau->assignerPositionRelative(noeud->getTwin()->obtenirPositionRelative());
@@ -153,10 +155,21 @@ bool VisiteurDuplication::traiter(NoeudAbstrait* noeud)
 
 			// Eviter d'effectuer une double copie lorsque le jumeau du portail est traité
 			noeud->getTwin()->assignerSelection(false);
+			noeud->assignerSelection(false);
 		}
 
-		noeud->assignerSelection(false);
-		copies_.push_back(copie);
+		else if (noeud->obtenirType() == "portail" && !(noeud->getTwin()->estSelectionne()))
+		{
+			noeud->assignerSelection(false);
+			delete copie;
+		}
+
+		else
+		{
+			noeud->assignerSelection(false);
+			copies_.push_back(copie);
+		}
+
 	}
 
 	return true;
