@@ -425,10 +425,8 @@ void ArbreRenduINF2990Test::testDuplication()
 	// Nombre d'enfants avant la duplication.
 	int enfantsAvant = arbre->getEnfant(0)->obtenirNombreEnfants();
 
-	glm::dvec3 point = { 0.0, 0.0, 0.0 };
-
 	// Visiteur Duplication fait sa job (on l'espère).
-	VisiteurDuplication* visiteurDup = new VisiteurDuplication(point);
+	VisiteurDuplication* visiteurDup = new VisiteurDuplication();
 	arbre->accepterVisiteur(visiteurDup);
 
 	// Nombre d'enfants après la duplication
