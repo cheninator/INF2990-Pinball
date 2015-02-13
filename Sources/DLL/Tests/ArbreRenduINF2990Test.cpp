@@ -538,4 +538,12 @@ void ArbreRenduINF2990Test::testPalettes()
 	// On sélectionne la cible.
 	NoeudAbstrait* noeudCible = arbre->getEnfant(0)->chercher(ArbreRenduINF2990::NOM_PALETTED);
 	noeudCible->assignerSelection(true);
+
+	arbre->initialiserXML("Zones_de_jeu/testpalettes.xml");
+
+	// On trouve les palettes de J1 et J2 (il y a une palette différente par joueur)
+	NoeudAbstrait* paletteD = arbre->getEnfant(0)->chercher(ArbreRenduINF2990::NOM_PALETTED);
+	NoeudAbstrait* paletteG = arbre->getEnfant(0)->chercher(ArbreRenduINF2990::NOM_PALETTEG);
+
+	CPPUNIT_ASSERT(paletteD->getColorShift() != paletteG->getColorShift());
 }

@@ -105,7 +105,7 @@ public:
 	/// Cas de test: Limite sélection.
 	void testBoiteEnglobante();
 
-	/// Cas de test: Palettes joueurs.
+	/// Cas de test : Couleur des palettes des joueurs.
 	void testPalettes();
 
 private:

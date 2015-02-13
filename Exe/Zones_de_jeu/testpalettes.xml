@@ -1,0 +1,19 @@
+<Proprietes>
+    <PointsButoir Nombre="10"/>
+    <PointsTriangulaire Nombre="10"/>
+    <PointsCible Nombre="10"/>
+    <PointsVictoire Nombre="10"/>
+    <PointsBilleGratuite Nombre="10"/>
+    <Difficulte Nombre="1"/>
+</Proprietes>
+
+<arbreRenduINF2990>
+    <table nbEnfants="5">
+        <generateurbille posX="245" posY="-140" posZ="0" scaleX="1" scaleY="1" scaleZ="1" angleX="0" angleY="0" angleZ="0"/>
+        <ressort posX="240" posY="-180" posZ="0" scaleX="1" scaleY="1" scaleZ="1" angleX="0" angleY="0" angleZ="0"/>
+        <trou posX="170" posY="-164" posZ="0" scaleX="1" scaleY="1" scaleZ="1" angleX="0" angleY="0" angleZ="0"/>
+        <paletteg posX="149.59999453596762" posY="-81.600001972913759" posZ="0" scaleX="1" scaleY="1" scaleZ="1" angleX="0" angleY="0" angleZ="180" color="0"/>
+        <paletted posX="227.59999619949602" posY="-104.00000205636027" posZ="0" scaleX="1" scaleY="1" scaleZ="1" angleX="0" angleY="0" angleZ="180" color="1"/>
+    </table>
+    <couvercle/>
+</arbreRenduINF2990>
