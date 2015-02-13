@@ -49,6 +49,7 @@ class ArbreRenduINF2990Test : public CppUnit::TestFixture
 	CPPUNIT_TEST(testSelectionInverse);
 	CPPUNIT_TEST(testDuplication);
 	CPPUNIT_TEST(testBoiteEnglobante);
+	CPPUNIT_TEST(testPalettes);
 	CPPUNIT_TEST_SUITE_END();
 
 public:
@@ -103,6 +104,9 @@ public:
 
 	/// Cas de test: Limite sélection.
 	void testBoiteEnglobante();
+
+	/// Cas de test : Couleur des palettes des joueurs.
+	void testPalettes();
 
 private:
 	/// Instance d'un arbre
