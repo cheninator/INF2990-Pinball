@@ -67,6 +67,7 @@ Samuel Millette <BR>
 #include "glm/gtc/type_ptr.hpp"
 #include "../Visiteurs/VisiteurXML.h"
 
+#define M_PI	3.141592653589793238462643383279502884
 /// Pointeur vers l'instance unique de la classe.
 FacadeModele* FacadeModele::instance_{ nullptr };
 
@@ -744,7 +745,7 @@ void FacadeModele::FaireQuelquechose(int x1, int y1, int x2, int y2, NoeudAbstra
 	// Le signe de la composante en z donne le sens dans le quel on doit tourner
 	double angleRadian = produitVectoriel.z > 0 ? asin(sinAngle) : -asin(sinAngle);
 	// L'angle est en radian, on doit le convertir
-	double angleDegre = 360 / 2 / 3.14156 * angleRadian;
+	double angleDegre = 360 / 2 / M_PI * angleRadian;
 	//std::cout << "ANGLE:" << asin(sinAngle) << std::endl;
 	glm::dvec3 angles{ 0, 0, angleDegre };// A passer en paramètre à assignerRotation
 

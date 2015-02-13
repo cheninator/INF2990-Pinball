@@ -149,7 +149,7 @@ bool VisiteurAgrandissement::traiter(NoeudMur* noeud)
 		// Qu'est-ce qui transforme l'addition en multiplication? A^(x + y) = (A^x) * (A^y)
 		// c'est pour ça qu'il y a une exponentielle dans la fonction de facadeModele qui calcule le scale à donner au visiteur.
 		glm::dvec3 scaleInit = noeud->obtenirAgrandissement();
-		glm::dvec3 scaleFinal = glm::dvec3{ scaleInit[0] * homothetie_[0], scaleInit[1] , scaleInit[2]  };
+		glm::dvec3 scaleFinal = glm::dvec3{ scaleInit[0], scaleInit[1] * homothetie_[1] , scaleInit[2] };
 		noeud->assignerEchelle(scaleFinal);
 
 	}
