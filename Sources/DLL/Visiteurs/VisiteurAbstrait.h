@@ -17,6 +17,7 @@
 class NoeudAbstrait;
 class ArbreRenduINF2990;
 class NoeudTable;
+class NoeudMur;
 
 
 ///////////////////////////////////////////////////////////////////////////
@@ -45,8 +46,10 @@ public:
 	/// Traiter une opération sur l'arbre de rendu et ses enfants
 	virtual bool traiter(NoeudTable* noeud) { return false; };
 	/// Traiter une opération sur l'arbre de rendu et ses enfants
-	virtual bool traiter(NoeudAbstrait* noeud) 
-	{ return false; };
+	virtual bool traiter(NoeudAbstrait* noeud){ return false; };
+	/// Si traiter(NoeudMur*) n'est pas réimplémenté, on va appeler celui de NoeudAbstrait qui appelle traiter(NoeudAbstrait*), qui EST réimplémentée.
+	virtual bool traiter(NoeudMur* noeud){ return traiter((NoeudAbstrait*)noeud); };
+	
 };
 
 
