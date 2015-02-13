@@ -87,9 +87,6 @@
     <ClCompile Include="Arbre\Noeuds\NoeudConeCube.cpp">
       <Filter>Source Files\Arbre\Noeuds</Filter>
     </ClCompile>
-    <ClCompile Include="Tests\ConfigSceneTest.cpp">
-      <Filter>Source Files\Tests</Filter>
-    </ClCompile>
     <ClCompile Include="Tests\NoeudAbstraitTest.cpp">
       <Filter>Source Files\Tests</Filter>
     </ClCompile>
@@ -194,6 +191,12 @@
     </ClCompile>
     <ClCompile Include="Visiteurs\VisiteurPossibilite.cpp">
       <Filter>Source Files\Visiteurs</Filter>
+    </ClCompile>
+    <ClCompile Include="Tests\ArbreRenduINF2990Test.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Tests\FacadeModeleTest.cpp">
+      <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -385,6 +388,12 @@
     </ClInclude>
     <ClInclude Include="Visiteurs\VisiteurPossibilite.h">
       <Filter>Header Files\Visiteurs</Filter>
+    </ClInclude>
+    <ClInclude Include="Tests\ArbreRenduINF2990Test.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Tests\FacadeModeleTest.h">
+      <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

@@ -159,7 +159,6 @@
     <ClCompile Include="Tests\FacadeModeleTest.cpp" />
     <ClCompile Include="Tests\NoeudCompositeTest.cpp" />
     <ClCompile Include="Tests\BancTests.cpp" />
-    <ClCompile Include="Tests\ConfigSceneTest.cpp" />
     <ClCompile Include="Tests\NoeudAbstraitTest.cpp" />
     <ClCompile Include="Visiteurs\VisiteurAgrandissement.cpp" />
     <ClCompile Include="Visiteurs\VisiteurCentreDeMasse.cpp" />

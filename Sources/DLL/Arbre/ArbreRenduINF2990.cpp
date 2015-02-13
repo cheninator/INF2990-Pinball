@@ -111,8 +111,6 @@ void ArbreRenduINF2990::initialiser()
 
 	// Charger la zone de jeu par défaut
 	initialiserXML("Zones_de_jeu/default.xml");
-	/*NoeudAbstrait* noeud = creerNoeud("couvercle");
-	ajouter(noeud);*/
 
 }
 
@@ -134,6 +132,7 @@ NoeudAbstrait* ArbreRenduINF2990::getEnfant(int position) const
 	else
 		return enfants_[position];
 }
+
 
 ////////////////////////////////////////////////////////////////////////
 ///
@@ -218,16 +217,9 @@ bool ArbreRenduINF2990::lireXML(tinyxml2::XMLDocument& doc)
 {
 	bool lecture = false;
 
-	const char* positionX = "posX";
-	const char* positionY = "posY";
-	const char* positionZ = "posZ";
-	const char* scaleX = "scaleX";
-	const char* scaleY = "scaleY";
-	const char* scaleZ = "scaleZ";
-	const char* angleX = "angleX";
-	const char* angleY = "angleY";
-	const char* angleZ = "angleZ";
-
+	const char* positionX = "posX", const char* positionY = "posY", const char* positionZ = "posZ";
+	const char* scaleX = "scaleX", const char* scaleY = "scaleY", const char* scaleZ = "scaleZ";
+	const char* angleX = "angleX", const char* angleY = "angleY", const char* angleZ = "angleZ";
 
 	// Charger les propriétés de la zone de jeu
 	tinyxml2::XMLElement* elementPropriete = doc.FirstChildElement("Proprietes");
@@ -238,10 +230,6 @@ bool ArbreRenduINF2990::lireXML(tinyxml2::XMLDocument& doc)
 		proprietes_[i] = element->FirstAttribute()->IntValue();
 		element = element->NextSiblingElement();
 	}
-
-	//////////////////////////////////////////////////
-	// Lecture de l'arbre ainsi que ses enfants
-	//////////////////////////////////////////////////
 
 	// Obtenir l'élément "arbreRenduINF2990"
 	tinyxml2::XMLElement* elementArbre = doc.FirstChildElement("arbreRenduINF2990");
@@ -281,6 +269,9 @@ bool ArbreRenduINF2990::lireXML(tinyxml2::XMLDocument& doc)
 				noeudConcret->assignerRotation({ enfant->FindAttribute(angleX)->DoubleValue(),
 					enfant->FindAttribute(angleY)->DoubleValue(),
 					enfant->FindAttribute(angleZ)->DoubleValue() });
+
+				if (noeudConcret->obtenirType() == "paletted" || noeudConcret->obtenirType() == "paletteg")
+					noeudConcret->setColorShift(enfant->FindAttribute("color")->BoolValue());
 
 				// Ajouter l'enfant à la table
 				table->ajouter(noeudConcret);
@@ -336,7 +327,7 @@ bool ArbreRenduINF2990::lireXML(tinyxml2::XMLDocument& doc)
 ////////////////////////////////////////////////////////////////////////
 bool ArbreRenduINF2990::estDefaut() const
 {
-	if (posRessort == chercher("ressort")->obtenirPositionRelative()
+	if (   posRessort == chercher("ressort")->obtenirPositionRelative()
 		&& angleRessort == chercher("ressort")->obtenirRotation()
 		&& scaleRessort == chercher("ressort")->obtenirAgrandissement()
 		&& posTrou == chercher("trou")->obtenirPositionRelative()
