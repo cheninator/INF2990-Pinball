@@ -8,6 +8,7 @@
 #include "VisiteurDuplication.h"
 #include "../Arbre/ArbreRenduINF2990.h"
 #include "../Arbre/Noeuds/NoeudTable.h"
+#include <iostream>
 
 ////////////////////////////////////////////////////////////////////////
 ///
@@ -95,13 +96,16 @@ bool VisiteurDuplication::traiter(NoeudTable* table)
 		table->getEnfant(i)->accepterVisiteur(this);
 	}
 
-	// Ajouter les copies à la table
-	for (unsigned int i = 0; i < copies_.size(); i++)
+	if (!copies_.empty())
 	{
-		table->ajouter(copies_[i]);
-	}
+		// Ajouter les copies à la table
+		for (unsigned int i = 0; i < copies_.size(); i++)
+		{
+			table->ajouter(copies_[i]);
+		}
 
-	copies_.clear();
+		copies_.clear();
+	}
 
 	return true;
 }
@@ -122,7 +126,6 @@ bool VisiteurDuplication::traiter(NoeudTable* table)
 ////////////////////////////////////////////////////////////////////////
 bool VisiteurDuplication::traiter(NoeudAbstrait* noeud)
 {
-
 	if (noeud->estSelectionne())
 	{
 		// Effectuer la copie du noeud
@@ -158,18 +161,18 @@ bool VisiteurDuplication::traiter(NoeudAbstrait* noeud)
 
 		else if (noeud->obtenirType() == "portail" && !(noeud->getTwin()->estSelectionne()))
 		{
-			noeud->assignerSelection(false);
-		//	copie->assignerSelection(false);
-			delete copie;
+			arbreTemp->ajouter(copie);
+			arbreTemp->effacer(copie);
 		}
 
 		else
 		{
-			noeud->assignerSelection(false);
 			copies_.push_back(copie);
 		}
 
 	}
+
+	noeud->assignerSelection(false);
 
 	return true;
 }
