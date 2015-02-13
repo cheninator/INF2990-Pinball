@@ -2315,6 +2315,19 @@ namespace InterfaceGraphique
             etat = new EtatPortail(this);
             panel_GL.MouseMove += new MouseEventHandler(panel_MouseMove);
 
+        }
+        //////////////////////////////////////////////////////////////////////////////////////////
+        ///
+        /// @fn public void stateMur()
+        /// @brief Entre en état Mur.
+        /// 
+        /// @return Aucune.
+        ///
+        //////////////////////////////////////////////////////////////////////////////////////////
+        public void stateMur()
+        {
+            etat = new EtatMur(this);
+            panel_GL.MouseMove += new MouseEventHandler(panel_MouseMove);
 
         }
 

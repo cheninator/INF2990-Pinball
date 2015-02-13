@@ -308,11 +308,16 @@ extern "C"
 			objet->setTransparent(true);
 			objet = objet_temp;
 		}
-		else {
+		else 
+		{
 			objet = FacadeModele::obtenirInstance()->obtenirArbreRenduINF2990()->creerNoeud(nomObjet);
 			if (objet == nullptr)
 				return;
 			objet->setColorShift(colorShift);
+			if (nomObjet == "mur")
+			{
+				objet->assignerSelection(true);
+			}
 		}
 		FacadeModele::obtenirInstance()->obtenirArbreRenduINF2990()->getEnfant(0)->ajouter(objet);
 	}

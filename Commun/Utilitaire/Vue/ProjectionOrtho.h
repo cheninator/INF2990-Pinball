@@ -76,10 +76,10 @@ namespace vue {
 		void ajusterRapportAspect(DirectionZoom dir);
 
 		/// Ajuste la fenêtre en modifiant la portée verticale
-		void ajusterRapportAspectY(double rapportAspect);
+		void ajusterRapportAspectY(double rapportAspect, DirectionZoom dir);
 
 		/// Ajuste la fenêtre en modifiant la portée horizontale
-		void ajusterRapportAspectX(double rapportAspect);
+		void ajusterRapportAspectX(double rapportAspect, DirectionZoom dir);
 
 		/// Vérifie si les nouvelles bornes de la fanêtre viole les bornes des facteurs de zoom
 		bool zoomInValide(double xBorneMin, double xBorneMax, double yBorneMin, double yBorneMax);
