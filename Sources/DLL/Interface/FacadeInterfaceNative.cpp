@@ -292,9 +292,9 @@ extern "C"
 	////////////////////////////////////////////////////////////////////////
 	__declspec(dllexport) void __cdecl creerObjet(char* value, int length, bool isTwin, bool colorShift)
 	{
+		
 		std::string nomObjet(value);
 		if (isTwin == true) {
-			std::cout << isTwin;
 			objet_temp = FacadeModele::obtenirInstance()->obtenirArbreRenduINF2990()->creerNoeud(nomObjet);
 			objet_temp->setColorShift(colorShift);
 			if (objet == nullptr)
@@ -316,7 +316,9 @@ extern "C"
 				objet->assignerSelection(true);
 			}
 		}
+		
 		FacadeModele::obtenirInstance()->obtenirArbreRenduINF2990()->getEnfant(0)->ajouter(objet);
+
 	}
 
 	////////////////////////////////////////////////////////////////////////
