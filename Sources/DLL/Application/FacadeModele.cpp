@@ -48,6 +48,7 @@ Samuel Millette <BR>
 #include "../Visiteurs/VisiteurDuplication.h"
 #include "../Visiteurs/VisiteurLimitesSelection.h"
 #include "../Visiteurs/VisiteurListeEnglobante.h"
+#include "../Visiteurs/VisiteurPossibilite.h"
 
 #include "VueOrtho.h"
 #include "Camera.h"
