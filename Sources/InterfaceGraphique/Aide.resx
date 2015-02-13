@@ -123,6 +123,23 @@
 At aeque malorum consetetur cum. Sed no prompta theophrastus. Cu percipit inciderint has. Affert putant qui ei, nonumy imperdiet molestiae ne vel. Ex vim omittam sapientem reprehendunt, latine molestie vulputate sea in.
 
 Cu nec prima iusto, mazim veritus ad eam, pro magna inani salutandi ex. Et vis mentitum molestiae. Quis eloquentiam an has, id pri nullam causae neglegentur. Mei dicunt denique menandri ei, tollit postea quodsi eum eu. Omnium virtute sed ea, mel ad tation populo repudiare. Ei qui labore insolens, vis ea quot qualisque consetetur, sit ea quando civibus.
+
+
+</value>
+  </data>
+  <data name="label2.Text" xml:space="preserve">
+    <value>Touches:
+F = Plein Ecran
+S = Selection
+C = Duplication
+R = Rotation Objet (souris)
+D = Translation Objet (souris)
+E = Zoom objet (souris)
+Z = Zoom vue (roue)
++ = Zoom vue avant
+- = Zoom vue arriere
+Fleches = Deplacement vue
+H = Montrer/Cacher l'aide
 </value>
   </data>
   <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />

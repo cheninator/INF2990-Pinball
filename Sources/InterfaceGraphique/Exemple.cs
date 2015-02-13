@@ -1733,7 +1733,8 @@ namespace InterfaceGraphique
             }
             if (etat is EtatDuplication)
             {
-                etat = new EtatSelection(this);
+               etat = new EtatSelection(this);
+              
             }
             if (e.Button == MouseButtons.Left)
             {
@@ -2205,6 +2206,7 @@ namespace InterfaceGraphique
         public void deselection()
         {
             FonctionsNatives.deselectAll();
+            Console.WriteLine("DESELECT");
             nbSelection = 0;
             proprietesEnable(false);
             outilsEnable(false);
