@@ -48,9 +48,7 @@ public:
 private:
 
 	ArbreRenduINF2990* arbreTemp;
-
 	std::vector<NoeudAbstrait*> suppression;
-
 };
 
 #endif //__VISITEURS_VISITEURSUPPRESSION_H__

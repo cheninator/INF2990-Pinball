@@ -1734,6 +1734,7 @@ namespace InterfaceGraphique
             if (etat is EtatDuplication)
             {
                 etat = new EtatSelection(this);
+                deselection();
             }
             if (e.Button == MouseButtons.Left)
             {

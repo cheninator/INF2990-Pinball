@@ -42,7 +42,7 @@ public:
 
 	/// Traiter une opération sur l'arbre de rendu et ses enfants
 	virtual bool traiter(ArbreRenduINF2990* arbre);
-	/// Traiter une opération sur l'arbre de rendu et ses enfants
+	virtual bool traiter(NoeudTable* table);
 	virtual bool traiter(NoeudAbstrait* noeud);
 
 private:
