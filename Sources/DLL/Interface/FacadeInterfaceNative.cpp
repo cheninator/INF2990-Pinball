@@ -958,8 +958,8 @@ extern "C"
 	}
 }
 
-__declspec(dllexport) void creerMur(int x1, int y1, int x2, int y2)
+__declspec(dllexport) void creerMur(int originX, int originY,int x1, int y1, int x2, int y2)
 {
-	FacadeModele::FaireQuelquechose(x1, y1, x2, y2, objet);
+	FacadeModele::positionnerMur(originX,originY,x1, y1, x2, y2, objet);
 }
 

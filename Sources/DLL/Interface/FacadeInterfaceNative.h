@@ -39,7 +39,7 @@ extern "C" {
 	__declspec(dllexport) double getPositionY(void);
 	__declspec(dllexport) double getAngle(void);
 	__declspec(dllexport) double getScale(void);
-	__declspec(dllexport) void creerMur(int x1, int y1, int x2, int y2);
+	__declspec(dllexport) void creerMur(int originX, int originY,int x1, int y1, int x2, int y2);
 	__declspec(dllexport) void translater(double deplacementX, double deplacementY);
 	__declspec(dllexport) int creerXML(char* path, int length, int prop[6]);
 	__declspec(dllexport) int* ouvrirXML(char* path, int length);

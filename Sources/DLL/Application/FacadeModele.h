@@ -123,7 +123,7 @@ public:
    void terminerRectangleElastique();
 
 
-   static void FaireQuelquechose(int x1, int y1, int x2, int y2, NoeudAbstrait* noeud);
+   static void positionnerMur(int originX, int originY, int x1, int y1, int x2, int y2, NoeudAbstrait* noeud);
 
 private:
    /// Constructeur par défaut.

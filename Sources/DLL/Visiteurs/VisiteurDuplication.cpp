@@ -160,7 +160,7 @@ bool VisiteurDuplication::traiter(NoeudAbstrait* noeud)
 		{
 			noeud->assignerSelection(false);
 		//	copie->assignerSelection(false);
-		//	delete copie;
+			delete copie;
 		}
 
 		else

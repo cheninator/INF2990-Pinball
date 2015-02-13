@@ -721,7 +721,7 @@ bool FacadeModele::estDansTable(glm::dvec3 pointDuMonde)
 // Les points (x1,y1) et (x2,y2) ont passé par PanelGL.PointToClient (voir l'appel de cette fonction dans le C#).
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 // Pour les deux opérations, tu utilises les mêmes vecteurFinal et vecteurInitial, donc ça pourrais être quelque chose comme
-void FacadeModele::FaireQuelquechose(int x1, int y1, int x2, int y2, NoeudAbstrait* noeud)
+void FacadeModele::positionnerMur(int originX, int originY,int x1, int y1, int x2, int y2, NoeudAbstrait* noeud)
 {
 	glm::dvec3 positionInitiale, positionFinale;
 	FacadeModele::obtenirInstance()->obtenirVue()->convertirClotureAVirtuelle(x1, y1, positionInitiale);
