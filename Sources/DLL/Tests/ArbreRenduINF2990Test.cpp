@@ -12,13 +12,16 @@
 #include "../Visiteurs/VisiteurRotation.h"
 #include "../Visiteurs/VisiteurDeselectionnerTout.h"
 #include "../Visiteurs/VisiteurSelectionMultiple.h"
-#include "../Visiteurs//VisiteurDuplication.h"
-#include "../Visiteurs//VisiteurSelectionInverse.h"
+#include "../Visiteurs/VisiteurDuplication.h"
+#include "../Visiteurs/VisiteurSelectionInverse.h"
+#include "../Visiteurs/VisiteurListeEnglobante.h"
 #include "NoeudAbstrait.h"
 #include "NoeudComposite.h"
 
 // Enregistrement de la suite de tests au sein du registre
 CPPUNIT_TEST_SUITE_REGISTRATION(ArbreRenduINF2990Test);
+
+using conteneur_boite_englobante = std::pair<std::vector<glm::dvec3>, NoeudAbstrait*>;
 
 ////////////////////////////////////////////////////////////////////////
 ///
@@ -340,6 +343,15 @@ void ArbreRenduINF2990Test::testRotation()
 	arbre->vider();
 }
 
+////////////////////////////////////////////////////////////////////////
+///
+/// @fn void ArbreRenduINF2990Test::______()
+///
+/// Cas de test: ...
+///
+/// @return Aucune.
+///
+////////////////////////////////////////////////////////////////////////
 void ArbreRenduINF2990Test::testSelectionMultiple()
 {
 	// On initialise l'arbre avec le fichier XML par défaut.
@@ -378,6 +390,15 @@ void ArbreRenduINF2990Test::testSelectionMultiple()
 	arbre->vider();
 }
 
+////////////////////////////////////////////////////////////////////////
+///
+/// @fn void ArbreRenduINF2990Test::______()
+///
+/// Cas de test: ...
+///
+/// @return Aucune.
+///
+////////////////////////////////////////////////////////////////////////
 void ArbreRenduINF2990Test::testSelectionInverse()
 {
 	// On initialise l'arbre avec le fichier XML par défaut.
@@ -407,6 +428,15 @@ void ArbreRenduINF2990Test::testSelectionInverse()
 	arbre->vider();
 }
 
+////////////////////////////////////////////////////////////////////////
+///
+/// @fn void ArbreRenduINF2990Test::______()
+///
+/// Cas de test: ...
+///
+/// @return Aucune.
+///
+////////////////////////////////////////////////////////////////////////
 void ArbreRenduINF2990Test::testDuplication()
 {
 	// On initialise l'arbre avec le fichier XML par défaut.
@@ -442,4 +472,54 @@ void ArbreRenduINF2990Test::testDuplication()
 	// On vide l'arbre.
 	arbre->vider();
 
+}
+
+////////////////////////////////////////////////////////////////////////
+///
+/// @fn void ArbreRenduINF2990Test::______()
+///
+/// Cas de test: ...
+///
+/// @return Aucune.
+///
+////////////////////////////////////////////////////////////////////////
+void ArbreRenduINF2990Test::testBoiteEnglobante()
+{
+	// On initialise l'arbre avec le fichier XML par défaut.
+	arbre->initialiser();
+
+	// On accède à la table et on ajoute une cible.
+	bool ajout = { arbre->getEnfant(0)->ajouter(arbre->creerNoeud(ArbreRenduINF2990::NOM_CIBLE)) };
+
+	// La cible a été ajoutée.	
+	CPPUNIT_ASSERT(ajout == true);
+
+	// On sélectionne la cible.
+	NoeudAbstrait* noeudCible = arbre->getEnfant(0)->chercher(ArbreRenduINF2990::NOM_CIBLE);
+	noeudCible->assignerSelection(true);
+
+	// Visiteur Liste Englobante.
+	VisiteurListeEnglobante* visBoiteEngl = new VisiteurListeEnglobante();
+	noeudCible->accepterVisiteur(visBoiteEngl);
+
+	// On obtient l'attribut du visiteur.
+	std::vector<conteneur_boite_englobante> liste = visBoiteEngl->obtenirListeEnglobante();
+
+	// Le bon noeud est inséré.
+	CPPUNIT_ASSERT(liste[0].second == noeudCible);
+
+	glm::dvec3 coinsEnglobant[4];
+	noeudCible->obtenirVecteursBoite(coinsEnglobant[0], coinsEnglobant[1], coinsEnglobant[2], coinsEnglobant[3]);
+
+	// Les coins de la boite matchent.
+	CPPUNIT_ASSERT(liste[0].first[0] == coinsEnglobant[0]);
+	CPPUNIT_ASSERT(liste[0].first[1] == coinsEnglobant[1]);
+	CPPUNIT_ASSERT(liste[0].first[2] == coinsEnglobant[2]);
+	CPPUNIT_ASSERT(liste[0].first[3] == coinsEnglobant[3]);
+
+	// Nettoyage.
+	delete visBoiteEngl;
+
+	// On vide l'arbre.
+	arbre->vider();
 }

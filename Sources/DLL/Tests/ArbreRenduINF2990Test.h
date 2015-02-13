@@ -48,6 +48,7 @@ class ArbreRenduINF2990Test : public CppUnit::TestFixture
 	CPPUNIT_TEST(testSelectionMultiple);
 	CPPUNIT_TEST(testSelectionInverse);
 	CPPUNIT_TEST(testDuplication);
+	CPPUNIT_TEST(testBoiteEnglobante);
 	CPPUNIT_TEST_SUITE_END();
 
 public:
@@ -99,6 +100,9 @@ public:
 
 	/// Cas de test: Duplication.
 	void testDuplication();
+
+	/// Cas de test: Limite sélection.
+	void testBoiteEnglobante();
 
 private:
 	/// Instance d'un arbre
