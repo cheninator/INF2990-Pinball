@@ -66,9 +66,6 @@
     <ClCompile Include="Application\FacadeModele.cpp">
       <Filter>Source Files\Application</Filter>
     </ClCompile>
-    <ClCompile Include="Configuration\ConfigScene.cpp">
-      <Filter>Source Files\Configuration</Filter>
-    </ClCompile>
     <ClCompile Include="Arbre\ArbreRendu.cpp">
       <Filter>Source Files\Arbre</Filter>
     </ClCompile>
@@ -200,9 +197,6 @@
     <ClInclude Include="Application\FacadeModele.h">
       <Filter>Header Files\Application</Filter>
     </ClInclude>
-    <ClInclude Include="Configuration\ConfigScene.h">
-      <Filter>Header Files\Configuration</Filter>
-    </ClInclude>
     <ClInclude Include="Arbre\ArbreRendu.h">
       <Filter>Header Files\Arbre</Filter>
     </ClInclude>
@@ -217,12 +211,6 @@
     </ClInclude>
     <ClInclude Include="Arbre\Noeuds\NoeudComposite.h">
       <Filter>Header Files\Arbre\Noeuds</Filter>
-    </ClInclude>
-    <ClInclude Include="Arbre\Usines\UsineNoeudAraignee.h">
-      <Filter>Header Files\Arbre\Usines</Filter>
-    </ClInclude>
-    <ClInclude Include="Arbre\Usines\UsineNoeudConeCube.h">
-      <Filter>Header Files\Arbre\Usines</Filter>
     </ClInclude>
     <ClInclude Include="Tests\NoeudAbstraitTest.h">
       <Filter>Header Files\Tests</Filter>

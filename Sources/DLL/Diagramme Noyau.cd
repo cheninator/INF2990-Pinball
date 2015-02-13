@@ -7,13 +7,6 @@
       <FileName>Application\FacadeModele.h</FileName>
     </TypeIdentifier>
   </Class>
-  <Class Name="ConfigScene" Collapsed="true">
-    <Position X="11.75" Y="0.5" Width="1.5" />
-    <TypeIdentifier>
-      <HashCode>AAAAAAAQAAAAAAAAAAAAAAgAgAAABAAAAAAAAAAAAAA=</HashCode>
-      <FileName>Configuration\ConfigScene.h</FileName>
-    </TypeIdentifier>
-  </Class>
   <Class Name="ArbreRendu" Collapsed="true">
     <Position X="2" Y="3.25" Width="1.5" />
     <TypeIdentifier>
@@ -26,20 +19,6 @@
     <TypeIdentifier>
       <HashCode>ghAEAhECCQAAcAAYCAAQAACAiIBBACAMBAAEAKAAAQA=</HashCode>
       <FileName>Arbre\ArbreRenduINF2990.h</FileName>
-    </TypeIdentifier>
-  </Class>
-  <Class Name="UsineNoeudAraignee" Collapsed="true">
-    <Position X="7.25" Y="9" Width="1.5" />
-    <TypeIdentifier>
-      <HashCode>AAAAAAAAAIEAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
-      <FileName>Arbre\Usines\UsineNoeudAraignee.h</FileName>
-    </TypeIdentifier>
-  </Class>
-  <Class Name="UsineNoeudConeCube" Collapsed="true">
-    <Position X="3.5" Y="7.75" Width="1.5" />
-    <TypeIdentifier>
-      <HashCode>AAAAAAAAAAEAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
-      <FileName>Arbre\Usines\UsineNoeudConeCube.h</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="UsineNoeud" Collapsed="true">
@@ -454,15 +433,22 @@
   <Class Name="NoeudAraignee" Collapsed="true">
     <Position X="3.75" Y="3.25" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAAEAAAAAAAAAAAAAAAAAAAAAAAAIAAIAAAAAIDAAAA=</HashCode>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
       <FileName>arbre\noeuds\noeudaraignee.h</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="NoeudConeCube" Collapsed="true">
     <Position X="0.75" Y="1.75" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAAEAAAAACAAIAAAAAAAAIAAAAAAAAAIAQAAAACAAAA=</HashCode>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
       <FileName>arbre\noeuds\noeudconecube.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ConfigScene" Collapsed="true">
+    <Position X="11.75" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAQAAAAAAAAAAAAAAgAgAAABAAAAAAAAAAAAAA=</HashCode>
+      <FileName>configuration\configscene.h</FileName>
     </TypeIdentifier>
   </Class>
   <Font Name="Segoe UI" Size="9" />

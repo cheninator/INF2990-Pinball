@@ -8,12 +8,10 @@
 ///////////////////////////////////////////////////////////////////////////
 #include "ArbreRenduINF2990.h"
 
-#include "Usines/UsineNoeudAraignee.h"
 #include "Usines/UsineNoeudButoirD.h"
 #include "Usines/UsineNoeudButoirG.h"
 #include "Usines/UsineNoeudButoirCirculaire.h"
 #include "Usines/UsineNoeudCible.h"
-#include "Usines/UsineNoeudConeCube.h"
 #include "Usines/UsineNoeudBille.h"
 #include "Usines/UsineNoeudGenerateurBille.h"
 #include "Usines/UsineNoeudMur.h"
