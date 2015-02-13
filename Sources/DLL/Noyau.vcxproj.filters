@@ -192,6 +192,12 @@
     <ClCompile Include="Arbre\Noeuds\NoeudButoirG.cpp">
       <Filter>Source Files\Arbre\Noeuds</Filter>
     </ClCompile>
+    <ClCompile Include="Tests\ArbreRenduINF2990Test.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Tests\FacadeModeleTest.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Application\FacadeModele.h">
@@ -379,6 +385,12 @@
     </ClInclude>
     <ClInclude Include="Arbre\Noeuds\NoeudButoirG.h">
       <Filter>Header Files\Arbre\Noeuds</Filter>
+    </ClInclude>
+    <ClInclude Include="Tests\ArbreRenduINF2990Test.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Tests\FacadeModeleTest.h">
+      <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

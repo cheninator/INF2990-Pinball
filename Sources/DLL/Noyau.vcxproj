@@ -155,6 +155,8 @@
     <ClCompile Include="Arbre\Noeuds\NoeudAbstrait.cpp" />
     <ClCompile Include="Arbre\Noeuds\NoeudComposite.cpp" />
     <ClCompile Include="Interface\FacadeInterfaceNative.cpp" />
+    <ClCompile Include="Tests\ArbreRenduINF2990Test.cpp" />
+    <ClCompile Include="Tests\FacadeModeleTest.cpp" />
     <ClCompile Include="Tests\NoeudCompositeTest.cpp" />
     <ClCompile Include="Tests\BancTests.cpp" />
     <ClCompile Include="Tests\ConfigSceneTest.cpp" />
@@ -218,6 +220,8 @@
     <ClInclude Include="Arbre\Noeuds\NoeudComposite.h" />
     <ClInclude Include="Interface\FacadeInterfaceNative.h" />
     <ClInclude Include="Noeuds\NoeudButoirG.h" />
+    <ClInclude Include="Tests\ArbreRenduINF2990Test.h" />
+    <ClInclude Include="Tests\FacadeModeleTest.h" />
     <ClInclude Include="Tests\NoeudCompositeTest.h" />
     <ClInclude Include="Tests\BancTests.h" />
     <ClInclude Include="Tests\ConfigSceneTest.h" />

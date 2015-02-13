@@ -11,6 +11,9 @@
 #include "../Visiteurs/VisiteurAbstrait.h"
 #include "../Visiteurs/VisiteurRotation.h"
 #include "../Visiteurs/VisiteurDeselectionnerTout.h"
+#include "../Visiteurs/VisiteurSelectionMultiple.h"
+#include "../Visiteurs//VisiteurDuplication.h"
+#include "../Visiteurs//VisiteurSelectionInverse.h"
 #include "NoeudAbstrait.h"
 #include "NoeudComposite.h"
 
@@ -96,6 +99,15 @@ void ArbreRenduINF2990Test::testArbreDefaut()
 	arbre->vider();
 }
 
+////////////////////////////////////////////////////////////////////////
+///
+/// @fn void ArbreRenduINF2990Test::______()
+///
+/// Cas de test: ...
+///
+/// @return Aucune.
+///
+////////////////////////////////////////////////////////////////////////
 void ArbreRenduINF2990Test::testXmlInexistant()
 {
 	// On ouvre un fichier inexistant
@@ -110,6 +122,15 @@ void ArbreRenduINF2990Test::testXmlInexistant()
 	arbre->vider();
 }
 
+////////////////////////////////////////////////////////////////////////
+///
+/// @fn void ArbreRenduINF2990Test::______()
+///
+/// Cas de test: ...
+///
+/// @return Aucune.
+///
+////////////////////////////////////////////////////////////////////////
 void ArbreRenduINF2990Test::testPortails()
 {
 	// On initialise une zone de jeu avec des portails
@@ -129,6 +150,15 @@ void ArbreRenduINF2990Test::testPortails()
 	arbre->vider();
 }
 
+////////////////////////////////////////////////////////////////////////
+///
+/// @fn void ArbreRenduINF2990Test::______()
+///
+/// Cas de test: ...
+///
+/// @return Aucune.
+///
+////////////////////////////////////////////////////////////////////////
 void ArbreRenduINF2990Test::creerNoeudParUsine()
 {
 	// On crée un noeud de type non reconnu par les usines.
@@ -151,6 +181,15 @@ void ArbreRenduINF2990Test::creerNoeudParUsine()
 	arbre->vider();
 }
 
+////////////////////////////////////////////////////////////////////////
+///
+/// @fn void ArbreRenduINF2990Test::______()
+///
+/// Cas de test: ...
+///
+/// @return Aucune.
+///
+////////////////////////////////////////////////////////////////////////
 void ArbreRenduINF2990Test::boiteEnglobante()
 {
 	// On crée une cible.
@@ -188,6 +227,15 @@ void ArbreRenduINF2990Test::boiteEnglobante()
 	arbre->vider();
 }
 
+////////////////////////////////////////////////////////////////////////
+///
+/// @fn void ArbreRenduINF2990Test::______()
+///
+/// Cas de test: ...
+///
+/// @return Aucune.
+///
+////////////////////////////////////////////////////////////////////////
 void ArbreRenduINF2990Test::selectionTable()
 {
 	// On initialise l'arbre avec le fichier XML par défaut
@@ -210,11 +258,51 @@ void ArbreRenduINF2990Test::selectionTable()
 	arbre->vider();
 }
 
+////////////////////////////////////////////////////////////////////////
+///
+/// @fn void ArbreRenduINF2990Test::______()
+///
+/// Cas de test: ...
+///
+/// @return Aucune.
+///
+////////////////////////////////////////////////////////////////////////
 void ArbreRenduINF2990Test::testDeselection()
 {
+	// On initialise l'arbre avec le fichier XML par défaut
+	arbre->initialiser();
 
+	// On cherche un ressort.
+	NoeudAbstrait* noeudRessort = arbre->chercher(ArbreRenduINF2990::NOM_RESSORT);
+
+	// Sélectionner l'objet
+	noeudRessort->assignerSelection(true);
+	VisiteurDeselectionnerTout* visiteurDeselection = new VisiteurDeselectionnerTout();
+
+	// Test du visiteur de déselection
+	arbre->accepterVisiteur(visiteurDeselection);
+
+
+	for (int i = 0; i < arbre->getSizeEnfants(); i++)
+		CPPUNIT_ASSERT(arbre->getEnfant(i)->estSelectionne() == false);
+
+
+	// Nettoyage.
+	delete visiteurDeselection;
+
+	// On vide l'arbre.
+	arbre->vider();
 }
 
+////////////////////////////////////////////////////////////////////////
+///
+/// @fn void ArbreRenduINF2990Test::______()
+///
+/// Cas de test: ...
+///
+/// @return Aucune.
+///
+////////////////////////////////////////////////////////////////////////
 void ArbreRenduINF2990Test::testRotation()
 {
 	// On initialise l'arbre avec le fichier XML par défaut
@@ -234,7 +322,7 @@ void ArbreRenduINF2990Test::testRotation()
 	vecteur[1] = 0;
 	vecteur[2] = 30;
 
-	VisiteurAbstrait* visiteurRot = new VisiteurRotation(vecteur);
+	VisiteurRotation* visiteurRot = new VisiteurRotation(vecteur);
 
 	// Test du visiteur.
 	CPPUNIT_ASSERT(noeudRessort->accepterVisiteur(visiteurRot));
@@ -250,4 +338,110 @@ void ArbreRenduINF2990Test::testRotation()
 
 	// On vide l'arbre.
 	arbre->vider();
+}
+
+void ArbreRenduINF2990Test::testSelectionMultiple()
+{
+	// On initialise l'arbre avec le fichier XML par défaut.
+	arbre->initialiser();
+
+	CPPUNIT_ASSERT(arbre->getEnfant(0)->obtenirType() == ArbreRenduINF2990::NOM_TABLE);
+
+	// On accède à la table et on ajoute une cible.
+	bool ajout1 = { arbre->getEnfant(0)->ajouter(arbre->creerNoeud(ArbreRenduINF2990::NOM_CIBLE)) };
+	bool ajout2 = { arbre->getEnfant(0)->ajouter(arbre->creerNoeud(ArbreRenduINF2990::NOM_CIBLE)) };
+
+	// Les deux cibles ont été ajoutées.
+	CPPUNIT_ASSERT(ajout1 == true);
+	CPPUNIT_ASSERT(ajout2 == true);
+
+	// Une cible est bien crée en position {0,0,0}.
+	NoeudAbstrait* cible = arbre->getEnfant(0)->chercher(ArbreRenduINF2990::NOM_CIBLE);
+	glm::dvec3 position = cible->obtenirPositionRelative();
+	CPPUNIT_ASSERT(utilitaire::EGAL_ZERO(position[0]));
+	CPPUNIT_ASSERT(utilitaire::EGAL_ZERO(position[1]));
+	CPPUNIT_ASSERT(utilitaire::EGAL_ZERO(position[2]));
+
+	// On crée un visiteur dans une boite de 10x10 autour du point central avec les deux cibles.
+	VisiteurSelectionMultiple* visSelecMult = new VisiteurSelectionMultiple({ -10.0, -10.0, 0.0 }, { 10.0, 10.0, 0.0 });
+
+	// On visite les éléments.
+	arbre->getEnfant(0)->accepterVisiteur(visSelecMult);
+
+	// Deux objets sont sélectionnés
+	CPPUNIT_ASSERT(visSelecMult->obtenirNbObjetsSelectionne() == 2);
+
+	// Nettoyage.
+	delete visSelecMult;
+
+	// On vide l'arbre.
+	arbre->vider();
+}
+
+void ArbreRenduINF2990Test::testSelectionInverse()
+{
+	// On initialise l'arbre avec le fichier XML par défaut.
+	arbre->initialiser();
+
+	// On accède à la table et on ajoute une cible.
+	bool ajout = { arbre->getEnfant(0)->ajouter(arbre->creerNoeud(ArbreRenduINF2990::NOM_CIBLE)) };
+
+	// La cible a été ajoutée.	
+	CPPUNIT_ASSERT(ajout == true);
+
+	// On sélectionne la cible.
+	NoeudAbstrait* noeudCible = arbre->getEnfant(0)->chercher(ArbreRenduINF2990::NOM_CIBLE);
+	noeudCible->assignerSelection(true);
+
+	VisiteurSelectionInverse* visSelInv = new VisiteurSelectionInverse({0.0,0.0,0.0}, noeudCible->getNumero());
+
+	// On desélectionne la cible avec la sélection inverse.
+	noeudCible->accepterVisiteur(visSelInv);
+
+	CPPUNIT_ASSERT(noeudCible->estSelectionne() == false);
+
+	// Nettoyage.
+	delete visSelInv;
+
+	// On vide l'arbre.
+	arbre->vider();
+}
+
+void ArbreRenduINF2990Test::testDuplication()
+{
+	// On initialise l'arbre avec le fichier XML par défaut.
+	arbre->initialiser();
+
+	// On accède à la table et on ajoute une cible.
+	bool ajout = { arbre->getEnfant(0)->ajouter(arbre->creerNoeud(ArbreRenduINF2990::NOM_CIBLE)) };
+
+	// La cible a été ajoutée.	
+	CPPUNIT_ASSERT(ajout == true);
+
+	// On sélectionne la cible.
+	NoeudAbstrait* noeudCible = arbre->getEnfant(0)->chercher(ArbreRenduINF2990::NOM_CIBLE);
+	noeudCible->assignerSelection(true);
+
+	// Nombre d'enfants avant la duplication.
+	int enfantsAvant = arbre->getEnfant(0)->obtenirNombreEnfants();
+
+	glm::dvec3 point = { 0.0, 0.0, 0.0 };
+
+	// Visiteur Duplication fait sa job (on l'espère).
+	VisiteurDuplication* visiteurDup = new VisiteurDuplication(point);
+	arbre->accepterVisiteur(visiteurDup);
+
+	// Nombre d'enfants après la duplication
+	int enfantsApres = arbre->getEnfant(0)->obtenirNombreEnfants();
+
+	// std::cout << enfantsApres << " > " << enfantsAvant << "!!!";
+
+	CPPUNIT_ASSERT(enfantsApres > enfantsAvant);
+	
+	// Nettoyage.
+	delete visiteurDup;
+
+	// On vide l'arbre.
+	arbre->vider();
+
 }
