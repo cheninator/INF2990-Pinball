@@ -10,7 +10,6 @@
 #include "../Arbre/Noeuds/NoeudTable.h"
 #include <iostream>
 
-
 ////////////////////////////////////////////////////////////////////////
 ///
 /// @fn VisiteurDuplication::VisiteurDuplication()
