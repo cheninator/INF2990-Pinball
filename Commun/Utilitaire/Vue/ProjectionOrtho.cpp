@@ -233,9 +233,9 @@ namespace vue {
 	////////////////////////////////////////////////////////////////////////
 	void ProjectionOrtho::zoomerIn(const glm::ivec2& coin1, const glm::ivec2& coin2)
 	{
-		// Puisque qu'on corrigera le rapport d'aspect en touchant une seule direction
-		// (l'autre restera inchangée), il suffit qu'une nouvelle longueur (ou hauteur)
-		// soit plus petite que le zoom maximal permit pour que le zoom soit annulé
+		/// Puisque qu'on corrigera le rapport d'aspect en touchant une seule direction
+		/// (l'autre restera inchangée), il suffit qu'une nouvelle longueur (ou hauteur)
+		/// soit plus petite que le zoom maximal permit pour que le zoom soit annulé
 		if (abs(coin2.x - coin1.x) < zoomInMax_ || abs(coin2.y - coin1.y) < zoomInMax_)
 		{
 			std::cout << "Le zoom out minimal a été atteint : zoom annulé ! \n";
@@ -245,9 +245,9 @@ namespace vue {
 		double pointMilieuSelectionX = (coin1.x + coin2.x) / 2.0;
 		double pointMilieuSelectionY = (coin1.y + coin2.y) / 2.0;
 		
-		// L'astuce est simple : on fixe les valeurs de coordonnées
-		// de fenêtre aux coordonnées OpenGL données, puis on corrige
-		// le rapport d'aspect
+		/// L'astuce est simple : on fixe les valeurs de coordonnées
+		/// de fenêtre aux coordonnées OpenGL données, puis on corrige
+		/// le rapport d'aspect
 		xMinFenetre_ = (coin1.x < coin2.x ? coin1.x : coin2.x);
 		xMaxFenetre_ = (coin1.x > coin2.x ? coin1.x : coin2.x);
 		
@@ -284,7 +284,6 @@ namespace vue {
 		const double xDroiteCoin = (coin1.x > coin2.x ? coin1.x : coin2.x);
 		const double xRatioSelectionFenetreActuelle = (xDroiteCoin - xGaucheCoin) * 1.0 / longueurFenetreActuelle;
 		
-		/// Section pour X ///
 		double longueurFenetreSelection = abs(xDroiteCoin - xGaucheCoin);
 		double nouvelleLongueurX = longueurFenetreActuelle / xRatioSelectionFenetreActuelle;
 		double proportionRelativeCoinGauche = (xGaucheCoin - xMinFenetre_) / longueurFenetreActuelle;
@@ -334,9 +333,6 @@ namespace vue {
 	////////////////////////////////////////////////////////////////////////
 	void ProjectionOrtho::translater(double deplacementX, double deplacementY)
 	{
-		// À IMPLANTER.
-		//std::cout << "Facteurs de deplacement : " <<
-		//	"X : " << deplacementX << " Y: " << deplacementY << std::endl;
 		double xTailleCourante = xMaxFenetre_ - xMinFenetre_;
 		double yTailleCourante = yMaxFenetre_ - yMinFenetre_;
 
@@ -387,7 +383,6 @@ namespace vue {
 	////////////////////////////////////////////////////////////////////////
 	void ProjectionOrtho::centrerSurPoint(const glm::dvec2& pointCentre)
 	{
-		// À IMPLANTER.
 		// N.B: Puisque le fonction existante 'translater' suppose que les 
 		// déplacements sont faites à partir des coordonnées de clôtures,
 		// je fais le translate ici.
@@ -486,10 +481,11 @@ namespace vue {
 
 	////////////////////////////////////////////////////////////////////////
 	///
-	/// @fn bool bornesSontValide(double xBorneMin, double xBorneMax, double yBorneMin, double yBorneMax);
+	/// @fn bool zoomOutValide(double xBorneMin, double xBorneMax, double yBorneMin, double yBorneMax);
 	///
 	/// Vérfie que les nouvelles bornes qui tentent d'être appliquées 
-	/// respecteront les bornes établies lors de la création de la Vue.
+	/// respecteront les bornes établies lors de la création de la Vue
+	/// dans le scénario d'un zoom qui agrandirait la vue totale.
 	///
 	/// @param[in]	xBorneMin : Borne inférieure en X
 	/// @param[in]	xBorneMin : Borne supérieure en X
@@ -512,6 +508,22 @@ namespace vue {
 		return valide;
 	}
 
+	////////////////////////////////////////////////////////////////////////
+	///
+	/// @fn bool zoomInValide(double xBorneMin, double xBorneMax, double yBorneMin, double yBorneMax);
+	///
+	/// Vérfie que les nouvelles bornes qui tentent d'être appliquées 
+	/// respecteront les bornes établies lors de la création de la Vue
+	/// dans le scénario d'un zoom qui diminuerait la vue totale.
+	///
+	/// @param[in]	xBorneMin : Borne inférieure en X
+	/// @param[in]	xBorneMin : Borne supérieure en X
+	/// @param[in]	xBorneMin : Borne inférieure en Y
+	/// @param[in]	xBorneMin : Borne supérieure en Y
+	///
+	/// @return L'indication pour procéder au zoom
+	///
+	////////////////////////////////////////////////////////////////////////
 	bool ProjectionOrtho::zoomInValide(double xBorneMin, double xBorneMax, double yBorneMin, double yBorneMax)
 	{
 		bool valide = false;
