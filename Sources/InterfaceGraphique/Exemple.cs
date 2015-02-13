@@ -1691,18 +1691,11 @@ namespace InterfaceGraphique
                 
             }
 
-            if (etat is EtatDeplacement && nbSelection == 1) 
+            if (nbSelection == 1) 
             {
                 Xbox.Text = Math.Round(FonctionsNatives.getPositionX()).ToString();
                 Ybox.Text = Math.Round(FonctionsNatives.getPositionY()).ToString();
-                
-            }
-            if (etat is EtatRotation && nbSelection == 1)
-            {
                 Anglebox.Text = Math.Round(FonctionsNatives.getAngle()).ToString();
-            }
-            if ( etat is EtatScale && nbSelection == 1)
-            {
                 FMEbox.Text = FonctionsNatives.getScale().ToString();
             }
             if (!(clickValide(origin, currentP)) && (etat is EtatSelection) && e.Button == MouseButtons.Left)
