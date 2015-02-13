@@ -754,9 +754,10 @@ extern "C"
 	///
 	///////////////////////////////////////////////////////////////////////////////
 	__declspec(dllexport) double getPositionX(void) {
-		double positionX;
+		double positionX = 0;
 		if (objet == nullptr)
 			return false;
+		
 		for (unsigned int j = 0; j < FacadeModele::obtenirInstance()->obtenirArbreRenduINF2990()->getEnfant(0)->obtenirNombreEnfants(); j++)
 		{
 			if (
@@ -766,6 +767,7 @@ extern "C"
 				positionX = objet->obtenirPositionRelative().x;
 			}
 		}
+		
 		return positionX;
 	}
 
@@ -780,7 +782,7 @@ extern "C"
 	///
 	///////////////////////////////////////////////////////////////////////////////
 	__declspec(dllexport) double getPositionY(void) {
-		double positionY;
+		double positionY = 0;
 		if (objet == nullptr)
 			return false;
 		for (unsigned int j = 0; j < FacadeModele::obtenirInstance()->obtenirArbreRenduINF2990()->getEnfant(0)->obtenirNombreEnfants(); j++)
@@ -809,7 +811,7 @@ extern "C"
 	{
 		if (objet == nullptr)
 			return false;
-		double angle;
+		double angle=0;
 		for (unsigned int j = 0; j < FacadeModele::obtenirInstance()->obtenirArbreRenduINF2990()->getEnfant(0)->obtenirNombreEnfants(); j++)
 		{
 			if (
@@ -833,7 +835,7 @@ extern "C"
 	///////////////////////////////////////////////////////////////////////////////
 	__declspec(dllexport) double getScale(void)
 	{
-		double scale;
+		double scale =0;
 		if (objet == nullptr)
 			return false;
 		for (unsigned int j = 0; j < FacadeModele::obtenirInstance()->obtenirArbreRenduINF2990()->getEnfant(0)->obtenirNombreEnfants(); j++)

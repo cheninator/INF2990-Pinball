@@ -9,10 +9,8 @@
 #include "../Arbre/ArbreRenduINF2990.h"
 #include "../Arbre/Noeuds/NoeudTable.h"
 #include <iostream>
-<<<<<<< HEAD
 
-=======
->>>>>>> origin/master
+
 ////////////////////////////////////////////////////////////////////////
 ///
 /// @fn VisiteurDuplication::VisiteurDuplication()
@@ -159,12 +157,12 @@ bool VisiteurDuplication::traiter(NoeudAbstrait* noeud)
 
 			// Eviter d'effectuer une double copie lorsque le jumeau du portail est traité
 			noeud->getTwin()->assignerSelection(false);
-			noeud->assignerSelection(false);
 		}
 		
 		else if (noeud->obtenirType() == "portail" && !(noeud->getTwin()->estSelectionne()))
 		{
 			delete copie;
+			copie = 0;
 		}
 	
 		else
@@ -172,9 +170,8 @@ bool VisiteurDuplication::traiter(NoeudAbstrait* noeud)
 			copies_.push_back(copie);
 		}
 
+		noeud->assignerSelection(false);
 	}
-
-	noeud->assignerSelection(false);
 
 	return true;
 }

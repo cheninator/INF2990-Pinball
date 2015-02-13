@@ -299,6 +299,7 @@ namespace InterfaceGraphique
                 else if (e.KeyChar == 'c')
                 {
                     bouton_Duplication_Click(this, e);
+                  
 
                 }
                 else if (e.KeyChar == 'h')
@@ -889,6 +890,7 @@ namespace InterfaceGraphique
         ////////////////////////////////////////////////////////////////////////
         private void Annuler_prop_boutn_Click(object sender, EventArgs e)
         {
+
             Xbox.Text = Math.Round(FonctionsNatives.getPositionX()).ToString();
             Ybox.Text = Math.Round(FonctionsNatives.getPositionY()).ToString();
             Anglebox.Text = Math.Round(FonctionsNatives.getAngle()).ToString();
@@ -1690,7 +1692,7 @@ namespace InterfaceGraphique
                 
             }
 
-            if (nbSelection == 1) 
+            if (nbSelection == 1  && (etat is EtatDuplication)) 
             {
                 Xbox.Text = Math.Round(FonctionsNatives.getPositionX()).ToString();
                 Ybox.Text = Math.Round(FonctionsNatives.getPositionY()).ToString();
