@@ -960,17 +960,6 @@ extern "C"
 
 __declspec(dllexport) void creerMur(int x1, int y1, int x2, int y2)
 {
-	for (unsigned int j = 0; j < FacadeModele::obtenirInstance()->obtenirArbreRenduINF2990()->getEnfant(0)->obtenirNombreEnfants(); j++)
-	{
-		if (
-			FacadeModele::obtenirInstance()->obtenirArbreRenduINF2990()->getEnfant(0)->chercher(j)->estSelectionne()
-			) 
-		{
-			objet = FacadeModele::obtenirInstance()->obtenirArbreRenduINF2990()->getEnfant(0)->chercher(j);
-			FacadeModele::FaireQuelquechose(x1, y1, x2, y2, objet);
-		}
-	}
-
-
+	FacadeModele::FaireQuelquechose(x1, y1, x2, y2, objet);
 }
 

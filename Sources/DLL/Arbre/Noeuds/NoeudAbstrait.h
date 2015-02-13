@@ -92,6 +92,7 @@ public:
 	inline void assignerEchelle(glm::dvec3 scale);
 	/// Écrit le rotation sur le noeud.
 	inline void assignerRotation(glm::dvec3 rotation);
+	inline void assignerRotationHard(glm::dvec3 rotation){ rotation_ = rotation; };
 	/// Écrit le rotation 0,0,0 sur le noeud.
 	inline void resetRotation();
 	/// Vérifie si le noeud est sélectionnable.

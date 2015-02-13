@@ -730,32 +730,41 @@ void FacadeModele::FaireQuelquechose(int x1, int y1, int x2, int y2, NoeudAbstra
 	//std::cout << "X:" <<noeud->obtenirAgrandissement().x << std::endl;
 	//std::cout << "Y:" << noeud->obtenirAgrandissement().y << std::endl;
 	//std::cout << "Z:"<<noeud->obtenirAgrandissement().z << std::endl;
-	glm::dvec3 vecteurInitial = glm::dvec3{ 1, 0, 0 }; // CHANGEMENT
+	glm::dvec3 vecteurInitial = positionInitiale - noeud->obtenirPositionRelative();
 	glm::dvec3 vecteurFinal = positionFinale - noeud->obtenirPositionRelative();
 //	std::cout << "VF X:" << vecteurFinal.x << std::endl;
 //	std::cout << "VF Y:" << vecteurFinal.y<< std::endl;
 //	std::cout << "VF Z:" << vecteurFinal.z << std::endl;
 
-	glm::dvec3 produitVectoriel = glm::cross(vecteurInitial, vecteurFinal);
-
-
-	// CALCUL DE L'ANGLE;
-	double sinAngle = glm::length(produitVectoriel) / glm::length(vecteurInitial) / glm::length(vecteurInitial);
-	// Le signe de la composante en z donne le sens dans le quel on doit tourner
-	double angleRadian = produitVectoriel.z > 0 ? asin(sinAngle) : -asin(sinAngle);
-	// L'angle est en radian, on doit le convertir
-	double angleDegre = 360 / 2 / M_PI * angleRadian;
-	//std::cout << "ANGLE:" << asin(sinAngle) << std::endl;
-	glm::dvec3 angles{ 0, 0, angleDegre };// A passer en paramètre à assignerRotation
-
-	// CALCUL DU SCALE
-	double scale = glm::length(vecteurFinal) / glm::length(vecteurInitial);
 	glm::dvec3 scaleInit = noeud->obtenirAgrandissement();
-	
-	//glm::dvec3 scaleInit = { 1, 1, 1 };
-	glm::dvec3 scaleFinal = glm::dvec3{ scaleInit[0] * scale, scaleInit[1] * scale, scaleInit[2] * scale };
-	// Vu que c'est pour le mur, tu voudrais probablement scaler en x, donc glm::dvec3 scaleFinal = glm::dvec3{ scaleInit[0] * scale, scaleInit[1] , scaleInit[2]};
 
+	glm::dvec3 scaleFinal;
+	glm::dvec3 angles;
+	// CALCUL DE L'ANGLE;
+	if (glm::length(vecteurInitial) > 8 && glm::length(vecteurFinal) > 8)
+	{
+		glm::dvec3 axe{ 0, 100, 0 };
+		glm::dvec3 produitVectoriel = glm::cross(axe, vecteurFinal);
+		double sinAngle = glm::length(produitVectoriel) / glm::length(axe) / glm::length(vecteurInitial);
+		// Le signe de la composante en z donne le sens dans le quel on doit tourner
+		double angleRadian = produitVectoriel.z > 0 ? asin(sinAngle) : -asin(sinAngle);
+		// L'angle est en radian, on doit le convertir
+		double angleDegre = 360.0 / 2.0 / M_PI * angleRadian;
+
+		angles = glm::dvec3{ 0, 0, angleDegre };// A passer en paramètre à assignerRotation
+		std::cout << "ANGLE:" << angles.z << std::endl;
+		// CALCUL DU SCALE
+		double scale = glm::length(vecteurFinal) / glm::length(vecteurInitial);
+
+		//glm::dvec3 scaleInit = { 1, 1, 1 };
+		scaleFinal = glm::dvec3{ scaleInit[0], scaleInit[1] * scale, scaleInit[2] };
+		// Vu que c'est pour le mur, tu voudrais probablement scaler en x, donc glm::dvec3 scaleFinal = glm::dvec3{ scaleInit[0] * scale, scaleInit[1] , scaleInit[2]};
+	}
+	else
+	{
+		scaleFinal = scaleInit;
+		angles = glm::dvec3{ 0, 0, 1 };
+	}
 	// APPLICATION DES DEUX TRANSFORMATIONS;
 
 	// Application du scale
@@ -764,8 +773,8 @@ void FacadeModele::FaireQuelquechose(int x1, int y1, int x2, int y2, NoeudAbstra
 	// Application de la rotation
 
 	// Assigner la rotation avec = au lieu de +=
-	noeud->assignerRotation(angles);
-
+	noeud->assignerRotationHard(angles);
+	
 
 	// NOTE IMPORTANTE: J'ai pas a prendre ses anciens angles et ajouter angles parce que la fonction assignerRotation fait un += avec le paramètre. C'est la seule fonction assigner qui fonctionne comme ça.
 

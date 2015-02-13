@@ -2307,7 +2307,7 @@ namespace InterfaceGraphique
 
         public void creationMur()
         {
-        //  FonctionsNatives.creerMur(previousP.X,previousP.Y,currentP.X,currentP.Y);
+          FonctionsNatives.creerMur(previousP.X,previousP.Y,currentP.X,currentP.Y);
          //  Console.WriteLine(FonctionsNatives.getScale());
            previousP = currentP;
            currentP = panel_GL.PointToClient(MousePosition);
