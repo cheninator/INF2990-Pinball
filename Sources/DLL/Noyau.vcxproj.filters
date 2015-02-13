@@ -11,9 +11,6 @@
     <Filter Include="Source Files\Interface">
       <UniqueIdentifier>{c6bd3f9c-d667-48a1-8aae-154a5de4c711}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Source Files\Configuration">
-      <UniqueIdentifier>{d4ef3242-13cf-45e7-a434-bdabacf4a324}</UniqueIdentifier>
-    </Filter>
     <Filter Include="Source Files\Arbre">
       <UniqueIdentifier>{7472a721-0254-4bca-944a-d230f0ffb5ea}</UniqueIdentifier>
     </Filter>
@@ -32,9 +29,6 @@
     </Filter>
     <Filter Include="Header Files\Interface">
       <UniqueIdentifier>{6c8e2c48-de9f-4091-bc76-fed408577f6f}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Header Files\Configuration">
-      <UniqueIdentifier>{737950f1-92e0-48cc-99df-484ed3bae29b}</UniqueIdentifier>
     </Filter>
     <Filter Include="Header Files\Arbre">
       <UniqueIdentifier>{824db547-4831-4bb7-b7f2-70d05299ed49}</UniqueIdentifier>
@@ -184,13 +178,13 @@
       <Filter>Source Files\Visiteurs</Filter>
     </ClCompile>
     <ClCompile Include="Tests\ArbreRenduINF2990Test.cpp">
-      <Filter>Source Files</Filter>
+      <Filter>Source Files\Tests</Filter>
     </ClCompile>
     <ClCompile Include="Tests\FacadeModeleTest.cpp">
-      <Filter>Source Files</Filter>
+      <Filter>Source Files\Tests</Filter>
     </ClCompile>
     <ClCompile Include="Tests\TestUtilitaire.cpp">
-      <Filter>Source Files</Filter>
+      <Filter>Source Files\Tests</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -362,17 +356,20 @@
     <ClInclude Include="Visiteurs\VisiteurPossibilite.h">
       <Filter>Header Files\Visiteurs</Filter>
     </ClInclude>
+    <ClInclude Include="Arbre\Noeuds\NoeudPaletteG.h">
+      <Filter>Header Files\Arbre\Noeuds</Filter>
+    </ClInclude>
     <ClInclude Include="Tests\ArbreRenduINF2990Test.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="Tests\FacadeModeleTest.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="Tests\TestUtilitaire.h">
-      <Filter>Header Files</Filter>
+      <Filter>Header Files\Tests</Filter>
     </ClInclude>
     <ClInclude Include="Arbre\Noeuds\NoeudPaletteG.h">
       <Filter>Header Files\Arbre\Noeuds</Filter>
+    </ClInclude>
+    <ClInclude Include="Tests\FacadeModeleTest.h">
+      <Filter>Header Files\Tests</Filter>
+    </ClInclude>
+    <ClInclude Include="Tests\TestUtilitaire.h">
+      <Filter>Header Files\Tests</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

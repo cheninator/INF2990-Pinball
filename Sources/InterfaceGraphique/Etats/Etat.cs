@@ -675,9 +675,7 @@ namespace InterfaceGraphique
 
             if (e.Button == MouseButtons.Left)
             {
-                
-                form_.trackCursor(false);     
-
+                form_.trackCursor(false);
             }
             else if (e.Button == MouseButtons.Right)
                 form_.deplacementVueSouris(e);
