@@ -406,11 +406,13 @@ void NoeudAbstrait::afficher() const
 			positionRelative_[0], positionRelative_[1], positionRelative_[2]
 			);
 
-		glScaled(scale_[0], scale_[1], scale_[2]);
+		
 
 		glRotated(rotation_[0], 1.0F, 0.0F, 0.0F);
 		glRotated(rotation_[1], 0.0F, 1.0F, 0.0F);
 		glRotated(rotation_[2], 0.0F, 0.0F, 1.0F);
+
+		glScaled(scale_[0], scale_[1], scale_[2]);
 
 		// Assignation du mode d'affichage des polygones
 		glPolygonMode(GL_FRONT_AND_BACK, modePolygones_);
@@ -540,11 +542,15 @@ void NoeudAbstrait::obtenirVecteursBoite(glm::dvec3 &v1, glm::dvec3 &v2, glm::dv
 	v4.x = boite_.coinMax.x;
 	v4.y = boite_.coinMin.y;
 
+	glm::dmat3 echelle = glm::dmat3{ glm::dvec3{ scale_.x, 0, 0.0 },
+		glm::dvec3{ 0, scale_.y , 0.0f },
+		glm::dvec3{ 0.0, 0.0, scale_.z } };
+
 	//mise a l'echelle des vecteurs
-	v1 = v1 * scale_.x;
-	v2 = v2 * scale_.x;
-	v3 = v3 * scale_.x;
-	v4 = v4 * scale_.x;
+	v1 = echelle * v1;
+	v2 = echelle * v2;
+	v3 = echelle * v3;
+	v4 = echelle * v4;
 
 	//calcul matrice de rotation
 	double angleEnRadian = -rotation_[2] * 2 * 3.1415926535897932384626433832795 / 360;
@@ -685,7 +691,10 @@ bool NoeudAbstrait::pointEstDansBoite(glm::dvec3 point)
 	vecOP = transform * vecOP;
 
 	//appliquer la mise a l'echelle inverse
-	vecOP = vecOP / scale_.x;
+	glm::dmat3 echelle = glm::dmat3{ glm::dvec3{ 1/scale_.x, 0, 0.0 },
+		glm::dvec3{ 0, 1/scale_.y, 0.0f },
+		glm::dvec3{ 0.0, 0.0,1/ scale_.z } };
+	vecOP = echelle * vecOP;
 
 	//verifie si le vecteur est dans la boite
 	if (vecOP.x > boite_.coinMin.x && vecOP.x < boite_.coinMax.x &&

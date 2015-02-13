@@ -47,6 +47,8 @@ public:
 	virtual bool traiter(NoeudTable* noeud);
 	/// Traiter une opération sur l'arbre de rendu et ses enfants
 	virtual bool traiter(NoeudAbstrait* noeud);
+	/// Traiter un mur de façon différente
+	virtual bool traiter(NoeudMur* noeud);
 
 private:
 
