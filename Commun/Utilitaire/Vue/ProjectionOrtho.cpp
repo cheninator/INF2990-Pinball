@@ -163,18 +163,8 @@ namespace vue {
 		// valeurs précédentes: 
 		double xScaleFactor = coinMax[0] * 1.0 / ((xMaxCloture_ - xMinCloture_) * 1.0);
 		double yScaleFactor = coinMax[1] * 1.0 / ((yMaxCloture_ - yMinCloture_) * 1.0);
-
-		std::cout << "xMin | xMax Cloture : " << xMinCloture_ << " | " << xMaxCloture_ << "\n";
-		std::cout << "yMin | yMax Cloture : " << yMinCloture_ << " | " << yMaxCloture_ << "\n";
+				
 		
-		std::cout << "xMin | xMax Fenetre: " << xMinFenetre_ << " | " << xMaxFenetre_ << "\n";
-		std::cout << "yMin | yMax Fenetre: " << yMinFenetre_ << " | " << yMaxFenetre_ << "\n";
-		
-		// Affichage de débug :
-		if (xScaleFactor != 1 || yScaleFactor != 1 )
-		std::cout << "xScaleFactor : " << xScaleFactor << std::endl 
-			<< "yScaleFactor :" << yScaleFactor << std::endl;
-
 		// On fait en sorte que le rendu soit de la bonne taille en multipliant
 		// par le facteur de scale. Puisque la fenêtre virtuelle peut avoir des
 		// coordonnées négatives, il faut s'assurer que les calculs mathématiques
@@ -201,11 +191,6 @@ namespace vue {
 		else if (yScaleFactor < 1)
 			yMaxCloture_ -= (1.0 - yScaleFactor) * (yMaxCloture_ - yMinCloture_);
 
-		std::cout << "xMin | xMax Cloture : " << xMinCloture_ << " | " << xMaxCloture_ << "\n";
-		std::cout << "yMin | yMax Cloture : " << yMinCloture_ << " | " << yMaxCloture_ << "\n";
-		
-		std::cout << "xMin | xMax Fenetre: " << xMinFenetre_ << " | " << xMaxFenetre_ << "\n";
-		std::cout << "yMin | yMax Fenetre: " << yMinFenetre_ << " | " << yMaxFenetre_ << "\n";
 		// On update le rendu
 		appliquer();
 		mettreAJourCloture();
@@ -250,8 +235,6 @@ namespace vue {
 	////////////////////////////////////////////////////////////////////////
 	void ProjectionOrtho::zoomerIn(const glm::ivec2& coin1, const glm::ivec2& coin2)
 	{
-		std::cout << " coin1.x | coin1.y : " << coin1.x << " | " << coin1.y<< "\n";
-		std::cout << " coin2.x | coin2.y : " << coin2.x << " | " << coin2.y << "\n \n";
 
 		if (abs(coin2.x - coin1.x) < 5 || abs(coin2.y - coin1.y) < 5)
 		{
@@ -301,10 +284,6 @@ namespace vue {
 		const double xDroiteCoin = (coin1.x > coin2.x ? coin1.x : coin2.x);
 		const double xRatioSelectionFenetreActuelle = (xDroiteCoin - xGaucheCoin) * 1.0 / longueurFenetreActuelle;
 		
-		std::cout << "WARNING : xCoinGauche | xCoinDroite " << xGaucheCoin << " | " << xDroiteCoin << "\n \n";
-
-		std::cout << "xMin | xMax Fenetre: " << xMinFenetre_ << " | " << xMaxFenetre_ << "\n";
-		std::cout << "yMin | yMax Fenetre: " << yMinFenetre_ << " | " << yMaxFenetre_ << "\n \n";
 		/// Section pour X ///
 		double longueurFenetreSelection = abs(xDroiteCoin - xGaucheCoin);
 		double nouvelleLongueurX = longueurFenetreActuelle / xRatioSelectionFenetreActuelle;
@@ -314,8 +293,6 @@ namespace vue {
 		double nouveauXMinFenetre = xMinFenetre_ - (proportionRelativeCoinGauche * nouvelleLongueurX);
 		double nouveauXMaxFenetre = xMinFenetre_ + (nouvelleLongueurX - (xMinFenetre_ - nouveauXMinFenetre));
 
-		///TODO(Emilio): Penser à faire une méthode afin de ne pas dupliquer le code
-		/// Section pour Y ///
 		const double hauteurFenetreActuelle = yMaxFenetre_ - yMinFenetre_;
 		const double yMinCoin = (coin1.y < coin2.y ? coin1.y : coin2.y);
 		const double yMaxCoin = (coin1.y > coin2.y ? coin1.y : coin2.y);
@@ -337,9 +314,6 @@ namespace vue {
 		xMaxFenetre_ = nouveauXMaxFenetre;
 		yMinFenetre_ = nouveauYMinFenetre;
 		yMaxFenetre_ = nouveauYMaxFenetre;
-
-		std::cout << "xMin | xMax Fenetre: " << xMinFenetre_ << " | " << xMaxFenetre_ << "\n";
-		std::cout << "yMin | yMax Fenetre: " << yMinFenetre_ << " | " << yMaxFenetre_ << "\n \n";
 
 		ajusterRapportAspect(DirectionZoom::OUT_);
 	}
@@ -448,28 +422,18 @@ namespace vue {
 		double delta = 0.0;
 		double rapportAspect = abs(xMaxCloture_ - xMinCloture_) / abs(yMaxCloture_ - yMinCloture_);
 		double rapportAspectVirtuel = (xMaxFenetre_ - xMinFenetre_) / (yMaxFenetre_ - yMinFenetre_);
-
-		std::cout << "------Avant Correction Rapport d'aspect Fenetre : " << rapportAspectVirtuel<< "\n \n";
-		
+				
 		if (abs(rapportAspect - rapportAspectVirtuel) / rapportAspect < (0.0001 * rapportAspect))
 		{
 			std::cout << "\n Rapports aspects sont egaux : pas d'ajustation \n";
 			return; // Les deux rapports d'aspects sont considérés dans la marge d'erreur
 		}
 		if (rapportAspectVirtuel > rapportAspect)
-		{
-			if (dir == IN_)
-				ajusterRapportAspectY(rapportAspect, dir);
-			else if (dir == OUT_)
-				ajusterRapportAspectY(rapportAspect, dir);
-		}
-		else // if (rapportAspectVirtuel < 1.0)
-		{
-			if (dir == IN_)
-				ajusterRapportAspectX(rapportAspect, dir);
-			else if (dir == OUT_)
-				ajusterRapportAspectX(rapportAspect, dir);
-		}
+			ajusterRapportAspectY(rapportAspect, dir);
+		
+		else // if (rapportAspectVirtuel < rapportAspect)
+			ajusterRapportAspectX(rapportAspect, dir);
+		
 		std::cout << "\n Après ajustement de rapport d'aspect : \n";
 		std::cout << "Rapport d'aspect Virtuel : " << (xMaxFenetre_ - xMinFenetre_) / (yMaxFenetre_ - yMinFenetre_) << '\n';
 		std::cout << "Rapport d'aspect Cloture : " << rapportAspect << "\n \n";
@@ -491,13 +455,9 @@ namespace vue {
 	////////////////////////////////////////////////////////////////////////
 	void ProjectionOrtho::ajusterRapportAspectY(double rapportAspect, DirectionZoom dir)
 	{
-		double delta = 0.0;
-		std::cout << "AjusterRapportAspectY \n";
 		double longueurVerticaleRequise = abs(xMaxFenetre_ - xMinFenetre_) / rapportAspect;
-		delta = (longueurVerticaleRequise - abs(yMaxFenetre_ - yMinFenetre_)) / 2.0;
-		std::cout << "delta Y: " << delta;
+		double delta = (longueurVerticaleRequise - abs(yMaxFenetre_ - yMinFenetre_)) / 2.0;
 		if (dir == DirectionZoom::IN_) delta = abs(delta);
-		std::cout << "delta Y: " << delta;
 		yMaxFenetre_ += delta;
 		yMinFenetre_ -= delta;
 	}
@@ -520,7 +480,6 @@ namespace vue {
 		double longueurHorizontaleRequise = abs(yMaxFenetre_ - yMinFenetre_) * rapportAspect;
 		double delta = (longueurHorizontaleRequise - abs(xMaxFenetre_ - xMinFenetre_)) / 2.0;
 		if (dir == DirectionZoom::IN_) delta = abs(delta);
-		std::cout << "delta X: " << delta;
 		xMaxFenetre_ += delta;
 		xMinFenetre_ -= delta;
 	}
