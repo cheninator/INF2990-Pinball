@@ -156,15 +156,13 @@ namespace vue {
 	void ProjectionOrtho::redimensionnerFenetre(const glm::ivec2& coinMin,
 		const glm::ivec2& coinMax)
 	{
-		
 		// coinMax contient les dimensions de la nouvelle fenêtree, car coinMin
 		// est essentiellement tout le temps à zéro. on établi le facteur qu'il
 		// faut élargir le viewport vers la gauche et la droite en fonction des
 		// valeurs précédentes: 
 		double xScaleFactor = coinMax[0] * 1.0 / ((xMaxCloture_ - xMinCloture_) * 1.0);
 		double yScaleFactor = coinMax[1] * 1.0 / ((yMaxCloture_ - yMinCloture_) * 1.0);
-				
-		
+						
 		// On fait en sorte que le rendu soit de la bonne taille en multipliant
 		// par le facteur de scale. Puisque la fenêtre virtuelle peut avoir des
 		// coordonnées négatives, il faut s'assurer que les calculs mathématiques
@@ -235,10 +233,12 @@ namespace vue {
 	////////////////////////////////////////////////////////////////////////
 	void ProjectionOrtho::zoomerIn(const glm::ivec2& coin1, const glm::ivec2& coin2)
 	{
-
-		if (abs(coin2.x - coin1.x) < 5 || abs(coin2.y - coin1.y) < 5)
+		// Puisque qu'on corrigera le rapport d'aspect en touchant une seule direction
+		// (l'autre restera inchangée), il suffit qu'une nouvelle longueur (ou hauteur)
+		// soit plus petite que le zoom maximal permit pour que le zoom soit annulé
+		if (abs(coin2.x - coin1.x) < zoomInMax_ || abs(coin2.y - coin1.y) < zoomInMax_)
 		{
-			std::cout << "Rectangle trop petit, pas de zoom \n";
+			std::cout << "Le zoom out minimal a été atteint : zoom annulé ! \n";
 			return;
 		}
 
@@ -502,9 +502,9 @@ namespace vue {
 	bool ProjectionOrtho::zoomOutValide(double xBorneMin, double xBorneMax, double yBorneMin, double yBorneMax)
 	{
 		bool valide = false;
-		if (xBorneMax - xBorneMin >= zoomOutMax_ || yMaxFenetre_ - yMinFenetre_ >= zoomOutMax_)
+		if (xBorneMax - xBorneMin >= zoomOutMax_ || yBorneMax - yBorneMin >= zoomOutMax_)
 		{
-			std::cout << "La fenetre serait trop petite: zoom annulé ! \n";
+			std::cout << "Le zoom out maximal a été atteint : zoom annulé ! \n";
 		}
 		else
 			valide = true;
@@ -515,9 +515,9 @@ namespace vue {
 	bool ProjectionOrtho::zoomInValide(double xBorneMin, double xBorneMax, double yBorneMin, double yBorneMax)
 	{
 		bool valide = false;
-		if (xBorneMax - xBorneMin <= zoomInMax_ || yMaxFenetre_ - yMinFenetre_ <= zoomInMax_)
+		if ((xBorneMax - xBorneMin) <= zoomInMax_ || (yBorneMax - yBorneMin) <= zoomInMax_)
 		{
-			std::cout << "La fenetre serait trop petite: zoom annulé ! \n";
+			std::cout << "Le zoom out minimal a été atteint : zoom annulé ! \n";
 		}
 		else
 			valide = true;
