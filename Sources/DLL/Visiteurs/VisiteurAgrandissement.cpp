@@ -75,6 +75,7 @@ VisiteurAgrandissement::~VisiteurAgrandissement()
 ////////////////////////////////////////////////////////////////////////
 bool VisiteurAgrandissement::traiter(ArbreRenduINF2990* arbre)
 {
+	// Traiter les enfants de l'arbre de rendu
 	for (unsigned int i = 0; i < arbre->obtenirNombreEnfants(); i++)
 	{
 		arbre->getEnfant(i)->accepterVisiteur(this);
@@ -98,6 +99,7 @@ bool VisiteurAgrandissement::traiter(ArbreRenduINF2990* arbre)
 ////////////////////////////////////////////////////////////////////////
 bool VisiteurAgrandissement::traiter(NoeudTable* table)
 {
+	// Traiter les enfants de la table
 	for (unsigned int i = 0; i < table->obtenirNombreEnfants(); i++)
 	{
 		table->getEnfant(i)->accepterVisiteur(this);
@@ -138,7 +140,19 @@ bool VisiteurAgrandissement::traiter(NoeudAbstrait* noeud)
 	return true;
 }
 
-
+////////////////////////////////////////////////////////////////////////
+///
+/// @fn bool VisiteurAgrandissement::traiter(NoeudMur* noeud)
+///
+/// Cette fonction traite un noeud de l'arbre de rendu pour effectuer 
+/// un agrandissement. Cette fonction retourne true pour dire que l'opération 
+/// s'est faite correctement.
+///
+/// @param[in] noeud : Noeud de l'arbre de rendu à traiter.
+///
+/// @return Retourne toujours true.
+///
+////////////////////////////////////////////////////////////////////////
 bool VisiteurAgrandissement::traiter(NoeudMur* noeud)
 {
 	if (noeud->estSelectionne() && noeud->estAjustable() && noeud->estModifiable())
@@ -151,7 +165,6 @@ bool VisiteurAgrandissement::traiter(NoeudMur* noeud)
 		glm::dvec3 scaleInit = noeud->obtenirAgrandissement();
 		glm::dvec3 scaleFinal = glm::dvec3{ scaleInit[0], scaleInit[1] * homothetie_[1] , scaleInit[2] };
 		noeud->assignerEchelle(scaleFinal);
-
 	}
 
 	return true;

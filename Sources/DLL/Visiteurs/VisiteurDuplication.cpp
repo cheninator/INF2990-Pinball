@@ -8,7 +8,6 @@
 #include "VisiteurDuplication.h"
 #include "../Arbre/ArbreRenduINF2990.h"
 #include "../Arbre/Noeuds/NoeudTable.h"
-#include <iostream>
 
 ////////////////////////////////////////////////////////////////////////
 ///
@@ -137,7 +136,6 @@ bool VisiteurDuplication::traiter(NoeudAbstrait* noeud)
 		// Copier le jumeau du portail si il est selectionné
 		if (noeud->obtenirType() == "portail" && noeud->getTwin()->estSelectionne())
 		{
-			std::cout << "Le portail a un jumeau selectionne! ";
 			// Effectuer la copie du jumeau
 			NoeudAbstrait* copieJumeau = arbreTemp->creerNoeud(noeud->getTwin()->obtenirType());
 			copieJumeau->assignerRotation(noeud->getTwin()->obtenirRotation());
