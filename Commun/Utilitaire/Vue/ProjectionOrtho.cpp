@@ -250,6 +250,9 @@ namespace vue {
 	////////////////////////////////////////////////////////////////////////
 	void ProjectionOrtho::zoomerIn(const glm::ivec2& coin1, const glm::ivec2& coin2)
 	{
+		std::cout << " coin1.x | coin1.y : " << coin1.x << " | " << coin1.y<< "\n";
+		std::cout << " coin2.x | coin2.y : " << coin2.x << " | " << coin2.y << "\n \n";
+
 		if (abs(coin2.x - coin1.x) < 5 || abs(coin2.y - coin1.y) < 5)
 		{
 			std::cout << "Rectangle trop petit, pas de zoom \n";
@@ -453,22 +456,22 @@ namespace vue {
 			std::cout << "\n Rapports aspects sont egaux : pas d'ajustation \n";
 			return; // Les deux rapports d'aspects sont considérés dans la marge d'erreur
 		}
-		if (rapportAspectVirtuel > 1.0)
+		if (rapportAspectVirtuel > rapportAspect)
 		{
 			if (dir == IN_)
-				ajusterRapportAspectX(rapportAspect);
+				ajusterRapportAspectY(rapportAspect, dir);
 			else if (dir == OUT_)
-				ajusterRapportAspectY(rapportAspect);
+				ajusterRapportAspectY(rapportAspect, dir);
 		}
 		else // if (rapportAspectVirtuel < 1.0)
 		{
 			if (dir == IN_)
-				ajusterRapportAspectY(rapportAspect);
+				ajusterRapportAspectX(rapportAspect, dir);
 			else if (dir == OUT_)
-				ajusterRapportAspectX(rapportAspect);
+				ajusterRapportAspectX(rapportAspect, dir);
 		}
-	
-		std::cout << "\n Rapport d'aspect Virtuel : " << (xMaxFenetre_ - xMinFenetre_) / (yMaxFenetre_ - yMinFenetre_) << '\n';
+		std::cout << "\n Après ajustement de rapport d'aspect : \n";
+		std::cout << "Rapport d'aspect Virtuel : " << (xMaxFenetre_ - xMinFenetre_) / (yMaxFenetre_ - yMinFenetre_) << '\n';
 		std::cout << "Rapport d'aspect Cloture : " << rapportAspect << "\n \n";
 
 	}
@@ -486,11 +489,15 @@ namespace vue {
 	/// @return Aucune.
 	///
 	////////////////////////////////////////////////////////////////////////
-	void ProjectionOrtho::ajusterRapportAspectY(double rapportAspect)
+	void ProjectionOrtho::ajusterRapportAspectY(double rapportAspect, DirectionZoom dir)
 	{
+		double delta = 0.0;
+		std::cout << "AjusterRapportAspectY \n";
 		double longueurVerticaleRequise = abs(xMaxFenetre_ - xMinFenetre_) / rapportAspect;
-		double delta = (longueurVerticaleRequise - abs(yMaxFenetre_ - yMinFenetre_)) / 2.0;
-		std::cout << "delta : " << delta;
+		delta = (longueurVerticaleRequise - abs(yMaxFenetre_ - yMinFenetre_)) / 2.0;
+		std::cout << "delta Y: " << delta;
+		if (dir == DirectionZoom::IN_) delta = abs(delta);
+		std::cout << "delta Y: " << delta;
 		yMaxFenetre_ += delta;
 		yMinFenetre_ -= delta;
 	}
@@ -508,11 +515,12 @@ namespace vue {
 	/// @return Aucune.
 	///
 	////////////////////////////////////////////////////////////////////////
-	void ProjectionOrtho::ajusterRapportAspectX(double rapportAspect)
+	void ProjectionOrtho::ajusterRapportAspectX(double rapportAspect, DirectionZoom dir)
 	{
 		double longueurHorizontaleRequise = abs(yMaxFenetre_ - yMinFenetre_) * rapportAspect;
 		double delta = (longueurHorizontaleRequise - abs(xMaxFenetre_ - xMinFenetre_)) / 2.0;
-		std::cout << "delta : " << delta;
+		if (dir == DirectionZoom::IN_) delta = abs(delta);
+		std::cout << "delta X: " << delta;
 		xMaxFenetre_ += delta;
 		xMinFenetre_ -= delta;
 	}
