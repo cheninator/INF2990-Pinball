@@ -82,6 +82,10 @@ public:
 	inline void assignerSelection(bool selectionne);
 	/// Vérifie si le noeud est sélectionné.
 	inline bool estSelectionne() const;
+	/// Vérifie si la positin du noeud est illégale
+	inline bool estImpossible() const;
+	/// Assigner le statut de possibilite
+	inline void assignerImpossible(bool impossible);
 	/// Écrit si le noeud peut être sélectionné ou non.
 	inline void assignerEstSelectionnable(bool selectionnable);
 	/// Écrit le zoom sur le noeud.
@@ -493,6 +497,40 @@ inline void NoeudAbstrait::assignerEstSelectionnable(bool selectionnable)
 {
 	selectionnable_ = selectionnable;
 	selectionne_ = selectionne_ && selectionnable_;
+}
+
+
+////////////////////////////////////////////////////////////////////////
+///
+/// @fn inline void NoeudAbstrait::assignerImpossible( bool impossible )
+///
+/// Cette fonction permet d'assigner l'état d'être impossible ou non du noeud.
+///
+/// @param selectionnable : L'état impossible ou non.
+///
+/// @return Aucune
+///
+////////////////////////////////////////////////////////////////////////
+inline void NoeudAbstrait::assignerImpossible(bool impossible)
+{
+	impossible_ = impossible;
+}
+
+
+////////////////////////////////////////////////////////////////////////
+///
+/// @fn inline void NoeudAbstrait::estImpossible( bool impossible )
+///
+/// Cette fonction permet d'obtenir l'état d'être impossible ou non du noeud.
+///
+/// @param selectionnable : L'état impossible ou non.
+///
+/// @return Aucune
+///
+////////////////////////////////////////////////////////////////////////
+inline bool NoeudAbstrait::estImpossible() const
+{
+	return impossible_;
 }
 
 

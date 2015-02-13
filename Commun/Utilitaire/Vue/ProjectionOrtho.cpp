@@ -156,25 +156,13 @@ namespace vue {
 	void ProjectionOrtho::redimensionnerFenetre(const glm::ivec2& coinMin,
 		const glm::ivec2& coinMax)
 	{
-		
 		// coinMax contient les dimensions de la nouvelle fenêtree, car coinMin
 		// est essentiellement tout le temps à zéro. on établi le facteur qu'il
 		// faut élargir le viewport vers la gauche et la droite en fonction des
 		// valeurs précédentes: 
 		double xScaleFactor = coinMax[0] * 1.0 / ((xMaxCloture_ - xMinCloture_) * 1.0);
 		double yScaleFactor = coinMax[1] * 1.0 / ((yMaxCloture_ - yMinCloture_) * 1.0);
-
-		std::cout << "xMin | xMax Cloture : " << xMinCloture_ << " | " << xMaxCloture_ << "\n";
-		std::cout << "yMin | yMax Cloture : " << yMinCloture_ << " | " << yMaxCloture_ << "\n";
-		
-		std::cout << "xMin | xMax Fenetre: " << xMinFenetre_ << " | " << xMaxFenetre_ << "\n";
-		std::cout << "yMin | yMax Fenetre: " << yMinFenetre_ << " | " << yMaxFenetre_ << "\n";
-		
-		// Affichage de débug :
-		if (xScaleFactor != 1 || yScaleFactor != 1 )
-		std::cout << "xScaleFactor : " << xScaleFactor << std::endl 
-			<< "yScaleFactor :" << yScaleFactor << std::endl;
-
+						
 		// On fait en sorte que le rendu soit de la bonne taille en multipliant
 		// par le facteur de scale. Puisque la fenêtre virtuelle peut avoir des
 		// coordonnées négatives, il faut s'assurer que les calculs mathématiques
@@ -201,11 +189,6 @@ namespace vue {
 		else if (yScaleFactor < 1)
 			yMaxCloture_ -= (1.0 - yScaleFactor) * (yMaxCloture_ - yMinCloture_);
 
-		std::cout << "xMin | xMax Cloture : " << xMinCloture_ << " | " << xMaxCloture_ << "\n";
-		std::cout << "yMin | yMax Cloture : " << yMinCloture_ << " | " << yMaxCloture_ << "\n";
-		
-		std::cout << "xMin | xMax Fenetre: " << xMinFenetre_ << " | " << xMaxFenetre_ << "\n";
-		std::cout << "yMin | yMax Fenetre: " << yMinFenetre_ << " | " << yMaxFenetre_ << "\n";
 		// On update le rendu
 		appliquer();
 		mettreAJourCloture();
@@ -250,18 +233,21 @@ namespace vue {
 	////////////////////////////////////////////////////////////////////////
 	void ProjectionOrtho::zoomerIn(const glm::ivec2& coin1, const glm::ivec2& coin2)
 	{
-		if (abs(coin2.x - coin1.x) < 5 || abs(coin2.y - coin1.y) < 5)
+		/// Puisque qu'on corrigera le rapport d'aspect en touchant une seule direction
+		/// (l'autre restera inchangée), il suffit qu'une nouvelle longueur (ou hauteur)
+		/// soit plus petite que le zoom maximal permit pour que le zoom soit annulé
+		if (abs(coin2.x - coin1.x) < zoomInMax_ || abs(coin2.y - coin1.y) < zoomInMax_)
 		{
-			std::cout << "Rectangle trop petit, pas de zoom \n";
+			std::cout << "Le zoom out minimal a été atteint : zoom annulé ! \n";
 			return;
 		}
 
 		double pointMilieuSelectionX = (coin1.x + coin2.x) / 2.0;
 		double pointMilieuSelectionY = (coin1.y + coin2.y) / 2.0;
 		
-		// L'astuce est simple : on fixe les valeurs de coordonnées
-		// de fenêtre aux coordonnées OpenGL données, puis on corrige
-		// le rapport d'aspect
+		/// L'astuce est simple : on fixe les valeurs de coordonnées
+		/// de fenêtre aux coordonnées OpenGL données, puis on corrige
+		/// le rapport d'aspect
 		xMinFenetre_ = (coin1.x < coin2.x ? coin1.x : coin2.x);
 		xMaxFenetre_ = (coin1.x > coin2.x ? coin1.x : coin2.x);
 		
@@ -298,11 +284,6 @@ namespace vue {
 		const double xDroiteCoin = (coin1.x > coin2.x ? coin1.x : coin2.x);
 		const double xRatioSelectionFenetreActuelle = (xDroiteCoin - xGaucheCoin) * 1.0 / longueurFenetreActuelle;
 		
-		std::cout << "WARNING : xCoinGauche | xCoinDroite " << xGaucheCoin << " | " << xDroiteCoin << "\n \n";
-
-		std::cout << "xMin | xMax Fenetre: " << xMinFenetre_ << " | " << xMaxFenetre_ << "\n";
-		std::cout << "yMin | yMax Fenetre: " << yMinFenetre_ << " | " << yMaxFenetre_ << "\n \n";
-		/// Section pour X ///
 		double longueurFenetreSelection = abs(xDroiteCoin - xGaucheCoin);
 		double nouvelleLongueurX = longueurFenetreActuelle / xRatioSelectionFenetreActuelle;
 		double proportionRelativeCoinGauche = (xGaucheCoin - xMinFenetre_) / longueurFenetreActuelle;
@@ -311,8 +292,6 @@ namespace vue {
 		double nouveauXMinFenetre = xMinFenetre_ - (proportionRelativeCoinGauche * nouvelleLongueurX);
 		double nouveauXMaxFenetre = xMinFenetre_ + (nouvelleLongueurX - (xMinFenetre_ - nouveauXMinFenetre));
 
-		///TODO(Emilio): Penser à faire une méthode afin de ne pas dupliquer le code
-		/// Section pour Y ///
 		const double hauteurFenetreActuelle = yMaxFenetre_ - yMinFenetre_;
 		const double yMinCoin = (coin1.y < coin2.y ? coin1.y : coin2.y);
 		const double yMaxCoin = (coin1.y > coin2.y ? coin1.y : coin2.y);
@@ -335,9 +314,6 @@ namespace vue {
 		yMinFenetre_ = nouveauYMinFenetre;
 		yMaxFenetre_ = nouveauYMaxFenetre;
 
-		std::cout << "xMin | xMax Fenetre: " << xMinFenetre_ << " | " << xMaxFenetre_ << "\n";
-		std::cout << "yMin | yMax Fenetre: " << yMinFenetre_ << " | " << yMaxFenetre_ << "\n \n";
-
 		ajusterRapportAspect(DirectionZoom::OUT_);
 	}
 
@@ -357,9 +333,6 @@ namespace vue {
 	////////////////////////////////////////////////////////////////////////
 	void ProjectionOrtho::translater(double deplacementX, double deplacementY)
 	{
-		// À IMPLANTER.
-		//std::cout << "Facteurs de deplacement : " <<
-		//	"X : " << deplacementX << " Y: " << deplacementY << std::endl;
 		double xTailleCourante = xMaxFenetre_ - xMinFenetre_;
 		double yTailleCourante = yMaxFenetre_ - yMinFenetre_;
 
@@ -410,7 +383,6 @@ namespace vue {
 	////////////////////////////////////////////////////////////////////////
 	void ProjectionOrtho::centrerSurPoint(const glm::dvec2& pointCentre)
 	{
-		// À IMPLANTER.
 		// N.B: Puisque le fonction existante 'translater' suppose que les 
 		// déplacements sont faites à partir des coordonnées de clôtures,
 		// je fais le translate ici.
@@ -445,30 +417,20 @@ namespace vue {
 		double delta = 0.0;
 		double rapportAspect = abs(xMaxCloture_ - xMinCloture_) / abs(yMaxCloture_ - yMinCloture_);
 		double rapportAspectVirtuel = (xMaxFenetre_ - xMinFenetre_) / (yMaxFenetre_ - yMinFenetre_);
-
-		std::cout << "------Avant Correction Rapport d'aspect Fenetre : " << rapportAspectVirtuel<< "\n \n";
-		
+				
 		if (abs(rapportAspect - rapportAspectVirtuel) / rapportAspect < (0.0001 * rapportAspect))
 		{
 			std::cout << "\n Rapports aspects sont egaux : pas d'ajustation \n";
 			return; // Les deux rapports d'aspects sont considérés dans la marge d'erreur
 		}
-		if (rapportAspectVirtuel > 1.0)
-		{
-			if (dir == IN_)
-				ajusterRapportAspectX(rapportAspect);
-			else if (dir == OUT_)
-				ajusterRapportAspectY(rapportAspect);
-		}
-		else // if (rapportAspectVirtuel < 1.0)
-		{
-			if (dir == IN_)
-				ajusterRapportAspectY(rapportAspect);
-			else if (dir == OUT_)
-				ajusterRapportAspectX(rapportAspect);
-		}
-	
-		std::cout << "\n Rapport d'aspect Virtuel : " << (xMaxFenetre_ - xMinFenetre_) / (yMaxFenetre_ - yMinFenetre_) << '\n';
+		if (rapportAspectVirtuel > rapportAspect)
+			ajusterRapportAspectY(rapportAspect, dir);
+		
+		else // if (rapportAspectVirtuel < rapportAspect)
+			ajusterRapportAspectX(rapportAspect, dir);
+		
+		std::cout << "\n Après ajustement de rapport d'aspect : \n";
+		std::cout << "Rapport d'aspect Virtuel : " << (xMaxFenetre_ - xMinFenetre_) / (yMaxFenetre_ - yMinFenetre_) << '\n';
 		std::cout << "Rapport d'aspect Cloture : " << rapportAspect << "\n \n";
 
 	}
@@ -486,11 +448,11 @@ namespace vue {
 	/// @return Aucune.
 	///
 	////////////////////////////////////////////////////////////////////////
-	void ProjectionOrtho::ajusterRapportAspectY(double rapportAspect)
+	void ProjectionOrtho::ajusterRapportAspectY(double rapportAspect, DirectionZoom dir)
 	{
 		double longueurVerticaleRequise = abs(xMaxFenetre_ - xMinFenetre_) / rapportAspect;
 		double delta = (longueurVerticaleRequise - abs(yMaxFenetre_ - yMinFenetre_)) / 2.0;
-		std::cout << "delta : " << delta;
+		if (dir == DirectionZoom::IN_) delta = abs(delta);
 		yMaxFenetre_ += delta;
 		yMinFenetre_ -= delta;
 	}
@@ -508,21 +470,22 @@ namespace vue {
 	/// @return Aucune.
 	///
 	////////////////////////////////////////////////////////////////////////
-	void ProjectionOrtho::ajusterRapportAspectX(double rapportAspect)
+	void ProjectionOrtho::ajusterRapportAspectX(double rapportAspect, DirectionZoom dir)
 	{
 		double longueurHorizontaleRequise = abs(yMaxFenetre_ - yMinFenetre_) * rapportAspect;
 		double delta = (longueurHorizontaleRequise - abs(xMaxFenetre_ - xMinFenetre_)) / 2.0;
-		std::cout << "delta : " << delta;
+		if (dir == DirectionZoom::IN_) delta = abs(delta);
 		xMaxFenetre_ += delta;
 		xMinFenetre_ -= delta;
 	}
 
 	////////////////////////////////////////////////////////////////////////
 	///
-	/// @fn bool bornesSontValide(double xBorneMin, double xBorneMax, double yBorneMin, double yBorneMax);
+	/// @fn bool zoomOutValide(double xBorneMin, double xBorneMax, double yBorneMin, double yBorneMax);
 	///
 	/// Vérfie que les nouvelles bornes qui tentent d'être appliquées 
-	/// respecteront les bornes établies lors de la création de la Vue.
+	/// respecteront les bornes établies lors de la création de la Vue
+	/// dans le scénario d'un zoom qui agrandirait la vue totale.
 	///
 	/// @param[in]	xBorneMin : Borne inférieure en X
 	/// @param[in]	xBorneMin : Borne supérieure en X
@@ -535,9 +498,9 @@ namespace vue {
 	bool ProjectionOrtho::zoomOutValide(double xBorneMin, double xBorneMax, double yBorneMin, double yBorneMax)
 	{
 		bool valide = false;
-		if (xBorneMax - xBorneMin >= zoomOutMax_ || yMaxFenetre_ - yMinFenetre_ >= zoomOutMax_)
+		if (xBorneMax - xBorneMin >= zoomOutMax_ || yBorneMax - yBorneMin >= zoomOutMax_)
 		{
-			std::cout << "La fenetre serait trop petite: zoom annulé ! \n";
+			std::cout << "Le zoom out maximal a été atteint : zoom annulé ! \n";
 		}
 		else
 			valide = true;
@@ -545,12 +508,28 @@ namespace vue {
 		return valide;
 	}
 
+	////////////////////////////////////////////////////////////////////////
+	///
+	/// @fn bool zoomInValide(double xBorneMin, double xBorneMax, double yBorneMin, double yBorneMax);
+	///
+	/// Vérfie que les nouvelles bornes qui tentent d'être appliquées 
+	/// respecteront les bornes établies lors de la création de la Vue
+	/// dans le scénario d'un zoom qui diminuerait la vue totale.
+	///
+	/// @param[in]	xBorneMin : Borne inférieure en X
+	/// @param[in]	xBorneMin : Borne supérieure en X
+	/// @param[in]	xBorneMin : Borne inférieure en Y
+	/// @param[in]	xBorneMin : Borne supérieure en Y
+	///
+	/// @return L'indication pour procéder au zoom
+	///
+	////////////////////////////////////////////////////////////////////////
 	bool ProjectionOrtho::zoomInValide(double xBorneMin, double xBorneMax, double yBorneMin, double yBorneMax)
 	{
 		bool valide = false;
-		if (xBorneMax - xBorneMin <= zoomInMax_ || yMaxFenetre_ - yMinFenetre_ <= zoomInMax_)
+		if ((xBorneMax - xBorneMin) <= zoomInMax_ || (yBorneMax - yBorneMin) <= zoomInMax_)
 		{
-			std::cout << "La fenetre serait trop petite: zoom annulé ! \n";
+			std::cout << "Le zoom out minimal a été atteint : zoom annulé ! \n";
 		}
 		else
 			valide = true;
