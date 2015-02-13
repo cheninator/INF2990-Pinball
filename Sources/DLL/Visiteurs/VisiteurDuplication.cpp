@@ -159,6 +159,7 @@ bool VisiteurDuplication::traiter(NoeudAbstrait* noeud)
 		else if (noeud->obtenirType() == "portail" && !(noeud->getTwin()->estSelectionne()))
 		{
 			noeud->assignerSelection(false);
+			copie->assignerSelection(false);
 			delete copie;
 		}
 

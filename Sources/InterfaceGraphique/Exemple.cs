@@ -1668,7 +1668,7 @@ namespace InterfaceGraphique
                 Xbox.Text = Math.Round(FonctionsNatives.getPositionX()).ToString();
                 Ybox.Text = Math.Round(FonctionsNatives.getPositionY()).ToString();
                 Anglebox.Text = Math.Round(FonctionsNatives.getAngle()).ToString();
-                FMEbox.Text = FonctionsNatives.getScale().ToString();
+                FMEbox.Text = (Math.Round(FonctionsNatives.getScale()*100)/100).ToString();
             }
             if (!(clickValide(origin, currentP)) && (etat is EtatSelection) && e.Button == MouseButtons.Left)
             {
@@ -1702,9 +1702,10 @@ namespace InterfaceGraphique
             {
                 panel_GL.MouseMove -= panel_MouseMove;
             }
-            if (etat is EtatDuplication)
+            if (etat is EtatDuplication && e.Button == MouseButtons.Left)
             {
-               etat = new EtatSelection(this);
+               etat = new EtatNone(this);
+               deselection();   
               
             }
             if (e.Button == MouseButtons.Left)
