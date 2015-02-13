@@ -8,7 +8,7 @@
 #include "VisiteurDuplication.h"
 #include "../Arbre/ArbreRenduINF2990.h"
 #include "../Arbre/Noeuds/NoeudTable.h"
-#include <iostream>
+
 
 ////////////////////////////////////////////////////////////////////////
 ///
@@ -90,8 +90,6 @@ bool VisiteurDuplication::traiter(ArbreRenduINF2990* arbre)
 ////////////////////////////////////////////////////////////////////////
 bool VisiteurDuplication::traiter(NoeudTable* table)
 {
-	std::cout << "Nombre defants : " << table->obtenirNombreEnfants();
-
 	// Traiter les enfants de la table
 	for (unsigned int i = 0; i < table->obtenirNombreEnfants(); i++)
 	{

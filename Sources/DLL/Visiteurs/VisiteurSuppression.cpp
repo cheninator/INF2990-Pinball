@@ -9,7 +9,7 @@
 #include "VisiteurSuppression.h"
 #include "../Arbre/ArbreRenduINF2990.h"
 #include "../Arbre/Noeuds/NoeudTable.h"
-#include <iostream>
+
 
 ////////////////////////////////////////////////////////////////////////
 ///
@@ -117,7 +117,7 @@ bool VisiteurSuppression::traiter(NoeudTable* table)
 ////////////////////////////////////////////////////////////////////////
 bool VisiteurSuppression::traiter(NoeudAbstrait* noeud)
 {
-	if (noeud->estSelectionne() && noeud->estModifiable())
+	if (noeud->estSelectionne())
 	{
 		if ((noeud->obtenirType() == "portail") && (noeud->getTwin() != nullptr))
 			suppression.push_back(noeud->getTwin());

@@ -58,7 +58,6 @@ Samuel Millette <BR>
 #include "AideGL.h"
 #include "ArbreRenduINF2990.h"
 
-#include "ConfigScene.h"
 #include "CompteurAffichage.h"
 
 // Remplacement de EnveloppeXML/XercesC par TinyXML
@@ -70,11 +69,6 @@ Samuel Millette <BR>
 
 /// Pointeur vers l'instance unique de la classe.
 FacadeModele* FacadeModele::instance_{ nullptr };
-
-/*
-/// Chaîne indiquant le nom du fichier de configuration du projet.
-const std::string FacadeModele::FICHIER_CONFIGURATION{ "configuration.xml" };
-*/
 
 
 ////////////////////////////////////////////////////////////////////////
@@ -113,6 +107,7 @@ void FacadeModele::libererInstance()
 	delete instance_;
 	instance_ = nullptr;
 }
+
 
 ////////////////////////////////////////////////////////////////////////
 ///

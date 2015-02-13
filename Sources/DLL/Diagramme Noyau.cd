@@ -3,15 +3,8 @@
   <Class Name="FacadeModele" Collapsed="true">
     <Position X="10" Y="1.5" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAYAAAhAAACAIAAAAAAAABBAAkBCQAAAAAQkAgCgAQA=</HashCode>
+      <HashCode>AIYAAQhABAiAIAAkACABIhDAgEBBQAAAAAQkAgCgQQA=</HashCode>
       <FileName>Application\FacadeModele.h</FileName>
-    </TypeIdentifier>
-  </Class>
-  <Class Name="ConfigScene" Collapsed="true">
-    <Position X="11.75" Y="0.5" Width="1.5" />
-    <TypeIdentifier>
-      <HashCode>AAAAAAAQAAAAAAAAAAAAAAgAgAAABAAAAAAAAAAAAAA=</HashCode>
-      <FileName>Configuration\ConfigScene.h</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="ArbreRendu" Collapsed="true">
@@ -24,22 +17,8 @@
   <Class Name="ArbreRenduINF2990" Collapsed="true">
     <Position X="2" Y="4.75" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAAAAAAAAAAAEAAAAAAAAAQAAAAAACAAAAAkAAAAAAA=</HashCode>
+      <HashCode>ghAEAhECCQAAcAAYCAAQAACAiIBBACAMBAAEAKAAAQA=</HashCode>
       <FileName>Arbre\ArbreRenduINF2990.h</FileName>
-    </TypeIdentifier>
-  </Class>
-  <Class Name="UsineNoeudAraignee" Collapsed="true">
-    <Position X="7.25" Y="9" Width="1.5" />
-    <TypeIdentifier>
-      <HashCode>AAAAAAAAAIEAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
-      <FileName>Arbre\Usines\UsineNoeudAraignee.h</FileName>
-    </TypeIdentifier>
-  </Class>
-  <Class Name="UsineNoeudConeCube" Collapsed="true">
-    <Position X="3.5" Y="7.75" Width="1.5" />
-    <TypeIdentifier>
-      <HashCode>AAAAAAAAAAEAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
-      <FileName>Arbre\Usines\UsineNoeudConeCube.h</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="UsineNoeud" Collapsed="true">
@@ -49,31 +28,17 @@
       <FileName>Arbre\Usines\UsineNoeud.h</FileName>
     </TypeIdentifier>
   </Class>
-  <Class Name="NoeudAraignee" Collapsed="true">
-    <Position X="3.75" Y="3.25" Width="1.5" />
-    <TypeIdentifier>
-      <HashCode>AAAEAAAAAAAAAAAAAAAAAAAAAAAAIAAAAAAAAIDAAAA=</HashCode>
-      <FileName>Arbre\Noeuds\NoeudAraignee.h</FileName>
-    </TypeIdentifier>
-  </Class>
-  <Class Name="NoeudConeCube" Collapsed="true">
-    <Position X="0.75" Y="1.75" Width="1.5" />
-    <TypeIdentifier>
-      <HashCode>AAAEAAAAACAAIAAAAAAAAIAAAAAAAAAAAQAAAACAAAA=</HashCode>
-      <FileName>Arbre\Noeuds\NoeudConeCube.h</FileName>
-    </TypeIdentifier>
-  </Class>
   <Class Name="NoeudAbstrait" Collapsed="true">
     <Position X="2.25" Y="0.5" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AGiEsAJAQGgTAAEAAARAEAAEAECRUDAAgDIAAmCICAA=</HashCode>
+      <HashCode>RWjUsAJAQmhTAKEMAgTAEEAGCWCRVHAJkDIAEuCYWAA=</HashCode>
       <FileName>Arbre\Noeuds\NoeudAbstrait.h</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="NoeudComposite" Collapsed="true">
     <Position X="3.75" Y="1.75" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AGCEAABAACADAAAAAARAAAAAAAAAIBAAADAAAACYAAA=</HashCode>
+      <HashCode>EGCEAABAACADAAAAAARAAAAAAAAAIBAEADAAAACYAAA=</HashCode>
       <FileName>Arbre\Noeuds\NoeudComposite.h</FileName>
     </TypeIdentifier>
   </Class>
@@ -82,13 +47,6 @@
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAAAAAAAAAQAAAAAABAAAAAAAAAAAAAA=</HashCode>
       <FileName>Tests\BancTests.h</FileName>
-    </TypeIdentifier>
-  </Class>
-  <Class Name="ConfigSceneTest" Collapsed="true">
-    <Position X="13.5" Y="0.5" Width="1.5" />
-    <TypeIdentifier>
-      <HashCode>AAEBAAAICAAAAAAAEAAAAAAAAAQAAAAAAAAAAAAAAAA=</HashCode>
-      <FileName>Tests\ConfigSceneTest.h</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="NoeudAbstraitTest" Collapsed="true">
@@ -109,49 +67,42 @@
   <Class Name="NoeudCible" Collapsed="true">
     <Position X="9" Y="5" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AEAEAAAAACAAACAAAAAAAIAAAAAAAAAAAAAAAACAAAA=</HashCode>
+      <HashCode>AEAEAAAAACAAACAAAAAAAIAAAAAAAAAIAAAAAACAAAA=</HashCode>
       <FileName>Arbre\Noeuds\NoeudCible.h</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="NoeudGenerateurBille" Collapsed="true">
     <Position X="8" Y="4" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAAEAAAAAAAAAAAAAAAAAAAAAAABAAAAAAAAAECAAAA=</HashCode>
+      <HashCode>AAAEAAAAAAAAAAAAAAAAAAAAAAABAAAIAAAAAECAAAA=</HashCode>
       <FileName>Arbre\Noeuds\NoeudGenerateurBille.h</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="NoeudMur" Collapsed="true">
     <Position X="5" Y="5" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAAEAAACACAAAAAAAAAAAIAAAAAAAAAAAABAAACAAAA=</HashCode>
+      <HashCode>AAAEAAACACAAAAAAAAAAAIAAAAAAAAAIAABAAACAAAA=</HashCode>
       <FileName>Arbre\Noeuds\NoeudMur.h</FileName>
-    </TypeIdentifier>
-  </Class>
-  <Class Name="NoeudPalette" Collapsed="true">
-    <Position X="11" Y="5" Width="1.5" />
-    <TypeIdentifier>
-      <HashCode>IAAEAgAAACAAAAAAAAAAAIAAAAAAAAAAAAAAAACAAAA=</HashCode>
-      <FileName>Arbre\Noeuds\NoeudPalette.h</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="NoeudPortail" Collapsed="true">
     <Position X="10" Y="4" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAAEAAAAACAAAAAAAAAAAIAAAAAAAAAAgAAAAECAAAA=</HashCode>
+      <HashCode>AAAEAAAAACAAAAAAAAAAAIAAAAAAAAAIgAAAAECAAAA=</HashCode>
       <FileName>Arbre\Noeuds\NoeudPortail.h</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="NoeudRessort" Collapsed="true">
     <Position X="7" Y="5" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AgAEAAAAACAAAAAAAAAAAIAAAAAAAAIAAAAAAACAAAA=</HashCode>
+      <HashCode>AgAEAAAAACAAAAAAAAAAAIAAAAAAAAIIAAAAAACAAAA=</HashCode>
       <FileName>Arbre\Noeuds\NoeudRessort.h</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="NoeudTrou" Collapsed="true">
     <Position X="12" Y="4" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAAEAAAAACAAAAAAAAAAAIAAAAAAAAAAIIAAAACAAAA=</HashCode>
+      <HashCode>AAAEAAAAACAAAAAAAAAAAIAAAAAAAAAIIIAAAACAAAA=</HashCode>
       <FileName>Arbre\Noeuds\NoeudTrou.h</FileName>
     </TypeIdentifier>
   </Class>
@@ -213,18 +164,291 @@
       <FileName>Arbre\Usines\UsineNoeudTrou.h</FileName>
     </TypeIdentifier>
   </Class>
-  <Class Name="NoeudButoir" Collapsed="true">
-    <Position X="6" Y="4" Width="1.5" />
-    <TypeIdentifier>
-      <HashCode>AAQEAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAADAACA=</HashCode>
-      <FileName>Arbre\Noeuds\NoeudButoir.h</FileName>
-    </TypeIdentifier>
-  </Class>
   <Class Name="VisiteurAbstrait" Collapsed="true">
     <Position X="6.75" Y="0.5" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAQAAAAAAAgAAAAA=</HashCode>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAIAQAAAAAAAgAAAAA=</HashCode>
       <FileName>Visiteurs\VisiteurAbstrait.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ArbreRenduINF2990Test" Collapsed="true">
+    <Position X="67.5" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>EgFACAAICAAAAEAAEAAAAEAAAAQAAAIABAAAIAAABQA=</HashCode>
+      <FileName>Tests\ArbreRenduINF2990Test.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="FacadeModeleTest" Collapsed="true">
+    <Position X="69.25" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAEAAAAACAAAAAAQEAAAAAAAAAQAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Tests\FacadeModeleTest.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="TestUtilitaire" Collapsed="true">
+    <Position X="69.25" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAEAAAAICAAAAAAAEAAAAAAAAAQAAAAAAAEAAAAAAAA=</HashCode>
+      <FileName>Tests\TestUtilitaire.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="UsineNoeudBille" Collapsed="true">
+    <Position X="22.5" Y="6.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAEAAAAAAAACAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Arbre\Usines\UsineNoeudBille.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="UsineNoeudButoirD" Collapsed="true">
+    <Position X="27" Y="6.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAEAAAAAAAAAAAAAAAAAAAQAAAAAAAAAAAA=</HashCode>
+      <FileName>Arbre\Usines\UsineNoeudButoirD.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="UsineNoeudButoirCirculaire" Collapsed="true">
+    <Position X="29.25" Y="6.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAEAAAAAAAAAAAAAAABAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Arbre\Usines\UsineNoeudButoirCirculaire.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="UsineNoeudButoirG" Collapsed="true">
+    <Position X="31.5" Y="6.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAEAAAAAAAAAAAAAAAAAAAAAAAAAAAIAAAA=</HashCode>
+      <FileName>Arbre\Usines\UsineNoeudButoirG.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="UsineNoeudCouvercle" Collapsed="true">
+    <Position X="33.75" Y="6.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAEAAAAAAAAAAAAAAAAAAAAAAACAAAAAAAA=</HashCode>
+      <FileName>Arbre\Usines\UsineNoeudCouvercle.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="UsineNoeudPaletteD" Collapsed="true">
+    <Position X="15.75" Y="6.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAgAAAAAAAEAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Arbre\Usines\UsineNoeudPaletteD.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="UsineNoeudPaletteG" Collapsed="true">
+    <Position X="18" Y="6.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAgAAAAAAAEAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Arbre\Usines\UsineNoeudPaletteG.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="UsineNoeudTable" Collapsed="true">
+    <Position X="20.25" Y="6.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAEIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Arbre\Usines\UsineNoeudTable.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="UsineNoeudVide" Collapsed="true">
+    <Position X="24.75" Y="6.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAEAAAAAAAAAAAAAQAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Arbre\Usines\UsineNoeudVide.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="NoeudBille" Collapsed="true">
+    <Position X="55.25" Y="2" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAEAAAAQAAAAAAAAAAAAAAAAAAAAAAIAAAAABCAAAA=</HashCode>
+      <FileName>Arbre\Noeuds\NoeudBille.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="NoeudButoirD" Collapsed="true">
+    <Position X="57.5" Y="2" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAQEAAAAAAAAAACAAAAAAAAAAAAAAAAIAAAAAADAAAA=</HashCode>
+      <FileName>Arbre\Noeuds\NoeudButoirD.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="NoeudButoirCirculaire" Collapsed="true">
+    <Position X="59.75" Y="2" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAkAAAAACAAAAAAAAAAAIAAAAAABAAIAAAAAACAAAA=</HashCode>
+      <FileName>Arbre\Noeuds\NoeudButoirCirculaire.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="NoeudButoirG" Collapsed="true">
+    <Position X="62" Y="2" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAQEAAAAAAAAAAAABAAAAAAAAAAAAAAIAAAAAADAAAA=</HashCode>
+      <FileName>Arbre\Noeuds\NoeudButoirG.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="NoeudCouvercle" Collapsed="true">
+    <Position X="0.5" Y="2" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAEAAAAACAAAAAAAAAAAIAQAAABAAAMAAAAAACAAAA=</HashCode>
+      <FileName>Arbre\Noeuds\NoeudCouvercle.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="NoeudPaletteD" Collapsed="true">
+    <Position X="50.75" Y="2" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAEAAAAACAAAAAAAAAAAIAAAAAAAAAIgAAAAACAAAA=</HashCode>
+      <FileName>Arbre\Noeuds\NoeudPaletteD.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="NoeudTable" Collapsed="true">
+    <Position X="53" Y="2" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AABEAAABACAAAAAAAAAAAIAAAAAAAAAMAAAAAACAAAA=</HashCode>
+      <FileName>Arbre\Noeuds\NoeudTable.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="NoeudVide" Collapsed="true">
+    <Position X="65" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAEAAAAACABAAAAAAAAAIAAAAAAAAAIAAIAAACAAAA=</HashCode>
+      <FileName>Arbre\Noeuds\NoeudVide.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="NoeudCompositeTest" Collapsed="true">
+    <Position X="67.5" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAUAAAAICBAAAAAAEAAAAAAAAAQAAAAAAAAAAAAEAAA=</HashCode>
+      <FileName>Tests\NoeudCompositeTest.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="VisiteurAgrandissement" Collapsed="true">
+    <Position X="37" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAgAAAgAIAAAAAAAAAAAAgCAAEA=</HashCode>
+      <FileName>Visiteurs\VisiteurAgrandissement.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="VisiteurCentreDeMasse" Collapsed="true">
+    <Position X="41.5" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAQAAAAAAAAAAQAAAAAAAAAAAAACAAoAAgAAAAA=</HashCode>
+      <FileName>Visiteurs\VisiteurCentreDeMasse.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="VisiteurDeplacement" Collapsed="true">
+    <Position X="46" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAQAAAAAAAAAAAAAAAAAAAAEAAQAQAEAAgAAAAA=</HashCode>
+      <FileName>Visiteurs\VisiteurDeplacement.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="VisiteurDeselectionnerTout" Collapsed="true">
+    <Position X="8.5" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAABAACAgAAAAA=</HashCode>
+      <FileName>Visiteurs\VisiteurDeselectionnerTout.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="VisiteurDuplication" Collapsed="true">
+    <Position X="19" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAQAAAAAAAAAIAAAAAgAAAAAAQAAAAAAAAgAAAAA=</HashCode>
+      <FileName>Visiteurs\VisiteurDuplication.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="VisiteurLimitesSelection" Collapsed="true">
+    <Position X="23.5" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAgAMAAEABgAAgAEAEEAAgAAAAA=</HashCode>
+      <FileName>Visiteurs\VisiteurLimitesSelection.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="VisiteurListeEnglobante" Collapsed="true">
+    <Position X="28" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAIAAEAAAAAAAAAAAAAAAAAAAAAAAAAAAAggEAAA=</HashCode>
+      <FileName>Visiteurs\VisiteurListeEnglobante.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="VisiteurPossibilite" Collapsed="true">
+    <Position X="32.5" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAIAAAAAAAAAAAAQAAAAAAAAAAAAAAAAAAAAgAAAAA=</HashCode>
+      <FileName>Visiteurs\VisiteurPossibilite.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="VisiteurRotation" Collapsed="true">
+    <Position X="39.25" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAIAIAAACAAAAAAAAAAAAAACAAAAAAAAAAAAgAACAA=</HashCode>
+      <FileName>Visiteurs\VisiteurRotation.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="VisiteurRotationPoint" Collapsed="true">
+    <Position X="43.75" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAACAIECACAAAAAAAAAAAAAACAAAAAAAAAAAAgAAAAA=</HashCode>
+      <FileName>Visiteurs\VisiteurRotationPoint.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="VisiteurSelection" Collapsed="true">
+    <Position X="48.25" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>EAAAAAAAAAAAAAAAAAABABAAhAAAAAAAAAAAAgAAAAA=</HashCode>
+      <FileName>Visiteurs\VisiteurSelection.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="VisiteurSelectionInverse" Collapsed="true">
+    <Position X="16.5" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>EAAAAAAAAAAAAAAAAACBABAAgAAAAAAACAAAAgAAAAA=</HashCode>
+      <FileName>Visiteurs\VisiteurSelectionInverse.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="VisiteurSelectionInverseMultiple" Collapsed="true">
+    <Position X="21.25" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAACAAAAAAAAAAQAAAAAABAAgAAAAAAAAAAAAgAAQAA=</HashCode>
+      <FileName>Visiteurs\VisiteurSelectionInverseMultiple.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="VisiteurSelectionMultiple" Collapsed="true">
+    <Position X="25.75" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAABAAgIAAAAAABAAAAgAAQAA=</HashCode>
+      <FileName>Visiteurs\VisiteurSelectionMultiple.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="VisiteurSuppression" Collapsed="true">
+    <Position X="30.25" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAgACAAAAAIAAAAAAAAAAAAAAAAQAAAAAAAAgAAAAA=</HashCode>
+      <FileName>Visiteurs\VisiteurSuppression.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="VisiteurXML" Collapsed="true">
+    <Position X="34.75" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AEAAAgAAAAACAAAAAACAAAIAAAIAAAAAAQAAAgABAAA=</HashCode>
+      <FileName>Visiteurs\VisiteurXML.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="NoeudAraignee" Collapsed="true">
+    <Position X="3.75" Y="3.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>arbre\noeuds\noeudaraignee.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="NoeudConeCube" Collapsed="true">
+    <Position X="0.75" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>arbre\noeuds\noeudconecube.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ConfigScene" Collapsed="true">
+    <Position X="11.75" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAQAAAAAAAAAAAAAAgAgAAABAAAAAAAAAAAAAA=</HashCode>
+      <FileName>configuration\configscene.h</FileName>
     </TypeIdentifier>
   </Class>
   <Font Name="Segoe UI" Size="9" />

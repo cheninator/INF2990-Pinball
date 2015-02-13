@@ -132,13 +132,11 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="Application\FacadeModele.cpp" />
-    <ClCompile Include="Arbre\Noeuds\NoeudAraignee.cpp" />
     <ClCompile Include="Arbre\Noeuds\NoeudBille.cpp" />
     <ClCompile Include="Arbre\Noeuds\NoeudButoirD.cpp" />
     <ClCompile Include="Arbre\Noeuds\NoeudButoirCirculaire.cpp" />
     <ClCompile Include="Arbre\Noeuds\NoeudButoirG.cpp" />
     <ClCompile Include="Arbre\Noeuds\NoeudCible.cpp" />
-    <ClCompile Include="Arbre\Noeuds\NoeudConeCube.cpp" />
     <ClCompile Include="Arbre\Noeuds\NoeudCouvercle.cpp" />
     <ClCompile Include="Arbre\Noeuds\NoeudGenerateurBille.cpp" />
     <ClCompile Include="Arbre\Noeuds\NoeudMur.cpp" />
@@ -149,7 +147,6 @@
     <ClCompile Include="Arbre\Noeuds\NoeudTable.cpp" />
     <ClCompile Include="Arbre\Noeuds\NoeudTrou.cpp" />
     <ClCompile Include="Arbre\Noeuds\NoeudVide.cpp" />
-    <ClCompile Include="Configuration\ConfigScene.cpp" />
     <ClCompile Include="Arbre\ArbreRendu.cpp" />
     <ClCompile Include="Arbre\ArbreRenduINF2990.cpp" />
     <ClCompile Include="Arbre\Noeuds\NoeudAbstrait.cpp" />
@@ -180,29 +177,26 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Application\FacadeModele.h" />
-    <ClInclude Include="Arbre\Noeuds\NoeudAraignee.h" />
     <ClInclude Include="Arbre\Noeuds\NoeudBille.h" />
     <ClInclude Include="Arbre\Noeuds\NoeudButoirD.h" />
     <ClInclude Include="Arbre\Noeuds\NoeudButoirCirculaire.h" />
     <ClInclude Include="Arbre\Noeuds\NoeudButoirG.h" />
     <ClInclude Include="Arbre\Noeuds\NoeudCible.h" />
-    <ClInclude Include="Arbre\Noeuds\NoeudConeCube.h" />
     <ClInclude Include="Arbre\Noeuds\NoeudCouvercle.h" />
     <ClInclude Include="Arbre\Noeuds\NoeudGenerateurBille.h" />
     <ClInclude Include="Arbre\Noeuds\NoeudMur.h" />
     <ClInclude Include="Arbre\Noeuds\NoeudPaletteD.h" />
+    <ClInclude Include="Arbre\Noeuds\NoeudPaletteG.h" />
     <ClInclude Include="Arbre\Noeuds\NoeudPortail.h" />
     <ClInclude Include="Arbre\Noeuds\NoeudRessort.h" />
     <ClInclude Include="Arbre\Noeuds\NoeudTable.h" />
     <ClInclude Include="Arbre\Noeuds\NoeudTrou.h" />
     <ClInclude Include="Arbre\Noeuds\NoeudVide.h" />
-    <ClInclude Include="Arbre\Usines\UsineNoeudAraignee.h" />
     <ClInclude Include="Arbre\Usines\UsineNoeudBille.h" />
     <ClInclude Include="Arbre\Usines\UsineNoeudButoirD.h" />
     <ClInclude Include="Arbre\Usines\UsineNoeudButoirCirculaire.h" />
     <ClInclude Include="Arbre\Usines\UsineNoeudButoirG.h" />
     <ClInclude Include="Arbre\Usines\UsineNoeudCible.h" />
-    <ClInclude Include="Arbre\Usines\UsineNoeudConeCube.h" />
     <ClInclude Include="Arbre\Usines\UsineNoeudCouvercle.h" />
     <ClInclude Include="Arbre\Usines\UsineNoeudGenerateurBille.h" />
     <ClInclude Include="Arbre\Usines\UsineNoeudMur.h" />
@@ -213,14 +207,12 @@
     <ClInclude Include="Arbre\Usines\UsineNoeudTable.h" />
     <ClInclude Include="Arbre\Usines\UsineNoeudTrou.h" />
     <ClInclude Include="Arbre\Usines\UsineNoeudVide.h" />
-    <ClInclude Include="Configuration\ConfigScene.h" />
     <ClInclude Include="Arbre\ArbreRendu.h" />
     <ClInclude Include="Arbre\ArbreRenduINF2990.h" />
     <ClInclude Include="Arbre\Usines\UsineNoeud.h" />
     <ClInclude Include="Arbre\Noeuds\NoeudAbstrait.h" />
     <ClInclude Include="Arbre\Noeuds\NoeudComposite.h" />
     <ClInclude Include="Interface\FacadeInterfaceNative.h" />
-    <ClInclude Include="Noeuds\NoeudButoirG.h" />
     <ClInclude Include="Tests\ArbreRenduINF2990Test.h" />
     <ClInclude Include="Tests\FacadeModeleTest.h" />
     <ClInclude Include="Tests\NoeudCompositeTest.h" />
