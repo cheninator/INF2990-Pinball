@@ -113,8 +113,8 @@ bool NoeudCouvercle::accepterVisiteur(VisiteurAbstrait* vis)
 {
 	bool reussi = false;
 
-	//if (vis->traiter(this))
-	//	reussi = true;
+	if (vis->traiter(this))
+		reussi = true;
 
 	return reussi;
 }

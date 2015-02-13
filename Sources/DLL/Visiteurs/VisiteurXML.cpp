@@ -8,6 +8,7 @@
 
 #include "VisiteurXML.h"
 #include "../Arbre/ArbreRenduINF2990.h"
+#include "../Arbre/Noeuds/NoeudTable.h"
 
 
 ////////////////////////////////////////////////////////////////////////
@@ -59,6 +60,119 @@ VisiteurXML::~VisiteurXML()
 ////////////////////////////////////////////////////////////////////////
 bool VisiteurXML::traiter(ArbreRenduINF2990* arbre)
 {
+	// Enregistrer les propriétés de la zone de jeu
+	traiterProprietes();
+
+	// ElementArbre sera la racine
+	elementArbreRendu = document.NewElement("arbreRenduINF2990");
+
+	// Traiter les enfants de l'arbre
+	for (unsigned int i = 0; i < arbre->obtenirNombreEnfants(); i++)
+	{
+		arbre->getEnfant(i)->accepterVisiteur(this);
+	}
+
+	// Lier la racine au document XML
+	document.LinkEndChild(elementArbreRendu);
+
+	// Enregistrer le document
+	document.SaveFile(nomFichier.c_str());
+
+	return true;
+}
+
+
+////////////////////////////////////////////////////////////////////////
+///
+/// @fn bool VisiteurXML::traiter(NoeudTable* table)
+///
+/// Cette fonction traite la table pour enregistrer ses enfants
+/// dans un fichier XML. Cette fonction retourne true pour dire que l'opération s'est
+/// faite correctement, ou false si on ne permet pas la sauvegarde
+///
+/// @return Retourne true ou false.
+///
+////////////////////////////////////////////////////////////////////////
+bool VisiteurXML::traiter(NoeudTable* table)
+{
+	// ElementTable sera un enfant de ElementArbreRendu
+	elementTable = document.NewElement("table");
+	elementTable->SetAttribute("nbEnfants", table->obtenirNombreEnfants());
+
+	// Traiter les enfants de la table
+	for (unsigned int i = 0; i < table->obtenirNombreEnfants(); i++)
+	{
+		table->getEnfant(i)->accepterVisiteur(this);
+	}
+
+	// Lier l'arbre à la table
+	elementArbreRendu->LinkEndChild(elementTable);
+
+	return true;
+}
+
+
+////////////////////////////////////////////////////////////////////////
+///
+/// @fn bool VisiteurXML::traiter(NoeudAbstrait* noeud)
+///
+/// Cette fonction traite les enfants de l'arbre de rendu. Si ses enfants ont des enfants
+/// ils seront aussi traités.Cette fonction retourne true pour dire que l'opération s'est
+/// fait correctement.
+///
+/// @param[in] noeud : Le noeud à traiter.
+///
+/// @return Retourne toujours true
+///
+////////////////////////////////////////////////////////////////////////
+bool VisiteurXML::traiter(NoeudAbstrait* noeud)
+{
+	std::string nom = noeud->obtenirType();
+
+	// Créer le noeud
+	tinyxml2::XMLElement* element{ document.NewElement(nom.c_str()) };
+
+	if (nom != "couvercle")
+	{
+		// Attributs pour la position du noeud
+		element->SetAttribute("posX", noeud->obtenirPositionRelative().x);
+		element->SetAttribute("posY", noeud->obtenirPositionRelative().y);
+		element->SetAttribute("posZ", noeud->obtenirPositionRelative().z);
+
+		// Attributs pour le scale
+		element->SetAttribute("scaleX", noeud->obtenirAgrandissement().x);
+		element->SetAttribute("scaleY", noeud->obtenirAgrandissement().y);
+		element->SetAttribute("scaleZ", noeud->obtenirAgrandissement().z);
+
+		// Attributs pour l'angle
+		element->SetAttribute("angleX", noeud->obtenirRotation().x);
+		element->SetAttribute("angleY", noeud->obtenirRotation().y);
+		element->SetAttribute("angleZ", noeud->obtenirRotation().z);
+
+		if (nom == "paletted" || nom == "paletteg")
+			element->SetAttribute("color", noeud->getColorShift());
+
+		elementTable->LinkEndChild(element);
+	}
+
+	else
+		elementArbreRendu->LinkEndChild(element);
+
+	return true;
+}
+
+
+////////////////////////////////////////////////////////////////////////
+///
+/// @fn bool VisiteurXML::traiterProprietes()
+///
+/// Cette fonction enregistre les propriétés de la zone de jeu
+///
+/// @return Retourne toujours true
+///
+////////////////////////////////////////////////////////////////////////
+bool VisiteurXML::traiterProprietes()
+{
 	// Creer le noeud propriété
 	tinyxml2::XMLElement* elementPropriete{ document.NewElement("Proprietes") };
 
@@ -88,81 +202,6 @@ bool VisiteurXML::traiter(ArbreRenduINF2990* arbre)
 
 	document.LinkEndChild(elementPropriete);
 
-
-	// Créer le noeud 'elementArbreRendu'
-	tinyxml2::XMLElement* elementArbreRendu{ document.NewElement("arbreRenduINF2990") };
-
-	for (unsigned int i = 0; i < arbre->obtenirNombreEnfants(); i++)
-	{
-		traiter(arbre->getEnfant(i), elementArbreRendu);
-	}
-
-	document.LinkEndChild(elementArbreRendu);
-	document.SaveFile(nomFichier.c_str());
-
-	return true;
-
-}
-
-
-////////////////////////////////////////////////////////////////////////
-///
-/// @fn bool VisiteurXML::traiter(NoeudAbstrait* noeud, tinyxml2::XMLElement* parent)
-///
-/// Cette fonction traite les enfants de l'arbre de rendu. Si ses enfants ont des enfants
-/// ils seront aussi traités.
-///
-/// Cette fonction retourne true pour dire que l'opération s'est
-/// fait correctement.
-///
-/// @param[in] noeud : Le noeud à traiter.
-/// @param[in] parant : L'élément parent du noeud.
-///
-/// @return Retourne toujours true
-///
-////////////////////////////////////////////////////////////////////////
-bool VisiteurXML::traiter(NoeudAbstrait* noeud, tinyxml2::XMLElement* parent)
-{
-	// Connaitre le type du noeud
-	std::string nom = noeud->obtenirType();
-
-	// Créer le noeud 'element'
-	tinyxml2::XMLElement* element{document.NewElement(nom.c_str())};
-
-	// Si l'élément est une table, visiter ses enfants
-	if (nom == "table" || nom == "couvercle")
-	{
-		// Nombre d'enfants de la table
-		element->SetAttribute("nbEnfants", noeud->obtenirNombreEnfants());
-
-		// Traiter les enfants de la table
-		for (unsigned int i = 0; i < noeud->obtenirNombreEnfants(); i++)
-		{
-			traiter(noeud->chercher(i), element);
-		}
-		// Attacher la table à son parent. Ici le parent est l'arbre de rendu
-		parent->LinkEndChild(element);
-	}
-
-	else
-	{
-		// Attributs pour la position du noeud
-		element->SetAttribute("posX", noeud->obtenirPositionRelative().x);
-		element->SetAttribute("posY", noeud->obtenirPositionRelative().y);
-		element->SetAttribute("posZ", noeud->obtenirPositionRelative().z);
-
-		// Attributs pour le scale
-		element->SetAttribute("scaleX", noeud->obtenirAgrandissement().x);
-		element->SetAttribute("scaleY", noeud->obtenirAgrandissement().y);
-		element->SetAttribute("scaleZ", noeud->obtenirAgrandissement().z);
-
-		// Attributs pour l'angle
-		element->SetAttribute("angleX", noeud->obtenirRotation().x);
-		element->SetAttribute("angleY", noeud->obtenirRotation().y);
-		element->SetAttribute("angleZ", noeud->obtenirRotation().z);
-
-		parent->LinkEndChild(element);
-	}
-
 	return true;
 }
+
