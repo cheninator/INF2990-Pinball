@@ -97,7 +97,6 @@ extern "C"
 	////////////////////////////////////////////////////////////////////////
 	__declspec(dllexport) int __cdecl selectionnerObjetSousPointClique(int i, int j, int hauteur, int largeur, bool ctrlDown)
 	{
-		calculerTransition();
 		return FacadeModele::obtenirInstance()->selectionnerObjetSousPointClique(i, j, hauteur, largeur, ctrlDown);
 	}
 
@@ -162,7 +161,6 @@ extern "C"
 		FacadeModele::obtenirInstance()->afficher();
 		// Temporaire: pour détecter les erreurs OpenGL
 		aidegl::verifierErreurOpenGL();
-		calculerTransition();
 	}
 
 
@@ -219,12 +217,7 @@ extern "C"
 	////////////////////////////////////////////////////////////////////////
 	__declspec(dllexport) void __cdecl zoomIn()
 	{
-		calculerTransition();
 		FacadeModele::obtenirInstance()->obtenirVue()->zoomerIn();
-		calculerTransition();
-		if (facteurDeTransition < 0.1)
-			zoomOut();
-		calculerTransition();
 	}
 
 
@@ -239,12 +232,7 @@ extern "C"
 	////////////////////////////////////////////////////////////////////////
 	__declspec(dllexport) void __cdecl zoomOut()
 	{
-		calculerTransition();
 		FacadeModele::obtenirInstance()->obtenirVue()->zoomerOut();
-		calculerTransition();
-		if (facteurDeTransition > 1)
-			zoomIn();
-		calculerTransition();
 	}
 
 
@@ -339,7 +327,6 @@ extern "C"
 	{
 		if (objet == nullptr)
 			return;
-		calculerTransition();
 		glm::dvec3 maPosition;
 		FacadeModele::obtenirInstance()->obtenirVue()->convertirClotureAVirtuelle(x, y, maPosition);
 		if (maPosition.x > 108 && maPosition.x < 272 && maPosition.y > -190 && maPosition.y < 96) {
@@ -366,11 +353,10 @@ extern "C"
 	{
 		if (objet == nullptr)
 			return;
-		calculerTransition();
 		glm::dvec3 maPositionPresente;
 		maPositionPresente = objet->obtenirPositionRelative();
-		objet->assignerPositionRelative({ maPositionPresente.x + x * facteurDeTransition,
-			maPositionPresente.y + y * facteurDeTransition,
+		objet->assignerPositionRelative({ maPositionPresente.x + x,
+			maPositionPresente.y + y,
 			0 });
 
 	}
@@ -391,7 +377,6 @@ extern "C"
 	{
 		if (objet == nullptr)
 			return;
-		calculerTransition();
 		objet->assignerEchelle({ scale, scale, scale });
 
 	}
@@ -412,21 +397,20 @@ extern "C"
 
 	__declspec(dllexport) void __cdecl addScaleObjet(int myScale)
 	{
-		calculerTransition();
 		if (objet == nullptr)
 			return;
 		glm::dvec3 monScalePresent;
 		float deltaScale = (float)myScale;
 		monScalePresent = objet->obtenirAgrandissement();
-		monScalePresent.x += myScale / 10.0 * facteurDeTransition;
-		monScalePresent.y += myScale / 10.0 * facteurDeTransition;
-		monScalePresent.z += myScale / 10.0 * facteurDeTransition;
+		monScalePresent.x += myScale / 10.0;
+		monScalePresent.y += myScale / 10.0;
+		monScalePresent.z += myScale / 10.0;
 		if (monScalePresent.x < 0)
-			monScalePresent.x -= myScale / 10.0 * facteurDeTransition;
+			monScalePresent.x -= myScale / 10.0;
 		if (monScalePresent.y < 0)
-			monScalePresent.y -= myScale / 10.0 * facteurDeTransition;
+			monScalePresent.y -= myScale / 10.0;
 		if (monScalePresent.z < 0)
-			monScalePresent.z -= myScale / 10.0 * facteurDeTransition;
+			monScalePresent.z -= myScale / 10.0;
 		objet->assignerEchelle({ monScalePresent.x, monScalePresent.y, monScalePresent.z });
 	}
 
@@ -445,7 +429,6 @@ extern "C"
 	////////////////////////////////////////////////////////////////////////
 	__declspec(dllexport) void __cdecl scaleObjetXYZ(double x, double y, double z)
 	{
-		calculerTransition();
 		if (objet == nullptr)
 			return;
 		objet->assignerEchelle({ x, y, z });
@@ -465,7 +448,6 @@ extern "C"
 	////////////////////////////////////////////////////////////////////////
 	__declspec(dllexport) void __cdecl rotate(float angle, char direction)
 	{
-		calculerTransition();
 		if (objet == nullptr)
 			return;
 		std::cout << direction;
@@ -489,7 +471,6 @@ extern "C"
 	////////////////////////////////////////////////////////////////////////
 	__declspec(dllexport) void resetObject(void)
 	{
-		calculerTransition();
 		if (objet == nullptr)
 			return;
 		objet->assignerPositionRelative({ 0, 0, 0 });
@@ -527,7 +508,6 @@ extern "C"
 	__declspec(dllexport) void purgeAll(void)
 	{
 		FacadeModele::obtenirInstance()->obtenirArbreRenduINF2990()->initialiser();
-		calculerTransition();
 	}
 
 
@@ -545,7 +525,6 @@ extern "C"
 	////////////////////////////////////////////////////////////////////////
 	__declspec(dllexport) void __cdecl translater(double deplacementX, double deplacementY)
 	{
-		calculerTransition();
 		FacadeModele::obtenirInstance()->obtenirVue()->deplacerXY(deplacementX, deplacementY);
 	}
 
@@ -603,7 +582,6 @@ extern "C"
 	////////////////////////////////////////////////////////////////////////
 	__declspec(dllexport) void __cdecl orbite(double x, double y)
 	{
-		calculerTransition();
 		glm::dvec3 maPosition;
 		FacadeModele::obtenirInstance()->obtenirVue()->convertirClotureAVirtuelle((int)x, (int)y, maPosition);
 
@@ -613,7 +591,6 @@ extern "C"
 
 		// A revori avec phil
 		FacadeModele::obtenirInstance()->obtenirVue()->obtenirCamera().orbiterXY(phi, theta);
-		calculerTransition();
 	}
 	////////////////////////////////////////////////////////////////////////
 	///
@@ -631,7 +608,6 @@ extern "C"
 	////////////////////////////////////////////////////////////////////////
 	__declspec(dllexport) void zoomInElastique(int xCoin1, int yCoin1, int xCoin2, int yCoin2)
 	{
-		calculerTransition();
 		glm::dvec3 positionSouris1(xCoin1, yCoin1, 0.0);
 		glm::dvec3 positionSouris2(xCoin2, yCoin2, 0.0);
 		FacadeModele::obtenirInstance()->obtenirVue()->convertirClotureAVirtuelle(xCoin1, yCoin1, positionSouris1);
@@ -640,7 +616,6 @@ extern "C"
 		glm::ivec2 coin1(positionSouris1.x, positionSouris1.y);
 		glm::ivec2 coin2(positionSouris2.x, positionSouris2.y);
 		FacadeModele::obtenirInstance()->obtenirVue()->zoomerInElastique(coin1, coin2);
-		calculerTransition();
 	}
 
 
@@ -744,13 +719,11 @@ extern "C"
 	///////////////////////////////////////////////////////////////////////////////
 	__declspec(dllexport) void __cdecl rectangleElastique(int i, int j)
 	{
-		calculerTransition();
 		FacadeModele::obtenirInstance()->rectangleElastique(i, j);
 	}
 
 	__declspec(dllexport) int __cdecl selectionMultiple(bool c)
 	{
-		calculerTransition();
 		return FacadeModele::obtenirInstance()->selectionMultiple(c);
 	}
 
