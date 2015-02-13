@@ -65,9 +65,10 @@ void ArbreRenduINF2990Test::tearDown()
 
 ////////////////////////////////////////////////////////////////////////
 ///
-/// @fn void ArbreRenduINF2990Test::______()
+/// @fn void ArbreRenduINF2990Test::testArbreDefaut()
 ///
-/// Cas de test: ...
+/// Cas de test: Test de chargement d'un arbre par défaut à l'ouverture
+///	de l'éditeur.
 ///
 /// @return Aucune.
 ///
@@ -104,9 +105,9 @@ void ArbreRenduINF2990Test::testArbreDefaut()
 
 ////////////////////////////////////////////////////////////////////////
 ///
-/// @fn void ArbreRenduINF2990Test::______()
+/// @fn void ArbreRenduINF2990Test::testXmlInexistant()
 ///
-/// Cas de test: ...
+/// Cas de test: Ouverture d'un fichier XML inexistant.
 ///
 /// @return Aucune.
 ///
@@ -127,9 +128,9 @@ void ArbreRenduINF2990Test::testXmlInexistant()
 
 ////////////////////////////////////////////////////////////////////////
 ///
-/// @fn void ArbreRenduINF2990Test::______()
+/// @fn void ArbreRenduINF2990Test::testPortails()
 ///
-/// Cas de test: ...
+/// Cas de test: Test de jumelage des portails.
 ///
 /// @return Aucune.
 ///
@@ -155,9 +156,9 @@ void ArbreRenduINF2990Test::testPortails()
 
 ////////////////////////////////////////////////////////////////////////
 ///
-/// @fn void ArbreRenduINF2990Test::______()
+/// @fn void ArbreRenduINF2990Test::creerNoeudParUsine()
 ///
-/// Cas de test: ...
+/// Cas de test: Création de noeuds avec les usines.
 ///
 /// @return Aucune.
 ///
@@ -186,9 +187,9 @@ void ArbreRenduINF2990Test::creerNoeudParUsine()
 
 ////////////////////////////////////////////////////////////////////////
 ///
-/// @fn void ArbreRenduINF2990Test::______()
+/// @fn void ArbreRenduINF2990Test::boiteEnglobante()
 ///
-/// Cas de test: ...
+/// Cas de test: Test des limites de la boîte englobante d'un noeud.
 ///
 /// @return Aucune.
 ///
@@ -232,9 +233,9 @@ void ArbreRenduINF2990Test::boiteEnglobante()
 
 ////////////////////////////////////////////////////////////////////////
 ///
-/// @fn void ArbreRenduINF2990Test::______()
+/// @fn void ArbreRenduINF2990Test::selectionTable()
 ///
-/// Cas de test: ...
+/// Cas de test: On s'assure qu'un table n'est pas sélectionnable.
 ///
 /// @return Aucune.
 ///
@@ -263,9 +264,9 @@ void ArbreRenduINF2990Test::selectionTable()
 
 ////////////////////////////////////////////////////////////////////////
 ///
-/// @fn void ArbreRenduINF2990Test::______()
+/// @fn void ArbreRenduINF2990Test::testDeselection()
 ///
-/// Cas de test: ...
+/// Cas de test: Test du visiteur de désélection.
 ///
 /// @return Aucune.
 ///
@@ -299,9 +300,9 @@ void ArbreRenduINF2990Test::testDeselection()
 
 ////////////////////////////////////////////////////////////////////////
 ///
-/// @fn void ArbreRenduINF2990Test::______()
+/// @fn void ArbreRenduINF2990Test::testRotation()
 ///
-/// Cas de test: ...
+/// Cas de test: Test du visiteur de rotation.
 ///
 /// @return Aucune.
 ///
@@ -345,9 +346,9 @@ void ArbreRenduINF2990Test::testRotation()
 
 ////////////////////////////////////////////////////////////////////////
 ///
-/// @fn void ArbreRenduINF2990Test::______()
+/// @fn void ArbreRenduINF2990Test::testSelectionMultiple()
 ///
-/// Cas de test: ...
+/// Cas de test: Test du visiteur de sélection multiple.
 ///
 /// @return Aucune.
 ///
@@ -392,9 +393,9 @@ void ArbreRenduINF2990Test::testSelectionMultiple()
 
 ////////////////////////////////////////////////////////////////////////
 ///
-/// @fn void ArbreRenduINF2990Test::______()
+/// @fn void ArbreRenduINF2990Test::testSelectionInverse()
 ///
-/// Cas de test: ...
+/// Cas de test: Test du visiteur de sélection inverse.
 ///
 /// @return Aucune.
 ///
@@ -432,7 +433,7 @@ void ArbreRenduINF2990Test::testSelectionInverse()
 ///
 /// @fn void ArbreRenduINF2990Test::______()
 ///
-/// Cas de test: ...
+/// Cas de test: Test du visiteur de duplication.
 ///
 /// @return Aucune.
 ///
@@ -476,9 +477,10 @@ void ArbreRenduINF2990Test::testDuplication()
 
 ////////////////////////////////////////////////////////////////////////
 ///
-/// @fn void ArbreRenduINF2990Test::______()
+/// @fn void ArbreRenduINF2990Test::testBoiteEnglobante()
 ///
-/// Cas de test: ...
+/// Cas de test: Test du visiteur qui crée une liste des boîtes
+/// englobantes.
 ///
 /// @return Aucune.
 ///
@@ -524,6 +526,15 @@ void ArbreRenduINF2990Test::testBoiteEnglobante()
 	arbre->vider();
 }
 
+////////////////////////////////////////////////////////////////////////
+///
+/// @fn void ArbreRenduINF2990Test::testPalettes()
+///
+/// Cas de test: Couleur des palettes joueur 1 et 2.
+///
+/// @return Aucune.
+///
+////////////////////////////////////////////////////////////////////////
 void ArbreRenduINF2990Test::testPalettes()
 {
 	// On initialise l'arbre avec le fichier XML par défaut.
