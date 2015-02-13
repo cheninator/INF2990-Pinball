@@ -1191,6 +1191,7 @@ namespace InterfaceGraphique
         {
             Console.WriteLine("Supprimer.");
             FonctionsNatives.removeObject();
+            deselection();
             // TO DO
         }
 
