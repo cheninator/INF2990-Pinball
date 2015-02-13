@@ -71,13 +71,13 @@ void ConfigSceneTest::testSauvegardeChargement()
 	ConfigScene::CALCULS_PAR_IMAGE = 20;
 
 	// On sauvegarde le XML...
-	FacadeModele::obtenirInstance()->enregistrerConfiguration();
+	//FacadeModele::obtenirInstance()->enregistrerConfiguration();
 
 	// On remet les valeurs par défaut
 	ConfigScene::CALCULS_PAR_IMAGE = 50;
 
 	// On charge le XML...
-	FacadeModele::obtenirInstance()->chargerConfiguration();
+	//FacadeModele::obtenirInstance()->chargerConfiguration();
 
 	// On vérifie si les valeurs de test sont celles qui ont bien été chargées
 	CPPUNIT_ASSERT(ConfigScene::CALCULS_PAR_IMAGE == 20);
@@ -86,7 +86,7 @@ void ConfigSceneTest::testSauvegardeChargement()
 	ConfigScene::CALCULS_PAR_IMAGE = 50;
 
 	// On resauvegarde le XML
-	FacadeModele::obtenirInstance()->enregistrerConfiguration();
+	//FacadeModele::obtenirInstance()->enregistrerConfiguration();
 }
 
 

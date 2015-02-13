@@ -71,9 +71,10 @@ Samuel Millette <BR>
 /// Pointeur vers l'instance unique de la classe.
 FacadeModele* FacadeModele::instance_{ nullptr };
 
+/*
 /// Chaîne indiquant le nom du fichier de configuration du projet.
 const std::string FacadeModele::FICHIER_CONFIGURATION{ "configuration.xml" };
-
+*/
 
 
 ////////////////////////////////////////////////////////////////////////
@@ -152,9 +153,6 @@ void FacadeModele::initialiserOpenGL(HWND hWnd)
 	// Initialisation des extensions de OpenGL
 	glewInit();
 
-	// Initialisation de la configuration
-	chargerConfiguration();
-
 	// FreeImage, utilisée par le chargeur, doit être initialisée
 	FreeImage_Initialise();
 
@@ -210,62 +208,6 @@ void FacadeModele::initialiserOpenGL(HWND hWnd)
 
 ////////////////////////////////////////////////////////////////////////
 ///
-/// @fn void FacadeModele::chargerConfiguration() const
-///
-/// Cette fonction charge la configuration à partir d'un fichier XML si
-/// ce dernier existe.  Sinon, le fichier de configuration est généré à
-/// partir de valeurs par défaut directement dans le code.
-///
-/// @return Aucune.
-///
-////////////////////////////////////////////////////////////////////////
-void FacadeModele::chargerConfiguration() const
-{
-	// Vérification de l'existence du ficher
-
-	// Si le fichier n'existe pas, on le crée.
-	if (!utilitaire::fichierExiste(FICHIER_CONFIGURATION)) {
-		enregistrerConfiguration();
-	}
-	// Si le fichier existe on le lit
-	else {
-		tinyxml2::XMLDocument document;
-
-		// Lire à partir du fichier de configuration
-		document.LoadFile(FacadeModele::FICHIER_CONFIGURATION.c_str());
-
-		// On lit les différentes configurations.
-		ConfigScene::obtenirInstance()->lireDOM(document);
-	}
-}
-
-
-////////////////////////////////////////////////////////////////////////
-///
-/// @fn void FacadeModele::enregistrerConfiguration() const
-///
-/// Cette fonction génère un fichier XML de configuration à partir de
-/// valeurs par défaut directement dans le code.
-///
-/// @return Aucune.
-///
-////////////////////////////////////////////////////////////////////////
-void FacadeModele::enregistrerConfiguration() const
-{
-	tinyxml2::XMLDocument document;
-	// Écrire la déclaration XML standard...
-	document.NewDeclaration(R"(?xml version="1.0" standalone="yes"?)");
-	
-	// On enregistre les différentes configurations.
-	ConfigScene::obtenirInstance()->creerDOM(document);
-
-	// Écrire dans le fichier
-	document.SaveFile(FacadeModele::FICHIER_CONFIGURATION.c_str());
-}
-
-
-////////////////////////////////////////////////////////////////////////
-///
 /// @fn void FacadeModele::libererOpenGL()
 ///
 /// Cette fonction libère le contexte OpenGL et désinitialise FreeImage.
@@ -276,10 +218,6 @@ void FacadeModele::enregistrerConfiguration() const
 void FacadeModele::libererOpenGL()
 {
 	utilitaire::CompteurAffichage::libererInstance();
-
-	// On libère les instances des différentes configurations.
-	ConfigScene::libererInstance();
-
 
 	bool succes{ aidegl::detruireContexteGL(hWnd_, hDC_, hGLRC_) };
 	assert(succes && "Le contexte OpenGL n'a pu être détruit.");
