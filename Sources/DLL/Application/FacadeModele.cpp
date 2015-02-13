@@ -58,7 +58,6 @@ Samuel Millette <BR>
 #include "AideGL.h"
 #include "ArbreRenduINF2990.h"
 
-#include "ConfigScene.h"
 #include "CompteurAffichage.h"
 
 // Remplacement de EnveloppeXML/XercesC par TinyXML
