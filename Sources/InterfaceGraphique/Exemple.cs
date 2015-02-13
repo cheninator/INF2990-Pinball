@@ -2331,6 +2331,15 @@ namespace InterfaceGraphique
 
         }
 
+
+        public void creationMur()
+        {
+        //  FonctionsNatives.creerMur(previousP.X,previousP.Y,currentP.X,currentP.Y);
+         //  Console.WriteLine(FonctionsNatives.getScale());
+           previousP = currentP;
+           currentP = panel_GL.PointToClient(MousePosition);
+       
+        }
     }
 
     ///////////////////////////////////////////////////////////////////////////
@@ -2525,5 +2534,7 @@ namespace InterfaceGraphique
 
         [DllImport(@"Noyau.dll", CallingConvention = CallingConvention.Cdecl)]
         public static extern void terminerRectangleElastique();
+        [DllImport(@"Noyau.dll", CallingConvention = CallingConvention.Cdecl)]
+        public static extern void creerMur(int x1, int y1, int x2, int y2);
     }
 }
