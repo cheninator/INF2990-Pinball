@@ -159,8 +159,8 @@
     <ClCompile Include="Tests\FacadeModeleTest.cpp" />
     <ClCompile Include="Tests\NoeudCompositeTest.cpp" />
     <ClCompile Include="Tests\BancTests.cpp" />
-    <ClCompile Include="Tests\ConfigSceneTest.cpp" />
     <ClCompile Include="Tests\NoeudAbstraitTest.cpp" />
+    <ClCompile Include="Tests\TestUtilitaire.cpp" />
     <ClCompile Include="Visiteurs\VisiteurAgrandissement.cpp" />
     <ClCompile Include="Visiteurs\VisiteurCentreDeMasse.cpp" />
     <ClCompile Include="Visiteurs\VisiteurDeplacement.cpp" />
@@ -225,8 +225,8 @@
     <ClInclude Include="Tests\FacadeModeleTest.h" />
     <ClInclude Include="Tests\NoeudCompositeTest.h" />
     <ClInclude Include="Tests\BancTests.h" />
-    <ClInclude Include="Tests\ConfigSceneTest.h" />
     <ClInclude Include="Tests\NoeudAbstraitTest.h" />
+    <ClInclude Include="Tests\TestUtilitaire.h" />
     <ClInclude Include="Visiteurs\VisiteurAbstrait.h" />
     <ClInclude Include="Visiteurs\VisiteurAgrandissement.h" />
     <ClInclude Include="Visiteurs\VisiteurCentreDeMasse.h" />

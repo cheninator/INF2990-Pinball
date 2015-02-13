@@ -507,6 +507,21 @@ namespace utilitaire {
 		}
 	}
 
+	////////////////////////////////////////////////////////////////////////
+	///
+	/// @fn bool intersectionDeuxSegments(glm::dvec3 p1, glm::dvec3 p2, glm::dvec3 p3, glm::dvec3 p4)
+	///
+	/// Cette forme deux segments avec 4 points et détermine s'ils s'interceptent.
+	///
+	/// @param [in,out] p1  : extrémité du premier segment
+	/// @param [in,out] p2  : extrémité du premier segment
+	/// @param [in,out] p3  : extrémité du second segment
+	/// @param [in,out] p4  : extrémité du second segment
+
+	///
+	/// @return Vrai si les segments s'interceptent, faux sinon.
+	///
+	////////////////////////////////////////////////////////////////////////
 	bool intersectionDeuxSegments(glm::dvec3 p1, glm::dvec3 p2, glm::dvec3 p3, glm::dvec3 p4)
 	{
 		glm::dvec2 CmP(p3.x - p1.x, p3.y - p1.y);
