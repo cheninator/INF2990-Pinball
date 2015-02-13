@@ -691,7 +691,10 @@ bool NoeudAbstrait::pointEstDansBoite(glm::dvec3 point)
 	vecOP = transform * vecOP;
 
 	//appliquer la mise a l'echelle inverse
-	vecOP = vecOP / scale_.x;
+	glm::dmat3 echelle = glm::dmat3{ glm::dvec3{ 1/scale_.x, 0, 0.0 },
+		glm::dvec3{ 0, 1/scale_.y, 0.0f },
+		glm::dvec3{ 0.0, 0.0,1/ scale_.z } };
+	vecOP = echelle * vecOP;
 
 	//verifie si le vecteur est dans la boite
 	if (vecOP.x > boite_.coinMin.x && vecOP.x < boite_.coinMax.x &&
