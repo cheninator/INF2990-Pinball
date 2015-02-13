@@ -454,10 +454,11 @@ void ArbreRenduINF2990Test::testDuplication()
 
 	// Nombre d'enfants avant la duplication.
 	int enfantsAvant = arbre->getEnfant(0)->obtenirNombreEnfants();
-
+	
 	// Visiteur Duplication fait sa job (on l'espère).
-	VisiteurDuplication* visiteurDup = new VisiteurDuplication();
-	arbre->accepterVisiteur(visiteurDup);
+									// Arbitraire
+	VisiteurDuplication visiteurDup({50, 50, 0});
+	arbre->accepterVisiteur(&visiteurDup);
 
 	// Nombre d'enfants après la duplication
 	int enfantsApres = arbre->getEnfant(0)->obtenirNombreEnfants();
@@ -467,8 +468,6 @@ void ArbreRenduINF2990Test::testDuplication()
 	CPPUNIT_ASSERT(enfantsApres > enfantsAvant);
 	
 	// Nettoyage.
-	delete visiteurDup;
-
 	// On vide l'arbre.
 	arbre->vider();
 

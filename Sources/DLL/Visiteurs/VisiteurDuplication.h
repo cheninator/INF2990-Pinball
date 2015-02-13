@@ -29,8 +29,8 @@ class VisiteurDuplication : public VisiteurAbstrait
 {
 public:
 
-	/// Constructeur par défaut
-	VisiteurDuplication();	
+	/// Constructeur par paramètre
+	VisiteurDuplication(glm::dvec3 pointDansLeMonde);
 
 	/// Destructeur
 	~VisiteurDuplication();
@@ -42,8 +42,16 @@ public:
 
 private:
 
+	VisiteurDuplication();					/// Constructeur par défaut
+
+	glm::dvec3 pointDansLeMonde_;			///< Point où le clic de la souris a eu lieu
+
 	std::vector<NoeudAbstrait*> copies_;	///< Contient les copies des objets selectionnés
+
+	double minX, maxX, minY, maxY;			///< Pour le cas ou il y a eu selection multiple
+
 	ArbreRenduINF2990* arbreTemp;
+
 };
 
 #endif //__VISITEURS_VISITEURDUPLICATION_H__
