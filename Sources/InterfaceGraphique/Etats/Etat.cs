@@ -273,9 +273,8 @@ namespace InterfaceGraphique
         ////////////////////////////////////////////////////////////////////////
         public override bool traiterSouris(MouseEventArgs e)
         {
-            form_.deplacementSouris(e);
-            form_.scaleSouris(e);
-            form_.tournerSelectionSouris(e);
+           form_.creationMur();
+          
             return true;
 
         }

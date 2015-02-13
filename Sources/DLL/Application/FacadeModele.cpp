@@ -786,3 +786,57 @@ bool FacadeModele::estDansTable(glm::dvec3 pointDuMonde)
 
 
 
+
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+// Les points (x1,y1) et (x2,y2) ont passé par PanelGL.PointToClient (voir l'appel de cette fonction dans le C#).
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+// Pour les deux opérations, tu utilises les mêmes vecteurFinal et vecteurInitial, donc ça pourrais être quelque chose comme
+void FacadeModele::FaireQuelquechose(int x1, int y1, int x2, int y2, NoeudAbstrait* noeud)
+{
+	glm::dvec3 positionInitiale, positionFinale;
+	FacadeModele::obtenirInstance()->obtenirVue()->convertirClotureAVirtuelle(x1, y1, positionInitiale);
+	FacadeModele::obtenirInstance()->obtenirVue()->convertirClotureAVirtuelle(x2, y2, positionFinale);
+	//std:: cout << noeud->getType() << std:: endl;
+	//std::cout << "X:" <<noeud->obtenirAgrandissement().x << std::endl;
+	//std::cout << "Y:" << noeud->obtenirAgrandissement().y << std::endl;
+	//std::cout << "Z:"<<noeud->obtenirAgrandissement().z << std::endl;
+	glm::dvec3 vecteurInitial = glm::dvec3{ 1, 0, 0 }; // CHANGEMENT
+	glm::dvec3 vecteurFinal = positionFinale - noeud->obtenirPositionRelative();
+//	std::cout << "VF X:" << vecteurFinal.x << std::endl;
+//	std::cout << "VF Y:" << vecteurFinal.y<< std::endl;
+//	std::cout << "VF Z:" << vecteurFinal.z << std::endl;
+
+	glm::dvec3 produitVectoriel = glm::cross(vecteurInitial, vecteurFinal);
+
+
+	// CALCUL DE L'ANGLE;
+	double sinAngle = glm::length(produitVectoriel) / glm::length(vecteurInitial) / glm::length(vecteurInitial);
+	// Le signe de la composante en z donne le sens dans le quel on doit tourner
+	double angleRadian = produitVectoriel.z > 0 ? asin(sinAngle) : -asin(sinAngle);
+	// L'angle est en radian, on doit le convertir
+	double angleDegre = 360 / 2 / 3.14156 * angleRadian;
+	//std::cout << "ANGLE:" << asin(sinAngle) << std::endl;
+	glm::dvec3 angles{ 0, 0, angleDegre };// A passer en paramètre à assignerRotation
+
+	// CALCUL DU SCALE
+	double scale = glm::length(vecteurFinal) / glm::length(vecteurInitial);
+	glm::dvec3 scaleInit = noeud->obtenirAgrandissement();
+	
+	//glm::dvec3 scaleInit = { 1, 1, 1 };
+	glm::dvec3 scaleFinal = glm::dvec3{ scaleInit[0] * scale, scaleInit[1] * scale, scaleInit[2] * scale };
+	// Vu que c'est pour le mur, tu voudrais probablement scaler en x, donc glm::dvec3 scaleFinal = glm::dvec3{ scaleInit[0] * scale, scaleInit[1] , scaleInit[2]};
+
+	// APPLICATION DES DEUX TRANSFORMATIONS;
+
+	// Application du scale
+	noeud->assignerEchelle(scaleFinal);
+
+	// Application de la rotation
+
+	// Assigner la rotation avec = au lieu de +=
+	noeud->assignerRotation(angles);
+
+
+	// NOTE IMPORTANTE: J'ai pas a prendre ses anciens angles et ajouter angles parce que la fonction assignerRotation fait un += avec le paramètre. C'est la seule fonction assigner qui fonctionne comme ça.
+
+}
