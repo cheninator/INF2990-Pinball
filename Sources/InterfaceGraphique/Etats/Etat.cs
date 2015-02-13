@@ -222,6 +222,67 @@ namespace InterfaceGraphique
     }
 
     ///////////////////////////////////////////////////////////////////////////
+    /// @class Etat Mur
+    /// @brief Etat Mur du patron State.
+    ///
+    /// @author The Ballers
+    /// @date 2015-01-27
+    /// 
+    /// @ingroup Etat
+    ///////////////////////////////////////////////////////////////////////////
+    class EtatMur : Etat
+    {
+        ////////////////////////////////////////////////////////////////////////
+        ///
+        /// @fn public EtatMur(Exemple form)
+        /// @brief Constructeur par paramètre de l'état.
+        /// 
+        /// param[in] form : Form associée à l'état.
+        /// 
+        /// @return Aucune (constructeur).
+        ///
+        ////////////////////////////////////////////////////////////////////////
+        public EtatMur(Exemple form) : base(form) { }
+
+        ////////////////////////////////////////////////////////////////////////
+        ///
+        /// @fn public override bool traiterClavier(KeyEventArgs e)
+        /// @brief Traiter le changement d'état suite à une action du clavier
+        /// 
+        /// param[in] e : Événement du clavier qui lance la fonction
+        /// 
+        /// @return True ou false selon la réussite des opérations.
+        ///
+        ////////////////////////////////////////////////////////////////////////
+        public override bool traiterClavier(KeyEventArgs e)
+        {
+
+            // Traiter le déplacement par clavier
+            return base.traiterClavier(e);
+        }
+
+        ////////////////////////////////////////////////////////////////////////
+        ///
+        /// @fn public override bool traiterSouris(MouseEventArgs e)
+        /// @brief Traiter le changement d'état suite à une action du clavier
+        /// 
+        /// param[in] e : Événement de la souris qui lance la fonction
+        /// 
+        /// @return True ou false selon la réussite des opérations.
+        ///
+        ////////////////////////////////////////////////////////////////////////
+        public override bool traiterSouris(MouseEventArgs e)
+        {
+            form_.deplacementSouris(e);
+            form_.scaleSouris(e);
+            form_.tournerSelectionSouris(e);
+            return true;
+
+        }
+
+    }
+
+    ///////////////////////////////////////////////////////////////////////////
     /// @class EtatSelection
     /// @brief Etat Sélection du patron State.
     ///
@@ -461,6 +522,10 @@ namespace InterfaceGraphique
                 {
                     form_.creationObjet(e, true);
                     form_.statePortail();
+                }
+                else if (Exemple.myObjectName.ToString() == "mur")
+                {
+                    form_.stateMur();
                 }
             }
             else if (e.Button == MouseButtons.Right)
