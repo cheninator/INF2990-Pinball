@@ -217,9 +217,15 @@ bool ArbreRenduINF2990::lireXML(tinyxml2::XMLDocument& doc)
 {
 	bool lecture = false;
 
-	const char* positionX = "posX", const char* positionY = "posY", const char* positionZ = "posZ";
-	const char* scaleX = "scaleX", const char* scaleY = "scaleY", const char* scaleZ = "scaleZ";
-	const char* angleX = "angleX", const char* angleY = "angleY", const char* angleZ = "angleZ";
+	const char* positionX = "posX";
+	const char* positionY = "posY";
+	const char* positionZ = "posZ";
+	const char* scaleX = "scaleX";
+	const char* scaleY = "scaleY";
+	const char* scaleZ = "scaleZ";
+	const char* angleX = "angleX";
+	const char* angleY = "angleY";
+	const char* angleZ = "angleZ";
 
 	// Charger les propriétés de la zone de jeu
 	tinyxml2::XMLElement* elementPropriete = doc.FirstChildElement("Proprietes");
