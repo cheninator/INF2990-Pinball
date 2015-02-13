@@ -353,9 +353,6 @@
     <ClInclude Include="Arbre\Noeuds\NoeudButoirD.h">
       <Filter>Header Files\Arbre\Noeuds</Filter>
     </ClInclude>
-    <ClInclude Include="Noeuds\NoeudButoirG.h">
-      <Filter>Header Files\Arbre\Noeuds</Filter>
-    </ClInclude>
     <ClInclude Include="Arbre\Usines\UsineNoeudButoirG.h">
       <Filter>Header Files\Arbre\Usines</Filter>
     </ClInclude>
@@ -373,6 +370,9 @@
     </ClInclude>
     <ClInclude Include="Tests\TestUtilitaire.h">
       <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Arbre\Noeuds\NoeudPaletteG.h">
+      <Filter>Header Files\Arbre\Noeuds</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

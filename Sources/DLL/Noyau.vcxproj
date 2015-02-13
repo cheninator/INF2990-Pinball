@@ -186,6 +186,7 @@
     <ClInclude Include="Arbre\Noeuds\NoeudGenerateurBille.h" />
     <ClInclude Include="Arbre\Noeuds\NoeudMur.h" />
     <ClInclude Include="Arbre\Noeuds\NoeudPaletteD.h" />
+    <ClInclude Include="Arbre\Noeuds\NoeudPaletteG.h" />
     <ClInclude Include="Arbre\Noeuds\NoeudPortail.h" />
     <ClInclude Include="Arbre\Noeuds\NoeudRessort.h" />
     <ClInclude Include="Arbre\Noeuds\NoeudTable.h" />
@@ -212,7 +213,6 @@
     <ClInclude Include="Arbre\Noeuds\NoeudAbstrait.h" />
     <ClInclude Include="Arbre\Noeuds\NoeudComposite.h" />
     <ClInclude Include="Interface\FacadeInterfaceNative.h" />
-    <ClInclude Include="Noeuds\NoeudButoirG.h" />
     <ClInclude Include="Tests\ArbreRenduINF2990Test.h" />
     <ClInclude Include="Tests\FacadeModeleTest.h" />
     <ClInclude Include="Tests\NoeudCompositeTest.h" />
