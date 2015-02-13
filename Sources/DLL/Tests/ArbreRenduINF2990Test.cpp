@@ -523,3 +523,19 @@ void ArbreRenduINF2990Test::testBoiteEnglobante()
 	// On vide l'arbre.
 	arbre->vider();
 }
+
+void ArbreRenduINF2990Test::testPalettes()
+{
+	// On initialise l'arbre avec le fichier XML par défaut.
+	arbre->initialiser();
+
+	// On accède à la table et on ajoute une cible.
+	bool ajout = { arbre->getEnfant(0)->ajouter(arbre->creerNoeud(ArbreRenduINF2990::NOM_PALETTED)) };
+
+	// La cible a été ajoutée.	
+	CPPUNIT_ASSERT(ajout == true);
+
+	// On sélectionne la cible.
+	NoeudAbstrait* noeudCible = arbre->getEnfant(0)->chercher(ArbreRenduINF2990::NOM_PALETTED);
+	noeudCible->assignerSelection(true);
+}
