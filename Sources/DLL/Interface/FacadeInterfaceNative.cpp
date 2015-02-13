@@ -963,3 +963,24 @@ __declspec(dllexport) void creerMur(int originX, int originY,int x1, int y1, int
 	FacadeModele::positionnerMur(originX,originY,x1, y1, x2, y2, objet);
 }
 
+
+///////////////////////////////////////////////////////////////////////////////
+///
+/// @fn __declspec(dllexport) bool __cdecl setProprietesNoeud(int x, int y, int angle, double scale)
+///
+/// @param[in]  x : abcisse du point initial 
+/// @param[in]  y : ordonnee du point initial
+/// @param[in]	angle : angle de rotation
+///	@param[in]	scale: scale de l'objet
+/// @return bool
+///
+/// @remark : On doit donner des x,y qui ont été transformés par panel_GL.PointToClient(...)
+///
+///////////////////////////////////////////////////////////////////////////////
+__declspec(dllexport) bool setProprietesNoeud(int x, int y, int angle, double scale)
+{
+	// TO DO
+	
+	return true;
+
+}

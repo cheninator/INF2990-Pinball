@@ -744,15 +744,42 @@ namespace InterfaceGraphique
         ////////////////////////////////////////////////////////////////////////
         private void OK_prop_bouton_Click(object sender, EventArgs e)
         {
-          
-            /*  FonctionsNatives.deplacerSelection(
-                FonctionsNatives.getPositionX(),
-                FonctionsNatives.getPositionY(),
-                Convert.ToInt32(Xbox.Text), 
-                Convert.ToInt32(Ybox.Text));
-            
-                (Ajuste le header s'il y a lieu.)
-            */
+            int positionX;
+            int positionY;
+            int angle;
+            double echelle;
+            if (Xbox.Text == "")
+                Xbox.Text = "0";
+            if (Ybox.Text == "")
+                Ybox.Text = "0";
+            if (Anglebox.Text == "")
+                Anglebox.Text = "0";
+            if (FMEbox.Text == "")
+                FMEbox.Text = "1";
+
+
+            if (!int.TryParse(Anglebox.Text, out angle))
+                Anglebox.Text = "ERREUR";
+            if (!int.TryParse(Xbox.Text, out positionX))
+                Xbox.Text = "ERREUR";
+            if (!int.TryParse(Ybox.Text, out positionY))
+                Ybox.Text = "ERREUR";
+            if (!double.TryParse(FMEbox.Text, out echelle))
+                FMEbox.Text = "ERREUR";
+            if(  Xbox.Text == "ERREUR" ||
+                Ybox.Text == "ERREUR"   ||
+                 Anglebox.Text == "ERREUR" ||
+                FMEbox.Text == "ERREUR"
+               )
+                {
+                    return;
+                }
+            else
+            {
+                FonctionsNatives.setProprietesNoeud(positionX, positionY, angle, echelle);
+            }
+
+           
         }
 
         ////////////////////////////////////////////////////////////////////////
@@ -1785,7 +1812,7 @@ namespace InterfaceGraphique
         public void deplacementSouris(MouseEventArgs e)
         {
             // On va calculer un point precedent et un point courrant pour faire le deplacement.
-
+          
             // Ce point est dans les coordonnees d'affichage d'openGL pour pouvoir calculer un deplacement
             // en coordonnees du monde en utilisant convertirClotureAVirtuelle(...) comme ça on n'a pas 
             // besoin de ce facteur mistérieux.  Et aussi, cette technique devrait bien marcher 
@@ -2081,7 +2108,14 @@ namespace InterfaceGraphique
             FMEbox.Enabled = active;
             OK_prop_bouton.Enabled = active;
             Annuler_prop_boutn.Enabled = active;
-        }
+            if (!active)
+            {
+                Xbox.Text = "";
+                Ybox.Text = "";
+                Anglebox.Text = "";
+                FMEbox.Text = "";
+            }
+            }
 
         //////////////////////////////////////////////////////////////////////////////////////////
         ///
@@ -2177,7 +2211,7 @@ namespace InterfaceGraphique
         public void deselection()
         {
             FonctionsNatives.deselectAll();
-            Console.WriteLine("DESELECT");
+           
             nbSelection = 0;
             proprietesEnable(false);
             outilsEnable(false);
@@ -2502,7 +2536,11 @@ namespace InterfaceGraphique
 
         [DllImport(@"Noyau.dll", CallingConvention = CallingConvention.Cdecl)]
         public static extern void terminerRectangleElastique();
+
         [DllImport(@"Noyau.dll", CallingConvention = CallingConvention.Cdecl)]
         public static extern void creerMur(int originX,int originY,int x1, int y1, int x2, int y2);
+
+        [DllImport(@"Noyau.dll", CallingConvention = CallingConvention.Cdecl)]
+        public static extern bool setProprietesNoeud(int x, int y, int angle, double scale);
     }
 }

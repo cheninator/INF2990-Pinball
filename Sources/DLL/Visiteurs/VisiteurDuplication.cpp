@@ -8,7 +8,7 @@
 #include "VisiteurDuplication.h"
 #include "../Arbre/ArbreRenduINF2990.h"
 #include "../Arbre/Noeuds/NoeudTable.h"
-
+#include <iostream>
 ////////////////////////////////////////////////////////////////////////
 ///
 /// @fn VisiteurDuplication::VisiteurDuplication()
@@ -122,7 +122,7 @@ bool VisiteurDuplication::traiter(NoeudTable* table)
 ////////////////////////////////////////////////////////////////////////
 bool VisiteurDuplication::traiter(NoeudAbstrait* noeud)
 {
-
+	
 	if (noeud->estSelectionne())
 	{
 		// Effectuer la copie du noeud
@@ -155,14 +155,17 @@ bool VisiteurDuplication::traiter(NoeudAbstrait* noeud)
 			noeud->getTwin()->assignerSelection(false);
 			noeud->assignerSelection(false);
 		}
-
+		
 		else if (noeud->obtenirType() == "portail" && !(noeud->getTwin()->estSelectionne()))
 		{
+		
 			noeud->assignerSelection(false);
-		//	copie->assignerSelection(false);
+			copie->assignerSelection(false);
 			delete copie;
+			// FUCK YONNI ET SON FUCKING VISITEUR DE MARDE!!!
+		//	copie = NULL;
 		}
-
+	
 		else
 		{
 			noeud->assignerSelection(false);

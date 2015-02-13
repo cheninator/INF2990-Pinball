@@ -726,15 +726,10 @@ void FacadeModele::positionnerMur(int originX, int originY,int x1, int y1, int x
 	glm::dvec3 positionInitiale, positionFinale;
 	FacadeModele::obtenirInstance()->obtenirVue()->convertirClotureAVirtuelle(x1, y1, positionInitiale);
 	FacadeModele::obtenirInstance()->obtenirVue()->convertirClotureAVirtuelle(x2, y2, positionFinale);
-	//std:: cout << noeud->getType() << std:: endl;
-	//std::cout << "X:" <<noeud->obtenirAgrandissement().x << std::endl;
-	//std::cout << "Y:" << noeud->obtenirAgrandissement().y << std::endl;
-	//std::cout << "Z:"<<noeud->obtenirAgrandissement().z << std::endl;
+
 	glm::dvec3 vecteurInitial = positionInitiale - noeud->obtenirPositionRelative();
 	glm::dvec3 vecteurFinal = positionFinale - noeud->obtenirPositionRelative();
-//	std::cout << "VF X:" << vecteurFinal.x << std::endl;
-//	std::cout << "VF Y:" << vecteurFinal.y<< std::endl;
-//	std::cout << "VF Z:" << vecteurFinal.z << std::endl;
+
 
 	glm::dvec3 scaleInit = noeud->obtenirAgrandissement();
 
@@ -752,7 +747,7 @@ void FacadeModele::positionnerMur(int originX, int originY,int x1, int y1, int x
 		double angleDegre = 360.0 / 2.0 / M_PI * angleRadian;
 
 		angles = glm::dvec3{ 0, 0, angleDegre };// A passer en paramètre à assignerRotation
-		std::cout << "ANGLE:" << angles.z << std::endl;
+		
 		// CALCUL DU SCALE
 		double scale = glm::length(vecteurFinal) / glm::length(vecteurInitial);
 
