@@ -116,7 +116,11 @@ public:
 
    /// Vérifier si un point cliqué est dans la table 
    bool estDansTable(glm::dvec3 pointDuMonde);
+
    static void FaireQuelquechose(int x1, int y1, int x2, int y2, NoeudAbstrait* noeud);
+
+   /// Pour la suppression des objets
+   bool supprimer();
 
 
 private:

@@ -81,7 +81,19 @@ bool VisiteurDeplacement::traiter(ArbreRenduINF2990* arbre)
 }
 
 
-
+//////////////////////////////////////////////////////////////////////////////////
+///
+/// @fn bool VisiteurDeplacement::traiter(NoeudTable* table)
+/// @brief Cette fonction traite la table pour deplacer ses enfants selectionnés.
+///
+/// Cette fonction retourne true pour dire que l'opération s'est
+/// fait correctement.
+///
+/// @param[in] arbre : L'arbre de rendu à traiter.
+///
+/// @return Retourne toujours true.
+///
+//////////////////////////////////////////////////////////////////////////////////
 bool VisiteurDeplacement::traiter(NoeudTable* table)
 {
 	// Traiter les enfants selectionnés de la table
@@ -92,7 +104,6 @@ bool VisiteurDeplacement::traiter(NoeudTable* table)
 
 	return true;
 }
-
 
 
 ////////////////////////////////////////////////////////////////////////

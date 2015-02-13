@@ -801,35 +801,6 @@ namespace InterfaceGraphique
             FonctionsNatives.positionObjet(positionX, positionY);
         }
 
-        ////////////////////////////////////////////////////////////////////////
-        ///
-        /// @fn public void Scale_Objet()
-        /// @brief Logique de mise à échelle d'un objet par les text boxes.
-        /// 
-        /// @return Aucune.
-        ///
-        ////////////////////////////////////////////////////////////////////////
-        public void Scale_Objet()
-        {
-            string scalingRead = FMEbox.Text;
-            scalingRead = scalingRead.Replace(",", ".");
-            float scale;
-
-            if (FMEbox.Text == "")
-                FMEbox.Text = "1"; ;
-
-            DataTable dt = new DataTable();
-            try { scalingRead = dt.Compute(scalingRead, "").ToString(); }
-            catch { return; }
-
-            if (!float.TryParse(scalingRead, out scale))
-                return;
-
-            if (scale < 0)
-                return;
-
-            FonctionsNatives.scaleObjet(scale);
-        }
 
         ////////////////////////////////////////////////////////////////////////
         ///
@@ -2051,7 +2022,6 @@ namespace InterfaceGraphique
                 FonctionsNatives.rotate(angleX, 'x');
                 FonctionsNatives.rotate(angleY, 'y');
                 FonctionsNatives.rotate(angleZ, 'z');
-                FonctionsNatives.scaleObjet(scale);
                 previousP.X = panel_GL.PointToClient(MousePosition).X;
                 previousP.Y = panel_GL.PointToClient(MousePosition).Y;
 
@@ -2438,12 +2408,6 @@ namespace InterfaceGraphique
 
         [DllImport(@"Noyau.dll", CallingConvention = CallingConvention.Cdecl)]
         public static extern void positionObjet(int x, int y, int z = 0);
-
-        [DllImport(@"Noyau.dll", CallingConvention = CallingConvention.Cdecl)]
-        public static extern void translateObjet(int x, int y, int z = 0);
-
-        [DllImport(@"Noyau.dll", CallingConvention = CallingConvention.Cdecl)]
-        public static extern void scaleObjet(double scale);
 
         [DllImport(@"Noyau.dll", CallingConvention = CallingConvention.Cdecl)]
         public static extern void addScaleObjet(int myScale);

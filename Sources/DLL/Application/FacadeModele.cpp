@@ -49,6 +49,8 @@ Samuel Millette <BR>
 #include "../Visiteurs/VisiteurLimitesSelection.h"
 #include "../Visiteurs/VisiteurListeEnglobante.h"
 #include "../Visiteurs/VisiteurPossibilite.h"
+#include "../Visiteurs/VisiteurSuppression.h"
+#include "../Visiteurs/VisiteurXML.h"
 
 #include "VueOrtho.h"
 #include "Camera.h"
@@ -65,7 +67,7 @@ Samuel Millette <BR>
 #include "tinyxml2.h"
 
 #include "glm/gtc/type_ptr.hpp"
-#include "../Visiteurs/VisiteurXML.h"
+
 
 #define M_PI	3.141592653589793238462643383279502884
 /// Pointeur vers l'instance unique de la classe.
@@ -616,7 +618,6 @@ int FacadeModele::selectionMultiple(bool c)
 ///////////////////////////////////////////////////////////////////////////////
 bool FacadeModele::verifierCliqueDansTable(int x, int y)
 {
-	
 	glm::dvec3 positionDansLeMonde;
 	obtenirInstance()->obtenirVue()->convertirClotureAVirtuelle(x, y, positionDansLeMonde);
 	if (    108 < positionDansLeMonde.x && positionDansLeMonde.x < 272
@@ -642,8 +643,6 @@ void FacadeModele::dupliquerSelection(int i, int j)
 	arbre_->accepterVisiteur(visiteur);
 	delete visiteur;
 }
-
-
 
 
 ///////////////////////////////////////////////////////////////////////////////
@@ -770,4 +769,14 @@ void FacadeModele::FaireQuelquechose(int x1, int y1, int x2, int y2, NoeudAbstra
 
 	// NOTE IMPORTANTE: J'ai pas a prendre ses anciens angles et ajouter angles parce que la fonction assignerRotation fait un += avec le paramètre. C'est la seule fonction assigner qui fonctionne comme ça.
 
+}
+
+
+bool FacadeModele::supprimer()
+{
+	VisiteurSuppression* visiteur = new VisiteurSuppression();
+	FacadeModele::obtenirInstance()->obtenirArbreRenduINF2990()->accepterVisiteur(visiteur);
+	delete visiteur;
+
+	return true;
 }

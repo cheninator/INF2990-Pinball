@@ -16,9 +16,6 @@
 #include "Vue.h"
 #include "ArbreRenduINF2990.h"
 #include "CompteurAffichage.h"
-#include "../Visiteurs/VisiteurXML.h"
-#include "../Visiteurs/VisiteurSuppression.h"
-#include "../Visiteurs/VisiteurDuplication.h"
 
 #include <iostream>
 #include "BancTests.h"
@@ -351,55 +348,6 @@ extern "C"
 
 	////////////////////////////////////////////////////////////////////////
 	///
-	/// @fn __declspec(dllexport) void __cdecl translateObjet(int x, int y, int z)
-	///
-	/// @param[in]  x : La positon en x
-	/// @param[in]  y : La positon en y
-	/// @param[in]  z : La positon en z
-	///
-	/// Permet de deplacer un objet en x y et/ou z
-	///
-	/// @return Aucune.
-	///
-	////////////////////////////////////////////////////////////////////////
-	__declspec(dllexport) void __cdecl translateObjet(int x, int y, int z)
-	{
-		if (objet == nullptr)
-			return;
-		calculerTransition();
-		glm::dvec3 maPositionPresente;
-		maPositionPresente = objet->obtenirPositionRelative();
-		objet->assignerPositionRelative({ maPositionPresente.x + x * facteurDeTransition,
-			maPositionPresente.y + y * facteurDeTransition,
-			0 });
-
-	}
-
-
-	////////////////////////////////////////////////////////////////////////
-	///
-	/// @fn void VueOrtho::scaleObjet(double scale)
-	///
-	/// @param[in]  scale : La multiplication en x
-	///
-	/// Permet de resize un objet uniformement
-	///
-	/// @return Aucune.
-	///
-	////////////////////////////////////////////////////////////////////////
-	__declspec(dllexport) void __cdecl scaleObjet(double scale)
-	{
-		if (objet == nullptr)
-			return;
-		calculerTransition();
-		objet->assignerEchelle({ scale, scale, scale });
-
-	}
-
-
-
-	////////////////////////////////////////////////////////////////////////
-	///
 	/// @fn void VueOrtho::scaleObjet(double scale)
 	///
 	/// @param[in]  scale : La multiplication en x
@@ -509,9 +457,7 @@ extern "C"
 	////////////////////////////////////////////////////////////////////////
 	__declspec(dllexport) void removeObject(void)
 	{
-		VisiteurSuppression* visiteur = new VisiteurSuppression();
-		FacadeModele::obtenirInstance()->obtenirArbreRenduINF2990()->accepterVisiteur(visiteur);
-		delete visiteur;
+		FacadeModele::obtenirInstance()->supprimer();
 	}
 
 
