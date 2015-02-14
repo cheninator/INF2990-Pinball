@@ -800,3 +800,22 @@ bool FacadeModele::supprimer()
 
 	return true;
 }
+
+///////////////////////////////////////////////////////////////////////////////
+///
+/// @fn double obtenirZoomCourant();
+/// Obtient la valeur deu zoom appliqué ; la comparaison est faite entre les dimensions de la clôture et celles de la fenêtre courante
+///
+/// @return La valeur du zoom courant
+///
+///////////////////////////////////////////////////////////////////////////////
+double FacadeModele::obtenirZoomCourant()
+{
+	double zoom = -1;
+	glm::ivec2 dimClot = vue_->obtenirProjection().obtenirDimensionCloture();
+	glm::ivec2 dimFenV = vue_->obtenirProjection().obtenirDimensionFenetreVirtuelle();
+	double surfaceFen = dimFenV.x * dimFenV.y;
+	if (surfaceFen != 0.0)
+		zoom = (dimClot.x * dimClot.y) / surfaceFen;
+	return zoom;
+}

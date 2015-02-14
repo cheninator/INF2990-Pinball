@@ -49,8 +49,7 @@ namespace InterfaceGraphique
         private float angleY = 0F; ///< Position en Y
         private float angleZ = 0F; ///< Position en Z
         private float scale = 1F; ///< Mise a echelle
-        private int currentZoom = 5; ///< Zoom courant
-        private int previousZoom = 5; ///< Zoom precedent
+        private double currentZoom = -1; ///< Zoom courant
         private int nbSelection;
         private bool colorShift = false;
         private StringBuilder pathXML = new StringBuilder(""); ///< Chemin pour la lecture/sauvegarde XML
@@ -131,8 +130,8 @@ namespace InterfaceGraphique
                     {
                         FonctionsNatives.animer(tempsInterAffichage);
                         FonctionsNatives.dessinerOpenGL();
-                    }                    
-
+                    }
+                    curZoomVal.Text = currentZoom.ToString();
 
                 });
             }
@@ -160,11 +159,13 @@ namespace InterfaceGraphique
                    e.KeyCode == Keys.OemMinus))
                 {
                     FonctionsNatives.zoomOut();
+                    currentZoom = FonctionsNatives.obtenirZoomCourant();
                 }
                 if ((e.KeyData == Keys.Add ||
                     e.KeyCode == Keys.Oemplus && e.Modifiers == Keys.Shift))
                 {
                     FonctionsNatives.zoomIn();
+                    currentZoom = FonctionsNatives.obtenirZoomCourant();
                 }
                 if (e.KeyData == Keys.Alt)
                     altDown = true;
@@ -1877,6 +1878,7 @@ namespace InterfaceGraphique
                 FonctionsNatives.zoomIn();
             else if (e.Delta < 0)
                 FonctionsNatives.zoomOut();
+            currentZoom = FonctionsNatives.obtenirZoomCourant();
         }
 
         ////////////////////////////////////////////////////////////////////////
@@ -1999,6 +2001,7 @@ namespace InterfaceGraphique
                 FonctionsNatives.zoomInElastique(origin.X, origin.Y, destination.X, destination.Y);
             else if (altDown)
                 FonctionsNatives.zoomOutElastique(origin.X, origin.Y, destination.X, destination.Y);
+            currentZoom = FonctionsNatives.obtenirZoomCourant();
         }
 
         ////////////////////////////////////////////////////////////////////////
@@ -2316,11 +2319,13 @@ namespace InterfaceGraphique
         private void IncreaseZoomButton_Click(object sender, EventArgs e)
         {
             FonctionsNatives.zoomIn();
+            currentZoom = FonctionsNatives.obtenirZoomCourant();
         }
 
         private void DecreaseZoomButton_Click(object sender, EventArgs e)
         {
             FonctionsNatives.zoomOut();
+            currentZoom = FonctionsNatives.obtenirZoomCourant();
         }
     }
 
@@ -2516,5 +2521,9 @@ namespace InterfaceGraphique
 
         [DllImport(@"Noyau.dll", CallingConvention = CallingConvention.Cdecl)]
         public static extern bool setProprietesNoeud(int x, int y, int angle, double scale);
+        
+        [DllImport(@"Noyau.dll", CallingConvention = CallingConvention.Cdecl)]
+	    public static extern double obtenirZoomCourant();
+
     }
 }

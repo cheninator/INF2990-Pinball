@@ -119,6 +119,7 @@ namespace InterfaceGraphique
             this.Information_MenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.Aide_MenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.printPreviewDialog1 = new System.Windows.Forms.PrintPreviewDialog();
+            this.curZoomVal = new System.Windows.Forms.TextBox();
             this.panel1.SuspendLayout();
             this.Creation_Panel.SuspendLayout();
             this.Groupe_Palettes.SuspendLayout();
@@ -414,6 +415,7 @@ namespace InterfaceGraphique
             // 
             // Groupe_Outils
             // 
+            this.Groupe_Outils.Controls.Add(this.curZoomVal);
             this.Groupe_Outils.Controls.Add(this.DecreaseZoomButton);
             this.Groupe_Outils.Controls.Add(this.IncreaseZoomButton);
             this.Groupe_Outils.Controls.Add(this.label_Zoom);
@@ -992,6 +994,16 @@ namespace InterfaceGraphique
             this.printPreviewDialog1.Name = "printPreviewDialog1";
             this.printPreviewDialog1.Visible = false;
             // 
+            // curZoomVal
+            // 
+            this.curZoomVal.Location = new System.Drawing.Point(46, 237);
+            this.curZoomVal.Name = "curZoomVal";
+            this.curZoomVal.ReadOnly = true;
+            this.curZoomVal.Size = new System.Drawing.Size(64, 20);
+            this.curZoomVal.TabIndex = 9;
+            this.curZoomVal.Text = "000";
+            this.curZoomVal.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
             // Exemple
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -1015,6 +1027,7 @@ namespace InterfaceGraphique
             this.Group_Element2.ResumeLayout(false);
             this.flowLayoutPanel1.ResumeLayout(false);
             this.Groupe_Outils.ResumeLayout(false);
+            this.Groupe_Outils.PerformLayout();
             this.Groupe_Proprietes.ResumeLayout(false);
             this.Groupe_Proprietes.PerformLayout();
             this.menuStrip1.ResumeLayout(false);
@@ -1106,6 +1119,7 @@ namespace InterfaceGraphique
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Button IncreaseZoomButton;
         private System.Windows.Forms.Button DecreaseZoomButton;
+        private System.Windows.Forms.TextBox curZoomVal;
     }
 }
 

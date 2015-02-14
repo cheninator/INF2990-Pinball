@@ -961,3 +961,15 @@ __declspec(dllexport) bool setProprietesNoeud(int x, int y, int angle, double sc
 	return true;
 
 }
+
+///////////////////////////////////////////////////////////////////////////////
+///
+/// @fn _declspec(dllexport) double obtenirZoomCourant(void)
+///
+/// @return La valeur du facteur de zoom appliquer sur la fenêtre
+///
+///////////////////////////////////////////////////////////////////////////////
+__declspec(dllexport) double obtenirZoomCourant(void)
+{
+	return FacadeModele::obtenirInstance()->obtenirZoomCourant();
+}

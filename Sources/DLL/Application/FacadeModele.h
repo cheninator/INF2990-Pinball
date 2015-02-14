@@ -108,7 +108,8 @@ public:
    /// Pour la suppression des objets
    bool supprimer();
 
-
+   /// Obtenir le facteur de zoom appliqué
+   double obtenirZoomCourant();
 
    int selectionnerObjetSousPointClique(int i, int j, int largeur, int hauteur, bool ctrlDown = false);
 
