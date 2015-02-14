@@ -9,7 +9,7 @@
 #include "VisiteurSuppression.h"
 #include "../Arbre/ArbreRenduINF2990.h"
 #include "../Arbre/Noeuds/NoeudTable.h"
-#include <iostream>
+
 
 ////////////////////////////////////////////////////////////////////////
 ///
@@ -30,7 +30,7 @@ VisiteurSuppression::VisiteurSuppression()
 ///
 /// @fn VisiteurSuppression::~VisiteurSuppression()
 ///
-/// Destructeur vide.
+/// Désalloue la mémoire de pointeurs
 ///
 /// @return Aucune (destructeur).
 ///
@@ -46,12 +46,12 @@ VisiteurSuppression::~VisiteurSuppression()
 /// @fn bool VisiteurSuppression::traiter(ArbreRenduINF2990* arbre)
 ///
 /// Cette fonction traite l'arbre de rendu pour supprimer ses enfants
-/// selectionnés
-///
-/// Cette fonction retourne true pour dire que l'opération s'est
+/// selectionnés. Cette fonction retourne true pour dire que l'opération s'est
 /// fait correctement, ou false si on ne permet pas la sauvegarde
 ///
-/// @return Retourne true ou false
+/// @param[in] arbre : L'arbre à traiter.
+///
+/// @return Retourne toujours true
 ///
 ////////////////////////////////////////////////////////////////////////
 bool VisiteurSuppression::traiter(ArbreRenduINF2990* arbre)
@@ -74,10 +74,9 @@ bool VisiteurSuppression::traiter(ArbreRenduINF2990* arbre)
 ////////////////////////////////////////////////////////////////////////
 ///
 /// @fn bool VisiteurSuppression::traiter(NoeudTable* table)
-/// @brief Cette fonction traite la table de l'arbre de rendu.
 ///
-/// Cette fonction retourne true pour dire que l'opération s'est
-/// fait correctement.
+/// Cette fonction traite la table de l'arbre de rendu. Cette fonction 
+///	retourne true pour dire que l'opération s'est faite correctement.
 ///
 /// @param[in] table : Le noeud de type Table à traiter.
 ///
@@ -106,9 +105,8 @@ bool VisiteurSuppression::traiter(NoeudTable* table)
 ///
 /// @fn bool VisiteurSuppression::traiter(NoeudAbstrait* noeud)
 ///
-/// Cette fonction traite les enfants de l'arbre de rendu. Si ses enfants ont des enfants
-/// ils seront aussi traités. Cette fonction retourne true pour dire que l'opération s'est
-/// fait correctement.
+/// Cette fonction traite les enfants de l'arbre de rendu. Cette fonction 
+///	retourne true pour dire que l'opération s'est faite correctement.
 ///
 /// @param[in] noeud : Noeud de l'arbre à traiter.
 ///

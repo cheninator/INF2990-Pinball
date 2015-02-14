@@ -15,11 +15,9 @@
 
 ///////////////////////////////////////////////////////////////////////////
 /// @class VisiteurSuppression
-/// @brief Classe pour enregistrer l'information de l'arbre de rendu
-///		   dans un fichier XML.
+/// @brief Classe pour supprimer les objets selectionnés.
 ///
-///        Instancier cette classe avec en paramètre le nom du fichier avec
-///		   l'extension .xml . Ensuite, appelee la méthode accepterVisiteur()
+///        Instancier cette classe. Ensuite, appeler la méthode accepterVisiteur()
 ///		   de l'arbre de rendu et lui fournir CE visiteur en paramètre
 ///
 /// @author Yonni Chen
@@ -38,11 +36,7 @@ public:
 
 	/// Traiter un arbre de rendu et ses enfants
 	virtual bool traiter(ArbreRenduINF2990* arbre);
-
-	/// Traiter la table de l'arbre de rendu
 	virtual bool traiter(NoeudTable* table);
-
-	/// Traiter une feuille
 	virtual bool traiter(NoeudAbstrait* noeud);
 
 private:

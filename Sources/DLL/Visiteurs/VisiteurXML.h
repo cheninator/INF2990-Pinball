@@ -13,15 +13,14 @@
 #include "tinyxml2.h"
 #include <string>
 
-class NoeudCouvercle;
 
 ///////////////////////////////////////////////////////////////////////////
 /// @class VisiteurXML
-/// @brief Classe pour enregistrer l'information de l'arbre de rendu
+/// @brief Classe pour enregistrer l'information de la zone de jeu
 ///		   dans un fichier XML.
 ///
 ///        Instancier cette classe avec en paramètre le nom du fichier avec
-///		   l'extension .xml . Ensuite, appelee la méthode accepterVisiteur()
+///		   l'extension .xml . Ensuite, appeler la méthode accepterVisiteur()
 ///		   de l'arbre de rendu et lui fournir CE visiteur en paramètre
 ///
 /// @author Yonni Chen
@@ -46,6 +45,7 @@ public:
 private:
 
 	VisiteurXML();					/// Constructeur par défaut
+	bool traiterProprietes();		/// Méthode pour enregistrer les propriétés de la zone de jeu
 
 	tinyxml2::XMLDocument document; ///< Document XML pour l'écriture
 	std::string nomFichier;			///< Nom du fichier à écrire.
@@ -53,8 +53,6 @@ private:
 	
 	tinyxml2::XMLElement* elementArbreRendu;
 	tinyxml2::XMLElement* elementTable;
-
-	bool traiterProprietes();
 
 };
 

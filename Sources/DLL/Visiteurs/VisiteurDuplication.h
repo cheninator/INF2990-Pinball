@@ -17,11 +17,10 @@
 /// @class VisiteurDuplication
 /// @brief Classe pour dupliquer les objets selectionnés de l'arbre de rendu
 ///
-///        Instancier cette classe avec en paramètre le point cliqué
-///		   Ensuite, appeler la méthode accepterVisiteur() de l'arbre de 
-///		   rendu et lui fournir CE visiteur en paramètre
+///        Instancier cette classe. Ensuite, appeler la méthode accepterVisiteur() 
+///		   de l'arbre de rendu et lui fournir CE visiteur en paramètre
 ///
-/// @author The Ballers
+/// @author Yonni Chen
 /// @date 2015-02-02
 /// @ingroup Visiteur
 ///////////////////////////////////////////////////////////////////////////

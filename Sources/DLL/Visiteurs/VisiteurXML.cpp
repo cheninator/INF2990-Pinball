@@ -36,7 +36,7 @@ VisiteurXML::VisiteurXML(std::string nom, int proprietes[])
 ///
 /// @fn VisiteurXML::~VisiteurXML()
 ///
-/// Destructeur vide.
+/// Désalloue la mémoire du pointeur
 ///
 /// @return Aucune (destructeur).
 ///
@@ -55,7 +55,9 @@ VisiteurXML::~VisiteurXML()
 /// dans un fichier XML. Cette fonction retourne true pour dire que l'opération s'est
 /// faite correctement, ou false si on ne permet pas la sauvegarde
 ///
-/// @return Retourne true ou false.
+/// @param[in] arbre : L'arbre à traiter.
+///
+/// @return Retourne toujours true
 ///
 ////////////////////////////////////////////////////////////////////////
 bool VisiteurXML::traiter(ArbreRenduINF2990* arbre)
@@ -90,7 +92,9 @@ bool VisiteurXML::traiter(ArbreRenduINF2990* arbre)
 /// dans un fichier XML. Cette fonction retourne true pour dire que l'opération s'est
 /// faite correctement, ou false si on ne permet pas la sauvegarde
 ///
-/// @return Retourne true ou false.
+/// @param[in] table : La table à traiter.
+///
+/// @return Retourne toujours true
 ///
 ////////////////////////////////////////////////////////////////////////
 bool VisiteurXML::traiter(NoeudTable* table)
@@ -116,8 +120,8 @@ bool VisiteurXML::traiter(NoeudTable* table)
 ///
 /// @fn bool VisiteurXML::traiter(NoeudAbstrait* noeud)
 ///
-/// Cette fonction traite les enfants de l'arbre de rendu. Si ses enfants ont des enfants
-/// ils seront aussi traités.Cette fonction retourne true pour dire que l'opération s'est
+/// Cette fonction traite les noeuds abstraits de l'arbre de rendu. 
+///	Cette fonction retourne true pour dire que l'opération s'est
 /// fait correctement.
 ///
 /// @param[in] noeud : Le noeud à traiter.
@@ -166,7 +170,8 @@ bool VisiteurXML::traiter(NoeudAbstrait* noeud)
 ///
 /// @fn bool VisiteurXML::traiterProprietes()
 ///
-/// Cette fonction enregistre les propriétés de la zone de jeu
+/// Cette fonction enregistre les propriétés de la zone de jeu dans le même
+/// fichier XML qui
 ///
 /// @return Retourne toujours true
 ///
@@ -204,4 +209,3 @@ bool VisiteurXML::traiterProprietes()
 
 	return true;
 }
-

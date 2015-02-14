@@ -14,7 +14,7 @@
 ///
 /// @fn VisiteurDuplication::VisiteurDuplication()
 ///
-/// Constructeur par défaut (vide).
+/// Constructeur par défaut qui initialise les valeurs par défaut
 ///
 /// @return Aucune (constructeur).
 ///
@@ -48,10 +48,9 @@ VisiteurDuplication::~VisiteurDuplication()
 //////////////////////////////////////////////////////////////////////////////////
 ///
 /// @fn bool VisiteurDuplication::traiter(ArbreRenduINF2990* arbre)
-/// @brief Cette fonction traite l'arbre de rendu pour dupliquer ses enfants selectionnés.
 ///
-/// Cette fonction retourne true pour dire que l'opération s'est
-/// faite correctement.
+/// Cette fonction traite l'arbre de rendu pour dupliquer ses enfants selectionnés.
+///	Cette fonction retourne true pour dire que l'opération s'est faite correctement.
 ///
 /// @param[in] arbre : L'arbre de rendu à traiter.
 ///
@@ -78,10 +77,9 @@ bool VisiteurDuplication::traiter(ArbreRenduINF2990* arbre)
 ////////////////////////////////////////////////////////////////////////
 ///
 /// @fn bool VisiteurDuplication::traiter(NoeudTable* table)
-/// @brief Cette fonction traite la table de l'arbre de rendu.
 ///
-/// Cette fonction retourne true pour dire que l'opération s'est
-/// fait correctement.
+/// Cette fonction traite la table de l'arbre de rendu. Cette fonction retourne 
+///	true pour dire que l'opération s'est faite correctement.
 ///
 /// @param[in] table : Le noeud de type Table à traiter.
 ///
@@ -115,9 +113,8 @@ bool VisiteurDuplication::traiter(NoeudTable* table)
 ///
 /// @fn bool VisiteurDuplication::traiter(NoeudAbstrait* noeud)
 ///
-/// Cette fonction traite un noeud de l'arbre de rendu. Si ses enfants ont 
-/// des enfants, ils seront aussi traités. Cette fonction retourne true pour dire 
-/// que l'opération s'est faite correctement
+/// Cette fonction traite un noeud de l'arbre de rendu. Cette fonction 
+///	retourne true pour dire que l'opération s'est faite correctement
 ///
 /// @param[in] noeud : Noeud de l'arbre à traiter.
 ///
