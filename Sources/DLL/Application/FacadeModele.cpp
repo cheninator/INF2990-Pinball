@@ -72,10 +72,10 @@ Samuel Millette <BR>
 /// Pointeur vers l'instance unique de la classe.
 FacadeModele* FacadeModele::instance_{ nullptr };
 
-const int FacadeModele::premierPointX = 0;
-const int FacadeModele::premierPointY = 100;
-const int FacadeModele::deuxiemePointX = 200;
-const int FacadeModele::deuxiemePointY = -100;
+const int FacadeModele::coinGaucheTableX= 108;
+const int FacadeModele::coinGaucheTableY = -190;
+const int FacadeModele::coinDroitTableX = 272;
+const int FacadeModele::coinDroitTableY = 96;
 
 ////////////////////////////////////////////////////////////////////////
 ///
@@ -201,7 +201,8 @@ void FacadeModele::initialiserOpenGL(HWND hWnd)
 		vue::ProjectionOrtho{ 
 				0, 500, 0, 500,
 				1, 1000, 50, 5000, 1.25,
-				-100, 100, -100, 100 }
+				double(coinGaucheTableX), double(coinGaucheTableY),
+				double(coinDroitTableX), double(coinDroitTableY)}
 	};
 
 }
@@ -622,8 +623,8 @@ bool FacadeModele::verifierCliqueDansTable(int x, int y)
 {
 	glm::dvec3 positionDansLeMonde;
 	obtenirInstance()->obtenirVue()->convertirClotureAVirtuelle(x, y, positionDansLeMonde);
-	if (    103 < positionDansLeMonde.x && positionDansLeMonde.x < 277
-		&& -195 < positionDansLeMonde.y && positionDansLeMonde.y < 101  )
+	if (   coinGaucheTableX < positionDansLeMonde.x && positionDansLeMonde.x < coinDroitTableX
+		&& coinGaucheTableY < positionDansLeMonde.y && positionDansLeMonde.y < coinDroitTableY)
 		return true;
 	else
 		return false;
@@ -845,7 +846,7 @@ bool FacadeModele::appliquerZoomInitial()
 	bool applique = false;
 	if (obtenirInstance() != nullptr)
 	{
-		vue_->zoomerInElastique(glm::dvec2(premierPointX, premierPointY), glm::ivec2(deuxiemePointX, deuxiemePointY));
+		vue_->zoomerInElastique(glm::dvec2(coinGaucheTableX, coinGaucheTableY), glm::ivec2(coinDroitTableX, coinDroitTableY));
 		applique = true;
 	}
 	return applique;

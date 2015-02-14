@@ -121,6 +121,9 @@ namespace InterfaceGraphique
                 playSound("", false);
             playSound("music");
             bool applique = FonctionsNatives.resetZoom();
+            if (applique)
+                currentZoom = FonctionsNatives.obtenirZoomCourant();
+            curZoomVal.Text = currentZoom.ToString();
         }
 
         ////////////////////////////////////////////////////////////////////////
@@ -174,7 +177,7 @@ namespace InterfaceGraphique
                         FonctionsNatives.dessinerOpenGL();
                     }
 
-                    if (currentZoom == -1)
+                    if (currentZoom != -1)
                     {
                         currentZoom = FonctionsNatives.obtenirZoomCourant();
                         curZoomVal.Text = (Math.Round(currentZoom*100)/100).ToString();

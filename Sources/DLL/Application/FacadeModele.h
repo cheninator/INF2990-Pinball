@@ -155,10 +155,10 @@ private:
    glm::dvec3 selectionBasGauche_, selectionHautDroit_;
    glm::ivec2 pointInitial_, pointAvant_;
 
-   static const int premierPointX;
-   static const int premierPointY;
-   static const int deuxiemePointX;
-   static const int deuxiemePointY;
+   static const int coinGaucheTableX;
+   static const int coinGaucheTableY;
+   static const int coinDroitTableX;
+   static const int coinDroitTableY;
 };
 
 
