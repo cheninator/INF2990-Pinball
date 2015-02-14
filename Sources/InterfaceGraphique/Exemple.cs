@@ -120,6 +120,7 @@ namespace InterfaceGraphique
             else
                 playSound("", false);
             playSound("music");
+            bool applique = FonctionsNatives.resetZoom();
         }
 
         ////////////////////////////////////////////////////////////////////////
@@ -2680,5 +2681,7 @@ namespace InterfaceGraphique
         [DllImport(@"Noyau.dll", CallingConvention = CallingConvention.Cdecl)]
         public static extern int obtenirCentreMasseY();
 
+        [DllImport(@"Noyau.dll", CallingConvention = CallingConvention.Cdecl)]
+        public static extern bool resetZoom();
     }
 }

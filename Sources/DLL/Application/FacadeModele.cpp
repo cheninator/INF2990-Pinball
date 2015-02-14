@@ -72,6 +72,10 @@ Samuel Millette <BR>
 /// Pointeur vers l'instance unique de la classe.
 FacadeModele* FacadeModele::instance_{ nullptr };
 
+const int FacadeModele::premierPointX = 0;
+const int FacadeModele::premierPointY = 100;
+const int FacadeModele::deuxiemePointX = 200;
+const int FacadeModele::deuxiemePointY = -100;
 
 ////////////////////////////////////////////////////////////////////////
 ///
@@ -290,7 +294,6 @@ void FacadeModele::reinitialiser()
 {
 	// Réinitialisation de la scène.
 	arbre_->initialiser();
-
 }
 
 
@@ -835,4 +838,15 @@ int FacadeModele::obtenirCentreMasseY(){
 	FacadeModele::obtenirInstance()->obtenirArbreRenduINF2990()->accepterVisiteur(visiteur);
 	centreMasseY = visiteur->obtenirCentreDeMasse().y;
 	return centreMasseY;
+}
+
+bool FacadeModele::appliquerZoomInitial()
+{
+	bool applique = false;
+	if (obtenirInstance() != nullptr)
+	{
+		vue_->zoomerInElastique(glm::dvec2(premierPointX, premierPointY), glm::ivec2(deuxiemePointX, deuxiemePointY));
+		applique = true;
+	}
+	return applique;
 }

@@ -1176,3 +1176,9 @@ __declspec(dllexport) int obtenirCentreMasseY(void)
 {
 	return FacadeModele::obtenirInstance()->obtenirCentreMasseY();
 }
+
+
+__declspec(dllexport) bool resetZoom(void)
+{
+	return FacadeModele::obtenirInstance()->appliquerZoomInitial();
+}

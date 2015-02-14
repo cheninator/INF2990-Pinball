@@ -64,6 +64,7 @@ extern "C" {
 	__declspec(dllexport) double obtenirZoomCourant(void);
 	__declspec(dllexport) int obtenirCentreMasseX(void);
 	__declspec(dllexport) int obtenirCentreMasseY(void);
+	__declspec(dllexport) bool resetZoom(void);
 }
 
 #endif // __FACADE_INTERFACE_NATIVE_H__

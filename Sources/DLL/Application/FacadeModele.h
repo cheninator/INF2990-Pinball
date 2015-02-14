@@ -36,8 +36,6 @@ class ArbreRenduINF2990;
 namespace vue {
    class Vue;
 }
-
-
 ///////////////////////////////////////////////////////////////////////////
 /// @class FacadeModele
 /// @brief Classe qui constitue une interface (une façade) sur l'ensemble
@@ -129,6 +127,7 @@ public:
 
    void terminerRectangleElastique();
 
+   bool appliquerZoomInitial();
 
    static void positionnerMur(int originX, int originY, int x1, int y1, int x2, int y2, NoeudAbstrait* noeud);
 
@@ -155,6 +154,11 @@ private:
 
    glm::dvec3 selectionBasGauche_, selectionHautDroit_;
    glm::ivec2 pointInitial_, pointAvant_;
+
+   static const int premierPointX;
+   static const int premierPointY;
+   static const int deuxiemePointX;
+   static const int deuxiemePointY;
 };
 
 
