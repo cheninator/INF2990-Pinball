@@ -48,6 +48,7 @@ namespace InterfaceGraphique
             form_ = form;
             form_.Cursor = Cursors.Arrow;
             form_.enableZoom(false);
+            
         }
 
         ////////////////////////////////////////////////////////////////////////

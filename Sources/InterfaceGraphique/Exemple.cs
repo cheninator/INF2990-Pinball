@@ -256,6 +256,12 @@ namespace InterfaceGraphique
                         etat = new EtatCreation(this);
                         deselection();
                     }
+                    else
+                    {
+                        etat = null;
+                        etat = new EtatNone(this);
+                        deselection();
+                    }
                     
                 }
                 else if (e.KeyChar == 'f')
@@ -312,8 +318,7 @@ namespace InterfaceGraphique
 
                 else if (e.KeyChar == 'z')
                 {
-                    etat = null;
-                    etat = new EtatZoom(this);
+                    Zoom_MenuItem_Click(this, e);
 
 
                 }
@@ -1090,6 +1095,7 @@ namespace InterfaceGraphique
             
             etat = null;
             etat = new EtatZoom(this);
+        
         }
 
         ////////////////////////////////////////////////////////////////////////
@@ -2318,8 +2324,8 @@ namespace InterfaceGraphique
         //////////////////////////////////////////////////////////////////////////////////////////
         public void enableZoom(bool active)
         {
-            //IncreaseZoomButton.Enabled = active;
-           // DecreaseZoomButton.Enabled = active;
+            IncreaseZoomButton.Enabled = active;
+            DecreaseZoomButton.Enabled = active;
         }
 
         //////////////////////////////////////////////////////////////////////////////////////////
