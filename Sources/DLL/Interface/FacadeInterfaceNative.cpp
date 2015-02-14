@@ -986,11 +986,11 @@ extern "C"
 		FMOD_CHANNELGROUP *canal;
 		FMOD_System_GetMasterChannelGroup(system, &canal);
 		if (stop) {
-			FMOD_ChannelGroup_SetPaused(canal, 1);
+			FMOD_ChannelGroup_SetMute(canal, 1);
 			return;
 		}
 		else {
-			FMOD_ChannelGroup_SetPaused(canal, 0);
+			FMOD_ChannelGroup_SetMute(canal, 0);
 			if (playing == "")
 				return;
 		}

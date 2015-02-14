@@ -35,7 +35,8 @@ namespace InterfaceGraphique
     {
         FullScreen fs = new FullScreen();
         static public StringBuilder myObjectName = new StringBuilder("vide");
-   
+        static bool soundActif = false; ///< Play Sound or not
+
         public Point origin;
         
         public Point previousP, currentP;
@@ -67,6 +68,11 @@ namespace InterfaceGraphique
         ////////////////////////////////////////////////////////////////////////
         public Exemple()
         {
+            if (soundActif)
+                playSound("");
+            else
+                playSound("", true);
+
             this.KeyPreview = true;
             this.KeyPress += new KeyPressEventHandler(ToucheEnfonce);
             // Pour le deplacement de la vue
@@ -100,9 +106,19 @@ namespace InterfaceGraphique
             panel_GL.Select();
             etat = new EtatNone(this);
 
+            if (soundActif)
+                playSound("");
+            else
+                playSound("", true);
+
             //Musique
-           /// playSound("music");
-           // playSound("stone");
+            if (soundActif)
+            {
+                playSound("stone");
+            }
+            else
+                playSound("", false);
+            playSound("music");
 
             //CurrentZoom
             currentZoom = FonctionsNatives.obtenirZoomCourant();
@@ -158,8 +174,12 @@ namespace InterfaceGraphique
                         FonctionsNatives.animer(tempsInterAffichage);
                         FonctionsNatives.dessinerOpenGL();
                     }
-                    currentZoom = FonctionsNatives.obtenirZoomCourant();
+                   // currentZoom = FonctionsNatives.obtenirZoomCourant();
                     curZoomVal.Text = (Math.Round(currentZoom*100)/100).ToString();
+                    if (soundActif)
+                        playSound("");
+                    else
+                        playSound("", true);
 
                 });
             }
@@ -2450,7 +2470,7 @@ namespace InterfaceGraphique
 
         private void Mute_MenuItem_Click(object sender, EventArgs e)
         {
-            // TO DO
+            soundActif = !soundActif;
         }
     }
 

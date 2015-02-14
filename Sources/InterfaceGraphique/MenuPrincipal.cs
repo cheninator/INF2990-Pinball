@@ -216,8 +216,7 @@ namespace InterfaceGraphique
         private void initMusic()
         {
             StringBuilder initSound = new StringBuilder("");
-            InterfaceGraphique.FonctionsNatives.playSound(initSound, initSound.Capacity, false); // Initialise le son
-            
+            InterfaceGraphique.FonctionsNatives.playSound(initSound, initSound.Capacity, true); // Initialise le son
         }
 
         private void bouton_campagne_Click(object sender, EventArgs e)
