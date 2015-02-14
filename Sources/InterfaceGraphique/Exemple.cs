@@ -299,6 +299,7 @@ namespace InterfaceGraphique
                 else if (e.KeyChar == 'c')
                 {
                     bouton_Duplication_Click(this, e);
+                  
 
                 }
                 else if (e.KeyChar == 'h')
@@ -744,15 +745,42 @@ namespace InterfaceGraphique
         ////////////////////////////////////////////////////////////////////////
         private void OK_prop_bouton_Click(object sender, EventArgs e)
         {
-          
-            /*  FonctionsNatives.deplacerSelection(
-                FonctionsNatives.getPositionX(),
-                FonctionsNatives.getPositionY(),
-                Convert.ToInt32(Xbox.Text), 
-                Convert.ToInt32(Ybox.Text));
-            
-                (Ajuste le header s'il y a lieu.)
-            */
+            int positionX;
+            int positionY;
+            int angle;
+            double echelle;
+            if (Xbox.Text == "")
+                Xbox.Text = "0";
+            if (Ybox.Text == "")
+                Ybox.Text = "0";
+            if (Anglebox.Text == "")
+                Anglebox.Text = "0";
+            if (FMEbox.Text == "")
+                FMEbox.Text = "1";
+
+
+            if (!int.TryParse(Anglebox.Text, out angle))
+                Anglebox.Text = "ERREUR";
+            if (!int.TryParse(Xbox.Text, out positionX))
+                Xbox.Text = "ERREUR";
+            if (!int.TryParse(Ybox.Text, out positionY))
+                Ybox.Text = "ERREUR";
+            if (!double.TryParse(FMEbox.Text, out echelle))
+                FMEbox.Text = "ERREUR";
+            if(  Xbox.Text == "ERREUR" ||
+                Ybox.Text == "ERREUR"   ||
+                 Anglebox.Text == "ERREUR" ||
+                FMEbox.Text == "ERREUR"
+               )
+                {
+                    return;
+                }
+            else
+            {
+                FonctionsNatives.setProprietesNoeud(positionX, positionY, angle, echelle);
+            }
+
+           
         }
 
         ////////////////////////////////////////////////////////////////////////
@@ -801,35 +829,6 @@ namespace InterfaceGraphique
             FonctionsNatives.positionObjet(positionX, positionY);
         }
 
-        ////////////////////////////////////////////////////////////////////////
-        ///
-        /// @fn public void Scale_Objet()
-        /// @brief Logique de mise à échelle d'un objet par les text boxes.
-        /// 
-        /// @return Aucune.
-        ///
-        ////////////////////////////////////////////////////////////////////////
-        public void Scale_Objet()
-        {
-            string scalingRead = FMEbox.Text;
-            scalingRead = scalingRead.Replace(",", ".");
-            float scale;
-
-            if (FMEbox.Text == "")
-                FMEbox.Text = "1"; ;
-
-            DataTable dt = new DataTable();
-            try { scalingRead = dt.Compute(scalingRead, "").ToString(); }
-            catch { return; }
-
-            if (!float.TryParse(scalingRead, out scale))
-                return;
-
-            if (scale < 0)
-                return;
-
-            FonctionsNatives.scaleObjet(scale);
-        }
 
         ////////////////////////////////////////////////////////////////////////
         ///
@@ -891,6 +890,7 @@ namespace InterfaceGraphique
         ////////////////////////////////////////////////////////////////////////
         private void Annuler_prop_boutn_Click(object sender, EventArgs e)
         {
+
             Xbox.Text = Math.Round(FonctionsNatives.getPositionX()).ToString();
             Ybox.Text = Math.Round(FonctionsNatives.getPositionY()).ToString();
             Anglebox.Text = Math.Round(FonctionsNatives.getAngle()).ToString();
@@ -1191,6 +1191,7 @@ namespace InterfaceGraphique
         {
             Console.WriteLine("Supprimer.");
             FonctionsNatives.removeObject();
+            deselection();
             // TO DO
         }
 
@@ -1691,12 +1692,12 @@ namespace InterfaceGraphique
                 
             }
 
-            if (nbSelection == 1) 
+            if (nbSelection == 1  && (etat is EtatDuplication)) 
             {
                 Xbox.Text = Math.Round(FonctionsNatives.getPositionX()).ToString();
                 Ybox.Text = Math.Round(FonctionsNatives.getPositionY()).ToString();
                 Anglebox.Text = Math.Round(FonctionsNatives.getAngle()).ToString();
-                FMEbox.Text = FonctionsNatives.getScale().ToString();
+                FMEbox.Text = (Math.Round(FonctionsNatives.getScale()*100)/100).ToString();
             }
             if (!(clickValide(origin, currentP)) && (etat is EtatSelection) && e.Button == MouseButtons.Left)
             {
@@ -1730,9 +1731,11 @@ namespace InterfaceGraphique
             {
                 panel_GL.MouseMove -= panel_MouseMove;
             }
-            if (etat is EtatDuplication)
+            if (etat is EtatDuplication && e.Button == MouseButtons.Left)
             {
-                etat = new EtatSelection(this);
+               etat = new EtatNone(this);
+               deselection();   
+              
             }
             if (e.Button == MouseButtons.Left)
             {
@@ -1811,7 +1814,7 @@ namespace InterfaceGraphique
         public void deplacementSouris(MouseEventArgs e)
         {
             // On va calculer un point precedent et un point courrant pour faire le deplacement.
-
+          
             // Ce point est dans les coordonnees d'affichage d'openGL pour pouvoir calculer un deplacement
             // en coordonnees du monde en utilisant convertirClotureAVirtuelle(...) comme ça on n'a pas 
             // besoin de ce facteur mistérieux.  Et aussi, cette technique devrait bien marcher 
@@ -2049,7 +2052,6 @@ namespace InterfaceGraphique
                 FonctionsNatives.rotate(angleX, 'x');
                 FonctionsNatives.rotate(angleY, 'y');
                 FonctionsNatives.rotate(angleZ, 'z');
-                FonctionsNatives.scaleObjet(scale);
                 previousP.X = panel_GL.PointToClient(MousePosition).X;
                 previousP.Y = panel_GL.PointToClient(MousePosition).Y;
 
@@ -2108,7 +2110,14 @@ namespace InterfaceGraphique
             FMEbox.Enabled = active;
             OK_prop_bouton.Enabled = active;
             Annuler_prop_boutn.Enabled = active;
-        }
+            if (!active)
+            {
+                Xbox.Text = "";
+                Ybox.Text = "";
+                Anglebox.Text = "";
+                FMEbox.Text = "";
+            }
+            }
 
         //////////////////////////////////////////////////////////////////////////////////////////
         ///
@@ -2204,6 +2213,7 @@ namespace InterfaceGraphique
         public void deselection()
         {
             FonctionsNatives.deselectAll();
+           
             nbSelection = 0;
             proprietesEnable(false);
             outilsEnable(false);
@@ -2334,7 +2344,7 @@ namespace InterfaceGraphique
 
         public void creationMur()
         {
-        //  FonctionsNatives.creerMur(previousP.X,previousP.Y,currentP.X,currentP.Y);
+          FonctionsNatives.creerMur(origin.X,origin.Y,previousP.X,previousP.Y,currentP.X,currentP.Y);
          //  Console.WriteLine(FonctionsNatives.getScale());
            previousP = currentP;
            currentP = panel_GL.PointToClient(MousePosition);
@@ -2437,12 +2447,6 @@ namespace InterfaceGraphique
         public static extern void positionObjet(int x, int y, int z = 0);
 
         [DllImport(@"Noyau.dll", CallingConvention = CallingConvention.Cdecl)]
-        public static extern void translateObjet(int x, int y, int z = 0);
-
-        [DllImport(@"Noyau.dll", CallingConvention = CallingConvention.Cdecl)]
-        public static extern void scaleObjet(double scale);
-
-        [DllImport(@"Noyau.dll", CallingConvention = CallingConvention.Cdecl)]
         public static extern void addScaleObjet(int myScale);
 
         [DllImport(@"Noyau.dll", CallingConvention = CallingConvention.Cdecl)]
@@ -2534,7 +2538,11 @@ namespace InterfaceGraphique
 
         [DllImport(@"Noyau.dll", CallingConvention = CallingConvention.Cdecl)]
         public static extern void terminerRectangleElastique();
+
         [DllImport(@"Noyau.dll", CallingConvention = CallingConvention.Cdecl)]
-        public static extern void creerMur(int x1, int y1, int x2, int y2);
+        public static extern void creerMur(int originX,int originY,int x1, int y1, int x2, int y2);
+
+        [DllImport(@"Noyau.dll", CallingConvention = CallingConvention.Cdecl)]
+        public static extern bool setProprietesNoeud(int x, int y, int angle, double scale);
     }
 }

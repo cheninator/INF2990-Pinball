@@ -84,8 +84,6 @@ public:
    /// Anime la scène.
    void animer(float temps);
 
-   int selectionnerObjetSousPointClique(int i, int j, int largeur, int hauteur, bool ctrlDown = false);
-
    /// Deplacement des noeuds selectionnés dans l'arbre de rendu.
    void deplacerSelection(int x1, int y1, int x2, int y2);
 
@@ -94,16 +92,6 @@ public:
 
    /// Scale de la sélection
    void agrandirSelection(int x1, int y1, int x2, int y2);
-
-   /// xxxxx
-   void rectangleElastique(int i, int j);
-   
-   /// xxxxx
-   int selectionMultiple(bool c);
-
-   void initialiserRectangleElastique(int i, int j);
-
-   void terminerRectangleElastique();
 
    /// Vérifier si un point cliqué est dans la table
    bool verifierCliqueDansTable(int x, int y);
@@ -116,8 +104,26 @@ public:
 
    /// Vérifier si un point cliqué est dans la table 
    bool estDansTable(glm::dvec3 pointDuMonde);
-   static void FaireQuelquechose(int x1, int y1, int x2, int y2, NoeudAbstrait* noeud);
 
+   /// Pour la suppression des objets
+   bool supprimer();
+
+
+
+   int selectionnerObjetSousPointClique(int i, int j, int largeur, int hauteur, bool ctrlDown = false);
+
+   /// xxxxx
+   void rectangleElastique(int i, int j);
+   
+   /// xxxxx
+   int selectionMultiple(bool c);
+
+   void initialiserRectangleElastique(int i, int j);
+
+   void terminerRectangleElastique();
+
+
+   static void positionnerMur(int originX, int originY, int x1, int y1, int x2, int y2, NoeudAbstrait* noeud);
 
 private:
    /// Constructeur par défaut.

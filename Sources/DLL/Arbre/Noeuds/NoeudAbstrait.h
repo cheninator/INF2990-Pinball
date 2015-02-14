@@ -92,6 +92,7 @@ public:
 	inline void assignerEchelle(glm::dvec3 scale);
 	/// Écrit le rotation sur le noeud.
 	inline void assignerRotation(glm::dvec3 rotation);
+	inline void assignerRotationHard(glm::dvec3 rotation){ rotation_ = rotation; };
 	/// Écrit le rotation 0,0,0 sur le noeud.
 	inline void resetRotation();
 	/// Vérifie si le noeud est sélectionnable.
@@ -167,6 +168,7 @@ public:
 	virtual void setTwin(NoeudAbstrait* twin);
 	//Obtenir les 4 vecteurs de la boite englobante modifie
 	virtual void obtenirVecteursBoite(glm::dvec3 &v1, glm::dvec3 &v2, glm::dvec3 &v3, glm::dvec3 &v4);
+	virtual void obtenirBoiteModele(glm::dvec3 &v1, glm::dvec3 &v2, glm::dvec3 &v3, glm::dvec3 &v4);
 	//Verifie si un point est dans la boite englobante
 	virtual bool pointEstDansBoite(glm::dvec3 point);
 

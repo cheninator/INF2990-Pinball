@@ -16,9 +16,6 @@
 #include "Vue.h"
 #include "ArbreRenduINF2990.h"
 #include "CompteurAffichage.h"
-#include "../Visiteurs/VisiteurXML.h"
-#include "../Visiteurs/VisiteurSuppression.h"
-#include "../Visiteurs/VisiteurDuplication.h"
 
 #include <iostream>
 #include "BancTests.h"
@@ -283,9 +280,9 @@ extern "C"
 	////////////////////////////////////////////////////////////////////////
 	__declspec(dllexport) void __cdecl creerObjet(char* value, int length, bool isTwin, bool colorShift)
 	{
+		
 		std::string nomObjet(value);
 		if (isTwin == true) {
-			std::cout << isTwin;
 			objet_temp = FacadeModele::obtenirInstance()->obtenirArbreRenduINF2990()->creerNoeud(nomObjet);
 			objet_temp->setColorShift(colorShift);
 			if (objet == nullptr)
@@ -307,7 +304,9 @@ extern "C"
 				objet->assignerSelection(true);
 			}
 		}
+		
 		FacadeModele::obtenirInstance()->obtenirArbreRenduINF2990()->getEnfant(0)->ajouter(objet);
+
 	}
 
 	////////////////////////////////////////////////////////////////////////
@@ -490,9 +489,7 @@ extern "C"
 	////////////////////////////////////////////////////////////////////////
 	__declspec(dllexport) void removeObject(void)
 	{
-		VisiteurSuppression* visiteur = new VisiteurSuppression();
-		FacadeModele::obtenirInstance()->obtenirArbreRenduINF2990()->accepterVisiteur(visiteur);
-		delete visiteur;
+		FacadeModele::obtenirInstance()->supprimer();
 	}
 
 
@@ -779,9 +776,10 @@ extern "C"
 	///
 	///////////////////////////////////////////////////////////////////////////////
 	__declspec(dllexport) double getPositionX(void) {
-		double positionX;
+		double positionX = 0;
 		if (objet == nullptr)
 			return false;
+		
 		for (unsigned int j = 0; j < FacadeModele::obtenirInstance()->obtenirArbreRenduINF2990()->getEnfant(0)->obtenirNombreEnfants(); j++)
 		{
 			if (
@@ -791,6 +789,7 @@ extern "C"
 				positionX = objet->obtenirPositionRelative().x;
 			}
 		}
+		
 		return positionX;
 	}
 
@@ -805,7 +804,7 @@ extern "C"
 	///
 	///////////////////////////////////////////////////////////////////////////////
 	__declspec(dllexport) double getPositionY(void) {
-		double positionY;
+		double positionY = 0;
 		if (objet == nullptr)
 			return false;
 		for (unsigned int j = 0; j < FacadeModele::obtenirInstance()->obtenirArbreRenduINF2990()->getEnfant(0)->obtenirNombreEnfants(); j++)
@@ -834,7 +833,7 @@ extern "C"
 	{
 		if (objet == nullptr)
 			return false;
-		double angle;
+		double angle=0;
 		for (unsigned int j = 0; j < FacadeModele::obtenirInstance()->obtenirArbreRenduINF2990()->getEnfant(0)->obtenirNombreEnfants(); j++)
 		{
 			if (
@@ -858,7 +857,7 @@ extern "C"
 	///////////////////////////////////////////////////////////////////////////////
 	__declspec(dllexport) double getScale(void)
 	{
-		double scale;
+		double scale =0;
 		if (objet == nullptr)
 			return false;
 		for (unsigned int j = 0; j < FacadeModele::obtenirInstance()->obtenirArbreRenduINF2990()->getEnfant(0)->obtenirNombreEnfants(); j++)
@@ -983,19 +982,29 @@ extern "C"
 	}
 }
 
-__declspec(dllexport) void creerMur(int x1, int y1, int x2, int y2)
+__declspec(dllexport) void creerMur(int originX, int originY,int x1, int y1, int x2, int y2)
 {
-	for (unsigned int j = 0; j < FacadeModele::obtenirInstance()->obtenirArbreRenduINF2990()->getEnfant(0)->obtenirNombreEnfants(); j++)
-	{
-		if (
-			FacadeModele::obtenirInstance()->obtenirArbreRenduINF2990()->getEnfant(0)->chercher(j)->estSelectionne()
-			) 
-		{
-			objet = FacadeModele::obtenirInstance()->obtenirArbreRenduINF2990()->getEnfant(0)->chercher(j);
-			FacadeModele::FaireQuelquechose(x1, y1, x2, y2, objet);
-		}
-	}
-
-
+	FacadeModele::positionnerMur(originX,originY,x1, y1, x2, y2, objet);
 }
 
+
+///////////////////////////////////////////////////////////////////////////////
+///
+/// @fn __declspec(dllexport) bool __cdecl setProprietesNoeud(int x, int y, int angle, double scale)
+///
+/// @param[in]  x : abcisse du point initial 
+/// @param[in]  y : ordonnee du point initial
+/// @param[in]	angle : angle de rotation
+///	@param[in]	scale: scale de l'objet
+/// @return bool
+///
+/// @remark : On doit donner des x,y qui ont été transformés par panel_GL.PointToClient(...)
+///
+///////////////////////////////////////////////////////////////////////////////
+__declspec(dllexport) bool setProprietesNoeud(int x, int y, int angle, double scale)
+{
+	// TO DO
+	
+	return true;
+
+}

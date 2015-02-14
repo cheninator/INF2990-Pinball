@@ -7,6 +7,7 @@
 ////////////////////////////////////////////////
 #include "VisiteurDeplacement.h"
 #include "../Arbre/ArbreRenduINF2990.h"
+#include "../Arbre/Noeuds/NoeudTable.h"
 
 ////////////////////////////////////////////////////////////////////////
 ///
@@ -70,9 +71,35 @@ VisiteurDeplacement::~VisiteurDeplacement()
 //////////////////////////////////////////////////////////////////////////////////
 bool VisiteurDeplacement::traiter(ArbreRenduINF2990* arbre)
 {
+	// Traiter les enfants de l'arbre
 	for (unsigned int i = 0; i < arbre->obtenirNombreEnfants(); i++)
 	{
-		traiter(arbre->getEnfant(i));
+		arbre->getEnfant(i)->accepterVisiteur(this);
+	}
+
+	return true;
+}
+
+
+//////////////////////////////////////////////////////////////////////////////////
+///
+/// @fn bool VisiteurDeplacement::traiter(NoeudTable* table)
+/// @brief Cette fonction traite la table pour deplacer ses enfants selectionnés.
+///
+/// Cette fonction retourne true pour dire que l'opération s'est
+/// fait correctement.
+///
+/// @param[in] arbre : L'arbre de rendu à traiter.
+///
+/// @return Retourne toujours true.
+///
+//////////////////////////////////////////////////////////////////////////////////
+bool VisiteurDeplacement::traiter(NoeudTable* table)
+{
+	// Traiter les enfants selectionnés de la table
+	for (unsigned int i = 0; i < table->obtenirNombreEnfants(); i++)
+	{
+		table->getEnfant(i)->accepterVisiteur(this);
 	}
 
 	return true;
@@ -94,26 +121,10 @@ bool VisiteurDeplacement::traiter(ArbreRenduINF2990* arbre)
 ////////////////////////////////////////////////////////////////////////
 bool VisiteurDeplacement::traiter(NoeudAbstrait* noeud)
 {
-	// Connaitre le type du noeud
-	std::string nom = noeud->obtenirType();
-
-	// Si l'élément est une table, visiter ses enfants
-	if (nom == "table")
+	if (noeud->estSelectionne())
 	{
-		// Traiter les enfants selectionnés de la table
-		for (unsigned int i = 0; i < noeud->obtenirNombreEnfants(); i++)
-		{
-			if (noeud->chercher(i)->estSelectionne())
-				traiter(noeud->chercher(i));
-		}
-	}
-
-	else
-	{
-		// LOGIQUE DE DÉPLACEMENT
 		glm::dvec3 nouvellePosition{ noeud->obtenirPositionRelative() + deplacement_ };
-		if (noeud->estSelectionne())
-			noeud->assignerPositionRelative(nouvellePosition);
+		noeud->assignerPositionRelative(nouvellePosition);
 	}
 
 	return true;

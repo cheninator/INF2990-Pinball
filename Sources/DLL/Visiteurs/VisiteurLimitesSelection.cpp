@@ -46,15 +46,21 @@ VisiteurLimitesSelection::~VisiteurLimitesSelection()
 ////////////////////////////////////////////////////////////////////////
 ///
 /// @fn bool VisiteurCentreDeMasse::traiter(ArbreRenduINF2990* noeud)
+/// @brief Cette fonction traite l'arbre de rendu.
+///
+/// Cette fonction retourne true pour dire que l'opération s'est
+/// faite correctement.
+///
+/// @param[in] arbre : L'arbre à traiter.
 ///
 /// @return Retourne toujours true
 ///
 ////////////////////////////////////////////////////////////////////////
-bool VisiteurLimitesSelection::traiter(ArbreRenduINF2990* noeud)
+bool VisiteurLimitesSelection::traiter(ArbreRenduINF2990* arbre)
 {
-	for (unsigned int i = 0; i < noeud->obtenirNombreEnfants(); i++)
+	for (unsigned int i = 0; i < arbre->obtenirNombreEnfants(); i++)
 	{
-		noeud->getEnfant(i)->accepterVisiteur(this);
+		arbre->getEnfant(i)->accepterVisiteur(this);
 	}
 
 	return true;
@@ -66,6 +72,8 @@ bool VisiteurLimitesSelection::traiter(ArbreRenduINF2990* noeud)
 ///
 /// Cette fonction retourne true pour dire que l'opération s'est
 /// faite correctement
+///
+/// @param[in] table : La table à traiter.
 ///
 /// @return Retourne toujours true
 ///
@@ -82,7 +90,9 @@ bool VisiteurLimitesSelection::traiter(NoeudTable* table)
 ////////////////////////////////////////////////////////////////////////
 ///
 /// @fn bool VisiteurCentreDeMasse::traiter(NoeudAbstrait* noeud)
-/// @brief Calcule le centre de masse (tous les noeuds ont une masse de 1)
+/// @brief Calcule la limite de la sélection. (tous les noeuds ont une masse de 1)
+///
+/// @param[in] noeud : Le noeud à traiter.
 ///
 /// @return Retourne toujours true
 ///

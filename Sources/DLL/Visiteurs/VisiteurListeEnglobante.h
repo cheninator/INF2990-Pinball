@@ -16,8 +16,8 @@
 
 using conteneur_boite_englobante = std::pair<std::vector<glm::dvec3>,NoeudAbstrait*>;
 ///////////////////////////////////////////////////////////////////////////
-/// @class VisiteurDeselectionnerTout
-/// @brief Classe pour désélectionner tous les objets de la table de rendu.
+/// @class VisiteurListeEnglobante
+/// @brief Classe pour créer une Liste de rectangles englobants.
 ///
 /// @author Yonni Chen
 /// @date 2015-02-02
@@ -27,7 +27,7 @@ class VisiteurListeEnglobante : public VisiteurAbstrait
 {
 public:
 
-	/// Constructeur par défaut : aucun déplacement
+	/// Constructeur par défaut
 	VisiteurListeEnglobante();
 
 	/// Destructeur

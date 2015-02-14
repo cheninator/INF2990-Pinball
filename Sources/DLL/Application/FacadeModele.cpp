@@ -49,6 +49,8 @@ Samuel Millette <BR>
 #include "../Visiteurs/VisiteurLimitesSelection.h"
 #include "../Visiteurs/VisiteurListeEnglobante.h"
 #include "../Visiteurs/VisiteurPossibilite.h"
+#include "../Visiteurs/VisiteurSuppression.h"
+#include "../Visiteurs/VisiteurXML.h"
 
 #include "VueOrtho.h"
 #include "Camera.h"
@@ -58,7 +60,6 @@ Samuel Millette <BR>
 #include "AideGL.h"
 #include "ArbreRenduINF2990.h"
 
-#include "ConfigScene.h"
 #include "CompteurAffichage.h"
 
 // Remplacement de EnveloppeXML/XercesC par TinyXML
@@ -66,15 +67,11 @@ Samuel Millette <BR>
 #include "tinyxml2.h"
 
 #include "glm/gtc/type_ptr.hpp"
-#include "../Visiteurs/VisiteurXML.h"
 
+
+#define M_PI	3.141592653589793238462643383279502884
 /// Pointeur vers l'instance unique de la classe.
 FacadeModele* FacadeModele::instance_{ nullptr };
-
-/*
-/// Chaîne indiquant le nom du fichier de configuration du projet.
-const std::string FacadeModele::FICHIER_CONFIGURATION{ "configuration.xml" };
-*/
 
 
 ////////////////////////////////////////////////////////////////////////
@@ -113,6 +110,7 @@ void FacadeModele::libererInstance()
 	delete instance_;
 	instance_ = nullptr;
 }
+
 
 ////////////////////////////////////////////////////////////////////////
 ///
@@ -620,7 +618,6 @@ int FacadeModele::selectionMultiple(bool c)
 ///////////////////////////////////////////////////////////////////////////////
 bool FacadeModele::verifierCliqueDansTable(int x, int y)
 {
-	
 	glm::dvec3 positionDansLeMonde;
 	obtenirInstance()->obtenirVue()->convertirClotureAVirtuelle(x, y, positionDansLeMonde);
 	if (    108 < positionDansLeMonde.x && positionDansLeMonde.x < 272
@@ -646,8 +643,6 @@ void FacadeModele::dupliquerSelection(int i, int j)
 	arbre_->accepterVisiteur(visiteur);
 	delete visiteur;
 }
-
-
 
 
 ///////////////////////////////////////////////////////////////////////////////
@@ -726,52 +721,82 @@ bool FacadeModele::estDansTable(glm::dvec3 pointDuMonde)
 // Les points (x1,y1) et (x2,y2) ont passé par PanelGL.PointToClient (voir l'appel de cette fonction dans le C#).
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 // Pour les deux opérations, tu utilises les mêmes vecteurFinal et vecteurInitial, donc ça pourrais être quelque chose comme
-void FacadeModele::FaireQuelquechose(int x1, int y1, int x2, int y2, NoeudAbstrait* noeud)
+void FacadeModele::positionnerMur(int originX, int originY,int x1, int y1, int x2, int y2, NoeudAbstrait* noeud)
 {
-	glm::dvec3 positionInitiale, positionFinale;
-	FacadeModele::obtenirInstance()->obtenirVue()->convertirClotureAVirtuelle(x1, y1, positionInitiale);
+	glm::dvec3 positionOriginale,positionInitiale, positionFinale;
+	FacadeModele::obtenirInstance()->obtenirVue()->convertirClotureAVirtuelle(originX, originY, positionOriginale);
 	FacadeModele::obtenirInstance()->obtenirVue()->convertirClotureAVirtuelle(x2, y2, positionFinale);
-	//std:: cout << noeud->getType() << std:: endl;
-	//std::cout << "X:" <<noeud->obtenirAgrandissement().x << std::endl;
-	//std::cout << "Y:" << noeud->obtenirAgrandissement().y << std::endl;
-	//std::cout << "Z:"<<noeud->obtenirAgrandissement().z << std::endl;
-	glm::dvec3 vecteurInitial = glm::dvec3{ 1, 0, 0 }; // CHANGEMENT
-	glm::dvec3 vecteurFinal = positionFinale - noeud->obtenirPositionRelative();
-//	std::cout << "VF X:" << vecteurFinal.x << std::endl;
-//	std::cout << "VF Y:" << vecteurFinal.y<< std::endl;
-//	std::cout << "VF Z:" << vecteurFinal.z << std::endl;
 
-	glm::dvec3 produitVectoriel = glm::cross(vecteurInitial, vecteurFinal);
+	glm::dvec3 vecteur = positionFinale - positionOriginale;
+
+	// Propriétés à appliquer:
+	glm::dvec3 scaleFinal{ 1, 1, 1 };
+	glm::dvec3 angles{ 0, 0, 0 };
+	glm::dvec3 position = positionOriginale;
+
+	double angleRadian;
+
+	// Les calculs sont fait seulement si la souris est assez loin de ou on a créé le noeud.
+	if (glm::length(vecteur) > 10)
+	{
+		// CALCUL DE L'ANGLE
+		// =================
+		glm::dvec3 axe{ 0, 1, 0 }; // On va travailler avec l'angle entre le vecteur allant de origin à la position du curseur, et l'axe Y.
+		glm::dvec3 produitVectoriel = glm::cross(axe, vecteur);
+		double sinAngle = glm::length(produitVectoriel) / glm::length(axe) / glm::length(vecteur);
+		angleRadian = produitVectoriel.z > 0 ? asin(sinAngle) : -asin(sinAngle);
+
+		// Prendre l'angle complémentaire si on est en dessous de l'axe X.
+		if (vecteur.y < 0)
+			angleRadian = M_PI - angleRadian;// A passer en paramètre à assignerRotation
+
+		angles = glm::dvec3{ 0, 0, 360.0 / 2.0 / M_PI * angleRadian };
 
 
-	// CALCUL DE L'ANGLE;
-	double sinAngle = glm::length(produitVectoriel) / glm::length(vecteurInitial) / glm::length(vecteurInitial);
-	// Le signe de la composante en z donne le sens dans le quel on doit tourner
-	double angleRadian = produitVectoriel.z > 0 ? asin(sinAngle) : -asin(sinAngle);
-	// L'angle est en radian, on doit le convertir
-	double angleDegre = 360 / 2 / 3.14156 * angleRadian;
-	//std::cout << "ANGLE:" << asin(sinAngle) << std::endl;
-	glm::dvec3 angles{ 0, 0, angleDegre };// A passer en paramètre à assignerRotation
+		// Calcul de la translation
+		// ========================
+		position = positionOriginale + vecteur / 2.0; // Le centre du mur est à mi-chemin entre origin et le point du curseur. 
 
-	// CALCUL DU SCALE
-	double scale = glm::length(vecteurFinal) / glm::length(vecteurInitial);
-	glm::dvec3 scaleInit = noeud->obtenirAgrandissement();
-	
-	//glm::dvec3 scaleInit = { 1, 1, 1 };
-	glm::dvec3 scaleFinal = glm::dvec3{ scaleInit[0] * scale, scaleInit[1] * scale, scaleInit[2] * scale };
-	// Vu que c'est pour le mur, tu voudrais probablement scaler en x, donc glm::dvec3 scaleFinal = glm::dvec3{ scaleInit[0] * scale, scaleInit[1] , scaleInit[2]};
+		// Calcul du scale
+		// ===============
+		double scale = glm::length(vecteur) / 16; // 16.0; // 16.0 est la longueur originale du mur.
+		scaleFinal = glm::dvec3{ 1,  scale, 1 };
+	}
 
-	// APPLICATION DES DEUX TRANSFORMATIONS;
+	// Tester la transformation
+	// ========================
+	glm::dvec3 boite[4];
+	noeud->obtenirBoiteModele(boite[0], boite[1], boite[2], boite[3]);
+	glm::dmat3 echelle = glm::dmat3{	glm::dvec3{ 1,				0,				0.0 },
+										glm::dvec3{ 0,			scaleFinal.y,		0.0f },
+										glm::dvec3{ 0.0,			0.0,			1 } };
 
-	// Application du scale
+	glm::dmat3 rotation = glm::dmat3{	glm::dvec3{ cos(angleRadian), sin(angleRadian), 0.0 },
+										glm::dvec3{ -sin(angleRadian),	 cos(angleRadian), 0.0f },
+										glm::dvec3{		 0.0,				0.0,			1.0 } };
+	glm::dvec3 pointATester;
+	for (int i = 0; i < 4; i++)
+	{
+		pointATester = position + rotation * (echelle * boite[i]);
+		if (!obtenirInstance()->estDansTable(pointATester))
+		{
+			return;
+		}
+	}
+
+	// Si on s'est rendu ici, c'est qu'on peut faire l'assignation des propriétés.
 	noeud->assignerEchelle(scaleFinal);
+	noeud->assignerRotationHard(angles);
+	noeud->assignerPositionRelative(position);
 
-	// Application de la rotation
-
-	// Assigner la rotation avec = au lieu de +=
-	noeud->assignerRotation(angles);
+}
 
 
-	// NOTE IMPORTANTE: J'ai pas a prendre ses anciens angles et ajouter angles parce que la fonction assignerRotation fait un += avec le paramètre. C'est la seule fonction assigner qui fonctionne comme ça.
+bool FacadeModele::supprimer()
+{
+	VisiteurSuppression* visiteur = new VisiteurSuppression();
+	FacadeModele::obtenirInstance()->obtenirArbreRenduINF2990()->accepterVisiteur(visiteur);
+	delete visiteur;
 
+	return true;
 }

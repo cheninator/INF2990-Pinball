@@ -117,11 +117,13 @@ bool VisiteurSuppression::traiter(NoeudTable* table)
 ////////////////////////////////////////////////////////////////////////
 bool VisiteurSuppression::traiter(NoeudAbstrait* noeud)
 {
-	if (noeud->estSelectionne() && noeud->estModifiable())
+	if (noeud->estSelectionne())
 	{
 		if ((noeud->obtenirType() == "portail") && (noeud->getTwin() != nullptr))
+		{
 			suppression.push_back(noeud->getTwin());
-
+		}
+			
 		suppression.push_back(noeud);
 	}
 

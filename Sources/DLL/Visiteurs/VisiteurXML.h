@@ -13,6 +13,8 @@
 #include "tinyxml2.h"
 #include <string>
 
+class NoeudCouvercle;
+
 ///////////////////////////////////////////////////////////////////////////
 /// @class VisiteurXML
 /// @brief Classe pour enregistrer l'information de l'arbre de rendu
@@ -38,18 +40,22 @@ public:
 
 	/// Traiter un arbre de rendu et ses enfants
 	virtual bool traiter(ArbreRenduINF2990* arbre);
-	/// Traiter un arbre de rendu et ses enfants
-	virtual bool traiter(NoeudAbstrait* noeud, tinyxml2::XMLElement* parent);
+	virtual bool traiter(NoeudTable* table);
+	virtual bool traiter(NoeudAbstrait* noeud);
 
 private:
 
-	/// Constructeur par défaut
-	VisiteurXML();
+	VisiteurXML();					/// Constructeur par défaut
 
 	tinyxml2::XMLDocument document; ///< Document XML pour l'écriture
 	std::string nomFichier;			///< Nom du fichier à écrire.
 	int* proprietes_ = new int[6];	///< Propriétés de la partie à écrire
 	
+	tinyxml2::XMLElement* elementArbreRendu;
+	tinyxml2::XMLElement* elementTable;
+
+	bool traiterProprietes();
+
 };
 
 #endif //__VISITEURS_VISITEURXML_H__
