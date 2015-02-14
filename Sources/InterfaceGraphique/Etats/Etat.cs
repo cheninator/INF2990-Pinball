@@ -670,7 +670,6 @@ namespace InterfaceGraphique
         ////////////////////////////////////////////////////////////////////////
         public override bool traiterSouris(MouseEventArgs e)
         {
-            
             form_.deplacementSouris(e);
 
             if (e.Button == MouseButtons.Left)
