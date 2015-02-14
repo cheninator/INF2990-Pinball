@@ -253,10 +253,17 @@ namespace InterfaceGraphique
                     if (etat is EtatPortail)
                     {
                         FonctionsNatives.removeObject();
+                        etat = null;
+                        etat = new EtatNone(this);
+                        deselection();
                     }
-                    etat = null;
-                    etat = new EtatNone(this);
-                    deselection();
+                    else if (etat is EtatMur)
+                    {
+                        FonctionsNatives.removeObject();
+                        etat = new EtatCreation(this);
+                        deselection();
+                    }
+                    
                 }
                 else if (e.KeyChar == 'f')
                 {
@@ -1622,15 +1629,14 @@ namespace InterfaceGraphique
         private void panel_GL_MouseDown(object sender, MouseEventArgs e)
         {
             origin = panel_GL.PointToClient(MousePosition);
-            //if( !(etat is EtatCreation))
-            //    panel_GL.MouseMove += new MouseEventHandler(panel_MouseMove);   
+           
             if (etat is EtatPortail && e.Button == MouseButtons.Left)
             {
               etat = new EtatNone(this);
               FonctionsNatives.obligerTransparence(false);
              deselection();
             }
-
+          
 
             previousP.X = e.X;
             previousP.Y = e.Y;
@@ -1639,7 +1645,9 @@ namespace InterfaceGraphique
 
             if (e.Button == MouseButtons.Left &&
             (etat is EtatSelection || etat is EtatDeplacement || etat is EtatRotation
-                    || etat is EtatScale || etat is EtatZoom || etat is EtatDuplication)
+                    || etat is EtatScale || etat is EtatZoom || etat is EtatDuplication
+                    || !(etat is EtatMur)
+                    )
             )
                 {
                     panel_GL.MouseMove += new MouseEventHandler(panel_MouseMove);
@@ -1727,6 +1735,7 @@ namespace InterfaceGraphique
         ////////////////////////////////////////////////////////////////////////
         private void panel_GL_MouseUp(object sender, MouseEventArgs e)
         {
+            Point destination = panel_GL.PointToClient(MousePosition);
             if (!(etat is EtatCreation))
             {
                 panel_GL.MouseMove -= panel_MouseMove;
@@ -1737,9 +1746,15 @@ namespace InterfaceGraphique
                deselection();   
               
             }
+            if (etat is EtatMur && (clickExtraValide(origin,destination)))
+            {
+                etat = new EtatCreation(this);
+                deselection();
+                return;
+            }
             if (e.Button == MouseButtons.Left)
             {
-               Point destination = panel_GL.PointToClient(MousePosition);
+              
                if (etat is EtatZoomElastique)
                {
                    etat.traiterSouris(e);
@@ -1755,11 +1770,7 @@ namespace InterfaceGraphique
                     etat.traiterSouris(e);
                  //   etat = new EtatSelection(this);
                 }
-                /*else if(clickValide(origin,destination))
-                {                    
-                    etat.traiterSouris(e);
-                }
-                 * */
+               
             }
         }
 
@@ -2161,6 +2172,25 @@ namespace InterfaceGraphique
                      &&
                     (Math.Abs(destination.Y - origin.Y) < 3));
                     
+        }
+
+        //////////////////////////////////////////////////////////////////////////////////////////
+        ///
+        /// @fn private bool clickExtraValide(Point origin, Point destination)
+        /// @brief Indique si un click est considéré comme valide pour le mur avec plus grande marge de liberte.
+        /// 
+        /// @param[in] origin : Point d'origine du clic
+        /// @param[in] destination : Position après le clic. 
+        /// 
+        /// @return True si le click est valide (déplacement < 3pixels), False sinon.
+        ///
+        //////////////////////////////////////////////////////////////////////////////////////////
+        private bool clickExtraValide(Point origin, Point destination)
+        {
+            return ((Math.Abs(destination.X - origin.X) < 30)
+                     &&
+                    (Math.Abs(destination.Y - origin.Y) < 30));
+
         }
 
         //////////////////////////////////////////////////////////////////////////////////////////

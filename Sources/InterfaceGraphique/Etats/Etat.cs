@@ -273,7 +273,13 @@ namespace InterfaceGraphique
         ////////////////////////////////////////////////////////////////////////
         public override bool traiterSouris(MouseEventArgs e)
         {
-           form_.creationMur();
+           if( e.Button != MouseButtons.Right)
+                form_.creationMur();
+           if (e.Button == MouseButtons.Left)
+           {
+               form_.trackCursor(false);
+               form_.deselection();
+           }
           
             return true;
 
