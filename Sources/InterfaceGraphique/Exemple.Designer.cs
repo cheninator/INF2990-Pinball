@@ -60,6 +60,7 @@ namespace InterfaceGraphique
             this.Ressort_bouton = new System.Windows.Forms.Button();
             this.flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
             this.Groupe_Outils = new System.Windows.Forms.GroupBox();
+            this.curZoomVal = new System.Windows.Forms.TextBox();
             this.DecreaseZoomButton = new System.Windows.Forms.Button();
             this.IncreaseZoomButton = new System.Windows.Forms.Button();
             this.label_Zoom = new System.Windows.Forms.Label();
@@ -119,7 +120,6 @@ namespace InterfaceGraphique
             this.Information_MenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.Aide_MenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.printPreviewDialog1 = new System.Windows.Forms.PrintPreviewDialog();
-            this.curZoomVal = new System.Windows.Forms.TextBox();
             this.panel1.SuspendLayout();
             this.Creation_Panel.SuspendLayout();
             this.Groupe_Palettes.SuspendLayout();
@@ -432,8 +432,20 @@ namespace InterfaceGraphique
             this.Groupe_Outils.TabStop = false;
             this.Groupe_Outils.Text = "Outils";
             // 
+            // curZoomVal
+            // 
+            this.curZoomVal.Location = new System.Drawing.Point(46, 237);
+            this.curZoomVal.Name = "curZoomVal";
+            this.curZoomVal.ReadOnly = true;
+            this.curZoomVal.Size = new System.Drawing.Size(64, 20);
+            this.curZoomVal.TabIndex = 9;
+            this.curZoomVal.TabStop = false;
+            this.curZoomVal.Text = "000";
+            this.curZoomVal.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
             // DecreaseZoomButton
             // 
+            this.DecreaseZoomButton.Enabled = false;
             this.DecreaseZoomButton.Location = new System.Drawing.Point(6, 233);
             this.DecreaseZoomButton.Name = "DecreaseZoomButton";
             this.DecreaseZoomButton.Size = new System.Drawing.Size(31, 23);
@@ -444,6 +456,7 @@ namespace InterfaceGraphique
             // 
             // IncreaseZoomButton
             // 
+            this.IncreaseZoomButton.Enabled = false;
             this.IncreaseZoomButton.Location = new System.Drawing.Point(120, 234);
             this.IncreaseZoomButton.Name = "IncreaseZoomButton";
             this.IncreaseZoomButton.Size = new System.Drawing.Size(31, 23);
@@ -993,16 +1006,6 @@ namespace InterfaceGraphique
             this.printPreviewDialog1.Icon = ((System.Drawing.Icon)(resources.GetObject("printPreviewDialog1.Icon")));
             this.printPreviewDialog1.Name = "printPreviewDialog1";
             this.printPreviewDialog1.Visible = false;
-            // 
-            // curZoomVal
-            // 
-            this.curZoomVal.Location = new System.Drawing.Point(46, 237);
-            this.curZoomVal.Name = "curZoomVal";
-            this.curZoomVal.ReadOnly = true;
-            this.curZoomVal.Size = new System.Drawing.Size(64, 20);
-            this.curZoomVal.TabIndex = 9;
-            this.curZoomVal.Text = "000";
-            this.curZoomVal.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // Exemple
             // 
