@@ -1119,10 +1119,10 @@ __declspec(dllexport) bool setProprietesNoeud(int x, int y, int angle, double sc
 		// Sélectionner le mur, et faire accepter tout de suite, 
 		// revenir à l'outil selection, constater que le nouvel angle est -l'angle qu'on a setté avec assignerAngles()
 		// Ou carrément, remplace l'angle par disons 25,
-		glm::dvec3 nouveauxAngles = glm::dvec3{ angles.x, angles.y, 25 };
+		// glm::dvec3 nouveauxAngles = glm::dvec3{ angles.x, angles.y, 25 }; // <========= DÉCOMMENTER ICI
 		// Donc maintenant, tu sais que l'attribut angles est { qqch, qqch, 25 } 
 		// mais si tu sélectionnes l'objet apres avoir setté son angle à 25, tu va voir -25 dans le textbox.
-		// glm::dvec3 nouveauxAngles = glm::dvec3{ angles.x, angles.y, -angle }; // Pas changer les angleX, angleY, mais setter angleZ à angle.
+		glm::dvec3 nouveauxAngles = glm::dvec3{ angles.x, angles.y, -angle }; // <========= ET COMMENTER ICI
 		objet->assignerPositionRelative(nouvellePosition);
 		objet->assignerRotationHard(nouveauxAngles);
 
