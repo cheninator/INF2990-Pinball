@@ -2476,6 +2476,10 @@ namespace InterfaceGraphique
         private void Mute_MenuItem_Click(object sender, EventArgs e)
         {
             soundActif = !soundActif;
+            if (soundActif)
+                playSound("");
+            else
+                playSound("", true);
         }
     }
 
