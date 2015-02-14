@@ -168,6 +168,7 @@ public:
 	virtual void setTwin(NoeudAbstrait* twin);
 	//Obtenir les 4 vecteurs de la boite englobante modifie
 	virtual void obtenirVecteursBoite(glm::dvec3 &v1, glm::dvec3 &v2, glm::dvec3 &v3, glm::dvec3 &v4);
+	virtual void obtenirBoiteModele(glm::dvec3 &v1, glm::dvec3 &v2, glm::dvec3 &v3, glm::dvec3 &v4);
 	//Verifie si un point est dans la boite englobante
 	virtual bool pointEstDansBoite(glm::dvec3 point);
 

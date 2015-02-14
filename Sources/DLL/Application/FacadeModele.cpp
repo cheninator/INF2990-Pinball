@@ -723,55 +723,71 @@ bool FacadeModele::estDansTable(glm::dvec3 pointDuMonde)
 // Pour les deux opérations, tu utilises les mêmes vecteurFinal et vecteurInitial, donc ça pourrais être quelque chose comme
 void FacadeModele::positionnerMur(int originX, int originY,int x1, int y1, int x2, int y2, NoeudAbstrait* noeud)
 {
-	glm::dvec3 positionInitiale, positionFinale;
-	FacadeModele::obtenirInstance()->obtenirVue()->convertirClotureAVirtuelle(x1, y1, positionInitiale);
+	glm::dvec3 positionOriginale,positionInitiale, positionFinale;
+	FacadeModele::obtenirInstance()->obtenirVue()->convertirClotureAVirtuelle(originX, originY, positionOriginale);
 	FacadeModele::obtenirInstance()->obtenirVue()->convertirClotureAVirtuelle(x2, y2, positionFinale);
 
-	glm::dvec3 vecteurInitial = positionInitiale - noeud->obtenirPositionRelative();
-	glm::dvec3 vecteurFinal = positionFinale - noeud->obtenirPositionRelative();
+	glm::dvec3 vecteur = positionFinale - positionOriginale;
 
+	// Propriétés à appliquer:
+	glm::dvec3 scaleFinal{ 1, 1, 1 };
+	glm::dvec3 angles{ 0, 0, 0 };
+	glm::dvec3 position = positionOriginale;
 
-	glm::dvec3 scaleInit = noeud->obtenirAgrandissement();
+	double angleRadian;
 
-	glm::dvec3 scaleFinal;
-	glm::dvec3 angles;
-	// CALCUL DE L'ANGLE;
-	if (glm::length(vecteurInitial) > 8 && glm::length(vecteurFinal) > 8)
+	// Les calculs sont fait seulement si la souris est assez loin de ou on a créé le noeud.
+	if (glm::length(vecteur) > 10)
 	{
-		glm::dvec3 axe{ 0, 100, 0 };
-		glm::dvec3 produitVectoriel = glm::cross(axe, vecteurFinal);
-		double sinAngle = glm::length(produitVectoriel) / glm::length(axe) / glm::length(vecteurInitial);
-		// Le signe de la composante en z donne le sens dans le quel on doit tourner
-		double angleRadian = produitVectoriel.z > 0 ? asin(sinAngle) : -asin(sinAngle);
-		// L'angle est en radian, on doit le convertir
-		double angleDegre = 360.0 / 2.0 / M_PI * angleRadian;
+		// CALCUL DE L'ANGLE
+		// =================
+		glm::dvec3 axe{ 0, 1, 0 }; // On va travailler avec l'angle entre le vecteur allant de origin à la position du curseur, et l'axe Y.
+		glm::dvec3 produitVectoriel = glm::cross(axe, vecteur);
+		double sinAngle = glm::length(produitVectoriel) / glm::length(axe) / glm::length(vecteur);
+		angleRadian = produitVectoriel.z > 0 ? asin(sinAngle) : -asin(sinAngle);
 
-		angles = glm::dvec3{ 0, 0, angleDegre };// A passer en paramètre à assignerRotation
-		
-		// CALCUL DU SCALE
-		double scale = glm::length(vecteurFinal) / glm::length(vecteurInitial);
+		// Prendre l'angle complémentaire si on est en dessous de l'axe X.
+		if (vecteur.y < 0)
+			angleRadian = M_PI - angleRadian;// A passer en paramètre à assignerRotation
 
-		//glm::dvec3 scaleInit = { 1, 1, 1 };
-		scaleFinal = glm::dvec3{ scaleInit[0], scaleInit[1] * scale, scaleInit[2] };
-		// Vu que c'est pour le mur, tu voudrais probablement scaler en x, donc glm::dvec3 scaleFinal = glm::dvec3{ scaleInit[0] * scale, scaleInit[1] , scaleInit[2]};
+		angles = glm::dvec3{ 0, 0, 360.0 / 2.0 / M_PI * angleRadian };
+
+
+		// Calcul de la translation
+		// ========================
+		position = positionOriginale + vecteur / 2.0; // Le centre du mur est à mi-chemin entre origin et le point du curseur. 
+
+		// Calcul du scale
+		// ===============
+		double scale = glm::length(vecteur) / 16; // 16.0; // 16.0 est la longueur originale du mur.
+		scaleFinal = glm::dvec3{ 1,  scale, 1 };
 	}
-	else
+
+	// Tester la transformation
+	// ========================
+	glm::dvec3 boite[4];
+	noeud->obtenirBoiteModele(boite[0], boite[1], boite[2], boite[3]);
+	glm::dmat3 echelle = glm::dmat3{	glm::dvec3{ 1,				0,				0.0 },
+										glm::dvec3{ 0,			scaleFinal.y,		0.0f },
+										glm::dvec3{ 0.0,			0.0,			1 } };
+
+	glm::dmat3 rotation = glm::dmat3{	glm::dvec3{ cos(angleRadian), sin(angleRadian), 0.0 },
+										glm::dvec3{ -sin(angleRadian),	 cos(angleRadian), 0.0f },
+										glm::dvec3{		 0.0,				0.0,			1.0 } };
+	glm::dvec3 pointATester;
+	for (int i = 0; i < 4; i++)
 	{
-		scaleFinal = scaleInit;
-		angles = glm::dvec3{ 0, 0, 1 };
+		pointATester = position + rotation * (echelle * boite[i]);
+		if (!obtenirInstance()->estDansTable(pointATester))
+		{
+			return;
+		}
 	}
-	// APPLICATION DES DEUX TRANSFORMATIONS;
 
-	// Application du scale
+	// Si on s'est rendu ici, c'est qu'on peut faire l'assignation des propriétés.
 	noeud->assignerEchelle(scaleFinal);
-
-	// Application de la rotation
-
-	// Assigner la rotation avec = au lieu de +=
 	noeud->assignerRotationHard(angles);
-	
-
-	// NOTE IMPORTANTE: J'ai pas a prendre ses anciens angles et ajouter angles parce que la fonction assignerRotation fait un += avec le paramètre. C'est la seule fonction assigner qui fonctionne comme ça.
+	noeud->assignerPositionRelative(position);
 
 }
 

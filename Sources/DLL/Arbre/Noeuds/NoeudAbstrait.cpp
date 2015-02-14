@@ -565,6 +565,18 @@ void NoeudAbstrait::obtenirVecteursBoite(glm::dvec3 &v1, glm::dvec3 &v2, glm::dv
 	v4 = transform * v4;
 }
 
+void NoeudAbstrait::obtenirBoiteModele(glm::dvec3 &v1, glm::dvec3 &v2, glm::dvec3 &v3, glm::dvec3 &v4)
+{
+	//initialiser les vecteurs
+	v1 = boite_.coinMin;
+	v2.x = boite_.coinMin.x;
+	v2.y = boite_.coinMax.y;
+	v3 = boite_.coinMax;
+	v4.x = boite_.coinMax.x;
+	v4.y = boite_.coinMin.y;
+}
+
+
 ////////////////////////////////////////////////////////////////////////
 ///
 /// @fn NoeudAbstrait* NoeudAbstrait::getColorShift()
