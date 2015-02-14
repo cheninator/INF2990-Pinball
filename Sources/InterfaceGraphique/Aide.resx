@@ -118,13 +118,21 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <data name="label1.Text" xml:space="preserve">
-    <value>Lorem ipsum dolor sit amet, mel cu liber legendos, mea ea idque gloriatur intellegebat. Nam mucius feugiat reformidans ne, civibus adipiscing his ei. Scripta recusabo ut quo, sed mucius putent propriae cu. Eu fabulas blandit omnesque vix, facilisi dissentias usu cu. Et oratio civibus vis. Adhuc dicant ex ius.
+    <value>PAIN BALL:
 
-At aeque malorum consetetur cum. Sed no prompta theophrastus. Cu percipit inciderint has. Affert putant qui ei, nonumy imperdiet molestiae ne vel. Ex vim omittam sapientem reprehendunt, latine molestie vulputate sea in.
+Mode Éditeur:
 
-Cu nec prima iusto, mazim veritus ad eam, pro magna inani salutandi ex. Et vis mentitum molestiae. Quis eloquentiam an has, id pri nullam causae neglegentur. Mei dicunt denique menandri ei, tollit postea quodsi eum eu. Omnium virtute sed ea, mel ad tation populo repudiare. Ei qui labore insolens, vis ea quot qualisque consetetur, sit ea quando civibus.
-
-
+Pour pouvoir créer un objet, il suffit de cliquer sur le bouton Paneau de Création et choisir l'objet voulu parmi la liste dans le menu à droite.
+Les différents Outils peuvent être choisis dans le menu Outils, la barre d'Outils ou à l'aide des raccourcis.
+Le déplacement de la vue se fait avec un drag-drop avec le bouton droit de la souris ou avec les fleches du clavier.
+Le zoom se fait avec les boutons + et - ou la roulette de la souris lorsqu'on est dans le mode Zoom.
+Pour une sélection multiple, se mettre dans le mode Sélection et faire un drag-drop avec le bouton gauche pour créer un rectange élastique.	
+Pour un zoom avec un rectangle élastique, se mettre dans le mode Zoom et faire un drag-drop avec le bouton gauche pour créer un rectange élastique.	
+Pour pouvoir appliquer une modifiction, il suffit de choisir l'outil désiré.
+L'outil Déplacement déplace un ou plusieurs objets dans la table avec un drag-drop avec le bouton gauche.
+L'outil Rotation tourne un ou plusieurs objets dans la table avec un drag-drop avec le bouton gauche.
+L'outil Mise à échelle change la taille d'un ou plusieurs objets dans la table avec un drag-drop avec le bouton gauche.
+L'outil Duplication duplique un ou plusieurs objets dans la table. L'outil crée une étampe qui suit la souris.
 </value>
   </data>
   <data name="label2.Text" xml:space="preserve">
