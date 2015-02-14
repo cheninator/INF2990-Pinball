@@ -86,8 +86,8 @@ namespace InterfaceGraphique
             etat = new EtatNone(this);
 
             //Musique
-            playSound("music");
-            playSound("stone"); // Pause probleme quand on ferme puis rouvre la fenetre
+           // playSound("music");
+           // playSound("stone"); // Pause probleme quand on ferme puis rouvre la fenetre
         }
 
         ////////////////////////////////////////////////////////////////////////
@@ -1715,7 +1715,7 @@ namespace InterfaceGraphique
                 
             }
 
-            if (nbSelection == 1  && (etat is EtatDuplication)) 
+            if (nbSelection == 1  && !(etat is EtatDuplication)) 
             {
                 Xbox.Text = Math.Round(FonctionsNatives.getPositionX()).ToString();
                 Ybox.Text = Math.Round(FonctionsNatives.getPositionY()).ToString();
