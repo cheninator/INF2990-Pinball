@@ -86,8 +86,8 @@ namespace InterfaceGraphique
             etat = new EtatNone(this);
 
             //Musique
-            playSound("music");
-            playSound("stone");
+           /// playSound("music");
+           // playSound("stone");
 
             //CurrentZoom
             currentZoom = FonctionsNatives.obtenirZoomCourant();
@@ -2430,6 +2430,11 @@ namespace InterfaceGraphique
             Cursor.Position = new Point(x,y);
 
            
+        }
+
+        private void Mute_MenuItem_Click(object sender, EventArgs e)
+        {
+            // TO DO
         }
     }
 
