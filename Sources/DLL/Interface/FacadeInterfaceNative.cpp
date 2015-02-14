@@ -262,6 +262,112 @@ extern "C"
 
 	}
 
+
+
+	////////////////////////////////////////////////////////////////////////
+	///
+	/// @fn __declspec(dllexport) void __cdecl creerObjetAvecTests()
+	///
+	/// @param[in]  value : Nom de l'objet
+	/// @param[in]  length : Taille du nom de l'objet
+	/// @param[in]  twin : si a un jumeau
+	/// @param[in]  colorShift : la couleur
+	/// @param[in]  posX : la position en X de l'objet a créer.
+	/// @param[in]  posY : la position en Y de l'objet a créer.
+	/// @param[in]  posZ : la position en Z de l'objet a créer.
+	/// @param[in]  angleX : l'angle en X de l'objet a créer.
+	/// @param[in]  angleY : l'angle en Y de l'objet a créer.
+	/// @param[in]  angleZ : l'angle en Z de l'objet a créer.
+	///
+	/// Cette fonction permet de cree un objet 3D
+	///
+	/// @return Aucun
+	///
+	////////////////////////////////////////////////////////////////////////
+	__declspec(dllexport) bool __cdecl creerObjetAvecTests(char* value, int length, bool isTwin, bool colorShift, 
+															int posX, int posY, int posZ, 
+															float angleX, float angleY, float angleZ)
+	{
+		// Même chose que dans creer objet, sauf que je test le nouvel objet avant de l'ajouter à l'arbre.
+		// Pour pouvoir tester l'objet avant de l'ajouter, je dois setter ses propriétés
+
+		// Comme avant
+		// ============
+		std::string nomObjet(value);
+		if (isTwin == true) {
+			objet_temp = FacadeModele::obtenirInstance()->obtenirArbreRenduINF2990()->creerNoeud(nomObjet);
+			objet_temp->setColorShift(colorShift);
+			if (objet == nullptr)
+				return false;
+			objet_temp->setTwin(objet);
+			objet->setTwin(objet_temp);
+			objet->assignerSelection(true);
+			objet->setTransparent(true);
+			objet = objet_temp;
+		}
+		else
+		{
+			objet = FacadeModele::obtenirInstance()->obtenirArbreRenduINF2990()->creerNoeud(nomObjet);
+			if (objet == nullptr)
+				return false;
+			objet->setColorShift(colorShift);
+			if (nomObjet == "mur")
+			{
+				objet->assignerSelection(true);
+			}
+		}
+		
+
+		// Assigner les propriétés à l'objet
+		// =================================
+		
+		// Assigner position et angles à l'objet.
+		glm::dvec3 positionObjet;
+		FacadeModele::obtenirInstance()->obtenirVue()->convertirClotureAVirtuelle(posX, posY, positionObjet);
+		objet->assignerPositionRelative(positionObjet);
+
+		// Voir la fonction rotate, c'est comme ça que les angles sont settés dans cette fonction.
+		// if('Y') if (direction == 'y' || direction == 'Y' || direction == '1')
+		// objet->assignerRotation({ angle, 0.0, 0.0 });
+		// et en effet, si je mettais {angleX,angleY,angleZ} les palettes n'apparaiteraient pas.
+		glm::dvec3 anglesObjet{ angleY, angleZ, angleX };
+		objet->assignerRotation(anglesObjet);
+		
+
+		// Tester si l'objet est légal.
+		// =============================
+		bool objetEstLegal = true;
+		glm::dvec3 boite[4];
+		objet->obtenirVecteursBoite(boite[0], boite[1], boite[2], boite[3]);
+		glm::dvec3 pointATester;
+		for (int i = 0; i < 4; i++)
+		{
+			pointATester = positionObjet + boite[i];
+			if (!FacadeModele::obtenirInstance()->estDansTable(pointATester))
+			{
+				objetEstLegal = false;
+			}
+
+		}
+
+		// Ajouter l'objet s'il est légal
+		// ==============================
+
+		if (objetEstLegal)
+		{
+			// Si l'objet est légal, l'ajouter à la table, sinon, on le scrap
+			FacadeModele::obtenirInstance()->obtenirArbreRenduINF2990()->getEnfant(0)->ajouter(objet);
+			return true;
+		}
+		else
+		{
+			// delete objet;
+			// objet = nullptr;
+			return false;
+		}
+		return true;
+	}
+
 	////////////////////////////////////////////////////////////////////////
 	///
 	/// @fn __declspec(dllexport) void __cdecl positionObjet(int x, int y, int z)

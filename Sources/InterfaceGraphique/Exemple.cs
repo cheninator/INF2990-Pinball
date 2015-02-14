@@ -2042,21 +2042,35 @@ namespace InterfaceGraphique
         ////////////////////////////////////////////////////////////////////////
         public void creationObjet(MouseEventArgs e, bool twin = false)
         {
-
-            if (FonctionsNatives.verifierCliqueDansTable(origin.X, origin.Y))
+            bool fonctionAPhil = true;
+            if(fonctionAPhil)
             {
-                afficher_Objet(twin);
-                FonctionsNatives.positionObjet(panel_GL.PointToClient(MousePosition).X, panel_GL.PointToClient(MousePosition).Y, 0);
-                FonctionsNatives.rotate(angleX, 'x');
-                FonctionsNatives.rotate(angleY, 'y');
-                FonctionsNatives.rotate(angleZ, 'z');
-                previousP.X = panel_GL.PointToClient(MousePosition).X;
-                previousP.Y = panel_GL.PointToClient(MousePosition).Y;
-
-                if (FonctionsNatives.verifierCliqueDansTable(panel_GL.PointToClient(MousePosition).X, panel_GL.PointToClient(MousePosition).Y))
-                    Console.WriteLine("Click dans la table");
+                bool creationReussie;
+                creationReussie = FonctionsNatives.creerObjetAvecTests(myObjectName, myObjectName.Capacity, twin, colorShift,
+                                                                        panel_GL.PointToClient(MousePosition).X, panel_GL.PointToClient(MousePosition).Y, 0,
+                                                                        angleX, angleY, angleZ);
+                if (creationReussie)
+                    Console.WriteLine("Création avec boite englobante respectée");
                 else
-                    Console.WriteLine("Click hors de la table");
+                    Console.WriteLine("Échec de la création");
+            }
+            else
+            { 
+                if (FonctionsNatives.verifierCliqueDansTable(origin.X, origin.Y))
+                {
+                    afficher_Objet(twin);
+                    FonctionsNatives.positionObjet(panel_GL.PointToClient(MousePosition).X, panel_GL.PointToClient(MousePosition).Y, 0);
+                    FonctionsNatives.rotate(angleX, 'x');
+                    FonctionsNatives.rotate(angleY, 'y');
+                    FonctionsNatives.rotate(angleZ, 'z');
+                    previousP.X = panel_GL.PointToClient(MousePosition).X;
+                    previousP.Y = panel_GL.PointToClient(MousePosition).Y;
+
+                    if (FonctionsNatives.verifierCliqueDansTable(panel_GL.PointToClient(MousePosition).X, panel_GL.PointToClient(MousePosition).Y))
+                        Console.WriteLine("Click dans la table");
+                    else
+                        Console.WriteLine("Click hors de la table");
+                }
             }
         }
 
@@ -2449,6 +2463,9 @@ namespace InterfaceGraphique
 
         [DllImport(@"Noyau.dll", CallingConvention = CallingConvention.Cdecl)]
         public static extern void creerObjet(StringBuilder value, int length, bool isTwin = false, bool colorShift = false);
+
+        [DllImport(@"Noyau.dll", CallingConvention = CallingConvention.Cdecl)]
+        public static extern bool creerObjetAvecTests(StringBuilder value, int length, bool isTwin, bool colorShift, int posX, int posY, int posZ, float angleX, float angleY, float angleZ);
 
         [DllImport(@"Noyau.dll", CallingConvention = CallingConvention.Cdecl)]
         public static extern void positionObjet(int x, int y, int z = 0);
