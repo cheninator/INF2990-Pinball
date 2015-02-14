@@ -82,12 +82,12 @@ void ArbreRenduINF2990Test::testArbreDefaut()
 	CPPUNIT_ASSERT(arbre->estDefaut() == true);
 	
 	// L'arbre devrait avoir des enfants
-	CPPUNIT_ASSERT(arbre->getSizeEnfants() > 0);
+	CPPUNIT_ASSERT(arbre->obtenirNombreEnfants() > 0);
 
 	// On vérifie que la table contient une table de manière alternative
 	bool trouve = false;
 
-	for (int i = 0; i < arbre->getSizeEnfants(); i++)
+	for (unsigned int i = 0; i < arbre->obtenirNombreEnfants(); i++)
 	{
 		if (arbre->getEnfant(i)->obtenirType() == ArbreRenduINF2990::NOM_TABLE)
 			trouve = true;
@@ -287,7 +287,7 @@ void ArbreRenduINF2990Test::testDeselection()
 	arbre->accepterVisiteur(visiteurDeselection);
 
 
-	for (int i = 0; i < arbre->getSizeEnfants(); i++)
+	for (unsigned int i = 0; i < arbre->obtenirNombreEnfants(); i++)
 		CPPUNIT_ASSERT(arbre->getEnfant(i)->estSelectionne() == false);
 
 

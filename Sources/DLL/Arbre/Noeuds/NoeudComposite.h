@@ -82,8 +82,6 @@ public:
 
    virtual NoeudAbstrait* getEnfant(int i) { return enfants_[i]; };
 
-   virtual int getSizeEnfants() { return enfants_.size(); };
-
 protected:
    /// Le choix du conteneur pour les enfants.
 	using conteneur_enfants = std::vector<NoeudAbstrait*>;
