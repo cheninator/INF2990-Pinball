@@ -173,7 +173,7 @@ namespace InterfaceGraphique
                         FonctionsNatives.dessinerOpenGL();
                     }
 
-                    if (currentZoom == -1)
+                    if (currentZoom < 0)
                     {
                         currentZoom = FonctionsNatives.obtenirZoomCourant();
                         curZoomVal.Text = (Math.Round(currentZoom*100)/100).ToString();
@@ -2472,6 +2472,10 @@ namespace InterfaceGraphique
         private void Mute_MenuItem_Click(object sender, EventArgs e)
         {
             soundActif = !soundActif;
+            if (soundActif)
+                playSound("");
+            else
+                playSound("", true);
         }
     }
 

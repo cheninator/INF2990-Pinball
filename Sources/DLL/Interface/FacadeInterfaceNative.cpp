@@ -254,7 +254,7 @@ extern "C"
 			objet->setColorShift(colorShift);
 			if (nomObjet == "mur")
 			{
-				objet->assignerSelection(true);
+				objet->assignerSelection(false);
 			}
 		}
 		
