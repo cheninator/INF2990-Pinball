@@ -9,10 +9,6 @@
 #include "../Arbre/ArbreRenduINF2990.h"
 #include "../Arbre/Noeuds/NoeudTable.h"
 #include <iostream>
-<<<<<<< HEAD
-
-=======
->>>>>>> origin/master
 ////////////////////////////////////////////////////////////////////////
 ///
 /// @fn VisiteurDuplication::VisiteurDuplication()
