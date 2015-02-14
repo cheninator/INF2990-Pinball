@@ -76,13 +76,28 @@ namespace InterfaceGraphique
             this.Icon = Properties.Resources.Pinball;
             InitializeComponent();
             Program.peutAfficher = true;
-            etat = new EtatNone(this);
-            panel_GL.Select();
-            
+
             InitialiserAnimation();
-            
+
             panelHeight = panel_GL.Size.Height;
             panelWidth = panel_GL.Size.Width;
+
+            ReinitialiserTout();
+        }
+
+
+        ////////////////////////////////////////////////////////////////////////
+        ///
+        /// @fn private void ReinitialiserTout()
+        /// @brief Reinitialisela vue.
+        /// 
+        /// @return Aucune.
+        ///
+        ////////////////////////////////////////////////////////////////////////
+        private void ReinitialiserTout()
+        {
+            Program.peutAfficher = true;
+            panel_GL.Select();
             etat = new EtatNone(this);
 
             //Musique
@@ -143,6 +158,7 @@ namespace InterfaceGraphique
                         FonctionsNatives.animer(tempsInterAffichage);
                         FonctionsNatives.dessinerOpenGL();
                     }
+                    currentZoom = FonctionsNatives.obtenirZoomCourant();
                     curZoomVal.Text = (Math.Round(currentZoom*100)/100).ToString();
 
                 });
@@ -408,16 +424,16 @@ namespace InterfaceGraphique
             ouvrir_fichier.RestoreDirectory = true;
             if (ouvrir_fichier.ShowDialog() == DialogResult.OK)
             {
-               
-                    pathXML = new StringBuilder(ouvrir_fichier.FileName);
+                pathXML = new StringBuilder(ouvrir_fichier.FileName);
 
-                    IntPtr prop = FonctionsNatives.ouvrirXML(pathXML, pathXML.Capacity);
-                    int[] result = new int[6];
-                    Marshal.Copy(prop, result, 0, 6);
+                IntPtr prop = FonctionsNatives.ouvrirXML(pathXML, pathXML.Capacity);
+                int[] result = new int[6];
+                Marshal.Copy(prop, result, 0, 6);
 
-                    for (int i = 0; i < 6; i++)
-                        propZJ[i] = result[i];
-                    playSound("stone");
+                for (int i = 0; i < 6; i++)
+                    propZJ[i] = result[i];
+
+                ReinitialiserTout();
             }
         }
 
@@ -1647,7 +1663,7 @@ namespace InterfaceGraphique
         {
             FonctionsNatives.purgeAll();
             propZJ = new List<int> { 10, 10, 10, 10, 10, 1 };
-            playSound("stone");
+            ReinitialiserTout();
         }
 
         ////////////////////////////////////////////////////////////////////////
