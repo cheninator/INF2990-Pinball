@@ -1051,18 +1051,88 @@ __declspec(dllexport) void creerMur(int originX, int originY,int x1, int y1, int
 ///
 /// @fn __declspec(dllexport) bool __cdecl setProprietesNoeud(int x, int y, int angle, double scale)
 ///
-/// @param[in]  x : abcisse du point initial 
-/// @param[in]  y : ordonnee du point initial
+///	La fonction calcule la boite englobante de l'objet transformé, le calcul est différend pour les murs.
+/// Il manque quelque chose pour le calcul des boîtes englobantes transformées des objets de type mur.
+///
+/// @param[in]  x : X en coordonnées du monde qu'on veut donner à notre noeud.
+/// @param[in]  y : Y en coordonnées du monde qu'on veut donner à notre noeud.
 /// @param[in]	angle : angle de rotation
 ///	@param[in]	scale: scale de l'objet
 /// @return bool
 ///
-/// @remark : On doit donner des x,y qui ont été transformés par panel_GL.PointToClient(...)
-///
 ///////////////////////////////////////////////////////////////////////////////
 __declspec(dllexport) bool setProprietesNoeud(int x, int y, int angle, double scale)
 {
-	// TO DO
+	std::cout << "Appel de setProprietesNoeud(" << x << ", " << y << ", " << angle << ", " << scale << ")" << std::endl;
+	// Obtenir la boite du modele
+	// =============================
+
+	// Calculer la position a assigner en coordonnées du monde.
+	glm::dvec3 nouvellePosition{ x, y, 0 };
+	// FacadeModele::obtenirInstance()->obtenirVue()->convertirClotureAVirtuelle(x, y, nouvellePosition);
+	bool nouvellesProprietesSontLegales = true;
+	glm::dvec3 boite[4];
+	glm::dvec3 positionObjet = objet->obtenirPositionRelative();
+	objet->obtenirBoiteModele(boite[0], boite[1], boite[2], boite[3]);
+
+	// Appliquer les nouvelles propriétés.
+	glm::dmat3 echelle;
+	glm::dvec3 scaleInitial = objet->obtenirAgrandissement();
+	if (objet->getType() == "mur")
+	{
+		echelle = glm::dmat3{	glm::dvec3{ scaleInitial.x,	0,		0.0 },
+								glm::dvec3{		 0,			scale,	0.0f },
+								glm::dvec3{		0.0,		0.0,	scaleInitial.z } };
+	}
+	else
+		echelle = glm::dmat3{ glm::dvec3{ scale, 0, 0.0 },
+								glm::dvec3{ 0, scale, 0.0f },
+								glm::dvec3{ 0.0, 0.0, scale } };
+	double angleRadian = angle * 360 / 2.0 / 3.14156;
+
+	// Des "-" ici aussi... voir plus bas.
+	glm::dmat3 rotation = glm::dmat3{	glm::dvec3{ cos(-angleRadian), -sin(-angleRadian), 0.0 },
+										glm::dvec3{ sin(-angleRadian), cos(-angleRadian), 0.0f },
+										glm::dvec3{		0.0,	0.0,		1.0 } };
+
+	glm::dvec3 pointATester;
+	
+	if (1) // Pour désactiver le test pendant qu'on fait des expériences
+	{
+		for (int i = 0; i < 4; i++)
+		{
+			pointATester = nouvellePosition + rotation * ( echelle * boite[i]);
+			if (!FacadeModele::obtenirInstance()->estDansTable(pointATester))
+			{
+				nouvellesProprietesSontLegales = false;
+				std::cout << "L'application des proprietes refusee, on sortirait de la table" << std::endl;
+				return false;
+			}
+		}
+	}
+
+	if (nouvellesProprietesSontLegales)
+	{
+		glm::dvec3 angles = objet->obtenirRotation();
+		// J'ai l'impression que la fonction qui permet de get l'angle z du C# retourne -1*l'angle, essayez d'enlever le "-" dans la ligne suivante.
+		// EXPÉRIENCE A FAIRE:  enlever le "-", placer un mur incliné pas trop long, 
+		// Sélectionner le mur, et faire accepter tout de suite, 
+		// revenir à l'outil selection, constater que le nouvel angle est -l'angle qu'on a setté avec assignerAngles()
+		// Ou carrément, remplace l'angle par disons 25,
+		glm::dvec3 nouveauxAngles = glm::dvec3{ angles.x, angles.y, 25 };
+		// Donc maintenant, tu sais que l'attribut angles est { qqch, qqch, 25 } 
+		// mais si tu sélectionnes l'objet apres avoir setté son angle à 25, tu va voir -25 dans le textbox.
+		// glm::dvec3 nouveauxAngles = glm::dvec3{ angles.x, angles.y, -angle }; // Pas changer les angleX, angleY, mais setter angleZ à angle.
+		objet->assignerPositionRelative(nouvellePosition);
+		objet->assignerRotationHard(nouveauxAngles);
+
+		// traiter le mur de façon spéciale.
+		if (objet->getType() == "mur")
+			objet->assignerEchelle(glm::dvec3{ scaleInitial.x, scale, scaleInitial.z });
+		else
+			objet->assignerEchelle(glm::dvec3{ scale, scale, scale });
+
+	}
 	
 	return true;
 
