@@ -86,8 +86,11 @@ namespace InterfaceGraphique
             etat = new EtatNone(this);
 
             //Musique
-           // playSound("music");
-           // playSound("stone"); // Pause probleme quand on ferme puis rouvre la fenetre
+            playSound("music");
+            playSound("stone");
+
+            //CurrentZoom
+            currentZoom = FonctionsNatives.obtenirZoomCourant();
         }
 
         ////////////////////////////////////////////////////////////////////////
@@ -140,7 +143,7 @@ namespace InterfaceGraphique
                         FonctionsNatives.animer(tempsInterAffichage);
                         FonctionsNatives.dessinerOpenGL();
                     }
-                    curZoomVal.Text = currentZoom.ToString();
+                    curZoomVal.Text = (Math.Round(currentZoom*100)/100).ToString();
 
                 });
             }
@@ -414,7 +417,7 @@ namespace InterfaceGraphique
 
                     for (int i = 0; i < 6; i++)
                         propZJ[i] = result[i];
-               
+                    playSound("stone");
             }
         }
 
@@ -763,6 +766,9 @@ namespace InterfaceGraphique
             int positionY;
             int angle;
             double echelle;
+            string text;
+            DataTable dt = new DataTable();
+
             if (Xbox.Text == "")
                 Xbox.Text = "0";
             if (Ybox.Text == "")
@@ -772,15 +778,29 @@ namespace InterfaceGraphique
             if (FMEbox.Text == "")
                 FMEbox.Text = "1";
 
-
-            if (!int.TryParse(Anglebox.Text, out angle))
-                Anglebox.Text = "ERREUR";
             if (!int.TryParse(Xbox.Text, out positionX))
                 Xbox.Text = "ERREUR";
             if (!int.TryParse(Ybox.Text, out positionY))
                 Ybox.Text = "ERREUR";
+
+            try
+            {
+                double value = ((double)dt.Compute(Anglebox.Text, ""));
+                Anglebox.Text = Convert.ToInt32(Math.Round(value)).ToString();
+            }
+            catch { }
+            try
+            {
+                double value = ((double)dt.Compute(FMEbox.Text, ""));
+                FMEbox.Text = (Convert.ToInt32(Math.Round(value*100))/100.0).ToString();
+            }
+            catch { }
+
+            if (!int.TryParse(Anglebox.Text, out angle))
+                Anglebox.Text = "ERREUR";
             if (!double.TryParse(FMEbox.Text, out echelle))
                 FMEbox.Text = "ERREUR";
+
             if(  Xbox.Text == "ERREUR" ||
                 Ybox.Text == "ERREUR"   ||
                  Anglebox.Text == "ERREUR" ||
@@ -908,7 +928,7 @@ namespace InterfaceGraphique
             Xbox.Text = Math.Round(FonctionsNatives.getPositionX()).ToString();
             Ybox.Text = Math.Round(FonctionsNatives.getPositionY()).ToString();
             Anglebox.Text = Math.Round(FonctionsNatives.getAngle()).ToString();
-            FMEbox.Text = FonctionsNatives.getScale().ToString();
+            FMEbox.Text = (Math.Round(FonctionsNatives.getScale() * 100) / 100).ToString();
         }
 
 
@@ -1627,6 +1647,7 @@ namespace InterfaceGraphique
         {
             FonctionsNatives.purgeAll();
             propZJ = new List<int> { 10, 10, 10, 10, 10, 1 };
+            playSound("stone");
         }
 
         ////////////////////////////////////////////////////////////////////////
@@ -1720,7 +1741,7 @@ namespace InterfaceGraphique
                 Xbox.Text = Math.Round(FonctionsNatives.getPositionX()).ToString();
                 Ybox.Text = Math.Round(FonctionsNatives.getPositionY()).ToString();
                 Anglebox.Text = Math.Round(FonctionsNatives.getAngle()).ToString();
-                FMEbox.Text = (Math.Round(FonctionsNatives.getScale()*100)/100).ToString();
+                FMEbox.Text = (Math.Round(FonctionsNatives.getScale() * 100) / 100).ToString();
             }
             if (!(clickValide(origin, currentP)) && (etat is EtatSelection) && e.Button == MouseButtons.Left)
             {
@@ -1972,16 +1993,9 @@ namespace InterfaceGraphique
                 outilsEnable(true);
                 proprietesEnable(true);
                 Xbox.Text = Math.Round(FonctionsNatives.getPositionX()).ToString();
-               
                 Ybox.Text = Math.Round(FonctionsNatives.getPositionY()).ToString();
-               
-
                 Anglebox.Text = Math.Round(FonctionsNatives.getAngle()).ToString();
-               
-
-                FMEbox.Text = FonctionsNatives.getScale().ToString();
-           
-
+                FMEbox.Text = (Math.Round(FonctionsNatives.getScale() * 100) / 100).ToString();
             }
         }
 
@@ -2035,7 +2049,7 @@ namespace InterfaceGraphique
                     Xbox.Text = Math.Round(FonctionsNatives.getPositionX()).ToString();
                     Ybox.Text = Math.Round(FonctionsNatives.getPositionY()).ToString();
                     Anglebox.Text = Math.Round(FonctionsNatives.getAngle()).ToString();
-                    FMEbox.Text = FonctionsNatives.getScale().ToString();
+                    FMEbox.Text = (Math.Round(FonctionsNatives.getScale() * 100) / 100).ToString();
                    
                 }
                 outilsEnable(true);

@@ -366,7 +366,4 @@
       <Filter>Header Files\Tests</Filter>
     </ClInclude>
   </ItemGroup>
-  <ItemGroup>
-    <None Include="Diagramme Noyau.cd" />
-  </ItemGroup>
 </Project>
