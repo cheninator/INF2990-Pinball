@@ -105,9 +105,6 @@
     <ClCompile Include="Visiteurs\VisiteurDeplacement.cpp">
       <Filter>Source Files\Visiteurs</Filter>
     </ClCompile>
-    <ClCompile Include="Visiteurs\VisiteurRotation.cpp">
-      <Filter>Source Files\Visiteurs</Filter>
-    </ClCompile>
     <ClCompile Include="Arbre\Noeuds\NoeudVide.cpp">
       <Filter>Source Files\Arbre\Noeuds</Filter>
     </ClCompile>
@@ -258,9 +255,6 @@
       <Filter>Header Files\Visiteurs</Filter>
     </ClInclude>
     <ClInclude Include="Visiteurs\VisiteurDeplacement.h">
-      <Filter>Header Files\Visiteurs</Filter>
-    </ClInclude>
-    <ClInclude Include="Visiteurs\VisiteurRotation.h">
       <Filter>Header Files\Visiteurs</Filter>
     </ClInclude>
     <ClInclude Include="Arbre\Noeuds\NoeudVide.h">

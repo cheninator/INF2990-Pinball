@@ -9,12 +9,13 @@
 
 #include "ArbreRenduINF2990Test.h"
 #include "../Visiteurs/VisiteurAbstrait.h"
-#include "../Visiteurs/VisiteurRotation.h"
+#include "../Visiteurs/VisiteurRotationPoint.h"
 #include "../Visiteurs/VisiteurDeselectionnerTout.h"
 #include "../Visiteurs/VisiteurSelectionMultiple.h"
 #include "../Visiteurs/VisiteurDuplication.h"
 #include "../Visiteurs/VisiteurSelectionInverse.h"
 #include "../Visiteurs/VisiteurListeEnglobante.h"
+#include "../Visiteurs/VisiteurCentreDeMasse.h"
 #include "NoeudAbstrait.h"
 #include "NoeudComposite.h"
 
@@ -321,15 +322,19 @@ void ArbreRenduINF2990Test::testRotation()
 	// Rotation originale.
 	glm::dvec3 rotOriginale = noeudRessort->obtenirRotation();
 
-	glm::dvec3 vecteur;
-	vecteur[0] = 0;
-	vecteur[1] = 0;
-	vecteur[2] = 30;
+	// Vecteur de rotation
+	glm::dvec3 vecteur = { 0, 0, 30 };
 
-	VisiteurRotation* visiteurRot = new VisiteurRotation(vecteur);
+	// Trouver le centre de masse de la selection
+	VisiteurCentreDeMasse visCM;
+	arbre->accepterVisiteur(&visCM);
+	glm::dvec3 centreRotation = visCM.obtenirCentreDeMasse();
+
+	// Appeler le visiteur de rotation
+	VisiteurRotationPoint* visiteurRot = new VisiteurRotationPoint(vecteur, centreRotation);
 
 	// Test du visiteur.
-	CPPUNIT_ASSERT(noeudRessort->accepterVisiteur(visiteurRot));
+	CPPUNIT_ASSERT(arbre->accepterVisiteur(visiteurRot));
 
 	// Nouvelle valeur de rotation.
 	glm::dvec3 nouvRotation = noeudRessort->obtenirRotation();

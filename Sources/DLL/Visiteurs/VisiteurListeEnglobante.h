@@ -19,7 +19,7 @@ using conteneur_boite_englobante = std::pair<std::vector<glm::dvec3>,NoeudAbstra
 /// @class VisiteurListeEnglobante
 /// @brief Classe pour créer une Liste de rectangles englobants.
 ///
-/// @author Yonni Chen
+/// @author Philippe Carphin
 /// @date 2015-02-02
 /// @ingroup Visiteur
 ///////////////////////////////////////////////////////////////////////////

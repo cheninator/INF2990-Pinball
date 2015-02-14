@@ -374,7 +374,8 @@
       <FileName>Visiteurs\VisiteurPossibilite.h</FileName>
     </TypeIdentifier>
   </Class>
-  <Class Name="VisiteurRotation" Collapsed="true">
+  <Class Name="
+         " Collapsed="true">
     <Position X="39.25" Y="0.5" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAIAIAAACAAAAAAAAAAAAAACAAAAAAAAAAAAgAACAA=</HashCode>

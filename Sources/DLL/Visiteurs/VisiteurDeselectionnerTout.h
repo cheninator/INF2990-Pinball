@@ -18,7 +18,7 @@
 /// @class VisiteurDeselectionnerTout
 /// @brief Classe pour désélectionner tous les objets de la table de rendu.
 ///
-/// @author Yonni Chen
+/// @author Philippe Carphin
 /// @date 2015-02-02
 /// @ingroup Visiteur
 ///////////////////////////////////////////////////////////////////////////
