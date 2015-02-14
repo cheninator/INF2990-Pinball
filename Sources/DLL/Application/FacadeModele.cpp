@@ -41,7 +41,6 @@ Samuel Millette <BR>
 #include "../Visiteurs/VisiteurSelectionMultiple.h"
 #include "../Visiteurs/VisiteurSelectionInverseMultiple.h"
 #include "../Visiteurs/VisiteurDeplacement.h"
-#include "../Visiteurs/VisiteurRotation.h"
 #include "../Visiteurs/VisiteurCentreDeMasse.h"
 #include "../Visiteurs/VisiteurRotationPoint.h"
 #include "../Visiteurs/VisiteurAgrandissement.h"
