@@ -157,22 +157,14 @@ namespace InterfaceGraphique
             if (etat is EtatZoom)
             {
                 if ((e.KeyData == Keys.Subtract ||
-                   e.KeyCode == Keys.OemMinus)
-                   && zoom_Bar.Value > 0)
+                   e.KeyCode == Keys.OemMinus))
                 {
                     FonctionsNatives.zoomOut();
-                    zoom_Bar.Value -= 1;
-                    currentZoom = zoom_Bar.Value;
-                    previousZoom = zoom_Bar.Value;
                 }
                 if ((e.KeyData == Keys.Add ||
-                    e.KeyCode == Keys.Oemplus && e.Modifiers == Keys.Shift)
-                    && zoom_Bar.Value < 12)
+                    e.KeyCode == Keys.Oemplus && e.Modifiers == Keys.Shift))
                 {
                     FonctionsNatives.zoomIn();
-                    zoom_Bar.Value += 1;
-                    currentZoom = zoom_Bar.Value;
-                    previousZoom = zoom_Bar.Value;
                 }
                 if (e.KeyData == Keys.Alt)
                     altDown = true;
@@ -1881,18 +1873,10 @@ namespace InterfaceGraphique
         ////////////////////////////////////////////////////////////////////////
         public void zoomRoulette(MouseEventArgs e)
         {
-            if (e.Delta > 0 && zoom_Bar.Value < zoom_Bar.Maximum)
-            {
+            if (e.Delta > 0)
                 FonctionsNatives.zoomIn();
-                zoom_Bar.Value += 1;
-            }
-            else if (e.Delta < 0 && zoom_Bar.Value > zoom_Bar.Minimum)
-            {
+            else if (e.Delta < 0)
                 FonctionsNatives.zoomOut();
-                zoom_Bar.Value -= 1;
-            }
-            currentZoom = zoom_Bar.Value;
-            previousZoom = zoom_Bar.Value;
         }
 
         ////////////////////////////////////////////////////////////////////////
@@ -2182,28 +2166,6 @@ namespace InterfaceGraphique
 
         //////////////////////////////////////////////////////////////////////////////////////////
         ///
-        /// @fn private void zoom_Bar_Scroll(object sender, EventArgs e)
-        /// @brief Gestion des événements de zoom lorsque l'utilisateur utilise la barre de zoom.
-        /// 
-        /// @param[in] sender : Objet duquel provient un événement.
-        /// @param[in] e : Événement qui lance la fonction.
-        /// 
-        /// @return Aucune.
-        ///
-        //////////////////////////////////////////////////////////////////////////////////////////
-        private void zoom_Bar_Scroll(object sender, EventArgs e)
-        {
-            previousZoom = currentZoom;
-            currentZoom = zoom_Bar.Value;
-            int deltaZoom = currentZoom - previousZoom;
-            if (deltaZoom < 0)
-                FonctionsNatives.zoomOut();
-            else
-                FonctionsNatives.zoomIn();
-        }
-
-        //////////////////////////////////////////////////////////////////////////////////////////
-        ///
         /// @fn public void deselection()
         /// @brief Désélectionne tous les objets.
         /// 
@@ -2309,7 +2271,8 @@ namespace InterfaceGraphique
         //////////////////////////////////////////////////////////////////////////////////////////
         public void enableZoom(bool active)
         {
-            zoom_Bar.Enabled = active;
+            //IncreaseZoomButton.Enabled = active;
+           // DecreaseZoomButton.Enabled = active;
         }
 
         //////////////////////////////////////////////////////////////////////////////////////////
@@ -2349,6 +2312,15 @@ namespace InterfaceGraphique
            previousP = currentP;
            currentP = panel_GL.PointToClient(MousePosition);
        
+        }
+        private void IncreaseZoomButton_Click(object sender, EventArgs e)
+        {
+            FonctionsNatives.zoomIn();
+        }
+
+        private void DecreaseZoomButton_Click(object sender, EventArgs e)
+        {
+            FonctionsNatives.zoomOut();
         }
     }
 

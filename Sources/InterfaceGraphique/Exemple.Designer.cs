@@ -60,10 +60,11 @@ namespace InterfaceGraphique
             this.Ressort_bouton = new System.Windows.Forms.Button();
             this.flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
             this.Groupe_Outils = new System.Windows.Forms.GroupBox();
+            this.DecreaseZoomButton = new System.Windows.Forms.Button();
+            this.IncreaseZoomButton = new System.Windows.Forms.Button();
             this.label_Zoom = new System.Windows.Forms.Label();
             this.bouton_Creation = new System.Windows.Forms.Button();
             this.bouton_Duplication = new System.Windows.Forms.Button();
-            this.zoom_Bar = new System.Windows.Forms.TrackBar();
             this.bouton_Scaling = new System.Windows.Forms.Button();
             this.bouton_Rotation = new System.Windows.Forms.Button();
             this.bouton_Deplacement = new System.Windows.Forms.Button();
@@ -126,7 +127,6 @@ namespace InterfaceGraphique
             this.Group_Element2.SuspendLayout();
             this.flowLayoutPanel1.SuspendLayout();
             this.Groupe_Outils.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.zoom_Bar)).BeginInit();
             this.Groupe_Proprietes.SuspendLayout();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
@@ -414,10 +414,11 @@ namespace InterfaceGraphique
             // 
             // Groupe_Outils
             // 
+            this.Groupe_Outils.Controls.Add(this.DecreaseZoomButton);
+            this.Groupe_Outils.Controls.Add(this.IncreaseZoomButton);
             this.Groupe_Outils.Controls.Add(this.label_Zoom);
             this.Groupe_Outils.Controls.Add(this.bouton_Creation);
             this.Groupe_Outils.Controls.Add(this.bouton_Duplication);
-            this.Groupe_Outils.Controls.Add(this.zoom_Bar);
             this.Groupe_Outils.Controls.Add(this.bouton_Scaling);
             this.Groupe_Outils.Controls.Add(this.bouton_Rotation);
             this.Groupe_Outils.Controls.Add(this.bouton_Deplacement);
@@ -428,6 +429,26 @@ namespace InterfaceGraphique
             this.Groupe_Outils.TabIndex = 0;
             this.Groupe_Outils.TabStop = false;
             this.Groupe_Outils.Text = "Outils";
+            // 
+            // DecreaseZoomButton
+            // 
+            this.DecreaseZoomButton.Location = new System.Drawing.Point(6, 233);
+            this.DecreaseZoomButton.Name = "DecreaseZoomButton";
+            this.DecreaseZoomButton.Size = new System.Drawing.Size(31, 23);
+            this.DecreaseZoomButton.TabIndex = 8;
+            this.DecreaseZoomButton.Text = "-";
+            this.DecreaseZoomButton.UseVisualStyleBackColor = true;
+            this.DecreaseZoomButton.Click += new System.EventHandler(this.DecreaseZoomButton_Click);
+            // 
+            // IncreaseZoomButton
+            // 
+            this.IncreaseZoomButton.Location = new System.Drawing.Point(120, 234);
+            this.IncreaseZoomButton.Name = "IncreaseZoomButton";
+            this.IncreaseZoomButton.Size = new System.Drawing.Size(31, 23);
+            this.IncreaseZoomButton.TabIndex = 7;
+            this.IncreaseZoomButton.Text = "+";
+            this.IncreaseZoomButton.UseVisualStyleBackColor = true;
+            this.IncreaseZoomButton.Click += new System.EventHandler(this.IncreaseZoomButton_Click);
             // 
             // label_Zoom
             // 
@@ -459,20 +480,6 @@ namespace InterfaceGraphique
             this.bouton_Duplication.Text = "Duplication";
             this.bouton_Duplication.UseVisualStyleBackColor = true;
             this.bouton_Duplication.Click += new System.EventHandler(this.bouton_Duplication_Click);
-            // 
-            // zoom_Bar
-            // 
-            this.zoom_Bar.AutoSize = false;
-            this.zoom_Bar.Enabled = false;
-            this.zoom_Bar.LargeChange = 1;
-            this.zoom_Bar.Location = new System.Drawing.Point(13, 226);
-            this.zoom_Bar.Maximum = 12;
-            this.zoom_Bar.Name = "zoom_Bar";
-            this.zoom_Bar.Size = new System.Drawing.Size(130, 40);
-            this.zoom_Bar.TabIndex = 2;
-            this.zoom_Bar.TabStop = false;
-            this.zoom_Bar.Value = 5;
-            this.zoom_Bar.Scroll += new System.EventHandler(this.zoom_Bar_Scroll);
             // 
             // bouton_Scaling
             // 
@@ -1008,7 +1015,6 @@ namespace InterfaceGraphique
             this.Group_Element2.ResumeLayout(false);
             this.flowLayoutPanel1.ResumeLayout(false);
             this.Groupe_Outils.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.zoom_Bar)).EndInit();
             this.Groupe_Proprietes.ResumeLayout(false);
             this.Groupe_Proprietes.PerformLayout();
             this.menuStrip1.ResumeLayout(false);
@@ -1078,7 +1084,6 @@ namespace InterfaceGraphique
         private System.Windows.Forms.Button bouton_Scaling;
         private System.Windows.Forms.Button bouton_Rotation;
         private System.Windows.Forms.Button bouton_Deplacement;
-        private System.Windows.Forms.TrackBar zoom_Bar;
         private System.Windows.Forms.Label label_Zoom;
         private System.Windows.Forms.TextBox Anglebox;
         private System.Windows.Forms.Label Angle_label;
@@ -1099,6 +1104,8 @@ namespace InterfaceGraphique
         private System.Windows.Forms.Button Generateur_bouton;
         private System.Windows.Forms.Button Ressort_bouton;
         private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Button IncreaseZoomButton;
+        private System.Windows.Forms.Button DecreaseZoomButton;
     }
 }
 

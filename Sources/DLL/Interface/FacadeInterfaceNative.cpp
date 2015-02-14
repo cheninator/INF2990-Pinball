@@ -28,57 +28,10 @@ extern "C"
 	static NoeudAbstrait* objet = new NoeudAbstrait();
 	static NoeudAbstrait* objet_temp = new NoeudAbstrait();
 
-	// DON'T ASK WHY
-	static double facteurDeTransition; ///< Facteur de transition
-
 	static double theta = 0; ///< Angle Theta
 	static double phi = 0;  /// < angle Phi
 
-
-	////////////////////////////////////////////////////////////////////////
-	///
-	/// @fn static void calculerTransition(void)
-	///
-	/// Cette fonction interne permet d'assigner un facteur de
-	/// transition (qui est une variable static interne a la librairie
-	/// pour permettre de garder la meme "vitesse" de mouvement entre
-	/// le rendu openGL et la fenetre ne pixel C#
-	///
-	/// @param[in] Aucun
-	///
-	/// @return Aucune. (assigne une valeur a une variable globale a l'interne)
-	///
-	////////////////////////////////////////////////////////////////////////
-	static double calculerTransition(void)
-	{
-		glm::dvec3 positionZero;
-		glm::dvec3 positionUn;
-		FacadeModele::obtenirInstance()->obtenirVue()->convertirClotureAVirtuelle(0, 0, positionZero);
-		FacadeModele::obtenirInstance()->obtenirVue()->convertirClotureAVirtuelle(100, 100, positionUn);
-		facteurDeTransition = (((positionUn.y - positionZero.y) / 100) + ((positionUn.y - positionZero.y) / 100)) / (-2);
-		return facteurDeTransition;
-	}
 	static NoeudAbstrait* objetCourrant = new NoeudAbstrait();
-
-
-	////////////////////////////////////////////////////////////////////////
-	///
-	/// @fn __declspec(dllexport) float __cdecl currentZoom(void)
-	///
-	/// Cette fonction interne permet d'assigner un facteur de
-	/// transition (qui est une variable static interne a la librairie
-	/// pour permettre de garder la meme "vitesse" de mouvement entre
-	/// le rendu openGL et la fenetre ne pixel C#
-	///
-	/// @param[in] Aucun
-	///
-	/// @return La valeur du facteur de transition courant
-	///
-	////////////////////////////////////////////////////////////////////////
-	__declspec(dllexport) double __cdecl currentZoom(void)
-	{
-		return calculerTransition();
-	}
 
 	////////////////////////////////////////////////////////////////////////
 	///
