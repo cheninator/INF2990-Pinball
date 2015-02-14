@@ -111,6 +111,12 @@ public:
    /// Obtenir le facteur de zoom appliqué
    double obtenirZoomCourant();
 
+   /// Obtenir le centre de masse en X
+   int obtenirCentreMasseX();
+
+   /// Obtenir le centre de masse en Y
+   int obtenirCentreMasseY();
+
    int selectionnerObjetSousPointClique(int i, int j, int largeur, int hauteur, bool ctrlDown = false);
 
    /// xxxxx

@@ -818,3 +818,21 @@ double FacadeModele::obtenirZoomCourant()
 		zoom = (dimClot.x * dimClot.y) / surfaceFen;
 	return zoom;
 }
+
+
+int FacadeModele::obtenirCentreMasseX(){
+	int centreMasseX = 0;
+	VisiteurCentreDeMasse* visiteur = new VisiteurCentreDeMasse();
+	FacadeModele::obtenirInstance()->obtenirArbreRenduINF2990()->accepterVisiteur(visiteur);
+	centreMasseX = visiteur->obtenirCentreDeMasse().x;
+	return centreMasseX;
+}
+
+
+int FacadeModele::obtenirCentreMasseY(){
+	int centreMasseY = 0;
+	VisiteurCentreDeMasse* visiteur = new VisiteurCentreDeMasse();
+	FacadeModele::obtenirInstance()->obtenirArbreRenduINF2990()->accepterVisiteur(visiteur);
+	centreMasseY = visiteur->obtenirCentreDeMasse().y;
+	return centreMasseY;
+}

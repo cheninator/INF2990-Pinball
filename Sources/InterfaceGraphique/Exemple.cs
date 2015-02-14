@@ -51,6 +51,7 @@ namespace InterfaceGraphique
         private float scale = 1F; ///< Mise a echelle
         private double currentZoom = -1; ///< Zoom courant
         private int nbSelection;
+        private bool veutDupliquer = false;
         private bool colorShift = false;
         private StringBuilder pathXML = new StringBuilder(""); ///< Chemin pour la lecture/sauvegarde XML
         private Etat etat { get; set; } ///< Machine a etat
@@ -126,6 +127,14 @@ namespace InterfaceGraphique
 
                     else if (etat is EtatZoomElastique)
                         rectangleElastique();
+                    else if (veutDupliquer == true &&
+                            (FonctionsNatives.verifierCliqueDansTable(panel_GL.PointToClient(MousePosition).X, panel_GL.PointToClient(MousePosition).Y))
+                            )
+                    {
+                        etat = new EtatDuplication(this);
+                        veutDupliquer = false;
+                    }
+                    
                     else
                     {
                         FonctionsNatives.animer(tempsInterAffichage);
@@ -1113,9 +1122,16 @@ namespace InterfaceGraphique
         private void bouton_Duplication_Click(object sender, EventArgs e)
         {
             Console.WriteLine("Outil Duplication.");
+            veutDupliquer = true;
             // TO DO
-            etat = null;
-            etat = new EtatDuplication(this);
+            if (FonctionsNatives.verifierCliqueDansTable(panel_GL.PointToClient(MousePosition).X, panel_GL.PointToClient(MousePosition).Y))
+            {
+                etat = null;
+                etat = new EtatDuplication(this);
+            }
+            
+                        
+
         }
 
         ////////////////////////////////////////////////////////////////////////
@@ -1679,7 +1695,7 @@ namespace InterfaceGraphique
             {
                 deplacementVueSouris(e);
             }
-           
+          
             if (etat is EtatCreation)
             {
                 if (!(FonctionsNatives.verifierCliqueDansTable(e.X, e.Y)))
@@ -1716,8 +1732,23 @@ namespace InterfaceGraphique
                 etat = new EtatZoomElastique(this);
                 FonctionsNatives.initialiserRectangleElastique(origin.X, origin.Y);
             }
-            if (!(etat is EtatSelectionMultiple ) && !(etat is EtatCreation) && !(etat is EtatSelection)  && !(etat is EtatZoomElastique))              
-                etat.traiterSouris(e);
+            if (!(etat is EtatSelectionMultiple) && 
+                !(etat is EtatCreation)          && 
+                !(etat is EtatSelection)         && 
+                !(etat is EtatZoomElastique)
+                )
+            {
+                if ((etat is EtatDuplication) &&
+                (FonctionsNatives.verifierCliqueDansTable(panel_GL.PointToClient(MousePosition).X, panel_GL.PointToClient(MousePosition).Y)))
+                    etat.traiterSouris(e);
+                else if (!(etat is EtatDuplication))
+                {
+                    etat.traiterSouris(e);
+                }
+                    
+                    
+                }             
+               
         }
 
         ////////////////////////////////////////////////////////////////////////
@@ -1735,6 +1766,7 @@ namespace InterfaceGraphique
         private void panel_GL_MouseUp(object sender, MouseEventArgs e)
         {
             Point destination = panel_GL.PointToClient(MousePosition);
+            
             if (!(etat is EtatCreation))
             {
                 panel_GL.MouseMove -= panel_MouseMove;
@@ -2377,6 +2409,14 @@ namespace InterfaceGraphique
             FonctionsNatives.zoomOut();
             currentZoom = FonctionsNatives.obtenirZoomCourant();
         }
+
+        public void TeleportCursor(int x, int y)
+        {
+            Cursor = new Cursor(panel_GL.Handle);
+            Cursor.Position = new Point(x,y);
+
+           
+        }
     }
 
     ///////////////////////////////////////////////////////////////////////////
@@ -2577,6 +2617,12 @@ namespace InterfaceGraphique
         
         [DllImport(@"Noyau.dll", CallingConvention = CallingConvention.Cdecl)]
 	    public static extern double obtenirZoomCourant();
+
+        [DllImport(@"Noyau.dll", CallingConvention = CallingConvention.Cdecl)]
+        public static extern int obtenirCentreMasseX();
+
+        [DllImport(@"Noyau.dll", CallingConvention = CallingConvention.Cdecl)]
+        public static extern int obtenirCentreMasseY();
 
     }
 }

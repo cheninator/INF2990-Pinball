@@ -1149,3 +1149,28 @@ __declspec(dllexport) double obtenirZoomCourant(void)
 {
 	return FacadeModele::obtenirInstance()->obtenirZoomCourant();
 }
+
+
+///////////////////////////////////////////////////////////////////////////////
+///
+/// @fn _declspec(dllexport) int obtenirCentreMasseX(void) 
+///
+/// @return La valeur en X de centre de masse
+///
+///////////////////////////////////////////////////////////////////////////////
+__declspec(dllexport) int obtenirCentreMasseX(void)
+{
+	return FacadeModele::obtenirInstance()->obtenirCentreMasseX();
+}
+
+///////////////////////////////////////////////////////////////////////////////
+///
+/// @fn _declspec(dllexport) int obtenirCentreMasseY(void) 
+///
+/// @return La valeur en Y de centre de masse
+///
+///////////////////////////////////////////////////////////////////////////////
+__declspec(dllexport) int obtenirCentreMasseY(void)
+{
+	return FacadeModele::obtenirInstance()->obtenirCentreMasseY();
+}

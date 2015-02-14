@@ -647,7 +647,8 @@ namespace InterfaceGraphique
             
             form_.dupliquerSelection();
             form_.trackCursor(true);
-
+            
+         
         }
 
         ////////////////////////////////////////////////////////////////////////
@@ -677,6 +678,7 @@ namespace InterfaceGraphique
         ////////////////////////////////////////////////////////////////////////
         public override bool traiterSouris(MouseEventArgs e)
         {
+            
             form_.deplacementSouris(e);
 
             if (e.Button == MouseButtons.Left)

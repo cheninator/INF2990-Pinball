@@ -62,6 +62,8 @@ extern "C" {
 	__declspec(dllexport) void initialiserRectangleElastique(int i, int j);
 	__declspec(dllexport) void terminerRectangleElastique();
 	__declspec(dllexport) double obtenirZoomCourant(void);
+	__declspec(dllexport) int obtenirCentreMasseX(void);
+	__declspec(dllexport) int obtenirCentreMasseY(void);
 }
 
 #endif // __FACADE_INTERFACE_NATIVE_H__
