@@ -1088,7 +1088,7 @@ __declspec(dllexport) bool setProprietesNoeud(int x, int y, int angle, double sc
 		echelle = glm::dmat3{ glm::dvec3{ scale, 0, 0.0 },
 								glm::dvec3{ 0, scale, 0.0f },
 								glm::dvec3{ 0.0, 0.0, scale } };
-	double angleRadian = angle * 360 / 2.0 / 3.14156;
+	double angleRadian = angle * 2 * 3.14156 /360 ;
 
 	// Des "-" ici aussi... voir plus bas.
 	glm::dmat3 rotation = glm::dmat3{	glm::dvec3{ cos(-angleRadian), -sin(-angleRadian), 0.0 },
