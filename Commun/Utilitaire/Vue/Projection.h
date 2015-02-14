@@ -67,6 +67,8 @@ namespace vue {
 		/// Vérification de si la projection est perspective.
 		inline bool estPerspective() const;
 
+		/// Obtenir la dimension de la fenêtre virtuelle
+		virtual inline glm::ivec2 obtenirDimensionFenetreVirtuelle() const = 0;
 
 	protected:
 		/// Coordonnée inférieur de la clôture en X.

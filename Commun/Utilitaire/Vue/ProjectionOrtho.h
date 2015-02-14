@@ -70,6 +70,8 @@ namespace vue {
 			double& xMin, double& xMax, double& yMin, double& yMax
 			) const;
 
+		/// Obtenir la dimension de la fenêtre virtuelle
+		virtual inline glm::ivec2 obtenirDimensionFenetreVirtuelle() const;
 
 	private:
 		/// Décide la direction de correction en fonction du zoom.
@@ -126,7 +128,20 @@ namespace vue {
 		yMax = yMaxFenetre_;
 	}
 
-
+	////////////////////////////////////////////////////////////////////////
+	///
+	/// @fn inline glm::ivec2 ProjectionOrtho::obtenirDimensionFenetreVirtuelle() const
+	///
+	/// Cette fonction retourne les dimensions de la fenêtre virtuelle
+	/// associée à cette projection orthographique.
+	///
+	/// @return Les dimensions de la fenêtre de virtuelle.
+	///
+	////////////////////////////////////////////////////////////////////////
+	inline glm::ivec2 ProjectionOrtho::obtenirDimensionFenetreVirtuelle() const
+	{
+		return glm::ivec2{ xMaxFenetre_ - xMinFenetre_, yMaxFenetre_ - yMinFenetre_ };
+	}
 }; // Fin de l'espace de nom vue.
 
 

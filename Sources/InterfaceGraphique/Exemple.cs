@@ -49,8 +49,7 @@ namespace InterfaceGraphique
         private float angleY = 0F; ///< Position en Y
         private float angleZ = 0F; ///< Position en Z
         private float scale = 1F; ///< Mise a echelle
-        private int currentZoom = 5; ///< Zoom courant
-        private int previousZoom = 5; ///< Zoom precedent
+        private double currentZoom = -1; ///< Zoom courant
         private int nbSelection;
         private bool colorShift = false;
         private StringBuilder pathXML = new StringBuilder(""); ///< Chemin pour la lecture/sauvegarde XML
@@ -131,8 +130,8 @@ namespace InterfaceGraphique
                     {
                         FonctionsNatives.animer(tempsInterAffichage);
                         FonctionsNatives.dessinerOpenGL();
-                    }                    
-
+                    }
+                    curZoomVal.Text = currentZoom.ToString();
 
                 });
             }
@@ -157,22 +156,16 @@ namespace InterfaceGraphique
             if (etat is EtatZoom)
             {
                 if ((e.KeyData == Keys.Subtract ||
-                   e.KeyCode == Keys.OemMinus)
-                   && zoom_Bar.Value > 0)
+                   e.KeyCode == Keys.OemMinus))
                 {
                     FonctionsNatives.zoomOut();
-                    zoom_Bar.Value -= 1;
-                    currentZoom = zoom_Bar.Value;
-                    previousZoom = zoom_Bar.Value;
+                    currentZoom = FonctionsNatives.obtenirZoomCourant();
                 }
                 if ((e.KeyData == Keys.Add ||
-                    e.KeyCode == Keys.Oemplus && e.Modifiers == Keys.Shift)
-                    && zoom_Bar.Value < 12)
+                    e.KeyCode == Keys.Oemplus && e.Modifiers == Keys.Shift))
                 {
                     FonctionsNatives.zoomIn();
-                    zoom_Bar.Value += 1;
-                    currentZoom = zoom_Bar.Value;
-                    previousZoom = zoom_Bar.Value;
+                    currentZoom = FonctionsNatives.obtenirZoomCourant();
                 }
                 if (e.KeyData == Keys.Alt)
                     altDown = true;
@@ -1892,18 +1885,11 @@ namespace InterfaceGraphique
         ////////////////////////////////////////////////////////////////////////
         public void zoomRoulette(MouseEventArgs e)
         {
-            if (e.Delta > 0 && zoom_Bar.Value < zoom_Bar.Maximum)
-            {
+            if (e.Delta > 0)
                 FonctionsNatives.zoomIn();
-                zoom_Bar.Value += 1;
-            }
-            else if (e.Delta < 0 && zoom_Bar.Value > zoom_Bar.Minimum)
-            {
+            else if (e.Delta < 0)
                 FonctionsNatives.zoomOut();
-                zoom_Bar.Value -= 1;
-            }
-            currentZoom = zoom_Bar.Value;
-            previousZoom = zoom_Bar.Value;
+            currentZoom = FonctionsNatives.obtenirZoomCourant();
         }
 
         ////////////////////////////////////////////////////////////////////////
@@ -2026,6 +2012,7 @@ namespace InterfaceGraphique
                 FonctionsNatives.zoomInElastique(origin.X, origin.Y, destination.X, destination.Y);
             else if (altDown)
                 FonctionsNatives.zoomOutElastique(origin.X, origin.Y, destination.X, destination.Y);
+            currentZoom = FonctionsNatives.obtenirZoomCourant();
         }
 
         ////////////////////////////////////////////////////////////////////////
@@ -2212,28 +2199,6 @@ namespace InterfaceGraphique
 
         //////////////////////////////////////////////////////////////////////////////////////////
         ///
-        /// @fn private void zoom_Bar_Scroll(object sender, EventArgs e)
-        /// @brief Gestion des événements de zoom lorsque l'utilisateur utilise la barre de zoom.
-        /// 
-        /// @param[in] sender : Objet duquel provient un événement.
-        /// @param[in] e : Événement qui lance la fonction.
-        /// 
-        /// @return Aucune.
-        ///
-        //////////////////////////////////////////////////////////////////////////////////////////
-        private void zoom_Bar_Scroll(object sender, EventArgs e)
-        {
-            previousZoom = currentZoom;
-            currentZoom = zoom_Bar.Value;
-            int deltaZoom = currentZoom - previousZoom;
-            if (deltaZoom < 0)
-                FonctionsNatives.zoomOut();
-            else
-                FonctionsNatives.zoomIn();
-        }
-
-        //////////////////////////////////////////////////////////////////////////////////////////
-        ///
         /// @fn public void deselection()
         /// @brief Désélectionne tous les objets.
         /// 
@@ -2339,7 +2304,8 @@ namespace InterfaceGraphique
         //////////////////////////////////////////////////////////////////////////////////////////
         public void enableZoom(bool active)
         {
-            zoom_Bar.Enabled = active;
+            //IncreaseZoomButton.Enabled = active;
+           // DecreaseZoomButton.Enabled = active;
         }
 
         //////////////////////////////////////////////////////////////////////////////////////////
@@ -2379,6 +2345,17 @@ namespace InterfaceGraphique
            previousP = currentP;
            currentP = panel_GL.PointToClient(MousePosition);
        
+        }
+        private void IncreaseZoomButton_Click(object sender, EventArgs e)
+        {
+            FonctionsNatives.zoomIn();
+            currentZoom = FonctionsNatives.obtenirZoomCourant();
+        }
+
+        private void DecreaseZoomButton_Click(object sender, EventArgs e)
+        {
+            FonctionsNatives.zoomOut();
+            currentZoom = FonctionsNatives.obtenirZoomCourant();
         }
     }
 
@@ -2574,5 +2551,9 @@ namespace InterfaceGraphique
 
         [DllImport(@"Noyau.dll", CallingConvention = CallingConvention.Cdecl)]
         public static extern bool setProprietesNoeud(int x, int y, int angle, double scale);
+        
+        [DllImport(@"Noyau.dll", CallingConvention = CallingConvention.Cdecl)]
+	    public static extern double obtenirZoomCourant();
+
     }
 }

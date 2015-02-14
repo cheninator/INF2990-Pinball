@@ -197,7 +197,7 @@ void FacadeModele::initialiserOpenGL(HWND hWnd)
 			glm::dvec3(0, 1, 0),   glm::dvec3(0, 1, 0)},
 		vue::ProjectionOrtho{ 
 				0, 500, 0, 500,
-				1, 1000, 10, 5000, 1.25,
+				1, 1000, 50, 5000, 1.25,
 				-100, 100, -100, 100 }
 	};
 
@@ -799,4 +799,23 @@ bool FacadeModele::supprimer()
 	delete visiteur;
 
 	return true;
+}
+
+///////////////////////////////////////////////////////////////////////////////
+///
+/// @fn double obtenirZoomCourant();
+/// Obtient la valeur deu zoom appliqué ; la comparaison est faite entre les dimensions de la clôture et celles de la fenêtre courante
+///
+/// @return La valeur du zoom courant
+///
+///////////////////////////////////////////////////////////////////////////////
+double FacadeModele::obtenirZoomCourant()
+{
+	double zoom = -1;
+	glm::ivec2 dimClot = vue_->obtenirProjection().obtenirDimensionCloture();
+	glm::ivec2 dimFenV = vue_->obtenirProjection().obtenirDimensionFenetreVirtuelle();
+	double surfaceFen = dimFenV.x * dimFenV.y;
+	if (surfaceFen != 0.0)
+		zoom = (dimClot.x * dimClot.y) / surfaceFen;
+	return zoom;
 }
