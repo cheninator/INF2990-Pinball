@@ -620,8 +620,8 @@ bool FacadeModele::verifierCliqueDansTable(int x, int y)
 {
 	glm::dvec3 positionDansLeMonde;
 	obtenirInstance()->obtenirVue()->convertirClotureAVirtuelle(x, y, positionDansLeMonde);
-	if (    108 < positionDansLeMonde.x && positionDansLeMonde.x < 272
-		&& -190 < positionDansLeMonde.y && positionDansLeMonde.y < 96  )
+	if (    103 < positionDansLeMonde.x && positionDansLeMonde.x < 277
+		&& -195 < positionDansLeMonde.y && positionDansLeMonde.y < 101  )
 		return true;
 	else
 		return false;
