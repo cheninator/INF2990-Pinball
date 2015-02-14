@@ -102,6 +102,7 @@ namespace InterfaceGraphique
         ////////////////////////////////////////////////////////////////////////
         private void ReinitialiserTout()
         {
+            currentZoom = -1;
             Program.peutAfficher = true;
             panel_GL.Select();
             etat = new EtatNone(this);
@@ -172,13 +173,15 @@ namespace InterfaceGraphique
                         FonctionsNatives.dessinerOpenGL();
                     }
 
-                    currentZoom = FonctionsNatives.obtenirZoomCourant();
-                    curZoomVal.Text = (Math.Round(currentZoom*100)/100).ToString();
-                    if (soundActif)
-                        playSound("");
-                    else
-                        playSound("", true);
-
+                    if (currentZoom == -1)
+                    {
+                        currentZoom = FonctionsNatives.obtenirZoomCourant();
+                        curZoomVal.Text = (Math.Round(currentZoom*100)/100).ToString();
+                        if (soundActif)
+                            playSound("");
+                        else
+                            playSound("", true);
+                    }
                 });
             }
             catch (Exception)
