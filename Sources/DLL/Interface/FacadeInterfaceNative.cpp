@@ -903,7 +903,7 @@ extern "C"
 			}
 		}
 
-		return  -angle;
+		return  angle;
 	}
 
 	///////////////////////////////////////////////////////////////////////////////
@@ -1091,8 +1091,8 @@ __declspec(dllexport) bool setProprietesNoeud(int x, int y, int angle, double sc
 	double angleRadian = angle * 2 * 3.14156 /360 ;
 
 	// Des "-" ici aussi... voir plus bas.
-	glm::dmat3 rotation = glm::dmat3{	glm::dvec3{ cos(-angleRadian), -sin(-angleRadian), 0.0 },
-										glm::dvec3{ sin(-angleRadian), cos(-angleRadian), 0.0f },
+	glm::dmat3 rotation = glm::dmat3{	glm::dvec3{ cos(angleRadian), -sin(angleRadian), 0.0 },
+										glm::dvec3{ sin(angleRadian), cos(angleRadian), 0.0f },
 										glm::dvec3{		0.0,	0.0,		1.0 } };
 
 	glm::dvec3 pointATester;
@@ -1122,7 +1122,7 @@ __declspec(dllexport) bool setProprietesNoeud(int x, int y, int angle, double sc
 		// glm::dvec3 nouveauxAngles = glm::dvec3{ angles.x, angles.y, 25 }; // <========= DÉCOMMENTER ICI
 		// Donc maintenant, tu sais que l'attribut angles est { qqch, qqch, 25 } 
 		// mais si tu sélectionnes l'objet apres avoir setté son angle à 25, tu va voir -25 dans le textbox.
-		glm::dvec3 nouveauxAngles = glm::dvec3{ angles.x, angles.y, -angle }; // <========= ET COMMENTER ICI
+		glm::dvec3 nouveauxAngles = glm::dvec3{ angles.x, angles.y, angle }; // <========= ET COMMENTER ICI
 		objet->assignerPositionRelative(nouvellePosition);
 		objet->assignerRotationHard(nouveauxAngles);
 
