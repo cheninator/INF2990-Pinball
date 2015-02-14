@@ -1147,6 +1147,8 @@ __declspec(dllexport) bool setProprietesNoeud(int x, int y, int angle, double sc
 ///////////////////////////////////////////////////////////////////////////////
 __declspec(dllexport) double obtenirZoomCourant(void)
 {
+	if (FacadeModele::obtenirInstance() == nullptr)
+		return -1;
 	return FacadeModele::obtenirInstance()->obtenirZoomCourant();
 }
 
