@@ -120,7 +120,7 @@ namespace InterfaceGraphique
             else
                 playSound("", true);
 
-            FonctionsNatives.purgeAll();
+           
             FonctionsNatives.resetZoom();
             currentZoom = -1;
         }
@@ -1689,6 +1689,7 @@ namespace InterfaceGraphique
         ////////////////////////////////////////////////////////////////////////
         private void Nouveau_MenuItem_Click(object sender, EventArgs e)
         {
+            FonctionsNatives.purgeAll();
             propZJ = new List<int> { 10, 10, 10, 10, 10, 1 };
             ReinitialiserTout();
         }
