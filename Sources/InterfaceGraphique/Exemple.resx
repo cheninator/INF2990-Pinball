@@ -118,17 +118,17 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <data name="label1.Text" xml:space="preserve">
-    <value>Touches:
-F = Plein Ecran
+    <value>              Touches:
+Outils:
 S = Selection
 C = Duplication
-R = Rotation Objet (souris)
-D = Translation Objet (souris)
-E = Zoom objet (souris)
-Z = Zoom vue (roue)
-+ = Zoom vue avant
-- = Zoom vue arriere
+R = Rotation 
+D = Translation 
+E = Mise à échelle
+Z = Zoom vue
++/- = Zoom avant/arrière
 Fleches = Deplacement vue
+F = Plein Ecran
 P = Montrer/Cacher le paneau création
 H = Montrer/Cacher l'aide</value>
   </data>

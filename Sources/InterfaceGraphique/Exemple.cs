@@ -135,7 +135,7 @@ namespace InterfaceGraphique
         public void InitialiserAnimation()
         {
             this.DoubleBuffered = false;
-            this.StartPosition = FormStartPosition.WindowsDefaultBounds;
+            this.StartPosition = FormStartPosition.CenterScreen;
             FonctionsNatives.initialiserOpenGL(panel_GL.Handle);
             FonctionsNatives.dessinerOpenGL();
         }
