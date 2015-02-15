@@ -461,7 +461,7 @@ namespace InterfaceGraphique
                 for (int i = 0; i < 6; i++)
                     propZJ[i] = result[i];
 
-                ReinitialiserTout();
+               // ReinitialiserTout();
             }
         }
 

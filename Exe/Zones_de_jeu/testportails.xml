@@ -1,19 +1,21 @@
 <Proprietes>
-    <PointsButoir Nombre="10"/>
-    <PointsTriangulaire Nombre="10"/>
-    <PointsCible Nombre="10"/>
-    <PointsVictoire Nombre="10"/>
-    <PointsBilleGratuite Nombre="10"/>
-    <Difficulte Nombre="1"/>
+    <PointsButoir Nombre="0"/>
+    <PointsTriangulaire Nombre="0"/>
+    <PointsCible Nombre="0"/>
+    <PointsVictoire Nombre="0"/>
+    <PointsBilleGratuite Nombre="0"/>
+    <Difficulte Nombre="0"/>
 </Proprietes>
 
 <arbreRenduINF2990>
-    <table nbEnfants="5">
+    <table nbEnfants="7">
         <generateurbille posX="245" posY="-140" posZ="0" scaleX="1" scaleY="1" scaleZ="1" angleX="0" angleY="0" angleZ="0"/>
         <ressort posX="240" posY="-180" posZ="0" scaleX="1" scaleY="1" scaleZ="1" angleX="0" angleY="0" angleZ="0"/>
         <trou posX="170" posY="-164" posZ="0" scaleX="1" scaleY="1" scaleZ="1" angleX="0" angleY="0" angleZ="0"/>
-        <portail posX="219.19999602034682" posY="-32.000001788139365" posZ="0" scaleX="1" scaleY="1" scaleZ="1" angleX="0" angleY="0" angleZ="0"/>
-        <portail posX="158.79999473217867" posY="-79.600001965463179" posZ="0" scaleX="1" scaleY="1" scaleZ="1" angleX="0" angleY="0" angleZ="0"/>
+        <paletteg posX="176.89487303063493" posY="37.026953518822424" posZ="-0" scaleX="1" scaleY="1" scaleZ="1" angleX="0" angleY="0" angleZ="180" color="0"/>
+        <paletteg posX="173.04042572531145" posY="-2.2884108019626552" posZ="-0" scaleX="1" scaleY="1" scaleZ="1" angleX="0" angleY="0" angleZ="180" color="1"/>
+        <paletted posX="223.14824069451657" posY="30.088948050448593" posZ="-0" scaleX="1" scaleY="1" scaleZ="1" angleX="0" angleY="0" angleZ="180" color="1"/>
+        <paletted posX="171.49864680318206" posY="54.371967189757001" posZ="-0" scaleX="1" scaleY="1" scaleZ="1" angleX="0" angleY="0" angleZ="180" color="0"/>
     </table>
-    <couvercle nbEnfants="0"/>
+    <couvercle/>
 </arbreRenduINF2990>
