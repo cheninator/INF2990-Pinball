@@ -697,6 +697,10 @@ int FacadeModele::creerXML(char* path, int prop[6])
 
 		delete visiteur;
 	}
+	else
+	{
+		sauvegardeAutorise = 3;
+	}
 
 	return sauvegardeAutorise;
 }

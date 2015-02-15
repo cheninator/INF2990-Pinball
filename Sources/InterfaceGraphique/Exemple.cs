@@ -469,7 +469,7 @@ namespace InterfaceGraphique
         ///
         /// @fn private void EnregistrerS_MenuItem_Click(object sender, EventArgs e)
         /// @brief Gestion des événements lorsque l'utilisateur clique sur 
-        ///        le menu Enregistrer.
+        ///        le menu Enregistrer Sous.
         /// 
         /// @param[in] sender : Objet duquel provient un événement
         /// @param[in] e : Événement qui lance la fonction.
@@ -492,56 +492,38 @@ namespace InterfaceGraphique
         ////////////////////////////////////////////////////////////////////////
         private void EnregistrerSous()
         {
-            int sauvegarde = FonctionsNatives.creerXML(pathXML, pathXML.Capacity, prop);
 
-            if (sauvegarde == 0)
+            SaveFileDialog enregistrer_fichier = new SaveFileDialog();
+            enregistrer_fichier.Filter = "Fichier XML(*.xml)| *.xml| All files(*.*)|*.*";
+            String initPath = Application.StartupPath + @"\Zones_de_jeu";
+            enregistrer_fichier.InitialDirectory = Path.GetFullPath(initPath);
+            enregistrer_fichier.RestoreDirectory = true;
+            enregistrer_fichier.OverwritePrompt = false;
+            enregistrer_fichier.ShowDialog();
+            String fileName = Path.GetFileName(enregistrer_fichier.FileName);
+            Console.WriteLine(fileName);
+            if (fileName == "default.xml")
             {
-                MessageBox.Show("Il doit avoir au moins un trou, un générateur de bille et un ressort dans la zone de jeu!", "ERREUR DE SAUVEGARDE",
+                MessageBox.Show("Vous ne pouvez pas sauvegarder sur la zone de jeu par défaut!", "ERREUR DE SAUVEGARDE",
                 MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
             }
-
-            else if (sauvegarde == 2)
+            if (!(fileName == "default.xml"))
             {
-                SaveFileDialog enregistrer_fichier = new SaveFileDialog();
-                enregistrer_fichier.Filter = "Fichier XML(*.xml)| *.xml| All files(*.*)|*.*";
-                
-                //Console.WriteLine(initial);
-                string initPath = Application.StartupPath + @"\Zones_de_jeu";
-                enregistrer_fichier.InitialDirectory = Path.GetFullPath(initPath);
-                enregistrer_fichier.RestoreDirectory = true;
-                enregistrer_fichier.OverwritePrompt = false;
-                enregistrer_fichier.ShowDialog();
-                
-                string fileName = Path.GetFileName(enregistrer_fichier.FileName);
-                Console.WriteLine(fileName);
-                if (fileName == "default.xml")
+                enregistrer_fichier.OverwritePrompt = true;
+                pathXML = new StringBuilder(enregistrer_fichier.FileName);
+                for (int i = 0; i < 6; i++)
+                    prop[i] = propZJ[i];
+
+                int sauvegarde = FonctionsNatives.creerXML(pathXML, pathXML.Capacity, prop);
+                Console.WriteLine(sauvegarde);
+                if (sauvegarde == 3)
                 {
-                    MessageBox.Show("Vous ne pouvez pas sauvegarder sur la zone de jeu par défaut!", "ERREUR DE SAUVEGARDE",
+                    MessageBox.Show("Il doit avoir au moins un trou, un générateur de bille et un ressort dans la zone de jeu!", "ERREUR DE SAUVEGARDE",
                     MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    return;
-                }
-                if (!(fileName == "default.xml"))
-                {
-                    enregistrer_fichier.OverwritePrompt = true;
-                    pathXML = new StringBuilder(enregistrer_fichier.FileName);
-                    for (int i = 0; i < 6; i++)
-                        prop[i] = propZJ[i];
-
-                    FonctionsNatives.creerXML(pathXML, pathXML.Capacity, prop);
-                }
-
-                else
-                {
-                    
                 }
             }
-
-            else
-            {
-                MessageBox.Show("Vous ne pouvez pas sauvegarder la zone de jeu par défaut!", "ERREUR DE SAUVEGARDE",
-                MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
-
+            
         }
 
         ////////////////////////////////////////////////////////////////////////
