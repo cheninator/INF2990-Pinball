@@ -116,7 +116,7 @@ void ArbreRenduINF2990Test::testArbreDefaut()
 void ArbreRenduINF2990Test::testXmlInexistant()
 {
 	// On ouvre un fichier inexistant
-	bool test = arbre->initialiserXML("Zones_de_jeu/inexistant.xml");
+	bool test = arbre->initialiserXML("Zones_de_jeu/?.xml");
 	CPPUNIT_ASSERT(!test);
 
 	// On ouvre un fichier qui existe
@@ -139,7 +139,7 @@ void ArbreRenduINF2990Test::testXmlInexistant()
 void ArbreRenduINF2990Test::testPortails()
 {
 	// On initialise une zone de jeu avec des portails
-	bool test = arbre->initialiserXML("Zones_de_jeu/testportails.xml");
+	bool test = arbre->initialiserXML("Zones_de_jeu/test.xml");
 	CPPUNIT_ASSERT(test);
 
 	// On cherche un portail.
@@ -554,12 +554,17 @@ void ArbreRenduINF2990Test::testPalettes()
 	// On sélectionne la cible.
 	NoeudAbstrait* noeudCible = arbre->getEnfant(0)->chercher(ArbreRenduINF2990::NOM_PALETTED);
 	noeudCible->assignerSelection(true);
-
-	arbre->initialiserXML("Zones_de_jeu/testpalettes.xml");
-
+	CPPUNIT_ASSERT(noeudCible->estSelectionne());
+	arbre->vider();
+	arbre->initialiser();
+	arbre->getEnfant(0)->ajouter(arbre->creerNoeud(ArbreRenduINF2990::NOM_PALETTED));
+	arbre->getEnfant(0)->ajouter(arbre->creerNoeud(ArbreRenduINF2990::NOM_PALETTEG));
+	CPPUNIT_ASSERT(arbre->getEnfant(0)->obtenirNombreEnfants() == 2+3);
 	// On trouve les palettes de J1 et J2 (il y a une palette différente par joueur)
-	NoeudAbstrait* paletteD = arbre->getEnfant(0)->chercher(ArbreRenduINF2990::NOM_PALETTED);
-	NoeudAbstrait* paletteG = arbre->getEnfant(0)->chercher(ArbreRenduINF2990::NOM_PALETTEG);
+	NoeudAbstrait* paletteDJ1 = arbre->getEnfant(0)->chercher(ArbreRenduINF2990::NOM_PALETTED);
+	NoeudAbstrait* paletteGJ2 = arbre->getEnfant(0)->chercher(ArbreRenduINF2990::NOM_PALETTEG);
+	arbre->getEnfant(0)->chercher(ArbreRenduINF2990::NOM_PALETTED)->setColorShift(false);
+	arbre->getEnfant(0)->chercher(ArbreRenduINF2990::NOM_PALETTEG)->setColorShift(true);
 
-	CPPUNIT_ASSERT(paletteD->getColorShift() != paletteG->getColorShift());
-}
+	CPPUNIT_ASSERT(paletteDJ1->getColorShift() != paletteGJ2->getColorShift());
+}	
