@@ -171,19 +171,18 @@ namespace InterfaceGraphique
                     
                     else
                     {
+                        if (currentZoom <= 0)
+                        {
+                            FonctionsNatives.resetZoom();
+                            currentZoom = FonctionsNatives.obtenirZoomCourant();
+                            curZoomVal.Text = (Math.Round(currentZoom * 100) / 100).ToString();
+                            if (soundActif)
+                                playSound("");
+                            else
+                                playSound("", true);
+                        }
                         FonctionsNatives.animer(tempsInterAffichage);
                         FonctionsNatives.dessinerOpenGL();
-                    }
-
-                    if (currentZoom <= 0)
-                    {
-                        FonctionsNatives.resetZoom();
-                        currentZoom = FonctionsNatives.obtenirZoomCourant();
-                        curZoomVal.Text = (Math.Round(currentZoom*100)/100).ToString();
-                        if (soundActif)
-                            playSound("");
-                        else
-                            playSound("", true);
                     }
                 });
             }
