@@ -135,7 +135,7 @@ namespace InterfaceGraphique
         public void InitialiserAnimation()
         {
             this.DoubleBuffered = false;
-            this.StartPosition = FormStartPosition.CenterScreen;
+            this.StartPosition = FormStartPosition.WindowsDefaultBounds;
             FonctionsNatives.initialiserOpenGL(panel_GL.Handle);
             FonctionsNatives.dessinerOpenGL();
         }
@@ -318,6 +318,8 @@ namespace InterfaceGraphique
                     else
                         fs.EnterFullScreenMode(this);
                     FonctionsNatives.resetZoom();
+                    currentZoom = FonctionsNatives.obtenirZoomCourant();
+                    curZoomVal.Text = (Math.Round(currentZoom * 100) / 100).ToString();
                 }      
           
                 else if (e.KeyChar == 's')
