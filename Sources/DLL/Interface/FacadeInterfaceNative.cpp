@@ -1111,134 +1111,134 @@ extern "C"
 	/// @return Aucun
 	///
 	///////////////////////////////////////////////////////////////////////////////
-__declspec(dllexport) void creerMur(int originX, int originY,int x1, int y1, int x2, int y2)
-{
-	FacadeModele::positionnerMur(originX,originY,x1, y1, x2, y2, objet);
-}
-
-
-///////////////////////////////////////////////////////////////////////////////
-///
-/// @fn __declspec(dllexport) bool __cdecl setProprietesNoeud(int x, int y, int angle, double scale)
-///
-///	La fonction calcule la boite englobante de l'objet transformé, le calcul est différend pour les murs.
-/// Il manque quelque chose pour le calcul des boîtes englobantes transformées des objets de type mur.
-///
-/// @param[in]  x : X en coordonnées du monde qu'on veut donner à notre noeud.
-/// @param[in]  y : Y en coordonnées du monde qu'on veut donner à notre noeud.
-/// @param[in]	angle : angle de rotation
-///	@param[in]	scale: scale de l'objet
-/// @return bool
-///
-///////////////////////////////////////////////////////////////////////////////
-__declspec(dllexport) bool setProprietesNoeud(int x, int y, int angle, double scale)
-{
-	// Calculer la position a assigner en coordonnées du monde.  Elle est déjà en
-	// coordonnées du monde car ce qui est dans les textBox, c'est l'attribut position du noeud.
-	glm::dvec3 nouvellePosition{ x, y, 0 };
-	bool nouvellesProprietesSontLegales = true;
-	glm::dvec3 boite[4];
-	glm::dvec3 positionObjet = objet->obtenirPositionRelative();
-	objet->obtenirBoiteModele(boite[0], boite[1], boite[2], boite[3]);
-
-	glm::dmat3 echelle;
-	glm::dvec3 scaleInitial = objet->obtenirAgrandissement();
-	if (objet->getType() == "mur")
+	__declspec(dllexport) void creerMur(int originX, int originY,int x1, int y1, int x2, int y2)
 	{
-		echelle = glm::dmat3{	glm::dvec3{ scaleInitial.x,	0,		0.0 },
-								glm::dvec3{		 0,			scale,	0.0f },
-								glm::dvec3{		0.0,		0.0,	scaleInitial.z } };
-	}
-	else
-		echelle = glm::dmat3{ glm::dvec3{ scale, 0, 0.0 },
-								glm::dvec3{ 0, scale, 0.0f },
-								glm::dvec3{ 0.0, 0.0, scale } };
-	double angleRadian = angle * 2 * 3.14156 /360 ;
-
-	glm::dmat3 rotation = glm::dmat3{	glm::dvec3{ cos(angleRadian), -sin(angleRadian), 0.0 },
-										glm::dvec3{ sin(angleRadian), cos(angleRadian), 0.0f },
-										glm::dvec3{		0.0,	0.0,		1.0 } };
-
-	glm::dvec3 pointATester;
-	for (int i = 0; i < 4; i++)
-	{
-		// Appliquer les nouvelles propriétés.
-		pointATester = nouvellePosition + rotation * (echelle * boite[i]);
-		// Tester
-		if (!FacadeModele::obtenirInstance()->estDansTable(pointATester))
-		{
-			nouvellesProprietesSontLegales = false;
-			std::cout << "L'application des proprietes refusee, on sortirait de la table" << std::endl;
-			return false;
-		}
+		FacadeModele::positionnerMur(originX,originY,x1, y1, x2, y2, objet);
 	}
 
-	if (nouvellesProprietesSontLegales)
-	{
-		glm::dvec3 angles = objet->obtenirRotation();
-		glm::dvec3 nouveauxAngles = glm::dvec3{ angles.x, angles.y, angle }; 
-		objet->assignerPositionRelative(nouvellePosition);
-		objet->assignerRotationHard(nouveauxAngles);
 
-		// traiter le mur de façon spéciale.
+	///////////////////////////////////////////////////////////////////////////////
+	///
+	/// @fn __declspec(dllexport) bool __cdecl setProprietesNoeud(int x, int y, int angle, double scale)
+	///
+	///	La fonction calcule la boite englobante de l'objet transformé, le calcul est différend pour les murs.
+	/// Il manque quelque chose pour le calcul des boîtes englobantes transformées des objets de type mur.
+	///
+	/// @param[in]  x : X en coordonnées du monde qu'on veut donner à notre noeud.
+	/// @param[in]  y : Y en coordonnées du monde qu'on veut donner à notre noeud.
+	/// @param[in]	angle : angle de rotation
+	///	@param[in]	scale: scale de l'objet
+	/// @return bool
+	///
+	///////////////////////////////////////////////////////////////////////////////
+	__declspec(dllexport) bool setProprietesNoeud(int x, int y, int angle, double scale)
+	{
+		// Calculer la position a assigner en coordonnées du monde.  Elle est déjà en
+		// coordonnées du monde car ce qui est dans les textBox, c'est l'attribut position du noeud.
+		glm::dvec3 nouvellePosition{ x, y, 0 };
+		bool nouvellesProprietesSontLegales = true;
+		glm::dvec3 boite[4];
+		glm::dvec3 positionObjet = objet->obtenirPositionRelative();
+		objet->obtenirBoiteModele(boite[0], boite[1], boite[2], boite[3]);
+
+		glm::dmat3 echelle;
+		glm::dvec3 scaleInitial = objet->obtenirAgrandissement();
 		if (objet->getType() == "mur")
-			objet->assignerEchelle(glm::dvec3{ scaleInitial.x, scale, scaleInitial.z });
+		{
+			echelle = glm::dmat3{	glm::dvec3{ scaleInitial.x,	0,		0.0 },
+									glm::dvec3{		 0,			scale,	0.0f },
+									glm::dvec3{		0.0,		0.0,	scaleInitial.z } };
+		}
 		else
-			objet->assignerEchelle(glm::dvec3{ scale, scale, scale });
+			echelle = glm::dmat3{ glm::dvec3{ scale, 0, 0.0 },
+									glm::dvec3{ 0, scale, 0.0f },
+									glm::dvec3{ 0.0, 0.0, scale } };
+		double angleRadian = angle * 2 * 3.14156 /360 ;
+
+		glm::dmat3 rotation = glm::dmat3{	glm::dvec3{ cos(angleRadian), -sin(angleRadian), 0.0 },
+											glm::dvec3{ sin(angleRadian), cos(angleRadian), 0.0f },
+											glm::dvec3{		0.0,	0.0,		1.0 } };
+
+		glm::dvec3 pointATester;
+		for (int i = 0; i < 4; i++)
+		{
+			// Appliquer les nouvelles propriétés.
+			pointATester = nouvellePosition + rotation * (echelle * boite[i]);
+			// Tester
+			if (!FacadeModele::obtenirInstance()->estDansTable(pointATester))
+			{
+				nouvellesProprietesSontLegales = false;
+				std::cout << "L'application des proprietes refusee, on sortirait de la table" << std::endl;
+				return false;
+			}
+		}
+
+		if (nouvellesProprietesSontLegales)
+		{
+			glm::dvec3 angles = objet->obtenirRotation();
+			glm::dvec3 nouveauxAngles = glm::dvec3{ angles.x, angles.y, angle }; 
+			objet->assignerPositionRelative(nouvellePosition);
+			objet->assignerRotationHard(nouveauxAngles);
+
+			// traiter le mur de façon spéciale.
+			if (objet->getType() == "mur")
+				objet->assignerEchelle(glm::dvec3{ scaleInitial.x, scale, scaleInitial.z });
+			else
+				objet->assignerEchelle(glm::dvec3{ scale, scale, scale });
+		}
+		return true;
 	}
-	return true;
-}
 
-///////////////////////////////////////////////////////////////////////////////
-///
-/// @fn _declspec(dllexport) double obtenirZoomCourant(void)
-///
-/// @return La valeur du facteur de zoom appliquer sur la fenêtre
-///
-///////////////////////////////////////////////////////////////////////////////
-__declspec(dllexport) double obtenirZoomCourant(void)
-{
-	if (FacadeModele::obtenirInstance() == nullptr)
-		return -1;
-	return FacadeModele::obtenirInstance()->obtenirZoomCourant();
-}
+	///////////////////////////////////////////////////////////////////////////////
+	///
+	/// @fn _declspec(dllexport) double obtenirZoomCourant(void) À COMMENTER
+	///
+	/// @return La valeur du facteur de zoom appliquer sur la fenêtre
+	///
+	///////////////////////////////////////////////////////////////////////////////
+	__declspec(dllexport) double obtenirZoomCourant(void)
+	{
+		if (FacadeModele::obtenirInstance() == nullptr)
+			return -1;
+		return FacadeModele::obtenirInstance()->obtenirZoomCourant();
+	}
 
 
-///////////////////////////////////////////////////////////////////////////////
-///
-/// @fn _declspec(dllexport) int obtenirCentreMasseX(void) 
-///
-/// @return La valeur en X de centre de masse
-///
-///////////////////////////////////////////////////////////////////////////////
-__declspec(dllexport) int obtenirCentreMasseX(void)
-{
-	return FacadeModele::obtenirInstance()->obtenirCentreMasseX();
-}
+	///////////////////////////////////////////////////////////////////////////////
+	///
+	/// @fn _declspec(dllexport) int obtenirCentreMasseX(void)  À COMMENTER
+	///
+	/// @return La valeur en X de centre de masse
+	///
+	///////////////////////////////////////////////////////////////////////////////
+	__declspec(dllexport) int obtenirCentreMasseX(void)
+	{
+		return FacadeModele::obtenirInstance()->obtenirCentreMasseX();
+	}
 
-///////////////////////////////////////////////////////////////////////////////
-///
-/// @fn _declspec(dllexport) int obtenirCentreMasseY(void) 
-///
-/// @return La valeur en Y de centre de masse
-///
-///////////////////////////////////////////////////////////////////////////////
-__declspec(dllexport) int obtenirCentreMasseY(void)
-{
-	return FacadeModele::obtenirInstance()->obtenirCentreMasseY();
-}
+	///////////////////////////////////////////////////////////////////////////////
+	///
+	/// @fn _declspec(dllexport) int obtenirCentreMasseY(void)  À COMMENTER
+	///
+	/// @return La valeur en Y de centre de masse
+	///
+	///////////////////////////////////////////////////////////////////////////////
+	__declspec(dllexport) int obtenirCentreMasseY(void)
+	{
+		return FacadeModele::obtenirInstance()->obtenirCentreMasseY();
+	}
 
-///////////////////////////////////////////////////////////////////////////////
-///
-/// @fn __declspec(dllexport) bool resetZoom(void)
-///
-/// @return La valeur en Y de centre de masse
-///
-///////////////////////////////////////////////////////////////////////////////
-__declspec(dllexport) bool resetZoom(void)
-{
-	return FacadeModele::obtenirInstance()->appliquerZoomInitial();
-}
+	///////////////////////////////////////////////////////////////////////////////
+	///
+	/// @fn __declspec(dllexport) bool resetZoom(void) À COMMENTER
+	///
+	/// @return La valeur en Y de centre de masse
+	///
+	///////////////////////////////////////////////////////////////////////////////
+	__declspec(dllexport) bool resetZoom(void)
+	{
+		return FacadeModele::obtenirInstance()->appliquerZoomInitial();
+	}
 
 
 
