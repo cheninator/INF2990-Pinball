@@ -37,7 +37,7 @@ extern "C"
 	///
 	/// @fn __declspec(dllexport) void __cdecl trouverObjetSousPointClique(int i, int j)
 	///
-	/// Appel la fonction trouverObjetSousPointClique
+	/// Appel la fonction trouverObjetSousPointClique de FacadeModele
 	///
 	/// @param[in] i: valeur en i dans l'ecran
 	/// @param[in] j: valeur en j dans l'ecran
@@ -221,6 +221,9 @@ extern "C"
 	///
 	/// @fn __declspec(dllexport) void __cdecl creerObjet()
 	///
+	///	Crée un objet sans initialiser ses propriétés.  La fonction C# qui
+	/// L'appelle est responsable d'attribuer des propriétés.
+	///
 	/// @param[in]  value : Nom de l'objet
 	/// @param[in]  length : Taille du nom de l'objet
 	/// @param[in]  twin : si a un jumeau
@@ -268,6 +271,18 @@ extern "C"
 	///
 	/// @fn __declspec(dllexport) void __cdecl creerObjetAvecTests()
 	///
+	/// Cette fonction contient toutes les étapes de la création d'objet.
+	/// Premièrement, on fait quelques assignations spécifiques aux portails et 
+	/// aux murs. A la fin de ceci, l'objet est créé et on retient un pointeur
+	/// vers celui ci dans la variable statique NoeudAbstrait* objet.
+	///
+	/// Ensuite, avant d'ajouter l'objet à l'arbre de rendu, on vérifie qu'il 
+	/// serait entièrement dans la table en faisant un test sur les points
+	/// de sa boite englobante.
+	///
+	/// Si chaque point de la boite englobante passe le test, on ajoute l'objet
+	/// à l'arbre de rendu comme enfant de la table.  Sinon, on l'efface.
+	///
 	/// @param[in]  value : Nom de l'objet
 	/// @param[in]  length : Taille du nom de l'objet
 	/// @param[in]  twin : si a un jumeau
@@ -281,7 +296,8 @@ extern "C"
 	///
 	/// Cette fonction permet de cree un objet 3D
 	///
-	/// @return Aucun
+	/// @return True si l'objet a été créé, false si une des étapes de la création
+	///			a échoué.
 	///
 	////////////////////////////////////////////////////////////////////////
 	__declspec(dllexport) bool __cdecl creerObjetAvecTests(char* value, int length, bool isTwin, bool colorShift, 
@@ -387,7 +403,7 @@ extern "C"
 			return;
 		glm::dvec3 maPosition;
 		FacadeModele::obtenirInstance()->obtenirVue()->convertirClotureAVirtuelle(x, y, maPosition);
-		if (maPosition.x > 108 && maPosition.x < 272 && maPosition.y > -190 && maPosition.y < 96) {
+		if (FacadeModele::obtenirInstance()->estDansTable(maPosition)) {
 			objet->assignerPositionRelative({ maPosition.x, maPosition.y, z });
 			std::cout << std::endl << "x: " << maPosition.x << "y: " << maPosition.y << "z: " << maPosition.z << std::endl;
 		}
@@ -749,6 +765,9 @@ extern "C"
 	///////////////////////////////////////////////////////////////////////////////
 	///
 	/// @fn __declspec(dllexport) void __cdecl agrandirSelection(int x1, int y1, int x2, int y2)
+	///	Change l'échelle des objets sélectionnés.  Chaque déplacement de 1 pixel vers le haut
+	/// multiplie l'échelle courrante par 1.003, et chaque déplacement vers le bas divise
+	///	par 1.003.
 	///
 	/// @param[in]  x1 : abcisse du point initial
 	/// @param[in]  y1 : ordonnee du point initial
@@ -768,7 +787,7 @@ extern "C"
 
 	///////////////////////////////////////////////////////////////////////////////
 	///
-	/// @fn __declspec(dllexport) void __cdecl 
+	/// @fn __declspec(dllexport) void __cdecl À COMMENTER KIM
 	///
 	/// @return Aucun
 	///
@@ -778,6 +797,13 @@ extern "C"
 		FacadeModele::obtenirInstance()->rectangleElastique(i, j);
 	}
 
+	///////////////////////////////////////////////////////////////////////////////
+	///
+	/// @fn __declspec(dllexport) void __cdecl À COMMENTER KIM
+	///
+	/// @return Aucun
+	///
+	///////////////////////////////////////////////////////////////////////////////
 	__declspec(dllexport) int __cdecl selectionMultiple(bool c)
 	{
 		return FacadeModele::obtenirInstance()->selectionMultiple(c);
@@ -786,11 +812,12 @@ extern "C"
 	///////////////////////////////////////////////////////////////////////////////
 	///
 	/// @fn __declspec(dllexport) bool __cdecl verifierCliqueDansTable(int x, int y)
+	/// Vérifie si un clic est dans la table.
 	///
 	/// @param[in]  x : abcisse du point initial 
 	/// @param[in]  y : ordonnee du point initial
 	///
-	/// @return Aucun
+	/// @return true si le clic est dans la table, faux sinon.
 	///
 	/// @remark : On doit donner des x,y qui ont été transformés par panel_GL.PointToClient(...)
 	///
@@ -802,7 +829,8 @@ extern "C"
 
 	///////////////////////////////////////////////////////////////////////////////
 	///
-	/// @fn __declspec(dllexport)  void deselectAll(void)
+	/// @fn __declspec(dllexport)  void deselectAll(void) À COMMENTER
+	///
 	/// @return Aucun
 	///
 	/// @remark : Ca deselectionne tout
@@ -815,7 +843,7 @@ extern "C"
 
 	///////////////////////////////////////////////////////////////////////////////
 	///
-	/// @fn __declspec(dllexport)  void dupliquer(void)
+	/// @fn __declspec(dllexport)  void dupliquer(void) À COMMENTER YONNI (ET KIM?)
 	/// @return Aucun
 	///
 	/// @remark : Ça duplique les objets selectionnés
@@ -828,7 +856,10 @@ extern "C"
 
 	///////////////////////////////////////////////////////////////////////////////
 	///
-	/// @fn __declspec(dllexport)  int getPositionX(void)
+	/// @fn __declspec(dllexport)  int getPositionX(void) 
+	/// Retourne le x de la position du dernier objet sélectionné qu'on a trouvé 
+	/// dans l'arbre.
+	///
 	/// @return la position en X
 	///
 	/// @remark : 
@@ -857,6 +888,9 @@ extern "C"
 	///////////////////////////////////////////////////////////////////////////////
 	///
 	/// @fn __declspec(dllexport)  int getPositionY(void)
+	/// Retourne le y de la position du dernier objet sélectionné qu'on a trouvé 
+	/// dans l'arbre.
+	///
 	/// @return la position en Y
 	///
 	/// @remark : 
@@ -883,6 +917,9 @@ extern "C"
 	///////////////////////////////////////////////////////////////////////////////
 	///
 	/// @fn __declspec(dllexport)  int getAngle(void)
+	/// Retourne l'angleZ du dernier objet sélectionné qu'on a trouvé 
+	/// dans l'arbre.
+	///
 	/// @return l'angle de l'objet
 	///
 	/// @remark : 
@@ -909,9 +946,12 @@ extern "C"
 	///////////////////////////////////////////////////////////////////////////////
 	///
 	/// @fn __declspec(dllexport)  int getScale(void)
+	/// Retourne le scale du dernier objet sélectionné qu'on a trouvé 
+	/// dans l'arbre.
+	///
 	/// @return la taille de l'objet
 	///
-	/// @remark : 
+	/// @remark : Le scale en y est représentatif des objets normaux et des murs.
 	///
 	///////////////////////////////////////////////////////////////////////////////
 	__declspec(dllexport) double getScale(void)
@@ -934,7 +974,7 @@ extern "C"
 
 	////////////////////////////////////////////////////////////////////////
 	///
-	/// @fn __declspec(dllexport) void __cdecl playSound()
+	/// @fn __declspec(dllexport) void __cdecl playSound() À COMMENTER?
 	///
 	/// @param[in]  value : Nom du son
 	/// @param[in]  length : Taille du nom
@@ -1007,10 +1047,9 @@ extern "C"
 
 	///////////////////////////////////////////////////////////////////////////////
 	///
-	/// @fn __declspec(dllexport) bool __cdecl verifierCliqueDansTable(int x, int y)
+	/// @fn __declspec(dllexport) void __cdecl obligerTransparence(bool transparence)
 	///
-	/// @param[in]  x : abcisse du point initial 
-	/// @param[in]  y : ordonnee du point initial
+	/// @param[in]  transparence : 
 	///
 	/// @return Aucun
 	///
@@ -1030,17 +1069,48 @@ extern "C"
 		}
 	}
 
+
+	///////////////////////////////////////////////////////////////////////////////
+	///
+	/// @fn __declspec(dllexport) void __cdecl initialiserRectangleElastique(int i, int j) À COMMENTER KIM
+	///
+	/// @return Aucun
+	///
+	///////////////////////////////////////////////////////////////////////////////
 	__declspec(dllexport) void __cdecl initialiserRectangleElastique(int i, int j)
 	{
 		FacadeModele::obtenirInstance()->initialiserRectangleElastique(i, j);
 	}
 
+
+	///////////////////////////////////////////////////////////////////////////////
+	///
+	/// @fn __declspec(dllexport) void __cdecl terminerRectangleElastique() À COMMENTER KIM
+	///
+	/// @return Aucun
+	///
+	///////////////////////////////////////////////////////////////////////////////
 	__declspec(dllexport) void __cdecl terminerRectangleElastique()
 	{
 		FacadeModele::obtenirInstance()->terminerRectangleElastique();
 	}
-}
 
+	///////////////////////////////////////////////////////////////////////////////
+	///
+	/// @fn __declspec(dllexport) void __cdecl  creerMur(int originX, int originY,int x1, int y1, int x2, int y2) 
+	/// Cette fonction place un mur dont un bout est là où le bouton gauche de la souris a été appuyé, et
+	/// l'autre bout est sous le curseur de la souris.
+	///
+	/// @param[in]  originX : Position en X où le bouton a été appuyé
+	/// @param[in]  originX : Position en Y où le bouton a été appuyé
+	/// @param[in]  x1 : Position en X précédant un déplacement de la souris
+	/// @param[in]  Y1 : Position en Y précédant un déplacement de la souris
+	/// @param[in]  x2 : Position en X après un déplacement de la souris (position actuelle de la souris)
+	/// @param[in]  y2 : Position en X après un déplacement de la souris (position actuelle de la souris)
+	///
+	/// @return Aucun
+	///
+	///////////////////////////////////////////////////////////////////////////////
 __declspec(dllexport) void creerMur(int originX, int originY,int x1, int y1, int x2, int y2)
 {
 	FacadeModele::positionnerMur(originX,originY,x1, y1, x2, y2, objet);
@@ -1063,19 +1133,14 @@ __declspec(dllexport) void creerMur(int originX, int originY,int x1, int y1, int
 ///////////////////////////////////////////////////////////////////////////////
 __declspec(dllexport) bool setProprietesNoeud(int x, int y, int angle, double scale)
 {
-	std::cout << "Appel de setProprietesNoeud(" << x << ", " << y << ", " << angle << ", " << scale << ")" << std::endl;
-	// Obtenir la boite du modele
-	// =============================
-
-	// Calculer la position a assigner en coordonnées du monde.
+	// Calculer la position a assigner en coordonnées du monde.  Elle est déjà en
+	// coordonnées du monde car ce qui est dans les textBox, c'est l'attribut position du noeud.
 	glm::dvec3 nouvellePosition{ x, y, 0 };
-	// FacadeModele::obtenirInstance()->obtenirVue()->convertirClotureAVirtuelle(x, y, nouvellePosition);
 	bool nouvellesProprietesSontLegales = true;
 	glm::dvec3 boite[4];
 	glm::dvec3 positionObjet = objet->obtenirPositionRelative();
 	objet->obtenirBoiteModele(boite[0], boite[1], boite[2], boite[3]);
 
-	// Appliquer les nouvelles propriétés.
 	glm::dmat3 echelle;
 	glm::dvec3 scaleInitial = objet->obtenirAgrandissement();
 	if (objet->getType() == "mur")
@@ -1090,39 +1155,28 @@ __declspec(dllexport) bool setProprietesNoeud(int x, int y, int angle, double sc
 								glm::dvec3{ 0.0, 0.0, scale } };
 	double angleRadian = angle * 2 * 3.14156 /360 ;
 
-	// Des "-" ici aussi... voir plus bas.
 	glm::dmat3 rotation = glm::dmat3{	glm::dvec3{ cos(angleRadian), -sin(angleRadian), 0.0 },
 										glm::dvec3{ sin(angleRadian), cos(angleRadian), 0.0f },
 										glm::dvec3{		0.0,	0.0,		1.0 } };
 
 	glm::dvec3 pointATester;
-	
-	if (1) // Pour désactiver le test pendant qu'on fait des expériences
+	for (int i = 0; i < 4; i++)
 	{
-		for (int i = 0; i < 4; i++)
+		// Appliquer les nouvelles propriétés.
+		pointATester = nouvellePosition + rotation * (echelle * boite[i]);
+		// Tester
+		if (!FacadeModele::obtenirInstance()->estDansTable(pointATester))
 		{
-			pointATester = nouvellePosition + rotation * ( echelle * boite[i]);
-			if (!FacadeModele::obtenirInstance()->estDansTable(pointATester))
-			{
-				nouvellesProprietesSontLegales = false;
-				std::cout << "L'application des proprietes refusee, on sortirait de la table" << std::endl;
-				return false;
-			}
+			nouvellesProprietesSontLegales = false;
+			std::cout << "L'application des proprietes refusee, on sortirait de la table" << std::endl;
+			return false;
 		}
 	}
 
 	if (nouvellesProprietesSontLegales)
 	{
 		glm::dvec3 angles = objet->obtenirRotation();
-		// J'ai l'impression que la fonction qui permet de get l'angle z du C# retourne -1*l'angle, essayez d'enlever le "-" dans la ligne suivante.
-		// EXPÉRIENCE A FAIRE:  enlever le "-", placer un mur incliné pas trop long, 
-		// Sélectionner le mur, et faire accepter tout de suite, 
-		// revenir à l'outil selection, constater que le nouvel angle est -l'angle qu'on a setté avec assignerAngles()
-		// Ou carrément, remplace l'angle par disons 25,
-		// glm::dvec3 nouveauxAngles = glm::dvec3{ angles.x, angles.y, 25 }; // <========= DÉCOMMENTER ICI
-		// Donc maintenant, tu sais que l'attribut angles est { qqch, qqch, 25 } 
-		// mais si tu sélectionnes l'objet apres avoir setté son angle à 25, tu va voir -25 dans le textbox.
-		glm::dvec3 nouveauxAngles = glm::dvec3{ angles.x, angles.y, angle }; // <========= ET COMMENTER ICI
+		glm::dvec3 nouveauxAngles = glm::dvec3{ angles.x, angles.y, angle }; 
 		objet->assignerPositionRelative(nouvellePosition);
 		objet->assignerRotationHard(nouveauxAngles);
 
@@ -1131,11 +1185,8 @@ __declspec(dllexport) bool setProprietesNoeud(int x, int y, int angle, double sc
 			objet->assignerEchelle(glm::dvec3{ scaleInitial.x, scale, scaleInitial.z });
 		else
 			objet->assignerEchelle(glm::dvec3{ scale, scale, scale });
-
 	}
-	
 	return true;
-
 }
 
 ///////////////////////////////////////////////////////////////////////////////
@@ -1177,8 +1228,19 @@ __declspec(dllexport) int obtenirCentreMasseY(void)
 	return FacadeModele::obtenirInstance()->obtenirCentreMasseY();
 }
 
-
+///////////////////////////////////////////////////////////////////////////////
+///
+/// @fn __declspec(dllexport) bool resetZoom(void)
+///
+/// @return La valeur en Y de centre de masse
+///
+///////////////////////////////////////////////////////////////////////////////
 __declspec(dllexport) bool resetZoom(void)
 {
 	return FacadeModele::obtenirInstance()->appliquerZoomInitial();
 }
+
+
+
+
+}// FIN DU extern "C"
