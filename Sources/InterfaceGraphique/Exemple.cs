@@ -333,6 +333,8 @@ namespace InterfaceGraphique
                     bouton_Deplacement_Click(this, e);
                 
                 }
+
+                  
                 else if (e.KeyChar == 'p')
                 {
                     bouton_Creation_Click(this, e);
@@ -341,9 +343,11 @@ namespace InterfaceGraphique
                 {
                     
                     bouton_Scaling_Click(this, e);
+                }
 
-
-
+                else if( e.KeyChar == 'm')
+                {
+                    Mute_MenuItem_Click(this, e);
                 }
                 else if (e.KeyChar == 'r')
                 {

@@ -112,6 +112,26 @@ namespace InterfaceGraphique.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap ButoirTriangD {
+            get {
+                object obj = ResourceManager.GetObject("ButoirTriangD", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap ButoirTriangG {
+            get {
+                object obj = ResourceManager.GetObject("ButoirTriangG", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized resource of type System.IO.UnmanagedMemoryStream similar to System.IO.MemoryStream.
         /// </summary>
         internal static System.IO.UnmanagedMemoryStream button_29 {
@@ -126,6 +146,16 @@ namespace InterfaceGraphique.Properties {
         internal static System.Drawing.Bitmap cible {
             get {
                 object obj = ResourceManager.GetObject("cible", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap CibleCirc {
+            get {
+                object obj = ResourceManager.GetObject("CibleCirc", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -153,9 +183,59 @@ namespace InterfaceGraphique.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap Generateur {
+            get {
+                object obj = ResourceManager.GetObject("Generateur", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap mur {
             get {
                 object obj = ResourceManager.GetObject("mur", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap PDJ1 {
+            get {
+                object obj = ResourceManager.GetObject("PDJ1", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap PDJ2 {
+            get {
+                object obj = ResourceManager.GetObject("PDJ2", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap PGJ1 {
+            get {
+                object obj = ResourceManager.GetObject("PGJ1", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap PGJ2 {
+            get {
+                object obj = ResourceManager.GetObject("PGJ2", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
