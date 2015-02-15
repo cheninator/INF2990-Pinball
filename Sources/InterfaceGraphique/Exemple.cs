@@ -514,7 +514,12 @@ namespace InterfaceGraphique
                 
                 string fileName = Path.GetFileName(enregistrer_fichier.FileName);
                 Console.WriteLine(fileName);
-
+                if (fileName == "default.xml")
+                {
+                    MessageBox.Show("Vous ne pouvez pas sauvegarder sur la zone de jeu par défaut!", "ERREUR DE SAUVEGARDE",
+                    MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    return;
+                }
                 if (!(fileName == "default.xml"))
                 {
                     enregistrer_fichier.OverwritePrompt = true;
@@ -527,8 +532,7 @@ namespace InterfaceGraphique
 
                 else
                 {
-                    MessageBox.Show("Vous ne pouvez pas sauvegarder sur la zone de jeu par défaut!", "ERREUR DE SAUVEGARDE",
-                    MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    
                 }
             }
 

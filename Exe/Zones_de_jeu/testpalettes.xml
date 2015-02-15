@@ -1,19 +1,23 @@
 <Proprietes>
-    <PointsButoir Nombre="10"/>
-    <PointsTriangulaire Nombre="10"/>
-    <PointsCible Nombre="10"/>
-    <PointsVictoire Nombre="10"/>
-    <PointsBilleGratuite Nombre="10"/>
-    <Difficulte Nombre="1"/>
+    <PointsButoir Nombre="0"/>
+    <PointsTriangulaire Nombre="0"/>
+    <PointsCible Nombre="0"/>
+    <PointsVictoire Nombre="0"/>
+    <PointsBilleGratuite Nombre="0"/>
+    <Difficulte Nombre="0"/>
 </Proprietes>
 
 <arbreRenduINF2990>
-    <table nbEnfants="5">
+    <table nbEnfants="9">
         <generateurbille posX="245" posY="-140" posZ="0" scaleX="1" scaleY="1" scaleZ="1" angleX="0" angleY="0" angleZ="0"/>
         <ressort posX="240" posY="-180" posZ="0" scaleX="1" scaleY="1" scaleZ="1" angleX="0" angleY="0" angleZ="0"/>
         <trou posX="170" posY="-164" posZ="0" scaleX="1" scaleY="1" scaleZ="1" angleX="0" angleY="0" angleZ="0"/>
-        <paletteg posX="149.59999453596762" posY="-81.600001972913759" posZ="0" scaleX="1" scaleY="1" scaleZ="1" angleX="0" angleY="0" angleZ="180" color="0"/>
-        <paletted posX="227.59999619949602" posY="-104.00000205636027" posZ="0" scaleX="1" scaleY="1" scaleZ="1" angleX="0" angleY="0" angleZ="180" color="1"/>
+        <cible posX="161.30668784577193" posY="-4.309952181409983" posZ="-0" scaleX="1" scaleY="1" scaleZ="1" angleX="0" angleY="0" angleZ="0"/>
+        <butoirg posX="175.76997846012051" posY="-46.300162428221256" posZ="-0" scaleX="1" scaleY="1" scaleZ="1" angleX="0" angleY="0" angleZ="0"/>
+        <cible posX="219.15986431891167" posY="-35.569330334395993" posZ="-0" scaleX="1" scaleY="1" scaleZ="1" angleX="0" angleY="0" angleZ="0"/>
+        <mur posX="189.76671583392411" posY="-50.265904723765374" posZ="0" scaleX="1" scaleY="8.8121203737302203" scaleZ="1" angleX="0" angleY="0" angleZ="-14.174194380451286"/>
+        <ressort posX="201.89722155788724" posY="-53.765089102186629" posZ="-0" scaleX="1" scaleY="1" scaleZ="1" angleX="0" angleY="0" angleZ="0"/>
+        <ressort posX="202.83033738280747" posY="-128.8809137589634" posZ="-0" scaleX="1" scaleY="1" scaleZ="1" angleX="0" angleY="0" angleZ="0"/>
     </table>
     <couvercle/>
 </arbreRenduINF2990>
