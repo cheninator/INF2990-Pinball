@@ -16,6 +16,7 @@
 #include "../Visiteurs/VisiteurSelectionInverse.h"
 #include "../Visiteurs/VisiteurListeEnglobante.h"
 #include "../Visiteurs/VisiteurCentreDeMasse.h"
+#include "../Visiteurs/VisiteurAgrandissement.h"
 #include "NoeudAbstrait.h"
 #include "NoeudComposite.h"
 
@@ -365,7 +366,7 @@ void ArbreRenduINF2990Test::testSelectionMultiple()
 
 	CPPUNIT_ASSERT(arbre->getEnfant(0)->obtenirType() == ArbreRenduINF2990::NOM_TABLE);
 
-	// On accède à la table et on ajoute une cible.
+	// On accède à la table et on ajoute deux cibles.
 	bool ajout1 = { arbre->getEnfant(0)->ajouter(arbre->creerNoeud(ArbreRenduINF2990::NOM_CIBLE)) };
 	bool ajout2 = { arbre->getEnfant(0)->ajouter(arbre->creerNoeud(ArbreRenduINF2990::NOM_CIBLE)) };
 
@@ -373,7 +374,7 @@ void ArbreRenduINF2990Test::testSelectionMultiple()
 	CPPUNIT_ASSERT(ajout1 == true);
 	CPPUNIT_ASSERT(ajout2 == true);
 
-	// Une cible est bien crée en position {0,0,0}.
+	// Une cible est bien créée en position {0,0,0}.
 	NoeudAbstrait* cible = arbre->getEnfant(0)->chercher(ArbreRenduINF2990::NOM_CIBLE);
 	glm::dvec3 position = cible->obtenirPositionRelative();
 	CPPUNIT_ASSERT(utilitaire::EGAL_ZERO(position[0]));
@@ -436,7 +437,7 @@ void ArbreRenduINF2990Test::testSelectionInverse()
 
 ////////////////////////////////////////////////////////////////////////
 ///
-/// @fn void ArbreRenduINF2990Test::______()
+/// @fn void ArbreRenduINF2990Test::testDuplication()
 ///
 /// Cas de test: Test du visiteur de duplication.
 ///
@@ -545,26 +546,67 @@ void ArbreRenduINF2990Test::testPalettes()
 	// On initialise l'arbre avec le fichier XML par défaut.
 	arbre->initialiser();
 
+	// On accède à la table et on ajoute une palette droite et une gauche.
+	arbre->getEnfant(0)->ajouter(arbre->creerNoeud(ArbreRenduINF2990::NOM_PALETTED));
+	arbre->getEnfant(0)->ajouter(arbre->creerNoeud(ArbreRenduINF2990::NOM_PALETTEG));
+	CPPUNIT_ASSERT(arbre->getEnfant(0)->obtenirNombreEnfants() == 2+3);
+
+	// On trouve les palettes de J1 et J2 (il y a une palette différente par joueur).
+	NoeudAbstrait* paletteDJ1 = arbre->getEnfant(0)->chercher(ArbreRenduINF2990::NOM_PALETTED);
+	NoeudAbstrait* paletteGJ2 = arbre->getEnfant(0)->chercher(ArbreRenduINF2990::NOM_PALETTEG);
+	
+	// On s'assure que leur couleur est differente.
+	arbre->getEnfant(0)->chercher(ArbreRenduINF2990::NOM_PALETTED)->setColorShift(false);
+	arbre->getEnfant(0)->chercher(ArbreRenduINF2990::NOM_PALETTEG)->setColorShift(true);
+
+	CPPUNIT_ASSERT(paletteDJ1->getColorShift() != paletteGJ2->getColorShift());
+
+	// On vide l'arbre.
+	arbre->vider();
+}
+
+////////////////////////////////////////////////////////////////////////
+///
+/// @fn void ArbreRenduINF2990Test::testAgrandissement()
+///
+/// Cas de test: Test du visiteur qui agrandit les noeuds.
+///
+/// @return Aucune.
+///
+////////////////////////////////////////////////////////////////////////
+void ArbreRenduINF2990Test::testAgrandissement()
+{
+	// On initialise l'arbre avec le fichier XML par défaut.
+	arbre->initialiser();
+
 	// On accède à la table et on ajoute une cible.
-	bool ajout = { arbre->getEnfant(0)->ajouter(arbre->creerNoeud(ArbreRenduINF2990::NOM_PALETTED)) };
+	bool ajout = { arbre->getEnfant(0)->ajouter(arbre->creerNoeud(ArbreRenduINF2990::NOM_CIBLE)) };
 
 	// La cible a été ajoutée.	
 	CPPUNIT_ASSERT(ajout == true);
 
 	// On sélectionne la cible.
-	NoeudAbstrait* noeudCible = arbre->getEnfant(0)->chercher(ArbreRenduINF2990::NOM_PALETTED);
+	NoeudAbstrait* noeudCible = arbre->getEnfant(0)->chercher(ArbreRenduINF2990::NOM_CIBLE);
 	noeudCible->assignerSelection(true);
-	CPPUNIT_ASSERT(noeudCible->estSelectionne());
-	arbre->vider();
-	arbre->initialiser();
-	arbre->getEnfant(0)->ajouter(arbre->creerNoeud(ArbreRenduINF2990::NOM_PALETTED));
-	arbre->getEnfant(0)->ajouter(arbre->creerNoeud(ArbreRenduINF2990::NOM_PALETTEG));
-	CPPUNIT_ASSERT(arbre->getEnfant(0)->obtenirNombreEnfants() == 2+3);
-	// On trouve les palettes de J1 et J2 (il y a une palette différente par joueur)
-	NoeudAbstrait* paletteDJ1 = arbre->getEnfant(0)->chercher(ArbreRenduINF2990::NOM_PALETTED);
-	NoeudAbstrait* paletteGJ2 = arbre->getEnfant(0)->chercher(ArbreRenduINF2990::NOM_PALETTEG);
-	arbre->getEnfant(0)->chercher(ArbreRenduINF2990::NOM_PALETTED)->setColorShift(false);
-	arbre->getEnfant(0)->chercher(ArbreRenduINF2990::NOM_PALETTEG)->setColorShift(true);
 
-	CPPUNIT_ASSERT(paletteDJ1->getColorShift() != paletteGJ2->getColorShift());
-}	
+	// Agrandissement de départ.
+	glm::dvec3 agrandissementOriginal = noeudCible->obtenirAgrandissement();
+
+	glm::dvec3 homothetie = { 10.0, 10.0, 10.0 };
+
+	// Visiteur Agrandissement.
+	VisiteurAgrandissement* visAgrand = new VisiteurAgrandissement(homothetie);
+	noeudCible->accepterVisiteur(visAgrand);
+
+	// Agrandissement après la visite.
+	glm::dvec3 agrandissementFinal = noeudCible->obtenirAgrandissement();
+
+	// Ne devrait pas être le égaux
+	CPPUNIT_ASSERT(agrandissementOriginal != agrandissementFinal);
+
+	// Nettoyage
+	delete visAgrand;
+
+	// On vide l'arbre
+	arbre->vider();
+}

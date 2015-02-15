@@ -50,6 +50,7 @@ class ArbreRenduINF2990Test : public CppUnit::TestFixture
 	CPPUNIT_TEST(testDuplication);
 	CPPUNIT_TEST(testBoiteEnglobante);
 	CPPUNIT_TEST(testPalettes);
+	CPPUNIT_TEST(testAgrandissement);
 	CPPUNIT_TEST_SUITE_END();
 
 public:
@@ -107,6 +108,9 @@ public:
 
 	/// Cas de test : Couleur des palettes des joueurs.
 	void testPalettes();
+
+	/// Cas de test : Agrandissement.
+	void testAgrandissement();
 
 private:
 	/// Instance d'un arbre

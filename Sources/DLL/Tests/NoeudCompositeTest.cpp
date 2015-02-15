@@ -56,7 +56,7 @@ void NoeudCompositeTest::tearDown()
 ///
 /// @fn void NoeudCompositeTest::testEnfants()
 ///
-/// Cas de test: s'assurer que le noeud abstrait n'a pas d'enfant
+/// Cas de test: s'assurer que le noeud composite peut posséder des enfants.
 ///
 /// @return Aucune.
 ///

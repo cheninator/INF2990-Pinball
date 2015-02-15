@@ -177,9 +177,6 @@
     <ClCompile Include="Tests\ArbreRenduINF2990Test.cpp">
       <Filter>Source Files\Tests</Filter>
     </ClCompile>
-    <ClCompile Include="Tests\FacadeModeleTest.cpp">
-      <Filter>Source Files\Tests</Filter>
-    </ClCompile>
     <ClCompile Include="Tests\TestUtilitaire.cpp">
       <Filter>Source Files\Tests</Filter>
     </ClCompile>
