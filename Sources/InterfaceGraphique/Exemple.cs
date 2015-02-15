@@ -512,11 +512,14 @@ namespace InterfaceGraphique
                 {
                     MessageBox.Show("Vous ne pouvez pas sauvegarder la zone de jeu par défaut!", "ERREUR DE SAUVEGARDE",
                     MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    pathXML = new StringBuilder("");
                 }
-                if (sauvegarde == 3)
+                if (sauvegarde == 3 || sauvegarde == 0)
                 {
                     MessageBox.Show("Il doit avoir au moins un trou, un générateur de bille et un ressort dans la zone de jeu!", "ERREUR DE SAUVEGARDE",
                     MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    pathXML = new StringBuilder("");
+
                 }
             }
             
@@ -2188,7 +2191,7 @@ namespace InterfaceGraphique
                         MessageBox.Show("Vous ne pouvez pas sauvegarder la zone de jeu par défaut!", "ERREUR DE SAUVEGARDE",
                         MessageBoxButtons.OK, MessageBoxIcon.Error);
                     }
-                    if (sauvegarde == 3)
+                    if (sauvegarde == 3 || sauvegarde == 0)
                     {
                         MessageBox.Show("Il doit avoir au moins un trou, un générateur de bille et un ressort dans la zone de jeu!", "ERREUR DE SAUVEGARDE",
                         MessageBoxButtons.OK, MessageBoxIcon.Error);
