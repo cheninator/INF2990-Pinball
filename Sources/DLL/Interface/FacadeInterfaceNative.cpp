@@ -736,9 +736,9 @@ extern "C"
 	/// @remark : On doit donner des x,y qui ont été transformés par panel_GL.PointToClient(...)
 	///
 	///////////////////////////////////////////////////////////////////////////////
-	__declspec(dllexport) void __cdecl deplacerSelection(int x1, int y1, int x2, int y2)
+	__declspec(dllexport) void __cdecl deplacerSelection(int x1, int y1, int x2, int y2, bool duplication)
 	{
-		FacadeModele::obtenirInstance()->deplacerSelection(x1, y1, x2, y2);
+		FacadeModele::obtenirInstance()->deplacerSelection(x1, y1, x2, y2, duplication);
 	}
 
 	///////////////////////////////////////////////////////////////////////////////
@@ -1240,7 +1240,17 @@ extern "C"
 		return FacadeModele::obtenirInstance()->appliquerZoomInitial();
 	}
 
-
+	///////////////////////////////////////////////////////////////////////////////
+	///
+	/// @fn __declspec(dllexport) bool sourisEstSurCentreMasse(int i, int j) À COMMENTER
+	///
+	/// @return true si la souris est sur le centre de masse
+	///
+	///////////////////////////////////////////////////////////////////////////////
+	__declspec(dllexport) bool sourisEstSurCentreMasse(int i, int j)
+	{
+		return FacadeModele::obtenirInstance()->sourisEstSurCentreMasse(i, j);
+	}
 
 
 }// FIN DU extern "C"

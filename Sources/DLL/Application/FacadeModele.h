@@ -83,7 +83,7 @@ public:
    void animer(float temps);
 
    /// Deplacement des noeuds selectionnés dans l'arbre de rendu.
-   void deplacerSelection(int x1, int y1, int x2, int y2);
+   void deplacerSelection(int x1, int y1, int x2, int y2, bool duplication);
 
    /// Rotation des noeuds sélectionnés
    void tournerSelectionSouris(int x1, int y1, int x2, int y2);
@@ -130,6 +130,9 @@ public:
    bool appliquerZoomInitial();
 
    static void positionnerMur(int originX, int originY, int x1, int y1, int x2, int y2, NoeudAbstrait* noeud);
+
+   //verifie si la souris est sur le centre de masse
+   bool sourisEstSurCentreMasse(int i, int j);
 
 private:
    /// Constructeur par défaut.

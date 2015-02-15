@@ -390,28 +390,52 @@ int FacadeModele::selectionnerObjetSousPointClique(int i, int j, int hauteur, in
 /// @remark : On doit donner des x,y qui ont été transformés par panel_GL.PointToClient(...)
 ///
 ///////////////////////////////////////////////////////////////////////////////
-void FacadeModele::deplacerSelection(int x1, int y1 ,int x2, int y2)
+void FacadeModele::deplacerSelection(int x1, int y1 ,int x2, int y2, bool duplication)
 {
 	glm::dvec3 positionInitiale, positionFinale;
 	FacadeModele::obtenirInstance()->obtenirVue()->convertirClotureAVirtuelle(x1, y1, positionInitiale);
 	FacadeModele::obtenirInstance()->obtenirVue()->convertirClotureAVirtuelle(x2, y2, positionFinale);
 
-	glm::dvec3 deplacement{ positionFinale - positionInitiale };
-
 	// Visiter l'arbre pour trouver les limites d'une boite
 	// minX, minY, maxX, maxY
 	VisiteurLimitesSelection VisLimSel;
 	arbre_->accepterVisiteur(&VisLimSel);
-
-	// Comparer le Deplacement et minX,maxX... aux limites de la table.
-
-	// LOGIQUE DE DÉPLACEMENT
 	glm::dvec3 pointMax{ VisLimSel.getXMax(), VisLimSel.getYMax(), 0 };
 	glm::dvec3 pointMin{ VisLimSel.getXMin(), VisLimSel.getYMin(), 0 };
-	if (estDansTable(pointMax + deplacement) && estDansTable(pointMin + deplacement))
+
+	//Logique de deplacement lors de l'etat de duplication
+	if (duplication)
 	{
-		VisiteurDeplacement visDep(deplacement);
-		arbre_->accepterVisiteur(&visDep);
+		//trouver le centre de masse de la selection
+		VisiteurCentreDeMasse visCM;
+		arbre_->accepterVisiteur(&visCM);
+		glm::dvec3 centreMasse = visCM.obtenirCentreDeMasse();
+
+		//calculer le delta des limites de la boite englobant la selection par rapport au centre de masse
+		glm::dvec3 pointMaxDelta{ pointMax.x - centreMasse.x, pointMax.y - centreMasse.y, 0 };
+		glm::dvec3 pointMinDelta{ pointMin.x - centreMasse.x, pointMin.y - centreMasse.y, 0 };
+
+		//le deplacement s'applique si la selection reste dans la table alors que son centre de masse
+		//se situe a l'emplacement du curseur de la souris
+		if (estDansTable(positionFinale + pointMaxDelta) && estDansTable(positionFinale + pointMinDelta))
+		{
+			glm::dvec3 deplacement{positionFinale - centreMasse};
+			VisiteurDeplacement visDep(deplacement);
+			arbre_->accepterVisiteur(&visDep);
+		}
+	}
+	//Logique de deplacement lors de l'etat de deplacement
+	else
+	{
+		//calculer le deplacement
+		glm::dvec3 deplacement{ positionFinale - positionInitiale };
+
+		//le deplacement s'applique s'il ne fait pas sortir la selection en dehors de la table
+		if (estDansTable(pointMax + deplacement) && estDansTable(pointMin + deplacement))
+		{
+			VisiteurDeplacement visDep(deplacement);
+			arbre_->accepterVisiteur(&visDep);
+		}
 	}
 }
 
@@ -930,4 +954,19 @@ bool FacadeModele::appliquerZoomInitial()
 		applique = true;
 	}
 	return applique;
+}
+
+bool FacadeModele::sourisEstSurCentreMasse(int i, int j)
+{
+	glm::dvec3 positionSouris;
+	vue_->convertirClotureAVirtuelle(i, j, positionSouris);
+
+	VisiteurCentreDeMasse visCM;
+	arbre_->accepterVisiteur(&visCM);
+	glm::dvec3 centreMasse = visCM.obtenirCentreDeMasse();
+
+	if (positionSouris.x == centreMasse.x && positionSouris.y == centreMasse.y)
+		return true;
+	else
+		return false;
 }
