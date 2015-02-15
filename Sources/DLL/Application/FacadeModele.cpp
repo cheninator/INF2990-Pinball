@@ -965,7 +965,7 @@ bool FacadeModele::sourisEstSurCentreMasse(int i, int j)
 	arbre_->accepterVisiteur(&visCM);
 	glm::dvec3 centreMasse = visCM.obtenirCentreDeMasse();
 
-	if (positionSouris.x == centreMasse.x && positionSouris.y == centreMasse.y)
+	if (abs(positionSouris.x - centreMasse.x) < 3 && abs(positionSouris.y - centreMasse.y) < 3)
 		return true;
 	else
 		return false;
