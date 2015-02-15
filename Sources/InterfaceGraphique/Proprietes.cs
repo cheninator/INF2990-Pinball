@@ -145,7 +145,7 @@ namespace InterfaceGraphique
             }
             else
             {
-                if ((n <= 1) || (n > 10))
+                if ((n < 1) || (n > 10))
                 {
                     isValid = false;
                     errorMessage += "\nLa valeur de difficulte est hors la limite ";

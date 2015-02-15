@@ -795,7 +795,6 @@ namespace InterfaceGraphique
             // 
             // Selection_MenuItem
             // 
-            this.Selection_MenuItem.Enabled = false;
             this.Selection_MenuItem.Name = "Selection_MenuItem";
             this.Selection_MenuItem.ShortcutKeyDisplayString = "s";
             this.Selection_MenuItem.Size = new System.Drawing.Size(164, 22);
