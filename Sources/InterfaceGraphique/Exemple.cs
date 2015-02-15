@@ -1782,7 +1782,7 @@ namespace InterfaceGraphique
             }
           
             
-            if (nbSelection == 1  && !(etat is EtatDuplication)) 
+            if (nbSelection == 1  && !(etat is EtatDuplication) && !(etat is EtatSelection)) 
             {
                 Xbox.Text = Math.Round(FonctionsNatives.getPositionX()).ToString();
                 Ybox.Text = Math.Round(FonctionsNatives.getPositionY()).ToString();
@@ -2516,6 +2516,16 @@ namespace InterfaceGraphique
         private void label_Zoom_Click(object sender, EventArgs e)
         {
             Zoom_MenuItem_Click(this, e);
+        }
+
+        private void label_Zoom_MouseEnter(object sender, EventArgs e)
+        {
+            label_Zoom.ForeColor = Color.Blue;
+        }
+
+        private void label_Zoom_MouseLeave(object sender, EventArgs e)
+        {
+            label_Zoom.ForeColor = Color.Black;
         }
     }
 
