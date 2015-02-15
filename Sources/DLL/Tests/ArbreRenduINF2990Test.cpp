@@ -116,11 +116,11 @@ void ArbreRenduINF2990Test::testArbreDefaut()
 void ArbreRenduINF2990Test::testXmlInexistant()
 {
 	// On ouvre un fichier inexistant
-	bool test = arbre->initialiserXML("Zones_de_jeu/?.xml");
+	bool test = arbre->initialiserXML("zones/?.xml");
 	CPPUNIT_ASSERT(!test);
 
 	// On ouvre un fichier qui existe
-	bool test2 = arbre->initialiserXML("Zones_de_jeu/default.xml");
+	bool test2 = arbre->initialiserXML("zones/default.xml");
 	CPPUNIT_ASSERT(test2);
 
 	// On vide l'arbre
@@ -139,7 +139,7 @@ void ArbreRenduINF2990Test::testXmlInexistant()
 void ArbreRenduINF2990Test::testPortails()
 {
 	// On initialise une zone de jeu avec des portails
-	bool test = arbre->initialiserXML("Zones_de_jeu/test.xml");
+	bool test = arbre->initialiserXML("zones/test.xml");
 	CPPUNIT_ASSERT(test);
 
 	// On cherche un portail.

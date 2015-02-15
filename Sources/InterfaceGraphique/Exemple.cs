@@ -438,7 +438,7 @@ namespace InterfaceGraphique
 
             OpenFileDialog ouvrir_fichier = new OpenFileDialog();
             ouvrir_fichier.Filter = "Fichier XML(*.xml)| *.xml| All files(*.*)|*.*";
-            string initPath = Application.StartupPath + @"\Zones_de_jeu";
+            string initPath = Application.StartupPath + @"\zones";
             ouvrir_fichier.InitialDirectory = Path.GetFullPath(initPath);
             ouvrir_fichier.RestoreDirectory = true;
             if (ouvrir_fichier.ShowDialog() == DialogResult.OK)
@@ -486,7 +486,7 @@ namespace InterfaceGraphique
 
             SaveFileDialog enregistrer_fichier = new SaveFileDialog();
             enregistrer_fichier.Filter = "Fichier XML(*.xml)| *.xml| All files(*.*)|*.*";
-            String initPath = Application.StartupPath + @"\Zones_de_jeu";
+            String initPath = Application.StartupPath + @"\zones";
             enregistrer_fichier.InitialDirectory = Path.GetFullPath(initPath);
             enregistrer_fichier.RestoreDirectory = true;
             enregistrer_fichier.OverwritePrompt = false;
