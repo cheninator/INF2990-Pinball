@@ -162,14 +162,14 @@ namespace InterfaceGraphique
 
                     else if (etat is EtatZoomElastique)
                         rectangleElastique();
-                    else if (veutDupliquer == true &&
+                  /*  else if (veutDupliquer == true &&
                             (FonctionsNatives.verifierCliqueDansTable(panel_GL.PointToClient(MousePosition).X, panel_GL.PointToClient(MousePosition).Y))
                             )
                     {
                         etat = new EtatDuplication(this);
                         veutDupliquer = false;
                     }
-                    
+                    */
                     else
                     {
                         if (currentZoom <= 0)
@@ -1801,9 +1801,10 @@ namespace InterfaceGraphique
                 {
                     etat.traiterSouris(e);
                 }
+             
+                etat.traiterSouris(e);
                     
-                    
-                }             
+            }             
                
         }
 
