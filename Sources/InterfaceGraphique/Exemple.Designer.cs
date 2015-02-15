@@ -119,8 +119,8 @@ namespace InterfaceGraphique
             this.Orbite_MenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.Information_MenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.Aide_MenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.printPreviewDialog1 = new System.Windows.Forms.PrintPreviewDialog();
             this.Mute_MenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.printPreviewDialog1 = new System.Windows.Forms.PrintPreviewDialog();
             this.panel1.SuspendLayout();
             this.Creation_Panel.SuspendLayout();
             this.Groupe_Palettes.SuspendLayout();
@@ -995,9 +995,16 @@ namespace InterfaceGraphique
             // Aide_MenuItem
             // 
             this.Aide_MenuItem.Name = "Aide_MenuItem";
-            this.Aide_MenuItem.Size = new System.Drawing.Size(152, 22);
+            this.Aide_MenuItem.Size = new System.Drawing.Size(98, 22);
             this.Aide_MenuItem.Text = "Aide";
             this.Aide_MenuItem.Click += new System.EventHandler(this.Aide_MenuItem_Click);
+            // 
+            // Mute_MenuItem
+            // 
+            this.Mute_MenuItem.Name = "Mute_MenuItem";
+            this.Mute_MenuItem.Size = new System.Drawing.Size(47, 20);
+            this.Mute_MenuItem.Text = "Mute";
+            this.Mute_MenuItem.Click += new System.EventHandler(this.Mute_MenuItem_Click);
             // 
             // printPreviewDialog1
             // 
@@ -1008,13 +1015,6 @@ namespace InterfaceGraphique
             this.printPreviewDialog1.Icon = ((System.Drawing.Icon)(resources.GetObject("printPreviewDialog1.Icon")));
             this.printPreviewDialog1.Name = "printPreviewDialog1";
             this.printPreviewDialog1.Visible = false;
-            // 
-            // Mute_MenuItem
-            // 
-            this.Mute_MenuItem.Name = "Mute_MenuItem";
-            this.Mute_MenuItem.Size = new System.Drawing.Size(47, 20);
-            this.Mute_MenuItem.Text = "Mute";
-            this.Mute_MenuItem.Click += new System.EventHandler(this.Mute_MenuItem_Click);
             // 
             // Exemple
             // 

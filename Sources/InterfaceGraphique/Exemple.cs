@@ -81,6 +81,7 @@ namespace InterfaceGraphique
             this.KeyUp += new KeyEventHandler(ToucheUp);
             this.Icon = Properties.Resources.Pinball;
             InitializeComponent();
+            Creation_Panel.Visible = true;
             Program.peutAfficher = true;
 
             InitialiserAnimation();
