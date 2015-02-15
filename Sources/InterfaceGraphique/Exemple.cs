@@ -108,17 +108,18 @@ namespace InterfaceGraphique
             panel_GL.Select();
             etat = new EtatNone(this);
 
-            if (soundActif)
-                playSound("");
-            else
-                playSound("", true);
-
             //Musique
             if (soundActif)
             {
                 playSound("stone");
             }
             playSound("music");
+
+            if (soundActif)
+                playSound("");
+            else
+                playSound("", true);
+
             FonctionsNatives.purgeAll();
             FonctionsNatives.resetZoom();
             currentZoom = -1;
