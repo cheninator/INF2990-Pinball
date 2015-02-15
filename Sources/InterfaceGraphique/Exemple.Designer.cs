@@ -144,7 +144,7 @@ namespace InterfaceGraphique
             this.panel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel1.Location = new System.Drawing.Point(0, 0);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(956, 640);
+            this.panel1.Size = new System.Drawing.Size(956, 676);
             this.panel1.TabIndex = 0;
             this.panel1.Click += new System.EventHandler(this.panel1_Click);
             // 
@@ -155,7 +155,7 @@ namespace InterfaceGraphique
             this.panel_GL.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel_GL.Location = new System.Drawing.Point(163, 24);
             this.panel_GL.Name = "panel_GL";
-            this.panel_GL.Size = new System.Drawing.Size(566, 614);
+            this.panel_GL.Size = new System.Drawing.Size(566, 650);
             this.panel_GL.TabIndex = 4;
             this.panel_GL.MouseClick += new System.Windows.Forms.MouseEventHandler(this.panel_GL_MouseClick);
             this.panel_GL.MouseDown += new System.Windows.Forms.MouseEventHandler(this.panel_GL_MouseDown);
@@ -174,7 +174,7 @@ namespace InterfaceGraphique
             this.Creation_Panel.Dock = System.Windows.Forms.DockStyle.Right;
             this.Creation_Panel.Location = new System.Drawing.Point(729, 24);
             this.Creation_Panel.Name = "Creation_Panel";
-            this.Creation_Panel.Size = new System.Drawing.Size(225, 614);
+            this.Creation_Panel.Size = new System.Drawing.Size(225, 650);
             this.Creation_Panel.TabIndex = 2;
             this.Creation_Panel.Visible = false;
             this.Creation_Panel.MouseEnter += new System.EventHandler(this.Creation_Panel_MouseEnter);
@@ -411,7 +411,7 @@ namespace InterfaceGraphique
             this.flowLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Left;
             this.flowLayoutPanel1.Location = new System.Drawing.Point(0, 24);
             this.flowLayoutPanel1.Name = "flowLayoutPanel1";
-            this.flowLayoutPanel1.Size = new System.Drawing.Size(163, 614);
+            this.flowLayoutPanel1.Size = new System.Drawing.Size(163, 650);
             this.flowLayoutPanel1.TabIndex = 3;
             // 
             // Groupe_Outils
@@ -1020,7 +1020,7 @@ namespace InterfaceGraphique
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(956, 640);
+            this.ClientSize = new System.Drawing.Size(956, 676);
             this.Controls.Add(this.panel1);
             this.KeyPreview = true;
             this.MainMenuStrip = this.menuStrip1;

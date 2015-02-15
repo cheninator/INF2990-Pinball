@@ -338,9 +338,10 @@ namespace InterfaceGraphique
                 {
                     etat = null;
                     etat = new EtatDeplacement(this);
-
-
-
+                }
+                else if (e.KeyChar == 'p')
+                {
+                    bouton_Creation_Click(this, e);
                 }
                 else if (e.KeyChar == 'e')
                 {

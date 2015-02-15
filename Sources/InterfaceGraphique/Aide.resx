@@ -147,6 +147,7 @@ Z = Zoom vue (roue)
 + = Zoom vue avant
 - = Zoom vue arriere
 Fleches = Deplacement vue
+P = Montrer/Cacher le paneau de création
 H = Montrer/Cacher l'aide
 </value>
   </data>
