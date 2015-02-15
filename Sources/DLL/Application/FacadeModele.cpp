@@ -660,7 +660,7 @@ int FacadeModele::creerXML(char* path, int prop[6])
 {
 	int sauvegardeAutorise;
 
-	// Ne pas permettre la sauvegarde si la zone ne contient pas au minimum les 3 objets
+	// Ne pas permettre la sauvegarde si la zone ne contient pas au minimum  3 objets
 	if (FacadeModele::obtenirInstance()->obtenirArbreRenduINF2990()->getEnfant(0)->obtenirNombreEnfants() < 3)
 	{
 		sauvegardeAutorise = 0;

@@ -592,7 +592,6 @@ namespace InterfaceGraphique
             this.Anglebox.Size = new System.Drawing.Size(51, 20);
             this.Anglebox.TabIndex = 5;
             this.Anglebox.TabStop = false;
-            this.Anglebox.Text = "0";
             // 
             // Angle_label
             // 
@@ -612,7 +611,6 @@ namespace InterfaceGraphique
             this.FMEbox.Size = new System.Drawing.Size(51, 20);
             this.FMEbox.TabIndex = 7;
             this.FMEbox.TabStop = false;
-            this.FMEbox.Text = "1.0";
             // 
             // FME_label
             // 
@@ -632,7 +630,6 @@ namespace InterfaceGraphique
             this.Ybox.Size = new System.Drawing.Size(51, 20);
             this.Ybox.TabIndex = 3;
             this.Ybox.TabStop = false;
-            this.Ybox.Text = "0";
             // 
             // Y_label
             // 
@@ -652,7 +649,6 @@ namespace InterfaceGraphique
             this.Xbox.Size = new System.Drawing.Size(51, 20);
             this.Xbox.TabIndex = 1;
             this.Xbox.TabStop = false;
-            this.Xbox.Text = "0";
             // 
             // X_label
             // 

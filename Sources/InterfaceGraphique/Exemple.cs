@@ -517,6 +517,11 @@ namespace InterfaceGraphique
 
                 int sauvegarde = FonctionsNatives.creerXML(pathXML, pathXML.Capacity, prop);
                 Console.WriteLine(sauvegarde);
+                if (sauvegarde == 1)
+                {
+                    MessageBox.Show("Vous ne pouvez pas sauvegarder la zone de jeu par défaut!", "ERREUR DE SAUVEGARDE",
+                    MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
                 if (sauvegarde == 3)
                 {
                     MessageBox.Show("Il doit avoir au moins un trou, un générateur de bille et un ressort dans la zone de jeu!", "ERREUR DE SAUVEGARDE",
@@ -2183,7 +2188,17 @@ namespace InterfaceGraphique
                 }
                 else
                 {
-                    FonctionsNatives.creerXML(pathXML, pathXML.Capacity, prop);
+                    int sauvegarde = FonctionsNatives.creerXML(pathXML, pathXML.Capacity, prop);
+                    if (sauvegarde == 1)
+                    {
+                        MessageBox.Show("Vous ne pouvez pas sauvegarder la zone de jeu par défaut!", "ERREUR DE SAUVEGARDE",
+                        MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
+                    if (sauvegarde == 3)
+                    {
+                        MessageBox.Show("Il doit avoir au moins un trou, un générateur de bille et un ressort dans la zone de jeu!", "ERREUR DE SAUVEGARDE",
+                        MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
                 }
             }
         }
