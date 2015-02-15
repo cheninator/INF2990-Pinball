@@ -80,7 +80,7 @@ namespace InterfaceGraphique
             this.KeyUp += new KeyEventHandler(ToucheUp);
             this.Icon = Properties.Resources.Pinball;
             InitializeComponent();
-            Creation_Panel.Visible = true;
+            Creation_Panel.Visible = false;
             Program.peutAfficher = true;
 
             InitialiserAnimation();
@@ -168,6 +168,7 @@ namespace InterfaceGraphique
                             FonctionsNatives.resetZoom();
                             currentZoom = FonctionsNatives.obtenirZoomCourant();
                             curZoomVal.Text = (Math.Round(currentZoom * 100) / 100).ToString();
+                            Creation_Panel.Visible = true;
                             if (soundActif)
                                 playSound("");
                             else
@@ -684,6 +685,8 @@ namespace InterfaceGraphique
         private void bouton_Creation_Click(object sender, EventArgs e)
         {
             removePortail();
+            if (etat is EtatMur)
+                etat = new EtatNone(this);
             Console.WriteLine("Outil Creation.");
             if (Creation_Panel.Visible)
                 Creation_Panel.Visible = false;
@@ -2487,7 +2490,7 @@ namespace InterfaceGraphique
 
         public void removePortail()
         {
-            if (etat is EtatPortail)
+            if (etat is EtatPortail || etat is EtatMur)
             {
                 FonctionsNatives.removeObject();
                 deselection();
