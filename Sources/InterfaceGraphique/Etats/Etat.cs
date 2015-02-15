@@ -644,9 +644,10 @@ namespace InterfaceGraphique
         ///
         ////////////////////////////////////////////////////////////////////////
         public EtatDuplication(Exemple form) : base(form) {
-            
-            form_.dupliquerSelection();
+
             form_.trackCursor(true);
+            form_.dupliquerSelection();
+            
             
          
         }

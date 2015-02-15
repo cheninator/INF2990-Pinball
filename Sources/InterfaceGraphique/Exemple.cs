@@ -52,7 +52,6 @@ namespace InterfaceGraphique
         private float scale = 1F; ///< Mise a echelle
         private double currentZoom = -1; ///< Zoom courant
         private int nbSelection;
-        private bool veutDupliquer = false;
         private bool colorShift = false;
         private StringBuilder pathXML = new StringBuilder(""); ///< Chemin pour la lecture/sauvegarde XML
         private Etat etat { get; set; } ///< Machine a etat
@@ -162,14 +161,6 @@ namespace InterfaceGraphique
 
                     else if (etat is EtatZoomElastique)
                         rectangleElastique();
-                  /*  else if (veutDupliquer == true &&
-                            (FonctionsNatives.verifierCliqueDansTable(panel_GL.PointToClient(MousePosition).X, panel_GL.PointToClient(MousePosition).Y))
-                            )
-                    {
-                        etat = new EtatDuplication(this);
-                        veutDupliquer = false;
-                    }
-                    */
                     else
                     {
                         if (currentZoom <= 0)
@@ -1177,13 +1168,13 @@ namespace InterfaceGraphique
         private void bouton_Duplication_Click(object sender, EventArgs e)
         {
             Console.WriteLine("Outil Duplication.");
-            veutDupliquer = true;
+            
             // TO DO
-            if (FonctionsNatives.verifierCliqueDansTable(panel_GL.PointToClient(MousePosition).X, panel_GL.PointToClient(MousePosition).Y))
-            {
+           // if (FonctionsNatives.verifierCliqueDansTable(panel_GL.PointToClient(MousePosition).X, panel_GL.PointToClient(MousePosition).Y))
+           // {
                 etat = null;
                 etat = new EtatDuplication(this);
-            }
+           // }
             
                         
 
@@ -1770,7 +1761,8 @@ namespace InterfaceGraphique
                 }
                 
             }
-
+          
+            
             if (nbSelection == 1  && !(etat is EtatDuplication)) 
             {
                 Xbox.Text = Math.Round(FonctionsNatives.getPositionX()).ToString();
@@ -1802,7 +1794,7 @@ namespace InterfaceGraphique
                     etat.traiterSouris(e);
                 }
              
-                etat.traiterSouris(e);
+              //  etat.traiterSouris(e);
                     
             }             
                
