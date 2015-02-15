@@ -2022,7 +2022,8 @@ namespace InterfaceGraphique
                 }
                 proprietesEnable(false);
                 if (isSelected == 0)
-                    playSound("no");
+                    if (soundActif)
+                        playSound("no");
             }
             else
             {
