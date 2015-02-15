@@ -55,7 +55,7 @@ namespace InterfaceGraphique
             this.bouton_config.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.bouton_config.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.bouton_config.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.bouton_config.Location = new System.Drawing.Point(0, 391);
+            this.bouton_config.Location = new System.Drawing.Point(0, 318);
             this.bouton_config.Name = "bouton_config";
             this.bouton_config.Size = new System.Drawing.Size(384, 73);
             this.bouton_config.TabIndex = 0;
@@ -69,11 +69,11 @@ namespace InterfaceGraphique
             this.bouton_edit.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.bouton_edit.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.bouton_edit.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.bouton_edit.Location = new System.Drawing.Point(0, 322);
+            this.bouton_edit.Location = new System.Drawing.Point(0, 386);
             this.bouton_edit.Name = "bouton_edit";
             this.bouton_edit.Size = new System.Drawing.Size(384, 70);
             this.bouton_edit.TabIndex = 1;
-            this.bouton_edit.Text = "Mode Edition";
+            this.bouton_edit.Text = "Éditeur";
             this.bouton_edit.UseVisualStyleBackColor = true;
             this.bouton_edit.Click += new System.EventHandler(this.bouton_edit_Click);
             this.bouton_edit.MouseEnter += new System.EventHandler(this.bouton_edit_MouseEnter);
@@ -85,9 +85,9 @@ namespace InterfaceGraphique
             this.bouton_quit.FlatAppearance.MouseOverBackColor = System.Drawing.SystemColors.ButtonFace;
             this.bouton_quit.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.bouton_quit.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.bouton_quit.Location = new System.Drawing.Point(0, 463);
+            this.bouton_quit.Location = new System.Drawing.Point(0, 462);
             this.bouton_quit.Name = "bouton_quit";
-            this.bouton_quit.Size = new System.Drawing.Size(384, 71);
+            this.bouton_quit.Size = new System.Drawing.Size(384, 70);
             this.bouton_quit.TabIndex = 2;
             this.bouton_quit.Text = "Quitter";
             this.bouton_quit.UseVisualStyleBackColor = true;
@@ -116,7 +116,7 @@ namespace InterfaceGraphique
             this.bouton_pRapide.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.bouton_pRapide.Location = new System.Drawing.Point(0, 247);
             this.bouton_pRapide.Name = "bouton_pRapide";
-            this.bouton_pRapide.Size = new System.Drawing.Size(384, 75);
+            this.bouton_pRapide.Size = new System.Drawing.Size(384, 73);
             this.bouton_pRapide.TabIndex = 4;
             this.bouton_pRapide.Text = "Partie Rapide";
             this.bouton_pRapide.UseVisualStyleBackColor = true;

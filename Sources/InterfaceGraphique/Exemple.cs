@@ -814,6 +814,8 @@ namespace InterfaceGraphique
             if (FMEbox.Text == "")
                 FMEbox.Text = "1";
 
+            FMEbox.Text = FMEbox.Text.Replace(",", ".");
+
             if (!int.TryParse(Xbox.Text, out positionX))
                 Xbox.Text = "ERREUR";
             if (!int.TryParse(Ybox.Text, out positionY))
@@ -944,6 +946,7 @@ namespace InterfaceGraphique
         {
             Console.Write("Width to send : " + panel_GL.Width.ToString() + "\n" + "Height to send : " + panel_GL.Height.ToString() + "\n");
             FonctionsNatives.redimensionnerFenetre(panel_GL.Width == 0 ? 1 : panel_GL.Width, panel_GL.Height == 0 ? 1 : panel_GL.Height);
+           
         }
 
         ////////////////////////////////////////////////////////////////////////
@@ -1222,7 +1225,8 @@ namespace InterfaceGraphique
         ////////////////////////////////////////////////////////////////////////
         private void Creation_MenuItem_Click(object sender, EventArgs e)
         {
-            bouton_Creation_Click(this, e);
+            if (!Creation_Panel.Visible)
+                Creation_Panel.Visible = true;
         }
 
         ////////////////////////////////////////////////////////////////////////
@@ -1897,8 +1901,7 @@ namespace InterfaceGraphique
         ////////////////////////////////////////////////////////////////////////
         private void label1_Click(object sender, EventArgs e)
         {
-            label1.Hide();
-            
+            //Aide_MenuItem_Click(sender, e);
         }
 
         /* Fonctionnalités des états */
@@ -2504,6 +2507,11 @@ namespace InterfaceGraphique
                 playSound("");
             else
                 playSound("", true);
+        }
+
+        private void label_Zoom_Click(object sender, EventArgs e)
+        {
+            Zoom_MenuItem_Click(this, e);
         }
     }
 

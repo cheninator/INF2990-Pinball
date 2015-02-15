@@ -382,7 +382,7 @@ namespace InterfaceGraphique
             this.Generateur_bouton.Name = "Generateur_bouton";
             this.Generateur_bouton.Size = new System.Drawing.Size(100, 54);
             this.Generateur_bouton.TabIndex = 4;
-            this.Generateur_bouton.Text = "Generateur";
+            this.Generateur_bouton.Text = "Generateur de billes";
             this.Generateur_bouton.TextAlign = System.Drawing.ContentAlignment.TopRight;
             this.Generateur_bouton.UseVisualStyleBackColor = false;
             this.Generateur_bouton.Click += new System.EventHandler(this.Generateur_bouton_Click);
@@ -475,6 +475,7 @@ namespace InterfaceGraphique
             this.label_Zoom.TabIndex = 6;
             this.label_Zoom.Text = "(-)        Zoom        (+)";
             this.label_Zoom.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
+            this.label_Zoom.Click += new System.EventHandler(this.label_Zoom_Click);
             // 
             // bouton_Creation
             // 
@@ -783,8 +784,8 @@ namespace InterfaceGraphique
             this.Rotation_MenuItem,
             this.MiseE_MenuItem,
             this.Duplication_MenuItem,
-            this.Creation_MenuItem,
-            this.Zoom_MenuItem});
+            this.Zoom_MenuItem,
+            this.Creation_MenuItem});
             this.Outils_MenuItem.Name = "Outils_MenuItem";
             this.Outils_MenuItem.Size = new System.Drawing.Size(50, 20);
             this.Outils_MenuItem.Text = "Outils";
