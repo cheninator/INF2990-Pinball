@@ -117,9 +117,8 @@ namespace InterfaceGraphique
             {
                 playSound("stone");
             }
-            else
-                playSound("", false);
             playSound("music");
+            FonctionsNatives.purgeAll();
             FonctionsNatives.resetZoom();
             currentZoom = -1;
         }
@@ -177,6 +176,7 @@ namespace InterfaceGraphique
 
                     if (currentZoom < 0)
                     {
+                        FonctionsNatives.resetZoom();
                         currentZoom = FonctionsNatives.obtenirZoomCourant();
                         curZoomVal.Text = (Math.Round(currentZoom*100)/100).ToString();
                         if (soundActif)
@@ -325,6 +325,7 @@ namespace InterfaceGraphique
                     }
                     else
                         fs.EnterFullScreenMode(this);
+                    FonctionsNatives.resetZoom();
                 }      
           
                 else if (e.KeyChar == 's')
@@ -1686,7 +1687,6 @@ namespace InterfaceGraphique
         ////////////////////////////////////////////////////////////////////////
         private void Nouveau_MenuItem_Click(object sender, EventArgs e)
         {
-            FonctionsNatives.purgeAll();
             propZJ = new List<int> { 10, 10, 10, 10, 10, 1 };
             ReinitialiserTout();
         }
