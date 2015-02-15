@@ -308,6 +308,24 @@ namespace vue {
 	}
 
 
+	////////////////////////////////////////////////////////////////////////
+	///
+	/// @fn void VueOrtho::centrerSurPoint(glm::ivec2 pointCentre)
+	///
+	/// Modifie les bornes de la fenêtre virtuelle afin de se placer sur le
+	/// point passé en paramètre.
+	///
+	/// @param[in]  rotation : Le point milieu désiré de la nouvelle fenêtre
+	///
+	/// @return Aucune.
+	///
+	////////////////////////////////////////////////////////////////////////
+	void VueOrtho::centrerSurPoint(glm::ivec2 pointCentre)
+	{
+		projection_.centrerSurPoint(pointCentre);
+	}
+
+
 }; // Fin du namespace vue.
 
 

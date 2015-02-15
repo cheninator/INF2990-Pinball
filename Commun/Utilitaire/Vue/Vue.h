@@ -70,6 +70,8 @@ namespace vue {
 		virtual void redimensionnerFenetre(const glm::ivec2& coinMin,
 			const glm::ivec2& coinMax) = 0;
 
+		/// Centre la vue sur un point
+		virtual void centrerSurPoint(glm::ivec2 pointCentre) = 0;
 		/// Zoom in, c'est-à-dire un agrandissement.
 		virtual void zoomerIn() = 0;
 		/// Zoom out, c'est-à-dire un rapetissement.
