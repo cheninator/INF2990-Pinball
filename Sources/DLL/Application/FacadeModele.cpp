@@ -778,7 +778,7 @@ void FacadeModele::positionnerMur(int originX, int originY,int x1, int y1, int x
 	double angleRadian;
 
 	// Les calculs sont fait seulement si la souris est assez loin de ou on a créé le noeud.
-	if (glm::length(vecteur) > 10)
+	if (glm::length(vecteur) > 0.1)
 	{
 		// CALCUL DE L'ANGLE
 		// =================
@@ -792,17 +792,26 @@ void FacadeModele::positionnerMur(int originX, int originY,int x1, int y1, int x
 			angleRadian = M_PI - angleRadian;// A passer en paramètre à assignerRotation
 
 		angles = glm::dvec3{ 0, 0, 360.0 / 2.0 / M_PI * angleRadian };
-
-
+	}
 		// Calcul de la translation
 		// ========================
-		position = positionOriginale + vecteur / 2.0; // Le centre du mur est à mi-chemin entre origin et le point du curseur. 
+		// position = positionOriginale + vecteur / 2.0; // Le centre du mur est à mi-chemin entre origin et le point du curseur. 
+	if (glm::length(vecteur) > 16)
+		position = positionOriginale + vecteur / 2.0;
+	else if (glm::length(vecteur) != 0)
+		position = positionOriginale + 8.0 *glm::normalize(vecteur); // 
+	else
+		position = positionOriginale + glm::dvec3{ 0, 8, 0 };
 
+	
+	if (glm::length(vecteur) > 16)
+	{
 		// Calcul du scale
 		// ===============
 		double scale = glm::length(vecteur) / 16; //  16.0 est la longueur originale du mur. 
-		scaleFinal = glm::dvec3{ 1,  scale, 1 };
+		scaleFinal = glm::dvec3{ 1, scale, 1 };
 	}
+
 
 	// Tester la transformation
 	// ========================
