@@ -174,7 +174,7 @@ namespace InterfaceGraphique
                         FonctionsNatives.dessinerOpenGL();
                     }
 
-                    if (currentZoom < 0)
+                    if (currentZoom <= 0)
                     {
                         FonctionsNatives.resetZoom();
                         currentZoom = FonctionsNatives.obtenirZoomCourant();
