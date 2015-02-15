@@ -303,6 +303,12 @@ namespace InterfaceGraphique
                         etat = new EtatCreation(this);
                         deselection();
                     }
+                    else if (etat is EtatDuplication)
+                    {
+                        FonctionsNatives.removeObject();
+                        deselection();
+                        etat = new EtatNone(this); 
+                    }
                     else
                     {
                         etat = null;
@@ -1823,12 +1829,12 @@ namespace InterfaceGraphique
 
             if (etat is EtatDuplication && e.Button == MouseButtons.Left)
             {
-                if (FonctionsNatives.sourisEstSurCentreMasse(currentP.X, currentP.Y))
-                {
-                    etat = new EtatNone(this);
-                    deselection();
-                    panel_GL.MouseMove -= panel_MouseMove;
-                }                             
+                if (!FonctionsNatives.sourisEstSurCentreMasse(currentP.X, currentP.Y))
+                    FonctionsNatives.removeObject();
+
+                deselection();
+                panel_GL.MouseMove -= panel_MouseMove;
+                etat = new EtatNone(this);                  
             }
             else if (etat is EtatMur && (clickExtraValide(origin, destination)))
             {
