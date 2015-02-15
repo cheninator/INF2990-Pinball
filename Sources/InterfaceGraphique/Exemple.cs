@@ -135,7 +135,7 @@ namespace InterfaceGraphique
         public void InitialiserAnimation()
         {
             this.DoubleBuffered = false;
-            this.StartPosition = FormStartPosition.CenterScreen;
+            this.StartPosition = FormStartPosition.WindowsDefaultBounds;
             FonctionsNatives.initialiserOpenGL(panel_GL.Handle);
             FonctionsNatives.dessinerOpenGL();
         }
@@ -286,6 +286,7 @@ namespace InterfaceGraphique
             }
             else
             {
+              
                 if (e.KeyChar == (char)Keys.Escape)
                 {
                     if (etat is EtatPortail)
@@ -318,6 +319,7 @@ namespace InterfaceGraphique
                     else
                         fs.EnterFullScreenMode(this);
                     FonctionsNatives.resetZoom();
+                    
                 }      
           
                 else if (e.KeyChar == 's')
@@ -327,8 +329,8 @@ namespace InterfaceGraphique
                 }
                 else if (e.KeyChar == 'd')
                 {
-                    etat = null;
-                    etat = new EtatDeplacement(this);
+                    bouton_Deplacement_Click(this, e);
+                
                 }
                 else if (e.KeyChar == 'p')
                 {
@@ -336,16 +338,15 @@ namespace InterfaceGraphique
                 }
                 else if (e.KeyChar == 'e')
                 {
-                    etat = null;
-                    etat = new EtatScale(this);
+                    
+                    bouton_Scaling_Click(this, e);
 
 
 
                 }
                 else if (e.KeyChar == 'r')
                 {
-                    etat = null;
-                    etat = new EtatRotation(this);
+                    bouton_Rotation_Click(this, e);
 
                 }
 
@@ -492,7 +493,7 @@ namespace InterfaceGraphique
             enregistrer_fichier.OverwritePrompt = false;
             enregistrer_fichier.ShowDialog();
             String fileName = Path.GetFileName(enregistrer_fichier.FileName);
-            Console.WriteLine(fileName);
+            //Console.WriteLine(fileName);
             if (fileName == "default.xml")
             {
                 MessageBox.Show("Vous ne pouvez pas sauvegarder sur la zone de jeu par défaut!", "ERREUR DE SAUVEGARDE",
@@ -507,7 +508,7 @@ namespace InterfaceGraphique
                     prop[i] = propZJ[i];
 
                 int sauvegarde = FonctionsNatives.creerXML(pathXML, pathXML.Capacity, prop);
-                Console.WriteLine(sauvegarde);
+                //Console.WriteLine(sauvegarde);
                 if (sauvegarde == 1)
                 {
                     MessageBox.Show("Vous ne pouvez pas sauvegarder la zone de jeu par défaut!", "ERREUR DE SAUVEGARDE",
@@ -662,6 +663,7 @@ namespace InterfaceGraphique
         ////////////////////////////////////////////////////////////////////////
         private void bouton_Selection_Click(object sender, EventArgs e)
         {
+            removePortail();
             etat = new EtatSelection(this);
 
             Console.WriteLine("Outil Selection.");
@@ -681,6 +683,7 @@ namespace InterfaceGraphique
         ////////////////////////////////////////////////////////////////////////
         private void bouton_Creation_Click(object sender, EventArgs e)
         {
+            removePortail();
             Console.WriteLine("Outil Creation.");
             if (Creation_Panel.Visible)
                 Creation_Panel.Visible = false;
@@ -791,6 +794,7 @@ namespace InterfaceGraphique
         ////////////////////////////////////////////////////////////////////////
         private void OK_prop_bouton_Click(object sender, EventArgs e)
         {
+            removePortail();
             int positionX;
             int positionY;
             int angle;
@@ -953,7 +957,7 @@ namespace InterfaceGraphique
         ////////////////////////////////////////////////////////////////////////
         private void Annuler_prop_boutn_Click(object sender, EventArgs e)
         {
-
+            removePortail();
             Xbox.Text = Math.Round(FonctionsNatives.getPositionX()).ToString();
             Ybox.Text = Math.Round(FonctionsNatives.getPositionY()).ToString();
             Anglebox.Text = Math.Round(FonctionsNatives.getAngle()).ToString();
@@ -1052,6 +1056,7 @@ namespace InterfaceGraphique
         {
             Console.WriteLine("Outil Deplacement.");
             // TO DO
+            removePortail();
             etat = null;
             etat = new EtatDeplacement(this);
         }
@@ -1094,6 +1099,7 @@ namespace InterfaceGraphique
         {
             Console.WriteLine("Outil Rotation.");
             // TO DO
+            removePortail();
             etat = null;
             etat = new EtatRotation(this);
         }
@@ -1114,6 +1120,7 @@ namespace InterfaceGraphique
         {
             Console.WriteLine("Outil Mise a echelle.");
             // TO DO
+            removePortail();
             etat = null;
             etat = new EtatScale(this);
         }
@@ -1150,7 +1157,7 @@ namespace InterfaceGraphique
         private void Zoom_MenuItem_Click(object sender, EventArgs e)
         {
             Console.WriteLine("Outil Zoom.");
-            
+            removePortail();
             etat = null;
             etat = new EtatZoom(this);
         
@@ -1172,12 +1179,10 @@ namespace InterfaceGraphique
         {
             Console.WriteLine("Outil Duplication.");
             
-            // TO DO
-           // if (FonctionsNatives.verifierCliqueDansTable(panel_GL.PointToClient(MousePosition).X, panel_GL.PointToClient(MousePosition).Y))
-           // {
+                 removePortail();
                 etat = null;
                 etat = new EtatDuplication(this);
-           // }
+      
             
                         
 
@@ -2447,6 +2452,8 @@ namespace InterfaceGraphique
 
         }
 
+      
+
 
         public void creationMur()
         {
@@ -2475,8 +2482,16 @@ namespace InterfaceGraphique
         {
             Cursor = new Cursor(panel_GL.Handle);
             Cursor.Position = new Point(x,y);
+       
+        }
 
-           
+        public void removePortail()
+        {
+            if (etat is EtatPortail)
+            {
+                FonctionsNatives.removeObject();
+                deselection();
+            }
         }
 
         private void Mute_MenuItem_Click(object sender, EventArgs e)
