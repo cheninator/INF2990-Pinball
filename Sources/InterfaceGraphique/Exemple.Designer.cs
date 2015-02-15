@@ -99,6 +99,7 @@ namespace InterfaceGraphique
             this.Rotation_MenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.MiseE_MenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.Duplication_MenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.Zoom_MenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.Creation_MenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.PG_J1_MenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.PD_J1_MenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -113,7 +114,6 @@ namespace InterfaceGraphique
             this.Ressort_MenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.GB_MenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.Trou_MenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.Zoom_MenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.Vues_MenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.Orthographique_MenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.Orbite_MenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -195,49 +195,53 @@ namespace InterfaceGraphique
             // 
             // PDJ2_bouton
             // 
-            this.PDJ2_bouton.BackgroundImage = global::InterfaceGraphique.Properties.Resources.flipperR;
+            this.PDJ2_bouton.BackgroundImage = global::InterfaceGraphique.Properties.Resources.PDJ2;
             this.PDJ2_bouton.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.PDJ2_bouton.Location = new System.Drawing.Point(110, 70);
             this.PDJ2_bouton.Name = "PDJ2_bouton";
             this.PDJ2_bouton.Size = new System.Drawing.Size(100, 50);
             this.PDJ2_bouton.TabIndex = 3;
             this.PDJ2_bouton.Text = "J2";
+            this.PDJ2_bouton.TextAlign = System.Drawing.ContentAlignment.TopRight;
             this.PDJ2_bouton.UseVisualStyleBackColor = true;
             this.PDJ2_bouton.Click += new System.EventHandler(this.PDJ2_bouton_Click);
             // 
             // PGJ2_bouton
             // 
-            this.PGJ2_bouton.BackgroundImage = global::InterfaceGraphique.Properties.Resources.flipperL;
+            this.PGJ2_bouton.BackgroundImage = global::InterfaceGraphique.Properties.Resources.PGJ2;
             this.PGJ2_bouton.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.PGJ2_bouton.Location = new System.Drawing.Point(6, 71);
             this.PGJ2_bouton.Name = "PGJ2_bouton";
             this.PGJ2_bouton.Size = new System.Drawing.Size(100, 49);
             this.PGJ2_bouton.TabIndex = 2;
             this.PGJ2_bouton.Text = "J2";
+            this.PGJ2_bouton.TextAlign = System.Drawing.ContentAlignment.TopRight;
             this.PGJ2_bouton.UseVisualStyleBackColor = true;
             this.PGJ2_bouton.Click += new System.EventHandler(this.PGJ2_bouton_Click);
             // 
             // PDJ1_bouton
             // 
-            this.PDJ1_bouton.BackgroundImage = global::InterfaceGraphique.Properties.Resources.flipperR;
+            this.PDJ1_bouton.BackgroundImage = global::InterfaceGraphique.Properties.Resources.PDJ1;
             this.PDJ1_bouton.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.PDJ1_bouton.Location = new System.Drawing.Point(110, 19);
             this.PDJ1_bouton.Name = "PDJ1_bouton";
             this.PDJ1_bouton.Size = new System.Drawing.Size(100, 47);
             this.PDJ1_bouton.TabIndex = 1;
             this.PDJ1_bouton.Text = "J1";
+            this.PDJ1_bouton.TextAlign = System.Drawing.ContentAlignment.TopRight;
             this.PDJ1_bouton.UseVisualStyleBackColor = true;
             this.PDJ1_bouton.Click += new System.EventHandler(this.PDJ1_bouton_Click);
             // 
             // PGJ1_bouton
             // 
-            this.PGJ1_bouton.BackgroundImage = global::InterfaceGraphique.Properties.Resources.flipperL;
+            this.PGJ1_bouton.BackgroundImage = global::InterfaceGraphique.Properties.Resources.PGJ1;
             this.PGJ1_bouton.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.PGJ1_bouton.Location = new System.Drawing.Point(6, 19);
             this.PGJ1_bouton.Name = "PGJ1_bouton";
             this.PGJ1_bouton.Size = new System.Drawing.Size(100, 47);
             this.PGJ1_bouton.TabIndex = 0;
             this.PGJ1_bouton.Text = "J1";
+            this.PGJ1_bouton.TextAlign = System.Drawing.ContentAlignment.TopRight;
             this.PGJ1_bouton.UseVisualStyleBackColor = true;
             this.PGJ1_bouton.Click += new System.EventHandler(this.PGJ1_bouton_Click);
             // 
@@ -256,18 +260,20 @@ namespace InterfaceGraphique
             // 
             // butoirCirc_bouton
             // 
-            this.butoirCirc_bouton.BackgroundImage = global::InterfaceGraphique.Properties.Resources.but;
+            this.butoirCirc_bouton.BackgroundImage = global::InterfaceGraphique.Properties.Resources.CibleCirc;
             this.butoirCirc_bouton.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
             this.butoirCirc_bouton.Location = new System.Drawing.Point(62, 76);
             this.butoirCirc_bouton.Name = "butoirCirc_bouton";
             this.butoirCirc_bouton.Size = new System.Drawing.Size(98, 48);
             this.butoirCirc_bouton.TabIndex = 2;
+            this.butoirCirc_bouton.Text = "Circulaire";
+            this.butoirCirc_bouton.TextAlign = System.Drawing.ContentAlignment.TopRight;
             this.butoirCirc_bouton.UseVisualStyleBackColor = true;
             this.butoirCirc_bouton.Click += new System.EventHandler(this.butourCirc_bouton_Click);
             // 
             // butoirD_bouton
             // 
-            this.butoirD_bouton.BackgroundImage = global::InterfaceGraphique.Properties.Resources.butoirD;
+            this.butoirD_bouton.BackgroundImage = global::InterfaceGraphique.Properties.Resources.ButoirTriangD;
             this.butoirD_bouton.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.butoirD_bouton.Cursor = System.Windows.Forms.Cursors.Arrow;
             this.butoirD_bouton.Location = new System.Drawing.Point(110, 16);
@@ -275,13 +281,13 @@ namespace InterfaceGraphique
             this.butoirD_bouton.Size = new System.Drawing.Size(100, 54);
             this.butoirD_bouton.TabIndex = 1;
             this.butoirD_bouton.Text = "Droit";
-            this.butoirD_bouton.TextAlign = System.Drawing.ContentAlignment.TopLeft;
+            this.butoirD_bouton.TextAlign = System.Drawing.ContentAlignment.TopRight;
             this.butoirD_bouton.UseVisualStyleBackColor = true;
             this.butoirD_bouton.Click += new System.EventHandler(this.butoirD_bouton_Click);
             // 
             // butoirG_bouton
             // 
-            this.butoirG_bouton.BackgroundImage = global::InterfaceGraphique.Properties.Resources.butoirL;
+            this.butoirG_bouton.BackgroundImage = global::InterfaceGraphique.Properties.Resources.ButoirTriangG;
             this.butoirG_bouton.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.butoirG_bouton.Location = new System.Drawing.Point(4, 16);
             this.butoirG_bouton.Name = "butoirG_bouton";
@@ -376,14 +382,15 @@ namespace InterfaceGraphique
             // Generateur_bouton
             // 
             this.Generateur_bouton.BackColor = System.Drawing.Color.White;
-            this.Generateur_bouton.BackgroundImage = global::InterfaceGraphique.Properties.Resources.plunger;
+            this.Generateur_bouton.BackgroundImage = global::InterfaceGraphique.Properties.Resources.Generateur;
             this.Generateur_bouton.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
             this.Generateur_bouton.Location = new System.Drawing.Point(109, 19);
             this.Generateur_bouton.Name = "Generateur_bouton";
             this.Generateur_bouton.Size = new System.Drawing.Size(100, 54);
             this.Generateur_bouton.TabIndex = 4;
-            this.Generateur_bouton.Text = "Generateur";
+            this.Generateur_bouton.Text = "Generateur de billes";
             this.Generateur_bouton.TextAlign = System.Drawing.ContentAlignment.TopRight;
+            this.Generateur_bouton.TextImageRelation = System.Windows.Forms.TextImageRelation.TextAboveImage;
             this.Generateur_bouton.UseVisualStyleBackColor = false;
             this.Generateur_bouton.Click += new System.EventHandler(this.Generateur_bouton_Click);
             // 
@@ -475,6 +482,7 @@ namespace InterfaceGraphique
             this.label_Zoom.TabIndex = 6;
             this.label_Zoom.Text = "(-)        Zoom        (+)";
             this.label_Zoom.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
+            this.label_Zoom.Click += new System.EventHandler(this.label_Zoom_Click);
             // 
             // bouton_Creation
             // 
@@ -783,8 +791,8 @@ namespace InterfaceGraphique
             this.Rotation_MenuItem,
             this.MiseE_MenuItem,
             this.Duplication_MenuItem,
-            this.Creation_MenuItem,
-            this.Zoom_MenuItem});
+            this.Zoom_MenuItem,
+            this.Creation_MenuItem});
             this.Outils_MenuItem.Name = "Outils_MenuItem";
             this.Outils_MenuItem.Size = new System.Drawing.Size(50, 20);
             this.Outils_MenuItem.Text = "Outils";
@@ -832,6 +840,14 @@ namespace InterfaceGraphique
             this.Duplication_MenuItem.Size = new System.Drawing.Size(164, 22);
             this.Duplication_MenuItem.Text = "Duplication";
             this.Duplication_MenuItem.Click += new System.EventHandler(this.Duplication_MenuItem_Click);
+            // 
+            // Zoom_MenuItem
+            // 
+            this.Zoom_MenuItem.Name = "Zoom_MenuItem";
+            this.Zoom_MenuItem.ShortcutKeyDisplayString = "z";
+            this.Zoom_MenuItem.Size = new System.Drawing.Size(164, 22);
+            this.Zoom_MenuItem.Text = "Zoom";
+            this.Zoom_MenuItem.Click += new System.EventHandler(this.Zoom_MenuItem_Click);
             // 
             // Creation_MenuItem
             // 
@@ -944,14 +960,6 @@ namespace InterfaceGraphique
             this.Trou_MenuItem.Size = new System.Drawing.Size(211, 22);
             this.Trou_MenuItem.Text = "Trou";
             this.Trou_MenuItem.Click += new System.EventHandler(this.Trou_MenuItem_Click);
-            // 
-            // Zoom_MenuItem
-            // 
-            this.Zoom_MenuItem.Name = "Zoom_MenuItem";
-            this.Zoom_MenuItem.ShortcutKeyDisplayString = "z";
-            this.Zoom_MenuItem.Size = new System.Drawing.Size(164, 22);
-            this.Zoom_MenuItem.Text = "Zoom";
-            this.Zoom_MenuItem.Click += new System.EventHandler(this.Zoom_MenuItem_Click);
             // 
             // Vues_MenuItem
             // 

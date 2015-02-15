@@ -186,19 +186,49 @@
     <None Include="Resources\button-29.wav" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Resources\cible.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\mur.png" />
-  </ItemGroup>
-  <ItemGroup>
     <None Include="Resources\plunger.png" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Resources\portail.png" />
+    <None Include="Resources\tablePhoto.png" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Resources\ressort.png" />
+    <None Include="Resources\SaintTrinity.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\ButoirTriangD.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\ButoirTriangG.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Cible.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\CibleCirc.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Generateur.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Mur.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\PDJ1.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\PDJ2.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\PGJ1.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\PGJ2.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Portail.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Ressort.png" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\Trou.png" />
