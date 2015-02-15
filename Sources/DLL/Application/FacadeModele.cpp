@@ -406,10 +406,9 @@ void FacadeModele::deplacerSelection(int x1, int y1 ,int x2, int y2)
 	// Comparer le Deplacement et minX,maxX... aux limites de la table.
 
 	// LOGIQUE DE DÉPLACEMENT
-	if (// Respecter les dimensions de la table.  À CHANGER POUR UTILISER LA MÉTHODE estDansTable(point)
-		108 < VisLimSel.getXMin() + deplacement.x && deplacement.x + VisLimSel.getXMax() < 272
-		&& -190 < VisLimSel.getYMin() + deplacement.y && deplacement.y + VisLimSel.getYMax() < 96
-		)
+	glm::dvec3 pointMax{ VisLimSel.getXMax(), VisLimSel.getYMax(), 0 };
+	glm::dvec3 pointMin{ VisLimSel.getXMin(), VisLimSel.getYMin(), 0 };
+	if (estDansTable(pointMax + deplacement) && estDansTable(pointMin + deplacement))
 	{
 		VisiteurDeplacement visDep(deplacement);
 		arbre_->accepterVisiteur(&visDep);
