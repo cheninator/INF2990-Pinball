@@ -323,9 +323,12 @@ void FacadeModele::animer(float temps)
 
 ////////////////////////////////////////////////////////////////////////
 ///
-/// @fn NoeudAbstrait* FacadeModele::trouverObjetSousPointClique(int i, int j)
+/// @fn int FacadeModele::selectionnerObjetSousPointClique(int i, int j, int hauteur, int largeur, bool ctrlDown)
 ///
-/// Cette fonction permet de selectionner un objet
+/// Cette fonction permet de selectionner un objet. La méthode regarde la valeur
+/// du stencil et la donne à un visiteurSelection qui compare cette valeur
+/// aux numéros des noeuds et change les met sélectionnés ou pas selon le résultat
+/// de la comparaison et selon qu'on a cliqué avec CTRL.
 ///
 /// @param[in] i : Position souris i
 /// @param[in] j : Position souris j
@@ -337,32 +340,32 @@ int FacadeModele::selectionnerObjetSousPointClique(int i, int j, int hauteur, in
 {
 	glm::dvec3 pointDansLeMonde;
 	vue_->convertirClotureAVirtuelle(i, j, pointDansLeMonde);
-	std::cout << "Position du click dans l'ecran : (" << i << ", " << j << ")" << std::endl;
-	std::cout << "Position du click dans le monde : (" << pointDansLeMonde.x << ", " << pointDansLeMonde.y << ", 0)" << std::endl;
+	// std::cout << "Position du click dans l'ecran : (" << i << ", " << j << ")" << std::endl;
+	// std::cout << "Position du click dans le monde : (" << pointDansLeMonde.x << ", " << pointDansLeMonde.y << ", 0)" << std::endl;
 
 	int valeurStencil = 0;
 	glReadPixels(i ,hauteur -j , 1, 1, GL_STENCIL_INDEX, GL_UNSIGNED_INT, &valeurStencil);
 
-	std::cout << "Valeur du stencil:" << valeurStencil << std::endl;
+	// std::cout << "Valeur du stencil:" << valeurStencil << std::endl;
 
 	
 	if (!ctrlDown)
 	{
-		std::cout << "FacadeModele::selectionnerObjetSousPointClique( ) avec ctrlDown = FALSE" << std::endl;
+		// std::cout << "FacadeModele::selectionnerObjetSousPointClique( ) avec ctrlDown = FALSE" << std::endl;
 		VisiteurSelection visSel(pointDansLeMonde, valeurStencil);
 		arbre_->accepterVisiteur(&visSel);
 		// Demander au visiteur ce qu'il a trouvé et faire quelque chose en conséquence
-		std::cout << "Nombre d'objets selectionnes: " << visSel.obtenirNbObjetsSelectionne() << std::endl;
+		// std::cout << "Nombre d'objets selectionnes: " << visSel.obtenirNbObjetsSelectionne() << std::endl;
 
 		return visSel.obtenirNbObjetsSelectionne();
 	}
 	else
 	{
-		std::cout << "FacadeModele::selectionnerObjetSousPointClique() avec ctrlDown = TRUE" << std::endl;
+		// std::cout << "FacadeModele::selectionnerObjetSousPointClique() avec ctrlDown = TRUE" << std::endl;
 		VisiteurSelectionInverse visSelInverse(pointDansLeMonde, valeurStencil);
 		arbre_->accepterVisiteur(&visSelInverse);
 		// Demander au visiteur ce qu'il a trouvé et faire quelque chose en conséquence
-		std::cout << "Nombre d'objets selectionnes: " << visSelInverse.obtenirNbObjetsSelectionne() << std::endl;
+		// std::cout << "Nombre d'objets selectionnes: " << visSelInverse.obtenirNbObjetsSelectionne() << std::endl;
 
 		return visSelInverse.obtenirNbObjetsSelectionne();
 	}
@@ -389,11 +392,7 @@ int FacadeModele::selectionnerObjetSousPointClique(int i, int j, int hauteur, in
 ///////////////////////////////////////////////////////////////////////////////
 void FacadeModele::deplacerSelection(int x1, int y1 ,int x2, int y2)
 {
-
-
 	glm::dvec3 positionInitiale, positionFinale;
-
-	// Calcul des coordonnées dans le monde pour pas avoir besoin du facteur mistérieux !
 	FacadeModele::obtenirInstance()->obtenirVue()->convertirClotureAVirtuelle(x1, y1, positionInitiale);
 	FacadeModele::obtenirInstance()->obtenirVue()->convertirClotureAVirtuelle(x2, y2, positionFinale);
 
@@ -407,7 +406,7 @@ void FacadeModele::deplacerSelection(int x1, int y1 ,int x2, int y2)
 	// Comparer le Deplacement et minX,maxX... aux limites de la table.
 
 	// LOGIQUE DE DÉPLACEMENT
-	if (// Respecter les dimensions de la table.
+	if (// Respecter les dimensions de la table.  À CHANGER POUR UTILISER LA MÉTHODE estDansTable(point)
 		108 < VisLimSel.getXMin() + deplacement.x && deplacement.x + VisLimSel.getXMax() < 272
 		&& -190 < VisLimSel.getYMin() + deplacement.y && deplacement.y + VisLimSel.getYMax() < 96
 		)
@@ -415,11 +414,6 @@ void FacadeModele::deplacerSelection(int x1, int y1 ,int x2, int y2)
 		VisiteurDeplacement visDep(deplacement);
 		arbre_->accepterVisiteur(&visDep);
 	}
-
-
-	
-
-	
 }
 
 
@@ -534,7 +528,13 @@ void FacadeModele::agrandirSelection(int x1, int y1, int x2, int y2)
 
 }
 
-
+///////////////////////////////////////////////////////////////////////////////
+///
+/// @fn void FacadeModele::initialiserRectangleElastique(int i, int j) A COMMENTER KIM
+///
+/// @return Aucune.
+///
+///////////////////////////////////////////////////////////////////////////////
 void FacadeModele::initialiserRectangleElastique(int i, int j)
 {
 	pointInitial_.x = i;
@@ -544,6 +544,13 @@ void FacadeModele::initialiserRectangleElastique(int i, int j)
 	aidegl::initialiserRectangleElastique(pointAvant_, 0x3333, 5);
 }
 
+///////////////////////////////////////////////////////////////////////////////
+///
+/// @fn void FacadeModele::rectangleElastique(int i, int j) A COMMENTER KIM
+///
+/// @return Aucune.
+///
+///////////////////////////////////////////////////////////////////////////////
 void FacadeModele::rectangleElastique(int i, int j)
 {
 	glm::ivec2 pointApres(i, j);
@@ -552,6 +559,14 @@ void FacadeModele::rectangleElastique(int i, int j)
 	pointAvant_.y = pointApres.y;
 }
 
+
+///////////////////////////////////////////////////////////////////////////////
+///
+/// @fn void FacadeModele::terminerRectangleElastique() A COMMENTER KIM
+///
+/// @return Aucune.
+///
+///////////////////////////////////////////////////////////////////////////////
 void FacadeModele::terminerRectangleElastique()
 {
 	aidegl::terminerRectangleElastique(pointInitial_, pointAvant_);
@@ -586,7 +601,13 @@ void FacadeModele::terminerRectangleElastique()
 	}
 }
 
-
+///////////////////////////////////////////////////////////////////////////////
+///
+/// @fn void FacadeModele::selectionMultiple(bool c) A COMMENTER KIM
+///
+/// @return Aucune.
+///
+///////////////////////////////////////////////////////////////////////////////
 int FacadeModele::selectionMultiple(bool c)
 {
 	if (c)
@@ -607,7 +628,7 @@ int FacadeModele::selectionMultiple(bool c)
 
 ///////////////////////////////////////////////////////////////////////////////
 ///
-/// @fn void verifierCliqueDansTable(int x, int y)
+/// @fn bool verifierCliqueDansTable(int x, int y)
 ///		Vérifie si le point du monde correspondant à (x,y) est dans la table de
 ///		façon empirique ou heuristique.
 ///
@@ -630,10 +651,30 @@ bool FacadeModele::verifierCliqueDansTable(int x, int y)
 		return false;
 }
 
+///////////////////////////////////////////////////////////////////////////////
+///
+/// @fn bool FacadeModele::estDansTable(glm::dvec3 pointDuMonde)
+///		Vérifie si le point du monde est dans la table
+///
+/// @param[in]  pointDuMonde : Point dont on veut vérifier qu'il est dans la table
+///
+/// @return Aucune.
+///
+///////////////////////////////////////////////////////////////////////////////
+bool FacadeModele::estDansTable(glm::dvec3 pointDuMonde)
+{
+	if (coinGaucheTableX < pointDuMonde.x && pointDuMonde.x < coinDroitTableX
+		&& coinGaucheTableY < pointDuMonde.y && pointDuMonde.y < coinDroitTableY)
+		return true;
+	else
+		return false;
+}
+
+
 
 ///////////////////////////////////////////////////////////////////////////////
 ///
-/// @fn void dupliquer()
+/// @fn void dupliquerSelection(int i, int j)
 ///		Duplique les objets selectionnés
 ///
 /// @return Aucune.
@@ -705,29 +746,23 @@ int FacadeModele::creerXML(char* path, int prop[6])
 	return sauvegardeAutorise;
 }
 
-
-
-
-
-
-
-bool FacadeModele::estDansTable(glm::dvec3 pointDuMonde)
-{
-	if (108 < pointDuMonde.x && pointDuMonde.x < 272
-		&& -190 < pointDuMonde.y && pointDuMonde.y < 96)
-		return true;
-	else 
-		return false;
-}
-
-
-
-
-
-////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-// Les points (x1,y1) et (x2,y2) ont passé par PanelGL.PointToClient (voir l'appel de cette fonction dans le C#).
-////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-// Pour les deux opérations, tu utilises les mêmes vecteurFinal et vecteurInitial, donc ça pourrais être quelque chose comme
+///////////////////////////////////////////////////////////////////////////////
+///
+/// @fn void FacadeModele::positionnerMur(int originX, int originY,int x1, int y1, int x2, int y2, NoeudAbstrait* noeud)
+///		Positionne un mur pour qu'il soit une ligne entre où on a appuyé le bouton de gauche de la 
+///		souris et la position actuelle de la souris.
+///		La méthode vérifie aussi la boite englobante du mur pour ne pas qu'il dépasse de la table.
+///	
+/// @param[in]  originX : Position en X où le bouton a été appuyé
+/// @param[in]  originX : Position en Y où le bouton a été appuyé
+/// @param[in]  x1 : Position en X précédant un déplacement de la souris
+/// @param[in]  Y1 : Position en Y précédant un déplacement de la souris
+/// @param[in]  x2 : Position en X après un déplacement de la souris (position actuelle de la souris)
+/// @param[in]  y2 : Position en X après un déplacement de la souris (position actuelle de la souris)
+///
+/// @return Aucune.
+///
+///////////////////////////////////////////////////////////////////////////////
 void FacadeModele::positionnerMur(int originX, int originY,int x1, int y1, int x2, int y2, NoeudAbstrait* noeud)
 {
 	glm::dvec3 positionOriginale,positionInitiale, positionFinale;
@@ -766,7 +801,7 @@ void FacadeModele::positionnerMur(int originX, int originY,int x1, int y1, int x
 
 		// Calcul du scale
 		// ===============
-		double scale = glm::length(vecteur) / 16; // 16.0; // 16.0 est la longueur originale du mur.
+		double scale = glm::length(vecteur) / 16; //  16.0 est la longueur originale du mur. 
 		scaleFinal = glm::dvec3{ 1,  scale, 1 };
 	}
 
@@ -798,7 +833,14 @@ void FacadeModele::positionnerMur(int originX, int originY,int x1, int y1, int x
 
 }
 
-
+///////////////////////////////////////////////////////////////////////////////
+///
+/// @fn bool FacadeModele::supprimer()
+///  Parcours l'arbre et supprime les objets sélectionnés.
+/// 
+/// @return La valeur du zoom courant
+///
+///////////////////////////////////////////////////////////////////////////////
 bool FacadeModele::supprimer()
 {
 	VisiteurSuppression* visiteur = new VisiteurSuppression();
@@ -827,7 +869,16 @@ double FacadeModele::obtenirZoomCourant()
 	return zoom;
 }
 
-
+///////////////////////////////////////////////////////////////////////////////
+///
+/// @fn int FacadeModele::obtenirCentreMasseX()
+///  Obtient le x du centre de masse des objets sélectionnés
+/// 
+/// @return Le x du centre de masse
+///
+/// @remard Perte de précision lors de la convertion du centre de masse (double) en int.
+///
+///////////////////////////////////////////////////////////////////////////////
 int FacadeModele::obtenirCentreMasseX(){
 	int centreMasseX = 0;
 	VisiteurCentreDeMasse* visiteur = new VisiteurCentreDeMasse();
@@ -836,7 +887,16 @@ int FacadeModele::obtenirCentreMasseX(){
 	return centreMasseX;
 }
 
-
+///////////////////////////////////////////////////////////////////////////////
+///
+/// @fn int FacadeModele::obtenirCentreMasseY()
+///  Obtient le y du centre de masse des objets sélectionnés
+/// 
+/// @return Le y du centre de masse
+///
+/// @remard Perte de précision lors de la convertion du centre de masse (double) en int.
+///
+///////////////////////////////////////////////////////////////////////////////
 int FacadeModele::obtenirCentreMasseY(){
 	int centreMasseY = 0;
 	VisiteurCentreDeMasse* visiteur = new VisiteurCentreDeMasse();
@@ -845,6 +905,14 @@ int FacadeModele::obtenirCentreMasseY(){
 	return centreMasseY;
 }
 
+///////////////////////////////////////////////////////////////////////////////
+///
+/// @fn bool FacadeModele::appliquerZoomInitial()
+///  A COMMENTER
+/// 
+/// @return Le y du centre de masse
+///
+///////////////////////////////////////////////////////////////////////////////
 bool FacadeModele::appliquerZoomInitial()
 {
 	bool applique = false;
