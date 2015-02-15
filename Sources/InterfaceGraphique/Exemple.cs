@@ -102,7 +102,7 @@ namespace InterfaceGraphique
         ////////////////////////////////////////////////////////////////////////
         private void ReinitialiserTout()
         {
-            currentZoom = -1;
+            
             Program.peutAfficher = true;
             panel_GL.Select();
             etat = new EtatNone(this);
@@ -120,10 +120,8 @@ namespace InterfaceGraphique
             else
                 playSound("", false);
             playSound("music");
-            bool applique = FonctionsNatives.resetZoom();
-            if (applique)
-                currentZoom = FonctionsNatives.obtenirZoomCourant();
-            curZoomVal.Text = currentZoom.ToString();
+            FonctionsNatives.resetZoom();
+            currentZoom = -1;
         }
 
         ////////////////////////////////////////////////////////////////////////
@@ -177,7 +175,7 @@ namespace InterfaceGraphique
                         FonctionsNatives.dessinerOpenGL();
                     }
 
-                    if (currentZoom != -1)
+                    if (currentZoom < 0)
                     {
                         currentZoom = FonctionsNatives.obtenirZoomCourant();
                         curZoomVal.Text = (Math.Round(currentZoom*100)/100).ToString();
@@ -213,12 +211,14 @@ namespace InterfaceGraphique
                 {
                     FonctionsNatives.zoomOut();
                     currentZoom = FonctionsNatives.obtenirZoomCourant();
+                    curZoomVal.Text = (Math.Round(currentZoom * 100) / 100).ToString();
                 }
                 if ((e.KeyData == Keys.Add ||
                     e.KeyCode == Keys.Oemplus && e.Modifiers == Keys.Shift))
                 {
                     FonctionsNatives.zoomIn();
                     currentZoom = FonctionsNatives.obtenirZoomCourant();
+                    curZoomVal.Text = (Math.Round(currentZoom * 100) / 100).ToString();
                 }
                 if (e.KeyData == Keys.Alt)
                     altDown = true;
@@ -1990,6 +1990,7 @@ namespace InterfaceGraphique
             else if (e.Delta < 0)
                 FonctionsNatives.zoomOut();
             currentZoom = FonctionsNatives.obtenirZoomCourant();
+            curZoomVal.Text = (Math.Round(currentZoom * 100) / 100).ToString();
         }
 
         ////////////////////////////////////////////////////////////////////////
@@ -2106,6 +2107,7 @@ namespace InterfaceGraphique
             else if (altDown)
                 FonctionsNatives.zoomOutElastique(origin.X, origin.Y, destination.X, destination.Y);
             currentZoom = FonctionsNatives.obtenirZoomCourant();
+            curZoomVal.Text = (Math.Round(currentZoom * 100) / 100).ToString();
         }
 
         ////////////////////////////////////////////////////////////////////////
@@ -2457,12 +2459,15 @@ namespace InterfaceGraphique
         {
             FonctionsNatives.zoomIn();
             currentZoom = FonctionsNatives.obtenirZoomCourant();
+            curZoomVal.Text = (Math.Round(currentZoom * 100) / 100).ToString();
+
         }
 
         private void DecreaseZoomButton_Click(object sender, EventArgs e)
         {
             FonctionsNatives.zoomOut();
             currentZoom = FonctionsNatives.obtenirZoomCourant();
+            curZoomVal.Text = (Math.Round(currentZoom * 100) / 100).ToString();
         }
 
         public void TeleportCursor(int x, int y)
