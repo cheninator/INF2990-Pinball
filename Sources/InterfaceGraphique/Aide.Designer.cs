@@ -46,8 +46,9 @@ namespace InterfaceGraphique
             this.tabPage2 = new System.Windows.Forms.TabPage();
             this.label2 = new System.Windows.Forms.Label();
             this.tabPage3 = new System.Windows.Forms.TabPage();
-            this.label3 = new System.Windows.Forms.Label();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.label3 = new System.Windows.Forms.Label();
+            this.tabPage4 = new System.Windows.Forms.TabPage();
             this.panel1.SuspendLayout();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
@@ -72,6 +73,7 @@ namespace InterfaceGraphique
             this.tabControl1.Controls.Add(this.tabPage1);
             this.tabControl1.Controls.Add(this.tabPage2);
             this.tabControl1.Controls.Add(this.tabPage3);
+            this.tabControl1.Controls.Add(this.tabPage4);
             this.tabControl1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tabControl1.Location = new System.Drawing.Point(0, 0);
             this.tabControl1.Name = "tabControl1";
@@ -132,6 +134,17 @@ namespace InterfaceGraphique
             this.tabPage3.Text = "Génériques";
             this.tabPage3.UseVisualStyleBackColor = true;
             // 
+            // pictureBox1
+            // 
+            this.pictureBox1.BackgroundImage = global::InterfaceGraphique.Properties.Resources.tablePhoto;
+            this.pictureBox1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.pictureBox1.Dock = System.Windows.Forms.DockStyle.Right;
+            this.pictureBox1.Location = new System.Drawing.Point(224, 0);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(324, 299);
+            this.pictureBox1.TabIndex = 1;
+            this.pictureBox1.TabStop = false;
+            // 
             // label3
             // 
             this.label3.AutoSize = true;
@@ -144,16 +157,16 @@ namespace InterfaceGraphique
             this.label3.Text = "Programmeurs:\r\n\r\nPhilippe Carphin\r\nYonni Chen\r\nAymen Djellal\r\nSamuel Millette\r\nKi" +
     "m Piché\r\nNikolay Radoev\r\nEmilio Rivera\r\n";
             // 
-            // pictureBox1
+            // tabPage4
             // 
-            this.pictureBox1.BackgroundImage = global::InterfaceGraphique.Properties.Resources.tablePhoto;
-            this.pictureBox1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.pictureBox1.Dock = System.Windows.Forms.DockStyle.Right;
-            this.pictureBox1.Location = new System.Drawing.Point(224, 0);
-            this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(324, 299);
-            this.pictureBox1.TabIndex = 1;
-            this.pictureBox1.TabStop = false;
+            this.tabPage4.BackgroundImage = global::InterfaceGraphique.Properties.Resources.SaintTrinity;
+            this.tabPage4.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.tabPage4.Location = new System.Drawing.Point(4, 22);
+            this.tabPage4.Name = "tabPage4";
+            this.tabPage4.Size = new System.Drawing.Size(548, 299);
+            this.tabPage4.TabIndex = 3;
+            this.tabPage4.Text = "Remerciements";
+            this.tabPage4.UseVisualStyleBackColor = true;
             // 
             // Aide
             // 
@@ -188,6 +201,7 @@ namespace InterfaceGraphique
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.PictureBox pictureBox1;
+        private System.Windows.Forms.TabPage tabPage4;
 
 
 

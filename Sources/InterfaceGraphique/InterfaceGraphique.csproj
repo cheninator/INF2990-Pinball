@@ -206,6 +206,9 @@
   <ItemGroup>
     <None Include="Resources\tablePhoto.png" />
   </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\SaintTrinity.png" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>
     <PostBuildEvent>
