@@ -325,7 +325,7 @@ namespace InterfaceGraphique
                     }
                     else
                         fs.EnterFullScreenMode(this);
-                    FonctionsNatives.resetZoom();
+                   FonctionsNatives.resetZoom();
                     
                 }      
           
@@ -2559,7 +2559,7 @@ namespace InterfaceGraphique
         {
 
             targetForm.WindowState = FormWindowState.Normal;
-            targetForm.FormBorderStyle = FormBorderStyle.None;
+            //targetForm.FormBorderStyle = FormBorderStyle.None;
             targetForm.WindowState = FormWindowState.Maximized;
         }
 
