@@ -68,7 +68,7 @@ extern "C"
 	{
 		if (handle == nullptr)
 			return;
-		std::cout << std::endl << "Initialisatio de l'openGL en cours..." << std::endl;
+		std::cout << std::endl << "Initialisation de l'openGL en cours..." << std::endl;
 		FacadeModele::obtenirInstance()->initialiserOpenGL((HWND)handle);
 	}
 
