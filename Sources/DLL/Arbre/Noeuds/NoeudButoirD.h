@@ -40,6 +40,10 @@ public:
 	/// Accepte un visiteur.
 	virtual bool accepterVisiteur(VisiteurAbstrait* vis);
 
+	/// Generer les boites englobantes de façon différente pour le butoir triangulaire
+	//Obtenir les 4 vecteurs de la boite englobante modifie
+	virtual void obtenirVecteursBoite(glm::dvec3 &v1, glm::dvec3 &v2, glm::dvec3 &v3, glm::dvec3 &v4);
+
 private:
 
 	/// Angle dans le sinus de l'oscillation

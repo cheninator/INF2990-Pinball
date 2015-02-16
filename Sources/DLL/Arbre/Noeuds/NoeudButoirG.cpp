@@ -127,3 +127,21 @@ bool NoeudButoirG::accepterVisiteur(VisiteurAbstrait* vis)
 
 	return reussi;
 }
+
+
+
+////////////////////////////////////////////////////////////////////////
+///
+/// @fn void NoeudButoirD::obtenirVecteursBoite(glm::dvec3 &v1, glm::dvec3 &v2, glm::dvec3 &v3, glm::dvec3 &v4)
+///
+/// Faire une boite speciale pour le NoeudButoirD.
+///
+/// @return reussi (TRUE)
+///
+////////////////////////////////////////////////////////////////////////
+void NoeudButoirG::obtenirVecteursBoite(glm::dvec3 &v1, glm::dvec3 &v2, glm::dvec3 &v3, glm::dvec3 &v4)
+{
+	NoeudAbstrait::obtenirVecteursBoite(v1, v2, v3, v4);
+	v3 = v4;
+}
+
