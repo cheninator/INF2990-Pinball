@@ -868,7 +868,11 @@ namespace InterfaceGraphique
                 }
             else
             {
-                FonctionsNatives.setProprietesNoeud(positionX, positionY, angle, echelle);
+                if( FonctionsNatives.setProprietesNoeud(positionX, positionY, angle, echelle) == false)
+                {
+                    MessageBox.Show("Les modifications sont invalides", "ERREUR DE PROPRIETES",
+               MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
             }
 
           
@@ -2831,6 +2835,7 @@ namespace InterfaceGraphique
         public static extern void creerMur(int originX,int originY,int x1, int y1, int x2, int y2);
 
         [DllImport(@"Noyau.dll", CallingConvention = CallingConvention.Cdecl)]
+        [return: MarshalAsAttribute(UnmanagedType.I1)]
         public static extern bool setProprietesNoeud(int x, int y, int angle, double scale);
         
         [DllImport(@"Noyau.dll", CallingConvention = CallingConvention.Cdecl)]
