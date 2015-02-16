@@ -136,6 +136,7 @@ namespace vue {
 		position_[0] = dist * cos(rotationX) * sin(rotationY);
 		position_[1] = dist * sin(rotationX) * sin(rotationY);
 		position_[1] = dist * cos(rotationY);
+		/*
 		std::cout << std::endl << "position_[0] : " << position_[0];
 		std::cout << std::endl << "position_[1] : " << position_[1];
 		std::cout << std::endl << "position_[2] : " << position_[2];
@@ -151,6 +152,7 @@ namespace vue {
 		std::cout << std::endl;
 		std::cout << std::endl;
 		std::cout << std::endl;
+		*/
 	}
 
 

@@ -78,7 +78,7 @@ namespace InterfaceGraphique
                 if( (n <= 0) || (n > 1000))
                 {
                     isValid = false;
-                    errorMessage +="\nLa valeur de butoir circulaire est hors la limite ";
+                    errorMessage +="\nLa valeur de butoir circulaire est hors de la limite ";
                 }
                     
             }
@@ -214,7 +214,7 @@ namespace InterfaceGraphique
             }
             else
             {
-                MessageBox.Show(errorMessage, "messsage d'erreur",
+                MessageBox.Show(errorMessage, "Messsage d'erreur",
                 MessageBoxButtons.OK, MessageBoxIcon.Error);
                 errorMessage = "";
             }

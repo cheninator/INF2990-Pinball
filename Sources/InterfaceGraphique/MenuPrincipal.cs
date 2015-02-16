@@ -100,8 +100,7 @@ namespace InterfaceGraphique
         {
             while (myThread.IsAlive)
             {
-                Thread.Sleep(1500);
-                Console.WriteLine("Loading...");
+                Thread.Sleep(100);
             }
             this.Hide();
             modeEdit = new Exemple();

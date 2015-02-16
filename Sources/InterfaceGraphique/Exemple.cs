@@ -729,7 +729,7 @@ namespace InterfaceGraphique
         ////////////////////////////////////////////////////////////////////////
         private void panel_GL_MouseClick(object sender, MouseEventArgs e)
         {
-            Console.Write(panel_GL.PointToClient(MousePosition));
+            //Console.Write(panel_GL.PointToClient(MousePosition));
             panel_GL.Focus();
         }
 

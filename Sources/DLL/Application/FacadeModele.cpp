@@ -190,9 +190,10 @@ void FacadeModele::initialiserOpenGL(HWND hWnd)
 	// Création de l'arbre de rendu.  À moins d'être complètement certain
 	// d'avoir une bonne raison de faire autrement, il est plus sage de créer
 	// l'arbre après avoir créé le contexte OpenGL.
+	std::cout << "Creation de l'arbre de rendu..." << std::endl;
 	arbre_ = new ArbreRenduINF2990;
+	std::cout << "Initialisation de l'arbre de rendu..." << std::endl;
 	arbre_->initialiser();
-
 	// On crée une vue par défaut.
 	vue_ = new vue::VueOrtho{
 		vue::Camera{ 
@@ -204,7 +205,7 @@ void FacadeModele::initialiserOpenGL(HWND hWnd)
 				double(coinGaucheTableX), double(coinGaucheTableY),
 				double(coinDroitTableX), double(coinDroitTableY)}
 	};
-
+	std::cout << "Arbre de rendu generer !" << std::endl << std::endl << std::endl;
 }
 
 

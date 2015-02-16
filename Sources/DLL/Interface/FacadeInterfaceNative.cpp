@@ -68,7 +68,7 @@ extern "C"
 	{
 		if (handle == nullptr)
 			return;
-
+		std::cout << std::endl << "Initialisatio de l'openGL en cours..." << std::endl;
 		FacadeModele::obtenirInstance()->initialiserOpenGL((HWND)handle);
 	}
 
@@ -994,9 +994,9 @@ extern "C"
 		static bool init = false;
 		static std::vector< std::pair<std::string, FMOD_SOUND *> > soundTable;
 		std::string playing(value) ;
-
 		if (init == false)
 		{
+			std::cout << "Chargement du son : " << std::endl;
 			FMOD_System_Create(&system);
 			FMOD_System_Init(system, 1024, FMOD_INIT_NORMAL, NULL);
 			init = true;
@@ -1005,21 +1005,24 @@ extern "C"
 			// Au debut, je voulais les initialiser au fur et a mesure des call
 			// Mais ils prennent 3-4 sec a etre cree, a chaque fois, faik tu avais
 			//  d'énorme delay c'etais chiant...
+			std::cout << "  0,00%... ambiant.wav" << std::endl; 
 			std::pair<std::string, FMOD_SOUND *> apair0("media/SFX/ambiant.wav", NULL);
 			soundTable.push_back(apair0);
 			FMOD_System_CreateSound(system, "media/SFX/ambiant.wav", FMOD_CREATESAMPLE, 0, &soundTable.back().second);
-
+			std::cout << " 25,00%... music.wav" << std::endl;
 			std::pair<std::string, FMOD_SOUND *> apair1("media/SFX/music.wav", NULL);
 			soundTable.push_back(apair1);
 			FMOD_System_CreateSound(system, "media/SFX/music.wav", FMOD_LOOP_NORMAL, 0, &soundTable.back().second);
-
+			std::cout << " 50,00%... no.wav" << std::endl;
 			std::pair<std::string, FMOD_SOUND *> apair2("media/SFX/no.wav", NULL);
 			soundTable.push_back(apair2);
 			FMOD_System_CreateSound(system, "media/SFX/no.wav", FMOD_CREATESAMPLE, 0, &soundTable.back().second);
-
+			std::cout << " 75,00%... sound.wav" << std::endl;
 			std::pair<std::string, FMOD_SOUND *> apair3("media/SFX/stone.wav", NULL);
 			soundTable.push_back(apair3);
 			FMOD_System_CreateSound(system, "media/SFX/stone.wav", FMOD_CREATESAMPLE, 0, &soundTable.back().second);
+			std::cout << " 100%... tout les sons sont initialise" << std::endl;
+			std::cout << "Fin du chargement du son !" << std::endl << std::endl;
 		}
 
 

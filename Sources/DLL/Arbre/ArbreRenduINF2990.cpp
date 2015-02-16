@@ -58,21 +58,37 @@ const std::string ArbreRenduINF2990::NOM_TABLE{ "table" };
 ArbreRenduINF2990::ArbreRenduINF2990()
 {
 	// Construction des usines
+	std::cout << "  0,00%... ajout de l'usine Boutoire Droit" << std::endl;
 	ajouterUsine(NOM_BUTOIRD, new UsineNoeudButoirD{ NOM_BUTOIRD });
+	std::cout << "  6,66%... ajout de l'usine Boutoire Gauche" << std::endl;
 	ajouterUsine(NOM_BUTOIRG, new UsineNoeudButoirG{ NOM_BUTOIRG });
+	std::cout << " 13.33%... ajout de l'usine Boutoire Circulaire" << std::endl;
 	ajouterUsine(NOM_BUTOIRCIRCULAIRE, new UsineNoeudButoirCirculaire{ NOM_BUTOIRCIRCULAIRE });
+	std::cout << " 20,00%... ajout de l'usine Cible" << std::endl;
 	ajouterUsine(NOM_CIBLE, new UsineNoeudCible{ NOM_CIBLE });
+	std::cout << " 26,66%... ajout de l'usine Bille" << std::endl;
 	ajouterUsine(NOM_BILLE, new UsineNoeudBille{ NOM_BILLE });
+	std::cout << " 33,33%... ajout de l'usine Generateur Bille" << std::endl;
 	ajouterUsine(NOM_GENERATEURBILLE, new UsineNoeudGenerateurBille{ NOM_GENERATEURBILLE });
+	std::cout << " 40,00%... ajout de l'usine Mur" << std::endl;
 	ajouterUsine(NOM_MUR, new UsineNoeudMur{ NOM_MUR });
+	std::cout << " 46,66%... ajout de l'usine Palette Droite" << std::endl;
 	ajouterUsine(NOM_PALETTED, new UsineNoeudPaletteD{ NOM_PALETTED });
+	std::cout << " 53,33%... ajout de l'usine Palette Gauche" << std::endl;
 	ajouterUsine(NOM_PALETTEG, new UsineNoeudPaletteG{ NOM_PALETTEG });
+	std::cout << " 60,00%... ajout de l'usine Portail" << std::endl;
 	ajouterUsine(NOM_PORTAIL, new UsineNoeudPortail{ NOM_PORTAIL });
+	std::cout << " 66,66%... ajout de l'usine Ressort" << std::endl;
 	ajouterUsine(NOM_RESSORT, new UsineNoeudRessort{ NOM_RESSORT });
+	std::cout << " 73,33%... ajout de l'usine Trou" << std::endl;
 	ajouterUsine(NOM_TROU, new UsineNoeudTrou{ NOM_TROU });
+	std::cout << " 80,00%... ajout de l'usine Tampon" << std::endl;
 	ajouterUsine(NOM_VIDE, new UsineNoeudVide{ NOM_VIDE });
+	std::cout << " 86,66%... ajout de l'usine Couvercle" << std::endl;
 	ajouterUsine(NOM_COUVERCLE, new UsineNoeudCouvercle{ NOM_COUVERCLE });
+	std::cout << " 93,33%... ajout de l'usine Table" << std::endl;
 	ajouterUsine(NOM_TABLE, new UsineNoeudTable{ NOM_TABLE });
+	std::cout << " 100%... toute les usines sont genere" << std::endl;
 }
 
 
