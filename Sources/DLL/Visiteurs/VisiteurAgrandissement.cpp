@@ -144,13 +144,13 @@ bool VisiteurAgrandissement::traiter(NoeudAbstrait* noeud)
 
 		for (int i = 1; i < 4; i++) // Trouver le point le plus haut de la boite englobante.  
 		{
-			if (zTop < boite[i].z)
+			if (zTop > boite[i].z)
 				zTop = boite[i].z;
 		}
 
 		double distancePositionTop = zTop;
 		double correctionZ = (1 - homothetie_[0]) * distancePositionTop; // Homothetie[0] est de l'ordre de 1.003, donc (1-homothetie[0]) est petie, donc la correction en z est petite.
-		position += glm::dvec3{ 0, 0, correctionZ };
+		position += glm::dvec3{ 0, 0, -correctionZ };
 		noeud->assignerEchelle(scaleFinal);
 		noeud->assignerPositionRelative(position);
 		
