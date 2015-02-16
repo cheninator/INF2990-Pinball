@@ -1977,7 +1977,14 @@ namespace InterfaceGraphique
             // besoin de ce facteur misterieux.  Et aussi, cette technique devrait bien marcher 
             // quand on sera rendu avec la vue orbite.
             if (etat is EtatDuplication)
+            {
                 FonctionsNatives.deplacerSelection(previousP.X, previousP.Y, currentP.X, currentP.Y, true);
+                if (!FonctionsNatives.verifierCliqueDansTable(currentP.X, currentP.Y))
+                    Cursor = Cursors.No;
+                else
+                    Cursor = Cursors.Arrow;
+            }
+
             else
                 FonctionsNatives.deplacerSelection(previousP.X, previousP.Y, currentP.X, currentP.Y, false);
             //Xbox.Text = currentP.X.ToString();
