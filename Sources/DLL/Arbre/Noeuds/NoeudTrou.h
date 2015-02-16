@@ -26,6 +26,7 @@ class NoeudTrou : public NoeudComposite
 public:
 	/// Constructeur
 	NoeudTrou(const std::string& typeNoeud);
+
 	/// Destructeur 
 	~NoeudTrou();
 
@@ -39,11 +40,13 @@ public:
 	virtual bool accepterVisiteur(VisiteurAbstrait* vis);
 
 private:
-	// TODO(Emilio): Insérer les attributs propres à chaque type d'objet
+
 	/// Angle selon l'axe des X.
 	float angleX_{ 0.f };
+
 	/// Angle selon l'axe des Y.
 	float angleY_{ 0.f };
+
 	/// Angle de rotation.
 	float angleRotation_{ 0.f };
 };
