@@ -49,7 +49,6 @@ namespace InterfaceGraphique
         private float angleX = 0F; ///< Position en X
         private float angleY = 0F; ///< Position en Y
         private float angleZ = 0F; ///< Position en Z
-        private float scale = 1F; ///< Mise a echelle
         private double currentZoom = -1; ///< Zoom courant
         private int nbSelection;
         private bool colorShift = false;
@@ -822,7 +821,6 @@ namespace InterfaceGraphique
             int positionY;
             int angle;
             double echelle;
-            string text;
             DataTable dt = new DataTable();
 
             if (Xbox.Text == "")

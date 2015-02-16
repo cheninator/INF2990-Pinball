@@ -25,7 +25,6 @@
 
 // Enregistrement de la suite de tests au sein du registre
 CPPUNIT_TEST_SUITE_REGISTRATION(ArbreRenduINF2990Test);
-
 using conteneur_boite_englobante = std::pair<std::vector<glm::dvec3>, NoeudAbstrait*>;
 
 ////////////////////////////////////////////////////////////////////////
@@ -120,7 +119,7 @@ void ArbreRenduINF2990Test::testArbreDefaut()
 void ArbreRenduINF2990Test::testXmlInexistant()
 {
 	// On ouvre un fichier inexistant
-	bool test = arbre->initialiserXML("zones/?.xml");
+	bool test = arbre->initialiserXML("zones/.xml");
 	CPPUNIT_ASSERT(!test);
 
 	// On ouvre un fichier qui existe

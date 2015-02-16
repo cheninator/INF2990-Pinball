@@ -186,7 +186,7 @@ bool ArbreRenduINF2990::initialiserXML(std::string nomFichier)
 	tinyxml2::XMLDocument document;
 
 	// Si le fichier n'existe pas, envoyer une erreur
-	if (!utilitaire::fichierExiste(nomFichier) && nomFichier != "?.xml")
+	if (!utilitaire::fichierExiste(nomFichier) && nomFichier != ".xml")
 		std::cout << "Le fichier n'existe pas. " << std::endl;
 		
 	else
