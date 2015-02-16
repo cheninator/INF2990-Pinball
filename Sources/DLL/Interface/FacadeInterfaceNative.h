@@ -65,7 +65,7 @@ extern "C" {
 	__declspec(dllexport) int obtenirCentreMasseX(void);
 	__declspec(dllexport) int obtenirCentreMasseY(void);
 	__declspec(dllexport) bool resetZoom(void);
-	__declspec(dllexport) bool sourisEstSurCentreMasse(int i, int j);
+	__declspec(dllexport) bool duplicationEstHorsTable();
 }
 
 #endif // __FACADE_INTERFACE_NATIVE_H__

@@ -1829,7 +1829,7 @@ namespace InterfaceGraphique
 
             if (etat is EtatDuplication && e.Button == MouseButtons.Left)
             {
-                if (!FonctionsNatives.sourisEstSurCentreMasse(currentP.X, currentP.Y))
+                if (FonctionsNatives.duplicationEstHorsTable())
                     FonctionsNatives.removeObject();
 
                 deselection();
@@ -2727,6 +2727,6 @@ namespace InterfaceGraphique
         public static extern bool resetZoom();
 
         [DllImport(@"Noyau.dll", CallingConvention = CallingConvention.Cdecl)]
-        public static extern bool sourisEstSurCentreMasse(int i, int j);
+        public static extern bool duplicationEstHorsTable();
     }
 }
