@@ -1040,6 +1040,7 @@ namespace InterfaceGraphique
             this.richTextBox1.ReadOnly = true;
             this.richTextBox1.Size = new System.Drawing.Size(151, 109);
             this.richTextBox1.TabIndex = 11;
+            this.richTextBox1.TabStop = false;
             this.richTextBox1.Text = resources.GetString("richTextBox1.Text");
             // 
             // Exemple
