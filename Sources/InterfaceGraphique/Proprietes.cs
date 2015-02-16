@@ -78,7 +78,7 @@ namespace InterfaceGraphique
                 if( (n <= 0) || (n > 1000))
                 {
                     isValid = false;
-                    errorMessage +="\nLa valeur de butoir circulaire est hors de la limite ";
+                    errorMessage +="\nLa valeur de butoir circulaire est hors de la limite( 0 a 1000) ";
                 }
                     
             }
@@ -92,7 +92,7 @@ namespace InterfaceGraphique
                 if ((n <= 0) || (n > 1000))
                 {
                     isValid = false;
-                    errorMessage += "\nLa valeur de butoir triangulaire est hors la limite ";
+                    errorMessage += "\nLa valeur de butoir triangulaire est hors la limite( 0 a 1000) ";
                 }
 
             }
@@ -106,7 +106,7 @@ namespace InterfaceGraphique
                 if ((n <= 0) || (n > 1000))
                 {
                     isValid = false;
-                    errorMessage += "\nLa valeur de la cible est hors la limite ";
+                    errorMessage += "\nLa valeur de la cible est hors la limite( 0 a 1000) ";
                 }
 
             }
@@ -120,7 +120,7 @@ namespace InterfaceGraphique
                 if ((n <= 0) || (n > 1000))
                 {
                     isValid = false;
-                    errorMessage += "\nLa valeur des points de victoire est hors la limite ";
+                    errorMessage += "\nLa valeur des points de victoire est hors la limite( 0 a 1000) ";
                 }
 
             }
@@ -134,7 +134,7 @@ namespace InterfaceGraphique
                 if ((n <= 0) || (n > 1000))
                 {
                     isValid = false;
-                    errorMessage += "\nLa valeur de points pour une balle gratuite est hors la limite ";
+                    errorMessage += "\nLa valeur de points pour une balle gratuite est hors la limite( 0 a 1000) ";
                 }
 
             }
@@ -148,7 +148,7 @@ namespace InterfaceGraphique
                 if ((n < 1) || (n > 10))
                 {
                     isValid = false;
-                    errorMessage += "\nLa valeur de difficulte est hors la limite ";
+                    errorMessage += "\nLa valeur de difficulte est hors la limite(1 a 10) ";
                 }
 
             }

@@ -273,6 +273,7 @@ namespace InterfaceGraphique
             {
                 ctrlDown = false;
             }
+
         }
 
         ////////////////////////////////////////////////////////////////////////
@@ -2103,7 +2104,14 @@ namespace InterfaceGraphique
             }
         }
 
-
+        ////////////////////////////////////////////////////////////////////////
+        ///
+        /// @fn public void zoomElastique()
+        /// @brief Selection multiple avec un rectangle elastique.
+        /// 
+        /// @return Aucune.
+        ///
+        ////////////////////////////////////////////////////////////////////////
         public void zoomElastique()
         {
             Point destination = panel_GL.PointToClient(MousePosition);
@@ -2479,7 +2487,7 @@ namespace InterfaceGraphique
         //////////////////////////////////////////////////////////////////////////////////////////
         ///
         /// @fn private void IncreaseZoomButton_Click(object sender, EventArgs e)
-        /// @brief Fonction qui s'assure de la bonne creation des murs.
+        /// @brief Fonction qui incremente le Zoom.
         /// @param[in] sender : Objet duquel provient un evenement.
         /// @param[in] e : evenement qui lance la fonction.
         /// @return Aucune.
@@ -2494,6 +2502,15 @@ namespace InterfaceGraphique
 
         }
 
+        //////////////////////////////////////////////////////////////////////////////////////////
+        ///
+        /// @fn private void DecreaseZoomButton_Click(object sender, EventArgs e)
+        /// @brief Fonction qui decremente le Zoom.
+        /// @param[in] sender : Objet duquel provient un evenement.
+        /// @param[in] e : evenement qui lance la fonction.
+        /// @return Aucune.
+        ///
+        //////////////////////////////////////////////////////////////////////////////////////////
         private void DecreaseZoomButton_Click(object sender, EventArgs e)
         {
             FonctionsNatives.zoomOut();
@@ -2501,13 +2518,13 @@ namespace InterfaceGraphique
             curZoomVal.Text = (Math.Round(currentZoom * 100) / 100).ToString();
         }
 
-        public void TeleportCursor(int x, int y)
-        {
-            Cursor = new Cursor(panel_GL.Handle);
-            Cursor.Position = new Point(x,y);
-       
-        }
-
+        //////////////////////////////////////////////////////////////////////////////////////////
+        ///
+        /// @fn public void annulerModif()
+        /// @brief Fonction qui detruit un objet si on change d'etat pendant la modification
+        /// @return Aucune.
+        ///
+        //////////////////////////////////////////////////////////////////////////////////////////
         public void annulerModif()
         {
             if (etat is EtatPortail || etat is EtatMur || etat is EtatDuplication)
@@ -2517,6 +2534,15 @@ namespace InterfaceGraphique
             }
         }
 
+        //////////////////////////////////////////////////////////////////////////////////////////
+        ///
+        /// @fn private void Mute_MenuItem_Click(object sender, EventArgs e)
+        /// @brief Fonction qui ferme ou ouvre le son
+        /// @param[in] sender : Objet duquel provient un evenement.
+        /// @param[in] e : evenement qui lance la fonction.
+        /// @return Aucune.
+        ///
+        //////////////////////////////////////////////////////////////////////////////////////////
         private void Mute_MenuItem_Click(object sender, EventArgs e)
         {
             soundActif = !soundActif;
@@ -2526,16 +2552,42 @@ namespace InterfaceGraphique
                 playSound("", true);
         }
 
+        //////////////////////////////////////////////////////////////////////////////////////////
+        ///
+        /// @fn private void label_Zoom_Click(object sender, EventArgs e)
+        /// @brief Fonction qui selectionne le mode Zoom
+        /// @param[in] sender : Objet duquel provient un evenement.
+        /// @param[in] e : evenement qui lance la fonction.
+        /// @return Aucune.
+        ///
+        //////////////////////////////////////////////////////////////////////////////////////////
         private void label_Zoom_Click(object sender, EventArgs e)
         {
             Zoom_MenuItem_Click(this, e);
         }
 
+        //////////////////////////////////////////////////////////////////////////////////////////
+        ///
+        /// @fn private void label_Zoom_MouseEnter(object sender, EventArgs e)
+        /// @brief Fonction qui change la couleur du label quand on est pardessus
+        /// @param[in] sender : Objet duquel provient un evenement.
+        /// @param[in] e : evenement qui lance la fonction.
+        /// @return Aucune.
+        ///
+        //////////////////////////////////////////////////////////////////////////////////////////
         private void label_Zoom_MouseEnter(object sender, EventArgs e)
         {
             label_Zoom.ForeColor = Color.Blue;
         }
-
+        //////////////////////////////////////////////////////////////////////////////////////////
+        ///
+        /// @fn private void label_Zoom_MouseLeave(object sender, EventArgs e)
+        /// @brief Fonction qui change la couleur du label quand on sort du label
+        /// @param[in] sender : Objet duquel provient un evenement.
+        /// @param[in] e : evenement qui lance la fonction.
+        /// @return Aucune.
+        ///
+        //////////////////////////////////////////////////////////////////////////////////////////
         private void label_Zoom_MouseLeave(object sender, EventArgs e)
         {
             label_Zoom.ForeColor = Color.Black;
