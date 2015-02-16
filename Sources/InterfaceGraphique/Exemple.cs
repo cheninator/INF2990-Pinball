@@ -2652,6 +2652,11 @@ namespace InterfaceGraphique
         {
             labelOCourant.Text = outil;
         }
+
+        private void flowLayoutPanel1_SizeChanged(object sender, EventArgs e)
+        {
+            richTextBox1.Height = flowLayoutPanel1.Height - 500;
+        }
     }
 
     ///////////////////////////////////////////////////////////////////////////
