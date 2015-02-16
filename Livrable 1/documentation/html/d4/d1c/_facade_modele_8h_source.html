@@ -1,0 +1,301 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=9"/>
+<meta name="generator" content="Doxygen 1.8.9.1"/>
+<title>Pain Ball:  Fichier source de DLL/Application/FacadeModele.h</title>
+<link href="../../tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="../../jquery.js"></script>
+<script type="text/javascript" src="../../dynsections.js"></script>
+<link href="../../navtree.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="../../resize.js"></script>
+<script type="text/javascript" src="../../navtreedata.js"></script>
+<script type="text/javascript" src="../../navtree.js"></script>
+<script type="text/javascript">
+  $(document).ready(initResizable);
+  $(window).load(resizeHeight);
+</script>
+<link href="../../search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="../../search/searchdata.js"></script>
+<script type="text/javascript" src="../../search/search.js"></script>
+<script type="text/javascript">
+  $(document).ready(function() { init_search(); });
+</script>
+<link href="../../doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr style="height: 56px;">
+  <td id="projectlogo"><img alt="Logo" src="../../handy.jpg"/></td>
+  <td style="padding-left: 0.5em;">
+   <div id="projectname">Pain Ball
+   &#160;<span id="projectnumber">Livrable 1</span>
+   </div>
+   <div id="projectbrief">by The Ballers</div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- GÃ©nÃ©rÃ© par Doxygen 1.8.9.1 -->
+<script type="text/javascript">
+var searchBox = new SearchBox("searchBox", "../../search",false,'Recherche');
+</script>
+  <div id="navrow1" class="tabs">
+    <ul class="tablist">
+      <li><a href="../../index.html"><span>Page&#160;principale</span></a></li>
+      <li><a href="../../modules.html"><span>Modules</span></a></li>
+      <li><a href="../../namespaces.html"><span>Espaces&#160;de&#160;nommage</span></a></li>
+      <li><a href="../../annotated.html"><span>Classes</span></a></li>
+      <li class="current"><a href="../../files.html"><span>Fichiers</span></a></li>
+      <li>
+        <div id="MSearchBox" class="MSearchBoxInactive">
+        <span class="left">
+          <img id="MSearchSelect" src="../../search/mag_sel.png"
+               onmouseover="return searchBox.OnSearchSelectShow()"
+               onmouseout="return searchBox.OnSearchSelectHide()"
+               alt=""/>
+          <input type="text" id="MSearchField" value="Recherche" accesskey="S"
+               onfocus="searchBox.OnSearchFieldFocus(true)" 
+               onblur="searchBox.OnSearchFieldFocus(false)" 
+               onkeyup="searchBox.OnSearchFieldChange(event)"/>
+          </span><span class="right">
+            <a id="MSearchClose" href="javascript:searchBox.CloseResultsWindow()"><img id="MSearchCloseImg" border="0" src="../../search/close.png" alt=""/></a>
+          </span>
+        </div>
+      </li>
+    </ul>
+  </div>
+  <div id="navrow2" class="tabs2">
+    <ul class="tablist">
+      <li><a href="../../files.html"><span>Liste&#160;des&#160;fichiers</span></a></li>
+      <li><a href="../../globals.html"><span>Membres&#160;de&#160;fichier</span></a></li>
+    </ul>
+  </div>
+</div><!-- top -->
+<div id="side-nav" class="ui-resizable side-nav-resizable">
+  <div id="nav-tree">
+    <div id="nav-tree-contents">
+      <div id="nav-sync" class="sync"></div>
+    </div>
+  </div>
+  <div id="splitbar" style="-moz-user-select:none;" 
+       class="ui-resizable-handle">
+  </div>
+</div>
+<script type="text/javascript">
+$(document).ready(function(){initNavTree('d4/d1c/_facade_modele_8h_source.html','../../');});
+</script>
+<div id="doc-content">
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<iframe src="javascript:void(0)" frameborder="0" 
+        name="MSearchResults" id="MSearchResults">
+</iframe>
+</div>
+
+<div class="header">
+  <div class="headertitle">
+<div class="title">FacadeModele.h</div>  </div>
+</div><!--header-->
+<div class="contents">
+<a href="../../d4/d1c/_facade_modele_8h.html">Aller Ã  la documentation de ce fichier.</a><div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;</div>
+<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;<span class="preprocessor">#ifndef __APPLICATION_FACADEMODELE_H__</span></div>
+<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;<span class="preprocessor">#define __APPLICATION_FACADEMODELE_H__</span></div>
+<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;</div>
+<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;</div>
+<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;<span class="preprocessor">#include &lt;windows.h&gt;</span></div>
+<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;<span class="preprocessor">#include &lt;string&gt;</span></div>
+<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;<span class="preprocessor">#include &quot;glm/glm.hpp&quot;</span></div>
+<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;</div>
+<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;<span class="keyword">class </span><a class="code" href="../../da/df4/class_noeud_abstrait.html">NoeudAbstrait</a>;</div>
+<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;<span class="keyword">class </span><a class="code" href="../../da/dcf/class_arbre_rendu_i_n_f2990.html">ArbreRenduINF2990</a>;</div>
+<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;</div>
+<div class="line"><a name="l00036"></a><span class="lineno"><a class="line" href="../../dc/d95/namespacevue.html">   36</a></span>&#160;<span class="keyword">namespace </span><a class="code" href="../../dc/d95/namespacevue.html">vue</a> {</div>
+<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;   <span class="keyword">class </span>Vue;</div>
+<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;}</div>
+<div class="line"><a name="l00048"></a><span class="lineno"><a class="line" href="../../d1/dd9/class_facade_modele.html">   48</a></span>&#160;<span class="keyword">class </span><a class="code" href="../../d1/dd9/class_facade_modele.html">FacadeModele</a></div>
+<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;{</div>
+<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;<span class="keyword">public</span>:</div>
+<div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;</div>
+<div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;   <span class="keyword">static</span> <a class="code" href="../../d1/dd9/class_facade_modele.html">FacadeModele</a>* <a class="code" href="../../d1/dd9/class_facade_modele.html#a9d148f8472316f87cdd79baccc000de8">obtenirInstance</a>();</div>
+<div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;</div>
+<div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;   <span class="keyword">static</span> <span class="keywordtype">void</span> <a class="code" href="../../d1/dd9/class_facade_modele.html#acbf0495fda26f5be37089470dc5f4372">libererInstance</a>();</div>
+<div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;</div>
+<div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;   <span class="keywordtype">void</span> <a class="code" href="../../d1/dd9/class_facade_modele.html#abf12ccafbabf1049cb8327cf78699a1b">initialiserOpenGL</a>(HWND hWnd);</div>
+<div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;</div>
+<div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;   <span class="keywordtype">void</span> <a class="code" href="../../d1/dd9/class_facade_modele.html#ac7b831ce13626514e9637c4533d7c15d">libererOpenGL</a>();</div>
+<div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;</div>
+<div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;   <span class="keywordtype">void</span> <a class="code" href="../../d1/dd9/class_facade_modele.html#ac884e818dab5fe049a37b3f6f1c5d8c6">afficher</a>() <span class="keyword">const</span>;</div>
+<div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160;</div>
+<div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160;   <span class="keywordtype">void</span> <a class="code" href="../../d1/dd9/class_facade_modele.html#a23bed5e3b226e446cfee30084150f7f7">afficherBase</a>() <span class="keyword">const</span>;</div>
+<div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160; </div>
+<div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160;   <span class="keyword">inline</span> vue::Vue* <a class="code" href="../../d1/dd9/class_facade_modele.html#aa56cf96b7e381e0f14e2c9a55be913bf">obtenirVue</a>();</div>
+<div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160;</div>
+<div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160;   <span class="keyword">inline</span> <span class="keyword">const</span> <a class="code" href="../../da/dcf/class_arbre_rendu_i_n_f2990.html">ArbreRenduINF2990</a>* <a class="code" href="../../d1/dd9/class_facade_modele.html#af578161d03b2157cdaa3182900ff61cc">obtenirArbreRenduINF2990</a>() <span class="keyword">const</span>;</div>
+<div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160;</div>
+<div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160;   <span class="keyword">inline</span> <a class="code" href="../../da/dcf/class_arbre_rendu_i_n_f2990.html">ArbreRenduINF2990</a>* <a class="code" href="../../d1/dd9/class_facade_modele.html#af578161d03b2157cdaa3182900ff61cc">obtenirArbreRenduINF2990</a>();</div>
+<div class="line"><a name="l00078"></a><span class="lineno">   78</span>&#160;</div>
+<div class="line"><a name="l00080"></a><span class="lineno">   80</span>&#160;   <span class="keywordtype">void</span> <a class="code" href="../../d1/dd9/class_facade_modele.html#a4c2a991fe2297e44eeee0de111fb08d2">reinitialiser</a>();</div>
+<div class="line"><a name="l00081"></a><span class="lineno">   81</span>&#160;</div>
+<div class="line"><a name="l00083"></a><span class="lineno">   83</span>&#160;   <span class="keywordtype">void</span> <a class="code" href="../../d1/dd9/class_facade_modele.html#a24dcb4e32cf104797158b398bafbfbb7">animer</a>(<span class="keywordtype">float</span> temps);</div>
+<div class="line"><a name="l00084"></a><span class="lineno">   84</span>&#160;</div>
+<div class="line"><a name="l00086"></a><span class="lineno">   86</span>&#160;   <span class="keywordtype">void</span> <a class="code" href="../../d1/dd9/class_facade_modele.html#abb2abd39d6b6b60fb7a4babb46f0bd01">deplacerSelection</a>(<span class="keywordtype">int</span> <a class="code" href="../../d7/d39/_facade_interface_native_8cpp.html#a7e19f8892e2a6a5e63f15c914d8e38c7">x1</a>, <span class="keywordtype">int</span> <a class="code" href="../../d7/d39/_facade_interface_native_8cpp.html#a886daa12d11655f342168e87c7c0b1cb">y1</a>, <span class="keywordtype">int</span> <a class="code" href="../../d7/d39/_facade_interface_native_8cpp.html#a80fc5bd5a58b9c780825a71aaf7bdc98">x2</a>, <span class="keywordtype">int</span> <a class="code" href="../../d7/d39/_facade_interface_native_8cpp.html#a8f9896eae807ca85f762f5bdba217d13">y2</a>, <span class="keywordtype">bool</span> <a class="code" href="../../d7/d39/_facade_interface_native_8cpp.html#a1dc680a3a74ded89ec2ab0953d45b115">duplication</a>);</div>
+<div class="line"><a name="l00087"></a><span class="lineno">   87</span>&#160;</div>
+<div class="line"><a name="l00089"></a><span class="lineno">   89</span>&#160;   <span class="keywordtype">void</span> <a class="code" href="../../d1/dd9/class_facade_modele.html#abc048567dca7ba75b4c48a946c88c04f">tournerSelectionSouris</a>(<span class="keywordtype">int</span> x1, <span class="keywordtype">int</span> y1, <span class="keywordtype">int</span> x2, <span class="keywordtype">int</span> y2);</div>
+<div class="line"><a name="l00090"></a><span class="lineno">   90</span>&#160;</div>
+<div class="line"><a name="l00092"></a><span class="lineno">   92</span>&#160;   <span class="keywordtype">void</span> <a class="code" href="../../d1/dd9/class_facade_modele.html#a4c72d314dabeb04b0b15728708ff4bad">agrandirSelection</a>(<span class="keywordtype">int</span> x1, <span class="keywordtype">int</span> y1, <span class="keywordtype">int</span> x2, <span class="keywordtype">int</span> y2);</div>
+<div class="line"><a name="l00093"></a><span class="lineno">   93</span>&#160;</div>
+<div class="line"><a name="l00095"></a><span class="lineno">   95</span>&#160;   <span class="keywordtype">bool</span> <a class="code" href="../../d1/dd9/class_facade_modele.html#a81cddb4d86add47a7d859758dcf29aa9">verifierCliqueDansTable</a>(<span class="keywordtype">int</span> x, <span class="keywordtype">int</span> <a class="code" href="../../d7/d39/_facade_interface_native_8cpp.html#a0a2f84ed7838f07779ae24c5a9086d33">y</a>);</div>
+<div class="line"><a name="l00096"></a><span class="lineno">   96</span>&#160;</div>
+<div class="line"><a name="l00098"></a><span class="lineno">   98</span>&#160;   <span class="keywordtype">void</span> <a class="code" href="../../d1/dd9/class_facade_modele.html#a63075d75fc519899dfa876020ad3df70">dupliquerSelection</a>(<span class="keywordtype">int</span> <a class="code" href="../../d7/d39/_facade_interface_native_8cpp.html#acb559820d9ca11295b4500f179ef6392">i</a>, <span class="keywordtype">int</span> <a class="code" href="../../d7/d39/_facade_interface_native_8cpp.html#a37d972ae0b47b9099e30983131d31916">j</a>);</div>
+<div class="line"><a name="l00099"></a><span class="lineno">   99</span>&#160;</div>
+<div class="line"><a name="l00101"></a><span class="lineno">  101</span>&#160;   <span class="keywordtype">int</span> <a class="code" href="../../d1/dd9/class_facade_modele.html#ad5e816d12f2c746170d7285cf806c086">creerXML</a>(<span class="keywordtype">char</span>* path, <span class="keywordtype">int</span> <a class="code" href="../../d7/d39/_facade_interface_native_8cpp.html#a8fe2217ea568f9e9844128a40054caff">prop</a>[6]);</div>
+<div class="line"><a name="l00102"></a><span class="lineno">  102</span>&#160;</div>
+<div class="line"><a name="l00104"></a><span class="lineno">  104</span>&#160;   <span class="keywordtype">bool</span> <a class="code" href="../../d1/dd9/class_facade_modele.html#a27a9f63705bfec3766cb03ffc3390e74">estDansTable</a>(glm::dvec3 pointDuMonde);</div>
+<div class="line"><a name="l00105"></a><span class="lineno">  105</span>&#160;</div>
+<div class="line"><a name="l00107"></a><span class="lineno">  107</span>&#160;   <span class="keywordtype">bool</span> <a class="code" href="../../d1/dd9/class_facade_modele.html#a64fb922e4fb60962fa85a234757ce6e7">supprimer</a>();</div>
+<div class="line"><a name="l00108"></a><span class="lineno">  108</span>&#160;</div>
+<div class="line"><a name="l00110"></a><span class="lineno">  110</span>&#160;   <span class="keywordtype">double</span> <a class="code" href="../../d1/dd9/class_facade_modele.html#a180b882facfba1c8a6f908a23ec9802b">obtenirZoomCourant</a>();</div>
+<div class="line"><a name="l00111"></a><span class="lineno">  111</span>&#160;</div>
+<div class="line"><a name="l00113"></a><span class="lineno">  113</span>&#160;   <span class="keywordtype">int</span> <a class="code" href="../../d1/dd9/class_facade_modele.html#ac11b6f486ca7de0b28264f36b16668e8">obtenirCentreMasseX</a>();</div>
+<div class="line"><a name="l00114"></a><span class="lineno">  114</span>&#160;</div>
+<div class="line"><a name="l00116"></a><span class="lineno">  116</span>&#160;   <span class="keywordtype">int</span> <a class="code" href="../../d1/dd9/class_facade_modele.html#a6d144562ba444f76e2d1786ad75922a6">obtenirCentreMasseY</a>();</div>
+<div class="line"><a name="l00117"></a><span class="lineno">  117</span>&#160;</div>
+<div class="line"><a name="l00118"></a><span class="lineno">  118</span>&#160;   <span class="keywordtype">int</span> <a class="code" href="../../d1/dd9/class_facade_modele.html#ae670842ee95f25c6d543cc4fbd30917a">selectionnerObjetSousPointClique</a>(<span class="keywordtype">int</span> i, <span class="keywordtype">int</span> j, <span class="keywordtype">int</span> <a class="code" href="../../d7/d39/_facade_interface_native_8cpp.html#a19f20006d9c53001d717b5431d85d152">largeur</a>, <span class="keywordtype">int</span> <a class="code" href="../../d7/d39/_facade_interface_native_8cpp.html#a8a08e926be8f28909c789815c9a68876">hauteur</a>, <span class="keywordtype">bool</span> <a class="code" href="../../df/df1/_facade_interface_native_8h.html#a64bd83dee2f9237546a9794be32107bc">ctrlDown</a> = <span class="keyword">false</span>);</div>
+<div class="line"><a name="l00119"></a><span class="lineno">  119</span>&#160;</div>
+<div class="line"><a name="l00121"></a><span class="lineno">  121</span>&#160;   <span class="keywordtype">void</span> <a class="code" href="../../d1/dd9/class_facade_modele.html#a96c13787bfce8d6c3881643e4849d017">rectangleElastique</a>(<span class="keywordtype">int</span> i, <span class="keywordtype">int</span> j);</div>
+<div class="line"><a name="l00122"></a><span class="lineno">  122</span>&#160;   </div>
+<div class="line"><a name="l00124"></a><span class="lineno">  124</span>&#160;   <span class="keywordtype">int</span> <a class="code" href="../../d1/dd9/class_facade_modele.html#a71abcf7e1ba5120c04310a9f89d7f030">selectionMultiple</a>(<span class="keywordtype">bool</span> c);</div>
+<div class="line"><a name="l00125"></a><span class="lineno">  125</span>&#160;</div>
+<div class="line"><a name="l00126"></a><span class="lineno">  126</span>&#160;   <span class="keywordtype">void</span> <a class="code" href="../../d1/dd9/class_facade_modele.html#a2c2d2decb65156b238cf28ecf1098b3e">initialiserRectangleElastique</a>(<span class="keywordtype">int</span> i, <span class="keywordtype">int</span> j);</div>
+<div class="line"><a name="l00127"></a><span class="lineno">  127</span>&#160;</div>
+<div class="line"><a name="l00128"></a><span class="lineno">  128</span>&#160;   <span class="keywordtype">void</span> <a class="code" href="../../d1/dd9/class_facade_modele.html#a1c99d4d88f05b70a20b36b51c07f31cf">terminerRectangleElastique</a>();</div>
+<div class="line"><a name="l00129"></a><span class="lineno">  129</span>&#160;</div>
+<div class="line"><a name="l00130"></a><span class="lineno">  130</span>&#160;   <span class="keywordtype">bool</span> <a class="code" href="../../d1/dd9/class_facade_modele.html#a8183350363ba67425b59e49aca4f998a">appliquerZoomInitial</a>();</div>
+<div class="line"><a name="l00131"></a><span class="lineno">  131</span>&#160;</div>
+<div class="line"><a name="l00132"></a><span class="lineno">  132</span>&#160;   <span class="keyword">static</span> <span class="keywordtype">void</span> <a class="code" href="../../d1/dd9/class_facade_modele.html#aa6f038b42cff152deb717d11237fd686">positionnerMur</a>(<span class="keywordtype">int</span> originX, <span class="keywordtype">int</span> <a class="code" href="../../d7/d39/_facade_interface_native_8cpp.html#a503a8de08ba4029f70f68623d89f25db">originY</a>, <span class="keywordtype">int</span> x1, <span class="keywordtype">int</span> y1, <span class="keywordtype">int</span> x2, <span class="keywordtype">int</span> y2, <a class="code" href="../../da/df4/class_noeud_abstrait.html">NoeudAbstrait</a>* noeud);</div>
+<div class="line"><a name="l00133"></a><span class="lineno">  133</span>&#160;</div>
+<div class="line"><a name="l00134"></a><span class="lineno">  134</span>&#160;   <span class="comment">//verifie si la selection est hors table lors de la duplication</span></div>
+<div class="line"><a name="l00135"></a><span class="lineno">  135</span>&#160;   <span class="keywordtype">bool</span> <a class="code" href="../../d1/dd9/class_facade_modele.html#a7cd36dadde8fea211babe95764a40aee">duplicationEstHorsTable</a>();</div>
+<div class="line"><a name="l00136"></a><span class="lineno">  136</span>&#160;</div>
+<div class="line"><a name="l00137"></a><span class="lineno">  137</span>&#160;<span class="keyword">private</span>:</div>
+<div class="line"><a name="l00139"></a><span class="lineno">  139</span>&#160;   <a class="code" href="../../d1/dd9/class_facade_modele.html">FacadeModele</a>() = <span class="keywordflow">default</span>;</div>
+<div class="line"><a name="l00141"></a><span class="lineno">  141</span>&#160;   ~<a class="code" href="../../d1/dd9/class_facade_modele.html">FacadeModele</a>();</div>
+<div class="line"><a name="l00143"></a><span class="lineno">  143</span>&#160;   <a class="code" href="../../d1/dd9/class_facade_modele.html">FacadeModele</a>(<span class="keyword">const</span> <a class="code" href="../../d1/dd9/class_facade_modele.html">FacadeModele</a>&amp;) = <span class="keyword">delete</span>;</div>
+<div class="line"><a name="l00145"></a><span class="lineno">  145</span>&#160;   <a class="code" href="../../d1/dd9/class_facade_modele.html">FacadeModele</a>&amp; operator =(<span class="keyword">const</span> <a class="code" href="../../d1/dd9/class_facade_modele.html">FacadeModele</a>&amp;) = <span class="keyword">delete</span>;</div>
+<div class="line"><a name="l00146"></a><span class="lineno">  146</span>&#160;</div>
+<div class="line"><a name="l00147"></a><span class="lineno">  147</span>&#160;   <span class="keyword">static</span> <span class="keyword">const</span> std::string FICHIER_CONFIGURATION; </div>
+<div class="line"><a name="l00149"></a><span class="lineno">  149</span>&#160;   <span class="keyword">static</span> <a class="code" href="../../d1/dd9/class_facade_modele.html">FacadeModele</a>* instance_; </div>
+<div class="line"><a name="l00150"></a><span class="lineno">  150</span>&#160;</div>
+<div class="line"><a name="l00151"></a><span class="lineno">  151</span>&#160;   HWND  hWnd_{ <span class="keyword">nullptr</span> }; </div>
+<div class="line"><a name="l00152"></a><span class="lineno">  152</span>&#160;   HGLRC hGLRC_{ <span class="keyword">nullptr</span> }; </div>
+<div class="line"><a name="l00153"></a><span class="lineno">  153</span>&#160;   HDC   hDC_{ <span class="keyword">nullptr</span> }; </div>
+<div class="line"><a name="l00154"></a><span class="lineno">  154</span>&#160;</div>
+<div class="line"><a name="l00155"></a><span class="lineno">  155</span>&#160;   vue::Vue* vue_{ <span class="keyword">nullptr</span> }; </div>
+<div class="line"><a name="l00156"></a><span class="lineno">  156</span>&#160;   <a class="code" href="../../da/dcf/class_arbre_rendu_i_n_f2990.html">ArbreRenduINF2990</a>* arbre_{ <span class="keyword">nullptr</span> }; </div>
+<div class="line"><a name="l00157"></a><span class="lineno">  157</span>&#160;</div>
+<div class="line"><a name="l00158"></a><span class="lineno">  158</span>&#160;   glm::dvec3 selectionBasGauche_, selectionHautDroit_;</div>
+<div class="line"><a name="l00159"></a><span class="lineno">  159</span>&#160;   glm::ivec2 pointInitial_, pointAvant_;</div>
+<div class="line"><a name="l00160"></a><span class="lineno">  160</span>&#160;</div>
+<div class="line"><a name="l00161"></a><span class="lineno">  161</span>&#160;   <span class="keyword">static</span> <span class="keyword">const</span> <span class="keywordtype">int</span> coinGaucheTableX;</div>
+<div class="line"><a name="l00162"></a><span class="lineno">  162</span>&#160;   <span class="keyword">static</span> <span class="keyword">const</span> <span class="keywordtype">int</span> coinGaucheTableY;</div>
+<div class="line"><a name="l00163"></a><span class="lineno">  163</span>&#160;   <span class="keyword">static</span> <span class="keyword">const</span> <span class="keywordtype">int</span> coinDroitTableX;</div>
+<div class="line"><a name="l00164"></a><span class="lineno">  164</span>&#160;   <span class="keyword">static</span> <span class="keyword">const</span> <span class="keywordtype">int</span> coinDroitTableY;</div>
+<div class="line"><a name="l00165"></a><span class="lineno">  165</span>&#160;</div>
+<div class="line"><a name="l00166"></a><span class="lineno">  166</span>&#160;   <span class="keywordtype">bool</span> duplicationHorsTable_;</div>
+<div class="line"><a name="l00167"></a><span class="lineno">  167</span>&#160;};</div>
+<div class="line"><a name="l00168"></a><span class="lineno">  168</span>&#160;</div>
+<div class="line"><a name="l00169"></a><span class="lineno">  169</span>&#160;</div>
+<div class="line"><a name="l00170"></a><span class="lineno">  170</span>&#160;</div>
+<div class="line"><a name="l00171"></a><span class="lineno">  171</span>&#160;</div>
+<div class="line"><a name="l00182"></a><span class="lineno"><a class="line" href="../../d1/dd9/class_facade_modele.html#aa56cf96b7e381e0f14e2c9a55be913bf">  182</a></span>&#160;<span class="keyword">inline</span> vue::Vue* <a class="code" href="../../d1/dd9/class_facade_modele.html#aa56cf96b7e381e0f14e2c9a55be913bf">FacadeModele::obtenirVue</a>()</div>
+<div class="line"><a name="l00183"></a><span class="lineno">  183</span>&#160;{</div>
+<div class="line"><a name="l00184"></a><span class="lineno">  184</span>&#160;   <span class="keywordflow">return</span> vue_;</div>
+<div class="line"><a name="l00185"></a><span class="lineno">  185</span>&#160;}</div>
+<div class="line"><a name="l00186"></a><span class="lineno">  186</span>&#160;</div>
+<div class="line"><a name="l00187"></a><span class="lineno">  187</span>&#160;</div>
+<div class="line"><a name="l00198"></a><span class="lineno"><a class="line" href="../../d1/dd9/class_facade_modele.html#af578161d03b2157cdaa3182900ff61cc">  198</a></span>&#160;<span class="keyword">inline</span> <span class="keyword">const</span> <a class="code" href="../../da/dcf/class_arbre_rendu_i_n_f2990.html">ArbreRenduINF2990</a>* <a class="code" href="../../d1/dd9/class_facade_modele.html#af578161d03b2157cdaa3182900ff61cc">FacadeModele::obtenirArbreRenduINF2990</a>()<span class="keyword"> const</span></div>
+<div class="line"><a name="l00199"></a><span class="lineno">  199</span>&#160;<span class="keyword"></span>{</div>
+<div class="line"><a name="l00200"></a><span class="lineno">  200</span>&#160;   <span class="keywordflow">return</span> arbre_;</div>
+<div class="line"><a name="l00201"></a><span class="lineno">  201</span>&#160;}</div>
+<div class="line"><a name="l00202"></a><span class="lineno">  202</span>&#160;</div>
+<div class="line"><a name="l00203"></a><span class="lineno">  203</span>&#160;</div>
+<div class="line"><a name="l00214"></a><span class="lineno"><a class="line" href="../../d1/dd9/class_facade_modele.html#a12d5594db6a9507b24c7e1ffcd6751af">  214</a></span>&#160;<span class="keyword">inline</span> <a class="code" href="../../da/dcf/class_arbre_rendu_i_n_f2990.html">ArbreRenduINF2990</a>* <a class="code" href="../../d1/dd9/class_facade_modele.html#af578161d03b2157cdaa3182900ff61cc">FacadeModele::obtenirArbreRenduINF2990</a>()</div>
+<div class="line"><a name="l00215"></a><span class="lineno">  215</span>&#160;{</div>
+<div class="line"><a name="l00216"></a><span class="lineno">  216</span>&#160;   <span class="keywordflow">return</span> arbre_;</div>
+<div class="line"><a name="l00217"></a><span class="lineno">  217</span>&#160;}</div>
+<div class="line"><a name="l00218"></a><span class="lineno">  218</span>&#160;</div>
+<div class="line"><a name="l00219"></a><span class="lineno">  219</span>&#160;</div>
+<div class="line"><a name="l00220"></a><span class="lineno">  220</span>&#160;<span class="preprocessor">#endif // __APPLICATION_FACADEMODELE_H__</span></div>
+<div class="ttc" id="class_facade_modele_html_a6d144562ba444f76e2d1786ad75922a6"><div class="ttname"><a href="../../d1/dd9/class_facade_modele.html#a6d144562ba444f76e2d1786ad75922a6">FacadeModele::obtenirCentreMasseY</a></div><div class="ttdeci">int obtenirCentreMasseY()</div><div class="ttdoc">Obtenir le centre de masse en Y. </div><div class="ttdef"><b>Definition:</b> <a href="../../d7/d09/_facade_modele_8cpp_source.html#l00946">FacadeModele.cpp:946</a></div></div>
+<div class="ttc" id="class_facade_modele_html_a4c72d314dabeb04b0b15728708ff4bad"><div class="ttname"><a href="../../d1/dd9/class_facade_modele.html#a4c72d314dabeb04b0b15728708ff4bad">FacadeModele::agrandirSelection</a></div><div class="ttdeci">void agrandirSelection(int x1, int y1, int x2, int y2)</div><div class="ttdoc">Scale de la sélection. </div><div class="ttdef"><b>Definition:</b> <a href="../../d7/d09/_facade_modele_8cpp_source.html#l00530">FacadeModele.cpp:530</a></div></div>
+<div class="ttc" id="class_facade_modele_html_ac7b831ce13626514e9637c4533d7c15d"><div class="ttname"><a href="../../d1/dd9/class_facade_modele.html#ac7b831ce13626514e9637c4533d7c15d">FacadeModele::libererOpenGL</a></div><div class="ttdeci">void libererOpenGL()</div><div class="ttdoc">Libère le contexte OpenGL. </div><div class="ttdef"><b>Definition:</b> <a href="../../d7/d09/_facade_modele_8cpp_source.html#l00220">FacadeModele.cpp:220</a></div></div>
+<div class="ttc" id="class_facade_modele_html"><div class="ttname"><a href="../../d1/dd9/class_facade_modele.html">FacadeModele</a></div><div class="ttdoc">Classe qui constitue une interface (une façade) sur l&#39;ensemble du modèle et des classes qui le composen...</div><div class="ttdef"><b>Definition:</b> <a href="../../d4/d1c/_facade_modele_8h_source.html#l00048">FacadeModele.h:48</a></div></div>
+<div class="ttc" id="namespacevue_html"><div class="ttname"><a href="../../dc/d95/namespacevue.html">vue</a></div><div class="ttdef"><b>Definition:</b> <a href="../../d4/d1c/_facade_modele_8h_source.html#l00036">FacadeModele.h:36</a></div></div>
+<div class="ttc" id="class_facade_modele_html_abf12ccafbabf1049cb8327cf78699a1b"><div class="ttname"><a href="../../d1/dd9/class_facade_modele.html#abf12ccafbabf1049cb8327cf78699a1b">FacadeModele::initialiserOpenGL</a></div><div class="ttdeci">void initialiserOpenGL(HWND hWnd)</div><div class="ttdoc">Crée un contexte OpenGL et initialise celui-ci. </div><div class="ttdef"><b>Definition:</b> <a href="../../d7/d09/_facade_modele_8cpp_source.html#l00148">FacadeModele.cpp:148</a></div></div>
+<div class="ttc" id="class_facade_modele_html_a64fb922e4fb60962fa85a234757ce6e7"><div class="ttname"><a href="../../d1/dd9/class_facade_modele.html#a64fb922e4fb60962fa85a234757ce6e7">FacadeModele::supprimer</a></div><div class="ttdeci">bool supprimer()</div><div class="ttdoc">Pour la suppression des objets. </div><div class="ttdef"><b>Definition:</b> <a href="../../d7/d09/_facade_modele_8cpp_source.html#l00890">FacadeModele.cpp:890</a></div></div>
+<div class="ttc" id="_facade_interface_native_8cpp_html_a8a08e926be8f28909c789815c9a68876"><div class="ttname"><a href="../../d7/d39/_facade_interface_native_8cpp.html#a8a08e926be8f28909c789815c9a68876">hauteur</a></div><div class="ttdeci">int int hauteur</div><div class="ttdef"><b>Definition:</b> <a href="../../d7/d39/_facade_interface_native_8cpp_source.html#l00048">FacadeInterfaceNative.cpp:48</a></div></div>
+<div class="ttc" id="class_facade_modele_html_a8183350363ba67425b59e49aca4f998a"><div class="ttname"><a href="../../d1/dd9/class_facade_modele.html#a8183350363ba67425b59e49aca4f998a">FacadeModele::appliquerZoomInitial</a></div><div class="ttdeci">bool appliquerZoomInitial()</div><div class="ttdef"><b>Definition:</b> <a href="../../d7/d09/_facade_modele_8cpp_source.html#l00962">FacadeModele.cpp:962</a></div></div>
+<div class="ttc" id="_facade_interface_native_8cpp_html_a7e19f8892e2a6a5e63f15c914d8e38c7"><div class="ttname"><a href="../../d7/d39/_facade_interface_native_8cpp.html#a7e19f8892e2a6a5e63f15c914d8e38c7">x1</a></div><div class="ttdeci">int int x1</div><div class="ttdef"><b>Definition:</b> <a href="../../d7/d39/_facade_interface_native_8cpp_source.html#l01114">FacadeInterfaceNative.cpp:1114</a></div></div>
+<div class="ttc" id="class_facade_modele_html_ac11b6f486ca7de0b28264f36b16668e8"><div class="ttname"><a href="../../d1/dd9/class_facade_modele.html#ac11b6f486ca7de0b28264f36b16668e8">FacadeModele::obtenirCentreMasseX</a></div><div class="ttdeci">int obtenirCentreMasseX()</div><div class="ttdoc">Obtenir le centre de masse en X. </div><div class="ttdef"><b>Definition:</b> <a href="../../d7/d09/_facade_modele_8cpp_source.html#l00928">FacadeModele.cpp:928</a></div></div>
+<div class="ttc" id="class_facade_modele_html_a63075d75fc519899dfa876020ad3df70"><div class="ttname"><a href="../../d1/dd9/class_facade_modele.html#a63075d75fc519899dfa876020ad3df70">FacadeModele::dupliquerSelection</a></div><div class="ttdeci">void dupliquerSelection(int i, int j)</div><div class="ttdoc">Pour la duplication d&#39;objets selectionnés </div><div class="ttdef"><b>Definition:</b> <a href="../../d7/d09/_facade_modele_8cpp_source.html#l00717">FacadeModele.cpp:717</a></div></div>
+<div class="ttc" id="_facade_interface_native_8cpp_html_a37d972ae0b47b9099e30983131d31916"><div class="ttname"><a href="../../d7/d39/_facade_interface_native_8cpp.html#a37d972ae0b47b9099e30983131d31916">j</a></div><div class="ttdeci">int j</div><div class="ttdef"><b>Definition:</b> <a href="../../d7/d39/_facade_interface_native_8cpp_source.html#l00048">FacadeInterfaceNative.cpp:48</a></div></div>
+<div class="ttc" id="_facade_interface_native_8cpp_html_a503a8de08ba4029f70f68623d89f25db"><div class="ttname"><a href="../../d7/d39/_facade_interface_native_8cpp.html#a503a8de08ba4029f70f68623d89f25db">originY</a></div><div class="ttdeci">int originY</div><div class="ttdef"><b>Definition:</b> <a href="../../d7/d39/_facade_interface_native_8cpp_source.html#l01114">FacadeInterfaceNative.cpp:1114</a></div></div>
+<div class="ttc" id="_facade_interface_native_8cpp_html_a80fc5bd5a58b9c780825a71aaf7bdc98"><div class="ttname"><a href="../../d7/d39/_facade_interface_native_8cpp.html#a80fc5bd5a58b9c780825a71aaf7bdc98">x2</a></div><div class="ttdeci">int int x2</div><div class="ttdef"><b>Definition:</b> <a href="../../d7/d39/_facade_interface_native_8cpp_source.html#l00739">FacadeInterfaceNative.cpp:739</a></div></div>
+<div class="ttc" id="class_facade_modele_html_ae670842ee95f25c6d543cc4fbd30917a"><div class="ttname"><a href="../../d1/dd9/class_facade_modele.html#ae670842ee95f25c6d543cc4fbd30917a">FacadeModele::selectionnerObjetSousPointClique</a></div><div class="ttdeci">int selectionnerObjetSousPointClique(int i, int j, int largeur, int hauteur, bool ctrlDown=false)</div><div class="ttdef"><b>Definition:</b> <a href="../../d7/d09/_facade_modele_8cpp_source.html#l00339">FacadeModele.cpp:339</a></div></div>
+<div class="ttc" id="class_facade_modele_html_a180b882facfba1c8a6f908a23ec9802b"><div class="ttname"><a href="../../d1/dd9/class_facade_modele.html#a180b882facfba1c8a6f908a23ec9802b">FacadeModele::obtenirZoomCourant</a></div><div class="ttdeci">double obtenirZoomCourant()</div><div class="ttdoc">Obtenir le facteur de zoom appliqué </div><div class="ttdef"><b>Definition:</b> <a href="../../d7/d09/_facade_modele_8cpp_source.html#l00907">FacadeModele.cpp:907</a></div></div>
+<div class="ttc" id="class_facade_modele_html_a96c13787bfce8d6c3881643e4849d017"><div class="ttname"><a href="../../d1/dd9/class_facade_modele.html#a96c13787bfce8d6c3881643e4849d017">FacadeModele::rectangleElastique</a></div><div class="ttdeci">void rectangleElastique(int i, int j)</div><div class="ttdoc">xxxxx </div><div class="ttdef"><b>Definition:</b> <a href="../../d7/d09/_facade_modele_8cpp_source.html#l00588">FacadeModele.cpp:588</a></div></div>
+<div class="ttc" id="class_facade_modele_html_a7cd36dadde8fea211babe95764a40aee"><div class="ttname"><a href="../../d1/dd9/class_facade_modele.html#a7cd36dadde8fea211babe95764a40aee">FacadeModele::duplicationEstHorsTable</a></div><div class="ttdeci">bool duplicationEstHorsTable()</div><div class="ttdef"><b>Definition:</b> <a href="../../d7/d09/_facade_modele_8cpp_source.html#l00981">FacadeModele.cpp:981</a></div></div>
+<div class="ttc" id="class_facade_modele_html_abc048567dca7ba75b4c48a946c88c04f"><div class="ttname"><a href="../../d1/dd9/class_facade_modele.html#abc048567dca7ba75b4c48a946c88c04f">FacadeModele::tournerSelectionSouris</a></div><div class="ttdeci">void tournerSelectionSouris(int x1, int y1, int x2, int y2)</div><div class="ttdoc">Rotation des noeuds sélectionnés </div><div class="ttdef"><b>Definition:</b> <a href="../../d7/d09/_facade_modele_8cpp_source.html#l00472">FacadeModele.cpp:472</a></div></div>
+<div class="ttc" id="class_facade_modele_html_ac884e818dab5fe049a37b3f6f1c5d8c6"><div class="ttname"><a href="../../d1/dd9/class_facade_modele.html#ac884e818dab5fe049a37b3f6f1c5d8c6">FacadeModele::afficher</a></div><div class="ttdeci">void afficher() const </div><div class="ttdoc">Affiche le contenu du modèle. </div><div class="ttdef"><b>Definition:</b> <a href="../../d7/d09/_facade_modele_8cpp_source.html#l00240">FacadeModele.cpp:240</a></div></div>
+<div class="ttc" id="class_facade_modele_html_a9d148f8472316f87cdd79baccc000de8"><div class="ttname"><a href="../../d1/dd9/class_facade_modele.html#a9d148f8472316f87cdd79baccc000de8">FacadeModele::obtenirInstance</a></div><div class="ttdeci">static FacadeModele * obtenirInstance()</div><div class="ttdoc">Obtient l&#39;instance unique de la classe. </div><div class="ttdef"><b>Definition:</b> <a href="../../d7/d09/_facade_modele_8cpp_source.html#l00093">FacadeModele.cpp:93</a></div></div>
+<div class="ttc" id="_facade_interface_native_8cpp_html_a1dc680a3a74ded89ec2ab0953d45b115"><div class="ttname"><a href="../../d7/d39/_facade_interface_native_8cpp.html#a1dc680a3a74ded89ec2ab0953d45b115">duplication</a></div><div class="ttdeci">int int int bool duplication</div><div class="ttdef"><b>Definition:</b> <a href="../../d7/d39/_facade_interface_native_8cpp_source.html#l00740">FacadeInterfaceNative.cpp:740</a></div></div>
+<div class="ttc" id="class_facade_modele_html_a23bed5e3b226e446cfee30084150f7f7"><div class="ttname"><a href="../../d1/dd9/class_facade_modele.html#a23bed5e3b226e446cfee30084150f7f7">FacadeModele::afficherBase</a></div><div class="ttdeci">void afficherBase() const </div><div class="ttdoc">Affiche la base du contenu du modèle. </div><div class="ttdef"><b>Definition:</b> <a href="../../d7/d09/_facade_modele_8cpp_source.html#l00274">FacadeModele.cpp:274</a></div></div>
+<div class="ttc" id="class_facade_modele_html_a4c2a991fe2297e44eeee0de111fb08d2"><div class="ttname"><a href="../../d1/dd9/class_facade_modele.html#a4c2a991fe2297e44eeee0de111fb08d2">FacadeModele::reinitialiser</a></div><div class="ttdeci">void reinitialiser()</div><div class="ttdoc">Réinitialise la scène. </div><div class="ttdef"><b>Definition:</b> <a href="../../d7/d09/_facade_modele_8cpp_source.html#l00294">FacadeModele.cpp:294</a></div></div>
+<div class="ttc" id="class_facade_modele_html_a27a9f63705bfec3766cb03ffc3390e74"><div class="ttname"><a href="../../d1/dd9/class_facade_modele.html#a27a9f63705bfec3766cb03ffc3390e74">FacadeModele::estDansTable</a></div><div class="ttdeci">bool estDansTable(glm::dvec3 pointDuMonde)</div><div class="ttdoc">Vérifier si un point cliqué est dans la table. </div><div class="ttdef"><b>Definition:</b> <a href="../../d7/d09/_facade_modele_8cpp_source.html#l00698">FacadeModele.cpp:698</a></div></div>
+<div class="ttc" id="class_facade_modele_html_a71abcf7e1ba5120c04310a9f89d7f030"><div class="ttname"><a href="../../d1/dd9/class_facade_modele.html#a71abcf7e1ba5120c04310a9f89d7f030">FacadeModele::selectionMultiple</a></div><div class="ttdeci">int selectionMultiple(bool c)</div><div class="ttdoc">xxxxx </div><div class="ttdef"><b>Definition:</b> <a href="../../d7/d09/_facade_modele_8cpp_source.html#l00645">FacadeModele.cpp:645</a></div></div>
+<div class="ttc" id="_facade_interface_native_8cpp_html_a8fe2217ea568f9e9844128a40054caff"><div class="ttname"><a href="../../d7/d39/_facade_interface_native_8cpp.html#a8fe2217ea568f9e9844128a40054caff">prop</a></div><div class="ttdeci">int int prop[6]</div><div class="ttdef"><b>Definition:</b> <a href="../../d7/d39/_facade_interface_native_8cpp_source.html#l00617">FacadeInterfaceNative.cpp:617</a></div></div>
+<div class="ttc" id="class_facade_modele_html_ad5e816d12f2c746170d7285cf806c086"><div class="ttname"><a href="../../d1/dd9/class_facade_modele.html#ad5e816d12f2c746170d7285cf806c086">FacadeModele::creerXML</a></div><div class="ttdeci">int creerXML(char *path, int prop[6])</div><div class="ttdoc">Pour la sauvegarde de fichier XML. </div><div class="ttdef"><b>Definition:</b> <a href="../../d7/d09/_facade_modele_8cpp_source.html#l00735">FacadeModele.cpp:735</a></div></div>
+<div class="ttc" id="class_facade_modele_html_a2c2d2decb65156b238cf28ecf1098b3e"><div class="ttname"><a href="../../d1/dd9/class_facade_modele.html#a2c2d2decb65156b238cf28ecf1098b3e">FacadeModele::initialiserRectangleElastique</a></div><div class="ttdeci">void initialiserRectangleElastique(int i, int j)</div><div class="ttdef"><b>Definition:</b> <a href="../../d7/d09/_facade_modele_8cpp_source.html#l00572">FacadeModele.cpp:572</a></div></div>
+<div class="ttc" id="class_facade_modele_html_a81cddb4d86add47a7d859758dcf29aa9"><div class="ttname"><a href="../../d1/dd9/class_facade_modele.html#a81cddb4d86add47a7d859758dcf29aa9">FacadeModele::verifierCliqueDansTable</a></div><div class="ttdeci">bool verifierCliqueDansTable(int x, int y)</div><div class="ttdoc">Vérifier si un point cliqué est dans la table. </div><div class="ttdef"><b>Definition:</b> <a href="../../d7/d09/_facade_modele_8cpp_source.html#l00677">FacadeModele.cpp:677</a></div></div>
+<div class="ttc" id="class_facade_modele_html_af578161d03b2157cdaa3182900ff61cc"><div class="ttname"><a href="../../d1/dd9/class_facade_modele.html#af578161d03b2157cdaa3182900ff61cc">FacadeModele::obtenirArbreRenduINF2990</a></div><div class="ttdeci">const ArbreRenduINF2990 * obtenirArbreRenduINF2990() const </div><div class="ttdoc">Retourne l&#39;arbre de rendu. </div><div class="ttdef"><b>Definition:</b> <a href="../../d4/d1c/_facade_modele_8h_source.html#l00198">FacadeModele.h:198</a></div></div>
+<div class="ttc" id="class_arbre_rendu_i_n_f2990_html"><div class="ttname"><a href="../../da/dcf/class_arbre_rendu_i_n_f2990.html">ArbreRenduINF2990</a></div><div class="ttdoc">Classe qui représente l&#39;arbre de rendu spécifique au projet de INF2990. </div><div class="ttdef"><b>Definition:</b> <a href="../../de/d77/_arbre_rendu_i_n_f2990_8h_source.html#l00032">ArbreRenduINF2990.h:32</a></div></div>
+<div class="ttc" id="_facade_interface_native_8cpp_html_acb559820d9ca11295b4500f179ef6392"><div class="ttname"><a href="../../d7/d39/_facade_interface_native_8cpp.html#acb559820d9ca11295b4500f179ef6392">i</a></div><div class="ttdeci">int i</div><div class="ttdef"><b>Definition:</b> <a href="../../d7/d39/_facade_interface_native_8cpp_source.html#l01038">FacadeInterfaceNative.cpp:1038</a></div></div>
+<div class="ttc" id="_facade_interface_native_8cpp_html_a8f9896eae807ca85f762f5bdba217d13"><div class="ttname"><a href="../../d7/d39/_facade_interface_native_8cpp.html#a8f9896eae807ca85f762f5bdba217d13">y2</a></div><div class="ttdeci">int int int y2</div><div class="ttdef"><b>Definition:</b> <a href="../../d7/d39/_facade_interface_native_8cpp_source.html#l00739">FacadeInterfaceNative.cpp:739</a></div></div>
+<div class="ttc" id="_facade_interface_native_8cpp_html_a886daa12d11655f342168e87c7c0b1cb"><div class="ttname"><a href="../../d7/d39/_facade_interface_native_8cpp.html#a886daa12d11655f342168e87c7c0b1cb">y1</a></div><div class="ttdeci">int y1</div><div class="ttdef"><b>Definition:</b> <a href="../../d7/d39/_facade_interface_native_8cpp_source.html#l00739">FacadeInterfaceNative.cpp:739</a></div></div>
+<div class="ttc" id="_facade_interface_native_8h_html_a64bd83dee2f9237546a9794be32107bc"><div class="ttname"><a href="../../df/df1/_facade_interface_native_8h.html#a64bd83dee2f9237546a9794be32107bc">ctrlDown</a></div><div class="ttdeci">int int int bool ctrlDown</div><div class="ttdef"><b>Definition:</b> <a href="../../df/df1/_facade_interface_native_8h_source.html#l00048">FacadeInterfaceNative.h:48</a></div></div>
+<div class="ttc" id="class_facade_modele_html_acbf0495fda26f5be37089470dc5f4372"><div class="ttname"><a href="../../d1/dd9/class_facade_modele.html#acbf0495fda26f5be37089470dc5f4372">FacadeModele::libererInstance</a></div><div class="ttdeci">static void libererInstance()</div><div class="ttdoc">Libère l&#39;instance unique de la classe. </div><div class="ttdef"><b>Definition:</b> <a href="../../d7/d09/_facade_modele_8cpp_source.html#l00111">FacadeModele.cpp:111</a></div></div>
+<div class="ttc" id="class_facade_modele_html_aa56cf96b7e381e0f14e2c9a55be913bf"><div class="ttname"><a href="../../d1/dd9/class_facade_modele.html#aa56cf96b7e381e0f14e2c9a55be913bf">FacadeModele::obtenirVue</a></div><div class="ttdeci">vue::Vue * obtenirVue()</div><div class="ttdoc">Retourne la vue courante. </div><div class="ttdef"><b>Definition:</b> <a href="../../d4/d1c/_facade_modele_8h_source.html#l00182">FacadeModele.h:182</a></div></div>
+<div class="ttc" id="class_facade_modele_html_abb2abd39d6b6b60fb7a4babb46f0bd01"><div class="ttname"><a href="../../d1/dd9/class_facade_modele.html#abb2abd39d6b6b60fb7a4babb46f0bd01">FacadeModele::deplacerSelection</a></div><div class="ttdeci">void deplacerSelection(int x1, int y1, int x2, int y2, bool duplication)</div><div class="ttdoc">Deplacement des noeuds selectionnés dans l&#39;arbre de rendu. </div><div class="ttdef"><b>Definition:</b> <a href="../../d7/d09/_facade_modele_8cpp_source.html#l00393">FacadeModele.cpp:393</a></div></div>
+<div class="ttc" id="class_facade_modele_html_a1c99d4d88f05b70a20b36b51c07f31cf"><div class="ttname"><a href="../../d1/dd9/class_facade_modele.html#a1c99d4d88f05b70a20b36b51c07f31cf">FacadeModele::terminerRectangleElastique</a></div><div class="ttdeci">void terminerRectangleElastique()</div><div class="ttdef"><b>Definition:</b> <a href="../../d7/d09/_facade_modele_8cpp_source.html#l00604">FacadeModele.cpp:604</a></div></div>
+<div class="ttc" id="class_noeud_abstrait_html"><div class="ttname"><a href="../../da/df4/class_noeud_abstrait.html">NoeudAbstrait</a></div><div class="ttdoc">Classe de base du patron composite utilisée pour créer l&#39;arbre de rendu. </div><div class="ttdef"><b>Definition:</b> <a href="../../d4/d75/_noeud_abstrait_8h_source.html#l00048">NoeudAbstrait.h:48</a></div></div>
+<div class="ttc" id="class_facade_modele_html_aa6f038b42cff152deb717d11237fd686"><div class="ttname"><a href="../../d1/dd9/class_facade_modele.html#aa6f038b42cff152deb717d11237fd686">FacadeModele::positionnerMur</a></div><div class="ttdeci">static void positionnerMur(int originX, int originY, int x1, int y1, int x2, int y2, NoeudAbstrait *noeud)</div><div class="ttdef"><b>Definition:</b> <a href="../../d7/d09/_facade_modele_8cpp_source.html#l00801">FacadeModele.cpp:801</a></div></div>
+<div class="ttc" id="class_facade_modele_html_a24dcb4e32cf104797158b398bafbfbb7"><div class="ttname"><a href="../../d1/dd9/class_facade_modele.html#a24dcb4e32cf104797158b398bafbfbb7">FacadeModele::animer</a></div><div class="ttdeci">void animer(float temps)</div><div class="ttdoc">Anime la scène. </div><div class="ttdef"><b>Definition:</b> <a href="../../d7/d09/_facade_modele_8cpp_source.html#l00314">FacadeModele.cpp:314</a></div></div>
+<div class="ttc" id="_facade_interface_native_8cpp_html_a19f20006d9c53001d717b5431d85d152"><div class="ttname"><a href="../../d7/d39/_facade_interface_native_8cpp.html#a19f20006d9c53001d717b5431d85d152">largeur</a></div><div class="ttdeci">int int int largeur</div><div class="ttdef"><b>Definition:</b> <a href="../../d7/d39/_facade_interface_native_8cpp_source.html#l00048">FacadeInterfaceNative.cpp:48</a></div></div>
+<div class="ttc" id="_facade_interface_native_8cpp_html_a0a2f84ed7838f07779ae24c5a9086d33"><div class="ttname"><a href="../../d7/d39/_facade_interface_native_8cpp.html#a0a2f84ed7838f07779ae24c5a9086d33">y</a></div><div class="ttdeci">int y</div><div class="ttdef"><b>Definition:</b> <a href="../../d7/d39/_facade_interface_native_8cpp_source.html#l00400">FacadeInterfaceNative.cpp:400</a></div></div>
+</div><!-- fragment --></div><!-- contents -->
+</div><!-- doc-content -->
+<!-- start footer part -->
+<div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
+  <ul>
+    <li class="navelem"><a class="el" href="../../dir_8f231bbbd90d174e51ca0653d136090e.html">DLL</a></li><li class="navelem"><a class="el" href="../../dir_91dff54cac5da9924a0b9839a2e4c127.html">Application</a></li><li class="navelem"><a class="el" href="../../d4/d1c/_facade_modele_8h.html">FacadeModele.h</a></li>
+    <li class="footer">GÃ©nÃ©rÃ© le Dimanche 15 FÃ©vrier 2015 22:35:30 pour Pain Ball par
+    <a href="http://www.doxygen.org/index.html">
+    <img class="footer" src="../../doxygen.png" alt="doxygen"/></a> 1.8.9.1 </li>
+  </ul>
+</div>
+</body>
+</html>

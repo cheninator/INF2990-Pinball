@@ -1,0 +1,461 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=9"/>
+<meta name="generator" content="Doxygen 1.8.9.1"/>
+<title>Pain Ball:  Fichier source de DLL/Arbre/ArbreRenduINF2990.cpp</title>
+<link href="../../tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="../../jquery.js"></script>
+<script type="text/javascript" src="../../dynsections.js"></script>
+<link href="../../navtree.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="../../resize.js"></script>
+<script type="text/javascript" src="../../navtreedata.js"></script>
+<script type="text/javascript" src="../../navtree.js"></script>
+<script type="text/javascript">
+  $(document).ready(initResizable);
+  $(window).load(resizeHeight);
+</script>
+<link href="../../search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="../../search/searchdata.js"></script>
+<script type="text/javascript" src="../../search/search.js"></script>
+<script type="text/javascript">
+  $(document).ready(function() { init_search(); });
+</script>
+<link href="../../doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr style="height: 56px;">
+  <td id="projectlogo"><img alt="Logo" src="../../handy.jpg"/></td>
+  <td style="padding-left: 0.5em;">
+   <div id="projectname">Pain Ball
+   &#160;<span id="projectnumber">Livrable 1</span>
+   </div>
+   <div id="projectbrief">by The Ballers</div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- GÃ©nÃ©rÃ© par Doxygen 1.8.9.1 -->
+<script type="text/javascript">
+var searchBox = new SearchBox("searchBox", "../../search",false,'Recherche');
+</script>
+  <div id="navrow1" class="tabs">
+    <ul class="tablist">
+      <li><a href="../../index.html"><span>Page&#160;principale</span></a></li>
+      <li><a href="../../modules.html"><span>Modules</span></a></li>
+      <li><a href="../../namespaces.html"><span>Espaces&#160;de&#160;nommage</span></a></li>
+      <li><a href="../../annotated.html"><span>Classes</span></a></li>
+      <li class="current"><a href="../../files.html"><span>Fichiers</span></a></li>
+      <li>
+        <div id="MSearchBox" class="MSearchBoxInactive">
+        <span class="left">
+          <img id="MSearchSelect" src="../../search/mag_sel.png"
+               onmouseover="return searchBox.OnSearchSelectShow()"
+               onmouseout="return searchBox.OnSearchSelectHide()"
+               alt=""/>
+          <input type="text" id="MSearchField" value="Recherche" accesskey="S"
+               onfocus="searchBox.OnSearchFieldFocus(true)" 
+               onblur="searchBox.OnSearchFieldFocus(false)" 
+               onkeyup="searchBox.OnSearchFieldChange(event)"/>
+          </span><span class="right">
+            <a id="MSearchClose" href="javascript:searchBox.CloseResultsWindow()"><img id="MSearchCloseImg" border="0" src="../../search/close.png" alt=""/></a>
+          </span>
+        </div>
+      </li>
+    </ul>
+  </div>
+  <div id="navrow2" class="tabs2">
+    <ul class="tablist">
+      <li><a href="../../files.html"><span>Liste&#160;des&#160;fichiers</span></a></li>
+      <li><a href="../../globals.html"><span>Membres&#160;de&#160;fichier</span></a></li>
+    </ul>
+  </div>
+</div><!-- top -->
+<div id="side-nav" class="ui-resizable side-nav-resizable">
+  <div id="nav-tree">
+    <div id="nav-tree-contents">
+      <div id="nav-sync" class="sync"></div>
+    </div>
+  </div>
+  <div id="splitbar" style="-moz-user-select:none;" 
+       class="ui-resizable-handle">
+  </div>
+</div>
+<script type="text/javascript">
+$(document).ready(function(){initNavTree('de/d39/_arbre_rendu_i_n_f2990_8cpp_source.html','../../');});
+</script>
+<div id="doc-content">
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<iframe src="javascript:void(0)" frameborder="0" 
+        name="MSearchResults" id="MSearchResults">
+</iframe>
+</div>
+
+<div class="header">
+  <div class="headertitle">
+<div class="title">ArbreRenduINF2990.cpp</div>  </div>
+</div><!--header-->
+<div class="contents">
+<a href="../../de/d39/_arbre_rendu_i_n_f2990_8cpp.html">Aller Ã  la documentation de ce fichier.</a><div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="../../de/d77/_arbre_rendu_i_n_f2990_8h.html">ArbreRenduINF2990.h</a>&quot;</span></div>
+<div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160;</div>
+<div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="../../d5/dee/_usine_noeud_butoir_d_8h.html">Usines/UsineNoeudButoirD.h</a>&quot;</span></div>
+<div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="../../d4/d41/_usine_noeud_butoir_g_8h.html">Usines/UsineNoeudButoirG.h</a>&quot;</span></div>
+<div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="../../db/d5e/_usine_noeud_butoir_circulaire_8h.html">Usines/UsineNoeudButoirCirculaire.h</a>&quot;</span></div>
+<div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="../../d1/de0/_usine_noeud_cible_8h.html">Usines/UsineNoeudCible.h</a>&quot;</span></div>
+<div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="../../d5/db3/_usine_noeud_bille_8h.html">Usines/UsineNoeudBille.h</a>&quot;</span></div>
+<div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="../../df/db4/_usine_noeud_generateur_bille_8h.html">Usines/UsineNoeudGenerateurBille.h</a>&quot;</span></div>
+<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="../../dc/d77/_usine_noeud_mur_8h.html">Usines/UsineNoeudMur.h</a>&quot;</span></div>
+<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="../../d3/d71/_usine_noeud_palette_d_8h.html">Usines/UsineNoeudPaletteD.h</a>&quot;</span></div>
+<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="../../db/d0a/_usine_noeud_palette_g_8h.html">Usines/UsineNoeudPaletteG.h</a>&quot;</span></div>
+<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="../../df/df7/_usine_noeud_portail_8h.html">Usines/UsineNoeudPortail.h</a>&quot;</span></div>
+<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="../../df/dc7/_usine_noeud_ressort_8h.html">Usines/UsineNoeudRessort.h</a>&quot;</span></div>
+<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="../../d1/d60/_usine_noeud_trou_8h.html">Usines/UsineNoeudTrou.h</a>&quot;</span></div>
+<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="../../d6/d3d/_usine_noeud_vide_8h.html">Usines/UsineNoeudVide.h</a>&quot;</span></div>
+<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="../../d3/d48/_usine_noeud_couvercle_8h.html">Usines/UsineNoeudCouvercle.h</a>&quot;</span></div>
+<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="../../dd/dfe/_usine_noeud_table_8h.html">Usines/UsineNoeudTable.h</a>&quot;</span></div>
+<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;</div>
+<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;<span class="preprocessor">#include &quot;EtatOpenGL.h&quot;</span></div>
+<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;</div>
+<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;</div>
+<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;<span class="keyword">const</span> std::string <a class="code" href="../../da/dcf/class_arbre_rendu_i_n_f2990.html#a7090ddf4a9b060dc54810bf457eda8bc">ArbreRenduINF2990::NOM_BUTOIRD</a>{ <span class="stringliteral">&quot;butoird&quot;</span> };</div>
+<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;<span class="keyword">const</span> std::string <a class="code" href="../../da/dcf/class_arbre_rendu_i_n_f2990.html#ac20d9c22815c737cf160850f7830500c">ArbreRenduINF2990::NOM_BUTOIRG</a>{ <span class="stringliteral">&quot;butoirg&quot;</span> };</div>
+<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;<span class="keyword">const</span> std::string <a class="code" href="../../da/dcf/class_arbre_rendu_i_n_f2990.html#aad9e7a72aacc9d20d8fa8679458fdf2a">ArbreRenduINF2990::NOM_BUTOIRCIRCULAIRE</a>{ <span class="stringliteral">&quot;butoircirculaire&quot;</span> };</div>
+<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;<span class="keyword">const</span> std::string <a class="code" href="../../da/dcf/class_arbre_rendu_i_n_f2990.html#af1c5c5096c35d15a9076ca3e7ccfde37">ArbreRenduINF2990::NOM_CIBLE</a>{ <span class="stringliteral">&quot;cible&quot;</span> };</div>
+<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;<span class="keyword">const</span> std::string <a class="code" href="../../da/dcf/class_arbre_rendu_i_n_f2990.html#a97be26afc6aa5e5ce5c1e66623a27f9d">ArbreRenduINF2990::NOM_BILLE</a>{ <span class="stringliteral">&quot;bille&quot;</span> };</div>
+<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;<span class="keyword">const</span> std::string <a class="code" href="../../da/dcf/class_arbre_rendu_i_n_f2990.html#a26f3e99fe6e21b0d6b5d25f366405f94">ArbreRenduINF2990::NOM_GENERATEURBILLE</a>{ <span class="stringliteral">&quot;generateurbille&quot;</span> };</div>
+<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;<span class="keyword">const</span> std::string <a class="code" href="../../da/dcf/class_arbre_rendu_i_n_f2990.html#a4d9c8c9bfa165dde522834dec2882039">ArbreRenduINF2990::NOM_MUR</a>{ <span class="stringliteral">&quot;mur&quot;</span> };</div>
+<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;<span class="keyword">const</span> std::string <a class="code" href="../../da/dcf/class_arbre_rendu_i_n_f2990.html#ad0c30f5f1a9fa3f3cd9bfcbeb2a84e4c">ArbreRenduINF2990::NOM_PALETTED</a>{ <span class="stringliteral">&quot;paletted&quot;</span> };</div>
+<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;<span class="keyword">const</span> std::string <a class="code" href="../../da/dcf/class_arbre_rendu_i_n_f2990.html#afe5b7c4db609c37ecadc3fb4336f3041">ArbreRenduINF2990::NOM_PALETTEG</a>{ <span class="stringliteral">&quot;paletteg&quot;</span> };</div>
+<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;<span class="keyword">const</span> std::string <a class="code" href="../../da/dcf/class_arbre_rendu_i_n_f2990.html#a71a649e3d19417d31752a25c002dc4d6">ArbreRenduINF2990::NOM_PORTAIL</a>{ <span class="stringliteral">&quot;portail&quot;</span> };</div>
+<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;<span class="keyword">const</span> std::string <a class="code" href="../../da/dcf/class_arbre_rendu_i_n_f2990.html#a78db47e8a4ca3320937c2b88c7bb0340">ArbreRenduINF2990::NOM_RESSORT</a>{ <span class="stringliteral">&quot;ressort&quot;</span> };</div>
+<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;<span class="keyword">const</span> std::string <a class="code" href="../../da/dcf/class_arbre_rendu_i_n_f2990.html#af5ad7533d8b32b30f07700ed4e3c2dbb">ArbreRenduINF2990::NOM_TROU</a>{ <span class="stringliteral">&quot;trou&quot;</span> };</div>
+<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;<span class="keyword">const</span> std::string <a class="code" href="../../da/dcf/class_arbre_rendu_i_n_f2990.html#af8102d310d8607539ce7daa5535617b6">ArbreRenduINF2990::NOM_VIDE</a>{ <span class="stringliteral">&quot;vide&quot;</span> };</div>
+<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;<span class="keyword">const</span> std::string <a class="code" href="../../da/dcf/class_arbre_rendu_i_n_f2990.html#afd4077ad4f0620c8aa5e3e0cf0e69a95">ArbreRenduINF2990::NOM_COUVERCLE</a>{ <span class="stringliteral">&quot;couvercle&quot;</span> };</div>
+<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;<span class="keyword">const</span> std::string <a class="code" href="../../da/dcf/class_arbre_rendu_i_n_f2990.html#a89e651c1a28481ce70f473bd15555114">ArbreRenduINF2990::NOM_TABLE</a>{ <span class="stringliteral">&quot;table&quot;</span> };</div>
+<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;</div>
+<div class="line"><a name="l00058"></a><span class="lineno"><a class="line" href="../../da/dcf/class_arbre_rendu_i_n_f2990.html#a67528b7fa54e8ef8f96ef2e0bad06d2d">   58</a></span>&#160;<a class="code" href="../../da/dcf/class_arbre_rendu_i_n_f2990.html#a67528b7fa54e8ef8f96ef2e0bad06d2d">ArbreRenduINF2990::ArbreRenduINF2990</a>()</div>
+<div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;{</div>
+<div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;    <span class="comment">// Construction des usines</span></div>
+<div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;    <a class="code" href="../../dc/dc6/class_arbre_rendu.html#aef33737fda55a3916e895e1adc3e88ae">ajouterUsine</a>(<a class="code" href="../../da/dcf/class_arbre_rendu_i_n_f2990.html#a7090ddf4a9b060dc54810bf457eda8bc">NOM_BUTOIRD</a>, <span class="keyword">new</span> <a class="code" href="../../dc/dcd/class_usine_noeud_butoir_d.html">UsineNoeudButoirD</a>{ <a class="code" href="../../da/dcf/class_arbre_rendu_i_n_f2990.html#a7090ddf4a9b060dc54810bf457eda8bc">NOM_BUTOIRD</a> });</div>
+<div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;    <a class="code" href="../../dc/dc6/class_arbre_rendu.html#aef33737fda55a3916e895e1adc3e88ae">ajouterUsine</a>(<a class="code" href="../../da/dcf/class_arbre_rendu_i_n_f2990.html#ac20d9c22815c737cf160850f7830500c">NOM_BUTOIRG</a>, <span class="keyword">new</span> <a class="code" href="../../d8/d21/class_usine_noeud_butoir_g.html">UsineNoeudButoirG</a>{ <a class="code" href="../../da/dcf/class_arbre_rendu_i_n_f2990.html#ac20d9c22815c737cf160850f7830500c">NOM_BUTOIRG</a> });</div>
+<div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;    <a class="code" href="../../dc/dc6/class_arbre_rendu.html#aef33737fda55a3916e895e1adc3e88ae">ajouterUsine</a>(<a class="code" href="../../da/dcf/class_arbre_rendu_i_n_f2990.html#aad9e7a72aacc9d20d8fa8679458fdf2a">NOM_BUTOIRCIRCULAIRE</a>, <span class="keyword">new</span> <a class="code" href="../../d5/d1b/class_usine_noeud_butoir_circulaire.html">UsineNoeudButoirCirculaire</a>{ <a class="code" href="../../da/dcf/class_arbre_rendu_i_n_f2990.html#aad9e7a72aacc9d20d8fa8679458fdf2a">NOM_BUTOIRCIRCULAIRE</a> });</div>
+<div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;    <a class="code" href="../../dc/dc6/class_arbre_rendu.html#aef33737fda55a3916e895e1adc3e88ae">ajouterUsine</a>(<a class="code" href="../../da/dcf/class_arbre_rendu_i_n_f2990.html#af1c5c5096c35d15a9076ca3e7ccfde37">NOM_CIBLE</a>, <span class="keyword">new</span> <a class="code" href="../../d8/d65/class_usine_noeud_cible.html">UsineNoeudCible</a>{ <a class="code" href="../../da/dcf/class_arbre_rendu_i_n_f2990.html#af1c5c5096c35d15a9076ca3e7ccfde37">NOM_CIBLE</a> });</div>
+<div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;    <a class="code" href="../../dc/dc6/class_arbre_rendu.html#aef33737fda55a3916e895e1adc3e88ae">ajouterUsine</a>(<a class="code" href="../../da/dcf/class_arbre_rendu_i_n_f2990.html#a97be26afc6aa5e5ce5c1e66623a27f9d">NOM_BILLE</a>, <span class="keyword">new</span> <a class="code" href="../../d1/d2e/class_usine_noeud_bille.html">UsineNoeudBille</a>{ <a class="code" href="../../da/dcf/class_arbre_rendu_i_n_f2990.html#a97be26afc6aa5e5ce5c1e66623a27f9d">NOM_BILLE</a> });</div>
+<div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160;    <a class="code" href="../../dc/dc6/class_arbre_rendu.html#aef33737fda55a3916e895e1adc3e88ae">ajouterUsine</a>(<a class="code" href="../../da/dcf/class_arbre_rendu_i_n_f2990.html#a26f3e99fe6e21b0d6b5d25f366405f94">NOM_GENERATEURBILLE</a>, <span class="keyword">new</span> <a class="code" href="../../df/d15/class_usine_noeud_generateur_bille.html">UsineNoeudGenerateurBille</a>{ <a class="code" href="../../da/dcf/class_arbre_rendu_i_n_f2990.html#a26f3e99fe6e21b0d6b5d25f366405f94">NOM_GENERATEURBILLE</a> });</div>
+<div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160;    <a class="code" href="../../dc/dc6/class_arbre_rendu.html#aef33737fda55a3916e895e1adc3e88ae">ajouterUsine</a>(<a class="code" href="../../da/dcf/class_arbre_rendu_i_n_f2990.html#a4d9c8c9bfa165dde522834dec2882039">NOM_MUR</a>, <span class="keyword">new</span> <a class="code" href="../../d2/d32/class_usine_noeud_mur.html">UsineNoeudMur</a>{ <a class="code" href="../../da/dcf/class_arbre_rendu_i_n_f2990.html#a4d9c8c9bfa165dde522834dec2882039">NOM_MUR</a> });</div>
+<div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160;    <a class="code" href="../../dc/dc6/class_arbre_rendu.html#aef33737fda55a3916e895e1adc3e88ae">ajouterUsine</a>(<a class="code" href="../../da/dcf/class_arbre_rendu_i_n_f2990.html#ad0c30f5f1a9fa3f3cd9bfcbeb2a84e4c">NOM_PALETTED</a>, <span class="keyword">new</span> <a class="code" href="../../dd/d9c/class_usine_noeud_palette_d.html">UsineNoeudPaletteD</a>{ <a class="code" href="../../da/dcf/class_arbre_rendu_i_n_f2990.html#ad0c30f5f1a9fa3f3cd9bfcbeb2a84e4c">NOM_PALETTED</a> });</div>
+<div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160;    <a class="code" href="../../dc/dc6/class_arbre_rendu.html#aef33737fda55a3916e895e1adc3e88ae">ajouterUsine</a>(<a class="code" href="../../da/dcf/class_arbre_rendu_i_n_f2990.html#afe5b7c4db609c37ecadc3fb4336f3041">NOM_PALETTEG</a>, <span class="keyword">new</span> <a class="code" href="../../de/d51/class_usine_noeud_palette_g.html">UsineNoeudPaletteG</a>{ <a class="code" href="../../da/dcf/class_arbre_rendu_i_n_f2990.html#afe5b7c4db609c37ecadc3fb4336f3041">NOM_PALETTEG</a> });</div>
+<div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160;    <a class="code" href="../../dc/dc6/class_arbre_rendu.html#aef33737fda55a3916e895e1adc3e88ae">ajouterUsine</a>(<a class="code" href="../../da/dcf/class_arbre_rendu_i_n_f2990.html#a71a649e3d19417d31752a25c002dc4d6">NOM_PORTAIL</a>, <span class="keyword">new</span> <a class="code" href="../../da/d20/class_usine_noeud_portail.html">UsineNoeudPortail</a>{ <a class="code" href="../../da/dcf/class_arbre_rendu_i_n_f2990.html#a71a649e3d19417d31752a25c002dc4d6">NOM_PORTAIL</a> });</div>
+<div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160;    <a class="code" href="../../dc/dc6/class_arbre_rendu.html#aef33737fda55a3916e895e1adc3e88ae">ajouterUsine</a>(<a class="code" href="../../da/dcf/class_arbre_rendu_i_n_f2990.html#a78db47e8a4ca3320937c2b88c7bb0340">NOM_RESSORT</a>, <span class="keyword">new</span> <a class="code" href="../../dc/d0b/class_usine_noeud_ressort.html">UsineNoeudRessort</a>{ <a class="code" href="../../da/dcf/class_arbre_rendu_i_n_f2990.html#a78db47e8a4ca3320937c2b88c7bb0340">NOM_RESSORT</a> });</div>
+<div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160;    <a class="code" href="../../dc/dc6/class_arbre_rendu.html#aef33737fda55a3916e895e1adc3e88ae">ajouterUsine</a>(<a class="code" href="../../da/dcf/class_arbre_rendu_i_n_f2990.html#af5ad7533d8b32b30f07700ed4e3c2dbb">NOM_TROU</a>, <span class="keyword">new</span> <a class="code" href="../../de/d8a/class_usine_noeud_trou.html">UsineNoeudTrou</a>{ <a class="code" href="../../da/dcf/class_arbre_rendu_i_n_f2990.html#af5ad7533d8b32b30f07700ed4e3c2dbb">NOM_TROU</a> });</div>
+<div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160;    <a class="code" href="../../dc/dc6/class_arbre_rendu.html#aef33737fda55a3916e895e1adc3e88ae">ajouterUsine</a>(<a class="code" href="../../da/dcf/class_arbre_rendu_i_n_f2990.html#af8102d310d8607539ce7daa5535617b6">NOM_VIDE</a>, <span class="keyword">new</span> <a class="code" href="../../d9/de2/class_usine_noeud_vide.html">UsineNoeudVide</a>{ <a class="code" href="../../da/dcf/class_arbre_rendu_i_n_f2990.html#af8102d310d8607539ce7daa5535617b6">NOM_VIDE</a> });</div>
+<div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160;    <a class="code" href="../../dc/dc6/class_arbre_rendu.html#aef33737fda55a3916e895e1adc3e88ae">ajouterUsine</a>(<a class="code" href="../../da/dcf/class_arbre_rendu_i_n_f2990.html#afd4077ad4f0620c8aa5e3e0cf0e69a95">NOM_COUVERCLE</a>, <span class="keyword">new</span> <a class="code" href="../../db/dad/class_usine_noeud_couvercle.html">UsineNoeudCouvercle</a>{ <a class="code" href="../../da/dcf/class_arbre_rendu_i_n_f2990.html#afd4077ad4f0620c8aa5e3e0cf0e69a95">NOM_COUVERCLE</a> });</div>
+<div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160;    <a class="code" href="../../dc/dc6/class_arbre_rendu.html#aef33737fda55a3916e895e1adc3e88ae">ajouterUsine</a>(<a class="code" href="../../da/dcf/class_arbre_rendu_i_n_f2990.html#a89e651c1a28481ce70f473bd15555114">NOM_TABLE</a>, <span class="keyword">new</span> <a class="code" href="../../db/d74/class_usine_noeud_table.html">UsineNoeudTable</a>{ <a class="code" href="../../da/dcf/class_arbre_rendu_i_n_f2990.html#a89e651c1a28481ce70f473bd15555114">NOM_TABLE</a> });</div>
+<div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160;}</div>
+<div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160;</div>
+<div class="line"><a name="l00078"></a><span class="lineno">   78</span>&#160;</div>
+<div class="line"><a name="l00088"></a><span class="lineno"><a class="line" href="../../da/dcf/class_arbre_rendu_i_n_f2990.html#aa67526b2fd719f6bcef7a4547bd25c7b">   88</a></span>&#160;<a class="code" href="../../da/dcf/class_arbre_rendu_i_n_f2990.html#aa67526b2fd719f6bcef7a4547bd25c7b">ArbreRenduINF2990::~ArbreRenduINF2990</a>()</div>
+<div class="line"><a name="l00089"></a><span class="lineno">   89</span>&#160;{</div>
+<div class="line"><a name="l00090"></a><span class="lineno">   90</span>&#160;    <span class="keyword">delete</span> proprietes_;</div>
+<div class="line"><a name="l00091"></a><span class="lineno">   91</span>&#160;}</div>
+<div class="line"><a name="l00092"></a><span class="lineno">   92</span>&#160;</div>
+<div class="line"><a name="l00093"></a><span class="lineno">   93</span>&#160;</div>
+<div class="line"><a name="l00105"></a><span class="lineno"><a class="line" href="../../da/dcf/class_arbre_rendu_i_n_f2990.html#a678d89e1f12ae16ee7dcf6de3db637a3">  105</a></span>&#160;<span class="keywordtype">void</span> <a class="code" href="../../da/dcf/class_arbre_rendu_i_n_f2990.html#a678d89e1f12ae16ee7dcf6de3db637a3">ArbreRenduINF2990::initialiser</a>()</div>
+<div class="line"><a name="l00106"></a><span class="lineno">  106</span>&#160;{</div>
+<div class="line"><a name="l00107"></a><span class="lineno">  107</span>&#160;    <span class="comment">// On vide l&#39;arbre</span></div>
+<div class="line"><a name="l00108"></a><span class="lineno">  108</span>&#160;    <a class="code" href="../../da/d38/class_noeud_composite.html#a5e1564f2f07f5cd84cef7078ae88e3c6">vider</a>();</div>
+<div class="line"><a name="l00109"></a><span class="lineno">  109</span>&#160;</div>
+<div class="line"><a name="l00110"></a><span class="lineno">  110</span>&#160;    <span class="comment">// Charger la zone de jeu par défaut</span></div>
+<div class="line"><a name="l00111"></a><span class="lineno">  111</span>&#160;    <a class="code" href="../../da/dcf/class_arbre_rendu_i_n_f2990.html#a78fe021e3ce02eb8438f1efd84002a6f">initialiserXML</a>(<span class="stringliteral">&quot;zones/default.xml&quot;</span>);</div>
+<div class="line"><a name="l00112"></a><span class="lineno">  112</span>&#160;</div>
+<div class="line"><a name="l00113"></a><span class="lineno">  113</span>&#160;}</div>
+<div class="line"><a name="l00114"></a><span class="lineno">  114</span>&#160;</div>
+<div class="line"><a name="l00115"></a><span class="lineno">  115</span>&#160;</div>
+<div class="line"><a name="l00126"></a><span class="lineno"><a class="line" href="../../da/dcf/class_arbre_rendu_i_n_f2990.html#a4aa11fcea861f642d11664e1308f2278">  126</a></span>&#160;<a class="code" href="../../da/df4/class_noeud_abstrait.html">NoeudAbstrait</a>* <a class="code" href="../../da/dcf/class_arbre_rendu_i_n_f2990.html#a4aa11fcea861f642d11664e1308f2278">ArbreRenduINF2990::getEnfant</a>(<span class="keywordtype">int</span> position)<span class="keyword"> const</span></div>
+<div class="line"><a name="l00127"></a><span class="lineno">  127</span>&#160;<span class="keyword"></span>{</div>
+<div class="line"><a name="l00128"></a><span class="lineno">  128</span>&#160;    <span class="keywordflow">if</span> (position &gt; <a class="code" href="../../da/d38/class_noeud_composite.html#a628227fd324020e497ada7577457ff3f">enfants_</a>.size() || position &lt; 0)</div>
+<div class="line"><a name="l00129"></a><span class="lineno">  129</span>&#160;        <span class="keywordflow">return</span> <span class="keyword">nullptr</span>;</div>
+<div class="line"><a name="l00130"></a><span class="lineno">  130</span>&#160;    <span class="keywordflow">else</span></div>
+<div class="line"><a name="l00131"></a><span class="lineno">  131</span>&#160;        <span class="keywordflow">return</span> <a class="code" href="../../da/d38/class_noeud_composite.html#a628227fd324020e497ada7577457ff3f">enfants_</a>[position];</div>
+<div class="line"><a name="l00132"></a><span class="lineno">  132</span>&#160;}</div>
+<div class="line"><a name="l00133"></a><span class="lineno">  133</span>&#160;</div>
+<div class="line"><a name="l00134"></a><span class="lineno">  134</span>&#160;</div>
+<div class="line"><a name="l00144"></a><span class="lineno"><a class="line" href="../../da/dcf/class_arbre_rendu_i_n_f2990.html#aa97213f642b874fb43e67330aab677be">  144</a></span>&#160;glm::dvec3 <a class="code" href="../../da/dcf/class_arbre_rendu_i_n_f2990.html#aa97213f642b874fb43e67330aab677be">ArbreRenduINF2990::getPosRessort</a>()</div>
+<div class="line"><a name="l00145"></a><span class="lineno">  145</span>&#160;{</div>
+<div class="line"><a name="l00146"></a><span class="lineno">  146</span>&#160;    <span class="keywordflow">return</span> posRessort;</div>
+<div class="line"><a name="l00147"></a><span class="lineno">  147</span>&#160;}</div>
+<div class="line"><a name="l00148"></a><span class="lineno">  148</span>&#160;</div>
+<div class="line"><a name="l00149"></a><span class="lineno">  149</span>&#160;</div>
+<div class="line"><a name="l00159"></a><span class="lineno"><a class="line" href="../../da/dcf/class_arbre_rendu_i_n_f2990.html#adcb8237b02939746df8498d88c004092">  159</a></span>&#160;<span class="keywordtype">bool</span> <a class="code" href="../../da/dcf/class_arbre_rendu_i_n_f2990.html#adcb8237b02939746df8498d88c004092">ArbreRenduINF2990::accepterVisiteur</a>(<a class="code" href="../../df/d41/class_visiteur_abstrait.html">VisiteurAbstrait</a>* vis)</div>
+<div class="line"><a name="l00160"></a><span class="lineno">  160</span>&#160;{</div>
+<div class="line"><a name="l00161"></a><span class="lineno">  161</span>&#160;    <span class="keywordtype">bool</span> operationReussie = <span class="keyword">false</span>;</div>
+<div class="line"><a name="l00162"></a><span class="lineno">  162</span>&#160;</div>
+<div class="line"><a name="l00163"></a><span class="lineno">  163</span>&#160;    <span class="keywordflow">if</span> (vis-&gt;<a class="code" href="../../df/d41/class_visiteur_abstrait.html#a71d6f684528356584f9d2c25763411de">traiter</a>(<span class="keyword">this</span>))</div>
+<div class="line"><a name="l00164"></a><span class="lineno">  164</span>&#160;        operationReussie = <span class="keyword">true</span>;</div>
+<div class="line"><a name="l00165"></a><span class="lineno">  165</span>&#160;</div>
+<div class="line"><a name="l00166"></a><span class="lineno">  166</span>&#160;    <span class="keywordflow">return</span> operationReussie;</div>
+<div class="line"><a name="l00167"></a><span class="lineno">  167</span>&#160;}</div>
+<div class="line"><a name="l00168"></a><span class="lineno">  168</span>&#160;</div>
+<div class="line"><a name="l00169"></a><span class="lineno">  169</span>&#160;</div>
+<div class="line"><a name="l00182"></a><span class="lineno"><a class="line" href="../../da/dcf/class_arbre_rendu_i_n_f2990.html#a78fe021e3ce02eb8438f1efd84002a6f">  182</a></span>&#160;<span class="keywordtype">bool</span> <a class="code" href="../../da/dcf/class_arbre_rendu_i_n_f2990.html#a78fe021e3ce02eb8438f1efd84002a6f">ArbreRenduINF2990::initialiserXML</a>(std::string nomFichier)</div>
+<div class="line"><a name="l00183"></a><span class="lineno">  183</span>&#160;{</div>
+<div class="line"><a name="l00184"></a><span class="lineno">  184</span>&#160;    <span class="keywordtype">bool</span> fichierTrouve = <span class="keyword">false</span>;</div>
+<div class="line"><a name="l00185"></a><span class="lineno">  185</span>&#160;    tinyxml2::XMLDocument document;</div>
+<div class="line"><a name="l00186"></a><span class="lineno">  186</span>&#160;</div>
+<div class="line"><a name="l00187"></a><span class="lineno">  187</span>&#160;    <span class="comment">// Si le fichier n&#39;existe pas, envoyer une erreur</span></div>
+<div class="line"><a name="l00188"></a><span class="lineno">  188</span>&#160;    <span class="keywordflow">if</span> (!utilitaire::fichierExiste(nomFichier) &amp;&amp; nomFichier != <span class="stringliteral">&quot;?.xml&quot;</span>)</div>
+<div class="line"><a name="l00189"></a><span class="lineno">  189</span>&#160;        std::cout &lt;&lt; <span class="stringliteral">&quot;Fichier n&#39;existe pas. &quot;</span>;</div>
+<div class="line"><a name="l00190"></a><span class="lineno">  190</span>&#160;        </div>
+<div class="line"><a name="l00191"></a><span class="lineno">  191</span>&#160;    <span class="keywordflow">else</span></div>
+<div class="line"><a name="l00192"></a><span class="lineno">  192</span>&#160;    {</div>
+<div class="line"><a name="l00193"></a><span class="lineno">  193</span>&#160;        document.LoadFile(nomFichier.c_str());</div>
+<div class="line"><a name="l00194"></a><span class="lineno">  194</span>&#160;        lireXML(document);</div>
+<div class="line"><a name="l00195"></a><span class="lineno">  195</span>&#160;        fichierTrouve = <span class="keyword">true</span>;</div>
+<div class="line"><a name="l00196"></a><span class="lineno">  196</span>&#160;    }</div>
+<div class="line"><a name="l00197"></a><span class="lineno">  197</span>&#160;</div>
+<div class="line"><a name="l00198"></a><span class="lineno">  198</span>&#160;    <span class="keywordflow">return</span> fichierTrouve;</div>
+<div class="line"><a name="l00199"></a><span class="lineno">  199</span>&#160;}</div>
+<div class="line"><a name="l00200"></a><span class="lineno">  200</span>&#160;</div>
+<div class="line"><a name="l00201"></a><span class="lineno">  201</span>&#160;</div>
+<div class="line"><a name="l00214"></a><span class="lineno">  214</span>&#160;<span class="keywordtype">bool</span> ArbreRenduINF2990::lireXML(tinyxml2::XMLDocument&amp; doc)</div>
+<div class="line"><a name="l00215"></a><span class="lineno">  215</span>&#160;{</div>
+<div class="line"><a name="l00216"></a><span class="lineno">  216</span>&#160;    <span class="keywordtype">bool</span> lecture = <span class="keyword">false</span>;</div>
+<div class="line"><a name="l00217"></a><span class="lineno">  217</span>&#160;</div>
+<div class="line"><a name="l00218"></a><span class="lineno">  218</span>&#160;    <span class="keyword">const</span> <span class="keywordtype">char</span>* positionX = <span class="stringliteral">&quot;posX&quot;</span>;</div>
+<div class="line"><a name="l00219"></a><span class="lineno">  219</span>&#160;    <span class="keyword">const</span> <span class="keywordtype">char</span>* positionY = <span class="stringliteral">&quot;posY&quot;</span>;</div>
+<div class="line"><a name="l00220"></a><span class="lineno">  220</span>&#160;    <span class="keyword">const</span> <span class="keywordtype">char</span>* positionZ = <span class="stringliteral">&quot;posZ&quot;</span>;</div>
+<div class="line"><a name="l00221"></a><span class="lineno">  221</span>&#160;    <span class="keyword">const</span> <span class="keywordtype">char</span>* scaleX = <span class="stringliteral">&quot;scaleX&quot;</span>;</div>
+<div class="line"><a name="l00222"></a><span class="lineno">  222</span>&#160;    <span class="keyword">const</span> <span class="keywordtype">char</span>* scaleY = <span class="stringliteral">&quot;scaleY&quot;</span>;</div>
+<div class="line"><a name="l00223"></a><span class="lineno">  223</span>&#160;    <span class="keyword">const</span> <span class="keywordtype">char</span>* scaleZ = <span class="stringliteral">&quot;scaleZ&quot;</span>;</div>
+<div class="line"><a name="l00224"></a><span class="lineno">  224</span>&#160;    <span class="keyword">const</span> <span class="keywordtype">char</span>* <a class="code" href="../../d7/d39/_facade_interface_native_8cpp.html#aa78298ad76b6d579db84f291064400c9">angleX</a> = <span class="stringliteral">&quot;angleX&quot;</span>;</div>
+<div class="line"><a name="l00225"></a><span class="lineno">  225</span>&#160;    <span class="keyword">const</span> <span class="keywordtype">char</span>* <a class="code" href="../../d7/d39/_facade_interface_native_8cpp.html#a48b372f529bd5e3c785de1883b559f21">angleY</a> = <span class="stringliteral">&quot;angleY&quot;</span>;</div>
+<div class="line"><a name="l00226"></a><span class="lineno">  226</span>&#160;    <span class="keyword">const</span> <span class="keywordtype">char</span>* <a class="code" href="../../d7/d39/_facade_interface_native_8cpp.html#aa74bf17d4bfdb74cbb74b8510a90d842">angleZ</a> = <span class="stringliteral">&quot;angleZ&quot;</span>;</div>
+<div class="line"><a name="l00227"></a><span class="lineno">  227</span>&#160;</div>
+<div class="line"><a name="l00228"></a><span class="lineno">  228</span>&#160;    <span class="comment">// Charger les propriétés de la zone de jeu</span></div>
+<div class="line"><a name="l00229"></a><span class="lineno">  229</span>&#160;    tinyxml2::XMLElement* elementPropriete = doc.FirstChildElement(<span class="stringliteral">&quot;Proprietes&quot;</span>);</div>
+<div class="line"><a name="l00230"></a><span class="lineno">  230</span>&#160;    tinyxml2::XMLElement* element = elementPropriete-&gt;FirstChildElement(<span class="stringliteral">&quot;PointsButoir&quot;</span>);</div>
+<div class="line"><a name="l00231"></a><span class="lineno">  231</span>&#160;</div>
+<div class="line"><a name="l00232"></a><span class="lineno">  232</span>&#160;    <span class="keywordflow">for</span> (<span class="keywordtype">int</span> <a class="code" href="../../d7/d39/_facade_interface_native_8cpp.html#acb559820d9ca11295b4500f179ef6392">i</a> = 0; <a class="code" href="../../d7/d39/_facade_interface_native_8cpp.html#acb559820d9ca11295b4500f179ef6392">i</a> &lt; 6; <a class="code" href="../../d7/d39/_facade_interface_native_8cpp.html#acb559820d9ca11295b4500f179ef6392">i</a>++)</div>
+<div class="line"><a name="l00233"></a><span class="lineno">  233</span>&#160;    {</div>
+<div class="line"><a name="l00234"></a><span class="lineno">  234</span>&#160;        proprietes_[<a class="code" href="../../d7/d39/_facade_interface_native_8cpp.html#acb559820d9ca11295b4500f179ef6392">i</a>] = element-&gt;FirstAttribute()-&gt;IntValue();</div>
+<div class="line"><a name="l00235"></a><span class="lineno">  235</span>&#160;        element = element-&gt;NextSiblingElement();</div>
+<div class="line"><a name="l00236"></a><span class="lineno">  236</span>&#160;    }</div>
+<div class="line"><a name="l00237"></a><span class="lineno">  237</span>&#160;</div>
+<div class="line"><a name="l00238"></a><span class="lineno">  238</span>&#160;    <span class="comment">// Obtenir l&#39;élément &quot;arbreRenduINF2990&quot;</span></div>
+<div class="line"><a name="l00239"></a><span class="lineno">  239</span>&#160;    tinyxml2::XMLElement* elementArbre = doc.FirstChildElement(<span class="stringliteral">&quot;arbreRenduINF2990&quot;</span>);</div>
+<div class="line"><a name="l00240"></a><span class="lineno">  240</span>&#160;</div>
+<div class="line"><a name="l00241"></a><span class="lineno">  241</span>&#160;    <span class="keywordflow">if</span> (elementArbre != <span class="keyword">nullptr</span>) </div>
+<div class="line"><a name="l00242"></a><span class="lineno">  242</span>&#160;    {</div>
+<div class="line"><a name="l00243"></a><span class="lineno">  243</span>&#160;        <span class="comment">// Vider l&#39;ancien arbre de rendu</span></div>
+<div class="line"><a name="l00244"></a><span class="lineno">  244</span>&#160;        <a class="code" href="../../da/d38/class_noeud_composite.html#a5e1564f2f07f5cd84cef7078ae88e3c6">vider</a>();</div>
+<div class="line"><a name="l00245"></a><span class="lineno">  245</span>&#160;</div>
+<div class="line"><a name="l00246"></a><span class="lineno">  246</span>&#160;        <span class="comment">// Tenter d&#39;obtenir l&#39;élément table, puis l&#39;attribut nbEnfants</span></div>
+<div class="line"><a name="l00247"></a><span class="lineno">  247</span>&#160;        <span class="keyword">const</span> tinyxml2::XMLElement* elementTable{ elementArbre-&gt;FirstChildElement(<span class="stringliteral">&quot;table&quot;</span>) };</div>
+<div class="line"><a name="l00248"></a><span class="lineno">  248</span>&#160;        </div>
+<div class="line"><a name="l00249"></a><span class="lineno">  249</span>&#160;        <span class="keywordflow">if</span> (elementTable != <span class="keyword">nullptr</span>)</div>
+<div class="line"><a name="l00250"></a><span class="lineno">  250</span>&#160;        {</div>
+<div class="line"><a name="l00251"></a><span class="lineno">  251</span>&#160;            <span class="comment">// Créer la table et l&#39;ajouter à l&#39;arbre de rendu</span></div>
+<div class="line"><a name="l00252"></a><span class="lineno">  252</span>&#160;            <a class="code" href="../../da/df4/class_noeud_abstrait.html">NoeudAbstrait</a>* table{ <a class="code" href="../../dc/dc6/class_arbre_rendu.html#a33ae9013f9cec73854d32527b85b41f9">creerNoeud</a>(elementTable-&gt;Name()) };</div>
+<div class="line"><a name="l00253"></a><span class="lineno">  253</span>&#160;            this-&gt;<a class="code" href="../../da/d38/class_noeud_composite.html#ac2ce823d2c52140d4e1a924163ebbb58">ajouter</a>(table);</div>
+<div class="line"><a name="l00254"></a><span class="lineno">  254</span>&#160;</div>
+<div class="line"><a name="l00255"></a><span class="lineno">  255</span>&#160;            <span class="comment">// Récupérer le nombre d&#39;enfants</span></div>
+<div class="line"><a name="l00256"></a><span class="lineno">  256</span>&#160;            <span class="keywordtype">int</span> nombreEnfants = elementTable-&gt;FirstAttribute()-&gt;IntValue();</div>
+<div class="line"><a name="l00257"></a><span class="lineno">  257</span>&#160;</div>
+<div class="line"><a name="l00258"></a><span class="lineno">  258</span>&#160;            <span class="comment">// Premier enfant de la table</span></div>
+<div class="line"><a name="l00259"></a><span class="lineno">  259</span>&#160;            <span class="keyword">const</span> tinyxml2::XMLElement* enfant{ elementTable-&gt;FirstChildElement() };</div>
+<div class="line"><a name="l00260"></a><span class="lineno">  260</span>&#160;</div>
+<div class="line"><a name="l00261"></a><span class="lineno">  261</span>&#160;            <span class="comment">// Créer les enfants et les ajouter à la table</span></div>
+<div class="line"><a name="l00262"></a><span class="lineno">  262</span>&#160;            <span class="keywordflow">for</span> (<span class="keywordtype">int</span> <a class="code" href="../../d7/d39/_facade_interface_native_8cpp.html#acb559820d9ca11295b4500f179ef6392">i</a> = 0; <a class="code" href="../../d7/d39/_facade_interface_native_8cpp.html#acb559820d9ca11295b4500f179ef6392">i</a> &lt; nombreEnfants; <a class="code" href="../../d7/d39/_facade_interface_native_8cpp.html#acb559820d9ca11295b4500f179ef6392">i</a>++)</div>
+<div class="line"><a name="l00263"></a><span class="lineno">  263</span>&#160;            {</div>
+<div class="line"><a name="l00264"></a><span class="lineno">  264</span>&#160;                <span class="comment">// Construire le noeud concret</span></div>
+<div class="line"><a name="l00265"></a><span class="lineno">  265</span>&#160;                <a class="code" href="../../da/df4/class_noeud_abstrait.html">NoeudAbstrait</a>* noeudConcret{ <a class="code" href="../../dc/dc6/class_arbre_rendu.html#a33ae9013f9cec73854d32527b85b41f9">creerNoeud</a>(enfant-&gt;Name()) };</div>
+<div class="line"><a name="l00266"></a><span class="lineno">  266</span>&#160;</div>
+<div class="line"><a name="l00267"></a><span class="lineno">  267</span>&#160;                <span class="comment">// Assigner les propriétés de l&#39;enfant</span></div>
+<div class="line"><a name="l00268"></a><span class="lineno">  268</span>&#160;                noeudConcret-&gt;<a class="code" href="../../da/df4/class_noeud_abstrait.html#a11e12e42b05a5327c92cd7fd1b7e5a24">assignerPositionRelative</a>({ enfant-&gt;FindAttribute(positionX)-&gt;DoubleValue(),</div>
+<div class="line"><a name="l00269"></a><span class="lineno">  269</span>&#160;                    enfant-&gt;FindAttribute(positionY)-&gt;DoubleValue(),</div>
+<div class="line"><a name="l00270"></a><span class="lineno">  270</span>&#160;                    enfant-&gt;FindAttribute(positionZ)-&gt;DoubleValue() });</div>
+<div class="line"><a name="l00271"></a><span class="lineno">  271</span>&#160;</div>
+<div class="line"><a name="l00272"></a><span class="lineno">  272</span>&#160;                noeudConcret-&gt;assignerEchelle({ enfant-&gt;FindAttribute(scaleX)-&gt;DoubleValue(),</div>
+<div class="line"><a name="l00273"></a><span class="lineno">  273</span>&#160;                    enfant-&gt;FindAttribute(scaleY)-&gt;DoubleValue(),</div>
+<div class="line"><a name="l00274"></a><span class="lineno">  274</span>&#160;                    enfant-&gt;FindAttribute(scaleZ)-&gt;DoubleValue() });</div>
+<div class="line"><a name="l00275"></a><span class="lineno">  275</span>&#160;</div>
+<div class="line"><a name="l00276"></a><span class="lineno">  276</span>&#160;                noeudConcret-&gt;assignerRotation({ enfant-&gt;FindAttribute(angleX)-&gt;DoubleValue(),</div>
+<div class="line"><a name="l00277"></a><span class="lineno">  277</span>&#160;                    enfant-&gt;FindAttribute(angleY)-&gt;DoubleValue(),</div>
+<div class="line"><a name="l00278"></a><span class="lineno">  278</span>&#160;                    enfant-&gt;FindAttribute(angleZ)-&gt;DoubleValue() });</div>
+<div class="line"><a name="l00279"></a><span class="lineno">  279</span>&#160;</div>
+<div class="line"><a name="l00280"></a><span class="lineno">  280</span>&#160;                <span class="keywordflow">if</span> (noeudConcret-&gt;obtenirType() == <span class="stringliteral">&quot;paletted&quot;</span> || noeudConcret-&gt;obtenirType() == <span class="stringliteral">&quot;paletteg&quot;</span>)</div>
+<div class="line"><a name="l00281"></a><span class="lineno">  281</span>&#160;                    noeudConcret-&gt;setColorShift(enfant-&gt;FindAttribute(<span class="stringliteral">&quot;color&quot;</span>)-&gt;BoolValue());</div>
+<div class="line"><a name="l00282"></a><span class="lineno">  282</span>&#160;</div>
+<div class="line"><a name="l00283"></a><span class="lineno">  283</span>&#160;                <span class="comment">// Ajouter l&#39;enfant à la table</span></div>
+<div class="line"><a name="l00284"></a><span class="lineno">  284</span>&#160;                table-&gt;ajouter(noeudConcret);</div>
+<div class="line"><a name="l00285"></a><span class="lineno">  285</span>&#160;</div>
+<div class="line"><a name="l00286"></a><span class="lineno">  286</span>&#160;                <span class="keywordflow">if</span> (noeudConcret-&gt;obtenirType() == <span class="stringliteral">&quot;portail&quot;</span>)</div>
+<div class="line"><a name="l00287"></a><span class="lineno">  287</span>&#160;                {</div>
+<div class="line"><a name="l00288"></a><span class="lineno">  288</span>&#160;                    <span class="comment">// Nombre actuel d&#39;enfants de la table</span></div>
+<div class="line"><a name="l00289"></a><span class="lineno">  289</span>&#160;                    <span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> enfantsTable = <a class="code" href="../../da/dcf/class_arbre_rendu_i_n_f2990.html#a4aa11fcea861f642d11664e1308f2278">getEnfant</a>(0)-&gt;<a class="code" href="../../da/df4/class_noeud_abstrait.html#ad5a99959e905fc2d9f0fef16a02546a2">obtenirNombreEnfants</a>();</div>
+<div class="line"><a name="l00290"></a><span class="lineno">  290</span>&#160;</div>
+<div class="line"><a name="l00291"></a><span class="lineno">  291</span>&#160;                    <span class="comment">// Interroger l&#39;enfant au dessus de lui</span></div>
+<div class="line"><a name="l00292"></a><span class="lineno">  292</span>&#160;                    <span class="keywordflow">if</span> (table-&gt;chercher(enfantsTable - 2)-&gt;obtenirType() == <span class="stringliteral">&quot;portail&quot;</span></div>
+<div class="line"><a name="l00293"></a><span class="lineno">  293</span>&#160;                        &amp;&amp; table-&gt;chercher(enfantsTable - 2)-&gt;getTwin() == <span class="keyword">nullptr</span>)</div>
+<div class="line"><a name="l00294"></a><span class="lineno">  294</span>&#160;                    {</div>
+<div class="line"><a name="l00295"></a><span class="lineno">  295</span>&#160;                        <span class="comment">// Si c&#39;est un portail et qu&#39;il n&#39;est pas relié, les relier tous les deux</span></div>
+<div class="line"><a name="l00296"></a><span class="lineno">  296</span>&#160;                        noeudConcret-&gt;setTwin(table-&gt;chercher(enfantsTable - 2 ));</div>
+<div class="line"><a name="l00297"></a><span class="lineno">  297</span>&#160;                        table-&gt;chercher(enfantsTable - 2)-&gt;setTwin(noeudConcret);</div>
+<div class="line"><a name="l00298"></a><span class="lineno">  298</span>&#160;                    }</div>
+<div class="line"><a name="l00299"></a><span class="lineno">  299</span>&#160;                }</div>
+<div class="line"><a name="l00300"></a><span class="lineno">  300</span>&#160;</div>
+<div class="line"><a name="l00301"></a><span class="lineno">  301</span>&#160;                <span class="comment">// Traiter le frère de droite de l&#39;enfant</span></div>
+<div class="line"><a name="l00302"></a><span class="lineno">  302</span>&#160;                enfant = enfant-&gt;NextSiblingElement();</div>
+<div class="line"><a name="l00303"></a><span class="lineno">  303</span>&#160;            }</div>
+<div class="line"><a name="l00304"></a><span class="lineno">  304</span>&#160;</div>
+<div class="line"><a name="l00305"></a><span class="lineno">  305</span>&#160;            lecture = <span class="keyword">true</span>;</div>
+<div class="line"><a name="l00306"></a><span class="lineno">  306</span>&#160;        }</div>
+<div class="line"><a name="l00307"></a><span class="lineno">  307</span>&#160;        </div>
+<div class="line"><a name="l00308"></a><span class="lineno">  308</span>&#160;        <span class="comment">// Tenter d&#39;obtenir l&#39;élément table, puis l&#39;attribut nbEnfants</span></div>
+<div class="line"><a name="l00309"></a><span class="lineno">  309</span>&#160;        <span class="keyword">const</span> tinyxml2::XMLElement* elementCouvercle{ elementArbre-&gt;LastChildElement(<span class="stringliteral">&quot;couvercle&quot;</span>)};</div>
+<div class="line"><a name="l00310"></a><span class="lineno">  310</span>&#160;</div>
+<div class="line"><a name="l00311"></a><span class="lineno">  311</span>&#160;        <span class="keywordflow">if</span> (elementCouvercle != <span class="keyword">nullptr</span>)</div>
+<div class="line"><a name="l00312"></a><span class="lineno">  312</span>&#160;        {</div>
+<div class="line"><a name="l00313"></a><span class="lineno">  313</span>&#160;            <a class="code" href="../../da/df4/class_noeud_abstrait.html">NoeudAbstrait</a>* couvercle{ <a class="code" href="../../dc/dc6/class_arbre_rendu.html#a33ae9013f9cec73854d32527b85b41f9">creerNoeud</a>(elementCouvercle-&gt;Name()) };</div>
+<div class="line"><a name="l00314"></a><span class="lineno">  314</span>&#160;            this-&gt;<a class="code" href="../../da/d38/class_noeud_composite.html#ac2ce823d2c52140d4e1a924163ebbb58">ajouter</a>(couvercle);</div>
+<div class="line"><a name="l00315"></a><span class="lineno">  315</span>&#160;        }</div>
+<div class="line"><a name="l00316"></a><span class="lineno">  316</span>&#160;</div>
+<div class="line"><a name="l00317"></a><span class="lineno">  317</span>&#160;    }</div>
+<div class="line"><a name="l00318"></a><span class="lineno">  318</span>&#160;</div>
+<div class="line"><a name="l00319"></a><span class="lineno">  319</span>&#160;    assignerDefaut();</div>
+<div class="line"><a name="l00320"></a><span class="lineno">  320</span>&#160;</div>
+<div class="line"><a name="l00321"></a><span class="lineno">  321</span>&#160;    <span class="keywordflow">return</span> lecture;</div>
+<div class="line"><a name="l00322"></a><span class="lineno">  322</span>&#160;}</div>
+<div class="line"><a name="l00323"></a><span class="lineno">  323</span>&#160;</div>
+<div class="line"><a name="l00324"></a><span class="lineno">  324</span>&#160;</div>
+<div class="line"><a name="l00335"></a><span class="lineno"><a class="line" href="../../da/dcf/class_arbre_rendu_i_n_f2990.html#a02e2ff7ae6ca0ac16c6c5656dddcc8d9">  335</a></span>&#160;<span class="keywordtype">bool</span> <a class="code" href="../../da/dcf/class_arbre_rendu_i_n_f2990.html#a02e2ff7ae6ca0ac16c6c5656dddcc8d9">ArbreRenduINF2990::estDefaut</a>()<span class="keyword"> const</span></div>
+<div class="line"><a name="l00336"></a><span class="lineno">  336</span>&#160;<span class="keyword"></span>{</div>
+<div class="line"><a name="l00337"></a><span class="lineno">  337</span>&#160;    <span class="keywordflow">if</span> (   posRessort == <a class="code" href="../../da/d38/class_noeud_composite.html#a3bc273d5a3b1aed9e697bd2fa540403d">chercher</a>(<span class="stringliteral">&quot;ressort&quot;</span>)-&gt;<a class="code" href="../../da/df4/class_noeud_abstrait.html#a62d73f67c3b33e2cb106630bd1736a58">obtenirPositionRelative</a>()</div>
+<div class="line"><a name="l00338"></a><span class="lineno">  338</span>&#160;        &amp;&amp; angleRessort == <a class="code" href="../../da/d38/class_noeud_composite.html#a3bc273d5a3b1aed9e697bd2fa540403d">chercher</a>(<span class="stringliteral">&quot;ressort&quot;</span>)-&gt;<a class="code" href="../../da/df4/class_noeud_abstrait.html#a856c716249d5ca28d3a4407aca9f35bb">obtenirRotation</a>()</div>
+<div class="line"><a name="l00339"></a><span class="lineno">  339</span>&#160;        &amp;&amp; scaleRessort == <a class="code" href="../../da/d38/class_noeud_composite.html#a3bc273d5a3b1aed9e697bd2fa540403d">chercher</a>(<span class="stringliteral">&quot;ressort&quot;</span>)-&gt;<a class="code" href="../../da/df4/class_noeud_abstrait.html#a97c8cd383bed8b83bad646097a233242">obtenirAgrandissement</a>()</div>
+<div class="line"><a name="l00340"></a><span class="lineno">  340</span>&#160;        &amp;&amp; posTrou == <a class="code" href="../../da/d38/class_noeud_composite.html#a3bc273d5a3b1aed9e697bd2fa540403d">chercher</a>(<span class="stringliteral">&quot;trou&quot;</span>)-&gt;<a class="code" href="../../da/df4/class_noeud_abstrait.html#a62d73f67c3b33e2cb106630bd1736a58">obtenirPositionRelative</a>()</div>
+<div class="line"><a name="l00341"></a><span class="lineno">  341</span>&#160;        &amp;&amp; angleTrou == <a class="code" href="../../da/d38/class_noeud_composite.html#a3bc273d5a3b1aed9e697bd2fa540403d">chercher</a>(<span class="stringliteral">&quot;trou&quot;</span>)-&gt;<a class="code" href="../../da/df4/class_noeud_abstrait.html#a856c716249d5ca28d3a4407aca9f35bb">obtenirRotation</a>()</div>
+<div class="line"><a name="l00342"></a><span class="lineno">  342</span>&#160;        &amp;&amp; scaleTrou == <a class="code" href="../../da/d38/class_noeud_composite.html#a3bc273d5a3b1aed9e697bd2fa540403d">chercher</a>(<span class="stringliteral">&quot;trou&quot;</span>)-&gt;<a class="code" href="../../da/df4/class_noeud_abstrait.html#a97c8cd383bed8b83bad646097a233242">obtenirAgrandissement</a>()</div>
+<div class="line"><a name="l00343"></a><span class="lineno">  343</span>&#160;        &amp;&amp; posGenerateur == <a class="code" href="../../da/d38/class_noeud_composite.html#a3bc273d5a3b1aed9e697bd2fa540403d">chercher</a>(<span class="stringliteral">&quot;generateurbille&quot;</span>)-&gt;<a class="code" href="../../da/df4/class_noeud_abstrait.html#a62d73f67c3b33e2cb106630bd1736a58">obtenirPositionRelative</a>()</div>
+<div class="line"><a name="l00344"></a><span class="lineno">  344</span>&#160;        &amp;&amp; angleGenerateur == <a class="code" href="../../da/d38/class_noeud_composite.html#a3bc273d5a3b1aed9e697bd2fa540403d">chercher</a>(<span class="stringliteral">&quot;generateurbille&quot;</span>)-&gt;<a class="code" href="../../da/df4/class_noeud_abstrait.html#a856c716249d5ca28d3a4407aca9f35bb">obtenirRotation</a>()</div>
+<div class="line"><a name="l00345"></a><span class="lineno">  345</span>&#160;        &amp;&amp; scaleGenerateur == <a class="code" href="../../da/d38/class_noeud_composite.html#a3bc273d5a3b1aed9e697bd2fa540403d">chercher</a>(<span class="stringliteral">&quot;generateurbille&quot;</span>)-&gt;<a class="code" href="../../da/df4/class_noeud_abstrait.html#a97c8cd383bed8b83bad646097a233242">obtenirAgrandissement</a>()</div>
+<div class="line"><a name="l00346"></a><span class="lineno">  346</span>&#160;        )</div>
+<div class="line"><a name="l00347"></a><span class="lineno">  347</span>&#160;        <span class="keywordflow">return</span> <span class="keyword">true</span>;</div>
+<div class="line"><a name="l00348"></a><span class="lineno">  348</span>&#160;</div>
+<div class="line"><a name="l00349"></a><span class="lineno">  349</span>&#160;    <span class="keywordflow">else</span></div>
+<div class="line"><a name="l00350"></a><span class="lineno">  350</span>&#160;        <span class="keywordflow">return</span> <span class="keyword">false</span>;</div>
+<div class="line"><a name="l00351"></a><span class="lineno">  351</span>&#160;}</div>
+<div class="line"><a name="l00352"></a><span class="lineno">  352</span>&#160;</div>
+<div class="line"><a name="l00353"></a><span class="lineno">  353</span>&#160;</div>
+<div class="line"><a name="l00363"></a><span class="lineno">  363</span>&#160;<span class="keywordtype">void</span> ArbreRenduINF2990::assignerDefaut()</div>
+<div class="line"><a name="l00364"></a><span class="lineno">  364</span>&#160;{</div>
+<div class="line"><a name="l00365"></a><span class="lineno">  365</span>&#160;    posRessort = <a class="code" href="../../da/d38/class_noeud_composite.html#a3bc273d5a3b1aed9e697bd2fa540403d">chercher</a>(<span class="stringliteral">&quot;ressort&quot;</span>)-&gt;<a class="code" href="../../da/df4/class_noeud_abstrait.html#a62d73f67c3b33e2cb106630bd1736a58">obtenirPositionRelative</a>();</div>
+<div class="line"><a name="l00366"></a><span class="lineno">  366</span>&#160;    angleRessort = <a class="code" href="../../da/d38/class_noeud_composite.html#a3bc273d5a3b1aed9e697bd2fa540403d">chercher</a>(<span class="stringliteral">&quot;ressort&quot;</span>)-&gt;<a class="code" href="../../da/df4/class_noeud_abstrait.html#a856c716249d5ca28d3a4407aca9f35bb">obtenirRotation</a>();</div>
+<div class="line"><a name="l00367"></a><span class="lineno">  367</span>&#160;    scaleRessort = <a class="code" href="../../da/d38/class_noeud_composite.html#a3bc273d5a3b1aed9e697bd2fa540403d">chercher</a>(<span class="stringliteral">&quot;ressort&quot;</span>)-&gt;<a class="code" href="../../da/df4/class_noeud_abstrait.html#a97c8cd383bed8b83bad646097a233242">obtenirAgrandissement</a>();</div>
+<div class="line"><a name="l00368"></a><span class="lineno">  368</span>&#160;    posTrou = <a class="code" href="../../da/d38/class_noeud_composite.html#a3bc273d5a3b1aed9e697bd2fa540403d">chercher</a>(<span class="stringliteral">&quot;trou&quot;</span>)-&gt;<a class="code" href="../../da/df4/class_noeud_abstrait.html#a62d73f67c3b33e2cb106630bd1736a58">obtenirPositionRelative</a>();</div>
+<div class="line"><a name="l00369"></a><span class="lineno">  369</span>&#160;    angleTrou = <a class="code" href="../../da/d38/class_noeud_composite.html#a3bc273d5a3b1aed9e697bd2fa540403d">chercher</a>(<span class="stringliteral">&quot;trou&quot;</span>)-&gt;<a class="code" href="../../da/df4/class_noeud_abstrait.html#a856c716249d5ca28d3a4407aca9f35bb">obtenirRotation</a>();</div>
+<div class="line"><a name="l00370"></a><span class="lineno">  370</span>&#160;    scaleTrou = <a class="code" href="../../da/d38/class_noeud_composite.html#a3bc273d5a3b1aed9e697bd2fa540403d">chercher</a>(<span class="stringliteral">&quot;trou&quot;</span>)-&gt;<a class="code" href="../../da/df4/class_noeud_abstrait.html#a97c8cd383bed8b83bad646097a233242">obtenirAgrandissement</a>();</div>
+<div class="line"><a name="l00371"></a><span class="lineno">  371</span>&#160;    posGenerateur = <a class="code" href="../../da/d38/class_noeud_composite.html#a3bc273d5a3b1aed9e697bd2fa540403d">chercher</a>(<span class="stringliteral">&quot;generateurbille&quot;</span>)-&gt;<a class="code" href="../../da/df4/class_noeud_abstrait.html#a62d73f67c3b33e2cb106630bd1736a58">obtenirPositionRelative</a>();</div>
+<div class="line"><a name="l00372"></a><span class="lineno">  372</span>&#160;    angleGenerateur = <a class="code" href="../../da/d38/class_noeud_composite.html#a3bc273d5a3b1aed9e697bd2fa540403d">chercher</a>(<span class="stringliteral">&quot;generateurbille&quot;</span>)-&gt;<a class="code" href="../../da/df4/class_noeud_abstrait.html#a856c716249d5ca28d3a4407aca9f35bb">obtenirRotation</a>();</div>
+<div class="line"><a name="l00373"></a><span class="lineno">  373</span>&#160;    scaleGenerateur = <a class="code" href="../../da/d38/class_noeud_composite.html#a3bc273d5a3b1aed9e697bd2fa540403d">chercher</a>(<span class="stringliteral">&quot;generateurbille&quot;</span>)-&gt;<a class="code" href="../../da/df4/class_noeud_abstrait.html#a97c8cd383bed8b83bad646097a233242">obtenirAgrandissement</a>();</div>
+<div class="line"><a name="l00374"></a><span class="lineno">  374</span>&#160;}</div>
+<div class="ttc" id="class_usine_noeud_mur_html"><div class="ttname"><a href="../../d2/d32/class_usine_noeud_mur.html">UsineNoeudMur</a></div><div class="ttdoc">Classe qui représente une usine capable de créer des noeuds de type Mur. </div><div class="ttdef"><b>Definition:</b> <a href="../../dc/d77/_usine_noeud_mur_8h_source.html#l00024">UsineNoeudMur.h:24</a></div></div>
+<div class="ttc" id="_usine_noeud_couvercle_8h_html"><div class="ttname"><a href="../../d3/d48/_usine_noeud_couvercle_8h.html">UsineNoeudCouvercle.h</a></div></div>
+<div class="ttc" id="_usine_noeud_ressort_8h_html"><div class="ttname"><a href="../../df/dc7/_usine_noeud_ressort_8h.html">UsineNoeudRessort.h</a></div></div>
+<div class="ttc" id="_usine_noeud_butoir_d_8h_html"><div class="ttname"><a href="../../d5/dee/_usine_noeud_butoir_d_8h.html">UsineNoeudButoirD.h</a></div></div>
+<div class="ttc" id="class_noeud_abstrait_html_ad5a99959e905fc2d9f0fef16a02546a2"><div class="ttname"><a href="../../da/df4/class_noeud_abstrait.html#ad5a99959e905fc2d9f0fef16a02546a2">NoeudAbstrait::obtenirNombreEnfants</a></div><div class="ttdeci">virtual unsigned int obtenirNombreEnfants() const </div><div class="ttdoc">Obtient le nombre d&#39;enfants du noeud. </div><div class="ttdef"><b>Definition:</b> <a href="../../d2/d5d/_noeud_abstrait_8cpp_source.html#l00231">NoeudAbstrait.cpp:231</a></div></div>
+<div class="ttc" id="_usine_noeud_mur_8h_html"><div class="ttname"><a href="../../dc/d77/_usine_noeud_mur_8h.html">UsineNoeudMur.h</a></div></div>
+<div class="ttc" id="class_usine_noeud_table_html"><div class="ttname"><a href="../../db/d74/class_usine_noeud_table.html">UsineNoeudTable</a></div><div class="ttdoc">Classe qui représente une usine capable de créer des noeuds de type Table. </div><div class="ttdef"><b>Definition:</b> <a href="../../dd/dfe/_usine_noeud_table_8h_source.html#l00024">UsineNoeudTable.h:24</a></div></div>
+<div class="ttc" id="class_arbre_rendu_i_n_f2990_html_adcb8237b02939746df8498d88c004092"><div class="ttname"><a href="../../da/dcf/class_arbre_rendu_i_n_f2990.html#adcb8237b02939746df8498d88c004092">ArbreRenduINF2990::accepterVisiteur</a></div><div class="ttdeci">virtual bool accepterVisiteur(VisiteurAbstrait *vis)</div><div class="ttdoc">Accepter un visiteur. </div><div class="ttdef"><b>Definition:</b> <a href="../../de/d39/_arbre_rendu_i_n_f2990_8cpp_source.html#l00159">ArbreRenduINF2990.cpp:159</a></div></div>
+<div class="ttc" id="class_arbre_rendu_i_n_f2990_html_ad0c30f5f1a9fa3f3cd9bfcbeb2a84e4c"><div class="ttname"><a href="../../da/dcf/class_arbre_rendu_i_n_f2990.html#ad0c30f5f1a9fa3f3cd9bfcbeb2a84e4c">ArbreRenduINF2990::NOM_PALETTED</a></div><div class="ttdeci">static const std::string NOM_PALETTED</div><div class="ttdoc">Représente le type Palette droite. </div><div class="ttdef"><b>Definition:</b> <a href="../../de/d77/_arbre_rendu_i_n_f2990_8h_source.html#l00065">ArbreRenduINF2990.h:65</a></div></div>
+<div class="ttc" id="class_visiteur_abstrait_html"><div class="ttname"><a href="../../df/d41/class_visiteur_abstrait.html">VisiteurAbstrait</a></div><div class="ttdoc">Interface du patron Visiteur. </div><div class="ttdef"><b>Definition:</b> <a href="../../dc/d03/_visiteur_abstrait_8h_source.html#l00035">VisiteurAbstrait.h:35</a></div></div>
+<div class="ttc" id="class_noeud_abstrait_html_a97c8cd383bed8b83bad646097a233242"><div class="ttname"><a href="../../da/df4/class_noeud_abstrait.html#a97c8cd383bed8b83bad646097a233242">NoeudAbstrait::obtenirAgrandissement</a></div><div class="ttdeci">const glm::dvec3 &amp; obtenirAgrandissement() const </div><div class="ttdoc">Obtenir agrandissement. </div><div class="ttdef"><b>Definition:</b> <a href="../../d4/d75/_noeud_abstrait_8h_source.html#l00614">NoeudAbstrait.h:614</a></div></div>
+<div class="ttc" id="class_arbre_rendu_i_n_f2990_html_af1c5c5096c35d15a9076ca3e7ccfde37"><div class="ttname"><a href="../../da/dcf/class_arbre_rendu_i_n_f2990.html#af1c5c5096c35d15a9076ca3e7ccfde37">ArbreRenduINF2990::NOM_CIBLE</a></div><div class="ttdeci">static const std::string NOM_CIBLE</div><div class="ttdoc">Représente le type Cible. </div><div class="ttdef"><b>Definition:</b> <a href="../../de/d77/_arbre_rendu_i_n_f2990_8h_source.html#l00061">ArbreRenduINF2990.h:61</a></div></div>
+<div class="ttc" id="class_arbre_rendu_html_a33ae9013f9cec73854d32527b85b41f9"><div class="ttname"><a href="../../dc/dc6/class_arbre_rendu.html#a33ae9013f9cec73854d32527b85b41f9">ArbreRendu::creerNoeud</a></div><div class="ttdeci">NoeudAbstrait * creerNoeud(const std::string &amp;typeNouveauNoeud) const </div><div class="ttdoc">Crée un nouveau noeud. </div><div class="ttdef"><b>Definition:</b> <a href="../../d7/dfb/_arbre_rendu_8cpp_source.html#l00059">ArbreRendu.cpp:59</a></div></div>
+<div class="ttc" id="class_noeud_abstrait_html_a11e12e42b05a5327c92cd7fd1b7e5a24"><div class="ttname"><a href="../../da/df4/class_noeud_abstrait.html#a11e12e42b05a5327c92cd7fd1b7e5a24">NoeudAbstrait::assignerPositionRelative</a></div><div class="ttdeci">void assignerPositionRelative(const glm::dvec3 &amp;positionRelative)</div><div class="ttdoc">Assigne la position relative du noeud. </div><div class="ttdef"><b>Definition:</b> <a href="../../d4/d75/_noeud_abstrait_8h_source.html#l00345">NoeudAbstrait.h:345</a></div></div>
+<div class="ttc" id="_facade_interface_native_8cpp_html_aa74bf17d4bfdb74cbb74b8510a90d842"><div class="ttname"><a href="../../d7/d39/_facade_interface_native_8cpp.html#aa74bf17d4bfdb74cbb74b8510a90d842">angleZ</a></div><div class="ttdeci">int bool bool int int int float float float angleZ</div><div class="ttdef"><b>Definition:</b> <a href="../../d7/d39/_facade_interface_native_8cpp_source.html#l00306">FacadeInterfaceNative.cpp:306</a></div></div>
+<div class="ttc" id="class_arbre_rendu_i_n_f2990_html_a26f3e99fe6e21b0d6b5d25f366405f94"><div class="ttname"><a href="../../da/dcf/class_arbre_rendu_i_n_f2990.html#a26f3e99fe6e21b0d6b5d25f366405f94">ArbreRenduINF2990::NOM_GENERATEURBILLE</a></div><div class="ttdeci">static const std::string NOM_GENERATEURBILLE</div><div class="ttdoc">Représente le type Generateur bille. </div><div class="ttdef"><b>Definition:</b> <a href="../../de/d77/_arbre_rendu_i_n_f2990_8h_source.html#l00063">ArbreRenduINF2990.h:63</a></div></div>
+<div class="ttc" id="class_visiteur_abstrait_html_a71d6f684528356584f9d2c25763411de"><div class="ttname"><a href="../../df/d41/class_visiteur_abstrait.html#a71d6f684528356584f9d2c25763411de">VisiteurAbstrait::traiter</a></div><div class="ttdeci">virtual bool traiter(ArbreRenduINF2990 *arbre)</div><div class="ttdoc">Traiter une opération sur l&#39;arbre de rendu et ses enfants. </div><div class="ttdef"><b>Definition:</b> <a href="../../dc/d03/_visiteur_abstrait_8h_source.html#l00046">VisiteurAbstrait.h:46</a></div></div>
+<div class="ttc" id="class_arbre_rendu_i_n_f2990_html_ac20d9c22815c737cf160850f7830500c"><div class="ttname"><a href="../../da/dcf/class_arbre_rendu_i_n_f2990.html#ac20d9c22815c737cf160850f7830500c">ArbreRenduINF2990::NOM_BUTOIRG</a></div><div class="ttdeci">static const std::string NOM_BUTOIRG</div><div class="ttdoc">Représente le type Butoir gauche. </div><div class="ttdef"><b>Definition:</b> <a href="../../de/d77/_arbre_rendu_i_n_f2990_8h_source.html#l00059">ArbreRenduINF2990.h:59</a></div></div>
+<div class="ttc" id="class_arbre_rendu_i_n_f2990_html_aad9e7a72aacc9d20d8fa8679458fdf2a"><div class="ttname"><a href="../../da/dcf/class_arbre_rendu_i_n_f2990.html#aad9e7a72aacc9d20d8fa8679458fdf2a">ArbreRenduINF2990::NOM_BUTOIRCIRCULAIRE</a></div><div class="ttdeci">static const std::string NOM_BUTOIRCIRCULAIRE</div><div class="ttdoc">Représente le type Butoir circulaire. </div><div class="ttdef"><b>Definition:</b> <a href="../../de/d77/_arbre_rendu_i_n_f2990_8h_source.html#l00060">ArbreRenduINF2990.h:60</a></div></div>
+<div class="ttc" id="class_arbre_rendu_i_n_f2990_html_aa97213f642b874fb43e67330aab677be"><div class="ttname"><a href="../../da/dcf/class_arbre_rendu_i_n_f2990.html#aa97213f642b874fb43e67330aab677be">ArbreRenduINF2990::getPosRessort</a></div><div class="ttdeci">glm::dvec3 getPosRessort()</div><div class="ttdoc">Methode de test. </div><div class="ttdef"><b>Definition:</b> <a href="../../de/d39/_arbre_rendu_i_n_f2990_8cpp_source.html#l00144">ArbreRenduINF2990.cpp:144</a></div></div>
+<div class="ttc" id="class_arbre_rendu_i_n_f2990_html_afd4077ad4f0620c8aa5e3e0cf0e69a95"><div class="ttname"><a href="../../da/dcf/class_arbre_rendu_i_n_f2990.html#afd4077ad4f0620c8aa5e3e0cf0e69a95">ArbreRenduINF2990::NOM_COUVERCLE</a></div><div class="ttdeci">static const std::string NOM_COUVERCLE</div><div class="ttdoc">Représente le type Couvercle. </div><div class="ttdef"><b>Definition:</b> <a href="../../de/d77/_arbre_rendu_i_n_f2990_8h_source.html#l00071">ArbreRenduINF2990.h:71</a></div></div>
+<div class="ttc" id="_facade_interface_native_8cpp_html_aa78298ad76b6d579db84f291064400c9"><div class="ttname"><a href="../../d7/d39/_facade_interface_native_8cpp.html#aa78298ad76b6d579db84f291064400c9">angleX</a></div><div class="ttdeci">int bool bool int int int float angleX</div><div class="ttdef"><b>Definition:</b> <a href="../../d7/d39/_facade_interface_native_8cpp_source.html#l00303">FacadeInterfaceNative.cpp:303</a></div></div>
+<div class="ttc" id="class_usine_noeud_butoir_g_html"><div class="ttname"><a href="../../d8/d21/class_usine_noeud_butoir_g.html">UsineNoeudButoirG</a></div><div class="ttdoc">Classe qui représente une usine capable de créer des noeuds de type Butoir. </div><div class="ttdef"><b>Definition:</b> <a href="../../d4/d41/_usine_noeud_butoir_g_8h_source.html#l00024">UsineNoeudButoirG.h:24</a></div></div>
+<div class="ttc" id="_usine_noeud_cible_8h_html"><div class="ttname"><a href="../../d1/de0/_usine_noeud_cible_8h.html">UsineNoeudCible.h</a></div></div>
+<div class="ttc" id="class_noeud_composite_html_a628227fd324020e497ada7577457ff3f"><div class="ttname"><a href="../../da/d38/class_noeud_composite.html#a628227fd324020e497ada7577457ff3f">NoeudComposite::enfants_</a></div><div class="ttdeci">conteneur_enfants enfants_</div><div class="ttdoc">La liste des enfants. </div><div class="ttdef"><b>Definition:</b> <a href="../../db/dc6/_noeud_composite_8h_source.html#l00089">NoeudComposite.h:89</a></div></div>
+<div class="ttc" id="class_usine_noeud_portail_html"><div class="ttname"><a href="../../da/d20/class_usine_noeud_portail.html">UsineNoeudPortail</a></div><div class="ttdoc">Classe qui représente une usine capable de créer des noeuds de type Portail. </div><div class="ttdef"><b>Definition:</b> <a href="../../df/df7/_usine_noeud_portail_8h_source.html#l00024">UsineNoeudPortail.h:24</a></div></div>
+<div class="ttc" id="_usine_noeud_vide_8h_html"><div class="ttname"><a href="../../d6/d3d/_usine_noeud_vide_8h.html">UsineNoeudVide.h</a></div></div>
+<div class="ttc" id="class_arbre_rendu_i_n_f2990_html_a89e651c1a28481ce70f473bd15555114"><div class="ttname"><a href="../../da/dcf/class_arbre_rendu_i_n_f2990.html#a89e651c1a28481ce70f473bd15555114">ArbreRenduINF2990::NOM_TABLE</a></div><div class="ttdeci">static const std::string NOM_TABLE</div><div class="ttdoc">Représente le type Table. </div><div class="ttdef"><b>Definition:</b> <a href="../../de/d77/_arbre_rendu_i_n_f2990_8h_source.html#l00072">ArbreRenduINF2990.h:72</a></div></div>
+<div class="ttc" id="class_usine_noeud_cible_html"><div class="ttname"><a href="../../d8/d65/class_usine_noeud_cible.html">UsineNoeudCible</a></div><div class="ttdoc">Classe qui représente une usine capable de créer des noeuds de type Cible. </div><div class="ttdef"><b>Definition:</b> <a href="../../d1/de0/_usine_noeud_cible_8h_source.html#l00024">UsineNoeudCible.h:24</a></div></div>
+<div class="ttc" id="_facade_interface_native_8cpp_html_a48b372f529bd5e3c785de1883b559f21"><div class="ttname"><a href="../../d7/d39/_facade_interface_native_8cpp.html#a48b372f529bd5e3c785de1883b559f21">angleY</a></div><div class="ttdeci">int bool bool int int int float float angleY</div><div class="ttdef"><b>Definition:</b> <a href="../../d7/d39/_facade_interface_native_8cpp_source.html#l00303">FacadeInterfaceNative.cpp:303</a></div></div>
+<div class="ttc" id="class_arbre_rendu_i_n_f2990_html_afe5b7c4db609c37ecadc3fb4336f3041"><div class="ttname"><a href="../../da/dcf/class_arbre_rendu_i_n_f2990.html#afe5b7c4db609c37ecadc3fb4336f3041">ArbreRenduINF2990::NOM_PALETTEG</a></div><div class="ttdeci">static const std::string NOM_PALETTEG</div><div class="ttdoc">Représente le type Palette gauche. </div><div class="ttdef"><b>Definition:</b> <a href="../../de/d77/_arbre_rendu_i_n_f2990_8h_source.html#l00066">ArbreRenduINF2990.h:66</a></div></div>
+<div class="ttc" id="_usine_noeud_generateur_bille_8h_html"><div class="ttname"><a href="../../df/db4/_usine_noeud_generateur_bille_8h.html">UsineNoeudGenerateurBille.h</a></div></div>
+<div class="ttc" id="_usine_noeud_table_8h_html"><div class="ttname"><a href="../../dd/dfe/_usine_noeud_table_8h.html">UsineNoeudTable.h</a></div></div>
+<div class="ttc" id="class_arbre_rendu_i_n_f2990_html_a71a649e3d19417d31752a25c002dc4d6"><div class="ttname"><a href="../../da/dcf/class_arbre_rendu_i_n_f2990.html#a71a649e3d19417d31752a25c002dc4d6">ArbreRenduINF2990::NOM_PORTAIL</a></div><div class="ttdeci">static const std::string NOM_PORTAIL</div><div class="ttdoc">Représente le type Portail. </div><div class="ttdef"><b>Definition:</b> <a href="../../de/d77/_arbre_rendu_i_n_f2990_8h_source.html#l00067">ArbreRenduINF2990.h:67</a></div></div>
+<div class="ttc" id="class_usine_noeud_vide_html"><div class="ttname"><a href="../../d9/de2/class_usine_noeud_vide.html">UsineNoeudVide</a></div><div class="ttdoc">Classe qui représente une usine capable de créer des noeuds de type Vide. </div><div class="ttdef"><b>Definition:</b> <a href="../../d6/d3d/_usine_noeud_vide_8h_source.html#l00024">UsineNoeudVide.h:24</a></div></div>
+<div class="ttc" id="class_usine_noeud_palette_g_html"><div class="ttname"><a href="../../de/d51/class_usine_noeud_palette_g.html">UsineNoeudPaletteG</a></div><div class="ttdoc">Classe qui représente une usine capable de créer des noeuds de type Palette. </div><div class="ttdef"><b>Definition:</b> <a href="../../db/d0a/_usine_noeud_palette_g_8h_source.html#l00024">UsineNoeudPaletteG.h:24</a></div></div>
+<div class="ttc" id="_usine_noeud_bille_8h_html"><div class="ttname"><a href="../../d5/db3/_usine_noeud_bille_8h.html">UsineNoeudBille.h</a></div></div>
+<div class="ttc" id="_facade_interface_native_8cpp_html_acb559820d9ca11295b4500f179ef6392"><div class="ttname"><a href="../../d7/d39/_facade_interface_native_8cpp.html#acb559820d9ca11295b4500f179ef6392">i</a></div><div class="ttdeci">int i</div><div class="ttdef"><b>Definition:</b> <a href="../../d7/d39/_facade_interface_native_8cpp_source.html#l01038">FacadeInterfaceNative.cpp:1038</a></div></div>
+<div class="ttc" id="_usine_noeud_trou_8h_html"><div class="ttname"><a href="../../d1/d60/_usine_noeud_trou_8h.html">UsineNoeudTrou.h</a></div></div>
+<div class="ttc" id="class_arbre_rendu_i_n_f2990_html_a7090ddf4a9b060dc54810bf457eda8bc"><div class="ttname"><a href="../../da/dcf/class_arbre_rendu_i_n_f2990.html#a7090ddf4a9b060dc54810bf457eda8bc">ArbreRenduINF2990::NOM_BUTOIRD</a></div><div class="ttdeci">static const std::string NOM_BUTOIRD</div><div class="ttdoc">Représente le type Butoir droit. </div><div class="ttdef"><b>Definition:</b> <a href="../../de/d77/_arbre_rendu_i_n_f2990_8h_source.html#l00056">ArbreRenduINF2990.h:56</a></div></div>
+<div class="ttc" id="_usine_noeud_palette_d_8h_html"><div class="ttname"><a href="../../d3/d71/_usine_noeud_palette_d_8h.html">UsineNoeudPaletteD.h</a></div></div>
+<div class="ttc" id="class_arbre_rendu_i_n_f2990_html_a678d89e1f12ae16ee7dcf6de3db637a3"><div class="ttname"><a href="../../da/dcf/class_arbre_rendu_i_n_f2990.html#a678d89e1f12ae16ee7dcf6de3db637a3">ArbreRenduINF2990::initialiser</a></div><div class="ttdeci">void initialiser()</div><div class="ttdoc">Initialise l&#39;arbre de rendu à son état initial. </div><div class="ttdef"><b>Definition:</b> <a href="../../de/d39/_arbre_rendu_i_n_f2990_8cpp_source.html#l00105">ArbreRenduINF2990.cpp:105</a></div></div>
+<div class="ttc" id="class_noeud_composite_html_a5e1564f2f07f5cd84cef7078ae88e3c6"><div class="ttname"><a href="../../da/d38/class_noeud_composite.html#a5e1564f2f07f5cd84cef7078ae88e3c6">NoeudComposite::vider</a></div><div class="ttdeci">virtual void vider()</div><div class="ttdoc">Vide le noeud de ses enfants. </div><div class="ttdef"><b>Definition:</b> <a href="../../db/d9c/_noeud_composite_8cpp_source.html#l00089">NoeudComposite.cpp:89</a></div></div>
+<div class="ttc" id="class_arbre_rendu_i_n_f2990_html_a78fe021e3ce02eb8438f1efd84002a6f"><div class="ttname"><a href="../../da/dcf/class_arbre_rendu_i_n_f2990.html#a78fe021e3ce02eb8438f1efd84002a6f">ArbreRenduINF2990::initialiserXML</a></div><div class="ttdeci">bool initialiserXML(std::string nomFichier)</div><div class="ttdoc">Initialiser l&#39;arbre avec un fichier XML. </div><div class="ttdef"><b>Definition:</b> <a href="../../de/d39/_arbre_rendu_i_n_f2990_8cpp_source.html#l00182">ArbreRenduINF2990.cpp:182</a></div></div>
+<div class="ttc" id="class_arbre_rendu_html_aef33737fda55a3916e895e1adc3e88ae"><div class="ttname"><a href="../../dc/dc6/class_arbre_rendu.html#aef33737fda55a3916e895e1adc3e88ae">ArbreRendu::ajouterUsine</a></div><div class="ttdeci">void ajouterUsine(const std::string &amp;type, const UsineNoeud *usine)</div><div class="ttdoc">Ajoute une usine associée à un type de noeud. </div><div class="ttdef"><b>Definition:</b> <a href="../../d2/db0/_arbre_rendu_8h_source.html#l00096">ArbreRendu.h:96</a></div></div>
+<div class="ttc" id="class_arbre_rendu_i_n_f2990_html_a67528b7fa54e8ef8f96ef2e0bad06d2d"><div class="ttname"><a href="../../da/dcf/class_arbre_rendu_i_n_f2990.html#a67528b7fa54e8ef8f96ef2e0bad06d2d">ArbreRenduINF2990::ArbreRenduINF2990</a></div><div class="ttdeci">ArbreRenduINF2990()</div><div class="ttdoc">Constructeur par défaut. </div><div class="ttdef"><b>Definition:</b> <a href="../../de/d39/_arbre_rendu_i_n_f2990_8cpp_source.html#l00058">ArbreRenduINF2990.cpp:58</a></div></div>
+<div class="ttc" id="class_usine_noeud_palette_d_html"><div class="ttname"><a href="../../dd/d9c/class_usine_noeud_palette_d.html">UsineNoeudPaletteD</a></div><div class="ttdoc">Classe qui représente une usine capable de créer des noeuds de type Palette. </div><div class="ttdef"><b>Definition:</b> <a href="../../d3/d71/_usine_noeud_palette_d_8h_source.html#l00024">UsineNoeudPaletteD.h:24</a></div></div>
+<div class="ttc" id="_arbre_rendu_i_n_f2990_8h_html"><div class="ttname"><a href="../../de/d77/_arbre_rendu_i_n_f2990_8h.html">ArbreRenduINF2990.h</a></div></div>
+<div class="ttc" id="class_usine_noeud_ressort_html"><div class="ttname"><a href="../../dc/d0b/class_usine_noeud_ressort.html">UsineNoeudRessort</a></div><div class="ttdoc">Classe qui représente une usine capable de créer des noeuds de type Ressort. </div><div class="ttdef"><b>Definition:</b> <a href="../../df/dc7/_usine_noeud_ressort_8h_source.html#l00024">UsineNoeudRessort.h:24</a></div></div>
+<div class="ttc" id="class_arbre_rendu_i_n_f2990_html_af5ad7533d8b32b30f07700ed4e3c2dbb"><div class="ttname"><a href="../../da/dcf/class_arbre_rendu_i_n_f2990.html#af5ad7533d8b32b30f07700ed4e3c2dbb">ArbreRenduINF2990::NOM_TROU</a></div><div class="ttdeci">static const std::string NOM_TROU</div><div class="ttdoc">Représente le type Trou. </div><div class="ttdef"><b>Definition:</b> <a href="../../de/d77/_arbre_rendu_i_n_f2990_8h_source.html#l00069">ArbreRenduINF2990.h:69</a></div></div>
+<div class="ttc" id="class_arbre_rendu_i_n_f2990_html_a02e2ff7ae6ca0ac16c6c5656dddcc8d9"><div class="ttname"><a href="../../da/dcf/class_arbre_rendu_i_n_f2990.html#a02e2ff7ae6ca0ac16c6c5656dddcc8d9">ArbreRenduINF2990::estDefaut</a></div><div class="ttdeci">bool estDefaut() const </div><div class="ttdef"><b>Definition:</b> <a href="../../de/d39/_arbre_rendu_i_n_f2990_8cpp_source.html#l00335">ArbreRenduINF2990.cpp:335</a></div></div>
+<div class="ttc" id="class_usine_noeud_generateur_bille_html"><div class="ttname"><a href="../../df/d15/class_usine_noeud_generateur_bille.html">UsineNoeudGenerateurBille</a></div><div class="ttdoc">Classe qui représente une usine capable de créer des noeuds de type Generateur de Bille. </div><div class="ttdef"><b>Definition:</b> <a href="../../df/db4/_usine_noeud_generateur_bille_8h_source.html#l00024">UsineNoeudGenerateurBille.h:24</a></div></div>
+<div class="ttc" id="class_arbre_rendu_i_n_f2990_html_a78db47e8a4ca3320937c2b88c7bb0340"><div class="ttname"><a href="../../da/dcf/class_arbre_rendu_i_n_f2990.html#a78db47e8a4ca3320937c2b88c7bb0340">ArbreRenduINF2990::NOM_RESSORT</a></div><div class="ttdeci">static const std::string NOM_RESSORT</div><div class="ttdoc">Représente le type Ressort. </div><div class="ttdef"><b>Definition:</b> <a href="../../de/d77/_arbre_rendu_i_n_f2990_8h_source.html#l00068">ArbreRenduINF2990.h:68</a></div></div>
+<div class="ttc" id="class_usine_noeud_couvercle_html"><div class="ttname"><a href="../../db/dad/class_usine_noeud_couvercle.html">UsineNoeudCouvercle</a></div><div class="ttdoc">Classe qui représente une usine capable de créer des noeuds de type Couvercle. </div><div class="ttdef"><b>Definition:</b> <a href="../../d3/d48/_usine_noeud_couvercle_8h_source.html#l00024">UsineNoeudCouvercle.h:24</a></div></div>
+<div class="ttc" id="_usine_noeud_butoir_circulaire_8h_html"><div class="ttname"><a href="../../db/d5e/_usine_noeud_butoir_circulaire_8h.html">UsineNoeudButoirCirculaire.h</a></div></div>
+<div class="ttc" id="class_arbre_rendu_i_n_f2990_html_a4d9c8c9bfa165dde522834dec2882039"><div class="ttname"><a href="../../da/dcf/class_arbre_rendu_i_n_f2990.html#a4d9c8c9bfa165dde522834dec2882039">ArbreRenduINF2990::NOM_MUR</a></div><div class="ttdeci">static const std::string NOM_MUR</div><div class="ttdoc">Représente le type Mur. </div><div class="ttdef"><b>Definition:</b> <a href="../../de/d77/_arbre_rendu_i_n_f2990_8h_source.html#l00064">ArbreRenduINF2990.h:64</a></div></div>
+<div class="ttc" id="class_usine_noeud_butoir_circulaire_html"><div class="ttname"><a href="../../d5/d1b/class_usine_noeud_butoir_circulaire.html">UsineNoeudButoirCirculaire</a></div><div class="ttdoc">Classe qui représente une usine capable de créer des noeuds de type Butoir Circulaire. </div><div class="ttdef"><b>Definition:</b> <a href="../../db/d5e/_usine_noeud_butoir_circulaire_8h_source.html#l00024">UsineNoeudButoirCirculaire.h:24</a></div></div>
+<div class="ttc" id="_usine_noeud_palette_g_8h_html"><div class="ttname"><a href="../../db/d0a/_usine_noeud_palette_g_8h.html">UsineNoeudPaletteG.h</a></div></div>
+<div class="ttc" id="class_noeud_abstrait_html"><div class="ttname"><a href="../../da/df4/class_noeud_abstrait.html">NoeudAbstrait</a></div><div class="ttdoc">Classe de base du patron composite utilisée pour créer l&#39;arbre de rendu. </div><div class="ttdef"><b>Definition:</b> <a href="../../d4/d75/_noeud_abstrait_8h_source.html#l00048">NoeudAbstrait.h:48</a></div></div>
+<div class="ttc" id="class_arbre_rendu_i_n_f2990_html_a4aa11fcea861f642d11664e1308f2278"><div class="ttname"><a href="../../da/dcf/class_arbre_rendu_i_n_f2990.html#a4aa11fcea861f642d11664e1308f2278">ArbreRenduINF2990::getEnfant</a></div><div class="ttdeci">NoeudAbstrait * getEnfant(int position) const </div><div class="ttdoc">Obtenir le ième enfant de l&#39;arbre. </div><div class="ttdef"><b>Definition:</b> <a href="../../de/d39/_arbre_rendu_i_n_f2990_8cpp_source.html#l00126">ArbreRenduINF2990.cpp:126</a></div></div>
+<div class="ttc" id="class_noeud_composite_html_a3bc273d5a3b1aed9e697bd2fa540403d"><div class="ttname"><a href="../../da/d38/class_noeud_composite.html#a3bc273d5a3b1aed9e697bd2fa540403d">NoeudComposite::chercher</a></div><div class="ttdeci">virtual const NoeudAbstrait * chercher(const std::string &amp;typeNoeud) const </div><div class="ttdoc">Cherche un noeud par le type (sur un noeud constant). </div><div class="ttdef"><b>Definition:</b> <a href="../../db/d9c/_noeud_composite_8cpp_source.html#l00147">NoeudComposite.cpp:147</a></div></div>
+<div class="ttc" id="_usine_noeud_butoir_g_8h_html"><div class="ttname"><a href="../../d4/d41/_usine_noeud_butoir_g_8h.html">UsineNoeudButoirG.h</a></div></div>
+<div class="ttc" id="class_arbre_rendu_i_n_f2990_html_a97be26afc6aa5e5ce5c1e66623a27f9d"><div class="ttname"><a href="../../da/dcf/class_arbre_rendu_i_n_f2990.html#a97be26afc6aa5e5ce5c1e66623a27f9d">ArbreRenduINF2990::NOM_BILLE</a></div><div class="ttdeci">static const std::string NOM_BILLE</div><div class="ttdoc">Représente le type Bille. </div><div class="ttdef"><b>Definition:</b> <a href="../../de/d77/_arbre_rendu_i_n_f2990_8h_source.html#l00062">ArbreRenduINF2990.h:62</a></div></div>
+<div class="ttc" id="class_noeud_abstrait_html_a62d73f67c3b33e2cb106630bd1736a58"><div class="ttname"><a href="../../da/df4/class_noeud_abstrait.html#a62d73f67c3b33e2cb106630bd1736a58">NoeudAbstrait::obtenirPositionRelative</a></div><div class="ttdeci">const glm::dvec3 &amp; obtenirPositionRelative() const </div><div class="ttdoc">Obtient la position relative du noeud. </div><div class="ttdef"><b>Definition:</b> <a href="../../d4/d75/_noeud_abstrait_8h_source.html#l00327">NoeudAbstrait.h:327</a></div></div>
+<div class="ttc" id="class_arbre_rendu_i_n_f2990_html_aa67526b2fd719f6bcef7a4547bd25c7b"><div class="ttname"><a href="../../da/dcf/class_arbre_rendu_i_n_f2990.html#aa67526b2fd719f6bcef7a4547bd25c7b">ArbreRenduINF2990::~ArbreRenduINF2990</a></div><div class="ttdeci">virtual ~ArbreRenduINF2990()</div><div class="ttdoc">Destructeur. </div><div class="ttdef"><b>Definition:</b> <a href="../../de/d39/_arbre_rendu_i_n_f2990_8cpp_source.html#l00088">ArbreRenduINF2990.cpp:88</a></div></div>
+<div class="ttc" id="class_usine_noeud_trou_html"><div class="ttname"><a href="../../de/d8a/class_usine_noeud_trou.html">UsineNoeudTrou</a></div><div class="ttdoc">Classe qui représente une usine capable de créer des noeuds de type Trou. </div><div class="ttdef"><b>Definition:</b> <a href="../../d1/d60/_usine_noeud_trou_8h_source.html#l00024">UsineNoeudTrou.h:24</a></div></div>
+<div class="ttc" id="class_arbre_rendu_i_n_f2990_html_af8102d310d8607539ce7daa5535617b6"><div class="ttname"><a href="../../da/dcf/class_arbre_rendu_i_n_f2990.html#af8102d310d8607539ce7daa5535617b6">ArbreRenduINF2990::NOM_VIDE</a></div><div class="ttdeci">static const std::string NOM_VIDE</div><div class="ttdoc">Représente le type Vide. </div><div class="ttdef"><b>Definition:</b> <a href="../../de/d77/_arbre_rendu_i_n_f2990_8h_source.html#l00070">ArbreRenduINF2990.h:70</a></div></div>
+<div class="ttc" id="class_noeud_abstrait_html_a856c716249d5ca28d3a4407aca9f35bb"><div class="ttname"><a href="../../da/df4/class_noeud_abstrait.html#a856c716249d5ca28d3a4407aca9f35bb">NoeudAbstrait::obtenirRotation</a></div><div class="ttdeci">const glm::dvec3 &amp; obtenirRotation() const </div><div class="ttdoc">Obtenir rotation. </div><div class="ttdef"><b>Definition:</b> <a href="../../d4/d75/_noeud_abstrait_8h_source.html#l00630">NoeudAbstrait.h:630</a></div></div>
+<div class="ttc" id="class_usine_noeud_bille_html"><div class="ttname"><a href="../../d1/d2e/class_usine_noeud_bille.html">UsineNoeudBille</a></div><div class="ttdoc">Classe qui représente une usine capable de créer des noeuds de type Bille. </div><div class="ttdef"><b>Definition:</b> <a href="../../d5/db3/_usine_noeud_bille_8h_source.html#l00024">UsineNoeudBille.h:24</a></div></div>
+<div class="ttc" id="class_noeud_composite_html_ac2ce823d2c52140d4e1a924163ebbb58"><div class="ttname"><a href="../../da/d38/class_noeud_composite.html#ac2ce823d2c52140d4e1a924163ebbb58">NoeudComposite::ajouter</a></div><div class="ttdeci">virtual bool ajouter(NoeudAbstrait *enfant)</div><div class="ttdoc">Ajoute un noeud enfant. </div><div class="ttdef"><b>Definition:</b> <a href="../../db/d9c/_noeud_composite_8cpp_source.html#l00255">NoeudComposite.cpp:255</a></div></div>
+<div class="ttc" id="class_usine_noeud_butoir_d_html"><div class="ttname"><a href="../../dc/dcd/class_usine_noeud_butoir_d.html">UsineNoeudButoirD</a></div><div class="ttdoc">Classe qui représente une usine capable de créer des noeuds de type Butoir. </div><div class="ttdef"><b>Definition:</b> <a href="../../d5/dee/_usine_noeud_butoir_d_8h_source.html#l00024">UsineNoeudButoirD.h:24</a></div></div>
+<div class="ttc" id="_usine_noeud_portail_8h_html"><div class="ttname"><a href="../../df/df7/_usine_noeud_portail_8h.html">UsineNoeudPortail.h</a></div></div>
+</div><!-- fragment --></div><!-- contents -->
+</div><!-- doc-content -->
+<!-- start footer part -->
+<div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
+  <ul>
+    <li class="navelem"><a class="el" href="../../dir_8f231bbbd90d174e51ca0653d136090e.html">DLL</a></li><li class="navelem"><a class="el" href="../../dir_f9961c367f89cf83b005a4e7d2eeec99.html">Arbre</a></li><li class="navelem"><a class="el" href="../../de/d39/_arbre_rendu_i_n_f2990_8cpp.html">ArbreRenduINF2990.cpp</a></li>
+    <li class="footer">GÃ©nÃ©rÃ© le Dimanche 15 FÃ©vrier 2015 22:35:30 pour Pain Ball par
+    <a href="http://www.doxygen.org/index.html">
+    <img class="footer" src="../../doxygen.png" alt="doxygen"/></a> 1.8.9.1 </li>
+  </ul>
+</div>
+</body>
+</html>

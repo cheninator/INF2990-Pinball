@@ -1,0 +1,319 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=9"/>
+<meta name="generator" content="Doxygen 1.8.9.1"/>
+<title>Pain Ball:  Fichier source de DLL/Visiteurs/VisiteurDuplication.cpp</title>
+<link href="../../tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="../../jquery.js"></script>
+<script type="text/javascript" src="../../dynsections.js"></script>
+<link href="../../navtree.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="../../resize.js"></script>
+<script type="text/javascript" src="../../navtreedata.js"></script>
+<script type="text/javascript" src="../../navtree.js"></script>
+<script type="text/javascript">
+  $(document).ready(initResizable);
+  $(window).load(resizeHeight);
+</script>
+<link href="../../search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="../../search/searchdata.js"></script>
+<script type="text/javascript" src="../../search/search.js"></script>
+<script type="text/javascript">
+  $(document).ready(function() { init_search(); });
+</script>
+<link href="../../doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr style="height: 56px;">
+  <td id="projectlogo"><img alt="Logo" src="../../handy.jpg"/></td>
+  <td style="padding-left: 0.5em;">
+   <div id="projectname">Pain Ball
+   &#160;<span id="projectnumber">Livrable 1</span>
+   </div>
+   <div id="projectbrief">by The Ballers</div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- GÃ©nÃ©rÃ© par Doxygen 1.8.9.1 -->
+<script type="text/javascript">
+var searchBox = new SearchBox("searchBox", "../../search",false,'Recherche');
+</script>
+  <div id="navrow1" class="tabs">
+    <ul class="tablist">
+      <li><a href="../../index.html"><span>Page&#160;principale</span></a></li>
+      <li><a href="../../modules.html"><span>Modules</span></a></li>
+      <li><a href="../../namespaces.html"><span>Espaces&#160;de&#160;nommage</span></a></li>
+      <li><a href="../../annotated.html"><span>Classes</span></a></li>
+      <li class="current"><a href="../../files.html"><span>Fichiers</span></a></li>
+      <li>
+        <div id="MSearchBox" class="MSearchBoxInactive">
+        <span class="left">
+          <img id="MSearchSelect" src="../../search/mag_sel.png"
+               onmouseover="return searchBox.OnSearchSelectShow()"
+               onmouseout="return searchBox.OnSearchSelectHide()"
+               alt=""/>
+          <input type="text" id="MSearchField" value="Recherche" accesskey="S"
+               onfocus="searchBox.OnSearchFieldFocus(true)" 
+               onblur="searchBox.OnSearchFieldFocus(false)" 
+               onkeyup="searchBox.OnSearchFieldChange(event)"/>
+          </span><span class="right">
+            <a id="MSearchClose" href="javascript:searchBox.CloseResultsWindow()"><img id="MSearchCloseImg" border="0" src="../../search/close.png" alt=""/></a>
+          </span>
+        </div>
+      </li>
+    </ul>
+  </div>
+  <div id="navrow2" class="tabs2">
+    <ul class="tablist">
+      <li><a href="../../files.html"><span>Liste&#160;des&#160;fichiers</span></a></li>
+      <li><a href="../../globals.html"><span>Membres&#160;de&#160;fichier</span></a></li>
+    </ul>
+  </div>
+</div><!-- top -->
+<div id="side-nav" class="ui-resizable side-nav-resizable">
+  <div id="nav-tree">
+    <div id="nav-tree-contents">
+      <div id="nav-sync" class="sync"></div>
+    </div>
+  </div>
+  <div id="splitbar" style="-moz-user-select:none;" 
+       class="ui-resizable-handle">
+  </div>
+</div>
+<script type="text/javascript">
+$(document).ready(function(){initNavTree('da/d51/_visiteur_duplication_8cpp_source.html','../../');});
+</script>
+<div id="doc-content">
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<iframe src="javascript:void(0)" frameborder="0" 
+        name="MSearchResults" id="MSearchResults">
+</iframe>
+</div>
+
+<div class="header">
+  <div class="headertitle">
+<div class="title">VisiteurDuplication.cpp</div>  </div>
+</div><!--header-->
+<div class="contents">
+<a href="../../da/d51/_visiteur_duplication_8cpp.html">Aller Ã  la documentation de ce fichier.</a><div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="../../dd/da4/_visiteur_duplication_8h.html">VisiteurDuplication.h</a>&quot;</span></div>
+<div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160;<span class="preprocessor">#include &quot;../Arbre/ArbreRenduINF2990.h&quot;</span></div>
+<div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160;<span class="preprocessor">#include &quot;../Arbre/Noeuds/NoeudTable.h&quot;</span></div>
+<div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;<span class="preprocessor">#include &lt;iostream&gt;</span></div>
+<div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;</div>
+<div class="line"><a name="l00022"></a><span class="lineno"><a class="line" href="../../dc/d6f/class_visiteur_duplication.html#acc8fff54253eb394c7ade415f59d57e0">   22</a></span>&#160;<a class="code" href="../../dc/d6f/class_visiteur_duplication.html#acc8fff54253eb394c7ade415f59d57e0">VisiteurDuplication::VisiteurDuplication</a>()</div>
+<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;{</div>
+<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;    arbreTemp = <span class="keyword">nullptr</span>;</div>
+<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;}</div>
+<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;</div>
+<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;</div>
+<div class="line"><a name="l00037"></a><span class="lineno"><a class="line" href="../../dc/d6f/class_visiteur_duplication.html#ab48c0bd69fe4738d85ec48bfe1ae51ea">   37</a></span>&#160;<a class="code" href="../../dc/d6f/class_visiteur_duplication.html#ab48c0bd69fe4738d85ec48bfe1ae51ea">VisiteurDuplication::~VisiteurDuplication</a>()</div>
+<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;{</div>
+<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;    <span class="keywordflow">for</span> (<span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> <a class="code" href="../../d7/d39/_facade_interface_native_8cpp.html#acb559820d9ca11295b4500f179ef6392">i</a> = 0; <a class="code" href="../../d7/d39/_facade_interface_native_8cpp.html#acb559820d9ca11295b4500f179ef6392">i</a> &lt; copies_.size(); <a class="code" href="../../d7/d39/_facade_interface_native_8cpp.html#acb559820d9ca11295b4500f179ef6392">i</a>++)</div>
+<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;        <span class="keyword">delete</span> copies_[<a class="code" href="../../d7/d39/_facade_interface_native_8cpp.html#acb559820d9ca11295b4500f179ef6392">i</a>];</div>
+<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;</div>
+<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;    copies_.clear();</div>
+<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;</div>
+<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;    <span class="keyword">delete</span> arbreTemp;</div>
+<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;}</div>
+<div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;</div>
+<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;</div>
+<div class="line"><a name="l00060"></a><span class="lineno"><a class="line" href="../../dc/d6f/class_visiteur_duplication.html#abd6f31775dad566d3ec8b1fa6eceab90">   60</a></span>&#160;<span class="keywordtype">bool</span> <a class="code" href="../../dc/d6f/class_visiteur_duplication.html#abd6f31775dad566d3ec8b1fa6eceab90">VisiteurDuplication::traiter</a>(<a class="code" href="../../da/dcf/class_arbre_rendu_i_n_f2990.html">ArbreRenduINF2990</a>* arbre)</div>
+<div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;{</div>
+<div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;    arbreTemp = arbre;</div>
+<div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;</div>
+<div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;    <span class="comment">// Visiter les enfants de l&#39;arbre</span></div>
+<div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;    <span class="keywordflow">for</span> (<span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> <a class="code" href="../../d7/d39/_facade_interface_native_8cpp.html#acb559820d9ca11295b4500f179ef6392">i</a> = 0; <a class="code" href="../../d7/d39/_facade_interface_native_8cpp.html#acb559820d9ca11295b4500f179ef6392">i</a> &lt; arbre-&gt;<a class="code" href="../../da/d38/class_noeud_composite.html#a87b0010b4dc77c69c6114a70f3de73bd">obtenirNombreEnfants</a>(); <a class="code" href="../../d7/d39/_facade_interface_native_8cpp.html#acb559820d9ca11295b4500f179ef6392">i</a>++)</div>
+<div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160;    {</div>
+<div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160;        <span class="comment">// Traiter les enfants de l&#39;arbre de rendu</span></div>
+<div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160;        arbre-&gt;<a class="code" href="../../da/dcf/class_arbre_rendu_i_n_f2990.html#a4aa11fcea861f642d11664e1308f2278">getEnfant</a>(<a class="code" href="../../d7/d39/_facade_interface_native_8cpp.html#acb559820d9ca11295b4500f179ef6392">i</a>)-&gt;<a class="code" href="../../da/df4/class_noeud_abstrait.html#a6b4a6eb33872fe1d3d73c0c1fa70ccd8">accepterVisiteur</a>(<span class="keyword">this</span>);</div>
+<div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160;    }</div>
+<div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160;</div>
+<div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160;    arbreTemp = <span class="keyword">nullptr</span>;</div>
+<div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160;</div>
+<div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160;    <span class="keywordflow">return</span> <span class="keyword">true</span>;</div>
+<div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160;}</div>
+<div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160;</div>
+<div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160;</div>
+<div class="line"><a name="l00089"></a><span class="lineno"><a class="line" href="../../dc/d6f/class_visiteur_duplication.html#a8f6ceca5ac2ddd15957829ae4480c2a1">   89</a></span>&#160;<span class="keywordtype">bool</span> <a class="code" href="../../dc/d6f/class_visiteur_duplication.html#abd6f31775dad566d3ec8b1fa6eceab90">VisiteurDuplication::traiter</a>(<a class="code" href="../../de/d5c/class_noeud_table.html">NoeudTable</a>* table)</div>
+<div class="line"><a name="l00090"></a><span class="lineno">   90</span>&#160;{</div>
+<div class="line"><a name="l00091"></a><span class="lineno">   91</span>&#160;    <span class="comment">// Traiter les enfants de la table</span></div>
+<div class="line"><a name="l00092"></a><span class="lineno">   92</span>&#160;    <span class="keywordflow">for</span> (<span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> <a class="code" href="../../d7/d39/_facade_interface_native_8cpp.html#acb559820d9ca11295b4500f179ef6392">i</a> = 0; <a class="code" href="../../d7/d39/_facade_interface_native_8cpp.html#acb559820d9ca11295b4500f179ef6392">i</a> &lt; table-&gt;<a class="code" href="../../da/d38/class_noeud_composite.html#a87b0010b4dc77c69c6114a70f3de73bd">obtenirNombreEnfants</a>(); <a class="code" href="../../d7/d39/_facade_interface_native_8cpp.html#acb559820d9ca11295b4500f179ef6392">i</a>++)</div>
+<div class="line"><a name="l00093"></a><span class="lineno">   93</span>&#160;    {</div>
+<div class="line"><a name="l00094"></a><span class="lineno">   94</span>&#160;        table-&gt;<a class="code" href="../../de/d5c/class_noeud_table.html#a4f384bf689c357a1180d213e158d33de">getEnfant</a>(<a class="code" href="../../d7/d39/_facade_interface_native_8cpp.html#acb559820d9ca11295b4500f179ef6392">i</a>)-&gt;<a class="code" href="../../da/df4/class_noeud_abstrait.html#a6b4a6eb33872fe1d3d73c0c1fa70ccd8">accepterVisiteur</a>(<span class="keyword">this</span>);</div>
+<div class="line"><a name="l00095"></a><span class="lineno">   95</span>&#160;    }</div>
+<div class="line"><a name="l00096"></a><span class="lineno">   96</span>&#160;</div>
+<div class="line"><a name="l00097"></a><span class="lineno">   97</span>&#160;    <span class="keywordflow">if</span> (!copies_.empty())</div>
+<div class="line"><a name="l00098"></a><span class="lineno">   98</span>&#160;    {</div>
+<div class="line"><a name="l00099"></a><span class="lineno">   99</span>&#160;        <span class="comment">// Ajouter les copies à la table</span></div>
+<div class="line"><a name="l00100"></a><span class="lineno">  100</span>&#160;        <span class="keywordflow">for</span> (<span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> <a class="code" href="../../d7/d39/_facade_interface_native_8cpp.html#acb559820d9ca11295b4500f179ef6392">i</a> = 0; <a class="code" href="../../d7/d39/_facade_interface_native_8cpp.html#acb559820d9ca11295b4500f179ef6392">i</a> &lt; copies_.size(); <a class="code" href="../../d7/d39/_facade_interface_native_8cpp.html#acb559820d9ca11295b4500f179ef6392">i</a>++)</div>
+<div class="line"><a name="l00101"></a><span class="lineno">  101</span>&#160;        {</div>
+<div class="line"><a name="l00102"></a><span class="lineno">  102</span>&#160;            table-&gt;<a class="code" href="../../da/d38/class_noeud_composite.html#ac2ce823d2c52140d4e1a924163ebbb58">ajouter</a>(copies_[<a class="code" href="../../d7/d39/_facade_interface_native_8cpp.html#acb559820d9ca11295b4500f179ef6392">i</a>]);</div>
+<div class="line"><a name="l00103"></a><span class="lineno">  103</span>&#160;        }</div>
+<div class="line"><a name="l00104"></a><span class="lineno">  104</span>&#160;</div>
+<div class="line"><a name="l00105"></a><span class="lineno">  105</span>&#160;        copies_.clear();</div>
+<div class="line"><a name="l00106"></a><span class="lineno">  106</span>&#160;    }</div>
+<div class="line"><a name="l00107"></a><span class="lineno">  107</span>&#160;</div>
+<div class="line"><a name="l00108"></a><span class="lineno">  108</span>&#160;    <span class="keywordflow">return</span> <span class="keyword">true</span>;</div>
+<div class="line"><a name="l00109"></a><span class="lineno">  109</span>&#160;}</div>
+<div class="line"><a name="l00110"></a><span class="lineno">  110</span>&#160;</div>
+<div class="line"><a name="l00111"></a><span class="lineno">  111</span>&#160;</div>
+<div class="line"><a name="l00124"></a><span class="lineno"><a class="line" href="../../dc/d6f/class_visiteur_duplication.html#a1b34bb4d64d44ad0f3dd9f1882d3cfb3">  124</a></span>&#160;<span class="keywordtype">bool</span> <a class="code" href="../../dc/d6f/class_visiteur_duplication.html#abd6f31775dad566d3ec8b1fa6eceab90">VisiteurDuplication::traiter</a>(<a class="code" href="../../da/df4/class_noeud_abstrait.html">NoeudAbstrait</a>* noeud)</div>
+<div class="line"><a name="l00125"></a><span class="lineno">  125</span>&#160;{</div>
+<div class="line"><a name="l00126"></a><span class="lineno">  126</span>&#160;    <span class="keywordflow">if</span> (noeud-&gt;<a class="code" href="../../da/df4/class_noeud_abstrait.html#a8fb7a3313ce4d361ef7ec8e45ba8add5">estSelectionne</a>())</div>
+<div class="line"><a name="l00127"></a><span class="lineno">  127</span>&#160;    {</div>
+<div class="line"><a name="l00128"></a><span class="lineno">  128</span>&#160;        <span class="comment">// Effectuer la copie du noeud</span></div>
+<div class="line"><a name="l00129"></a><span class="lineno">  129</span>&#160;        <a class="code" href="../../da/df4/class_noeud_abstrait.html">NoeudAbstrait</a>* copie = arbreTemp-&gt;<a class="code" href="../../dc/dc6/class_arbre_rendu.html#a33ae9013f9cec73854d32527b85b41f9">creerNoeud</a>(noeud-&gt;<a class="code" href="../../da/df4/class_noeud_abstrait.html#a2df7c53ab456cc88bce73f7eb913e3e6">obtenirType</a>());</div>
+<div class="line"><a name="l00130"></a><span class="lineno">  130</span>&#160;        copie-&gt;<a class="code" href="../../da/df4/class_noeud_abstrait.html#a373f4cd99bf6096523f515fc10dac62a">assignerRotation</a>(noeud-&gt;<a class="code" href="../../da/df4/class_noeud_abstrait.html#a856c716249d5ca28d3a4407aca9f35bb">obtenirRotation</a>());</div>
+<div class="line"><a name="l00131"></a><span class="lineno">  131</span>&#160;        copie-&gt;<a class="code" href="../../da/df4/class_noeud_abstrait.html#a878010d449b8717e7b46260f845e97dd">assignerEchelle</a>(noeud-&gt;<a class="code" href="../../da/df4/class_noeud_abstrait.html#a97c8cd383bed8b83bad646097a233242">obtenirAgrandissement</a>());</div>
+<div class="line"><a name="l00132"></a><span class="lineno">  132</span>&#160;        copie-&gt;<a class="code" href="../../da/df4/class_noeud_abstrait.html#a11e12e42b05a5327c92cd7fd1b7e5a24">assignerPositionRelative</a>(noeud-&gt;<a class="code" href="../../da/df4/class_noeud_abstrait.html#a62d73f67c3b33e2cb106630bd1736a58">obtenirPositionRelative</a>());</div>
+<div class="line"><a name="l00133"></a><span class="lineno">  133</span>&#160;        copie-&gt;<a class="code" href="../../da/df4/class_noeud_abstrait.html#a7ffd14ef424731ff536ad37c028fcd3f">setColorShift</a>(noeud-&gt;<a class="code" href="../../da/df4/class_noeud_abstrait.html#aa358980c6250f9674ffca7bd75962ab4">getColorShift</a>());</div>
+<div class="line"><a name="l00134"></a><span class="lineno">  134</span>&#160;        copie-&gt;<a class="code" href="../../da/df4/class_noeud_abstrait.html#a0f39647390d357d8662a870f0c76242c">assignerSelection</a>(<span class="keyword">true</span>);</div>
+<div class="line"><a name="l00135"></a><span class="lineno">  135</span>&#160;</div>
+<div class="line"><a name="l00136"></a><span class="lineno">  136</span>&#160;        <span class="comment">// Copier le jumeau du portail si il est selectionné         if (noeud-&gt;obtenirType() == &quot;portail&quot; &amp;&amp; noeud-&gt;getTwin()-&gt;estSelectionne())
+        {
+            // Effectuer la copie du jumeau
+            NoeudAbstrait* copieJumeau = arbreTemp-&gt;creerNoeud(noeud-&gt;getTwin()-&gt;obtenirType());
+            copieJumeau-&gt;assignerRotation(noeud-&gt;getTwin()-&gt;obtenirRotation());
+            copieJumeau-&gt;assignerEchelle(noeud-&gt;getTwin()-&gt;obtenirAgrandissement());
+            copieJumeau-&gt;assignerPositionRelative(noeud-&gt;getTwin()-&gt;obtenirPositionRelative());
+            copieJumeau-&gt;assignerSelection(true);
+
+            // Relier les jumeaux
+            copieJumeau-&gt;setTwin(copie);
+            copie-&gt;setTwin(copieJumeau);
+
+            // Ajouter la copie dans une structure de donnée afin de traiter la duplication multiple par la suite.
+            copies_.push_back(copie);
+            copies_.push_back(copieJumeau);
+
+            // Eviter d&#39;effectuer une double copie lorsque le jumeau du portail est traité
+          noeud-&gt;getTwin()-&gt;assignerSelection(false);
+        }
+        
+        else if (noeud-&gt;obtenirType() == &quot;portail&quot; &amp;&amp; !(noeud-&gt;getTwin()-&gt;estSelectionne()))
+        {
+            delete copie;
+            copie = 0;
+        }
+    
+        else
+        {
+            copies_.push_back(copie);
+        }
+
+        noeud-&gt;assignerSelection(false);
+    }
+
+    return true;
+}</span></div>
+<div class="line"><a name="l00137"></a><span class="lineno">  137</span>&#160;        <span class="keywordflow">if</span> (noeud-&gt;<a class="code" href="../../da/df4/class_noeud_abstrait.html#a2df7c53ab456cc88bce73f7eb913e3e6">obtenirType</a>() == <span class="stringliteral">&quot;portail&quot;</span> &amp;&amp; noeud-&gt;<a class="code" href="../../da/df4/class_noeud_abstrait.html#ae81a18a1dd964ff9058ea58a8222e857">getTwin</a>()-&gt;<a class="code" href="../../da/df4/class_noeud_abstrait.html#a8fb7a3313ce4d361ef7ec8e45ba8add5">estSelectionne</a>())</div>
+<div class="line"><a name="l00138"></a><span class="lineno">  138</span>&#160;        {</div>
+<div class="line"><a name="l00139"></a><span class="lineno">  139</span>&#160;            <span class="comment">// Effectuer la copie du jumeau</span></div>
+<div class="line"><a name="l00140"></a><span class="lineno">  140</span>&#160;            <a class="code" href="../../da/df4/class_noeud_abstrait.html">NoeudAbstrait</a>* copieJumeau = arbreTemp-&gt;<a class="code" href="../../dc/dc6/class_arbre_rendu.html#a33ae9013f9cec73854d32527b85b41f9">creerNoeud</a>(noeud-&gt;<a class="code" href="../../da/df4/class_noeud_abstrait.html#ae81a18a1dd964ff9058ea58a8222e857">getTwin</a>()-&gt;<a class="code" href="../../da/df4/class_noeud_abstrait.html#a2df7c53ab456cc88bce73f7eb913e3e6">obtenirType</a>());</div>
+<div class="line"><a name="l00141"></a><span class="lineno">  141</span>&#160;            copieJumeau-&gt;<a class="code" href="../../da/df4/class_noeud_abstrait.html#a373f4cd99bf6096523f515fc10dac62a">assignerRotation</a>(noeud-&gt;<a class="code" href="../../da/df4/class_noeud_abstrait.html#ae81a18a1dd964ff9058ea58a8222e857">getTwin</a>()-&gt;<a class="code" href="../../da/df4/class_noeud_abstrait.html#a856c716249d5ca28d3a4407aca9f35bb">obtenirRotation</a>());</div>
+<div class="line"><a name="l00142"></a><span class="lineno">  142</span>&#160;            copieJumeau-&gt;<a class="code" href="../../da/df4/class_noeud_abstrait.html#a878010d449b8717e7b46260f845e97dd">assignerEchelle</a>(noeud-&gt;<a class="code" href="../../da/df4/class_noeud_abstrait.html#ae81a18a1dd964ff9058ea58a8222e857">getTwin</a>()-&gt;<a class="code" href="../../da/df4/class_noeud_abstrait.html#a97c8cd383bed8b83bad646097a233242">obtenirAgrandissement</a>());</div>
+<div class="line"><a name="l00143"></a><span class="lineno">  143</span>&#160;            copieJumeau-&gt;<a class="code" href="../../da/df4/class_noeud_abstrait.html#a11e12e42b05a5327c92cd7fd1b7e5a24">assignerPositionRelative</a>(noeud-&gt;<a class="code" href="../../da/df4/class_noeud_abstrait.html#ae81a18a1dd964ff9058ea58a8222e857">getTwin</a>()-&gt;<a class="code" href="../../da/df4/class_noeud_abstrait.html#a62d73f67c3b33e2cb106630bd1736a58">obtenirPositionRelative</a>());</div>
+<div class="line"><a name="l00144"></a><span class="lineno">  144</span>&#160;            copieJumeau-&gt;<a class="code" href="../../da/df4/class_noeud_abstrait.html#a0f39647390d357d8662a870f0c76242c">assignerSelection</a>(<span class="keyword">true</span>);</div>
+<div class="line"><a name="l00145"></a><span class="lineno">  145</span>&#160;</div>
+<div class="line"><a name="l00146"></a><span class="lineno">  146</span>&#160;            <span class="comment">// Relier les jumeaux</span></div>
+<div class="line"><a name="l00147"></a><span class="lineno">  147</span>&#160;            copieJumeau-&gt;<a class="code" href="../../da/df4/class_noeud_abstrait.html#a6a7cdcf5adac5b95a0a87fd4005431ce">setTwin</a>(copie);</div>
+<div class="line"><a name="l00148"></a><span class="lineno">  148</span>&#160;            copie-&gt;<a class="code" href="../../da/df4/class_noeud_abstrait.html#a6a7cdcf5adac5b95a0a87fd4005431ce">setTwin</a>(copieJumeau);</div>
+<div class="line"><a name="l00149"></a><span class="lineno">  149</span>&#160;</div>
+<div class="line"><a name="l00150"></a><span class="lineno">  150</span>&#160;            <span class="comment">// Ajouter la copie dans une structure de donnée afin de traiter la duplication multiple par la suite.</span></div>
+<div class="line"><a name="l00151"></a><span class="lineno">  151</span>&#160;            copies_.push_back(copie);</div>
+<div class="line"><a name="l00152"></a><span class="lineno">  152</span>&#160;            copies_.push_back(copieJumeau);</div>
+<div class="line"><a name="l00153"></a><span class="lineno">  153</span>&#160;</div>
+<div class="line"><a name="l00154"></a><span class="lineno">  154</span>&#160;            <span class="comment">// Eviter d&#39;effectuer une double copie lorsque le jumeau du portail est traité           noeud-&gt;getTwin()-&gt;assignerSelection(false);
+        }
+        
+        else if (noeud-&gt;obtenirType() == &quot;portail&quot; &amp;&amp; !(noeud-&gt;getTwin()-&gt;estSelectionne()))
+        {
+            delete copie;
+            copie = 0;
+        }
+    
+        else
+        {
+            copies_.push_back(copie);
+        }
+
+        noeud-&gt;assignerSelection(false);
+    }
+
+    return true;
+}</span></div>
+<div class="line"><a name="l00155"></a><span class="lineno">  155</span>&#160;            noeud-&gt;<a class="code" href="../../da/df4/class_noeud_abstrait.html#ae81a18a1dd964ff9058ea58a8222e857">getTwin</a>()-&gt;<a class="code" href="../../da/df4/class_noeud_abstrait.html#a0f39647390d357d8662a870f0c76242c">assignerSelection</a>(<span class="keyword">false</span>);</div>
+<div class="line"><a name="l00156"></a><span class="lineno">  156</span>&#160;        }</div>
+<div class="line"><a name="l00157"></a><span class="lineno">  157</span>&#160;        </div>
+<div class="line"><a name="l00158"></a><span class="lineno">  158</span>&#160;        <span class="keywordflow">else</span> <span class="keywordflow">if</span> (noeud-&gt;<a class="code" href="../../da/df4/class_noeud_abstrait.html#a2df7c53ab456cc88bce73f7eb913e3e6">obtenirType</a>() == <span class="stringliteral">&quot;portail&quot;</span> &amp;&amp; !(noeud-&gt;<a class="code" href="../../da/df4/class_noeud_abstrait.html#ae81a18a1dd964ff9058ea58a8222e857">getTwin</a>()-&gt;<a class="code" href="../../da/df4/class_noeud_abstrait.html#a8fb7a3313ce4d361ef7ec8e45ba8add5">estSelectionne</a>()))</div>
+<div class="line"><a name="l00159"></a><span class="lineno">  159</span>&#160;        {</div>
+<div class="line"><a name="l00160"></a><span class="lineno">  160</span>&#160;            <span class="keyword">delete</span> copie;</div>
+<div class="line"><a name="l00161"></a><span class="lineno">  161</span>&#160;            copie = 0;</div>
+<div class="line"><a name="l00162"></a><span class="lineno">  162</span>&#160;        }</div>
+<div class="line"><a name="l00163"></a><span class="lineno">  163</span>&#160;    </div>
+<div class="line"><a name="l00164"></a><span class="lineno">  164</span>&#160;        <span class="keywordflow">else</span></div>
+<div class="line"><a name="l00165"></a><span class="lineno">  165</span>&#160;        {</div>
+<div class="line"><a name="l00166"></a><span class="lineno">  166</span>&#160;            copies_.push_back(copie);</div>
+<div class="line"><a name="l00167"></a><span class="lineno">  167</span>&#160;        }</div>
+<div class="line"><a name="l00168"></a><span class="lineno">  168</span>&#160;</div>
+<div class="line"><a name="l00169"></a><span class="lineno">  169</span>&#160;        noeud-&gt;<a class="code" href="../../da/df4/class_noeud_abstrait.html#a0f39647390d357d8662a870f0c76242c">assignerSelection</a>(<span class="keyword">false</span>);</div>
+<div class="line"><a name="l00170"></a><span class="lineno">  170</span>&#160;    }</div>
+<div class="line"><a name="l00171"></a><span class="lineno">  171</span>&#160;</div>
+<div class="line"><a name="l00172"></a><span class="lineno">  172</span>&#160;    <span class="keywordflow">return</span> <span class="keyword">true</span>;</div>
+<div class="line"><a name="l00173"></a><span class="lineno">  173</span>&#160;}</div>
+<div class="ttc" id="class_noeud_abstrait_html_a373f4cd99bf6096523f515fc10dac62a"><div class="ttname"><a href="../../da/df4/class_noeud_abstrait.html#a373f4cd99bf6096523f515fc10dac62a">NoeudAbstrait::assignerRotation</a></div><div class="ttdeci">void assignerRotation(glm::dvec3 rotation)</div><div class="ttdoc">Écrit le rotation sur le noeud. </div><div class="ttdef"><b>Definition:</b> <a href="../../d4/d75/_noeud_abstrait_8h_source.html#l00448">NoeudAbstrait.h:448</a></div></div>
+<div class="ttc" id="class_noeud_table_html_a4f384bf689c357a1180d213e158d33de"><div class="ttname"><a href="../../de/d5c/class_noeud_table.html#a4f384bf689c357a1180d213e158d33de">NoeudTable::getEnfant</a></div><div class="ttdeci">virtual NoeudAbstrait * getEnfant(int i)</div><div class="ttdoc">Retourne l&#39;enfant du noeud courant. </div><div class="ttdef"><b>Definition:</b> <a href="../../d8/d26/_noeud_table_8h_source.html#l00043">NoeudTable.h:43</a></div></div>
+<div class="ttc" id="class_visiteur_duplication_html_ab48c0bd69fe4738d85ec48bfe1ae51ea"><div class="ttname"><a href="../../dc/d6f/class_visiteur_duplication.html#ab48c0bd69fe4738d85ec48bfe1ae51ea">VisiteurDuplication::~VisiteurDuplication</a></div><div class="ttdeci">~VisiteurDuplication()</div><div class="ttdoc">Destructeur. </div><div class="ttdef"><b>Definition:</b> <a href="../../da/d51/_visiteur_duplication_8cpp_source.html#l00037">VisiteurDuplication.cpp:37</a></div></div>
+<div class="ttc" id="class_noeud_abstrait_html_a2df7c53ab456cc88bce73f7eb913e3e6"><div class="ttname"><a href="../../da/df4/class_noeud_abstrait.html#a2df7c53ab456cc88bce73f7eb913e3e6">NoeudAbstrait::obtenirType</a></div><div class="ttdeci">const std::string &amp; obtenirType() const </div><div class="ttdoc">Obtient le type du noeud. </div><div class="ttdef"><b>Definition:</b> <a href="../../d4/d75/_noeud_abstrait_8h_source.html#l00362">NoeudAbstrait.h:362</a></div></div>
+<div class="ttc" id="class_noeud_abstrait_html_a6a7cdcf5adac5b95a0a87fd4005431ce"><div class="ttname"><a href="../../da/df4/class_noeud_abstrait.html#a6a7cdcf5adac5b95a0a87fd4005431ce">NoeudAbstrait::setTwin</a></div><div class="ttdeci">virtual void setTwin(NoeudAbstrait *twin)</div><div class="ttdoc">Ajouter jumeau. </div><div class="ttdef"><b>Definition:</b> <a href="../../d2/d5d/_noeud_abstrait_8cpp_source.html#l00516">NoeudAbstrait.cpp:516</a></div></div>
+<div class="ttc" id="class_noeud_abstrait_html_a97c8cd383bed8b83bad646097a233242"><div class="ttname"><a href="../../da/df4/class_noeud_abstrait.html#a97c8cd383bed8b83bad646097a233242">NoeudAbstrait::obtenirAgrandissement</a></div><div class="ttdeci">const glm::dvec3 &amp; obtenirAgrandissement() const </div><div class="ttdoc">Obtenir agrandissement. </div><div class="ttdef"><b>Definition:</b> <a href="../../d4/d75/_noeud_abstrait_8h_source.html#l00614">NoeudAbstrait.h:614</a></div></div>
+<div class="ttc" id="class_noeud_composite_html_a87b0010b4dc77c69c6114a70f3de73bd"><div class="ttname"><a href="../../da/d38/class_noeud_composite.html#a87b0010b4dc77c69c6114a70f3de73bd">NoeudComposite::obtenirNombreEnfants</a></div><div class="ttdeci">virtual unsigned int obtenirNombreEnfants() const </div><div class="ttdoc">Obtient le nombre d&#39;enfants du noeud. </div><div class="ttdef"><b>Definition:</b> <a href="../../db/d9c/_noeud_composite_8cpp_source.html#l00275">NoeudComposite.cpp:275</a></div></div>
+<div class="ttc" id="class_noeud_abstrait_html_a6b4a6eb33872fe1d3d73c0c1fa70ccd8"><div class="ttname"><a href="../../da/df4/class_noeud_abstrait.html#a6b4a6eb33872fe1d3d73c0c1fa70ccd8">NoeudAbstrait::accepterVisiteur</a></div><div class="ttdeci">virtual bool accepterVisiteur(VisiteurAbstrait *vis)</div><div class="ttdoc">Accepter un visiteur. </div><div class="ttdef"><b>Definition:</b> <a href="../../d2/d5d/_noeud_abstrait_8cpp_source.html#l00481">NoeudAbstrait.cpp:481</a></div></div>
+<div class="ttc" id="class_arbre_rendu_html_a33ae9013f9cec73854d32527b85b41f9"><div class="ttname"><a href="../../dc/dc6/class_arbre_rendu.html#a33ae9013f9cec73854d32527b85b41f9">ArbreRendu::creerNoeud</a></div><div class="ttdeci">NoeudAbstrait * creerNoeud(const std::string &amp;typeNouveauNoeud) const </div><div class="ttdoc">Crée un nouveau noeud. </div><div class="ttdef"><b>Definition:</b> <a href="../../d7/dfb/_arbre_rendu_8cpp_source.html#l00059">ArbreRendu.cpp:59</a></div></div>
+<div class="ttc" id="class_noeud_abstrait_html_a11e12e42b05a5327c92cd7fd1b7e5a24"><div class="ttname"><a href="../../da/df4/class_noeud_abstrait.html#a11e12e42b05a5327c92cd7fd1b7e5a24">NoeudAbstrait::assignerPositionRelative</a></div><div class="ttdeci">void assignerPositionRelative(const glm::dvec3 &amp;positionRelative)</div><div class="ttdoc">Assigne la position relative du noeud. </div><div class="ttdef"><b>Definition:</b> <a href="../../d4/d75/_noeud_abstrait_8h_source.html#l00345">NoeudAbstrait.h:345</a></div></div>
+<div class="ttc" id="class_noeud_table_html"><div class="ttname"><a href="../../de/d5c/class_noeud_table.html">NoeudTable</a></div><div class="ttdoc">Classe qui représente une table. </div><div class="ttdef"><b>Definition:</b> <a href="../../d8/d26/_noeud_table_8h_source.html#l00024">NoeudTable.h:24</a></div></div>
+<div class="ttc" id="class_noeud_abstrait_html_a878010d449b8717e7b46260f845e97dd"><div class="ttname"><a href="../../da/df4/class_noeud_abstrait.html#a878010d449b8717e7b46260f845e97dd">NoeudAbstrait::assignerEchelle</a></div><div class="ttdeci">void assignerEchelle(glm::dvec3 scale)</div><div class="ttdoc">Écrit le zoom sur le noeud. </div><div class="ttdef"><b>Definition:</b> <a href="../../d4/d75/_noeud_abstrait_8h_source.html#l00431">NoeudAbstrait.h:431</a></div></div>
+<div class="ttc" id="_visiteur_duplication_8h_html"><div class="ttname"><a href="../../dd/da4/_visiteur_duplication_8h.html">VisiteurDuplication.h</a></div></div>
+<div class="ttc" id="class_visiteur_duplication_html_acc8fff54253eb394c7ade415f59d57e0"><div class="ttname"><a href="../../dc/d6f/class_visiteur_duplication.html#acc8fff54253eb394c7ade415f59d57e0">VisiteurDuplication::VisiteurDuplication</a></div><div class="ttdeci">VisiteurDuplication()</div><div class="ttdoc">Constructeur par défaut. </div><div class="ttdef"><b>Definition:</b> <a href="../../da/d51/_visiteur_duplication_8cpp_source.html#l00022">VisiteurDuplication.cpp:22</a></div></div>
+<div class="ttc" id="class_noeud_abstrait_html_ae81a18a1dd964ff9058ea58a8222e857"><div class="ttname"><a href="../../da/df4/class_noeud_abstrait.html#ae81a18a1dd964ff9058ea58a8222e857">NoeudAbstrait::getTwin</a></div><div class="ttdeci">virtual NoeudAbstrait * getTwin()</div><div class="ttdoc">Obtenir jumeau. </div><div class="ttdef"><b>Definition:</b> <a href="../../d2/d5d/_noeud_abstrait_8cpp_source.html#l00499">NoeudAbstrait.cpp:499</a></div></div>
+<div class="ttc" id="class_noeud_abstrait_html_a0f39647390d357d8662a870f0c76242c"><div class="ttname"><a href="../../da/df4/class_noeud_abstrait.html#a0f39647390d357d8662a870f0c76242c">NoeudAbstrait::assignerSelection</a></div><div class="ttdeci">void assignerSelection(bool selectionne)</div><div class="ttdoc">Écrit l&#39;état de la sélection du noeud. </div><div class="ttdef"><b>Definition:</b> <a href="../../d4/d75/_noeud_abstrait_8h_source.html#l00413">NoeudAbstrait.h:413</a></div></div>
+<div class="ttc" id="class_arbre_rendu_i_n_f2990_html"><div class="ttname"><a href="../../da/dcf/class_arbre_rendu_i_n_f2990.html">ArbreRenduINF2990</a></div><div class="ttdoc">Classe qui représente l&#39;arbre de rendu spécifique au projet de INF2990. </div><div class="ttdef"><b>Definition:</b> <a href="../../de/d77/_arbre_rendu_i_n_f2990_8h_source.html#l00032">ArbreRenduINF2990.h:32</a></div></div>
+<div class="ttc" id="_facade_interface_native_8cpp_html_acb559820d9ca11295b4500f179ef6392"><div class="ttname"><a href="../../d7/d39/_facade_interface_native_8cpp.html#acb559820d9ca11295b4500f179ef6392">i</a></div><div class="ttdeci">int i</div><div class="ttdef"><b>Definition:</b> <a href="../../d7/d39/_facade_interface_native_8cpp_source.html#l01038">FacadeInterfaceNative.cpp:1038</a></div></div>
+<div class="ttc" id="class_noeud_abstrait_html_a8fb7a3313ce4d361ef7ec8e45ba8add5"><div class="ttname"><a href="../../da/df4/class_noeud_abstrait.html#a8fb7a3313ce4d361ef7ec8e45ba8add5">NoeudAbstrait::estSelectionne</a></div><div class="ttdeci">bool estSelectionne() const </div><div class="ttdoc">Vérifie si le noeud est sélectionné. </div><div class="ttdef"><b>Definition:</b> <a href="../../d4/d75/_noeud_abstrait_8h_source.html#l00480">NoeudAbstrait.h:480</a></div></div>
+<div class="ttc" id="class_visiteur_duplication_html_abd6f31775dad566d3ec8b1fa6eceab90"><div class="ttname"><a href="../../dc/d6f/class_visiteur_duplication.html#abd6f31775dad566d3ec8b1fa6eceab90">VisiteurDuplication::traiter</a></div><div class="ttdeci">virtual bool traiter(ArbreRenduINF2990 *arbre)</div><div class="ttdoc">Traiter une opération sur l&#39;arbre de rendu et ses enfants. </div><div class="ttdef"><b>Definition:</b> <a href="../../da/d51/_visiteur_duplication_8cpp_source.html#l00060">VisiteurDuplication.cpp:60</a></div></div>
+<div class="ttc" id="class_noeud_abstrait_html"><div class="ttname"><a href="../../da/df4/class_noeud_abstrait.html">NoeudAbstrait</a></div><div class="ttdoc">Classe de base du patron composite utilisée pour créer l&#39;arbre de rendu. </div><div class="ttdef"><b>Definition:</b> <a href="../../d4/d75/_noeud_abstrait_8h_source.html#l00048">NoeudAbstrait.h:48</a></div></div>
+<div class="ttc" id="class_arbre_rendu_i_n_f2990_html_a4aa11fcea861f642d11664e1308f2278"><div class="ttname"><a href="../../da/dcf/class_arbre_rendu_i_n_f2990.html#a4aa11fcea861f642d11664e1308f2278">ArbreRenduINF2990::getEnfant</a></div><div class="ttdeci">NoeudAbstrait * getEnfant(int position) const </div><div class="ttdoc">Obtenir le ième enfant de l&#39;arbre. </div><div class="ttdef"><b>Definition:</b> <a href="../../de/d39/_arbre_rendu_i_n_f2990_8cpp_source.html#l00126">ArbreRenduINF2990.cpp:126</a></div></div>
+<div class="ttc" id="class_noeud_abstrait_html_a7ffd14ef424731ff536ad37c028fcd3f"><div class="ttname"><a href="../../da/df4/class_noeud_abstrait.html#a7ffd14ef424731ff536ad37c028fcd3f">NoeudAbstrait::setColorShift</a></div><div class="ttdeci">virtual void setColorShift(bool colorShift)</div><div class="ttdoc">Selectionner couleur. </div><div class="ttdef"><b>Definition:</b> <a href="../../d2/d5d/_noeud_abstrait_8cpp_source.html#l00608">NoeudAbstrait.cpp:608</a></div></div>
+<div class="ttc" id="class_noeud_abstrait_html_a62d73f67c3b33e2cb106630bd1736a58"><div class="ttname"><a href="../../da/df4/class_noeud_abstrait.html#a62d73f67c3b33e2cb106630bd1736a58">NoeudAbstrait::obtenirPositionRelative</a></div><div class="ttdeci">const glm::dvec3 &amp; obtenirPositionRelative() const </div><div class="ttdoc">Obtient la position relative du noeud. </div><div class="ttdef"><b>Definition:</b> <a href="../../d4/d75/_noeud_abstrait_8h_source.html#l00327">NoeudAbstrait.h:327</a></div></div>
+<div class="ttc" id="class_noeud_abstrait_html_aa358980c6250f9674ffca7bd75962ab4"><div class="ttname"><a href="../../da/df4/class_noeud_abstrait.html#aa358980c6250f9674ffca7bd75962ab4">NoeudAbstrait::getColorShift</a></div><div class="ttdeci">virtual bool getColorShift()</div><div class="ttdoc">Obtenir couleur. </div><div class="ttdef"><b>Definition:</b> <a href="../../d2/d5d/_noeud_abstrait_8cpp_source.html#l00591">NoeudAbstrait.cpp:591</a></div></div>
+<div class="ttc" id="class_noeud_abstrait_html_a856c716249d5ca28d3a4407aca9f35bb"><div class="ttname"><a href="../../da/df4/class_noeud_abstrait.html#a856c716249d5ca28d3a4407aca9f35bb">NoeudAbstrait::obtenirRotation</a></div><div class="ttdeci">const glm::dvec3 &amp; obtenirRotation() const </div><div class="ttdoc">Obtenir rotation. </div><div class="ttdef"><b>Definition:</b> <a href="../../d4/d75/_noeud_abstrait_8h_source.html#l00630">NoeudAbstrait.h:630</a></div></div>
+<div class="ttc" id="class_noeud_composite_html_ac2ce823d2c52140d4e1a924163ebbb58"><div class="ttname"><a href="../../da/d38/class_noeud_composite.html#ac2ce823d2c52140d4e1a924163ebbb58">NoeudComposite::ajouter</a></div><div class="ttdeci">virtual bool ajouter(NoeudAbstrait *enfant)</div><div class="ttdoc">Ajoute un noeud enfant. </div><div class="ttdef"><b>Definition:</b> <a href="../../db/d9c/_noeud_composite_8cpp_source.html#l00255">NoeudComposite.cpp:255</a></div></div>
+</div><!-- fragment --></div><!-- contents -->
+</div><!-- doc-content -->
+<!-- start footer part -->
+<div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
+  <ul>
+    <li class="navelem"><a class="el" href="../../dir_8f231bbbd90d174e51ca0653d136090e.html">DLL</a></li><li class="navelem"><a class="el" href="../../dir_36dc7c40dbbfd954e66bdd1b2e3aefdb.html">Visiteurs</a></li><li class="navelem"><a class="el" href="../../da/d51/_visiteur_duplication_8cpp.html">VisiteurDuplication.cpp</a></li>
+    <li class="footer">GÃ©nÃ©rÃ© le Dimanche 15 FÃ©vrier 2015 22:35:31 pour Pain Ball par
+    <a href="http://www.doxygen.org/index.html">
+    <img class="footer" src="../../doxygen.png" alt="doxygen"/></a> 1.8.9.1 </li>
+  </ul>
+</div>
+</body>
+</html>

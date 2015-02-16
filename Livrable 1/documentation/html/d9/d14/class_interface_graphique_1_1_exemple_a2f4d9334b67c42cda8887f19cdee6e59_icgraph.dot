@@ -1,0 +1,9 @@
+digraph "InterfaceGraphique.Exemple.rectangleElastique"
+{
+  edge [fontname="Helvetica",fontsize="10",labelfontname="Helvetica",labelfontsize="10"];
+  node [fontname="Helvetica",fontsize="10",shape=record];
+  rankdir="LR";
+  Node1 [label="InterfaceGraphique.Exemple.rectangle\lElastique",height=0.2,width=0.4,color="black", fillcolor="grey75", style="filled", fontcolor="black"];
+  Node1 -> Node2 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node2 [label="InterfaceGraphique.Exemple.\lMettreAJour",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$d9/d14/class_interface_graphique_1_1_exemple.html#a68d95c9b98dbcfec2b0222d9426a9714",tooltip="Taches effectuées lors d&#39;un rafraichissement d&#39;écran. "];
+}

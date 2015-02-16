@@ -1,0 +1,15 @@
+digraph "Graphe hiÃ©rarchique des classes"
+{
+  edge [fontname="Helvetica",fontsize="10",labelfontname="Helvetica",labelfontsize="10"];
+  node [fontname="Helvetica",fontsize="10",shape=record];
+  rankdir="LR";
+  Node1 [label="TestFixture",height=0.2,width=0.4,color="grey75", fillcolor="white", style="filled"];
+  Node1 -> Node2 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node2 [label="ArbreRenduINF2990Test",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$d2/d66/class_arbre_rendu_i_n_f2990_test.html",tooltip="Classe de test cppunit pour tester le bon fonctionnement des méthodes de la classe ArbreRenduINF2990..."];
+  Node1 -> Node3 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node3 [label="NoeudAbstraitTest",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$d6/d78/class_noeud_abstrait_test.html",tooltip="Classe de test cppunit pour tester le bon fonctionnement des méthodes de la classe NoeudAbstrait..."];
+  Node1 -> Node4 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node4 [label="NoeudCompositeTest",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$d8/d1a/class_noeud_composite_test.html",tooltip="Classe de test cppunit pour tester le bon fonctionnement des méthodes de la classe NoeudComposite..."];
+  Node1 -> Node5 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node5 [label="TestUtilitaire",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$d0/d95/class_test_utilitaire.html",tooltip="Classe de test cppunit pour tester le bon fonctionnement des méthodes de la classe Utilitaire..."];
+}

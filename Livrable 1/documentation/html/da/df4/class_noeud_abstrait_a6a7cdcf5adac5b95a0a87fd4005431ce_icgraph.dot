@@ -1,0 +1,11 @@
+digraph "NoeudAbstrait::setTwin"
+{
+  edge [fontname="Helvetica",fontsize="10",labelfontname="Helvetica",labelfontsize="10"];
+  node [fontname="Helvetica",fontsize="10",shape=record];
+  rankdir="LR";
+  Node1 [label="NoeudAbstrait::setTwin",height=0.2,width=0.4,color="black", fillcolor="grey75", style="filled", fontcolor="black"];
+  Node1 -> Node2 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node2 [label="if",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$d7/d39/_facade_interface_native_8cpp.html#ad01c297adfac90754a5eacd9ce43fadf"];
+  Node1 -> Node3 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node3 [label="VisiteurDuplication\l::traiter",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$dc/d6f/class_visiteur_duplication.html#a1b34bb4d64d44ad0f3dd9f1882d3cfb3"];
+}
