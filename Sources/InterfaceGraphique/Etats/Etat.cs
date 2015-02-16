@@ -121,7 +121,9 @@ namespace InterfaceGraphique
         /// @return Aucune (constructeur).
         ///
         ////////////////////////////////////////////////////////////////////////
-        public EtatDeplacement(Exemple form) : base(form) { }
+        public EtatDeplacement(Exemple form) : base(form) {
+            form_.outilCourant("Deplacement");
+        }
 
         ////////////////////////////////////////////////////////////////////////
         ///
@@ -309,7 +311,9 @@ namespace InterfaceGraphique
         /// @return Aucune (constructeur).
         ///
         ////////////////////////////////////////////////////////////////////////
-        public EtatSelection(Exemple form) : base(form) { }
+        public EtatSelection(Exemple form) : base(form) {
+            form_.outilCourant("Selection");
+            }
 
         ////////////////////////////////////////////////////////////////////////
         ///
@@ -369,7 +373,9 @@ namespace InterfaceGraphique
         /// @return Aucune (constructeur).
         ///
         ////////////////////////////////////////////////////////////////////////
-        public EtatRotation(Exemple form) : base(form) { }
+        public EtatRotation(Exemple form) : base(form) {
+            form_.outilCourant("Rotation");
+            }
 
         ////////////////////////////////////////////////////////////////////////
         ///
@@ -429,6 +435,7 @@ namespace InterfaceGraphique
         ////////////////////////////////////////////////////////////////////////
         public EtatScale(Exemple form) : base(form) {
             form_.Cursor = Cursors.Arrow;
+            form_.outilCourant("Mise a Echelle");
         }
 
         ////////////////////////////////////////////////////////////////////////
@@ -490,6 +497,7 @@ namespace InterfaceGraphique
         ////////////////////////////////////////////////////////////////////////
         public EtatCreation(Exemple form) : base(form) {
             form_.deselection();
+            form_.outilCourant("Creation");
             form_.trackCursor(true);
         }
 
@@ -565,6 +573,7 @@ namespace InterfaceGraphique
         ////////////////////////////////////////////////////////////////////////
         public EtatZoom(Exemple form) : base(form) {
             form_.enableZoom(true);
+            form_.outilCourant("Zoom");
         }
 
         ////////////////////////////////////////////////////////////////////////
@@ -644,7 +653,7 @@ namespace InterfaceGraphique
         ///
         ////////////////////////////////////////////////////////////////////////
         public EtatDuplication(Exemple form) : base(form) {
-
+            form_.outilCourant("Duplication");
             form_.trackCursor(true);
             form_.dupliquerSelection();  
             
@@ -710,7 +719,7 @@ namespace InterfaceGraphique
         ////////////////////////////////////////////////////////////////////////
         public EtatNone(Exemple form) : base(form) 
         {
-           
+            form_.outilCourant("");
         }
 
         ////////////////////////////////////////////////////////////////////////
@@ -767,7 +776,9 @@ namespace InterfaceGraphique
         /// @return Aucune (constructeur).
         ///
         ////////////////////////////////////////////////////////////////////////
-        public EtatSelectionMultiple(Exemple form) : base(form) { }
+        public EtatSelectionMultiple(Exemple form) : base(form) {
+        
+        }
 
         ////////////////////////////////////////////////////////////////////////
         ///

@@ -634,6 +634,7 @@ namespace InterfaceGraphique
         private void Selection_BO_Click(object sender, EventArgs e)
         {
             Selection_MenuItem_Click(this, e);
+            
         }
 
         ////////////////////////////////////////////////////////////////////////
@@ -2645,6 +2646,11 @@ namespace InterfaceGraphique
         private void label_Zoom_MouseLeave(object sender, EventArgs e)
         {
             label_Zoom.ForeColor = Color.Black;
+        }
+
+        public void outilCourant(string outil)
+        {
+            labelOCourant.Text = outil;
         }
     }
 
