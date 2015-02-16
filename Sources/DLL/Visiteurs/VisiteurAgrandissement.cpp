@@ -254,8 +254,11 @@ bool VisiteurAgrandissement::traiter(NoeudGenerateurBille* noeud)
 ////////////////////////////////////////////////////////////////////////
 bool VisiteurAgrandissement::traiter(NoeudPortail* noeud)
 {
-	glm::dvec3 scaleInit = noeud->obtenirAgrandissement();
-	glm::dvec3 scaleFinal = glm::dvec3{ scaleInit[0] * homothetie_[0], scaleInit[1] * homothetie_[1], scaleInit[2] };
-	noeud->assignerEchelle(scaleFinal);
-	return true;
+	if (noeud->estSelectionne())
+	{
+		glm::dvec3 scaleInit = noeud->obtenirAgrandissement();
+		glm::dvec3 scaleFinal = glm::dvec3{ scaleInit[0] * homothetie_[0], scaleInit[1] * homothetie_[1], scaleInit[2] };
+		noeud->assignerEchelle(scaleFinal);
+		return true;
+	}
 }
