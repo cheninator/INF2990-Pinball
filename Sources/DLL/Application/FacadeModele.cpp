@@ -536,6 +536,9 @@ void FacadeModele::agrandirSelection(int x1, int y1, int x2, int y2)
 	
 	// Au final, on multiplie le scale courrant par 1.003 une fois pour chaque déplacement élémentaire vers le haut,
 	// On divise par 1.003 pour chaque déplacement élémentaire vers le bas.
+	double distanceConstante = 1.0;
+	double correctionZ = (1 - scale) * distanceConstante;
+
 
 	VisiteurListeEnglobante visLE;
 	arbre_->accepterVisiteur(&visLE);
@@ -554,6 +557,8 @@ void FacadeModele::agrandirSelection(int x1, int y1, int x2, int y2)
 
 	VisiteurAgrandissement visAgr(glm::dvec3{ scale, scale, scale });
 	arbre_->accepterVisiteur(&visAgr);
+	VisiteurDeplacement visDep(glm::dvec3{ 0, 0, correctionZ });
+	arbre_->accepterVisiteur(&visDep);
 
 }
 

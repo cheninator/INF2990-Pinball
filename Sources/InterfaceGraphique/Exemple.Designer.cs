@@ -672,12 +672,13 @@ namespace InterfaceGraphique
             // 
             // label1
             // 
+            this.label1.AutoSize = true;
             this.label1.BackColor = System.Drawing.Color.Transparent;
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label1.Location = new System.Drawing.Point(3, 445);
             this.label1.Name = "label1";
             this.label1.Padding = new System.Windows.Forms.Padding(0, 3, 3, 0);
-            this.label1.Size = new System.Drawing.Size(159, 227);
+            this.label1.Size = new System.Drawing.Size(151, 224);
             this.label1.TabIndex = 0;
             this.label1.Text = resources.GetString("label1.Text");
             this.label1.Click += new System.EventHandler(this.label1_Click);
@@ -1043,6 +1044,7 @@ namespace InterfaceGraphique
             this.Group_Elements.ResumeLayout(false);
             this.Group_Element2.ResumeLayout(false);
             this.flowLayoutPanel1.ResumeLayout(false);
+            this.flowLayoutPanel1.PerformLayout();
             this.Groupe_Outils.ResumeLayout(false);
             this.Groupe_Outils.PerformLayout();
             this.Groupe_Proprietes.ResumeLayout(false);

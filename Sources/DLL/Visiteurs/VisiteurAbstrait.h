@@ -18,6 +18,7 @@ class NoeudAbstrait;
 class ArbreRenduINF2990;
 class NoeudTable;
 class NoeudMur;
+class NoeudGenerateurBille;
 
 
 ///////////////////////////////////////////////////////////////////////////
@@ -49,7 +50,9 @@ public:
 	virtual bool traiter(NoeudAbstrait* noeud){ return false; };
 	/// Si traiter(NoeudMur*) n'est pas réimplémenté, on va appeler celui de NoeudAbstrait qui appelle traiter(NoeudAbstrait*), qui EST réimplémentée.
 	virtual bool traiter(NoeudMur* noeud){ return traiter((NoeudAbstrait*)noeud); };
-	
+	/// Si traiter(NoeudGenerateurBille*) n'est pas réimplémenté, on va appeler celui de NoeudAbstrait qui appelle traiter(NoeudAbstrait*), qui EST réimplémentée.
+	virtual bool traiter(NoeudGenerateurBille* noeud){ return traiter((NoeudAbstrait*)noeud); };
+
 };
 
 

@@ -325,7 +325,7 @@ namespace InterfaceGraphique
                     }
                     else
                         fs.EnterFullScreenMode(this);
-                    FonctionsNatives.resetZoom();
+                   FonctionsNatives.resetZoom();
                     
                 }      
           
@@ -1759,7 +1759,7 @@ namespace InterfaceGraphique
         {            
             currentP = panel_GL.PointToClient(MousePosition);
 
-            if (nbSelection == 1 && !(etat is EtatDuplication))
+            if (nbSelection == 1 && !(etat is EtatDuplication) && (e.Button == MouseButtons.Left))
             {
                 Xbox.Text = Math.Round(FonctionsNatives.getPositionX()).ToString();
                 Ybox.Text = Math.Round(FonctionsNatives.getPositionY()).ToString();
@@ -2451,8 +2451,15 @@ namespace InterfaceGraphique
 
         }
 
-      
 
+        //////////////////////////////////////////////////////////////////////////////////////////
+        ///
+        /// @fn public void creationMur()
+        /// @brief Fonction qui s'assure de la bonne création des murs.
+        /// 
+        /// @return Aucune.
+        ///
+        //////////////////////////////////////////////////////////////////////////////////////////
 
         public void creationMur()
         {
@@ -2460,7 +2467,16 @@ namespace InterfaceGraphique
          //  Console.WriteLine(FonctionsNatives.getScale());
            previousP = currentP;
            currentP = panel_GL.PointToClient(MousePosition);
-       
+
+        //////////////////////////////////////////////////////////////////////////////////////////
+        ///
+        /// @fn private void IncreaseZoomButton_Click()
+        /// @brief Fonction qui s'assure de la bonne création des murs.
+        /// @param[in] sender : Objet duquel provient un événement.
+        /// @param[in] e : Événement qui lance la fonction.
+        /// @return Aucune.
+        ///
+        //////////////////////////////////////////////////////////////////////////////////////////
         }
         private void IncreaseZoomButton_Click(object sender, EventArgs e)
         {
@@ -2543,7 +2559,7 @@ namespace InterfaceGraphique
         {
 
             targetForm.WindowState = FormWindowState.Normal;
-            targetForm.FormBorderStyle = FormBorderStyle.None;
+            //targetForm.FormBorderStyle = FormBorderStyle.None;
             targetForm.WindowState = FormWindowState.Maximized;
         }
 

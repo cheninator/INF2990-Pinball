@@ -50,6 +50,8 @@ public:
 	/// Traiter un mur de façon différente
 	virtual bool traiter(NoeudMur* noeud);
 
+	virtual bool traiter(NoeudGenerateurBille* noeud);
+
 private:
 
 	/// Constructeur par défaut

@@ -51,6 +51,10 @@ class ArbreRenduINF2990Test : public CppUnit::TestFixture
 	CPPUNIT_TEST(testBoiteEnglobante);
 	CPPUNIT_TEST(testPalettes);
 	CPPUNIT_TEST(testAgrandissement);
+	CPPUNIT_TEST(testAgrandissementMur);
+	CPPUNIT_TEST(testSelection);
+	CPPUNIT_TEST(testPossibilite);
+	CPPUNIT_TEST(testDeplacement);
 	CPPUNIT_TEST_SUITE_END();
 
 public:
@@ -111,6 +115,18 @@ public:
 
 	/// Cas de test : Agrandissement.
 	void testAgrandissement();
+
+	/// Cas de test : Agrandissement d'un mur.
+	void testAgrandissementMur();
+
+	/// Cas de test : Sélection.
+	void testSelection();
+	
+	/// Cas de test : Possibilité
+	void testPossibilite();
+
+	/// Cas de test : Déplacement
+	void testDeplacement();
 
 private:
 	/// Instance d'un arbre
