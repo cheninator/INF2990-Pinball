@@ -38,7 +38,8 @@ var group___visiteur =
       [ "traiter", "df/d41/class_visiteur_abstrait.html#a68d6bf8cb950e687da43ce385d7614c7", null ],
       [ "traiter", "df/d41/class_visiteur_abstrait.html#ad67a4e33b47a5926cebd88f608d9ee1e", null ],
       [ "traiter", "df/d41/class_visiteur_abstrait.html#a7724231b82d34d95f65beca79a1a1b2f", null ],
-      [ "traiter", "df/d41/class_visiteur_abstrait.html#ab388e77c643d0db5019d8cb864737829", null ]
+      [ "traiter", "df/d41/class_visiteur_abstrait.html#ab388e77c643d0db5019d8cb864737829", null ],
+      [ "traiter", "df/d41/class_visiteur_abstrait.html#a19a9e4b7308497f17ec19b979b43c2bb", null ]
     ] ],
     [ "VisiteurAgrandissement", "df/db1/class_visiteur_agrandissement.html", [
       [ "VisiteurAgrandissement", "df/db1/class_visiteur_agrandissement.html#a606a236767f58c91903934d965d8114d", null ],
@@ -49,7 +50,8 @@ var group___visiteur =
       [ "traiter", "df/db1/class_visiteur_agrandissement.html#a81daeae33e78b4b8f7dfd5fa6775e4db", null ],
       [ "traiter", "df/db1/class_visiteur_agrandissement.html#ad30103b104a3bc58be1c8f2d94e6fa2f", null ],
       [ "traiter", "df/db1/class_visiteur_agrandissement.html#a0bd7ccce91f2ae1b9a2e83b25b67a25b", null ],
-      [ "traiter", "df/db1/class_visiteur_agrandissement.html#a0264c41aac46d03039844b10c4fd0e1e", null ]
+      [ "traiter", "df/db1/class_visiteur_agrandissement.html#a0264c41aac46d03039844b10c4fd0e1e", null ],
+      [ "traiter", "df/db1/class_visiteur_agrandissement.html#a23de330419b2d53e865782a5f8e0f1e6", null ]
     ] ],
     [ "VisiteurCentreDeMasse", "d7/d06/class_visiteur_centre_de_masse.html", [
       [ "VisiteurCentreDeMasse", "d7/d06/class_visiteur_centre_de_masse.html#a1219cb2e1f362e5bde36ed5a57cbd5f8", null ],

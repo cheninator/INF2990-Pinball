@@ -8,5 +8,6 @@ var class_visiteur_agrandissement =
     [ "traiter", "df/db1/class_visiteur_agrandissement.html#a81daeae33e78b4b8f7dfd5fa6775e4db", null ],
     [ "traiter", "df/db1/class_visiteur_agrandissement.html#ad30103b104a3bc58be1c8f2d94e6fa2f", null ],
     [ "traiter", "df/db1/class_visiteur_agrandissement.html#a0bd7ccce91f2ae1b9a2e83b25b67a25b", null ],
-    [ "traiter", "df/db1/class_visiteur_agrandissement.html#a0264c41aac46d03039844b10c4fd0e1e", null ]
+    [ "traiter", "df/db1/class_visiteur_agrandissement.html#a0264c41aac46d03039844b10c4fd0e1e", null ],
+    [ "traiter", "df/db1/class_visiteur_agrandissement.html#a23de330419b2d53e865782a5f8e0f1e6", null ]
 ];

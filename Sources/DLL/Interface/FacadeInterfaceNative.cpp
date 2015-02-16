@@ -1279,5 +1279,16 @@ extern "C"
 		return FacadeModele::obtenirInstance()->duplicationEstHorsTable();
 	}
 
+	/*
+	#include <FTGL/ftgl.h>
+
+	Utile pour écrire du texte si on click pas sur le putin de rendu openGL
+
+	FTGLPixmapFont font("media/fonts/Bloodthirsty.ttf");
+	glRasterPos3f(0.0F, 0.0F, 100.F);
+	font.FaceSize(50);
+	font.Render("Hello World");
+
+	*/
 
 }// FIN DU extern "C"

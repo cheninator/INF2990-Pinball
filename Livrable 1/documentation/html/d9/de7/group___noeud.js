@@ -138,14 +138,16 @@ var group___noeud =
       [ "~NoeudButoirD", "d8/df0/class_noeud_butoir_d.html#a2ed4a858b1a872ac1339f75ac7d5f67f", null ],
       [ "accepterVisiteur", "d8/df0/class_noeud_butoir_d.html#ab53d1d0da5f2704b2d1ef78db5348aa1", null ],
       [ "afficherConcret", "d8/df0/class_noeud_butoir_d.html#aac2b8a18c88a8b953e1192de891ab61a", null ],
-      [ "animer", "d8/df0/class_noeud_butoir_d.html#ae51b060e942738627ada6b3a9440553d", null ]
+      [ "animer", "d8/df0/class_noeud_butoir_d.html#ae51b060e942738627ada6b3a9440553d", null ],
+      [ "obtenirVecteursBoite", "d8/df0/class_noeud_butoir_d.html#a9a2133463051b9afd217013820e69cb0", null ]
     ] ],
     [ "NoeudButoirG", "d1/d39/class_noeud_butoir_g.html", [
       [ "NoeudButoirG", "d1/d39/class_noeud_butoir_g.html#a47ad6be24b67d663e764ebc3d9b75be9", null ],
       [ "~NoeudButoirG", "d1/d39/class_noeud_butoir_g.html#ab1644de05ff2e98b054e9d7c63c1f261", null ],
       [ "accepterVisiteur", "d1/d39/class_noeud_butoir_g.html#ad64ac71aff4f1f7a6685035b86790a0e", null ],
       [ "afficherConcret", "d1/d39/class_noeud_butoir_g.html#a3f3cbeda1604e001a9a0fd66068dd5f0", null ],
-      [ "animer", "d1/d39/class_noeud_butoir_g.html#a64acd8152796fab012480d8348e2fa58", null ]
+      [ "animer", "d1/d39/class_noeud_butoir_g.html#a64acd8152796fab012480d8348e2fa58", null ],
+      [ "obtenirVecteursBoite", "d1/d39/class_noeud_butoir_g.html#a00d4f8d72942c7627146d81f8a085219", null ]
     ] ],
     [ "NoeudCible", "dd/d63/class_noeud_cible.html", [
       [ "NoeudCible", "dd/d63/class_noeud_cible.html#ad9c1b4f6cfbb2ebd97084ff84231dab2", null ],

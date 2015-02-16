@@ -132,16 +132,20 @@ $(document).ready(function(){initNavTree('d9/dd8/_noeud_butoir_d_8h_source.html'
 <div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;</div>
 <div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;    <span class="keyword">virtual</span> <span class="keywordtype">bool</span> <a class="code" href="../../d8/df0/class_noeud_butoir_d.html#ab53d1d0da5f2704b2d1ef78db5348aa1">accepterVisiteur</a>(<a class="code" href="../../df/d41/class_visiteur_abstrait.html">VisiteurAbstrait</a>* vis);</div>
 <div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;</div>
-<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;<span class="keyword">private</span>:</div>
-<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;</div>
-<div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;    <span class="keywordtype">float</span> angle_{ 0 };</div>
-<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;</div>
-<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;};</div>
-<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;</div>
-<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;<span class="preprocessor">#endif // __ARBRE_NOEUDS_NOEUDBUTOIRD_H__</span></div>
+<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;    <span class="comment">//Obtenir les 4 vecteurs de la boite englobante modifie</span></div>
+<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;    <span class="keyword">virtual</span> <span class="keywordtype">void</span> <a class="code" href="../../d8/df0/class_noeud_butoir_d.html#a9a2133463051b9afd217013820e69cb0">obtenirVecteursBoite</a>(glm::dvec3 &amp;v1, glm::dvec3 &amp;v2, glm::dvec3 &amp;v3, glm::dvec3 &amp;v4);</div>
+<div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;</div>
+<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;<span class="keyword">private</span>:</div>
+<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;</div>
+<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;    <span class="keywordtype">float</span> angle_{ 0 };</div>
+<div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;</div>
+<div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;};</div>
+<div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;</div>
+<div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;<span class="preprocessor">#endif // __ARBRE_NOEUDS_NOEUDBUTOIRD_H__</span></div>
 <div class="ttc" id="class_noeud_composite_html"><div class="ttname"><a href="../../da/d38/class_noeud_composite.html">NoeudComposite</a></div><div class="ttdoc">Implantation d&#39;un noeud du patron composite qui peut posseder des enfants. </div><div class="ttdef"><b>Definition:</b> <a href="../../db/dc6/_noeud_composite_8h_source.html#l00030">NoeudComposite.h:30</a></div></div>
 <div class="ttc" id="_noeud_composite_8h_html"><div class="ttname"><a href="../../db/dc6/_noeud_composite_8h.html">NoeudComposite.h</a></div></div>
-<div class="ttc" id="class_visiteur_abstrait_html"><div class="ttname"><a href="../../df/d41/class_visiteur_abstrait.html">VisiteurAbstrait</a></div><div class="ttdoc">Interface du patron Visiteur. </div><div class="ttdef"><b>Definition:</b> <a href="../../dc/d03/_visiteur_abstrait_8h_source.html#l00035">VisiteurAbstrait.h:35</a></div></div>
+<div class="ttc" id="class_visiteur_abstrait_html"><div class="ttname"><a href="../../df/d41/class_visiteur_abstrait.html">VisiteurAbstrait</a></div><div class="ttdoc">Interface du patron Visiteur. </div><div class="ttdef"><b>Definition:</b> <a href="../../dc/d03/_visiteur_abstrait_8h_source.html#l00036">VisiteurAbstrait.h:36</a></div></div>
+<div class="ttc" id="class_noeud_butoir_d_html_a9a2133463051b9afd217013820e69cb0"><div class="ttname"><a href="../../d8/df0/class_noeud_butoir_d.html#a9a2133463051b9afd217013820e69cb0">NoeudButoirD::obtenirVecteursBoite</a></div><div class="ttdeci">virtual void obtenirVecteursBoite(glm::dvec3 &amp;v1, glm::dvec3 &amp;v2, glm::dvec3 &amp;v3, glm::dvec3 &amp;v4)</div><div class="ttdoc">Generer les boites englobantes de fa�on diff�rente pour le butoir triangulaire. </div><div class="ttdef"><b>Definition:</b> <a href="../../d0/dcf/_noeud_butoir_d_8cpp_source.html#l00141">NoeudButoirD.cpp:141</a></div></div>
 <div class="ttc" id="class_noeud_butoir_d_html_aa4089fc848cf9bf85be9da62931766c0"><div class="ttname"><a href="../../d8/df0/class_noeud_butoir_d.html#aa4089fc848cf9bf85be9da62931766c0">NoeudButoirD::NoeudButoirD</a></div><div class="ttdeci">NoeudButoirD(const std::string &amp;typeNoeud)</div><div class="ttdoc">Constructeur a partir du type du noeud. </div><div class="ttdef"><b>Definition:</b> <a href="../../d0/dcf/_noeud_butoir_d_8cpp_source.html#l00033">NoeudButoirD.cpp:33</a></div></div>
 <div class="ttc" id="class_noeud_butoir_d_html_a2ed4a858b1a872ac1339f75ac7d5f67f"><div class="ttname"><a href="../../d8/df0/class_noeud_butoir_d.html#a2ed4a858b1a872ac1339f75ac7d5f67f">NoeudButoirD::~NoeudButoirD</a></div><div class="ttdeci">~NoeudButoirD()</div><div class="ttdoc">Destructeur. </div><div class="ttdef"><b>Definition:</b> <a href="../../d0/dcf/_noeud_butoir_d_8cpp_source.html#l00048">NoeudButoirD.cpp:48</a></div></div>
 <div class="ttc" id="class_noeud_butoir_d_html_ae51b060e942738627ada6b3a9440553d"><div class="ttname"><a href="../../d8/df0/class_noeud_butoir_d.html#ae51b060e942738627ada6b3a9440553d">NoeudButoirD::animer</a></div><div class="ttdeci">virtual void animer(float temps)</div><div class="ttdoc">Effectue l&#39;animation du butoir. </div><div class="ttdef"><b>Definition:</b> <a href="../../d0/dcf/_noeud_butoir_d_8cpp_source.html#l00107">NoeudButoirD.cpp:107</a></div></div>
@@ -154,7 +158,7 @@ $(document).ready(function(){initNavTree('d9/dd8/_noeud_butoir_d_8h_source.html'
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="../../dir_937900b87e0c7a5fa01190c395fb83f7.html">Sources</a></li><li class="navelem"><a class="el" href="../../dir_5638be7ced97c879b21b23536e800e77.html">DLL</a></li><li class="navelem"><a class="el" href="../../dir_62d639a286ecc255a3a5ac9c06fd99c9.html">Arbre</a></li><li class="navelem"><a class="el" href="../../dir_e82573f31c5b178adacdeab0db63caa9.html">Noeuds</a></li><li class="navelem"><a class="el" href="../../d9/dd8/_noeud_butoir_d_8h.html">NoeudButoirD.h</a></li>
-    <li class="footer">Généré le Lundi 16 Février 2015 11:15:22 pour Pain Ball par
+    <li class="footer">Généré le Lundi 16 Février 2015 14:30:46 pour Pain Ball par
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="../../doxygen.png" alt="doxygen"/></a> 1.8.9.1 </li>
   </ul>
