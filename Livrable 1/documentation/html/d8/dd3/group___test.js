@@ -24,13 +24,13 @@ var group___test =
       [ "testDeselection", "d2/d66/class_arbre_rendu_i_n_f2990_test.html#a4819c3ea7ae55483b734d578750649f1", null ],
       [ "testDuplication", "d2/d66/class_arbre_rendu_i_n_f2990_test.html#acbe0186745e1497a7df154629441e011", null ],
       [ "testPalettes", "d2/d66/class_arbre_rendu_i_n_f2990_test.html#ad0dee35bae15810e8650c9adadac914a", null ],
+      [ "testPortails", "d2/d66/class_arbre_rendu_i_n_f2990_test.html#aff646f0e5abe581d7c550b0af57811c2", null ],
       [ "testPossibilite", "d2/d66/class_arbre_rendu_i_n_f2990_test.html#a51659818ba63483950859e94a853ec64", null ],
       [ "testRotation", "d2/d66/class_arbre_rendu_i_n_f2990_test.html#a4fa25bbd07c9caa1abe8f04a3b4dbbe4", null ],
       [ "testSelection", "d2/d66/class_arbre_rendu_i_n_f2990_test.html#a03ff4222e5ef64f1d624faa0f2b0732f", null ],
       [ "testSelectionInverse", "d2/d66/class_arbre_rendu_i_n_f2990_test.html#a316dd918bef7a69c49d5d1810213880d", null ],
       [ "testSelectionMultiple", "d2/d66/class_arbre_rendu_i_n_f2990_test.html#a5d79317c083e696d78d202863b0d7ef0", null ],
-      [ "testSuppression", "d2/d66/class_arbre_rendu_i_n_f2990_test.html#a5dfa76da60cd4c6b523f4849dced3c83", null ],
-      [ "testXML", "d2/d66/class_arbre_rendu_i_n_f2990_test.html#a5597e675848178a1a8ece17bb6e1ef38", null ]
+      [ "testXmlInexistant", "d2/d66/class_arbre_rendu_i_n_f2990_test.html#acaa81e0ca9578f2624baf8d8c951d1c7", null ]
     ] ],
     [ "BancTests", "de/de4/class_banc_tests.html", [
       [ "executer", "de/de4/class_banc_tests.html#ab5d7fbfe7e3fbe00aa187caa10b1c506", null ]
