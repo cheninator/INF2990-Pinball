@@ -1,0 +1,12 @@
+digraph "InterfaceGraphique" {
+  compound=true
+  node [ fontsize="10", fontname="Helvetica"];
+  edge [ labelfontsize="10", labelfontname="Helvetica"];
+  subgraph clusterdir_579cddb79e8a6dddf2091d0426ad06ad {
+    graph [ bgcolor="#eeeeff", pencolor="black", label="" URL="dir_579cddb79e8a6dddf2091d0426ad06ad.html"];
+    dir_579cddb79e8a6dddf2091d0426ad06ad [shape=plaintext label="InterfaceGraphique"];
+    dir_4c4c40075ad9fbfac51ac606f374257a [shape=box label="Etats" color="black" fillcolor="white" style="filled" URL="dir_4c4c40075ad9fbfac51ac606f374257a.html"];
+    dir_d8f1cc17aa954680d1e3c0572b74bf0f [shape=box label="obj" color="red" fillcolor="white" style="filled" URL="dir_d8f1cc17aa954680d1e3c0572b74bf0f.html"];
+    dir_e7b8be4b1966ed6e2ed4b45c0fe97a03 [shape=box label="Properties" color="black" fillcolor="white" style="filled" URL="dir_e7b8be4b1966ed6e2ed4b45c0fe97a03.html"];
+  }
+}

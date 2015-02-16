@@ -38,6 +38,8 @@ VisiteurDeplacement::VisiteurDeplacement()
 VisiteurDeplacement::VisiteurDeplacement(glm::dvec3 dep)
 {
 	deplacement_ = dep;
+	estDansLaTable_ = false;
+	estDuplication_ = false;
 }
 
 
@@ -125,6 +127,11 @@ bool VisiteurDeplacement::traiter(NoeudAbstrait* noeud)
 	{
 		glm::dvec3 nouvellePosition{ noeud->obtenirPositionRelative() + deplacement_ };
 		noeud->assignerPositionRelative(nouvellePosition);
+
+		if (estDansLaTable_ || !estDuplication_)
+			noeud->assignerImpossible(false);
+		else
+			noeud->assignerImpossible(true);
 	}
 
 	return true;

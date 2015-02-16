@@ -42,7 +42,7 @@ public:
 private:
 
 	std::vector<NoeudAbstrait*> copies_;	///< Contient les copies des objets selectionnés
-	ArbreRenduINF2990* arbreTemp;
+	ArbreRenduINF2990* arbreTemp;			///< Pointeur vers l'arbre de rendu original
 };
 
 #endif //__VISITEURS_VISITEURDUPLICATION_H__

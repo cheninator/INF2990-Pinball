@@ -8,7 +8,7 @@
 #include "VisiteurSelection.h"
 #include "../Arbre/ArbreRenduINF2990.h"
 #include "../Arbre/Noeuds/NoeudTable.h"
-#include <iostream>
+
 
 ////////////////////////////////////////////////////////////////////////
 ///
@@ -127,6 +127,7 @@ bool VisiteurSelection::traiter(NoeudAbstrait* noeud)
 
 	if (noeud->estSelectionne()) 
 		nbObjetsSelectionne_++;
+
 	return true;
 }
 

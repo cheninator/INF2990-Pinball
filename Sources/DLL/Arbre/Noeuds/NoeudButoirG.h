@@ -1,6 +1,6 @@
 ///////////////////////////////////////////////////////////////////////////
 /// @file NoeudButoirG.h
-/// @author Yonni Chen
+/// @author Emilio Rivera
 /// @date 2015-01-24
 /// @version 1.0
 ///
@@ -17,8 +17,8 @@
 /// @class NoeudButoirG
 /// @brief Classe qui représente un butoir.
 ///
-/// @author Julien Gascon-Samson
-/// @date 2011-05-19
+/// @author Emilio Rivera
+/// @date 2015-01-24
 /// @ingroup Noeud
 ///////////////////////////////////////////////////////////////////////////
 class NoeudButoirG : public NoeudComposite

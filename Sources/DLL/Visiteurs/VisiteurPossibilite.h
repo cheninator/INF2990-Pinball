@@ -1,5 +1,5 @@
 ///////////////////////////////////////////////////////////////////////////////
-/// @file VisiteurDeselectionnerTout.h
+/// @file VisiteurPossibilite.h
 /// @author The Ballers
 /// @date 2015-02-01
 /// @version 1.0
@@ -10,13 +10,12 @@
 #define __VISITEURS_VISITEURPOSSSIBILITE_H__
 
 #include "NoeudAbstrait.h"
-#include "NoeudComposite.h"
 #include "VisiteurAbstrait.h"
 #include "glm\glm.hpp"
 
 ///////////////////////////////////////////////////////////////////////////
-/// @class VisiteurDeselectionnerTout
-/// @brief Classe pour désélectionner tous les objets de la table de rendu.
+/// @class VisiteurPossibilite
+/// @brief Classe qui assigne une possibilité à un noeud de l'arbre
 ///
 /// @author Philippe Carphin
 /// @date 2015-02-02
@@ -26,7 +25,7 @@ class VisiteurPossibilite : public VisiteurAbstrait
 {
 public:
 
-	/// Constructeur par défaut : aucun déplacement
+	/// Constructeur par défaut
 	VisiteurPossibilite();
 
 	/// Destructeur
@@ -34,13 +33,8 @@ public:
 
 	/// Traiter une opération sur l'arbre de rendu et ses enfants
 	virtual bool traiter(ArbreRenduINF2990* arbre);
-	/// Traiter une opération sur l'arbre de rendu et ses enfants
 	virtual bool traiter(NoeudAbstrait* noeud);
-	/// Traiter une opération sur l'arbre de rendu et ses enfants
 	virtual bool traiter(NoeudTable* table);
-
-
-private:
 
 };
 

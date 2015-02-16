@@ -103,7 +103,7 @@ public:
    /// Vérifier si un point cliqué est dans la table 
    bool estDansTable(glm::dvec3 pointDuMonde);
 
-   /// Pour la suppression des objets
+   /// Pour la suppression des objets selectionnés
    bool supprimer();
 
    /// Obtenir le facteur de zoom appliqué
@@ -115,45 +115,53 @@ public:
    /// Obtenir le centre de masse en Y
    int obtenirCentreMasseY();
 
+   /// Selectionner les objets sous un point cliqué
    int selectionnerObjetSousPointClique(int i, int j, int largeur, int hauteur, bool ctrlDown = false);
 
-   /// xxxxx
+   /// Pour le rectangle elastique
    void rectangleElastique(int i, int j);
    
-   /// xxxxx
+   /// Pour la selection multiple d'objets
    int selectionMultiple(bool c);
 
+   /// Initialisation du rectangle elastique
    void initialiserRectangleElastique(int i, int j);
 
+   /// Fin du rectangle elastique
    void terminerRectangleElastique();
 
+   /// Appliquer le zoom initial
    bool appliquerZoomInitial();
 
+   /// Position du mur
    static void positionnerMur(int originX, int originY, int x1, int y1, int x2, int y2, NoeudAbstrait* noeud);
 
-   //verifie si la souris est sur le centre de masse
-   bool sourisEstSurCentreMasse(int i, int j);
+   //verifie si la selection est hors table lors de la duplication
+   bool duplicationEstHorsTable();
 
 private:
+
    /// Constructeur par défaut.
    FacadeModele() = default;
+
    /// Destructeur.
    ~FacadeModele();
+
    /// Constructeur copie désactivé.
    FacadeModele(const FacadeModele&) = delete;
+
    /// Opérateur d'assignation désactivé.
    FacadeModele& operator =(const FacadeModele&) = delete;
 
-   static const std::string FICHIER_CONFIGURATION; /**< Nom du fichier XML dans lequel doit se trouver la configuration. */
+   /// Pointeur vers l'instance unique de la classe.
+   static FacadeModele* instance_; 
 
-   static FacadeModele* instance_; ///< Pointeur vers l'instance unique de la classe. */
-
-   HWND  hWnd_{ nullptr }; ///< Poignée ("handle") vers la fenêtre où l'affichage se fait.
+   HWND  hWnd_{ nullptr };	///< Poignée ("handle") vers la fenêtre où l'affichage se fait.
    HGLRC hGLRC_{ nullptr }; ///< Poignée ("handle") vers le contexte OpenGL.
-   HDC   hDC_{ nullptr }; ///< Poignée ("handle") vers le "device context".
+   HDC   hDC_{ nullptr };	///< Poignée ("handle") vers le "device context".
 
-   vue::Vue* vue_{ nullptr }; ///< Vue courante de la scène. */
-   ArbreRenduINF2990* arbre_{ nullptr }; ///< Arbre de rendu contenant les différents objets de la scène. */
+   vue::Vue* vue_{ nullptr };				/// Vue courante de la scène.
+   ArbreRenduINF2990* arbre_{ nullptr };	/// Arbre de rendu contenant les différents objets de la scène.
 
    glm::dvec3 selectionBasGauche_, selectionHautDroit_;
    glm::ivec2 pointInitial_, pointAvant_;
@@ -162,6 +170,8 @@ private:
    static const int coinGaucheTableY;
    static const int coinDroitTableX;
    static const int coinDroitTableY;
+
+   bool duplicationHorsTable_;
 };
 
 

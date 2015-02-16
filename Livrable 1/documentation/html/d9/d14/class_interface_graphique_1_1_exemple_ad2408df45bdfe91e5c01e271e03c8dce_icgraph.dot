@@ -1,0 +1,9 @@
+digraph "InterfaceGraphique.Exemple.scaleSouris"
+{
+  edge [fontname="Helvetica",fontsize="10",labelfontname="Helvetica",labelfontsize="10"];
+  node [fontname="Helvetica",fontsize="10",shape=record];
+  rankdir="LR";
+  Node1 [label="InterfaceGraphique.Exemple.scale\lSouris",height=0.2,width=0.4,color="black", fillcolor="grey75", style="filled", fontcolor="black"];
+  Node1 -> Node2 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node2 [label="InterfaceGraphique.EtatScale.traiter\lSouris",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$dc/d3a/class_interface_graphique_1_1_etat_scale.html#a09ec655fccd71cd1543e56e93461c643",tooltip="Traiter le changement d&#39;état suite à une action du clavier. "];
+}

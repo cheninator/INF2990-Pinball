@@ -30,23 +30,21 @@ class VisiteurRotationPoint : public VisiteurAbstrait
 {
 public:
 
-	/// Constructeur par paramètre : spécifiez l'angle, l'axe et le sens
+	/// Constructeur par paramètre : spécifiez l'angle et le centre de rotation
 	VisiteurRotationPoint(glm::dvec3 angles ,glm::dvec3 centreRotation);
 
 	/// Destructeur
 	~VisiteurRotationPoint();
 
 	/// Méthode d'accès
-	glm::dvec3 getRotation() { return angles_; };
+	glm::dvec3 getRotation() const { return angles_; };
 
 	/// Méthode de modifications
 	void setRotation(glm::dvec3 dep) { angles_ = dep; };
 
 	/// Traiter une opération sur l'arbre de rendu et ses enfants
 	virtual bool traiter(ArbreRenduINF2990* arbre);
-	/// Traiter une opération sur l'arbre de rendu et ses enfants
 	virtual bool traiter(NoeudAbstrait* noeud);
-	/// Traiter une opération sur l'arbre de rendu et ses enfants
 	virtual bool traiter(NoeudTable* noeud);
 
 private:

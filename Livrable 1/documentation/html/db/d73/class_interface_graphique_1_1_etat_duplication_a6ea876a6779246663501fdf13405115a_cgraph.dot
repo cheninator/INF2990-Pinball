@@ -1,0 +1,11 @@
+digraph "InterfaceGraphique.EtatDuplication.EtatDuplication"
+{
+  edge [fontname="Helvetica",fontsize="10",labelfontname="Helvetica",labelfontsize="10"];
+  node [fontname="Helvetica",fontsize="10",shape=record];
+  rankdir="LR";
+  Node1 [label="InterfaceGraphique.EtatDuplication.\lEtatDuplication",height=0.2,width=0.4,color="black", fillcolor="grey75", style="filled", fontcolor="black"];
+  Node1 -> Node2 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node2 [label="InterfaceGraphique.Exemple.track\lCursor",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$d9/d14/class_interface_graphique_1_1_exemple.html#aebe226187f0926a46d8e6924f27660bf",tooltip="Active ou désactive le tracking de la souris. "];
+  Node1 -> Node3 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node3 [label="InterfaceGraphique.Exemple.dupliquer\lSelection",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$d9/d14/class_interface_graphique_1_1_exemple.html#a17c26467fc3a8efc061743db1b39c04c",tooltip="Duplication des objets sélectionnés. "];
+}

@@ -119,7 +119,7 @@ namespace InterfaceGraphique
             this.label2.Dock = System.Windows.Forms.DockStyle.Fill;
             this.label2.Location = new System.Drawing.Point(3, 3);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(207, 169);
+            this.label2.Size = new System.Drawing.Size(192, 208);
             this.label2.TabIndex = 0;
             this.label2.Text = resources.GetString("label2.Text");
             // 

@@ -1,0 +1,13 @@
+digraph "InterfaceGraphique.Exemple.deplacementSouris"
+{
+  edge [fontname="Helvetica",fontsize="10",labelfontname="Helvetica",labelfontsize="10"];
+  node [fontname="Helvetica",fontsize="10",shape=record];
+  rankdir="LR";
+  Node1 [label="InterfaceGraphique.Exemple.deplacement\lSouris",height=0.2,width=0.4,color="black", fillcolor="grey75", style="filled", fontcolor="black"];
+  Node1 -> Node2 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node2 [label="InterfaceGraphique.EtatDeplacement.traiter\lSouris",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$dc/de1/class_interface_graphique_1_1_etat_deplacement.html#aeaa10418d3a65b14371491ba36097880",tooltip="Traiter le changement d&#39;état suite à une action du clavier. "];
+  Node1 -> Node3 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node3 [label="InterfaceGraphique.EtatPortail.traiter\lSouris",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$d7/d0b/class_interface_graphique_1_1_etat_portail.html#a34ba690c86f01c46ab4714eb1678779e",tooltip="Traiter le changement d&#39;état suite à une action du clavier. "];
+  Node1 -> Node4 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node4 [label="InterfaceGraphique.EtatDuplication.traiter\lSouris",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$db/d73/class_interface_graphique_1_1_etat_duplication.html#ac95df39087b3790b7efa81d8a23333a6",tooltip="Traiter le changement d&#39;état suite à une action du clavier. "];
+}

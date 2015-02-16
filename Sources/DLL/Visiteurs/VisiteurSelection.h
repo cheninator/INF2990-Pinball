@@ -10,7 +10,6 @@
 #define __VISITEURS_VISITEURSELECTION_H__
 
 #include "NoeudAbstrait.h"
-#include "NoeudComposite.h"
 #include "VisiteurAbstrait.h"
 #include "glm\glm.hpp"
 
@@ -30,7 +29,7 @@ class VisiteurSelection : public VisiteurAbstrait
 {
 public:
 
-	/// Constructeur par défaut : aucun déplacement
+	/// Constructeur par paramètre
 	VisiteurSelection(glm::dvec3 pointDansLeMonde, int valeurStencil);
 
 	/// Destructeur
@@ -42,19 +41,16 @@ public:
 	virtual bool traiter(NoeudTable* table);
 
 	/// Nombre d'objets sélectionnés disponnible pour les clients
-	int obtenirNbObjetsSelectionne(){ return nbObjetsSelectionne_; }
+	int obtenirNbObjetsSelectionne() const { return nbObjetsSelectionne_; }
 
 private:
 	
 	/// Constructeur par défaut
 	VisiteurSelection();
 	
-	glm::dvec3 pointDansLeMonde_; ///> Point cliqué
-
-	int valeurStencil_; ///> Valeur du stencil à comparer au numéro des noeuds
-
-	int nbObjetsSelectionne_; ///> Nombre d'objets sélectionnés disponnible pour les clients
+	glm::dvec3 pointDansLeMonde_;	///> Point cliqué
+	int valeurStencil_;				///> Valeur du stencil à comparer au numéro des noeuds
+	int nbObjetsSelectionne_;		///> Nombre d'objets sélectionnés disponnible pour les clients
 };
-
 
 #endif //__VISITEURS_VISITEURSELECTION_H__

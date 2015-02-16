@@ -52,6 +52,7 @@ public:
 	NoeudAbstrait(
 		const std::string& type = std::string{ "" }
 	);
+
 	/// Destructeur.
 	virtual ~NoeudAbstrait();
 
@@ -75,41 +76,57 @@ public:
 
 	/// Écrit l'état de l'affichage du du noeud.
 	inline void assignerAffiche(bool affiche);
+
 	/// Vérifie si le noeud se fait afficher.
 	inline bool estAffiche() const;
 
 	/// Écrit l'état de la sélection du noeud.
 	inline void assignerSelection(bool selectionne);
+
 	/// Vérifie si le noeud est sélectionné.
 	inline bool estSelectionne() const;
+
 	/// Vérifie si la positin du noeud est illégale
 	inline bool estImpossible() const;
+
 	/// Assigner le statut de possibilite
 	inline void assignerImpossible(bool impossible);
+
 	/// Écrit si le noeud peut être sélectionné ou non.
 	inline void assignerEstSelectionnable(bool selectionnable);
+
 	/// Écrit le zoom sur le noeud.
 	inline void assignerEchelle(glm::dvec3 scale);
+
 	/// Écrit le rotation sur le noeud.
 	inline void assignerRotation(glm::dvec3 rotation);
+
 	inline void assignerRotationHard(glm::dvec3 rotation){ rotation_ = rotation; };
+
 	/// Écrit le rotation 0,0,0 sur le noeud.
 	inline void resetRotation();
+
 	/// Vérifie si le noeud est sélectionnable.
 	inline bool estSelectionnable() const;
+
 	/// Écrit si le noeud peut être enregistré ou non.
 	inline void assignerEstEnregistrable(bool enregistrable);
+
 	/// Vérifie si le noeud est enregistrable.
 	inline bool estEnregistrable() const;
 
 	/// Écrit si le noeud peut être modifié ou non.
 	void assignerEstModifiable(bool modif) { modifiable_ = modif; };
 
+	/// Écrit si le noeud peut être agrandi ou non.
 	void assignerEstAjustable(bool ajust) { ajustable_ = ajust; };
+
 	/// Vérifie si le noeud est modifiable.
 	bool estModifiable() const { return modifiable_; };
+
 	// Vérifie qu'on peut agrandir l'objet
-	bool estAjustable() const{ return ajustable_; }
+	bool estAjustable() const { return ajustable_; }
+
 	/// Assigne le modèle3D et la liste d'affichage du noeud courant
 	inline void assignerObjetRendu(modele::Modele3D const* modele, modele::opengl_storage::OpenGL_Liste const* liste);
 
@@ -120,70 +137,92 @@ public:
 
 	/// Vide le noeud de ses enfants.
 	virtual void vider();
+
 	/// Efface le noeud passé en paramètre.
 	virtual void effacer(const NoeudAbstrait* noeud);
 
 	/// Cherche un noeud par le type (sur un noeud constant).
 	virtual const NoeudAbstrait* chercher(const std::string& typeNoeud) const;
+
 	/// Cherche un noeud par le type.
 	virtual NoeudAbstrait* chercher(const std::string& typeNoeud);
+
 	/// Cherche un noeud enfant selon l'indice (sur un noeud constant).
 	virtual const NoeudAbstrait* chercher(unsigned int indice) const;
+
 	/// Cherche un noeud enfant selon l'indice.
 	virtual NoeudAbstrait* chercher(unsigned int indice);
 
 	/// Ajoute un noeud enfant.
 	virtual bool ajouter(NoeudAbstrait* enfant);
+
 	/// Obtient le nombre d'enfants du noeud.
 	virtual unsigned int obtenirNombreEnfants() const;
+
 	/// Obtient le numero du noeud.
 	int getNumero(){ return numeroNoeud_; };
 
 	/// Changer la sélection du noeud.
 	virtual void inverserSelection();
+
 	/// Efface les enfants sélectionnés.
 	virtual void effacerSelection();
+
 	/// Sélectionne tous les enfants de même que le noeud.
 	virtual void selectionnerTout();
+
 	/// Désélectionne tous les enfants de même que le noeud.
 	virtual void deselectionnerTout();
+
 	/// Vérifier si le noeud ou un de ses enfants est sélectionné.
 	virtual bool selectionExiste() const;
 
 	/// Change le mode d'affichage des polygones.
 	virtual void changerModePolygones(bool estForce);
+
 	/// Assigne le mode d'affichage des polygones.
 	virtual void assignerModePolygones(GLenum modePolygones);
+
 	/// Affiche le noeud.
 	virtual void afficher() const;
+
 	/// Affiche le noeud de manière concrète.
 	virtual void afficherConcret() const;
+
 	/// Anime le noeud.
 	virtual void animer(float dt);
+
 	/// Accepter un visiteur
 	virtual bool accepterVisiteur(VisiteurAbstrait* vis);
+
 	/// Obtenir jumeau
 	virtual NoeudAbstrait* getTwin();
+
 	/// Ajouter jumeau
 	virtual void setTwin(NoeudAbstrait* twin);
+
 	//Obtenir les 4 vecteurs de la boite englobante modifie
 	virtual void obtenirVecteursBoite(glm::dvec3 &v1, glm::dvec3 &v2, glm::dvec3 &v3, glm::dvec3 &v4);
 	virtual void obtenirBoiteModele(glm::dvec3 &v1, glm::dvec3 &v2, glm::dvec3 &v3, glm::dvec3 &v4);
+
 	//Verifie si un point est dans la boite englobante
 	virtual bool pointEstDansBoite(glm::dvec3 point);
 
 	/// Obtenir couleur
 	virtual bool getColorShift();
+
 	/// Selectionner couleur
 	virtual void setColorShift(bool colorShift);
 
 	/// Obtenir transparence
 	virtual bool getTransparent();
+
 	/// Selectionner transparence
 	virtual void setTransparent(bool transparent);
 
 	/// Obtenir rouge
 	virtual bool getImpossible();
+
 	/// Selectionner rouge
 	virtual void setImpossible(bool impossible);
 
@@ -200,7 +239,8 @@ public:
 	std::string getType(){ return type_; }
 
 protected:
-	/// Si jumeau
+
+	/// Si jumeau, autrement nullptr
 	NoeudAbstrait* twin_{ nullptr };
 
 	/// Type du noeud.
@@ -240,6 +280,7 @@ protected:
 
 	/// Modèle 3D correspondant à ce noeud.
 	modele::Modele3D const* modele_;
+
 	/// Storage pour le dessin du modèle
 	modele::opengl_storage::OpenGL_Liste const* liste_;
 
@@ -508,7 +549,7 @@ inline void NoeudAbstrait::assignerEstSelectionnable(bool selectionnable)
 ///
 /// Cette fonction permet d'assigner l'état d'être impossible ou non du noeud.
 ///
-/// @param selectionnable : L'état impossible ou non.
+/// @param impossible : L'état impossible ou non.
 ///
 /// @return Aucune
 ///
@@ -525,7 +566,7 @@ inline void NoeudAbstrait::assignerImpossible(bool impossible)
 ///
 /// Cette fonction permet d'obtenir l'état d'être impossible ou non du noeud.
 ///
-/// @param selectionnable : L'état impossible ou non.
+/// @param impossible : L'état impossible ou non.
 ///
 /// @return Aucune
 ///
@@ -624,7 +665,7 @@ inline const glm::dvec3& NoeudAbstrait::obtenirAgrandissement() const
 /// Cette fonction retourne l'agrandissement du noeud par rapport
 /// à son parent.
 ///
-/// @return La position relative.
+/// @return L'angle de rotation relatif.
 ///
 ////////////////////////////////////////////////////////////////////////
 inline const glm::dvec3& NoeudAbstrait::obtenirRotation() const

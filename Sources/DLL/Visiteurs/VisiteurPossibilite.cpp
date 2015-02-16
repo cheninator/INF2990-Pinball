@@ -1,5 +1,5 @@
 ////////////////////////////////////////////////
-/// @file   VisiteurSelection.cpp
+/// @file   VisiteurPossibilite.cpp
 /// @author The Ballers
 /// @date   2015-02-01
 ///
@@ -8,11 +8,11 @@
 #include "VisiteurPossibilite.h"
 #include "../Arbre/ArbreRenduINF2990.h"
 #include "../Arbre/Noeuds/NoeudTable.h"
-#include <iostream>
+
 
 ////////////////////////////////////////////////////////////////////////
 ///
-/// @fn VisiteurDeselectionnerTout::VisiteurDeselectionnerTout()
+/// @fn VisiteurPossibilite::VisiteurPossibilite()
 ///
 /// Constructeur par défaut (vide).
 ///
@@ -26,7 +26,7 @@ VisiteurPossibilite::VisiteurPossibilite()
 
 ////////////////////////////////////////////////////////////////////////
 ///
-/// @fn VisiteurDeselectionnerTout::~VisiteurDeselectionnerTout()
+/// @fn VisiteurPossibilite::~VisiteurPossibilite()
 ///
 /// Destructeur vide.
 ///
@@ -41,7 +41,7 @@ VisiteurPossibilite::~VisiteurPossibilite()
 
 ////////////////////////////////////////////////////////////////////////
 ///
-/// @fn bool VisiteurDeselectionnerTout::traiter(ArbreRenduINF2990* arbre)
+/// @fn bool VisiteurPossibilite::traiter(ArbreRenduINF2990* arbre)
 /// @brief Cette fonction traite l'arbre de rendu pour visiter ses enfants.
 ///
 /// Cette fonction retourne true pour dire que l'opération s'est
@@ -60,13 +60,12 @@ bool VisiteurPossibilite::traiter(ArbreRenduINF2990* arbre)
 	}
 
 	return true;
-
 }
 
 
 ////////////////////////////////////////////////////////////////////////
 ///
-/// @fn bool VisiteurDeselectionnerTout::traiter(NoeudTable* table)
+/// @fn bool VisiteurPossibilite::traiter(NoeudTable* table)
 /// @brief Cette fonction traite la table de l'arbre de rendu.
 ///
 /// Cette fonction retourne true pour dire que l'opération s'est
@@ -89,9 +88,9 @@ bool VisiteurPossibilite::traiter(NoeudTable* table)
 
 ////////////////////////////////////////////////////////////////////////
 ///
-/// @fn bool VisiteurDeselectionnerTout::traiter(NoeudAbstrait* noeud)
+/// @fn bool VisiteurPossibilite::traiter(NoeudAbstrait* noeud)
 ///
-/// Ce visiteur désélectionne un noeud.
+/// Ce visiteur assigne une possibilité à un noeud de l'arbre
 ///
 /// @param[in] noeud : Noeud de l'arbre à traiter.
 ///

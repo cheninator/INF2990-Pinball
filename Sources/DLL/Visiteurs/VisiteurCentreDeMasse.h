@@ -10,8 +10,6 @@
 #define __VISITEURS_VISITEURCENTREDEMASSE_H__
 
 #include "VisiteurAbstrait.h"
-#include "../Arbre/ArbreRenduINF2990.h"
-#include "../Arbre/Noeuds/NoeudTable.h"
 #include "glm\glm.hpp"
 
 
@@ -38,29 +36,13 @@ public:
 	virtual bool traiter(NoeudTable* table);
 	virtual bool traiter(NoeudAbstrait* noeud);
 
-	////////////////////////////////////////////////////////////////////////
-	///
-	/// @fn glm::dvec3 obtenirCentreDeMasse()
-	///
-	/// Cette fonction retourne les coordonnées du centre de masse 
-	/// du noeud visité.
-	///
-	/// @param[in] Aucun
-	///
-	/// @return Coordonnées de centre de masse d'un noeud (dvec3)
-	///
-	////////////////////////////////////////////////////////////////////////
-	glm::dvec3 obtenirCentreDeMasse()
-	{
-		return glm::dvec3{ centreDeMasse_.x / nbNoeuds_,
-							centreDeMasse_.y / nbNoeuds_,
-							centreDeMasse_.z / nbNoeuds_};
-	}
+	// Obtenir les coordonnées (x,y,z) du centre de masse
+	glm::dvec3 obtenirCentreDeMasse() const;
 
 private:
 	
-	glm::dvec3 centreDeMasse_; ///< Centre de masse d'un noeud
-	int nbNoeuds_; ///< Nombre de noeuds
+	glm::dvec3 centreDeMasse_;	///< Centre de masse d'un noeud
+	int nbNoeuds_;				///< Nombre de noeuds
 	
 };
 

@@ -17,7 +17,7 @@
 
 ///////////////////////////////////////////////////////////////////////////
 /// @class VisiteurCentreDeMasse
-/// @brief Utilisé pour calculer le centre de masse des noeuds sélectionnés
+/// @brief Utilisé pour calculer les limites de la selection
 ///
 /// @author Philippe Carphin
 /// @date 2015-02-02
@@ -38,12 +38,11 @@ public:
 	virtual bool traiter(NoeudTable* table);
 	virtual bool traiter(NoeudAbstrait* noeud);
 
-	double getXMin(){ return xMin_; };
-	double getYMin(){ return yMin_; };
+	double getXMin() const { return xMin_; };
+	double getYMin() const { return yMin_; };
 
-
-	double getXMax(){ return xMax_; };
-	double getYMax(){ return yMax_; };
+	double getXMax() const { return xMax_; };
+	double getYMax() const { return yMax_; };
 
 private:
 

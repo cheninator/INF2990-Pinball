@@ -15,7 +15,7 @@
 ///////////////////////////////////////////////////////////////////////////
 /// @class UsineNoeudMur
 /// @brief Classe qui représente une usine capable de créer des noeuds de
-///        type Mur.
+///        type NoeudMur.
 ///
 /// @author Emilio Rivera
 /// @date 2015-01-24
@@ -26,11 +26,24 @@ class UsineNoeudMur : public UsineNoeud
 public:
 	/// Constructeur
 	inline UsineNoeudMur(const std::string& nom);
+
 	/// Création d'un noeud
 	inline virtual NoeudAbstrait* creerNoeud() const;
 };
 
 
+///////////////////////////////////////////////////////////////////////////////////////
+///
+/// @fn inline UsineNoeudMur::UsineNoeudMur(const std::string& nom)
+///
+/// Ce constructeur ne fait qu'appeler la version de la classe de base
+/// et donner des valeurs par défaut aux variables membres.
+///
+/// @param[in] nom   : Le nom de l'usine qui correspond au type de noeuds créés.
+///
+/// @return Aucune (constructeur).
+///
+///////////////////////////////////////////////////////////////////////////////////////
 inline UsineNoeudMur::UsineNoeudMur(const std::string& nom)
 	: UsineNoeud(nom, std::string("media/objets/Mur.obj"))
 {
@@ -42,7 +55,7 @@ inline UsineNoeudMur::UsineNoeudMur(const std::string& nom)
 /// @fn NoeudAbstrait* UsineNoeudMur::creerNoeud() const
 ///
 /// Cette fonction retourne un noeud nouvellement créé du type produit
-/// par cette usine, soit un mur.
+/// par cette usine, soit un NoeudMur.
 ///
 /// @return Le noeud nouvellement créé.
 ///

@@ -1,0 +1,17 @@
+digraph "InterfaceGraphique.EtatCreation.traiterSouris"
+{
+  edge [fontname="Helvetica",fontsize="10",labelfontname="Helvetica",labelfontsize="10"];
+  node [fontname="Helvetica",fontsize="10",shape=record];
+  rankdir="LR";
+  Node1 [label="InterfaceGraphique.EtatCreation.traiter\lSouris",height=0.2,width=0.4,color="black", fillcolor="grey75", style="filled", fontcolor="black"];
+  Node1 -> Node2 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node2 [label="InterfaceGraphique.Exemple.creation\lObjet",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$d9/d14/class_interface_graphique_1_1_exemple.html#ad35d10a2183954a902b955c4c2fb0cbb",tooltip="Création d&#39;un objet. "];
+  Node2 -> Node3 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node3 [label="InterfaceGraphique.Exemple.afficher\l_Objet",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$d9/d14/class_interface_graphique_1_1_exemple.html#a9a86f7175c1d95f0bd042bf6d205d7d4",tooltip="Affiche et crée un objet jumeau. "];
+  Node1 -> Node4 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node4 [label="InterfaceGraphique.Exemple.state\lPortail",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$d9/d14/class_interface_graphique_1_1_exemple.html#a02f92098aa26bcdefc594758747a0860",tooltip="Entre en état Portail. "];
+  Node1 -> Node5 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node5 [label="InterfaceGraphique.Exemple.stateMur",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$d9/d14/class_interface_graphique_1_1_exemple.html#ae6b429c70969d68dfd0a2da52ddfef22",tooltip="Entre en état Mur. "];
+  Node1 -> Node6 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node6 [label="InterfaceGraphique.Exemple.deplacement\lVueSouris",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$d9/d14/class_interface_graphique_1_1_exemple.html#ac3deb45c19c6280c315cff5ab08b29a8",tooltip="Gestion du déplacement de la vue avec la souris. "];
+}

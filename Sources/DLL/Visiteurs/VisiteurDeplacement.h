@@ -45,6 +45,9 @@ public:
 	virtual bool traiter(NoeudTable* table);
 	virtual bool traiter(NoeudAbstrait* noeud);
 
+	void setEstDansLaTable(bool b) { estDansLaTable_ = b; };
+	void setEstDuplication(bool b) { estDuplication_ = b; };
+
 private:
 
 	/// Constructeur par défaut
@@ -52,6 +55,8 @@ private:
 
 	glm::dvec3 deplacement_; ///< Vecteur de déplacement
 
+	bool estDansLaTable_;
+	bool estDuplication_;
 };
 
 

@@ -1,5 +1,5 @@
 ////////////////////////////////////////////////
-/// @file   VisiteurSelection.cpp
+/// @file   VisiteurDeselectionnerTout.cpp
 /// @author The Ballers
 /// @date   2015-02-01
 ///
@@ -8,7 +8,7 @@
 #include "VisiteurDeselectionnerTout.h"
 #include "../Arbre/ArbreRenduINF2990.h"
 #include "../Arbre/Noeuds/NoeudTable.h"
-#include <iostream>
+
 
 ////////////////////////////////////////////////////////////////////////
 ///
@@ -23,6 +23,7 @@ VisiteurDeselectionnerTout::VisiteurDeselectionnerTout()
 {
 
 }
+
 
 ////////////////////////////////////////////////////////////////////////
 ///
@@ -60,7 +61,6 @@ bool VisiteurDeselectionnerTout::traiter(ArbreRenduINF2990* arbre)
 	}
 
 	return true;
-
 }
 
 
@@ -103,4 +103,3 @@ bool VisiteurDeselectionnerTout::traiter(NoeudAbstrait* noeud)
 	noeud->assignerSelection(false);
 	return true;
 }
-

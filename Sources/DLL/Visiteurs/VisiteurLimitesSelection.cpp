@@ -1,6 +1,6 @@
 ////////////////////////////////////////////////
-/// @file   VisiteurCentreDeMasse.cpp
-/// @author Yonni Chen
+/// @file   VisiteurLimitesSelection.cpp
+/// @author Philippe Carphin
 /// @date   2015-02-01
 ///
 /// @ingroup Visiteur
@@ -8,13 +8,14 @@
 
 #include "VisiteurLimitesSelection.h"
 #include "../Arbre/ArbreRenduINF2990.h"
-#include <iostream>
+#include "../Arbre/Noeuds/NoeudTable.h"
+
 
 ////////////////////////////////////////////////////////////////////////
 ///
-/// @fn VisiteurCentreDeMasse::VisiteurCentreDeMasse()
+/// @fn VisiteurLimitesSelection::VisiteurLimitesSelection()
 ///
-/// Constructeur.
+/// Constructeur qui initialise les valeurs par défaut
 ///
 /// @return Aucune (constructeur).
 ///
@@ -28,9 +29,10 @@ VisiteurLimitesSelection::VisiteurLimitesSelection()
 
 }
 
+
 ////////////////////////////////////////////////////////////////////////
 ///
-/// @fn VisiteurCentreDeMasse::~VisiteurCentreDeMasse()
+/// @fn VisiteurLimitesSelection::~VisiteurLimitesSelection()
 ///
 /// Destructeur vide.
 ///
@@ -45,7 +47,7 @@ VisiteurLimitesSelection::~VisiteurLimitesSelection()
 
 ////////////////////////////////////////////////////////////////////////
 ///
-/// @fn bool VisiteurCentreDeMasse::traiter(ArbreRenduINF2990* noeud)
+/// @fn bool VisiteurLimitesSelection::traiter(ArbreRenduINF2990* noeud)
 /// @brief Cette fonction traite l'arbre de rendu.
 ///
 /// Cette fonction retourne true pour dire que l'opération s'est
@@ -65,9 +67,11 @@ bool VisiteurLimitesSelection::traiter(ArbreRenduINF2990* arbre)
 
 	return true;
 }
+
+
 ////////////////////////////////////////////////////////////////////////
 ///
-/// @fn bool VisiteurCentreDeMasse::traiter(NoeudTable* table)
+/// @fn bool VisiteurLimitesSelection::traiter(NoeudTable* table)
 /// @brief Cette fonction traite la table de l'arbre de rendu.
 ///
 /// Cette fonction retourne true pour dire que l'opération s'est
@@ -87,10 +91,11 @@ bool VisiteurLimitesSelection::traiter(NoeudTable* table)
 	return true;
 }
 
+
 ////////////////////////////////////////////////////////////////////////
 ///
-/// @fn bool VisiteurCentreDeMasse::traiter(NoeudAbstrait* noeud)
-/// @brief Calcule la limite de la sélection. (tous les noeuds ont une masse de 1)
+/// @fn bool VisiteurLimitesSelection::traiter(NoeudAbstrait* noeud)
+/// @brief Calcule la limite de la sélection.
 ///
 /// @param[in] noeud : Le noeud à traiter.
 ///
@@ -100,9 +105,7 @@ bool VisiteurLimitesSelection::traiter(NoeudTable* table)
 bool VisiteurLimitesSelection::traiter(NoeudAbstrait* noeud)
 {
 	glm::dvec3 position{ noeud->obtenirPositionRelative() };
-
 	glm::dvec3 coinsEnglobant[4];
-
 
 	if (noeud->estSelectionne())
 	{	

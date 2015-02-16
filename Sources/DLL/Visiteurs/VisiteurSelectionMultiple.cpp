@@ -8,7 +8,6 @@
 #include "VisiteurSelectionMultiple.h"
 #include "../Arbre/ArbreRenduINF2990.h"
 #include "../Arbre/Noeuds/NoeudTable.h"
-#include <iostream>
 #include "Utilitaire.h"
 #include <algorithm>
 
@@ -75,15 +74,15 @@ VisiteurSelectionMultiple::~VisiteurSelectionMultiple()
 ////////////////////////////////////////////////////////////////////////
 bool VisiteurSelectionMultiple::traiter(ArbreRenduINF2990* arbre)
 {
-	// Visiter les enfants de l'arbre
+	// Traiter les enfants de l'arbre de rendu
 	for (unsigned int i = 0; i < arbre->obtenirNombreEnfants(); i++)
 	{
-		// Traiter les enfants de l'arbre de rendu
 		arbre->getEnfant(i)->accepterVisiteur(this);
 	}
 
 	return true;
 }
+
 
 ////////////////////////////////////////////////////////////////////////
 ///
@@ -197,19 +196,14 @@ bool VisiteurSelectionMultiple::traiter(NoeudAbstrait* noeud)
 		}
 
 		if (estASelectionner)
-		{
-			std::cout << "Noeud de type " << noeud->getType() << " selectionne " << std::endl;
 			noeud->assignerSelection(true);
-		}
-		else
-		{
-			noeud->assignerSelection(false);
-		}
 
+		else
+			noeud->assignerSelection(false);
+	
 		if (noeud->estSelectionne())
-		{
 			nbObjetsSelectionne_++;
-		}
+	
 	}
 
 	return true;

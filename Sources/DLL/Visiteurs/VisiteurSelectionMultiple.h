@@ -10,7 +10,6 @@
 #define __VISITEURS_VISITEURSELECTIONMULTIPLE_H__
 
 #include "NoeudAbstrait.h"
-#include "NoeudComposite.h"
 #include "VisiteurAbstrait.h"
 #include "glm\glm.hpp"
 
@@ -30,7 +29,7 @@ class VisiteurSelectionMultiple : public VisiteurAbstrait
 {
 public:
 
-	/// Constructeur par défaut : aucun déplacement
+	/// Constructeur par paramètre
 	VisiteurSelectionMultiple(glm::dvec3 selectionBasGauche, glm::dvec3 selectionHautDroit);
 
 	/// Destructeur
@@ -38,9 +37,7 @@ public:
 
 	/// Traiter une opération sur l'arbre de rendu et ses enfants
 	virtual bool traiter(ArbreRenduINF2990* arbre);
-	/// Traiter une opération sur l'arbre de rendu et ses enfants
 	virtual bool traiter(NoeudAbstrait* noeud);
-	/// Traiter une opération sur l'arbre de rendu et ses enfants
 	virtual bool traiter(NoeudTable* table);
 
 	//////////////////////////////////////////////////////////////////////////
@@ -52,8 +49,7 @@ public:
 	/// @return Nombre d'objets sélectionnés (attribut).
 	///
 	//////////////////////////////////////////////////////////////////////////
-	int obtenirNbObjetsSelectionne()
-	{ return nbObjetsSelectionne_; }
+	int obtenirNbObjetsSelectionne() const { return nbObjetsSelectionne_; }
 
 private:
 
@@ -63,8 +59,7 @@ private:
 	glm::dvec3 selectionBasGauche_; ///< Point cliqué (bas gauche)
 	glm::dvec3 selectionHautDroit_; ///< Point cliqué (haut droit)
 
-	int nbObjetsSelectionne_; ///< Nombre d'objets sélectionnés
+	int nbObjetsSelectionne_;		///< Nombre d'objets sélectionnés
 };
-
 
 #endif //__VISITEURS_VISITEURSELECTIONMULTIPLE_H__
