@@ -107,6 +107,9 @@ namespace InterfaceGraphique
             Program.peutAfficher = true;
             panel_GL.Select();
             etat = new EtatNone(this);
+            deselection();
+            ctrlDown = false;
+            altDown = false;
 
             //Musique
             if (soundActif)
@@ -222,7 +225,7 @@ namespace InterfaceGraphique
                     altDown = true;
 
             }
-            else if (panel_GL.Focused == true)
+            if (panel_GL.Focused == true)
             {
 
                 if (e.KeyData == Keys.Left)
@@ -343,40 +346,16 @@ namespace InterfaceGraphique
                 {
                     Selection_MenuItem_Click(this, e);
 
-                }
-                else if (e.KeyChar == 'd')
-                {
-                    bouton_Deplacement_Click(this, e);
-                
-                }
-
-                  
+                }           
                 else if (e.KeyChar == 'p')
                 {
                     bouton_Creation_Click(this, e);
                 }
-                else if (e.KeyChar == 'e')
-                {
-                    
-                    bouton_Scaling_Click(this, e);
-                }
-
-                else if( e.KeyChar == 'm')
+                else if (e.KeyChar == 'm')
                 {
                     Mute_MenuItem_Click(this, e);
                 }
-                else if (e.KeyChar == 'r')
-                {
-                    bouton_Rotation_Click(this, e);
 
-                }
-
-                else if (e.KeyChar == 'c')
-                {
-                    bouton_Duplication_Click(this, e);
-                  
-
-                }
                 else if (e.KeyChar == 'h')
                 {
                     if (richTextBox1.Visible)
@@ -390,6 +369,38 @@ namespace InterfaceGraphique
                     Zoom_MenuItem_Click(this, e);
 
 
+                }
+
+                else if (nbSelection != 0) 
+                { 
+
+                    if (e.KeyChar == 'd')
+                    {
+                        bouton_Deplacement_Click(this, e);
+
+                    }
+                    else if (e.KeyChar == 'e')
+                    {
+                    
+                        bouton_Scaling_Click(this, e);
+                    }
+
+                    else if (e.KeyChar == 'r')
+                    {
+                        bouton_Rotation_Click(this, e);
+
+                    }
+
+                    else if (e.KeyChar == 'c')
+                    {
+                        bouton_Duplication_Click(this, e);
+
+
+                    }
+                }
+                else if (nbSelection == 0)
+                {
+                    outilCourant("Selectionnez au moins un objet.");
                 }
             }
            
@@ -466,7 +477,7 @@ namespace InterfaceGraphique
             if (ouvrir_fichier.ShowDialog() == DialogResult.OK)
             {
                 pathXML = new StringBuilder(ouvrir_fichier.FileName);
-
+                ReinitialiserTout();
                 IntPtr prop = FonctionsNatives.ouvrirXML(pathXML, pathXML.Capacity);
                 int[] result = new int[6];
                 Marshal.Copy(prop, result, 0, 6);
@@ -474,7 +485,7 @@ namespace InterfaceGraphique
                 for (int i = 0; i < 6; i++)
                     propZJ[i] = result[i];
 
-               ReinitialiserTout();
+              
             }
         }
 
@@ -524,6 +535,7 @@ namespace InterfaceGraphique
             if (!(fileName == "default.xml"))
             {
                 enregistrer_fichier.OverwritePrompt = true;
+                ReinitialiserTout();
                 pathXML = new StringBuilder(enregistrer_fichier.FileName);
                 for (int i = 0; i < 6; i++)
                     prop[i] = propZJ[i];
@@ -541,7 +553,7 @@ namespace InterfaceGraphique
                     MessageBox.Show("Il doit avoir au moins un trou, un generateur de bille et un ressort dans la zone de jeu!", "ERREUR DE SAUVEGARDE",
                     MessageBoxButtons.OK, MessageBoxIcon.Error);
                     pathXML = new StringBuilder("");
-
+                   
                 }
             }
             

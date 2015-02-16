@@ -570,7 +570,7 @@ namespace InterfaceGraphique
             this.labelOCourant.ForeColor = System.Drawing.SystemColors.InfoText;
             this.labelOCourant.Location = new System.Drawing.Point(8, 16);
             this.labelOCourant.Name = "labelOCourant";
-            this.labelOCourant.Size = new System.Drawing.Size(135, 22);
+            this.labelOCourant.Size = new System.Drawing.Size(135, 30);
             this.labelOCourant.TabIndex = 0;
             this.labelOCourant.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 

@@ -1,7 +1,7 @@
 <Proprietes>
     <PointsButoir Nombre="11"/>
     <PointsTriangulaire Nombre="11"/>
-    <PointsCible Nombre="11"/>
+    <PointsCible Nombre="100"/>
     <PointsVictoire Nombre="11"/>
     <PointsBilleGratuite Nombre="11"/>
     <Difficulte Nombre="3"/>
