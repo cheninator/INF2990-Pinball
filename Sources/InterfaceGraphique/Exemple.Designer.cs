@@ -83,7 +83,6 @@ namespace InterfaceGraphique
             this.Y_label = new System.Windows.Forms.Label();
             this.Xbox = new System.Windows.Forms.TextBox();
             this.X_label = new System.Windows.Forms.Label();
-            this.label1 = new System.Windows.Forms.Label();
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.fichierToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.Nouveau_MenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -123,6 +122,7 @@ namespace InterfaceGraphique
             this.Aide_MenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.Mute_MenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.printPreviewDialog1 = new System.Windows.Forms.PrintPreviewDialog();
+            this.richTextBox1 = new System.Windows.Forms.RichTextBox();
             this.panel1.SuspendLayout();
             this.Creation_Panel.SuspendLayout();
             this.Groupe_Palettes.SuspendLayout();
@@ -147,7 +147,7 @@ namespace InterfaceGraphique
             this.panel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel1.Location = new System.Drawing.Point(0, 0);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(956, 703);
+            this.panel1.Size = new System.Drawing.Size(956, 731);
             this.panel1.TabIndex = 0;
             this.panel1.Click += new System.EventHandler(this.panel1_Click);
             // 
@@ -158,7 +158,7 @@ namespace InterfaceGraphique
             this.panel_GL.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel_GL.Location = new System.Drawing.Point(163, 24);
             this.panel_GL.Name = "panel_GL";
-            this.panel_GL.Size = new System.Drawing.Size(566, 677);
+            this.panel_GL.Size = new System.Drawing.Size(566, 705);
             this.panel_GL.TabIndex = 4;
             this.panel_GL.MouseClick += new System.Windows.Forms.MouseEventHandler(this.panel_GL_MouseClick);
             this.panel_GL.MouseDown += new System.Windows.Forms.MouseEventHandler(this.panel_GL_MouseDown);
@@ -177,7 +177,7 @@ namespace InterfaceGraphique
             this.Creation_Panel.Dock = System.Windows.Forms.DockStyle.Right;
             this.Creation_Panel.Location = new System.Drawing.Point(729, 24);
             this.Creation_Panel.Name = "Creation_Panel";
-            this.Creation_Panel.Size = new System.Drawing.Size(225, 677);
+            this.Creation_Panel.Size = new System.Drawing.Size(225, 705);
             this.Creation_Panel.TabIndex = 2;
             this.Creation_Panel.Visible = false;
             this.Creation_Panel.MouseEnter += new System.EventHandler(this.Creation_Panel_MouseEnter);
@@ -418,11 +418,11 @@ namespace InterfaceGraphique
             this.flowLayoutPanel1.Controls.Add(this.Groupe_Outils);
             this.flowLayoutPanel1.Controls.Add(this.OutilGraphique);
             this.flowLayoutPanel1.Controls.Add(this.Groupe_Proprietes);
-            this.flowLayoutPanel1.Controls.Add(this.label1);
+            this.flowLayoutPanel1.Controls.Add(this.richTextBox1);
             this.flowLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Left;
             this.flowLayoutPanel1.Location = new System.Drawing.Point(0, 24);
             this.flowLayoutPanel1.Name = "flowLayoutPanel1";
-            this.flowLayoutPanel1.Size = new System.Drawing.Size(163, 677);
+            this.flowLayoutPanel1.Size = new System.Drawing.Size(163, 705);
             this.flowLayoutPanel1.TabIndex = 3;
             // 
             // Groupe_Outils
@@ -692,19 +692,6 @@ namespace InterfaceGraphique
             this.X_label.TabIndex = 0;
             this.X_label.Text = "Position en X:";
             this.X_label.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.BackColor = System.Drawing.Color.Transparent;
-            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(3, 500);
-            this.label1.Name = "label1";
-            this.label1.Padding = new System.Windows.Forms.Padding(0, 3, 3, 0);
-            this.label1.Size = new System.Drawing.Size(151, 224);
-            this.label1.TabIndex = 0;
-            this.label1.Text = resources.GetString("label1.Text");
-            this.label1.Click += new System.EventHandler(this.label1_Click);
             // 
             // menuStrip1
             // 
@@ -1045,11 +1032,21 @@ namespace InterfaceGraphique
             this.printPreviewDialog1.Name = "printPreviewDialog1";
             this.printPreviewDialog1.Visible = false;
             // 
+            // richTextBox1
+            // 
+            this.richTextBox1.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.richTextBox1.Location = new System.Drawing.Point(3, 503);
+            this.richTextBox1.Name = "richTextBox1";
+            this.richTextBox1.ReadOnly = true;
+            this.richTextBox1.Size = new System.Drawing.Size(151, 109);
+            this.richTextBox1.TabIndex = 11;
+            this.richTextBox1.Text = resources.GetString("richTextBox1.Text");
+            // 
             // Exemple
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(956, 703);
+            this.ClientSize = new System.Drawing.Size(956, 731);
             this.Controls.Add(this.panel1);
             this.KeyPreview = true;
             this.MainMenuStrip = this.menuStrip1;
@@ -1067,7 +1064,6 @@ namespace InterfaceGraphique
             this.Group_Elements.ResumeLayout(false);
             this.Group_Element2.ResumeLayout(false);
             this.flowLayoutPanel1.ResumeLayout(false);
-            this.flowLayoutPanel1.PerformLayout();
             this.Groupe_Outils.ResumeLayout(false);
             this.Groupe_Outils.PerformLayout();
             this.OutilGraphique.ResumeLayout(false);
@@ -1159,13 +1155,13 @@ namespace InterfaceGraphique
         private System.Windows.Forms.Button Trou_bouton;
         private System.Windows.Forms.Button Generateur_bouton;
         private System.Windows.Forms.Button Ressort_bouton;
-        private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Button IncreaseZoomButton;
         private System.Windows.Forms.Button DecreaseZoomButton;
         private System.Windows.Forms.TextBox curZoomVal;
         private System.Windows.Forms.ToolStripMenuItem Mute_MenuItem;
         private System.Windows.Forms.GroupBox OutilGraphique;
         private System.Windows.Forms.Label labelOCourant;
+        private System.Windows.Forms.RichTextBox richTextBox1;
     }
 }
 

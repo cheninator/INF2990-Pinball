@@ -379,10 +379,10 @@ namespace InterfaceGraphique
                 }
                 else if (e.KeyChar == 'h')
                 {
-                    if (label1.Visible)
-                        label1.Hide();
+                    if (richTextBox1.Visible)
+                        richTextBox1.Hide();
                     else
-                        label1.Show();
+                        richTextBox1.Show();
                 }
 
                 else if (e.KeyChar == 'z')
@@ -1942,7 +1942,7 @@ namespace InterfaceGraphique
 
         ////////////////////////////////////////////////////////////////////////
         ///
-        /// @fn private void label1_Click(object sender, EventArgs e)
+        /// @fn private void richTextBox1_Click(object sender, EventArgs e)
         /// @brief Gestion des evenements lorsque l'utilisateur clique sur
         ///        le label des infos sur les raccourcis.
         /// 
@@ -1952,7 +1952,7 @@ namespace InterfaceGraphique
         /// @return Aucune.
         ///
         ////////////////////////////////////////////////////////////////////////
-        private void label1_Click(object sender, EventArgs e)
+        private void richTextBox1_Click(object sender, EventArgs e)
         {
             //Aide_MenuItem_Click(sender, e);
         }
