@@ -674,7 +674,7 @@ namespace InterfaceGraphique
         ////////////////////////////////////////////////////////////////////////
         private void bouton_Selection_Click(object sender, EventArgs e)
         {
-            removePortail();
+            annulerModif();
             etat = new EtatSelection(this);
 
             Console.WriteLine("Outil Selection.");
@@ -694,7 +694,7 @@ namespace InterfaceGraphique
         ////////////////////////////////////////////////////////////////////////
         private void bouton_Creation_Click(object sender, EventArgs e)
         {
-            removePortail();
+            annulerModif();
             if (etat is EtatMur)
                 etat = new EtatNone(this);
             Console.WriteLine("Outil Creation.");
@@ -807,7 +807,7 @@ namespace InterfaceGraphique
         ////////////////////////////////////////////////////////////////////////
         private void OK_prop_bouton_Click(object sender, EventArgs e)
         {
-            removePortail();
+            annulerModif();
             int positionX;
             int positionY;
             int angle;
@@ -862,7 +862,7 @@ namespace InterfaceGraphique
                 FonctionsNatives.setProprietesNoeud(positionX, positionY, angle, echelle);
             }
 
-           
+          
         }
 
         ////////////////////////////////////////////////////////////////////////
@@ -973,7 +973,7 @@ namespace InterfaceGraphique
         ////////////////////////////////////////////////////////////////////////
         private void Annuler_prop_boutn_Click(object sender, EventArgs e)
         {
-            removePortail();
+            annulerModif();
             Xbox.Text = Math.Round(FonctionsNatives.getPositionX()).ToString();
             Ybox.Text = Math.Round(FonctionsNatives.getPositionY()).ToString();
             Anglebox.Text = Math.Round(FonctionsNatives.getAngle()).ToString();
@@ -1072,7 +1072,7 @@ namespace InterfaceGraphique
         {
             Console.WriteLine("Outil Deplacement.");
             // TO DO
-            removePortail();
+            annulerModif();
             etat = null;
             etat = new EtatDeplacement(this);
         }
@@ -1115,7 +1115,7 @@ namespace InterfaceGraphique
         {
             Console.WriteLine("Outil Rotation.");
             // TO DO
-            removePortail();
+            annulerModif();
             etat = null;
             etat = new EtatRotation(this);
         }
@@ -1136,7 +1136,7 @@ namespace InterfaceGraphique
         {
             Console.WriteLine("Outil Mise a echelle.");
             // TO DO
-            removePortail();
+            annulerModif();
             etat = null;
             etat = new EtatScale(this);
         }
@@ -1173,7 +1173,7 @@ namespace InterfaceGraphique
         private void Zoom_MenuItem_Click(object sender, EventArgs e)
         {
             Console.WriteLine("Outil Zoom.");
-            removePortail();
+            annulerModif();
             etat = null;
             etat = new EtatZoom(this);
         
@@ -1195,7 +1195,7 @@ namespace InterfaceGraphique
         {
             Console.WriteLine("Outil Duplication.");
             
-                 removePortail();
+                 annulerModif();
                 etat = null;
                 etat = new EtatDuplication(this);
       
@@ -2500,9 +2500,9 @@ namespace InterfaceGraphique
        
         }
 
-        public void removePortail()
+        public void annulerModif()
         {
-            if (etat is EtatPortail || etat is EtatMur)
+            if (etat is EtatPortail || etat is EtatMur || etat is EtatDuplication)
             {
                 FonctionsNatives.removeObject();
                 deselection();
