@@ -35,7 +35,7 @@ namespace InterfaceGraphique
     {
         FullScreen fs = new FullScreen();
         static public StringBuilder myObjectName = new StringBuilder("vide");
-        static bool soundActif = false; ///< Play Sound or not
+        static bool soundActif = true; ///< Play Sound or not
 
         public Point origin;
         
@@ -67,10 +67,12 @@ namespace InterfaceGraphique
         ////////////////////////////////////////////////////////////////////////
         public Exemple()
         {
+            /*
             if (soundActif)
                 playSound("");
             else
                 playSound("", true);
+            */
 
             this.KeyPreview = true;
             this.KeyPress += new KeyPressEventHandler(ToucheEnfonce);
@@ -169,10 +171,14 @@ namespace InterfaceGraphique
                             currentZoom = FonctionsNatives.obtenirZoomCourant();
                             curZoomVal.Text = (Math.Round(currentZoom * 100) / 100).ToString();
                             Creation_Panel.Visible = true;
+                            
+                            /*
                             if (soundActif)
                                 playSound("");
-                            else
-                                playSound("", true);
+                           
+                       else
+                           playSound("", true);
+                       */
                         }
                         FonctionsNatives.animer(tempsInterAffichage);
                         FonctionsNatives.dessinerOpenGL();
@@ -217,29 +223,33 @@ namespace InterfaceGraphique
                     altDown = true;
 
             }
-               
+            else if (panel_GL.Focused == true)
+            {
+
                 if (e.KeyData == Keys.Left)
                     FonctionsNatives.translater(-10, 0);
 
-                if (e.KeyData == Keys.Right)
+                else if (e.KeyData == Keys.Right)
                     FonctionsNatives.translater(10, 0);
 
-                if (e.KeyData == Keys.Up)
+                else if (e.KeyData == Keys.Up)
                     FonctionsNatives.translater(0, 10);
 
-                if (e.KeyData == Keys.Down)
+                else if (e.KeyData == Keys.Down)
                     FonctionsNatives.translater(0, -10);
+            }
                 if (e.Modifiers == Keys.Control)
                 {
                     ctrlDown = true;
-                  
+
                 }
                 if (e.Alt)
                 {
                     e.Handled = true;
-                   
+
                     altDown = true;
-                }  
+                }
+           
         }
 
         ////////////////////////////////////////////////////////////////////////
