@@ -56,6 +56,9 @@ public:
 	/// Traiter un generateur de bille differement d'un NoeudAbstrait
 	virtual bool traiter(NoeudGenerateurBille* noeud);
 
+	/// Traiter un generateur de bille differement d'un NoeudAbstrait
+	virtual bool traiter(NoeudPortail* noeud);
+
 private:
 
 	/// Constructeur par defaut

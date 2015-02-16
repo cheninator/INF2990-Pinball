@@ -11,6 +11,7 @@
 #include "../Arbre/Noeuds/NoeudTable.h"
 #include "../Arbre/Noeuds/NoeudMur.h"
 #include "../Arbre/Noeuds/NoeudGenerateurBille.h"
+#include "../Arbre/Noeuds/NoeudPortail.h"
 #include <iostream>
 
 
@@ -234,5 +235,27 @@ bool VisiteurAgrandissement::traiter(NoeudGenerateurBille* noeud)
 		if (scaleFinal.x * noeud->obtenirAgrandissement().x < 1)
 			noeud->assignerPositionRelative(position);
 	}
+	return true;
+}
+
+
+////////////////////////////////////////////////////////////////////////
+///
+/// @fn bool VisiteurAgrandissement::traiter(NoeudPortail* noeud)
+///
+/// Cette fonction traite un portail de l'arbre de rendu pour effectuer 
+/// un agrandissement. Cette fonction retourne true pour dire que l'operation 
+/// s'est faite correctement.
+///
+/// @param[in] noeud : NoeudPortail de l'arbre de rendu a traiter.
+///
+/// @return Retourne toujours true.
+///
+////////////////////////////////////////////////////////////////////////
+bool VisiteurAgrandissement::traiter(NoeudPortail* noeud)
+{
+	glm::dvec3 scaleInit = noeud->obtenirAgrandissement();
+	glm::dvec3 scaleFinal = glm::dvec3{ scaleInit[0] * homothetie_[0], scaleInit[1] * homothetie_[1], scaleInit[2] };
+	noeud->assignerEchelle(scaleFinal);
 	return true;
 }
