@@ -135,24 +135,49 @@ bool VisiteurAgrandissement::traiter(NoeudAbstrait* noeud)
 		glm::dvec3 scaleInit = noeud->obtenirAgrandissement();
 		glm::dvec3 scaleFinal = glm::dvec3{ scaleInit[0] * homothetie_[0], scaleInit[1] * homothetie_[1], scaleInit[2] * homothetie_[2] };
 	
-		double zSpecial = 10;
 
-		noeud->assignerEchelle(scaleFinal);
-		
-
+		// On trouve le z le plus haut de l'objet : zOriginal.
+		//===================================================
 		glm::dvec3 position = noeud->obtenirPositionRelative();
-		glm::dvec3 boite[4];
-		noeud->obtenirVecteursBoite(boite[0], boite[1], boite[2], boite[3]); // Je sais que c<est pas beau, le 3e, c'est le point le plus haut de la boite englobante
-		double zTop = boite[0].z;
+		glm::dvec3 boiteInitiale[4];
+		noeud->obtenirVecteursBoite(boiteInitiale[0], boiteInitiale[1], boiteInitiale[2], boiteInitiale[3]);
+		double deltaZInitial = boiteInitiale[0].z;
 		for (int i = 1; i < 4; i++) // Trouver le point le plus haut de la boite englobante.  
 		{
-			if (zTop < boite[i].z)
-				zTop = boite[i].z;
+			if (deltaZInitial < boiteInitiale[i].z)
+				deltaZInitial = boiteInitiale[i].z;
 		}
+		// std::cout << "Valeur de deltaZInitial : " << deltaZInitial << std::endl;
 
+		// Ici, deltaZFinal est la distance en z entre l'attribut position et le point le plus haut de l'objet.
+		// Donc zOriginal est le z du point le plus haut de l'objet.
+		double zOriginal = position.z + deltaZInitial;
+		// std::cout << "Valeur de zOriginal     : " << zOriginal << std::endl;
 
+		// On applique la mise à l'échelle,
+		// =================================
+		noeud->assignerEchelle(scaleFinal);
 
-		noeud->assignerPositionRelative(glm::dvec3{ position.x, position.y, zSpecial - zTop });
+		// Et on s'arrange pour que le nouveau z le plus haut de l'objet soit zOriginal.
+		// =============================================================================
+		// Pour ce faire, on trouve le z le plus haut de l'objet scalé.
+		glm::dvec3 boiteFinale[4];
+		noeud->obtenirVecteursBoite(boiteFinale[0], boiteFinale[1], boiteFinale[2], boiteFinale[3]);
+		double deltaZFinal = boiteFinale[0].z;
+		for (int i = 1; i < 4; i++) // Trouver le point le plus haut de la boite englobante.  
+		{
+			if (deltaZFinal < boiteFinale[i].z)
+				deltaZFinal = boiteFinale[i].z;
+		}
+		// std::cout << "Valeur de deltaZFinal   : " << deltaZFinal << std::endl;
+
+		// Ici, deltaZFinal est la distance en z entre l'attribut position et le point le plus haut de l'objet.
+		// Donc si on veut que le point le plus haut de l'objet soit à zOriginal, il faut que 
+		// l'attribut position soit deltaZFinal unités en dessous de zOriginal.
+		if (scaleFinal.x * noeud->obtenirAgrandissement().x < 1){
+			noeud->assignerPositionRelative(glm::dvec3{ position.x, position.y, zOriginal - deltaZFinal });
+			std::cout << "Valeur finale du z le plus haut de l'objet : " << noeud->obtenirPositionRelative().z + deltaZFinal << std::endl << " ==============================================" << std::endl;
+		}
 		
 	}
 	return true;
