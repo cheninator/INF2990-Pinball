@@ -35,7 +35,7 @@ namespace InterfaceGraphique
     {
         FullScreen fs = new FullScreen();
         static public StringBuilder myObjectName = new StringBuilder("vide");
-        static bool soundActif = false; ///< Play Sound or not
+        static bool soundActif = true; ///< Play Sound or not
 
         public Point origin;
         
@@ -67,10 +67,12 @@ namespace InterfaceGraphique
         ////////////////////////////////////////////////////////////////////////
         public Exemple()
         {
+            /*
             if (soundActif)
                 playSound("");
             else
                 playSound("", true);
+            */
 
             this.KeyPreview = true;
             this.KeyPress += new KeyPressEventHandler(ToucheEnfonce);
@@ -169,10 +171,14 @@ namespace InterfaceGraphique
                             currentZoom = FonctionsNatives.obtenirZoomCourant();
                             curZoomVal.Text = (Math.Round(currentZoom * 100) / 100).ToString();
                             Creation_Panel.Visible = true;
+                            
+                            /*
                             if (soundActif)
                                 playSound("");
-                            else
-                                playSound("", true);
+                           
+                       else
+                           playSound("", true);
+                       */
                         }
                         FonctionsNatives.animer(tempsInterAffichage);
                         FonctionsNatives.dessinerOpenGL();
@@ -217,29 +223,33 @@ namespace InterfaceGraphique
                     altDown = true;
 
             }
-               
+            else if (panel_GL.Focused == true)
+            {
+
                 if (e.KeyData == Keys.Left)
                     FonctionsNatives.translater(-10, 0);
 
-                if (e.KeyData == Keys.Right)
+                else if (e.KeyData == Keys.Right)
                     FonctionsNatives.translater(10, 0);
 
-                if (e.KeyData == Keys.Up)
+                else if (e.KeyData == Keys.Up)
                     FonctionsNatives.translater(0, 10);
 
-                if (e.KeyData == Keys.Down)
+                else if (e.KeyData == Keys.Down)
                     FonctionsNatives.translater(0, -10);
+            }
                 if (e.Modifiers == Keys.Control)
                 {
                     ctrlDown = true;
-                  
+
                 }
                 if (e.Alt)
                 {
                     e.Handled = true;
-                   
+
                     altDown = true;
-                }  
+                }
+           
         }
 
         ////////////////////////////////////////////////////////////////////////
@@ -325,7 +335,7 @@ namespace InterfaceGraphique
                     }
                     else
                         fs.EnterFullScreenMode(this);
-                    FonctionsNatives.resetZoom();
+                   FonctionsNatives.resetZoom();
                     
                 }      
           
@@ -674,7 +684,7 @@ namespace InterfaceGraphique
         ////////////////////////////////////////////////////////////////////////
         private void bouton_Selection_Click(object sender, EventArgs e)
         {
-            removePortail();
+            annulerModif();
             etat = new EtatSelection(this);
 
             Console.WriteLine("Outil Selection.");
@@ -694,7 +704,7 @@ namespace InterfaceGraphique
         ////////////////////////////////////////////////////////////////////////
         private void bouton_Creation_Click(object sender, EventArgs e)
         {
-            removePortail();
+            annulerModif();
             if (etat is EtatMur)
                 etat = new EtatNone(this);
             Console.WriteLine("Outil Creation.");
@@ -807,7 +817,7 @@ namespace InterfaceGraphique
         ////////////////////////////////////////////////////////////////////////
         private void OK_prop_bouton_Click(object sender, EventArgs e)
         {
-            removePortail();
+            annulerModif();
             int positionX;
             int positionY;
             int angle;
@@ -862,7 +872,7 @@ namespace InterfaceGraphique
                 FonctionsNatives.setProprietesNoeud(positionX, positionY, angle, echelle);
             }
 
-           
+          
         }
 
         ////////////////////////////////////////////////////////////////////////
@@ -973,7 +983,7 @@ namespace InterfaceGraphique
         ////////////////////////////////////////////////////////////////////////
         private void Annuler_prop_boutn_Click(object sender, EventArgs e)
         {
-            removePortail();
+            annulerModif();
             Xbox.Text = Math.Round(FonctionsNatives.getPositionX()).ToString();
             Ybox.Text = Math.Round(FonctionsNatives.getPositionY()).ToString();
             Anglebox.Text = Math.Round(FonctionsNatives.getAngle()).ToString();
@@ -1072,7 +1082,7 @@ namespace InterfaceGraphique
         {
             Console.WriteLine("Outil Deplacement.");
             // TO DO
-            removePortail();
+            annulerModif();
             etat = null;
             etat = new EtatDeplacement(this);
         }
@@ -1115,7 +1125,7 @@ namespace InterfaceGraphique
         {
             Console.WriteLine("Outil Rotation.");
             // TO DO
-            removePortail();
+            annulerModif();
             etat = null;
             etat = new EtatRotation(this);
         }
@@ -1136,7 +1146,7 @@ namespace InterfaceGraphique
         {
             Console.WriteLine("Outil Mise a echelle.");
             // TO DO
-            removePortail();
+            annulerModif();
             etat = null;
             etat = new EtatScale(this);
         }
@@ -1173,7 +1183,7 @@ namespace InterfaceGraphique
         private void Zoom_MenuItem_Click(object sender, EventArgs e)
         {
             Console.WriteLine("Outil Zoom.");
-            removePortail();
+            annulerModif();
             etat = null;
             etat = new EtatZoom(this);
         
@@ -1195,7 +1205,7 @@ namespace InterfaceGraphique
         {
             Console.WriteLine("Outil Duplication.");
             
-                 removePortail();
+                 annulerModif();
                 etat = null;
                 etat = new EtatDuplication(this);
       
@@ -1829,7 +1839,7 @@ namespace InterfaceGraphique
 
             if (etat is EtatDuplication && e.Button == MouseButtons.Left)
             {
-                if (!FonctionsNatives.sourisEstSurCentreMasse(currentP.X, currentP.Y))
+                if (FonctionsNatives.duplicationEstHorsTable())
                     FonctionsNatives.removeObject();
 
                 deselection();
@@ -2451,8 +2461,15 @@ namespace InterfaceGraphique
 
         }
 
-      
 
+        //////////////////////////////////////////////////////////////////////////////////////////
+        ///
+        /// @fn public void creationMur()
+        /// @brief Fonction qui s'assure de la bonne création des murs.
+        /// 
+        /// @return Aucune.
+        ///
+        //////////////////////////////////////////////////////////////////////////////////////////
 
         public void creationMur()
         {
@@ -2460,7 +2477,16 @@ namespace InterfaceGraphique
          //  Console.WriteLine(FonctionsNatives.getScale());
            previousP = currentP;
            currentP = panel_GL.PointToClient(MousePosition);
-       
+
+        //////////////////////////////////////////////////////////////////////////////////////////
+        ///
+        /// @fn private void IncreaseZoomButton_Click()
+        /// @brief Fonction qui s'assure de la bonne création des murs.
+        /// @param[in] sender : Objet duquel provient un événement.
+        /// @param[in] e : Événement qui lance la fonction.
+        /// @return Aucune.
+        ///
+        //////////////////////////////////////////////////////////////////////////////////////////
         }
         private void IncreaseZoomButton_Click(object sender, EventArgs e)
         {
@@ -2484,9 +2510,9 @@ namespace InterfaceGraphique
        
         }
 
-        public void removePortail()
+        public void annulerModif()
         {
-            if (etat is EtatPortail || etat is EtatMur)
+            if (etat is EtatPortail || etat is EtatMur || etat is EtatDuplication)
             {
                 FonctionsNatives.removeObject();
                 deselection();
@@ -2543,7 +2569,7 @@ namespace InterfaceGraphique
         {
 
             targetForm.WindowState = FormWindowState.Normal;
-            targetForm.FormBorderStyle = FormBorderStyle.None;
+            //targetForm.FormBorderStyle = FormBorderStyle.None;
             targetForm.WindowState = FormWindowState.Maximized;
         }
 
@@ -2727,6 +2753,6 @@ namespace InterfaceGraphique
         public static extern bool resetZoom();
 
         [DllImport(@"Noyau.dll", CallingConvention = CallingConvention.Cdecl)]
-        public static extern bool sourisEstSurCentreMasse(int i, int j);
+        public static extern bool duplicationEstHorsTable();
     }
 }

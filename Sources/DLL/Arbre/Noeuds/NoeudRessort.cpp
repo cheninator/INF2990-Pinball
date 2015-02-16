@@ -70,7 +70,7 @@ void NoeudRessort::afficherConcret() const
 		glTexEnvf(GL_TEXTURE_ENV, GL_TEXTURE_ENV_MODE, GL_BLEND);
 	if (impossible_)
 		glColorMask(0, 1, 1, 1);
-	if (selectionne_) {
+	else if (selectionne_) {
 		glTexEnvf(GL_TEXTURE_ENV, GL_TEXTURE_ENV_MODE, GL_ADD);
 		if (twin_ != nullptr && twin_ != NULL)
 			twin_->setTransparent(true);

@@ -136,8 +136,8 @@ public:
    /// Position du mur
    static void positionnerMur(int originX, int originY, int x1, int y1, int x2, int y2, NoeudAbstrait* noeud);
 
-   //verifie si la souris est sur le centre de masse
-   bool sourisEstSurCentreMasse(int i, int j);
+   //verifie si la selection est hors table lors de la duplication
+   bool duplicationEstHorsTable();
 
 private:
 
@@ -170,6 +170,8 @@ private:
    static const int coinGaucheTableY;
    static const int coinDroitTableX;
    static const int coinDroitTableY;
+
+   bool duplicationHorsTable_;
 };
 
 

@@ -415,14 +415,20 @@ void FacadeModele::deplacerSelection(int x1, int y1 ,int x2, int y2, bool duplic
 		glm::dvec3 pointMaxDelta{ pointMax.x - centreMasse.x, pointMax.y - centreMasse.y, 0 };
 		glm::dvec3 pointMinDelta{ pointMin.x - centreMasse.x, pointMin.y - centreMasse.y, 0 };
 
-		//le deplacement s'applique si la selection reste dans la table alors que son centre de masse
-		//se situe a l'emplacement du curseur de la souris
+		//la selection suit le curseur de la souris en tout temps, mais s'affiche en rouge lorsqu'a 
+		//l'exterieur de la table
+		glm::dvec3 deplacement{positionFinale - centreMasse};
+	    VisiteurDeplacement visDep(deplacement);
+		visDep.setEstDuplication(true);
 		if (estDansTable(positionFinale + pointMaxDelta) && estDansTable(positionFinale + pointMinDelta))
 		{
-			glm::dvec3 deplacement{positionFinale - centreMasse};
-			VisiteurDeplacement visDep(deplacement);
-			arbre_->accepterVisiteur(&visDep);
+			visDep.setEstDansLaTable(true);
+			duplicationHorsTable_ = false;
 		}
+		else
+			duplicationHorsTable_ = true;
+
+		arbre_->accepterVisiteur(&visDep);
 	}
 	//Logique de deplacement lors de l'etat de deplacement
 	else
@@ -713,6 +719,7 @@ void FacadeModele::dupliquerSelection(int i, int j)
 	// Visiter l'arbre et faire la duplication.
 	VisiteurDuplication* visiteur = new VisiteurDuplication();
 	arbre_->accepterVisiteur(visiteur);
+	duplicationHorsTable_ = false;
 	delete visiteur;
 }
 
@@ -825,21 +832,23 @@ void FacadeModele::positionnerMur(int originX, int originY,int x1, int y1, int x
 		// Calcul de la translation
 		// ========================
 		// position = positionOriginale + vecteur / 2.0; // Le centre du mur est à mi-chemin entre origin et le point du curseur. 
-	if (glm::length(vecteur) > 16)
+	if (glm::length(vecteur) > .1)
 		position = positionOriginale + vecteur / 2.0;
 	else if (glm::length(vecteur) != 0)
 		position = positionOriginale + 8.0 *glm::normalize(vecteur); // 
-	else
-		position = positionOriginale + glm::dvec3{ 0, 8, 0 };
+	// else
+		// position = positionOriginale + glm::dvec3{ 0, 8, 0 };
 
 	
-	if (glm::length(vecteur) > 16)
+	if (glm::length(vecteur) > 0.1)
 	{
 		// Calcul du scale
 		// ===============
 		double scale = glm::length(vecteur) / 16; //  16.0 est la longueur originale du mur. 
 		scaleFinal = glm::dvec3{ 1, scale, 1 };
 	}
+	else
+		scaleFinal = glm::dvec3{ 1, 0.1, 1 };
 
 
 	// Tester la transformation
@@ -961,17 +970,15 @@ bool FacadeModele::appliquerZoomInitial()
 	return applique;
 }
 
-bool FacadeModele::sourisEstSurCentreMasse(int i, int j)
+///////////////////////////////////////////////////////////////////////////////
+///
+/// @fn bool FacadeModele::duplicationEstHorsTable()
+///  A COMMENTER
+/// 
+/// @return true si la duplication est hors table
+///
+///////////////////////////////////////////////////////////////////////////////
+bool FacadeModele::duplicationEstHorsTable()
 {
-	glm::dvec3 positionSouris;
-	vue_->convertirClotureAVirtuelle(i, j, positionSouris);
-
-	VisiteurCentreDeMasse visCM;
-	arbre_->accepterVisiteur(&visCM);
-	glm::dvec3 centreMasse = visCM.obtenirCentreDeMasse();
-
-	if (abs(positionSouris.x - centreMasse.x) < 3 && abs(positionSouris.y - centreMasse.y) < 3)
-		return true;
-	else
-		return false;
+	return duplicationHorsTable_;
 }

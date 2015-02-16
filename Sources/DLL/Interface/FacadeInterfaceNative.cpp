@@ -1242,14 +1242,14 @@ extern "C"
 
 	///////////////////////////////////////////////////////////////////////////////
 	///
-	/// @fn __declspec(dllexport) bool sourisEstSurCentreMasse(int i, int j) À COMMENTER
+	/// @fn __declspec(dllexport) bool duplicationEstHorsTable() À COMMENTER
 	///
-	/// @return true si la souris est sur le centre de masse
+	/// @return true si la souris la selection est hors table lors de la duplication
 	///
 	///////////////////////////////////////////////////////////////////////////////
-	__declspec(dllexport) bool sourisEstSurCentreMasse(int i, int j)
+	__declspec(dllexport) bool duplicationEstHorsTable()
 	{
-		return FacadeModele::obtenirInstance()->sourisEstSurCentreMasse(i, j);
+		return FacadeModele::obtenirInstance()->duplicationEstHorsTable();
 	}
 
 

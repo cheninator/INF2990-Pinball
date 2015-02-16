@@ -1,0 +1,36 @@
+# Blender MTL File: 'None'
+# Material Count: 1
+
+
+newmtl Kiss1
+Ns 417.647059
+Ka 0.000000 0.000000 0.000000
+Kd 0.640000 0.640000 0.640000
+Ks 2.000000 2.000000 2.000000
+Ni 1.407409
+d 0.000000
+illum 2
+map_Kd materiaux/texture/cible/mouth.jpg
+map_d materiaux/texture/cible/mouth.jpg
+
+newmtl Kiss2
+Ns 417.647059
+Ka 0.000000 0.000000 0.000000
+Kd 0.640000 0.640000 0.640000
+Ks 2.000000 2.000000 2.000000
+Ni 1.407409
+d 0.000000
+illum 2
+map_Kd materiaux/texture/cible/mouth.jpg
+map_d materiaux/texture/cible/mouth.jpg
+
+newmtl Cloture
+Ns 417.647059
+Ka 0.000000 0.000000 0.000000
+Kd 0.640000 0.640000 0.640000
+Ks 2.000000 2.000000 2.000000
+Ni 1.407409
+d 0.000000
+illum 2
+map_Kd materiaux/texture/cible/handSkin.jpg
+map_d materiaux/texture/cible/handSkin.jpg
