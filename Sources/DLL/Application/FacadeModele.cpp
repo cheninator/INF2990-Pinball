@@ -67,8 +67,8 @@ Samuel Millette <BR>
 
 #include "glm/gtc/type_ptr.hpp"
 
-
 #define M_PI	3.141592653589793238462643383279502884
+
 /// Pointeur vers l'instance unique de la classe.
 FacadeModele* FacadeModele::instance_{ nullptr };
 
@@ -340,44 +340,35 @@ int FacadeModele::selectionnerObjetSousPointClique(int i, int j, int hauteur, in
 {
 	glm::dvec3 pointDansLeMonde;
 	vue_->convertirClotureAVirtuelle(i, j, pointDansLeMonde);
-	// std::cout << "Position du click dans l'ecran : (" << i << ", " << j << ")" << std::endl;
-	// std::cout << "Position du click dans le monde : (" << pointDansLeMonde.x << ", " << pointDansLeMonde.y << ", 0)" << std::endl;
 
 	int valeurStencil = 0;
 	glReadPixels(i ,hauteur -j , 1, 1, GL_STENCIL_INDEX, GL_UNSIGNED_INT, &valeurStencil);
-
-	// std::cout << "Valeur du stencil:" << valeurStencil << std::endl;
-
 	
 	if (!ctrlDown)
 	{
-		// std::cout << "FacadeModele::selectionnerObjetSousPointClique( ) avec ctrlDown = FALSE" << std::endl;
 		VisiteurSelection visSel(pointDansLeMonde, valeurStencil);
 		arbre_->accepterVisiteur(&visSel);
-		// Demander au visiteur ce qu'il a trouvé et faire quelque chose en conséquence
-		// std::cout << "Nombre d'objets selectionnes: " << visSel.obtenirNbObjetsSelectionne() << std::endl;
 
+		// Demander au visiteur ce qu'il a trouvé et faire quelque chose en conséquence
 		return visSel.obtenirNbObjetsSelectionne();
 	}
 	else
 	{
-		// std::cout << "FacadeModele::selectionnerObjetSousPointClique() avec ctrlDown = TRUE" << std::endl;
 		VisiteurSelectionInverse visSelInverse(pointDansLeMonde, valeurStencil);
 		arbre_->accepterVisiteur(&visSelInverse);
-		// Demander au visiteur ce qu'il a trouvé et faire quelque chose en conséquence
-		// std::cout << "Nombre d'objets selectionnes: " << visSelInverse.obtenirNbObjetsSelectionne() << std::endl;
 
+		// Demander au visiteur ce qu'il a trouvé et faire quelque chose en conséquence
 		return visSelInverse.obtenirNbObjetsSelectionne();
 	}
 
 }
+
 
 ///////////////////////////////////////////////////////////////////////////////
 ///
 /// @fn void deplacerSelection(int x1, int y1, int x2, int y2)
 ///		deplace les noeuds selectionnes d'un déplacement calculé en coordonnées du monde
 ///		à partir des points initiaux et terminaux dans les coordonnées d'affichage OpenGL
-///
 ///
 /// @param[in]  x1 : abcisse du point initial
 /// @param[in]  y1 : ordonnee du point initial
@@ -403,33 +394,36 @@ void FacadeModele::deplacerSelection(int x1, int y1 ,int x2, int y2, bool duplic
 	glm::dvec3 pointMax{ VisLimSel.getXMax(), VisLimSel.getYMax(), 0 };
 	glm::dvec3 pointMin{ VisLimSel.getXMin(), VisLimSel.getYMin(), 0 };
 
-	//Logique de deplacement lors de l'etat de duplication
+	// Logique de deplacement lors de l'etat de duplication
 	if (duplication)
 	{
-		//trouver le centre de masse de la selection
+		// Trouver le centre de masse de la selection
 		VisiteurCentreDeMasse visCM;
 		arbre_->accepterVisiteur(&visCM);
 		glm::dvec3 centreMasse = visCM.obtenirCentreDeMasse();
 
-		//calculer le delta des limites de la boite englobant la selection par rapport au centre de masse
+		// Calculer le delta des limites de la boite englobant la selection par rapport au centre de masse
 		glm::dvec3 pointMaxDelta{ pointMax.x - centreMasse.x, pointMax.y - centreMasse.y, 0 };
 		glm::dvec3 pointMinDelta{ pointMin.x - centreMasse.x, pointMin.y - centreMasse.y, 0 };
 
-		//la selection suit le curseur de la souris en tout temps, mais s'affiche en rouge lorsqu'a 
-		//l'exterieur de la table
+		// La selection suit le curseur de la souris en tout temps, mais s'affiche en rouge lorsqu'a 
+		// l'exterieur de la table
 		glm::dvec3 deplacement{positionFinale - centreMasse};
 	    VisiteurDeplacement visDep(deplacement);
 		visDep.setEstDuplication(true);
+
 		if (estDansTable(positionFinale + pointMaxDelta) && estDansTable(positionFinale + pointMinDelta))
 		{
 			visDep.setEstDansLaTable(true);
 			duplicationHorsTable_ = false;
 		}
+
 		else
 			duplicationHorsTable_ = true;
 
 		arbre_->accepterVisiteur(&visDep);
 	}
+
 	//Logique de deplacement lors de l'etat de deplacement
 	else
 	{
@@ -456,7 +450,6 @@ void FacadeModele::deplacerSelection(int x1, int y1 ,int x2, int y2, bool duplic
 ///		Pour tester si la rotation est faisable, on prend tous les points des boîtes
 ///		englobantes.  Si un seul de ces points, une fois transformé, n'est pas dans la 
 ///		table, on ne fait pas la rotation.
-///		
 ///		
 /// @param[in]  x1 : abcisse du point initial
 /// @param[in]  y1 : ordonnee du point initial
@@ -485,6 +478,7 @@ void FacadeModele::tournerSelectionSouris(int x1, int y1, int x2, int y2)
 
 	// On décide si la rotation peut se faire
 	bool onTourne = true;
+
 	// Obtenir une liste des points englobants des noeud sélectionnés
 	VisiteurListeEnglobante visLE;
 	arbre_->accepterVisiteur(&visLE);
@@ -509,6 +503,7 @@ void FacadeModele::tournerSelectionSouris(int x1, int y1, int x2, int y2)
 	}
 
 }
+
 
 ///////////////////////////////////////////////////////////////////////////////
 ///
@@ -539,7 +534,6 @@ void FacadeModele::agrandirSelection(int x1, int y1, int x2, int y2)
 	double distanceConstante = 1.0;
 	double correctionZ = (1 - scale) * distanceConstante;
 
-
 	VisiteurListeEnglobante visLE;
 	arbre_->accepterVisiteur(&visLE);
 
@@ -557,14 +551,21 @@ void FacadeModele::agrandirSelection(int x1, int y1, int x2, int y2)
 
 	VisiteurAgrandissement visAgr(glm::dvec3{ scale, scale, scale });
 	arbre_->accepterVisiteur(&visAgr);
+
 	VisiteurDeplacement visDep(glm::dvec3{ 0, 0, correctionZ });
 	arbre_->accepterVisiteur(&visDep);
 
 }
 
+
 ///////////////////////////////////////////////////////////////////////////////
 ///
 /// @fn void FacadeModele::initialiserRectangleElastique(int i, int j) A COMMENTER KIM
+///	
+///	Initialise un rectangle élastique
+///
+/// @param[in]  i : 
+/// @param[in]  j : 
 ///
 /// @return Aucune.
 ///
@@ -578,9 +579,12 @@ void FacadeModele::initialiserRectangleElastique(int i, int j)
 	aidegl::initialiserRectangleElastique(pointAvant_, 0x3333, 5);
 }
 
+
 ///////////////////////////////////////////////////////////////////////////////
 ///
 /// @fn void FacadeModele::rectangleElastique(int i, int j) A COMMENTER KIM
+///
+///
 ///
 /// @return Aucune.
 ///
@@ -597,6 +601,8 @@ void FacadeModele::rectangleElastique(int i, int j)
 ///////////////////////////////////////////////////////////////////////////////
 ///
 /// @fn void FacadeModele::terminerRectangleElastique() A COMMENTER KIM
+///
+///
 ///
 /// @return Aucune.
 ///
@@ -635,9 +641,12 @@ void FacadeModele::terminerRectangleElastique()
 	}
 }
 
+
 ///////////////////////////////////////////////////////////////////////////////
 ///
 /// @fn void FacadeModele::selectionMultiple(bool c) A COMMENTER KIM
+///
+///
 ///
 /// @return Aucune.
 ///
@@ -659,6 +668,7 @@ int FacadeModele::selectionMultiple(bool c)
 		return visSelMul.obtenirNbObjetsSelectionne();
 	}
 }
+
 
 ///////////////////////////////////////////////////////////////////////////////
 ///
@@ -685,6 +695,7 @@ bool FacadeModele::verifierCliqueDansTable(int x, int y)
 		return false;
 }
 
+
 ///////////////////////////////////////////////////////////////////////////////
 ///
 /// @fn bool FacadeModele::estDansTable(glm::dvec3 pointDuMonde)
@@ -703,7 +714,6 @@ bool FacadeModele::estDansTable(glm::dvec3 pointDuMonde)
 	else
 		return false;
 }
-
 
 
 ///////////////////////////////////////////////////////////////////////////////
@@ -780,6 +790,7 @@ int FacadeModele::creerXML(char* path, int prop[6])
 
 	return sauvegardeAutorise;
 }
+
 
 ///////////////////////////////////////////////////////////////////////////////
 ///
@@ -879,6 +890,7 @@ void FacadeModele::positionnerMur(int originX, int originY,int x1, int y1, int x
 
 }
 
+
 ///////////////////////////////////////////////////////////////////////////////
 ///
 /// @fn bool FacadeModele::supprimer()
@@ -895,6 +907,7 @@ bool FacadeModele::supprimer()
 
 	return true;
 }
+
 
 ///////////////////////////////////////////////////////////////////////////////
 ///
@@ -915,17 +928,19 @@ double FacadeModele::obtenirZoomCourant()
 	return zoom;
 }
 
+
 ///////////////////////////////////////////////////////////////////////////////
 ///
 /// @fn int FacadeModele::obtenirCentreMasseX()
 ///  Obtient le x du centre de masse des objets sélectionnés
 /// 
-/// @return Le x du centre de masse
+/// @return La composante en x du centre de masse
 ///
-/// @remard Perte de précision lors de la convertion du centre de masse (double) en int.
+/// @remark Perte de précision lors de la convertion du centre de masse (double) en int.
 ///
 ///////////////////////////////////////////////////////////////////////////////
-int FacadeModele::obtenirCentreMasseX(){
+int FacadeModele::obtenirCentreMasseX()
+{
 	int centreMasseX = 0;
 	VisiteurCentreDeMasse* visiteur = new VisiteurCentreDeMasse();
 	FacadeModele::obtenirInstance()->obtenirArbreRenduINF2990()->accepterVisiteur(visiteur);
@@ -933,17 +948,19 @@ int FacadeModele::obtenirCentreMasseX(){
 	return centreMasseX;
 }
 
+
 ///////////////////////////////////////////////////////////////////////////////
 ///
 /// @fn int FacadeModele::obtenirCentreMasseY()
 ///  Obtient le y du centre de masse des objets sélectionnés
 /// 
-/// @return Le y du centre de masse
+/// @return La composante en y du centre de masse
 ///
 /// @remard Perte de précision lors de la convertion du centre de masse (double) en int.
 ///
 ///////////////////////////////////////////////////////////////////////////////
-int FacadeModele::obtenirCentreMasseY(){
+int FacadeModele::obtenirCentreMasseY()
+{
 	int centreMasseY = 0;
 	VisiteurCentreDeMasse* visiteur = new VisiteurCentreDeMasse();
 	FacadeModele::obtenirInstance()->obtenirArbreRenduINF2990()->accepterVisiteur(visiteur);
@@ -969,6 +986,7 @@ bool FacadeModele::appliquerZoomInitial()
 	}
 	return applique;
 }
+
 
 ///////////////////////////////////////////////////////////////////////////////
 ///

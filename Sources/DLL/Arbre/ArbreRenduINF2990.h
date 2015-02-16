@@ -44,7 +44,7 @@ public:
    NoeudAbstrait* getEnfant(int position) const;
 
    /// Methode de test
-   glm::dvec3 getPosRessort();
+   glm::dvec3 getPosRessort() const { return posRessort; };
 
    /// Accepter un visiteur
    virtual bool accepterVisiteur(VisiteurAbstrait* vis);

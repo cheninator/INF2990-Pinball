@@ -134,21 +134,6 @@ NoeudAbstrait* ArbreRenduINF2990::getEnfant(int position) const
 
 ////////////////////////////////////////////////////////////////////////
 ///
-/// @fn glm::dvec3 ArbreRenduINF2990::getPosRessort()
-///
-/// Cette fonction retourne la position par défaut du ressort. (Test)
-///
-/// @return Le vecteur de position du ressort.
-///
-////////////////////////////////////////////////////////////////////////
-glm::dvec3 ArbreRenduINF2990::getPosRessort()
-{
-	return posRessort;
-}
-
-
-////////////////////////////////////////////////////////////////////////
-///
 /// @fn bool ArbreRenduINF2990::accepterVisiteur(VisiteurAbstrait* vis)
 ///
 /// Cette fonction appelle la méthode traiter du visiteur
@@ -186,7 +171,7 @@ bool ArbreRenduINF2990::initialiserXML(std::string nomFichier)
 
 	// Si le fichier n'existe pas, envoyer une erreur
 	if (!utilitaire::fichierExiste(nomFichier) && nomFichier != "?.xml")
-		std::cout << "Fichier n'existe pas. ";
+		std::cout << "Le fichier n'existe pas. " << std::endl;
 		
 	else
 	{
@@ -277,12 +262,14 @@ bool ArbreRenduINF2990::lireXML(tinyxml2::XMLDocument& doc)
 					enfant->FindAttribute(angleY)->DoubleValue(),
 					enfant->FindAttribute(angleZ)->DoubleValue() });
 
+				// Pour la couleur des palettes
 				if (noeudConcret->obtenirType() == "paletted" || noeudConcret->obtenirType() == "paletteg")
 					noeudConcret->setColorShift(enfant->FindAttribute("color")->BoolValue());
 
 				// Ajouter l'enfant à la table
 				table->ajouter(noeudConcret);
 
+				// Le cas ou le noeud crée est un portail
 				if (noeudConcret->obtenirType() == "portail")
 				{
 					// Nombre actuel d'enfants de la table
@@ -305,7 +292,7 @@ bool ArbreRenduINF2990::lireXML(tinyxml2::XMLDocument& doc)
 			lecture = true;
 		}
 		
-		// Tenter d'obtenir l'élément table, puis l'attribut nbEnfants
+		// Tenter d'obtenir l'élément couvercle
 		const tinyxml2::XMLElement* elementCouvercle{ elementArbre->LastChildElement("couvercle")};
 
 		if (elementCouvercle != nullptr)
