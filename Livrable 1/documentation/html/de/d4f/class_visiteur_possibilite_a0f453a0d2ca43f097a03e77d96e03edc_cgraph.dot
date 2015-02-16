@@ -1,0 +1,17 @@
+digraph "VisiteurPossibilite::traiter"
+{
+  edge [fontname="Helvetica",fontsize="10",labelfontname="Helvetica",labelfontsize="10"];
+  node [fontname="Helvetica",fontsize="10",shape=record];
+  rankdir="LR";
+  Node1 [label="VisiteurPossibilite\l::traiter",height=0.2,width=0.4,color="black", fillcolor="grey75", style="filled", fontcolor="black"];
+  Node1 -> Node2 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node2 [label="NoeudComposite::obtenirNombre\lEnfants",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$da/d38/class_noeud_composite.html#a87b0010b4dc77c69c6114a70f3de73bd",tooltip="Obtient le nombre d&#39;enfants du noeud. "];
+  Node1 -> Node3 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node3 [label="NoeudTable::getEnfant",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$de/d5c/class_noeud_table.html#a4f384bf689c357a1180d213e158d33de",tooltip="Retourne l&#39;enfant du noeud courant. "];
+  Node3 -> Node4 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node4 [label="NoeudComposite::getEnfant",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$da/d38/class_noeud_composite.html#a605a35777ccd1ac27ce1a7b502518bc6"];
+  Node1 -> Node5 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node5 [label="NoeudAbstrait::accepterVisiteur",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$da/df4/class_noeud_abstrait.html#a6b4a6eb33872fe1d3d73c0c1fa70ccd8",tooltip="Accepter un visiteur. "];
+  Node5 -> Node6 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node6 [label="VisiteurAbstrait::traiter",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$df/d41/class_visiteur_abstrait.html#a71d6f684528356584f9d2c25763411de",tooltip="Traiter une opération sur l&#39;arbre de rendu et ses enfants. "];
+}

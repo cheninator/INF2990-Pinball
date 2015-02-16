@@ -25,18 +25,20 @@ class NoeudBille : public NoeudComposite
 public:
 	/// Constructeur
 	NoeudBille(const std::string& typeNoeud);
+
 	/// Destructeur 
 	~NoeudBille();
 
 	/// Surchage de la méthode qui affiche l'objet.
 	virtual void afficherConcret() const;
+
 	/// Surchage de la méthode qui anime l'objet.
 	virtual void animer(float temps);
+
 	/// Accepte un visiteur.
 	virtual bool accepterVisiteur(VisiteurAbstrait* vis);
 
 private:
-	// TODO(Emilio): Insérer les attributs propres à chaque type d'objet
 
 };
 

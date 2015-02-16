@@ -1,0 +1,15 @@
+digraph "InterfaceGraphique.EtatSelectionMultiple.traiterSouris"
+{
+  edge [fontname="Helvetica",fontsize="10",labelfontname="Helvetica",labelfontsize="10"];
+  node [fontname="Helvetica",fontsize="10",shape=record];
+  rankdir="LR";
+  Node1 [label="InterfaceGraphique.EtatSelection\lMultiple.traiterSouris",height=0.2,width=0.4,color="black", fillcolor="grey75", style="filled", fontcolor="black"];
+  Node1 -> Node2 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node2 [label="InterfaceGraphique.Exemple.terminer\lRectangleElastique",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$d9/d14/class_interface_graphique_1_1_exemple.html#a8a3d95dc23e32bb50f5c4512bb265ddb",tooltip="Effacement d&#39;un rectangle élastique. "];
+  Node1 -> Node3 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node3 [label="InterfaceGraphique.Exemple.selection\lMultiple",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$d9/d14/class_interface_graphique_1_1_exemple.html#a0bd1e065a020ca6df4981933a1e549fb",tooltip="Sélection multiple avec un rectangle élastique. "];
+  Node3 -> Node4 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node4 [label="InterfaceGraphique.Exemple.proprietes\lEnable",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$d9/d14/class_interface_graphique_1_1_exemple.html#a2c2d8dfa87bb7de468b099e6b7c9a6d8",tooltip="Active ou désactive les labels de propriétés spatiales des objets. "];
+  Node3 -> Node5 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node5 [label="InterfaceGraphique.Exemple.outils\lEnable",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$d9/d14/class_interface_graphique_1_1_exemple.html#a9ebdbe7d0732cdacef861c9b5c9691b0",tooltip="Active ou désactive les boutons d&#39;outils de modification de la table. "];
+}

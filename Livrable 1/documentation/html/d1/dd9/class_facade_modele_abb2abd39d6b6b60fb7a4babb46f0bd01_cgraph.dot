@@ -1,0 +1,31 @@
+digraph "FacadeModele::deplacerSelection"
+{
+  edge [fontname="Helvetica",fontsize="10",labelfontname="Helvetica",labelfontsize="10"];
+  node [fontname="Helvetica",fontsize="10",shape=record];
+  rankdir="LR";
+  Node1 [label="FacadeModele::deplacerSelection",height=0.2,width=0.4,color="black", fillcolor="grey75", style="filled", fontcolor="black"];
+  Node1 -> Node2 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node2 [label="FacadeModele::obtenirInstance",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$d1/dd9/class_facade_modele.html#a9d148f8472316f87cdd79baccc000de8",tooltip="Obtient l&#39;instance unique de la classe. "];
+  Node1 -> Node3 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node3 [label="FacadeModele::obtenirVue",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$d1/dd9/class_facade_modele.html#aa56cf96b7e381e0f14e2c9a55be913bf",tooltip="Retourne la vue courante. "];
+  Node1 -> Node4 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node4 [label="ArbreRenduINF2990::\laccepterVisiteur",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$da/dcf/class_arbre_rendu_i_n_f2990.html#adcb8237b02939746df8498d88c004092",tooltip="Accepter un visiteur. "];
+  Node4 -> Node5 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node5 [label="VisiteurAbstrait::traiter",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$df/d41/class_visiteur_abstrait.html#a71d6f684528356584f9d2c25763411de",tooltip="Traiter une opération sur l&#39;arbre de rendu et ses enfants. "];
+  Node1 -> Node6 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node6 [label="VisiteurLimitesSelection\l::getXMax",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$d8/d59/class_visiteur_limites_selection.html#a03efe4da6afa1b944c85a18ddefb13bd"];
+  Node1 -> Node7 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node7 [label="VisiteurLimitesSelection\l::getYMax",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$d8/d59/class_visiteur_limites_selection.html#aa5ec10d68612ff2cfcaf28214b8ca31f"];
+  Node1 -> Node8 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node8 [label="VisiteurLimitesSelection\l::getXMin",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$d8/d59/class_visiteur_limites_selection.html#a959b285ba716763ef606c9e0a12ccf05"];
+  Node1 -> Node9 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node9 [label="VisiteurLimitesSelection\l::getYMin",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$d8/d59/class_visiteur_limites_selection.html#a796f1f65eed92e24474eda6a66a7eaf5"];
+  Node1 -> Node10 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node10 [label="VisiteurCentreDeMasse\l::obtenirCentreDeMasse",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$d7/d06/class_visiteur_centre_de_masse.html#af1f4d7919d07b61e00d8520a0782e9fc"];
+  Node1 -> Node11 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node11 [label="VisiteurDeplacement\l::setEstDuplication",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$dd/d50/class_visiteur_deplacement.html#a8ae527d24130327de466be3ec3757db1"];
+  Node1 -> Node12 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node12 [label="FacadeModele::estDansTable",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$d1/dd9/class_facade_modele.html#a27a9f63705bfec3766cb03ffc3390e74",tooltip="Vérifier si un point cliqué est dans la table. "];
+  Node1 -> Node13 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node13 [label="VisiteurDeplacement\l::setEstDansLaTable",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$dd/d50/class_visiteur_deplacement.html#ad4cf371aebcb5898bc57bfe33ed5567b"];
+}

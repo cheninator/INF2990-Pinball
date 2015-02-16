@@ -1,6 +1,6 @@
 ///////////////////////////////////////////////////////////////////////////
 /// @file NoeudCouvercle.h
-/// @author Yonni Chen
+/// @author Aymen Djellal
 /// @date 2015-01-24
 /// @version 1.0
 ///
@@ -17,7 +17,7 @@
 /// @class NoeudCouvercle
 /// @brief Classe qui représente un couvercle.
 ///
-/// @author Yonni Chen
+/// @author Aymen Djellal
 /// @date 2015-01-24
 /// @ingroup Noeud
 ///////////////////////////////////////////////////////////////////////////
@@ -43,11 +43,13 @@ public:
 	virtual NoeudAbstrait* getEnfant(int i) { return NoeudComposite::getEnfant(i); };
 	 
 private:
-	// TODO(Emilio): Insérer les attributs propres à chaque type d'objet
+
 	/// Angle selon l'axe des X.
 	float angleX_{ 0.f };
+
 	/// Angle selon l'axe des Y.
 	float angleY_{ 0.f };
+
 	/// Angle de rotation.
 	float angleRotation_{ 0.f };
 };

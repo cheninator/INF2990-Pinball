@@ -1,0 +1,11 @@
+digraph "InterfaceGraphique.Exemple.deselection"
+{
+  edge [fontname="Helvetica",fontsize="10",labelfontname="Helvetica",labelfontsize="10"];
+  node [fontname="Helvetica",fontsize="10",shape=record];
+  rankdir="LR";
+  Node1 [label="InterfaceGraphique.Exemple.deselection",height=0.2,width=0.4,color="black", fillcolor="grey75", style="filled", fontcolor="black"];
+  Node1 -> Node2 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node2 [label="InterfaceGraphique.Exemple.proprietes\lEnable",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$d9/d14/class_interface_graphique_1_1_exemple.html#a2c2d8dfa87bb7de468b099e6b7c9a6d8",tooltip="Active ou désactive les labels de propriétés spatiales des objets. "];
+  Node1 -> Node3 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node3 [label="InterfaceGraphique.Exemple.outils\lEnable",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$d9/d14/class_interface_graphique_1_1_exemple.html#a9ebdbe7d0732cdacef861c9b5c9691b0",tooltip="Active ou désactive les boutons d&#39;outils de modification de la table. "];
+}

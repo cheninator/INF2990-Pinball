@@ -1,6 +1,6 @@
 ///////////////////////////////////////////////////////////////////////////
 /// @file NoeudButoirD.h
-/// @author Yonni Chen
+/// @author Emilio Rivera
 /// @date 2015-01-24
 /// @version 1.0
 ///
@@ -15,10 +15,10 @@
 
 ///////////////////////////////////////////////////////////////////////////
 /// @class NoeudButoirD
-/// @brief Classe qui représente un butoir.
+/// @brief Classe qui représente un butoir droit.
 ///
-/// @author Julien Gascon-Samson
-/// @date 2011-05-19
+/// @author Emilio Rivera
+/// @date 2015-01-19
 /// @ingroup Noeud
 ///////////////////////////////////////////////////////////////////////////
 class NoeudButoirD : public NoeudComposite

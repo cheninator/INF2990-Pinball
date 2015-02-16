@@ -15,7 +15,7 @@
 ///////////////////////////////////////////////////////////////////////////
 /// @class UsineNoeudCouvercle
 /// @brief Classe qui représente une usine capable de créer des noeuds de
-///        type Couvercle.
+///        type NoeudCouvercle.
 ///
 /// @author Emilio Rivera
 /// @date 2015-01-24
@@ -26,6 +26,7 @@ class UsineNoeudCouvercle : public UsineNoeud
 public:
 	/// Constructeur
 	inline UsineNoeudCouvercle(const std::string& nom);
+
 	/// Création d'un noeud
 	inline virtual NoeudAbstrait* creerNoeud() const;
 };
@@ -34,7 +35,7 @@ public:
 ///
 /// @fn inline UsineNoeudCouvercle::UsineNoeudCouvercle(const std::string& nom)
 ///
-/// Ce constructeur ne fait qu'appeler la version de la classe et base
+/// Ce constructeur ne fait qu'appeler la version de la classe de base
 /// et donner des valeurs par défaut aux variables membres.
 ///
 /// @param[in] nom   : Le nom de l'usine qui correspond au type de noeuds créés.
@@ -53,7 +54,7 @@ inline UsineNoeudCouvercle::UsineNoeudCouvercle(const std::string& nom)
 /// @fn NoeudAbstrait* UsineNoeudCouvercle::creerNoeud() const
 ///
 /// Cette fonction retourne un noeud nouvellement créé du type produit
-/// par cette usine, soit un couvercle.
+/// par cette usine, soit un NoeudCouvercle.
 ///
 /// @return Le noeud nouvellement créé.
 ///

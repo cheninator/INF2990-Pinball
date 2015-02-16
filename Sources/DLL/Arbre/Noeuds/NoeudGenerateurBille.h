@@ -26,6 +26,7 @@ class NoeudGenerateurBille : public NoeudComposite
 public:
 	/// Constructeur
 	NoeudGenerateurBille(const std::string& typeNoeud);
+
 	// Destructeur 
 	~NoeudGenerateurBille();
 
@@ -39,7 +40,6 @@ public:
 	virtual bool accepterVisiteur(VisiteurAbstrait* vis);
 
 private:
-	// TODO(Emilio): Insérer les attributs propres à chaque type d'objet
 
 };
 

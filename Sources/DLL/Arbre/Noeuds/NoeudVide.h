@@ -1,6 +1,6 @@
 ///////////////////////////////////////////////////////////////////////////
 /// @file NoeudVide.h
-/// @author Yonni Chen
+/// @author Aymen Djellal
 /// @date 2015-01-24
 /// @version 1.0
 ///
@@ -17,7 +17,7 @@
 /// @class NoeudVide
 /// @brief Classe qui représente un noeud vide.
 ///
-/// @author Yonni Chen
+/// @author Aymen Djellal
 /// @date 2015-01-24
 /// @ingroup Noeud
 ///////////////////////////////////////////////////////////////////////////
@@ -26,6 +26,7 @@ class NoeudVide : public NoeudAbstrait
 public:
 	/// Constructeur
 	NoeudVide(const std::string& typeNoeud);
+
 	/// Destructeur 
 	~NoeudVide();
 
@@ -39,11 +40,13 @@ public:
 	virtual bool accepterVisiteur(VisiteurAbstrait* vis);
 
 private:
-	// TODO(Emilio): Insérer les attributs propres à chaque type d'objet
+	
 	/// Angle selon l'axe des X.
 	float angleX_{ 0.f };
+
 	/// Angle selon l'axe des Y.
 	float angleY_{ 0.f };
+
 	/// Angle de rotation.
 	float angleRotation_{ 0.f };
 };

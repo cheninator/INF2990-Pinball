@@ -1,0 +1,7 @@
+digraph "Graphe hiérarchique des classes"
+{
+  edge [fontname="Helvetica",fontsize="10",labelfontname="Helvetica",labelfontsize="10"];
+  node [fontname="Helvetica",fontsize="10",shape=record];
+  rankdir="LR";
+  Node1 [label="InterfaceGraphique.Fonctions\lNatives.Message",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$d2/df6/struct_interface_graphique_1_1_fonctions_natives_1_1_message.html"];
+}
