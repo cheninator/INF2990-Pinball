@@ -1,0 +1,15 @@
+digraph "FacadeModele::selectionnerObjetSousPointClique"
+{
+  edge [fontname="Helvetica",fontsize="10",labelfontname="Helvetica",labelfontsize="10"];
+  node [fontname="Helvetica",fontsize="10",shape=record];
+  rankdir="LR";
+  Node1 [label="FacadeModele::selectionner\lObjetSousPointClique",height=0.2,width=0.4,color="black", fillcolor="grey75", style="filled", fontcolor="black"];
+  Node1 -> Node2 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node2 [label="ArbreRenduINF2990::\laccepterVisiteur",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$da/dcf/class_arbre_rendu_i_n_f2990.html#adcb8237b02939746df8498d88c004092",tooltip="Accepter un visiteur. "];
+  Node2 -> Node3 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node3 [label="VisiteurAbstrait::traiter",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$df/d41/class_visiteur_abstrait.html#a71d6f684528356584f9d2c25763411de",tooltip="Traiter une opération sur l&#39;arbre de rendu et ses enfants. "];
+  Node1 -> Node4 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node4 [label="VisiteurSelection::\lobtenirNbObjetsSelectionne",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$db/d5e/class_visiteur_selection.html#a204e71dc150e2025b5311fcf33ff648c",tooltip="Nombre d&#39;objets sélectionnés disponnible pour les clients. "];
+  Node1 -> Node5 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node5 [label="VisiteurSelectionInverse\l::obtenirNbObjetsSelectionne",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$df/d44/class_visiteur_selection_inverse.html#a89664caff8bf3c83205d4f80860bf54d"];
+}
