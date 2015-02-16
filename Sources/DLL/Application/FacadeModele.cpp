@@ -266,8 +266,8 @@ void FacadeModele::afficher() const
 ///
 /// @fn void FacadeModele::afficherBase() const
 ///
-/// Cette fonction affiche la base du contenu de la scene, c'est-a-dire
-/// qu'elle met en place l'eclairage et affiche les objets.
+/// @remark Cette fonction affiche la base du contenu de la scene, c'est-a-dire
+/// \remark qu'elle met en place l'eclairage et affiche les objets.
 ///
 /// @return Aucun
 ///
@@ -287,7 +287,7 @@ void FacadeModele::afficherBase() const
 ///
 /// @fn void FacadeModele::reinitialiser()
 ///
-/// Cette fonction reinitialise la scene a un etat "vide".
+/// @remark Cette fonction reinitialise la scene a un etat "vide".
 ///
 /// @return Aucune.
 ///
@@ -303,9 +303,9 @@ void FacadeModele::reinitialiser()
 ///
 /// @fn void FacadeModele::animer(float temps)
 ///
-/// Cette fonction effectue les differents calculs d'animations
-/// necessaires pour le mode jeu, tel que les differents calculs de
-/// physique du jeu.
+/// @remark Cette fonction effectue les differents calculs d'animations
+/// \remark necessaires pour le mode jeu, tel que les differents calculs de
+/// \remark physique du jeu.
 ///
 /// @param[in] temps : Intervalle de temps sur lequel effectuer le calcul.
 ///
@@ -326,13 +326,16 @@ void FacadeModele::animer(float temps)
 ///
 /// @fn int FacadeModele::selectionnerObjetSousPointClique(int i, int j, int hauteur, int largeur, bool ctrlDown)
 ///
-/// Cette fonction permet de selectionner un objet. La methode regarde la valeur
-/// du stencil et la donne a un visiteurSelection qui compare cette valeur
-/// aux numeros des noeuds et change les met selectionnes ou pas selon le resultat
-/// de la comparaison et selon qu'on a clique avec CTRL.
+/// @remark Cette fonction permet de selectionner un objet. La methode regarde la valeur
+/// \remark du stencil et la donne a un visiteurSelection qui compare cette valeur
+/// \remark aux numeros des noeuds et change les met selectionnes ou pas selon le resultat
+/// \remark de la comparaison et selon qu'on a clique avec CTRL.
 ///
 /// @param[in] i : Position souris i
 /// @param[in] j : Position souris j
+/// @param[in] hauteur : Hauteur de la fenetre
+/// @param[in] largeur : Largeur de la fenetre
+/// @param[in] ctrlDown : Si le bouton ctrl est appuie
 ///
 /// @return NoeudAbstrait.
 ///
@@ -367,15 +370,17 @@ int FacadeModele::selectionnerObjetSousPointClique(int i, int j, int hauteur, in
 
 ///////////////////////////////////////////////////////////////////////////////
 ///
-/// @fn void deplacerSelection(int x1, int y1, int x2, int y2)
-///		deplace les noeuds selectionnes d'un deplacement calcule en coordonnees du monde
-///		a partir des points initiaux et terminaux dans les coordonnees d'affichage OpenGL
+/// @fn void FacadeModele::deplacerSelection(int x1, int y1, int x2, int y2, bool duplication)
+///		@remark deplace les noeuds selectionnes d'un deplacement calcule en coordonnees du monde
+///		\remark a partir des points initiaux et terminaux dans les coordonnees d'affichage OpenGL
 ///
 /// @param[in]  x1 : abcisse du point initial
 /// @param[in]  y1 : ordonnee du point initial
 ///
 /// @param[in]  x2 : abcisse du point initial
 /// @param[in]  y2 : ordonnee du point initial
+///
+/// @param[in]  duplication : Logique de deplacement lors de l'etat de duplication
 ///
 /// @return Aucune.
 ///
@@ -443,14 +448,14 @@ void FacadeModele::deplacerSelection(int x1, int y1 ,int x2, int y2, bool duplic
 
 ///////////////////////////////////////////////////////////////////////////////
 ///
-/// @fn void tournerSelectionSouris(int x1, int y1, int x2, int y2)
-///		Fait une rotation des objets selectionnes autour de leur centre de masse.
-///		L'angle est calcule en fonction du deplacement de (x1,y1) a (x2,y2):
-///		Presentement, l'angle est proportionnel a (y1 - y2).
-///		
-///		Pour tester si la rotation est faisable, on prend tous les points des boîtes
-///		englobantes.  Si un seul de ces points, une fois transforme, n'est pas dans la 
-///		table, on ne fait pas la rotation.
+/// @fn void FacadeModele::tournerSelectionSouris(int x1, int y1, int x2, int y2)
+///	@remark 	Fait une rotation des objets selectionnes autour de leur centre de masse.
+///	\remark  	L'angle est calcule en fonction du deplacement de (x1,y1) a (x2,y2):
+///	\remark 	Presentement, l'angle est proportionnel a (y1 - y2).
+///	\remark 	
+///	\remark 	Pour tester si la rotation est faisable, on prend tous les points des boîtes
+///	\remark 	englobantes.  Si un seul de ces points, une fois transforme, n'est pas dans la 
+///	\remark 	table, on ne fait pas la rotation.
 ///		
 /// @param[in]  x1 : abcisse du point initial
 /// @param[in]  y1 : ordonnee du point initial
@@ -508,9 +513,9 @@ void FacadeModele::tournerSelectionSouris(int x1, int y1, int x2, int y2)
 
 ///////////////////////////////////////////////////////////////////////////////
 ///
-/// @fn void agrandirSelection(int x1, int y1, int x2, int y2)
-///		Fait un agrandissement des objets selectionnes.
-///		L'agrandissement est calcule en fonction du deplacement de (x1,y1) a (x2,y2)
+/// @fn void FacadeModele::agrandirSelection(int x1, int y1, int x2, int y2)
+///	@remark 	Fait un agrandissement des objets selectionnes.
+///	\remark 	L'agrandissement est calcule en fonction du deplacement de (x1,y1) a (x2,y2)
 ///
 /// @param[in]  x1 : abcisse du point initial
 /// @param[in]  y1 : ordonnee du point initial
@@ -563,7 +568,7 @@ void FacadeModele::agrandirSelection(int x1, int y1, int x2, int y2)
 ///
 /// @fn void FacadeModele::initialiserRectangleElastique(int i, int j) A COMMENTER KIM
 ///	
-///	Initialise un rectangle elastique
+///	@remark Initialise un rectangle elastique
 ///
 /// @param[in]  i : 
 /// @param[in]  j : 
@@ -585,8 +590,6 @@ void FacadeModele::initialiserRectangleElastique(int i, int j)
 ///
 /// @fn void FacadeModele::rectangleElastique(int i, int j) A COMMENTER KIM
 ///
-///
-///
 /// @return Aucune.
 ///
 ///////////////////////////////////////////////////////////////////////////////
@@ -602,8 +605,6 @@ void FacadeModele::rectangleElastique(int i, int j)
 ///////////////////////////////////////////////////////////////////////////////
 ///
 /// @fn void FacadeModele::terminerRectangleElastique() A COMMENTER KIM
-///
-///
 ///
 /// @return Aucune.
 ///
@@ -647,8 +648,6 @@ void FacadeModele::terminerRectangleElastique()
 ///
 /// @fn void FacadeModele::selectionMultiple(bool c) A COMMENTER KIM
 ///
-///
-///
 /// @return Aucune.
 ///
 ///////////////////////////////////////////////////////////////////////////////
@@ -673,9 +672,9 @@ int FacadeModele::selectionMultiple(bool c)
 
 ///////////////////////////////////////////////////////////////////////////////
 ///
-/// @fn bool verifierCliqueDansTable(int x, int y)
-///		Verifie si le point du monde correspondant a (x,y) est dans la table de
-///		façon empirique ou heuristique.
+/// @fn bool FacadeModele::verifierCliqueDansTable(int x, int y)
+///	@remark 	Verifie si le point du monde correspondant a (x,y) est dans la table de
+///	\remark 	facon empirique ou heuristique.
 ///
 /// @param[in]  x : abcisse du point clique
 /// @param[in]  y : ordonnee du point clique
@@ -700,11 +699,12 @@ bool FacadeModele::verifierCliqueDansTable(int x, int y)
 ///////////////////////////////////////////////////////////////////////////////
 ///
 /// @fn bool FacadeModele::estDansTable(glm::dvec3 pointDuMonde)
-///		Verifie si le point du monde est dans la table
 ///
 /// @param[in]  pointDuMonde : Point dont on veut verifier qu'il est dans la table
 ///
 /// @return Aucune.
+///
+/// @remark : Verifie si le point du monde est dans la table.
 ///
 ///////////////////////////////////////////////////////////////////////////////
 bool FacadeModele::estDansTable(glm::dvec3 pointDuMonde)
@@ -719,10 +719,14 @@ bool FacadeModele::estDansTable(glm::dvec3 pointDuMonde)
 
 ///////////////////////////////////////////////////////////////////////////////
 ///
-/// @fn void dupliquerSelection(int i, int j)
-///		Duplique les objets selectionnes
+/// @fn void FacadeModele::dupliquerSelection(int i, int j)
+///
+/// @param[in]  i : Cordonees du centre de duplication en i de la souris
+/// @param[in]  j : Cordonees du centre de duplication en j de la souris
 ///
 /// @return Aucune.
+///
+/// @remark : Duplique les objets selectionnes.
 ///
 ///////////////////////////////////////////////////////////////////////////////
 void FacadeModele::dupliquerSelection(int i, int j)
@@ -737,8 +741,8 @@ void FacadeModele::dupliquerSelection(int i, int j)
 
 ///////////////////////////////////////////////////////////////////////////////
 ///
-/// @fn void creerXML(char* path, int prop[6])
-///		Enregistre une zone de jeu en fichier XML
+/// @fn void FacadeModele::creerXML(char* path, int prop[6])
+///	@remark	Enregistre une zone de jeu en fichier XML
 ///
 /// @return Aucune.
 ///
@@ -796,18 +800,20 @@ int FacadeModele::creerXML(char* path, int prop[6])
 ///////////////////////////////////////////////////////////////////////////////
 ///
 /// @fn void FacadeModele::positionnerMur(int originX, int originY,int x1, int y1, int x2, int y2, NoeudAbstrait* noeud)
-///		Positionne un mur pour qu'il soit une ligne entre où on a appuye le bouton de gauche de la 
-///		souris et la position actuelle de la souris.
-///		La methode verifie aussi la boite englobante du mur pour ne pas qu'il depasse de la table.
 ///	
-/// @param[in]  originX : Position en X où le bouton a ete appuye
-/// @param[in]  originX : Position en Y où le bouton a ete appuye
+/// @param[in]  originX : Position en X ou le bouton a ete appuye
+/// @param[in]  originY : Position en Y ou le bouton a ete appuye
 /// @param[in]  x1 : Position en X precedant un deplacement de la souris
-/// @param[in]  Y1 : Position en Y precedant un deplacement de la souris
+/// @param[in]  y1 : Position en Y precedant un deplacement de la souris
 /// @param[in]  x2 : Position en X apres un deplacement de la souris (position actuelle de la souris)
 /// @param[in]  y2 : Position en X apres un deplacement de la souris (position actuelle de la souris)
+/// @param[in]  noeud : Noeud sur le quel appliquer les transformations
 ///
 /// @return Aucune.
+///
+///	@remark	Positionne un mur pour qu'il soit une ligne entre ou on a appuye le bouton de gauche de la 
+///	\remark	souris et la position actuelle de la souris.
+///	\remark	La methode verifie aussi la boite englobante du mur pour ne pas qu'il depasse de la table.
 ///
 ///////////////////////////////////////////////////////////////////////////////
 void FacadeModele::positionnerMur(int originX, int originY,int x1, int y1, int x2, int y2, NoeudAbstrait* noeud)
@@ -912,10 +918,12 @@ bool FacadeModele::supprimer()
 
 ///////////////////////////////////////////////////////////////////////////////
 ///
-/// @fn double obtenirZoomCourant();
-/// Obtient la valeur deu zoom applique ; la comparaison est faite entre les dimensions de la cloture et celles de la fenetre courante
+/// @fn double FacadeModele::obtenirZoomCourant();
+/// Obtient la valeur deu zoom applique
 ///
 /// @return La valeur du zoom courant
+///
+/// @remark : la comparaison est faite entre les dimensions de la cloture et celles de la fenetre courante
 ///
 ///////////////////////////////////////////////////////////////////////////////
 double FacadeModele::obtenirZoomCourant()
@@ -957,7 +965,7 @@ int FacadeModele::obtenirCentreMasseX()
 /// 
 /// @return La composante en y du centre de masse
 ///
-/// @remard Perte de precision lors de la convertion du centre de masse (double) en int.
+/// @remark Perte de precision lors de la convertion du centre de masse (double) en int.
 ///
 ///////////////////////////////////////////////////////////////////////////////
 int FacadeModele::obtenirCentreMasseY()
@@ -972,7 +980,6 @@ int FacadeModele::obtenirCentreMasseY()
 ///////////////////////////////////////////////////////////////////////////////
 ///
 /// @fn bool FacadeModele::appliquerZoomInitial()
-///  A COMMENTER
 /// 
 /// @return Le y du centre de masse
 ///
@@ -992,7 +999,6 @@ bool FacadeModele::appliquerZoomInitial()
 ///////////////////////////////////////////////////////////////////////////////
 ///
 /// @fn bool FacadeModele::duplicationEstHorsTable()
-///  A COMMENTER
 /// 
 /// @return true si la duplication est hors table
 ///

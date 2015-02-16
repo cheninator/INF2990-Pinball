@@ -30,7 +30,7 @@ VisiteurDeplacement::VisiteurDeplacement()
 ///
 /// Constructeur qui initialise les variables membres de la classe.
 ///
-/// @param[in] dev : Le vecteur de deplacement
+/// @param[in] dep : Le vecteur de deplacement
 ///
 /// @return Aucune (constructeur).
 ///
@@ -91,7 +91,7 @@ bool VisiteurDeplacement::traiter(ArbreRenduINF2990* arbre)
 /// Cette fonction retourne true pour dire que l'operation s'est
 /// fait correctement.
 ///
-/// @param[in] arbre : L'arbre de rendu a traiter.
+/// @param[in] table : L'arbre de rendu a traiter.
 ///
 /// @return Retourne toujours true.
 ///

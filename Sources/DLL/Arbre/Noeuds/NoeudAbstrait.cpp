@@ -491,8 +491,6 @@ bool NoeudAbstrait::accepterVisiteur(VisiteurAbstrait* vis)
 ///
 /// Retourne le noeud jumueau
 ///
-/// @param[in] Aucun.
-///
 /// @return NoeudAbstrait jumeau.
 ///
 ////////////////////////////////////////////////////////////////////////
@@ -508,7 +506,7 @@ NoeudAbstrait* NoeudAbstrait::getTwin()
 ///
 /// Cette fonction permet de definir un noeud jumeau
 ///
-/// @param[in] dt : Prend un noeud abstrait.
+/// @param[in] twin : Prend un noeud abstrait.
 ///
 /// @return Aucune
 ///
@@ -583,8 +581,6 @@ void NoeudAbstrait::obtenirBoiteModele(glm::dvec3 &v1, glm::dvec3 &v2, glm::dvec
 ///
 /// Retourne si la couleur est modifier ou non
 ///
-/// @param[in] Aucun.
-///
 /// @return Bool.
 ///
 ////////////////////////////////////////////////////////////////////////
@@ -613,13 +609,11 @@ void NoeudAbstrait::setColorShift(bool colorShift)
 
 ////////////////////////////////////////////////////////////////////////
 ///
-/// @fn NoeudAbstrait* NoeudAbstrait::getColorShift()
+/// @fn NoeudAbstrait* NoeudAbstrait::getTransparent()
 ///
 /// Retourne si l'objet est transparent ou non
 ///
-/// @param[in] Aucun.
-///
-/// @return Bool.
+/// @return Bool de transparence.
 ///
 ////////////////////////////////////////////////////////////////////////
 bool NoeudAbstrait::getTransparent()
@@ -652,9 +646,7 @@ void NoeudAbstrait::setTransparent(bool transparent)
 ///
 /// Retourne si l'objet rouge (impossible de poser) ou non
 ///
-/// @param[in] Aucun.
-///
-/// @return Bool.
+/// @return Bool impossible a mettre.
 ///
 ////////////////////////////////////////////////////////////////////////
 bool NoeudAbstrait::getImpossible()

@@ -4,7 +4,7 @@
 <meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
 <meta http-equiv="X-UA-Compatible" content="IE=9"/>
 <meta name="generator" content="Doxygen 1.8.9.1"/>
-<title>Pain Ball:  Fichier source de DLL/Visiteurs/VisiteurPossibilite.h</title>
+<title>Pain Ball:  Fichier source de Sources/DLL/Visiteurs/VisiteurPossibilite.h</title>
 <link href="../../tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="../../jquery.js"></script>
 <script type="text/javascript" src="../../dynsections.js"></script>
@@ -115,46 +115,41 @@ $(document).ready(function(){initNavTree('d9/d3f/_visiteur_possibilite_8h_source
 <div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160;<span class="preprocessor">#define __VISITEURS_VISITEURPOSSSIBILITE_H__</span></div>
 <div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;</div>
 <div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="../../d4/d75/_noeud_abstrait_8h.html">NoeudAbstrait.h</a>&quot;</span></div>
-<div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="../../db/dc6/_noeud_composite_8h.html">NoeudComposite.h</a>&quot;</span></div>
-<div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="../../dc/d03/_visiteur_abstrait_8h.html">VisiteurAbstrait.h</a>&quot;</span></div>
-<div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;<span class="preprocessor">#include &quot;glm\glm.hpp&quot;</span></div>
-<div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;</div>
-<div class="line"><a name="l00025"></a><span class="lineno"><a class="line" href="../../de/d4f/class_visiteur_possibilite.html">   25</a></span>&#160;<span class="keyword">class </span><a class="code" href="../../de/d4f/class_visiteur_possibilite.html">VisiteurPossibilite</a> : <span class="keyword">public</span> <a class="code" href="../../df/d41/class_visiteur_abstrait.html">VisiteurAbstrait</a></div>
-<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;{</div>
-<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;<span class="keyword">public</span>:</div>
-<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;</div>
-<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;    <a class="code" href="../../de/d4f/class_visiteur_possibilite.html#a86e9f5d0a2383160a948994b11b0298c">VisiteurPossibilite</a>();</div>
-<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;</div>
-<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;    <a class="code" href="../../de/d4f/class_visiteur_possibilite.html#ae8706b3be522f65b716e4c84d95adc28">~VisiteurPossibilite</a>();</div>
-<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;</div>
-<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;    <span class="keyword">virtual</span> <span class="keywordtype">bool</span> <a class="code" href="../../de/d4f/class_visiteur_possibilite.html#aefee83b9170b3d1781c6925c3fb99912">traiter</a>(<a class="code" href="../../da/dcf/class_arbre_rendu_i_n_f2990.html">ArbreRenduINF2990</a>* arbre);</div>
-<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;    <span class="keyword">virtual</span> <span class="keywordtype">bool</span> <a class="code" href="../../de/d4f/class_visiteur_possibilite.html#aefee83b9170b3d1781c6925c3fb99912">traiter</a>(<a class="code" href="../../da/df4/class_noeud_abstrait.html">NoeudAbstrait</a>* noeud);</div>
-<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;    <span class="keyword">virtual</span> <span class="keywordtype">bool</span> <a class="code" href="../../de/d4f/class_visiteur_possibilite.html#aefee83b9170b3d1781c6925c3fb99912">traiter</a>(<a class="code" href="../../de/d5c/class_noeud_table.html">NoeudTable</a>* table);</div>
-<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;</div>
-<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;</div>
-<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;<span class="keyword">private</span>:</div>
-<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;</div>
-<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;};</div>
-<div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;</div>
-<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;<span class="preprocessor">#endif //__VISITEURS_VISITEURDESELECTIONNERTOUT_H__</span></div>
-<div class="ttc" id="class_visiteur_possibilite_html_aefee83b9170b3d1781c6925c3fb99912"><div class="ttname"><a href="../../de/d4f/class_visiteur_possibilite.html#aefee83b9170b3d1781c6925c3fb99912">VisiteurPossibilite::traiter</a></div><div class="ttdeci">virtual bool traiter(ArbreRenduINF2990 *arbre)</div><div class="ttdoc">Traiter une opération sur l&#39;arbre de rendu et ses enfants. </div><div class="ttdef"><b>Definition:</b> <a href="../../d0/dbb/_visiteur_possibilite_8cpp_source.html#l00055">VisiteurPossibilite.cpp:55</a></div></div>
-<div class="ttc" id="_noeud_composite_8h_html"><div class="ttname"><a href="../../db/dc6/_noeud_composite_8h.html">NoeudComposite.h</a></div></div>
+<div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="../../dc/d03/_visiteur_abstrait_8h.html">VisiteurAbstrait.h</a>&quot;</span></div>
+<div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;<span class="preprocessor">#include &quot;glm\glm.hpp&quot;</span></div>
+<div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;</div>
+<div class="line"><a name="l00024"></a><span class="lineno"><a class="line" href="../../de/d4f/class_visiteur_possibilite.html">   24</a></span>&#160;<span class="keyword">class </span><a class="code" href="../../de/d4f/class_visiteur_possibilite.html">VisiteurPossibilite</a> : <span class="keyword">public</span> <a class="code" href="../../df/d41/class_visiteur_abstrait.html">VisiteurAbstrait</a></div>
+<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;{</div>
+<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;<span class="keyword">public</span>:</div>
+<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;</div>
+<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;    <a class="code" href="../../de/d4f/class_visiteur_possibilite.html#a86e9f5d0a2383160a948994b11b0298c">VisiteurPossibilite</a>();</div>
+<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;</div>
+<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;    <a class="code" href="../../de/d4f/class_visiteur_possibilite.html#ae8706b3be522f65b716e4c84d95adc28">~VisiteurPossibilite</a>();</div>
+<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;</div>
+<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;    <span class="keyword">virtual</span> <span class="keywordtype">bool</span> <a class="code" href="../../de/d4f/class_visiteur_possibilite.html#aefee83b9170b3d1781c6925c3fb99912">traiter</a>(<a class="code" href="../../da/dcf/class_arbre_rendu_i_n_f2990.html">ArbreRenduINF2990</a>* arbre);</div>
+<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;    <span class="keyword">virtual</span> <span class="keywordtype">bool</span> <a class="code" href="../../de/d4f/class_visiteur_possibilite.html#aefee83b9170b3d1781c6925c3fb99912">traiter</a>(<a class="code" href="../../da/df4/class_noeud_abstrait.html">NoeudAbstrait</a>* noeud);</div>
+<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;    <span class="keyword">virtual</span> <span class="keywordtype">bool</span> <a class="code" href="../../de/d4f/class_visiteur_possibilite.html#aefee83b9170b3d1781c6925c3fb99912">traiter</a>(<a class="code" href="../../de/d5c/class_noeud_table.html">NoeudTable</a>* table);</div>
+<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;</div>
+<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;};</div>
+<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;</div>
+<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;<span class="preprocessor">#endif //__VISITEURS_VISITEURDESELECTIONNERTOUT_H__</span></div>
+<div class="ttc" id="class_visiteur_possibilite_html_aefee83b9170b3d1781c6925c3fb99912"><div class="ttname"><a href="../../de/d4f/class_visiteur_possibilite.html#aefee83b9170b3d1781c6925c3fb99912">VisiteurPossibilite::traiter</a></div><div class="ttdeci">virtual bool traiter(ArbreRenduINF2990 *arbre)</div><div class="ttdoc">Traiter une operation sur l&#39;arbre de rendu et ses enfants. </div><div class="ttdef"><b>Definition:</b> <a href="../../d0/dbb/_visiteur_possibilite_8cpp_source.html#l00055">VisiteurPossibilite.cpp:55</a></div></div>
 <div class="ttc" id="class_visiteur_abstrait_html"><div class="ttname"><a href="../../df/d41/class_visiteur_abstrait.html">VisiteurAbstrait</a></div><div class="ttdoc">Interface du patron Visiteur. </div><div class="ttdef"><b>Definition:</b> <a href="../../dc/d03/_visiteur_abstrait_8h_source.html#l00035">VisiteurAbstrait.h:35</a></div></div>
 <div class="ttc" id="_visiteur_abstrait_8h_html"><div class="ttname"><a href="../../dc/d03/_visiteur_abstrait_8h.html">VisiteurAbstrait.h</a></div></div>
-<div class="ttc" id="class_noeud_table_html"><div class="ttname"><a href="../../de/d5c/class_noeud_table.html">NoeudTable</a></div><div class="ttdoc">Classe qui représente une table. </div><div class="ttdef"><b>Definition:</b> <a href="../../d8/d26/_noeud_table_8h_source.html#l00024">NoeudTable.h:24</a></div></div>
+<div class="ttc" id="class_noeud_table_html"><div class="ttname"><a href="../../de/d5c/class_noeud_table.html">NoeudTable</a></div><div class="ttdoc">Classe qui represente une table. </div><div class="ttdef"><b>Definition:</b> <a href="../../d8/d26/_noeud_table_8h_source.html#l00024">NoeudTable.h:24</a></div></div>
 <div class="ttc" id="_noeud_abstrait_8h_html"><div class="ttname"><a href="../../d4/d75/_noeud_abstrait_8h.html">NoeudAbstrait.h</a></div></div>
 <div class="ttc" id="class_visiteur_possibilite_html_ae8706b3be522f65b716e4c84d95adc28"><div class="ttname"><a href="../../de/d4f/class_visiteur_possibilite.html#ae8706b3be522f65b716e4c84d95adc28">VisiteurPossibilite::~VisiteurPossibilite</a></div><div class="ttdeci">~VisiteurPossibilite()</div><div class="ttdoc">Destructeur. </div><div class="ttdef"><b>Definition:</b> <a href="../../d0/dbb/_visiteur_possibilite_8cpp_source.html#l00036">VisiteurPossibilite.cpp:36</a></div></div>
-<div class="ttc" id="class_visiteur_possibilite_html"><div class="ttname"><a href="../../de/d4f/class_visiteur_possibilite.html">VisiteurPossibilite</a></div><div class="ttdef"><b>Definition:</b> <a href="../../d9/d3f/_visiteur_possibilite_8h_source.html#l00025">VisiteurPossibilite.h:25</a></div></div>
-<div class="ttc" id="class_arbre_rendu_i_n_f2990_html"><div class="ttname"><a href="../../da/dcf/class_arbre_rendu_i_n_f2990.html">ArbreRenduINF2990</a></div><div class="ttdoc">Classe qui représente l&#39;arbre de rendu spécifique au projet de INF2990. </div><div class="ttdef"><b>Definition:</b> <a href="../../de/d77/_arbre_rendu_i_n_f2990_8h_source.html#l00032">ArbreRenduINF2990.h:32</a></div></div>
-<div class="ttc" id="class_visiteur_possibilite_html_a86e9f5d0a2383160a948994b11b0298c"><div class="ttname"><a href="../../de/d4f/class_visiteur_possibilite.html#a86e9f5d0a2383160a948994b11b0298c">VisiteurPossibilite::VisiteurPossibilite</a></div><div class="ttdeci">VisiteurPossibilite()</div><div class="ttdoc">Constructeur par défaut : aucun déplacement. </div><div class="ttdef"><b>Definition:</b> <a href="../../d0/dbb/_visiteur_possibilite_8cpp_source.html#l00022">VisiteurPossibilite.cpp:22</a></div></div>
-<div class="ttc" id="class_noeud_abstrait_html"><div class="ttname"><a href="../../da/df4/class_noeud_abstrait.html">NoeudAbstrait</a></div><div class="ttdoc">Classe de base du patron composite utilisée pour créer l&#39;arbre de rendu. </div><div class="ttdef"><b>Definition:</b> <a href="../../d4/d75/_noeud_abstrait_8h_source.html#l00048">NoeudAbstrait.h:48</a></div></div>
+<div class="ttc" id="class_visiteur_possibilite_html"><div class="ttname"><a href="../../de/d4f/class_visiteur_possibilite.html">VisiteurPossibilite</a></div><div class="ttdoc">Classe qui assigne une possibilite a un noeud de l&#39;arbre. </div><div class="ttdef"><b>Definition:</b> <a href="../../d9/d3f/_visiteur_possibilite_8h_source.html#l00024">VisiteurPossibilite.h:24</a></div></div>
+<div class="ttc" id="class_arbre_rendu_i_n_f2990_html"><div class="ttname"><a href="../../da/dcf/class_arbre_rendu_i_n_f2990.html">ArbreRenduINF2990</a></div><div class="ttdoc">Classe qui represente l&#39;arbre de rendu specifique au projet de INF2990. </div><div class="ttdef"><b>Definition:</b> <a href="../../de/d77/_arbre_rendu_i_n_f2990_8h_source.html#l00032">ArbreRenduINF2990.h:32</a></div></div>
+<div class="ttc" id="class_visiteur_possibilite_html_a86e9f5d0a2383160a948994b11b0298c"><div class="ttname"><a href="../../de/d4f/class_visiteur_possibilite.html#a86e9f5d0a2383160a948994b11b0298c">VisiteurPossibilite::VisiteurPossibilite</a></div><div class="ttdeci">VisiteurPossibilite()</div><div class="ttdoc">Constructeur par defaut. </div><div class="ttdef"><b>Definition:</b> <a href="../../d0/dbb/_visiteur_possibilite_8cpp_source.html#l00022">VisiteurPossibilite.cpp:22</a></div></div>
+<div class="ttc" id="class_noeud_abstrait_html"><div class="ttname"><a href="../../da/df4/class_noeud_abstrait.html">NoeudAbstrait</a></div><div class="ttdoc">Classe de base du patron composite utilisee pour creer l&#39;arbre de rendu. </div><div class="ttdef"><b>Definition:</b> <a href="../../d4/d75/_noeud_abstrait_8h_source.html#l00048">NoeudAbstrait.h:48</a></div></div>
 </div><!-- fragment --></div><!-- contents -->
 </div><!-- doc-content -->
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
-    <li class="navelem"><a class="el" href="../../dir_8f231bbbd90d174e51ca0653d136090e.html">DLL</a></li><li class="navelem"><a class="el" href="../../dir_36dc7c40dbbfd954e66bdd1b2e3aefdb.html">Visiteurs</a></li><li class="navelem"><a class="el" href="../../d9/d3f/_visiteur_possibilite_8h.html">VisiteurPossibilite.h</a></li>
-    <li class="footer">GÃ©nÃ©rÃ© le Dimanche 15 FÃ©vrier 2015 22:35:31 pour Pain Ball par
+    <li class="navelem"><a class="el" href="../../dir_937900b87e0c7a5fa01190c395fb83f7.html">Sources</a></li><li class="navelem"><a class="el" href="../../dir_5638be7ced97c879b21b23536e800e77.html">DLL</a></li><li class="navelem"><a class="el" href="../../dir_7d87219ddab679acc20c941422b2a09d.html">Visiteurs</a></li><li class="navelem"><a class="el" href="../../d9/d3f/_visiteur_possibilite_8h.html">VisiteurPossibilite.h</a></li>
+    <li class="footer">GÃ©nÃ©rÃ© le Lundi 16 FÃ©vrier 2015 07:10:21 pour Pain Ball par
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="../../doxygen.png" alt="doxygen"/></a> 1.8.9.1 </li>
   </ul>

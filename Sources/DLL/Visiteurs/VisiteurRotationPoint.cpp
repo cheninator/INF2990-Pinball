@@ -32,7 +32,7 @@ VisiteurRotationPoint::VisiteurRotationPoint()
 ///
 /// Constructeur qui initialise les variables membres de la classe.
 ///
-/// @param[in] dev : Le vecteur des rotations.
+/// @param[in] angles : Le vecteur des rotations.
 ///
 /// @param[in] centreRotation : Point autour duquel tournent les objetss
 ///
@@ -40,8 +40,8 @@ VisiteurRotationPoint::VisiteurRotationPoint()
 ///
 ////////////////////////////////////////////////////////////////////////
 VisiteurRotationPoint::VisiteurRotationPoint(glm::dvec3 angles, glm::dvec3 centreRotation)
-:centreRotation_{ centreRotation }
 {
+	centreRotation_ = centreRotation;
 	angles_ = angles;
 }
 

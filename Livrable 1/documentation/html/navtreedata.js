@@ -1,7 +1,7 @@
 var NAVTREE =
 [
   [ "Pain Ball", "index.html", [
-    [ "Projet intégrateur de deuxième année -- INF2990", "index.html", null ],
+    [ "Projet integrateur de deuxieme annee -- INF2990", "index.html", null ],
     [ "Modules", "modules.html", "modules" ],
     [ "Espaces de nommage", null, [
       [ "Liste des espaces de nommage", "namespaces.html", "namespaces" ]
@@ -34,8 +34,8 @@ var NAVTREEINDEX =
 [
 "annotated.html",
 "d6/de7/class_noeud_palette_d.html",
-"da/d02/class_usine_noeud.html#a47c1970af3739268f5e4a35cb451d528",
-"dc/dcd/class_usine_noeud_butoir_d.html#af40eca2fac6bb94af595189231e62e00"
+"da/d02/class_usine_noeud.html#a78cfb214df5805c43d4ca4b71411d060",
+"dc/dd7/_noeud_portail_8cpp.html"
 ];
 
 var SYNCONMSG = 'cliquez pour dÃ©sactiver la synchronisation du panel';

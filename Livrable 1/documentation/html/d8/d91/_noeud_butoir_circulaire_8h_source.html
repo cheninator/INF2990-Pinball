@@ -4,7 +4,7 @@
 <meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
 <meta http-equiv="X-UA-Compatible" content="IE=9"/>
 <meta name="generator" content="Doxygen 1.8.9.1"/>
-<title>Pain Ball:  Fichier source de DLL/Arbre/Noeuds/NoeudButoirCirculaire.h</title>
+<title>Pain Ball:  Fichier source de Sources/DLL/Arbre/Noeuds/NoeudButoirCirculaire.h</title>
 <link href="../../tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="../../jquery.js"></script>
 <script type="text/javascript" src="../../dynsections.js"></script>
@@ -122,38 +122,41 @@ $(document).ready(function(){initNavTree('d8/d91/_noeud_butoir_circulaire_8h_sou
 <div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;{</div>
 <div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;<span class="keyword">public</span>:</div>
 <div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;    <a class="code" href="../../d2/d34/class_noeud_butoir_circulaire.html#a0106ccf966895d27413faca38ee08009">NoeudButoirCirculaire</a>(<span class="keyword">const</span> std::string&amp; typeNoeud);</div>
-<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;    <a class="code" href="../../d2/d34/class_noeud_butoir_circulaire.html#a50a642800497407da4239396b626c84b">~NoeudButoirCirculaire</a>();</div>
-<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;</div>
-<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;    <span class="keyword">virtual</span> <span class="keywordtype">void</span> <a class="code" href="../../d2/d34/class_noeud_butoir_circulaire.html#a0ce0fab3ebb65c14275533b75934473b">afficherConcret</a>() <span class="keyword">const</span>;</div>
-<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;</div>
-<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;    <span class="keyword">virtual</span> <span class="keywordtype">void</span> <a class="code" href="../../d2/d34/class_noeud_butoir_circulaire.html#a74ce994f5ab1066cb4d5f2cda4dbd8a7">animer</a>(<span class="keywordtype">float</span> temps);</div>
-<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;</div>
-<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;    <span class="keyword">virtual</span> <span class="keywordtype">bool</span> <a class="code" href="../../d2/d34/class_noeud_butoir_circulaire.html#a352bc22a9bdbd3fd4ba24048a52e2f5b">accepterVisiteur</a>(<a class="code" href="../../df/d41/class_visiteur_abstrait.html">VisiteurAbstrait</a>* vis);</div>
-<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;</div>
-<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;<span class="keyword">private</span>:</div>
-<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;    <span class="comment">// TODO(Emilio): Insérer les attributs propres à chaque type d&#39;objet</span></div>
-<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;<span class="comment"></span>    <span class="keywordtype">float</span> angleX_{ 0.f };</div>
-<div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;    <span class="keywordtype">float</span> angleY_{ 0.f };</div>
-<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;    <span class="keywordtype">float</span> angleRotation_{ 0.f };</div>
-<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;};</div>
-<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;</div>
-<div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;<span class="preprocessor">#endif // __ARBRES_NOEUDS_NOEUDBUTOIRCIRCULAIRE_H__</span></div>
-<div class="ttc" id="class_noeud_composite_html"><div class="ttname"><a href="../../da/d38/class_noeud_composite.html">NoeudComposite</a></div><div class="ttdoc">Implantation d&#39;un noeud du patron composite qui peut posséder des enfants. </div><div class="ttdef"><b>Definition:</b> <a href="../../db/dc6/_noeud_composite_8h_source.html#l00030">NoeudComposite.h:30</a></div></div>
+<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;</div>
+<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;    <a class="code" href="../../d2/d34/class_noeud_butoir_circulaire.html#a50a642800497407da4239396b626c84b">~NoeudButoirCirculaire</a>();</div>
+<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;</div>
+<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;    <span class="keyword">virtual</span> <span class="keywordtype">void</span> <a class="code" href="../../d2/d34/class_noeud_butoir_circulaire.html#a0ce0fab3ebb65c14275533b75934473b">afficherConcret</a>() <span class="keyword">const</span>;</div>
+<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;</div>
+<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;    <span class="keyword">virtual</span> <span class="keywordtype">void</span> <a class="code" href="../../d2/d34/class_noeud_butoir_circulaire.html#a74ce994f5ab1066cb4d5f2cda4dbd8a7">animer</a>(<span class="keywordtype">float</span> temps);</div>
+<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;</div>
+<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;    <span class="keyword">virtual</span> <span class="keywordtype">bool</span> <a class="code" href="../../d2/d34/class_noeud_butoir_circulaire.html#a352bc22a9bdbd3fd4ba24048a52e2f5b">accepterVisiteur</a>(<a class="code" href="../../df/d41/class_visiteur_abstrait.html">VisiteurAbstrait</a>* vis);</div>
+<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;</div>
+<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;<span class="keyword">private</span>:</div>
+<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;    </div>
+<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;    <span class="keywordtype">float</span> angleX_{ 0.f };</div>
+<div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;</div>
+<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;    <span class="keywordtype">float</span> angleY_{ 0.f };</div>
+<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;</div>
+<div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;    <span class="keywordtype">float</span> angleRotation_{ 0.f };</div>
+<div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;};</div>
+<div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;</div>
+<div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;<span class="preprocessor">#endif // __ARBRES_NOEUDS_NOEUDBUTOIRCIRCULAIRE_H__</span></div>
+<div class="ttc" id="class_noeud_composite_html"><div class="ttname"><a href="../../da/d38/class_noeud_composite.html">NoeudComposite</a></div><div class="ttdoc">Implantation d&#39;un noeud du patron composite qui peut posseder des enfants. </div><div class="ttdef"><b>Definition:</b> <a href="../../db/dc6/_noeud_composite_8h_source.html#l00030">NoeudComposite.h:30</a></div></div>
 <div class="ttc" id="class_noeud_butoir_circulaire_html_a0106ccf966895d27413faca38ee08009"><div class="ttname"><a href="../../d2/d34/class_noeud_butoir_circulaire.html#a0106ccf966895d27413faca38ee08009">NoeudButoirCirculaire::NoeudButoirCirculaire</a></div><div class="ttdeci">NoeudButoirCirculaire(const std::string &amp;typeNoeud)</div><div class="ttdoc">Constructeur. </div><div class="ttdef"><b>Definition:</b> <a href="../../d2/d74/_noeud_butoir_circulaire_8cpp_source.html#l00033">NoeudButoirCirculaire.cpp:33</a></div></div>
 <div class="ttc" id="_noeud_composite_8h_html"><div class="ttname"><a href="../../db/dc6/_noeud_composite_8h.html">NoeudComposite.h</a></div></div>
 <div class="ttc" id="class_visiteur_abstrait_html"><div class="ttname"><a href="../../df/d41/class_visiteur_abstrait.html">VisiteurAbstrait</a></div><div class="ttdoc">Interface du patron Visiteur. </div><div class="ttdef"><b>Definition:</b> <a href="../../dc/d03/_visiteur_abstrait_8h_source.html#l00035">VisiteurAbstrait.h:35</a></div></div>
 <div class="ttc" id="class_noeud_butoir_circulaire_html_a352bc22a9bdbd3fd4ba24048a52e2f5b"><div class="ttname"><a href="../../d2/d34/class_noeud_butoir_circulaire.html#a352bc22a9bdbd3fd4ba24048a52e2f5b">NoeudButoirCirculaire::accepterVisiteur</a></div><div class="ttdeci">virtual bool accepterVisiteur(VisiteurAbstrait *vis)</div><div class="ttdoc">Accepte un visiteur. </div><div class="ttdef"><b>Definition:</b> <a href="../../d2/d74/_noeud_butoir_circulaire_8cpp_source.html#l00121">NoeudButoirCirculaire.cpp:121</a></div></div>
 <div class="ttc" id="class_noeud_butoir_circulaire_html_a50a642800497407da4239396b626c84b"><div class="ttname"><a href="../../d2/d34/class_noeud_butoir_circulaire.html#a50a642800497407da4239396b626c84b">NoeudButoirCirculaire::~NoeudButoirCirculaire</a></div><div class="ttdeci">~NoeudButoirCirculaire()</div><div class="ttdoc">Destructeur. </div><div class="ttdef"><b>Definition:</b> <a href="../../d2/d74/_noeud_butoir_circulaire_8cpp_source.html#l00048">NoeudButoirCirculaire.cpp:48</a></div></div>
-<div class="ttc" id="class_noeud_butoir_circulaire_html"><div class="ttname"><a href="../../d2/d34/class_noeud_butoir_circulaire.html">NoeudButoirCirculaire</a></div><div class="ttdoc">Classe qui représente un butoir circulaire. </div><div class="ttdef"><b>Definition:</b> <a href="../../d8/d91/_noeud_butoir_circulaire_8h_source.html#l00024">NoeudButoirCirculaire.h:24</a></div></div>
-<div class="ttc" id="class_noeud_butoir_circulaire_html_a0ce0fab3ebb65c14275533b75934473b"><div class="ttname"><a href="../../d2/d34/class_noeud_butoir_circulaire.html#a0ce0fab3ebb65c14275533b75934473b">NoeudButoirCirculaire::afficherConcret</a></div><div class="ttdeci">virtual void afficherConcret() const </div><div class="ttdoc">Surchage de la méthode qui affiche l&#39;objet. </div><div class="ttdef"><b>Definition:</b> <a href="../../d2/d74/_noeud_butoir_circulaire_8cpp_source.html#l00062">NoeudButoirCirculaire.cpp:62</a></div></div>
-<div class="ttc" id="class_noeud_butoir_circulaire_html_a74ce994f5ab1066cb4d5f2cda4dbd8a7"><div class="ttname"><a href="../../d2/d34/class_noeud_butoir_circulaire.html#a74ce994f5ab1066cb4d5f2cda4dbd8a7">NoeudButoirCirculaire::animer</a></div><div class="ttdeci">virtual void animer(float temps)</div><div class="ttdoc">Surchage de la méthode qui anime l&#39;objet. </div><div class="ttdef"><b>Definition:</b> <a href="../../d2/d74/_noeud_butoir_circulaire_8cpp_source.html#l00107">NoeudButoirCirculaire.cpp:107</a></div></div>
+<div class="ttc" id="class_noeud_butoir_circulaire_html"><div class="ttname"><a href="../../d2/d34/class_noeud_butoir_circulaire.html">NoeudButoirCirculaire</a></div><div class="ttdoc">Classe qui represente un butoir circulaire. </div><div class="ttdef"><b>Definition:</b> <a href="../../d8/d91/_noeud_butoir_circulaire_8h_source.html#l00024">NoeudButoirCirculaire.h:24</a></div></div>
+<div class="ttc" id="class_noeud_butoir_circulaire_html_a0ce0fab3ebb65c14275533b75934473b"><div class="ttname"><a href="../../d2/d34/class_noeud_butoir_circulaire.html#a0ce0fab3ebb65c14275533b75934473b">NoeudButoirCirculaire::afficherConcret</a></div><div class="ttdeci">virtual void afficherConcret() const </div><div class="ttdoc">Surchage de la methode qui affiche l&#39;objet. </div><div class="ttdef"><b>Definition:</b> <a href="../../d2/d74/_noeud_butoir_circulaire_8cpp_source.html#l00062">NoeudButoirCirculaire.cpp:62</a></div></div>
+<div class="ttc" id="class_noeud_butoir_circulaire_html_a74ce994f5ab1066cb4d5f2cda4dbd8a7"><div class="ttname"><a href="../../d2/d34/class_noeud_butoir_circulaire.html#a74ce994f5ab1066cb4d5f2cda4dbd8a7">NoeudButoirCirculaire::animer</a></div><div class="ttdeci">virtual void animer(float temps)</div><div class="ttdoc">Surchage de la methode qui anime l&#39;objet. </div><div class="ttdef"><b>Definition:</b> <a href="../../d2/d74/_noeud_butoir_circulaire_8cpp_source.html#l00107">NoeudButoirCirculaire.cpp:107</a></div></div>
 </div><!-- fragment --></div><!-- contents -->
 </div><!-- doc-content -->
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
-    <li class="navelem"><a class="el" href="../../dir_8f231bbbd90d174e51ca0653d136090e.html">DLL</a></li><li class="navelem"><a class="el" href="../../dir_f9961c367f89cf83b005a4e7d2eeec99.html">Arbre</a></li><li class="navelem"><a class="el" href="../../dir_a21bf1361205f3dfd9e19943b8e1d517.html">Noeuds</a></li><li class="navelem"><a class="el" href="../../d8/d91/_noeud_butoir_circulaire_8h.html">NoeudButoirCirculaire.h</a></li>
-    <li class="footer">GÃ©nÃ©rÃ© le Dimanche 15 FÃ©vrier 2015 22:35:31 pour Pain Ball par
+    <li class="navelem"><a class="el" href="../../dir_937900b87e0c7a5fa01190c395fb83f7.html">Sources</a></li><li class="navelem"><a class="el" href="../../dir_5638be7ced97c879b21b23536e800e77.html">DLL</a></li><li class="navelem"><a class="el" href="../../dir_62d639a286ecc255a3a5ac9c06fd99c9.html">Arbre</a></li><li class="navelem"><a class="el" href="../../dir_e82573f31c5b178adacdeab0db63caa9.html">Noeuds</a></li><li class="navelem"><a class="el" href="../../d8/d91/_noeud_butoir_circulaire_8h.html">NoeudButoirCirculaire.h</a></li>
+    <li class="footer">GÃ©nÃ©rÃ© le Lundi 16 FÃ©vrier 2015 07:10:20 pour Pain Ball par
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="../../doxygen.png" alt="doxygen"/></a> 1.8.9.1 </li>
   </ul>

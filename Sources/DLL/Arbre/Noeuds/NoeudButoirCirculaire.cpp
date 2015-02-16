@@ -20,7 +20,7 @@
 
 ////////////////////////////////////////////////////////////////////////
 ///
-/// @fn NoeudButoir::NoeudButoir(const std::string& typeNoeud)
+/// @fn NoeudButoirCirculaire::NoeudButoirCirculaire(const std::string& typeNoeud)
 ///
 /// @param[in] typeNoeud :  le type du noeud a creer.
 ///

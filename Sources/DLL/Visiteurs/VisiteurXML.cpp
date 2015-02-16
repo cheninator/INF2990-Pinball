@@ -13,11 +13,11 @@
 
 ////////////////////////////////////////////////////////////////////////
 ///
-/// @fn VisiteurXML::VisiteurXML(std::string nomFichier)
+/// @fn VisiteurXML::VisiteurXML(std::string nom, int proprietes[])
 ///
 /// Constructeur qui initialise les variables membres de la classe.
 ///
-/// @param[in] nomFichier : Le nom de sauvegarde du fichier
+/// @param[in] nom : Le nom de sauvegarde du fichier
 /// @param[in] proprietes : Les prorietes de la partie
 ///
 /// @return Aucune (constructeur).

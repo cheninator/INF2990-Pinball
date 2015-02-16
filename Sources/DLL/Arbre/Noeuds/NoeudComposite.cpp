@@ -200,7 +200,7 @@ NoeudAbstrait* NoeudComposite::chercher(const std::string& typeNoeud)
 ///
 /// @fn const NoeudAbstrait* NoeudComposite::chercher( unsigned int indice ) const
 ///
-/// Retourne le i-eme enfant, où i est l'indice passe a la fonction.
+/// Retourne le i-eme enfant, ou i est l'indice passe a la fonction.
 /// Version constante de la fonction.
 ///
 /// @param[in] indice : L'indice de l'enfant cherche.
@@ -223,7 +223,7 @@ const NoeudAbstrait* NoeudComposite::chercher(unsigned int indice) const
 ///
 /// @fn NoeudAbstrait* NoeudComposite::chercher( unsigned int indice )
 ///
-/// Retourne le i-eme enfant, où i est l'indice passe a la fonction.
+/// Retourne le i-eme enfant, ou i est l'indice passe a la fonction.
 ///
 /// @param[in] indice : L'indice de l'enfant cherche.
 ///

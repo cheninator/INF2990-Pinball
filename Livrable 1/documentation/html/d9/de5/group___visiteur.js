@@ -7,23 +7,23 @@ var group___visiteur =
     [ "VisiteurCentreDeMasse.h", "d4/d92/_visiteur_centre_de_masse_8h.html", null ],
     [ "VisiteurDeplacement.cpp", "d0/def/_visiteur_deplacement_8cpp.html", null ],
     [ "VisiteurDeplacement.h", "d2/d48/_visiteur_deplacement_8h.html", null ],
-    [ "VisiteurSelection.cpp", "dc/d16/_visiteur_selection_8cpp.html", null ],
+    [ "VisiteurDeselectionnerTout.cpp", "d6/d09/_visiteur_deselectionner_tout_8cpp.html", null ],
     [ "VisiteurDeselectionnerTout.h", "d9/ddd/_visiteur_deselectionner_tout_8h.html", null ],
     [ "VisiteurDuplication.cpp", "da/d51/_visiteur_duplication_8cpp.html", null ],
     [ "VisiteurDuplication.h", "dd/da4/_visiteur_duplication_8h.html", null ],
-    [ "VisiteurCentreDeMasse.cpp", "d2/dec/_visiteur_centre_de_masse_8cpp.html", null ],
+    [ "VisiteurLimitesSelection.cpp", "db/dfc/_visiteur_limites_selection_8cpp.html", null ],
     [ "VisiteurCentreDeMasse.h", "d4/d92/_visiteur_centre_de_masse_8h.html", null ],
-    [ "VisiteurSelection.cpp", "dc/d16/_visiteur_selection_8cpp.html", null ],
-    [ "VisiteurDeselectionnerTout.h", "d9/ddd/_visiteur_deselectionner_tout_8h.html", null ],
-    [ "VisiteurSelection.cpp", "dc/d16/_visiteur_selection_8cpp.html", null ],
-    [ "VisiteurDeselectionnerTout.h", "d9/ddd/_visiteur_deselectionner_tout_8h.html", null ],
+    [ "VisiteurListeEnglobante.cpp", "d3/dca/_visiteur_liste_englobante_8cpp.html", null ],
+    [ "VisiteurListeEnglobante.h", "dc/dd7/_visiteur_liste_englobante_8h.html", null ],
+    [ "VisiteurPossibilite.cpp", "d0/dbb/_visiteur_possibilite_8cpp.html", null ],
+    [ "VisiteurPossibilite.h", "d9/d3f/_visiteur_possibilite_8h.html", null ],
     [ "VisiteurRotationPoint.cpp", "d0/dac/_visiteur_rotation_point_8cpp.html", null ],
     [ "VisiteurRotationPoint.h", "d7/d9c/_visiteur_rotation_point_8h.html", null ],
     [ "VisiteurSelection.cpp", "dc/d16/_visiteur_selection_8cpp.html", null ],
     [ "VisiteurSelection.h", "d3/d2e/_visiteur_selection_8h.html", null ],
-    [ "VisiteurSelection.cpp", "dc/d16/_visiteur_selection_8cpp.html", null ],
+    [ "VisiteurSelectionInverse.cpp", "da/df2/_visiteur_selection_inverse_8cpp.html", null ],
     [ "VisiteurSelectionInverse.h", "d7/d0f/_visiteur_selection_inverse_8h.html", null ],
-    [ "VisiteurSelection.cpp", "dc/d16/_visiteur_selection_8cpp.html", null ],
+    [ "VisiteurSelectionInverseMultiple.cpp", "d5/df5/_visiteur_selection_inverse_multiple_8cpp.html", null ],
     [ "VisiteurSelectionInverseMultiple.h", "d9/df3/_visiteur_selection_inverse_multiple_8h.html", null ],
     [ "VisiteurSelection.cpp", "dc/d16/_visiteur_selection_8cpp.html", null ],
     [ "VisiteurSelectionMultiple.h", "d2/d69/_visiteur_selection_multiple_8h.html", null ],
@@ -54,7 +54,7 @@ var group___visiteur =
     [ "VisiteurCentreDeMasse", "d7/d06/class_visiteur_centre_de_masse.html", [
       [ "VisiteurCentreDeMasse", "d7/d06/class_visiteur_centre_de_masse.html#a1219cb2e1f362e5bde36ed5a57cbd5f8", null ],
       [ "~VisiteurCentreDeMasse", "d7/d06/class_visiteur_centre_de_masse.html#ac58361c556302568cef13ddd9f5dfe81", null ],
-      [ "obtenirCentreDeMasse", "d7/d06/class_visiteur_centre_de_masse.html#af1f4d7919d07b61e00d8520a0782e9fc", null ],
+      [ "obtenirCentreDeMasse", "d7/d06/class_visiteur_centre_de_masse.html#aea6b60ff89acab51acb718c8c04b4b21", null ],
       [ "traiter", "d7/d06/class_visiteur_centre_de_masse.html#a12b27f494532481017d8fba4cbce9836", null ],
       [ "traiter", "d7/d06/class_visiteur_centre_de_masse.html#a996cd625a5e22444340004da5a4b76a8", null ],
       [ "traiter", "d7/d06/class_visiteur_centre_de_masse.html#a96af247fe38da7791fee88f780887e92", null ]
@@ -92,10 +92,17 @@ var group___visiteur =
       [ "traiter", "dc/db6/class_visiteur_liste_englobante.html#a6d38a817a14f0f55c54cd81922ff6ae1", null ],
       [ "traiter", "dc/db6/class_visiteur_liste_englobante.html#aab7346ebc33683bbec7ca90690b6c54c", null ]
     ] ],
+    [ "VisiteurPossibilite", "de/d4f/class_visiteur_possibilite.html", [
+      [ "VisiteurPossibilite", "de/d4f/class_visiteur_possibilite.html#a86e9f5d0a2383160a948994b11b0298c", null ],
+      [ "~VisiteurPossibilite", "de/d4f/class_visiteur_possibilite.html#ae8706b3be522f65b716e4c84d95adc28", null ],
+      [ "traiter", "de/d4f/class_visiteur_possibilite.html#aefee83b9170b3d1781c6925c3fb99912", null ],
+      [ "traiter", "de/d4f/class_visiteur_possibilite.html#ae788cd71e1b22b266aecc2d70d3fc81d", null ],
+      [ "traiter", "de/d4f/class_visiteur_possibilite.html#a0f453a0d2ca43f097a03e77d96e03edc", null ]
+    ] ],
     [ "VisiteurRotationPoint", "d7/d06/class_visiteur_rotation_point.html", [
       [ "VisiteurRotationPoint", "d7/d06/class_visiteur_rotation_point.html#a4081fc426cbefd3de74d056d34b454ca", null ],
       [ "~VisiteurRotationPoint", "d7/d06/class_visiteur_rotation_point.html#a512be7adbd52881a53d7c43458a87575", null ],
-      [ "getRotation", "d7/d06/class_visiteur_rotation_point.html#a821c5ed67f6c9e3eb6c6e40b92417d64", null ],
+      [ "getRotation", "d7/d06/class_visiteur_rotation_point.html#a5ba91d3008e6531b90c4a0c0d3b713b5", null ],
       [ "setRotation", "d7/d06/class_visiteur_rotation_point.html#a567fb40f587e68e17c0f51911fb0b85f", null ],
       [ "traiter", "d7/d06/class_visiteur_rotation_point.html#a2d203ad3b917e23a6d80522287c7831d", null ],
       [ "traiter", "d7/d06/class_visiteur_rotation_point.html#afae38287b2b286fc29dfb29a96c997ca", null ],
@@ -104,7 +111,7 @@ var group___visiteur =
     [ "VisiteurSelection", "db/d5e/class_visiteur_selection.html", [
       [ "VisiteurSelection", "db/d5e/class_visiteur_selection.html#ae35f601157ac1194bfd52ead35d27eb7", null ],
       [ "~VisiteurSelection", "db/d5e/class_visiteur_selection.html#af74044cdf22e6bdc2a4cd8c5afafdc60", null ],
-      [ "obtenirNbObjetsSelectionne", "db/d5e/class_visiteur_selection.html#a204e71dc150e2025b5311fcf33ff648c", null ],
+      [ "obtenirNbObjetsSelectionne", "db/d5e/class_visiteur_selection.html#a64a66a1aaf87bc426ab7476a257b7140", null ],
       [ "traiter", "db/d5e/class_visiteur_selection.html#a21b3b56d501818c002294e25bc620c4c", null ],
       [ "traiter", "db/d5e/class_visiteur_selection.html#a90e43c2ad4f514897e884aa2235e3d83", null ],
       [ "traiter", "db/d5e/class_visiteur_selection.html#a04e7bfbc1be962361aac1bb068a21934", null ]
@@ -112,7 +119,7 @@ var group___visiteur =
     [ "VisiteurSelectionInverse", "df/d44/class_visiteur_selection_inverse.html", [
       [ "VisiteurSelectionInverse", "df/d44/class_visiteur_selection_inverse.html#a16a7ed6ff979e0b243ecab645eac4742", null ],
       [ "~VisiteurSelectionInverse", "df/d44/class_visiteur_selection_inverse.html#a500899052354470c8bc5b4360eda64b2", null ],
-      [ "obtenirNbObjetsSelectionne", "df/d44/class_visiteur_selection_inverse.html#a89664caff8bf3c83205d4f80860bf54d", null ],
+      [ "obtenirNbObjetsSelectionne", "df/d44/class_visiteur_selection_inverse.html#a0510fc36b815ad33dc51be4ca0652c6a", null ],
       [ "traiter", "df/d44/class_visiteur_selection_inverse.html#a0e2a599b9fbe32412f1c316bf8b7081b", null ],
       [ "traiter", "df/d44/class_visiteur_selection_inverse.html#ada66d2dea2e84641c0aff5e54e4afeca", null ],
       [ "traiter", "df/d44/class_visiteur_selection_inverse.html#a292105d2c4aaa620d338fd5cdf74ef6c", null ]
@@ -120,7 +127,7 @@ var group___visiteur =
     [ "VisiteurSelectionInverseMultiple", "dc/d3f/class_visiteur_selection_inverse_multiple.html", [
       [ "VisiteurSelectionInverseMultiple", "dc/d3f/class_visiteur_selection_inverse_multiple.html#afed212824d7562391a9ad5359d331b06", null ],
       [ "~VisiteurSelectionInverseMultiple", "dc/d3f/class_visiteur_selection_inverse_multiple.html#a79f44c041ceb1429793bad1f3edd20be", null ],
-      [ "obtenirNbObjetsSelectionne", "dc/d3f/class_visiteur_selection_inverse_multiple.html#a9856f5e34500043db8fcc66b99ae3550", null ],
+      [ "obtenirNbObjetsSelectionne", "dc/d3f/class_visiteur_selection_inverse_multiple.html#aa33419c9fd5bfd08eb9c10cff2a6fcda", null ],
       [ "traiter", "dc/d3f/class_visiteur_selection_inverse_multiple.html#a712557866fcb2ebae9cc7a271ac0cbcd", null ],
       [ "traiter", "dc/d3f/class_visiteur_selection_inverse_multiple.html#a575fadac7faf4e1c1e96c990a1075af8", null ],
       [ "traiter", "dc/d3f/class_visiteur_selection_inverse_multiple.html#aaa9f2e4b64a22bb5ae2655cb6b3f3a78", null ]
@@ -128,7 +135,7 @@ var group___visiteur =
     [ "VisiteurSelectionMultiple", "de/da1/class_visiteur_selection_multiple.html", [
       [ "VisiteurSelectionMultiple", "de/da1/class_visiteur_selection_multiple.html#ac4db71a717e4fde35fa0972f0bd745a7", null ],
       [ "~VisiteurSelectionMultiple", "de/da1/class_visiteur_selection_multiple.html#a2bfc189af731260f08919e1bc42edb6f", null ],
-      [ "obtenirNbObjetsSelectionne", "de/da1/class_visiteur_selection_multiple.html#a410ea0511b23623efaf28eb1e9bdd0f5", null ],
+      [ "obtenirNbObjetsSelectionne", "de/da1/class_visiteur_selection_multiple.html#a29be242014ed77e7a72ef4fe51615fb4", null ],
       [ "traiter", "de/da1/class_visiteur_selection_multiple.html#ad557f683ffaba61faa3f9022fbe39f90", null ],
       [ "traiter", "de/da1/class_visiteur_selection_multiple.html#a932d9fa6b7a12032562d610176cfd419", null ],
       [ "traiter", "de/da1/class_visiteur_selection_multiple.html#a1f2938b040d83d782fc0994ea3683e7c", null ]

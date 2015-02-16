@@ -117,14 +117,11 @@ bool VisiteurCentreDeMasse::traiter(NoeudAbstrait* noeud)
 
 ////////////////////////////////////////////////////////////////////////
 ///
-/// @fn glm::dvec3 obtenirCentreDeMasse()
-///
-/// Cette fonction retourne les coordonnees du centre de masse 
-/// du noeud visite.
-///
-/// @param[in] Aucun
+/// @fn glm::dvec3 VisiteurCentreDeMasse::obtenirCentreDeMasse() const
 ///
 /// @return Coordonnees de centre de masse d'un noeud (dvec3)
+///
+/// @remark : Cette fonction retourne les coordonnees du centre de masse du noeud visite.
 ///
 ////////////////////////////////////////////////////////////////////////
 glm::dvec3 VisiteurCentreDeMasse::obtenirCentreDeMasse() const

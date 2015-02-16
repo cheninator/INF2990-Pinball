@@ -38,7 +38,7 @@ namespace vue {
 }
 ///////////////////////////////////////////////////////////////////////////
 /// @class FacadeModele
-/// @brief Classe qui constitue une interface (une façade) sur l'ensemble
+/// @brief Classe qui constitue une interface (une facade) sur l'ensemble
 ///        du modele et des classes qui le composent.
 ///
 /// @author Martin Bisson
@@ -156,7 +156,7 @@ private:
    /// Pointeur vers l'instance unique de la classe.
    static FacadeModele* instance_; 
 
-   HWND  hWnd_{ nullptr };	///< Poignee ("handle") vers la fenetre où l'affichage se fait.
+   HWND  hWnd_{ nullptr };	///< Poignee ("handle") vers la fenetre ou l'affichage se fait.
    HGLRC hGLRC_{ nullptr }; ///< Poignee ("handle") vers le contexte OpenGL.
    HDC   hDC_{ nullptr };	///< Poignee ("handle") vers le "device context".
 

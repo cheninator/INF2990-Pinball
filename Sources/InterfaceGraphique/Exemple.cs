@@ -880,7 +880,7 @@ namespace InterfaceGraphique
         /// @fn public void afficher_Objet(bool twin)
         /// @brief Affiche et cree un objet jumeau.
         /// 
-        /// @param[in] bool : Objet jumeau.
+        /// @param[in] twin : Objet jumeau.
         /// 
         /// @return Aucune.
         ///
@@ -2480,7 +2480,7 @@ namespace InterfaceGraphique
 
         //////////////////////////////////////////////////////////////////////////////////////////
         ///
-        /// @fn private void IncreaseZoomButton_Click()
+        /// @fn private void IncreaseZoomButton_Click(object sender, EventArgs e)
         /// @brief Fonction qui s'assure de la bonne creation des murs.
         /// @param[in] sender : Objet duquel provient un evenement.
         /// @param[in] e : evenement qui lance la fonction.
@@ -2560,7 +2560,7 @@ namespace InterfaceGraphique
         /// @fn public void EnterFullScreenMode(Form targetForm)
         /// @brief Entre en mode Plein ecran.
         /// 
-        /// @param[in] active : La form qui passe en mode Plein ecran.
+        /// @param[in] targetForm : La form qui passe en mode Plein ecran.
         /// 
         /// @return Aucune.
         ///
@@ -2578,7 +2578,7 @@ namespace InterfaceGraphique
         /// @fn public void LeaveFullScreenMode(Form targetForm)
         /// @brief Quitte le mode Plein ecran.
         /// 
-        /// @param[in] active : La form qui quitte le mode Plein ecran.
+        /// @param[in] targetForm : La form qui quitte le mode Plein ecran.
         /// 
         /// @return Aucune.
         ///
@@ -2594,7 +2594,7 @@ namespace InterfaceGraphique
         /// @fn public bool IsFullScreen(Form targetForm)
         /// @brief Indique si une form est en mode Plein ecran.
         /// 
-        /// @param[in] active : La form qui quitte le mode Plein ecran.
+        /// @param[in] targetForm : La form qui quitte le mode Plein ecran.
         /// 
         /// @return True si la form est en Plein ecran, false sinon.
         ///

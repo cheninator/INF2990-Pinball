@@ -223,7 +223,7 @@ namespace InterfaceGraphique
     }
 
     ///////////////////////////////////////////////////////////////////////////
-    /// @class Etat Mur
+    /// @class EtatMur
     /// @brief Etat Mur du patron State.
     ///
     /// @author The Ballers
@@ -809,7 +809,7 @@ namespace InterfaceGraphique
     {
         ////////////////////////////////////////////////////////////////////////
         ///
-        /// @fn public EtatSelectionMultiple(Exemple form)
+        /// @fn public EtatZoomElastique(Exemple form) : base(form)
         /// @brief Constructeur par parametre de l'etat.
         /// 
         /// param[in] form : Form associee a l'etat.
@@ -817,7 +817,9 @@ namespace InterfaceGraphique
         /// @return Aucune (constructeur).
         ///
         ////////////////////////////////////////////////////////////////////////
-        public EtatZoomElastique(Exemple form) : base(form) { }
+        public EtatZoomElastique(Exemple form) : base(form)
+        { 
+        }
 
         ////////////////////////////////////////////////////////////////////////
         ///

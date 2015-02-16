@@ -4,7 +4,7 @@
 <meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
 <meta http-equiv="X-UA-Compatible" content="IE=9"/>
 <meta name="generator" content="Doxygen 1.8.9.1"/>
-<title>Pain Ball:  Fichier source de DLL/Visiteurs/VisiteurXML.cpp</title>
+<title>Pain Ball:  Fichier source de Sources/DLL/Visiteurs/VisiteurXML.cpp</title>
 <link href="../../tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="../../jquery.js"></script>
 <script type="text/javascript" src="../../dynsections.js"></script>
@@ -134,7 +134,7 @@ $(document).ready(function(){initNavTree('db/d30/_visiteur_x_m_l_8cpp_source.htm
 <div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;</div>
 <div class="line"><a name="l00063"></a><span class="lineno"><a class="line" href="../../dc/db8/class_visiteur_x_m_l.html#a1f8ea075cb7564481f1103f997b5981f">   63</a></span>&#160;<span class="keywordtype">bool</span> <a class="code" href="../../dc/db8/class_visiteur_x_m_l.html#a1f8ea075cb7564481f1103f997b5981f">VisiteurXML::traiter</a>(<a class="code" href="../../da/dcf/class_arbre_rendu_i_n_f2990.html">ArbreRenduINF2990</a>* arbre)</div>
 <div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;{</div>
-<div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;    <span class="comment">// Enregistrer les propriétés de la zone de jeu</span></div>
+<div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;    <span class="comment">// Enregistrer les proprietes de la zone de jeu</span></div>
 <div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160;    traiterProprietes();</div>
 <div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160;</div>
 <div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160;    <span class="comment">// ElementArbre sera la racine</span></div>
@@ -168,7 +168,7 @@ $(document).ready(function(){initNavTree('db/d30/_visiteur_x_m_l_8cpp_source.htm
 <div class="line"><a name="l00109"></a><span class="lineno">  109</span>&#160;        table-&gt;<a class="code" href="../../de/d5c/class_noeud_table.html#a4f384bf689c357a1180d213e158d33de">getEnfant</a>(<a class="code" href="../../d7/d39/_facade_interface_native_8cpp.html#acb559820d9ca11295b4500f179ef6392">i</a>)-&gt;<a class="code" href="../../da/df4/class_noeud_abstrait.html#a6b4a6eb33872fe1d3d73c0c1fa70ccd8">accepterVisiteur</a>(<span class="keyword">this</span>);</div>
 <div class="line"><a name="l00110"></a><span class="lineno">  110</span>&#160;    }</div>
 <div class="line"><a name="l00111"></a><span class="lineno">  111</span>&#160;</div>
-<div class="line"><a name="l00112"></a><span class="lineno">  112</span>&#160;    <span class="comment">// Lier l&#39;arbre à la table</span></div>
+<div class="line"><a name="l00112"></a><span class="lineno">  112</span>&#160;    <span class="comment">// Lier l&#39;arbre a la table</span></div>
 <div class="line"><a name="l00113"></a><span class="lineno">  113</span>&#160;    elementArbreRendu-&gt;LinkEndChild(elementTable);</div>
 <div class="line"><a name="l00114"></a><span class="lineno">  114</span>&#160;</div>
 <div class="line"><a name="l00115"></a><span class="lineno">  115</span>&#160;    <span class="keywordflow">return</span> <span class="keyword">true</span>;</div>
@@ -179,7 +179,7 @@ $(document).ready(function(){initNavTree('db/d30/_visiteur_x_m_l_8cpp_source.htm
 <div class="line"><a name="l00133"></a><span class="lineno">  133</span>&#160;{</div>
 <div class="line"><a name="l00134"></a><span class="lineno">  134</span>&#160;    std::string nom = noeud-&gt;<a class="code" href="../../da/df4/class_noeud_abstrait.html#a2df7c53ab456cc88bce73f7eb913e3e6">obtenirType</a>();</div>
 <div class="line"><a name="l00135"></a><span class="lineno">  135</span>&#160;</div>
-<div class="line"><a name="l00136"></a><span class="lineno">  136</span>&#160;    <span class="comment">// Créer le noeud</span></div>
+<div class="line"><a name="l00136"></a><span class="lineno">  136</span>&#160;    <span class="comment">// Creer le noeud</span></div>
 <div class="line"><a name="l00137"></a><span class="lineno">  137</span>&#160;    tinyxml2::XMLElement* element{ document.NewElement(nom.c_str()) };</div>
 <div class="line"><a name="l00138"></a><span class="lineno">  138</span>&#160;</div>
 <div class="line"><a name="l00139"></a><span class="lineno">  139</span>&#160;    <span class="keywordflow">if</span> (nom != <span class="stringliteral">&quot;couvercle&quot;</span>)</div>
@@ -200,7 +200,7 @@ $(document).ready(function(){initNavTree('db/d30/_visiteur_x_m_l_8cpp_source.htm
 <div class="line"><a name="l00154"></a><span class="lineno">  154</span>&#160;        element-&gt;SetAttribute(<span class="stringliteral">&quot;angleZ&quot;</span>, noeud-&gt;<a class="code" href="../../da/df4/class_noeud_abstrait.html#a856c716249d5ca28d3a4407aca9f35bb">obtenirRotation</a>().z);</div>
 <div class="line"><a name="l00155"></a><span class="lineno">  155</span>&#160;</div>
 <div class="line"><a name="l00156"></a><span class="lineno">  156</span>&#160;        <span class="keywordflow">if</span> (nom == <span class="stringliteral">&quot;paletted&quot;</span> || nom == <span class="stringliteral">&quot;paletteg&quot;</span>)</div>
-<div class="line"><a name="l00157"></a><span class="lineno">  157</span>&#160;            element-&gt;SetAttribute(<span class="stringliteral">&quot;color&quot;</span>, noeud-&gt;<a class="code" href="../../da/df4/class_noeud_abstrait.html#aa358980c6250f9674ffca7bd75962ab4">getColorShift</a>());</div>
+<div class="line"><a name="l00157"></a><span class="lineno">  157</span>&#160;            element-&gt;SetAttribute(<span class="stringliteral">&quot;color&quot;</span>, noeud-&gt;<a class="code" href="../../da/df4/class_noeud_abstrait.html#a40a5a2fc7d6ea502b7b2b3764efabf48">getColorShift</a>());</div>
 <div class="line"><a name="l00158"></a><span class="lineno">  158</span>&#160;</div>
 <div class="line"><a name="l00159"></a><span class="lineno">  159</span>&#160;        elementTable-&gt;LinkEndChild(element);</div>
 <div class="line"><a name="l00160"></a><span class="lineno">  160</span>&#160;    }</div>
@@ -214,36 +214,7 @@ $(document).ready(function(){initNavTree('db/d30/_visiteur_x_m_l_8cpp_source.htm
 <div class="line"><a name="l00168"></a><span class="lineno">  168</span>&#160;</div>
 <div class="line"><a name="l00179"></a><span class="lineno">  179</span>&#160;<span class="keywordtype">bool</span> VisiteurXML::traiterProprietes()</div>
 <div class="line"><a name="l00180"></a><span class="lineno">  180</span>&#160;{</div>
-<div class="line"><a name="l00181"></a><span class="lineno">  181</span>&#160;    <span class="comment">// Creer le noeud propriété   tinyxml2::XMLElement* elementPropriete{ document.NewElement(&quot;Proprietes&quot;) };
-
-    tinyxml2::XMLElement* elementButoir{ document.NewElement(&quot;PointsButoir&quot;) };
-    elementButoir-&gt;SetAttribute(&quot;Nombre&quot;, proprietes_[0]);
-    elementPropriete-&gt;LinkEndChild(elementButoir);
-
-    tinyxml2::XMLElement* elementTriangulaire{ document.NewElement(&quot;PointsTriangulaire&quot;) };
-    elementTriangulaire-&gt;SetAttribute(&quot;Nombre&quot;, proprietes_[1]);
-    elementPropriete-&gt;LinkEndChild(elementTriangulaire);
-
-    tinyxml2::XMLElement* elementCible{ document.NewElement(&quot;PointsCible&quot;) };
-    elementCible-&gt;SetAttribute(&quot;Nombre&quot;, proprietes_[2]);
-    elementPropriete-&gt;LinkEndChild(elementCible);
-
-    tinyxml2::XMLElement* elementVictoire{ document.NewElement(&quot;PointsVictoire&quot;) };
-    elementVictoire-&gt;SetAttribute(&quot;Nombre&quot;, proprietes_[3]);
-    elementPropriete-&gt;LinkEndChild(elementVictoire);
-
-    tinyxml2::XMLElement* elementBille{ document.NewElement(&quot;PointsBilleGratuite&quot;) };
-    elementBille-&gt;SetAttribute(&quot;Nombre&quot;, proprietes_[4]);
-    elementPropriete-&gt;LinkEndChild(elementBille);
-
-    tinyxml2::XMLElement* elementDifficulte{ document.NewElement(&quot;Difficulte&quot;) };
-    elementDifficulte-&gt;SetAttribute(&quot;Nombre&quot;, proprietes_[5]);
-    elementPropriete-&gt;LinkEndChild(elementDifficulte);
-
-    document.LinkEndChild(elementPropriete);
-
-    return true;
-}</span></div>
+<div class="line"><a name="l00181"></a><span class="lineno">  181</span>&#160;    <span class="comment">// Creer le noeud propriete</span></div>
 <div class="line"><a name="l00182"></a><span class="lineno">  182</span>&#160;    tinyxml2::XMLElement* elementPropriete{ document.NewElement(<span class="stringliteral">&quot;Proprietes&quot;</span>) };</div>
 <div class="line"><a name="l00183"></a><span class="lineno">  183</span>&#160;</div>
 <div class="line"><a name="l00184"></a><span class="lineno">  184</span>&#160;    tinyxml2::XMLElement* elementButoir{ document.NewElement(<span class="stringliteral">&quot;PointsButoir&quot;</span>) };</div>
@@ -275,29 +246,29 @@ $(document).ready(function(){initNavTree('db/d30/_visiteur_x_m_l_8cpp_source.htm
 <div class="line"><a name="l00210"></a><span class="lineno">  210</span>&#160;    <span class="keywordflow">return</span> <span class="keyword">true</span>;</div>
 <div class="line"><a name="l00211"></a><span class="lineno">  211</span>&#160;}</div>
 <div class="ttc" id="_visiteur_x_m_l_8h_html"><div class="ttname"><a href="../../da/db1/_visiteur_x_m_l_8h.html">VisiteurXML.h</a></div></div>
+<div class="ttc" id="class_noeud_abstrait_html_a40a5a2fc7d6ea502b7b2b3764efabf48"><div class="ttname"><a href="../../da/df4/class_noeud_abstrait.html#a40a5a2fc7d6ea502b7b2b3764efabf48">NoeudAbstrait::getColorShift</a></div><div class="ttdeci">virtual bool getColorShift()</div><div class="ttdoc">Obtenir couleur. </div><div class="ttdef"><b>Definition:</b> <a href="../../d2/d5d/_noeud_abstrait_8cpp_source.html#l00587">NoeudAbstrait.cpp:587</a></div></div>
 <div class="ttc" id="class_visiteur_x_m_l_html_ab3e441a6fe27fe7ccdad2be609d5f9e6"><div class="ttname"><a href="../../dc/db8/class_visiteur_x_m_l.html#ab3e441a6fe27fe7ccdad2be609d5f9e6">VisiteurXML::~VisiteurXML</a></div><div class="ttdeci">~VisiteurXML()</div><div class="ttdoc">Destructeur. </div><div class="ttdef"><b>Definition:</b> <a href="../../db/d30/_visiteur_x_m_l_8cpp_source.html#l00044">VisiteurXML.cpp:44</a></div></div>
 <div class="ttc" id="class_noeud_table_html_a4f384bf689c357a1180d213e158d33de"><div class="ttname"><a href="../../de/d5c/class_noeud_table.html#a4f384bf689c357a1180d213e158d33de">NoeudTable::getEnfant</a></div><div class="ttdeci">virtual NoeudAbstrait * getEnfant(int i)</div><div class="ttdoc">Retourne l&#39;enfant du noeud courant. </div><div class="ttdef"><b>Definition:</b> <a href="../../d8/d26/_noeud_table_8h_source.html#l00043">NoeudTable.h:43</a></div></div>
-<div class="ttc" id="class_noeud_abstrait_html_a2df7c53ab456cc88bce73f7eb913e3e6"><div class="ttname"><a href="../../da/df4/class_noeud_abstrait.html#a2df7c53ab456cc88bce73f7eb913e3e6">NoeudAbstrait::obtenirType</a></div><div class="ttdeci">const std::string &amp; obtenirType() const </div><div class="ttdoc">Obtient le type du noeud. </div><div class="ttdef"><b>Definition:</b> <a href="../../d4/d75/_noeud_abstrait_8h_source.html#l00362">NoeudAbstrait.h:362</a></div></div>
-<div class="ttc" id="class_noeud_abstrait_html_a97c8cd383bed8b83bad646097a233242"><div class="ttname"><a href="../../da/df4/class_noeud_abstrait.html#a97c8cd383bed8b83bad646097a233242">NoeudAbstrait::obtenirAgrandissement</a></div><div class="ttdeci">const glm::dvec3 &amp; obtenirAgrandissement() const </div><div class="ttdoc">Obtenir agrandissement. </div><div class="ttdef"><b>Definition:</b> <a href="../../d4/d75/_noeud_abstrait_8h_source.html#l00614">NoeudAbstrait.h:614</a></div></div>
+<div class="ttc" id="class_noeud_abstrait_html_a2df7c53ab456cc88bce73f7eb913e3e6"><div class="ttname"><a href="../../da/df4/class_noeud_abstrait.html#a2df7c53ab456cc88bce73f7eb913e3e6">NoeudAbstrait::obtenirType</a></div><div class="ttdeci">const std::string &amp; obtenirType() const </div><div class="ttdoc">Obtient le type du noeud. </div><div class="ttdef"><b>Definition:</b> <a href="../../d4/d75/_noeud_abstrait_8h_source.html#l00403">NoeudAbstrait.h:403</a></div></div>
+<div class="ttc" id="class_noeud_abstrait_html_a97c8cd383bed8b83bad646097a233242"><div class="ttname"><a href="../../da/df4/class_noeud_abstrait.html#a97c8cd383bed8b83bad646097a233242">NoeudAbstrait::obtenirAgrandissement</a></div><div class="ttdeci">const glm::dvec3 &amp; obtenirAgrandissement() const </div><div class="ttdoc">Obtenir agrandissement. </div><div class="ttdef"><b>Definition:</b> <a href="../../d4/d75/_noeud_abstrait_8h_source.html#l00651">NoeudAbstrait.h:651</a></div></div>
 <div class="ttc" id="class_visiteur_x_m_l_html_a1f8ea075cb7564481f1103f997b5981f"><div class="ttname"><a href="../../dc/db8/class_visiteur_x_m_l.html#a1f8ea075cb7564481f1103f997b5981f">VisiteurXML::traiter</a></div><div class="ttdeci">virtual bool traiter(ArbreRenduINF2990 *arbre)</div><div class="ttdoc">Traiter un arbre de rendu et ses enfants. </div><div class="ttdef"><b>Definition:</b> <a href="../../db/d30/_visiteur_x_m_l_8cpp_source.html#l00063">VisiteurXML.cpp:63</a></div></div>
 <div class="ttc" id="class_noeud_composite_html_a87b0010b4dc77c69c6114a70f3de73bd"><div class="ttname"><a href="../../da/d38/class_noeud_composite.html#a87b0010b4dc77c69c6114a70f3de73bd">NoeudComposite::obtenirNombreEnfants</a></div><div class="ttdeci">virtual unsigned int obtenirNombreEnfants() const </div><div class="ttdoc">Obtient le nombre d&#39;enfants du noeud. </div><div class="ttdef"><b>Definition:</b> <a href="../../db/d9c/_noeud_composite_8cpp_source.html#l00275">NoeudComposite.cpp:275</a></div></div>
 <div class="ttc" id="class_noeud_abstrait_html_a6b4a6eb33872fe1d3d73c0c1fa70ccd8"><div class="ttname"><a href="../../da/df4/class_noeud_abstrait.html#a6b4a6eb33872fe1d3d73c0c1fa70ccd8">NoeudAbstrait::accepterVisiteur</a></div><div class="ttdeci">virtual bool accepterVisiteur(VisiteurAbstrait *vis)</div><div class="ttdoc">Accepter un visiteur. </div><div class="ttdef"><b>Definition:</b> <a href="../../d2/d5d/_noeud_abstrait_8cpp_source.html#l00481">NoeudAbstrait.cpp:481</a></div></div>
-<div class="ttc" id="class_visiteur_x_m_l_html_a39564b11ec2f7332d0717eab0d2a7550"><div class="ttname"><a href="../../dc/db8/class_visiteur_x_m_l.html#a39564b11ec2f7332d0717eab0d2a7550">VisiteurXML::VisiteurXML</a></div><div class="ttdeci">VisiteurXML(std::string nomFichier, int proprietes[])</div><div class="ttdoc">Constructeur par paramètre : fournir le nom du fichier de sauvegarde et les propriétés du jeu...</div><div class="ttdef"><b>Definition:</b> <a href="../../db/d30/_visiteur_x_m_l_8cpp_source.html#l00026">VisiteurXML.cpp:26</a></div></div>
-<div class="ttc" id="class_noeud_table_html"><div class="ttname"><a href="../../de/d5c/class_noeud_table.html">NoeudTable</a></div><div class="ttdoc">Classe qui représente une table. </div><div class="ttdef"><b>Definition:</b> <a href="../../d8/d26/_noeud_table_8h_source.html#l00024">NoeudTable.h:24</a></div></div>
-<div class="ttc" id="class_arbre_rendu_i_n_f2990_html"><div class="ttname"><a href="../../da/dcf/class_arbre_rendu_i_n_f2990.html">ArbreRenduINF2990</a></div><div class="ttdoc">Classe qui représente l&#39;arbre de rendu spécifique au projet de INF2990. </div><div class="ttdef"><b>Definition:</b> <a href="../../de/d77/_arbre_rendu_i_n_f2990_8h_source.html#l00032">ArbreRenduINF2990.h:32</a></div></div>
-<div class="ttc" id="_facade_interface_native_8cpp_html_acb559820d9ca11295b4500f179ef6392"><div class="ttname"><a href="../../d7/d39/_facade_interface_native_8cpp.html#acb559820d9ca11295b4500f179ef6392">i</a></div><div class="ttdeci">int i</div><div class="ttdef"><b>Definition:</b> <a href="../../d7/d39/_facade_interface_native_8cpp_source.html#l01038">FacadeInterfaceNative.cpp:1038</a></div></div>
-<div class="ttc" id="class_noeud_abstrait_html"><div class="ttname"><a href="../../da/df4/class_noeud_abstrait.html">NoeudAbstrait</a></div><div class="ttdoc">Classe de base du patron composite utilisée pour créer l&#39;arbre de rendu. </div><div class="ttdef"><b>Definition:</b> <a href="../../d4/d75/_noeud_abstrait_8h_source.html#l00048">NoeudAbstrait.h:48</a></div></div>
-<div class="ttc" id="class_arbre_rendu_i_n_f2990_html_a4aa11fcea861f642d11664e1308f2278"><div class="ttname"><a href="../../da/dcf/class_arbre_rendu_i_n_f2990.html#a4aa11fcea861f642d11664e1308f2278">ArbreRenduINF2990::getEnfant</a></div><div class="ttdeci">NoeudAbstrait * getEnfant(int position) const </div><div class="ttdoc">Obtenir le ième enfant de l&#39;arbre. </div><div class="ttdef"><b>Definition:</b> <a href="../../de/d39/_arbre_rendu_i_n_f2990_8cpp_source.html#l00126">ArbreRenduINF2990.cpp:126</a></div></div>
-<div class="ttc" id="class_noeud_abstrait_html_a62d73f67c3b33e2cb106630bd1736a58"><div class="ttname"><a href="../../da/df4/class_noeud_abstrait.html#a62d73f67c3b33e2cb106630bd1736a58">NoeudAbstrait::obtenirPositionRelative</a></div><div class="ttdeci">const glm::dvec3 &amp; obtenirPositionRelative() const </div><div class="ttdoc">Obtient la position relative du noeud. </div><div class="ttdef"><b>Definition:</b> <a href="../../d4/d75/_noeud_abstrait_8h_source.html#l00327">NoeudAbstrait.h:327</a></div></div>
-<div class="ttc" id="class_noeud_abstrait_html_aa358980c6250f9674ffca7bd75962ab4"><div class="ttname"><a href="../../da/df4/class_noeud_abstrait.html#aa358980c6250f9674ffca7bd75962ab4">NoeudAbstrait::getColorShift</a></div><div class="ttdeci">virtual bool getColorShift()</div><div class="ttdoc">Obtenir couleur. </div><div class="ttdef"><b>Definition:</b> <a href="../../d2/d5d/_noeud_abstrait_8cpp_source.html#l00591">NoeudAbstrait.cpp:591</a></div></div>
-<div class="ttc" id="class_noeud_abstrait_html_a856c716249d5ca28d3a4407aca9f35bb"><div class="ttname"><a href="../../da/df4/class_noeud_abstrait.html#a856c716249d5ca28d3a4407aca9f35bb">NoeudAbstrait::obtenirRotation</a></div><div class="ttdeci">const glm::dvec3 &amp; obtenirRotation() const </div><div class="ttdoc">Obtenir rotation. </div><div class="ttdef"><b>Definition:</b> <a href="../../d4/d75/_noeud_abstrait_8h_source.html#l00630">NoeudAbstrait.h:630</a></div></div>
+<div class="ttc" id="class_visiteur_x_m_l_html_a39564b11ec2f7332d0717eab0d2a7550"><div class="ttname"><a href="../../dc/db8/class_visiteur_x_m_l.html#a39564b11ec2f7332d0717eab0d2a7550">VisiteurXML::VisiteurXML</a></div><div class="ttdeci">VisiteurXML(std::string nomFichier, int proprietes[])</div><div class="ttdoc">Constructeur par parametre : fournir le nom du fichier de sauvegarde et les proprietes du jeu...</div><div class="ttdef"><b>Definition:</b> <a href="../../db/d30/_visiteur_x_m_l_8cpp_source.html#l00026">VisiteurXML.cpp:26</a></div></div>
+<div class="ttc" id="class_noeud_table_html"><div class="ttname"><a href="../../de/d5c/class_noeud_table.html">NoeudTable</a></div><div class="ttdoc">Classe qui represente une table. </div><div class="ttdef"><b>Definition:</b> <a href="../../d8/d26/_noeud_table_8h_source.html#l00024">NoeudTable.h:24</a></div></div>
+<div class="ttc" id="class_arbre_rendu_i_n_f2990_html"><div class="ttname"><a href="../../da/dcf/class_arbre_rendu_i_n_f2990.html">ArbreRenduINF2990</a></div><div class="ttdoc">Classe qui represente l&#39;arbre de rendu specifique au projet de INF2990. </div><div class="ttdef"><b>Definition:</b> <a href="../../de/d77/_arbre_rendu_i_n_f2990_8h_source.html#l00032">ArbreRenduINF2990.h:32</a></div></div>
+<div class="ttc" id="_facade_interface_native_8cpp_html_acb559820d9ca11295b4500f179ef6392"><div class="ttname"><a href="../../d7/d39/_facade_interface_native_8cpp.html#acb559820d9ca11295b4500f179ef6392">i</a></div><div class="ttdeci">int i</div><div class="ttdef"><b>Definition:</b> <a href="../../d7/d39/_facade_interface_native_8cpp_source.html#l01046">FacadeInterfaceNative.cpp:1046</a></div></div>
+<div class="ttc" id="class_noeud_abstrait_html"><div class="ttname"><a href="../../da/df4/class_noeud_abstrait.html">NoeudAbstrait</a></div><div class="ttdoc">Classe de base du patron composite utilisee pour creer l&#39;arbre de rendu. </div><div class="ttdef"><b>Definition:</b> <a href="../../d4/d75/_noeud_abstrait_8h_source.html#l00048">NoeudAbstrait.h:48</a></div></div>
+<div class="ttc" id="class_arbre_rendu_i_n_f2990_html_a4aa11fcea861f642d11664e1308f2278"><div class="ttname"><a href="../../da/dcf/class_arbre_rendu_i_n_f2990.html#a4aa11fcea861f642d11664e1308f2278">ArbreRenduINF2990::getEnfant</a></div><div class="ttdeci">NoeudAbstrait * getEnfant(int position) const </div><div class="ttdoc">Obtenir le ieme enfant de l&#39;arbre. </div><div class="ttdef"><b>Definition:</b> <a href="../../de/d39/_arbre_rendu_i_n_f2990_8cpp_source.html#l00142">ArbreRenduINF2990.cpp:142</a></div></div>
+<div class="ttc" id="class_noeud_abstrait_html_a62d73f67c3b33e2cb106630bd1736a58"><div class="ttname"><a href="../../da/df4/class_noeud_abstrait.html#a62d73f67c3b33e2cb106630bd1736a58">NoeudAbstrait::obtenirPositionRelative</a></div><div class="ttdeci">const glm::dvec3 &amp; obtenirPositionRelative() const </div><div class="ttdoc">Obtient la position relative du noeud. </div><div class="ttdef"><b>Definition:</b> <a href="../../d4/d75/_noeud_abstrait_8h_source.html#l00368">NoeudAbstrait.h:368</a></div></div>
+<div class="ttc" id="class_noeud_abstrait_html_a856c716249d5ca28d3a4407aca9f35bb"><div class="ttname"><a href="../../da/df4/class_noeud_abstrait.html#a856c716249d5ca28d3a4407aca9f35bb">NoeudAbstrait::obtenirRotation</a></div><div class="ttdeci">const glm::dvec3 &amp; obtenirRotation() const </div><div class="ttdoc">Obtenir rotation. </div><div class="ttdef"><b>Definition:</b> <a href="../../d4/d75/_noeud_abstrait_8h_source.html#l00667">NoeudAbstrait.h:667</a></div></div>
 </div><!-- fragment --></div><!-- contents -->
 </div><!-- doc-content -->
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
-    <li class="navelem"><a class="el" href="../../dir_8f231bbbd90d174e51ca0653d136090e.html">DLL</a></li><li class="navelem"><a class="el" href="../../dir_36dc7c40dbbfd954e66bdd1b2e3aefdb.html">Visiteurs</a></li><li class="navelem"><a class="el" href="../../db/d30/_visiteur_x_m_l_8cpp.html">VisiteurXML.cpp</a></li>
-    <li class="footer">GÃ©nÃ©rÃ© le Dimanche 15 FÃ©vrier 2015 22:35:31 pour Pain Ball par
+    <li class="navelem"><a class="el" href="../../dir_937900b87e0c7a5fa01190c395fb83f7.html">Sources</a></li><li class="navelem"><a class="el" href="../../dir_5638be7ced97c879b21b23536e800e77.html">DLL</a></li><li class="navelem"><a class="el" href="../../dir_7d87219ddab679acc20c941422b2a09d.html">Visiteurs</a></li><li class="navelem"><a class="el" href="../../db/d30/_visiteur_x_m_l_8cpp.html">VisiteurXML.cpp</a></li>
+    <li class="footer">GÃ©nÃ©rÃ© le Lundi 16 FÃ©vrier 2015 07:10:21 pour Pain Ball par
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="../../doxygen.png" alt="doxygen"/></a> 1.8.9.1 </li>
   </ul>

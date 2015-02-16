@@ -31,7 +31,8 @@ VisiteurSelection::VisiteurSelection()
 ///
 /// Constructeur qui initialise les variables membres de la classe.
 ///
-/// @param[in] dev : Le vecteur de deplacement
+/// @param[in] pointDansLeMonde : Le vecteur de points
+/// @param[in] valeurStencil : La valeur de la selection
 ///
 /// @return Aucune (constructeur).
 ///

@@ -133,7 +133,7 @@ bool VisiteurAgrandissement::traiter(NoeudAbstrait* noeud)
 		// REMARQUE: LE SCALE EST QUELQUE CHOSE DE MULTIPLICATIF
 		// et on utilise un deplacement pour la definir, qui est "additif". 
 		// Qu'est-ce qui transforme l'addition en multiplication? A^(x + y) = (A^x) * (A^y)
-		// c'est pour ça qu'il y a une exponentielle dans la fonction de facadeModele qui calcule le scale a donner au visiteur.
+		// c'est pour ca qu'il y a une exponentielle dans la fonction de facadeModele qui calcule le scale a donner au visiteur.
 		glm::dvec3 scaleInit = noeud->obtenirAgrandissement();
 		glm::dvec3 scaleFinal = glm::dvec3{ scaleInit[0] * homothetie_[0], scaleInit[1] * homothetie_[1], scaleInit[2] * homothetie_[2] };
 	
@@ -181,7 +181,7 @@ bool VisiteurAgrandissement::traiter(NoeudMur* noeud)
 		// REMARQUE: LE SCALE EST QUELQUE CHOSE DE MULTIPLICATIF
 		// et on utilise un deplacement pour la definir, qui est "additif". 
 		// Qu'est-ce qui transforme l'addition en multiplication? A^(x + y) = (A^x) * (A^y)
-		// c'est pour ça qu'il y a une exponentielle dans la fonction de facadeModele qui calcule le scale a donner au visiteur.
+		// c'est pour ca qu'il y a une exponentielle dans la fonction de facadeModele qui calcule le scale a donner au visiteur.
 		glm::dvec3 scaleInit = noeud->obtenirAgrandissement();
 		glm::dvec3 scaleFinal = glm::dvec3{ scaleInit[0], scaleInit[1] * homothetie_[1] , scaleInit[2] };
 		noeud->assignerEchelle(scaleFinal);
@@ -213,7 +213,7 @@ bool VisiteurAgrandissement::traiter(NoeudGenerateurBille* noeud)
 		// REMARQUE: LE SCALE EST QUELQUE CHOSE DE MULTIPLICATIF
 		// et on utilise un deplacement pour la definir, qui est "additif". 
 		// Qu'est-ce qui transforme l'addition en multiplication? A^(x + y) = (A^x) * (A^y)
-		// c'est pour ça qu'il y a une exponentielle dans la fonction de facadeModele qui calcule le scale a donner au visiteur.
+		// c'est pour ca qu'il y a une exponentielle dans la fonction de facadeModele qui calcule le scale a donner au visiteur.
 		glm::dvec3 scaleInit = noeud->obtenirAgrandissement();
 		glm::dvec3 scaleFinal = glm::dvec3{ scaleInit[0] * homothetie_[0], scaleInit[1] * homothetie_[1], scaleInit[2] * homothetie_[2] };
 

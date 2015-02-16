@@ -464,7 +464,7 @@ inline void NoeudAbstrait::assignerSelection(bool selectionne)
 ///
 /// Cette fonction permet d'assigner un zoom a l'objet.
 ///
-/// @param selectionne : L'echelle a appliquee.
+/// @param scale : L'echelle a appliquee.
 ///
 /// @return Aucune
 ///
@@ -477,11 +477,11 @@ inline void NoeudAbstrait::assignerEchelle(glm::dvec3 scale)
 
 ////////////////////////////////////////////////////////////////////////
 ///
-/// @fn inline void NoeudAbstrait::assignerEchelle( foloat rotation )
+/// @fn inline void NoeudAbstrait::assignerRotation(glm::dvec3 rotation)
 ///
 /// Cette fonction permet d'assigner une rotation a l'objet.
 ///
-/// @param selectionne : La rotation a appliquee.
+/// @param rotation : La rotation a appliquee.
 ///
 /// @return Aucune
 ///
@@ -494,11 +494,9 @@ inline void NoeudAbstrait::assignerRotation(glm::dvec3 rotation)
 
 ////////////////////////////////////////////////////////////////////////
 ///
-/// @fn inline void NoeudAbstrait::assignerEchelle( foloat rotation )
+/// @fn inline void NoeudAbstrait::resetRotation()
 ///
 /// Cette fonction permet d'assigner une rotation a l'objet.
-///
-/// @param selectionne : La rotation a appliquee.
 ///
 /// @return Aucune
 ///
@@ -562,13 +560,11 @@ inline void NoeudAbstrait::assignerImpossible(bool impossible)
 
 ////////////////////////////////////////////////////////////////////////
 ///
-/// @fn inline void NoeudAbstrait::estImpossible( bool impossible )
+/// @fn inline bool NoeudAbstrait::estImpossible() const
 ///
 /// Cette fonction permet d'obtenir l'etat d'etre impossible ou non du noeud.
 ///
-/// @param impossible : L'etat impossible ou non.
-///
-/// @return Aucune
+/// @return bool L'etat impossible ou non.
 ///
 ////////////////////////////////////////////////////////////////////////
 inline bool NoeudAbstrait::estImpossible() const

@@ -47,7 +47,7 @@ VisiteurLimitesSelection::~VisiteurLimitesSelection()
 
 ////////////////////////////////////////////////////////////////////////
 ///
-/// @fn bool VisiteurLimitesSelection::traiter(ArbreRenduINF2990* noeud)
+/// @fn bool VisiteurLimitesSelection::traiter(ArbreRenduINF2990* arbre)
 /// @brief Cette fonction traite l'arbre de rendu.
 ///
 /// Cette fonction retourne true pour dire que l'operation s'est

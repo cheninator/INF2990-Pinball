@@ -18,6 +18,11 @@ var group___etat =
       [ "traiterClavier", "d7/d0b/class_interface_graphique_1_1_etat_portail.html#aaff99a2bd6fdce9ab9b80f1a4422b7c9", null ],
       [ "traiterSouris", "d7/d0b/class_interface_graphique_1_1_etat_portail.html#a34ba690c86f01c46ab4714eb1678779e", null ]
     ] ],
+    [ "EtatMur", "dd/dc0/class_interface_graphique_1_1_etat_mur.html", [
+      [ "EtatMur", "dd/dc0/class_interface_graphique_1_1_etat_mur.html#a88f41c4f16839f550b3266f308b063c2", null ],
+      [ "traiterClavier", "dd/dc0/class_interface_graphique_1_1_etat_mur.html#aa37533685e323d2bf111f2bbb2774c4f", null ],
+      [ "traiterSouris", "dd/dc0/class_interface_graphique_1_1_etat_mur.html#ad345e25c40089f391815883d2be612a9", null ]
+    ] ],
     [ "EtatSelection", "db/d2c/class_interface_graphique_1_1_etat_selection.html", [
       [ "EtatSelection", "db/d2c/class_interface_graphique_1_1_etat_selection.html#a99c5a72c951775d0575da09d59683a8a", null ],
       [ "traiterClavier", "db/d2c/class_interface_graphique_1_1_etat_selection.html#a02ce17f362f1a2f7e4c1e6a1d930dd64", null ],

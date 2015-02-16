@@ -32,7 +32,7 @@ VisiteurSelectionInverse::VisiteurSelectionInverse()
 /// Constructeur qui initialise les variables membres de la classe.
 ///
 /// @param[in] pointDansLeMonde : Le point de l'espace
-/// @param[in] int : La valeur du stencil
+/// @param[in] valeurStencil : La valeur du stencil
 ///
 /// @return Aucune (constructeur).
 ///

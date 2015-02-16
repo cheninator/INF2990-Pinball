@@ -37,7 +37,7 @@ var class_noeud_abstrait =
     [ "estModifiable", "da/df4/class_noeud_abstrait.html#a66c10deeac91c067ed9b9d703d203593", null ],
     [ "estSelectionnable", "da/df4/class_noeud_abstrait.html#aa3f3a34571af62de0da5db2d8f54f690", null ],
     [ "estSelectionne", "da/df4/class_noeud_abstrait.html#a8fb7a3313ce4d361ef7ec8e45ba8add5", null ],
-    [ "getColorShift", "da/df4/class_noeud_abstrait.html#aa358980c6250f9674ffca7bd75962ab4", null ],
+    [ "getColorShift", "da/df4/class_noeud_abstrait.html#a40a5a2fc7d6ea502b7b2b3764efabf48", null ],
     [ "getImpossible", "da/df4/class_noeud_abstrait.html#ace1977c7dd717787c1cc73ee96298bb4", null ],
     [ "getNumero", "da/df4/class_noeud_abstrait.html#a3f7a11889c5dca8864b3a01ed25a4d21", null ],
     [ "getTransparent", "da/df4/class_noeud_abstrait.html#ada2af852ca452030fe7481476f1d2e71", null ],
