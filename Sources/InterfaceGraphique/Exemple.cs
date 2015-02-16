@@ -1103,6 +1103,18 @@ namespace InterfaceGraphique
             bouton_Deplacement_Click(this, e);
         }
 
+        ////////////////////////////////////////////////////////////////////////
+        ///
+        /// @fn private void MenuP_MenuItem_Click(object sender, EventArgs e)
+        /// @brief Gestion des evenements lorsque l'utilisateur clique sur 
+        ///        le menu MenuPrincipal.
+        /// 
+        /// @param[in] sender : Objet duquel provient un evenement
+        /// @param[in] e : evenement qui lance la fonction.
+        /// 
+        /// @return Aucune.
+        ///
+        ////////////////////////////////////////////////////////////////////////
         private void MenuP_MenuItem_Click(object sender, EventArgs e)
         {
             this.Close();
@@ -1265,12 +1277,35 @@ namespace InterfaceGraphique
             butourCirc_bouton_Click(this, e);
         }
 
+        ////////////////////////////////////////////////////////////////////////
+        ///
+        /// @fn private void Orthographique_MenuItem_Click(object sender, EventArgs e)
+        /// @brief Gestion des evenements lorsque l'utilisateur clique sur 
+        ///        le menu Vue Orthographique.
+        /// 
+        /// @param[in] sender : Objet duquel provient un evenement
+        /// @param[in] e : evenement qui lance la fonction.
+        /// 
+        /// @return Aucune.
+        ///
+        ////////////////////////////////////////////////////////////////////////
         private void Orthographique_MenuItem_Click(object sender, EventArgs e)
         {
             Console.WriteLine("Vue Orthoraphique.");
             // TO DO
         }
-
+        ////////////////////////////////////////////////////////////////////////
+        ///
+        /// @fn private void Orbite_MenuItem_Click(object sender, EventArgs e)
+        /// @brief Gestion des evenements lorsque l'utilisateur clique sur 
+        ///        le menu Vue Orbite.
+        /// 
+        /// @param[in] sender : Objet duquel provient un evenement
+        /// @param[in] e : evenement qui lance la fonction.
+        /// 
+        /// @return Aucune.
+        ///
+        ////////////////////////////////////////////////////////////////////////
         private void Orbite_MenuItem_Click(object sender, EventArgs e)
         {
             Console.WriteLine("Vue Orbitale.");
@@ -1297,6 +1332,18 @@ namespace InterfaceGraphique
             // TO DO
         }
 
+        ////////////////////////////////////////////////////////////////////////
+        ///
+        /// @fn private void ModeTest_MenuItem_Click(object sender, EventArgs e)
+        /// @brief Gestion des evenements lorsque l'utilisateur clique sur 
+        ///        le menu Mode Test.
+        /// 
+        /// @param[in] sender : Objet duquel provient un evenement
+        /// @param[in] e : evenement qui lance la fonction.
+        /// 
+        /// @return Aucune.
+        ///
+        ////////////////////////////////////////////////////////////////////////
         private void ModeTest_MenuItem_Click(object sender, EventArgs e)
         {
             Console.WriteLine("Mode Test.");
@@ -1968,11 +2015,6 @@ namespace InterfaceGraphique
         ////////////////////////////////////////////////////////////////////////
         public void scaleSouris(MouseEventArgs e)
         {
-            //int deltaY = -(currentP.Y - previousP.Y);
-            //FonctionsNatives.addScaleObjet(deltaY);
-            //previousP.Y = currentP.Y;
-            //currentP.Y = e.Y;
-
             FonctionsNatives.agrandirSelection(previousP.X, previousP.Y, currentP.X, currentP.Y);
             previousP = currentP;
             currentP = panel_GL.PointToClient(MousePosition);
@@ -2579,6 +2621,7 @@ namespace InterfaceGraphique
         {
             label_Zoom.ForeColor = Color.Blue;
         }
+
         //////////////////////////////////////////////////////////////////////////////////////////
         ///
         /// @fn private void label_Zoom_MouseLeave(object sender, EventArgs e)

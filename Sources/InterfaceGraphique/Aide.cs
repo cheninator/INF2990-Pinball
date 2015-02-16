@@ -21,13 +21,7 @@ namespace InterfaceGraphique
 {
     ///////////////////////////////////////////////////////////////////////////
     /// @class Aide
-    /// @brief Fenetre d'aide de l'
-    /// 
-    /// 
-    /// 
-    /// 
-    /// diteur.
-    ///
+    /// @brief Fenetre d'aide de l'editeur
     /// @author The Ballers
     /// @date 2015-01-27
     /// 
