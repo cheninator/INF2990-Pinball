@@ -646,10 +646,7 @@ namespace InterfaceGraphique
         public EtatDuplication(Exemple form) : base(form) {
 
             form_.trackCursor(true);
-            form_.dupliquerSelection();
-            
-            
-         
+            form_.dupliquerSelection();        
         }
 
         ////////////////////////////////////////////////////////////////////////
@@ -682,11 +679,7 @@ namespace InterfaceGraphique
             
             form_.deplacementSouris(e);
 
-            if (e.Button == MouseButtons.Left)
-            {
-                form_.trackCursor(false);
-            }
-            else if (e.Button == MouseButtons.Right)
+            if (e.Button == MouseButtons.Right)
                 form_.deplacementVueSouris(e);
             return true;
         }
