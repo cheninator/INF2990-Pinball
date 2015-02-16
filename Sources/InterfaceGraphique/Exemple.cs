@@ -598,7 +598,7 @@ namespace InterfaceGraphique
         ////////////////////////////////////////////////////////////////////////
         private void panel1_Click(object sender, EventArgs e)
         {
-            Console.Write(this.PointToClient(MousePosition));
+            //Console.Write(this.PointToClient(MousePosition));
         }
 
         ////////////////////////////////////////////////////////////////////////
@@ -964,7 +964,7 @@ namespace InterfaceGraphique
         ////////////////////////////////////////////////////////////////////////
         private void Fenetre_Redimension(object sender, EventArgs e)
         {
-            Console.Write("Width to send : " + panel_GL.Width.ToString() + "\n" + "Height to send : " + panel_GL.Height.ToString() + "\n");
+            // Console.Write("Width to send : " + panel_GL.Width.ToString() + "\n" + "Height to send : " + panel_GL.Height.ToString() + "\n");
             FonctionsNatives.redimensionnerFenetre(panel_GL.Width == 0 ? 1 : panel_GL.Width, panel_GL.Height == 0 ? 1 : panel_GL.Height);
            
         }
@@ -2151,10 +2151,10 @@ namespace InterfaceGraphique
                 creationReussie = FonctionsNatives.creerObjetAvecTests(myObjectName, myObjectName.Capacity, twin, colorShift,
                                                                         panel_GL.PointToClient(MousePosition).X, panel_GL.PointToClient(MousePosition).Y, 0,
                                                                         angleX, angleY, angleZ);
-                if (creationReussie)
-                    Console.WriteLine("Création avec boite englobante respectée");
-                else
-                    Console.WriteLine("Échec de la création");
+               // if (creationReussie)
+                    //Console.WriteLine("Création avec boite englobante respectée");
+               // else
+                   // Console.WriteLine("Échec de la création");
             }
             else
             { 
@@ -2168,10 +2168,10 @@ namespace InterfaceGraphique
                     previousP.X = panel_GL.PointToClient(MousePosition).X;
                     previousP.Y = panel_GL.PointToClient(MousePosition).Y;
 
-                    if (FonctionsNatives.verifierCliqueDansTable(panel_GL.PointToClient(MousePosition).X, panel_GL.PointToClient(MousePosition).Y))
-                        Console.WriteLine("Click dans la table");
-                    else
-                        Console.WriteLine("Click hors de la table");
+                  //  if (FonctionsNatives.verifierCliqueDansTable(panel_GL.PointToClient(MousePosition).X, panel_GL.PointToClient(MousePosition).Y))
+                  //      Console.WriteLine("Click dans la table");
+                  //  else
+                  //      Console.WriteLine("Click hors de la table");
                 }
             }
         }
