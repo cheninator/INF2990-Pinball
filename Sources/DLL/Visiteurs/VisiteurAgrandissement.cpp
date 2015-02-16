@@ -135,7 +135,10 @@ bool VisiteurAgrandissement::traiter(NoeudAbstrait* noeud)
 		glm::dvec3 scaleInit = noeud->obtenirAgrandissement();
 		glm::dvec3 scaleFinal = glm::dvec3{ scaleInit[0] * homothetie_[0], scaleInit[1] * homothetie_[1], scaleInit[2] * homothetie_[2] };
 	
-	
+		double zSpecial = 10;
+
+		noeud->assignerEchelle(scaleFinal);
+		
 
 		glm::dvec3 position = noeud->obtenirPositionRelative();
 		glm::dvec3 boite[4];
@@ -146,13 +149,10 @@ bool VisiteurAgrandissement::traiter(NoeudAbstrait* noeud)
 			if (zTop < boite[i].z)
 				zTop = boite[i].z;
 		}
-		double distancePositionTop = zTop;
-		double correctionZ = (1 - homothetie_[0]) * distancePositionTop; // Homothetie[0] est de l'ordre de 1.003, donc (1-homothetie[0]) est petie, donc la correction en z est petite.
-		position += glm::dvec3{ 0, 0, correctionZ };
-		// std::cout << "AVANT position.z : " << position.z << "   distancePositionTop : " << distancePositionTop << "    TOP : " << position.z + zTop << std::endl;
-		noeud->assignerEchelle(scaleFinal);
-		
-		noeud->assignerPositionRelative(position);
+
+
+
+		noeud->assignerPositionRelative(glm::dvec3{ position.x, position.y, zSpecial - zTop });
 		
 	}
 	return true;
