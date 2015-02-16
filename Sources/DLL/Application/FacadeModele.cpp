@@ -736,6 +736,7 @@ void FacadeModele::dupliquerSelection(int i, int j)
 	arbre_->accepterVisiteur(visiteur);
 	duplicationHorsTable_ = false;
 	delete visiteur;
+	deplacerSelection(i, j, i, j, true);
 }
 
 
