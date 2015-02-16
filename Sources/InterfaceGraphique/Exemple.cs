@@ -338,7 +338,8 @@ namespace InterfaceGraphique
                     }
                     else
                         fs.EnterFullScreenMode(this);
-                   FonctionsNatives.resetZoom();
+                  // A modifier si on veut            
+                 //  FonctionsNatives.resetZoom();
                     
                 }      
           
