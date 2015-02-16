@@ -2451,8 +2451,15 @@ namespace InterfaceGraphique
 
         }
 
-      
 
+        //////////////////////////////////////////////////////////////////////////////////////////
+        ///
+        /// @fn public void creationMur()
+        /// @brief Fonction qui s'assure de la bonne création des murs.
+        /// 
+        /// @return Aucune.
+        ///
+        //////////////////////////////////////////////////////////////////////////////////////////
 
         public void creationMur()
         {
@@ -2460,7 +2467,16 @@ namespace InterfaceGraphique
          //  Console.WriteLine(FonctionsNatives.getScale());
            previousP = currentP;
            currentP = panel_GL.PointToClient(MousePosition);
-       
+
+        //////////////////////////////////////////////////////////////////////////////////////////
+        ///
+        /// @fn private void IncreaseZoomButton_Click()
+        /// @brief Fonction qui s'assure de la bonne création des murs.
+        /// @param[in] sender : Objet duquel provient un événement.
+        /// @param[in] e : Événement qui lance la fonction.
+        /// @return Aucune.
+        ///
+        //////////////////////////////////////////////////////////////////////////////////////////
         }
         private void IncreaseZoomButton_Click(object sender, EventArgs e)
         {
