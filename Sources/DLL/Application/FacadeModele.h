@@ -139,7 +139,7 @@ public:
    //verifie si la selection est hors table lors de la duplication
    bool duplicationEstHorsTable();
 
-private:
+	private:
 
    /// Constructeur par defaut.
    FacadeModele() = default;
