@@ -832,21 +832,23 @@ void FacadeModele::positionnerMur(int originX, int originY,int x1, int y1, int x
 		// Calcul de la translation
 		// ========================
 		// position = positionOriginale + vecteur / 2.0; // Le centre du mur est à mi-chemin entre origin et le point du curseur. 
-	if (glm::length(vecteur) > 16)
+	if (glm::length(vecteur) > .1)
 		position = positionOriginale + vecteur / 2.0;
 	else if (glm::length(vecteur) != 0)
 		position = positionOriginale + 8.0 *glm::normalize(vecteur); // 
-	else
-		position = positionOriginale + glm::dvec3{ 0, 8, 0 };
+	// else
+		// position = positionOriginale + glm::dvec3{ 0, 8, 0 };
 
 	
-	if (glm::length(vecteur) > 16)
+	if (glm::length(vecteur) > 0.1)
 	{
 		// Calcul du scale
 		// ===============
 		double scale = glm::length(vecteur) / 16; //  16.0 est la longueur originale du mur. 
 		scaleFinal = glm::dvec3{ 1, scale, 1 };
 	}
+	else
+		scaleFinal = glm::dvec3{ 1, 0.1, 1 };
 
 
 	// Tester la transformation
