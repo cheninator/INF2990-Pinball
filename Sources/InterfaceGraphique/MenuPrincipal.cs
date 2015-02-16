@@ -217,7 +217,7 @@ namespace InterfaceGraphique
         {
             StringBuilder initSound = new StringBuilder("");
             InterfaceGraphique.FonctionsNatives.playSound(initSound, initSound.Capacity, true); // Initialise le son
-        }
+            }
 
         private void bouton_campagne_Click(object sender, EventArgs e)
         {

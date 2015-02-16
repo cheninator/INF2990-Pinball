@@ -483,6 +483,8 @@ namespace InterfaceGraphique
             this.label_Zoom.Text = "(-)        Zoom        (+)";
             this.label_Zoom.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
             this.label_Zoom.Click += new System.EventHandler(this.label_Zoom_Click);
+            this.label_Zoom.MouseEnter += new System.EventHandler(this.label_Zoom_MouseEnter);
+            this.label_Zoom.MouseLeave += new System.EventHandler(this.label_Zoom_MouseLeave);
             // 
             // bouton_Creation
             // 

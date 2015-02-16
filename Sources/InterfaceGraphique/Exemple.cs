@@ -303,6 +303,12 @@ namespace InterfaceGraphique
                         etat = new EtatCreation(this);
                         deselection();
                     }
+                    else if (etat is EtatDuplication)
+                    {
+                        FonctionsNatives.removeObject();
+                        deselection();
+                        etat = new EtatNone(this); 
+                    }
                     else
                     {
                         etat = null;
@@ -1710,36 +1716,31 @@ namespace InterfaceGraphique
         private void panel_GL_MouseDown(object sender, MouseEventArgs e)
         {
             origin = panel_GL.PointToClient(MousePosition);
-           
-            if (etat is EtatPortail && e.Button == MouseButtons.Left)
-            {
-              etat = new EtatNone(this);
-              FonctionsNatives.obligerTransparence(false);
-             deselection();
-            }
-          
-
             previousP.X = e.X;
             previousP.Y = e.Y;
             currentP.X = e.X;
             currentP.Y = e.Y;
-
-            if (e.Button == MouseButtons.Left &&
-            (etat is EtatSelection || etat is EtatDeplacement || etat is EtatRotation
-                    || etat is EtatScale || etat is EtatZoom || etat is EtatDuplication
-                    || !(etat is EtatMur)
-                    )
-            )
-                {
-                    panel_GL.MouseMove += new MouseEventHandler(panel_MouseMove);
-                }
-                
+           
+            if (etat is EtatPortail && e.Button == MouseButtons.Left)
+            {
+                etat = new EtatNone(this);
+                FonctionsNatives.obligerTransparence(false);
+                deselection();
+            }
+            else if ((e.Button == MouseButtons.Left && (etat is EtatSelection   || 
+                                                        etat is EtatDeplacement ||
+                                                        etat is EtatRotation    || 
+                                                        etat is EtatScale       || 
+                                                        etat is EtatZoom        ||
+                                                        etat is EtatDuplication ||
+                                                        !(etat is EtatMur)      
+                                                       )
+                     )
+                     || e.Button == MouseButtons.Right)
             
-            if (e.Button == MouseButtons.Right)
             {
                 panel_GL.MouseMove += new MouseEventHandler(panel_MouseMove);
             }
-
         }
 
         ////////////////////////////////////////////////////////////////////////
@@ -1755,68 +1756,54 @@ namespace InterfaceGraphique
         ///
         ////////////////////////////////////////////////////////////////////////
         private void panel_MouseMove(object sender, MouseEventArgs e)
-        {
+        {            
             currentP = panel_GL.PointToClient(MousePosition);
-            if (e.Button == MouseButtons.Right)
-            {
-                deplacementVueSouris(e);
-            }
-          
-            if (etat is EtatCreation)
-            {
-                if (!(FonctionsNatives.verifierCliqueDansTable(e.X, e.Y)))
-                {
-                    Cursor = Cursors.No;
 
-                }
-                else
-                {
-                    Cursor = Cursors.Arrow;
-
-                }
-                if (e.Button == MouseButtons.Right)
-                {
-                    deplacementVueSouris(e);
-                }
-                
-            }
-          
-            
-            if (nbSelection == 1  && !(etat is EtatDuplication)) 
+            if (nbSelection == 1 && !(etat is EtatDuplication))
             {
                 Xbox.Text = Math.Round(FonctionsNatives.getPositionX()).ToString();
                 Ybox.Text = Math.Round(FonctionsNatives.getPositionY()).ToString();
                 Anglebox.Text = Math.Round(FonctionsNatives.getAngle()).ToString();
                 FMEbox.Text = (Math.Round(FonctionsNatives.getScale() * 100) / 100).ToString();
             }
-            if (!(clickValide(origin, currentP)) && (etat is EtatSelection) && e.Button == MouseButtons.Left)
+
+            if (e.Button == MouseButtons.Right)
+            {
+                deplacementVueSouris(e);
+            }          
+            else if (etat is EtatCreation)
+            {
+                if (!(FonctionsNatives.verifierCliqueDansTable(e.X, e.Y)))
+                {
+                    Cursor = Cursors.No;
+                }
+                else
+                {
+                    Cursor = Cursors.Arrow;
+                }
+                if (e.Button == MouseButtons.Right)
+                {
+                    deplacementVueSouris(e);
+                }                
+            }           
+            else if (!(clickValide(origin, currentP)) && (etat is EtatSelection) && e.Button == MouseButtons.Left)
             {
                 etat = new EtatSelectionMultiple(this);
                 FonctionsNatives.initialiserRectangleElastique(origin.X, origin.Y);
             }
-            if (!(clickValide(origin, currentP)) && (etat is EtatZoom) && e.Button == MouseButtons.Left)
+            else if (!(clickValide(origin, currentP)) && (etat is EtatZoom) && e.Button == MouseButtons.Left)
             {
                 etat = new EtatZoomElastique(this);
                 FonctionsNatives.initialiserRectangleElastique(origin.X, origin.Y);
             }
-            if (!(etat is EtatSelectionMultiple) && 
-                !(etat is EtatCreation)          && 
-                !(etat is EtatSelection)         && 
-                !(etat is EtatZoomElastique)
-                )
-            {
-                if ((etat is EtatDuplication) &&
-                (FonctionsNatives.verifierCliqueDansTable(panel_GL.PointToClient(MousePosition).X, panel_GL.PointToClient(MousePosition).Y)))
-                    etat.traiterSouris(e);
-                else if (!(etat is EtatDuplication))
-                {
-                    etat.traiterSouris(e);
-                }
-             
-              //  etat.traiterSouris(e);
-                    
-            }             
-               
+            else if (!(etat is EtatSelectionMultiple) && 
+                     !(etat is EtatCreation)          && 
+                     !(etat is EtatSelection)         && 
+                     !(etat is EtatZoomElastique)
+                    ) 
+            {                
+                etat.traiterSouris(e);                    
+            }              
         }
 
         ////////////////////////////////////////////////////////////////////////
@@ -1835,31 +1822,34 @@ namespace InterfaceGraphique
         {
             Point destination = panel_GL.PointToClient(MousePosition);
             
-            if (!(etat is EtatCreation))
+            if (!(etat is EtatCreation) && !(etat is EtatDuplication))
             {
                 panel_GL.MouseMove -= panel_MouseMove;
             }
+
             if (etat is EtatDuplication && e.Button == MouseButtons.Left)
             {
-               etat = new EtatNone(this);
-               deselection();   
-              
+                if (!FonctionsNatives.sourisEstSurCentreMasse(currentP.X, currentP.Y))
+                    FonctionsNatives.removeObject();
+
+                deselection();
+                panel_GL.MouseMove -= panel_MouseMove;
+                etat = new EtatNone(this);                  
             }
-            if (etat is EtatMur && (clickExtraValide(origin,destination)))
+            else if (etat is EtatMur && (clickExtraValide(origin, destination)))
             {
                 etat = new EtatCreation(this);
                 deselection();
                 return;
             }
-            if (e.Button == MouseButtons.Left)
-            {
-              
+            else if (e.Button == MouseButtons.Left)
+            {              
                if (etat is EtatZoomElastique)
                {
                    etat.traiterSouris(e);
                    etat = new EtatZoom(this);
                }
-               if (etat is EtatSelectionMultiple)
+               else if (etat is EtatSelectionMultiple)
                {                   
                    etat.traiterSouris(e);
                    etat = new EtatSelection(this);
@@ -1867,9 +1857,7 @@ namespace InterfaceGraphique
                else if(clickValide(origin,destination)) 
                 {
                     etat.traiterSouris(e);
-                 //   etat = new EtatSelection(this);
-                }
-               
+                }               
             }
         }
 
@@ -1928,7 +1916,10 @@ namespace InterfaceGraphique
             // en coordonnees du monde en utilisant convertirClotureAVirtuelle(...) comme ça on n'a pas 
             // besoin de ce facteur mistérieux.  Et aussi, cette technique devrait bien marcher 
             // quand on sera rendu avec la vue orbite.
-            FonctionsNatives.deplacerSelection(previousP.X, previousP.Y, currentP.X, currentP.Y);
+            if (etat is EtatDuplication)
+                FonctionsNatives.deplacerSelection(previousP.X, previousP.Y, currentP.X, currentP.Y, true);
+            else
+                FonctionsNatives.deplacerSelection(previousP.X, previousP.Y, currentP.X, currentP.Y, false);
             //Xbox.Text = currentP.X.ToString();
             previousP = currentP;
             currentP = panel_GL.PointToClient(MousePosition);
@@ -2358,9 +2349,7 @@ namespace InterfaceGraphique
             else
             {
                 panel_GL.MouseMove -= new MouseEventHandler(panel_MouseMove);
-            }
-         
-            
+            }            
         }
 
         //////////////////////////////////////////////////////////////////////////////////////////
@@ -2517,6 +2506,16 @@ namespace InterfaceGraphique
         {
             Zoom_MenuItem_Click(this, e);
         }
+
+        private void label_Zoom_MouseEnter(object sender, EventArgs e)
+        {
+            label_Zoom.ForeColor = Color.Blue;
+        }
+
+        private void label_Zoom_MouseLeave(object sender, EventArgs e)
+        {
+            label_Zoom.ForeColor = Color.Black;
+        }
     }
 
     ///////////////////////////////////////////////////////////////////////////
@@ -2656,7 +2655,7 @@ namespace InterfaceGraphique
         public static extern void orbite(double phi, double theta);
 
         [DllImport(@"Noyau.dll", CallingConvention = CallingConvention.Cdecl)]
-        public static extern void deplacerSelection(int x1, int y1, int x2, int y2);
+        public static extern void deplacerSelection(int x1, int y1, int x2, int y2, bool duplication);
 
         [DllImport(@"Noyau.dll", CallingConvention = CallingConvention.Cdecl)]
         public static extern void tournerSelectionSouris(int x1, int y1, int x2, int y2);
@@ -2726,5 +2725,8 @@ namespace InterfaceGraphique
 
         [DllImport(@"Noyau.dll", CallingConvention = CallingConvention.Cdecl)]
         public static extern bool resetZoom();
+
+        [DllImport(@"Noyau.dll", CallingConvention = CallingConvention.Cdecl)]
+        public static extern bool sourisEstSurCentreMasse(int i, int j);
     }
 }

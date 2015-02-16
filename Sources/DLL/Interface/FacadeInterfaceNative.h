@@ -48,7 +48,7 @@ extern "C" {
 	__declspec(dllexport) int selectionnerObjetSousPointClique(int i, int j, int largeur, int hauteur, bool ctrlDown = false);
 	__declspec(dllexport) void agrandirSelection(int x1, int y1, int x2, int y2);
 	__declspec(dllexport) void orbite(double phi, double theta);
-	__declspec(dllexport) void deplacerSelection(int x1, int y1, int x2, int y2);
+	__declspec(dllexport) void deplacerSelection(int x1, int y1, int x2, int y2, bool duplication);
 	__declspec(dllexport) void tournerSelectionSouris(int x1, int y1, int x2, int y2);
 	__declspec(dllexport) void zoomInElastique(int xCoin1, int yCoin1, int xCoin2, int yCoin2);
 	__declspec(dllexport) void zoomOutElastique(int xCoin1, int yCoin1, int xCoin2, int yCoin2);
@@ -65,6 +65,7 @@ extern "C" {
 	__declspec(dllexport) int obtenirCentreMasseX(void);
 	__declspec(dllexport) int obtenirCentreMasseY(void);
 	__declspec(dllexport) bool resetZoom(void);
+	__declspec(dllexport) bool sourisEstSurCentreMasse(int i, int j);
 }
 
 #endif // __FACADE_INTERFACE_NATIVE_H__
