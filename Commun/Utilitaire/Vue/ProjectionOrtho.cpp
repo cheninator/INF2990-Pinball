@@ -60,8 +60,8 @@ namespace vue {
 		yMinFenetre_{ yMinFenetre },
 		yMaxFenetre_{ yMaxFenetre }
 	{
-		std::cout << "\n Zoom in Maximal : " << zoomInMax
-			<< "\n Zoom out Maximale: " << zoomOutMax << '\n';
+		//std::cout << "\n Zoom in Maximal : " << zoomInMax
+		//	<< "\n Zoom out Maximale: " << zoomOutMax << '\n';
 		ajusterRapportAspect(DirectionZoom::IN_);
 	}
 
@@ -98,8 +98,8 @@ namespace vue {
 			yMinFenetre_ = yMinCopie;
 		}
 
-		std::cout << "Taille de la fenetre virtuelle : " <<
-			(xMaxFenetre_ - xMinFenetre_) << "x" << (yMaxFenetre_ - yMinFenetre_) << std::endl;
+		//std::cout << "Taille de la fenetre virtuelle : " <<
+		//	(xMaxFenetre_ - xMinFenetre_) << "x" << (yMaxFenetre_ - yMinFenetre_) << std::endl;
 	}
 
 
@@ -129,8 +129,8 @@ namespace vue {
 		yMinFenetre_ -= augmentationY;
 		yMaxFenetre_ += augmentationY;
 		
-		std::cout << "Taille de la fenetre virtuelle : " <<
-			(xMaxFenetre_ - xMinFenetre_) << "x" << (yMaxFenetre_ - yMinFenetre_) << std::endl;
+		//std::cout << "Taille de la fenetre virtuelle : " <<
+		//	(xMaxFenetre_ - xMinFenetre_) << "x" << (yMaxFenetre_ - yMinFenetre_) << std::endl;
 	}
 
 
@@ -238,7 +238,7 @@ namespace vue {
 		/// soit plus petite que le zoom maximal permit pour que le zoom soit annulé
 		if (abs(coin2.x - coin1.x) < zoomInMax_ || abs(coin2.y - coin1.y) < zoomInMax_)
 		{
-			std::cout << "Le zoom out minimal a été atteint : zoom annulé ! \n";
+			//std::cout << "Le zoom out minimal a été atteint : zoom annulé ! \n";
 			return;
 		}
 
@@ -390,7 +390,7 @@ namespace vue {
 		glm::dvec2 currentPoint((xMinFenetre_ + xMaxFenetre_) / 2.0, (yMinFenetre_ + yMaxFenetre_) / 2.0);
 		glm::dvec2 deplacement(pointCentre - currentPoint);
 
-		std::cout << "\n Vecteur de deplacemnt: (" << deplacement.x << ", " << deplacement.y << ") \n";
+		// std::cout << "\n Vecteur de deplacemnt: (" << deplacement.x << ", " << deplacement.y << ") \n";
 		// Déplacement (en supposant que le vecteur est bon)
 		xMinFenetre_ += deplacement.x;
 		xMaxFenetre_ += deplacement.x;
@@ -420,7 +420,7 @@ namespace vue {
 				
 		if (abs(rapportAspect - rapportAspectVirtuel) / rapportAspect < (0.0001 * rapportAspect))
 		{
-			std::cout << "\n Rapports aspects sont egaux : pas d'ajustation \n";
+			//std::cout << "\n Rapports aspects sont egaux : pas d'ajustation \n";
 			return; // Les deux rapports d'aspects sont considérés dans la marge d'erreur
 		}
 		if (rapportAspectVirtuel > rapportAspect)
@@ -429,9 +429,9 @@ namespace vue {
 		else // if (rapportAspectVirtuel < rapportAspect)
 			ajusterRapportAspectX(rapportAspect, dir);
 		
-		std::cout << "\n Après ajustement de rapport d'aspect : \n";
-		std::cout << "Rapport d'aspect Virtuel : " << (xMaxFenetre_ - xMinFenetre_) / (yMaxFenetre_ - yMinFenetre_) << '\n';
-		std::cout << "Rapport d'aspect Cloture : " << rapportAspect << "\n \n";
+		//std::cout << "\n Après ajustement de rapport d'aspect : \n";
+		//std::cout << "Rapport d'aspect Virtuel : " << (xMaxFenetre_ - xMinFenetre_) / (yMaxFenetre_ - yMinFenetre_) << '\n';
+		//std::cout << "Rapport d'aspect Cloture : " << rapportAspect << "\n \n";
 
 	}
 
@@ -500,7 +500,7 @@ namespace vue {
 		bool valide = false;
 		if (xBorneMax - xBorneMin >= zoomOutMax_ || yBorneMax - yBorneMin >= zoomOutMax_)
 		{
-			std::cout << "Le zoom out maximal a été atteint : zoom annulé ! \n";
+			// std::cout << "Le zoom out maximal a été atteint : zoom annulé ! \n";
 		}
 		else
 			valide = true;
@@ -529,7 +529,7 @@ namespace vue {
 		bool valide = false;
 		if ((xBorneMax - xBorneMin) <= zoomInMax_ || (yBorneMax - yBorneMin) <= zoomInMax_)
 		{
-			std::cout << "Le zoom out minimal a été atteint : zoom annulé ! \n";
+			// std::cout << "Le zoom out minimal a été atteint : zoom annulé ! \n";
 		}
 		else
 			valide = true;

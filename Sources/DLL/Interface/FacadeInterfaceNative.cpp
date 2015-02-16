@@ -405,7 +405,7 @@ extern "C"
 		FacadeModele::obtenirInstance()->obtenirVue()->convertirClotureAVirtuelle(x, y, maPosition);
 		if (FacadeModele::obtenirInstance()->estDansTable(maPosition)) {
 			objet->assignerPositionRelative({ maPosition.x, maPosition.y, z });
-			std::cout << std::endl << "x: " << maPosition.x << "y: " << maPosition.y << "z: " << maPosition.z << std::endl;
+			// std::cout << std::endl << "x: " << maPosition.x << "y: " << maPosition.y << "z: " << maPosition.z << std::endl;
 		}
 	}
 
@@ -524,7 +524,7 @@ extern "C"
 	{
 		if (objet == nullptr)
 			return;
-		std::cout << direction;
+		// std::cout << direction;
 		if (direction == 'x' || direction == 'X' || direction == '0')
 			objet->assignerRotation({ 0.0, 0.0, angle });
 		else if (direction == 'y' || direction == 'Y' || direction == '1')
