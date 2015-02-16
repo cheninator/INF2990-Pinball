@@ -1,5 +1,5 @@
 ////////////////////////////////////////////////
-/// @file   VisiteurSelection.cpp
+/// @file   VisiteurSelectionInverse.cpp
 /// @author The Ballers
 /// @date   2015-02-01
 ///
@@ -8,7 +8,7 @@
 #include "VisiteurSelectionInverse.h"
 #include "../Arbre/ArbreRenduINF2990.h"
 #include "../Arbre/Noeuds/NoeudTable.h"
-#include <iostream>
+
 
 ////////////////////////////////////////////////////////////////////////
 ///
@@ -75,22 +75,13 @@ VisiteurSelectionInverse::~VisiteurSelectionInverse()
 ////////////////////////////////////////////////////////////////////////
 bool VisiteurSelectionInverse::traiter(ArbreRenduINF2990* arbre)
 {
-	// Visiter les enfants de l'arbre
-	//std::cout << "Visite d'un ArbreRenduINF2990 avec " << arbre->obtenirNombreEnfants() << " enfants" << std::endl;
+	// Traiter les enfants de l'arbre de rendu
 	for (unsigned int i = 0; i < arbre->obtenirNombreEnfants(); i++)
 	{
-		// Traiter les enfants de l'arbre de rendu
-		//std::cout << "appel de accepterVisiteur sur l'enfant " << i << " de l'ArbreRendu2990" << std::endl;
 		arbre->getEnfant(i)->accepterVisiteur(this);
-
-		// Puisque getEnfant(i) retourne un NoeudAbstrait*, traiter va faire le traiter de NoeudAbstrait donc ce qui suit ne marche pas
-		// std::cout << "appel de traiter sur l'enfant " << i << " de l'ArbreRendu2990" << std::endl;
-		// traiter(arbre->getEnfant(i));
-
 	}
 
 	return true;
-
 }
 
 
@@ -112,9 +103,9 @@ bool VisiteurSelectionInverse::traiter(NoeudTable* table)
 	// Traiter les enfants selectionnés de la table
 	for (unsigned int i = 0; i < table->obtenirNombreEnfants(); i++)
 	{
-		//std::cout << "appel de accepterVisiteur sur l'enfant " << i << " de la table" << std::endl;
 		table->getEnfant(i)->accepterVisiteur(this);
 	}
+
 	return true;
 }
 
@@ -136,30 +127,20 @@ bool VisiteurSelectionInverse::traiter(NoeudAbstrait* noeud)
 {
 	double distance = glm::dot(pointDansLeMonde_ - noeud->obtenirPositionRelative(), pointDansLeMonde_ - noeud->obtenirPositionRelative());
 	distance = sqrt(distance);
-	std::cout << "VisiteurSelectionInverse::traiter() d'un noeudAbstrait avec identifiant " << noeud->getNumero() << std::endl;
-	std::cout << noeud->obtenirPositionRelative().x << ","<< noeud->obtenirPositionRelative().y << "," << noeud->obtenirPositionRelative().z << ",      Distance:" << distance << std::endl;
-
+	
 	if (valeurStencil_ == noeud->getNumero() && noeud->estSelectionnable() /*&& noeud->estModifiable()*/)
 	{
-		std::cout << "Noeud de type " << noeud->getType() << " selectionne avec CTRL CLICK " << std::endl;
+
 		if (noeud->estSelectionne())
-		{
 			noeud->assignerSelection(false);
-		}
+
 		else
-		{
 			noeud->assignerSelection(true);
-		}
 	}
 
 		if (noeud->estSelectionne())
-		{
 			nbObjetsSelectionne_++;
-		}
-
-	// voir requi 3.2.4.2 
 
 	return true;
 
 }
-

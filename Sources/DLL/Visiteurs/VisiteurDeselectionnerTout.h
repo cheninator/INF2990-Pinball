@@ -26,7 +26,7 @@ class VisiteurDeselectionnerTout : public VisiteurAbstrait
 {
 public:
 
-	/// Constructeur par défaut : aucun déplacement
+	/// Constructeur par défaut
 	VisiteurDeselectionnerTout();
 
 	/// Destructeur
@@ -34,13 +34,8 @@ public:
 
 	/// Traiter une opération sur l'arbre de rendu et ses enfants
 	virtual bool traiter(ArbreRenduINF2990* arbre);
-	/// Traiter une opération sur l'arbre de rendu et ses enfants
 	virtual bool traiter(NoeudAbstrait* noeud);
-	/// Traiter une opération sur l'arbre de rendu et ses enfants
 	virtual bool traiter(NoeudTable* table);
-
-
-private:
 
 };
 

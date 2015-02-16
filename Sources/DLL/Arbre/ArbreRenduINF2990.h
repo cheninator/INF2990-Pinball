@@ -49,11 +49,14 @@ public:
    /// Accepter un visiteur
    virtual bool accepterVisiteur(VisiteurAbstrait* vis);
 
-   /// Initialiser l'arbre avec un fichier XML
+   /// Initialiser l'arbre à partir d'un fichier XML
    bool initialiserXML(std::string nomFichier);
 
    /// Obtenir les propriétés de la zone de jeu
    int* obtenirProprietes() const { return proprietes_; };
+
+   /// Permet de savoir si l'arbre est la zone de jeu par défaut
+   bool estDefaut() const;
 
    static const std::string NOM_BUTOIRD; ///< Représente le type Butoir droit
    static const std::string NOM_BUTOIRG; ///< Représente le type Butoir gauche
@@ -71,12 +74,13 @@ public:
    static const std::string NOM_COUVERCLE; ///< Représente le type Couvercle
    static const std::string NOM_TABLE; ///< Représente le type Table
 
-   bool estDefaut() const;
-
 private:
 
 	/// Lire un fichier XML
 	bool lireXML(tinyxml2::XMLDocument& doc);
+
+	// Définir ce qu'est la zone de jeu par défaut
+	void assignerDefaut();
 
 	/// Propriétés de la zone de jeu
 	int* proprietes_ = new int[6];
@@ -91,8 +95,6 @@ private:
 	glm::dvec3 posGenerateur;
 	glm::dvec3 scaleGenerateur;
 	glm::dvec3 angleGenerateur;
-
-	void assignerDefaut();
 
 };
 

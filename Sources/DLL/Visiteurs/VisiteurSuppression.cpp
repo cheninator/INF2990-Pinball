@@ -117,10 +117,9 @@ bool VisiteurSuppression::traiter(NoeudAbstrait* noeud)
 {
 	if (noeud->estSelectionne())
 	{
+		// Supprimer le jumeau du portail meme s'il n'est pas selectionné
 		if ((noeud->obtenirType() == "portail") && (noeud->getTwin() != nullptr))
-		{
 			suppression.push_back(noeud->getTwin());
-		}
 			
 		suppression.push_back(noeud);
 	}

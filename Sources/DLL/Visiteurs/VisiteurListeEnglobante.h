@@ -1,6 +1,6 @@
 ///////////////////////////////////////////////////////////////////////////////
-/// @file VisiteurDeselectionnerTout.h
-/// @author The Ballers
+/// @file VisiteurListeEnglobante.h
+/// @author Philippe Carphin
 /// @date 2015-02-01
 /// @version 1.0
 ///
@@ -10,11 +10,11 @@
 #define __VISITEURS_VISITEURLISTEENGLOBANTE_H__
 
 #include "NoeudAbstrait.h"
-#include "NoeudComposite.h"
 #include "VisiteurAbstrait.h"
 #include "glm\glm.hpp"
+#include <vector>
 
-using conteneur_boite_englobante = std::pair<std::vector<glm::dvec3>,NoeudAbstrait*>;
+using conteneur_boite_englobante = std::pair<std::vector<glm::dvec3>, NoeudAbstrait*>;
 ///////////////////////////////////////////////////////////////////////////
 /// @class VisiteurListeEnglobante
 /// @brief Classe pour créer une Liste de rectangles englobants.
@@ -35,19 +35,16 @@ public:
 
 	/// Traiter une opération sur l'arbre de rendu et ses enfants
 	virtual bool traiter(ArbreRenduINF2990* arbre);
-	/// Traiter une opération sur l'arbre de rendu et ses enfants
 	virtual bool traiter(NoeudAbstrait* noeud);
-	/// Traiter une opération sur l'arbre de rendu et ses enfants
 	virtual bool traiter(NoeudTable* table);
 
 	std::vector<conteneur_boite_englobante> obtenirListeEnglobante(){ return boitesEnglobantes_; };
 
 private:
 
-	
 	/// Le choix du conteneur pour les enfants.
-
 	std::vector<conteneur_boite_englobante> boitesEnglobantes_;
+
 };
 
 #endif //__VISITEURS_VISITEURDESELECTIONNERTOUT_H__

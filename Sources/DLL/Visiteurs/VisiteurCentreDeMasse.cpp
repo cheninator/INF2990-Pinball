@@ -1,6 +1,6 @@
 ////////////////////////////////////////////////
 /// @file   VisiteurCentreDeMasse.cpp
-/// @author Yonni Chen
+/// @author Philippe Carphin
 /// @date   2015-02-01
 ///
 /// @ingroup Visiteur
@@ -8,7 +8,8 @@
 
 #include "VisiteurCentreDeMasse.h"
 #include "../Arbre/ArbreRenduINF2990.h"
-#include <iostream>
+#include "../Arbre/Noeuds/NoeudTable.h"
+
 
 ////////////////////////////////////////////////////////////////////////
 ///
@@ -25,6 +26,7 @@ nbNoeuds_{ 0 }
 {
 
 }
+
 
 ////////////////////////////////////////////////////////////////////////
 ///
@@ -45,8 +47,8 @@ VisiteurCentreDeMasse::~VisiteurCentreDeMasse()
 ///
 /// @fn bool VisiteurCentreDeMasse::traiter(ArbreRenduINF2990* arbre)
 ///
-/// Cette fonction traite l'arbre de rendu pour effectuer un agrandissement
-/// sur les objets selectionnés. Cette fonction retourne true pour dire que 
+/// Cette fonction traite l'arbre de rendu pour calculer le centre de masse
+/// des objets selectionnés. Cette fonction retourne true pour dire que 
 /// l'opération s'est faite correctement.
 ///
 /// @param[in] arbre : L'arbre de rendu à traiter.
@@ -63,15 +65,17 @@ bool VisiteurCentreDeMasse::traiter(ArbreRenduINF2990* arbre)
 
 	return true;
 }
+
+
 ////////////////////////////////////////////////////////////////////////
 ///
 /// @fn bool VisiteurCentreDeMasse::traiter(NoeudTable* table)
-/// @brief Cette fonction traite la table de l'arbre de rendu.
 ///
-/// Cette fonction retourne true pour dire que l'opération s'est
-/// faite correctement.
+/// Cette fonction traite la table de l'arbre de rendu et ses enfants pour
+/// le calcul du centre de masse. Cette fonction retourne true pour dire 
+///	que l'opération s'est faite correctement.
 ///
-/// @param[in] table : Le noeud de type Table à traiter.
+/// @param[in] table : La table à traiter.
 ///
 /// @return Retourne toujours true
 ///
@@ -85,11 +89,12 @@ bool VisiteurCentreDeMasse::traiter(NoeudTable* table)
 	return true;
 }
 
+
 ////////////////////////////////////////////////////////////////////////
 ///
 /// @fn bool VisiteurCentreDeMasse::traiter(NoeudAbstrait* noeud)
-/// @brief Calcule le centre de masse (tous les noeuds ont une masse de 1).
-///
+/// 
+///	Calcule le centre de masse (tous les noeuds ont une masse de 1).
 /// Cette fonction retourne true pour dire que l'opération s'est
 /// faite correctement.
 ///
@@ -107,4 +112,24 @@ bool VisiteurCentreDeMasse::traiter(NoeudAbstrait* noeud)
 	}
 
 	return true;
+}
+
+
+////////////////////////////////////////////////////////////////////////
+///
+/// @fn glm::dvec3 obtenirCentreDeMasse()
+///
+/// Cette fonction retourne les coordonnées du centre de masse 
+/// du noeud visité.
+///
+/// @param[in] Aucun
+///
+/// @return Coordonnées de centre de masse d'un noeud (dvec3)
+///
+////////////////////////////////////////////////////////////////////////
+glm::dvec3 VisiteurCentreDeMasse::obtenirCentreDeMasse() const
+{
+	return glm::dvec3{ centreDeMasse_.x / nbNoeuds_,
+		centreDeMasse_.y / nbNoeuds_,
+		centreDeMasse_.z / nbNoeuds_ };
 }

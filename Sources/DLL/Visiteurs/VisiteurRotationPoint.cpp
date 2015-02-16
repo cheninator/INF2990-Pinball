@@ -1,6 +1,6 @@
 ////////////////////////////////////////////////
 /// @file   VisiteurRotationPoint.cpp
-/// @author Yonni Chen
+/// @author Philippe Carphin
 /// @date   2015-02-01
 ///
 /// @ingroup Visiteur
@@ -9,7 +9,6 @@
 #include "VisiteurRotationPoint.h"
 #include "../Arbre/ArbreRenduINF2990.h"
 #include "../Arbre/Noeuds/NoeudTable.h"
-#include <iostream>
 
 
 ////////////////////////////////////////////////////////////////////////
@@ -69,7 +68,7 @@ VisiteurRotationPoint::~VisiteurRotationPoint()
 /// Cette fonction traite l'arbre de rendu pour effectuer une rotation sur 
 ///	les enfants selectionnés. Cette fonction retourne true pour dire que 
 /// l'opération s'est faite correctement.
-//
+///
 /// @param[in] arbre : L'arbre de rendu à traiter.
 ///
 /// @return Retourne toujours true.
@@ -109,6 +108,7 @@ bool VisiteurRotationPoint::traiter(NoeudTable* table)
 	return true;
 }
 
+
 ////////////////////////////////////////////////////////////////////////
 ///
 /// @fn bool VisiteurRotationPoint::traiter(NoeudAbstrait* noeud)
@@ -124,27 +124,25 @@ bool VisiteurRotationPoint::traiter(NoeudTable* table)
 ////////////////////////////////////////////////////////////////////////
 bool VisiteurRotationPoint::traiter(NoeudAbstrait* noeud)
 {
-		if (noeud->estSelectionne() /*&& noeud->estModifiable()*/ )
-		{
-			// LOGIQUE DE ROTATION AUTOUR D'UN POINT
-			// Changer la position du noeud
-			glm::dvec3 positionInitiale = noeud->obtenirPositionRelative();
-			glm::dvec3 vecteurInitial = positionInitiale - centreRotation_;
-			double angleEnRadian = -angles_[2] * 2 * 3.14156 / 360;
-			glm::dmat3 transform = glm::dmat3{ glm::dvec3{ cos(angleEnRadian), -sin(angleEnRadian), 0.0 },
-												glm::dvec3{ sin(angleEnRadian), cos(angleEnRadian), 0.0f },
-												glm::dvec3{       0.0      ,       0.0        , 1.0 } };
+	if (noeud->estSelectionne())
+	{
+		// LOGIQUE DE ROTATION AUTOUR D'UN POINT
+		// Changer la position du noeud
+		glm::dvec3 positionInitiale = noeud->obtenirPositionRelative();
+		glm::dvec3 vecteurInitial = positionInitiale - centreRotation_;
+		double angleEnRadian = -angles_[2] * 2 * 3.14156 / 360;
+		glm::dmat3 transform = glm::dmat3{ glm::dvec3{ cos(angleEnRadian), -sin(angleEnRadian), 0.0 },
+											glm::dvec3{ sin(angleEnRadian), cos(angleEnRadian), 0.0f },
+											glm::dvec3{       0.0      ,       0.0        , 1.0 } };
 
-			glm::dvec3 vecteurFinal = transform * vecteurInitial;
-			glm::dvec3 positionFinale = centreRotation_ + vecteurFinal;
+		glm::dvec3 vecteurFinal = transform * vecteurInitial;
+		glm::dvec3 positionFinale = centreRotation_ + vecteurFinal;
 
-			noeud->assignerPositionRelative(positionFinale);
+		noeud->assignerPositionRelative(positionFinale);
 
-			// Changer l'orientation du noeud
-			noeud->assignerRotation(noeud->obtenirRotation().y == 0 ? angles_ : -angles_);
-			
-
-		}
+		// Changer l'orientation du noeud
+		noeud->assignerRotation(noeud->obtenirRotation().y == 0 ? angles_ : -angles_);
+	}
 
 	return true;
 }

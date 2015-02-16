@@ -1,5 +1,5 @@
 ////////////////////////////////////////////////
-/// @file   VisiteurSelection.cpp
+/// @file   VisiteurListeEnglobante.cpp
 /// @author The Ballers
 /// @date   2015-02-01
 ///
@@ -8,11 +8,11 @@
 #include "VisiteurListeEnglobante.h"
 #include "../Arbre/ArbreRenduINF2990.h"
 #include "../Arbre/Noeuds/NoeudTable.h"
-#include <iostream>
+
 
 ////////////////////////////////////////////////////////////////////////
 ///
-/// @fn VisiteurSelection::VisiteurSelection()
+/// @fn VisiteurListeEnglobante::VisiteurListeEnglobante()
 ///
 /// Constructeur par défaut (vide).
 ///
@@ -27,7 +27,7 @@ VisiteurListeEnglobante::VisiteurListeEnglobante()
 
 ////////////////////////////////////////////////////////////////////////
 ///
-/// @fn VisiteurSelection::~VisiteurSelection()
+/// @fn VisiteurListeEnglobante::~VisiteurListeEnglobante()
 ///
 /// Destructeur vide 
 ///
@@ -42,7 +42,7 @@ VisiteurListeEnglobante::~VisiteurListeEnglobante()
 
 ////////////////////////////////////////////////////////////////////////
 ///
-/// @fn bool VisiteurSelection::traiter(ArbreRenduINF2990* arbre)
+/// @fn bool VisiteurListeEnglobante::traiter(ArbreRenduINF2990* arbre)
 /// @brief Cette fonction traite l'arbre de rendu pour visiter ses enfants.
 ///
 /// Cette fonction retourne true pour dire que l'opération s'est
@@ -65,7 +65,7 @@ bool VisiteurListeEnglobante::traiter(ArbreRenduINF2990* arbre)
 
 ////////////////////////////////////////////////////////////////////////
 ///
-/// @fn bool VisiteurSelection::traiter(NoeudTable* table)
+/// @fn bool VisiteurListeEnglobante::traiter(NoeudTable* table)
 /// @brief Cette fonction traite la table de l'arbre de rendu.
 ///
 /// Cette fonction retourne true pour dire que l'opération s'est
@@ -88,7 +88,7 @@ bool VisiteurListeEnglobante::traiter(NoeudTable* table)
 
 ////////////////////////////////////////////////////////////////////////
 ///
-/// @fn bool VisiteurSelection::traiter(NoeudAbstrait* noeud)
+/// @fn bool VisiteurListeEnglobante::traiter(NoeudAbstrait* noeud)
 /// @brief Cette fonction traite les enfants de l'arbre de rendu. 
 ///
 /// Cette fonction retourne true pour dire que l'opération s'est

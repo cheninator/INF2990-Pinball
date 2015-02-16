@@ -1,6 +1,6 @@
 ////////////////////////////////////////////////
 /// @file   VisiteurDuplication.cpp
-/// @author The Ballers
+/// @author Yonni Chen
 /// @date   2015-02-01
 ///
 /// @ingroup Visiteur
@@ -8,7 +8,7 @@
 #include "VisiteurDuplication.h"
 #include "../Arbre/ArbreRenduINF2990.h"
 #include "../Arbre/Noeuds/NoeudTable.h"
-#include <iostream>
+
 
 ////////////////////////////////////////////////////////////////////////
 ///
@@ -102,6 +102,7 @@ bool VisiteurDuplication::traiter(NoeudTable* table)
 			table->ajouter(copies_[i]);
 		}
 
+		// Vider le vecteur contenant les copies
 		copies_.clear();
 	}
 
@@ -147,26 +148,30 @@ bool VisiteurDuplication::traiter(NoeudAbstrait* noeud)
 			copieJumeau->setTwin(copie);
 			copie->setTwin(copieJumeau);
 
-			// Ajouter la copie dans une structure de donnée afin de traiter la duplication multiple par la suite.
+			// Ajouter les copies dans une structure de donnée
 			copies_.push_back(copie);
 			copies_.push_back(copieJumeau);
 
-			// Eviter d'effectuer une double copie lorsque le jumeau du portail est traité
+			// Eviter d'effectuer une double copie lorsque le jumeau du portail est aussi selectionné
 			noeud->getTwin()->assignerSelection(false);
 		}
 		
+		// Supprimer le noeud si c'est un portail et que son jumeau n'est pas selectionné
 		else if (noeud->obtenirType() == "portail" && !(noeud->getTwin()->estSelectionne()))
 		{
 			delete copie;
 			copie = 0;
 		}
-	
+		
+		// Ajouter la copie à la structure de donnée
 		else
 		{
 			copies_.push_back(copie);
 		}
 
+		// Déselectionner le noeud original
 		noeud->assignerSelection(false);
+
 	}
 
 	return true;

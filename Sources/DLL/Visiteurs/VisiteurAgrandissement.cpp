@@ -85,12 +85,13 @@ bool VisiteurAgrandissement::traiter(ArbreRenduINF2990* arbre)
 	return true;
 }
 
+
 ////////////////////////////////////////////////////////////////////////
 ///
 /// @fn bool VisiteurAgrandissement::traiter(NoeudTable* table)
 ///
-/// Cette fonction traite l'arbre de rendu pour effectuer un agrandissement
-/// sur un noeud de type table. Cette fonction retourne true si l'opération s'est
+/// Cette fonction traite la table de l'arbre pour effectuer un agrandissement
+/// sur ses enfants. Cette fonction retourne true si l'opération s'est
 /// faite correctement.
 ///
 /// @param[in] table : Le noeud de type Table à traiter.
@@ -108,6 +109,7 @@ bool VisiteurAgrandissement::traiter(NoeudTable* table)
 
 	return true;
 }
+
 
 ////////////////////////////////////////////////////////////////////////
 ///
@@ -135,38 +137,38 @@ bool VisiteurAgrandissement::traiter(NoeudAbstrait* noeud)
 		glm::dvec3 scaleInit = noeud->obtenirAgrandissement();
 		glm::dvec3 scaleFinal = glm::dvec3{ scaleInit[0] * homothetie_[0], scaleInit[1] * homothetie_[1], scaleInit[2] * homothetie_[2] };
 	
-	
-
 		glm::dvec3 position = noeud->obtenirPositionRelative();
 		glm::dvec3 boite[4];
-		noeud->obtenirVecteursBoite(boite[0], boite[1], boite[2], boite[3]); // Je sais que c<est pas beau, le 3e, c'est le point le plus haut de la boite englobante
+		noeud->obtenirVecteursBoite(boite[0], boite[1], boite[2], boite[3]); // Je sais que c'est pas beau, le 3e, c'est le point le plus haut de la boite englobante
 		double zTop = boite[0].z;
+
 		for (int i = 1; i < 4; i++) // Trouver le point le plus haut de la boite englobante.  
 		{
 			if (zTop < boite[i].z)
 				zTop = boite[i].z;
 		}
+
 		double distancePositionTop = zTop;
 		double correctionZ = (1 - homothetie_[0]) * distancePositionTop; // Homothetie[0] est de l'ordre de 1.003, donc (1-homothetie[0]) est petie, donc la correction en z est petite.
 		position += glm::dvec3{ 0, 0, correctionZ };
-		// std::cout << "AVANT position.z : " << position.z << "   distancePositionTop : " << distancePositionTop << "    TOP : " << position.z + zTop << std::endl;
 		noeud->assignerEchelle(scaleFinal);
-		
 		noeud->assignerPositionRelative(position);
 		
 	}
+
 	return true;
 }
+
 
 ////////////////////////////////////////////////////////////////////////
 ///
 /// @fn bool VisiteurAgrandissement::traiter(NoeudMur* noeud)
 ///
-/// Cette fonction traite un noeud de l'arbre de rendu pour effectuer 
+/// Cette fonction traite un mur de l'arbre de rendu pour effectuer 
 /// un agrandissement. Cette fonction retourne true pour dire que l'opération 
 /// s'est faite correctement.
 ///
-/// @param[in] noeud : Noeud de l'arbre de rendu à traiter.
+/// @param[in] noeud : NoeudMur de l'arbre de rendu à traiter.
 ///
 /// @return Retourne toujours true.
 ///
@@ -188,6 +190,20 @@ bool VisiteurAgrandissement::traiter(NoeudMur* noeud)
 	return true;
 }
 
+
+////////////////////////////////////////////////////////////////////////
+///
+/// @fn bool VisiteurAgrandissement::traiter(NoeudGenerateurBille* noeud)
+///
+/// Cette fonction traite un générateur de bille de l'arbre de rendu pour effectuer 
+/// un agrandissement. Cette fonction retourne true pour dire que l'opération 
+/// s'est faite correctement.
+///
+/// @param[in] noeud : NoeudGenerateurBille de l'arbre de rendu à traiter.
+///
+/// @return Retourne toujours true.
+///
+////////////////////////////////////////////////////////////////////////
 bool VisiteurAgrandissement::traiter(NoeudGenerateurBille* noeud)
 {
 

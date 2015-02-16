@@ -136,13 +136,3 @@ bool VisiteurDeplacement::traiter(NoeudAbstrait* noeud)
 
 	return true;
 }
-
-void VisiteurDeplacement::setEstDansLaTable(bool b)
-{
-	estDansLaTable_ = b;
-}
-
-void VisiteurDeplacement::setEstDuplication(bool b)
-{
-	estDuplication_ = b;
-}

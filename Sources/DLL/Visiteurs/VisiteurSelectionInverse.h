@@ -10,7 +10,6 @@
 #define __VISITEURS_VISITEURSELECTIONINVERSE_H__
 
 #include "NoeudAbstrait.h"
-#include "NoeudComposite.h"
 #include "VisiteurAbstrait.h"
 #include "glm\glm.hpp"
 
@@ -30,7 +29,7 @@ class VisiteurSelectionInverse : public VisiteurAbstrait
 {
 public:
 
-	/// Constructeur par défaut : aucun déplacement
+	/// Constructeur par paramètre
 	VisiteurSelectionInverse(glm::dvec3 pointDansLeMonde, int valeurStencil);
 
 	/// Destructeur
@@ -38,9 +37,7 @@ public:
 
 	/// Traiter une opération sur l'arbre de rendu et ses enfants
 	virtual bool traiter(ArbreRenduINF2990* arbre);
-	/// Traiter une opération sur l'arbre de rendu et ses enfants
 	virtual bool traiter(NoeudAbstrait* noeud);
-	/// Traiter une opération sur l'arbre de rendu et ses enfants
 	virtual bool traiter(NoeudTable* table);
 
 	//////////////////////////////////////////////////////////////////////////
@@ -52,18 +49,16 @@ public:
 	/// @return Nombre d'objets sélectionnés (attribut).
 	///
 	//////////////////////////////////////////////////////////////////////////
-	int obtenirNbObjetsSelectionne() 
-	{ return nbObjetsSelectionne_; }
+	int obtenirNbObjetsSelectionne() const { return nbObjetsSelectionne_; }
 
 private:
 
 	/// Constructeur par défaut
 	VisiteurSelectionInverse();
 
-	glm::dvec3 pointDansLeMonde_; ///< Point cliqué
-
-	int valeurStencil_; ///< Valeur du stencil
-	int nbObjetsSelectionne_; ///< Nombre d'objets sélectionnés
+	glm::dvec3 pointDansLeMonde_;	///< Point cliqué
+	int valeurStencil_;				///< Valeur du stencil
+	int nbObjetsSelectionne_;		///< Nombre d'objets sélectionnés
 };
 
 

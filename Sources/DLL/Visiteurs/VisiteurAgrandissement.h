@@ -41,15 +41,19 @@ public:
 	/// Méthode de modifications
 	void setAgrandissement(glm::dvec3 homothetie) { homothetie_ = homothetie; };
 
-	/// Traiter une opération sur l'arbre de rendu et ses enfants
+	/// Traiter une opération sur l'arbre de rendu
 	virtual bool traiter(ArbreRenduINF2990* arbre);
-	/// Traiter une opération sur l'arbre de rendu et ses enfants
+
+	/// Traiter une opération sur la table de l'arbre de rendu
 	virtual bool traiter(NoeudTable* noeud);
-	/// Traiter une opération sur l'arbre de rendu et ses enfants
+
+	/// Traiter une opération sur les noeuds abstraits de l'arbre de rendu
 	virtual bool traiter(NoeudAbstrait* noeud);
-	/// Traiter un mur de façon différente
+
+	/// Traiter un mur différement d'un NoeudAbstrait
 	virtual bool traiter(NoeudMur* noeud);
 
+	/// Traiter un générateur de bille différement d'un NoeudAbstrait
 	virtual bool traiter(NoeudGenerateurBille* noeud);
 
 private:
