@@ -1,0 +1,29 @@
+<Proprietes>
+    <PointsButoir Nombre="11"/>
+    <PointsTriangulaire Nombre="11"/>
+    <PointsCible Nombre="11"/>
+    <PointsVictoire Nombre="11"/>
+    <PointsBilleGratuite Nombre="11"/>
+    <Difficulte Nombre="3"/>
+</Proprietes>
+
+<arbreRenduINF2990>
+    <table nbEnfants="15">
+        <generateurbille posX="245" posY="-140" posZ="0" scaleX="1" scaleY="1" scaleZ="1" angleX="0" angleY="0" angleZ="0"/>
+        <ressort posX="240" posY="-180" posZ="0" scaleX="1" scaleY="1" scaleZ="1" angleX="0" angleY="0" angleZ="0"/>
+        <trou posX="170" posY="-164" posZ="0" scaleX="1" scaleY="1" scaleZ="1" angleX="0" angleY="0" angleZ="0"/>
+        <cible posX="161.30668784577193" posY="-4.309952181409983" posZ="-0" scaleX="1" scaleY="1" scaleZ="1" angleX="0" angleY="0" angleZ="0"/>
+        <butoirg posX="163.63947740807254" posY="-39.768353882745593" posZ="-0" scaleX="1" scaleY="1" scaleZ="1" angleX="0" angleY="0" angleZ="0"/>
+        <butoirg posX="179.96900434417674" posY="43.745513282242229" posZ="-0" scaleX="1" scaleY="1" scaleZ="1" angleX="0" angleY="0" angleZ="0"/>
+        <butoirg posX="236.88906966431131" posY="-3.3768363471642999" posZ="-0" scaleX="1" scaleY="1" scaleZ="1" angleX="0" angleY="0" angleZ="0"/>
+        <butoircirculaire posX="176.23654104449577" posY="-32.303427208780185" posZ="-0" scaleX="1" scaleY="1" scaleZ="1" angleX="0" angleY="0" angleZ="0"/>
+        <butoircirculaire posX="209.82871074162441" posY="-67.76182891011581" posZ="-0" scaleX="1" scaleY="1" scaleZ="1" angleX="0" angleY="0" angleZ="0"/>
+        <butoircirculaire posX="182.30179390647731" posY="-97.154977688854558" posZ="-0" scaleX="1" scaleY="1" scaleZ="1" angleX="0" angleY="0" angleZ="0"/>
+        <butoircirculaire posX="189.76672050583923" posY="-32.303427208780185" posZ="-0" scaleX="1" scaleY="1" scaleZ="1" angleX="0" angleY="0" angleZ="0"/>
+        <cible posX="220.09298481574703" posY="-74.293639749835535" posZ="-0" scaleX="1" scaleY="1" scaleZ="1" angleX="0" angleY="0" angleZ="0"/>
+        <mur posX="175.07014626334546" posY="-14.574226358112398" posZ="0" scaleX="1" scaleY="10.818940454092832" scaleZ="1" angleX="0" angleY="0" angleZ="157.99785556959407"/>
+        <portail posX="177.63621478187611" posY="-106.95269394843413" posZ="0" scaleX="1" scaleY="1" scaleZ="1" angleX="0" angleY="0" angleZ="0"/>
+        <portail posX="148.7096242093487" posY="54.009787458944658" posZ="-0" scaleX="1" scaleY="1" scaleZ="1" angleX="0" angleY="0" angleZ="0"/>
+    </table>
+    <couvercle/>
+</arbreRenduINF2990>
