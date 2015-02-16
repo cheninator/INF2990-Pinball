@@ -22,10 +22,10 @@
 ///
 /// @fn NoeudCible::NoeudCible(const std::string& typeNoeud)
 ///
-/// @param[in] typeNoeud :  le type du noeud à créer.
+/// @param[in] typeNoeud :  le type du noeud a creer.
 ///
 /// Ce constructeur ne fait qu'appeler la version de la classe et base
-/// et donner des valeurs par défaut aux variables membres.
+/// et donner des valeurs par defaut aux variables membres.
 ///
 /// @return Aucune (constructeur).
 ///
@@ -40,7 +40,7 @@ NoeudCible::NoeudCible(const std::string& typeNoeud)
 ///
 /// @fn NoeudCible::~NoeudCible()
 ///
-/// Ce destructeur désallouee la liste d'affichage du noeud.
+/// Ce destructeur desallouee la liste d'affichage du noeud.
 ///
 /// @return Aucune (destructeur).
 ///
@@ -54,7 +54,7 @@ NoeudCible::~NoeudCible()
 ///
 /// @fn void NoeudCible::afficherConcret() const
 ///
-/// Cette fonction effectue le véritable rendu de l'objet.
+/// Cette fonction effectue le veritable rendu de l'objet.
 ///
 /// @return Aucune.
 ///
@@ -64,7 +64,7 @@ void NoeudCible::afficherConcret() const
 	NoeudComposite::afficherConcret();
 	// Sauvegarde de la matrice.
 	glPushMatrix();
-	// Affichage du modèle.
+	// Affichage du modele.
 	glPushAttrib(GL_ALL_ATTRIB_BITS);
 	if (colorShift_)
 		glTexEnvf(GL_TEXTURE_ENV, GL_TEXTURE_ENV_MODE, GL_BLEND);
@@ -113,7 +113,7 @@ void NoeudCible::animer(float temps)
 ///
 /// @fn bool NoeudCible::accepterVisiteur(VisiteurAbstrait* vis)
 ///
-/// Cette fonction appelle la méthode traiter du visiteur.
+/// Cette fonction appelle la methode traiter du visiteur.
 ///
 /// @return reussi (TRUE)
 ///

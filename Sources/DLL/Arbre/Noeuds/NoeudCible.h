@@ -15,7 +15,7 @@
 
 ///////////////////////////////////////////////////////////////////////////
 /// @class NoeudCible
-/// @brief Classe qui représente une cible.
+/// @brief Classe qui represente une cible.
 ///
 /// @author The Ballers
 /// @date 2015-01-24
@@ -30,10 +30,10 @@ public:
 	/// Destructeur 
 	~NoeudCible();
 
-	/// Surchage de la méthode qui affiche l'objet.
+	/// Surchage de la methode qui affiche l'objet.
 	virtual void afficherConcret() const;
 
-	/// Surchage de la méthode qui anime l'objet.
+	/// Surchage de la methode qui anime l'objet.
 	virtual void animer(float temps);
 
 	/// Accepte un visiteur.

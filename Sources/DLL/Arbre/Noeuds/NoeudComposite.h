@@ -17,10 +17,10 @@
 
 ///////////////////////////////////////////////////////////////////////////
 /// @class NoeudComposite
-/// @brief Implantation d'un noeud du patron composite qui peut posséder
+/// @brief Implantation d'un noeud du patron composite qui peut posseder
 ///        des enfants.
 ///
-///        Cette classe implante les différentes fonctions relatives aux
+///        Cette classe implante les differentes fonctions relatives aux
 ///        enfants, comme l'ajout, le retrait, la recherche, etc.
 ///
 /// @author DGI-2990
@@ -45,7 +45,7 @@ public:
 
    /// Vide le noeud de ses enfants.
    virtual void vider();
-   /// Efface le noeud passé en paramètre.
+   /// Efface le noeud passe en parametre.
    virtual void effacer( const NoeudAbstrait* noeud );
 
    /// Cherche un noeud par le type (sur un noeud constant).
@@ -62,20 +62,20 @@ public:
    /// Obtient le nombre d'enfants du noeud.
    virtual unsigned int obtenirNombreEnfants() const;
 
-   /// Efface les enfants sélectionnés.
+   /// Efface les enfants selectionnes.
    virtual void effacerSelection();
-   /// Sélectionne tous les enfants de même que le noeud.
+   /// Selectionne tous les enfants de meme que le noeud.
    virtual void selectionnerTout();
-   /// Désélectionne tous les enfants de même que le noeud.
+   /// Deselectionne tous les enfants de meme que le noeud.
    virtual void deselectionnerTout();
-   /// Vérifier si le noeud ou un de ses enfants est sélectionné.
+   /// Verifier si le noeud ou un de ses enfants est selectionne.
    virtual bool selectionExiste() const;
 
    /// Change le mode d'affichage des polygones.
    virtual void changerModePolygones( bool estForce );
    /// Assigne le mode d'affichage des polygones.
    virtual void assignerModePolygones( GLenum modePolygones );
-   /// Affiche le noeud de manière concrète.
+   /// Affiche le noeud de maniere concrete.
    virtual void afficherConcret() const;
    /// Anime le noeud.
    virtual void animer( float dt );
@@ -90,8 +90,8 @@ protected:
 
 
 private:
-   /// Constructeur copie déclaré privé mais non défini pour éviter le
-   /// constructeur copie généré par le compilateur.
+   /// Constructeur copie declare prive mais non defini pour eviter le
+   /// constructeur copie genere par le compilateur.
    NoeudComposite(const NoeudComposite&);
 
 };

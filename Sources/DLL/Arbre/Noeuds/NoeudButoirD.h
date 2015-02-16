@@ -15,7 +15,7 @@
 
 ///////////////////////////////////////////////////////////////////////////
 /// @class NoeudButoirD
-/// @brief Classe qui représente un butoir droit.
+/// @brief Classe qui represente un butoir droit.
 ///
 /// @author The Ballers
 /// @date 2015-01-19
@@ -25,7 +25,7 @@ class NoeudButoirD : public NoeudComposite
 {
 public:
 
-	/// Constructeur à partir du type du noeud.
+	/// Constructeur a partir du type du noeud.
 	NoeudButoirD(const std::string& typeNoeud);
 
 	/// Destructeur.

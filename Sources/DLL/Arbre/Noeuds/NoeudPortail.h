@@ -15,7 +15,7 @@
 
 ///////////////////////////////////////////////////////////////////////////
 /// @class NoeudPortail
-/// @brief Classe qui représente un portail.
+/// @brief Classe qui represente un portail.
 ///
 /// @author The Ballers
 /// @date 2015-01-24
@@ -30,10 +30,10 @@ public:
 	/// Destructeur 
 	~NoeudPortail();
 
-	/// Surchage de la méthode qui affiche l'objet.
+	/// Surchage de la methode qui affiche l'objet.
 	virtual void afficherConcret() const;
 
-	/// Surchage de la méthode qui anime l'objet.
+	/// Surchage de la methode qui anime l'objet.
 	virtual void animer(float temps);
 
 	/// Accepte un visiteur.

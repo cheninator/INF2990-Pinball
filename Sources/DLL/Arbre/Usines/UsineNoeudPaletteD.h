@@ -14,7 +14,7 @@
 
 ///////////////////////////////////////////////////////////////////////////
 /// @class UsineNoeudPaletteD
-/// @brief Classe qui représente une usine capable de créer des noeuds de
+/// @brief Classe qui represente une usine capable de creer des noeuds de
 ///        type NoeudPaletteD.
 ///
 /// @author The Ballers
@@ -27,7 +27,7 @@ public:
 	/// Constructeur
 	inline UsineNoeudPaletteD(const std::string& nom);
 
-	/// Création d'un noeud
+	/// Creation d'un noeud
 	inline virtual NoeudAbstrait* creerNoeud() const;
 };
 
@@ -36,9 +36,9 @@ public:
 /// @fn inline UsineNoeudPaletteD::UsineNoeudPaletteD(const std::string& nom)
 ///
 /// Ce constructeur ne fait qu'appeler la version de la classe de base
-/// et donner des valeurs par défaut aux variables membres.
+/// et donner des valeurs par defaut aux variables membres.
 ///
-/// @param[in] nom   : Le nom de l'usine qui correspond au type de noeuds créés.
+/// @param[in] nom   : Le nom de l'usine qui correspond au type de noeuds crees.
 ///
 /// @return Aucune (constructeur).
 ///
@@ -53,10 +53,10 @@ inline UsineNoeudPaletteD::UsineNoeudPaletteD(const std::string& nom)
 ///
 /// @fn NoeudAbstrait* UsineNoeudPaletteD::creerNoeud() const
 ///
-/// Cette fonction retourne un noeud nouvellement créé du type produit
+/// Cette fonction retourne un noeud nouvellement cree du type produit
 /// par cette usine, soit un NoeudPaletteD.
 ///
-/// @return Le noeud nouvellement créé.
+/// @return Le noeud nouvellement cree.
 ///
 ////////////////////////////////////////////////////////////////////////
 NoeudAbstrait* UsineNoeudPaletteD::creerNoeud() const

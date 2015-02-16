@@ -19,10 +19,10 @@ CPPUNIT_TEST_SUITE_REGISTRATION(NoeudAbstraitTest);
 ///
 /// @fn void NoeudAbstraitTest::setUp()
 ///
-/// Effectue l'initialisation préalable à l'exécution de l'ensemble des
-/// cas de tests de cette suite de tests (si nécessaire).
+/// Effectue l'initialisation prealable a l'execution de l'ensemble des
+/// cas de tests de cette suite de tests (si necessaire).
 /// 
-/// Si certains objets doivent être construits, il est conseillé de le
+/// Si certains objets doivent etre construits, il est conseille de le
 /// faire ici.
 ///
 /// @return Aucune.
@@ -37,11 +37,11 @@ void NoeudAbstraitTest::setUp()
 ///
 /// @fn void NoeudAbstraitTest::tearDown()
 ///
-/// Effectue les opérations de finalisation nécessaires suite à l'exécution
-/// de l'ensemble des cas de tests de cette suite de tests (si nécessaire).
+/// Effectue les operations de finalisation necessaires suite a l'execution
+/// de l'ensemble des cas de tests de cette suite de tests (si necessaire).
 /// 
-/// Si certains objets ont été alloués à l'initialisation, ils doivent être
-/// désalloués, et il est conseillé de le faire ici.
+/// Si certains objets ont ete alloues a l'initialisation, ils doivent etre
+/// desalloues, et il est conseille de le faire ici.
 ///
 /// @return Aucune.
 ///
@@ -54,14 +54,14 @@ void NoeudAbstraitTest::tearDown()
 ///
 /// @fn void NoeudAbstraitTest::testPositionRelative()
 ///
-/// Cas de test: écriture/lecture de la position relative
+/// Cas de test: ecriture/lecture de la position relative
 ///
 /// @return Aucune.
 ///
 ////////////////////////////////////////////////////////////////////////
 void NoeudAbstraitTest::testPositionRelative()
 {
-	// Premier test : on vérifie que la position initiale est un vector nul
+	// Premier test : on verifie que la position initiale est un vector nul
 	glm::dvec3 vecteur{ noeud->obtenirPositionRelative() };
 	CPPUNIT_ASSERT(utilitaire::EGAL_ZERO(vecteur[0]));
 	CPPUNIT_ASSERT(utilitaire::EGAL_ZERO(vecteur[1]));
@@ -70,7 +70,7 @@ void NoeudAbstraitTest::testPositionRelative()
 	// On modifie la position
 	noeud->assignerPositionRelative(glm::dvec3{ 2.2, 3.3, 4.4 });
 
-	// Second test : on vérifie que la position a été modifiée
+	// Second test : on verifie que la position a ete modifiee
 	vecteur = noeud->obtenirPositionRelative();
 	CPPUNIT_ASSERT(utilitaire::EGAL_ZERO(vecteur[0] - 2.2));
 	CPPUNIT_ASSERT(utilitaire::EGAL_ZERO(vecteur[1] - 3.3));
@@ -96,32 +96,32 @@ void NoeudAbstraitTest::testType()
 ///
 /// @fn void NoeudAbstraitTest::testSelection()
 ///
-/// Cas de test: définition/obtention des états de sélection du noeud
+/// Cas de test: definition/obtention des etats de selection du noeud
 ///
 /// @return Aucune.
 ///
 ////////////////////////////////////////////////////////////////////////
 void NoeudAbstraitTest::testSelection()
 {
-	// Cas 1 : non sélectionnable, non sélectionné
+	// Cas 1 : non selectionnable, non selectionne
 	noeud->assignerEstSelectionnable(false);
 	noeud->assignerSelection(false);
 	CPPUNIT_ASSERT(noeud->estSelectionnable() == false);
 	CPPUNIT_ASSERT(noeud->estSelectionne() == false);
 
-	// Cas 2 : non sélectionnable, sélectionné
+	// Cas 2 : non selectionnable, selectionne
 	noeud->assignerEstSelectionnable(false);
 	noeud->assignerSelection(true);
 	CPPUNIT_ASSERT(noeud->estSelectionnable() == false);
 	CPPUNIT_ASSERT(noeud->estSelectionne() == false);
 
-	// Cas 3 : sélectionnable, non sélectionné
+	// Cas 3 : selectionnable, non selectionne
 	noeud->assignerEstSelectionnable(true);
 	noeud->assignerSelection(false);
 	CPPUNIT_ASSERT(noeud->estSelectionnable() == true);
 	CPPUNIT_ASSERT(noeud->estSelectionne() == false);
 
-	// Cas 4 : non sélectionnable, sélectionné
+	// Cas 4 : non selectionnable, selectionne
 	noeud->assignerEstSelectionnable(true);
 	noeud->assignerSelection(true);
 	CPPUNIT_ASSERT(noeud->estSelectionnable() == true);
@@ -139,7 +139,7 @@ void NoeudAbstraitTest::testSelection()
 ////////////////////////////////////////////////////////////////////////
 void NoeudAbstraitTest::testEnfants()
 {
-	// On vérifie qu'initialement, le noeud n'a pas d'enfant
+	// On verifie qu'initialement, le noeud n'a pas d'enfant
 	CPPUNIT_ASSERT(noeud->obtenirNombreEnfants() == 0);
 	CPPUNIT_ASSERT(noeud->calculerProfondeur() == 1);
 
@@ -147,10 +147,10 @@ void NoeudAbstraitTest::testEnfants()
 	NoeudAbstrait* nouveauNoeud{ new NoeudVide{ ArbreRenduINF2990::NOM_VIDE } };
 	bool ajout{ noeud->ajouter(nouveauNoeud) };
 
-	// L'ajout devrait avoir échoué puisqu'il s'agit d'un noeud abstrait...
+	// L'ajout devrait avoir echoue puisqu'il s'agit d'un noeud abstrait...
 	CPPUNIT_ASSERT(ajout == false);
 
-	// Assurons-nous que le noeud ne possède pas d'enfant...
+	// Assurons-nous que le noeud ne possede pas d'enfant...
 	CPPUNIT_ASSERT(noeud->obtenirNombreEnfants() == 0);
 	CPPUNIT_ASSERT(noeud->calculerProfondeur() == 1);
 

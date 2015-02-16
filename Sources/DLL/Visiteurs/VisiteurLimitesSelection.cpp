@@ -15,7 +15,7 @@
 ///
 /// @fn VisiteurLimitesSelection::VisiteurLimitesSelection()
 ///
-/// Constructeur qui initialise les valeurs par défaut
+/// Constructeur qui initialise les valeurs par defaut
 ///
 /// @return Aucune (constructeur).
 ///
@@ -50,10 +50,10 @@ VisiteurLimitesSelection::~VisiteurLimitesSelection()
 /// @fn bool VisiteurLimitesSelection::traiter(ArbreRenduINF2990* noeud)
 /// @brief Cette fonction traite l'arbre de rendu.
 ///
-/// Cette fonction retourne true pour dire que l'opération s'est
+/// Cette fonction retourne true pour dire que l'operation s'est
 /// faite correctement.
 ///
-/// @param[in] arbre : L'arbre à traiter.
+/// @param[in] arbre : L'arbre a traiter.
 ///
 /// @return Retourne toujours true
 ///
@@ -74,10 +74,10 @@ bool VisiteurLimitesSelection::traiter(ArbreRenduINF2990* arbre)
 /// @fn bool VisiteurLimitesSelection::traiter(NoeudTable* table)
 /// @brief Cette fonction traite la table de l'arbre de rendu.
 ///
-/// Cette fonction retourne true pour dire que l'opération s'est
+/// Cette fonction retourne true pour dire que l'operation s'est
 /// faite correctement
 ///
-/// @param[in] table : La table à traiter.
+/// @param[in] table : La table a traiter.
 ///
 /// @return Retourne toujours true
 ///
@@ -95,9 +95,9 @@ bool VisiteurLimitesSelection::traiter(NoeudTable* table)
 ////////////////////////////////////////////////////////////////////////
 ///
 /// @fn bool VisiteurLimitesSelection::traiter(NoeudAbstrait* noeud)
-/// @brief Calcule la limite de la sélection.
+/// @brief Calcule la limite de la selection.
 ///
-/// @param[in] noeud : Le noeud à traiter.
+/// @param[in] noeud : Le noeud a traiter.
 ///
 /// @return Retourne toujours true
 ///

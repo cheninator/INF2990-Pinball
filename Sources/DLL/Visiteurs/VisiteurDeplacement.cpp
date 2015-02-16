@@ -13,7 +13,7 @@
 ///
 /// @fn VisiteurDeplacement::VisiteurDeplacement()
 ///
-/// Constructeur par défaut (vide).
+/// Constructeur par defaut (vide).
 ///
 /// @return Aucune (constructeur).
 ///
@@ -61,12 +61,12 @@ VisiteurDeplacement::~VisiteurDeplacement()
 //////////////////////////////////////////////////////////////////////////////////
 ///
 /// @fn bool VisiteurDeplacement::traiter(ArbreRenduINF2990* arbre)
-/// @brief Cette fonction traite l'arbre de rendu pour deplacer ses enfants selectionnés.
+/// @brief Cette fonction traite l'arbre de rendu pour deplacer ses enfants selectionnes.
 ///
-/// Cette fonction retourne true pour dire que l'opération s'est
+/// Cette fonction retourne true pour dire que l'operation s'est
 /// fait correctement.
 ///
-/// @param[in] arbre : L'arbre de rendu à traiter.
+/// @param[in] arbre : L'arbre de rendu a traiter.
 ///
 /// @return Retourne toujours true.
 ///
@@ -86,19 +86,19 @@ bool VisiteurDeplacement::traiter(ArbreRenduINF2990* arbre)
 //////////////////////////////////////////////////////////////////////////////////
 ///
 /// @fn bool VisiteurDeplacement::traiter(NoeudTable* table)
-/// @brief Cette fonction traite la table pour deplacer ses enfants selectionnés.
+/// @brief Cette fonction traite la table pour deplacer ses enfants selectionnes.
 ///
-/// Cette fonction retourne true pour dire que l'opération s'est
+/// Cette fonction retourne true pour dire que l'operation s'est
 /// fait correctement.
 ///
-/// @param[in] arbre : L'arbre de rendu à traiter.
+/// @param[in] arbre : L'arbre de rendu a traiter.
 ///
 /// @return Retourne toujours true.
 ///
 //////////////////////////////////////////////////////////////////////////////////
 bool VisiteurDeplacement::traiter(NoeudTable* table)
 {
-	// Traiter les enfants selectionnés de la table
+	// Traiter les enfants selectionnes de la table
 	for (unsigned int i = 0; i < table->obtenirNombreEnfants(); i++)
 	{
 		table->getEnfant(i)->accepterVisiteur(this);
@@ -113,10 +113,10 @@ bool VisiteurDeplacement::traiter(NoeudTable* table)
 /// @fn bool VisiteurDeplacement::traiter(NoeudAbstrait* noeud)
 ///
 /// Cette fonction traite un noeud de l'arbre de rendu. Si ses enfants ont 
-/// des enfants, ils seront aussi traités. Cette fonction retourne true pour dire 
-/// que l'opération s'est faite correctement
+/// des enfants, ils seront aussi traites. Cette fonction retourne true pour dire 
+/// que l'operation s'est faite correctement
 ///
-/// @param[in] noeud : Noeud de l'arbre à traiter.
+/// @param[in] noeud : Noeud de l'arbre a traiter.
 ///
 /// @return Retourne toujours true
 ///

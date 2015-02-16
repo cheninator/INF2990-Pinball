@@ -14,7 +14,7 @@
 ///
 /// @fn VisiteurDuplication::VisiteurDuplication()
 ///
-/// Constructeur par défaut qui initialise les valeurs par défaut
+/// Constructeur par defaut qui initialise les valeurs par defaut
 ///
 /// @return Aucune (constructeur).
 ///
@@ -49,10 +49,10 @@ VisiteurDuplication::~VisiteurDuplication()
 ///
 /// @fn bool VisiteurDuplication::traiter(ArbreRenduINF2990* arbre)
 ///
-/// Cette fonction traite l'arbre de rendu pour dupliquer ses enfants selectionnés.
-///	Cette fonction retourne true pour dire que l'opération s'est faite correctement.
+/// Cette fonction traite l'arbre de rendu pour dupliquer ses enfants selectionnes.
+///	Cette fonction retourne true pour dire que l'operation s'est faite correctement.
 ///
-/// @param[in] arbre : L'arbre de rendu à traiter.
+/// @param[in] arbre : L'arbre de rendu a traiter.
 ///
 /// @return Retourne toujours true.
 ///
@@ -79,9 +79,9 @@ bool VisiteurDuplication::traiter(ArbreRenduINF2990* arbre)
 /// @fn bool VisiteurDuplication::traiter(NoeudTable* table)
 ///
 /// Cette fonction traite la table de l'arbre de rendu. Cette fonction retourne 
-///	true pour dire que l'opération s'est faite correctement.
+///	true pour dire que l'operation s'est faite correctement.
 ///
-/// @param[in] table : Le noeud de type Table à traiter.
+/// @param[in] table : Le noeud de type Table a traiter.
 ///
 /// @return Retourne toujours true
 ///
@@ -96,7 +96,7 @@ bool VisiteurDuplication::traiter(NoeudTable* table)
 
 	if (!copies_.empty())
 	{
-		// Ajouter les copies à la table
+		// Ajouter les copies a la table
 		for (unsigned int i = 0; i < copies_.size(); i++)
 		{
 			table->ajouter(copies_[i]);
@@ -115,9 +115,9 @@ bool VisiteurDuplication::traiter(NoeudTable* table)
 /// @fn bool VisiteurDuplication::traiter(NoeudAbstrait* noeud)
 ///
 /// Cette fonction traite un noeud de l'arbre de rendu. Cette fonction 
-///	retourne true pour dire que l'opération s'est faite correctement
+///	retourne true pour dire que l'operation s'est faite correctement
 ///
-/// @param[in] noeud : Noeud de l'arbre à traiter.
+/// @param[in] noeud : Noeud de l'arbre a traiter.
 ///
 /// @return Retourne toujours true
 ///
@@ -134,7 +134,7 @@ bool VisiteurDuplication::traiter(NoeudAbstrait* noeud)
 		copie->setColorShift(noeud->getColorShift());
 		copie->assignerSelection(true);
 
-		// Copier le jumeau du portail si il est selectionné
+		// Copier le jumeau du portail si il est selectionne
 		if (noeud->obtenirType() == "portail" && noeud->getTwin()->estSelectionne())
 		{
 			// Effectuer la copie du jumeau
@@ -148,28 +148,28 @@ bool VisiteurDuplication::traiter(NoeudAbstrait* noeud)
 			copieJumeau->setTwin(copie);
 			copie->setTwin(copieJumeau);
 
-			// Ajouter les copies dans une structure de donnée
+			// Ajouter les copies dans une structure de donnee
 			copies_.push_back(copie);
 			copies_.push_back(copieJumeau);
 
-			// Eviter d'effectuer une double copie lorsque le jumeau du portail est aussi selectionné
+			// Eviter d'effectuer une double copie lorsque le jumeau du portail est aussi selectionne
 			noeud->getTwin()->assignerSelection(false);
 		}
 		
-		// Supprimer le noeud si c'est un portail et que son jumeau n'est pas selectionné
+		// Supprimer le noeud si c'est un portail et que son jumeau n'est pas selectionne
 		else if (noeud->obtenirType() == "portail" && !(noeud->getTwin()->estSelectionne()))
 		{
 			delete copie;
 			copie = 0;
 		}
 		
-		// Ajouter la copie à la structure de donnée
+		// Ajouter la copie a la structure de donnee
 		else
 		{
 			copies_.push_back(copie);
 		}
 
-		// Déselectionner le noeud original
+		// Deselectionner le noeud original
 		noeud->assignerSelection(false);
 
 	}

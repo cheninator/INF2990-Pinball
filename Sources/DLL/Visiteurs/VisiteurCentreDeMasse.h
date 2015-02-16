@@ -15,7 +15,7 @@
 
 ///////////////////////////////////////////////////////////////////////////
 /// @class VisiteurCentreDeMasse
-/// @brief Utilisé pour calculer le centre de masse des noeuds sélectionnés
+/// @brief Utilise pour calculer le centre de masse des noeuds selectionnes
 ///
 /// @author The Ballers
 /// @date 2015-02-02
@@ -31,12 +31,12 @@ public:
 	/// Destructeur
 	~VisiteurCentreDeMasse();
 	
-	/// Traiter une opération sur l'arbre de rendu et ses enfants
+	/// Traiter une operation sur l'arbre de rendu et ses enfants
 	virtual bool traiter(ArbreRenduINF2990* arbre);
 	virtual bool traiter(NoeudTable* table);
 	virtual bool traiter(NoeudAbstrait* noeud);
 
-	// Obtenir les coordonnées (x,y,z) du centre de masse
+	// Obtenir les coordonnees (x,y,z) du centre de masse
 	glm::dvec3 obtenirCentreDeMasse() const;
 
 private:

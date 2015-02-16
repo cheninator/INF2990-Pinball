@@ -356,9 +356,6 @@
     <ClInclude Include="Arbre\Noeuds\NoeudPaletteG.h">
       <Filter>Header Files\Arbre\Noeuds</Filter>
     </ClInclude>
-    <ClInclude Include="Tests\FacadeModeleTest.h">
-      <Filter>Header Files\Tests</Filter>
-    </ClInclude>
     <ClInclude Include="Tests\TestUtilitaire.h">
       <Filter>Header Files\Tests</Filter>
     </ClInclude>

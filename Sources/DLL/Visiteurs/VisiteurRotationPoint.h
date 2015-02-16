@@ -15,12 +15,12 @@
 
 ///////////////////////////////////////////////////////////////////////////
 /// @class VisiteurRotationPoint
-/// @brief Classe pour effectuer une rotation sur des objets seletionnés de
-///		   l'arbre de rendu autour d'un point donné
+/// @brief Classe pour effectuer une rotation sur des objets seletionnes de
+///		   l'arbre de rendu autour d'un point donne
 ///
-///        Instancier cette classe avec en paramètre les angles de rotation.
-///		   Ensuite, appeler la méthode accepterVisiteur() de l'arbre de rendu 
-///		   et lui fournir CE visiteur en paramètre.
+///        Instancier cette classe avec en parametre les angles de rotation.
+///		   Ensuite, appeler la methode accepterVisiteur() de l'arbre de rendu 
+///		   et lui fournir CE visiteur en parametre.
 ///
 /// @author The Ballers
 /// @date 2015-02-02
@@ -30,26 +30,26 @@ class VisiteurRotationPoint : public VisiteurAbstrait
 {
 public:
 
-	/// Constructeur par paramètre : spécifiez l'angle et le centre de rotation
+	/// Constructeur par parametre : specifiez l'angle et le centre de rotation
 	VisiteurRotationPoint(glm::dvec3 angles ,glm::dvec3 centreRotation);
 
 	/// Destructeur
 	~VisiteurRotationPoint();
 
-	/// Méthode d'accès
+	/// Methode d'acces
 	glm::dvec3 getRotation() const { return angles_; };
 
-	/// Méthode de modifications
+	/// Methode de modifications
 	void setRotation(glm::dvec3 dep) { angles_ = dep; };
 
-	/// Traiter une opération sur l'arbre de rendu et ses enfants
+	/// Traiter une operation sur l'arbre de rendu et ses enfants
 	virtual bool traiter(ArbreRenduINF2990* arbre);
 	virtual bool traiter(NoeudAbstrait* noeud);
 	virtual bool traiter(NoeudTable* noeud);
 
 private:
 
-	/// Constructeur par défaut
+	/// Constructeur par defaut
 	VisiteurRotationPoint();
 
 	glm::dvec3 angles_; ///< Angles de rotation en x, y et z

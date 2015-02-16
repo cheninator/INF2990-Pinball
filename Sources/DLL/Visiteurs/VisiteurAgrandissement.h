@@ -14,12 +14,12 @@
 
 ///////////////////////////////////////////////////////////////////////////
 /// @class VisiteurAgrandissement
-/// @brief Classe pour agrandir ou rétrécir des objets seletionnés de
+/// @brief Classe pour agrandir ou retrecir des objets seletionnes de
 ///		   l'arbre de rendu.
 ///
-///        Instancier cette classe avec en paramètre le facteur d'agrandissement
-///		   en x, y et z. Ensuite, appeler la méthode accepterVisiteur()
-///		   de l'arbre de rendu et lui fournir CE visiteur en paramètre
+///        Instancier cette classe avec en parametre le facteur d'agrandissement
+///		   en x, y et z. Ensuite, appeler la methode accepterVisiteur()
+///		   de l'arbre de rendu et lui fournir CE visiteur en parametre
 ///
 /// @author The Ballers
 /// @date 2015-02-02
@@ -29,36 +29,36 @@ class VisiteurAgrandissement : public VisiteurAbstrait
 {
 public:
 	
-	/// Constructeur par paramètre
+	/// Constructeur par parametre
 	VisiteurAgrandissement(glm::dvec3 homothetie);
 
 	/// Destructeur
 	~VisiteurAgrandissement();
 
-	/// Méthode d'accès
+	/// Methode d'acces
 	glm::dvec3 getAgrandissement() { return homothetie_; };
 
-	/// Méthode de modifications
+	/// Methode de modifications
 	void setAgrandissement(glm::dvec3 homothetie) { homothetie_ = homothetie; };
 
-	/// Traiter une opération sur l'arbre de rendu
+	/// Traiter une operation sur l'arbre de rendu
 	virtual bool traiter(ArbreRenduINF2990* arbre);
 
-	/// Traiter une opération sur la table de l'arbre de rendu
+	/// Traiter une operation sur la table de l'arbre de rendu
 	virtual bool traiter(NoeudTable* noeud);
 
-	/// Traiter une opération sur les noeuds abstraits de l'arbre de rendu
+	/// Traiter une operation sur les noeuds abstraits de l'arbre de rendu
 	virtual bool traiter(NoeudAbstrait* noeud);
 
-	/// Traiter un mur différement d'un NoeudAbstrait
+	/// Traiter un mur differement d'un NoeudAbstrait
 	virtual bool traiter(NoeudMur* noeud);
 
-	/// Traiter un générateur de bille différement d'un NoeudAbstrait
+	/// Traiter un generateur de bille differement d'un NoeudAbstrait
 	virtual bool traiter(NoeudGenerateurBille* noeud);
 
 private:
 
-	/// Constructeur par défaut
+	/// Constructeur par defaut
 	VisiteurAgrandissement();
 
 	glm::dvec3 homothetie_; ///< Facteur d'agrandissement en x, y et z

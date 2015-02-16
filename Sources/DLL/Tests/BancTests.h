@@ -18,7 +18,7 @@
 
 ///////////////////////////////////////////////////////////////////////////
 /// @class BancTests
-/// @brief Banc de tests qui permet d'exécuter tous les tests unitaires.
+/// @brief Banc de tests qui permet d'executer tous les tests unitaires.
 ///        C'est une classe singleton.
 ///
 /// @author Julien Gascon-Samson
@@ -30,7 +30,7 @@ class BancTests : public Singleton<BancTests>
    SINGLETON_DECLARATION_CLASSE(BancTests);
 
 public:
-	/// Exécuter tous les tests unitaires
+	/// Executer tous les tests unitaires
 	bool executer();
 };
 

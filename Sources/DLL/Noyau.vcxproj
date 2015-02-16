@@ -212,7 +212,6 @@
     <ClInclude Include="Arbre\Noeuds\NoeudComposite.h" />
     <ClInclude Include="Interface\FacadeInterfaceNative.h" />
     <ClInclude Include="Tests\ArbreRenduINF2990Test.h" />
-    <ClInclude Include="Tests\FacadeModeleTest.h" />
     <ClInclude Include="Tests\NoeudCompositeTest.h" />
     <ClInclude Include="Tests\BancTests.h" />
     <ClInclude Include="Tests\NoeudAbstraitTest.h" />

@@ -15,7 +15,7 @@
 ///
 /// @fn VisiteurRotationPoint::VisiteurRotationPoint()
 ///
-/// Constructeur par défaut (Vide).
+/// Constructeur par defaut (Vide).
 ///
 /// @return Aucune (constructeur).
 ///
@@ -66,10 +66,10 @@ VisiteurRotationPoint::~VisiteurRotationPoint()
 /// @fn bool VisiteurRotationPoint::traiter(ArbreRenduINF2990* arbre)
 ///
 /// Cette fonction traite l'arbre de rendu pour effectuer une rotation sur 
-///	les enfants selectionnés. Cette fonction retourne true pour dire que 
-/// l'opération s'est faite correctement.
+///	les enfants selectionnes. Cette fonction retourne true pour dire que 
+/// l'operation s'est faite correctement.
 ///
-/// @param[in] arbre : L'arbre de rendu à traiter.
+/// @param[in] arbre : L'arbre de rendu a traiter.
 ///
 /// @return Retourne toujours true.
 ///
@@ -90,10 +90,10 @@ bool VisiteurRotationPoint::traiter(ArbreRenduINF2990* arbre)
 /// @fn bool VisiteurRotationPoint::traiter(NoeudTable* table)
 ///
 /// Cette fonction traite la table pour effectuer une rotation sur ses enfants
-/// selectionnés. Cette fonction retourne true pour dire que l'opération s'est
+/// selectionnes. Cette fonction retourne true pour dire que l'operation s'est
 /// faite correctement.
 ///
-/// @param[in] table : Le noeud de type Table à traiter.
+/// @param[in] table : Le noeud de type Table a traiter.
 ///
 /// @return Retourne toujours true
 ///
@@ -114,10 +114,10 @@ bool VisiteurRotationPoint::traiter(NoeudTable* table)
 /// @fn bool VisiteurRotationPoint::traiter(NoeudAbstrait* noeud)
 ///
 /// Cette fonction traite un noeud de l'arbre de rendu. Si ses enfants ont 
-/// des enfants, ils seront aussi traités. Cette fonction retourne true 
-/// si l'opération s'est faite correctement.
+/// des enfants, ils seront aussi traites. Cette fonction retourne true 
+/// si l'operation s'est faite correctement.
 ///
-/// @param[in] noeud : Noeud de l'arbre à traiter.
+/// @param[in] noeud : Noeud de l'arbre a traiter.
 ///
 /// @return Retourne toujours true
 ///

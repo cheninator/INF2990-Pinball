@@ -47,9 +47,9 @@ const std::string ArbreRenduINF2990::NOM_TABLE{ "table" };
 ///
 /// @fn ArbreRenduINF2990::ArbreRenduINF2990()
 ///
-/// Ce constructeur crée toutes les usines qui seront utilisées par le
-/// projet de INF2990et les enregistre auprès de la classe de base.
-/// Il crée également la structure de base de l'arbre de rendu, c'est-à-dire
+/// Ce constructeur cree toutes les usines qui seront utilisees par le
+/// projet de INF2990et les enregistre aupres de la classe de base.
+/// Il cree egalement la structure de base de l'arbre de rendu, c'est-a-dire
 /// avec les noeuds structurants.
 ///
 /// @return Aucune (constructeur).
@@ -111,7 +111,7 @@ ArbreRenduINF2990::~ArbreRenduINF2990()
 ///
 /// @fn void ArbreRenduINF2990::initialiser()
 ///
-/// Cette fonction crée la structure de base de l'arbre de rendu, c'est-à-dire
+/// Cette fonction cree la structure de base de l'arbre de rendu, c'est-a-dire
 /// avec les noeuds structurants (pour les objets, les murs, les billes,
 /// les parties statiques, etc.)
 ///
@@ -123,7 +123,7 @@ void ArbreRenduINF2990::initialiser()
 	// On vide l'arbre
 	vider();
 
-	// Charger la zone de jeu par défaut
+	// Charger la zone de jeu par defaut
 	initialiserXML("zones/default.xml");
 
 }
@@ -134,7 +134,7 @@ void ArbreRenduINF2990::initialiser()
 /// @fn NoeudAbstrait* ArbreRenduINF2990::getEnfant(int position)
 ///
 /// Cette fonction retourne un NoeudAbstrait* qui correspond
-///	à l'enfant de la position passé en paramètre.
+///	a l'enfant de la position passe en parametre.
 ///
 /// @return NoeudAbstrait* L'enfant en question.
 ///
@@ -152,7 +152,7 @@ NoeudAbstrait* ArbreRenduINF2990::getEnfant(int position) const
 ///
 /// @fn bool ArbreRenduINF2990::accepterVisiteur(VisiteurAbstrait* vis)
 ///
-/// Cette fonction appelle la méthode traiter du visiteur
+/// Cette fonction appelle la methode traiter du visiteur
 ///
 /// @return operationReussie (TRUE)
 ///
@@ -172,13 +172,13 @@ bool ArbreRenduINF2990::accepterVisiteur(VisiteurAbstrait* vis)
 ///
 /// @fn bool ArbreRenduINF2990::initialiserXML(std::string nomFichier)
 ///
-/// @param[in] nomFichier : Le nom du fichier XML à ouvrir
+/// @param[in] nomFichier : Le nom du fichier XML a ouvrir
 ///
-/// Cette fonction crée la structure de base de l'arbre de rendu, c'est-à-dire
+/// Cette fonction cree la structure de base de l'arbre de rendu, c'est-a-dire
 /// avec les noeuds structurants (pour les objets, les murs, les billes,
 /// les parties statiques, etc.) en lisant un fichier XML
 ///
-/// @return TRUE : fichier trouvé. Autrement, FALSE
+/// @return TRUE : fichier trouve. Autrement, FALSE
 ////////////////////////////////////////////////////////////////////////
 bool ArbreRenduINF2990::initialiserXML(std::string nomFichier)
 {
@@ -206,8 +206,8 @@ bool ArbreRenduINF2990::initialiserXML(std::string nomFichier)
 ///
 /// @param[in] doc : un document XML
 ///
-/// Cette fonction lit un fichier XML et créer les objets de l'arbre.
-///	Il lit également les propriétés de la zone de jeu.
+/// Cette fonction lit un fichier XML et creer les objets de l'arbre.
+///	Il lit egalement les proprietes de la zone de jeu.
 ///
 /// @return TRUE : lecture correcte. Autrement, FALSE
 ///
@@ -226,7 +226,7 @@ bool ArbreRenduINF2990::lireXML(tinyxml2::XMLDocument& doc)
 	const char* angleY = "angleY";
 	const char* angleZ = "angleZ";
 
-	// Charger les propriétés de la zone de jeu
+	// Charger les proprietes de la zone de jeu
 	tinyxml2::XMLElement* elementPropriete = doc.FirstChildElement("Proprietes");
 	tinyxml2::XMLElement* element = elementPropriete->FirstChildElement("PointsButoir");
 
@@ -236,7 +236,7 @@ bool ArbreRenduINF2990::lireXML(tinyxml2::XMLDocument& doc)
 		element = element->NextSiblingElement();
 	}
 
-	// Obtenir l'élément "arbreRenduINF2990"
+	// Obtenir l'element "arbreRenduINF2990"
 	tinyxml2::XMLElement* elementArbre = doc.FirstChildElement("arbreRenduINF2990");
 
 	if (elementArbre != nullptr) 
@@ -244,28 +244,28 @@ bool ArbreRenduINF2990::lireXML(tinyxml2::XMLDocument& doc)
 		// Vider l'ancien arbre de rendu
 		vider();
 
-		// Tenter d'obtenir l'élément table, puis l'attribut nbEnfants
+		// Tenter d'obtenir l'element table, puis l'attribut nbEnfants
 		const tinyxml2::XMLElement* elementTable{ elementArbre->FirstChildElement("table") };
 		
 		if (elementTable != nullptr)
 		{
-			// Créer la table et l'ajouter à l'arbre de rendu
+			// Creer la table et l'ajouter a l'arbre de rendu
 			NoeudAbstrait* table{ creerNoeud(elementTable->Name()) };
 			this->ajouter(table);
 
-			// Récupérer le nombre d'enfants
+			// Recuperer le nombre d'enfants
 			int nombreEnfants = elementTable->FirstAttribute()->IntValue();
 
 			// Premier enfant de la table
 			const tinyxml2::XMLElement* enfant{ elementTable->FirstChildElement() };
 
-			// Créer les enfants et les ajouter à la table
+			// Creer les enfants et les ajouter a la table
 			for (int i = 0; i < nombreEnfants; i++)
 			{
 				// Construire le noeud concret
 				NoeudAbstrait* noeudConcret{ creerNoeud(enfant->Name()) };
 
-				// Assigner les propriétés de l'enfant
+				// Assigner les proprietes de l'enfant
 				noeudConcret->assignerPositionRelative({ enfant->FindAttribute(positionX)->DoubleValue(),
 					enfant->FindAttribute(positionY)->DoubleValue(),
 					enfant->FindAttribute(positionZ)->DoubleValue() });
@@ -282,10 +282,10 @@ bool ArbreRenduINF2990::lireXML(tinyxml2::XMLDocument& doc)
 				if (noeudConcret->obtenirType() == "paletted" || noeudConcret->obtenirType() == "paletteg")
 					noeudConcret->setColorShift(enfant->FindAttribute("color")->BoolValue());
 
-				// Ajouter l'enfant à la table
+				// Ajouter l'enfant a la table
 				table->ajouter(noeudConcret);
 
-				// Le cas ou le noeud crée est un portail
+				// Le cas ou le noeud cree est un portail
 				if (noeudConcret->obtenirType() == "portail")
 				{
 					// Nombre actuel d'enfants de la table
@@ -295,20 +295,20 @@ bool ArbreRenduINF2990::lireXML(tinyxml2::XMLDocument& doc)
 					if (table->chercher(enfantsTable - 2)->obtenirType() == "portail"
 						&& table->chercher(enfantsTable - 2)->getTwin() == nullptr)
 					{
-						// Si c'est un portail et qu'il n'est pas relié, les relier tous les deux
+						// Si c'est un portail et qu'il n'est pas relie, les relier tous les deux
 						noeudConcret->setTwin(table->chercher(enfantsTable - 2 ));
 						table->chercher(enfantsTable - 2)->setTwin(noeudConcret);
 					}
 				}
 
-				// Traiter le frère de droite de l'enfant
+				// Traiter le frere de droite de l'enfant
 				enfant = enfant->NextSiblingElement();
 			}
 
 			lecture = true;
 		}
 		
-		// Tenter d'obtenir l'élément couvercle
+		// Tenter d'obtenir l'element couvercle
 		const tinyxml2::XMLElement* elementCouvercle{ elementArbre->LastChildElement("couvercle")};
 
 		if (elementCouvercle != nullptr)
@@ -330,9 +330,9 @@ bool ArbreRenduINF2990::lireXML(tinyxml2::XMLDocument& doc)
 /// @fn bool ArbreRenduINF2990::estDefaut()
 ///
 /// Cette fonction dit si les elements de l'arbre constituent la 
-///	zone de jeu par défaut
+///	zone de jeu par defaut
 ///
-/// @return TRUE : la zone est une zone par défaut. Autrement, FALSE
+/// @return TRUE : la zone est une zone par defaut. Autrement, FALSE
 ///
 ////////////////////////////////////////////////////////////////////////
 bool ArbreRenduINF2990::estDefaut() const
@@ -358,7 +358,7 @@ bool ArbreRenduINF2990::estDefaut() const
 ///
 /// @fn bool ArbreRenduINF2990::assignerDefaut()
 ///
-/// Cette fonction définit ce qu'est une zone de jeu par défaut
+/// Cette fonction definit ce qu'est une zone de jeu par defaut
 ///
 /// @return VOID
 ///

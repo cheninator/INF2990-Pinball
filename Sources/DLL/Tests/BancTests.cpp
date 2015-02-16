@@ -9,7 +9,7 @@
 
 #include "BancTests.h"
 
-// Inclusions cppunit pour l'exécution des tests
+// Inclusions cppunit pour l'execution des tests
 #include <cppunit/CompilerOutputter.h>
 #include <cppunit/extensions/TestFactoryRegistry.h>
 #include <cppunit/ui/text/TestRunner.h>
@@ -20,38 +20,38 @@ SINGLETON_DECLARATION_CPP(BancTests);
 ///
 /// @fn bool BancTests::executer()
 ///
-/// Cette fonction exécute l'ensemble des tests unitaires définis.
-/// La sortie de l'exécution des tests se fait dans la console standard
-/// d'erreurs 'cerr'. Cette fonction ajuste également le format de
-/// sortie pour correspondre à celui de Visual Studio afin d'intégrer
-/// l'exécution des tests au processus de compilation ("Post Build Event").
+/// Cette fonction execute l'ensemble des tests unitaires definis.
+/// La sortie de l'execution des tests se fait dans la console standard
+/// d'erreurs 'cerr'. Cette fonction ajuste egalement le format de
+/// sortie pour correspondre a celui de Visual Studio afin d'integrer
+/// l'execution des tests au processus de compilation ("Post Build Event").
 ///
-/// @return true si l'exécution de tous les tests a réussi, sinon false.
+/// @return true si l'execution de tous les tests a reussi, sinon false.
 ///
 ////////////////////////////////////////////////////////////////////////
 bool BancTests::executer()
 {
-	// Obtenir la suite de tests à haut niveau
+	// Obtenir la suite de tests a haut niveau
 	CppUnit::Test *suite{ CppUnit::TestFactoryRegistry::getRegistry().makeTest() };
 
-	// Obtient un environnement d'exécution de tests qui imprime les résultats
+	// Obtient un environnement d'execution de tests qui imprime les resultats
 	// dans une console (cout, cerr, fichier, etc.) et ajoute la suite de tests
-	// de base à l'environnement.
+	// de base a l'environnement.
 	// (Notez qu'il est aussi possible d'obtenir un environnement qui affiche
-	// les résultats des tests au sein d'une interface graphique QT ou MFC.
+	// les resultats des tests au sein d'une interface graphique QT ou MFC.
 	// Consultez la documentation cppunit pour plus d'informations)
 	CppUnit::TextUi::TestRunner runner;
 	runner.addTest(suite);
 
 	// Indique que nous souhaitons formatter la sortie selon un format qui
-	// s'apparente à la sortie d'un compilateur (MSVC++), et que nous
-	// souhaitons que la sortie soit réalisée dans le canal standard cerr.
-	// Cela permettra à Visual Studio d'interpréter la sortie de cppunit,
-	// d'indiquer les erreurs trouvées par les tests et leur numéro de ligne
+	// s'apparente a la sortie d'un compilateur (MSVC++), et que nous
+	// souhaitons que la sortie soit realisee dans le canal standard cerr.
+	// Cela permettra a Visual Studio d'interpreter la sortie de cppunit,
+	// d'indiquer les erreurs trouvees par les tests et leur numero de ligne
 	// en tant qu'erreurs survenant au niveau du processus de compilation.
 	runner.setOutputter(new CppUnit::CompilerOutputter{ &runner.result(),
 		std::cerr });
-	// Exécuter les tests
+	// Executer les tests
 	return runner.run();
 }
 

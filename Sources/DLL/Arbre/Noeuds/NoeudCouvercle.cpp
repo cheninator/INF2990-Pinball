@@ -22,10 +22,10 @@
 ///
 /// @fn NoeudCouvercle::NoeudCouvercle(const std::string& typeNoeud)
 ///
-/// @param[in] typeNoeud :  le type du noeud à créer.
+/// @param[in] typeNoeud :  le type du noeud a creer.
 ///
 /// Ce constructeur ne fait qu'appeler la version de la classe et base
-/// et donner des valeurs par défaut aux variables membres.
+/// et donner des valeurs par defaut aux variables membres.
 ///
 /// @return Aucune (constructeur).
 ///
@@ -42,7 +42,7 @@ NoeudCouvercle::NoeudCouvercle(const std::string& typeNoeud)
 ///
 /// @fn NoeudCouvercle::~NoeudCouvercle()
 ///
-/// Ce destructeur désallouee la liste d'affichage du noeud.
+/// Ce destructeur desallouee la liste d'affichage du noeud.
 ///
 /// @return Aucune (destructeur).
 ///
@@ -56,7 +56,7 @@ NoeudCouvercle::~NoeudCouvercle()
 ///
 /// @fn void NoeudCouvercle::afficherConcret() const
 ///
-/// Cette fonction effectue le véritable rendu de l'objet.
+/// Cette fonction effectue le veritable rendu de l'objet.
 ///
 /// @return Aucune.
 ///
@@ -70,7 +70,7 @@ void NoeudCouvercle::afficherConcret() const
 	// To remove for animation
 	//glTranslatef( -117, 0, 0 );
 	// glRotatef(-45.0, 0, 1, 0 );
-	// Affichage du modèle.
+	// Affichage du modele.
 	glStencilFunc(GL_ALWAYS, 0, -1);
 	liste_->dessiner();
 	// Restauration de la matrice.
@@ -91,7 +91,7 @@ void NoeudCouvercle::afficherConcret() const
 ////////////////////////////////////////////////////////////////////////
 void NoeudCouvercle::animer(float temps)
 {
-	// Appel à la version de la classe de base pour l'animation des enfants.
+	// Appel a la version de la classe de base pour l'animation des enfants.
 	NoeudComposite::animer(temps);
 	if (positionRelative_.x > -130.0) {
 		positionRelative_.x -= 1;
@@ -104,7 +104,7 @@ void NoeudCouvercle::animer(float temps)
 ///
 /// @fn bool bool NoeudCouvercle::accepterVisiteur(VisiteurAbstrait* vis)
 ///
-/// Cette fonction appelle la méthode traiter du visiteur.
+/// Cette fonction appelle la methode traiter du visiteur.
 ///
 /// @return reussi (TRUE)
 ///

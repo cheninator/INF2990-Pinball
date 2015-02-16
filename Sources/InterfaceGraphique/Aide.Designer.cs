@@ -131,7 +131,7 @@ namespace InterfaceGraphique
             this.tabPage3.Name = "tabPage3";
             this.tabPage3.Size = new System.Drawing.Size(548, 299);
             this.tabPage3.TabIndex = 2;
-            this.tabPage3.Text = "Génériques";
+            this.tabPage3.Text = "Generiques";
             this.tabPage3.UseVisualStyleBackColor = true;
             // 
             // pictureBox1
@@ -155,7 +155,7 @@ namespace InterfaceGraphique
             this.label3.Size = new System.Drawing.Size(157, 243);
             this.label3.TabIndex = 0;
             this.label3.Text = "Programmeurs:\r\n\r\nPhilippe Carphin\r\nYonni Chen\r\nAymen Djellal\r\nSamuel Millette\r\nKi" +
-    "m Piché\r\nNikolay Radoev\r\nEmilio Rivera\r\n";
+    "m Piche\r\nNikolay Radoev\r\nEmilio Rivera\r\n";
             // 
             // tabPage4
             // 

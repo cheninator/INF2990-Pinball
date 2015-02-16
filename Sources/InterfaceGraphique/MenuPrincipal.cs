@@ -35,13 +35,13 @@ namespace InterfaceGraphique
     public partial class MainMenu : Form
     {
         System.Media.SoundPlayer player = new System.Media.SoundPlayer(Properties.Resources.button_29); ///< Sound player
-        public Exemple modeEdit; ///< Form du mode édition
+        public Exemple modeEdit; ///< Form du mode edition
         private Thread myThread; ///< Une thread
 
         ////////////////////////////////////////////////////////////////////////
         ///
         /// @fn public MainMenu()
-        /// @brief Constructeur de la fenêtre.
+        /// @brief Constructeur de la fenetre.
         /// 
         /// @return Aucune (constructeur).
         ///
@@ -65,11 +65,11 @@ namespace InterfaceGraphique
        ////////////////////////////////////////////////////////////////////////
        ///
        /// @fn private void bouton_quit_Click(object sender, EventArgs e)
-       /// @brief Gestion des événements lorsque l'utilisateur clique sur 
+       /// @brief Gestion des evenements lorsque l'utilisateur clique sur 
        ///        le bouton Quitter.
        /// 
-       /// @param[in] sender : Objet duquel provient un événement
-       /// @param[in] e : Événement qui lance la fonction.
+       /// @param[in] sender : Objet duquel provient un evenement
+       /// @param[in] e : evenement qui lance la fonction.
        /// 
        /// @return Aucune.
        ///
@@ -87,11 +87,11 @@ namespace InterfaceGraphique
         ////////////////////////////////////////////////////////////////////////
         ///
         /// @fn private void bouton_edit_Click(object sender, EventArgs e)
-        /// @brief Gestion des événements lorsque l'utilisateur clique sur 
+        /// @brief Gestion des evenements lorsque l'utilisateur clique sur 
         ///        le bouton Editeur.
         /// 
-        /// @param[in] sender : Objet duquel provient un événement
-        /// @param[in] e : Événement qui lance la fonction.
+        /// @param[in] sender : Objet duquel provient un evenement
+        /// @param[in] e : evenement qui lance la fonction.
         /// 
         /// @return Aucune.
         ///
@@ -112,11 +112,11 @@ namespace InterfaceGraphique
         ////////////////////////////////////////////////////////////////////////
         ///
         /// @fn private void bouton_edit_MouseEnter(object sender, EventArgs e)
-        /// @brief Gestion des événements lorsque l'utilisateur place la 
+        /// @brief Gestion des evenements lorsque l'utilisateur place la 
         ///        souris sur le bouton Editeur.
         /// 
-        /// @param[in] sender : Objet duquel provient un événement
-        /// @param[in] e : Événement qui lance la fonction.
+        /// @param[in] sender : Objet duquel provient un evenement
+        /// @param[in] e : evenement qui lance la fonction.
         /// 
         /// @return Aucune.
         ///
@@ -132,11 +132,11 @@ namespace InterfaceGraphique
         ////////////////////////////////////////////////////////////////////////
         ///
         /// @fn private void bouton_edit_MouseLeave(object sender, EventArgs e)
-        /// @brief Gestion des événements lorsque l'utilisateur enlève la 
+        /// @brief Gestion des evenements lorsque l'utilisateur enleve la 
         ///        souris du bouton Editeur.
         /// 
-        /// @param[in] sender : Objet duquel provient un événement
-        /// @param[in] e : Événement qui lance la fonction.
+        /// @param[in] sender : Objet duquel provient un evenement
+        /// @param[in] e : evenement qui lance la fonction.
         /// 
         /// @return Aucune.
         ///
@@ -150,11 +150,11 @@ namespace InterfaceGraphique
         ////////////////////////////////////////////////////////////////////////
         ///
         /// @fn private void bouton_quit_MouseEnter(object sender, EventArgs e)
-        /// @brief Gestion des événements lorsque l'utilisateur place la 
+        /// @brief Gestion des evenements lorsque l'utilisateur place la 
         ///        souris sur le bouton Quitter.
         /// 
-        /// @param[in] sender : Objet duquel provient un événement
-        /// @param[in] e : Événement qui lance la fonction.
+        /// @param[in] sender : Objet duquel provient un evenement
+        /// @param[in] e : evenement qui lance la fonction.
         /// 
         /// @return Aucune.
         ///
@@ -171,11 +171,11 @@ namespace InterfaceGraphique
         ////////////////////////////////////////////////////////////////////////
         ///
         /// @fn private void bouton_quit_MouseLeave(object sender, EventArgs e)
-        /// @brief Gestion des événements lorsque l'utilisateur enlève la 
+        /// @brief Gestion des evenements lorsque l'utilisateur enleve la 
         ///        souris du bouton Quitter.
         /// 
-        /// @param[in] sender : Objet duquel provient un événement
-        /// @param[in] e : Événement qui lance la fonction.
+        /// @param[in] sender : Objet duquel provient un evenement
+        /// @param[in] e : evenement qui lance la fonction.
         /// 
         /// @return Aucune.
         ///
@@ -189,11 +189,11 @@ namespace InterfaceGraphique
         ////////////////////////////////////////////////////////////////////////
         ///
         /// @fn private void MainMenu_Shown(object sender, EventArgs e)
-        /// @brief Gestion des événements lorsque le menu s'ouvre. La musique
+        /// @brief Gestion des evenements lorsque le menu s'ouvre. La musique
         ///        joue sur un autre Thread.
         /// 
-        /// @param[in] sender : Objet duquel provient un événement
-        /// @param[in] e : Événement qui lance la fonction.
+        /// @param[in] sender : Objet duquel provient un evenement
+        /// @param[in] e : evenement qui lance la fonction.
         /// 
         /// @return Aucune.
         ///

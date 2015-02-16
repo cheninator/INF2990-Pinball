@@ -15,10 +15,10 @@
 
 ///////////////////////////////////////////////////////////////////////////
 /// @class VisiteurDuplication
-/// @brief Classe pour dupliquer les objets selectionnés de l'arbre de rendu
+/// @brief Classe pour dupliquer les objets selectionnes de l'arbre de rendu
 ///
-///        Instancier cette classe. Ensuite, appeler la méthode accepterVisiteur() 
-///		   de l'arbre de rendu et lui fournir CE visiteur en paramètre
+///        Instancier cette classe. Ensuite, appeler la methode accepterVisiteur() 
+///		   de l'arbre de rendu et lui fournir CE visiteur en parametre
 ///
 /// @author The Ballers
 /// @date 2015-02-02
@@ -28,20 +28,20 @@ class VisiteurDuplication : public VisiteurAbstrait
 {
 public:
 
-	/// Constructeur par défaut
+	/// Constructeur par defaut
 	VisiteurDuplication();	
 
 	/// Destructeur
 	~VisiteurDuplication();
 
-	/// Traiter une opération sur l'arbre de rendu et ses enfants
+	/// Traiter une operation sur l'arbre de rendu et ses enfants
 	virtual bool traiter(ArbreRenduINF2990* arbre);
 	virtual bool traiter(NoeudAbstrait* noeud);
 	virtual bool traiter(NoeudTable* table);
 
 private:
 
-	std::vector<NoeudAbstrait*> copies_;	///< Contient les copies des objets selectionnés
+	std::vector<NoeudAbstrait*> copies_;	///< Contient les copies des objets selectionnes
 	ArbreRenduINF2990* arbreTemp;			///< Pointeur vers l'arbre de rendu original
 };
 

@@ -33,7 +33,7 @@ NoeudComposite::NoeudComposite(
 ///
 /// @fn NoeudComposite::~NoeudComposite()
 ///
-/// Destructeur qui détruit tous les enfants du noeud.
+/// Destructeur qui detruit tous les enfants du noeud.
 ///
 /// @return Aucune (destructeur).
 ///
@@ -77,8 +77,8 @@ unsigned int NoeudComposite::calculerProfondeur() const
 /// @fn void NoeudComposite::vider()
 ///
 /// Cette fonction vide le noeud de tous ses enfants.  Elle effectue une
-/// itération prudente sur les enfants afin d'être assez robuste pour
-/// supporter la possibilité qu'un enfant en efface un autre dans son
+/// iteration prudente sur les enfants afin d'etre assez robuste pour
+/// supporter la possibilite qu'un enfant en efface un autre dans son
 /// destructeur, par exemple si deux objets ne peuvent pas exister l'un
 /// sans l'autre.  Elle peut toutefois entrer en boucle infinie si un
 /// enfant ajoute un nouveau noeud lorsqu'il se fait effacer.
@@ -88,7 +88,7 @@ unsigned int NoeudComposite::calculerProfondeur() const
 ////////////////////////////////////////////////////////////////////////
 void NoeudComposite::vider()
 {
-	// L'itération doit être faite ainsi pour éviter les problèmes lorsque
+	// L'iteration doit etre faite ainsi pour eviter les problemes lorsque
 	// le desctructeur d'un noeud modifie l'arbre, par exemple en retirant
 	// d'autres noeuds.  Il pourrait y avoir une boucle infinie si la
 	// desctruction d'un enfant entraînerait l'ajout d'un autre.
@@ -107,7 +107,7 @@ void NoeudComposite::vider()
 /// Efface un noeud qui est un enfant ou qui est contenu dans un des
 /// enfants.
 ///
-/// @param[in] noeud : Le noeud à effacer.
+/// @param[in] noeud : Le noeud a effacer.
 ///
 /// @return Aucune
 ///
@@ -118,7 +118,7 @@ void NoeudComposite::effacer(const NoeudAbstrait* noeud)
 		it != enfants_.end();
 		it++) {
 		if (*it == noeud) {
-			// On a trouvé le noeud à effacer
+			// On a trouve le noeud a effacer
 			NoeudAbstrait* noeudAEffacer{ (*it) };
 			enfants_.erase(it);
 			delete noeudAEffacer;
@@ -136,12 +136,12 @@ void NoeudComposite::effacer(const NoeudAbstrait* noeud)
 ///
 /// @fn const NoeudAbstrait* NoeudComposite::chercher( const std::string& typeNoeud ) const
 ///
-/// Recherche un noeud d'un type donné parmi le noeud courant et ses
+/// Recherche un noeud d'un type donne parmi le noeud courant et ses
 /// enfants.  Version constante de la fonction.
 ///
-/// @param[in] typeNoeud : Le type du noeud cherché.
+/// @param[in] typeNoeud : Le type du noeud cherche.
 ///
-/// @return Noeud recherché ou 0 si le noeud n'est pas trouvé.
+/// @return Noeud recherche ou 0 si le noeud n'est pas trouve.
 ///
 ////////////////////////////////////////////////////////////////////////
 const NoeudAbstrait* NoeudComposite::chercher(
@@ -169,12 +169,12 @@ const NoeudAbstrait* NoeudComposite::chercher(
 ///
 /// @fn NoeudAbstrait* NoeudComposite::chercher( const std::string& typeNoeud )
 ///
-/// Recherche un noeud d'un type donné parmi le noeud courant et ses
+/// Recherche un noeud d'un type donne parmi le noeud courant et ses
 /// enfants.
 ///
-/// @param[in] typeNoeud : Le type du noeud cherché.
+/// @param[in] typeNoeud : Le type du noeud cherche.
 ///
-/// @return Noeud recherché ou 0 si le noeud n'est pas trouvé.
+/// @return Noeud recherche ou 0 si le noeud n'est pas trouve.
 ///
 ////////////////////////////////////////////////////////////////////////
 NoeudAbstrait* NoeudComposite::chercher(const std::string& typeNoeud)
@@ -200,12 +200,12 @@ NoeudAbstrait* NoeudComposite::chercher(const std::string& typeNoeud)
 ///
 /// @fn const NoeudAbstrait* NoeudComposite::chercher( unsigned int indice ) const
 ///
-/// Retourne le i-ème enfant, où i est l'indice passé à la fonction.
+/// Retourne le i-eme enfant, où i est l'indice passe a la fonction.
 /// Version constante de la fonction.
 ///
-/// @param[in] indice : L'indice de l'enfant cherché.
+/// @param[in] indice : L'indice de l'enfant cherche.
 ///
-/// @return Noeud recherché ou 0 si le noeud n'est pas trouvé.
+/// @return Noeud recherche ou 0 si le noeud n'est pas trouve.
 ///
 ////////////////////////////////////////////////////////////////////////
 const NoeudAbstrait* NoeudComposite::chercher(unsigned int indice) const
@@ -223,11 +223,11 @@ const NoeudAbstrait* NoeudComposite::chercher(unsigned int indice) const
 ///
 /// @fn NoeudAbstrait* NoeudComposite::chercher( unsigned int indice )
 ///
-/// Retourne le i-ème enfant, où i est l'indice passé à la fonction.
+/// Retourne le i-eme enfant, où i est l'indice passe a la fonction.
 ///
-/// @param[in] indice : L'indice de l'enfant cherché.
+/// @param[in] indice : L'indice de l'enfant cherche.
 ///
-/// @return Noeud recherché ou 0 si le noeud n'est pas trouvé.
+/// @return Noeud recherche ou 0 si le noeud n'est pas trouve.
 ///
 ////////////////////////////////////////////////////////////////////////
 NoeudAbstrait* NoeudComposite::chercher(unsigned int indice)
@@ -247,9 +247,9 @@ NoeudAbstrait* NoeudComposite::chercher(unsigned int indice)
 ///
 /// Ajoute un noeud enfant au noeud courant.
 ///
-/// @param[in] enfant: Noeud à ajouter.
+/// @param[in] enfant: Noeud a ajouter.
 ///
-/// @return Vrai si l'ajout a réussi, donc en tout temps pour cette classe.
+/// @return Vrai si l'ajout a reussi, donc en tout temps pour cette classe.
 ///
 ////////////////////////////////////////////////////////////////////////
 bool NoeudComposite::ajouter(NoeudAbstrait* enfant)
@@ -274,8 +274,8 @@ bool NoeudComposite::ajouter(NoeudAbstrait* enfant)
 ////////////////////////////////////////////////////////////////////////
 unsigned int NoeudComposite::obtenirNombreEnfants() const
 {
-	// La taille ne doit jamais être négative, sinon le cast plus bas
-	// donnera un résultat erroné.
+	// La taille ne doit jamais etre negative, sinon le cast plus bas
+	// donnera un resultat errone.
 	assert(enfants_.size() >= 0);
 
 	return static_cast<unsigned int> (enfants_.size());
@@ -286,24 +286,24 @@ unsigned int NoeudComposite::obtenirNombreEnfants() const
 ///
 /// @fn void NoeudComposite::effacerSelection()
 ///
-/// Efface tous les noeuds sélectionnés situés sous ce noeud.  Elle
-/// s'appelle donc récursivement sur tous les enfants, avant de retirer
-/// les enfants sélectionnés.
+/// Efface tous les noeuds selectionnes situes sous ce noeud.  Elle
+/// s'appelle donc recursivement sur tous les enfants, avant de retirer
+/// les enfants selectionnes.
 ///
 /// @return Aucune
 ///
 ////////////////////////////////////////////////////////////////////////
 void NoeudComposite::effacerSelection()
 {
-	// On efface tous les noeuds sélectionnés descendants des enfants.
+	// On efface tous les noeuds selectionnes descendants des enfants.
 	for (NoeudAbstrait * enfant : enfants_){
 		enfant->effacerSelection();
 	}
 
-	// On efface les enfants sélectionnés.  On effectue ce traitement
-	// dans une seconde boucle pour éviter de faire des assomptions
-	// sur la robustesse des itérateurs lorsque le conteneur est
-	// modifié pendant une itération.
+	// On efface les enfants selectionnes.  On effectue ce traitement
+	// dans une seconde boucle pour eviter de faire des assomptions
+	// sur la robustesse des iterateurs lorsque le conteneur est
+	// modifie pendant une iteration.
 	for (conteneur_enfants::iterator it{ enfants_.begin() };
 		it != enfants_.end();
 		) {
@@ -312,11 +312,11 @@ void NoeudComposite::effacerSelection()
 			enfants_.erase(it);
 			delete enfant;
 
-			// On ramène l'itération au début de la boucle, car le destructeur
-			// de l'enfant pourrait éventuellement avoir retiré d'autres
-			// enfants de l'arbre, ce qui briserait l'itération.  Pourrait
-			// éventuellement être évité avec des itérateurs plus robustes.
-			// Peut-être une liste chaînée?
+			// On ramene l'iteration au debut de la boucle, car le destructeur
+			// de l'enfant pourrait eventuellement avoir retire d'autres
+			// enfants de l'arbre, ce qui briserait l'iteration.  Pourrait
+			// eventuellement etre evite avec des iterateurs plus robustes.
+			// Peut-etre une liste chaînee?
 			it = enfants_.begin();
 		}
 		else {
@@ -330,8 +330,8 @@ void NoeudComposite::effacerSelection()
 ///
 /// @fn void NoeudComposite::selectionnerTout()
 ///
-/// Sélectionne tous les noeuds qui sont sélectionnés parmis les
-/// les descendants de ce noeud, lui-même étant inclus.
+/// Selectionne tous les noeuds qui sont selectionnes parmis les
+/// les descendants de ce noeud, lui-meme etant inclus.
 ///
 /// @return Aucune
 ///
@@ -350,8 +350,8 @@ void NoeudComposite::selectionnerTout()
 ///
 /// @fn void NoeudComposite::deselectionnerTout()
 ///
-/// Désélectionne tous les noeuds qui sont sélectionnés parmis les
-/// les descendants de ce noeud, lui-même étant inclus.
+/// Deselectionne tous les noeuds qui sont selectionnes parmis les
+/// les descendants de ce noeud, lui-meme etant inclus.
 ///
 /// @return Aucune
 ///
@@ -370,10 +370,10 @@ void NoeudComposite::deselectionnerTout()
 ///
 /// @fn bool NoeudComposite::selectionExiste() const
 ///
-/// Vérifie si le noeud ou un de ses descendants est sélectionné en
-/// s'appelant de manière récursive sur les enfants du noeud.
+/// Verifie si le noeud ou un de ses descendants est selectionne en
+/// s'appelant de maniere recursive sur les enfants du noeud.
 ///
-/// @return Vrai s'il existe un noeud sélectionné, faux autrement.
+/// @return Vrai s'il existe un noeud selectionne, faux autrement.
 ///
 ////////////////////////////////////////////////////////////////////////
 bool NoeudComposite::selectionExiste() const
@@ -398,9 +398,9 @@ bool NoeudComposite::selectionExiste() const
 /// Change le mode d'affichage des polygones pour ce noeud et ses
 /// enfants.
 ///
-/// @param[in] estForce : Si vrai, le mode est changé pour ce noeud et
+/// @param[in] estForce : Si vrai, le mode est change pour ce noeud et
 ///                       tous ses descendants.  Sinon, seuls les noeuds
-///                       sélectionnés verront leur mode changer.
+///                       selectionnes verront leur mode changer.
 ///
 /// @return Aucune
 ///
@@ -410,7 +410,7 @@ void NoeudComposite::changerModePolygones(bool estForce)
 	NoeudAbstrait::changerModePolygones(estForce);
 	const bool forceEnfant = ((estForce) || (estSelectionne()));
 
-	// Applique le changement récursivement aux enfants.
+	// Applique le changement recursivement aux enfants.
 	for (NoeudAbstrait * enfant : enfants_){
 		enfant->changerModePolygones(forceEnfant);
 	}
@@ -429,10 +429,10 @@ void NoeudComposite::changerModePolygones(bool estForce)
 ////////////////////////////////////////////////////////////////////////
 void NoeudComposite::assignerModePolygones(GLenum modePolygones)
 {
-	// Appel à la version de la classe de base.
+	// Appel a la version de la classe de base.
 	NoeudAbstrait::assignerModePolygones(modePolygones);
 
-	// Applique le changement récursivement aux enfants.
+	// Applique le changement recursivement aux enfants.
 	for (NoeudAbstrait * enfant : enfants_){
 		enfant->assignerModePolygones(modePolygones);
 	}
@@ -443,8 +443,8 @@ void NoeudComposite::assignerModePolygones(GLenum modePolygones)
 ///
 /// @fn void NoeudComposite::afficherConcret() const
 ///
-/// Cette fonction effectue le véritable rendu de l'objet.  Elle est
-/// appelée par la template method (dans le sens du patron de conception,
+/// Cette fonction effectue le veritable rendu de l'objet.  Elle est
+/// appelee par la template method (dans le sens du patron de conception,
 /// et non des template C++) afficher() de la classe de base.
 ///
 /// Pour cette classe, elle affiche chacun des enfants du noeud.

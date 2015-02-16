@@ -40,8 +40,8 @@ NoeudAbstrait::NoeudAbstrait(
 ///
 /// @fn NoeudAbstrait::~NoeudAbstrait()
 ///
-/// Destructeur vide déclaré virtuel pour les classes dérivées.  La
-/// libération des afficheurs n'est pas la responsabilité de cette
+/// Destructeur vide declare virtuel pour les classes derivees.  La
+/// liberation des afficheurs n'est pas la responsabilite de cette
 /// classe.
 ///
 /// @return Aucune (destructeur).
@@ -78,7 +78,7 @@ unsigned int NoeudAbstrait::calculerProfondeur() const
 /// Cette fonction vide le noeud de tous ses enfants.
 ///
 /// Cette fonction ne fait rien pour un noeud sans enfant, elle ne fait
-/// donc rien dans cette implantation par défaut de la classe de base.
+/// donc rien dans cette implantation par defaut de la classe de base.
 ///
 /// @return Aucune.
 ///
@@ -96,9 +96,9 @@ void NoeudAbstrait::vider()
 /// ce noeud.
 ///
 /// Cette fonction ne fait rien pour un noeud sans enfant, elle ne fait
-/// donc rien dans cette implantation par défaut de la classe de base.
+/// donc rien dans cette implantation par defaut de la classe de base.
 ///
-/// @param[in] noeud : Le noeud à effacer.
+/// @param[in] noeud : Le noeud a effacer.
 ///
 /// @return Aucune.
 ///
@@ -112,15 +112,15 @@ void NoeudAbstrait::effacer(const NoeudAbstrait* noeud)
 ///
 /// @fn const NoeudAbstrait* NoeudAbstrait::chercher( const std::string& typeNoeud ) const
 ///
-/// Cette fonction cherche un noeud d'un type donné parmi le noeud
-/// lui-même et ses enfants.
+/// Cette fonction cherche un noeud d'un type donne parmi le noeud
+/// lui-meme et ses enfants.
 ///
-/// Elle retourne donc le noeud lui-même si son type est celui passé en
-/// paramètre, ou 0 sinon.
+/// Elle retourne donc le noeud lui-meme si son type est celui passe en
+/// parametre, ou 0 sinon.
 ///
-/// @param[in] typeNoeud : Le type du noeud à trouver.
+/// @param[in] typeNoeud : Le type du noeud a trouver.
 ///
-/// @return Le pointeur vers le noeud s'il est trouvé.
+/// @return Le pointeur vers le noeud s'il est trouve.
 ///
 ////////////////////////////////////////////////////////////////////////
 const NoeudAbstrait* NoeudAbstrait::chercher(const std::string& typeNoeud) const
@@ -136,15 +136,15 @@ const NoeudAbstrait* NoeudAbstrait::chercher(const std::string& typeNoeud) const
 ///
 /// @fn NoeudAbstrait* NoeudAbstrait::chercher( const std::string& typeNoeud )
 ///
-/// Cette fonction cherche un noeud d'un type donné parmi le noeud
-/// lui-même et ses enfants.
+/// Cette fonction cherche un noeud d'un type donne parmi le noeud
+/// lui-meme et ses enfants.
 ///
-/// Elle retourne donc le noeud lui-même si son type est celui passé en
-/// paramètre, ou 0 sinon.
+/// Elle retourne donc le noeud lui-meme si son type est celui passe en
+/// parametre, ou 0 sinon.
 ///
-/// @param[in] typeNoeud : Le type du noeud à trouver.
+/// @param[in] typeNoeud : Le type du noeud a trouver.
 ///
-/// @return Le pointeur vers le noeud s'il est trouvé.
+/// @return Le pointeur vers le noeud s'il est trouve.
 ///
 ////////////////////////////////////////////////////////////////////////
 NoeudAbstrait* NoeudAbstrait::chercher(const std::string& typeNoeud)
@@ -160,14 +160,14 @@ NoeudAbstrait* NoeudAbstrait::chercher(const std::string& typeNoeud)
 ///
 /// @fn const NoeudAbstrait* NoeudAbstrait::chercher( unsigned int indice ) const
 ///
-/// Cette fonction cherche le i-ème enfant d'un noeud.
+/// Cette fonction cherche le i-eme enfant d'un noeud.
 ///
 /// Elle retourne toujours 0 pour la classe de base, car cette
-/// dernière ne possède pas d'enfant.
+/// derniere ne possede pas d'enfant.
 ///
-/// @param[in] indice : L'indice du noeud à trouver.
+/// @param[in] indice : L'indice du noeud a trouver.
 ///
-/// @return Le pointeur vers le noeud s'il est trouvé.
+/// @return Le pointeur vers le noeud s'il est trouve.
 ///
 ////////////////////////////////////////////////////////////////////////
 const NoeudAbstrait* NoeudAbstrait::chercher(unsigned int indice) const
@@ -180,14 +180,14 @@ const NoeudAbstrait* NoeudAbstrait::chercher(unsigned int indice) const
 ///
 /// @fn NoeudAbstrait* NoeudAbstrait::chercher( unsigned int indice )
 ///
-/// Cette fonction cherche le i-ème enfant d'un noeud.
+/// Cette fonction cherche le i-eme enfant d'un noeud.
 ///
 /// Elle retourne toujours 0 pour la classe de base, car cette
-/// dernière ne possède pas d'enfant.
+/// derniere ne possede pas d'enfant.
 ///
-/// @param[in] indice : L'indice du noeud à trouver.
+/// @param[in] indice : L'indice du noeud a trouver.
 ///
-/// @return Le pointeur vers le noeud s'il est trouvé.
+/// @return Le pointeur vers le noeud s'il est trouve.
 ///
 ////////////////////////////////////////////////////////////////////////
 NoeudAbstrait* NoeudAbstrait::chercher(unsigned int indice)
@@ -200,14 +200,14 @@ NoeudAbstrait* NoeudAbstrait::chercher(unsigned int indice)
 ///
 /// @fn bool NoeudAbstrait::ajouter(NoeudAbstrait* enfant)
 ///
-/// Cette fonction ajoute un enfant à ce noeud.
+/// Cette fonction ajoute un enfant a ce noeud.
 ///
 /// Elle retourne toujours faux et ne fait rien, car ce type de noeud
 /// abstrait ne peut pas avoir d'enfant.
 ///
-/// @param[in] enfant: Le noeud à ajouter.
+/// @param[in] enfant: Le noeud a ajouter.
 ///
-/// @return Vrai si l'ajout a bien été effectué, faux autrement.
+/// @return Vrai si l'ajout a bien ete effectue, faux autrement.
 ///
 ////////////////////////////////////////////////////////////////////////
 bool NoeudAbstrait::ajouter(NoeudAbstrait* enfant)
@@ -225,7 +225,7 @@ bool NoeudAbstrait::ajouter(NoeudAbstrait* enfant)
 /// Elle retourne toujours 0, car ce type de noeud abstrait ne peut pas
 /// avoir d'enfant.
 ///
-/// @return Vrai si l'ajout a bien été effectué, faux autrement.
+/// @return Vrai si l'ajout a bien ete effectue, faux autrement.
 ///
 ////////////////////////////////////////////////////////////////////////
 unsigned int NoeudAbstrait::obtenirNombreEnfants() const
@@ -242,7 +242,7 @@ modele::Modele3D const* NoeudAbstrait::obtenirModele() const
 ///
 /// @fn void NoeudAbstrait::inverserSelection()
 ///
-/// Cette fonction inverse l'état de sélection de ce noeud.
+/// Cette fonction inverse l'etat de selection de ce noeud.
 ///
 /// @return Aucune.
 ///
@@ -257,7 +257,7 @@ void NoeudAbstrait::inverserSelection()
 ///
 /// @fn void NoeudAbstrait::effacerSelection()
 ///
-/// Cette fonction efface les noeuds qui sont sélectionnés parmi les
+/// Cette fonction efface les noeuds qui sont selectionnes parmi les
 /// enfants de ce noeud.
 ///
 /// Elle ne fait rien, car ce type de noeud abstrait ne peut pas avoir
@@ -275,9 +275,9 @@ void NoeudAbstrait::effacerSelection()
 ///
 /// @fn void NoeudAbstrait::selectionnerTout()
 ///
-/// Cette fonction sélectionne le noeud et ses enfants.
+/// Cette fonction selectionne le noeud et ses enfants.
 ///
-/// Elle ne fait que sélectionner le noeud pour cette classe, car ce
+/// Elle ne fait que selectionner le noeud pour cette classe, car ce
 /// type de noeud abstrait ne peut pas avoir d'enfants.
 ///
 /// @return Aucune.
@@ -293,9 +293,9 @@ void NoeudAbstrait::selectionnerTout()
 ///
 /// @fn void NoeudAbstrait::deselectionnerTout()
 ///
-/// Cette fonction désélectionne le noeud et ses enfants.
+/// Cette fonction deselectionne le noeud et ses enfants.
 ///
-/// Elle ne fait que désélectionner le noeud pour cette classe, car ce
+/// Elle ne fait que deselectionner le noeud pour cette classe, car ce
 /// type de noeud abstrait ne peut pas avoir d'enfants.
 ///
 /// @return Aucune.
@@ -311,13 +311,13 @@ void NoeudAbstrait::deselectionnerTout()
 ///
 /// @fn bool NoeudAbstrait::selectionExiste() const
 ///
-/// Cette fonction vérifie si le noeud ou un de ses enfants est
-/// sélectionné.
+/// Cette fonction verifie si le noeud ou un de ses enfants est
+/// selectionne.
 ///
-/// Elle ne fait que regarder si le noeud est sélectionné, car ce type
+/// Elle ne fait que regarder si le noeud est selectionne, car ce type
 /// de noeud abstrait ne peut pas avoir d'enfants.
 ///
-/// @return Vrai s'il existe un noeud sélectionné, faux autrement.
+/// @return Vrai s'il existe un noeud selectionne, faux autrement.
 ///
 ////////////////////////////////////////////////////////////////////////
 bool NoeudAbstrait::selectionExiste() const
@@ -331,10 +331,10 @@ bool NoeudAbstrait::selectionExiste() const
 /// @fn void NoeudAbstrait::changerModePolygones( bool estForce )
 ///
 /// Cette fonction change le mode de rendu des polygones du noeud s'il
-/// est sélectionné ou si on le force.
+/// est selectionne ou si on le force.
 ///
-/// @param[in] estForce: Vrai si on veut changer le mode même si le
-///                      noeud n'est pas sélectionné.
+/// @param[in] estForce: Vrai si on veut changer le mode meme si le
+///                      noeud n'est pas selectionne.
 ///
 /// @return Aucune.
 ///
@@ -363,7 +363,7 @@ void NoeudAbstrait::changerModePolygones(bool estForce)
 ////////////////////////////////////////////////////////////////////////
 void NoeudAbstrait::assignerModePolygones(GLenum modePolygones)
 {
-	// Le mode par défaut si on passe une mauvaise valeur est GL_FILL
+	// Le mode par defaut si on passe une mauvaise valeur est GL_FILL
 	if ((modePolygones != GL_FILL) &&
 		(modePolygones != GL_LINE) &&
 		(modePolygones != GL_POINT)) {
@@ -382,15 +382,15 @@ void NoeudAbstrait::assignerModePolygones(GLenum modePolygones)
 ///
 /// Elle consiste en une template method (dans le sens du patron de
 /// conception, et non les template C++) qui effectue ce qui est
-/// généralement à faire pour l'affichage, c'est-à-dire:
+/// generalement a faire pour l'affichage, c'est-a-dire:
 /// - Mise en pile de la matrice de transformation
-/// - Translation du noeud pour qu'il soit à sa position relative
+/// - Translation du noeud pour qu'il soit a sa position relative
 /// - Utilisation du mode d'affichage des polygones
 /// - ...
-/// - Restauration de l'état.
+/// - Restauration de l'etat.
 ///
-/// L'affichage comme tel est confié à la fonction afficherConcret(),
-/// appelée par la fonction afficher().
+/// L'affichage comme tel est confie a la fonction afficherConcret(),
+/// appelee par la fonction afficher().
 ///
 /// @return Aucune.
 ///
@@ -433,8 +433,8 @@ void NoeudAbstrait::afficher() const
 ///
 /// @fn void NoeudAbstrait::afficherConcret() const
 ///
-/// Cette fonction effectue le véritable rendu de l'objet.  Elle est
-/// appelée par la template method (dans le sens du patron de conception,
+/// Cette fonction effectue le veritable rendu de l'objet.  Elle est
+/// appelee par la template method (dans le sens du patron de conception,
 /// et non des template C++) afficher() de la classe de base.
 ///
 /// @return Aucune.
@@ -452,8 +452,8 @@ void NoeudAbstrait::afficherConcret() const
 /// Cette fonction effectue l'animation du noeud pour un certain
 /// intervalle de temps.
 ///
-/// Elle ne fait rien pour cette classe et vise à être surchargée par
-/// les classes dérivées.
+/// Elle ne fait rien pour cette classe et vise a etre surchargee par
+/// les classes derivees.
 ///
 /// @param[in] dt : Intervalle de temps sur lequel faire l'animation.
 ///
@@ -684,9 +684,9 @@ void NoeudAbstrait::setImpossible(bool impossible)
 /// @fn bool NoeudAbstrait::pointEstDansBoite(glm::dvec3 point)
 /// @brief Cette fonction teste si un point se trouve dans la boîte englobante.
 ///
-/// @param[in] point : Point à tester.
+/// @param[in] point : Point a tester.
 ///
-/// @return True si le test réussit, false sinon
+/// @return True si le test reussit, false sinon
 ///
 ////////////////////////////////////////////////////////////////////////
 bool NoeudAbstrait::pointEstDansBoite(glm::dvec3 point)

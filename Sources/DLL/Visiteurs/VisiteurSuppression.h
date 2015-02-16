@@ -15,10 +15,10 @@
 
 ///////////////////////////////////////////////////////////////////////////
 /// @class VisiteurSuppression
-/// @brief Classe pour supprimer les objets selectionnés.
+/// @brief Classe pour supprimer les objets selectionnes.
 ///
-///        Instancier cette classe. Ensuite, appeler la méthode accepterVisiteur()
-///		   de l'arbre de rendu et lui fournir CE visiteur en paramètre
+///        Instancier cette classe. Ensuite, appeler la methode accepterVisiteur()
+///		   de l'arbre de rendu et lui fournir CE visiteur en parametre
 ///
 /// @author The Ballers
 /// @date 2015-02-02
@@ -28,7 +28,7 @@ class VisiteurSuppression : public VisiteurAbstrait
 {
 public:
 
-	/// Constructeur par défaut
+	/// Constructeur par defaut
 	VisiteurSuppression();
 
 	/// Destructeur

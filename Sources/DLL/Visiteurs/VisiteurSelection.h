@@ -17,9 +17,9 @@
 /// @class VisiteurSelection
 /// @brief Classe pour selectionner les objets de l'arbre de rendu
 ///
-///        Instancier cette classe avec en paramètre le point cliqué
-///		   Ensuite, appeler la méthode accepterVisiteur() de l'arbre de 
-///		   rendu et lui fournir CE visiteur en paramètre
+///        Instancier cette classe avec en parametre le point clique
+///		   Ensuite, appeler la methode accepterVisiteur() de l'arbre de 
+///		   rendu et lui fournir CE visiteur en parametre
 ///
 /// @author The Ballers
 /// @date 2015-02-02
@@ -29,28 +29,28 @@ class VisiteurSelection : public VisiteurAbstrait
 {
 public:
 
-	/// Constructeur par paramètre
+	/// Constructeur par parametre
 	VisiteurSelection(glm::dvec3 pointDansLeMonde, int valeurStencil);
 
 	/// Destructeur
 	~VisiteurSelection();
 
-	/// Traiter une opération sur l'arbre de rendu et ses enfants
+	/// Traiter une operation sur l'arbre de rendu et ses enfants
 	virtual bool traiter(ArbreRenduINF2990* arbre);
 	virtual bool traiter(NoeudAbstrait* noeud);
 	virtual bool traiter(NoeudTable* table);
 
-	/// Nombre d'objets sélectionnés disponnible pour les clients
+	/// Nombre d'objets selectionnes disponnible pour les clients
 	int obtenirNbObjetsSelectionne() const { return nbObjetsSelectionne_; }
 
 private:
 	
-	/// Constructeur par défaut
+	/// Constructeur par defaut
 	VisiteurSelection();
 	
-	glm::dvec3 pointDansLeMonde_;	///> Point cliqué
-	int valeurStencil_;				///> Valeur du stencil à comparer au numéro des noeuds
-	int nbObjetsSelectionne_;		///> Nombre d'objets sélectionnés disponnible pour les clients
+	glm::dvec3 pointDansLeMonde_;	///> Point clique
+	int valeurStencil_;				///> Valeur du stencil a comparer au numero des noeuds
+	int nbObjetsSelectionne_;		///> Nombre d'objets selectionnes disponnible pour les clients
 };
 
 #endif //__VISITEURS_VISITEURSELECTION_H__

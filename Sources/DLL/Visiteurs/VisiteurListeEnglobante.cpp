@@ -14,7 +14,7 @@
 ///
 /// @fn VisiteurListeEnglobante::VisiteurListeEnglobante()
 ///
-/// Constructeur par défaut (vide).
+/// Constructeur par defaut (vide).
 ///
 /// @return Aucune (constructeur).
 ///
@@ -45,10 +45,10 @@ VisiteurListeEnglobante::~VisiteurListeEnglobante()
 /// @fn bool VisiteurListeEnglobante::traiter(ArbreRenduINF2990* arbre)
 /// @brief Cette fonction traite l'arbre de rendu pour visiter ses enfants.
 ///
-/// Cette fonction retourne true pour dire que l'opération s'est
+/// Cette fonction retourne true pour dire que l'operation s'est
 /// fait correctement.
 ///
-/// @param[in] arbre : L'arbre de rendu à traiter.
+/// @param[in] arbre : L'arbre de rendu a traiter.
 ///
 /// @return Retourne toujours true.
 ///
@@ -68,10 +68,10 @@ bool VisiteurListeEnglobante::traiter(ArbreRenduINF2990* arbre)
 /// @fn bool VisiteurListeEnglobante::traiter(NoeudTable* table)
 /// @brief Cette fonction traite la table de l'arbre de rendu.
 ///
-/// Cette fonction retourne true pour dire que l'opération s'est
+/// Cette fonction retourne true pour dire que l'operation s'est
 /// fait correctement.
 ///
-/// @param[in] table : Le noeud de type Table à traiter.
+/// @param[in] table : Le noeud de type Table a traiter.
 ///
 /// @return Retourne toujours true
 ///
@@ -91,10 +91,10 @@ bool VisiteurListeEnglobante::traiter(NoeudTable* table)
 /// @fn bool VisiteurListeEnglobante::traiter(NoeudAbstrait* noeud)
 /// @brief Cette fonction traite les enfants de l'arbre de rendu. 
 ///
-/// Cette fonction retourne true pour dire que l'opération s'est
+/// Cette fonction retourne true pour dire que l'operation s'est
 /// faite correctement.
 ///
-/// @param[in] noeud : Noeud de l'arbre à traiter.
+/// @param[in] noeud : Noeud de l'arbre a traiter.
 ///
 /// @return Retourne toujours true
 ///

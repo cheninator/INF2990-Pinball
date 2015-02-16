@@ -19,9 +19,9 @@
 /// @brief Classe pour enregistrer l'information de la zone de jeu
 ///		   dans un fichier XML.
 ///
-///        Instancier cette classe avec en paramètre le nom du fichier avec
-///		   l'extension .xml . Ensuite, appeler la méthode accepterVisiteur()
-///		   de l'arbre de rendu et lui fournir CE visiteur en paramètre
+///        Instancier cette classe avec en parametre le nom du fichier avec
+///		   l'extension .xml . Ensuite, appeler la methode accepterVisiteur()
+///		   de l'arbre de rendu et lui fournir CE visiteur en parametre
 ///
 /// @author The Ballers
 /// @date 2015-02-02
@@ -31,7 +31,7 @@ class VisiteurXML : public VisiteurAbstrait
 {
 public:
 
-	/// Constructeur par paramètre : fournir le nom du fichier de sauvegarde et les propriétés du jeu
+	/// Constructeur par parametre : fournir le nom du fichier de sauvegarde et les proprietes du jeu
 	VisiteurXML(std::string nomFichier, int proprietes[]);
 
 	/// Destructeur
@@ -44,12 +44,12 @@ public:
 
 private:
 
-	VisiteurXML();					/// Constructeur par défaut
-	bool traiterProprietes();		/// Méthode pour enregistrer les propriétés de la zone de jeu
+	VisiteurXML();					/// Constructeur par defaut
+	bool traiterProprietes();		/// Methode pour enregistrer les proprietes de la zone de jeu
 
-	tinyxml2::XMLDocument document; ///< Document XML pour l'écriture
-	std::string nomFichier;			///< Nom du fichier à écrire.
-	int* proprietes_ = new int[6];	///< Propriétés de la partie à écrire
+	tinyxml2::XMLDocument document; ///< Document XML pour l'ecriture
+	std::string nomFichier;			///< Nom du fichier a ecrire.
+	int* proprietes_ = new int[6];	///< Proprietes de la partie a ecrire
 	
 	tinyxml2::XMLElement* elementArbreRendu;
 	tinyxml2::XMLElement* elementTable;

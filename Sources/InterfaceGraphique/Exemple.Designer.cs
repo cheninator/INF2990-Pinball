@@ -12,14 +12,14 @@ namespace InterfaceGraphique
     partial class Exemple
     {
         /// <summary>
-        /// Variable nécessaire au concepteur.
+        /// Variable necessaire au concepteur.
         /// </summary>
         private System.ComponentModel.IContainer components = null;
 
         /// <summary>
-        /// Nettoyage des ressources utilisées.
+        /// Nettoyage des ressources utilisees.
         /// </summary>
-        /// <param name="disposing">true si les ressources managées doivent être supprimées ; sinon, false.</param>
+        /// <param name="disposing">true si les ressources managees doivent etre supprimees ; sinon, false.</param>
         protected override void Dispose(bool disposing)
         {
             if (disposing && (components != null))
@@ -29,11 +29,11 @@ namespace InterfaceGraphique
             base.Dispose(disposing);
         }
 
-        #region Code généré par le Concepteur Windows Form
+        #region Code genere par le Concepteur Windows Form
 
         /// <summary>
-        /// Méthode requise pour la prise en charge du concepteur - ne modifiez pas
-        /// le contenu de cette méthode avec l'éditeur de code.
+        /// Methode requise pour la prise en charge du concepteur - ne modifiez pas
+        /// le contenu de cette methode avec l'editeur de code.
         /// </summary>
         private void InitializeComponent()
         {

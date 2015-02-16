@@ -15,7 +15,7 @@
 
 ///////////////////////////////////////////////////////////////////////////
 /// @class VisiteurPossibilite
-/// @brief Classe qui assigne une possibilité à un noeud de l'arbre
+/// @brief Classe qui assigne une possibilite a un noeud de l'arbre
 ///
 /// @author The Ballers
 /// @date 2015-02-02
@@ -25,13 +25,13 @@ class VisiteurPossibilite : public VisiteurAbstrait
 {
 public:
 
-	/// Constructeur par défaut
+	/// Constructeur par defaut
 	VisiteurPossibilite();
 
 	/// Destructeur
 	~VisiteurPossibilite();
 
-	/// Traiter une opération sur l'arbre de rendu et ses enfants
+	/// Traiter une operation sur l'arbre de rendu et ses enfants
 	virtual bool traiter(ArbreRenduINF2990* arbre);
 	virtual bool traiter(NoeudAbstrait* noeud);
 	virtual bool traiter(NoeudTable* table);

@@ -23,7 +23,7 @@
 #include "../../Visiteurs/VisiteurAbstrait.h"
 #include "Utilitaire.h"
 
-/// Déclarations avancées pour contenir un pointeur vers un modèle3D et sa liste
+/// Declarations avancees pour contenir un pointeur vers un modele3D et sa liste
 /// d'affichage
 namespace modele{
 	class Modele3D;
@@ -34,11 +34,11 @@ namespace modele{
 
 ///////////////////////////////////////////////////////////////////////////
 /// @class NoeudAbstrait
-/// @brief Classe de base du patron composite utilisée pour créer l'arbre
+/// @brief Classe de base du patron composite utilisee pour creer l'arbre
 ///        de rendu.
 ///
 ///        Cette classe abstraite comprend l'interface de base que doivent
-///        implanter tous les noeuds pouvant être présent dans l'arbre de
+///        implanter tous les noeuds pouvant etre present dans l'arbre de
 ///        rendu.
 ///
 /// @author DGI-2990
@@ -74,60 +74,60 @@ public:
 	/// Obtient le type du noeud.
 	inline const std::string& obtenirType() const;
 
-	/// Écrit l'état de l'affichage du du noeud.
+	/// ecrit l'etat de l'affichage du du noeud.
 	inline void assignerAffiche(bool affiche);
 
-	/// Vérifie si le noeud se fait afficher.
+	/// Verifie si le noeud se fait afficher.
 	inline bool estAffiche() const;
 
-	/// Écrit l'état de la sélection du noeud.
+	/// ecrit l'etat de la selection du noeud.
 	inline void assignerSelection(bool selectionne);
 
-	/// Vérifie si le noeud est sélectionné.
+	/// Verifie si le noeud est selectionne.
 	inline bool estSelectionne() const;
 
-	/// Vérifie si la positin du noeud est illégale
+	/// Verifie si la positin du noeud est illegale
 	inline bool estImpossible() const;
 
 	/// Assigner le statut de possibilite
 	inline void assignerImpossible(bool impossible);
 
-	/// Écrit si le noeud peut être sélectionné ou non.
+	/// ecrit si le noeud peut etre selectionne ou non.
 	inline void assignerEstSelectionnable(bool selectionnable);
 
-	/// Écrit le zoom sur le noeud.
+	/// ecrit le zoom sur le noeud.
 	inline void assignerEchelle(glm::dvec3 scale);
 
-	/// Écrit le rotation sur le noeud.
+	/// ecrit le rotation sur le noeud.
 	inline void assignerRotation(glm::dvec3 rotation);
 
 	inline void assignerRotationHard(glm::dvec3 rotation){ rotation_ = rotation; };
 
-	/// Écrit le rotation 0,0,0 sur le noeud.
+	/// ecrit le rotation 0,0,0 sur le noeud.
 	inline void resetRotation();
 
-	/// Vérifie si le noeud est sélectionnable.
+	/// Verifie si le noeud est selectionnable.
 	inline bool estSelectionnable() const;
 
-	/// Écrit si le noeud peut être enregistré ou non.
+	/// ecrit si le noeud peut etre enregistre ou non.
 	inline void assignerEstEnregistrable(bool enregistrable);
 
-	/// Vérifie si le noeud est enregistrable.
+	/// Verifie si le noeud est enregistrable.
 	inline bool estEnregistrable() const;
 
-	/// Écrit si le noeud peut être modifié ou non.
+	/// ecrit si le noeud peut etre modifie ou non.
 	void assignerEstModifiable(bool modif) { modifiable_ = modif; };
 
-	/// Écrit si le noeud peut être agrandi ou non.
+	/// ecrit si le noeud peut etre agrandi ou non.
 	void assignerEstAjustable(bool ajust) { ajustable_ = ajust; };
 
-	/// Vérifie si le noeud est modifiable.
+	/// Verifie si le noeud est modifiable.
 	bool estModifiable() const { return modifiable_; };
 
-	// Vérifie qu'on peut agrandir l'objet
+	// Verifie qu'on peut agrandir l'objet
 	bool estAjustable() const { return ajustable_; }
 
-	/// Assigne le modèle3D et la liste d'affichage du noeud courant
+	/// Assigne le modele3D et la liste d'affichage du noeud courant
 	inline void assignerObjetRendu(modele::Modele3D const* modele, modele::opengl_storage::OpenGL_Liste const* liste);
 
 	// Interface d'un noeud
@@ -138,7 +138,7 @@ public:
 	/// Vide le noeud de ses enfants.
 	virtual void vider();
 
-	/// Efface le noeud passé en paramètre.
+	/// Efface le noeud passe en parametre.
 	virtual void effacer(const NoeudAbstrait* noeud);
 
 	/// Cherche un noeud par le type (sur un noeud constant).
@@ -162,19 +162,19 @@ public:
 	/// Obtient le numero du noeud.
 	int getNumero(){ return numeroNoeud_; };
 
-	/// Changer la sélection du noeud.
+	/// Changer la selection du noeud.
 	virtual void inverserSelection();
 
-	/// Efface les enfants sélectionnés.
+	/// Efface les enfants selectionnes.
 	virtual void effacerSelection();
 
-	/// Sélectionne tous les enfants de même que le noeud.
+	/// Selectionne tous les enfants de meme que le noeud.
 	virtual void selectionnerTout();
 
-	/// Désélectionne tous les enfants de même que le noeud.
+	/// Deselectionne tous les enfants de meme que le noeud.
 	virtual void deselectionnerTout();
 
-	/// Vérifier si le noeud ou un de ses enfants est sélectionné.
+	/// Verifier si le noeud ou un de ses enfants est selectionne.
 	virtual bool selectionExiste() const;
 
 	/// Change le mode d'affichage des polygones.
@@ -186,7 +186,7 @@ public:
 	/// Affiche le noeud.
 	virtual void afficher() const;
 
-	/// Affiche le noeud de manière concrète.
+	/// Affiche le noeud de maniere concrete.
 	virtual void afficherConcret() const;
 
 	/// Anime le noeud.
@@ -261,16 +261,16 @@ protected:
 	/// Vrai si on doit afficher le noeud.
 	bool             affiche_{ true };
 
-	/// Sélection du noeud.
+	/// Selection du noeud.
 	bool             selectionne_{ false };
 
-	/// Vrai si le noeud est sélectionnable.
+	/// Vrai si le noeud est selectionnable.
 	bool             selectionnable_{ true };
 
-	/// Détermine si l'objet peut être sauvegardé en XML.
+	/// Determine si l'objet peut etre sauvegarde en XML.
 	bool             enregistrable_{ true };
 
-	/// Détermine si l'objet peut être modifié
+	/// Determine si l'objet peut etre modifie
 	bool             modifiable_{ true };
 
 	bool			ajustable_{ true };
@@ -278,16 +278,16 @@ protected:
 	/// Pointeur vers le parent.
 	NoeudAbstrait*   parent_{ nullptr };
 
-	/// Modèle 3D correspondant à ce noeud.
+	/// Modele 3D correspondant a ce noeud.
 	modele::Modele3D const* modele_;
 
-	/// Storage pour le dessin du modèle
+	/// Storage pour le dessin du modele
 	modele::opengl_storage::OpenGL_Liste const* liste_;
 
 	/// Compteur d'instances;
 	static unsigned int compteurNoeuds_;
 
-	/// Numéro d'instance.
+	/// Numero d'instance.
 	int numeroNoeud_;
 
 	///boite englobante
@@ -299,7 +299,7 @@ protected:
 	/// Transparence
 	bool transparent_;
 
-	/// Impossibilité de position
+	/// Impossibilite de position
 	bool impossible_;
 };
 
@@ -360,7 +360,7 @@ inline void NoeudAbstrait::assignerParent(
 /// @fn inline const glm::dvec3& NoeudAbstrait::obtenirPositionRelative() const
 ///
 /// Cette fonction retourne la position relative du noeud par rapport
-/// à son parent.
+/// a son parent.
 ///
 /// @return La position relative.
 ///
@@ -376,7 +376,7 @@ inline const glm::dvec3& NoeudAbstrait::obtenirPositionRelative() const
 /// @fn inline void NoeudAbstrait::assignerPositionRelative( const glm::dvec3& positionRelative )
 ///
 /// Cette fonction permet d'assigner la position relative du noeud par
-/// rapport à son parent.
+/// rapport a son parent.
 ///
 /// @param positionRelative : La position relative.
 ///
@@ -395,7 +395,7 @@ inline void NoeudAbstrait::assignerPositionRelative(
 ///
 /// @fn inline const std::string& NoeudAbstrait::obtenirType() const
 ///
-/// Cette fonction retourne une chaîne représentante le type du noeud.
+/// Cette fonction retourne une chaîne representante le type du noeud.
 ///
 /// @return Le type du noeud.
 ///
@@ -414,7 +414,7 @@ inline const std::string& NoeudAbstrait::obtenirType() const
 /// non lorsque l'arbre de rendu se fait afficher.  Elle permet donc
 /// de temporairement suspendre ou activer l'affichage d'un noeud.
 ///
-/// @param affiche : L'état affiché ou non.
+/// @param affiche : L'etat affiche ou non.
 ///
 /// @return Aucune
 ///
@@ -429,9 +429,9 @@ inline void NoeudAbstrait::assignerAffiche(bool affiche)
 ///
 /// @fn inline bool NoeudAbstrait::estAffiche() const
 ///
-/// Cette fonction retourne l'état que le noeud se fait afficher ou non.
+/// Cette fonction retourne l'etat que le noeud se fait afficher ou non.
 ///
-/// @return L'état affiché ou non.
+/// @return L'etat affiche ou non.
 ///
 ////////////////////////////////////////////////////////////////////////
 inline bool NoeudAbstrait::estAffiche() const
@@ -444,16 +444,16 @@ inline bool NoeudAbstrait::estAffiche() const
 ///
 /// @fn inline void NoeudAbstrait::assignerSelection( bool selectionne )
 ///
-/// Cette fonction permet d'assigner l'état d'être sélectionné ou non du noeud.
+/// Cette fonction permet d'assigner l'etat d'etre selectionne ou non du noeud.
 ///
-/// @param selectionne : L'état sélectionné ou non.
+/// @param selectionne : L'etat selectionne ou non.
 ///
 /// @return Aucune
 ///
 ////////////////////////////////////////////////////////////////////////
 inline void NoeudAbstrait::assignerSelection(bool selectionne)
 {
-	// Un objet non sélectionnable n'est jamais sélectionné.
+	// Un objet non selectionnable n'est jamais selectionne.
 	selectionne_ = (selectionne && selectionnable_);
 }
 
@@ -513,14 +513,14 @@ inline void NoeudAbstrait::resetRotation()
 ///
 /// @fn inline bool NoeudAbstrait::estSelectionne() const
 ///
-/// Cette fonction retourne l'état d'être sélectionné ou non du noeud.
+/// Cette fonction retourne l'etat d'etre selectionne ou non du noeud.
 ///
-/// @return L'état sélectionné ou non.
+/// @return L'etat selectionne ou non.
 ///
 ////////////////////////////////////////////////////////////////////////
 inline bool NoeudAbstrait::estSelectionne() const
 {
-	// Un objet non sélectionnable n'est jamais sélectionné.
+	// Un objet non selectionnable n'est jamais selectionne.
 	return (selectionne_ && selectionnable_);
 }
 
@@ -529,9 +529,9 @@ inline bool NoeudAbstrait::estSelectionne() const
 ///
 /// @fn inline void NoeudAbstrait::assignerEstSelectionnable( bool selectionnable )
 ///
-/// Cette fonction permet d'assigner l'état d'être sélectionnable ou non du noeud.
+/// Cette fonction permet d'assigner l'etat d'etre selectionnable ou non du noeud.
 ///
-/// @param selectionnable : L'état sélectionnable ou non.
+/// @param selectionnable : L'etat selectionnable ou non.
 ///
 /// @return Aucune
 ///
@@ -547,9 +547,9 @@ inline void NoeudAbstrait::assignerEstSelectionnable(bool selectionnable)
 ///
 /// @fn inline void NoeudAbstrait::assignerImpossible( bool impossible )
 ///
-/// Cette fonction permet d'assigner l'état d'être impossible ou non du noeud.
+/// Cette fonction permet d'assigner l'etat d'etre impossible ou non du noeud.
 ///
-/// @param impossible : L'état impossible ou non.
+/// @param impossible : L'etat impossible ou non.
 ///
 /// @return Aucune
 ///
@@ -564,9 +564,9 @@ inline void NoeudAbstrait::assignerImpossible(bool impossible)
 ///
 /// @fn inline void NoeudAbstrait::estImpossible( bool impossible )
 ///
-/// Cette fonction permet d'obtenir l'état d'être impossible ou non du noeud.
+/// Cette fonction permet d'obtenir l'etat d'etre impossible ou non du noeud.
 ///
-/// @param impossible : L'état impossible ou non.
+/// @param impossible : L'etat impossible ou non.
 ///
 /// @return Aucune
 ///
@@ -581,9 +581,9 @@ inline bool NoeudAbstrait::estImpossible() const
 ///
 /// @fn inline bool NoeudAbstrait::estSelectionnable() const
 ///
-/// Cette fonction retourne l'état d'être sélectionnable ou non du noeud.
+/// Cette fonction retourne l'etat d'etre selectionnable ou non du noeud.
 ///
-/// @return L'état sélectionnable ou non.
+/// @return L'etat selectionnable ou non.
 ///
 ////////////////////////////////////////////////////////////////////////
 inline bool NoeudAbstrait::estSelectionnable() const
@@ -596,9 +596,9 @@ inline bool NoeudAbstrait::estSelectionnable() const
 ///
 /// @fn inline void NoeudAbstrait::assignerEstEnregistrable( bool enregistrable )
 ///
-/// Cette fonction permet d'assigner l'état d'être entregistrable ou non du noeud.
+/// Cette fonction permet d'assigner l'etat d'etre entregistrable ou non du noeud.
 ///
-/// @param enregistrable : L'état enregistrable ou non.
+/// @param enregistrable : L'etat enregistrable ou non.
 ///
 /// @return Aucune
 ///
@@ -613,10 +613,10 @@ inline void NoeudAbstrait::assignerEstEnregistrable(bool enregistrable)
 ///
 /// @fn inline bool NoeudAbstrait::estEnregistrable() const
 ///
-/// Cette fonction retourne l'état d'être enregistrable en XML ou non du
+/// Cette fonction retourne l'etat d'etre enregistrable en XML ou non du
 /// noeud.
 ///
-/// @return L'état enregistrable ou non.
+/// @return L'etat enregistrable ou non.
 ///
 ////////////////////////////////////////////////////////////////////////
 inline bool NoeudAbstrait::estEnregistrable() const
@@ -628,10 +628,10 @@ inline bool NoeudAbstrait::estEnregistrable() const
 ///
 /// @fn inline void NoeudAbstrait::assignerObjetRendu(modele::Modele3D* modele, modele::opengl_storage::OpenGL_Liste* liste)
 ///
-/// Cette fonction assigne l'objet de rendu au modèle, c'est-à-dire son
-/// modèle 3D et sa liste d'affichage
+/// Cette fonction assigne l'objet de rendu au modele, c'est-a-dire son
+/// modele 3D et sa liste d'affichage
 ///
-/// @param modele : le modèle 3D
+/// @param modele : le modele 3D
 /// @param liste : la liste d'affichage OpenGL
 ///
 ////////////////////////////////////////////////////////////////////////
@@ -647,7 +647,7 @@ inline void NoeudAbstrait::assignerObjetRendu(modele::Modele3D const* modele, mo
 /// @fn inline const glm::dvec3& NoeudAbstrait::obtenirAgrandissement() const
 ///
 /// Cette fonction retourne l'agrandissement du noeud par rapport
-/// à son parent.
+/// a son parent.
 ///
 /// @return La position relative.
 ///
@@ -663,7 +663,7 @@ inline const glm::dvec3& NoeudAbstrait::obtenirAgrandissement() const
 /// @fn inline const glm::dvec3& NoeudAbstrait::obtenirRotation() const
 ///
 /// Cette fonction retourne l'agrandissement du noeud par rapport
-/// à son parent.
+/// a son parent.
 ///
 /// @return L'angle de rotation relatif.
 ///

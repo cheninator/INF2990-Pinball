@@ -15,7 +15,7 @@
 
 ///////////////////////////////////////////////////////////////////////////
 /// @class NoeudBille
-/// @brief Classe qui représente une bille.
+/// @brief Classe qui represente une bille.
 ///
 /// @author The Ballers
 /// @ingroup Noeud
@@ -29,10 +29,10 @@ public:
 	/// Destructeur 
 	~NoeudBille();
 
-	/// Surchage de la méthode qui affiche l'objet.
+	/// Surchage de la methode qui affiche l'objet.
 	virtual void afficherConcret() const;
 
-	/// Surchage de la méthode qui anime l'objet.
+	/// Surchage de la methode qui anime l'objet.
 	virtual void animer(float temps);
 
 	/// Accepte un visiteur.

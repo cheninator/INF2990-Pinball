@@ -14,7 +14,7 @@
 ///
 /// @fn VisiteurDeselectionnerTout::VisiteurDeselectionnerTout()
 ///
-/// Constructeur par défaut (vide).
+/// Constructeur par defaut (vide).
 ///
 /// @return Aucune (constructeur).
 ///
@@ -45,10 +45,10 @@ VisiteurDeselectionnerTout::~VisiteurDeselectionnerTout()
 /// @fn bool VisiteurDeselectionnerTout::traiter(ArbreRenduINF2990* arbre)
 /// @brief Cette fonction traite l'arbre de rendu pour visiter ses enfants.
 ///
-/// Cette fonction retourne true pour dire que l'opération s'est
+/// Cette fonction retourne true pour dire que l'operation s'est
 /// faite correctement.
 ///
-/// @param[in] arbre : L'arbre de rendu à traiter.
+/// @param[in] arbre : L'arbre de rendu a traiter.
 ///
 /// @return Retourne toujours true
 ///
@@ -69,10 +69,10 @@ bool VisiteurDeselectionnerTout::traiter(ArbreRenduINF2990* arbre)
 /// @fn bool VisiteurDeselectionnerTout::traiter(NoeudTable* table)
 /// @brief Cette fonction traite la table de l'arbre de rendu.
 ///
-/// Cette fonction retourne true pour dire que l'opération s'est
+/// Cette fonction retourne true pour dire que l'operation s'est
 /// faite correctement.
 ///
-/// @param[in] table : Le noeud de type Table à traiter.
+/// @param[in] table : Le noeud de type Table a traiter.
 ///
 /// @return Retourne toujours true
 ///
@@ -91,9 +91,9 @@ bool VisiteurDeselectionnerTout::traiter(NoeudTable* table)
 ///
 /// @fn bool VisiteurDeselectionnerTout::traiter(NoeudAbstrait* noeud)
 ///
-/// Ce visiteur désélectionne un noeud.
+/// Ce visiteur deselectionne un noeud.
 ///
-/// @param[in] noeud : Noeud de l'arbre à traiter.
+/// @param[in] noeud : Noeud de l'arbre a traiter.
 ///
 /// @return Retourne toujours true.
 ///

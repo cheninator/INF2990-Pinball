@@ -22,10 +22,10 @@
 ///
 /// @fn NoeudBille::NoeudBille(const std::string& typeNoeud)
 ///
-/// @param[in] typeNoeud :  le type du noeud à créer.
+/// @param[in] typeNoeud :  le type du noeud a creer.
 ///
 /// Ce constructeur ne fait qu'appeler la version de la classe et base
-/// et donner des valeurs par défaut aux variables membres.
+/// et donner des valeurs par defaut aux variables membres.
 ///
 /// @return Aucune (constructeur).
 ///
@@ -40,7 +40,7 @@ NoeudVide::NoeudVide(const std::string& typeNoeud)
 ///
 /// @fn NoeudVide::~NoeudVide()
 ///
-/// Ce destructeur désallouee la liste d'affichage du noeud.
+/// Ce destructeur desallouee la liste d'affichage du noeud.
 ///
 /// @return Aucune (destructeur).
 ///
@@ -54,7 +54,7 @@ NoeudVide::~NoeudVide()
 ///
 /// @fn void NoeudVide::afficherConcret() const
 ///
-/// Cette fonction effectue le véritable rendu de l'objet.
+/// Cette fonction effectue le veritable rendu de l'objet.
 ///
 /// @return Aucune.
 ///
@@ -85,7 +85,7 @@ void NoeudVide::animer(float temps)
 ///
 /// @fn bool NoeudVide::accepterVisiteur(VisiteurAbstrait* vis)
 ///
-/// Cette fonction appelle la méthode traiter du visiteur.
+/// Cette fonction appelle la methode traiter du visiteur.
 ///
 /// @return reussi (TRUE)
 ///

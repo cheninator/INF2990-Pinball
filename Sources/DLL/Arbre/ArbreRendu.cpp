@@ -17,7 +17,7 @@
 ///
 /// @fn ArbreRendu::ArbreRendu()
 ///
-/// Ne fait qu'assigner que ce noeud n'est pas sélectionnable.
+/// Ne fait qu'assigner que ce noeud n'est pas selectionnable.
 ///
 /// @return Aucune (constructeur).
 ///
@@ -25,7 +25,7 @@
 ArbreRendu::ArbreRendu()
 : NoeudComposite{ "racine" }
 {
-	// On ne veut pas que ce noeud soit sélectionnable.
+	// On ne veut pas que ce noeud soit selectionnable.
 	assignerEstSelectionnable(false);
 }
 
@@ -34,7 +34,7 @@ ArbreRendu::ArbreRendu()
 ///
 /// @fn ArbreRendu::~ArbreRendu()
 ///
-/// Détruit les usines des noeuds de l'arbre.
+/// Detruit les usines des noeuds de l'arbre.
 ///
 /// @return Aucune (destructeur).
 ///
@@ -48,12 +48,12 @@ ArbreRendu::~ArbreRendu()
 ///
 /// @fn NoeudAbstrait* ArbreRendu::creerNoeud(const std::string& typeNouveauNoeud) const
 ///
-/// Cette fonction permet de créer un nouveau noeud, sans l'ajouter
-/// directement à l'arbre de rendu.
+/// Cette fonction permet de creer un nouveau noeud, sans l'ajouter
+/// directement a l'arbre de rendu.
 ///
 /// @param[in] typeNouveauNoeud : Le type du nouveau noeud.
 ///
-/// @return Le noeud nouvellement créé.
+/// @return Le noeud nouvellement cree.
 ///
 ////////////////////////////////////////////////////////////////////////
 NoeudAbstrait* ArbreRendu::creerNoeud(
@@ -81,7 +81,7 @@ NoeudAbstrait* ArbreRendu::creerNoeud(
 /// @param[in] typeParent       : Le type du parent du nouveau noeud.
 /// @param[in] typeNouveauNoeud : Le type du nouveau noeud.
 ///
-/// @return Le noeud nouvellement créé.
+/// @return Le noeud nouvellement cree.
 ///
 ////////////////////////////////////////////////////////////////////////
 NoeudAbstrait* ArbreRendu::ajouterNouveauNoeud(
@@ -110,12 +110,12 @@ NoeudAbstrait* ArbreRendu::ajouterNouveauNoeud(
 /// Cette fonction retourne la profondeur maximale possible de l'arbre.
 /// Comme lors du rendu, on effectue un glPushMatrix() pour sauvegarder
 /// les transformations, ainsi qu'un glPushName() pour ajouter un nom
-/// sur la pile des noms pour la sélection, la profondeur maximale de
-/// l'arbre est limitée par la taille de la pile des matrices ainsi que
-/// par celle de la pile des noms pour la sélection.
+/// sur la pile des noms pour la selection, la profondeur maximale de
+/// l'arbre est limitee par la taille de la pile des matrices ainsi que
+/// par celle de la pile des noms pour la selection.
 ///
-/// Cette fonction vérifie donc ces deux valeurs et retourne la plus
-/// petite, c'est-à-dire celle qui limite la profondeur de l'arbre.
+/// Cette fonction verifie donc ces deux valeurs et retourne la plus
+/// petite, c'est-a-dire celle qui limite la profondeur de l'arbre.
 ///
 /// @return La profondeur maximale possible de l'arbre de rendu.
 ///

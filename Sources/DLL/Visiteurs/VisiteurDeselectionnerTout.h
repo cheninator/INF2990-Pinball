@@ -16,7 +16,7 @@
 
 ///////////////////////////////////////////////////////////////////////////
 /// @class VisiteurDeselectionnerTout
-/// @brief Classe pour désélectionner tous les objets de la table de rendu.
+/// @brief Classe pour deselectionner tous les objets de la table de rendu.
 ///
 /// @author The Ballers
 /// @date 2015-02-02
@@ -26,13 +26,13 @@ class VisiteurDeselectionnerTout : public VisiteurAbstrait
 {
 public:
 
-	/// Constructeur par défaut
+	/// Constructeur par defaut
 	VisiteurDeselectionnerTout();
 
 	/// Destructeur
 	~VisiteurDeselectionnerTout();
 
-	/// Traiter une opération sur l'arbre de rendu et ses enfants
+	/// Traiter une operation sur l'arbre de rendu et ses enfants
 	virtual bool traiter(ArbreRenduINF2990* arbre);
 	virtual bool traiter(NoeudAbstrait* noeud);
 	virtual bool traiter(NoeudTable* table);

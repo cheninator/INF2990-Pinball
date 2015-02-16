@@ -26,7 +26,7 @@ namespace InterfaceGraphique
 {
     ///////////////////////////////////////////////////////////////////////////
     /// @class Program
-    /// @brief Classe qui gère le démarrage de l'application.
+    /// @brief Classe qui gere le demarrage de l'application.
     ///
     /// @author Inconnu
     /// @date Inconnue
@@ -43,17 +43,17 @@ namespace InterfaceGraphique
         //private static Exemple exemple;
         // private static mm menu;
         private static MainMenu mMenu; ///< Main Menu de l'application
-        private static TimeSpan dernierTemps; ///< Dernier temps enregistré
-        private static TimeSpan tempsAccumule; ///< Temps total accumulé
+        private static TimeSpan dernierTemps; ///< Dernier temps enregistre
+        private static TimeSpan tempsAccumule; ///< Temps total accumule
         private static Stopwatch chrono = Stopwatch.StartNew(); ///< Chronometre
         private static TimeSpan tempsEcouleVoulu = TimeSpan.FromTicks(TimeSpan.TicksPerSecond / NB_IMAGES_PAR_SECONDE); ///< Temps avant le rafraichissement
 
         ////////////////////////////////////////////////////////////////////////
         ///
         /// @fn static void Main(string[] args)
-        /// @brief Le point d'entrée de l'application.
+        /// @brief Le point d'entree de l'application.
         /// 
-        /// @param[in] args : argument passé à la compilation (permet de ddémarrer les tests)
+        /// @param[in] args : argument passe a la compilation (permet de demarrer les tests)
         /// 
         /// @return Aucune.
         ///
@@ -66,12 +66,12 @@ namespace InterfaceGraphique
                 {
                     if (FonctionsNatives.executerTests())
                     {
-                        System.Console.WriteLine("Échec d'un ou plusieurs tests.");
+                        System.Console.WriteLine("echec d'un ou plusieurs tests.");
                         string s1 = System.Console.ReadLine();
                     }
                     else
                     { 
-                        System.Console.WriteLine("Tests réussis.");
+                        System.Console.WriteLine("Tests reussis.");
                         string s1 = System.Console.ReadLine();
                     }
 
@@ -95,10 +95,10 @@ namespace InterfaceGraphique
        ////////////////////////////////////////////////////////////////////////
        ///
        /// @fn static void ExecuterQuandInactif(object sender, EventArgs e)
-       /// @brief Opérations exécuter lorsque l'application est inactive.
+       /// @brief Operations executer lorsque l'application est inactive.
        /// 
-       /// @param[in] sender : Objet duquel provient un événement
-       /// @param[in] e : Événement qui lance la fonction.
+       /// @param[in] sender : Objet duquel provient un evenement
+       /// @param[in] e : evenement qui lance la fonction.
        /// 
        /// @return Aucune.
        ///

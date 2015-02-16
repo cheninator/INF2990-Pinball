@@ -24,8 +24,8 @@ class NoeudAbstrait;
 
 ///////////////////////////////////////////////////////////////////////////
 /// @class UsineNoeud
-/// @brief Classe de base abstraite des usines qui seront utilisées pour
-///        créer les différents noeuds de l'arbre de rendu.
+/// @brief Classe de base abstraite des usines qui seront utilisees pour
+///        creer les differents noeuds de l'arbre de rendu.
 ///
 /// @author Martin Bisson
 /// @date 2007-01-28
@@ -34,33 +34,33 @@ class NoeudAbstrait;
 class UsineNoeud
 {
 public:
-   /// Destructeur vide déclaré virtuel pour les classes dérivées.
+   /// Destructeur vide declare virtuel pour les classes derivees.
    inline virtual ~UsineNoeud() {
 	   liste_.storageRelacher();
    }
 
-   /// Fonction à surcharger pour la création d'un noeud.
+   /// Fonction a surcharger pour la creation d'un noeud.
    virtual NoeudAbstrait* creerNoeud() const = 0;
 
-   /// Retourne le nom associé à l'usine
+   /// Retourne le nom associe a l'usine
    inline const std::string& obtenirNom() const;
 
 
 protected:
-   /// Constructeur qui prend le nom associé à l'usine.
+   /// Constructeur qui prend le nom associe a l'usine.
 	UsineNoeud(const std::string& nomUsine, const std::string& nomModele) : nom_(nomUsine) {
 		modele_.charger(nomModele);
 		liste_ = modele::opengl_storage::OpenGL_Liste{ &modele_ };
 		liste_.storageCharger();
 	}
 
-   /// Modèle 3D correspondant à ce noeud.
+   /// Modele 3D correspondant a ce noeud.
    modele::Modele3D modele_;
-   /// Storage pour le dessin du modèle
+   /// Storage pour le dessin du modele
    modele::opengl_storage::OpenGL_Liste liste_;
 
 private:
-   /// Le nom associé à l'usine
+   /// Le nom associe a l'usine
    std::string nom_;
 };
 
@@ -68,10 +68,10 @@ private:
 ///
 /// @fn inline const std::string& UsineNoeud::obtenirNom() const
 ///
-/// Cette fonction retourne une chaîne représentante le nom associé à
+/// Cette fonction retourne une chaîne representante le nom associe a
 /// l'usine.
 ///
-/// @return Le nom associé à l'usine.
+/// @return Le nom associe a l'usine.
 ///
 ////////////////////////////////////////////////////////////////////////
 inline const std::string& UsineNoeud::obtenirNom() const

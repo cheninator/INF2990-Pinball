@@ -17,9 +17,9 @@
 /// @class VisiteurSelectionInverseMultiple
 /// @brief Classe pour selectionner les objets de l'arbre de rendu
 ///
-///        Instancier cette classe avec en paramètre le point cliqué
-///		   Ensuite, appeler la méthode accepterVisiteur() de l'arbre de 
-///		   rendu et lui fournir CE visiteur en paramètre
+///        Instancier cette classe avec en parametre le point clique
+///		   Ensuite, appeler la methode accepterVisiteur() de l'arbre de 
+///		   rendu et lui fournir CE visiteur en parametre
 ///
 /// @author The Ballers
 /// @date 2015-02-02
@@ -29,13 +29,13 @@ class VisiteurSelectionInverseMultiple : public VisiteurAbstrait
 {
 public:
 
-	/// Constructeur par paramètre
+	/// Constructeur par parametre
 	VisiteurSelectionInverseMultiple(glm::dvec3 selectionBasGauche, glm::dvec3 selectionHautDroit);
 
 	/// Destructeur
 	~VisiteurSelectionInverseMultiple();
 
-	/// Traiter une opération sur l'arbre de rendu et ses enfants
+	/// Traiter une operation sur l'arbre de rendu et ses enfants
 	virtual bool traiter(ArbreRenduINF2990* arbre);
 	virtual bool traiter(NoeudAbstrait* noeud);
 	virtual bool traiter(NoeudTable* table);
@@ -44,22 +44,22 @@ public:
 	///
 	/// @fn int obtenirNbObjetsSelectionne()
 	///
-	/// Méthode get pour l'attribut nbObjetsSelectionne_.
+	/// Methode get pour l'attribut nbObjetsSelectionne_.
 	///
-	/// @return Nombre d'objets sélectionnés (attribut).
+	/// @return Nombre d'objets selectionnes (attribut).
 	///
 	//////////////////////////////////////////////////////////////////////////
 	int obtenirNbObjetsSelectionne() const { return nbObjetsSelectionne_; } ;
 
 private:
 
-	/// Constructeur par défaut
+	/// Constructeur par defaut
 	VisiteurSelectionInverseMultiple();
 
-	glm::dvec3 selectionBasGauche_; ///< Point cliqué (bas gauche)
-	glm::dvec3 selectionHautDroit_; ///< Point cliqué (haut droit)
+	glm::dvec3 selectionBasGauche_; ///< Point clique (bas gauche)
+	glm::dvec3 selectionHautDroit_; ///< Point clique (haut droit)
 
-	int nbObjetsSelectionne_;		///< Nombre d'objets sélectionnés
+	int nbObjetsSelectionne_;		///< Nombre d'objets selectionnes
 };
 
 

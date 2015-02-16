@@ -21,7 +21,7 @@ class ArbreRenduINF2990;
 ///////////////////////////////////////////////////////////////////////////
 /// @class ArbreRenduINF2990Test
 /// @brief Classe de test cppunit pour tester le bon fonctionnement des
-///        méthodes de la classe ArbreRenduINF2990.
+///        methodes de la classe ArbreRenduINF2990.
 ///
 /// @author The Ballers
 /// @date 2015-02-12
@@ -31,10 +31,10 @@ class ArbreRenduINF2990Test : public CppUnit::TestFixture
 {
 
 	// =================================================================
-	// Déclaration de la suite de tests et des méthodes de tests
+	// Declaration de la suite de tests et des methodes de tests
 	//
-	// Important, vous devez définir chacun de vos cas de tests à l'aide
-	// de la macro CPPUNIT_TEST sinon ce dernier ne sera pas exécuté !
+	// Important, vous devez definir chacun de vos cas de tests a l'aide
+	// de la macro CPPUNIT_TEST sinon ce dernier ne sera pas execute !
 	// =================================================================
 	CPPUNIT_TEST_SUITE(ArbreRenduINF2990Test);
 	CPPUNIT_TEST(testArbreDefaut);
@@ -60,54 +60,54 @@ class ArbreRenduINF2990Test : public CppUnit::TestFixture
 public:
 
 	// =================================================================
-	// Méthodes pour initialiser et 'finaliser' la suite de tests
+	// Methodes pour initialiser et 'finaliser' la suite de tests
 	// =================================================================
 
-	/// Traitement à effectuer pour initialiser cette suite de tests
+	/// Traitement a effectuer pour initialiser cette suite de tests
 	void setUp();
 
-	/// Traitement à effectuer pour 'finaliser' cette suite de tests
+	/// Traitement a effectuer pour 'finaliser' cette suite de tests
 	void tearDown();
 
 
 	// =================================================================
-	// Définissez ici les différents cas de tests...
+	// Definissez ici les differents cas de tests...
 	// =================================================================
 
-	/// Cas de test: Initialiser l'arbre par défaut.
+	/// Cas de test: Initialiser l'arbre par defaut.
 	void testArbreDefaut();
 
-	/// Cas de test: Le fichier XML chargé est n'existe pas.
+	/// Cas de test: Le fichier XML charge est n'existe pas.
 	void testXmlInexistant();
 
-	/// Cas de test: Deux portails sont liés lorsque créés.
+	/// Cas de test: Deux portails sont lies lorsque crees.
 	void testPortails();
 
-	/// Cas de test: Créer un noeud de type inexistant.
+	/// Cas de test: Creer un noeud de type inexistant.
 	void creerNoeudParUsine();
 
 	/// Cas de test: Test boîte englobante.
 	void boiteEnglobante();
 
-	/// Cas de test: Sélectionner un objet non sélectionnable (table).
+	/// Cas de test: Selectionner un objet non selectionnable (table).
 	void selectionTable();
 
-	/// Cas de test: Désélectionner tout.
+	/// Cas de test: Deselectionner tout.
 	void testDeselection();
 
 	/// Cas de test: Rotation en x / y / z
 	void testRotation();
 
-	/// Cas de test: Sélection multiple.
+	/// Cas de test: Selection multiple.
 	void testSelectionMultiple();
 
-	/// Cas de test: Sélection inverse.
+	/// Cas de test: Selection inverse.
 	void testSelectionInverse();
 
 	/// Cas de test: Duplication.
 	void testDuplication();
 
-	/// Cas de test: Limite sélection.
+	/// Cas de test: Limite selection.
 	void testBoiteEnglobante();
 
 	/// Cas de test : Couleur des palettes des joueurs.
@@ -119,13 +119,13 @@ public:
 	/// Cas de test : Agrandissement d'un mur.
 	void testAgrandissementMur();
 
-	/// Cas de test : Sélection.
+	/// Cas de test : Selection.
 	void testSelection();
 	
-	/// Cas de test : Possibilité
+	/// Cas de test : Possibilite
 	void testPossibilite();
 
-	/// Cas de test : Déplacement
+	/// Cas de test : Deplacement
 	void testDeplacement();
 
 private:

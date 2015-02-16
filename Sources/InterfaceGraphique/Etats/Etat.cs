@@ -37,9 +37,9 @@ namespace InterfaceGraphique
         ////////////////////////////////////////////////////////////////////////
         ///
         /// @fn public Etat(Exemple form)
-        /// @brief Constructeur par paramètre de l'état.
+        /// @brief Constructeur par parametre de l'etat.
         /// 
-        /// param[in] form : Form associée à l'état.
+        /// param[in] form : Form associee a l'etat.
         /// 
         /// @return Aucune (constructeur).
         ///
@@ -54,11 +54,11 @@ namespace InterfaceGraphique
         ////////////////////////////////////////////////////////////////////////
         ///
         /// @fn public virtual bool traiterClavier(KeyEventArgs e)
-        /// @brief Traiter le changement d'état suite à une action du clavier
+        /// @brief Traiter le changement d'etat suite a une action du clavier
         /// 
-        /// param[in] e : Événement du clavier qui lance la fonction
+        /// param[in] e : evenement du clavier qui lance la fonction
         /// 
-        /// @return True ou false selon la réussite des opérations.
+        /// @return True ou false selon la reussite des operations.
         ///
         ////////////////////////////////////////////////////////////////////////
         public virtual bool traiterClavier(KeyEventArgs e)
@@ -69,11 +69,11 @@ namespace InterfaceGraphique
         ////////////////////////////////////////////////////////////////////////
         ///
         /// @fn public virtual bool traiterSouris(KeyEventArgs e)
-        /// @brief Traiter le changement d'état suite à une action du clavier
+        /// @brief Traiter le changement d'etat suite a une action du clavier
         /// 
-        /// param[in] e : Événement de la souris qui lance la fonction
+        /// param[in] e : evenement de la souris qui lance la fonction
         /// 
-        /// @return True ou false selon la réussite des opérations.
+        /// @return True ou false selon la reussite des operations.
         ///
         ////////////////////////////////////////////////////////////////////////
         public virtual bool traiterSouris(MouseEventArgs e)
@@ -86,11 +86,11 @@ namespace InterfaceGraphique
         ////////////////////////////////////////////////////////////////////////
         ///
         /// @fn public virtual bool traiterRoulette(KeyEventArgs e)
-        /// @brief Traiter le changement d'état suite à une action du clavier
+        /// @brief Traiter le changement d'etat suite a une action du clavier
         /// 
-        /// param[in] e : Événement de la souris qui lance la fonction
+        /// param[in] e : evenement de la souris qui lance la fonction
         /// 
-        /// @return True ou false selon la réussite des opérations.
+        /// @return True ou false selon la reussite des operations.
         ///
         ////////////////////////////////////////////////////////////////////////
         public virtual bool traiterRoulette(MouseEventArgs e)
@@ -102,7 +102,7 @@ namespace InterfaceGraphique
 
     ///////////////////////////////////////////////////////////////////////////
     /// @class EtatDeplacement
-    /// @brief Etat Déplacement du patron State.
+    /// @brief Etat Deplacement du patron State.
     ///
     /// @author The Ballers
     /// @date 2015-01-27
@@ -114,9 +114,9 @@ namespace InterfaceGraphique
         ////////////////////////////////////////////////////////////////////////
         ///
         /// @fn public EtatDeplacement(Exemple form)
-        /// @brief Constructeur par paramètre de l'état.
+        /// @brief Constructeur par parametre de l'etat.
         /// 
-        /// param[in] form : Form associée à l'état.
+        /// param[in] form : Form associee a l'etat.
         /// 
         /// @return Aucune (constructeur).
         ///
@@ -126,28 +126,28 @@ namespace InterfaceGraphique
         ////////////////////////////////////////////////////////////////////////
         ///
         /// @fn public override bool traiterClavier(KeyEventArgs e)
-        /// @brief Traiter le changement d'état suite à une action du clavier
+        /// @brief Traiter le changement d'etat suite a une action du clavier
         /// 
-        /// param[in] e : Événement du clavier qui lance la fonction
+        /// param[in] e : evenement du clavier qui lance la fonction
         /// 
-        /// @return True ou false selon la réussite des opérations.
+        /// @return True ou false selon la reussite des operations.
         ///
         ////////////////////////////////////////////////////////////////////////
         public override bool traiterClavier(KeyEventArgs e)
         {
 
-            // Traiter le déplacement par clavier
+            // Traiter le deplacement par clavier
             return base.traiterClavier(e);
         }
 
         ////////////////////////////////////////////////////////////////////////
         ///
         /// @fn public override bool traiterSouris(MouseEventArgs e)
-        /// @brief Traiter le changement d'état suite à une action du clavier
+        /// @brief Traiter le changement d'etat suite a une action du clavier
         /// 
-        /// param[in] e : Événement de la souris qui lance la fonction
+        /// param[in] e : evenement de la souris qui lance la fonction
         /// 
-        /// @return True ou false selon la réussite des opérations.
+        /// @return True ou false selon la reussite des operations.
         ///
         ////////////////////////////////////////////////////////////////////////
         public override bool traiterSouris(MouseEventArgs e)
@@ -176,9 +176,9 @@ namespace InterfaceGraphique
         ////////////////////////////////////////////////////////////////////////
         ///
         /// @fn public EtatPortail(Exemple form)
-        /// @brief Constructeur par paramètre de l'état.
+        /// @brief Constructeur par parametre de l'etat.
         /// 
-        /// param[in] form : Form associée à l'état.
+        /// param[in] form : Form associee a l'etat.
         /// 
         /// @return Aucune (constructeur).
         ///
@@ -188,28 +188,28 @@ namespace InterfaceGraphique
         ////////////////////////////////////////////////////////////////////////
         ///
         /// @fn public override bool traiterClavier(KeyEventArgs e)
-        /// @brief Traiter le changement d'état suite à une action du clavier
+        /// @brief Traiter le changement d'etat suite a une action du clavier
         /// 
-        /// param[in] e : Événement du clavier qui lance la fonction
+        /// param[in] e : evenement du clavier qui lance la fonction
         /// 
-        /// @return True ou false selon la réussite des opérations.
+        /// @return True ou false selon la reussite des operations.
         ///
         ////////////////////////////////////////////////////////////////////////
         public override bool traiterClavier(KeyEventArgs e)
         {
 
-            // Traiter le déplacement par clavier
+            // Traiter le deplacement par clavier
             return base.traiterClavier(e);
         }
 
         ////////////////////////////////////////////////////////////////////////
         ///
         /// @fn public override bool traiterSouris(MouseEventArgs e)
-        /// @brief Traiter le changement d'état suite à une action du clavier
+        /// @brief Traiter le changement d'etat suite a une action du clavier
         /// 
-        /// param[in] e : Événement de la souris qui lance la fonction
+        /// param[in] e : evenement de la souris qui lance la fonction
         /// 
-        /// @return True ou false selon la réussite des opérations.
+        /// @return True ou false selon la reussite des operations.
         ///
         ////////////////////////////////////////////////////////////////////////
         public override bool traiterSouris(MouseEventArgs e)
@@ -236,9 +236,9 @@ namespace InterfaceGraphique
         ////////////////////////////////////////////////////////////////////////
         ///
         /// @fn public EtatMur(Exemple form)
-        /// @brief Constructeur par paramètre de l'état.
+        /// @brief Constructeur par parametre de l'etat.
         /// 
-        /// param[in] form : Form associée à l'état.
+        /// param[in] form : Form associee a l'etat.
         /// 
         /// @return Aucune (constructeur).
         ///
@@ -248,28 +248,28 @@ namespace InterfaceGraphique
         ////////////////////////////////////////////////////////////////////////
         ///
         /// @fn public override bool traiterClavier(KeyEventArgs e)
-        /// @brief Traiter le changement d'état suite à une action du clavier
+        /// @brief Traiter le changement d'etat suite a une action du clavier
         /// 
-        /// param[in] e : Événement du clavier qui lance la fonction
+        /// param[in] e : evenement du clavier qui lance la fonction
         /// 
-        /// @return True ou false selon la réussite des opérations.
+        /// @return True ou false selon la reussite des operations.
         ///
         ////////////////////////////////////////////////////////////////////////
         public override bool traiterClavier(KeyEventArgs e)
         {
 
-            // Traiter le déplacement par clavier
+            // Traiter le deplacement par clavier
             return base.traiterClavier(e);
         }
 
         ////////////////////////////////////////////////////////////////////////
         ///
         /// @fn public override bool traiterSouris(MouseEventArgs e)
-        /// @brief Traiter le changement d'état suite à une action du clavier
+        /// @brief Traiter le changement d'etat suite a une action du clavier
         /// 
-        /// param[in] e : Événement de la souris qui lance la fonction
+        /// param[in] e : evenement de la souris qui lance la fonction
         /// 
-        /// @return True ou false selon la réussite des opérations.
+        /// @return True ou false selon la reussite des operations.
         ///
         ////////////////////////////////////////////////////////////////////////
         public override bool traiterSouris(MouseEventArgs e)
@@ -290,7 +290,7 @@ namespace InterfaceGraphique
 
     ///////////////////////////////////////////////////////////////////////////
     /// @class EtatSelection
-    /// @brief Etat Sélection du patron State.
+    /// @brief Etat Selection du patron State.
     ///
     /// @author The Ballers
     /// @date 2015-01-27
@@ -302,9 +302,9 @@ namespace InterfaceGraphique
         ////////////////////////////////////////////////////////////////////////
         ///
         /// @fn public EtatSelection(Exemple form)
-        /// @brief Constructeur par paramètre de l'état.
+        /// @brief Constructeur par parametre de l'etat.
         /// 
-        /// param[in] form : Form associée à l'état.
+        /// param[in] form : Form associee a l'etat.
         /// 
         /// @return Aucune (constructeur).
         ///
@@ -314,11 +314,11 @@ namespace InterfaceGraphique
         ////////////////////////////////////////////////////////////////////////
         ///
         /// @fn public override bool traiterClavier(KeyEventArgs e)
-        /// @brief Traiter le changement d'état suite à une action du clavier
+        /// @brief Traiter le changement d'etat suite a une action du clavier
         /// 
-        /// param[in] e : Événement du clavier qui lance la fonction
+        /// param[in] e : evenement du clavier qui lance la fonction
         /// 
-        /// @return True ou false selon la réussite des opérations.
+        /// @return True ou false selon la reussite des operations.
         ///
         ////////////////////////////////////////////////////////////////////////
         public override bool traiterClavier(KeyEventArgs e)
@@ -330,11 +330,11 @@ namespace InterfaceGraphique
         ////////////////////////////////////////////////////////////////////////
         ///
         /// @fn public override bool traiterSouris(MouseEventArgs e)
-        /// @brief Traiter le changement d'état suite à une action du clavier
+        /// @brief Traiter le changement d'etat suite a une action du clavier
         /// 
-        /// param[in] e : Événement de la souris qui lance la fonction
+        /// param[in] e : evenement de la souris qui lance la fonction
         /// 
-        /// @return True ou false selon la réussite des opérations.
+        /// @return True ou false selon la reussite des operations.
         ///
         ////////////////////////////////////////////////////////////////////////
         public override bool traiterSouris(MouseEventArgs e)
@@ -362,9 +362,9 @@ namespace InterfaceGraphique
         ////////////////////////////////////////////////////////////////////////
         ///
         /// @fn public EtatRotation(Exemple form)
-        /// @brief Constructeur par paramètre de l'état.
+        /// @brief Constructeur par parametre de l'etat.
         /// 
-        /// param[in] form : Form associée à l'état.
+        /// param[in] form : Form associee a l'etat.
         /// 
         /// @return Aucune (constructeur).
         ///
@@ -374,11 +374,11 @@ namespace InterfaceGraphique
         ////////////////////////////////////////////////////////////////////////
         ///
         /// @fn public override bool traiterClavier(KeyEventArgs e)
-        /// @brief Traiter le changement d'état suite à une action du clavier
+        /// @brief Traiter le changement d'etat suite a une action du clavier
         /// 
-        /// param[in] e : Événement du clavier qui lance la fonction
+        /// param[in] e : evenement du clavier qui lance la fonction
         /// 
-        /// @return True ou false selon la réussite des opérations.
+        /// @return True ou false selon la reussite des operations.
         ///
         ////////////////////////////////////////////////////////////////////////
         public override bool traiterClavier(KeyEventArgs e)
@@ -389,11 +389,11 @@ namespace InterfaceGraphique
         ////////////////////////////////////////////////////////////////////////
         ///
         /// @fn public override bool traiterSouris(MouseEventArgs e)
-        /// @brief Traiter le changement d'état suite à une action du clavier
+        /// @brief Traiter le changement d'etat suite a une action du clavier
         /// 
-        /// param[in] e : Événement de la souris qui lance la fonction
+        /// param[in] e : evenement de la souris qui lance la fonction
         /// 
-        /// @return True ou false selon la réussite des opérations.
+        /// @return True ou false selon la reussite des operations.
         ///
         ////////////////////////////////////////////////////////////////////////
         public override bool traiterSouris(MouseEventArgs e)
@@ -420,9 +420,9 @@ namespace InterfaceGraphique
         ////////////////////////////////////////////////////////////////////////
         ///
         /// @fn public EtatScale(Exemple form)
-        /// @brief Constructeur par paramètre de l'état.
+        /// @brief Constructeur par parametre de l'etat.
         /// 
-        /// param[in] form : Form associée à l'état.
+        /// param[in] form : Form associee a l'etat.
         /// 
         /// @return Aucune (constructeur).
         ///
@@ -434,11 +434,11 @@ namespace InterfaceGraphique
         ////////////////////////////////////////////////////////////////////////
         ///
         /// @fn public override bool traiterClavier(KeyEventArgs e)
-        /// @brief Traiter le changement d'état suite à une action du clavier
+        /// @brief Traiter le changement d'etat suite a une action du clavier
         /// 
-        /// param[in] e : Événement du clavier qui lance la fonction
+        /// param[in] e : evenement du clavier qui lance la fonction
         /// 
-        /// @return True ou false selon la réussite des opérations.
+        /// @return True ou false selon la reussite des operations.
         ///
         ////////////////////////////////////////////////////////////////////////
         public override bool traiterClavier(KeyEventArgs e)
@@ -449,11 +449,11 @@ namespace InterfaceGraphique
         ////////////////////////////////////////////////////////////////////////
         ///
         /// @fn public override bool traiterSouris(MouseEventArgs e)
-        /// @brief Traiter le changement d'état suite à une action du clavier
+        /// @brief Traiter le changement d'etat suite a une action du clavier
         /// 
-        /// param[in] e : Événement de la souris qui lance la fonction
+        /// param[in] e : evenement de la souris qui lance la fonction
         /// 
-        /// @return True ou false selon la réussite des opérations.
+        /// @return True ou false selon la reussite des operations.
         ///
         ////////////////////////////////////////////////////////////////////////
         public override bool traiterSouris(MouseEventArgs e)
@@ -469,7 +469,7 @@ namespace InterfaceGraphique
 
     ///////////////////////////////////////////////////////////////////////////
     /// @class EtatCreation
-    /// @brief Etat Création du patron State.
+    /// @brief Etat Creation du patron State.
     ///
     /// @author The Ballers
     /// @date 2015-01-27
@@ -481,9 +481,9 @@ namespace InterfaceGraphique
         ////////////////////////////////////////////////////////////////////////
         ///
         /// @fn public EtatCreation(Exemple form)
-        /// @brief Constructeur par paramètre de l'état.
+        /// @brief Constructeur par parametre de l'etat.
         /// 
-        /// param[in] form : Form associée à l'état.
+        /// param[in] form : Form associee a l'etat.
         /// 
         /// @return Aucune (constructeur).
         ///
@@ -496,11 +496,11 @@ namespace InterfaceGraphique
         ////////////////////////////////////////////////////////////////////////
         ///
         /// @fn public override bool traiterClavier(KeyEventArgs e)
-        /// @brief Traiter le changement d'état suite à une action du clavier
+        /// @brief Traiter le changement d'etat suite a une action du clavier
         /// 
-        /// param[in] e : Événement du clavier qui lance la fonction
+        /// param[in] e : evenement du clavier qui lance la fonction
         /// 
-        /// @return True ou false selon la réussite des opérations.
+        /// @return True ou false selon la reussite des operations.
         ///
         ////////////////////////////////////////////////////////////////////////
         public override bool traiterClavier(KeyEventArgs e)
@@ -511,11 +511,11 @@ namespace InterfaceGraphique
         ////////////////////////////////////////////////////////////////////////
         ///
         /// @fn public override bool traiterSouris(MouseEventArgs e)
-        /// @brief Traiter le changement d'état suite à une action du clavier
+        /// @brief Traiter le changement d'etat suite a une action du clavier
         /// 
-        /// param[in] e : Événement de la souris qui lance la fonction
+        /// param[in] e : evenement de la souris qui lance la fonction
         /// 
-        /// @return True ou false selon la réussite des opérations.
+        /// @return True ou false selon la reussite des operations.
         ///
         ////////////////////////////////////////////////////////////////////////
         public override bool traiterSouris(MouseEventArgs e)
@@ -556,9 +556,9 @@ namespace InterfaceGraphique
         ////////////////////////////////////////////////////////////////////////
         ///
         /// @fn public EtatZoom(Exemple form)
-        /// @brief Constructeur par paramètre de l'état.
+        /// @brief Constructeur par parametre de l'etat.
         /// 
-        /// param[in] form : Form associée à l'état.
+        /// param[in] form : Form associee a l'etat.
         /// 
         /// @return Aucune (constructeur).
         ///
@@ -570,11 +570,11 @@ namespace InterfaceGraphique
         ////////////////////////////////////////////////////////////////////////
         ///
         /// @fn public override bool traiterClavier(KeyEventArgs e)
-        /// @brief Traiter le changement d'état suite à une action du clavier
+        /// @brief Traiter le changement d'etat suite a une action du clavier
         /// 
-        /// param[in] e : Événement du clavier qui lance la fonction
+        /// param[in] e : evenement du clavier qui lance la fonction
         /// 
-        /// @return True ou false selon la réussite des opérations.
+        /// @return True ou false selon la reussite des operations.
         ///
         ////////////////////////////////////////////////////////////////////////
         public override bool traiterClavier(KeyEventArgs e)
@@ -585,11 +585,11 @@ namespace InterfaceGraphique
         ////////////////////////////////////////////////////////////////////////
         ///
         /// @fn public override bool traiterSouris(MouseEventArgs e)
-        /// @brief Traiter le changement d'état suite à une action du clavier
+        /// @brief Traiter le changement d'etat suite a une action du clavier
         /// 
-        /// param[in] e : Événement de la souris qui lance la fonction
+        /// param[in] e : evenement de la souris qui lance la fonction
         /// 
-        /// @return True ou false selon la réussite des opérations.
+        /// @return True ou false selon la reussite des operations.
         ///
         ////////////////////////////////////////////////////////////////////////
         public override bool traiterSouris(MouseEventArgs e)
@@ -607,11 +607,11 @@ namespace InterfaceGraphique
         ////////////////////////////////////////////////////////////////////////
         ///
         /// @fn public override bool traiterRoulette(MouseEventArgs e)
-        /// @brief Traiter le changement d'état suite à une action du clavier
+        /// @brief Traiter le changement d'etat suite a une action du clavier
         /// 
-        /// param[in] e : Événement de la souris qui lance la fonction
+        /// param[in] e : evenement de la souris qui lance la fonction
         /// 
-        /// @return True ou false selon la réussite des opérations.
+        /// @return True ou false selon la reussite des operations.
         ///
         ////////////////////////////////////////////////////////////////////////
         public override bool traiterRoulette(MouseEventArgs e)
@@ -636,9 +636,9 @@ namespace InterfaceGraphique
         ////////////////////////////////////////////////////////////////////////
         ///
         /// @fn public EtatDuplication(Exemple form)
-        /// @brief Constructeur par paramètre de l'état.
+        /// @brief Constructeur par parametre de l'etat.
         /// 
-        /// param[in] form : Form associée à l'état.
+        /// param[in] form : Form associee a l'etat.
         /// 
         /// @return Aucune (constructeur).
         ///
@@ -652,11 +652,11 @@ namespace InterfaceGraphique
         ////////////////////////////////////////////////////////////////////////
         ///
         /// @fn public override bool traiterClavier(KeyEventArgs e)
-        /// @brief Traiter le changement d'état suite à une action du clavier
+        /// @brief Traiter le changement d'etat suite a une action du clavier
         /// 
-        /// param[in] e : Événement du clavier qui lance la fonction
+        /// param[in] e : evenement du clavier qui lance la fonction
         /// 
-        /// @return True ou false selon la réussite des opérations.
+        /// @return True ou false selon la reussite des operations.
         ///
         ////////////////////////////////////////////////////////////////////////
         public override bool traiterClavier(KeyEventArgs e)
@@ -667,11 +667,11 @@ namespace InterfaceGraphique
         ////////////////////////////////////////////////////////////////////////
         ///
         /// @fn public override bool traiterSouris(MouseEventArgs e)
-        /// @brief Traiter le changement d'état suite à une action du clavier
+        /// @brief Traiter le changement d'etat suite a une action du clavier
         /// 
-        /// param[in] e : Événement de la souris qui lance la fonction
+        /// param[in] e : evenement de la souris qui lance la fonction
         /// 
-        /// @return True ou false selon la réussite des opérations.
+        /// @return True ou false selon la reussite des operations.
         ///
         ////////////////////////////////////////////////////////////////////////
         public override bool traiterSouris(MouseEventArgs e)
@@ -699,9 +699,9 @@ namespace InterfaceGraphique
         ////////////////////////////////////////////////////////////////////////
         ///
         /// @fn public EtatNone(Exemple form)
-        /// @brief Constructeur par paramètre de l'état.
+        /// @brief Constructeur par parametre de l'etat.
         /// 
-        /// param[in] form : Form associée à l'état.
+        /// param[in] form : Form associee a l'etat.
         /// 
         /// @return Aucune (constructeur).
         ///
@@ -714,11 +714,11 @@ namespace InterfaceGraphique
         ////////////////////////////////////////////////////////////////////////
         ///
         /// @fn public override bool traiterClavier(KeyEventArgs e)
-        /// @brief Traiter le changement d'état suite à une action du clavier
+        /// @brief Traiter le changement d'etat suite a une action du clavier
         /// 
-        /// param[in] e : Événement du clavier qui lance la fonction
+        /// param[in] e : evenement du clavier qui lance la fonction
         /// 
-        /// @return True ou false selon la réussite des opérations.
+        /// @return True ou false selon la reussite des operations.
         ///
         ////////////////////////////////////////////////////////////////////////
         public override bool traiterClavier(KeyEventArgs e)
@@ -729,11 +729,11 @@ namespace InterfaceGraphique
         ////////////////////////////////////////////////////////////////////////
         ///
         /// @fn public override bool traiterSouris(MouseEventArgs e)
-        /// @brief Traiter le changement d'état suite à une action du clavier
+        /// @brief Traiter le changement d'etat suite a une action du clavier
         /// 
-        /// param[in] e : Événement de la souris qui lance la fonction
+        /// param[in] e : evenement de la souris qui lance la fonction
         /// 
-        /// @return True ou false selon la réussite des opérations.
+        /// @return True ou false selon la reussite des operations.
         ///
         ////////////////////////////////////////////////////////////////////////
         public override bool traiterSouris(MouseEventArgs e)
@@ -746,7 +746,7 @@ namespace InterfaceGraphique
 
     ///////////////////////////////////////////////////////////////////////////
     /// @class EtatSelectionMultiple
-    /// @brief Etat Sélection multiple du patron State.
+    /// @brief Etat Selection multiple du patron State.
     ///
     /// @author The Ballers
     /// @date 2015-01-27
@@ -758,9 +758,9 @@ namespace InterfaceGraphique
         ////////////////////////////////////////////////////////////////////////
         ///
         /// @fn public EtatSelectionMultiple(Exemple form)
-        /// @brief Constructeur par paramètre de l'état.
+        /// @brief Constructeur par parametre de l'etat.
         /// 
-        /// param[in] form : Form associée à l'état.
+        /// param[in] form : Form associee a l'etat.
         /// 
         /// @return Aucune (constructeur).
         ///
@@ -770,11 +770,11 @@ namespace InterfaceGraphique
         ////////////////////////////////////////////////////////////////////////
         ///
         /// @fn public override bool traiterClavier(KeyEventArgs e)
-        /// @brief Traiter le changement d'état suite à une action du clavier
+        /// @brief Traiter le changement d'etat suite a une action du clavier
         /// 
-        /// param[in] e : Événement du clavier qui lance la fonction
+        /// param[in] e : evenement du clavier qui lance la fonction
         /// 
-        /// @return True ou false selon la réussite des opérations.
+        /// @return True ou false selon la reussite des operations.
         ///
         ////////////////////////////////////////////////////////////////////////
         public override bool traiterClavier(KeyEventArgs e)
@@ -785,11 +785,11 @@ namespace InterfaceGraphique
         ////////////////////////////////////////////////////////////////////////
         ///
         /// @fn public override bool traiterSouris(MouseEventArgs e)
-        /// @brief Traiter le changement d'état suite à une action du clavier
+        /// @brief Traiter le changement d'etat suite a une action du clavier
         /// 
-        /// param[in] e : Événement de la souris qui lance la fonction
+        /// param[in] e : evenement de la souris qui lance la fonction
         /// 
-        /// @return True ou false selon la réussite des opérations.
+        /// @return True ou false selon la reussite des operations.
         ///
         ////////////////////////////////////////////////////////////////////////
         public override bool traiterSouris(MouseEventArgs e)
@@ -810,9 +810,9 @@ namespace InterfaceGraphique
         ////////////////////////////////////////////////////////////////////////
         ///
         /// @fn public EtatSelectionMultiple(Exemple form)
-        /// @brief Constructeur par paramètre de l'état.
+        /// @brief Constructeur par parametre de l'etat.
         /// 
-        /// param[in] form : Form associée à l'état.
+        /// param[in] form : Form associee a l'etat.
         /// 
         /// @return Aucune (constructeur).
         ///
@@ -822,11 +822,11 @@ namespace InterfaceGraphique
         ////////////////////////////////////////////////////////////////////////
         ///
         /// @fn public override bool traiterClavier(KeyEventArgs e)
-        /// @brief Traiter le changement d'état suite à une action du clavier
+        /// @brief Traiter le changement d'etat suite a une action du clavier
         /// 
-        /// param[in] e : Événement du clavier qui lance la fonction
+        /// param[in] e : evenement du clavier qui lance la fonction
         /// 
-        /// @return True ou false selon la réussite des opérations.
+        /// @return True ou false selon la reussite des operations.
         ///
         ////////////////////////////////////////////////////////////////////////
         public override bool traiterClavier(KeyEventArgs e)
@@ -837,11 +837,11 @@ namespace InterfaceGraphique
         ////////////////////////////////////////////////////////////////////////
         ///
         /// @fn public override bool traiterSouris(MouseEventArgs e)
-        /// @brief Traiter le changement d'état suite à une action du clavier
+        /// @brief Traiter le changement d'etat suite a une action du clavier
         /// 
-        /// param[in] e : Événement de la souris qui lance la fonction
+        /// param[in] e : evenement de la souris qui lance la fonction
         /// 
-        /// @return True ou false selon la réussite des opérations.
+        /// @return True ou false selon la reussite des operations.
         ///
         ////////////////////////////////////////////////////////////////////////
         public override bool traiterSouris(MouseEventArgs e)

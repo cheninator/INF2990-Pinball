@@ -7,10 +7,10 @@
 /// @ingroup Application
 ///////////////////////////////////////////////////////////////////////////////
 
-// Commentaire Doxygen mis sur la première page de la documentation Doxygen.
+// Commentaire Doxygen mis sur la premiere page de la documentation Doxygen.
 /**
 
-@mainpage Projet intégrateur de deuxième année -- INF2990
+@mainpage Projet integrateur de deuxieme annee -- INF2990
 
 PAINBALL
 <BR>
@@ -21,7 +21,7 @@ Nikolay Radoev <BR>
 Yonni Chen <BR>
 Emilio Rivera <BR>
 Philippe Carpin <BR>
-Kim Piché <BR>
+Kim Piche <BR>
 Samuel Millette <BR>
 
 */
@@ -62,7 +62,7 @@ Samuel Millette <BR>
 #include "CompteurAffichage.h"
 
 // Remplacement de EnveloppeXML/XercesC par TinyXML
-// Julien Gascon-Samson, été 2011
+// Julien Gascon-Samson, ete 2011
 #include "tinyxml2.h"
 
 #include "glm/gtc/type_ptr.hpp"
@@ -82,10 +82,10 @@ const int FacadeModele::coinDroitTableY = 96;
 /// @fn FacadeModele* FacadeModele::obtenirInstance()
 ///
 /// Cette fonction retourne un pointeur vers l'instance unique de la
-/// classe.  Si cette instance n'a pas été créée, elle la crée.  Cette
-/// création n'est toutefois pas nécessairement "thread-safe", car
+/// classe.  Si cette instance n'a pas ete creee, elle la cree.  Cette
+/// creation n'est toutefois pas necessairement "thread-safe", car
 /// aucun verrou n'est pris entre le test pour savoir si l'instance
-/// existe et le moment de sa création.
+/// existe et le moment de sa creation.
 ///
 /// @return Un pointeur vers l'instance unique de cette classe.
 ///
@@ -103,7 +103,7 @@ FacadeModele* FacadeModele::obtenirInstance()
 ///
 /// @fn void FacadeModele::libererInstance()
 ///
-/// Cette fonction libère l'instance unique de cette classe.
+/// Cette fonction libere l'instance unique de cette classe.
 ///
 /// @return Aucune.
 ///
@@ -119,7 +119,7 @@ void FacadeModele::libererInstance()
 ///
 /// @fn FacadeModele::~FacadeModele()
 ///
-/// Ce destructeur libère les objets du modèle.
+/// Ce destructeur libere les objets du modele.
 ///
 /// @return Aucune (destructeur).
 ///
@@ -135,12 +135,12 @@ FacadeModele::~FacadeModele()
 ///
 /// @fn void FacadeModele::initialiserOpenGL(HWND hWnd)
 ///
-/// Cette fonction permet d'initialiser le contexte OpenGL.  Elle crée
-/// un contexte OpenGL sur la fenêtre passée en paramètre, initialise
-/// FreeImage (utilisée par le chargeur de modèles) et assigne des 
-/// paramètres du contexte OpenGL.
+/// Cette fonction permet d'initialiser le contexte OpenGL.  Elle cree
+/// un contexte OpenGL sur la fenetre passee en parametre, initialise
+/// FreeImage (utilisee par le chargeur de modeles) et assigne des 
+/// parametres du contexte OpenGL.
 ///
-/// @param[in] hWnd : La poignée ("handle") vers la fenêtre à utiliser.
+/// @param[in] hWnd : La poignee ("handle") vers la fenetre a utiliser.
 ///
 /// @return Aucune.
 ///
@@ -149,12 +149,12 @@ void FacadeModele::initialiserOpenGL(HWND hWnd)
 {
 	hWnd_ = hWnd;
 	bool succes{ aidegl::creerContexteGL(hWnd_, hDC_, hGLRC_) };
-	assert(succes && "Le contexte OpenGL n'a pu être créé.");
+	assert(succes && "Le contexte OpenGL n'a pu etre cree.");
 
 	// Initialisation des extensions de OpenGL
 	glewInit();
 
-	// FreeImage, utilisée par le chargeur, doit être initialisée
+	// FreeImage, utilisee par le chargeur, doit etre initialisee
 	FreeImage_Initialise();
 
 	// La couleur de fond
@@ -166,7 +166,7 @@ void FacadeModele::initialiserOpenGL(HWND hWnd)
 	glEnable(GL_STENCIL_TEST);
 	glStencilOp(GL_KEEP,GL_KEEP,  GL_REPLACE);
 
-	// Les lumières
+	// Les lumieres
 	glEnable(GL_LIGHTING);
 	glLightModelf(GL_LIGHT_MODEL_LOCAL_VIEWER, GL_TRUE);
 	glLightModeli(GL_LIGHT_MODEL_TWO_SIDE, GL_TRUE);
@@ -175,7 +175,7 @@ void FacadeModele::initialiserOpenGL(HWND hWnd)
 	glEnable(GL_NORMALIZE);
 	glEnable(GL_LIGHT0);
 
-	// Qualité
+	// Qualite
 	glShadeModel(GL_SMOOTH);
 	glHint(GL_LINE_SMOOTH_HINT, GL_NICEST);
 
@@ -187,14 +187,14 @@ void FacadeModele::initialiserOpenGL(HWND hWnd)
 	glCullFace(GL_BACK);
 
 
-	// Création de l'arbre de rendu.  À moins d'être complètement certain
-	// d'avoir une bonne raison de faire autrement, il est plus sage de créer
-	// l'arbre après avoir créé le contexte OpenGL.
+	// Creation de l'arbre de rendu.  a moins d'etre completement certain
+	// d'avoir une bonne raison de faire autrement, il est plus sage de creer
+	// l'arbre apres avoir cree le contexte OpenGL.
 	std::cout << "Creation de l'arbre de rendu..." << std::endl;
 	arbre_ = new ArbreRenduINF2990;
 	std::cout << "Initialisation de l'arbre de rendu..." << std::endl;
 	arbre_->initialiser();
-	// On crée une vue par défaut.
+	// On cree une vue par defaut.
 	vue_ = new vue::VueOrtho{
 		vue::Camera{ 
 			glm::dvec3(0, 0, 200), glm::dvec3(0, 0, 0),
@@ -213,7 +213,7 @@ void FacadeModele::initialiserOpenGL(HWND hWnd)
 ///
 /// @fn void FacadeModele::libererOpenGL()
 ///
-/// Cette fonction libère le contexte OpenGL et désinitialise FreeImage.
+/// Cette fonction libere le contexte OpenGL et desinitialise FreeImage.
 ///
 /// @return Aucune.
 ///
@@ -223,7 +223,7 @@ void FacadeModele::libererOpenGL()
 	utilitaire::CompteurAffichage::libererInstance();
 
 	bool succes{ aidegl::detruireContexteGL(hWnd_, hDC_, hGLRC_) };
-	assert(succes && "Le contexte OpenGL n'a pu être détruit.");
+	assert(succes && "Le contexte OpenGL n'a pu etre detruit.");
 
 	FreeImage_DeInitialise();
 }
@@ -233,7 +233,7 @@ void FacadeModele::libererOpenGL()
 ///
 /// @fn void FacadeModele::afficher() const
 ///
-/// Cette fonction affiche le contenu de la scène.
+/// Cette fonction affiche le contenu de la scene.
 ///
 /// @return Aucune.
 ///
@@ -243,21 +243,21 @@ void FacadeModele::afficher() const
 	// Efface l'ancien rendu
 	glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT | GL_STENCIL_BUFFER_BIT);
 
-	// Ne devrait pas être nécessaire
+	// Ne devrait pas etre necessaire
 	vue_->appliquerProjection();
 
-	// Positionne la caméra
+	// Positionne la camera
 	glMatrixMode(GL_MODELVIEW);
 	glLoadIdentity();
 	vue_->appliquerCamera();
 
-	// Afficher la scène
+	// Afficher la scene
 	afficherBase();
 
 	// Compte de l'affichage
 	utilitaire::CompteurAffichage::obtenirInstance()->signalerAffichage();
 
-	// Échange les tampons pour que le résultat du rendu soit visible.
+	// echange les tampons pour que le resultat du rendu soit visible.
 	::SwapBuffers(hDC_);
 }
 
@@ -266,19 +266,19 @@ void FacadeModele::afficher() const
 ///
 /// @fn void FacadeModele::afficherBase() const
 ///
-/// Cette fonction affiche la base du contenu de la scène, c'est-à-dire
-/// qu'elle met en place l'éclairage et affiche les objets.
+/// Cette fonction affiche la base du contenu de la scene, c'est-a-dire
+/// qu'elle met en place l'eclairage et affiche les objets.
 ///
 /// @return Aucun
 ///
 ////////////////////////////////////////////////////////////////////////
 void FacadeModele::afficherBase() const
 {
-	// Positionner la lumière.
+	// Positionner la lumiere.
 	glm::vec4 position{ 0, 0, 1, 0 };
 	glLightfv(GL_LIGHT0, GL_POSITION, glm::value_ptr(position));
 
-	// Afficher la scène.
+	// Afficher la scene.
 	arbre_->afficher();
 }
 
@@ -287,14 +287,14 @@ void FacadeModele::afficherBase() const
 ///
 /// @fn void FacadeModele::reinitialiser()
 ///
-/// Cette fonction réinitialise la scène à un état "vide".
+/// Cette fonction reinitialise la scene a un etat "vide".
 ///
 /// @return Aucune.
 ///
 ////////////////////////////////////////////////////////////////////////
 void FacadeModele::reinitialiser()
 {
-	// Réinitialisation de la scène.
+	// Reinitialisation de la scene.
 	arbre_->initialiser();
 }
 
@@ -303,8 +303,8 @@ void FacadeModele::reinitialiser()
 ///
 /// @fn void FacadeModele::animer(float temps)
 ///
-/// Cette fonction effectue les différents calculs d'animations
-/// nécessaires pour le mode jeu, tel que les différents calculs de
+/// Cette fonction effectue les differents calculs d'animations
+/// necessaires pour le mode jeu, tel que les differents calculs de
 /// physique du jeu.
 ///
 /// @param[in] temps : Intervalle de temps sur lequel effectuer le calcul.
@@ -314,10 +314,10 @@ void FacadeModele::reinitialiser()
 ////////////////////////////////////////////////////////////////////////
 void FacadeModele::animer(float temps)
 {
-	// Mise à jour des objets.
+	// Mise a jour des objets.
 	arbre_->animer(temps);
 
-	// Mise à jour de la vue.
+	// Mise a jour de la vue.
 	vue_->animer(temps);
 }
 
@@ -326,10 +326,10 @@ void FacadeModele::animer(float temps)
 ///
 /// @fn int FacadeModele::selectionnerObjetSousPointClique(int i, int j, int hauteur, int largeur, bool ctrlDown)
 ///
-/// Cette fonction permet de selectionner un objet. La méthode regarde la valeur
-/// du stencil et la donne à un visiteurSelection qui compare cette valeur
-/// aux numéros des noeuds et change les met sélectionnés ou pas selon le résultat
-/// de la comparaison et selon qu'on a cliqué avec CTRL.
+/// Cette fonction permet de selectionner un objet. La methode regarde la valeur
+/// du stencil et la donne a un visiteurSelection qui compare cette valeur
+/// aux numeros des noeuds et change les met selectionnes ou pas selon le resultat
+/// de la comparaison et selon qu'on a clique avec CTRL.
 ///
 /// @param[in] i : Position souris i
 /// @param[in] j : Position souris j
@@ -350,7 +350,7 @@ int FacadeModele::selectionnerObjetSousPointClique(int i, int j, int hauteur, in
 		VisiteurSelection visSel(pointDansLeMonde, valeurStencil);
 		arbre_->accepterVisiteur(&visSel);
 
-		// Demander au visiteur ce qu'il a trouvé et faire quelque chose en conséquence
+		// Demander au visiteur ce qu'il a trouve et faire quelque chose en consequence
 		return visSel.obtenirNbObjetsSelectionne();
 	}
 	else
@@ -358,7 +358,7 @@ int FacadeModele::selectionnerObjetSousPointClique(int i, int j, int hauteur, in
 		VisiteurSelectionInverse visSelInverse(pointDansLeMonde, valeurStencil);
 		arbre_->accepterVisiteur(&visSelInverse);
 
-		// Demander au visiteur ce qu'il a trouvé et faire quelque chose en conséquence
+		// Demander au visiteur ce qu'il a trouve et faire quelque chose en consequence
 		return visSelInverse.obtenirNbObjetsSelectionne();
 	}
 
@@ -368,8 +368,8 @@ int FacadeModele::selectionnerObjetSousPointClique(int i, int j, int hauteur, in
 ///////////////////////////////////////////////////////////////////////////////
 ///
 /// @fn void deplacerSelection(int x1, int y1, int x2, int y2)
-///		deplace les noeuds selectionnes d'un déplacement calculé en coordonnées du monde
-///		à partir des points initiaux et terminaux dans les coordonnées d'affichage OpenGL
+///		deplace les noeuds selectionnes d'un deplacement calcule en coordonnees du monde
+///		a partir des points initiaux et terminaux dans les coordonnees d'affichage OpenGL
 ///
 /// @param[in]  x1 : abcisse du point initial
 /// @param[in]  y1 : ordonnee du point initial
@@ -379,7 +379,7 @@ int FacadeModele::selectionnerObjetSousPointClique(int i, int j, int hauteur, in
 ///
 /// @return Aucune.
 ///
-/// @remark : On doit donner des x,y qui ont été transformés par panel_GL.PointToClient(...)
+/// @remark : On doit donner des x,y qui ont ete transformes par panel_GL.PointToClient(...)
 ///
 ///////////////////////////////////////////////////////////////////////////////
 void FacadeModele::deplacerSelection(int x1, int y1 ,int x2, int y2, bool duplication)
@@ -444,12 +444,12 @@ void FacadeModele::deplacerSelection(int x1, int y1 ,int x2, int y2, bool duplic
 ///////////////////////////////////////////////////////////////////////////////
 ///
 /// @fn void tournerSelectionSouris(int x1, int y1, int x2, int y2)
-///		Fait une rotation des objets sélectionnés autour de leur centre de masse.
-///		L'angle est calculé en fonction du déplacement de (x1,y1) à (x2,y2):
-///		Présentement, l'angle est proportionnel à (y1 - y2).
+///		Fait une rotation des objets selectionnes autour de leur centre de masse.
+///		L'angle est calcule en fonction du deplacement de (x1,y1) a (x2,y2):
+///		Presentement, l'angle est proportionnel a (y1 - y2).
 ///		
 ///		Pour tester si la rotation est faisable, on prend tous les points des boîtes
-///		englobantes.  Si un seul de ces points, une fois transformé, n'est pas dans la 
+///		englobantes.  Si un seul de ces points, une fois transforme, n'est pas dans la 
 ///		table, on ne fait pas la rotation.
 ///		
 /// @param[in]  x1 : abcisse du point initial
@@ -460,12 +460,12 @@ void FacadeModele::deplacerSelection(int x1, int y1 ,int x2, int y2, bool duplic
 ///
 /// @return Aucune.
 ///
-/// @remark : On doit donner des x,y qui ont été transformés par panel_GL.PointToClient(...)
+/// @remark : On doit donner des x,y qui ont ete transformes par panel_GL.PointToClient(...)
 ///
 ///////////////////////////////////////////////////////////////////////////////
 void FacadeModele::tournerSelectionSouris(int x1, int y1, int x2, int y2)
 {
-	// Visiter l'arbre pour trouver le centre de masse des noeuds selectionnés
+	// Visiter l'arbre pour trouver le centre de masse des noeuds selectionnes
 	VisiteurCentreDeMasse visCM;
 	arbre_->accepterVisiteur(&visCM);
 	glm::dvec3 centreRotation = visCM.obtenirCentreDeMasse();
@@ -477,10 +477,10 @@ void FacadeModele::tournerSelectionSouris(int x1, int y1, int x2, int y2)
 		glm::dvec3{ sin(-angleEnRadian), cos(-angleEnRadian), 0 },
 		glm::dvec3{ 0, 0, 1 } };
 
-	// On décide si la rotation peut se faire
+	// On decide si la rotation peut se faire
 	bool onTourne = true;
 
-	// Obtenir une liste des points englobants des noeud sélectionnés
+	// Obtenir une liste des points englobants des noeud selectionnes
 	VisiteurListeEnglobante visLE;
 	arbre_->accepterVisiteur(&visLE);
 	
@@ -509,8 +509,8 @@ void FacadeModele::tournerSelectionSouris(int x1, int y1, int x2, int y2)
 ///////////////////////////////////////////////////////////////////////////////
 ///
 /// @fn void agrandirSelection(int x1, int y1, int x2, int y2)
-///		Fait un agrandissement des objets sélectionnés.
-///		L'agrandissement est calculé en fonction du déplacement de (x1,y1) à (x2,y2)
+///		Fait un agrandissement des objets selectionnes.
+///		L'agrandissement est calcule en fonction du deplacement de (x1,y1) a (x2,y2)
 ///
 /// @param[in]  x1 : abcisse du point initial
 /// @param[in]  y1 : ordonnee du point initial
@@ -520,18 +520,18 @@ void FacadeModele::tournerSelectionSouris(int x1, int y1, int x2, int y2)
 ///
 /// @return Aucune.
 ///
-/// @remark : On doit donner des x,y qui ont été transformés par panel_GL.PointToClient(...)
+/// @remark : On doit donner des x,y qui ont ete transformes par panel_GL.PointToClient(...)
 ///
 ///////////////////////////////////////////////////////////////////////////////
 void FacadeModele::agrandirSelection(int x1, int y1, int x2, int y2)
 {
 	double scale = glm::exp((y1 - y2) * glm::log(1.003)); // exp(b log(a)) = a^b
-	// Pour agrandir on multiplie le scale courrant par 1.003 et ce une fois pour chaque déplacement en y
+	// Pour agrandir on multiplie le scale courrant par 1.003 et ce une fois pour chaque deplacement en y
 	// donc on multiplie par 1.003^(y1-y2).
-	// Si (y1-y2) est négatif, ceci va nous faire diviser par 1.003, donc l'objet va rapetisser.
+	// Si (y1-y2) est negatif, ceci va nous faire diviser par 1.003, donc l'objet va rapetisser.
 	
-	// Au final, on multiplie le scale courrant par 1.003 une fois pour chaque déplacement élémentaire vers le haut,
-	// On divise par 1.003 pour chaque déplacement élémentaire vers le bas.
+	// Au final, on multiplie le scale courrant par 1.003 une fois pour chaque deplacement elementaire vers le haut,
+	// On divise par 1.003 pour chaque deplacement elementaire vers le bas.
 	double distanceConstante = 1.0;
 	double correctionZ = (1 - scale) * distanceConstante;
 
@@ -563,7 +563,7 @@ void FacadeModele::agrandirSelection(int x1, int y1, int x2, int y2)
 ///
 /// @fn void FacadeModele::initialiserRectangleElastique(int i, int j) A COMMENTER KIM
 ///	
-///	Initialise un rectangle élastique
+///	Initialise un rectangle elastique
 ///
 /// @param[in]  i : 
 /// @param[in]  j : 
@@ -674,15 +674,15 @@ int FacadeModele::selectionMultiple(bool c)
 ///////////////////////////////////////////////////////////////////////////////
 ///
 /// @fn bool verifierCliqueDansTable(int x, int y)
-///		Vérifie si le point du monde correspondant à (x,y) est dans la table de
+///		Verifie si le point du monde correspondant a (x,y) est dans la table de
 ///		façon empirique ou heuristique.
 ///
-/// @param[in]  x : abcisse du point cliqué
-/// @param[in]  y : ordonnee du point cliqué
+/// @param[in]  x : abcisse du point clique
+/// @param[in]  y : ordonnee du point clique
 ///
 /// @return Aucune.
 ///
-/// @remark : On doit donner des x,y qui ont été transformés par panel_GL.PointToClient(...)
+/// @remark : On doit donner des x,y qui ont ete transformes par panel_GL.PointToClient(...)
 ///
 ///////////////////////////////////////////////////////////////////////////////
 bool FacadeModele::verifierCliqueDansTable(int x, int y)
@@ -700,9 +700,9 @@ bool FacadeModele::verifierCliqueDansTable(int x, int y)
 ///////////////////////////////////////////////////////////////////////////////
 ///
 /// @fn bool FacadeModele::estDansTable(glm::dvec3 pointDuMonde)
-///		Vérifie si le point du monde est dans la table
+///		Verifie si le point du monde est dans la table
 ///
-/// @param[in]  pointDuMonde : Point dont on veut vérifier qu'il est dans la table
+/// @param[in]  pointDuMonde : Point dont on veut verifier qu'il est dans la table
 ///
 /// @return Aucune.
 ///
@@ -720,7 +720,7 @@ bool FacadeModele::estDansTable(glm::dvec3 pointDuMonde)
 ///////////////////////////////////////////////////////////////////////////////
 ///
 /// @fn void dupliquerSelection(int i, int j)
-///		Duplique les objets selectionnés
+///		Duplique les objets selectionnes
 ///
 /// @return Aucune.
 ///
@@ -753,7 +753,7 @@ int FacadeModele::creerXML(char* path, int prop[6])
 		sauvegardeAutorise = 0;
 	}
 
-	// Ne pas permettre de sauvegarder la zone de jeu par défaut
+	// Ne pas permettre de sauvegarder la zone de jeu par defaut
 	else if (FacadeModele::obtenirInstance()->obtenirArbreRenduINF2990()->getEnfant(0)->chercher("generateurbille")
 		&& FacadeModele::obtenirInstance()->obtenirArbreRenduINF2990()->getEnfant(0)->chercher("trou")
 		&& FacadeModele::obtenirInstance()->obtenirArbreRenduINF2990()->getEnfant(0)->chercher("ressort")
@@ -796,16 +796,16 @@ int FacadeModele::creerXML(char* path, int prop[6])
 ///////////////////////////////////////////////////////////////////////////////
 ///
 /// @fn void FacadeModele::positionnerMur(int originX, int originY,int x1, int y1, int x2, int y2, NoeudAbstrait* noeud)
-///		Positionne un mur pour qu'il soit une ligne entre où on a appuyé le bouton de gauche de la 
+///		Positionne un mur pour qu'il soit une ligne entre où on a appuye le bouton de gauche de la 
 ///		souris et la position actuelle de la souris.
-///		La méthode vérifie aussi la boite englobante du mur pour ne pas qu'il dépasse de la table.
+///		La methode verifie aussi la boite englobante du mur pour ne pas qu'il depasse de la table.
 ///	
-/// @param[in]  originX : Position en X où le bouton a été appuyé
-/// @param[in]  originX : Position en Y où le bouton a été appuyé
-/// @param[in]  x1 : Position en X précédant un déplacement de la souris
-/// @param[in]  Y1 : Position en Y précédant un déplacement de la souris
-/// @param[in]  x2 : Position en X après un déplacement de la souris (position actuelle de la souris)
-/// @param[in]  y2 : Position en X après un déplacement de la souris (position actuelle de la souris)
+/// @param[in]  originX : Position en X où le bouton a ete appuye
+/// @param[in]  originX : Position en Y où le bouton a ete appuye
+/// @param[in]  x1 : Position en X precedant un deplacement de la souris
+/// @param[in]  Y1 : Position en Y precedant un deplacement de la souris
+/// @param[in]  x2 : Position en X apres un deplacement de la souris (position actuelle de la souris)
+/// @param[in]  y2 : Position en X apres un deplacement de la souris (position actuelle de la souris)
 ///
 /// @return Aucune.
 ///
@@ -818,32 +818,32 @@ void FacadeModele::positionnerMur(int originX, int originY,int x1, int y1, int x
 
 	glm::dvec3 vecteur = positionFinale - positionOriginale;
 
-	// Propriétés à appliquer:
+	// Proprietes a appliquer:
 	glm::dvec3 scaleFinal{ 1, 1, 1 };
 	glm::dvec3 angles{ 0, 0, 0 };
 	glm::dvec3 position = positionOriginale;
 
 	double angleRadian;
 
-	// Les calculs sont fait seulement si la souris est assez loin de ou on a créé le noeud.
+	// Les calculs sont fait seulement si la souris est assez loin de ou on a cree le noeud.
 	if (glm::length(vecteur) > 0.1)
 	{
 		// CALCUL DE L'ANGLE
 		// =================
-		glm::dvec3 axe{ 0, 1, 0 }; // On va travailler avec l'angle entre le vecteur allant de origin à la position du curseur, et l'axe Y.
+		glm::dvec3 axe{ 0, 1, 0 }; // On va travailler avec l'angle entre le vecteur allant de origin a la position du curseur, et l'axe Y.
 		glm::dvec3 produitVectoriel = glm::cross(axe, vecteur);
 		double sinAngle = glm::length(produitVectoriel) / glm::length(axe) / glm::length(vecteur);
 		angleRadian = produitVectoriel.z > 0 ? asin(sinAngle) : -asin(sinAngle);
 
-		// Prendre l'angle complémentaire si on est en dessous de l'axe X.
+		// Prendre l'angle complementaire si on est en dessous de l'axe X.
 		if (vecteur.y < 0)
-			angleRadian = M_PI - angleRadian;// A passer en paramètre à assignerRotation
+			angleRadian = M_PI - angleRadian;// A passer en parametre a assignerRotation
 
 		angles = glm::dvec3{ 0, 0, 360.0 / 2.0 / M_PI * angleRadian };
 	}
 		// Calcul de la translation
 		// ========================
-		// position = positionOriginale + vecteur / 2.0; // Le centre du mur est à mi-chemin entre origin et le point du curseur. 
+		// position = positionOriginale + vecteur / 2.0; // Le centre du mur est a mi-chemin entre origin et le point du curseur. 
 	if (glm::length(vecteur) > .1)
 		position = positionOriginale + vecteur / 2.0;
 	else if (glm::length(vecteur) != 0)
@@ -884,7 +884,7 @@ void FacadeModele::positionnerMur(int originX, int originY,int x1, int y1, int x
 		}
 	}
 
-	// Si on s'est rendu ici, c'est qu'on peut faire l'assignation des propriétés.
+	// Si on s'est rendu ici, c'est qu'on peut faire l'assignation des proprietes.
 	noeud->assignerEchelle(scaleFinal);
 	noeud->assignerRotationHard(angles);
 	noeud->assignerPositionRelative(position);
@@ -895,7 +895,7 @@ void FacadeModele::positionnerMur(int originX, int originY,int x1, int y1, int x
 ///////////////////////////////////////////////////////////////////////////////
 ///
 /// @fn bool FacadeModele::supprimer()
-///  Parcours l'arbre et supprime les objets sélectionnés.
+///  Parcours l'arbre et supprime les objets selectionnes.
 /// 
 /// @return La valeur du zoom courant
 ///
@@ -913,7 +913,7 @@ bool FacadeModele::supprimer()
 ///////////////////////////////////////////////////////////////////////////////
 ///
 /// @fn double obtenirZoomCourant();
-/// Obtient la valeur deu zoom appliqué ; la comparaison est faite entre les dimensions de la clôture et celles de la fenêtre courante
+/// Obtient la valeur deu zoom applique ; la comparaison est faite entre les dimensions de la cloture et celles de la fenetre courante
 ///
 /// @return La valeur du zoom courant
 ///
@@ -933,11 +933,11 @@ double FacadeModele::obtenirZoomCourant()
 ///////////////////////////////////////////////////////////////////////////////
 ///
 /// @fn int FacadeModele::obtenirCentreMasseX()
-///  Obtient le x du centre de masse des objets sélectionnés
+///  Obtient le x du centre de masse des objets selectionnes
 /// 
 /// @return La composante en x du centre de masse
 ///
-/// @remark Perte de précision lors de la convertion du centre de masse (double) en int.
+/// @remark Perte de precision lors de la convertion du centre de masse (double) en int.
 ///
 ///////////////////////////////////////////////////////////////////////////////
 int FacadeModele::obtenirCentreMasseX()
@@ -953,11 +953,11 @@ int FacadeModele::obtenirCentreMasseX()
 ///////////////////////////////////////////////////////////////////////////////
 ///
 /// @fn int FacadeModele::obtenirCentreMasseY()
-///  Obtient le y du centre de masse des objets sélectionnés
+///  Obtient le y du centre de masse des objets selectionnes
 /// 
 /// @return La composante en y du centre de masse
 ///
-/// @remard Perte de précision lors de la convertion du centre de masse (double) en int.
+/// @remard Perte de precision lors de la convertion du centre de masse (double) en int.
 ///
 ///////////////////////////////////////////////////////////////////////////////
 int FacadeModele::obtenirCentreMasseY()

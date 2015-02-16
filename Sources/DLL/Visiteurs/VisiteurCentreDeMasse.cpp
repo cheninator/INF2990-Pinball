@@ -48,10 +48,10 @@ VisiteurCentreDeMasse::~VisiteurCentreDeMasse()
 /// @fn bool VisiteurCentreDeMasse::traiter(ArbreRenduINF2990* arbre)
 ///
 /// Cette fonction traite l'arbre de rendu pour calculer le centre de masse
-/// des objets selectionnés. Cette fonction retourne true pour dire que 
-/// l'opération s'est faite correctement.
+/// des objets selectionnes. Cette fonction retourne true pour dire que 
+/// l'operation s'est faite correctement.
 ///
-/// @param[in] arbre : L'arbre de rendu à traiter.
+/// @param[in] arbre : L'arbre de rendu a traiter.
 ///
 /// @return Retourne toujours true.
 ///
@@ -73,9 +73,9 @@ bool VisiteurCentreDeMasse::traiter(ArbreRenduINF2990* arbre)
 ///
 /// Cette fonction traite la table de l'arbre de rendu et ses enfants pour
 /// le calcul du centre de masse. Cette fonction retourne true pour dire 
-///	que l'opération s'est faite correctement.
+///	que l'operation s'est faite correctement.
 ///
-/// @param[in] table : La table à traiter.
+/// @param[in] table : La table a traiter.
 ///
 /// @return Retourne toujours true
 ///
@@ -95,10 +95,10 @@ bool VisiteurCentreDeMasse::traiter(NoeudTable* table)
 /// @fn bool VisiteurCentreDeMasse::traiter(NoeudAbstrait* noeud)
 /// 
 ///	Calcule le centre de masse (tous les noeuds ont une masse de 1).
-/// Cette fonction retourne true pour dire que l'opération s'est
+/// Cette fonction retourne true pour dire que l'operation s'est
 /// faite correctement.
 ///
-/// @param[in] noeud : noeud à traiter.
+/// @param[in] noeud : noeud a traiter.
 ///
 /// @return Retourne toujours true
 ///
@@ -119,12 +119,12 @@ bool VisiteurCentreDeMasse::traiter(NoeudAbstrait* noeud)
 ///
 /// @fn glm::dvec3 obtenirCentreDeMasse()
 ///
-/// Cette fonction retourne les coordonnées du centre de masse 
-/// du noeud visité.
+/// Cette fonction retourne les coordonnees du centre de masse 
+/// du noeud visite.
 ///
 /// @param[in] Aucun
 ///
-/// @return Coordonnées de centre de masse d'un noeud (dvec3)
+/// @return Coordonnees de centre de masse d'un noeud (dvec3)
 ///
 ////////////////////////////////////////////////////////////////////////
 glm::dvec3 VisiteurCentreDeMasse::obtenirCentreDeMasse() const

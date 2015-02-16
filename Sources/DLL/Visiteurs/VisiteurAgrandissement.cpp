@@ -18,7 +18,7 @@
 ///
 /// @fn VisiteurAgrandissement::VisiteurAgrandissement()
 ///
-/// Constructeur par défaut (Vide).
+/// Constructeur par defaut (Vide).
 ///
 /// @return Aucune (constructeur).
 ///
@@ -66,10 +66,10 @@ VisiteurAgrandissement::~VisiteurAgrandissement()
 /// @fn bool VisiteurAgrandissement::traiter(ArbreRenduINF2990* arbre)
 ///
 /// Cette fonction traite l'arbre de rendu pour effectuer un agrandissement
-/// sur les objets selectionnés. Cette fonction retourne true pour dire que 
-/// l'opération s'est faite correctement.
+/// sur les objets selectionnes. Cette fonction retourne true pour dire que 
+/// l'operation s'est faite correctement.
 ///
-/// @param[in] arbre : L'arbre de rendu à traiter.
+/// @param[in] arbre : L'arbre de rendu a traiter.
 ///
 /// @return Retourne toujours true.
 ///
@@ -91,10 +91,10 @@ bool VisiteurAgrandissement::traiter(ArbreRenduINF2990* arbre)
 /// @fn bool VisiteurAgrandissement::traiter(NoeudTable* table)
 ///
 /// Cette fonction traite la table de l'arbre pour effectuer un agrandissement
-/// sur ses enfants. Cette fonction retourne true si l'opération s'est
+/// sur ses enfants. Cette fonction retourne true si l'operation s'est
 /// faite correctement.
 ///
-/// @param[in] table : Le noeud de type Table à traiter.
+/// @param[in] table : Le noeud de type Table a traiter.
 ///
 /// @return Retourne toujours true.
 ///
@@ -116,10 +116,10 @@ bool VisiteurAgrandissement::traiter(NoeudTable* table)
 /// @fn bool VisiteurAgrandissement::traiter(NoeudAbstrait* noeud)
 ///
 /// Cette fonction traite un noeud de l'arbre de rendu pour effectuer 
-/// un agrandissement. Cette fonction retourne true pour dire que l'opération 
+/// un agrandissement. Cette fonction retourne true pour dire que l'operation 
 /// s'est faite correctement.
 ///
-/// @param[in] noeud : Noeud de l'arbre de rendu à traiter.
+/// @param[in] noeud : Noeud de l'arbre de rendu a traiter.
 ///
 /// @return Retourne toujours true.
 ///
@@ -131,9 +131,9 @@ bool VisiteurAgrandissement::traiter(NoeudAbstrait* noeud)
 	{
 		// LOGIQUE D'AGRANDISSEMENT
 		// REMARQUE: LE SCALE EST QUELQUE CHOSE DE MULTIPLICATIF
-		// et on utilise un déplacement pour la définir, qui est "additif". 
+		// et on utilise un deplacement pour la definir, qui est "additif". 
 		// Qu'est-ce qui transforme l'addition en multiplication? A^(x + y) = (A^x) * (A^y)
-		// c'est pour ça qu'il y a une exponentielle dans la fonction de facadeModele qui calcule le scale à donner au visiteur.
+		// c'est pour ça qu'il y a une exponentielle dans la fonction de facadeModele qui calcule le scale a donner au visiteur.
 		glm::dvec3 scaleInit = noeud->obtenirAgrandissement();
 		glm::dvec3 scaleFinal = glm::dvec3{ scaleInit[0] * homothetie_[0], scaleInit[1] * homothetie_[1], scaleInit[2] * homothetie_[2] };
 	
@@ -165,10 +165,10 @@ bool VisiteurAgrandissement::traiter(NoeudAbstrait* noeud)
 /// @fn bool VisiteurAgrandissement::traiter(NoeudMur* noeud)
 ///
 /// Cette fonction traite un mur de l'arbre de rendu pour effectuer 
-/// un agrandissement. Cette fonction retourne true pour dire que l'opération 
+/// un agrandissement. Cette fonction retourne true pour dire que l'operation 
 /// s'est faite correctement.
 ///
-/// @param[in] noeud : NoeudMur de l'arbre de rendu à traiter.
+/// @param[in] noeud : NoeudMur de l'arbre de rendu a traiter.
 ///
 /// @return Retourne toujours true.
 ///
@@ -179,9 +179,9 @@ bool VisiteurAgrandissement::traiter(NoeudMur* noeud)
 	{
 		// LOGIQUE D'AGRANDISSEMENT
 		// REMARQUE: LE SCALE EST QUELQUE CHOSE DE MULTIPLICATIF
-		// et on utilise un déplacement pour la définir, qui est "additif". 
+		// et on utilise un deplacement pour la definir, qui est "additif". 
 		// Qu'est-ce qui transforme l'addition en multiplication? A^(x + y) = (A^x) * (A^y)
-		// c'est pour ça qu'il y a une exponentielle dans la fonction de facadeModele qui calcule le scale à donner au visiteur.
+		// c'est pour ça qu'il y a une exponentielle dans la fonction de facadeModele qui calcule le scale a donner au visiteur.
 		glm::dvec3 scaleInit = noeud->obtenirAgrandissement();
 		glm::dvec3 scaleFinal = glm::dvec3{ scaleInit[0], scaleInit[1] * homothetie_[1] , scaleInit[2] };
 		noeud->assignerEchelle(scaleFinal);
@@ -195,11 +195,11 @@ bool VisiteurAgrandissement::traiter(NoeudMur* noeud)
 ///
 /// @fn bool VisiteurAgrandissement::traiter(NoeudGenerateurBille* noeud)
 ///
-/// Cette fonction traite un générateur de bille de l'arbre de rendu pour effectuer 
-/// un agrandissement. Cette fonction retourne true pour dire que l'opération 
+/// Cette fonction traite un generateur de bille de l'arbre de rendu pour effectuer 
+/// un agrandissement. Cette fonction retourne true pour dire que l'operation 
 /// s'est faite correctement.
 ///
-/// @param[in] noeud : NoeudGenerateurBille de l'arbre de rendu à traiter.
+/// @param[in] noeud : NoeudGenerateurBille de l'arbre de rendu a traiter.
 ///
 /// @return Retourne toujours true.
 ///
@@ -211,9 +211,9 @@ bool VisiteurAgrandissement::traiter(NoeudGenerateurBille* noeud)
 	{
 		// LOGIQUE D'AGRANDISSEMENT
 		// REMARQUE: LE SCALE EST QUELQUE CHOSE DE MULTIPLICATIF
-		// et on utilise un déplacement pour la définir, qui est "additif". 
+		// et on utilise un deplacement pour la definir, qui est "additif". 
 		// Qu'est-ce qui transforme l'addition en multiplication? A^(x + y) = (A^x) * (A^y)
-		// c'est pour ça qu'il y a une exponentielle dans la fonction de facadeModele qui calcule le scale à donner au visiteur.
+		// c'est pour ça qu'il y a une exponentielle dans la fonction de facadeModele qui calcule le scale a donner au visiteur.
 		glm::dvec3 scaleInit = noeud->obtenirAgrandissement();
 		glm::dvec3 scaleFinal = glm::dvec3{ scaleInit[0] * homothetie_[0], scaleInit[1] * homothetie_[1], scaleInit[2] * homothetie_[2] };
 

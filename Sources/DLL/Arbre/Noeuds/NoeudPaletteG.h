@@ -15,7 +15,7 @@
 
 ///////////////////////////////////////////////////////////////////////////
 /// @class NoeudPaletteG
-/// @brief Classe qui représente une palette gauche.
+/// @brief Classe qui represente une palette gauche.
 ///
 /// @author The Ballers
 /// @date 2015-01-24
@@ -30,10 +30,10 @@ public:
 	/// Destructeur 
 	~NoeudPaletteG();
 
-	/// Surchage de la méthode qui affiche l'objet.
+	/// Surchage de la methode qui affiche l'objet.
 	virtual void afficherConcret() const;
 
-	/// Surchage de la méthode qui anime l'objet.
+	/// Surchage de la methode qui anime l'objet.
 	virtual void animer(float temps);
 
 	/// Accepte un visiteur.

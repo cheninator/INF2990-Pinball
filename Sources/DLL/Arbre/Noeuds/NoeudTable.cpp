@@ -22,10 +22,10 @@
 ///
 /// @fn NoeudTable::NoeudTable(const std::string& typeNoeud)
 ///
-/// @param[in] typeNoeud :  le type du noeud à créer.
+/// @param[in] typeNoeud :  le type du noeud a creer.
 ///
 /// Ce constructeur ne fait qu'appeler la version de la classe et base
-/// et donner des valeurs par défaut aux variables membres.
+/// et donner des valeurs par defaut aux variables membres.
 ///
 /// @return Aucune (constructeur).
 ///
@@ -42,7 +42,7 @@ NoeudTable::NoeudTable(const std::string& typeNoeud)
 ///
 /// @fn NoeudTable::~NoeudTable()
 ///
-/// Ce destructeur désallouee la liste d'affichage du noeud.
+/// Ce destructeur desallouee la liste d'affichage du noeud.
 ///
 /// @return Aucune (destructeur).
 ///
@@ -56,7 +56,7 @@ NoeudTable::~NoeudTable()
 ///
 /// @fn void NoeudTable::afficherConcret() const
 ///
-/// Cette fonction effectue le véritable rendu de l'objet.
+/// Cette fonction effectue le veritable rendu de l'objet.
 ///
 /// @return Aucune.
 ///
@@ -68,7 +68,7 @@ void NoeudTable::afficherConcret() const
 	glPushMatrix();
 	glTranslatef(200, -50, 0);
 	//glRotatef(180, 0, 0, 1);
-	// Affichage du modèle.
+	// Affichage du modele.
 	glStencilFunc(GL_ALWAYS, 0, -1);
 	liste_->dessiner();
 	// Restauration de la matrice.
@@ -98,7 +98,7 @@ void NoeudTable::animer(float temps)
 ///
 /// @fn bool NoeudTable::accepterVisiteur(VisiteurAbstrait* vis)
 ///
-/// Cette fonction appelle la méthode traiter du visiteur.
+/// Cette fonction appelle la methode traiter du visiteur.
 ///
 /// @return reussi (TRUE)
 ///

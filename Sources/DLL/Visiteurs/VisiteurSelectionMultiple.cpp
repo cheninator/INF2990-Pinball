@@ -15,7 +15,7 @@
 ///
 /// @fn VisiteurSelection::VisiteurSelection()
 ///
-/// Constructeur par défaut (vide).
+/// Constructeur par defaut (vide).
 ///
 /// @return Aucune (constructeur).
 ///
@@ -32,8 +32,8 @@ VisiteurSelectionMultiple::VisiteurSelectionMultiple()
 ///
 /// Constructeur qui initialise les variables membres de la classe.
 ///
-/// @param[in] selectionBasGauche : Le vecteur de sélection
-/// @param[in] selectionHautDroit : Le vecteur de sélection
+/// @param[in] selectionBasGauche : Le vecteur de selection
+/// @param[in] selectionHautDroit : Le vecteur de selection
 ///
 /// @return Aucune (constructeur).
 ///
@@ -66,7 +66,7 @@ VisiteurSelectionMultiple::~VisiteurSelectionMultiple()
 /// @fn bool VisiteurSelectionMultiple::traiter(ArbreRenduINF2990* arbre)
 /// @brief Cette fonction traite l'arbre de rendu pour selectionner ses enfants.
 ///
-/// Cette fonction retourne true pour dire que l'opération s'est
+/// Cette fonction retourne true pour dire que l'operation s'est
 /// fait correctement.
 ///
 /// @return Retourne toujours true.
@@ -89,17 +89,17 @@ bool VisiteurSelectionMultiple::traiter(ArbreRenduINF2990* arbre)
 /// @fn bool VisiteurSelectionMultiple::traiter(NoeudTable* table)
 /// @brief Cette fonction traite la table de l'arbre de rendu.
 ///
-/// Cette fonction retourne true pour dire que l'opération s'est
+/// Cette fonction retourne true pour dire que l'operation s'est
 /// fait correctement.
 ///
-/// @param[in] table : Le noeud de type Table à traiter.
+/// @param[in] table : Le noeud de type Table a traiter.
 ///
 /// @return Retourne toujours true.
 ///
 ////////////////////////////////////////////////////////////////////////
 bool VisiteurSelectionMultiple::traiter(NoeudTable* table)
 {;
-	// Traiter les enfants selectionnés de la table
+	// Traiter les enfants selectionnes de la table
 	for (unsigned int i = 0; i < table->obtenirNombreEnfants(); i++)
 	{
 		table->getEnfant(i)->accepterVisiteur(this);
@@ -114,10 +114,10 @@ bool VisiteurSelectionMultiple::traiter(NoeudTable* table)
 /// @fn bool VisiteurSelectionMultiple::traiter(NoeudAbstrait* noeud)
 ///
 ///	Cette fonction traite les enfants de l'arbre de rendu. Si ses enfants 
-/// ont des enfants, ils seront aussi traités. Cette fonction retourne true 
-/// si l'opération s'est faite correctement.
+/// ont des enfants, ils seront aussi traites. Cette fonction retourne true 
+/// si l'operation s'est faite correctement.
 ///
-/// @param[in] noeud : Noeud de l'arbre à traiter.
+/// @param[in] noeud : Noeud de l'arbre a traiter.
 ///
 /// @return Retourne toujours true
 ///

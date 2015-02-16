@@ -17,7 +17,7 @@
 using conteneur_boite_englobante = std::pair<std::vector<glm::dvec3>, NoeudAbstrait*>;
 ///////////////////////////////////////////////////////////////////////////
 /// @class VisiteurListeEnglobante
-/// @brief Classe pour créer une Liste de rectangles englobants.
+/// @brief Classe pour creer une Liste de rectangles englobants.
 ///
 /// @author The Ballers
 /// @date 2015-02-02
@@ -27,13 +27,13 @@ class VisiteurListeEnglobante : public VisiteurAbstrait
 {
 public:
 
-	/// Constructeur par défaut
+	/// Constructeur par defaut
 	VisiteurListeEnglobante();
 
 	/// Destructeur
 	~VisiteurListeEnglobante();
 
-	/// Traiter une opération sur l'arbre de rendu et ses enfants
+	/// Traiter une operation sur l'arbre de rendu et ses enfants
 	virtual bool traiter(ArbreRenduINF2990* arbre);
 	virtual bool traiter(NoeudAbstrait* noeud);
 	virtual bool traiter(NoeudTable* table);

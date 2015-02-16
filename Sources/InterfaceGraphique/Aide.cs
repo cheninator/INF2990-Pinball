@@ -21,7 +21,12 @@ namespace InterfaceGraphique
 {
     ///////////////////////////////////////////////////////////////////////////
     /// @class Aide
-    /// @brief Fenêtre d'aide de l'éditeur.
+    /// @brief Fenetre d'aide de l'
+    /// 
+    /// 
+    /// 
+    /// 
+    /// diteur.
     ///
     /// @author The Ballers
     /// @date 2015-01-27
@@ -33,7 +38,7 @@ namespace InterfaceGraphique
         ////////////////////////////////////////////////////////////////////////
         ///
         /// @fn public Aide()
-        /// @brief Constructeur de la fenêtre.
+        /// @brief Constructeur de la fenetre.
         /// 
         /// @return Aucune (constructeur).
         ///

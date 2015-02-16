@@ -17,7 +17,7 @@
 
 ///////////////////////////////////////////////////////////////////////////
 /// @class VisiteurCentreDeMasse
-/// @brief Utilisé pour calculer les limites de la selection
+/// @brief Utilise pour calculer les limites de la selection
 ///
 /// @author The Ballers
 /// @date 2015-02-02
@@ -33,7 +33,7 @@ public:
 	/// Destructeur
 	~VisiteurLimitesSelection();
 
-	/// Traiter une opération sur l'arbre de rendu et ses enfants
+	/// Traiter une operation sur l'arbre de rendu et ses enfants
 	virtual bool traiter(ArbreRenduINF2990* arbre);
 	virtual bool traiter(NoeudTable* table);
 	virtual bool traiter(NoeudAbstrait* noeud);

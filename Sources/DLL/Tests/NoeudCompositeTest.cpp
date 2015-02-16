@@ -20,10 +20,10 @@ CPPUNIT_TEST_SUITE_REGISTRATION(NoeudCompositeTest);
 ///
 /// @fn void NoeudCompositeTest::setUp()
 ///
-/// Effectue l'initialisation préalable à l'exécution de l'ensemble des
-/// cas de tests de cette suite de tests (si nécessaire).
+/// Effectue l'initialisation prealable a l'execution de l'ensemble des
+/// cas de tests de cette suite de tests (si necessaire).
 /// 
-/// Si certains objets doivent être construits, il est conseillé de le
+/// Si certains objets doivent etre construits, il est conseille de le
 /// faire ici.
 ///
 /// @return Aucune.
@@ -38,11 +38,11 @@ void NoeudCompositeTest::setUp()
 ///
 /// @fn void NoeudCompositeTest::tearDown()
 ///
-/// Effectue les opérations de finalisation nécessaires suite à l'exécution
-/// de l'ensemble des cas de tests de cette suite de tests (si nécessaire).
+/// Effectue les operations de finalisation necessaires suite a l'execution
+/// de l'ensemble des cas de tests de cette suite de tests (si necessaire).
 /// 
-/// Si certains objets ont été alloués à l'initialisation, ils doivent être
-/// désalloués, et il est conseillé de le faire ici.
+/// Si certains objets ont ete alloues a l'initialisation, ils doivent etre
+/// desalloues, et il est conseille de le faire ici.
 ///
 /// @return Aucune.
 ///
@@ -56,14 +56,14 @@ void NoeudCompositeTest::tearDown()
 ///
 /// @fn void NoeudCompositeTest::testEnfants()
 ///
-/// Cas de test: s'assurer que le noeud composite peut posséder des enfants.
+/// Cas de test: s'assurer que le noeud composite peut posseder des enfants.
 ///
 /// @return Aucune.
 ///
 ////////////////////////////////////////////////////////////////////////
 void NoeudCompositeTest::testEnfants()
 {
-	// On vérifie qu'initialement, le noeud n'a pas d'enfant
+	// On verifie qu'initialement, le noeud n'a pas d'enfant
 	CPPUNIT_ASSERT(noeud->obtenirNombreEnfants() == 0);
 	CPPUNIT_ASSERT(noeud->calculerProfondeur() == 1);
 
@@ -71,17 +71,17 @@ void NoeudCompositeTest::testEnfants()
 	NoeudComposite* nouveauNoeud{ new NoeudCible{ ArbreRenduINF2990::NOM_CIBLE } };
 	bool ajout{ noeud->ajouter(nouveauNoeud) };
 
-	// L'ajout devrait avoir réussi, puisqu'il s'agit d'un noeud composite.
+	// L'ajout devrait avoir reussi, puisqu'il s'agit d'un noeud composite.
 	CPPUNIT_ASSERT(ajout == true);
 
-	// Assurons-nous que le noeud possède un enfant.
+	// Assurons-nous que le noeud possede un enfant.
 	CPPUNIT_ASSERT(noeud->obtenirNombreEnfants() == 1);
 	CPPUNIT_ASSERT(noeud->calculerProfondeur() == 2);
 
 	// Nettoyage
 	noeud->effacer(nouveauNoeud);
 
-	// Assurons-nous que le noeud ne possède plus d'enfants.
+	// Assurons-nous que le noeud ne possede plus d'enfants.
 	CPPUNIT_ASSERT(noeud->obtenirNombreEnfants() == 0);
 	CPPUNIT_ASSERT(noeud->calculerProfondeur() == 1);
 }

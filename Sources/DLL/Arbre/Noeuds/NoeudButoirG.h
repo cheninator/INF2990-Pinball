@@ -15,7 +15,7 @@
 
 ///////////////////////////////////////////////////////////////////////////
 /// @class NoeudButoirG
-/// @brief Classe qui représente un butoir.
+/// @brief Classe qui represente un butoir.
 ///
 /// @author The Ballers
 /// @date 2015-01-24
@@ -25,7 +25,7 @@ class NoeudButoirG : public NoeudComposite
 {
 public:
 
-	/// Constructeur à partir du type du noeud.
+	/// Constructeur a partir du type du noeud.
 	NoeudButoirG(const std::string& typeNoeud);
 
 	/// Destructeur.

@@ -36,7 +36,7 @@ VisiteurXML::VisiteurXML(std::string nom, int proprietes[])
 ///
 /// @fn VisiteurXML::~VisiteurXML()
 ///
-/// Désalloue la mémoire du pointeur
+/// Desalloue la memoire du pointeur
 ///
 /// @return Aucune (destructeur).
 ///
@@ -52,17 +52,17 @@ VisiteurXML::~VisiteurXML()
 /// @fn bool VisiteurXML::traiter(ArbreRenduINF2990* arbre)
 ///
 /// Cette fonction traite l'arbre de rendu pour enregistrer ses enfants
-/// dans un fichier XML. Cette fonction retourne true pour dire que l'opération s'est
+/// dans un fichier XML. Cette fonction retourne true pour dire que l'operation s'est
 /// faite correctement, ou false si on ne permet pas la sauvegarde
 ///
-/// @param[in] arbre : L'arbre à traiter.
+/// @param[in] arbre : L'arbre a traiter.
 ///
 /// @return Retourne toujours true
 ///
 ////////////////////////////////////////////////////////////////////////
 bool VisiteurXML::traiter(ArbreRenduINF2990* arbre)
 {
-	// Enregistrer les propriétés de la zone de jeu
+	// Enregistrer les proprietes de la zone de jeu
 	traiterProprietes();
 
 	// ElementArbre sera la racine
@@ -89,10 +89,10 @@ bool VisiteurXML::traiter(ArbreRenduINF2990* arbre)
 /// @fn bool VisiteurXML::traiter(NoeudTable* table)
 ///
 /// Cette fonction traite la table pour enregistrer ses enfants
-/// dans un fichier XML. Cette fonction retourne true pour dire que l'opération s'est
+/// dans un fichier XML. Cette fonction retourne true pour dire que l'operation s'est
 /// faite correctement, ou false si on ne permet pas la sauvegarde
 ///
-/// @param[in] table : La table à traiter.
+/// @param[in] table : La table a traiter.
 ///
 /// @return Retourne toujours true
 ///
@@ -109,7 +109,7 @@ bool VisiteurXML::traiter(NoeudTable* table)
 		table->getEnfant(i)->accepterVisiteur(this);
 	}
 
-	// Lier l'arbre à la table
+	// Lier l'arbre a la table
 	elementArbreRendu->LinkEndChild(elementTable);
 
 	return true;
@@ -121,10 +121,10 @@ bool VisiteurXML::traiter(NoeudTable* table)
 /// @fn bool VisiteurXML::traiter(NoeudAbstrait* noeud)
 ///
 /// Cette fonction traite les noeuds abstraits de l'arbre de rendu. 
-///	Cette fonction retourne true pour dire que l'opération s'est
+///	Cette fonction retourne true pour dire que l'operation s'est
 /// fait correctement.
 ///
-/// @param[in] noeud : Le noeud à traiter.
+/// @param[in] noeud : Le noeud a traiter.
 ///
 /// @return Retourne toujours true
 ///
@@ -133,7 +133,7 @@ bool VisiteurXML::traiter(NoeudAbstrait* noeud)
 {
 	std::string nom = noeud->obtenirType();
 
-	// Créer le noeud
+	// Creer le noeud
 	tinyxml2::XMLElement* element{ document.NewElement(nom.c_str()) };
 
 	if (nom != "couvercle")
@@ -170,7 +170,7 @@ bool VisiteurXML::traiter(NoeudAbstrait* noeud)
 ///
 /// @fn bool VisiteurXML::traiterProprietes()
 ///
-/// Cette fonction enregistre les propriétés de la zone de jeu dans le même
+/// Cette fonction enregistre les proprietes de la zone de jeu dans le meme
 /// fichier XML qui
 ///
 /// @return Retourne toujours true
@@ -178,7 +178,7 @@ bool VisiteurXML::traiter(NoeudAbstrait* noeud)
 ////////////////////////////////////////////////////////////////////////
 bool VisiteurXML::traiterProprietes()
 {
-	// Creer le noeud propriété
+	// Creer le noeud propriete
 	tinyxml2::XMLElement* elementPropriete{ document.NewElement("Proprietes") };
 
 	tinyxml2::XMLElement* elementButoir{ document.NewElement("PointsButoir") };

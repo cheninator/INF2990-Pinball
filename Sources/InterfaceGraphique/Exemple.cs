@@ -24,7 +24,7 @@ namespace InterfaceGraphique
 {
     ///////////////////////////////////////////////////////////////////////////
     /// @class Exemple
-    /// @brief Main window de l'éditeur du jeu.
+    /// @brief Main window de l'editeur du jeu.
     ///
     /// @author The Ballers
     /// @date 2015-01-13
@@ -60,7 +60,7 @@ namespace InterfaceGraphique
         ////////////////////////////////////////////////////////////////////////
         ///
         /// @fn static public Exemple()
-        /// @brief Constructeur de la fenêtre.
+        /// @brief Constructeur de la fenetre.
         /// 
         /// @return Aucune (constructeur).
         ///
@@ -145,7 +145,7 @@ namespace InterfaceGraphique
         ////////////////////////////////////////////////////////////////////////
         ///
         /// @fn public void MettreAJour(double tempsInterAffichage)
-        /// @brief Taches effectuées lors d'un rafraichissement d'écran.
+        /// @brief Taches effectuees lors d'un rafraichissement d'ecran.
         /// 
         /// @param[in] tempsInterAffichage : Temps entre deux affichages.
         /// 
@@ -193,10 +193,10 @@ namespace InterfaceGraphique
         ////////////////////////////////////////////////////////////////////////
         ///
         /// @fn private void ToucheDown(Object o, KeyEventArgs e)
-        /// @brief Gestion des états lorsqu'une touche est enfoncée.
+        /// @brief Gestion des etats lorsqu'une touche est enfoncee.
         /// 
-        /// @param[in] sender : Objet duquel provient un événement
-        /// @param[in] e : Événement qui lance la fonction.
+        /// @param[in] sender : Objet duquel provient un evenement
+        /// @param[in] e : evenement qui lance la fonction.
         /// 
         /// @return Aucune.
         ///
@@ -255,10 +255,10 @@ namespace InterfaceGraphique
         ////////////////////////////////////////////////////////////////////////
         ///
         /// @fn private void ToucheUp(Object o, KeyEventArgs e)
-        /// @brief Gestion des états lorsqu'une touche est relâchée.
+        /// @brief Gestion des etats lorsqu'une touche est relâchee.
         /// 
-        /// @param[in] sender : Objet duquel provient un événement
-        /// @param[in] e : Événement qui lance la fonction.
+        /// @param[in] sender : Objet duquel provient un evenement
+        /// @param[in] e : evenement qui lance la fonction.
         /// 
         /// @return Aucune.
         ///
@@ -279,10 +279,10 @@ namespace InterfaceGraphique
         ////////////////////////////////////////////////////////////////////////
         ///
         /// @fn private void ToucheEnfonce(Object o, KeyPressEventArgs e)
-        /// @brief Gestion des états lorsqu'une touche est enfoncée.
+        /// @brief Gestion des etats lorsqu'une touche est enfoncee.
         /// 
-        /// @param[in] sender : Objet duquel provient un événement
-        /// @param[in] e : Événement qui lance la fonction.
+        /// @param[in] sender : Objet duquel provient un evenement
+        /// @param[in] e : evenement qui lance la fonction.
         /// 
         /// @return Aucune.
         ///
@@ -399,10 +399,10 @@ namespace InterfaceGraphique
         ////////////////////////////////////////////////////////////////////////
         ///
         /// @fn  private void Exemple_FormClosing(object sender, FormClosingEventArgs e)
-        /// @brief Gestion des événements lorsque la fenêtre est fermée.
+        /// @brief Gestion des evenements lorsque la fenetre est fermee.
         /// 
-        /// @param[in] sender : Objet duquel provient un événement
-        /// @param[in] e : Événement qui lance la fonction.
+        /// @param[in] sender : Objet duquel provient un evenement
+        /// @param[in] e : evenement qui lance la fonction.
         /// 
         /// @return Aucune.
         ///
@@ -420,11 +420,11 @@ namespace InterfaceGraphique
         ////////////////////////////////////////////////////////////////////////
         ///
         /// @fn private void Aide_MenuItem_Click(object sender, EventArgs e)
-        /// @brief Gestion des événements lorsque l'utilisateur clique sur 
+        /// @brief Gestion des evenements lorsque l'utilisateur clique sur 
         ///        le menu Aide.
         /// 
-        /// @param[in] sender : Objet duquel provient un événement
-        /// @param[in] e : Événement qui lance la fonction.
+        /// @param[in] sender : Objet duquel provient un evenement
+        /// @param[in] e : evenement qui lance la fonction.
         /// 
         /// @return Aucune.
         ///
@@ -446,11 +446,11 @@ namespace InterfaceGraphique
         ////////////////////////////////////////////////////////////////////////
         ///
         /// @fn private void Ouvrir_MenuItem_Click(object sender, EventArgs e)
-        /// @brief Gestion des événements lorsque l'utilisateur clique sur 
+        /// @brief Gestion des evenements lorsque l'utilisateur clique sur 
         ///        le menu Ouvrir.
         /// 
-        /// @param[in] sender : Objet duquel provient un événement
-        /// @param[in] e : Événement qui lance la fonction.
+        /// @param[in] sender : Objet duquel provient un evenement
+        /// @param[in] e : evenement qui lance la fonction.
         /// 
         /// @return Aucune.
         ///
@@ -481,11 +481,11 @@ namespace InterfaceGraphique
         ////////////////////////////////////////////////////////////////////////
         ///
         /// @fn private void EnregistrerS_MenuItem_Click(object sender, EventArgs e)
-        /// @brief Gestion des événements lorsque l'utilisateur clique sur 
+        /// @brief Gestion des evenements lorsque l'utilisateur clique sur 
         ///        le menu Enregistrer Sous.
         /// 
-        /// @param[in] sender : Objet duquel provient un événement
-        /// @param[in] e : Événement qui lance la fonction.
+        /// @param[in] sender : Objet duquel provient un evenement
+        /// @param[in] e : evenement qui lance la fonction.
         /// 
         /// @return Aucune.
         ///
@@ -498,7 +498,7 @@ namespace InterfaceGraphique
         ////////////////////////////////////////////////////////////////////////
         ///
         /// @fn private void EnregistrerSous()
-        /// @brief Enregistrement des propriétés de la partie en format XML.
+        /// @brief Enregistrement des proprietes de la partie en format XML.
         /// 
         /// @return Aucune.
         ///
@@ -517,7 +517,7 @@ namespace InterfaceGraphique
             //Console.WriteLine(fileName);
             if (fileName == "default.xml")
             {
-                MessageBox.Show("Vous ne pouvez pas sauvegarder sur la zone de jeu par défaut!", "ERREUR DE SAUVEGARDE",
+                MessageBox.Show("Vous ne pouvez pas sauvegarder sur la zone de jeu par defaut!", "ERREUR DE SAUVEGARDE",
                 MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
@@ -532,13 +532,13 @@ namespace InterfaceGraphique
                 //Console.WriteLine(sauvegarde);
                 if (sauvegarde == 1)
                 {
-                    MessageBox.Show("Vous ne pouvez pas sauvegarder la zone de jeu par défaut!", "ERREUR DE SAUVEGARDE",
+                    MessageBox.Show("Vous ne pouvez pas sauvegarder la zone de jeu par defaut!", "ERREUR DE SAUVEGARDE",
                     MessageBoxButtons.OK, MessageBoxIcon.Error);
                     pathXML = new StringBuilder("");
                 }
                 if (sauvegarde == 3 || sauvegarde == 0)
                 {
-                    MessageBox.Show("Il doit avoir au moins un trou, un générateur de bille et un ressort dans la zone de jeu!", "ERREUR DE SAUVEGARDE",
+                    MessageBox.Show("Il doit avoir au moins un trou, un generateur de bille et un ressort dans la zone de jeu!", "ERREUR DE SAUVEGARDE",
                     MessageBoxButtons.OK, MessageBoxIcon.Error);
                     pathXML = new StringBuilder("");
 
@@ -550,11 +550,11 @@ namespace InterfaceGraphique
         ////////////////////////////////////////////////////////////////////////
         ///
         /// @fn private void helpToolStripButton_Click(object sender, EventArgs e)
-        /// @brief Gestion des événements lorsque l'utilisateur clique sur 
+        /// @brief Gestion des evenements lorsque l'utilisateur clique sur 
         ///        l'outil Aide.
         /// 
-        /// @param[in] sender : Objet duquel provient un événement
-        /// @param[in] e : Événement qui lance la fonction.
+        /// @param[in] sender : Objet duquel provient un evenement
+        /// @param[in] e : evenement qui lance la fonction.
         /// 
         /// @return Aucune.
         ///
@@ -567,11 +567,11 @@ namespace InterfaceGraphique
         ////////////////////////////////////////////////////////////////////////
         ///
         /// @fn private void Selectionner_BO_Click(object sender, EventArgs e)
-        /// @brief Gestion des événements lorsque l'utilisateur clique sur 
+        /// @brief Gestion des evenements lorsque l'utilisateur clique sur 
         ///        le bouton Creation.
         /// 
-        /// @param[in] sender : Objet duquel provient un événement
-        /// @param[in] e : Événement qui lance la fonction.
+        /// @param[in] sender : Objet duquel provient un evenement
+        /// @param[in] e : evenement qui lance la fonction.
         /// 
         /// @return Aucune.
         ///
@@ -587,11 +587,11 @@ namespace InterfaceGraphique
         ////////////////////////////////////////////////////////////////////////
         ///
         /// @fn private void panel1_Click(object sender, EventArgs e)
-        /// @brief Gestion des événements lorsque l'utilisateur clique sur 
-        ///        le panel1 (écriture des coord. sur la console).
+        /// @brief Gestion des evenements lorsque l'utilisateur clique sur 
+        ///        le panel1 (ecriture des coord. sur la console).
         /// 
-        /// @param[in] sender : Objet duquel provient un événement
-        /// @param[in] e : Événement qui lance la fonction.
+        /// @param[in] sender : Objet duquel provient un evenement
+        /// @param[in] e : evenement qui lance la fonction.
         /// 
         /// @return Aucune.
         ///
@@ -604,11 +604,11 @@ namespace InterfaceGraphique
         ////////////////////////////////////////////////////////////////////////
         ///
         /// @fn private void Selection_MenuItem_Click(object sender, EventArgs e)
-        /// @brief Gestion des événements lorsque l'utilisateur clique sur 
-        ///        le menu Sélection.
+        /// @brief Gestion des evenements lorsque l'utilisateur clique sur 
+        ///        le menu Selection.
         /// 
-        /// @param[in] sender : Objet duquel provient un événement
-        /// @param[in] e : Événement qui lance la fonction.
+        /// @param[in] sender : Objet duquel provient un evenement
+        /// @param[in] e : evenement qui lance la fonction.
         /// 
         /// @return Aucune.
         ///
@@ -622,11 +622,11 @@ namespace InterfaceGraphique
         ////////////////////////////////////////////////////////////////////////
         ///
         /// @fn private void Selection_BO_Click(object sender, EventArgs e)
-        /// @brief Gestion des événements lorsque l'utilisateur clique sur 
-        ///        le bouton Sélection.
+        /// @brief Gestion des evenements lorsque l'utilisateur clique sur 
+        ///        le bouton Selection.
         /// 
-        /// @param[in] sender : Objet duquel provient un événement
-        /// @param[in] e : Événement qui lance la fonction.
+        /// @param[in] sender : Objet duquel provient un evenement
+        /// @param[in] e : evenement qui lance la fonction.
         /// 
         /// @return Aucune.
         ///
@@ -639,11 +639,11 @@ namespace InterfaceGraphique
         ////////////////////////////////////////////////////////////////////////
         ///
         /// @fn private void Rotation_MenuItem_Click(object sender, EventArgs e)
-        /// @brief Gestion des événements lorsque l'utilisateur clique sur 
+        /// @brief Gestion des evenements lorsque l'utilisateur clique sur 
         ///        le menu Rotation.
         /// 
-        /// @param[in] sender : Objet duquel provient un événement
-        /// @param[in] e : Événement qui lance la fonction.
+        /// @param[in] sender : Objet duquel provient un evenement
+        /// @param[in] e : evenement qui lance la fonction.
         /// 
         /// @return Aucune.
         ///
@@ -656,11 +656,11 @@ namespace InterfaceGraphique
         ////////////////////////////////////////////////////////////////////////
         ///
         /// @fn private void Rotation_BO_Click(object sender, EventArgs e)
-        /// @brief Gestion des événements lorsque l'utilisateur clique sur 
+        /// @brief Gestion des evenements lorsque l'utilisateur clique sur 
         ///        le bouton Rotation.
         /// 
-        /// @param[in] sender : Objet duquel provient un événement
-        /// @param[in] e : Événement qui lance la fonction.
+        /// @param[in] sender : Objet duquel provient un evenement
+        /// @param[in] e : evenement qui lance la fonction.
         /// 
         /// @return Aucune.
         ///
@@ -673,11 +673,11 @@ namespace InterfaceGraphique
         ////////////////////////////////////////////////////////////////////////
         ///
         /// @fn private void bouton_Selection_Click(object sender, EventArgs e)
-        /// @brief Gestion des événements lorsque l'utilisateur clique sur 
-        ///        le bouton Sélection.
+        /// @brief Gestion des evenements lorsque l'utilisateur clique sur 
+        ///        le bouton Selection.
         /// 
-        /// @param[in] sender : Objet duquel provient un événement
-        /// @param[in] e : Événement qui lance la fonction.
+        /// @param[in] sender : Objet duquel provient un evenement
+        /// @param[in] e : evenement qui lance la fonction.
         /// 
         /// @return Aucune.
         ///
@@ -693,11 +693,11 @@ namespace InterfaceGraphique
         ////////////////////////////////////////////////////////////////////////
         ///
         /// @fn private void bouton_Creation_Click(object sender, EventArgs e)
-        /// @brief Gestion des événements lorsque l'utilisateur clique sur 
-        ///        le bouton Création.
+        /// @brief Gestion des evenements lorsque l'utilisateur clique sur 
+        ///        le bouton Creation.
         /// 
-        /// @param[in] sender : Objet duquel provient un événement
-        /// @param[in] e : Événement qui lance la fonction.
+        /// @param[in] sender : Objet duquel provient un evenement
+        /// @param[in] e : evenement qui lance la fonction.
         /// 
         /// @return Aucune.
         ///
@@ -718,11 +718,11 @@ namespace InterfaceGraphique
         ////////////////////////////////////////////////////////////////////////
         ///
         /// @fn private void panel_GL_MouseClick(object sender, MouseEventArgs e)
-        /// @brief Gestion des événements lorsque l'utilisateur clique sur 
-        ///        le panel GL (écriture des coord. sur la console).
+        /// @brief Gestion des evenements lorsque l'utilisateur clique sur 
+        ///        le panel GL (ecriture des coord. sur la console).
         /// 
-        /// @param[in] sender : Objet duquel provient un événement
-        /// @param[in] e : Événement qui lance la fonction.
+        /// @param[in] sender : Objet duquel provient un evenement
+        /// @param[in] e : evenement qui lance la fonction.
         /// 
         /// @return Aucune.
         ///
@@ -736,11 +736,11 @@ namespace InterfaceGraphique
         ////////////////////////////////////////////////////////////////////////
         ///
         /// @fn private void butourCirc_bouton_Click(object sender, EventArgs e)
-        /// @brief Gestion des événements lorsque l'utilisateur clique sur 
+        /// @brief Gestion des evenements lorsque l'utilisateur clique sur 
         ///        le bouton Butoir Circulaire.
         /// 
-        /// @param[in] sender : Objet duquel provient un événement
-        /// @param[in] e : Événement qui lance la fonction.
+        /// @param[in] sender : Objet duquel provient un evenement
+        /// @param[in] e : evenement qui lance la fonction.
         /// 
         /// @return Aucune.
         ///
@@ -759,11 +759,11 @@ namespace InterfaceGraphique
         ////////////////////////////////////////////////////////////////////////
         ///
         /// @fn private void Proprietes_MenuItem_Click(object sender, EventArgs e)
-        /// @brief Gestion des événements lorsque l'utilisateur clique sur 
-        ///        le menu Propriétés.
+        /// @brief Gestion des evenements lorsque l'utilisateur clique sur 
+        ///        le menu Proprietes.
         /// 
-        /// @param[in] sender : Objet duquel provient un événement
-        /// @param[in] e : Événement qui lance la fonction.
+        /// @param[in] sender : Objet duquel provient un evenement
+        /// @param[in] e : evenement qui lance la fonction.
         /// 
         /// @return Aucune.
         ///
@@ -782,11 +782,11 @@ namespace InterfaceGraphique
         ////////////////////////////////////////////////////////////////////////
         ///
         /// @fn private void butoirG_bouton_Click(object sender, EventArgs e)
-        /// @brief Gestion des événements lorsque l'utilisateur clique sur 
+        /// @brief Gestion des evenements lorsque l'utilisateur clique sur 
         ///        le bouton Butoir Gauche.
         /// 
-        /// @param[in] sender : Objet duquel provient un événement
-        /// @param[in] e : Événement qui lance la fonction.
+        /// @param[in] sender : Objet duquel provient un evenement
+        /// @param[in] e : evenement qui lance la fonction.
         /// 
         /// @return Aucune.
         ///
@@ -806,11 +806,11 @@ namespace InterfaceGraphique
         ////////////////////////////////////////////////////////////////////////
         ///
         /// @fn private void OK_prop_bouton_Click(object sender, EventArgs e)
-        /// @brief Gestion des événements lorsque l'utilisateur clique sur 
-        ///        le bouton OK des propriétés.
+        /// @brief Gestion des evenements lorsque l'utilisateur clique sur 
+        ///        le bouton OK des proprietes.
         /// 
-        /// @param[in] sender : Objet duquel provient un événement
-        /// @param[in] e : Événement qui lance la fonction.
+        /// @param[in] sender : Objet duquel provient un evenement
+        /// @param[in] e : evenement qui lance la fonction.
         /// 
         /// @return Aucune.
         ///
@@ -878,7 +878,7 @@ namespace InterfaceGraphique
         ////////////////////////////////////////////////////////////////////////
         ///
         /// @fn public void afficher_Objet(bool twin)
-        /// @brief Affiche et crée un objet jumeau.
+        /// @brief Affiche et cree un objet jumeau.
         /// 
         /// @param[in] bool : Objet jumeau.
         /// 
@@ -953,11 +953,11 @@ namespace InterfaceGraphique
         ////////////////////////////////////////////////////////////////////////
         ///
         /// @fn private void Fenetre_Redimension(object sender, EventArgs e)
-        /// @brief Gestion des événements lorsque l'utilisateur redimensionne
-        ///        la fenêtre.
+        /// @brief Gestion des evenements lorsque l'utilisateur redimensionne
+        ///        la fenetre.
         /// 
-        /// @param[in] sender : Objet duquel provient un événement
-        /// @param[in] e : Événement qui lance la fonction.
+        /// @param[in] sender : Objet duquel provient un evenement
+        /// @param[in] e : evenement qui lance la fonction.
         /// 
         /// @return Aucune.
         ///
@@ -972,11 +972,11 @@ namespace InterfaceGraphique
         ////////////////////////////////////////////////////////////////////////
         ///
         /// @fn private void Annuler_prop_boutn_Click(object sender, EventArgs e)
-        /// @brief Gestion des événements lorsque l'utilisateur clique sur 
-        ///        le bouton Annuler des propriétés.
+        /// @brief Gestion des evenements lorsque l'utilisateur clique sur 
+        ///        le bouton Annuler des proprietes.
         /// 
-        /// @param[in] sender : Objet duquel provient un événement
-        /// @param[in] e : Événement qui lance la fonction.
+        /// @param[in] sender : Objet duquel provient un evenement
+        /// @param[in] e : evenement qui lance la fonction.
         /// 
         /// @return Aucune.
         ///
@@ -999,11 +999,11 @@ namespace InterfaceGraphique
         ////////////////////////////////////////////////////////////////////////
         ///
         /// @fn private void Ressort_bouton_Click(object sender, EventArgs e)
-        /// @brief Gestion des événements lorsque l'utilisateur clique sur 
+        /// @brief Gestion des evenements lorsque l'utilisateur clique sur 
         ///        le bouton Ressort.
         /// 
-        /// @param[in] sender : Objet duquel provient un événement
-        /// @param[in] e : Événement qui lance la fonction.
+        /// @param[in] sender : Objet duquel provient un evenement
+        /// @param[in] e : evenement qui lance la fonction.
         /// 
         /// @return Aucune.
         ///
@@ -1022,11 +1022,11 @@ namespace InterfaceGraphique
         ////////////////////////////////////////////////////////////////////////
         ///
         /// @fn private void Generateur_bouton_Click(object sender, EventArgs e)
-        /// @brief Gestion des événements lorsque l'utilisateur clique sur 
-        ///        le bouton Générateur de bille.
+        /// @brief Gestion des evenements lorsque l'utilisateur clique sur 
+        ///        le bouton Generateur de bille.
         /// 
-        /// @param[in] sender : Objet duquel provient un événement
-        /// @param[in] e : Événement qui lance la fonction.
+        /// @param[in] sender : Objet duquel provient un evenement
+        /// @param[in] e : evenement qui lance la fonction.
         /// 
         /// @return Aucune.
         ///
@@ -1045,11 +1045,11 @@ namespace InterfaceGraphique
         ////////////////////////////////////////////////////////////////////////
         ///
         /// @fn private void Trou_bouton_Click(object sender, EventArgs e)
-        /// @brief Gestion des événements lorsque l'utilisateur clique sur 
+        /// @brief Gestion des evenements lorsque l'utilisateur clique sur 
         ///        le bouton Trou.
         /// 
-        /// @param[in] sender : Objet duquel provient un événement
-        /// @param[in] e : Événement qui lance la fonction.
+        /// @param[in] sender : Objet duquel provient un evenement
+        /// @param[in] e : evenement qui lance la fonction.
         /// 
         /// @return Aucune.
         ///
@@ -1069,11 +1069,11 @@ namespace InterfaceGraphique
         ////////////////////////////////////////////////////////////////////////
         ///
         /// @fn private void bouton_Deplacement_Click(object sender, EventArgs e)
-        /// @brief Gestion des événements lorsque l'utilisateur clique sur 
-        ///        le bouton Déplacement.
+        /// @brief Gestion des evenements lorsque l'utilisateur clique sur 
+        ///        le bouton Deplacement.
         /// 
-        /// @param[in] sender : Objet duquel provient un événement
-        /// @param[in] e : Événement qui lance la fonction.
+        /// @param[in] sender : Objet duquel provient un evenement
+        /// @param[in] e : evenement qui lance la fonction.
         /// 
         /// @return Aucune.
         ///
@@ -1090,11 +1090,11 @@ namespace InterfaceGraphique
         ////////////////////////////////////////////////////////////////////////
         ///
         /// @fn private void Deplacement_MenuItem_Click(object sender, EventArgs e)
-        /// @brief Gestion des événements lorsque l'utilisateur clique sur 
-        ///        le menu Déplacement.
+        /// @brief Gestion des evenements lorsque l'utilisateur clique sur 
+        ///        le menu Deplacement.
         /// 
-        /// @param[in] sender : Objet duquel provient un événement
-        /// @param[in] e : Événement qui lance la fonction.
+        /// @param[in] sender : Objet duquel provient un evenement
+        /// @param[in] e : evenement qui lance la fonction.
         /// 
         /// @return Aucune.
         ///
@@ -1112,11 +1112,11 @@ namespace InterfaceGraphique
         ////////////////////////////////////////////////////////////////////////
         ///
         /// @fn private void bouton_Rotation_Click(object sender, EventArgs e)
-        /// @brief Gestion des événements lorsque l'utilisateur clique sur 
+        /// @brief Gestion des evenements lorsque l'utilisateur clique sur 
         ///        le bouton Rotation.
         /// 
-        /// @param[in] sender : Objet duquel provient un événement
-        /// @param[in] e : Événement qui lance la fonction.
+        /// @param[in] sender : Objet duquel provient un evenement
+        /// @param[in] e : evenement qui lance la fonction.
         /// 
         /// @return Aucune.
         ///
@@ -1133,11 +1133,11 @@ namespace InterfaceGraphique
         ////////////////////////////////////////////////////////////////////////
         ///
         /// @fn private void bouton_Scaling_Click(object sender, EventArgs e)
-        /// @brief Gestion des événements lorsque l'utilisateur clique sur 
+        /// @brief Gestion des evenements lorsque l'utilisateur clique sur 
         ///        le bouton Scaling.
         /// 
-        /// @param[in] sender : Objet duquel provient un événement
-        /// @param[in] e : Événement qui lance la fonction.
+        /// @param[in] sender : Objet duquel provient un evenement
+        /// @param[in] e : evenement qui lance la fonction.
         /// 
         /// @return Aucune.
         ///
@@ -1154,11 +1154,11 @@ namespace InterfaceGraphique
         ////////////////////////////////////////////////////////////////////////
         ///
         /// @fn private void MiseE_MenuItem_Click(object sender, EventArgs e)
-        /// @brief Gestion des événements lorsque l'utilisateur clique sur 
+        /// @brief Gestion des evenements lorsque l'utilisateur clique sur 
         ///        le menu MiseE.
         /// 
-        /// @param[in] sender : Objet duquel provient un événement
-        /// @param[in] e : Événement qui lance la fonction.
+        /// @param[in] sender : Objet duquel provient un evenement
+        /// @param[in] e : evenement qui lance la fonction.
         /// 
         /// @return Aucune.
         ///
@@ -1171,11 +1171,11 @@ namespace InterfaceGraphique
         ////////////////////////////////////////////////////////////////////////
         ///
         /// @fn private void Zoom_MenuItem_Click(object sender, EventArgs e)
-        /// @brief Gestion des événements lorsque l'utilisateur clique sur 
+        /// @brief Gestion des evenements lorsque l'utilisateur clique sur 
         ///        le menu Zoom.
         /// 
-        /// @param[in] sender : Objet duquel provient un événement
-        /// @param[in] e : Événement qui lance la fonction.
+        /// @param[in] sender : Objet duquel provient un evenement
+        /// @param[in] e : evenement qui lance la fonction.
         /// 
         /// @return Aucune.
         ///
@@ -1192,11 +1192,11 @@ namespace InterfaceGraphique
         ////////////////////////////////////////////////////////////////////////
         ///
         /// @fn private void bouton_Duplication_Click(object sender, EventArgs e)
-        /// @brief Gestion des événements lorsque l'utilisateur clique sur 
+        /// @brief Gestion des evenements lorsque l'utilisateur clique sur 
         ///        le bouton Duplication.
         /// 
-        /// @param[in] sender : Objet duquel provient un événement
-        /// @param[in] e : Événement qui lance la fonction.
+        /// @param[in] sender : Objet duquel provient un evenement
+        /// @param[in] e : evenement qui lance la fonction.
         /// 
         /// @return Aucune.
         ///
@@ -1217,11 +1217,11 @@ namespace InterfaceGraphique
         ////////////////////////////////////////////////////////////////////////
         ///
         /// @fn private void Duplication_MenuItem_Click(object sender, EventArgs e)
-        /// @brief Gestion des événements lorsque l'utilisateur clique sur 
+        /// @brief Gestion des evenements lorsque l'utilisateur clique sur 
         ///        le menu Duplication.
         /// 
-        /// @param[in] sender : Objet duquel provient un événement
-        /// @param[in] e : Événement qui lance la fonction.
+        /// @param[in] sender : Objet duquel provient un evenement
+        /// @param[in] e : evenement qui lance la fonction.
         /// 
         /// @return Aucune.
         ///
@@ -1234,11 +1234,11 @@ namespace InterfaceGraphique
         ////////////////////////////////////////////////////////////////////////
         ///
         /// @fn private void Creation_MenuItem_Click(object sender, EventArgs e)
-        /// @brief Gestion des événements lorsque l'utilisateur clique sur 
-        ///        le menu Création.
+        /// @brief Gestion des evenements lorsque l'utilisateur clique sur 
+        ///        le menu Creation.
         /// 
-        /// @param[in] sender : Objet duquel provient un événement
-        /// @param[in] e : Événement qui lance la fonction.
+        /// @param[in] sender : Objet duquel provient un evenement
+        /// @param[in] e : evenement qui lance la fonction.
         /// 
         /// @return Aucune.
         ///
@@ -1252,11 +1252,11 @@ namespace InterfaceGraphique
         ////////////////////////////////////////////////////////////////////////
         ///
         /// @fn private void BC_MenuItem_Click(object sender, EventArgs e)
-        /// @brief Gestion des événements lorsque l'utilisateur clique sur 
+        /// @brief Gestion des evenements lorsque l'utilisateur clique sur 
         ///        le menu BC.
         /// 
-        /// @param[in] sender : Objet duquel provient un événement
-        /// @param[in] e : Événement qui lance la fonction.
+        /// @param[in] sender : Objet duquel provient un evenement
+        /// @param[in] e : evenement qui lance la fonction.
         /// 
         /// @return Aucune.
         ///
@@ -1281,11 +1281,11 @@ namespace InterfaceGraphique
         ////////////////////////////////////////////////////////////////////////
         ///
         /// @fn private void Supprimer_MenuItem_Click(object sender, EventArgs e)
-        /// @brief Gestion des événements lorsque l'utilisateur clique sur 
+        /// @brief Gestion des evenements lorsque l'utilisateur clique sur 
         ///        le menu Supprimer.
         /// 
-        /// @param[in] sender : Objet duquel provient un événement
-        /// @param[in] e : Événement qui lance la fonction.
+        /// @param[in] sender : Objet duquel provient un evenement
+        /// @param[in] e : evenement qui lance la fonction.
         /// 
         /// @return Aucune.
         ///
@@ -1307,11 +1307,11 @@ namespace InterfaceGraphique
         ////////////////////////////////////////////////////////////////////////
         ///
         /// @fn private void PGJ1_bouton_Click(object sender, EventArgs e)
-        /// @brief Gestion des événements lorsque l'utilisateur clique sur 
+        /// @brief Gestion des evenements lorsque l'utilisateur clique sur 
         ///        le bouton Palette Gauche J1.
         /// 
-        /// @param[in] sender : Objet duquel provient un événement
-        /// @param[in] e : Événement qui lance la fonction.
+        /// @param[in] sender : Objet duquel provient un evenement
+        /// @param[in] e : evenement qui lance la fonction.
         /// 
         /// @return Aucune.
         ///
@@ -1330,11 +1330,11 @@ namespace InterfaceGraphique
         ////////////////////////////////////////////////////////////////////////
         ///
         /// @fn private void PG_J1_MenuItem_Click(object sender, EventArgs e)
-        /// @brief Gestion des événements lorsque l'utilisateur clique sur 
+        /// @brief Gestion des evenements lorsque l'utilisateur clique sur 
         ///        le menu Palette Gauche J1.
         /// 
-        /// @param[in] sender : Objet duquel provient un événement
-        /// @param[in] e : Événement qui lance la fonction.
+        /// @param[in] sender : Objet duquel provient un evenement
+        /// @param[in] e : evenement qui lance la fonction.
         /// 
         /// @return Aucune.
         ///
@@ -1347,11 +1347,11 @@ namespace InterfaceGraphique
         ////////////////////////////////////////////////////////////////////////
         ///
         /// @fn private void PDJ1_bouton_Click(object sender, EventArgs e)
-        /// @brief Gestion des événements lorsque l'utilisateur clique sur 
+        /// @brief Gestion des evenements lorsque l'utilisateur clique sur 
         ///        le bouton Palette Droite J1.
         /// 
-        /// @param[in] sender : Objet duquel provient un événement
-        /// @param[in] e : Événement qui lance la fonction.
+        /// @param[in] sender : Objet duquel provient un evenement
+        /// @param[in] e : evenement qui lance la fonction.
         /// 
         /// @return Aucune.
         ///
@@ -1370,11 +1370,11 @@ namespace InterfaceGraphique
         ////////////////////////////////////////////////////////////////////////
         ///
         /// @fn private void PD_J1_MenuItem_Click(object sender, EventArgs e)
-        /// @brief Gestion des événements lorsque l'utilisateur clique sur 
+        /// @brief Gestion des evenements lorsque l'utilisateur clique sur 
         ///        le menu Palette Droite J1.
         /// 
-        /// @param[in] sender : Objet duquel provient un événement
-        /// @param[in] e : Événement qui lance la fonction.
+        /// @param[in] sender : Objet duquel provient un evenement
+        /// @param[in] e : evenement qui lance la fonction.
         /// 
         /// @return Aucune.
         ///
@@ -1387,11 +1387,11 @@ namespace InterfaceGraphique
         ////////////////////////////////////////////////////////////////////////
         ///
         /// @fn private void PGJ2_bouton_Click(object sender, EventArgs e)
-        /// @brief Gestion des événements lorsque l'utilisateur clique sur 
+        /// @brief Gestion des evenements lorsque l'utilisateur clique sur 
         ///        le bouton Palette Gauche J2.
         /// 
-        /// @param[in] sender : Objet duquel provient un événement
-        /// @param[in] e : Événement qui lance la fonction.
+        /// @param[in] sender : Objet duquel provient un evenement
+        /// @param[in] e : evenement qui lance la fonction.
         /// 
         /// @return Aucune.
         ///
@@ -1410,11 +1410,11 @@ namespace InterfaceGraphique
         ////////////////////////////////////////////////////////////////////////
         ///
         /// @fn private void PG_J2_MenuItem_Click(object sender, EventArgs e)
-        /// @brief Gestion des événements lorsque l'utilisateur clique sur 
+        /// @brief Gestion des evenements lorsque l'utilisateur clique sur 
         ///        le menu Palette Gauche J2.
         /// 
-        /// @param[in] sender : Objet duquel provient un événement
-        /// @param[in] e : Événement qui lance la fonction.
+        /// @param[in] sender : Objet duquel provient un evenement
+        /// @param[in] e : evenement qui lance la fonction.
         /// 
         /// @return Aucune.
         ///
@@ -1427,11 +1427,11 @@ namespace InterfaceGraphique
         ////////////////////////////////////////////////////////////////////////
         ///
         /// @fn private void PDJ2_bouton_Click(object sender, EventArgs e)
-        /// @brief Gestion des événements lorsque l'utilisateur clique sur 
+        /// @brief Gestion des evenements lorsque l'utilisateur clique sur 
         ///        le bouton Palette Droite J2.
         /// 
-        /// @param[in] sender : Objet duquel provient un événement
-        /// @param[in] e : Événement qui lance la fonction.
+        /// @param[in] sender : Objet duquel provient un evenement
+        /// @param[in] e : evenement qui lance la fonction.
         /// 
         /// @return Aucune.
         ///
@@ -1450,11 +1450,11 @@ namespace InterfaceGraphique
         ////////////////////////////////////////////////////////////////////////
         ///
         /// @fn private void PD_J2_MenuItem_Click(object sender, EventArgs e)
-        /// @brief Gestion des événements lorsque l'utilisateur clique sur 
+        /// @brief Gestion des evenements lorsque l'utilisateur clique sur 
         ///        le menu Palette Droite J2.
         /// 
-        /// @param[in] sender : Objet duquel provient un événement
-        /// @param[in] e : Événement qui lance la fonction.
+        /// @param[in] sender : Objet duquel provient un evenement
+        /// @param[in] e : evenement qui lance la fonction.
         /// 
         /// @return Aucune.
         ///
@@ -1467,11 +1467,11 @@ namespace InterfaceGraphique
         ////////////////////////////////////////////////////////////////////////
         ///
         /// @fn private void BTG_MenuItem_Click(object sender, EventArgs e)
-        /// @brief Gestion des événements lorsque l'utilisateur clique sur 
+        /// @brief Gestion des evenements lorsque l'utilisateur clique sur 
         ///        le menu Butoir Gauche.
         /// 
-        /// @param[in] sender : Objet duquel provient un événement
-        /// @param[in] e : Événement qui lance la fonction.
+        /// @param[in] sender : Objet duquel provient un evenement
+        /// @param[in] e : evenement qui lance la fonction.
         /// 
         /// @return Aucune.
         ///
@@ -1484,11 +1484,11 @@ namespace InterfaceGraphique
         ////////////////////////////////////////////////////////////////////////
         ///
         /// @fn private void butoirD_bouton_Click(object sender, EventArgs e)
-        /// @brief Gestion des événements lorsque l'utilisateur clique sur 
+        /// @brief Gestion des evenements lorsque l'utilisateur clique sur 
         ///        le bouton Butoir Droit.
         /// 
-        /// @param[in] sender : Objet duquel provient un événement
-        /// @param[in] e : Événement qui lance la fonction.
+        /// @param[in] sender : Objet duquel provient un evenement
+        /// @param[in] e : evenement qui lance la fonction.
         /// 
         /// @return Aucune.
         ///
@@ -1507,11 +1507,11 @@ namespace InterfaceGraphique
         ////////////////////////////////////////////////////////////////////////
         ///
         /// @fn private void BTD_MenuItem_Click(object sender, EventArgs e)
-        /// @brief Gestion des événements lorsque l'utilisateur clique sur 
+        /// @brief Gestion des evenements lorsque l'utilisateur clique sur 
         ///        le menu Butoir Droit.
         /// 
-        /// @param[in] sender : Objet duquel provient un événement
-        /// @param[in] e : Événement qui lance la fonction.
+        /// @param[in] sender : Objet duquel provient un evenement
+        /// @param[in] e : evenement qui lance la fonction.
         /// 
         /// @return Aucune.
         ///
@@ -1524,11 +1524,11 @@ namespace InterfaceGraphique
         ////////////////////////////////////////////////////////////////////////
         ///
         /// @fn private void Cible_bouton_Click(object sender, EventArgs e)
-        /// @brief Gestion des événements lorsque l'utilisateur clique sur 
+        /// @brief Gestion des evenements lorsque l'utilisateur clique sur 
         ///        le bouton Cible.
         /// 
-        /// @param[in] sender : Objet duquel provient un événement
-        /// @param[in] e : Événement qui lance la fonction.
+        /// @param[in] sender : Objet duquel provient un evenement
+        /// @param[in] e : evenement qui lance la fonction.
         /// 
         /// @return Aucune.
         ///
@@ -1547,11 +1547,11 @@ namespace InterfaceGraphique
         ////////////////////////////////////////////////////////////////////////
         ///
         /// @fn private void Cible_MenuItem_Click(object sender, EventArgs e)
-        /// @brief Gestion des événements lorsque l'utilisateur clique sur 
+        /// @brief Gestion des evenements lorsque l'utilisateur clique sur 
         ///        le menu Cible.
         /// 
-        /// @param[in] sender : Objet duquel provient un événement
-        /// @param[in] e : Événement qui lance la fonction.
+        /// @param[in] sender : Objet duquel provient un evenement
+        /// @param[in] e : evenement qui lance la fonction.
         /// 
         /// @return Aucune.
         ///
@@ -1564,11 +1564,11 @@ namespace InterfaceGraphique
         ////////////////////////////////////////////////////////////////////////
         ///
         /// @fn private void Portails_bouton_Click(object sender, EventArgs e)
-        /// @brief Gestion des événements lorsque l'utilisateur clique sur 
+        /// @brief Gestion des evenements lorsque l'utilisateur clique sur 
         ///        le bouton Portail.
         /// 
-        /// @param[in] sender : Objet duquel provient un événement
-        /// @param[in] e : Événement qui lance la fonction.
+        /// @param[in] sender : Objet duquel provient un evenement
+        /// @param[in] e : evenement qui lance la fonction.
         /// 
         /// @return Aucune.
         ///
@@ -1587,11 +1587,11 @@ namespace InterfaceGraphique
         ////////////////////////////////////////////////////////////////////////
         ///
         /// @fn private void Portails_MenuItem_Click(object sender, EventArgs e)
-        /// @brief Gestion des événements lorsque l'utilisateur clique sur 
+        /// @brief Gestion des evenements lorsque l'utilisateur clique sur 
         ///        le menu Portail.
         /// 
-        /// @param[in] sender : Objet duquel provient un événement
-        /// @param[in] e : Événement qui lance la fonction.
+        /// @param[in] sender : Objet duquel provient un evenement
+        /// @param[in] e : evenement qui lance la fonction.
         /// 
         /// @return Aucune.
         ///
@@ -1604,11 +1604,11 @@ namespace InterfaceGraphique
         ////////////////////////////////////////////////////////////////////////
         ///
         /// @fn private void Mur_bouton_Click(object sender, EventArgs e)
-        /// @brief Gestion des événements lorsque l'utilisateur clique sur 
+        /// @brief Gestion des evenements lorsque l'utilisateur clique sur 
         ///        le bouton Mur.
         /// 
-        /// @param[in] sender : Objet duquel provient un événement
-        /// @param[in] e : Événement qui lance la fonction.
+        /// @param[in] sender : Objet duquel provient un evenement
+        /// @param[in] e : evenement qui lance la fonction.
         /// 
         /// @return Aucune.
         ///
@@ -1627,11 +1627,11 @@ namespace InterfaceGraphique
         ////////////////////////////////////////////////////////////////////////
         ///
         /// @fn private void Mur_MenuItem_Click(object sender, EventArgs e)
-        /// @brief Gestion des événements lorsque l'utilisateur clique sur 
+        /// @brief Gestion des evenements lorsque l'utilisateur clique sur 
         ///        le menu Mur.
         /// 
-        /// @param[in] sender : Objet duquel provient un événement
-        /// @param[in] e : Événement qui lance la fonction.
+        /// @param[in] sender : Objet duquel provient un evenement
+        /// @param[in] e : evenement qui lance la fonction.
         /// 
         /// @return Aucune.
         ///
@@ -1644,11 +1644,11 @@ namespace InterfaceGraphique
         ////////////////////////////////////////////////////////////////////////
         ///
         /// @fn private void Ressort_MenuItem_Click(object sender, EventArgs e)
-        /// @brief Gestion des événements lorsque l'utilisateur clique sur 
+        /// @brief Gestion des evenements lorsque l'utilisateur clique sur 
         ///        le menu Ressort.
         /// 
-        /// @param[in] sender : Objet duquel provient un événement
-        /// @param[in] e : Événement qui lance la fonction.
+        /// @param[in] sender : Objet duquel provient un evenement
+        /// @param[in] e : evenement qui lance la fonction.
         /// 
         /// @return Aucune.
         ///
@@ -1661,11 +1661,11 @@ namespace InterfaceGraphique
         ////////////////////////////////////////////////////////////////////////
         ///
         /// @fn private void Ressort_MenuItem_Click(object sender, EventArgs e)
-        /// @brief Gestion des événements lorsque l'utilisateur clique sur 
-        ///        le menu Générateur de bille.
+        /// @brief Gestion des evenements lorsque l'utilisateur clique sur 
+        ///        le menu Generateur de bille.
         /// 
-        /// @param[in] sender : Objet duquel provient un événement
-        /// @param[in] e : Événement qui lance la fonction.
+        /// @param[in] sender : Objet duquel provient un evenement
+        /// @param[in] e : evenement qui lance la fonction.
         /// 
         /// @return Aucune.
         ///
@@ -1678,11 +1678,11 @@ namespace InterfaceGraphique
         ////////////////////////////////////////////////////////////////////////
         ///
         /// @fn private void Trou_MenuItem_Click(object sender, EventArgs e)
-        /// @brief Gestion des événements lorsque l'utilisateur clique sur 
+        /// @brief Gestion des evenements lorsque l'utilisateur clique sur 
         ///        le menu Trou.
         /// 
-        /// @param[in] sender : Objet duquel provient un événement
-        /// @param[in] e : Événement qui lance la fonction.
+        /// @param[in] sender : Objet duquel provient un evenement
+        /// @param[in] e : evenement qui lance la fonction.
         /// 
         /// @return Aucune.
         ///
@@ -1695,11 +1695,11 @@ namespace InterfaceGraphique
         ////////////////////////////////////////////////////////////////////////
         ///
         /// @fn private void Nouveau_MenuItem_Click(object sender, EventArgs e)
-        /// @brief Gestion des événements lorsque l'utilisateur clique sur 
-        ///        le menu Nouveau (suppression des éléments de la table).
+        /// @brief Gestion des evenements lorsque l'utilisateur clique sur 
+        ///        le menu Nouveau (suppression des elements de la table).
         /// 
-        /// @param[in] sender : Objet duquel provient un événement
-        /// @param[in] e : Événement qui lance la fonction.
+        /// @param[in] sender : Objet duquel provient un evenement
+        /// @param[in] e : evenement qui lance la fonction.
         /// 
         /// @return Aucune.
         ///
@@ -1714,11 +1714,11 @@ namespace InterfaceGraphique
         ////////////////////////////////////////////////////////////////////////
         ///
         /// @fn private void Nouveau_MenuItem_Click(object sender, EventArgs e)
-        /// @brief Gestion des états lorsque l'utilisateur garde un clic 
-        ///        enfoncé dans le panel GL.
+        /// @brief Gestion des etats lorsque l'utilisateur garde un clic 
+        ///        enfonce dans le panel GL.
         /// 
-        /// @param[in] sender : Objet duquel provient un événement
-        /// @param[in] e : Événement qui lance la fonction.
+        /// @param[in] sender : Objet duquel provient un evenement
+        /// @param[in] e : evenement qui lance la fonction.
         /// 
         /// @return Aucune.
         ///
@@ -1756,11 +1756,11 @@ namespace InterfaceGraphique
         ////////////////////////////////////////////////////////////////////////
         ///
         /// @fn private void panel_MouseMove(object sender, EventArgs e)
-        /// @brief Gestion des états lorsque l'utilisateur bouge la souris
+        /// @brief Gestion des etats lorsque l'utilisateur bouge la souris
         ///        sur le panel.
         /// 
-        /// @param[in] sender : Objet duquel provient un événement
-        /// @param[in] e : Événement qui lance la fonction.
+        /// @param[in] sender : Objet duquel provient un evenement
+        /// @param[in] e : evenement qui lance la fonction.
         /// 
         /// @return Aucune.
         ///
@@ -1819,11 +1819,11 @@ namespace InterfaceGraphique
         ////////////////////////////////////////////////////////////////////////
         ///
         /// @fn private void panel_GL_MouseUp(object sender, EventArgs e)
-        /// @brief Gestion des états lorsque l'utilisateur relâche un clic de souris
+        /// @brief Gestion des etats lorsque l'utilisateur relâche un clic de souris
         ///        dans le panel GL.
         /// 
-        /// @param[in] sender : Objet duquel provient un événement
-        /// @param[in] e : Événement qui lance la fonction.
+        /// @param[in] sender : Objet duquel provient un evenement
+        /// @param[in] e : evenement qui lance la fonction.
         /// 
         /// @return Aucune.
         ///
@@ -1874,11 +1874,11 @@ namespace InterfaceGraphique
         ////////////////////////////////////////////////////////////////////////
         ///
         /// @fn private void panel_GL_MouseUp(object sender, EventArgs e)
-        /// @brief Gestion des états lorsque l'utilisateur utilise la roulette
+        /// @brief Gestion des etats lorsque l'utilisateur utilise la roulette
         ///        de la souris dans le panel GL.
         /// 
-        /// @param[in] sender : Objet duquel provient un événement
-        /// @param[in] e : Événement qui lance la fonction.
+        /// @param[in] sender : Objet duquel provient un evenement
+        /// @param[in] e : evenement qui lance la fonction.
         /// 
         /// @return Aucune.
         ///
@@ -1892,11 +1892,11 @@ namespace InterfaceGraphique
         ////////////////////////////////////////////////////////////////////////
         ///
         /// @fn private void label1_Click(object sender, EventArgs e)
-        /// @brief Gestion des événements lorsque l'utilisateur clique sur
+        /// @brief Gestion des evenements lorsque l'utilisateur clique sur
         ///        le label des infos sur les raccourcis.
         /// 
-        /// @param[in] sender : Objet duquel provient un événement
-        /// @param[in] e : Événement qui lance la fonction.
+        /// @param[in] sender : Objet duquel provient un evenement
+        /// @param[in] e : evenement qui lance la fonction.
         /// 
         /// @return Aucune.
         ///
@@ -1906,14 +1906,14 @@ namespace InterfaceGraphique
             //Aide_MenuItem_Click(sender, e);
         }
 
-        /* Fonctionnalités des états */
+        /* Fonctionnalites des etats */
 
         ////////////////////////////////////////////////////////////////////////
         ///
         /// @fn public void deplacementSouris(MouseEventArgs e)
-        /// @brief Gestion des états lorsque l'utilisateur déplace la souris.
+        /// @brief Gestion des etats lorsque l'utilisateur deplace la souris.
         /// 
-        /// @param[in] e : Événement qui lance la fonction.
+        /// @param[in] e : evenement qui lance la fonction.
         /// 
         /// @return Aucune.
         ///
@@ -1924,7 +1924,7 @@ namespace InterfaceGraphique
           
             // Ce point est dans les coordonnees d'affichage d'openGL pour pouvoir calculer un deplacement
             // en coordonnees du monde en utilisant convertirClotureAVirtuelle(...) comme ça on n'a pas 
-            // besoin de ce facteur mistérieux.  Et aussi, cette technique devrait bien marcher 
+            // besoin de ce facteur misterieux.  Et aussi, cette technique devrait bien marcher 
             // quand on sera rendu avec la vue orbite.
             if (etat is EtatDuplication)
                 FonctionsNatives.deplacerSelection(previousP.X, previousP.Y, currentP.X, currentP.Y, true);
@@ -1938,9 +1938,9 @@ namespace InterfaceGraphique
         ////////////////////////////////////////////////////////////////////////
         ///
         /// @fn public void deplacementVueSouris(MouseEventArgs e)
-        /// @brief Gestion du déplacement de la vue avec la souris.
+        /// @brief Gestion du deplacement de la vue avec la souris.
         /// 
-        /// @param[in] e : Événement qui lance la fonction.
+        /// @param[in] e : evenement qui lance la fonction.
         /// 
         /// @return Aucune.
         ///
@@ -1962,7 +1962,7 @@ namespace InterfaceGraphique
         /// @fn public void scaleSouris(MouseEventArgs e)
         /// @brief Gestion du scaling d'un objet avec la souris.
         /// 
-        /// @param[in] e : Événement qui lance la fonction.
+        /// @param[in] e : evenement qui lance la fonction.
         /// 
         /// @return Aucune.
         ///
@@ -1984,7 +1984,7 @@ namespace InterfaceGraphique
         /// @fn public void zoomRoulette(MouseEventArgs e)
         /// @brief Gestion du zoom avec la roulette de la souris.
         /// 
-        /// @param[in] e : Événement qui lance la fonction.
+        /// @param[in] e : evenement qui lance la fonction.
         /// 
         /// @return Aucune.
         ///
@@ -2002,9 +2002,9 @@ namespace InterfaceGraphique
         ////////////////////////////////////////////////////////////////////////
         ///
         /// @fn private void selection(EventArgs e)
-        /// @brief Gestion de la sélection d'objet avec la souris.
+        /// @brief Gestion de la selection d'objet avec la souris.
         /// 
-        /// @param[in] e : Événement qui lance la fonction.
+        /// @param[in] e : evenement qui lance la fonction.
         /// 
         /// @return Aucune.
         ///
@@ -2019,7 +2019,7 @@ namespace InterfaceGraphique
 
             bool c = ctrlDown;
             int isSelected = nbSelection;
-            // TODO PHIL : Faire que ceci n'arrive que quand on relâche le bouton de gauche et qu'on n'a pas bougé de plus de 3 pixels.
+            // TODO PHIL : Faire que ceci n'arrive que quand on relâche le bouton de gauche et qu'on n'a pas bouge de plus de 3 pixels.
             nbSelection = FonctionsNatives.selectionnerObjetSousPointClique( x, y, h, w, c);
             Console.WriteLine("SELECTION: " + nbSelection);
             if (nbSelection != 1)
@@ -2051,7 +2051,7 @@ namespace InterfaceGraphique
         ////////////////////////////////////////////////////////////////////////
         ///
         /// @fn public void rectangleElastique()
-        /// @brief Création d'un rectangle élastique.
+        /// @brief Creation d'un rectangle elastique.
         /// 
         /// @return Aucune.
         ///
@@ -2064,7 +2064,7 @@ namespace InterfaceGraphique
         ////////////////////////////////////////////////////////////////////////
         ///
         /// @fn public void terminerRectangleElastique()
-        /// @brief Effacement d'un rectangle élastique.
+        /// @brief Effacement d'un rectangle elastique.
         /// 
         /// @return Aucune.
         ///
@@ -2077,7 +2077,7 @@ namespace InterfaceGraphique
         ////////////////////////////////////////////////////////////////////////
         ///
         /// @fn public void selectionMultiple()
-        /// @brief Sélection multiple avec un rectangle élastique.
+        /// @brief Selection multiple avec un rectangle elastique.
         /// 
         /// @return Aucune.
         ///
@@ -2120,7 +2120,7 @@ namespace InterfaceGraphique
         ////////////////////////////////////////////////////////////////////////
         ///
         /// @fn public void dupliquerSelection()
-        /// @brief Duplication des objets sélectionnés.
+        /// @brief Duplication des objets selectionnes.
         /// 
         /// @return Aucune.
         ///
@@ -2134,9 +2134,9 @@ namespace InterfaceGraphique
         ////////////////////////////////////////////////////////////////////////
         ///
         /// @fn public void creationObjet(MouseEventArgs e, bool twin = false)
-        /// @brief Création d'un objet.
+        /// @brief Creation d'un objet.
         /// 
-        /// @param[in] e : L'événement qui lance la fonction.
+        /// @param[in] e : L'evenement qui lance la fonction.
         /// @param[in] twin : Indique que l'objet n'est jumeau.
         /// 
         /// @return Aucune.
@@ -2152,9 +2152,9 @@ namespace InterfaceGraphique
                                                                         panel_GL.PointToClient(MousePosition).X, panel_GL.PointToClient(MousePosition).Y, 0,
                                                                         angleX, angleY, angleZ);
                // if (creationReussie)
-                    //Console.WriteLine("Création avec boite englobante respectée");
+                    //Console.WriteLine("Creation avec boite englobante respectee");
                // else
-                   // Console.WriteLine("Échec de la création");
+                   // Console.WriteLine("echec de la creation");
             }
             else
             { 
@@ -2179,11 +2179,11 @@ namespace InterfaceGraphique
         ////////////////////////////////////////////////////////////////////////
         ///
         /// @fn private void Enregistrer_MenuItem_Click(object sender, EventArgs e)
-        /// @brief Gestion des événements lorsque l'utilisateur clique sur 
+        /// @brief Gestion des evenements lorsque l'utilisateur clique sur 
         ///        le menu Enregistrer.
         /// 
-        /// @param[in] sender : Objet duquel provient un événement.
-        /// @param[in] e : Événement qui lance la fonction.
+        /// @param[in] sender : Objet duquel provient un evenement.
+        /// @param[in] e : evenement qui lance la fonction.
         /// 
         /// @return Aucune.
         ///
@@ -2204,12 +2204,12 @@ namespace InterfaceGraphique
                     int sauvegarde = FonctionsNatives.creerXML(pathXML, pathXML.Capacity, prop);
                     if (sauvegarde == 1)
                     {
-                        MessageBox.Show("Vous ne pouvez pas sauvegarder la zone de jeu par défaut!", "ERREUR DE SAUVEGARDE",
+                        MessageBox.Show("Vous ne pouvez pas sauvegarder la zone de jeu par defaut!", "ERREUR DE SAUVEGARDE",
                         MessageBoxButtons.OK, MessageBoxIcon.Error);
                     }
                     if (sauvegarde == 3 || sauvegarde == 0)
                     {
-                        MessageBox.Show("Il doit avoir au moins un trou, un générateur de bille et un ressort dans la zone de jeu!", "ERREUR DE SAUVEGARDE",
+                        MessageBox.Show("Il doit avoir au moins un trou, un generateur de bille et un ressort dans la zone de jeu!", "ERREUR DE SAUVEGARDE",
                         MessageBoxButtons.OK, MessageBoxIcon.Error);
                     }
                 }
@@ -2219,9 +2219,9 @@ namespace InterfaceGraphique
         //////////////////////////////////////////////////////////////////////////////////////////
         ///
         /// @fn public void proprietesEnable(bool active)
-        /// @brief Active ou désactive les labels de propriétés spatiales des objets.
+        /// @brief Active ou desactive les labels de proprietes spatiales des objets.
         /// 
-        /// @param[in] active : Indique si les labels de propriétés spatiales seront accessibles.
+        /// @param[in] active : Indique si les labels de proprietes spatiales seront accessibles.
         /// 
         /// @return Aucune.
         ///
@@ -2246,7 +2246,7 @@ namespace InterfaceGraphique
         //////////////////////////////////////////////////////////////////////////////////////////
         ///
         /// @fn public void outilsEnable(bool active)
-        /// @brief Active ou désactive les boutons d'outils de modification de la table.
+        /// @brief Active ou desactive les boutons d'outils de modification de la table.
         /// 
         /// @param[in] active : Indique si les boutons d'outils de modification seront accessibles.
         /// 
@@ -2271,12 +2271,12 @@ namespace InterfaceGraphique
         //////////////////////////////////////////////////////////////////////////////////////////
         ///
         /// @fn private bool clickValide(Point origin, Point destination)
-        /// @brief Indique si un click est considéré comme valide.
+        /// @brief Indique si un click est considere comme valide.
         /// 
         /// @param[in] origin : Point d'origine du clic
-        /// @param[in] destination : Position après le clic. 
+        /// @param[in] destination : Position apres le clic. 
         /// 
-        /// @return True si le click est valide (déplacement < 3pixels), False sinon.
+        /// @return True si le click est valide (deplacement < 3pixels), False sinon.
         ///
         //////////////////////////////////////////////////////////////////////////////////////////
         private bool clickValide(Point origin, Point destination)
@@ -2290,12 +2290,12 @@ namespace InterfaceGraphique
         //////////////////////////////////////////////////////////////////////////////////////////
         ///
         /// @fn private bool clickExtraValide(Point origin, Point destination)
-        /// @brief Indique si un click est considéré comme valide pour le mur avec plus grande marge de liberte.
+        /// @brief Indique si un click est considere comme valide pour le mur avec plus grande marge de liberte.
         /// 
         /// @param[in] origin : Point d'origine du clic
-        /// @param[in] destination : Position après le clic. 
+        /// @param[in] destination : Position apres le clic. 
         /// 
-        /// @return True si le click est valide (déplacement < 3pixels), False sinon.
+        /// @return True si le click est valide (deplacement < 3pixels), False sinon.
         ///
         //////////////////////////////////////////////////////////////////////////////////////////
         private bool clickExtraValide(Point origin, Point destination)
@@ -2309,9 +2309,9 @@ namespace InterfaceGraphique
         //////////////////////////////////////////////////////////////////////////////////////////
         ///
         /// @fn public void tournerSelectionSouris(MouseEventArgs e)
-        /// @brief Tourne les objets sélectionnés.
+        /// @brief Tourne les objets selectionnes.
         /// 
-        /// @param[in] e : Événement qui lance la fonction.
+        /// @param[in] e : evenement qui lance la fonction.
         /// 
         /// @return Aucune.
         ///
@@ -2326,7 +2326,7 @@ namespace InterfaceGraphique
         //////////////////////////////////////////////////////////////////////////////////////////
         ///
         /// @fn public void deselection()
-        /// @brief Désélectionne tous les objets.
+        /// @brief Deselectionne tous les objets.
         /// 
         /// @return Aucune.
         ///
@@ -2343,9 +2343,9 @@ namespace InterfaceGraphique
         //////////////////////////////////////////////////////////////////////////////////////////
         ///
         /// @fn public void trackCursor(bool enable)
-        /// @brief Active ou désactive le tracking de la souris.
+        /// @brief Active ou desactive le tracking de la souris.
         /// 
-        /// @param[in] enable : Détermine si le tracking est activé ou désactivé.
+        /// @param[in] enable : Determine si le tracking est active ou desactive.
         /// 
         /// @return Aucune.
         ///
@@ -2367,8 +2367,8 @@ namespace InterfaceGraphique
         /// @fn private void playSound(String name, bool stop = false)
         /// @brief Joue un son.
         /// 
-        /// @param[in] name : Nom du média.
-        /// @param[in] stop : (false) La lecture n'arrête pas.
+        /// @param[in] name : Nom du media.
+        /// @param[in] stop : (false) La lecture n'arrete pas.
         /// 
         /// @return Aucune.
         ///
@@ -2387,10 +2387,10 @@ namespace InterfaceGraphique
         //////////////////////////////////////////////////////////////////////////////////////////
         ///
         /// @fn private void Creation_Panel_MouseEnter(object sender, EventArgs e)
-        /// @brief Gestion des événements de zoom lorsque la souris entre dans le panel de création.
+        /// @brief Gestion des evenements de zoom lorsque la souris entre dans le panel de creation.
         /// 
-        /// @param[in] sender : Objet duquel provient un événement.
-        /// @param[in] e : Événement qui lance la fonction.
+        /// @param[in] sender : Objet duquel provient un evenement.
+        /// @param[in] e : evenement qui lance la fonction.
         /// 
         /// @return Aucune.
         ///
@@ -2403,10 +2403,10 @@ namespace InterfaceGraphique
         //////////////////////////////////////////////////////////////////////////////////////////
         ///
         /// @fn private void panel_GL_MouseLeave(object sender, EventArgs e)
-        /// @brief Gestion des événements de zoom lorsque la souris quitte le panel GL.
+        /// @brief Gestion des evenements de zoom lorsque la souris quitte le panel GL.
         /// 
-        /// @param[in] sender : Objet duquel provient un événement.
-        /// @param[in] e : Événement qui lance la fonction.
+        /// @param[in] sender : Objet duquel provient un evenement.
+        /// @param[in] e : evenement qui lance la fonction.
         /// 
         /// @return Aucune.
         ///
@@ -2419,7 +2419,7 @@ namespace InterfaceGraphique
         //////////////////////////////////////////////////////////////////////////////////////////
         ///
         /// @fn public void enableZoom(bool active)
-        /// @brief Active ou désactive le zoom.
+        /// @brief Active ou desactive le zoom.
         /// 
         /// @param[in] active : Indique si le zoom est accessible.
         /// 
@@ -2435,7 +2435,7 @@ namespace InterfaceGraphique
         //////////////////////////////////////////////////////////////////////////////////////////
         ///
         /// @fn public void statePortail()
-        /// @brief Entre en état Portail.
+        /// @brief Entre en etat Portail.
         /// 
         /// @return Aucune.
         ///
@@ -2449,7 +2449,7 @@ namespace InterfaceGraphique
         //////////////////////////////////////////////////////////////////////////////////////////
         ///
         /// @fn public void stateMur()
-        /// @brief Entre en état Mur.
+        /// @brief Entre en etat Mur.
         /// 
         /// @return Aucune.
         ///
@@ -2465,7 +2465,7 @@ namespace InterfaceGraphique
         //////////////////////////////////////////////////////////////////////////////////////////
         ///
         /// @fn public void creationMur()
-        /// @brief Fonction qui s'assure de la bonne création des murs.
+        /// @brief Fonction qui s'assure de la bonne creation des murs.
         /// 
         /// @return Aucune.
         ///
@@ -2481,9 +2481,9 @@ namespace InterfaceGraphique
         //////////////////////////////////////////////////////////////////////////////////////////
         ///
         /// @fn private void IncreaseZoomButton_Click()
-        /// @brief Fonction qui s'assure de la bonne création des murs.
-        /// @param[in] sender : Objet duquel provient un événement.
-        /// @param[in] e : Événement qui lance la fonction.
+        /// @brief Fonction qui s'assure de la bonne creation des murs.
+        /// @param[in] sender : Objet duquel provient un evenement.
+        /// @param[in] e : evenement qui lance la fonction.
         /// @return Aucune.
         ///
         //////////////////////////////////////////////////////////////////////////////////////////
@@ -2546,7 +2546,7 @@ namespace InterfaceGraphique
 
     ///////////////////////////////////////////////////////////////////////////
     /// @class FullScreen
-    /// @brief Gestion du mode Plein Écran.
+    /// @brief Gestion du mode Plein ecran.
     ///
     /// @author The Ballers
     /// @date 2015-01-13
@@ -2558,9 +2558,9 @@ namespace InterfaceGraphique
         //////////////////////////////////////////////////////////////////////////////////////////
         ///
         /// @fn public void EnterFullScreenMode(Form targetForm)
-        /// @brief Entre en mode Plein Écran.
+        /// @brief Entre en mode Plein ecran.
         /// 
-        /// @param[in] active : La form qui passe en mode Plein Écran.
+        /// @param[in] active : La form qui passe en mode Plein ecran.
         /// 
         /// @return Aucune.
         ///
@@ -2576,9 +2576,9 @@ namespace InterfaceGraphique
         //////////////////////////////////////////////////////////////////////////////////////////
         ///
         /// @fn public void LeaveFullScreenMode(Form targetForm)
-        /// @brief Quitte le mode Plein Écran.
+        /// @brief Quitte le mode Plein ecran.
         /// 
-        /// @param[in] active : La form qui quitte le mode Plein Écran.
+        /// @param[in] active : La form qui quitte le mode Plein ecran.
         /// 
         /// @return Aucune.
         ///
@@ -2592,11 +2592,11 @@ namespace InterfaceGraphique
         //////////////////////////////////////////////////////////////////////////////////////////
         ///
         /// @fn public bool IsFullScreen(Form targetForm)
-        /// @brief Indique si une form est en mode Plein Écran.
+        /// @brief Indique si une form est en mode Plein ecran.
         /// 
-        /// @param[in] active : La form qui quitte le mode Plein Écran.
+        /// @param[in] active : La form qui quitte le mode Plein ecran.
         /// 
-        /// @return True si la form est en Plein Écran, false sinon.
+        /// @return True si la form est en Plein ecran, false sinon.
         ///
         //////////////////////////////////////////////////////////////////////////////////////////
         public bool IsFullScreen(Form targetForm)

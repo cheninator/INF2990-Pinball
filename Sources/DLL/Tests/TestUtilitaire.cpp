@@ -16,10 +16,10 @@ CPPUNIT_TEST_SUITE_REGISTRATION(TestUtilitaire);
 ///
 /// @fn void NoeudAbstraitTest::setUp()
 ///
-/// Effectue l'initialisation préalable à l'exécution de l'ensemble des
-/// cas de tests de cette suite de tests (si nécessaire).
+/// Effectue l'initialisation prealable a l'execution de l'ensemble des
+/// cas de tests de cette suite de tests (si necessaire).
 /// 
-/// Si certains objets doivent être construits, il est conseillé de le
+/// Si certains objets doivent etre construits, il est conseille de le
 /// faire ici.
 ///
 /// @return Aucune.
@@ -34,11 +34,11 @@ void TestUtilitaire::setUp()
 ///
 /// @fn void NoeudAbstraitTest::tearDown()
 ///
-/// Effectue les opérations de finalisation nécessaires suite à l'exécution
-/// de l'ensemble des cas de tests de cette suite de tests (si nécessaire).
+/// Effectue les operations de finalisation necessaires suite a l'execution
+/// de l'ensemble des cas de tests de cette suite de tests (si necessaire).
 /// 
-/// Si certains objets ont été alloués à l'initialisation, ils doivent être
-/// désalloués, et il est conseillé de le faire ici.
+/// Si certains objets ont ete alloues a l'initialisation, ils doivent etre
+/// desalloues, et il est conseille de le faire ici.
 ///
 /// @return Aucune.
 ///

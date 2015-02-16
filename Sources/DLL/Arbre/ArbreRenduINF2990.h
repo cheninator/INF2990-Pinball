@@ -19,11 +19,11 @@
 
 ///////////////////////////////////////////////////////////////////////////
 /// @class ArbreRenduINF2990
-/// @brief Classe qui représente l'arbre de rendu spécifique au projet de
+/// @brief Classe qui represente l'arbre de rendu specifique au projet de
 ///        INF2990.
 ///
 ///        Cette classe s'occupe de configurer les usines des noeuds qui
-///        seront utilisés par le projet.
+///        seront utilises par le projet.
 ///
 /// @author Martin Bisson
 /// @date 2007-03-23
@@ -32,15 +32,15 @@
 class ArbreRenduINF2990 : public ArbreRendu
 {
 public:
-   /// Constructeur par défaut.
+   /// Constructeur par defaut.
    ArbreRenduINF2990();
    /// Destructeur.
    virtual ~ArbreRenduINF2990();
 
-   /// Initialise l'arbre de rendu à son état initial.
+   /// Initialise l'arbre de rendu a son etat initial.
    void initialiser();
 
-   /// Obtenir le ième enfant de l'arbre
+   /// Obtenir le ieme enfant de l'arbre
    NoeudAbstrait* getEnfant(int position) const;
 
    /// Methode de test
@@ -49,43 +49,43 @@ public:
    /// Accepter un visiteur
    virtual bool accepterVisiteur(VisiteurAbstrait* vis);
 
-   /// Initialiser l'arbre à partir d'un fichier XML
+   /// Initialiser l'arbre a partir d'un fichier XML
    bool initialiserXML(std::string nomFichier);
 
-   /// Obtenir les propriétés de la zone de jeu
+   /// Obtenir les proprietes de la zone de jeu
    int* obtenirProprietes() const { return proprietes_; };
 
-   /// Permet de savoir si l'arbre est la zone de jeu par défaut
+   /// Permet de savoir si l'arbre est la zone de jeu par defaut
    bool estDefaut() const;
 
-   static const std::string NOM_BUTOIRD; ///< Représente le type Butoir droit
-   static const std::string NOM_BUTOIRG; ///< Représente le type Butoir gauche
-   static const std::string NOM_BUTOIRCIRCULAIRE; ///< Représente le type Butoir circulaire
-   static const std::string NOM_CIBLE; ///< Représente le type Cible
-   static const std::string NOM_BILLE; ///< Représente le type Bille
-   static const std::string NOM_GENERATEURBILLE; ///< Représente le type Generateur bille
-   static const std::string NOM_MUR; ///< Représente le type Mur
-   static const std::string NOM_PALETTED; ///< Représente le type Palette droite
-   static const std::string NOM_PALETTEG; ///< Représente le type Palette gauche
-   static const std::string NOM_PORTAIL; ///< Représente le type Portail
-   static const std::string NOM_RESSORT; ///< Représente le type Ressort
-   static const std::string NOM_TROU; ///< Représente le type Trou
-   static const std::string NOM_VIDE; ///< Représente le type Vide
-   static const std::string NOM_COUVERCLE; ///< Représente le type Couvercle
-   static const std::string NOM_TABLE; ///< Représente le type Table
+   static const std::string NOM_BUTOIRD; ///< Represente le type Butoir droit
+   static const std::string NOM_BUTOIRG; ///< Represente le type Butoir gauche
+   static const std::string NOM_BUTOIRCIRCULAIRE; ///< Represente le type Butoir circulaire
+   static const std::string NOM_CIBLE; ///< Represente le type Cible
+   static const std::string NOM_BILLE; ///< Represente le type Bille
+   static const std::string NOM_GENERATEURBILLE; ///< Represente le type Generateur bille
+   static const std::string NOM_MUR; ///< Represente le type Mur
+   static const std::string NOM_PALETTED; ///< Represente le type Palette droite
+   static const std::string NOM_PALETTEG; ///< Represente le type Palette gauche
+   static const std::string NOM_PORTAIL; ///< Represente le type Portail
+   static const std::string NOM_RESSORT; ///< Represente le type Ressort
+   static const std::string NOM_TROU; ///< Represente le type Trou
+   static const std::string NOM_VIDE; ///< Represente le type Vide
+   static const std::string NOM_COUVERCLE; ///< Represente le type Couvercle
+   static const std::string NOM_TABLE; ///< Represente le type Table
 
 private:
 
 	/// Lire un fichier XML
 	bool lireXML(tinyxml2::XMLDocument& doc);
 
-	// Définir ce qu'est la zone de jeu par défaut
+	// Definir ce qu'est la zone de jeu par defaut
 	void assignerDefaut();
 
-	/// Propriétés de la zone de jeu
+	/// Proprietes de la zone de jeu
 	int* proprietes_ = new int[6];
 
-	// Zone de jeu par défaut
+	// Zone de jeu par defaut
 	glm::dvec3 posRessort;
 	glm::dvec3 scaleRessort;
 	glm::dvec3 angleRessort;

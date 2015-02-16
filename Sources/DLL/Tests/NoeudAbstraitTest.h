@@ -19,7 +19,7 @@ class ArbreRenduINF2990;
 ///////////////////////////////////////////////////////////////////////////
 /// @class NoeudAbstraitTest
 /// @brief Classe de test cppunit pour tester le bon fonctionnement des
-///        méthodes de la classe NoeudAbstrait
+///        methodes de la classe NoeudAbstrait
 ///
 /// @author Julien Gascon-Samson
 /// @date 2011-07-16
@@ -29,10 +29,10 @@ class NoeudAbstraitTest : public CppUnit::TestFixture
 {
 
 	// =================================================================
-	// Déclaration de la suite de tests et des méthodes de tests
+	// Declaration de la suite de tests et des methodes de tests
 	//
-	// Important, vous devez définir chacun de vos cas de tests à l'aide
-	// de la macro CPPUNIT_TEST sinon ce dernier ne sera pas exécuté !
+	// Important, vous devez definir chacun de vos cas de tests a l'aide
+	// de la macro CPPUNIT_TEST sinon ce dernier ne sera pas execute !
 	// =================================================================
   CPPUNIT_TEST_SUITE( NoeudAbstraitTest );
   CPPUNIT_TEST( testPositionRelative );
@@ -44,27 +44,27 @@ class NoeudAbstraitTest : public CppUnit::TestFixture
 public:
 
 	// =================================================================
-	// Méthodes pour initialiser et 'finaliser' la suite de tests
+	// Methodes pour initialiser et 'finaliser' la suite de tests
 	// =================================================================
 
-	/// Traitement à effectuer pour initialiser cette suite de tests
+	/// Traitement a effectuer pour initialiser cette suite de tests
 	void setUp();
 
-	/// Traitement à effectuer pour 'finaliser' cette suite de tests
+	/// Traitement a effectuer pour 'finaliser' cette suite de tests
 	void tearDown();
 
 
 	// =================================================================
-	// Définissez ici les différents cas de tests...
+	// Definissez ici les differents cas de tests...
 	// =================================================================
 
-	/// Cas de test: écriture/lecture de la position relative
+	/// Cas de test: ecriture/lecture de la position relative
 	void testPositionRelative();
 
 	/// Cas de test: type de noeud
 	void testType();
 
-	/// Cas de test: définition/obtention des états de sélection du noeud
+	/// Cas de test: definition/obtention des etats de selection du noeud
 	void testSelection();
 
 	/// Cas de test: s'assurer que le noeud abstrait n'a pas d'enfant

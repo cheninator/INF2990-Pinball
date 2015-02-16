@@ -30,7 +30,7 @@ VisiteurSuppression::VisiteurSuppression()
 ///
 /// @fn VisiteurSuppression::~VisiteurSuppression()
 ///
-/// Désalloue la mémoire de pointeurs
+/// Desalloue la memoire de pointeurs
 ///
 /// @return Aucune (destructeur).
 ///
@@ -46,10 +46,10 @@ VisiteurSuppression::~VisiteurSuppression()
 /// @fn bool VisiteurSuppression::traiter(ArbreRenduINF2990* arbre)
 ///
 /// Cette fonction traite l'arbre de rendu pour supprimer ses enfants
-/// selectionnés. Cette fonction retourne true pour dire que l'opération s'est
+/// selectionnes. Cette fonction retourne true pour dire que l'operation s'est
 /// fait correctement, ou false si on ne permet pas la sauvegarde
 ///
-/// @param[in] arbre : L'arbre à traiter.
+/// @param[in] arbre : L'arbre a traiter.
 ///
 /// @return Retourne toujours true
 ///
@@ -76,16 +76,16 @@ bool VisiteurSuppression::traiter(ArbreRenduINF2990* arbre)
 /// @fn bool VisiteurSuppression::traiter(NoeudTable* table)
 ///
 /// Cette fonction traite la table de l'arbre de rendu. Cette fonction 
-///	retourne true pour dire que l'opération s'est faite correctement.
+///	retourne true pour dire que l'operation s'est faite correctement.
 ///
-/// @param[in] table : Le noeud de type Table à traiter.
+/// @param[in] table : Le noeud de type Table a traiter.
 ///
 /// @return Retourne toujours true
 ///
 ////////////////////////////////////////////////////////////////////////
 bool VisiteurSuppression::traiter(NoeudTable* table)
 {
-	// Traiter les enfants selectionnés de la table
+	// Traiter les enfants selectionnes de la table
 	for (unsigned int i = 0; i < table->obtenirNombreEnfants(); i++)
 	{
 		// Traiter les enfants de la table
@@ -106,9 +106,9 @@ bool VisiteurSuppression::traiter(NoeudTable* table)
 /// @fn bool VisiteurSuppression::traiter(NoeudAbstrait* noeud)
 ///
 /// Cette fonction traite les enfants de l'arbre de rendu. Cette fonction 
-///	retourne true pour dire que l'opération s'est faite correctement.
+///	retourne true pour dire que l'operation s'est faite correctement.
 ///
-/// @param[in] noeud : Noeud de l'arbre à traiter.
+/// @param[in] noeud : Noeud de l'arbre a traiter.
 ///
 /// @return Retourne toujours true.
 ///
@@ -117,7 +117,7 @@ bool VisiteurSuppression::traiter(NoeudAbstrait* noeud)
 {
 	if (noeud->estSelectionne())
 	{
-		// Supprimer le jumeau du portail meme s'il n'est pas selectionné
+		// Supprimer le jumeau du portail meme s'il n'est pas selectionne
 		if ((noeud->obtenirType() == "portail") && (noeud->getTwin() != nullptr))
 			suppression.push_back(noeud->getTwin());
 			

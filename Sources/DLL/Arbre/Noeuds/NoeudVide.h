@@ -15,7 +15,7 @@
 
 ///////////////////////////////////////////////////////////////////////////
 /// @class NoeudVide
-/// @brief Classe qui représente un noeud vide.
+/// @brief Classe qui represente un noeud vide.
 ///
 /// @author The Ballers
 /// @date 2015-01-24
@@ -30,10 +30,10 @@ public:
 	/// Destructeur 
 	~NoeudVide();
 
-	/// Surchage de la méthode qui affiche l'objet.
+	/// Surchage de la methode qui affiche l'objet.
 	virtual void afficherConcret() const;
 
-	/// Surchage de la méthode qui anime l'objet.
+	/// Surchage de la methode qui anime l'objet.
 	virtual void animer(float temps);
 
 	/// Accepte un visiteur.

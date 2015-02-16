@@ -21,7 +21,7 @@ namespace InterfaceGraphique
 {
     ///////////////////////////////////////////////////////////////////////////
     /// @class Proprietes
-    /// @brief Fenêtre des propriétés de la partie.
+    /// @brief Fenetre des proprietes de la partie.
     ///
     /// @author The Ballers
     /// @date 2015-01-27
@@ -30,15 +30,15 @@ namespace InterfaceGraphique
     ///////////////////////////////////////////////////////////////////////////
     public partial class Proprietes : Form
     {
-        public List<int> mesProp; ///< Liste des propriétés
+        public List<int> mesProp; ///< Liste des proprietes
         string errorMessage = "";
 
         ////////////////////////////////////////////////////////////////////////
         ///
         /// @fn public Proprietes(List<int> a)
-        /// @brief Constructeur par paramèetre de la fenêtre.
+        /// @brief Constructeur par parameetre de la fenetre.
         /// 
-        /// param[in] a : liste des propriétés à instancier.
+        /// param[in] a : liste des proprietes a instancier.
         /// 
         /// @return Aucune (constructeur).
         ///
@@ -59,9 +59,9 @@ namespace InterfaceGraphique
         ////////////////////////////////////////////////////////////////////////
         ///
         /// @fn private bool checkValue()
-        /// @brief Vérifie que les valeurs entrées par l'utilisateur sont valides.
+        /// @brief Verifie que les valeurs entrees par l'utilisateur sont valides.
         /// 
-        /// @return True si les valeurs entrées sont valides, false sinon.
+        /// @return True si les valeurs entrees sont valides, false sinon.
         ///
         ////////////////////////////////////////////////////////////////////////
         private bool checkValue()
@@ -159,11 +159,11 @@ namespace InterfaceGraphique
         ////////////////////////////////////////////////////////////////////////
         ///
         /// @fn private void propAnnuler_Bouton_Click(object sender, EventArgs e)
-        /// @brief Gestion des événements lorsque l'utilisateur clique sur 
+        /// @brief Gestion des evenements lorsque l'utilisateur clique sur 
         ///        le bouton Annuler.
         /// 
-        /// @param[in] sender : Objet duquel provient un événement
-        /// @param[in] e : Événement qui lance la fonction.
+        /// @param[in] sender : Objet duquel provient un evenement
+        /// @param[in] e : evenement qui lance la fonction.
         /// 
         /// @return Aucune.
         ///
@@ -177,9 +177,9 @@ namespace InterfaceGraphique
         ////////////////////////////////////////////////////////////////////////
         ///
         /// @fn public List<int> getProps()
-        /// @brief Accesseur de l'attribut des propriétés.
+        /// @brief Accesseur de l'attribut des proprietes.
         /// 
-        /// @return La liste des propriétés de jeu.
+        /// @return La liste des proprietes de jeu.
         ///
         ////////////////////////////////////////////////////////////////////////
         public List<int> getProps()
@@ -190,11 +190,11 @@ namespace InterfaceGraphique
         ////////////////////////////////////////////////////////////////////////
         ///
         /// @fn private void propConfirm_Bouton_Click(object sender, EventArgs e)
-        /// @brief Gestion des événements lorsque l'utilisateur clique sur 
+        /// @brief Gestion des evenements lorsque l'utilisateur clique sur 
         ///        le bouton Confirmer.
         /// 
-        /// @param[in] sender : Objet duquel provient un événement
-        /// @param[in] e : Événement qui lance la fonction.
+        /// @param[in] sender : Objet duquel provient un evenement
+        /// @param[in] e : evenement qui lance la fonction.
         /// 
         /// @return Aucune.
         ///

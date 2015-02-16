@@ -146,7 +146,7 @@ namespace InterfaceGraphique
             this.difficulte_Label.Name = "difficulte_Label";
             this.difficulte_Label.Size = new System.Drawing.Size(51, 13);
             this.difficulte_Label.TabIndex = 3;
-            this.difficulte_Label.Text = "Difficulté:";
+            this.difficulte_Label.Text = "Difficulte:";
             // 
             // ptsVictoire_Box
             // 
@@ -218,7 +218,7 @@ namespace InterfaceGraphique
             this.Controls.Add(this.groupe_Collisions);
             this.Icon = global::InterfaceGraphique.Properties.Resources.Pinball;
             this.Name = "Proprietes";
-            this.Text = "Propriétés";
+            this.Text = "Proprietes";
             this.groupe_Collisions.ResumeLayout(false);
             this.groupe_Collisions.PerformLayout();
             this.ResumeLayout(false);

@@ -120,19 +120,19 @@
   <data name="label1.Text" xml:space="preserve">
     <value>PAIN BALL:
 
-Mode Éditeur:
+Mode editeur:
 
-Pour pouvoir créer un objet, il suffit de cliquer sur le bouton Paneau de Création et choisir l'objet voulu parmi la liste dans le menu à droite.
-Les différents Outils peuvent être choisis dans le menu Outils, la barre d'Outils ou à l'aide des raccourcis.
-Le déplacement de la vue se fait avec un drag-drop avec le bouton droit de la souris ou avec les fleches du clavier.
+Pour pouvoir creer un objet, il suffit de cliquer sur le bouton Paneau de Creation et choisir l'objet voulu parmi la liste dans le menu a droite.
+Les differents Outils peuvent etre choisis dans le menu Outils, la barre d'Outils ou a l'aide des raccourcis.
+Le deplacement de la vue se fait avec un drag-drop avec le bouton droit de la souris ou avec les fleches du clavier.
 Le zoom se fait avec les boutons + et - ou la roulette de la souris lorsqu'on est dans le mode Zoom.
-Pour une sélection multiple, se mettre dans le mode Sélection et faire un drag-drop avec le bouton gauche pour créer un rectange élastique.	
-Pour un zoom avec un rectangle élastique, se mettre dans le mode Zoom et faire un drag-drop avec le bouton gauche pour créer un rectange élastique.	
-Pour pouvoir appliquer une modifiction, il suffit de choisir l'outil désiré.
-L'outil Déplacement déplace un ou plusieurs objets dans la table avec un drag-drop avec le bouton gauche.
+Pour une selection multiple, se mettre dans le mode Selection et faire un drag-drop avec le bouton gauche pour creer un rectange elastique.	
+Pour un zoom avec un rectangle elastique, se mettre dans le mode Zoom et faire un drag-drop avec le bouton gauche pour creer un rectange elastique.	
+Pour pouvoir appliquer une modifiction, il suffit de choisir l'outil desire.
+L'outil Deplacement deplace un ou plusieurs objets dans la table avec un drag-drop avec le bouton gauche.
 L'outil Rotation tourne un ou plusieurs objets dans la table avec un drag-drop avec le bouton gauche.
-L'outil Mise à échelle change la taille d'un ou plusieurs objets dans la table avec un drag-drop avec le bouton gauche.
-L'outil Duplication duplique un ou plusieurs objets dans la table. L'outil crée une étampe qui suit la souris.
+L'outil Mise a echelle change la taille d'un ou plusieurs objets dans la table avec un drag-drop avec le bouton gauche.
+L'outil Duplication duplique un ou plusieurs objets dans la table. L'outil cree une etampe qui suit la souris.
 </value>
   </data>
   <data name="label2.Text" xml:space="preserve">
@@ -142,15 +142,15 @@ S = Selection
 C = Duplication
 R = Rotation 
 D = Translation 
-E = Mise à échelle
+E = Mise a echelle
 Z = Zoom vue
-+/- = Zoom avant/arrière
++/- = Zoom avant/arriere
 Fleches = Deplacement vue
 
 Divers:
 F = Plein Ecran
 M = Mute
-P = Montrer/Cacher le paneau création
+P = Montrer/Cacher le paneau creation
 H = Montrer/Cacher l'aide
 </value>
   </data>

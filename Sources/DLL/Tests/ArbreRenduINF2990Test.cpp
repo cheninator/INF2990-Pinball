@@ -32,10 +32,10 @@ using conteneur_boite_englobante = std::pair<std::vector<glm::dvec3>, NoeudAbstr
 ///
 /// @fn void ArbreRenduINF2990Test::setUp()
 ///
-/// Effectue l'initialisation préalable à l'exécution de l'ensemble des
-/// cas de tests de cette suite de tests (si nécessaire).
+/// Effectue l'initialisation prealable a l'execution de l'ensemble des
+/// cas de tests de cette suite de tests (si necessaire).
 /// 
-/// Si certains objets doivent être construits, il est conseillé de le
+/// Si certains objets doivent etre construits, il est conseille de le
 /// faire ici.
 ///
 /// @return Aucune.
@@ -53,43 +53,43 @@ void ArbreRenduINF2990Test::setUp()
 ///
 /// @fn void ArbreRenduINF2990Test::tearDown()
 ///
-/// Effectue les opérations de finalisation nécessaires suite à l'exécution
-/// de l'ensemble des cas de tests de cette suite de tests (si nécessaire).
+/// Effectue les operations de finalisation necessaires suite a l'execution
+/// de l'ensemble des cas de tests de cette suite de tests (si necessaire).
 /// 
-/// Si certains objets ont été alloués à l'initialisation, ils doivent être
-/// désalloués, et il est conseillé de le faire ici.
+/// Si certains objets ont ete alloues a l'initialisation, ils doivent etre
+/// desalloues, et il est conseille de le faire ici.
 ///
 /// @return Aucune.
 ///
 ////////////////////////////////////////////////////////////////////////
 void ArbreRenduINF2990Test::tearDown()
 {
-	// Nous pourrions libérer l'objet, mais puisqu'il s'agit d'un singleton,
-	// aucune libération n'est requise.
+	// Nous pourrions liberer l'objet, mais puisqu'il s'agit d'un singleton,
+	// aucune liberation n'est requise.
 }
 
 ////////////////////////////////////////////////////////////////////////
 ///
 /// @fn void ArbreRenduINF2990Test::testArbreDefaut()
 ///
-/// Cas de test: Test de chargement d'un arbre par défaut à l'ouverture
-///	de l'éditeur.
+/// Cas de test: Test de chargement d'un arbre par defaut a l'ouverture
+///	de l'editeur.
 ///
 /// @return Aucune.
 ///
 ////////////////////////////////////////////////////////////////////////
 void ArbreRenduINF2990Test::testArbreDefaut()
 {
-	// On initialise l'arbre avec le fichier XML par défaut
+	// On initialise l'arbre avec le fichier XML par defaut
 	arbre->initialiser();
 
-	// On vérifie que les éléments par défaut sont dans l'arbre.
+	// On verifie que les elements par defaut sont dans l'arbre.
 	CPPUNIT_ASSERT(arbre->estDefaut() == true);
 	
 	// L'arbre devrait avoir des enfants
 	CPPUNIT_ASSERT(arbre->obtenirNombreEnfants() > 0);
 
-	// On vérifie que la table contient une table de manière alternative
+	// On verifie que la table contient une table de maniere alternative
 	bool trouve = false;
 
 	for (unsigned int i = 0; i < arbre->obtenirNombreEnfants(); i++)
@@ -100,7 +100,7 @@ void ArbreRenduINF2990Test::testArbreDefaut()
 	}
 	CPPUNIT_ASSERT(trouve == true);
 
-	// Les propriétés de jeu ne sont pas négatives
+	// Les proprietes de jeu ne sont pas negatives
 	for (int i = 0; i < 5; i++)
 		CPPUNIT_ASSERT(arbre->obtenirProprietes()[i] > 0);
 
@@ -149,10 +149,10 @@ void ArbreRenduINF2990Test::testPortails()
 	// On cherche un portail.
 	NoeudAbstrait* portail1 = arbre->chercher(ArbreRenduINF2990::NOM_PORTAIL);
 
-	// On obtient le noeud lié au portail obtenu.
+	// On obtient le noeud lie au portail obtenu.
 	NoeudAbstrait* portail2 = portail1->getTwin();
 
-	// L'objet lié est un autre portail.
+	// L'objet lie est un autre portail.
 	CPPUNIT_ASSERT(portail2->obtenirType() == ArbreRenduINF2990::NOM_PORTAIL);
 
 	// On vide l'arbre.
@@ -163,17 +163,17 @@ void ArbreRenduINF2990Test::testPortails()
 ///
 /// @fn void ArbreRenduINF2990Test::creerNoeudParUsine()
 ///
-/// Cas de test: Création de noeuds avec les usines.
+/// Cas de test: Creation de noeuds avec les usines.
 ///
 /// @return Aucune.
 ///
 ////////////////////////////////////////////////////////////////////////
 void ArbreRenduINF2990Test::creerNoeudParUsine()
 {
-	// On crée un noeud de type non reconnu par les usines.
+	// On cree un noeud de type non reconnu par les usines.
 	NoeudAbstrait* noeudVide = arbre->creerNoeud("NOM_CIBLE");
 
-	// On crée un nom de type reconnu par une usine.
+	// On cree un nom de type reconnu par une usine.
 	NoeudAbstrait* noeudCible = arbre->creerNoeud(ArbreRenduINF2990::NOM_CIBLE);
 	
 	// Le noeud non reconnu est un nulptr
@@ -201,32 +201,32 @@ void ArbreRenduINF2990Test::creerNoeudParUsine()
 ////////////////////////////////////////////////////////////////////////
 void ArbreRenduINF2990Test::boiteEnglobante()
 {
-	// On crée une cible.
+	// On cree une cible.
 	NoeudAbstrait* noeudCible = arbre->creerNoeud(ArbreRenduINF2990::NOM_CIBLE);
 
 	// On obtient sa position.
 	glm::dvec3 vecteur{ noeudCible->obtenirPositionRelative() };
 
-	// On vérifie que le noeud est en position relative (0,0,0).
+	// On verifie que le noeud est en position relative (0,0,0).
 	CPPUNIT_ASSERT(utilitaire::EGAL_ZERO(vecteur[0]));
 	CPPUNIT_ASSERT(utilitaire::EGAL_ZERO(vecteur[1]));
 	CPPUNIT_ASSERT(utilitaire::EGAL_ZERO(vecteur[2]));
 
-	// On crée un point à (0,0,0)
+	// On cree un point a (0,0,0)
 	glm::dvec3 point;
 	point[0] = 0;
 	point[1] = 0;
 	point[2] = 0;
 
-	// On vérifie qu'il est dans la boîte englobante de la cible.
+	// On verifie qu'il est dans la boîte englobante de la cible.
 	CPPUNIT_ASSERT(noeudCible->pointEstDansBoite(point));
 
-	// On déplace le point en X.
+	// On deplace le point en X.
 	point[0] = 100;
 	point[1] = 0;
 	point[2] = 0;
 
-	// On vérifie qu'il n'est plus dans la boîte englobante de la cible.
+	// On verifie qu'il n'est plus dans la boîte englobante de la cible.
 	CPPUNIT_ASSERT(!noeudCible->pointEstDansBoite(point));
 
 	// Nettoyage.
@@ -240,17 +240,17 @@ void ArbreRenduINF2990Test::boiteEnglobante()
 ///
 /// @fn void ArbreRenduINF2990Test::selectionTable()
 ///
-/// Cas de test: On s'assure qu'un table n'est pas sélectionnable.
+/// Cas de test: On s'assure qu'un table n'est pas selectionnable.
 ///
 /// @return Aucune.
 ///
 ////////////////////////////////////////////////////////////////////////
 void ArbreRenduINF2990Test::selectionTable()
 {
-	// On initialise l'arbre avec le fichier XML par défaut
+	// On initialise l'arbre avec le fichier XML par defaut
 	arbre->initialiser();
 
-	// On vérifie que les éléments par défaut sont dans l'arbre.
+	// On verifie que les elements par defaut sont dans l'arbre.
 	CPPUNIT_ASSERT(arbre->estDefaut() == true);
 
 	// On cherche une table.
@@ -271,24 +271,24 @@ void ArbreRenduINF2990Test::selectionTable()
 ///
 /// @fn void ArbreRenduINF2990Test::testDeselection()
 ///
-/// Cas de test: Test du visiteur de désélection.
+/// Cas de test: Test du visiteur de deselection.
 ///
 /// @return Aucune.
 ///
 ////////////////////////////////////////////////////////////////////////
 void ArbreRenduINF2990Test::testDeselection()
 {
-	// On initialise l'arbre avec le fichier XML par défaut
+	// On initialise l'arbre avec le fichier XML par defaut
 	arbre->initialiser();
 
 	// On cherche un ressort.
 	NoeudAbstrait* noeudRessort = arbre->chercher(ArbreRenduINF2990::NOM_RESSORT);
 
-	// Sélectionner l'objet
+	// Selectionner l'objet
 	noeudRessort->assignerSelection(true);
 	VisiteurDeselectionnerTout* visiteurDeselection = new VisiteurDeselectionnerTout();
 
-	// Test du visiteur de déselection
+	// Test du visiteur de deselection
 	arbre->accepterVisiteur(visiteurDeselection);
 
 
@@ -314,13 +314,13 @@ void ArbreRenduINF2990Test::testDeselection()
 ////////////////////////////////////////////////////////////////////////
 void ArbreRenduINF2990Test::testRotation()
 {
-	// On initialise l'arbre avec le fichier XML par défaut
+	// On initialise l'arbre avec le fichier XML par defaut
 	arbre->initialiser();
 
 	// On cherche un ressort.
 	NoeudAbstrait* noeudRessort = arbre->chercher(ArbreRenduINF2990::NOM_RESSORT);
 
-	// Sélectionner l'objet
+	// Selectionner l'objet
 	noeudRessort->assignerSelection(true);
 
 	// Rotation originale.
@@ -357,40 +357,40 @@ void ArbreRenduINF2990Test::testRotation()
 ///
 /// @fn void ArbreRenduINF2990Test::testSelectionMultiple()
 ///
-/// Cas de test: Test du visiteur de sélection multiple.
+/// Cas de test: Test du visiteur de selection multiple.
 ///
 /// @return Aucune.
 ///
 ////////////////////////////////////////////////////////////////////////
 void ArbreRenduINF2990Test::testSelectionMultiple()
 {
-	// On initialise l'arbre avec le fichier XML par défaut.
+	// On initialise l'arbre avec le fichier XML par defaut.
 	arbre->initialiser();
 
 	CPPUNIT_ASSERT(arbre->getEnfant(0)->obtenirType() == ArbreRenduINF2990::NOM_TABLE);
 
-	// On accède à la table et on ajoute deux cibles.
+	// On accede a la table et on ajoute deux cibles.
 	bool ajout1 = { arbre->getEnfant(0)->ajouter(arbre->creerNoeud(ArbreRenduINF2990::NOM_CIBLE)) };
 	bool ajout2 = { arbre->getEnfant(0)->ajouter(arbre->creerNoeud(ArbreRenduINF2990::NOM_CIBLE)) };
 
-	// Les deux cibles ont été ajoutées.
+	// Les deux cibles ont ete ajoutees.
 	CPPUNIT_ASSERT(ajout1 == true);
 	CPPUNIT_ASSERT(ajout2 == true);
 
-	// Une cible est bien créée en position {0,0,0}.
+	// Une cible est bien creee en position {0,0,0}.
 	NoeudAbstrait* cible = arbre->getEnfant(0)->chercher(ArbreRenduINF2990::NOM_CIBLE);
 	glm::dvec3 position = cible->obtenirPositionRelative();
 	CPPUNIT_ASSERT(utilitaire::EGAL_ZERO(position[0]));
 	CPPUNIT_ASSERT(utilitaire::EGAL_ZERO(position[1]));
 	CPPUNIT_ASSERT(utilitaire::EGAL_ZERO(position[2]));
 
-	// On crée un visiteur dans une boite de 10x10 autour du point central avec les deux cibles.
+	// On cree un visiteur dans une boite de 10x10 autour du point central avec les deux cibles.
 	VisiteurSelectionMultiple* visSelecMult = new VisiteurSelectionMultiple({ -10.0, -10.0, 0.0 }, { 10.0, 10.0, 0.0 });
 
-	// On visite les éléments.
+	// On visite les elements.
 	arbre->getEnfant(0)->accepterVisiteur(visSelecMult);
 
-	// Deux objets sont sélectionnés
+	// Deux objets sont selectionnes
 	CPPUNIT_ASSERT(visSelecMult->obtenirNbObjetsSelectionne() == 2);
 
 	// Nettoyage.
@@ -404,29 +404,29 @@ void ArbreRenduINF2990Test::testSelectionMultiple()
 ///
 /// @fn void ArbreRenduINF2990Test::testSelectionInverse()
 ///
-/// Cas de test: Test du visiteur de sélection inverse.
+/// Cas de test: Test du visiteur de selection inverse.
 ///
 /// @return Aucune.
 ///
 ////////////////////////////////////////////////////////////////////////
 void ArbreRenduINF2990Test::testSelectionInverse()
 {
-	// On initialise l'arbre avec le fichier XML par défaut.
+	// On initialise l'arbre avec le fichier XML par defaut.
 	arbre->initialiser();
 
-	// On accède à la table et on ajoute une cible.
+	// On accede a la table et on ajoute une cible.
 	bool ajout = { arbre->getEnfant(0)->ajouter(arbre->creerNoeud(ArbreRenduINF2990::NOM_CIBLE)) };
 
-	// La cible a été ajoutée.	
+	// La cible a ete ajoutee.	
 	CPPUNIT_ASSERT(ajout == true);
 
-	// On sélectionne la cible.
+	// On selectionne la cible.
 	NoeudAbstrait* noeudCible = arbre->getEnfant(0)->chercher(ArbreRenduINF2990::NOM_CIBLE);
 	noeudCible->assignerSelection(true);
 
 	VisiteurSelectionInverse* visSelInv = new VisiteurSelectionInverse({0.0,0.0,0.0}, noeudCible->getNumero());
 
-	// On desélectionne la cible avec la sélection inverse.
+	// On deselectionne la cible avec la selection inverse.
 	noeudCible->accepterVisiteur(visSelInv);
 
 	CPPUNIT_ASSERT(noeudCible->estSelectionne() == false);
@@ -449,27 +449,27 @@ void ArbreRenduINF2990Test::testSelectionInverse()
 ////////////////////////////////////////////////////////////////////////
 void ArbreRenduINF2990Test::testDuplication()
 {
-	// On initialise l'arbre avec le fichier XML par défaut.
+	// On initialise l'arbre avec le fichier XML par defaut.
 	arbre->initialiser();
 
-	// On accède à la table et on ajoute une cible.
+	// On accede a la table et on ajoute une cible.
 	bool ajout = { arbre->getEnfant(0)->ajouter(arbre->creerNoeud(ArbreRenduINF2990::NOM_CIBLE)) };
 
-	// La cible a été ajoutée.	
+	// La cible a ete ajoutee.	
 	CPPUNIT_ASSERT(ajout == true);
 
-	// On sélectionne la cible.
+	// On selectionne la cible.
 	NoeudAbstrait* noeudCible = arbre->getEnfant(0)->chercher(ArbreRenduINF2990::NOM_CIBLE);
 	noeudCible->assignerSelection(true);
 
 	// Nombre d'enfants avant la duplication.
 	int enfantsAvant = arbre->getEnfant(0)->obtenirNombreEnfants();
 
-	// Visiteur Duplication fait sa job (on l'espère).
+	// Visiteur Duplication fait sa job (on l'espere).
 	VisiteurDuplication* visiteurDup = new VisiteurDuplication();
 	arbre->accepterVisiteur(visiteurDup);
 
-	// Nombre d'enfants après la duplication
+	// Nombre d'enfants apres la duplication
 	int enfantsApres = arbre->getEnfant(0)->obtenirNombreEnfants();
 
 	// std::cout << enfantsApres << " > " << enfantsAvant << "!!!";
@@ -488,7 +488,7 @@ void ArbreRenduINF2990Test::testDuplication()
 ///
 /// @fn void ArbreRenduINF2990Test::testBoiteEnglobante()
 ///
-/// Cas de test: Test du visiteur qui crée une liste des boîtes
+/// Cas de test: Test du visiteur qui cree une liste des boîtes
 /// englobantes.
 ///
 /// @return Aucune.
@@ -496,16 +496,16 @@ void ArbreRenduINF2990Test::testDuplication()
 ////////////////////////////////////////////////////////////////////////
 void ArbreRenduINF2990Test::testBoiteEnglobante()
 {
-	// On initialise l'arbre avec le fichier XML par défaut.
+	// On initialise l'arbre avec le fichier XML par defaut.
 	arbre->initialiser();
 
-	// On accède à la table et on ajoute une cible.
+	// On accede a la table et on ajoute une cible.
 	bool ajout = { arbre->getEnfant(0)->ajouter(arbre->creerNoeud(ArbreRenduINF2990::NOM_CIBLE)) };
 
-	// La cible a été ajoutée.	
+	// La cible a ete ajoutee.	
 	CPPUNIT_ASSERT(ajout == true);
 
-	// On sélectionne la cible.
+	// On selectionne la cible.
 	NoeudAbstrait* noeudCible = arbre->getEnfant(0)->chercher(ArbreRenduINF2990::NOM_CIBLE);
 	noeudCible->assignerSelection(true);
 
@@ -516,7 +516,7 @@ void ArbreRenduINF2990Test::testBoiteEnglobante()
 	// On obtient l'attribut du visiteur.
 	std::vector<conteneur_boite_englobante> liste = visBoiteEngl->obtenirListeEnglobante();
 
-	// Le bon noeud est inséré.
+	// Le bon noeud est insere.
 	CPPUNIT_ASSERT(liste[0].second == noeudCible);
 
 	glm::dvec3 coinsEnglobant[4];
@@ -546,10 +546,10 @@ void ArbreRenduINF2990Test::testBoiteEnglobante()
 ////////////////////////////////////////////////////////////////////////
 void ArbreRenduINF2990Test::testPalettes()
 {
-	// On initialise l'arbre avec le fichier XML par défaut.
+	// On initialise l'arbre avec le fichier XML par defaut.
 	arbre->initialiserXML("zones/testcouleurs.xml");
 
-	// On trouve les palettes de J1 et J2 (il y a une palette différente par joueur).
+	// On trouve les palettes de J1 et J2 (il y a une palette differente par joueur).
 	NoeudAbstrait* paletteDJ1 = arbre->getEnfant(0)->chercher(ArbreRenduINF2990::NOM_PALETTED);
 	NoeudAbstrait* paletteGJ2 = arbre->getEnfant(0)->chercher(ArbreRenduINF2990::NOM_PALETTEG);
 	
@@ -565,27 +565,27 @@ void ArbreRenduINF2990Test::testPalettes()
 /// @fn void ArbreRenduINF2990Test::testAgrandissement()
 ///
 /// Cas de test: Test du visiteur d'agrandissement des noeuds dans le
-/// cas général.
+/// cas general.
 ///
 /// @return Aucune.
 ///
 ////////////////////////////////////////////////////////////////////////
 void ArbreRenduINF2990Test::testAgrandissement()
 {
-	// On initialise l'arbre avec le fichier XML par défaut.
+	// On initialise l'arbre avec le fichier XML par defaut.
 	arbre->initialiser();
 
-	// On accède à la table et on ajoute une cible.
+	// On accede a la table et on ajoute une cible.
 	bool ajout = { arbre->getEnfant(0)->ajouter(arbre->creerNoeud(ArbreRenduINF2990::NOM_CIBLE)) };
 
-	// La cible a été ajoutée.	
+	// La cible a ete ajoutee.	
 	CPPUNIT_ASSERT(ajout == true);
 
-	// On sélectionne la cible.
+	// On selectionne la cible.
 	NoeudAbstrait* noeudCible = arbre->getEnfant(0)->chercher(ArbreRenduINF2990::NOM_CIBLE);
 	noeudCible->assignerSelection(true);
 
-	// Agrandissement de départ.
+	// Agrandissement de depart.
 	glm::dvec3 agrandissementOriginal = noeudCible->obtenirAgrandissement();
 
 	glm::dvec3 homothetie = { 10.0, 10.0, 10.0 };
@@ -594,10 +594,10 @@ void ArbreRenduINF2990Test::testAgrandissement()
 	VisiteurAgrandissement* visAgrand = new VisiteurAgrandissement(homothetie);
 	noeudCible->accepterVisiteur(visAgrand);
 
-	// Agrandissement après la visite.
+	// Agrandissement apres la visite.
 	glm::dvec3 agrandissementFinal = noeudCible->obtenirAgrandissement();
 
-	// L'agrandissement a été effectué correctement.
+	// L'agrandissement a ete effectue correctement.
 	CPPUNIT_ASSERT(agrandissementFinal.x = agrandissementOriginal.x * homothetie.x);
 	CPPUNIT_ASSERT(agrandissementFinal.y = agrandissementOriginal.y * homothetie.y);
 	CPPUNIT_ASSERT(agrandissementFinal.z = agrandissementOriginal.z * homothetie.z);
@@ -621,20 +621,20 @@ void ArbreRenduINF2990Test::testAgrandissement()
 ////////////////////////////////////////////////////////////////////////
 void ArbreRenduINF2990Test::testAgrandissementMur()
 {
-	// On initialise l'arbre avec le fichier XML par défaut.
+	// On initialise l'arbre avec le fichier XML par defaut.
 	arbre->initialiser();
 
-	// On accède à la table et on ajoute un mur.
+	// On accede a la table et on ajoute un mur.
 	bool ajout = { arbre->getEnfant(0)->ajouter(arbre->creerNoeud(ArbreRenduINF2990::NOM_MUR)) };
 
-	// Le mur a été ajouté.	
+	// Le mur a ete ajoute.	
 	CPPUNIT_ASSERT(ajout == true);
 
-	// On sélectionne le mur.
+	// On selectionne le mur.
 	NoeudAbstrait* noeudMur = arbre->getEnfant(0)->chercher(ArbreRenduINF2990::NOM_MUR);
 	noeudMur->assignerSelection(true);
 
-	// Agrandissement de départ.
+	// Agrandissement de depart.
 	glm::dvec3 agrandissementOriginal = noeudMur->obtenirAgrandissement();
 
 	glm::dvec3 homothetie = { 10.0, 10.0, 10.0 };
@@ -643,10 +643,10 @@ void ArbreRenduINF2990Test::testAgrandissementMur()
 	VisiteurAgrandissement* visAgrand = new VisiteurAgrandissement(homothetie);
 	noeudMur->accepterVisiteur(visAgrand);
 
-	// Agrandissement après la visite.
+	// Agrandissement apres la visite.
 	glm::dvec3 agrandissementFinal = noeudMur->obtenirAgrandissement();
 
-	// L'agrandissement a été effectué correctement.
+	// L'agrandissement a ete effectue correctement.
 	CPPUNIT_ASSERT(agrandissementFinal.x = agrandissementOriginal.x);
 	CPPUNIT_ASSERT(agrandissementFinal.y = agrandissementOriginal.y * homothetie.y);
 	CPPUNIT_ASSERT(agrandissementFinal.z = agrandissementOriginal.z);
@@ -662,20 +662,20 @@ void ArbreRenduINF2990Test::testAgrandissementMur()
 ///
 /// @fn void ArbreRenduINF2990Test::testSelection()
 ///
-/// Cas de test: Test du visiteur de sélection.
+/// Cas de test: Test du visiteur de selection.
 ///
 /// @return Aucune.
 ///
 ////////////////////////////////////////////////////////////////////////
 void ArbreRenduINF2990Test::testSelection()
 {
-	// On initialise l'arbre avec le fichier XML par défaut.
+	// On initialise l'arbre avec le fichier XML par defaut.
 	arbre->initialiser();
 
-	// On accède à la table et on ajoute une cible.
+	// On accede a la table et on ajoute une cible.
 	bool ajout = { arbre->getEnfant(0)->ajouter(arbre->creerNoeud(ArbreRenduINF2990::NOM_CIBLE)) };
 
-	// La cible a été ajoutée.	
+	// La cible a ete ajoutee.	
 	CPPUNIT_ASSERT(ajout == true);
 
 	// On cherche la cible
@@ -688,7 +688,7 @@ void ArbreRenduINF2990Test::testSelection()
 	// On visite le noeud.
 	noeudCible->accepterVisiteur(visSel);
 
-	// Le noeud est maintenant sélectionné.
+	// Le noeud est maintenant selectionne.
 	CPPUNIT_ASSERT(noeudCible->estSelectionne() == true);
 
 	// Nettoyage.
@@ -702,7 +702,7 @@ void ArbreRenduINF2990Test::testSelection()
 ///
 /// @fn void ArbreRenduINF2990Test::testSelection()
 ///
-/// Cas de test: Test du visiteur de possibilité. Un noeud est détecté
+/// Cas de test: Test du visiteur de possibilite. Un noeud est detecte
 /// comme aberrant lorsque sa position se trouve en dehors des limties
 /// de la table.
 ///
@@ -711,29 +711,29 @@ void ArbreRenduINF2990Test::testSelection()
 ////////////////////////////////////////////////////////////////////////
 void ArbreRenduINF2990Test::testPossibilite()
 {
-	// On initialise l'arbre avec le fichier XML par défaut.
+	// On initialise l'arbre avec le fichier XML par defaut.
 	arbre->initialiser();
 
-	// Visiteur Possibilité.
+	// Visiteur Possibilite.
 	VisiteurPossibilite* visPos = new VisiteurPossibilite();
 
 	// On visite l'arbre.
 	CPPUNIT_ASSERT(arbre->accepterVisiteur(visPos));
 
-	// On accède à la table et on ajoute une cible.
+	// On accede a la table et on ajoute une cible.
 	bool ajout = { arbre->getEnfant(0)->ajouter(arbre->creerNoeud(ArbreRenduINF2990::NOM_CIBLE)) };
 
-	// La cible a été ajoutée.	
+	// La cible a ete ajoutee.	
 	CPPUNIT_ASSERT(ajout == true);
 
-	// On cherche la cible et on la déplace hors de la table.
+	// On cherche la cible et on la deplace hors de la table.
 	NoeudAbstrait* noeudCible = arbre->getEnfant(0)->chercher(ArbreRenduINF2990::NOM_CIBLE);
 	noeudCible->assignerPositionRelative({ 1000.0, 1000.0, 1000.0 });
 
 	// On revisite l'arbre.
 	arbre->accepterVisiteur(visPos);
 
-	// Un noeud impossible est détecté.
+	// Un noeud impossible est detecte.
 	CPPUNIT_ASSERT(noeudCible->estImpossible());
 
 	// Nettoyage.
@@ -745,32 +745,32 @@ void ArbreRenduINF2990Test::testPossibilite()
 
 void ArbreRenduINF2990Test::testDeplacement()
 {
-	// On initialise l'arbre avec le fichier XML par défaut.
+	// On initialise l'arbre avec le fichier XML par defaut.
 	arbre->initialiser();
 
-	// On accède à la table et on ajoute une cible.
+	// On accede a la table et on ajoute une cible.
 	bool ajout = { arbre->getEnfant(0)->ajouter(arbre->creerNoeud(ArbreRenduINF2990::NOM_CIBLE)) };
 
-	// La cible a été ajoutée.	
+	// La cible a ete ajoutee.	
 	CPPUNIT_ASSERT(ajout == true);
 
-	// On sélectionne la cible.
+	// On selectionne la cible.
 	NoeudAbstrait* noeudCible = arbre->getEnfant(0)->chercher(ArbreRenduINF2990::NOM_CIBLE);
 	noeudCible->assignerSelection(true);
 
-	// Position de départ.
+	// Position de depart.
 	glm::dvec3 posOriginal = noeudCible->obtenirPositionRelative();
 
 	glm::dvec3 deplacement = { 10.0, 10.0, 10.0 };
 
-	// Visiteur Déplacement.
+	// Visiteur Deplacement.
 	VisiteurDeplacement* visDeplac = new VisiteurDeplacement(deplacement);
 	noeudCible->accepterVisiteur(visDeplac);
 
-	// Position après la visite.
+	// Position apres la visite.
 	glm::dvec3 posFinal = noeudCible->obtenirPositionRelative();
 
-	// Le déplacement a été effectué correctement.
+	// Le deplacement a ete effectue correctement.
 	CPPUNIT_ASSERT(posFinal.x = posOriginal.x + deplacement.x);
 	CPPUNIT_ASSERT(posFinal.y = posOriginal.y + deplacement.y);
 	CPPUNIT_ASSERT(posFinal.z = posOriginal.z + deplacement.z);

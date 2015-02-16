@@ -26,7 +26,7 @@ class NoeudGenerateurBille;
 ///
 /// @brief Interface du patron Visiteur
 ///
-/// Classe de base de laquelle dérivent les visiteurs.
+/// Classe de base de laquelle derivent les visiteurs.
 ///
 /// @author The Ballers
 /// @date 2015-02-02
@@ -36,25 +36,25 @@ class VisiteurAbstrait
 {
 public:
 
-	/// Constructeur par défaut
+	/// Constructeur par defaut
 	VisiteurAbstrait(){};
 
 	/// Classe abstraite
 	virtual ~VisiteurAbstrait(){};
 
-	/// Traiter une opération sur l'arbre de rendu
+	/// Traiter une operation sur l'arbre de rendu
 	virtual bool traiter(ArbreRenduINF2990* arbre) { return false; };
 
-	/// Traiter une opération sur la table de l'arbre de rendu
+	/// Traiter une operation sur la table de l'arbre de rendu
 	virtual bool traiter(NoeudTable* noeud) { return false; };
 
-	/// Traiter une opération sur les noeuds abstraits de l'arbre de rendu
+	/// Traiter une operation sur les noeuds abstraits de l'arbre de rendu
 	virtual bool traiter(NoeudAbstrait* noeud){ return false; };
 
-	/// Si traiter(NoeudMur* ) n'est pas réimplémenté, appeler celui de NoeudAbstrait qui appelle traiter(NoeudAbstrait*), qui EST réimplémentée.
+	/// Si traiter(NoeudMur* ) n'est pas reimplemente, appeler celui de NoeudAbstrait qui appelle traiter(NoeudAbstrait*), qui EST reimplementee.
 	virtual bool traiter(NoeudMur* noeud){ return traiter((NoeudAbstrait*)noeud); };
 
-	/// Si traiter(NoeudGenerateurBille*) n'est pas réimplémenté, appeler celui de NoeudAbstrait qui appelle traiter(NoeudAbstrait*), qui EST réimplémentée.
+	/// Si traiter(NoeudGenerateurBille*) n'est pas reimplemente, appeler celui de NoeudAbstrait qui appelle traiter(NoeudAbstrait*), qui EST reimplementee.
 	virtual bool traiter(NoeudGenerateurBille* noeud){ return traiter((NoeudAbstrait*)noeud); };
 
 };

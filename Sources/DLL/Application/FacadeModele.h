@@ -39,7 +39,7 @@ namespace vue {
 ///////////////////////////////////////////////////////////////////////////
 /// @class FacadeModele
 /// @brief Classe qui constitue une interface (une façade) sur l'ensemble
-///        du modèle et des classes qui le composent.
+///        du modele et des classes qui le composent.
 ///
 /// @author Martin Bisson
 /// @date 2007-02-20
@@ -52,19 +52,19 @@ public:
    /// Obtient l'instance unique de la classe.
    static FacadeModele* obtenirInstance();
 
-   /// Libère l'instance unique de la classe.
+   /// Libere l'instance unique de la classe.
    static void libererInstance();
 
-   /// Crée un contexte OpenGL et initialise celui-ci.
+   /// Cree un contexte OpenGL et initialise celui-ci.
    void initialiserOpenGL(HWND hWnd);
 
-   /// Libère le contexte OpenGL.
+   /// Libere le contexte OpenGL.
    void libererOpenGL();
 
-   /// Affiche le contenu du modèle.
+   /// Affiche le contenu du modele.
    void afficher() const;
 
-   /// Affiche la base du contenu du modèle.
+   /// Affiche la base du contenu du modele.
    void afficherBase() const;
  
    /// Retourne la vue courante.
@@ -76,37 +76,37 @@ public:
    /// Retourne l'arbre de rendu.
    inline ArbreRenduINF2990* obtenirArbreRenduINF2990();
 
-   /// Réinitialise la scène.
+   /// Reinitialise la scene.
    void reinitialiser();
 
-   /// Anime la scène.
+   /// Anime la scene.
    void animer(float temps);
 
-   /// Deplacement des noeuds selectionnés dans l'arbre de rendu.
+   /// Deplacement des noeuds selectionnes dans l'arbre de rendu.
    void deplacerSelection(int x1, int y1, int x2, int y2, bool duplication);
 
-   /// Rotation des noeuds sélectionnés
+   /// Rotation des noeuds selectionnes
    void tournerSelectionSouris(int x1, int y1, int x2, int y2);
 
-   /// Scale de la sélection
+   /// Scale de la selection
    void agrandirSelection(int x1, int y1, int x2, int y2);
 
-   /// Vérifier si un point cliqué est dans la table
+   /// Verifier si un point clique est dans la table
    bool verifierCliqueDansTable(int x, int y);
 
-   /// Pour la duplication d'objets selectionnés
+   /// Pour la duplication d'objets selectionnes
    void dupliquerSelection(int i, int j);
 
    /// Pour la sauvegarde de fichier XML
    int creerXML(char* path, int prop[6]);
 
-   /// Vérifier si un point cliqué est dans la table 
+   /// Verifier si un point clique est dans la table 
    bool estDansTable(glm::dvec3 pointDuMonde);
 
-   /// Pour la suppression des objets selectionnés
+   /// Pour la suppression des objets selectionnes
    bool supprimer();
 
-   /// Obtenir le facteur de zoom appliqué
+   /// Obtenir le facteur de zoom applique
    double obtenirZoomCourant();
 
    /// Obtenir le centre de masse en X
@@ -115,7 +115,7 @@ public:
    /// Obtenir le centre de masse en Y
    int obtenirCentreMasseY();
 
-   /// Selectionner les objets sous un point cliqué
+   /// Selectionner les objets sous un point clique
    int selectionnerObjetSousPointClique(int i, int j, int largeur, int hauteur, bool ctrlDown = false);
 
    /// Pour le rectangle elastique
@@ -141,27 +141,27 @@ public:
 
 private:
 
-   /// Constructeur par défaut.
+   /// Constructeur par defaut.
    FacadeModele() = default;
 
    /// Destructeur.
    ~FacadeModele();
 
-   /// Constructeur copie désactivé.
+   /// Constructeur copie desactive.
    FacadeModele(const FacadeModele&) = delete;
 
-   /// Opérateur d'assignation désactivé.
+   /// Operateur d'assignation desactive.
    FacadeModele& operator =(const FacadeModele&) = delete;
 
    /// Pointeur vers l'instance unique de la classe.
    static FacadeModele* instance_; 
 
-   HWND  hWnd_{ nullptr };	///< Poignée ("handle") vers la fenêtre où l'affichage se fait.
-   HGLRC hGLRC_{ nullptr }; ///< Poignée ("handle") vers le contexte OpenGL.
-   HDC   hDC_{ nullptr };	///< Poignée ("handle") vers le "device context".
+   HWND  hWnd_{ nullptr };	///< Poignee ("handle") vers la fenetre où l'affichage se fait.
+   HGLRC hGLRC_{ nullptr }; ///< Poignee ("handle") vers le contexte OpenGL.
+   HDC   hDC_{ nullptr };	///< Poignee ("handle") vers le "device context".
 
-   vue::Vue* vue_{ nullptr };				/// Vue courante de la scène.
-   ArbreRenduINF2990* arbre_{ nullptr };	/// Arbre de rendu contenant les différents objets de la scène.
+   vue::Vue* vue_{ nullptr };				/// Vue courante de la scene.
+   ArbreRenduINF2990* arbre_{ nullptr };	/// Arbre de rendu contenant les differents objets de la scene.
 
    glm::dvec3 selectionBasGauche_, selectionHautDroit_;
    glm::ivec2 pointInitial_, pointAvant_;
@@ -181,8 +181,8 @@ private:
 ///
 /// @fn inline vue::Vue* FacadeModele::obtenirVue()
 ///
-/// Cette fonction retourne la vue qui est présentement utilisée pour
-/// voir la scène.
+/// Cette fonction retourne la vue qui est presentement utilisee pour
+/// voir la scene.
 ///
 /// @return La vue courante.
 ///
@@ -197,10 +197,10 @@ inline vue::Vue* FacadeModele::obtenirVue()
 ///
 /// @fn inline const ArbreRenduINF2990* FacadeModele::obtenirArbreRenduINF2990() const
 ///
-/// Cette fonction retourne l'arbre de rendu de la scène (version constante
+/// Cette fonction retourne l'arbre de rendu de la scene (version constante
 /// de la fonction).
 ///
-/// @return L'arbre de rendu de la scène.
+/// @return L'arbre de rendu de la scene.
 ///
 ////////////////////////////////////////////////////////////////////////
 inline const ArbreRenduINF2990* FacadeModele::obtenirArbreRenduINF2990() const
@@ -213,10 +213,10 @@ inline const ArbreRenduINF2990* FacadeModele::obtenirArbreRenduINF2990() const
 ///
 /// @fn inline ArbreRenduINF2990* FacadeModele::obtenirArbreRenduINF2990()
 ///
-/// Cette fonction retourne l'arbre de rendu de la scène (version non constante
+/// Cette fonction retourne l'arbre de rendu de la scene (version non constante
 /// de la fonction).
 ///
-/// @return L'arbre de rendu de la scène.
+/// @return L'arbre de rendu de la scene.
 ///
 ////////////////////////////////////////////////////////////////////////
 inline ArbreRenduINF2990* FacadeModele::obtenirArbreRenduINF2990()

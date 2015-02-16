@@ -54,10 +54,10 @@ extern "C"
 	///
 	/// @fn __declspec(dllexport) void __cdecl initialiserOpenGL(int* handle)
 	///
-	/// Cette fonction initialise un contexte OpenGL dans la fenêtre
-	/// identifiée par le handle passé en paramètre.  Cette fonction doit
-	/// être la première à être appelée, car la création de l'objet du modèle
-	/// C++ s'attend à avoir un contexte OpenGL valide.
+	/// Cette fonction initialise un contexte OpenGL dans la fenetre
+	/// identifiee par le handle passe en parametre.  Cette fonction doit
+	/// etre la premiere a etre appelee, car la creation de l'objet du modele
+	/// C++ s'attend a avoir un contexte OpenGL valide.
 	///
 	/// @param[in] handle : Le handle.
 	///
@@ -77,8 +77,8 @@ extern "C"
 	///
 	/// @fn __declspec(dllexport) void __cdecl libererOpenGL()
 	///
-	/// Cette fonction libère le contexte OpenGL. Cette fonction doit être la
-	/// dernière à être appelée, car elle libère également l'objet du modèle
+	/// Cette fonction libere le contexte OpenGL. Cette fonction doit etre la
+	/// derniere a etre appelee, car elle libere egalement l'objet du modele
 	/// C++.
 	///
 	/// @return Aucune.
@@ -88,9 +88,9 @@ extern "C"
 	{
 		FacadeModele::obtenirInstance()->libererOpenGL();
 
-		// Désinitialisation de la façade.  Le fait de le faire après la
-		// désinitialisation du contexte OpenGL aura pour conséquence que la
-		// libération des listes d'affichages, par exemple, sera faite une fois que
+		// Desinitialisation de la façade.  Le fait de le faire apres la
+		// desinitialisation du contexte OpenGL aura pour consequence que la
+		// liberation des listes d'affichages, par exemple, sera faite une fois que
 		// le contexte n'existera plus, et sera donc sans effet.
 		FacadeModele::libererInstance();
 	}
@@ -100,16 +100,16 @@ extern "C"
 	///
 	/// @fn __declspec(dllexport) void __cdecl dessinerOpenGL()
 	///
-	/// Cette fonction affiche la scène.
+	/// Cette fonction affiche la scene.
 	///
 	/// @return Aucune.
 	///
 	////////////////////////////////////////////////////////////////////////
 	__declspec(dllexport) void __cdecl dessinerOpenGL()
 	{
-		// Affiche la scène.
+		// Affiche la scene.
 		FacadeModele::obtenirInstance()->afficher();
-		// Temporaire: pour détecter les erreurs OpenGL
+		// Temporaire: pour detecter les erreurs OpenGL
 		aidegl::verifierErreurOpenGL();
 	}
 
@@ -118,12 +118,12 @@ extern "C"
 	///
 	/// @fn __declspec(dllexport) void __cdecl redimensionnerFenetre(int largeur, int hauteur)
 	///
-	/// Cette fonction doit être appelée lorsque la fenêtre est
-	/// redimensionnée afin d'ajuster les paramètres de la machine à états
-	/// d'OpenGL pour correspondre aux nouvelles dimensions de la fenêtre.
+	/// Cette fonction doit etre appelee lorsque la fenetre est
+	/// redimensionnee afin d'ajuster les parametres de la machine a etats
+	/// d'OpenGL pour correspondre aux nouvelles dimensions de la fenetre.
 	///
-	/// @param[in] largeur : La nouvelle largeur de la fenêtre.
-	/// @param[in] hauteur : La nouvelle hauteur de la fenêtre.
+	/// @param[in] largeur : La nouvelle largeur de la fenetre.
+	/// @param[in] hauteur : La nouvelle hauteur de la fenetre.
 	///
 	/// @return Aucune.
 	///
@@ -141,8 +141,8 @@ extern "C"
 	///
 	/// @fn __declspec(dllexport) void __cdecl animer(double temps)
 	///
-	/// Cette fonction effectue les différents calculs d'animations
-	/// nécessaires pour le mode jeu, tel que les différents calculs de
+	/// Cette fonction effectue les differents calculs d'animations
+	/// necessaires pour le mode jeu, tel que les differents calculs de
 	/// physique du jeu.
 	///
 	/// @param[in] temps : Intervalle de temps sur lequel effectuer le calcul.
@@ -160,7 +160,7 @@ extern "C"
 	///
 	/// @fn __declspec(dllexport) void __cdecl zoomIn()
 	///
-	/// Cette fonction applique un zoom avant sur le présent volume de vision.
+	/// Cette fonction applique un zoom avant sur le present volume de vision.
 	///
 	/// @return Aucune.
 	///
@@ -175,7 +175,7 @@ extern "C"
 	///
 	/// @fn __declspec(dllexport) void __cdecl zoomOut()
 	///
-	/// Cette fonction applique un zoom arrière sur le présent volume de vision.
+	/// Cette fonction applique un zoom arriere sur le present volume de vision.
 	///
 	/// @return Aucune.
 	///
@@ -205,9 +205,9 @@ extern "C"
 	///
 	/// @fn __declspec(dllexport) bool __cdecl executerTests()
 	///
-	/// Cette fonction permet d'exécuter l'ensemble des tests unitaires
+	/// Cette fonction permet d'executer l'ensemble des tests unitaires
 	///
-	/// @return 0 si tous les tests ont réussi, 1 si au moins un test a échoué
+	/// @return 0 si tous les tests ont reussi, 1 si au moins un test a echoue
 	///
 	////////////////////////////////////////////////////////////////////////
 	__declspec(dllexport) bool __cdecl executerTests()
@@ -221,8 +221,8 @@ extern "C"
 	///
 	/// @fn __declspec(dllexport) void __cdecl creerObjet()
 	///
-	///	Crée un objet sans initialiser ses propriétés.  La fonction C# qui
-	/// L'appelle est responsable d'attribuer des propriétés.
+	///	Cree un objet sans initialiser ses proprietes.  La fonction C# qui
+	/// L'appelle est responsable d'attribuer des proprietes.
 	///
 	/// @param[in]  value : Nom de l'objet
 	/// @param[in]  length : Taille du nom de l'objet
@@ -271,41 +271,41 @@ extern "C"
 	///
 	/// @fn __declspec(dllexport) void __cdecl creerObjetAvecTests()
 	///
-	/// Cette fonction contient toutes les étapes de la création d'objet.
-	/// Premièrement, on fait quelques assignations spécifiques aux portails et 
-	/// aux murs. A la fin de ceci, l'objet est créé et on retient un pointeur
+	/// Cette fonction contient toutes les etapes de la creation d'objet.
+	/// Premierement, on fait quelques assignations specifiques aux portails et 
+	/// aux murs. A la fin de ceci, l'objet est cree et on retient un pointeur
 	/// vers celui ci dans la variable statique NoeudAbstrait* objet.
 	///
-	/// Ensuite, avant d'ajouter l'objet à l'arbre de rendu, on vérifie qu'il 
-	/// serait entièrement dans la table en faisant un test sur les points
+	/// Ensuite, avant d'ajouter l'objet a l'arbre de rendu, on verifie qu'il 
+	/// serait entierement dans la table en faisant un test sur les points
 	/// de sa boite englobante.
 	///
 	/// Si chaque point de la boite englobante passe le test, on ajoute l'objet
-	/// à l'arbre de rendu comme enfant de la table.  Sinon, on l'efface.
+	/// a l'arbre de rendu comme enfant de la table.  Sinon, on l'efface.
 	///
 	/// @param[in]  value : Nom de l'objet
 	/// @param[in]  length : Taille du nom de l'objet
 	/// @param[in]  twin : si a un jumeau
 	/// @param[in]  colorShift : la couleur
-	/// @param[in]  posX : la position en X de l'objet a créer.
-	/// @param[in]  posY : la position en Y de l'objet a créer.
-	/// @param[in]  posZ : la position en Z de l'objet a créer.
-	/// @param[in]  angleX : l'angle en X de l'objet a créer.
-	/// @param[in]  angleY : l'angle en Y de l'objet a créer.
-	/// @param[in]  angleZ : l'angle en Z de l'objet a créer.
+	/// @param[in]  posX : la position en X de l'objet a creer.
+	/// @param[in]  posY : la position en Y de l'objet a creer.
+	/// @param[in]  posZ : la position en Z de l'objet a creer.
+	/// @param[in]  angleX : l'angle en X de l'objet a creer.
+	/// @param[in]  angleY : l'angle en Y de l'objet a creer.
+	/// @param[in]  angleZ : l'angle en Z de l'objet a creer.
 	///
 	/// Cette fonction permet de cree un objet 3D
 	///
-	/// @return True si l'objet a été créé, false si une des étapes de la création
-	///			a échoué.
+	/// @return True si l'objet a ete cree, false si une des etapes de la creation
+	///			a echoue.
 	///
 	////////////////////////////////////////////////////////////////////////
 	__declspec(dllexport) bool __cdecl creerObjetAvecTests(char* value, int length, bool isTwin, bool colorShift, 
 															int posX, int posY, int posZ, 
 															float angleX, float angleY, float angleZ)
 	{
-		// Même chose que dans creer objet, sauf que je test le nouvel objet avant de l'ajouter à l'arbre.
-		// Pour pouvoir tester l'objet avant de l'ajouter, je dois setter ses propriétés
+		// Meme chose que dans creer objet, sauf que je test le nouvel objet avant de l'ajouter a l'arbre.
+		// Pour pouvoir tester l'objet avant de l'ajouter, je dois setter ses proprietes
 
 		// Comme avant
 		// ============
@@ -334,15 +334,15 @@ extern "C"
 		}
 		
 
-		// Assigner les propriétés à l'objet
+		// Assigner les proprietes a l'objet
 		// =================================
 		
-		// Assigner position et angles à l'objet.
+		// Assigner position et angles a l'objet.
 		glm::dvec3 positionObjet;
 		FacadeModele::obtenirInstance()->obtenirVue()->convertirClotureAVirtuelle(posX, posY, positionObjet);
 		objet->assignerPositionRelative(positionObjet);
 
-		// Voir la fonction rotate, c'est comme ça que les angles sont settés dans cette fonction.
+		// Voir la fonction rotate, c'est comme ça que les angles sont settes dans cette fonction.
 		// if('Y') if (direction == 'y' || direction == 'Y' || direction == '1')
 		// objet->assignerRotation({ angle, 0.0, 0.0 });
 		// et en effet, si je mettais {angleX,angleY,angleZ} les palettes n'apparaiteraient pas.
@@ -350,7 +350,7 @@ extern "C"
 		objet->assignerRotation(anglesObjet);
 		
 
-		// Tester si l'objet est légal.
+		// Tester si l'objet est legal.
 		// =============================
 		bool objetEstLegal = true;
 		glm::dvec3 boite[4];
@@ -366,12 +366,12 @@ extern "C"
 
 		}
 
-		// Ajouter l'objet s'il est légal
+		// Ajouter l'objet s'il est legal
 		// ==============================
 
 		if (objetEstLegal)
 		{
-			// Si l'objet est légal, l'ajouter à la table, sinon, on le scrap
+			// Si l'objet est legal, l'ajouter a la table, sinon, on le scrap
 			FacadeModele::obtenirInstance()->obtenirArbreRenduINF2990()->getEnfant(0)->ajouter(objet);
 			return true;
 		}
@@ -587,8 +587,8 @@ extern "C"
 	///
 	/// @fn void VueOrtho::translater(double deplacementX, double deplacementY)
 	///
-	/// @param[in]  deplacementX : Déplacement en pourcentage de la largeur.
-	/// @param[in]  deplacementY : Déplacement en pourcentage de la hauteur.
+	/// @param[in]  deplacementX : Deplacement en pourcentage de la largeur.
+	/// @param[in]  deplacementY : Deplacement en pourcentage de la hauteur.
 	///
 	/// Permet de faire un "pan" d'un certain pourcentage.
 	///
@@ -673,7 +673,7 @@ extern "C"
 	/// @param[in]  xCoin2 :
 	/// @param[in]  yCoin2 : 
 	///
-	/// Permet de centrer l'écran sur la région définie par les points passés
+	/// Permet de centrer l'ecran sur la region definie par les points passes
 	///
 	/// @return Aucun
 	///
@@ -700,7 +700,7 @@ extern "C"
 	/// @param[in]  xCoin2 :
 	/// @param[in]  yCoin2 : 
 	///
-	/// Permet de centrer l'écran sur la région définie par les points passés
+	/// Permet de centrer l'ecran sur la region definie par les points passes
 	///
 	/// @return Aucun
 	///
@@ -721,8 +721,8 @@ extern "C"
 	///////////////////////////////////////////////////////////////////////////////
 	///
 	/// @fn __declspec(dllexport) void __cdecl deplacerSelection(int x1, int y1, int x2, int y2)
-	///		deplace les noeuds selectionnes d'un déplacement calculé en coordonnées du monde
-	///		à partir des points initiaux et terminaux dans les coordonnées d'affichage OpenGL
+	///		deplace les noeuds selectionnes d'un deplacement calcule en coordonnees du monde
+	///		a partir des points initiaux et terminaux dans les coordonnees d'affichage OpenGL
 	///
 	///
 	/// @param[in]  x1 : abcisse du point initial
@@ -733,7 +733,7 @@ extern "C"
 	///
 	/// @return Aucun
 	///
-	/// @remark : On doit donner des x,y qui ont été transformés par panel_GL.PointToClient(...)
+	/// @remark : On doit donner des x,y qui ont ete transformes par panel_GL.PointToClient(...)
 	///
 	///////////////////////////////////////////////////////////////////////////////
 	__declspec(dllexport) void __cdecl deplacerSelection(int x1, int y1, int x2, int y2, bool duplication)
@@ -744,7 +744,7 @@ extern "C"
 	///////////////////////////////////////////////////////////////////////////////
 	///
 	/// @fn __declspec(dllexport) void __cdecl tournerSelectionSouris(int x1, int y1, int x2, int y2)
-	///		L'angle de rotation est calculé à partir du déplacement
+	///		L'angle de rotation est calcule a partir du deplacement
 	///
 	/// @param[in]  x1 : abcisse du point initial
 	/// @param[in]  y1 : ordonnee du point initial
@@ -754,7 +754,7 @@ extern "C"
 	///
 	/// @return Aucun
 	///
-	/// @remark : On doit donner des x,y qui ont été transformés par panel_GL.PointToClient(...)
+	/// @remark : On doit donner des x,y qui ont ete transformes par panel_GL.PointToClient(...)
 	///
 	///////////////////////////////////////////////////////////////////////////////
 	__declspec(dllexport) void __cdecl tournerSelectionSouris(int x1, int y1, int x2, int y2)
@@ -765,8 +765,8 @@ extern "C"
 	///////////////////////////////////////////////////////////////////////////////
 	///
 	/// @fn __declspec(dllexport) void __cdecl agrandirSelection(int x1, int y1, int x2, int y2)
-	///	Change l'échelle des objets sélectionnés.  Chaque déplacement de 1 pixel vers le haut
-	/// multiplie l'échelle courrante par 1.003, et chaque déplacement vers le bas divise
+	///	Change l'echelle des objets selectionnes.  Chaque deplacement de 1 pixel vers le haut
+	/// multiplie l'echelle courrante par 1.003, et chaque deplacement vers le bas divise
 	///	par 1.003.
 	///
 	/// @param[in]  x1 : abcisse du point initial
@@ -777,7 +777,7 @@ extern "C"
 	///
 	/// @return Aucun
 	///
-	/// @remark : On doit donner des x,y qui ont été transformés par panel_GL.PointToClient(...)
+	/// @remark : On doit donner des x,y qui ont ete transformes par panel_GL.PointToClient(...)
 	///
 	///////////////////////////////////////////////////////////////////////////////
 	__declspec(dllexport) void __cdecl agrandirSelection(int x1, int y1, int x2, int y2)
@@ -787,7 +787,7 @@ extern "C"
 
 	///////////////////////////////////////////////////////////////////////////////
 	///
-	/// @fn __declspec(dllexport) void __cdecl À COMMENTER KIM
+	/// @fn __declspec(dllexport) void __cdecl a COMMENTER KIM
 	///
 	/// @return Aucun
 	///
@@ -799,7 +799,7 @@ extern "C"
 
 	///////////////////////////////////////////////////////////////////////////////
 	///
-	/// @fn __declspec(dllexport) void __cdecl À COMMENTER KIM
+	/// @fn __declspec(dllexport) void __cdecl a COMMENTER KIM
 	///
 	/// @return Aucun
 	///
@@ -812,14 +812,14 @@ extern "C"
 	///////////////////////////////////////////////////////////////////////////////
 	///
 	/// @fn __declspec(dllexport) bool __cdecl verifierCliqueDansTable(int x, int y)
-	/// Vérifie si un clic est dans la table.
+	/// Verifie si un clic est dans la table.
 	///
 	/// @param[in]  x : abcisse du point initial 
 	/// @param[in]  y : ordonnee du point initial
 	///
 	/// @return true si le clic est dans la table, faux sinon.
 	///
-	/// @remark : On doit donner des x,y qui ont été transformés par panel_GL.PointToClient(...)
+	/// @remark : On doit donner des x,y qui ont ete transformes par panel_GL.PointToClient(...)
 	///
 	///////////////////////////////////////////////////////////////////////////////
 	__declspec(dllexport) bool verifierCliqueDansTable(int x, int y)
@@ -829,7 +829,7 @@ extern "C"
 
 	///////////////////////////////////////////////////////////////////////////////
 	///
-	/// @fn __declspec(dllexport)  void deselectAll(void) À COMMENTER
+	/// @fn __declspec(dllexport)  void deselectAll(void) a COMMENTER
 	///
 	/// @return Aucun
 	///
@@ -843,10 +843,10 @@ extern "C"
 
 	///////////////////////////////////////////////////////////////////////////////
 	///
-	/// @fn __declspec(dllexport)  void dupliquer(void) À COMMENTER YONNI (ET KIM?)
+	/// @fn __declspec(dllexport)  void dupliquer(void) a COMMENTER YONNI (ET KIM?)
 	/// @return Aucun
 	///
-	/// @remark : Ça duplique les objets selectionnés
+	/// @remark : Ça duplique les objets selectionnes
 	///
 	///////////////////////////////////////////////////////////////////////////////
 	__declspec(dllexport) void __cdecl dupliquerSelection(int i, int j)
@@ -857,7 +857,7 @@ extern "C"
 	///////////////////////////////////////////////////////////////////////////////
 	///
 	/// @fn __declspec(dllexport)  int getPositionX(void) 
-	/// Retourne le x de la position du dernier objet sélectionné qu'on a trouvé 
+	/// Retourne le x de la position du dernier objet selectionne qu'on a trouve 
 	/// dans l'arbre.
 	///
 	/// @return la position en X
@@ -888,7 +888,7 @@ extern "C"
 	///////////////////////////////////////////////////////////////////////////////
 	///
 	/// @fn __declspec(dllexport)  int getPositionY(void)
-	/// Retourne le y de la position du dernier objet sélectionné qu'on a trouvé 
+	/// Retourne le y de la position du dernier objet selectionne qu'on a trouve 
 	/// dans l'arbre.
 	///
 	/// @return la position en Y
@@ -917,7 +917,7 @@ extern "C"
 	///////////////////////////////////////////////////////////////////////////////
 	///
 	/// @fn __declspec(dllexport)  int getAngle(void)
-	/// Retourne l'angleZ du dernier objet sélectionné qu'on a trouvé 
+	/// Retourne l'angleZ du dernier objet selectionne qu'on a trouve 
 	/// dans l'arbre.
 	///
 	/// @return l'angle de l'objet
@@ -946,12 +946,12 @@ extern "C"
 	///////////////////////////////////////////////////////////////////////////////
 	///
 	/// @fn __declspec(dllexport)  int getScale(void)
-	/// Retourne le scale du dernier objet sélectionné qu'on a trouvé 
+	/// Retourne le scale du dernier objet selectionne qu'on a trouve 
 	/// dans l'arbre.
 	///
 	/// @return la taille de l'objet
 	///
-	/// @remark : Le scale en y est représentatif des objets normaux et des murs.
+	/// @remark : Le scale en y est representatif des objets normaux et des murs.
 	///
 	///////////////////////////////////////////////////////////////////////////////
 	__declspec(dllexport) double getScale(void)
@@ -974,7 +974,7 @@ extern "C"
 
 	////////////////////////////////////////////////////////////////////////
 	///
-	/// @fn __declspec(dllexport) void __cdecl playSound() À COMMENTER?
+	/// @fn __declspec(dllexport) void __cdecl playSound() a COMMENTER?
 	///
 	/// @param[in]  value : Nom du son
 	/// @param[in]  length : Taille du nom
@@ -1004,7 +1004,7 @@ extern "C"
 			// Initialiser tout les bruits (fuck off, je fais pas d'usine);
 			// Au debut, je voulais les initialiser au fur et a mesure des call
 			// Mais ils prennent 3-4 sec a etre cree, a chaque fois, faik tu avais
-			//  d'énorme delay c'etais chiant...
+			//  d'enorme delay c'etais chiant...
 			std::cout << "  0,00%... ambiant.wav" << std::endl; 
 			std::pair<std::string, FMOD_SOUND *> apair0("media/SFX/ambiant.wav", NULL);
 			soundTable.push_back(apair0);
@@ -1056,7 +1056,7 @@ extern "C"
 	///
 	/// @return Aucun
 	///
-	/// @remark : On doit donner des x,y qui ont été transformés par panel_GL.PointToClient(...)
+	/// @remark : On doit donner des x,y qui ont ete transformes par panel_GL.PointToClient(...)
 	///
 	///////////////////////////////////////////////////////////////////////////////
 	__declspec(dllexport) void __cdecl obligerTransparence(bool transparence)
@@ -1075,7 +1075,7 @@ extern "C"
 
 	///////////////////////////////////////////////////////////////////////////////
 	///
-	/// @fn __declspec(dllexport) void __cdecl initialiserRectangleElastique(int i, int j) À COMMENTER KIM
+	/// @fn __declspec(dllexport) void __cdecl initialiserRectangleElastique(int i, int j) a COMMENTER KIM
 	///
 	/// @return Aucun
 	///
@@ -1088,7 +1088,7 @@ extern "C"
 
 	///////////////////////////////////////////////////////////////////////////////
 	///
-	/// @fn __declspec(dllexport) void __cdecl terminerRectangleElastique() À COMMENTER KIM
+	/// @fn __declspec(dllexport) void __cdecl terminerRectangleElastique() a COMMENTER KIM
 	///
 	/// @return Aucun
 	///
@@ -1101,15 +1101,15 @@ extern "C"
 	///////////////////////////////////////////////////////////////////////////////
 	///
 	/// @fn __declspec(dllexport) void __cdecl  creerMur(int originX, int originY,int x1, int y1, int x2, int y2) 
-	/// Cette fonction place un mur dont un bout est là où le bouton gauche de la souris a été appuyé, et
+	/// Cette fonction place un mur dont un bout est la où le bouton gauche de la souris a ete appuye, et
 	/// l'autre bout est sous le curseur de la souris.
 	///
-	/// @param[in]  originX : Position en X où le bouton a été appuyé
-	/// @param[in]  originX : Position en Y où le bouton a été appuyé
-	/// @param[in]  x1 : Position en X précédant un déplacement de la souris
-	/// @param[in]  Y1 : Position en Y précédant un déplacement de la souris
-	/// @param[in]  x2 : Position en X après un déplacement de la souris (position actuelle de la souris)
-	/// @param[in]  y2 : Position en X après un déplacement de la souris (position actuelle de la souris)
+	/// @param[in]  originX : Position en X où le bouton a ete appuye
+	/// @param[in]  originX : Position en Y où le bouton a ete appuye
+	/// @param[in]  x1 : Position en X precedant un deplacement de la souris
+	/// @param[in]  Y1 : Position en Y precedant un deplacement de la souris
+	/// @param[in]  x2 : Position en X apres un deplacement de la souris (position actuelle de la souris)
+	/// @param[in]  y2 : Position en X apres un deplacement de la souris (position actuelle de la souris)
 	///
 	/// @return Aucun
 	///
@@ -1124,11 +1124,11 @@ extern "C"
 	///
 	/// @fn __declspec(dllexport) bool __cdecl setProprietesNoeud(int x, int y, int angle, double scale)
 	///
-	///	La fonction calcule la boite englobante de l'objet transformé, le calcul est différend pour les murs.
-	/// Il manque quelque chose pour le calcul des boîtes englobantes transformées des objets de type mur.
+	///	La fonction calcule la boite englobante de l'objet transforme, le calcul est differend pour les murs.
+	/// Il manque quelque chose pour le calcul des boîtes englobantes transformees des objets de type mur.
 	///
-	/// @param[in]  x : X en coordonnées du monde qu'on veut donner à notre noeud.
-	/// @param[in]  y : Y en coordonnées du monde qu'on veut donner à notre noeud.
+	/// @param[in]  x : X en coordonnees du monde qu'on veut donner a notre noeud.
+	/// @param[in]  y : Y en coordonnees du monde qu'on veut donner a notre noeud.
 	/// @param[in]	angle : angle de rotation
 	///	@param[in]	scale: scale de l'objet
 	/// @return bool
@@ -1136,8 +1136,8 @@ extern "C"
 	///////////////////////////////////////////////////////////////////////////////
 	__declspec(dllexport) bool setProprietesNoeud(int x, int y, int angle, double scale)
 	{
-		// Calculer la position a assigner en coordonnées du monde.  Elle est déjà en
-		// coordonnées du monde car ce qui est dans les textBox, c'est l'attribut position du noeud.
+		// Calculer la position a assigner en coordonnees du monde.  Elle est deja en
+		// coordonnees du monde car ce qui est dans les textBox, c'est l'attribut position du noeud.
 		glm::dvec3 nouvellePosition{ x, y, 0 };
 		bool nouvellesProprietesSontLegales = true;
 		glm::dvec3 boite[4];
@@ -1165,7 +1165,7 @@ extern "C"
 		glm::dvec3 pointATester;
 		for (int i = 0; i < 4; i++)
 		{
-			// Appliquer les nouvelles propriétés.
+			// Appliquer les nouvelles proprietes.
 			pointATester = nouvellePosition + rotation * (echelle * boite[i]);
 			// Tester
 			if (!FacadeModele::obtenirInstance()->estDansTable(pointATester))
@@ -1183,7 +1183,7 @@ extern "C"
 			objet->assignerPositionRelative(nouvellePosition);
 			objet->assignerRotationHard(nouveauxAngles);
 
-			// traiter le mur de façon spéciale.
+			// traiter le mur de façon speciale.
 			if (objet->getType() == "mur")
 				objet->assignerEchelle(glm::dvec3{ scaleInitial.x, scale, scaleInitial.z });
 			else
@@ -1194,9 +1194,9 @@ extern "C"
 
 	///////////////////////////////////////////////////////////////////////////////
 	///
-	/// @fn _declspec(dllexport) double obtenirZoomCourant(void) À COMMENTER
+	/// @fn _declspec(dllexport) double obtenirZoomCourant(void) a COMMENTER
 	///
-	/// @return La valeur du facteur de zoom appliquer sur la fenêtre
+	/// @return La valeur du facteur de zoom appliquer sur la fenetre
 	///
 	///////////////////////////////////////////////////////////////////////////////
 	__declspec(dllexport) double obtenirZoomCourant(void)
@@ -1209,7 +1209,7 @@ extern "C"
 
 	///////////////////////////////////////////////////////////////////////////////
 	///
-	/// @fn _declspec(dllexport) int obtenirCentreMasseX(void)  À COMMENTER
+	/// @fn _declspec(dllexport) int obtenirCentreMasseX(void)  a COMMENTER
 	///
 	/// @return La valeur en X de centre de masse
 	///
@@ -1221,7 +1221,7 @@ extern "C"
 
 	///////////////////////////////////////////////////////////////////////////////
 	///
-	/// @fn _declspec(dllexport) int obtenirCentreMasseY(void)  À COMMENTER
+	/// @fn _declspec(dllexport) int obtenirCentreMasseY(void)  a COMMENTER
 	///
 	/// @return La valeur en Y de centre de masse
 	///
@@ -1233,7 +1233,7 @@ extern "C"
 
 	///////////////////////////////////////////////////////////////////////////////
 	///
-	/// @fn __declspec(dllexport) bool resetZoom(void) À COMMENTER
+	/// @fn __declspec(dllexport) bool resetZoom(void) a COMMENTER
 	///
 	/// @return La valeur en Y de centre de masse
 	///
@@ -1245,7 +1245,7 @@ extern "C"
 
 	///////////////////////////////////////////////////////////////////////////////
 	///
-	/// @fn __declspec(dllexport) bool duplicationEstHorsTable() À COMMENTER
+	/// @fn __declspec(dllexport) bool duplicationEstHorsTable() a COMMENTER
 	///
 	/// @return true si la souris la selection est hors table lors de la duplication
 	///
