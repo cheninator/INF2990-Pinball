@@ -70,6 +70,8 @@ namespace InterfaceGraphique
             this.bouton_Rotation = new System.Windows.Forms.Button();
             this.bouton_Deplacement = new System.Windows.Forms.Button();
             this.bouton_Selection = new System.Windows.Forms.Button();
+            this.OutilGraphique = new System.Windows.Forms.GroupBox();
+            this.labelOCourant = new System.Windows.Forms.Label();
             this.Groupe_Proprietes = new System.Windows.Forms.GroupBox();
             this.Annuler_prop_boutn = new System.Windows.Forms.Button();
             this.OK_prop_bouton = new System.Windows.Forms.Button();
@@ -121,8 +123,6 @@ namespace InterfaceGraphique
             this.Aide_MenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.Mute_MenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.printPreviewDialog1 = new System.Windows.Forms.PrintPreviewDialog();
-            this.OutilGraphique = new System.Windows.Forms.GroupBox();
-            this.labelOCourant = new System.Windows.Forms.Label();
             this.panel1.SuspendLayout();
             this.Creation_Panel.SuspendLayout();
             this.Groupe_Palettes.SuspendLayout();
@@ -131,9 +131,9 @@ namespace InterfaceGraphique
             this.Group_Element2.SuspendLayout();
             this.flowLayoutPanel1.SuspendLayout();
             this.Groupe_Outils.SuspendLayout();
+            this.OutilGraphique.SuspendLayout();
             this.Groupe_Proprietes.SuspendLayout();
             this.menuStrip1.SuspendLayout();
-            this.OutilGraphique.SuspendLayout();
             this.SuspendLayout();
             // 
             // panel1
@@ -147,7 +147,7 @@ namespace InterfaceGraphique
             this.panel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel1.Location = new System.Drawing.Point(0, 0);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(956, 676);
+            this.panel1.Size = new System.Drawing.Size(956, 703);
             this.panel1.TabIndex = 0;
             this.panel1.Click += new System.EventHandler(this.panel1_Click);
             // 
@@ -158,7 +158,7 @@ namespace InterfaceGraphique
             this.panel_GL.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel_GL.Location = new System.Drawing.Point(163, 24);
             this.panel_GL.Name = "panel_GL";
-            this.panel_GL.Size = new System.Drawing.Size(566, 650);
+            this.panel_GL.Size = new System.Drawing.Size(566, 677);
             this.panel_GL.TabIndex = 4;
             this.panel_GL.MouseClick += new System.Windows.Forms.MouseEventHandler(this.panel_GL_MouseClick);
             this.panel_GL.MouseDown += new System.Windows.Forms.MouseEventHandler(this.panel_GL_MouseDown);
@@ -177,7 +177,7 @@ namespace InterfaceGraphique
             this.Creation_Panel.Dock = System.Windows.Forms.DockStyle.Right;
             this.Creation_Panel.Location = new System.Drawing.Point(729, 24);
             this.Creation_Panel.Name = "Creation_Panel";
-            this.Creation_Panel.Size = new System.Drawing.Size(225, 650);
+            this.Creation_Panel.Size = new System.Drawing.Size(225, 677);
             this.Creation_Panel.TabIndex = 2;
             this.Creation_Panel.Visible = false;
             this.Creation_Panel.MouseEnter += new System.EventHandler(this.Creation_Panel_MouseEnter);
@@ -422,7 +422,7 @@ namespace InterfaceGraphique
             this.flowLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Left;
             this.flowLayoutPanel1.Location = new System.Drawing.Point(0, 24);
             this.flowLayoutPanel1.Name = "flowLayoutPanel1";
-            this.flowLayoutPanel1.Size = new System.Drawing.Size(163, 650);
+            this.flowLayoutPanel1.Size = new System.Drawing.Size(163, 677);
             this.flowLayoutPanel1.TabIndex = 3;
             // 
             // Groupe_Outils
@@ -439,7 +439,7 @@ namespace InterfaceGraphique
             this.Groupe_Outils.Controls.Add(this.bouton_Selection);
             this.Groupe_Outils.Location = new System.Drawing.Point(3, 3);
             this.Groupe_Outils.Name = "Groupe_Outils";
-            this.Groupe_Outils.Size = new System.Drawing.Size(159, 265);
+            this.Groupe_Outils.Size = new System.Drawing.Size(153, 265);
             this.Groupe_Outils.TabIndex = 0;
             this.Groupe_Outils.TabStop = false;
             this.Groupe_Outils.Text = "Outils";
@@ -554,6 +554,25 @@ namespace InterfaceGraphique
             this.bouton_Selection.UseVisualStyleBackColor = true;
             this.bouton_Selection.Click += new System.EventHandler(this.bouton_Selection_Click);
             // 
+            // OutilGraphique
+            // 
+            this.OutilGraphique.Controls.Add(this.labelOCourant);
+            this.OutilGraphique.Location = new System.Drawing.Point(3, 274);
+            this.OutilGraphique.Name = "OutilGraphique";
+            this.OutilGraphique.Size = new System.Drawing.Size(153, 49);
+            this.OutilGraphique.TabIndex = 10;
+            this.OutilGraphique.TabStop = false;
+            this.OutilGraphique.Text = "Outil Courant";
+            // 
+            // labelOCourant
+            // 
+            this.labelOCourant.ForeColor = System.Drawing.SystemColors.InfoText;
+            this.labelOCourant.Location = new System.Drawing.Point(8, 16);
+            this.labelOCourant.Name = "labelOCourant";
+            this.labelOCourant.Size = new System.Drawing.Size(135, 22);
+            this.labelOCourant.TabIndex = 0;
+            this.labelOCourant.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
             // Groupe_Proprietes
             // 
             this.Groupe_Proprietes.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
@@ -569,7 +588,7 @@ namespace InterfaceGraphique
             this.Groupe_Proprietes.Controls.Add(this.X_label);
             this.Groupe_Proprietes.Location = new System.Drawing.Point(3, 329);
             this.Groupe_Proprietes.Name = "Groupe_Proprietes";
-            this.Groupe_Proprietes.Size = new System.Drawing.Size(159, 168);
+            this.Groupe_Proprietes.Size = new System.Drawing.Size(153, 168);
             this.Groupe_Proprietes.TabIndex = 1;
             this.Groupe_Proprietes.TabStop = false;
             this.Groupe_Proprietes.Text = "Propriétés spaciales";
@@ -1026,29 +1045,11 @@ namespace InterfaceGraphique
             this.printPreviewDialog1.Name = "printPreviewDialog1";
             this.printPreviewDialog1.Visible = false;
             // 
-            // OutilGraphique
-            // 
-            this.OutilGraphique.Controls.Add(this.labelOCourant);
-            this.OutilGraphique.Location = new System.Drawing.Point(3, 274);
-            this.OutilGraphique.Name = "OutilGraphique";
-            this.OutilGraphique.Size = new System.Drawing.Size(157, 49);
-            this.OutilGraphique.TabIndex = 10;
-            this.OutilGraphique.TabStop = false;
-            this.OutilGraphique.Text = "Outil Courant";
-            // 
-            // labelOCourant
-            // 
-            this.labelOCourant.Location = new System.Drawing.Point(8, 20);
-            this.labelOCourant.Name = "labelOCourant";
-            this.labelOCourant.Size = new System.Drawing.Size(135, 28);
-            this.labelOCourant.TabIndex = 0;
-            this.labelOCourant.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
             // Exemple
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(956, 676);
+            this.ClientSize = new System.Drawing.Size(956, 703);
             this.Controls.Add(this.panel1);
             this.KeyPreview = true;
             this.MainMenuStrip = this.menuStrip1;
@@ -1069,11 +1070,11 @@ namespace InterfaceGraphique
             this.flowLayoutPanel1.PerformLayout();
             this.Groupe_Outils.ResumeLayout(false);
             this.Groupe_Outils.PerformLayout();
+            this.OutilGraphique.ResumeLayout(false);
             this.Groupe_Proprietes.ResumeLayout(false);
             this.Groupe_Proprietes.PerformLayout();
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
-            this.OutilGraphique.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
