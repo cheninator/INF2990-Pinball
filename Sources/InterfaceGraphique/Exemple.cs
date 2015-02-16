@@ -1759,7 +1759,7 @@ namespace InterfaceGraphique
         {            
             currentP = panel_GL.PointToClient(MousePosition);
 
-            if (nbSelection == 1 && !(etat is EtatDuplication))
+            if (nbSelection == 1 && !(etat is EtatDuplication) && (e.Button == MouseButtons.Left))
             {
                 Xbox.Text = Math.Round(FonctionsNatives.getPositionX()).ToString();
                 Ybox.Text = Math.Round(FonctionsNatives.getPositionY()).ToString();
