@@ -1,6 +1,6 @@
 ///////////////////////////////////////////////////////////////////////////
 /// @file NoeudPortail.h
-/// @author Yonni Chen
+/// @author The Ballers
 /// @date 2015-01-24
 /// @version 1.0
 ///
@@ -17,7 +17,7 @@
 /// @class NoeudPortail
 /// @brief Classe qui représente un portail.
 ///
-/// @author Yonni Chen
+/// @author The Ballers
 /// @date 2015-01-24
 /// @ingroup Noeud
 ///////////////////////////////////////////////////////////////////////////

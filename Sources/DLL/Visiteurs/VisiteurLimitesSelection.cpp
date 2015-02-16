@@ -1,6 +1,6 @@
 ////////////////////////////////////////////////
 /// @file   VisiteurLimitesSelection.cpp
-/// @author Philippe Carphin
+/// @author The Ballers
 /// @date   2015-02-01
 ///
 /// @ingroup Visiteur

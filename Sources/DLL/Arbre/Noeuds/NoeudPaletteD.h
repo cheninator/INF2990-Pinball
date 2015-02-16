@@ -1,6 +1,6 @@
 ///////////////////////////////////////////////////////////////////////////
 /// @file NoeudPaletteD.h
-/// @author Aymen Djellal
+/// @author The Ballers
 /// @date 2015-01-24
 /// @version 1.0
 ///
@@ -17,7 +17,7 @@
 /// @class NoeudPaletteD
 /// @brief Classe qui représente une palette droite.
 ///
-/// @author Aymen Djellal
+/// @author The Ballers
 /// @date 2015-01-24
 /// @ingroup Noeud
 ///////////////////////////////////////////////////////////////////////////

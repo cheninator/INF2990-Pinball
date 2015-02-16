@@ -21,7 +21,7 @@
 ///		   Ensuite, appeler la méthode accepterVisiteur() de l'arbre de 
 ///		   rendu et lui fournir CE visiteur en paramètre
 ///
-/// @author Yonni Chen
+/// @author The Ballers
 /// @date 2015-02-02
 /// @ingroup Visiteur
 ///////////////////////////////////////////////////////////////////////////

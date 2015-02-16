@@ -1,6 +1,6 @@
 ///////////////////////////////////////////////////////////////////////////
 /// @file NoeudCouvercle.h
-/// @author Aymen Djellal
+/// @author The Ballers
 /// @date 2015-01-24
 /// @version 1.0
 ///
@@ -17,7 +17,7 @@
 /// @class NoeudCouvercle
 /// @brief Classe qui représente un couvercle.
 ///
-/// @author Aymen Djellal
+/// @author The Ballers
 /// @date 2015-01-24
 /// @ingroup Noeud
 ///////////////////////////////////////////////////////////////////////////

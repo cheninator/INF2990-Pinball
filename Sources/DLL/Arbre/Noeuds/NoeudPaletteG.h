@@ -1,6 +1,6 @@
 ///////////////////////////////////////////////////////////////////////////
 /// @file NoeudPaletteG.h
-/// @author Aymen Djellal
+/// @author The Ballers
 /// @date 2015-01-24
 /// @version 1.0
 ///
@@ -17,7 +17,7 @@
 /// @class NoeudPaletteG
 /// @brief Classe qui représente une palette gauche.
 ///
-/// @author Aymen Djellal
+/// @author The Ballers
 /// @date 2015-01-24
 /// @ingroup Noeud
 ///////////////////////////////////////////////////////////////////////////

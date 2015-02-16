@@ -1,6 +1,6 @@
 ///////////////////////////////////////////////////////////////////////////
 /// @file NoeudButoirD.h
-/// @author Emilio Rivera
+/// @author The Ballers
 /// @date 2015-01-24
 /// @version 1.0
 ///
@@ -17,7 +17,7 @@
 /// @class NoeudButoirD
 /// @brief Classe qui représente un butoir droit.
 ///
-/// @author Emilio Rivera
+/// @author The Ballers
 /// @date 2015-01-19
 /// @ingroup Noeud
 ///////////////////////////////////////////////////////////////////////////

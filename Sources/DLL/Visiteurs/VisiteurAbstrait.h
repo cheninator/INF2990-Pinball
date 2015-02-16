@@ -28,7 +28,7 @@ class NoeudGenerateurBille;
 ///
 /// Classe de base de laquelle dérivent les visiteurs.
 ///
-/// @author Yonni Chen
+/// @author The Ballers
 /// @date 2015-02-02
 /// @ingroup Visiteur
 ///////////////////////////////////////////////////////////////////////////

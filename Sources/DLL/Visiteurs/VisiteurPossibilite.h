@@ -17,7 +17,7 @@
 /// @class VisiteurPossibilite
 /// @brief Classe qui assigne une possibilité à un noeud de l'arbre
 ///
-/// @author Philippe Carphin
+/// @author The Ballers
 /// @date 2015-02-02
 /// @ingroup Visiteur
 ///////////////////////////////////////////////////////////////////////////

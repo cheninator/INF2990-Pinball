@@ -17,7 +17,7 @@
 /// @class VisiteurCentreDeMasse
 /// @brief Utilisé pour calculer le centre de masse des noeuds sélectionnés
 ///
-/// @author Philippe Carphin
+/// @author The Ballers
 /// @date 2015-02-02
 /// @ingroup Visiteur
 ///////////////////////////////////////////////////////////////////////////

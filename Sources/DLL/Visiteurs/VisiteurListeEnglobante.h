@@ -1,6 +1,6 @@
 ///////////////////////////////////////////////////////////////////////////////
 /// @file VisiteurListeEnglobante.h
-/// @author Philippe Carphin
+/// @author The Ballers
 /// @date 2015-02-01
 /// @version 1.0
 ///
@@ -19,7 +19,7 @@ using conteneur_boite_englobante = std::pair<std::vector<glm::dvec3>, NoeudAbstr
 /// @class VisiteurListeEnglobante
 /// @brief Classe pour créer une Liste de rectangles englobants.
 ///
-/// @author Philippe Carphin
+/// @author The Ballers
 /// @date 2015-02-02
 /// @ingroup Visiteur
 ///////////////////////////////////////////////////////////////////////////

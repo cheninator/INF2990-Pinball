@@ -1,6 +1,6 @@
 ///////////////////////////////////////////////////////////////////////////////
 /// @file UsineNoeudPaletteG.h
-/// @author Emilio Rivera
+/// @author The Ballers
 /// @date 2015-01-24
 /// @version 1.0
 ///
@@ -17,7 +17,7 @@
 /// @brief Classe qui représente une usine capable de créer des noeuds de
 ///        type NoeudPaletteG.
 ///
-/// @author Emilio Rivera
+/// @author The Ballers
 /// @date 2015-01-24
 /// @ingroup Usine
 ///////////////////////////////////////////////////////////////////////////

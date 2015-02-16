@@ -19,7 +19,7 @@
 /// @class VisiteurCentreDeMasse
 /// @brief Utilisé pour calculer les limites de la selection
 ///
-/// @author Philippe Carphin
+/// @author The Ballers
 /// @date 2015-02-02
 /// @ingroup Visiteur
 ///////////////////////////////////////////////////////////////////////////

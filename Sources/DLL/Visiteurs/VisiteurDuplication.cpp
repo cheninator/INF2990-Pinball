@@ -1,6 +1,6 @@
 ////////////////////////////////////////////////
 /// @file   VisiteurDuplication.cpp
-/// @author Yonni Chen
+/// @author The Ballers
 /// @date   2015-02-01
 ///
 /// @ingroup Visiteur

@@ -1,6 +1,6 @@
 //////////////////////////////////////////////////////////////////////////////
 /// @file ArbreRenduINF2990Test.h
-/// @author Samuel Millette
+/// @author The Ballers
 /// @date 2015-02-12
 /// @version 1.0
 ///
@@ -23,7 +23,7 @@ class ArbreRenduINF2990;
 /// @brief Classe de test cppunit pour tester le bon fonctionnement des
 ///        méthodes de la classe ArbreRenduINF2990.
 ///
-/// @author Samuel Millette
+/// @author The Ballers
 /// @date 2015-02-12
 /// @ingroup Test
 ///////////////////////////////////////////////////////////////////////////

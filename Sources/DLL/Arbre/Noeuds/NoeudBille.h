@@ -1,6 +1,6 @@
 ///////////////////////////////////////////////////////////////////////////
 /// @file NoeudBille.h
-/// @author Yonni Chen
+/// @author The Ballers
 /// @date 2015-01-24
 /// @version 1.0
 ///
@@ -17,7 +17,7 @@
 /// @class NoeudBille
 /// @brief Classe qui représente une bille.
 ///
-/// @author Yonni Chen
+/// @author The Ballers
 /// @ingroup Noeud
 ///////////////////////////////////////////////////////////////////////////
 class NoeudBille : public NoeudComposite

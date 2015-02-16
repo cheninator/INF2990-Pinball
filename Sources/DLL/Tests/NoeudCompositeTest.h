@@ -1,6 +1,6 @@
 //////////////////////////////////////////////////////////////////////////////
 /// @file NoeudCompositeTest.h
-/// @author Samuel Millette
+/// @author The Ballers
 /// @date 2015-02-10
 /// @version 1.0
 ///
@@ -22,7 +22,7 @@ class NoeudTable;
 /// @brief Classe de test cppunit pour tester le bon fonctionnement des
 ///        méthodes de la classe NoeudComposite.
 ///
-/// @author Samuel Millette
+/// @author The Ballers
 /// @date 2015-02-10
 /// @ingroup Test
 ///////////////////////////////////////////////////////////////////////////
