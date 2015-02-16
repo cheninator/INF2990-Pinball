@@ -547,21 +547,13 @@ void ArbreRenduINF2990Test::testBoiteEnglobante()
 void ArbreRenduINF2990Test::testPalettes()
 {
 	// On initialise l'arbre avec le fichier XML par défaut.
-	arbre->initialiser();
-
-	// On accède à la table et on ajoute une palette droite et une gauche.
-	arbre->getEnfant(0)->ajouter(arbre->creerNoeud(ArbreRenduINF2990::NOM_PALETTED));
-	arbre->getEnfant(0)->ajouter(arbre->creerNoeud(ArbreRenduINF2990::NOM_PALETTEG));
-	CPPUNIT_ASSERT(arbre->getEnfant(0)->obtenirNombreEnfants() == 2+3);
+	arbre->initialiserXML("zones/testcouleurs.xml");
 
 	// On trouve les palettes de J1 et J2 (il y a une palette différente par joueur).
 	NoeudAbstrait* paletteDJ1 = arbre->getEnfant(0)->chercher(ArbreRenduINF2990::NOM_PALETTED);
 	NoeudAbstrait* paletteGJ2 = arbre->getEnfant(0)->chercher(ArbreRenduINF2990::NOM_PALETTEG);
 	
 	// On s'assure que leur couleur est differente.
-	arbre->getEnfant(0)->chercher(ArbreRenduINF2990::NOM_PALETTED)->setColorShift(false);
-	arbre->getEnfant(0)->chercher(ArbreRenduINF2990::NOM_PALETTEG)->setColorShift(true);
-
 	CPPUNIT_ASSERT(paletteDJ1->getColorShift() != paletteGJ2->getColorShift());
 
 	// On vide l'arbre.

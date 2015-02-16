@@ -67,21 +67,21 @@ void NoeudCompositeTest::testEnfants()
 	CPPUNIT_ASSERT(noeud->obtenirNombreEnfants() == 0);
 	CPPUNIT_ASSERT(noeud->calculerProfondeur() == 1);
 
-	// Essaie d'ajouter un noeud
+	// Essaie d'ajout d'un noeud
 	NoeudComposite* nouveauNoeud{ new NoeudCible{ ArbreRenduINF2990::NOM_CIBLE } };
 	bool ajout{ noeud->ajouter(nouveauNoeud) };
 
-	// L'ajout devrait avoir réussi, puisqu'il s'agit d'un noeud composite...
+	// L'ajout devrait avoir réussi, puisqu'il s'agit d'un noeud composite.
 	CPPUNIT_ASSERT(ajout == true);
 
-	// Assurons-nous que le noeud possède un d'enfant...
+	// Assurons-nous que le noeud possède un enfant.
 	CPPUNIT_ASSERT(noeud->obtenirNombreEnfants() == 1);
 	CPPUNIT_ASSERT(noeud->calculerProfondeur() == 2);
 
 	// Nettoyage
 	noeud->effacer(nouveauNoeud);
 
-	// Assurons-nous que le noeud ne possède plus d'enfant...
+	// Assurons-nous que le noeud ne possède plus d'enfants.
 	CPPUNIT_ASSERT(noeud->obtenirNombreEnfants() == 0);
 	CPPUNIT_ASSERT(noeud->calculerProfondeur() == 1);
 }
