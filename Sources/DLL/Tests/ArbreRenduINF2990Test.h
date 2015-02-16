@@ -38,8 +38,8 @@ class ArbreRenduINF2990Test : public CppUnit::TestFixture
 	// =================================================================
 	CPPUNIT_TEST_SUITE(ArbreRenduINF2990Test);
 	CPPUNIT_TEST(testArbreDefaut);
-	CPPUNIT_TEST(testXML);
-	CPPUNIT_TEST(testSuppression);
+	CPPUNIT_TEST(testXmlInexistant);
+	CPPUNIT_TEST(testPortails);
 	CPPUNIT_TEST(creerNoeudParUsine);
 	CPPUNIT_TEST(boiteEnglobante);
 	CPPUNIT_TEST(selectionTable);
@@ -78,10 +78,10 @@ public:
 	void testArbreDefaut();
 
 	/// Cas de test: Le fichier XML charge est n'existe pas.
-	void testXML();
+	void testXmlInexistant();
 
 	/// Cas de test: Suppression simple et multiple par le visiteur
-	void testSuppression();
+	void testPortails();
 
 	/// Cas de test: Creer un noeud de type inexistant.
 	void creerNoeudParUsine();

@@ -110,7 +110,7 @@ void ArbreRenduINF2990Test::testArbreDefaut()
 
 ////////////////////////////////////////////////////////////////////////
 ///
-/// @fn void ArbreRenduINF2990Test::testXML()
+/// @fn void ArbreRenduINF2990Test::testXmlInexistant()
 ///
 /// Cas de test: Ouverture de fichier XML et initialisation de l'arbre
 ///	à partir de ce que contient le fichier.
@@ -118,10 +118,10 @@ void ArbreRenduINF2990Test::testArbreDefaut()
 /// @return Aucune.
 ///
 ////////////////////////////////////////////////////////////////////////
-void ArbreRenduINF2990Test::testXML()
+void ArbreRenduINF2990Test::testXmlInexistant()
 {
 	// On ouvre un fichier inexistant
-	bool test = arbre->initialiserXML("zones/inexistant.xml");
+	bool test = arbre->initialiserXML("zones/.xml");
 	CPPUNIT_ASSERT(!test);
 
 	// On ouvre un fichier qui existe
@@ -134,50 +134,32 @@ void ArbreRenduINF2990Test::testXML()
 
 ////////////////////////////////////////////////////////////////////////
 ///
-/// @fn void ArbreRenduINF2990Test::testSuppression()
+/// @fn void ArbreRenduINF2990Test::testPortails()
 ///
-/// Cas de test: Test pour la suppression simple, suppression multiple et
-///	suppression de portails.
+/// Cas de test: Test de jumelage des portails.
 ///
 /// @return Aucune.
 ///
 ////////////////////////////////////////////////////////////////////////
-void ArbreRenduINF2990Test::testSuppression()
+void ArbreRenduINF2990Test::testPortails()
 {
-	// On initialise une zone de jeu
-	arbre->initialiserXML("zones/test.xml");
+	// On initialise une zone de jeu avec des portails
+	bool test = arbre->initialiserXML("zones/test.xml");
+	CPPUNIT_ASSERT(test);
 
-	// Instancier un visiteur de suppression
-	VisiteurSuppression* suppression = new VisiteurSuppression();
+	// On cherche un portail.
+	NoeudAbstrait* portail1 = arbre->chercher(ArbreRenduINF2990::NOM_PORTAIL);
 
-	// Selection simple suivi d'une suppression simple
-	arbre->getEnfant(0)->chercher("trou")->assignerSelection(true);
-	int nbEnfantsActuel = arbre->getEnfant(0)->obtenirNombreEnfants();
-	arbre->accepterVisiteur(suppression);
+	// On obtient le noeud lie au portail obtenu.
+	NoeudAbstrait* portail2 = portail1->getTwin();
 
-	// Le nombre d'éléments doit être necessairement différent
-	CPPUNIT_ASSERT(nbEnfantsActuel != arbre->getEnfant(0)->obtenirNombreEnfants());
-
-	// Selection multiple suivi d'une suppression multiple
-	arbre->getEnfant(0)->chercher("generateurbille")->assignerSelection(true);
-	arbre->getEnfant(0)->chercher("ressort")->assignerSelection(true);
-	nbEnfantsActuel = arbre->getEnfant(0)->obtenirNombreEnfants();
-	arbre->accepterVisiteur(suppression);
-
-	// Le nombre d'éléments doit être necessairement différent
-	CPPUNIT_ASSERT(nbEnfantsActuel != arbre->getEnfant(0)->obtenirNombreEnfants());
-
-	// Suppression d'un seul portail. Tester si son jumeau sera aussi supprimé
-	arbre->getEnfant(0)->chercher("portail")->assignerSelection(true);
-	nbEnfantsActuel = arbre->getEnfant(0)->obtenirNombreEnfants();
-	arbre->accepterVisiteur(suppression);
-
-	// Le nombre d'éléments est diminué de 2
-	CPPUNIT_ASSERT(nbEnfantsActuel == (arbre->getEnfant(0)->obtenirNombreEnfants() - 2));
+	// L'objet lie est un autre portail.
+	CPPUNIT_ASSERT(portail2->obtenirType() == ArbreRenduINF2990::NOM_PORTAIL);
 
 	// On vide l'arbre.
 	arbre->vider();
 }
+
 
 ////////////////////////////////////////////////////////////////////////
 ///
