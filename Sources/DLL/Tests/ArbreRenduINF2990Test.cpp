@@ -46,7 +46,7 @@ void ArbreRenduINF2990Test::setUp()
 	// Nous pourrions initialiser l'objet, mais puisqu'il s'agit d'un singleton,
 	// aucune initialisation n'est requise.
 
-	arbre = std::make_unique<ArbreRenduINF2990>();
+	arbre = std::make_unique<ArbreRenduINF2990>(false);
 }
 
 ////////////////////////////////////////////////////////////////////////

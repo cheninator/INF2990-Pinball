@@ -33,7 +33,7 @@ class ArbreRenduINF2990 : public ArbreRendu
 {
 public:
    /// Constructeur par defaut.
-   ArbreRenduINF2990();
+   ArbreRenduINF2990(bool afficher = true);
    /// Destructeur.
    virtual ~ArbreRenduINF2990();
 
