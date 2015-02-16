@@ -34,8 +34,8 @@ var NAVTREEINDEX =
 [
 "annotated.html",
 "d6/de7/class_noeud_palette_d.html",
-"da/d02/class_usine_noeud.html#a78cfb214df5805c43d4ca4b71411d060",
-"dc/dd7/_noeud_portail_8cpp.html"
+"da/d02/class_usine_noeud.html#a85c06ef4dd16234b35b97c796b52469d",
+"dc/dd7/_noeud_portail_8cpp_source.html"
 ];
 
 var SYNCONMSG = 'cliquez pour désactiver la synchronisation du panel';

@@ -182,13 +182,13 @@ $(document).ready(function(){initNavTree('d1/d07/_visiteur_agrandissement_8cpp_s
 <div class="line"><a name="l00144"></a><span class="lineno">  144</span>&#160;</div>
 <div class="line"><a name="l00145"></a><span class="lineno">  145</span>&#160;        <span class="keywordflow">for</span> (<span class="keywordtype">int</span> <a class="code" href="../../d7/d39/_facade_interface_native_8cpp.html#acb559820d9ca11295b4500f179ef6392">i</a> = 1; <a class="code" href="../../d7/d39/_facade_interface_native_8cpp.html#acb559820d9ca11295b4500f179ef6392">i</a> &lt; 4; <a class="code" href="../../d7/d39/_facade_interface_native_8cpp.html#acb559820d9ca11295b4500f179ef6392">i</a>++) <span class="comment">// Trouver le point le plus haut de la boite englobante.  </span></div>
 <div class="line"><a name="l00146"></a><span class="lineno">  146</span>&#160;        {</div>
-<div class="line"><a name="l00147"></a><span class="lineno">  147</span>&#160;            <span class="keywordflow">if</span> (zTop &lt; boite[<a class="code" href="../../d7/d39/_facade_interface_native_8cpp.html#acb559820d9ca11295b4500f179ef6392">i</a>].<a class="code" href="../../d7/d39/_facade_interface_native_8cpp.html#a7fd775a67c8f2860d69de918c218dd12">z</a>)</div>
+<div class="line"><a name="l00147"></a><span class="lineno">  147</span>&#160;            <span class="keywordflow">if</span> (zTop &gt; boite[<a class="code" href="../../d7/d39/_facade_interface_native_8cpp.html#acb559820d9ca11295b4500f179ef6392">i</a>].<a class="code" href="../../d7/d39/_facade_interface_native_8cpp.html#a7fd775a67c8f2860d69de918c218dd12">z</a>)</div>
 <div class="line"><a name="l00148"></a><span class="lineno">  148</span>&#160;                zTop = boite[<a class="code" href="../../d7/d39/_facade_interface_native_8cpp.html#acb559820d9ca11295b4500f179ef6392">i</a>].z;</div>
 <div class="line"><a name="l00149"></a><span class="lineno">  149</span>&#160;        }</div>
 <div class="line"><a name="l00150"></a><span class="lineno">  150</span>&#160;</div>
 <div class="line"><a name="l00151"></a><span class="lineno">  151</span>&#160;        <span class="keywordtype">double</span> distancePositionTop = zTop;</div>
 <div class="line"><a name="l00152"></a><span class="lineno">  152</span>&#160;        <span class="keywordtype">double</span> correctionZ = (1 - homothetie_[0]) * distancePositionTop; <span class="comment">// Homothetie[0] est de l&#39;ordre de 1.003, donc (1-homothetie[0]) est petie, donc la correction en z est petite.</span></div>
-<div class="line"><a name="l00153"></a><span class="lineno">  153</span>&#160;        position += glm::dvec3{ 0, 0, correctionZ };</div>
+<div class="line"><a name="l00153"></a><span class="lineno">  153</span>&#160;        position += glm::dvec3{ 0, 0, -correctionZ };</div>
 <div class="line"><a name="l00154"></a><span class="lineno">  154</span>&#160;        noeud-&gt;<a class="code" href="../../da/df4/class_noeud_abstrait.html#a878010d449b8717e7b46260f845e97dd">assignerEchelle</a>(scaleFinal);</div>
 <div class="line"><a name="l00155"></a><span class="lineno">  155</span>&#160;        noeud-&gt;<a class="code" href="../../da/df4/class_noeud_abstrait.html#a11e12e42b05a5327c92cd7fd1b7e5a24">assignerPositionRelative</a>(position);</div>
 <div class="line"><a name="l00156"></a><span class="lineno">  156</span>&#160;        </div>
@@ -278,7 +278,7 @@ $(document).ready(function(){initNavTree('d1/d07/_visiteur_agrandissement_8cpp_s
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="../../dir_937900b87e0c7a5fa01190c395fb83f7.html">Sources</a></li><li class="navelem"><a class="el" href="../../dir_5638be7ced97c879b21b23536e800e77.html">DLL</a></li><li class="navelem"><a class="el" href="../../dir_7d87219ddab679acc20c941422b2a09d.html">Visiteurs</a></li><li class="navelem"><a class="el" href="../../d1/d07/_visiteur_agrandissement_8cpp.html">VisiteurAgrandissement.cpp</a></li>
-    <li class="footer">Généré le Lundi 16 Février 2015 07:10:21 pour Pain Ball par
+    <li class="footer">Généré le Lundi 16 Février 2015 11:15:23 pour Pain Ball par
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="../../doxygen.png" alt="doxygen"/></a> 1.8.9.1 </li>
   </ul>
