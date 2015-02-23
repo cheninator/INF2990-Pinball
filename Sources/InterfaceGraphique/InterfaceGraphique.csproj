@@ -80,6 +80,18 @@
     <Compile Include="Aide.Designer.cs">
       <DependentUpon>Aide.cs</DependentUpon>
     </Compile>
+    <Compile Include="Campagne.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Campagne.Designer.cs">
+      <DependentUpon>Campagne.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Configuration.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Configuration.Designer.cs">
+      <DependentUpon>Configuration.cs</DependentUpon>
+    </Compile>
     <Compile Include="Etats\Etat.cs" />
     <Compile Include="Exemple.cs">
       <SubType>Form</SubType>
@@ -92,6 +104,12 @@
     </Compile>
     <Compile Include="MenuPrincipal.Designer.cs">
       <DependentUpon>MenuPrincipal.cs</DependentUpon>
+    </Compile>
+    <Compile Include="PartieRapide.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="PartieRapide.Designer.cs">
+      <DependentUpon>PartieRapide.cs</DependentUpon>
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -239,6 +257,8 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="%24this.Icon.ico" />
+    <None Include="Resources\man-scream-01.wav" />
+    <None Include="Resources\baby.jpeg" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>

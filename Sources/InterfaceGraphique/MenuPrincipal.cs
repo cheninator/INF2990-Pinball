@@ -37,6 +37,9 @@ namespace InterfaceGraphique
         System.Media.SoundPlayer player = new System.Media.SoundPlayer(Properties.Resources.button_29); ///< Sound player
         public Exemple modeEdit; ///< Form du mode edition
         private Thread myThread; ///< Une thread
+        private Campagne campagne;
+        private PartieRapide pRapide;
+        private Configuration configuration;
 
         ////////////////////////////////////////////////////////////////////////
         ///
@@ -123,10 +126,10 @@ namespace InterfaceGraphique
         ////////////////////////////////////////////////////////////////////////
         private void bouton_edit_MouseEnter(object sender, EventArgs e)
         {
-            bouton_edit.ForeColor = Color.Green;
-            bouton_edit.FlatAppearance.BorderColor = Color.Black;
-            bouton_edit.FlatAppearance.BorderSize = 1;
-            player.Play();
+           bouton_edit.ForeColor = Color.Green;
+           bouton_edit.FlatAppearance.BorderColor = Color.Black;
+           bouton_edit.FlatAppearance.BorderSize = 1;
+           player.Play();
         }
 
         ////////////////////////////////////////////////////////////////////////
@@ -161,10 +164,10 @@ namespace InterfaceGraphique
         ////////////////////////////////////////////////////////////////////////
         private void bouton_quit_MouseEnter(object sender, EventArgs e)
         {
-            bouton_quit.FlatAppearance.BorderSize = 1;
-            bouton_quit.ForeColor = Color.Red;
-            bouton_quit.FlatAppearance.BorderColor = Color.Black;
-            player.Play();
+           bouton_quit.FlatAppearance.BorderSize = 1;
+           bouton_quit.ForeColor = Color.Red;
+           bouton_quit.FlatAppearance.BorderColor = Color.Black;
+           player.Play();
             
         }
 
@@ -220,7 +223,80 @@ namespace InterfaceGraphique
 
         private void bouton_campagne_Click(object sender, EventArgs e)
         {
+            campagne = new Campagne();
+            this.Hide();
+            campagne.ShowDialog();
+            this.Show();
+        }
 
+        private void bouton_config_MouseEnter(object sender, EventArgs e)
+        {
+            bouton_config.ForeColor = Color.Green;
+            bouton_config.FlatAppearance.BorderColor = Color.Black;
+            bouton_config.FlatAppearance.BorderSize = 1;
+            player.Play();
+        }
+
+        private void bouton_config_MouseLeave(object sender, EventArgs e)
+        {
+            bouton_config.FlatAppearance.BorderSize = 0;
+            bouton_config.ForeColor = Color.Black;
+        }
+
+        private void bouton_campagne_MouseEnter(object sender, EventArgs e)
+        {
+            bouton_campagne.ForeColor = Color.Green;
+            bouton_campagne.FlatAppearance.BorderColor = Color.Black;
+            bouton_campagne.FlatAppearance.BorderSize = 1;
+            player.Play();
+        }
+
+        private void bouton_campagne_MouseLeave(object sender, EventArgs e)
+        {
+            bouton_campagne.FlatAppearance.BorderSize = 0;
+            bouton_campagne.ForeColor = Color.Black;
+        }
+
+        private void bouton_pRapide_MouseEnter(object sender, EventArgs e)
+        {
+            bouton_pRapide.ForeColor = Color.Green;
+            bouton_pRapide.FlatAppearance.BorderColor = Color.Black;
+            bouton_pRapide.FlatAppearance.BorderSize = 1;
+            player.Play();
+        }
+
+        private void bouton_pRapide_MouseLeave(object sender, EventArgs e)
+        {
+            bouton_pRapide.FlatAppearance.BorderSize = 0;
+            bouton_pRapide.ForeColor = Color.Black;
+        }
+
+        private void pictureBox1_MouseEnter(object sender, EventArgs e)
+        {
+            pictureBox1.Image = Properties.Resources.baby;
+            player.Stream = Properties.Resources.man_scream_01;
+            player.Play();
+        }
+
+        private void pictureBox1_MouseLeave(object sender, EventArgs e)
+        {
+            pictureBox1.Image = Properties.Resources.pinball1;
+            player.Stream = Properties.Resources.button_29;
+        }
+
+        private void bouton_pRapide_Click(object sender, EventArgs e)
+        {
+            pRapide = new PartieRapide();
+            this.Hide();
+            pRapide.ShowDialog();
+            this.Show();
+            
+        }
+
+        private void bouton_config_Click(object sender, EventArgs e)
+        {
+            configuration = new Configuration();
+            configuration.ShowDialog();
         } 
     }                                  
 }

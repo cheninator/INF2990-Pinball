@@ -49,18 +49,21 @@ namespace InterfaceGraphique
             // 
             // bouton_config
             // 
-            this.bouton_config.Enabled = false;
+            this.bouton_config.BackColor = System.Drawing.SystemColors.Control;
             this.bouton_config.FlatAppearance.BorderSize = 0;
-            this.bouton_config.FlatAppearance.MouseOverBackColor = System.Drawing.Color.ForestGreen;
+            this.bouton_config.FlatAppearance.MouseOverBackColor = System.Drawing.SystemColors.ButtonFace;
             this.bouton_config.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.bouton_config.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.bouton_config.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.bouton_config.Location = new System.Drawing.Point(0, 318);
+            this.bouton_config.ForeColor = System.Drawing.SystemColors.ControlText;
+            this.bouton_config.Location = new System.Drawing.Point(0, 320);
             this.bouton_config.Name = "bouton_config";
-            this.bouton_config.Size = new System.Drawing.Size(384, 73);
+            this.bouton_config.Size = new System.Drawing.Size(384, 70);
             this.bouton_config.TabIndex = 0;
             this.bouton_config.Text = "Configuration";
-            this.bouton_config.UseVisualStyleBackColor = true;
+            this.bouton_config.UseVisualStyleBackColor = false;
+            this.bouton_config.Click += new System.EventHandler(this.bouton_config_Click);
+            this.bouton_config.MouseEnter += new System.EventHandler(this.bouton_config_MouseEnter);
+            this.bouton_config.MouseLeave += new System.EventHandler(this.bouton_config_MouseLeave);
             // 
             // bouton_edit
             // 
@@ -69,9 +72,9 @@ namespace InterfaceGraphique
             this.bouton_edit.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.bouton_edit.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.bouton_edit.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.bouton_edit.Location = new System.Drawing.Point(0, 386);
+            this.bouton_edit.Location = new System.Drawing.Point(0, 390);
             this.bouton_edit.Name = "bouton_edit";
-            this.bouton_edit.Size = new System.Drawing.Size(384, 70);
+            this.bouton_edit.Size = new System.Drawing.Size(384, 66);
             this.bouton_edit.TabIndex = 1;
             this.bouton_edit.Text = "Éditeur";
             this.bouton_edit.UseVisualStyleBackColor = true;
@@ -103,29 +106,34 @@ namespace InterfaceGraphique
             this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
             this.pictureBox1.TabIndex = 3;
             this.pictureBox1.TabStop = false;
+            this.pictureBox1.MouseEnter += new System.EventHandler(this.pictureBox1_MouseEnter);
+            this.pictureBox1.MouseLeave += new System.EventHandler(this.pictureBox1_MouseLeave);
             // 
             // bouton_pRapide
             // 
             this.bouton_pRapide.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.bouton_pRapide.Enabled = false;
+            this.bouton_pRapide.BackColor = System.Drawing.SystemColors.Control;
             this.bouton_pRapide.FlatAppearance.BorderSize = 0;
-            this.bouton_pRapide.FlatAppearance.MouseOverBackColor = System.Drawing.Color.ForestGreen;
+            this.bouton_pRapide.FlatAppearance.MouseOverBackColor = System.Drawing.SystemColors.ButtonFace;
             this.bouton_pRapide.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.bouton_pRapide.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.bouton_pRapide.Location = new System.Drawing.Point(0, 247);
+            this.bouton_pRapide.Location = new System.Drawing.Point(0, 255);
             this.bouton_pRapide.Name = "bouton_pRapide";
-            this.bouton_pRapide.Size = new System.Drawing.Size(384, 73);
+            this.bouton_pRapide.Size = new System.Drawing.Size(384, 65);
             this.bouton_pRapide.TabIndex = 4;
             this.bouton_pRapide.Text = "Partie Rapide";
-            this.bouton_pRapide.UseVisualStyleBackColor = true;
+            this.bouton_pRapide.UseVisualStyleBackColor = false;
+            this.bouton_pRapide.Click += new System.EventHandler(this.bouton_pRapide_Click);
+            this.bouton_pRapide.MouseEnter += new System.EventHandler(this.bouton_pRapide_MouseEnter);
+            this.bouton_pRapide.MouseLeave += new System.EventHandler(this.bouton_pRapide_MouseLeave);
             // 
             // bouton_campagne
             // 
-            this.bouton_campagne.Enabled = false;
+            this.bouton_campagne.BackColor = System.Drawing.SystemColors.Control;
             this.bouton_campagne.FlatAppearance.BorderSize = 0;
-            this.bouton_campagne.FlatAppearance.MouseOverBackColor = System.Drawing.Color.ForestGreen;
+            this.bouton_campagne.FlatAppearance.MouseOverBackColor = System.Drawing.SystemColors.ButtonFace;
             this.bouton_campagne.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.bouton_campagne.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.bouton_campagne.Location = new System.Drawing.Point(0, 176);
@@ -133,8 +141,10 @@ namespace InterfaceGraphique
             this.bouton_campagne.Size = new System.Drawing.Size(384, 73);
             this.bouton_campagne.TabIndex = 5;
             this.bouton_campagne.Text = "Campagne";
-            this.bouton_campagne.UseVisualStyleBackColor = true;
+            this.bouton_campagne.UseVisualStyleBackColor = false;
             this.bouton_campagne.Click += new System.EventHandler(this.bouton_campagne_Click);
+            this.bouton_campagne.MouseEnter += new System.EventHandler(this.bouton_campagne_MouseEnter);
+            this.bouton_campagne.MouseLeave += new System.EventHandler(this.bouton_campagne_MouseLeave);
             // 
             // MainMenu
             // 
