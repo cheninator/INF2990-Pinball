@@ -45,7 +45,7 @@ namespace InterfaceGraphique
         public int panelWidth; ///< Largeur de la fenetre
         private bool ctrlDown = false;
         private bool altDown = false;
-        public List<int> propZJ = new List<int> { 10, 10, 10, 10, 10, 1 }; ///< Une liste de choses
+        public List<int> propZJ = new List<int> { 100, 100, 100, 1000, 500, 1 }; ///< Une liste de choses
         private float angleX = 0F; ///< Position en X
         private float angleY = 0F; ///< Position en Y
         private float angleZ = 0F; ///< Position en Z
