@@ -18,6 +18,7 @@ namespace InterfaceGraphique
         public Configuration()
         {
             InitializeComponent();
+            comboBoxBilles.Text = "3";
             KeyPreview = true;
             // TO DO : LIRE UN XML ET PRENDRE LES VALEURS
 
@@ -174,6 +175,11 @@ namespace InterfaceGraphique
         {
             //Ressort_bouton.ForeColor = Color.Red;
             LabelChange("Ressorts");
+        }
+
+        private void OK_bouton_Click(object sender, EventArgs e)
+        {
+           // Console.WriteLine(MDB_OK.Checked);
         }
 
         

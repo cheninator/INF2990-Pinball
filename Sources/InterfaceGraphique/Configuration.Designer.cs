@@ -43,11 +43,22 @@
             this.label_PDJ1 = new System.Windows.Forms.Label();
             this.Label_PGJ1 = new System.Windows.Forms.Label();
             this.tabPage2 = new System.Windows.Forms.TabPage();
+            this.comboBoxBilles = new System.Windows.Forms.ComboBox();
+            this.labelDoublesBilles = new System.Windows.Forms.Label();
             this.tabPage3 = new System.Windows.Forms.TabPage();
             this.OK_bouton = new System.Windows.Forms.Button();
             this.Annuler_bouton = new System.Windows.Forms.Button();
+            this.MDB_OK = new System.Windows.Forms.RadioButton();
+            this.MDB_Cancel = new System.Windows.Forms.RadioButton();
+            this.GBox_ModeBilles = new System.Windows.Forms.GroupBox();
+            this.GBOX_acceleration = new System.Windows.Forms.GroupBox();
+            this.FRS_Cancel = new System.Windows.Forms.RadioButton();
+            this.FRS_OK = new System.Windows.Forms.RadioButton();
             this.tabProprietes.SuspendLayout();
             this.tabPage1.SuspendLayout();
+            this.tabPage2.SuspendLayout();
+            this.GBox_ModeBilles.SuspendLayout();
+            this.GBOX_acceleration.SuspendLayout();
             this.SuspendLayout();
             // 
             // tabProprietes
@@ -223,6 +234,10 @@
             // 
             // tabPage2
             // 
+            this.tabPage2.Controls.Add(this.GBOX_acceleration);
+            this.tabPage2.Controls.Add(this.GBox_ModeBilles);
+            this.tabPage2.Controls.Add(this.comboBoxBilles);
+            this.tabPage2.Controls.Add(this.labelDoublesBilles);
             this.tabPage2.Location = new System.Drawing.Point(4, 22);
             this.tabPage2.Name = "tabPage2";
             this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
@@ -230,6 +245,28 @@
             this.tabPage2.TabIndex = 1;
             this.tabPage2.Text = "Configuration de jeu";
             this.tabPage2.UseVisualStyleBackColor = true;
+            // 
+            // comboBoxBilles
+            // 
+            this.comboBoxBilles.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.comboBoxBilles.FormattingEnabled = true;
+            this.comboBoxBilles.Items.AddRange(new object[] {
+            "3",
+            "5",
+            "7"});
+            this.comboBoxBilles.Location = new System.Drawing.Point(215, 14);
+            this.comboBoxBilles.Name = "comboBoxBilles";
+            this.comboBoxBilles.Size = new System.Drawing.Size(81, 21);
+            this.comboBoxBilles.TabIndex = 3;
+            // 
+            // labelDoublesBilles
+            // 
+            this.labelDoublesBilles.AutoSize = true;
+            this.labelDoublesBilles.Location = new System.Drawing.Point(6, 22);
+            this.labelDoublesBilles.Name = "labelDoublesBilles";
+            this.labelDoublesBilles.Size = new System.Drawing.Size(143, 13);
+            this.labelDoublesBilles.TabIndex = 0;
+            this.labelDoublesBilles.Text = "Nombre de billes disponibles:";
             // 
             // tabPage3
             // 
@@ -248,6 +285,7 @@
             this.OK_bouton.TabIndex = 1;
             this.OK_bouton.Text = "Accepter";
             this.OK_bouton.UseVisualStyleBackColor = true;
+            this.OK_bouton.Click += new System.EventHandler(this.OK_bouton_Click);
             // 
             // Annuler_bouton
             // 
@@ -258,6 +296,74 @@
             this.Annuler_bouton.Text = "Annuler";
             this.Annuler_bouton.UseVisualStyleBackColor = true;
             this.Annuler_bouton.Click += new System.EventHandler(this.Annuler_bouton_Click);
+            // 
+            // MDB_OK
+            // 
+            this.MDB_OK.AutoSize = true;
+            this.MDB_OK.Location = new System.Drawing.Point(9, 32);
+            this.MDB_OK.Name = "MDB_OK";
+            this.MDB_OK.Size = new System.Drawing.Size(58, 17);
+            this.MDB_OK.TabIndex = 4;
+            this.MDB_OK.TabStop = true;
+            this.MDB_OK.Text = "Activer";
+            this.MDB_OK.UseVisualStyleBackColor = true;
+            // 
+            // MDB_Cancel
+            // 
+            this.MDB_Cancel.AutoSize = true;
+            this.MDB_Cancel.Checked = true;
+            this.MDB_Cancel.Location = new System.Drawing.Point(9, 55);
+            this.MDB_Cancel.Name = "MDB_Cancel";
+            this.MDB_Cancel.Size = new System.Drawing.Size(76, 17);
+            this.MDB_Cancel.TabIndex = 5;
+            this.MDB_Cancel.TabStop = true;
+            this.MDB_Cancel.Text = "Desactiver";
+            this.MDB_Cancel.UseVisualStyleBackColor = true;
+            // 
+            // GBox_ModeBilles
+            // 
+            this.GBox_ModeBilles.Controls.Add(this.MDB_Cancel);
+            this.GBox_ModeBilles.Controls.Add(this.MDB_OK);
+            this.GBox_ModeBilles.Location = new System.Drawing.Point(9, 53);
+            this.GBox_ModeBilles.Name = "GBox_ModeBilles";
+            this.GBox_ModeBilles.Size = new System.Drawing.Size(287, 92);
+            this.GBox_ModeBilles.TabIndex = 6;
+            this.GBox_ModeBilles.TabStop = false;
+            this.GBox_ModeBilles.Text = "Mode Double Billes";
+            // 
+            // GBOX_acceleration
+            // 
+            this.GBOX_acceleration.Controls.Add(this.FRS_Cancel);
+            this.GBOX_acceleration.Controls.Add(this.FRS_OK);
+            this.GBOX_acceleration.Location = new System.Drawing.Point(9, 161);
+            this.GBOX_acceleration.Name = "GBOX_acceleration";
+            this.GBOX_acceleration.Size = new System.Drawing.Size(287, 98);
+            this.GBOX_acceleration.TabIndex = 7;
+            this.GBOX_acceleration.TabStop = false;
+            this.GBOX_acceleration.Text = "Force de rebond supplémentaire";
+            // 
+            // FRS_Cancel
+            // 
+            this.FRS_Cancel.AutoSize = true;
+            this.FRS_Cancel.Location = new System.Drawing.Point(9, 52);
+            this.FRS_Cancel.Name = "FRS_Cancel";
+            this.FRS_Cancel.Size = new System.Drawing.Size(76, 17);
+            this.FRS_Cancel.TabIndex = 7;
+            this.FRS_Cancel.TabStop = true;
+            this.FRS_Cancel.Text = "Desactiver";
+            this.FRS_Cancel.UseVisualStyleBackColor = true;
+            // 
+            // FRS_OK
+            // 
+            this.FRS_OK.AutoSize = true;
+            this.FRS_OK.Checked = true;
+            this.FRS_OK.Location = new System.Drawing.Point(9, 29);
+            this.FRS_OK.Name = "FRS_OK";
+            this.FRS_OK.Size = new System.Drawing.Size(58, 17);
+            this.FRS_OK.TabIndex = 6;
+            this.FRS_OK.TabStop = true;
+            this.FRS_OK.Text = "Activer";
+            this.FRS_OK.UseVisualStyleBackColor = true;
             // 
             // Configuration
             // 
@@ -272,6 +378,12 @@
             this.Text = "Configuration";
             this.tabProprietes.ResumeLayout(false);
             this.tabPage1.ResumeLayout(false);
+            this.tabPage2.ResumeLayout(false);
+            this.tabPage2.PerformLayout();
+            this.GBox_ModeBilles.ResumeLayout(false);
+            this.GBox_ModeBilles.PerformLayout();
+            this.GBOX_acceleration.ResumeLayout(false);
+            this.GBOX_acceleration.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -296,5 +408,13 @@
         private System.Windows.Forms.Button PDJ1_bouton;
         private System.Windows.Forms.Button PGJ1_bouton;
         private System.Windows.Forms.Label label_Rebind;
+        private System.Windows.Forms.ComboBox comboBoxBilles;
+        private System.Windows.Forms.Label labelDoublesBilles;
+        private System.Windows.Forms.GroupBox GBOX_acceleration;
+        private System.Windows.Forms.RadioButton FRS_Cancel;
+        private System.Windows.Forms.RadioButton FRS_OK;
+        private System.Windows.Forms.GroupBox GBox_ModeBilles;
+        private System.Windows.Forms.RadioButton MDB_Cancel;
+        private System.Windows.Forms.RadioButton MDB_OK;
     }
 }
