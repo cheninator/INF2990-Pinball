@@ -45,7 +45,7 @@ namespace InterfaceGraphique
         public int panelWidth; ///< Largeur de la fenetre
         private bool ctrlDown = false;
         private bool altDown = false;
-        public List<int> propZJ = new List<int> { 10, 10, 10, 10, 10, 1 }; ///< Une liste de choses
+        public List<int> propZJ = new List<int> { 100, 100, 100, 1000, 500, 1 }; ///< Une liste de choses
         private float angleX = 0F; ///< Position en X
         private float angleY = 0F; ///< Position en Y
         private float angleZ = 0F; ///< Position en Z
@@ -2669,6 +2669,17 @@ namespace InterfaceGraphique
         private void flowLayoutPanel1_SizeChanged(object sender, EventArgs e)
         {
             richTextBox1.Height = flowLayoutPanel1.Height - 500;
+        }
+
+        private void Bille_bouton_Click(object sender, EventArgs e)
+        {
+            etat = new EtatCreation(this);
+            Console.WriteLine("Bille");
+            myObjectName = new StringBuilder("bille");
+            colorShift = false;
+            angleX = 0;
+            angleY = 0;
+            angleZ = 0;
         }
     }
 

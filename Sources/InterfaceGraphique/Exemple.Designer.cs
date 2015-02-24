@@ -123,6 +123,7 @@ namespace InterfaceGraphique
             this.Aide_MenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.Mute_MenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.printPreviewDialog1 = new System.Windows.Forms.PrintPreviewDialog();
+            this.Bille_bouton = new System.Windows.Forms.Button();
             this.panel1.SuspendLayout();
             this.Creation_Panel.SuspendLayout();
             this.Groupe_Palettes.SuspendLayout();
@@ -174,6 +175,7 @@ namespace InterfaceGraphique
             this.Creation_Panel.Controls.Add(this.Group_Butoir);
             this.Creation_Panel.Controls.Add(this.Group_Elements);
             this.Creation_Panel.Controls.Add(this.Group_Element2);
+            this.Creation_Panel.Controls.Add(this.Bille_bouton);
             this.Creation_Panel.Dock = System.Windows.Forms.DockStyle.Right;
             this.Creation_Panel.Location = new System.Drawing.Point(729, 24);
             this.Creation_Panel.Name = "Creation_Panel";
@@ -1044,6 +1046,19 @@ namespace InterfaceGraphique
             this.printPreviewDialog1.Name = "printPreviewDialog1";
             this.printPreviewDialog1.Visible = false;
             // 
+            // Bille_bouton
+            // 
+            this.Bille_bouton.BackgroundImage = global::InterfaceGraphique.Properties.Resources.ball;
+            this.Bille_bouton.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.Bille_bouton.Location = new System.Drawing.Point(3, 552);
+            this.Bille_bouton.Name = "Bille_bouton";
+            this.Bille_bouton.Size = new System.Drawing.Size(218, 69);
+            this.Bille_bouton.TabIndex = 9;
+            this.Bille_bouton.Text = "bille";
+            this.Bille_bouton.TextAlign = System.Drawing.ContentAlignment.TopRight;
+            this.Bille_bouton.UseVisualStyleBackColor = true;
+            this.Bille_bouton.Click += new System.EventHandler(this.Bille_bouton_Click);
+            // 
             // Exemple
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -1164,6 +1179,7 @@ namespace InterfaceGraphique
         private System.Windows.Forms.GroupBox OutilGraphique;
         private System.Windows.Forms.Label labelOCourant;
         private System.Windows.Forms.RichTextBox richTextBox1;
+        private System.Windows.Forms.Button Bille_bouton;
     }
 }
 
