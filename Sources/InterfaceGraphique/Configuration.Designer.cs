@@ -103,6 +103,8 @@
             this.Ressort_bouton.TabIndex = 15;
             this.Ressort_bouton.Text = "Espace";
             this.Ressort_bouton.UseVisualStyleBackColor = true;
+            this.Ressort_bouton.Click += new System.EventHandler(this.Ressort_bouton_Click);
+            this.Ressort_bouton.KeyDown += new System.Windows.Forms.KeyEventHandler(this.Ressort_bouton_KeyDown);
             // 
             // PDJ2_bouton
             // 
@@ -114,6 +116,8 @@
             this.PDJ2_bouton.TabIndex = 14;
             this.PDJ2_bouton.Text = "5";
             this.PDJ2_bouton.UseVisualStyleBackColor = true;
+            this.PDJ2_bouton.Click += new System.EventHandler(this.PDJ2_bouton_Click);
+            this.PDJ2_bouton.KeyDown += new System.Windows.Forms.KeyEventHandler(this.PDJ2_bouton_KeyDown);
             // 
             // PGJ2_bouton
             // 
@@ -125,6 +129,8 @@
             this.PGJ2_bouton.TabIndex = 13;
             this.PGJ2_bouton.Text = "4";
             this.PGJ2_bouton.UseVisualStyleBackColor = true;
+            this.PGJ2_bouton.Click += new System.EventHandler(this.PGJ2_bouton_Click);
+            this.PGJ2_bouton.KeyDown += new System.Windows.Forms.KeyEventHandler(this.PGJ2_bouton_KeyDown);
             // 
             // PDJ1_bouton
             // 
@@ -134,8 +140,10 @@
             this.PDJ1_bouton.Name = "PDJ1_bouton";
             this.PDJ1_bouton.Size = new System.Drawing.Size(118, 35);
             this.PDJ1_bouton.TabIndex = 12;
-            this.PDJ1_bouton.Text = "s";
+            this.PDJ1_bouton.Text = "S";
             this.PDJ1_bouton.UseVisualStyleBackColor = true;
+            this.PDJ1_bouton.Click += new System.EventHandler(this.PDJ1_bouton_Click);
+            this.PDJ1_bouton.KeyDown += new System.Windows.Forms.KeyEventHandler(this.PDJ1_bouton_KeyDown);
             // 
             // PGJ1_bouton
             // 
@@ -146,7 +154,7 @@
             this.PGJ1_bouton.Name = "PGJ1_bouton";
             this.PGJ1_bouton.Size = new System.Drawing.Size(118, 35);
             this.PGJ1_bouton.TabIndex = 11;
-            this.PGJ1_bouton.Text = "a";
+            this.PGJ1_bouton.Text = "A";
             this.PGJ1_bouton.UseVisualStyleBackColor = true;
             this.PGJ1_bouton.Click += new System.EventHandler(this.PGJ1_bouton_Click);
             this.PGJ1_bouton.KeyDown += new System.Windows.Forms.KeyEventHandler(this.PGJ1_bouton_KeyDown);
