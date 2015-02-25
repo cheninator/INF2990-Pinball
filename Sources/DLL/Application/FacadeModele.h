@@ -32,6 +32,7 @@
 
 class NoeudAbstrait;
 class ArbreRenduINF2990;
+class ConfigScene;
 
 namespace vue {
    class Vue;
@@ -142,7 +143,9 @@ public:
    ///verifie si la selection est hors table lors de la duplication
    bool duplicationEstHorsTable();
 
-	private:
+   void sauvegarderConfigXML(int touches[5], bool doubleBille, bool rebond, int debug[4]);
+
+private:
 
    /// Constructeur par defaut.
    FacadeModele() = default;
@@ -165,6 +168,7 @@ public:
 
    vue::Vue* vue_{ nullptr };				/// Vue courante de la scene.
    ArbreRenduINF2990* arbre_{ nullptr };	/// Arbre de rendu contenant les differents objets de la scene.
+   ConfigScene* configuration_{ nullptr };
 
    glm::dvec3 selectionBasGauche_, selectionHautDroit_;
    glm::ivec2 pointInitial_, pointAvant_;

@@ -2939,5 +2939,8 @@ namespace InterfaceGraphique
 
         [DllImport(@"Noyau.dll", CallingConvention = CallingConvention.Cdecl)]
         public static extern bool duplicationEstHorsTable();
+
+        [DllImport(@"Noyau.dll", CallingConvention = CallingConvention.Cdecl)]
+        public static extern void creerConfigXML(int[] touches, bool doubleBille, bool rebond, int[] debug);
     }
 }

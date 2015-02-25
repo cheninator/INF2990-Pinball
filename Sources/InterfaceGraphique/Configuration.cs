@@ -17,7 +17,7 @@ namespace InterfaceGraphique
         int nbBilles = 3;
         bool modeDBille = false;
         bool modeRebond = false;
-        bool[] afficherDebug = { true, true, true, true };
+        int[] afficherDebug = { 1, 1, 1, 1 };
         string maTouche;
         bool mediaPlaying = false;
         System.Media.SoundPlayer p = new System.Media.SoundPlayer(Properties.Resources.touche_invalide);
@@ -200,17 +200,31 @@ namespace InterfaceGraphique
         private void OK_bouton_Click(object sender, EventArgs e)
         {
             nbBilles = Convert.ToInt32(comboBoxBilles.Text.ToString());
-            modeDBille = MDB_Cancel.Checked;
+            modeDBille = MDB_OK.Checked;
             modeRebond = FRS_OK.Checked;
-            bool[] afficherDebug = 
+            int[] afficherDebug = 
             { 
-                GB_OK.Checked, 
-                VAC_OK.Checked, 
-                AE_OK.Checked, 
-                PORTAL_OK.Checked 
+                Convert.ToInt32(GB_OK.Checked), 
+                Convert.ToInt32(VAC_OK.Checked), 
+                Convert.ToInt32(AE_OK.Checked), 
+                Convert.ToInt32(PORTAL_OK.Checked) 
             };
+
+            int[] touches = new int[5];
+            for(int i = 0; i < 5; i++)
+                touches[i] = currentValues[i];
+
+            
+
+            FonctionsNatives.creerConfigXML(touches, modeDBille, modeRebond, afficherDebug);
         }
 
+    }
+
+
+    public partial class FonctionsNatives
+    {
         
     }
+
 }

@@ -1301,6 +1301,14 @@ extern "C"
 		return FacadeModele::obtenirInstance()->duplicationEstHorsTable();
 	}
 
+
+
+	__declspec(dllexport) void __cdecl creerConfigXML(int touches[5], bool doubleBille, bool rebond, int debug[4])
+	{
+		FacadeModele::obtenirInstance()->sauvegarderConfigXML(touches, doubleBille, rebond, debug);
+	}
+
+
 	/*
 	#include <FTGL/ftgl.h>
 
