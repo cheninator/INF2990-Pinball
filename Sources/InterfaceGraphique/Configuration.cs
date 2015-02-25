@@ -14,6 +14,10 @@ namespace InterfaceGraphique
     {
         char[] defaultValues = { 'A', 'S', '4', '5' };
         int[] currentValues = {65,83,52,53,32,49,50,74,75,76,66 };
+        int nbBilles = 3;
+        bool modeDBille = false;
+        bool modeRebond = false;
+        bool[] afficherDebug = { true, true, true, true };
         string maTouche;
         bool mediaPlaying = false;
         System.Media.SoundPlayer p = new System.Media.SoundPlayer(Properties.Resources.touche_invalide);
@@ -23,6 +27,13 @@ namespace InterfaceGraphique
             comboBoxBilles.Text = "3";
             KeyPreview = true;
             // TO DO : LIRE UN XML ET PRENDRE LES VALEURS
+            InitialiserAvecXML();
+        }
+
+        private void InitialiserAvecXML()
+        {
+
+
 
         }
         private bool isValid(int touche)
@@ -123,6 +134,7 @@ namespace InterfaceGraphique
             if (this.isValid(touche) == true)
             {
                 maTouche = char.ConvertFromUtf32(touche);
+                currentValues[2] = touche;
                 if (maTouche == " ")
                     maTouche = "Espace";
                 PGJ2_bouton.Text = maTouche;
@@ -187,7 +199,16 @@ namespace InterfaceGraphique
 
         private void OK_bouton_Click(object sender, EventArgs e)
         {
-           // Console.WriteLine(MDB_OK.Checked);
+            nbBilles = Convert.ToInt32(comboBoxBilles.Text.ToString());
+            modeDBille = MDB_Cancel.Checked;
+            modeRebond = FRS_OK.Checked;
+            bool[] afficherDebug = 
+            { 
+                GB_OK.Checked, 
+                VAC_OK.Checked, 
+                AE_OK.Checked, 
+                PORTAL_OK.Checked 
+            };
         }
 
         
