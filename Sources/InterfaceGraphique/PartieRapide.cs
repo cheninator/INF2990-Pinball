@@ -63,6 +63,29 @@ namespace InterfaceGraphique
             }
         }
 
+        private void PartieRapide_Load(object sender, EventArgs e)
+        {
+
+        }
+
+        private void PartieRapide_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Escape)
+            {
+                if (menuStrip.Visible)
+                {
+                    menuStrip.Visible = false;
+                }
+                else
+                    menuStrip.Visible = true;
+            }
+        }
+
+        private void menu_ReturnItem_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
+
     }
 
     public partial class FonctionsNatives
