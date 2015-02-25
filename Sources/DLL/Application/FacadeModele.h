@@ -109,6 +109,9 @@ public:
    /// Obtenir le facteur de zoom applique
    double obtenirZoomCourant();
 
+   /// Obtenir la taille de la fenetre
+   glm::ivec2 FacadeModele::obtenirTailleFenetre();
+
    /// Obtenir le centre de masse en X
    int obtenirCentreMasseX();
 
@@ -136,7 +139,7 @@ public:
    /// Position du mur
    static void positionnerMur(int originX, int originY, int x1, int y1, int x2, int y2, NoeudAbstrait* noeud);
 
-   //verifie si la selection est hors table lors de la duplication
+   ///verifie si la selection est hors table lors de la duplication
    bool duplicationEstHorsTable();
 
 	private:

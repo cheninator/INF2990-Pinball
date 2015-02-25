@@ -11,6 +11,7 @@
 
 
 #include "ArbreRendu.h"
+#include "FreeImage.h"
 
 #include <map>
 #include <string>
@@ -57,6 +58,10 @@ public:
 
    /// Permet de savoir si l'arbre est la zone de jeu par defaut
    bool estDefaut() const;
+
+   /// Prend une capture d'ecran de la zone de jeu
+   void takeScreenShot(char* path, int width, int height, bool square = false, int maxSize = 0);
+
 
    static const std::string NOM_BUTOIRD; ///< Represente le type Butoir droit
    static const std::string NOM_BUTOIRG; ///< Represente le type Butoir gauche

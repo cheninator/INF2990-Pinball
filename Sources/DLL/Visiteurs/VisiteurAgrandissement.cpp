@@ -261,4 +261,5 @@ bool VisiteurAgrandissement::traiter(NoeudPortail* noeud)
 		noeud->assignerEchelle(scaleFinal);
 		return true;
 	}
+	return false;
 }

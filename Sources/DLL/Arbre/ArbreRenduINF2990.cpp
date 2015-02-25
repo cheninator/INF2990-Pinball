@@ -377,3 +377,48 @@ void ArbreRenduINF2990::assignerDefaut()
 	angleGenerateur = chercher("generateurbille")->obtenirRotation();
 	scaleGenerateur = chercher("generateurbille")->obtenirAgrandissement();
 }
+
+////////////////////////////////////////////////////////////////////////
+///
+/// @fn bool ArbreRenduINF2990::takeScreenShot(std::string path)
+///
+/// @param[in] char* path : le chemin ou enregistrer
+/// @param[in] int width : largeur de la fenetre
+/// @param[in] int height : hauteur de la fenetre
+/// @param[in] int maxSize : taille maximale (pixel) de l'image
+/// @param[in] bool square : forme de l'image carre
+///
+/// Cette fonction recoit un path vers le disque dur
+///	et renregistre l'ecran afficher
+///
+/// @return : Aucun.
+///
+////////////////////////////////////////////////////////////////////////
+void ArbreRenduINF2990::takeScreenShot(char* path, int width, int height, bool square, int maxSize)
+{
+	if (maxSize != 0 || square == true)
+		width > height ? width = height : height = width;
+	// Make the BYTE array, factor of 3 because it's RBG.
+	// Facteur Debug ? sert a ne pas avoir de corruption de heap, dont ask.
+	int FACTEUR_DEBUG = 2;
+	BYTE* pixels = new BYTE[3 * FACTEUR_DEBUG * width * height];
+	glPixelStorei(GL_UNPACK_ALIGNMENT, 1);
+
+	// On semble etre en BGR plus tot qu'en RGB
+	glReadPixels(0, 0, width, height, GL_BGR_EXT, GL_UNSIGNED_BYTE, pixels);
+
+	// Convert to FreeImage format & save to file
+	FIBITMAP* image = FreeImage_ConvertFromRawBits(pixels, width, height, ((((24 * width) + 31) / 32) * 4), 24,
+		0x000000, 0x000000, 0x000000, false);
+	// La couleur ici semble... useless (le 0x000000)
+
+	// La on rescale a 100px*100px
+	if (maxSize != 0)
+		image = FreeImage_Rescale(image, maxSize, maxSize, FILTER_BOX);
+
+	FreeImage_Save(FIF_JPEG, image, path, 0);
+
+	// Free resources
+	FreeImage_Unload(image);
+	delete[] pixels;
+}

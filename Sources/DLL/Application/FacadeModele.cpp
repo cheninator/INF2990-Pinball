@@ -941,6 +941,20 @@ double FacadeModele::obtenirZoomCourant()
 
 ///////////////////////////////////////////////////////////////////////////////
 ///
+/// @fn double FacadeModele::obtenirTailleFenetre();
+/// Obtient la taille de la fenetre courante
+///
+/// @return un vecteur de 2 int qui sont la taille de la fenetre courante
+///
+///////////////////////////////////////////////////////////////////////////////
+glm::ivec2 FacadeModele::obtenirTailleFenetre()
+{
+	return vue_->obtenirProjection().obtenirDimensionCloture();
+}
+
+
+///////////////////////////////////////////////////////////////////////////////
+///
 /// @fn int FacadeModele::obtenirCentreMasseX()
 ///  Obtient le x du centre de masse des objets selectionnes
 /// 

@@ -19,6 +19,7 @@ using System.Windows.Forms;
 using System.Runtime.InteropServices;
 using System.Media;
 using System.IO;
+using System.Drawing.Imaging;
 
 namespace InterfaceGraphique
 {
@@ -519,6 +520,7 @@ namespace InterfaceGraphique
 
             SaveFileDialog enregistrer_fichier = new SaveFileDialog();
             enregistrer_fichier.Filter = "Fichier XML(*.xml)| *.xml| All files(*.*)|*.*";
+            // Utilise string au lieu de String stp
             String initPath = Application.StartupPath + @"\zones";
             enregistrer_fichier.InitialDirectory = Path.GetFullPath(initPath);
             enregistrer_fichier.RestoreDirectory = true;
@@ -532,10 +534,10 @@ namespace InterfaceGraphique
                 MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
-            if (!(fileName == "default.xml"))
+            else
             {
                 enregistrer_fichier.OverwritePrompt = true;
-                ReinitialiserTout();
+                //ReinitialiserTout();
                 pathXML = new StringBuilder(enregistrer_fichier.FileName);
                 for (int i = 0; i < 6; i++)
                     prop[i] = propZJ[i];
@@ -548,15 +550,29 @@ namespace InterfaceGraphique
                     MessageBoxButtons.OK, MessageBoxIcon.Error);
                     pathXML = new StringBuilder("");
                 }
-                if (sauvegarde == 3 || sauvegarde == 0)
+                else if (sauvegarde == 3 || sauvegarde == 0)
                 {
                     MessageBox.Show("Il doit avoir au moins un trou, un generateur de bille et un ressort dans la zone de jeu!", "ERREUR DE SAUVEGARDE",
                     MessageBoxButtons.OK, MessageBoxIcon.Error);
                     pathXML = new StringBuilder("");
-                   
                 }
-            }
-            
+                else
+                {
+                    if (pathXML.Capacity == 0)
+                        return;
+                    // Well shit, well need to call a DLL function in csharp again !
+                    string pathJPG = pathXML.ToString();
+                    pathJPG = pathJPG.Remove(pathJPG.Length - 3, 3);
+                    pathJPG = pathJPG.Insert(pathJPG.Length, "jpg");
+                    StringBuilder pathToPicture = new StringBuilder(pathJPG);
+
+                    //FonctionsNatives.takeScreenShot(pathToPicture, pathToPicture.Capacity);
+                    // Si on veut une fenetre carree, alors on met true, si on veutu nrectangle, false
+                    // Si on veut limiter la taille maximale de la fenetre (un resize du screenshot), on met la valeur d'un cote
+                    // example:
+                    FonctionsNatives.takeScreenShot(pathToPicture, pathToPicture.Capacity, true, 350);
+                }  
+            }          
         }
 
         ////////////////////////////////////////////////////////////////////////
@@ -2809,9 +2825,12 @@ namespace InterfaceGraphique
 
         [DllImport(@"Noyau.dll", CallingConvention = CallingConvention.Cdecl)]
         public static extern int creerXML(StringBuilder path, int taille, int[] prop);
-
+        
         [DllImport(@"Noyau.dll", CallingConvention = CallingConvention.Cdecl)]
         public static extern IntPtr ouvrirXML(StringBuilder path, int taille);
+
+        [DllImport(@"Noyau.dll", CallingConvention = CallingConvention.Cdecl)]
+        public static extern int takeScreenShot(StringBuilder path, int taille, bool square = false, int maxSize = 0);
 
         [DllImport(@"Noyau.dll", CallingConvention = CallingConvention.Cdecl)]
         public static extern int selectionnerObjetSousPointClique(int i, int j,int hauteur, int largeur, bool ctrlDown = false);

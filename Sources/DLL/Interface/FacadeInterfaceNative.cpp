@@ -25,13 +25,13 @@
 extern "C"
 {
 	// TO DO : SUPPRIMER CETTE VARIABLE QUAND PLUS NECESSAIRE
+	// Nvm, c'est devenue une necesite, donc garder ces variables absolument
 	static NoeudAbstrait* objet = new NoeudAbstrait();
 	static NoeudAbstrait* objet_temp = new NoeudAbstrait();
 
+	// Useless, pas d'orbite en ce moment
 	static double theta = 0; ///< Angle Theta
 	static double phi = 0;  /// < angle Phi
-
-	static NoeudAbstrait* objetCourrant = new NoeudAbstrait();
 
 	////////////////////////////////////////////////////////////////////////
 	///
@@ -639,6 +639,27 @@ extern "C"
 		FacadeModele::obtenirInstance()->obtenirArbreRenduINF2990()->initialiserXML(std::string(path));
 
 		return FacadeModele::obtenirInstance()->obtenirArbreRenduINF2990()->obtenirProprietes();
+	}
+
+
+	////////////////////////////////////////////////////////////////////////
+	///
+	/// @fn __declspec(dllexport) void __cdecl  takeScreenShot(char* path, int length, bool square, int maxSize)
+	///
+	/// @param[in]  position : Nom du path
+	/// @param[in]  length : Taille du nom du path
+	/// @param[in] int maxSize : taille maximale (pixel) de l'image
+	/// @param[in] bool square : forme de l'image carre
+	///
+	/// @return Aucun
+	///
+	/// @remark : Prend un screenshot de la zone de jeu
+	/// 
+	////////////////////////////////////////////////////////////////////////
+	__declspec(dllexport) void __cdecl takeScreenShot(char* path, int length, bool square, int maxSize)
+	{
+		glm::ivec2 size = FacadeModele::obtenirInstance()->obtenirTailleFenetre();
+		FacadeModele::obtenirInstance()->obtenirArbreRenduINF2990()->takeScreenShot(path, size.x, size.y, square, maxSize);
 	}
 
 
