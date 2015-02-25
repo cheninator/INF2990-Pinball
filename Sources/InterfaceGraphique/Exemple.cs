@@ -35,7 +35,7 @@ namespace InterfaceGraphique
     {
         FullScreen fs = new FullScreen();
         static public StringBuilder myObjectName = new StringBuilder("vide");
-        static bool soundActif = true; ///< Play Sound or not
+        static bool soundActif = false; ///< Play Sound or not
 
         public Point origin;
         
