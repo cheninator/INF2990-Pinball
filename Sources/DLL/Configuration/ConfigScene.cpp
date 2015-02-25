@@ -167,7 +167,7 @@ void ConfigScene::lireXML()
 	
 }
 
-void ConfigScene::modifierConfiguration(int* touche, bool doubleBille, bool rebond, bool* debogage)
+void ConfigScene::modifierConfiguration(int touche[5], bool doubleBille, bool rebond, bool debogage[4])
 {
 	for (unsigned i = 0; i < 5; i++)
 		touches_[i] = touche[i];

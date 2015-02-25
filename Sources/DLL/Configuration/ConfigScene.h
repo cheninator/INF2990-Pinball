@@ -11,6 +11,7 @@
 #define __CONFIGURATION_CONFIGSCENE_H__
 
 #include "tinyxml2.h"
+#include <string>
 
 ///////////////////////////////////////////////////////////////////////////
 /// @class ConfigScene
@@ -32,7 +33,7 @@ public:
 
 	bool lireConfiguration();
 
-	void modifierConfiguration(int* touche, bool doubleBille, bool rebond, bool* debogage);
+	void modifierConfiguration(int touche[5], bool doubleBille, bool rebond, bool debogage[4]);
 
 private:
 

@@ -60,6 +60,7 @@ Samuel Millette <BR>
 #include "ArbreRenduINF2990.h"
 
 #include "CompteurAffichage.h"
+#include "../Configuration/ConfigScene.h"
 
 // Remplacement de EnveloppeXML/XercesC par TinyXML
 // Julien Gascon-Samson, ete 2011
@@ -1021,4 +1022,15 @@ bool FacadeModele::appliquerZoomInitial()
 bool FacadeModele::duplicationEstHorsTable()
 {
 	return duplicationHorsTable_;
+}
+
+
+void FacadeModele::sauvegarderConfigXML(int touches[5], bool doubleBille, bool rebond, bool debug[4])
+{
+	configuration_ = new ConfigScene();
+
+	configuration_->modifierConfiguration(touches, doubleBille, rebond, debug);
+	configuration_->sauvegarderConfiguration();
+
+	delete configuration_;
 }

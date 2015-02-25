@@ -209,8 +209,20 @@ namespace InterfaceGraphique
                 AE_OK.Checked, 
                 PORTAL_OK.Checked 
             };
+
+            int[] touches = new int[5];
+            for(int i = 0; i < 5; i++)
+                touches[i] = currentValues[i];
+
+            FonctionsNatives.creerConfigXML(touches, modeDBille, modeRebond, afficherDebug);
         }
 
+    }
+
+
+    public partial class FonctionsNatives
+    {
         
     }
+
 }
