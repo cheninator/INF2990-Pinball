@@ -15,6 +15,8 @@ namespace InterfaceGraphique
         char[] defaultValues = { 'A', 'S', '4', '5' };
         int[] currentValues = {65,83,52,53,32,49,50,74,75,76,66 };
         string maTouche;
+        bool mediaPlaying = false;
+        System.Media.SoundPlayer p = new System.Media.SoundPlayer(Properties.Resources.touche_invalide);
         public Configuration()
         {
             InitializeComponent();
@@ -33,17 +35,23 @@ namespace InterfaceGraphique
                     {
                         label_Rebind.Text = "Touche deja utilisée";
                         Console.WriteLine("Touche deja utilise");
-
                         return false;
                     }
                 }
+                p.Stop(); 
+                mediaPlaying = false;
                 return true;
             }
             else
             {
                 label_Rebind.Text = "Touche invalide";
                 Console.WriteLine("Touche invalide");
-
+                if (!mediaPlaying)
+                {
+                    p.Stream = Properties.Resources.touche_invalide;
+                    p.PlayLooping();
+                    mediaPlaying = true;
+                }
                 return false;
             }
 
