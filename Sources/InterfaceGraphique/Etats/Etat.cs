@@ -839,7 +839,8 @@ namespace InterfaceGraphique
         ///
         ////////////////////////////////////////////////////////////////////////
         public EtatZoomElastique(Exemple form) : base(form)
-        { 
+        {
+ 
         }
 
         ////////////////////////////////////////////////////////////////////////
@@ -874,6 +875,65 @@ namespace InterfaceGraphique
                 form_.terminerRectangleElastique();
                 form_.zoomElastique();
             }
+            return true;
+        }
+    }
+
+    ///////////////////////////////////////////////////////////////////////////
+    /// @class EtatZoomElastique
+    /// @brief Etat Test du patron State.
+    ///
+    /// @author The Ballers
+    /// @date 2015-02-25
+    /// 
+    /// @ingroup Etat
+    ///////////////////////////////////////////////////////////////////////////
+    class EtatTest : Etat
+    {
+        ////////////////////////////////////////////////////////////////////////
+        ///
+        /// @fn public EtatTest(Exemple form) : base(form)
+        /// @brief Constructeur par parametre de l'etat.
+        /// 
+        /// param[in] form : Form associee a l'etat.
+        /// 
+        /// @return Aucune (constructeur).
+        ///
+        ////////////////////////////////////////////////////////////////////////
+        public EtatTest(Exemple form): base(form)
+        {
+ 
+        }
+
+        ////////////////////////////////////////////////////////////////////////
+        ///
+        /// @fn public override bool traiterClavier(KeyEventArgs e)
+        /// @brief Traiter le changement d'etat suite a une action du clavier
+        /// 
+        /// param[in] e : evenement du clavier qui lance la fonction
+        /// 
+        /// @return True ou false selon la reussite des operations.
+        ///
+        ////////////////////////////////////////////////////////////////////////
+        public override bool traiterClavier(KeyEventArgs e)
+        {
+            return base.traiterClavier(e);
+        }
+
+        ////////////////////////////////////////////////////////////////////////
+        ///
+        /// @fn public override bool traiterSouris(MouseEventArgs e)
+        /// @brief Traiter le changement d'etat suite a une action du clavier
+        /// 
+        /// param[in] e : evenement de la souris qui lance la fonction
+        /// 
+        /// @return True ou false selon la reussite des operations.
+        ///
+        ////////////////////////////////////////////////////////////////////////
+        public override bool traiterSouris(MouseEventArgs e)
+        {
+            if (e.Button == MouseButtons.Right)
+                form_.deplacementVueSouris(e);
             return true;
         }
     }

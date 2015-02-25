@@ -297,7 +297,6 @@ void ArbreRenduINF2990Test::testDeselection()
 	for (unsigned int i = 0; i < arbre->obtenirNombreEnfants(); i++)
 		CPPUNIT_ASSERT(arbre->getEnfant(i)->estSelectionne() == false);
 
-
 	// Nettoyage.
 	delete visiteurDeselection;
 

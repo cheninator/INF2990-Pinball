@@ -124,7 +124,14 @@ namespace InterfaceGraphique
             this.Aide_MenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.Mute_MenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.printPreviewDialog1 = new System.Windows.Forms.PrintPreviewDialog();
+            this.menuStrip2 = new System.Windows.Forms.MenuStrip();
+            this.retourAuModeDéditionToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.retourAuMenuPrincipalToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.caméraToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.orbitToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.orbiteToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.panel1.SuspendLayout();
+            this.panel_GL.SuspendLayout();
             this.Creation_Panel.SuspendLayout();
             this.Groupe_Palettes.SuspendLayout();
             this.Group_Butoir.SuspendLayout();
@@ -135,6 +142,7 @@ namespace InterfaceGraphique
             this.OutilGraphique.SuspendLayout();
             this.Groupe_Proprietes.SuspendLayout();
             this.menuStrip1.SuspendLayout();
+            this.menuStrip2.SuspendLayout();
             this.SuspendLayout();
             // 
             // panel1
@@ -156,6 +164,7 @@ namespace InterfaceGraphique
             // 
             this.panel_GL.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.panel_GL.BackColor = System.Drawing.Color.Transparent;
+            this.panel_GL.Controls.Add(this.menuStrip2);
             this.panel_GL.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel_GL.Location = new System.Drawing.Point(163, 24);
             this.panel_GL.Name = "panel_GL";
@@ -1058,6 +1067,55 @@ namespace InterfaceGraphique
             this.printPreviewDialog1.Name = "printPreviewDialog1";
             this.printPreviewDialog1.Visible = false;
             // 
+            // menuStrip2
+            // 
+            this.menuStrip2.Enabled = false;
+            this.menuStrip2.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.retourAuModeDéditionToolStripMenuItem,
+            this.retourAuMenuPrincipalToolStripMenuItem,
+            this.caméraToolStripMenuItem});
+            this.menuStrip2.Location = new System.Drawing.Point(0, 0);
+            this.menuStrip2.Name = "menuStrip2";
+            this.menuStrip2.Size = new System.Drawing.Size(566, 24);
+            this.menuStrip2.TabIndex = 0;
+            this.menuStrip2.Text = "menuStrip2";
+            this.menuStrip2.Visible = false;
+            // 
+            // retourAuModeDéditionToolStripMenuItem
+            // 
+            this.retourAuModeDéditionToolStripMenuItem.Name = "retourAuModeDéditionToolStripMenuItem";
+            this.retourAuModeDéditionToolStripMenuItem.Size = new System.Drawing.Size(154, 20);
+            this.retourAuModeDéditionToolStripMenuItem.Text = "Retour au mode d\'édition";
+            // 
+            // retourAuMenuPrincipalToolStripMenuItem
+            // 
+            this.retourAuMenuPrincipalToolStripMenuItem.Name = "retourAuMenuPrincipalToolStripMenuItem";
+            this.retourAuMenuPrincipalToolStripMenuItem.Size = new System.Drawing.Size(153, 20);
+            this.retourAuMenuPrincipalToolStripMenuItem.Text = "Retour au menu principal";
+            // 
+            // caméraToolStripMenuItem
+            // 
+            this.caméraToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.orbitToolStripMenuItem,
+            this.orbiteToolStripMenuItem});
+            this.caméraToolStripMenuItem.Name = "caméraToolStripMenuItem";
+            this.caméraToolStripMenuItem.Size = new System.Drawing.Size(60, 20);
+            this.caméraToolStripMenuItem.Text = "Caméra";
+            // 
+            // orbitToolStripMenuItem
+            // 
+            this.orbitToolStripMenuItem.Name = "orbitToolStripMenuItem";
+            this.orbitToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.D1)));
+            this.orbitToolStripMenuItem.Size = new System.Drawing.Size(199, 22);
+            this.orbitToolStripMenuItem.Text = "Orthographique";
+            // 
+            // orbiteToolStripMenuItem
+            // 
+            this.orbiteToolStripMenuItem.Name = "orbiteToolStripMenuItem";
+            this.orbiteToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.D2)));
+            this.orbiteToolStripMenuItem.Size = new System.Drawing.Size(199, 22);
+            this.orbiteToolStripMenuItem.Text = "Orbite";
+            // 
             // Exemple
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -1074,6 +1132,8 @@ namespace InterfaceGraphique
             this.SizeChanged += new System.EventHandler(this.Fenetre_Redimension);
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
+            this.panel_GL.ResumeLayout(false);
+            this.panel_GL.PerformLayout();
             this.Creation_Panel.ResumeLayout(false);
             this.Groupe_Palettes.ResumeLayout(false);
             this.Group_Butoir.ResumeLayout(false);
@@ -1087,6 +1147,8 @@ namespace InterfaceGraphique
             this.Groupe_Proprietes.PerformLayout();
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
+            this.menuStrip2.ResumeLayout(false);
+            this.menuStrip2.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -1179,6 +1241,12 @@ namespace InterfaceGraphique
         private System.Windows.Forms.Label labelOCourant;
         private System.Windows.Forms.RichTextBox richTextBox1;
         private System.Windows.Forms.Button Bille_bouton;
+        private System.Windows.Forms.MenuStrip menuStrip2;
+        private System.Windows.Forms.ToolStripMenuItem retourAuModeDéditionToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem retourAuMenuPrincipalToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem caméraToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem orbitToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem orbiteToolStripMenuItem;
     }
 }
 

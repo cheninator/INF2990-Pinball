@@ -298,6 +298,21 @@ namespace InterfaceGraphique
             {
                 return;
             }
+            if (etat is EtatTest)
+            {
+                if (e.KeyChar == 't')
+                {
+                    etat = null;
+                    etat = new EtatNone(this);
+
+                    if (menuStrip2.Visible)
+                        menuStrip2.Hide();
+                    menuStrip1.Show();
+                    Creation_Panel.Show();
+                    flowLayoutPanel1.Show();
+
+                }
+            }
             else
             {
               
@@ -643,7 +658,6 @@ namespace InterfaceGraphique
         ////////////////////////////////////////////////////////////////////////
         private void Selection_MenuItem_Click(object sender, EventArgs e)
         {
-
             bouton_Selection_Click(this, e);
         }
 
@@ -1387,7 +1401,13 @@ namespace InterfaceGraphique
         private void ModeTest_MenuItem_Click(object sender, EventArgs e)
         {
             Console.WriteLine("Mode Test.");
-            // TO DO
+            etat = null;
+            etat = new EtatTest(this);
+
+            menuStrip1.Hide();
+            if (Creation_Panel.Visible)
+                Creation_Panel.Hide();
+            flowLayoutPanel1.Hide();
         }
 
         ////////////////////////////////////////////////////////////////////////
