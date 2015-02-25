@@ -81,7 +81,6 @@ namespace InterfaceGraphique
             this.KeyUp += new KeyEventHandler(ToucheUp);
             this.Icon = Properties.Resources.Pinball;
             InitializeComponent();
-            Creation_Panel.Visible = false;
             Program.peutAfficher = true;
 
             InitialiserAnimation();
@@ -723,10 +722,17 @@ namespace InterfaceGraphique
                 etat = new EtatNone(this);
             Console.WriteLine("Outil Creation.");
             if (Creation_Panel.Visible)
+            {
                 Creation_Panel.Visible = false;
+               
+                this.OnSizeChanged(e);
+                
+            }
             else
+            {
                 Creation_Panel.Visible = true;
-
+               
+            }
         }
 
         ////////////////////////////////////////////////////////////////////////

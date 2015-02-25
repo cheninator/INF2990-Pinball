@@ -58,6 +58,7 @@ namespace InterfaceGraphique
             this.Trou_bouton = new System.Windows.Forms.Button();
             this.Generateur_bouton = new System.Windows.Forms.Button();
             this.Ressort_bouton = new System.Windows.Forms.Button();
+            this.Bille_bouton = new System.Windows.Forms.Button();
             this.flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
             this.Groupe_Outils = new System.Windows.Forms.GroupBox();
             this.curZoomVal = new System.Windows.Forms.TextBox();
@@ -123,7 +124,6 @@ namespace InterfaceGraphique
             this.Aide_MenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.Mute_MenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.printPreviewDialog1 = new System.Windows.Forms.PrintPreviewDialog();
-            this.Bille_bouton = new System.Windows.Forms.Button();
             this.panel1.SuspendLayout();
             this.Creation_Panel.SuspendLayout();
             this.Groupe_Palettes.SuspendLayout();
@@ -181,7 +181,6 @@ namespace InterfaceGraphique
             this.Creation_Panel.Name = "Creation_Panel";
             this.Creation_Panel.Size = new System.Drawing.Size(225, 705);
             this.Creation_Panel.TabIndex = 2;
-            this.Creation_Panel.Visible = false;
             this.Creation_Panel.MouseEnter += new System.EventHandler(this.Creation_Panel_MouseEnter);
             // 
             // Groupe_Palettes
@@ -412,6 +411,19 @@ namespace InterfaceGraphique
             this.Ressort_bouton.TextAlign = System.Drawing.ContentAlignment.TopRight;
             this.Ressort_bouton.UseVisualStyleBackColor = false;
             this.Ressort_bouton.Click += new System.EventHandler(this.Ressort_bouton_Click);
+            // 
+            // Bille_bouton
+            // 
+            this.Bille_bouton.BackgroundImage = global::InterfaceGraphique.Properties.Resources.ball;
+            this.Bille_bouton.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.Bille_bouton.Location = new System.Drawing.Point(3, 552);
+            this.Bille_bouton.Name = "Bille_bouton";
+            this.Bille_bouton.Size = new System.Drawing.Size(218, 69);
+            this.Bille_bouton.TabIndex = 9;
+            this.Bille_bouton.Text = "bille";
+            this.Bille_bouton.TextAlign = System.Drawing.ContentAlignment.TopRight;
+            this.Bille_bouton.UseVisualStyleBackColor = true;
+            this.Bille_bouton.Click += new System.EventHandler(this.Bille_bouton_Click);
             // 
             // flowLayoutPanel1
             // 
@@ -1045,19 +1057,6 @@ namespace InterfaceGraphique
             this.printPreviewDialog1.Icon = ((System.Drawing.Icon)(resources.GetObject("printPreviewDialog1.Icon")));
             this.printPreviewDialog1.Name = "printPreviewDialog1";
             this.printPreviewDialog1.Visible = false;
-            // 
-            // Bille_bouton
-            // 
-            this.Bille_bouton.BackgroundImage = global::InterfaceGraphique.Properties.Resources.ball;
-            this.Bille_bouton.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.Bille_bouton.Location = new System.Drawing.Point(3, 552);
-            this.Bille_bouton.Name = "Bille_bouton";
-            this.Bille_bouton.Size = new System.Drawing.Size(218, 69);
-            this.Bille_bouton.TabIndex = 9;
-            this.Bille_bouton.Text = "bille";
-            this.Bille_bouton.TextAlign = System.Drawing.ContentAlignment.TopRight;
-            this.Bille_bouton.UseVisualStyleBackColor = true;
-            this.Bille_bouton.Click += new System.EventHandler(this.Bille_bouton_Click);
             // 
             // Exemple
             // 
