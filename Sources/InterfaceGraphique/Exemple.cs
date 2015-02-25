@@ -525,7 +525,6 @@ namespace InterfaceGraphique
             enregistrer_fichier.InitialDirectory = Path.GetFullPath(initPath);
             enregistrer_fichier.RestoreDirectory = true;
             enregistrer_fichier.OverwritePrompt = false;
-            enregistrer_fichier.ShowDialog();
             String fileName = Path.GetFileName(enregistrer_fichier.FileName);
             //Console.WriteLine(fileName);
             if (fileName == "default.xml")
@@ -535,6 +534,7 @@ namespace InterfaceGraphique
                 return;
             }
             else
+                if( enregistrer_fichier.ShowDialog() == DialogResult.OK)
             {
                 enregistrer_fichier.OverwritePrompt = true;
                 //ReinitialiserTout();
