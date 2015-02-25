@@ -33,7 +33,7 @@ public:
 
 	bool lireConfiguration();
 
-	void modifierConfiguration(int touche[5], bool doubleBille, bool rebond, bool debogage[4]);
+	void modifierConfiguration(int touche[5], bool doubleBille, bool rebond, int debogage[4]);
 
 private:
 

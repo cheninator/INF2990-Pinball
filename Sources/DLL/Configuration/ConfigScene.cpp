@@ -68,6 +68,7 @@ void ConfigScene::sauvegarderConfiguration()
 	pDroiteJoueur2->SetAttribute("Touche: ", touches_[4]);
 	elementTouches->LinkEndChild(elementRessort);
 
+	elementConfiguration->LinkEndChild(elementTouches);
 
 	// Configurations de jeu
 	tinyxml2::XMLElement* doubleBille{ document_.NewElement("Double bille : ") };
@@ -95,6 +96,8 @@ void ConfigScene::sauvegarderConfiguration()
 	tinyxml2::XMLElement* champs{ document_.NewElement("Champs de force:") };
 	champs->SetAttribute("Activer: ", debogage_[3]);
 	elementDebug->LinkEndChild(champs);
+
+	elementConfiguration->LinkEndChild(elementDebug);
 
 	// Enregistrer
 	document_.LinkEndChild(elementConfiguration);
@@ -167,16 +170,21 @@ void ConfigScene::lireXML()
 	
 }
 
-void ConfigScene::modifierConfiguration(int touche[5], bool doubleBille, bool rebond, bool debogage[4])
+void ConfigScene::modifierConfiguration(int touche[5], bool doubleBille, bool rebond, int debogage[4])
 {
 	for (unsigned i = 0; i < 5; i++)
+	{
 		touches_[i] = touche[i];
+	}
 
 	doubleBille_ = doubleBille;
 	rebond_ = rebond;
 
-	for (unsigned int i = 0; i < 4; i ++)
+	for (unsigned int i = 0; i < 4; i++)
+	{
 		debogage_[i] = debogage[i];
+	}
+
 }
 
 
