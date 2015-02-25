@@ -1069,7 +1069,6 @@ namespace InterfaceGraphique
             // 
             // menuStrip2
             // 
-            this.menuStrip2.Enabled = false;
             this.menuStrip2.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.retourAuModeDéditionToolStripMenuItem,
             this.retourAuMenuPrincipalToolStripMenuItem,

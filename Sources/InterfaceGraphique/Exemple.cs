@@ -310,7 +310,17 @@ namespace InterfaceGraphique
                     menuStrip1.Show();
                     Creation_Panel.Show();
                     flowLayoutPanel1.Show();
+                    //panel_GL.Anchor = (AnchorStyles.Top | AnchorStyles.Left);
 
+                }
+                if (e.KeyChar == (char)Keys.Escape)
+                {
+                    // TODO: Handling de la pause. Il faudra probablement
+                    // un état TestPause
+                    if (!menuStrip2.Visible)
+                        menuStrip2.Show();
+                    else
+                        menuStrip2.Hide();
                 }
             }
             else
@@ -344,6 +354,66 @@ namespace InterfaceGraphique
                         deselection();
                     }
                     
+                }
+
+                if (e.KeyChar == (char)Keys.Escape)
+                {
+                    if (etat is EtatPortail)
+                    {
+                        FonctionsNatives.removeObject();
+                        etat = null;
+                        etat = new EtatNone(this);
+                        deselection();
+                    }
+                    else if (etat is EtatMur)
+                    {
+                        FonctionsNatives.removeObject();
+                        etat = new EtatCreation(this);
+                        deselection();
+                    }
+                    else if (etat is EtatDuplication)
+                    {
+                        FonctionsNatives.removeObject();
+                        deselection();
+                        etat = new EtatNone(this);
+                    }
+                    else
+                    {
+                        etat = null;
+                        etat = new EtatNone(this);
+                        deselection();
+                    }
+
+                }
+                else if (e.KeyChar == 't')
+                {
+                    if (etat is EtatPortail)
+                    {
+                        FonctionsNatives.removeObject();
+                        etat = null;
+                        etat = new EtatNone(this);
+                        deselection();
+                    }
+                    else if (etat is EtatMur)
+                    {
+                        FonctionsNatives.removeObject();
+                        etat = new EtatCreation(this);
+                        deselection();
+                    }
+                    else if (etat is EtatDuplication)
+                    {
+                        FonctionsNatives.removeObject();
+                        deselection();
+                        etat = new EtatNone(this);
+                    }
+                    else
+                    {
+                        etat = null;
+                        etat = new EtatNone(this);
+                        deselection();
+                        ModeTest_MenuItem.PerformClick();
+                    }
+
                 }
                 else if (e.KeyChar == 'f')
                 {
@@ -1408,6 +1478,9 @@ namespace InterfaceGraphique
             if (Creation_Panel.Visible)
                 Creation_Panel.Hide();
             flowLayoutPanel1.Hide();
+
+            //panel_GL.Anchor = AnchorStyles.None;
+            panel_GL.Location = new Point(163, 24);
         }
 
         ////////////////////////////////////////////////////////////////////////
