@@ -378,6 +378,7 @@ void ArbreRenduINF2990::assignerDefaut()
 	scaleGenerateur = chercher("generateurbille")->obtenirAgrandissement();
 }
 
+
 ////////////////////////////////////////////////////////////////////////
 ///
 /// @fn bool ArbreRenduINF2990::takeScreenShot(std::string path)

@@ -10,8 +10,6 @@
 #ifndef __CONFIGURATION_CONFIGSCENE_H__
 #define __CONFIGURATION_CONFIGSCENE_H__
 
-
-#include "Singleton.h"
 #include "tinyxml2.h"
 
 ///////////////////////////////////////////////////////////////////////////
@@ -22,21 +20,30 @@
 /// @author Jean-François Pérusse
 /// @date 2007-01-10
 ///////////////////////////////////////////////////////////////////////////
-class ConfigScene : public Singleton<ConfigScene>
+class ConfigScene
 {
-   SINGLETON_DECLARATION_CLASSE(ConfigScene);
 
 public:
-	
 
-   /// Créer le DOM avec les valeurs.
-	void creerDOM(tinyxml2::XMLDocument& document) const;
+	ConfigScene();
+	~ConfigScene();
 
-   /// Lire les valeurs du DOM.
-	void lireDOM(tinyxml2::XMLDocument const& document);
+	void sauvegarderConfiguration();
 
-   /// Nombre de calculs par image.
-   static int CALCULS_PAR_IMAGE;
+	bool lireConfiguration();
+
+	void modifierConfiguration(int* touche, bool doubleBille, bool rebond, bool* debogage);
+
+private:
+
+	int* touches_;
+	bool doubleBille_, rebond_;
+	bool* debogage_;
+
+	std::string fichierDefaut_, derniereSauvegarde_;
+	tinyxml2::XMLDocument document_;
+
+	void lireXML();
 
 };
 
