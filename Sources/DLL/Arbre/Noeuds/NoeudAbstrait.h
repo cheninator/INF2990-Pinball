@@ -238,6 +238,7 @@ public:
 	/// Obtenir le type
 	std::string getType(){ return type_; }
 
+
 protected:
 
 	/// Si jumeau, autrement nullptr
@@ -301,6 +302,10 @@ protected:
 
 	/// Impossibilite de position
 	bool impossible_;
+
+	glm::dvec3 vitesse_{0.0,0.0, 0.0 };
+	double masse_{ 1 };
+	double constanteDeFrottement_{ 1 };
 };
 
 

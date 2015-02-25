@@ -13,6 +13,7 @@
 #include <windows.h>
 #include <GL/gl.h>
 #include <cmath>
+#include <iostream>
 
 #include "Modele3D.h"
 #include "OpenGL_Storage/ModeleStorage_Liste.h"
@@ -33,7 +34,8 @@
 NoeudBille::NoeudBille(const std::string& typeNoeud)
 	: NoeudComposite{ typeNoeud }
 {
-
+	vitesse_ = glm::dvec3{ 10,60, 0 };
+	constanteDeFrottement_ = 1.0;
 }
 
 ////////////////////////////////////////////////////////////////////////
@@ -86,6 +88,8 @@ void NoeudBille::afficherConcret() const
 	if (twin_ != nullptr && twin_ != NULL)
 		if (!selectionne_ && !twin_->estSelectionne())
 			twin_->setTransparent(false);
+
+	glTranslatef(0.0, -10, 0.0); // Il faudrait changer le modèle
 	liste_->dessiner();
 	glPopAttrib();
 	// Restauration de la matrice.
@@ -104,9 +108,45 @@ void NoeudBille::afficherConcret() const
 /// @return Aucune.
 ///
 ////////////////////////////////////////////////////////////////////////
-void NoeudBille::animer(float temps)
+void NoeudBille::animer(float temps) // rajouter des parametres ou une fonction animerCollision(float temps, detailCollision detail)
 {
+	// Somme des forces agissant sur les particules.
+	glm::dvec3 attractionsPortails{ 0, 0, 0 };
+	glm::dvec3 gravite{ 0, -20*masse_, 0 };
+	glm::dvec3 forceFrottement{ 0, 0, 0 };
+	if (glm::length(vitesse_) > 0.001)
+		forceFrottement = -constanteDeFrottement_ * glm::normalize(vitesse_);
+	glm::dvec3 forceTotale = forceFrottement + gravite + attractionsPortails;
 
+	// Calcul de la nouvelle positon.
+	glm::dvec3 nouvellePosition = positionRelative_ +(double)temps*vitesse_;
+
+	// Calcul de la nouvelle vitesse. Ici, je fais une gestion elementaire de collision,
+	// cette gestion devrait/pourrait probablement etre faite ailleur dans le code.
+	glm::dvec3 nouvelleVitesse;
+	if (positionRelative_.y < -190 && vitesse_.y < 0) // A faire avec des boites englobantes
+	{
+		glm::dvec3 normale = glm::normalize(glm::dvec3{ 0, 1, 0 });
+		glm::dvec3 composanteNormale = glm::dot(normale, vitesse_)*normale;
+		glm::dvec3 composanteTangentielle = vitesse_ - composanteNormale;
+
+		nouvelleVitesse = (-composanteNormale + composanteTangentielle) + (double)temps * forceTotale / masse_;
+	}
+	else
+		nouvelleVitesse = vitesse_ + (double)temps * forceTotale / masse_;
+
+	// Calcul de la rotation
+	// C'est pas la bonne facon de calculer la rotation a appliquer a la boule,
+	// C'est pas un bug, j'ai just pas encore trouve la bonne facon de le faire.
+	double constanteACalculer{ 0.1 }; // Depend du rayon de la boule, mais avec 0.1, ca parait deja bien.
+	glm::dvec3 rotation{ 0, 0, 0 };
+	rotation.x = constanteACalculer * -vitesse_.y;
+	rotation.y = constanteACalculer * vitesse_.x;
+
+	// Assignation des nouvelles valeurs.
+	assignerRotation(rotation);
+	positionRelative_ = nouvellePosition;
+	vitesse_ = nouvelleVitesse;
 }
 
 ////////////////////////////////////////////////////////////////////////

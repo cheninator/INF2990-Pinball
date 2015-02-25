@@ -24,6 +24,7 @@ unsigned int NoeudAbstrait::compteurNoeuds_ = 0;
 NoeudAbstrait::NoeudAbstrait(
 	const std::string& type //= std::string{ "" }
 	) :
+	vitesse_{ 0.0, 0.0, 0.0 },
 	type_(type)
 {
 	colorShift_ = false;
