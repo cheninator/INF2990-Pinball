@@ -111,6 +111,7 @@ void NoeudBille::afficherConcret() const
 void NoeudBille::animer(float temps) // rajouter des parametres ou une fonction animerCollision(float temps, detailCollision detail)
 {
 	// Somme des forces agissant sur les particules.
+	/*
 	glm::dvec3 attractionsPortails{ 0, 0, 0 };
 	glm::dvec3 gravite{ 0, -20*masse_, 0 };
 	glm::dvec3 forceFrottement{ 0, 0, 0 };
@@ -147,6 +148,7 @@ void NoeudBille::animer(float temps) // rajouter des parametres ou une fonction 
 	assignerRotation(rotation);
 	positionRelative_ = nouvellePosition;
 	vitesse_ = nouvelleVitesse;
+	*/
 }
 
 ////////////////////////////////////////////////////////////////////////
