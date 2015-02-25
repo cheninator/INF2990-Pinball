@@ -566,11 +566,11 @@ namespace InterfaceGraphique
                     pathJPG = pathJPG.Insert(pathJPG.Length, "jpg");
                     StringBuilder pathToPicture = new StringBuilder(pathJPG);
 
-                    //FonctionsNatives.takeScreenShot(pathToPicture, pathToPicture.Capacity);
+                    FonctionsNatives.takeScreenShot(pathToPicture, pathToPicture.Capacity);
                     // Si on veut une fenetre carree, alors on met true, si on veutu nrectangle, false
                     // Si on veut limiter la taille maximale de la fenetre (un resize du screenshot), on met la valeur d'un cote
                     // example:
-                    FonctionsNatives.takeScreenShot(pathToPicture, pathToPicture.Capacity, true, 350);
+                    //FonctionsNatives.takeScreenShot(pathToPicture, pathToPicture.Capacity, true, 350);
                 }  
             }          
         }
