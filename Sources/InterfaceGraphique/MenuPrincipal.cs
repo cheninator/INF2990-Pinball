@@ -38,7 +38,7 @@ namespace InterfaceGraphique
         public Exemple modeEdit; ///< Form du mode edition
         private Thread myThread; ///< Une thread
         private Campagne campagne;
-        private PartieRapide pRapide;
+        public PartieRapide pRapide;
         private Configuration configuration;
 
         ////////////////////////////////////////////////////////////////////////
@@ -286,8 +286,12 @@ namespace InterfaceGraphique
 
         private void bouton_pRapide_Click(object sender, EventArgs e)
         {
-            pRapide = new PartieRapide();
+            while (myThread.IsAlive)
+            {
+                Thread.Sleep(100);
+            }
             this.Hide();
+            pRapide = new PartieRapide();
             pRapide.ShowDialog();
             this.Show();
             

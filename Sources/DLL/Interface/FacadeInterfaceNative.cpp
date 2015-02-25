@@ -111,6 +111,7 @@ extern "C"
 		FacadeModele::obtenirInstance()->afficher();
 		// Temporaire: pour detecter les erreurs OpenGL
 		aidegl::verifierErreurOpenGL();
+
 	}
 
 

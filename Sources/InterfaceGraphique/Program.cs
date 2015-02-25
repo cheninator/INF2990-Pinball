@@ -119,10 +119,15 @@ namespace InterfaceGraphique
                 {
                     lock (unLock)
                     {
-                        if ( mMenu.modeEdit != null && peutAfficher)
-                            mMenu.modeEdit.MettreAJour((double)tempsAccumule.Ticks / TimeSpan.TicksPerSecond);
-
-                    }
+                       if ( mMenu.modeEdit != null && peutAfficher)
+                           mMenu.modeEdit.MettreAJour((double)tempsAccumule.Ticks / TimeSpan.TicksPerSecond);
+                       else
+                           if (mMenu.pRapide != null && peutAfficher)
+                           {
+                               mMenu.pRapide.MettreAJour((double)tempsAccumule.Ticks / TimeSpan.TicksPerSecond);
+                           
+                           }
+                           }
                     tempsAccumule = TimeSpan.Zero;
                 }
             }
