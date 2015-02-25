@@ -103,7 +103,7 @@ namespace InterfaceGraphique
         {
             while (myThread.IsAlive)
             {
-                Thread.Sleep(100);
+               Thread.Sleep(100);
             }
             this.Hide();
             modeEdit = new Exemple();
@@ -288,7 +288,7 @@ namespace InterfaceGraphique
         {
             while (myThread.IsAlive)
             {
-                Thread.Sleep(100);
+               // Thread.Sleep(100);
             }
             this.Hide();
             pRapide = new PartieRapide();

@@ -127,7 +127,7 @@ namespace InterfaceGraphique
                                mMenu.pRapide.MettreAJour((double)tempsAccumule.Ticks / TimeSpan.TicksPerSecond);
                            
                            }
-                           }
+                    }
                     tempsAccumule = TimeSpan.Zero;
                 }
             }

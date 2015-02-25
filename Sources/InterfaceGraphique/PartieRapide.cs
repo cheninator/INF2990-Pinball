@@ -17,7 +17,7 @@ namespace InterfaceGraphique
         {
            
             InitializeComponent();
-            Program.peutAfficher = true;              
+            //Program.peutAfficher = true;              
             InitialiserAnimation();
         }
 
@@ -29,6 +29,7 @@ namespace InterfaceGraphique
         /// @return Aucune (constructeur).
         ///
         ////////////////////////////////////////////////////////////////////////
+        
         public void InitialiserAnimation()
         {
             this.DoubleBuffered = false;
@@ -52,7 +53,7 @@ namespace InterfaceGraphique
             }
             
         }
-
+        
 
         private void PartieRapide_FormClosing(object sender, FormClosingEventArgs e)
         {
