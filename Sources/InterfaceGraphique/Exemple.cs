@@ -205,7 +205,7 @@ namespace InterfaceGraphique
         ////////////////////////////////////////////////////////////////////////
         private void ToucheDown(Object o, KeyEventArgs e)
         {
-            if (etat is EtatZoom)
+            if (etat is EtatZoom || etat is EtatTest)
             {
                 if ((e.KeyData == Keys.Subtract ||
                    e.KeyCode == Keys.OemMinus))
@@ -302,18 +302,7 @@ namespace InterfaceGraphique
             {
                 if (e.KeyChar == 't')
                 {
-                    etat = null;
-                    etat = new EtatNone(this);
-
-                    if (menuStrip3.Visible)
-                        menuStrip3.Hide();
-                    menuStrip1.Show();
-                    Creation_Panel.Show();
-                    flowLayoutPanel1.Show();
-                    panel_GL.Anchor = (AnchorStyles.Top | AnchorStyles.Left);
-                    panel_GL.Location = new Point(163, 24);
-                    panel_GL.Dock = DockStyle.Fill;
-                    FonctionsNatives.translater(16, 0);
+                    retourAuModeDéditionToolStripMenuItem1.PerformClick();
                 }
                 if (e.KeyChar == (char)Keys.Escape)
                 {
@@ -1427,6 +1416,8 @@ namespace InterfaceGraphique
                 Creation_Panel.Hide();
             flowLayoutPanel1.Hide();
 
+            menuEnable(false);
+
             panel_GL.BringToFront();
             panel_GL.Anchor = AnchorStyles.None;
             panel_GL.Location = new Point(163, 24);
@@ -1434,7 +1425,7 @@ namespace InterfaceGraphique
             panel_GL.Dock = DockStyle.Fill;
             this.OnSizeChanged(e);
             FonctionsNatives.translater(-16, 0);
-            
+
             //panel_GL.Dock = DockStyle.Fill;
             //menuStrip3.BringToFront();
             
@@ -2409,8 +2400,24 @@ namespace InterfaceGraphique
             MiseE_MenuItem.Enabled = active;
             Deplacement_MenuItem.Enabled = active;
             Supprimer_MenuItem.Enabled = active;
+        }
 
-
+        //////////////////////////////////////////////////////////////////////////////////////////
+        ///
+        /// @fn public void menuEnable(bool active)
+        /// @brief Active ou desactive les menus.
+        /// 
+        /// @param[in] active : Indique si les menus seront accessibles.
+        /// 
+        /// @return Aucune.
+        ///
+        //////////////////////////////////////////////////////////////////////////////////////////
+        public void menuEnable(bool active)
+        {
+            Nouveau_MenuItem.Enabled = active;
+            Ouvrir_MenuItem.Enabled = active;
+            Enregistrer_MenuItem.Enabled = active;
+            EnregistrerS_MenuItem.Enabled = active;
         }
 
         //////////////////////////////////////////////////////////////////////////////////////////
@@ -2752,6 +2759,28 @@ namespace InterfaceGraphique
             angleX = 0;
             angleY = 0;
             angleZ = 0;
+        }
+
+        private void retourAuModeDéditionToolStripMenuItem1_Click(object sender, EventArgs e)
+        {
+            etat = null;
+            etat = new EtatNone(this);
+
+            if (menuStrip3.Visible)
+                menuStrip3.Hide();
+            menuStrip1.Show();
+            menuEnable(true);
+            Creation_Panel.Show();
+            flowLayoutPanel1.Show();
+            panel_GL.Anchor = (AnchorStyles.Top | AnchorStyles.Left);
+            panel_GL.Location = new Point(163, 24);
+            panel_GL.Dock = DockStyle.Fill;
+            FonctionsNatives.translater(16, 0);
+        }
+
+        private void retourAuMenuPrincipalToolStripMenuItem1_Click(object sender, EventArgs e)
+        {
+            this.Close();
         }
     }
 
