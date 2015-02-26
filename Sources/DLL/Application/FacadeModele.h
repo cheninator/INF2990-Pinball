@@ -171,7 +171,7 @@ private:
 
    vue::Vue* vue_{ nullptr };				/// Vue courante de la scene.
    ArbreRenduINF2990* arbre_{ nullptr };	/// Arbre de rendu contenant les differents objets de la scene.
-   ConfigScene* configuration_{new ConfigScene()};
+   ConfigScene* configuration_{ nullptr };
 
    glm::dvec3 selectionBasGauche_, selectionHautDroit_;
    glm::ivec2 pointInitial_, pointAvant_;

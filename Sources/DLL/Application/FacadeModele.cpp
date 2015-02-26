@@ -94,7 +94,11 @@ const int FacadeModele::coinDroitTableY = 96;
 FacadeModele* FacadeModele::obtenirInstance()
 {
 	if (instance_ == nullptr)
+	{
 		instance_ = new FacadeModele();
+		instance_->configuration_ = new ConfigScene();
+	}
+
 
 
 	return instance_;
