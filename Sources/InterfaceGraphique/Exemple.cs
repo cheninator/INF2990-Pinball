@@ -313,7 +313,7 @@ namespace InterfaceGraphique
                     panel_GL.Anchor = (AnchorStyles.Top | AnchorStyles.Left);
                     panel_GL.Location = new Point(163, 24);
                     panel_GL.Dock = DockStyle.Fill;
-
+                    FonctionsNatives.translater(16, 0);
                 }
                 if (e.KeyChar == (char)Keys.Escape)
                 {
@@ -1422,6 +1422,7 @@ namespace InterfaceGraphique
             etat = new EtatTest(this);
 
             menuStrip1.Hide();
+            
             if (Creation_Panel.Visible)
                 Creation_Panel.Hide();
             flowLayoutPanel1.Hide();
@@ -1431,6 +1432,11 @@ namespace InterfaceGraphique
             panel_GL.Location = new Point(163, 24);
             //panel_GL.Location = new Point(this.ClientSize.Width / 2 - panel_GL.Size.Width / 2, this.ClientSize.Height / 2 - panel_GL.Size.Height / 2);
             panel_GL.Dock = DockStyle.Fill;
+            this.OnSizeChanged(e);
+            FonctionsNatives.translater(-16, 0);
+            
+            //panel_GL.Dock = DockStyle.Fill;
+            //menuStrip3.BringToFront();
             
         }
 
