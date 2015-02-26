@@ -70,6 +70,7 @@ extern "C" {
 
 
 	__declspec(dllexport) void creerConfigXML(int config[12]);
+	__declspec(dllexport) int* chargerConfigurationXML();
 }
 
 #endif // __FACADE_INTERFACE_NATIVE_H__

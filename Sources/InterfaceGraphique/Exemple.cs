@@ -2972,5 +2972,8 @@ namespace InterfaceGraphique
 
         [DllImport(@"Noyau.dll", CallingConvention = CallingConvention.Cdecl)]
         public static extern void creerConfigXML(int[] config);
+
+        [DllImport(@"Noyau.dll", CallingConvention = CallingConvention.Cdecl)]
+        public static extern IntPtr chargerConfigurationXML();
     }
 }

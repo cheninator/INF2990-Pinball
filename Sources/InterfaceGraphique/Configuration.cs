@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Runtime.InteropServices;
 
 namespace InterfaceGraphique
 {
@@ -30,6 +31,15 @@ namespace InterfaceGraphique
 
         private void InitialiserAvecXML()
         {
+            /*
+            IntPtr config = FonctionsNatives.chargerConfigurationXML();
+            int[] result = new int[12];
+            Marshal.Copy(config, result, 0, 12);
+            */
+
+            /// COMPLETE ICI NIKO
+
+
             // TO DO : LIRE UN FICHIER XML
             /*
               for(int i = 0; i < 5; i++){

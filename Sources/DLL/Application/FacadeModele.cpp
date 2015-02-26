@@ -1034,3 +1034,17 @@ void FacadeModele::sauvegarderConfigXML(int config[12])
 
 	delete configuration_;
 }
+
+
+int* FacadeModele::obtenirConfiguration()
+{
+	configuration_ = new ConfigScene();
+	configuration_->lireConfiguration();
+
+	int* config = new int[12];
+	config = configuration_->obtenirConfiguration();
+
+	delete configuration_;
+
+	return config;
+}

@@ -1309,6 +1309,12 @@ extern "C"
 	}
 
 
+	__declspec(dllexport) int* __cdecl chargerConfigurationXML()
+	{
+		return FacadeModele::obtenirInstance()->obtenirConfiguration();
+	}
+
+
 	/*
 	#include <FTGL/ftgl.h>
 
