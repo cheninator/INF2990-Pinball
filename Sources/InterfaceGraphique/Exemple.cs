@@ -305,22 +305,24 @@ namespace InterfaceGraphique
                     etat = null;
                     etat = new EtatNone(this);
 
-                    if (menuStrip2.Visible)
-                        menuStrip2.Hide();
+                    if (menuStrip3.Visible)
+                        menuStrip3.Hide();
                     menuStrip1.Show();
                     Creation_Panel.Show();
                     flowLayoutPanel1.Show();
-                    //panel_GL.Anchor = (AnchorStyles.Top | AnchorStyles.Left);
-
+                    panel_GL.Anchor = (AnchorStyles.Top | AnchorStyles.Left);
+                    panel_GL.Location = new Point(163, 24);
+                    panel_GL.Dock = DockStyle.Fill;
+                    FonctionsNatives.translater(16, 0);
                 }
                 if (e.KeyChar == (char)Keys.Escape)
                 {
                     // TODO: Handling de la pause. Il faudra probablement
                     // un état TestPause
-                    if (!menuStrip2.Visible)
-                        menuStrip2.Show();
+                    if (!menuStrip3.Visible)
+                        menuStrip3.Show();
                     else
-                        menuStrip2.Hide();
+                        menuStrip3.Hide();
                 }
             }
             else
@@ -355,65 +357,10 @@ namespace InterfaceGraphique
                     }
                     
                 }
-
-                if (e.KeyChar == (char)Keys.Escape)
-                {
-                    if (etat is EtatPortail)
-                    {
-                        FonctionsNatives.removeObject();
-                        etat = null;
-                        etat = new EtatNone(this);
-                        deselection();
-                    }
-                    else if (etat is EtatMur)
-                    {
-                        FonctionsNatives.removeObject();
-                        etat = new EtatCreation(this);
-                        deselection();
-                    }
-                    else if (etat is EtatDuplication)
-                    {
-                        FonctionsNatives.removeObject();
-                        deselection();
-                        etat = new EtatNone(this);
-                    }
-                    else
-                    {
-                        etat = null;
-                        etat = new EtatNone(this);
-                        deselection();
-                    }
-
-                }
                 else if (e.KeyChar == 't')
                 {
-                    if (etat is EtatPortail)
-                    {
-                        FonctionsNatives.removeObject();
-                        etat = null;
-                        etat = new EtatNone(this);
-                        deselection();
-                    }
-                    else if (etat is EtatMur)
-                    {
-                        FonctionsNatives.removeObject();
-                        etat = new EtatCreation(this);
-                        deselection();
-                    }
-                    else if (etat is EtatDuplication)
-                    {
-                        FonctionsNatives.removeObject();
-                        deselection();
-                        etat = new EtatNone(this);
-                    }
-                    else
-                    {
-                        etat = null;
-                        etat = new EtatNone(this);
                         deselection();
                         ModeTest_MenuItem.PerformClick();
-                    }
-
                 }
                 else if (e.KeyChar == 'f')
                 {
@@ -1475,12 +1422,22 @@ namespace InterfaceGraphique
             etat = new EtatTest(this);
 
             menuStrip1.Hide();
+            
             if (Creation_Panel.Visible)
                 Creation_Panel.Hide();
             flowLayoutPanel1.Hide();
 
-            //panel_GL.Anchor = AnchorStyles.None;
+            panel_GL.BringToFront();
+            panel_GL.Anchor = AnchorStyles.None;
             panel_GL.Location = new Point(163, 24);
+            //panel_GL.Location = new Point(this.ClientSize.Width / 2 - panel_GL.Size.Width / 2, this.ClientSize.Height / 2 - panel_GL.Size.Height / 2);
+            panel_GL.Dock = DockStyle.Fill;
+            this.OnSizeChanged(e);
+            FonctionsNatives.translater(-16, 0);
+            
+            //panel_GL.Dock = DockStyle.Fill;
+            //menuStrip3.BringToFront();
+            
         }
 
         ////////////////////////////////////////////////////////////////////////
