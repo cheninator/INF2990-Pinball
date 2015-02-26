@@ -1303,9 +1303,9 @@ extern "C"
 
 
 
-	__declspec(dllexport) void __cdecl creerConfigXML(int touches[5], bool doubleBille, bool rebond, int debug[4])
+	__declspec(dllexport) void __cdecl creerConfigXML(int config[12])
 	{
-		FacadeModele::obtenirInstance()->sauvegarderConfigXML(touches, doubleBille, rebond, debug);
+		FacadeModele::obtenirInstance()->sauvegarderConfigXML(config);
 	}
 
 

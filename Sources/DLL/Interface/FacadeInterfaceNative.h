@@ -69,7 +69,7 @@ extern "C" {
 	__declspec(dllexport) bool duplicationEstHorsTable();
 
 
-	__declspec(dllexport) void creerConfigXML(int touches[5], bool doubleBille, bool rebond, int debug[4]);
+	__declspec(dllexport) void creerConfigXML(int config[12]);
 }
 
 #endif // __FACADE_INTERFACE_NATIVE_H__

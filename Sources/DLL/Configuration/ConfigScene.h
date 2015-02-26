@@ -33,13 +33,11 @@ public:
 
 	bool lireConfiguration();
 
-	void modifierConfiguration(int touche[5], bool doubleBille, bool rebond, int debogage[4]);
+	void modifierConfiguration(int config[12]);
 
 private:
 
-	int* touches_;
-	bool doubleBille_, rebond_;
-	bool* debogage_;
+	int* config_;
 
 	std::string fichierDefaut_, derniereSauvegarde_;
 	tinyxml2::XMLDocument document_;

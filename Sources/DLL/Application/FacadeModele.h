@@ -143,7 +143,7 @@ public:
    ///verifie si la selection est hors table lors de la duplication
    bool duplicationEstHorsTable();
 
-   void sauvegarderConfigXML(int touches[5], bool doubleBille, bool rebond, int debug[4]);
+   void sauvegarderConfigXML(int config[12]);
 
 private:
 

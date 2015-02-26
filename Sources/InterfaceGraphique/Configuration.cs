@@ -278,9 +278,8 @@ namespace InterfaceGraphique
             valuesXML[11] = Convert.ToInt32(PORTAL_OK.Checked);
 
             foreach (int x in valuesXML){Console.WriteLine(x);}
-            // TO DO
-            // IMPLEMENTER LE creeConfigXML avec un tableau de 12 int
-            //    FonctionsNatives.creerConfigXML(touches, modeDBille, modeRebond, afficherDebug);
+
+            FonctionsNatives.creerConfigXML(valuesXML);
             this.Close();
         }
 
