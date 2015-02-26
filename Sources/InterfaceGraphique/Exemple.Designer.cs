@@ -1074,12 +1074,14 @@ namespace InterfaceGraphique
             this.retourAuModeDéditionToolStripMenuItem1.Name = "retourAuModeDéditionToolStripMenuItem1";
             this.retourAuModeDéditionToolStripMenuItem1.Size = new System.Drawing.Size(154, 20);
             this.retourAuModeDéditionToolStripMenuItem1.Text = "Retour au mode d\'édition";
+            this.retourAuModeDéditionToolStripMenuItem1.Click += new System.EventHandler(this.retourAuModeDéditionToolStripMenuItem1_Click);
             // 
             // retourAuMenuPrincipalToolStripMenuItem1
             // 
             this.retourAuMenuPrincipalToolStripMenuItem1.Name = "retourAuMenuPrincipalToolStripMenuItem1";
             this.retourAuMenuPrincipalToolStripMenuItem1.Size = new System.Drawing.Size(153, 20);
             this.retourAuMenuPrincipalToolStripMenuItem1.Text = "Retour au menu principal";
+            this.retourAuMenuPrincipalToolStripMenuItem1.Click += new System.EventHandler(this.retourAuMenuPrincipalToolStripMenuItem1_Click);
             // 
             // caméraToolStripMenuItem1
             // 
@@ -1093,15 +1095,15 @@ namespace InterfaceGraphique
             // orthographiqueToolStripMenuItem
             // 
             this.orthographiqueToolStripMenuItem.Name = "orthographiqueToolStripMenuItem";
-            this.orthographiqueToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.D1)));
-            this.orthographiqueToolStripMenuItem.Size = new System.Drawing.Size(199, 22);
+            this.orthographiqueToolStripMenuItem.ShortcutKeyDisplayString = "1";
+            this.orthographiqueToolStripMenuItem.Size = new System.Drawing.Size(172, 22);
             this.orthographiqueToolStripMenuItem.Text = "Orthographique";
             // 
             // orbiteToolStripMenuItem1
             // 
             this.orbiteToolStripMenuItem1.Name = "orbiteToolStripMenuItem1";
-            this.orbiteToolStripMenuItem1.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.D2)));
-            this.orbiteToolStripMenuItem1.Size = new System.Drawing.Size(199, 22);
+            this.orbiteToolStripMenuItem1.ShortcutKeyDisplayString = "1";
+            this.orbiteToolStripMenuItem1.Size = new System.Drawing.Size(172, 22);
             this.orbiteToolStripMenuItem1.Text = "Orbite";
             // 
             // printPreviewDialog1
