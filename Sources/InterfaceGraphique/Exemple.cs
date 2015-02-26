@@ -305,22 +305,24 @@ namespace InterfaceGraphique
                     etat = null;
                     etat = new EtatNone(this);
 
-                    if (menuStrip2.Visible)
-                        menuStrip2.Hide();
+                    if (menuStrip3.Visible)
+                        menuStrip3.Hide();
                     menuStrip1.Show();
                     Creation_Panel.Show();
                     flowLayoutPanel1.Show();
-                    //panel_GL.Anchor = (AnchorStyles.Top | AnchorStyles.Left);
+                    panel_GL.Anchor = (AnchorStyles.Top | AnchorStyles.Left);
+                    panel_GL.Location = new Point(163, 24);
+                    panel_GL.Dock = DockStyle.Fill;
 
                 }
                 if (e.KeyChar == (char)Keys.Escape)
                 {
                     // TODO: Handling de la pause. Il faudra probablement
                     // un état TestPause
-                    if (!menuStrip2.Visible)
-                        menuStrip2.Show();
+                    if (!menuStrip3.Visible)
+                        menuStrip3.Show();
                     else
-                        menuStrip2.Hide();
+                        menuStrip3.Hide();
                 }
             }
             else
@@ -1480,7 +1482,10 @@ namespace InterfaceGraphique
             flowLayoutPanel1.Hide();
 
             //panel_GL.Anchor = AnchorStyles.None;
-            panel_GL.Location = new Point(163, 24);
+            //panel_GL.Location = new Point(163, 24);
+            //panel_GL.Location = new Point(this.ClientSize.Width / 2 - panel_GL.Size.Width / 2, this.ClientSize.Height / 2 - panel_GL.Size.Height / 2);
+            //panel_GL.Dock = DockStyle.Fill;
+            
         }
 
         ////////////////////////////////////////////////////////////////////////
