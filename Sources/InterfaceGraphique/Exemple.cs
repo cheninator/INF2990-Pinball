@@ -53,6 +53,7 @@ namespace InterfaceGraphique
         private double currentZoom = -1; ///< Zoom courant
         private int nbSelection;
         private bool colorShift = false;
+        private bool peutAnimer = true;
         private StringBuilder pathXML = new StringBuilder(""); ///< Chemin pour la lecture/sauvegarde XML
         private Etat etat { get; set; } ///< Machine a etat
         private int[] prop = new int[6]; ///< Proprietes du jeu a sauvegarder
@@ -182,7 +183,8 @@ namespace InterfaceGraphique
                            playSound("", true);
                        */
                         }
-                        FonctionsNatives.animer(tempsInterAffichage);
+                        if (peutAnimer)
+                            FonctionsNatives.animer(tempsInterAffichage);
                         FonctionsNatives.dessinerOpenGL();
                     }
                 });
@@ -306,17 +308,27 @@ namespace InterfaceGraphique
                 }
                 if (e.KeyChar == (char)Keys.Escape)
                 {
-                    // TODO: Handling de la pause. Il faudra probablement
-                    // un état TestPause
-                    if (!menuStrip3.Visible)
-                        menuStrip3.Show();
-                    else
-                        menuStrip3.Hide();
+                    // TODO: Handling de la pause.
+
+                    menuStrip3.Show();
+                    peutAnimer = false;
+                    etat = null;
+                    etat = new EtatPause(this);
+                }
+            }
+            else if (etat is EtatPause)
+            {
+                if (e.KeyChar == (char)Keys.Escape)
+                {
+                    menuStrip3.Hide();
+                    peutAnimer = true;
+                    etat = null;
+                    etat = new EtatTest(this);
                 }
             }
             else
             {
-              
+
                 if (e.KeyChar == (char)Keys.Escape)
                 {
                     if (etat is EtatPortail)
@@ -336,7 +348,7 @@ namespace InterfaceGraphique
                     {
                         FonctionsNatives.removeObject();
                         deselection();
-                        etat = new EtatNone(this); 
+                        etat = new EtatNone(this);
                     }
                     else
                     {
@@ -344,12 +356,12 @@ namespace InterfaceGraphique
                         etat = new EtatNone(this);
                         deselection();
                     }
-                    
+
                 }
                 else if (e.KeyChar == 't')
                 {
-                        deselection();
-                        ModeTest_MenuItem.PerformClick();
+                    deselection();
+                    ModeTest_MenuItem.PerformClick();
                 }
                 else if (e.KeyChar == 'f')
                 {
@@ -359,16 +371,16 @@ namespace InterfaceGraphique
                     }
                     else
                         fs.EnterFullScreenMode(this);
-                  // A modifier si on veut            
-                 //  FonctionsNatives.resetZoom();
-                    
-                }      
-          
+                    // A modifier si on veut            
+                    //  FonctionsNatives.resetZoom();
+
+                }
+
                 else if (e.KeyChar == 's')
                 {
                     Selection_MenuItem_Click(this, e);
 
-                }           
+                }
                 else if (e.KeyChar == 'p')
                 {
                     bouton_Creation_Click(this, e);
@@ -393,8 +405,8 @@ namespace InterfaceGraphique
 
                 }
 
-                else if (nbSelection != 0) 
-                { 
+                else if (nbSelection != 0)
+                {
 
                     if (e.KeyChar == 'd')
                     {
@@ -403,7 +415,7 @@ namespace InterfaceGraphique
                     }
                     else if (e.KeyChar == 'e')
                     {
-                    
+
                         bouton_Scaling_Click(this, e);
                     }
 

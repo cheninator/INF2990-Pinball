@@ -66,7 +66,7 @@ namespace InterfaceGraphique
                 {
                     if (FonctionsNatives.executerTests())
                     {
-                        System.Console.WriteLine("echec d'un ou plusieurs tests.");
+                        System.Console.WriteLine("Echec d'un ou plusieurs tests.");
                         string s1 = System.Console.ReadLine();
                     }
                     else

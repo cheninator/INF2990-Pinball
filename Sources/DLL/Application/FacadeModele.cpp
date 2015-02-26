@@ -181,6 +181,9 @@ void FacadeModele::initialiserOpenGL(HWND hWnd)
 	glEnable(GL_NORMALIZE);
 	glEnable(GL_LIGHT0);
 
+	// Blending
+	glEnable(GL_BLEND);
+
 	// Qualite
 	glShadeModel(GL_SMOOTH);
 	glHint(GL_LINE_SMOOTH_HINT, GL_NICEST);

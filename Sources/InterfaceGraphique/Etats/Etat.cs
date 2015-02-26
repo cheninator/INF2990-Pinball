@@ -937,5 +937,53 @@ namespace InterfaceGraphique
             return true;
         }
     }
+
+    class EtatPause : Etat
+    {
+        ////////////////////////////////////////////////////////////////////////
+        ///
+        /// @fn public EtatPause(Exemple form) : base(form)
+        /// @brief Constructeur par parametre de l'etat.
+        /// 
+        /// param[in] form : Form associee a l'etat.
+        /// 
+        /// @return Aucune (constructeur).
+        ///
+        ////////////////////////////////////////////////////////////////////////
+        public EtatPause(Exemple form): base(form)
+        {
+            
+        }
+
+        ////////////////////////////////////////////////////////////////////////
+        ///
+        /// @fn public override bool traiterClavier(KeyEventArgs e)
+        /// @brief Traiter le changement d'etat suite a une action du clavier
+        /// 
+        /// param[in] e : evenement du clavier qui lance la fonction
+        /// 
+        /// @return True ou false selon la reussite des operations.
+        ///
+        ////////////////////////////////////////////////////////////////////////
+        public override bool traiterClavier(KeyEventArgs e)
+        {
+            return base.traiterClavier(e);
+        }
+
+        ////////////////////////////////////////////////////////////////////////
+        ///
+        /// @fn public override bool traiterSouris(MouseEventArgs e)
+        /// @brief Traiter le changement d'etat suite a une action du clavier
+        /// 
+        /// param[in] e : evenement de la souris qui lance la fonction
+        /// 
+        /// @return True ou false selon la reussite des operations.
+        ///
+        ////////////////////////////////////////////////////////////////////////
+        public override bool traiterSouris(MouseEventArgs e)
+        {
+            return base.traiterSouris(e);
+        }
+    }
 }
 
