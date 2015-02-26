@@ -25,11 +25,11 @@ namespace InterfaceGraphique
             comboBoxBilles.Text = "3";
             KeyPreview = true;
             // TO DO : LIRE UN XML ET PRENDRE LES VALEURS
-            InitialiserAvecXML();
+            InitialiserAvecBinaire();
         }
 
 
-        private void InitialiserAvecXML()
+        private void InitialiserAvecBinaire()
         {
          
             IntPtr config = FonctionsNatives.chargerFichierConfiguration();
