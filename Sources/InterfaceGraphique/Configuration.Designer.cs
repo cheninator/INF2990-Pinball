@@ -52,33 +52,33 @@
             this.comboBoxBilles = new System.Windows.Forms.ComboBox();
             this.labelDoublesBilles = new System.Windows.Forms.Label();
             this.tabPage3 = new System.Windows.Forms.TabPage();
-            this.OK_bouton = new System.Windows.Forms.Button();
-            this.Annuler_bouton = new System.Windows.Forms.Button();
-            this.GBOX_Debug = new System.Windows.Forms.GroupBox();
-            this.GBOX_Bille = new System.Windows.Forms.GroupBox();
-            this.label_Debug = new System.Windows.Forms.Label();
-            this.GB_OK = new System.Windows.Forms.RadioButton();
-            this.GB_Cancel = new System.Windows.Forms.RadioButton();
-            this.GB_Vitesse = new System.Windows.Forms.GroupBox();
-            this.VAC_Cancel = new System.Windows.Forms.RadioButton();
-            this.VAC_OK = new System.Windows.Forms.RadioButton();
-            this.GB_Eclairage = new System.Windows.Forms.GroupBox();
-            this.AE_CANCEL = new System.Windows.Forms.RadioButton();
-            this.AE_OK = new System.Windows.Forms.RadioButton();
             this.GB_Portail = new System.Windows.Forms.GroupBox();
             this.PORTAL_Cancel = new System.Windows.Forms.RadioButton();
             this.PORTAL_OK = new System.Windows.Forms.RadioButton();
+            this.GBOX_Debug = new System.Windows.Forms.GroupBox();
+            this.GB_Eclairage = new System.Windows.Forms.GroupBox();
+            this.AE_CANCEL = new System.Windows.Forms.RadioButton();
+            this.AE_OK = new System.Windows.Forms.RadioButton();
+            this.GB_Vitesse = new System.Windows.Forms.GroupBox();
+            this.VAC_Cancel = new System.Windows.Forms.RadioButton();
+            this.VAC_OK = new System.Windows.Forms.RadioButton();
+            this.label_Debug = new System.Windows.Forms.Label();
+            this.GBOX_Bille = new System.Windows.Forms.GroupBox();
+            this.GB_Cancel = new System.Windows.Forms.RadioButton();
+            this.GB_OK = new System.Windows.Forms.RadioButton();
+            this.OK_bouton = new System.Windows.Forms.Button();
+            this.Annuler_bouton = new System.Windows.Forms.Button();
             this.tabProprietes.SuspendLayout();
             this.tabPage1.SuspendLayout();
             this.tabPage2.SuspendLayout();
             this.GBOX_acceleration.SuspendLayout();
             this.GBox_ModeBilles.SuspendLayout();
             this.tabPage3.SuspendLayout();
-            this.GBOX_Debug.SuspendLayout();
-            this.GBOX_Bille.SuspendLayout();
-            this.GB_Vitesse.SuspendLayout();
-            this.GB_Eclairage.SuspendLayout();
             this.GB_Portail.SuspendLayout();
+            this.GBOX_Debug.SuspendLayout();
+            this.GB_Eclairage.SuspendLayout();
+            this.GB_Vitesse.SuspendLayout();
+            this.GBOX_Bille.SuspendLayout();
             this.SuspendLayout();
             // 
             // tabProprietes
@@ -367,25 +367,39 @@
             this.tabPage3.Text = "Débogage";
             this.tabPage3.UseVisualStyleBackColor = true;
             // 
-            // OK_bouton
+            // GB_Portail
             // 
-            this.OK_bouton.Location = new System.Drawing.Point(17, 451);
-            this.OK_bouton.Name = "OK_bouton";
-            this.OK_bouton.Size = new System.Drawing.Size(140, 46);
-            this.OK_bouton.TabIndex = 1;
-            this.OK_bouton.Text = "Accepter";
-            this.OK_bouton.UseVisualStyleBackColor = true;
-            this.OK_bouton.Click += new System.EventHandler(this.OK_bouton_Click);
+            this.GB_Portail.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            this.GB_Portail.Controls.Add(this.PORTAL_Cancel);
+            this.GB_Portail.Controls.Add(this.PORTAL_OK);
+            this.GB_Portail.Location = new System.Drawing.Point(14, 327);
+            this.GB_Portail.Name = "GB_Portail";
+            this.GB_Portail.Size = new System.Drawing.Size(274, 62);
+            this.GB_Portail.TabIndex = 5;
+            this.GB_Portail.TabStop = false;
+            this.GB_Portail.Text = "Limite de champ d\'attraction des portails";
             // 
-            // Annuler_bouton
+            // PORTAL_Cancel
             // 
-            this.Annuler_bouton.Location = new System.Drawing.Point(179, 451);
-            this.Annuler_bouton.Name = "Annuler_bouton";
-            this.Annuler_bouton.Size = new System.Drawing.Size(140, 46);
-            this.Annuler_bouton.TabIndex = 2;
-            this.Annuler_bouton.Text = "Annuler";
-            this.Annuler_bouton.UseVisualStyleBackColor = true;
-            this.Annuler_bouton.Click += new System.EventHandler(this.Annuler_bouton_Click);
+            this.PORTAL_Cancel.AutoSize = true;
+            this.PORTAL_Cancel.Location = new System.Drawing.Point(14, 43);
+            this.PORTAL_Cancel.Name = "PORTAL_Cancel";
+            this.PORTAL_Cancel.Size = new System.Drawing.Size(76, 17);
+            this.PORTAL_Cancel.TabIndex = 1;
+            this.PORTAL_Cancel.Text = "Désactiver";
+            this.PORTAL_Cancel.UseVisualStyleBackColor = true;
+            // 
+            // PORTAL_OK
+            // 
+            this.PORTAL_OK.AutoSize = true;
+            this.PORTAL_OK.Checked = true;
+            this.PORTAL_OK.Location = new System.Drawing.Point(14, 20);
+            this.PORTAL_OK.Name = "PORTAL_OK";
+            this.PORTAL_OK.Size = new System.Drawing.Size(58, 17);
+            this.PORTAL_OK.TabIndex = 0;
+            this.PORTAL_OK.TabStop = true;
+            this.PORTAL_OK.Text = "Activer";
+            this.PORTAL_OK.UseVisualStyleBackColor = true;
             // 
             // GBOX_Debug
             // 
@@ -399,86 +413,6 @@
             this.GBOX_Debug.TabIndex = 0;
             this.GBOX_Debug.TabStop = false;
             this.GBOX_Debug.Text = "Options d\'affichage en console";
-            // 
-            // GBOX_Bille
-            // 
-            this.GBOX_Bille.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.GBOX_Bille.Controls.Add(this.GB_Cancel);
-            this.GBOX_Bille.Controls.Add(this.GB_OK);
-            this.GBOX_Bille.Location = new System.Drawing.Point(7, 83);
-            this.GBOX_Bille.Name = "GBOX_Bille";
-            this.GBOX_Bille.Size = new System.Drawing.Size(261, 65);
-            this.GBOX_Bille.TabIndex = 0;
-            this.GBOX_Bille.TabStop = false;
-            this.GBOX_Bille.Text = "Génération d\'une bille";
-            // 
-            // label_Debug
-            // 
-            this.label_Debug.BackColor = System.Drawing.Color.Transparent;
-            this.label_Debug.Dock = System.Windows.Forms.DockStyle.Top;
-            this.label_Debug.Location = new System.Drawing.Point(3, 16);
-            this.label_Debug.Name = "label_Debug";
-            this.label_Debug.Size = new System.Drawing.Size(268, 64);
-            this.label_Debug.TabIndex = 1;
-            this.label_Debug.Text = "Les options d\'affichage en console permettent d\'afficher des informations pendant" +
-    " le jeu. \r\nLes informations sont horodatées de la façon suivante: HH: MM: SS\r\n";
-            this.label_Debug.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
-            // GB_OK
-            // 
-            this.GB_OK.AutoSize = true;
-            this.GB_OK.Checked = true;
-            this.GB_OK.Location = new System.Drawing.Point(7, 20);
-            this.GB_OK.Name = "GB_OK";
-            this.GB_OK.Size = new System.Drawing.Size(58, 17);
-            this.GB_OK.TabIndex = 0;
-            this.GB_OK.TabStop = true;
-            this.GB_OK.Text = "Activer";
-            this.GB_OK.UseVisualStyleBackColor = true;
-            // 
-            // GB_Cancel
-            // 
-            this.GB_Cancel.AutoSize = true;
-            this.GB_Cancel.Location = new System.Drawing.Point(7, 43);
-            this.GB_Cancel.Name = "GB_Cancel";
-            this.GB_Cancel.Size = new System.Drawing.Size(76, 17);
-            this.GB_Cancel.TabIndex = 1;
-            this.GB_Cancel.Text = "Désactiver";
-            this.GB_Cancel.UseVisualStyleBackColor = true;
-            // 
-            // GB_Vitesse
-            // 
-            this.GB_Vitesse.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.GB_Vitesse.Controls.Add(this.VAC_Cancel);
-            this.GB_Vitesse.Controls.Add(this.VAC_OK);
-            this.GB_Vitesse.Location = new System.Drawing.Point(7, 154);
-            this.GB_Vitesse.Name = "GB_Vitesse";
-            this.GB_Vitesse.Size = new System.Drawing.Size(261, 61);
-            this.GB_Vitesse.TabIndex = 2;
-            this.GB_Vitesse.TabStop = false;
-            this.GB_Vitesse.Text = "Vitesse après collision";
-            // 
-            // VAC_Cancel
-            // 
-            this.VAC_Cancel.AutoSize = true;
-            this.VAC_Cancel.Location = new System.Drawing.Point(7, 43);
-            this.VAC_Cancel.Name = "VAC_Cancel";
-            this.VAC_Cancel.Size = new System.Drawing.Size(76, 17);
-            this.VAC_Cancel.TabIndex = 1;
-            this.VAC_Cancel.Text = "Désactiver";
-            this.VAC_Cancel.UseVisualStyleBackColor = true;
-            // 
-            // VAC_OK
-            // 
-            this.VAC_OK.AutoSize = true;
-            this.VAC_OK.Checked = true;
-            this.VAC_OK.Location = new System.Drawing.Point(7, 20);
-            this.VAC_OK.Name = "VAC_OK";
-            this.VAC_OK.Size = new System.Drawing.Size(58, 17);
-            this.VAC_OK.TabIndex = 0;
-            this.VAC_OK.TabStop = true;
-            this.VAC_OK.Text = "Activer";
-            this.VAC_OK.UseVisualStyleBackColor = true;
             // 
             // GB_Eclairage
             // 
@@ -514,39 +448,105 @@
             this.AE_OK.Text = "Activer";
             this.AE_OK.UseVisualStyleBackColor = true;
             // 
-            // GB_Portail
+            // GB_Vitesse
             // 
-            this.GB_Portail.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.GB_Portail.Controls.Add(this.PORTAL_Cancel);
-            this.GB_Portail.Controls.Add(this.PORTAL_OK);
-            this.GB_Portail.Location = new System.Drawing.Point(14, 327);
-            this.GB_Portail.Name = "GB_Portail";
-            this.GB_Portail.Size = new System.Drawing.Size(274, 62);
-            this.GB_Portail.TabIndex = 5;
-            this.GB_Portail.TabStop = false;
-            this.GB_Portail.Text = "Limite de champ d\'attraction des portails";
+            this.GB_Vitesse.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            this.GB_Vitesse.Controls.Add(this.VAC_Cancel);
+            this.GB_Vitesse.Controls.Add(this.VAC_OK);
+            this.GB_Vitesse.Location = new System.Drawing.Point(7, 154);
+            this.GB_Vitesse.Name = "GB_Vitesse";
+            this.GB_Vitesse.Size = new System.Drawing.Size(261, 61);
+            this.GB_Vitesse.TabIndex = 2;
+            this.GB_Vitesse.TabStop = false;
+            this.GB_Vitesse.Text = "Vitesse après collision";
             // 
-            // PORTAL_Cancel
+            // VAC_Cancel
             // 
-            this.PORTAL_Cancel.AutoSize = true;
-            this.PORTAL_Cancel.Location = new System.Drawing.Point(14, 43);
-            this.PORTAL_Cancel.Name = "PORTAL_Cancel";
-            this.PORTAL_Cancel.Size = new System.Drawing.Size(76, 17);
-            this.PORTAL_Cancel.TabIndex = 1;
-            this.PORTAL_Cancel.Text = "Désactiver";
-            this.PORTAL_Cancel.UseVisualStyleBackColor = true;
+            this.VAC_Cancel.AutoSize = true;
+            this.VAC_Cancel.Location = new System.Drawing.Point(7, 43);
+            this.VAC_Cancel.Name = "VAC_Cancel";
+            this.VAC_Cancel.Size = new System.Drawing.Size(76, 17);
+            this.VAC_Cancel.TabIndex = 1;
+            this.VAC_Cancel.Text = "Désactiver";
+            this.VAC_Cancel.UseVisualStyleBackColor = true;
             // 
-            // PORTAL_OK
+            // VAC_OK
             // 
-            this.PORTAL_OK.AutoSize = true;
-            this.PORTAL_OK.Checked = true;
-            this.PORTAL_OK.Location = new System.Drawing.Point(14, 20);
-            this.PORTAL_OK.Name = "PORTAL_OK";
-            this.PORTAL_OK.Size = new System.Drawing.Size(58, 17);
-            this.PORTAL_OK.TabIndex = 0;
-            this.PORTAL_OK.TabStop = true;
-            this.PORTAL_OK.Text = "Activer";
-            this.PORTAL_OK.UseVisualStyleBackColor = true;
+            this.VAC_OK.AutoSize = true;
+            this.VAC_OK.Checked = true;
+            this.VAC_OK.Location = new System.Drawing.Point(7, 20);
+            this.VAC_OK.Name = "VAC_OK";
+            this.VAC_OK.Size = new System.Drawing.Size(58, 17);
+            this.VAC_OK.TabIndex = 0;
+            this.VAC_OK.TabStop = true;
+            this.VAC_OK.Text = "Activer";
+            this.VAC_OK.UseVisualStyleBackColor = true;
+            // 
+            // label_Debug
+            // 
+            this.label_Debug.BackColor = System.Drawing.Color.Transparent;
+            this.label_Debug.Dock = System.Windows.Forms.DockStyle.Top;
+            this.label_Debug.Location = new System.Drawing.Point(3, 16);
+            this.label_Debug.Name = "label_Debug";
+            this.label_Debug.Size = new System.Drawing.Size(268, 64);
+            this.label_Debug.TabIndex = 1;
+            this.label_Debug.Text = "Les options d\'affichage en console permettent d\'afficher des informations pendant" +
+    " le jeu. \r\nLes informations sont horodatées de la façon suivante: HH: MM: SS\r\n";
+            this.label_Debug.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // GBOX_Bille
+            // 
+            this.GBOX_Bille.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            this.GBOX_Bille.Controls.Add(this.GB_Cancel);
+            this.GBOX_Bille.Controls.Add(this.GB_OK);
+            this.GBOX_Bille.Location = new System.Drawing.Point(7, 83);
+            this.GBOX_Bille.Name = "GBOX_Bille";
+            this.GBOX_Bille.Size = new System.Drawing.Size(261, 65);
+            this.GBOX_Bille.TabIndex = 0;
+            this.GBOX_Bille.TabStop = false;
+            this.GBOX_Bille.Text = "Génération d\'une bille";
+            // 
+            // GB_Cancel
+            // 
+            this.GB_Cancel.AutoSize = true;
+            this.GB_Cancel.Location = new System.Drawing.Point(7, 43);
+            this.GB_Cancel.Name = "GB_Cancel";
+            this.GB_Cancel.Size = new System.Drawing.Size(76, 17);
+            this.GB_Cancel.TabIndex = 1;
+            this.GB_Cancel.Text = "Désactiver";
+            this.GB_Cancel.UseVisualStyleBackColor = true;
+            // 
+            // GB_OK
+            // 
+            this.GB_OK.AutoSize = true;
+            this.GB_OK.Checked = true;
+            this.GB_OK.Location = new System.Drawing.Point(7, 20);
+            this.GB_OK.Name = "GB_OK";
+            this.GB_OK.Size = new System.Drawing.Size(58, 17);
+            this.GB_OK.TabIndex = 0;
+            this.GB_OK.TabStop = true;
+            this.GB_OK.Text = "Activer";
+            this.GB_OK.UseVisualStyleBackColor = true;
+            // 
+            // OK_bouton
+            // 
+            this.OK_bouton.Location = new System.Drawing.Point(17, 451);
+            this.OK_bouton.Name = "OK_bouton";
+            this.OK_bouton.Size = new System.Drawing.Size(140, 46);
+            this.OK_bouton.TabIndex = 1;
+            this.OK_bouton.Text = "Accepter";
+            this.OK_bouton.UseVisualStyleBackColor = true;
+            this.OK_bouton.Click += new System.EventHandler(this.OK_bouton_Click);
+            // 
+            // Annuler_bouton
+            // 
+            this.Annuler_bouton.Location = new System.Drawing.Point(179, 451);
+            this.Annuler_bouton.Name = "Annuler_bouton";
+            this.Annuler_bouton.Size = new System.Drawing.Size(140, 46);
+            this.Annuler_bouton.TabIndex = 2;
+            this.Annuler_bouton.Text = "Annuler";
+            this.Annuler_bouton.UseVisualStyleBackColor = true;
+            this.Annuler_bouton.Click += new System.EventHandler(this.Annuler_bouton_Click);
             // 
             // Configuration
             // 
@@ -556,6 +556,7 @@
             this.Controls.Add(this.Annuler_bouton);
             this.Controls.Add(this.OK_bouton);
             this.Controls.Add(this.tabProprietes);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Icon = global::InterfaceGraphique.Properties.Resources.Pinball;
             this.Name = "Configuration";
             this.Text = "Configuration";
@@ -568,15 +569,15 @@
             this.GBox_ModeBilles.ResumeLayout(false);
             this.GBox_ModeBilles.PerformLayout();
             this.tabPage3.ResumeLayout(false);
-            this.GBOX_Debug.ResumeLayout(false);
-            this.GBOX_Bille.ResumeLayout(false);
-            this.GBOX_Bille.PerformLayout();
-            this.GB_Vitesse.ResumeLayout(false);
-            this.GB_Vitesse.PerformLayout();
-            this.GB_Eclairage.ResumeLayout(false);
-            this.GB_Eclairage.PerformLayout();
             this.GB_Portail.ResumeLayout(false);
             this.GB_Portail.PerformLayout();
+            this.GBOX_Debug.ResumeLayout(false);
+            this.GB_Eclairage.ResumeLayout(false);
+            this.GB_Eclairage.PerformLayout();
+            this.GB_Vitesse.ResumeLayout(false);
+            this.GB_Vitesse.PerformLayout();
+            this.GBOX_Bille.ResumeLayout(false);
+            this.GBOX_Bille.PerformLayout();
             this.ResumeLayout(false);
 
         }

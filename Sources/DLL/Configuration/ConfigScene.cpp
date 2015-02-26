@@ -1,18 +1,25 @@
 ////////////////////////////////////////////////////////////////////////////////////
 /// @file ConfigScene.cpp
-/// @author Jean-François Pérusse
-/// @date 2007-01-10
+/// @author The Ballers
+/// @date 2015-02-25
 /// @version 1.0
 ///
-/// @addtogroup inf2990 INF2990
-/// @{
+/// @ingroup Configuration
+///
 ////////////////////////////////////////////////////////////////////////////////////
 
 #include "ConfigScene.h"
-#include <iostream>
-#include "../../Commun/Utilitaire/Utilitaire.h"
 
 
+////////////////////////////////////////////////////////////////////////
+///
+/// @fn ConfigScene::ConfigScene()
+///
+/// Assigne les valeurs par défaut des attributs de classe
+///
+/// @return Aucune (constructeur).
+///
+////////////////////////////////////////////////////////////////////////
 ConfigScene::ConfigScene()
 {
 	derniereSauvegarde_ = "lastSave.xml";
@@ -20,6 +27,15 @@ ConfigScene::ConfigScene()
 }
 
 
+////////////////////////////////////////////////////////////////////////
+///
+/// @fn ConfigScene::~ConfigScene()
+///
+/// Detruit les informations internes relatives à la configuration
+///
+/// @return Aucune (destructeur).
+///
+////////////////////////////////////////////////////////////////////////
 ConfigScene::~ConfigScene()
 {
 	delete[] config_;
@@ -28,9 +44,9 @@ ConfigScene::~ConfigScene()
 
 ////////////////////////////////////////////////////////////////////////
 ///
-/// @fn void ConfigScene::creerDOM () const
+/// @fn void ConfigScene::sauvegarderConfiguration()
 ///
-/// Cette fonction écrit les valeurs de la configuration dans un élément XML.
+/// Cette fonction écrit les valeurs de la configuration dans un fichier XML.
 ///
 /// @return Aucune.
 ///
@@ -106,7 +122,28 @@ void ConfigScene::sauvegarderConfiguration()
 
 ////////////////////////////////////////////////////////////////////////
 ///
-/// @fn void ConfigScene::lireDOM( const TiXmlNode& node )
+/// @fn bool ConfigScene::lireConfiguration()
+///
+/// Cette fonction lit les valeurs de la configuration à de la dernière
+/// configuration de jeu.
+///
+/// @return True pour indiquer que la lecture s'est bien faite. False autrement
+///
+////////////////////////////////////////////////////////////////////////
+bool ConfigScene::lireConfiguration()
+{
+	bool lectureOK = false;
+
+	lireXML();
+	lectureOK = true;
+	
+	return lectureOK;
+}
+
+
+////////////////////////////////////////////////////////////////////////
+///
+/// @fn void ConfigScene::lireXML()
 ///
 /// Cette fonction lit les valeurs de la configuration à partir d'un élément
 /// XML.
@@ -114,24 +151,6 @@ void ConfigScene::sauvegarderConfiguration()
 /// @return Aucune.
 ///
 ////////////////////////////////////////////////////////////////////////
-bool ConfigScene::lireConfiguration()
-{
-	bool lectureOK = false;
-
-	// Charger le fichier par défaut si c'est la première fois
-	if (!(utilitaire::fichierExiste(derniereSauvegarde_)))
-	{
-		document_.LoadFile(fichierDefaut_.c_str());
-		lectureOK = true;
-	}
-
-	// Sinon, toujours charger la dernière sauvegarde
-	else
-		lireXML();
-	
-	return lectureOK;
-}
-
 void ConfigScene::lireXML()
 {
 	// Ouvrir le fichier XML
@@ -169,6 +188,18 @@ void ConfigScene::lireXML()
 	
 }
 
+
+////////////////////////////////////////////////////////////////////////
+///
+/// @fn void ConfigScene::modifierConfiguration(int config[12])
+///
+/// Cette fonction assigne les nouvelles configurations de zone de jeu.
+///
+/// @param[in] config[12] : Un tableau contenant les informations de configuration
+///
+/// @return Aucune.
+///
+////////////////////////////////////////////////////////////////////////
 void ConfigScene::modifierConfiguration(int config[12])
 {
 	config_[0] = config[0];		// Palette gauche joueur 1
