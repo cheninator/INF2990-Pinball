@@ -357,65 +357,10 @@ namespace InterfaceGraphique
                     }
                     
                 }
-
-                if (e.KeyChar == (char)Keys.Escape)
-                {
-                    if (etat is EtatPortail)
-                    {
-                        FonctionsNatives.removeObject();
-                        etat = null;
-                        etat = new EtatNone(this);
-                        deselection();
-                    }
-                    else if (etat is EtatMur)
-                    {
-                        FonctionsNatives.removeObject();
-                        etat = new EtatCreation(this);
-                        deselection();
-                    }
-                    else if (etat is EtatDuplication)
-                    {
-                        FonctionsNatives.removeObject();
-                        deselection();
-                        etat = new EtatNone(this);
-                    }
-                    else
-                    {
-                        etat = null;
-                        etat = new EtatNone(this);
-                        deselection();
-                    }
-
-                }
                 else if (e.KeyChar == 't')
                 {
-                    if (etat is EtatPortail)
-                    {
-                        FonctionsNatives.removeObject();
-                        etat = null;
-                        etat = new EtatNone(this);
-                        deselection();
-                    }
-                    else if (etat is EtatMur)
-                    {
-                        FonctionsNatives.removeObject();
-                        etat = new EtatCreation(this);
-                        deselection();
-                    }
-                    else if (etat is EtatDuplication)
-                    {
-                        FonctionsNatives.removeObject();
-                        deselection();
-                        etat = new EtatNone(this);
-                    }
-                    else
-                    {
-                        etat = null;
-                        etat = new EtatNone(this);
                         deselection();
                         ModeTest_MenuItem.PerformClick();
-                    }
-
                 }
                 else if (e.KeyChar == 'f')
                 {
@@ -1481,10 +1426,11 @@ namespace InterfaceGraphique
                 Creation_Panel.Hide();
             flowLayoutPanel1.Hide();
 
-            //panel_GL.Anchor = AnchorStyles.None;
-            //panel_GL.Location = new Point(163, 24);
+            panel_GL.BringToFront();
+            panel_GL.Anchor = AnchorStyles.None;
+            panel_GL.Location = new Point(163, 24);
             //panel_GL.Location = new Point(this.ClientSize.Width / 2 - panel_GL.Size.Width / 2, this.ClientSize.Height / 2 - panel_GL.Size.Height / 2);
-            //panel_GL.Dock = DockStyle.Fill;
+            panel_GL.Dock = DockStyle.Fill;
             
         }
 
