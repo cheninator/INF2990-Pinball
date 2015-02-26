@@ -122,6 +122,9 @@
     <EmbeddedResource Include="Aide.resx">
       <DependentUpon>Aide.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Campagne.resx">
+      <DependentUpon>Campagne.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Configuration.resx">
       <DependentUpon>Configuration.cs</DependentUpon>
     </EmbeddedResource>
