@@ -12,12 +12,9 @@ namespace InterfaceGraphique
 {
     public partial class Configuration : Form
     {
-        char[] defaultValues = { 'A', 'S', '4', '5' };
+        int[] defaultValues = { 65, 83, 52, 53};
         int[] currentValues = {65,83,52,53,32,49,50,74,75,76,66 };
-        int nbBilles = 3;
-        bool modeDBille = false;
-        bool modeRebond = false;
-        int[] afficherDebug = { 1, 1, 1, 1 };
+        int[] valuesXML = new int[12]; 
         string maTouche;
         bool mediaPlaying = false;
         System.Media.SoundPlayer p = new System.Media.SoundPlayer(Properties.Resources.touche_invalide);
@@ -30,12 +27,83 @@ namespace InterfaceGraphique
             InitialiserAvecXML();
         }
 
+
         private void InitialiserAvecXML()
         {
-
+            // TO DO : LIRE UN FICHIER XML
+            /*
+              for(int i = 0; i < 5; i++){
+                 currentValues[i] = valuesXML[i];             
+              }
+              InitialiserTouches();
+              PGJ1_bouton.Text = char.ConvertFromUtf32(currentValues[0]);
+              valuesXML[5] = Convert.ToInt32(comboBoxBilles.Text.ToString());
+             comboBoxBilles.Text = valuesXML[5].ToString();
+            valuesXML[6] = Convert.ToInt32(MDB_OK.Checked);
+              if( valuesXML[6] != 0)
+                MBD_OK.Checked = true;
+              else
+                MBD_Cancel.Checked = true;
+            valuesXML[7] = Convert.ToInt32(FRS_OK.Checked);
+              if( valuesXML[7] != 0)
+                FRS_OK.Checked = true;
+              else
+                FRS_Cancel.Checked = true;
+            valuesXML[8] = Convert.ToInt32(GB_OK.Checked);
+              if( valuesXML[8] != 0)
+                GB_OK.Checked = true;
+              else
+                GB_Cancel.Checked = true;
+            valuesXML[9] = Convert.ToInt32(VAC_OK.Checked);
+             if( valuesXML[9] != 0)
+                VAC_OK.Checked = true;
+              else
+                VAC_Cancel.Checked = true;
+            valuesXML[10] = Convert.ToInt32(AE_OK.Checked);
+              if( valuesXML[10] != 0)
+                AE_OK.Checked = true;
+              else
+                AE_Cancel.Checked = true;
+            valuesXML[11] = Convert.ToInt32(PORTAL_OK.Checked);    
+              if( valuesXML[11] != 0)
+                PORTAL_OK.Checked = true;
+              else
+                PORTAL_Cancel.Checked = true;
+             
+             */
 
 
         }
+
+        private void InitialiserTouches()
+        {
+            maTouche = char.ConvertFromUtf32(currentValues[0]);
+            if (maTouche == " ")
+                maTouche = "Espace";
+            PGJ1_bouton.Text = maTouche;
+
+            maTouche = char.ConvertFromUtf32(currentValues[1]);
+            if (maTouche == " ")
+                maTouche = "Espace";
+            PDJ1_bouton.Text = maTouche;
+
+            maTouche = char.ConvertFromUtf32(currentValues[2]);
+            if (maTouche == " ")
+                maTouche = "Espace";
+            PGJ2_bouton.Text = maTouche;
+
+            maTouche = char.ConvertFromUtf32(currentValues[3]);
+            if (maTouche == " ")
+                maTouche = "Espace";
+            PDJ2_bouton.Text = maTouche;
+
+            maTouche = char.ConvertFromUtf32(currentValues[4]);
+            if (maTouche == " ")
+                maTouche = "Espace";
+            Ressort_bouton.Text = maTouche;
+        }
+
+
         private bool isValid(int touche)
         {
             if( (touche >= 65 && touche <= 90) || (touche >= 48 && touche <= 57) || (touche == 32) )
@@ -75,15 +143,15 @@ namespace InterfaceGraphique
 
         private void Default_bouton_Click(object sender, EventArgs e)
         {
-            PGJ1_bouton.Text = defaultValues[0].ToString();
-            currentValues[0] = 65;
-            PDJ1_bouton.Text = defaultValues[1].ToString();
-            currentValues[1] = 83;
-            PGJ2_bouton.Text = defaultValues[2].ToString();
-            currentValues[2] = 52;
-            PDJ2_bouton.Text = defaultValues[3].ToString();
-            currentValues[3] = 53;
+            PGJ1_bouton.Text = char.ConvertFromUtf32(defaultValues[0]);
+            PDJ1_bouton.Text = char.ConvertFromUtf32(defaultValues[1]);
+            PGJ2_bouton.Text = char.ConvertFromUtf32(defaultValues[2]);
+            PDJ2_bouton.Text = char.ConvertFromUtf32(defaultValues[3]);
             Ressort_bouton.Text = "Espace";
+            currentValues[0] = 65;
+            currentValues[1] = 83;
+            currentValues[2] = 52;
+            currentValues[3] = 53;
             currentValues[4] = 32;
         }
 
@@ -199,24 +267,21 @@ namespace InterfaceGraphique
 
         private void OK_bouton_Click(object sender, EventArgs e)
         {
-            nbBilles = Convert.ToInt32(comboBoxBilles.Text.ToString());
-            modeDBille = MDB_OK.Checked;
-            modeRebond = FRS_OK.Checked;
-            int[] afficherDebug = 
-            { 
-                Convert.ToInt32(GB_OK.Checked), 
-                Convert.ToInt32(VAC_OK.Checked), 
-                Convert.ToInt32(AE_OK.Checked), 
-                Convert.ToInt32(PORTAL_OK.Checked) 
-            };
-
-            int[] touches = new int[5];
             for(int i = 0; i < 5; i++)
-                touches[i] = currentValues[i];
+                valuesXML[i] = currentValues[i];
+            valuesXML[5] = Convert.ToInt32(comboBoxBilles.Text.ToString());
+            valuesXML[6] = Convert.ToInt32(MDB_OK.Checked);
+            valuesXML[7] = Convert.ToInt32(FRS_OK.Checked);
+            valuesXML[8] = Convert.ToInt32(GB_OK.Checked);
+            valuesXML[9] = Convert.ToInt32(VAC_OK.Checked);
+            valuesXML[10] = Convert.ToInt32(AE_OK.Checked);
+            valuesXML[11] = Convert.ToInt32(PORTAL_OK.Checked);
 
-            
-
-            FonctionsNatives.creerConfigXML(touches, modeDBille, modeRebond, afficherDebug);
+            foreach (int x in valuesXML){Console.WriteLine(x);}
+            // TO DO
+            // IMPLEMENTER LE creeConfigXML avec un tableau de 12 int
+            //    FonctionsNatives.creerConfigXML(touches, modeDBille, modeRebond, afficherDebug);
+            this.Close();
         }
 
     }

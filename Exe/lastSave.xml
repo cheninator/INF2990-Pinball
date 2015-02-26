@@ -1,0 +1,17 @@
+<Configuration>
+    <Touches>
+        <Palette_Gauche_J1 Touche: ="65"/>
+        <Palette_Droite_J1 Touche: ="83"/>
+        <Palette_Gauche_J2 Touche: ="52"/>
+        <Palette_Droite_J2 Touche: ="32"/>
+        <Ressort/>
+    </Touches>
+    <Double bille :  Activer: ="0"/>
+    <Rebond :  Activer: ="1"/>
+    <Debogage>
+        <Generation: Activer: ="1"/>
+        <Colision: Activer: ="1"/>
+        <Eclairage: Activer: ="1"/>
+        <Champs de force: Activer: ="1"/>
+    </Debogage>
+</Configuration>
