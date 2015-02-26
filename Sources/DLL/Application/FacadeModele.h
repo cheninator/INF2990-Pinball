@@ -144,7 +144,7 @@ public:
    bool duplicationEstHorsTable();
 
 
-   void sauvegarderConfigXML(int config[12]);
+   void sauvegarderConfig(int config[12]);
 
    int* obtenirConfiguration();
 

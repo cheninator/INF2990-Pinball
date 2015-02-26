@@ -129,6 +129,7 @@ FacadeModele::~FacadeModele()
 {
 	delete arbre_;
 	delete vue_;
+	delete configuration_;
 }
 
 
@@ -1025,26 +1026,18 @@ bool FacadeModele::duplicationEstHorsTable()
 }
 
 
-void FacadeModele::sauvegarderConfigXML(int config[12])
+void FacadeModele::sauvegarderConfig(int config[12])
 {
-	configuration_ = new ConfigScene();
-
 	configuration_->modifierConfiguration(config);
 	configuration_->sauvegarderConfiguration();
-
-	delete configuration_;
 }
 
 
 int* FacadeModele::obtenirConfiguration()
 {
+	// Sera détruit lors de l'appel du destructeur de FacadeModele
 	configuration_ = new ConfigScene();
+
 	configuration_->lireConfiguration();
-
-	int* config = new int[12];
-	config = configuration_->obtenirConfiguration();
-
-	delete configuration_;
-
-	return config;
+	return configuration_->obtenirConfiguration();
 }

@@ -10,7 +10,6 @@
 #ifndef __CONFIGURATION_CONFIGSCENE_H__
 #define __CONFIGURATION_CONFIGSCENE_H__
 
-#include "tinyxml2.h"
 #include <string>
 
 ///////////////////////////////////////////////////////////////////////////
@@ -31,7 +30,7 @@ public:
 	// Destructeur
 	~ConfigScene();
 
-	// Sauvegarder en fichier XML
+	// Sauvegarder en fichier binaire
 	void sauvegarderConfiguration();
 
 	// Lire le fichier de la dernière configuration
@@ -45,17 +44,14 @@ public:
 
 private:
 
-	// Lis un XMLDocument
-	void lireXML();
+	// Lis un fichier binaire
+	void lireFichierBinaire();
 
 	// Contient toutes les informations relative à la configuration du jeu
 	int* config_;
 
 	// Nom de la dernière sauvegarde
 	std::string derniereSauvegarde_;
-
-	// Document XML
-	tinyxml2::XMLDocument document_;
 
 };
 

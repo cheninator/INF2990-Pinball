@@ -3000,9 +3000,9 @@ namespace InterfaceGraphique
         public static extern bool duplicationEstHorsTable();
 
         [DllImport(@"Noyau.dll", CallingConvention = CallingConvention.Cdecl)]
-        public static extern void creerConfigXML(int[] config);
+        public static extern void creerFichierConfig(int[] config);
 
         [DllImport(@"Noyau.dll", CallingConvention = CallingConvention.Cdecl)]
-        public static extern IntPtr chargerConfigurationXML();
+        public static extern IntPtr chargerFichierConfiguration();
     }
 }

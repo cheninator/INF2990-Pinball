@@ -1303,13 +1303,12 @@ extern "C"
 
 
 
-	__declspec(dllexport) void __cdecl creerConfigXML(int config[12])
+	__declspec(dllexport) void __cdecl creerFichierConfig(int config[12])
 	{
-		FacadeModele::obtenirInstance()->sauvegarderConfigXML(config);
+		FacadeModele::obtenirInstance()->sauvegarderConfig(config);
 	}
-
-
-	__declspec(dllexport) int* __cdecl chargerConfigurationXML()
+	
+	__declspec(dllexport) int* __cdecl chargerFichierConfiguration()
 	{
 		return FacadeModele::obtenirInstance()->obtenirConfiguration();
 	}

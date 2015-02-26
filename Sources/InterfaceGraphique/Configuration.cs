@@ -31,11 +31,10 @@ namespace InterfaceGraphique
 
         private void InitialiserAvecXML()
         {
-            /*
-            IntPtr config = FonctionsNatives.chargerConfigurationXML();
+         
+            IntPtr config = FonctionsNatives.chargerFichierConfiguration();
             int[] result = new int[12];
             Marshal.Copy(config, result, 0, 12);
-            */
 
             /// COMPLETE ICI NIKO
 
@@ -289,7 +288,7 @@ namespace InterfaceGraphique
 
             foreach (int x in valuesXML){Console.WriteLine(x);}
 
-            FonctionsNatives.creerConfigXML(valuesXML);
+            FonctionsNatives.creerFichierConfig(valuesXML);
             this.Close();
         }
 

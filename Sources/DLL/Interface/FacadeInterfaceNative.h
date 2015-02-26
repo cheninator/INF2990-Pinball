@@ -69,8 +69,8 @@ extern "C" {
 	__declspec(dllexport) bool duplicationEstHorsTable();
 
 
-	__declspec(dllexport) void creerConfigXML(int config[12]);
-	__declspec(dllexport) int* chargerConfigurationXML();
+	__declspec(dllexport) void creerFichierConfig(int config[12]);
+	__declspec(dllexport) int* chargerFichierConfiguration();
 }
 
 #endif // __FACADE_INTERFACE_NATIVE_H__
