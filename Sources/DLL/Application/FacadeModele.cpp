@@ -94,7 +94,8 @@ const int FacadeModele::coinDroitTableY = 96;
 FacadeModele* FacadeModele::obtenirInstance()
 {
 	if (instance_ == nullptr)
-		instance_ = new FacadeModele;
+		instance_ = new FacadeModele();
+
 
 	return instance_;
 }
@@ -129,7 +130,6 @@ FacadeModele::~FacadeModele()
 {
 	delete arbre_;
 	delete vue_;
-	delete configuration_;
 }
 
 
@@ -1035,9 +1035,5 @@ void FacadeModele::sauvegarderConfig(int config[12])
 
 int* FacadeModele::obtenirConfiguration()
 {
-	// Sera détruit lors de l'appel du destructeur de FacadeModele
-	configuration_ = new ConfigScene();
-
-	configuration_->lireConfiguration();
 	return configuration_->obtenirConfiguration();
 }

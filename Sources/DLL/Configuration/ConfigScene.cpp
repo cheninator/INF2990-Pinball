@@ -24,6 +24,7 @@ ConfigScene::ConfigScene()
 {
 	derniereSauvegarde_ = "lastSave.bin";
 	config_ = new int[12];
+	lireConfiguration();
 }
 
 
