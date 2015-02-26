@@ -1025,11 +1025,11 @@ bool FacadeModele::duplicationEstHorsTable()
 }
 
 
-void FacadeModele::sauvegarderConfigXML(int touches[5], bool doubleBille, bool rebond, int debug[4])
+void FacadeModele::sauvegarderConfigXML(int config[12])
 {
 	configuration_ = new ConfigScene();
 
-	configuration_->modifierConfiguration(touches, doubleBille, rebond, debug);
+	configuration_->modifierConfiguration(config);
 	configuration_->sauvegarderConfiguration();
 
 	delete configuration_;
