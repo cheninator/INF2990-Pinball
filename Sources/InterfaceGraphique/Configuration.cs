@@ -34,52 +34,57 @@ namespace InterfaceGraphique
          
             IntPtr config = FonctionsNatives.chargerFichierConfiguration();
             int[] result = new int[12];
-            Marshal.Copy(config, result, 0, 12);
-
+            Marshal.Copy(config, valuesXML, 0, 12);
             /// COMPLETE ICI NIKO
 
 
             // TO DO : LIRE UN FICHIER XML
-            /*
-              for(int i = 0; i < 5; i++){
-                 currentValues[i] = valuesXML[i];             
-              }
-              InitialiserTouches();
-              PGJ1_bouton.Text = char.ConvertFromUtf32(currentValues[0]);
-              valuesXML[5] = Convert.ToInt32(comboBoxBilles.Text.ToString());
-             comboBoxBilles.Text = valuesXML[5].ToString();
-            valuesXML[6] = Convert.ToInt32(MDB_OK.Checked);
-              if( valuesXML[6] != 0)
-                MBD_OK.Checked = true;
-              else
-                MBD_Cancel.Checked = true;
-            valuesXML[7] = Convert.ToInt32(FRS_OK.Checked);
-              if( valuesXML[7] != 0)
+          
+            for(int i = 0; i < 5; i++){
+                currentValues[i] = valuesXML[i];             
+            }
+            InitialiserTouches();
+            
+            //valuesXML[5] = Convert.ToInt32(comboBoxBilles.Text.ToString());
+            comboBoxBilles.Text = valuesXML[5].ToString();
+
+            //valuesXML[6] = Convert.ToInt32(MDB_OK.Checked);
+            if (valuesXML[6] != 0)
+                MDB_OK.Checked = true;
+            else
+                MDB_Cancel.Checked = true;
+
+            //valuesXML[7] = Convert.ToInt32(FRS_OK.Checked);
+            if( valuesXML[7] != 0)
                 FRS_OK.Checked = true;
-              else
+            else
                 FRS_Cancel.Checked = true;
-            valuesXML[8] = Convert.ToInt32(GB_OK.Checked);
+
+            //valuesXML[8] = Convert.ToInt32(GB_OK.Checked);
               if( valuesXML[8] != 0)
                 GB_OK.Checked = true;
               else
                 GB_Cancel.Checked = true;
-            valuesXML[9] = Convert.ToInt32(VAC_OK.Checked);
+
+            //valuesXML[9] = Convert.ToInt32(VAC_OK.Checked);
              if( valuesXML[9] != 0)
                 VAC_OK.Checked = true;
               else
                 VAC_Cancel.Checked = true;
-            valuesXML[10] = Convert.ToInt32(AE_OK.Checked);
-              if( valuesXML[10] != 0)
+
+            //valuesXML[10] = Convert.ToInt32(AE_OK.Checked);
+            if (valuesXML[10] != 0)
                 AE_OK.Checked = true;
-              else
-                AE_Cancel.Checked = true;
-            valuesXML[11] = Convert.ToInt32(PORTAL_OK.Checked);    
-              if( valuesXML[11] != 0)
+            else
+                AE_CANCEL.Checked = true;
+
+            //valuesXML[11] = Convert.ToInt32(PORTAL_OK.Checked);    
+            if( valuesXML[11] != 0)
                 PORTAL_OK.Checked = true;
-              else
+            else
                 PORTAL_Cancel.Checked = true;
              
-             */
+             
 
 
         }
@@ -286,7 +291,7 @@ namespace InterfaceGraphique
             valuesXML[10] = Convert.ToInt32(AE_OK.Checked);
             valuesXML[11] = Convert.ToInt32(PORTAL_OK.Checked);
 
-            foreach (int x in valuesXML){Console.WriteLine(x);}
+          //  foreach (int x in valuesXML){Console.WriteLine(x);}
 
             FonctionsNatives.creerFichierConfig(valuesXML);
             this.Close();
