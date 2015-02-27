@@ -9,6 +9,8 @@
 #include "VisiteurXML.h"
 #include "../Arbre/ArbreRenduINF2990.h"
 #include "../Arbre/Noeuds/NoeudTable.h"
+#include <fstream>
+#include <iostream>
 
 
 ////////////////////////////////////////////////////////////////////////
@@ -79,6 +81,9 @@ bool VisiteurXML::traiter(ArbreRenduINF2990* arbre)
 
 	// Enregistrer le document
 	document.SaveFile(nomFichier.c_str());
+
+	// Enregistrer des informations dans un fichier binaire
+	enregistrerBinaire();
 
 	return true;
 }
@@ -208,4 +213,79 @@ bool VisiteurXML::traiterProprietes()
 	document.LinkEndChild(elementPropriete);
 
 	return true;
+}
+
+
+
+void VisiteurXML::enregistrerBinaire()
+{
+	// Extraire le nom de fichier du path
+	const size_t last_slash_idx = nomFichier.find_last_of("\\/");
+	if (std::string::npos != last_slash_idx)
+	{
+		nomFichier.erase(0, last_slash_idx + 1);
+	}
+
+	// Enlever l'extension
+	const size_t period_idx = nomFichier.rfind('.');
+	if (std::string::npos != period_idx)
+	{
+		nomFichier.erase(period_idx);
+	}
+
+	// Regarder dans le fichier contient déjà l'information de la map
+	std::fstream lecture;
+	lecture.open("infoMaps.bin", std::ios::in | std::ios::binary | std::ios::app);
+
+	std::string nom;
+	int niveau;
+	bool present = false;
+
+	if (!lecture.fail())
+	{
+		while (!lecture.eof() && !present)
+		{
+			lecture >> nom;
+			lecture >> niveau;
+			if (nom == nomFichier)
+				present = true;
+		}
+	}
+
+	lecture.close();
+
+	if (present)
+	{
+		// Enregistrer les informations de zones de jeu dans un fichier binaire
+		std::fstream ecriture;
+		ecriture.open("infoMaps.bin", std::ios::out | std::ios::in | std::ios::binary);
+		bool modifier = false;
+
+		while (!lecture.eof() && !modifier)
+		{
+			ecriture >> nom;
+
+			if (nom == nomFichier)
+			{
+				modifier = true;
+				ecriture << proprietes_[5] << std::endl;
+			}
+
+			else
+				lecture >> niveau;
+		}
+	}
+
+	else
+	{
+		// Enregistrer les informations de zones de jeu dans un fichier binaire
+		std::fstream ecriture;
+		ecriture.open("infoMaps.bin", std::ios::out | std::ios::app);
+
+		ecriture.write((char*)nomFichier.c_str(), sizeof(char[25]));
+		ecriture.write((char*)proprietes_[5], sizeof(int));
+
+		ecriture.close();
+	}
+
 }
