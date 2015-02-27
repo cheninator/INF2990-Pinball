@@ -578,6 +578,7 @@ namespace InterfaceGraphique
                 for (int i = 0; i < 6; i++)
                     prop[i] = propZJ[i];
 
+
                 int sauvegarde = FonctionsNatives.creerXML(pathXML, pathXML.Capacity, prop);
                 //Console.WriteLine(sauvegarde);
                 if (sauvegarde == 1)
@@ -2352,6 +2353,9 @@ namespace InterfaceGraphique
                 }
                 else
                 {
+                    for (int i = 0; i < 6; i++)
+                        prop[i] = propZJ[i];
+
                     int sauvegarde = FonctionsNatives.creerXML(pathXML, pathXML.Capacity, prop);
                     if (sauvegarde == 1)
                     {
