@@ -53,9 +53,6 @@ private:
 	
 	tinyxml2::XMLElement* elementArbreRendu;
 	tinyxml2::XMLElement* elementTable;
-
-	void enregistrerBinaire();
-
 };
 
 #endif //__VISITEURS_VISITEURXML_H__

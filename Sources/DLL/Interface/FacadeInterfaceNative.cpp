@@ -1313,6 +1313,12 @@ extern "C"
 		return FacadeModele::obtenirInstance()->obtenirConfiguration();
 	}
 
+	__declspec(dllexport) int __cdecl obtenirDifficulte(std::string nomFichier)
+	{
+		return FacadeModele::obtenirInstance()->obtenirDifficulte(nomFichier);
+	}
+
+
 
 	/*
 	#include <FTGL/ftgl.h>

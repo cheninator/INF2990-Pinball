@@ -71,6 +71,7 @@ extern "C" {
 
 	__declspec(dllexport) void creerFichierConfig(int config[12]);
 	__declspec(dllexport) int* chargerFichierConfiguration();
+	__declspec(dllexport) int obtenirDiffulte();
 }
 
 #endif // __FACADE_INTERFACE_NATIVE_H__

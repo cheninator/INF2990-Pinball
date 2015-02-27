@@ -1044,3 +1044,9 @@ int* FacadeModele::obtenirConfiguration()
 {
 	return configuration_->obtenirConfiguration();
 }
+
+int FacadeModele::obtenirDifficulte(std::string nomFichier)
+{
+	obtenirArbreRenduINF2990()->initialiserXML(nomFichier);
+	return obtenirArbreRenduINF2990()->obtenirProprietes()[5];
+}

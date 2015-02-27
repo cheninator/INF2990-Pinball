@@ -148,6 +148,8 @@ public:
 
    int* obtenirConfiguration();
 
+   int obtenirDifficulte(std::string nomFichier);
+
 private:
 
    /// Constructeur par defaut.
