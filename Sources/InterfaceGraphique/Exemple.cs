@@ -41,7 +41,7 @@ namespace InterfaceGraphique
         public Point origin;
         
         public Point previousP, currentP;
-        
+        double mouvementX, mouvementY;
         public int panelHeight; ///< Hauteur de la fenetre
         public int panelWidth; ///< Largeur de la fenetre
         private bool ctrlDown = false;
@@ -84,7 +84,10 @@ namespace InterfaceGraphique
             this.Icon = Properties.Resources.Pinball;
             InitializeComponent();
             Program.peutAfficher = true;
-
+            mouvementX = 100 * (double)(this.flowLayoutPanel1.Width) / (double)this.panel1.Width;
+            mouvementY = 100 * (double)(this.menuStrip1.Height) / (double)this.panel1.Width;
+            Console.WriteLine(mouvementX);
+            Console.WriteLine(mouvementY);
             InitialiserAnimation();
 
             panelHeight = panel_GL.Size.Height;
@@ -1436,7 +1439,7 @@ namespace InterfaceGraphique
             //panel_GL.Location = new Point(this.ClientSize.Width / 2 - panel_GL.Size.Width / 2, this.ClientSize.Height / 2 - panel_GL.Size.Height / 2);
             panel_GL.Dock = DockStyle.Fill;
             this.OnSizeChanged(e);
-            FonctionsNatives.translater(-16, 0);
+            FonctionsNatives.translater(-mouvementX, mouvementY);
 
             //panel_GL.Dock = DockStyle.Fill;
             //menuStrip3.BringToFront();
@@ -2787,12 +2790,18 @@ namespace InterfaceGraphique
             panel_GL.Anchor = (AnchorStyles.Top | AnchorStyles.Left);
             panel_GL.Location = new Point(163, 24);
             panel_GL.Dock = DockStyle.Fill;
-            FonctionsNatives.translater(16, 0);
+            FonctionsNatives.translater(mouvementX, -mouvementY);
         }
 
         private void retourAuMenuPrincipalToolStripMenuItem1_Click(object sender, EventArgs e)
         {
             this.Close();
+        }
+
+        private void panel_GL_SizeChanged(object sender, EventArgs e)
+        {
+            mouvementX = 100 * (double)(this.flowLayoutPanel1.Width) / (double)this.panel1.Width;
+            mouvementY = 100 * (double)(this.menuStrip1.Height) / (double)this.panel1.Width;
         }
     }
 

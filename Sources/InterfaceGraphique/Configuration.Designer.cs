@@ -194,7 +194,7 @@
             // 
             this.Default_bouton.Location = new System.Drawing.Point(170, 325);
             this.Default_bouton.Name = "Default_bouton";
-            this.Default_bouton.Size = new System.Drawing.Size(118, 35);
+            this.Default_bouton.Size = new System.Drawing.Size(118, 45);
             this.Default_bouton.TabIndex = 10;
             this.Default_bouton.Text = "Remettre à defaut";
             this.Default_bouton.UseVisualStyleBackColor = true;
