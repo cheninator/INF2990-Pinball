@@ -39,7 +39,7 @@ namespace InterfaceGraphique
         static bool soundActif = false; ///< Play Sound or not
 
         public Point origin;
-        
+        string output = "";
         public Point previousP, currentP;
         double mouvementX, mouvementY;
         public int panelHeight; ///< Hauteur de la fenetre
@@ -86,8 +86,6 @@ namespace InterfaceGraphique
             Program.peutAfficher = true;
             mouvementX = 100 * (double)(this.flowLayoutPanel1.Width) / (double)this.panel1.Width;
             mouvementY = 100 * (double)(this.menuStrip1.Height) / (double)this.panel1.Width;
-            Console.WriteLine(mouvementX);
-            Console.WriteLine(mouvementY);
             InitialiserAnimation();
 
             panelHeight = panel_GL.Size.Height;
@@ -109,6 +107,7 @@ namespace InterfaceGraphique
         {
             
             Program.peutAfficher = true;
+            this.Text = "Mode Edition - Nouvelle Zone";
             panel_GL.Select();
             etat = new EtatNone(this);
             deselection();
@@ -514,7 +513,12 @@ namespace InterfaceGraphique
             if (ouvrir_fichier.ShowDialog() == DialogResult.OK)
             {
                 pathXML = new StringBuilder(ouvrir_fichier.FileName);
+                //Console.Write(Path.GetFileName(ouvrir_fichier.FileName));
+                
                 ReinitialiserTout();
+                output = Path.GetFileName(pathXML.ToString());
+                output = output.Remove(output.Length - 4);
+                this.Text = "Mode Edition - " + output;
                 IntPtr prop = FonctionsNatives.ouvrirXML(pathXML, pathXML.Capacity);
                 int[] result = new int[6];
                 Marshal.Copy(prop, result, 0, 6);
@@ -594,22 +598,34 @@ namespace InterfaceGraphique
                 }
                 else
                 {
-                    if (pathXML.Capacity == 0)
-                        return;
-                    // Well shit, well need to call a DLL function in csharp again !
-                    string pathJPG = pathXML.ToString();
-                    pathJPG = pathJPG.Remove(pathJPG.Length - 3, 3);
-                    pathJPG = pathJPG.Insert(pathJPG.Length, "jpg");
-                    StringBuilder pathToPicture = new StringBuilder(pathJPG);
-
-                    FonctionsNatives.takeScreenShot(pathToPicture, pathToPicture.Capacity);
-                    // Si on veut une fenetre carree, alors on met true, si on veutu nrectangle, false
-                    // Si on veut limiter la taille maximale de la fenetre (un resize du screenshot), on met la valeur d'un cote
-                    // example:
-                    //FonctionsNatives.takeScreenShot(pathToPicture, pathToPicture.Capacity, true, 350);
+                    takeScreenShot();
                 }  
             }          
         }
+
+
+        private void takeScreenShot()
+        {
+            if (pathXML.Capacity == 0)
+                return;
+            // Well shit, well need to call a DLL function in csharp again !
+            string pathJPG = pathXML.ToString();
+            pathJPG = pathJPG.Remove(pathJPG.Length - 3, 3);
+            pathJPG = pathJPG.Insert(pathJPG.Length, "jpg");
+            StringBuilder pathToPicture = new StringBuilder(pathJPG);
+            output = Path.GetFileName(pathXML.ToString());
+            output = output.Remove(output.Length - 4);
+            this.Text = "Mode Edition - " + output;
+            FonctionsNatives.takeScreenShot(pathToPicture, pathToPicture.Capacity);
+            // Si on veut une fenetre carree, alors on met true, si on veutu nrectangle, false
+            // Si on veut limiter la taille maximale de la fenetre (un resize du screenshot), on met la valeur d'un cote
+            // example:
+            //FonctionsNatives.takeScreenShot(pathToPicture, pathToPicture.Capacity, true, 350);
+        }
+
+
+
+
 
         ////////////////////////////////////////////////////////////////////////
         ///
@@ -2352,6 +2368,9 @@ namespace InterfaceGraphique
                 }
                 else
                 {
+                    for (int i = 0; i < 6; i++)
+                        prop[i] = propZJ[i];
+                    foreach (int x in prop) Console.WriteLine(x);
                     int sauvegarde = FonctionsNatives.creerXML(pathXML, pathXML.Capacity, prop);
                     if (sauvegarde == 1)
                     {
@@ -2363,6 +2382,7 @@ namespace InterfaceGraphique
                         MessageBox.Show("Il doit avoir au moins un trou, un generateur de bille et un ressort dans la zone de jeu!", "ERREUR DE SAUVEGARDE",
                         MessageBoxButtons.OK, MessageBoxIcon.Error);
                     }
+                    takeScreenShot();
                 }
             }
         }

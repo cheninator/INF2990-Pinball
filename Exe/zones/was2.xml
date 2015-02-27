@@ -1,0 +1,21 @@
+<Proprietes>
+    <PointsButoir Nombre="0"/>
+    <PointsTriangulaire Nombre="0"/>
+    <PointsCible Nombre="0"/>
+    <PointsVictoire Nombre="0"/>
+    <PointsBilleGratuite Nombre="0"/>
+    <Difficulte Nombre="0"/>
+</Proprietes>
+
+<arbreRenduINF2990>
+    <table nbEnfants="7">
+        <generateurbille posX="244.5334420743626" posY="-104.54159829866461" posZ="0" scaleX="1" scaleY="1" scaleZ="1" angleX="0" angleY="0" angleZ="0"/>
+        <trou posX="170" posY="-164" posZ="0" scaleX="1" scaleY="1" scaleZ="1" angleX="0" angleY="0" angleZ="0"/>
+        <ressort posX="240.00612196096327" posY="-170.40456721491654" posZ="0" scaleX="1" scaleY="1" scaleZ="1" angleX="0" angleY="0" angleZ="0"/>
+        <butoircirculaire posX="228.49102724002918" posY="19.017943674731896" posZ="-0" scaleX="1" scaleY="1" scaleZ="1" angleX="0" angleY="0" angleZ="0"/>
+        <butoircirculaire posX="175.76998313203563" posY="-38.83523804849991" posZ="-0" scaleX="1" scaleY="1" scaleZ="1" angleX="0" angleY="0" angleZ="0"/>
+        <butoircirculaire posX="150.10929794672904" posY="11.086459083643646" posZ="-0" scaleX="1" scaleY="1" scaleZ="1" angleX="0" angleY="0" angleZ="0"/>
+        <cible posX="183.70146764385768" posY="60.541598298664383" posZ="-0" scaleX="1" scaleY="1" scaleZ="1" angleX="0" angleY="0" angleZ="0"/>
+    </table>
+    <couvercle/>
+</arbreRenduINF2990>
