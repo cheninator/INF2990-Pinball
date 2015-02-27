@@ -19,6 +19,7 @@ namespace InterfaceGraphique
         string[] filePaths;
         string fileNames;
         int sortColumn = -1;
+        StringBuilder pathMap;
         public Campagne()
         {
             InitializeComponent();
@@ -40,7 +41,7 @@ namespace InterfaceGraphique
             //screenShot.ImageLocation = Application.StartupPath + @"\zones";
             screenShot.SizeMode = PictureBoxSizeMode.StretchImage;
            screenShot.Image = Image.FromFile(Application.StartupPath + @"\zones\" + listBox.SelectedItem.ToString()+".jpg");
-           // Console.WriteLine(Application.StartupPath + @"\zones\" + listBox.SelectedItem.ToString() + ".jpg");
+           //Console.WriteLine(Application.StartupPath + @"\zones\" + listBox.SelectedItem.ToString() + ".jpg");
           //  Console.WriteLine(listBox.SelectedItem.ToString());
         }
 
@@ -88,8 +89,8 @@ namespace InterfaceGraphique
         private void bouton_ADD_Click(object sender, EventArgs e)
         {
             Console.WriteLine(listBox.SelectedItem);
-            Random rnd = new Random();
-            int diff = rnd.Next(1, 10);
+            pathMap = new StringBuilder(Application.StartupPath + @"\zones\" + listBox.SelectedItem.ToString() + ".xml");
+            int diff = FonctionsNatives.obtenirDifficulte(pathMap, pathMap.Capacity);
             var item1 = new ListViewItem(new[] { listBox.SelectedItem.ToString(), diff.ToString() });
 
             ZonesChoisis.Items.Add(item1);

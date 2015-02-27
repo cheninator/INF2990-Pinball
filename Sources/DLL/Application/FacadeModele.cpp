@@ -1045,8 +1045,15 @@ int* FacadeModele::obtenirConfiguration()
 	return configuration_->obtenirConfiguration();
 }
 
-int FacadeModele::obtenirDifficulte(std::string nomFichier)
+int FacadeModele::obtenirDifficulte(char* nomFichier, int length)
 {
-	obtenirArbreRenduINF2990()->initialiserXML(nomFichier);
-	return obtenirArbreRenduINF2990()->obtenirProprietes()[5];
+	int niveau;
+	tinyxml2::XMLDocument* fichierXML = new tinyxml2::XMLDocument();
+	fichierXML->LoadFile(nomFichier);
+
+	tinyxml2::XMLElement* elementPropriete = fichierXML->FirstChildElement("Proprietes");
+	tinyxml2::XMLElement* element = elementPropriete->LastChildElement("Difficulte");
+	niveau = element->FirstAttribute()->IntValue();
+
+	return niveau;
 }

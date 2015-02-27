@@ -1313,9 +1313,9 @@ extern "C"
 		return FacadeModele::obtenirInstance()->obtenirConfiguration();
 	}
 
-	__declspec(dllexport) int __cdecl obtenirDifficulte(std::string nomFichier)
+	__declspec(dllexport) int __cdecl obtenirDifficulte(char* nomFichier, int length)
 	{
-		return FacadeModele::obtenirInstance()->obtenirDifficulte(nomFichier);
+		return FacadeModele::obtenirInstance()->obtenirDifficulte(nomFichier, length);
 	}
 
 

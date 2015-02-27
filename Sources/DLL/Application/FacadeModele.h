@@ -148,7 +148,7 @@ public:
 
    int* obtenirConfiguration();
 
-   int obtenirDifficulte(std::string nomFichier);
+   int obtenirDifficulte(char* nomFichier, int length);
 
 private:
 

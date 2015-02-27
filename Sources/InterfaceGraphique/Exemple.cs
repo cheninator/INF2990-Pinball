@@ -3048,6 +3048,6 @@ namespace InterfaceGraphique
         public static extern IntPtr chargerFichierConfiguration();
 
         [DllImport(@"Noyau.dll", CallingConvention = CallingConvention.Cdecl)]
-        public static extern int obtenirDifficulte(StringBuilder path);
+        public static extern int obtenirDifficulte(StringBuilder path, int length);
     }
 }
