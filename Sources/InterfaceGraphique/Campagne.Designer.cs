@@ -50,12 +50,12 @@
             // 
             // listBox
             // 
-            this.listBox.Font = new System.Drawing.Font("Old English Text MT", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.listBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.listBox.FormattingEnabled = true;
-            this.listBox.ItemHeight = 26;
+            this.listBox.ItemHeight = 18;
             this.listBox.Location = new System.Drawing.Point(44, 150);
             this.listBox.Name = "listBox";
-            this.listBox.Size = new System.Drawing.Size(163, 264);
+            this.listBox.Size = new System.Drawing.Size(163, 274);
             this.listBox.TabIndex = 0;
             this.listBox.SelectedValueChanged += new System.EventHandler(this.listBox_SelectedValueChanged);
             // 
@@ -66,7 +66,7 @@
             this.colonneDiff});
             this.ZonesChoisis.Location = new System.Drawing.Point(445, 150);
             this.ZonesChoisis.Name = "ZonesChoisis";
-            this.ZonesChoisis.Size = new System.Drawing.Size(183, 264);
+            this.ZonesChoisis.Size = new System.Drawing.Size(183, 274);
             this.ZonesChoisis.TabIndex = 1;
             this.ZonesChoisis.UseCompatibleStateImageBehavior = false;
             this.ZonesChoisis.View = System.Windows.Forms.View.Details;
@@ -150,9 +150,11 @@
             // 
             // bouton_ADD
             // 
-            this.bouton_ADD.Location = new System.Drawing.Point(44, 428);
+            this.bouton_ADD.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
+            this.bouton_ADD.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.bouton_ADD.Location = new System.Drawing.Point(44, 430);
             this.bouton_ADD.Name = "bouton_ADD";
-            this.bouton_ADD.Size = new System.Drawing.Size(167, 39);
+            this.bouton_ADD.Size = new System.Drawing.Size(163, 39);
             this.bouton_ADD.TabIndex = 5;
             this.bouton_ADD.Text = "Ajouter a la liste";
             this.bouton_ADD.UseVisualStyleBackColor = true;
@@ -160,7 +162,7 @@
             // 
             // bouton_REMOVE
             // 
-            this.bouton_REMOVE.Location = new System.Drawing.Point(445, 428);
+            this.bouton_REMOVE.Location = new System.Drawing.Point(445, 430);
             this.bouton_REMOVE.Name = "bouton_REMOVE";
             this.bouton_REMOVE.Size = new System.Drawing.Size(91, 39);
             this.bouton_REMOVE.TabIndex = 6;
@@ -170,7 +172,7 @@
             // 
             // bouton_REMOVEALL
             // 
-            this.bouton_REMOVEALL.Location = new System.Drawing.Point(542, 428);
+            this.bouton_REMOVEALL.Location = new System.Drawing.Point(542, 430);
             this.bouton_REMOVEALL.Name = "bouton_REMOVEALL";
             this.bouton_REMOVEALL.Size = new System.Drawing.Size(86, 39);
             this.bouton_REMOVEALL.TabIndex = 7;
@@ -180,29 +182,32 @@
             // 
             // bouton_Annuler
             // 
-            this.bouton_Annuler.Location = new System.Drawing.Point(512, 473);
+            this.bouton_Annuler.BackColor = System.Drawing.SystemColors.Control;
+            this.bouton_Annuler.Location = new System.Drawing.Point(526, 513);
             this.bouton_Annuler.Name = "bouton_Annuler";
-            this.bouton_Annuler.Size = new System.Drawing.Size(116, 47);
+            this.bouton_Annuler.Size = new System.Drawing.Size(102, 47);
             this.bouton_Annuler.TabIndex = 8;
             this.bouton_Annuler.Text = "Annuler";
-            this.bouton_Annuler.UseVisualStyleBackColor = true;
+            this.bouton_Annuler.UseVisualStyleBackColor = false;
             this.bouton_Annuler.Click += new System.EventHandler(this.bouton_Annuler_Click);
             // 
             // bouton_OK
             // 
-            this.bouton_OK.Location = new System.Drawing.Point(375, 473);
+            this.bouton_OK.BackColor = System.Drawing.SystemColors.Control;
+            this.bouton_OK.Location = new System.Drawing.Point(418, 513);
             this.bouton_OK.Name = "bouton_OK";
-            this.bouton_OK.Size = new System.Drawing.Size(131, 47);
+            this.bouton_OK.Size = new System.Drawing.Size(102, 47);
             this.bouton_OK.TabIndex = 9;
             this.bouton_OK.Text = "Lancez la campagne";
-            this.bouton_OK.UseVisualStyleBackColor = true;
+            this.bouton_OK.UseVisualStyleBackColor = false;
             this.bouton_OK.Click += new System.EventHandler(this.bouton_OK_Click);
             // 
             // screenShot
             // 
-            this.screenShot.Location = new System.Drawing.Point(222, 150);
+            this.screenShot.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.screenShot.Location = new System.Drawing.Point(222, 187);
             this.screenShot.Name = "screenShot";
-            this.screenShot.Size = new System.Drawing.Size(204, 264);
+            this.screenShot.Size = new System.Drawing.Size(204, 209);
             this.screenShot.TabIndex = 10;
             this.screenShot.TabStop = false;
             // 
@@ -210,7 +215,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(650, 532);
+            this.ClientSize = new System.Drawing.Size(650, 572);
             this.Controls.Add(this.screenShot);
             this.Controls.Add(this.bouton_OK);
             this.Controls.Add(this.bouton_Annuler);

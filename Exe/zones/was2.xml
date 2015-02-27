@@ -1,10 +1,10 @@
 <Proprietes>
-    <PointsButoir Nombre="0"/>
-    <PointsTriangulaire Nombre="0"/>
-    <PointsCible Nombre="0"/>
-    <PointsVictoire Nombre="0"/>
-    <PointsBilleGratuite Nombre="0"/>
-    <Difficulte Nombre="0"/>
+    <PointsButoir Nombre="4"/>
+    <PointsTriangulaire Nombre="4"/>
+    <PointsCible Nombre="4"/>
+    <PointsVictoire Nombre="4"/>
+    <PointsBilleGratuite Nombre="4"/>
+    <Difficulte Nombre="3"/>
 </Proprietes>
 
 <arbreRenduINF2990>

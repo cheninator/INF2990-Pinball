@@ -177,13 +177,7 @@ namespace InterfaceGraphique
                             curZoomVal.Text = (Math.Round(currentZoom * 100) / 100).ToString();
                             Creation_Panel.Visible = true;
                             
-                            /*
-                            if (soundActif)
-                                playSound("");
-                           
-                       else
-                           playSound("", true);
-                       */
+                          
                         }
                         if (peutAnimer)
                             FonctionsNatives.animer(tempsInterAffichage);
