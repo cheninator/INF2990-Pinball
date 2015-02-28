@@ -22,9 +22,12 @@
 ////////////////////////////////////////////////////////////////////////
 ConfigScene::ConfigScene()
 {
-	derniereSauvegarde_ = "lastSave.bin";
+	derniereConfiguration_ = "lastConfig.bin";
+	derniereCampagne_ = "lastCampaign.txt";
+
 	config_ = new int[12];
 	lireConfiguration();
+	lireCampagne();
 }
 
 
@@ -55,11 +58,33 @@ ConfigScene::~ConfigScene()
 void ConfigScene::sauvegarderConfiguration()
 {
 	std::fstream fichier;
-	fichier.open(derniereSauvegarde_, std::ios::out | std::ios::binary);
+	fichier.open(derniereConfiguration_, std::ios::out | std::ios::binary);
 
 	for (int i = 0; i < 12; i++)
 		fichier.write((char*)&config_[i], sizeof(int));
 
+	fichier.close();
+
+}
+
+
+////////////////////////////////////////////////////////////////////////
+///
+/// @fn void ConfigScene::sauvegarderCampagne()
+///
+/// Cette fonction écrit les valeurs de la dernière campagne dans un fichier texte.
+///
+/// @return Aucune.
+///
+////////////////////////////////////////////////////////////////////////
+void ConfigScene::sauvegarderCampagne()
+{
+	std::ofstream fichier;
+	fichier.open(derniereCampagne_);
+
+	for (unsigned int i = 0; i < listeCartes_.size(); i++)
+		fichier << listeCartes_[i] << std::endl;
+		
 	fichier.close();
 
 }
@@ -88,6 +113,38 @@ bool ConfigScene::lireConfiguration()
 
 ////////////////////////////////////////////////////////////////////////
 ///
+/// @fn bool ConfigScene::lireCampagne()
+///
+/// Cette fonction lit les valeurs de la configuration à de la dernière
+/// configuration de jeu.
+///
+/// @return True pour indiquer que la lecture s'est bien faite. False autrement
+///
+////////////////////////////////////////////////////////////////////////
+bool ConfigScene::lireCampagne()
+{
+	bool lectureOK = false;
+	std::ifstream lecture;
+	lecture.open(derniereCampagne_);
+	std::string nomCarte;
+
+	if (!lecture.fail())
+	{
+		while (!lecture.eof())
+		{
+			lecture >> nomCarte;
+			listeCartes_.push_back(nomCarte);
+		}
+
+		lectureOK = true;
+	}
+	
+	return lectureOK;
+}
+
+
+////////////////////////////////////////////////////////////////////////
+///
 /// @fn void ConfigScene::lireFichierBinaire()
 ///
 /// Cette fonction lit les valeurs de la configuration à partir d'un fichier binaire.
@@ -98,7 +155,7 @@ bool ConfigScene::lireConfiguration()
 void ConfigScene::lireFichierBinaire()
 {
 	std::fstream fichier;
-	fichier.open(derniereSauvegarde_, std::ios::in | std::ios::binary);
+	fichier.open(derniereConfiguration_, std::ios::in | std::ios::binary);
 
 	if (!fichier.fail())
 	{

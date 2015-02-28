@@ -11,6 +11,7 @@
 #define __CONFIGURATION_CONFIGSCENE_H__
 
 #include <string>
+#include <vector>
 
 ///////////////////////////////////////////////////////////////////////////
 /// @class ConfigScene
@@ -30,11 +31,17 @@ public:
 	// Destructeur
 	~ConfigScene();
 
-	// Sauvegarder en fichier binaire
+	// Sauvegarder derniere configuration en fichier binaire
 	void sauvegarderConfiguration();
+
+	// Sauvegarder dernière campagne en fichier texte
+	void sauvegarderCampagne();
 
 	// Lire le fichier de la dernière configuration
 	bool lireConfiguration();
+
+	// Lire le fichier de la dernière campagne
+	bool lireCampagne();
 
 	// Modifier les variables de configuration
 	void modifierConfiguration(int config[12]);
@@ -43,17 +50,17 @@ public:
 	int* obtenirConfiguration() const { return config_; };
 
 	// Fonctions de retour des configurations
-	int obtenirRaccourciPGJ1() const{ return config_[0]; };
-	int obtenirRaccourciPDJ1() const{ return config_[1]; };
-	int obtenirRaccourciPGJ2() const{ return config_[2]; };
-	int obtenirRaccourciPDJ2() const{ return config_[3]; };
-	int obtenirRaccourciRessort() const{ return config_[4]; };
-	int obtenirNombreBilles() const{ return config_[5]; };
-	int obtenirModeDoubleBille() const{ return config_[6]; };
-	int obtenirModeForceRebond() const{ return config_[7]; };
+	int obtenirRaccourciPGJ1()		const{ return config_[0]; };
+	int obtenirRaccourciPDJ1()		const{ return config_[1]; };
+	int obtenirRaccourciPGJ2()		const{ return config_[2]; };
+	int obtenirRaccourciPDJ2()		const{ return config_[3]; };
+	int obtenirRaccourciRessort()	const{ return config_[4]; };
+	int obtenirNombreBilles()		const{ return config_[5]; };
+	int obtenirModeDoubleBille()	const{ return config_[6]; };
+	int obtenirModeForceRebond()	const{ return config_[7]; };
 	int obtenirAfficherGeneration() const{ return config_[8]; };
-	int obtenirAfficherVitesse() const{ return config_[9]; };
-	int obtenirAfficherEclairage() const{ return config_[10]; };
+	int obtenirAfficherVitesse()	const{ return config_[9]; };
+	int obtenirAfficherEclairage()	const{ return config_[10]; };
 	int obtenirAfficherChampForce() const{ return config_[11]; };
 
 private:
@@ -61,11 +68,15 @@ private:
 	// Lis un fichier binaire
 	void lireFichierBinaire();
 
+	// Nom de la dernière sauvegarde de configuration
+	std::string derniereConfiguration_;
+	std::string derniereCampagne_;
+
 	// Contient toutes les informations relative à la configuration du jeu
 	int* config_;
 
-	// Nom de la dernière sauvegarde
-	std::string derniereSauvegarde_;
+	// Liste des cartes de la dernière partie de campagne
+	std::vector<std::string> listeCartes_;
 
 };
 
