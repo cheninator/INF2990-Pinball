@@ -102,7 +102,6 @@
             this.RB_AI.Name = "RB_AI";
             this.RB_AI.Size = new System.Drawing.Size(165, 22);
             this.RB_AI.TabIndex = 2;
-            this.RB_AI.TabStop = true;
             this.RB_AI.Text = "Avec un joueur virtuel";
             this.RB_AI.UseVisualStyleBackColor = true;
             // 
@@ -113,13 +112,13 @@
             this.RB_Multi.Name = "RB_Multi";
             this.RB_Multi.Size = new System.Drawing.Size(151, 22);
             this.RB_Multi.TabIndex = 1;
-            this.RB_Multi.TabStop = true;
             this.RB_Multi.Text = "Avec un joueur réel";
             this.RB_Multi.UseVisualStyleBackColor = true;
             // 
             // RB_Solo
             // 
             this.RB_Solo.AutoSize = true;
+            this.RB_Solo.Checked = true;
             this.RB_Solo.Location = new System.Drawing.Point(17, 29);
             this.RB_Solo.Name = "RB_Solo";
             this.RB_Solo.Size = new System.Drawing.Size(87, 22);
