@@ -3043,5 +3043,10 @@ namespace InterfaceGraphique
 
         [DllImport(@"Noyau.dll", CallingConvention = CallingConvention.Cdecl)]
         public static extern int obtenirDifficulte(StringBuilder path, int length);
+
+        [DllImport(@"Noyau.dll", CallingConvention = CallingConvention.Cdecl)]
+        public static extern void creerFichierConfigCampagne(StringBuilder listMaps);
+
+
     }
 }

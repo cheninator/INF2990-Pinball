@@ -148,6 +148,8 @@ public:
 
    int* obtenirConfiguration();
 
+   void sauvegarderZones(char* listMap);
+
    int obtenirDifficulte(char* nomFichier, int length);
 
 private:

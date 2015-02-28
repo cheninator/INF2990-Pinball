@@ -39,12 +39,8 @@ namespace InterfaceGraphique
 
         private void listBox_SelectedValueChanged(object sender, EventArgs e)
         {
-
-            //screenShot.ImageLocation = Application.StartupPath + @"\zones";
             screenShot.SizeMode = PictureBoxSizeMode.StretchImage;
-           screenShot.Image = Image.FromFile(Application.StartupPath + @"\zones\" + listBox.SelectedItem.ToString()+".jpg");
-           //Console.WriteLine(Application.StartupPath + @"\zones\" + listBox.SelectedItem.ToString() + ".jpg");
-          //  Console.WriteLine(listBox.SelectedItem.ToString());
+            screenShot.Image = Image.FromFile(Application.StartupPath + @"\zones\" + listBox.SelectedItem.ToString()+".jpg");
         }
 
         private void ZonesChoisis_ColumnClick(object sender, ColumnClickEventArgs e)
@@ -149,10 +145,11 @@ namespace InterfaceGraphique
                     mapList.Append(eachItem.Text+" ");
                         
                 }
-
+             mapList.Length--;
+             
              // TO DO : PASSER mapList 
-                
-                    Console.WriteLine("LANCEMENT DE CAMPAGNE");
+             FonctionsNatives.creerFichierConfigCampagne(mapList);
+             Console.WriteLine("LANCEMENT DE CA5MPAGNE");
             }
         }
     }

@@ -1045,6 +1045,12 @@ int* FacadeModele::obtenirConfiguration()
 	return configuration_->obtenirConfiguration();
 }
 
+
+void FacadeModele::sauvegarderZones(char* listMap)
+{
+	configuration_->sauvegarderZones(listMap);
+}
+
 int FacadeModele::obtenirDifficulte(char* nomFichier, int length)
 {
 	int niveau;

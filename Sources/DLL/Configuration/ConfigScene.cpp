@@ -81,10 +81,10 @@ void ConfigScene::sauvegarderCampagne()
 {
 	std::ofstream fichier;
 	fichier.open(derniereCampagne_);
-
-	for (unsigned int i = 0; i < listeCartes_.size(); i++)
+	unsigned int i = 0;
+	for (i = 0; i < listeCartes_.size()-2; i++)
 		fichier << listeCartes_[i] << std::endl;
-		
+	fichier << listeCartes_[i];
 	fichier.close();
 
 }
@@ -193,6 +193,22 @@ void ConfigScene::modifierConfiguration(int config[12])
 	config_[9] = config[9];		// Vitesse après collision
 	config_[10] = config[10];	// Activation de l'éclairage
 	config_[11] = config[11];	// Champ d'attraction de portail
+}
+
+
+
+void ConfigScene::sauvegarderZones(char* listMap)
+{
+	std::string tempList = listMap;
+	std::istringstream iss(tempList);
+	listeCartes_.clear();
+	do{
+		std::string sub;
+		iss >> sub;
+		listeCartes_.push_back(sub);
+	} while (iss);
+	sauvegarderCampagne();
+
 }
 
 

@@ -11,6 +11,7 @@
 #define __CONFIGURATION_CONFIGSCENE_H__
 
 #include <string>
+#include <sstream>
 #include <vector>
 
 ///////////////////////////////////////////////////////////////////////////
@@ -35,6 +36,7 @@ public:
 	void sauvegarderConfiguration();
 
 	// Sauvegarder dernière campagne en fichier texte
+	void sauvegarderZones(char* listMap);
 	void sauvegarderCampagne();
 
 	// Lire le fichier de la dernière configuration
