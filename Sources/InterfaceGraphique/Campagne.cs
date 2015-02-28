@@ -20,10 +20,12 @@ namespace InterfaceGraphique
         string fileNames;
         int sortColumn = -1;
         StringBuilder pathMap;
+        StringBuilder mapList;
         public Campagne()
         {
             InitializeComponent();
             sortColumnDescend(1);
+            mapList = new StringBuilder();
             filePaths = Directory.GetFiles(Application.StartupPath + @"\zones", "*.xml");
             
             foreach(string s in filePaths)
@@ -86,6 +88,11 @@ namespace InterfaceGraphique
                                                          ZonesChoisis.Sorting);
         }
 
+        private void InitialiseConfigs()
+        {
+            // TO DO : mapList = le fichier que yonni me passe
+        }
+
         private void bouton_ADD_Click(object sender, EventArgs e)
         {
             Console.WriteLine(listBox.SelectedItem);
@@ -127,7 +134,25 @@ namespace InterfaceGraphique
             else
             {
                 // TO DO
-                Console.WriteLine("LANCEMENT DE CAMPAGNE");
+               
+                if (RB_Solo.Checked)
+                    mapList = new StringBuilder("UN ");
+                else
+                    if (RB_Multi.Checked)
+                        mapList = new StringBuilder("DEUX ");
+                    else
+                        if (RB_AI.Checked)
+                            mapList = new StringBuilder("AI ");
+                
+             foreach (ListViewItem eachItem in ZonesChoisis.Items)
+                {
+                    mapList.Append(eachItem.Text+" ");
+                        
+                }
+
+             // TO DO : PASSER mapList 
+                
+                    Console.WriteLine("LANCEMENT DE CAMPAGNE");
             }
         }
     }
