@@ -107,6 +107,7 @@ namespace InterfaceGraphique
         {
             
             Program.peutAfficher = true;
+            pathXML = new StringBuilder("");
             this.Text = "Mode Edition - Nouvelle Zone";
             panel_GL.Select();
             etat = new EtatNone(this);
@@ -506,10 +507,11 @@ namespace InterfaceGraphique
             ouvrir_fichier.RestoreDirectory = true;
             if (ouvrir_fichier.ShowDialog() == DialogResult.OK)
             {
+                ReinitialiserTout();
+                
                 pathXML = new StringBuilder(ouvrir_fichier.FileName);
                 //Console.Write(Path.GetFileName(ouvrir_fichier.FileName));
                 
-                ReinitialiserTout();
                 output = Path.GetFileName(pathXML.ToString());
                 output = output.Remove(output.Length - 4);
                 this.Text = "Mode Edition - " + output;
