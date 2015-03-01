@@ -1,5 +1,5 @@
 ﻿//////////////////////////////////////////////////////////////////////////////
-/// @file Exemple.cs
+/// @file Editeur.cs
 /// @author Ballers
 /// @date 2015-01-13
 /// @version 1.0 
@@ -24,7 +24,7 @@ using System.Drawing.Imaging;
 namespace InterfaceGraphique
 {
     ///////////////////////////////////////////////////////////////////////////
-    /// @class Exemple
+    /// @class Editeur
     /// @brief Main window de l'editeur du jeu.
     ///
     /// @author The Ballers
@@ -32,7 +32,7 @@ namespace InterfaceGraphique
     /// 
     /// @ingroup InterfaceGraphique
     ///////////////////////////////////////////////////////////////////////////
-    public partial class Exemple : Form
+    public partial class Editeur : Form
     {
         FullScreen fs = new FullScreen();
         static public StringBuilder myObjectName = new StringBuilder("vide");
@@ -60,13 +60,13 @@ namespace InterfaceGraphique
 
         ////////////////////////////////////////////////////////////////////////
         ///
-        /// @fn static public Exemple()
+        /// @fn static public Editeur()
         /// @brief Constructeur de la fenetre.
         /// 
         /// @return Aucune (constructeur).
         ///
         ////////////////////////////////////////////////////////////////////////
-        public Exemple()
+        public Editeur()
         {
             /*
             if (soundActif)
@@ -440,7 +440,7 @@ namespace InterfaceGraphique
 
         ////////////////////////////////////////////////////////////////////////
         ///
-        /// @fn  private void Exemple_FormClosing(object sender, FormClosingEventArgs e)
+        /// @fn  private void Editeur_FormClosing(object sender, FormClosingEventArgs e)
         /// @brief Gestion des evenements lorsque la fenetre est fermee.
         /// 
         /// @param[in] sender : Objet duquel provient un evenement
@@ -449,7 +449,7 @@ namespace InterfaceGraphique
         /// @return Aucune.
         ///
         ////////////////////////////////////////////////////////////////////////
-        private void Exemple_FormClosing(object sender, FormClosingEventArgs e)
+        private void Editeur_FormClosing(object sender, FormClosingEventArgs e)
         {
             lock (Program.unLock)
             {
@@ -1078,7 +1078,7 @@ namespace InterfaceGraphique
         }
 
 
-        private void Exemple_Load(object sender, EventArgs e)
+        private void Editeur_Load(object sender, EventArgs e)
         {
 
         }
@@ -1398,6 +1398,7 @@ namespace InterfaceGraphique
         {
             Console.WriteLine("Vue Orbitale.");
             // TO DO
+            FonctionsNatives.orbite(0, 0);
         }
 
         ////////////////////////////////////////////////////////////////////////
