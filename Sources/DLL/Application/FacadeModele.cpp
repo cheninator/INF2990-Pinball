@@ -1075,7 +1075,7 @@ void FacadeModele::sauvegarderCampagne(char* nomMap, int length)
 {
 	configuration_->modifierCampagne(nomMap, length);
 	configuration_->sauvegarderCampagne();
-=======
+}
 void FacadeModele::construireListesPalettes()
 {
 	VisiteurConstruireListes visCL(&listePalettesGJ1_, &listePalettesDJ1_, &listePalettesGJ2_, &listePalettesDJ2_);
@@ -1096,5 +1096,5 @@ void FacadeModele::desactiverPalettesGJ1() // Appelee quand on lache la touche
 	construireListesPalettes(); // Normalement, on n'appellerait pas cette méthode à chaque fois, elle devrait être appelée une fois lorsqu'on a loadé la map.
 	for (NoeudPaletteG* palette : listePalettesGJ1_)
 		palette->desactiver();
->>>>>>> origin/master
+
 }
