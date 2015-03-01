@@ -238,10 +238,10 @@ namespace InterfaceGraphique
 
                 else if (e.KeyData == Keys.Down)
                     FonctionsNatives.translater(0, -10);
-                else if (e.KeyData == Keys.H) // Remplacer "H" par la touche obtenue des configurations
+                else if (e.KeyData == Keys.R) // Remplacer "R" par la touche obtenue des configurations
                 {
                     FonctionsNatives.activerPalettesGJ1();
-                    Console.WriteLine("Touche H enfoncée");// Activer les palettes gauches du joueur 1
+                    Console.WriteLine("Touche R enfoncée");// Activer les palettes gauches du joueur 1
                 }
             }
                 if (e.Modifiers == Keys.Control)
@@ -282,10 +282,10 @@ namespace InterfaceGraphique
             }
             if (panel_GL.Focused == true)
             {
-                if (e.KeyData == Keys.H)// Remplacer "H" par la touche obtenue des configurations
+                if (e.KeyData == Keys.R)// Remplacer "R" par la touche obtenue des configurations
                 {
                     FonctionsNatives.desactiverPalettesGJ1();
-                    Console.WriteLine("Touche H relachée");// Désactiver les palettes gauches du joueur 1
+                    Console.WriteLine("Touche R relachée");// Désactiver les palettes gauches du joueur 1
                 }
             }
 

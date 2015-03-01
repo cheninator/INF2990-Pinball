@@ -1325,6 +1325,18 @@ extern "C"
 	}
 
 
+	__declspec(dllexport) void __cdecl activerPalettesGJ1()
+	{
+		FacadeModele::obtenirInstance()->activerPalettesGJ1();
+
+	}
+
+	__declspec(dllexport) void __cdecl desactiverPalettesGJ1()
+	{
+		FacadeModele::obtenirInstance()->desactiverPalettesGJ1();
+
+	}
+
 	/*
 	#include <FTGL/ftgl.h>
 
