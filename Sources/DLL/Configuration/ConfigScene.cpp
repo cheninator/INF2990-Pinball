@@ -10,6 +10,7 @@
 
 #include "ConfigScene.h"
 #include <fstream>
+#include <iostream>
 
 ////////////////////////////////////////////////////////////////////////
 ///
@@ -43,6 +44,7 @@ ConfigScene::ConfigScene()
 ConfigScene::~ConfigScene()
 {
 	delete[] config_;
+	listeCartes_.clear();
 }
 
 
@@ -81,10 +83,12 @@ void ConfigScene::sauvegarderCampagne()
 {
 	std::ofstream fichier;
 	fichier.open(derniereCampagne_);
+
 	unsigned int i = 0;
-	for (i = 0; i < listeCartes_.size()-2; i++)
+
+	for (i = 0; i < listeCartes_.size(); i++)
 		fichier << listeCartes_[i] << std::endl;
-	fichier << listeCartes_[i];
+
 	fichier.close();
 }
 
@@ -213,6 +217,7 @@ void ConfigScene::modifierCampagne(char* maps, int length)
 
 	size_t pos = 0;
 	std::string token;
+	listeCartes_.clear();
 
 	while ((pos = map.find(delimiter)) != std::string::npos) 
 	{
@@ -223,19 +228,6 @@ void ConfigScene::modifierCampagne(char* maps, int length)
 	}
 
 	listeCartes_.push_back(map);
-}
-
-void ConfigScene::sauvegarderZones(char* listMap)
-{
-	std::string tempList = listMap;
-	std::istringstream iss(tempList);
-	listeCartes_.clear();
-	do{
-		std::string sub;
-		iss >> sub;
-		listeCartes_.push_back(sub);
-	} while (iss);
-	sauvegarderCampagne();
 
 }
 

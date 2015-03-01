@@ -1053,11 +1053,6 @@ int  FacadeModele::obtenirTouchePDJ2(){ return configuration_->obtenirRaccourciP
 int  FacadeModele::obtenirToucheRessort(){ return configuration_->obtenirRaccourciRessort(); }
 
 
-void FacadeModele::sauvegarderZones(char* listMap)
-{
-	configuration_->sauvegarderZones(listMap);
-}
-
 int FacadeModele::obtenirDifficulte(char* nomFichier, int length)
 {
 	int niveau;
@@ -1076,6 +1071,7 @@ void FacadeModele::sauvegarderCampagne(char* nomMap, int length)
 	configuration_->modifierCampagne(nomMap, length);
 	configuration_->sauvegarderCampagne();
 }
+
 void FacadeModele::construireListesPalettes()
 {
 	VisiteurConstruireListes visCL(&listePalettesGJ1_, &listePalettesDJ1_, &listePalettesGJ2_, &listePalettesDJ2_);

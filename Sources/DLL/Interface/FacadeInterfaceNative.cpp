@@ -1319,10 +1319,9 @@ extern "C"
 		return FacadeModele::obtenirInstance()->obtenirDifficulte(nomFichier, length);
 	}
 
-	__declspec(dllexport) void __cdecl creerFichierConfigCampagne(char* listMaps)
+	__declspec(dllexport) void __cdecl creerFichierCampagne(char* listMaps, int length)
 	{
-		FacadeModele::obtenirInstance()->sauvegarderZones(listMaps);
-		
+		FacadeModele::obtenirInstance()->sauvegarderCampagne(listMaps, length);
 	}
 
 
