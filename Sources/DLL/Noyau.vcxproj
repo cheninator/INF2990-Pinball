@@ -161,6 +161,7 @@
     <ClCompile Include="Tests\TestUtilitaire.cpp" />
     <ClCompile Include="Visiteurs\VisiteurAgrandissement.cpp" />
     <ClCompile Include="Visiteurs\VisiteurCentreDeMasse.cpp" />
+    <ClCompile Include="Visiteurs\VisiteurConstruireListes.cpp" />
     <ClCompile Include="Visiteurs\VisiteurDeplacement.cpp" />
     <ClCompile Include="Visiteurs\VisiteurDeselectionnerTout.cpp" />
     <ClCompile Include="Visiteurs\VisiteurDuplication.cpp" />
@@ -223,6 +224,7 @@
     <ClInclude Include="Visiteurs\VisiteurAbstrait.h" />
     <ClInclude Include="Visiteurs\VisiteurAgrandissement.h" />
     <ClInclude Include="Visiteurs\VisiteurCentreDeMasse.h" />
+    <ClInclude Include="Visiteurs\VisiteurConstruireListes.h" />
     <ClInclude Include="Visiteurs\VisiteurDeplacement.h" />
     <ClInclude Include="Visiteurs\VisiteurDeselectionnerTout.h" />
     <ClInclude Include="Visiteurs\VisiteurDuplication.h" />

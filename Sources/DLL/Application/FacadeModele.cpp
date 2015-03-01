@@ -50,6 +50,7 @@ Samuel Millette <BR>
 #include "../Visiteurs/VisiteurPossibilite.h"
 #include "../Visiteurs/VisiteurSuppression.h"
 #include "../Visiteurs/VisiteurXML.h"
+#include "../Visiteurs/VisiteurConstruireListes.h"
 
 #include "VueOrtho.h"
 #include "Camera.h"
@@ -1062,4 +1063,12 @@ int FacadeModele::obtenirDifficulte(char* nomFichier, int length)
 	niveau = element->FirstAttribute()->IntValue();
 
 	return niveau;
+}
+
+void FacadeModele::construireListesPalettes()
+{
+	VisiteurConstruireListes visCL(&listePalettesGJ1_, &listePalettesDJ1_, &listePalettesGJ2_, &listePalettesDJ2_);
+	arbre_->accepterVisiteur(&visCL);
+
+
 }

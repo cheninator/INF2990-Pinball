@@ -198,6 +198,9 @@
     <ClCompile Include="QuadTree\QuadTree.cpp">
       <Filter>Source Files\QuadTree</Filter>
     </ClCompile>
+    <ClCompile Include="Visiteurs\VisiteurConstruireListes.cpp">
+      <Filter>Source Files\Visiteurs</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Application\FacadeModele.h">
@@ -382,6 +385,9 @@
     </ClInclude>
     <ClInclude Include="QuadTree\QuadTree.h">
       <Filter>Header Files\QuadTree</Filter>
+    </ClInclude>
+    <ClInclude Include="Visiteurs\VisiteurConstruireListes.h">
+      <Filter>Header Files\Visiteurs</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

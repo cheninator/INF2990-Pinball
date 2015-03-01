@@ -28,11 +28,14 @@
 
 #include <windows.h>
 #include <string>
+#include <set>
 #include "glm/glm.hpp"
 
 class NoeudAbstrait;
 class ArbreRenduINF2990;
 class ConfigScene;
+class NoeudPaletteG;
+class NoeudPaletteD;
 
 namespace vue {
    class Vue;
@@ -152,6 +155,8 @@ public:
 
    int obtenirDifficulte(char* nomFichier, int length);
 
+   void construireListesPalettes();
+
 private:
 
    /// Constructeur par defaut.
@@ -186,6 +191,11 @@ private:
    static const int coinDroitTableY;
 
    bool duplicationHorsTable_;
+
+   std::set<NoeudPaletteG*> listePalettesGJ1_;
+   std::set<NoeudPaletteD*> listePalettesDJ1_;
+   std::set<NoeudPaletteG*> listePalettesGJ2_;
+   std::set<NoeudPaletteD*> listePalettesDJ2_;
 };
 
 
