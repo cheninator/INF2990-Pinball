@@ -238,11 +238,11 @@ namespace InterfaceGraphique
 
                 else if (e.KeyData == Keys.Down)
                     FonctionsNatives.translater(0, -10);
-                else if (e.KeyData == Keys.R) // Remplacer "R" par la touche obtenue des configurations
+                if (etat is EtatTest)
                 {
-                    FonctionsNatives.activerPalettesGJ1();
-                    Console.WriteLine("Touche R enfoncée");// Activer les palettes gauches du joueur 1
+                    ToucheDownTest(o, e);
                 }
+               
             }
                 if (e.Modifiers == Keys.Control)
                 {
@@ -256,6 +256,49 @@ namespace InterfaceGraphique
                     altDown = true;
                 }
            
+        }
+
+        
+        ////////////////////////////////////////////////////////////////////////
+        ///
+        /// @fn private void ToucheDownTest(Object o, KeyEventArgs e)
+        /// @brief Gestion des etats lorsqu'une touche est appuye dans le mode Test.
+        /// 
+        /// @param[in] sender : Objet duquel provient un evenement
+        /// @param[in] e : evenement qui lance la fonction.
+        /// 
+        /// @return Aucune.
+        ///
+        ////////////////////////////////////////////////////////////////////////
+        private void ToucheDownTest( Object o, KeyEventArgs e )
+        {
+             if (e.KeyData == Keys.R) // Remplacer "R" par la touche obtenue des configurations
+                {
+                    FonctionsNatives.activerPalettesGJ1();
+                    Console.WriteLine("Touche R enfoncée");// Activer les palettes gauches du joueur 1
+                }
+            // TO DO
+        }
+
+        ////////////////////////////////////////////////////////////////////////
+        ///
+        /// @fn private void ToucheUpTest(Object o, KeyEventArgs e)
+        /// @brief Gestion des etats lorsqu'une touche est relâchee en mode Test.
+        /// 
+        /// @param[in] sender : Objet duquel provient un evenement
+        /// @param[in] e : evenement qui lance la fonction.
+        /// 
+        /// @return Aucune.
+        ///
+        ////////////////////////////////////////////////////////////////////////
+        private void ToucheUpTest(Object o, KeyEventArgs e)
+        {
+            if (e.KeyData == Keys.R)// Remplacer "R" par la touche obtenue des configurations
+            {
+                FonctionsNatives.desactiverPalettesGJ1();
+                Console.WriteLine("Touche R relachée");// Désactiver les palettes gauches du joueur 1
+            }
+            // TO DO
         }
 
         ////////////////////////////////////////////////////////////////////////
@@ -280,13 +323,9 @@ namespace InterfaceGraphique
             {
                 ctrlDown = false;
             }
-            if (panel_GL.Focused == true)
+            if (etat is EtatTest)
             {
-                if (e.KeyData == Keys.R)// Remplacer "R" par la touche obtenue des configurations
-                {
-                    FonctionsNatives.desactiverPalettesGJ1();
-                    Console.WriteLine("Touche R relachée");// Désactiver les palettes gauches du joueur 1
-                }
+                ToucheUpTest(o, e);
             }
 
 
