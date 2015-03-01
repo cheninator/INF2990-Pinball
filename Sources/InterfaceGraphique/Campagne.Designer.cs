@@ -28,7 +28,6 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.listBox = new System.Windows.Forms.ListBox();
             this.ZonesChoisis = new System.Windows.Forms.ListView();
             this.colonneZone = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.colonneDiff = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
@@ -44,43 +43,36 @@
             this.bouton_Annuler = new System.Windows.Forms.Button();
             this.bouton_OK = new System.Windows.Forms.Button();
             this.screenShot = new System.Windows.Forms.PictureBox();
+            this.ZonesDisponibles = new System.Windows.Forms.ListView();
+            this.columnHeader1 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.columnHeader2 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.GB_Player.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.screenShot)).BeginInit();
             this.SuspendLayout();
-            // 
-            // listBox
-            // 
-            this.listBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.listBox.FormattingEnabled = true;
-            this.listBox.ItemHeight = 18;
-            this.listBox.Location = new System.Drawing.Point(44, 150);
-            this.listBox.Name = "listBox";
-            this.listBox.Size = new System.Drawing.Size(163, 274);
-            this.listBox.TabIndex = 0;
-            this.listBox.SelectedValueChanged += new System.EventHandler(this.listBox_SelectedValueChanged);
             // 
             // ZonesChoisis
             // 
             this.ZonesChoisis.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
             this.colonneZone,
             this.colonneDiff});
+            this.ZonesChoisis.FullRowSelect = true;
             this.ZonesChoisis.Location = new System.Drawing.Point(445, 150);
             this.ZonesChoisis.Name = "ZonesChoisis";
             this.ZonesChoisis.Size = new System.Drawing.Size(183, 274);
             this.ZonesChoisis.TabIndex = 1;
             this.ZonesChoisis.UseCompatibleStateImageBehavior = false;
             this.ZonesChoisis.View = System.Windows.Forms.View.Details;
-            this.ZonesChoisis.ColumnClick += new System.Windows.Forms.ColumnClickEventHandler(this.ZonesChoisis_ColumnClick);
+            this.ZonesChoisis.ColumnWidthChanging += new System.Windows.Forms.ColumnWidthChangingEventHandler(this.ZonesChoisis_ColumnWidthChanging);
             // 
             // colonneZone
             // 
-            this.colonneZone.Text = "Zones de jeu";
-            this.colonneZone.Width = 84;
+            this.colonneZone.Text = "Zone de jeu";
+            this.colonneZone.Width = 90;
             // 
             // colonneDiff
             // 
-            this.colonneDiff.Text = "Difficultés";
-            this.colonneDiff.Width = 91;
+            this.colonneDiff.Text = "Difficulté";
+            this.colonneDiff.Width = 90;
             // 
             // GB_Player
             // 
@@ -151,9 +143,9 @@
             // 
             this.bouton_ADD.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
             this.bouton_ADD.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.bouton_ADD.Location = new System.Drawing.Point(44, 430);
+            this.bouton_ADD.Location = new System.Drawing.Point(24, 430);
             this.bouton_ADD.Name = "bouton_ADD";
-            this.bouton_ADD.Size = new System.Drawing.Size(163, 39);
+            this.bouton_ADD.Size = new System.Drawing.Size(183, 39);
             this.bouton_ADD.TabIndex = 5;
             this.bouton_ADD.Text = "Ajouter a la liste";
             this.bouton_ADD.UseVisualStyleBackColor = true;
@@ -210,11 +202,39 @@
             this.screenShot.TabIndex = 10;
             this.screenShot.TabStop = false;
             // 
+            // ZonesDisponibles
+            // 
+            this.ZonesDisponibles.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
+            this.columnHeader1,
+            this.columnHeader2});
+            this.ZonesDisponibles.FullRowSelect = true;
+            this.ZonesDisponibles.Location = new System.Drawing.Point(24, 150);
+            this.ZonesDisponibles.MultiSelect = false;
+            this.ZonesDisponibles.Name = "ZonesDisponibles";
+            this.ZonesDisponibles.Size = new System.Drawing.Size(183, 274);
+            this.ZonesDisponibles.TabIndex = 11;
+            this.ZonesDisponibles.UseCompatibleStateImageBehavior = false;
+            this.ZonesDisponibles.View = System.Windows.Forms.View.Details;
+            this.ZonesDisponibles.ColumnClick += new System.Windows.Forms.ColumnClickEventHandler(this.ZonesDisponibles_ColumnClick);
+            this.ZonesDisponibles.ColumnWidthChanging += new System.Windows.Forms.ColumnWidthChangingEventHandler(this.ZonesDisponibles_ColumnWidthChanging);
+            this.ZonesDisponibles.SelectedIndexChanged += new System.EventHandler(this.ZonesDisponibles_SelectedIndexChanged);
+            // 
+            // columnHeader1
+            // 
+            this.columnHeader1.Text = "Zone de jeu";
+            this.columnHeader1.Width = 89;
+            // 
+            // columnHeader2
+            // 
+            this.columnHeader2.Text = "Difficulté";
+            this.columnHeader2.Width = 89;
+            // 
             // Campagne
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(650, 572);
+            this.Controls.Add(this.ZonesDisponibles);
             this.Controls.Add(this.screenShot);
             this.Controls.Add(this.bouton_OK);
             this.Controls.Add(this.bouton_Annuler);
@@ -225,7 +245,6 @@
             this.Controls.Add(this.label_ZJDisp);
             this.Controls.Add(this.GB_Player);
             this.Controls.Add(this.ZonesChoisis);
-            this.Controls.Add(this.listBox);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Icon = global::InterfaceGraphique.Properties.Resources.Pinball;
             this.Name = "Campagne";
@@ -239,7 +258,6 @@
 
         #endregion
 
-        private System.Windows.Forms.ListBox listBox;
         private System.Windows.Forms.ListView ZonesChoisis;
         private System.Windows.Forms.ColumnHeader colonneZone;
         private System.Windows.Forms.ColumnHeader colonneDiff;
@@ -255,6 +273,9 @@
         private System.Windows.Forms.Button bouton_Annuler;
         private System.Windows.Forms.Button bouton_OK;
         private System.Windows.Forms.PictureBox screenShot;
+        private System.Windows.Forms.ListView ZonesDisponibles;
+        private System.Windows.Forms.ColumnHeader columnHeader1;
+        private System.Windows.Forms.ColumnHeader columnHeader2;
 
 
     }

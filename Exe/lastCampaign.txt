@@ -1,7 +1,5 @@
 UN
-test
-was
-table1
-HELLO
 default
+table1
 photo
+testcouleurs

@@ -13,6 +13,7 @@ namespace InterfaceGraphique
         string[] filePaths;
         string fileNames;
         int sortColumn = -1;
+        int diff;
         StringBuilder pathMap;
         StringBuilder mapList;
         public Campagne()
@@ -24,42 +25,24 @@ namespace InterfaceGraphique
             
             foreach(string s in filePaths)
             {
+                pathMap = new StringBuilder(s);
+                diff = FonctionsNatives.obtenirDifficulte(pathMap, pathMap.Capacity);
                 fileNames = Path.GetFileName(s);
                 fileNames = fileNames.Remove(fileNames.Length - 4);
-                listBox.Items.Add(fileNames);
-               
+              //  listBox.Items.Add(fileNames);
+                var item1 = new ListViewItem(new[] { fileNames, diff.ToString() });
+                ZonesDisponibles.Items.Add(item1);
+ 
             }
+            pathMap = new StringBuilder("");
         }
 
         private void listBox_SelectedValueChanged(object sender, EventArgs e)
         {
             screenShot.SizeMode = PictureBoxSizeMode.StretchImage;
-            screenShot.Image = Image.FromFile(Application.StartupPath + @"\zones\" + listBox.SelectedItem.ToString()+".jpg");
+            screenShot.Image = Image.FromFile(Application.StartupPath + @"\zones\" + ZonesDisponibles.SelectedItems.ToString()+".jpg");
         }
 
-        private void ZonesChoisis_ColumnClick(object sender, ColumnClickEventArgs e)
-        {
-            /*
-                if (e.Column != sortColumn)
-                {
-                    sortColumn = e.Column;
-                    ZonesChoisis.Sorting = SortOrder.Ascending;
-                }
-                else
-                {
-                    if (ZonesChoisis.Sorting == SortOrder.Ascending)
-                        ZonesChoisis.Sorting = SortOrder.Descending;
-                    else
-                        ZonesChoisis.Sorting = SortOrder.Ascending;
-                }
-                
-                ZonesChoisis.Sorting = SortOrder.Descending;
-                ZonesChoisis.Sort();
-                this.ZonesChoisis.ListViewItemSorter = new ListViewItemComparer(e.Column,
-                                                          ZonesChoisis.Sorting);
-                */
-           
-        }
 
 
         private void sortColumnDescend(int column)
@@ -85,10 +68,10 @@ namespace InterfaceGraphique
 
         private void bouton_ADD_Click(object sender, EventArgs e)
         {
-            Console.WriteLine(listBox.SelectedItem);
-            pathMap = new StringBuilder(Application.StartupPath + @"\zones\" + listBox.SelectedItem.ToString() + ".xml");
+            Console.WriteLine(ZonesDisponibles.SelectedItems);
+            pathMap = new StringBuilder(Application.StartupPath + @"\zones\" + fileNames + ".xml");
             int diff = FonctionsNatives.obtenirDifficulte(pathMap, pathMap.Capacity);
-            var item1 = new ListViewItem(new[] { listBox.SelectedItem.ToString(), diff.ToString() });
+            var item1 = new ListViewItem(new[] { fileNames, diff.ToString() });
 
             ZonesChoisis.Items.Add(item1);
         }
@@ -146,11 +129,63 @@ namespace InterfaceGraphique
              Console.WriteLine("LANCEMENT DE CA5MPAGNE");
             }
         }
+
+        private void ZonesDisponibles_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (ZonesDisponibles.SelectedIndices.Count <= 0) return;
+            int index = ZonesDisponibles.SelectedIndices[0];
+            if (index >= 0)
+            {
+                fileNames = ZonesDisponibles.Items[index].Text;
+                screenShot.SizeMode = PictureBoxSizeMode.StretchImage;
+                screenShot.Image = Image.FromFile(Application.StartupPath + @"\zones\" + fileNames + ".jpg");
+
+            }
+            
+        }
+
+        private void ZonesDisponibles_ColumnClick(object sender, ColumnClickEventArgs e)
+        {
+           
+               if (e.Column != sortColumn)
+               {
+                   sortColumn = e.Column;
+                   ZonesDisponibles.Sorting = SortOrder.Ascending;
+               }
+               else
+               {
+                   if (ZonesDisponibles.Sorting == SortOrder.Ascending)
+                       ZonesDisponibles.Sorting = SortOrder.Descending;
+                   else
+                       ZonesDisponibles.Sorting = SortOrder.Ascending;
+               }
+                
+               //ZonesDisponibles.Sorting = SortOrder.Descending;
+               ZonesDisponibles.Sort();
+               this.ZonesDisponibles.ListViewItemSorter = new ListViewItemComparer(e.Column,
+                                                         ZonesDisponibles.Sorting);
+              
+        }
+
+        private void ZonesChoisis_ColumnWidthChanging(object sender, ColumnWidthChangingEventArgs e)
+        {
+            e.Cancel = true;
+            e.NewWidth = ZonesChoisis.Columns[e.ColumnIndex].Width;
+        }
+
+        private void ZonesDisponibles_ColumnWidthChanging(object sender, ColumnWidthChangingEventArgs e)
+        {
+            e.Cancel = true;
+            e.NewWidth = ZonesDisponibles.Columns[e.ColumnIndex].Width;
+        }
+
+
     }
 
     class ListViewItemComparer : IComparer
     {
         private int col;
+        private int temp;        
         private SortOrder order;
         public ListViewItemComparer()
         {
@@ -165,11 +200,21 @@ namespace InterfaceGraphique
         public int Compare(object x, object y)
         {
             int returnVal = -1;
-            returnVal = String.Compare(((ListViewItem)x).SubItems[col].Text,
-                                    ((ListViewItem)y).SubItems[col].Text);
+       
+            if(Int32.TryParse( (((ListViewItem)x).SubItems[col].Text), out temp ))
+            {
+                returnVal = Convert.ToInt32(((ListViewItem)x).SubItems[col].Text).CompareTo(Convert.ToInt32(((ListViewItem)y).SubItems[col].Text));
+            }
+            else
+            {
+                returnVal = String.Compare(((ListViewItem)x).SubItems[col].Text,
+                                         ((ListViewItem)y).SubItems[col].Text);
+            }
             if (order == SortOrder.Descending)
-                returnVal *= -1;
+            returnVal *= -1;
             return returnVal;
+           
+           
         }
     }
 }
