@@ -1057,3 +1057,9 @@ int FacadeModele::obtenirDifficulte(char* nomFichier, int length)
 
 	return niveau;
 }
+
+void FacadeModele::sauvegarderCampagne(char* nomMap, int length)
+{
+	configuration_->modifierCampagne(nomMap, length);
+	configuration_->sauvegarderCampagne();
+}

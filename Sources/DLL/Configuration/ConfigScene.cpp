@@ -86,7 +86,6 @@ void ConfigScene::sauvegarderCampagne()
 		fichier << listeCartes_[i] << std::endl;
 		
 	fichier.close();
-
 }
 
 
@@ -196,7 +195,35 @@ void ConfigScene::modifierConfiguration(int config[12])
 }
 
 
+////////////////////////////////////////////////////////////////////////
+///
+/// @fn void ConfigScene::modifierCampagne(int config[12])
+///
+/// Cette fonction assigne les nouvelles configurations de zone de jeu.
+///
+/// @param[in] config[12] : Un tableau contenant les informations de configuration
+///
+/// @return Aucune.
+///
+////////////////////////////////////////////////////////////////////////
+void ConfigScene::modifierCampagne(char* maps, int length)
+{
+	std::string map(maps);
+	std::string delimiter = " ";
 
+	size_t pos = 0;
+	std::string token;
+
+	while ((pos = map.find(delimiter)) != std::string::npos) 
+	{
+		token = map.substr(0, pos);
+		listeCartes_.push_back(token);
+
+		map.erase(0, pos + delimiter.length());
+	}
+
+	listeCartes_.push_back(map);
+}
 
 
 ///////////////////////////////////////////////////////////////////////////////
