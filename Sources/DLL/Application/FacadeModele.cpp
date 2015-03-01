@@ -50,6 +50,7 @@ Samuel Millette <BR>
 #include "../Visiteurs/VisiteurPossibilite.h"
 #include "../Visiteurs/VisiteurSuppression.h"
 #include "../Visiteurs/VisiteurXML.h"
+#include "../Visiteurs/VisiteurConstruireListes.h"
 
 #include "VueOrtho.h"
 #include "Camera.h"
@@ -1045,6 +1046,18 @@ int* FacadeModele::obtenirConfiguration()
 	return configuration_->obtenirConfiguration();
 }
 
+int	 FacadeModele::obtenirTouchePGJ1(){ return configuration_->obtenirRaccourciPGJ1(); }
+int  FacadeModele::obtenirTouchePGJ2(){ return configuration_->obtenirRaccourciPGJ2(); }
+int  FacadeModele::obtenirTouchePDJ1(){ return configuration_->obtenirRaccourciPDJ1(); }
+int  FacadeModele::obtenirTouchePDJ2(){ return configuration_->obtenirRaccourciPDJ2(); }
+int  FacadeModele::obtenirToucheRessort(){ return configuration_->obtenirRaccourciRessort(); }
+
+
+void FacadeModele::sauvegarderZones(char* listMap)
+{
+	configuration_->sauvegarderZones(listMap);
+}
+
 int FacadeModele::obtenirDifficulte(char* nomFichier, int length)
 {
 	int niveau;
@@ -1062,4 +1075,26 @@ void FacadeModele::sauvegarderCampagne(char* nomMap, int length)
 {
 	configuration_->modifierCampagne(nomMap, length);
 	configuration_->sauvegarderCampagne();
+=======
+void FacadeModele::construireListesPalettes()
+{
+	VisiteurConstruireListes visCL(&listePalettesGJ1_, &listePalettesDJ1_, &listePalettesGJ2_, &listePalettesDJ2_);
+	arbre_->accepterVisiteur(&visCL);
+
+
+}
+
+void FacadeModele::activerPalettesGJ1()//Appelée quand on pese la touche
+{
+	construireListesPalettes(); // Normalement, on n'appellerait pas cette méthode à chaque fois, elle devrait être appelée une fois lorsqu'on a loadé la map.
+	for (NoeudPaletteG* palette : listePalettesGJ1_)
+		palette->activer();
+}
+
+void FacadeModele::desactiverPalettesGJ1() // Appelee quand on lache la touche
+{
+	construireListesPalettes(); // Normalement, on n'appellerait pas cette méthode à chaque fois, elle devrait être appelée une fois lorsqu'on a loadé la map.
+	for (NoeudPaletteG* palette : listePalettesGJ1_)
+		palette->desactiver();
+>>>>>>> origin/master
 }

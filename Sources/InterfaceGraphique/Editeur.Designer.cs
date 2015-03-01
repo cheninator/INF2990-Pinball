@@ -1,5 +1,5 @@
 ﻿//////////////////////////////////////////////////////////////////////////////
-/// @file Exemple.Designer.cs
+/// @file Editeur.Designer.cs
 /// @author Ballers
 /// @date 2015-01-13
 /// @version 1.0 
@@ -9,7 +9,7 @@
 
 namespace InterfaceGraphique
 {
-    partial class Exemple
+    partial class Editeur
     {
         /// <summary>
         /// Variable necessaire au concepteur.
@@ -37,7 +37,7 @@ namespace InterfaceGraphique
         /// </summary>
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Exemple));
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Editeur));
             this.panel1 = new System.Windows.Forms.Panel();
             this.panel_GL = new System.Windows.Forms.Panel();
             this.Creation_Panel = new System.Windows.Forms.FlowLayoutPanel();
@@ -1117,7 +1117,7 @@ namespace InterfaceGraphique
             this.printPreviewDialog1.Name = "printPreviewDialog1";
             this.printPreviewDialog1.Visible = false;
             // 
-            // Exemple
+            // Editeur
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -1126,10 +1126,10 @@ namespace InterfaceGraphique
             this.KeyPreview = true;
             this.MainMenuStrip = this.menuStrip1;
             this.MinimumSize = new System.Drawing.Size(972, 678);
-            this.Name = "Exemple";
+            this.Name = "Editeur";
             this.Text = "Mode Edition";
-            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.Exemple_FormClosing);
-            this.Load += new System.EventHandler(this.Exemple_Load);
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.Editeur_FormClosing);
+            this.Load += new System.EventHandler(this.Editeur_Load);
             this.SizeChanged += new System.EventHandler(this.Fenetre_Redimension);
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();

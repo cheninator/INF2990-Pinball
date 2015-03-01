@@ -106,7 +106,25 @@ void NoeudPaletteG::afficherConcret() const
 ////////////////////////////////////////////////////////////////////////
 void NoeudPaletteG::animer(float temps)
 {
-
+	switch (etatPalette_)
+	{
+	case ACTIVE:
+		if (obtenirRotation().z - angleZOriginal_ < 45)
+		{
+			assignerRotation(glm::dvec3{ 0, 0, 5 });
+		}
+		break;
+	case RETOUR:
+		if (obtenirRotation().z - angleZOriginal_ > 0)
+		{
+			assignerRotation(glm::dvec3{ 0, 0, -3 });
+		}
+		else
+			assignerRotationHard(glm::dvec3{ rotation_.x, rotation_.y, angleZOriginal_ });
+		break;
+	case INACTIVE:
+		break;
+	}
 }
 
 ////////////////////////////////////////////////////////////////////////
@@ -127,3 +145,18 @@ bool NoeudPaletteG::accepterVisiteur(VisiteurAbstrait* vis)
 
 	return reussi;
 }
+
+
+
+void NoeudPaletteG::activer()
+{
+	if (etatPalette_ == INACTIVE)
+		angleZOriginal_ = obtenirRotation().z;
+	
+	etatPalette_ = ACTIVE;
+}
+void NoeudPaletteG::desactiver()
+{
+	etatPalette_ = RETOUR;
+}
+

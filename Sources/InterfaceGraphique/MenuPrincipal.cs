@@ -8,18 +8,10 @@
 //////////////////////////////////////////////////////////////////////////////
 
 using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
 using System.Drawing;
-using System.Linq;
 using System.Text;
 using System.Threading;
-using System.Threading.Tasks;
-using System.Media;
 using System.Windows.Forms;
-using System.Diagnostics;
-using System.Runtime.InteropServices;
 
 namespace InterfaceGraphique
 {
@@ -35,7 +27,7 @@ namespace InterfaceGraphique
     public partial class MainMenu : Form
     {
         System.Media.SoundPlayer player = new System.Media.SoundPlayer(Properties.Resources.button_29); ///< Sound player
-        public Exemple modeEdit; ///< Form du mode edition
+        public Editeur modeEdit; ///< Form du mode edition
         private Thread myThread; ///< Une thread
         private Campagne campagne;
         public PartieRapide pRapide;
@@ -106,11 +98,11 @@ namespace InterfaceGraphique
                Thread.Sleep(100);
             }
             this.Hide();
-            modeEdit = new Exemple();
+            modeEdit = new Editeur();
             modeEdit.ShowDialog();
             this.Show();
             
-           }
+        }
 
         ////////////////////////////////////////////////////////////////////////
         ///

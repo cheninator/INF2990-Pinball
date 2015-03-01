@@ -1,19 +1,13 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
 using System.Drawing;
-using System.Linq;
 using System.IO;
 using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Collections;
 
 
 namespace InterfaceGraphique
 {
-    
     public partial class Campagne : Form
     {
         string[] filePaths;
@@ -39,12 +33,8 @@ namespace InterfaceGraphique
 
         private void listBox_SelectedValueChanged(object sender, EventArgs e)
         {
-
-            //screenShot.ImageLocation = Application.StartupPath + @"\zones";
             screenShot.SizeMode = PictureBoxSizeMode.StretchImage;
-           screenShot.Image = Image.FromFile(Application.StartupPath + @"\zones\" + listBox.SelectedItem.ToString()+".jpg");
-           //Console.WriteLine(Application.StartupPath + @"\zones\" + listBox.SelectedItem.ToString() + ".jpg");
-          //  Console.WriteLine(listBox.SelectedItem.ToString());
+            screenShot.Image = Image.FromFile(Application.StartupPath + @"\zones\" + listBox.SelectedItem.ToString()+".jpg");
         }
 
         private void ZonesChoisis_ColumnClick(object sender, ColumnClickEventArgs e)
@@ -149,10 +139,11 @@ namespace InterfaceGraphique
                     mapList.Append(eachItem.Text+" ");
                         
                 }
-
+             mapList.Length--;
+             
              // TO DO : PASSER mapList 
-                
-                    Console.WriteLine("LANCEMENT DE CAMPAGNE");
+             FonctionsNatives.creerFichierConfigCampagne(mapList);
+             Console.WriteLine("LANCEMENT DE CA5MPAGNE");
             }
         }
     }

@@ -1,11 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Runtime.InteropServices;
 
@@ -14,7 +7,7 @@ namespace InterfaceGraphique
     public partial class Configuration : Form
     {
         int[] defaultValues = { 65, 83, 52, 53};
-        int[] currentValues = {65,83,52,53,32,49,50,74,75,76,66 };
+        int[] currentValues = { 65, 83, 52, 53, 32, 49, 50, 74, 75, 76, 66 };
         int[] valuesXML = new int[12]; 
         string maTouche;
         bool mediaPlaying = false;
@@ -296,13 +289,5 @@ namespace InterfaceGraphique
             FonctionsNatives.creerFichierConfig(valuesXML);
             this.Close();
         }
-
     }
-
-
-    public partial class FonctionsNatives
-    {
-        
-    }
-
 }

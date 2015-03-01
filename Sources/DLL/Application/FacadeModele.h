@@ -28,11 +28,14 @@
 
 #include <windows.h>
 #include <string>
+#include <set>
 #include "glm/glm.hpp"
 
 class NoeudAbstrait;
 class ArbreRenduINF2990;
 class ConfigScene;
+class NoeudPaletteG;
+class NoeudPaletteD;
 
 namespace vue {
    class Vue;
@@ -147,10 +150,22 @@ public:
    void sauvegarderConfig(int config[12]);
 
    int* obtenirConfiguration();
+   int	obtenirTouchePGJ1();
+   int  obtenirTouchePGJ2();
+   int  obtenirTouchePDJ1();
+   int  obtenirTouchePDJ2();
+   int  obtenirToucheRessort();
+
+   void sauvegarderZones(char* listMap);
 
    int obtenirDifficulte(char* nomFichier, int length);
 
+
    void sauvegarderCampagne(char* nomFichier, int length);
+   void construireListesPalettes();
+
+   void activerPalettesGJ1();
+   void desactiverPalettesGJ1();
 
 private:
 
@@ -186,6 +201,11 @@ private:
    static const int coinDroitTableY;
 
    bool duplicationHorsTable_;
+
+   std::set<NoeudPaletteG*> listePalettesGJ1_;
+   std::set<NoeudPaletteD*> listePalettesDJ1_;
+   std::set<NoeudPaletteG*> listePalettesGJ2_;
+   std::set<NoeudPaletteD*> listePalettesDJ2_;
 };
 
 

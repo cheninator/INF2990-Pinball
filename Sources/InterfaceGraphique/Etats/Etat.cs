@@ -32,11 +32,11 @@ namespace InterfaceGraphique
     ///////////////////////////////////////////////////////////////////////////
     abstract class Etat
     {
-        protected Exemple form_;
+        protected Editeur form_;
 
         ////////////////////////////////////////////////////////////////////////
         ///
-        /// @fn public Etat(Exemple form)
+        /// @fn public Etat(Editeur form)
         /// @brief Constructeur par parametre de l'etat.
         /// 
         /// param[in] form : Form associee a l'etat.
@@ -44,7 +44,7 @@ namespace InterfaceGraphique
         /// @return Aucune (constructeur).
         ///
         ////////////////////////////////////////////////////////////////////////
-        public Etat(Exemple form) { 
+        public Etat(Editeur form) { 
             form_ = form;
             form_.Cursor = Cursors.Arrow;
             form_.enableZoom(false);
@@ -113,7 +113,7 @@ namespace InterfaceGraphique
     {
         ////////////////////////////////////////////////////////////////////////
         ///
-        /// @fn public EtatDeplacement(Exemple form)
+        /// @fn public EtatDeplacement(Editeur form)
         /// @brief Constructeur par parametre de l'etat.
         /// 
         /// param[in] form : Form associee a l'etat.
@@ -121,7 +121,7 @@ namespace InterfaceGraphique
         /// @return Aucune (constructeur).
         ///
         ////////////////////////////////////////////////////////////////////////
-        public EtatDeplacement(Exemple form) : base(form) {
+        public EtatDeplacement(Editeur form) : base(form) {
             form_.outilCourant("Deplacement");
         }
 
@@ -177,7 +177,7 @@ namespace InterfaceGraphique
     {
         ////////////////////////////////////////////////////////////////////////
         ///
-        /// @fn public EtatPortail(Exemple form)
+        /// @fn public EtatPortail(Editeur form)
         /// @brief Constructeur par parametre de l'etat.
         /// 
         /// param[in] form : Form associee a l'etat.
@@ -185,7 +185,7 @@ namespace InterfaceGraphique
         /// @return Aucune (constructeur).
         ///
         ////////////////////////////////////////////////////////////////////////
-        public EtatPortail(Exemple form) : base(form) { }
+        public EtatPortail(Editeur form) : base(form) { }
 
         ////////////////////////////////////////////////////////////////////////
         ///
@@ -237,7 +237,7 @@ namespace InterfaceGraphique
     {
         ////////////////////////////////////////////////////////////////////////
         ///
-        /// @fn public EtatMur(Exemple form)
+        /// @fn public EtatMur(Editeur form)
         /// @brief Constructeur par parametre de l'etat.
         /// 
         /// param[in] form : Form associee a l'etat.
@@ -245,7 +245,7 @@ namespace InterfaceGraphique
         /// @return Aucune (constructeur).
         ///
         ////////////////////////////////////////////////////////////////////////
-        public EtatMur(Exemple form) : base(form) { }
+        public EtatMur(Editeur form) : base(form) { }
 
         ////////////////////////////////////////////////////////////////////////
         ///
@@ -303,7 +303,7 @@ namespace InterfaceGraphique
     {
         ////////////////////////////////////////////////////////////////////////
         ///
-        /// @fn public EtatSelection(Exemple form)
+        /// @fn public EtatSelection(Editeur form)
         /// @brief Constructeur par parametre de l'etat.
         /// 
         /// param[in] form : Form associee a l'etat.
@@ -311,7 +311,7 @@ namespace InterfaceGraphique
         /// @return Aucune (constructeur).
         ///
         ////////////////////////////////////////////////////////////////////////
-        public EtatSelection(Exemple form) : base(form) {
+        public EtatSelection(Editeur form) : base(form) {
             form_.outilCourant("Selection");
             }
 
@@ -365,7 +365,7 @@ namespace InterfaceGraphique
     {
         ////////////////////////////////////////////////////////////////////////
         ///
-        /// @fn public EtatRotation(Exemple form)
+        /// @fn public EtatRotation(Editeur form)
         /// @brief Constructeur par parametre de l'etat.
         /// 
         /// param[in] form : Form associee a l'etat.
@@ -373,7 +373,7 @@ namespace InterfaceGraphique
         /// @return Aucune (constructeur).
         ///
         ////////////////////////////////////////////////////////////////////////
-        public EtatRotation(Exemple form) : base(form) {
+        public EtatRotation(Editeur form) : base(form) {
             form_.outilCourant("Rotation");
             }
 
@@ -425,7 +425,7 @@ namespace InterfaceGraphique
     {
         ////////////////////////////////////////////////////////////////////////
         ///
-        /// @fn public EtatScale(Exemple form)
+        /// @fn public EtatScale(Editeur form)
         /// @brief Constructeur par parametre de l'etat.
         /// 
         /// param[in] form : Form associee a l'etat.
@@ -433,7 +433,7 @@ namespace InterfaceGraphique
         /// @return Aucune (constructeur).
         ///
         ////////////////////////////////////////////////////////////////////////
-        public EtatScale(Exemple form) : base(form) {
+        public EtatScale(Editeur form) : base(form) {
             form_.Cursor = Cursors.Arrow;
             form_.outilCourant("Mise a Echelle");
         }
@@ -487,7 +487,7 @@ namespace InterfaceGraphique
     {
         ////////////////////////////////////////////////////////////////////////
         ///
-        /// @fn public EtatCreation(Exemple form)
+        /// @fn public EtatCreation(Editeur form)
         /// @brief Constructeur par parametre de l'etat.
         /// 
         /// param[in] form : Form associee a l'etat.
@@ -495,7 +495,7 @@ namespace InterfaceGraphique
         /// @return Aucune (constructeur).
         ///
         ////////////////////////////////////////////////////////////////////////
-        public EtatCreation(Exemple form) : base(form) {
+        public EtatCreation(Editeur form) : base(form) {
             form_.deselection();
             form_.outilCourant("Creation");
             form_.trackCursor(true);
@@ -532,12 +532,12 @@ namespace InterfaceGraphique
             if (e.Button == MouseButtons.Left)
             {
                 form_.creationObjet(e);
-                if (Exemple.myObjectName.ToString() == "portail")
+                if (Editeur.myObjectName.ToString() == "portail")
                 {
                     form_.creationObjet(e, true);
                     form_.statePortail();
                 }
-                else if (Exemple.myObjectName.ToString() == "mur")
+                else if (Editeur.myObjectName.ToString() == "mur")
                 {
                     form_.stateMur();
                 }
@@ -563,7 +563,7 @@ namespace InterfaceGraphique
     {
         ////////////////////////////////////////////////////////////////////////
         ///
-        /// @fn public EtatZoom(Exemple form)
+        /// @fn public EtatZoom(Editeur form)
         /// @brief Constructeur par parametre de l'etat.
         /// 
         /// param[in] form : Form associee a l'etat.
@@ -571,7 +571,7 @@ namespace InterfaceGraphique
         /// @return Aucune (constructeur).
         ///
         ////////////////////////////////////////////////////////////////////////
-        public EtatZoom(Exemple form) : base(form) {
+        public EtatZoom(Editeur form) : base(form) {
             form_.enableZoom(true);
             form_.outilCourant("Zoom");
         }
@@ -644,7 +644,7 @@ namespace InterfaceGraphique
     {
         ////////////////////////////////////////////////////////////////////////
         ///
-        /// @fn public EtatDuplication(Exemple form)
+        /// @fn public EtatDuplication(Editeur form)
         /// @brief Constructeur par parametre de l'etat.
         /// 
         /// param[in] form : Form associee a l'etat.
@@ -652,7 +652,7 @@ namespace InterfaceGraphique
         /// @return Aucune (constructeur).
         ///
         ////////////////////////////////////////////////////////////////////////
-        public EtatDuplication(Exemple form) : base(form) {
+        public EtatDuplication(Editeur form) : base(form) {
             form_.outilCourant("Duplication");
             form_.trackCursor(true);
             form_.dupliquerSelection();  
@@ -709,7 +709,7 @@ namespace InterfaceGraphique
     {
         ////////////////////////////////////////////////////////////////////////
         ///
-        /// @fn public EtatNone(Exemple form)
+        /// @fn public EtatNone(Editeur form)
         /// @brief Constructeur par parametre de l'etat.
         /// 
         /// param[in] form : Form associee a l'etat.
@@ -717,7 +717,7 @@ namespace InterfaceGraphique
         /// @return Aucune (constructeur).
         ///
         ////////////////////////////////////////////////////////////////////////
-        public EtatNone(Exemple form) : base(form) 
+        public EtatNone(Editeur form) : base(form) 
         {
             form_.outilCourant("");
         }
@@ -768,7 +768,7 @@ namespace InterfaceGraphique
     {
         ////////////////////////////////////////////////////////////////////////
         ///
-        /// @fn public EtatSelectionMultiple(Exemple form)
+        /// @fn public EtatSelectionMultiple(Editeur form)
         /// @brief Constructeur par parametre de l'etat.
         /// 
         /// param[in] form : Form associee a l'etat.
@@ -776,7 +776,7 @@ namespace InterfaceGraphique
         /// @return Aucune (constructeur).
         ///
         ////////////////////////////////////////////////////////////////////////
-        public EtatSelectionMultiple(Exemple form) : base(form) {
+        public EtatSelectionMultiple(Editeur form) : base(form) {
         
         }
 
@@ -830,7 +830,7 @@ namespace InterfaceGraphique
     {
         ////////////////////////////////////////////////////////////////////////
         ///
-        /// @fn public EtatZoomElastique(Exemple form) : base(form)
+        /// @fn public EtatZoomElastique(Editeur form) : base(form)
         /// @brief Constructeur par parametre de l'etat.
         /// 
         /// param[in] form : Form associee a l'etat.
@@ -838,7 +838,7 @@ namespace InterfaceGraphique
         /// @return Aucune (constructeur).
         ///
         ////////////////////////////////////////////////////////////////////////
-        public EtatZoomElastique(Exemple form) : base(form)
+        public EtatZoomElastique(Editeur form) : base(form)
         {
  
         }
@@ -892,7 +892,7 @@ namespace InterfaceGraphique
     {
         ////////////////////////////////////////////////////////////////////////
         ///
-        /// @fn public EtatTest(Exemple form) : base(form)
+        /// @fn public EtatTest(Editeur form) : base(form)
         /// @brief Constructeur par parametre de l'etat.
         /// 
         /// param[in] form : Form associee a l'etat.
@@ -900,7 +900,7 @@ namespace InterfaceGraphique
         /// @return Aucune (constructeur).
         ///
         ////////////////////////////////////////////////////////////////////////
-        public EtatTest(Exemple form): base(form)
+        public EtatTest(Editeur form): base(form)
         {
 
         }
@@ -942,7 +942,7 @@ namespace InterfaceGraphique
     {
         ////////////////////////////////////////////////////////////////////////
         ///
-        /// @fn public EtatPause(Exemple form) : base(form)
+        /// @fn public EtatPause(Editeur form) : base(form)
         /// @brief Constructeur par parametre de l'etat.
         /// 
         /// param[in] form : Form associee a l'etat.
@@ -950,7 +950,7 @@ namespace InterfaceGraphique
         /// @return Aucune (constructeur).
         ///
         ////////////////////////////////////////////////////////////////////////
-        public EtatPause(Exemple form): base(form)
+        public EtatPause(Editeur form): base(form)
         {
             
         }

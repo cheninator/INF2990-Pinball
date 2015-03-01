@@ -93,11 +93,11 @@
       <DependentUpon>Configuration.cs</DependentUpon>
     </Compile>
     <Compile Include="Etats\Etat.cs" />
-    <Compile Include="Exemple.cs">
+    <Compile Include="Editeur.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Exemple.Designer.cs">
-      <DependentUpon>Exemple.cs</DependentUpon>
+    <Compile Include="Editeur.Designer.cs">
+      <DependentUpon>Editeur.cs</DependentUpon>
     </Compile>
     <Compile Include="MenuPrincipal.cs">
       <SubType>Form</SubType>
@@ -128,8 +128,8 @@
     <EmbeddedResource Include="Configuration.resx">
       <DependentUpon>Configuration.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Exemple.resx">
-      <DependentUpon>Exemple.cs</DependentUpon>
+    <EmbeddedResource Include="Editeur.resx">
+      <DependentUpon>Editeur.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="MenuPrincipal.resx">
       <DependentUpon>MenuPrincipal.cs</DependentUpon>

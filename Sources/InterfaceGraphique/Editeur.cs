@@ -1,5 +1,5 @@
 ﻿//////////////////////////////////////////////////////////////////////////////
-/// @file Exemple.cs
+/// @file Editeur.cs
 /// @author Ballers
 /// @date 2015-01-13
 /// @version 1.0 
@@ -24,7 +24,7 @@ using System.Drawing.Imaging;
 namespace InterfaceGraphique
 {
     ///////////////////////////////////////////////////////////////////////////
-    /// @class Exemple
+    /// @class Editeur
     /// @brief Main window de l'editeur du jeu.
     ///
     /// @author The Ballers
@@ -32,12 +32,12 @@ namespace InterfaceGraphique
     /// 
     /// @ingroup InterfaceGraphique
     ///////////////////////////////////////////////////////////////////////////
-    public partial class Exemple : Form
+    public partial class Editeur : Form
     {
         FullScreen fs = new FullScreen();
         static public StringBuilder myObjectName = new StringBuilder("vide");
         static bool soundActif = false; ///< Play Sound or not
-
+        private Touches touches;
         public Point origin;
         string output = "";
         public Point previousP, currentP;
@@ -60,13 +60,13 @@ namespace InterfaceGraphique
 
         ////////////////////////////////////////////////////////////////////////
         ///
-        /// @fn static public Exemple()
+        /// @fn static public Editeur()
         /// @brief Constructeur de la fenetre.
         /// 
         /// @return Aucune (constructeur).
         ///
         ////////////////////////////////////////////////////////////////////////
-        public Exemple()
+        public Editeur()
         {
             /*
             if (soundActif)
@@ -83,6 +83,11 @@ namespace InterfaceGraphique
             this.KeyUp += new KeyEventHandler(ToucheUp);
             this.Icon = Properties.Resources.Pinball;
             InitializeComponent();
+            touches = new Touches(FonctionsNatives.obtenirTouchePGJ1(),
+                                  FonctionsNatives.obtenirTouchePGJ2(),
+                                  FonctionsNatives.obtenirTouchePDJ1(),
+                                  FonctionsNatives.obtenirTouchePDJ2(),
+                                  FonctionsNatives.obtenirToucheRessort());
             Program.peutAfficher = true;
             mouvementX = 100 * (double)(this.flowLayoutPanel1.Width) / (double)this.panel1.Width;
             mouvementY = 100 * (double)(this.menuStrip1.Height) / (double)this.panel1.Width;
@@ -107,6 +112,7 @@ namespace InterfaceGraphique
         {
             
             Program.peutAfficher = true;
+            pathXML = new StringBuilder("");
             this.Text = "Mode Edition - Nouvelle Zone";
             panel_GL.Select();
             etat = new EtatNone(this);
@@ -237,6 +243,11 @@ namespace InterfaceGraphique
 
                 else if (e.KeyData == Keys.Down)
                     FonctionsNatives.translater(0, -10);
+                if (etat is EtatTest)
+                {
+                    ToucheDownTest(o, e);
+                }
+               
             }
                 if (e.Modifiers == Keys.Control)
                 {
@@ -250,6 +261,82 @@ namespace InterfaceGraphique
                     altDown = true;
                 }
            
+        }
+
+        
+        ////////////////////////////////////////////////////////////////////////
+        ///
+        /// @fn private void ToucheDownTest(Object o, KeyEventArgs e)
+        /// @brief Gestion des etats lorsqu'une touche est appuye dans le mode Test.
+        /// 
+        /// @param[in] sender : Objet duquel provient un evenement
+        /// @param[in] e : evenement qui lance la fonction.
+        /// 
+        /// @return Aucune.
+        ///
+        ////////////////////////////////////////////////////////////////////////
+        private void ToucheDownTest( Object o, KeyEventArgs e )
+        {
+             if (e.KeyValue == touches.PGJ1) // Remplacer "R" par la touche obtenue des configurations
+                {
+                    FonctionsNatives.activerPalettesGJ1();
+                    Console.WriteLine("Touche R enfoncée");// Activer les palettes gauches du joueur 1
+                }
+
+             else if (e.KeyValue == touches.PGJ2)
+             {
+                 // TO DO: palette gauche joueur 1
+             }
+             else if (e.KeyValue == touches.PDJ1)
+             {
+               
+             }
+             else if (e.KeyValue == touches.PDJ2)
+             {
+
+             }
+             else if (e.KeyValue == touches.Ressort)
+             {
+
+             }
+            // TO DO
+        }
+
+        ////////////////////////////////////////////////////////////////////////
+        ///
+        /// @fn private void ToucheUpTest(Object o, KeyEventArgs e)
+        /// @brief Gestion des etats lorsqu'une touche est relâchee en mode Test.
+        /// 
+        /// @param[in] sender : Objet duquel provient un evenement
+        /// @param[in] e : evenement qui lance la fonction.
+        /// 
+        /// @return Aucune.
+        ///
+        ////////////////////////////////////////////////////////////////////////
+        private void ToucheUpTest(Object o, KeyEventArgs e)
+        {
+            if (e.KeyValue == touches.PGJ1)// Remplacer "R" par la touche obtenue des configurations
+            {
+                FonctionsNatives.desactiverPalettesGJ1();
+                Console.WriteLine("Touche R relachée");// Désactiver les palettes gauches du joueur 1
+            }
+            else if (e.KeyValue == touches.PGJ2)
+            {
+                // TO DO: palette gauche joueur 1
+            }
+            else if (e.KeyValue == touches.PDJ1)
+            {
+
+            }
+            else if (e.KeyValue == touches.PDJ2)
+            {
+
+            }
+            else if (e.KeyValue == touches.Ressort)
+            {
+
+            }
+            // TO DO
         }
 
         ////////////////////////////////////////////////////////////////////////
@@ -270,10 +357,15 @@ namespace InterfaceGraphique
             {
                 altDown = false;
             }   
-            if (e.KeyData.ToString() == "ControlKey")
+            if (e.KeyData.ToString() == "ControlKey") // == Keys.Control ?
             {
                 ctrlDown = false;
             }
+            if (etat is EtatTest)
+            {
+                ToucheUpTest(o, e);
+            }
+
 
         }
 
@@ -439,7 +531,7 @@ namespace InterfaceGraphique
 
         ////////////////////////////////////////////////////////////////////////
         ///
-        /// @fn  private void Exemple_FormClosing(object sender, FormClosingEventArgs e)
+        /// @fn  private void Editeur_FormClosing(object sender, FormClosingEventArgs e)
         /// @brief Gestion des evenements lorsque la fenetre est fermee.
         /// 
         /// @param[in] sender : Objet duquel provient un evenement
@@ -448,7 +540,7 @@ namespace InterfaceGraphique
         /// @return Aucune.
         ///
         ////////////////////////////////////////////////////////////////////////
-        private void Exemple_FormClosing(object sender, FormClosingEventArgs e)
+        private void Editeur_FormClosing(object sender, FormClosingEventArgs e)
         {
             lock (Program.unLock)
             {
@@ -506,10 +598,11 @@ namespace InterfaceGraphique
             ouvrir_fichier.RestoreDirectory = true;
             if (ouvrir_fichier.ShowDialog() == DialogResult.OK)
             {
+                ReinitialiserTout();
+                
                 pathXML = new StringBuilder(ouvrir_fichier.FileName);
                 //Console.Write(Path.GetFileName(ouvrir_fichier.FileName));
                 
-                ReinitialiserTout();
                 output = Path.GetFileName(pathXML.ToString());
                 output = output.Remove(output.Length - 4);
                 this.Text = "Mode Edition - " + output;
@@ -1076,7 +1169,7 @@ namespace InterfaceGraphique
         }
 
 
-        private void Exemple_Load(object sender, EventArgs e)
+        private void Editeur_Load(object sender, EventArgs e)
         {
 
         }
@@ -1396,6 +1489,7 @@ namespace InterfaceGraphique
         {
             Console.WriteLine("Vue Orbitale.");
             // TO DO
+            FonctionsNatives.orbite(0, 0);
         }
 
         ////////////////////////////////////////////////////////////////////////
@@ -3047,4 +3141,5 @@ namespace InterfaceGraphique
         [DllImport(@"Noyau.dll", CallingConvention = CallingConvention.Cdecl)]
         public static extern int creerFichierCampagne(StringBuilder path, int length);
     }
+
 }

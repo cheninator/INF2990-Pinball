@@ -40,6 +40,8 @@ public:
 	virtual bool accepterVisiteur(VisiteurAbstrait* vis);
 
 private:
+	/// Angle Original pour le mouvement des palettes selon les touches du clavier
+	double angleZOriginal;
 	
 	/// Angle selon l'axe des X.
 	float angleX_{ 0.f };
