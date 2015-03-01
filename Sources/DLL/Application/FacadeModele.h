@@ -157,6 +157,9 @@ public:
 
    void construireListesPalettes();
 
+   void activerPalettesGJ1();
+   void desactiverPalettesGJ1();
+
 private:
 
    /// Constructeur par defaut.

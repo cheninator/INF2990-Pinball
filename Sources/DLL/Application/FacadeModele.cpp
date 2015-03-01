@@ -1072,3 +1072,17 @@ void FacadeModele::construireListesPalettes()
 
 
 }
+
+void FacadeModele::activerPalettesGJ1()//Appelée quand on pese la touche
+{
+	construireListesPalettes(); // Normalement, on n'appellerait pas cette méthode à chaque fois, elle devrait être appelée une fois lorsqu'on a loadé la map.
+	for (NoeudPaletteG* palette : listePalettesGJ1_)
+		palette->activer();
+}
+
+void FacadeModele::desactiverPalettesGJ1() // Appelee quand on lache la touche
+{
+	construireListesPalettes(); // Normalement, on n'appellerait pas cette méthode à chaque fois, elle devrait être appelée une fois lorsqu'on a loadé la map.
+	for (NoeudPaletteG* palette : listePalettesGJ1_)
+		palette->desactiver();
+}
