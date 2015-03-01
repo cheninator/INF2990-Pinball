@@ -37,7 +37,7 @@ namespace InterfaceGraphique
         FullScreen fs = new FullScreen();
         static public StringBuilder myObjectName = new StringBuilder("vide");
         static bool soundActif = false; ///< Play Sound or not
-
+        private Touches touches;
         public Point origin;
         string output = "";
         public Point previousP, currentP;
@@ -83,6 +83,11 @@ namespace InterfaceGraphique
             this.KeyUp += new KeyEventHandler(ToucheUp);
             this.Icon = Properties.Resources.Pinball;
             InitializeComponent();
+            touches = new Touches(FonctionsNatives.obtenirTouchePGJ1(),
+                                  FonctionsNatives.obtenirTouchePGJ2(),
+                                  FonctionsNatives.obtenirTouchePDJ1(),
+                                  FonctionsNatives.obtenirTouchePDJ2(),
+                                  FonctionsNatives.obtenirToucheRessort());
             Program.peutAfficher = true;
             mouvementX = 100 * (double)(this.flowLayoutPanel1.Width) / (double)this.panel1.Width;
             mouvementY = 100 * (double)(this.menuStrip1.Height) / (double)this.panel1.Width;
@@ -272,11 +277,28 @@ namespace InterfaceGraphique
         ////////////////////////////////////////////////////////////////////////
         private void ToucheDownTest( Object o, KeyEventArgs e )
         {
-             if (e.KeyData == Keys.R) // Remplacer "R" par la touche obtenue des configurations
+             if (e.KeyValue == touches.PGJ1) // Remplacer "R" par la touche obtenue des configurations
                 {
                     FonctionsNatives.activerPalettesGJ1();
                     Console.WriteLine("Touche R enfoncée");// Activer les palettes gauches du joueur 1
                 }
+
+             else if (e.KeyValue == touches.PGJ2)
+             {
+                 // TO DO: palette gauche joueur 1
+             }
+             else if (e.KeyValue == touches.PDJ1)
+             {
+               
+             }
+             else if (e.KeyValue == touches.PDJ2)
+             {
+
+             }
+             else if (e.KeyValue == touches.Ressort)
+             {
+
+             }
             // TO DO
         }
 
@@ -293,10 +315,26 @@ namespace InterfaceGraphique
         ////////////////////////////////////////////////////////////////////////
         private void ToucheUpTest(Object o, KeyEventArgs e)
         {
-            if (e.KeyData == Keys.R)// Remplacer "R" par la touche obtenue des configurations
+            if (e.KeyValue == touches.PGJ1)// Remplacer "R" par la touche obtenue des configurations
             {
                 FonctionsNatives.desactiverPalettesGJ1();
                 Console.WriteLine("Touche R relachée");// Désactiver les palettes gauches du joueur 1
+            }
+            else if (e.KeyValue == touches.PGJ2)
+            {
+                // TO DO: palette gauche joueur 1
+            }
+            else if (e.KeyValue == touches.PDJ1)
+            {
+
+            }
+            else if (e.KeyValue == touches.PDJ2)
+            {
+
+            }
+            else if (e.KeyValue == touches.Ressort)
+            {
+
             }
             // TO DO
         }

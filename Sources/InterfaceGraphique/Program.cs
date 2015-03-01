@@ -192,6 +192,45 @@ namespace InterfaceGraphique
         }
     }
 
+
+    ///////////////////////////////////////////////////////////////////////////
+    /// @class Touches
+    /// @brief Classe qui contient les touches pour les palettes
+    ///
+    /// @author Inconnu
+    /// @date Inconnue
+    /// 
+    /// @ingroup InterfaceGraphique
+    ///////////////////////////////////////////////////////////////////////////
+
+    public class Touches
+    {
+        public int PGJ1;
+        public int PGJ2;
+        public int PDJ1;
+        public int PDJ2;
+        public int Ressort;
+        ////////////////////////////////////////////////////////////////////////
+        ///
+        /// @fn public Touches(int pgj1, int pgj2, int pdj1, int pdj2, int ressort)
+        /// @brief Constructeur de la fenetre.
+        /// @param[in] pgj1 : palette gauche joueur 1
+        /// @param[in] pgj2 : palette gauche joueur 2
+        /// @param[in] pdj1 : palette droite joueur 1
+        /// @param[in] pdj2 : palette droite joueur 2
+        /// @param[in] ressort : ressort
+        /// @return Aucune (constructeur).
+        ///
+        ////////////////////////////////////////////////////////////////////////
+        public Touches(int pgj1, int pgj2, int pdj1, int pdj2, int ressort)
+        {
+            PGJ1 = pgj1;
+            PGJ2 = pgj2;
+            PDJ1 = pdj1;
+            PDJ2 = pdj2;
+            Ressort = ressort;
+        }
+    }
     ///////////////////////////////////////////////////////////////////////////
     /// @class FonctionsNatives
     /// @brief Classe qui importe les fontions natives C++.
@@ -356,6 +395,21 @@ namespace InterfaceGraphique
 
         [DllImport(@"Noyau.dll", CallingConvention = CallingConvention.Cdecl)]
         public static extern int obtenirCentreMasseY();
+
+        [DllImport(@"Noyau.dll", CallingConvention = CallingConvention.Cdecl)]
+        public static extern int obtenirTouchePGJ1();
+        
+        [DllImport(@"Noyau.dll", CallingConvention = CallingConvention.Cdecl)]
+        public static extern int obtenirTouchePGJ2();
+
+        [DllImport(@"Noyau.dll", CallingConvention = CallingConvention.Cdecl)]
+        public static extern int obtenirTouchePDJ1();
+
+        [DllImport(@"Noyau.dll", CallingConvention = CallingConvention.Cdecl)]
+        public static extern int obtenirTouchePDJ2();
+
+        [DllImport(@"Noyau.dll", CallingConvention = CallingConvention.Cdecl)]
+        public static extern int obtenirToucheRessort();
 
         [DllImport(@"Noyau.dll", CallingConvention = CallingConvention.Cdecl)]
         public static extern bool resetZoom();

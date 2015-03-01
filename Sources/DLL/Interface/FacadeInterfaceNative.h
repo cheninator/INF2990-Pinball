@@ -67,8 +67,11 @@ extern "C" {
 	__declspec(dllexport) int obtenirCentreMasseY(void);
 	__declspec(dllexport) bool resetZoom(void);
 	__declspec(dllexport) bool duplicationEstHorsTable();
-
-
+	__declspec(dllexport) int obtenirTouchePGJ1();
+	__declspec(dllexport) int obtenirTouchePGJ2();
+	__declspec(dllexport) int obtenirTouchePDJ1();
+	__declspec(dllexport) int obtenirTouchePDJ2();
+	__declspec(dllexport) int obtenirToucheRessort();
 	__declspec(dllexport) void creerFichierConfig(int config[12]);
 	__declspec(dllexport) int* chargerFichierConfiguration();
 	__declspec(dllexport) int obtenirDiffulte(char* nomFichier, int length);

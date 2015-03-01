@@ -48,6 +48,7 @@ extern "C"
 	__declspec(dllexport) int __cdecl selectionnerObjetSousPointClique(int i, int j, int hauteur, int largeur, bool ctrlDown)
 	{
 		return FacadeModele::obtenirInstance()->selectionnerObjetSousPointClique(i, j, hauteur, largeur, ctrlDown);
+		
 	}
 
 	////////////////////////////////////////////////////////////////////////
@@ -1323,6 +1324,16 @@ extern "C"
 		FacadeModele::obtenirInstance()->sauvegarderZones(listMaps);
 		
 	}
+
+
+	__declspec(dllexport) int __cdecl obtenirTouchePGJ1(){ return FacadeModele::obtenirInstance()->obtenirTouchePGJ1(); }
+	__declspec(dllexport) int __cdecl obtenirTouchePGJ2(){ return FacadeModele::obtenirInstance()->obtenirTouchePGJ2(); }
+	__declspec(dllexport) int __cdecl obtenirTouchePDJ1(){ return FacadeModele::obtenirInstance()->obtenirTouchePDJ1(); }
+	__declspec(dllexport) int __cdecl obtenirTouchePDJ2(){ return FacadeModele::obtenirInstance()->obtenirTouchePDJ2(); }
+	__declspec(dllexport) int __cdecl obtenirToucheRessort(){ return FacadeModele::obtenirInstance()->obtenirToucheRessort(); }
+
+
+
 
 
 	__declspec(dllexport) void __cdecl activerPalettesGJ1()

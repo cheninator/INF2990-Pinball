@@ -150,6 +150,11 @@ public:
    void sauvegarderConfig(int config[12]);
 
    int* obtenirConfiguration();
+   int	obtenirTouchePGJ1();
+   int  obtenirTouchePGJ2();
+   int  obtenirTouchePDJ1();
+   int  obtenirTouchePDJ2();
+   int  obtenirToucheRessort();
 
    void sauvegarderZones(char* listMap);
 
