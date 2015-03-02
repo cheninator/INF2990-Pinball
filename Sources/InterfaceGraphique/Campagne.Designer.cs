@@ -67,12 +67,12 @@
             // colonneZone
             // 
             this.colonneZone.Text = "Zone de jeu";
-            this.colonneZone.Width = 90;
+            this.colonneZone.Width = 89;
             // 
             // colonneDiff
             // 
             this.colonneDiff.Text = "Difficulté";
-            this.colonneDiff.Width = 90;
+            this.colonneDiff.Width = 89;
             // 
             // GB_Player
             // 

@@ -35,6 +35,9 @@
             this.label_Zone = new System.Windows.Forms.Label();
             this.screenShot = new System.Windows.Forms.PictureBox();
             this.timer1 = new System.Windows.Forms.Timer(this.components);
+            this.labelTimeLeft = new System.Windows.Forms.Label();
+            this.labelTimer = new System.Windows.Forms.Label();
+            this.labelWarning = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.screenShot)).BeginInit();
             this.SuspendLayout();
             // 
@@ -64,7 +67,7 @@
             this.label_Difficulte.Name = "label_Difficulte";
             this.label_Difficulte.Size = new System.Drawing.Size(0, 20);
             this.label_Difficulte.TabIndex = 2;
-            this.label_Difficulte.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.label_Difficulte.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // label_Zone
             // 
@@ -81,17 +84,49 @@
             this.screenShot.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.screenShot.Location = new System.Drawing.Point(16, 113);
+            this.screenShot.Location = new System.Drawing.Point(38, 95);
             this.screenShot.Name = "screenShot";
-            this.screenShot.Size = new System.Drawing.Size(256, 197);
+            this.screenShot.Size = new System.Drawing.Size(204, 205);
             this.screenShot.TabIndex = 4;
             this.screenShot.TabStop = false;
+            // 
+            // labelTimeLeft
+            // 
+            this.labelTimeLeft.AutoSize = true;
+            this.labelTimeLeft.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelTimeLeft.Location = new System.Drawing.Point(207, 317);
+            this.labelTimeLeft.Name = "labelTimeLeft";
+            this.labelTimeLeft.Size = new System.Drawing.Size(19, 20);
+            this.labelTimeLeft.TabIndex = 6;
+            this.labelTimeLeft.Text = "5";
+            this.labelTimeLeft.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            // 
+            // labelTimer
+            // 
+            this.labelTimer.AutoSize = true;
+            this.labelTimer.Location = new System.Drawing.Point(13, 324);
+            this.labelTimer.Name = "labelTimer";
+            this.labelTimer.Size = new System.Drawing.Size(157, 13);
+            this.labelTimer.TabIndex = 5;
+            this.labelTimer.Text = "Temps avant début de la partie:";
+            // 
+            // labelWarning
+            // 
+            this.labelWarning.AutoSize = true;
+            this.labelWarning.Location = new System.Drawing.Point(13, 349);
+            this.labelWarning.Name = "labelWarning";
+            this.labelWarning.Size = new System.Drawing.Size(253, 13);
+            this.labelWarning.TabIndex = 7;
+            this.labelWarning.Text = "(Appuyez sur Espace pour commencer tout de suite)";
             // 
             // ZoneInfo
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(284, 322);
+            this.ClientSize = new System.Drawing.Size(284, 386);
+            this.Controls.Add(this.labelWarning);
+            this.Controls.Add(this.labelTimeLeft);
+            this.Controls.Add(this.labelTimer);
             this.Controls.Add(this.screenShot);
             this.Controls.Add(this.label_Zone);
             this.Controls.Add(this.label_Difficulte);
@@ -100,7 +135,7 @@
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Name = "ZoneInfo";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "ZoneInfo";
+            this.Text = "Information";
             this.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.ZoneInfo_KeyPress);
             ((System.ComponentModel.ISupportInitialize)(this.screenShot)).EndInit();
             this.ResumeLayout(false);
@@ -116,5 +151,8 @@
         private System.Windows.Forms.Label label_Zone;
         private System.Windows.Forms.PictureBox screenShot;
         private System.Windows.Forms.Timer timer1;
+        private System.Windows.Forms.Label labelTimeLeft;
+        private System.Windows.Forms.Label labelTimer;
+        private System.Windows.Forms.Label labelWarning;
     }
 }
