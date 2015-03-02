@@ -24,6 +24,7 @@ namespace InterfaceGraphique
                                   FonctionsNatives.obtenirTouchePDJ1(),
                                   FonctionsNatives.obtenirTouchePDJ2(),
                                   FonctionsNatives.obtenirToucheRessort());
+            
         }
         ////////////////////////////////////////////////////////////////////////
         ///
@@ -121,6 +122,11 @@ namespace InterfaceGraphique
         private void menu_ReturnItem_Click(object sender, EventArgs e)
         {
             this.Close();
+        }
+
+        private void PartieRapide_redimensionner(object sender, EventArgs e)
+        {
+            FonctionsNatives.redimensionnerFenetre(panel_GL.Width == 0 ? 1 : panel_GL.Width, panel_GL.Height == 0 ? 1 : panel_GL.Height);
         }
 
     }
