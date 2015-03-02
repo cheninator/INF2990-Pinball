@@ -1,5 +1,3 @@
 UN
-default
-test
-was
+HELLO
 HELLO

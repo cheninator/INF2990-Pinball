@@ -123,10 +123,15 @@ namespace InterfaceGraphique
                         
                 }
              mapList.Length--;
-             
              // TO DO : PASSER mapList 
              FonctionsNatives.creerFichierConfigCampagne(mapList);
              Console.WriteLine("LANCEMENT DE CA5MPAGNE");
+             ZoneInfo zi = new ZoneInfo(ZonesChoisis.Items[0].Text, ZonesChoisis.Items[0].SubItems[1].Text);
+             this.Hide();
+             zi.ShowDialog();
+             this.Show();
+
+            
             }
         }
 
