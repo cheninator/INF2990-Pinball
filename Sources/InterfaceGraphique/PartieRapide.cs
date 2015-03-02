@@ -6,17 +6,25 @@ namespace InterfaceGraphique
     public partial class PartieRapide : Form
     {
         private double currentZoom = -1; ///< Zoom courant
+        private Touches touches;
         public PartieRapide()
         {
-           
+            this.KeyDown += new KeyEventHandler(PartieRapide_KeyDown);
+            this.KeyUp += new KeyEventHandler(PartieRapide_KeyUp);
+
             InitializeComponent();
             Program.peutAfficher = true;              
             InitialiserAnimation();
 
             FonctionsNatives.resetZoom();
             currentZoom = -1;
-        }
 
+            touches = new Touches(FonctionsNatives.obtenirTouchePGJ1(),
+                                  FonctionsNatives.obtenirTouchePGJ2(),
+                                  FonctionsNatives.obtenirTouchePDJ1(),
+                                  FonctionsNatives.obtenirTouchePDJ2(),
+                                  FonctionsNatives.obtenirToucheRessort());
+        }
         ////////////////////////////////////////////////////////////////////////
         ///
         /// @fn static public void InitialiserAnimation()
@@ -81,6 +89,32 @@ namespace InterfaceGraphique
                 }
                 else
                     menuStrip.Visible = true;
+            }
+
+            // À enlever : permet de vérifier la fenêtre OpenGL
+            else if (e.KeyCode == Keys.Left)
+                FonctionsNatives.translater(-50, 0);
+            else if (e.KeyCode == Keys.Right)
+                FonctionsNatives.translater(50, 0);
+            else if (e.KeyCode == Keys.Up)
+                FonctionsNatives.translater(0, 50);
+            else if (e.KeyCode == Keys.Down)
+                FonctionsNatives.translater(0, -50);
+
+            if (e.KeyValue == touches.PGJ1) // Remplacer "R" par la touche obtenue des configurations
+            {
+                FonctionsNatives.activerPalettesGJ1();
+                Console.WriteLine("Touche R enfoncée");// Activer les palettes gauches du joueur 1
+            }
+        }
+
+
+        private void PartieRapide_KeyUp(object sender, KeyEventArgs e)
+        {
+            if (e.KeyValue == touches.PGJ1)
+            {
+                FonctionsNatives.desactiverPalettesGJ1();
+                Console.WriteLine("Touche R relachée");
             }
         }
 
