@@ -101,7 +101,9 @@
             this.Text = "PartieRapide";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.PartieRapide_FormClosing);
             this.Load += new System.EventHandler(this.PartieRapide_Load);
+            this.SizeChanged += new System.EventHandler(this.PartieRapide_redimensionner);
             this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.PartieRapide_KeyDown);
+            this.KeyUp += new System.Windows.Forms.KeyEventHandler(this.PartieRapide_KeyUp);
             this.panel_GL.ResumeLayout(false);
             this.panel_GL.PerformLayout();
             this.menuStrip.ResumeLayout(false);
