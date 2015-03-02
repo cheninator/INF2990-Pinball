@@ -109,9 +109,9 @@ void NoeudPaletteG::animer(float temps)
 	switch (etatPalette_)
 	{
 	case ACTIVE:
-		if (obtenirRotation().z - angleZOriginal_ < 45)
+		if (obtenirRotation().z - angleZOriginal_ < 60)
 		{
-			assignerRotation(glm::dvec3{ 0, 0, 5 });
+			assignerRotation(glm::dvec3{ 0, 0, 9 });
 		}
 		break;
 	case RETOUR:

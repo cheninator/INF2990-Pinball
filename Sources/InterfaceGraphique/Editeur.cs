@@ -68,13 +68,6 @@ namespace InterfaceGraphique
         ////////////////////////////////////////////////////////////////////////
         public Editeur()
         {
-            /*
-            if (soundActif)
-                playSound("");
-            else
-                playSound("", true);
-            */
-
             this.KeyPreview = true;
             this.KeyPress += new KeyPressEventHandler(ToucheEnfonce);
             // Pour le deplacement de la vue

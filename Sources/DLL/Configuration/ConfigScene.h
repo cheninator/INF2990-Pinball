@@ -11,7 +11,6 @@
 #define __CONFIGURATION_CONFIGSCENE_H__
 
 #include <string>
-#include <sstream>
 #include <vector>
 
 ///////////////////////////////////////////////////////////////////////////
@@ -36,7 +35,6 @@ public:
 	void sauvegarderConfiguration();
 
 	// Sauvegarder dernière campagne en fichier texte
-	void sauvegarderZones(char* listMap);
 	void sauvegarderCampagne();
 
 	// Lire le fichier de la dernière configuration
@@ -53,6 +51,9 @@ public:
 
 	// Retourne les configurations de l'objets
 	int* obtenirConfiguration() const { return config_; };
+
+	// Retourne les informations de la dernière campagne
+	char* obtenirCampagne() const;
 
 	// Fonctions de retour des configurations
 	int obtenirRaccourciPGJ1()		const{ return config_[0]; };
