@@ -156,14 +156,12 @@ public:
    int  obtenirTouchePDJ2();
    int  obtenirToucheRessort();
 
-   void sauvegarderZones(char* listMap);
-
    int obtenirDifficulte(char* nomFichier, int length);
 
-
    void sauvegarderCampagne(char* nomFichier, int length);
-   void construireListesPalettes();
+   char* obtenirDerniereCampagne();
 
+   void construireListesPalettes();
    void activerPalettesGJ1();
    void desactiverPalettesGJ1();
 

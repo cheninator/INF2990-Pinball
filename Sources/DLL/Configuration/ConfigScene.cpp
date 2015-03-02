@@ -10,7 +10,6 @@
 
 #include "ConfigScene.h"
 #include <fstream>
-#include <iostream>
 
 ////////////////////////////////////////////////////////////////////////
 ///
@@ -229,7 +228,6 @@ void ConfigScene::modifierCampagne(char* maps, int length)
 	}
 
 	listeCartes_.push_back(map);
-
 }
 
 
@@ -244,8 +242,8 @@ void ConfigScene::modifierCampagne(char* maps, int length)
 ////////////////////////////////////////////////////////////////////////
 char* ConfigScene::obtenirCampagne() const 
 {
-	char* maps;
 	std::string temp;
+	char* maps = new char[temp.size() + 1];
 
 	for (unsigned int i = 0; i < listeCartes_.size(); i++)
 	{
@@ -253,7 +251,7 @@ char* ConfigScene::obtenirCampagne() const
 		temp.append(" ");
 	}
 
-	strcpy(maps, temp.c_str());
+	strcpy_s(maps, temp.size() + 1, temp.c_str());
 
 	return maps;
 }

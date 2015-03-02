@@ -1072,6 +1072,11 @@ void FacadeModele::sauvegarderCampagne(char* nomMap, int length)
 	configuration_->sauvegarderCampagne();
 }
 
+char* FacadeModele::obtenirDerniereCampagne()
+{
+	return configuration_->obtenirCampagne();
+}
+
 void FacadeModele::construireListesPalettes()
 {
 	VisiteurConstruireListes visCL(&listePalettesGJ1_, &listePalettesDJ1_, &listePalettesGJ2_, &listePalettesDJ2_);

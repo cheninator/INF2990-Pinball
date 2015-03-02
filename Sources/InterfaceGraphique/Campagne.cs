@@ -35,6 +35,9 @@ namespace InterfaceGraphique
  
             }
             pathMap = new StringBuilder("");
+
+
+
         }
 
         private void listBox_SelectedValueChanged(object sender, EventArgs e)
