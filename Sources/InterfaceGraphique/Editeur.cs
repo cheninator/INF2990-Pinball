@@ -385,7 +385,7 @@ namespace InterfaceGraphique
             {
                 if (e.KeyChar == 't')
                 {
-                    retourAuModeDeditionToolStripMenuItem1.PerformClick();
+                    testRetourModeEdition.PerformClick();
                     OnSizeChanged(e);
                 }
                 if (e.KeyChar == (char)Keys.Escape)
@@ -2905,6 +2905,23 @@ namespace InterfaceGraphique
         {
             mouvementX = 100 * (double)(this.flowLayoutPanel1.Width) / (double)this.panel1.Width;
             mouvementY = 100 * (double)(this.menuStrip1.Height) / (double)this.panel1.Width;
+        }
+
+        private void toolStripMenuItem1_Click(object sender, EventArgs e)
+        {
+            etat = null;
+            etat = new EtatNone(this);
+
+            if (menuStrip3.Visible)
+                menuStrip3.Hide();
+            menuStrip1.Show();
+            menuEnable(true);
+            Creation_Panel.Show();
+            flowLayoutPanel1.Show();
+            panel_GL.Anchor = (AnchorStyles.Top | AnchorStyles.Left);
+            panel_GL.Location = new Point(163, 24);
+            panel_GL.Dock = DockStyle.Fill;
+            FonctionsNatives.translater(mouvementX, -mouvementY);
         }
     }
 
