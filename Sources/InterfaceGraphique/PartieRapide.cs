@@ -94,13 +94,13 @@ namespace InterfaceGraphique
 
             // À enlever : permet de vérifier la fenêtre OpenGL
             else if (e.KeyCode == Keys.Left)
-                FonctionsNatives.translater(-50, 0);
+                FonctionsNatives.translater(-10, 0);
             else if (e.KeyCode == Keys.Right)
-                FonctionsNatives.translater(50, 0);
+                FonctionsNatives.translater(10, 0);
             else if (e.KeyCode == Keys.Up)
-                FonctionsNatives.translater(0, 50);
+                FonctionsNatives.translater(0, 10);
             else if (e.KeyCode == Keys.Down)
-                FonctionsNatives.translater(0, -50);
+                FonctionsNatives.translater(0, -10);
 
             if (e.KeyValue == touches.PGJ1) // Remplacer "R" par la touche obtenue des configurations
             {
