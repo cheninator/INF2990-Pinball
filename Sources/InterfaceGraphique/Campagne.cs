@@ -107,7 +107,7 @@ namespace InterfaceGraphique
             else
             {
                 // TO DO
-               /*
+               
                 if (RB_Solo.Checked)
                     mapList = new StringBuilder("UN ");
                 else
@@ -116,7 +116,7 @@ namespace InterfaceGraphique
                     else
                         if (RB_AI.Checked)
                             mapList = new StringBuilder("AI ");
-                */
+                
              foreach (ListViewItem eachItem in ZonesChoisis.Items)
              {
                  mapList.Append(eachItem.Text+" ");
