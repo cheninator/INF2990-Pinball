@@ -698,11 +698,13 @@ namespace InterfaceGraphique
             output = Path.GetFileName(pathXML.ToString());
             output = output.Remove(output.Length - 4);
             this.Text = "Mode Edition - " + output;
-            FonctionsNatives.takeScreenShot(pathToPicture, pathToPicture.Capacity);
+            FonctionsNatives.takeScreenShot(pathToPicture, pathToPicture.Capacity, true, 410);
             // Si on veut une fenetre carree, alors on met true, si on veutu nrectangle, false
             // Si on veut limiter la taille maximale de la fenetre (un resize du screenshot), on met la valeur d'un cote
             // example:
             //FonctionsNatives.takeScreenShot(pathToPicture, pathToPicture.Capacity, true, 350);
+            // ou encore, si on veut rien appliquer de precis:
+            //FonctionsNatives.takeScreenShot(pathToPicture, pathToPicture.Capacity);
         }
 
 
