@@ -5,12 +5,16 @@ namespace InterfaceGraphique
 {
     public partial class PartieRapide : Form
     {
+        private double currentZoom = -1; ///< Zoom courant
         public PartieRapide()
         {
            
             InitializeComponent();
-            //Program.peutAfficher = true;              
+            Program.peutAfficher = true;              
             InitialiserAnimation();
+
+            FonctionsNatives.resetZoom();
+            currentZoom = -1;
         }
 
         ////////////////////////////////////////////////////////////////////////
@@ -28,6 +32,7 @@ namespace InterfaceGraphique
             this.StartPosition = FormStartPosition.WindowsDefaultBounds;
             FonctionsNatives.initialiserOpenGL(panel_GL.Handle);
             FonctionsNatives.dessinerOpenGL();
+
         }
 
         public void MettreAJour(double tempsInterAffichage)
@@ -38,6 +43,11 @@ namespace InterfaceGraphique
                 {
                     FonctionsNatives.animer(tempsInterAffichage);
                     FonctionsNatives.dessinerOpenGL();
+                    if (currentZoom <= 0)
+                    {
+                        FonctionsNatives.resetZoom();
+                        currentZoom = FonctionsNatives.obtenirZoomCourant();
+                    }
                 });
             }
             catch (Exception)
