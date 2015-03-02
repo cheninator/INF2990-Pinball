@@ -124,7 +124,7 @@ namespace InterfaceGraphique
             this.Aide_MenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.Mute_MenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip3 = new System.Windows.Forms.MenuStrip();
-            this.retourAuModeDéditionToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
+            this.retourAuModeDeditionToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.retourAuMenuPrincipalToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.caméraToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.orthographiqueToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -1060,7 +1060,7 @@ namespace InterfaceGraphique
             // menuStrip3
             // 
             this.menuStrip3.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.retourAuModeDéditionToolStripMenuItem1,
+            this.retourAuModeDeditionToolStripMenuItem1,
             this.retourAuMenuPrincipalToolStripMenuItem1,
             this.caméraToolStripMenuItem1});
             this.menuStrip3.Location = new System.Drawing.Point(0, 0);
@@ -1070,12 +1070,12 @@ namespace InterfaceGraphique
             this.menuStrip3.Text = "menuStrip3";
             this.menuStrip3.Visible = false;
             // 
-            // retourAuModeDéditionToolStripMenuItem1
+            // retourAuModeDeditionToolStripMenuItem1
             // 
-            this.retourAuModeDéditionToolStripMenuItem1.Name = "retourAuModeDéditionToolStripMenuItem1";
-            this.retourAuModeDéditionToolStripMenuItem1.Size = new System.Drawing.Size(154, 20);
-            this.retourAuModeDéditionToolStripMenuItem1.Text = "Retour au mode d\'édition";
-            this.retourAuModeDéditionToolStripMenuItem1.Click += new System.EventHandler(this.retourAuModeDéditionToolStripMenuItem1_Click);
+            this.retourAuModeDeditionToolStripMenuItem1.Name = "retourAuModeDeditionToolStripMenuItem1";
+            this.retourAuModeDeditionToolStripMenuItem1.Size = new System.Drawing.Size(154, 20);
+            this.retourAuModeDeditionToolStripMenuItem1.Text = "Retour au mode d\'édition";
+            this.retourAuModeDeditionToolStripMenuItem1.Click += new System.EventHandler(this.retourAuModeDeditionToolStripMenuItem1_Click);
             // 
             // retourAuMenuPrincipalToolStripMenuItem1
             // 
@@ -1241,7 +1241,7 @@ namespace InterfaceGraphique
         private System.Windows.Forms.RichTextBox richTextBox1;
         private System.Windows.Forms.Button Bille_bouton;
         private System.Windows.Forms.MenuStrip menuStrip3;
-        private System.Windows.Forms.ToolStripMenuItem retourAuModeDéditionToolStripMenuItem1;
+        private System.Windows.Forms.ToolStripMenuItem retourAuModeDeditionToolStripMenuItem1;
         private System.Windows.Forms.ToolStripMenuItem retourAuMenuPrincipalToolStripMenuItem1;
         private System.Windows.Forms.ToolStripMenuItem caméraToolStripMenuItem1;
         private System.Windows.Forms.ToolStripMenuItem orthographiqueToolStripMenuItem;

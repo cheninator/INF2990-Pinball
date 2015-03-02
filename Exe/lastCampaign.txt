@@ -1,4 +1,3 @@
-default
-test
-table1
+AI
+was2
 was2

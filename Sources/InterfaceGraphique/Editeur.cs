@@ -392,7 +392,8 @@ namespace InterfaceGraphique
             {
                 if (e.KeyChar == 't')
                 {
-                    retourAuModeDéditionToolStripMenuItem1.PerformClick();
+                    retourAuModeDeditionToolStripMenuItem1.PerformClick();
+                    OnSizeChanged(e);
                 }
                 if (e.KeyChar == (char)Keys.Escape)
                 {
@@ -2885,7 +2886,7 @@ namespace InterfaceGraphique
             angleZ = 0;
         }
 
-        private void retourAuModeDéditionToolStripMenuItem1_Click(object sender, EventArgs e)
+        private void retourAuModeDeditionToolStripMenuItem1_Click(object sender, EventArgs e)
         {
             etat = null;
             etat = new EtatNone(this);
