@@ -97,7 +97,7 @@ void ConfigScene::sauvegarderCampagne()
 ///
 /// @fn bool ConfigScene::lireConfiguration()
 ///
-/// Cette fonction lit les valeurs de la configuration à de la dernière
+/// Cette fonction lit les valeurs de la configuration de la dernière
 /// configuration de jeu.
 ///
 /// @return True pour indiquer que la lecture s'est bien faite. False autrement
@@ -118,8 +118,8 @@ bool ConfigScene::lireConfiguration()
 ///
 /// @fn bool ConfigScene::lireCampagne()
 ///
-/// Cette fonction lit les valeurs de la configuration à de la dernière
-/// configuration de jeu.
+/// Cette fonction lit les valeurs de la configuration de la dernière
+/// campagne.
 ///
 /// @return True pour indiquer que la lecture s'est bien faite. False autrement
 ///
@@ -128,8 +128,9 @@ bool ConfigScene::lireCampagne()
 {
 	bool lectureOK = false;
 	std::ifstream lecture;
-	lecture.open(derniereCampagne_);
 	std::string nomCarte;
+
+	lecture.open(derniereCampagne_);
 
 	if (!lecture.fail())
 	{
@@ -201,11 +202,11 @@ void ConfigScene::modifierConfiguration(int config[12])
 
 ////////////////////////////////////////////////////////////////////////
 ///
-/// @fn void ConfigScene::modifierCampagne(int config[12])
+/// @fn void ConfigScene::modifierCampagne(char* maps, int length)
 ///
-/// Cette fonction assigne les nouvelles configurations de zone de jeu.
+/// Cette fonction assigne les nouvelles informations de derniere campagne jouée.
 ///
-/// @param[in] config[12] : Un tableau contenant les informations de configuration
+/// @param[in] maps : La liste des informations de dernière campagne
 ///
 /// @return Aucune.
 ///
@@ -230,6 +231,33 @@ void ConfigScene::modifierCampagne(char* maps, int length)
 	listeCartes_.push_back(map);
 
 }
+
+
+////////////////////////////////////////////////////////////////////////
+///
+/// @fn char* ConfigScene::obtenirCampagne() const
+///
+/// Cette fonction retourne les informations de derniere campagne
+///
+/// @return Aucune.
+///
+////////////////////////////////////////////////////////////////////////
+char* ConfigScene::obtenirCampagne() const 
+{
+	char* maps;
+	std::string temp;
+
+	for (unsigned int i = 0; i < listeCartes_.size(); i++)
+	{
+		temp.append(listeCartes_[i]);
+		temp.append(" ");
+	}
+
+	strcpy(maps, temp.c_str());
+
+	return maps;
+}
+
 
 
 ///////////////////////////////////////////////////////////////////////////////
