@@ -111,7 +111,7 @@ void NoeudPaletteG::animer(float temps)
 	case ACTIVE:
 		if (obtenirRotation().z - angleZOriginal_ < 45)
 		{
-			assignerRotation(glm::dvec3{ 0, 0, 5 });
+			assignerRotation(glm::dvec3{ 0, 0, 9 });
 		}
 		break;
 	case RETOUR:
