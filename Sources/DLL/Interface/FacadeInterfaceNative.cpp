@@ -20,19 +20,20 @@
 #include <iostream>
 #include "BancTests.h"
 
-BSTR charToString( char* input)
+char * charToString( char* input)
 {
-	// http://stackoverflow.com/questions/5308584/how-to-return-text-from-native-c-code
-	BSTR output = NULL;
-	int lenA = lstrlenA(input);
-	int lenW = ::MultiByteToWideChar(CP_ACP, 0, input, lenA, NULL, 0);
-	if (lenW > 0)
-	{
-		output = ::SysAllocStringLen(0, lenW);
-		::MultiByteToWideChar(CP_ACP, 0, input, lenA, output, lenW);
-	}
+	// https://limbioliong.wordpress.com/2011/06/16/returning-strings-from-a-c-api/
+	ULONG ulSize = strlen(input) + sizeof(char);
+	char* output = NULL;
+	output = (char*)::CoTaskMemAlloc(ulSize);
+	// Copy the contents of input
+	// to the memory pointed to by output.
+	strcpy(output, input);
+	// Return output.
 	return output;
 }
+
+
 
 extern "C"
 {
@@ -1353,9 +1354,9 @@ extern "C"
 
 	}
 
-	__declspec(dllexport) BSTR obtenirDerniereCampagne()
+	__declspec(dllexport) char* obtenirDerniereCampagne()
 	{
-		return 	charToString(FacadeModele::obtenirInstance()->obtenirDerniereCampagne());
+		return	charToString(FacadeModele::obtenirInstance()->obtenirDerniereCampagne());
 	}
 
 	/*
