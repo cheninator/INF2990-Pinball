@@ -20,7 +20,19 @@
 #include <iostream>
 #include "BancTests.h"
 
-
+BSTR charToString( char* input)
+{
+	// http://stackoverflow.com/questions/5308584/how-to-return-text-from-native-c-code
+	BSTR output = NULL;
+	int lenA = lstrlenA(input);
+	int lenW = ::MultiByteToWideChar(CP_ACP, 0, input, lenA, NULL, 0);
+	if (lenW > 0)
+	{
+		output = ::SysAllocStringLen(0, lenW);
+		::MultiByteToWideChar(CP_ACP, 0, input, lenA, output, lenW);
+	}
+	return output;
+}
 
 extern "C"
 {
@@ -1343,17 +1355,7 @@ extern "C"
 
 	__declspec(dllexport) BSTR obtenirDerniereCampagne()
 	{
-		// http://stackoverflow.com/questions/5308584/how-to-return-text-from-native-c-code
-		char* input = FacadeModele::obtenirInstance()->obtenirDerniereCampagne();
-		BSTR result = NULL;
-		int lenA = lstrlenA(input);
-		int lenW = ::MultiByteToWideChar(CP_ACP, 0, input, lenA, NULL, 0);
-		if (lenW > 0)
-		{
-			result = ::SysAllocStringLen(0, lenW);
-			::MultiByteToWideChar(CP_ACP, 0, input, lenA, result, lenW);
-		}
-		return result;
+		return 	charToString(FacadeModele::obtenirInstance()->obtenirDerniereCampagne());
 	}
 
 	/*
