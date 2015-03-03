@@ -22,21 +22,6 @@
 #include <cstdlib>      // std::rand, std::srand
 #include "BancTests.h"
 
-char * charToString( char* input)
-{
-	// https://limbioliong.wordpress.com/2011/06/16/returning-strings-from-a-c-api/
-	static char* output = NULL;
-	ULONG ulSize = ULONG(strlen(input) + sizeof(char));
-	output = (char*)::CoTaskMemAlloc(ulSize);
-	// Copy the contents of input
-	// to the memory pointed to by output.
-	strcpy_s(output, ulSize, input);
-	// Return output.
-	return output;
-}
-
-
-
 extern "C"
 {
 	// TO DO : SUPPRIMER CETTE VARIABLE QUAND PLUS NECESSAIRE
@@ -1384,9 +1369,13 @@ extern "C"
 
 	}
 
-	__declspec(dllexport) char* obtenirDerniereCampagne()
+	__declspec(dllexport) int obtenirDerniereCampagneChar(int i)
 	{
-		return	charToString(FacadeModele::obtenirInstance()->obtenirDerniereCampagne());
+		std::string myString = FacadeModele::obtenirInstance()->obtenirDerniereCampagne();
+		if (i >= myString.length())
+			return -1;
+		else
+			return int(myString[i]);
 	}
 
 	/*

@@ -1072,7 +1072,7 @@ void FacadeModele::sauvegarderCampagne(char* nomMap, int length)
 	configuration_->sauvegarderCampagne();
 }
 
-char* FacadeModele::obtenirDerniereCampagne()
+std::string FacadeModele::obtenirDerniereCampagne()
 {
 	return configuration_->obtenirCampagne();
 }

@@ -436,8 +436,20 @@ namespace InterfaceGraphique
         [DllImport(@"Noyau.dll", CallingConvention = CallingConvention.Cdecl)]
         public static extern void desactiverPalettesGJ1();
 
-        [DllImport(@"Noyau.dll", CharSet = CharSet.Ansi, CallingConvention = CallingConvention.StdCall)]
-        public static extern StringBuilder obtenirDerniereCampagne();
-
+        [DllImport(@"Noyau.dll", CallingConvention = CallingConvention.Cdecl)]
+        static extern int obtenirDerniereCampagneChar( int i );
+        static public String obtenirDerniereCampagne()
+        {
+            String myString = "";
+            int i = 0;
+            while(true){
+                int myChar = obtenirDerniereCampagneChar(i);
+                if (myChar == -1)
+                    return myString;
+                else
+                    myString += (char)myChar;
+                i++;
+            }
+        }
     }
 }

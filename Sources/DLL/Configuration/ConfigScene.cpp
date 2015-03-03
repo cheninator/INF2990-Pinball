@@ -240,10 +240,9 @@ void ConfigScene::modifierCampagne(char* maps, int length)
 /// @return Aucune.
 ///
 ////////////////////////////////////////////////////////////////////////
-char* ConfigScene::obtenirCampagne() const 
+std::string ConfigScene::obtenirCampagne() const 
 {
 	std::string temp;
-	char* maps = new char[temp.size() + 1];
 
 	for (unsigned int i = 0; i < listeCartes_.size(); i++)
 	{
@@ -251,9 +250,7 @@ char* ConfigScene::obtenirCampagne() const
 		temp.append(" ");
 	}
 
-	strcpy_s(maps, temp.size() + 1, temp.c_str());
-
-	return maps;
+	return temp;
 }
 
 
