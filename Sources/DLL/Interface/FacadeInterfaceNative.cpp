@@ -281,11 +281,13 @@ extern "C"
 				std::vector<int> generateurs;
 				int i = 0;
 				int nbElements = FacadeModele::obtenirInstance()->obtenirArbreRenduINF2990()->getEnfant(0)->obtenirNombreEnfants();
+				NoeudComposite* noeudTable = new NoeudComposite;
+				noeudTable = (dynamic_cast <NoeudComposite*> (
+					FacadeModele::obtenirInstance()->obtenirArbreRenduINF2990()->getEnfant(0)));
 				for (i = 0; i < nbElements; i++)
 				{
-					std::string typeNoeud = (dynamic_cast <NoeudComposite*> (
-						FacadeModele::obtenirInstance()->obtenirArbreRenduINF2990()->getEnfant(0)))
-						->getEnfant(i)->obtenirType();
+					
+					std::string typeNoeud = noeudTable->getEnfant(i)->obtenirType();
 
 					if (typeNoeud == "generateurbille")
 						generateurs.push_back(i);
@@ -293,24 +295,19 @@ extern "C"
 
 				int pos = rand() % generateurs.size();
 
-				glm::dvec3 scale = (dynamic_cast <NoeudComposite*> (
-					FacadeModele::obtenirInstance()->obtenirArbreRenduINF2990()->getEnfant(0)))
-					->getEnfant(generateurs[pos])->obtenirAgrandissement();
-				glm::dvec3 position = (dynamic_cast <NoeudComposite*> (
-					FacadeModele::obtenirInstance()->obtenirArbreRenduINF2990()->getEnfant(0)))
-					->getEnfant(generateurs[pos])->obtenirPositionRelative();
-				glm::dvec3 rotation = (dynamic_cast <NoeudComposite*> (
-					FacadeModele::obtenirInstance()->obtenirArbreRenduINF2990()->getEnfant(0)))
-					->getEnfant(generateurs[pos])->obtenirPositionRelative();
+				glm::dvec3 scale = noeudTable->getEnfant(generateurs[pos])->obtenirAgrandissement();
+				glm::dvec3 position = noeudTable->getEnfant(generateurs[pos])->obtenirPositionRelative();
+				glm::dvec3 rotation = noeudTable->getEnfant(generateurs[pos])->obtenirPositionRelative();
 			
 				//objet->assignerRotation({ rotation.x, rotation.y, rotation.z });
 				objet->assignerPositionRelative({ position.x, position.y-((30*scale.x)), position.z });
 				objet->assignerEchelle(scale);
+
+				noeudTable = NULL;
+				delete noeudTable;
 			}
 		}
-		
 		FacadeModele::obtenirInstance()->obtenirArbreRenduINF2990()->getEnfant(0)->ajouter(objet);
-
 	}
 
 
