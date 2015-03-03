@@ -18,17 +18,19 @@
 #include "CompteurAffichage.h"
 
 #include <iostream>
+#include <ctime>        // std::time
+#include <cstdlib>      // std::rand, std::srand
 #include "BancTests.h"
 
 char * charToString( char* input)
 {
 	// https://limbioliong.wordpress.com/2011/06/16/returning-strings-from-a-c-api/
-	ULONG ulSize = strlen(input) + sizeof(char);
-	char* output = NULL;
+	static char* output = NULL;
+	ULONG ulSize = ULONG(strlen(input) + sizeof(char));
 	output = (char*)::CoTaskMemAlloc(ulSize);
 	// Copy the contents of input
 	// to the memory pointed to by output.
-	strcpy(output, input);
+	strcpy_s(output, ulSize, input);
 	// Return output.
 	return output;
 }
@@ -273,6 +275,37 @@ extern "C"
 			if (nomObjet == "mur")
 			{
 				objet->assignerSelection(true);
+			}
+			else if (nomObjet == "bille")
+			{
+				std::vector<int> generateurs;
+				int i = 0;
+				int nbElements = FacadeModele::obtenirInstance()->obtenirArbreRenduINF2990()->getEnfant(0)->obtenirNombreEnfants();
+				for (i = 0; i < nbElements; i++)
+				{
+					std::string typeNoeud = (dynamic_cast <NoeudComposite*> (
+						FacadeModele::obtenirInstance()->obtenirArbreRenduINF2990()->getEnfant(0)))
+						->getEnfant(i)->obtenirType();
+
+					if (typeNoeud == "generateurbille")
+						generateurs.push_back(i);
+				}
+
+				int pos = rand() % generateurs.size();
+
+				glm::dvec3 scale = (dynamic_cast <NoeudComposite*> (
+					FacadeModele::obtenirInstance()->obtenirArbreRenduINF2990()->getEnfant(0)))
+					->getEnfant(generateurs[pos])->obtenirAgrandissement();
+				glm::dvec3 position = (dynamic_cast <NoeudComposite*> (
+					FacadeModele::obtenirInstance()->obtenirArbreRenduINF2990()->getEnfant(0)))
+					->getEnfant(generateurs[pos])->obtenirPositionRelative();
+				glm::dvec3 rotation = (dynamic_cast <NoeudComposite*> (
+					FacadeModele::obtenirInstance()->obtenirArbreRenduINF2990()->getEnfant(0)))
+					->getEnfant(generateurs[pos])->obtenirPositionRelative();
+			
+				//objet->assignerRotation({ rotation.x, rotation.y, rotation.z });
+				objet->assignerPositionRelative({ position.x, position.y-((30*scale.x)), position.z });
+				objet->assignerEchelle(scale);
 			}
 		}
 		

@@ -2872,13 +2872,8 @@ namespace InterfaceGraphique
 
         private void Bille_bouton_Click(object sender, EventArgs e)
         {
-            etat = new EtatCreation(this);
-            Console.WriteLine("Bille");
-            myObjectName = new StringBuilder("bille");
-            colorShift = false;
-            angleX = 0;
-            angleY = 0;
-            angleZ = 0;
+            StringBuilder bille = new StringBuilder("bille");
+            FonctionsNatives.creerObjet(bille, bille.Capacity);
         }
 
         private void retourAuModeDeditionToolStripMenuItem1_Click(object sender, EventArgs e)
