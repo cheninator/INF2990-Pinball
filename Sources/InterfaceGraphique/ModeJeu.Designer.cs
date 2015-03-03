@@ -1,6 +1,6 @@
 ﻿namespace InterfaceGraphique
 {
-    partial class PartieRapide
+    partial class ModeJeu
     {
         /// <summary>
         /// Required designer variable.
@@ -103,6 +103,7 @@
             this.Load += new System.EventHandler(this.PartieRapide_Load);
             this.SizeChanged += new System.EventHandler(this.PartieRapide_redimensionner);
             this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.PartieRapide_KeyDown);
+            this.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.PartieRapide_KeyPress);
             this.KeyUp += new System.Windows.Forms.KeyEventHandler(this.PartieRapide_KeyUp);
             this.panel_GL.ResumeLayout(false);
             this.panel_GL.PerformLayout();

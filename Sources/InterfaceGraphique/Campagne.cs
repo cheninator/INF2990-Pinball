@@ -4,6 +4,7 @@ using System.IO;
 using System.Text;
 using System.Windows.Forms;
 using System.Collections;
+using System.Collections.Generic;
 
 
 namespace InterfaceGraphique
@@ -11,16 +12,19 @@ namespace InterfaceGraphique
     public partial class Campagne : Form
     {
         string[] filePaths;
+        List<string> zonesCampagne;
         string fileNames;
         int sortColumn = -1;
         int diff;
         StringBuilder pathMap;
         StringBuilder mapList;
+        public ModeJeu modeJeu;
         public Campagne()
         {
             InitializeComponent();
             sortColumnDescend(1);
             mapList = new StringBuilder();
+            zonesCampagne = new List<string>();
             filePaths = Directory.GetFiles(Application.StartupPath + @"\zones", "*.xml");
             
             foreach(string s in filePaths)
@@ -119,10 +123,12 @@ namespace InterfaceGraphique
                     else
                         if (RB_AI.Checked)
                             mapList = new StringBuilder("AI ");
-                
+                int i = 0;
              foreach (ListViewItem eachItem in ZonesChoisis.Items)
              {
                  mapList.Append(eachItem.Text+" ");
+                 zonesCampagne.Insert(i, Application.StartupPath + @"\zones\" + eachItem.Text + ".xml");
+                 i++;                
                         
              }
              mapList.Length--;
@@ -134,8 +140,12 @@ namespace InterfaceGraphique
              ZoneInfo zi = new ZoneInfo(ZonesChoisis.Items[0].Text, ZonesChoisis.Items[0].SubItems[1].Text);
              this.Hide();
              zi.ShowDialog();
+             //this.Show();
+             modeJeu = new ModeJeu(zonesCampagne);
+             modeJeu.ShowDialog();
              this.Show();
-
+             this.Close();
+             
             }
         }
 

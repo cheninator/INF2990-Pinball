@@ -29,8 +29,8 @@ namespace InterfaceGraphique
         System.Media.SoundPlayer player = new System.Media.SoundPlayer(Properties.Resources.button_29); ///< Sound player
         public Editeur modeEdit; ///< Form du mode edition
         private Thread myThread; ///< Une thread
-        private Campagne campagne;
-        public PartieRapide pRapide;
+        public Campagne campagne;
+        public ModeJeu pRapide;
         private Configuration configuration;
 
         ////////////////////////////////////////////////////////////////////////
@@ -55,7 +55,7 @@ namespace InterfaceGraphique
        private void Form1_KeyPress(object sender, KeyPressEventArgs e)
        {
    
-       }
+       } 
 
        ////////////////////////////////////////////////////////////////////////
        ///
@@ -283,8 +283,8 @@ namespace InterfaceGraphique
                // Thread.Sleep(100);
             }
             this.Hide();
-            pRapide = new PartieRapide();
-            pRapide.ShowDialog();
+           // pRapide = new ModeJeu();
+           // pRapide.ShowDialog();
             this.Show();
             
         }

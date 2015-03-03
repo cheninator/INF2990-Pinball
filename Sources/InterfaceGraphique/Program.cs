@@ -35,8 +35,8 @@ namespace InterfaceGraphique
         private const int NB_IMAGES_PAR_SECONDE = 60; ///< Frame rate de l'application
 
         public static Object unLock = new Object();
-        public static bool peutAfficher = true;
-
+        public static bool peutAfficher = false;
+        public static bool tempBool = false;
         //private static Exemple exemple;
         // private static mm menu;
         private static MainMenu mMenu; ///< Main Menu de l'application
@@ -118,12 +118,13 @@ namespace InterfaceGraphique
                     {
                        if ( mMenu.modeEdit != null && peutAfficher)
                            mMenu.modeEdit.MettreAJour((double)tempsAccumule.Ticks / TimeSpan.TicksPerSecond);
-                       else
-                           if (mMenu.pRapide != null && peutAfficher)
+                      else
+                           //if (mMenu.campagne.modeJeu != null && peutAfficher)
+                           if( tempBool)
                            {
-                               mMenu.pRapide.MettreAJour((double)tempsAccumule.Ticks / TimeSpan.TicksPerSecond);
-                           
+                              mMenu.campagne.modeJeu.MettreAJour((double)tempsAccumule.Ticks / TimeSpan.TicksPerSecond);
                            }
+                      
                     }
                     tempsAccumule = TimeSpan.Zero;
                 }

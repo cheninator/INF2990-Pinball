@@ -105,11 +105,11 @@
     <Compile Include="MenuPrincipal.Designer.cs">
       <DependentUpon>MenuPrincipal.cs</DependentUpon>
     </Compile>
-    <Compile Include="PartieRapide.cs">
+    <Compile Include="ModeJeu.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="PartieRapide.Designer.cs">
-      <DependentUpon>PartieRapide.cs</DependentUpon>
+    <Compile Include="ModeJeu.Designer.cs">
+      <DependentUpon>ModeJeu.cs</DependentUpon>
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -140,8 +140,8 @@
     <EmbeddedResource Include="MenuPrincipal.resx">
       <DependentUpon>MenuPrincipal.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="PartieRapide.resx">
-      <DependentUpon>PartieRapide.cs</DependentUpon>
+    <EmbeddedResource Include="ModeJeu.resx">
+      <DependentUpon>ModeJeu.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>

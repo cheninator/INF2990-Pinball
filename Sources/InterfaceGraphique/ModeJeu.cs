@@ -1,17 +1,26 @@
 ﻿using System;
+using System.Collections.Generic;
+using System.IO;
+using System.Text;
 using System.Windows.Forms;
 
 namespace InterfaceGraphique
 {
-    public partial class PartieRapide : Form
+    public partial class ModeJeu : Form
     {
         private double currentZoom = -1; ///< Zoom courant
         private Touches touches;
-        public PartieRapide()
+        private ZoneInfo zInfo;
+        private int currentZone = 0;
+        private int nbZones;
+        List<string> myMaps;
+        StringBuilder map;
+        StringBuilder nextMap;
+        public ModeJeu(List<string> maps)
         {
             this.KeyDown += new KeyEventHandler(PartieRapide_KeyDown);
             this.KeyUp += new KeyEventHandler(PartieRapide_KeyUp);
-
+           
             InitializeComponent();
             Program.peutAfficher = true;              
             InitialiserAnimation();
@@ -24,7 +33,14 @@ namespace InterfaceGraphique
                                   FonctionsNatives.obtenirTouchePDJ1(),
                                   FonctionsNatives.obtenirTouchePDJ2(),
                                   FonctionsNatives.obtenirToucheRessort());
-            
+            myMaps = new List<string>(maps);
+            nbZones = maps.Count;
+            map = new StringBuilder(myMaps[0]);
+            Console.WriteLine(nbZones);
+            FonctionsNatives.ouvrirXML(map, map.Capacity);
+            currentZone++;
+            Program.tempBool = true;
+            Console.WriteLine("CLOSING");
         }
         ////////////////////////////////////////////////////////////////////////
         ///
@@ -50,8 +66,8 @@ namespace InterfaceGraphique
             {
                 this.Invoke((MethodInvoker)delegate
                 {
-                    FonctionsNatives.animer(tempsInterAffichage);
-                    FonctionsNatives.dessinerOpenGL();
+                   FonctionsNatives.animer(tempsInterAffichage);
+                   FonctionsNatives.dessinerOpenGL();
                     if (currentZoom <= 0)
                     {
                         FonctionsNatives.resetZoom();
@@ -72,6 +88,7 @@ namespace InterfaceGraphique
             {
                 FonctionsNatives.libererOpenGL();
                 Program.peutAfficher = false;
+                Program.tempBool = false;
             }
         }
 
@@ -82,18 +99,9 @@ namespace InterfaceGraphique
 
         private void PartieRapide_KeyDown(object sender, KeyEventArgs e)
         {
-            if (e.KeyCode == Keys.Escape)
-            {
-                if (menuStrip.Visible)
-                {
-                    menuStrip.Visible = false;
-                }
-                else
-                    menuStrip.Visible = true;
-            }
-
+           
             // À enlever : permet de vérifier la fenêtre OpenGL
-            else if (e.KeyCode == Keys.Left)
+           if (e.KeyCode == Keys.Left)
                 FonctionsNatives.translater(-10, 0);
             else if (e.KeyCode == Keys.Right)
                 FonctionsNatives.translater(10, 0);
@@ -127,6 +135,48 @@ namespace InterfaceGraphique
         private void PartieRapide_redimensionner(object sender, EventArgs e)
         {
             FonctionsNatives.redimensionnerFenetre(panel_GL.Width == 0 ? 1 : panel_GL.Width, panel_GL.Height == 0 ? 1 : panel_GL.Height);
+        }
+
+        private void PartieRapide_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (e.KeyChar == (char)27)
+            {
+                if (menuStrip.Visible)
+                {
+                    menuStrip.Visible = false;
+                    Console.WriteLine("HIDE");
+                }
+                else
+                {
+                    menuStrip.Visible = true;
+                    Console.WriteLine("SHOW");
+
+                }
+            }
+            else
+                if (e.KeyChar == 'n')
+                {
+                    Console.WriteLine(currentZone);
+                    if (currentZone >= nbZones)
+                        MessageBox.Show("VICTOIRE!!!!", "FIN DE LA CAMPAGNE",
+                   MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                    else
+                    {
+                        map = new StringBuilder(myMaps[currentZone]);
+                        nextMap = new StringBuilder(map.ToString());
+                        nextMap.Remove(nextMap.Length - 4, 4);
+                        Console.WriteLine(Path.GetFileName(nextMap.ToString()));
+                        zInfo = new ZoneInfo(Path.GetFileName(nextMap.ToString()), FonctionsNatives.obtenirDifficulte(map, map.Capacity).ToString());
+                        this.Hide();
+                        zInfo.ShowDialog();
+                        this.Show();
+                    
+                        FonctionsNatives.ouvrirXML(map, map.Capacity);
+                        currentZone++;
+                    }
+                    
+                }
+
         }
 
     }
