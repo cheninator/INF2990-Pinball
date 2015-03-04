@@ -12,6 +12,7 @@ namespace InterfaceGraphique
     public partial class Campagne : Form
     {
         string[] filePaths;
+        string[] configurations;
         List<string> zonesCampagne;
         string fileNames;
         int sortColumn = -1;
@@ -33,15 +34,47 @@ namespace InterfaceGraphique
                 diff = FonctionsNatives.obtenirDifficulte(pathMap, pathMap.Capacity);
                 fileNames = Path.GetFileName(s);
                 fileNames = fileNames.Remove(fileNames.Length - 4);
-              //  listBox.Items.Add(fileNames);
                 var item1 = new ListViewItem(new[] { fileNames, diff.ToString() });
                 ZonesDisponibles.Items.Add(item1);
  
             }
             pathMap = new StringBuilder("");
+            InitialiserConfigurations();
 
 
+        }
 
+        private void InitialiserConfigurations()
+        {
+            string tempConfig= FonctionsNatives.obtenirDerniereCampagne();
+            configurations = tempConfig.Split(new char[] {' '},StringSplitOptions.RemoveEmptyEntries);
+           /* 
+          
+            foreach( string map in configurations)
+            {
+                
+                Console.WriteLine(map);
+            }
+            */
+            for (int i = 1; i < configurations.Length; i++ )
+            {
+                if (File.Exists(Application.StartupPath + @"\zones\" + configurations[i] + ".xml"))
+                {
+                    pathMap = new StringBuilder(Application.StartupPath + @"\zones\" + configurations[i] + ".xml");
+                    int diff = FonctionsNatives.obtenirDifficulte(pathMap, pathMap.Capacity);
+                    var item1 = new ListViewItem(new[] { configurations[i], diff.ToString() });
+
+                    ZonesChoisis.Items.Add(item1);
+                }
+                else
+                {
+                    pathMap = new StringBuilder(Application.StartupPath + @"\zones\default.xml");
+                    int diff = FonctionsNatives.obtenirDifficulte(pathMap, pathMap.Capacity);
+                    var item1 = new ListViewItem(new[] { "default", diff.ToString() });
+
+                    ZonesChoisis.Items.Add(item1);
+                }
+            }
         }
 
         private void listBox_SelectedValueChanged(object sender, EventArgs e)
