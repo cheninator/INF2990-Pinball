@@ -662,7 +662,7 @@ namespace InterfaceGraphique
             {
                 enregistrer_fichier.OverwritePrompt = true;
                 //ReinitialiserTout();
-                pathXML = new StringBuilder(enregistrer_fichier.FileName);
+                pathXML = new StringBuilder(enregistrer_fichier.FileName.Replace(' ','_'));
                 for (int i = 0; i < 6; i++)
                     prop[i] = propZJ[i];
 

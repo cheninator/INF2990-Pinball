@@ -32,8 +32,9 @@ namespace InterfaceGraphique
             {
                 pathMap = new StringBuilder(s);
                 diff = FonctionsNatives.obtenirDifficulte(pathMap, pathMap.Capacity);
-                fileNames = Path.GetFileName(s);
-                fileNames = fileNames.Remove(fileNames.Length - 4);
+               // fileNames = Path.GetFileName(s);
+                fileNames = Path.GetFileNameWithoutExtension(s);
+                //fileNames = fileNames.Remove(fileNames.Length - 4);
                 var item1 = new ListViewItem(new[] { fileNames, diff.ToString() });
                 ZonesDisponibles.Items.Add(item1);
  
