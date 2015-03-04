@@ -63,6 +63,7 @@
             this.ZonesChoisis.UseCompatibleStateImageBehavior = false;
             this.ZonesChoisis.View = System.Windows.Forms.View.Details;
             this.ZonesChoisis.ColumnWidthChanging += new System.Windows.Forms.ColumnWidthChangingEventHandler(this.ZonesChoisis_ColumnWidthChanging);
+            this.ZonesChoisis.SelectedIndexChanged += new System.EventHandler(this.ZonesChoisis_SelectedIndexChanged);
             // 
             // colonneZone
             // 

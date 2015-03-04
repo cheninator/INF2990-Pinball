@@ -18,10 +18,11 @@ namespace InterfaceGraphique
         StringBuilder nextMap;
         public ModeJeu(List<string> maps)
         {
-          /*  this.WindowState = FormWindowState.Normal;
+          
+            this.WindowState = FormWindowState.Normal;
             this.FormBorderStyle = FormBorderStyle.None;
             this.WindowState = FormWindowState.Maximized;
-          */ 
+           
             this.KeyDown += new KeyEventHandler(PartieRapide_KeyDown);
             this.KeyUp += new KeyEventHandler(PartieRapide_KeyUp);
            
@@ -144,12 +145,12 @@ namespace InterfaceGraphique
                 if (menuStrip.Visible)
                 {
                     menuStrip.Visible = false;
-                    Console.WriteLine("HIDE");
+                  //  Console.WriteLine("HIDE");
                 }
                 else
                 {
                     menuStrip.Visible = true;
-                    Console.WriteLine("SHOW");
+                 //   Console.WriteLine("SHOW");
 
                 }
             }
