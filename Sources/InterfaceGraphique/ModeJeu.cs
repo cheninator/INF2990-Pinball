@@ -19,9 +19,10 @@ namespace InterfaceGraphique
         public ModeJeu(List<string> maps)
         {
 
-            this.WindowState = FormWindowState.Normal;
+          /*  this.WindowState = FormWindowState.Normal;
             this.FormBorderStyle = FormBorderStyle.None;
             this.WindowState = FormWindowState.Maximized;
+          */ 
             this.KeyDown += new KeyEventHandler(PartieRapide_KeyDown);
             this.KeyUp += new KeyEventHandler(PartieRapide_KeyUp);
            

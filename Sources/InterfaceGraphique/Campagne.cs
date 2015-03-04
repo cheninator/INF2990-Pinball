@@ -176,8 +176,8 @@ namespace InterfaceGraphique
             // modeJeu = new ModeJeu(zonesCampagne);
             // modeJeu.ShowDialog();
              ((MainMenu)this.Owner).LancerModeJeu(zonesCampagne);
-             //this.Show();
-             this.Close();
+           //  this.Show();
+           //  this.Close();
               
              
             }
