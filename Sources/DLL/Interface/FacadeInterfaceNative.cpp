@@ -1363,12 +1363,30 @@ extern "C"
 		FacadeModele::obtenirInstance()->sauvegarderCampagne(listMaps, length);
 	}
 
+	__declspec(dllexport) int __cdecl obtenirTouchePGJ1()
+	{
+		return FacadeModele::obtenirInstance()->obtenirTouchePGJ1(); 
+	}
 
-	__declspec(dllexport) int __cdecl obtenirTouchePGJ1(){ return FacadeModele::obtenirInstance()->obtenirTouchePGJ1(); }
-	__declspec(dllexport) int __cdecl obtenirTouchePGJ2(){ return FacadeModele::obtenirInstance()->obtenirTouchePGJ2(); }
-	__declspec(dllexport) int __cdecl obtenirTouchePDJ1(){ return FacadeModele::obtenirInstance()->obtenirTouchePDJ1(); }
-	__declspec(dllexport) int __cdecl obtenirTouchePDJ2(){ return FacadeModele::obtenirInstance()->obtenirTouchePDJ2(); }
-	__declspec(dllexport) int __cdecl obtenirToucheRessort(){ return FacadeModele::obtenirInstance()->obtenirToucheRessort(); }
+	__declspec(dllexport) int __cdecl obtenirTouchePGJ2()
+	{
+		return FacadeModele::obtenirInstance()->obtenirTouchePGJ2(); 
+	}
+
+	__declspec(dllexport) int __cdecl obtenirTouchePDJ1()
+	{
+		return FacadeModele::obtenirInstance()->obtenirTouchePDJ1(); 
+	}
+
+	__declspec(dllexport) int __cdecl obtenirTouchePDJ2()
+	{
+		return FacadeModele::obtenirInstance()->obtenirTouchePDJ2(); 
+	}
+
+	__declspec(dllexport) int __cdecl obtenirToucheRessort()
+	{
+		return FacadeModele::obtenirInstance()->obtenirToucheRessort(); 
+	}
 
 	__declspec(dllexport) void __cdecl activerPalettesGJ1()
 	{
@@ -1391,6 +1409,11 @@ extern "C"
 	__declspec(dllexport) void __cdecl supprimerBille()
 	{
 		FacadeModele::obtenirInstance()->supprimerBille();
+	}
+
+	__declspec(dllexport) void __cdecl modePause(bool pause)
+	{
+		FacadeModele::obtenirInstance()->setPause(pause);
 	}
 
 	/*

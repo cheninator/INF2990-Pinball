@@ -19,9 +19,9 @@ namespace InterfaceGraphique
         public ModeJeu(List<string> maps)
         {
 
-            this.WindowState = FormWindowState.Normal;
-            this.FormBorderStyle = FormBorderStyle.None;
-            this.WindowState = FormWindowState.Maximized;
+            //this.WindowState = FormWindowState.Normal;
+            //this.FormBorderStyle = FormBorderStyle.None;
+            //this.WindowState = FormWindowState.Maximized;
             this.KeyDown += new KeyEventHandler(PartieRapide_KeyDown);
             this.KeyUp += new KeyEventHandler(PartieRapide_KeyUp);
            
@@ -148,12 +148,13 @@ namespace InterfaceGraphique
                 {
                     menuStrip.Visible = false;
                     Console.WriteLine("HIDE");
+                    FonctionsNatives.modePause(false);
                 }
                 else
                 {
                     menuStrip.Visible = true;
                     Console.WriteLine("SHOW");
-
+                    FonctionsNatives.modePause(true);
                 }
             }
             else

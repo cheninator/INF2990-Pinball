@@ -45,6 +45,7 @@ Samuel Millette <BR>
 #include "../Visiteurs/VisiteurRotationPoint.h"
 #include "../Visiteurs/VisiteurAgrandissement.h"
 #include "../Visiteurs/VisiteurDuplication.h"
+#include "../Visiteurs/VisiteurPause.h"
 #include "../Visiteurs/VisiteurLimitesSelection.h"
 #include "../Visiteurs/VisiteurListeEnglobante.h"
 #include "../Visiteurs/VisiteurPossibilite.h"
@@ -249,7 +250,7 @@ void FacadeModele::afficher() const
 {
 	// Efface l'ancien rendu
 	glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT | GL_STENCIL_BUFFER_BIT);
-
+	
 	// Ne devrait pas etre necessaire
 	vue_->appliquerProjection();
 
@@ -258,27 +259,17 @@ void FacadeModele::afficher() const
 	glLoadIdentity();
 	vue_->appliquerCamera();
 
+	if (pause_) {
+		glEnable(GL_TEXTURE_2D); // Enable Texture Mapping
+		glClearColor(0.0f, 0.0f, 0.0f, 0.5f); // Black Background
+		glClearDepth(1.0f); // Depth Buffer Setup
+	}
+	else {
+		glClearColor(0.7843f, 0.7843f, 0.7843f, 0.0f);
+	}
+
 	// Afficher la scene
 	afficherBase();
-
-	/* 
-	Noircir la zone de jeu en mode pause. (In the making)
-
-	glEnable(GL_BLEND);
-	glBlendFunc(GL_ONE_MINUS_SRC1_ALPHA, GL_SRC1_ALPHA);
-	glPushAttrib(GL_ENABLE_BIT);
-	glDisable(GL_LIGHTING);
-	glDepthMask(GL_FALSE);
-	glBegin(GL_QUADS);
-	glColor4f(0.0, 0.0, 0.0, 0.9);
-	glVertex3f(-1500.0, 1500.0, -10.0);
-	glVertex3f(-1500.0, -1500.0, -10.0);
-	glVertex3f(1500.0, -1500.0, -10.0);
-	glVertex3f(1500.0, 1500.0, -10.0);
-	glEnd();
-	glDepthMask(GL_TRUE);
-	glPopAttrib();
-	*/
 
 	// Compte de l'affichage
 	utilitaire::CompteurAffichage::obtenirInstance()->signalerAffichage();
@@ -940,6 +931,25 @@ bool FacadeModele::supprimer()
 	delete visiteur;
 
 	return true;
+}
+
+
+///////////////////////////////////////////////////////////////////////////////
+///
+/// @fn bool FacadeModele::setPause()
+///  Parcours l'arbre et met les objets en mode pause.
+///
+/// @param[in]  pause : Etat du mode pause
+///
+/// @return Aucun
+///
+///////////////////////////////////////////////////////////////////////////////
+void FacadeModele::setPause( bool pause)
+{
+	pause_ = pause;
+	VisiteurPause* visiteur = new VisiteurPause(pause);
+	FacadeModele::obtenirInstance()->obtenirArbreRenduINF2990()->accepterVisiteur(visiteur);
+	delete visiteur;
 }
 
 

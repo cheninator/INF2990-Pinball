@@ -238,6 +238,9 @@ public:
 	/// Obtenir le type
 	std::string getType(){ return type_; }
 
+	/// Mettre le mode pause on ou off
+	void assignerPause(bool pause);
+
 
 protected:
 
@@ -303,8 +306,13 @@ protected:
 	/// Impossibilite de position
 	bool impossible_;
 
+	/// Mode pause
+	bool pause_;
+
 	glm::dvec3 vitesse_{0.0,0.0, 0.0 };
+
 	double masse_{ 1 };
+
 	double constanteDeFrottement_{ 1 };
 };
 

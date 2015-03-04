@@ -34,6 +34,7 @@ NoeudAbstrait::NoeudAbstrait(
 	twin_ = nullptr;
 	transparent_ = false;
 	impossible_ = false;
+	pause_ = false;
 }
 
 
@@ -674,6 +675,22 @@ void NoeudAbstrait::setImpossible(bool impossible)
 
 ////////////////////////////////////////////////////////////////////////
 ///
+/// @fn NoeudAbstrait* NoeudAbstrait::assignerPause(bool pause)
+///
+/// Change de mode
+///
+/// @param[in] pause: activer ou desactiver le mode pause
+///
+/// @return Aucun.
+///
+////////////////////////////////////////////////////////////////////////
+void NoeudAbstrait::assignerPause(bool pause)
+{
+	pause_ = pause;
+}
+
+////////////////////////////////////////////////////////////////////////
+///
 /// @fn bool NoeudAbstrait::pointEstDansBoite(glm::dvec3 point)
 /// @brief Cette fonction teste si un point se trouve dans la boîte englobante.
 ///
@@ -708,3 +725,5 @@ bool NoeudAbstrait::pointEstDansBoite(glm::dvec3 point)
 	else
 		return false;
 }
+
+

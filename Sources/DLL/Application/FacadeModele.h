@@ -167,6 +167,8 @@ public:
 
    void supprimerBille();
 
+   void setPause(bool pause);
+
 private:
 
    /// Constructeur par defaut.
@@ -201,6 +203,8 @@ private:
    static const int coinDroitTableY;
 
    bool duplicationHorsTable_;
+
+   bool pause_{ false };
 
    std::set<NoeudPaletteG*> listePalettesGJ1_;
    std::set<NoeudPaletteD*> listePalettesDJ1_;

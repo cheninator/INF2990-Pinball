@@ -3,5 +3,4 @@ photo
 HELLO
 table1
 was
-was
 default

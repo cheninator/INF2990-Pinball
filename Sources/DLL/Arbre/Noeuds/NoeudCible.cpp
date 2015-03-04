@@ -68,7 +68,11 @@ void NoeudCible::afficherConcret() const
 	glPushAttrib(GL_ALL_ATTRIB_BITS);
 	if (colorShift_)
 		glTexEnvf(GL_TEXTURE_ENV, GL_TEXTURE_ENV_MODE, GL_BLEND);
-	if (impossible_)
+	if (pause_) {
+		glBlendFunc(GL_SRC_ALPHA, GL_ZERO); // Set The Blending Function For Translucency
+		glEnable(GL_BLEND);
+	}
+	else if (impossible_)
 		glColorMask(0, 1, 1, 1);
 	else if (selectionne_) {
 		glTexEnvf(GL_TEXTURE_ENV, GL_TEXTURE_ENV_MODE, GL_ADD);
