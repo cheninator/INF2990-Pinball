@@ -44,7 +44,6 @@ namespace InterfaceGraphique
             FonctionsNatives.ouvrirXML(map, map.Capacity);
             currentZone++;
             Program.tempBool = true;
-            Console.WriteLine("CLOSING");
         }
         ////////////////////////////////////////////////////////////////////////
         ///

@@ -300,6 +300,6 @@ namespace InterfaceGraphique
             configuration.ShowDialog();
         }
 
-        public void LancerModeJeu(List<string> zones) { modeJeuMain = new ModeJeu(zones); modeJeuMain.ShowDialog(this); }
+        public void LancerModeJeu(List<string> zones) { modeJeuMain = new ModeJeu(zones); modeJeuMain.Show(this); }
     }                                  
 }
