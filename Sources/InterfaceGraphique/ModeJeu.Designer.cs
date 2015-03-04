@@ -30,10 +30,11 @@
         {
             this.panel_GL = new System.Windows.Forms.Panel();
             this.menuStrip = new System.Windows.Forms.MenuStrip();
-            this.menu_ReturnItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.fichier_MenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.Camera_MenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.Ortho_MenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.Orbitale_MenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.mPrincipal_menu = new System.Windows.Forms.ToolStripMenuItem();
             this.panel_GL.SuspendLayout();
             this.menuStrip.SuspendLayout();
             this.SuspendLayout();
@@ -52,7 +53,7 @@
             // menuStrip
             // 
             this.menuStrip.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.menu_ReturnItem,
+            this.fichier_MenuItem,
             this.Camera_MenuItem});
             this.menuStrip.Location = new System.Drawing.Point(0, 0);
             this.menuStrip.Name = "menuStrip";
@@ -61,12 +62,13 @@
             this.menuStrip.Text = "menuStrip1";
             this.menuStrip.Visible = false;
             // 
-            // menu_ReturnItem
+            // fichier_MenuItem
             // 
-            this.menu_ReturnItem.Name = "menu_ReturnItem";
-            this.menu_ReturnItem.Size = new System.Drawing.Size(99, 20);
-            this.menu_ReturnItem.Text = "Menu Principal";
-            this.menu_ReturnItem.Click += new System.EventHandler(this.menu_ReturnItem_Click);
+            this.fichier_MenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.mPrincipal_menu});
+            this.fichier_MenuItem.Name = "fichier_MenuItem";
+            this.fichier_MenuItem.Size = new System.Drawing.Size(54, 20);
+            this.fichier_MenuItem.Text = "Fichier";
             // 
             // Camera_MenuItem
             // 
@@ -88,6 +90,14 @@
             this.Orbitale_MenuItem.Name = "Orbitale_MenuItem";
             this.Orbitale_MenuItem.Size = new System.Drawing.Size(182, 22);
             this.Orbitale_MenuItem.Text = "Vue Orbitale";
+            // 
+            // mPrincipal_menu
+            // 
+            this.mPrincipal_menu.Name = "mPrincipal_menu";
+            this.mPrincipal_menu.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.Q)));
+            this.mPrincipal_menu.Size = new System.Drawing.Size(197, 22);
+            this.mPrincipal_menu.Text = "Menu Principal";
+            this.mPrincipal_menu.Click += new System.EventHandler(this.mPrincipal_menu_Click);
             // 
             // ModeJeu
             // 
@@ -117,9 +127,10 @@
 
         private System.Windows.Forms.Panel panel_GL;
         private System.Windows.Forms.MenuStrip menuStrip;
-        private System.Windows.Forms.ToolStripMenuItem menu_ReturnItem;
+        private System.Windows.Forms.ToolStripMenuItem fichier_MenuItem;
         private System.Windows.Forms.ToolStripMenuItem Camera_MenuItem;
         private System.Windows.Forms.ToolStripMenuItem Ortho_MenuItem;
         private System.Windows.Forms.ToolStripMenuItem Orbitale_MenuItem;
+        private System.Windows.Forms.ToolStripMenuItem mPrincipal_menu;
     }
 }

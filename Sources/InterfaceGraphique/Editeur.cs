@@ -541,8 +541,8 @@ namespace InterfaceGraphique
         {
             lock (Program.unLock)
             {
-                FonctionsNatives.libererOpenGL();
                 Program.peutAfficher = false;
+                FonctionsNatives.libererOpenGL();
             }
             playSound("", true);    // Stop le son
         }

@@ -18,7 +18,6 @@ namespace InterfaceGraphique
         StringBuilder nextMap;
         public ModeJeu(List<string> maps)
         {
-
           /*  this.WindowState = FormWindowState.Normal;
             this.FormBorderStyle = FormBorderStyle.None;
             this.WindowState = FormWindowState.Maximized;
@@ -131,10 +130,7 @@ namespace InterfaceGraphique
             }
         }
 
-        private void menu_ReturnItem_Click(object sender, EventArgs e)
-        {
-            this.Close();
-        }
+        
 
         private void PartieRapide_redimensionner(object sender, EventArgs e)
         {
@@ -186,6 +182,11 @@ namespace InterfaceGraphique
                     FonctionsNatives.ouvrirXML(map, map.Capacity);
                 }
 
+        }
+
+        private void mPrincipal_menu_Click(object sender, EventArgs e)
+        {
+            this.Close();
         }
 
     }

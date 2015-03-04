@@ -271,7 +271,7 @@ namespace InterfaceGraphique
         private void pictureBox1_MouseEnter(object sender, EventArgs e)
         {
             pictureBox1.Image = Properties.Resources.baby;
-            player.Stream = Properties.Resources.man_scream_01;
+            player.Stream = Properties.Resources.scary;
             player.Play();
         }
 
