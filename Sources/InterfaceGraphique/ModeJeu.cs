@@ -13,21 +13,18 @@ namespace InterfaceGraphique
         private ZoneInfo zInfo;
         private int currentZone = 0;
         private int nbZones;
+        private bool fullScreen = false;
         List<string> myMaps;
         StringBuilder map;
         StringBuilder nextMap;
         public ModeJeu(List<string> maps)
         {
-            if(false)
+            if(fullScreen)
             {
                 this.WindowState = FormWindowState.Normal;
                 this.FormBorderStyle = FormBorderStyle.None;
                 this.WindowState = FormWindowState.Maximized;
             }
-
-            this.WindowState = FormWindowState.Normal;
-            this.FormBorderStyle = FormBorderStyle.None;
-            this.WindowState = FormWindowState.Maximized;
            
             this.KeyDown += new KeyEventHandler(PartieRapide_KeyDown);
             this.KeyUp += new KeyEventHandler(PartieRapide_KeyUp);
@@ -91,7 +88,6 @@ namespace InterfaceGraphique
             
         }
         
-
         private void PartieRapide_FormClosing(object sender, FormClosingEventArgs e)
         {
             lock (Program.unLock)
@@ -108,8 +104,7 @@ namespace InterfaceGraphique
         }
 
         private void PartieRapide_KeyDown(object sender, KeyEventArgs e)
-        {
-           
+        {   
             // À enlever : permet de vérifier la fenêtre OpenGL
            if (e.KeyCode == Keys.Left)
                 FonctionsNatives.translater(-10, 0);
@@ -123,7 +118,7 @@ namespace InterfaceGraphique
             if (e.KeyValue == touches.PGJ1) // Remplacer "R" par la touche obtenue des configurations
             {
                 FonctionsNatives.activerPalettesGJ1();
-              //  Console.WriteLine("Touche R enfoncée");// Activer les palettes gauches du joueur 1
+              //  Console.WriteLine("Touche R enfoncée"); // Activer les palettes gauches du joueur 1
             }
         }
 
