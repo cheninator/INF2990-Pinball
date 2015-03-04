@@ -19,7 +19,9 @@ namespace InterfaceGraphique
             this.Icon = Properties.Resources.Pinball;
             time = 5;
             timer1.Enabled = true;
-            timer1.Interval = 1000;
+           // timer1.Interval = 1000;
+            timer1.Interval = 25;
+            timer1.Tick += new EventHandler(DecrementProgressBar);
             timer1.Tick += new System.EventHandler(this.timer1_Tick);
             label_Zone.Text = nomZone;
             label_Difficulte.Text = difficulte;
@@ -29,16 +31,32 @@ namespace InterfaceGraphique
 
         private void timer1_Tick(object sender, EventArgs e)
         {
-            time--;
-            labelTimeLeft.Text = time.ToString();
-            if (time == 0)
-                this.Close();
+         //   time--;
+         //   labelTimeLeft.Text = time.ToString();
+          //  if (time == 0)
+         //       this.Close();
         }
 
         private void ZoneInfo_KeyPress(object sender, KeyPressEventArgs e)
         {
             if (e.KeyChar == ' ')
             {
+                this.Close();
+            }
+        }
+
+        private void DecrementProgressBar(object sender, EventArgs e)
+        {
+            tempRestant.Value--;
+            if (tempRestant.Value % 40 == 0)
+            {
+                time--;
+               
+                labelTimeLeft.Text = time.ToString();
+            }
+            if (tempRestant.Value == tempRestant.Minimum)
+            {
+                timer1.Stop();
                 this.Close();
             }
         }

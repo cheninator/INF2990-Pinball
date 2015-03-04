@@ -38,6 +38,7 @@
             this.labelTimeLeft = new System.Windows.Forms.Label();
             this.labelTimer = new System.Windows.Forms.Label();
             this.labelWarning = new System.Windows.Forms.Label();
+            this.tempRestant = new System.Windows.Forms.ProgressBar();
             ((System.ComponentModel.ISupportInitialize)(this.screenShot)).BeginInit();
             this.SuspendLayout();
             // 
@@ -86,7 +87,7 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.screenShot.Location = new System.Drawing.Point(38, 95);
             this.screenShot.Name = "screenShot";
-            this.screenShot.Size = new System.Drawing.Size(204, 205);
+            this.screenShot.Size = new System.Drawing.Size(204, 207);
             this.screenShot.TabIndex = 4;
             this.screenShot.TabStop = false;
             // 
@@ -113,17 +114,27 @@
             // labelWarning
             // 
             this.labelWarning.AutoSize = true;
-            this.labelWarning.Location = new System.Drawing.Point(13, 349);
+            this.labelWarning.Location = new System.Drawing.Point(13, 399);
             this.labelWarning.Name = "labelWarning";
             this.labelWarning.Size = new System.Drawing.Size(253, 13);
             this.labelWarning.TabIndex = 7;
             this.labelWarning.Text = "(Appuyez sur Espace pour commencer tout de suite)";
             // 
+            // tempRestant
+            // 
+            this.tempRestant.Location = new System.Drawing.Point(16, 354);
+            this.tempRestant.Maximum = 200;
+            this.tempRestant.Name = "tempRestant";
+            this.tempRestant.Size = new System.Drawing.Size(250, 23);
+            this.tempRestant.TabIndex = 8;
+            this.tempRestant.Value = 200;
+            // 
             // ZoneInfo
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(284, 386);
+            this.ClientSize = new System.Drawing.Size(284, 484);
+            this.Controls.Add(this.tempRestant);
             this.Controls.Add(this.labelWarning);
             this.Controls.Add(this.labelTimeLeft);
             this.Controls.Add(this.labelTimer);
@@ -154,5 +165,6 @@
         private System.Windows.Forms.Label labelTimeLeft;
         private System.Windows.Forms.Label labelTimer;
         private System.Windows.Forms.Label labelWarning;
+        private System.Windows.Forms.ProgressBar tempRestant;
     }
 }
