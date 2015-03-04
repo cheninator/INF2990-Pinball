@@ -271,7 +271,7 @@ namespace InterfaceGraphique
         private void pictureBox1_MouseEnter(object sender, EventArgs e)
         {
             pictureBox1.Image = Properties.Resources.baby;
-            player.Stream = Properties.Resources.man_scream_01;
+            player.Stream = Properties.Resources.scary;
             player.Play();
         }
 
@@ -300,6 +300,19 @@ namespace InterfaceGraphique
             configuration.ShowDialog();
         }
 
-        public void LancerModeJeu(List<string> zones) { modeJeuMain = new ModeJeu(zones); modeJeuMain.Show(this); }
+        public void LancerModeJeu(List<string> zones) 
+        { 
+            modeJeuMain = new ModeJeu(zones); 
+            modeJeuMain.ShowDialog(this);
+            if (campagne != null)
+            {
+                campagne.Close();
+            }
+            else if (pRapide != null)
+            {
+                pRapide.Close();
+            }
+            this.Show(); 
+        }
     }                                  
 }

@@ -18,10 +18,17 @@ namespace InterfaceGraphique
         StringBuilder nextMap;
         public ModeJeu(List<string> maps)
         {
+            if(false)
+            {
+                this.WindowState = FormWindowState.Normal;
+                this.FormBorderStyle = FormBorderStyle.None;
+                this.WindowState = FormWindowState.Maximized;
+            }
 
-            //this.WindowState = FormWindowState.Normal;
-            //this.FormBorderStyle = FormBorderStyle.None;
-            //this.WindowState = FormWindowState.Maximized;
+            this.WindowState = FormWindowState.Normal;
+            this.FormBorderStyle = FormBorderStyle.None;
+            this.WindowState = FormWindowState.Maximized;
+           
             this.KeyDown += new KeyEventHandler(PartieRapide_KeyDown);
             this.KeyUp += new KeyEventHandler(PartieRapide_KeyUp);
            
@@ -130,10 +137,7 @@ namespace InterfaceGraphique
             }
         }
 
-        private void menu_ReturnItem_Click(object sender, EventArgs e)
-        {
-            this.Close();
-        }
+        
 
         private void PartieRapide_redimensionner(object sender, EventArgs e)
         {
@@ -147,14 +151,14 @@ namespace InterfaceGraphique
                 if (menuStrip.Visible)
                 {
                     menuStrip.Visible = false;
-                    Console.WriteLine("HIDE");
                     FonctionsNatives.modePause(false);
+                  //  Console.WriteLine("HIDE");
                 }
                 else
                 {
                     menuStrip.Visible = true;
-                    Console.WriteLine("SHOW");
                     FonctionsNatives.modePause(true);
+                 //   Console.WriteLine("SHOW");
                 }
             }
             else
@@ -186,6 +190,11 @@ namespace InterfaceGraphique
                     FonctionsNatives.ouvrirXML(map, map.Capacity);
                 }
 
+        }
+
+        private void mPrincipal_menu_Click(object sender, EventArgs e)
+        {
+            this.Close();
         }
 
     }

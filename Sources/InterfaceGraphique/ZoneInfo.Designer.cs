@@ -87,7 +87,7 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.screenShot.Location = new System.Drawing.Point(38, 95);
             this.screenShot.Name = "screenShot";
-            this.screenShot.Size = new System.Drawing.Size(204, 207);
+            this.screenShot.Size = new System.Drawing.Size(204, 203);
             this.screenShot.TabIndex = 4;
             this.screenShot.TabStop = false;
             // 
@@ -133,7 +133,8 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(284, 484);
+            this.BackColor = System.Drawing.SystemColors.Control;
+            this.ClientSize = new System.Drawing.Size(284, 430);
             this.Controls.Add(this.tempRestant);
             this.Controls.Add(this.labelWarning);
             this.Controls.Add(this.labelTimeLeft);

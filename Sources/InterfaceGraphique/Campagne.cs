@@ -176,8 +176,8 @@ namespace InterfaceGraphique
             // modeJeu = new ModeJeu(zonesCampagne);
             // modeJeu.ShowDialog();
              ((MainMenu)this.Owner).LancerModeJeu(zonesCampagne);
-             //this.Show();
-             this.Close();
+           //  this.Show();
+           //  this.Close();
               
              
             }
@@ -230,6 +230,19 @@ namespace InterfaceGraphique
         {
             e.Cancel = true;
             e.NewWidth = ZonesDisponibles.Columns[e.ColumnIndex].Width;
+        }
+
+        private void ZonesChoisis_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (ZonesChoisis.SelectedIndices.Count <= 0) return;
+            int index = ZonesChoisis.SelectedIndices[0];
+            if (index >= 0)
+            {
+                fileNames = ZonesChoisis.Items[index].Text;
+                screenShot.SizeMode = PictureBoxSizeMode.StretchImage;
+                screenShot.Image = Image.FromFile(Application.StartupPath + @"\zones\" + fileNames + ".jpg");
+
+            }
         }
 
 

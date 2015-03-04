@@ -96,8 +96,8 @@ namespace InterfaceGraphique
                 this.Hide();
                 ((MainMenu)this.Owner).LancerModeJeu(zonesCampagne);
                 // modeJeu.ShowDialog();
-                this.Show();
-                this.Close();
+              //  this.Show();
+              //  this.Close();
             }
         }
     }

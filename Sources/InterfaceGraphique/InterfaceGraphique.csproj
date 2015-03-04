@@ -284,6 +284,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="%24this.Icon.ico" />
+    <None Include="Resources\scary.wav" />
     <None Include="Resources\touche-invalide.wav" />
     <None Include="Resources\man-scream-01.wav" />
     <None Include="Resources\baby.jpeg" />

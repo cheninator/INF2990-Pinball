@@ -19,7 +19,6 @@ namespace InterfaceGraphique
             this.Icon = Properties.Resources.Pinball;
             this.WindowState = FormWindowState.Normal;
             this.FormBorderStyle = FormBorderStyle.None;
-            //targetForm.WindowState = FormWindowState.Maximized;
             time = 5;
             timer1.Enabled = true;
            
