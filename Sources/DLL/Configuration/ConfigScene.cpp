@@ -10,7 +10,7 @@
 
 #include "ConfigScene.h"
 #include <fstream>
-
+#include <iostream>
 ////////////////////////////////////////////////////////////////////////
 ///
 /// @fn ConfigScene::ConfigScene()
@@ -133,10 +133,10 @@ bool ConfigScene::lireCampagne()
 
 	if (!lecture.fail())
 	{
-		while (!lecture.eof())
+		while (lecture>>nomCarte)
 		{
-			lecture >> nomCarte;
 			listeCartes_.push_back(nomCarte);
+			
 		}
 
 		lectureOK = true;
