@@ -18,6 +18,10 @@ namespace InterfaceGraphique
         StringBuilder nextMap;
         public ModeJeu(List<string> maps)
         {
+
+            this.WindowState = FormWindowState.Normal;
+            this.FormBorderStyle = FormBorderStyle.None;
+            this.WindowState = FormWindowState.Maximized;
             this.KeyDown += new KeyEventHandler(PartieRapide_KeyDown);
             this.KeyUp += new KeyEventHandler(PartieRapide_KeyUp);
            
@@ -167,9 +171,9 @@ namespace InterfaceGraphique
                         nextMap.Remove(nextMap.Length - 4, 4);
                         Console.WriteLine(Path.GetFileName(nextMap.ToString()));
                         zInfo = new ZoneInfo(Path.GetFileName(nextMap.ToString()), FonctionsNatives.obtenirDifficulte(map, map.Capacity).ToString());
-                        this.Hide();
+                        //this.Hide();
                         zInfo.ShowDialog();
-                        this.Show();
+                        //this.Show();
                     
                         FonctionsNatives.ouvrirXML(map, map.Capacity);
                         currentZone++;

@@ -8,6 +8,7 @@
 //////////////////////////////////////////////////////////////////////////////
 
 using System;
+using System.Collections.Generic;
 using System.Drawing;
 using System.Text;
 using System.Threading;
@@ -32,6 +33,8 @@ namespace InterfaceGraphique
         public Campagne campagne;
         public PartieRapide pRapide;
         private Configuration configuration;
+        public ModeJeu modeJeuMain;
+
 
         ////////////////////////////////////////////////////////////////////////
         ///
@@ -43,6 +46,7 @@ namespace InterfaceGraphique
         ////////////////////////////////////////////////////////////////////////
         public MainMenu()
         {
+
             Console.WriteLine(FonctionsNatives.obtenirDerniereCampagne());
             this.KeyPress += new KeyPressEventHandler(Form1_KeyPress);
             InitializeComponent();
@@ -218,7 +222,7 @@ namespace InterfaceGraphique
         {
             campagne = new Campagne();
             this.Hide();
-            campagne.ShowDialog();
+            campagne.ShowDialog(this);
             this.Show();
         }
 
@@ -285,7 +289,7 @@ namespace InterfaceGraphique
             }
             this.Hide();
             pRapide = new PartieRapide();
-            pRapide.ShowDialog();
+            pRapide.ShowDialog(this);
             this.Show();
             
         }
@@ -294,6 +298,8 @@ namespace InterfaceGraphique
         {
             configuration = new Configuration();
             configuration.ShowDialog();
-        } 
+        }
+
+        public void LancerModeJeu(List<string> zones) { modeJeuMain = new ModeJeu(zones); modeJeuMain.ShowDialog(this); }
     }                                  
 }

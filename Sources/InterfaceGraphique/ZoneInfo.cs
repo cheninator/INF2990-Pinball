@@ -17,9 +17,12 @@ namespace InterfaceGraphique
         {
             InitializeComponent();
             this.Icon = Properties.Resources.Pinball;
+            this.WindowState = FormWindowState.Normal;
+            this.FormBorderStyle = FormBorderStyle.None;
+            //targetForm.WindowState = FormWindowState.Maximized;
             time = 5;
             timer1.Enabled = true;
-           // timer1.Interval = 1000;
+           
             timer1.Interval = 25;
             timer1.Tick += new EventHandler(DecrementProgressBar);
             timer1.Tick += new System.EventHandler(this.timer1_Tick);

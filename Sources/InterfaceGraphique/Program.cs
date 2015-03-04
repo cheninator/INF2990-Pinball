@@ -120,9 +120,9 @@ namespace InterfaceGraphique
                            mMenu.modeEdit.MettreAJour((double)tempsAccumule.Ticks / TimeSpan.TicksPerSecond);
                       else
                            //if (mMenu.campagne.modeJeu != null && peutAfficher)
-                           if( tempBool)
+                           if( mMenu.modeJeuMain != null && peutAfficher)
                            {
-                              mMenu.campagne.modeJeu.MettreAJour((double)tempsAccumule.Ticks / TimeSpan.TicksPerSecond);
+                            mMenu.modeJeuMain.MettreAJour((double)tempsAccumule.Ticks / TimeSpan.TicksPerSecond);
                            }
                       
                     }

@@ -89,12 +89,16 @@ namespace InterfaceGraphique
 
         private void bouton_OK_Click(object sender, EventArgs e)
         {
-            zonesCampagne.Insert(0, Application.StartupPath + @"\zones\" + ZonesDisponibles.SelectedItems[0].Text + ".xml");
-            //Console.WriteLine(Application.StartupPath + @"\zones\" + ZonesDisponibles.SelectedItems[0].Text + ".xml");
-            this.Hide();
-            modeJeu = new ModeJeu(zonesCampagne);
-            modeJeu.ShowDialog();
-            this.Close();
+            if (ZonesDisponibles.SelectedItems.Count != 0)
+            {
+                zonesCampagne.Insert(0, Application.StartupPath + @"\zones\" + ZonesDisponibles.SelectedItems[0].Text + ".xml");
+                //Console.WriteLine(Application.StartupPath + @"\zones\" + ZonesDisponibles.SelectedItems[0].Text + ".xml");
+                this.Hide();
+                ((MainMenu)this.Owner).LancerModeJeu(zonesCampagne);
+                // modeJeu.ShowDialog();
+                this.Show();
+                this.Close();
+            }
         }
     }
 }

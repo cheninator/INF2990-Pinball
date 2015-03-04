@@ -89,7 +89,7 @@
             this.Orbitale_MenuItem.Size = new System.Drawing.Size(182, 22);
             this.Orbitale_MenuItem.Text = "Vue Orbitale";
             // 
-            // PartieRapide
+            // ModeJeu
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -97,8 +97,8 @@
             this.Controls.Add(this.panel_GL);
             this.Icon = global::InterfaceGraphique.Properties.Resources.Pinball;
             this.MainMenuStrip = this.menuStrip;
-            this.Name = "PartieRapide";
-            this.Text = "PartieRapide";
+            this.Name = "ModeJeu";
+            this.Text = "ModeJeu";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.PartieRapide_FormClosing);
             this.Load += new System.EventHandler(this.PartieRapide_Load);
             this.SizeChanged += new System.EventHandler(this.PartieRapide_redimensionner);

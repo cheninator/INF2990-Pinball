@@ -1,4 +1,7 @@
 AI
+photo
 HELLO
 table1
-test
+was
+was
+default
