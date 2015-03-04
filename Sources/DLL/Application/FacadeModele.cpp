@@ -182,9 +182,6 @@ void FacadeModele::initialiserOpenGL(HWND hWnd)
 	glEnable(GL_NORMALIZE);
 	glEnable(GL_LIGHT0);
 
-	// Blending
-	glEnable(GL_BLEND);
-
 	// Qualite
 	glShadeModel(GL_SMOOTH);
 	glHint(GL_LINE_SMOOTH_HINT, GL_NICEST);
@@ -263,6 +260,25 @@ void FacadeModele::afficher() const
 
 	// Afficher la scene
 	afficherBase();
+
+	/* 
+	Noircir la zone de jeu en mode pause. (In the making)
+
+	glEnable(GL_BLEND);
+	glBlendFunc(GL_ONE_MINUS_SRC1_ALPHA, GL_SRC1_ALPHA);
+	glPushAttrib(GL_ENABLE_BIT);
+	glDisable(GL_LIGHTING);
+	glDepthMask(GL_FALSE);
+	glBegin(GL_QUADS);
+	glColor4f(0.0, 0.0, 0.0, 0.9);
+	glVertex3f(-1500.0, 1500.0, -10.0);
+	glVertex3f(-1500.0, -1500.0, -10.0);
+	glVertex3f(1500.0, -1500.0, -10.0);
+	glVertex3f(1500.0, 1500.0, -10.0);
+	glEnd();
+	glDepthMask(GL_TRUE);
+	glPopAttrib();
+	*/
 
 	// Compte de l'affichage
 	utilitaire::CompteurAffichage::obtenirInstance()->signalerAffichage();

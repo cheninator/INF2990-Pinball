@@ -405,6 +405,11 @@ namespace InterfaceGraphique
                     etat = null;
                     etat = new EtatTest(this);
                 }
+                if (e.KeyChar == 't')
+                {
+                    testRetourModeEdition.PerformClick();
+                    OnSizeChanged(e);
+                }
             }
             else
             {
