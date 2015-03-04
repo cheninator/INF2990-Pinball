@@ -270,7 +270,7 @@ namespace InterfaceGraphique
 
         private void pictureBox1_MouseEnter(object sender, EventArgs e)
         {
-            pictureBox1.Image = Properties.Resources.baby;
+            pictureBox1.Image = Properties.Resources.newScary;
             player.Stream = Properties.Resources.scary;
             player.Play();
         }
