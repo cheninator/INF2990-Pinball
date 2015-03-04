@@ -25,12 +25,12 @@
 
 BSTR stringToBSTR(std::string str) {
 	int wslen = ::MultiByteToWideChar(CP_ACP, 0 /* no flags */,
-		str.data(), str.length(),
+		str.data(), (int)str.length(),
 		NULL, 0);
 
 	BSTR wsdata = ::SysAllocStringLen(NULL, wslen);
 	::MultiByteToWideChar(CP_ACP, 0 /* no flags */,
-		str.data(), str.length(),
+		str.data(), (int)str.length(),
 		wsdata, wslen);
 	return wsdata;
 }
