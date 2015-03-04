@@ -23,7 +23,7 @@ namespace InterfaceGraphique
         public Campagne()
         {
             InitializeComponent();
-            sortColumnDescend(1);
+            sortColumnAscend(1);
             mapList = new StringBuilder();
             zonesCampagne = new List<string>();
             filePaths = Directory.GetFiles(Application.StartupPath + @"\zones", "*.xml");

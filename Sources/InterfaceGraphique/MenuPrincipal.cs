@@ -30,7 +30,7 @@ namespace InterfaceGraphique
         public Editeur modeEdit; ///< Form du mode edition
         private Thread myThread; ///< Une thread
         public Campagne campagne;
-        public ModeJeu pRapide;
+        public PartieRapide pRapide;
         private Configuration configuration;
 
         ////////////////////////////////////////////////////////////////////////
@@ -284,8 +284,8 @@ namespace InterfaceGraphique
                // Thread.Sleep(100);
             }
             this.Hide();
-           // pRapide = new ModeJeu();
-           // pRapide.ShowDialog();
+            pRapide = new PartieRapide();
+            pRapide.ShowDialog();
             this.Show();
             
         }

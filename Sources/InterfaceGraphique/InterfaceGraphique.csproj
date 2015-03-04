@@ -111,6 +111,12 @@
     <Compile Include="ModeJeu.Designer.cs">
       <DependentUpon>ModeJeu.cs</DependentUpon>
     </Compile>
+    <Compile Include="PartieRapide.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="PartieRapide.Designer.cs">
+      <DependentUpon>PartieRapide.cs</DependentUpon>
+    </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Proprietes.cs">
@@ -142,6 +148,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="ModeJeu.resx">
       <DependentUpon>ModeJeu.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="PartieRapide.resx">
+      <DependentUpon>PartieRapide.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
