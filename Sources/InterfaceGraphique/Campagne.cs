@@ -107,7 +107,7 @@ namespace InterfaceGraphique
 
         private void bouton_ADD_Click(object sender, EventArgs e)
         {
-            Console.WriteLine(ZonesDisponibles.SelectedItems);
+            //Console.WriteLine(ZonesDisponibles.SelectedItems);
             pathMap = new StringBuilder(Application.StartupPath + @"\zones\" + fileNames + ".xml");
             int diff = FonctionsNatives.obtenirDifficulte(pathMap, pathMap.Capacity);
             var item1 = new ListViewItem(new[] { fileNames, diff.ToString() });
@@ -133,8 +133,6 @@ namespace InterfaceGraphique
 
         private void bouton_Annuler_Click(object sender, EventArgs e)
         {
-            // Literallement rien de fait ici
-            
             this.Close();
         }
 
@@ -145,8 +143,6 @@ namespace InterfaceGraphique
                        MessageBoxButtons.OK, MessageBoxIcon.Error);
             else
             {
-                // TO DO
-               
                 if (RB_Solo.Checked)
                     mapList = new StringBuilder("UN ");
                 else

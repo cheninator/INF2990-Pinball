@@ -113,7 +113,7 @@ namespace InterfaceGraphique
             if (e.KeyValue == touches.PGJ1) // Remplacer "R" par la touche obtenue des configurations
             {
                 FonctionsNatives.activerPalettesGJ1();
-                Console.WriteLine("Touche R enfoncée");// Activer les palettes gauches du joueur 1
+              //  Console.WriteLine("Touche R enfoncée");// Activer les palettes gauches du joueur 1
             }
         }
 
@@ -175,6 +175,11 @@ namespace InterfaceGraphique
                         currentZone++;
                     }
                     
+                }
+                else if (e.KeyChar == (char)8)
+                {
+                    // RELOAD DE LA MAP
+                    FonctionsNatives.ouvrirXML(map, map.Capacity);
                 }
 
         }
