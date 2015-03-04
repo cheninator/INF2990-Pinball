@@ -1,4 +1,3 @@
 UN
-table1
-was2
+default
 HELLO

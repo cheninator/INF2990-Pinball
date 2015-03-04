@@ -20,22 +20,26 @@
 #include <iostream>
 #include <ctime>        // std::time
 #include <cstdlib>      // std::rand, std::srand
+#include <atlconv.h>	// for CA2W 
+#include <atlbase.h>	// for CA2W 
+#include <atlstr.h>		// for CA2W 
 #include "BancTests.h"
 
-char * charToString( char* input)
-{
-	// https://limbioliong.wordpress.com/2011/06/16/returning-strings-from-a-c-api/
-	static char* output = NULL;
-	ULONG ulSize = ULONG(strlen(input) + sizeof(char));
-	output = (char*)::CoTaskMemAlloc(ulSize);
-	// Copy the contents of input
-	// to the memory pointed to by output.
-	strcpy_s(output, ulSize, input);
-	// Return output.
-	return output;
-}
-
-
+struct fakeString{
+	fakeString(std::string myString){
+		int size = myString.length();
+		myString_ = new char[size * 32];
+		for (unsigned int i = 0; i <size; i++)
+			myString_[i] = myString[i];
+	}
+	~fakeString(){
+		delete[] myString_;
+	}
+	char* getString(){
+		return myString_;
+	}
+	char* myString_;
+};
 
 extern "C"
 {
@@ -281,11 +285,13 @@ extern "C"
 				std::vector<int> generateurs;
 				int i = 0;
 				int nbElements = FacadeModele::obtenirInstance()->obtenirArbreRenduINF2990()->getEnfant(0)->obtenirNombreEnfants();
+				NoeudComposite* noeudTable = new NoeudComposite;
+				noeudTable = (dynamic_cast <NoeudComposite*> (
+					FacadeModele::obtenirInstance()->obtenirArbreRenduINF2990()->getEnfant(0)));
 				for (i = 0; i < nbElements; i++)
 				{
-					std::string typeNoeud = (dynamic_cast <NoeudComposite*> (
-						FacadeModele::obtenirInstance()->obtenirArbreRenduINF2990()->getEnfant(0)))
-						->getEnfant(i)->obtenirType();
+					
+					std::string typeNoeud = noeudTable->getEnfant(i)->obtenirType();
 
 					if (typeNoeud == "generateurbille")
 						generateurs.push_back(i);
@@ -293,24 +299,19 @@ extern "C"
 
 				int pos = rand() % generateurs.size();
 
-				glm::dvec3 scale = (dynamic_cast <NoeudComposite*> (
-					FacadeModele::obtenirInstance()->obtenirArbreRenduINF2990()->getEnfant(0)))
-					->getEnfant(generateurs[pos])->obtenirAgrandissement();
-				glm::dvec3 position = (dynamic_cast <NoeudComposite*> (
-					FacadeModele::obtenirInstance()->obtenirArbreRenduINF2990()->getEnfant(0)))
-					->getEnfant(generateurs[pos])->obtenirPositionRelative();
-				glm::dvec3 rotation = (dynamic_cast <NoeudComposite*> (
-					FacadeModele::obtenirInstance()->obtenirArbreRenduINF2990()->getEnfant(0)))
-					->getEnfant(generateurs[pos])->obtenirPositionRelative();
+				glm::dvec3 scale = noeudTable->getEnfant(generateurs[pos])->obtenirAgrandissement();
+				glm::dvec3 position = noeudTable->getEnfant(generateurs[pos])->obtenirPositionRelative();
+				glm::dvec3 rotation = noeudTable->getEnfant(generateurs[pos])->obtenirPositionRelative();
 			
 				//objet->assignerRotation({ rotation.x, rotation.y, rotation.z });
 				objet->assignerPositionRelative({ position.x, position.y-((30*scale.x)), position.z });
 				objet->assignerEchelle(scale);
+
+				noeudTable = NULL;
+				delete noeudTable;
 			}
 		}
-		
 		FacadeModele::obtenirInstance()->obtenirArbreRenduINF2990()->getEnfant(0)->ajouter(objet);
-
 	}
 
 
@@ -1386,9 +1387,11 @@ extern "C"
 
 	}
 
-	__declspec(dllexport) char* obtenirDerniereCampagne()
+	__declspec(dllexport) BSTR obtenirDerniereCampagne()
 	{
-		return	charToString(FacadeModele::obtenirInstance()->obtenirDerniereCampagne());
+		std::string myString = FacadeModele::obtenirInstance()->obtenirDerniereCampagne();
+		ATL::CA2W unicodeNativeString(myString.c_str());
+		return ::SysAllocString(unicodeNativeString);
 	}
 
 	__declspec(dllexport) void __cdecl supprimerBille()

@@ -53,7 +53,7 @@ public:
 	int* obtenirConfiguration() const { return config_; };
 
 	// Retourne les informations de la dernière campagne
-	char* obtenirCampagne() const;
+	std::string obtenirCampagne() const;
 
 	// Fonctions de retour des configurations
 	int obtenirRaccourciPGJ1()		const{ return config_[0]; };

@@ -159,7 +159,7 @@ public:
    int obtenirDifficulte(char* nomFichier, int length);
 
    void sauvegarderCampagne(char* nomFichier, int length);
-   char* obtenirDerniereCampagne();
+   std::string obtenirDerniereCampagne();
 
    void construireListesPalettes();
    void activerPalettesGJ1();
