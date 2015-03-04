@@ -20,26 +20,20 @@
 #include <iostream>
 #include <ctime>        // std::time
 #include <cstdlib>      // std::rand, std::srand
-#include <atlconv.h>	// for CA2W 
-#include <atlbase.h>	// for CA2W 
-#include <atlstr.h>		// for CA2W 
+#include <windows.h>
 #include "BancTests.h"
 
-struct fakeString{
-	fakeString(std::string myString){
-		int size = myString.length();
-		myString_ = new char[size * 32];
-		for (unsigned int i = 0; i <size; i++)
-			myString_[i] = myString[i];
-	}
-	~fakeString(){
-		delete[] myString_;
-	}
-	char* getString(){
-		return myString_;
-	}
-	char* myString_;
-};
+BSTR stringToBSTR(std::string str) {
+	int wslen = ::MultiByteToWideChar(CP_ACP, 0 /* no flags */,
+		str.data(), str.length(),
+		NULL, 0);
+
+	BSTR wsdata = ::SysAllocStringLen(NULL, wslen);
+	::MultiByteToWideChar(CP_ACP, 0 /* no flags */,
+		str.data(), str.length(),
+		wsdata, wslen);
+	return wsdata;
+}
 
 extern "C"
 {
@@ -1389,9 +1383,9 @@ extern "C"
 
 	__declspec(dllexport) BSTR obtenirDerniereCampagne()
 	{
-		std::string myString = FacadeModele::obtenirInstance()->obtenirDerniereCampagne();
-		ATL::CA2W unicodeNativeString(myString.c_str());
-		return ::SysAllocString(unicodeNativeString);
+		// http://stackoverflow.com/questions/6284524/bstr-to-stdstring-stdwstring-and-vice-versa
+		std::string str = FacadeModele::obtenirInstance()->obtenirDerniereCampagne();
+		return stringToBSTR(str);
 	}
 
 	__declspec(dllexport) void __cdecl supprimerBille()
