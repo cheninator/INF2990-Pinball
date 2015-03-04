@@ -48,14 +48,18 @@ namespace InterfaceGraphique
         {
             string tempConfig= FonctionsNatives.obtenirDerniereCampagne();
             configurations = tempConfig.Split(new char[] {' '},StringSplitOptions.RemoveEmptyEntries);
-           /* 
-          
-            foreach( string map in configurations)
+            if (configurations[0] == "UN")
             {
-                
-                Console.WriteLine(map);
+                RB_Solo.Checked = true;
             }
-            */
+            else if (configurations[0] == "DEUX")
+            {
+                RB_Multi.Checked = true;
+            }
+            else if (configurations[0] == "AI")
+            {
+                RB_AI.Checked = true;
+            }
             for (int i = 1; i < configurations.Length; i++ )
             {
                 if (File.Exists(Application.StartupPath + @"\zones\" + configurations[i] + ".xml"))
@@ -63,7 +67,6 @@ namespace InterfaceGraphique
                     pathMap = new StringBuilder(Application.StartupPath + @"\zones\" + configurations[i] + ".xml");
                     int diff = FonctionsNatives.obtenirDifficulte(pathMap, pathMap.Capacity);
                     var item1 = new ListViewItem(new[] { configurations[i], diff.ToString() });
-
                     ZonesChoisis.Items.Add(item1);
                 }
                 else
@@ -71,7 +74,6 @@ namespace InterfaceGraphique
                     pathMap = new StringBuilder(Application.StartupPath + @"\zones\default.xml");
                     int diff = FonctionsNatives.obtenirDifficulte(pathMap, pathMap.Capacity);
                     var item1 = new ListViewItem(new[] { "default", diff.ToString() });
-
                     ZonesChoisis.Items.Add(item1);
                 }
             }
@@ -101,10 +103,7 @@ namespace InterfaceGraphique
                                                          ZonesChoisis.Sorting);
         }
 
-        private void InitialiseConfigs()
-        {
-            // TO DO : mapList = le fichier que yonni me passe
-        }
+     
 
         private void bouton_ADD_Click(object sender, EventArgs e)
         {
