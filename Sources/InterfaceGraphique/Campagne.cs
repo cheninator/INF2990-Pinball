@@ -12,6 +12,7 @@ namespace InterfaceGraphique
     public partial class Campagne : Form
     {
         string[] filePaths;
+        string[] configurations;
         List<string> zonesCampagne;
         string fileNames;
         int sortColumn = -1;
@@ -33,15 +34,49 @@ namespace InterfaceGraphique
                 diff = FonctionsNatives.obtenirDifficulte(pathMap, pathMap.Capacity);
                 fileNames = Path.GetFileName(s);
                 fileNames = fileNames.Remove(fileNames.Length - 4);
-              //  listBox.Items.Add(fileNames);
                 var item1 = new ListViewItem(new[] { fileNames, diff.ToString() });
                 ZonesDisponibles.Items.Add(item1);
  
             }
             pathMap = new StringBuilder("");
+            InitialiserConfigurations();
 
 
+        }
 
+        private void InitialiserConfigurations()
+        {
+            string tempConfig= FonctionsNatives.obtenirDerniereCampagne();
+            configurations = tempConfig.Split(new char[] {' '},StringSplitOptions.RemoveEmptyEntries);
+            if (configurations[0] == "UN")
+            {
+                RB_Solo.Checked = true;
+            }
+            else if (configurations[0] == "DEUX")
+            {
+                RB_Multi.Checked = true;
+            }
+            else if (configurations[0] == "AI")
+            {
+                RB_AI.Checked = true;
+            }
+            for (int i = 1; i < configurations.Length; i++ )
+            {
+                if (File.Exists(Application.StartupPath + @"\zones\" + configurations[i] + ".xml"))
+                {
+                    pathMap = new StringBuilder(Application.StartupPath + @"\zones\" + configurations[i] + ".xml");
+                    int diff = FonctionsNatives.obtenirDifficulte(pathMap, pathMap.Capacity);
+                    var item1 = new ListViewItem(new[] { configurations[i], diff.ToString() });
+                    ZonesChoisis.Items.Add(item1);
+                }
+                else
+                {
+                    pathMap = new StringBuilder(Application.StartupPath + @"\zones\default.xml");
+                    int diff = FonctionsNatives.obtenirDifficulte(pathMap, pathMap.Capacity);
+                    var item1 = new ListViewItem(new[] { "default", diff.ToString() });
+                    ZonesChoisis.Items.Add(item1);
+                }
+            }
         }
 
         private void listBox_SelectedValueChanged(object sender, EventArgs e)
@@ -68,14 +103,11 @@ namespace InterfaceGraphique
                                                          ZonesChoisis.Sorting);
         }
 
-        private void InitialiseConfigs()
-        {
-            // TO DO : mapList = le fichier que yonni me passe
-        }
+     
 
         private void bouton_ADD_Click(object sender, EventArgs e)
         {
-            Console.WriteLine(ZonesDisponibles.SelectedItems);
+            //Console.WriteLine(ZonesDisponibles.SelectedItems);
             pathMap = new StringBuilder(Application.StartupPath + @"\zones\" + fileNames + ".xml");
             int diff = FonctionsNatives.obtenirDifficulte(pathMap, pathMap.Capacity);
             var item1 = new ListViewItem(new[] { fileNames, diff.ToString() });
@@ -101,8 +133,6 @@ namespace InterfaceGraphique
 
         private void bouton_Annuler_Click(object sender, EventArgs e)
         {
-            // Literallement rien de fait ici
-            
             this.Close();
         }
 
@@ -113,8 +143,6 @@ namespace InterfaceGraphique
                        MessageBoxButtons.OK, MessageBoxIcon.Error);
             else
             {
-                // TO DO
-               
                 if (RB_Solo.Checked)
                     mapList = new StringBuilder("UN ");
                 else

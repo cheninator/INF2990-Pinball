@@ -43,7 +43,7 @@ namespace InterfaceGraphique
         ////////////////////////////////////////////////////////////////////////
         public MainMenu()
         {
-            Console.WriteLine(FonctionsNatives.obtenirDerniereCampagne());
+           // Console.WriteLine(FonctionsNatives.obtenirDerniereCampagne());
             this.KeyPress += new KeyPressEventHandler(Form1_KeyPress);
             InitializeComponent();
             pictureBox1.SizeMode = PictureBoxSizeMode.StretchImage;
