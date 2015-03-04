@@ -77,6 +77,7 @@ extern "C" {
 	__declspec(dllexport) int obtenirDiffulte(char* nomFichier, int length);
 	__declspec(dllexport) char* obtenirDerniereCampagne();
 	__declspec(dllexport) void creerFichierCampagne(char* nomFichier, int length);
+	__declspec(dllexport) void supprimerBille();
 
 }
 

@@ -165,6 +165,8 @@ public:
    void activerPalettesGJ1();
    void desactiverPalettesGJ1();
 
+   void supprimerBille();
+
 private:
 
    /// Constructeur par defaut.

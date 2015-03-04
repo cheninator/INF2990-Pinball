@@ -1378,7 +1378,6 @@ extern "C"
 	__declspec(dllexport) void __cdecl activerPalettesGJ1()
 	{
 		FacadeModele::obtenirInstance()->activerPalettesGJ1();
-
 	}
 
 	__declspec(dllexport) void __cdecl desactiverPalettesGJ1()
@@ -1390,6 +1389,11 @@ extern "C"
 	__declspec(dllexport) char* obtenirDerniereCampagne()
 	{
 		return	charToString(FacadeModele::obtenirInstance()->obtenirDerniereCampagne());
+	}
+
+	__declspec(dllexport) void __cdecl supprimerBille()
+	{
+		FacadeModele::obtenirInstance()->supprimerBille();
 	}
 
 	/*

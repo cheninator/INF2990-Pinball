@@ -236,6 +236,7 @@ namespace InterfaceGraphique
 
                 else if (e.KeyData == Keys.Down)
                     FonctionsNatives.translater(0, -10);
+                
                 if (etat is EtatTest)
                 {
                     ToucheDownTest(o, e);
@@ -255,7 +256,6 @@ namespace InterfaceGraphique
                 }
            
         }
-
         
         ////////////////////////////////////////////////////////////////////////
         ///
@@ -278,7 +278,7 @@ namespace InterfaceGraphique
 
              else if (e.KeyValue == touches.PGJ2)
              {
-                 // TO DO: palette gauche joueur 1
+                 // TODO: palette gauche joueur 1
              }
              else if (e.KeyValue == touches.PDJ1)
              {
@@ -292,7 +292,7 @@ namespace InterfaceGraphique
              {
 
              }
-            // TO DO
+            // TODO
         }
 
         ////////////////////////////////////////////////////////////////////////
@@ -390,8 +390,6 @@ namespace InterfaceGraphique
                 }
                 if (e.KeyChar == (char)Keys.Escape)
                 {
-                    // TODO: Handling de la pause.
-
                     menuStrip3.Show();
                     peutAnimer = false;
                     etat = null;
@@ -1532,7 +1530,7 @@ namespace InterfaceGraphique
                 Creation_Panel.Hide();
             flowLayoutPanel1.Hide();
 
-            menuEnable(false);
+            menu1Enable(false);
 
             panel_GL.BringToFront();
             panel_GL.Anchor = AnchorStyles.None;
@@ -2532,12 +2530,18 @@ namespace InterfaceGraphique
         /// @return Aucune.
         ///
         //////////////////////////////////////////////////////////////////////////////////////////
-        public void menuEnable(bool active)
+        public void menu1Enable(bool active)
         {
             Nouveau_MenuItem.Enabled = active;
             Ouvrir_MenuItem.Enabled = active;
             Enregistrer_MenuItem.Enabled = active;
             EnregistrerS_MenuItem.Enabled = active;
+        }
+
+        public void menu3Enable(bool active)
+        {
+            testRetourMenuPrincipal.Enabled = active;
+            testRetourModeEdition.Enabled = active;
         }
 
         //////////////////////////////////////////////////////////////////////////////////////////
@@ -2860,65 +2864,103 @@ namespace InterfaceGraphique
             label_Zoom.ForeColor = Color.Black;
         }
 
+        //////////////////////////////////////////////////////////////////////////////////////////
+        ///
+        /// @fn public void outilCourant(string outil)
+        /// @brief Ecrit le nom de l'outil courant dans le label prevu a cet effet.
+        /// @param[in] outil : Nom de l'outil selectionne.
+        /// @return Aucune.
+        ///
+        //////////////////////////////////////////////////////////////////////////////////////////
         public void outilCourant(string outil)
         {
             labelOCourant.Text = outil;
         }
 
+        //////////////////////////////////////////////////////////////////////////////////////////
+        ///
+        /// @fn private void flowLayoutPanel1_SizeChanged(object sender, EventArgs e)
+        /// @brief Ajustement des dimensions lorsque la taille du flowlayout panel est changee.
+        /// @param[in] sender : Objet duquel provient un evenement.
+        /// @param[in] e : Evenement qui lance la fonction.
+        /// @return Aucune.
+        ///
+        //////////////////////////////////////////////////////////////////////////////////////////
         private void flowLayoutPanel1_SizeChanged(object sender, EventArgs e)
         {
             richTextBox1.Height = flowLayoutPanel1.Height - 500;
         }
 
+        //////////////////////////////////////////////////////////////////////////////////////////
+        ///
+        /// @fn private void Bille_bouton_Click(object sender, EventArgs e)
+        /// @brief Cree une bille lorsqu'on clique sur le bouton "Bille".
+        /// @param[in] sender : Objet duquel provient un evenement.
+        /// @param[in] e : Evenement qui lance la fonction.
+        /// @return Aucune.
+        ///
+        //////////////////////////////////////////////////////////////////////////////////////////
         private void Bille_bouton_Click(object sender, EventArgs e)
         {
             StringBuilder bille = new StringBuilder("bille");
             FonctionsNatives.creerObjet(bille, bille.Capacity);
         }
 
-        private void retourAuModeDeditionToolStripMenuItem1_Click(object sender, EventArgs e)
-        {
-            etat = null;
-            etat = new EtatNone(this);
-
-            if (menuStrip3.Visible)
-                menuStrip3.Hide();
-            menuStrip1.Show();
-            menuEnable(true);
-            Creation_Panel.Show();
-            flowLayoutPanel1.Show();
-            panel_GL.Anchor = (AnchorStyles.Top | AnchorStyles.Left);
-            panel_GL.Location = new Point(163, 24);
-            panel_GL.Dock = DockStyle.Fill;
-            FonctionsNatives.translater(mouvementX, -mouvementY);
-        }
-
-        private void retourAuMenuPrincipalToolStripMenuItem1_Click(object sender, EventArgs e)
-        {
-            this.Close();
-        }
-
+        //////////////////////////////////////////////////////////////////////////////////////////
+        ///
+        /// @fn private void panel_GL_SizeChanged(object sender, EventArgs e)
+        /// @brief Ajustement des dimensions du UI lorsque la taille du panel GL change.
+        /// @param[in] sender : Objet duquel provient un evenement.
+        /// @param[in] e : Evenement qui lance la fonction.
+        /// @return Aucune.
+        ///
+        //////////////////////////////////////////////////////////////////////////////////////////
         private void panel_GL_SizeChanged(object sender, EventArgs e)
         {
             mouvementX = 100 * (double)(this.flowLayoutPanel1.Width) / (double)this.panel1.Width;
             mouvementY = 100 * (double)(this.menuStrip1.Height) / (double)this.panel1.Width;
         }
 
+        //////////////////////////////////////////////////////////////////////////////////////////
+        ///
+        /// @fn private void toolStripMenuItem1_Click(object sender, EventArgs e)
+        /// @brief Retourne au mode d'edition a partir du mode test.
+        /// @param[in] sender : Objet duquel provient un evenement.
+        /// @param[in] e : evenement qui lance la fonction.
+        /// @return Aucune.
+        ///
+        //////////////////////////////////////////////////////////////////////////////////////////
         private void toolStripMenuItem1_Click(object sender, EventArgs e)
         {
             etat = null;
             etat = new EtatNone(this);
 
+            FonctionsNatives.supprimerBille();
+
             if (menuStrip3.Visible)
                 menuStrip3.Hide();
             menuStrip1.Show();
-            menuEnable(true);
+            menu1Enable(true);
             Creation_Panel.Show();
             flowLayoutPanel1.Show();
             panel_GL.Anchor = (AnchorStyles.Top | AnchorStyles.Left);
             panel_GL.Location = new Point(163, 24);
             panel_GL.Dock = DockStyle.Fill;
             FonctionsNatives.translater(mouvementX, -mouvementY);
+        }
+
+        //////////////////////////////////////////////////////////////////////////////////////////
+        ///
+        /// @fn private void testRetourMenuPrincipal_Click(object sender, EventArgs e)
+        /// @brief Retour au menu principal a partir du mode test.
+        /// @param[in] sender : Objet duquel provient un evenement.
+        /// @param[in] e : evenement qui lance la fonction.
+        /// @return Aucune.
+        ///
+        //////////////////////////////////////////////////////////////////////////////////////////
+        private void testRetourMenuPrincipal_Click(object sender, EventArgs e)
+        {
+            this.Close();
         }
     }
 

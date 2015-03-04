@@ -439,5 +439,8 @@ namespace InterfaceGraphique
         [DllImport(@"Noyau.dll", CharSet = CharSet.Ansi, CallingConvention = CallingConvention.StdCall)]
         public static extern StringBuilder obtenirDerniereCampagne();
 
+        [DllImport(@"Noyau.dll", CallingConvention = CallingConvention.Cdecl)]
+        public static extern void supprimerBille();
+
     }
 }

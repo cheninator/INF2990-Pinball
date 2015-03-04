@@ -1099,3 +1099,8 @@ void FacadeModele::desactiverPalettesGJ1() // Appelee quand on lache la touche
 		palette->desactiver();
 
 }
+
+void FacadeModele::supprimerBille()
+{
+	arbre_->effacer(arbre_->chercher(ArbreRenduINF2990::NOM_BILLE));
+}
