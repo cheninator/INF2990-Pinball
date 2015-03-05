@@ -726,4 +726,14 @@ bool NoeudAbstrait::pointEstDansBoite(glm::dvec3 point)
 		return false;
 }
 
-
+////////////////////////////////////////////////////////////////////////
+///
+/// @fn void NoeudAbstrait::setDebug(bool debug)
+///
+/// @return Aucun.
+///
+////////////////////////////////////////////////////////////////////////
+void NoeudAbstrait::setDebug(bool debug)
+{
+	return;
+}
