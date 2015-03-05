@@ -284,8 +284,8 @@ namespace InterfaceGraphique
             valuesXML[10] = Convert.ToInt32(AE_OK.Checked);
             valuesXML[11] = Convert.ToInt32(PORTAL_OK.Checked);
 
-          //  foreach (int x in valuesXML){Console.WriteLine(x);}
-
+            //  foreach (int x in valuesXML){Console.WriteLine(x);}
+            FonctionsNatives.consolDebug(GB_OK.Checked, VAC_OK.Checked, AE_OK.Checked, PORTAL_OK.Checked);
             FonctionsNatives.creerFichierConfig(valuesXML);
             this.Close();
         }

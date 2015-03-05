@@ -17,13 +17,16 @@
 #include "ArbreRenduINF2990.h"
 #include "CompteurAffichage.h"
 
+#include <iomanip>
 #include <iostream>
+
 #include <ctime>        // std::time
 #include <cstdlib>      // std::rand, std::srand
 #include <windows.h>
 #include "BancTests.h"
 
 BSTR stringToBSTR(std::string str) {
+	// http://www.sluse.com/view/6284524
 	int wslen = ::MultiByteToWideChar(CP_ACP, 0 /* no flags */,
 		str.data(), (int)str.length(),
 		NULL, 0);
@@ -33,6 +36,29 @@ BSTR stringToBSTR(std::string str) {
 		str.data(), (int)str.length(),
 		wsdata, wslen);
 	return wsdata;
+}
+
+static bool debugMode[4];
+
+void printCurrentTime() {
+	SYSTEMTIME time;
+	GetSystemTime(&time);
+	std::cout << time.wHour << ":" << time.wHour << ":" << time.wSecond << ":" << time.wMilliseconds;
+}
+
+
+static bool getDebugMode(int i) {
+	if (i > 2 || i < 0)
+		return false;
+	else
+		return debugMode[i];
+}
+
+static void setDebugMode(int i, bool value) {
+	if (i > 2 || i < 0)
+		return;
+	else
+		debugMode[i] = value;
 }
 
 extern "C"
@@ -298,9 +324,17 @@ extern "C"
 				glm::dvec3 rotation = noeudTable->getEnfant(generateurs[pos])->obtenirPositionRelative();
 			
 				//objet->assignerRotation({ rotation.x, rotation.y, rotation.z });
-				objet->assignerPositionRelative({ position.x, position.y-((30*scale.x)), position.z });
+				double positionX = position.x;
+				double positionY = position.y - ((30 * scale.x));
+				objet->assignerPositionRelative({ positionX, positionY, position.z });
 				objet->assignerEchelle(scale);
-
+				//HH:MM:SS:mmm – Nouvelle bille : x: POSX y: POSY
+				// http://brian.pontarelli.com/2009/01/05/getting-the-current-system-time-in-milliseconds-with-c/
+				if (debugMode[0]) {
+					printCurrentTime();
+					std::cout << std::fixed << std::setprecision(2);
+					std::cout << " - Nouvelle bille : x: " << positionX << " y: " << positionY << std::endl;;
+				}
 				noeudTable = NULL;
 				delete noeudTable;
 			}
@@ -1415,6 +1449,49 @@ extern "C"
 	{
 		FacadeModele::obtenirInstance()->setPause(pause);
 	}
+
+	__declspec(dllexport) void __cdecl consolDebug(bool dbg1, bool dbg2, bool dbg3, bool dbg4)
+	{
+		debugMode[0] = dbg1; 
+		debugMode[1] = dbg2;
+		debugMode[2] = dbg3; 
+		debugMode[3] = dbg4;
+	}
+
+	__declspec(dllexport) bool __cdecl spotLight(int lum, bool state)
+	{
+		if (lum > 2 || lum < 0)
+			return false;
+		if (debugMode[2]) {
+			printCurrentTime();
+			std::cout << " - Lumiere(s) ";
+		}
+		switch (lum) {
+		case 0:
+			if (debugMode[2])
+				std::cout << "ambiante ";
+			// TO DO: the spotlight ambiante
+			break;
+		case 1:
+			if (debugMode[2])
+				std::cout << "directionnelle ";
+			// TO DO: the spotlight directionnelle
+			break;
+		case 2:
+			if (debugMode[2])
+				std::cout << "spot ";
+			// TO DO: the spotlight directionnelle
+			break;
+		default:
+			return false;
+			break;
+		}
+		if (debugMode[2])
+			std::cout << (state == true) ? "ouverte(s)" : "fermee(s)";
+		return true;
+	}
+
+
 
 	/*
 	#include <FTGL/ftgl.h>
