@@ -1,20 +1,19 @@
 ///////////////////////////////////////////////////////////////////////////////
-/// @file VisiteurPause.h
+/// @file VisiteuDebug.h
 /// @author The Ballers
 /// @date 2015-02-01
 /// @version 1.0
 ///
 /// @ingroup Visiteur
 ///////////////////////////////////////////////////////////////////////////////
-#ifndef __VISITEURS_VISITEURPAUSE_H__
-#define __VISITEURS_VISITEURPAUSE_H__
+#ifndef __VISITEURS_VISITEURDEBUG_H__
+#define __VISITEURS_VISITEURDEBUG_H__
 
 #include "NoeudAbstrait.h"
 #include "VisiteurAbstrait.h"
-#include "glm\glm.hpp"
 
 ///////////////////////////////////////////////////////////////////////////
-/// @class VisiteurPause
+/// @class VisiteurSelection
 /// @brief Classe pour selectionner les objets de l'arbre de rendu
 ///
 ///        Instancier cette classe avec en parametre le point clique
@@ -25,15 +24,15 @@
 /// @date 2015-02-02
 /// @ingroup Visiteur
 ///////////////////////////////////////////////////////////////////////////
-class VisiteurPause : public VisiteurAbstrait
+class VisiteurDebug : public VisiteurAbstrait
 {
 public:
 
 	/// Constructeur par parametre
-	VisiteurPause(bool pause);
+	VisiteurDebug(bool valeurDebugBille, bool valeurDebugPortail);
 
 	/// Destructeur
-	~VisiteurPause();
+	~VisiteurDebug();
 
 	/// Traiter une operation sur l'arbre de rendu et ses enfants
 	virtual bool traiter(ArbreRenduINF2990* arbre);
@@ -42,9 +41,9 @@ public:
 
 private:
 	/// Constructeur par defaut
-	VisiteurPause();
-
-	bool pause_;
+	VisiteurDebug();
+	bool valeurDebugBille_;
+	bool valeurDebugPortail_;
 };
 
-#endif //__VISITEURS_VISITEURSELECTION_H__
+#endif //__VISITEURS_VISITEURDEBUG_H__

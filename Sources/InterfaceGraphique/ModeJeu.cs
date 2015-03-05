@@ -17,6 +17,9 @@ namespace InterfaceGraphique
         List<string> myMaps;
         StringBuilder map;
         StringBuilder nextMap;
+        private bool activateAmbianteLight = false;
+        private bool activateDirectLight = false;
+        private bool activateSpotLight = false;
         public ModeJeu(List<string> maps)
         {
             if(fullScreen)
@@ -158,18 +161,21 @@ namespace InterfaceGraphique
             }
             else if (e.KeyChar == 'j')
             {
-                Console.WriteLine("LUMIERE AMBIANTE");
-                //TO DO
+                //Console.WriteLine("LUMIERE AMBIANTE");
+                activateAmbianteLight = !activateAmbianteLight;
+                FonctionsNatives.spotLight(0, activateAmbianteLight);
             }
             else if (e.KeyChar == 'k')
             {
-                Console.WriteLine("LUMIERE DIRECTE");
-                //TO DO
+                //Console.WriteLine("LUMIERE DIRECTE");
+                activateDirectLight = !activateDirectLight;
+                FonctionsNatives.spotLight(1, activateDirectLight);
             }
             else if (e.KeyChar == 'l')
             {
-                Console.WriteLine("SPOTS");
-                //TO DO
+                //Console.WriteLine("LUMIERE SPOTS");
+                activateSpotLight = !activateSpotLight;
+                FonctionsNatives.spotLight(2, activateSpotLight);
             }
             else
                 if (e.KeyChar == 'n')

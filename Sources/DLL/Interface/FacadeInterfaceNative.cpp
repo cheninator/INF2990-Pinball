@@ -38,27 +38,13 @@ BSTR stringToBSTR(std::string str) {
 	return wsdata;
 }
 
-static bool debugMode[4];
-
 void printCurrentTime() {
 	SYSTEMTIME time;
 	GetSystemTime(&time);
-	std::cout << time.wHour << ":" << time.wHour << ":" << time.wSecond << ":" << time.wMilliseconds;
-}
-
-
-static bool getDebugMode(int i) {
-	if (i > 2 || i < 0)
-		return false;
-	else
-		return debugMode[i];
-}
-
-static void setDebugMode(int i, bool value) {
-	if (i > 2 || i < 0)
-		return;
-	else
-		debugMode[i] = value;
+	std::cout << std::fixed << std::setw(2) << std::setprecision(2) << time.wHour << ":" 
+		<< std::fixed << std::setw(2) << std::setprecision(2) << time.wHour << ":"
+		<< std::fixed << std::setw(2) << std::setprecision(2) << time.wSecond << ":"
+		<< std::fixed << std::setw(2) << std::setprecision(2) << time.wMilliseconds;
 }
 
 extern "C"
@@ -67,6 +53,7 @@ extern "C"
 	// Nvm, c'est devenue une necesite, donc garder ces variables absolument
 	static NoeudAbstrait* objet = new NoeudAbstrait();
 	static NoeudAbstrait* objet_temp = new NoeudAbstrait();
+	static bool debugMode[4] = { false };
 
 	// Useless, pas d'orbite en ce moment
 	static double theta = 0; ///< Angle Theta
@@ -110,6 +97,7 @@ extern "C"
 			return;
 		std::cout << std::endl << "Initialisation de l'openGL en cours..." << std::endl;
 		FacadeModele::obtenirInstance()->initialiserOpenGL((HWND)handle);
+		FacadeModele::obtenirInstance()->setDebug(debugMode[2], debugMode[3]);
 	}
 
 
@@ -335,10 +323,15 @@ extern "C"
 					std::cout << std::fixed << std::setprecision(2);
 					std::cout << " - Nouvelle bille : x: " << positionX << " y: " << positionY << std::endl;;
 				}
+				objet->setDebug(debugMode[2]);
 				noeudTable = NULL;
 				delete noeudTable;
 			}
 		}
+		if (nomObjet == "bille")
+			objet->setDebug(debugMode[2]);
+		else if (nomObjet == "portail")
+			objet->setDebug(debugMode[3]);
 		FacadeModele::obtenirInstance()->obtenirArbreRenduINF2990()->getEnfant(0)->ajouter(objet);
 	}
 
@@ -448,6 +441,8 @@ extern "C"
 		if (objetEstLegal)
 		{
 			// Si l'objet est legal, l'ajouter a la table, sinon, on le scrap
+			if (nomObjet == "portail")
+				objet->setDebug(debugMode[3]);
 			FacadeModele::obtenirInstance()->obtenirArbreRenduINF2990()->getEnfant(0)->ajouter(objet);
 			return true;
 		}

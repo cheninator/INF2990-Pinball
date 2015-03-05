@@ -38,8 +38,8 @@ public:
 	/// Accepte un visiteur.
 	virtual bool accepterVisiteur(VisiteurAbstrait* vis);
 
-private:
-
+	/// Activer ou desactiver le mode debug.
+	virtual void setDebug( bool debug);
 };
 
 #endif // __ARBRE_NOEUDS_NOEUDGENERATEURBILLE_H__

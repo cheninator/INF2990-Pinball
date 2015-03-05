@@ -109,7 +109,7 @@ void NoeudPortail::afficherConcret() const
 ////////////////////////////////////////////////////////////////////////
 void NoeudPortail::animer(float temps)
 {
-//	this->getEnfant(0)->assignerAffiche(debugMode[3]);
+	this->getEnfant(0)->assignerAffiche(debug_);
 }
 
 ////////////////////////////////////////////////////////////////////////
@@ -130,4 +130,19 @@ bool NoeudPortail::accepterVisiteur(VisiteurAbstrait* vis)
 
 	return reussi;
 
+}
+
+
+////////////////////////////////////////////////////////////////////////
+///
+/// @fn void NoeudPortail::setDebug(bool debug)
+///
+/// Cette fonction change al valeur du mode debug
+///
+/// @return Aucun.
+///
+////////////////////////////////////////////////////////////////////////
+void NoeudPortail::setDebug(bool debug)
+{
+	debug_ = debug;
 }

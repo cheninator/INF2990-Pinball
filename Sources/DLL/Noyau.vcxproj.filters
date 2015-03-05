@@ -204,6 +204,9 @@
     <ClCompile Include="Visiteurs\VisiteurPause.cpp">
       <Filter>Source Files\Visiteurs</Filter>
     </ClCompile>
+    <ClCompile Include="Visiteurs\VisiteurDebug.cpp">
+      <Filter>Source Files\Visiteurs</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Application\FacadeModele.h">
@@ -393,6 +396,9 @@
       <Filter>Header Files\Visiteurs</Filter>
     </ClInclude>
     <ClInclude Include="Visiteurs\VisiteurPause.h">
+      <Filter>Header Files\Visiteurs</Filter>
+    </ClInclude>
+    <ClInclude Include="Visiteurs\VisiteurDebug.h">
       <Filter>Header Files\Visiteurs</Filter>
     </ClInclude>
   </ItemGroup>
