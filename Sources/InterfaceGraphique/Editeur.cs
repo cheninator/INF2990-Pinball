@@ -76,10 +76,11 @@ namespace InterfaceGraphique
             this.KeyUp += new KeyEventHandler(ToucheUp);
             this.Icon = Properties.Resources.Pinball;
             InitializeComponent();
+            // ON joue en mode Solo
             touches = new Touches(FonctionsNatives.obtenirTouchePGJ1(),
-                                  FonctionsNatives.obtenirTouchePGJ2(),
+                                  FonctionsNatives.obtenirTouchePGJ1(),
                                   FonctionsNatives.obtenirTouchePDJ1(),
-                                  FonctionsNatives.obtenirTouchePDJ2(),
+                                  FonctionsNatives.obtenirTouchePDJ1(),
                                   FonctionsNatives.obtenirToucheRessort());
             Program.peutAfficher = true;
             mouvementX = 100 * (double)(this.flowLayoutPanel1.Width) / (double)this.panel1.Width;
@@ -388,7 +389,22 @@ namespace InterfaceGraphique
                     testRetourModeEdition.PerformClick();
                     OnSizeChanged(e);
                 }
-                if (e.KeyChar == (char)Keys.Escape)
+                else if (e.KeyChar == 'j')
+                {
+                    Console.WriteLine("LUMIERE AMBIANTE");
+                    //TO DO
+                }
+                else if (e.KeyChar == 'k')
+                {
+                    Console.WriteLine("LUMIERE DIRECTE");
+                    //TO DO
+                }
+                else if (e.KeyChar == 'l')
+                {
+                    Console.WriteLine("SPOTS");
+                    //TO DO
+                }
+                else if (e.KeyChar == (char)Keys.Escape)
                 {
                     menuStrip3.Show();
                     peutAnimer = false;

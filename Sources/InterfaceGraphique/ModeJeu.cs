@@ -128,7 +128,7 @@ namespace InterfaceGraphique
             if (e.KeyValue == touches.PGJ1)
             {
                 FonctionsNatives.desactiverPalettesGJ1();
-                Console.WriteLine("Touche R relachée");
+               // Console.WriteLine("Touche R relachée");
             }
         }
 
@@ -155,6 +155,21 @@ namespace InterfaceGraphique
                     FonctionsNatives.modePause(true);
                  //   Console.WriteLine("SHOW");
                 }
+            }
+            else if (e.KeyChar == 'j')
+            {
+                Console.WriteLine("LUMIERE AMBIANTE");
+                //TO DO
+            }
+            else if (e.KeyChar == 'k')
+            {
+                Console.WriteLine("LUMIERE DIRECTE");
+                //TO DO
+            }
+            else if (e.KeyChar == 'l')
+            {
+                Console.WriteLine("SPOTS");
+                //TO DO
             }
             else
                 if (e.KeyChar == 'n')
