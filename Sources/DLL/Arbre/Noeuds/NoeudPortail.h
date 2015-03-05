@@ -39,6 +39,9 @@ public:
 	/// Accepte un visiteur.
 	virtual bool accepterVisiteur(VisiteurAbstrait* vis);
 
+	/// Activer ou desactiver le mode debug.
+	virtual void setDebug(bool debug);
+
 private:
 	
 	/// Angle selon l'axe des X.
@@ -49,6 +52,7 @@ private:
 
 	/// Angle de rotation.
 	float angleRotation_{ 0.f };
+
 };
 
 #endif // __ARBRE_NOEUDS_NOEUDPORTAIL_H__

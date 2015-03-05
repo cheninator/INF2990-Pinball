@@ -52,6 +52,7 @@ Samuel Millette <BR>
 #include "../Visiteurs/VisiteurSuppression.h"
 #include "../Visiteurs/VisiteurXML.h"
 #include "../Visiteurs/VisiteurConstruireListes.h"
+#include "../Visiteurs/VisiteurDebug.h"
 
 #include "VueOrtho.h"
 #include "Camera.h"
@@ -936,7 +937,7 @@ bool FacadeModele::supprimer()
 
 ///////////////////////////////////////////////////////////////////////////////
 ///
-/// @fn bool FacadeModele::setPause()
+/// @fn void FacadeModele::setPause(bool pause)
 ///  Parcours l'arbre et met les objets en mode pause.
 ///
 /// @param[in]  pause : Etat du mode pause
@@ -952,6 +953,25 @@ void FacadeModele::setPause( bool pause)
 	delete visiteur;
 }
 
+
+
+///////////////////////////////////////////////////////////////////////////////
+///
+/// @fn void FacadeModele::setDebug(bool valeurDebugBille, bool valeurDebugPortail)
+///  Parcours l'arbre et met les objets en mode pause.
+///
+/// @param[in]  valeurDebugBille : valeur du mode debug pour la bille
+/// @param[in]  valeurDebugPortail : valeur du mode debug pour le portail
+///
+/// @return Aucun
+///
+///////////////////////////////////////////////////////////////////////////////
+void FacadeModele::setDebug(bool valeurDebugBille, bool valeurDebugPortail)
+{
+	VisiteurDebug* visiteur = new VisiteurDebug(valeurDebugBille, valeurDebugPortail);
+	FacadeModele::obtenirInstance()->obtenirArbreRenduINF2990()->accepterVisiteur(visiteur);
+	delete visiteur;
+}
 
 ///////////////////////////////////////////////////////////////////////////////
 ///

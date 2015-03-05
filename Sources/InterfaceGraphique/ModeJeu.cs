@@ -17,9 +17,11 @@ namespace InterfaceGraphique
         List<string> myMaps;
         StringBuilder map;
         StringBuilder nextMap;
+
         private bool activateAmbianteLight = false; ///< Etat de la lumiere ambiante
         private bool activateDirectLight = false; ///< Etat de la lumiere directe
         private bool activateSpotLight = false; ///< Etat de la lumiere spot
+
         public ModeJeu(List<string> maps)
         {
             if(fullScreen)

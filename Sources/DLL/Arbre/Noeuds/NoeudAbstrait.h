@@ -241,6 +241,8 @@ public:
 	/// Mettre le mode pause on ou off
 	void assignerPause(bool pause);
 
+	/// Activer ou desactiver le mode debug.
+	virtual void setDebug(bool debug);
 
 protected:
 
@@ -308,6 +310,9 @@ protected:
 
 	/// Mode pause
 	bool pause_;
+
+	/// Mode Debug de la bille
+	bool debug_{ false };
 
 	glm::dvec3 vitesse_{0.0,0.0, 0.0 };
 
