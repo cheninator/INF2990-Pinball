@@ -33,6 +33,7 @@
 NoeudPortail::NoeudPortail(const std::string& typeNoeud)
 	: NoeudComposite{ typeNoeud }
 {
+	//boite_.
 }
 
 ////////////////////////////////////////////////////////////////////////

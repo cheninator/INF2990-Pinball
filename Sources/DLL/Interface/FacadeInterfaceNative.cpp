@@ -44,7 +44,7 @@ void printCurrentTime() {
 	std::cout << std::fixed << std::setw(2) << std::setprecision(2) << time.wHour << ":" 
 		<< std::fixed << std::setw(2) << std::setprecision(2) << time.wHour << ":"
 		<< std::fixed << std::setw(2) << std::setprecision(2) << time.wSecond << ":"
-		<< std::fixed << std::setw(2) << std::setprecision(2) << time.wMilliseconds;
+		<< std::fixed << std::setw(3) << std::setprecision(3) << time.wMilliseconds;
 }
 
 extern "C"
@@ -97,7 +97,7 @@ extern "C"
 			return;
 		std::cout << std::endl << "Initialisation de l'openGL en cours..." << std::endl;
 		FacadeModele::obtenirInstance()->initialiserOpenGL((HWND)handle);
-		FacadeModele::obtenirInstance()->setDebug(debugMode[2], debugMode[3]);
+		FacadeModele::obtenirInstance()->setDebug(debugMode[1], debugMode[3]);
 	}
 
 
@@ -323,13 +323,12 @@ extern "C"
 					std::cout << std::fixed << std::setprecision(2);
 					std::cout << " - Nouvelle bille : x: " << positionX << " y: " << positionY << std::endl;;
 				}
-				objet->setDebug(debugMode[2]);
 				noeudTable = NULL;
 				delete noeudTable;
 			}
 		}
 		if (nomObjet == "bille")
-			objet->setDebug(debugMode[2]);
+			objet->setDebug(debugMode[1]);
 		else if (nomObjet == "portail")
 			objet->setDebug(debugMode[3]);
 		FacadeModele::obtenirInstance()->obtenirArbreRenduINF2990()->getEnfant(0)->ajouter(objet);
