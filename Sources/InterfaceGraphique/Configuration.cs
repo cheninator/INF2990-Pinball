@@ -76,10 +76,6 @@ namespace InterfaceGraphique
                 PORTAL_OK.Checked = true;
             else
                 PORTAL_Cancel.Checked = true;
-             
-             
-
-
         }
 
         private void InitialiserTouches()
@@ -288,6 +284,20 @@ namespace InterfaceGraphique
             FonctionsNatives.consolDebug(GB_OK.Checked, VAC_OK.Checked, AE_OK.Checked, PORTAL_OK.Checked);
             FonctionsNatives.creerFichierConfig(valuesXML);
             this.Close();
+        }
+
+        public bool getConfig(int i)
+        {
+            if (i == 0)
+                return GB_OK.Checked;
+            else if (i == 1)
+                return VAC_OK.Checked;
+            else if (i == 2)
+                return AE_OK.Checked;
+            else if (i == 3)
+                return PORTAL_OK.Checked;
+            else
+                return false;
         }
     }
 }

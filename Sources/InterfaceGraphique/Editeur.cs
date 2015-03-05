@@ -57,6 +57,9 @@ namespace InterfaceGraphique
         private StringBuilder pathXML = new StringBuilder(""); ///< Chemin pour la lecture/sauvegarde XML
         private Etat etat { get; set; } ///< Machine a etat
         private int[] prop = new int[6]; ///< Proprietes du jeu a sauvegarder
+        private bool activateAmbianteLight = false; ///< Etat de la lumiere ambiante
+        private bool activateDirectLight = false; ///< Etat de la lumiere directe
+        private bool activateSpotLight = false; ///< Etat de la lumiere spot
 
         ////////////////////////////////////////////////////////////////////////
         ///
@@ -391,18 +394,21 @@ namespace InterfaceGraphique
                 }
                 else if (e.KeyChar == 'j')
                 {
-                    Console.WriteLine("LUMIERE AMBIANTE");
-                    //TO DO
+                    //Console.WriteLine("LUMIERE AMBIANTE");
+                    activateAmbianteLight = !activateAmbianteLight;
+                    FonctionsNatives.spotLight(0, activateAmbianteLight);
                 }
                 else if (e.KeyChar == 'k')
                 {
-                    Console.WriteLine("LUMIERE DIRECTE");
-                    //TO DO
+                    //Console.WriteLine("LUMIERE DIRECTE");
+                    activateDirectLight = !activateDirectLight;
+                    FonctionsNatives.spotLight(1, activateDirectLight);
                 }
                 else if (e.KeyChar == 'l')
                 {
-                    Console.WriteLine("SPOTS");
-                    //TO DO
+                    //Console.WriteLine("LUMIERE SPOTS");
+                    activateSpotLight = !activateSpotLight;
+                    FonctionsNatives.spotLight(2, activateSpotLight);
                 }
                 else if (e.KeyChar == (char)Keys.Escape)
                 {

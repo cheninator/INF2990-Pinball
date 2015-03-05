@@ -1487,7 +1487,10 @@ extern "C"
 			break;
 		}
 		if (debugMode[2])
-			std::cout << (state == true) ? "ouverte(s)" : "fermee(s)";
+			if (state == true)
+				std::cout << "ouverte(s)" << std::endl;
+			else
+				std::cout << "fermee(s)" << std::endl;
 		return true;
 	}
 
