@@ -963,9 +963,9 @@ void FacadeModele::setPause( bool pause)
 /// @return Aucun
 ///
 ///////////////////////////////////////////////////////////////////////////////
-void FacadeModele::setDebug(bool valeurDebugBille, bool valeurDebugPortail)
+void FacadeModele::setDebug(bool valeurDebugBille, bool valeurDebugPortail, bool valeurSpotLight)
 {
-	VisiteurDebug* visiteur = new VisiteurDebug(valeurDebugBille, valeurDebugPortail);
+	VisiteurDebug* visiteur = new VisiteurDebug(valeurDebugBille, valeurDebugPortail, valeurSpotLight);
 	FacadeModele::obtenirInstance()->obtenirArbreRenduINF2990()->accepterVisiteur(visiteur);
 	delete visiteur;
 }

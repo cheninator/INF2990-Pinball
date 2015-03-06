@@ -40,6 +40,9 @@ public:
 
 	/// Activer ou desactiver le mode debug.
 	virtual void setDebug( bool debug);
+
+	/// Activer ou desactiver le mode spotLight.
+	virtual void setSpotLight(bool debug);
 };
 
 #endif // __ARBRE_NOEUDS_NOEUDGENERATEURBILLE_H__

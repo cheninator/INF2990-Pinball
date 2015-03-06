@@ -29,7 +29,7 @@ class VisiteurDebug : public VisiteurAbstrait
 public:
 
 	/// Constructeur par parametre
-	VisiteurDebug(bool valeurDebugBille, bool valeurDebugPortail);
+	VisiteurDebug(bool valeurDebugBille, bool valeurDebugPortail, bool valeurSpotLight = false);
 
 	/// Destructeur
 	~VisiteurDebug();
@@ -44,6 +44,7 @@ private:
 	VisiteurDebug();
 	bool valeurDebugBille_;
 	bool valeurDebugPortail_;
+	bool valeurSpotLight_;
 };
 
 #endif //__VISITEURS_VISITEURDEBUG_H__

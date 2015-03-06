@@ -36,10 +36,11 @@ VisiteurDebug::VisiteurDebug()
 /// @return Aucune (constructeur).
 ///
 ////////////////////////////////////////////////////////////////////////
-VisiteurDebug::VisiteurDebug(bool valeurDebugBille, bool valeurDebugPortail)
+VisiteurDebug::VisiteurDebug(bool valeurDebugBille, bool valeurDebugPortail, bool valeurSpotLight)
 {
 	valeurDebugBille_ = valeurDebugBille;
 	valeurDebugPortail_ = valeurDebugPortail;
+	valeurSpotLight_ = valeurSpotLight;
 }
 
 
@@ -122,7 +123,9 @@ bool VisiteurDebug::traiter(NoeudAbstrait* noeud)
 	std::string nomObjet(noeud->obtenirType());
 	if (nomObjet == "portail")
 		noeud->setDebug(valeurDebugPortail_);
-	else if (nomObjet == "portail")
+	else if (nomObjet == "bille") {
 		noeud->setDebug(valeurDebugBille_);
+		noeud->setSpotLight(valeurSpotLight_);
+	}
 	return true;
 }

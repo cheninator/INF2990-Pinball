@@ -247,6 +247,9 @@ public:
 	/// Activer ou desactiver le mode debug.
 	virtual void setDebug(bool debug);
 
+	/// Activer ou desactiver le mode spotLight.
+	virtual void setSpotLight(bool debug);
+
 protected:
 
 	/// Si jumeau, autrement nullptr
@@ -314,8 +317,11 @@ protected:
 	/// Mode pause
 	bool pause_;
 
-	/// Mode Debug de la bille
+	/// Mode Debug de la bille ou du portail
 	bool debug_{ false };
+
+	/// Mode SpotLight de la bille
+	bool spotLight_{ false };
 
 	glm::dvec3 vitesse_{0.0,0.0, 0.0 };
 

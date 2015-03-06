@@ -69,6 +69,11 @@ void NoeudBille::afficherConcret() const
 	glPushMatrix();
 	// Affichage du modele.
 	glPushAttrib(GL_ALL_ATTRIB_BITS);
+
+	if (spotLight_) {
+		/* TO DO SOMETHING HERE */
+	}
+
 	if (colorShift_)
 		glTexEnvf(GL_TEXTURE_ENV, GL_TEXTURE_ENV_MODE, GL_BLEND);
 	if (pause_) {
@@ -201,4 +206,19 @@ bool NoeudBille::accepterVisiteur(VisiteurAbstrait* vis)
 void NoeudBille::setDebug(bool debug)
 {
 	debug_ = debug;
+}
+
+
+////////////////////////////////////////////////////////////////////////
+///
+/// @fn void NoeudBille::setSpotLight(bool debug)
+///
+/// Cette fonction change la valeur du mode spotLight
+///
+/// @return Aucun.
+///
+////////////////////////////////////////////////////////////////////////
+void NoeudBille::setSpotLight(bool debug)
+{
+	spotLight_ = debug;
 }

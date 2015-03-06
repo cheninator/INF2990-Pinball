@@ -315,7 +315,7 @@ std::vector<NoeudAbstrait*> QuadTree::retrieve(NoeudAbstrait* noeud)
 			return objets_;
 
 		else if (nordEst_ != nullptr && objets_.size() == 0)
-			obtenirQuadrant(noeud)->retrieve(noeud);
+			return obtenirQuadrant(noeud)->retrieve(noeud);
 
 		else
 			return objets_;

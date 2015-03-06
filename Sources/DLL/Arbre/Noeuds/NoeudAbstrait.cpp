@@ -755,3 +755,17 @@ void NoeudAbstrait::setDebug(bool debug)
 {
 	debug_ = debug;
 }
+
+////////////////////////////////////////////////////////////////////////
+///
+/// @fn void NoeudAbstrait::setSpotLight(bool debug)
+///
+/// Cette fonction change la valeur du mode spotLight
+///
+/// @return Aucun.
+///
+////////////////////////////////////////////////////////////////////////
+void NoeudAbstrait::setSpotLight(bool debug)
+{
+	spotLight_ = debug;
+}

@@ -168,7 +168,7 @@ public:
    void supprimerBille();
 
    void setPause(bool pause);
-   void setDebug(bool valeurDebugBille, bool valeurDebugPortail);
+   void setDebug(bool valeurDebugBille, bool valeurDebugPortail, bool valeurSpotLight = false);
 
 private:
 

@@ -1455,6 +1455,8 @@ extern "C"
 
 	__declspec(dllexport) bool __cdecl spotLight(int lum, bool state)
 	{
+		// See this for light:
+		// http://www.gamedev.net/topic/564426-create-glow-with-gl_emission/
 		if (lum > 2 || lum < 0)
 			return false;
 		if (debugMode[2]) {
@@ -1475,7 +1477,7 @@ extern "C"
 		case 2:
 			if (debugMode[2])
 				std::cout << "spot ";
-			// TO DO: the spotlight directionnelle
+			FacadeModele::obtenirInstance()->setDebug(debugMode[1], debugMode[3], state);
 			break;
 		default:
 			return false;
