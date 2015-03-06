@@ -73,6 +73,7 @@ public:
    static const std::string NOM_PALETTED; ///< Represente le type Palette droite
    static const std::string NOM_PALETTEG; ///< Represente le type Palette gauche
    static const std::string NOM_PORTAIL; ///< Represente le type Portail
+   static const std::string NOM_PORTAILTORUS; ///< Represente le type PortailTorus
    static const std::string NOM_RESSORT; ///< Represente le type Ressort
    static const std::string NOM_TROU; ///< Represente le type Trou
    static const std::string NOM_VIDE; ///< Represente le type Vide

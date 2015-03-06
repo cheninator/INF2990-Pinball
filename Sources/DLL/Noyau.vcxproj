@@ -81,7 +81,7 @@
       </DataExecutionPrevention>
       <TargetMachine>MachineX64</TargetMachine>
       <AdditionalOptions>/NODEFAULTLIB:LIBCMT %(AdditionalOptions)</AdditionalOptions>
-      <AssemblyDebug>false</AssemblyDebug>
+      <AssemblyDebug>true</AssemblyDebug>
     </Link>
     <PostBuildEvent>
       <Command>
@@ -143,6 +143,7 @@
     <ClCompile Include="Arbre\Noeuds\NoeudPaletteD.cpp" />
     <ClCompile Include="Arbre\Noeuds\NoeudPaletteG.cpp" />
     <ClCompile Include="Arbre\Noeuds\NoeudPortail.cpp" />
+    <ClCompile Include="Arbre\Noeuds\NoeudPortailTorus.cpp" />
     <ClCompile Include="Arbre\Noeuds\NoeudRessort.cpp" />
     <ClCompile Include="Arbre\Noeuds\NoeudTable.cpp" />
     <ClCompile Include="Arbre\Noeuds\NoeudTrou.cpp" />
@@ -191,6 +192,7 @@
     <ClInclude Include="Arbre\Noeuds\NoeudPaletteD.h" />
     <ClInclude Include="Arbre\Noeuds\NoeudPaletteG.h" />
     <ClInclude Include="Arbre\Noeuds\NoeudPortail.h" />
+    <ClInclude Include="Arbre\Noeuds\NoeudPortailTorus.h" />
     <ClInclude Include="Arbre\Noeuds\NoeudRessort.h" />
     <ClInclude Include="Arbre\Noeuds\NoeudTable.h" />
     <ClInclude Include="Arbre\Noeuds\NoeudTrou.h" />
@@ -206,6 +208,7 @@
     <ClInclude Include="Arbre\Usines\UsineNoeudPaletteD.h" />
     <ClInclude Include="Arbre\Usines\UsineNoeudPaletteG.h" />
     <ClInclude Include="Arbre\Usines\UsineNoeudPortail.h" />
+    <ClInclude Include="Arbre\Usines\UsineNoeudPortailTorus.h" />
     <ClInclude Include="Arbre\Usines\UsineNoeudRessort.h" />
     <ClInclude Include="Arbre\Usines\UsineNoeudTable.h" />
     <ClInclude Include="Arbre\Usines\UsineNoeudTrou.h" />

@@ -1,6 +1,6 @@
 # Blender v2.73 (sub 0) OBJ File: ''
 # www.blender.org
-mtllib Bille.mtl
+mtllib ../materiaux/Bille.mtl
 o Eyeball_Eye
 v 2.322350 10.668299 -9.430717
 v 3.562381 11.181936 -8.977060
