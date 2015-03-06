@@ -80,10 +80,13 @@ namespace InterfaceGraphique
                 {
                    FonctionsNatives.animer(tempsInterAffichage);
                    FonctionsNatives.dessinerOpenGL();
+                   FPSCounter.Text = FonctionsNatives.obtenirAffichagesParSeconde().ToString();
+
                     if (currentZoom <= 0)
                     {
                         FonctionsNatives.resetZoom();
                         currentZoom = FonctionsNatives.obtenirZoomCourant();
+
                     }
                 });
             }

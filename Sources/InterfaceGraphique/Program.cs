@@ -451,5 +451,8 @@ namespace InterfaceGraphique
 
         [DllImport(@"Noyau.dll", CallingConvention = CallingConvention.Cdecl)]
         public static extern bool spotLight(int lum, bool state);
+
+        [DllImport(@"Noyau.dll", CallingConvention = CallingConvention.Cdecl)]
+        public static extern int obtenirAffichagesParSeconde();
     }
 }

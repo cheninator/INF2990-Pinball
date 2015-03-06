@@ -31,10 +31,11 @@
             this.panel_GL = new System.Windows.Forms.Panel();
             this.menuStrip = new System.Windows.Forms.MenuStrip();
             this.fichier_MenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.mPrincipal_menu = new System.Windows.Forms.ToolStripMenuItem();
             this.Camera_MenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.Ortho_MenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.Orbitale_MenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.mPrincipal_menu = new System.Windows.Forms.ToolStripMenuItem();
+            this.FPSCounter = new System.Windows.Forms.Label();
             this.panel_GL.SuspendLayout();
             this.menuStrip.SuspendLayout();
             this.SuspendLayout();
@@ -43,6 +44,7 @@
             // 
             this.panel_GL.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.panel_GL.BackColor = System.Drawing.Color.Transparent;
+            this.panel_GL.Controls.Add(this.FPSCounter);
             this.panel_GL.Controls.Add(this.menuStrip);
             this.panel_GL.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel_GL.Location = new System.Drawing.Point(0, 0);
@@ -70,6 +72,14 @@
             this.fichier_MenuItem.Size = new System.Drawing.Size(54, 20);
             this.fichier_MenuItem.Text = "Fichier";
             // 
+            // mPrincipal_menu
+            // 
+            this.mPrincipal_menu.Name = "mPrincipal_menu";
+            this.mPrincipal_menu.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.Q)));
+            this.mPrincipal_menu.Size = new System.Drawing.Size(197, 22);
+            this.mPrincipal_menu.Text = "Menu Principal";
+            this.mPrincipal_menu.Click += new System.EventHandler(this.mPrincipal_menu_Click);
+            // 
             // Camera_MenuItem
             // 
             this.Camera_MenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
@@ -91,13 +101,13 @@
             this.Orbitale_MenuItem.Size = new System.Drawing.Size(182, 22);
             this.Orbitale_MenuItem.Text = "Vue Orbitale";
             // 
-            // mPrincipal_menu
+            // FPSCounter
             // 
-            this.mPrincipal_menu.Name = "mPrincipal_menu";
-            this.mPrincipal_menu.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.Q)));
-            this.mPrincipal_menu.Size = new System.Drawing.Size(197, 22);
-            this.mPrincipal_menu.Text = "Menu Principal";
-            this.mPrincipal_menu.Click += new System.EventHandler(this.mPrincipal_menu_Click);
+            this.FPSCounter.AutoSize = true;
+            this.FPSCounter.Location = new System.Drawing.Point(13, 13);
+            this.FPSCounter.Name = "FPSCounter";
+            this.FPSCounter.Size = new System.Drawing.Size(0, 13);
+            this.FPSCounter.TabIndex = 1;
             // 
             // ModeJeu
             // 
@@ -132,5 +142,6 @@
         private System.Windows.Forms.ToolStripMenuItem Ortho_MenuItem;
         private System.Windows.Forms.ToolStripMenuItem Orbitale_MenuItem;
         private System.Windows.Forms.ToolStripMenuItem mPrincipal_menu;
+        private System.Windows.Forms.Label FPSCounter;
     }
 }
