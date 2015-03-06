@@ -23,6 +23,7 @@
 #include "Usines/UsineNoeudVide.h"
 #include "Usines/UsineNoeudCouvercle.h"
 #include "Usines/UsineNoeudTable.h"
+#include "../QuadTree/QuadTree.h"
 
 #include "EtatOpenGL.h"
 
@@ -126,6 +127,43 @@ void ArbreRenduINF2990::initialiser()
 	// Charger la zone de jeu par defaut
 	initialiserXML("zones/default.xml");
 
+
+
+	/// TESTS
+	glm::dvec3 inferieurGauche = {108, -190, 0};
+	glm::dvec3 superieurDroit = { 272, 96, 0 };
+	QuadTree* quad = new QuadTree(inferieurGauche, superieurDroit);
+
+	NoeudAbstrait* noeudConcret0{ creerNoeud(NOM_BUTOIRCIRCULAIRE) };
+	noeudConcret0->assignerPositionRelative({ 240, 0, 0 });
+
+	NoeudAbstrait* noeudConcret1{ creerNoeud(NOM_BUTOIRCIRCULAIRE) };
+	noeudConcret1->assignerPositionRelative({ 240, -47, 0 });
+
+	NoeudAbstrait* noeudConcret2{ creerNoeud(NOM_BUTOIRCIRCULAIRE) };
+	noeudConcret2->assignerPositionRelative({ 140, 0, 0 });
+
+	NoeudAbstrait* noeudConcret3{ creerNoeud(NOM_BUTOIRCIRCULAIRE) };
+	noeudConcret3->assignerPositionRelative({ 140, -47, 0 });
+
+	NoeudAbstrait* noeudConcret4{ creerNoeud(NOM_BUTOIRCIRCULAIRE) };
+	noeudConcret4->assignerPositionRelative({ 190, -47, 0 });
+
+	NoeudAbstrait* noeudConcret5{ creerNoeud(NOM_BUTOIRCIRCULAIRE) };
+	noeudConcret5->assignerPositionRelative({ 240, -100, 0 });
+
+	NoeudAbstrait* noeudConcret6{ creerNoeud(NOM_BUTOIRCIRCULAIRE) };
+	noeudConcret6->assignerPositionRelative({ 140, -100, 0 });
+
+	quad->insert(noeudConcret0);
+	quad->insert(noeudConcret1);
+	quad->insert(noeudConcret2);
+	quad->insert(noeudConcret3);
+	quad->insert(noeudConcret4);
+	quad->insert(noeudConcret5);
+	quad->insert(noeudConcret6);
+
+	delete quad;
 }
 
 

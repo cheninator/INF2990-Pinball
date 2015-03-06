@@ -133,11 +133,8 @@ bool ConfigScene::lireCampagne()
 
 	if (!lecture.fail())
 	{
-		while (lecture>>nomCarte)
-		{
+		while (lecture >> nomCarte)
 			listeCartes_.push_back(nomCarte);
-			
-		}
 
 		lectureOK = true;
 	}

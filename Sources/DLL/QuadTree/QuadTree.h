@@ -24,26 +24,48 @@ class QuadTree
 {
 public:
 
-	QuadTree(glm::ivec3 inferieurGauche, glm::ivec3 superieurDroit);
+	// Constructeur pour le 1er QuadTree
+	QuadTree(glm::dvec3 inferieurGauche, glm::dvec3 superieurDroit);
+
+	// Destructeur
 	~QuadTree();
 
+	// Insérer des noeuds dans le QuadTree
 	bool insert(NoeudAbstrait* noeud);
+
+	// Retourne la liste des objets se trouvant dans le même quand que le noeud passé en paramètre
 	std::vector<NoeudAbstrait*> retrieve(NoeudAbstrait* noeud);
 
 
 private:
 
-	QuadTree(int level, glm::ivec3 inferieurGauche, glm::ivec3 superieurDroit);
+	// Constructeur pour les sous QuadTree
+	QuadTree(int level, glm::dvec3 inferieurGauche, glm::dvec3 superieurDroit);
+
+	// Diviser le QuadTree lorsque la capacité maximale est atteinte
 	void divide();
+
+	// Vider le QuadTree et les sous QuadTree
 	void clear();
 
-	const int MAX_CAPACITY = 10;
-	const int MAX_LEVEL = 3;
+	// Vérifier si l'objet est dans le QuadTree
+	bool estDansQuadTree(NoeudAbstrait* noeud, QuadTree* quad) const;
 
+	// Retourne le QuadTree dans lequel il faut faire l'insertion
+	QuadTree* obtenirQuadrant(NoeudAbstrait* noeud);
+
+	// Propriétés du QuadTree
+	const int MAX_CAPACITY = 5;
+	const int MAX_LEVEL = 3;
 	int niveauCourant_;
-	glm::ivec3 inferieurGauche_, superieurDroit_;
+
+	// Pour délimiter l'espace du QuadTree
+	glm::dvec3 inferieurGauche_, superieurDroit_;
+
+	// Contient la liste des objets appartenant au QuadTree
 	std::vector<NoeudAbstrait*> objets_;
 
+	// Pour la subdivision du QuadTree en sous QuadTree
 	QuadTree* nordEst_;
 	QuadTree* nordOuest_;
 	QuadTree* sudEst_;
