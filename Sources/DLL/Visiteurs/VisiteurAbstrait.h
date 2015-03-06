@@ -22,6 +22,7 @@ class NoeudGenerateurBille;
 class NoeudPortail;
 class NoeudPaletteG;
 class NoeudPaletteD;
+class NoeudComposite;
 
 
 ///////////////////////////////////////////////////////////////////////////
@@ -68,6 +69,9 @@ public:
 
 	/// Si traiter(NoeudPaletteD*) n'est pas reimplemente, appeler celui de NoeudAbstrait qui appelle traiter(NoeudAbstrait*), qui EST reimplementee.
 	virtual bool traiter(NoeudPaletteD* noeud){ return traiter((NoeudAbstrait*)noeud); };
+
+	/// Si traiter(NoeudComposite*) n'est pas reimplemente, appeler celui de NoeudAbstrait qui appelle traiter(NoeudAbstrait*), qui EST reimplementee.
+	virtual bool traiter(NoeudComposite* noeud){ return traiter((NoeudAbstrait*)noeud); };
 
 };
 

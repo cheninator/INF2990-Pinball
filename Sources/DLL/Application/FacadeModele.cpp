@@ -362,7 +362,9 @@ int FacadeModele::selectionnerObjetSousPointClique(int i, int j, int hauteur, in
 
 	int valeurStencil = 0;
 	glReadPixels(i ,hauteur -j , 1, 1, GL_STENCIL_INDEX, GL_UNSIGNED_INT, &valeurStencil);
-	
+	// Merci de laisser le cout pour que je puisse le décommenter au besoin
+	//std::cout << "Valeur du stencil sous le curseur " << valeurStencil << std::endl
+	//	<< "============= Visite des noeuds ========================" << std::endl;
 	if (!ctrlDown)
 	{
 		VisiteurSelection visSel(pointDansLeMonde, valeurStencil);

@@ -8,6 +8,8 @@
 #include "VisiteurSelection.h"
 #include "../Arbre/ArbreRenduINF2990.h"
 #include "../Arbre/Noeuds/NoeudTable.h"
+#include "../Arbre/Noeuds/NoeudPortail.h"
+#include <iostream>
 
 
 ////////////////////////////////////////////////////////////////////////
@@ -121,7 +123,10 @@ bool VisiteurSelection::traiter(NoeudTable* table)
 ////////////////////////////////////////////////////////////////////////
 bool VisiteurSelection::traiter(NoeudAbstrait* noeud)
 {
-	if (valeurStencil_ == noeud->getNumero() && noeud->estSelectionnable())
+	// Merci de laisser le cout pour que je puisse le décommenter au besoin
+	//std::cout << "Visite d'un noeud de type " << noeud->getType()
+		//<< " avec numéro " << noeud->getNumero() << std::endl;
+	if (valeurStencil_ == noeud->getNumero())
 		noeud->assignerSelection(true);
 	else
 		noeud->assignerSelection(false);
@@ -132,3 +137,16 @@ bool VisiteurSelection::traiter(NoeudAbstrait* noeud)
 	return true;
 }
 
+
+bool VisiteurSelection::traiter(NoeudPortail* noeud)
+{
+	// Merci de laisser le cout pour que je puisse le décommenter au besoin
+	//std::cout << "Visite d'un noeudPortail de type " << noeud->getType()
+		//<< " avec numéro " << noeud->getNumero() << std::endl;
+	if (valeurStencil_ - 1 == noeud->getNumero())
+		noeud->assignerSelection(true);
+	else
+		noeud->assignerSelection(false);
+
+	return true;
+}
