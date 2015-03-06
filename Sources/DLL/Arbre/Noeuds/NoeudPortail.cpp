@@ -109,6 +109,11 @@ void NoeudPortail::afficherConcret() const
 ////////////////////////////////////////////////////////////////////////
 void NoeudPortail::animer(float temps)
 {
+	if (enfants_.size() == 0)
+		return;
+	getEnfant(0)->assignerAffiche(debug_);
+	getEnfant(0)->setTransparent(transparent_);
+	getEnfant(0)->assignerSelection(selectionne_);
 }
 
 ////////////////////////////////////////////////////////////////////////

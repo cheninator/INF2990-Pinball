@@ -42,6 +42,8 @@ public:
 private:
 
 	std::vector<NoeudAbstrait*> copies_;	///< Contient les copies des objets selectionnes
+	NoeudAbstrait* torus;
+	NoeudAbstrait* torusJumeau;
 	ArbreRenduINF2990* arbreTemp;			///< Pointeur vers l'arbre de rendu original
 };
 

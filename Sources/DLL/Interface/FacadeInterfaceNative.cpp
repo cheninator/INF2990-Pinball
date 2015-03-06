@@ -53,6 +53,7 @@ extern "C"
 	// Nvm, c'est devenue une necesite, donc garder ces variables absolument
 	static NoeudAbstrait* objet = new NoeudAbstrait();
 	static NoeudAbstrait* objet_temp = new NoeudAbstrait();
+	static NoeudAbstrait* torus = new NoeudAbstrait();
 	static bool debugMode[4] = { false };
 
 	// Useless, pas d'orbite en ce moment
@@ -332,6 +333,7 @@ extern "C"
 		else if (nomObjet == "portail")
 			objet->setDebug(debugMode[3]);
 		FacadeModele::obtenirInstance()->obtenirArbreRenduINF2990()->getEnfant(0)->ajouter(objet);
+
 	}
 
 
@@ -372,6 +374,7 @@ extern "C"
 															int posX, int posY, int posZ, 
 															float angleX, float angleY, float angleZ)
 	{
+
 		// Meme chose que dans creer objet, sauf que je test le nouvel objet avant de l'ajouter a l'arbre.
 		// Pour pouvoir tester l'objet avant de l'ajouter, je dois setter ses proprietes
 
@@ -400,8 +403,6 @@ extern "C"
 				objet->assignerSelection(true);
 			}
 		}
-		
-
 		// Assigner les proprietes a l'objet
 		// =================================
 		
@@ -442,6 +443,8 @@ extern "C"
 			// Si l'objet est legal, l'ajouter a la table, sinon, on le scrap
 			if (nomObjet == "portail")
 				objet->setDebug(debugMode[3]);
+			torus = FacadeModele::obtenirInstance()->obtenirArbreRenduINF2990()->creerNoeud("portailtorus");
+			objet->ajouter(torus);
 			FacadeModele::obtenirInstance()->obtenirArbreRenduINF2990()->getEnfant(0)->ajouter(objet);
 			return true;
 		}

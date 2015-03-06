@@ -106,6 +106,9 @@ void NoeudPortailTorus::animer(float temps)
 ////////////////////////////////////////////////////////////////////////
 bool NoeudPortailTorus::accepterVisiteur(VisiteurAbstrait* vis)
 {
+	return false;
+		// Je ne prend d'ordre de personne ! Sauf mon noeudPortail
+
 	bool reussi = false;
 
 	if (vis->traiter(this))
