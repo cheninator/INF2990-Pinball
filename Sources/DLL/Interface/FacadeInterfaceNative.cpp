@@ -708,6 +708,7 @@ extern "C"
 	{
 		FacadeModele::obtenirInstance()->obtenirArbreRenduINF2990()->vider();
 		FacadeModele::obtenirInstance()->obtenirArbreRenduINF2990()->initialiserXML(std::string(path));
+		FacadeModele::obtenirInstance()->setDebug(debugMode[1], debugMode[3]);
 		return FacadeModele::obtenirInstance()->obtenirArbreRenduINF2990()->obtenirProprietes();
 	}
 
@@ -954,6 +955,7 @@ extern "C"
 	__declspec(dllexport) void __cdecl  dupliquerSelection(int i, int j)
 	{
 		FacadeModele::obtenirInstance()->dupliquerSelection(i, j);
+		FacadeModele::obtenirInstance()->setDebug(debugMode[1], debugMode[3]);
 	}
 
 	///////////////////////////////////////////////////////////////////////////////
