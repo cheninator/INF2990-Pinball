@@ -217,6 +217,19 @@ bool NoeudAbstrait::ajouter(NoeudAbstrait* enfant)
 	return false;
 }
 
+
+////////////////////////////////////////////////////////////////////////
+///
+/// @fn unsigned int NoeudAbstrait::getEnfant(int position)
+///
+/// Elle retourne toujours 0 pour la classe de base, car cette
+/// derniere ne possede pas d'enfant.
+///
+/// @param[in] position: position a obtenir
+///
+/// @return Le nombre d'enfants directement sous ce noeud.
+///
+////////////////////////////////////////////////////////////////////////
 NoeudAbstrait* NoeudAbstrait::getEnfant(int position)
 {
 	return nullptr;
@@ -239,6 +252,7 @@ unsigned int NoeudAbstrait::obtenirNombreEnfants() const
 	return 0;
 }
 
+// Aucune idee pk c'est ici
 modele::Modele3D const* NoeudAbstrait::obtenirModele() const
 {
 	return modele_;
@@ -739,5 +753,5 @@ bool NoeudAbstrait::pointEstDansBoite(glm::dvec3 point)
 ////////////////////////////////////////////////////////////////////////
 void NoeudAbstrait::setDebug(bool debug)
 {
-	return;
+	debug_ = debug;
 }

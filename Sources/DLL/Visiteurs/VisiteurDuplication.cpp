@@ -147,7 +147,7 @@ bool VisiteurDuplication::traiter(NoeudAbstrait* noeud)
 			// Relier les jumeaux
 			copieJumeau->setTwin(copie);
 			copie->setTwin(copieJumeau);
-
+			
 			// Ajouter les copies dans une structure de donnee
 			copies_.push_back(copie);
 			copies_.push_back(copieJumeau);

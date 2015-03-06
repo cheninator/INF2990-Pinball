@@ -47,18 +47,6 @@ void printCurrentTime() {
 		<< std::fixed << std::setfill('0') << std::setw(3) << std::setprecision(3) << time.wMilliseconds;
 }
 
-void setAllTorus() {
-	std::cout << "Je fais des choses ! \n";
-	int nbElement = FacadeModele::obtenirInstance()->obtenirArbreRenduINF2990()->getEnfant(0)->obtenirNombreEnfants();
-	for (int i = 0; i < nbElement; i++) {
-		if (FacadeModele::obtenirInstance()->obtenirArbreRenduINF2990()->getEnfant(0)->getEnfant(i)->obtenirType() == "portail"
-			&& FacadeModele::obtenirInstance()->obtenirArbreRenduINF2990()->getEnfant(0)->getEnfant(i)->obtenirNombreEnfants() == 0)
-			FacadeModele::obtenirInstance()->obtenirArbreRenduINF2990()->ajouterTorus(
-			FacadeModele::obtenirInstance()->obtenirArbreRenduINF2990()->getEnfant(0)->getEnfant(i));
-	}
-	return;
-}
-
 extern "C"
 {
 	// TO DO : SUPPRIMER CETTE VARIABLE QUAND PLUS NECESSAIRE
@@ -110,7 +98,6 @@ extern "C"
 		std::cout << std::endl << "Initialisation de l'openGL en cours..." << std::endl;
 		FacadeModele::obtenirInstance()->initialiserOpenGL((HWND)handle);
 		FacadeModele::obtenirInstance()->setDebug(debugMode[1], debugMode[3]);
-		setAllTorus();
 	}
 
 
@@ -455,7 +442,6 @@ extern "C"
 			// Si l'objet est legal, l'ajouter a la table, sinon, on le scrap
 			if (nomObjet == "portail")
 				objet->setDebug(debugMode[3]);
-			FacadeModele::obtenirInstance()->obtenirArbreRenduINF2990()->ajouterTorus(objet);
 			FacadeModele::obtenirInstance()->obtenirArbreRenduINF2990()->getEnfant(0)->ajouter(objet);
 			return true;
 		}
@@ -722,7 +708,6 @@ extern "C"
 	{
 		FacadeModele::obtenirInstance()->obtenirArbreRenduINF2990()->vider();
 		FacadeModele::obtenirInstance()->obtenirArbreRenduINF2990()->initialiserXML(std::string(path));
-		setAllTorus();
 		return FacadeModele::obtenirInstance()->obtenirArbreRenduINF2990()->obtenirProprietes();
 	}
 
@@ -969,7 +954,6 @@ extern "C"
 	__declspec(dllexport) void __cdecl  dupliquerSelection(int i, int j)
 	{
 		FacadeModele::obtenirInstance()->dupliquerSelection(i, j);
-		setAllTorus();
 	}
 
 	///////////////////////////////////////////////////////////////////////////////
