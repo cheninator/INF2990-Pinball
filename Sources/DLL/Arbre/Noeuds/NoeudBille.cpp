@@ -139,16 +139,17 @@ void NoeudBille::animer(float temps) // rajouter des parametres ou une fonction 
 		nouvelleVitesse = (-composanteNormale + composanteTangentielle) + (double)temps * forceTotale / masse_;
 		
 		if(debug_) {
+
 			SYSTEMTIME time;
 			GetSystemTime(&time);
 			std::cout << std::fixed << std::setw(2) << std::setprecision(2) << time.wHour << ":"
-				<< std::fixed << std::setfill('0') << std::setw(2) << std::setprecision(2) << time.wHour << ":"
+				<< std::fixed << std::setfill('0') << std::setw(2) << std::setprecision(2) << time.wMinute << ":"
 				<< std::fixed << std::setfill('0') << std::setw(2) << std::setprecision(2) << time.wSecond << ":"
 				<< std::fixed << std::setfill('0') << std::setw(3) << std::setprecision(3) << time.wMilliseconds;
 
-			std::cout << " - Vitesse : { x : " 
+			std::cout << " - Vitesse : { x : "
 				<< std::fixed << std::setfill('0') << std::setw(2) << std::setprecision(2) << nouvelleVitesse.x << "   y : "
-				<< std::fixed << std::setfill('0') << std::setw(2) << std::setprecision(2) << nouvelleVitesse.y << " }" << std::endl;	
+				<< std::fixed << std::setfill('0') << std::setw(2) << std::setprecision(2) << nouvelleVitesse.y << " }"<< std::endl;	
 		}
 	}
 	else
