@@ -217,6 +217,10 @@ bool NoeudAbstrait::ajouter(NoeudAbstrait* enfant)
 	return false;
 }
 
+NoeudAbstrait* NoeudAbstrait::getEnfant(int position)
+{
+	return nullptr;
+}
 
 ////////////////////////////////////////////////////////////////////////
 ///

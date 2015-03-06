@@ -101,9 +101,6 @@ FacadeModele* FacadeModele::obtenirInstance()
 		instance_ = new FacadeModele();
 		instance_->configuration_ = new ConfigScene();
 	}
-
-
-
 	return instance_;
 }
 
@@ -952,8 +949,6 @@ void FacadeModele::setPause( bool pause)
 	FacadeModele::obtenirInstance()->obtenirArbreRenduINF2990()->accepterVisiteur(visiteur);
 	delete visiteur;
 }
-
-
 
 ///////////////////////////////////////////////////////////////////////////////
 ///

@@ -61,6 +61,8 @@ public:
    virtual bool ajouter( NoeudAbstrait* enfant );
    /// Obtient le nombre d'enfants du noeud.
    virtual unsigned int obtenirNombreEnfants() const;
+   /// Obtenir l'enfant
+   virtual NoeudAbstrait* getEnfant(int i);
 
    /// Efface les enfants selectionnes.
    virtual void effacerSelection();
@@ -79,9 +81,7 @@ public:
    virtual void afficherConcret() const;
    /// Anime le noeud.
    virtual void animer( float dt );
-
-   virtual NoeudAbstrait* getEnfant(int i) { return enfants_[i]; };
-
+   
 protected:
    /// Le choix du conteneur pour les enfants.
 	using conteneur_enfants = std::vector<NoeudAbstrait*>;

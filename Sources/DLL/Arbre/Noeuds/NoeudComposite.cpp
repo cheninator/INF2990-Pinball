@@ -281,6 +281,24 @@ unsigned int NoeudComposite::obtenirNombreEnfants() const
 	return static_cast<unsigned int> (enfants_.size());
 }
 
+////////////////////////////////////////////////////////////////////////
+///
+/// @fn unsigned int NoeudComposite::obtenirNombreEnfants() const
+///
+/// Retourne le nombre d'enfants directement sous ce noeud.  Elle ne
+/// donne pas le nombre total de descendants, mais bien le nombre de
+/// ceux qui sont directement sous ce noeud.
+///
+/// @return Le nombre d'enfants directement sous ce noeud.
+///
+////////////////////////////////////////////////////////////////////////
+NoeudAbstrait* NoeudComposite::getEnfant(int i)
+{ 
+	if (enfants_.size() > i)
+		return enfants_[i];
+	else
+		return nullptr;
+}
 
 ////////////////////////////////////////////////////////////////////////
 ///

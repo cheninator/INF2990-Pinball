@@ -156,6 +156,9 @@ public:
 	/// Ajoute un noeud enfant.
 	virtual bool ajouter(NoeudAbstrait* enfant);
 
+	/// Obtenir les enfants du noeud si il y a lieu
+	virtual NoeudAbstrait* getEnfant(int position);
+
 	/// Obtient le nombre d'enfants du noeud.
 	virtual unsigned int obtenirNombreEnfants() const;
 
