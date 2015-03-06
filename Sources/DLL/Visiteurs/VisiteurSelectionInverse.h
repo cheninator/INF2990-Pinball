@@ -39,6 +39,7 @@ public:
 	virtual bool traiter(ArbreRenduINF2990* arbre);
 	virtual bool traiter(NoeudAbstrait* noeud);
 	virtual bool traiter(NoeudTable* table);
+	virtual bool traiter(NoeudPortail* noeud);
 
 	//////////////////////////////////////////////////////////////////////////
 	///

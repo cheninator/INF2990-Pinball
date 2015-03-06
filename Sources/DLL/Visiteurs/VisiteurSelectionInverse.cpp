@@ -8,6 +8,7 @@
 #include "VisiteurSelectionInverse.h"
 #include "../Arbre/ArbreRenduINF2990.h"
 #include "../Arbre/Noeuds/NoeudTable.h"
+#include "../Arbre/Noeuds/NoeudPortail.h"
 
 
 ////////////////////////////////////////////////////////////////////////
@@ -125,10 +126,7 @@ bool VisiteurSelectionInverse::traiter(NoeudTable* table)
 ////////////////////////////////////////////////////////////////////////
 bool VisiteurSelectionInverse::traiter(NoeudAbstrait* noeud)
 {
-	double distance = glm::dot(pointDansLeMonde_ - noeud->obtenirPositionRelative(), pointDansLeMonde_ - noeud->obtenirPositionRelative());
-	distance = sqrt(distance);
-	
-	if (valeurStencil_ == noeud->getNumero() && noeud->estSelectionnable() /*&& noeud->estModifiable()*/)
+	if (valeurStencil_ - 1== noeud->getNumero() && noeud->estSelectionnable() /*&& noeud->estModifiable()*/)
 	{
 
 		if (noeud->estSelectionne())
@@ -140,6 +138,25 @@ bool VisiteurSelectionInverse::traiter(NoeudAbstrait* noeud)
 
 		if (noeud->estSelectionne())
 			nbObjetsSelectionne_++;
+
+	return true;
+
+}
+
+bool VisiteurSelectionInverse::traiter(NoeudPortail* noeud)
+{
+	if (valeurStencil_ - 1 == noeud->getNumero() && noeud->estSelectionnable() /*&& noeud->estModifiable()*/)
+	{
+
+		if (noeud->estSelectionne())
+			noeud->assignerSelection(false);
+
+		else
+			noeud->assignerSelection(true);
+	}
+
+	if (noeud->estSelectionne())
+		nbObjetsSelectionne_++;
 
 	return true;
 
