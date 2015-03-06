@@ -40,11 +40,11 @@ BSTR stringToBSTR(std::string str) {
 
 void printCurrentTime() {
 	SYSTEMTIME time;
-	GetSystemTime(&time);
-	std::cout << std::fixed << std::setw(2) << std::setprecision(2) << time.wHour << ":" 
-		<< std::fixed << std::setw(2) << std::setprecision(2) << time.wMinute << ":"
-		<< std::fixed << std::setw(2) << std::setprecision(2) << time.wSecond << ":"
-		<< std::fixed << std::setw(3) << std::setprecision(3) << time.wMilliseconds;
+	GetLocalTime(&time);
+	std::cout << std::fixed << std::setw(2) << std::setprecision(2) << time.wHour << ":"
+		<< std::fixed << std::setfill('0') << std::setw(2) << std::setprecision(2) << time.wMinute << ":"
+		<< std::fixed << std::setfill('0') << std::setw(2) << std::setprecision(2) << time.wSecond << ":"
+		<< std::fixed << std::setfill('0') << std::setw(3) << std::setprecision(3) << time.wMilliseconds;
 }
 
 extern "C"

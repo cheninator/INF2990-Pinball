@@ -141,7 +141,7 @@ void NoeudBille::animer(float temps) // rajouter des parametres ou une fonction 
 		if(debug_) {
 
 			SYSTEMTIME time;
-			GetSystemTime(&time);
+			GetLocalTime(&time);
 			std::cout << std::fixed << std::setw(2) << std::setprecision(2) << time.wHour << ":"
 				<< std::fixed << std::setfill('0') << std::setw(2) << std::setprecision(2) << time.wMinute << ":"
 				<< std::fixed << std::setfill('0') << std::setw(2) << std::setprecision(2) << time.wSecond << ":"
