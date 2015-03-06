@@ -78,7 +78,8 @@ extern "C" {
 	__declspec(dllexport) BSTR obtenirDerniereCampagne();
 	__declspec(dllexport) void creerFichierCampagne(char* nomFichier, int length);
 	__declspec(dllexport) void supprimerBille();
-
+	__declspec(dllexport) void consolDebug(bool dbg1, bool dbg2, bool dbg3, bool dbg4);
+	__declspec(dllexport) bool spotLight(int lum, bool state);
 }
 
 #endif // __FACADE_INTERFACE_NATIVE_H__

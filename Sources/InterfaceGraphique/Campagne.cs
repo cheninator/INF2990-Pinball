@@ -172,10 +172,11 @@ namespace InterfaceGraphique
              ZoneInfo zi = new ZoneInfo(ZonesChoisis.Items[0].Text, ZonesChoisis.Items[0].SubItems[1].Text);
              this.Hide();
              zi.ShowDialog();
+             ((MainMenu)this.Owner).LancerModeJeu(zonesCampagne);
+
              //this.Show();
             // modeJeu = new ModeJeu(zonesCampagne);
             // modeJeu.ShowDialog();
-             ((MainMenu)this.Owner).LancerModeJeu(zonesCampagne);
            //  this.Show();
            //  this.Close();
               

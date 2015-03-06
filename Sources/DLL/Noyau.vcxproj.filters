@@ -204,6 +204,12 @@
     <ClCompile Include="Visiteurs\VisiteurPause.cpp">
       <Filter>Source Files\Visiteurs</Filter>
     </ClCompile>
+    <ClCompile Include="Visiteurs\VisiteurDebug.cpp">
+      <Filter>Source Files\Visiteurs</Filter>
+    </ClCompile>
+    <ClCompile Include="Arbre\Noeuds\NoeudPortailTorus.cpp">
+      <Filter>Source Files\Arbre\Noeuds</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Application\FacadeModele.h">
@@ -394,6 +400,15 @@
     </ClInclude>
     <ClInclude Include="Visiteurs\VisiteurPause.h">
       <Filter>Header Files\Visiteurs</Filter>
+    </ClInclude>
+    <ClInclude Include="Visiteurs\VisiteurDebug.h">
+      <Filter>Header Files\Visiteurs</Filter>
+    </ClInclude>
+    <ClInclude Include="Arbre\Usines\UsineNoeudPortailTorus.h">
+      <Filter>Header Files\Arbre\Usines</Filter>
+    </ClInclude>
+    <ClInclude Include="Arbre\Noeuds\NoeudPortailTorus.h">
+      <Filter>Header Files\Arbre\Noeuds</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

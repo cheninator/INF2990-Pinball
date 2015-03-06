@@ -18,6 +18,7 @@
 #include "Usines/UsineNoeudPaletteD.h"
 #include "Usines/UsineNoeudPaletteG.h"
 #include "Usines/UsineNoeudPortail.h"
+#include "Usines/UsineNoeudPortailTorus.h"
 #include "Usines/UsineNoeudRessort.h"
 #include "Usines/UsineNoeudTrou.h"
 #include "Usines/UsineNoeudVide.h"
@@ -26,6 +27,7 @@
 #include "../QuadTree/QuadTree.h"
 
 #include "EtatOpenGL.h"
+#include <iomanip>
 
 
 const std::string ArbreRenduINF2990::NOM_BUTOIRD{ "butoird" };
@@ -38,6 +40,7 @@ const std::string ArbreRenduINF2990::NOM_MUR{ "mur" };
 const std::string ArbreRenduINF2990::NOM_PALETTED{ "paletted" };
 const std::string ArbreRenduINF2990::NOM_PALETTEG{ "paletteg" };
 const std::string ArbreRenduINF2990::NOM_PORTAIL{ "portail" };
+const std::string ArbreRenduINF2990::NOM_PORTAILTORUS{ "portailtorus" };
 const std::string ArbreRenduINF2990::NOM_RESSORT{ "ressort" };
 const std::string ArbreRenduINF2990::NOM_TROU{ "trou" };
 const std::string ArbreRenduINF2990::NOM_VIDE{ "vide" };
@@ -59,37 +62,41 @@ const std::string ArbreRenduINF2990::NOM_TABLE{ "table" };
 ArbreRenduINF2990::ArbreRenduINF2990(bool afficher)
 {
 	// Construction des usines
-	if (afficher) std::cout << "  0,00%... ajout de l'usine Boutoire Droit" << std::endl;
+	int i = 16;
+	int j = 0;
+	if (afficher) std::cout << std::fixed << std::setw(2) << std::setprecision(2) << j++ * 100.0 / i << "%... ajout de l'usine Boutoire Droit" << std::endl;
 	ajouterUsine(NOM_BUTOIRD, new UsineNoeudButoirD{ NOM_BUTOIRD });
-	if (afficher) std::cout << "  6,66%... ajout de l'usine Boutoire Gauche" << std::endl;
+	if (afficher) std::cout << std::fixed << std::setw(2) << std::setprecision(2) << j++ * 100.0 / i << "%... ajout de l'usine Boutoire Gauche" << std::endl;
 	ajouterUsine(NOM_BUTOIRG, new UsineNoeudButoirG{ NOM_BUTOIRG });
-	if (afficher) std::cout << " 13.33%... ajout de l'usine Boutoire Circulaire" << std::endl;
+	if (afficher) std::cout << std::fixed << std::setw(2) << std::setprecision(2) << j++ * 100.0 / i << "%... ajout de l'usine Boutoire Circulaire" << std::endl;
 	ajouterUsine(NOM_BUTOIRCIRCULAIRE, new UsineNoeudButoirCirculaire{ NOM_BUTOIRCIRCULAIRE });
-	if (afficher) std::cout << " 20,00%... ajout de l'usine Cible" << std::endl;
+	if (afficher) std::cout << std::fixed << std::setw(2) << std::setprecision(2) << j++ * 100.0 / i << "%... ajout de l'usine Cible" << std::endl;
 	ajouterUsine(NOM_CIBLE, new UsineNoeudCible{ NOM_CIBLE });
-	if (afficher) 	std::cout << " 26,66%... ajout de l'usine Bille" << std::endl;
+	if (afficher) std::cout << std::fixed << std::setw(2) << std::setprecision(2) << j++ * 100.0 / i << "%... ajout de l'usine Bille" << std::endl;
 	ajouterUsine(NOM_BILLE, new UsineNoeudBille{ NOM_BILLE });
-	if (afficher) 	std::cout << " 33,33%... ajout de l'usine Generateur Bille" << std::endl;
+	if (afficher) std::cout << std::fixed << std::setw(2) << std::setprecision(2) << j++ * 100.0 / i << "%... ajout de l'usine Generateur Bille" << std::endl;
 	ajouterUsine(NOM_GENERATEURBILLE, new UsineNoeudGenerateurBille{ NOM_GENERATEURBILLE });
-	if (afficher) 	std::cout << " 40,00%... ajout de l'usine Mur" << std::endl;
+	if (afficher) std::cout << std::fixed << std::setw(2) << std::setprecision(2) << j++ * 100.0 / i << "%... ajout de l'usine Mur" << std::endl;
 	ajouterUsine(NOM_MUR, new UsineNoeudMur{ NOM_MUR });
-	if (afficher) 	std::cout << " 46,66%... ajout de l'usine Palette Droite" << std::endl;
+	if (afficher) std::cout << std::fixed << std::setw(2) << std::setprecision(2) << j++ * 100.0 / i << "%... ajout de l'usine Palette Droite" << std::endl;
 	ajouterUsine(NOM_PALETTED, new UsineNoeudPaletteD{ NOM_PALETTED });
-	if (afficher) 	std::cout << " 53,33%... ajout de l'usine Palette Gauche" << std::endl;
+	if (afficher) std::cout << std::fixed << std::setw(2) << std::setprecision(2) << j++ * 100.0 / i << "%... ajout de l'usine Palette Gauche" << std::endl;
 	ajouterUsine(NOM_PALETTEG, new UsineNoeudPaletteG{ NOM_PALETTEG });
-	if (afficher) 	std::cout << " 60,00%... ajout de l'usine Portail" << std::endl;
+	if (afficher) std::cout << std::fixed << std::setw(2) << std::setprecision(2) << j++ * 100.0 / i << "%... ajout de l'usine Portail" << std::endl;
 	ajouterUsine(NOM_PORTAIL, new UsineNoeudPortail{ NOM_PORTAIL });
-	if (afficher) 	std::cout << " 66,66%... ajout de l'usine Ressort" << std::endl;
+	if (afficher) std::cout << std::fixed << std::setw(2) << std::setprecision(2) << j++ * 100.0 / i << "%... ajout de l'usine PortailTorus" << std::endl;
+	ajouterUsine(NOM_PORTAILTORUS, new UsineNoeudPortailTorus{ NOM_PORTAILTORUS });
+	if (afficher) std::cout << std::fixed << std::setw(2) << std::setprecision(2) << j++ * 100.0 / i << "%... ajout de l'usine Ressort" << std::endl;
 	ajouterUsine(NOM_RESSORT, new UsineNoeudRessort{ NOM_RESSORT });
-	if (afficher) 	std::cout << " 73,33%... ajout de l'usine Trou" << std::endl;
+	if (afficher) std::cout << std::fixed << std::setw(2) << std::setprecision(2) << j++ * 100.0 / i << "%... ajout de l'usine Trou" << std::endl;
 	ajouterUsine(NOM_TROU, new UsineNoeudTrou{ NOM_TROU });
-	if (afficher) std::cout << " 80,00%... ajout de l'usine Tampon" << std::endl;
+	if (afficher) std::cout << std::fixed << std::setw(2) << std::setprecision(2) << j++ * 100.0 / i << "%... ajout de l'usine Tampon" << std::endl;
 	ajouterUsine(NOM_VIDE, new UsineNoeudVide{ NOM_VIDE });
-	if (afficher) std::cout << " 86,66%... ajout de l'usine Couvercle" << std::endl;
+	if (afficher) std::cout << std::fixed << std::setw(2) << std::setprecision(2) << j++ * 100.0 / i << "%...  ajout de l'usine Couvercle" << std::endl;
 	ajouterUsine(NOM_COUVERCLE, new UsineNoeudCouvercle{ NOM_COUVERCLE });
-	if (afficher) 	std::cout << " 93,33%... ajout de l'usine Table" << std::endl;
+	if (afficher) std::cout << std::fixed << std::setw(2) << std::setprecision(2) << j++ * 100.0 / i << "%... ajout de l'usine Table" << std::endl;
 	ajouterUsine(NOM_TABLE, new UsineNoeudTable{ NOM_TABLE });
-	if (afficher) 	std::cout << " 100%... toute les usines sont genere" << std::endl;
+	if (afficher) std::cout << std::fixed << std::setw(2) << std::setprecision(2) << j++ * 100.0 / i << "%... toute les usines sont genere" << std::endl;
 }
 
 
@@ -460,4 +467,23 @@ void ArbreRenduINF2990::takeScreenShot(char* path, int width, int height, bool s
 	// Free resources
 	FreeImage_Unload(image);
 	delete[] pixels;
+}
+
+
+
+////////////////////////////////////////////////////////////////////////
+///
+/// @fn bool ArbreRenduINF2990::ajouterTorus(NoeudAbstrait* parent);
+///
+/// @param[in] NoeudAbstrait parent : l'objet au quel engendrer un torus
+///
+/// Cette fonction rajoute un torus autour de l'objet
+///
+/// @return : Aucun.
+///
+////////////////////////////////////////////////////////////////////////
+void ArbreRenduINF2990::ajouterTorus(NoeudAbstrait* parent)
+{
+	if (parent->obtenirNombreEnfants() == 0)
+		parent->ajouter(creerNoeud(NOM_PORTAILTORUS));
 }

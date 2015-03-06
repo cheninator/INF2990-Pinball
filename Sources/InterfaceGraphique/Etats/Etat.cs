@@ -656,8 +656,6 @@ namespace InterfaceGraphique
             form_.outilCourant("Duplication");
             form_.trackCursor(true);
             form_.dupliquerSelection();  
-            
-            
         }
 
         ////////////////////////////////////////////////////////////////////////

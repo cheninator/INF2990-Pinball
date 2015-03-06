@@ -156,6 +156,9 @@ public:
 	/// Ajoute un noeud enfant.
 	virtual bool ajouter(NoeudAbstrait* enfant);
 
+	/// Obtenir les enfants du noeud si il y a lieu
+	virtual NoeudAbstrait* getEnfant(int position);
+
 	/// Obtient le nombre d'enfants du noeud.
 	virtual unsigned int obtenirNombreEnfants() const;
 
@@ -241,6 +244,8 @@ public:
 	/// Mettre le mode pause on ou off
 	void assignerPause(bool pause);
 
+	/// Activer ou desactiver le mode debug.
+	virtual void setDebug(bool debug);
 
 protected:
 
@@ -308,6 +313,9 @@ protected:
 
 	/// Mode pause
 	bool pause_;
+
+	/// Mode Debug de la bille
+	bool debug_{ false };
 
 	glm::dvec3 vitesse_{0.0,0.0, 0.0 };
 

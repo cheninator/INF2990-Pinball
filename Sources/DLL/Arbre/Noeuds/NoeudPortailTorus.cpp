@@ -7,7 +7,7 @@
 /// @ingroup Noeud
 ///////////////////////////////////////////////////////////////////////////
 
-#include "NoeudPortail.h"
+#include "NoeudPortailTorus.h"
 #include "Utilitaire.h"
 
 #include <windows.h>
@@ -20,7 +20,7 @@
 
 ////////////////////////////////////////////////////////////////////////
 ///
-/// @fn NoeudPortail::NoeudPortail(const std::string& typeNoeud)
+/// @fn NoeudPortail::NoeudPortailTorus(const std::string& typeNoeud)
 ///
 /// @param[in] typeNoeud :  le type du noeud a creer.
 ///
@@ -30,21 +30,21 @@
 /// @return Aucune (constructeur).
 ///
 ////////////////////////////////////////////////////////////////////////
-NoeudPortail::NoeudPortail(const std::string& typeNoeud)
+NoeudPortailTorus::NoeudPortailTorus(const std::string& typeNoeud)
 	: NoeudComposite{ typeNoeud }
 {
 }
 
 ////////////////////////////////////////////////////////////////////////
 ///
-/// @fn NoeudPortail::~NoeudPortail()
+/// @fn NoeudPortailTorus::~NoeudPortailTorus()
 ///
 /// Ce destructeur desallouee la liste d'affichage du noeud.
 ///
 /// @return Aucune (destructeur).
 ///
 ////////////////////////////////////////////////////////////////////////
-NoeudPortail::~NoeudPortail()
+NoeudPortailTorus::~NoeudPortailTorus()
 {
 	twin_ = nullptr;
 }
@@ -58,37 +58,21 @@ NoeudPortail::~NoeudPortail()
 /// @return Aucune.
 ///
 ////////////////////////////////////////////////////////////////////////
-void NoeudPortail::afficherConcret() const
+void NoeudPortailTorus::afficherConcret() const
 {
 	NoeudComposite::afficherConcret();
 	// Sauvegarde de la matrice.
 	glPushMatrix();
 	// Affichage du modele.
 	glPushAttrib(GL_ALL_ATTRIB_BITS);
-	if (colorShift_)
-		glTexEnvf(GL_TEXTURE_ENV, GL_TEXTURE_ENV_MODE, GL_BLEND);
 	if (pause_) {
 		glBlendFunc(GL_SRC_ALPHA, GL_ZERO); // Set The Blending Function For Translucency
 		glEnable(GL_BLEND);
-	}
-	else if (impossible_)
-		glColorMask(0, 1, 1, 1);
-	else if (selectionne_) {
-		glTexEnvf(GL_TEXTURE_ENV, GL_TEXTURE_ENV_MODE, GL_ADD);
-		if (twin_ != nullptr && twin_ != NULL)
-			twin_->setTransparent(true);
-
 	}
 	else if (transparent_) {
 		glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
 		glEnable(GL_BLEND);
 	}
-	else
-		if (twin_ != nullptr && twin_ != NULL)
-			twin_->setTransparent(false);
-	if (twin_ != nullptr && twin_ != NULL)
-		if(!selectionne_ && !twin_->estSelectionne())
-			twin_->setTransparent(false);
 	liste_->dessiner();
 	glPopAttrib();
 	// Restauration de la matrice.
@@ -97,7 +81,7 @@ void NoeudPortail::afficherConcret() const
 
 ////////////////////////////////////////////////////////////////////////
 ///
-/// @fn void NoeudPortail::animer(float temps)
+/// @fn void NoeudPortailTorus::animer(float temps)
 ///
 /// Cette fonction effectue l'animation du noeud pour un certain
 /// intervalle de temps. Pas d'animation pour ce type de noeud.
@@ -107,26 +91,24 @@ void NoeudPortail::afficherConcret() const
 /// @return Aucune.
 ///
 ////////////////////////////////////////////////////////////////////////
-void NoeudPortail::animer(float temps)
+void NoeudPortailTorus::animer(float temps)
 {
-	if (enfants_.size() == 0)
-		return;
-	getEnfant(0)->assignerAffiche(debug_);
-	getEnfant(0)->setTransparent(transparent_);
-	getEnfant(0)->assignerSelection(selectionne_);
 }
 
 ////////////////////////////////////////////////////////////////////////
 ///
-/// @fn bool NoeudPortail::accepterVisiteur(VisiteurAbstrait* vis)
+/// @fn bool NoeudPortailTorus::accepterVisiteur(VisiteurAbstrait* vis)
 ///
 /// Cette fonction appelle la methode traiter du visiteur.
 ///
 /// @return reussi (TRUE)
 ///
 ////////////////////////////////////////////////////////////////////////
-bool NoeudPortail::accepterVisiteur(VisiteurAbstrait* vis)
+bool NoeudPortailTorus::accepterVisiteur(VisiteurAbstrait* vis)
 {
+	return false;
+		// Je ne prend d'ordre de personne ! Sauf mon noeudPortail
+
 	bool reussi = false;
 
 	if (vis->traiter(this))
@@ -134,19 +116,4 @@ bool NoeudPortail::accepterVisiteur(VisiteurAbstrait* vis)
 
 	return reussi;
 
-}
-
-
-////////////////////////////////////////////////////////////////////////
-///
-/// @fn void NoeudPortail::setDebug(bool debug)
-///
-/// Cette fonction change al valeur du mode debug
-///
-/// @return Aucun.
-///
-////////////////////////////////////////////////////////////////////////
-void NoeudPortail::setDebug(bool debug)
-{
-	debug_ = debug;
 }

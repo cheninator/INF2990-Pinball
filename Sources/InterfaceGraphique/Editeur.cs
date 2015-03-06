@@ -57,6 +57,9 @@ namespace InterfaceGraphique
         private StringBuilder pathXML = new StringBuilder(""); ///< Chemin pour la lecture/sauvegarde XML
         private Etat etat { get; set; } ///< Machine a etat
         private int[] prop = new int[6]; ///< Proprietes du jeu a sauvegarder
+        private bool activateAmbianteLight = false; ///< Etat de la lumiere ambiante
+        private bool activateDirectLight = false; ///< Etat de la lumiere directe
+        private bool activateSpotLight = false; ///< Etat de la lumiere spot
 
         ////////////////////////////////////////////////////////////////////////
         ///
@@ -76,10 +79,11 @@ namespace InterfaceGraphique
             this.KeyUp += new KeyEventHandler(ToucheUp);
             this.Icon = Properties.Resources.Pinball;
             InitializeComponent();
+            // ON joue en mode Solo
             touches = new Touches(FonctionsNatives.obtenirTouchePGJ1(),
-                                  FonctionsNatives.obtenirTouchePGJ2(),
+                                  FonctionsNatives.obtenirTouchePGJ1(),
                                   FonctionsNatives.obtenirTouchePDJ1(),
-                                  FonctionsNatives.obtenirTouchePDJ2(),
+                                  FonctionsNatives.obtenirTouchePDJ1(),
                                   FonctionsNatives.obtenirToucheRessort());
             Program.peutAfficher = true;
             mouvementX = 100 * (double)(this.flowLayoutPanel1.Width) / (double)this.panel1.Width;
@@ -388,7 +392,25 @@ namespace InterfaceGraphique
                     testRetourModeEdition.PerformClick();
                     OnSizeChanged(e);
                 }
-                if (e.KeyChar == (char)Keys.Escape)
+                else if (e.KeyChar == 'j')
+                {
+                    //Console.WriteLine("LUMIERE AMBIANTE");
+                    activateAmbianteLight = !activateAmbianteLight;
+                    FonctionsNatives.spotLight(0, activateAmbianteLight);
+                }
+                else if (e.KeyChar == 'k')
+                {
+                    //Console.WriteLine("LUMIERE DIRECTE");
+                    activateDirectLight = !activateDirectLight;
+                    FonctionsNatives.spotLight(1, activateDirectLight);
+                }
+                else if (e.KeyChar == 'l')
+                {
+                    //Console.WriteLine("LUMIERE SPOTS");
+                    activateSpotLight = !activateSpotLight;
+                    FonctionsNatives.spotLight(2, activateSpotLight);
+                }
+                else if (e.KeyChar == (char)Keys.Escape)
                 {
                     menuStrip3.Show();
                     peutAnimer = false;

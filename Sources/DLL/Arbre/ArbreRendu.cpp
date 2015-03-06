@@ -67,7 +67,10 @@ NoeudAbstrait* ArbreRendu::creerNoeud(
 
 	const UsineNoeud* usine{ (*(usines_.find(typeNouveauNoeud))).second };
 
-	return usine->creerNoeud();
+	NoeudAbstrait* monNoeud = usine->creerNoeud();
+	if (typeNouveauNoeud == "portail")
+		monNoeud->ajouter(this->creerNoeud("portailtorus"));
+	return monNoeud;
 }
 
 

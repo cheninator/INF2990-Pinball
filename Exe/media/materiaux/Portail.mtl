@@ -1,4 +1,4 @@
-# Blender MTL File: 'teleport.blend'
+# Blender MTL File: 'portail.blend'
 # Material Count: 6
 
 newmtl Base
@@ -9,8 +9,8 @@ Ks 0.500000 0.500000 0.500000
 Ni 1.000000
 d 1.000000
 illum 2
-map_Kd materiaux/texture/teleporter/electric.jpg
-map_d materiaux/texture/teleporter/electric.jpg
+map_Kd materiaux/texture/portail/electric.jpg
+map_d materiaux/texture/portail/electric.jpg
 
 newmtl DownBeam
 Ns 96.078431
@@ -20,8 +20,8 @@ Ks 0.500000 0.500000 0.500000
 Ni 1.000000
 d 1.000000
 illum 2
-map_Kd materiaux/texture/teleporter/beam.jpg
-map_d materiaux/texture/teleporter/beam.jpg
+map_Kd materiaux/texture/portail/beam.jpg
+map_d materiaux/texture/portail/beam.jpg
 
 newmtl Material
 Ns 96.078431
@@ -40,8 +40,8 @@ Ks 0.500000 0.500000 0.500000
 Ni 1.000000
 d 1.000000
 illum 2
-map_Kd materiaux/texture/teleporter/electronic.jpg
-map_d materiaux/texture/teleporter/electronic.jpg
+map_Kd materiaux/texture/portail/electronic.jpg
+map_d materiaux/texture/portail/electronic.jpg
 
 newmtl Pilone2
 Ns 96.078431
@@ -51,8 +51,8 @@ Ks 0.500000 0.500000 0.500000
 Ni 1.000000
 d 1.000000
 illum 2
-map_Kd materiaux/texture/teleporter/electronic.jpg
-map_d materiaux/texture/teleporter/electronic.jpg
+map_Kd materiaux/texture/portail/electronic.jpg
+map_d materiaux/texture/portail/electronic.jpg
 
 newmtl TeleporteurBeam
 Ns 96.078431
@@ -62,5 +62,5 @@ Ks 0.500000 0.500000 0.500000
 Ni 1.000000
 d 1.000000
 illum 2
-map_Kd materiaux/texture/teleporter/beam.jpg
-map_d materiaux/texture/teleporter/beam.jpg
+map_Kd materiaux/texture/portail/beam.jpg
+map_d materiaux/texture/portail/beam.jpg

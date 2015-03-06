@@ -17,13 +17,16 @@
 #include "ArbreRenduINF2990.h"
 #include "CompteurAffichage.h"
 
+#include <iomanip>
 #include <iostream>
+
 #include <ctime>        // std::time
 #include <cstdlib>      // std::rand, std::srand
 #include <windows.h>
 #include "BancTests.h"
 
 BSTR stringToBSTR(std::string str) {
+	// http://www.sluse.com/view/6284524
 	int wslen = ::MultiByteToWideChar(CP_ACP, 0 /* no flags */,
 		str.data(), (int)str.length(),
 		NULL, 0);
@@ -35,12 +38,22 @@ BSTR stringToBSTR(std::string str) {
 	return wsdata;
 }
 
+void printCurrentTime() {
+	SYSTEMTIME time;
+	GetLocalTime(&time);
+	std::cout << std::fixed << std::setw(2) << std::setprecision(2) << time.wHour << ":"
+		<< std::fixed << std::setfill('0') << std::setw(2) << std::setprecision(2) << time.wMinute << ":"
+		<< std::fixed << std::setfill('0') << std::setw(2) << std::setprecision(2) << time.wSecond << ":"
+		<< std::fixed << std::setfill('0') << std::setw(3) << std::setprecision(3) << time.wMilliseconds;
+}
+
 extern "C"
 {
 	// TO DO : SUPPRIMER CETTE VARIABLE QUAND PLUS NECESSAIRE
 	// Nvm, c'est devenue une necesite, donc garder ces variables absolument
 	static NoeudAbstrait* objet = new NoeudAbstrait();
 	static NoeudAbstrait* objet_temp = new NoeudAbstrait();
+	static bool debugMode[4] = { false };
 
 	// Useless, pas d'orbite en ce moment
 	static double theta = 0; ///< Angle Theta
@@ -84,6 +97,7 @@ extern "C"
 			return;
 		std::cout << std::endl << "Initialisation de l'openGL en cours..." << std::endl;
 		FacadeModele::obtenirInstance()->initialiserOpenGL((HWND)handle);
+		FacadeModele::obtenirInstance()->setDebug(debugMode[1], debugMode[3]);
 	}
 
 
@@ -298,14 +312,27 @@ extern "C"
 				glm::dvec3 rotation = noeudTable->getEnfant(generateurs[pos])->obtenirPositionRelative();
 			
 				//objet->assignerRotation({ rotation.x, rotation.y, rotation.z });
-				objet->assignerPositionRelative({ position.x, position.y-((30*scale.x)), position.z });
+				double positionX = position.x;
+				double positionY = position.y - ((30 * scale.x));
+				objet->assignerPositionRelative({ positionX, positionY, position.z });
 				objet->assignerEchelle(scale);
-
+				//HH:MM:SS:mmm – Nouvelle bille : x: POSX y: POSY
+				// http://brian.pontarelli.com/2009/01/05/getting-the-current-system-time-in-milliseconds-with-c/
+				if (debugMode[0]) {
+					printCurrentTime();
+					std::cout << std::fixed << std::setprecision(2);
+					std::cout << " - Nouvelle bille : x: " << positionX << " y: " << positionY << std::endl;;
+				}
 				noeudTable = NULL;
 				delete noeudTable;
 			}
 		}
+		if (nomObjet == "bille")
+			objet->setDebug(debugMode[1]);
+		else if (nomObjet == "portail")
+			objet->setDebug(debugMode[3]);
 		FacadeModele::obtenirInstance()->obtenirArbreRenduINF2990()->getEnfant(0)->ajouter(objet);
+
 	}
 
 
@@ -346,6 +373,7 @@ extern "C"
 															int posX, int posY, int posZ, 
 															float angleX, float angleY, float angleZ)
 	{
+
 		// Meme chose que dans creer objet, sauf que je test le nouvel objet avant de l'ajouter a l'arbre.
 		// Pour pouvoir tester l'objet avant de l'ajouter, je dois setter ses proprietes
 
@@ -374,8 +402,6 @@ extern "C"
 				objet->assignerSelection(true);
 			}
 		}
-		
-
 		// Assigner les proprietes a l'objet
 		// =================================
 		
@@ -414,6 +440,8 @@ extern "C"
 		if (objetEstLegal)
 		{
 			// Si l'objet est legal, l'ajouter a la table, sinon, on le scrap
+			if (nomObjet == "portail")
+				objet->setDebug(debugMode[3]);
 			FacadeModele::obtenirInstance()->obtenirArbreRenduINF2990()->getEnfant(0)->ajouter(objet);
 			return true;
 		}
@@ -680,7 +708,7 @@ extern "C"
 	{
 		FacadeModele::obtenirInstance()->obtenirArbreRenduINF2990()->vider();
 		FacadeModele::obtenirInstance()->obtenirArbreRenduINF2990()->initialiserXML(std::string(path));
-
+		FacadeModele::obtenirInstance()->setDebug(debugMode[1], debugMode[3]);
 		return FacadeModele::obtenirInstance()->obtenirArbreRenduINF2990()->obtenirProprietes();
 	}
 
@@ -927,6 +955,7 @@ extern "C"
 	__declspec(dllexport) void __cdecl  dupliquerSelection(int i, int j)
 	{
 		FacadeModele::obtenirInstance()->dupliquerSelection(i, j);
+		FacadeModele::obtenirInstance()->setDebug(debugMode[1], debugMode[3]);
 	}
 
 	///////////////////////////////////////////////////////////////////////////////
@@ -1415,6 +1444,52 @@ extern "C"
 	{
 		FacadeModele::obtenirInstance()->setPause(pause);
 	}
+
+	__declspec(dllexport) void __cdecl consolDebug(bool dbg1, bool dbg2, bool dbg3, bool dbg4)
+	{
+		debugMode[0] = dbg1; 
+		debugMode[1] = dbg2;
+		debugMode[2] = dbg3; 
+		debugMode[3] = dbg4;
+	}
+
+	__declspec(dllexport) bool __cdecl spotLight(int lum, bool state)
+	{
+		if (lum > 2 || lum < 0)
+			return false;
+		if (debugMode[2]) {
+			printCurrentTime();
+			std::cout << " - Lumiere(s) ";
+		}
+		switch (lum) {
+		case 0:
+			if (debugMode[2])
+				std::cout << "ambiante ";
+			// TO DO: the spotlight ambiante
+			break;
+		case 1:
+			if (debugMode[2])
+				std::cout << "directionnelle ";
+			// TO DO: the spotlight directionnelle
+			break;
+		case 2:
+			if (debugMode[2])
+				std::cout << "spot ";
+			// TO DO: the spotlight directionnelle
+			break;
+		default:
+			return false;
+			break;
+		}
+		if (debugMode[2])
+			if (state == true)
+				std::cout << "ouverte(s)" << std::endl;
+			else
+				std::cout << "fermee(s)" << std::endl;
+		return true;
+	}
+
+
 
 	/*
 	#include <FTGL/ftgl.h>

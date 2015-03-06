@@ -1,5 +1,5 @@
 ///////////////////////////////////////////////////////////////////////////
-/// @file NoeudBille.h
+/// @file NoeudPortailTorus.h
 /// @author The Ballers
 /// @date 2015-01-24
 /// @version 1.0
@@ -7,27 +7,28 @@
 /// @ingroup Noeud
 ///////////////////////////////////////////////////////////////////////////
 
-#ifndef __ARBRES_NOEUDS_NOEUDBILLE_H__
-#define __ARBRES_NOEUDS_NOEUDBILLE_H__
+#ifndef  __ARBRE_NOEUDS_NOEUDPORTAILTORUS_H__
+#define  __ARBRE_NOEUDS_NOEUDPORTAILTORUS_H__
 
 #include "NoeudComposite.h"
 #include "Gl/gl.h"
 
 ///////////////////////////////////////////////////////////////////////////
-/// @class NoeudBille
-/// @brief Classe qui represente une bille.
+/// @class NoeudPortailTorus
+/// @brief Classe qui represente un portailTorus.
 ///
 /// @author The Ballers
+/// @date 2015-01-24
 /// @ingroup Noeud
 ///////////////////////////////////////////////////////////////////////////
-class NoeudBille : public NoeudComposite
+class NoeudPortailTorus : public NoeudComposite
 {
 public:
 	/// Constructeur
-	NoeudBille(const std::string& typeNoeud);
+	NoeudPortailTorus(const std::string& typeNoeud);
 
 	/// Destructeur 
-	~NoeudBille();
+	~NoeudPortailTorus();
 
 	/// Surchage de la methode qui affiche l'objet.
 	virtual void afficherConcret() const;
@@ -37,9 +38,6 @@ public:
 
 	/// Accepte un visiteur.
 	virtual bool accepterVisiteur(VisiteurAbstrait* vis);
-
-	/// Activer ou desactiver le mode debug.
-	virtual void setDebug( bool debug);
 };
 
-#endif // __ARBRE_NOEUDS_NOEUDGENERATEURBILLE_H__
+#endif // __ARBRE_NOEUDS_NOEUDPORTAILTORUS_H__

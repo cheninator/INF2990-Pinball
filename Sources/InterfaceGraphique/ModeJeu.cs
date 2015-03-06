@@ -17,6 +17,11 @@ namespace InterfaceGraphique
         List<string> myMaps;
         StringBuilder map;
         StringBuilder nextMap;
+
+        private bool activateAmbianteLight = false; ///< Etat de la lumiere ambiante
+        private bool activateDirectLight = false; ///< Etat de la lumiere directe
+        private bool activateSpotLight = false; ///< Etat de la lumiere spot
+
         public ModeJeu(List<string> maps)
         {
             if(fullScreen)
@@ -75,10 +80,13 @@ namespace InterfaceGraphique
                 {
                    FonctionsNatives.animer(tempsInterAffichage);
                    FonctionsNatives.dessinerOpenGL();
+                   FPSCounter.Text = FonctionsNatives.obtenirAffichagesParSeconde().ToString();
+
                     if (currentZoom <= 0)
                     {
                         FonctionsNatives.resetZoom();
                         currentZoom = FonctionsNatives.obtenirZoomCourant();
+
                     }
                 });
             }
@@ -128,7 +136,7 @@ namespace InterfaceGraphique
             if (e.KeyValue == touches.PGJ1)
             {
                 FonctionsNatives.desactiverPalettesGJ1();
-                Console.WriteLine("Touche R relachée");
+               // Console.WriteLine("Touche R relachée");
             }
         }
 
@@ -155,6 +163,24 @@ namespace InterfaceGraphique
                     FonctionsNatives.modePause(true);
                  //   Console.WriteLine("SHOW");
                 }
+            }
+            else if (e.KeyChar == 'j')
+            {
+                //Console.WriteLine("LUMIERE AMBIANTE");
+                activateAmbianteLight = !activateAmbianteLight;
+                FonctionsNatives.spotLight(0, activateAmbianteLight);
+            }
+            else if (e.KeyChar == 'k')
+            {
+                //Console.WriteLine("LUMIERE DIRECTE");
+                activateDirectLight = !activateDirectLight;
+                FonctionsNatives.spotLight(1, activateDirectLight);
+            }
+            else if (e.KeyChar == 'l')
+            {
+                //Console.WriteLine("LUMIERE SPOTS");
+                activateSpotLight = !activateSpotLight;
+                FonctionsNatives.spotLight(2, activateSpotLight);
             }
             else
                 if (e.KeyChar == 'n')

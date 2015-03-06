@@ -62,6 +62,8 @@ public:
    /// Prend une capture d'ecran de la zone de jeu
    void takeScreenShot(char* path, int width, int height, bool square = false, int maxSize = 0);
 
+   /// Ajoute un torus a l'objet
+   void ajouterTorus(NoeudAbstrait* parent);
 
    static const std::string NOM_BUTOIRD; ///< Represente le type Butoir droit
    static const std::string NOM_BUTOIRG; ///< Represente le type Butoir gauche
@@ -73,6 +75,7 @@ public:
    static const std::string NOM_PALETTED; ///< Represente le type Palette droite
    static const std::string NOM_PALETTEG; ///< Represente le type Palette gauche
    static const std::string NOM_PORTAIL; ///< Represente le type Portail
+   static const std::string NOM_PORTAILTORUS; ///< Represente le type PortailTorus
    static const std::string NOM_RESSORT; ///< Represente le type Ressort
    static const std::string NOM_TROU; ///< Represente le type Trou
    static const std::string NOM_VIDE; ///< Represente le type Vide

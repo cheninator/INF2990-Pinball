@@ -1,56 +1,58 @@
 ////////////////////////////////////////////////
-/// @file   VisiteurPause.cpp
+/// @file   VisiteurDebug.cpp
 /// @author The Ballers
 /// @date   2015-02-01
 ///
 /// @ingroup Visiteur
 ////////////////////////////////////////////////
-#include "VisiteurPause.h"
+#include "VisiteurDebug.h"
 #include "../Arbre/ArbreRenduINF2990.h"
 #include "../Arbre/Noeuds/NoeudTable.h"
 
 
 ////////////////////////////////////////////////////////////////////////
 ///
-/// @fn VisiteurPause::VisiteurPause()
+/// @fn VisiteurDebug::VisiteurDebug()
 ///
 /// Constructeur par defaut (vide).
 ///
 /// @return Aucune (constructeur).
 ///
 ////////////////////////////////////////////////////////////////////////
-VisiteurPause::VisiteurPause()
+VisiteurDebug::VisiteurDebug()
 {
 
 }
 
 ////////////////////////////////////////////////////////////////////////
 ///
-/// @fn VisiteurPause::VisiteurPause()
+/// @fn VisiteurDebug::VisiteuDebug(int positionDebug, bool valeurDebug_);
 ///
-/// Constructeur par defaut (vide).
+/// Constructeur par parametres
 ///
-/// @param[in] pause : Le mode pause (on/off) a mettre
+/// @param[in] bool valeurDebugBille : Le mode debug (on/off) a mettre pour la bille
+/// @param[in] bool valeurDebugPortail : Le mode debug (on/off) a mettre le portail
 ///
 /// @return Aucune (constructeur).
 ///
 ////////////////////////////////////////////////////////////////////////
-VisiteurPause::VisiteurPause(bool pause)
+VisiteurDebug::VisiteurDebug(bool valeurDebugBille, bool valeurDebugPortail)
 {
-	pause_ = pause;
+	valeurDebugBille_ = valeurDebugBille;
+	valeurDebugPortail_ = valeurDebugPortail;
 }
 
 
 ////////////////////////////////////////////////////////////////////////
 ///
-/// @fn VisiteurPause::~VisiteurPause()
+/// @fn VisiteurDebug::~VisiteurDebug()
 ///
 /// Destructeur vide 
 ///
 /// @return Aucune (destructeur).
 ///
 ////////////////////////////////////////////////////////////////////////
-VisiteurPause::~VisiteurPause()
+VisiteurDebug::~VisiteurDebug()
 {
 
 }
@@ -58,7 +60,7 @@ VisiteurPause::~VisiteurPause()
 
 ////////////////////////////////////////////////////////////////////////
 ///
-/// @fn bool VisiteurPause::traiter(ArbreRenduINF2990* arbre)
+/// @fn bool VisiteurSelection::traiter(ArbreRenduINF2990* arbre)
 /// @brief Cette fonction traite l'arbre de rendu pour visiter ses enfants.
 ///
 /// Cette fonction retourne true pour dire que l'operation s'est
@@ -69,7 +71,7 @@ VisiteurPause::~VisiteurPause()
 /// @return Retourne toujours true.
 ///
 ////////////////////////////////////////////////////////////////////////
-bool VisiteurPause::traiter(ArbreRenduINF2990* arbre)
+bool VisiteurDebug::traiter(ArbreRenduINF2990* arbre)
 {
 	for (unsigned int i = 0; i < arbre->obtenirNombreEnfants(); i++)
 	{
@@ -81,7 +83,7 @@ bool VisiteurPause::traiter(ArbreRenduINF2990* arbre)
 
 ////////////////////////////////////////////////////////////////////////
 ///
-/// @fn bool VisiteurPause::traiter(NoeudTable* table)
+/// @fn bool VisiteurPossibilite::traiter(NoeudTable* table)
 /// @brief Cette fonction traite la table de l'arbre de rendu.
 ///
 /// Cette fonction retourne true pour dire que l'operation s'est
@@ -92,20 +94,19 @@ bool VisiteurPause::traiter(ArbreRenduINF2990* arbre)
 /// @return Retourne toujours true
 ///
 ////////////////////////////////////////////////////////////////////////
-bool VisiteurPause::traiter(NoeudTable* table)
+bool VisiteurDebug::traiter(NoeudTable* table)
 {
 	for (unsigned int i = 0; i < table->obtenirNombreEnfants(); i++)
 	{
 		table->getEnfant(i)->accepterVisiteur(this);
 	}
-	table->assignerPause(pause_);
 	return true;
 }
 
 
 ////////////////////////////////////////////////////////////////////////
 ///
-/// @fn bool VisiteurPause::traiter(NoeudAbstrait* noeud)
+/// @fn bool VisiteurSelection::traiter(NoeudAbstrait* noeud)
 /// @brief Cette fonction traite les enfants de l'arbre de rendu. 
 ///
 /// Cette fonction retourne true pour dire que l'operation s'est
@@ -116,9 +117,12 @@ bool VisiteurPause::traiter(NoeudTable* table)
 /// @return Retourne toujours true
 ///
 ////////////////////////////////////////////////////////////////////////
-bool VisiteurPause::traiter(NoeudAbstrait* noeud)
+bool VisiteurDebug::traiter(NoeudAbstrait* noeud)
 {
-	noeud->assignerPause(pause_);
+	std::string nomObjet(noeud->obtenirType());
+	if (nomObjet == "portail")
+		noeud->setDebug(valeurDebugPortail_);
+	else if (nomObjet == "portail")
+		noeud->setDebug(valeurDebugBille_);
 	return true;
 }
-

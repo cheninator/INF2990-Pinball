@@ -14,6 +14,7 @@
 #include <GL/gl.h>
 #include <cmath>
 #include <iostream>
+#include <iomanip>
 
 #include "Modele3D.h"
 #include "OpenGL_Storage/ModeleStorage_Liste.h"
@@ -114,9 +115,6 @@ void NoeudBille::afficherConcret() const
 ////////////////////////////////////////////////////////////////////////
 void NoeudBille::animer(float temps) // rajouter des parametres ou une fonction animerCollision(float temps, detailCollision detail)
 {
-	bool animer_ = false;
-	if (animer_ == false)
-		return;
 	// Somme des forces agissant sur les particules.
 	
 	glm::dvec3 attractionsPortails{ 0, 0, 0 };
@@ -139,6 +137,20 @@ void NoeudBille::animer(float temps) // rajouter des parametres ou une fonction 
 		glm::dvec3 composanteTangentielle = vitesse_ - composanteNormale;
 
 		nouvelleVitesse = (-composanteNormale + composanteTangentielle) + (double)temps * forceTotale / masse_;
+		
+		if(debug_) {
+
+			SYSTEMTIME time;
+			GetLocalTime(&time);
+			std::cout << std::fixed << std::setw(2) << std::setprecision(2) << time.wHour << ":"
+				<< std::fixed << std::setfill('0') << std::setw(2) << std::setprecision(2) << time.wMinute << ":"
+				<< std::fixed << std::setfill('0') << std::setw(2) << std::setprecision(2) << time.wSecond << ":"
+				<< std::fixed << std::setfill('0') << std::setw(3) << std::setprecision(3) << time.wMilliseconds;
+
+			std::cout << " - Vitesse : { x : "
+				<< std::fixed << std::setfill('0') << std::setw(2) << std::setprecision(2) << nouvelleVitesse.x << "   y : "
+				<< std::fixed << std::setfill('0') << std::setw(2) << std::setprecision(2) << nouvelleVitesse.y << " }"<< std::endl;	
+		}
 	}
 	else
 		nouvelleVitesse = vitesse_ + (double)temps * forceTotale / masse_;
@@ -177,3 +189,16 @@ bool NoeudBille::accepterVisiteur(VisiteurAbstrait* vis)
 	return reussi;
 }
 
+////////////////////////////////////////////////////////////////////////
+///
+/// @fn void NoeudBille::setDebug(bool debug)
+///
+/// Cette fonction change al valeur du mode debug
+///
+/// @return Aucun.
+///
+////////////////////////////////////////////////////////////////////////
+void NoeudBille::setDebug(bool debug)
+{
+	debug_ = debug;
+}
