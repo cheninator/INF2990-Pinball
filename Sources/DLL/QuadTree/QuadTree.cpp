@@ -31,7 +31,6 @@ QuadTree::QuadTree(glm::dvec3 inferieurGauche, glm::dvec3 superieurDroit)
 	sudEst_ = nullptr;
 	sudOuest_ = nullptr;
 
-	std::cout << "Creation d'un QuadTree " << std::endl;
 }
 
 
@@ -297,7 +296,10 @@ bool QuadTree::insert(NoeudAbstrait* noeud)
 ///
 /// @fn std::vector<NoeudAbstrait*> QuadTree::retrieve(NoeudAbstrait* noeud)
 ///
+/// Cette méthode retourne la liste des noeuds qui sont dans le même QuadTree que
+/// le noeud passé en paramètre.
 ///
+/// @param[in] noeud : le noeud pour lequel on désire ses voisins
 ///
 /// @return l'ensemble des noeuds qui sont dans le même QuadTree que le noeud passé
 ///			en paramètre
@@ -305,20 +307,20 @@ bool QuadTree::insert(NoeudAbstrait* noeud)
 ////////////////////////////////////////////////////////////////////////
 std::vector<NoeudAbstrait*> QuadTree::retrieve(NoeudAbstrait* noeud)
 {
-	std::vector<NoeudAbstrait*> resultat;
+	std::vector<NoeudAbstrait*> vide;
 
-	// Obtenir la position du noeud
-	glm::ivec3 positionNoeud = (glm::ivec3)noeud->obtenirPositionRelative();
-
-	// Insérer le noeud seulement si le noeud est dans le Quadtree
-	if (positionNoeud.x < superieurDroit_.x && positionNoeud.x > inferieurGauche_.x
-		&& positionNoeud.y < superieurDroit_.y && positionNoeud.y > inferieurGauche_.y)
+	if (estDansQuadTree(noeud, this))
 	{
+		if (nordEst_ == nullptr)
+			return objets_;
 
+		else if (nordEst_ != nullptr && objets_.size() == 0)
+			obtenirQuadrant(noeud)->retrieve(noeud);
 
-
-
+		else
+			return objets_;
 	}
-	
-	return resultat;
+
+	else
+		return vide;
 }
