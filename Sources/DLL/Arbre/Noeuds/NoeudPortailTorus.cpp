@@ -103,9 +103,7 @@ void NoeudPortailTorus::animer(float temps)
 		direction = 0.993;
 	scaleTorus = scaleTorus * direction;
 	assignerEchelle({ scaleTorus, scaleTorus, 1 });
-	assignerAffiche(debug_);
-	setTransparent(transparent_);
-	assignerSelection(selectionne_);
+
 }
 
 ////////////////////////////////////////////////////////////////////////
