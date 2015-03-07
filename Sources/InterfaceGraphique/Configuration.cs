@@ -17,7 +17,6 @@ namespace InterfaceGraphique
             InitializeComponent();
             comboBoxBilles.Text = "3";
             KeyPreview = true;
-            // TO DO : LIRE UN XML ET PRENDRE LES VALEURS
             InitialiserAvecBinaire();
         }
 
@@ -28,11 +27,7 @@ namespace InterfaceGraphique
             IntPtr config = FonctionsNatives.chargerFichierConfiguration();
             int[] result = new int[13];
             Marshal.Copy(config, valuesXML, 0, 13);
-            /// COMPLETE ICI NIKO
-
-
-            // TO DO : LIRE UN FICHIER XML
-          
+                
             for(int i = 0; i < 5; i++){
                 currentValues[i] = valuesXML[i];             
             }
@@ -280,13 +275,6 @@ namespace InterfaceGraphique
 
         private void OK_bouton_Click(object sender, EventArgs e)
         {
-            if (GLOB_Cancel.Checked)
-            {
-                GB_Cancel.Checked = true;
-                VAC_Cancel.Checked = true;
-                AE_Cancel.Checked = true;
-                PORTAL_Cancel.Checked = true;
-            }
             for(int i = 0; i < 5; i++)
                 valuesXML[i] = currentValues[i];
             valuesXML[5] = Convert.ToInt32(comboBoxBilles.Text.ToString());
@@ -334,10 +322,11 @@ namespace InterfaceGraphique
         {
             if (GLOB_Cancel.Checked)
             {
-                GB_Cancel.Checked = true;
+             /*   GB_Cancel.Checked = true;
                 VAC_Cancel.Checked = true;
                 AE_Cancel.Checked = true;
                 PORTAL_Cancel.Checked = true;
+              */
                 radioButtonEnable(false);   
             }
         }
