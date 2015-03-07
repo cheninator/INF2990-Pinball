@@ -13,7 +13,6 @@
 #include <windows.h>
 #include <GL/gl.h>
 #include <cmath>
-#include <iostream>
 
 #include "Modele3D.h"
 #include "OpenGL_Storage/ModeleStorage_Liste.h"
@@ -21,7 +20,7 @@
 
 ////////////////////////////////////////////////////////////////////////
 ///
-/// @fn NoeudPortail::NoeudPortailTorus(const std::string& typeNoeud)
+/// @fn NoeudPortailTorus::NoeudPortailTorus(const std::string& typeNoeud)
 ///
 /// @param[in] typeNoeud :  le type du noeud a creer.
 ///
@@ -34,6 +33,7 @@
 NoeudPortailTorus::NoeudPortailTorus(const std::string& typeNoeud)
 	: NoeudComposite{ typeNoeud }
 {
+
 }
 
 ////////////////////////////////////////////////////////////////////////
@@ -47,7 +47,7 @@ NoeudPortailTorus::NoeudPortailTorus(const std::string& typeNoeud)
 ////////////////////////////////////////////////////////////////////////
 NoeudPortailTorus::~NoeudPortailTorus()
 {
-	twin_ = nullptr;
+
 }
 
 ////////////////////////////////////////////////////////////////////////
@@ -117,14 +117,10 @@ void NoeudPortailTorus::animer(float temps)
 ////////////////////////////////////////////////////////////////////////
 bool NoeudPortailTorus::accepterVisiteur(VisiteurAbstrait* vis)
 {
-	return false;
-		// Je ne prend d'ordre de personne ! Sauf mon noeudPortail
-
 	bool reussi = false;
 
-	if (vis->traiter(this))
-		reussi = true;
+	//if (vis->traiter(this))
+	//	reussi = true;
 
 	return reussi;
-
 }

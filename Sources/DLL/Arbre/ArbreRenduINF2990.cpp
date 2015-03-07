@@ -468,22 +468,3 @@ void ArbreRenduINF2990::takeScreenShot(char* path, int width, int height, bool s
 	FreeImage_Unload(image);
 	delete[] pixels;
 }
-
-
-
-////////////////////////////////////////////////////////////////////////
-///
-/// @fn bool ArbreRenduINF2990::ajouterTorus(NoeudAbstrait* parent);
-///
-/// @param[in] NoeudAbstrait parent : l'objet au quel engendrer un torus
-///
-/// Cette fonction rajoute un torus autour de l'objet
-///
-/// @return : Aucun.
-///
-////////////////////////////////////////////////////////////////////////
-void ArbreRenduINF2990::ajouterTorus(NoeudAbstrait* parent)
-{
-	if (parent->obtenirNombreEnfants() == 0)
-		parent->ajouter(creerNoeud(NOM_PORTAILTORUS));
-}
