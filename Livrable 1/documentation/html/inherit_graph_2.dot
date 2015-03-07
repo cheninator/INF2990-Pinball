@@ -1,7 +1,0 @@
-digraph "Graphe hiÃ©rarchique des classes"
-{
-  edge [fontname="Helvetica",fontsize="10",labelfontname="Helvetica",labelfontsize="10"];
-  node [fontname="Helvetica",fontsize="10",shape=record];
-  rankdir="LR";
-  Node1 [label="FacadeModele",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$d1/dd9/class_facade_modele.html",tooltip="Classe qui constitue une interface (une façade) sur l&#39;ensemble du modèle et des classes qui le composen..."];
-}

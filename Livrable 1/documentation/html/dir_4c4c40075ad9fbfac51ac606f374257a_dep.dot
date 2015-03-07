@@ -1,9 +1,0 @@
-digraph "InterfaceGraphique/Etats" {
-  compound=true
-  node [ fontsize="10", fontname="Helvetica"];
-  edge [ labelfontsize="10", labelfontname="Helvetica"];
-  subgraph clusterdir_579cddb79e8a6dddf2091d0426ad06ad {
-    graph [ bgcolor="#ddddee", pencolor="black", label="InterfaceGraphique" fontname="Helvetica", fontsize="10", URL="dir_579cddb79e8a6dddf2091d0426ad06ad.html"]
-  dir_4c4c40075ad9fbfac51ac606f374257a [shape=box, label="Etats", style="filled", fillcolor="#eeeeff", pencolor="black", URL="dir_4c4c40075ad9fbfac51ac606f374257a.html"];
-  }
-}
