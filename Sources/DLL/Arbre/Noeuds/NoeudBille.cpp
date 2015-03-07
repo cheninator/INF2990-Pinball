@@ -178,8 +178,6 @@ void NoeudBille::animer(float temps) // rajouter des parametres ou une fonction 
 			{
 				// std::cout << "COLLISION" << std::endl;
 				enCollision = true;
-				if (debug_)
-					afficherVitesse(vitesse_);
 			}
 
 		}
@@ -197,9 +195,10 @@ void NoeudBille::animer(float temps) // rajouter des parametres ou une fonction 
 
 
 
-	if(debug_ && enCollision) {
-			afficherVitesse(nouvelleVitesse);
-		}
+	// if(debug_ && enCollision) {
+	//		afficherVitesse(nouvelleVitesse);
+	//	}
+
 	// Calcul de la rotation
 	// =====================
 	// C'est pas la bonne facon de calculer la rotation a appliquer a la boule,
