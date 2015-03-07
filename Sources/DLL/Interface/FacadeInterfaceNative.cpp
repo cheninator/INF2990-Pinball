@@ -1420,6 +1420,7 @@ extern "C"
 	__declspec(dllexport) void __cdecl bloquerAffichageGlobal(int active)
 	{
 		FacadeModele::obtenirInstance()->bloquerAffichageGlobal(active);
+		FacadeModele::obtenirInstance()->setDebug();
 	}
 
 	__declspec(dllexport) void __cdecl activerPalettesGJ1()
@@ -1481,7 +1482,6 @@ extern "C"
 		case 2:
 			if (debugLumiere)
 				std::cout << "spot ";
-			FacadeModele::obtenirInstance()->setDebug(state);
 			break;
 		default:
 			return false;
