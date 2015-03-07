@@ -30,7 +30,7 @@ namespace InterfaceGraphique
     /// 
     /// @ingroup EtatEditeurAbstrait
     ///////////////////////////////////////////////////////////////////////////
-    abstract class EtatEditeurAbstrait
+    abstract class EtatEditeurAbstrait : EtatAbstrait
     {
         protected Editeur form_;
 
@@ -61,7 +61,7 @@ namespace InterfaceGraphique
         /// @return True ou false selon la reussite des operations.
         ///
         ////////////////////////////////////////////////////////////////////////
-        public virtual bool traiterClavier(KeyEventArgs e)
+        public override bool traiterClavier(KeyEventArgs e)
         {  
             return true;
         }
@@ -76,7 +76,7 @@ namespace InterfaceGraphique
         /// @return True ou false selon la reussite des operations.
         ///
         ////////////////////////////////////////////////////////////////////////
-        public virtual bool traiterSouris(MouseEventArgs e)
+        public override bool traiterSouris(MouseEventArgs e)
         {
             if (e.Button == MouseButtons.Right)
                 form_.deplacementVueSouris(e);
@@ -93,7 +93,7 @@ namespace InterfaceGraphique
         /// @return True ou false selon la reussite des operations.
         ///
         ////////////////////////////////////////////////////////////////////////
-        public virtual bool traiterRoulette(MouseEventArgs e)
+        public override bool traiterRoulette(MouseEventArgs e)
         {
             return true;
         }

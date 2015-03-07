@@ -92,7 +92,7 @@
     <Compile Include="Configuration.Designer.cs">
       <DependentUpon>Configuration.cs</DependentUpon>
     </Compile>
-    <Compile Include="Etats\Class1.cs" />
+    <Compile Include="Etats\EtatAbstrait.cs" />
     <Compile Include="Etats\EtatEditeurAbstrait.cs" />
     <Compile Include="Editeur.cs">
       <SubType>Form</SubType>
