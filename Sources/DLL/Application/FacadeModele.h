@@ -156,6 +156,7 @@ public:
    int  obtenirTouchePDJ2();
    int  obtenirToucheRessort();
    int  obtenirAffichageGlobal();
+   void bloquerAffichageGlobal(int active);
 
    int obtenirDifficulte(char* nomFichier, int length);
 

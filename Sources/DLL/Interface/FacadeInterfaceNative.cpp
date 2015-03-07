@@ -1413,6 +1413,15 @@ extern "C"
 		return FacadeModele::obtenirInstance()->obtenirToucheRessort(); 
 	}
 
+	__declspec(dllexport) int __cdecl obtenirAffichageGlobal()
+	{
+		return FacadeModele::obtenirInstance()->obtenirAffichageGlobal();
+	}
+	__declspec(dllexport) void __cdecl bloquerAffichageGlobal(int active)
+	{
+		FacadeModele::obtenirInstance()->bloquerAffichageGlobal(active);
+	}
+
 	__declspec(dllexport) void __cdecl activerPalettesGJ1()
 	{
 		FacadeModele::obtenirInstance()->activerPalettesGJ1();

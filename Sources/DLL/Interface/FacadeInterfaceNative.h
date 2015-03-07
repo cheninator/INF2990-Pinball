@@ -72,6 +72,8 @@ extern "C" {
 	__declspec(dllexport) int obtenirTouchePDJ1();
 	__declspec(dllexport) int obtenirTouchePDJ2();
 	__declspec(dllexport) int obtenirToucheRessort();
+	__declspec(dllexport) int obtenirAffichageGlobal();
+	__declspec(dllexport) void bloquerAffichageGlobal(int active);
 	__declspec(dllexport) void creerFichierConfig(int config[12]);
 	__declspec(dllexport) int* chargerFichierConfiguration();
 	__declspec(dllexport) int obtenirDiffulte(char* nomFichier, int length);

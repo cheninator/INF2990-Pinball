@@ -26,13 +26,13 @@ namespace InterfaceGraphique
         public ModeJeu(List<string> maps, int playerType)
         {
 
-            /*   if(fullScreen)*/
+            /*   if(fullScreen)
             {
                 this.WindowState = FormWindowState.Normal;
                 this.FormBorderStyle = FormBorderStyle.None;
                 this.WindowState = FormWindowState.Maximized;
             }
-         
+         */
             EtablirTouches(playerType);
             this.KeyDown += new KeyEventHandler(PartieRapide_KeyDown);
             this.KeyUp += new KeyEventHandler(PartieRapide_KeyUp);
@@ -233,6 +233,19 @@ namespace InterfaceGraphique
                     FonctionsNatives.modePause(true);
                     peutAnimer = false;
                
+                }
+            }
+            else if (e.KeyChar == 'b')
+            {
+                if (FonctionsNatives.obtenirAffichageGlobal() == 0)
+                {
+                    Console.WriteLine("Affichage bloque. On debloque");
+                    FonctionsNatives.bloquerAffichageGlobal(1);
+                }
+                else
+                {
+                    Console.WriteLine("Affichage permis. On bloque");
+                    FonctionsNatives.bloquerAffichageGlobal(0);
                 }
             }
             else if (e.KeyChar == 'j')

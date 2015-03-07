@@ -69,6 +69,7 @@ public:
 	int obtenirAfficherEclairage()	const{ return config_[10]; };
 	int obtenirAfficherChampForce() const{ return config_[11]; };
 	int obtenirAffichageGlobal()    const{ return config_[12]; };
+	void bloquerAffichageGlobal(int active)   { config_[12] = active; };
 
 private:
 
