@@ -23,6 +23,8 @@
 #include "../../Application/FacadeModele.h"
 #include "../../Commun/Utilitaire/AideCollision.h"
 #include "OpenGL_Storage/ModeleStorage_Liste.h"
+#include "glm\gtx\norm.hpp"
+#include "../../Commun/Externe/glm/include/glm/gtx/Projection.hpp"
 
 
 ////////////////////////////////////////////////////////////////////////
@@ -40,7 +42,7 @@
 NoeudBille::NoeudBille(const std::string& typeNoeud)
 	: NoeudComposite{ typeNoeud }
 {
-	vitesse_ = glm::dvec3{ 5,30, 0 };
+	vitesse_ = glm::dvec3{ 10 ,60, 0 };
 	constanteDeFrottement_ = 1.0;
 }
 
@@ -134,7 +136,7 @@ void NoeudBille::animer(float temps) // rajouter des parametres ou une fonction 
 	// Somme des forces agissant sur les particules.
 	// =============================================
 	glm::dvec3 attractionsPortails{ 0, 0, 0 };
-	glm::dvec3 gravite{ 0, -3*masse_, 0 };
+	glm::dvec3 gravite{ 0, -30*masse_, 0 };
 	glm::dvec3 forceFrottement{ 0, 0, 0 };
 	if (glm::length(vitesse_) > 0.001)
 		forceFrottement = -constanteDeFrottement_ * glm::normalize(vitesse_);
@@ -150,14 +152,22 @@ void NoeudBille::animer(float temps) // rajouter des parametres ou une fonction 
 
 	// Obtenir une liste de noeuds a checker pour une collision
 	std::vector<NoeudAbstrait*> noeudsAChecker;
-	{// Travail a faire par le quad tree
+	
+	bool useQuadTree = false;
+	if (useQuadTree)
+	{
+		// TODO 
+	}
+	else
+	{
+		// Travail a faire par le quad tree
 		ArbreRenduINF2990* arbre = FacadeModele::obtenirInstance()->obtenirArbreRenduINF2990();
 		NoeudComposite* table = (NoeudComposite*)arbre->getEnfant(0);
 		for (unsigned int i = 0; i < table->obtenirNombreEnfants(); i++)
 		{
 			NoeudAbstrait* noeud = table->getEnfant(i);
 			// conditions a verifier?
-			if (noeud != this)
+			if (noeud != this && noeud->getType() != "generateurbille")
 				noeudsAChecker.push_back(noeud);
 		}
 	}
@@ -183,6 +193,10 @@ void NoeudBille::animer(float temps) // rajouter des parametres ou une fonction 
 			if (details.type != aidecollision::COLLISION_AUCUNE)
 			{
 				enCollision = true;
+				glm::dvec3 vitesseNormaleInitiale = glm::proj(vitesse_, details.direction);
+				glm::dvec3 vitesseTangentielleInitiale = vitesse_ - vitesseNormaleInitiale;
+				glm::dvec2 vitesseNormale2D = aidecollision::calculerForceAmortissement2D(details, (glm::dvec2)vitesse_, 1.0);
+				vitesseApresCollision = vitesseTangentielleInitiale + glm::dvec3{ vitesseNormale2D.x, vitesseNormale2D.y, 0 };
 			}
 		}
 		// TODO: Si la boite contient un seul élément, ne pas faire le for précédent, car l'objet est un cercle. Il faut faire un traitement différent.
