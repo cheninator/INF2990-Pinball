@@ -101,7 +101,7 @@ void NoeudPortailTorus::animer(float temps)
 		direction_ = 1.007;
 	else if (scaleTorus_ > 1)
 		direction_ = 0.993;
-	scaleTorus_ = scaleTorus * direction_;
+	scaleTorus_ = scaleTorus_ * direction_;
 	assignerEchelle({ scaleTorus_, scaleTorus_, 1 });
 
 }
