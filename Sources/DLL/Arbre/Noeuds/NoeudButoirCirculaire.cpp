@@ -33,7 +33,7 @@
 NoeudButoirCirculaire::NoeudButoirCirculaire(const std::string& typeNoeud)
 	: NoeudComposite{ typeNoeud }
 {
-
+	compt_ = 0;
 }
 
 ////////////////////////////////////////////////////////////////////////
@@ -111,6 +111,31 @@ void NoeudButoirCirculaire::afficherConcret() const
 void NoeudButoirCirculaire::animer(float temps)
 {
 	NoeudComposite::animer(temps);
+	if (selectionne_ || impossible_ || transparent_) {
+		if (compt_ > 0) {
+			scale_ /= 1.005;
+			compt_--;
+		}
+		else if (compt_ < 0) {
+			scale_ *= 1.005;
+			compt_++;
+		}
+		return;
+	}
+
+	if (compt_ >= 0) {
+		scale_ *= 1.005;
+		compt_++;
+		if (compt_ == 20)
+			compt_ = -1;
+	}
+	else {
+		scale_ /= 1.005;
+		compt_--;
+		if (compt_ == -21)
+			compt_ = 0;
+	}
+
 }
 
 ////////////////////////////////////////////////////////////////////////

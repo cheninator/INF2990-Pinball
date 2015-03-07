@@ -110,7 +110,9 @@ void NoeudTrou::afficherConcret() const
 void NoeudTrou::animer(float temps)
 {
 	NoeudComposite::animer(temps);
-	// Pour ne pas overflow le double un jour
+	// Pour ne pas overflow le dvec3.z
+	if (selectionne_ || impossible_ || transparent_)
+		return;
 	rotation_.z = rotation_.z + 1 % 360;
 }
 

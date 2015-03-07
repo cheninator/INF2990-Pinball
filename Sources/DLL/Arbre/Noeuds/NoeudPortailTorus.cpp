@@ -33,7 +33,8 @@
 NoeudPortailTorus::NoeudPortailTorus(const std::string& typeNoeud)
 	: NoeudComposite{ typeNoeud }
 {
-
+	double scaleTorus_ = 1.0;
+	double direction_ = 0.995;
 }
 
 ////////////////////////////////////////////////////////////////////////
@@ -95,15 +96,13 @@ void NoeudPortailTorus::afficherConcret() const
 void NoeudPortailTorus::animer(float temps)
 {
 	NoeudComposite::animer(temps);
-	static double scaleTorus = 1.0;
-	static double direction = 0.995;
 
-	if (scaleTorus < 0.5)
-		direction = 1.007;
-	else if (scaleTorus > 1)
-		direction = 0.993;
-	scaleTorus = scaleTorus * direction;
-	assignerEchelle({ scaleTorus, scaleTorus, 1 });
+	if (scaleTorus_ < 0.5)
+		direction_ = 1.007;
+	else if (scaleTorus_ > 1)
+		direction_ = 0.993;
+	scaleTorus_ = scaleTorus * direction_;
+	assignerEchelle({ scaleTorus_, scaleTorus_, 1 });
 
 }
 
