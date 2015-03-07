@@ -212,7 +212,6 @@ void NoeudBille::animer(float temps) // rajouter des parametres ou une fonction 
 					vitesseApresCollision = vitesseTangentielleInitiale + glm::dvec3{ vitesseNormale2D.x, vitesseNormale2D.y, 0 };
 				}
 			}
-
 		}
 	}
 	else
@@ -242,6 +241,25 @@ void NoeudBille::animer(float temps) // rajouter des parametres ou une fonction 
 				}
 			}
 			// TODO: Si la boite contient un seul élément, ne pas faire le for précédent, car l'objet est un cercle. Il faut faire un traitement différent.
+		}
+		std::vector<glm::dvec3> boite;
+		boite.push_back({ 108, -190, 0 });
+		boite.push_back({ 272, -190, 0 });
+		boite.push_back({ 272, 96, 0 });
+		boite.push_back({ 108, 96, 0 });
+		// Considerer tous les segments boite[i] --- boite[i+1 % size] 
+		for (unsigned int i = 0; i < boite.size(); i++)
+		{
+			// On veut calculer la collision en 2D et caster les paramêtres en glm::dvec2 "oublie" leur composante en Z et choisi la bonne surcharge de calculerCollisionSegment.
+			aidecollision::DetailsCollision details = aidecollision::calculerCollisionSegment((glm::dvec2)boite[i], (glm::dvec2)boite[(i + 1) % boite.size()], (glm::dvec2)positionRelative_, 7, true);
+			if (details.type != aidecollision::COLLISION_AUCUNE)
+			{
+				enCollision = true;
+				glm::dvec3 vitesseNormaleInitiale = glm::proj(vitesse_, details.direction);
+				glm::dvec3 vitesseTangentielleInitiale = vitesse_ - vitesseNormaleInitiale;
+				glm::dvec2 vitesseNormale2D = aidecollision::calculerForceAmortissement2D(details, (glm::dvec2)vitesse_, 1.0);
+				vitesseApresCollision = vitesseTangentielleInitiale + glm::dvec3{ vitesseNormale2D.x, vitesseNormale2D.y, 0 };
+			}
 		}
 	}
 	
