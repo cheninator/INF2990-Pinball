@@ -116,14 +116,17 @@ namespace InterfaceGraphique
                 {
                     lock (unLock)
                     {
-                       if ( mMenu.modeEdit != null && peutAfficher)
-                           mMenu.modeEdit.MettreAJour((double)tempsAccumule.Ticks / TimeSpan.TicksPerSecond);
-                      else
-                           //if (mMenu.campagne.modeJeu != null && peutAfficher)
-                           if( mMenu.modeJeuMain != null && peutAfficher)
-                           {
-                            mMenu.modeJeuMain.MettreAJour((double)tempsAccumule.Ticks / TimeSpan.TicksPerSecond);
-                           }
+                        if (mMenu.modeEdit != null && peutAfficher)
+                        {
+                            mMenu.modeEdit.MettreAJour((double)tempsAccumule.Ticks / TimeSpan.TicksPerSecond);
+                           
+                        }
+                        else
+                            if (mMenu.modeJeuMain != null && peutAfficher)
+                            {
+                                mMenu.modeJeuMain.MettreAJour((double)tempsAccumule.Ticks / TimeSpan.TicksPerSecond);
+                               
+                            }
                       
                     }
                     tempsAccumule = TimeSpan.Zero;
