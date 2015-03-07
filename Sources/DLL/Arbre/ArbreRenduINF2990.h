@@ -12,6 +12,7 @@
 
 #include "ArbreRendu.h"
 #include "FreeImage.h"
+#include "../QuadTree/QuadTree.h"
 
 #include <map>
 #include <string>
@@ -65,6 +66,9 @@ public:
    /// Ajoute un torus a l'objet
    void ajouterTorus(NoeudAbstrait* parent);
 
+   /// Obtenir le quadTree
+   QuadTree* obtenirQuadTree() const;
+
    static const std::string NOM_BUTOIRD; ///< Represente le type Butoir droit
    static const std::string NOM_BUTOIRG; ///< Represente le type Butoir gauche
    static const std::string NOM_BUTOIRCIRCULAIRE; ///< Represente le type Butoir circulaire
@@ -103,6 +107,8 @@ private:
 	glm::dvec3 posGenerateur;
 	glm::dvec3 scaleGenerateur;
 	glm::dvec3 angleGenerateur;
+
+	QuadTree* quadTree_;
 
 };
 
