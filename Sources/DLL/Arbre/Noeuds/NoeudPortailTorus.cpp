@@ -1,5 +1,5 @@
 ///////////////////////////////////////////////////////////////////////////
-/// @file NoeudPortail.cpp
+/// @file NoeudPortailTorus.cpp
 /// @author The Ballers
 /// @date 2015-01-24
 /// @version 1.0
@@ -13,7 +13,6 @@
 #include <windows.h>
 #include <GL/gl.h>
 #include <cmath>
-#include <iostream>
 
 #include "Modele3D.h"
 #include "OpenGL_Storage/ModeleStorage_Liste.h"
@@ -21,7 +20,7 @@
 
 ////////////////////////////////////////////////////////////////////////
 ///
-/// @fn NoeudPortail::NoeudPortailTorus(const std::string& typeNoeud)
+/// @fn NoeudPortailTorus::NoeudPortailTorus(const std::string& typeNoeud)
 ///
 /// @param[in] typeNoeud :  le type du noeud a creer.
 ///
@@ -34,6 +33,8 @@
 NoeudPortailTorus::NoeudPortailTorus(const std::string& typeNoeud)
 	: NoeudComposite{ typeNoeud }
 {
+	double scaleTorus_ = 1.0;
+	double direction_ = 0.995;
 }
 
 ////////////////////////////////////////////////////////////////////////
@@ -47,12 +48,12 @@ NoeudPortailTorus::NoeudPortailTorus(const std::string& typeNoeud)
 ////////////////////////////////////////////////////////////////////////
 NoeudPortailTorus::~NoeudPortailTorus()
 {
-	twin_ = nullptr;
+
 }
 
 ////////////////////////////////////////////////////////////////////////
 ///
-/// @fn void NoeudPortail::afficherConcret() const
+/// @fn void NoeudPortailTorus::afficherConcret() const
 ///
 /// Cette fonction effectue le veritable rendu de l'objet.
 ///
@@ -94,15 +95,14 @@ void NoeudPortailTorus::afficherConcret() const
 ////////////////////////////////////////////////////////////////////////
 void NoeudPortailTorus::animer(float temps)
 {
-	static double scaleTorus = 1.0;
-	static double direction = 0.995;
+	NoeudComposite::animer(temps);
 
-	if (scaleTorus < 0.5)
-		direction = 1.007;
-	else if (scaleTorus > 1)
-		direction = 0.993;
-	scaleTorus = scaleTorus * direction;
-	assignerEchelle({ scaleTorus, scaleTorus, 1 });
+	if (scaleTorus_ < 0.5)
+		direction_ = 1.007;
+	else if (scaleTorus_ > 1)
+		direction_ = 0.993;
+	scaleTorus_ = scaleTorus_ * direction_;
+	assignerEchelle({ scaleTorus_, scaleTorus_, 1 });
 
 }
 
@@ -117,14 +117,10 @@ void NoeudPortailTorus::animer(float temps)
 ////////////////////////////////////////////////////////////////////////
 bool NoeudPortailTorus::accepterVisiteur(VisiteurAbstrait* vis)
 {
-	return false;
-		// Je ne prend d'ordre de personne ! Sauf mon noeudPortail
-
 	bool reussi = false;
 
-	if (vis->traiter(this))
-		reussi = true;
+	//if (vis->traiter(this))
+	//	reussi = true;
 
 	return reussi;
-
 }
