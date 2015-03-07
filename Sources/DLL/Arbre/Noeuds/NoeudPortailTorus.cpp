@@ -13,6 +13,7 @@
 #include <windows.h>
 #include <GL/gl.h>
 #include <cmath>
+#include <iostream>
 
 #include "Modele3D.h"
 #include "OpenGL_Storage/ModeleStorage_Liste.h"
@@ -93,6 +94,18 @@ void NoeudPortailTorus::afficherConcret() const
 ////////////////////////////////////////////////////////////////////////
 void NoeudPortailTorus::animer(float temps)
 {
+	static double scaleTorus = 1.0;
+	static double direction = 0.995;
+
+	if (scaleTorus < 0.5)
+		direction = 1.007;
+	else if (scaleTorus > 1)
+		direction = 0.993;
+	scaleTorus = scaleTorus * direction;
+	assignerEchelle({ scaleTorus, scaleTorus, 1 });
+	assignerAffiche(debug_);
+	setTransparent(transparent_);
+	assignerSelection(selectionne_);
 }
 
 ////////////////////////////////////////////////////////////////////////
