@@ -18,35 +18,36 @@ namespace InterfaceGraphique
         List<string> myMaps;
         StringBuilder map;
         StringBuilder nextMap;
-
+        bool peutAnimer;
         private bool activateAmbianteLight = false; ///< Etat de la lumiere ambiante
         private bool activateDirectLight = false; ///< Etat de la lumiere directe
         private bool activateSpotLight = false; ///< Etat de la lumiere spot
 
         public ModeJeu(List<string> maps, int playerType)
         {
-           
-         /*   if(fullScreen)
+
+            /*   if(fullScreen)*/
             {
                 this.WindowState = FormWindowState.Normal;
                 this.FormBorderStyle = FormBorderStyle.None;
                 this.WindowState = FormWindowState.Maximized;
             }
-         */
+         
             EtablirTouches(playerType);
             this.KeyDown += new KeyEventHandler(PartieRapide_KeyDown);
             this.KeyUp += new KeyEventHandler(PartieRapide_KeyUp);
             InitializeComponent();
-          
+            peutAnimer = true;
             Program.peutAfficher = true;              
             InitialiserAnimation();
-
             FonctionsNatives.resetZoom();
             currentZoom = -1;
-
-           
             myMaps = new List<string>(maps);
             nbZones = maps.Count;
+            if( nbZones == 1)
+                this.Text = "Partie Rapide";
+            if (nbZones > 1)
+                this.Text = "Campagne";
             map = new StringBuilder(myMaps[0]);
             Console.WriteLine(nbZones);
             FonctionsNatives.ouvrirXML(map, map.Capacity);
@@ -80,7 +81,10 @@ namespace InterfaceGraphique
             {
                 this.Invoke((MethodInvoker)delegate
                 {
-                   FonctionsNatives.animer(tempsInterAffichage);
+                    if (peutAnimer)
+                    {
+                        FonctionsNatives.animer(tempsInterAffichage);
+                    }
                    FonctionsNatives.dessinerOpenGL();
                    FPSCounter.Text = FonctionsNatives.obtenirAffichagesParSeconde().ToString();
 
@@ -220,12 +224,14 @@ namespace InterfaceGraphique
                 {
                     menuStrip.Visible = false;
                     FonctionsNatives.modePause(false);
+                    peutAnimer = true;
                  
                 }
                 else
                 {
                     menuStrip.Visible = true;
                     FonctionsNatives.modePause(true);
+                    peutAnimer = false;
                
                 }
             }
@@ -295,7 +301,7 @@ namespace InterfaceGraphique
 
         private void panel_GL_MouseClick(object sender, MouseEventArgs e)
         {
-            panel_GL.Focus();
+          //  panel_GL.Focus();
         }
 
     }

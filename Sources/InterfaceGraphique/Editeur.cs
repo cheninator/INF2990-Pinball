@@ -412,6 +412,7 @@ namespace InterfaceGraphique
                 {
                     menuStrip3.Show();
                     peutAnimer = false;
+                    FonctionsNatives.modePause(true);
                     etat = null;
                     etat = new EtatPause(this);
                 }
@@ -422,6 +423,7 @@ namespace InterfaceGraphique
                 {
                     menuStrip3.Hide();
                     peutAnimer = true;
+                    FonctionsNatives.modePause(false);
                     etat = null;
                     etat = new EtatTest(this);
                 }

@@ -1094,6 +1094,7 @@ int  FacadeModele::obtenirTouchePGJ2(){ return configuration_->obtenirRaccourciP
 int  FacadeModele::obtenirTouchePDJ1(){ return configuration_->obtenirRaccourciPDJ1(); }
 int  FacadeModele::obtenirTouchePDJ2(){ return configuration_->obtenirRaccourciPDJ2(); }
 int  FacadeModele::obtenirToucheRessort(){ return configuration_->obtenirRaccourciRessort(); }
+int  FacadeModele::obtenirAffichageGlobal(){ return configuration_->obtenirAffichageGlobal(); }
 
 
 int FacadeModele::obtenirDifficulte(char* nomFichier, int length)
