@@ -1374,7 +1374,7 @@ extern "C"
 		return FacadeModele::obtenirInstance()->duplicationEstHorsTable();
 	}
 
-	__declspec(dllexport) void __cdecl creerFichierConfig(int config[12])
+	__declspec(dllexport) void __cdecl creerFichierConfig(int config[13])
 	{
 		FacadeModele::obtenirInstance()->sauvegarderConfig(config);
 	}

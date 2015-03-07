@@ -57,17 +57,19 @@
             this.PORTAL_OK = new System.Windows.Forms.RadioButton();
             this.GBOX_Debug = new System.Windows.Forms.GroupBox();
             this.GB_Eclairage = new System.Windows.Forms.GroupBox();
-            this.AE_CANCEL = new System.Windows.Forms.RadioButton();
+            this.AE_Cancel = new System.Windows.Forms.RadioButton();
             this.AE_OK = new System.Windows.Forms.RadioButton();
             this.GB_Vitesse = new System.Windows.Forms.GroupBox();
             this.VAC_Cancel = new System.Windows.Forms.RadioButton();
             this.VAC_OK = new System.Windows.Forms.RadioButton();
-            this.label_Debug = new System.Windows.Forms.Label();
             this.GBOX_Bille = new System.Windows.Forms.GroupBox();
             this.GB_Cancel = new System.Windows.Forms.RadioButton();
             this.GB_OK = new System.Windows.Forms.RadioButton();
             this.OK_bouton = new System.Windows.Forms.Button();
             this.Annuler_bouton = new System.Windows.Forms.Button();
+            this.labelAffichage = new System.Windows.Forms.Label();
+            this.GLOB_OK = new System.Windows.Forms.RadioButton();
+            this.GLOB_Cancel = new System.Windows.Forms.RadioButton();
             this.tabProprietes.SuspendLayout();
             this.tabPage1.SuspendLayout();
             this.tabPage2.SuspendLayout();
@@ -358,6 +360,9 @@
             // 
             // tabPage3
             // 
+            this.tabPage3.Controls.Add(this.GLOB_Cancel);
+            this.tabPage3.Controls.Add(this.GLOB_OK);
+            this.tabPage3.Controls.Add(this.labelAffichage);
             this.tabPage3.Controls.Add(this.GB_Portail);
             this.tabPage3.Controls.Add(this.GBOX_Debug);
             this.tabPage3.Location = new System.Drawing.Point(4, 22);
@@ -405,11 +410,10 @@
             // 
             this.GBOX_Debug.Controls.Add(this.GB_Eclairage);
             this.GBOX_Debug.Controls.Add(this.GB_Vitesse);
-            this.GBOX_Debug.Controls.Add(this.label_Debug);
             this.GBOX_Debug.Controls.Add(this.GBOX_Bille);
-            this.GBOX_Debug.Location = new System.Drawing.Point(14, 13);
+            this.GBOX_Debug.Location = new System.Drawing.Point(14, 95);
             this.GBOX_Debug.Name = "GBOX_Debug";
-            this.GBOX_Debug.Size = new System.Drawing.Size(274, 296);
+            this.GBOX_Debug.Size = new System.Drawing.Size(274, 226);
             this.GBOX_Debug.TabIndex = 0;
             this.GBOX_Debug.TabStop = false;
             this.GBOX_Debug.Text = "Options d\'affichage en console";
@@ -417,24 +421,24 @@
             // GB_Eclairage
             // 
             this.GB_Eclairage.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.GB_Eclairage.Controls.Add(this.AE_CANCEL);
+            this.GB_Eclairage.Controls.Add(this.AE_Cancel);
             this.GB_Eclairage.Controls.Add(this.AE_OK);
-            this.GB_Eclairage.Location = new System.Drawing.Point(7, 221);
+            this.GB_Eclairage.Location = new System.Drawing.Point(6, 157);
             this.GB_Eclairage.Name = "GB_Eclairage";
             this.GB_Eclairage.Size = new System.Drawing.Size(261, 62);
             this.GB_Eclairage.TabIndex = 3;
             this.GB_Eclairage.TabStop = false;
             this.GB_Eclairage.Text = "Activation d\'éclairage";
             // 
-            // AE_CANCEL
+            // AE_Cancel
             // 
-            this.AE_CANCEL.AutoSize = true;
-            this.AE_CANCEL.Location = new System.Drawing.Point(7, 43);
-            this.AE_CANCEL.Name = "AE_CANCEL";
-            this.AE_CANCEL.Size = new System.Drawing.Size(76, 17);
-            this.AE_CANCEL.TabIndex = 1;
-            this.AE_CANCEL.Text = "Désactiver";
-            this.AE_CANCEL.UseVisualStyleBackColor = true;
+            this.AE_Cancel.AutoSize = true;
+            this.AE_Cancel.Location = new System.Drawing.Point(7, 43);
+            this.AE_Cancel.Name = "AE_Cancel";
+            this.AE_Cancel.Size = new System.Drawing.Size(76, 17);
+            this.AE_Cancel.TabIndex = 1;
+            this.AE_Cancel.Text = "Désactiver";
+            this.AE_Cancel.UseVisualStyleBackColor = true;
             // 
             // AE_OK
             // 
@@ -453,7 +457,7 @@
             this.GB_Vitesse.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.GB_Vitesse.Controls.Add(this.VAC_Cancel);
             this.GB_Vitesse.Controls.Add(this.VAC_OK);
-            this.GB_Vitesse.Location = new System.Drawing.Point(7, 154);
+            this.GB_Vitesse.Location = new System.Drawing.Point(6, 90);
             this.GB_Vitesse.Name = "GB_Vitesse";
             this.GB_Vitesse.Size = new System.Drawing.Size(261, 61);
             this.GB_Vitesse.TabIndex = 2;
@@ -482,24 +486,12 @@
             this.VAC_OK.Text = "Activer";
             this.VAC_OK.UseVisualStyleBackColor = true;
             // 
-            // label_Debug
-            // 
-            this.label_Debug.BackColor = System.Drawing.Color.Transparent;
-            this.label_Debug.Dock = System.Windows.Forms.DockStyle.Top;
-            this.label_Debug.Location = new System.Drawing.Point(3, 16);
-            this.label_Debug.Name = "label_Debug";
-            this.label_Debug.Size = new System.Drawing.Size(268, 64);
-            this.label_Debug.TabIndex = 1;
-            this.label_Debug.Text = "Les options d\'affichage en console permettent d\'afficher des informations pendant" +
-    " le jeu. \r\nLes informations sont horodatées de la façon suivante: HH: MM: SS\r\n";
-            this.label_Debug.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
             // GBOX_Bille
             // 
             this.GBOX_Bille.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.GBOX_Bille.Controls.Add(this.GB_Cancel);
             this.GBOX_Bille.Controls.Add(this.GB_OK);
-            this.GBOX_Bille.Location = new System.Drawing.Point(7, 83);
+            this.GBOX_Bille.Location = new System.Drawing.Point(6, 19);
             this.GBOX_Bille.Name = "GBOX_Bille";
             this.GBOX_Bille.Size = new System.Drawing.Size(261, 65);
             this.GBOX_Bille.TabIndex = 0;
@@ -548,6 +540,39 @@
             this.Annuler_bouton.UseVisualStyleBackColor = true;
             this.Annuler_bouton.Click += new System.EventHandler(this.Annuler_bouton_Click);
             // 
+            // labelAffichage
+            // 
+            this.labelAffichage.Location = new System.Drawing.Point(11, 13);
+            this.labelAffichage.Name = "labelAffichage";
+            this.labelAffichage.Size = new System.Drawing.Size(277, 23);
+            this.labelAffichage.TabIndex = 6;
+            this.labelAffichage.Text = "Activation/Désactivation de l\'affichage de débogage:\r\n";
+            // 
+            // GLOB_OK
+            // 
+            this.GLOB_OK.AutoSize = true;
+            this.GLOB_OK.Checked = true;
+            this.GLOB_OK.Location = new System.Drawing.Point(27, 39);
+            this.GLOB_OK.Name = "GLOB_OK";
+            this.GLOB_OK.Size = new System.Drawing.Size(58, 17);
+            this.GLOB_OK.TabIndex = 7;
+            this.GLOB_OK.TabStop = true;
+            this.GLOB_OK.Text = "Activer";
+            this.GLOB_OK.UseVisualStyleBackColor = true;
+            this.GLOB_OK.CheckedChanged += new System.EventHandler(this.GLOB_OK_CheckedChanged);
+            // 
+            // GLOB_Cancel
+            // 
+            this.GLOB_Cancel.AutoSize = true;
+            this.GLOB_Cancel.Location = new System.Drawing.Point(162, 39);
+            this.GLOB_Cancel.Name = "GLOB_Cancel";
+            this.GLOB_Cancel.Size = new System.Drawing.Size(76, 17);
+            this.GLOB_Cancel.TabIndex = 8;
+            this.GLOB_Cancel.TabStop = true;
+            this.GLOB_Cancel.Text = "Désactiver";
+            this.GLOB_Cancel.UseVisualStyleBackColor = true;
+            this.GLOB_Cancel.CheckedChanged += new System.EventHandler(this.GLOB_Cancel_CheckedChanged);
+            // 
             // Configuration
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -569,6 +594,7 @@
             this.GBox_ModeBilles.ResumeLayout(false);
             this.GBox_ModeBilles.PerformLayout();
             this.tabPage3.ResumeLayout(false);
+            this.tabPage3.PerformLayout();
             this.GB_Portail.ResumeLayout(false);
             this.GB_Portail.PerformLayout();
             this.GBOX_Debug.ResumeLayout(false);
@@ -615,14 +641,16 @@
         private System.Windows.Forms.RadioButton PORTAL_OK;
         private System.Windows.Forms.GroupBox GBOX_Debug;
         private System.Windows.Forms.GroupBox GB_Eclairage;
-        private System.Windows.Forms.RadioButton AE_CANCEL;
+        private System.Windows.Forms.RadioButton AE_Cancel;
         private System.Windows.Forms.RadioButton AE_OK;
         private System.Windows.Forms.GroupBox GB_Vitesse;
         private System.Windows.Forms.RadioButton VAC_Cancel;
         private System.Windows.Forms.RadioButton VAC_OK;
-        private System.Windows.Forms.Label label_Debug;
         private System.Windows.Forms.GroupBox GBOX_Bille;
         private System.Windows.Forms.RadioButton GB_Cancel;
         private System.Windows.Forms.RadioButton GB_OK;
+        private System.Windows.Forms.RadioButton GLOB_Cancel;
+        private System.Windows.Forms.RadioButton GLOB_OK;
+        private System.Windows.Forms.Label labelAffichage;
     }
 }

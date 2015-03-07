@@ -1077,7 +1077,7 @@ bool FacadeModele::duplicationEstHorsTable()
 }
 
 
-void FacadeModele::sauvegarderConfig(int config[12])
+void FacadeModele::sauvegarderConfig(int config[13])
 {
 	configuration_->modifierConfiguration(config);
 	configuration_->sauvegarderConfiguration();
