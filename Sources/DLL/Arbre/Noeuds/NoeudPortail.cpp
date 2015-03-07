@@ -109,11 +109,24 @@ void NoeudPortail::afficherConcret() const
 ////////////////////////////////////////////////////////////////////////
 void NoeudPortail::animer(float temps)
 {
+	static double scaleTorus = 1.0;
+	static double direction = 0.995;
+
 	if (enfants_.size() == 0)
 		return;
-	getEnfant(0)->assignerAffiche(debug_);
-	getEnfant(0)->setTransparent(transparent_);
-	getEnfant(0)->assignerSelection(selectionne_);
+
+	// WTF pk faire ca ici et non dans l'enfant ?
+	// Mais pcq la méthode animer de l'enfant n'est jamais appeler pour je ne sais quel raison !
+	// getEnfant(0)->animer();
+	if (scaleTorus < 0.5)
+		direction = 1.007;
+	else if (scaleTorus > 1)
+		direction = 0.993;
+	scaleTorus = scaleTorus * direction;
+	getEnfant(0)->assignerEchelle({ scaleTorus, scaleTorus, 1 });
+	enfants_[0]->assignerAffiche(debug_);
+	enfants_[0]->setTransparent(transparent_);
+	enfants_[0]->assignerSelection(selectionne_);
 }
 
 ////////////////////////////////////////////////////////////////////////
