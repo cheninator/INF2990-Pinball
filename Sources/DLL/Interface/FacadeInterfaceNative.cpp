@@ -304,7 +304,8 @@ extern "C"
 					if (typeNoeud == "generateurbille")
 						generateurs.push_back(i);
 				}
-
+				if (generateurs.size() == 0)
+					return;
 				int pos = rand() % generateurs.size();
 
 				glm::dvec3 scale = noeudTable->getEnfant(generateurs[pos])->obtenirAgrandissement();
