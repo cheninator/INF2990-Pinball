@@ -126,7 +126,7 @@ bool VisiteurSelectionInverse::traiter(NoeudTable* table)
 ////////////////////////////////////////////////////////////////////////
 bool VisiteurSelectionInverse::traiter(NoeudAbstrait* noeud)
 {
-	if (valeurStencil_ - 1== noeud->getNumero() && noeud->estSelectionnable() /*&& noeud->estModifiable()*/)
+	if (valeurStencil_== noeud->getNumero() && noeud->estSelectionnable() /*&& noeud->estModifiable()*/)
 	{
 
 		if (noeud->estSelectionne())
