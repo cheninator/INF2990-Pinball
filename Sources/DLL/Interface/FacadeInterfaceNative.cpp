@@ -304,6 +304,8 @@ extern "C"
 					if (typeNoeud == "generateurbille")
 						generateurs.push_back(i);
 				}
+				if (generateurs.size() == 0)
+					return;
 
 				int pos = rand() % generateurs.size();
 
