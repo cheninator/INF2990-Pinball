@@ -1,13 +1,13 @@
 ﻿//////////////////////////////////////////////////////////////////////////////
-/// @file Etat.cs
+/// @file EtatEditeurAbstrait.cs
 /// @author Ballers
 /// @date 2015-17-02
 /// @version 1.0 
 ///
-/// @ingroup Etat
+/// @ingroup EtatEditeurAbstrait
 //////////////////////////////////////////////////////////////////////////////
 
-/** @defgroup Etat Etat
+/** @defgroup EtatEditeurAbstrait EtatEditeurAbstrait
 *	@ingroup InterfaceGraphique
 */
 
@@ -22,21 +22,21 @@ using System.Windows.Forms;
 namespace InterfaceGraphique
 {
     ///////////////////////////////////////////////////////////////////////////
-    /// @class Etat
-    /// @brief Etat abstrait du patron State.
+    /// @class EtatEditeurAbstrait
+    /// @brief EtatEditeurAbstrait abstrait du patron State.
     ///
     /// @author The Ballers
     /// @date 2015-01-27
     /// 
-    /// @ingroup Etat
+    /// @ingroup EtatEditeurAbstrait
     ///////////////////////////////////////////////////////////////////////////
-    abstract class Etat
+    abstract class EtatEditeurAbstrait
     {
         protected Editeur form_;
 
         ////////////////////////////////////////////////////////////////////////
         ///
-        /// @fn public Etat(Editeur form)
+        /// @fn public EtatEditeurAbstrait(Editeur form)
         /// @brief Constructeur par parametre de l'etat.
         /// 
         /// param[in] form : Form associee a l'etat.
@@ -44,7 +44,7 @@ namespace InterfaceGraphique
         /// @return Aucune (constructeur).
         ///
         ////////////////////////////////////////////////////////////////////////
-        public Etat(Editeur form) { 
+        public EtatEditeurAbstrait(Editeur form) { 
             form_ = form;
             form_.Cursor = Cursors.Arrow;
             form_.enableZoom(false);
@@ -102,14 +102,14 @@ namespace InterfaceGraphique
 
     ///////////////////////////////////////////////////////////////////////////
     /// @class EtatDeplacement
-    /// @brief Etat Deplacement du patron State.
+    /// @brief EtatEditeurAbstrait Deplacement du patron State.
     ///
     /// @author The Ballers
     /// @date 2015-01-27
     /// 
-    /// @ingroup Etat
+    /// @ingroup EtatEditeurAbstrait
     ///////////////////////////////////////////////////////////////////////////
-    class EtatDeplacement : Etat
+    class EtatEditeurDeplacement : EtatEditeurAbstrait
     {
         ////////////////////////////////////////////////////////////////////////
         ///
@@ -121,7 +121,7 @@ namespace InterfaceGraphique
         /// @return Aucune (constructeur).
         ///
         ////////////////////////////////////////////////////////////////////////
-        public EtatDeplacement(Editeur form) : base(form) {
+        public EtatEditeurDeplacement(Editeur form) : base(form) {
             form_.outilCourant("Deplacement");
         }
 
@@ -165,19 +165,19 @@ namespace InterfaceGraphique
     }
 
     ///////////////////////////////////////////////////////////////////////////
-    /// @class EtatPortail
-    /// @brief Etat Portail du patron State.
+    /// @class EtatEditeurPortail
+    /// @brief EtatEditeurAbstrait Portail du patron State.
     ///
     /// @author The Ballers
     /// @date 2015-01-27
     /// 
-    /// @ingroup Etat
+    /// @ingroup EtatEditeurAbstrait
     ///////////////////////////////////////////////////////////////////////////
-    class EtatPortail : Etat
+    class EtatEditeurPortail : EtatEditeurAbstrait
     {
         ////////////////////////////////////////////////////////////////////////
         ///
-        /// @fn public EtatPortail(Editeur form)
+        /// @fn public EtatEditeurPortail(Editeur form)
         /// @brief Constructeur par parametre de l'etat.
         /// 
         /// param[in] form : Form associee a l'etat.
@@ -185,7 +185,7 @@ namespace InterfaceGraphique
         /// @return Aucune (constructeur).
         ///
         ////////////////////////////////////////////////////////////////////////
-        public EtatPortail(Editeur form) : base(form) { }
+        public EtatEditeurPortail(Editeur form) : base(form) { }
 
         ////////////////////////////////////////////////////////////////////////
         ///
@@ -225,19 +225,19 @@ namespace InterfaceGraphique
     }
 
     ///////////////////////////////////////////////////////////////////////////
-    /// @class EtatMur
-    /// @brief Etat Mur du patron State.
+    /// @class EtatEditeurMur
+    /// @brief EtatEditeurAbstrait Mur du patron State.
     ///
     /// @author The Ballers
     /// @date 2015-01-27
     /// 
-    /// @ingroup Etat
+    /// @ingroup EtatEditeurAbstrait
     ///////////////////////////////////////////////////////////////////////////
-    class EtatMur : Etat
+    class EtatEditeurMur : EtatEditeurAbstrait
     {
         ////////////////////////////////////////////////////////////////////////
         ///
-        /// @fn public EtatMur(Editeur form)
+        /// @fn public EtatEditeurMur(Editeur form)
         /// @brief Constructeur par parametre de l'etat.
         /// 
         /// param[in] form : Form associee a l'etat.
@@ -245,7 +245,7 @@ namespace InterfaceGraphique
         /// @return Aucune (constructeur).
         ///
         ////////////////////////////////////////////////////////////////////////
-        public EtatMur(Editeur form) : base(form) { }
+        public EtatEditeurMur(Editeur form) : base(form) { }
 
         ////////////////////////////////////////////////////////////////////////
         ///
@@ -291,19 +291,19 @@ namespace InterfaceGraphique
     }
 
     ///////////////////////////////////////////////////////////////////////////
-    /// @class EtatSelection
-    /// @brief Etat Selection du patron State.
+    /// @class EtatEditeurSelection
+    /// @brief EtatEditeurAbstrait Selection du patron State.
     ///
     /// @author The Ballers
     /// @date 2015-01-27
     /// 
-    /// @ingroup Etat
+    /// @ingroup EtatEditeurAbstrait
     ///////////////////////////////////////////////////////////////////////////
-    class EtatSelection : Etat 
+    class EtatEditeurSelection : EtatEditeurAbstrait 
     {
         ////////////////////////////////////////////////////////////////////////
         ///
-        /// @fn public EtatSelection(Editeur form)
+        /// @fn public EtatEditeurSelection(Editeur form)
         /// @brief Constructeur par parametre de l'etat.
         /// 
         /// param[in] form : Form associee a l'etat.
@@ -311,7 +311,7 @@ namespace InterfaceGraphique
         /// @return Aucune (constructeur).
         ///
         ////////////////////////////////////////////////////////////////////////
-        public EtatSelection(Editeur form) : base(form) {
+        public EtatEditeurSelection(Editeur form) : base(form) {
             form_.outilCourant("Selection");
             }
 
@@ -353,19 +353,19 @@ namespace InterfaceGraphique
     }
 
     ///////////////////////////////////////////////////////////////////////////
-    /// @class EtatRotation
-    /// @brief Etat Rotation du patron State.
+    /// @class EtatEditeurRotation
+    /// @brief EtatEditeurAbstrait Rotation du patron State.
     ///
     /// @author The Ballers
     /// @date 2015-01-27
     /// 
-    /// @ingroup Etat
+    /// @ingroup EtatEditeurAbstrait
     ///////////////////////////////////////////////////////////////////////////
-    class EtatRotation : Etat
+    class EtatEditeurRotation : EtatEditeurAbstrait
     {
         ////////////////////////////////////////////////////////////////////////
         ///
-        /// @fn public EtatRotation(Editeur form)
+        /// @fn public EtatEditeurRotation(Editeur form)
         /// @brief Constructeur par parametre de l'etat.
         /// 
         /// param[in] form : Form associee a l'etat.
@@ -373,7 +373,7 @@ namespace InterfaceGraphique
         /// @return Aucune (constructeur).
         ///
         ////////////////////////////////////////////////////////////////////////
-        public EtatRotation(Editeur form) : base(form) {
+        public EtatEditeurRotation(Editeur form) : base(form) {
             form_.outilCourant("Rotation");
             }
 
@@ -413,19 +413,19 @@ namespace InterfaceGraphique
     }
 
     ///////////////////////////////////////////////////////////////////////////
-    /// @class EtatScale
-    /// @brief Etat Scale du patron State.
+    /// @class EtatEditeurScale
+    /// @brief EtatEditeurAbstrait Scale du patron State.
     ///
     /// @author The Ballers
     /// @date 2015-01-27
     /// 
-    /// @ingroup Etat
+    /// @ingroup EtatEditeurAbstrait
     ///////////////////////////////////////////////////////////////////////////
-    class EtatScale : Etat
+    class EtatEditeurScale : EtatEditeurAbstrait
     {
         ////////////////////////////////////////////////////////////////////////
         ///
-        /// @fn public EtatScale(Editeur form)
+        /// @fn public EtatEditeurScale(Editeur form)
         /// @brief Constructeur par parametre de l'etat.
         /// 
         /// param[in] form : Form associee a l'etat.
@@ -433,7 +433,7 @@ namespace InterfaceGraphique
         /// @return Aucune (constructeur).
         ///
         ////////////////////////////////////////////////////////////////////////
-        public EtatScale(Editeur form) : base(form) {
+        public EtatEditeurScale(Editeur form) : base(form) {
             form_.Cursor = Cursors.Arrow;
             form_.outilCourant("Mise a Echelle");
         }
@@ -475,19 +475,19 @@ namespace InterfaceGraphique
     }
 
     ///////////////////////////////////////////////////////////////////////////
-    /// @class EtatCreation
-    /// @brief Etat Creation du patron State.
+    /// @class EtatEditeurCreation
+    /// @brief EtatEditeurAbstrait Creation du patron State.
     ///
     /// @author The Ballers
     /// @date 2015-01-27
     /// 
-    /// @ingroup Etat
+    /// @ingroup EtatEditeurAbstrait
     ///////////////////////////////////////////////////////////////////////////
-    class EtatCreation : Etat
+    class EtatEditeurCreation : EtatEditeurAbstrait
     {
         ////////////////////////////////////////////////////////////////////////
         ///
-        /// @fn public EtatCreation(Editeur form)
+        /// @fn public EtatEditeurCreation(Editeur form)
         /// @brief Constructeur par parametre de l'etat.
         /// 
         /// param[in] form : Form associee a l'etat.
@@ -495,7 +495,7 @@ namespace InterfaceGraphique
         /// @return Aucune (constructeur).
         ///
         ////////////////////////////////////////////////////////////////////////
-        public EtatCreation(Editeur form) : base(form) {
+        public EtatEditeurCreation(Editeur form) : base(form) {
             form_.deselection();
             form_.outilCourant("Creation");
             form_.trackCursor(true);
@@ -551,19 +551,19 @@ namespace InterfaceGraphique
     }
 
     ///////////////////////////////////////////////////////////////////////////
-    /// @class EtatZoom
-    /// @brief Etat Zoom du patron State.
+    /// @class EtatEditeurZoom
+    /// @brief EtatEditeurAbstrait Zoom du patron State.
     ///
     /// @author The Ballers
     /// @date 2015-01-27
     /// 
-    /// @ingroup Etat
+    /// @ingroup EtatEditeurAbstrait
     ///////////////////////////////////////////////////////////////////////////
-    class EtatZoom : Etat
+    class EtatEditeurZoom : EtatEditeurAbstrait
     {
         ////////////////////////////////////////////////////////////////////////
         ///
-        /// @fn public EtatZoom(Editeur form)
+        /// @fn public EtatEditeurZoom(Editeur form)
         /// @brief Constructeur par parametre de l'etat.
         /// 
         /// param[in] form : Form associee a l'etat.
@@ -571,7 +571,7 @@ namespace InterfaceGraphique
         /// @return Aucune (constructeur).
         ///
         ////////////////////////////////////////////////////////////////////////
-        public EtatZoom(Editeur form) : base(form) {
+        public EtatEditeurZoom(Editeur form) : base(form) {
             form_.enableZoom(true);
             form_.outilCourant("Zoom");
         }
@@ -632,19 +632,19 @@ namespace InterfaceGraphique
     }
 
     ///////////////////////////////////////////////////////////////////////////
-    /// @class EtatDuplication
-    /// @brief Etat Duplication du patron State.
+    /// @class EtatEditeurDuplication
+    /// @brief EtatEditeurAbstrait Duplication du patron State.
     ///
     /// @author The Ballers
     /// @date 2015-01-27
     /// 
-    /// @ingroup Etat
+    /// @ingroup EtatEditeurAbstrait
     ///////////////////////////////////////////////////////////////////////////
-    class EtatDuplication : Etat
+    class EtatEditeurDuplication : EtatEditeurAbstrait
     {
         ////////////////////////////////////////////////////////////////////////
         ///
-        /// @fn public EtatDuplication(Editeur form)
+        /// @fn public EtatEditeurDuplication(Editeur form)
         /// @brief Constructeur par parametre de l'etat.
         /// 
         /// param[in] form : Form associee a l'etat.
@@ -652,7 +652,7 @@ namespace InterfaceGraphique
         /// @return Aucune (constructeur).
         ///
         ////////////////////////////////////////////////////////////////////////
-        public EtatDuplication(Editeur form) : base(form) {
+        public EtatEditeurDuplication(Editeur form) : base(form) {
             form_.outilCourant("Duplication");
             form_.trackCursor(true);
             form_.dupliquerSelection();  
@@ -695,19 +695,19 @@ namespace InterfaceGraphique
     }
 
     ///////////////////////////////////////////////////////////////////////////
-    /// @class EtatNone
-    /// @brief Etat Nul du patron State.
+    /// @class EtatEditeurNone
+    /// @brief EtatEditeurAbstrait Nul du patron State.
     ///
     /// @author The Ballers
     /// @date 2015-01-27
     /// 
-    /// @ingroup Etat
+    /// @ingroup EtatEditeurAbstrait
     ///////////////////////////////////////////////////////////////////////////
-    class EtatNone : Etat
+    class EtatEditeurNone : EtatEditeurAbstrait
     {
         ////////////////////////////////////////////////////////////////////////
         ///
-        /// @fn public EtatNone(Editeur form)
+        /// @fn public EtatEditeurNone(Editeur form)
         /// @brief Constructeur par parametre de l'etat.
         /// 
         /// param[in] form : Form associee a l'etat.
@@ -715,7 +715,7 @@ namespace InterfaceGraphique
         /// @return Aucune (constructeur).
         ///
         ////////////////////////////////////////////////////////////////////////
-        public EtatNone(Editeur form) : base(form) 
+        public EtatEditeurNone(Editeur form) : base(form) 
         {
             form_.outilCourant("");
         }
@@ -754,19 +754,19 @@ namespace InterfaceGraphique
     }
 
     ///////////////////////////////////////////////////////////////////////////
-    /// @class EtatSelectionMultiple
-    /// @brief Etat Selection multiple du patron State.
+    /// @class EtatEditeurSelectionMultiple
+    /// @brief EtatEditeurAbstrait Selection multiple du patron State.
     ///
     /// @author The Ballers
     /// @date 2015-01-27
     /// 
-    /// @ingroup Etat
+    /// @ingroup EtatEditeurAbstrait
     ///////////////////////////////////////////////////////////////////////////
-    class EtatSelectionMultiple : Etat
+    class EtatEditeurSelectionMultiple : EtatEditeurAbstrait
     {
         ////////////////////////////////////////////////////////////////////////
         ///
-        /// @fn public EtatSelectionMultiple(Editeur form)
+        /// @fn public EtatEditeurSelectionMultiple(Editeur form)
         /// @brief Constructeur par parametre de l'etat.
         /// 
         /// param[in] form : Form associee a l'etat.
@@ -774,7 +774,7 @@ namespace InterfaceGraphique
         /// @return Aucune (constructeur).
         ///
         ////////////////////////////////////////////////////////////////////////
-        public EtatSelectionMultiple(Editeur form) : base(form) {
+        public EtatEditeurSelectionMultiple(Editeur form) : base(form) {
         
         }
 
@@ -816,19 +816,19 @@ namespace InterfaceGraphique
         }
     }
     ///////////////////////////////////////////////////////////////////////////
-    /// @class EtatZoomElastique
-    /// @brief Etat Zoom Elastique du patron State.
+    /// @class EtatEditeurZoomElastique
+    /// @brief EtatEditeurAbstrait Zoom Elastique du patron State.
     ///
     /// @author The Ballers
     /// @date 2015-01-27
     /// 
-    /// @ingroup Etat
+    /// @ingroup EtatEditeurAbstrait
     ///////////////////////////////////////////////////////////////////////////
-    class EtatZoomElastique : Etat
+    class EtatEditeurZoomElastique : EtatEditeurAbstrait
     {
         ////////////////////////////////////////////////////////////////////////
         ///
-        /// @fn public EtatZoomElastique(Editeur form) : base(form)
+        /// @fn public EtatEditeurZoomElastique(Editeur form) : base(form)
         /// @brief Constructeur par parametre de l'etat.
         /// 
         /// param[in] form : Form associee a l'etat.
@@ -836,7 +836,7 @@ namespace InterfaceGraphique
         /// @return Aucune (constructeur).
         ///
         ////////////////////////////////////////////////////////////////////////
-        public EtatZoomElastique(Editeur form) : base(form)
+        public EtatEditeurZoomElastique(Editeur form) : base(form)
         {
  
         }
@@ -878,19 +878,19 @@ namespace InterfaceGraphique
     }
 
     ///////////////////////////////////////////////////////////////////////////
-    /// @class EtatZoomElastique
-    /// @brief Etat Test du patron State.
+    /// @class EtatEditeurZoomElastique
+    /// @brief EtatEditeurAbstrait Test du patron State.
     ///
     /// @author The Ballers
     /// @date 2015-02-25
     /// 
-    /// @ingroup Etat
+    /// @ingroup EtatEditeurAbstrait
     ///////////////////////////////////////////////////////////////////////////
-    class EtatTest : Etat
+    class EtatEditeurTest : EtatEditeurAbstrait
     {
         ////////////////////////////////////////////////////////////////////////
         ///
-        /// @fn public EtatTest(Editeur form) : base(form)
+        /// @fn public EtatEditeurTest(Editeur form) : base(form)
         /// @brief Constructeur par parametre de l'etat.
         /// 
         /// param[in] form : Form associee a l'etat.
@@ -898,7 +898,7 @@ namespace InterfaceGraphique
         /// @return Aucune (constructeur).
         ///
         ////////////////////////////////////////////////////////////////////////
-        public EtatTest(Editeur form): base(form)
+        public EtatEditeurTest(Editeur form): base(form)
         {
 
         }
@@ -936,11 +936,11 @@ namespace InterfaceGraphique
         }
     }
 
-    class EtatPause : Etat
+    class EtatEditeurPause : EtatEditeurAbstrait
     {
         ////////////////////////////////////////////////////////////////////////
         ///
-        /// @fn public EtatPause(Editeur form) : base(form)
+        /// @fn public EtatEditeurPause(Editeur form) : base(form)
         /// @brief Constructeur par parametre de l'etat.
         /// 
         /// param[in] form : Form associee a l'etat.
@@ -948,7 +948,7 @@ namespace InterfaceGraphique
         /// @return Aucune (constructeur).
         ///
         ////////////////////////////////////////////////////////////////////////
-        public EtatPause(Editeur form): base(form)
+        public EtatEditeurPause(Editeur form): base(form)
         {
             
         }
