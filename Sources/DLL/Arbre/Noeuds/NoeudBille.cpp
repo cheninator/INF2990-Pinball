@@ -115,8 +115,13 @@ void NoeudBille::afficherConcret() const
 ///
 /// @fn void NoeudBille::animer(float temps)
 ///
-/// Cette fonction effectue l'animation du noeud pour un certain
-/// intervalle de temps. Pas d'animation pour ce type de noeud.
+/// Le travail fait dans cette méthode est comme suit,
+///  - Calculer la somme des forces agissant sur la bille 
+///  - Calculer la nouvelle vitesse
+///		- Calculer la vitesse apres la collision (présentement juste la détection)
+///		- Calculer la nouvelle vitesse en appliquant les forces
+///  - Calculer la nouvelle position à partir de la vitesse après la collision.
+///  - Changer l'oritentation de la bille pour faire comme si elle roule (TODO).
 ///
 /// @param[in] temps : Intervalle de temps sur lequel faire l'animation.
 ///
@@ -138,14 +143,13 @@ void NoeudBille::animer(float temps) // rajouter des parametres ou une fonction 
 
 	// Calcul de la nouvelle vitesse. 
 	// =============================
-	// Ici, je fais une gestion elementaire de collision,
-	// cette gestion devrait/pourrait probablement etre faite ailleur dans le code.
+
 	glm::dvec3 vitesseApresCollision = vitesse_;
 
 
+	// Obtenir une liste de noeuds a checker pour une collision
 	std::vector<NoeudAbstrait*> noeudsAChecker;
 	{// Travail a faire par le quad tree
-		// Obtenir une liste de noeuds a checker pour une collision (sera fait avec le quadTree)
 		ArbreRenduINF2990* arbre = FacadeModele::obtenirInstance()->obtenirArbreRenduINF2990();
 		NoeudComposite* table = (NoeudComposite*)arbre->getEnfant(0);
 		for (unsigned int i = 0; i < table->obtenirNombreEnfants(); i++)
@@ -157,42 +161,37 @@ void NoeudBille::animer(float temps) // rajouter des parametres ou une fonction 
 		}
 	}
 
-	// J'aurais pu faire la gestion des collisions dans le for précédent, mais le but c'est d'avoir un vector, et de travailler sur le vector.
+	
 	bool enCollision = false;
+	// Pour chaque noeud à checker, vérifier s'il est en collision avec la bille (this)
 	for (NoeudAbstrait* noeud : noeudsAChecker)
 	{
+		// Obtenir la boite englobante
 		std::vector<glm::dvec3> boite;
 		{ // Travail a faire par std::vector<glm::dvec3> NoeudAbstrait::obtenirBoite()
 			glm::dvec3 tableau[4];
 			noeud->obtenirVecteursBoite(tableau[0], tableau[1], tableau[2], tableau[3]);
 			for (unsigned int i = 0; i < 4; i++) boite.push_back(tableau[i] + noeud->obtenirPositionRelative());
 		}
-
 		
 		// Considerer tous les segments boite[i] --- boite[i+1 % size] 
 		for (unsigned int i = 0; i < boite.size(); i++)
 		{
-			aidecollision::DetailsCollision details = aidecollision::calculerCollisionSegment(boite[i], boite[(i + 1) % boite.size()], positionRelative_,10, true);
-			// std::cout << "segment: { (" << boite[i].x << ", " << boite[i].y << ", " << "),  ( " << boite[(i + 1) % boite.size()].x << ", " << boite[(i + 1) % boite.size()].y << ") }  et position (" << positionRelative_.x << ", " << positionRelative_.y << ")" << std::endl;
+			// On veut calculer la collision en 2D et caster les paramêtres en glm::dvec2 "oublie" leur composante en Z et choisi la bonne surcharge de calculerCollisionSegment.
+			aidecollision::DetailsCollision details = aidecollision::calculerCollisionSegment((glm::dvec2)boite[i], (glm::dvec2)boite[(i + 1) % boite.size()], (glm::dvec2)positionRelative_, 7, true);
 			if (details.type != aidecollision::COLLISION_AUCUNE)
 			{
-				// std::cout << "COLLISION" << std::endl;
 				enCollision = true;
 			}
-
 		}
-
-
+		// TODO: Si la boite contient un seul élément, ne pas faire le for précédent, car l'objet est un cercle. Il faut faire un traitement différent.
 	}
-		
+	
 	assignerImpossible(enCollision);
-		
+	
 	glm::dvec3 nouvellePosition = positionRelative_ + (double)temps*vitesseApresCollision;
 
-		
 	glm::dvec3 nouvelleVitesse = vitesseApresCollision + (double)temps * forceTotale / masse_;
-
-
 
 
 	// if(debug_ && enCollision) {
