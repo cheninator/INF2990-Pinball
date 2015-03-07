@@ -13,6 +13,7 @@ namespace InterfaceGraphique
         private ZoneInfo zInfo;
         private int currentZone = 0;
         private int nbZones;
+        private int typeJoueur;
         private bool fullScreen = false;
         List<string> myMaps;
         StringBuilder map;
@@ -22,15 +23,17 @@ namespace InterfaceGraphique
         private bool activateDirectLight = false; ///< Etat de la lumiere directe
         private bool activateSpotLight = false; ///< Etat de la lumiere spot
 
-        public ModeJeu(List<string> maps)
+        public ModeJeu(List<string> maps, int playerType)
         {
-            if(fullScreen)
+           
+         /*   if(fullScreen)
             {
                 this.WindowState = FormWindowState.Normal;
                 this.FormBorderStyle = FormBorderStyle.None;
                 this.WindowState = FormWindowState.Maximized;
             }
-           
+         */
+            EtablirTouches(playerType);
             this.KeyDown += new KeyEventHandler(PartieRapide_KeyDown);
             this.KeyUp += new KeyEventHandler(PartieRapide_KeyUp);
            
@@ -41,16 +44,13 @@ namespace InterfaceGraphique
             FonctionsNatives.resetZoom();
             currentZoom = -1;
 
-            touches = new Touches(FonctionsNatives.obtenirTouchePGJ1(),
-                                  FonctionsNatives.obtenirTouchePGJ2(),
-                                  FonctionsNatives.obtenirTouchePDJ1(),
-                                  FonctionsNatives.obtenirTouchePDJ2(),
-                                  FonctionsNatives.obtenirToucheRessort());
+           
             myMaps = new List<string>(maps);
             nbZones = maps.Count;
             map = new StringBuilder(myMaps[0]);
             Console.WriteLine(nbZones);
             FonctionsNatives.ouvrirXML(map, map.Capacity);
+            FonctionsNatives.construireListesPalettes();
             currentZone++;
             Program.tempBool = true;
         }
@@ -111,6 +111,38 @@ namespace InterfaceGraphique
 
         }
 
+        private void EtablirTouches(int playerType)
+        {
+            if (playerType == 1)
+            {
+                touches = new Touches(FonctionsNatives.obtenirTouchePGJ1(),
+                                 FonctionsNatives.obtenirTouchePGJ1(),
+                                 FonctionsNatives.obtenirTouchePDJ1(),
+                                 FonctionsNatives.obtenirTouchePDJ1(),
+                                 FonctionsNatives.obtenirToucheRessort());
+            }
+            else if (playerType == 2)
+            {
+                touches = new Touches(FonctionsNatives.obtenirTouchePGJ1(),
+                                FonctionsNatives.obtenirTouchePGJ2(),
+                                FonctionsNatives.obtenirTouchePDJ1(),
+                                FonctionsNatives.obtenirTouchePDJ2(),
+                                FonctionsNatives.obtenirToucheRessort());
+            }
+            else if (playerType == 3)
+            {
+                // Le 1337 est la pour rendre l'acces aux touches de joueur 2 invalide
+                touches = new Touches(FonctionsNatives.obtenirTouchePGJ1(),
+                                1337,
+                                FonctionsNatives.obtenirTouchePDJ1(),
+                                1337,
+                                FonctionsNatives.obtenirToucheRessort());
+            }
+
+
+
+        }
+
         private void PartieRapide_KeyDown(object sender, KeyEventArgs e)
         {   
             // À enlever : permet de vérifier la fenêtre OpenGL
@@ -123,11 +155,27 @@ namespace InterfaceGraphique
             else if (e.KeyCode == Keys.Down)
                 FonctionsNatives.translater(0, -10);
 
-            if (e.KeyValue == touches.PGJ1) // Remplacer "R" par la touche obtenue des configurations
-            {
-                FonctionsNatives.activerPalettesGJ1();
-              //  Console.WriteLine("Touche R enfoncée"); // Activer les palettes gauches du joueur 1
-            }
+           if (e.KeyValue == touches.PGJ1)
+           {
+               FonctionsNatives.activerPalettesGJ1();
+           }
+
+           else if (e.KeyValue == touches.PGJ2)
+           {
+               // TODO: palette gauche joueur 2
+           }
+           else if (e.KeyValue == touches.PDJ1)
+           {
+
+           }
+           else if (e.KeyValue == touches.PDJ2)
+           {
+
+           }
+           else if (e.KeyValue == touches.Ressort)
+           {
+
+           }
         }
 
 
@@ -155,13 +203,13 @@ namespace InterfaceGraphique
                 {
                     menuStrip.Visible = false;
                     FonctionsNatives.modePause(false);
-                  //  Console.WriteLine("HIDE");
+                 
                 }
                 else
                 {
                     menuStrip.Visible = true;
                     FonctionsNatives.modePause(true);
-                 //   Console.WriteLine("SHOW");
+               
                 }
             }
             else if (e.KeyChar == 'j')
@@ -201,6 +249,7 @@ namespace InterfaceGraphique
                         //this.Show();
                     
                         FonctionsNatives.ouvrirXML(map, map.Capacity);
+                        FonctionsNatives.construireListesPalettes();
                         currentZone++;
                     }
                     

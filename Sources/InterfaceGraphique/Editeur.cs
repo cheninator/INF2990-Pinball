@@ -467,6 +467,7 @@ namespace InterfaceGraphique
                 {
                     deselection();
                     ModeTest_MenuItem.PerformClick();
+                    panel_GL.Focus();
                 }
                 else if (e.KeyChar == 'f')
                 {
@@ -1549,7 +1550,6 @@ namespace InterfaceGraphique
             Console.WriteLine("Mode Test.");
             etat = null;
             etat = new EtatTest(this);
-
             menuStrip1.Hide();
             
             if (Creation_Panel.Visible)
@@ -1565,6 +1565,7 @@ namespace InterfaceGraphique
             panel_GL.Dock = DockStyle.Fill;
             this.OnSizeChanged(e);
             FonctionsNatives.translater(-mouvementX, mouvementY);
+            FonctionsNatives.construireListesPalettes();
 
             //panel_GL.Dock = DockStyle.Fill;
             //menuStrip3.BringToFront();

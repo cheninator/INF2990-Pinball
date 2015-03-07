@@ -305,9 +305,9 @@ namespace InterfaceGraphique
             configuration.ShowDialog();
         }
 
-        public void LancerModeJeu(List<string> zones) 
+        public void LancerModeJeu(List<string> zones,int playerType) 
         { 
-            modeJeuMain = new ModeJeu(zones); 
+            modeJeuMain = new ModeJeu(zones,playerType); 
             modeJeuMain.ShowDialog(this);
             if (campagne != null)
             {

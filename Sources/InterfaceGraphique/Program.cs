@@ -434,6 +434,9 @@ namespace InterfaceGraphique
         public static extern void creerFichierCampagne(StringBuilder listMaps, int length);
 
         [DllImport(@"Noyau.dll", CallingConvention = CallingConvention.Cdecl)]
+        public static extern void construireListesPalettes();
+
+        [DllImport(@"Noyau.dll", CallingConvention = CallingConvention.Cdecl)]
         public static extern void activerPalettesGJ1();
 
         [DllImport(@"Noyau.dll", CallingConvention = CallingConvention.Cdecl)]

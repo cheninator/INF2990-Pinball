@@ -1442,6 +1442,11 @@ extern "C"
 		FacadeModele::obtenirInstance()->supprimerBille();
 	}
 
+	__declspec(dllexport) void __cdecl construireListesPalettes()
+	{
+		FacadeModele::obtenirInstance()->construireListesPalettes();
+	}
+
 	__declspec(dllexport) void __cdecl modePause(bool pause)
 	{
 		FacadeModele::obtenirInstance()->setPause(pause);
