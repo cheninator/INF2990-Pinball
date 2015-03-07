@@ -1,5 +1,5 @@
 ///////////////////////////////////////////////////////////////////////////
-/// @file NoeudPortail.cpp
+/// @file NoeudPortailTorus.cpp
 /// @author The Ballers
 /// @date 2015-01-24
 /// @version 1.0
@@ -52,7 +52,7 @@ NoeudPortailTorus::~NoeudPortailTorus()
 
 ////////////////////////////////////////////////////////////////////////
 ///
-/// @fn void NoeudPortail::afficherConcret() const
+/// @fn void NoeudPortailTorus::afficherConcret() const
 ///
 /// Cette fonction effectue le veritable rendu de l'objet.
 ///
