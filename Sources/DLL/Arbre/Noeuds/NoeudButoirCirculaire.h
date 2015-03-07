@@ -40,9 +40,7 @@ public:
 	virtual bool accepterVisiteur(VisiteurAbstrait* vis);
 
 private:
-	// Pour l'animation
-	int compt_ = 0;
-
+	
 	/// Angle selon l'axe des X.
 	float angleX_{ 0.f };
 

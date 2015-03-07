@@ -8,6 +8,7 @@
 ///////////////////////////////////////////////////////////////////////////
 
 #include "NoeudPortail.h"
+#include "NoeudPortailTorus.h"
 #include "Utilitaire.h"
 
 #include <windows.h>
@@ -109,9 +110,11 @@ void NoeudPortail::afficherConcret() const
 ////////////////////////////////////////////////////////////////////////
 void NoeudPortail::animer(float temps)
 {
-	NoeudComposite::animer(temps);
 	if (enfants_.size() == 0)
 		return;
+
+	NoeudPortailTorus* tore = (NoeudPortailTorus*)enfants_[0];
+	tore->NoeudPortailTorus::animer(temps);
 
 	enfants_[0]->assignerAffiche(debug_);
 	enfants_[0]->setTransparent(transparent_);

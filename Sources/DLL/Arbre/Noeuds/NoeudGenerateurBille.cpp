@@ -18,7 +18,6 @@
 #include "OpenGL_Storage/ModeleStorage_Liste.h"
 
 
-
 ////////////////////////////////////////////////////////////////////////
 ///
 /// @fn NoeudGenerateurBille::NoeudGenerateurBille(const std::string& typeNoeud)
@@ -34,8 +33,7 @@
 NoeudGenerateurBille::NoeudGenerateurBille(const std::string& typeNoeud)
 	: NoeudComposite{ typeNoeud }
 {
-	direction_ = 0;
-	power_ = 0;
+
 }
 
 ////////////////////////////////////////////////////////////////////////
@@ -112,44 +110,6 @@ void NoeudGenerateurBille::afficherConcret() const
 ////////////////////////////////////////////////////////////////////////
 void NoeudGenerateurBille::animer(float temps)
 {
-	NoeudComposite::animer(temps);
-
-	if (direction_ == 0) {
-		if (selectionne_ || impossible_ || transparent_)
-			return;
-		direction_ = std::rand() % 4 + 1;
-		power_ = std::rand() % 11;
-		if (power_ > 5)
-			power_ = -power_ + 5;
-	}
-	else if (direction_ > 0) {
-		direction_ *= -1;
-		power_ *= -1;
-	}
-	else
-		direction_ = 0;
-
-
-	switch (abs(direction_))
-	{
-	case 1:
-		positionRelative_.x += power_;
-		positionRelative_.y += power_;
-		break;
-	case 2:
-		positionRelative_.x += power_;
-		break;
-	case 3:
-		positionRelative_.y += power_;
-		break;
-	case 4:
-		positionRelative_.x -= power_;
-		positionRelative_.y += power_;
-		break;
-	default:
-		break;
-	}
-
 }
 
 ////////////////////////////////////////////////////////////////////////

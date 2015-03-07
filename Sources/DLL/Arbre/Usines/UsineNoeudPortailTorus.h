@@ -61,7 +61,7 @@ inline UsineNoeudPortailTorus::UsineNoeudPortailTorus(const std::string& nom)
 ////////////////////////////////////////////////////////////////////////
 NoeudAbstrait* UsineNoeudPortailTorus::creerNoeud() const
 {
-	auto noeud = new NoeudPortailTorus{ obtenirNom() };
+	auto noeud = new NoeudPortail{ obtenirNom() };
 	noeud->assignerObjetRendu(&modele_, &liste_);
 	return noeud;
 }
