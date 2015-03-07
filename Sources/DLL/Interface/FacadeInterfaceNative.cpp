@@ -53,7 +53,6 @@ extern "C"
 	// Nvm, c'est devenue une necesite, donc garder ces variables absolument
 	static NoeudAbstrait* objet = new NoeudAbstrait();
 	static NoeudAbstrait* objet_temp = new NoeudAbstrait();
-	static bool debugMode[4] = { false };
 
 	// Useless, pas d'orbite en ce moment
 	static double theta = 0; ///< Angle Theta
@@ -97,7 +96,6 @@ extern "C"
 			return;
 		std::cout << std::endl << "Initialisation de l'openGL en cours..." << std::endl;
 		FacadeModele::obtenirInstance()->initialiserOpenGL((HWND)handle);
-		FacadeModele::obtenirInstance()->setDebug(debugMode[1], debugMode[3]);
 	}
 
 
@@ -265,7 +263,6 @@ extern "C"
 	////////////////////////////////////////////////////////////////////////
 	__declspec(dllexport) void __cdecl  creerObjet(char* value, int length, bool isTwin, bool colorShift)
 	{
-		
 		std::string nomObjet(value);
 		if (isTwin == true) {
 			objet_temp = FacadeModele::obtenirInstance()->obtenirArbreRenduINF2990()->creerNoeud(nomObjet);
@@ -320,7 +317,7 @@ extern "C"
 				objet->assignerEchelle(scale);
 				//HH:MM:SS:mmm – Nouvelle bille : x: POSX y: POSY
 				// http://brian.pontarelli.com/2009/01/05/getting-the-current-system-time-in-milliseconds-with-c/
-				if (debugMode[0]) {
+				if (FacadeModele::obtenirInstance()->obtenirConfiguration()[8] && FacadeModele::obtenirInstance()->obtenirConfiguration()[12]) {
 					printCurrentTime();
 					std::cout << std::fixed << std::setprecision(2);
 					std::cout << " - Nouvelle bille : x: " << positionX << " y: " << positionY << std::endl;;
@@ -329,11 +326,8 @@ extern "C"
 				delete noeudTable;
 			}
 		}
-		if (nomObjet == "bille")
-			objet->setDebug(debugMode[1]);
-		else if (nomObjet == "portail")
-			objet->setDebug(debugMode[3]);
 		FacadeModele::obtenirInstance()->obtenirArbreRenduINF2990()->getEnfant(0)->ajouter(objet);
+		FacadeModele::obtenirInstance()->setDebug();
 
 	}
 
@@ -442,9 +436,9 @@ extern "C"
 		if (objetEstLegal)
 		{
 			// Si l'objet est legal, l'ajouter a la table, sinon, on le scrap
-			if (nomObjet == "portail")
-				objet->setDebug(debugMode[3]);
 			FacadeModele::obtenirInstance()->obtenirArbreRenduINF2990()->getEnfant(0)->ajouter(objet);
+			if (nomObjet == "portail")
+				FacadeModele::obtenirInstance()->setDebug();
 			return true;
 		}
 		else
@@ -710,7 +704,7 @@ extern "C"
 	{
 		FacadeModele::obtenirInstance()->obtenirArbreRenduINF2990()->vider();
 		FacadeModele::obtenirInstance()->obtenirArbreRenduINF2990()->initialiserXML(std::string(path));
-		FacadeModele::obtenirInstance()->setDebug(debugMode[1], debugMode[3]);
+		FacadeModele::obtenirInstance()->setDebug();
 		return FacadeModele::obtenirInstance()->obtenirArbreRenduINF2990()->obtenirProprietes();
 	}
 
@@ -957,7 +951,7 @@ extern "C"
 	__declspec(dllexport) void __cdecl  dupliquerSelection(int i, int j)
 	{
 		FacadeModele::obtenirInstance()->dupliquerSelection(i, j);
-		FacadeModele::obtenirInstance()->setDebug(debugMode[1], debugMode[3]);
+		FacadeModele::obtenirInstance()->setDebug();
 	}
 
 	///////////////////////////////////////////////////////////////////////////////
@@ -1452,45 +1446,39 @@ extern "C"
 		FacadeModele::obtenirInstance()->setPause(pause);
 	}
 
-	__declspec(dllexport) void __cdecl consolDebug(bool dbg1, bool dbg2, bool dbg3, bool dbg4)
-	{
-		debugMode[0] = dbg1; 
-		debugMode[1] = dbg2;
-		debugMode[2] = dbg3; 
-		debugMode[3] = dbg4;
-	}
-
 	__declspec(dllexport) bool __cdecl spotLight(int lum, bool state)
 	{
 		// See this for light:
 		// http://www.gamedev.net/topic/564426-create-glow-with-gl_emission/
+		bool debugLumiere = FacadeModele::obtenirInstance()->obtenirConfiguration()[12] && FacadeModele::obtenirInstance()->obtenirConfiguration()[10];
+
 		if (lum > 2 || lum < 0)
 			return false;
-		if (debugMode[2]) {
+		if (debugLumiere) {
 			printCurrentTime();
 			std::cout << " - Lumiere(s) ";
 		}
 		switch (lum) {
 		case 0:
-			if (debugMode[2])
+			if (debugLumiere)
 				std::cout << "ambiante ";
 			// TO DO: the spotlight ambiante
 			break;
 		case 1:
-			if (debugMode[2])
+			if (debugLumiere)
 				std::cout << "directionnelle ";
 			// TO DO: the spotlight directionnelle
 			break;
 		case 2:
-			if (debugMode[2])
+			if (debugLumiere)
 				std::cout << "spot ";
-			FacadeModele::obtenirInstance()->setDebug(debugMode[1], debugMode[3], state);
+			FacadeModele::obtenirInstance()->setDebug(state);
 			break;
 		default:
 			return false;
 			break;
 		}
-		if (debugMode[2])
+		if (debugLumiere)
 			if (state == true)
 				std::cout << "ouverte(s)" << std::endl;
 			else

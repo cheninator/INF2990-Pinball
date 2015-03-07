@@ -285,9 +285,7 @@ namespace InterfaceGraphique
             valuesXML[10] = Convert.ToInt32(AE_OK.Checked);
             valuesXML[11] = Convert.ToInt32(PORTAL_OK.Checked);
             valuesXML[12] = Convert.ToInt32(GLOB_OK.Checked);
-            Console.WriteLine(valuesXML[12]);
 
-            FonctionsNatives.consolDebug(GB_OK.Checked, VAC_OK.Checked, AE_OK.Checked, PORTAL_OK.Checked);
             FonctionsNatives.creerFichierConfig(valuesXML);
             this.Close();
         }

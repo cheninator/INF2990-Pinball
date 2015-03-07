@@ -959,12 +959,24 @@ void FacadeModele::setPause( bool pause)
 ///
 /// @param[in]  valeurDebugBille : valeur du mode debug pour la bille
 /// @param[in]  valeurDebugPortail : valeur du mode debug pour le portail
+/// @param[in]  valeurSpotLight : valeur du mode debug pour la lumiere
 ///
 /// @return Aucun
 ///
 ///////////////////////////////////////////////////////////////////////////////
-void FacadeModele::setDebug(bool valeurDebugBille, bool valeurDebugPortail, bool valeurSpotLight)
+void FacadeModele::setDebug(bool valeurSpotLight)
 {
+	bool valeurDebugBille;
+	bool valeurDebugPortail;
+	if (obtenirConfiguration()[12] == false){
+		valeurDebugBille = false;
+		valeurDebugPortail = false;
+		valeurSpotLight = false;
+	}
+	else{
+		valeurDebugBille = obtenirConfiguration()[9];
+		valeurDebugPortail = obtenirConfiguration()[11];
+	}
 	VisiteurDebug* visiteur = new VisiteurDebug(valeurDebugBille, valeurDebugPortail, valeurSpotLight);
 	FacadeModele::obtenirInstance()->obtenirArbreRenduINF2990()->accepterVisiteur(visiteur);
 	delete visiteur;
@@ -1081,6 +1093,7 @@ void FacadeModele::sauvegarderConfig(int config[13])
 {
 	configuration_->modifierConfiguration(config);
 	configuration_->sauvegarderConfiguration();
+	setDebug();
 }
 
 

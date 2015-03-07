@@ -169,7 +169,7 @@ public:
    void supprimerBille();
 
    void setPause(bool pause);
-   void setDebug(bool valeurDebugBille, bool valeurDebugPortail, bool valeurSpotLight = false);
+   void setDebug(bool valeurSpotLight = false);
 
 private:
 

@@ -56,7 +56,6 @@ namespace InterfaceGraphique
             StartPosition = FormStartPosition.CenterScreen;
             StringBuilder initSound = new StringBuilder("");
             configuration = new Configuration();
-            FonctionsNatives.consolDebug(configuration.getConfig(0), configuration.getConfig(1), configuration.getConfig(2), configuration.getConfig(3));
         }
 
         private void Form1_KeyPress(object sender, KeyPressEventArgs e)

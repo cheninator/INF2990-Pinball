@@ -252,9 +252,9 @@ void NoeudBille::animer(float temps) // rajouter des parametres ou une fonction 
 	glm::dvec3 nouvelleVitesse = vitesseApresCollision + (double)temps * forceTotale / masse_;
 
 
-	// if(debug_ && enCollision) {
-	//		afficherVitesse(nouvelleVitesse);
-	//	}
+	if(debug_ && enCollision) {
+			afficherVitesse(nouvelleVitesse);
+	}
 
 	// Calcul de la rotation
 	// =====================
