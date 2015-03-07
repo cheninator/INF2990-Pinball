@@ -43,6 +43,9 @@ public:
 
 	/// Activer ou desactiver le mode spotLight.
 	virtual void setSpotLight(bool debug);
+
+	/// Afficher la vitesse
+	void afficherVitesse(glm::dvec3 nouvelleVitesse);
 };
 
 #endif // __ARBRE_NOEUDS_NOEUDGENERATEURBILLE_H__

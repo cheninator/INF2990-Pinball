@@ -17,6 +17,11 @@
 #include <iomanip>
 
 #include "Modele3D.h"
+#include "NoeudComposite.h"
+#include "../ArbreRenduINF2990.h"
+#include "NoeudTable.h"
+#include "../../Application/FacadeModele.h"
+#include "../../Commun/Utilitaire/AideCollision.h"
 #include "OpenGL_Storage/ModeleStorage_Liste.h"
 
 
@@ -121,7 +126,7 @@ void NoeudBille::afficherConcret() const
 void NoeudBille::animer(float temps) // rajouter des parametres ou une fonction animerCollision(float temps, detailCollision detail)
 {
 	// Somme des forces agissant sur les particules.
-	
+	// =============================================
 	glm::dvec3 attractionsPortails{ 0, 0, 0 };
 	glm::dvec3 gravite{ 0, -20*masse_, 0 };
 	glm::dvec3 forceFrottement{ 0, 0, 0 };
@@ -129,38 +134,74 @@ void NoeudBille::animer(float temps) // rajouter des parametres ou une fonction 
 		forceFrottement = -constanteDeFrottement_ * glm::normalize(vitesse_);
 	glm::dvec3 forceTotale = forceFrottement + gravite + attractionsPortails;
 
-	// Calcul de la nouvelle positon.
-	glm::dvec3 nouvellePosition = positionRelative_ +(double)temps*vitesse_;
 
-	// Calcul de la nouvelle vitesse. Ici, je fais une gestion elementaire de collision,
+
+	// Calcul de la nouvelle vitesse. 
+	// =============================
+	// Ici, je fais une gestion elementaire de collision,
 	// cette gestion devrait/pourrait probablement etre faite ailleur dans le code.
-	glm::dvec3 nouvelleVitesse;
-	if (positionRelative_.y < -190 && vitesse_.y < 0) // A faire avec des boites englobantes
-	{
-		glm::dvec3 normale = glm::normalize(glm::dvec3{ 0, 1, 0 });
-		glm::dvec3 composanteNormale = glm::dot(normale, vitesse_)*normale;
-		glm::dvec3 composanteTangentielle = vitesse_ - composanteNormale;
+	glm::dvec3 vitesseApresCollision = vitesse_;
 
-		nouvelleVitesse = (-composanteNormale + composanteTangentielle) + (double)temps * forceTotale / masse_;
-		
-		if(debug_) {
 
-			SYSTEMTIME time;
-			GetLocalTime(&time);
-			std::cout << std::fixed << std::setw(2) << std::setprecision(2) << time.wHour << ":"
-				<< std::fixed << std::setfill('0') << std::setw(2) << std::setprecision(2) << time.wMinute << ":"
-				<< std::fixed << std::setfill('0') << std::setw(2) << std::setprecision(2) << time.wSecond << ":"
-				<< std::fixed << std::setfill('0') << std::setw(3) << std::setprecision(3) << time.wMilliseconds;
-
-			std::cout << " - Vitesse : { x : "
-				<< std::fixed << std::setfill('0') << std::setw(2) << std::setprecision(2) << nouvelleVitesse.x << "   y : "
-				<< std::fixed << std::setfill('0') << std::setw(2) << std::setprecision(2) << nouvelleVitesse.y << " }"<< std::endl;	
+	std::vector<NoeudAbstrait*> noeudsAChecker;
+	{// Travail a faire par le quad tree
+		// Obtenir une liste de noeuds a checker pour une collision (sera fait avec le quadTree)
+		ArbreRenduINF2990* arbre = FacadeModele::obtenirInstance()->obtenirArbreRenduINF2990();
+		NoeudComposite* table = (NoeudComposite*)arbre->getEnfant(0);
+		for (unsigned int i = 0; i < table->obtenirNombreEnfants(); i++)
+		{
+			NoeudAbstrait* noeud = table->getEnfant(i);
+			// conditions a verifier?
+			if (noeud != this)
+				noeudsAChecker.push_back(noeud);
 		}
 	}
-	else
-		nouvelleVitesse = vitesse_ + (double)temps * forceTotale / masse_;
 
+	// J'aurais pu faire la gestion des collisions dans le for précédent, mais le but c'est d'avoir un vector, et de travailler sur le vector.
+	bool enCollision = false;
+	for (NoeudAbstrait* noeud : noeudsAChecker)
+	{
+		std::vector<glm::dvec3> boite;
+		{ // Travail a faire par std::vector<glm::dvec3> NoeudAbstrait::obtenirBoite()
+			glm::dvec3 tableau[4];
+			noeud->obtenirVecteursBoite(tableau[0], tableau[1], tableau[2], tableau[3]);
+			for (unsigned int i = 0; i < 4; i++) boite.push_back(tableau[i] + noeud->obtenirPositionRelative());
+		}
+
+		
+		// Considerer tous les segments boite[i] --- boite[i+1 % size] 
+		for (unsigned int i = 0; i < boite.size(); i++)
+		{
+			aidecollision::DetailsCollision details = aidecollision::calculerCollisionSegment(boite[i], boite[(i + 1) % boite.size()], positionRelative_,10, true);
+			// std::cout << "segment: { (" << boite[i].x << ", " << boite[i].y << ", " << "),  ( " << boite[(i + 1) % boite.size()].x << ", " << boite[(i + 1) % boite.size()].y << ") }  et position (" << positionRelative_.x << ", " << positionRelative_.y << ")" << std::endl;
+			if (details.type != aidecollision::COLLISION_AUCUNE)
+			{
+				// std::cout << "COLLISION" << std::endl;
+				enCollision = true;
+				if (debug_)
+					afficherVitesse(vitesse_);
+			}
+
+		}
+
+
+	}
+		
+	assignerImpossible(enCollision);
+		
+	glm::dvec3 nouvellePosition = positionRelative_ + (double)temps*vitesseApresCollision;
+
+		
+	glm::dvec3 nouvelleVitesse = vitesseApresCollision + (double)temps * forceTotale / masse_;
+
+
+
+
+	if(debug_ && enCollision) {
+			afficherVitesse(nouvelleVitesse);
+		}
 	// Calcul de la rotation
+	// =====================
 	// C'est pas la bonne facon de calculer la rotation a appliquer a la boule,
 	// C'est pas un bug, j'ai just pas encore trouve la bonne facon de le faire.
 	double constanteACalculer{ 0.1 }; // Depend du rayon de la boule, mais avec 0.1, ca parait deja bien.
@@ -221,4 +262,20 @@ void NoeudBille::setDebug(bool debug)
 void NoeudBille::setSpotLight(bool debug)
 {
 	spotLight_ = debug;
+}
+
+
+
+void NoeudBille::afficherVitesse(glm::dvec3 nouvelleVitesse)
+{
+	SYSTEMTIME time;
+	GetLocalTime(&time);
+	std::cout << std::fixed << std::setw(2) << std::setprecision(2) << time.wHour << ":"
+		<< std::fixed << std::setfill('0') << std::setw(2) << std::setprecision(2) << time.wMinute << ":"
+		<< std::fixed << std::setfill('0') << std::setw(2) << std::setprecision(2) << time.wSecond << ":"
+		<< std::fixed << std::setfill('0') << std::setw(3) << std::setprecision(3) << time.wMilliseconds;
+
+	std::cout << " - Vitesse : { x : "
+		<< std::fixed << std::setfill('0') << std::setw(2) << std::setprecision(2) << nouvelleVitesse.x << "   y : "
+		<< std::fixed << std::setfill('0') << std::setw(2) << std::setprecision(2) << nouvelleVitesse.y << " }" << std::endl;
 }
