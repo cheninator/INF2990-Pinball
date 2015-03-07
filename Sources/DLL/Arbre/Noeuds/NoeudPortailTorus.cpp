@@ -52,7 +52,7 @@ NoeudPortailTorus::~NoeudPortailTorus()
 
 ////////////////////////////////////////////////////////////////////////
 ///
-/// @fn void NoeudPortail::afficherConcret() const
+/// @fn void NoeudPortailTorus::afficherConcret() const
 ///
 /// Cette fonction effectue le veritable rendu de l'objet.
 ///
