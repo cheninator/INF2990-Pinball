@@ -36,8 +36,8 @@ namespace InterfaceGraphique
             EtablirTouches(playerType);
             this.KeyDown += new KeyEventHandler(PartieRapide_KeyDown);
             this.KeyUp += new KeyEventHandler(PartieRapide_KeyUp);
-           
             InitializeComponent();
+          
             Program.peutAfficher = true;              
             InitialiserAnimation();
 
@@ -53,6 +53,8 @@ namespace InterfaceGraphique
             FonctionsNatives.construireListesPalettes();
             currentZone++;
             Program.tempBool = true;
+            panel_GL.Focus();
+
         }
         ////////////////////////////////////////////////////////////////////////
         ///
@@ -154,6 +156,21 @@ namespace InterfaceGraphique
                 FonctionsNatives.translater(0, 10);
             else if (e.KeyCode == Keys.Down)
                 FonctionsNatives.translater(0, -10);
+
+           if ((e.KeyData == Keys.Subtract ||
+                  e.KeyCode == Keys.OemMinus))
+           {
+               FonctionsNatives.zoomOut();
+               currentZoom = FonctionsNatives.obtenirZoomCourant();
+           }
+           if ((e.KeyData == Keys.Add ||
+               e.KeyCode == Keys.Oemplus && e.Modifiers == Keys.Shift))
+           {
+               FonctionsNatives.zoomIn();
+               currentZoom = FonctionsNatives.obtenirZoomCourant();
+           }
+
+
 
            if (e.KeyValue == touches.PGJ1)
            {
@@ -262,9 +279,23 @@ namespace InterfaceGraphique
 
         }
 
+        private void panel_GL_MouseWheel(object sender, MouseEventArgs e)
+        {
+            if (e.Delta > 0)
+                FonctionsNatives.zoomIn();
+            else if (e.Delta < 0)
+                FonctionsNatives.zoomOut();
+            currentZoom = FonctionsNatives.obtenirZoomCourant();
+        }
+
         private void mPrincipal_menu_Click(object sender, EventArgs e)
         {
             this.Close();
+        }
+
+        private void panel_GL_MouseClick(object sender, MouseEventArgs e)
+        {
+            panel_GL.Focus();
         }
 
     }
