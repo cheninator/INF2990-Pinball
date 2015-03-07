@@ -107,6 +107,10 @@ namespace InterfaceGraphique
             this.Hide();
             modeEdit = new Editeur();
             modeEdit.ShowDialog();
+            if (modeEdit != null)
+            {
+                modeEdit = null;
+            }
             this.Show();
             
         }
