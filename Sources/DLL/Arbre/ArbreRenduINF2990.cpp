@@ -145,50 +145,52 @@ void ArbreRenduINF2990::initialiser()
 
 
 	/// TESTS
-	if (0)
-	{
-		glm::dvec3 inferieurGauche = { 108, -190, 0 };
-		glm::dvec3 superieurDroit = { 272, 96, 0 };
-		QuadTree* quad = new QuadTree(inferieurGauche, superieurDroit);
+	/*
+	glm::dvec3 inferieurGauche = { 108, -190, 0 };
+	glm::dvec3 superieurDroit = { 272, 96, 0 };
+	QuadTree* quad = new QuadTree(inferieurGauche, superieurDroit);
 
-		NoeudAbstrait* noeudConcret0{ creerNoeud(NOM_BUTOIRCIRCULAIRE) };
-		noeudConcret0->assignerPositionRelative({ 240, 0, 0 });
+	NoeudAbstrait* noeudConcret0{ creerNoeud(NOM_BUTOIRCIRCULAIRE) };
+	noeudConcret0->assignerPositionRelative({ 240, 0, 0 });
 
-		NoeudAbstrait* noeudConcret1{ creerNoeud(NOM_BUTOIRCIRCULAIRE) };
-		noeudConcret1->assignerPositionRelative({ 240, -47, 0 });
+	NoeudAbstrait* noeudConcret1{ creerNoeud(NOM_BUTOIRCIRCULAIRE) };
+	noeudConcret1->assignerPositionRelative({ 240, -47, 0 });
 
-		NoeudAbstrait* noeudConcret2{ creerNoeud(NOM_BUTOIRCIRCULAIRE) };
-		noeudConcret2->assignerPositionRelative({ 140, 0, 0 });
+	NoeudAbstrait* noeudConcret2{ creerNoeud(NOM_BUTOIRCIRCULAIRE) };
+	noeudConcret2->assignerPositionRelative({ 140, 0, 0 });
 
-		NoeudAbstrait* noeudConcret3{ creerNoeud(NOM_BUTOIRCIRCULAIRE) };
-		noeudConcret3->assignerPositionRelative({ 140, -47, 0 });
+	NoeudAbstrait* noeudConcret3{ creerNoeud(NOM_BUTOIRCIRCULAIRE) };
+	noeudConcret3->assignerPositionRelative({ 140, -47, 0 });
 
-		NoeudAbstrait* noeudConcret4{ creerNoeud(NOM_BUTOIRCIRCULAIRE) };
-		noeudConcret4->assignerPositionRelative({ 190, -47, 0 });
+	NoeudAbstrait* noeudConcret4{ creerNoeud(NOM_BUTOIRCIRCULAIRE) };
+	noeudConcret4->assignerPositionRelative({ 190, -47, 0 });
 
-		NoeudAbstrait* noeudConcret5{ creerNoeud(NOM_BUTOIRCIRCULAIRE) };
-		noeudConcret5->assignerPositionRelative({ 240, -100, 0 });
+	NoeudAbstrait* noeudConcret5{ creerNoeud(NOM_BUTOIRCIRCULAIRE) };
+	noeudConcret5->assignerPositionRelative({ 240, -100, 0 });
 
-		NoeudAbstrait* noeudConcret6{ creerNoeud(NOM_BUTOIRCIRCULAIRE) };
-		noeudConcret6->assignerPositionRelative({ 140, -100, 0 });
+	NoeudAbstrait* noeudConcret6{ creerNoeud(NOM_BUTOIRCIRCULAIRE) };
+	noeudConcret6->assignerPositionRelative({ 140, -100, 0 });
 
-		quad->insert(noeudConcret0);
-		quad->insert(noeudConcret1);
-		quad->insert(noeudConcret2);
-		quad->insert(noeudConcret3);
-		quad->insert(noeudConcret4);
-		quad->insert(noeudConcret5);
-		quad->insert(noeudConcret6);
+	quad->insert(noeudConcret0);
+	quad->insert(noeudConcret1);
+	quad->insert(noeudConcret2);
+	quad->insert(noeudConcret3);
+	quad->insert(noeudConcret4);
+	quad->insert(noeudConcret5);
+	quad->insert(noeudConcret6);
 
-		std::vector<NoeudAbstrait*> retour0 = quad->retrieve(noeudConcret0);
-		std::vector<NoeudAbstrait*> retour1 = quad->retrieve(noeudConcret1);
-		std::vector<NoeudAbstrait*> retour2 = quad->retrieve(noeudConcret2);
-		std::vector<NoeudAbstrait*> retour3 = quad->retrieve(noeudConcret3);
-		std::vector<NoeudAbstrait*> retour4 = quad->retrieve(noeudConcret4);
+	std::list<NoeudAbstrait*> retour0 = quad->retrieve(noeudConcret0);
+	std::list<NoeudAbstrait*> retour1 = quad->retrieve(noeudConcret1);
+	std::list<NoeudAbstrait*> retour2 = quad->retrieve(noeudConcret2);
+	std::list<NoeudAbstrait*> retour3 = quad->retrieve(noeudConcret3);
+	std::list<NoeudAbstrait*> retour4 = quad->retrieve(noeudConcret4);
 	
+	quad->remove(noeudConcret0);
+	quad->remove(noeudConcret1);
 
-		delete quad;
-	}
+	delete quad;
+	*/
+
 }
 
 

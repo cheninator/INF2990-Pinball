@@ -10,6 +10,7 @@
 #define __QUADTREE_H__
 
 #include <vector>
+#include <list>
 #include "../Arbre/Noeuds/NoeudAbstrait.h"
 #include "glm\glm.hpp"
 
@@ -34,7 +35,10 @@ public:
 	bool insert(NoeudAbstrait* noeud);
 
 	// Retourne la liste des objets se trouvant dans le même quand que le noeud passé en paramètre
-	std::vector<NoeudAbstrait*> retrieve(NoeudAbstrait* noeud);
+	std::list<NoeudAbstrait*> retrieve(NoeudAbstrait* noeud);
+
+	// Retirer un noeud du QuadTree
+	bool remove(NoeudAbstrait* noeud);
 
 
 private:
@@ -63,7 +67,7 @@ private:
 	glm::dvec3 inferieurGauche_, superieurDroit_;
 
 	// Contient la liste des objets appartenant au QuadTree
-	std::vector<NoeudAbstrait*> objets_;
+	std::list<NoeudAbstrait*> objets_;
 
 	// Pour la subdivision du QuadTree en sous QuadTree
 	QuadTree* nordEst_;
