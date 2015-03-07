@@ -63,9 +63,6 @@ public:
    /// Prend une capture d'ecran de la zone de jeu
    void takeScreenShot(char* path, int width, int height, bool square = false, int maxSize = 0);
 
-   /// Ajoute un torus a l'objet
-   void ajouterTorus(NoeudAbstrait* parent);
-
    /// Obtenir le quadTree
    QuadTree* obtenirQuadTree() const;
 

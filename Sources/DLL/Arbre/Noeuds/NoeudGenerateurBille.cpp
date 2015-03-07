@@ -112,44 +112,48 @@ void NoeudGenerateurBille::afficherConcret() const
 void NoeudGenerateurBille::animer(float temps)
 {
 	NoeudComposite::animer(temps);
-	bool parkinsons = false;
-	if (parkinsons)
+	
+	// Au lieu de rajouter une condition "parkinson" fais juste return;
+	// Mais la je vais juste faire du parkinson pour quelques ssecodne puis s'arrete
+	static int compteur = 200;
+	compteur--;
+	if (compteur <= 0)
+		return;
+	
+	if (direction_ == 0) {
+		if (selectionne_ || impossible_ || transparent_)
+			return;
+		direction_ = std::rand() % 4 + 1;
+		power_ = std::rand() % 11;
+		if (power_ > 5)
+			power_ = -power_ + 5;
+	}
+	else if (direction_ > 0) {
+		direction_ *= -1;
+		power_ *= -1;
+	}
+	else
+		direction_ = 0;
+
+
+	switch (abs(direction_))
 	{
-		if (direction_ == 0) {
-			if (selectionne_ || impossible_ || transparent_)
-				return;
-			direction_ = std::rand() % 4 + 1;
-			power_ = std::rand() % 11;
-			if (power_ > 5)
-				power_ = -power_ + 5;
-		}
-		else if (direction_ > 0) {
-			direction_ *= -1;
-			power_ *= -1;
-		}
-		else
-			direction_ = 0;
-
-
-		switch (abs(direction_))
-		{
-		case 1:
-			positionRelative_.x += power_;
-			positionRelative_.y += power_;
-			break;
-		case 2:
-			positionRelative_.x += power_;
-			break;
-		case 3:
-			positionRelative_.y += power_;
-			break;
-		case 4:
-			positionRelative_.x -= power_;
-			positionRelative_.y += power_;
-			break;
-		default:
-			break;
-		}
+	case 1:
+		positionRelative_.x += power_;
+		positionRelative_.y += power_;
+		break;
+	case 2:
+		positionRelative_.x += power_;
+		break;
+	case 3:
+		positionRelative_.y += power_;
+		break;
+	case 4:
+		positionRelative_.x -= power_;
+		positionRelative_.y += power_;
+		break;
+	default:
+		break;
 	}
 }
 

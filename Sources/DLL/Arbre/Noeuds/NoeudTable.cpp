@@ -95,9 +95,7 @@ void NoeudTable::afficherConcret() const
 ////////////////////////////////////////////////////////////////////////
 void NoeudTable::animer(float temps)
 {
-	for (NoeudAbstrait * enfant : enfants_) {
-		enfant->animer(temps);
-	}
+	NoeudComposite::animer(temps);
 }
 
 ////////////////////////////////////////////////////////////////////////
