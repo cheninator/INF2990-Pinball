@@ -277,7 +277,6 @@ namespace InterfaceGraphique
              if (e.KeyValue == touches.PGJ1) // Remplacer "R" par la touche obtenue des configurations
                 {
                     FonctionsNatives.activerPalettesGJ1();
-                    Console.WriteLine("Touche R enfoncée");// Activer les palettes gauches du joueur 1
                 }
 
              else if (e.KeyValue == touches.PGJ2)
@@ -315,7 +314,6 @@ namespace InterfaceGraphique
             if (e.KeyValue == touches.PGJ1)// Remplacer "R" par la touche obtenue des configurations
             {
                 FonctionsNatives.desactiverPalettesGJ1();
-                Console.WriteLine("Touche R relachée");// Désactiver les palettes gauches du joueur 1
             }
             else if (e.KeyValue == touches.PGJ2)
             {
