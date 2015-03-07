@@ -307,20 +307,67 @@ bool QuadTree::insert(NoeudAbstrait* noeud)
 ////////////////////////////////////////////////////////////////////////
 std::vector<NoeudAbstrait*> QuadTree::retrieve(NoeudAbstrait* noeud)
 {
-	std::vector<NoeudAbstrait*> vide;
+	std::vector<NoeudAbstrait*> listeNoeuds;
 
 	if (estDansQuadTree(noeud, this))
 	{
+		// Le quad n'a pas de sous QuadTree
 		if (nordEst_ == nullptr)
 			return objets_;
 
+		// Le quad a un sous QuadTree et le parent de ce dernier ne contient aucun noeud
 		else if (nordEst_ != nullptr && objets_.size() == 0)
 			return obtenirQuadrant(noeud)->retrieve(noeud);
 
-		else
-			return objets_;
+		// Le quad a un sous QuadTree et le parent de ce dernier contient des noeuds
+		else if (nordEst_ != nullptr && objets_.size() != 0)
+		{
+			if (obtenirQuadrant(noeud) != this)
+			{
+				std::vector<NoeudAbstrait*> sousQuad = obtenirQuadrant(noeud)->retrieve(noeud);
+
+				// Ajouter d'abord les noeuds du parent
+				listeNoeuds = objets_;
+
+				// Ajouter les noeuds du sous QuadTree
+				for (int i = 0; i < sousQuad.size(); i++)
+					listeNoeuds.push_back(sousQuad[i]);
+
+				sousQuad.clear();
+
+				return listeNoeuds;
+			}
+
+			// Retourner tous les objets du QuadTree, incluant les objets de ses sous QuadTree
+			else if (obtenirQuadrant(noeud) == this)
+			{
+				std::vector<NoeudAbstrait*> nordEst = nordEst_->objets_;
+				std::vector<NoeudAbstrait*> nordOuest = nordOuest_->objets_;
+				std::vector<NoeudAbstrait*> sudEst = sudEst_->objets_;
+				std::vector<NoeudAbstrait*> sudOuest = sudOuest_->objets_;
+
+				listeNoeuds = objets_;
+
+				for (int i = 0; i < nordEst.size(); i++)
+					listeNoeuds.push_back(nordEst[i]);
+
+				for (int i = 0; i < nordEst.size(); i++)
+					listeNoeuds.push_back(nordOuest[i]);
+
+				for (int i = 0; i < nordEst.size(); i++)
+					listeNoeuds.push_back(sudEst[i]);
+
+				for (int i = 0; i < nordEst.size(); i++)
+					listeNoeuds.push_back(sudOuest[i]);
+
+				return listeNoeuds;
+			}
+
+		}
+
 	}
 
+	// Liste vide si le noeud n'est pas dans le QuadTree
 	else
-		return vide;
+		return listeNoeuds;
 }

@@ -170,6 +170,12 @@ void ArbreRenduINF2990::initialiser()
 	quad->insert(noeudConcret5);
 	quad->insert(noeudConcret6);
 
+	std::vector<NoeudAbstrait*> retour0 = quad->retrieve(noeudConcret0);
+	std::vector<NoeudAbstrait*> retour1 = quad->retrieve(noeudConcret1);
+	std::vector<NoeudAbstrait*> retour2 = quad->retrieve(noeudConcret2);
+	std::vector<NoeudAbstrait*> retour3 = quad->retrieve(noeudConcret3);
+	std::vector<NoeudAbstrait*> retour4 = quad->retrieve(noeudConcret4);
+
 	delete quad;
 }
 
