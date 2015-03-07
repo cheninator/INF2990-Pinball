@@ -130,6 +130,7 @@ void NoeudBille::afficherConcret() const
 ////////////////////////////////////////////////////////////////////////
 void NoeudBille::animer(float temps) // rajouter des parametres ou une fonction animerCollision(float temps, detailCollision detail)
 {
+	NoeudComposite::animer(temps);
 	// Somme des forces agissant sur les particules.
 	// =============================================
 	glm::dvec3 attractionsPortails{ 0, 0, 0 };

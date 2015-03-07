@@ -94,6 +94,8 @@ void NoeudPortailTorus::afficherConcret() const
 ////////////////////////////////////////////////////////////////////////
 void NoeudPortailTorus::animer(float temps)
 {
+	NoeudComposite::animer(temps);
+
 	static double scaleTorus = 1.0;
 	static double direction = 0.995;
 

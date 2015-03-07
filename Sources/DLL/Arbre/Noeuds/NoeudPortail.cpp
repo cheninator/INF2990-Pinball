@@ -110,6 +110,7 @@ void NoeudPortail::afficherConcret() const
 ////////////////////////////////////////////////////////////////////////
 void NoeudPortail::animer(float temps)
 {
+
 	if (enfants_.size() == 0)
 		return;
 
