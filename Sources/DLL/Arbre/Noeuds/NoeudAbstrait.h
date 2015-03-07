@@ -101,6 +101,7 @@ public:
 	/// ecrit le rotation sur le noeud.
 	inline void assignerRotation(glm::dvec3 rotation);
 
+	/// ecrit le rotation sur le noeud.
 	inline void assignerRotationHard(glm::dvec3 rotation){ rotation_ = rotation; };
 
 	/// ecrit le rotation 0,0,0 sur le noeud.
