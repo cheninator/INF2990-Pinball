@@ -274,14 +274,14 @@ namespace InterfaceGraphique
         ////////////////////////////////////////////////////////////////////////
         private void ToucheDownTest( Object o, KeyEventArgs e )
         {
-             if (e.KeyValue == touches.PGJ1) // Remplacer "R" par la touche obtenue des configurations
+             if (e.KeyValue == touches.PGJ1)
                 {
                     FonctionsNatives.activerPalettesGJ1();
                 }
 
              else if (e.KeyValue == touches.PGJ2)
              {
-                 // TODO: palette gauche joueur 1
+                 // TODO: palette gauche joueur 2
              }
              else if (e.KeyValue == touches.PDJ1)
              {
@@ -311,7 +311,7 @@ namespace InterfaceGraphique
         ////////////////////////////////////////////////////////////////////////
         private void ToucheUpTest(Object o, KeyEventArgs e)
         {
-            if (e.KeyValue == touches.PGJ1)// Remplacer "R" par la touche obtenue des configurations
+            if (e.KeyValue == touches.PGJ1)
             {
                 FonctionsNatives.desactiverPalettesGJ1();
             }
