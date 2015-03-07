@@ -966,6 +966,8 @@ void FacadeModele::setPause( bool pause)
 ///////////////////////////////////////////////////////////////////////////////
 void FacadeModele::setDebug(bool valeurSpotLight)
 {
+	if (FacadeModele::obtenirInstance()->obtenirArbreRenduINF2990() == nullptr)
+		return;
 	bool valeurDebugBille;
 	bool valeurDebugPortail;
 	if (obtenirConfiguration()[12] == false){
