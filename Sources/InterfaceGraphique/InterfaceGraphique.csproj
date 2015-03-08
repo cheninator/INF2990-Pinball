@@ -92,13 +92,15 @@
     <Compile Include="Configuration.Designer.cs">
       <DependentUpon>Configuration.cs</DependentUpon>
     </Compile>
-    <Compile Include="Etats\Etat.cs" />
+    <Compile Include="Etats\EtatAbstrait.cs" />
+    <Compile Include="Etats\EtatEditeurAbstrait.cs" />
     <Compile Include="Editeur.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Editeur.Designer.cs">
       <DependentUpon>Editeur.cs</DependentUpon>
     </Compile>
+    <Compile Include="Etats\EtatJeuAbstrait.cs" />
     <Compile Include="MenuPrincipal.cs">
       <SubType>Form</SubType>
     </Compile>

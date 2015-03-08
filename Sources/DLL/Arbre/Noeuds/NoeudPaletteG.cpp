@@ -115,6 +115,8 @@ void NoeudPaletteG::animer(float temps)
 	switch (etatPalette_)
 	{
 	case ACTIVE:
+		// TODO : Verifier que la rotation que je veux faire est possible,
+		// si impossible, la palette est bloquee et doit tomber dans l'etat INACTIVE
 		if (obtenirRotation().z - angleZOriginal_ < 60)
 		{
 			assignerRotation(glm::dvec3{ 0, 0, 9 });

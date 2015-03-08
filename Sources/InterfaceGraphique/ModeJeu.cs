@@ -22,6 +22,7 @@ namespace InterfaceGraphique
         private bool activateAmbianteLight = false; ///< Etat de la lumiere ambiante
         private bool activateDirectLight = false; ///< Etat de la lumiere directe
         private bool activateSpotLight = false; ///< Etat de la lumiere spot
+        private EtatJeuAbstrait etat; ///< Machine à états
 
         public ModeJeu(List<string> maps, int playerType)
         {

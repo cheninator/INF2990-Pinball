@@ -163,7 +163,10 @@ public:
    void sauvegarderCampagne(char* nomFichier, int length);
    std::string obtenirDerniereCampagne();
 
-   void construireListesPalettes();
+   /// Construire des les 4 listes de palettes GJ1,DJ1, GJ2,DJ2
+   void construireListesPalettes(); 
+   
+   /// Activer les palettes de chaque joueur
    void activerPalettesGJ1();
    void desactiverPalettesGJ1();
 
@@ -209,10 +212,11 @@ private:
 
    bool pause_{ false };
 
-   std::set<NoeudPaletteG*> listePalettesGJ1_;
-   std::set<NoeudPaletteD*> listePalettesDJ1_;
-   std::set<NoeudPaletteG*> listePalettesGJ2_;
-   std::set<NoeudPaletteD*> listePalettesDJ2_;
+   /// Listes de palettes à activer pour chaque touche
+   std::set<NoeudPaletteG*> listePalettesGJ1_; ///< Gauche joueur 1
+   std::set<NoeudPaletteD*> listePalettesDJ1_; ///< Droite joueur 1
+   std::set<NoeudPaletteG*> listePalettesGJ2_; ///< Gauche joueur 2
+   std::set<NoeudPaletteD*> listePalettesDJ2_; ///< Droite joueur 2
 };
 
 

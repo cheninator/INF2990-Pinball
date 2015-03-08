@@ -39,15 +39,20 @@ public:
 	/// Accepte un visiteur.
 	virtual bool accepterVisiteur(VisiteurAbstrait* vis);
 
+	/// Activer la palette.
 	void activer();
+
+	/// Desactiver la palette. La faire redescendre.
 	void desactiver();
 
 private:
-	/// Angle Original pour le mouvement des palettes selon les touches du clavier
+	/// Enumeration pour contenir l'etat de la palette
 	enum Etat { ACTIVE, RETOUR, INACTIVE };
 
+	/// Etat courant de la palette
 	Etat etatPalette_{ INACTIVE };
 
+	/// Angle Original pour le mouvement des palettes selon les touches du clavier
 	double angleZOriginal_;
 	
 	/// Angle selon l'axe des X.

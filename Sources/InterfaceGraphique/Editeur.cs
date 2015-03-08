@@ -55,11 +55,11 @@ namespace InterfaceGraphique
         private bool colorShift = false;
         private bool peutAnimer = true;
         private StringBuilder pathXML = new StringBuilder(""); ///< Chemin pour la lecture/sauvegarde XML
-        private Etat etat { get; set; } ///< Machine a etat
+        private EtatEditeurAbstrait etat { get; set; } ///< Machine a etat
         private int[] prop = new int[6]; ///< Proprietes du jeu a sauvegarder
-        private bool activateAmbianteLight = false; ///< Etat de la lumiere ambiante
-        private bool activateDirectLight = false; ///< Etat de la lumiere directe
-        private bool activateSpotLight = false; ///< Etat de la lumiere spot
+        private bool activateAmbianteLight = false; ///< EtatEditeurAbstrait de la lumiere ambiante
+        private bool activateDirectLight = false; ///< EtatEditeurAbstrait de la lumiere directe
+        private bool activateSpotLight = false; ///< EtatEditeurAbstrait de la lumiere spot
 
         ////////////////////////////////////////////////////////////////////////
         ///
@@ -112,7 +112,7 @@ namespace InterfaceGraphique
             pathXML = new StringBuilder("");
             this.Text = "Mode Edition - Nouvelle Zone";
             panel_GL.Select();
-            etat = new EtatNone(this);
+            etat = new EtatEditeurNone(this);
             deselection();
             ctrlDown = false;
             altDown = false;
@@ -166,10 +166,10 @@ namespace InterfaceGraphique
             {
                 this.Invoke((MethodInvoker)delegate
                 {
-                    if (etat is EtatSelectionMultiple)
+                    if (etat is EtatEditeurSelectionMultiple)
                         rectangleElastique();
 
-                    else if (etat is EtatZoomElastique)
+                    else if (etat is EtatEditeurZoomElastique)
                         rectangleElastique();
                     else
                     {
@@ -206,7 +206,7 @@ namespace InterfaceGraphique
         ////////////////////////////////////////////////////////////////////////
         private void ToucheDown(Object o, KeyEventArgs e)
         {
-            if (etat is EtatZoom || etat is EtatTest)
+            if (etat is EtatEditeurZoom || etat is EtatEditeurTest)
             {
                 if ((e.KeyData == Keys.Subtract ||
                    e.KeyCode == Keys.OemMinus))
@@ -241,7 +241,7 @@ namespace InterfaceGraphique
                 else if (e.KeyData == Keys.Down)
                     FonctionsNatives.translater(0, -10);
                 
-                if (etat is EtatTest)
+                if (etat is EtatEditeurTest)
                 {
                     ToucheDownTest(o, e);
                 }
@@ -356,7 +356,7 @@ namespace InterfaceGraphique
             {
                 ctrlDown = false;
             }
-            if (etat is EtatTest)
+            if (etat is EtatEditeurTest)
             {
                 ToucheUpTest(o, e);
             }
@@ -379,11 +379,11 @@ namespace InterfaceGraphique
         {
 
            
-            if ((etat is EtatZoomElastique) || ( etat is EtatSelectionMultiple))
+            if ((etat is EtatEditeurZoomElastique) || ( etat is EtatEditeurSelectionMultiple))
             {
                 return;
             }
-            if (etat is EtatTest)
+            if (etat is EtatEditeurTest)
             {
                 if (e.KeyChar == 't')
                 {
@@ -414,10 +414,10 @@ namespace InterfaceGraphique
                     peutAnimer = false;
                     FonctionsNatives.modePause(true);
                     etat = null;
-                    etat = new EtatPause(this);
+                    etat = new EtatEditeurPause(this);
                 }
             }
-            else if (etat is EtatPause)
+            else if (etat is EtatEditeurPause)
             {
                 if (e.KeyChar == (char)Keys.Escape)
                 {
@@ -425,7 +425,7 @@ namespace InterfaceGraphique
                     peutAnimer = true;
                     FonctionsNatives.modePause(false);
                     etat = null;
-                    etat = new EtatTest(this);
+                    etat = new EtatEditeurTest(this);
                 }
                 if (e.KeyChar == 't')
                 {
@@ -438,29 +438,29 @@ namespace InterfaceGraphique
 
                 if (e.KeyChar == (char)Keys.Escape)
                 {
-                    if (etat is EtatPortail)
+                    if (etat is EtatEditeurPortail)
                     {
                         FonctionsNatives.removeObject();
                         etat = null;
-                        etat = new EtatNone(this);
+                        etat = new EtatEditeurNone(this);
                         deselection();
                     }
-                    else if (etat is EtatMur)
+                    else if (etat is EtatEditeurMur)
                     {
                         FonctionsNatives.removeObject();
-                        etat = new EtatCreation(this);
+                        etat = new EtatEditeurCreation(this);
                         deselection();
                     }
-                    else if (etat is EtatDuplication)
+                    else if (etat is EtatEditeurDuplication)
                     {
                         FonctionsNatives.removeObject();
                         deselection();
-                        etat = new EtatNone(this);
+                        etat = new EtatEditeurNone(this);
                     }
                     else
                     {
                         etat = null;
-                        etat = new EtatNone(this);
+                        etat = new EtatEditeurNone(this);
                         deselection();
                     }
 
@@ -876,7 +876,7 @@ namespace InterfaceGraphique
         private void bouton_Selection_Click(object sender, EventArgs e)
         {
             annulerModif();
-            etat = new EtatSelection(this);
+            etat = new EtatEditeurSelection(this);
 
             Console.WriteLine("Outil Selection.");
         }
@@ -896,8 +896,8 @@ namespace InterfaceGraphique
         private void bouton_Creation_Click(object sender, EventArgs e)
         {
             annulerModif();
-            if (etat is EtatMur)
-                etat = new EtatNone(this);
+            if (etat is EtatEditeurMur)
+                etat = new EtatEditeurNone(this);
             Console.WriteLine("Outil Creation.");
             if (Creation_Panel.Visible)
             {
@@ -945,7 +945,7 @@ namespace InterfaceGraphique
         ////////////////////////////////////////////////////////////////////////
         private void butourCirc_bouton_Click(object sender, EventArgs e)
         {
-            etat = new EtatCreation(this);
+            etat = new EtatEditeurCreation(this);
             Console.WriteLine("ButoirCirculaire");
             myObjectName = new StringBuilder("butoircirculaire");
             colorShift = false;
@@ -991,7 +991,7 @@ namespace InterfaceGraphique
         ////////////////////////////////////////////////////////////////////////
         private void butoirG_bouton_Click(object sender, EventArgs e)
         {
-            etat = new EtatCreation(this);
+            etat = new EtatEditeurCreation(this);
             Console.WriteLine("Butoir Gauche.");
             myObjectName = new StringBuilder("butoirg");
             colorShift = false;
@@ -1211,7 +1211,7 @@ namespace InterfaceGraphique
         ////////////////////////////////////////////////////////////////////////
         private void Ressort_bouton_Click(object sender, EventArgs e)
         {
-            etat = new EtatCreation(this);
+            etat = new EtatEditeurCreation(this);
             Console.WriteLine("Ressort");
             myObjectName = new StringBuilder("ressort");
             colorShift = false;
@@ -1234,7 +1234,7 @@ namespace InterfaceGraphique
         ////////////////////////////////////////////////////////////////////////
         private void Generateur_bouton_Click(object sender, EventArgs e)
         {
-            etat = new EtatCreation(this);
+            etat = new EtatEditeurCreation(this);
             Console.WriteLine("Generateur");
             myObjectName = new StringBuilder("generateurbille");
             colorShift = false;
@@ -1258,7 +1258,7 @@ namespace InterfaceGraphique
         private void Trou_bouton_Click(object sender, EventArgs e)
         {
             
-            etat = new EtatCreation(this);
+            etat = new EtatEditeurCreation(this);
             Console.WriteLine("Trou");
             myObjectName = new StringBuilder("trou");
             colorShift = false;
@@ -1285,7 +1285,7 @@ namespace InterfaceGraphique
             // TO DO
             annulerModif();
             etat = null;
-            etat = new EtatDeplacement(this);
+            etat = new EtatEditeurDeplacement(this);
         }
 
         ////////////////////////////////////////////////////////////////////////
@@ -1340,7 +1340,7 @@ namespace InterfaceGraphique
             // TO DO
             annulerModif();
             etat = null;
-            etat = new EtatRotation(this);
+            etat = new EtatEditeurRotation(this);
         }
 
         ////////////////////////////////////////////////////////////////////////
@@ -1361,7 +1361,7 @@ namespace InterfaceGraphique
             // TO DO
             annulerModif();
             etat = null;
-            etat = new EtatScale(this);
+            etat = new EtatEditeurScale(this);
         }
 
         ////////////////////////////////////////////////////////////////////////
@@ -1398,7 +1398,7 @@ namespace InterfaceGraphique
             Console.WriteLine("Outil Zoom.");
             annulerModif();
             etat = null;
-            etat = new EtatZoom(this);
+            etat = new EtatEditeurZoom(this);
         
         }
 
@@ -1420,7 +1420,7 @@ namespace InterfaceGraphique
             
                  annulerModif();
                 etat = null;
-                etat = new EtatDuplication(this);
+                etat = new EtatEditeurDuplication(this);
       
             
                         
@@ -1551,7 +1551,7 @@ namespace InterfaceGraphique
         {
             Console.WriteLine("Mode Test.");
             etat = null;
-            etat = new EtatTest(this);
+            etat = new EtatEditeurTest(this);
             menuStrip1.Hide();
             
             if (Creation_Panel.Visible)
@@ -1588,7 +1588,7 @@ namespace InterfaceGraphique
         ////////////////////////////////////////////////////////////////////////
         private void PGJ1_bouton_Click(object sender, EventArgs e)
         {
-            etat = new EtatCreation(this);
+            etat = new EtatEditeurCreation(this);
             Console.WriteLine("Palette gauche J1.");
             myObjectName = new StringBuilder("paletteg");
             angleX = 180;
@@ -1628,7 +1628,7 @@ namespace InterfaceGraphique
         ////////////////////////////////////////////////////////////////////////
         private void PDJ1_bouton_Click(object sender, EventArgs e)
         {
-            etat = new EtatCreation(this);
+            etat = new EtatEditeurCreation(this);
             Console.WriteLine("Palette droite J1.");
             myObjectName = new StringBuilder("paletted");
             angleX = 180;
@@ -1668,7 +1668,7 @@ namespace InterfaceGraphique
         ////////////////////////////////////////////////////////////////////////
         private void PGJ2_bouton_Click(object sender, EventArgs e)
         {
-            etat = new EtatCreation(this);
+            etat = new EtatEditeurCreation(this);
             Console.WriteLine("Palette gauche J2.");
             myObjectName = new StringBuilder("paletteg");
             colorShift = true;
@@ -1708,7 +1708,7 @@ namespace InterfaceGraphique
         ////////////////////////////////////////////////////////////////////////
         private void PDJ2_bouton_Click(object sender, EventArgs e)
         {
-            etat = new EtatCreation(this);
+            etat = new EtatEditeurCreation(this);
             Console.WriteLine("Palette droite J2.");
             myObjectName = new StringBuilder("paletted");
             colorShift = true;
@@ -1765,7 +1765,7 @@ namespace InterfaceGraphique
         ////////////////////////////////////////////////////////////////////////
         private void butoirD_bouton_Click(object sender, EventArgs e)
         {
-            etat = new EtatCreation(this);
+            etat = new EtatEditeurCreation(this);
             Console.WriteLine("Butoir Droit.");
             myObjectName = new StringBuilder("butoird");
             colorShift = false;
@@ -1805,7 +1805,7 @@ namespace InterfaceGraphique
         ////////////////////////////////////////////////////////////////////////
         private void Cible_bouton_Click(object sender, EventArgs e)
         {
-            etat = new EtatCreation(this);
+            etat = new EtatEditeurCreation(this);
             Console.WriteLine("Cible.");
             myObjectName = new StringBuilder("cible");
             colorShift = false;
@@ -1845,7 +1845,7 @@ namespace InterfaceGraphique
         ////////////////////////////////////////////////////////////////////////
         private void Portails_bouton_Click(object sender, EventArgs e)
         {
-            etat = new EtatCreation(this);
+            etat = new EtatEditeurCreation(this);
             Console.WriteLine("Portail");
             myObjectName = new StringBuilder("portail");
             colorShift = false;
@@ -1885,7 +1885,7 @@ namespace InterfaceGraphique
         ////////////////////////////////////////////////////////////////////////
         private void Mur_bouton_Click(object sender, EventArgs e)
         {
-            etat = new EtatCreation(this);
+            etat = new EtatEditeurCreation(this);
             Console.WriteLine("Mur");
             myObjectName = new StringBuilder("mur");
             colorShift = false;
@@ -2001,19 +2001,19 @@ namespace InterfaceGraphique
             currentP.X = e.X;
             currentP.Y = e.Y;
            
-            if (etat is EtatPortail && e.Button == MouseButtons.Left)
+            if (etat is EtatEditeurPortail && e.Button == MouseButtons.Left)
             {
-                etat = new EtatNone(this);
+                etat = new EtatEditeurNone(this);
                 FonctionsNatives.obligerTransparence(false);
                 deselection();
             }
-            else if ((e.Button == MouseButtons.Left && (etat is EtatSelection   || 
-                                                        etat is EtatDeplacement ||
-                                                        etat is EtatRotation    || 
-                                                        etat is EtatScale       || 
-                                                        etat is EtatZoom        ||
-                                                        etat is EtatDuplication ||
-                                                        !(etat is EtatMur)      
+            else if ((e.Button == MouseButtons.Left && (etat is EtatEditeurSelection   || 
+                                                        etat is EtatEditeurDeplacement ||
+                                                        etat is EtatEditeurRotation    || 
+                                                        etat is EtatEditeurScale       || 
+                                                        etat is EtatEditeurZoom        ||
+                                                        etat is EtatEditeurDuplication ||
+                                                        !(etat is EtatEditeurMur)      
                                                        )
                      )
                      || e.Button == MouseButtons.Right)
@@ -2039,7 +2039,7 @@ namespace InterfaceGraphique
         {            
             currentP = panel_GL.PointToClient(MousePosition);
 
-            if (nbSelection == 1 && !(etat is EtatDuplication) && (e.Button == MouseButtons.Left))
+            if (nbSelection == 1 && !(etat is EtatEditeurDuplication) && (e.Button == MouseButtons.Left))
             {
                 Xbox.Text = Math.Round(FonctionsNatives.getPositionX()).ToString();
                 Ybox.Text = Math.Round(FonctionsNatives.getPositionY()).ToString();
@@ -2051,7 +2051,7 @@ namespace InterfaceGraphique
             {
                 deplacementVueSouris(e);
             }          
-            else if (etat is EtatCreation)
+            else if (etat is EtatEditeurCreation)
             {
                 if (!(FonctionsNatives.verifierCliqueDansTable(e.X, e.Y)))
                 {
@@ -2066,20 +2066,20 @@ namespace InterfaceGraphique
                     deplacementVueSouris(e);
                 }                
             }           
-            else if (!(clickValide(origin, currentP)) && (etat is EtatSelection) && e.Button == MouseButtons.Left)
+            else if (!(clickValide(origin, currentP)) && (etat is EtatEditeurSelection) && e.Button == MouseButtons.Left)
             {
-                etat = new EtatSelectionMultiple(this);
+                etat = new EtatEditeurSelectionMultiple(this);
                 FonctionsNatives.initialiserRectangleElastique(origin.X, origin.Y);
             }
-            else if (!(clickValide(origin, currentP)) && (etat is EtatZoom) && e.Button == MouseButtons.Left)
+            else if (!(clickValide(origin, currentP)) && (etat is EtatEditeurZoom) && e.Button == MouseButtons.Left)
             {
-                etat = new EtatZoomElastique(this);
+                etat = new EtatEditeurZoomElastique(this);
                 FonctionsNatives.initialiserRectangleElastique(origin.X, origin.Y);
             }
-            else if (!(etat is EtatSelectionMultiple) && 
-                     !(etat is EtatCreation)          && 
-                     !(etat is EtatSelection)         && 
-                     !(etat is EtatZoomElastique)
+            else if (!(etat is EtatEditeurSelectionMultiple) && 
+                     !(etat is EtatEditeurCreation)          && 
+                     !(etat is EtatEditeurSelection)         && 
+                     !(etat is EtatEditeurZoomElastique)
                     ) 
             {                
                 etat.traiterSouris(e);                    
@@ -2102,37 +2102,37 @@ namespace InterfaceGraphique
         {
             Point destination = panel_GL.PointToClient(MousePosition);
             
-            if (!(etat is EtatCreation) && !(etat is EtatDuplication))
+            if (!(etat is EtatEditeurCreation) && !(etat is EtatEditeurDuplication))
             {
                 panel_GL.MouseMove -= panel_MouseMove;
             }
 
-            if (etat is EtatDuplication && e.Button == MouseButtons.Left)
+            if (etat is EtatEditeurDuplication && e.Button == MouseButtons.Left)
             {
                 if (FonctionsNatives.duplicationEstHorsTable())
                     FonctionsNatives.removeObject();
 
                 deselection();
                 panel_GL.MouseMove -= panel_MouseMove;
-                etat = new EtatNone(this);                  
+                etat = new EtatEditeurNone(this);                  
             }
-            else if (etat is EtatMur && (clickExtraValide(origin, destination)))
+            else if (etat is EtatEditeurMur && (clickExtraValide(origin, destination)))
             {
-                etat = new EtatCreation(this);
+                etat = new EtatEditeurCreation(this);
                 deselection();
                 return;
             }
             else if (e.Button == MouseButtons.Left)
             {              
-               if (etat is EtatZoomElastique)
+               if (etat is EtatEditeurZoomElastique)
                {
                    etat.traiterSouris(e);
-                   etat = new EtatZoom(this);
+                   etat = new EtatEditeurZoom(this);
                }
-               else if (etat is EtatSelectionMultiple)
+               else if (etat is EtatEditeurSelectionMultiple)
                {                   
                    etat.traiterSouris(e);
-                   etat = new EtatSelection(this);
+                   etat = new EtatEditeurSelection(this);
                }
                else if(clickValide(origin,destination)) 
                 {
@@ -2196,7 +2196,7 @@ namespace InterfaceGraphique
             // en coordonnees du monde en utilisant convertirClotureAVirtuelle(...) comme ça on n'a pas 
             // besoin de ce facteur misterieux.  Et aussi, cette technique devrait bien marcher 
             // quand on sera rendu avec la vue orbite.
-            if (etat is EtatDuplication)
+            if (etat is EtatEditeurDuplication)
             {
                 FonctionsNatives.deplacerSelection(previousP.X, previousP.Y, currentP.X, currentP.Y, true);
                 if (!FonctionsNatives.verifierCliqueDansTable(currentP.X, currentP.Y))
@@ -2747,7 +2747,7 @@ namespace InterfaceGraphique
         //////////////////////////////////////////////////////////////////////////////////////////
         public void statePortail()
         {
-            etat = new EtatPortail(this);
+            etat = new EtatEditeurPortail(this);
             panel_GL.MouseMove += new MouseEventHandler(panel_MouseMove);
 
         }
@@ -2761,7 +2761,7 @@ namespace InterfaceGraphique
         //////////////////////////////////////////////////////////////////////////////////////////
         public void stateMur()
         {
-            etat = new EtatMur(this);
+            etat = new EtatEditeurMur(this);
             panel_GL.MouseMove += new MouseEventHandler(panel_MouseMove);
 
         }
@@ -2826,7 +2826,7 @@ namespace InterfaceGraphique
         //////////////////////////////////////////////////////////////////////////////////////////
         public void annulerModif()
         {
-            if (etat is EtatPortail || etat is EtatMur || etat is EtatDuplication)
+            if (etat is EtatEditeurPortail || etat is EtatEditeurMur || etat is EtatEditeurDuplication)
             {
                 FonctionsNatives.removeObject();
                 deselection();
@@ -2962,7 +2962,7 @@ namespace InterfaceGraphique
         private void toolStripMenuItem1_Click(object sender, EventArgs e)
         {
             etat = null;
-            etat = new EtatNone(this);
+            etat = new EtatEditeurNone(this);
 
             FonctionsNatives.supprimerBille();
 

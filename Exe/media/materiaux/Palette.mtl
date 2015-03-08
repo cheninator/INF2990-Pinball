@@ -11,3 +11,14 @@ d 1.000000
 illum 1
 map_Kd materiaux/texture/generateurbille/bones.jpg
 map_d materiaux/texture/generateurbille/bones.jpg
+
+newmtl Material.002
+Ns 100
+Ka 0.000000 0.000000 0.000000
+Kd 0.640000 0.640000 0.640000
+Ks 0.500000 0.500000 0.500000
+Ni 1.000000
+d 1.000000
+illum 7
+map_Kd materiaux/texture/palettes/mummy.jpg
+map_d materiaux/texture/palettes/mummy.jpg
