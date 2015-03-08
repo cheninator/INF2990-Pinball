@@ -34,8 +34,10 @@
 class ArbreRenduINF2990 : public ArbreRendu
 {
 public:
+
    /// Constructeur par defaut.
    ArbreRenduINF2990(bool afficher = true);
+
    /// Destructeur.
    virtual ~ArbreRenduINF2990();
 
@@ -57,14 +59,14 @@ public:
    /// Obtenir les proprietes de la zone de jeu
    int* obtenirProprietes() const { return proprietes_; };
 
+   /// Obtenir les éléments de la table
+   std::vector<NoeudAbstrait*> obtenirElementsTable();
+
    /// Permet de savoir si l'arbre est la zone de jeu par defaut
    bool estDefaut() const;
 
    /// Prend une capture d'ecran de la zone de jeu
    void takeScreenShot(char* path, int width, int height, bool square = false, int maxSize = 0);
-
-   /// Obtenir le quadTree
-   QuadTree* obtenirQuadTree() const;
 
    static const std::string NOM_BUTOIRD; ///< Represente le type Butoir droit
    static const std::string NOM_BUTOIRG; ///< Represente le type Butoir gauche
@@ -105,7 +107,7 @@ private:
 	glm::dvec3 scaleGenerateur;
 	glm::dvec3 angleGenerateur;
 
-	QuadTree* quadTree_;
+	std::vector<NoeudAbstrait*> listeNoeuds_;
 
 };
 

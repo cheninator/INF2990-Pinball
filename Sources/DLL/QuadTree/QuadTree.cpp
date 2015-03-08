@@ -156,24 +156,17 @@ bool QuadTree::estDansQuadTree(NoeudAbstrait* noeud, QuadTree* quad) const
 	if (quad == nullptr)
 		return false;
 
-	bool estPresent = false;
 	std::vector<glm::dvec3> points;
+	
+	for (int i = 0; i < 4; i++)
+		points.push_back({ 0.0, 0.0, 0.0 });
 
-	points.push_back({ 0.0, 0.0, 0.0 });
-	points.push_back({ 0.0, 0.0, 0.0 });
-	points.push_back({ 0.0, 0.0, 0.0 });
-	points.push_back({ 0.0, 0.0, 0.0 });
-
+	// Obtenir les 4 points de la boite englobante
 	noeud->obtenirVecteursBoite(points[0], points[1], points[2], points[3]);
 
-	points[0].x += noeud->obtenirPositionRelative().x;
-	points[0].y += noeud->obtenirPositionRelative().y;
-	points[1].x += noeud->obtenirPositionRelative().x;
-	points[1].y += noeud->obtenirPositionRelative().y;
-	points[2].x += noeud->obtenirPositionRelative().x;
-	points[2].y += noeud->obtenirPositionRelative().y;
-	points[3].x += noeud->obtenirPositionRelative().x;
-	points[3].y += noeud->obtenirPositionRelative().y;
+	for (int i = 0; i < 4; i++)
+		points[i] += noeud->obtenirPositionRelative();
+
 
 	if (points[0].x > quad->inferieurGauche_.x && points[0].x < quad->superieurDroit_.x
 		&& points[0].y > quad->inferieurGauche_.y && points[0].y < quad->superieurDroit_.y
@@ -183,9 +176,10 @@ bool QuadTree::estDansQuadTree(NoeudAbstrait* noeud, QuadTree* quad) const
 		&& points[2].y > quad->inferieurGauche_.y && points[2].y < quad->superieurDroit_.y
 		&& points[3].x > quad->inferieurGauche_.x && points[3].x < quad->superieurDroit_.x
 		&& points[3].y > quad->inferieurGauche_.y && points[3].y < quad->superieurDroit_.y)
-		estPresent = true;
+		return true;
 
-	return estPresent;
+	else
+		return false;
 }
 
 
@@ -244,15 +238,11 @@ bool QuadTree::insert(NoeudAbstrait* noeud)
 	// Insérer le noeud seulement si le noeud est dans le Quadtree
 	if (estDansQuadTree(noeud, this))
 	{
-		// Insérer l'objet dans le QuadTree courant
-		if (objets_.size() < MAX_CAPACITY && niveauCourant_ < MAX_LEVEL)
+		// Insérer l'objet dans le QuadTree courant si aucun de ses sous QuadTree ne peut l'accueuillir
+		if (objets_.size() < MAX_CAPACITY && niveauCourant_ < MAX_LEVEL && obtenirQuadrant(noeud) == this)
 		{
-			// Seulement si aucun de ses sous QuadTree ne peut le recevoir
-			if (obtenirQuadrant(noeud) == this)
-			{
-				objets_.push_back(noeud);
-				return true;
-			}
+			objets_.push_back(noeud);
+			return true;
 		}
 
 		// Subdiviser et reassigner les objets déjà existants

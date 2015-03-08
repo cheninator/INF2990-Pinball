@@ -158,18 +158,22 @@ void NoeudBille::animer(float temps) // rajouter des parametres ou une fonction 
 	std::vector<NoeudAbstrait*> noeudsAChecker;
 	std::list<NoeudAbstrait*> listeNoeudsAChecker;
 	bool useQuadTree = false;
+
+	/*	
 	if (useQuadTree)
 	{
 		// TODO faire une liste de noeuds candidats à être en collision avec la bille
 			// Obtenir le quad
 		QuadTree* quadTree = FacadeModele::obtenirInstance()->obtenirArbreRenduINF2990()->obtenirQuadTree();
 		listeNoeudsAChecker = quadTree->retrieve(this);
-		if (counter % 60 == 0)
+		if (counter % 30 == 0)
 		{
-			;// std::cout << "Size de listeNoeudsAChecker : " << listeNoeudsAChecker.size() << std::endl;
+			std::cout << "Size de listeNoeudsAChecker : " << listeNoeudsAChecker.size() << std::endl;
 		}
 	}
-	else
+	*/
+	
+	if (1)
 	{
 		// Travail a faire par le quad tree
 		ArbreRenduINF2990* arbre = FacadeModele::obtenirInstance()->obtenirArbreRenduINF2990();
@@ -185,7 +189,10 @@ void NoeudBille::animer(float temps) // rajouter des parametres ou une fonction 
 
 	
 	bool enCollision = false;
+
 	// Pour chaque noeud à checker, vérifier s'il est en collision avec la bille (this)
+
+	/*
 	if (useQuadTree)
 	{
 		// Pour chaque noeud de la liste, checker collisions et réagir...
@@ -214,7 +221,9 @@ void NoeudBille::animer(float temps) // rajouter des parametres ou une fonction 
 			}
 		}
 	}
-	else
+	*/
+
+	if (1)
 	{
 		for (NoeudAbstrait* noeud : noeudsAChecker)
 		{

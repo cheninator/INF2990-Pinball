@@ -7,7 +7,6 @@
 /// @ingroup Arbre
 ///////////////////////////////////////////////////////////////////////////
 #include "ArbreRenduINF2990.h"
-#include "../Application/FacadeModele.h"
 
 #include "Usines/UsineNoeudButoirD.h"
 #include "Usines/UsineNoeudButoirG.h"
@@ -25,7 +24,6 @@
 #include "Usines/UsineNoeudVide.h"
 #include "Usines/UsineNoeudCouvercle.h"
 #include "Usines/UsineNoeudTable.h"
-#include "../QuadTree/QuadTree.h"
 
 #include "EtatOpenGL.h"
 #include <iomanip>
@@ -99,7 +97,6 @@ ArbreRenduINF2990::ArbreRenduINF2990(bool afficher)
 	ajouterUsine(NOM_TABLE, new UsineNoeudTable{ NOM_TABLE });
 	if (afficher) std::cout << std::fixed << std::setw(2) << std::setprecision(2) << j++ * 100.0 / i << "%... toute les usines sont genere" << std::endl;
 
-	quadTree_ = new QuadTree({ 108, -190, 0 }, { 272, 96, 0 });
 }
 
 
@@ -115,7 +112,7 @@ ArbreRenduINF2990::ArbreRenduINF2990(bool afficher)
 ArbreRenduINF2990::~ArbreRenduINF2990()
 {
 	delete proprietes_;
-	delete quadTree_;
+	listeNoeuds_.clear();
 }
 
 
@@ -137,59 +134,6 @@ void ArbreRenduINF2990::initialiser()
 
 	// Charger la zone de jeu par defaut
 	initialiserXML("zones/default.xml");
-
-	for (unsigned int i = 0; i < getEnfant(0)->obtenirNombreEnfants(); i++)
-	{
-		quadTree_->insert(getEnfant(0)->getEnfant(i));
-	}
-
-
-	/// TESTS
-	/*
-	glm::dvec3 inferieurGauche = { 108, -190, 0 };
-	glm::dvec3 superieurDroit = { 272, 96, 0 };
-	QuadTree* quad = new QuadTree(inferieurGauche, superieurDroit);
-
-	NoeudAbstrait* noeudConcret0{ creerNoeud(NOM_BUTOIRCIRCULAIRE) };
-	noeudConcret0->assignerPositionRelative({ 240, 0, 0 });
-
-	NoeudAbstrait* noeudConcret1{ creerNoeud(NOM_BUTOIRCIRCULAIRE) };
-	noeudConcret1->assignerPositionRelative({ 240, -47, 0 });
-
-	NoeudAbstrait* noeudConcret2{ creerNoeud(NOM_BUTOIRCIRCULAIRE) };
-	noeudConcret2->assignerPositionRelative({ 140, 0, 0 });
-
-	NoeudAbstrait* noeudConcret3{ creerNoeud(NOM_BUTOIRCIRCULAIRE) };
-	noeudConcret3->assignerPositionRelative({ 140, -47, 0 });
-
-	NoeudAbstrait* noeudConcret4{ creerNoeud(NOM_BUTOIRCIRCULAIRE) };
-	noeudConcret4->assignerPositionRelative({ 190, -47, 0 });
-
-	NoeudAbstrait* noeudConcret5{ creerNoeud(NOM_BUTOIRCIRCULAIRE) };
-	noeudConcret5->assignerPositionRelative({ 240, -100, 0 });
-
-	NoeudAbstrait* noeudConcret6{ creerNoeud(NOM_BUTOIRCIRCULAIRE) };
-	noeudConcret6->assignerPositionRelative({ 140, -100, 0 });
-
-	quad->insert(noeudConcret0);
-	quad->insert(noeudConcret1);
-	quad->insert(noeudConcret2);
-	quad->insert(noeudConcret3);
-	quad->insert(noeudConcret4);
-	quad->insert(noeudConcret5);
-	quad->insert(noeudConcret6);
-
-	std::list<NoeudAbstrait*> retour0 = quad->retrieve(noeudConcret0);
-	std::list<NoeudAbstrait*> retour1 = quad->retrieve(noeudConcret1);
-	std::list<NoeudAbstrait*> retour2 = quad->retrieve(noeudConcret2);
-	std::list<NoeudAbstrait*> retour3 = quad->retrieve(noeudConcret3);
-	std::list<NoeudAbstrait*> retour4 = quad->retrieve(noeudConcret4);
-	
-	quad->remove(noeudConcret0);
-	quad->remove(noeudConcret1);
-
-	delete quad;
-	*/
 
 }
 
@@ -489,7 +433,13 @@ void ArbreRenduINF2990::takeScreenShot(char* path, int width, int height, bool s
 	delete[] pixels;
 }
 
-QuadTree* ArbreRenduINF2990::obtenirQuadTree() const
+
+std::vector<NoeudAbstrait*> ArbreRenduINF2990::obtenirElementsTable()
 {
-	return quadTree_;
+	listeNoeuds_.clear();
+
+	for (unsigned int i = 0; i < getEnfant(0)->obtenirNombreEnfants(); i++)
+		listeNoeuds_.push_back(getEnfant(0)->getEnfant(i));
+
+	return listeNoeuds_;
 }
