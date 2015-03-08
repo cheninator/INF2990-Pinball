@@ -1135,28 +1135,51 @@ std::string FacadeModele::obtenirDerniereCampagne()
 	return configuration_->obtenirCampagne();
 }
 
+
+///////////////////////////////////////////////////////////////////////////////
+///
+/// @fn void FacadeModele::construireListesPalettes()
+/// Visite l'arbre et ajoute chaque palette a la bonne liste.  Utilise l'attirbut
+/// colorShift_ pour distinguer les palettes du joueur1 et du joueur 2.
+/// 
+///////////////////////////////////////////////////////////////////////////////
 void FacadeModele::construireListesPalettes()
 {
 	VisiteurConstruireListes visCL(&listePalettesGJ1_, &listePalettesDJ1_, &listePalettesGJ2_, &listePalettesDJ2_);
 	arbre_->accepterVisiteur(&visCL);
-
-
 }
 
-void FacadeModele::activerPalettesGJ1()//Appelée quand on pese la touche
+///////////////////////////////////////////////////////////////////////////////
+///
+/// @fn void FacadeModele::activerPalettesGJ1()
+/// Active les palettes gauches du joueur 1. C'est la fonction qui dit a la 
+/// palette de bouger.
+/// 
+/// @remark Les listes de palettes doivent avoir etes construites
+/// 
+///////////////////////////////////////////////////////////////////////////////
+void FacadeModele::activerPalettesGJ1()
 {
-	//construireListesPalettes(); // Normalement, on n'appellerait pas cette méthode à chaque fois, elle devrait être appelée une fois lorsqu'on a loadé la map.
 	for (NoeudPaletteG* palette : listePalettesGJ1_)
 		palette->activer();
 }
 
-void FacadeModele::desactiverPalettesGJ1() // Appelee quand on lache la touche
+///////////////////////////////////////////////////////////////////////////////
+///
+/// @fn void FacadeModele::desactiverPalettesGJ1()
+/// Desactive les palettes gauches du joueur 1. C'est la fonction qui dit a la 
+/// palette de revenir et d'arreter de bouger.
+/// 
+/// @remark Les listes de palettes doivent avoir etes construites
+/// 
+///////////////////////////////////////////////////////////////////////////////
+void FacadeModele::desactiverPalettesGJ1()
 {
-	//construireListesPalettes(); // Normalement, on n'appellerait pas cette méthode à chaque fois, elle devrait être appelée une fois lorsqu'on a loadé la map.
 	for (NoeudPaletteG* palette : listePalettesGJ1_)
 		palette->desactiver();
-
 }
+
+
 
 void FacadeModele::supprimerBille()
 {
