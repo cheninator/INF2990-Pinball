@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace InterfaceGraphique.Etats
+namespace InterfaceGraphique
 {
     class EtatJeuAbstrait : EtatAbstrait
     {
@@ -24,7 +24,7 @@ namespace InterfaceGraphique.Etats
 
     class EtatJeuPause : EtatJeuAbstrait
     {
-        // On ne override pas les traiterSouris, car le jeu e
+        // On ne override pas les traiterSouris
     }
 
     class EtatJeuJouer : EtatJeuAbstrait
