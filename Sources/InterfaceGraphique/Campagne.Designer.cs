@@ -137,7 +137,7 @@
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(183, 23);
             this.label1.TabIndex = 4;
-            this.label1.Text = "Zones de jeu choisis";
+            this.label1.Text = "Zones de jeu choisies";
             this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // bouton_ADD
