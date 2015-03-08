@@ -86,7 +86,7 @@
             this.GB_Player.Size = new System.Drawing.Size(588, 79);
             this.GB_Player.TabIndex = 2;
             this.GB_Player.TabStop = false;
-            this.GB_Player.Text = "Nombe de Joueurs";
+            this.GB_Player.Text = "Nombre de joueurs";
             // 
             // RB_AI
             // 
@@ -114,10 +114,10 @@
             this.RB_Solo.Checked = true;
             this.RB_Solo.Location = new System.Drawing.Point(17, 29);
             this.RB_Solo.Name = "RB_Solo";
-            this.RB_Solo.Size = new System.Drawing.Size(87, 22);
+            this.RB_Solo.Size = new System.Drawing.Size(57, 22);
             this.RB_Solo.TabIndex = 0;
             this.RB_Solo.TabStop = true;
-            this.RB_Solo.Text = "Tout seul";
+            this.RB_Solo.Text = "Solo";
             this.RB_Solo.UseVisualStyleBackColor = true;
             // 
             // label_ZJDisp
@@ -190,7 +190,7 @@
             this.bouton_OK.Name = "bouton_OK";
             this.bouton_OK.Size = new System.Drawing.Size(102, 47);
             this.bouton_OK.TabIndex = 9;
-            this.bouton_OK.Text = "Lancez la campagne";
+            this.bouton_OK.Text = "Lancer la campagne";
             this.bouton_OK.UseVisualStyleBackColor = false;
             this.bouton_OK.Click += new System.EventHandler(this.bouton_OK_Click);
             // 
