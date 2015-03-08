@@ -968,16 +968,14 @@ void FacadeModele::setDebug(bool valeurSpotLight)
 {
 	if (FacadeModele::obtenirInstance()->obtenirArbreRenduINF2990() == nullptr)
 		return;
-	bool valeurDebugBille;
-	bool valeurDebugPortail;
+	bool valeurDebugBille = false;
+	bool valeurDebugPortail = false;
 	if (obtenirConfiguration()[12] == false){
-		valeurDebugBille = false;
-		valeurDebugPortail = false;
 		valeurSpotLight = false;
 	}
 	else{
-		valeurDebugBille = obtenirConfiguration()[9];
-		valeurDebugPortail = obtenirConfiguration()[11];
+		valeurDebugBille = obtenirConfiguration()[9] == 1 ? true : false;
+		valeurDebugPortail = obtenirConfiguration()[11] == 1 ? true : false;
 	}
 	VisiteurDebug* visiteur = new VisiteurDebug(valeurDebugBille, valeurDebugPortail, valeurSpotLight);
 	FacadeModele::obtenirInstance()->obtenirArbreRenduINF2990()->accepterVisiteur(visiteur);

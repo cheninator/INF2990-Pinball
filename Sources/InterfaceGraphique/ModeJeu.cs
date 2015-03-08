@@ -13,8 +13,8 @@ namespace InterfaceGraphique
         private ZoneInfo zInfo;
         private int currentZone = 0;
         private int nbZones;
-        private int typeJoueur;
-        private bool fullScreen = false;
+        //private int typeJoueur;
+        //private bool fullScreen = false;
         List<string> myMaps;
         StringBuilder map;
         StringBuilder nextMap;
