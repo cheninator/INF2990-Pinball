@@ -434,6 +434,9 @@ namespace InterfaceGraphique
         public static extern void creerFichierCampagne(StringBuilder listMaps, int length);
 
         [DllImport(@"Noyau.dll", CallingConvention = CallingConvention.Cdecl)]
+        public static extern void construireListesPalettes();
+
+        [DllImport(@"Noyau.dll", CallingConvention = CallingConvention.Cdecl)]
         public static extern void activerPalettesGJ1();
 
         [DllImport(@"Noyau.dll", CallingConvention = CallingConvention.Cdecl)]
@@ -450,12 +453,15 @@ namespace InterfaceGraphique
         public static extern void modePause(bool pause);
 
         [DllImport(@"Noyau.dll", CallingConvention = CallingConvention.Cdecl)]
-        public static extern void consolDebug(bool dbg1, bool dbg2, bool dbg3, bool dbg4);
-
-        [DllImport(@"Noyau.dll", CallingConvention = CallingConvention.Cdecl)]
         public static extern bool spotLight(int lum, bool state);
 
         [DllImport(@"Noyau.dll", CallingConvention = CallingConvention.Cdecl)]
         public static extern int obtenirAffichagesParSeconde();
+
+        [DllImport(@"Noyau.dll", CallingConvention = CallingConvention.Cdecl)]
+        public static extern int obtenirAffichageGlobal();
+        
+        [DllImport(@"Noyau.dll", CallingConvention = CallingConvention.Cdecl)]
+        public static extern void bloquerAffichageGlobal(int active);
     }
 }

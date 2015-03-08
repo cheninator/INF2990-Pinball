@@ -155,6 +155,8 @@ public:
    int  obtenirTouchePDJ1();
    int  obtenirTouchePDJ2();
    int  obtenirToucheRessort();
+   int  obtenirAffichageGlobal();
+   void bloquerAffichageGlobal(int active);
 
    int obtenirDifficulte(char* nomFichier, int length);
 
@@ -168,7 +170,7 @@ public:
    void supprimerBille();
 
    void setPause(bool pause);
-   void setDebug(bool valeurDebugBille, bool valeurDebugPortail, bool valeurSpotLight = false);
+   void setDebug(bool valeurSpotLight = false);
 
 private:
 

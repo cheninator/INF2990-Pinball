@@ -18,6 +18,7 @@ namespace InterfaceGraphique
         List<string> zonesCampagne;
         int sortColumn = -1;
         int diff;
+        int typeJoueur;
         StringBuilder pathMap;
         //StringBuilder mapList;
         public ModeJeu modeJeu;
@@ -92,9 +93,20 @@ namespace InterfaceGraphique
             if (ZonesDisponibles.SelectedItems.Count != 0)
             {
                 zonesCampagne.Insert(0, Application.StartupPath + @"\zones\" + ZonesDisponibles.SelectedItems[0].Text + ".xml");
-                //Console.WriteLine(Application.StartupPath + @"\zones\" + ZonesDisponibles.SelectedItems[0].Text + ".xml");
+                if (RB_Solo.Checked)
+                {
+                    typeJoueur = 1;
+                }
+                else if (RB_Multi.Checked)
+                {
+                    typeJoueur = 2;
+                }
+                else if (RB_AI.Checked)
+                {
+                    typeJoueur = 3;
+                }
                 this.Hide();
-                ((MainMenu)this.Owner).LancerModeJeu(zonesCampagne);
+                ((MainMenu)this.Owner).LancerModeJeu(zonesCampagne, typeJoueur);
                 // modeJeu.ShowDialog();
               //  this.Show();
               //  this.Close();

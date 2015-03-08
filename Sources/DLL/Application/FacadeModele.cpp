@@ -959,12 +959,24 @@ void FacadeModele::setPause( bool pause)
 ///
 /// @param[in]  valeurDebugBille : valeur du mode debug pour la bille
 /// @param[in]  valeurDebugPortail : valeur du mode debug pour le portail
+/// @param[in]  valeurSpotLight : valeur du mode debug pour la lumiere
 ///
 /// @return Aucun
 ///
 ///////////////////////////////////////////////////////////////////////////////
-void FacadeModele::setDebug(bool valeurDebugBille, bool valeurDebugPortail, bool valeurSpotLight)
+void FacadeModele::setDebug(bool valeurSpotLight)
 {
+	if (FacadeModele::obtenirInstance()->obtenirArbreRenduINF2990() == nullptr)
+		return;
+	bool valeurDebugBille = false;
+	bool valeurDebugPortail = false;
+	if (obtenirConfiguration()[12] == false){
+		valeurSpotLight = false;
+	}
+	else{
+		valeurDebugBille = obtenirConfiguration()[9] == 1 ? true : false;
+		valeurDebugPortail = obtenirConfiguration()[11] == 1 ? true : false;
+	}
 	VisiteurDebug* visiteur = new VisiteurDebug(valeurDebugBille, valeurDebugPortail, valeurSpotLight);
 	FacadeModele::obtenirInstance()->obtenirArbreRenduINF2990()->accepterVisiteur(visiteur);
 	delete visiteur;
@@ -1077,10 +1089,11 @@ bool FacadeModele::duplicationEstHorsTable()
 }
 
 
-void FacadeModele::sauvegarderConfig(int config[12])
+void FacadeModele::sauvegarderConfig(int config[13])
 {
 	configuration_->modifierConfiguration(config);
 	configuration_->sauvegarderConfiguration();
+	setDebug();
 }
 
 
@@ -1094,6 +1107,8 @@ int  FacadeModele::obtenirTouchePGJ2(){ return configuration_->obtenirRaccourciP
 int  FacadeModele::obtenirTouchePDJ1(){ return configuration_->obtenirRaccourciPDJ1(); }
 int  FacadeModele::obtenirTouchePDJ2(){ return configuration_->obtenirRaccourciPDJ2(); }
 int  FacadeModele::obtenirToucheRessort(){ return configuration_->obtenirRaccourciRessort(); }
+int  FacadeModele::obtenirAffichageGlobal(){ return configuration_->obtenirAffichageGlobal(); }
+void FacadeModele::bloquerAffichageGlobal(int active){ configuration_->bloquerAffichageGlobal(active); };
 
 
 int FacadeModele::obtenirDifficulte(char* nomFichier, int length)
@@ -1130,14 +1145,14 @@ void FacadeModele::construireListesPalettes()
 
 void FacadeModele::activerPalettesGJ1()//Appelée quand on pese la touche
 {
-	construireListesPalettes(); // Normalement, on n'appellerait pas cette méthode à chaque fois, elle devrait être appelée une fois lorsqu'on a loadé la map.
+	//construireListesPalettes(); // Normalement, on n'appellerait pas cette méthode à chaque fois, elle devrait être appelée une fois lorsqu'on a loadé la map.
 	for (NoeudPaletteG* palette : listePalettesGJ1_)
 		palette->activer();
 }
 
 void FacadeModele::desactiverPalettesGJ1() // Appelee quand on lache la touche
 {
-	construireListesPalettes(); // Normalement, on n'appellerait pas cette méthode à chaque fois, elle devrait être appelée une fois lorsqu'on a loadé la map.
+	//construireListesPalettes(); // Normalement, on n'appellerait pas cette méthode à chaque fois, elle devrait être appelée une fois lorsqu'on a loadé la map.
 	for (NoeudPaletteG* palette : listePalettesGJ1_)
 		palette->desactiver();
 

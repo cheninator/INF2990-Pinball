@@ -25,7 +25,7 @@ ConfigScene::ConfigScene()
 	derniereConfiguration_ = "lastConfig.bin";
 	derniereCampagne_ = "lastCampaign.txt";
 
-	config_ = new int[12];
+	config_ = new int[13];
 	lireConfiguration();
 	lireCampagne();
 }
@@ -61,7 +61,7 @@ void ConfigScene::sauvegarderConfiguration()
 	std::fstream fichier;
 	fichier.open(derniereConfiguration_, std::ios::out | std::ios::binary);
 
-	for (int i = 0; i < 12; i++)
+	for (int i = 0; i < 13; i++)
 		fichier.write((char*)&config_[i], sizeof(int));
 
 	fichier.close();
@@ -159,7 +159,7 @@ void ConfigScene::lireFichierBinaire()
 
 	if (!fichier.fail())
 	{
-		for (int i = 0; i < 12; i++)
+		for (int i = 0; i < 13; i++)
 			fichier.read((char*)&config_[i], sizeof(int));
 
 		fichier.close();
@@ -170,16 +170,16 @@ void ConfigScene::lireFichierBinaire()
 
 ////////////////////////////////////////////////////////////////////////
 ///
-/// @fn void ConfigScene::modifierConfiguration(int config[12])
+/// @fn void ConfigScene::modifierConfiguration(int config[13])
 ///
 /// Cette fonction assigne les nouvelles configurations de zone de jeu.
 ///
-/// @param[in] config[12] : Un tableau contenant les informations de configuration
+/// @param[in] config[13] : Un tableau contenant les informations de configuration
 ///
 /// @return Aucune.
 ///
 ////////////////////////////////////////////////////////////////////////
-void ConfigScene::modifierConfiguration(int config[12])
+void ConfigScene::modifierConfiguration(int config[13])
 {
 	config_[0] = config[0];		// Palette gauche joueur 1
 	config_[1] = config[1];		// Palette droite joueur 1
@@ -193,6 +193,7 @@ void ConfigScene::modifierConfiguration(int config[12])
 	config_[9] = config[9];		// Vitesse après collision
 	config_[10] = config[10];	// Activation de l'éclairage
 	config_[11] = config[11];	// Champ d'attraction de portail
+	config_[12] = config[12];	// Interrupteur d'affichage de debug
 }
 
 

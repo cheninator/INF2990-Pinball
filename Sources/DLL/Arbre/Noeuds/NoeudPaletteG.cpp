@@ -110,6 +110,8 @@ void NoeudPaletteG::afficherConcret() const
 ////////////////////////////////////////////////////////////////////////
 void NoeudPaletteG::animer(float temps)
 {
+	NoeudComposite::animer(temps);
+
 	switch (etatPalette_)
 	{
 	case ACTIVE:

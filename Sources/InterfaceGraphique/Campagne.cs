@@ -17,9 +17,9 @@ namespace InterfaceGraphique
         string fileNames;
         int sortColumn = -1;
         int diff;
+        int typeJoueur;
         StringBuilder pathMap;
         StringBuilder mapList;
-        private MainMenu parent;
         public ModeJeu modeJeu;
 
         public Campagne()
@@ -147,13 +147,22 @@ namespace InterfaceGraphique
             else
             {
                 if (RB_Solo.Checked)
+                {
                     mapList = new StringBuilder("UN ");
+                    typeJoueur = 1;
+                }
                 else
                     if (RB_Multi.Checked)
+                    {
                         mapList = new StringBuilder("DEUX ");
+                        typeJoueur = 2;
+                    }
                     else
                         if (RB_AI.Checked)
+                        {
                             mapList = new StringBuilder("AI ");
+                            typeJoueur = 3;
+                        }
                 int i = 0;
              foreach (ListViewItem eachItem in ZonesChoisis.Items)
              {
@@ -163,16 +172,14 @@ namespace InterfaceGraphique
                         
              }
              mapList.Length--;
-             // TO DO : PASSER mapList 
-
              FonctionsNatives.creerFichierCampagne(mapList, mapList.Capacity);
              Console.WriteLine("LANCEMENT DE CAMPAGNE");
-           
+             Console.WriteLine(typeJoueur);
 
              ZoneInfo zi = new ZoneInfo(ZonesChoisis.Items[0].Text, ZonesChoisis.Items[0].SubItems[1].Text);
              this.Hide();
              zi.ShowDialog();
-             ((MainMenu)this.Owner).LancerModeJeu(zonesCampagne);
+             ((MainMenu)this.Owner).LancerModeJeu(zonesCampagne,typeJoueur);
 
              //this.Show();
             // modeJeu = new ModeJeu(zonesCampagne);

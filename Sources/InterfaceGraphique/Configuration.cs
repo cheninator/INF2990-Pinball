@@ -8,7 +8,7 @@ namespace InterfaceGraphique
     {
         int[] defaultValues = { 65, 83, 52, 53};
         int[] currentValues = { 65, 83, 52, 53, 32, 49, 50, 74, 75, 76, 66 };
-        int[] valuesXML = new int[12]; 
+        int[] valuesXML = new int[13]; 
         string maTouche;
         bool mediaPlaying = false;
         System.Media.SoundPlayer p = new System.Media.SoundPlayer(Properties.Resources.touche_invalide);
@@ -17,7 +17,6 @@ namespace InterfaceGraphique
             InitializeComponent();
             comboBoxBilles.Text = "3";
             KeyPreview = true;
-            // TO DO : LIRE UN XML ET PRENDRE LES VALEURS
             InitialiserAvecBinaire();
         }
 
@@ -26,13 +25,9 @@ namespace InterfaceGraphique
         {
          
             IntPtr config = FonctionsNatives.chargerFichierConfiguration();
-            int[] result = new int[12];
-            Marshal.Copy(config, valuesXML, 0, 12);
-            /// COMPLETE ICI NIKO
-
-
-            // TO DO : LIRE UN FICHIER XML
-          
+            int[] result = new int[13];
+            Marshal.Copy(config, valuesXML, 0, 13);
+                
             for(int i = 0; i < 5; i++){
                 currentValues[i] = valuesXML[i];             
             }
@@ -69,13 +64,23 @@ namespace InterfaceGraphique
             if (valuesXML[10] != 0)
                 AE_OK.Checked = true;
             else
-                AE_CANCEL.Checked = true;
+                AE_Cancel.Checked = true;
 
             //valuesXML[11] = Convert.ToInt32(PORTAL_OK.Checked);    
             if( valuesXML[11] != 0)
                 PORTAL_OK.Checked = true;
             else
                 PORTAL_Cancel.Checked = true;
+
+            if (valuesXML[12] != 0)
+            {
+                GLOB_OK.Checked = true;
+               
+            }
+            else
+            {
+                GLOB_Cancel.Checked = true;
+            }
         }
 
         private void InitialiserTouches()
@@ -279,9 +284,8 @@ namespace InterfaceGraphique
             valuesXML[9] = Convert.ToInt32(VAC_OK.Checked);
             valuesXML[10] = Convert.ToInt32(AE_OK.Checked);
             valuesXML[11] = Convert.ToInt32(PORTAL_OK.Checked);
+            valuesXML[12] = Convert.ToInt32(GLOB_OK.Checked);
 
-            //  foreach (int x in valuesXML){Console.WriteLine(x);}
-            FonctionsNatives.consolDebug(GB_OK.Checked, VAC_OK.Checked, AE_OK.Checked, PORTAL_OK.Checked);
             FonctionsNatives.creerFichierConfig(valuesXML);
             this.Close();
         }
@@ -298,6 +302,39 @@ namespace InterfaceGraphique
                 return PORTAL_OK.Checked;
             else
                 return false;
+        }
+        private void radioButtonEnable(bool active)
+        {
+            GB_Cancel.Enabled = active;
+            GB_OK.Enabled = active;
+            VAC_Cancel.Enabled = active;
+            VAC_OK.Enabled = active;
+            AE_Cancel.Enabled = active;
+            AE_OK.Enabled = active;
+            PORTAL_Cancel.Enabled = active;
+            PORTAL_OK.Enabled = active;
+
+        }
+
+        private void GLOB_Cancel_CheckedChanged(object sender, EventArgs e)
+        {
+            if (GLOB_Cancel.Checked)
+            {
+             /*   GB_Cancel.Checked = true;
+                VAC_Cancel.Checked = true;
+                AE_Cancel.Checked = true;
+                PORTAL_Cancel.Checked = true;
+              */
+                radioButtonEnable(false);   
+            }
+        }
+
+        private void GLOB_OK_CheckedChanged(object sender, EventArgs e)
+        {
+            if (GLOB_OK.Checked)
+            {
+                radioButtonEnable(true);
+            }
         }
     }
 }

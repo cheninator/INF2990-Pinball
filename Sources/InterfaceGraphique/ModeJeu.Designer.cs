@@ -29,13 +29,13 @@
         private void InitializeComponent()
         {
             this.panel_GL = new System.Windows.Forms.Panel();
+            this.FPSCounter = new System.Windows.Forms.Label();
             this.menuStrip = new System.Windows.Forms.MenuStrip();
             this.fichier_MenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.mPrincipal_menu = new System.Windows.Forms.ToolStripMenuItem();
             this.Camera_MenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.Ortho_MenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.Orbitale_MenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.FPSCounter = new System.Windows.Forms.Label();
             this.panel_GL.SuspendLayout();
             this.menuStrip.SuspendLayout();
             this.SuspendLayout();
@@ -51,6 +51,15 @@
             this.panel_GL.Name = "panel_GL";
             this.panel_GL.Size = new System.Drawing.Size(284, 261);
             this.panel_GL.TabIndex = 4;
+            this.panel_GL.MouseClick += new System.Windows.Forms.MouseEventHandler(this.panel_GL_MouseClick);
+            // 
+            // FPSCounter
+            // 
+            this.FPSCounter.AutoSize = true;
+            this.FPSCounter.Location = new System.Drawing.Point(13, 13);
+            this.FPSCounter.Name = "FPSCounter";
+            this.FPSCounter.Size = new System.Drawing.Size(0, 13);
+            this.FPSCounter.TabIndex = 1;
             // 
             // menuStrip
             // 
@@ -101,14 +110,6 @@
             this.Orbitale_MenuItem.Size = new System.Drawing.Size(182, 22);
             this.Orbitale_MenuItem.Text = "Vue Orbitale";
             // 
-            // FPSCounter
-            // 
-            this.FPSCounter.AutoSize = true;
-            this.FPSCounter.Location = new System.Drawing.Point(13, 13);
-            this.FPSCounter.Name = "FPSCounter";
-            this.FPSCounter.Size = new System.Drawing.Size(0, 13);
-            this.FPSCounter.TabIndex = 1;
-            // 
             // ModeJeu
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -125,6 +126,7 @@
             this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.PartieRapide_KeyDown);
             this.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.PartieRapide_KeyPress);
             this.KeyUp += new System.Windows.Forms.KeyEventHandler(this.PartieRapide_KeyUp);
+            this.MouseWheel += new System.Windows.Forms.MouseEventHandler(this.panel_GL_MouseWheel);
             this.panel_GL.ResumeLayout(false);
             this.panel_GL.PerformLayout();
             this.menuStrip.ResumeLayout(false);

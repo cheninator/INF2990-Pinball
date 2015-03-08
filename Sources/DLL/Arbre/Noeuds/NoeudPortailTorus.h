@@ -30,14 +30,19 @@ public:
 	/// Destructeur 
 	~NoeudPortailTorus();
 
-	/// Surchage de la methode qui affiche l'objet.
+	/// Redefinition de la methode qui affiche l'objet.
 	virtual void afficherConcret() const;
 
-	/// Surchage de la methode qui anime l'objet.
+	/// Redefinition de la methode qui anime l'objet.
 	virtual void animer(float temps);
 
 	/// Accepte un visiteur.
 	virtual bool accepterVisiteur(VisiteurAbstrait* vis);
+
+private:
+	double scaleTorus_;
+	
+	double direction_;
 };
 
 #endif // __ARBRE_NOEUDS_NOEUDPORTAILTORUS_H__

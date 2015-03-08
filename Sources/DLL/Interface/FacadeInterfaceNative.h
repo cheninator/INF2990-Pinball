@@ -72,13 +72,14 @@ extern "C" {
 	__declspec(dllexport) int obtenirTouchePDJ1();
 	__declspec(dllexport) int obtenirTouchePDJ2();
 	__declspec(dllexport) int obtenirToucheRessort();
+	__declspec(dllexport) int obtenirAffichageGlobal();
+	__declspec(dllexport) void bloquerAffichageGlobal(int active);
 	__declspec(dllexport) void creerFichierConfig(int config[12]);
 	__declspec(dllexport) int* chargerFichierConfiguration();
 	__declspec(dllexport) int obtenirDiffulte(char* nomFichier, int length);
 	__declspec(dllexport) BSTR obtenirDerniereCampagne();
 	__declspec(dllexport) void creerFichierCampagne(char* nomFichier, int length);
 	__declspec(dllexport) void supprimerBille();
-	__declspec(dllexport) void consolDebug(bool dbg1, bool dbg2, bool dbg3, bool dbg4);
 	__declspec(dllexport) bool spotLight(int lum, bool state);
 }
 

@@ -46,8 +46,6 @@ namespace InterfaceGraphique
         ////////////////////////////////////////////////////////////////////////
         public MainMenu()
         {
-
-            Console.WriteLine(FonctionsNatives.obtenirDerniereCampagne());
             this.KeyPress += new KeyPressEventHandler(Form1_KeyPress);
             InitializeComponent();
             pictureBox1.SizeMode = PictureBoxSizeMode.StretchImage;
@@ -56,7 +54,6 @@ namespace InterfaceGraphique
             StartPosition = FormStartPosition.CenterScreen;
             StringBuilder initSound = new StringBuilder("");
             configuration = new Configuration();
-            FonctionsNatives.consolDebug(configuration.getConfig(0), configuration.getConfig(1), configuration.getConfig(2), configuration.getConfig(3));
         }
 
         private void Form1_KeyPress(object sender, KeyPressEventArgs e)
@@ -305,9 +302,9 @@ namespace InterfaceGraphique
             configuration.ShowDialog();
         }
 
-        public void LancerModeJeu(List<string> zones) 
+        public void LancerModeJeu(List<string> zones,int playerType) 
         { 
-            modeJeuMain = new ModeJeu(zones); 
+            modeJeuMain = new ModeJeu(zones,playerType); 
             modeJeuMain.ShowDialog(this);
             if (campagne != null)
             {

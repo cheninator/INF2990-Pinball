@@ -13,46 +13,49 @@ namespace InterfaceGraphique
         private ZoneInfo zInfo;
         private int currentZone = 0;
         private int nbZones;
-        private bool fullScreen = false;
+        //private int typeJoueur;
+        //private bool fullScreen = false;
         List<string> myMaps;
         StringBuilder map;
         StringBuilder nextMap;
-
+        bool peutAnimer;
         private bool activateAmbianteLight = false; ///< Etat de la lumiere ambiante
         private bool activateDirectLight = false; ///< Etat de la lumiere directe
         private bool activateSpotLight = false; ///< Etat de la lumiere spot
 
-        public ModeJeu(List<string> maps)
+        public ModeJeu(List<string> maps, int playerType)
         {
-            if(fullScreen)
+
+            /*   if(fullScreen)
             {
                 this.WindowState = FormWindowState.Normal;
                 this.FormBorderStyle = FormBorderStyle.None;
                 this.WindowState = FormWindowState.Maximized;
             }
-           
+         */
+            EtablirTouches(playerType);
             this.KeyDown += new KeyEventHandler(PartieRapide_KeyDown);
             this.KeyUp += new KeyEventHandler(PartieRapide_KeyUp);
-           
             InitializeComponent();
+            peutAnimer = true;
             Program.peutAfficher = true;              
             InitialiserAnimation();
-
             FonctionsNatives.resetZoom();
             currentZoom = -1;
-
-            touches = new Touches(FonctionsNatives.obtenirTouchePGJ1(),
-                                  FonctionsNatives.obtenirTouchePGJ2(),
-                                  FonctionsNatives.obtenirTouchePDJ1(),
-                                  FonctionsNatives.obtenirTouchePDJ2(),
-                                  FonctionsNatives.obtenirToucheRessort());
             myMaps = new List<string>(maps);
             nbZones = maps.Count;
+            if( nbZones == 1)
+                this.Text = "Partie Rapide";
+            if (nbZones > 1)
+                this.Text = "Campagne";
             map = new StringBuilder(myMaps[0]);
             Console.WriteLine(nbZones);
             FonctionsNatives.ouvrirXML(map, map.Capacity);
+            FonctionsNatives.construireListesPalettes();
             currentZone++;
             Program.tempBool = true;
+            panel_GL.Focus();
+
         }
         ////////////////////////////////////////////////////////////////////////
         ///
@@ -78,7 +81,10 @@ namespace InterfaceGraphique
             {
                 this.Invoke((MethodInvoker)delegate
                 {
-                   FonctionsNatives.animer(tempsInterAffichage);
+                    if (peutAnimer)
+                    {
+                        FonctionsNatives.animer(tempsInterAffichage);
+                    }
                    FonctionsNatives.dessinerOpenGL();
                    FPSCounter.Text = FonctionsNatives.obtenirAffichagesParSeconde().ToString();
 
@@ -111,6 +117,38 @@ namespace InterfaceGraphique
 
         }
 
+        private void EtablirTouches(int playerType)
+        {
+            if (playerType == 1)
+            {
+                touches = new Touches(FonctionsNatives.obtenirTouchePGJ1(),
+                                 FonctionsNatives.obtenirTouchePGJ1(),
+                                 FonctionsNatives.obtenirTouchePDJ1(),
+                                 FonctionsNatives.obtenirTouchePDJ1(),
+                                 FonctionsNatives.obtenirToucheRessort());
+            }
+            else if (playerType == 2)
+            {
+                touches = new Touches(FonctionsNatives.obtenirTouchePGJ1(),
+                                FonctionsNatives.obtenirTouchePGJ2(),
+                                FonctionsNatives.obtenirTouchePDJ1(),
+                                FonctionsNatives.obtenirTouchePDJ2(),
+                                FonctionsNatives.obtenirToucheRessort());
+            }
+            else if (playerType == 3)
+            {
+                // Le 1337 est la pour rendre l'acces aux touches de joueur 2 invalide
+                touches = new Touches(FonctionsNatives.obtenirTouchePGJ1(),
+                                1337,
+                                FonctionsNatives.obtenirTouchePDJ1(),
+                                1337,
+                                FonctionsNatives.obtenirToucheRessort());
+            }
+
+
+
+        }
+
         private void PartieRapide_KeyDown(object sender, KeyEventArgs e)
         {   
             // À enlever : permet de vérifier la fenêtre OpenGL
@@ -123,11 +161,42 @@ namespace InterfaceGraphique
             else if (e.KeyCode == Keys.Down)
                 FonctionsNatives.translater(0, -10);
 
-            if (e.KeyValue == touches.PGJ1) // Remplacer "R" par la touche obtenue des configurations
-            {
-                FonctionsNatives.activerPalettesGJ1();
-              //  Console.WriteLine("Touche R enfoncée"); // Activer les palettes gauches du joueur 1
-            }
+           if ((e.KeyData == Keys.Subtract ||
+                  e.KeyCode == Keys.OemMinus))
+           {
+               FonctionsNatives.zoomOut();
+               currentZoom = FonctionsNatives.obtenirZoomCourant();
+           }
+           if ((e.KeyData == Keys.Add ||
+               e.KeyCode == Keys.Oemplus && e.Modifiers == Keys.Shift))
+           {
+               FonctionsNatives.zoomIn();
+               currentZoom = FonctionsNatives.obtenirZoomCourant();
+           }
+
+
+
+           if (e.KeyValue == touches.PGJ1)
+           {
+               FonctionsNatives.activerPalettesGJ1();
+           }
+
+           else if (e.KeyValue == touches.PGJ2)
+           {
+               // TODO: palette gauche joueur 2
+           }
+           else if (e.KeyValue == touches.PDJ1)
+           {
+
+           }
+           else if (e.KeyValue == touches.PDJ2)
+           {
+
+           }
+           else if (e.KeyValue == touches.Ressort)
+           {
+
+           }
         }
 
 
@@ -155,13 +224,28 @@ namespace InterfaceGraphique
                 {
                     menuStrip.Visible = false;
                     FonctionsNatives.modePause(false);
-                  //  Console.WriteLine("HIDE");
+                    peutAnimer = true;
+                 
                 }
                 else
                 {
                     menuStrip.Visible = true;
                     FonctionsNatives.modePause(true);
-                 //   Console.WriteLine("SHOW");
+                    peutAnimer = false;
+               
+                }
+            }
+            else if (e.KeyChar == 'b')
+            {
+                if (FonctionsNatives.obtenirAffichageGlobal() == 0)
+                {
+                    Console.WriteLine("Affichage bloque. On debloque");
+                    FonctionsNatives.bloquerAffichageGlobal(1);
+                }
+                else
+                {
+                    Console.WriteLine("Affichage permis. On bloque");
+                    FonctionsNatives.bloquerAffichageGlobal(0);
                 }
             }
             else if (e.KeyChar == 'j')
@@ -201,6 +285,7 @@ namespace InterfaceGraphique
                         //this.Show();
                     
                         FonctionsNatives.ouvrirXML(map, map.Capacity);
+                        FonctionsNatives.construireListesPalettes();
                         currentZone++;
                     }
                     
@@ -213,9 +298,23 @@ namespace InterfaceGraphique
 
         }
 
+        private void panel_GL_MouseWheel(object sender, MouseEventArgs e)
+        {
+            if (e.Delta > 0)
+                FonctionsNatives.zoomIn();
+            else if (e.Delta < 0)
+                FonctionsNatives.zoomOut();
+            currentZoom = FonctionsNatives.obtenirZoomCourant();
+        }
+
         private void mPrincipal_menu_Click(object sender, EventArgs e)
         {
             this.Close();
+        }
+
+        private void panel_GL_MouseClick(object sender, MouseEventArgs e)
+        {
+          //  panel_GL.Focus();
         }
 
     }

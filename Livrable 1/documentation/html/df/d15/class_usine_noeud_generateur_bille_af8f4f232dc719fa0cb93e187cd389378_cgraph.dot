@@ -1,9 +1,0 @@
-digraph "UsineNoeudGenerateurBille::creerNoeud"
-{
-  edge [fontname="Helvetica",fontsize="10",labelfontname="Helvetica",labelfontsize="10"];
-  node [fontname="Helvetica",fontsize="10",shape=record];
-  rankdir="LR";
-  Node1 [label="UsineNoeudGenerateurBille\l::creerNoeud",height=0.2,width=0.4,color="black", fillcolor="grey75", style="filled", fontcolor="black"];
-  Node1 -> Node2 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
-  Node2 [label="UsineNoeud::obtenirNom",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$da/d02/class_usine_noeud.html#a78cfb214df5805c43d4ca4b71411d060",tooltip="Retourne le nom associé à l&#39;usine. "];
-}
