@@ -372,8 +372,15 @@ std::list<NoeudAbstrait*> QuadTree::retrieve(NoeudAbstrait* noeud)
 
 				return listeNoeuds;
 			}
-
+			
+			// Ne devrait JAMAIS se rendre ici
+			else
+				return listeNoeuds;
 		}
+
+		// Ne devrais JAMAIS se rendre ici
+		else
+			return listeNoeuds;
 
 	}
 
