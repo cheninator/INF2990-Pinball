@@ -67,6 +67,12 @@
     <Filter Include="Header Files\QuadTree">
       <UniqueIdentifier>{b21453d8-97af-4097-a421-1e5548145fad}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Header Files\Global">
+      <UniqueIdentifier>{48887700-5cdf-473d-8801-6a2e8c1dfe41}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Global">
+      <UniqueIdentifier>{d4d41da7-5c04-45fd-890d-9d66d60df0d7}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Application\FacadeModele.cpp">
@@ -209,6 +215,9 @@
     </ClCompile>
     <ClCompile Include="Arbre\Noeuds\NoeudPortailTorus.cpp">
       <Filter>Source Files\Arbre\Noeuds</Filter>
+    </ClCompile>
+    <ClCompile Include="Global\SingletonGlobal.cpp">
+      <Filter>Source Files\Global</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -409,6 +418,9 @@
     </ClInclude>
     <ClInclude Include="Arbre\Noeuds\NoeudPortailTorus.h">
       <Filter>Header Files\Arbre\Noeuds</Filter>
+    </ClInclude>
+    <ClInclude Include="Global\SingletonGlobal.h">
+      <Filter>Header Files\Global</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

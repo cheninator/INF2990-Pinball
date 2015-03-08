@@ -153,6 +153,7 @@
     <ClCompile Include="Arbre\Noeuds\NoeudAbstrait.cpp" />
     <ClCompile Include="Arbre\Noeuds\NoeudComposite.cpp" />
     <ClCompile Include="Configuration\ConfigScene.cpp" />
+    <ClCompile Include="Global\SingletonGlobal.cpp" />
     <ClCompile Include="Interface\FacadeInterfaceNative.cpp" />
     <ClCompile Include="QuadTree\QuadTree.cpp" />
     <ClCompile Include="Tests\ArbreRenduINF2990Test.cpp" />
@@ -219,6 +220,7 @@
     <ClInclude Include="Arbre\Noeuds\NoeudAbstrait.h" />
     <ClInclude Include="Arbre\Noeuds\NoeudComposite.h" />
     <ClInclude Include="Configuration\ConfigScene.h" />
+    <ClInclude Include="Global\SingletonGlobal.h" />
     <ClInclude Include="Interface\FacadeInterfaceNative.h" />
     <ClInclude Include="QuadTree\QuadTree.h" />
     <ClInclude Include="Tests\ArbreRenduINF2990Test.h" />
