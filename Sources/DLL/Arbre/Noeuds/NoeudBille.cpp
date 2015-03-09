@@ -228,18 +228,35 @@ void NoeudBille::animer(float temps) // rajouter des parametres ou une fonction 
 		for (NoeudAbstrait* noeud : noeudsAChecker)
 		{
 			// Obtenir la boite englobante
-			std::vector<glm::dvec3> boite;
-			{ // Travail a faire par std::vector<glm::dvec3> NoeudAbstrait::obtenirBoite()
-				glm::dvec3 tableau[4];
-				noeud->obtenirVecteursBoite(tableau[0], tableau[1], tableau[2], tableau[3]);
-				for (unsigned int i = 0; i < 4; i++) boite.push_back(tableau[i] + noeud->obtenirPositionRelative());
-			}
+			std::vector<glm::dvec3> boite = noeud->obtenirVecteursEnglobants();
+			//{ // Travail a faire par std::vector<glm::dvec3> NoeudAbstrait::obtenirBoite()
+			//	glm::dvec3 tableau[4];
+			//	noeud->obtenirVecteursBoite(tableau[0], tableau[1], tableau[2], tableau[3]);
+			//	for (unsigned int i = 0; i < 4; i++) boite.push_back(tableau[i] + noeud->obtenirPositionRelative());
+			//}
 
-			// Considerer tous les segments boite[i] --- boite[i+1 % size] 
-			for (unsigned int i = 0; i < boite.size(); i++)
+			if (boite.size() > 1)
 			{
-				// On veut calculer la collision en 2D et caster les paramêtres en glm::dvec2 "oublie" leur composante en Z et choisi la bonne surcharge de calculerCollisionSegment.
-				aidecollision::DetailsCollision details = aidecollision::calculerCollisionSegment((glm::dvec2)boite[i], (glm::dvec2)boite[(i + 1) % boite.size()], (glm::dvec2)positionRelative_, 7, true);
+				for (unsigned int i = 0; i < boite.size(); i++) boite[i] += noeud->obtenirPositionRelative();
+				// Considerer tous les segments boite[i] --- boite[i+1 % size] 
+				for (unsigned int i = 0; i < boite.size(); i++)
+				{
+					// On veut calculer la collision en 2D et caster les paramêtres en glm::dvec2 "oublie" leur composante en Z et choisi la bonne surcharge de calculerCollisionSegment.
+					aidecollision::DetailsCollision details = aidecollision::calculerCollisionSegment((glm::dvec2)boite[i], (glm::dvec2)boite[(i + 1) % boite.size()], (glm::dvec2)positionRelative_, 7, true);
+					if (details.type != aidecollision::COLLISION_AUCUNE)
+					{
+						enCollision = true;
+						glm::dvec3 vitesseNormaleInitiale = glm::proj(vitesse_, details.direction);
+						glm::dvec3 vitesseTangentielleInitiale = vitesse_ - vitesseNormaleInitiale;
+						glm::dvec2 vitesseNormale2D = aidecollision::calculerForceAmortissement2D(details, (glm::dvec2)vitesse_, 1.0);
+						vitesseApresCollision = vitesseTangentielleInitiale + glm::dvec3{ vitesseNormale2D.x, vitesseNormale2D.y, 0 };
+					}
+				}
+			}
+			else if (boite.size() == 1)
+			{
+				double rayon = boite[0].x;
+				aidecollision::DetailsCollision details = aidecollision::calculerCollisionCercle((glm::dvec2)noeud->obtenirPositionRelative(), rayon, (glm::dvec2)positionRelative_, 7);
 				if (details.type != aidecollision::COLLISION_AUCUNE)
 				{
 					enCollision = true;
@@ -248,6 +265,7 @@ void NoeudBille::animer(float temps) // rajouter des parametres ou une fonction 
 					glm::dvec2 vitesseNormale2D = aidecollision::calculerForceAmortissement2D(details, (glm::dvec2)vitesse_, 1.0);
 					vitesseApresCollision = vitesseTangentielleInitiale + glm::dvec3{ vitesseNormale2D.x, vitesseNormale2D.y, 0 };
 				}
+
 			}
 			// TODO: Si la boite contient un seul élément, ne pas faire le for précédent, car l'objet est un cercle. Il faut faire un traitement différent.
 		}
@@ -361,4 +379,23 @@ void NoeudBille::afficherVitesse(glm::dvec3 nouvelleVitesse)
 	std::cout << " - Vitesse : { x : "
 		<< std::fixed << std::setfill('0') << std::setw(2) << std::setprecision(2) << nouvelleVitesse.x << "   y : "
 		<< std::fixed << std::setfill('0') << std::setw(2) << std::setprecision(2) << nouvelleVitesse.y << " }" << std::endl;
+}
+
+////////////////////////////////////////////////////////////////////////
+///
+/// @fn std::vector<glm::dvec3> NoeudBille::obtenirVecteursEnglobants()
+///
+/// La boite englobante d'un butoir circulaire, c'est un rayon.
+/// Pour etre conforme avec les boites englobantes des autres noeuds, 
+/// on retourne quand meme un vector<glm::dvec3> mais avec un seul element
+/// dont le x contient le rayon.
+///
+/// @return Un vecteur<glm::dvec3> dont le seul element a le rayon de l'objet
+/// comme premiere coordonnee.
+/// 
+////////////////////////////////////////////////////////////////////////
+std::vector<glm::dvec3> NoeudBille::obtenirVecteursEnglobants()
+{
+	double rayonModele = (boite_.coinMax.x - boite_.coinMin.x) / 2.0;
+	return{ glm::dvec3{ rayonModele * scale_.x, 0, 0 } };
 }

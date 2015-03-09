@@ -46,6 +46,9 @@ public:
 
 	/// Afficher la vitesse
 	void afficherVitesse(glm::dvec3 nouvelleVitesse);
+
+	/// Redefinition de boite englobante pour objet circulaire
+	virtual std::vector<glm::dvec3> obtenirVecteursEnglobants();
 };
 
 #endif // __ARBRE_NOEUDS_NOEUDGENERATEURBILLE_H__
