@@ -227,14 +227,7 @@ void NoeudBille::animer(float temps) // rajouter des parametres ou une fonction 
 	{
 		for (NoeudAbstrait* noeud : noeudsAChecker)
 		{
-			// Obtenir la boite englobante
 			std::vector<glm::dvec3> boite = noeud->obtenirVecteursEnglobants();
-			//{ // Travail a faire par std::vector<glm::dvec3> NoeudAbstrait::obtenirBoite()
-			//	glm::dvec3 tableau[4];
-			//	noeud->obtenirVecteursBoite(tableau[0], tableau[1], tableau[2], tableau[3]);
-			//	for (unsigned int i = 0; i < 4; i++) boite.push_back(tableau[i] + noeud->obtenirPositionRelative());
-			//}
-
 			if (boite.size() > 1)
 			{
 				for (unsigned int i = 0; i < boite.size(); i++) boite[i] += noeud->obtenirPositionRelative();
@@ -267,8 +260,9 @@ void NoeudBille::animer(float temps) // rajouter des parametres ou une fonction 
 				}
 
 			}
-			// TODO: Si la boite contient un seul élément, ne pas faire le for précédent, car l'objet est un cercle. Il faut faire un traitement différent.
 		}
+
+		// Considerer les limites de la table.
 		std::vector<glm::dvec3> boite;
 		boite.push_back({ 108, -190, 0 });
 		boite.push_back({ 272, -190, 0 });
@@ -298,7 +292,7 @@ void NoeudBille::animer(float temps) // rajouter des parametres ou une fonction 
 
 
 	if(debug_ && enCollision) {
-			afficherVitesse(nouvelleVitesse);
+		afficherVitesse(vitesseApresCollision);
 	}
 
 	// Calcul de la rotation
@@ -365,8 +359,14 @@ void NoeudBille::setSpotLight(bool debug)
 	spotLight_ = debug;
 }
 
-
-
+////////////////////////////////////////////////////////////////////////
+///
+/// @fn void NoeudBille::afficherVitesse(glm::dvec3 nouvelleVitesse)
+/// Affiche la nouvelle vitesse donnee a une bille apres une collision.
+/// 
+/// @return aucun
+/// 
+////////////////////////////////////////////////////////////////////////
 void NoeudBille::afficherVitesse(glm::dvec3 nouvelleVitesse)
 {
 	SYSTEMTIME time;
