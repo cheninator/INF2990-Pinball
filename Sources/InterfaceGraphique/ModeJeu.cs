@@ -102,8 +102,13 @@ namespace InterfaceGraphique
                    FPSCounter.Text = FonctionsNatives.obtenirAffichagesParSeconde().ToString();
                    pointsPartie = FonctionsNatives.obtenirNombreDePointsDePartie();
                    pointsTotale = FonctionsNatives.obtenirNombreDePointsTotals();
+
                    if (pointsPartie > nombreDeBillesGagner * nobtenirNombreDePointsPourUneBilleSupplementaire + nobtenirNombreDePointsPourUneBilleSupplementaire)
                        nombreDeBillesGagner++;
+
+                   this.PointsTotal.Text = pointsTotale.ToString();
+                   this.PointPartie.Text = pointsPartie.ToString();
+                   this.nbBilles.Text = nombreDeBillesGagner.ToString();
 
                     if (currentZoom <= 0)
                     {
