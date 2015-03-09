@@ -287,8 +287,6 @@ namespace InterfaceGraphique
             if (order == SortOrder.Descending)
             returnVal *= -1;
             return returnVal;
-           
-           
         }
     }
 }

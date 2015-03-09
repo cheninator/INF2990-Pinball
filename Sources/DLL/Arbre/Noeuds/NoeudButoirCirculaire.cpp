@@ -112,15 +112,12 @@ void NoeudButoirCirculaire::animer(float temps)
 {
 	NoeudComposite::animer(temps);
 	if (selectionne_ || impossible_ || transparent_) {
-		if (compt_ > 0) {
-			scale_ /= 1.005;
-			compt_--;
+		if (compt_ == 0){
+			ajustable_ = true;
+			return;
 		}
-		else if (compt_ < 0) {
-			scale_ *= 1.005;
-			compt_++;
-		}
-		return;
+		else
+			ajustable_ = false;
 	}
 
 	if (compt_ >= 0) {

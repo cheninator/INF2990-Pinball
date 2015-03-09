@@ -35,6 +35,7 @@ NoeudGenerateurBille::NoeudGenerateurBille(const std::string& typeNoeud)
 {
 	direction_ = 0;
 	power_ = 0;
+	compteur_ = 201;
 }
 
 ////////////////////////////////////////////////////////////////////////
@@ -115,9 +116,8 @@ void NoeudGenerateurBille::animer(float temps)
 	
 	// Au lieu de rajouter une condition "parkinson" fais juste return;
 	// Mais la je vais juste faire du parkinson pour quelques ssecodne puis s'arrete
-	static int compteur = 200;
-	compteur--;
-	if (compteur <= 0)
+	compteur_--;
+	if (compteur_ <= 0)
 		return;
 	
 	if (direction_ == 0) {
