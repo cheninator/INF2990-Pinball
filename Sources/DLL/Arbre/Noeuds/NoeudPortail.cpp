@@ -158,7 +158,7 @@ void NoeudPortail::setDebug(bool debug)
 
 ////////////////////////////////////////////////////////////////////////
 ///
-/// @fn std::vector<glm::dvec3> NoeudButoirCirculaire::obtenirVecteursEnglobants()
+/// @fn std::vector<glm::dvec3> NoeudPortail::obtenirVecteursEnglobants()
 ///
 /// La boite englobante d'un butoir circulaire, c'est un rayon.
 /// Pour etre conforme avec les boites englobantes des autres noeuds, 

@@ -133,3 +133,21 @@ bool NoeudTrou::accepterVisiteur(VisiteurAbstrait* vis)
 	return reussi;
 }
 
+////////////////////////////////////////////////////////////////////////
+///
+/// @fn std::vector<glm::dvec3> NoeudTrou::obtenirVecteursEnglobants()
+///
+/// La boite englobante d'un butoir circulaire, c'est un rayon.
+/// Pour etre conforme avec les boites englobantes des autres noeuds, 
+/// on retourne quand meme un vector<glm::dvec3> mais avec un seul element
+/// dont le x contient le rayon.
+///
+/// @return Un vecteur<glm::dvec3> dont le seul element a le rayon de l'objet
+/// comme premiere coordonnee.
+/// 
+////////////////////////////////////////////////////////////////////////
+std::vector<glm::dvec3> NoeudTrou::obtenirVecteursEnglobants()
+{
+	double rayonModele = (boite_.coinMax.x - boite_.coinMin.x) / 2.0;
+	return{ glm::dvec3{ rayonModele * scale_.x, 0, 0 } };
+}

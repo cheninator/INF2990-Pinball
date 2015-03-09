@@ -39,6 +39,9 @@ public:
 	/// Accepte un visiteur.
 	virtual bool accepterVisiteur(VisiteurAbstrait* vis);
 
+	/// Redefinition de boite englobante pour objet circulaire
+	virtual std::vector<glm::dvec3> obtenirVecteursEnglobants();
+
 private:
 
 };
