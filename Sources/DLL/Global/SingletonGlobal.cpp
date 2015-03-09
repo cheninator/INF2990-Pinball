@@ -8,7 +8,7 @@
 
 #include "SingletonGlobal.h"
 
-
+SingletonGlobal* SingletonGlobal::singleton_{ nullptr };
 ////////////////////////////////////////////////////////////////////////
 ///
 /// @fn SingletonGlobal* SingletonGlobal::obtenirInstance()
