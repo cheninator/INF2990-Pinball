@@ -13,6 +13,7 @@
 #include "ArbreRendu.h"
 #include "FreeImage.h"
 #include "../QuadTree/QuadTree.h"
+#include "../Global/SingletonGlobal.h"
 
 #include <map>
 #include <string>

@@ -22,12 +22,34 @@ SingletonGlobal* SingletonGlobal::singleton_{ nullptr };
 ////////////////////////////////////////////////////////////////////////
 SingletonGlobal* SingletonGlobal::obtenirInstance()
 {
-	if (singleton_ == nullptr)
+	if (singleton_ == nullptr){
 		singleton_ = new SingletonGlobal();
-	
+	}
 	return singleton_;
 }
 
+////////////////////////////////////////////////////////////////////////
+///
+/// @fn void SingletonGlobal::resetConfigurationCollision()
+///
+/// Permet de mettre a jour les valeurs des points pour chaque collision
+///
+/// @return Aucun
+///
+////////////////////////////////////////////////////////////////////////
+void SingletonGlobal::resetConfigurationCollision(int collisionPointsCirculaire,
+												  int collisionPointsTriangulaire,
+												  int collisionPointsCible,
+												  int collisionPointsPartieGagner,
+												  int collisionPointsNouvelleBille)
+{
+	collisionPointsCirculaire_ = collisionPointsCirculaire;
+	collisionPointsTriangulaire_ = collisionPointsTriangulaire;
+	collisionPointsCible_ = collisionPointsCible;
+	collisionPointsPartieGagner_ = collisionPointsPartieGagner;
+	collisionPointsNouvelleBille_ = collisionPointsPartieGagner;
+	nombreDeBillesDisponibles_ = FacadeModele::obtenirInstance()->obtenirConfiguration()[5];
+}
 
 ////////////////////////////////////////////////////////////////////////
 ///

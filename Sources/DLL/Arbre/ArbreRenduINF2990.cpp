@@ -134,7 +134,7 @@ void ArbreRenduINF2990::initialiser()
 
 	// Charger la zone de jeu par defaut
 	initialiserXML("zones/default.xml");
-
+	SingletonGlobal::obtenirInstance()->resetConfigurationCollision(proprietes_[0], proprietes_[1], proprietes_[2], proprietes_[3], proprietes_[4]);
 }
 
 
