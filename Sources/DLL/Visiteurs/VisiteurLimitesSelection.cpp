@@ -109,22 +109,31 @@ bool VisiteurLimitesSelection::traiter(NoeudAbstrait* noeud)
 
 	if (noeud->estSelectionne())
 	{	
-		noeud->obtenirVecteursBoite(coinsEnglobant[0], coinsEnglobant[1], coinsEnglobant[2], coinsEnglobant[3]);
+		std::vector<glm::dvec3> boite = noeud->obtenirVecteursEnglobants();
+
+		if (boite.size() == 1)
+		{
+			double rayon = boite[0].x;
+			boite.push_back({ -rayon, 0, 0 });
+			boite.push_back({ 0, rayon, 0 });
+			boite.push_back({ 0, -rayon, 0 });
+		}
+
 		for (int i = 0; i < 4; i++)
 		{
-			coinsEnglobant[i] += noeud->obtenirPositionRelative();
+			boite[i] += position;
 
-			if (coinsEnglobant[i].x > xMax_)
-				xMax_ = coinsEnglobant[i].x;
+			if (boite[i].x > xMax_)
+				xMax_ = boite[i].x;
 
-			if (coinsEnglobant[i].x < xMin_)
-				xMin_ = coinsEnglobant[i].x;
+			if (boite[i].x < xMin_)
+				xMin_ = boite[i].x;
 
-			if (coinsEnglobant[i].y > yMax_)
-				yMax_ = coinsEnglobant[i].y;
+			if (boite[i].y > yMax_)
+				yMax_ = boite[i].y;
 
-			if (coinsEnglobant[i].y < yMin_)
-				yMin_ = coinsEnglobant[i].y;
+			if (boite[i].y < yMin_)
+				yMin_ = boite[i].y;
 		}
 	}
 
