@@ -107,10 +107,7 @@ bool VisiteurListeEnglobante::traiter(NoeudAbstrait* noeud)
 		noeud->obtenirVecteursBoite(coinsEnglobant[0], coinsEnglobant[1], coinsEnglobant[2], coinsEnglobant[3]);
 		conteneur_boite_englobante boite;
 		
-		for (int i = 0; i < 4; i++)
-		{
-			boite.first.push_back(coinsEnglobant[i]);
-		}
+		boite.first = noeud->obtenirVecteursEnglobants();
 		boite.second = noeud;
 
 		boitesEnglobantes_.push_back(boite);

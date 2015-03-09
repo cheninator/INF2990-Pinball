@@ -506,14 +506,29 @@ void FacadeModele::tournerSelectionSouris(int x1, int y1, int x2, int y2)
 	VisiteurListeEnglobante visLE;
 	arbre_->accepterVisiteur(&visLE);
 	
-	glm::dvec3 pointTransforme;
 	for (conteneur_boite_englobante boite : visLE.obtenirListeEnglobante())
 	{
-		for (glm::dvec3 vecteur : boite.first)
+		std::vector<glm::dvec3> pointsTransformes;
+		glm::dvec3 nouvellePosition = centreRotation + transform * (boite.second->obtenirPositionRelative() - centreRotation);
+		if (boite.first.size() == 1)
 		{
-			glm::dvec3 point = boite.second->obtenirPositionRelative() + vecteur ;
-			pointTransforme = centreRotation + transform *(point - centreRotation);
-			if (!estDansTable(pointTransforme))
+			double rayon = boite.first[0].x;
+			
+			pointsTransformes.push_back(nouvellePosition + glm::dvec3{ rayon, 0, 0 });
+			pointsTransformes.push_back(nouvellePosition + glm::dvec3{ -rayon, 0, 0 });
+			pointsTransformes.push_back(nouvellePosition + glm::dvec3{ 0, rayon, 0 });
+			pointsTransformes.push_back(nouvellePosition + glm::dvec3{ 0, -rayon, 0 });
+		}
+		else
+		{
+			for (glm::dvec3 vecteur : boite.first)
+			{
+				pointsTransformes.push_back(nouvellePosition + transform * vecteur);
+			}
+		}
+		for (glm::dvec3 point : pointsTransformes)
+		{
+			if (!estDansTable(point))
 				return;
 		}
 	}
