@@ -594,6 +594,23 @@ void NoeudAbstrait::obtenirBoiteModele(glm::dvec3 &v1, glm::dvec3 &v2, glm::dvec
 	v4.y = boite_.coinMin.y;
 }
 
+////////////////////////////////////////////////////////////////////////
+///
+/// @fn std::vector<glm::dvec3> NoeudAbstrait::obtenirVecteursEnglobants()
+/// 
+/// Implementation par defaut de la boite englobante.
+///
+/// @return Un vector<glm::dvec3> contenant 4 vecteurs allant de la position
+/// du noeud aux coins de sa boite englobante
+/// 
+////////////////////////////////////////////////////////////////////////
+std::vector<glm::dvec3> NoeudAbstrait::obtenirVecteursEnglobants()
+{
+	glm::dvec3 tableauVect[4];
+	obtenirVecteursBoite(tableauVect[0], tableauVect[1], tableauVect[2], tableauVect[3]);
+	return{ tableauVect[0], tableauVect[1], tableauVect[2], tableauVect[3] };
+}
+
 
 ////////////////////////////////////////////////////////////////////////
 ///
