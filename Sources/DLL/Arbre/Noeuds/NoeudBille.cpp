@@ -239,6 +239,7 @@ void NoeudBille::animer(float temps) // rajouter des parametres ou une fonction 
 					if (details.type != aidecollision::COLLISION_AUCUNE)
 					{
 						enCollision = true;
+						mettreAJourCollision(noeud);
 						glm::dvec3 vitesseNormaleInitiale = glm::proj(vitesse_, details.direction);
 						glm::dvec3 vitesseTangentielleInitiale = vitesse_ - vitesseNormaleInitiale;
 						glm::dvec2 vitesseNormale2D = aidecollision::calculerForceAmortissement2D(details, (glm::dvec2)vitesse_, 1.0);
@@ -253,6 +254,7 @@ void NoeudBille::animer(float temps) // rajouter des parametres ou une fonction 
 				if (details.type != aidecollision::COLLISION_AUCUNE)
 				{
 					enCollision = true;
+					mettreAJourCollision(noeud);
 					glm::dvec3 vitesseNormaleInitiale = glm::proj(vitesse_, details.direction);
 					glm::dvec3 vitesseTangentielleInitiale = vitesse_ - vitesseNormaleInitiale;
 					glm::dvec2 vitesseNormale2D = aidecollision::calculerForceAmortissement2D(details, (glm::dvec2)vitesse_, 1.0);
@@ -276,6 +278,7 @@ void NoeudBille::animer(float temps) // rajouter des parametres ou une fonction 
 			if (details.type != aidecollision::COLLISION_AUCUNE)
 			{
 				enCollision = true;
+
 				glm::dvec3 vitesseNormaleInitiale = glm::proj(vitesse_, details.direction);
 				glm::dvec3 vitesseTangentielleInitiale = vitesse_ - vitesseNormaleInitiale;
 				glm::dvec2 vitesseNormale2D = aidecollision::calculerForceAmortissement2D(details, (glm::dvec2)vitesse_, 1.0);
@@ -317,6 +320,8 @@ void NoeudBille::animer(float temps) // rajouter des parametres ou une fonction 
 ///
 /// Cette fonction appelle la methode traiter du visiteur.
 ///
+/// @param[in] vis : Le visiteur a traiter
+///
 /// @return reussi (TRUE)
 ///
 ////////////////////////////////////////////////////////////////////////
@@ -336,6 +341,8 @@ bool NoeudBille::accepterVisiteur(VisiteurAbstrait* vis)
 ///
 /// Cette fonction change al valeur du mode debug
 ///
+/// @param[in] debug : La valeur du mode debug a assigner
+///
 /// @return Aucun.
 ///
 ////////////////////////////////////////////////////////////////////////
@@ -351,6 +358,8 @@ void NoeudBille::setDebug(bool debug)
 ///
 /// Cette fonction change la valeur du mode spotLight
 ///
+/// @param[in] debug : La valeur du mode debug a assigner pour le spotLight
+///
 /// @return Aucun.
 ///
 ////////////////////////////////////////////////////////////////////////
@@ -363,7 +372,9 @@ void NoeudBille::setSpotLight(bool debug)
 ///
 /// @fn void NoeudBille::afficherVitesse(glm::dvec3 nouvelleVitesse)
 /// Affiche la nouvelle vitesse donnee a une bille apres une collision.
-/// 
+///
+/// @param[in] nouvelleVitesse : La valeur de la vitesse a imprimer
+///
 /// @return aucun
 /// 
 ////////////////////////////////////////////////////////////////////////
@@ -379,6 +390,30 @@ void NoeudBille::afficherVitesse(glm::dvec3 nouvelleVitesse)
 	std::cout << " - Vitesse : { x : "
 		<< std::fixed << std::setfill('0') << std::setw(2) << std::setprecision(2) << nouvelleVitesse.x << "   y : "
 		<< std::fixed << std::setfill('0') << std::setw(2) << std::setprecision(2) << nouvelleVitesse.y << " }" << std::endl;
+}
+
+////////////////////////////////////////////////////////////////////////
+///
+/// @fn void NoeudBille::mettreAJourCollision(NoeudAbstrait* noeud)
+///
+/// Cette fonction met a jour le pointage
+///
+/// @param[in] noeud : Le noeud a analyser
+///
+/// @return Aucun.
+///
+////////////////////////////////////////////////////////////////////////
+void NoeudBille::mettreAJourCollision(NoeudAbstrait* noeud)
+{
+	std::string nomCollison = noeud->obtenirType();
+	if (nomCollison == "butoird" || nomCollison == "butoirg")
+		SingletonGlobal::obtenirInstance()->collisionButoirTriangulaire();
+	else if (nomCollison == "butoirecirculaire" )
+		SingletonGlobal::obtenirInstance()->collisionButoirCirculaire();
+	else if (nomCollison == "cible")
+		SingletonGlobal::obtenirInstance()->collisionButoirCible();
+	else
+		return;
 }
 
 ////////////////////////////////////////////////////////////////////////

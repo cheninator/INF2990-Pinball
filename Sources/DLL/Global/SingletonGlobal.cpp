@@ -48,7 +48,13 @@ void SingletonGlobal::resetConfigurationCollision(int collisionPointsCirculaire,
 	collisionPointsCible_ = collisionPointsCible;
 	collisionPointsPartieGagner_ = collisionPointsPartieGagner;
 	collisionPointsNouvelleBille_ = collisionPointsPartieGagner;
-	nombreDeBillesDisponibles_ = FacadeModele::obtenirInstance()->obtenirConfiguration()[5];
+	//nombreDeBillesDisponibles_ = FacadeModele::obtenirInstance()->obtenirConfiguration()[5];
+	//nombreDeBillesGagner_ = 0;
+
+	pointsTotales_ += pointsPartie_;
+
+	pointsPartie_ = 0;
+
 }
 
 ////////////////////////////////////////////////////////////////////////
@@ -66,3 +72,20 @@ void SingletonGlobal::libererInstance()
 	delete singleton_;
 	singleton_ = 0;
 }
+
+/*
+////////////////////////////////////////////////////////////////////////
+///
+/// @fn void SingletonGlobal::checkBille()
+///
+/// Fait toute les verifivatiosn de partie
+///
+/// @return Aucune.
+///
+////////////////////////////////////////////////////////////////////////
+void SingletonGlobal::checkBille()
+{
+	if (pointsPartie_ > nombreDeBillesGagner_ * collisionPointsNouvelleBille_ + collisionPointsNouvelleBille_)
+		nombreDeBillesGagner_++;
+}
+*/

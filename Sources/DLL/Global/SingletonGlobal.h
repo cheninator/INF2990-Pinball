@@ -30,8 +30,7 @@ public:
 	static void libererInstance();
 
 	/// AJOUTER VOS GET/SET sur les variables ici
-	int getNombreDeBilles() { return nombreDeBilles_; };
-	void setNombreDeBilles(int nombreDeBilles) { nombreDeBilles_ = nombreDeBilles; };
+	//int getNombreDeBillesDisponibles() { return nombreDeBillesDisponibles_; };
 
 	int getPointsTotales() { return pointsTotales_; };
 	void setPointsTotales(int pointsTotales) { pointsTotales_ = pointsTotales; };
@@ -39,11 +38,11 @@ public:
 	int getPointsPartie() { return pointsPartie_; };
 	void setPointsPartie(int pointsPartie) { pointsPartie_ = pointsPartie; };
 
-	void checkBille() {};
+	//void checkBille() {};
 
-	void collisionButoirCirculaire() { pointsPartie_ += collisionPointsCirculaire_; checkBille(); };
-	void collisionButoirTriangulaire() { pointsPartie_ += collisionPointsTriangulaire_; checkBille(); };
-	void collisionButoirCible() { pointsPartie_ += collisionPointsCible_; checkBille(); };
+	void collisionButoirCirculaire() { pointsPartie_ += collisionPointsCirculaire_; /*checkBille();*/ };
+	void collisionButoirTriangulaire() { pointsPartie_ += collisionPointsTriangulaire_; /*checkBille();*/ };
+	void collisionButoirCible() { pointsPartie_ += collisionPointsCible_; /*checkBille();*/ };
 
 	void resetConfigurationCollision(int collisionPointsCirculaire,
 											int collisionPointsTriangulaire,
@@ -70,8 +69,8 @@ private:
 
 	/// AJOUTER VOS VARIABLES GLOBAL ICI
 	
-	int nombreDeBilles_{ 0 };
-	int nombreDeBillesDisponibles_{ 0 };
+	//int nombreDeBillesGagner_{ 0 };
+	//int nombreDeBillesDisponibles_{ 0 };
 
 	int pointsTotales_{ 0 };
 	int pointsPartie_{ 0 };

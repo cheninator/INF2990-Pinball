@@ -21,6 +21,18 @@ namespace InterfaceGraphique
         private bool activateDirectLight = false; ///< Etat de la lumiere directe
         private bool activateSpotLight = false; ///< Etat de la lumiere spot
         private EtatJeuAbstrait etat; ///< Machine à états
+        public int pointsPartie = FonctionsNatives.obtenirNombreDePointsDePartie();
+        public int pointsTotale = FonctionsNatives.obtenirNombreDePointsTotals();
+        public int billeDisponible;
+        private int nombreDeBillesGagner;
+        private int nobtenirNombreDePointsPourUneBilleSupplementaire;
+        
+        private void resetConfig() 
+        {
+            billeDisponible = 0;
+            nombreDeBillesGagner = 0;
+            nobtenirNombreDePointsPourUneBilleSupplementaire = FonctionsNatives.obtenirNombreDePointsPourUneBilleSupplementaire();
+        }
 
         public ModeJeu(List<string> maps, int playerType)
         {
@@ -31,7 +43,7 @@ namespace InterfaceGraphique
                 this.FormBorderStyle = FormBorderStyle.None;
                 this.WindowState = FormWindowState.Maximized;
             }
-         */
+             */
             EtablirTouches(playerType);
             this.KeyDown += new KeyEventHandler(PartieRapide_KeyDown);
             this.KeyUp += new KeyEventHandler(PartieRapide_KeyUp);
@@ -50,11 +62,13 @@ namespace InterfaceGraphique
             map = new StringBuilder(myMaps[0]);
             Console.WriteLine(nbZones);
             FonctionsNatives.ouvrirXML(map, map.Capacity);
+            resetConfig();
             FonctionsNatives.construireListesPalettes();
             currentZone++;
             Program.tempBool = true;
             panel_GL.Focus();
-
+            StringBuilder bille = new StringBuilder("bille");
+            FonctionsNatives.creerObjet(bille, bille.Capacity);
         }
         ////////////////////////////////////////////////////////////////////////
         ///
@@ -86,6 +100,10 @@ namespace InterfaceGraphique
                     }
                    FonctionsNatives.dessinerOpenGL();
                    FPSCounter.Text = FonctionsNatives.obtenirAffichagesParSeconde().ToString();
+                   pointsPartie = FonctionsNatives.obtenirNombreDePointsDePartie();
+                   pointsTotale = FonctionsNatives.obtenirNombreDePointsTotals();
+                   if (pointsPartie > nombreDeBillesGagner * nobtenirNombreDePointsPourUneBilleSupplementaire + nobtenirNombreDePointsPourUneBilleSupplementaire)
+                       nombreDeBillesGagner++;
 
                     if (currentZoom <= 0)
                     {
@@ -291,6 +309,7 @@ namespace InterfaceGraphique
                         //this.Show();
                     
                         FonctionsNatives.ouvrirXML(map, map.Capacity);
+                        resetConfig();
                         FonctionsNatives.construireListesPalettes();
                         currentZone++;
                     }
@@ -300,6 +319,7 @@ namespace InterfaceGraphique
                 {
                     // RELOAD DE LA MAP
                     FonctionsNatives.ouvrirXML(map, map.Capacity);
+                    resetConfig();
                 }
 
         }
@@ -332,6 +352,7 @@ namespace InterfaceGraphique
             zInfo = new ZoneInfo(Path.GetFileName(nextMap.ToString()), FonctionsNatives.obtenirDifficulte(map, map.Capacity).ToString());
             zInfo.ShowDialog();
             FonctionsNatives.ouvrirXML(map, map.Capacity);
+            resetConfig();
             FonctionsNatives.construireListesPalettes();
         }
 

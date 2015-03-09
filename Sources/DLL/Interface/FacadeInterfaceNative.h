@@ -14,6 +14,7 @@
 #define __FACADE_INTERFACE_NATIVE_H__
 
 #include "NoeudAbstrait.h"
+#include "../Global/SingletonGlobal.h"
 
 extern "C" {
 
@@ -81,6 +82,11 @@ extern "C" {
 	__declspec(dllexport) void creerFichierCampagne(char* nomFichier, int length);
 	__declspec(dllexport) void supprimerBille();
 	__declspec(dllexport) bool spotLight(int lum, bool state);
+	__declspec(dllexport) void initialiserSingleton();
+	__declspec(dllexport) void detruireSingleton();
+	__declspec(dllexport) int obtenirNombreDePointsPourUneBilleSupplementaire();
+	__declspec(dllexport) int obtenirNombreDePointsDePartie();
+	__declspec(dllexport) int obtenirNombreDePointsTotals();
 }
 
 #endif // __FACADE_INTERFACE_NATIVE_H__

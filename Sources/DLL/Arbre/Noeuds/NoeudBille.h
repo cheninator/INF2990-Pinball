@@ -11,6 +11,7 @@
 #define __ARBRES_NOEUDS_NOEUDBILLE_H__
 
 #include "NoeudComposite.h"
+#include "../../Global/SingletonGlobal.h"
 #include "Gl/gl.h"
 
 ///////////////////////////////////////////////////////////////////////////
@@ -49,6 +50,9 @@ public:
 
 	/// Redefinition de boite englobante pour objet circulaire
 	virtual std::vector<glm::dvec3> obtenirVecteursEnglobants();
+
+	/// Met a jout le pointage des collisions
+	void NoeudBille::mettreAJourCollision(NoeudAbstrait* noeud);
 };
 
 #endif // __ARBRE_NOEUDS_NOEUDGENERATEURBILLE_H__

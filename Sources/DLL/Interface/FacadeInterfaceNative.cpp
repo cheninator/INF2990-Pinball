@@ -1495,8 +1495,30 @@ extern "C"
 		return true;
 	}
 
+	__declspec(dllexport) void __cdecl initialiserSingleton()
+	{
+		SingletonGlobal::obtenirInstance();
+	}
 
+	__declspec(dllexport) void __cdecl detruireSingleton()
+	{
+		SingletonGlobal::libererInstance();
+	}
 
+	__declspec(dllexport) int __cdecl obtenirNombreDePointsPourUneBilleSupplementaire()
+	{
+		return FacadeModele::obtenirInstance()->obtenirArbreRenduINF2990()->obtenirProprietes()[5];
+	}
+
+	__declspec(dllexport) int __cdecl obtenirNombreDePointsDePartie()
+	{
+		return SingletonGlobal::obtenirInstance()->getPointsPartie();
+	}
+
+	__declspec(dllexport) int __cdecl obtenirNombreDePointsTotals()
+	{
+		return SingletonGlobal::obtenirInstance()->getPointsTotales();
+	}
 	/*
 	#include <FTGL/ftgl.h>
 
