@@ -42,6 +42,9 @@ public:
 	/// Activer ou desactiver le mode debug.
 	virtual void setDebug(bool debug);
 
+	/// Redefinition de boite englobante pour objet circulaire
+	virtual std::vector<glm::dvec3> obtenirVecteursEnglobants();
+
 private:
 	
 	/// Angle selon l'axe des X.
