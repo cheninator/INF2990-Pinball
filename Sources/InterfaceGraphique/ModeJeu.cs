@@ -9,12 +9,10 @@ namespace InterfaceGraphique
     public partial class ModeJeu : Form
     {
         private double currentZoom = -1; ///< Zoom courant
-        private Touches touches;
+        private Touches touches; /// les Touches pour le jeux
         private ZoneInfo zInfo;
         private int currentZone = 0;
         private int nbZones;
-        //private int typeJoueur;
-        //private bool fullScreen = false;
         List<string> myMaps;
         StringBuilder map;
         StringBuilder nextMap;
@@ -272,8 +270,15 @@ namespace InterfaceGraphique
                 {
                     Console.WriteLine(currentZone);
                     if (currentZone >= nbZones)
-                        MessageBox.Show("VICTOIRE!!!!", "FIN DE LA CAMPAGNE",
-                   MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                        if(MessageBox.Show("VICTOIRE!!!!VOULEZ VOUR RECOMMENCER?", "FIN DE LA CAMPAGNE",
+                   MessageBoxButtons.YesNo, MessageBoxIcon.Exclamation) == DialogResult.Yes)
+                        {
+                            RecommencerTout();
+                        }
+                        else
+                        {
+                            Quitter();
+                        }
                     else
                     {
                         map = new StringBuilder(myMaps[currentZone]);
@@ -308,6 +313,41 @@ namespace InterfaceGraphique
             currentZoom = FonctionsNatives.obtenirZoomCourant();
         }
 
+
+        ////////////////////////////////////////////////////////////////////////
+        ///
+        /// @fn private void RecommencerTout()
+        /// @brief Reinitialise la campagne ou la partie rapide lorsqu'on termine
+        /// 
+        /// @return Aucune.
+        ///
+        ////////////////////////////////////////////////////////////////////////
+        public void RecommencerTout()
+        {
+            currentZone = 0;
+            map = new StringBuilder(myMaps[currentZone]);
+            nextMap = new StringBuilder(map.ToString());
+            nextMap.Remove(nextMap.Length - 4, 4);
+            Console.WriteLine(Path.GetFileName(nextMap.ToString()));
+            zInfo = new ZoneInfo(Path.GetFileName(nextMap.ToString()), FonctionsNatives.obtenirDifficulte(map, map.Capacity).ToString());
+            zInfo.ShowDialog();
+            FonctionsNatives.ouvrirXML(map, map.Capacity);
+            FonctionsNatives.construireListesPalettes();
+        }
+
+        ////////////////////////////////////////////////////////////////////////
+        ///
+        /// @fn private void Quitter()
+        /// @brief Quitte le mode Jeu
+        /// 
+        /// @return Aucune.
+        ///
+        ////////////////////////////////////////////////////////////////////////
+        public void Quitter()
+        {
+            this.Close();
+        }
+        
         private void mPrincipal_menu_Click(object sender, EventArgs e)
         {
             this.Close();
