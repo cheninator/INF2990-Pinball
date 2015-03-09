@@ -575,14 +575,29 @@ void FacadeModele::agrandirSelection(int x1, int y1, int x2, int y2)
 	VisiteurListeEnglobante visLE;
 	arbre_->accepterVisiteur(&visLE);
 
-	glm::dvec3 pointTransforme;
 	for (conteneur_boite_englobante boite : visLE.obtenirListeEnglobante())
 	{
-		for (glm::dvec3 vecteur : boite.first)
+		std::vector<glm::dvec3> pointsTransformes;
+		glm::dvec3 position = boite.second->obtenirPositionRelative();
+		if (boite.first.size() == 1)
 		{
-			glm::dvec3 point = boite.second->obtenirPositionRelative();
-			pointTransforme = point + scale*vecteur;
-			if (!estDansTable(pointTransforme))
+			double rayon = boite.first[0].x;
+
+			pointsTransformes.push_back(position + scale *glm::dvec3{ rayon, 0, 0 });
+			pointsTransformes.push_back(position + scale *glm::dvec3{ -rayon, 0, 0 });
+			pointsTransformes.push_back(position + scale *glm::dvec3{ 0, rayon, 0 });
+			pointsTransformes.push_back(position + scale *glm::dvec3{ 0, -rayon, 0 });
+		}
+		else
+		{
+			for (glm::dvec3 vecteur : boite.first)
+			{
+				pointsTransformes.push_back(position + scale * vecteur);
+			}
+		}
+		for (glm::dvec3 point : pointsTransformes)
+		{
+			if (!estDansTable(point))
 				return;
 		}
 	}
