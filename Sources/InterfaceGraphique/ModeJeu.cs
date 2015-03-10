@@ -11,7 +11,7 @@ namespace InterfaceGraphique
         public PartieTerminee gameOver;
         private Timer timer;
         private double currentZoom = -1; ///< Zoom courant
-        private Touches touches; /// les Touches pour le jeux
+        private Touches touches; ///< Les touches pour le jeu
         private ZoneInfo zInfo;
         private int currentZone = 0;
         private int nbZones;
