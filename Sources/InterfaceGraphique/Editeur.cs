@@ -390,6 +390,12 @@ namespace InterfaceGraphique
                     testRetourModeEdition.PerformClick();
                     OnSizeChanged(e);
                 }
+
+                else if (e.KeyChar == 'n')
+                {
+                    StringBuilder bille = new StringBuilder("bille");
+                    FonctionsNatives.creerObjet(bille, bille.Capacity);
+                }
                 else if (e.KeyChar == 'j')
                 {
                     //Console.WriteLine("LUMIERE AMBIANTE");

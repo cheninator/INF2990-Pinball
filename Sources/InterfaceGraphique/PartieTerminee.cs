@@ -53,6 +53,8 @@ namespace InterfaceGraphique
 
         private void PartieTerminee_FormClosing(object sender, FormClosingEventArgs e)
         {
+            this.Close();
+            ((ModeJeu)this.Owner).Close();
             player.Stop();
         }
     }

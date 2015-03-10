@@ -1511,12 +1511,12 @@ extern "C"
 
 	__declspec(dllexport) int __cdecl obtenirPointsGagnerBille()
 	{
-		return FacadeModele::obtenirInstance()->obtenirArbreRenduINF2990()->obtenirProprietes()[5];
+		return FacadeModele::obtenirInstance()->obtenirArbreRenduINF2990()->obtenirProprietes()[4];
 	}
 
 	__declspec(dllexport) int __cdecl obtenirPointsGagnerPartie()
 	{
-		return FacadeModele::obtenirInstance()->obtenirArbreRenduINF2990()->obtenirProprietes()[4];
+		return FacadeModele::obtenirInstance()->obtenirArbreRenduINF2990()->obtenirProprietes()[3];
 	}
 
 	__declspec(dllexport) int __cdecl obtenirNombreDePointsDePartie()
@@ -1524,6 +1524,10 @@ extern "C"
 		return SingletonGlobal::obtenirInstance()->getPointsPartie();
 	}
 
+	__declspec(dllexport) void __cdecl resetNombreDePointsDePartie()
+	{
+		SingletonGlobal::obtenirInstance()->setPointsPartie(0);
+	}
 	//__declspec(dllexport) int __cdecl obtenirNombreDePointsTotals()
 	//{
 	//	return SingletonGlobal::obtenirInstance()->getPointsTotales();

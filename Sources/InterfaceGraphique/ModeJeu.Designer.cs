@@ -29,16 +29,14 @@
         private void InitializeComponent()
         {
             this.panel_GL = new System.Windows.Forms.Panel();
-            this.nbBilles = new System.Windows.Forms.Label();
             this.PointPartie = new System.Windows.Forms.Label();
-            this.PointsTotal = new System.Windows.Forms.Label();
-            this.FPSCounter = new System.Windows.Forms.Label();
             this.menuStrip = new System.Windows.Forms.MenuStrip();
             this.fichier_MenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.mPrincipal_menu = new System.Windows.Forms.ToolStripMenuItem();
             this.Camera_MenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.Ortho_MenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.Orbitale_MenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.nbBilles = new System.Windows.Forms.Label();
             this.panel_GL.SuspendLayout();
             this.menuStrip.SuspendLayout();
             this.SuspendLayout();
@@ -49,8 +47,6 @@
             this.panel_GL.BackColor = System.Drawing.Color.Transparent;
             this.panel_GL.Controls.Add(this.nbBilles);
             this.panel_GL.Controls.Add(this.PointPartie);
-            this.panel_GL.Controls.Add(this.PointsTotal);
-            this.panel_GL.Controls.Add(this.FPSCounter);
             this.panel_GL.Controls.Add(this.menuStrip);
             this.panel_GL.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel_GL.Location = new System.Drawing.Point(0, 0);
@@ -59,41 +55,16 @@
             this.panel_GL.TabIndex = 4;
             this.panel_GL.MouseClick += new System.Windows.Forms.MouseEventHandler(this.panel_GL_MouseClick);
             // 
-            // nbBilles
-            // 
-            this.nbBilles.AutoSize = true;
-            this.nbBilles.Location = new System.Drawing.Point(13, 239);
-            this.nbBilles.Name = "nbBilles";
-            this.nbBilles.Size = new System.Drawing.Size(43, 13);
-            this.nbBilles.TabIndex = 4;
-            this.nbBilles.Text = "nbBilles";
-            // 
             // PointPartie
             // 
+            this.PointPartie.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.PointPartie.AutoSize = true;
-            this.PointPartie.Location = new System.Drawing.Point(12, 226);
+            this.PointPartie.Location = new System.Drawing.Point(13, 226);
             this.PointPartie.Name = "PointPartie";
             this.PointPartie.Size = new System.Drawing.Size(63, 13);
             this.PointPartie.TabIndex = 3;
             this.PointPartie.Text = "PointsPartie";
             this.PointPartie.UseMnemonic = false;
-            // 
-            // PointsTotal
-            // 
-            this.PointsTotal.AutoSize = true;
-            this.PointsTotal.Location = new System.Drawing.Point(12, 213);
-            this.PointsTotal.Name = "PointsTotal";
-            this.PointsTotal.Size = new System.Drawing.Size(61, 13);
-            this.PointsTotal.TabIndex = 2;
-            this.PointsTotal.Text = "PointTotale";
-            // 
-            // FPSCounter
-            // 
-            this.FPSCounter.AutoSize = true;
-            this.FPSCounter.Location = new System.Drawing.Point(13, 13);
-            this.FPSCounter.Name = "FPSCounter";
-            this.FPSCounter.Size = new System.Drawing.Size(0, 13);
-            this.FPSCounter.TabIndex = 1;
             // 
             // menuStrip
             // 
@@ -144,6 +115,16 @@
             this.Orbitale_MenuItem.Size = new System.Drawing.Size(182, 22);
             this.Orbitale_MenuItem.Text = "Vue Orbitale";
             // 
+            // nbBilles
+            // 
+            this.nbBilles.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.nbBilles.AutoSize = true;
+            this.nbBilles.Location = new System.Drawing.Point(13, 239);
+            this.nbBilles.Name = "nbBilles";
+            this.nbBilles.Size = new System.Drawing.Size(43, 13);
+            this.nbBilles.TabIndex = 4;
+            this.nbBilles.Text = "nbBilles";
+            // 
             // ModeJeu
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -178,9 +159,7 @@
         private System.Windows.Forms.ToolStripMenuItem Ortho_MenuItem;
         private System.Windows.Forms.ToolStripMenuItem Orbitale_MenuItem;
         private System.Windows.Forms.ToolStripMenuItem mPrincipal_menu;
-        private System.Windows.Forms.Label FPSCounter;
-        private System.Windows.Forms.Label PointsTotal;
-        private System.Windows.Forms.Label nbBilles;
         private System.Windows.Forms.Label PointPartie;
+        private System.Windows.Forms.Label nbBilles;
     }
 }
