@@ -1,0 +1,36 @@
+<Proprietes>
+    <PointsButoir Nombre="20"/>
+    <PointsTriangulaire Nombre="40"/>
+    <PointsCible Nombre="10"/>
+    <PointsVictoire Nombre="1000"/>
+    <PointsBilleGratuite Nombre="999"/>
+    <Difficulte Nombre="10"/>
+</Proprietes>
+
+<arbreRenduINF2990>
+    <table nbEnfants="22">
+        <trou posX="189.57043839932354" posY="-175.90972428321135" posZ="1.4563553631767978" scaleX="0.92230552116802156" scaleY="0.92230552116802156" scaleZ="0.92230552116802156" angleX="0" angleY="0" angleZ="90176.000000000015"/>
+        <paletteg posX="129.35223542804158" posY="-124.88542187288748" posZ="0.6311066799600904" scaleX="1" scaleY="1" scaleZ="1" angleX="0" angleY="0" angleZ="139.33333333333258" color="0"/>
+        <paletted posX="250.6572931420535" posY="-124.88542187288749" posZ="0.6311066799600904" scaleX="1" scaleY="1" scaleZ="1" angleX="0" angleY="0" angleZ="220.66666666666782" color="0"/>
+        <butoirg posX="128.40959093899789" posY="-93.591524158897002" posZ="0.61610667996009094" scaleX="0.53952030956061015" scaleY="0.53952030956061015" scaleZ="0.53952030956061015" angleX="0" angleY="0" angleZ="0"/>
+        <butoird posX="251.78619025265215" posY="-92.234102473782841" posZ="0.61610667996009094" scaleX="0.53952030956061015" scaleY="0.53952030956061015" scaleZ="0.53952030956061015" angleX="0" angleY="0" angleZ="0"/>
+        <generateurbille posX="134.18621879817852" posY="64.992346592237993" posZ="12.010836256783717" scaleX="0.64189192601063949" scaleY="0.64189192601063949" scaleZ="0.64189192601063949" angleX="0" angleY="0" angleZ="0"/>
+        <ressort posX="129.44387167428658" posY="19.028060364261357" posZ="-0.12709963883781028" scaleX="1" scaleY="1" scaleZ="1" angleX="0" angleY="0" angleZ="0"/>
+        <portail posX="170.3010161262786" posY="16.474488907151461" posZ="0.27414589506871123" scaleX="0.75912651720616042" scaleY="0.75912651720616042" scaleZ="1" angleX="0" angleY="0" angleZ="0"/>
+        <portail posX="217.35969143259103" posY="-36.785715769710279" posZ="0.75018914029385786" scaleX="0.47007253664018905" scaleY="0.47007253664018905" scaleZ="1" angleX="0" angleY="0" angleZ="0"/>
+        <butoircirculaire posX="255.66326435633363" posY="41.645407555805399" posZ="3.9977335766524793" scaleX="0.83608460433788312" scaleY="0.83608460433788312" scaleZ="0.83608460433788312" angleX="0" angleY="0" angleZ="0"/>
+        <butoircirculaire posX="169.57142426106455" posY="79.584183490008328" posZ="0" scaleX="0.66782213608922947" scaleY="0.66782213608922947" scaleZ="0.66782213608922947" angleX="0" angleY="0" angleZ="0"/>
+        <cible posX="129.80866760689366" posY="-35.691328002377531" posZ="3.5809609889984131" scaleX="0.57973589399793157" scaleY="0.57973589399793157" scaleZ="0.57973589399793157" angleX="17872" angleY="0" angleZ="31.333333333333325"/>
+        <mur posX="189.99999648706063" posY="-9.7908175088351541" posZ="-0.057071838484544335" scaleX="1" scaleY="9.8470897264608741" scaleZ="1" angleX="0" angleY="0" angleZ="-90"/>
+        <mur posX="230.8571409390527" posY="46.752550470025021" posZ="0" scaleX="1" scaleY="6.7229486729699399" scaleZ="1" angleX="0" angleY="0" angleZ="-38.11357344371914"/>
+        <portail posX="243.6249985803002" posY="13.920917450041753" posZ="0.55721520828174864" scaleX="0.57111757535267293" scaleY="0.57111757535267293" scaleZ="1" angleX="0" angleY="0" angleZ="4.3333333333333401"/>
+        <portail posX="149.87244390028263" posY="-47.364797520593825" posZ="1.268533282106616" scaleX="0.27829256283143439" scaleY="0.27829256283143439" scaleZ="1" angleX="0" angleY="0" angleZ="0"/>
+        <butoircirculaire posX="219.54846702823346" posY="6.6249990011565245" posZ="1.6498318625505417" scaleX="0.49005897179865876" scaleY="0.49005897179865876" scaleZ="0.49005897179865876" angleX="0" angleY="0" angleZ="0"/>
+        <butoircirculaire posX="263.32397894108215" posY="6.2602030787122516" posZ="0" scaleX="0.45247163237733279" scaleY="0.45247163237733279" scaleZ="0.45247163237733279" angleX="0" angleY="0" angleZ="0"/>
+        <butoircirculaire posX="191.82397615009597" posY="79.584183490008328" posZ="0" scaleX="0.63850786998933762" scaleY="0.63850786998933762" scaleZ="0.63850786998933762" angleX="0" angleY="0" angleZ="0"/>
+        <butoircirculaire posX="215.17091583694858" posY="79.584183490008328" posZ="0" scaleX="0.65463099383873791" scaleY="0.65463099383873791" scaleZ="0.65463099383873791" angleX="0" angleY="0" angleZ="0"/>
+        <cible posX="192.91836394791719" posY="-84.938777532352532" posZ="3.5809609889984131" scaleX="0.59202046735278524" scaleY="0.59202046735278524" scaleZ="0.59202046735278524" angleX="2637" angleY="0" angleZ="0"/>
+        <cible posX="193.64795581313132" posY="-97.706634817901573" posZ="3.5809609889984131" scaleX="0.59202046735278524" scaleY="0.59202046735278524" scaleZ="0.59202046735278524" angleX="2637" angleY="0" angleZ="0"/>
+    </table>
+    <couvercle/>
+</arbreRenduINF2990>
