@@ -184,7 +184,7 @@ public:
    // Traiter l'ensemble des collisions
    void traiterCollisions();
    
-   void mettreAJourListeBilles();
+   void mettreAJourListeBillesEtNoeuds();
 
 private:
 

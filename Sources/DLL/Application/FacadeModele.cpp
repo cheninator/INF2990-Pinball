@@ -331,6 +331,9 @@ void FacadeModele::reinitialiser()
 ////////////////////////////////////////////////////////////////////////
 void FacadeModele::animer(float temps)
 {
+	// Changer la vitesse des billes en fonction des collisions:
+	traiterCollisions();
+
 	// Mise a jour des objets.
 	arbre_->animer(temps);
 
@@ -1254,11 +1257,7 @@ void FacadeModele::traiterCollisions()
 {
 	for (NoeudAbstrait* bille : listeBilles_)
 	{
-		/// A REMPLACER PAR LE QUADTREE DANS LE FUTUR
-		std::vector<NoeudAbstrait*> listeAVerifier;
-		listeAVerifier = arbre_->obtenirElementsTable();
-
-		for (NoeudAbstrait* noeudAVerifier : listeAVerifier)
+		for (NoeudAbstrait* noeudAVerifier : listeNoeuds_)
 		{
 			aidecollision::DetailsCollision detail = noeudAVerifier->detecterCollisions(bille);
 
@@ -1276,12 +1275,18 @@ void FacadeModele::traiterCollisions()
 /// 
 /// 
 ///////////////////////////////////////////////////////////////////////////////
-void FacadeModele::mettreAJourListeBilles()
+void FacadeModele::mettreAJourListeBillesEtNoeuds()
 {
 	listeBilles_.clear();
+	listeNoeuds_.clear();
 	for (unsigned int i = 0; i < arbre_->getEnfant(0)->obtenirNombreEnfants(); i++)
 	{
-		if (arbre_->getEnfant(0)->getEnfant(i)->getType() == "bille")
-			listeBilles_.push_back(arbre_->getEnfant(0)->getEnfant(i));
+		NoeudAbstrait* noeud = arbre_->getEnfant(0)->getEnfant(i);
+		if (noeud->getType() != "generateurbille")
+			listeNoeuds_.push_back(noeud);
+		if (noeud->getType() == "bille")
+			listeBilles_.push_back(noeud);
 	}
+	std::cout << "ListeBilles.size() == " << listeBilles_.size() << std::endl
+		<< "ListeNoeuds.size() == " << listeNoeuds_.size() << std::endl;
 }

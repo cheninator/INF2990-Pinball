@@ -160,21 +160,8 @@ void NoeudBille::animer(float temps) // rajouter des parametres ou une fonction 
 	std::list<NoeudAbstrait*> listeNoeudsAChecker;
 	bool useQuadTree = false;
 
-	/*	
-	if (useQuadTree)
-	{
-		// TODO faire une liste de noeuds candidats à être en collision avec la bille
-			// Obtenir le quad
-		QuadTree* quadTree = FacadeModele::obtenirInstance()->obtenirArbreRenduINF2990()->obtenirQuadTree();
-		listeNoeudsAChecker = quadTree->retrieve(this);
-		if (counter % 30 == 0)
-		{
-			std::cout << "Size de listeNoeudsAChecker : " << listeNoeudsAChecker.size() << std::endl;
-		}
-	}
-	*/
 	
-	if (1)
+	if (0)
 	{
 		// Travail a faire par le quad tree
 		ArbreRenduINF2990* arbre = FacadeModele::obtenirInstance()->obtenirArbreRenduINF2990();
@@ -188,41 +175,7 @@ void NoeudBille::animer(float temps) // rajouter des parametres ou une fonction 
 		}
 	}
 
-	
 	bool enCollision = false;
-
-	// Pour chaque noeud à checker, vérifier s'il est en collision avec la bille (this)
-
-	/*
-	if (useQuadTree)
-	{
-		// Pour chaque noeud de la liste, checker collisions et réagir...
-		std::list<NoeudAbstrait*>::iterator iter = listeNoeudsAChecker.begin();
-		for (; iter != listeNoeudsAChecker.end(); iter++)
-		{
-			NoeudAbstrait* noeudCourrant = *iter;
-			std::vector<glm::dvec3> boite;
-			{ // Travail a faire par std::vector<glm::dvec3> NoeudAbstrait::obtenirBoite()
-				glm::dvec3 tableau[4];
-				noeudCourrant->obtenirVecteursBoite(tableau[0], tableau[1], tableau[2], tableau[3]);
-				for (unsigned int i = 0; i < 4; i++) boite.push_back(tableau[i] + noeudCourrant->obtenirPositionRelative());
-			}
-			for (unsigned int i = 0; i < boite.size(); i++)
-			{
-				// On veut calculer la collision en 2D et caster les paramêtres en glm::dvec2 "oublie" leur composante en Z et choisi la bonne surcharge de calculerCollisionSegment.
-				aidecollision::DetailsCollision details = aidecollision::calculerCollisionSegment((glm::dvec2)boite[i], (glm::dvec2)boite[(i + 1) % boite.size()], (glm::dvec2)positionRelative_, 7, true);
-				if (details.type != aidecollision::COLLISION_AUCUNE)
-				{
-					enCollision = true;
-					glm::dvec3 vitesseNormaleInitiale = glm::proj(vitesse_, details.direction);
-					glm::dvec3 vitesseTangentielleInitiale = vitesse_ - vitesseNormaleInitiale;
-					glm::dvec2 vitesseNormale2D = aidecollision::calculerForceAmortissement2D(details, (glm::dvec2)vitesse_, 1.0);
-					vitesseApresCollision = vitesseTangentielleInitiale + glm::dvec3{ vitesseNormale2D.x, vitesseNormale2D.y, 0 };
-				}
-			}
-		}
-	}
-	*/
 
 	if (1)
 	{
@@ -264,8 +217,9 @@ void NoeudBille::animer(float temps) // rajouter des parametres ou une fonction 
 
 			}
 		}
-
-		// Considerer les limites de la table.
+	}
+		
+	// Considerer les limites de la table.
 		std::vector<glm::dvec3> boite;
 		boite.push_back({ 108, -190, 0 });
 		boite.push_back({ 272, -190, 0 });
@@ -286,7 +240,7 @@ void NoeudBille::animer(float temps) // rajouter des parametres ou une fonction 
 				vitesseApresCollision = vitesseTangentielleInitiale + glm::dvec3{ vitesseNormale2D.x, vitesseNormale2D.y, 0 };
 			}
 		}
-	}
+	
 	
 	assignerImpossible(enCollision);
 	
