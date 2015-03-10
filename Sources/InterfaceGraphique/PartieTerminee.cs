@@ -24,5 +24,17 @@ namespace InterfaceGraphique
         {
             playerBtn.Play();
         }
+
+        private void boutonMenuP_Click(object sender, EventArgs e)
+        {
+            this.Close();
+            ((ModeJeu)this.Owner).Close();
+        }
+
+        private void boutonRecommencer_Click(object sender, EventArgs e)
+        {
+            this.Close();
+            ((ModeJeu)this.Owner).RecommencerTout();
+        }
     }
 }

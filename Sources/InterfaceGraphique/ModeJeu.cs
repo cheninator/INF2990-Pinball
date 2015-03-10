@@ -8,6 +8,7 @@ namespace InterfaceGraphique
 {
     public partial class ModeJeu : Form
     {
+        public PartieTerminee gameOver;
         private double currentZoom = -1; ///< Zoom courant
         private Touches touches; /// les Touches pour le jeux
         private ZoneInfo zInfo;
@@ -69,6 +70,7 @@ namespace InterfaceGraphique
             panel_GL.Focus();
             StringBuilder bille = new StringBuilder("bille");
             FonctionsNatives.creerObjet(bille, bille.Capacity);
+            gameOver = new PartieTerminee();
         }
         ////////////////////////////////////////////////////////////////////////
         ///
@@ -109,6 +111,20 @@ namespace InterfaceGraphique
                    this.PointsTotal.Text = pointsTotale.ToString();
                    this.PointPartie.Text = pointsPartie.ToString();
                    this.nbBilles.Text = nombreDeBillesGagner.ToString();
+
+                    if (pointsTotale < pointsPartie)
+                    {
+                        if (gameOver.Visible == false)
+                            gameOver.ShowDialog(this);
+                        peutAnimer = false;
+                    }
+                    /*
+                    if (nombreDeBillesGagner <= 0 && pointsTotale >= pointsPartie)
+                    {
+                        // TODO: En cas de défaut (arranger les fonctions natives pour reset le bon nb de billes sinon
+                      * //       c'est toujours 0.
+                    }
+                    */
 
                     if (currentZoom <= 0)
                     {
@@ -349,6 +365,8 @@ namespace InterfaceGraphique
         ////////////////////////////////////////////////////////////////////////
         public void RecommencerTout()
         {
+            pointsTotale = 0;
+            peutAnimer = true;
             currentZone = 0;
             map = new StringBuilder(myMaps[currentZone]);
             nextMap = new StringBuilder(map.ToString());

@@ -41,6 +41,7 @@
             this.boutonRecommencer.TabIndex = 0;
             this.boutonRecommencer.Text = "Recommencer la partie";
             this.boutonRecommencer.UseVisualStyleBackColor = true;
+            this.boutonRecommencer.Click += new System.EventHandler(this.boutonRecommencer_Click);
             // 
             // boutonMenuP
             // 
@@ -50,6 +51,7 @@
             this.boutonMenuP.TabIndex = 1;
             this.boutonMenuP.Text = "Retourner au menu principal";
             this.boutonMenuP.UseVisualStyleBackColor = true;
+            this.boutonMenuP.Click += new System.EventHandler(this.boutonMenuP_Click);
             // 
             // labelBravo
             // 
@@ -68,6 +70,7 @@
             this.Controls.Add(this.labelBravo);
             this.Controls.Add(this.boutonMenuP);
             this.Controls.Add(this.boutonRecommencer);
+            this.MaximizeBox = false;
             this.Name = "PartieTerminee";
             this.Text = "PartieTerminee";
             this.Shown += new System.EventHandler(this.PartieTerminee_Shown);
