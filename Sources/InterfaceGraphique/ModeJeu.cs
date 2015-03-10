@@ -38,8 +38,6 @@ namespace InterfaceGraphique
 
         public ModeJeu(List<string> maps, int playerType)
         {
-
-           
             {
                 this.WindowState = FormWindowState.Normal;
                 this.FormBorderStyle = FormBorderStyle.None;
@@ -369,6 +367,10 @@ namespace InterfaceGraphique
         ////////////////////////////////////////////////////////////////////////
         public void RecommencerTout()
         {
+            gameOver.Close();
+            gameOver.Dispose();
+
+            boolTemp = true;
             pointsTotale = 0;
             currentZone = 0;
             map = new StringBuilder(myMaps[currentZone]);
