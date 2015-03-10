@@ -85,7 +85,6 @@ namespace InterfaceGraphique
             : base(modeJeu)
         {
             Console.WriteLine("Constructeur Etat :" + '\t' + "Pause");
-            Console.WriteLine(parent_.getDebugInt());
 
             parent_.setVisibilityMenuStrip(true);
             FonctionsNatives.modePause(true);
@@ -122,7 +121,6 @@ namespace InterfaceGraphique
             : base(modeJeu)
         {
             Console.WriteLine("Etat :" + '\t' + "Jouer");
-            Console.WriteLine(parent_.getDebugInt());
 
             parent_.setVisibilityMenuStrip(false);
             FonctionsNatives.modePause(false);
@@ -271,7 +269,6 @@ namespace InterfaceGraphique
         {
             // TODO: Complete member initialization
             Console.WriteLine("Etat :" + '\t' + "DebutDePartie");
-            Console.WriteLine(parent_.getDebugInt());
         }
 
         public override bool traiterRoulette(object sender, MouseEventArgs e)
@@ -296,7 +293,6 @@ namespace InterfaceGraphique
         public EtatJeuFinDePartie(ModeJeu modeJeu) : base(modeJeu)
         {
             Console.WriteLine("Etat :" + '\t' + "FinDePartie");
-            Console.WriteLine(parent_.getDebugInt());
         }
     }
 
