@@ -18,6 +18,7 @@ namespace InterfaceGraphique
         StringBuilder map;
         StringBuilder nextMap;
         bool peutAnimer;
+        bool boolTemp = true;
         private bool activateAmbianteLight = false; ///< Etat de la lumiere ambiante
         private bool activateDirectLight = false; ///< Etat de la lumiere directe
         private bool activateSpotLight = false; ///< Etat de la lumiere spot
@@ -38,13 +39,13 @@ namespace InterfaceGraphique
         public ModeJeu(List<string> maps, int playerType)
         {
 
-            /*   if(fullScreen)
+           
             {
                 this.WindowState = FormWindowState.Normal;
                 this.FormBorderStyle = FormBorderStyle.None;
                 this.WindowState = FormWindowState.Maximized;
             }
-             */
+            
             EtablirTouches(playerType);
             this.KeyDown += new KeyEventHandler(PartieRapide_KeyDown);
             this.KeyUp += new KeyEventHandler(PartieRapide_KeyUp);
@@ -70,7 +71,6 @@ namespace InterfaceGraphique
             panel_GL.Focus();
             StringBuilder bille = new StringBuilder("bille");
             FonctionsNatives.creerObjet(bille, bille.Capacity);
-            gameOver = new PartieTerminee();
         }
         ////////////////////////////////////////////////////////////////////////
         ///
@@ -112,17 +112,21 @@ namespace InterfaceGraphique
                    this.PointPartie.Text = pointsPartie.ToString();
                    this.nbBilles.Text = nombreDeBillesGagner.ToString();
 
-                    if (pointsTotale < pointsPartie)
+                    if (pointsTotale < pointsPartie && boolTemp)
                     {
-                        if (gameOver.Visible == false)
+                        if (currentZone >= nbZones)
+                        {
+                            peutAnimer = false;
+                            boolTemp = false;
+                            gameOver = new PartieTerminee(true);
                             gameOver.ShowDialog(this);
-                        peutAnimer = false;
+                        }
                     }
                     /*
-                    if (nombreDeBillesGagner <= 0 && pointsTotale >= pointsPartie)
+                    if (nombreDeBillesGagner <= 0 && pointsTotale > pointsPartie)
                     {
                         // TODO: En cas de défaut (arranger les fonctions natives pour reset le bon nb de billes sinon
-                      * //       c'est toujours 0.
+                        //       c'est toujours 0.
                     }
                     */
 
@@ -309,7 +313,7 @@ namespace InterfaceGraphique
                 {
                     Console.WriteLine(currentZone);
                     if (currentZone >= nbZones)
-                        if(MessageBox.Show("VICTOIRE!!!!VOULEZ VOUR RECOMMENCER?", "FIN DE LA CAMPAGNE",
+                        if(MessageBox.Show("VICTOIRE! VOULEZ VOUR RECOMMENCER?", "FIN DE LA CAMPAGNE",
                    MessageBoxButtons.YesNo, MessageBoxIcon.Exclamation) == DialogResult.Yes)
                         {
                             RecommencerTout();
@@ -366,7 +370,6 @@ namespace InterfaceGraphique
         public void RecommencerTout()
         {
             pointsTotale = 0;
-            peutAnimer = true;
             currentZone = 0;
             map = new StringBuilder(myMaps[currentZone]);
             nextMap = new StringBuilder(map.ToString());
@@ -377,6 +380,8 @@ namespace InterfaceGraphique
             FonctionsNatives.ouvrirXML(map, map.Capacity);
             resetConfig();
             FonctionsNatives.construireListesPalettes();
+            peutAnimer = true;
+
         }
 
         ////////////////////////////////////////////////////////////////////////
