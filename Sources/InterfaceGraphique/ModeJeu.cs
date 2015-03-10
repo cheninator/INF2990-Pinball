@@ -9,6 +9,7 @@ namespace InterfaceGraphique
     public partial class ModeJeu : Form
     {
         public PartieTerminee gameOver;
+        private Timer timer;
         private double currentZoom = -1; ///< Zoom courant
         private Touches touches; /// les Touches pour le jeux
         private ZoneInfo zInfo;
@@ -23,17 +24,20 @@ namespace InterfaceGraphique
         private bool activateDirectLight = false; ///< Etat de la lumiere directe
         private bool activateSpotLight = false; ///< Etat de la lumiere spot
         private EtatJeuAbstrait etat; ///< Machine à états
-        public int pointsPartie = FonctionsNatives.obtenirNombreDePointsDePartie();
-        public int pointsTotale = FonctionsNatives.obtenirNombreDePointsTotals();
-        public int billeDisponible;
-        private int nombreDeBillesGagner;
-        private int nobtenirNombreDePointsPourUneBilleSupplementaire;
+        public int pointsPartie = 0;
+        public int pointsTotale = 0;
+        public int billeDisponible = 0;
+        private int nombreDeBillesGagner = 0;
+        private int pointsGagnerBille = 0;
+        private int pointsGanerPartie = 0;
+        private int billesDisponibles = 0;
         
         private void resetConfig() 
         {
             billeDisponible = 0;
             nombreDeBillesGagner = 0;
-            nobtenirNombreDePointsPourUneBilleSupplementaire = FonctionsNatives.obtenirNombreDePointsPourUneBilleSupplementaire();
+            pointsGagnerBille = FonctionsNatives.obtenirPointsGagnerBille();
+            pointsGanerPartie = FonctionsNatives.obtenirPointsGagnerPartie();
         }
 
         public ModeJeu(List<string> maps, int playerType)
@@ -43,7 +47,14 @@ namespace InterfaceGraphique
                 this.FormBorderStyle = FormBorderStyle.None;
                 this.WindowState = FormWindowState.Maximized;
             }
-            
+            timer = new Timer();
+            timer.Enabled = true;
+
+            timer.Interval = 3000;
+            timer.Tick += new System.EventHandler(this.timer_Tick);
+
+
+
             EtablirTouches(playerType);
             this.KeyDown += new KeyEventHandler(PartieRapide_KeyDown);
             this.KeyUp += new KeyEventHandler(PartieRapide_KeyUp);
@@ -67,8 +78,8 @@ namespace InterfaceGraphique
             currentZone++;
             Program.tempBool = true;
             panel_GL.Focus();
-            StringBuilder bille = new StringBuilder("bille");
-            FonctionsNatives.creerObjet(bille, bille.Capacity);
+            timer.Start();
+          
         }
         ////////////////////////////////////////////////////////////////////////
         ///
@@ -88,6 +99,13 @@ namespace InterfaceGraphique
 
         }
 
+
+        private void timer_Tick(object sender, EventArgs e)
+        {
+          StringBuilder bille = new StringBuilder("bille");
+          FonctionsNatives.creerObjet(bille, bille.Capacity);
+          timer.Stop();
+        }
         public void MettreAJour(double tempsInterAffichage)
         {
             try
@@ -100,11 +118,15 @@ namespace InterfaceGraphique
                     }
                    FonctionsNatives.dessinerOpenGL();
                    FPSCounter.Text = FonctionsNatives.obtenirAffichagesParSeconde().ToString();
+                   pointsTotale -= pointsPartie;
                    pointsPartie = FonctionsNatives.obtenirNombreDePointsDePartie();
-                   pointsTotale = FonctionsNatives.obtenirNombreDePointsTotals();
+                   pointsTotale += pointsPartie;
 
-                   if (pointsPartie > nombreDeBillesGagner * nobtenirNombreDePointsPourUneBilleSupplementaire + nobtenirNombreDePointsPourUneBilleSupplementaire)
+                   if (pointsPartie >= nombreDeBillesGagner * pointsGagnerBille + pointsGagnerBille)
+                   {
                        nombreDeBillesGagner++;
+                       billesDisponibles++;
+                   }
 
                    this.PointsTotal.Text = pointsTotale.ToString();
                    this.PointPartie.Text = pointsPartie.ToString();
@@ -120,13 +142,6 @@ namespace InterfaceGraphique
                             gameOver.ShowDialog(this);
                         }
                     }
-                    /*
-                    if (nombreDeBillesGagner <= 0 && pointsTotale > pointsPartie)
-                    {
-                        // TODO: En cas de défaut (arranger les fonctions natives pour reset le bon nb de billes sinon
-                        //       c'est toujours 0.
-                    }
-                    */
 
                     if (currentZoom <= 0)
                     {
@@ -341,6 +356,7 @@ namespace InterfaceGraphique
                 else if (e.KeyChar == (char)8)
                 {
                     // RELOAD DE LA MAP
+                    timer.Start();
                     FonctionsNatives.ouvrirXML(map, map.Capacity);
                     resetConfig();
                 }
@@ -401,6 +417,7 @@ namespace InterfaceGraphique
         
         private void mPrincipal_menu_Click(object sender, EventArgs e)
         {
+            timer.Stop();
             this.Close();
         }
 

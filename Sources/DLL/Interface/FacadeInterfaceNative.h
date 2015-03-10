@@ -78,15 +78,16 @@ extern "C" {
 	__declspec(dllexport) void creerFichierConfig(int config[12]);
 	__declspec(dllexport) int* chargerFichierConfiguration();
 	__declspec(dllexport) int obtenirDiffulte(char* nomFichier, int length);
+	__declspec(dllexport) int* obtenirProprietes(char* nomFichier, int length);
 	__declspec(dllexport) BSTR obtenirDerniereCampagne();
 	__declspec(dllexport) void creerFichierCampagne(char* nomFichier, int length);
 	__declspec(dllexport) void supprimerBille();
 	__declspec(dllexport) bool spotLight(int lum, bool state);
 	__declspec(dllexport) void initialiserSingleton();
 	__declspec(dllexport) void detruireSingleton();
-	__declspec(dllexport) int obtenirNombreDePointsPourUneBilleSupplementaire();
+	__declspec(dllexport) int obtenirPointsGagnerBille();
+	__declspec(dllexport) int obtenirPointsGagnerPartie();
 	__declspec(dllexport) int obtenirNombreDePointsDePartie();
-	__declspec(dllexport) int obtenirNombreDePointsTotals();
 }
 
 #endif // __FACADE_INTERFACE_NATIVE_H__

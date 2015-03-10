@@ -1383,6 +1383,10 @@ extern "C"
 		return FacadeModele::obtenirInstance()->obtenirDifficulte(nomFichier, length);
 	}
 
+	__declspec(dllexport) int* __cdecl obtenirProprietes(char* nomFichier, int length)
+	{
+		return FacadeModele::obtenirInstance()->obtenirProprietes(nomFichier, length);
+	}
 	__declspec(dllexport) void __cdecl creerFichierCampagne(char* listMaps, int length)
 	{
 		FacadeModele::obtenirInstance()->sauvegarderCampagne(listMaps, length);
@@ -1505,9 +1509,14 @@ extern "C"
 		SingletonGlobal::libererInstance();
 	}
 
-	__declspec(dllexport) int __cdecl obtenirNombreDePointsPourUneBilleSupplementaire()
+	__declspec(dllexport) int __cdecl obtenirPointsGagnerBille()
 	{
 		return FacadeModele::obtenirInstance()->obtenirArbreRenduINF2990()->obtenirProprietes()[5];
+	}
+
+	__declspec(dllexport) int __cdecl obtenirPointsGagnerPartie()
+	{
+		return FacadeModele::obtenirInstance()->obtenirArbreRenduINF2990()->obtenirProprietes()[4];
 	}
 
 	__declspec(dllexport) int __cdecl obtenirNombreDePointsDePartie()
@@ -1515,10 +1524,10 @@ extern "C"
 		return SingletonGlobal::obtenirInstance()->getPointsPartie();
 	}
 
-	__declspec(dllexport) int __cdecl obtenirNombreDePointsTotals()
-	{
-		return SingletonGlobal::obtenirInstance()->getPointsTotales();
-	}
+	//__declspec(dllexport) int __cdecl obtenirNombreDePointsTotals()
+	//{
+	//	return SingletonGlobal::obtenirInstance()->getPointsTotales();
+	//}
 	/*
 	#include <FTGL/ftgl.h>
 

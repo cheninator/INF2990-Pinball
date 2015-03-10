@@ -29,6 +29,8 @@
         private void InitializeComponent()
         {
             this.panel_GL = new System.Windows.Forms.Panel();
+            this.nbBilles = new System.Windows.Forms.Label();
+            this.PointPartie = new System.Windows.Forms.Label();
             this.PointsTotal = new System.Windows.Forms.Label();
             this.FPSCounter = new System.Windows.Forms.Label();
             this.menuStrip = new System.Windows.Forms.MenuStrip();
@@ -37,8 +39,6 @@
             this.Camera_MenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.Ortho_MenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.Orbitale_MenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.PointPartie = new System.Windows.Forms.Label();
-            this.nbBilles = new System.Windows.Forms.Label();
             this.panel_GL.SuspendLayout();
             this.menuStrip.SuspendLayout();
             this.SuspendLayout();
@@ -59,10 +59,29 @@
             this.panel_GL.TabIndex = 4;
             this.panel_GL.MouseClick += new System.Windows.Forms.MouseEventHandler(this.panel_GL_MouseClick);
             // 
+            // nbBilles
+            // 
+            this.nbBilles.AutoSize = true;
+            this.nbBilles.Location = new System.Drawing.Point(13, 239);
+            this.nbBilles.Name = "nbBilles";
+            this.nbBilles.Size = new System.Drawing.Size(43, 13);
+            this.nbBilles.TabIndex = 4;
+            this.nbBilles.Text = "nbBilles";
+            // 
+            // PointPartie
+            // 
+            this.PointPartie.AutoSize = true;
+            this.PointPartie.Location = new System.Drawing.Point(12, 226);
+            this.PointPartie.Name = "PointPartie";
+            this.PointPartie.Size = new System.Drawing.Size(63, 13);
+            this.PointPartie.TabIndex = 3;
+            this.PointPartie.Text = "PointsPartie";
+            this.PointPartie.UseMnemonic = false;
+            // 
             // PointsTotal
             // 
             this.PointsTotal.AutoSize = true;
-            this.PointsTotal.Location = new System.Drawing.Point(13, 13);
+            this.PointsTotal.Location = new System.Drawing.Point(12, 213);
             this.PointsTotal.Name = "PointsTotal";
             this.PointsTotal.Size = new System.Drawing.Size(61, 13);
             this.PointsTotal.TabIndex = 2;
@@ -124,25 +143,6 @@
             this.Orbitale_MenuItem.Name = "Orbitale_MenuItem";
             this.Orbitale_MenuItem.Size = new System.Drawing.Size(182, 22);
             this.Orbitale_MenuItem.Text = "Vue Orbitale";
-            // 
-            // PointPartie
-            // 
-            this.PointPartie.AutoSize = true;
-            this.PointPartie.Location = new System.Drawing.Point(13, 36);
-            this.PointPartie.Name = "PointPartie";
-            this.PointPartie.Size = new System.Drawing.Size(63, 13);
-            this.PointPartie.TabIndex = 3;
-            this.PointPartie.Text = "PointsPartie";
-            this.PointPartie.UseMnemonic = false;
-            // 
-            // nbBilles
-            // 
-            this.nbBilles.AutoSize = true;
-            this.nbBilles.Location = new System.Drawing.Point(16, 58);
-            this.nbBilles.Name = "nbBilles";
-            this.nbBilles.Size = new System.Drawing.Size(43, 13);
-            this.nbBilles.TabIndex = 4;
-            this.nbBilles.Text = "nbBilles";
             // 
             // ModeJeu
             // 

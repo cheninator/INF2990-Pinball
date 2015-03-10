@@ -425,12 +425,10 @@ void NoeudAbstrait::afficher() const
 		glTranslated(
 			positionRelative_[0], positionRelative_[1], positionRelative_[2]
 			);
-
 		
-
+		glRotated(rotation_[2], 0.0F, 0.0F, 1.0F);
 		glRotated(rotation_[0], 1.0F, 0.0F, 0.0F);
 		glRotated(rotation_[1], 0.0F, 1.0F, 0.0F);
-		glRotated(rotation_[2], 0.0F, 0.0F, 1.0F);
 
 		glScaled(scale_[0], scale_[1], scale_[2]);
 

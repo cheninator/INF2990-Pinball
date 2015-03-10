@@ -39,6 +39,10 @@
             this.labelTimer = new System.Windows.Forms.Label();
             this.labelWarning = new System.Windows.Forms.Label();
             this.tempRestant = new System.Windows.Forms.ProgressBar();
+            this.labelPoints = new System.Windows.Forms.Label();
+            this.label_Points = new System.Windows.Forms.Label();
+            this.labelBille = new System.Windows.Forms.Label();
+            this.label_Bille = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.screenShot)).BeginInit();
             this.SuspendLayout();
             // 
@@ -85,9 +89,9 @@
             this.screenShot.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.screenShot.Location = new System.Drawing.Point(38, 95);
+            this.screenShot.Location = new System.Drawing.Point(38, 157);
             this.screenShot.Name = "screenShot";
-            this.screenShot.Size = new System.Drawing.Size(204, 203);
+            this.screenShot.Size = new System.Drawing.Size(204, 201);
             this.screenShot.TabIndex = 4;
             this.screenShot.TabStop = false;
             // 
@@ -95,7 +99,7 @@
             // 
             this.labelTimeLeft.AutoSize = true;
             this.labelTimeLeft.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelTimeLeft.Location = new System.Drawing.Point(207, 317);
+            this.labelTimeLeft.Location = new System.Drawing.Point(223, 373);
             this.labelTimeLeft.Name = "labelTimeLeft";
             this.labelTimeLeft.Size = new System.Drawing.Size(19, 20);
             this.labelTimeLeft.TabIndex = 6;
@@ -105,7 +109,7 @@
             // labelTimer
             // 
             this.labelTimer.AutoSize = true;
-            this.labelTimer.Location = new System.Drawing.Point(13, 324);
+            this.labelTimer.Location = new System.Drawing.Point(13, 380);
             this.labelTimer.Name = "labelTimer";
             this.labelTimer.Size = new System.Drawing.Size(157, 13);
             this.labelTimer.TabIndex = 5;
@@ -114,7 +118,7 @@
             // labelWarning
             // 
             this.labelWarning.AutoSize = true;
-            this.labelWarning.Location = new System.Drawing.Point(13, 399);
+            this.labelWarning.Location = new System.Drawing.Point(13, 448);
             this.labelWarning.Name = "labelWarning";
             this.labelWarning.Size = new System.Drawing.Size(253, 13);
             this.labelWarning.TabIndex = 7;
@@ -122,19 +126,61 @@
             // 
             // tempRestant
             // 
-            this.tempRestant.Location = new System.Drawing.Point(16, 354);
+            this.tempRestant.Location = new System.Drawing.Point(16, 405);
             this.tempRestant.Maximum = 200;
             this.tempRestant.Name = "tempRestant";
             this.tempRestant.Size = new System.Drawing.Size(250, 23);
             this.tempRestant.TabIndex = 8;
             this.tempRestant.Value = 200;
             // 
+            // labelPoints
+            // 
+            this.labelPoints.AutoSize = true;
+            this.labelPoints.Location = new System.Drawing.Point(13, 91);
+            this.labelPoints.Name = "labelPoints";
+            this.labelPoints.Size = new System.Drawing.Size(99, 13);
+            this.labelPoints.TabIndex = 9;
+            this.labelPoints.Text = "Points pour gagner:";
+            // 
+            // label_Points
+            // 
+            this.label_Points.AutoSize = true;
+            this.label_Points.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label_Points.Location = new System.Drawing.Point(158, 91);
+            this.label_Points.Name = "label_Points";
+            this.label_Points.Size = new System.Drawing.Size(14, 13);
+            this.label_Points.TabIndex = 10;
+            this.label_Points.Text = "0";
+            // 
+            // labelBille
+            // 
+            this.labelBille.AutoSize = true;
+            this.labelBille.Location = new System.Drawing.Point(13, 117);
+            this.labelBille.Name = "labelBille";
+            this.labelBille.Size = new System.Drawing.Size(148, 13);
+            this.labelBille.TabIndex = 11;
+            this.labelBille.Text = "Points pour une nouvelle bille:";
+            // 
+            // label_Bille
+            // 
+            this.label_Bille.AutoSize = true;
+            this.label_Bille.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label_Bille.Location = new System.Drawing.Point(158, 117);
+            this.label_Bille.Name = "label_Bille";
+            this.label_Bille.Size = new System.Drawing.Size(14, 13);
+            this.label_Bille.TabIndex = 12;
+            this.label_Bille.Text = "0";
+            // 
             // ZoneInfo
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.Control;
-            this.ClientSize = new System.Drawing.Size(284, 430);
+            this.ClientSize = new System.Drawing.Size(284, 479);
+            this.Controls.Add(this.label_Bille);
+            this.Controls.Add(this.labelBille);
+            this.Controls.Add(this.label_Points);
+            this.Controls.Add(this.labelPoints);
             this.Controls.Add(this.tempRestant);
             this.Controls.Add(this.labelWarning);
             this.Controls.Add(this.labelTimeLeft);
@@ -167,5 +213,9 @@
         private System.Windows.Forms.Label labelTimer;
         private System.Windows.Forms.Label labelWarning;
         private System.Windows.Forms.ProgressBar tempRestant;
+        private System.Windows.Forms.Label labelPoints;
+        private System.Windows.Forms.Label label_Points;
+        private System.Windows.Forms.Label labelBille;
+        private System.Windows.Forms.Label label_Bille;
     }
 }
