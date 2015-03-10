@@ -350,7 +350,7 @@ namespace InterfaceGraphique
         ////////////////////////////////////////////////////////////////////////
         public void Quitter()
         {
-            timer.Stop();
+            timer.Enabled = false;
             this.Close();
         }
         
