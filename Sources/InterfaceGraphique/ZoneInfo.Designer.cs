@@ -43,13 +43,14 @@
             this.label_Points = new System.Windows.Forms.Label();
             this.labelBille = new System.Windows.Forms.Label();
             this.label_Bille = new System.Windows.Forms.Label();
+            this.labelWin = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.screenShot)).BeginInit();
             this.SuspendLayout();
             // 
             // label_Nom
             // 
             this.label_Nom.AutoSize = true;
-            this.label_Nom.Location = new System.Drawing.Point(13, 32);
+            this.label_Nom.Location = new System.Drawing.Point(12, 39);
             this.label_Nom.Name = "label_Nom";
             this.label_Nom.Size = new System.Drawing.Size(86, 13);
             this.label_Nom.TabIndex = 0;
@@ -171,12 +172,22 @@
             this.label_Bille.TabIndex = 12;
             this.label_Bille.Text = "0";
             // 
+            // labelWin
+            // 
+            this.labelWin.Location = new System.Drawing.Point(16, 13);
+            this.labelWin.Name = "labelWin";
+            this.labelWin.Size = new System.Drawing.Size(250, 23);
+            this.labelWin.TabIndex = 13;
+            this.labelWin.Text = "Vous avez gagné!!!";
+            this.labelWin.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
             // ZoneInfo
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.Control;
             this.ClientSize = new System.Drawing.Size(284, 479);
+            this.Controls.Add(this.labelWin);
             this.Controls.Add(this.label_Bille);
             this.Controls.Add(this.labelBille);
             this.Controls.Add(this.label_Points);
@@ -217,5 +228,6 @@
         private System.Windows.Forms.Label label_Points;
         private System.Windows.Forms.Label labelBille;
         private System.Windows.Forms.Label label_Bille;
+        private System.Windows.Forms.Label labelWin;
     }
 }

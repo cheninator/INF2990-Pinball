@@ -18,7 +18,6 @@ namespace InterfaceGraphique
         List<string> myMaps;
         StringBuilder map;
         StringBuilder nextMap;
-        StringBuilder tempMap;
         bool peutAnimer;
         bool boolTemp = true;
         private bool activateAmbianteLight = false; ///< Etat de la lumiere ambiante
@@ -74,7 +73,6 @@ namespace InterfaceGraphique
             if (nbZones > 1)
                 this.Text = "Campagne";
             map = new StringBuilder(myMaps[0]);
-            tempMap = new StringBuilder(myMaps[0]);
             Console.WriteLine(nbZones);
             FonctionsNatives.ouvrirXML(map, map.Capacity);
             resetConfig();
@@ -126,6 +124,7 @@ namespace InterfaceGraphique
           FonctionsNatives.creerObjet(bille, bille.Capacity);
           timer.Enabled = false;
         }
+
         public void MettreAJour(double tempsInterAffichage)
         {
             try
@@ -171,7 +170,9 @@ namespace InterfaceGraphique
                             nextMap = new StringBuilder(map.ToString());
                             nextMap.Remove(nextMap.Length - 4, 4);
                             Console.WriteLine(Path.GetFileName(nextMap.ToString()));
-                            zInfo = new ZoneInfo(Path.GetFileName(nextMap.ToString()), FonctionsNatives.obtenirDifficulte(map, map.Capacity).ToString());
+                            
+                            System.Threading.Thread.Sleep(1000);
+                            zInfo = new ZoneInfo(Path.GetFileName(nextMap.ToString()), FonctionsNatives.obtenirDifficulte(map, map.Capacity).ToString(),true);
                             this.Hide();
                             zInfo.ShowDialog();
                             this.Show();
@@ -250,7 +251,8 @@ namespace InterfaceGraphique
         private void PartieRapide_KeyDown(object sender, KeyEventArgs e)
         {   
             // À enlever : permet de vérifier la fenêtre OpenGL
-           if (e.KeyCode == Keys.Left)
+            /*
+            if (e.KeyCode == Keys.Left)
                 FonctionsNatives.translater(-10, 0);
             else if (e.KeyCode == Keys.Right)
                 FonctionsNatives.translater(10, 0);
@@ -258,7 +260,7 @@ namespace InterfaceGraphique
                 FonctionsNatives.translater(0, 10);
             else if (e.KeyCode == Keys.Down)
                 FonctionsNatives.translater(0, -10);
-
+            */
            if ((e.KeyData == Keys.Subtract ||
                   e.KeyCode == Keys.OemMinus))
            {
@@ -304,6 +306,22 @@ namespace InterfaceGraphique
             {
                 FonctionsNatives.desactiverPalettesGJ1();
                // Console.WriteLine("Touche R relachée");
+            }
+            else if (e.KeyValue == touches.PGJ2)
+            {
+                // TODO: palette gauche joueur 2
+            }
+            else if (e.KeyValue == touches.PDJ1)
+            {
+
+            }
+            else if (e.KeyValue == touches.PDJ2)
+            {
+
+            }
+            else if (e.KeyValue == touches.Ressort)
+            {
+
             }
         }
 
@@ -384,7 +402,7 @@ namespace InterfaceGraphique
                         nextMap = new StringBuilder(map.ToString());
                         nextMap.Remove(nextMap.Length - 4, 4);
                         Console.WriteLine(Path.GetFileName(nextMap.ToString()));
-                        zInfo = new ZoneInfo(Path.GetFileName(nextMap.ToString()), FonctionsNatives.obtenirDifficulte(map, map.Capacity).ToString());
+                        zInfo = new ZoneInfo(Path.GetFileName(nextMap.ToString()), FonctionsNatives.obtenirDifficulte(map, map.Capacity).ToString(),true);
                         //this.Hide();
                         zInfo.ShowDialog();
                         //this.Show();
@@ -426,36 +444,32 @@ namespace InterfaceGraphique
         ////////////////////////////////////////////////////////////////////////
         public void RecommencerTout()
         {
-           if (gameOver.Visible)
+           if (gameOver.Enabled)
             {
                 gameOver.Hide();
             }
            
             pointsPartie = 0;
-            boolTemp = true;
             currentZone = 0;
-           map = new StringBuilder(myMaps[0]);
-           nextMap = new StringBuilder(map.ToString());
-           nextMap.Remove(nextMap.Length - 4, 4);
+            map = new StringBuilder(myMaps[0]);
+            nextMap = new StringBuilder(map.ToString());
+            nextMap.Remove(nextMap.Length - 4, 4);
             Console.WriteLine(map);
             this.Hide();
-            zInfo = new ZoneInfo(Path.GetFileName(nextMap.ToString()), FonctionsNatives.obtenirDifficulte(map, map.Capacity).ToString());
+            zInfo = new ZoneInfo(Path.GetFileName(nextMap.ToString()), FonctionsNatives.obtenirDifficulte(map, map.Capacity).ToString(),false);
             zInfo.ShowDialog();
             this.Show();
             FonctionsNatives.ouvrirXML(map, map.Capacity);
-            /* 
-         FonctionsNatives.ouvrirXML(tempMap, tempMap.Capacity);
-           */
             FonctionsNatives.resetNombreDePointsDePartie();
-         resetConfig();
+            resetConfig();
 
-         currentZone = 1;
-         FonctionsNatives.construireListesPalettes();
-         peutAnimer = true;
-         timer.Start();
-        
-                gameOver.Close();
-                gameOver.Dispose();
+            currentZone = 1;
+            FonctionsNatives.construireListesPalettes();
+            peutAnimer = true;
+            boolTemp = true;
+            timer.Start();
+            gameOver.Close();
+            gameOver.Dispose();
            
         }
 
