@@ -23,6 +23,8 @@
 #include "glm\glm.hpp"
 #include "../../Visiteurs/VisiteurAbstrait.h"
 #include "Utilitaire.h"
+#include "../../Commun/Utilitaire/AideCollision.h"
+
 
 /// Declarations avancees pour contenir un pointeur vers un modele3D et sa liste
 /// d'affichage
@@ -71,6 +73,13 @@ public:
 
 	/// Assigne la position relative du noeud.
 	inline void assignerPositionRelative(const glm::dvec3& positionRelative);
+
+	/// 
+	inline glm::dvec3 obtenirVitesse() const;
+
+	/// 
+	inline void assignerVitesse(glm::dvec3 nouvelleVitesse);
+
 
 	/// Obtient le type du noeud.
 	inline const std::string& obtenirType() const;
@@ -218,6 +227,12 @@ public:
 
 	//Verifie si un point est dans la boite englobante
 	virtual bool pointEstDansBoite(glm::dvec3 point);
+
+	/// Pour la detections des collisions
+	virtual aidecollision::DetailsCollision detecterCollisions(NoeudAbstrait* noeud);
+
+	/// Pour le traitement logique des collisions
+	virtual void traiterCollisions(aidecollision::DetailsCollision, NoeudAbstrait* bille);
 
 	/// Obtenir couleur
 	virtual bool getColorShift();
@@ -423,6 +438,36 @@ inline void NoeudAbstrait::assignerPositionRelative(
 	)
 {
 	positionRelative_ = positionRelative;
+}
+
+////////////////////////////////////////////////////////////////////////
+///
+/// @fn inline glm::dvec3 NoeudAbstrait::obtenirVitesse() const
+///
+/// Permet d'obtenir la vitesse du noeud;
+///
+/// @return Aucune
+///
+////////////////////////////////////////////////////////////////////////
+inline glm::dvec3 NoeudAbstrait::obtenirVitesse() const
+{
+	return vitesse_;
+}
+
+////////////////////////////////////////////////////////////////////////
+///
+/// @fn inline void NoeudAbstrait::assignerPositionRelative( const glm::dvec3& positionRelative )
+///
+/// Cette fonction permet d'assigner la vitesse du noeud.
+///
+/// @param nouvelleVitesse : La nouvelle vitesse a assigner.
+///
+/// @return Aucune
+///
+////////////////////////////////////////////////////////////////////////
+inline void NoeudAbstrait::assignerVitesse(glm::dvec3 nouvelleVitesse)
+{
+	vitesse_ = nouvelleVitesse;
 }
 
 

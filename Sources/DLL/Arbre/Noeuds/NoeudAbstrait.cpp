@@ -8,6 +8,7 @@
 
 #include "NoeudAbstrait.h"
 #include "Utilitaire.h"
+#include "../../Commun/Externe/glm/include/glm/gtx/Projection.hpp"
 
 unsigned int NoeudAbstrait::compteurNoeuds_ = 0;
 ////////////////////////////////////////////////////////////////////////
@@ -798,4 +799,69 @@ void NoeudAbstrait::setDebug(bool debug)
 void NoeudAbstrait::setSpotLight(bool debug)
 {
 	spotLight_ = debug;
+}
+
+////////////////////////////////////////////////////////////////////////
+///
+/// @fn void aidecollision::DetailsCollision NoeudAbstrait::detecterCollisions(NoeudAbstrait* bille)
+///
+/// Cette fonction retourne un objet detail collision pour la 
+/// collision de la bille sur l'objet courant.
+///
+/// @return details contient l'information sur la collision de la bille avec *this.
+///
+////////////////////////////////////////////////////////////////////////
+aidecollision::DetailsCollision NoeudAbstrait::detecterCollisions(NoeudAbstrait* bille)
+{
+	std::vector<glm::dvec3> boite = obtenirVecteursEnglobants();
+	double rayonBille = bille->obtenirVecteursEnglobants()[0].x;
+	aidecollision::DetailsCollision details;
+	if (boite.size() > 1)
+	{
+		for (unsigned int i = 0; i < boite.size(); i++)
+			boite[i] += obtenirPositionRelative();
+		// Considerer tous les segments boite[i] --- boite[i+1 % size] 
+		for (unsigned int i = 0; i < boite.size(); i++)
+		{
+			// On veut calculer la collision en 2D et caster les paramêtres en glm::dvec2 "oublie" leur composante en Z et choisi la bonne surcharge de calculerCollisionSegment.
+			details = aidecollision::calculerCollisionSegment((glm::dvec2)boite[i], (glm::dvec2)boite[(i + 1) % boite.size()], (glm::dvec2)bille->obtenirPositionRelative(), rayonBille, true);
+			if (details.type != aidecollision::COLLISION_AUCUNE)
+			{
+				return details;
+			}
+		}
+	}
+	else if (boite.size() == 1)// a mettre dans la reimplementation pour les objets circulaires.
+	{
+		double rayon = boite[0].x;
+		details = aidecollision::calculerCollisionCercle((glm::dvec2)obtenirPositionRelative(), rayon, (glm::dvec2)bille->obtenirPositionRelative(), rayonBille);
+		if (details.type != aidecollision::COLLISION_AUCUNE)
+		{
+			return details;
+		}
+	}
+	return details;
+}
+
+
+////////////////////////////////////////////////////////////////////////
+///
+/// @fn void NoeudAbstrait::traiterCollisions(aidecollision::DetailsCollision details, NoeudAbstrait* bille)
+///
+/// Cette fonction effectue la réaction a la collision de la bille sur 
+/// l'objet courant. Cette fonction est a reimplementer si on veut autre 
+/// chose qu'un rebondissement ordinaire.
+///
+/// @return details contient l'information sur la collision de la bille avec *this.
+///
+////////////////////////////////////////////////////////////////////////
+void NoeudAbstrait::traiterCollisions(aidecollision::DetailsCollision details, NoeudAbstrait* bille)
+{
+	// Modifier la vitesse de la bille en fonction de bille reçue en paramètre 
+	glm::dvec3 vitesseInitiale = bille->obtenirVitesse();
+	glm::dvec3 vitesseNormaleInitiale = glm::proj(vitesseInitiale, details.direction); // Necessaire pour connaitre la vitesse tangentielle.
+	glm::dvec3 vitesseTangentielle = vitesseInitiale - vitesseNormaleInitiale;
+	glm::dvec2 vitesseNormaleFinale2D = aidecollision::calculerForceAmortissement2D(details, (glm::dvec2)vitesseInitiale, 1.0);
+	glm::dvec3 vitesseFinale = vitesseTangentielle + glm::dvec3{ vitesseNormaleFinale2D.x, vitesseNormaleFinale2D.y, 0 };
+	bille->assignerVitesse(vitesseFinale);
 }
