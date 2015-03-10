@@ -78,6 +78,7 @@ extern "C" {
 	__declspec(dllexport) void creerFichierConfig(int config[12]);
 	__declspec(dllexport) int* chargerFichierConfiguration();
 	__declspec(dllexport) int obtenirDiffulte(char* nomFichier, int length);
+	__declspec(dllexport) int* obtenirProprietes(char* nomFichier, int length);
 	__declspec(dllexport) BSTR obtenirDerniereCampagne();
 	__declspec(dllexport) void creerFichierCampagne(char* nomFichier, int length);
 	__declspec(dllexport) void supprimerBille();

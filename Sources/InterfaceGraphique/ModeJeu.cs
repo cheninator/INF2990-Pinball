@@ -106,7 +106,6 @@ namespace InterfaceGraphique
         {
           StringBuilder bille = new StringBuilder("bille");
           FonctionsNatives.creerObjet(bille, bille.Capacity);
-          Console.WriteLine("BILLE");
           timer.Stop();
         }
         public void MettreAJour(double tempsInterAffichage)
@@ -386,6 +385,7 @@ namespace InterfaceGraphique
         ////////////////////////////////////////////////////////////////////////
         public void RecommencerTout()
         {
+            gameOver.Close();
             pointsTotale = 0;
             currentZone = 0;
             map = new StringBuilder(myMaps[currentZone]);
@@ -416,6 +416,7 @@ namespace InterfaceGraphique
         
         private void mPrincipal_menu_Click(object sender, EventArgs e)
         {
+            timer.Stop();
             this.Close();
         }
 
