@@ -119,6 +119,12 @@
     <Compile Include="PartieRapide.Designer.cs">
       <DependentUpon>PartieRapide.cs</DependentUpon>
     </Compile>
+    <Compile Include="PartieTerminee.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="PartieTerminee.designer.cs">
+      <DependentUpon>PartieTerminee.cs</DependentUpon>
+    </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Proprietes.cs">
@@ -153,6 +159,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="PartieRapide.resx">
       <DependentUpon>PartieRapide.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="PartieTerminee.resx">
+      <DependentUpon>PartieTerminee.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
@@ -286,6 +295,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="%24this.Icon.ico" />
+    <None Include="Resources\dondemarco.wav" />
     <None Include="Resources\1416982812770.jpg" />
     <None Include="Resources\1418146484463.jpg" />
     <None Include="Resources\scary.wav" />
