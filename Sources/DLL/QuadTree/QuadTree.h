@@ -55,6 +55,9 @@ private:
 	// Vérifier si l'objet est dans le QuadTree
 	bool estDansQuadTree(NoeudAbstrait* noeud, QuadTree* quad) const;
 
+	// Vérifier si un point est dans le QuadTree
+	bool estDansQuadTree(glm::dvec3 point, QuadTree* quad) const;
+
 	// Retourne le QuadTree dans lequel il faut faire l'insertion
 	QuadTree* obtenirQuadrant(NoeudAbstrait* noeud);
 
