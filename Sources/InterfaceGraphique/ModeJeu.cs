@@ -23,16 +23,18 @@ namespace InterfaceGraphique
         private bool activateSpotLight = false; ///< Etat de la lumiere spot
         private EtatJeuAbstrait etat; ///< Machine à états
         public int pointsPartie = FonctionsNatives.obtenirNombreDePointsDePartie();
-        public int pointsTotale = FonctionsNatives.obtenirNombreDePointsTotals();
+        public int pointsTotale = FonctionsNatives.obtenirNombreDePointsDePartie();
         public int billeDisponible;
         private int nombreDeBillesGagner;
-        private int nobtenirNombreDePointsPourUneBilleSupplementaire;
+        private int pointsGagnerBille;
+        private int pointsGanerPartie;
         
         private void resetConfig() 
         {
             billeDisponible = 0;
             nombreDeBillesGagner = 0;
-            nobtenirNombreDePointsPourUneBilleSupplementaire = FonctionsNatives.obtenirNombreDePointsPourUneBilleSupplementaire();
+            pointsGagnerBille = FonctionsNatives.obtenirPointsGagnerBille();
+            pointsGanerPartie = FonctionsNatives.obtenirPointsGagnerPartie();
         }
 
         public ModeJeu(List<string> maps, int playerType)
@@ -102,29 +104,23 @@ namespace InterfaceGraphique
                     }
                    FonctionsNatives.dessinerOpenGL();
                    FPSCounter.Text = FonctionsNatives.obtenirAffichagesParSeconde().ToString();
+                   pointsTotale -= pointsPartie;
                    pointsPartie = FonctionsNatives.obtenirNombreDePointsDePartie();
-                   pointsTotale = FonctionsNatives.obtenirNombreDePointsTotals();
+                   pointsTotale += pointsPartie;
 
-                   if (pointsPartie > nombreDeBillesGagner * nobtenirNombreDePointsPourUneBilleSupplementaire + nobtenirNombreDePointsPourUneBilleSupplementaire)
+                   if (pointsPartie > nombreDeBillesGagner * pointsGagnerBille + pointsGagnerBille)
                        nombreDeBillesGagner++;
 
                    this.PointsTotal.Text = pointsTotale.ToString();
                    this.PointPartie.Text = pointsPartie.ToString();
                    this.nbBilles.Text = nombreDeBillesGagner.ToString();
-
-                    if (pointsTotale < pointsPartie)
+                    
+                   if (false && pointsGanerPartie < pointsPartie)
                     {
                         if (gameOver.Visible == false)
                             gameOver.ShowDialog(this);
                         peutAnimer = false;
                     }
-                    /*
-                    if (nombreDeBillesGagner <= 0 && pointsTotale >= pointsPartie)
-                    {
-                        // TODO: En cas de défaut (arranger les fonctions natives pour reset le bon nb de billes sinon
-                      * //       c'est toujours 0.
-                    }
-                    */
 
                     if (currentZoom <= 0)
                     {

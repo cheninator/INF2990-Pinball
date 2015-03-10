@@ -471,12 +471,12 @@ namespace InterfaceGraphique
         public static extern void detruireSingleton();
 
         [DllImport(@"Noyau.dll", CallingConvention = CallingConvention.Cdecl)]
-        public static extern int obtenirNombreDePointsPourUneBilleSupplementaire();
+        public static extern int obtenirPointsGagnerBille();
+
+        [DllImport(@"Noyau.dll", CallingConvention = CallingConvention.Cdecl)]
+        public static extern int obtenirPointsGagnerPartie();
 
         [DllImport(@"Noyau.dll", CallingConvention = CallingConvention.Cdecl)]
         public static extern int obtenirNombreDePointsDePartie();
-
-        [DllImport(@"Noyau.dll", CallingConvention = CallingConvention.Cdecl)]
-        public static extern int obtenirNombreDePointsTotals();
     }
 }
