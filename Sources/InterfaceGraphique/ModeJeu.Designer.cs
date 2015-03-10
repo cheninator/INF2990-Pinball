@@ -61,6 +61,7 @@
             // 
             // nbBilles
             // 
+            this.nbBilles.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.nbBilles.AutoSize = true;
             this.nbBilles.Location = new System.Drawing.Point(13, 239);
             this.nbBilles.Name = "nbBilles";
@@ -70,8 +71,9 @@
             // 
             // PointPartie
             // 
+            this.PointPartie.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.PointPartie.AutoSize = true;
-            this.PointPartie.Location = new System.Drawing.Point(12, 226);
+            this.PointPartie.Location = new System.Drawing.Point(13, 226);
             this.PointPartie.Name = "PointPartie";
             this.PointPartie.Size = new System.Drawing.Size(63, 13);
             this.PointPartie.TabIndex = 3;
@@ -80,6 +82,7 @@
             // 
             // PointsTotal
             // 
+            this.PointsTotal.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.PointsTotal.AutoSize = true;
             this.PointsTotal.Location = new System.Drawing.Point(12, 213);
             this.PointsTotal.Name = "PointsTotal";

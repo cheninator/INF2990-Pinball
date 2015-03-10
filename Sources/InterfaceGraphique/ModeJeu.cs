@@ -132,7 +132,7 @@ namespace InterfaceGraphique
                    this.PointPartie.Text = pointsPartie.ToString();
                    this.nbBilles.Text = nombreDeBillesGagner.ToString();
 
-                    if (pointsTotale < pointsPartie && boolTemp)
+                    if (pointsPartie < pointsGanerPartie && boolTemp)
                     {
                         if (currentZone >= nbZones)
                         {
