@@ -124,7 +124,7 @@ namespace InterfaceGraphique
         {
           StringBuilder bille = new StringBuilder("bille");
           FonctionsNatives.creerObjet(bille, bille.Capacity);
-          timer.Stop();
+          timer.Enabled = false;
         }
         public void MettreAJour(double tempsInterAffichage)
         {
@@ -159,11 +159,30 @@ namespace InterfaceGraphique
                             //FonctionsNatives.supprimerBille();
                             Console.WriteLine(pointsPartie);
                             pointsPartie = 0;
-                           // gameOver = new PartieTerminee(true);
-                           // gameOver.ShowDialog(this);
-                            RecommencerTout();
-                          
-                            
+                            gameOver = new PartieTerminee(true);
+                            gameOver.ShowDialog(this);
+                           // RecommencerTout();
+                        }
+                        else
+                        {
+                            boolTemp = false;
+                            peutAnimer = false;
+                            map = new StringBuilder(myMaps[currentZone]);
+                            nextMap = new StringBuilder(map.ToString());
+                            nextMap.Remove(nextMap.Length - 4, 4);
+                            Console.WriteLine(Path.GetFileName(nextMap.ToString()));
+                            zInfo = new ZoneInfo(Path.GetFileName(nextMap.ToString()), FonctionsNatives.obtenirDifficulte(map, map.Capacity).ToString());
+                            this.Hide();
+                            zInfo.ShowDialog();
+                            this.Show();
+
+                            FonctionsNatives.ouvrirXML(map, map.Capacity);
+                            resetConfig();
+                            FonctionsNatives.construireListesPalettes();
+                            currentZone++;
+                            peutAnimer = true;
+                            boolTemp = true;
+                            timer.Start();
                         }
                     }
 
@@ -407,12 +426,11 @@ namespace InterfaceGraphique
         ////////////////////////////////////////////////////////////////////////
         public void RecommencerTout()
         {
-          /*  if (gameOver.Visible)
+           if (gameOver.Visible)
             {
-                gameOver.Close();
-                gameOver.Dispose();
+                gameOver.Hide();
             }
-           */
+           
             pointsPartie = 0;
             boolTemp = true;
             currentZone = 0;
@@ -420,9 +438,10 @@ namespace InterfaceGraphique
            nextMap = new StringBuilder(map.ToString());
            nextMap.Remove(nextMap.Length - 4, 4);
             Console.WriteLine(map);
-            
+            this.Hide();
             zInfo = new ZoneInfo(Path.GetFileName(nextMap.ToString()), FonctionsNatives.obtenirDifficulte(map, map.Capacity).ToString());
             zInfo.ShowDialog();
+            this.Show();
             FonctionsNatives.ouvrirXML(map, map.Capacity);
             /* 
          FonctionsNatives.ouvrirXML(tempMap, tempMap.Capacity);
@@ -435,7 +454,9 @@ namespace InterfaceGraphique
          peutAnimer = true;
          timer.Start();
         
-
+                gameOver.Close();
+                gameOver.Dispose();
+           
         }
 
         ////////////////////////////////////////////////////////////////////////
