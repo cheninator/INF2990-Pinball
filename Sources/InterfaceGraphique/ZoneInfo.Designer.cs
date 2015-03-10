@@ -94,7 +94,7 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.screenShot.Location = new System.Drawing.Point(16, 199);
             this.screenShot.Name = "screenShot";
-            this.screenShot.Size = new System.Drawing.Size(250, 236);
+            this.screenShot.Size = new System.Drawing.Size(275, 236);
             this.screenShot.TabIndex = 4;
             this.screenShot.TabStop = false;
             // 
@@ -122,7 +122,7 @@
             // labelWarning
             // 
             this.labelWarning.AutoSize = true;
-            this.labelWarning.Location = new System.Drawing.Point(13, 492);
+            this.labelWarning.Location = new System.Drawing.Point(19, 492);
             this.labelWarning.Name = "labelWarning";
             this.labelWarning.Size = new System.Drawing.Size(253, 13);
             this.labelWarning.TabIndex = 7;
@@ -133,7 +133,7 @@
             this.tempRestant.Location = new System.Drawing.Point(16, 466);
             this.tempRestant.Maximum = 200;
             this.tempRestant.Name = "tempRestant";
-            this.tempRestant.Size = new System.Drawing.Size(250, 23);
+            this.tempRestant.Size = new System.Drawing.Size(275, 23);
             this.tempRestant.TabIndex = 8;
             this.tempRestant.Value = 200;
             // 
@@ -180,7 +180,7 @@
             this.labelWin.Font = new System.Drawing.Font("Monotype Corsiva", 21.75F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.labelWin.Location = new System.Drawing.Point(16, 13);
             this.labelWin.Name = "labelWin";
-            this.labelWin.Size = new System.Drawing.Size(250, 53);
+            this.labelWin.Size = new System.Drawing.Size(275, 53);
             this.labelWin.TabIndex = 13;
             this.labelWin.Text = "Vous avez gagné!!!";
             this.labelWin.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;

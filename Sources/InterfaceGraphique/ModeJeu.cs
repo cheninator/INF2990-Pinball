@@ -24,10 +24,7 @@ namespace InterfaceGraphique
         private bool activateDirectLight = false; ///< Etat de la lumiere directe
         private bool activateSpotLight = false; ///< Etat de la lumiere spot
         private EtatJeuAbstrait etat; ///< Machine à états
-                                      ///
-        protected int debugInt;
-        public int getDebugInt() { return debugInt; }
-        public void setDebugInt(int val) { debugInt = val; }
+                                      
         public double getCurrentZoom() { return currentZoom; }
         public void setCurrentZoom(double val) { currentZoom = val; }
         public Touches getTouches() { return touches; }
@@ -97,8 +94,6 @@ namespace InterfaceGraphique
             Program.tempBool = true;
             panel_GL.Focus();
 
-            debugInt = 773;
-            Console.WriteLine("taskjhdkjashdjsa");
             etat = new EtatJeuDebutDePartie(this);
             etat = new EtatJeuJouer(this);
             timer.Start();
@@ -275,14 +270,14 @@ namespace InterfaceGraphique
         private void PartieRapide_KeyDown(object sender, KeyEventArgs e)
         {
             Console.WriteLine("KeyDown");
-            etat.KeyDown(sender, e);
+            etat.traiterKeyDown(sender, e);
         }
 
 
         private void PartieRapide_KeyUp(object sender, KeyEventArgs e)
         {
             Console.WriteLine("KeyUp");
-            etat.KeyUp(sender, e);
+            etat.traiterKeyUp(sender, e);
             Console.WriteLine("-----------------------------------------");
             Console.WriteLine("-----------------------------------------");
         }
@@ -297,7 +292,7 @@ namespace InterfaceGraphique
         private void PartieRapide_KeyPress(object sender, KeyPressEventArgs e)
         {
             Console.WriteLine("KeyPress");
-            etat.KeyPress(sender, e);
+            etat.traiterKeyPress(sender, e);
         }
 
         private void panel_GL_MouseWheel(object sender, MouseEventArgs e)
@@ -355,7 +350,7 @@ namespace InterfaceGraphique
         ////////////////////////////////////////////////////////////////////////
         public void Quitter()
         {
-            timer.Stop();
+            timer.Enabled = false;
             this.Close();
         }
         
