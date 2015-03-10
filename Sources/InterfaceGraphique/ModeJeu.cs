@@ -10,7 +10,7 @@ namespace InterfaceGraphique
     {
         public PartieTerminee gameOver;
         private double currentZoom = -1; ///< Zoom courant
-        private Touches touches; /// les Touches pour le jeux
+        protected Touches touches; /// les Touches pour le jeux
         private ZoneInfo zInfo;
         private int currentZone = 0;
         private int nbZones;
@@ -28,7 +28,22 @@ namespace InterfaceGraphique
         public int billeDisponible;
         private int nombreDeBillesGagner;
         private int nobtenirNombreDePointsPourUneBilleSupplementaire;
-        
+
+        public partial class EtatJeuAbstrait
+        {
+            public EtatJeuAbstrait()
+            {
+
+            }
+            public EtatJeuAbstrait(ModeJeu parent)
+            {
+                this.parent_ = parent;
+            }
+        };
+
+
+
+
         private void resetConfig() 
         {
             billeDisponible = 0;
@@ -71,6 +86,8 @@ namespace InterfaceGraphique
             panel_GL.Focus();
             StringBuilder bille = new StringBuilder("bille");
             FonctionsNatives.creerObjet(bille, bille.Capacity);
+
+            etat = new EtatJeuDebutDePartie(this);
         }
         ////////////////////////////////////////////////////////////////////////
         ///

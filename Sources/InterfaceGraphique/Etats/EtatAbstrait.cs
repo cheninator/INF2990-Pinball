@@ -9,7 +9,7 @@ using System.Windows.Forms;
 
 namespace InterfaceGraphique
 {
-    abstract class EtatAbstrait
+    public abstract class EtatAbstrait
     {
         public virtual bool traiterClavier(KeyEventArgs e)
         {
