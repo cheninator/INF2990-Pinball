@@ -220,6 +220,21 @@ bool NoeudAbstrait::ajouter(NoeudAbstrait* enfant)
 
 ////////////////////////////////////////////////////////////////////////
 ///
+/// @fn NoeudAbstrait* NoeudAbstrait::obtenirDernierNoeud()
+///
+/// Cette fonction retourne le plus recent objet rajouter.
+///
+/// @return Aucun.
+///
+////////////////////////////////////////////////////////////////////////
+NoeudAbstrait* NoeudAbstrait::obtenirDernierNoeud()
+{
+	return nullptr;
+}
+
+
+////////////////////////////////////////////////////////////////////////
+///
 /// @fn unsigned int NoeudAbstrait::getEnfant(int position)
 ///
 /// Elle retourne toujours 0 pour la classe de base, car cette

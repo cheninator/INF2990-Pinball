@@ -263,6 +263,21 @@ bool NoeudComposite::ajouter(NoeudAbstrait* enfant)
 
 ////////////////////////////////////////////////////////////////////////
 ///
+/// @fn NoeudAbstrait* NoeudComposite::obtenirDernierNoeud()
+///
+/// Cette fonction retourne le plus recent objet rajouter.
+///
+/// @return this.
+///
+////////////////////////////////////////////////////////////////////////
+NoeudAbstrait* NoeudComposite::obtenirDernierNoeud()
+{
+	return this;
+}
+
+
+////////////////////////////////////////////////////////////////////////
+///
 /// @fn unsigned int NoeudComposite::obtenirNombreEnfants() const
 ///
 /// Retourne le nombre d'enfants directement sous ce noeud.  Elle ne
