@@ -153,37 +153,11 @@ namespace InterfaceGraphique
                     {
                         if (currentZone >= nbZones)
                         {
-                            peutAnimer = false;
-                            boolTemp = false;
-                            //FonctionsNatives.supprimerBille();
-                            Console.WriteLine(pointsPartie);
-                            pointsPartie = 0;
-                            gameOver = new PartieTerminee(true);
-                            gameOver.ShowDialog(this);
-                           // RecommencerTout();
+                            FinCampagne();
                         }
                         else
                         {
-                            boolTemp = false;
-                            peutAnimer = false;
-                            map = new StringBuilder(myMaps[currentZone]);
-                            nextMap = new StringBuilder(map.ToString());
-                            nextMap.Remove(nextMap.Length - 4, 4);
-                            Console.WriteLine(Path.GetFileName(nextMap.ToString()));
-                            
-                            System.Threading.Thread.Sleep(1000);
-                            zInfo = new ZoneInfo(Path.GetFileName(nextMap.ToString()), FonctionsNatives.obtenirDifficulte(map, map.Capacity).ToString(),true);
-                            this.Hide();
-                            zInfo.ShowDialog();
-                            this.Show();
-
-                            FonctionsNatives.ouvrirXML(map, map.Capacity);
-                            resetConfig();
-                            FonctionsNatives.construireListesPalettes();
-                            currentZone++;
-                            peutAnimer = true;
-                            boolTemp = true;
-                            timer.Start();
+                            ProchainePartie();  
                         }
                     }
 
@@ -211,6 +185,38 @@ namespace InterfaceGraphique
             }
         }
 
+        private void ProchainePartie()
+        {
+            boolTemp = false;
+            peutAnimer = false;
+            map = new StringBuilder(myMaps[currentZone]);
+            nextMap = new StringBuilder(map.ToString());
+            nextMap.Remove(nextMap.Length - 4, 4);
+            Console.WriteLine(Path.GetFileName(nextMap.ToString()));
+
+            System.Threading.Thread.Sleep(500);
+            zInfo = new ZoneInfo(Path.GetFileName(nextMap.ToString()), FonctionsNatives.obtenirDifficulte(map, map.Capacity).ToString(), true);
+            this.Hide();
+            zInfo.ShowDialog();
+            this.Show();
+
+            FonctionsNatives.ouvrirXML(map, map.Capacity);
+            resetConfig();
+            FonctionsNatives.construireListesPalettes();
+            currentZone++;
+            peutAnimer = true;
+            boolTemp = true;
+            timer.Start();
+
+        }
+
+        private void FinCampagne()
+        {
+             peutAnimer = false;
+                            boolTemp = false;
+                            gameOver = new PartieTerminee(true);
+                            gameOver.ShowDialog(this);
+        }
         private void PartieRapide_Load(object sender, EventArgs e)
         {
 
