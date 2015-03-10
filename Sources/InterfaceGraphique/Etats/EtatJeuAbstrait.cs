@@ -219,7 +219,7 @@ namespace InterfaceGraphique
                         parent_.nextMap = new StringBuilder(parent_.map.ToString());
                         parent_.nextMap.Remove(parent_.nextMap.Length - 4, 4);
                         Console.WriteLine(Path.GetFileName(parent_.nextMap.ToString()));
-                        parent_.zInfo = new ZoneInfo(Path.GetFileName(parent_.nextMap.ToString()), FonctionsNatives.obtenirDifficulte(parent_.map, parent_.map.Capacity).ToString());
+                        parent_.zInfo = new ZoneInfo(Path.GetFileName(parent_.nextMap.ToString()), FonctionsNatives.obtenirDifficulte(parent_.map, parent_.map.Capacity).ToString(),false);
                         //this.Hide();
                         parent_.zInfo.ShowDialog();
                         //this.Show();
@@ -228,8 +228,6 @@ namespace InterfaceGraphique
                         parent_.resetConfig();
                         FonctionsNatives.construireListesPalettes();
                         parent_.currentZone++;
-                    }
-
                 }
                 else if (e.KeyChar == (char)8)
                 {

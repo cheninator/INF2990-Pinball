@@ -29,6 +29,7 @@
         private void InitializeComponent()
         {
             this.panel_GL = new System.Windows.Forms.Panel();
+            this.nbBilles = new System.Windows.Forms.Label();
             this.PointPartie = new System.Windows.Forms.Label();
             this.menuStrip = new System.Windows.Forms.MenuStrip();
             this.fichier_MenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -36,7 +37,6 @@
             this.Camera_MenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.Ortho_MenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.Orbitale_MenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.nbBilles = new System.Windows.Forms.Label();
             this.panel_GL.SuspendLayout();
             this.menuStrip.SuspendLayout();
             this.SuspendLayout();
@@ -54,6 +54,16 @@
             this.panel_GL.Size = new System.Drawing.Size(284, 261);
             this.panel_GL.TabIndex = 4;
             this.panel_GL.MouseClick += new System.Windows.Forms.MouseEventHandler(this.panel_GL_MouseClick);
+            // 
+            // nbBilles
+            // 
+            this.nbBilles.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.nbBilles.AutoSize = true;
+            this.nbBilles.Location = new System.Drawing.Point(13, 239);
+            this.nbBilles.Name = "nbBilles";
+            this.nbBilles.Size = new System.Drawing.Size(43, 13);
+            this.nbBilles.TabIndex = 4;
+            this.nbBilles.Text = "nbBilles";
             // 
             // PointPartie
             // 
@@ -114,16 +124,6 @@
             this.Orbitale_MenuItem.Name = "Orbitale_MenuItem";
             this.Orbitale_MenuItem.Size = new System.Drawing.Size(182, 22);
             this.Orbitale_MenuItem.Text = "Vue Orbitale";
-            // 
-            // nbBilles
-            // 
-            this.nbBilles.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.nbBilles.AutoSize = true;
-            this.nbBilles.Location = new System.Drawing.Point(13, 239);
-            this.nbBilles.Name = "nbBilles";
-            this.nbBilles.Size = new System.Drawing.Size(43, 13);
-            this.nbBilles.TabIndex = 4;
-            this.nbBilles.Text = "nbBilles";
             // 
             // ModeJeu
             // 

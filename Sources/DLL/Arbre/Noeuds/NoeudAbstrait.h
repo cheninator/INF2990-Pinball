@@ -158,6 +158,9 @@ public:
 	/// Ajoute un noeud enfant.
 	virtual bool ajouter(NoeudAbstrait* enfant);
 
+	/// Retourne le dernier noeud ajouter
+	NoeudAbstrait* obtenirDernierNoeud();
+
 	/// Obtenir les enfants du noeud si il y a lieu
 	virtual NoeudAbstrait* getEnfant(int position);
 

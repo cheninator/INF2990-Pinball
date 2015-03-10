@@ -176,7 +176,7 @@ namespace InterfaceGraphique
              Console.WriteLine("LANCEMENT DE CAMPAGNE");
              Console.WriteLine(typeJoueur);
 
-             ZoneInfo zi = new ZoneInfo(ZonesChoisis.Items[0].Text, ZonesChoisis.Items[0].SubItems[1].Text);
+             ZoneInfo zi = new ZoneInfo(ZonesChoisis.Items[0].Text, ZonesChoisis.Items[0].SubItems[1].Text,false);
              this.Hide();
              zi.ShowDialog();
              ((MainMenu)this.Owner).LancerModeJeu(zonesCampagne,typeJoueur);

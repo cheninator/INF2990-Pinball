@@ -42,7 +42,7 @@
 NoeudBille::NoeudBille(const std::string& typeNoeud)
 	: NoeudComposite{ typeNoeud }
 {
-	vitesse_ = glm::dvec3{ 10 ,60, 0 };
+	vitesse_ = glm::dvec3{ 10 ,100, 0 };
 	constanteDeFrottement_ = 1.0;
 }
 
@@ -388,9 +388,7 @@ void NoeudBille::afficherVitesse(glm::dvec3 nouvelleVitesse)
 		<< std::fixed << std::setfill('0') << std::setw(2) << std::setprecision(2) << time.wSecond << ":"
 		<< std::fixed << std::setfill('0') << std::setw(3) << std::setprecision(3) << time.wMilliseconds;
 
-	std::cout << " - Vitesse : { x : "
-		<< std::fixed << std::setfill('0') << std::setw(2) << std::setprecision(2) << nouvelleVitesse.x << "   y : "
-		<< std::fixed << std::setfill('0') << std::setw(2) << std::setprecision(2) << nouvelleVitesse.y << " }" << std::endl;
+	std::cout << std::fixed << std::setfill('0') << std::setw(2) << " - Vitesse " << glm::length(nouvelleVitesse) << std::endl;
 }
 
 ////////////////////////////////////////////////////////////////////////

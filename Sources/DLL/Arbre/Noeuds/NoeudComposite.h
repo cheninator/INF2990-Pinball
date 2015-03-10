@@ -59,6 +59,8 @@ public:
 
    /// Ajoute un noeud enfant.
    virtual bool ajouter( NoeudAbstrait* enfant );
+   /// Retourne le dernier noeud ajouter
+   NoeudAbstrait* obtenirDernierNoeud();
    /// Obtient le nombre d'enfants du noeud.
    virtual unsigned int obtenirNombreEnfants() const;
    /// Obtenir l'enfant

@@ -15,7 +15,7 @@ namespace InterfaceGraphique
     {
         int time;
         int[] proprietes = new int[5];
-        public ZoneInfo(string nomZone, string difficulte)
+        public ZoneInfo(string nomZone, string difficulte,bool win)
         {
             InitializeComponent();
             this.Icon = Properties.Resources.Pinball;
@@ -24,7 +24,14 @@ namespace InterfaceGraphique
             StringBuilder zoneProps = new StringBuilder(Application.StartupPath + @"\zones\" + nomZone + ".xml");
             IntPtr config = FonctionsNatives.obtenirProprietes(zoneProps, zoneProps.Capacity);
             Marshal.Copy(config, proprietes, 0, 5);
-           
+            if (win)
+            {
+                labelWin.Text = "Vous avez gagné!";
+            }
+            else
+            {
+                labelWin.Text = "Début de la partie";
+            }
             time = 5;
             timer1.Enabled = true;
            
