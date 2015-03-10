@@ -14,8 +14,15 @@ namespace InterfaceGraphique
         {
             protected ModeJeu parent_;
             
+            public virtual bool traiterRoulette(object sender, MouseEventArgs e)
+            {
+                return false;
+            }
             public virtual bool KeyDown(object sender, KeyEventArgs e)
             {
+
+                Console.WriteLine("Informations du jeu  : " + parent_.debugInt);
+
                 if (e.KeyCode == Keys.Left)
                     FonctionsNatives.translater(-10, 0);
                 else if (e.KeyCode == Keys.Right)
@@ -155,47 +162,65 @@ namespace InterfaceGraphique
                     }
                 return false;
             }
+            public virtual bool KeyUp(object sender, KeyEventArgs e)
+            {
+                if (e.KeyValue == parent_.touches.PGJ1)
+                {
+                    FonctionsNatives.desactiverPalettesGJ1();
+                    // Console.WriteLine("Touche R relachée");
+                }
+                return false;
+            }
         }
     }
 
     class EtatJeuPause : InterfaceGraphique.ModeJeu.EtatJeuAbstrait
     {        
-        public EtatJeuPause(ModeJeu modeJeu)
+        public EtatJeuPause(ModeJeu modeJeu) : base(modeJeu)
         {
-            // TODO: Complete member initialization
-            this.parent_ = modeJeu;
+            Console.WriteLine("Etat :" + '\t' + "Pause");
+            Console.WriteLine(parent_.getDebugInt());
         }
-
-
     }
 
     class EtatJeuJouer : InterfaceGraphique.ModeJeu.EtatJeuAbstrait
     {
-        public EtatJeuJouer(ModeJeu modeJeu)
+        public EtatJeuJouer(ModeJeu modeJeu) : base(modeJeu)
         {
             // TODO: Complete member initialization
-            this.parent_ = modeJeu;
+            Console.WriteLine("Etat :" + '\t' + "Jouer");
+            Console.WriteLine(parent_.getDebugInt());
         }
-
+        
         
     }
 
     class EtatJeuDebutDePartie : InterfaceGraphique.ModeJeu.EtatJeuAbstrait
     {
-        public EtatJeuDebutDePartie(ModeJeu modeJeu)
+        public EtatJeuDebutDePartie(ModeJeu modeJeu) : base(modeJeu)
         {
             // TODO: Complete member initialization
-            this.parent_ = modeJeu;
+            Console.WriteLine("Etat :" + '\t' + "DebutDePartie");
+            Console.WriteLine(parent_.getDebugInt());
         }
-        
+
+        public override bool traiterRoulette(object sender, MouseEventArgs e)
+        {
+            if (e.Delta > 0)
+                FonctionsNatives.zoomIn();
+            else if (e.Delta < 0)
+                FonctionsNatives.zoomOut();
+            parent_.setCurrentZoom(FonctionsNatives.obtenirZoomCourant());
+            return false;
+        }
     }
 
     class EtatJeuFinDePartie : InterfaceGraphique.ModeJeu.EtatJeuAbstrait
     {
-        public EtatJeuFinDePartie(ModeJeu modeJeu)
+        public EtatJeuFinDePartie(ModeJeu modeJeu) : base(modeJeu)
         {
-            // TODO: Complete member initialization
-            this.parent_ = modeJeu;
+            Console.WriteLine("Etat :" + '\t' + "FinDePartie");
+            Console.WriteLine(parent_.getDebugInt());
         }
 
     }
