@@ -295,7 +295,6 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="%24this.Icon.ico" />
-    <None Include="Resources\dondemarco.wav" />
     <None Include="Resources\1416982812770.jpg" />
     <None Include="Resources\1418146484463.jpg" />
     <None Include="Resources\scary.wav" />

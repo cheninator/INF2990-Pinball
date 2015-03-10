@@ -12,7 +12,7 @@ namespace InterfaceGraphique
 {
     public partial class PartieTerminee : Form
     {
-        System.Media.SoundPlayer playerBtn = new System.Media.SoundPlayer(Properties.Resources.dondemarcooo);
+        System.Media.SoundPlayer playerBtn = new System.Media.SoundPlayer(Properties.Resources.button_29);
 
         public PartieTerminee()
         {
