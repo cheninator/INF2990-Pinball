@@ -292,6 +292,10 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="%24this.Icon.ico" />
+    <None Include="Resources\Trombone.wav" />
+    <None Include="Resources\Fireworks.wav" />
+    <None Include="Resources\Win.gif" />
+    <None Include="Resources\Lose.jpg" />
     <None Include="Resources\1416982812770.jpg" />
     <None Include="Resources\scary.wav" />
     <None Include="Resources\touche-invalide.wav" />
