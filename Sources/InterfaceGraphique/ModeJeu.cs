@@ -26,10 +26,10 @@ namespace InterfaceGraphique
         private EtatJeuAbstrait etat; ///< Machine à états
         public int pointsPartie = FonctionsNatives.obtenirNombreDePointsDePartie();
         public int pointsTotale = FonctionsNatives.obtenirNombreDePointsDePartie();
-        public int billeDisponible;
-        private int nombreDeBillesGagner;
-        private int pointsGagnerBille;
-        private int pointsGanerPartie;
+        public int billeDisponible = 0;
+        private int nombreDeBillesGagner = 0;
+        private int pointsGagnerBille = 0;
+        private int pointsGanerPartie = 0;
         
         private void resetConfig() 
         {
@@ -124,7 +124,7 @@ namespace InterfaceGraphique
                    pointsPartie = FonctionsNatives.obtenirNombreDePointsDePartie();
                    pointsTotale += pointsPartie;
 
-                   if (pointsPartie > nombreDeBillesGagner * pointsGagnerBille + pointsGagnerBille)
+                   if (pointsPartie >= nombreDeBillesGagner * pointsGagnerBille + pointsGagnerBille)
                        nombreDeBillesGagner++;
 
                    this.PointsTotal.Text = pointsTotale.ToString();
