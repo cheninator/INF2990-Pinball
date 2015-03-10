@@ -100,6 +100,7 @@ FacadeModele* FacadeModele::obtenirInstance()
 	{
 		instance_ = new FacadeModele();
 		instance_->configuration_ = new ConfigScene();
+		instance_->proprietes_ = new int[6];
 	}
 	return instance_;
 }
@@ -134,6 +135,7 @@ FacadeModele::~FacadeModele()
 {
 	delete arbre_;
 	delete vue_;
+	delete proprietes_;
 }
 
 
@@ -982,6 +984,7 @@ void FacadeModele::setPause( bool pause)
 	delete visiteur;
 }
 
+
 ///////////////////////////////////////////////////////////////////////////////
 ///
 /// @fn void FacadeModele::setDebug(bool valeurDebugBille, bool valeurDebugPortail)
@@ -1011,6 +1014,7 @@ void FacadeModele::setDebug(bool valeurSpotLight)
 	FacadeModele::obtenirInstance()->obtenirArbreRenduINF2990()->accepterVisiteur(visiteur);
 	delete visiteur;
 }
+
 
 ///////////////////////////////////////////////////////////////////////////////
 ///
@@ -1087,6 +1091,7 @@ int FacadeModele::obtenirCentreMasseY()
 	return centreMasseY;
 }
 
+
 ///////////////////////////////////////////////////////////////////////////////
 ///
 /// @fn bool FacadeModele::appliquerZoomInitial()
@@ -1154,6 +1159,7 @@ int FacadeModele::obtenirDifficulte(char* nomFichier, int length)
 	return niveau;
 }
 
+
 void FacadeModele::sauvegarderCampagne(char* nomMap, int length)
 {
 	configuration_->modifierCampagne(nomMap, length);
@@ -1210,8 +1216,27 @@ void FacadeModele::desactiverPalettesGJ1()
 }
 
 
-
 void FacadeModele::supprimerBille()
 {
 	arbre_->effacer(arbre_->chercher(ArbreRenduINF2990::NOM_BILLE));
+}
+
+
+int* FacadeModele::obtenirProprietes(char* nomFichier, int length)
+{
+	tinyxml2::XMLDocument* fichierXML = new tinyxml2::XMLDocument();
+	fichierXML->LoadFile(nomFichier);
+
+	tinyxml2::XMLElement* elementPropriete = fichierXML->FirstChildElement("Proprietes");
+	tinyxml2::XMLElement* element = elementPropriete->FirstChildElement("PointsButoir");
+
+	for (int i = 0; i < 6; i++)
+	{
+		proprietes_[i] = element->FirstAttribute()->IntValue();
+		element = element->NextSiblingElement();
+	}
+
+	delete fichierXML;
+
+	return proprietes_;
 }
