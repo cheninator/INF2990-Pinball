@@ -206,6 +206,7 @@ bool ArbreRenduINF2990::initialiserXML(std::string nomFichier)
 		lireXML(document);
 		fichierTrouve = true;
 	}
+	SingletonGlobal::obtenirInstance()->resetConfigurationCollision(proprietes_[0], proprietes_[1], proprietes_[2], proprietes_[3], proprietes_[4]);
 
 	return fichierTrouve;
 }

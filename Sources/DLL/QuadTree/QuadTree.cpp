@@ -157,25 +157,51 @@ bool QuadTree::estDansQuadTree(NoeudAbstrait* noeud, QuadTree* quad) const
 		return false;
 
 	std::vector<glm::dvec3> points;
-	
-	for (int i = 0; i < 4; i++)
-		points.push_back({ 0.0, 0.0, 0.0 });
 
 	// Obtenir les 4 points de la boite englobante
-	noeud->obtenirVecteursBoite(points[0], points[1], points[2], points[3]);
+	points = noeud->obtenirVecteursEnglobants();
 
-	for (int i = 0; i < 4; i++)
-		points[i] += noeud->obtenirPositionRelative();
+	// Le cas ou ce n'est pas un objet qui a une forme circulaire
+	if (points.size() > 1)
+	{
+		for (int i = 0; i < 4; i++)
+			points[i] += noeud->obtenirPositionRelative();
+
+		for (unsigned int i = 0; i < points.size(); i++)
+		{
+			if (!(estDansQuadTree(points[0], quad)))
+				return false;
+		}
+	}
+
+	// Le cas ou c'est un objet qui a une forme circulaire
+	else if (points.size() == 1)
+	{
+		glm::dvec3 position = noeud->obtenirPositionRelative();
+		double rayon = points[0].x;
+
+		glm::dvec3 nord = { position.x, position.y + rayon, position.z };
+		glm::dvec3 sud = { position.x, position.y - rayon, position.z };
+		glm::dvec3 est = { position.x + rayon, position.y, position.z };
+		glm::dvec3 ouest = { position.x - rayon, position.y, position.z };
+
+		if (estDansQuadTree(nord, quad) && estDansQuadTree(sud, quad)
+			&& estDansQuadTree(est, quad) && estDansQuadTree(ouest, quad))
+			return true;
+
+		else
+			return false;
+	}
+
+	else
+		return false;
+}
 
 
-	if (points[0].x > quad->inferieurGauche_.x && points[0].x < quad->superieurDroit_.x
-		&& points[0].y > quad->inferieurGauche_.y && points[0].y < quad->superieurDroit_.y
-		&& points[1].x > quad->inferieurGauche_.x && points[1].x < quad->superieurDroit_.x
-		&& points[1].y > quad->inferieurGauche_.y && points[1].y < quad->superieurDroit_.y
-		&& points[2].x > quad->inferieurGauche_.x && points[2].x < quad->superieurDroit_.x
-		&& points[2].y > quad->inferieurGauche_.y && points[2].y < quad->superieurDroit_.y
-		&& points[3].x > quad->inferieurGauche_.x && points[3].x < quad->superieurDroit_.x
-		&& points[3].y > quad->inferieurGauche_.y && points[3].y < quad->superieurDroit_.y)
+bool QuadTree::estDansQuadTree(glm::dvec3 points, QuadTree* quad) const
+{
+	if (points.x > quad->inferieurGauche_.x && points.x < quad->superieurDroit_.x
+		&& points.y > quad->inferieurGauche_.y && points.y < quad->superieurDroit_.y)
 		return true;
 
 	else

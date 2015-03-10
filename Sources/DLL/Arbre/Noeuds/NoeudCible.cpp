@@ -33,7 +33,7 @@
 NoeudCible::NoeudCible(const std::string& typeNoeud)
 	: NoeudComposite{ typeNoeud }
 {
-
+	
 }
 
 ////////////////////////////////////////////////////////////////////////
@@ -111,6 +111,10 @@ void NoeudCible::afficherConcret() const
 void NoeudCible::animer(float temps)
 {
 	NoeudComposite::animer(temps);
+	positionRelative_.z = (boite_.coinMax.y - boite_.coinMin.y) / 2.0;
+	rotation_.x = rotation_.x + 1;
+	if (rotation_.x > 360)
+		rotation_.x - 360;
 }
 
 ////////////////////////////////////////////////////////////////////////

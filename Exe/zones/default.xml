@@ -2,8 +2,8 @@
     <PointsButoir Nombre="100"/>
     <PointsTriangulaire Nombre="100"/>
     <PointsCible Nombre="100"/>
-    <PointsVictoire Nombre="1000"/>
-    <PointsBilleGratuite Nombre="500"/>
+    <PointsVictoire Nombre="500"/>
+    <PointsBilleGratuite Nombre="100"/>
     <Difficulte Nombre="10"/>
 </Proprietes>
 

@@ -48,14 +48,13 @@ namespace InterfaceGraphique
 
         private void boutonRecommencer_Click(object sender, EventArgs e)
         {
-           
-           ((ModeJeu)this.Owner).RecommencerTout();
-           this.Close();
-
+            ((ModeJeu)this.Owner).RecommencerTout();
         }
 
         private void PartieTerminee_FormClosing(object sender, FormClosingEventArgs e)
         {
+            this.Close();
+            ((ModeJeu)this.Owner).Close();
             player.Stop();
         }
     }

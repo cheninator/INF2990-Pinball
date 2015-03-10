@@ -137,6 +137,7 @@ void NoeudBille::animer(float temps) // rajouter des parametres ou une fonction 
 
 
 	NoeudComposite::animer(temps);
+	// A METTRE DANS LA FACADEMODELE
 	// Somme des forces agissant sur les particules.
 	// =============================================
 	glm::dvec3 attractionsPortails{ 0, 0, 0 };

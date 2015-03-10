@@ -51,7 +51,7 @@ void SingletonGlobal::resetConfigurationCollision(int collisionPointsCirculaire,
 	//nombreDeBillesDisponibles_ = FacadeModele::obtenirInstance()->obtenirConfiguration()[5];
 	//nombreDeBillesGagner_ = 0;
 
-	pointsTotales_ += pointsPartie_;
+	//pointsTotales_ += pointsPartie_;
 
 	pointsPartie_ = 0;
 

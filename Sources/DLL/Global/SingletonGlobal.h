@@ -32,10 +32,11 @@ public:
 	/// AJOUTER VOS GET/SET sur les variables ici
 	//int getNombreDeBillesDisponibles() { return nombreDeBillesDisponibles_; };
 
-	int getPointsTotales() { return pointsTotales_; };
-	void setPointsTotales(int pointsTotales) { pointsTotales_ = pointsTotales; };
+	//int getPointsTotales() { return pointsTotales_; };
+	//void setPointsTotales(int pointsTotales) { pointsTotales_ = pointsTotales; };
 
 	int getPointsPartie() { return pointsPartie_; };
+	
 	void setPointsPartie(int pointsPartie) { pointsPartie_ = pointsPartie; };
 
 	//void checkBille() {};
@@ -72,7 +73,7 @@ private:
 	//int nombreDeBillesGagner_{ 0 };
 	//int nombreDeBillesDisponibles_{ 0 };
 
-	int pointsTotales_{ 0 };
+	//int pointsTotales_{ 0 };
 	int pointsPartie_{ 0 };
 
 	int collisionPointsCirculaire_{ 0 };
