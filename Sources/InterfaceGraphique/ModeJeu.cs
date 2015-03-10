@@ -9,6 +9,7 @@ namespace InterfaceGraphique
     public partial class ModeJeu : Form
     {
         public PartieTerminee gameOver;
+        private Timer timer;
         private double currentZoom = -1; ///< Zoom courant
         private Touches touches; /// les Touches pour le jeux
         private ZoneInfo zInfo;
@@ -47,7 +48,14 @@ namespace InterfaceGraphique
                 this.FormBorderStyle = FormBorderStyle.None;
                 this.WindowState = FormWindowState.Maximized;
             }
-            
+            timer = new Timer();
+            timer.Enabled = true;
+
+            timer.Interval = 3000;
+            timer.Tick += new System.EventHandler(this.timer_Tick);
+
+
+
             EtablirTouches(playerType);
             this.KeyDown += new KeyEventHandler(PartieRapide_KeyDown);
             this.KeyUp += new KeyEventHandler(PartieRapide_KeyUp);
@@ -71,8 +79,8 @@ namespace InterfaceGraphique
             currentZone++;
             Program.tempBool = true;
             panel_GL.Focus();
-            StringBuilder bille = new StringBuilder("bille");
-            FonctionsNatives.creerObjet(bille, bille.Capacity);
+            timer.Start();
+          
         }
         ////////////////////////////////////////////////////////////////////////
         ///
@@ -92,6 +100,14 @@ namespace InterfaceGraphique
 
         }
 
+
+        private void timer_Tick(object sender, EventArgs e)
+        {
+          StringBuilder bille = new StringBuilder("bille");
+          FonctionsNatives.creerObjet(bille, bille.Capacity);
+          Console.WriteLine("BILLE");
+          timer.Stop();
+        }
         public void MettreAJour(double tempsInterAffichage)
         {
             try
@@ -339,6 +355,7 @@ namespace InterfaceGraphique
                 else if (e.KeyChar == (char)8)
                 {
                     // RELOAD DE LA MAP
+                    timer.Start();
                     FonctionsNatives.ouvrirXML(map, map.Capacity);
                     resetConfig();
                 }
