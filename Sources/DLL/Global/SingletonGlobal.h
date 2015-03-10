@@ -36,6 +36,7 @@ public:
 	//void setPointsTotales(int pointsTotales) { pointsTotales_ = pointsTotales; };
 
 	int getPointsPartie() { return pointsPartie_; };
+	
 	void setPointsPartie(int pointsPartie) { pointsPartie_ = pointsPartie; };
 
 	//void checkBille() {};

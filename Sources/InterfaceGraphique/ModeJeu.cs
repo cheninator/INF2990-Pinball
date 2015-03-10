@@ -29,15 +29,19 @@ namespace InterfaceGraphique
         public int billeDisponible = 0;
         private int nombreDeBillesGagner = 0;
         private int pointsGagnerBille = 0;
-        private int pointsGanerPartie = 0;
+        private int pointsGagnerPartie = 0;
         private int billesDisponibles = 0;
         
         private void resetConfig() 
         {
             billeDisponible = 0;
             nombreDeBillesGagner = 0;
+            pointsPartie = 0;
+            pointsTotale = 0;
             pointsGagnerBille = FonctionsNatives.obtenirPointsGagnerBille();
-            pointsGanerPartie = FonctionsNatives.obtenirPointsGagnerPartie();
+            pointsGagnerPartie = FonctionsNatives.obtenirPointsGagnerPartie();
+            this.PointPartie.Text = pointsPartie.ToString();
+            this.nbBilles.Text = nombreDeBillesGagner.ToString();
         }
 
         public ModeJeu(List<string> maps, int playerType)
@@ -74,6 +78,9 @@ namespace InterfaceGraphique
             Console.WriteLine(nbZones);
             FonctionsNatives.ouvrirXML(map, map.Capacity);
             resetConfig();
+            pointsGagnerPartie = FonctionsNatives.obtenirPointsGagnerPartie();
+            Console.WriteLine(pointsGagnerPartie);
+            Console.WriteLine(pointsPartie);
             FonctionsNatives.construireListesPalettes();
             currentZone++;
             Program.tempBool = true;
@@ -115,12 +122,11 @@ namespace InterfaceGraphique
                     if (peutAnimer)
                     {
                         FonctionsNatives.animer(tempsInterAffichage);
+                        pointsPartie = FonctionsNatives.obtenirNombreDePointsDePartie();
+
                     }
                    FonctionsNatives.dessinerOpenGL();
-                   FPSCounter.Text = FonctionsNatives.obtenirAffichagesParSeconde().ToString();
-                   pointsTotale -= pointsPartie;
-                   pointsPartie = FonctionsNatives.obtenirNombreDePointsDePartie();
-                   pointsTotale += pointsPartie;
+                   
 
                    if (pointsPartie >= nombreDeBillesGagner * pointsGagnerBille + pointsGagnerBille)
                    {
@@ -128,18 +134,22 @@ namespace InterfaceGraphique
                        billesDisponibles++;
                    }
 
-                   this.PointsTotal.Text = pointsTotale.ToString();
                    this.PointPartie.Text = pointsPartie.ToString();
                    this.nbBilles.Text = nombreDeBillesGagner.ToString();
-
-                    if (pointsPartie < pointsGanerPartie && boolTemp)
+                    
+                    if (pointsPartie >= pointsGagnerPartie && boolTemp)
                     {
                         if (currentZone >= nbZones)
                         {
                             peutAnimer = false;
                             boolTemp = false;
+                            FonctionsNatives.supprimerBille();
+                            Console.WriteLine(pointsPartie);
+                            pointsPartie = 0;
                             gameOver = new PartieTerminee(true);
                             gameOver.ShowDialog(this);
+                          
+                            
                         }
                     }
 
@@ -385,9 +395,10 @@ namespace InterfaceGraphique
         {
             gameOver.Close();
             gameOver.Dispose();
-
+            pointsPartie = 0;
+            resetConfig();
+            FonctionsNatives.resetNombreDePointsDePartie();
             boolTemp = true;
-            pointsTotale = 0;
             currentZone = 0;
             map = new StringBuilder(myMaps[currentZone]);
             nextMap = new StringBuilder(map.ToString());
@@ -396,9 +407,11 @@ namespace InterfaceGraphique
             zInfo = new ZoneInfo(Path.GetFileName(nextMap.ToString()), FonctionsNatives.obtenirDifficulte(map, map.Capacity).ToString());
             zInfo.ShowDialog();
             FonctionsNatives.ouvrirXML(map, map.Capacity);
-            resetConfig();
+            currentZone = 1;
             FonctionsNatives.construireListesPalettes();
             peutAnimer = true;
+            timer.Start();
+
 
         }
 
@@ -412,6 +425,7 @@ namespace InterfaceGraphique
         ////////////////////////////////////////////////////////////////////////
         public void Quitter()
         {
+            timer.Stop();
             this.Close();
         }
         
