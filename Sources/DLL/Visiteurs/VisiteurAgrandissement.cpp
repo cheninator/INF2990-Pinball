@@ -150,8 +150,9 @@ bool VisiteurAgrandissement::traiter(NoeudAbstrait* noeud)
 		}
 
 		double distancePositionTop = zTop;
-		double correctionZ = (1 - homothetie_[0]) * distancePositionTop; // Homothetie[0] est de l'ordre de 1.003, donc (1-homothetie[0]) est petie, donc la correction en z est petite.
-		position += glm::dvec3{ 0, 0, -correctionZ };
+		// On as plus besoin de la correction en Z grace aux boites englobantes
+		//double correctionZ = (1 - homothetie_[0]) * distancePositionTop; // Homothetie[0] est de l'ordre de 1.003, donc (1-homothetie[0]) est petie, donc la correction en z est petite.
+		//position += glm::dvec3{ 0, 0, -correctionZ };
 		noeud->assignerEchelle(scaleFinal);
 		noeud->assignerPositionRelative(position);
 		
@@ -184,7 +185,7 @@ bool VisiteurAgrandissement::traiter(NoeudMur* noeud)
 		// Qu'est-ce qui transforme l'addition en multiplication? A^(x + y) = (A^x) * (A^y)
 		// c'est pour ca qu'il y a une exponentielle dans la fonction de facadeModele qui calcule le scale a donner au visiteur.
 		glm::dvec3 scaleInit = noeud->obtenirAgrandissement();
-		glm::dvec3 scaleFinal = glm::dvec3{ scaleInit[0], scaleInit[1] * homothetie_[1] , scaleInit[2] };
+		glm::dvec3 scaleFinal = glm::dvec3{ scaleInit[0], scaleInit[1] * homothetie_[1], scaleInit[2] };
 		noeud->assignerEchelle(scaleFinal);
 	}
 

@@ -511,6 +511,7 @@ void NoeudComposite::animer(float dt)
 	for (NoeudAbstrait * enfant : enfants_){
 		enfant->animer(dt);
 	}
+	positionRelative_.z = abs(obtenirVecteursEnglobants()[0].z);
 }
 
 
