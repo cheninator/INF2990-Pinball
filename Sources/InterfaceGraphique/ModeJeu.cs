@@ -275,14 +275,14 @@ namespace InterfaceGraphique
         private void PartieRapide_KeyDown(object sender, KeyEventArgs e)
         {
             Console.WriteLine("KeyDown");
-            etat.KeyDown(sender, e);
+            etat.traiterKeyDown(sender, e);
         }
 
 
         private void PartieRapide_KeyUp(object sender, KeyEventArgs e)
         {
             Console.WriteLine("KeyUp");
-            etat.KeyUp(sender, e);
+            etat.traiterKeyUp(sender, e);
             Console.WriteLine("-----------------------------------------");
             Console.WriteLine("-----------------------------------------");
         }
@@ -297,7 +297,7 @@ namespace InterfaceGraphique
         private void PartieRapide_KeyPress(object sender, KeyPressEventArgs e)
         {
             Console.WriteLine("KeyPress");
-            etat.KeyPress(sender, e);
+            etat.traiterKeyPress(sender, e);
         }
 
         private void panel_GL_MouseWheel(object sender, MouseEventArgs e)

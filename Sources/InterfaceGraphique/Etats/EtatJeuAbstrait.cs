@@ -18,9 +18,8 @@ namespace InterfaceGraphique
             {
                 return false;
             }
-            public virtual bool KeyDown(object sender, KeyEventArgs e)
+            public virtual bool traiterKeyDown(object sender, KeyEventArgs e)
             {
-                Console.WriteLine("Informations du jeu  : " + parent_.debugInt);
                 /*
                 if (e.KeyCode == Keys.Left)
                     FonctionsNatives.translater(-10, 0);
@@ -43,17 +42,32 @@ namespace InterfaceGraphique
                     FonctionsNatives.zoomIn();
                     parent_.currentZoom = FonctionsNatives.obtenirZoomCourant();
                 }*/
-                Console.WriteLine("Abstract KeyDown !!!!!!!!!!!!!!!!!!!!!!!!");
+                Console.WriteLine("Abstract KeyDown");
                 return false;
             }
-            public virtual bool KeyPress(object sender, KeyPressEventArgs e)
+            public virtual bool traiterKeyPress(object sender, KeyPressEventArgs e)
             {
+                Console.WriteLine("Abstract Press");
                 return false;
             }
-            public virtual bool KeyUp(object sender, KeyEventArgs e)
+            public virtual bool traiterKeyUp(object sender, KeyEventArgs e)
             {
-                Console.WriteLine("AbstractKeyUp");
+                Console.WriteLine("Abstract KeyUp");
                 return false;
+            }
+
+            public void toggleDebugOutput()
+            {
+                if (FonctionsNatives.obtenirAffichageGlobal() == 0)
+                {
+                    Console.WriteLine("Affichage bloque. On debloque");
+                    FonctionsNatives.bloquerAffichageGlobal(1);
+                }
+                else
+                {
+                    Console.WriteLine("Affichage permis. On bloque");
+                    FonctionsNatives.bloquerAffichageGlobal(0);
+                }
             }
         }
     }
@@ -79,11 +93,20 @@ namespace InterfaceGraphique
 
         }
 
-        public override bool KeyPress(object sender, KeyPressEventArgs e)
+        public override bool traiterKeyPress(object sender, KeyPressEventArgs e)
         {
+            bool treated = false;
             if (e.KeyChar == (char)27)
+            {
                 parent_.resumeGame();
-            return true;
+                treated = true;
+            }
+            if (e.KeyChar == 'b')
+            {
+                toggleDebugOutput();
+                treated = true;
+            }
+            return treated;
         }
     }
 
@@ -107,7 +130,7 @@ namespace InterfaceGraphique
 
         }
 
-        public override bool KeyDown(object sender, KeyEventArgs e)
+        public override bool traiterKeyDown(object sender, KeyEventArgs e)
         {
             if (e.KeyValue == parent_.getTouches().PGJ1)
             {
@@ -154,7 +177,7 @@ namespace InterfaceGraphique
 
             return true;
         }
-        public override bool KeyUp(object sender, KeyEventArgs e)
+        public override bool traiterKeyUp(object sender, KeyEventArgs e)
         {
             Console.WriteLine("ModeJeu KeyUp");
             if (e.KeyValue == parent_.getTouches().PGJ1)
@@ -165,20 +188,11 @@ namespace InterfaceGraphique
             return true;
         }
 
-        public override bool KeyPress(object sender, KeyPressEventArgs e)
+        public override bool traiterKeyPress(object sender, KeyPressEventArgs e)
         {
             if (e.KeyChar == 'b')
             {
-                if (FonctionsNatives.obtenirAffichageGlobal() == 0)
-                {
-                    Console.WriteLine("Affichage bloque. On debloque");
-                    FonctionsNatives.bloquerAffichageGlobal(1);
-                }
-                else
-                {
-                    Console.WriteLine("Affichage permis. On bloque");
-                    FonctionsNatives.bloquerAffichageGlobal(0);
-                }
+                toggleDebugOutput();
             }
 
            /* else if (e.KeyChar == 'j')
