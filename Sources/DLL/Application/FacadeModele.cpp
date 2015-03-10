@@ -331,6 +331,9 @@ void FacadeModele::reinitialiser()
 ////////////////////////////////////////////////////////////////////////
 void FacadeModele::animer(float temps)
 {
+	// Changer la vitesse des billes en fonction des collisions:
+	traiterCollisions();
+
 	// Mise a jour des objets.
 	arbre_->animer(temps);
 
@@ -1239,4 +1242,51 @@ int* FacadeModele::obtenirProprietes(char* nomFichier, int length)
 	delete fichierXML;
 
 	return proprietes_;
+}
+
+///////////////////////////////////////////////////////////////////////////////
+///
+/// @fn void FacadeModele::traiterCollisions()
+/// 
+/// Effectue la detection et reaction pour les collisions entre tous les noeuds
+/// 
+/// @remark Les listes doivent etre construites et la liste de billes doit etre tenue a jour.
+/// 
+///////////////////////////////////////////////////////////////////////////////
+void FacadeModele::traiterCollisions()
+{
+	for (NoeudAbstrait* bille : listeBilles_)
+	{
+		for (NoeudAbstrait* noeudAVerifier : listeNoeuds_)
+		{
+			aidecollision::DetailsCollision detail = noeudAVerifier->detecterCollisions(bille);
+
+			if (detail.type != aidecollision::COLLISION_AUCUNE)
+				noeudAVerifier->traiterCollisions(detail, bille);
+		}
+	}
+}
+
+///////////////////////////////////////////////////////////////////////////////
+///
+/// @fn void FacadeModele::mettreAJourListeBilles()
+/// 
+/// Met a jour la liste des billes
+/// 
+/// 
+///////////////////////////////////////////////////////////////////////////////
+void FacadeModele::mettreAJourListeBillesEtNoeuds()
+{
+	listeBilles_.clear();
+	listeNoeuds_.clear();
+	for (unsigned int i = 0; i < arbre_->getEnfant(0)->obtenirNombreEnfants(); i++)
+	{
+		NoeudAbstrait* noeud = arbre_->getEnfant(0)->getEnfant(i);
+		if (noeud->getType() != "generateurbille")
+			listeNoeuds_.push_back(noeud);
+		if (noeud->getType() == "bille")
+			listeBilles_.push_back(noeud);
+	}
+	std::cout << "ListeBilles.size() == " << listeBilles_.size() << std::endl
+		<< "ListeNoeuds.size() == " << listeNoeuds_.size() << std::endl;
 }
