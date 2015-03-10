@@ -861,12 +861,13 @@ void NoeudAbstrait::traiterCollisions(aidecollision::DetailsCollision details, N
 {
 
 	assert(bille->getType() == "bille");
-	// Modifier la vitesse de la bille en fonction de bille reçue en paramètre 
+
 	if (details.type == aidecollision::COLLISION_AUCUNE)
 		return;
 	if (bille == this)
 		return;
 
+	// Modifier la vitesse de la bille en fonction de bille reçue en paramètre 
 	glm::dvec3 vitesseInitiale = bille->obtenirVitesse();
 	glm::dvec3 vitesseNormaleInitiale = glm::proj(vitesseInitiale, details.direction); // Necessaire pour connaitre la vitesse tangentielle.
 	glm::dvec3 vitesseTangentielle = vitesseInitiale - vitesseNormaleInitiale;

@@ -1576,6 +1576,7 @@ namespace InterfaceGraphique
             this.OnSizeChanged(e);
             FonctionsNatives.translater(-mouvementX, mouvementY);
             FonctionsNatives.construireListesPalettes();
+            FonctionsNatives.mettreAJourListeBillesEtNoeuds();
 
             //panel_GL.Dock = DockStyle.Fill;
             //menuStrip3.BringToFront();

@@ -42,6 +42,9 @@ public:
 	/// Redefinition de boite englobante pour objet circulaire
 	virtual std::vector<glm::dvec3> obtenirVecteursEnglobants();
 
+	/// Pour la detections des collisions
+	virtual aidecollision::DetailsCollision detecterCollisions(NoeudAbstrait* noeud);
+
 private:
 	
 	// Pour l'animation

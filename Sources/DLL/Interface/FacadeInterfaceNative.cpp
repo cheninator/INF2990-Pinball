@@ -1456,6 +1456,11 @@ extern "C"
 		FacadeModele::obtenirInstance()->construireListesPalettes();
 	}
 
+	__declspec(dllexport) void __cdecl mettreAJourListeBillesEtNoeuds()
+	{
+		FacadeModele::obtenirInstance()->mettreAJourListeBillesEtNoeuds();
+	}
+
 	__declspec(dllexport) void __cdecl modePause(bool pause)
 	{
 		FacadeModele::obtenirInstance()->setPause(pause);

@@ -173,3 +173,29 @@ std::vector<glm::dvec3> NoeudButoirCirculaire::obtenirVecteursEnglobants()
 	double rayonModele = (boite_.coinMax.x - boite_.coinMin.x) / 2.0;
 	return{ glm::dvec3{ rayonModele * scale_.x, 0, 0 } };
 }
+
+
+
+////////////////////////////////////////////////////////////////////////
+///
+/// @fn void aidecollision::DetailsCollision NoeudAbstrait::detecterCollisions(NoeudAbstrait* bille)
+///
+/// Cette fonction retourne un objet detail collision pour la 
+/// collision de la bille sur l'objet courant.
+///
+/// @return details contient l'information sur la collision de la bille avec *this.
+///
+////////////////////////////////////////////////////////////////////////
+aidecollision::DetailsCollision NoeudButoirCirculaire::detecterCollisions(NoeudAbstrait* bille)
+{
+	std::vector<glm::dvec3> boite = obtenirVecteursEnglobants();
+	double rayonBille = bille->obtenirVecteursEnglobants()[0].x;
+	aidecollision::DetailsCollision details;
+	double rayon = boite[0].x;
+	details = aidecollision::calculerCollisionCercle((glm::dvec2)obtenirPositionRelative(), rayon, (glm::dvec2)bille->obtenirPositionRelative(), rayonBille);
+	if (details.type != aidecollision::COLLISION_AUCUNE)
+	{
+		return details;
+	}
+	return details;
+}
