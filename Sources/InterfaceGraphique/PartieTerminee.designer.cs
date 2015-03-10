@@ -30,12 +30,14 @@
         {
             this.boutonRecommencer = new System.Windows.Forms.Button();
             this.boutonMenuP = new System.Windows.Forms.Button();
-            this.labelBravo = new System.Windows.Forms.Label();
+            this.labelTermine = new System.Windows.Forms.Label();
+            this.imageTermine = new System.Windows.Forms.PictureBox();
+            ((System.ComponentModel.ISupportInitialize)(this.imageTermine)).BeginInit();
             this.SuspendLayout();
             // 
             // boutonRecommencer
             // 
-            this.boutonRecommencer.Location = new System.Drawing.Point(12, 37);
+            this.boutonRecommencer.Location = new System.Drawing.Point(289, 378);
             this.boutonRecommencer.Name = "boutonRecommencer";
             this.boutonRecommencer.Size = new System.Drawing.Size(92, 36);
             this.boutonRecommencer.TabIndex = 0;
@@ -45,7 +47,7 @@
             // 
             // boutonMenuP
             // 
-            this.boutonMenuP.Location = new System.Drawing.Point(121, 37);
+            this.boutonMenuP.Location = new System.Drawing.Point(399, 378);
             this.boutonMenuP.Name = "boutonMenuP";
             this.boutonMenuP.Size = new System.Drawing.Size(92, 36);
             this.boutonMenuP.TabIndex = 1;
@@ -53,29 +55,42 @@
             this.boutonMenuP.UseVisualStyleBackColor = true;
             this.boutonMenuP.Click += new System.EventHandler(this.boutonMenuP_Click);
             // 
-            // labelBravo
+            // labelTermine
             // 
-            this.labelBravo.AutoSize = true;
-            this.labelBravo.Location = new System.Drawing.Point(9, 9);
-            this.labelBravo.Name = "labelBravo";
-            this.labelBravo.Size = new System.Drawing.Size(204, 13);
-            this.labelBravo.TabIndex = 2;
-            this.labelBravo.Text = "Félicitations, vous avez remporté la partie!";
+            this.labelTermine.Location = new System.Drawing.Point(9, 9);
+            this.labelTermine.Name = "labelTermine";
+            this.labelTermine.Size = new System.Drawing.Size(482, 13);
+            this.labelTermine.TabIndex = 2;
+            this.labelTermine.Text = "Félicitations, vous avez remporté la partie!";
+            this.labelTermine.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // imageTermine
+            // 
+            this.imageTermine.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.imageTermine.Location = new System.Drawing.Point(12, 36);
+            this.imageTermine.Name = "imageTermine";
+            this.imageTermine.Size = new System.Drawing.Size(479, 336);
+            this.imageTermine.TabIndex = 3;
+            this.imageTermine.TabStop = false;
             // 
             // PartieTerminee
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(226, 84);
-            this.Controls.Add(this.labelBravo);
+            this.ClientSize = new System.Drawing.Size(503, 426);
+            this.Controls.Add(this.imageTermine);
+            this.Controls.Add(this.labelTermine);
             this.Controls.Add(this.boutonMenuP);
             this.Controls.Add(this.boutonRecommencer);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
+            this.Icon = global::InterfaceGraphique.Properties.Resources.Pinball;
             this.MaximizeBox = false;
             this.Name = "PartieTerminee";
-            this.Text = "PartieTerminee";
+            this.Text = "Fin de Partie";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.PartieTerminee_FormClosing);
             this.Shown += new System.EventHandler(this.PartieTerminee_Shown);
+            ((System.ComponentModel.ISupportInitialize)(this.imageTermine)).EndInit();
             this.ResumeLayout(false);
-            this.PerformLayout();
 
         }
 
@@ -83,6 +98,7 @@
 
         private System.Windows.Forms.Button boutonRecommencer;
         private System.Windows.Forms.Button boutonMenuP;
-        private System.Windows.Forms.Label labelBravo;
+        private System.Windows.Forms.Label labelTermine;
+        private System.Windows.Forms.PictureBox imageTermine;
     }
 }

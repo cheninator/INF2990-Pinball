@@ -34,7 +34,6 @@ namespace InterfaceGraphique
     ///////////////////////////////////////////////////////////////////////////
     public partial class Editeur : Form
     {
-        PartieTerminee victoire;
         FullScreen fs = new FullScreen();
         static public StringBuilder myObjectName = new StringBuilder("vide");
         static bool soundActif = false; ///< Play Sound or not
@@ -417,11 +416,7 @@ namespace InterfaceGraphique
                     etat = null;
                     etat = new EtatEditeurPause(this);
                 }
-                else if (e.KeyChar == 'v')
-                {
-                    victoire = new PartieTerminee();
-                    victoire.ShowDialog();
-                }
+              
             }
             else if (etat is EtatEditeurPause)
             {

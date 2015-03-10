@@ -12,17 +12,32 @@ namespace InterfaceGraphique
 {
     public partial class PartieTerminee : Form
     {
-        System.Media.SoundPlayer playerBtn = new System.Media.SoundPlayer(Properties.Resources.button_29);
+        System.Media.SoundPlayer player;
 
-        public PartieTerminee()
+        public PartieTerminee(bool victoire)
         {
             InitializeComponent();
             StartPosition = FormStartPosition.CenterScreen;
+
+            if (victoire == false)
+            {
+                player = new System.Media.SoundPlayer(Properties.Resources.Trombone);
+                labelTermine.Text = "Désolé! Vous avez perdu la partie...";
+                imageTermine.SizeMode = PictureBoxSizeMode.StretchImage;
+                imageTermine.Image = Properties.Resources.Lose;
+            }
+            else
+            {
+                player = new System.Media.SoundPlayer(Properties.Resources.Fireworks);
+                imageTermine.SizeMode = PictureBoxSizeMode.StretchImage;
+                imageTermine.Image = Properties.Resources.Win;
+            }
+
         }
 
         private void PartieTerminee_Shown(object sender, EventArgs e)
         {
-            playerBtn.Play();
+            player.Play();
         }
 
         private void boutonMenuP_Click(object sender, EventArgs e)
@@ -33,8 +48,15 @@ namespace InterfaceGraphique
 
         private void boutonRecommencer_Click(object sender, EventArgs e)
         {
-            this.Close();
-            ((ModeJeu)this.Owner).RecommencerTout();
+           
+           ((ModeJeu)this.Owner).RecommencerTout();
+           this.Close();
+
+        }
+
+        private void PartieTerminee_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            player.Stop();
         }
     }
 }
