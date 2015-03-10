@@ -156,11 +156,12 @@ namespace InterfaceGraphique
                         {
                             peutAnimer = false;
                             boolTemp = false;
-                            FonctionsNatives.supprimerBille();
+                            //FonctionsNatives.supprimerBille();
                             Console.WriteLine(pointsPartie);
                             pointsPartie = 0;
-                            gameOver = new PartieTerminee(true);
-                            gameOver.ShowDialog(this);
+                           // gameOver = new PartieTerminee(true);
+                           // gameOver.ShowDialog(this);
+                            RecommencerTout();
                           
                             
                         }
@@ -406,34 +407,34 @@ namespace InterfaceGraphique
         ////////////////////////////////////////////////////////////////////////
         public void RecommencerTout()
         {
-            if (gameOver.Visible)
+          /*  if (gameOver.Visible)
             {
                 gameOver.Close();
                 gameOver.Dispose();
             }
+           */
             pointsPartie = 0;
             boolTemp = true;
             currentZone = 0;
-            map = new StringBuilder(myMaps[0]);
-            nextMap = new StringBuilder(map.ToString());
-            nextMap.Remove(nextMap.Length - 4, 4);
-            //Console.WriteLine(Path.GetFileName(nextMap.ToString()));
+           map = new StringBuilder(myMaps[0]);
+           nextMap = new StringBuilder(map.ToString());
+           nextMap.Remove(nextMap.Length - 4, 4);
             Console.WriteLine(map);
             
             zInfo = new ZoneInfo(Path.GetFileName(nextMap.ToString()), FonctionsNatives.obtenirDifficulte(map, map.Capacity).ToString());
             zInfo.ShowDialog();
-            
             FonctionsNatives.ouvrirXML(map, map.Capacity);
             /* 
-           FonctionsNatives.ouvrirXML(tempMap, tempMap.Capacity);
-           FonctionsNatives.resetNombreDePointsDePartie();
-           resetConfig();
-
-           currentZone = 1;
-           FonctionsNatives.construireListesPalettes();
-           peutAnimer = true;
-           timer.Start();
+         FonctionsNatives.ouvrirXML(tempMap, tempMap.Capacity);
            */
+            FonctionsNatives.resetNombreDePointsDePartie();
+         resetConfig();
+
+         currentZone = 1;
+         FonctionsNatives.construireListesPalettes();
+         peutAnimer = true;
+         timer.Start();
+        
 
         }
 
