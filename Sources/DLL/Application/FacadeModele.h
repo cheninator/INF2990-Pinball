@@ -29,6 +29,7 @@
 #include <windows.h>
 #include <string>
 #include <set>
+#include <vector>
 #include "glm/glm.hpp"
 
 class NoeudAbstrait;
@@ -180,6 +181,11 @@ public:
    void setPause(bool pause);
    void setDebug(bool valeurSpotLight = false);
 
+   // Traiter l'ensemble des collisions
+   void traiterCollisions();
+   
+   void mettreAJourListeBilles();
+
 private:
 
    /// Constructeur par defaut.
@@ -223,6 +229,9 @@ private:
    std::set<NoeudPaletteD*> listePalettesDJ1_; ///< Droite joueur 1
    std::set<NoeudPaletteG*> listePalettesGJ2_; ///< Gauche joueur 2
    std::set<NoeudPaletteD*> listePalettesDJ2_; ///< Droite joueur 2
+
+   std::vector<NoeudAbstrait*> listeBilles_;
+   std::vector<NoeudAbstrait*> listeNoeuds_;
 };
 
 

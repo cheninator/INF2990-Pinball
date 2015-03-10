@@ -1240,3 +1240,48 @@ int* FacadeModele::obtenirProprietes(char* nomFichier, int length)
 
 	return proprietes_;
 }
+
+///////////////////////////////////////////////////////////////////////////////
+///
+/// @fn void FacadeModele::traiterCollisions()
+/// 
+/// Effectue la detection et reaction pour les collisions entre tous les noeuds
+/// 
+/// @remark Les listes doivent etre construites et la liste de billes doit etre tenue a jour.
+/// 
+///////////////////////////////////////////////////////////////////////////////
+void FacadeModele::traiterCollisions()
+{
+	for (NoeudAbstrait* bille : listeBilles_)
+	{
+		/// A REMPLACER PAR LE QUADTREE DANS LE FUTUR
+		std::vector<NoeudAbstrait*> listeAVerifier;
+		listeAVerifier = arbre_->obtenirElementsTable();
+
+		for (NoeudAbstrait* noeudAVerifier : listeAVerifier)
+		{
+			aidecollision::DetailsCollision detail = noeudAVerifier->detecterCollisions(bille);
+
+			if (detail.type != aidecollision::COLLISION_AUCUNE)
+				noeudAVerifier->traiterCollisions(detail, bille);
+		}
+	}
+}
+
+///////////////////////////////////////////////////////////////////////////////
+///
+/// @fn void FacadeModele::mettreAJourListeBilles()
+/// 
+/// Met a jour la liste des billes
+/// 
+/// 
+///////////////////////////////////////////////////////////////////////////////
+void FacadeModele::mettreAJourListeBilles()
+{
+	listeBilles_.clear();
+	for (unsigned int i = 0; i < arbre_->getEnfant(0)->obtenirNombreEnfants(); i++)
+	{
+		if (arbre_->getEnfant(0)->getEnfant(i)->getType() == "bille")
+			listeBilles_.push_back(arbre_->getEnfant(0)->getEnfant(i));
+	}
+}
