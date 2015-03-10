@@ -42,7 +42,7 @@
 NoeudBille::NoeudBille(const std::string& typeNoeud)
 	: NoeudComposite{ typeNoeud }
 {
-	vitesse_ = glm::dvec3{ 10 ,60, 0 };
+	vitesse_ = glm::dvec3{ 10 ,100, 0 };
 	constanteDeFrottement_ = 1.0;
 }
 

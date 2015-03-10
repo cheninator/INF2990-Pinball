@@ -26,11 +26,11 @@ namespace InterfaceGraphique
             Marshal.Copy(config, proprietes, 0, 5);
             if (win)
             {
-                labelWin.Text = "Vous avez gagné la partie!";
+                labelWin.Text = "Vous avez gagné!";
             }
             else
             {
-                labelWin.Text = "";
+                labelWin.Text = "Début de la partie";
             }
             time = 5;
             timer1.Enabled = true;
