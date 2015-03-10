@@ -25,6 +25,19 @@ namespace InterfaceGraphique
         private bool activateDirectLight = false; ///< Etat de la lumiere directe
         private bool activateSpotLight = false; ///< Etat de la lumiere spot
         private EtatJeuAbstrait etat; ///< Machine à états
+
+        public partial class EtatJeuAbstrait
+        {
+            public EtatJeuAbstrait()
+            {
+
+            }
+            public EtatJeuAbstrait(ModeJeu parent)
+            {
+                this.parent_ = parent;
+            }
+        };
+
         public int pointsPartie = 0;
         public int pointsTotale = 0;
         public int billeDisponible = 0;
@@ -33,8 +46,6 @@ namespace InterfaceGraphique
         private int pointsGagnerPartie = 0;
         private int billesDisponibles = 0;
         
-       
-
         public ModeJeu(List<string> maps, int playerType)
         {
             {
@@ -73,6 +84,7 @@ namespace InterfaceGraphique
             currentZone++;
             Program.tempBool = true;
             panel_GL.Focus();
+            etat = new EtatJeuDebutDePartie(this);
             timer.Start();
           
         }
