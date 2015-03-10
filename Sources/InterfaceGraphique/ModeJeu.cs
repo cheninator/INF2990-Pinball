@@ -30,8 +30,13 @@ namespace InterfaceGraphique
         public int getDebugInt() { return debugInt; }
         public void setDebugInt(int val) { debugInt = val; }
         public double getCurrentZoom() { return currentZoom; }
-
         public void setCurrentZoom(double val) { currentZoom = val; }
+        public Touches getTouches() { return touches; }
+        public void pauseGame() { etat = new EtatJeuPause(this);}
+        public void resumeGame() { etat = new EtatJeuJouer(this); }
+        public void setPeutAnimer(bool activation) { peutAnimer = activation; }
+        public void setVisibilityMenuStrip(bool vis) { menuStrip.Visible = vis; }
+
 
         public partial class EtatJeuAbstrait
         {
@@ -57,10 +62,10 @@ namespace InterfaceGraphique
         
         public ModeJeu(List<string> maps, int playerType)
         {
-            {
+            {/*
                 this.WindowState = FormWindowState.Normal;
                 this.FormBorderStyle = FormBorderStyle.None;
-                this.WindowState = FormWindowState.Maximized;
+                this.WindowState = FormWindowState.Maximized;*/
             }
             timer = new Timer();
             timer.Enabled = true;
@@ -96,10 +101,8 @@ namespace InterfaceGraphique
 
             debugInt = 773;
             Console.WriteLine("taskjhdkjashdjsa");
-            etat = new EtatJeuAbstrait(this);
             etat = new EtatJeuDebutDePartie(this);
             etat = new EtatJeuJouer(this);
-            etat = new EtatJeuPause(this);
             timer.Start();
           
         }
@@ -245,13 +248,17 @@ namespace InterfaceGraphique
 
         private void PartieRapide_KeyDown(object sender, KeyEventArgs e)
         {
+            Console.WriteLine("KeyDown");
             etat.KeyDown(sender, e);
         }
 
 
         private void PartieRapide_KeyUp(object sender, KeyEventArgs e)
         {
+            Console.WriteLine("KeyUp");
             etat.KeyUp(sender, e);
+            Console.WriteLine("-----------------------------------------");
+            Console.WriteLine("-----------------------------------------");
         }
 
         
@@ -263,11 +270,13 @@ namespace InterfaceGraphique
 
         private void PartieRapide_KeyPress(object sender, KeyPressEventArgs e)
         {
+            Console.WriteLine("KeyPress");
             etat.KeyPress(sender, e);
         }
 
         private void panel_GL_MouseWheel(object sender, MouseEventArgs e)
         {
+            etat.traiterRoulette(sender, e);
         }
 
 
