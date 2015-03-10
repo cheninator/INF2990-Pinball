@@ -24,15 +24,29 @@ namespace InterfaceGraphique
         private bool activateDirectLight = false; ///< Etat de la lumiere directe
         private bool activateSpotLight = false; ///< Etat de la lumiere spot
         private EtatJeuAbstrait etat; ///< Machine à états
+                                      ///
+        protected int debugInt;
+        public int getDebugInt() { return debugInt; }
+        public void setDebugInt(int val) { debugInt = val; }
+        public double getCurrentZoom() { return currentZoom; }
+        public void setCurrentZoom(double val) { currentZoom = val; }
+        public Touches getTouches() { return touches; }
+        public void pauseGame() { etat = new EtatJeuPause(this);}
+        public void resumeGame() { etat = new EtatJeuJouer(this); }
+        public void setPeutAnimer(bool activation) { peutAnimer = activation; }
+        public void setVisibilityMenuStrip(bool vis) { menuStrip.Visible = vis; }
+
 
         public partial class EtatJeuAbstrait
         {
+            
             public EtatJeuAbstrait()
             {
 
             }
             public EtatJeuAbstrait(ModeJeu parent)
             {
+                Console.WriteLine("Etat :" + '\t' + "Abstrait");
                 this.parent_ = parent;
             }
         };
@@ -47,10 +61,10 @@ namespace InterfaceGraphique
         
         public ModeJeu(List<string> maps, int playerType)
         {
-            {
+            {/*
                 this.WindowState = FormWindowState.Normal;
                 this.FormBorderStyle = FormBorderStyle.None;
-                this.WindowState = FormWindowState.Maximized;
+                this.WindowState = FormWindowState.Maximized;*/
             }
             timer = new Timer();
             timer.Enabled = true;
@@ -82,7 +96,11 @@ namespace InterfaceGraphique
             currentZone++;
             Program.tempBool = true;
             panel_GL.Focus();
+
+            debugInt = 773;
+            Console.WriteLine("taskjhdkjashdjsa");
             etat = new EtatJeuDebutDePartie(this);
+            etat = new EtatJeuJouer(this);
             timer.Start();
           
         }
@@ -255,80 +273,18 @@ namespace InterfaceGraphique
         }
 
         private void PartieRapide_KeyDown(object sender, KeyEventArgs e)
-        {   
-            // À enlever : permet de vérifier la fenêtre OpenGL
-            /*
-            if (e.KeyCode == Keys.Left)
-                FonctionsNatives.translater(-10, 0);
-            else if (e.KeyCode == Keys.Right)
-                FonctionsNatives.translater(10, 0);
-            else if (e.KeyCode == Keys.Up)
-                FonctionsNatives.translater(0, 10);
-            else if (e.KeyCode == Keys.Down)
-                FonctionsNatives.translater(0, -10);
-            */
-           if ((e.KeyData == Keys.Subtract ||
-                  e.KeyCode == Keys.OemMinus))
-           {
-               FonctionsNatives.zoomOut();
-               currentZoom = FonctionsNatives.obtenirZoomCourant();
-           }
-           if ((e.KeyData == Keys.Add ||
-               e.KeyCode == Keys.Oemplus && e.Modifiers == Keys.Shift))
-           {
-               FonctionsNatives.zoomIn();
-               currentZoom = FonctionsNatives.obtenirZoomCourant();
-           }
-
-
-
-           if (e.KeyValue == touches.PGJ1)
-           {
-               FonctionsNatives.activerPalettesGJ1();
-           }
-
-           else if (e.KeyValue == touches.PGJ2)
-           {
-               // TODO: palette gauche joueur 2
-           }
-           else if (e.KeyValue == touches.PDJ1)
-           {
-
-           }
-           else if (e.KeyValue == touches.PDJ2)
-           {
-
-           }
-           else if (e.KeyValue == touches.Ressort)
-           {
-
-           }
+        {
+            Console.WriteLine("KeyDown");
+            etat.KeyDown(sender, e);
         }
 
 
         private void PartieRapide_KeyUp(object sender, KeyEventArgs e)
         {
-            if (e.KeyValue == touches.PGJ1)
-            {
-                FonctionsNatives.desactiverPalettesGJ1();
-               // Console.WriteLine("Touche R relachée");
-            }
-            else if (e.KeyValue == touches.PGJ2)
-            {
-                // TODO: palette gauche joueur 2
-            }
-            else if (e.KeyValue == touches.PDJ1)
-            {
-
-            }
-            else if (e.KeyValue == touches.PDJ2)
-            {
-
-            }
-            else if (e.KeyValue == touches.Ressort)
-            {
-
-            }
+            Console.WriteLine("KeyUp");
+            etat.KeyUp(sender, e);
+            Console.WriteLine("-----------------------------------------");
+            Console.WriteLine("-----------------------------------------");
         }
 
         
@@ -340,103 +296,13 @@ namespace InterfaceGraphique
 
         private void PartieRapide_KeyPress(object sender, KeyPressEventArgs e)
         {
-            if (e.KeyChar == (char)27)
-            {
-                if (menuStrip.Visible)
-                {
-                    menuStrip.Visible = false;
-                    FonctionsNatives.modePause(false);
-                    peutAnimer = true;
-                 
-                }
-                else
-                {
-                    menuStrip.Visible = true;
-                    FonctionsNatives.modePause(true);
-                    peutAnimer = false;
-               
-                }
-            }
-            else if (e.KeyChar == 'b')
-            {
-                if (FonctionsNatives.obtenirAffichageGlobal() == 0)
-                {
-                    Console.WriteLine("Affichage bloque. On debloque");
-                    FonctionsNatives.bloquerAffichageGlobal(1);
-                }
-                else
-                {
-                    Console.WriteLine("Affichage permis. On bloque");
-                    FonctionsNatives.bloquerAffichageGlobal(0);
-                }
-            }
-            else if (e.KeyChar == 'j')
-            {
-                //Console.WriteLine("LUMIERE AMBIANTE");
-                activateAmbianteLight = !activateAmbianteLight;
-                FonctionsNatives.spotLight(0, activateAmbianteLight);
-            }
-            else if (e.KeyChar == 'k')
-            {
-                //Console.WriteLine("LUMIERE DIRECTE");
-                activateDirectLight = !activateDirectLight;
-                FonctionsNatives.spotLight(1, activateDirectLight);
-            }
-            else if (e.KeyChar == 'l')
-            {
-                //Console.WriteLine("LUMIERE SPOTS");
-                activateSpotLight = !activateSpotLight;
-                FonctionsNatives.spotLight(2, activateSpotLight);
-            }
-            else
-                if (e.KeyChar == 'n')
-                {
-                    Console.WriteLine(currentZone);
-                    if (currentZone >= nbZones)
-                        if(MessageBox.Show("VICTOIRE! VOULEZ VOUR RECOMMENCER?", "FIN DE LA CAMPAGNE",
-                   MessageBoxButtons.YesNo, MessageBoxIcon.Exclamation) == DialogResult.Yes)
-                        {
-                            RecommencerTout();
-                        }
-                        else
-                        {
-                            Quitter();
-                        }
-                    else
-                    {
-                        map = new StringBuilder(myMaps[currentZone]);
-                        nextMap = new StringBuilder(map.ToString());
-                        nextMap.Remove(nextMap.Length - 4, 4);
-                        Console.WriteLine(Path.GetFileName(nextMap.ToString()));
-                        zInfo = new ZoneInfo(Path.GetFileName(nextMap.ToString()), FonctionsNatives.obtenirDifficulte(map, map.Capacity).ToString(),true);
-                        //this.Hide();
-                        zInfo.ShowDialog();
-                        //this.Show();
-                    
-                        FonctionsNatives.ouvrirXML(map, map.Capacity);
-                        resetConfig();
-                        FonctionsNatives.construireListesPalettes();
-                        currentZone++;
-                    }
-                    
-                }
-                else if (e.KeyChar == (char)8)
-                {
-                    // RELOAD DE LA MAP
-                    timer.Start();
-                    FonctionsNatives.ouvrirXML(map, map.Capacity);
-                    resetConfig();
-                }
-
+            Console.WriteLine("KeyPress");
+            etat.KeyPress(sender, e);
         }
 
         private void panel_GL_MouseWheel(object sender, MouseEventArgs e)
         {
-            if (e.Delta > 0)
-                FonctionsNatives.zoomIn();
-            else if (e.Delta < 0)
-                FonctionsNatives.zoomOut();
-            currentZoom = FonctionsNatives.obtenirZoomCourant();
+            etat.traiterRoulette(sender, e);
         }
 
 
