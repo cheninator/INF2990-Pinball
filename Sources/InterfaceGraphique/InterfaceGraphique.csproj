@@ -246,9 +246,6 @@
     <None Include="Resources\button-29.wav" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Resources\plunger.png" />
-  </ItemGroup>
-  <ItemGroup>
     <None Include="Resources\tablePhoto.png" />
   </ItemGroup>
   <ItemGroup>
@@ -296,7 +293,6 @@
   <ItemGroup>
     <Content Include="%24this.Icon.ico" />
     <None Include="Resources\1416982812770.jpg" />
-    <None Include="Resources\1418146484463.jpg" />
     <None Include="Resources\scary.wav" />
     <None Include="Resources\touche-invalide.wav" />
     <None Include="Resources\man-scream-01.wav" />

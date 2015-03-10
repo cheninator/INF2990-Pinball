@@ -292,16 +292,6 @@ namespace InterfaceGraphique.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap plunger {
-            get {
-                object obj = ResourceManager.GetObject("plunger", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
-        /// </summary>
         internal static System.Drawing.Bitmap portail {
             get {
                 object obj = ResourceManager.GetObject("portail", resourceCulture);
