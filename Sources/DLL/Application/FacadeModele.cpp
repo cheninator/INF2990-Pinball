@@ -1257,6 +1257,7 @@ void FacadeModele::traiterCollisions()
 {
 	for (NoeudAbstrait* bille : listeBilles_)
 	{
+		bille->assignerImpossible(false);
 		for (NoeudAbstrait* noeudAVerifier : listeNoeuds_)
 		{
 			aidecollision::DetailsCollision detail = noeudAVerifier->detecterCollisions(bille);
@@ -1264,6 +1265,7 @@ void FacadeModele::traiterCollisions()
 			if (detail.type != aidecollision::COLLISION_AUCUNE)
 				noeudAVerifier->traiterCollisions(detail, bille);
 		}
+
 	}
 }
 

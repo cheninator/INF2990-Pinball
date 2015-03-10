@@ -10,6 +10,8 @@
 #include "Utilitaire.h"
 #include "../../Commun/Externe/glm/include/glm/gtx/Projection.hpp"
 
+#include "NoeudBille.h"
+
 unsigned int NoeudAbstrait::compteurNoeuds_ = 0;
 ////////////////////////////////////////////////////////////////////////
 ///
@@ -857,15 +859,24 @@ aidecollision::DetailsCollision NoeudAbstrait::detecterCollisions(NoeudAbstrait*
 ////////////////////////////////////////////////////////////////////////
 void NoeudAbstrait::traiterCollisions(aidecollision::DetailsCollision details, NoeudAbstrait* bille)
 {
+
+	assert(bille->getType() == "bille");
 	// Modifier la vitesse de la bille en fonction de bille reçue en paramètre 
 	if (details.type == aidecollision::COLLISION_AUCUNE)
 		return;
 	if (bille == this)
 		return;
+
 	glm::dvec3 vitesseInitiale = bille->obtenirVitesse();
 	glm::dvec3 vitesseNormaleInitiale = glm::proj(vitesseInitiale, details.direction); // Necessaire pour connaitre la vitesse tangentielle.
 	glm::dvec3 vitesseTangentielle = vitesseInitiale - vitesseNormaleInitiale;
 	glm::dvec2 vitesseNormaleFinale2D = aidecollision::calculerForceAmortissement2D(details, (glm::dvec2)vitesseInitiale, 1.0);
 	glm::dvec3 vitesseFinale = vitesseTangentielle + glm::dvec3{ vitesseNormaleFinale2D.x, vitesseNormaleFinale2D.y, 0.0 };
+	if (debug_)
+	{
+		((NoeudBille*)bille)->afficherVitesse(vitesseFinale); // Que Dieu me pardonne
+	}
+
 	bille->assignerVitesse(vitesseFinale);
+	bille->assignerImpossible(true);
 }

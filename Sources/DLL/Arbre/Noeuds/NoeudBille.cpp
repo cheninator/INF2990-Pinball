@@ -154,14 +154,14 @@ void NoeudBille::animer(float temps) // rajouter des parametres ou une fonction 
 
 	glm::dvec3 vitesseApresCollision = vitesse_;
 
-
+	/*
 	// Obtenir une liste de noeuds a checker pour une collision
 	std::vector<NoeudAbstrait*> noeudsAChecker;
 	std::list<NoeudAbstrait*> listeNoeudsAChecker;
 	bool useQuadTree = false;
 
 	
-	if (0)
+	if (1)
 	{
 		// Travail a faire par le quad tree
 		ArbreRenduINF2990* arbre = FacadeModele::obtenirInstance()->obtenirArbreRenduINF2990();
@@ -218,8 +218,9 @@ void NoeudBille::animer(float temps) // rajouter des parametres ou une fonction 
 			}
 		}
 	}
-		
+	*/	
 	// Considerer les limites de la table.
+	// A migrer
 		std::vector<glm::dvec3> boite;
 		boite.push_back({ 108, -190, 0 });
 		boite.push_back({ 272, -190, 0 });
@@ -232,26 +233,27 @@ void NoeudBille::animer(float temps) // rajouter des parametres ou une fonction 
 			aidecollision::DetailsCollision details = aidecollision::calculerCollisionSegment((glm::dvec2)boite[i], (glm::dvec2)boite[(i + 1) % boite.size()], (glm::dvec2)positionRelative_, 7, true);
 			if (details.type != aidecollision::COLLISION_AUCUNE)
 			{
-				enCollision = true;
+
+				assignerImpossible(true);
 
 				glm::dvec3 vitesseNormaleInitiale = glm::proj(vitesse_, details.direction);
 				glm::dvec3 vitesseTangentielleInitiale = vitesse_ - vitesseNormaleInitiale;
 				glm::dvec2 vitesseNormale2D = aidecollision::calculerForceAmortissement2D(details, (glm::dvec2)vitesse_, 1.0);
 				vitesseApresCollision = vitesseTangentielleInitiale + glm::dvec3{ vitesseNormale2D.x, vitesseNormale2D.y, 0 };
+				if (debug_) {
+					afficherVitesse(vitesseApresCollision);
+				}
 			}
 		}
 	
 	
-	assignerImpossible(enCollision);
 	
 	glm::dvec3 nouvellePosition = positionRelative_ + (double)temps*vitesseApresCollision;
 
 	glm::dvec3 nouvelleVitesse = vitesseApresCollision + (double)temps * forceTotale / masse_;
 
 
-	if(debug_ && enCollision) {
-		afficherVitesse(vitesseApresCollision);
-	}
+	
 
 	// Calcul de la rotation
 	// =====================
