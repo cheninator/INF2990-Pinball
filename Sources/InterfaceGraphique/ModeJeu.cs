@@ -24,12 +24,13 @@ namespace InterfaceGraphique
         private bool activateDirectLight = false; ///< Etat de la lumiere directe
         private bool activateSpotLight = false; ///< Etat de la lumiere spot
         private EtatJeuAbstrait etat; ///< Machine à états
-        public int pointsPartie = FonctionsNatives.obtenirNombreDePointsDePartie();
-        public int pointsTotale = FonctionsNatives.obtenirNombreDePointsDePartie();
+        public int pointsPartie = 0;
+        public int pointsTotale = 0;
         public int billeDisponible = 0;
         private int nombreDeBillesGagner = 0;
         private int pointsGagnerBille = 0;
         private int pointsGanerPartie = 0;
+        private int billesDisponibles = 0;
         
         private void resetConfig() 
         {
@@ -125,7 +126,10 @@ namespace InterfaceGraphique
                    pointsTotale += pointsPartie;
 
                    if (pointsPartie >= nombreDeBillesGagner * pointsGagnerBille + pointsGagnerBille)
+                   {
                        nombreDeBillesGagner++;
+                       billesDisponibles++;
+                   }
 
                    this.PointsTotal.Text = pointsTotale.ToString();
                    this.PointPartie.Text = pointsPartie.ToString();
