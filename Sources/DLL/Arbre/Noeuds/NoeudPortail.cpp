@@ -191,5 +191,6 @@ void NoeudPortail::traiterCollisions(aidecollision::DetailsCollision, NoeudAbstr
 {
 	// bille->assignerPositionRelative(position du portail twin)
 	bille->assignerPositionRelative(this->getTwin()->obtenirPositionRelative());
+	bille->assignerPortailDOrigine(this->getTwin());
 	// utiliser un booleen pour que la bille ne soit pas attiree par l'autre portail.
 }
