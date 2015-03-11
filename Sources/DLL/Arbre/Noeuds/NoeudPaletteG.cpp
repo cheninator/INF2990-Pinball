@@ -16,6 +16,7 @@
 
 #include "Modele3D.h"
 #include "OpenGL_Storage/ModeleStorage_Liste.h"
+#include "../../Commun/Externe/glm/include/glm/gtx/Projection.hpp"
 
 
 ////////////////////////////////////////////////////////////////////////
@@ -252,22 +253,44 @@ bool NoeudPaletteG::estActiveeParBille(NoeudAbstrait* bille)
 
 	glm::dvec3 positionPalette = obtenirPositionRelative();
 	glm::dvec3 positionBille = bille->obtenirPositionRelative();
-	double distance = glm::length(positionPalette - positionBille);
+	glm::dvec3 vecteur= positionBille - positionPalette;
+	double distance = glm::length(vecteur);
 
-	double angleEnRadian = rotation_[2] * 2 * 3.1415926535897932384626433832795 / 360;
+	double angleEnRadian = angleZOriginal_ * 2 * 3.1415926535897932384626433832795 / 360;
 	glm::dvec3 directionPalette = { -cos(angleEnRadian), -sin(angleEnRadian), 0 }; // Une palette pas tournee a un axe { - 1, 0, 0}
-	
+	glm::dvec3 vecteurProjete = glm::proj(vecteur, directionPalette);
+	glm::dvec3 vecteurNormal = vecteur - vecteurProjete;
+
+	double distanceProjetee = glm::length(vecteurProjete);
+	double distanceNormale = glm::length(vecteurNormal);
+
 	double pente = 0;
 	if (directionPalette.x != 0)
 		pente = directionPalette.y / directionPalette.x;
 	double b = positionPalette.y - positionPalette.x * pente;
 
-	if (positionBille.y > pente * positionBille.x + b // << vrai si on la bille est au dessus de la droite definie par la palette. C<est ce qui fait que les palettes n'activent pas par en dessous.
-		&& positionBille.x < positionPalette.x + 80
-		&& positionBille.y < positionPalette.y + 10)
+	// positionBille.y > pente * positionBille.x + b <====> la bille est au dessus de la droite definie par la palette au repos.
+	if (fonctionDroitePalette(bille) > 0// << vrai si on la bille est au dessus de la droite definie par la palette. C<est ce qui fait que les palettes n'activent pas par en dessous.
+		//&& positionBille.x < positionPalette.x + 80 // << essayer de remplacer par glm::length(glm::proj(vecteur, directionPalette)) < longueurPalette
+		//&& positionBille.y < positionPalette.y + 10
+		)
 		return true;
 	else
 		return false;
+}
+
+double NoeudPaletteG::fonctionDroitePalette(NoeudAbstrait* bille)
+{
+	glm::dvec3 positionBille = bille->obtenirPositionRelative();
+	glm::dvec3 positionPalette = obtenirPositionRelative();
+
+	double angleEnRadian = angleZOriginal_ * 2 * 3.1415926535897932384626433832795 / 360;
+	glm::dvec3 directionPalette = { -cos(angleEnRadian), -sin(angleEnRadian), 0 };
+	double pente = 0;
+	if (directionPalette.x != 0)
+		pente = directionPalette.y / directionPalette.x;
+	double b = positionPalette.y - positionPalette.x * pente;
+	return positionBille.y - pente * positionBille.x - b;
 }
 
 void NoeudPaletteG::activerAI()

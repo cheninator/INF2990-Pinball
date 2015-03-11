@@ -1437,35 +1437,39 @@ void FacadeModele::aiPalettes()
 			if (palette->estActiveeParBille(bille))
 			{
 				// Activer toutes les palettes GJ2 et DJ2
-				activerPalettesAI();
-				// faire quelque chose pour pas continuellement activer les palettes
+				activerPalettesAIGauches();
 				return;
 			}
 		}
 	/*
-	for (NoeudPaletteD* palette : listePalettesDJ2_)
-		for (NoeudAbstrait* bille : listeBilles_)
+	for(NoeudPaletteG* palette : listePalettesGJ2_)
+		for(NoeudAbstrait* bille : listeBilles_)
 		{
 			if (palette->estActiveeParBille(bille))
+			{
 				// Activer toutes les palettes GJ2 et DJ2
-				activerPalettesAI();
-			// faire quelque chose pour pas continuellement activer les palettes
-			// return 
+				activerPalettesAIDroites();
+				return;
+			}
 		}
 	}*/
 }
 
 
-void FacadeModele::activerPalettesAI()
+void FacadeModele::activerPalettesAIGauches()
 {
 	for (NoeudPaletteG* palette : listePalettesGJ2_)
 	{
 		palette->activerAI();
 	}
-		
-	/*
-	for(NoeudPaletteD* palette : listePalettesDJ2_)
-		palette->activerAI();
-	*/
 }
 
+/*
+void FacadeModele::activerPalettesAIDroites()
+{
+	for (NoeudPaletteG* palette : listePalettesGJ2_)
+	{
+		palette->activerAI();
+	}
+}
+*/

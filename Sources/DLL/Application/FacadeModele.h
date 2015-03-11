@@ -177,7 +177,8 @@ public:
    void activerPalettesGJ1();
    void desactiverPalettesGJ1();
    void FacadeModele::aiPalettes();
-   void FacadeModele::activerPalettesAI();
+   void FacadeModele::activerPalettesAIGauches();
+   void FacadeModele::activerPalettesAIDroites();
    void compresserRessort();
    void relacherRessort();
 
