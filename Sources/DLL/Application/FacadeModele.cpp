@@ -913,12 +913,14 @@ void FacadeModele::positionnerMur(int originX, int originY,int x1, int y1, int x
 	// else
 		// position = positionOriginale + glm::dvec3{ 0, 8, 0 };
 
-	
+	glm::dvec3 boite[4];
+	noeud->obtenirBoiteModele(boite[0], boite[1], boite[2], boite[3]);
+	double longueurMur = boite[2].x - boite[0].x;
 	if (glm::length(vecteur) > 0.1)
 	{
 		// Calcul du scale
 		// ===============
-		double scale = glm::length(vecteur) / 16; //  16.0 est la longueur originale du mur. 
+		double scale = glm::length(vecteur) / longueurMur; //  16.0 est la longueur originale du mur. 
 		scaleFinal = glm::dvec3{ 1, scale, 1 };
 	}
 	else
@@ -927,8 +929,7 @@ void FacadeModele::positionnerMur(int originX, int originY,int x1, int y1, int x
 
 	// Tester la transformation
 	// ========================
-	glm::dvec3 boite[4];
-	noeud->obtenirBoiteModele(boite[0], boite[1], boite[2], boite[3]);
+
 	glm::dmat3 echelle = glm::dmat3{	glm::dvec3{ 1,				0,				0.0 },
 										glm::dvec3{ 0,			scaleFinal.y,		0.0f },
 										glm::dvec3{ 0.0,			0.0,			1 } };
