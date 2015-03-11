@@ -860,6 +860,9 @@ void NoeudAbstrait::traiterCollisions(aidecollision::DetailsCollision details, N
 		((NoeudBille*)bille)->afficherVitesse(vitesseFinale); // Que Dieu me pardonne
 	}
 
+	glm::dvec3 positionFinale = bille->obtenirPositionRelative() + details.enfoncement * glm::normalize(details.direction);
+	bille->assignerPositionRelative(positionFinale);
+
 	bille->assignerVitesse(vitesseFinale);
 	bille->assignerImpossible(true);
 }
