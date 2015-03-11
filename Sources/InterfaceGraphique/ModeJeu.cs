@@ -135,7 +135,8 @@ namespace InterfaceGraphique
         {
           StringBuilder bille = new StringBuilder("bille");
           FonctionsNatives.creerObjet(bille, bille.Capacity);
-          timer.Enabled = false;
+          Console.WriteLine("timer");
+          timer.Stop();
         }
 
         public void MettreAJour(double tempsInterAffichage)
@@ -167,6 +168,8 @@ namespace InterfaceGraphique
                         if (currentZone >= nbZones)
                         {
                             FinCampagne();
+                            timer.Stop();
+                            timer.Start();
                         }
                         else
                         {
@@ -219,6 +222,9 @@ namespace InterfaceGraphique
             currentZone++;
             peutAnimer = true;
             boolTemp = true;
+            timer.Enabled = true;
+            timer.Interval = 3000;
+            timer.Stop();
             timer.Start();
 
         }
@@ -229,6 +235,7 @@ namespace InterfaceGraphique
                             boolTemp = false;
                             gameOver = new PartieTerminee(true);
                             gameOver.ShowDialog(this);
+                            timer.Stop();
         }
         private void PartieRapide_Load(object sender, EventArgs e)
         {
@@ -334,9 +341,13 @@ namespace InterfaceGraphique
             FonctionsNatives.construireListesPalettes();
             peutAnimer = true;
             boolTemp = true;
-            timer.Start();
-            gameOver.Close();
+           
+           // gameOver.Close();
             gameOver.Dispose();
+           // timer.Enabled = true;
+           // timer.Interval = 3000;
+           
+            Console.WriteLine("FUCK");
            
         }
 
@@ -350,7 +361,7 @@ namespace InterfaceGraphique
         ////////////////////////////////////////////////////////////////////////
         public void Quitter()
         {
-            timer.Enabled = false;
+            timer.Stop();
             this.Close();
         }
         
