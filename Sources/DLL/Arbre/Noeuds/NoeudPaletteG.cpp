@@ -130,6 +130,33 @@ void NoeudPaletteG::animer(float temps)
 		else
 			assignerRotationHard(glm::dvec3{ rotation_.x, rotation_.y, angleZOriginal_ });
 		break;
+	case ACTIVE_AI:
+		if (obtenirRotation().z - angleZOriginal_ < 60)
+		{
+			assignerRotation(glm::dvec3{ 0, 0, 9 });
+		}
+		else
+		{
+			if (timer_ >= 0.25)
+			{
+				etatPalette_ = RETOUR_AI;
+				timer_ = 0;
+			}
+			else
+				timer_ += temps;
+		}
+		break;
+	case RETOUR_AI:
+		if (obtenirRotation().z - angleZOriginal_ > 0)
+		{
+			assignerRotation(glm::dvec3{ 0, 0, -3 });
+		}
+		else
+		{
+			assignerRotationHard(glm::dvec3{ rotation_.x, rotation_.y, angleZOriginal_ });
+			etatPalette_ = INACTIVE;
+		}
+		break;
 	case INACTIVE:
 		break;
 	}
@@ -186,3 +213,30 @@ void NoeudPaletteG::desactiver()
 	etatPalette_ = RETOUR;
 }
 
+
+////////////////////////////////////////////////////////////////////////
+///
+/// @fn void NoeudPaletteD::traiterCollisions(aidecollision::DetailsCollision details, NoeudAbstrait* bille)
+///
+/// Cette fonction effectue la réaction a la collision de la bille sur 
+/// l'objet courant. Cette fonction est a reimplementer si on veut autre 
+/// chose qu'un rebondissement ordinaire.
+///
+/// @return details contient l'information sur la collision de la bille avec *this.
+///
+////////////////////////////////////////////////////////////////////////
+void NoeudPaletteG::traiterCollisions(aidecollision::DetailsCollision details, NoeudAbstrait* bille)
+{
+	NoeudAbstrait::traiterCollisions(details, bille);
+	if (details.type != aidecollision::COLLISION_AUCUNE && colorShift_ == true && etatPalette_ != ACTIVE_AI)
+	{
+		if (etatPalette_ == INACTIVE)
+		{
+			// TO DO :
+			// Faire en sorte que la collision arrive uniquement dans le 
+			// haut de la palette (et non dans le bas)
+			angleZOriginal_ = obtenirRotation().z;	
+			etatPalette_ = ACTIVE_AI;
+		}
+	}
+}
