@@ -306,14 +306,23 @@ extern "C"
 
 				int pos = rand() % generateurs.size();
 
-				glm::dvec3 scale = noeudTable->getEnfant(generateurs[pos])->obtenirAgrandissement();
-				glm::dvec3 position = noeudTable->getEnfant(generateurs[pos])->obtenirPositionRelative();
-				glm::dvec3 rotation = noeudTable->getEnfant(generateurs[pos])->obtenirPositionRelative();
+				NoeudAbstrait* generateur = noeudTable->getEnfant(generateurs[pos]);
+				glm::dvec3 scale = generateur->obtenirAgrandissement();
+				glm::dvec3 position = generateur->obtenirPositionRelative();
+				glm::dvec3 rotation = generateur->obtenirRotation();
 			
 				//objet->assignerRotation({ rotation.x, rotation.y, rotation.z });
+				
 				double positionX = position.x;
 				double positionY = position.y - ((30 * scale.x));
-				objet->assignerPositionRelative({ positionX, positionY, position.z });
+
+				glm::dvec3 vecteur = { 0, -((30 * scale.x)), 0 };
+				double angleEnRadian = -rotation[2] * 2 * 3.1415926535897932384626433832795 / 360;
+				glm::dmat3 transform = glm::dmat3{  glm::dvec3{ cos(angleEnRadian), -sin(angleEnRadian), 0.0 },
+													glm::dvec3{ sin(angleEnRadian), cos(angleEnRadian), 0.0f },
+													glm::dvec3{ 0.0, 0.0, 1.0 } };
+
+				objet->assignerPositionRelative(position + transform * vecteur);
 				objet->assignerEchelle(scale);
 				//HH:MM:SS:mmm – Nouvelle bille : x: POSX y: POSY
 				// http://brian.pontarelli.com/2009/01/05/getting-the-current-system-time-in-milliseconds-with-c/
