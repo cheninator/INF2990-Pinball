@@ -1265,13 +1265,26 @@ void FacadeModele::traiterCollisions()
 		bille->assignerImpossible(false);
 		for (NoeudAbstrait* noeudAVerifier : listeNoeuds_)
 		{
-			aidecollision::DetailsCollision detail = noeudAVerifier->detecterCollisions(bille);
+			if (bille != nullptr)
+			{
+				aidecollision::DetailsCollision detail = noeudAVerifier->detecterCollisions(bille);
 
-			if (detail.type != aidecollision::COLLISION_AUCUNE)
-				noeudAVerifier->traiterCollisions(detail, bille);
+				if (detail.type != aidecollision::COLLISION_AUCUNE)
+				{
+					if (noeudAVerifier->obtenirType() == "trou")
+					{
+						obtenirArbreRenduINF2990()->getEnfant(0)->effacer(bille);
+						bille = nullptr;
+					}
+					else
+					{
+						noeudAVerifier->traiterCollisions(detail, bille);
+					}
+				}
+			}
 		}
-
 	}
+	mettreAJourListeBillesEtNoeuds();
 }
 
 void FacadeModele::updateForcesExternes()
@@ -1282,7 +1295,7 @@ void FacadeModele::updateForcesExternes()
 		glm::dvec2 positionBille = glm::dvec2{ bille->obtenirPositionRelative() };
 		for (NoeudAbstrait* noeud : listeNoeuds_)
 		{
-			if (noeud->getType() == "portail")
+			if (noeud->obtenirType() == "portail")
 			{
 				glm::dvec2 positionPortail = glm::dvec2{ noeud->obtenirPositionRelative() };
 				double distance = glm::length(positionBille);
@@ -1299,7 +1312,7 @@ void FacadeModele::updateForcesExternes()
 
 ///////////////////////////////////////////////////////////////////////////////
 ///
-/// @fn void FacadeModele::mettreAJourListeBilles()
+/// @fn void FacadeModele::mettreAJourListeBillesEtNoeuds()
 /// 
 /// Met a jour la liste des billes
 /// 
@@ -1312,9 +1325,9 @@ void FacadeModele::mettreAJourListeBillesEtNoeuds()
 	for (unsigned int i = 0; i < arbre_->getEnfant(0)->obtenirNombreEnfants(); i++)
 	{
 		NoeudAbstrait* noeud = arbre_->getEnfant(0)->getEnfant(i);
-		if (noeud->getType() != "generateurbille")
+		if (noeud->obtenirType() != "generateurbille")
 			listeNoeuds_.push_back(noeud);
-		if (noeud->getType() == "bille")
+		if (noeud->obtenirType() == "bille")
 			listeBilles_.push_back(noeud);
 	}
 }

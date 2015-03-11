@@ -1259,7 +1259,7 @@ extern "C"
 
 		glm::dmat3 echelle;
 		glm::dvec3 scaleInitial = objet->obtenirAgrandissement();
-		if (objet->getType() == "mur")
+		if (objet->obtenirType() == "mur")
 		{
 			echelle = glm::dmat3{	glm::dvec3{ scaleInitial.x,	0,		0.0 },
 									glm::dvec3{		 0,			scale,	0.0f },
@@ -1297,7 +1297,7 @@ extern "C"
 			objet->assignerRotationHard(nouveauxAngles);
 
 			// traiter le mur de facon speciale.
-			if (objet->getType() == "mur")
+			if (objet->obtenirType() == "mur")
 				objet->assignerEchelle(glm::dvec3{ scaleInitial.x, scale, scaleInitial.z });
 			else
 				objet->assignerEchelle(glm::dvec3{ scale, scale, scale });

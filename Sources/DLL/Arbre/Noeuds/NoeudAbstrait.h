@@ -182,9 +182,6 @@ public:
 	/// Changer la selection du noeud.
 	virtual void inverserSelection();
 
-	/// Efface les enfants selectionnes.
-	virtual void effacerSelection();
-
 	/// Selectionne tous les enfants de meme que le noeud.
 	virtual void selectionnerTout();
 
@@ -260,9 +257,6 @@ public:
 
 	/// Obtenir rotation
 	inline const glm::dvec3& NoeudAbstrait::obtenirRotation() const;
-
-	/// Obtenir le type
-	std::string getType(){ return type_; }
 
 	/// Mettre le mode pause on ou off
 	void assignerPause(bool pause);
