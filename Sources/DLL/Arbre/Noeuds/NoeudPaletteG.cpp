@@ -230,11 +230,10 @@ void NoeudPaletteG::traiterCollisions(aidecollision::DetailsCollision details, N
 	NoeudAbstrait::traiterCollisions(details, bille);
 	if (details.type != aidecollision::COLLISION_AUCUNE && colorShift_ == true && etatPalette_ != ACTIVE_AI)
 	{
-		if (etatPalette_ == INACTIVE)
+		if (etatPalette_ == INACTIVE && details.direction.y > 0)
 		{
 			// TO DO :
-			// Faire en sorte que la collision arrive uniquement dans le 
-			// haut de la palette (et non dans le bas)
+			// Faire en sorte que la palette s'Active quand la bille est PROCHE
 			angleZOriginal_ = obtenirRotation().z;	
 			etatPalette_ = ACTIVE_AI;
 		}
