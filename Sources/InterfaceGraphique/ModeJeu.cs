@@ -26,36 +26,6 @@ namespace InterfaceGraphique
         private bool activateSpotLight = false; ///< Etat de la lumiere spot
         private EtatJeuAbstrait etat; ///< Machine à états
 
-        public void setVisibilityMenuStrip(bool vis) { menuStrip.Visible = vis; }
-        public void setCurrentZoom(double val)       { currentZoom = val; }
-        public void setPeutAnimer(bool activation)   { peutAnimer = activation; }
-
-        public double getCurrentZoom()    { return currentZoom; }
-        public Touches getTouches()       { return touches; }
-        public bool getAmbiantLight()     { return activateAmbiantLight;}
-        public bool getDirectLight()      { return activateDirectLight; }
-        public bool getSpotLight()        { return activateSpotLight; }
-
-        public void toggleAmbiantLight() { activateAmbiantLight = !activateAmbiantLight; }
-        public void toggleDirectLight()  { activateDirectLight  = !activateDirectLight; }
-        public void toggleSpotLight()    { activateSpotLight    = !activateSpotLight; }
-
-        public void pauseGame() { etat = new EtatJeuPause(this); }
-        public void resumeGame() { etat = new EtatJeuJouer(this); }
-        public partial class EtatJeuAbstrait
-        {
-            
-            public EtatJeuAbstrait()
-            {
-
-            }
-            public EtatJeuAbstrait(ModeJeu parent)
-            {
-                Console.WriteLine("Etat :" + '\t' + "Abstrait");
-                this.parent_ = parent;
-            }
-        };
-
         public int pointsPartie = 0;
         public int pointsTotale = 0;
         public int billeDisponible = 0;
@@ -64,6 +34,37 @@ namespace InterfaceGraphique
         private int pointsGagnerPartie = 0;
         private int billesDisponibles = 0;
         
+        // Modificateurs
+        public void setVisibilityMenuStrip(bool vis) { menuStrip.Visible = vis; }
+        public void setCurrentZoom(double val)       { currentZoom = val; }
+        public void setPeutAnimer(bool activation)   { peutAnimer = activation; }
+        
+        // Accesseurs
+        public double getCurrentZoom()    { return currentZoom; }
+        public Touches getTouches()       { return touches; }
+        public bool getAmbiantLight()     { return activateAmbiantLight;}
+        public bool getDirectLight()      { return activateDirectLight; }
+        public bool getSpotLight()        { return activateSpotLight; }
+        
+        // Toggle des lumières
+        public void toggleAmbiantLight() { activateAmbiantLight = !activateAmbiantLight; }
+        public void toggleDirectLight()  { activateDirectLight  = !activateDirectLight; }
+        public void toggleSpotLight()    { activateSpotLight    = !activateSpotLight; }
+
+        // Méthodes de changement d'état
+        public void pauseGame() { etat = new EtatJeuPause(this); }
+        public void resumeGame() { etat = new EtatJeuJouer(this); }
+        
+        public partial class EtatJeuAbstrait
+        {
+            public EtatJeuAbstrait() {}
+            public EtatJeuAbstrait(ModeJeu parent)
+            {
+                Console.WriteLine("Etat :" + '\t' + "Abstrait");
+                this.parent_ = parent;
+            }
+        };
+
         public ModeJeu(List<string> maps, int playerType)
         {
             {/*
