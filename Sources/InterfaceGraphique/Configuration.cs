@@ -121,7 +121,7 @@ namespace InterfaceGraphique
                     if (x.Equals(touche))
                     {
                         label_Rebind.Text = "Touche deja utilisée";
-                        Console.WriteLine("Touche deja utilise");
+                        //Console.WriteLine("Touche deja utilise");
                         return false;
                     }
                 }
@@ -132,7 +132,7 @@ namespace InterfaceGraphique
             else
             {
                 label_Rebind.Text = "Touche invalide";
-                Console.WriteLine("Touche invalide");
+                //Console.WriteLine("Touche invalide");
                 if (!mediaPlaying)
                 {
                     p.Stream = Properties.Resources.touche_invalide;

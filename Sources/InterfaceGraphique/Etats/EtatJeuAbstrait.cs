@@ -42,17 +42,17 @@ namespace InterfaceGraphique
                     FonctionsNatives.zoomIn();
                     parent_.currentZoom = FonctionsNatives.obtenirZoomCourant();
                 }*/
-                Console.WriteLine("Abstract KeyDown");
+                //Console.WriteLine("Abstract KeyDown");
                 return false;
             }
             public virtual bool traiterKeyPress(object sender, KeyPressEventArgs e)
             {
-                Console.WriteLine("Abstract Press");
+                //Console.WriteLine("Abstract Press");
                 return false;
             }
             public virtual bool traiterKeyUp(object sender, KeyEventArgs e)
             {
-                Console.WriteLine("Abstract KeyUp");
+                //Console.WriteLine("Abstract KeyUp");
                 return false;
             }
 
@@ -84,7 +84,7 @@ namespace InterfaceGraphique
         public EtatJeuPause(ModeJeu modeJeu)
             : base(modeJeu)
         {
-            Console.WriteLine("Constructeur Etat :" + '\t' + "Pause");
+            //Console.WriteLine("Constructeur Etat :" + '\t' + "Pause");
 
             parent_.setVisibilityMenuStrip(true);
             FonctionsNatives.modePause(true);
@@ -120,7 +120,7 @@ namespace InterfaceGraphique
         public EtatJeuJouer(ModeJeu modeJeu)
             : base(modeJeu)
         {
-            Console.WriteLine("Etat :" + '\t' + "Jouer");
+            //Console.WriteLine("Etat :" + '\t' + "Jouer");
 
             parent_.setVisibilityMenuStrip(false);
             FonctionsNatives.modePause(false);
@@ -177,7 +177,7 @@ namespace InterfaceGraphique
         }
         public override bool traiterKeyUp(object sender, KeyEventArgs e)
         {
-            Console.WriteLine("ModeJeu KeyUp");
+            //Console.WriteLine("ModeJeu KeyUp");
             if (e.KeyValue == parent_.getTouches().PGJ1)
             {
                 FonctionsNatives.desactiverPalettesGJ1();
@@ -249,7 +249,7 @@ namespace InterfaceGraphique
                 }*/
             if (e.KeyChar == (char)27)
             {
-                Console.WriteLine("¨METTRE EN PAUSE");
+                //Console.WriteLine("¨METTRE EN PAUSE");
                 parent_.pauseGame();
             }
             return true;
@@ -268,7 +268,7 @@ namespace InterfaceGraphique
         public EtatJeuDebutDePartie(ModeJeu modeJeu) : base(modeJeu)
         {
             // TODO: Complete member initialization
-            Console.WriteLine("Etat :" + '\t' + "DebutDePartie");
+            //Console.WriteLine("Etat :" + '\t' + "DebutDePartie");
         }
 
         public override bool traiterRoulette(object sender, MouseEventArgs e)
@@ -292,7 +292,7 @@ namespace InterfaceGraphique
     {
         public EtatJeuFinDePartie(ModeJeu modeJeu) : base(modeJeu)
         {
-            Console.WriteLine("Etat :" + '\t' + "FinDePartie");
+            //Console.WriteLine("Etat :" + '\t' + "FinDePartie");
         }
     }
 

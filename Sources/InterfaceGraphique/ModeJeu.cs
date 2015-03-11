@@ -52,7 +52,7 @@ namespace InterfaceGraphique
             }
             public EtatJeuAbstrait(ModeJeu parent)
             {
-                Console.WriteLine("Etat :" + '\t' + "Abstrait");
+                //Console.WriteLine("Etat :" + '\t' + "Abstrait");
                 this.parent_ = parent;
             }
         };
@@ -88,7 +88,7 @@ namespace InterfaceGraphique
             if (nbZones > 1)
                 this.Text = "Campagne";
             map = new StringBuilder(myMaps[0]);
-            Console.WriteLine(nbZones);
+            //Console.WriteLine(nbZones);
             FonctionsNatives.ouvrirXML(map, map.Capacity);
             resetConfig();
             
@@ -139,7 +139,7 @@ namespace InterfaceGraphique
         {
           StringBuilder bille = new StringBuilder("bille");
           FonctionsNatives.creerObjet(bille, bille.Capacity);
-          Console.WriteLine("timer");
+          //Console.WriteLine("timer");
          // timerBille2.Start();
           timer.Stop();
         }
@@ -148,7 +148,7 @@ namespace InterfaceGraphique
         {
             StringBuilder bille = new StringBuilder("bille");
             FonctionsNatives.creerObjet(bille, bille.Capacity);
-            Console.WriteLine("BILLE 2");
+            //Console.WriteLine("BILLE 2");
             timerBille2.Stop();
         }
 
@@ -227,7 +227,7 @@ namespace InterfaceGraphique
             map = new StringBuilder(myMaps[currentZone]);
             nextMap = new StringBuilder(map.ToString());
             nextMap.Remove(nextMap.Length - 4, 4);
-            Console.WriteLine(Path.GetFileName(nextMap.ToString()));
+            //Console.WriteLine(Path.GetFileName(nextMap.ToString()));
 
             System.Threading.Thread.Sleep(500);
             zInfo = new ZoneInfo(Path.GetFileName(nextMap.ToString()), FonctionsNatives.obtenirDifficulte(map, map.Capacity).ToString(), true);
@@ -295,17 +295,17 @@ namespace InterfaceGraphique
 
         private void PartieRapide_KeyDown(object sender, KeyEventArgs e)
         {
-            Console.WriteLine("KeyDown");
+            //Console.WriteLine("KeyDown");
             etat.traiterKeyDown(sender, e);
         }
 
 
         private void PartieRapide_KeyUp(object sender, KeyEventArgs e)
         {
-            Console.WriteLine("KeyUp");
+            //Console.WriteLine("KeyUp");
             etat.traiterKeyUp(sender, e);
-            Console.WriteLine("-----------------------------------------");
-            Console.WriteLine("-----------------------------------------");
+            //Console.WriteLine("-----------------------------------------");
+            //Console.WriteLine("-----------------------------------------");
         }
 
         
@@ -317,7 +317,7 @@ namespace InterfaceGraphique
 
         private void PartieRapide_KeyPress(object sender, KeyPressEventArgs e)
         {
-            Console.WriteLine("KeyPress");
+            //Console.WriteLine("KeyPress");
             etat.traiterKeyPress(sender, e);
         }
 
@@ -347,7 +347,7 @@ namespace InterfaceGraphique
             map = new StringBuilder(myMaps[0]);
             nextMap = new StringBuilder(map.ToString());
             nextMap.Remove(nextMap.Length - 4, 4);
-            Console.WriteLine(map);
+            //Console.WriteLine(map);
             this.Hide();
             zInfo = new ZoneInfo(Path.GetFileName(nextMap.ToString()), FonctionsNatives.obtenirDifficulte(map, map.Capacity).ToString(),false);
             zInfo.ShowDialog();

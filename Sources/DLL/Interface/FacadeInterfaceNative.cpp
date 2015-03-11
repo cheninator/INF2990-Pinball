@@ -1284,7 +1284,7 @@ extern "C"
 			if (!FacadeModele::obtenirInstance()->estDansTable(pointATester))
 			{
 				nouvellesProprietesSontLegales = false;
-				std::cout << "L'application des proprietes refusee, on sortirait de la table" << std::endl;
+				//std::cout << "L'application des proprietes refusee, on sortirait de la table" << std::endl;
 				return false;
 			}
 		}
