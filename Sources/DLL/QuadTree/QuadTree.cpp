@@ -167,11 +167,14 @@ bool QuadTree::estDansQuadTree(NoeudAbstrait* noeud, QuadTree* quad) const
 		for (int i = 0; i < 4; i++)
 			points[i] += noeud->obtenirPositionRelative();
 
+		// Si un des points n'est pas dans le QuadTree, retourner false
 		for (unsigned int i = 0; i < points.size(); i++)
 		{
 			if (!(estDansQuadTree(points[0], quad)))
 				return false;
 		}
+
+		// Le point est dans le QuadTree
 		return true;
 	}
 
@@ -199,6 +202,19 @@ bool QuadTree::estDansQuadTree(NoeudAbstrait* noeud, QuadTree* quad) const
 }
 
 
+////////////////////////////////////////////////////////////////////////
+///
+/// @fn bool QuadTree::estDansQuadTree(glm::dvec3 points, QuadTree* quad)
+///
+/// Cette méthode permet de savoir si un point est complétement contenu dans
+///	un QuadTree.
+///
+/// @param[in] points : le point à vérifier
+/// @param[in] quad : le quad dans lequel on veut insérer
+///
+/// @return True lorsque le point est dans le QuadTree passé en paramètre. False autrement
+///
+////////////////////////////////////////////////////////////////////////
 bool QuadTree::estDansQuadTree(glm::dvec3 points, QuadTree* quad) const
 {
 	if (points.x > quad->inferieurGauche_.x && points.x < quad->superieurDroit_.x
@@ -225,8 +241,6 @@ bool QuadTree::estDansQuadTree(glm::dvec3 points, QuadTree* quad) const
 ////////////////////////////////////////////////////////////////////////
 QuadTree* QuadTree::obtenirQuadrant(NoeudAbstrait* noeud)
 {
-	glm::dvec3 position = noeud->obtenirPositionRelative();
-
 	// Si le noeud est complètement dans le quadrant Nord-Est
 	if (estDansQuadTree(noeud, nordEst_))
 		return nordEst_;
@@ -435,16 +449,9 @@ bool QuadTree::remove(NoeudAbstrait* noeud)
 
 		else
 		{
-			iter = std::find(objets_.begin(), objets_.end(), noeud);
-
-			if (iter != objets_.end())
-			{
-				objets_.remove(*iter);
-				return true;
-			}
+			objets_.remove(noeud);
+			return true;
 		}
-
-		return true;
 	}
 
 	else
