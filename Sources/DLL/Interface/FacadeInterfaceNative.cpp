@@ -1543,6 +1543,11 @@ extern "C"
 	{
 		SingletonGlobal::obtenirInstance()->setPointsPartie(0);
 	}
+
+	__declspec(dllexport) int __cdecl obtenirNombreBillesCourante()
+	{
+		return SingletonGlobal::obtenirInstance()->obtenirBille();
+	}
 	//__declspec(dllexport) int __cdecl obtenirNombreDePointsTotals()
 	//{
 	//	return SingletonGlobal::obtenirInstance()->getPointsTotales();
