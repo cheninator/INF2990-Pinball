@@ -183,6 +183,7 @@ public:
 
    // Traiter l'ensemble des collisions
    void traiterCollisions();
+   void updateForcesExternes();
    
    void mettreAJourListeBillesEtNoeuds();
 

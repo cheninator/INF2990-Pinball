@@ -42,7 +42,7 @@
 NoeudBille::NoeudBille(const std::string& typeNoeud)
 	: NoeudComposite{ typeNoeud }
 {
-	vitesse_ = glm::dvec3{ 10 ,100, 0 };
+	vitesse_ = glm::dvec3{ 0 ,0, 0 };
 	constanteDeFrottement_ = 1.0;
 }
 
@@ -145,7 +145,7 @@ void NoeudBille::animer(float temps) // rajouter des parametres ou une fonction 
 	glm::dvec3 forceFrottement{ 0, 0, 0 };
 	if (glm::length(vitesse_) > 0.001)
 		forceFrottement = -constanteDeFrottement_ * glm::normalize(vitesse_);
-	glm::dvec3 forceTotale = forceFrottement + gravite + attractionsPortails;
+	glm::dvec3 forceTotale = forceFrottement + gravite + 1000000.0*forcesExternes_;
 
 
 
