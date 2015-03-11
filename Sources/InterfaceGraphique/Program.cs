@@ -490,5 +490,11 @@ namespace InterfaceGraphique
 
         [DllImport(@"Noyau.dll", CallingConvention = CallingConvention.Cdecl)]
         public static extern int obtenirNombreBillesCourante();
+
+        [DllImport(@"Noyau.dll", CallingConvention = CallingConvention.Cdecl)]
+        public static extern void compresserRessort();
+
+        [DllImport(@"Noyau.dll", CallingConvention = CallingConvention.Cdecl)]
+        public static extern void relacherRessort();
     }
 }

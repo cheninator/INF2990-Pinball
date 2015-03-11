@@ -1357,3 +1357,17 @@ void FacadeModele::mettreAJourListeNoeuds()
 			listeNoeuds_.push_back(noeud);
 	}
 }
+
+
+
+void FacadeModele::compresserRessort()
+{
+
+}
+
+
+
+void FacadeModele::relacherRessort()
+{
+
+}

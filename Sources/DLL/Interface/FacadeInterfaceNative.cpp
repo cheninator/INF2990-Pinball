@@ -1548,6 +1548,16 @@ extern "C"
 	{
 		return SingletonGlobal::obtenirInstance()->obtenirBille();
 	}
+
+	__declspec(dllexport) void __cdecl compresserRessort()
+	{
+		return FacadeModele::obtenirInstance()->compresserRessort();
+	}
+
+	__declspec(dllexport) void __cdecl relacherRessort()
+	{
+		return FacadeModele::obtenirInstance()->relacherRessort();
+	}
 	//__declspec(dllexport) int __cdecl obtenirNombreDePointsTotals()
 	//{
 	//	return SingletonGlobal::obtenirInstance()->getPointsTotales();

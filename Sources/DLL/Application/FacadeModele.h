@@ -176,6 +176,9 @@ public:
    void activerPalettesGJ1();
    void desactiverPalettesGJ1();
 
+   void compresserRessort();
+   void relacherRessort();
+
    void supprimerBille();
 
    void setPause(bool pause);
