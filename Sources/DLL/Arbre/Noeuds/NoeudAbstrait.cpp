@@ -864,14 +864,29 @@ void NoeudAbstrait::traiterCollisions(aidecollision::DetailsCollision details, N
 	bille->assignerImpossible(true);
 }
 
-
-
-
+////////////////////////////////////////////////////////////////////////
+///
+/// @fn void NoeudAbstrait::assignerPortailDOrigine(NoeudAbstrait* portail)
+///
+/// Assigne l'attribut portailDOrigine avec un portail.  Ce portail ne causera pas
+/// de force sur la bille.  Une fois que la bille s'est assez eloignee du
+/// portail, on remet cet attirbut a nullptr.
+///
+////////////////////////////////////////////////////////////////////////
 void NoeudAbstrait::assignerPortailDOrigine(NoeudAbstrait* portail)
 {
 	portailDOrigine_ = portail;
 }
 
+////////////////////////////////////////////////////////////////////////
+///
+/// @fn void NoeudAbstrait::assignerPortailDOrigine(NoeudAbstrait* portail)
+///
+/// Obtient l'attribut portailDOrigine_ pour le comparer avec les portails.
+/// Si un portail est le portail d'origine, il ne cree pas de force sur 
+/// la bille.
+/// 
+////////////////////////////////////////////////////////////////////////
 NoeudAbstrait* NoeudAbstrait::obtenirPortailDOrigine()
 {
 	return portailDOrigine_;

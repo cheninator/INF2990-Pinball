@@ -262,8 +262,13 @@ public:
 
 	/// Assigner Forces Externes
 	inline void assignerForcesExternes(glm::dvec3 forcesExternes);
+
+	/// Assigner l'attribut portailDOrigine_ pour tenir compte du portail d'ou on est apparu.
 	void assignerPortailDOrigine(NoeudAbstrait* portail);
+
+	/// Obtenir l'adresse du pointeurDOrigine_ 
 	NoeudAbstrait* obtenirPortailDOrigine();
+
 protected:
 
 	/// Si jumeau, autrement nullptr
@@ -334,13 +339,19 @@ protected:
 	/// Mode SpotLight de la bille
 	bool spotLight_{ false };
 
+	/// Vitesse du noeud utilisee pour l'animation
 	glm::dvec3 vitesse_{ 0.0, 0.0, 0.0 };
+
+	/// Forces externes causees par les portails
 	glm::dvec3 forcesExternes_{ 0, 0, 0 };
 
+	/// Masse utilisee pour modifier l'effet des forces dans l'animation
 	double masse_{ 1 };
 
+	/// Utilisee pour modifier la force de frottement dans l'animation
 	double constanteDeFrottement_{ 1 };
 
+	/// Utilise pour tenir compte du fait qu'on est apparu par un portail
 	NoeudAbstrait* portailDOrigine_{ nullptr };
 };
 
