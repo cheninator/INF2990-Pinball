@@ -2985,6 +2985,7 @@ namespace InterfaceGraphique
             panel_GL.Location = new Point(163, 24);
             panel_GL.Dock = DockStyle.Fill;
             FonctionsNatives.translater(mouvementX, -mouvementY);
+            FonctionsNatives.mettreAJourListeBillesEtNoeuds();
         }
 
         //////////////////////////////////////////////////////////////////////////////////////////

@@ -334,7 +334,7 @@ void FacadeModele::animer(float temps)
 	// Changer la vitesse des billes en fonction des collisions:
 	// Si je commente la ligne suivante, rentrer et sortir du mode test fait crasher, 
 	// il manque un appel pour quand on sort du mode test.
-	mettreAJourListeBillesEtNoeuds();
+	//mettreAJourListeBillesEtNoeuds();
 	traiterCollisions();
 
 	// Mise a jour des objets.
