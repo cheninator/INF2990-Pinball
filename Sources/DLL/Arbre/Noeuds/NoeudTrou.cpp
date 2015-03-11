@@ -158,11 +158,12 @@ std::vector<glm::dvec3> NoeudTrou::obtenirVecteursEnglobants()
 /// @fn void NoeudTrou::traiterCollisions(aidecollision::DetailsCollision details, NoeudAbstrait* bille)
 ///
 /// Cette fonction effectue la reaction a la collision de la bille sur 
-/// l'objet courant. Cette fonction est a reimplementer si on veut autre 
-/// chose qu'un rebondissement ordinaire.
+/// un trou.  C'est-a-dire effacer la bille.  
 ///
-/// @return details contient l'information sur la collision de la bille avec *this.
-///
+/// @remark un pointeur vers la bille effacee existe encore dans la
+/// liste des noeuds et liste des billes.  Voir FacadeModele::traiterCollisions()
+/// pour voir les etapes supplementaires que l'effacement d'une bille necessite.
+/// 
 ////////////////////////////////////////////////////////////////////////
 void NoeudTrou::traiterCollisions(aidecollision::DetailsCollision, NoeudAbstrait* bille)
 {
