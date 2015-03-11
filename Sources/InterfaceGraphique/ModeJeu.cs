@@ -86,22 +86,22 @@ namespace InterfaceGraphique
             map = new StringBuilder(myMaps[0]);
             Console.WriteLine(nbZones);
             FonctionsNatives.ouvrirXML(map, map.Capacity);
-            resetConfig();
             //Console.WriteLine(pointsGagnerPartie);
             //Console.WriteLine(pointsPartie);
             FonctionsNatives.construireListesPalettes();
             currentZone++;
             Program.tempBool = true;
             panel_GL.Focus();
-
+            
             etat = new EtatJeuDebutDePartie(this);
+            // Il faut changer le mode car le traitement de début est fini
             etat = new EtatJeuJouer(this);
             timer.Start();
           
         }
 
 
-        private void resetConfig()
+        protected void resetConfig()
         {
             billeDisponible = 0;
             nombreDeBillesGagnes = 0;
@@ -147,8 +147,10 @@ namespace InterfaceGraphique
                     if (peutAnimer)
                     {
                         FonctionsNatives.animer(tempsInterAffichage);
+                        int bfPts = pointsPartie;
                         pointsPartie = FonctionsNatives.obtenirNombreDePointsDePartie();
-
+                        if (bfPts != pointsPartie)
+                            Console.WriteLine(pointsPartie);
                     }
                    FonctionsNatives.dessinerOpenGL();
                    
@@ -214,11 +216,14 @@ namespace InterfaceGraphique
             this.Show();
 
             FonctionsNatives.ouvrirXML(map, map.Capacity);
-            resetConfig();
             FonctionsNatives.construireListesPalettes();
             currentZone++;
             peutAnimer = true;
             boolTemp = true;
+            /// La création de l'état s'occupe d'appeler resetConfig
+            etat = new EtatJeuDebutDePartie(this);
+            // Il faut changer le mode car le traitement de début est fini
+            etat = new EtatJeuJouer(this);
             timer.Start();
 
         }
@@ -328,12 +333,15 @@ namespace InterfaceGraphique
             this.Show();
             FonctionsNatives.ouvrirXML(map, map.Capacity);
             FonctionsNatives.resetNombreDePointsDePartie();
-            resetConfig();
-
+           
             currentZone = 1;
             FonctionsNatives.construireListesPalettes();
             peutAnimer = true;
             boolTemp = true;
+            /// La création de l'état s'occupe d'appeler resetConfig
+            etat = new EtatJeuDebutDePartie(this);
+            // Il faut changer le mode car le traitement de début est fini
+            etat = new EtatJeuJouer(this);
             timer.Start();
             gameOver.Close();
             gameOver.Dispose();

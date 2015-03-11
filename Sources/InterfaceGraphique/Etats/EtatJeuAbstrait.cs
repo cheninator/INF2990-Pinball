@@ -69,6 +69,11 @@ namespace InterfaceGraphique
                     FonctionsNatives.bloquerAffichageGlobal(0);
                 }
             }
+
+            public void resetConfig()
+            {
+                parent_.resetConfig();
+            }
         }
     }
 
@@ -267,8 +272,9 @@ namespace InterfaceGraphique
     {
         public EtatJeuDebutDePartie(ModeJeu modeJeu) : base(modeJeu)
         {
-            // TODO: Complete member initialization
             Console.WriteLine("Etat :" + '\t' + "DebutDePartie");
+            // Reset des points
+            resetConfig();
         }
 
         public override bool traiterRoulette(object sender, MouseEventArgs e)
