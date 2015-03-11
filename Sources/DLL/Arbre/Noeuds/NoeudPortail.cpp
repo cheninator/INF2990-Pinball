@@ -190,7 +190,10 @@ std::vector<glm::dvec3> NoeudPortail::obtenirVecteursEnglobants()
 void NoeudPortail::traiterCollisions(aidecollision::DetailsCollision, NoeudAbstrait* bille)
 {
 	// bille->assignerPositionRelative(position du portail twin)
-	bille->assignerPositionRelative(this->getTwin()->obtenirPositionRelative());
-	bille->assignerPortailDOrigine(this->getTwin());
+	if (bille->obtenirPortailDOrigine() != this)
+	{
+		bille->assignerPositionRelative(this->getTwin()->obtenirPositionRelative());
+		bille->assignerPortailDOrigine(this->getTwin());
+	}
 	// utiliser un booleen pour que la bille ne soit pas attiree par l'autre portail.
 }
