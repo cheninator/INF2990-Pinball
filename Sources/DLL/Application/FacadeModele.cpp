@@ -1265,13 +1265,26 @@ void FacadeModele::traiterCollisions()
 		bille->assignerImpossible(false);
 		for (NoeudAbstrait* noeudAVerifier : listeNoeuds_)
 		{
-			aidecollision::DetailsCollision detail = noeudAVerifier->detecterCollisions(bille);
+			if (bille != nullptr)
+			{
+				aidecollision::DetailsCollision detail = noeudAVerifier->detecterCollisions(bille);
 
-			if (detail.type != aidecollision::COLLISION_AUCUNE)
-				noeudAVerifier->traiterCollisions(detail, bille);
+				if (detail.type != aidecollision::COLLISION_AUCUNE)
+				{
+					if (noeudAVerifier->obtenirType() == "trou")
+					{
+						obtenirArbreRenduINF2990()->getEnfant(0)->effacer(bille);
+						bille = nullptr;
+					}
+					else
+					{
+						noeudAVerifier->traiterCollisions(detail, bille);
+					}
+				}
+			}
 		}
-
 	}
+	mettreAJourListeBillesEtNoeuds();
 }
 
 void FacadeModele::updateForcesExternes()
@@ -1296,7 +1309,7 @@ void FacadeModele::updateForcesExternes()
 
 ///////////////////////////////////////////////////////////////////////////////
 ///
-/// @fn void FacadeModele::mettreAJourListeBilles()
+/// @fn void FacadeModele::mettreAJourListeBillesEtNoeuds()
 /// 
 /// Met a jour la liste des billes
 /// 
