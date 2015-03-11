@@ -336,6 +336,7 @@ void FacadeModele::animer(float temps)
 	// il manque un appel pour quand on sort du mode test.
 	mettreAJourListeBillesEtNoeuds();
 	traiterCollisions();
+	updateForcesExternes();
 
 	// Mise a jour des objets.
 	arbre_->animer(temps);
@@ -1270,6 +1271,26 @@ void FacadeModele::traiterCollisions()
 				noeudAVerifier->traiterCollisions(detail, bille);
 		}
 
+	}
+}
+
+void FacadeModele::updateForcesExternes()
+{
+	for (NoeudAbstrait* bille : listeBilles_)
+	{
+		glm::dvec2 sommeDesForces{ 0, 0 };
+		glm::dvec2 positionBille = glm::dvec2{ bille->obtenirPositionRelative() };
+		for (NoeudAbstrait* noeud : listeNoeuds_)
+		{
+			if (noeud->getType() == "portail")
+			{
+				glm::dvec2 positionPortail = glm::dvec2{ noeud->obtenirPositionRelative() };
+				double distance = glm::length(positionBille);
+				glm::dvec2 force = (1 / (distance*distance)) * glm::normalize(positionPortail - positionBille);
+				sommeDesForces += force;
+			}
+		}
+		bille->assignerForcesExternes(glm::dvec3{ sommeDesForces.x, sommeDesForces.y  , 0});
 	}
 }
 
