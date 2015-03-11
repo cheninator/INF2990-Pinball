@@ -42,6 +42,8 @@ public:
 	/// Activer la palette.
 	void activer();
 
+	void activerAI();
+	bool estActiveeParBille(NoeudAbstrait* bille);
 	/// Desactiver la palette. La faire redescendre.
 	void desactiver();
 

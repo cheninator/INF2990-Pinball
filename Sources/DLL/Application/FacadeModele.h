@@ -176,7 +176,8 @@ public:
    /// Activer les palettes de chaque joueur
    void activerPalettesGJ1();
    void desactiverPalettesGJ1();
-
+   void FacadeModele::aiPalettes();
+   void FacadeModele::activerPalettesAI();
    void compresserRessort();
    void relacherRessort();
 

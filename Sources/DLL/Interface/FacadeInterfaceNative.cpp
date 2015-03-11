@@ -337,6 +337,7 @@ extern "C"
 		}
 		FacadeModele::obtenirInstance()->obtenirArbreRenduINF2990()->getEnfant(0)->ajouter(objet);
 		FacadeModele::obtenirInstance()->mettreAJourListeBillesEtNoeuds();
+		FacadeModele::obtenirInstance()->construireListesPalettes();
 		FacadeModele::obtenirInstance()->setDebug();
 
 	}

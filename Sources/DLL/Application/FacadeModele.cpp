@@ -338,7 +338,7 @@ void FacadeModele::animer(float temps)
 	mettreAJourListeBillesEtNoeuds();
 	traiterCollisions();
 	updateForcesExternes();
-	// aiPalettes();
+	aiPalettes();
 
 	// Mise a jour des objets.
 	arbre_->animer(temps);
@@ -1427,28 +1427,45 @@ void FacadeModele::relacherRessort()
 		((NoeudRessort*)ressort)->relacher();
 }
 
-/*
+
 // A chaque frame, checker si une bille est proche d'une palette AI.
 void FacadeModele::aiPalettes()
 {
-	for(NoeudPallette* palette : listePalettesGJ2 + listePalettesDJ2)
+	for(NoeudPaletteG* palette : listePalettesGJ2_)
 		for(NoeudAbstrait* bille : listeBilles_)
+		{
+			if (palette->estActiveeParBille(bille))
+			{
+				// Activer toutes les palettes GJ2 et DJ2
+				activerPalettesAI();
+				// faire quelque chose pour pas continuellement activer les palettes
+				return;
+			}
+		}
+	/*
+	for (NoeudPaletteD* palette : listePalettesDJ2_)
+		for (NoeudAbstrait* bille : listeBilles_)
 		{
 			if (palette->estActiveeParBille(bille))
 				// Activer toutes les palettes GJ2 et DJ2
 				activerPalettesAI();
-				// faire quelque chose pour pas continuellement activer les palettes
-				// return 
+			// faire quelque chose pour pas continuellement activer les palettes
+			// return 
 		}
+	}*/
 }
 
 
-void FacadeModele::activerPalettesAI();
+void FacadeModele::activerPalettesAI()
 {
-	for(NoeudPalette* palette : listePalettesGJ2)
+	for (NoeudPaletteG* palette : listePalettesGJ2_)
+	{
 		palette->activerAI();
-	for(NoeudPalette* palette : listePalettesDJ2)
+	}
+		
+	/*
+	for(NoeudPaletteD* palette : listePalettesDJ2_)
 		palette->activerAI();
+	*/
 }
 
-*/

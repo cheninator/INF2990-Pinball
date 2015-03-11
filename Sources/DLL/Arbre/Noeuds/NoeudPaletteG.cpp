@@ -228,6 +228,10 @@ void NoeudPaletteG::desactiver()
 void NoeudPaletteG::traiterCollisions(aidecollision::DetailsCollision details, NoeudAbstrait* bille)
 {
 	NoeudAbstrait::traiterCollisions(details, bille);
+	// Ce que la palette fait a la bille quand il y a une collision ne depend pas de si la palette est AI ou pas.
+	// FacadeModele s'occuppe d'activer seulement les palettes d'un joueur en utilisant les listes
+	// listePalettesGJ2_ et listePalettesDJ2_ (attributs de FacadeModele).
+	/*
 	if (details.type != aidecollision::COLLISION_AUCUNE && colorShift_ == true && etatPalette_ != ACTIVE_AI)
 	{
 		if (etatPalette_ == INACTIVE && details.direction.y > 0)
@@ -238,4 +242,42 @@ void NoeudPaletteG::traiterCollisions(aidecollision::DetailsCollision details, N
 			etatPalette_ = ACTIVE_AI;
 		}
 	}
+	*/
 }
+
+
+bool NoeudPaletteG::estActiveeParBille(NoeudAbstrait* bille)
+{
+	assert(bille->obtenirType() == "bille");
+
+	glm::dvec3 positionPalette = obtenirPositionRelative();
+	glm::dvec3 positionBille = bille->obtenirPositionRelative();
+	double distance = glm::length(positionPalette - positionBille);
+
+	double angleEnRadian = rotation_[2] * 2 * 3.1415926535897932384626433832795 / 360;
+	glm::dvec3 directionPalette = { -cos(angleEnRadian), -sin(angleEnRadian), 0 }; // Une palette pas tournee a un axe { - 1, 0, 0}
+	
+	double pente = 0;
+	if (directionPalette.x != 0)
+		pente = directionPalette.y / directionPalette.x;
+	double b = positionPalette.y - positionPalette.x * pente;
+
+	if (positionBille.y > pente * positionBille.x + b // << vrai si on la bille est au dessus de la droite definie par la palette. C<est ce qui fait que les palettes n'activent pas par en dessous.
+		&& positionBille.x < positionPalette.x + 100
+		&& positionBille.y < positionPalette.y + 10)
+		return true;
+	else
+		return false;
+}
+
+void NoeudPaletteG::activerAI()
+{
+	// Les palettesAI doivent pouvoir etre activerAI meme si une bille ne se trouve pas proche
+	if (etatPalette_ == INACTIVE)
+	{
+		angleZOriginal_ = obtenirRotation().z;
+		etatPalette_ = ACTIVE_AI;
+	}
+}
+
+// Pas besoin de NoeudPaletteG::desactiverAI() parce que c'est deja integre a la logique des etats.
