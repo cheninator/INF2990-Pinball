@@ -21,20 +21,27 @@ namespace InterfaceGraphique
         StringBuilder nextMap;
         bool peutAnimer;
         bool boolTemp = true;
-        private bool activateAmbianteLight = false; ///< Etat de la lumiere ambiante
+        private bool activateAmbiantLight = false; ///< Etat de la lumiere ambiante
         private bool activateDirectLight = false; ///< Etat de la lumiere directe
         private bool activateSpotLight = false; ///< Etat de la lumiere spot
         private EtatJeuAbstrait etat; ///< Machine à états
-                                      
-        public double getCurrentZoom() { return currentZoom; }
-        public void setCurrentZoom(double val) { currentZoom = val; }
-        public Touches getTouches() { return touches; }
-        public void pauseGame() { etat = new EtatJeuPause(this);}
-        public void resumeGame() { etat = new EtatJeuJouer(this); }
-        public void setPeutAnimer(bool activation) { peutAnimer = activation; }
+
         public void setVisibilityMenuStrip(bool vis) { menuStrip.Visible = vis; }
+        public void setCurrentZoom(double val)       { currentZoom = val; }
+        public void setPeutAnimer(bool activation)   { peutAnimer = activation; }
 
+        public double getCurrentZoom()    { return currentZoom; }
+        public Touches getTouches()       { return touches; }
+        public bool getAmbiantLight()     { return activateAmbiantLight;}
+        public bool getDirectLight()      { return activateDirectLight; }
+        public bool getSpotLight()        { return activateSpotLight; }
 
+        public void toggleAmbiantLight() { activateAmbiantLight = !activateAmbiantLight; }
+        public void toggleDirectLight()  { activateDirectLight  = !activateDirectLight; }
+        public void toggleSpotLight()    { activateSpotLight    = !activateSpotLight; }
+
+        public void pauseGame() { etat = new EtatJeuPause(this); }
+        public void resumeGame() { etat = new EtatJeuJouer(this); }
         public partial class EtatJeuAbstrait
         {
             

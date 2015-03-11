@@ -193,24 +193,25 @@ namespace InterfaceGraphique
                 toggleDebugOutput();
             }
 
-           /* else if (e.KeyChar == 'j')
+            else if (e.KeyChar == 'j')
             {
                 //Console.WriteLine("LUMIERE AMBIANTE");
-                parent_.activateAmbianteLight = !(parent_.activateAmbianteLight);
-                FonctionsNatives.spotLight(0, parent_.activateAmbianteLight);
+                parent_.toggleAmbiantLight();
+                FonctionsNatives.spotLight(0, parent_.getAmbiantLight());
             }
             else if (e.KeyChar == 'k')
             {
                 //Console.WriteLine("LUMIERE DIRECTE");
-                parent_.activateDirectLight = !(parent_.activateDirectLight);
-                FonctionsNatives.spotLight(1, parent_.activateDirectLight);
+                parent_.toggleDirectLight();
+                FonctionsNatives.spotLight(1, parent_.getDirectLight());
             }
             else if (e.KeyChar == 'l')
             {
                 //Console.WriteLine("LUMIERE SPOTS");
-                parent_.activateSpotLight = !(parent_.activateSpotLight);
-                FonctionsNatives.spotLight(2, parent_.activateSpotLight);
+                parent_.toggleSpotLight();
+                FonctionsNatives.spotLight(2, parent_.getSpotLight());
             }
+            /*
             else
                 if (e.KeyChar == 'n')
                 {
