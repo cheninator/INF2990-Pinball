@@ -315,49 +315,6 @@ NoeudAbstrait* NoeudComposite::getEnfant(int i)
 		return nullptr;
 }
 
-////////////////////////////////////////////////////////////////////////
-///
-/// @fn void NoeudComposite::effacerSelection()
-///
-/// Efface tous les noeuds selectionnes situes sous ce noeud.  Elle
-/// s'appelle donc recursivement sur tous les enfants, avant de retirer
-/// les enfants selectionnes.
-///
-/// @return Aucune
-///
-////////////////////////////////////////////////////////////////////////
-void NoeudComposite::effacerSelection()
-{
-	// On efface tous les noeuds selectionnes descendants des enfants.
-	for (NoeudAbstrait * enfant : enfants_){
-		enfant->effacerSelection();
-	}
-
-	// On efface les enfants selectionnes.  On effectue ce traitement
-	// dans une seconde boucle pour eviter de faire des assomptions
-	// sur la robustesse des iterateurs lorsque le conteneur est
-	// modifie pendant une iteration.
-	for (conteneur_enfants::iterator it{ enfants_.begin() };
-		it != enfants_.end();
-		) {
-		if ((*it)->estSelectionne()) {
-			NoeudAbstrait* enfant{ (*it) };
-			enfants_.erase(it);
-			delete enfant;
-
-			// On ramene l'iteration au debut de la boucle, car le destructeur
-			// de l'enfant pourrait eventuellement avoir retire d'autres
-			// enfants de l'arbre, ce qui briserait l'iteration.  Pourrait
-			// eventuellement etre evite avec des iterateurs plus robustes.
-			// Peut-etre une liste chaînee?
-			it = enfants_.begin();
-		}
-		else {
-			++it;
-		}
-	}
-}
-
 
 ////////////////////////////////////////////////////////////////////////
 ///

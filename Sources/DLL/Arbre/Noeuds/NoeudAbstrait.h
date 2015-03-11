@@ -182,9 +182,6 @@ public:
 	/// Changer la selection du noeud.
 	virtual void inverserSelection();
 
-	/// Efface les enfants selectionnes.
-	virtual void effacerSelection();
-
 	/// Selectionne tous les enfants de meme que le noeud.
 	virtual void selectionnerTout();
 
