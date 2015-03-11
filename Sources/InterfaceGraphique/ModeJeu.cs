@@ -179,8 +179,7 @@ namespace InterfaceGraphique
                         if (currentZone >= nbZones)
                         {
                             FinCampagne();
-                            timer.Stop();
-                            timer.Start();
+                        
                         }
                         else
                         {
@@ -245,8 +244,8 @@ namespace InterfaceGraphique
              peutAnimer = false;
                             boolTemp = false;
                             gameOver = new PartieTerminee(true);
+            
                             gameOver.ShowDialog(this);
-                            timer.Stop();
         }
         private void PartieRapide_Load(object sender, EventArgs e)
         {
@@ -355,6 +354,8 @@ namespace InterfaceGraphique
            
            // gameOver.Close();
             gameOver.Dispose();
+            timer.Stop();
+            timer.Start();
 
            
         }
