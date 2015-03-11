@@ -264,15 +264,10 @@ bool NoeudPaletteG::estActiveeParBille(NoeudAbstrait* bille)
 	double distanceProjetee = glm::length(vecteurProjete);
 	double distanceNormale = glm::length(vecteurNormal);
 
-	double pente = 0;
-	if (directionPalette.x != 0)
-		pente = directionPalette.y / directionPalette.x;
-	double b = positionPalette.y - positionPalette.x * pente;
-
 	// positionBille.y > pente * positionBille.x + b <====> la bille est au dessus de la droite definie par la palette au repos.
 	if (fonctionDroitePalette(bille) > 0// << vrai si on la bille est au dessus de la droite definie par la palette. C<est ce qui fait que les palettes n'activent pas par en dessous.
-		//&& positionBille.x < positionPalette.x + 80 // << essayer de remplacer par glm::length(glm::proj(vecteur, directionPalette)) < longueurPalette
-		//&& positionBille.y < positionPalette.y + 10
+		&& positionBille.x < positionPalette.x + 80 // << essayer de remplacer par glm::length(glm::proj(vecteur, directionPalette)) < longueurPalette
+		&& positionBille.y < positionPalette.y + 10
 		)
 		return true;
 	else
