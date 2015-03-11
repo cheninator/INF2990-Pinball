@@ -111,7 +111,44 @@ void NoeudRessort::afficherConcret() const
 void NoeudRessort::animer(float temps)
 {
 	NoeudComposite::animer(temps);
+	switch (etatRessort_)
+	{
+	case EN_COMPRESSION:
+		if (scale_.y > 0.3)
+			scale_ = { scale_.x, scale_.y * 0.95, scale_.z };
+		break;
+
+	case EN_DECOMPRESSION:
+		if (scale_.y < scaleYOriginal_)
+			scale_ = { scale_.x, scale_.y * 1.05, scale_.z };
+			// La decompression devra etre reimplementee pour respecter l'equation differentielle
+		if (scale_.y > scaleYOriginal_)
+		{
+			scale_ = { scale_.x, scaleYOriginal_, scale_.z };
+			etatRessort_ = AU_REPOS;
+		}
+		break;
+
+	case AU_REPOS:
+		
+		break;
+	}
 }
+
+
+
+void NoeudRessort::compresser()
+{
+	if (etatRessort_ == AU_REPOS)
+		scaleYOriginal_ = obtenirAgrandissement().y;
+
+	etatRessort_ = EN_COMPRESSION;
+}
+void NoeudRessort::relacher()
+{
+	etatRessort_ = EN_DECOMPRESSION;
+}
+
 
 ////////////////////////////////////////////////////////////////////////
 ///
@@ -131,4 +168,6 @@ bool NoeudRessort::accepterVisiteur(VisiteurAbstrait* vis)
 
 	return reussi;
 }
+
+
 

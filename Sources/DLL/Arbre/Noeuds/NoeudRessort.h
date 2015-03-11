@@ -39,8 +39,16 @@ public:
 	/// Accepte un visiteur.
 	virtual bool accepterVisiteur(VisiteurAbstrait* vis);
 
+	void compresser();
+	void relacher();
+
 private:
-	
+	enum EtatRessort { EN_COMPRESSION, EN_DECOMPRESSION, AU_REPOS };
+
+	EtatRessort etatRessort_{ AU_REPOS };
+
+	double scaleYOriginal_;
+
 	/// Angle selon l'axe des X.
 	float angleX_{ 0.f };
 

@@ -53,6 +53,7 @@ Samuel Millette <BR>
 #include "../Visiteurs/VisiteurXML.h"
 #include "../Visiteurs/VisiteurConstruireListes.h"
 #include "../Visiteurs/VisiteurDebug.h"
+#include "../Arbre/Noeuds/NoeudRessort.h"
 
 #include "VueOrtho.h"
 #include "Camera.h"
@@ -1191,6 +1192,7 @@ void FacadeModele::construireListesPalettes()
 {
 	VisiteurConstruireListes visCL(&listePalettesGJ1_, &listePalettesDJ1_, &listePalettesGJ2_, &listePalettesDJ2_);
 	arbre_->accepterVisiteur(&visCL);
+	mettreAJourListeRessorts(); // que Dieu me pardonne.
 }
 
 ///////////////////////////////////////////////////////////////////////////////
@@ -1359,15 +1361,28 @@ void FacadeModele::mettreAJourListeNoeuds()
 }
 
 
-
-void FacadeModele::compresserRessort()
+void FacadeModele::mettreAJourListeRessorts()
 {
-
+	listeRessorts_.clear();
+	for (unsigned int i = 0; i < arbre_->getEnfant(0)->obtenirNombreEnfants(); i++)
+	{
+		NoeudAbstrait* noeud = arbre_->getEnfant(0)->getEnfant(i);
+		if (noeud->obtenirType() == "ressort")
+			listeRessorts_.push_back(noeud);
+	}
 }
 
 
 
+
+void FacadeModele::compresserRessort()
+{
+	for (NoeudAbstrait* ressort : listeRessorts_)
+		((NoeudRessort*)ressort)->compresser();
+}
+
 void FacadeModele::relacherRessort()
 {
-
+	for (NoeudAbstrait* ressort : listeRessorts_)
+		((NoeudRessort*)ressort)->relacher();
 }

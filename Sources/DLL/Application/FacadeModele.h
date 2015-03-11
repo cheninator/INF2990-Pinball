@@ -37,6 +37,7 @@ class ArbreRenduINF2990;
 class ConfigScene;
 class NoeudPaletteG;
 class NoeudPaletteD;
+class NoeudRessort;
 
 namespace vue {
    class Vue;
@@ -190,6 +191,8 @@ public:
    
    void mettreAJourListeBillesEtNoeuds();
    void mettreAJourListeNoeuds();
+   void mettreAJourListeRessorts();
+
 private:
 
    /// Constructeur par defaut.
@@ -236,8 +239,8 @@ private:
 
    std::vector<NoeudAbstrait*> listeBilles_;
    std::vector<NoeudAbstrait*> listeNoeuds_;
+   std::vector<NoeudAbstrait*> listeRessorts_;
 };
-
 
 
 
