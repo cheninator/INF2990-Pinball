@@ -1282,7 +1282,7 @@ void FacadeModele::updateForcesExternes()
 		glm::dvec2 positionBille = glm::dvec2{ bille->obtenirPositionRelative() };
 		for (NoeudAbstrait* noeud : listeNoeuds_)
 		{
-			if (noeud->getType() == "portail")
+			if (noeud->obtenirType() == "portail")
 			{
 				glm::dvec2 positionPortail = glm::dvec2{ noeud->obtenirPositionRelative() };
 				double distance = glm::length(positionBille);
@@ -1309,9 +1309,9 @@ void FacadeModele::mettreAJourListeBillesEtNoeuds()
 	for (unsigned int i = 0; i < arbre_->getEnfant(0)->obtenirNombreEnfants(); i++)
 	{
 		NoeudAbstrait* noeud = arbre_->getEnfant(0)->getEnfant(i);
-		if (noeud->getType() != "generateurbille")
+		if (noeud->obtenirType() != "generateurbille")
 			listeNoeuds_.push_back(noeud);
-		if (noeud->getType() == "bille")
+		if (noeud->obtenirType() == "bille")
 			listeBilles_.push_back(noeud);
 	}
 }

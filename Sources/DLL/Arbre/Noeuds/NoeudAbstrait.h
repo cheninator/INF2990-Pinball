@@ -258,9 +258,6 @@ public:
 	/// Obtenir rotation
 	inline const glm::dvec3& NoeudAbstrait::obtenirRotation() const;
 
-	/// Obtenir le type
-	std::string getType(){ return type_; }
-
 	/// Mettre le mode pause on ou off
 	void assignerPause(bool pause);
 

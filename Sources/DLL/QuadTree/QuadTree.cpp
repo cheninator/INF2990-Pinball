@@ -276,7 +276,7 @@ QuadTree* QuadTree::obtenirQuadrant(NoeudAbstrait* noeud)
 ////////////////////////////////////////////////////////////////////////
 bool QuadTree::insert(NoeudAbstrait* noeud)
 {
-	if (!noeud->estAffiche)
+	if (!noeud->estAffiche())
 		return false;
 
 	// Insérer le noeud seulement si le noeud est dans le Quadtree

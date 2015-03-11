@@ -842,7 +842,7 @@ aidecollision::DetailsCollision NoeudAbstrait::detecterCollisions(NoeudAbstrait*
 void NoeudAbstrait::traiterCollisions(aidecollision::DetailsCollision details, NoeudAbstrait* bille)
 {
 
-	assert(bille->getType() == "bille");
+	assert(bille->obtenirType() == "bille");
 
 	if (details.type == aidecollision::COLLISION_AUCUNE)
 		return;
