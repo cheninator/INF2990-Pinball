@@ -11,7 +11,6 @@
 #define __ARBRES_NOEUDS_NOEUDBILLE_H__
 
 #include "NoeudComposite.h"
-#include "../../Global/SingletonGlobal.h"
 #include "Gl/gl.h"
 
 ///////////////////////////////////////////////////////////////////////////
