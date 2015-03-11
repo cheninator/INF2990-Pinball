@@ -50,6 +50,11 @@ public:
 											int collisionPointsCible,
 											int collisionPointsPartieGagner,
 											int collisionPointsNouvelleBille);
+
+	void retirerBille() { billesCourantes_--; };
+	void ajouterBille() { billesCourantes_++; };
+	int obtenirBille() { return billesCourantes_; };
+
 protected:
 
 	/// Constructeur vide déclaré protected.
@@ -81,6 +86,8 @@ private:
 	int collisionPointsCible_{ 0 };
 	int collisionPointsPartieGagner_{ 0 };
 	int collisionPointsNouvelleBille_{ 0 };
+
+	int billesCourantes_{ 0 };
 };
 
 #endif // __SINGLETONGLOBAL_H__

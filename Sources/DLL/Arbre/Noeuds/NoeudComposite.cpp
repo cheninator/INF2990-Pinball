@@ -6,8 +6,8 @@
 /// @ingroup Noeud
 ////////////////////////////////////////////////
 
-#include "NoeudComposite.h"
-
+#include "NoeudComposite.h"	
+#include "../../Global/SingletonGlobal.h"
 #include <cassert>
 
 ////////////////////////////////////////////////////////////////////////
@@ -119,6 +119,8 @@ void NoeudComposite::effacer(const NoeudAbstrait* noeud)
 		it++) {
 		if (*it == noeud) {
 			// On a trouve le noeud a effacer
+			if (noeud->obtenirType() == "bille")
+				SingletonGlobal::obtenirInstance()->retirerBille();
 			NoeudAbstrait* noeudAEffacer{ (*it) };
 			enfants_.erase(it);
 			delete noeudAEffacer;

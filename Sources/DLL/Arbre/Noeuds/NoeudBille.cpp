@@ -25,6 +25,7 @@
 #include "OpenGL_Storage/ModeleStorage_Liste.h"
 #include "glm\gtx\norm.hpp"
 #include "../../Commun/Externe/glm/include/glm/gtx/Projection.hpp"
+#include "../../Global/SingletonGlobal.h"
 
 
 ////////////////////////////////////////////////////////////////////////
@@ -44,6 +45,7 @@ NoeudBille::NoeudBille(const std::string& typeNoeud)
 {
 	vitesse_ = glm::dvec3{ 0 ,0, 0 };
 	constanteDeFrottement_ = 1.0;
+	SingletonGlobal::obtenirInstance()->ajouterBille();
 }
 
 ////////////////////////////////////////////////////////////////////////
