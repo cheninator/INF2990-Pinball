@@ -1259,11 +1259,18 @@ int* FacadeModele::obtenirProprietes(char* nomFichier, int length)
 /// 
 ///////////////////////////////////////////////////////////////////////////////
 void FacadeModele::traiterCollisions()
-{
+{	
+	bool miseAJourListeBillesRequise = false;
+	bool useQuadTree = false;
 	for (NoeudAbstrait* bille : listeBilles_)
 	{
+		std::vector<NoeudAbstrait*> noeudsAVeririer;
+		if (useQuadTree)
+			; // TODO
+		else
+			noeudsAVeririer = listeNoeuds_;
 		bille->assignerImpossible(false);
-		for (NoeudAbstrait* noeudAVerifier : listeNoeuds_)
+		for (NoeudAbstrait* noeudAVerifier : noeudsAVeririer)
 		{
 			aidecollision::DetailsCollision detail = noeudAVerifier->detecterCollisions(bille);
 
@@ -1271,11 +1278,21 @@ void FacadeModele::traiterCollisions()
 			{
 				noeudAVerifier->traiterCollisions(detail, bille);
 				if (noeudAVerifier->obtenirType() == "trou") // MODIF
+				{
+					miseAJourListeBillesRequise = true;
 					break;                                   // MODIF
+				}
 			}
 		}
-		mettreAJourListeNoeuds();          // MODIF (Juste updater listeNoeuds_ pour pas avoir le assert de vector.
+		if (useQuadTree)
+			; // Enlever la bille du quadTree
+		else
+			mettreAJourListeNoeuds();          // MODIF (Juste updater listeNoeuds_ pour pas avoir le assert de vector.
 	}
+	if (miseAJourListeBillesRequise)
+		mettreAJourListeBillesEtNoeuds(); // Cette méthode est appelée a chaque frame dand animer(temps)
+	                                      // mais si on trouve toutes les places ou elle doit être appelée, 
+	                                      // on n'aura plus besoin de l'appeler a chaque frame et donc ici serait le bon endroit pour l'appeler quand on a effacé une bille.
 }
 
 
