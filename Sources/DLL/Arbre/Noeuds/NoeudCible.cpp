@@ -146,7 +146,7 @@ bool NoeudCible::accepterVisiteur(VisiteurAbstrait* vis)
 /// l'objet courant. Cette fonction est a reimplementer si on veut autre 
 /// chose qu'un rebondissement ordinaire.
 ///
-/// @return details contient l'information sur la collision de la bille avec *this.
+/// @return aucun.
 ///
 ////////////////////////////////////////////////////////////////////////
 void NoeudCible::traiterCollisions(aidecollision::DetailsCollision details, NoeudAbstrait* bille)
@@ -156,7 +156,18 @@ void NoeudCible::traiterCollisions(aidecollision::DetailsCollision details, Noeu
 	SingletonGlobal::obtenirInstance()->collisionButoirCible();
 }
 
-/// Pour la detections des collisions
+////////////////////////////////////////////////////////////////////////
+///
+/// @fn void NoeudAbstrait::traiterCollisions(aidecollision::DetailsCollision details, NoeudAbstrait* bille)
+///
+/// Reimplementation de detecterCollisions pour la cible.  Si la cible 
+/// a etee frappee elle disparait (affiche_  devient false).  Si la cible
+/// est affichee, on fait le comportement par defaut donne dans NoeudAbstrait,
+/// sinon, or retourne un DetailCollisions avec type COLLISION_AUCUNE.
+/// 
+/// @return details contient l'information sur la collision de la bille avec *this.
+/// 
+////////////////////////////////////////////////////////////////////////
 aidecollision::DetailsCollision NoeudCible::detecterCollisions(NoeudAbstrait* noeud)
 {
 	aidecollision::DetailsCollision detailsAucune;
