@@ -10,6 +10,7 @@ namespace InterfaceGraphique
     {
         public PartieTerminee gameOver;
         private Timer timer;
+        private Timer timerBille2;
         private double currentZoom = -1; ///< Zoom courant
         private Touches touches; ///< Les touches pour le jeu
         private ZoneInfo zInfo;
@@ -64,6 +65,9 @@ namespace InterfaceGraphique
                 this.WindowState = FormWindowState.Maximized;*/
             }
             timer = new Timer();
+           // timerBille2 = new Timer();
+           // timerBille2.Interval = 1000;
+           // timerBille2.Tick += new System.EventHandler(this.timerBille2_Tick);
             timer.Enabled = true;
 
             timer.Interval = 3000;
@@ -87,8 +91,7 @@ namespace InterfaceGraphique
             Console.WriteLine(nbZones);
             FonctionsNatives.ouvrirXML(map, map.Capacity);
             resetConfig();
-            //Console.WriteLine(pointsGagnerPartie);
-            //Console.WriteLine(pointsPartie);
+            
             FonctionsNatives.construireListesPalettes();
             currentZone++;
             Program.tempBool = true;
@@ -136,7 +139,15 @@ namespace InterfaceGraphique
           StringBuilder bille = new StringBuilder("bille");
           FonctionsNatives.creerObjet(bille, bille.Capacity);
           Console.WriteLine("timer");
+         // timerBille2.Start();
           timer.Stop();
+        }
+        private void timerBille2_Tick(object sender, EventArgs e)
+        {
+            StringBuilder bille = new StringBuilder("bille");
+            FonctionsNatives.creerObjet(bille, bille.Capacity);
+            Console.WriteLine("BILLE 2");
+            timerBille2.Stop();
         }
 
         public void MettreAJour(double tempsInterAffichage)
@@ -344,10 +355,7 @@ namespace InterfaceGraphique
            
            // gameOver.Close();
             gameOver.Dispose();
-           // timer.Enabled = true;
-           // timer.Interval = 3000;
-           
-            Console.WriteLine("FUCK");
+
            
         }
 
