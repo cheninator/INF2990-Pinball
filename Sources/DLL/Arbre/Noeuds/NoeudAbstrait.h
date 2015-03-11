@@ -74,12 +74,11 @@ public:
 	/// Assigne la position relative du noeud.
 	inline void assignerPositionRelative(const glm::dvec3& positionRelative);
 
-	/// 
+	/// Obtient la vitesse du noeud
 	inline glm::dvec3 obtenirVitesse() const;
 
-	/// 
+	/// Assigne une vitesse au noeud
 	inline void assignerVitesse(glm::dvec3 nouvelleVitesse);
-
 
 	/// Obtient le type du noeud.
 	inline const std::string& obtenirType() const;
@@ -120,20 +119,14 @@ public:
 	/// Verifie si le noeud est selectionnable.
 	inline bool estSelectionnable() const;
 
-	/// ecrit si le noeud peut etre enregistre ou non.
-	inline void assignerEstEnregistrable(bool enregistrable);
-
-	/// Verifie si le noeud est enregistrable.
-	inline bool estEnregistrable() const;
-
 	/// ecrit si le noeud peut etre modifie ou non.
 	void assignerEstModifiable(bool modif) { modifiable_ = modif; };
 
-	/// ecrit si le noeud peut etre agrandi ou non.
-	void assignerEstAjustable(bool ajust) { ajustable_ = ajust; };
-
 	/// Verifie si le noeud est modifiable.
 	bool estModifiable() const { return modifiable_; };
+
+	/// ecrit si le noeud peut etre agrandi ou non.
+	void assignerEstAjustable(bool ajust) { ajustable_ = ajust; };
 
 	// Verifie qu'on peut agrandir l'objet
 	bool estAjustable() const { return ajustable_; }
@@ -298,9 +291,6 @@ protected:
 
 	/// Vrai si le noeud est selectionnable.
 	bool             selectionnable_{ true };
-
-	/// Determine si l'objet peut etre sauvegarde en XML.
-	bool             enregistrable_{ true };
 
 	/// Determine si l'objet peut etre modifie
 	bool             modifiable_{ true };
@@ -665,38 +655,6 @@ inline bool NoeudAbstrait::estSelectionnable() const
 	return selectionnable_;
 }
 
-
-////////////////////////////////////////////////////////////////////////
-///
-/// @fn inline void NoeudAbstrait::assignerEstEnregistrable( bool enregistrable )
-///
-/// Cette fonction permet d'assigner l'etat d'etre entregistrable ou non du noeud.
-///
-/// @param enregistrable : L'etat enregistrable ou non.
-///
-/// @return Aucune
-///
-////////////////////////////////////////////////////////////////////////
-inline void NoeudAbstrait::assignerEstEnregistrable(bool enregistrable)
-{
-	enregistrable_ = enregistrable;
-}
-
-
-////////////////////////////////////////////////////////////////////////
-///
-/// @fn inline bool NoeudAbstrait::estEnregistrable() const
-///
-/// Cette fonction retourne l'etat d'etre enregistrable en XML ou non du
-/// noeud.
-///
-/// @return L'etat enregistrable ou non.
-///
-////////////////////////////////////////////////////////////////////////
-inline bool NoeudAbstrait::estEnregistrable() const
-{
-	return enregistrable_;
-}
 
 ////////////////////////////////////////////////////////////////////////
 ///
