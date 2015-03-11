@@ -145,8 +145,17 @@ void NoeudRessort::animer(float temps)
 	}
 }
 
-
-
+////////////////////////////////////////////////////////////////////////
+///
+/// @fn void NoeudRessort::compresser()
+///
+/// Cette fonction active l'animation qui fait compresser les ressorts. On en
+/// profite pour sauvegarder le scale initial et pour definir un vecteur 
+/// qui servira a faire en sorte que la base du ressort reste sur place.
+/// 
+/// @remark appelee quand la bonne touche est appuyee.
+///
+////////////////////////////////////////////////////////////////////////
 void NoeudRessort::compresser()
 {
 	if (etatRessort_ == AU_REPOS)
@@ -162,6 +171,16 @@ void NoeudRessort::compresser()
 
 	etatRessort_ = EN_COMPRESSION;
 }
+
+////////////////////////////////////////////////////////////////////////
+///
+/// @fn bool NoeudRessort::relacher()
+///
+/// Cette fonction active l'animation qui fait relacher le ressort.
+///
+/// @remark appelee quand la bonne touche est relachee
+///
+////////////////////////////////////////////////////////////////////////
 void NoeudRessort::relacher()
 {
 	etatRessort_ = EN_DECOMPRESSION;

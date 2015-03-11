@@ -154,8 +154,16 @@ bool NoeudPaletteG::accepterVisiteur(VisiteurAbstrait* vis)
 	return reussi;
 }
 
-
-
+////////////////////////////////////////////////////////////////////////
+///
+/// @fn void NoeudPaletteG::activer()
+///
+/// Cette fonction active l'animation qui fait monter les palettes. On en
+/// profite pour sauvegarder l'angle intial des palettes quand la palette est inactive
+/// 
+/// @remark appelee quand la bonne touche est appuyee.
+///
+////////////////////////////////////////////////////////////////////////
 void NoeudPaletteG::activer()
 {
 	if (etatPalette_ == INACTIVE)
@@ -163,6 +171,16 @@ void NoeudPaletteG::activer()
 	
 	etatPalette_ = ACTIVE;
 }
+
+////////////////////////////////////////////////////////////////////////
+///
+/// @fn void NoeudPaletteG::desactiver()
+///
+/// Cette fonction active l'animation qui fait revenir les palettes.
+///
+/// @remark appelee quand la bonne touche est relachee
+///
+////////////////////////////////////////////////////////////////////////
 void NoeudPaletteG::desactiver()
 {
 	etatPalette_ = RETOUR;
