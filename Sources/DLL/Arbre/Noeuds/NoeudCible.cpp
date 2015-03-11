@@ -159,12 +159,10 @@ void NoeudCible::traiterCollisions(aidecollision::DetailsCollision details, Noeu
 /// Pour la detections des collisions
 aidecollision::DetailsCollision NoeudCible::detecterCollisions(NoeudAbstrait* noeud)
 {
-	aidecollision::DetailsCollision details;
-	// details.type = aidecollision::COLLISION_AUCUNE;
-	if (details.type == aidecollision::COLLISION_AUCUNE)
-		std::cout << "COLLISION_AUCUNE par defaut" << std::endl;
+	aidecollision::DetailsCollision detailsAucune;
+	detailsAucune.type = aidecollision::COLLISION_AUCUNE;
 	if (affiche_)
 		return NoeudAbstrait::detecterCollisions(noeud);
 	else
-		return details;
+		return detailsAucune;
 }
