@@ -172,6 +172,7 @@ bool QuadTree::estDansQuadTree(NoeudAbstrait* noeud, QuadTree* quad) const
 			if (!(estDansQuadTree(points[0], quad)))
 				return false;
 		}
+		return true;
 	}
 
 	// Le cas ou c'est un objet qui a une forme circulaire
