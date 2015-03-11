@@ -1300,7 +1300,7 @@ void FacadeModele::updateForcesExternes()
 						sommeDesForces += force;
 					}
 				}
-				if (distance > 40 && noeud == bille->obtenirPortailDOrigine())
+				if (distance > 20 && noeud == bille->obtenirPortailDOrigine())
 					bille->assignerPortailDOrigine(nullptr);
 			}
 		}

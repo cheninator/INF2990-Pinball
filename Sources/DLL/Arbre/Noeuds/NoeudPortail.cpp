@@ -197,3 +197,11 @@ void NoeudPortail::traiterCollisions(aidecollision::DetailsCollision, NoeudAbstr
 	}
 	// utiliser un booleen pour que la bille ne soit pas attiree par l'autre portail.
 }
+
+aidecollision::DetailsCollision NoeudPortail::detecterCollisions(NoeudAbstrait* bille)
+{
+	double rayonPortail = obtenirVecteursEnglobants()[0].x;
+	double rayonBille = bille->obtenirVecteursEnglobants()[0].x;
+	aidecollision::DetailsCollision details = aidecollision::calculerCollisionCercle((glm::dvec2)obtenirPositionRelative(), rayonPortail/4, (glm::dvec2)bille->obtenirPositionRelative(), rayonBille);
+	return details;
+}
