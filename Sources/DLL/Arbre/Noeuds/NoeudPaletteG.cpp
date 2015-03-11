@@ -263,7 +263,7 @@ bool NoeudPaletteG::estActiveeParBille(NoeudAbstrait* bille)
 	double b = positionPalette.y - positionPalette.x * pente;
 
 	if (positionBille.y > pente * positionBille.x + b // << vrai si on la bille est au dessus de la droite definie par la palette. C<est ce qui fait que les palettes n'activent pas par en dessous.
-		&& positionBille.x < positionPalette.x + 100
+		&& positionBille.x < positionPalette.x + 80
 		&& positionBille.y < positionPalette.y + 10)
 		return true;
 	else
