@@ -293,17 +293,13 @@ namespace InterfaceGraphique
 
         private void PartieRapide_KeyDown(object sender, KeyEventArgs e)
         {
-            Console.WriteLine("KeyDown");
             etat.traiterKeyDown(sender, e);
         }
 
 
         private void PartieRapide_KeyUp(object sender, KeyEventArgs e)
         {
-            Console.WriteLine("KeyUp");
             etat.traiterKeyUp(sender, e);
-            Console.WriteLine("-----------------------------------------");
-            Console.WriteLine("-----------------------------------------");
         }
 
         
@@ -315,7 +311,6 @@ namespace InterfaceGraphique
 
         private void PartieRapide_KeyPress(object sender, KeyPressEventArgs e)
         {
-            Console.WriteLine("KeyPress");
             etat.traiterKeyPress(sender, e);
         }
 

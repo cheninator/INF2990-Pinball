@@ -42,17 +42,14 @@ namespace InterfaceGraphique
                     FonctionsNatives.zoomIn();
                     parent_.currentZoom = FonctionsNatives.obtenirZoomCourant();
                 }*/
-                Console.WriteLine("Abstract KeyDown");
                 return false;
             }
             public virtual bool traiterKeyPress(object sender, KeyPressEventArgs e)
             {
-                Console.WriteLine("Abstract Press");
                 return false;
             }
             public virtual bool traiterKeyUp(object sender, KeyEventArgs e)
             {
-                Console.WriteLine("Abstract KeyUp");
                 return false;
             }
 
@@ -177,7 +174,6 @@ namespace InterfaceGraphique
         }
         public override bool traiterKeyUp(object sender, KeyEventArgs e)
         {
-            Console.WriteLine("ModeJeu KeyUp");
             if (e.KeyValue == parent_.getTouches().PGJ1)
             {
                 FonctionsNatives.desactiverPalettesGJ1();
