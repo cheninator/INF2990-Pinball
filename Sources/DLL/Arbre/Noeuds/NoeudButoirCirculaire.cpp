@@ -9,6 +9,7 @@
 
 #include "NoeudButoirCirculaire.h"
 #include "Utilitaire.h"
+#include "../../Global/SingletonGlobal.h"
 
 #include <windows.h>
 #include <GL/gl.h>
@@ -198,4 +199,21 @@ aidecollision::DetailsCollision NoeudButoirCirculaire::detecterCollisions(NoeudA
 		return details;
 	}
 	return details;
+}
+
+////////////////////////////////////////////////////////////////////////
+///
+/// @fn void NoeudAbstrait::traiterCollisions(aidecollision::DetailsCollision details, NoeudAbstrait* bille)
+///
+/// Cette fonction effectue la réaction a la collision de la bille sur 
+/// l'objet courant. Cette fonction est a reimplementer si on veut autre 
+/// chose qu'un rebondissement ordinaire.
+///
+/// @return details contient l'information sur la collision de la bille avec *this.
+///
+////////////////////////////////////////////////////////////////////////
+void NoeudButoirCirculaire::traiterCollisions(aidecollision::DetailsCollision details, NoeudAbstrait* bille)
+{
+	NoeudAbstrait::traiterCollisions(details, bille);
+	SingletonGlobal::obtenirInstance()->collisionButoirCirculaire();
 }

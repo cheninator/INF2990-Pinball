@@ -39,6 +39,10 @@ public:
 	/// Accepte un visiteur.
 	virtual bool accepterVisiteur(VisiteurAbstrait* vis);
 
+	/// Pour le traitement logique des collisions
+	virtual void traiterCollisions(aidecollision::DetailsCollision, NoeudAbstrait* bille);
+
+
 private:
 
 	/// Angle selon l'axe des X.

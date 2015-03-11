@@ -13,6 +13,7 @@
 #include <windows.h>
 #include <GL/gl.h>
 #include <cmath>
+#include "../../Global/SingletonGlobal.h"
 
 #include "Modele3D.h"
 #include "OpenGL_Storage/ModeleStorage_Liste.h"
@@ -149,3 +150,19 @@ void NoeudButoirG::obtenirVecteursBoite(glm::dvec3 &v1, glm::dvec3 &v2, glm::dve
 	v3 = v4;
 }
 
+////////////////////////////////////////////////////////////////////////
+///
+/// @fn void NoeudAbstrait::traiterCollisions(aidecollision::DetailsCollision details, NoeudAbstrait* bille)
+///
+/// Cette fonction effectue la réaction a la collision de la bille sur 
+/// l'objet courant. Cette fonction est a reimplementer si on veut autre 
+/// chose qu'un rebondissement ordinaire.
+///
+/// @return details contient l'information sur la collision de la bille avec *this.
+///
+////////////////////////////////////////////////////////////////////////
+void NoeudButoirG::traiterCollisions(aidecollision::DetailsCollision details, NoeudAbstrait* bille)
+{
+	NoeudAbstrait::traiterCollisions(details, bille);
+	SingletonGlobal::obtenirInstance()->collisionButoirTriangulaire();
+}
