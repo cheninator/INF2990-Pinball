@@ -1298,7 +1298,22 @@ void FacadeModele::traiterCollisions()
 }
 
 
-
+///////////////////////////////////////////////////////////////////////////////
+///
+/// @fn void FacadeModele::updateForcesExternes()
+/// 
+/// Pour chaque bille, calcule la somme des forces exercees par les portails 
+/// sur celle-ci. Si la distance entre la bille et le portail est plus grande
+/// qu'une certaine valeur, la force de ce portail n'est pas comptee.
+/// 
+/// Cette fonction considere aussi si un bille vien de sortir d'un portail.
+/// Tant que la bille ne s'est pas assez eloignee du portail d'ou elle est 
+/// apparue, ce portail de l'affectera pas.
+/// 
+/// @remark Les listes doivent etre construites et la liste de billes doit etre tenue a jour.
+/// (Pour l'instant elles sont mises a jour a chaque frame donc pas de problemes ici.)
+/// 
+///////////////////////////////////////////////////////////////////////////////
 void FacadeModele::updateForcesExternes()
 {
 	for (NoeudAbstrait* bille : listeBilles_)
@@ -1349,6 +1364,13 @@ void FacadeModele::mettreAJourListeBillesEtNoeuds()
 	}
 }
 
+///////////////////////////////////////////////////////////////////////////////
+///
+/// @fn void FacadeModele::mettreAJourListeNoeuds()
+/// 
+/// Met a jour la liste des noeuds a verifier pour les collisions
+/// 
+///////////////////////////////////////////////////////////////////////////////
 void FacadeModele::mettreAJourListeNoeuds()
 {
 	listeNoeuds_.clear();
@@ -1360,7 +1382,13 @@ void FacadeModele::mettreAJourListeNoeuds()
 	}
 }
 
-
+///////////////////////////////////////////////////////////////////////////////
+///
+/// @fn void FacadeModele::mettreAJourListeRessorts()
+/// 
+/// Met a jour la liste des ressorts pour le controle par la touche du clavier.
+/// 
+///////////////////////////////////////////////////////////////////////////////
 void FacadeModele::mettreAJourListeRessorts()
 {
 	listeRessorts_.clear();
@@ -1372,15 +1400,26 @@ void FacadeModele::mettreAJourListeRessorts()
 	}
 }
 
-
-
-
+///////////////////////////////////////////////////////////////////////////////
+///
+/// @fn void FacadeModele::compresserRessort()
+/// 
+/// Declenche l'animation de compression de ressort.
+/// 
+///////////////////////////////////////////////////////////////////////////////
 void FacadeModele::compresserRessort()
 {
 	for (NoeudAbstrait* ressort : listeRessorts_)
 		((NoeudRessort*)ressort)->compresser();
 }
 
+///////////////////////////////////////////////////////////////////////////////
+///
+/// @fn void FacadeModele::relacherRessort()
+/// 
+/// Declenche l'animation de decompression de ressort.
+/// 
+///////////////////////////////////////////////////////////////////////////////
 void FacadeModele::relacherRessort()
 {
 	for (NoeudAbstrait* ressort : listeRessorts_)
