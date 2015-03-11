@@ -14,6 +14,7 @@
 #include <windows.h>
 #include <GL/gl.h>
 #include <cmath>
+#include <iostream>
 
 #include "Modele3D.h"
 #include "OpenGL_Storage/ModeleStorage_Liste.h"
@@ -150,6 +151,20 @@ bool NoeudCible::accepterVisiteur(VisiteurAbstrait* vis)
 ////////////////////////////////////////////////////////////////////////
 void NoeudCible::traiterCollisions(aidecollision::DetailsCollision details, NoeudAbstrait* bille)
 {
-	NoeudAbstrait::traiterCollisions(details, bille);
+	// NoeudAbstrait::traiterCollisions(details, bille);
+	this->assignerAffiche(false);
 	SingletonGlobal::obtenirInstance()->collisionButoirCible();
+}
+
+/// Pour la detections des collisions
+aidecollision::DetailsCollision NoeudCible::detecterCollisions(NoeudAbstrait* noeud)
+{
+	aidecollision::DetailsCollision details;
+	// details.type = aidecollision::COLLISION_AUCUNE;
+	if (details.type == aidecollision::COLLISION_AUCUNE)
+		std::cout << "COLLISION_AUCUNE par defaut" << std::endl;
+	if (affiche_)
+		return NoeudAbstrait::detecterCollisions(noeud);
+	else
+		return details;
 }
