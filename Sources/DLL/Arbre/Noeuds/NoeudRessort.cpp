@@ -111,7 +111,62 @@ void NoeudRessort::afficherConcret() const
 void NoeudRessort::animer(float temps)
 {
 	NoeudComposite::animer(temps);
+	switch (etatRessort_)
+	{
+	case EN_COMPRESSION:
+		if (scale_.y > 0.3)
+		{
+			scale_ = { scale_.x, scale_.y * 0.95, scale_.z };
+			positionRelative_ -= scale_.y * translationCompression_;
+			// Updater l'attribut distanceCompresseion_
+		}
+		break;
+
+	case EN_DECOMPRESSION:
+		if (scale_.y < scaleYOriginal_)
+		{
+			scale_ = { scale_.x, scale_.y * 1.05, scale_.z };
+			positionRelative_ += scale_.y * translationCompression_;
+			// Updater l'attribut distanceCompresseion_ 
+		}
+			// La decompression devra etre reimplementee pour respecter l'equation differentielle
+		if (scale_.y > scaleYOriginal_)
+		{
+			scale_ = { scale_.x, scaleYOriginal_, scale_.z };
+			positionRelative_ = positionOriginale_;
+			// Updater l'attribut distanceCompresseion_ 
+			etatRessort_ = AU_REPOS;
+		}
+		break;
+
+	case AU_REPOS:
+		
+		break;
+	}
 }
+
+
+
+void NoeudRessort::compresser()
+{
+	if (etatRessort_ == AU_REPOS)
+	{
+		scaleYOriginal_ = obtenirAgrandissement().y;
+		positionOriginale_ = positionRelative_;
+		double angleEnRadian = -rotation_[2] * 2 * 3.1415926535897932384626433832795 / 360;
+		glm::dmat3 transform = glm::dmat3{ glm::dvec3{ cos(angleEnRadian), -sin(angleEnRadian), 0.0 },
+											glm::dvec3{ sin(angleEnRadian), cos(angleEnRadian), 0.0f },
+											glm::dvec3{ 0.0, 0.0, 1.0 } };
+		translationCompression_ = transform * glm::dvec3{ 0, 0.8, 0 };
+	}
+
+	etatRessort_ = EN_COMPRESSION;
+}
+void NoeudRessort::relacher()
+{
+	etatRessort_ = EN_DECOMPRESSION;
+}
+
 
 ////////////////////////////////////////////////////////////////////////
 ///
@@ -131,4 +186,6 @@ bool NoeudRessort::accepterVisiteur(VisiteurAbstrait* vis)
 
 	return reussi;
 }
+
+
 

@@ -37,6 +37,7 @@ class ArbreRenduINF2990;
 class ConfigScene;
 class NoeudPaletteG;
 class NoeudPaletteD;
+class NoeudRessort;
 
 namespace vue {
    class Vue;
@@ -176,6 +177,9 @@ public:
    void activerPalettesGJ1();
    void desactiverPalettesGJ1();
 
+   void compresserRessort();
+   void relacherRessort();
+
    void supprimerBille();
 
    void setPause(bool pause);
@@ -187,6 +191,8 @@ public:
    
    void mettreAJourListeBillesEtNoeuds();
    void mettreAJourListeNoeuds();
+   void mettreAJourListeRessorts();
+
 private:
 
    /// Constructeur par defaut.
@@ -233,8 +239,8 @@ private:
 
    std::vector<NoeudAbstrait*> listeBilles_;
    std::vector<NoeudAbstrait*> listeNoeuds_;
+   std::vector<NoeudAbstrait*> listeRessorts_;
 };
-
 
 
 

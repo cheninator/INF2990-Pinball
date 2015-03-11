@@ -48,6 +48,10 @@ public:
 	/// Pour le traitement logique des collisions
 	virtual void traiterCollisions(aidecollision::DetailsCollision, NoeudAbstrait* bille);
 
+	/// Pour la detections des collisions
+	virtual aidecollision::DetailsCollision detecterCollisions(NoeudAbstrait* noeud);
+
+
 private:
 	
 	/// Angle selon l'axe des X.

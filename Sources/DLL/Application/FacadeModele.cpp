@@ -53,6 +53,7 @@ Samuel Millette <BR>
 #include "../Visiteurs/VisiteurXML.h"
 #include "../Visiteurs/VisiteurConstruireListes.h"
 #include "../Visiteurs/VisiteurDebug.h"
+#include "../Arbre/Noeuds/NoeudRessort.h"
 
 #include "VueOrtho.h"
 #include "Camera.h"
@@ -1191,6 +1192,7 @@ void FacadeModele::construireListesPalettes()
 {
 	VisiteurConstruireListes visCL(&listePalettesGJ1_, &listePalettesDJ1_, &listePalettesGJ2_, &listePalettesDJ2_);
 	arbre_->accepterVisiteur(&visCL);
+	mettreAJourListeRessorts(); // que Dieu me pardonne.
 }
 
 ///////////////////////////////////////////////////////////////////////////////
@@ -1259,11 +1261,18 @@ int* FacadeModele::obtenirProprietes(char* nomFichier, int length)
 /// 
 ///////////////////////////////////////////////////////////////////////////////
 void FacadeModele::traiterCollisions()
-{
+{	
+	bool miseAJourListeBillesRequise = false;
+	bool useQuadTree = false;
 	for (NoeudAbstrait* bille : listeBilles_)
 	{
+		std::vector<NoeudAbstrait*> noeudsAVeririer;
+		if (useQuadTree)
+			; // TODO
+		else
+			noeudsAVeririer = listeNoeuds_;
 		bille->assignerImpossible(false);
-		for (NoeudAbstrait* noeudAVerifier : listeNoeuds_)
+		for (NoeudAbstrait* noeudAVerifier : noeudsAVeririer)
 		{
 			aidecollision::DetailsCollision detail = noeudAVerifier->detecterCollisions(bille);
 
@@ -1271,11 +1280,21 @@ void FacadeModele::traiterCollisions()
 			{
 				noeudAVerifier->traiterCollisions(detail, bille);
 				if (noeudAVerifier->obtenirType() == "trou") // MODIF
+				{
+					miseAJourListeBillesRequise = true;
 					break;                                   // MODIF
+				}
 			}
 		}
-		mettreAJourListeNoeuds();          // MODIF (Juste updater listeNoeuds_ pour pas avoir le assert de vector.
+		if (useQuadTree)
+			; // Enlever la bille du quadTree
+		else
+			mettreAJourListeNoeuds();          // MODIF (Juste updater listeNoeuds_ pour pas avoir le assert de vector.
 	}
+	if (miseAJourListeBillesRequise)
+		mettreAJourListeBillesEtNoeuds(); // Cette méthode est appelée a chaque frame dand animer(temps)
+	                                      // mais si on trouve toutes les places ou elle doit être appelée, 
+	                                      // on n'aura plus besoin de l'appeler a chaque frame et donc ici serait le bon endroit pour l'appeler quand on a effacé une bille.
 }
 
 
@@ -1291,12 +1310,17 @@ void FacadeModele::updateForcesExternes()
 			if (noeud->obtenirType() == "portail")
 			{
 				glm::dvec2 positionPortail = glm::dvec2{ noeud->obtenirPositionRelative() };
-				double distance = glm::length(positionBille);
-				if (distance < 200) // Constante a determiner en fonction du scale du portail
+				double distance = glm::length(positionPortail - positionBille);
+				if (distance < 100) // Constante a determiner en fonction du scale du portail
 				{
-					glm::dvec2 force = (1 / (distance*distance)) * glm::normalize(positionPortail - positionBille);
-					sommeDesForces += force;
+					if (bille->obtenirPortailDOrigine() != noeud)
+					{
+						glm::dvec2 force = (1 / (distance*distance)) * glm::normalize(positionPortail - positionBille);
+						sommeDesForces += force;
+					}
 				}
+				if (distance > 20 && noeud == bille->obtenirPortailDOrigine())
+					bille->assignerPortailDOrigine(nullptr);
 			}
 		}
 		bille->assignerForcesExternes(glm::dvec3{ sommeDesForces.x, sommeDesForces.y  , 0});
@@ -1334,4 +1358,31 @@ void FacadeModele::mettreAJourListeNoeuds()
 		if (noeud->obtenirType() != "generateurbille")
 			listeNoeuds_.push_back(noeud);
 	}
+}
+
+
+void FacadeModele::mettreAJourListeRessorts()
+{
+	listeRessorts_.clear();
+	for (unsigned int i = 0; i < arbre_->getEnfant(0)->obtenirNombreEnfants(); i++)
+	{
+		NoeudAbstrait* noeud = arbre_->getEnfant(0)->getEnfant(i);
+		if (noeud->obtenirType() == "ressort")
+			listeRessorts_.push_back(noeud);
+	}
+}
+
+
+
+
+void FacadeModele::compresserRessort()
+{
+	for (NoeudAbstrait* ressort : listeRessorts_)
+		((NoeudRessort*)ressort)->compresser();
+}
+
+void FacadeModele::relacherRessort()
+{
+	for (NoeudAbstrait* ressort : listeRessorts_)
+		((NoeudRessort*)ressort)->relacher();
 }

@@ -25,7 +25,16 @@ namespace InterfaceGraphique
         private bool activateDirectLight = false; ///< Etat de la lumiere directe
         private bool activateSpotLight = false; ///< Etat de la lumiere spot
         private EtatJeuAbstrait etat; ///< Machine à états
-                                      
+        public int pointsPartie = 0;
+        public int pointsTotale = 0;
+        public int billesDisponible = 0;
+        public int billesEnJeu = 0;
+        private int nombreDeBillesGagnes = 0;
+        private int pointsGagnerBille = 0;
+        private int pointsGagnerPartie = 0;
+        private int billesDisponibles = 0;
+        private int nombreDeBillesUtilise = 0;
+        
         public double getCurrentZoom() { return currentZoom; }
         public void setCurrentZoom(double val) { currentZoom = val; }
         public Touches getTouches() { return touches; }
@@ -33,7 +42,6 @@ namespace InterfaceGraphique
         public void resumeGame() { etat = new EtatJeuJouer(this); }
         public void setPeutAnimer(bool activation) { peutAnimer = activation; }
         public void setVisibilityMenuStrip(bool vis) { menuStrip.Visible = vis; }
-
 
         public partial class EtatJeuAbstrait
         {
@@ -48,14 +56,6 @@ namespace InterfaceGraphique
                 this.parent_ = parent;
             }
         };
-
-        public int pointsPartie = 0;
-        public int pointsTotale = 0;
-        public int billeDisponible = 0;
-        private int nombreDeBillesGagnes = 0;
-        private int pointsGagnerBille = 0;
-        private int pointsGagnerPartie = 0;
-        private int billesDisponibles = 0;
         
         public ModeJeu(List<string> maps, int playerType)
         {
@@ -106,7 +106,8 @@ namespace InterfaceGraphique
 
         private void resetConfig()
         {
-            billeDisponible = 0;
+            billesDisponible = 0;
+            billesEnJeu = 0;
             nombreDeBillesGagnes = 0;
             pointsPartie = 0;
             pointsTotale = 0;
@@ -133,7 +134,7 @@ namespace InterfaceGraphique
 
         }
 
-
+        // To DO: remove this
         private void timer_Tick(object sender, EventArgs e)
         {
           StringBuilder bille = new StringBuilder("bille");
@@ -142,6 +143,7 @@ namespace InterfaceGraphique
          // timerBille2.Start();
           timer.Stop();
         }
+        // And this
         private void timerBille2_Tick(object sender, EventArgs e)
         {
             StringBuilder bille = new StringBuilder("bille");
@@ -163,8 +165,15 @@ namespace InterfaceGraphique
 
                     }
                    FonctionsNatives.dessinerOpenGL();
-                   
 
+                   billesEnJeu = FonctionsNatives.obtenirNombreBillesCourante();
+                   if (billesEnJeu == 0 && nombreDeBillesGagnes - nombreDeBillesUtilise != 0)
+                   {
+                        // wait a certain time
+                       StringBuilder bille = new StringBuilder("bille");
+                       FonctionsNatives.creerObjet(bille, bille.Capacity);
+                       nombreDeBillesUtilise++;
+                   }
                    if (pointsPartie >= nombreDeBillesGagnes * pointsGagnerBille + pointsGagnerBille)
                    {
                        nombreDeBillesGagnes++;
@@ -172,7 +181,7 @@ namespace InterfaceGraphique
                    }
 
                    this.PointPartie.Text = pointsPartie.ToString();
-                   this.nbBilles.Text = nombreDeBillesGagnes.ToString();
+                   this.nbBilles.Text = (nombreDeBillesGagnes - nombreDeBillesUtilise).ToString();
                     
                     if (pointsPartie >= pointsGagnerPartie && boolTemp)
                     {

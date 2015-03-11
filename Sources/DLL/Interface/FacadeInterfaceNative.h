@@ -89,6 +89,7 @@ extern "C" {
 	__declspec(dllexport) int obtenirPointsGagnerPartie();
 	__declspec(dllexport) int obtenirNombreDePointsDePartie();
 	__declspec(dllexport) void resetNombreDePointsDePartie();
+	__declspec(dllexport) int  obtenirNombreBillesCourante();
 }
 
 #endif // __FACADE_INTERFACE_NATIVE_H__

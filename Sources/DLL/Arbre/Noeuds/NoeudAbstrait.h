@@ -262,7 +262,8 @@ public:
 
 	/// Assigner Forces Externes
 	inline void assignerForcesExternes(glm::dvec3 forcesExternes);
-
+	void assignerPortailDOrigine(NoeudAbstrait* portail);
+	NoeudAbstrait* obtenirPortailDOrigine();
 protected:
 
 	/// Si jumeau, autrement nullptr
@@ -339,6 +340,8 @@ protected:
 	double masse_{ 1 };
 
 	double constanteDeFrottement_{ 1 };
+
+	NoeudAbstrait* portailDOrigine_{ nullptr };
 };
 
 

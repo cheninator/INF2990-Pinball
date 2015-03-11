@@ -293,7 +293,7 @@ namespace InterfaceGraphique
              }
              else if (e.KeyValue == touches.Ressort)
              {
-
+                 FonctionsNatives.compresserRessort();
              }
             // TODO
         }
@@ -329,7 +329,7 @@ namespace InterfaceGraphique
             }
             else if (e.KeyValue == touches.Ressort)
             {
-
+                FonctionsNatives.relacherRessort();
             }
             // TO DO
         }
@@ -422,7 +422,6 @@ namespace InterfaceGraphique
                     etat = null;
                     etat = new EtatEditeurPause(this);
                 }
-              
             }
             else if (etat is EtatEditeurPause)
             {

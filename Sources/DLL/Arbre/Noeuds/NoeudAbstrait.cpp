@@ -863,3 +863,16 @@ void NoeudAbstrait::traiterCollisions(aidecollision::DetailsCollision details, N
 	bille->assignerVitesse(vitesseFinale);
 	bille->assignerImpossible(true);
 }
+
+
+
+
+void NoeudAbstrait::assignerPortailDOrigine(NoeudAbstrait* portail)
+{
+	portailDOrigine_ = portail;
+}
+
+NoeudAbstrait* NoeudAbstrait::obtenirPortailDOrigine()
+{
+	return portailDOrigine_;
+}
