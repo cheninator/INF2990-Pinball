@@ -48,6 +48,9 @@ private:
 	EtatRessort etatRessort_{ AU_REPOS };
 
 	double scaleYOriginal_;
+	glm::dvec3 positionOriginale_;
+	glm::dvec3 translationCompression_;
+	double distanceCompression_; // sera utilisee pour la physique
 
 	/// Angle selon l'axe des X.
 	float angleX_{ 0.f };
