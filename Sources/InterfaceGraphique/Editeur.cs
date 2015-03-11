@@ -2986,6 +2986,7 @@ namespace InterfaceGraphique
             panel_GL.Dock = DockStyle.Fill;
             FonctionsNatives.translater(mouvementX, -mouvementY);
             FonctionsNatives.mettreAJourListeBillesEtNoeuds();
+            FonctionsNatives.modePause(false);
         }
 
         //////////////////////////////////////////////////////////////////////////////////////////
