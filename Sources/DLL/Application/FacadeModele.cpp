@@ -1265,27 +1265,20 @@ void FacadeModele::traiterCollisions()
 		bille->assignerImpossible(false);
 		for (NoeudAbstrait* noeudAVerifier : listeNoeuds_)
 		{
-			if (bille != nullptr)
-			{
-				aidecollision::DetailsCollision detail = noeudAVerifier->detecterCollisions(bille);
+			aidecollision::DetailsCollision detail = noeudAVerifier->detecterCollisions(bille);
 
-				if (detail.type != aidecollision::COLLISION_AUCUNE)
-				{
-					if (noeudAVerifier->obtenirType() == "trou")
-					{
-						obtenirArbreRenduINF2990()->getEnfant(0)->effacer(bille);
-						bille = nullptr;
-					}
-					else
-					{
-						noeudAVerifier->traiterCollisions(detail, bille);
-					}
-				}
+			if (detail.type != aidecollision::COLLISION_AUCUNE)
+			{
+				noeudAVerifier->traiterCollisions(detail, bille);
+				if (noeudAVerifier->obtenirType() == "trou") // MODIF
+					break;                                   // MODIF
 			}
 		}
+		mettreAJourListeNoeuds();          // MODIF (Juste updater listeNoeuds_ pour pas avoir le assert de vector.
 	}
-	mettreAJourListeBillesEtNoeuds();
 }
+
+
 
 void FacadeModele::updateForcesExternes()
 {
@@ -1329,5 +1322,16 @@ void FacadeModele::mettreAJourListeBillesEtNoeuds()
 			listeNoeuds_.push_back(noeud);
 		if (noeud->obtenirType() == "bille")
 			listeBilles_.push_back(noeud);
+	}
+}
+
+void FacadeModele::mettreAJourListeNoeuds()
+{
+	listeNoeuds_.clear();
+	for (unsigned int i = 0; i < arbre_->getEnfant(0)->obtenirNombreEnfants(); i++)
+	{
+		NoeudAbstrait* noeud = arbre_->getEnfant(0)->getEnfant(i);
+		if (noeud->obtenirType() != "generateurbille")
+			listeNoeuds_.push_back(noeud);
 	}
 }

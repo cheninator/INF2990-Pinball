@@ -164,11 +164,7 @@ std::vector<glm::dvec3> NoeudTrou::obtenirVecteursEnglobants()
 /// @return details contient l'information sur la collision de la bille avec *this.
 ///
 ////////////////////////////////////////////////////////////////////////
-void NoeudTrou::traiterCollisions(aidecollision::DetailsCollision details, NoeudAbstrait* bille)
+void NoeudTrou::traiterCollisions(aidecollision::DetailsCollision, NoeudAbstrait* bille)
 {
-	if (details.type != aidecollision::COLLISION_AUCUNE){
-		bille->obtenirParent()->effacer(bille);
-		FacadeModele::obtenirInstance()->mettreAJourListeBillesEtNoeuds();
-		bille = nullptr;
-	}
+	bille->obtenirParent()->effacer(bille);
 }

@@ -186,7 +186,7 @@ public:
    void updateForcesExternes();
    
    void mettreAJourListeBillesEtNoeuds();
-
+   void mettreAJourListeNoeuds();
 private:
 
    /// Constructeur par defaut.
