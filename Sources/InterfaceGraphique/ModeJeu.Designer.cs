@@ -51,7 +51,7 @@
             this.panel_GL.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel_GL.Location = new System.Drawing.Point(0, 0);
             this.panel_GL.Name = "panel_GL";
-            this.panel_GL.Size = new System.Drawing.Size(284, 261);
+            this.panel_GL.Size = new System.Drawing.Size(633, 453);
             this.panel_GL.TabIndex = 4;
             this.panel_GL.MouseClick += new System.Windows.Forms.MouseEventHandler(this.panel_GL_MouseClick);
             // 
@@ -59,7 +59,7 @@
             // 
             this.nbBilles.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.nbBilles.AutoSize = true;
-            this.nbBilles.Location = new System.Drawing.Point(13, 239);
+            this.nbBilles.Location = new System.Drawing.Point(13, 431);
             this.nbBilles.Name = "nbBilles";
             this.nbBilles.Size = new System.Drawing.Size(43, 13);
             this.nbBilles.TabIndex = 4;
@@ -69,7 +69,7 @@
             // 
             this.PointPartie.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.PointPartie.AutoSize = true;
-            this.PointPartie.Location = new System.Drawing.Point(13, 226);
+            this.PointPartie.Location = new System.Drawing.Point(13, 418);
             this.PointPartie.Name = "PointPartie";
             this.PointPartie.Size = new System.Drawing.Size(63, 13);
             this.PointPartie.TabIndex = 3;
@@ -129,7 +129,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(284, 261);
+            this.ClientSize = new System.Drawing.Size(633, 453);
             this.Controls.Add(this.panel_GL);
             this.Icon = global::InterfaceGraphique.Properties.Resources.Pinball;
             this.MainMenuStrip = this.menuStrip;

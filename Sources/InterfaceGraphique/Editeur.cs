@@ -182,6 +182,12 @@ namespace InterfaceGraphique
                             
                           
                         }
+
+                        if (FonctionsNatives.obtenirNombreBillesCourante() == 0 && etat is EtatEditeurTest)
+                        {
+                            StringBuilder bille = new StringBuilder("bille");
+                            FonctionsNatives.creerObjet(bille, bille.Capacity);                            
+                        }
                         if (peutAnimer)
                             FonctionsNatives.animer(tempsInterAffichage);
                         FonctionsNatives.dessinerOpenGL();
