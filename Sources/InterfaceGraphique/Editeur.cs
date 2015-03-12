@@ -1565,7 +1565,7 @@ namespace InterfaceGraphique
             etat = null;
             etat = new EtatEditeurTest(this);
             menuStrip1.Hide();
-            
+            peutAnimer = true;
             if (Creation_Panel.Visible)
                 Creation_Panel.Hide();
             flowLayoutPanel1.Hide();
@@ -2977,7 +2977,7 @@ namespace InterfaceGraphique
         {
             etat = null;
             etat = new EtatEditeurNone(this);
-
+            peutAnimer = false;
             FonctionsNatives.supprimerBille();
 
             if (menuStrip3.Visible)
