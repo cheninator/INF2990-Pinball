@@ -220,6 +220,19 @@ namespace InterfaceGraphique
             }
         }
 
+        public void RecommencerPartie()
+        {
+            resetConfig();
+
+            FonctionsNatives.ouvrirXML(map, map.Capacity);
+
+            FonctionsNatives.construireListesPalettes();
+            FonctionsNatives.mettreAJourListeBillesEtNoeuds();
+
+
+            timer.Start();
+        }
+
         private void ProchainePartie()
         {
             boolTemp = false;

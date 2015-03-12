@@ -241,13 +241,13 @@ namespace InterfaceGraphique
                         FonctionsNatives.construireListesPalettes();
                         parent_.currentZone++;
                 }
-                else if (e.KeyChar == (char)8)
+            * */
+            else if (e.KeyChar == (char)8)
                 {
                     // RELOAD DE LA MAP
-                    FonctionsNatives.ouvrirXML(parent_.map, parent_.map.Capacity);
-                    parent_.resetConfig();
-                }*/
-            if (e.KeyChar == (char)27)
+                    parent_.RecommencerPartie();
+                }
+            else if (e.KeyChar == (char)27)
             {
                 //Console.WriteLine("¨METTRE EN PAUSE");
                 parent_.pauseGame();
