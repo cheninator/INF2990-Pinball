@@ -72,8 +72,6 @@ Samuel Millette <BR>
 
 #include "glm/gtc/type_ptr.hpp"
 
-#define M_PI	3.141592653589793238462643383279502884
-
 /// Pointeur vers l'instance unique de la classe.
 FacadeModele* FacadeModele::instance_{ nullptr };
 
@@ -505,7 +503,7 @@ void FacadeModele::tournerSelectionSouris(int x1, int y1, int x2, int y2)
 
 	// On calcule l'angle de la rotation:
 	double angle = (y2 - y1) / 3.0;
-	double angleEnRadian = angle * 2 * 3.1415926535897932384626433832795 / 360;
+	double angleEnRadian = angle * utilitaire::PI_180;
 	glm::dmat3 transform = glm::dmat3{ glm::dvec3{ cos(-angleEnRadian), -sin(-angleEnRadian), 0 },
 		glm::dvec3{ sin(-angleEnRadian), cos(-angleEnRadian), 0 },
 		glm::dvec3{ 0, 0, 1 } };
@@ -902,9 +900,9 @@ void FacadeModele::positionnerMur(int originX, int originY,int x1, int y1, int x
 
 		// Prendre l'angle complementaire si on est en dessous de l'axe X.
 		if (vecteur.y < 0)
-			angleRadian = M_PI - angleRadian;// A passer en parametre a assignerRotation
-
-		angles = glm::dvec3{ 0, 0, 360.0 / 2.0 / M_PI * angleRadian };
+			angleRadian = utilitaire::PI - angleRadian;// A passer en parametre a assignerRotation
+		
+		angles = glm::dvec3{ 0, 0, 360.0 / 2.0 / utilitaire::PI * angleRadian };
 	}
 		// Calcul de la translation
 		// ========================

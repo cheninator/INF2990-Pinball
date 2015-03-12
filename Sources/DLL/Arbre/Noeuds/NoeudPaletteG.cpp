@@ -20,8 +20,6 @@
 #include "OpenGL_Storage/ModeleStorage_Liste.h"
 #include "../../Commun/Externe/glm/include/glm/gtx/Projection.hpp"
 
-#define M_PI 2 * 3.1415926535897932384626433832795 / 360
-
 ////////////////////////////////////////////////////////////////////////
 ///
 /// @fn NoeudPaletteG::NoeudPaletteG(const std::string& typeNoeud)
@@ -243,7 +241,7 @@ void NoeudPaletteG::traiterCollisions(aidecollision::DetailsCollision details, N
 		glm::dvec3 vecteur = positionBille - positionPalette;
 		double distance = glm::length(vecteur);
 
-		double angleEnRadian = rotation_[2] * M_PI;
+		double angleEnRadian = rotation_[2] * utilitaire::PI_180;
 		glm::dvec3 directionPalette = { -cos(angleEnRadian), -sin(angleEnRadian), 0 }; // Une palette pas tournee a un axe { - 1, 0, 0}
 		glm::dvec3 vecteurProjete = glm::proj(vecteur, directionPalette);
 		glm::dvec3 vecteurNormal = vecteur - vecteurProjete;
@@ -251,7 +249,7 @@ void NoeudPaletteG::traiterCollisions(aidecollision::DetailsCollision details, N
 		double distanceProjetee = glm::length(vecteurProjete);
 		double distanceNormale = glm::length(vecteurNormal);
 		double constanteMystere = 1;
-		double deltaAngle = (9 * M_PI);
+		double deltaAngle = (9 * utilitaire::PI_180);
 		double vitesseAngulaire = deltaAngle / 0.016; // 9 degres par 16 msec 
 
 
@@ -299,7 +297,7 @@ bool NoeudPaletteG::estActiveeParBille(NoeudAbstrait* bille)
 	glm::dvec3 vecteur= positionBille - positionPalette;
 	double distance = glm::length(vecteur);
 
-	double angleEnRadian = angleZOriginal_ * M_PI;
+	double angleEnRadian = angleZOriginal_ * utilitaire::PI_180;
 	glm::dvec3 directionPalette = { -cos(angleEnRadian), -sin(angleEnRadian), 0 }; // Une palette pas tournee a un axe { - 1, 0, 0}
 	glm::dvec3 vecteurProjete = glm::proj(vecteur, directionPalette);
 	glm::dvec3 vecteurNormal = vecteur - vecteurProjete;
@@ -322,7 +320,7 @@ double NoeudPaletteG::fonctionDroitePaletteOriginale(NoeudAbstrait* bille)
 	glm::dvec3 positionBille = bille->obtenirPositionRelative();
 	glm::dvec3 positionPalette = obtenirPositionRelative();
 
-	double angleEnRadian = angleZOriginal_ * M_PI;
+	double angleEnRadian = angleZOriginal_ * utilitaire::PI_180;
 	glm::dvec3 directionPalette = { -cos(angleEnRadian), -sin(angleEnRadian), 0 };
 	double pente = 0;
 	if (directionPalette.x != 0)
@@ -336,7 +334,7 @@ double NoeudPaletteG::fonctionDroitePaletteEnMouvement(NoeudAbstrait* bille)
 	glm::dvec3 positionBille = bille->obtenirPositionRelative();
 	glm::dvec3 positionPalette = obtenirPositionRelative();
 
-	double angleEnRadian = rotation_[2] * M_PI;
+	double angleEnRadian = rotation_[2] * utilitaire::PI_180;
 	glm::dvec3 directionPalette = { -cos(angleEnRadian), -sin(angleEnRadian), 0 };
 	double pente = 0;
 	if (directionPalette.x != 0)
