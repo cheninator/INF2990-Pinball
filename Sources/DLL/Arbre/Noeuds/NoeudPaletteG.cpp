@@ -242,7 +242,7 @@ void NoeudPaletteG::traiterCollisions(aidecollision::DetailsCollision details, N
 
 		double distanceProjetee = glm::length(vecteurProjete);
 		double distanceNormale = glm::length(vecteurNormal);
-		double constanteMystere = .5;
+		double constanteMystere = 1;
 		double vitesseAngulaire = constanteMystere*(9 * 2 * 3.1415926535897932384626433832795 / 360) / 0.016;// 9 degres par 16msec 
 
 		glm::dvec3 vitesseInitiale = bille->obtenirVitesse();
@@ -261,7 +261,7 @@ void NoeudPaletteG::traiterCollisions(aidecollision::DetailsCollision details, N
 		// Imposer une vitesse maximale
 		if (glm::length(vitesseFinale) > 300)
 			vitesseFinale = 300.0 * glm::normalize(vitesseFinale); //  Meme Direction mais ramener le module a 30.
-		bille->assignerVitesse(vitesseFinale);
+		bille->assignerVitesse(glm::dvec3{ vitesseFinale.x, vitesseFinale.y, 0 });
 		bille->assignerImpossible(true);
 	}
 	else
