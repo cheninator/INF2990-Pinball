@@ -169,6 +169,8 @@ void NoeudBille::animer(float temps) // rajouter des parametres ou une fonction 
 				glm::dvec3 vitesseTangentielleInitiale = vitesse_ - vitesseNormaleInitiale;
 				glm::dvec2 vitesseNormale2D = aidecollision::calculerForceAmortissement2D(details, (glm::dvec2)vitesse_, 1.0);
 				vitesseApresCollision = vitesseTangentielleInitiale + glm::dvec3{ vitesseNormale2D.x, vitesseNormale2D.y, 0 };
+				glm::dvec3 positionFinale = obtenirPositionRelative()
+					+ details.enfoncement * glm::normalize(details.direction);
 				if (debug_) {
 					afficherVitesse(vitesseApresCollision);
 				}
