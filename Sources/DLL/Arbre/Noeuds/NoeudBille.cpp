@@ -261,14 +261,17 @@ void NoeudBille::setSpotLight(bool debug)
 ////////////////////////////////////////////////////////////////////////
 void NoeudBille::afficherVitesse(glm::dvec3 nouvelleVitesse)
 {
-	SYSTEMTIME time;
-	GetLocalTime(&time);
-	std::cout << std::fixed << std::setw(2) << std::setprecision(2) << time.wHour << ":"
-		<< std::fixed << std::setfill('0') << std::setw(2) << std::setprecision(2) << time.wMinute << ":"
-		<< std::fixed << std::setfill('0') << std::setw(2) << std::setprecision(2) << time.wSecond << ":"
-		<< std::fixed << std::setfill('0') << std::setw(3) << std::setprecision(3) << time.wMilliseconds;
+	if (debug_)
+	{
+		SYSTEMTIME time;
+		GetLocalTime(&time);
+		std::cout << std::fixed << std::setw(2) << std::setprecision(2) << time.wHour << ":"
+			<< std::fixed << std::setfill('0') << std::setw(2) << std::setprecision(2) << time.wMinute << ":"
+			<< std::fixed << std::setfill('0') << std::setw(2) << std::setprecision(2) << time.wSecond << ":"
+			<< std::fixed << std::setfill('0') << std::setw(3) << std::setprecision(3) << time.wMilliseconds;
 
-	std::cout << std::fixed << std::setfill('0') << std::setw(2) << " - Vitesse " << glm::length(nouvelleVitesse) << std::endl;
+		std::cout << std::fixed << std::setfill('0') << std::setw(2) << " - Vitesse " << glm::length(nouvelleVitesse) << std::endl;
+	}
 }
 
 ////////////////////////////////////////////////////////////////////////
