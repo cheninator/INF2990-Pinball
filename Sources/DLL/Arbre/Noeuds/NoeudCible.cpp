@@ -153,7 +153,7 @@ bool NoeudCible::accepterVisiteur(VisiteurAbstrait* vis)
 ////////////////////////////////////////////////////////////////////////
 void NoeudCible::traiterCollisions(aidecollision::DetailsCollision details, NoeudAbstrait* bille)
 {
-	// NoeudAbstrait::traiterCollisions(details, bille);
+	NoeudAbstrait::traiterCollisions(details, bille);
 	this->assignerAffiche(false);
 	SingletonGlobal::obtenirInstance()->collisionButoirCible();
 }
