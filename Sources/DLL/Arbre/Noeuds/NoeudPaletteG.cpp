@@ -35,6 +35,8 @@ NoeudPaletteG::NoeudPaletteG(const std::string& typeNoeud)
 	: NoeudComposite{ typeNoeud }
 {
 	ajustable_ = false;
+	vitesseMonteAngulaire_ = { 0, 0, 9 };
+	vitesseDescenteAngulaire_ = { 0, 0, -3 };
 }
 
 ////////////////////////////////////////////////////////////////////////
@@ -120,13 +122,13 @@ void NoeudPaletteG::animer(float temps)
 		// si impossible, la palette est bloquee et doit tomber dans l'etat INACTIVE
 		if (obtenirRotation().z - angleZOriginal_ < 60)
 		{
-			assignerRotation(glm::dvec3{ 0, 0, 9 });
+			assignerRotation(vitesseMonteAngulaire_);
 		}
 		break;
 	case RETOUR:
 		if (obtenirRotation().z - angleZOriginal_ > 0)
 		{
-			assignerRotation(glm::dvec3{ 0, 0, -3 });
+			assignerRotation(vitesseDescenteAngulaire_);
 		}
 		else
 			assignerRotationHard(glm::dvec3{ rotation_.x, rotation_.y, angleZOriginal_ });
@@ -134,7 +136,7 @@ void NoeudPaletteG::animer(float temps)
 	case ACTIVE_AI:
 		if (obtenirRotation().z - angleZOriginal_ < 60)
 		{
-			assignerRotation(glm::dvec3{ 0, 0, 9 });
+			assignerRotation(vitesseMonteAngulaire_);
 		}
 		else
 		{
@@ -150,7 +152,7 @@ void NoeudPaletteG::animer(float temps)
 	case RETOUR_AI:
 		if (obtenirRotation().z - angleZOriginal_ > 0)
 		{
-			assignerRotation(glm::dvec3{ 0, 0, -3 });
+			assignerRotation(vitesseDescenteAngulaire_);
 		}
 		else
 		{

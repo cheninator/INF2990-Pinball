@@ -219,6 +219,9 @@
     <ClCompile Include="Global\SingletonGlobal.cpp">
       <Filter>Source Files\Global</Filter>
     </ClCompile>
+    <ClCompile Include="Global\JoueurVirtuel.cpp">
+      <Filter>Source Files\Global</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Application\FacadeModele.h">
@@ -420,6 +423,9 @@
       <Filter>Header Files\Arbre\Noeuds</Filter>
     </ClInclude>
     <ClInclude Include="Global\SingletonGlobal.h">
+      <Filter>Header Files\Global</Filter>
+    </ClInclude>
+    <ClInclude Include="Global\JoueurVirtuel.h">
       <Filter>Header Files\Global</Filter>
     </ClInclude>
   </ItemGroup>

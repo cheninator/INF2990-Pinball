@@ -38,6 +38,8 @@ class ConfigScene;
 class NoeudPaletteG;
 class NoeudPaletteD;
 class NoeudRessort;
+class JoueurVirtuel;
+class QuadTree;
 
 namespace vue {
    class Vue;
@@ -220,6 +222,8 @@ private:
    ArbreRenduINF2990* arbre_{ nullptr };	/// Arbre de rendu contenant les differents objets de la scene.
    ConfigScene* configuration_{ nullptr };
    int* proprietes_;						/// Pour les proprietes de la zone de jeu
+   JoueurVirtuel* joueur_{ nullptr };
+   QuadTree* quad_{ nullptr };
 
    glm::dvec3 selectionBasGauche_, selectionHautDroit_;
    glm::ivec2 pointInitial_, pointAvant_;

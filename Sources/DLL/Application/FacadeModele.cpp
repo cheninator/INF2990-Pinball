@@ -54,6 +54,7 @@ Samuel Millette <BR>
 #include "../Visiteurs/VisiteurConstruireListes.h"
 #include "../Visiteurs/VisiteurDebug.h"
 #include "../Arbre/Noeuds/NoeudRessort.h"
+#include "../Global/JoueurVirtuel.h"
 
 #include "VueOrtho.h"
 #include "Camera.h"
@@ -102,6 +103,7 @@ FacadeModele* FacadeModele::obtenirInstance()
 		instance_ = new FacadeModele();
 		instance_->configuration_ = new ConfigScene();
 		instance_->proprietes_ = new int[6];
+		instance_->joueur_ = new JoueurVirtuel(instance_->quad_);
 	}
 	return instance_;
 }

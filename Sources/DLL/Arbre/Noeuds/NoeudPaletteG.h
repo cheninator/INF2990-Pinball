@@ -51,6 +51,9 @@ public:
 	virtual void traiterCollisions(aidecollision::DetailsCollision, NoeudAbstrait* bille);
 
 	double fonctionDroitePalette(NoeudAbstrait* bille);
+
+	double obtenirAngleZOriginal() const { return angleZOriginal_; };
+
 private:
 	/// Enumeration pour contenir l'etat de la palette
 	enum Etat { ACTIVE, RETOUR, INACTIVE, ACTIVE_AI, RETOUR_AI };
@@ -63,6 +66,9 @@ private:
 	
 	/// Chronometre interne
 	float timer_{ 0 };
+
+	glm::dvec3 vitesseMonteAngulaire_;
+	glm::dvec3 vitesseDescenteAngulaire_;
 };
 
 #endif // __ARBRE_NOEUDS_NOEUDPALETTEG_H__
