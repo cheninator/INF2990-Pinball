@@ -317,7 +317,7 @@ extern "C"
 				double positionY = position.y - ((30 * scale.x));
 
 				glm::dvec3 vecteur = { 0, -((30 * scale.x)), 0 };
-				double angleEnRadian = -rotation[2] * 2 * 3.1415926535897932384626433832795 / 360;
+				double angleEnRadian = -rotation[2] * utilitaire::PI_180;
 				glm::dmat3 transform = glm::dmat3{  glm::dvec3{ cos(angleEnRadian), -sin(angleEnRadian), 0.0 },
 													glm::dvec3{ sin(angleEnRadian), cos(angleEnRadian), 0.0f },
 													glm::dvec3{ 0.0, 0.0, 1.0 } };

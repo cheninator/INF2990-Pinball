@@ -34,6 +34,7 @@ namespace utilitaire {
 	static const double EPSILON{ 0.00000001 };
 	/// Constante PI.
 	static const double PI{ 3.1415926535897932384626433832795 };
+	static const double PI_180{ 2 * 3.1415926535897932384626433832795 / 360 };
 
 	/// Le vecteur i (dirigé vers l'axe des X positifs et unitaire).
 	static glm::dvec3 vi{ 1.0, 0.0, 0.0 };
