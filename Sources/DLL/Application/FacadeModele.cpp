@@ -1436,9 +1436,7 @@ void FacadeModele::aiPalettes()
 		{
 			if (palette->estActiveeParBille(bille))
 			{
-				// Activer toutes les palettes GJ2 et DJ2
-				activerPalettesAIGauches();
-				return;
+				palette->activerAI();
 			}
 		}
 	/*
