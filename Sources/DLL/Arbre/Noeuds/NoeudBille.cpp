@@ -142,8 +142,8 @@ void NoeudBille::animer(float temps) // rajouter des parametres ou une fonction 
 	glm::dvec3 forceFrottement{ 0, 0, 0 };
 	if (glm::length(vitesse_) > 0.001)
 		forceFrottement = -constanteDeFrottement_ * glm::normalize(vitesse_);
-	glm::dvec3 forceTotale = forceFrottement + gravite + 10000.0*forcesExternes_;
-
+	glm::dvec3 forceTotale = 100.0*forceFrottement + 10.0*gravite + 10000.0*forcesExternes_;
+	forceTotale.z = 0;
 	// Calcul de la nouvelle vitesse. 
 	// =============================
 	glm::dvec3 vitesseApresCollision = vitesse_;

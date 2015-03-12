@@ -232,6 +232,8 @@ void NoeudPaletteG::traiterCollisions(aidecollision::DetailsCollision details, N
 	{
 		glm::dvec3 positionPalette = obtenirPositionRelative();
 		glm::dvec3 positionBille = bille->obtenirPositionRelative();
+		positionPalette.z = 0.0; // Les positions utilisees ici doivent etre en 2D
+		positionBille.z = 0.0; // Les positions utilisees ici doivent etre en 2D
 		glm::dvec3 vecteur = positionBille - positionPalette;
 		double distance = glm::length(vecteur);
 
@@ -251,7 +253,7 @@ void NoeudPaletteG::traiterCollisions(aidecollision::DetailsCollision details, N
 		glm::dvec2 vitesseNormaleFinale2D = aidecollision::calculerForceAmortissement2D(details, (glm::dvec2)vitesseInitiale, 1.0);
 		
 		glm::dvec3 vitesseFinale = vitesseTangentielle + glm::dvec3{ vitesseNormaleFinale2D.x, vitesseNormaleFinale2D.y, 0.0 }
-														+vitesseAngulaire * distanceProjetee * glm::normalize(vecteurNormal);
+														+ 2* vitesseAngulaire * distanceProjetee * glm::normalize(vecteurNormal);
 														// Ajouter a la vitesse de la bille selon ou elle frappe la palette en mouvement
 														
 		glm::dvec3 positionFinale = bille->obtenirPositionRelative() + details.enfoncement * glm::normalize(details.direction);
@@ -277,6 +279,9 @@ bool NoeudPaletteG::estActiveeParBille(NoeudAbstrait* bille)
 
 	glm::dvec3 positionPalette = obtenirPositionRelative();
 	glm::dvec3 positionBille = bille->obtenirPositionRelative();
+	positionPalette.z = 0.0; // Les positions utilisees ici doivent etre en 2D
+	positionBille.z = 0.0; // Les positions utilisees ici doivent etre en 2D
+
 	glm::dvec3 vecteur= positionBille - positionPalette;
 	double distance = glm::length(vecteur);
 
