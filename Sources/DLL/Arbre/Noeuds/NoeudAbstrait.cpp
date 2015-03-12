@@ -855,12 +855,10 @@ void NoeudAbstrait::traiterCollisions(aidecollision::DetailsCollision details, N
 	glm::dvec3 vitesseTangentielle = vitesseInitiale - vitesseNormaleInitiale;
 	glm::dvec2 vitesseNormaleFinale2D = aidecollision::calculerForceAmortissement2D(details, (glm::dvec2)vitesseInitiale, 1.0);
 	glm::dvec3 vitesseFinale = vitesseTangentielle + glm::dvec3{ vitesseNormaleFinale2D.x, vitesseNormaleFinale2D.y, 0.0 };
-	if (debug_)
-	{
 		((NoeudBille*)bille)->afficherVitesse(vitesseFinale); // Que Dieu me pardonne
-	}
 
-	glm::dvec3 positionFinale = bille->obtenirPositionRelative() + details.enfoncement * glm::normalize(details.direction);
+
+		glm::dvec3 positionFinale = bille->obtenirPositionRelative() + details.enfoncement * glm::normalize(details.direction);
 	bille->assignerPositionRelative(positionFinale);
 
 	bille->assignerVitesse(vitesseFinale);

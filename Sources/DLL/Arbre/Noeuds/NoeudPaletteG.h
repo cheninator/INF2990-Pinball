@@ -54,6 +54,9 @@ public:
 
 	double obtenirAngleZOriginal() const { return angleZOriginal_; };
 
+	double fonctionDroitePaletteOriginale(NoeudAbstrait* bille);
+	double fonctionDroitePaletteEnMouvement(NoeudAbstrait* bille);
+
 private:
 	/// Enumeration pour contenir l'etat de la palette
 	enum Etat { ACTIVE, RETOUR, INACTIVE, ACTIVE_AI, RETOUR_AI };

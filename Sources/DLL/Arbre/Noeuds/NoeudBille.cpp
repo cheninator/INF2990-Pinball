@@ -142,8 +142,8 @@ void NoeudBille::animer(float temps) // rajouter des parametres ou une fonction 
 	glm::dvec3 forceFrottement{ 0, 0, 0 };
 	if (glm::length(vitesse_) > 0.001)
 		forceFrottement = -constanteDeFrottement_ * glm::normalize(vitesse_);
-	glm::dvec3 forceTotale = forceFrottement + gravite + 10000.0*forcesExternes_;
-
+	glm::dvec3 forceTotale = 100.0*forceFrottement + 10.0*gravite + 10000.0*forcesExternes_;
+	forceTotale.z = 0;
 	// Calcul de la nouvelle vitesse. 
 	// =============================
 	glm::dvec3 vitesseApresCollision = vitesse_;
@@ -261,14 +261,17 @@ void NoeudBille::setSpotLight(bool debug)
 ////////////////////////////////////////////////////////////////////////
 void NoeudBille::afficherVitesse(glm::dvec3 nouvelleVitesse)
 {
-	SYSTEMTIME time;
-	GetLocalTime(&time);
-	std::cout << std::fixed << std::setw(2) << std::setprecision(2) << time.wHour << ":"
-		<< std::fixed << std::setfill('0') << std::setw(2) << std::setprecision(2) << time.wMinute << ":"
-		<< std::fixed << std::setfill('0') << std::setw(2) << std::setprecision(2) << time.wSecond << ":"
-		<< std::fixed << std::setfill('0') << std::setw(3) << std::setprecision(3) << time.wMilliseconds;
+	if (debug_)
+	{
+		SYSTEMTIME time;
+		GetLocalTime(&time);
+		std::cout << std::fixed << std::setw(2) << std::setprecision(2) << time.wHour << ":"
+			<< std::fixed << std::setfill('0') << std::setw(2) << std::setprecision(2) << time.wMinute << ":"
+			<< std::fixed << std::setfill('0') << std::setw(2) << std::setprecision(2) << time.wSecond << ":"
+			<< std::fixed << std::setfill('0') << std::setw(3) << std::setprecision(3) << time.wMilliseconds;
 
-	std::cout << std::fixed << std::setfill('0') << std::setw(2) << " - Vitesse " << glm::length(nouvelleVitesse) << std::endl;
+		std::cout << std::fixed << std::setfill('0') << std::setw(2) << " - Vitesse " << glm::length(nouvelleVitesse) << std::endl;
+	}
 }
 
 ////////////////////////////////////////////////////////////////////////
