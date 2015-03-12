@@ -20,7 +20,7 @@ namespace InterfaceGraphique
             }
             public virtual bool traiterKeyDown(object sender, KeyEventArgs e)
             {
-                /*
+                
                 if (e.KeyCode == Keys.Left)
                     FonctionsNatives.translater(-10, 0);
                 else if (e.KeyCode == Keys.Right)
@@ -41,7 +41,7 @@ namespace InterfaceGraphique
                 {
                     FonctionsNatives.zoomIn();
                     parent_.currentZoom = FonctionsNatives.obtenirZoomCourant();
-                }*/
+                }
                 return false;
             }
             public virtual bool traiterKeyPress(object sender, KeyPressEventArgs e)
