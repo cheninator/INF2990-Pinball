@@ -43,6 +43,7 @@ private:
 	int direction_; // between 0 and 3
 	int power_; // between -5 and 5
 	int compteur_; // between 201 and 0
+	bool genBille_; // Si on dois generer une bille ou non
 };
 
 #endif // __ARBRE_NOEUDS_NOEUDGENERATEURBILLE_H__
