@@ -228,7 +228,46 @@ void NoeudPaletteG::desactiver()
 ////////////////////////////////////////////////////////////////////////
 void NoeudPaletteG::traiterCollisions(aidecollision::DetailsCollision details, NoeudAbstrait* bille)
 {
-	NoeudAbstrait::traiterCollisions(details, bille);
+	if (0 && (etatPalette_ == ACTIVE || etatPalette_ == ACTIVE_AI) && fonctionDroitePalette(bille) > 0)
+	{
+		glm::dvec3 positionPalette = obtenirPositionRelative();
+		glm::dvec3 positionBille = bille->obtenirPositionRelative();
+		glm::dvec3 vecteur = positionBille - positionPalette;
+		double distance = glm::length(vecteur);
+
+		double angleEnRadian = angleZOriginal_ * 2 * 3.1415926535897932384626433832795 / 360;
+		glm::dvec3 directionPalette = { -cos(angleEnRadian), -sin(angleEnRadian), 0 }; // Une palette pas tournee a un axe { - 1, 0, 0}
+		glm::dvec3 vecteurProjete = glm::proj(vecteur, directionPalette);
+		glm::dvec3 vecteurNormal = vecteur - vecteurProjete;
+
+		double distanceProjetee = glm::length(vecteurProjete);
+		double distanceNormale = glm::length(vecteurNormal);
+		double constanteMystere = .5;
+		double vitesseAngulaire = constanteMystere*(9 * 2 * 3.1415926535897932384626433832795 / 360) / 0.016;// 9 degres par 16msec 
+
+		glm::dvec3 vitesseInitiale = bille->obtenirVitesse();
+		glm::dvec3 vitesseNormaleInitiale = glm::proj(vitesseInitiale, details.direction); // Necessaire pour connaitre la vitesse tangentielle.
+		glm::dvec3 vitesseTangentielle = vitesseInitiale - vitesseNormaleInitiale;
+		glm::dvec2 vitesseNormaleFinale2D = aidecollision::calculerForceAmortissement2D(details, (glm::dvec2)vitesseInitiale, 1.0);
+
+		glm::dvec3 vitesseFinale = vitesseTangentielle + glm::dvec3{ vitesseNormaleFinale2D.x, vitesseNormaleFinale2D.y, 0.0 }
+														+vitesseAngulaire * distanceProjetee * glm::normalize(vecteurNormal);
+														// Ajouter a la vitesse de la bille selon ou elle frappe la palette en mouvement
+														
+		glm::dvec3 positionFinale = bille->obtenirPositionRelative() + details.enfoncement * glm::normalize(details.direction);
+								
+
+		bille->assignerPositionRelative(positionFinale);
+		// Imposer une vitesse maximale
+		if (glm::length(vitesseFinale) > 300)
+			vitesseFinale = 300.0 * glm::normalize(vitesseFinale); //  Meme Direction mais ramener le module a 30.
+		bille->assignerVitesse(vitesseFinale);
+		bille->assignerImpossible(true);
+	}
+	else
+	{
+		NoeudAbstrait::traiterCollisions(details, bille);
+	}
 	// Ce que la palette fait a la bille quand il y a une collision ne depend pas de si la palette est AI ou pas.
 	// FacadeModele s'occuppe d'activer seulement les palettes d'un joueur en utilisant les listes
 	// listePalettesGJ2_ et listePalettesDJ2_ (attributs de FacadeModele).
@@ -267,7 +306,7 @@ bool NoeudPaletteG::estActiveeParBille(NoeudAbstrait* bille)
 	// positionBille.y > pente * positionBille.x + b <====> la bille est au dessus de la droite definie par la palette au repos.
 	if (fonctionDroitePalette(bille) > 0// << vrai si on la bille est au dessus de la droite definie par la palette. C<est ce qui fait que les palettes n'activent pas par en dessous.
 		&& positionBille.x < positionPalette.x + 80 // << essayer de remplacer par glm::length(glm::proj(vecteur, directionPalette)) < longueurPalette
-		&& positionBille.y < positionPalette.y + 10
+		&& distanceNormale < 15
 		)
 		return true;
 	else
