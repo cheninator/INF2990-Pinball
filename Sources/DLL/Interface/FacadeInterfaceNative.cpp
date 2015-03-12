@@ -337,6 +337,7 @@ extern "C"
 		}
 		FacadeModele::obtenirInstance()->obtenirArbreRenduINF2990()->getEnfant(0)->ajouter(objet);
 		FacadeModele::obtenirInstance()->mettreAJourListeBillesEtNoeuds();
+		FacadeModele::obtenirInstance()->construireListesPalettes();
 		FacadeModele::obtenirInstance()->setDebug();
 
 	}
@@ -1284,7 +1285,7 @@ extern "C"
 			if (!FacadeModele::obtenirInstance()->estDansTable(pointATester))
 			{
 				nouvellesProprietesSontLegales = false;
-				std::cout << "L'application des proprietes refusee, on sortirait de la table" << std::endl;
+				//std::cout << "L'application des proprietes refusee, on sortirait de la table" << std::endl;
 				return false;
 			}
 		}
@@ -1542,6 +1543,21 @@ extern "C"
 	__declspec(dllexport) void __cdecl resetNombreDePointsDePartie()
 	{
 		SingletonGlobal::obtenirInstance()->setPointsPartie(0);
+	}
+
+	__declspec(dllexport) int __cdecl obtenirNombreBillesCourante()
+	{
+		return SingletonGlobal::obtenirInstance()->obtenirBille();
+	}
+
+	__declspec(dllexport) void __cdecl compresserRessort()
+	{
+		return FacadeModele::obtenirInstance()->compresserRessort();
+	}
+
+	__declspec(dllexport) void __cdecl relacherRessort()
+	{
+		return FacadeModele::obtenirInstance()->relacherRessort();
 	}
 	//__declspec(dllexport) int __cdecl obtenirNombreDePointsTotals()
 	//{

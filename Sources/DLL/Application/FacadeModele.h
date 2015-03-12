@@ -37,6 +37,7 @@ class ArbreRenduINF2990;
 class ConfigScene;
 class NoeudPaletteG;
 class NoeudPaletteD;
+class NoeudRessort;
 
 namespace vue {
    class Vue;
@@ -175,6 +176,11 @@ public:
    /// Activer les palettes de chaque joueur
    void activerPalettesGJ1();
    void desactiverPalettesGJ1();
+   void FacadeModele::aiPalettes();
+   void FacadeModele::activerPalettesAIGauches();
+   void FacadeModele::activerPalettesAIDroites();
+   void compresserRessort();
+   void relacherRessort();
 
    void supprimerBille();
 
@@ -187,6 +193,8 @@ public:
    
    void mettreAJourListeBillesEtNoeuds();
    void mettreAJourListeNoeuds();
+   void mettreAJourListeRessorts();
+
 private:
 
    /// Constructeur par defaut.
@@ -233,8 +241,8 @@ private:
 
    std::vector<NoeudAbstrait*> listeBilles_;
    std::vector<NoeudAbstrait*> listeNoeuds_;
+   std::vector<NoeudAbstrait*> listeRessorts_;
 };
-
 
 
 

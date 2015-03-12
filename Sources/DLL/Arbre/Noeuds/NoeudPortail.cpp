@@ -178,22 +178,40 @@ std::vector<glm::dvec3> NoeudPortail::obtenirVecteursEnglobants()
 
 ////////////////////////////////////////////////////////////////////////
 ///
-/// @fn void NoeudTrou::traiterCollisions(aidecollision::DetailsCollision details, NoeudAbstrait* bille)
+/// @fn void NoeudPortail::traiterCollisions(aidecollision::DetailsCollision details, NoeudAbstrait* bille)
 ///
 /// Cette fonction effectue la reaction a la collision de la bille sur 
-/// l'objet courant. Cette fonction est a reimplementer si on veut autre 
-/// chose qu'un rebondissement ordinaire.
-///
-/// @return details contient l'information sur la collision de la bille avec *this.
+/// l'objet un portail.  C'est a dire de teleporter la bille au jumeau
+/// de l'objet courant.  De plus, la bille va se rappeler du portail d'ou
+/// elle est sortie pour ne pas rester pris dedans.
+/// 
+/// @return aucun.
 ///
 ////////////////////////////////////////////////////////////////////////
 void NoeudPortail::traiterCollisions(aidecollision::DetailsCollision, NoeudAbstrait* bille)
 {
-	// bille->assignerPositionRelative(position du portail twin)
 	if (bille->obtenirPortailDOrigine() != this)
 	{
 		bille->assignerPositionRelative(this->getTwin()->obtenirPositionRelative());
 		bille->assignerPortailDOrigine(this->getTwin());
 	}
-	// utiliser un booleen pour que la bille ne soit pas attiree par l'autre portail.
+}
+
+////////////////////////////////////////////////////////////////////////
+///
+/// @fn void NoeudAbstrait::traiterCollisions(aidecollision::DetailsCollision details, NoeudAbstrait* bille)
+///
+/// Reimplementation de detecterCollisions pour un objet circulaire.  De plus,
+/// pour le portail, on utilise rayonPortail/4 plutot que le rayonPortail parce
+/// qu'on veut que la bille soit plus proche du centre pour etre teleportee
+/// 
+/// @return details contient l'information sur la collision de la bille avec *this.
+/// 
+////////////////////////////////////////////////////////////////////////
+aidecollision::DetailsCollision NoeudPortail::detecterCollisions(NoeudAbstrait* bille)
+{
+	double rayonPortail = obtenirVecteursEnglobants()[0].x;
+	double rayonBille = bille->obtenirVecteursEnglobants()[0].x;
+	aidecollision::DetailsCollision details = aidecollision::calculerCollisionCercle((glm::dvec2)obtenirPositionRelative(), rayonPortail/4, (glm::dvec2)bille->obtenirPositionRelative(), rayonBille);
+	return details;
 }

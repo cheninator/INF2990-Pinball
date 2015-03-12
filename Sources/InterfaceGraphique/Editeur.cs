@@ -293,7 +293,7 @@ namespace InterfaceGraphique
              }
              else if (e.KeyValue == touches.Ressort)
              {
-
+                 FonctionsNatives.compresserRessort();
              }
             // TODO
         }
@@ -329,7 +329,7 @@ namespace InterfaceGraphique
             }
             else if (e.KeyValue == touches.Ressort)
             {
-
+                FonctionsNatives.relacherRessort();
             }
             // TO DO
         }
@@ -422,7 +422,6 @@ namespace InterfaceGraphique
                     etat = null;
                     etat = new EtatEditeurPause(this);
                 }
-              
             }
             else if (etat is EtatEditeurPause)
             {
@@ -885,7 +884,7 @@ namespace InterfaceGraphique
             annulerModif();
             etat = new EtatEditeurSelection(this);
 
-            Console.WriteLine("Outil Selection.");
+            //Console.WriteLine("Outil Selection.");
         }
 
         ////////////////////////////////////////////////////////////////////////
@@ -905,7 +904,7 @@ namespace InterfaceGraphique
             annulerModif();
             if (etat is EtatEditeurMur)
                 etat = new EtatEditeurNone(this);
-            Console.WriteLine("Outil Creation.");
+            //Console.WriteLine("Outil Creation.");
             if (Creation_Panel.Visible)
             {
                 Creation_Panel.Visible = false;
@@ -953,7 +952,7 @@ namespace InterfaceGraphique
         private void butourCirc_bouton_Click(object sender, EventArgs e)
         {
             etat = new EtatEditeurCreation(this);
-            Console.WriteLine("ButoirCirculaire");
+            //Console.WriteLine("ButoirCirculaire");
             myObjectName = new StringBuilder("butoircirculaire");
             colorShift = false;
             angleX = 0;
@@ -999,7 +998,7 @@ namespace InterfaceGraphique
         private void butoirG_bouton_Click(object sender, EventArgs e)
         {
             etat = new EtatEditeurCreation(this);
-            Console.WriteLine("Butoir Gauche.");
+            //Console.WriteLine("Butoir Gauche.");
             myObjectName = new StringBuilder("butoirg");
             colorShift = false;
             angleX = 0;
@@ -1095,7 +1094,7 @@ namespace InterfaceGraphique
         ////////////////////////////////////////////////////////////////////////
         public void afficher_Objet(bool twin)
         {
-            Console.WriteLine(myObjectName);
+            //Console.WriteLine(myObjectName);
             FonctionsNatives.creerObjet(myObjectName, myObjectName.Capacity, twin, colorShift);
         }
 
@@ -1219,7 +1218,7 @@ namespace InterfaceGraphique
         private void Ressort_bouton_Click(object sender, EventArgs e)
         {
             etat = new EtatEditeurCreation(this);
-            Console.WriteLine("Ressort");
+            //Console.WriteLine("Ressort");
             myObjectName = new StringBuilder("ressort");
             colorShift = false;
             angleX = 0;
@@ -1242,7 +1241,7 @@ namespace InterfaceGraphique
         private void Generateur_bouton_Click(object sender, EventArgs e)
         {
             etat = new EtatEditeurCreation(this);
-            Console.WriteLine("Generateur");
+            //Console.WriteLine("Generateur");
             myObjectName = new StringBuilder("generateurbille");
             colorShift = false;
             angleX = 0;
@@ -1266,7 +1265,7 @@ namespace InterfaceGraphique
         {
             
             etat = new EtatEditeurCreation(this);
-            Console.WriteLine("Trou");
+            //Console.WriteLine("Trou");
             myObjectName = new StringBuilder("trou");
             colorShift = false;
             angleX = 0;
@@ -1288,7 +1287,7 @@ namespace InterfaceGraphique
         ////////////////////////////////////////////////////////////////////////
         private void bouton_Deplacement_Click(object sender, EventArgs e)
         {
-            Console.WriteLine("Outil Deplacement.");
+            //Console.WriteLine("Outil Deplacement.");
             // TO DO
             annulerModif();
             etat = null;
@@ -1343,7 +1342,7 @@ namespace InterfaceGraphique
         ////////////////////////////////////////////////////////////////////////
         private void bouton_Rotation_Click(object sender, EventArgs e)
         {
-            Console.WriteLine("Outil Rotation.");
+            //Console.WriteLine("Outil Rotation.");
             // TO DO
             annulerModif();
             etat = null;
@@ -1364,7 +1363,7 @@ namespace InterfaceGraphique
         ////////////////////////////////////////////////////////////////////////
         private void bouton_Scaling_Click(object sender, EventArgs e)
         {
-            Console.WriteLine("Outil Mise a echelle.");
+            //Console.WriteLine("Outil Mise a echelle.");
             // TO DO
             annulerModif();
             etat = null;
@@ -1402,7 +1401,7 @@ namespace InterfaceGraphique
         ////////////////////////////////////////////////////////////////////////
         private void Zoom_MenuItem_Click(object sender, EventArgs e)
         {
-            Console.WriteLine("Outil Zoom.");
+            //Console.WriteLine("Outil Zoom.");
             annulerModif();
             etat = null;
             etat = new EtatEditeurZoom(this);
@@ -1423,7 +1422,7 @@ namespace InterfaceGraphique
         ////////////////////////////////////////////////////////////////////////
         private void bouton_Duplication_Click(object sender, EventArgs e)
         {
-            Console.WriteLine("Outil Duplication.");
+            //Console.WriteLine("Outil Duplication.");
             
                  annulerModif();
                 etat = null;
@@ -1500,7 +1499,7 @@ namespace InterfaceGraphique
         ////////////////////////////////////////////////////////////////////////
         private void Orthographique_MenuItem_Click(object sender, EventArgs e)
         {
-            Console.WriteLine("Vue Orthoraphique.");
+            //Console.WriteLine("Vue Orthoraphique.");
             // TO DO
         }
         ////////////////////////////////////////////////////////////////////////
@@ -1517,7 +1516,7 @@ namespace InterfaceGraphique
         ////////////////////////////////////////////////////////////////////////
         private void Orbite_MenuItem_Click(object sender, EventArgs e)
         {
-            Console.WriteLine("Vue Orbitale.");
+            //Console.WriteLine("Vue Orbitale.");
             // TO DO
             FonctionsNatives.orbite(0, 0);
         }
@@ -1536,7 +1535,7 @@ namespace InterfaceGraphique
         ////////////////////////////////////////////////////////////////////////
         private void Supprimer_MenuItem_Click(object sender, EventArgs e)
         {
-            Console.WriteLine("Supprimer.");
+            //Console.WriteLine("Supprimer.");
             FonctionsNatives.removeObject();
             deselection();
             // TO DO
@@ -1556,7 +1555,7 @@ namespace InterfaceGraphique
         ////////////////////////////////////////////////////////////////////////
         private void ModeTest_MenuItem_Click(object sender, EventArgs e)
         {
-            Console.WriteLine("Mode Test.");
+            //Console.WriteLine("Mode Test.");
             etat = null;
             etat = new EtatEditeurTest(this);
             menuStrip1.Hide();
@@ -1598,7 +1597,7 @@ namespace InterfaceGraphique
         private void PGJ1_bouton_Click(object sender, EventArgs e)
         {
             etat = new EtatEditeurCreation(this);
-            Console.WriteLine("Palette gauche J1.");
+            //Console.WriteLine("Palette gauche J1.");
             myObjectName = new StringBuilder("paletteg");
             angleX = 180;
             angleY = 0;
@@ -1638,7 +1637,7 @@ namespace InterfaceGraphique
         private void PDJ1_bouton_Click(object sender, EventArgs e)
         {
             etat = new EtatEditeurCreation(this);
-            Console.WriteLine("Palette droite J1.");
+            //Console.WriteLine("Palette droite J1.");
             myObjectName = new StringBuilder("paletted");
             angleX = 180;
             angleY = 0;
@@ -1678,7 +1677,7 @@ namespace InterfaceGraphique
         private void PGJ2_bouton_Click(object sender, EventArgs e)
         {
             etat = new EtatEditeurCreation(this);
-            Console.WriteLine("Palette gauche J2.");
+            //Console.WriteLine("Palette gauche J2.");
             myObjectName = new StringBuilder("paletteg");
             colorShift = true;
             angleX = 180;
@@ -1718,7 +1717,7 @@ namespace InterfaceGraphique
         private void PDJ2_bouton_Click(object sender, EventArgs e)
         {
             etat = new EtatEditeurCreation(this);
-            Console.WriteLine("Palette droite J2.");
+            //Console.WriteLine("Palette droite J2.");
             myObjectName = new StringBuilder("paletted");
             colorShift = true;
             angleX = 180;
@@ -1775,7 +1774,7 @@ namespace InterfaceGraphique
         private void butoirD_bouton_Click(object sender, EventArgs e)
         {
             etat = new EtatEditeurCreation(this);
-            Console.WriteLine("Butoir Droit.");
+            //Console.WriteLine("Butoir Droit.");
             myObjectName = new StringBuilder("butoird");
             colorShift = false;
             angleX = 0;
@@ -1815,7 +1814,7 @@ namespace InterfaceGraphique
         private void Cible_bouton_Click(object sender, EventArgs e)
         {
             etat = new EtatEditeurCreation(this);
-            Console.WriteLine("Cible.");
+            //Console.WriteLine("Cible.");
             myObjectName = new StringBuilder("cible");
             colorShift = false;
             angleX = 0;
@@ -1855,7 +1854,7 @@ namespace InterfaceGraphique
         private void Portails_bouton_Click(object sender, EventArgs e)
         {
             etat = new EtatEditeurCreation(this);
-            Console.WriteLine("Portail");
+            //Console.WriteLine("Portail");
             myObjectName = new StringBuilder("portail");
             colorShift = false;
             angleX = 0;
@@ -1895,7 +1894,7 @@ namespace InterfaceGraphique
         private void Mur_bouton_Click(object sender, EventArgs e)
         {
             etat = new EtatEditeurCreation(this);
-            Console.WriteLine("Mur");
+            //Console.WriteLine("Mur");
             myObjectName = new StringBuilder("mur");
             colorShift = false;
             angleX = 0;
@@ -2302,7 +2301,7 @@ namespace InterfaceGraphique
             int isSelected = nbSelection;
             // TODO PHIL : Faire que ceci n'arrive que quand on relâche le bouton de gauche et qu'on n'a pas bouge de plus de 3 pixels.
             nbSelection = FonctionsNatives.selectionnerObjetSousPointClique( x, y, h, w, c);
-            Console.WriteLine("SELECTION: " + nbSelection);
+            //Console.WriteLine("SELECTION: " + nbSelection);
             if (nbSelection != 1)
             {
                 if (nbSelection == 0)

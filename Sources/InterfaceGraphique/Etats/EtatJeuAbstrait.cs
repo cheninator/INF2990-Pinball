@@ -86,7 +86,7 @@ namespace InterfaceGraphique
         public EtatJeuPause(ModeJeu modeJeu)
             : base(modeJeu)
         {
-            Console.WriteLine("Constructeur Etat :" + '\t' + "Pause");
+            //Console.WriteLine("Constructeur Etat :" + '\t' + "Pause");
 
             parent_.setVisibilityMenuStrip(true);
             FonctionsNatives.modePause(true);
@@ -122,7 +122,7 @@ namespace InterfaceGraphique
         public EtatJeuJouer(ModeJeu modeJeu)
             : base(modeJeu)
         {
-            Console.WriteLine("Etat :" + '\t' + "Jouer");
+            //Console.WriteLine("Etat :" + '\t' + "Jouer");
 
             parent_.setVisibilityMenuStrip(false);
             FonctionsNatives.modePause(false);
@@ -243,15 +243,15 @@ namespace InterfaceGraphique
                         FonctionsNatives.construireListesPalettes();
                         parent_.currentZone++;
                 }
-                else if (e.KeyChar == (char)8)
+            * */
+            else if (e.KeyChar == (char)8)
                 {
                     // RELOAD DE LA MAP
-                    FonctionsNatives.ouvrirXML(parent_.map, parent_.map.Capacity);
-                    parent_.resetConfig();
-                }*/
-            if (e.KeyChar == (char)27)
+                    parent_.RecommencerPartie();
+                }
+            else if (e.KeyChar == (char)27)
             {
-                Console.WriteLine("¨METTRE EN PAUSE");
+                //Console.WriteLine("¨METTRE EN PAUSE");
                 parent_.pauseGame();
             }
             return true;
@@ -272,6 +272,7 @@ namespace InterfaceGraphique
             Console.WriteLine("Etat :" + '\t' + "DebutDePartie");
             // Reset des points
             resetConfig();
+            // TODO: Complete member initialization
         }
 
         public override bool traiterRoulette(object sender, MouseEventArgs e)
@@ -295,7 +296,7 @@ namespace InterfaceGraphique
     {
         public EtatJeuFinDePartie(ModeJeu modeJeu) : base(modeJeu)
         {
-            Console.WriteLine("Etat :" + '\t' + "FinDePartie");
+            //Console.WriteLine("Etat :" + '\t' + "FinDePartie");
         }
     }
 

@@ -855,23 +855,39 @@ void NoeudAbstrait::traiterCollisions(aidecollision::DetailsCollision details, N
 	glm::dvec3 vitesseTangentielle = vitesseInitiale - vitesseNormaleInitiale;
 	glm::dvec2 vitesseNormaleFinale2D = aidecollision::calculerForceAmortissement2D(details, (glm::dvec2)vitesseInitiale, 1.0);
 	glm::dvec3 vitesseFinale = vitesseTangentielle + glm::dvec3{ vitesseNormaleFinale2D.x, vitesseNormaleFinale2D.y, 0.0 };
-	if (debug_)
-	{
 		((NoeudBille*)bille)->afficherVitesse(vitesseFinale); // Que Dieu me pardonne
-	}
+
+
+		glm::dvec3 positionFinale = bille->obtenirPositionRelative() + details.enfoncement * glm::normalize(details.direction);
+	bille->assignerPositionRelative(positionFinale);
 
 	bille->assignerVitesse(vitesseFinale);
 	bille->assignerImpossible(true);
 }
 
-
-
-
+////////////////////////////////////////////////////////////////////////
+///
+/// @fn void NoeudAbstrait::assignerPortailDOrigine(NoeudAbstrait* portail)
+///
+/// Assigne l'attribut portailDOrigine avec un portail.  Ce portail ne causera pas
+/// de force sur la bille.  Une fois que la bille s'est assez eloignee du
+/// portail, on remet cet attirbut a nullptr.
+///
+////////////////////////////////////////////////////////////////////////
 void NoeudAbstrait::assignerPortailDOrigine(NoeudAbstrait* portail)
 {
 	portailDOrigine_ = portail;
 }
 
+////////////////////////////////////////////////////////////////////////
+///
+/// @fn void NoeudAbstrait::assignerPortailDOrigine(NoeudAbstrait* portail)
+///
+/// Obtient l'attribut portailDOrigine_ pour le comparer avec les portails.
+/// Si un portail est le portail d'origine, il ne cree pas de force sur 
+/// la bille.
+/// 
+////////////////////////////////////////////////////////////////////////
 NoeudAbstrait* NoeudAbstrait::obtenirPortailDOrigine()
 {
 	return portailDOrigine_;

@@ -53,6 +53,7 @@ Samuel Millette <BR>
 #include "../Visiteurs/VisiteurXML.h"
 #include "../Visiteurs/VisiteurConstruireListes.h"
 #include "../Visiteurs/VisiteurDebug.h"
+#include "../Arbre/Noeuds/NoeudRessort.h"
 
 #include "VueOrtho.h"
 #include "Camera.h"
@@ -337,6 +338,7 @@ void FacadeModele::animer(float temps)
 	mettreAJourListeBillesEtNoeuds();
 	traiterCollisions();
 	updateForcesExternes();
+	aiPalettes();
 
 	// Mise a jour des objets.
 	arbre_->animer(temps);
@@ -1191,6 +1193,7 @@ void FacadeModele::construireListesPalettes()
 {
 	VisiteurConstruireListes visCL(&listePalettesGJ1_, &listePalettesDJ1_, &listePalettesGJ2_, &listePalettesDJ2_);
 	arbre_->accepterVisiteur(&visCL);
+	mettreAJourListeRessorts(); // que Dieu me pardonne.
 }
 
 ///////////////////////////////////////////////////////////////////////////////
@@ -1259,11 +1262,18 @@ int* FacadeModele::obtenirProprietes(char* nomFichier, int length)
 /// 
 ///////////////////////////////////////////////////////////////////////////////
 void FacadeModele::traiterCollisions()
-{
+{	
+	bool miseAJourListeBillesRequise = false;
+	bool useQuadTree = false;
 	for (NoeudAbstrait* bille : listeBilles_)
 	{
+		std::vector<NoeudAbstrait*> noeudsAVeririer;
+		if (useQuadTree)
+			; // TODO
+		else
+			noeudsAVeririer = listeNoeuds_;
 		bille->assignerImpossible(false);
-		for (NoeudAbstrait* noeudAVerifier : listeNoeuds_)
+		for (NoeudAbstrait* noeudAVerifier : noeudsAVeririer)
 		{
 			aidecollision::DetailsCollision detail = noeudAVerifier->detecterCollisions(bille);
 
@@ -1271,15 +1281,40 @@ void FacadeModele::traiterCollisions()
 			{
 				noeudAVerifier->traiterCollisions(detail, bille);
 				if (noeudAVerifier->obtenirType() == "trou") // MODIF
+				{
+					miseAJourListeBillesRequise = true;
 					break;                                   // MODIF
+				}
 			}
 		}
-		mettreAJourListeNoeuds();          // MODIF (Juste updater listeNoeuds_ pour pas avoir le assert de vector.
+		if (useQuadTree)
+			; // Enlever la bille du quadTree
+		else
+			mettreAJourListeNoeuds();          // MODIF (Juste updater listeNoeuds_ pour pas avoir le assert de vector.
 	}
+	if (miseAJourListeBillesRequise)
+		mettreAJourListeBillesEtNoeuds(); // Cette méthode est appelée a chaque frame dand animer(temps)
+	                                      // mais si on trouve toutes les places ou elle doit être appelée, 
+	                                      // on n'aura plus besoin de l'appeler a chaque frame et donc ici serait le bon endroit pour l'appeler quand on a effacé une bille.
 }
 
 
-
+///////////////////////////////////////////////////////////////////////////////
+///
+/// @fn void FacadeModele::updateForcesExternes()
+/// 
+/// Pour chaque bille, calcule la somme des forces exercees par les portails 
+/// sur celle-ci. Si la distance entre la bille et le portail est plus grande
+/// qu'une certaine valeur, la force de ce portail n'est pas comptee.
+/// 
+/// Cette fonction considere aussi si un bille vien de sortir d'un portail.
+/// Tant que la bille ne s'est pas assez eloignee du portail d'ou elle est 
+/// apparue, ce portail de l'affectera pas.
+/// 
+/// @remark Les listes doivent etre construites et la liste de billes doit etre tenue a jour.
+/// (Pour l'instant elles sont mises a jour a chaque frame donc pas de problemes ici.)
+/// 
+///////////////////////////////////////////////////////////////////////////////
 void FacadeModele::updateForcesExternes()
 {
 	for (NoeudAbstrait* bille : listeBilles_)
@@ -1300,7 +1335,7 @@ void FacadeModele::updateForcesExternes()
 						sommeDesForces += force;
 					}
 				}
-				if (distance > 100 && noeud == bille->obtenirPortailDOrigine())
+				if (distance > 20 && noeud == bille->obtenirPortailDOrigine())
 					bille->assignerPortailDOrigine(nullptr);
 			}
 		}
@@ -1330,6 +1365,13 @@ void FacadeModele::mettreAJourListeBillesEtNoeuds()
 	}
 }
 
+///////////////////////////////////////////////////////////////////////////////
+///
+/// @fn void FacadeModele::mettreAJourListeNoeuds()
+/// 
+/// Met a jour la liste des noeuds a verifier pour les collisions
+/// 
+///////////////////////////////////////////////////////////////////////////////
 void FacadeModele::mettreAJourListeNoeuds()
 {
 	listeNoeuds_.clear();
@@ -1340,3 +1382,92 @@ void FacadeModele::mettreAJourListeNoeuds()
 			listeNoeuds_.push_back(noeud);
 	}
 }
+
+///////////////////////////////////////////////////////////////////////////////
+///
+/// @fn void FacadeModele::mettreAJourListeRessorts()
+/// 
+/// Met a jour la liste des ressorts pour le controle par la touche du clavier.
+/// 
+///////////////////////////////////////////////////////////////////////////////
+void FacadeModele::mettreAJourListeRessorts()
+{
+	listeRessorts_.clear();
+	for (unsigned int i = 0; i < arbre_->getEnfant(0)->obtenirNombreEnfants(); i++)
+	{
+		NoeudAbstrait* noeud = arbre_->getEnfant(0)->getEnfant(i);
+		if (noeud->obtenirType() == "ressort")
+			listeRessorts_.push_back(noeud);
+	}
+}
+
+///////////////////////////////////////////////////////////////////////////////
+///
+/// @fn void FacadeModele::compresserRessort()
+/// 
+/// Declenche l'animation de compression de ressort.
+/// 
+///////////////////////////////////////////////////////////////////////////////
+void FacadeModele::compresserRessort()
+{
+	for (NoeudAbstrait* ressort : listeRessorts_)
+		((NoeudRessort*)ressort)->compresser();
+}
+
+///////////////////////////////////////////////////////////////////////////////
+///
+/// @fn void FacadeModele::relacherRessort()
+/// 
+/// Declenche l'animation de decompression de ressort.
+/// 
+///////////////////////////////////////////////////////////////////////////////
+void FacadeModele::relacherRessort()
+{
+	for (NoeudAbstrait* ressort : listeRessorts_)
+		((NoeudRessort*)ressort)->relacher();
+}
+
+
+// A chaque frame, checker si une bille est proche d'une palette AI.
+void FacadeModele::aiPalettes()
+{
+	for(NoeudPaletteG* palette : listePalettesGJ2_)
+		for(NoeudAbstrait* bille : listeBilles_)
+		{
+			if (palette->estActiveeParBille(bille))
+			{
+				palette->activerAI();
+			}
+		}
+	/*
+	for(NoeudPaletteG* palette : listePalettesGJ2_)
+		for(NoeudAbstrait* bille : listeBilles_)
+		{
+			if (palette->estActiveeParBille(bille))
+			{
+				// Activer toutes les palettes GJ2 et DJ2
+				activerPalettesAIDroites();
+				return;
+			}
+		}
+	}*/
+}
+
+
+void FacadeModele::activerPalettesAIGauches()
+{
+	for (NoeudPaletteG* palette : listePalettesGJ2_)
+	{
+		palette->activerAI();
+	}
+}
+
+/*
+void FacadeModele::activerPalettesAIDroites()
+{
+	for (NoeudPaletteG* palette : listePalettesGJ2_)
+	{
+		palette->activerAI();
+	}
+}
+*/

@@ -33,6 +33,8 @@ namespace InterfaceGraphique
         private int pointsGagnerBille = 0;
         private int pointsGagnerPartie = 0;
         private int billesDisponibles = 0;
+        public int billesEnJeu = 0;
+        private int nombreDeBillesUtilise = 0;
         
         // Modificateurs
         public void setVisibilityMenuStrip(bool vis) { menuStrip.Visible = vis; }
@@ -60,7 +62,7 @@ namespace InterfaceGraphique
             public EtatJeuAbstrait() {}
             public EtatJeuAbstrait(ModeJeu parent)
             {
-                Console.WriteLine("Etat :" + '\t' + "Abstrait");
+                //Console.WriteLine("Etat :" + '\t' + "Abstrait");
                 this.parent_ = parent;
             }
         };
@@ -96,7 +98,7 @@ namespace InterfaceGraphique
             if (nbZones > 1)
                 this.Text = "Campagne";
             map = new StringBuilder(myMaps[0]);
-            Console.WriteLine(nbZones);
+            //Console.WriteLine(nbZones);
             FonctionsNatives.ouvrirXML(map, map.Capacity);
             //Console.WriteLine(pointsGagnerPartie);
             //Console.WriteLine(pointsPartie);
@@ -118,6 +120,7 @@ namespace InterfaceGraphique
         protected void resetConfig()
         {
             billeDisponible = 0;
+            billesEnJeu = 0;
             nombreDeBillesGagnes = 0;
             pointsPartie = 0;
             pointsTotale = 0;
@@ -144,20 +147,21 @@ namespace InterfaceGraphique
 
         }
 
-
+        // To DO: remove this
         private void timer_Tick(object sender, EventArgs e)
         {
           StringBuilder bille = new StringBuilder("bille");
           FonctionsNatives.creerObjet(bille, bille.Capacity);
-          Console.WriteLine("timer");
+          //Console.WriteLine("timer");
          // timerBille2.Start();
           timer.Stop();
         }
+        // And this
         private void timerBille2_Tick(object sender, EventArgs e)
         {
             StringBuilder bille = new StringBuilder("bille");
             FonctionsNatives.creerObjet(bille, bille.Capacity);
-            Console.WriteLine("BILLE 2");
+            //Console.WriteLine("BILLE 2");
             timerBille2.Stop();
         }
 
@@ -176,8 +180,15 @@ namespace InterfaceGraphique
                             Console.WriteLine(pointsPartie);
                     }
                    FonctionsNatives.dessinerOpenGL();
-                   
 
+                   billesEnJeu = FonctionsNatives.obtenirNombreBillesCourante();
+                   if (billesEnJeu == 0 && nombreDeBillesGagnes - nombreDeBillesUtilise != 0)
+                   {
+                        // wait a certain time
+                       StringBuilder bille = new StringBuilder("bille");
+                       FonctionsNatives.creerObjet(bille, bille.Capacity);
+                       nombreDeBillesUtilise++;
+                   }
                    if (pointsPartie >= nombreDeBillesGagnes * pointsGagnerBille + pointsGagnerBille)
                    {
                        nombreDeBillesGagnes++;
@@ -185,7 +196,7 @@ namespace InterfaceGraphique
                    }
 
                    this.PointPartie.Text = pointsPartie.ToString();
-                   this.nbBilles.Text = nombreDeBillesGagnes.ToString();
+                   this.nbBilles.Text = (nombreDeBillesGagnes - nombreDeBillesUtilise).ToString();
                     
                     if (pointsPartie >= pointsGagnerPartie && boolTemp)
                     {
@@ -224,6 +235,19 @@ namespace InterfaceGraphique
             }
         }
 
+        public void RecommencerPartie()
+        {
+            resetConfig();
+
+            FonctionsNatives.ouvrirXML(map, map.Capacity);
+
+            FonctionsNatives.construireListesPalettes();
+            FonctionsNatives.mettreAJourListeBillesEtNoeuds();
+
+
+            timer.Start();
+        }
+
         private void ProchainePartie()
         {
             boolTemp = false;
@@ -231,7 +255,7 @@ namespace InterfaceGraphique
             map = new StringBuilder(myMaps[currentZone]);
             nextMap = new StringBuilder(map.ToString());
             nextMap.Remove(nextMap.Length - 4, 4);
-            Console.WriteLine(Path.GetFileName(nextMap.ToString()));
+            //Console.WriteLine(Path.GetFileName(nextMap.ToString()));
 
             System.Threading.Thread.Sleep(500);
             zInfo = new ZoneInfo(Path.GetFileName(nextMap.ToString()), FonctionsNatives.obtenirDifficulte(map, map.Capacity).ToString(), true);
@@ -349,7 +373,7 @@ namespace InterfaceGraphique
             map = new StringBuilder(myMaps[0]);
             nextMap = new StringBuilder(map.ToString());
             nextMap.Remove(nextMap.Length - 4, 4);
-            Console.WriteLine(map);
+            //Console.WriteLine(map);
             this.Hide();
             zInfo = new ZoneInfo(Path.GetFileName(nextMap.ToString()), FonctionsNatives.obtenirDifficulte(map, map.Capacity).ToString(),false);
             zInfo.ShowDialog();

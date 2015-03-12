@@ -134,12 +134,7 @@ void NoeudBille::afficherConcret() const
 ////////////////////////////////////////////////////////////////////////
 void NoeudBille::animer(float temps) // rajouter des parametres ou une fonction animerCollision(float temps, detailCollision detail)
 {
-	static int counter = 0;
-	counter++;
-
-
 	NoeudComposite::animer(temps);
-	// A METTRE DANS LA FACADEMODELE
 	// Somme des forces agissant sur les particules.
 	// =============================================
 	glm::dvec3 attractionsPortails{ 0, 0, 0 };
@@ -147,82 +142,14 @@ void NoeudBille::animer(float temps) // rajouter des parametres ou une fonction 
 	glm::dvec3 forceFrottement{ 0, 0, 0 };
 	if (glm::length(vitesse_) > 0.001)
 		forceFrottement = -constanteDeFrottement_ * glm::normalize(vitesse_);
-	glm::dvec3 forceTotale = forceFrottement + gravite + 10000.0*forcesExternes_;
-
-
-
+	glm::dvec3 forceTotale = 100.0*forceFrottement + 10.0*gravite + 10000.0*forcesExternes_;
+	forceTotale.z = 0;
 	// Calcul de la nouvelle vitesse. 
 	// =============================
-
 	glm::dvec3 vitesseApresCollision = vitesse_;
 
-	/*
-	// Obtenir une liste de noeuds a checker pour une collision
-	std::vector<NoeudAbstrait*> noeudsAChecker;
-	std::list<NoeudAbstrait*> listeNoeudsAChecker;
-	bool useQuadTree = false;
-
-	
-	if (1)
-	{
-		// Travail a faire par le quad tree
-		ArbreRenduINF2990* arbre = FacadeModele::obtenirInstance()->obtenirArbreRenduINF2990();
-		NoeudComposite* table = (NoeudComposite*)arbre->getEnfant(0);
-		for (unsigned int i = 0; i < table->obtenirNombreEnfants(); i++)
-		{
-			NoeudAbstrait* noeud = table->getEnfant(i);
-			// conditions a verifier?
-			if (noeud != this && noeud->getType() != "generateurbille")
-				noeudsAChecker.push_back(noeud);
-		}
-	}
-
-	bool enCollision = false;
-
-	if (1)
-	{
-		for (NoeudAbstrait* noeud : noeudsAChecker)
-		{
-			std::vector<glm::dvec3> boite = noeud->obtenirVecteursEnglobants();
-			if (boite.size() > 1)
-			{
-				for (unsigned int i = 0; i < boite.size(); i++) boite[i] += noeud->obtenirPositionRelative();
-				// Considerer tous les segments boite[i] --- boite[i+1 % size] 
-				for (unsigned int i = 0; i < boite.size(); i++)
-				{
-					// On veut calculer la collision en 2D et caster les paramêtres en glm::dvec2 "oublie" leur composante en Z et choisi la bonne surcharge de calculerCollisionSegment.
-					aidecollision::DetailsCollision details = aidecollision::calculerCollisionSegment((glm::dvec2)boite[i], (glm::dvec2)boite[(i + 1) % boite.size()], (glm::dvec2)positionRelative_, 7, true);
-					if (details.type != aidecollision::COLLISION_AUCUNE)
-					{
-						enCollision = true;
-						mettreAJourCollision(noeud);
-						glm::dvec3 vitesseNormaleInitiale = glm::proj(vitesse_, details.direction);
-						glm::dvec3 vitesseTangentielleInitiale = vitesse_ - vitesseNormaleInitiale;
-						glm::dvec2 vitesseNormale2D = aidecollision::calculerForceAmortissement2D(details, (glm::dvec2)vitesse_, 1.0);
-						vitesseApresCollision = vitesseTangentielleInitiale + glm::dvec3{ vitesseNormale2D.x, vitesseNormale2D.y, 0 };
-					}
-				}
-			}
-			else if (boite.size() == 1)
-			{
-				double rayon = boite[0].x;
-				aidecollision::DetailsCollision details = aidecollision::calculerCollisionCercle((glm::dvec2)noeud->obtenirPositionRelative(), rayon, (glm::dvec2)positionRelative_, 7);
-				if (details.type != aidecollision::COLLISION_AUCUNE)
-				{
-					enCollision = true;
-					mettreAJourCollision(noeud);
-					glm::dvec3 vitesseNormaleInitiale = glm::proj(vitesse_, details.direction);
-					glm::dvec3 vitesseTangentielleInitiale = vitesse_ - vitesseNormaleInitiale;
-					glm::dvec2 vitesseNormale2D = aidecollision::calculerForceAmortissement2D(details, (glm::dvec2)vitesse_, 1.0);
-					vitesseApresCollision = vitesseTangentielleInitiale + glm::dvec3{ vitesseNormale2D.x, vitesseNormale2D.y, 0 };
-				}
-
-			}
-		}
-	}
-	*/	
 	// Considerer les limites de la table.
-	// A migrer
+	{	// A migrer 
 		std::vector<glm::dvec3> boite;
 		boite.push_back({ 108, -190, 0 });
 		boite.push_back({ 272, -190, 0 });
@@ -247,15 +174,10 @@ void NoeudBille::animer(float temps) // rajouter des parametres ou une fonction 
 				}
 			}
 		}
-	
-	
+	}// Fin A migrer
 	
 	glm::dvec3 nouvellePosition = positionRelative_ + (double)temps*vitesseApresCollision;
-
 	glm::dvec3 nouvelleVitesse = vitesseApresCollision + (double)temps * forceTotale / masse_;
-
-
-	
 
 	// Calcul de la rotation
 	// =====================
@@ -339,14 +261,17 @@ void NoeudBille::setSpotLight(bool debug)
 ////////////////////////////////////////////////////////////////////////
 void NoeudBille::afficherVitesse(glm::dvec3 nouvelleVitesse)
 {
-	SYSTEMTIME time;
-	GetLocalTime(&time);
-	std::cout << std::fixed << std::setw(2) << std::setprecision(2) << time.wHour << ":"
-		<< std::fixed << std::setfill('0') << std::setw(2) << std::setprecision(2) << time.wMinute << ":"
-		<< std::fixed << std::setfill('0') << std::setw(2) << std::setprecision(2) << time.wSecond << ":"
-		<< std::fixed << std::setfill('0') << std::setw(3) << std::setprecision(3) << time.wMilliseconds;
+	if (debug_)
+	{
+		SYSTEMTIME time;
+		GetLocalTime(&time);
+		std::cout << std::fixed << std::setw(2) << std::setprecision(2) << time.wHour << ":"
+			<< std::fixed << std::setfill('0') << std::setw(2) << std::setprecision(2) << time.wMinute << ":"
+			<< std::fixed << std::setfill('0') << std::setw(2) << std::setprecision(2) << time.wSecond << ":"
+			<< std::fixed << std::setfill('0') << std::setw(3) << std::setprecision(3) << time.wMilliseconds;
 
-	std::cout << std::fixed << std::setfill('0') << std::setw(2) << " - Vitesse " << glm::length(nouvelleVitesse) << std::endl;
+		std::cout << std::fixed << std::setfill('0') << std::setw(2) << " - Vitesse " << glm::length(nouvelleVitesse) << std::endl;
+	}
 }
 
 ////////////////////////////////////////////////////////////////////////
@@ -357,8 +282,9 @@ void NoeudBille::afficherVitesse(glm::dvec3 nouvelleVitesse)
 ///
 /// @param[in] noeud : Le noeud a analyser
 ///
-/// @return Aucun.
-///
+/// @remark DEPRECATED: Les appels pour rajouter des points sont
+/// maintenant dans le traiterCollision des noeud de chaque type.
+/// 
 ////////////////////////////////////////////////////////////////////////
 void NoeudBille::mettreAJourCollision(NoeudAbstrait* noeud)
 {

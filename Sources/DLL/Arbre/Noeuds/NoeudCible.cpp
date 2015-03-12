@@ -14,6 +14,7 @@
 #include <windows.h>
 #include <GL/gl.h>
 #include <cmath>
+#include <iostream>
 
 #include "Modele3D.h"
 #include "OpenGL_Storage/ModeleStorage_Liste.h"
@@ -113,9 +114,11 @@ void NoeudCible::animer(float temps)
 {
 	NoeudComposite::animer(temps);
 	//positionRelative_.z = (boite_.coinMax.y - boite_.coinMin.y) / 2.0;
-	rotation_.x = rotation_.x + 1;
+	NoeudComposite::animer(temps);
+	rotation_.x = rotation_.x + temps * 90;
+	// Pour ne pas overflow le double un jour
 	if (rotation_.x > 360)
-		rotation_.x -= 360;
+		rotation_.x = rotation_.x - 360;
 }
 
 ////////////////////////////////////////////////////////////////////////
@@ -145,11 +148,34 @@ bool NoeudCible::accepterVisiteur(VisiteurAbstrait* vis)
 /// l'objet courant. Cette fonction est a reimplementer si on veut autre 
 /// chose qu'un rebondissement ordinaire.
 ///
-/// @return details contient l'information sur la collision de la bille avec *this.
+/// @return aucun.
 ///
 ////////////////////////////////////////////////////////////////////////
 void NoeudCible::traiterCollisions(aidecollision::DetailsCollision details, NoeudAbstrait* bille)
 {
-	NoeudAbstrait::traiterCollisions(details, bille);
+	// NoeudAbstrait::traiterCollisions(details, bille);
+	this->assignerAffiche(false);
 	SingletonGlobal::obtenirInstance()->collisionButoirCible();
+}
+
+////////////////////////////////////////////////////////////////////////
+///
+/// @fn void NoeudAbstrait::traiterCollisions(aidecollision::DetailsCollision details, NoeudAbstrait* bille)
+///
+/// Reimplementation de detecterCollisions pour la cible.  Si la cible 
+/// a etee frappee elle disparait (affiche_  devient false).  Si la cible
+/// est affichee, on fait le comportement par defaut donne dans NoeudAbstrait,
+/// sinon, or retourne un DetailCollisions avec type COLLISION_AUCUNE.
+/// 
+/// @return details contient l'information sur la collision de la bille avec *this.
+/// 
+////////////////////////////////////////////////////////////////////////
+aidecollision::DetailsCollision NoeudCible::detecterCollisions(NoeudAbstrait* noeud)
+{
+	aidecollision::DetailsCollision detailsAucune;
+	detailsAucune.type = aidecollision::COLLISION_AUCUNE;
+	if (affiche_)
+		return NoeudAbstrait::detecterCollisions(noeud);
+	else
+		return detailsAucune;
 }

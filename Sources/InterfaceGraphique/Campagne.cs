@@ -173,8 +173,8 @@ namespace InterfaceGraphique
              }
              mapList.Length--;
              FonctionsNatives.creerFichierCampagne(mapList, mapList.Capacity);
-             Console.WriteLine("LANCEMENT DE CAMPAGNE");
-             Console.WriteLine(typeJoueur);
+             //Console.WriteLine("LANCEMENT DE CAMPAGNE");
+             //Console.WriteLine(typeJoueur);
 
              ZoneInfo zi = new ZoneInfo(ZonesChoisis.Items[0].Text, ZonesChoisis.Items[0].SubItems[1].Text,false);
              this.Hide();
