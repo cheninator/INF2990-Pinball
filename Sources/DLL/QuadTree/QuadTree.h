@@ -9,7 +9,6 @@
 #ifndef __QUADTREE_H__
 #define __QUADTREE_H__
 
-#include <vector>
 #include <list>
 #include "../Arbre/Noeuds/NoeudAbstrait.h"
 #include "glm\glm.hpp"
@@ -62,7 +61,7 @@ private:
 	QuadTree* obtenirQuadrant(NoeudAbstrait* noeud);
 
 	// Propriétés du QuadTree
-	const int MAX_CAPACITY = 5;
+	const int MAX_CAPACITY = 10;
 	const int MAX_LEVEL = 3;
 	int niveauCourant_;
 

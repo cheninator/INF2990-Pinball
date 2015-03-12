@@ -293,24 +293,6 @@ void NoeudAbstrait::inverserSelection()
 
 ////////////////////////////////////////////////////////////////////////
 ///
-/// @fn void NoeudAbstrait::effacerSelection()
-///
-/// Cette fonction efface les noeuds qui sont selectionnes parmi les
-/// enfants de ce noeud.
-///
-/// Elle ne fait rien, car ce type de noeud abstrait ne peut pas avoir
-/// d'enfant.
-///
-/// @return Aucune.
-///
-////////////////////////////////////////////////////////////////////////
-void NoeudAbstrait::effacerSelection()
-{
-}
-
-
-////////////////////////////////////////////////////////////////////////
-///
 /// @fn void NoeudAbstrait::selectionnerTout()
 ///
 /// Cette fonction selectionne le noeud et ses enfants.
@@ -860,7 +842,7 @@ aidecollision::DetailsCollision NoeudAbstrait::detecterCollisions(NoeudAbstrait*
 void NoeudAbstrait::traiterCollisions(aidecollision::DetailsCollision details, NoeudAbstrait* bille)
 {
 
-	assert(bille->getType() == "bille");
+	assert(bille->obtenirType() == "bille");
 
 	if (details.type == aidecollision::COLLISION_AUCUNE)
 		return;
@@ -880,4 +862,17 @@ void NoeudAbstrait::traiterCollisions(aidecollision::DetailsCollision details, N
 
 	bille->assignerVitesse(vitesseFinale);
 	bille->assignerImpossible(true);
+}
+
+
+
+
+void NoeudAbstrait::assignerPortailDOrigine(NoeudAbstrait* portail)
+{
+	portailDOrigine_ = portail;
+}
+
+NoeudAbstrait* NoeudAbstrait::obtenirPortailDOrigine()
+{
+	return portailDOrigine_;
 }

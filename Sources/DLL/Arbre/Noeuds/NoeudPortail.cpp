@@ -174,3 +174,26 @@ std::vector<glm::dvec3> NoeudPortail::obtenirVecteursEnglobants()
 	double rayonModele = (boite_.coinMax.x - boite_.coinMin.x) / 2.0;
 	return{ glm::dvec3{ rayonModele * scale_.x, 0, 0 } };
 }
+
+
+////////////////////////////////////////////////////////////////////////
+///
+/// @fn void NoeudTrou::traiterCollisions(aidecollision::DetailsCollision details, NoeudAbstrait* bille)
+///
+/// Cette fonction effectue la reaction a la collision de la bille sur 
+/// l'objet courant. Cette fonction est a reimplementer si on veut autre 
+/// chose qu'un rebondissement ordinaire.
+///
+/// @return details contient l'information sur la collision de la bille avec *this.
+///
+////////////////////////////////////////////////////////////////////////
+void NoeudPortail::traiterCollisions(aidecollision::DetailsCollision, NoeudAbstrait* bille)
+{
+	// bille->assignerPositionRelative(position du portail twin)
+	if (bille->obtenirPortailDOrigine() != this)
+	{
+		bille->assignerPositionRelative(this->getTwin()->obtenirPositionRelative());
+		bille->assignerPortailDOrigine(this->getTwin());
+	}
+	// utiliser un booleen pour que la bille ne soit pas attiree par l'autre portail.
+}

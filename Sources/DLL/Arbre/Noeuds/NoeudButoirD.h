@@ -44,6 +44,9 @@ public:
 	//Obtenir les 4 vecteurs de la boite englobante modifie
 	virtual void obtenirVecteursBoite(glm::dvec3 &v1, glm::dvec3 &v2, glm::dvec3 &v3, glm::dvec3 &v4);
 
+	/// Pour le traitement logique des collisions
+	virtual void traiterCollisions(aidecollision::DetailsCollision, NoeudAbstrait* bille);
+
 private:
 
 	/// Angle dans le sinus de l'oscillation

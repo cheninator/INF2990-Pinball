@@ -45,6 +45,9 @@ public:
 	/// Redefinition de boite englobante pour objet circulaire
 	virtual std::vector<glm::dvec3> obtenirVecteursEnglobants();
 
+	/// Pour le traitement logique des collisions
+	virtual void traiterCollisions(aidecollision::DetailsCollision, NoeudAbstrait* bille);
+
 private:
 	
 	/// Angle selon l'axe des X.

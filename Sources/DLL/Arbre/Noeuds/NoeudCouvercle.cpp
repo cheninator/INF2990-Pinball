@@ -92,7 +92,9 @@ void NoeudCouvercle::afficherConcret() const
 void NoeudCouvercle::animer(float temps)
 {
 	// Appel a la version de la classe de base pour l'animation des enfants.
+	glm::dvec3 scaleTemp = scale_;
 	NoeudComposite::animer(temps);
+	scale_ = scaleTemp;
 	if (positionRelative_.x > -130.0) {
 		positionRelative_.x -= 1;
 		rotation_.y -= 22.5 / (130.0);

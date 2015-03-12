@@ -334,8 +334,9 @@ void FacadeModele::animer(float temps)
 	// Changer la vitesse des billes en fonction des collisions:
 	// Si je commente la ligne suivante, rentrer et sortir du mode test fait crasher, 
 	// il manque un appel pour quand on sort du mode test.
-	//mettreAJourListeBillesEtNoeuds();
+	mettreAJourListeBillesEtNoeuds();
 	traiterCollisions();
+	updateForcesExternes();
 
 	// Mise a jour des objets.
 	arbre_->animer(temps);
@@ -913,12 +914,14 @@ void FacadeModele::positionnerMur(int originX, int originY,int x1, int y1, int x
 	// else
 		// position = positionOriginale + glm::dvec3{ 0, 8, 0 };
 
-	
+	glm::dvec3 boite[4];
+	noeud->obtenirBoiteModele(boite[0], boite[1], boite[2], boite[3]);
+	double longueurMur = boite[2].x - boite[0].x;
 	if (glm::length(vecteur) > 0.1)
 	{
 		// Calcul du scale
 		// ===============
-		double scale = glm::length(vecteur) / 16; //  16.0 est la longueur originale du mur. 
+		double scale = glm::length(vecteur) / longueurMur; //  16.0 est la longueur originale du mur. 
 		scaleFinal = glm::dvec3{ 1, scale, 1 };
 	}
 	else
@@ -927,8 +930,7 @@ void FacadeModele::positionnerMur(int originX, int originY,int x1, int y1, int x
 
 	// Tester la transformation
 	// ========================
-	glm::dvec3 boite[4];
-	noeud->obtenirBoiteModele(boite[0], boite[1], boite[2], boite[3]);
+
 	glm::dmat3 echelle = glm::dmat3{	glm::dvec3{ 1,				0,				0.0 },
 										glm::dvec3{ 0,			scaleFinal.y,		0.0f },
 										glm::dvec3{ 0.0,			0.0,			1 } };
@@ -1266,15 +1268,49 @@ void FacadeModele::traiterCollisions()
 			aidecollision::DetailsCollision detail = noeudAVerifier->detecterCollisions(bille);
 
 			if (detail.type != aidecollision::COLLISION_AUCUNE)
+			{
 				noeudAVerifier->traiterCollisions(detail, bille);
+				if (noeudAVerifier->obtenirType() == "trou") // MODIF
+					break;                                   // MODIF
+			}
 		}
+		mettreAJourListeNoeuds();          // MODIF (Juste updater listeNoeuds_ pour pas avoir le assert de vector.
+	}
+}
 
+
+
+void FacadeModele::updateForcesExternes()
+{
+	for (NoeudAbstrait* bille : listeBilles_)
+	{
+		glm::dvec2 sommeDesForces{ 0, 0 };
+		glm::dvec2 positionBille = glm::dvec2{ bille->obtenirPositionRelative() };
+		for (NoeudAbstrait* noeud : listeNoeuds_)
+		{
+			if (noeud->obtenirType() == "portail")
+			{
+				glm::dvec2 positionPortail = glm::dvec2{ noeud->obtenirPositionRelative() };
+				double distance = glm::length(positionPortail - positionBille);
+				if (distance < 100) // Constante a determiner en fonction du scale du portail
+				{
+					if (bille->obtenirPortailDOrigine() != noeud)
+					{
+						glm::dvec2 force = (1 / (distance*distance)) * glm::normalize(positionPortail - positionBille);
+						sommeDesForces += force;
+					}
+				}
+				if (distance > 100 && noeud == bille->obtenirPortailDOrigine())
+					bille->assignerPortailDOrigine(nullptr);
+			}
+		}
+		bille->assignerForcesExternes(glm::dvec3{ sommeDesForces.x, sommeDesForces.y  , 0});
 	}
 }
 
 ///////////////////////////////////////////////////////////////////////////////
 ///
-/// @fn void FacadeModele::mettreAJourListeBilles()
+/// @fn void FacadeModele::mettreAJourListeBillesEtNoeuds()
 /// 
 /// Met a jour la liste des billes
 /// 
@@ -1287,9 +1323,20 @@ void FacadeModele::mettreAJourListeBillesEtNoeuds()
 	for (unsigned int i = 0; i < arbre_->getEnfant(0)->obtenirNombreEnfants(); i++)
 	{
 		NoeudAbstrait* noeud = arbre_->getEnfant(0)->getEnfant(i);
-		if (noeud->getType() != "generateurbille")
+		if (noeud->obtenirType() != "generateurbille")
 			listeNoeuds_.push_back(noeud);
-		if (noeud->getType() == "bille")
+		if (noeud->obtenirType() == "bille")
 			listeBilles_.push_back(noeud);
+	}
+}
+
+void FacadeModele::mettreAJourListeNoeuds()
+{
+	listeNoeuds_.clear();
+	for (unsigned int i = 0; i < arbre_->getEnfant(0)->obtenirNombreEnfants(); i++)
+	{
+		NoeudAbstrait* noeud = arbre_->getEnfant(0)->getEnfant(i);
+		if (noeud->obtenirType() != "generateurbille")
+			listeNoeuds_.push_back(noeud);
 	}
 }

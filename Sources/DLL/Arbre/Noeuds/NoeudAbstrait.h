@@ -182,9 +182,6 @@ public:
 	/// Changer la selection du noeud.
 	virtual void inverserSelection();
 
-	/// Efface les enfants selectionnes.
-	virtual void effacerSelection();
-
 	/// Selectionne tous les enfants de meme que le noeud.
 	virtual void selectionnerTout();
 
@@ -261,9 +258,6 @@ public:
 	/// Obtenir rotation
 	inline const glm::dvec3& NoeudAbstrait::obtenirRotation() const;
 
-	/// Obtenir le type
-	std::string getType(){ return type_; }
-
 	/// Mettre le mode pause on ou off
 	void assignerPause(bool pause);
 
@@ -273,6 +267,10 @@ public:
 	/// Activer ou desactiver le mode spotLight.
 	virtual void setSpotLight(bool debug);
 
+	/// Assigner Forces Externes
+	inline void assignerForcesExternes(glm::dvec3 forcesExternes);
+	void assignerPortailDOrigine(NoeudAbstrait* portail);
+	NoeudAbstrait* obtenirPortailDOrigine();
 protected:
 
 	/// Si jumeau, autrement nullptr
@@ -346,11 +344,14 @@ protected:
 	/// Mode SpotLight de la bille
 	bool spotLight_{ false };
 
-	glm::dvec3 vitesse_{0.0,0.0, 0.0 };
+	glm::dvec3 vitesse_{ 0.0, 0.0, 0.0 };
+	glm::dvec3 forcesExternes_{ 0, 0, 0 };
 
 	double masse_{ 1 };
 
 	double constanteDeFrottement_{ 1 };
+
+	NoeudAbstrait* portailDOrigine_{ nullptr };
 };
 
 
@@ -747,6 +748,21 @@ inline const glm::dvec3& NoeudAbstrait::obtenirAgrandissement() const
 inline const glm::dvec3& NoeudAbstrait::obtenirRotation() const
 {
 	return rotation_;
+}
+
+
+////////////////////////////////////////////////////////////////////////
+///
+/// @fn inline void NoeudAbstrait::assignerForcesExternes(glm::dvec3 forcesExternes)
+///
+/// Assigne la resultante des forces externes agissant sur l'objet.
+///
+/// @return aucun.
+///
+////////////////////////////////////////////////////////////////////////
+inline void NoeudAbstrait::assignerForcesExternes(glm::dvec3 forcesExternes)
+{
+	forcesExternes_ = forcesExternes;
 }
 
 #endif // __ARBRE_NOEUDS_NOEUDABSTRAIT_H__

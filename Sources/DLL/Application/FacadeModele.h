@@ -183,9 +183,10 @@ public:
 
    // Traiter l'ensemble des collisions
    void traiterCollisions();
+   void updateForcesExternes();
    
    void mettreAJourListeBillesEtNoeuds();
-
+   void mettreAJourListeNoeuds();
 private:
 
    /// Constructeur par defaut.

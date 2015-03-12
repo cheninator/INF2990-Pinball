@@ -25,6 +25,7 @@
 #include "OpenGL_Storage/ModeleStorage_Liste.h"
 #include "glm\gtx\norm.hpp"
 #include "../../Commun/Externe/glm/include/glm/gtx/Projection.hpp"
+#include "../../Global/SingletonGlobal.h"
 
 
 ////////////////////////////////////////////////////////////////////////
@@ -42,8 +43,9 @@
 NoeudBille::NoeudBille(const std::string& typeNoeud)
 	: NoeudComposite{ typeNoeud }
 {
-	vitesse_ = glm::dvec3{ 10 ,100, 0 };
+	vitesse_ = glm::dvec3{ 0 ,0, 0 };
 	constanteDeFrottement_ = 1.0;
+	SingletonGlobal::obtenirInstance()->ajouterBille();
 }
 
 ////////////////////////////////////////////////////////////////////////
@@ -145,7 +147,7 @@ void NoeudBille::animer(float temps) // rajouter des parametres ou une fonction 
 	glm::dvec3 forceFrottement{ 0, 0, 0 };
 	if (glm::length(vitesse_) > 0.001)
 		forceFrottement = -constanteDeFrottement_ * glm::normalize(vitesse_);
-	glm::dvec3 forceTotale = forceFrottement + gravite + attractionsPortails;
+	glm::dvec3 forceTotale = forceFrottement + gravite + 10000.0*forcesExternes_;
 
 
 

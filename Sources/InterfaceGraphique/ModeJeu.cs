@@ -10,6 +10,7 @@ namespace InterfaceGraphique
     {
         public PartieTerminee gameOver;
         private Timer timer;
+        private Timer timerBille2;
         private double currentZoom = -1; ///< Zoom courant
         private Touches touches; ///< Les touches pour le jeu
         private ZoneInfo zInfo;
@@ -20,33 +21,10 @@ namespace InterfaceGraphique
         StringBuilder nextMap;
         bool peutAnimer;
         bool boolTemp = true;
-        private bool activateAmbianteLight = false; ///< Etat de la lumiere ambiante
+        private bool activateAmbiantLight = false; ///< Etat de la lumiere ambiante
         private bool activateDirectLight = false; ///< Etat de la lumiere directe
         private bool activateSpotLight = false; ///< Etat de la lumiere spot
         private EtatJeuAbstrait etat; ///< Machine à états
-                                      
-        public double getCurrentZoom() { return currentZoom; }
-        public void setCurrentZoom(double val) { currentZoom = val; }
-        public Touches getTouches() { return touches; }
-        public void pauseGame() { etat = new EtatJeuPause(this);}
-        public void resumeGame() { etat = new EtatJeuJouer(this); }
-        public void setPeutAnimer(bool activation) { peutAnimer = activation; }
-        public void setVisibilityMenuStrip(bool vis) { menuStrip.Visible = vis; }
-
-
-        public partial class EtatJeuAbstrait
-        {
-            
-            public EtatJeuAbstrait()
-            {
-
-            }
-            public EtatJeuAbstrait(ModeJeu parent)
-            {
-                Console.WriteLine("Etat :" + '\t' + "Abstrait");
-                this.parent_ = parent;
-            }
-        };
 
         public int pointsPartie = 0;
         public int pointsTotale = 0;
@@ -56,6 +34,37 @@ namespace InterfaceGraphique
         private int pointsGagnerPartie = 0;
         private int billesDisponibles = 0;
         
+        // Modificateurs
+        public void setVisibilityMenuStrip(bool vis) { menuStrip.Visible = vis; }
+        public void setCurrentZoom(double val)       { currentZoom = val; }
+        public void setPeutAnimer(bool activation)   { peutAnimer = activation; }
+        
+        // Accesseurs
+        public double getCurrentZoom()    { return currentZoom; }
+        public Touches getTouches()       { return touches; }
+        public bool getAmbiantLight()     { return activateAmbiantLight;}
+        public bool getDirectLight()      { return activateDirectLight; }
+        public bool getSpotLight()        { return activateSpotLight; }
+        
+        // Toggle des lumières
+        public void toggleAmbiantLight() { activateAmbiantLight = !activateAmbiantLight; }
+        public void toggleDirectLight()  { activateDirectLight  = !activateDirectLight; }
+        public void toggleSpotLight()    { activateSpotLight    = !activateSpotLight; }
+
+        // Méthodes de changement d'état
+        public void pauseGame() { etat = new EtatJeuPause(this); }
+        public void resumeGame() { etat = new EtatJeuJouer(this); }
+        
+        public partial class EtatJeuAbstrait
+        {
+            public EtatJeuAbstrait() {}
+            public EtatJeuAbstrait(ModeJeu parent)
+            {
+                Console.WriteLine("Etat :" + '\t' + "Abstrait");
+                this.parent_ = parent;
+            }
+        };
+
         public ModeJeu(List<string> maps, int playerType)
         {
             {/*
@@ -64,6 +73,9 @@ namespace InterfaceGraphique
                 this.WindowState = FormWindowState.Maximized;*/
             }
             timer = new Timer();
+           // timerBille2 = new Timer();
+           // timerBille2.Interval = 1000;
+           // timerBille2.Tick += new System.EventHandler(this.timerBille2_Tick);
             timer.Enabled = true;
 
             timer.Interval = 3000;
@@ -88,6 +100,8 @@ namespace InterfaceGraphique
             FonctionsNatives.ouvrirXML(map, map.Capacity);
             //Console.WriteLine(pointsGagnerPartie);
             //Console.WriteLine(pointsPartie);
+            resetConfig();
+            
             FonctionsNatives.construireListesPalettes();
             currentZone++;
             Program.tempBool = true;
@@ -135,7 +149,16 @@ namespace InterfaceGraphique
         {
           StringBuilder bille = new StringBuilder("bille");
           FonctionsNatives.creerObjet(bille, bille.Capacity);
-          timer.Enabled = false;
+          Console.WriteLine("timer");
+         // timerBille2.Start();
+          timer.Stop();
+        }
+        private void timerBille2_Tick(object sender, EventArgs e)
+        {
+            StringBuilder bille = new StringBuilder("bille");
+            FonctionsNatives.creerObjet(bille, bille.Capacity);
+            Console.WriteLine("BILLE 2");
+            timerBille2.Stop();
         }
 
         public void MettreAJour(double tempsInterAffichage)
@@ -169,6 +192,7 @@ namespace InterfaceGraphique
                         if (currentZone >= nbZones)
                         {
                             FinCampagne();
+                        
                         }
                         else
                         {
@@ -224,6 +248,9 @@ namespace InterfaceGraphique
             etat = new EtatJeuDebutDePartie(this);
             // Il faut changer le mode car le traitement de début est fini
             etat = new EtatJeuJouer(this);
+            timer.Enabled = true;
+            timer.Interval = 3000;
+            timer.Stop();
             timer.Start();
 
         }
@@ -233,6 +260,7 @@ namespace InterfaceGraphique
              peutAnimer = false;
                             boolTemp = false;
                             gameOver = new PartieTerminee(true);
+            
                             gameOver.ShowDialog(this);
         }
         private void PartieRapide_Load(object sender, EventArgs e)
@@ -274,17 +302,13 @@ namespace InterfaceGraphique
 
         private void PartieRapide_KeyDown(object sender, KeyEventArgs e)
         {
-            Console.WriteLine("KeyDown");
             etat.traiterKeyDown(sender, e);
         }
 
 
         private void PartieRapide_KeyUp(object sender, KeyEventArgs e)
         {
-            Console.WriteLine("KeyUp");
             etat.traiterKeyUp(sender, e);
-            Console.WriteLine("-----------------------------------------");
-            Console.WriteLine("-----------------------------------------");
         }
 
         
@@ -296,7 +320,6 @@ namespace InterfaceGraphique
 
         private void PartieRapide_KeyPress(object sender, KeyPressEventArgs e)
         {
-            Console.WriteLine("KeyPress");
             etat.traiterKeyPress(sender, e);
         }
 
@@ -343,8 +366,12 @@ namespace InterfaceGraphique
             // Il faut changer le mode car le traitement de début est fini
             etat = new EtatJeuJouer(this);
             timer.Start();
-            gameOver.Close();
+           
+           // gameOver.Close();
             gameOver.Dispose();
+            timer.Stop();
+            timer.Start();
+
            
         }
 
@@ -358,7 +385,7 @@ namespace InterfaceGraphique
         ////////////////////////////////////////////////////////////////////////
         public void Quitter()
         {
-            timer.Enabled = false;
+            timer.Stop();
             this.Close();
         }
         

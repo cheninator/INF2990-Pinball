@@ -66,8 +66,6 @@ public:
    /// Obtenir l'enfant
    virtual NoeudAbstrait* getEnfant(int i);
 
-   /// Efface les enfants selectionnes.
-   virtual void effacerSelection();
    /// Selectionne tous les enfants de meme que le noeud.
    virtual void selectionnerTout();
    /// Deselectionne tous les enfants de meme que le noeud.
