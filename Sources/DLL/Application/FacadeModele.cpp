@@ -1444,7 +1444,8 @@ void FacadeModele::aiPalettes()
 		{
 			if (palette->estActiveeParBille(bille))
 			{
-				palette->activerAI();
+				activerPalettesAIGauches();
+				return;
 			}
 		}
 	/*
