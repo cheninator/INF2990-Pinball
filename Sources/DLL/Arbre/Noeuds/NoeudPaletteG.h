@@ -50,7 +50,8 @@ public:
 	/// Pour le traitement logique des collisions
 	virtual void traiterCollisions(aidecollision::DetailsCollision, NoeudAbstrait* bille);
 
-	double fonctionDroitePalette(NoeudAbstrait* bille);
+	double fonctionDroitePaletteOriginale(NoeudAbstrait* bille);
+	double fonctionDroitePaletteEnMouvement(NoeudAbstrait* bille);
 private:
 	/// Enumeration pour contenir l'etat de la palette
 	enum Etat { ACTIVE, RETOUR, INACTIVE, ACTIVE_AI, RETOUR_AI };
