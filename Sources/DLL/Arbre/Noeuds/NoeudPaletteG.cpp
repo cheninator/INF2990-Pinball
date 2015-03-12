@@ -228,14 +228,14 @@ void NoeudPaletteG::desactiver()
 ////////////////////////////////////////////////////////////////////////
 void NoeudPaletteG::traiterCollisions(aidecollision::DetailsCollision details, NoeudAbstrait* bille)
 {
-	if (0 && (etatPalette_ == ACTIVE || etatPalette_ == ACTIVE_AI) && fonctionDroitePalette(bille) > 0)
+	if (1 && (etatPalette_ == ACTIVE || etatPalette_ == ACTIVE_AI) && fonctionDroitePalette(bille) > 0)
 	{
 		glm::dvec3 positionPalette = obtenirPositionRelative();
 		glm::dvec3 positionBille = bille->obtenirPositionRelative();
 		glm::dvec3 vecteur = positionBille - positionPalette;
 		double distance = glm::length(vecteur);
 
-		double angleEnRadian = angleZOriginal_ * 2 * 3.1415926535897932384626433832795 / 360;
+		double angleEnRadian = rotation_[2] * 2 * 3.1415926535897932384626433832795 / 360;
 		glm::dvec3 directionPalette = { -cos(angleEnRadian), -sin(angleEnRadian), 0 }; // Une palette pas tournee a un axe { - 1, 0, 0}
 		glm::dvec3 vecteurProjete = glm::proj(vecteur, directionPalette);
 		glm::dvec3 vecteurNormal = vecteur - vecteurProjete;
@@ -249,7 +249,7 @@ void NoeudPaletteG::traiterCollisions(aidecollision::DetailsCollision details, N
 		glm::dvec3 vitesseNormaleInitiale = glm::proj(vitesseInitiale, details.direction); // Necessaire pour connaitre la vitesse tangentielle.
 		glm::dvec3 vitesseTangentielle = vitesseInitiale - vitesseNormaleInitiale;
 		glm::dvec2 vitesseNormaleFinale2D = aidecollision::calculerForceAmortissement2D(details, (glm::dvec2)vitesseInitiale, 1.0);
-
+		
 		glm::dvec3 vitesseFinale = vitesseTangentielle + glm::dvec3{ vitesseNormaleFinale2D.x, vitesseNormaleFinale2D.y, 0.0 }
 														+vitesseAngulaire * distanceProjetee * glm::normalize(vecteurNormal);
 														// Ajouter a la vitesse de la bille selon ou elle frappe la palette en mouvement
@@ -268,21 +268,6 @@ void NoeudPaletteG::traiterCollisions(aidecollision::DetailsCollision details, N
 	{
 		NoeudAbstrait::traiterCollisions(details, bille);
 	}
-	// Ce que la palette fait a la bille quand il y a une collision ne depend pas de si la palette est AI ou pas.
-	// FacadeModele s'occuppe d'activer seulement les palettes d'un joueur en utilisant les listes
-	// listePalettesGJ2_ et listePalettesDJ2_ (attributs de FacadeModele).
-	/*
-	if (details.type != aidecollision::COLLISION_AUCUNE && colorShift_ == true && etatPalette_ != ACTIVE_AI)
-	{
-		if (etatPalette_ == INACTIVE && details.direction.y > 0)
-		{
-			// TO DO :
-			// Faire en sorte que la palette s'Active quand la bille est PROCHE
-			angleZOriginal_ = obtenirRotation().z;	
-			etatPalette_ = ACTIVE_AI;
-		}
-	}
-	*/
 }
 
 
