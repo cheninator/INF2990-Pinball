@@ -132,7 +132,10 @@ void NoeudPaletteG::animer(float temps)
 			assignerRotation(glm::dvec3{ 0, 0, -3 });
 		}
 		else
+		{
 			assignerRotationHard(glm::dvec3{ rotation_.x, rotation_.y, angleZOriginal_ });
+			etatPalette_ = INACTIVE;
+		}
 		break;
 	case ACTIVE_AI:
 		if (obtenirRotation().z - angleZOriginal_ < 60)
