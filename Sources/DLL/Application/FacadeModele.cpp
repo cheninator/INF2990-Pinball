@@ -1265,20 +1265,29 @@ void FacadeModele::traiterCollisions()
 {	
 	bool miseAJourListeBillesRequise = false;
 	bool useQuadTree = false;
+
+	// Pour chaque bille, 
 	for (NoeudAbstrait* bille : listeBilles_)
 	{
+		// Obtenir une liste de noeuds a verifier avec la bille courante.
 		std::vector<NoeudAbstrait*> noeudsAVeririer;
 		if (useQuadTree)
 			; // TODO
 		else
 			noeudsAVeririer = listeNoeuds_;
 		bille->assignerImpossible(false);
+		// Et la table :
+		noeudsAVeririer.push_back(arbre_->chercher(0));
+
+		// Faire la detection et reaction pour chaque noeud de noeudsAVrifier
 		for (NoeudAbstrait* noeudAVerifier : noeudsAVeririer)
 		{
+			// Detecter les collisions entre le noeud et la bille
 			aidecollision::DetailsCollision detail = noeudAVerifier->detecterCollisions(bille);
 
 			if (detail.type != aidecollision::COLLISION_AUCUNE)
 			{
+				// Traiter (reagir a) la collision.
 				noeudAVerifier->traiterCollisions(detail, bille);
 				if (noeudAVerifier->obtenirType() == "trou") // MODIF
 				{
@@ -1287,6 +1296,7 @@ void FacadeModele::traiterCollisions()
 				}
 			}
 		}
+
 		if (useQuadTree)
 			; // Enlever la bille du quadTree
 		else

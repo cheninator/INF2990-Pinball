@@ -144,42 +144,15 @@ void NoeudBille::animer(float temps) // rajouter des parametres ou une fonction 
 		forceFrottement = -constanteDeFrottement_ * glm::normalize(vitesse_);
 	glm::dvec3 forceTotale = 100.0*forceFrottement + 10.0*gravite + 10000.0*forcesExternes_;
 	forceTotale.z = 0;
+	glm::dvec3 acceleration = forceTotale / masse_;
+
+	// Calcul de la nouvelle position 
+	// ==============================
+	glm::dvec3 nouvellePosition = positionRelative_ + (double)temps*vitesse_;
+	
 	// Calcul de la nouvelle vitesse. 
 	// =============================
-	glm::dvec3 vitesseApresCollision = vitesse_;
-
-	// Considerer les limites de la table.
-	{	// A migrer 
-		std::vector<glm::dvec3> boite;
-		boite.push_back({ 108, -190, 0 });
-		boite.push_back({ 272, -190, 0 });
-		boite.push_back({ 272, 96, 0 });
-		boite.push_back({ 108, 96, 0 });
-		// Considerer tous les segments boite[i] --- boite[i+1 % size] 
-		for (unsigned int i = 0; i < boite.size(); i++)
-		{
-			// On veut calculer la collision en 2D et caster les paramêtres en glm::dvec2 "oublie" leur composante en Z et choisi la bonne surcharge de calculerCollisionSegment.
-			aidecollision::DetailsCollision details = aidecollision::calculerCollisionSegment((glm::dvec2)boite[i], (glm::dvec2)boite[(i + 1) % boite.size()], (glm::dvec2)positionRelative_, 7, true);
-			if (details.type != aidecollision::COLLISION_AUCUNE)
-			{
-
-				assignerImpossible(true);
-
-				glm::dvec3 vitesseNormaleInitiale = glm::proj(vitesse_, details.direction);
-				glm::dvec3 vitesseTangentielleInitiale = vitesse_ - vitesseNormaleInitiale;
-				glm::dvec2 vitesseNormale2D = aidecollision::calculerForceAmortissement2D(details, (glm::dvec2)vitesse_, 1.0);
-				vitesseApresCollision = vitesseTangentielleInitiale + glm::dvec3{ vitesseNormale2D.x, vitesseNormale2D.y, 0 };
-				glm::dvec3 positionFinale = obtenirPositionRelative()
-					+ details.enfoncement * glm::normalize(details.direction);
-				if (debug_) {
-					afficherVitesse(vitesseApresCollision);
-				}
-			}
-		}
-	}// Fin A migrer
-	
-	glm::dvec3 nouvellePosition = positionRelative_ + (double)temps*vitesseApresCollision;
-	glm::dvec3 nouvelleVitesse = vitesseApresCollision + (double)temps * forceTotale / masse_;
+	glm::dvec3 nouvelleVitesse = vitesse_ + (double)temps * acceleration;
 
 	// Calcul de la rotation
 	// =====================
