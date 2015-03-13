@@ -143,7 +143,7 @@ namespace InterfaceGraphique
             }
             else if (e.KeyValue == parent_.getTouches().PDJ1)
             {
-
+                FonctionsNatives.activerPalettesDJ1();
             }
             else if (e.KeyValue == parent_.getTouches().PDJ2)
             {
@@ -182,7 +182,10 @@ namespace InterfaceGraphique
             if (e.KeyValue == parent_.getTouches().PGJ1)
             {
                 FonctionsNatives.desactiverPalettesGJ1();
-                // Console.WriteLine("Touche R relachée");
+            }
+            else if (e.KeyValue == parent_.getTouches().PDJ1)
+            {
+                FonctionsNatives.desactiverPalettesDJ1();
             }
             return true;
         }
@@ -269,7 +272,7 @@ namespace InterfaceGraphique
     {
         public EtatJeuDebutDePartie(ModeJeu modeJeu) : base(modeJeu)
         {
-            Console.WriteLine("Etat :" + '\t' + "DebutDePartie");
+            //Console.WriteLine("Etat :" + '\t' + "DebutDePartie");
             // Reset des points
             resetConfig();
             // TODO: Complete member initialization
