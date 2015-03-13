@@ -1,4 +1,3 @@
 DEUX
 testCollisions
 VraisMapJouable
-VraisMapJouable

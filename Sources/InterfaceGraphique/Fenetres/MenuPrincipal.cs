@@ -40,8 +40,9 @@ namespace InterfaceGraphique
         private FilterInfoCollection webcam;
         private VideoCaptureDevice cam;
         private bool webCamExiste = false;
-        Bitmap bit;
-        System.Windows.Forms.Timer webcamTimer;
+        private Bitmap bit;
+        private bool isInCapture = true;
+        private System.Windows.Forms.Timer webcamTimer;
 
         ////////////////////////////////////////////////////////////////////////
         ///
@@ -71,14 +72,11 @@ namespace InterfaceGraphique
                 cam.NewFrame += new NewFrameEventHandler(cam_NewFrame);
                 cameraControl(true);
             }
-            // To desactivate webcam:
-            /*
-
-            */
         }
 
         private void webcamTimer_tick(object sender, EventArgs e)
         {
+            //Console.WriteLine("Down");
             if (webCamExiste && bit != null)
                 pictureBox1.Image = bit;
         }
@@ -328,6 +326,7 @@ namespace InterfaceGraphique
 
             if (webCamExiste && bit != null)
             {
+                    isInCapture = true;
                     pictureBox1.Image = bit;
                     pictureBox1.SizeMode = PictureBoxSizeMode.Zoom;
             }
@@ -389,6 +388,7 @@ namespace InterfaceGraphique
         {
             if (webCamExiste && bit != null)
             {
+                isInCapture = false;
                 pictureBox1.Image = bit;
             }
         }
