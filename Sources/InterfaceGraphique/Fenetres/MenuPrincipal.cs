@@ -76,13 +76,16 @@ namespace InterfaceGraphique
 
         void cameraControl(bool control)
          {
-            if (cam.IsRunning && !control) 
+            if (webCamExiste)
             {
-                cam.Stop();
-            }
-            else if (!cam.IsRunning && control)
-            {
-                cam.Start();
+                if (cam.IsRunning && !control) 
+                {
+                    cam.Stop();
+                }
+                else if (!cam.IsRunning && control)
+                {
+                    cam.Start();
+                }
             }
          }
 
