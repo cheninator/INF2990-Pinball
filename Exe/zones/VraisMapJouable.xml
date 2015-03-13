@@ -3,7 +3,7 @@
     <PointsTriangulaire Nombre="20"/>
     <PointsCible Nombre="50"/>
     <PointsVictoire Nombre="1000"/>
-    <PointsBilleGratuite Nombre="100"/>
+    <PointsBilleGratuite Nombre="10000"/>
     <Difficulte Nombre="4"/>
 </Proprietes>
 

@@ -1428,6 +1428,11 @@ extern "C"
 		return FacadeModele::obtenirInstance()->obtenirToucheRessort(); 
 	}
 
+	__declspec(dllexport) int __cdecl obtenirNombreDeBilles()
+	{
+		return FacadeModele::obtenirInstance()->obtenirNombreDeBilles();
+	}
+
 	__declspec(dllexport) int __cdecl obtenirAffichageGlobal()
 	{
 		return FacadeModele::obtenirInstance()->obtenirAffichageGlobal();
@@ -1558,6 +1563,13 @@ extern "C"
 	{
 		return SingletonGlobal::obtenirInstance()->obtenirBille();
 	}
+
+	__declspec(dllexport) void __cdecl resetNombreBillesCourantes()
+	{
+		SingletonGlobal::obtenirInstance()->resetBille();
+	}
+
+
 
 	__declspec(dllexport) void __cdecl compresserRessort()
 	{

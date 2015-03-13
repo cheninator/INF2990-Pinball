@@ -73,6 +73,7 @@ extern "C" {
 	__declspec(dllexport) int obtenirTouchePDJ1();
 	__declspec(dllexport) int obtenirTouchePDJ2();
 	__declspec(dllexport) int obtenirToucheRessort();
+	__declspec(dllexport) int obtenirNombreDeBilles();
 	__declspec(dllexport) int obtenirAffichageGlobal();
 	__declspec(dllexport) void bloquerAffichageGlobal(int active);
 	__declspec(dllexport) void creerFichierConfig(int config[12]);
@@ -90,6 +91,7 @@ extern "C" {
 	__declspec(dllexport) int obtenirNombreDePointsDePartie();
 	__declspec(dllexport) void resetNombreDePointsDePartie();
 	__declspec(dllexport) int  obtenirNombreBillesCourante();
+	__declspec(dllexport) void resetNombreBillesCourantes();
 	__declspec(dllexport) void activerPalettesGJ1();
 	__declspec(dllexport) void desactiverPalettesGJ1();
 	__declspec(dllexport) void activerPalettesDJ1();

@@ -54,7 +54,7 @@ public:
 	void retirerBille() { billesCourantes_--; };
 	void ajouterBille() { billesCourantes_++; };
 	int obtenirBille() { return billesCourantes_; };
-
+	void resetBille()  { billesCourantes_ = 0; };
 protected:
 
 	/// Constructeur vide déclaré protected.
