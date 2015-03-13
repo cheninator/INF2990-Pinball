@@ -241,7 +241,7 @@ void NoeudPaletteD::traiterCollisions(aidecollision::DetailsCollision details, N
 		double distance = glm::length(vecteur);
 
 		double angleEnRadian = rotation_[2] * utilitaire::PI_180;
-		glm::dvec3 directionPalette = { -cos(angleEnRadian), -sin(angleEnRadian), 0 }; // Une palette pas tournee a un axe { - 1, 0, 0}
+		glm::dvec3 directionPalette = { cos(angleEnRadian), sin(angleEnRadian), 0 }; // Une palette pas tournee a un axe { 1, 0, 0}
 		glm::dvec3 vecteurProjete = glm::proj(vecteur, directionPalette);
 		glm::dvec3 vecteurNormal = vecteur - vecteurProjete;
 
@@ -301,7 +301,7 @@ bool NoeudPaletteD::estActiveeParBille(NoeudAbstrait* bille)
 	double distance = glm::length(vecteur);
 
 	double angleEnRadian = angleZOriginal_ * utilitaire::PI_180;
-	glm::dvec3 directionPalette = { -cos(angleEnRadian), -sin(angleEnRadian), 0 }; // Une palette pas tournee a un axe { - 1, 0, 0}
+	glm::dvec3 directionPalette = { cos(angleEnRadian), sin(angleEnRadian), 0 }; // Une palette pas tournee a un axe { 1, 0, 0}
 	glm::dvec3 vecteurProjete = glm::proj(vecteur, directionPalette);
 	glm::dvec3 vecteurNormal = vecteur - vecteurProjete;
 	std::vector<glm::dvec3> boite = obtenirVecteursEnglobants();
@@ -312,7 +312,7 @@ bool NoeudPaletteD::estActiveeParBille(NoeudAbstrait* bille)
 	glm::dvec3 produitVectoriel;
 
 	if (fonctionDroitePaletteOriginale(bille) > 0// << vrai si on la bille est au dessus de la droite definie par la palette. C<est ce qui fait que les palettes n'activent pas par en dessous.
-		&& glm::dot(directionPalette, vecteur) > 0
+		&& glm::dot(directionPalette, vecteur) < 0
 		&& asin(glm::length(produitVectoriel) / glm::length(vecteur)) < sin(60 * utilitaire::PI_180)
 		&& distance < longueurPalette
 		)
