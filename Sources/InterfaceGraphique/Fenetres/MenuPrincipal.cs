@@ -14,6 +14,9 @@ using System.Text;
 using System.Threading;
 using System.Windows.Forms;
 
+using AForge.Video;
+using AForge.Video.DirectShow;
+
 namespace InterfaceGraphique
 {
     ///////////////////////////////////////////////////////////////////////////
@@ -34,7 +37,10 @@ namespace InterfaceGraphique
         public PartieRapide pRapide;
         private Configuration configuration;
         public ModeJeu modeJeuMain;
-
+        private FilterInfoCollection webcam;
+        private VideoCaptureDevice cam;
+        private bool webCamExiste = false;
+        Bitmap bit;
 
         ////////////////////////////////////////////////////////////////////////
         ///
@@ -54,28 +60,58 @@ namespace InterfaceGraphique
             StartPosition = FormStartPosition.CenterScreen;
             StringBuilder initSound = new StringBuilder("");
             configuration = new Configuration();
+            webcam = new FilterInfoCollection(FilterCategory.VideoInputDevice);
+            if (webcam.Count >= 1)
+            {
+                webCamExiste = true;
+                cam = new VideoCaptureDevice(webcam[0].MonikerString);
+                cam.NewFrame += new NewFrameEventHandler(cam_NewFrame);
+                cameraControl(true);
+            }
+            // To desactivate webcam:
+            /*
+
+            */
+        }
+
+        void cameraControl(bool control)
+         {
+            if (cam.IsRunning && !control) 
+            {
+                cam.Stop();
+            }
+            else if (!cam.IsRunning && control)
+            {
+                cam.Start();
+            }
+         }
+
+        void cam_NewFrame(object sender, NewFrameEventArgs eventArgs)
+        {
+            bit = (Bitmap)eventArgs.Frame.Clone();
         }
 
         private void Form1_KeyPress(object sender, KeyPressEventArgs e)
-       {
-   
-       } 
-
-       ////////////////////////////////////////////////////////////////////////
-       ///
-       /// @fn private void bouton_quit_Click(object sender, EventArgs e)
-       /// @brief Gestion des evenements lorsque l'utilisateur clique sur 
-       ///        le bouton Quitter.
-       /// 
-       /// @param[in] sender : Objet duquel provient un evenement
-       /// @param[in] e : evenement qui lance la fonction.
-       /// 
-       /// @return Aucune.
-       ///
-       ////////////////////////////////////////////////////////////////////////
-       private void bouton_quit_Click(object sender, EventArgs e)
         {
-          this.Dispose();
+
+        }
+
+        ////////////////////////////////////////////////////////////////////////
+        ///
+        /// @fn private void bouton_quit_Click(object sender, EventArgs e)
+        /// @brief Gestion des evenements lorsque l'utilisateur clique sur 
+        ///        le bouton Quitter.
+        /// 
+        /// @param[in] sender : Objet duquel provient un evenement
+        /// @param[in] e : evenement qui lance la fonction.
+        /// 
+        /// @return Aucune.
+        ///
+        ////////////////////////////////////////////////////////////////////////
+        private void bouton_quit_Click(object sender, EventArgs e)
+        {
+            cameraControl(false);
+            this.Dispose();
         }
 
         private void pictureBox1_Click(object sender, EventArgs e)
@@ -97,9 +133,10 @@ namespace InterfaceGraphique
         ////////////////////////////////////////////////////////////////////////
         private void bouton_edit_Click(object sender, EventArgs e)
         {
+            cameraControl(false);
             while (myThread.IsAlive)
             {
-               Thread.Sleep(100);
+                Thread.Sleep(100);
             }
             this.Hide();
             modeEdit = new Editeur();
@@ -109,7 +146,7 @@ namespace InterfaceGraphique
                 modeEdit = null;
             }
             this.Show();
-            
+
         }
 
         ////////////////////////////////////////////////////////////////////////
@@ -126,10 +163,10 @@ namespace InterfaceGraphique
         ////////////////////////////////////////////////////////////////////////
         private void bouton_edit_MouseEnter(object sender, EventArgs e)
         {
-           bouton_edit.ForeColor = Color.Green;
-           bouton_edit.FlatAppearance.BorderColor = Color.Black;
-           bouton_edit.FlatAppearance.BorderSize = 1;
-           player.Play();
+            bouton_edit.ForeColor = Color.Green;
+            bouton_edit.FlatAppearance.BorderColor = Color.Black;
+            bouton_edit.FlatAppearance.BorderSize = 1;
+            player.Play();
         }
 
         ////////////////////////////////////////////////////////////////////////
@@ -164,11 +201,11 @@ namespace InterfaceGraphique
         ////////////////////////////////////////////////////////////////////////
         private void bouton_quit_MouseEnter(object sender, EventArgs e)
         {
-           bouton_quit.FlatAppearance.BorderSize = 1;
-           bouton_quit.ForeColor = Color.Red;
-           bouton_quit.FlatAppearance.BorderColor = Color.Black;
-           player.Play();
-            
+            bouton_quit.FlatAppearance.BorderSize = 1;
+            bouton_quit.ForeColor = Color.Red;
+            bouton_quit.FlatAppearance.BorderColor = Color.Black;
+            player.Play();
+
         }
 
         ////////////////////////////////////////////////////////////////////////
@@ -219,10 +256,11 @@ namespace InterfaceGraphique
         {
             StringBuilder initSound = new StringBuilder("");
             InterfaceGraphique.FonctionsNatives.playSound(initSound, initSound.Capacity, true); // Initialise le son
-            }
+        }
 
         private void bouton_campagne_Click(object sender, EventArgs e)
         {
+            cameraControl(false);
             campagne = new Campagne();
             this.Hide();
             campagne.ShowDialog(this);
@@ -273,7 +311,10 @@ namespace InterfaceGraphique
 
         private void pictureBox1_MouseEnter(object sender, EventArgs e)
         {
-            pictureBox1.Image = Properties.Resources.newScary;
+            if (webCamExiste && bit != null)
+                pictureBox1.Image = bit;
+            else
+                pictureBox1.Image = Properties.Resources.newScary;
             player.Stream = Properties.Resources.scary;
             player.Play();
         }
@@ -286,25 +327,28 @@ namespace InterfaceGraphique
 
         private void bouton_pRapide_Click(object sender, EventArgs e)
         {
+            cameraControl(false);
             while (myThread.IsAlive)
             {
-               // Thread.Sleep(100);
+                // Thread.Sleep(100);
             }
             this.Hide();
             pRapide = new PartieRapide();
             pRapide.ShowDialog(this);
             this.Show();
-            
+
         }
 
         private void bouton_config_Click(object sender, EventArgs e)
         {
+            cameraControl(false);
             configuration.ShowDialog();
         }
 
-        public void LancerModeJeu(List<string> zones,int playerType) 
-        { 
-            modeJeuMain = new ModeJeu(zones,playerType); 
+        public void LancerModeJeu(List<string> zones, int playerType)
+        {
+            cameraControl(false);
+            modeJeuMain = new ModeJeu(zones, playerType);
             modeJeuMain.ShowDialog(this);
             if (campagne != null)
             {
@@ -314,7 +358,7 @@ namespace InterfaceGraphique
             {
                 pRapide.Close();
             }
-            this.Show(); 
+            this.Show();
         }
-    }                                  
+    }
 }
