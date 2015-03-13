@@ -37,8 +37,28 @@
             this.Camera_MenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.Ortho_MenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.Orbitale_MenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.InfoPanel = new System.Windows.Forms.FlowLayoutPanel();
+            this.label_Titre = new System.Windows.Forms.Label();
+            this.label_Points = new System.Windows.Forms.Label();
+            this.label_nbPoints = new System.Windows.Forms.Label();
+            this.label_Billes = new System.Windows.Forms.Label();
+            this.label_nbBilles = new System.Windows.Forms.Label();
+            this.label_Gagnes = new System.Windows.Forms.Label();
+            this.label_nbGagnes = new System.Windows.Forms.Label();
+            this.label_Titre2 = new System.Windows.Forms.Label();
+            this.label_Win = new System.Windows.Forms.Label();
+            this.label_nbWin = new System.Windows.Forms.Label();
+            this.label_PointsBille = new System.Windows.Forms.Label();
+            this.label_nbPointsBille = new System.Windows.Forms.Label();
+            this.label_PointsCible = new System.Windows.Forms.Label();
+            this.label_nbPointsCible = new System.Windows.Forms.Label();
+            this.label_PointsButC = new System.Windows.Forms.Label();
+            this.label_nbPointsButC = new System.Windows.Forms.Label();
+            this.label_PointsButT = new System.Windows.Forms.Label();
+            this.label_nbPointsButT = new System.Windows.Forms.Label();
             this.panel_GL.SuspendLayout();
             this.menuStrip.SuspendLayout();
+            this.InfoPanel.SuspendLayout();
             this.SuspendLayout();
             // 
             // panel_GL
@@ -125,11 +145,201 @@
             this.Orbitale_MenuItem.Size = new System.Drawing.Size(182, 22);
             this.Orbitale_MenuItem.Text = "Vue Orbitale";
             // 
+            // InfoPanel
+            // 
+            this.InfoPanel.BackColor = System.Drawing.Color.Transparent;
+            this.InfoPanel.Controls.Add(this.label_Titre);
+            this.InfoPanel.Controls.Add(this.label_Points);
+            this.InfoPanel.Controls.Add(this.label_nbPoints);
+            this.InfoPanel.Controls.Add(this.label_Billes);
+            this.InfoPanel.Controls.Add(this.label_nbBilles);
+            this.InfoPanel.Controls.Add(this.label_Gagnes);
+            this.InfoPanel.Controls.Add(this.label_nbGagnes);
+            this.InfoPanel.Controls.Add(this.label_Titre2);
+            this.InfoPanel.Controls.Add(this.label_Win);
+            this.InfoPanel.Controls.Add(this.label_nbWin);
+            this.InfoPanel.Controls.Add(this.label_PointsBille);
+            this.InfoPanel.Controls.Add(this.label_nbPointsBille);
+            this.InfoPanel.Controls.Add(this.label_PointsCible);
+            this.InfoPanel.Controls.Add(this.label_nbPointsCible);
+            this.InfoPanel.Controls.Add(this.label_PointsButC);
+            this.InfoPanel.Controls.Add(this.label_nbPointsButC);
+            this.InfoPanel.Controls.Add(this.label_PointsButT);
+            this.InfoPanel.Controls.Add(this.label_nbPointsButT);
+            this.InfoPanel.Dock = System.Windows.Forms.DockStyle.Right;
+            this.InfoPanel.Location = new System.Drawing.Point(443, 0);
+            this.InfoPanel.Name = "InfoPanel";
+            this.InfoPanel.Size = new System.Drawing.Size(190, 453);
+            this.InfoPanel.TabIndex = 5;
+            // 
+            // label_Titre
+            // 
+            this.label_Titre.Location = new System.Drawing.Point(3, 0);
+            this.label_Titre.Name = "label_Titre";
+            this.label_Titre.Size = new System.Drawing.Size(184, 23);
+            this.label_Titre.TabIndex = 0;
+            this.label_Titre.Text = "Informations sur la partie courrante";
+            this.label_Titre.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // label_Points
+            // 
+            this.label_Points.Location = new System.Drawing.Point(3, 23);
+            this.label_Points.Name = "label_Points";
+            this.label_Points.Size = new System.Drawing.Size(82, 42);
+            this.label_Points.TabIndex = 1;
+            this.label_Points.Text = "Points:";
+            this.label_Points.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // label_nbPoints
+            // 
+            this.label_nbPoints.Location = new System.Drawing.Point(91, 23);
+            this.label_nbPoints.Name = "label_nbPoints";
+            this.label_nbPoints.Size = new System.Drawing.Size(82, 42);
+            this.label_nbPoints.TabIndex = 2;
+            this.label_nbPoints.Text = "0";
+            this.label_nbPoints.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // label_Billes
+            // 
+            this.label_Billes.Location = new System.Drawing.Point(3, 65);
+            this.label_Billes.Name = "label_Billes";
+            this.label_Billes.Size = new System.Drawing.Size(82, 42);
+            this.label_Billes.TabIndex = 3;
+            this.label_Billes.Text = "Billes disponibles:";
+            this.label_Billes.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // label_nbBilles
+            // 
+            this.label_nbBilles.Location = new System.Drawing.Point(91, 65);
+            this.label_nbBilles.Name = "label_nbBilles";
+            this.label_nbBilles.Size = new System.Drawing.Size(82, 42);
+            this.label_nbBilles.TabIndex = 4;
+            this.label_nbBilles.Text = "0";
+            this.label_nbBilles.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // label_Gagnes
+            // 
+            this.label_Gagnes.Location = new System.Drawing.Point(3, 107);
+            this.label_Gagnes.Name = "label_Gagnes";
+            this.label_Gagnes.Size = new System.Drawing.Size(82, 42);
+            this.label_Gagnes.TabIndex = 5;
+            this.label_Gagnes.Text = "Billes gagnés:";
+            this.label_Gagnes.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // label_nbGagnes
+            // 
+            this.label_nbGagnes.Location = new System.Drawing.Point(91, 107);
+            this.label_nbGagnes.Name = "label_nbGagnes";
+            this.label_nbGagnes.Size = new System.Drawing.Size(82, 42);
+            this.label_nbGagnes.TabIndex = 6;
+            this.label_nbGagnes.Text = "0";
+            this.label_nbGagnes.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // label_Titre2
+            // 
+            this.label_Titre2.Location = new System.Drawing.Point(3, 149);
+            this.label_Titre2.Name = "label_Titre2";
+            this.label_Titre2.Size = new System.Drawing.Size(184, 23);
+            this.label_Titre2.TabIndex = 7;
+            this.label_Titre2.Text = "Informations sur la zone";
+            this.label_Titre2.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // label_Win
+            // 
+            this.label_Win.Location = new System.Drawing.Point(3, 172);
+            this.label_Win.Name = "label_Win";
+            this.label_Win.Size = new System.Drawing.Size(82, 42);
+            this.label_Win.TabIndex = 8;
+            this.label_Win.Text = "Points pour gagner";
+            this.label_Win.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // label_nbWin
+            // 
+            this.label_nbWin.Location = new System.Drawing.Point(91, 172);
+            this.label_nbWin.Name = "label_nbWin";
+            this.label_nbWin.Size = new System.Drawing.Size(82, 42);
+            this.label_nbWin.TabIndex = 9;
+            this.label_nbWin.Text = "0";
+            this.label_nbWin.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // label_PointsBille
+            // 
+            this.label_PointsBille.Location = new System.Drawing.Point(3, 214);
+            this.label_PointsBille.Name = "label_PointsBille";
+            this.label_PointsBille.Size = new System.Drawing.Size(82, 42);
+            this.label_PointsBille.TabIndex = 10;
+            this.label_PointsBille.Text = "Points pour nouvelle bille:";
+            this.label_PointsBille.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // label_nbPointsBille
+            // 
+            this.label_nbPointsBille.Location = new System.Drawing.Point(91, 214);
+            this.label_nbPointsBille.Name = "label_nbPointsBille";
+            this.label_nbPointsBille.Size = new System.Drawing.Size(82, 42);
+            this.label_nbPointsBille.TabIndex = 11;
+            this.label_nbPointsBille.Text = "0";
+            this.label_nbPointsBille.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // label_PointsCible
+            // 
+            this.label_PointsCible.Location = new System.Drawing.Point(3, 256);
+            this.label_PointsCible.Name = "label_PointsCible";
+            this.label_PointsCible.Size = new System.Drawing.Size(82, 42);
+            this.label_PointsCible.TabIndex = 12;
+            this.label_PointsCible.Text = "Collision avec cible:";
+            this.label_PointsCible.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // label_nbPointsCible
+            // 
+            this.label_nbPointsCible.Location = new System.Drawing.Point(91, 256);
+            this.label_nbPointsCible.Name = "label_nbPointsCible";
+            this.label_nbPointsCible.Size = new System.Drawing.Size(82, 42);
+            this.label_nbPointsCible.TabIndex = 13;
+            this.label_nbPointsCible.Text = "0";
+            this.label_nbPointsCible.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // label_PointsButC
+            // 
+            this.label_PointsButC.Location = new System.Drawing.Point(3, 298);
+            this.label_PointsButC.Name = "label_PointsButC";
+            this.label_PointsButC.Size = new System.Drawing.Size(82, 42);
+            this.label_PointsButC.TabIndex = 14;
+            this.label_PointsButC.Text = "Collision avec butoir circulaire:";
+            this.label_PointsButC.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // label_nbPointsButC
+            // 
+            this.label_nbPointsButC.Location = new System.Drawing.Point(91, 298);
+            this.label_nbPointsButC.Name = "label_nbPointsButC";
+            this.label_nbPointsButC.Size = new System.Drawing.Size(82, 42);
+            this.label_nbPointsButC.TabIndex = 15;
+            this.label_nbPointsButC.Text = "0";
+            this.label_nbPointsButC.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // label_PointsButT
+            // 
+            this.label_PointsButT.Location = new System.Drawing.Point(3, 340);
+            this.label_PointsButT.Name = "label_PointsButT";
+            this.label_PointsButT.Size = new System.Drawing.Size(82, 42);
+            this.label_PointsButT.TabIndex = 16;
+            this.label_PointsButT.Text = "Collision avec butoir triangulaire:";
+            this.label_PointsButT.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // label_nbPointsButT
+            // 
+            this.label_nbPointsButT.Location = new System.Drawing.Point(91, 340);
+            this.label_nbPointsButT.Name = "label_nbPointsButT";
+            this.label_nbPointsButT.Size = new System.Drawing.Size(82, 42);
+            this.label_nbPointsButT.TabIndex = 17;
+            this.label_nbPointsButT.Text = "0";
+            this.label_nbPointsButT.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
             // ModeJeu
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(633, 453);
+            this.Controls.Add(this.InfoPanel);
             this.Controls.Add(this.panel_GL);
             this.Icon = global::InterfaceGraphique.Properties.Resources.Pinball;
             this.MainMenuStrip = this.menuStrip;
@@ -146,6 +356,7 @@
             this.panel_GL.PerformLayout();
             this.menuStrip.ResumeLayout(false);
             this.menuStrip.PerformLayout();
+            this.InfoPanel.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -161,5 +372,24 @@
         private System.Windows.Forms.ToolStripMenuItem mPrincipal_menu;
         private System.Windows.Forms.Label PointPartie;
         private System.Windows.Forms.Label nbBilles;
+        private System.Windows.Forms.FlowLayoutPanel InfoPanel;
+        private System.Windows.Forms.Label label_Titre;
+        private System.Windows.Forms.Label label_Points;
+        private System.Windows.Forms.Label label_nbPoints;
+        private System.Windows.Forms.Label label_Billes;
+        private System.Windows.Forms.Label label_nbBilles;
+        private System.Windows.Forms.Label label_Gagnes;
+        private System.Windows.Forms.Label label_nbGagnes;
+        private System.Windows.Forms.Label label_Titre2;
+        private System.Windows.Forms.Label label_Win;
+        private System.Windows.Forms.Label label_nbWin;
+        private System.Windows.Forms.Label label_PointsBille;
+        private System.Windows.Forms.Label label_nbPointsBille;
+        private System.Windows.Forms.Label label_PointsCible;
+        private System.Windows.Forms.Label label_nbPointsCible;
+        private System.Windows.Forms.Label label_PointsButC;
+        private System.Windows.Forms.Label label_nbPointsButC;
+        private System.Windows.Forms.Label label_PointsButT;
+        private System.Windows.Forms.Label label_nbPointsButT;
     }
 }
