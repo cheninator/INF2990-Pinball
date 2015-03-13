@@ -338,6 +338,8 @@ void FacadeModele::animer(float temps)
 	mettreAJourListeBillesEtNoeuds();
 	traiterCollisions();
 	updateForcesExternes();
+
+
 	aiPalettes();
 
 	// Mise a jour des objets.

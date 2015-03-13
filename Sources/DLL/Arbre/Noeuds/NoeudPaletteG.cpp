@@ -42,6 +42,7 @@ NoeudPaletteG::NoeudPaletteG(const std::string& typeNoeud)
 	angleZOriginal_ = obtenirRotation().z;
 }
 
+
 ////////////////////////////////////////////////////////////////////////
 ///
 /// @fn NoeudPaletteG::~NoeudPaletteG()
@@ -55,6 +56,7 @@ NoeudPaletteG::~NoeudPaletteG()
 {
 
 }
+
 
 ////////////////////////////////////////////////////////////////////////
 ///
@@ -355,16 +357,3 @@ double NoeudPaletteG::fonctionDroitePaletteEnMouvement(NoeudAbstrait* bille)
 	double b = positionPalette.y - positionPalette.x * pente;
 	return positionBille.y - pente * positionBille.x - b;
 }
-
-/*
-void NoeudPaletteG::activerAI()
-{
-	// Les palettesAI doivent pouvoir etre activerAI meme si une bille ne se trouve pas proche
-	if (etatPalette_ == INACTIVE)
-	{
-		angleZOriginal_ = obtenirRotation().z;
-		etatPalette_ = ACTIVE_AI;
-	}
-}
-*/
-// Pas besoin de NoeudPaletteG::desactiverAI() parce que c'est deja integre a la logique des etats.

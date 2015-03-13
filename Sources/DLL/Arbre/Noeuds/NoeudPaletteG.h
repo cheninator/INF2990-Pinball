@@ -54,6 +54,15 @@ public:
 	/// Obtenir l'angle initial de la palette
 	double obtenirAngleZOriginal() const { return angleZOriginal_; };
 
+	/// Modifier la vitesse de monte angulaire de la palette
+	void assignerVitesseMonteAngulaire(glm::dvec3 vitesse) { vitesseMonteAngulaire_ = vitesse; };
+
+	/// Modifier la vitesse de descente angulaire de la palette
+	void assignerVitesseDescenteAngulaire(glm::dvec3 vitesse) { vitesseDescenteAngulaire_ = vitesse; };
+
+
+
+
 	double fonctionDroitePaletteOriginale(NoeudAbstrait* bille);
 	double fonctionDroitePaletteEnMouvement(NoeudAbstrait* bille);
 
@@ -61,16 +70,17 @@ private:
 
 	/// Angle Original pour le mouvement des palettes selon les touches du clavier
 	double angleZOriginal_;
-	
-	/// Chronometre interne
-	float timer_{ 0 };
 
+	/// Information concernant l'état d'activation de la palette
+	bool estActive;
+	
 	/// Information des vitesses de monte et de descente de la palette
 	glm::dvec3 vitesseMonteAngulaire_;
 	glm::dvec3 vitesseDescenteAngulaire_;
 
-	/// Information concernant l'état de la palette
-	bool estActive;
+	/// Chronometre interne
+	float timer_{ 0 };
+
 };
 
 #endif // __ARBRE_NOEUDS_NOEUDPALETTEG_H__
