@@ -35,8 +35,11 @@ NoeudPaletteG::NoeudPaletteG(const std::string& typeNoeud)
 	: NoeudComposite{ typeNoeud }
 {
 	ajustable_ = false;
+	estActive = false;
+
 	vitesseMonteAngulaire_ = { 0, 0, 9 };
 	vitesseDescenteAngulaire_ = { 0, 0, -3 };
+	angleZOriginal_ = obtenirRotation().z;
 }
 
 ////////////////////////////////////////////////////////////////////////
@@ -99,6 +102,7 @@ void NoeudPaletteG::afficherConcret() const
 	glPopMatrix();
 }
 
+
 ////////////////////////////////////////////////////////////////////////
 ///
 /// @fn void NoeudPaletteG::animer(float temps)
@@ -115,58 +119,28 @@ void NoeudPaletteG::animer(float temps)
 {
 	NoeudComposite::animer(temps);
 
-	switch (etatPalette_)
+	/// Lorsque la touche de controle de la palette est appuyé, on sera dans ce cas
+	if (estActive)
 	{
-	case ACTIVE:
-		// TODO : Verifier que la rotation que je veux faire est possible,
-		// si impossible, la palette est bloquee et doit tomber dans l'etat INACTIVE
+		/// Faire pivoter la palette tant que le déplacement angulaire n'est pas égal à 60 degrés
 		if (obtenirRotation().z - angleZOriginal_ < 60)
-		{
 			assignerRotation(vitesseMonteAngulaire_);
-		}
-		break;
-	case RETOUR:
-		if (obtenirRotation().z - angleZOriginal_ > 0)
-		{
-			assignerRotation(vitesseDescenteAngulaire_);
-		}
-		else
-		{
-			assignerRotationHard(glm::dvec3{ rotation_.x, rotation_.y, angleZOriginal_ });
-			etatPalette_ = INACTIVE;
-		}
-		break;
-	case ACTIVE_AI:
-		if (obtenirRotation().z - angleZOriginal_ < 60)
-		{
-			assignerRotation(vitesseMonteAngulaire_);
-		}
-		else
-		{
-			if (timer_ >= 0.25)
-			{
-				etatPalette_ = RETOUR_AI;
-				timer_ = 0;
-			}
-			else
-				timer_ += temps;
-		}
-		break;
-	case RETOUR_AI:
-		if (obtenirRotation().z - angleZOriginal_ > 0)
-		{
-			assignerRotation(vitesseDescenteAngulaire_);
-		}
-		else
-		{
-			assignerRotationHard(glm::dvec3{ rotation_.x, rotation_.y, angleZOriginal_ });
-			etatPalette_ = INACTIVE;
-		}
-		break;
-	case INACTIVE:
-		break;
 	}
+
+	/// Lorsque la touche de controle de la palette est relaché
+	else
+	{
+		/// Faire redescendre la palette à son etat initial
+		if (obtenirRotation().z - angleZOriginal_ > 0)
+			assignerRotation(vitesseDescenteAngulaire_);
+
+		/// Reassigner les valeurs initiales
+		else
+			assignerRotationHard(glm::dvec3{ rotation_.x, rotation_.y, angleZOriginal_ });
+	}
+
 }
+
 
 ////////////////////////////////////////////////////////////////////////
 ///
@@ -187,6 +161,26 @@ bool NoeudPaletteG::accepterVisiteur(VisiteurAbstrait* vis)
 	return reussi;
 }
 
+
+////////////////////////////////////////////////////////////////////////
+///
+/// @fn bool NoeudPaletteG::accepterJoueurVirtuel(JoueurVirtuel* joueur)
+///
+///
+/// Cette fonction permet d'accepter un joueur virtuel
+///
+/// @param[in] joueur : Prend un JoueurVirtuel
+///
+/// @return Reusite ou echec.
+///
+////////////////////////////////////////////////////////////////////////
+bool NoeudPaletteG::accepterJoueurVirtuel(JoueurVirtuel* joueur)
+{
+	joueur->traiter(this);
+	return true;
+}
+
+
 ////////////////////////////////////////////////////////////////////////
 ///
 /// @fn void NoeudPaletteG::activer()
@@ -199,11 +193,9 @@ bool NoeudPaletteG::accepterVisiteur(VisiteurAbstrait* vis)
 ////////////////////////////////////////////////////////////////////////
 void NoeudPaletteG::activer()
 {
-	if (etatPalette_ == INACTIVE)
-		angleZOriginal_ = obtenirRotation().z;
-	
-	etatPalette_ = ACTIVE;
+	estActive = true;
 }
+
 
 ////////////////////////////////////////////////////////////////////////
 ///
@@ -216,7 +208,7 @@ void NoeudPaletteG::activer()
 ////////////////////////////////////////////////////////////////////////
 void NoeudPaletteG::desactiver()
 {
-	etatPalette_ = RETOUR;
+	estActive = false;
 }
 
 
@@ -233,7 +225,7 @@ void NoeudPaletteG::desactiver()
 ////////////////////////////////////////////////////////////////////////
 void NoeudPaletteG::traiterCollisions(aidecollision::DetailsCollision details, NoeudAbstrait* bille)
 {
-	if (1 && (etatPalette_ == ACTIVE || etatPalette_ == ACTIVE_AI) && fonctionDroitePaletteEnMouvement(bille) > 0)
+	if (fonctionDroitePaletteEnMouvement(bille) > 0)
 	{
 		glm::dvec3 positionPalette = obtenirPositionRelative();
 		glm::dvec3 positionBille = bille->obtenirPositionRelative();
@@ -285,7 +277,7 @@ void NoeudPaletteG::traiterCollisions(aidecollision::DetailsCollision details, N
 	}
 }
 
-
+/*
 bool NoeudPaletteG::estActiveeParBille(NoeudAbstrait* bille)
 {
 	assert(bille->obtenirType() == "bille");
@@ -332,8 +324,9 @@ bool NoeudPaletteG::estActiveeParBille(NoeudAbstrait* bille)
 		return true;
 	else
 		return false;
-	*/
+	
 }
+*/
 
 double NoeudPaletteG::fonctionDroitePaletteOriginale(NoeudAbstrait* bille)
 {
@@ -363,6 +356,7 @@ double NoeudPaletteG::fonctionDroitePaletteEnMouvement(NoeudAbstrait* bille)
 	return positionBille.y - pente * positionBille.x - b;
 }
 
+/*
 void NoeudPaletteG::activerAI()
 {
 	// Les palettesAI doivent pouvoir etre activerAI meme si une bille ne se trouve pas proche
@@ -372,5 +366,5 @@ void NoeudPaletteG::activerAI()
 		etatPalette_ = ACTIVE_AI;
 	}
 }
-
+*/
 // Pas besoin de NoeudPaletteG::desactiverAI() parce que c'est deja integre a la logique des etats.

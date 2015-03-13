@@ -68,7 +68,7 @@ bool JoueurVirtuel::traiter(NoeudPaletteG* noeud)
 			double distanceNormale = glm::length(vecteurNormal);
 
 			// positionBille.y > pente * positionBille.x + b <====> la bille est au dessus de la droite definie par la palette au repos.
-			if (noeud->fonctionDroitePalette(*iter) > 0		// << vrai si on la bille est au dessus de la droite definie par la palette. C<est ce qui fait que les palettes n'activent pas par en dessous.
+			if (noeud->fonctionDroitePaletteOriginale(*iter) > 0		// << vrai si on la bille est au dessus de la droite definie par la palette. C<est ce qui fait que les palettes n'activent pas par en dessous.
 				&& positionBille.x < positionPalette.x + 80 // << essayer de remplacer par glm::length(glm::proj(vecteur, directionPalette)) < longueurPalette
 				&& positionBille.y < positionPalette.y + 10
 				)

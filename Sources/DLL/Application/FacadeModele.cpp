@@ -1471,7 +1471,7 @@ void FacadeModele::relacherRessort()
 
 // A chaque frame, checker si une bille est proche d'une palette AI.
 void FacadeModele::aiPalettes()
-{
+{   /*
 	for(NoeudPaletteG* palette : listePalettesGJ2_)
 		for(NoeudAbstrait* bille : listeBilles_)
 		{
@@ -1491,15 +1491,18 @@ void FacadeModele::aiPalettes()
 				return;
 			}
 		}
+		*/
 }
 
 
 void FacadeModele::activerPalettesAIGauches()
 {
+	/*
 	for (NoeudPaletteG* palette : listePalettesGJ2_)
 	{
 		palette->activerAI();
 	}
+	*/
 }
 
 

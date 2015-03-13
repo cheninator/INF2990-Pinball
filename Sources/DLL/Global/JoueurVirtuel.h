@@ -43,6 +43,9 @@ public:
 	/// Destructeur
 	virtual ~JoueurVirtuel();
 
+	/// Traitement des noeuds abstraits
+	virtual bool traiter(NoeudAbstrait* noeud) { return false;  };
+
 	/// Traiter une operation sur les palettes gauches
 	virtual bool traiter(NoeudPaletteG* noeud);
 

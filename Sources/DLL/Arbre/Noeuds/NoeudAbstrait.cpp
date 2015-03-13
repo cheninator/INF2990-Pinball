@@ -505,6 +505,25 @@ bool NoeudAbstrait::accepterVisiteur(VisiteurAbstrait* vis)
 
 ////////////////////////////////////////////////////////////////////////
 ///
+/// @fn bool NoeudAbstrait::accepterJoueurVirtuel(JoueurVirtuel* joueur)
+///
+///
+/// Cette fonction permet d'accepter un joueur virtuel
+///
+/// @param[in] joueur : Prend un JoueurVirtuel
+///
+/// @return Reusite ou echec.
+///
+////////////////////////////////////////////////////////////////////////
+bool NoeudAbstrait::accepterJoueurVirtuel(JoueurVirtuel* joueur)
+{
+	joueur->traiter(this);
+	return true;
+}
+
+
+////////////////////////////////////////////////////////////////////////
+///
 /// @fn NoeudAbstrait* NoeudAbstrait::getTwin()
 ///
 /// Retourne le noeud jumueau
