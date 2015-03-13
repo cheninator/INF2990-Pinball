@@ -157,6 +157,7 @@ public:
    int  obtenirTouchePDJ1();
    int  obtenirTouchePDJ2();
    int  obtenirToucheRessort();
+   int  obtenirNombreDeBilles();
    int  obtenirAffichageGlobal();
    void bloquerAffichageGlobal(int active);
 
