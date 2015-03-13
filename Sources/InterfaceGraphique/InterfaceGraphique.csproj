@@ -61,8 +61,8 @@
     <ApplicationIcon>%24this.Icon.ico</ApplicationIcon>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="DirectShowLib-2005">
-      <HintPath>..\..\Commun\Externe\DirectShow\lib\DirectShowLib-2005.dll</HintPath>
+    <Reference Include="DShowNET">
+      <HintPath>..\..\Commun\Externe\DShowNet\lib\DShowNET.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
@@ -77,95 +77,96 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Aide.cs">
+    <Compile Include="Camera\Capture.cs" />
+    <Compile Include="Fenetres\Aide.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Aide.Designer.cs">
+    <Compile Include="Fenetres\Aide.Designer.cs">
       <DependentUpon>Aide.cs</DependentUpon>
     </Compile>
-    <Compile Include="Campagne.cs">
+    <Compile Include="Fenetres\Campagne.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Campagne.Designer.cs">
+    <Compile Include="Fenetres\Campagne.Designer.cs">
       <DependentUpon>Campagne.cs</DependentUpon>
     </Compile>
-    <Compile Include="Configuration.cs">
+    <Compile Include="Fenetres\Configuration.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Configuration.Designer.cs">
+    <Compile Include="Fenetres\Configuration.Designer.cs">
       <DependentUpon>Configuration.cs</DependentUpon>
     </Compile>
     <Compile Include="Etats\EtatAbstrait.cs" />
     <Compile Include="Etats\EtatEditeurAbstrait.cs" />
-    <Compile Include="Editeur.cs">
+    <Compile Include="Fenetres\Editeur.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Editeur.Designer.cs">
+    <Compile Include="Fenetres\Editeur.Designer.cs">
       <DependentUpon>Editeur.cs</DependentUpon>
     </Compile>
     <Compile Include="Etats\EtatJeuAbstrait.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="MenuPrincipal.cs">
+    <Compile Include="Fenetres\MenuPrincipal.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="MenuPrincipal.Designer.cs">
+    <Compile Include="Fenetres\MenuPrincipal.Designer.cs">
       <DependentUpon>MenuPrincipal.cs</DependentUpon>
     </Compile>
-    <Compile Include="ModeJeu.cs">
+    <Compile Include="Fenetres\ModeJeu.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="ModeJeu.Designer.cs">
+    <Compile Include="Fenetres\ModeJeu.Designer.cs">
       <DependentUpon>ModeJeu.cs</DependentUpon>
     </Compile>
-    <Compile Include="PartieRapide.cs">
+    <Compile Include="Fenetres\PartieRapide.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="PartieRapide.Designer.cs">
+    <Compile Include="Fenetres\PartieRapide.Designer.cs">
       <DependentUpon>PartieRapide.cs</DependentUpon>
     </Compile>
-    <Compile Include="PartieTerminee.cs">
+    <Compile Include="Fenetres\PartieTerminee.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="PartieTerminee.designer.cs">
+    <Compile Include="Fenetres\PartieTerminee.designer.cs">
       <DependentUpon>PartieTerminee.cs</DependentUpon>
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Proprietes.cs">
+    <Compile Include="Fenetres\Proprietes.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Proprietes.Designer.cs">
+    <Compile Include="Fenetres\Proprietes.Designer.cs">
       <DependentUpon>Proprietes.cs</DependentUpon>
     </Compile>
-    <Compile Include="ZoneInfo.cs">
+    <Compile Include="Fenetres\ZoneInfo.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="ZoneInfo.Designer.cs">
+    <Compile Include="Fenetres\ZoneInfo.Designer.cs">
       <DependentUpon>ZoneInfo.cs</DependentUpon>
     </Compile>
-    <EmbeddedResource Include="Aide.resx">
+    <EmbeddedResource Include="Fenetres\Aide.resx">
       <DependentUpon>Aide.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Campagne.resx">
+    <EmbeddedResource Include="Fenetres\Campagne.resx">
       <DependentUpon>Campagne.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Configuration.resx">
+    <EmbeddedResource Include="Fenetres\Configuration.resx">
       <DependentUpon>Configuration.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Editeur.resx">
+    <EmbeddedResource Include="Fenetres\Editeur.resx">
       <DependentUpon>Editeur.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="MenuPrincipal.resx">
+    <EmbeddedResource Include="Fenetres\MenuPrincipal.resx">
       <DependentUpon>MenuPrincipal.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="ModeJeu.resx">
+    <EmbeddedResource Include="Fenetres\ModeJeu.resx">
       <DependentUpon>ModeJeu.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="PartieRapide.resx">
+    <EmbeddedResource Include="Fenetres\PartieRapide.resx">
       <DependentUpon>PartieRapide.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="PartieTerminee.resx">
+    <EmbeddedResource Include="Fenetres\PartieTerminee.resx">
       <DependentUpon>PartieTerminee.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
@@ -178,10 +179,10 @@
       <DependentUpon>Resources.resx</DependentUpon>
       <DesignTime>True</DesignTime>
     </Compile>
-    <EmbeddedResource Include="Proprietes.resx">
+    <EmbeddedResource Include="Fenetres\Proprietes.resx">
       <DependentUpon>Proprietes.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="ZoneInfo.resx">
+    <EmbeddedResource Include="Fenetres\ZoneInfo.resx">
       <DependentUpon>ZoneInfo.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="Properties\Settings.settings">
