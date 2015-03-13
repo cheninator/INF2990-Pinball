@@ -15,11 +15,11 @@
 #define __JOUEURVIRTUEL_H__
 
 #include <vector>
+#include <set>
 
 class NoeudAbstrait;
 class NoeudPaletteG;
 class NoeudPaletteD;
-class QuadTree;
 
 ///////////////////////////////////////////////////////////////////////////
 /// @class JoueurVirtuel
@@ -38,25 +38,32 @@ class JoueurVirtuel
 public:
 
 	/// Constructeur par defaut
-	JoueurVirtuel(QuadTree* quad);
+	JoueurVirtuel();
 
 	/// Destructeur
 	virtual ~JoueurVirtuel();
 
+	/// Comportement du joueur virtuel
+	virtual void jouer(const std::vector<NoeudAbstrait*>& listeBilles);
+
 	/// Traitement des noeuds abstraits
-	virtual bool traiter(NoeudAbstrait* noeud) { return false;  };
+	virtual bool traiter(NoeudAbstrait* noeud) { return false; };
 
 	/// Traiter une operation sur les palettes gauches
 	virtual bool traiter(NoeudPaletteG* noeud);
-	virtual bool traiter(NoeudPaletteG* noeud, NoeudAbstrait* bille);
 
 	/// Traiter une operation sur les palettes droites
 	virtual bool traiter(NoeudPaletteD* noeud);
-	virtual bool traiter(NoeudPaletteD* noeud, NoeudAbstrait* bille);
+
+	/// Assigner les palettes du joueur virtuel
+	virtual void assignerPalettes(const std::set<NoeudPaletteG*>& gauche, const std::set<NoeudPaletteD*>& droite);
 
 private:
 
-	QuadTree* quad_;
+	/// Ce que le joueur virtuel doit connaitre pour prendre ses decisions
+	std::vector<NoeudPaletteG*> palettesGauche_;
+	std::vector<NoeudPaletteD*> palettesDroite_;
+	std::vector<NoeudAbstrait*> billes_;
 
 };
 

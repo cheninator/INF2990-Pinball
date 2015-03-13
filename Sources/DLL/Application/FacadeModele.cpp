@@ -101,7 +101,7 @@ FacadeModele* FacadeModele::obtenirInstance()
 		instance_ = new FacadeModele();
 		instance_->configuration_ = new ConfigScene();
 		instance_->proprietes_ = new int[6];
-		instance_->joueur_ = new JoueurVirtuel(instance_->quad_);
+		instance_->joueur_ = new JoueurVirtuel();
 	}
 	return instance_;
 }
@@ -137,6 +137,7 @@ FacadeModele::~FacadeModele()
 	delete arbre_;
 	delete vue_;
 	delete proprietes_;
+	delete joueur_;
 }
 
 
@@ -336,12 +337,15 @@ void FacadeModele::animer(float temps)
 	// Si je commente la ligne suivante, rentrer et sortir du mode test fait crasher, 
 	// il manque un appel pour quand on sort du mode test.
 	mettreAJourListeBillesEtNoeuds();
-	traiterCollisions();
-	updateForcesExternes();
+	
+	/// Comportement du joueur virtuel
+	joueur_->jouer(listeBilles_);
 
-	// Laisse le code existant Yonners!! 
-	// aiPalettes();
-	aiPalettesYonni();
+	/// Traiter les collisions entre objets
+	traiterCollisions();
+
+	/// Faire la somme des forces
+	updateForcesExternes();
 
 	// Mise a jour des objets.
 	arbre_->animer(temps);
@@ -1198,7 +1202,10 @@ void FacadeModele::construireListesPalettes()
 	VisiteurConstruireListes visCL(&listePalettesGJ1_, &listePalettesDJ1_, &listePalettesGJ2_, &listePalettesDJ2_);
 	arbre_->accepterVisiteur(&visCL);
 	mettreAJourListeRessorts(); // que Dieu me pardonne.
+
+	joueur_->assignerPalettes(listePalettesGJ2_, listePalettesDJ2_);
 }
+
 
 ///////////////////////////////////////////////////////////////////////////////
 ///
@@ -1387,6 +1394,7 @@ void FacadeModele::updateForcesExternes()
 	}
 }
 
+
 ///////////////////////////////////////////////////////////////////////////////
 ///
 /// @fn void FacadeModele::mettreAJourListeBillesEtNoeuds()
@@ -1471,7 +1479,7 @@ void FacadeModele::relacherRessort()
 		((NoeudRessort*)ressort)->relacher();
 }
 
-
+/*
 // A chaque frame, checker si une bille est proche d'une palette AI.
 void FacadeModele::aiPalettes()
 {   
@@ -1495,10 +1503,11 @@ void FacadeModele::aiPalettes()
 			}
 		}
 		
-}
+}*/
 
 // A chaque frame, checker si une bille est proche d'une palette AI.
 
+/*
 void FacadeModele::aiPalettesYonni()
 {
 	JoueurVirtuel joueur(quad_);
@@ -1521,7 +1530,7 @@ void FacadeModele::aiPalettesYonni()
 	for (NoeudPaletteD* palette : listePalettesDJ2_)
 	for (NoeudAbstrait* bille : listeBilles_)
 	{
-		/**/
+		/*
 		if (joueur.traiter(palette, bille))
 		{
 			activerPalettesAIDroites();
@@ -1530,9 +1539,9 @@ void FacadeModele::aiPalettesYonni()
 	}
 
 }
+*/
 
-
-
+/*
 void FacadeModele::activerPalettesAIGauches()
 {
 	
@@ -1542,12 +1551,12 @@ void FacadeModele::activerPalettesAIGauches()
 	}
 	
 }
-
-
+*/
+/*
 void FacadeModele::activerPalettesAIDroites()
 {
 	for (NoeudPaletteD* palette : listePalettesDJ2_)
 	{
 		palette->activerAI();
 	}
-}
+}*/
