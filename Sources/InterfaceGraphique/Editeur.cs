@@ -182,6 +182,12 @@ namespace InterfaceGraphique
                             
                           
                         }
+
+                        if (FonctionsNatives.obtenirNombreBillesCourante() == 0 && etat is EtatEditeurTest)
+                        {
+                            StringBuilder bille = new StringBuilder("bille");
+                            FonctionsNatives.creerObjet(bille, bille.Capacity);                            
+                        }
                         if (peutAnimer)
                             FonctionsNatives.animer(tempsInterAffichage);
                         FonctionsNatives.dessinerOpenGL();
@@ -275,9 +281,9 @@ namespace InterfaceGraphique
         private void ToucheDownTest( Object o, KeyEventArgs e )
         {
              if (e.KeyValue == touches.PGJ1)
-                {
-                    FonctionsNatives.activerPalettesGJ1();
-                }
+             {
+                FonctionsNatives.activerPalettesGJ1();
+             }
 
              else if (e.KeyValue == touches.PGJ2)
              {
@@ -285,7 +291,7 @@ namespace InterfaceGraphique
              }
              else if (e.KeyValue == touches.PDJ1)
              {
-               
+                 FonctionsNatives.activerPalettesDJ1();
              }
              else if (e.KeyValue == touches.PDJ2)
              {
@@ -321,7 +327,7 @@ namespace InterfaceGraphique
             }
             else if (e.KeyValue == touches.PDJ1)
             {
-
+                FonctionsNatives.desactiverPalettesDJ1();
             }
             else if (e.KeyValue == touches.PDJ2)
             {
@@ -1559,7 +1565,7 @@ namespace InterfaceGraphique
             etat = null;
             etat = new EtatEditeurTest(this);
             menuStrip1.Hide();
-            
+            peutAnimer = true;
             if (Creation_Panel.Visible)
                 Creation_Panel.Hide();
             flowLayoutPanel1.Hide();
@@ -2971,7 +2977,7 @@ namespace InterfaceGraphique
         {
             etat = null;
             etat = new EtatEditeurNone(this);
-
+            peutAnimer = false;
             FonctionsNatives.supprimerBille();
 
             if (menuStrip3.Visible)

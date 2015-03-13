@@ -114,9 +114,11 @@ void NoeudCible::animer(float temps)
 {
 	NoeudComposite::animer(temps);
 	//positionRelative_.z = (boite_.coinMax.y - boite_.coinMin.y) / 2.0;
-	rotation_.x = rotation_.x + 1;
+	NoeudComposite::animer(temps);
+	rotation_.x = rotation_.x + temps * 90;
+	// Pour ne pas overflow le double un jour
 	if (rotation_.x > 360)
-		rotation_.x -= 360;
+		rotation_.x = rotation_.x - 360;
 }
 
 ////////////////////////////////////////////////////////////////////////
@@ -151,7 +153,7 @@ bool NoeudCible::accepterVisiteur(VisiteurAbstrait* vis)
 ////////////////////////////////////////////////////////////////////////
 void NoeudCible::traiterCollisions(aidecollision::DetailsCollision details, NoeudAbstrait* bille)
 {
-	// NoeudAbstrait::traiterCollisions(details, bille);
+	NoeudAbstrait::traiterCollisions(details, bille);
 	this->assignerAffiche(false);
 	SingletonGlobal::obtenirInstance()->collisionButoirCible();
 }

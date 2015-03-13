@@ -16,47 +16,59 @@ namespace InterfaceGraphique
         private ZoneInfo zInfo;
         private int currentZone = 0;
         private int nbZones;
+        private int nombreBillesInit = 0;
         List<string> myMaps;
         StringBuilder map;
         StringBuilder nextMap;
         bool peutAnimer;
         bool boolTemp = true;
-        private bool activateAmbianteLight = false; ///< Etat de la lumiere ambiante
+        bool startGame = false;
+        private bool activateAmbiantLight = false; ///< Etat de la lumiere ambiante
         private bool activateDirectLight = false; ///< Etat de la lumiere directe
         private bool activateSpotLight = false; ///< Etat de la lumiere spot
         private EtatJeuAbstrait etat; ///< Machine à états
+
         public int pointsPartie = 0;
         public int pointsTotale = 0;
-        public int billesDisponible = 0;
-        public int billesEnJeu = 0;
+        public int billeDisponible = 0;
         private int nombreDeBillesGagnes = 0;
         private int pointsGagnerBille = 0;
         private int pointsGagnerPartie = 0;
         private int billesDisponibles = 0;
+        public int billesEnJeu = 0;
         private int nombreDeBillesUtilise = 0;
         
-        public double getCurrentZoom() { return currentZoom; }
-        public void setCurrentZoom(double val) { currentZoom = val; }
-        public Touches getTouches() { return touches; }
-        public void pauseGame() { etat = new EtatJeuPause(this);}
-        public void resumeGame() { etat = new EtatJeuJouer(this); }
-        public void setPeutAnimer(bool activation) { peutAnimer = activation; }
+        // Modificateurs
         public void setVisibilityMenuStrip(bool vis) { menuStrip.Visible = vis; }
+        public void setCurrentZoom(double val)       { currentZoom = val; }
+        public void setPeutAnimer(bool activation)   { peutAnimer = activation; }
+        
+        // Accesseurs
+        public double getCurrentZoom()    { return currentZoom; }
+        public Touches getTouches()       { return touches; }
+        public bool getAmbiantLight()     { return activateAmbiantLight;}
+        public bool getDirectLight()      { return activateDirectLight; }
+        public bool getSpotLight()        { return activateSpotLight; }
+        
+        // Toggle des lumières
+        public void toggleAmbiantLight() { activateAmbiantLight = !activateAmbiantLight; }
+        public void toggleDirectLight()  { activateDirectLight  = !activateDirectLight; }
+        public void toggleSpotLight()    { activateSpotLight    = !activateSpotLight; }
 
+        // Méthodes de changement d'état
+        public void pauseGame() { etat = new EtatJeuPause(this); }
+        public void resumeGame() { etat = new EtatJeuJouer(this); }
+        
         public partial class EtatJeuAbstrait
         {
-            
-            public EtatJeuAbstrait()
-            {
-
-            }
+            public EtatJeuAbstrait() {}
             public EtatJeuAbstrait(ModeJeu parent)
             {
                 //Console.WriteLine("Etat :" + '\t' + "Abstrait");
                 this.parent_ = parent;
             }
         };
-        
+
         public ModeJeu(List<string> maps, int playerType)
         {
             {/*
@@ -90,29 +102,34 @@ namespace InterfaceGraphique
             map = new StringBuilder(myMaps[0]);
             //Console.WriteLine(nbZones);
             FonctionsNatives.ouvrirXML(map, map.Capacity);
+            //Console.WriteLine(pointsGagnerPartie);
+            //Console.WriteLine(pointsPartie);
             resetConfig();
-            
+            nombreBillesInit = FonctionsNatives.obtenirNombreDeBilles();
             FonctionsNatives.construireListesPalettes();
             currentZone++;
             Program.tempBool = true;
             panel_GL.Focus();
-
+            
             etat = new EtatJeuDebutDePartie(this);
+            // Il faut changer le mode car le traitement de début est fini
             etat = new EtatJeuJouer(this);
             timer.Start();
           
         }
 
 
-        private void resetConfig()
+        protected void resetConfig()
         {
-            billesDisponible = 0;
+            billeDisponible = 0;
             billesEnJeu = 0;
             nombreDeBillesGagnes = 0;
+            nombreDeBillesUtilise = 0;
             pointsPartie = 0;
             pointsTotale = 0;
             pointsGagnerPartie = FonctionsNatives.obtenirPointsGagnerPartie();
             pointsGagnerBille = FonctionsNatives.obtenirPointsGagnerBille();
+            nombreBillesInit = FonctionsNatives.obtenirNombreDeBilles();
             this.PointPartie.Text = pointsPartie.ToString();
             this.nbBilles.Text = "0";
         }
@@ -142,6 +159,7 @@ namespace InterfaceGraphique
           //Console.WriteLine("timer");
          // timerBille2.Start();
           timer.Stop();
+          startGame = true;
         }
         // And this
         private void timerBille2_Tick(object sender, EventArgs e)
@@ -161,18 +179,28 @@ namespace InterfaceGraphique
                     if (peutAnimer)
                     {
                         FonctionsNatives.animer(tempsInterAffichage);
+                        //int bfPts = pointsPartie;
                         pointsPartie = FonctionsNatives.obtenirNombreDePointsDePartie();
-
+                        //if (bfPts != pointsPartie)
+                        //    Console.WriteLine(pointsPartie);
                     }
                    FonctionsNatives.dessinerOpenGL();
 
                    billesEnJeu = FonctionsNatives.obtenirNombreBillesCourante();
-                   if (billesEnJeu == 0 && nombreDeBillesGagnes - nombreDeBillesUtilise != 0)
-                   {
+                   if (startGame && billesEnJeu == 0 && (nombreBillesInit + nombreDeBillesGagnes - nombreDeBillesUtilise > 0))
+                //   if (billesEnJeu == 0 && nombreBillesInit > 0)
+                  
+                    {
                         // wait a certain time
                        StringBuilder bille = new StringBuilder("bille");
                        FonctionsNatives.creerObjet(bille, bille.Capacity);
                        nombreDeBillesUtilise++;
+                       Console.WriteLine(nombreBillesInit);
+                       Console.WriteLine(nombreDeBillesUtilise);
+                   }
+                   if (nombreDeBillesUtilise >= (nombreBillesInit + nombreDeBillesGagnes) && boolTemp)
+                   {
+                       FinCampagne(false);
                    }
                    if (pointsPartie >= nombreDeBillesGagnes * pointsGagnerBille + pointsGagnerBille)
                    {
@@ -181,13 +209,14 @@ namespace InterfaceGraphique
                    }
 
                    this.PointPartie.Text = pointsPartie.ToString();
-                   this.nbBilles.Text = (nombreDeBillesGagnes - nombreDeBillesUtilise).ToString();
-                    
+                  // this.nbBilles.Text = (nombreDeBillesGagnes - nombreDeBillesUtilise).ToString();
+                  // this.nbBilles.Text = (nombreBillesInit + nombreDeBillesGagnes).ToString();
+                   this.nbBilles.Text = billesEnJeu.ToString();
                     if (pointsPartie >= pointsGagnerPartie && boolTemp)
                     {
                         if (currentZone >= nbZones)
                         {
-                            FinCampagne();
+                            FinCampagne(true);
                         
                         }
                         else
@@ -195,6 +224,7 @@ namespace InterfaceGraphique
                             ProchainePartie();  
                         }
                     }
+                   
 
                     if (currentZoom <= 0)
                     {
@@ -220,6 +250,19 @@ namespace InterfaceGraphique
             }
         }
 
+        public void RecommencerPartie()
+        {
+            resetConfig();
+
+            FonctionsNatives.ouvrirXML(map, map.Capacity);
+
+            FonctionsNatives.construireListesPalettes();
+            FonctionsNatives.mettreAJourListeBillesEtNoeuds();
+
+
+            timer.Start();
+        }
+
         private void ProchainePartie()
         {
             boolTemp = false;
@@ -236,11 +279,16 @@ namespace InterfaceGraphique
             this.Show();
 
             FonctionsNatives.ouvrirXML(map, map.Capacity);
-            resetConfig();
             FonctionsNatives.construireListesPalettes();
+            FonctionsNatives.resetNombreDePointsDePartie();
+            FonctionsNatives.resetNombreBillesCourantes();
             currentZone++;
             peutAnimer = true;
             boolTemp = true;
+            /// La création de l'état s'occupe d'appeler resetConfig
+            etat = new EtatJeuDebutDePartie(this);
+            // Il faut changer le mode car le traitement de début est fini
+            etat = new EtatJeuJouer(this);
             timer.Enabled = true;
             timer.Interval = 3000;
             timer.Stop();
@@ -248,11 +296,11 @@ namespace InterfaceGraphique
 
         }
 
-        private void FinCampagne()
+        private void FinCampagne(bool active)
         {
-             peutAnimer = false;
+                            peutAnimer = false;
                             boolTemp = false;
-                            gameOver = new PartieTerminee(true);
+                            gameOver = new PartieTerminee(active);
             
                             gameOver.ShowDialog(this);
         }
@@ -295,17 +343,13 @@ namespace InterfaceGraphique
 
         private void PartieRapide_KeyDown(object sender, KeyEventArgs e)
         {
-            //Console.WriteLine("KeyDown");
             etat.traiterKeyDown(sender, e);
         }
 
 
         private void PartieRapide_KeyUp(object sender, KeyEventArgs e)
         {
-            //Console.WriteLine("KeyUp");
             etat.traiterKeyUp(sender, e);
-            //Console.WriteLine("-----------------------------------------");
-            //Console.WriteLine("-----------------------------------------");
         }
 
         
@@ -317,7 +361,6 @@ namespace InterfaceGraphique
 
         private void PartieRapide_KeyPress(object sender, KeyPressEventArgs e)
         {
-            //Console.WriteLine("KeyPress");
             etat.traiterKeyPress(sender, e);
         }
 
@@ -354,12 +397,17 @@ namespace InterfaceGraphique
             this.Show();
             FonctionsNatives.ouvrirXML(map, map.Capacity);
             FonctionsNatives.resetNombreDePointsDePartie();
-            resetConfig();
-
+            FonctionsNatives.resetNombreBillesCourantes();
             currentZone = 1;
             FonctionsNatives.construireListesPalettes();
+            startGame = false;
             peutAnimer = true;
             boolTemp = true;
+            /// La création de l'état s'occupe d'appeler resetConfig
+            etat = new EtatJeuDebutDePartie(this);
+            // Il faut changer le mode car le traitement de début est fini
+            etat = new EtatJeuJouer(this);
+            timer.Start();
            
            // gameOver.Close();
             gameOver.Dispose();

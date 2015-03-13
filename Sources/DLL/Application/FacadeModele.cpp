@@ -73,8 +73,6 @@ Samuel Millette <BR>
 
 #include "glm/gtc/type_ptr.hpp"
 
-#define M_PI	3.141592653589793238462643383279502884
-
 /// Pointeur vers l'instance unique de la classe.
 FacadeModele* FacadeModele::instance_{ nullptr };
 
@@ -507,7 +505,7 @@ void FacadeModele::tournerSelectionSouris(int x1, int y1, int x2, int y2)
 
 	// On calcule l'angle de la rotation:
 	double angle = (y2 - y1) / 3.0;
-	double angleEnRadian = angle * 2 * 3.1415926535897932384626433832795 / 360;
+	double angleEnRadian = angle * utilitaire::PI_180;
 	glm::dmat3 transform = glm::dmat3{ glm::dvec3{ cos(-angleEnRadian), -sin(-angleEnRadian), 0 },
 		glm::dvec3{ sin(-angleEnRadian), cos(-angleEnRadian), 0 },
 		glm::dvec3{ 0, 0, 1 } };
@@ -904,9 +902,9 @@ void FacadeModele::positionnerMur(int originX, int originY,int x1, int y1, int x
 
 		// Prendre l'angle complementaire si on est en dessous de l'axe X.
 		if (vecteur.y < 0)
-			angleRadian = M_PI - angleRadian;// A passer en parametre a assignerRotation
-
-		angles = glm::dvec3{ 0, 0, 360.0 / 2.0 / M_PI * angleRadian };
+			angleRadian = utilitaire::PI - angleRadian;// A passer en parametre a assignerRotation
+		
+		angles = glm::dvec3{ 0, 0, 360.0 / 2.0 / utilitaire::PI * angleRadian };
 	}
 		// Calcul de la translation
 		// ========================
@@ -1155,6 +1153,7 @@ int  FacadeModele::obtenirTouchePDJ1(){ return configuration_->obtenirRaccourciP
 int  FacadeModele::obtenirTouchePDJ2(){ return configuration_->obtenirRaccourciPDJ2(); }
 int  FacadeModele::obtenirToucheRessort(){ return configuration_->obtenirRaccourciRessort(); }
 int  FacadeModele::obtenirAffichageGlobal(){ return configuration_->obtenirAffichageGlobal(); }
+int	 FacadeModele::obtenirNombreDeBilles(){ return configuration_->obtenirNombreBilles(); }
 void FacadeModele::bloquerAffichageGlobal(int active){ configuration_->bloquerAffichageGlobal(active); };
 
 
@@ -1228,6 +1227,36 @@ void FacadeModele::desactiverPalettesGJ1()
 		palette->desactiver();
 }
 
+///////////////////////////////////////////////////////////////////////////////
+///
+/// @fn void FacadeModele::activerPalettesDJ1()
+/// Active les palettes gauches du joueur 1. C'est la fonction qui dit a la 
+/// palette de bouger.
+/// 
+/// @remark Les listes de palettes doivent avoir etes construites
+/// 
+///////////////////////////////////////////////////////////////////////////////
+void FacadeModele::activerPalettesDJ1()
+{
+	for (NoeudPaletteD* palette : listePalettesDJ1_)
+		palette->activer();
+}
+
+///////////////////////////////////////////////////////////////////////////////
+///
+/// @fn void FacadeModele::desactiverPalettesDJ1()
+/// Desactive les palettes gauches du joueur 1. C'est la fonction qui dit a la 
+/// palette de revenir et d'arreter de bouger.
+/// 
+/// @remark Les listes de palettes doivent avoir etes construites
+/// 
+///////////////////////////////////////////////////////////////////////////////
+void FacadeModele::desactiverPalettesDJ1()
+{
+	for (NoeudPaletteD* palette : listePalettesDJ1_)
+		palette->desactiver();
+}
+
 
 void FacadeModele::supprimerBille()
 {
@@ -1267,20 +1296,29 @@ void FacadeModele::traiterCollisions()
 {	
 	bool miseAJourListeBillesRequise = false;
 	bool useQuadTree = false;
+
+	// Pour chaque bille, 
 	for (NoeudAbstrait* bille : listeBilles_)
 	{
+		// Obtenir une liste de noeuds a verifier avec la bille courante.
 		std::vector<NoeudAbstrait*> noeudsAVeririer;
 		if (useQuadTree)
 			; // TODO
 		else
 			noeudsAVeririer = listeNoeuds_;
 		bille->assignerImpossible(false);
+		// Et la table :
+		noeudsAVeririer.push_back(arbre_->chercher(0));
+
+		// Faire la detection et reaction pour chaque noeud de noeudsAVrifier
 		for (NoeudAbstrait* noeudAVerifier : noeudsAVeririer)
 		{
+			// Detecter les collisions entre le noeud et la bille
 			aidecollision::DetailsCollision detail = noeudAVerifier->detecterCollisions(bille);
 
 			if (detail.type != aidecollision::COLLISION_AUCUNE)
 			{
+				// Traiter (reagir a) la collision.
 				noeudAVerifier->traiterCollisions(detail, bille);
 				if (noeudAVerifier->obtenirType() == "trou") // MODIF
 				{
@@ -1289,6 +1327,7 @@ void FacadeModele::traiterCollisions()
 				}
 			}
 		}
+
 		if (useQuadTree)
 			; // Enlever la bille du quadTree
 		else
@@ -1329,11 +1368,11 @@ void FacadeModele::updateForcesExternes()
 			{
 				glm::dvec2 positionPortail = glm::dvec2{ noeud->obtenirPositionRelative() };
 				double distance = glm::length(positionPortail - positionBille);
-				if (distance < 100) // Constante a determiner en fonction du scale du portail
+				if (distance < 3 * noeud->obtenirVecteursEnglobants()[0].x) // Constante a determiner en fonction du scale du portail
 				{
 					if (bille->obtenirPortailDOrigine() != noeud)
 					{
-						glm::dvec2 force = (1 / (distance*distance)) * glm::normalize(positionPortail - positionBille);
+						glm::dvec2 force = 1/distance * glm::normalize(positionPortail - positionBille);
 						sommeDesForces += force;
 					}
 				}
@@ -1438,13 +1477,11 @@ void FacadeModele::aiPalettes()
 		{
 			if (palette->estActiveeParBille(bille))
 			{
-				// Activer toutes les palettes GJ2 et DJ2
 				activerPalettesAIGauches();
 				return;
 			}
 		}
-	/*
-	for(NoeudPaletteG* palette : listePalettesGJ2_)
+	for(NoeudPaletteD* palette : listePalettesDJ2_)
 		for(NoeudAbstrait* bille : listeBilles_)
 		{
 			if (palette->estActiveeParBille(bille))
@@ -1454,7 +1491,6 @@ void FacadeModele::aiPalettes()
 				return;
 			}
 		}
-	}*/
 }
 
 
@@ -1466,12 +1502,11 @@ void FacadeModele::activerPalettesAIGauches()
 	}
 }
 
-/*
+
 void FacadeModele::activerPalettesAIDroites()
 {
-	for (NoeudPaletteG* palette : listePalettesGJ2_)
+	for (NoeudPaletteD* palette : listePalettesDJ2_)
 	{
 		palette->activerAI();
 	}
 }
-*/

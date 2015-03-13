@@ -14,12 +14,10 @@
 #include <windows.h>
 #include <GL/gl.h>
 #include <cmath>
-#include <iostream>
 
 #include "Modele3D.h"
 #include "OpenGL_Storage/ModeleStorage_Liste.h"
 #include "../../Commun/Externe/glm/include/glm/gtx/Projection.hpp"
-
 
 ////////////////////////////////////////////////////////////////////////
 ///
@@ -133,7 +131,10 @@ void NoeudPaletteG::animer(float temps)
 			assignerRotation(vitesseDescenteAngulaire_);
 		}
 		else
+		{
 			assignerRotationHard(glm::dvec3{ rotation_.x, rotation_.y, angleZOriginal_ });
+			etatPalette_ = INACTIVE;
+		}
 		break;
 	case ACTIVE_AI:
 		if (obtenirRotation().z - angleZOriginal_ < 60)
@@ -241,7 +242,7 @@ void NoeudPaletteG::traiterCollisions(aidecollision::DetailsCollision details, N
 		glm::dvec3 vecteur = positionBille - positionPalette;
 		double distance = glm::length(vecteur);
 
-		double angleEnRadian = rotation_[2] * 2 * 3.1415926535897932384626433832795 / 360;
+		double angleEnRadian = rotation_[2] * utilitaire::PI_180;
 		glm::dvec3 directionPalette = { -cos(angleEnRadian), -sin(angleEnRadian), 0 }; // Une palette pas tournee a un axe { - 1, 0, 0}
 		glm::dvec3 vecteurProjete = glm::proj(vecteur, directionPalette);
 		glm::dvec3 vecteurNormal = vecteur - vecteurProjete;
@@ -249,7 +250,7 @@ void NoeudPaletteG::traiterCollisions(aidecollision::DetailsCollision details, N
 		double distanceProjetee = glm::length(vecteurProjete);
 		double distanceNormale = glm::length(vecteurNormal);
 		double constanteMystere = 1;
-		double deltaAngle = (9 * 2 * 3.1415926535897932384626433832795 / 360);
+		double deltaAngle = (9 * utilitaire::PI_180);
 		double vitesseAngulaire = deltaAngle / 0.016; // 9 degres par 16 msec 
 
 
@@ -289,6 +290,10 @@ bool NoeudPaletteG::estActiveeParBille(NoeudAbstrait* bille)
 {
 	assert(bille->obtenirType() == "bille");
 
+	// Si la palette n'a jamais etee activee, elle ne connait pas son angle original.
+	if (etatPalette_ == INACTIVE)
+		angleZOriginal_ = rotation_[0];
+
 	glm::dvec3 positionPalette = obtenirPositionRelative();
 	glm::dvec3 positionBille = bille->obtenirPositionRelative();
 	positionPalette.z = 0.0; // Les positions utilisees ici doivent etre en 2D
@@ -297,22 +302,37 @@ bool NoeudPaletteG::estActiveeParBille(NoeudAbstrait* bille)
 	glm::dvec3 vecteur= positionBille - positionPalette;
 	double distance = glm::length(vecteur);
 
-	double angleEnRadian = angleZOriginal_ * 2 * 3.1415926535897932384626433832795 / 360;
+	double angleEnRadian = angleZOriginal_ * utilitaire::PI_180;
 	glm::dvec3 directionPalette = { -cos(angleEnRadian), -sin(angleEnRadian), 0 }; // Une palette pas tournee a un axe { - 1, 0, 0}
 	glm::dvec3 vecteurProjete = glm::proj(vecteur, directionPalette);
 	glm::dvec3 vecteurNormal = vecteur - vecteurProjete;
+	std::vector<glm::dvec3> boite = obtenirVecteursEnglobants();
+	double longueurPalette = boite[0].x - boite[2].x;
 
 	double distanceProjetee = glm::length(vecteurProjete);
 	double distanceNormale = glm::length(vecteurNormal);
+	glm::dvec3 produitVectoriel;
 
-	// positionBille.y > pente * positionBille.x + b <====> la bille est au dessus de la droite definie par la palette au repos.
 	if (fonctionDroitePaletteOriginale(bille) > 0// << vrai si on la bille est au dessus de la droite definie par la palette. C<est ce qui fait que les palettes n'activent pas par en dessous.
-		&& positionBille.x < positionPalette.x + 80 // << essayer de remplacer par glm::length(glm::proj(vecteur, directionPalette)) < longueurPalette
-		&& distanceNormale < 15
+		&& glm::dot(directionPalette, vecteur) < 0
+		&& asin(glm::length(produitVectoriel) / glm::length(vecteur)) < sin(60 * utilitaire::PI_180)
+		&& distance < longueurPalette
 		)
 		return true;
 	else
 		return false;
+
+	/*
+	// positionBille.y > pente * positionBille.x + b <====> la bille est au dessus de la droite definie par la palette au repos.
+	if (fonctionDroitePaletteOriginale(bille) > 0// << vrai si on la bille est au dessus de la droite definie par la palette. C<est ce qui fait que les palettes n'activent pas par en dessous.
+		&& positionBille.x < positionPalette.x + 80 // << essayer de remplacer par glm::length(glm::proj(vecteur, directionPalette)) < longueurPalette
+		&& positionBille.x > positionPalette.x
+		&& distanceNormale < 40
+		)
+		return true;
+	else
+		return false;
+	*/
 }
 
 double NoeudPaletteG::fonctionDroitePaletteOriginale(NoeudAbstrait* bille)
@@ -320,7 +340,7 @@ double NoeudPaletteG::fonctionDroitePaletteOriginale(NoeudAbstrait* bille)
 	glm::dvec3 positionBille = bille->obtenirPositionRelative();
 	glm::dvec3 positionPalette = obtenirPositionRelative();
 
-	double angleEnRadian = angleZOriginal_ * 2 * 3.1415926535897932384626433832795 / 360;
+	double angleEnRadian = angleZOriginal_ * utilitaire::PI_180;
 	glm::dvec3 directionPalette = { -cos(angleEnRadian), -sin(angleEnRadian), 0 };
 	double pente = 0;
 	if (directionPalette.x != 0)
@@ -334,7 +354,7 @@ double NoeudPaletteG::fonctionDroitePaletteEnMouvement(NoeudAbstrait* bille)
 	glm::dvec3 positionBille = bille->obtenirPositionRelative();
 	glm::dvec3 positionPalette = obtenirPositionRelative();
 
-	double angleEnRadian = rotation_[2] * 2 * 3.1415926535897932384626433832795 / 360;
+	double angleEnRadian = rotation_[2] * utilitaire::PI_180;
 	glm::dvec3 directionPalette = { -cos(angleEnRadian), -sin(angleEnRadian), 0 };
 	double pente = 0;
 	if (directionPalette.x != 0)

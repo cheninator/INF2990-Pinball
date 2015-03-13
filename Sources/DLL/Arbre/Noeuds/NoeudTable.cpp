@@ -119,3 +119,43 @@ bool NoeudTable::accepterVisiteur(VisiteurAbstrait* vis)
 	return reussi;
 }
 
+////////////////////////////////////////////////////////////////////////
+///
+/// @fn void NoeudTable::traiterCollisions(aidecollision::DetailsCollision details, NoeudAbstrait* bille)
+///
+/// Reimplementation de detecterCollisions pour la des limites de la table.
+/// 
+/// @return details contient l'information sur la collision de la bille avec *this.
+/// 
+////////////////////////////////////////////////////////////////////////
+aidecollision::DetailsCollision NoeudTable::detecterCollisions(NoeudAbstrait* bille)
+{
+	aidecollision::DetailsCollision detailsAucune;
+	detailsAucune.type = aidecollision::COLLISION_AUCUNE;
+
+	std::vector<glm::dvec3> boite;
+	boite.push_back({ 108, -190, 0 });
+	boite.push_back({ 272, -190, 0 });
+	boite.push_back({ 272, 96, 0 });
+	boite.push_back({ 108, 96, 0 });
+	// Considerer tous les segments boite[i] --- boite[i+1 % size] 
+	aidecollision::DetailsCollision details;
+	double rayonBille = bille->obtenirVecteursEnglobants()[0].x;
+	for (unsigned int i = 0; i < boite.size(); i++)
+	{
+		// Considerer tous les segments boite[i] --- boite[i+1 % size] 
+		for (unsigned int i = 0; i < boite.size(); i++)
+		{
+			// On veut calculer la collision en 2D et caster les paramêtres en glm::dvec2 "oublie" leur composante en Z et choisi la bonne surcharge de calculerCollisionSegment.
+			details = aidecollision::calculerCollisionSegment((glm::dvec2)boite[i], (glm::dvec2)boite[(i + 1) % boite.size()], (glm::dvec2)bille->obtenirPositionRelative(), rayonBille, true);
+			if (details.type != aidecollision::COLLISION_AUCUNE)
+			{
+				return details;
+			}
+		}
+	}
+
+
+
+	return detailsAucune;
+}

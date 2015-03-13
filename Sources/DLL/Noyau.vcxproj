@@ -105,6 +105,7 @@
       </PrecompiledHeader>
       <WarningLevel>Level3</WarningLevel>
       <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
+      <BrowseInformation>true</BrowseInformation>
     </ClCompile>
     <Link>
       <AdditionalDependencies>opengl32.lib;glu32.lib;freetype246_R_x64.lib;glew32s.lib;tinyxml_R_x64.lib;assimp.lib;cppunit_R_x64.lib;ftgl.lib;fmodex64_vc.lib;FreeImage.lib;%(AdditionalDependencies)</AdditionalDependencies>
@@ -129,6 +130,9 @@
       <Message>
       </Message>
     </PostBuildEvent>
+    <Bscmake>
+      <PreserveSbr>true</PreserveSbr>
+    </Bscmake>
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="Application\FacadeModele.cpp" />

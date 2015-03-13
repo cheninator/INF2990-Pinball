@@ -20,7 +20,7 @@ namespace InterfaceGraphique
             }
             public virtual bool traiterKeyDown(object sender, KeyEventArgs e)
             {
-                /*
+                
                 if (e.KeyCode == Keys.Left)
                     FonctionsNatives.translater(-10, 0);
                 else if (e.KeyCode == Keys.Right)
@@ -41,18 +41,15 @@ namespace InterfaceGraphique
                 {
                     FonctionsNatives.zoomIn();
                     parent_.currentZoom = FonctionsNatives.obtenirZoomCourant();
-                }*/
-                //Console.WriteLine("Abstract KeyDown");
+                }
                 return false;
             }
             public virtual bool traiterKeyPress(object sender, KeyPressEventArgs e)
             {
-                //Console.WriteLine("Abstract Press");
                 return false;
             }
             public virtual bool traiterKeyUp(object sender, KeyEventArgs e)
             {
-                //Console.WriteLine("Abstract KeyUp");
                 return false;
             }
 
@@ -68,6 +65,11 @@ namespace InterfaceGraphique
                     Console.WriteLine("Affichage permis. On bloque");
                     FonctionsNatives.bloquerAffichageGlobal(0);
                 }
+            }
+
+            public void resetConfig()
+            {
+                parent_.resetConfig();
             }
         }
     }
@@ -141,7 +143,7 @@ namespace InterfaceGraphique
             }
             else if (e.KeyValue == parent_.getTouches().PDJ1)
             {
-
+                FonctionsNatives.activerPalettesDJ1();
             }
             else if (e.KeyValue == parent_.getTouches().PDJ2)
             {
@@ -177,11 +179,13 @@ namespace InterfaceGraphique
         }
         public override bool traiterKeyUp(object sender, KeyEventArgs e)
         {
-            //Console.WriteLine("ModeJeu KeyUp");
             if (e.KeyValue == parent_.getTouches().PGJ1)
             {
                 FonctionsNatives.desactiverPalettesGJ1();
-                // Console.WriteLine("Touche R relachée");
+            }
+            else if (e.KeyValue == parent_.getTouches().PDJ1)
+            {
+                FonctionsNatives.desactiverPalettesDJ1();
             }
             return true;
         }
@@ -193,24 +197,25 @@ namespace InterfaceGraphique
                 toggleDebugOutput();
             }
 
-           /* else if (e.KeyChar == 'j')
+            else if (e.KeyChar == 'j')
             {
                 //Console.WriteLine("LUMIERE AMBIANTE");
-                parent_.activateAmbianteLight = !(parent_.activateAmbianteLight);
-                FonctionsNatives.spotLight(0, parent_.activateAmbianteLight);
+                parent_.toggleAmbiantLight();
+                FonctionsNatives.spotLight(0, parent_.getAmbiantLight());
             }
             else if (e.KeyChar == 'k')
             {
                 //Console.WriteLine("LUMIERE DIRECTE");
-                parent_.activateDirectLight = !(parent_.activateDirectLight);
-                FonctionsNatives.spotLight(1, parent_.activateDirectLight);
+                parent_.toggleDirectLight();
+                FonctionsNatives.spotLight(1, parent_.getDirectLight());
             }
             else if (e.KeyChar == 'l')
             {
                 //Console.WriteLine("LUMIERE SPOTS");
-                parent_.activateSpotLight = !(parent_.activateSpotLight);
-                FonctionsNatives.spotLight(2, parent_.activateSpotLight);
+                parent_.toggleSpotLight();
+                FonctionsNatives.spotLight(2, parent_.getSpotLight());
             }
+            /*
             else
                 if (e.KeyChar == 'n')
                 {
@@ -241,13 +246,13 @@ namespace InterfaceGraphique
                         FonctionsNatives.construireListesPalettes();
                         parent_.currentZone++;
                 }
-                else if (e.KeyChar == (char)8)
+            * */
+            else if (e.KeyChar == (char)8)
                 {
                     // RELOAD DE LA MAP
-                    FonctionsNatives.ouvrirXML(parent_.map, parent_.map.Capacity);
-                    parent_.resetConfig();
-                }*/
-            if (e.KeyChar == (char)27)
+                    parent_.RecommencerPartie();
+                }
+            else if (e.KeyChar == (char)27)
             {
                 //Console.WriteLine("¨METTRE EN PAUSE");
                 parent_.pauseGame();
@@ -267,8 +272,10 @@ namespace InterfaceGraphique
     {
         public EtatJeuDebutDePartie(ModeJeu modeJeu) : base(modeJeu)
         {
-            // TODO: Complete member initialization
             //Console.WriteLine("Etat :" + '\t' + "DebutDePartie");
+            // Reset des points
+            resetConfig();
+            // TODO: Complete member initialization
         }
 
         public override bool traiterRoulette(object sender, MouseEventArgs e)
