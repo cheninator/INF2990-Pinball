@@ -339,8 +339,9 @@ void FacadeModele::animer(float temps)
 	traiterCollisions();
 	updateForcesExternes();
 
-	// Laisse le code existant Yonners!!
+	// Laisse le code existant Yonners!! 
 	// aiPalettes();
+	aiPalettesYonni();
 
 	// Mise a jour des objets.
 	arbre_->animer(temps);
@@ -1495,6 +1496,41 @@ void FacadeModele::aiPalettes()
 		}
 		
 }
+
+// A chaque frame, checker si une bille est proche d'une palette AI.
+
+void FacadeModele::aiPalettesYonni()
+{
+	JoueurVirtuel joueur(quad_);
+	// La structure suivante est independante de quel AI on choisit,
+	// des que le AI décide qu'une de ses palettes doit être activée,
+	// il dit à FacadeModele d'activer toutes les palettes (peu importe dans quel quad elle se trouve)
+	for (NoeudPaletteG* palette : listePalettesGJ2_)
+		for (NoeudAbstrait* bille : listeBilles_)
+		{
+			// Autre note: les palettes de listePalettesGJ2 sont de vrais NoeudPaletteG*
+			// donc on n'a pas besoin du double dispatch pour connaitre leur type.
+			// C'est parce que j'ai utilisé un visiteur pour construire les listes de palettes
+			// donc le double dispatch est déja fait.
+			if (joueur.traiter(palette,bille))
+			{
+				activerPalettesAIGauches();
+				return;
+			}
+		}
+	for (NoeudPaletteD* palette : listePalettesDJ2_)
+	for (NoeudAbstrait* bille : listeBilles_)
+	{
+		/**/
+		if (joueur.traiter(palette, bille))
+		{
+			activerPalettesAIDroites();
+			return;
+		}
+	}
+
+}
+
 
 
 void FacadeModele::activerPalettesAIGauches()

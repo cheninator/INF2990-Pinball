@@ -48,9 +48,11 @@ public:
 
 	/// Traiter une operation sur les palettes gauches
 	virtual bool traiter(NoeudPaletteG* noeud);
+	virtual bool traiter(NoeudPaletteG* noeud, NoeudAbstrait* bille);
 
 	/// Traiter une operation sur les palettes droites
 	virtual bool traiter(NoeudPaletteD* noeud);
+	virtual bool traiter(NoeudPaletteD* noeud, NoeudAbstrait* bille);
 
 private:
 

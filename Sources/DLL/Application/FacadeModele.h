@@ -188,9 +188,10 @@ public:
    void desactiverPalettesGJ1();
    void activerPalettesDJ1();
    void desactiverPalettesDJ1();
-   void FacadeModele::aiPalettes();
-   void FacadeModele::activerPalettesAIGauches();
-   void FacadeModele::activerPalettesAIDroites();
+   void aiPalettes();
+   void aiPalettesYonni();
+   void activerPalettesAIGauches();
+   void activerPalettesAIDroites();
 
    void supprimerBille();
 
