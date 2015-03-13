@@ -14,7 +14,6 @@
 #include <windows.h>
 #include <GL/gl.h>
 #include <cmath>
-#include <iostream>
 
 #include "Modele3D.h"
 #include "OpenGL_Storage/ModeleStorage_Liste.h"

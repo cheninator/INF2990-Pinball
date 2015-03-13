@@ -90,6 +90,10 @@ extern "C" {
 	__declspec(dllexport) int obtenirNombreDePointsDePartie();
 	__declspec(dllexport) void resetNombreDePointsDePartie();
 	__declspec(dllexport) int  obtenirNombreBillesCourante();
+	__declspec(dllexport) void activerPalettesGJ1();
+	__declspec(dllexport) void desactiverPalettesGJ1();
+	__declspec(dllexport) void activerPalettesDJ1();
+	__declspec(dllexport) void desactiverPalettesDJ1();
 }
 
 #endif // __FACADE_INTERFACE_NATIVE_H__

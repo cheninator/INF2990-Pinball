@@ -1224,6 +1224,36 @@ void FacadeModele::desactiverPalettesGJ1()
 		palette->desactiver();
 }
 
+///////////////////////////////////////////////////////////////////////////////
+///
+/// @fn void FacadeModele::activerPalettesDJ1()
+/// Active les palettes gauches du joueur 1. C'est la fonction qui dit a la 
+/// palette de bouger.
+/// 
+/// @remark Les listes de palettes doivent avoir etes construites
+/// 
+///////////////////////////////////////////////////////////////////////////////
+void FacadeModele::activerPalettesDJ1()
+{
+	for (NoeudPaletteD* palette : listePalettesDJ1_)
+		palette->activer();
+}
+
+///////////////////////////////////////////////////////////////////////////////
+///
+/// @fn void FacadeModele::desactiverPalettesDJ1()
+/// Desactive les palettes gauches du joueur 1. C'est la fonction qui dit a la 
+/// palette de revenir et d'arreter de bouger.
+/// 
+/// @remark Les listes de palettes doivent avoir etes construites
+/// 
+///////////////////////////////////////////////////////////////////////////////
+void FacadeModele::desactiverPalettesDJ1()
+{
+	for (NoeudPaletteD* palette : listePalettesDJ1_)
+		palette->desactiver();
+}
+
 
 void FacadeModele::supprimerBille()
 {
@@ -1448,8 +1478,7 @@ void FacadeModele::aiPalettes()
 				return;
 			}
 		}
-	/*
-	for(NoeudPaletteG* palette : listePalettesGJ2_)
+	for(NoeudPaletteD* palette : listePalettesDJ2_)
 		for(NoeudAbstrait* bille : listeBilles_)
 		{
 			if (palette->estActiveeParBille(bille))
@@ -1459,7 +1488,6 @@ void FacadeModele::aiPalettes()
 				return;
 			}
 		}
-	}*/
 }
 
 
@@ -1471,12 +1499,11 @@ void FacadeModele::activerPalettesAIGauches()
 	}
 }
 
-/*
+
 void FacadeModele::activerPalettesAIDroites()
 {
-	for (NoeudPaletteG* palette : listePalettesGJ2_)
+	for (NoeudPaletteD* palette : listePalettesDJ2_)
 	{
 		palette->activerAI();
 	}
 }
-*/

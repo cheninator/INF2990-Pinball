@@ -281,9 +281,9 @@ namespace InterfaceGraphique
         private void ToucheDownTest( Object o, KeyEventArgs e )
         {
              if (e.KeyValue == touches.PGJ1)
-                {
-                    FonctionsNatives.activerPalettesGJ1();
-                }
+             {
+                FonctionsNatives.activerPalettesGJ1();
+             }
 
              else if (e.KeyValue == touches.PGJ2)
              {
@@ -291,7 +291,7 @@ namespace InterfaceGraphique
              }
              else if (e.KeyValue == touches.PDJ1)
              {
-               
+                 FonctionsNatives.activerPalettesDJ1();
              }
              else if (e.KeyValue == touches.PDJ2)
              {
@@ -327,7 +327,7 @@ namespace InterfaceGraphique
             }
             else if (e.KeyValue == touches.PDJ1)
             {
-
+                FonctionsNatives.desactiverPalettesDJ1();
             }
             else if (e.KeyValue == touches.PDJ2)
             {

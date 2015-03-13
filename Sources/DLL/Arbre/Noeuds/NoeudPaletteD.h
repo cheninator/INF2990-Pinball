@@ -39,18 +39,32 @@ public:
 	/// Accepte un visiteur.
 	virtual bool accepterVisiteur(VisiteurAbstrait* vis);
 
+	/// Activer la palette.
+	void activer();
+
+	void activerAI();
+	bool estActiveeParBille(NoeudAbstrait* bille);
+	/// Desactiver la palette. La faire redescendre.
+	void desactiver();
+
+	/// Pour le traitement logique des collisions
+	virtual void traiterCollisions(aidecollision::DetailsCollision, NoeudAbstrait* bille);
+
+	double fonctionDroitePaletteOriginale(NoeudAbstrait* bille);
+	double fonctionDroitePaletteEnMouvement(NoeudAbstrait* bille);
+
 private:
+	/// Enumeration pour contenir l'etat de la palette
+	enum Etat { ACTIVE, RETOUR, INACTIVE, ACTIVE_AI, RETOUR_AI };
+
+	/// Etat courant de la palette
+	Etat etatPalette_{ INACTIVE };
+
 	/// Angle Original pour le mouvement des palettes selon les touches du clavier
-	double angleZOriginal;
-	
-	/// Angle selon l'axe des X.
-	float angleX_{ 0.f };
+	double angleZOriginal_;
 
-	/// Angle selon l'axe des Y.
-	float angleY_{ 0.f };
-
-	/// Angle de rotation.
-	float angleRotation_{ 0.f };
+	/// Chronometre interne
+	float timer_{ 0 };
 };
 
 #endif // __ARBRE_NOEUDS_NOEUDPALETTED_H__

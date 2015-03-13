@@ -1446,7 +1446,16 @@ extern "C"
 	__declspec(dllexport) void __cdecl desactiverPalettesGJ1()
 	{
 		FacadeModele::obtenirInstance()->desactiverPalettesGJ1();
+	}
 
+	__declspec(dllexport) void __cdecl activerPalettesDJ1()
+	{
+		FacadeModele::obtenirInstance()->activerPalettesDJ1();
+	}
+
+	__declspec(dllexport) void __cdecl desactiverPalettesDJ1()
+	{
+		FacadeModele::obtenirInstance()->desactiverPalettesDJ1();
 	}
 
 	__declspec(dllexport) BSTR obtenirDerniereCampagne()
