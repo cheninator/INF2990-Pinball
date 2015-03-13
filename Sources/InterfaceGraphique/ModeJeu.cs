@@ -174,10 +174,10 @@ namespace InterfaceGraphique
                     if (peutAnimer)
                     {
                         FonctionsNatives.animer(tempsInterAffichage);
-                        int bfPts = pointsPartie;
+                        //int bfPts = pointsPartie;
                         pointsPartie = FonctionsNatives.obtenirNombreDePointsDePartie();
-                        if (bfPts != pointsPartie)
-                            Console.WriteLine(pointsPartie);
+                        //if (bfPts != pointsPartie)
+                        //    Console.WriteLine(pointsPartie);
                     }
                    FonctionsNatives.dessinerOpenGL();
 
