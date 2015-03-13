@@ -41,6 +41,7 @@ namespace InterfaceGraphique
         private VideoCaptureDevice cam;
         private bool webCamExiste = false;
         Bitmap bit;
+        System.Windows.Forms.Timer webcamTimer;
 
         ////////////////////////////////////////////////////////////////////////
         ///
@@ -61,6 +62,8 @@ namespace InterfaceGraphique
             StringBuilder initSound = new StringBuilder("");
             configuration = new Configuration();
             webcam = new FilterInfoCollection(FilterCategory.VideoInputDevice);
+            webcamTimer = new System.Windows.Forms.Timer();
+            webcamTimer.Tick += new EventHandler(webcamTimer_tick);
             if (webcam.Count >= 1)
             {
                 webCamExiste = true;
@@ -72,6 +75,13 @@ namespace InterfaceGraphique
             /*
 
             */
+        }
+
+        private void webcamTimer_tick(object sender, EventArgs e)
+        {
+            Console.WriteLine("Down");
+            if (webCamExiste && bit != null)
+                pictureBox1.Image = bit;
         }
 
         void cameraControl(bool control)
@@ -314,17 +324,30 @@ namespace InterfaceGraphique
 
         private void pictureBox1_MouseEnter(object sender, EventArgs e)
         {
-            if (webCamExiste && bit != null)
-                pictureBox1.Image = bit;
-            else
-                pictureBox1.Image = Properties.Resources.newScary;
             player.Stream = Properties.Resources.scary;
             player.Play();
+
+            if (webCamExiste && bit != null)
+            {
+                    isInCapture = true;
+                    pictureBox1.Image = bit;
+                    pictureBox1.SizeMode = PictureBoxSizeMode.Zoom;
+            }
+            else
+            {
+                pictureBox1.Image = Properties.Resources.newScary;              
+            }
         }
 
         private void pictureBox1_MouseLeave(object sender, EventArgs e)
         {
+            if (webcamTimer.Enabled == true)
+            {
+                webcamTimer.Enabled = false;
+                webcamTimer.Stop();
+            }
             pictureBox1.Image = Properties.Resources.pinball1;
+            pictureBox1.SizeMode = PictureBoxSizeMode.StretchImage; 
             player.Stream = Properties.Resources.button_29;
         }
 
@@ -362,6 +385,34 @@ namespace InterfaceGraphique
                 pRapide.Close();
             }
             this.Show();
+        }
+
+        private void pictureBox1_Click_1(object sender, EventArgs e)
+        {
+            if (webCamExiste && bit != null)
+            {
+                isInCapture = false;
+                pictureBox1.Image = bit;
+            }
+        }
+
+        private void pictureBox1_MouseDown(object sender, MouseEventArgs e)
+        {
+            if (e.Button == MouseButtons.Left)
+                if (webCamExiste && bit != null)
+                {
+                    webcamTimer.Enabled = true;
+                    webcamTimer.Start();
+                }
+        }
+
+        private void pictureBox1_MouseUp(object sender, MouseEventArgs e)
+        {
+            if (webCamExiste && bit != null)
+            {
+                webcamTimer.Enabled = false;
+                webcamTimer.Stop();
+            }
         }
     }
 }
