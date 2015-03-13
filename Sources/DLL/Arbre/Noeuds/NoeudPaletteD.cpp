@@ -311,7 +311,8 @@ bool NoeudPaletteD::estActiveeParBille(NoeudAbstrait* bille)
 	double distanceNormale = glm::length(vecteurNormal);
 	glm::dvec3 produitVectoriel;
 
-	if (glm::dot(directionPalette, vecteur) < 0
+	if (fonctionDroitePaletteOriginale(bille) > 0// << vrai si on la bille est au dessus de la droite definie par la palette. C<est ce qui fait que les palettes n'activent pas par en dessous.
+		&& glm::dot(directionPalette, vecteur) > 0
 		&& asin(glm::length(produitVectoriel) / glm::length(vecteur)) < sin(60 * utilitaire::PI_180)
 		&& distance < longueurPalette
 		)
