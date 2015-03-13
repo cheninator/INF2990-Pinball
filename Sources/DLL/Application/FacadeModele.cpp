@@ -336,7 +336,11 @@ void FacadeModele::animer(float temps)
 	// Si je commente la ligne suivante, rentrer et sortir du mode test fait crasher, 
 	// il manque un appel pour quand on sort du mode test.
 	mettreAJourListeBillesEtNoeuds();
-	traiterCollisions();
+	bool useQuadTree = false;
+	if (useQuadTree)
+		traiterCollisionsAvecQuadTree();
+	else
+		traiterCollisions();
 	updateForcesExternes();
 
 	// Laisse le code existant Yonners!! 
@@ -1296,22 +1300,20 @@ int* FacadeModele::obtenirProprietes(char* nomFichier, int length)
 /// 
 ///////////////////////////////////////////////////////////////////////////////
 void FacadeModele::traiterCollisions()
-{	
+{
 	bool miseAJourListeBillesRequise = false;
-	bool useQuadTree = false;
 
 	// Pour chaque bille, 
 	for (NoeudAbstrait* bille : listeBilles_)
 	{
 		// Obtenir une liste de noeuds a verifier avec la bille courante.
 		std::vector<NoeudAbstrait*> noeudsAVeririer;
-		if (useQuadTree)
-			; // TODO
-		else
-			noeudsAVeririer = listeNoeuds_;
+
+		noeudsAVeririer = listeNoeuds_;
+		noeudsAVeririer.push_back(arbre_->chercher(0));
+
 		bille->assignerImpossible(false);
 		// Et la table :
-		noeudsAVeririer.push_back(arbre_->chercher(0));
 
 		// Faire la detection et reaction pour chaque noeud de noeudsAVrifier
 		for (NoeudAbstrait* noeudAVerifier : noeudsAVeririer)
@@ -1330,16 +1332,61 @@ void FacadeModele::traiterCollisions()
 				}
 			}
 		}
+		mettreAJourListeNoeuds();          // MODIF (Juste updater listeNoeuds_ pour pas avoir le assert de vector.
+	}// Fin du for (NoeudAbstrait* bille : listeBilles_)
 
-		if (useQuadTree)
-			; // Enlever la bille du quadTree
-		else
-			mettreAJourListeNoeuds();          // MODIF (Juste updater listeNoeuds_ pour pas avoir le assert de vector.
-	}
 	if (miseAJourListeBillesRequise)
 		mettreAJourListeBillesEtNoeuds(); // Cette méthode est appelée a chaque frame dand animer(temps)
-	                                      // mais si on trouve toutes les places ou elle doit être appelée, 
-	                                      // on n'aura plus besoin de l'appeler a chaque frame et donc ici serait le bon endroit pour l'appeler quand on a effacé une bille.
+	// mais si on trouve toutes les places ou elle doit être appelée, 
+	// on n'aura plus besoin de l'appeler a chaque frame et donc ici serait le bon endroit pour l'appeler quand on a effacé une bille.
+}
+
+
+
+
+void FacadeModele::traiterCollisionsAvecQuadTree()
+{
+	bool miseAJourListeBillesRequise = false;
+
+	// Pour chaque bille, 
+	for (NoeudAbstrait* bille : listeBilles_)
+	{
+		// Obtenir une liste de noeuds a verifier avec la bille courante.
+		std::vector<NoeudAbstrait*> noeudsAVeririer;
+		std::list<NoeudAbstrait*> listeNoeudsAVeririer;
+
+		quad_->insert(bille);
+		listeNoeudsAVeririer = quad_->retrieve(bille);
+		std::cout << listeNoeudsAVeririer.size() << std::endl;
+		listeNoeudsAVeririer.push_back(arbre_->chercher(0));
+
+		bille->assignerImpossible(false);
+
+		std::list<NoeudAbstrait*>::iterator itNoeudAVerifier;
+		for (itNoeudAVerifier = listeNoeudsAVeririer.begin(); itNoeudAVerifier != listeNoeudsAVeririer.end(); itNoeudAVerifier++)
+		{
+			NoeudAbstrait* noeudAVerifier = (*itNoeudAVerifier);
+			// Detecter les collisions entre le noeud et la bille
+			aidecollision::DetailsCollision detail = noeudAVerifier->detecterCollisions(bille);
+
+			if (detail.type != aidecollision::COLLISION_AUCUNE)
+			{
+				// Traiter (reagir a) la collision.
+				noeudAVerifier->traiterCollisions(detail, bille);
+				if (noeudAVerifier->obtenirType() == "trou") // MODIF
+				{
+					miseAJourListeBillesRequise = true;
+					break;                                   // MODIF
+				}
+			}
+		}// Fin du for( noeudAVerifier : listeNoeudsAVerifier)
+
+		// Important: Si une bille est tombee dans un trou, il faut l'enlever du quadTree avant de poursuivre a la prochaine bille.
+		mettreAJourListeNoeuds();          // MODIF (Juste updater listeNoeuds_ pour pas avoir le assert de vector.
+	}// fin du for (NoeudAbstrait* bille : listeBilles_)
+	if (miseAJourListeBillesRequise)
+		mettreAJourListeBillesEtNoeuds();
+
 }
 
 
