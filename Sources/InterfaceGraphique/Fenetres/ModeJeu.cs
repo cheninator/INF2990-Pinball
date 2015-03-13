@@ -10,7 +10,7 @@ namespace InterfaceGraphique
     {
         public PartieTerminee gameOver;
         private Timer timer;
-        //private Timer timerBille2;
+        private Timer timerBille2;
         private double currentZoom = -1; ///< Zoom courant
         private Touches touches; ///< Les touches pour le jeu
         private ZoneInfo zInfo;
