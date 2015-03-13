@@ -88,6 +88,9 @@ void JoueurVirtuel::jouer(const std::vector<NoeudAbstrait*>& listeBilles)
 
 bool JoueurVirtuel::traiter(NoeudPaletteG* noeud)
 {
+	if (noeud->obtenirInitial())
+		noeud->assignerAngleOriginal(noeud->obtenirRotation().z);
+
 	for (unsigned int i = 0; i < billes_.size(); i++)
 	{
 		glm::dvec3 positionPalette = noeud->obtenirPositionRelative();

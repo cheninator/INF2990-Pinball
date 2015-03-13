@@ -63,7 +63,10 @@ public:
 	/// Modifier le comportement pour que ce soit un joueur virtuel
 	void activerJoueurVirtuel(bool active) { estJoueurVirtuel = active; };
 
+	/// Savoir si la palette vient tout juste d'etre construit
+	bool obtenirInitial() const { return initial_; };
 
+	void assignerAngleOriginal(double angle) { angle =  angleZOriginal_; };
 
 	double fonctionDroitePaletteOriginale(NoeudAbstrait* bille);
 	double fonctionDroitePaletteEnMouvement(NoeudAbstrait* bille);
