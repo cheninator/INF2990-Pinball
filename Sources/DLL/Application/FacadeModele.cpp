@@ -1339,7 +1339,7 @@ void FacadeModele::updateForcesExternes()
 				{
 					if (bille->obtenirPortailDOrigine() != noeud)
 					{
-						glm::dvec2 force = (1 / (distance*distance)) * glm::normalize(positionPortail - positionBille);
+						glm::dvec2 force = 1/distance * glm::normalize(positionPortail - positionBille);
 						sommeDesForces += force;
 					}
 				}
