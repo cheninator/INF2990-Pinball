@@ -29,8 +29,6 @@
         private void InitializeComponent()
         {
             this.panel_GL = new System.Windows.Forms.Panel();
-            this.nbBilles = new System.Windows.Forms.Label();
-            this.PointPartie = new System.Windows.Forms.Label();
             this.menuStrip = new System.Windows.Forms.MenuStrip();
             this.fichier_MenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.mPrincipal_menu = new System.Windows.Forms.ToolStripMenuItem();
@@ -65,8 +63,6 @@
             // 
             this.panel_GL.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.panel_GL.BackColor = System.Drawing.Color.Transparent;
-            this.panel_GL.Controls.Add(this.nbBilles);
-            this.panel_GL.Controls.Add(this.PointPartie);
             this.panel_GL.Controls.Add(this.menuStrip);
             this.panel_GL.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel_GL.Location = new System.Drawing.Point(0, 0);
@@ -75,27 +71,6 @@
             this.panel_GL.TabIndex = 4;
             this.panel_GL.MouseClick += new System.Windows.Forms.MouseEventHandler(this.panel_GL_MouseClick);
             // 
-            // nbBilles
-            // 
-            this.nbBilles.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.nbBilles.AutoSize = true;
-            this.nbBilles.Location = new System.Drawing.Point(13, 431);
-            this.nbBilles.Name = "nbBilles";
-            this.nbBilles.Size = new System.Drawing.Size(43, 13);
-            this.nbBilles.TabIndex = 4;
-            this.nbBilles.Text = "nbBilles";
-            // 
-            // PointPartie
-            // 
-            this.PointPartie.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.PointPartie.AutoSize = true;
-            this.PointPartie.Location = new System.Drawing.Point(13, 418);
-            this.PointPartie.Name = "PointPartie";
-            this.PointPartie.Size = new System.Drawing.Size(63, 13);
-            this.PointPartie.TabIndex = 3;
-            this.PointPartie.Text = "PointsPartie";
-            this.PointPartie.UseMnemonic = false;
-            // 
             // menuStrip
             // 
             this.menuStrip.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
@@ -103,7 +78,7 @@
             this.Camera_MenuItem});
             this.menuStrip.Location = new System.Drawing.Point(0, 0);
             this.menuStrip.Name = "menuStrip";
-            this.menuStrip.Size = new System.Drawing.Size(284, 24);
+            this.menuStrip.Size = new System.Drawing.Size(633, 24);
             this.menuStrip.TabIndex = 0;
             this.menuStrip.Text = "menuStrip1";
             this.menuStrip.Visible = false;
@@ -174,9 +149,10 @@
             // 
             // label_Titre
             // 
+            this.label_Titre.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.label_Titre.Location = new System.Drawing.Point(3, 0);
             this.label_Titre.Name = "label_Titre";
-            this.label_Titre.Size = new System.Drawing.Size(184, 23);
+            this.label_Titre.Size = new System.Drawing.Size(187, 23);
             this.label_Titre.TabIndex = 0;
             this.label_Titre.Text = "Informations sur la partie courrante";
             this.label_Titre.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -237,9 +213,10 @@
             // 
             // label_Titre2
             // 
+            this.label_Titre2.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.label_Titre2.Location = new System.Drawing.Point(3, 149);
             this.label_Titre2.Name = "label_Titre2";
-            this.label_Titre2.Size = new System.Drawing.Size(184, 23);
+            this.label_Titre2.Size = new System.Drawing.Size(187, 23);
             this.label_Titre2.TabIndex = 7;
             this.label_Titre2.Text = "Informations sur la zone";
             this.label_Titre2.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -370,8 +347,6 @@
         private System.Windows.Forms.ToolStripMenuItem Ortho_MenuItem;
         private System.Windows.Forms.ToolStripMenuItem Orbitale_MenuItem;
         private System.Windows.Forms.ToolStripMenuItem mPrincipal_menu;
-        private System.Windows.Forms.Label PointPartie;
-        private System.Windows.Forms.Label nbBilles;
         private System.Windows.Forms.FlowLayoutPanel InfoPanel;
         private System.Windows.Forms.Label label_Titre;
         private System.Windows.Forms.Label label_Points;

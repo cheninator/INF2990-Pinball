@@ -84,7 +84,7 @@ namespace InterfaceGraphique
            // timerBille2.Tick += new System.EventHandler(this.timerBille2_Tick);
             timer.Enabled = true;
 
-            timer.Interval = 3000;
+            timer.Interval = 3500;
             timer.Tick += new System.EventHandler(this.timer_Tick);
             EtablirTouches(playerType);
             this.KeyDown += new KeyEventHandler(PartieRapide_KeyDown);
@@ -109,6 +109,8 @@ namespace InterfaceGraphique
             resetConfig();
             nombreBillesInit = FonctionsNatives.obtenirNombreDeBilles();
             FonctionsNatives.construireListesPalettes();
+            FonctionsNatives.translater(-10, 0);
+
             currentZone++;
             Program.tempBool = true;
             panel_GL.Focus();
@@ -134,8 +136,7 @@ namespace InterfaceGraphique
             pointsGagnerBille = FonctionsNatives.obtenirPointsGagnerBille();
             nombreBillesInit = FonctionsNatives.obtenirNombreDeBilles();
             billesDisponibles = nombreBillesInit;
-            this.PointPartie.Text = pointsPartie.ToString();
-            this.nbBilles.Text = "0";
+            label_nbGagnes.Text = nombreDeBillesGagnes.ToString();
             setProprietes();
         }
 
@@ -210,7 +211,6 @@ namespace InterfaceGraphique
                             // wait a certain time
                             CreerBille();
                         }
-                        // if (nombreDeBillesUtilise > (nombreBillesInit + nombreDeBillesGagnes) && boolTemp)
                         if (billesDisponibles < 0 && boolTemp)
                         {
                             FinCampagne(false);
@@ -218,6 +218,7 @@ namespace InterfaceGraphique
                         if (pointsPartie >= nombreDeBillesGagnes * pointsGagnerBille + pointsGagnerBille)
                         {
                             nombreDeBillesGagnes++;
+                            label_nbGagnes.Text = nombreDeBillesGagnes.ToString();
                             billesDisponibles++;
                         }
 
@@ -226,32 +227,8 @@ namespace InterfaceGraphique
                         {
                             label_nbBilles.Text = billesDisponibles.ToString();
                         }
-                        //label_nbGagnes.Text = nombreDeBillesGagnes.ToString();
-                        this.nbBilles.Text = billesEnJeu.ToString() + "a";
                         if (pointsPartie >= pointsGagnerPartie && boolTemp)
                         {
-                            FonctionsNatives.dessinerOpenGL();
-                            billesEnJeu = FonctionsNatives.obtenirNombreBillesCourante();
-                            if (startGame && billesEnJeu == 0 && (nombreBillesInit + nombreDeBillesGagnes - nombreDeBillesUtilise >= 0))
-                            {
-                                // wait a certain time
-                                CreerBille();
-                                FinCampagne(true);
-                            }
-                            if (nombreDeBillesUtilise > (nombreBillesInit + nombreDeBillesGagnes) && boolTemp)
-                            {
-                                FinCampagne(false);
-                            }
-                            if (pointsPartie >= nombreDeBillesGagnes * pointsGagnerBille + pointsGagnerBille)
-                            {
-                                nombreDeBillesGagnes++;
-                                billesDisponibles++;
-                            }
-
-                            this.PointPartie.Text = pointsPartie.ToString();
-                            this.nbBilles.Text = billesEnJeu.ToString();
-                            if (pointsPartie >= pointsGagnerPartie && boolTemp)
-                            {
                                 if (currentZone >= nbZones)
                                 {
                                     FinCampagne(true);
@@ -261,9 +238,9 @@ namespace InterfaceGraphique
                                 {
                                     ProchainePartie();
                                 }
-                            }
+                          
 
-
+                        }
                             if (currentZoom <= 0)
                             {
                                 FonctionsNatives.resetZoom();
@@ -271,7 +248,7 @@ namespace InterfaceGraphique
 
                             }
                         }
-                    }
+                    
                 });
             }
             catch (Exception)
@@ -327,7 +304,7 @@ namespace InterfaceGraphique
             // Il faut changer le mode car le traitement de début est fini
             etat = new EtatJeuJouer(this);
             timer.Enabled = true;
-            timer.Interval = 3000;
+            timer.Interval = 3500;
             timer.Stop();
             timer.Start();
 
@@ -339,8 +316,8 @@ namespace InterfaceGraphique
             FonctionsNatives.creerObjet(bille, bille.Capacity);
             nombreDeBillesUtilise++;
             billesDisponibles--;
-            Console.WriteLine(nombreBillesInit);
-            Console.WriteLine(nombreDeBillesUtilise);
+            //Console.WriteLine(nombreBillesInit);
+            //Console.WriteLine(nombreDeBillesUtilise);
 
         }
         private void FinCampagne(bool active)
