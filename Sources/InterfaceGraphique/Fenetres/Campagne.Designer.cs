@@ -56,9 +56,9 @@
             this.colonneZone,
             this.colonneDiff});
             this.ZonesChoisis.FullRowSelect = true;
-            this.ZonesChoisis.Location = new System.Drawing.Point(445, 150);
+            this.ZonesChoisis.Location = new System.Drawing.Point(432, 150);
             this.ZonesChoisis.Name = "ZonesChoisis";
-            this.ZonesChoisis.Size = new System.Drawing.Size(183, 274);
+            this.ZonesChoisis.Size = new System.Drawing.Size(196, 274);
             this.ZonesChoisis.TabIndex = 1;
             this.ZonesChoisis.UseCompatibleStateImageBehavior = false;
             this.ZonesChoisis.View = System.Windows.Forms.View.Details;
@@ -146,7 +146,7 @@
             this.bouton_ADD.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.bouton_ADD.Location = new System.Drawing.Point(24, 430);
             this.bouton_ADD.Name = "bouton_ADD";
-            this.bouton_ADD.Size = new System.Drawing.Size(183, 39);
+            this.bouton_ADD.Size = new System.Drawing.Size(192, 39);
             this.bouton_ADD.TabIndex = 5;
             this.bouton_ADD.Text = "Ajouter a la liste";
             this.bouton_ADD.UseVisualStyleBackColor = true;
@@ -154,7 +154,7 @@
             // 
             // bouton_REMOVE
             // 
-            this.bouton_REMOVE.Location = new System.Drawing.Point(445, 430);
+            this.bouton_REMOVE.Location = new System.Drawing.Point(432, 430);
             this.bouton_REMOVE.Name = "bouton_REMOVE";
             this.bouton_REMOVE.Size = new System.Drawing.Size(91, 39);
             this.bouton_REMOVE.TabIndex = 6;
@@ -212,7 +212,7 @@
             this.ZonesDisponibles.Location = new System.Drawing.Point(24, 150);
             this.ZonesDisponibles.MultiSelect = false;
             this.ZonesDisponibles.Name = "ZonesDisponibles";
-            this.ZonesDisponibles.Size = new System.Drawing.Size(183, 274);
+            this.ZonesDisponibles.Size = new System.Drawing.Size(192, 274);
             this.ZonesDisponibles.TabIndex = 11;
             this.ZonesDisponibles.UseCompatibleStateImageBehavior = false;
             this.ZonesDisponibles.View = System.Windows.Forms.View.Details;

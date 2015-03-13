@@ -151,11 +151,12 @@ namespace InterfaceGraphique
 
         }
 
-        // To DO: remove this
+        // To DO: Don't touch my shit
         private void timer_Tick(object sender, EventArgs e)
         {
-          StringBuilder bille = new StringBuilder("bille");
-          FonctionsNatives.creerObjet(bille, bille.Capacity);
+        //  StringBuilder bille = new StringBuilder("bille");
+        //  FonctionsNatives.creerObjet(bille, bille.Capacity);
+            CreerBille();
           //Console.WriteLine("timer");
          // timerBille2.Start();
           timer.Stop();
@@ -164,8 +165,9 @@ namespace InterfaceGraphique
         // And this
         private void timerBille2_Tick(object sender, EventArgs e)
         {
-            StringBuilder bille = new StringBuilder("bille");
-            FonctionsNatives.creerObjet(bille, bille.Capacity);
+           // StringBuilder bille = new StringBuilder("bille");
+           // FonctionsNatives.creerObjet(bille, bille.Capacity);
+            CreerBille();
             //Console.WriteLine("BILLE 2");
             timerBille2.Stop();
         }
@@ -179,26 +181,18 @@ namespace InterfaceGraphique
                     if (peutAnimer)
                     {
                         FonctionsNatives.animer(tempsInterAffichage);
-                        //int bfPts = pointsPartie;
                         pointsPartie = FonctionsNatives.obtenirNombreDePointsDePartie();
-                        //if (bfPts != pointsPartie)
-                        //    Console.WriteLine(pointsPartie);
                     }
                    FonctionsNatives.dessinerOpenGL();
 
                    billesEnJeu = FonctionsNatives.obtenirNombreBillesCourante();
-                   if (startGame && billesEnJeu == 0 && (nombreBillesInit + nombreDeBillesGagnes - nombreDeBillesUtilise > 0))
-                //   if (billesEnJeu == 0 && nombreBillesInit > 0)
+                   if (startGame && billesEnJeu == 0 && (nombreBillesInit + nombreDeBillesGagnes - nombreDeBillesUtilise >= 0))
                   
                     {
                         // wait a certain time
-                       StringBuilder bille = new StringBuilder("bille");
-                       FonctionsNatives.creerObjet(bille, bille.Capacity);
-                       nombreDeBillesUtilise++;
-                       Console.WriteLine(nombreBillesInit);
-                       Console.WriteLine(nombreDeBillesUtilise);
+                        CreerBille();
                    }
-                   if (nombreDeBillesUtilise >= (nombreBillesInit + nombreDeBillesGagnes) && boolTemp)
+                   if (nombreDeBillesUtilise > (nombreBillesInit + nombreDeBillesGagnes) && boolTemp)
                    {
                        FinCampagne(false);
                    }
@@ -209,8 +203,6 @@ namespace InterfaceGraphique
                    }
 
                    this.PointPartie.Text = pointsPartie.ToString();
-                  // this.nbBilles.Text = (nombreDeBillesGagnes - nombreDeBillesUtilise).ToString();
-                  // this.nbBilles.Text = (nombreBillesInit + nombreDeBillesGagnes).ToString();
                    this.nbBilles.Text = billesEnJeu.ToString();
                     if (pointsPartie >= pointsGagnerPartie && boolTemp)
                     {
@@ -253,13 +245,11 @@ namespace InterfaceGraphique
         public void RecommencerPartie()
         {
             resetConfig();
-
             FonctionsNatives.ouvrirXML(map, map.Capacity);
-
+            FonctionsNatives.resetNombreBillesCourantes();
             FonctionsNatives.construireListesPalettes();
             FonctionsNatives.mettreAJourListeBillesEtNoeuds();
-
-
+            startGame = false;
             timer.Start();
         }
 
@@ -270,8 +260,6 @@ namespace InterfaceGraphique
             map = new StringBuilder(myMaps[currentZone]);
             nextMap = new StringBuilder(map.ToString());
             nextMap.Remove(nextMap.Length - 4, 4);
-            //Console.WriteLine(Path.GetFileName(nextMap.ToString()));
-
             System.Threading.Thread.Sleep(500);
             zInfo = new ZoneInfo(Path.GetFileName(nextMap.ToString()), FonctionsNatives.obtenirDifficulte(map, map.Capacity).ToString(), true);
             this.Hide();
@@ -282,9 +270,11 @@ namespace InterfaceGraphique
             FonctionsNatives.construireListesPalettes();
             FonctionsNatives.resetNombreDePointsDePartie();
             FonctionsNatives.resetNombreBillesCourantes();
+            FonctionsNatives.mettreAJourListeBillesEtNoeuds();
             currentZone++;
             peutAnimer = true;
             boolTemp = true;
+            startGame = false;
             /// La création de l'état s'occupe d'appeler resetConfig
             etat = new EtatJeuDebutDePartie(this);
             // Il faut changer le mode car le traitement de début est fini
@@ -296,13 +286,22 @@ namespace InterfaceGraphique
 
         }
 
+        private void CreerBille()
+        {
+            StringBuilder bille = new StringBuilder("bille");
+            FonctionsNatives.creerObjet(bille, bille.Capacity);
+            nombreDeBillesUtilise++;
+            Console.WriteLine(nombreBillesInit);
+            Console.WriteLine(nombreDeBillesUtilise);
+
+        }
         private void FinCampagne(bool active)
         {
-                            peutAnimer = false;
-                            boolTemp = false;
-                            gameOver = new PartieTerminee(active);
+            peutAnimer = false;
+            boolTemp = false;
+            gameOver = new PartieTerminee(active);
             
-                            gameOver.ShowDialog(this);
+            gameOver.ShowDialog(this);
         }
         private void PartieRapide_Load(object sender, EventArgs e)
         {
