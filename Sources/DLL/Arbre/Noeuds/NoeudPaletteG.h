@@ -45,7 +45,9 @@ public:
 	/// Activer la palette.
 	void activer();
 
-	/// Desactiver la palette.
+	void activerAI();
+	bool estActiveeParBille(NoeudAbstrait* bille);
+	/// Desactiver la palette. La faire redescendre.
 	void desactiver();
 
 	/// Pour le traitement logique des collisions
@@ -54,33 +56,20 @@ public:
 	/// Obtenir l'angle initial de la palette
 	double obtenirAngleZOriginal() const { return angleZOriginal_; };
 
-	/// Modifier la vitesse de monte angulaire de la palette
-	void assignerVitesseMonteAngulaire(glm::dvec3 vitesse) { vitesseMonteAngulaire_ = vitesse; };
-
-	/// Modifier la vitesse de descente angulaire de la palette
-	void assignerVitesseDescenteAngulaire(glm::dvec3 vitesse) { vitesseDescenteAngulaire_ = vitesse; };
-
-
-
-
 	double fonctionDroitePaletteOriginale(NoeudAbstrait* bille);
 	double fonctionDroitePaletteEnMouvement(NoeudAbstrait* bille);
-
 private:
+	/// Enumeration pour contenir l'etat de la palette
+	enum Etat { ACTIVE, RETOUR, INACTIVE, ACTIVE_AI, RETOUR_AI };
+
+	/// Etat courant de la palette
+	Etat etatPalette_{ INACTIVE };
 
 	/// Angle Original pour le mouvement des palettes selon les touches du clavier
 	double angleZOriginal_;
-
-	/// Information concernant l'état d'activation de la palette
-	bool estActive;
 	
-	/// Information des vitesses de monte et de descente de la palette
-	glm::dvec3 vitesseMonteAngulaire_;
-	glm::dvec3 vitesseDescenteAngulaire_;
-
 	/// Chronometre interne
 	float timer_{ 0 };
-
 };
 
 #endif // __ARBRE_NOEUDS_NOEUDPALETTEG_H__
