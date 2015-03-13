@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.IO;
+using System.Runtime.InteropServices;
 using System.Text;
 using System.Windows.Forms;
 
@@ -27,14 +28,15 @@ namespace InterfaceGraphique
         private bool activateDirectLight = false; ///< Etat de la lumiere directe
         private bool activateSpotLight = false; ///< Etat de la lumiere spot
         private EtatJeuAbstrait etat; ///< Machine à états
-
+        int[] proprietes = new int[5];
         public int pointsPartie = 0;
         public int pointsTotale = 0;
-        public int billeDisponible = 0;
+
+
         private int nombreDeBillesGagnes = 0;
-        private int pointsGagnerBille = 0;
-        private int pointsGagnerPartie = 0;
-        private int billesDisponibles = 0;
+        private int pointsGagnerBille = 0;  /// Nombre de Points pour gagner une nouvelle bille
+        private int pointsGagnerPartie = 0; /// Nombre de Points pour gagner une zone
+        private int billesDisponibles = 0;  /// Billes dont le(s) joueur(s) disposent
         public int billesEnJeu = 0;
         private int nombreDeBillesUtilise = 0;
         
@@ -115,14 +117,15 @@ namespace InterfaceGraphique
             // Il faut changer le mode car le traitement de début est fini
             etat = new EtatJeuJouer(this);
             timer.Start();
+
           
         }
 
 
         protected void resetConfig()
         {
-            billeDisponible = 0;
             billesEnJeu = 0;
+            FonctionsNatives.resetNombreBillesCourantes();
             nombreDeBillesGagnes = 0;
             nombreDeBillesUtilise = 0;
             pointsPartie = 0;
@@ -130,8 +133,21 @@ namespace InterfaceGraphique
             pointsGagnerPartie = FonctionsNatives.obtenirPointsGagnerPartie();
             pointsGagnerBille = FonctionsNatives.obtenirPointsGagnerBille();
             nombreBillesInit = FonctionsNatives.obtenirNombreDeBilles();
+            billesDisponibles = nombreBillesInit;
             this.PointPartie.Text = pointsPartie.ToString();
             this.nbBilles.Text = "0";
+            setProprietes();
+        }
+
+        private void setProprietes()
+        {
+            IntPtr config = FonctionsNatives.obtenirProprietes(map,map.Capacity);
+            Marshal.Copy(config, proprietes, 0, 5);
+            label_nbPointsButC.Text = proprietes[0].ToString();
+            label_nbPointsButT.Text = proprietes[1].ToString();
+            label_nbPointsCible.Text = proprietes[2].ToString();
+            label_nbWin.Text = proprietes[3].ToString();
+            label_nbPointsBille.Text = proprietes[4].ToString();
         }
         ////////////////////////////////////////////////////////////////////////
         ///
@@ -187,13 +203,15 @@ namespace InterfaceGraphique
                     if (Program.compteurFrames == 0)
                     {
                         FonctionsNatives.dessinerOpenGL();
+
                         billesEnJeu = FonctionsNatives.obtenirNombreBillesCourante();
-                        if (startGame && billesEnJeu == 0 && (nombreBillesInit + nombreDeBillesGagnes - nombreDeBillesUtilise >= 0))
+                        if (startGame && billesEnJeu == 0 && (billesDisponibles >= 0))
                         {
                             // wait a certain time
                             CreerBille();
                         }
-                        if (nombreDeBillesUtilise > (nombreBillesInit + nombreDeBillesGagnes) && boolTemp)
+                        // if (nombreDeBillesUtilise > (nombreBillesInit + nombreDeBillesGagnes) && boolTemp)
+                        if (billesDisponibles < 0 && boolTemp)
                         {
                             FinCampagne(false);
                         }
@@ -203,27 +221,55 @@ namespace InterfaceGraphique
                             billesDisponibles++;
                         }
 
-                        this.PointPartie.Text = pointsPartie.ToString();
-                        this.nbBilles.Text = billesEnJeu.ToString();
+                        label_nbPoints.Text = pointsPartie.ToString();
+                        if (billesDisponibles >= 0)
+                        {
+                            label_nbBilles.Text = billesDisponibles.ToString();
+                        }
+                        //label_nbGagnes.Text = nombreDeBillesGagnes.ToString();
+                        this.nbBilles.Text = billesEnJeu.ToString() + "a";
                         if (pointsPartie >= pointsGagnerPartie && boolTemp)
                         {
-                            if (currentZone >= nbZones)
+                            FonctionsNatives.dessinerOpenGL();
+                            billesEnJeu = FonctionsNatives.obtenirNombreBillesCourante();
+                            if (startGame && billesEnJeu == 0 && (nombreBillesInit + nombreDeBillesGagnes - nombreDeBillesUtilise >= 0))
                             {
+                                // wait a certain time
+                                CreerBille();
                                 FinCampagne(true);
-
                             }
-                            else
+                            if (nombreDeBillesUtilise > (nombreBillesInit + nombreDeBillesGagnes) && boolTemp)
                             {
-                                ProchainePartie();
+                                FinCampagne(false);
                             }
-                        }
+                            if (pointsPartie >= nombreDeBillesGagnes * pointsGagnerBille + pointsGagnerBille)
+                            {
+                                nombreDeBillesGagnes++;
+                                billesDisponibles++;
+                            }
+
+                            this.PointPartie.Text = pointsPartie.ToString();
+                            this.nbBilles.Text = billesEnJeu.ToString();
+                            if (pointsPartie >= pointsGagnerPartie && boolTemp)
+                            {
+                                if (currentZone >= nbZones)
+                                {
+                                    FinCampagne(true);
+
+                                }
+                                else
+                                {
+                                    ProchainePartie();
+                                }
+                            }
 
 
-                        if (currentZoom <= 0)
-                        {
-                            FonctionsNatives.resetZoom();
-                            currentZoom = FonctionsNatives.obtenirZoomCourant();
+                            if (currentZoom <= 0)
+                            {
+                                FonctionsNatives.resetZoom();
+                                currentZoom = FonctionsNatives.obtenirZoomCourant();
 
+                            }
                         }
                     }
                 });
@@ -231,7 +277,6 @@ namespace InterfaceGraphique
             catch (Exception)
             {
             }
-
         }
         
         private void PartieRapide_FormClosing(object sender, FormClosingEventArgs e)
@@ -293,6 +338,7 @@ namespace InterfaceGraphique
             StringBuilder bille = new StringBuilder("bille");
             FonctionsNatives.creerObjet(bille, bille.Capacity);
             nombreDeBillesUtilise++;
+            billesDisponibles--;
             Console.WriteLine(nombreBillesInit);
             Console.WriteLine(nombreDeBillesUtilise);
 
@@ -429,6 +475,7 @@ namespace InterfaceGraphique
         public void Quitter()
         {
             timer.Stop();
+            resetConfig();
             this.Close();
         }
         
