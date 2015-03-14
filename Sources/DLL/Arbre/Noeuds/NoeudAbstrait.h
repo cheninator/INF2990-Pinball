@@ -23,6 +23,8 @@
 #include "glm\glm.hpp"
 #include "Utilitaire.h"
 
+#include "AnimationNoeudsDefine.h"
+
 #include "../../Visiteurs/VisiteurAbstrait.h"
 #include "../../Commun/Utilitaire/AideCollision.h"
 #include "../../Global/JoueurVirtuel.h"

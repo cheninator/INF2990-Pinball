@@ -428,5 +428,8 @@
     <ClInclude Include="Global\JoueurVirtuel.h">
       <Filter>Header Files\Global</Filter>
     </ClInclude>
+    <ClInclude Include="Arbre\Noeuds\AnimationNoeudsDefine.h">
+      <Filter>Header Files\Arbre\Noeuds</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>

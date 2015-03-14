@@ -115,7 +115,7 @@ void NoeudCible::animer(float temps)
 	NoeudComposite::animer(temps);
 	//positionRelative_.z = (boite_.coinMax.y - boite_.coinMin.y) / 2.0;
 	NoeudComposite::animer(temps);
-	rotation_.x = rotation_.x + temps * 90;
+	rotation_.x += temps * VITESSE_NOEUD_CIBLE;
 	// Pour ne pas overflow le double un jour
 	if (rotation_.x > 360)
 		rotation_.x = rotation_.x - 360;

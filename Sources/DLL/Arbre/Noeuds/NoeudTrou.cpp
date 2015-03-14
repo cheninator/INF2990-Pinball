@@ -18,7 +18,6 @@
 #include "../../Application/FacadeModele.h"
 #include "OpenGL_Storage/ModeleStorage_Liste.h"
 
-
 ////////////////////////////////////////////////////////////////////////
 ///
 /// @fn NoeudTrou::NoeudTrou(const std::string& typeNoeud)
@@ -111,7 +110,7 @@ void NoeudTrou::afficherConcret() const
 void NoeudTrou::animer(float temps)
 {
 	NoeudComposite::animer(temps);
-	rotation_.z = rotation_.z + temps * 180;
+	rotation_.z += temps * VITESSE_NOEUD_TROU;
 	// Pour ne pas overflow le double un jour
 	if (rotation_.z > 360)
 		rotation_.z = rotation_.z - 360;

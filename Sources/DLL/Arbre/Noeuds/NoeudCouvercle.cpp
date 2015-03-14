@@ -17,7 +17,6 @@
 #include "Modele3D.h"
 #include "OpenGL_Storage/ModeleStorage_Liste.h"
 
-
 ////////////////////////////////////////////////////////////////////////
 ///
 /// @fn NoeudCouvercle::NoeudCouvercle(const std::string& typeNoeud)
@@ -91,14 +90,13 @@ void NoeudCouvercle::afficherConcret() const
 ////////////////////////////////////////////////////////////////////////
 void NoeudCouvercle::animer(float temps)
 {
+	static const double deplacement = abs(abs(boite_.coinMax.y - boite_.coinMin.y) * scale_.x * sin(INCLINAISON_NOEUD_COUVERCLE)) - MARGE_NOEUD_COUVERCLE;
 	// Appel a la version de la classe de base pour l'animation des enfants.
-	glm::dvec3 positionRelative = positionRelative_;
 	NoeudComposite::animer(temps);
-	positionRelative_ = positionRelative;
-	if (positionRelative_.x > -130.0) {
-		positionRelative_.x -= 1;
-		rotation_.y -= 22.5 / (130.0);
-		positionRelative_.z -= 0.5;
+	if (positionRelative_.x > -deplacement) {
+		positionRelative_.x -= temps * (deplacement / TEMPS_ANIMATION_NOEUD_COUVERCLE);
+		rotation_.y -= INCLINAISON_NOEUD_COUVERCLE / (TEMPS_ANIMATION_NOEUD_COUVERCLE / temps);
+		positionRelative_.z -= temps * (deplacement / TEMPS_ANIMATION_NOEUD_COUVERCLE);
 	}
 }
 
