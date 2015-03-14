@@ -470,7 +470,10 @@ void NoeudComposite::animer(float dt)
 	for (NoeudAbstrait * enfant : enfants_){
 		enfant->animer(dt);
 	}
-	positionRelative_.z = abs(obtenirVecteursEnglobants()[0].z);
+	double hauteurTable = 10;
+	glm::dvec3 coinMinAvecScale, bidon;
+	obtenirVecteursBoite(coinMinAvecScale, bidon, bidon, bidon);
+	positionRelative_.z = hauteurTable + abs(coinMinAvecScale.z);
 }
 
 
