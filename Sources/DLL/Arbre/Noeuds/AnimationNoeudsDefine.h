@@ -20,6 +20,13 @@ enum Direction { dirY, dirYX, dirX, dirXY, dirZ }; // Pour fonctionner avec le s
 // Composite
 #define HAUTEUR_TABLE_NOEUD_COMPOSITE 10
 
+// Bille
+#define VITESSE_MAX_NOEUD_BILLE 350.		// Vitesse maximale de la bille
+#define MASSE_NOEUD_BILLE 1.				// Poids (en kg?) de la bille
+#define FROTTEMENT_NOEUD_BILLE 1.		// Constante de frottement
+#define GRAVITE_NOEUD_BILLE glm::dvec3{ 0, -utilitaire::GRAVITE  * MASSE_NOEUD_BILLE, 0 }	// Force de la gravite appliquer sur la bille
+#define VITESSE_INITIALE_NORUD_BILLE { 0, 0, 0 }	// Vitesse initiale
+
 // ButoirCirculaire
 #define SCALE_MAX_NOEUD_BUTOIRCIRCULAIRE 8./100.	// Pourcentage d'augmentation/raptissement maximal
 #define TEMPS_DEMI_ANIMATION_NOEUD_BUTOIRCIRCULAIREE .5		// L'animation d'une demi animation dure 1/2 sec

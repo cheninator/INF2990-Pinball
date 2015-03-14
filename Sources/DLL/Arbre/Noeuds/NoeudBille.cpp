@@ -43,8 +43,9 @@
 NoeudBille::NoeudBille(const std::string& typeNoeud)
 	: NoeudComposite{ typeNoeud }
 {
-	vitesse_ = glm::dvec3{ 0 ,0, 0 };
-	constanteDeFrottement_ = 1.0;
+	vitesse_ = VITESSE_INITIALE_NORUD_BILLE;
+	masse_ = MASSE_NOEUD_BILLE;
+	constanteDeFrottement_ = FROTTEMENT_NOEUD_BILLE;
 	SingletonGlobal::obtenirInstance()->ajouterBille();
 }
 
@@ -135,34 +136,34 @@ void NoeudBille::afficherConcret() const
 void NoeudBille::animer(float temps) // rajouter des parametres ou une fonction animerCollision(float temps, detailCollision detail)
 {
 	NoeudComposite::animer(temps);
-	const double VITESSE_MAX = 350;
 	// Somme des forces agissant sur les particules.
 	// =============================================
-	glm::dvec3 attractionsPortails{ 0, 0, 0 };
-	glm::dvec3 gravite{ 0, -30*masse_, 0 };
+	
 	glm::dvec3 forceFrottement{ 0, 0, 0 };
-	if (glm::length(vitesse_) > 0.001)
+	if (glm::length(vitesse_) > utilitaire::EPSILON)
 		forceFrottement = -constanteDeFrottement_ * glm::normalize(vitesse_);
-	glm::dvec3 forceTotale = 100.0*forceFrottement + 10.0*gravite + 10000.0*forcesExternes_;
+	glm::dvec3 forceTotale = forceFrottement + GRAVITE_NOEUD_BILLE + forcesExternes_;
 	forceTotale.z = 0;
-	glm::dvec3 acceleration = forceTotale / masse_;
-	if (glm::length(vitesse_) > VITESSE_MAX)
+	glm::dvec3 acceleration = forceTotale;
+	forceTotale *= masse_;
+
+	if (glm::length(vitesse_) > VITESSE_MAX_NOEUD_BILLE)
 	{
-		vitesse_ = VITESSE_MAX * glm::normalize(vitesse_); // Meme direction, mais module ramené a VITESSE_MAX
+		vitesse_ = VITESSE_MAX_NOEUD_BILLE * glm::normalize(vitesse_); // Meme direction, mais module ramené a VITESSE_MAX
 	}
 
 	// Calcul de la nouvelle position 
 	// ==============================
-	glm::dvec3 nouvellePosition = positionRelative_ + (double)temps*vitesse_;
+	glm::dvec3 nouvellePosition = positionRelative_ + (double)temps * vitesse_;
 	
 	// Calcul de la nouvelle vitesse. 
 	// =============================
 
 	glm::dvec3 nouvelleVitesse = vitesse_ + (double)temps * acceleration;
 
-	if (glm::length(nouvelleVitesse) > VITESSE_MAX)
+	if (glm::length(nouvelleVitesse) > VITESSE_MAX_NOEUD_BILLE)
 	{
-		nouvelleVitesse = VITESSE_MAX * glm::normalize(nouvelleVitesse);// Meme direction, mais module ramené a VITESSE_MAX
+		nouvelleVitesse = VITESSE_MAX_NOEUD_BILLE * glm::normalize(nouvelleVitesse);// Meme direction, mais module ramené a VITESSE_MAX
 	}
 	// Calcul de la rotation
 	// =====================
