@@ -125,7 +125,7 @@ void NoeudButoirCirculaire::animer(float temps)
 	{
 	case ALLER:
 		scale_ *= 1 + temps * SCALE_MAX_NOEUD_BUTOIRCIRCULAIRE / TEMPS_DEMI_ANIMATION_NOEUD_BUTOIRCIRCULAIREE;
-		if (compteurAnimation >= TEMPS_DEMI_ANIMATION_NOEUD_BUTOIRCIRCULAIREE / 2) 
+		if (compteurAnimation_ >= TEMPS_DEMI_ANIMATION_NOEUD_BUTOIRCIRCULAIREE / 2) 
 		{
 			Etat temp = etatButoir_;
 			if (etatPrecedentButoir_ == INITIAL)
@@ -133,12 +133,12 @@ void NoeudButoirCirculaire::animer(float temps)
 			else
 				etatButoir_ = INITIAL;
 			etatPrecedentButoir_ = temp;
-			compteurAnimation = 0;
+			compteurAnimation_ = 0;
 		}
 		break;
 	case RETOUR:
 		scale_ *= 1 - temps * SCALE_MAX_NOEUD_BUTOIRCIRCULAIRE / TEMPS_DEMI_ANIMATION_NOEUD_BUTOIRCIRCULAIREE;
-		if (compteurAnimation >= TEMPS_DEMI_ANIMATION_NOEUD_BUTOIRCIRCULAIREE / 2) 
+		if (compteurAnimation_ >= TEMPS_DEMI_ANIMATION_NOEUD_BUTOIRCIRCULAIREE / 2) 
 		{
 			Etat temp = etatButoir_;
 			if (etatPrecedentButoir_ == INITIAL)
@@ -146,7 +146,7 @@ void NoeudButoirCirculaire::animer(float temps)
 			else
 				etatButoir_ = INITIAL;
 			etatPrecedentButoir_ = temp;
-			compteurAnimation = 0;
+			compteurAnimation_ = 0;
 		}
 		break;
 	case INITIAL:
@@ -158,7 +158,7 @@ void NoeudButoirCirculaire::animer(float temps)
 		break;
 	}
 
-	compteurAnimation+=temps;
+	compteurAnimation_+=temps;
 }
 
 

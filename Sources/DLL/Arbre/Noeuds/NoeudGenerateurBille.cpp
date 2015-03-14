@@ -33,9 +33,6 @@
 NoeudGenerateurBille::NoeudGenerateurBille(const std::string& typeNoeud)
 	: NoeudComposite{ typeNoeud }
 {
-	direction_ = 0;
-	power_ = 0;
-	compteur_ = 201;
 }
 
 ////////////////////////////////////////////////////////////////////////
@@ -112,49 +109,85 @@ void NoeudGenerateurBille::afficherConcret() const
 ////////////////////////////////////////////////////////////////////////
 void NoeudGenerateurBille::animer(float temps)
 {
-	NoeudComposite::animer(temps);
-	
+	//NoeudComposite::animer(temps);
+	for (NoeudAbstrait * enfant : enfants_) {
+		enfant->animer(temps);
+	}
+	positionRelative_.z = abs(obtenirVecteursEnglobants()[0].z);
 	// Au lieu de rajouter une condition "parkinson" fais juste return;
 	// Mais la je vais juste faire du parkinson pour quelques ssecodne puis s'arrete
-	compteur_--;
-	if (compteur_ <= 0)
+	if (compteurAnimation_ >= TEMPS_ANIMATION_NOEUD_GENERATEURBILLE && etatGenerateur_ == INITIAL)
 		return;
 	
-	if (direction_ == 0) {
+	if (etatGenerateur_ == INITIAL) {
 		if (selectionne_ || impossible_ || transparent_)
 			return;
-		direction_ = std::rand() % 4 + 1;
-		power_ = std::rand() % 11;
-		if (power_ > 5)
-			power_ = -power_ + 5;
+		int direction = std::rand() % 4; // pcq ca me tente pas de dynamic cast un rand en Enum
+		switch (direction)
+		{
+		case 0:
+			directionGenerateur_ = dirY;
+			break;
+		case 1:
+			directionGenerateur_ = dirYX;
+			break;
+		case 2:
+			directionGenerateur_ = dirX;
+			break;
+		case 3:
+			directionGenerateur_ = dirXY;
+			break;
+		}
+		distanceBouger_ = fmod(std::rand(), (2 * DISTANCE_MAX_NOEUD_GENERATEURBILLE + 1));
+		if (distanceBouger_ > DISTANCE_MAX_NOEUD_GENERATEURBILLE)
+			distanceBouger_ = -distanceBouger_ + DISTANCE_MAX_NOEUD_GENERATEURBILLE;
+		positionPreDeplacement_ = positionRelative_;
+		etatGenerateur_ = ALLER;
 	}
-	else if (direction_ > 0) {
-		direction_ *= -1;
-		power_ *= -1;
-	}
-	else
-		direction_ = 0;
 
+	if (etatGenerateur_ != INITIAL)
+		switch (directionGenerateur_)
+		{
+		case dirXY:
+			positionRelative_.x += distanceBouger_ * temps / TEMPS_ANIMATION_MOUVEMENT_NOEUD_GENERATEURBILLE;
+			positionRelative_.y += distanceBouger_ * temps / TEMPS_ANIMATION_MOUVEMENT_NOEUD_GENERATEURBILLE;
+			break;
+		case dirX:
+			positionRelative_.x += distanceBouger_ * temps / TEMPS_ANIMATION_MOUVEMENT_NOEUD_GENERATEURBILLE;
+			break;
+		case dirY:
+			positionRelative_.y += distanceBouger_ * temps / TEMPS_ANIMATION_MOUVEMENT_NOEUD_GENERATEURBILLE;
+			break;
+		case dirYX:
+			positionRelative_.x -= distanceBouger_ * temps / TEMPS_ANIMATION_MOUVEMENT_NOEUD_GENERATEURBILLE;
+			positionRelative_.y += distanceBouger_ * temps / TEMPS_ANIMATION_MOUVEMENT_NOEUD_GENERATEURBILLE;
+			break;
+		case dirZ:
+			break;
+		}
 
-	switch (abs(direction_))
+	if (etatGenerateur_ == ALLER)
 	{
-	case 1:
-		positionRelative_.x += power_;
-		positionRelative_.y += power_;
-		break;
-	case 2:
-		positionRelative_.x += power_;
-		break;
-	case 3:
-		positionRelative_.y += power_;
-		break;
-	case 4:
-		positionRelative_.x -= power_;
-		positionRelative_.y += power_;
-		break;
-	default:
-		break;
+		if (compteurAnimationBouger_ >= TEMPS_ANIMATION_MOUVEMENT_NOEUD_GENERATEURBILLE)
+		{
+			etatGenerateur_ = RETOUR;
+			distanceBouger_ *= -1;
+			compteurAnimationBouger_ = 0;
+		}
 	}
+	else if (etatGenerateur_ == RETOUR)
+	{
+		if (compteurAnimationBouger_ >= TEMPS_ANIMATION_MOUVEMENT_NOEUD_GENERATEURBILLE)
+		{
+			etatGenerateur_ = INITIAL;
+			distanceBouger_ = 0;
+			compteurAnimationBouger_ = 0;
+			positionRelative_ = positionPreDeplacement_;
+		}
+	}
+
+	compteurAnimation_ += temps;
+	compteurAnimationBouger_ += temps;
 }
 
 ////////////////////////////////////////////////////////////////////////

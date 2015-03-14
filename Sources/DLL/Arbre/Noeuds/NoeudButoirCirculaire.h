@@ -51,11 +51,10 @@ public:
 private:
 	
 	// Pour l'animation
-	enum Etat { ALLER, RETOUR, INITIAL };
 	Etat etatButoir_ { ALLER };
 	Etat etatPrecedentButoir_ { INITIAL };
-	float compteurAnimation { -1 };
-	float scalePrecedentMax { 0 };
+	float compteurAnimation_ { 0 };
+	float scalePrecedentMax_ { 0 };
 };
 
 #endif // __ARBRES_NOEUDS_NOEUDBUTOIRCIRCULAIRE_H__
