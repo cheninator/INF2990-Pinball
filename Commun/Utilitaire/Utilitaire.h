@@ -35,6 +35,7 @@ namespace utilitaire {
 	/// Constante PI.
 	static const double PI{ 3.1415926535897932384626433832795 };
 	static const double PI_180{ 2 * 3.1415926535897932384626433832795 / 360 };
+	static const double GRAVITE{ 9.80665 };
 
 	/// Le vecteur i (dirigé vers l'axe des X positifs et unitaire).
 	static glm::dvec3 vi{ 1.0, 0.0, 0.0 };

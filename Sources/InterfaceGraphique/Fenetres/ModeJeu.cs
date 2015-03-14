@@ -204,58 +204,56 @@ namespace InterfaceGraphique
                     if (Program.compteurFrames == 0)
                     {
                         FonctionsNatives.dessinerOpenGL();
-
                         billesEnJeu = FonctionsNatives.obtenirNombreBillesCourante();
-                        if (startGame && billesEnJeu == 0 && (billesDisponibles >= 0))
-                        {
-                            // wait a certain time
-                            CreerBille();
-                        }
-                        if (billesDisponibles < 0 && boolTemp)
-                        {
-                            FinCampagne(false);
-                        }
-                        if (pointsPartie >= nombreDeBillesGagnes * pointsGagnerBille + pointsGagnerBille)
-                        {
-                            nombreDeBillesGagnes++;
-                            label_nbGagnes.Text = nombreDeBillesGagnes.ToString();
-                            billesDisponibles++;
-                        }
+                    }
+                    if (startGame && billesEnJeu == 0 && (billesDisponibles >= 0))
+                    {
+                        // wait a certain time
+                        CreerBille();
+                    }
+                    if (billesDisponibles < 0 && boolTemp)
+                    {
+                        FinCampagne(false);
+                    }
+                    if (pointsPartie >= nombreDeBillesGagnes * pointsGagnerBille + pointsGagnerBille)
+                    {
+                        nombreDeBillesGagnes++;
+                        label_nbGagnes.Text = nombreDeBillesGagnes.ToString();
+                        billesDisponibles++;
+                    }
 
-                        label_nbPoints.Text = pointsPartie.ToString();
-                        if (billesDisponibles >= 0)
+                    label_nbPoints.Text = pointsPartie.ToString();
+                    if (billesDisponibles >= 0)
+                    {
+                        label_nbBilles.Text = billesDisponibles.ToString();
+                    }
+                    if (pointsPartie >= pointsGagnerPartie && boolTemp)
+                    {
+                        if (currentZone >= nbZones)
                         {
-                            label_nbBilles.Text = billesDisponibles.ToString();
-                        }
-                        if (pointsPartie >= pointsGagnerPartie && boolTemp)
-                        {
-                                if (currentZone >= nbZones)
-                                {
-                                    FinCampagne(true);
-
-                                }
-                                else
-                                {
-                                    ProchainePartie();
-                                }
-                          
+                            FinCampagne(true);
 
                         }
-                            if (currentZoom <= 0)
-                            {
-                                FonctionsNatives.resetZoom();
-                                currentZoom = FonctionsNatives.obtenirZoomCourant();
-
-                            }
+                        else
+                        {
+                            ProchainePartie();
                         }
-                    
+
+
+                    }
+                    if (currentZoom <= 0)
+                    {
+                        FonctionsNatives.resetZoom();
+                        currentZoom = FonctionsNatives.obtenirZoomCourant();
+
+                    }
                 });
             }
             catch (Exception)
             {
             }
         }
-        
+
         private void PartieRapide_FormClosing(object sender, FormClosingEventArgs e)
         {
             lock (Program.unLock)
