@@ -55,6 +55,7 @@ namespace InterfaceGraphique
         private bool colorShift = false;
         private bool peutAnimer = true;
         private StringBuilder pathXML = new StringBuilder(""); ///< Chemin pour la lecture/sauvegarde XML
+
         private EtatEditeurAbstrait etat { get; set; } ///< Machine a etat
         private int[] prop = new int[6]; ///< Proprietes du jeu a sauvegarder
         private bool activateAmbianteLight = false; ///< EtatEditeurAbstrait de la lumiere ambiante
@@ -166,31 +167,30 @@ namespace InterfaceGraphique
             {
                 this.Invoke((MethodInvoker)delegate
                 {
-                    if (etat is EtatEditeurSelectionMultiple)
-                        rectangleElastique();
-
-                    else if (etat is EtatEditeurZoomElastique)
+                    if ((etat is EtatEditeurSelectionMultiple || etat is EtatEditeurSelectionMultiple)
+                            && Program.compteurFrames == 0)
                         rectangleElastique();
                     else
                     {
-                        if (currentZoom <= 0)
+                        if (Program.compteurFrames == 0)
                         {
-                            FonctionsNatives.resetZoom();
-                            currentZoom = FonctionsNatives.obtenirZoomCourant();
-                            curZoomVal.Text = (Math.Round(currentZoom * 100) / 100).ToString();
-                            Creation_Panel.Visible = true;
-                            
-                          
-                        }
+                            if (currentZoom <= 0)
+                            {
+                                FonctionsNatives.resetZoom();
+                                currentZoom = FonctionsNatives.obtenirZoomCourant();
+                                curZoomVal.Text = (Math.Round(currentZoom * 100) / 100).ToString();
+                                Creation_Panel.Visible = true;
+                            }
 
-                        if (FonctionsNatives.obtenirNombreBillesCourante() == 0 && etat is EtatEditeurTest)
-                        {
-                            StringBuilder bille = new StringBuilder("bille");
-                            FonctionsNatives.creerObjet(bille, bille.Capacity);                            
+                            if (FonctionsNatives.obtenirNombreBillesCourante() == 0 && etat is EtatEditeurTest)
+                            {
+                                StringBuilder bille = new StringBuilder("bille");
+                                FonctionsNatives.creerObjet(bille, bille.Capacity);
+                            }
+                            FonctionsNatives.dessinerOpenGL();
                         }
                         if (peutAnimer)
                             FonctionsNatives.animer(tempsInterAffichage);
-                        FonctionsNatives.dessinerOpenGL();
                     }
                 });
             }

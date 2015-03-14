@@ -205,6 +205,7 @@ public:
 
    // Traiter l'ensemble des collisions
    void traiterCollisions();
+   void traiterCollisionsAvecQuadTree();
    void updateForcesExternes();
    
    void mettreAJourListeBillesEtNoeuds();

@@ -51,8 +51,10 @@ public:
 private:
 	
 	// Pour l'animation
-	float compt_ = 0;
-
+	Etat etatButoir_ { ALLER };
+	Etat etatPrecedentButoir_ { INITIAL };
+	float compteurAnimation_ { 0 };
+	float scalePrecedentMax_ { 0 };
 };
 
 #endif // __ARBRES_NOEUDS_NOEUDBUTOIRCIRCULAIRE_H__
