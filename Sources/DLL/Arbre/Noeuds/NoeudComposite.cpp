@@ -471,8 +471,7 @@ void NoeudComposite::animer(float dt)
 		enfant->animer(dt);
 	}
 	double hauteurTable = 10;
-	glm::dvec3 coinMinAvecScale, bidon;
-	obtenirVecteursBoite(coinMinAvecScale, bidon, bidon, bidon);
+	glm::dvec3 coinMinAvecScale = boite_.coinMin * scale_.z;
 	positionRelative_.z = hauteurTable + abs(coinMinAvecScale.z);
 }
 
