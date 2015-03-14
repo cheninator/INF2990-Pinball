@@ -120,13 +120,13 @@ void NoeudPaletteG::animer(float temps)
 		// si impossible, la palette est bloquee et doit tomber dans l'etat INACTIVE
 		if (obtenirRotation().z - angleZOriginal_ < 60)
 		{
-			assignerRotation(glm::dvec3{ 0, 0, 9 });
+			assignerRotation(glm::dvec3{ 0, 0, VITESSE_ANGULAIRE_PALETTE_AVTIVE * temps });
 		}
 		break;
 	case RETOUR:
 		if (obtenirRotation().z - angleZOriginal_ > 0)
 		{
-			assignerRotation(glm::dvec3{ 0, 0, -3 });
+			assignerRotation(glm::dvec3{ 0, 0, - VITESSE_ANGULAIRE_PALETTE_RETOUR * temps });
 		}
 		else
 		{
@@ -137,7 +137,7 @@ void NoeudPaletteG::animer(float temps)
 	case ACTIVE_AI:
 		if (obtenirRotation().z - angleZOriginal_ < 60)
 		{
-			assignerRotation(glm::dvec3{ 0, 0, 9 });
+			assignerRotation(glm::dvec3{ 0, 0, VITESSE_ANGULAIRE_PALETTE_AVTIVE * temps });
 		}
 		else
 		{
@@ -153,7 +153,7 @@ void NoeudPaletteG::animer(float temps)
 	case RETOUR_AI:
 		if (obtenirRotation().z - angleZOriginal_ > 0)
 		{
-			assignerRotation(glm::dvec3{ 0, 0, -3 });
+			assignerRotation(glm::dvec3{ 0, 0, -VITESSE_ANGULAIRE_PALETTE_RETOUR * temps });
 		}
 		else
 		{

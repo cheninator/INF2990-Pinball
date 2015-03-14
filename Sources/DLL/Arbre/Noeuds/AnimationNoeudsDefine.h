@@ -22,8 +22,8 @@ enum Direction { dirY, dirYX, dirX, dirXY, dirZ }; // Pour fonctionner avec le s
 
 // Bille
 #define VITESSE_MAX_NOEUD_BILLE 350.		// Vitesse maximale de la bille
-#define MASSE_NOEUD_BILLE 1.				// Poids (en kg?) de la bille
-#define FROTTEMENT_NOEUD_BILLE 1.		// Constante de frottement
+#define MASSE_NOEUD_BILLE 30.				// Poids (en kg?) de la bille
+#define FROTTEMENT_NOEUD_BILLE 10.		// Constante de frottement
 #define GRAVITE_NOEUD_BILLE glm::dvec3{ 0, -utilitaire::GRAVITE  * MASSE_NOEUD_BILLE, 0 }	// Force de la gravite appliquer sur la bille
 #define VITESSE_INITIALE_NORUD_BILLE { 0, 0, 0 }	// Vitesse initiale
 
@@ -46,5 +46,12 @@ enum Direction { dirY, dirYX, dirX, dirXY, dirZ }; // Pour fonctionner avec le s
 
 // Trou
 #define VITESSE_NOEUD_TROU 360./4.	// 1 tour toute les 4 secondes
+
+// Palettes
+#define VITESSE_ANGULAIRE_PALETTE_AVTIVE 500 // 500 degres par seconde approximativement 9 degres par 60ieme de seconde.
+#define VITESSE_ANGULAIRE_PALETTE_RETOUR 150 
+
+// Portails
+#define MASSE_NOEUD_PORTAIL 1000.0 // possiblement redefinir pour chaque portail dependant de leur scale
 
 #endif //__ANIMATION_NOEUDS_DEFINE_H__
