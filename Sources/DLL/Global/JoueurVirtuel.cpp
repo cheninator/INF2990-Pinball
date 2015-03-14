@@ -12,6 +12,7 @@
 #include "../Arbre/Noeuds/NoeudPaletteD.h"
 #include "../../Commun/Externe/glm/include/glm/gtx/Projection.hpp"
 #include "Gl/gl.h"
+#include <iostream>
 
 ////////////////////////////////////////////////////////////////////////
 ///
@@ -54,6 +55,7 @@ JoueurVirtuel::~JoueurVirtuel()
 ////////////////////////////////////////////////////////////////////////
 void JoueurVirtuel::jouer(const std::vector<NoeudAbstrait*>& listeBilles)
 {
+	billes_.clear();
 	billes_ = listeBilles;
 	bool detecter = false;
 
@@ -86,7 +88,42 @@ void JoueurVirtuel::jouer(const std::vector<NoeudAbstrait*>& listeBilles)
 
 }
 
+
+
 bool JoueurVirtuel::traiter(NoeudPaletteG* noeud)
+{
+	if (noeud->obtenirInitial())
+		noeud->assignerAngleOriginal(noeud->obtenirRotation().z);
+
+	for (unsigned int i = 0; i < billes_.size(); i++)
+	{
+		glm::dvec3 positionPalette = noeud->obtenirPositionRelative();
+		glm::dvec3 positionBille = billes_[i]->obtenirPositionRelative();
+		glm::dvec3 vecteur = positionBille - positionPalette;
+		double distance = glm::length(vecteur);
+
+		double angleEnRadian = noeud->obtenirAngleZOriginal() * utilitaire::PI_180;
+		glm::dvec3 directionPalette = { -cos(angleEnRadian), -sin(angleEnRadian), 0 }; // Une palette pas tournee a un axe { - 1, 0, 0}
+		glm::dvec3 vecteurProjete = glm::proj(vecteur, directionPalette);
+		glm::dvec3 vecteurNormal = vecteur - vecteurProjete;
+
+		double distanceProjetee = glm::length(vecteurProjete);
+		double distanceNormale = glm::length(vecteurNormal);
+
+		// positionBille.y > pente * positionBille.x + b <====> la bille est au dessus de la droite definie par la palette au repos.
+		if (noeud->fonctionDroitePaletteOriginale(billes_[i]) > 0		// << vrai si on la bille est au dessus de la droite definie par la palette. C<est ce qui fait que les palettes n'activent pas par en dessous.
+			&& positionBille.x < positionPalette.x + 80 // << essayer de remplacer par glm::length(glm::proj(vecteur, directionPalette)) < longueurPalette
+			&& positionBille.y < positionPalette.y + 10)
+			return true;
+	}
+
+	return false;
+
+}
+
+
+
+bool JoueurVirtuel::traiter(NoeudPaletteD* noeud)
 {
 	if (noeud->obtenirInitial())
 		noeud->assignerAngleOriginal(noeud->obtenirRotation().z);
@@ -101,8 +138,8 @@ bool JoueurVirtuel::traiter(NoeudPaletteG* noeud)
 		glm::dvec3 vecteur = positionBille - positionPalette;
 		double distance = glm::length(vecteur);
 
-		double angleEnRadian = noeud->obtenirAngleZOriginal()* utilitaire::PI_180;
-		glm::dvec3 directionPalette = { -cos(angleEnRadian), -sin(angleEnRadian), 0 }; // Une palette pas tournee a un axe { - 1, 0, 0}
+		double angleEnRadian = noeud->obtenirAngleZOriginal() * utilitaire::PI_180;
+		glm::dvec3 directionPalette = { cos(angleEnRadian), sin(angleEnRadian), 0 }; // Une palette pas tournee a un axe { 1, 0, 0}
 		glm::dvec3 vecteurProjete = glm::proj(vecteur, directionPalette);
 		glm::dvec3 vecteurNormal = vecteur - vecteurProjete;
 		std::vector<glm::dvec3> boite = noeud->obtenirVecteursEnglobants();
@@ -115,8 +152,7 @@ bool JoueurVirtuel::traiter(NoeudPaletteG* noeud)
 		if (noeud->fonctionDroitePaletteOriginale(billes_[i]) > 0// << vrai si on la bille est au dessus de la droite definie par la palette. C<est ce qui fait que les palettes n'activent pas par en dessous.
 			&& glm::dot(directionPalette, vecteur) < 0
 			&& asin(glm::length(produitVectoriel) / glm::length(vecteur)) < sin(60 * utilitaire::PI_180)
-			&& distance < longueurPalette
-			)
+			&& distance < longueurPalette )
 			return true;
 	}
 
@@ -124,10 +160,7 @@ bool JoueurVirtuel::traiter(NoeudPaletteG* noeud)
 
 }
 
-bool JoueurVirtuel::traiter(NoeudPaletteD* noeud)
-{
-	return false;
-}
+
 
 void JoueurVirtuel::assignerPalettes(const std::set<NoeudPaletteG*>& gauche, const std::set<NoeudPaletteD*>& droite)
 {

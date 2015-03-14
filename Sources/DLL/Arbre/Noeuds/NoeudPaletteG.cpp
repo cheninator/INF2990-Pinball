@@ -36,7 +36,7 @@ NoeudPaletteG::NoeudPaletteG(const std::string& typeNoeud)
 {
 	ajustable_ = false;
 	estActive = false;
-	estJoueurVirtuel = false;
+	estJoueurVirtuel = true;
 	initial_ = true;
 
 	vitesseMonteAngulaire_ = { 0, 0, 9 };
@@ -199,8 +199,7 @@ bool NoeudPaletteG::accepterVisiteur(VisiteurAbstrait* vis)
 ////////////////////////////////////////////////////////////////////////
 bool NoeudPaletteG::accepterJoueurVirtuel(JoueurVirtuel* joueur)
 {
-	joueur->traiter(this);
-	return true;
+	return joueur->traiter(this);
 }
 
 

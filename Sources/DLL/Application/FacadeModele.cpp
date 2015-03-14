@@ -349,7 +349,6 @@ void FacadeModele::animer(float temps)
 		traiterCollisionsAvecQuadTree();
 	else
 		traiterCollisions();
-	updateForcesExternes();
 
 	/// Faire la somme des forces
 	updateForcesExternes();
@@ -1591,22 +1590,3 @@ void FacadeModele::aiPalettesYonni()
 }
 */
 
-/*
-void FacadeModele::activerPalettesAIGauches()
-{
-	
-	for (NoeudPaletteG* palette : listePalettesGJ2_)
-	{
-		palette->activerAI();
-	}
-	
-}
-*/
-/*
-void FacadeModele::activerPalettesAIDroites()
-{
-	for (NoeudPaletteD* palette : listePalettesDJ2_)
-	{
-		palette->activerAI();
-	}
-}*/

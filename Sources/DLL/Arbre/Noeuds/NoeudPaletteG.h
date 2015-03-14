@@ -66,7 +66,10 @@ public:
 	/// Savoir si la palette vient tout juste d'etre construit
 	bool obtenirInitial() const { return initial_; };
 
+	/// Assigner l'angle original de la palette apres la construction
 	void assignerAngleOriginal(double angle) { angle =  angleZOriginal_; };
+
+
 
 	double fonctionDroitePaletteOriginale(NoeudAbstrait* bille);
 	double fonctionDroitePaletteEnMouvement(NoeudAbstrait* bille);
