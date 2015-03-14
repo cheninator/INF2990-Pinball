@@ -199,8 +199,8 @@ public:
    void setDebug(bool valeurSpotLight = false);
 
    // Traiter l'ensemble des collisions
-   void traiterCollisions();
-   void traiterCollisionsAvecQuadTree();
+   void traiterCollisions(float temps);
+   void traiterCollisionsAvecQuadTree(float temps);
    void updateForcesExternes();
    
    void mettreAJourListeBillesEtNoeuds();
