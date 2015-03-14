@@ -10,15 +10,15 @@
 #include "../Arbre/Noeuds/NoeudAbstrait.h"
 #include "../Arbre/Noeuds/NoeudPaletteG.h"
 #include "../Arbre/Noeuds/NoeudPaletteD.h"
-#include "../../Commun/Externe/glm/include/glm/gtx/Projection.hpp"
 #include "Gl/gl.h"
-#include <iostream>
+#include "../../Commun/Externe/glm/include/glm/gtx/Projection.hpp"
+
 
 ////////////////////////////////////////////////////////////////////////
 ///
 /// @fn JoueurVirtuel::JoueurVirtuel()
 ///
-/// 
+/// Constructeur par défaut
 ///
 /// @return Aucune (constructeur).
 ///
@@ -40,6 +40,7 @@ JoueurVirtuel::JoueurVirtuel()
 ////////////////////////////////////////////////////////////////////////
 JoueurVirtuel::~JoueurVirtuel()
 {
+	billes_.clear();
 	palettesDroite_.clear();
 	palettesGauche_.clear();
 }
@@ -49,8 +50,10 @@ JoueurVirtuel::~JoueurVirtuel()
 ///
 /// @fn JoueurVirtuel::jouer(std::vector<NoeudAbstrait*> listeBilles)
 ///
+///	Méthode qui implémente la logique du comportement que doit adopter
+///	le joueur virtuel.
 ///
-/// @return Aucune (destructeur).
+/// @return Aucune
 ///
 ////////////////////////////////////////////////////////////////////////
 void JoueurVirtuel::jouer(const std::vector<NoeudAbstrait*>& listeBilles)
@@ -89,12 +92,22 @@ void JoueurVirtuel::jouer(const std::vector<NoeudAbstrait*>& listeBilles)
 }
 
 
-
+////////////////////////////////////////////////////////////////////////
+///
+/// @fn bool JoueurVirtuel::traiter(NoeudPaletteG* noeud)
+///
+///	Méthode qui retourne vrai lorsque la palette passé en paramètre
+///	detecte une bille proche de sa position. Faux autrement
+///
+/// @return True ou false selon si la palette detecte une bille proche
+///
+////////////////////////////////////////////////////////////////////////
 bool JoueurVirtuel::traiter(NoeudPaletteG* noeud)
 {
 	if (noeud->obtenirInitial())
 		noeud->assignerAngleOriginal(noeud->obtenirRotation().z);
 
+	/// Traiter toutes les billes que connait le joueur virtuel
 	for (unsigned int i = 0; i < billes_.size(); i++)
 	{
 		glm::dvec3 positionPalette = noeud->obtenirPositionRelative();
@@ -122,7 +135,16 @@ bool JoueurVirtuel::traiter(NoeudPaletteG* noeud)
 }
 
 
-
+////////////////////////////////////////////////////////////////////////
+///
+/// @fn bool JoueurVirtuel::traiter(NoeudPaletteD* noeud)
+///
+///	Méthode qui retourne vrai lorsque la palette passé en paramètre
+///	detecte une bille proche de sa position. Faux autrement
+///
+/// @return True ou false selon si la palette detecte une bille proche
+///
+////////////////////////////////////////////////////////////////////////
 bool JoueurVirtuel::traiter(NoeudPaletteD* noeud)
 {
 	if (noeud->obtenirInitial())
@@ -161,7 +183,17 @@ bool JoueurVirtuel::traiter(NoeudPaletteD* noeud)
 }
 
 
-
+////////////////////////////////////////////////////////////////////////
+///
+/// @fn bool JoueurVirtuel::assignerPalettes(const std::set<NoeudPaletteG*>& gauche, const std::set<NoeudPaletteD*>& droite)
+///
+///	Méthode qui assigne au joueur virtuel sa liste de palette
+///
+/// @param[in] gauche, droite : ses palettes gauches et droites
+///
+/// @return Aucune
+///
+////////////////////////////////////////////////////////////////////////
 void JoueurVirtuel::assignerPalettes(const std::set<NoeudPaletteG*>& gauche, const std::set<NoeudPaletteD*>& droite)
 {
 	palettesGauche_.clear();

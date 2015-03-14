@@ -27,8 +27,6 @@ class NoeudPaletteD;
 /// @brief Cette classe est issu du patron Visiteur. Elle représente le 
 ///		   concept d'intelligence artificielle pour le 2eme joueur
 ///
-/// Classe de base de laquelle derivent les visiteurs.
-///
 /// @author The Ballers
 /// @date 2015-02-02
 /// @ingroup Global

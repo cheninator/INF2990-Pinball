@@ -295,6 +295,7 @@ void NoeudPaletteD::traiterCollisions(aidecollision::DetailsCollision details, N
 }
 
 
+
 double NoeudPaletteD::fonctionDroitePaletteOriginale(NoeudAbstrait* bille)
 {
 	glm::dvec3 positionBille = bille->obtenirPositionRelative();

@@ -1091,6 +1091,7 @@ int FacadeModele::obtenirCentreMasseX()
 	VisiteurCentreDeMasse* visiteur = new VisiteurCentreDeMasse();
 	FacadeModele::obtenirInstance()->obtenirArbreRenduINF2990()->accepterVisiteur(visiteur);
 	centreMasseX = (int) visiteur->obtenirCentreDeMasse().x;
+	delete visiteur;
 	return centreMasseX;
 }
 
@@ -1528,65 +1529,4 @@ void FacadeModele::relacherRessort()
 		((NoeudRessort*)ressort)->relacher();
 }
 
-/*
-// A chaque frame, checker si une bille est proche d'une palette AI.
-void FacadeModele::aiPalettes()
-{   
-	for(NoeudPaletteG* palette : listePalettesGJ2_)
-		for(NoeudAbstrait* bille : listeBilles_)
-		{
-			if (palette->estActiveeParBille(bille))
-			{
-				activerPalettesAIGauches();
-				return;
-			}
-		}
-	for(NoeudPaletteD* palette : listePalettesDJ2_)
-		for(NoeudAbstrait* bille : listeBilles_)
-		{
-			if (palette->estActiveeParBille(bille))
-			{
-				// Activer toutes les palettes GJ2 et DJ2
-				activerPalettesAIDroites();
-				return;
-			}
-		}
-		
-}*/
-
-// A chaque frame, checker si une bille est proche d'une palette AI.
-
-/*
-void FacadeModele::aiPalettesYonni()
-{
-	JoueurVirtuel joueur(quad_);
-	// La structure suivante est independante de quel AI on choisit,
-	// des que le AI décide qu'une de ses palettes doit être activée,
-	// il dit à FacadeModele d'activer toutes les palettes (peu importe dans quel quad elle se trouve)
-	for (NoeudPaletteG* palette : listePalettesGJ2_)
-		for (NoeudAbstrait* bille : listeBilles_)
-		{
-			// Autre note: les palettes de listePalettesGJ2 sont de vrais NoeudPaletteG*
-			// donc on n'a pas besoin du double dispatch pour connaitre leur type.
-			// C'est parce que j'ai utilisé un visiteur pour construire les listes de palettes
-			// donc le double dispatch est déja fait.
-			if (joueur.traiter(palette,bille))
-			{
-				activerPalettesAIGauches();
-				return;
-			}
-		}
-	for (NoeudPaletteD* palette : listePalettesDJ2_)
-	for (NoeudAbstrait* bille : listeBilles_)
-	{
-		/*
-		if (joueur.traiter(palette, bille))
-		{
-			activerPalettesAIDroites();
-			return;
-		}
-	}
-
-}
-*/
 

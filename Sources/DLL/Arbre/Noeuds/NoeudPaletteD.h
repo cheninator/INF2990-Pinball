@@ -24,6 +24,7 @@
 class NoeudPaletteD : public NoeudComposite
 {
 public:
+
 	/// Constructeur
 	NoeudPaletteD(const std::string& typeNoeud);
 
