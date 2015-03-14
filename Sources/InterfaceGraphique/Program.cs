@@ -116,10 +116,6 @@ namespace InterfaceGraphique
                 {
                     lock (unLock)
                     {
-                        compteurFrames++;
-                        if (compteurFrames >= 1)
-                            compteurFrames = 0;
-
                         if (mMenu.modeEdit != null && peutAfficher)
                         {
                             mMenu.modeEdit.MettreAJour((double)tempsAccumule.Ticks / TimeSpan.TicksPerSecond);
@@ -127,7 +123,11 @@ namespace InterfaceGraphique
                         else if (mMenu.modeJeuMain != null && peutAfficher)
                         {
                             mMenu.modeJeuMain.MettreAJour((double)tempsAccumule.Ticks / TimeSpan.TicksPerSecond);
-                        }  
+                        }
+
+                        compteurFrames++;
+                        if (compteurFrames >= 10)
+                            compteurFrames = 0;
                     }
                     tempsAccumule = TimeSpan.Zero;
                 }

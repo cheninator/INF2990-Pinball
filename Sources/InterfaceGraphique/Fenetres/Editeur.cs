@@ -167,28 +167,28 @@ namespace InterfaceGraphique
             {
                 this.Invoke((MethodInvoker)delegate
                 {
-                    if ((etat is EtatEditeurSelectionMultiple || etat is EtatEditeurSelectionMultiple)
-                            && Program.compteurFrames == 0)
-                        rectangleElastique();
-                    else
+                    if (etat is EtatEditeurSelectionMultiple || etat is EtatEditeurSelectionMultiple)
                     {
                         if (Program.compteurFrames == 0)
+                            rectangleElastique();
+                    }
+                    else
+                    {
+                        if (currentZoom <= 0)
                         {
-                            if (currentZoom <= 0)
-                            {
-                                FonctionsNatives.resetZoom();
-                                currentZoom = FonctionsNatives.obtenirZoomCourant();
-                                curZoomVal.Text = (Math.Round(currentZoom * 100) / 100).ToString();
-                                Creation_Panel.Visible = true;
-                            }
-
-                            if (FonctionsNatives.obtenirNombreBillesCourante() == 0 && etat is EtatEditeurTest)
-                            {
-                                StringBuilder bille = new StringBuilder("bille");
-                                FonctionsNatives.creerObjet(bille, bille.Capacity);
-                            }
-                            FonctionsNatives.dessinerOpenGL();
+                            FonctionsNatives.resetZoom();
+                            currentZoom = FonctionsNatives.obtenirZoomCourant();
+                            curZoomVal.Text = (Math.Round(currentZoom * 100) / 100).ToString();
+                            Creation_Panel.Visible = true;
                         }
+
+                        if (FonctionsNatives.obtenirNombreBillesCourante() == 0 && etat is EtatEditeurTest)
+                        {
+                            StringBuilder bille = new StringBuilder("bille");
+                            FonctionsNatives.creerObjet(bille, bille.Capacity);
+                        }
+                        if (Program.compteurFrames == 0)
+                            FonctionsNatives.dessinerOpenGL();
                         if (peutAnimer)
                             FonctionsNatives.animer(tempsInterAffichage);
                     }
