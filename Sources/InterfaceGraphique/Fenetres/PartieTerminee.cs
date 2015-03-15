@@ -21,7 +21,9 @@ namespace InterfaceGraphique
 
             if (victoire == false)
             {
-                player = new System.Media.SoundPlayer(Properties.Resources.Trombone);
+              //  player = new System.Media.SoundPlayer(Properties.Resources.Trombone);
+                player = new System.Media.SoundPlayer(Properties.Resources.gOver);
+
                 labelTermine.Text = "Désolé! Vous avez perdu la partie...";
                 imageTermine.SizeMode = PictureBoxSizeMode.StretchImage;
                 imageTermine.Image = Properties.Resources.Lose;

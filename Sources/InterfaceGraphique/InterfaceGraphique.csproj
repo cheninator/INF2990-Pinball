@@ -300,12 +300,13 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="%24this.Icon.ico" />
+    <None Include="Resources\annoying.wav" />
+    <None Include="Resources\game_over.wav" />
     <None Include="Resources\Trombone.wav" />
     <None Include="Resources\Fireworks.wav" />
     <None Include="Resources\Win.gif" />
     <None Include="Resources\Lose.jpg" />
     <None Include="Resources\1416982812770.jpg" />
-    <None Include="Resources\scary.wav" />
     <None Include="Resources\touche-invalide.wav" />
     <None Include="Resources\man-scream-01.wav" />
     <None Include="Resources\baby.jpeg" />

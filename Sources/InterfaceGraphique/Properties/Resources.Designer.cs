@@ -72,6 +72,15 @@ namespace InterfaceGraphique.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized resource of type System.IO.UnmanagedMemoryStream similar to System.IO.MemoryStream.
+        /// </summary>
+        internal static System.IO.UnmanagedMemoryStream annoying {
+            get {
+                return ResourceManager.GetStream("annoying", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
         internal static System.Drawing.Bitmap baby {
@@ -210,6 +219,15 @@ namespace InterfaceGraphique.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized resource of type System.IO.UnmanagedMemoryStream similar to System.IO.MemoryStream.
+        /// </summary>
+        internal static System.IO.UnmanagedMemoryStream gOver {
+            get {
+                return ResourceManager.GetStream("gOver", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
         internal static System.Drawing.Bitmap Lose {
@@ -335,15 +353,6 @@ namespace InterfaceGraphique.Properties {
             get {
                 object obj = ResourceManager.GetObject("SaintTrinity", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized resource of type System.IO.UnmanagedMemoryStream similar to System.IO.MemoryStream.
-        /// </summary>
-        internal static System.IO.UnmanagedMemoryStream scary {
-            get {
-                return ResourceManager.GetStream("scary", resourceCulture);
             }
         }
         
