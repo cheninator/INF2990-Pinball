@@ -84,7 +84,7 @@ namespace InterfaceGraphique
            // timerBille2.Tick += new System.EventHandler(this.timerBille2_Tick);
             timer.Enabled = true;
 
-            timer.Interval = 3500;
+            timer.Interval = 2500;
             timer.Tick += new System.EventHandler(this.timer_Tick);
             EtablirTouches(playerType);
             this.KeyDown += new KeyEventHandler(PartieRapide_KeyDown);
@@ -204,8 +204,9 @@ namespace InterfaceGraphique
                     if (Program.compteurFrames == 0)
                     {
                         FonctionsNatives.dessinerOpenGL();
-                        billesEnJeu = FonctionsNatives.obtenirNombreBillesCourante();
                     }
+                    billesEnJeu = FonctionsNatives.obtenirNombreBillesCourante();
+
                     if (startGame && billesEnJeu == 0 && (billesDisponibles >= 0))
                     {
                         // wait a certain time
@@ -302,7 +303,7 @@ namespace InterfaceGraphique
             // Il faut changer le mode car le traitement de début est fini
             etat = new EtatJeuJouer(this);
             timer.Enabled = true;
-            timer.Interval = 3500;
+            timer.Interval = 2500;
             timer.Stop();
             timer.Start();
 
@@ -314,8 +315,8 @@ namespace InterfaceGraphique
             FonctionsNatives.creerObjet(bille, bille.Capacity);
             nombreDeBillesUtilise++;
             billesDisponibles--;
-            //Console.WriteLine(nombreBillesInit);
-            //Console.WriteLine(nombreDeBillesUtilise);
+            Console.WriteLine(nombreBillesInit);
+            Console.WriteLine(nombreDeBillesUtilise);
 
         }
         private void FinCampagne(bool active)

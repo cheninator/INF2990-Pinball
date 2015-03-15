@@ -121,6 +121,7 @@ void NoeudPaletteG::animer(float temps)
 
 	switch (etatPalette_)
 	{
+
 		case ACTIVE:
 
 			// TODO : Verifier que la rotation que je veux faire est possible,
@@ -136,12 +137,6 @@ void NoeudPaletteG::animer(float temps)
 				assignerRotation(vitesseDescenteAngulaire_);
 
 			else
-			{
-				assignerRotationHard(glm::dvec3{ rotation_.x, rotation_.y, angleZOriginal_ });
-				etatPalette_ = INACTIVE;
-			}
-
-			break;
 
 		case ACTIVE_AI:
 
@@ -161,18 +156,18 @@ void NoeudPaletteG::animer(float temps)
 
 		break;
 
-	case RETOUR_AI:
+		case RETOUR_AI:
 
-		if (obtenirRotation().z - angleZOriginal_ > 0)
-			assignerRotation(vitesseDescenteAngulaire_);
+			if (obtenirRotation().z - angleZOriginal_ > 0)
+				assignerRotation(vitesseDescenteAngulaire_);
 
-		else
-		{
-			assignerRotationHard(glm::dvec3{ rotation_.x, rotation_.y, angleZOriginal_ });
-			etatPalette_ = INACTIVE;
-		}
+			else
+			{
+				assignerRotationHard(glm::dvec3{ rotation_.x, rotation_.y, angleZOriginal_ });
+				etatPalette_ = INACTIVE;
+			}
 
-		break;
+			break;
 
 	case INACTIVE:
 

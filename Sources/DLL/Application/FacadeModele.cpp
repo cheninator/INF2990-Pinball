@@ -342,13 +342,13 @@ void FacadeModele::animer(float temps)
 	joueur_->jouer(listeBilles_);
 
 	/// Traiter les collisions entre objets
-	traiterCollisions();
+	traiterCollisions(temps);
 
 	bool useQuadTree = false;
 	if (useQuadTree)
-		traiterCollisionsAvecQuadTree();
+		traiterCollisionsAvecQuadTree(temps);
 	else
-		traiterCollisions();
+		traiterCollisions(temps);
 
 	/// Faire la somme des forces
 	updateForcesExternes();
@@ -1309,7 +1309,7 @@ int* FacadeModele::obtenirProprietes(char* nomFichier, int length)
 /// @remark Les listes doivent etre construites et la liste de billes doit etre tenue a jour.
 /// 
 ///////////////////////////////////////////////////////////////////////////////
-void FacadeModele::traiterCollisions()
+void FacadeModele::traiterCollisions(float temps)
 {
 	bool miseAJourListeBillesRequise = false;
 
@@ -1354,7 +1354,7 @@ void FacadeModele::traiterCollisions()
 
 
 
-void FacadeModele::traiterCollisionsAvecQuadTree()
+void FacadeModele::traiterCollisionsAvecQuadTree(float temps)
 {
 	bool miseAJourListeBillesRequise = false;
 
@@ -1432,7 +1432,7 @@ void FacadeModele::updateForcesExternes()
 				{
 					if (bille->obtenirPortailDOrigine() != noeud)
 					{
-						glm::dvec2 force = 1/distance * glm::normalize(positionPortail - positionBille);
+						glm::dvec2 force = MASSE_NOEUD_PORTAIL * MASSE_NOEUD_BILLE /distance * glm::normalize(positionPortail - positionBille);
 						sommeDesForces += force;
 					}
 				}

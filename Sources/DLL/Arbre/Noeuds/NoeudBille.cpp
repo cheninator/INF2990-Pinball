@@ -138,7 +138,14 @@ void NoeudBille::animer(float temps) // rajouter des parametres ou une fonction 
 	NoeudComposite::animer(temps);
 	// Somme des forces agissant sur les particules.
 	// =============================================
-	
+
+	double positionCouvercleX = obtenirParent()->obtenirParent()->getEnfant(1)->obtenirPositionRelative().x;
+	if (positionCouvercleX != positionCouvercleX_)
+	{
+		positionCouvercleX_ = positionCouvercleX;
+		return;
+	}
+
 	glm::dvec3 forceFrottement{ 0, 0, 0 };
 	if (glm::length(vitesse_) > utilitaire::EPSILON)
 		forceFrottement = -constanteDeFrottement_ * glm::normalize(vitesse_);
@@ -169,10 +176,10 @@ void NoeudBille::animer(float temps) // rajouter des parametres ou une fonction 
 	// =====================
 	// C'est pas la bonne facon de calculer la rotation a appliquer a la boule,
 	// C'est pas un bug, j'ai just pas encore trouve la bonne facon de le faire.
-	double constanteACalculer{ 0.1 }; // Depend du rayon de la boule, mais avec 0.1, ca parait deja bien.
+	double constanteACalculer{ 5 }; // Depend du rayon de la boule, mais avec 0.1, ca parait deja bien.
 	glm::dvec3 rotation{ 0, 0, 0 };
-	rotation.x = constanteACalculer * -vitesse_.y;
-	rotation.y = constanteACalculer * vitesse_.x;
+	rotation.x = constanteACalculer * -vitesse_.y * temps;
+	rotation.y = constanteACalculer * vitesse_.x * temps;
 
 	// Assignation des nouvelles valeurs.
 	assignerRotation(rotation);

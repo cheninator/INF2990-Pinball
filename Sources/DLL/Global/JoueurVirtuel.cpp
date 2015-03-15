@@ -86,9 +86,6 @@ void JoueurVirtuel::jouer(const std::vector<NoeudAbstrait*>& listeBilles)
 			palettesDroite_[j]->activerAI();
 	}
 
-	/// Traiter d'autres collisions potentiel
-	/// TO DO : Gerer les collisions avec d'autres objets qu'une bille
-
 }
 
 
