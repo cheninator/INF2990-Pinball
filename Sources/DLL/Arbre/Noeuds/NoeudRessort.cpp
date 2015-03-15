@@ -118,8 +118,8 @@ void NoeudRessort::animer(float temps)
 	case EN_COMPRESSION:
 		if (scale_.y > 0.3)
 		{
-			scale_ = { scale_.x, scale_.y * 0.95, scale_.z };
-			positionRelative_ -= scale_.y * translationCompression_;
+			scale_ = { scale_.x, scale_.y * exp(temps * log(0.002)), scale_.z }; // exp(temps * log(0.002)) = 0.002^temps
+			positionRelative_ -= scale_.y /5 * translationCompression_ ; // Très heuristique comme calcul 
 			// Updater l'attribut distanceCompresseion_
 		}
 		break;
@@ -127,8 +127,8 @@ void NoeudRessort::animer(float temps)
 	case EN_DECOMPRESSION:
 		if (scale_.y < scaleYOriginal_)
 		{
-			scale_ = { scale_.x, scale_.y * 1.05, scale_.z };
-			positionRelative_ += scale_.y * translationCompression_;
+			scale_ = { scale_.x, scale_.y * exp(-temps * log(0.0002)), scale_.z }; // exp(-temps * log(0.002)) = 0.002^(-temps)
+			positionRelative_ += scale_.y/5 * translationCompression_;
 			// Updater l'attribut distanceCompresseion_ 
 		}
 			// La decompression devra etre reimplementee pour respecter l'equation differentielle
