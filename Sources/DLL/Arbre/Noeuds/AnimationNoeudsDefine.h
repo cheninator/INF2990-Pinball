@@ -32,6 +32,7 @@ enum Direction { dirY, dirYX, dirX, dirXY, dirZ }; // Pour fonctionner avec le s
 // ButoirCirculaire
 #define SCALE_MAX_NOEUD_BUTOIRCIRCULAIRE 8./100.	// Pourcentage d'augmentation/raptissement maximal
 #define TEMPS_DEMI_ANIMATION_NOEUD_BUTOIRCIRCULAIREE .5		// L'animation d'une demi animation dure 1/2 sec
+#define TEMPS_ILLUMINATION_NOEUD_BUTOIRCIRCULAIREE .5		// Temsp pendant le quel un butoir s'illumine
 
 // Cible
 #define VITESSE_NOEUD_CIBLE 360./4.	// 1 tour toute les 4 secondes

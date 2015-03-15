@@ -113,6 +113,17 @@ void NoeudButoirCirculaire::animer(float temps)
 	NoeudComposite::animer(temps);
 	if (!animer_)
 		return;
+
+	if (compteurIllumination_ < TEMPS_ILLUMINATION_NOEUD_BUTOIRCIRCULAIREE)
+	{
+		compteurIllumination_ += temps;
+		selectionne_ = true;
+	}
+	else
+	{
+		selectionne_ = false;
+	}
+
 	if (selectionne_ || impossible_ || transparent_) 
 	{
 		if (etatButoir_ == INITIAL){
@@ -243,4 +254,5 @@ void NoeudButoirCirculaire::traiterCollisions(aidecollision::DetailsCollision de
 {
 	NoeudAbstrait::traiterCollisions(details, bille);
 	SingletonGlobal::obtenirInstance()->collisionButoirCirculaire();
+	compteurIllumination_ = 0;
 }
