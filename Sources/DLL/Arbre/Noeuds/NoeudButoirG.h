@@ -52,7 +52,8 @@ private:
 
 	/// Angle dans le sinus de l'oscillation
 	float angle_{ 0 };
-
+	float compteurIllumination_{ TEMPS_ILLUMINATION_NOEUD_BUTOIR };
+	bool illumine_{ false };
 };
 
 #endif // __ARBRE_NOEUDS_NOEUDBUTOIRG_H__

@@ -20,6 +20,7 @@ enum Direction { dirY, dirYX, dirX, dirXY, dirZ }; // Pour fonctionner avec le s
 // Composite
 #define EPSILON_ANIMATION_NOEUD_COMPOSITE 1./30. + .1/30. * .1	// Si en dessous de 30fps (+10%), on n'anime plus
 #define HAUTEUR_TABLE_NOEUD_COMPOSITE 10
+#define TEMPS_ILLUMINATION_NOEUD_BUTOIR .5		// Temsp pendant le quel un butoir s'illumine
 
 // Bille
 #define VITESSE_MAX_NOEUD_BILLE 350.		// Vitesse maximale de la bille
@@ -32,7 +33,6 @@ enum Direction { dirY, dirYX, dirX, dirXY, dirZ }; // Pour fonctionner avec le s
 // ButoirCirculaire
 #define SCALE_MAX_NOEUD_BUTOIRCIRCULAIRE 8./100.	// Pourcentage d'augmentation/raptissement maximal
 #define TEMPS_DEMI_ANIMATION_NOEUD_BUTOIRCIRCULAIREE .5		// L'animation d'une demi animation dure 1/2 sec
-#define TEMPS_ILLUMINATION_NOEUD_BUTOIRCIRCULAIREE .5		// Temsp pendant le quel un butoir s'illumine
 
 // Cible
 #define VITESSE_NOEUD_CIBLE 360./4.	// 1 tour toute les 4 secondes

@@ -54,8 +54,8 @@ private:
 	Etat etatButoir_ { ALLER };
 	Etat etatPrecedentButoir_ { INITIAL };
 	float compteurAnimation_ { 0 };
-	float compteurIllumination_{ TEMPS_ILLUMINATION_NOEUD_BUTOIRCIRCULAIREE };
 	float scalePrecedentMax_ { 0 };
+	float compteurIllumination_{ TEMPS_ILLUMINATION_NOEUD_BUTOIR };
 	bool illumine_{ false };
 };
 
