@@ -74,6 +74,9 @@ void NoeudButoirCirculaire::afficherConcret() const
 	}
 	else if (impossible_)
 		glColorMask(0, 1, 1, 1);
+	else if (illumine_){
+		glTexEnvf(GL_TEXTURE_ENV, GL_TEXTURE_ENV_MODE, GL_DECAL);
+	}
 	else if (selectionne_) {
 		glTexEnvf(GL_TEXTURE_ENV, GL_TEXTURE_ENV_MODE, GL_ADD);
 		if (twin_ != nullptr && twin_ != NULL)
@@ -117,11 +120,11 @@ void NoeudButoirCirculaire::animer(float temps)
 	if (compteurIllumination_ < TEMPS_ILLUMINATION_NOEUD_BUTOIRCIRCULAIREE)
 	{
 		compteurIllumination_ += temps;
-		selectionne_ = true;
+		illumine_ = true;
 	}
 	else
 	{
-		selectionne_ = false;
+		illumine_ = false;
 	}
 
 	if (selectionne_ || impossible_ || transparent_) 

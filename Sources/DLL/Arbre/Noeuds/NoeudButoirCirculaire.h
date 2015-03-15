@@ -56,6 +56,7 @@ private:
 	float compteurAnimation_ { 0 };
 	float compteurIllumination_{ TEMPS_ILLUMINATION_NOEUD_BUTOIRCIRCULAIREE };
 	float scalePrecedentMax_ { 0 };
+	bool illumine_{ false };
 };
 
 #endif // __ARBRES_NOEUDS_NOEUDBUTOIRCIRCULAIRE_H__
