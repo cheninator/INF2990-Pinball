@@ -10,7 +10,6 @@ namespace InterfaceGraphique
     public partial class ModeJeu : Form
     {
         public PartieTerminee gameOver;
-        private Timer timer;
         private Timer timerBille2;
         private double currentZoom = -1; ///< Zoom courant
         private Touches touches; ///< Les touches pour le jeu
@@ -23,7 +22,6 @@ namespace InterfaceGraphique
         StringBuilder nextMap;
         bool peutAnimer;
         bool boolTemp = true;
-        bool startGame = false;
         private bool activateAmbiantLight = false; ///< Etat de la lumiere ambiante
         private bool activateDirectLight = false; ///< Etat de la lumiere directe
         private bool activateSpotLight = false; ///< Etat de la lumiere spot
@@ -78,14 +76,10 @@ namespace InterfaceGraphique
                 this.FormBorderStyle = FormBorderStyle.None;
                 this.WindowState = FormWindowState.Maximized;*/
             }
-            timer = new Timer();
            // timerBille2 = new Timer();
            // timerBille2.Interval = 1000;
            // timerBille2.Tick += new System.EventHandler(this.timerBille2_Tick);
-            timer.Enabled = true;
 
-            timer.Interval = 2500;
-            timer.Tick += new System.EventHandler(this.timer_Tick);
             EtablirTouches(playerType);
             this.KeyDown += new KeyEventHandler(PartieRapide_KeyDown);
             this.KeyUp += new KeyEventHandler(PartieRapide_KeyUp);
@@ -118,7 +112,7 @@ namespace InterfaceGraphique
             etat = new EtatJeuDebutDePartie(this);
             // Il faut changer le mode car le traitement de début est fini
             etat = new EtatJeuJouer(this);
-            timer.Start();
+            CreerBille();
 
           
         }
@@ -168,17 +162,7 @@ namespace InterfaceGraphique
 
         }
 
-        // To DO: Don't touch my shit
-        private void timer_Tick(object sender, EventArgs e)
-        {
-        //  StringBuilder bille = new StringBuilder("bille");
-        //  FonctionsNatives.creerObjet(bille, bille.Capacity);
-            CreerBille();
-          //Console.WriteLine("timer");
-         // timerBille2.Start();
-          timer.Stop();
-          startGame = true;
-        }
+    
         // And this
         private void timerBille2_Tick(object sender, EventArgs e)
         {
@@ -207,7 +191,7 @@ namespace InterfaceGraphique
                     }
                     billesEnJeu = FonctionsNatives.obtenirNombreBillesCourante();
 
-                    if (startGame && billesEnJeu == 0 && (billesDisponibles >= 0))
+                    if (billesEnJeu == 0 && (billesDisponibles >= 0))
                     {
                         // wait a certain time
                         CreerBille();
@@ -272,8 +256,6 @@ namespace InterfaceGraphique
             FonctionsNatives.resetNombreBillesCourantes();
             FonctionsNatives.construireListesPalettes();
             FonctionsNatives.mettreAJourListeBillesEtNoeuds();
-            startGame = false;
-            timer.Start();
         }
 
         private void ProchainePartie()
@@ -297,16 +279,11 @@ namespace InterfaceGraphique
             currentZone++;
             peutAnimer = true;
             boolTemp = true;
-            startGame = false;
             /// La création de l'état s'occupe d'appeler resetConfig
             etat = new EtatJeuDebutDePartie(this);
             // Il faut changer le mode car le traitement de début est fini
             etat = new EtatJeuJouer(this);
-            timer.Enabled = true;
-            timer.Interval = 2500;
-            timer.Stop();
-            timer.Start();
-
+          
         }
 
         private void CreerBille()
@@ -315,8 +292,8 @@ namespace InterfaceGraphique
             FonctionsNatives.creerObjet(bille, bille.Capacity);
             nombreDeBillesUtilise++;
             billesDisponibles--;
-            Console.WriteLine(nombreBillesInit);
-            Console.WriteLine(nombreDeBillesUtilise);
+          //  Console.WriteLine(nombreBillesInit);
+          //  Console.WriteLine(nombreDeBillesUtilise);
 
         }
         private void FinCampagne(bool active)
@@ -423,19 +400,15 @@ namespace InterfaceGraphique
             FonctionsNatives.resetNombreBillesCourantes();
             currentZone = 1;
             FonctionsNatives.construireListesPalettes();
-            startGame = false;
             peutAnimer = true;
             boolTemp = true;
             /// La création de l'état s'occupe d'appeler resetConfig
             etat = new EtatJeuDebutDePartie(this);
             // Il faut changer le mode car le traitement de début est fini
             etat = new EtatJeuJouer(this);
-            timer.Start();
            
            // gameOver.Close();
             gameOver.Dispose();
-            timer.Stop();
-            timer.Start();
 
            
         }
@@ -450,14 +423,12 @@ namespace InterfaceGraphique
         ////////////////////////////////////////////////////////////////////////
         public void Quitter()
         {
-            timer.Stop();
             resetConfig();
             this.Close();
         }
         
         private void mPrincipal_menu_Click(object sender, EventArgs e)
         {
-            timer.Stop();
             this.Close();
         }
 
