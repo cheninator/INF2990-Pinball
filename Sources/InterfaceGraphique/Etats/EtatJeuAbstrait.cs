@@ -151,7 +151,7 @@ namespace InterfaceGraphique
             }
             else if (e.KeyValue == parent_.getTouches().Ressort)
             {
-
+                FonctionsNatives.compresserRessort();
             }
             if (e.KeyCode == Keys.Left)
                 FonctionsNatives.translater(-10, 0);
@@ -195,7 +195,10 @@ namespace InterfaceGraphique
             {
                 FonctionsNatives.desactiverPalettesDJ2();
             }
-
+            else if (e.KeyValue == parent_.getTouches().Ressort)
+            {
+                FonctionsNatives.relacherRessort();
+            }
 
 
             return true;
