@@ -1474,6 +1474,26 @@ extern "C"
 		FacadeModele::obtenirInstance()->desactiverPalettesDJ1();
 	}
 
+	__declspec(dllexport) void __cdecl activerPalettesGJ2()
+	{
+		FacadeModele::obtenirInstance()->activerPalettesGJ2();
+	}
+	__declspec(dllexport) void __cdecl desactiverPalettesGJ2()
+	{
+		FacadeModele::obtenirInstance()->desactiverPalettesGJ2();
+	}
+	__declspec(dllexport) void __cdecl activerPalettesDJ2()
+	{
+		FacadeModele::obtenirInstance()->activerPalettesDJ2();
+	}
+	__declspec(dllexport) void __cdecl desactiverPalettesDJ2()
+	{
+		FacadeModele::obtenirInstance()->desactiverPalettesDJ2();
+	}
+
+
+
+
 	__declspec(dllexport) BSTR obtenirDerniereCampagne()
 	{
 		// http://stackoverflow.com/questions/6284524/bstr-to-stdstring-stdwstring-and-vice-versa

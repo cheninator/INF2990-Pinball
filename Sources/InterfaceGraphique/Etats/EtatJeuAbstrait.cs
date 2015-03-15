@@ -139,7 +139,7 @@ namespace InterfaceGraphique
 
             else if (e.KeyValue == parent_.getTouches().PGJ2)
             {
-                // TODO: palette gauche joueur 2
+                FonctionsNatives.activerPalettesGJ2();
             }
             else if (e.KeyValue == parent_.getTouches().PDJ1)
             {
@@ -147,7 +147,7 @@ namespace InterfaceGraphique
             }
             else if (e.KeyValue == parent_.getTouches().PDJ2)
             {
-
+                FonctionsNatives.activerPalettesDJ2();
             }
             else if (e.KeyValue == parent_.getTouches().Ressort)
             {
@@ -187,6 +187,17 @@ namespace InterfaceGraphique
             {
                 FonctionsNatives.desactiverPalettesDJ1();
             }
+            else if (e.KeyValue == parent_.getTouches().PGJ2)
+            {
+                FonctionsNatives.desactiverPalettesGJ2();
+            }
+            else if (e.KeyValue == parent_.getTouches().PDJ2)
+            {
+                FonctionsNatives.desactiverPalettesDJ2();
+            }
+
+
+
             return true;
         }
 

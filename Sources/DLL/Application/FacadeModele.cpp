@@ -1272,6 +1272,68 @@ void FacadeModele::desactiverPalettesDJ1()
 		palette->desactiver();
 }
 
+///////////////////////////////////////////////////////////////////////////////
+///
+/// @fn void FacadeModele::activerPalettesGJ2()
+/// Active les palettes gauches du joueur 2. C'est la fonction qui dit a la 
+/// palette de bouger.
+/// 
+/// @remark Les listes de palettes doivent avoir etes construites
+/// 
+///////////////////////////////////////////////////////////////////////////////
+void FacadeModele::activerPalettesGJ2()
+{
+	for (NoeudPaletteG* palette : listePalettesGJ2_)
+		palette->activer();
+}
+
+///////////////////////////////////////////////////////////////////////////////
+///
+/// @fn void FacadeModele::desactiverPalettesGJ2()
+/// Desactive les palettes gauches du joueur 2. C'est la fonction qui dit a la 
+/// palette de revenir et d'arreter de bouger.
+/// 
+/// @remark Les listes de palettes doivent avoir etes construites
+/// 
+///////////////////////////////////////////////////////////////////////////////
+void FacadeModele::desactiverPalettesGJ2()
+{
+	for (NoeudPaletteG* palette : listePalettesGJ2_)
+		palette->desactiver();
+}
+
+///////////////////////////////////////////////////////////////////////////////
+///
+/// @fn void FacadeModele::activerPalettesDJ2()
+/// Active les palettes gauches du joueur 2. C'est la fonction qui dit a la 
+/// palette de bouger.
+/// 
+/// @remark Les listes de palettes doivent avoir etes construites
+/// 
+///////////////////////////////////////////////////////////////////////////////
+void FacadeModele::activerPalettesDJ2()
+{
+	for (NoeudPaletteD* palette : listePalettesDJ2_)
+		palette->activer();
+}
+
+///////////////////////////////////////////////////////////////////////////////
+///
+/// @fn void FacadeModele::desactiverPalettesDJ2()
+/// Desactive les palettes gauches du joueur 2. C'est la fonction qui dit a la 
+/// palette de revenir et d'arreter de bouger.
+/// 
+/// @remark Les listes de palettes doivent avoir etes construites
+/// 
+///////////////////////////////////////////////////////////////////////////////
+void FacadeModele::desactiverPalettesDJ2()
+{
+	for (NoeudPaletteD* palette : listePalettesDJ2_)
+		palette->desactiver();
+}
+
+
+
 
 void FacadeModele::supprimerBille()
 {
