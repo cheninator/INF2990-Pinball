@@ -139,6 +139,13 @@ void NoeudBille::animer(float temps) // rajouter des parametres ou une fonction 
 	// Somme des forces agissant sur les particules.
 	// =============================================
 
+	double positionCouvercleX = obtenirParent()->obtenirParent()->getEnfant(1)->obtenirPositionRelative().x;
+	if (positionCouvercleX != positionCouvercleX_)
+	{
+		positionCouvercleX_ = positionCouvercleX;
+		return;
+	}
+
 	glm::dvec3 forceFrottement{ 0, 0, 0 };
 	if (glm::length(vitesse_) > utilitaire::EPSILON)
 		forceFrottement = -constanteDeFrottement_ * glm::normalize(vitesse_);
