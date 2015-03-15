@@ -10,7 +10,6 @@ namespace InterfaceGraphique
     public partial class ModeJeu : Form
     {
         public PartieTerminee gameOver;
-        private Timer timerBille2;
         private double currentZoom = -1; ///< Zoom courant
         private Touches touches; ///< Les touches pour le jeu
         private ZoneInfo zInfo;
@@ -170,7 +169,6 @@ namespace InterfaceGraphique
            // FonctionsNatives.creerObjet(bille, bille.Capacity);
             CreerBille();
             //Console.WriteLine("BILLE 2");
-            timerBille2.Stop();
         }
 
         public void MettreAJour(double tempsInterAffichage)
