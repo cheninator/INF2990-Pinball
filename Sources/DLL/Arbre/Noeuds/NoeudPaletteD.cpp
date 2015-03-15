@@ -35,12 +35,9 @@ NoeudPaletteD::NoeudPaletteD(const std::string& typeNoeud)
 	: NoeudComposite{ typeNoeud }
 {
 	ajustable_ = false;
-	estActive = false;
-	estJoueurVirtuel = true;
-	initial_ = true;
 
-	vitesseMonteAngulaire_ = { 0, 0, 9 };
-	vitesseDescenteAngulaire_ = { 0, 0, -3 };
+	vitesseMonteAngulaire_ = { 0, 0, -9 };
+	vitesseDescenteAngulaire_ = { 0, 0, 3 };
 	angleZOriginal_ = 0;
 }
 
@@ -104,6 +101,7 @@ void NoeudPaletteD::afficherConcret() const
 	glPopMatrix();
 }
 
+
 ////////////////////////////////////////////////////////////////////////
 ///
 /// @fn void NoeudPaletteD::animer(float temps)
@@ -120,46 +118,68 @@ void NoeudPaletteD::animer(float temps)
 {
 	NoeudComposite::animer(temps);
 
-	if (initial_)
+	switch (etatPalette_)
 	{
-		angleZOriginal_ = obtenirRotation().z;
-		initial_ = false;
-	}
+		case ACTIVE:
+		// TODO : Verifier que la rotation que je veux faire est possible,
+		// si impossible, la palette est bloquee et doit tomber dans l'etat INACTIVE
+			if (angleZOriginal_ - obtenirRotation().z < 60)
+				assignerRotation(vitesseMonteAngulaire_);
+		
+			break;
 
-	/// Lorsque le joueur active la palette
-	if (estActive)
-	{
-		/// Faire pivoter la palette tant que le déplacement angulaire n'est pas égal à 60 degrés
-		if (obtenirRotation().z - angleZOriginal_ < 60)
-			assignerRotation(vitesseMonteAngulaire_);
+		case RETOUR:
 
-		/// Comportement du joueur virtuel
-		if (estJoueurVirtuel)
-		{
-			/// Faire redescendre la palette du joueur virtuel apres un certain temps
-			if (timer_ >= 0.25)
-			{
-				desactiver();
-				timer_ = 0;
-			}
+			if (angleZOriginal_ - obtenirRotation().z > 0)
+				assignerRotation(vitesseDescenteAngulaire_);
+
 			else
-				timer_ += temps;
-		}
-	}
+			{
+				assignerRotationHard(glm::dvec3{ rotation_.x, rotation_.y, angleZOriginal_ });
+				etatPalette_ = INACTIVE;
+			}
 
-	/// Lorsque le joueur desactive le mouvement de la palette
-	else
-	{
-		/// Faire redescendre la palette à son etat initial
-		if (obtenirRotation().z - angleZOriginal_ > 0)
-			assignerRotation(vitesseDescenteAngulaire_);
+			break;
 
-		/// Reassigner les valeurs initiales
-		else
-			assignerRotationHard(glm::dvec3{ rotation_.x, rotation_.y, angleZOriginal_ });
+	case ACTIVE_AI:
+
+			if (angleZOriginal_ - obtenirRotation().z < 60)
+				assignerRotation(vitesseMonteAngulaire_);
+
+			else
+			{
+				if (timer_ >= 0.25)
+				{
+					etatPalette_ = RETOUR_AI;
+					timer_ = 0;
+				}
+
+				else
+					timer_ += temps;
+			}
+
+			break;
+
+	case RETOUR_AI:
+
+			if (angleZOriginal_ - obtenirRotation().z > 0)
+				assignerRotation(vitesseDescenteAngulaire_);
+
+			else
+			{
+				assignerRotationHard(glm::dvec3{ rotation_.x, rotation_.y, angleZOriginal_ });
+				etatPalette_ = INACTIVE;
+			}
+
+			break;
+
+	case INACTIVE:
+		break;
+
 	}
 
 }
+
 
 ////////////////////////////////////////////////////////////////////////
 ///
@@ -211,8 +231,12 @@ bool NoeudPaletteD::accepterJoueurVirtuel(JoueurVirtuel* joueur)
 ////////////////////////////////////////////////////////////////////////
 void NoeudPaletteD::activer()
 {
-	estActive = true;
+	if (etatPalette_ == INACTIVE)
+		angleZOriginal_ = obtenirRotation().z;
+
+	etatPalette_ = ACTIVE;
 }
+
 
 ////////////////////////////////////////////////////////////////////////
 ///
@@ -225,7 +249,28 @@ void NoeudPaletteD::activer()
 ////////////////////////////////////////////////////////////////////////
 void NoeudPaletteD::desactiver()
 {
-	estActive = false;
+	etatPalette_ = RETOUR;
+}
+
+
+////////////////////////////////////////////////////////////////////////
+///
+/// @fn void NoeudPaletteG::activerAI()
+///
+/// Cette fonction active l'animation qui fait monter les palettes. C'est la
+/// méthode qui doit etre appelé par le joueur virtuel
+/// 
+/// @return Aucune 
+///
+////////////////////////////////////////////////////////////////////////
+void NoeudPaletteD::activerAI()
+{
+	// Les palettesAI doivent pouvoir etre activerAI meme si une bille ne se trouve pas proche
+	if (etatPalette_ == INACTIVE)
+	{
+		angleZOriginal_ = obtenirRotation().z;
+		etatPalette_ = ACTIVE_AI;
+	}
 }
 
 
@@ -242,7 +287,7 @@ void NoeudPaletteD::desactiver()
 ////////////////////////////////////////////////////////////////////////
 void NoeudPaletteD::traiterCollisions(aidecollision::DetailsCollision details, NoeudAbstrait* bille)
 {
-	if (fonctionDroitePaletteEnMouvement(bille) > 0)
+	if (1 && (etatPalette_ == ACTIVE || etatPalette_ == ACTIVE_AI) && fonctionDroitePaletteEnMouvement(bille) > 0)
 	{
 		glm::dvec3 positionPalette = obtenirPositionRelative();
 		glm::dvec3 positionBille = bille->obtenirPositionRelative();
@@ -292,6 +337,42 @@ void NoeudPaletteD::traiterCollisions(aidecollision::DetailsCollision details, N
 	{
 		NoeudAbstrait::traiterCollisions(details, bille);
 	}
+}
+
+
+bool NoeudPaletteD::estActiveeParBille(NoeudAbstrait* bille)
+{
+	// Si la palette n'a jamais etee activee, elle ne connait pas son angle original.
+	if (etatPalette_ == INACTIVE)
+		angleZOriginal_ = rotation_[0];
+
+	glm::dvec3 positionPalette = obtenirPositionRelative();
+	glm::dvec3 positionBille = bille->obtenirPositionRelative();
+	positionPalette.z = 0.0; // Les positions utilisees ici doivent etre en 2D
+	positionBille.z = 0.0; // Les positions utilisees ici doivent etre en 2D
+
+	glm::dvec3 vecteur = positionBille - positionPalette;
+	double distance = glm::length(vecteur);
+
+	double angleEnRadian = angleZOriginal_ * utilitaire::PI_180;
+	glm::dvec3 directionPalette = { cos(angleEnRadian), sin(angleEnRadian), 0 }; // Une palette pas tournee a un axe { 1, 0, 0}
+	glm::dvec3 vecteurProjete = glm::proj(vecteur, directionPalette);
+	glm::dvec3 vecteurNormal = vecteur - vecteurProjete;
+	std::vector<glm::dvec3> boite = obtenirVecteursEnglobants();
+	double longueurPalette = boite[0].x - boite[2].x;
+
+	double distanceProjetee = glm::length(vecteurProjete);
+	double distanceNormale = glm::length(vecteurNormal);
+	glm::dvec3 produitVectoriel;
+
+	if (fonctionDroitePaletteOriginale(bille) > 0// << vrai si on la bille est au dessus de la droite definie par la palette. C<est ce qui fait que les palettes n'activent pas par en dessous.
+		&& glm::dot(directionPalette, vecteur) < 0
+		&& asin(glm::length(produitVectoriel) / glm::length(vecteur)) < sin(60 * utilitaire::PI_180)
+		&& distance < longueurPalette)
+		return true;
+
+	else
+		return false;
 }
 
 

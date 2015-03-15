@@ -49,6 +49,9 @@ public:
 	/// Desactiver la palette.
 	void desactiver();
 
+	/// Activer la palette par le AI
+	void activerAI();
+
 	/// Pour le traitement logique des collisions
 	virtual void traiterCollisions(aidecollision::DetailsCollision, NoeudAbstrait* bille);
 
@@ -61,17 +64,13 @@ public:
 	/// Modifier la vitesse de descente angulaire de la palette
 	void assignerVitesseDescenteAngulaire(glm::dvec3 vitesse) { vitesseDescenteAngulaire_ = vitesse; };
 
-	/// Modifier le comportement pour que ce soit un joueur virtuel
-	void activerJoueurVirtuel(bool active) { estJoueurVirtuel = active; };
+	/// Savoir si la palette est activée par une bille
+	bool estActiveeParBille(NoeudAbstrait* noeud);
 
-	/// Savoir si la palette vient tout juste d'etre construit
-	bool obtenirInitial() const { return initial_; };
-
-	/// Assigner l'angle original de la palette apres la construction
-	void assignerAngleOriginal(double angle) { angle = angleZOriginal_; };
-
-
+	/// Retourne la fonction qui represente la palette originellement
 	double fonctionDroitePaletteOriginale(NoeudAbstrait* bille);
+
+	/// Retourne la fonction qui reprensente la palette lorsqu'elle est en mouvement
 	double fonctionDroitePaletteEnMouvement(NoeudAbstrait* bille);
 
 private:
@@ -79,8 +78,11 @@ private:
 	/// Angle Original pour le mouvement des palettes selon les touches du clavier
 	double angleZOriginal_;
 
-	/// Information concernant l'état d'activation de la palette
-	bool estActive, estJoueurVirtuel, initial_;
+	/// Enumeration pour contenir l'etat de la palette
+	enum Etat { ACTIVE, RETOUR, INACTIVE, ACTIVE_AI, RETOUR_AI };
+
+	/// Etat courant de la palette
+	Etat etatPalette_{ INACTIVE };
 
 	/// Information des vitesses de monte et de descente de la palette
 	glm::dvec3 vitesseMonteAngulaire_;
