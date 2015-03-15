@@ -837,17 +837,17 @@ int FacadeModele::creerXML(std::string path, int prop[6], bool force)
 		&& FacadeModele::obtenirInstance()->obtenirArbreRenduINF2990()->getEnfant(0)->chercher("ressort")
 		&& FacadeModele::obtenirInstance()->obtenirArbreRenduINF2990()->getEnfant(0)->obtenirNombreEnfants() == 3)
 	{
-		if (FacadeModele::obtenirInstance()->obtenirArbreRenduINF2990()->estDefaut())
-			sauvegardeAutorise = 1;
+		//if (FacadeModele::obtenirInstance()->obtenirArbreRenduINF2990()->estDefaut())
+			//sauvegardeAutorise = 1;
 
-		else
-		{
+		//else
+		//{
 			VisiteurXML* visiteur = new VisiteurXML(path, prop);
 			FacadeModele::obtenirInstance()->obtenirArbreRenduINF2990()->accepterVisiteur(visiteur);
 			sauvegardeAutorise = 2;
 
 			delete visiteur;
-		}
+		//}
 	}
 
 	// Permettre la sauvegarde que lorsque il y a les 3 objets obligatoires + d'autres objets

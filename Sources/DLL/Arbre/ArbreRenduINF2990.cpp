@@ -331,12 +331,12 @@ bool ArbreRenduINF2990::lireXML(tinyxml2::XMLDocument& doc)
 
 	}
 
-	assignerDefaut();
+	//assignerDefaut();
 
 	return lecture;
 }
 
-
+/*
 ////////////////////////////////////////////////////////////////////////
 ///
 /// @fn bool ArbreRenduINF2990::estDefaut()
@@ -364,8 +364,8 @@ bool ArbreRenduINF2990::estDefaut() const
 	else
 		return false;
 }
-
-
+*/
+/*
 ////////////////////////////////////////////////////////////////////////
 ///
 /// @fn bool ArbreRenduINF2990::assignerDefaut()
@@ -387,7 +387,7 @@ void ArbreRenduINF2990::assignerDefaut()
 	angleGenerateur = chercher("generateurbille")->obtenirRotation();
 	scaleGenerateur = chercher("generateurbille")->obtenirAgrandissement();
 }
-
+*/
 
 ////////////////////////////////////////////////////////////////////////
 ///
