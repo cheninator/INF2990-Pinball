@@ -51,16 +51,10 @@ public:
 private:
 	
 	// Pour l'animation
-	int compt_ = 0;
-
-	/// Angle selon l'axe des X.
-	float angleX_{ 0.f };
-
-	/// Angle selon l'axe des Y.
-	float angleY_{ 0.f };
-
-	/// Angle de rotation.
-	float angleRotation_{ 0.f };
+	Etat etatButoir_ { ALLER };
+	Etat etatPrecedentButoir_ { INITIAL };
+	float compteurAnimation_ { 0 };
+	float scalePrecedentMax_ { 0 };
 };
 
 #endif // __ARBRES_NOEUDS_NOEUDBUTOIRCIRCULAIRE_H__

@@ -38,6 +38,8 @@ class ConfigScene;
 class NoeudPaletteG;
 class NoeudPaletteD;
 class NoeudRessort;
+class JoueurVirtuel;
+class QuadTree;
 
 namespace vue {
    class Vue;
@@ -145,11 +147,28 @@ public:
    /// Position du mur
    static void positionnerMur(int originX, int originY, int x1, int y1, int x2, int y2, NoeudAbstrait* noeud);
 
-   ///verifie si la selection est hors table lors de la duplication
+   /// Verifie si la selection est hors table lors de la duplication
    bool duplicationEstHorsTable();
 
-
+   /// Sauvegarde la derniere configuration valide et confirmee par l'usager
    void sauvegarderConfig(int config[12]);
+
+   /// Obtenir toutes les proprietes sans initialiser l'arbre de rendu
+   int* obtenirProprietes(char* nomFichier, int length);
+
+   /// Obtenir la difficulte du nom de la carte passe en parametre
+   int obtenirDifficulte(char* nomFichier, int length);
+
+   /// Sauvegarder la derniere campagne jouee par l'usager
+   void sauvegarderCampagne(char* nomFichier, int length);
+
+   /// Obtenir les informations de derniere campagne jouee par l'usager
+   std::string obtenirDerniereCampagne();
+
+   /// Compresser un ressort
+   void compresserRessort();
+   void relacherRessort();
+
 
    int* obtenirConfiguration();
    int	obtenirTouchePGJ1();
@@ -157,18 +176,9 @@ public:
    int  obtenirTouchePDJ1();
    int  obtenirTouchePDJ2();
    int  obtenirToucheRessort();
+   int  obtenirNombreDeBilles();
    int  obtenirAffichageGlobal();
    void bloquerAffichageGlobal(int active);
-
-   int obtenirDifficulte(char* nomFichier, int length);
-
-   // Obtenir toutes les propriétés sans initialiser l'arbre de rendu
-   int* obtenirProprietes(char* nomFichier, int length);
-
-
-
-   void sauvegarderCampagne(char* nomFichier, int length);
-   std::string obtenirDerniereCampagne();
 
    /// Construire des les 4 listes de palettes GJ1,DJ1, GJ2,DJ2
    void construireListesPalettes(); 
@@ -176,11 +186,12 @@ public:
    /// Activer les palettes de chaque joueur
    void activerPalettesGJ1();
    void desactiverPalettesGJ1();
-   void FacadeModele::aiPalettes();
-   void FacadeModele::activerPalettesAIGauches();
-   void FacadeModele::activerPalettesAIDroites();
-   void compresserRessort();
-   void relacherRessort();
+   void activerPalettesDJ1();
+   void desactiverPalettesDJ1();
+   void aiPalettes();
+   void aiPalettesYonni();
+   void activerPalettesAIGauches();
+   void activerPalettesAIDroites();
 
    void supprimerBille();
 
@@ -188,7 +199,8 @@ public:
    void setDebug(bool valeurSpotLight = false);
 
    // Traiter l'ensemble des collisions
-   void traiterCollisions();
+   void traiterCollisions(float temps);
+   void traiterCollisionsAvecQuadTree(float temps);
    void updateForcesExternes();
    
    void mettreAJourListeBillesEtNoeuds();
@@ -220,6 +232,8 @@ private:
    ArbreRenduINF2990* arbre_{ nullptr };	/// Arbre de rendu contenant les differents objets de la scene.
    ConfigScene* configuration_{ nullptr };
    int* proprietes_;						/// Pour les proprietes de la zone de jeu
+   JoueurVirtuel* joueur_{ nullptr };
+   QuadTree* quad_{ nullptr };
 
    glm::dvec3 selectionBasGauche_, selectionHautDroit_;
    glm::ivec2 pointInitial_, pointAvant_;

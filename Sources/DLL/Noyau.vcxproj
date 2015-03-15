@@ -105,6 +105,7 @@
       </PrecompiledHeader>
       <WarningLevel>Level3</WarningLevel>
       <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
+      <BrowseInformation>true</BrowseInformation>
     </ClCompile>
     <Link>
       <AdditionalDependencies>opengl32.lib;glu32.lib;freetype246_R_x64.lib;glew32s.lib;tinyxml_R_x64.lib;assimp.lib;cppunit_R_x64.lib;ftgl.lib;fmodex64_vc.lib;FreeImage.lib;%(AdditionalDependencies)</AdditionalDependencies>
@@ -129,6 +130,9 @@
       <Message>
       </Message>
     </PostBuildEvent>
+    <Bscmake>
+      <PreserveSbr>true</PreserveSbr>
+    </Bscmake>
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="Application\FacadeModele.cpp" />
@@ -153,6 +157,7 @@
     <ClCompile Include="Arbre\Noeuds\NoeudAbstrait.cpp" />
     <ClCompile Include="Arbre\Noeuds\NoeudComposite.cpp" />
     <ClCompile Include="Configuration\ConfigScene.cpp" />
+    <ClCompile Include="Global\JoueurVirtuel.cpp" />
     <ClCompile Include="Global\SingletonGlobal.cpp" />
     <ClCompile Include="Interface\FacadeInterfaceNative.cpp" />
     <ClCompile Include="QuadTree\QuadTree.cpp" />
@@ -182,6 +187,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Application\FacadeModele.h" />
+    <ClInclude Include="Arbre\Noeuds\AnimationNoeudsDefine.h" />
     <ClInclude Include="Arbre\Noeuds\NoeudBille.h" />
     <ClInclude Include="Arbre\Noeuds\NoeudButoirD.h" />
     <ClInclude Include="Arbre\Noeuds\NoeudButoirCirculaire.h" />
@@ -220,6 +226,7 @@
     <ClInclude Include="Arbre\Noeuds\NoeudAbstrait.h" />
     <ClInclude Include="Arbre\Noeuds\NoeudComposite.h" />
     <ClInclude Include="Configuration\ConfigScene.h" />
+    <ClInclude Include="Global\JoueurVirtuel.h" />
     <ClInclude Include="Global\SingletonGlobal.h" />
     <ClInclude Include="Interface\FacadeInterfaceNative.h" />
     <ClInclude Include="QuadTree\QuadTree.h" />

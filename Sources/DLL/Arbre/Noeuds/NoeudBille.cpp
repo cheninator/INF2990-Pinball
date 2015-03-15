@@ -43,8 +43,9 @@
 NoeudBille::NoeudBille(const std::string& typeNoeud)
 	: NoeudComposite{ typeNoeud }
 {
-	vitesse_ = glm::dvec3{ 0 ,0, 0 };
-	constanteDeFrottement_ = 1.0;
+	vitesse_ = VITESSE_INITIALE_NORUD_BILLE;
+	masse_ = MASSE_NOEUD_BILLE;
+	constanteDeFrottement_ = FROTTEMENT_NOEUD_BILLE;
 	SingletonGlobal::obtenirInstance()->ajouterBille();
 }
 
@@ -137,56 +138,54 @@ void NoeudBille::animer(float temps) // rajouter des parametres ou une fonction 
 	NoeudComposite::animer(temps);
 	// Somme des forces agissant sur les particules.
 	// =============================================
-	glm::dvec3 attractionsPortails{ 0, 0, 0 };
-	glm::dvec3 gravite{ 0, -30*masse_, 0 };
-	glm::dvec3 forceFrottement{ 0, 0, 0 };
-	if (glm::length(vitesse_) > 0.001)
-		forceFrottement = -constanteDeFrottement_ * glm::normalize(vitesse_);
-	glm::dvec3 forceTotale = forceFrottement + gravite + 10000.0*forcesExternes_;
 
+	double positionCouvercleX = obtenirParent()->obtenirParent()->getEnfant(1)->obtenirPositionRelative().x;
+	if (positionCouvercleX != positionCouvercleX_)
+	{
+		positionCouvercleX_ = positionCouvercleX;
+		return;
+	}
+
+	if (timerMove_ < TIME_IDLE_NOEUD_BILLE)
+	{
+		timerMove_ += temps;
+		return;
+	}
+
+	glm::dvec3 forceFrottement{ 0, 0, 0 };
+	if (glm::length(vitesse_) > utilitaire::EPSILON)
+		forceFrottement = -constanteDeFrottement_ * glm::normalize(vitesse_);
+	glm::dvec3 forceTotale = forceFrottement + GRAVITE_NOEUD_BILLE + forcesExternes_;
+	forceTotale.z = 0;
+	glm::dvec3 acceleration = forceTotale;
+	forceTotale *= masse_;
+
+	if (glm::length(vitesse_) > VITESSE_MAX_NOEUD_BILLE)
+	{
+		vitesse_ = VITESSE_MAX_NOEUD_BILLE * glm::normalize(vitesse_); // Meme direction, mais module ramené a VITESSE_MAX
+	}
+
+	// Calcul de la nouvelle position 
+	// ==============================
+	glm::dvec3 nouvellePosition = positionRelative_ + (double)temps * vitesse_;
+	
 	// Calcul de la nouvelle vitesse. 
 	// =============================
-	glm::dvec3 vitesseApresCollision = vitesse_;
 
-	// Considerer les limites de la table.
-	{	// A migrer 
-		std::vector<glm::dvec3> boite;
-		boite.push_back({ 108, -190, 0 });
-		boite.push_back({ 272, -190, 0 });
-		boite.push_back({ 272, 96, 0 });
-		boite.push_back({ 108, 96, 0 });
-		// Considerer tous les segments boite[i] --- boite[i+1 % size] 
-		for (unsigned int i = 0; i < boite.size(); i++)
-		{
-			// On veut calculer la collision en 2D et caster les paramêtres en glm::dvec2 "oublie" leur composante en Z et choisi la bonne surcharge de calculerCollisionSegment.
-			aidecollision::DetailsCollision details = aidecollision::calculerCollisionSegment((glm::dvec2)boite[i], (glm::dvec2)boite[(i + 1) % boite.size()], (glm::dvec2)positionRelative_, 7, true);
-			if (details.type != aidecollision::COLLISION_AUCUNE)
-			{
+	glm::dvec3 nouvelleVitesse = vitesse_ + (double)temps * acceleration;
 
-				assignerImpossible(true);
-
-				glm::dvec3 vitesseNormaleInitiale = glm::proj(vitesse_, details.direction);
-				glm::dvec3 vitesseTangentielleInitiale = vitesse_ - vitesseNormaleInitiale;
-				glm::dvec2 vitesseNormale2D = aidecollision::calculerForceAmortissement2D(details, (glm::dvec2)vitesse_, 1.0);
-				vitesseApresCollision = vitesseTangentielleInitiale + glm::dvec3{ vitesseNormale2D.x, vitesseNormale2D.y, 0 };
-				if (debug_) {
-					afficherVitesse(vitesseApresCollision);
-				}
-			}
-		}
-	}// Fin A migrer
-	
-	glm::dvec3 nouvellePosition = positionRelative_ + (double)temps*vitesseApresCollision;
-	glm::dvec3 nouvelleVitesse = vitesseApresCollision + (double)temps * forceTotale / masse_;
-
+	if (glm::length(nouvelleVitesse) > VITESSE_MAX_NOEUD_BILLE)
+	{
+		nouvelleVitesse = VITESSE_MAX_NOEUD_BILLE * glm::normalize(nouvelleVitesse);// Meme direction, mais module ramené a VITESSE_MAX
+	}
 	// Calcul de la rotation
 	// =====================
 	// C'est pas la bonne facon de calculer la rotation a appliquer a la boule,
 	// C'est pas un bug, j'ai just pas encore trouve la bonne facon de le faire.
-	double constanteACalculer{ 0.1 }; // Depend du rayon de la boule, mais avec 0.1, ca parait deja bien.
+	double constanteACalculer{ 5 }; // Depend du rayon de la boule, mais avec 0.1, ca parait deja bien.
 	glm::dvec3 rotation{ 0, 0, 0 };
-	rotation.x = constanteACalculer * -vitesse_.y;
-	rotation.y = constanteACalculer * vitesse_.x;
+	rotation.x = constanteACalculer * -vitesse_.y * temps;
+	rotation.y = constanteACalculer * vitesse_.x * temps;
 
 	// Assignation des nouvelles valeurs.
 	assignerRotation(rotation);
@@ -261,14 +260,17 @@ void NoeudBille::setSpotLight(bool debug)
 ////////////////////////////////////////////////////////////////////////
 void NoeudBille::afficherVitesse(glm::dvec3 nouvelleVitesse)
 {
-	SYSTEMTIME time;
-	GetLocalTime(&time);
-	std::cout << std::fixed << std::setw(2) << std::setprecision(2) << time.wHour << ":"
-		<< std::fixed << std::setfill('0') << std::setw(2) << std::setprecision(2) << time.wMinute << ":"
-		<< std::fixed << std::setfill('0') << std::setw(2) << std::setprecision(2) << time.wSecond << ":"
-		<< std::fixed << std::setfill('0') << std::setw(3) << std::setprecision(3) << time.wMilliseconds;
+	if (debug_)
+	{
+		SYSTEMTIME time;
+		GetLocalTime(&time);
+		std::cout << std::fixed << std::setw(2) << std::setprecision(2) << time.wHour << ":"
+			<< std::fixed << std::setfill('0') << std::setw(2) << std::setprecision(2) << time.wMinute << ":"
+			<< std::fixed << std::setfill('0') << std::setw(2) << std::setprecision(2) << time.wSecond << ":"
+			<< std::fixed << std::setfill('0') << std::setw(3) << std::setprecision(3) << time.wMilliseconds;
 
-	std::cout << std::fixed << std::setfill('0') << std::setw(2) << " - Vitesse " << glm::length(nouvelleVitesse) << std::endl;
+		std::cout << std::fixed << std::setfill('0') << std::setw(2) << " - Vitesse " << glm::length(nouvelleVitesse) << std::endl;
+	}
 }
 
 ////////////////////////////////////////////////////////////////////////

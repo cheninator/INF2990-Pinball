@@ -34,7 +34,6 @@
 NoeudButoirCirculaire::NoeudButoirCirculaire(const std::string& typeNoeud)
 	: NoeudComposite{ typeNoeud }
 {
-	compt_ = 0;
 }
 
 ////////////////////////////////////////////////////////////////////////
@@ -112,8 +111,9 @@ void NoeudButoirCirculaire::afficherConcret() const
 void NoeudButoirCirculaire::animer(float temps)
 {
 	NoeudComposite::animer(temps);
-	if (selectionne_ || impossible_ || transparent_) {
-		if (compt_ == 0){
+	if (selectionne_ || impossible_ || transparent_) 
+	{
+		if (etatButoir_ == INITIAL){
 			ajustable_ = true;
 			return;
 		}
@@ -121,19 +121,44 @@ void NoeudButoirCirculaire::animer(float temps)
 			ajustable_ = false;
 	}
 
-	if (compt_ >= 0) {
-		scale_ *= 1.005;
-		compt_++;
-		if (compt_ == 20)
-			compt_ = -1;
-	}
-	else {
-		scale_ /= 1.005;
-		compt_--;
-		if (compt_ == -21)
-			compt_ = 0;
+	switch (etatButoir_)
+	{
+	case ALLER:
+		scale_ *= 1 + temps * SCALE_MAX_NOEUD_BUTOIRCIRCULAIRE / TEMPS_DEMI_ANIMATION_NOEUD_BUTOIRCIRCULAIREE;
+		if (compteurAnimation_ >= TEMPS_DEMI_ANIMATION_NOEUD_BUTOIRCIRCULAIREE / 2) 
+		{
+			Etat temp = etatButoir_;
+			if (etatPrecedentButoir_ == INITIAL)
+				etatButoir_ = RETOUR;
+			else
+				etatButoir_ = INITIAL;
+			etatPrecedentButoir_ = temp;
+			compteurAnimation_ = 0;
+		}
+		break;
+	case RETOUR:
+		scale_ *= 1 - temps * SCALE_MAX_NOEUD_BUTOIRCIRCULAIRE / TEMPS_DEMI_ANIMATION_NOEUD_BUTOIRCIRCULAIREE;
+		if (compteurAnimation_ >= TEMPS_DEMI_ANIMATION_NOEUD_BUTOIRCIRCULAIREE / 2) 
+		{
+			Etat temp = etatButoir_;
+			if (etatPrecedentButoir_ == INITIAL)
+				etatButoir_ = ALLER;
+			else
+				etatButoir_ = INITIAL;
+			etatPrecedentButoir_ = temp;
+			compteurAnimation_ = 0;
+		}
+		break;
+	case INITIAL:
+		if (etatPrecedentButoir_ == INITIAL)
+			etatButoir_ = ALLER;
+		else
+			etatButoir_ = etatPrecedentButoir_;
+		etatPrecedentButoir_ = INITIAL;
+		break;
 	}
 
+	compteurAnimation_+=temps;
 }
 
 

@@ -505,6 +505,25 @@ bool NoeudAbstrait::accepterVisiteur(VisiteurAbstrait* vis)
 
 ////////////////////////////////////////////////////////////////////////
 ///
+/// @fn bool NoeudAbstrait::accepterJoueurVirtuel(JoueurVirtuel* joueur)
+///
+///
+/// Cette fonction permet d'accepter un joueur virtuel
+///
+/// @param[in] joueur : Prend un JoueurVirtuel
+///
+/// @return Reusite ou echec.
+///
+////////////////////////////////////////////////////////////////////////
+bool NoeudAbstrait::accepterJoueurVirtuel(JoueurVirtuel* joueur)
+{
+	joueur->traiter(this);
+	return true;
+}
+
+
+////////////////////////////////////////////////////////////////////////
+///
 /// @fn NoeudAbstrait* NoeudAbstrait::getTwin()
 ///
 /// Retourne le noeud jumueau
@@ -569,7 +588,7 @@ void NoeudAbstrait::obtenirVecteursBoite(glm::dvec3 &v1, glm::dvec3 &v2, glm::dv
 	v4 = echelle * v4;
 
 	//calcul matrice de rotation
-	double angleEnRadian = -rotation_[2] * 2 * 3.1415926535897932384626433832795 / 360;
+	double angleEnRadian = -rotation_[2] * utilitaire::PI_180;
 	glm::dmat3 transform = glm::dmat3{ glm::dvec3{ cos(angleEnRadian), -sin(angleEnRadian), 0.0 },
 										 glm::dvec3{ sin(angleEnRadian), cos(angleEnRadian), 0.0f },
 										 glm::dvec3{ 0.0, 0.0, 1.0 } };
@@ -737,7 +756,7 @@ bool NoeudAbstrait::pointEstDansBoite(glm::dvec3 point)
 	glm::dvec3 vecOP = point - positionRelative_;
 
 	//calcul matrice de rotation inverse
-	double angleEnRadian = rotation_[2] * 2 * 3.1415926535897932384626433832795 / 360;
+	double angleEnRadian = rotation_[2] * utilitaire::PI_180;
 	glm::dmat3 transform = glm::dmat3{ glm::dvec3{ cos(angleEnRadian), -sin(angleEnRadian), 0.0 },
 		glm::dvec3{ sin(angleEnRadian), cos(angleEnRadian), 0.0f },
 		glm::dvec3{ 0.0, 0.0, 1.0 } };
@@ -855,12 +874,10 @@ void NoeudAbstrait::traiterCollisions(aidecollision::DetailsCollision details, N
 	glm::dvec3 vitesseTangentielle = vitesseInitiale - vitesseNormaleInitiale;
 	glm::dvec2 vitesseNormaleFinale2D = aidecollision::calculerForceAmortissement2D(details, (glm::dvec2)vitesseInitiale, 1.0);
 	glm::dvec3 vitesseFinale = vitesseTangentielle + glm::dvec3{ vitesseNormaleFinale2D.x, vitesseNormaleFinale2D.y, 0.0 };
-	if (debug_)
-	{
 		((NoeudBille*)bille)->afficherVitesse(vitesseFinale); // Que Dieu me pardonne
-	}
 
-	glm::dvec3 positionFinale = bille->obtenirPositionRelative() + details.enfoncement * glm::normalize(details.direction);
+
+		glm::dvec3 positionFinale = bille->obtenirPositionRelative() + details.enfoncement * glm::normalize(details.direction);
 	bille->assignerPositionRelative(positionFinale);
 
 	bille->assignerVitesse(vitesseFinale);

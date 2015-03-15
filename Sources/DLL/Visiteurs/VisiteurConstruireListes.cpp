@@ -34,7 +34,10 @@ VisiteurConstruireListes::VisiteurConstruireListes(std::set<NoeudPaletteG*>* lis
  listePalettesGJ2_{ listePalettesGJ2 },
  listePalettesDJ2_{ listePalettesDJ2 }
 {
-
+	listePalettesGJ1_->clear();
+	listePalettesDJ1_->clear();
+	listePalettesGJ2_->clear();
+	listePalettesDJ2_->clear();
 }
 
 ////////////////////////////////////////////////////////////////////////

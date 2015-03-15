@@ -43,8 +43,8 @@ namespace InterfaceGraphique
         private static TimeSpan dernierTemps; ///< Dernier temps enregistre
         private static TimeSpan tempsAccumule; ///< Temps total accumule
         private static Stopwatch chrono = Stopwatch.StartNew(); ///< Chronometre
-        private static TimeSpan tempsEcouleVoulu = TimeSpan.FromTicks(TimeSpan.TicksPerSecond / NB_IMAGES_PAR_SECONDE); ///< Temps avant le rafraichissement
-
+        private static TimeSpan tempsEcouleVoulu = TimeSpan.FromTicks(TimeSpan.TicksPerSecond / (NB_IMAGES_PAR_SECONDE * 10)); ///< Temps avant le rafraichissement
+        public static int compteurFrames = 0;
         ////////////////////////////////////////////////////////////////////////
         ///
         /// @fn static void Main(string[] args)
@@ -119,15 +119,15 @@ namespace InterfaceGraphique
                         if (mMenu.modeEdit != null && peutAfficher)
                         {
                             mMenu.modeEdit.MettreAJour((double)tempsAccumule.Ticks / TimeSpan.TicksPerSecond);
-                           
                         }
-                        else
-                            if (mMenu.modeJeuMain != null && peutAfficher)
-                            {
-                                mMenu.modeJeuMain.MettreAJour((double)tempsAccumule.Ticks / TimeSpan.TicksPerSecond);
-                               
-                            }
-                      
+                        else if (mMenu.modeJeuMain != null && peutAfficher)
+                        {
+                            mMenu.modeJeuMain.MettreAJour((double)tempsAccumule.Ticks / TimeSpan.TicksPerSecond);
+                        }
+
+                        compteurFrames++;
+                        if (compteurFrames >= 10)
+                            compteurFrames = 0;
                     }
                     tempsAccumule = TimeSpan.Zero;
                 }
@@ -448,6 +448,12 @@ namespace InterfaceGraphique
         [DllImport(@"Noyau.dll", CallingConvention = CallingConvention.Cdecl)]
         public static extern void desactiverPalettesGJ1();
 
+        [DllImport(@"Noyau.dll", CallingConvention = CallingConvention.Cdecl)]
+        public static extern void activerPalettesDJ1();
+
+        [DllImport(@"Noyau.dll", CallingConvention = CallingConvention.Cdecl)]
+        public static extern void desactiverPalettesDJ1();
+
         [DllImport(@"Noyau.dll", CharSet = CharSet.Unicode, CallingConvention = CallingConvention.Cdecl)]
         [return: MarshalAs(UnmanagedType.BStr)]
         public static extern string obtenirDerniereCampagne();
@@ -490,6 +496,12 @@ namespace InterfaceGraphique
 
         [DllImport(@"Noyau.dll", CallingConvention = CallingConvention.Cdecl)]
         public static extern int obtenirNombreBillesCourante();
+
+        [DllImport(@"Noyau.dll", CallingConvention = CallingConvention.Cdecl)]
+        public static extern int obtenirNombreDeBilles();
+
+        [DllImport(@"Noyau.dll", CallingConvention = CallingConvention.Cdecl)]
+        public static extern void resetNombreBillesCourantes();
 
         [DllImport(@"Noyau.dll", CallingConvention = CallingConvention.Cdecl)]
         public static extern void compresserRessort();

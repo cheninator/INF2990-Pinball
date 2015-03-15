@@ -39,6 +39,9 @@ public:
 	/// Accepte un visiteur.
 	virtual bool accepterVisiteur(VisiteurAbstrait* vis);
 
+	/// Accepte un joueur virtuel
+	virtual bool accepterJoueurVirtuel(JoueurVirtuel* joueur);
+
 	/// Activer la palette.
 	void activer();
 
@@ -50,7 +53,11 @@ public:
 	/// Pour le traitement logique des collisions
 	virtual void traiterCollisions(aidecollision::DetailsCollision, NoeudAbstrait* bille);
 
-	double fonctionDroitePalette(NoeudAbstrait* bille);
+	/// Obtenir l'angle initial de la palette
+	double obtenirAngleZOriginal() const { return angleZOriginal_; };
+
+	double fonctionDroitePaletteOriginale(NoeudAbstrait* bille);
+	double fonctionDroitePaletteEnMouvement(NoeudAbstrait* bille);
 private:
 	/// Enumeration pour contenir l'etat de la palette
 	enum Etat { ACTIVE, RETOUR, INACTIVE, ACTIVE_AI, RETOUR_AI };

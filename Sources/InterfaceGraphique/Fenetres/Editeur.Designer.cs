@@ -58,7 +58,6 @@ namespace InterfaceGraphique
             this.Trou_bouton = new System.Windows.Forms.Button();
             this.Generateur_bouton = new System.Windows.Forms.Button();
             this.Ressort_bouton = new System.Windows.Forms.Button();
-            this.Bille_bouton = new System.Windows.Forms.Button();
             this.flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
             this.Groupe_Outils = new System.Windows.Forms.GroupBox();
             this.curZoomVal = new System.Windows.Forms.TextBox();
@@ -166,9 +165,9 @@ namespace InterfaceGraphique
             this.panel_GL.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.panel_GL.BackColor = System.Drawing.Color.Transparent;
             this.panel_GL.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel_GL.Location = new System.Drawing.Point(163, 48);
+            this.panel_GL.Location = new System.Drawing.Point(163, 24);
             this.panel_GL.Name = "panel_GL";
-            this.panel_GL.Size = new System.Drawing.Size(566, 681);
+            this.panel_GL.Size = new System.Drawing.Size(566, 705);
             this.panel_GL.TabIndex = 4;
             this.panel_GL.SizeChanged += new System.EventHandler(this.panel_GL_SizeChanged);
             this.panel_GL.MouseClick += new System.Windows.Forms.MouseEventHandler(this.panel_GL_MouseClick);
@@ -185,11 +184,10 @@ namespace InterfaceGraphique
             this.Creation_Panel.Controls.Add(this.Group_Butoir);
             this.Creation_Panel.Controls.Add(this.Group_Elements);
             this.Creation_Panel.Controls.Add(this.Group_Element2);
-            this.Creation_Panel.Controls.Add(this.Bille_bouton);
             this.Creation_Panel.Dock = System.Windows.Forms.DockStyle.Right;
-            this.Creation_Panel.Location = new System.Drawing.Point(729, 48);
+            this.Creation_Panel.Location = new System.Drawing.Point(729, 24);
             this.Creation_Panel.Name = "Creation_Panel";
-            this.Creation_Panel.Size = new System.Drawing.Size(225, 681);
+            this.Creation_Panel.Size = new System.Drawing.Size(225, 705);
             this.Creation_Panel.TabIndex = 2;
             this.Creation_Panel.MouseEnter += new System.EventHandler(this.Creation_Panel_MouseEnter);
             // 
@@ -422,19 +420,6 @@ namespace InterfaceGraphique
             this.Ressort_bouton.UseVisualStyleBackColor = false;
             this.Ressort_bouton.Click += new System.EventHandler(this.Ressort_bouton_Click);
             // 
-            // Bille_bouton
-            // 
-            this.Bille_bouton.BackgroundImage = global::InterfaceGraphique.Properties.Resources.ball;
-            this.Bille_bouton.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.Bille_bouton.Location = new System.Drawing.Point(3, 552);
-            this.Bille_bouton.Name = "Bille_bouton";
-            this.Bille_bouton.Size = new System.Drawing.Size(218, 69);
-            this.Bille_bouton.TabIndex = 9;
-            this.Bille_bouton.Text = "bille";
-            this.Bille_bouton.TextAlign = System.Drawing.ContentAlignment.TopRight;
-            this.Bille_bouton.UseVisualStyleBackColor = true;
-            this.Bille_bouton.Click += new System.EventHandler(this.Bille_bouton_Click);
-            // 
             // flowLayoutPanel1
             // 
             this.flowLayoutPanel1.BackColor = System.Drawing.SystemColors.InactiveBorder;
@@ -444,9 +429,9 @@ namespace InterfaceGraphique
             this.flowLayoutPanel1.Controls.Add(this.Groupe_Proprietes);
             this.flowLayoutPanel1.Controls.Add(this.richTextBox1);
             this.flowLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Left;
-            this.flowLayoutPanel1.Location = new System.Drawing.Point(0, 48);
+            this.flowLayoutPanel1.Location = new System.Drawing.Point(0, 24);
             this.flowLayoutPanel1.Name = "flowLayoutPanel1";
-            this.flowLayoutPanel1.Size = new System.Drawing.Size(163, 681);
+            this.flowLayoutPanel1.Size = new System.Drawing.Size(163, 705);
             this.flowLayoutPanel1.TabIndex = 3;
             this.flowLayoutPanel1.SizeChanged += new System.EventHandler(this.flowLayoutPanel1_SizeChanged);
             // 
@@ -738,7 +723,7 @@ namespace InterfaceGraphique
             this.Vues_MenuItem,
             this.Information_MenuItem,
             this.Mute_MenuItem});
-            this.menuStrip1.Location = new System.Drawing.Point(0, 24);
+            this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
             this.menuStrip1.Size = new System.Drawing.Size(954, 24);
             this.menuStrip1.TabIndex = 0;
@@ -1250,7 +1235,6 @@ namespace InterfaceGraphique
         private System.Windows.Forms.GroupBox OutilGraphique;
         private System.Windows.Forms.Label labelOCourant;
         private System.Windows.Forms.RichTextBox richTextBox1;
-        private System.Windows.Forms.Button Bille_bouton;
         private System.Windows.Forms.MenuStrip menuStrip3;
         private System.Windows.Forms.ToolStripMenuItem fichierToolStripMenuItem1;
         private System.Windows.Forms.ToolStripMenuItem testRetourMenuPrincipal;

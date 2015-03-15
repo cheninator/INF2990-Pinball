@@ -40,9 +40,14 @@ public:
 	virtual bool accepterVisiteur(VisiteurAbstrait* vis);
 
 private:
-	int direction_; // between 0 and 3
-	int power_; // between -5 and 5
-	int compteur_; // between 201 and 0
+	Etat etatGenerateur_ { INITIAL };
+	Direction directionGenerateur_ { dirZ };
+	bool inverserDirection_ { false };
+	float compteurAnimation_ { 0 };
+	float compteurAnimationBouger_{ 0 };
+	float distanceBouger_ { 0 };
+	// Vu que le temps n'est pas constant, on dois remettre la table a sa position par defaut
+	glm::dvec3 positionPreDeplacement_{ 0 };	
 };
 
 #endif // __ARBRE_NOEUDS_NOEUDGENERATEURBILLE_H__

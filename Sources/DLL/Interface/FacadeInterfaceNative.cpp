@@ -317,7 +317,7 @@ extern "C"
 				double positionY = position.y - ((30 * scale.x));
 
 				glm::dvec3 vecteur = { 0, -((30 * scale.x)), 0 };
-				double angleEnRadian = -rotation[2] * 2 * 3.1415926535897932384626433832795 / 360;
+				double angleEnRadian = -rotation[2] * utilitaire::PI_180;
 				glm::dmat3 transform = glm::dmat3{  glm::dvec3{ cos(angleEnRadian), -sin(angleEnRadian), 0.0 },
 													glm::dvec3{ sin(angleEnRadian), cos(angleEnRadian), 0.0f },
 													glm::dvec3{ 0.0, 0.0, 1.0 } };
@@ -1428,6 +1428,11 @@ extern "C"
 		return FacadeModele::obtenirInstance()->obtenirToucheRessort(); 
 	}
 
+	__declspec(dllexport) int __cdecl obtenirNombreDeBilles()
+	{
+		return FacadeModele::obtenirInstance()->obtenirNombreDeBilles();
+	}
+
 	__declspec(dllexport) int __cdecl obtenirAffichageGlobal()
 	{
 		return FacadeModele::obtenirInstance()->obtenirAffichageGlobal();
@@ -1446,7 +1451,16 @@ extern "C"
 	__declspec(dllexport) void __cdecl desactiverPalettesGJ1()
 	{
 		FacadeModele::obtenirInstance()->desactiverPalettesGJ1();
+	}
 
+	__declspec(dllexport) void __cdecl activerPalettesDJ1()
+	{
+		FacadeModele::obtenirInstance()->activerPalettesDJ1();
+	}
+
+	__declspec(dllexport) void __cdecl desactiverPalettesDJ1()
+	{
+		FacadeModele::obtenirInstance()->desactiverPalettesDJ1();
 	}
 
 	__declspec(dllexport) BSTR obtenirDerniereCampagne()
@@ -1549,6 +1563,13 @@ extern "C"
 	{
 		return SingletonGlobal::obtenirInstance()->obtenirBille();
 	}
+
+	__declspec(dllexport) void __cdecl resetNombreBillesCourantes()
+	{
+		SingletonGlobal::obtenirInstance()->resetBille();
+	}
+
+
 
 	__declspec(dllexport) void __cdecl compresserRessort()
 	{

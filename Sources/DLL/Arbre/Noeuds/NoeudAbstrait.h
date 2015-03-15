@@ -21,10 +21,13 @@
 #include <vector>
 
 #include "glm\glm.hpp"
-#include "../../Visiteurs/VisiteurAbstrait.h"
 #include "Utilitaire.h"
-#include "../../Commun/Utilitaire/AideCollision.h"
 
+#include "AnimationNoeudsDefine.h"
+
+#include "../../Visiteurs/VisiteurAbstrait.h"
+#include "../../Commun/Utilitaire/AideCollision.h"
+#include "../../Global/JoueurVirtuel.h"
 
 /// Declarations avancees pour contenir un pointeur vers un modele3D et sa liste
 /// d'affichage
@@ -201,6 +204,9 @@ public:
 
 	/// Accepter un visiteur
 	virtual bool accepterVisiteur(VisiteurAbstrait* vis);
+
+	/// Accepter un joueur virtuel pour le controle
+	virtual bool accepterJoueurVirtuel(JoueurVirtuel* joueur);
 
 	/// Obtenir jumeau
 	virtual NoeudAbstrait* getTwin();

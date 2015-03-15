@@ -41,7 +41,10 @@ public:
 
 	/// Retourne l'enfant du noeud courant.
 	virtual NoeudAbstrait* getEnfant(int i) { return NoeudComposite::getEnfant(i); };
-	 
+
+	/// Pour la detections des collisions
+	virtual aidecollision::DetailsCollision detecterCollisions(NoeudAbstrait* noeud);
+
 private:
 	
 	/// Angle selon l'axe des X.
