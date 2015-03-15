@@ -96,6 +96,7 @@ extern "C" {
 	__declspec(dllexport) void desactiverPalettesGJ1();
 	__declspec(dllexport) void activerPalettesDJ1();
 	__declspec(dllexport) void desactiverPalettesDJ1();
+	__declspec(dllexport) void animerJeu(bool animer);
 }
 
 #endif // __FACADE_INTERFACE_NATIVE_H__
