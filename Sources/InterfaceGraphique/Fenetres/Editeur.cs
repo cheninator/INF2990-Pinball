@@ -1561,6 +1561,7 @@ namespace InterfaceGraphique
             etat = new EtatEditeurTest(this);
             menuStrip1.Hide();
             FonctionsNatives.animerJeu(true);
+            FonctionsNatives.rechargerArbre(false);
             if (Creation_Panel.Visible)
                 Creation_Panel.Hide();
             flowLayoutPanel1.Hide();
@@ -2973,6 +2974,7 @@ namespace InterfaceGraphique
             etat = null;
             etat = new EtatEditeurNone(this);
             FonctionsNatives.animerJeu(false);
+            FonctionsNatives.rechargerArbre(true);
             FonctionsNatives.supprimerBille();
 
             if (menuStrip3.Visible)

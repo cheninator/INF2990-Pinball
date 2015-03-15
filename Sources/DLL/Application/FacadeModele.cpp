@@ -813,8 +813,16 @@ void FacadeModele::dupliquerSelection(int i, int j)
 /// @return Aucune.
 ///
 ///////////////////////////////////////////////////////////////////////////////
-int FacadeModele::creerXML(char* path, int prop[6])
+int FacadeModele::creerXML(std::string path, int prop[6], bool force)
 {
+	if (force)
+	{
+		VisiteurXML* visiteur = new VisiteurXML(path, prop);
+		FacadeModele::obtenirInstance()->obtenirArbreRenduINF2990()->accepterVisiteur(visiteur);
+		delete visiteur;
+		return -1;
+	}
+
 	int sauvegardeAutorise;
 
 	// Ne pas permettre la sauvegarde si la zone ne contient pas au minimum  3 objets
@@ -834,7 +842,7 @@ int FacadeModele::creerXML(char* path, int prop[6])
 
 		else
 		{
-			VisiteurXML* visiteur = new VisiteurXML(std::string(path), prop);
+			VisiteurXML* visiteur = new VisiteurXML(path, prop);
 			FacadeModele::obtenirInstance()->obtenirArbreRenduINF2990()->accepterVisiteur(visiteur);
 			sauvegardeAutorise = 2;
 
@@ -848,7 +856,7 @@ int FacadeModele::creerXML(char* path, int prop[6])
 		&& FacadeModele::obtenirInstance()->obtenirArbreRenduINF2990()->getEnfant(0)->chercher("ressort")
 		&& FacadeModele::obtenirInstance()->obtenirArbreRenduINF2990()->getEnfant(0)->obtenirNombreEnfants() > 3)
 	{
-		VisiteurXML* visiteur = new VisiteurXML(std::string(path), prop);
+		VisiteurXML* visiteur = new VisiteurXML(path, prop);
 		FacadeModele::obtenirInstance()->obtenirArbreRenduINF2990()->accepterVisiteur(visiteur);
 		sauvegardeAutorise = 2;
 

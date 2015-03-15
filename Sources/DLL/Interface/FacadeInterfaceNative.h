@@ -43,8 +43,10 @@ extern "C" {
 	__declspec(dllexport) double getScale(void);
 	__declspec(dllexport) void creerMur(int originX, int originY,int x1, int y1, int x2, int y2);
 	__declspec(dllexport) void translater(double deplacementX, double deplacementY);
-	__declspec(dllexport) int creerXML(char* path, int length, int prop[6]);
+	__declspec(dllexport) int creerXML(char* path, int length, int prop[6], bool force = false);
+	__declspec(dllexport) int creerXMLString(std::string path, int prop[6], bool force = false);
 	__declspec(dllexport) int* ouvrirXML(char* path, int length);
+	__declspec(dllexport) int* ouvrirXMLString(std::string path);
 	__declspec(dllexport) void takeScreenShot(char* path, int length, bool square, int maxSize);
 	__declspec(dllexport) bool setProprietesNoeud(int x, int y, int angle, double scale);
 	__declspec(dllexport) int selectionnerObjetSousPointClique(int i, int j, int largeur, int hauteur, bool ctrlDown = false);
@@ -97,6 +99,7 @@ extern "C" {
 	__declspec(dllexport) void activerPalettesDJ1();
 	__declspec(dllexport) void desactiverPalettesDJ1();
 	__declspec(dllexport) void animerJeu(bool animer);
+	__declspec(dllexport) void rechargerArbre(bool recharger);
 }
 
 #endif // __FACADE_INTERFACE_NATIVE_H__

@@ -71,6 +71,32 @@ void SingletonGlobal::libererInstance()
 {
 	delete singleton_;
 	singleton_ = 0;
+	//free(objectPath_);
+}
+
+////////////////////////////////////////////////////////////////////////
+///
+/// @fn void SingletonGlobal::getAndSetTempObjDirectory()
+///
+/// Ecrit la valeur du path courant + /zones/zoneTemp.bin dans une variable
+///
+/// @return Aucune.
+///
+////////////////////////////////////////////////////////////////////////
+void SingletonGlobal::getAndSetTempObjDirectory()
+{
+	objectPathCreated_ = true;
+	// Dont ask
+	// http://stackoverflow.com/questions/875249/how-to-get-current-directory
+	// https://vajris.wordpress.com/2012/10/15/conversion-tchar-wstring-string-string/
+	TCHAR buffer[MAX_PATH];
+	GetModuleFileName(NULL, buffer, MAX_PATH);
+	std::wstring wBuffer(buffer);
+	std::string currentFolder(wBuffer.begin(), wBuffer.end());
+	std::string::size_type position = currentFolder.find_last_of("\\/");
+	std::string targetPath = std::string(currentFolder).substr(0, position);
+	targetPath += "\\zones\\zoneTemp.bin";
+	objectPath_ = targetPath;
 }
 
 /*

@@ -106,7 +106,7 @@ public:
    void dupliquerSelection(int i, int j);
 
    /// Pour la sauvegarde de fichier XML
-   int creerXML(char* path, int prop[6]);
+   int creerXML(std::string path, int prop[6], bool force = false);
 
    /// Verifier si un point clique est dans la table 
    bool estDansTable(glm::dvec3 pointDuMonde);
