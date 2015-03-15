@@ -177,7 +177,7 @@ namespace InterfaceGraphique
                             curZoomVal.Text = (Math.Round(currentZoom * 100) / 100).ToString();
                             Creation_Panel.Visible = true;
                         }
-
+                        
                         if (FonctionsNatives.obtenirNombreBillesCourante() == 0 && etat is EtatEditeurTest)
                         {
                             StringBuilder bille = new StringBuilder("bille");
@@ -391,6 +391,20 @@ namespace InterfaceGraphique
                     testRetourModeEdition.PerformClick();
                     OnSizeChanged(e);
                 }
+                else if (e.KeyChar == 'b')
+                {
+                    
+                    if (FonctionsNatives.obtenirAffichageGlobal() == 0)
+                    {
+                        Console.WriteLine("Affichage bloque. On debloque");
+                        FonctionsNatives.bloquerAffichageGlobal(1);
+                    }
+                    else
+                    {
+                        Console.WriteLine("Affichage permis. On bloque");
+                        FonctionsNatives.bloquerAffichageGlobal(0);
+                    }
+                }
 
                 else if (e.KeyChar == 'n')
                 {
@@ -422,6 +436,11 @@ namespace InterfaceGraphique
                     FonctionsNatives.modePause(true);
                     etat = null;
                     etat = new EtatEditeurPause(this);
+                }
+                else if (e.KeyChar == (char)Keys.Back)
+                {
+                    FonctionsNatives.rechargerArbre(true);
+                    FonctionsNatives.resetNombreBillesCourantes();
                 }
             }
             else if (etat is EtatEditeurPause)
@@ -1567,8 +1586,8 @@ namespace InterfaceGraphique
             flowLayoutPanel1.Hide();
 
             menu1Enable(false);
-            StringBuilder bille = new StringBuilder("bille");
-            FonctionsNatives.creerObjet(bille, bille.Capacity);
+          //  StringBuilder bille = new StringBuilder("bille");
+          //  FonctionsNatives.creerObjet(bille, bille.Capacity);
             panel_GL.BringToFront();
             panel_GL.Anchor = AnchorStyles.None;
             panel_GL.Location = new Point(163, 24);
@@ -2976,6 +2995,7 @@ namespace InterfaceGraphique
             FonctionsNatives.animerJeu(false);
             FonctionsNatives.rechargerArbre(true);
             FonctionsNatives.supprimerBille();
+            FonctionsNatives.resetNombreBillesCourantes();
 
             if (menuStrip3.Visible)
                 menuStrip3.Hide();
