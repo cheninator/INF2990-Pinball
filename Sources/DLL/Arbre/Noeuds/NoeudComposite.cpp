@@ -467,6 +467,8 @@ void NoeudComposite::afficherConcret() const
 ////////////////////////////////////////////////////////////////////////
 void NoeudComposite::animer(float dt)
 {
+	if (dt > EPSILON_ANIMATION_NOEUD_COMPOSITE)
+		return;
 	for (NoeudAbstrait * enfant : enfants_){
 		enfant->animer(dt);
 	}

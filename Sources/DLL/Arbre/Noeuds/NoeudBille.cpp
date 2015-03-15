@@ -139,9 +139,6 @@ void NoeudBille::animer(float temps) // rajouter des parametres ou une fonction 
 	// Somme des forces agissant sur les particules.
 	// =============================================
 
-	if (temps > 0.1)
-		return;
-	
 	glm::dvec3 forceFrottement{ 0, 0, 0 };
 	if (glm::length(vitesse_) > utilitaire::EPSILON)
 		forceFrottement = -constanteDeFrottement_ * glm::normalize(vitesse_);

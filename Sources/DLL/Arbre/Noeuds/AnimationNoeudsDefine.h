@@ -18,6 +18,7 @@ enum Etat { ALLER, RETOUR, INITIAL };
 enum Direction { dirY, dirYX, dirX, dirXY, dirZ }; // Pour fonctionner avec le srand
 
 // Composite
+#define EPSILON_ANIMATION_NOEUD_COMPOSITE 1./30. + .1/30. * .1	// Si en dessous de 30fps (+10%), on n'anime plus
 #define HAUTEUR_TABLE_NOEUD_COMPOSITE 10
 
 // Bille
