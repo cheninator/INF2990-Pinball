@@ -10,7 +10,6 @@ namespace InterfaceGraphique
     public partial class ModeJeu : Form
     {
         public PartieTerminee gameOver;
-        private Timer timerBille2;
         private double currentZoom = -1; ///< Zoom courant
         private Touches touches; ///< Les touches pour le jeu
         private ZoneInfo zInfo;
@@ -112,6 +111,7 @@ namespace InterfaceGraphique
             etat = new EtatJeuDebutDePartie(this);
             // Il faut changer le mode car le traitement de début est fini
             etat = new EtatJeuJouer(this);
+            FonctionsNatives.animerJeu(true);
             CreerBille();
 
           
@@ -170,7 +170,6 @@ namespace InterfaceGraphique
            // FonctionsNatives.creerObjet(bille, bille.Capacity);
             CreerBille();
             //Console.WriteLine("BILLE 2");
-            timerBille2.Stop();
         }
 
         public void MettreAJour(double tempsInterAffichage)
@@ -247,6 +246,8 @@ namespace InterfaceGraphique
                 Program.peutAfficher = false;
                 Program.tempBool = false;
             }
+            Console.WriteLine("closing");
+
         }
 
         public void RecommencerPartie()
@@ -337,6 +338,12 @@ namespace InterfaceGraphique
                                 FonctionsNatives.obtenirToucheRessort());
             }
 
+            
+                Console.WriteLine(touches.PGJ1);
+                Console.WriteLine(touches.PDJ1);
+                Console.WriteLine(touches.PGJ2);
+                Console.WriteLine(touches.PDJ2);
+            
 
 
         }
@@ -423,7 +430,7 @@ namespace InterfaceGraphique
         ////////////////////////////////////////////////////////////////////////
         public void Quitter()
         {
-            resetConfig();
+           // resetConfig();
             this.Close();
         }
         

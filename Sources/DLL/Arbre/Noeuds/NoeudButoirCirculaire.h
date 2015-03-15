@@ -55,6 +55,8 @@ private:
 	Etat etatPrecedentButoir_ { INITIAL };
 	float compteurAnimation_ { 0 };
 	float scalePrecedentMax_ { 0 };
+	float compteurIllumination_{ TEMPS_ILLUMINATION_NOEUD_BUTOIR };
+	bool illumine_{ false };
 };
 
 #endif // __ARBRES_NOEUDS_NOEUDBUTOIRCIRCULAIRE_H__

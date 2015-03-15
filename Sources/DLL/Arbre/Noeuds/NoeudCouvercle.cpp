@@ -93,6 +93,8 @@ void NoeudCouvercle::animer(float temps)
 	static const double deplacement = abs(abs(boite_.coinMax.y - boite_.coinMin.y) * scale_.x * sin(INCLINAISON_NOEUD_COUVERCLE)) - MARGE_NOEUD_COUVERCLE;
 	// Appel a la version de la classe de base pour l'animation des enfants.
 	NoeudComposite::animer(temps);
+	//if (!animer_)
+	//	return;
 	if (positionRelative_.x > -deplacement) {
 		positionRelative_.x -= temps * (deplacement / TEMPS_ANIMATION_NOEUD_COUVERCLE);
 		rotation_.y -= INCLINAISON_NOEUD_COUVERCLE / (TEMPS_ANIMATION_NOEUD_COUVERCLE / temps);

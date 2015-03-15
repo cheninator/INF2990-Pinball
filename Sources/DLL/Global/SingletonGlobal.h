@@ -55,6 +55,12 @@ public:
 	void ajouterBille() { billesCourantes_++; };
 	int obtenirBille() { return billesCourantes_; };
 	void resetBille()  { billesCourantes_ = 0; };
+
+	void setAnimation(bool animer) { animer_ = animer; };
+	bool obtenirAnimation() { return animer_; };
+
+	std::string obtenirPathTemp() { objectPathCreated_ ? NULL : getAndSetTempObjDirectory(); return objectPath_; };
+
 protected:
 
 	/// Constructeur vide déclaré protected.
@@ -64,6 +70,8 @@ protected:
 	~SingletonGlobal() {};
 
 private:
+
+	void getAndSetTempObjDirectory();
 
 	static SingletonGlobal* singleton_;
 
@@ -88,6 +96,11 @@ private:
 	int collisionPointsNouvelleBille_{ 0 };
 
 	int billesCourantes_{ 0 };
+
+	bool animer_{ true };
+
+	std::string objectPath_;
+	bool objectPathCreated_{ false };
 };
 
 #endif // __SINGLETONGLOBAL_H__

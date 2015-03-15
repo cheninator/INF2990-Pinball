@@ -40,9 +40,6 @@ public:
 	virtual bool accepterVisiteur(VisiteurAbstrait* vis);
 
 private:
-	double scaleTorus_;
-	
-	double direction_;
 };
 
 #endif // __ARBRE_NOEUDS_NOEUDPORTAILTORUS_H__

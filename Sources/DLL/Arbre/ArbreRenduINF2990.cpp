@@ -91,7 +91,7 @@ ArbreRenduINF2990::ArbreRenduINF2990(bool afficher)
 	ajouterUsine(NOM_TROU, new UsineNoeudTrou{ NOM_TROU });
 	if (afficher) std::cout << std::fixed << std::setw(2) << std::setprecision(2) << j++ * 100.0 / i << "%... ajout de l'usine Tampon" << std::endl;
 	ajouterUsine(NOM_VIDE, new UsineNoeudVide{ NOM_VIDE });
-	if (afficher) std::cout << std::fixed << std::setw(2) << std::setprecision(2) << j++ * 100.0 / i << "%...  ajout de l'usine Couvercle" << std::endl;
+	if (afficher) std::cout << std::fixed << std::setw(2) << std::setprecision(2) << j++ * 100.0 / i << "%... ajout de l'usine Couvercle" << std::endl;
 	ajouterUsine(NOM_COUVERCLE, new UsineNoeudCouvercle{ NOM_COUVERCLE });
 	if (afficher) std::cout << std::fixed << std::setw(2) << std::setprecision(2) << j++ * 100.0 / i << "%... ajout de l'usine Table" << std::endl;
 	ajouterUsine(NOM_TABLE, new UsineNoeudTable{ NOM_TABLE });
@@ -331,12 +331,12 @@ bool ArbreRenduINF2990::lireXML(tinyxml2::XMLDocument& doc)
 
 	}
 
-	assignerDefaut();
+	//assignerDefaut();
 
 	return lecture;
 }
 
-
+/*
 ////////////////////////////////////////////////////////////////////////
 ///
 /// @fn bool ArbreRenduINF2990::estDefaut()
@@ -364,8 +364,8 @@ bool ArbreRenduINF2990::estDefaut() const
 	else
 		return false;
 }
-
-
+*/
+/*
 ////////////////////////////////////////////////////////////////////////
 ///
 /// @fn bool ArbreRenduINF2990::assignerDefaut()
@@ -387,7 +387,7 @@ void ArbreRenduINF2990::assignerDefaut()
 	angleGenerateur = chercher("generateurbille")->obtenirRotation();
 	scaleGenerateur = chercher("generateurbille")->obtenirAgrandissement();
 }
-
+*/
 
 ////////////////////////////////////////////////////////////////////////
 ///

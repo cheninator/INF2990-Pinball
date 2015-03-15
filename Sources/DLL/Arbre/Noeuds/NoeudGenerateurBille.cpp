@@ -109,11 +109,14 @@ void NoeudGenerateurBille::afficherConcret() const
 ////////////////////////////////////////////////////////////////////////
 void NoeudGenerateurBille::animer(float temps)
 {
-	//NoeudComposite::animer(temps);
-	for (NoeudAbstrait * enfant : enfants_) {
-		enfant->animer(temps);
-	}
+	NoeudComposite::animer(temps);
 	positionRelative_.z = abs(obtenirVecteursEnglobants()[0].z);
+	if (!animer_)
+	{
+		compteurAnimation_ = TEMPS_ANIMATION_NOEUD_GENERATEURBILLE;
+		return;
+	}
+	
 	// Au lieu de rajouter une condition "parkinson" fais juste return;
 	// Mais la je vais juste faire du parkinson pour quelques ssecodne puis s'arrete
 	if (compteurAnimation_ >= TEMPS_ANIMATION_NOEUD_GENERATEURBILLE && etatGenerateur_ == INITIAL)

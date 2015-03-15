@@ -41,7 +41,6 @@ namespace InterfaceGraphique
         private VideoCaptureDevice cam;
         private bool webCamExiste = false;
         private Bitmap bit;
-        private bool isInCapture = true;
         private System.Windows.Forms.Timer webcamTimer;
 
         ////////////////////////////////////////////////////////////////////////
@@ -321,12 +320,11 @@ namespace InterfaceGraphique
 
         private void pictureBox1_MouseEnter(object sender, EventArgs e)
         {
-            player.Stream = Properties.Resources.scary;
+            player.Stream = Properties.Resources.annoying;
             player.Play();
 
             if (webCamExiste && bit != null)
             {
-                    isInCapture = true;
                     pictureBox1.Image = bit;
                     pictureBox1.SizeMode = PictureBoxSizeMode.Zoom;
             }
@@ -388,7 +386,6 @@ namespace InterfaceGraphique
         {
             if (webCamExiste && bit != null)
             {
-                isInCapture = false;
                 pictureBox1.Image = bit;
             }
         }

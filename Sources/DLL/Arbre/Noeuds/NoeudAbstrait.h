@@ -24,6 +24,7 @@
 #include "Utilitaire.h"
 
 #include "AnimationNoeudsDefine.h"
+#include "../../Global/SingletonGlobal.h"
 
 #include "../../Visiteurs/VisiteurAbstrait.h"
 #include "../../Commun/Utilitaire/AideCollision.h"
@@ -202,6 +203,12 @@ public:
 	/// Anime le noeud.
 	virtual void animer(float dt);
 
+	/// Rend le noeud animable ou non le noeud.
+	virtual void assignerAnimer(bool animer);
+
+	/// Retourne si le noeud est animer
+	virtual bool obtenirAnimer();
+
 	/// Accepter un visiteur
 	virtual bool accepterVisiteur(VisiteurAbstrait* vis);
 
@@ -269,11 +276,13 @@ public:
 	/// Assigner Forces Externes
 	inline void assignerForcesExternes(glm::dvec3 forcesExternes);
 
-	/// Assigner l'attribut portailDOrigine_ pour tenir compte du portail d'ou on est apparu.
-	void assignerPortailDOrigine(NoeudAbstrait* portail);
+	/// Assigner l'attribut portailDorigine_ pour tenir compte du portail d'ou on est apparu.
+	void assignerPortailDorigine(NoeudAbstrait* portail);
 
-	/// Obtenir l'adresse du pointeurDOrigine_ 
-	NoeudAbstrait* obtenirPortailDOrigine();
+	/// Obtenir l'adresse du pointeurDorigine_ 
+	NoeudAbstrait* obtenirPortailDorigine();
+
+
 
 protected:
 
@@ -307,6 +316,7 @@ protected:
 	/// Determine si l'objet peut etre modifie
 	bool             modifiable_{ true };
 
+	/// Determine si l'objet peut etre scale
 	bool			ajustable_{ true };
 
 	/// Pointeur vers le parent.
@@ -342,6 +352,9 @@ protected:
 	/// Mode Debug de la bille ou du portail
 	bool debug_{ false };
 
+	/// Determine si on affiche ou non l'objet
+	bool animer_{ true };
+
 	/// Mode SpotLight de la bille
 	bool spotLight_{ false };
 
@@ -358,7 +371,8 @@ protected:
 	double constanteDeFrottement_{ 1 };
 
 	/// Utilise pour tenir compte du fait qu'on est apparu par un portail
-	NoeudAbstrait* portailDOrigine_{ nullptr };
+	NoeudAbstrait* portailDorigine_{ nullptr };
+
 };
 
 
