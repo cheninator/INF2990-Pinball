@@ -45,7 +45,8 @@ namespace InterfaceGraphique
         private void boutonMenuP_Click(object sender, EventArgs e)
         {
             this.Close();
-            ((ModeJeu)this.Owner).Close();
+           // ((ModeJeu)this.Owner).Close();
+          //  ((ModeJeu)this.Owner).Quitter();
         }
 
         private void boutonRecommencer_Click(object sender, EventArgs e)

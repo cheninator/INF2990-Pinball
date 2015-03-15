@@ -247,6 +247,8 @@ namespace InterfaceGraphique
                 Program.peutAfficher = false;
                 Program.tempBool = false;
             }
+            Console.WriteLine("closing");
+
         }
 
         public void RecommencerPartie()
@@ -423,7 +425,7 @@ namespace InterfaceGraphique
         ////////////////////////////////////////////////////////////////////////
         public void Quitter()
         {
-            resetConfig();
+           // resetConfig();
             this.Close();
         }
         
