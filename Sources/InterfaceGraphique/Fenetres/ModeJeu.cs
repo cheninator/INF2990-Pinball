@@ -111,6 +111,7 @@ namespace InterfaceGraphique
             etat = new EtatJeuDebutDePartie(this);
             // Il faut changer le mode car le traitement de début est fini
             etat = new EtatJeuJouer(this);
+            FonctionsNatives.animerJeu(true);
             CreerBille();
 
           
