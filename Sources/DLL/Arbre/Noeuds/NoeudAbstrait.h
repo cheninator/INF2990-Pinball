@@ -269,7 +269,7 @@ public:
 	/// Assigner Forces Externes
 	inline void assignerForcesExternes(glm::dvec3 forcesExternes);
 
-	/// Assigner l'attribut portailDOrigine_ pour tenir compte du portail d'ou on est apparu.
+	/// Assigner l'attribut portailDorigine_ pour tenir compte du portail d'ou on est apparu.
 	void assignerPortailDOrigine(NoeudAbstrait* portail);
 
 	/// Obtenir l'adresse du pointeurDOrigine_ 
@@ -358,7 +358,7 @@ protected:
 	double constanteDeFrottement_{ 1 };
 
 	/// Utilise pour tenir compte du fait qu'on est apparu par un portail
-	NoeudAbstrait* portailDOrigine_{ nullptr };
+	NoeudAbstrait* portailDorigine_{ nullptr };
 };
 
 
