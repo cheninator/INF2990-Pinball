@@ -202,6 +202,12 @@ public:
 	/// Anime le noeud.
 	virtual void animer(float dt);
 
+	/// Rend le noeud animable ou non le noeud.
+	virtual void assignerAnimer(bool animer);
+
+	/// Retourne si le noeud est animer
+	virtual bool obtenirAnimer();
+
 	/// Accepter un visiteur
 	virtual bool accepterVisiteur(VisiteurAbstrait* vis);
 
@@ -270,10 +276,12 @@ public:
 	inline void assignerForcesExternes(glm::dvec3 forcesExternes);
 
 	/// Assigner l'attribut portailDorigine_ pour tenir compte du portail d'ou on est apparu.
-	void assignerPortailDOrigine(NoeudAbstrait* portail);
+	void assignerPortailDorigine(NoeudAbstrait* portail);
 
-	/// Obtenir l'adresse du pointeurDOrigine_ 
-	NoeudAbstrait* obtenirPortailDOrigine();
+	/// Obtenir l'adresse du pointeurDorigine_ 
+	NoeudAbstrait* obtenirPortailDorigine();
+
+
 
 protected:
 
@@ -307,6 +315,7 @@ protected:
 	/// Determine si l'objet peut etre modifie
 	bool             modifiable_{ true };
 
+	/// Determine si l'objet peut etre scale
 	bool			ajustable_{ true };
 
 	/// Pointeur vers le parent.
@@ -342,6 +351,9 @@ protected:
 	/// Mode Debug de la bille ou du portail
 	bool debug_{ false };
 
+	/// Determine si on affiche ou non l'objet
+	bool animer_{ false };
+
 	/// Mode SpotLight de la bille
 	bool spotLight_{ false };
 
@@ -359,6 +371,7 @@ protected:
 
 	/// Utilise pour tenir compte du fait qu'on est apparu par un portail
 	NoeudAbstrait* portailDorigine_{ nullptr };
+
 };
 
 

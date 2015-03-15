@@ -190,10 +190,10 @@ std::vector<glm::dvec3> NoeudPortail::obtenirVecteursEnglobants()
 ////////////////////////////////////////////////////////////////////////
 void NoeudPortail::traiterCollisions(aidecollision::DetailsCollision, NoeudAbstrait* bille)
 {
-	if (bille->obtenirPortailDOrigine() != this)
+	if (bille->obtenirPortailDorigine() != this)
 	{
 		bille->assignerPositionRelative(this->getTwin()->obtenirPositionRelative());
-		bille->assignerPortailDOrigine(this->getTwin());
+		bille->assignerPortailDorigine(this->getTwin());
 	}
 }
 

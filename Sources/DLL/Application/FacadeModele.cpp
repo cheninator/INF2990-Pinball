@@ -1420,14 +1420,14 @@ void FacadeModele::updateForcesExternes()
 				double distance = glm::length(positionPortail - positionBille);
 				if (distance < 3 * noeud->obtenirVecteursEnglobants()[0].x) // Constante a determiner en fonction du scale du portail
 				{
-					if (bille->obtenirPortailDOrigine() != noeud)
+					if (bille->obtenirPortailDorigine() != noeud)
 					{
 						glm::dvec2 force = MASSE_NOEUD_PORTAIL * MASSE_NOEUD_BILLE /distance * glm::normalize(positionPortail - positionBille);
 						sommeDesForces += force;
 					}
 				}
-				if (distance > 20 && noeud == bille->obtenirPortailDOrigine())
-					bille->assignerPortailDOrigine(nullptr);
+				if (distance > 20 && noeud == bille->obtenirPortailDorigine())
+					bille->assignerPortailDorigine(nullptr);
 			}
 		}
 		bille->assignerForcesExternes(glm::dvec3{ sommeDesForces.x, sommeDesForces.y  , 0});
