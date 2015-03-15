@@ -1598,3 +1598,22 @@ void FacadeModele::activerPalettesAIDroites()
 		palette->activerAI();
 	}
 }
+
+///////////////////////////////////////////////////////////////////////////////
+///
+/// @fn void FacadeModele::assignerAnimer(bool animer)
+///
+/// @param[in]  animer : la valeur de animer a assigner
+/// @param[in]  noeud : Noeud au quel assigner la valeur
+///
+/// @return Aucune.
+///
+/// @remark : Assigner la valeur animer a un noeud et ses enfants
+///
+///////////////////////////////////////////////////////////////////////////////
+void FacadeModele::assignerAnimer(bool animer, NoeudAbstrait* noeud)
+{
+	noeud->assignerAnimer(animer);
+	for (unsigned int i = 0; i < noeud->obtenirNombreEnfants(); i++)
+		assignerAnimer(animer, noeud->getEnfant(i));
+}

@@ -38,6 +38,7 @@ NoeudAbstrait::NoeudAbstrait(
 	transparent_ = false;
 	impossible_ = false;
 	pause_ = false;
+	animer_ = SingletonGlobal::obtenirInstance()->obtenirAnimation();
 }
 
 

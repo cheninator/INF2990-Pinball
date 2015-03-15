@@ -111,6 +111,8 @@ void NoeudMur::afficherConcret() const
 void NoeudMur::animer(float temps)
 {
 	NoeudComposite::animer(temps);
+	if (!animer_)
+		return;
 }
 
 ////////////////////////////////////////////////////////////////////////

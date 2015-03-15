@@ -151,7 +151,7 @@ public:
    bool duplicationEstHorsTable();
 
    /// Sauvegarde la derniere configuration valide et confirmee par l'usager
-   void sauvegarderConfig(int config[12]);
+   void sauvegarderConfig(int config[13]);
 
    /// Obtenir toutes les proprietes sans initialiser l'arbre de rendu
    int* obtenirProprietes(char* nomFichier, int length);
@@ -206,6 +206,9 @@ public:
    void mettreAJourListeBillesEtNoeuds();
    void mettreAJourListeNoeuds();
    void mettreAJourListeRessorts();
+
+   // Assigner la valeur de l'animation a un objet
+   void assignerAnimer( bool animer, NoeudAbstrait* noeud);
 
 private:
 

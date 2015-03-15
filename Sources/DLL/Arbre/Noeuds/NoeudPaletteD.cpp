@@ -112,7 +112,8 @@ void NoeudPaletteD::afficherConcret() const
 void NoeudPaletteD::animer(float temps)
 {
 	NoeudComposite::animer(temps);
-
+	if (!animer_)
+		return;
 	switch (etatPalette_)
 	{
 	case ACTIVE:

@@ -24,6 +24,7 @@
 #include "Utilitaire.h"
 
 #include "AnimationNoeudsDefine.h"
+#include "../../Global/SingletonGlobal.h"
 
 #include "../../Visiteurs/VisiteurAbstrait.h"
 #include "../../Commun/Utilitaire/AideCollision.h"
@@ -352,7 +353,7 @@ protected:
 	bool debug_{ false };
 
 	/// Determine si on affiche ou non l'objet
-	bool animer_{ false };
+	bool animer_{ true };
 
 	/// Mode SpotLight de la bille
 	bool spotLight_{ false };

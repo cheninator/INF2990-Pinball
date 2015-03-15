@@ -113,8 +113,9 @@ void NoeudCible::afficherConcret() const
 void NoeudCible::animer(float temps)
 {
 	NoeudComposite::animer(temps);
+	if (!animer_)
+		return;
 	//positionRelative_.z = (boite_.coinMax.y - boite_.coinMin.y) / 2.0;
-	NoeudComposite::animer(temps);
 	rotation_.x += temps * VITESSE_NOEUD_CIBLE;
 	// Pour ne pas overflow le double un jour
 	if (rotation_.x > 360)

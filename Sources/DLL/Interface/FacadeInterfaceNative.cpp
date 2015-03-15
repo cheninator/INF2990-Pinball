@@ -1569,8 +1569,6 @@ extern "C"
 		SingletonGlobal::obtenirInstance()->resetBille();
 	}
 
-
-
 	__declspec(dllexport) void __cdecl compresserRessort()
 	{
 		return FacadeModele::obtenirInstance()->compresserRessort();
@@ -1579,6 +1577,13 @@ extern "C"
 	__declspec(dllexport) void __cdecl relacherRessort()
 	{
 		return FacadeModele::obtenirInstance()->relacherRessort();
+	}
+
+	__declspec(dllexport) void __cdecl animerJeu(bool animer)
+	{
+		SingletonGlobal::obtenirInstance()->setAnimation(animer);
+		for (unsigned int i = 0; i < FacadeModele::obtenirInstance()->obtenirArbreRenduINF2990()->obtenirNombreEnfants(); i++)
+			FacadeModele::obtenirInstance()->assignerAnimer(animer, FacadeModele::obtenirInstance()->obtenirArbreRenduINF2990()->getEnfant(i));
 	}
 	//__declspec(dllexport) int __cdecl obtenirNombreDePointsTotals()
 	//{

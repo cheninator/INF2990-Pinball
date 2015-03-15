@@ -95,6 +95,8 @@ void NoeudPortailTorus::animer(float temps)
 	glm::dvec3 positionRelative = positionRelative_;
 	NoeudComposite::animer(temps);
 	positionRelative_ = positionRelative;
+	if (!animer_)
+		return;
 
 	int direction = std::rand() % 2; // pcq ca me tente pas de dynamic cast un rand en Enum
 	switch (direction)

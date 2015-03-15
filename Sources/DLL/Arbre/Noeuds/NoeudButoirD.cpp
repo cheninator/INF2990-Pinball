@@ -112,6 +112,8 @@ void NoeudButoirD::afficherConcret() const
 void NoeudButoirD::animer(float temps)
 {
 	NoeudComposite::animer(temps);
+	if (!animer_)
+		return;
 }
 
 ////////////////////////////////////////////////////////////////////////

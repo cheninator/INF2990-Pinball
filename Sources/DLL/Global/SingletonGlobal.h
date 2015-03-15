@@ -55,6 +55,9 @@ public:
 	void ajouterBille() { billesCourantes_++; };
 	int obtenirBille() { return billesCourantes_; };
 	void resetBille()  { billesCourantes_ = 0; };
+
+	void setAnimation(bool animer) { animer_ = animer; };
+	bool obtenirAnimation() { return animer_; };
 protected:
 
 	/// Constructeur vide déclaré protected.
@@ -88,6 +91,8 @@ private:
 	int collisionPointsNouvelleBille_{ 0 };
 
 	int billesCourantes_{ 0 };
+
+	bool animer_{ true };
 };
 
 #endif // __SINGLETONGLOBAL_H__

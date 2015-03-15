@@ -118,6 +118,9 @@ void NoeudPortail::animer(float temps)
 	enfants_[0]->assignerAffiche(debug_);
 	enfants_[0]->setTransparent(transparent_);
 	enfants_[0]->assignerSelection(selectionne_);
+
+	if (!animer_)
+		return;
 }
 
 ////////////////////////////////////////////////////////////////////////

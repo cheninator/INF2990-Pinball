@@ -111,6 +111,8 @@ void NoeudRessort::afficherConcret() const
 void NoeudRessort::animer(float temps)
 {
 	NoeudComposite::animer(temps);
+	if (!animer_)
+		return;
 	switch (etatRessort_)
 	{
 	case EN_COMPRESSION:

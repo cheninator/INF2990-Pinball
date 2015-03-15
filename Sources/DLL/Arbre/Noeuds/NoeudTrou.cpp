@@ -110,6 +110,8 @@ void NoeudTrou::afficherConcret() const
 void NoeudTrou::animer(float temps)
 {
 	NoeudComposite::animer(temps);
+	if (!animer_)
+		return;
 	rotation_.z += temps * VITESSE_NOEUD_TROU;
 	// Pour ne pas overflow le double un jour
 	if (rotation_.z > 360)

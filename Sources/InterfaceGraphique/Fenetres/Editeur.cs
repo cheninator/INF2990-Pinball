@@ -11,15 +11,11 @@ using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
-using System.Diagnostics;
 using System.Drawing;
-using System.Linq;
 using System.Text;
 using System.Windows.Forms;
 using System.Runtime.InteropServices;
-using System.Media;
 using System.IO;
-using System.Drawing.Imaging;
 
 namespace InterfaceGraphique
 {
@@ -53,7 +49,6 @@ namespace InterfaceGraphique
         private double currentZoom = -1; ///< Zoom courant
         private int nbSelection;
         private bool colorShift = false;
-        private bool peutAnimer = true;
         private StringBuilder pathXML = new StringBuilder(""); ///< Chemin pour la lecture/sauvegarde XML
 
         private EtatEditeurAbstrait etat { get; set; } ///< Machine a etat
@@ -95,6 +90,7 @@ namespace InterfaceGraphique
             panelWidth = panel_GL.Size.Width;
 
             ReinitialiserTout();
+            FonctionsNatives.animerJeu(false);
         }
 
 
@@ -189,8 +185,7 @@ namespace InterfaceGraphique
                         }
                         if (Program.compteurFrames == 0)
                             FonctionsNatives.dessinerOpenGL();
-                        if (peutAnimer)
-                            FonctionsNatives.animer(tempsInterAffichage);
+                        FonctionsNatives.animer(tempsInterAffichage);
                     }
                 });
             }
@@ -423,7 +418,7 @@ namespace InterfaceGraphique
                 else if (e.KeyChar == (char)Keys.Escape)
                 {
                     menuStrip3.Show();
-                    peutAnimer = false;
+                    FonctionsNatives.animerJeu(false);
                     FonctionsNatives.modePause(true);
                     etat = null;
                     etat = new EtatEditeurPause(this);
@@ -434,7 +429,7 @@ namespace InterfaceGraphique
                 if (e.KeyChar == (char)Keys.Escape)
                 {
                     menuStrip3.Hide();
-                    peutAnimer = true;
+                    FonctionsNatives.animerJeu(true);
                     FonctionsNatives.modePause(false);
                     etat = null;
                     etat = new EtatEditeurTest(this);
@@ -1565,7 +1560,7 @@ namespace InterfaceGraphique
             etat = null;
             etat = new EtatEditeurTest(this);
             menuStrip1.Hide();
-            peutAnimer = true;
+            FonctionsNatives.animerJeu(true);
             if (Creation_Panel.Visible)
                 Creation_Panel.Hide();
             flowLayoutPanel1.Hide();
@@ -2977,7 +2972,7 @@ namespace InterfaceGraphique
         {
             etat = null;
             etat = new EtatEditeurNone(this);
-            peutAnimer = false;
+            FonctionsNatives.animerJeu(false);
             FonctionsNatives.supprimerBille();
 
             if (menuStrip3.Visible)

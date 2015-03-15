@@ -111,6 +111,8 @@ void NoeudButoirCirculaire::afficherConcret() const
 void NoeudButoirCirculaire::animer(float temps)
 {
 	NoeudComposite::animer(temps);
+	if (!animer_)
+		return;
 	if (selectionne_ || impossible_ || transparent_) 
 	{
 		if (etatButoir_ == INITIAL){
