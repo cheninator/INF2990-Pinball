@@ -46,6 +46,9 @@ enum Direction { dirY, dirYX, dirX, dirXY, dirZ }; // Pour fonctionner avec le s
 #define TEMPS_ANIMATION_MOUVEMENT_NOEUD_GENERATEURBILLE .01	// L'animation par mouvement dure 0.2 sec
 #define DISTANCE_MAX_NOEUD_GENERATEURBILLE	5		// Distance maximale de translation
 
+// PortailTorus
+#define VITESSE_NOEUD_PORTAIL_TORUS 360./2.	// 1 tour toute les 2 secondes
+
 // Trou
 #define VITESSE_NOEUD_TROU 360./4.	// 1 tour toute les 4 secondes
 
