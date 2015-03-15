@@ -819,8 +819,16 @@ void FacadeModele::dupliquerSelection(int i, int j)
 /// @return Aucune.
 ///
 ///////////////////////////////////////////////////////////////////////////////
-int FacadeModele::creerXML(char* path, int prop[6])
+int FacadeModele::creerXML(std::string path, int prop[6], bool force)
 {
+	if (force)
+	{
+		VisiteurXML* visiteur = new VisiteurXML(path, prop);
+		FacadeModele::obtenirInstance()->obtenirArbreRenduINF2990()->accepterVisiteur(visiteur);
+		delete visiteur;
+		return -1;
+	}
+
 	int sauvegardeAutorise;
 
 	// Ne pas permettre la sauvegarde si la zone ne contient pas au minimum  3 objets
@@ -835,17 +843,17 @@ int FacadeModele::creerXML(char* path, int prop[6])
 		&& FacadeModele::obtenirInstance()->obtenirArbreRenduINF2990()->getEnfant(0)->chercher("ressort")
 		&& FacadeModele::obtenirInstance()->obtenirArbreRenduINF2990()->getEnfant(0)->obtenirNombreEnfants() == 3)
 	{
-		if (FacadeModele::obtenirInstance()->obtenirArbreRenduINF2990()->estDefaut())
-			sauvegardeAutorise = 1;
+		//if (FacadeModele::obtenirInstance()->obtenirArbreRenduINF2990()->estDefaut())
+			//sauvegardeAutorise = 1;
 
-		else
-		{
-			VisiteurXML* visiteur = new VisiteurXML(std::string(path), prop);
+		//else
+		//{
+			VisiteurXML* visiteur = new VisiteurXML(path, prop);
 			FacadeModele::obtenirInstance()->obtenirArbreRenduINF2990()->accepterVisiteur(visiteur);
 			sauvegardeAutorise = 2;
 
 			delete visiteur;
-		}
+		//}
 	}
 
 	// Permettre la sauvegarde que lorsque il y a les 3 objets obligatoires + d'autres objets
@@ -854,7 +862,7 @@ int FacadeModele::creerXML(char* path, int prop[6])
 		&& FacadeModele::obtenirInstance()->obtenirArbreRenduINF2990()->getEnfant(0)->chercher("ressort")
 		&& FacadeModele::obtenirInstance()->obtenirArbreRenduINF2990()->getEnfant(0)->obtenirNombreEnfants() > 3)
 	{
-		VisiteurXML* visiteur = new VisiteurXML(std::string(path), prop);
+		VisiteurXML* visiteur = new VisiteurXML(path, prop);
 		FacadeModele::obtenirInstance()->obtenirArbreRenduINF2990()->accepterVisiteur(visiteur);
 		sauvegardeAutorise = 2;
 
@@ -1274,6 +1282,68 @@ void FacadeModele::desactiverPalettesDJ1()
 		palette->desactiver();
 }
 
+///////////////////////////////////////////////////////////////////////////////
+///
+/// @fn void FacadeModele::activerPalettesGJ2()
+/// Active les palettes gauches du joueur 2. C'est la fonction qui dit a la 
+/// palette de bouger.
+/// 
+/// @remark Les listes de palettes doivent avoir etes construites
+/// 
+///////////////////////////////////////////////////////////////////////////////
+void FacadeModele::activerPalettesGJ2()
+{
+	for (NoeudPaletteG* palette : listePalettesGJ2_)
+		palette->activer();
+}
+
+///////////////////////////////////////////////////////////////////////////////
+///
+/// @fn void FacadeModele::desactiverPalettesGJ2()
+/// Desactive les palettes gauches du joueur 2. C'est la fonction qui dit a la 
+/// palette de revenir et d'arreter de bouger.
+/// 
+/// @remark Les listes de palettes doivent avoir etes construites
+/// 
+///////////////////////////////////////////////////////////////////////////////
+void FacadeModele::desactiverPalettesGJ2()
+{
+	for (NoeudPaletteG* palette : listePalettesGJ2_)
+		palette->desactiver();
+}
+
+///////////////////////////////////////////////////////////////////////////////
+///
+/// @fn void FacadeModele::activerPalettesDJ2()
+/// Active les palettes gauches du joueur 2. C'est la fonction qui dit a la 
+/// palette de bouger.
+/// 
+/// @remark Les listes de palettes doivent avoir etes construites
+/// 
+///////////////////////////////////////////////////////////////////////////////
+void FacadeModele::activerPalettesDJ2()
+{
+	for (NoeudPaletteD* palette : listePalettesDJ2_)
+		palette->activer();
+}
+
+///////////////////////////////////////////////////////////////////////////////
+///
+/// @fn void FacadeModele::desactiverPalettesDJ2()
+/// Desactive les palettes gauches du joueur 2. C'est la fonction qui dit a la 
+/// palette de revenir et d'arreter de bouger.
+/// 
+/// @remark Les listes de palettes doivent avoir etes construites
+/// 
+///////////////////////////////////////////////////////////////////////////////
+void FacadeModele::desactiverPalettesDJ2()
+{
+	for (NoeudPaletteD* palette : listePalettesDJ2_)
+		palette->desactiver();
+}
+
+
+
 
 void FacadeModele::supprimerBille()
 {
@@ -1430,14 +1500,14 @@ void FacadeModele::updateForcesExternes()
 				double distance = glm::length(positionPortail - positionBille);
 				if (distance < 3 * noeud->obtenirVecteursEnglobants()[0].x) // Constante a determiner en fonction du scale du portail
 				{
-					if (bille->obtenirPortailDOrigine() != noeud)
+					if (bille->obtenirPortailDorigine() != noeud)
 					{
 						glm::dvec2 force = MASSE_NOEUD_PORTAIL * MASSE_NOEUD_BILLE /distance * glm::normalize(positionPortail - positionBille);
 						sommeDesForces += force;
 					}
 				}
-				if (distance > 20 && noeud == bille->obtenirPortailDOrigine())
-					bille->assignerPortailDOrigine(nullptr);
+				if (distance > 20 && noeud == bille->obtenirPortailDorigine())
+					bille->assignerPortailDorigine(nullptr);
 			}
 		}
 		bille->assignerForcesExternes(glm::dvec3{ sommeDesForces.x, sommeDesForces.y  , 0});
@@ -1529,4 +1599,23 @@ void FacadeModele::relacherRessort()
 		((NoeudRessort*)ressort)->relacher();
 }
 
+
+///////////////////////////////////////////////////////////////////////////////
+///
+/// @fn void FacadeModele::assignerAnimer(bool animer)
+///
+/// @param[in]  animer : la valeur de animer a assigner
+/// @param[in]  noeud : Noeud au quel assigner la valeur
+///
+/// @return Aucune.
+///
+/// @remark : Assigner la valeur animer a un noeud et ses enfants
+///
+///////////////////////////////////////////////////////////////////////////////
+void FacadeModele::assignerAnimer(bool animer, NoeudAbstrait* noeud)
+{
+	noeud->assignerAnimer(animer);
+	for (unsigned int i = 0; i < noeud->obtenirNombreEnfants(); i++)
+		assignerAnimer(animer, noeud->getEnfant(i));
+}
 

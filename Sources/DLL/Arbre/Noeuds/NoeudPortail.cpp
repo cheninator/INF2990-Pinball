@@ -118,6 +118,9 @@ void NoeudPortail::animer(float temps)
 	enfants_[0]->assignerAffiche(debug_);
 	enfants_[0]->setTransparent(transparent_);
 	enfants_[0]->assignerSelection(selectionne_);
+
+	if (!animer_)
+		return;
 }
 
 ////////////////////////////////////////////////////////////////////////
@@ -190,10 +193,10 @@ std::vector<glm::dvec3> NoeudPortail::obtenirVecteursEnglobants()
 ////////////////////////////////////////////////////////////////////////
 void NoeudPortail::traiterCollisions(aidecollision::DetailsCollision, NoeudAbstrait* bille)
 {
-	if (bille->obtenirPortailDOrigine() != this)
+	if (bille->obtenirPortailDorigine() != this)
 	{
 		bille->assignerPositionRelative(this->getTwin()->obtenirPositionRelative());
-		bille->assignerPortailDOrigine(this->getTwin());
+		bille->assignerPortailDorigine(this->getTwin());
 	}
 }
 

@@ -17,6 +17,7 @@
 #include "ArbreRenduINF2990.h"
 #include "CompteurAffichage.h"
 
+#include <string>
 #include <iomanip>
 #include <iostream>
 
@@ -682,7 +683,7 @@ extern "C"
 
 	////////////////////////////////////////////////////////////////////////
 	///
-	/// @fn __declspec(dllexport) void __cdecl  creerXML(char* path, int length)
+	/// @fn __declspec(dllexport) void __cdecl  creerXML(char* path, int length, int prop[6])
 	///
 	/// @param[in]  position : Nom du path
 	/// @param[in]  length : Taille du nom du path
@@ -693,11 +694,14 @@ extern "C"
 	/// @return Aucun
 	///
 	////////////////////////////////////////////////////////////////////////
-	__declspec(dllexport) int __cdecl creerXML(char* path, int length, int prop[6])
+	__declspec(dllexport) int __cdecl creerXML(char* path, int length, int prop[6], bool force)
 	{
-		return FacadeModele::obtenirInstance()->creerXML(path, prop);
+		return FacadeModele::obtenirInstance()->creerXML(std::string(path), prop, force);
 	}
-
+	__declspec(dllexport) int __cdecl creerXMLString(std::string path, int prop[6], bool force)
+	{
+		return FacadeModele::obtenirInstance()->creerXML(path, prop, force);
+	}
 
 	////////////////////////////////////////////////////////////////////////
 	///
@@ -715,6 +719,13 @@ extern "C"
 	{
 		FacadeModele::obtenirInstance()->obtenirArbreRenduINF2990()->vider();
 		FacadeModele::obtenirInstance()->obtenirArbreRenduINF2990()->initialiserXML(std::string(path));
+		FacadeModele::obtenirInstance()->setDebug();
+		return FacadeModele::obtenirInstance()->obtenirArbreRenduINF2990()->obtenirProprietes();
+	}
+	__declspec(dllexport) int* __cdecl ouvrirXMLString(std::string path)
+	{
+		FacadeModele::obtenirInstance()->obtenirArbreRenduINF2990()->vider();
+		FacadeModele::obtenirInstance()->obtenirArbreRenduINF2990()->initialiserXML(path);
 		FacadeModele::obtenirInstance()->setDebug();
 		return FacadeModele::obtenirInstance()->obtenirArbreRenduINF2990()->obtenirProprietes();
 	}
@@ -1463,6 +1474,26 @@ extern "C"
 		FacadeModele::obtenirInstance()->desactiverPalettesDJ1();
 	}
 
+	__declspec(dllexport) void __cdecl activerPalettesGJ2()
+	{
+		FacadeModele::obtenirInstance()->activerPalettesGJ2();
+	}
+	__declspec(dllexport) void __cdecl desactiverPalettesGJ2()
+	{
+		FacadeModele::obtenirInstance()->desactiverPalettesGJ2();
+	}
+	__declspec(dllexport) void __cdecl activerPalettesDJ2()
+	{
+		FacadeModele::obtenirInstance()->activerPalettesDJ2();
+	}
+	__declspec(dllexport) void __cdecl desactiverPalettesDJ2()
+	{
+		FacadeModele::obtenirInstance()->desactiverPalettesDJ2();
+	}
+
+
+
+
 	__declspec(dllexport) BSTR obtenirDerniereCampagne()
 	{
 		// http://stackoverflow.com/questions/6284524/bstr-to-stdstring-stdwstring-and-vice-versa
@@ -1569,8 +1600,6 @@ extern "C"
 		SingletonGlobal::obtenirInstance()->resetBille();
 	}
 
-
-
 	__declspec(dllexport) void __cdecl compresserRessort()
 	{
 		return FacadeModele::obtenirInstance()->compresserRessort();
@@ -1579,6 +1608,22 @@ extern "C"
 	__declspec(dllexport) void __cdecl relacherRessort()
 	{
 		return FacadeModele::obtenirInstance()->relacherRessort();
+	}
+
+	__declspec(dllexport) void __cdecl animerJeu(bool animer)
+	{
+		SingletonGlobal::obtenirInstance()->setAnimation(animer);
+		for (unsigned int i = 0; i < FacadeModele::obtenirInstance()->obtenirArbreRenduINF2990()->obtenirNombreEnfants(); i++)
+			FacadeModele::obtenirInstance()->assignerAnimer(animer, FacadeModele::obtenirInstance()->obtenirArbreRenduINF2990()->getEnfant(i));
+	}
+
+	__declspec(dllexport) void __cdecl rechargerArbre(bool recharger)
+	{
+		if (recharger)
+			ouvrirXMLString(SingletonGlobal::obtenirInstance()->obtenirPathTemp());
+		else
+			creerXMLString(SingletonGlobal::obtenirInstance()->obtenirPathTemp(),
+				FacadeModele::obtenirInstance()->obtenirArbreRenduINF2990()->obtenirProprietes(), true);
 	}
 	//__declspec(dllexport) int __cdecl obtenirNombreDePointsTotals()
 	//{

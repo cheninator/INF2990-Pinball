@@ -136,6 +136,8 @@ void NoeudBille::afficherConcret() const
 void NoeudBille::animer(float temps) // rajouter des parametres ou une fonction animerCollision(float temps, detailCollision detail)
 {
 	NoeudComposite::animer(temps);
+	if (!animer_)
+		return;
 	// Somme des forces agissant sur les particules.
 	// =============================================
 
@@ -143,6 +145,12 @@ void NoeudBille::animer(float temps) // rajouter des parametres ou une fonction 
 	if (positionCouvercleX != positionCouvercleX_)
 	{
 		positionCouvercleX_ = positionCouvercleX;
+		return;
+	}
+
+	if (timerMove_ < TIME_IDLE_NOEUD_BILLE)
+	{
+		timerMove_ += temps;
 		return;
 	}
 

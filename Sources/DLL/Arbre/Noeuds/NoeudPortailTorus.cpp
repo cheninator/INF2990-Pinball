@@ -33,9 +33,6 @@
 NoeudPortailTorus::NoeudPortailTorus(const std::string& typeNoeud)
 	: NoeudComposite{ typeNoeud }
 {
-	scaleTorus_ = 1.0;
-	
-	direction_ = 0.995;
 }
 
 ////////////////////////////////////////////////////////////////////////
@@ -95,15 +92,33 @@ void NoeudPortailTorus::afficherConcret() const
 ////////////////////////////////////////////////////////////////////////
 void NoeudPortailTorus::animer(float temps)
 {
+	glm::dvec3 positionRelative = positionRelative_;
 	NoeudComposite::animer(temps);
+	positionRelative_ = positionRelative;
+	if (!animer_)
+		return;
 
-	if (scaleTorus_ < 0.5)
-		direction_ = 1.007;
-	else if (scaleTorus_ > 1)
-		direction_ = 0.993;
-	scaleTorus_ = scaleTorus_ * direction_;
-	assignerEchelle({ scaleTorus_, scaleTorus_, 1 });
+	int direction = std::rand() % 2; // pcq ca me tente pas de dynamic cast un rand en Enum
+	switch (direction)
+	{
+	case 0:
+		rotation_.x += temps * VITESSE_NOEUD_PORTAIL_TORUS;
+		break;
+	case 1:
+		rotation_.y += temps * VITESSE_NOEUD_PORTAIL_TORUS;
+		break;
+	case 2:
+		rotation_.z += temps * VITESSE_NOEUD_PORTAIL_TORUS;
+		break;
+	}
 
+	// Pour ne pas overflow le double un jour
+	if (rotation_.x > 360)
+		rotation_.x -= 360;
+	if (rotation_.y > 360)
+		rotation_.y -= 360;
+	if (rotation_.z > 360)
+		rotation_.z -= 360;
 }
 
 ////////////////////////////////////////////////////////////////////////

@@ -98,6 +98,8 @@ void NoeudTable::animer(float temps)
 	glm::dvec3 positionRelative = positionRelative_;
 	NoeudComposite::animer(temps);
 	positionRelative_ = positionRelative;
+	if (!animer_)
+		return;
 }
 
 ////////////////////////////////////////////////////////////////////////

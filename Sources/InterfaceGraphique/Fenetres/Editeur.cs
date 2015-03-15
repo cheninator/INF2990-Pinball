@@ -11,15 +11,11 @@ using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
-using System.Diagnostics;
 using System.Drawing;
-using System.Linq;
 using System.Text;
 using System.Windows.Forms;
 using System.Runtime.InteropServices;
-using System.Media;
 using System.IO;
-using System.Drawing.Imaging;
 
 namespace InterfaceGraphique
 {
@@ -53,7 +49,6 @@ namespace InterfaceGraphique
         private double currentZoom = -1; ///< Zoom courant
         private int nbSelection;
         private bool colorShift = false;
-        private bool peutAnimer = true;
         private StringBuilder pathXML = new StringBuilder(""); ///< Chemin pour la lecture/sauvegarde XML
 
         private EtatEditeurAbstrait etat { get; set; } ///< Machine a etat
@@ -95,6 +90,7 @@ namespace InterfaceGraphique
             panelWidth = panel_GL.Size.Width;
 
             ReinitialiserTout();
+            FonctionsNatives.animerJeu(false);
         }
 
 
@@ -181,7 +177,7 @@ namespace InterfaceGraphique
                             curZoomVal.Text = (Math.Round(currentZoom * 100) / 100).ToString();
                             Creation_Panel.Visible = true;
                         }
-
+                        
                         if (FonctionsNatives.obtenirNombreBillesCourante() == 0 && etat is EtatEditeurTest)
                         {
                             StringBuilder bille = new StringBuilder("bille");
@@ -189,8 +185,7 @@ namespace InterfaceGraphique
                         }
                         if (Program.compteurFrames == 0)
                             FonctionsNatives.dessinerOpenGL();
-                        if (peutAnimer)
-                            FonctionsNatives.animer(tempsInterAffichage);
+                        FonctionsNatives.animer(tempsInterAffichage);
                     }
                 });
             }
@@ -396,6 +391,20 @@ namespace InterfaceGraphique
                     testRetourModeEdition.PerformClick();
                     OnSizeChanged(e);
                 }
+                else if (e.KeyChar == 'b')
+                {
+                    
+                    if (FonctionsNatives.obtenirAffichageGlobal() == 0)
+                    {
+                        Console.WriteLine("Affichage bloque. On debloque");
+                        FonctionsNatives.bloquerAffichageGlobal(1);
+                    }
+                    else
+                    {
+                        Console.WriteLine("Affichage permis. On bloque");
+                        FonctionsNatives.bloquerAffichageGlobal(0);
+                    }
+                }
 
                 else if (e.KeyChar == 'n')
                 {
@@ -423,10 +432,15 @@ namespace InterfaceGraphique
                 else if (e.KeyChar == (char)Keys.Escape)
                 {
                     menuStrip3.Show();
-                    peutAnimer = false;
+                    FonctionsNatives.animerJeu(false);
                     FonctionsNatives.modePause(true);
                     etat = null;
                     etat = new EtatEditeurPause(this);
+                }
+                else if (e.KeyChar == (char)Keys.Back)
+                {
+                    FonctionsNatives.rechargerArbre(true);
+                    FonctionsNatives.resetNombreBillesCourantes();
                 }
             }
             else if (etat is EtatEditeurPause)
@@ -434,7 +448,7 @@ namespace InterfaceGraphique
                 if (e.KeyChar == (char)Keys.Escape)
                 {
                     menuStrip3.Hide();
-                    peutAnimer = true;
+                    FonctionsNatives.animerJeu(true);
                     FonctionsNatives.modePause(false);
                     etat = null;
                     etat = new EtatEditeurTest(this);
@@ -1565,14 +1579,15 @@ namespace InterfaceGraphique
             etat = null;
             etat = new EtatEditeurTest(this);
             menuStrip1.Hide();
-            peutAnimer = true;
+            FonctionsNatives.animerJeu(true);
+            FonctionsNatives.rechargerArbre(false);
             if (Creation_Panel.Visible)
                 Creation_Panel.Hide();
             flowLayoutPanel1.Hide();
 
             menu1Enable(false);
-            StringBuilder bille = new StringBuilder("bille");
-            FonctionsNatives.creerObjet(bille, bille.Capacity);
+          //  StringBuilder bille = new StringBuilder("bille");
+          //  FonctionsNatives.creerObjet(bille, bille.Capacity);
             panel_GL.BringToFront();
             panel_GL.Anchor = AnchorStyles.None;
             panel_GL.Location = new Point(163, 24);
@@ -2977,8 +2992,10 @@ namespace InterfaceGraphique
         {
             etat = null;
             etat = new EtatEditeurNone(this);
-            peutAnimer = false;
+            FonctionsNatives.animerJeu(false);
+            FonctionsNatives.rechargerArbre(true);
             FonctionsNatives.supprimerBille();
+            FonctionsNatives.resetNombreBillesCourantes();
 
             if (menuStrip3.Visible)
                 menuStrip3.Hide();

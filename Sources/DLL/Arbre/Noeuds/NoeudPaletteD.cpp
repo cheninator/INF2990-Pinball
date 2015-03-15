@@ -118,21 +118,25 @@ void NoeudPaletteD::animer(float temps)
 {
 	NoeudComposite::animer(temps);
 
+	if (!animer_)
+		return;
+
 	switch (etatPalette_)
 	{
 		case ACTIVE:
 		// TODO : Verifier que la rotation que je veux faire est possible,
 		// si impossible, la palette est bloquee et doit tomber dans l'etat INACTIVE
+
 			if (angleZOriginal_ - obtenirRotation().z < 60)
 				assignerRotation(vitesseMonteAngulaire_);
-		
+			
 			break;
 
 		case RETOUR:
 
 			if (angleZOriginal_ - obtenirRotation().z > 0)
 				assignerRotation(vitesseDescenteAngulaire_);
-
+			
 			else
 			{
 				assignerRotationHard(glm::dvec3{ rotation_.x, rotation_.y, angleZOriginal_ });
@@ -141,7 +145,7 @@ void NoeudPaletteD::animer(float temps)
 
 			break;
 
-	case ACTIVE_AI:
+		case ACTIVE_AI:
 
 			if (angleZOriginal_ - obtenirRotation().z < 60)
 				assignerRotation(vitesseMonteAngulaire_);
@@ -153,14 +157,14 @@ void NoeudPaletteD::animer(float temps)
 					etatPalette_ = RETOUR_AI;
 					timer_ = 0;
 				}
-
 				else
 					timer_ += temps;
 			}
-
+		
 			break;
 
-	case RETOUR_AI:
+		case RETOUR_AI:
+
 
 			if (angleZOriginal_ - obtenirRotation().z > 0)
 				assignerRotation(vitesseDescenteAngulaire_);
@@ -173,9 +177,9 @@ void NoeudPaletteD::animer(float temps)
 
 			break;
 
-	case INACTIVE:
-		break;
+		case INACTIVE:
 
+			break;
 	}
 
 }

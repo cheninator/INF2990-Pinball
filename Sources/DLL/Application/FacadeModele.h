@@ -106,7 +106,7 @@ public:
    void dupliquerSelection(int i, int j);
 
    /// Pour la sauvegarde de fichier XML
-   int creerXML(char* path, int prop[6]);
+   int creerXML(std::string path, int prop[6], bool force = false);
 
    /// Verifier si un point clique est dans la table 
    bool estDansTable(glm::dvec3 pointDuMonde);
@@ -151,7 +151,7 @@ public:
    bool duplicationEstHorsTable();
 
    /// Sauvegarde la derniere configuration valide et confirmee par l'usager
-   void sauvegarderConfig(int config[12]);
+   void sauvegarderConfig(int config[13]);
 
    /// Obtenir toutes les proprietes sans initialiser l'arbre de rendu
    int* obtenirProprietes(char* nomFichier, int length);
@@ -190,6 +190,11 @@ public:
    void desactiverPalettesGJ1();
    void activerPalettesDJ1();
    void desactiverPalettesDJ1();
+   
+   void activerPalettesGJ2();
+   void desactiverPalettesGJ2();
+   void activerPalettesDJ2();
+   void desactiverPalettesDJ2();
 
    void supprimerBille();
 
@@ -204,6 +209,9 @@ public:
    void mettreAJourListeBillesEtNoeuds();
    void mettreAJourListeNoeuds();
    void mettreAJourListeRessorts();
+
+   // Assigner la valeur de l'animation a un objet
+   void assignerAnimer( bool animer, NoeudAbstrait* noeud);
 
 private:
 

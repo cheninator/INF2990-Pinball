@@ -20,6 +20,7 @@ enum Direction { dirY, dirYX, dirX, dirXY, dirZ }; // Pour fonctionner avec le s
 // Composite
 #define EPSILON_ANIMATION_NOEUD_COMPOSITE 1./30. + .1/30. * .1	// Si en dessous de 30fps (+10%), on n'anime plus
 #define HAUTEUR_TABLE_NOEUD_COMPOSITE 10
+#define TEMPS_ILLUMINATION_NOEUD_BUTOIR .5		// Temsp pendant le quel un butoir s'illumine
 
 // Bille
 #define VITESSE_MAX_NOEUD_BILLE 350.		// Vitesse maximale de la bille
@@ -27,6 +28,7 @@ enum Direction { dirY, dirYX, dirX, dirXY, dirZ }; // Pour fonctionner avec le s
 #define FROTTEMENT_NOEUD_BILLE 10.		// Constante de frottement
 #define GRAVITE_NOEUD_BILLE glm::dvec3{ 0, -utilitaire::GRAVITE  * MASSE_NOEUD_BILLE, 0 }	// Force de la gravite appliquer sur la bille
 #define VITESSE_INITIALE_NORUD_BILLE { 0, 0, 0 }	// Vitesse initiale
+#define TIME_IDLE_NOEUD_BILLE .5		// Temps que la bille ne bouge pas apres spawn
 
 // ButoirCirculaire
 #define SCALE_MAX_NOEUD_BUTOIRCIRCULAIRE 8./100.	// Pourcentage d'augmentation/raptissement maximal
@@ -44,6 +46,9 @@ enum Direction { dirY, dirYX, dirX, dirXY, dirZ }; // Pour fonctionner avec le s
 #define TEMPS_ANIMATION_NOEUD_GENERATEURBILLE 2.	// L'animation dure 3 
 #define TEMPS_ANIMATION_MOUVEMENT_NOEUD_GENERATEURBILLE .01	// L'animation par mouvement dure 0.2 sec
 #define DISTANCE_MAX_NOEUD_GENERATEURBILLE	5		// Distance maximale de translation
+
+// PortailTorus
+#define VITESSE_NOEUD_PORTAIL_TORUS 360./2.	// 1 tour toute les 2 secondes
 
 // Trou
 #define VITESSE_NOEUD_TROU 360./4.	// 1 tour toute les 4 secondes

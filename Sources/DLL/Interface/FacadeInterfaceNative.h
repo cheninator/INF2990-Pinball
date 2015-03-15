@@ -43,8 +43,10 @@ extern "C" {
 	__declspec(dllexport) double getScale(void);
 	__declspec(dllexport) void creerMur(int originX, int originY,int x1, int y1, int x2, int y2);
 	__declspec(dllexport) void translater(double deplacementX, double deplacementY);
-	__declspec(dllexport) int creerXML(char* path, int length, int prop[6]);
+	__declspec(dllexport) int creerXML(char* path, int length, int prop[6], bool force = false);
+	__declspec(dllexport) int creerXMLString(std::string path, int prop[6], bool force = false);
 	__declspec(dllexport) int* ouvrirXML(char* path, int length);
+	__declspec(dllexport) int* ouvrirXMLString(std::string path);
 	__declspec(dllexport) void takeScreenShot(char* path, int length, bool square, int maxSize);
 	__declspec(dllexport) bool setProprietesNoeud(int x, int y, int angle, double scale);
 	__declspec(dllexport) int selectionnerObjetSousPointClique(int i, int j, int largeur, int hauteur, bool ctrlDown = false);
@@ -68,14 +70,17 @@ extern "C" {
 	__declspec(dllexport) int obtenirCentreMasseY(void);
 	__declspec(dllexport) bool resetZoom(void);
 	__declspec(dllexport) bool duplicationEstHorsTable();
+
 	__declspec(dllexport) int obtenirTouchePGJ1();
 	__declspec(dllexport) int obtenirTouchePGJ2();
 	__declspec(dllexport) int obtenirTouchePDJ1();
 	__declspec(dllexport) int obtenirTouchePDJ2();
 	__declspec(dllexport) int obtenirToucheRessort();
 	__declspec(dllexport) int obtenirNombreDeBilles();
+
 	__declspec(dllexport) int obtenirAffichageGlobal();
 	__declspec(dllexport) void bloquerAffichageGlobal(int active);
+
 	__declspec(dllexport) void creerFichierConfig(int config[12]);
 	__declspec(dllexport) int* chargerFichierConfiguration();
 	__declspec(dllexport) int obtenirDiffulte(char* nomFichier, int length);
@@ -86,16 +91,26 @@ extern "C" {
 	__declspec(dllexport) bool spotLight(int lum, bool state);
 	__declspec(dllexport) void initialiserSingleton();
 	__declspec(dllexport) void detruireSingleton();
+
 	__declspec(dllexport) int obtenirPointsGagnerBille();
 	__declspec(dllexport) int obtenirPointsGagnerPartie();
 	__declspec(dllexport) int obtenirNombreDePointsDePartie();
 	__declspec(dllexport) void resetNombreDePointsDePartie();
 	__declspec(dllexport) int  obtenirNombreBillesCourante();
 	__declspec(dllexport) void resetNombreBillesCourantes();
+	
 	__declspec(dllexport) void activerPalettesGJ1();
 	__declspec(dllexport) void desactiverPalettesGJ1();
 	__declspec(dllexport) void activerPalettesDJ1();
 	__declspec(dllexport) void desactiverPalettesDJ1();
+
+	__declspec(dllexport) void activerPalettesGJ2();
+	__declspec(dllexport) void desactiverPalettesGJ2();
+	__declspec(dllexport) void activerPalettesDJ2();
+	__declspec(dllexport) void desactiverPalettesDJ2();
+
+	__declspec(dllexport) void animerJeu(bool animer);
+	__declspec(dllexport) void rechargerArbre(bool recharger);
 }
 
 #endif // __FACADE_INTERFACE_NATIVE_H__

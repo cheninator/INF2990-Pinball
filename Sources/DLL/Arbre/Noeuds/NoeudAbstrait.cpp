@@ -1,4 +1,4 @@
-////////////////////////////////////////////////
+	////////////////////////////////////////////////
 /// @file   NoeudAbstrait.cpp
 /// @author DGI-2990
 /// @date   2007-01-24
@@ -38,6 +38,7 @@ NoeudAbstrait::NoeudAbstrait(
 	transparent_ = false;
 	impossible_ = false;
 	pause_ = false;
+	animer_ = SingletonGlobal::obtenirInstance()->obtenirAnimation();
 }
 
 
@@ -486,6 +487,34 @@ void NoeudAbstrait::animer(float dt)
 
 ////////////////////////////////////////////////////////////////////////
 ///
+/// @fn void NoeudAbstrait::assignerAnimer(bool animer)
+///
+/// @param[in] animer : valeur a mettre dans animer_.
+///
+/// @return Aucun.
+///
+////////////////////////////////////////////////////////////////////////
+void NoeudAbstrait::assignerAnimer(bool animer)
+{
+	animer_ = animer;
+}
+
+
+////////////////////////////////////////////////////////////////////////
+///
+/// @fn bool NoeudAbstrait::obtenirAnimer()
+///
+/// @return Retourne si le noeud est animer.
+///
+////////////////////////////////////////////////////////////////////////
+bool NoeudAbstrait::obtenirAnimer()
+{
+	return animer_;
+}
+
+
+////////////////////////////////////////////////////////////////////////
+///
 /// @fn bool NoeudAbstrait::accepterVisiteur(VisiteurAbstrait* vis)
 ///
 ///
@@ -886,28 +915,28 @@ void NoeudAbstrait::traiterCollisions(aidecollision::DetailsCollision details, N
 
 ////////////////////////////////////////////////////////////////////////
 ///
-/// @fn void NoeudAbstrait::assignerPortailDOrigine(NoeudAbstrait* portail)
+/// @fn void NoeudAbstrait::assignerPortailDorigine(NoeudAbstrait* portail)
 ///
-/// Assigne l'attribut portailDOrigine avec un portail.  Ce portail ne causera pas
+/// Assigne l'attribut portailDorigine avec un portail.  Ce portail ne causera pas
 /// de force sur la bille.  Une fois que la bille s'est assez eloignee du
 /// portail, on remet cet attirbut a nullptr.
 ///
 ////////////////////////////////////////////////////////////////////////
-void NoeudAbstrait::assignerPortailDOrigine(NoeudAbstrait* portail)
+void NoeudAbstrait::assignerPortailDorigine(NoeudAbstrait* portail)
 {
-	portailDOrigine_ = portail;
+	portailDorigine_ = portail;
 }
 
 ////////////////////////////////////////////////////////////////////////
 ///
-/// @fn void NoeudAbstrait::assignerPortailDOrigine(NoeudAbstrait* portail)
+/// @fn void NoeudAbstrait::assignerPortailDorigine(NoeudAbstrait* portail)
 ///
-/// Obtient l'attribut portailDOrigine_ pour le comparer avec les portails.
+/// Obtient l'attribut portailDorigine_ pour le comparer avec les portails.
 /// Si un portail est le portail d'origine, il ne cree pas de force sur 
 /// la bille.
 /// 
 ////////////////////////////////////////////////////////////////////////
-NoeudAbstrait* NoeudAbstrait::obtenirPortailDOrigine()
+NoeudAbstrait* NoeudAbstrait::obtenirPortailDorigine()
 {
-	return portailDOrigine_;
+	return portailDorigine_;
 }
