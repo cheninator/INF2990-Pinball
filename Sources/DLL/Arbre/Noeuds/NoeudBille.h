@@ -56,6 +56,7 @@ public:
 private:
 
 	double positionCouvercleX_{ -1 };
+	float timerMove_{ 0 };
 };
 
 #endif // __ARBRE_NOEUDS_NOEUDGENERATEURBILLE_H__

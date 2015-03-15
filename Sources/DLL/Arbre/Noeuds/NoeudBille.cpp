@@ -146,6 +146,12 @@ void NoeudBille::animer(float temps) // rajouter des parametres ou une fonction 
 		return;
 	}
 
+	if (timerMove_ < TIME_IDLE_NOEUD_BILLE)
+	{
+		timerMove_ += temps;
+		return;
+	}
+
 	glm::dvec3 forceFrottement{ 0, 0, 0 };
 	if (glm::length(vitesse_) > utilitaire::EPSILON)
 		forceFrottement = -constanteDeFrottement_ * glm::normalize(vitesse_);
