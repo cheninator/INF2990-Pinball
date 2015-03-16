@@ -135,13 +135,13 @@ void NoeudPaletteD::animer(float temps)
 		case RETOUR:
 
 			if (angleZOriginal_ - obtenirRotation().z > 0)
-				assignerRotation(vitesseDescenteAngulaire_);
-			
+				assignerRotation(glm::dvec3{ 0, 0, VITESSE_ANGULAIRE_PALETTE_RETOUR * temps });
 			else
 			{
-				assignerRotation(glm::dvec3{ 0, 0, VITESSE_ANGULAIRE_PALETTE_RETOUR * temps });
+				assignerRotationHard(glm::dvec3{ rotation_.x, rotation_.y, angleZOriginal_ });
 				etatPalette_ = INACTIVE;
 			}
+			break;
 
 			break;
 
