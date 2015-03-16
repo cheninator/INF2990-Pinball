@@ -56,38 +56,61 @@ JoueurVirtuel::~JoueurVirtuel()
 /// @return Aucune
 ///
 ////////////////////////////////////////////////////////////////////////
-void JoueurVirtuel::jouer(const std::vector<NoeudAbstrait*>& listeBilles)
+void JoueurVirtuel::jouer(const std::vector<NoeudAbstrait*>& listeBilles, const std::set<NoeudPaletteG*>& listePalettesGauches, const std::set<NoeudPaletteD*>& listePalettesDroites, float temps)
 {
+	// Le joueur pourrait posséder des pointeurs vers listePalettesGJ2_ et listePalettesDJ2_ de facadeModele.
 	billes_.clear();
 	billes_ = listeBilles;
 	bool detecter = false;
 
 	/// Traiter les palettes gauches
-	for (unsigned int i = 0; i < palettesGauche_.size() && !detecter; i++)
-		detecter = palettesGauche_[i]->accepterJoueurVirtuel(this);
-	
-	/// Activer toutes les palettes gauches
-	if (detecter)
-	{
-		for (unsigned int j = 0; j < palettesGauche_.size(); j++)
-			palettesGauche_[j]->activerAI();
+	// Si le bouton n'est pas pesé, faire la vérification habituelle
+	if (!boutonGauche_)
+		if (timerGauche_ > 0)
+			timerGauche_ -= temps;
+		else
+			for (NoeudPaletteG* paletteGauche : listePalettesGauches)
+			if (paletteGauche->accepterJoueurVirtuel(this))
+			{
+				FacadeModele::obtenirInstance()->activerPalettesGJ2();
+				timerGauche_ = 0.25;
+				boutonGauche_ = true;
+				break;
+			}
+	else
+		// Si le bouton EST pesé, compter du temps jusqu'à une certaine valeur et relacher le bouton après cette valeur.
+		if (timerGauche_ > 0)
+			timerGauche_ -= temps;
+		else
+		{
+			FacadeModele::obtenirInstance()->desactiverPalettesGJ2();
+			timerGauche_ = 0.4f;
+			boutonGauche_ = false;
+		}
 
-		detecter = false;
-	}
-
-	/// Traiter les palettes droites
-	for (unsigned int i = 0; i < palettesDroite_.size() && !detecter; i++)
-		detecter = palettesDroite_[i]->accepterJoueurVirtuel(this);
-
-	/// Activer les palettes droites
-	if (detecter)
-	{
-		for (unsigned int j = 0; j < palettesGauche_.size(); j++)
-			palettesDroite_[j]->activerAI();
-	}
-
+	// Même chose pour le bouton de droite.
+	if (!boutonDroit_)
+		if (timerDroit_ > 0)
+			timerDroit_ -= temps;
+		else
+			for (NoeudPaletteD* paletteDroite : listePalettesDroites)
+			if (paletteDroite->accepterJoueurVirtuel(this))
+			{
+				FacadeModele::obtenirInstance()->activerPalettesDJ2();
+				timerDroit_ = 0.25;
+				boutonDroit_ = true;
+				break;
+			}
+	else
+		if (timerDroit_ > 0)
+			timerDroit_ -= temps;
+		else
+		{
+			FacadeModele::obtenirInstance()->desactiverPalettesGJ2();
+			timerDroit_ = 0.4f;
+			boutonDroit_ = false; 
+		}
 }
-
 
 ////////////////////////////////////////////////////////////////////////
 ///
@@ -150,6 +173,7 @@ bool JoueurVirtuel::traiter(NoeudPaletteD* noeud)
 ////////////////////////////////////////////////////////////////////////
 void JoueurVirtuel::assignerPalettes(const std::set<NoeudPaletteG*>& gauche, const std::set<NoeudPaletteD*>& droite)
 {
+	
 	palettesGauche_.clear();
 	palettesDroite_.clear();
 
@@ -161,5 +185,5 @@ void JoueurVirtuel::assignerPalettes(const std::set<NoeudPaletteG*>& gauche, con
 
 	for (; iterD != droite.end(); iterD++)
 		palettesDroite_.push_back(*iterD);
-
+	
 }

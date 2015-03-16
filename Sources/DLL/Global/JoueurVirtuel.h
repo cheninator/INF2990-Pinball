@@ -42,7 +42,8 @@ public:
 	virtual ~JoueurVirtuel();
 
 	/// Comportement du joueur virtuel
-	virtual void jouer(const std::vector<NoeudAbstrait*>& listeBilles);
+	virtual void jouer(const std::vector<NoeudAbstrait*>& listeBilles, const std::set<NoeudPaletteG*>& listePalettesG, const std::set<NoeudPaletteD*>& listePalettesD, float temps);
+
 
 	/// Traitement des noeuds abstraits
 	virtual bool traiter(NoeudAbstrait* noeud) { return false; };
@@ -63,6 +64,8 @@ private:
 	std::vector<NoeudPaletteD*> palettesDroite_;
 	std::vector<NoeudAbstrait*> billes_;
 
+	float timerGauche_, timerGauche2_, timerDroit_, timerDroit2_;
+	bool boutonGauche_{ false }, boutonDroit_{ false };
 };
 
 
