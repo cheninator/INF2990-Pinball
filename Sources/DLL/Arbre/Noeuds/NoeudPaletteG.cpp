@@ -351,7 +351,7 @@ bool NoeudPaletteG::estActiveeParBille(NoeudAbstrait* bille)
 {
 	// Si la palette n'a jamais etee activee, elle ne connait pas son angle original.
 	if (etatPalette_ == INACTIVE)
-		angleZOriginal_ = rotation_[0];
+		angleZOriginal_ = rotation_[2];
 
 	glm::dvec3 positionPalette = obtenirPositionRelative();
 	glm::dvec3 positionBille = bille->obtenirPositionRelative();
@@ -366,14 +366,14 @@ bool NoeudPaletteG::estActiveeParBille(NoeudAbstrait* bille)
 	glm::dvec3 vecteurProjete = glm::proj(vecteur, directionPalette);
 	glm::dvec3 vecteurNormal = vecteur - vecteurProjete;
 	std::vector<glm::dvec3> boite = obtenirVecteursEnglobants();
-	double longueurPalette = boite[0].x - boite[2].x;
+	double longueurPalette = scale_.x*(boite_.coinMax.x - boite_.coinMin.x);
 
 	double distanceProjetee = glm::length(vecteurProjete);
 	double distanceNormale = glm::length(vecteurNormal);
 	glm::dvec3 produitVectoriel;
 
 	if (fonctionDroitePaletteOriginale(bille) > 0// << vrai si on la bille est au dessus de la droite definie par la palette. C<est ce qui fait que les palettes n'activent pas par en dessous.
-		&& glm::dot(directionPalette, vecteur) < 0
+		&& glm::dot(directionPalette, vecteur) > 0
 		&& asin(glm::length(produitVectoriel) / glm::length(vecteur)) < sin(60 * utilitaire::PI_180)
 		&& distance < longueurPalette
 		)
