@@ -11,7 +11,7 @@
 /Exe/InterfaceGraphique*
 /Exe/Noyau.*
 /Exe/*.exe
-
+/Exe/zones/*.bin
 
 # User-specific files
 *.suo
@@ -323,5 +323,3 @@ tramp
 
 ### LibreOffice ###
 # LibreOffice locks
-.~lock.*#
-Exe/zones/zoneTemp.bin
