@@ -54,7 +54,7 @@ enum Direction { dirY, dirYX, dirX, dirXY, dirZ }; // Pour fonctionner avec le s
 #define VITESSE_NOEUD_TROU 360./4.	// 1 tour toute les 4 secondes
 
 // Palettes
-#define VITESSE_ANGULAIRE_PALETTE_AVTIVE 500 // 500 degres par seconde approximativement 9 degres par 60ieme de seconde.
+#define VITESSE_ANGULAIRE_PALETTE_ACTIVE 500 // 500 degres par seconde approximativement 9 degres par 60ieme de seconde.
 #define VITESSE_ANGULAIRE_PALETTE_RETOUR 150 
 
 // Portails

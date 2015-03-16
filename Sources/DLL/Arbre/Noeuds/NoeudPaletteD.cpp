@@ -128,7 +128,7 @@ void NoeudPaletteD::animer(float temps)
 		// si impossible, la palette est bloquee et doit tomber dans l'etat INACTIVE
 
 			if (angleZOriginal_ - obtenirRotation().z < 60)
-				assignerRotation(glm::dvec3{ 0, 0,- VITESSE_ANGULAIRE_PALETTE_AVTIVE * temps });
+				assignerRotation(glm::dvec3{ 0, 0,- VITESSE_ANGULAIRE_PALETTE_ACTIVE * temps });
 			
 			break;
 
@@ -148,7 +148,7 @@ void NoeudPaletteD::animer(float temps)
 		case ACTIVE_AI:
 
 			if (angleZOriginal_ - obtenirRotation().z < 60)
-				assignerRotation(glm::dvec3{ 0, 0, - VITESSE_ANGULAIRE_PALETTE_AVTIVE * temps });
+				assignerRotation(glm::dvec3{ 0, 0, - VITESSE_ANGULAIRE_PALETTE_ACTIVE * temps });
 
 			else
 			{
