@@ -2996,7 +2996,7 @@ namespace InterfaceGraphique
             FonctionsNatives.rechargerArbre(true);
             FonctionsNatives.supprimerBille();
             FonctionsNatives.resetNombreBillesCourantes();
-
+            FonctionsNatives.construireListesPalettes();
             if (menuStrip3.Visible)
                 menuStrip3.Hide();
             menuStrip1.Show();
