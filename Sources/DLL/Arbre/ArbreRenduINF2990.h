@@ -85,6 +85,7 @@ public:
    static const std::string NOM_VIDE; ///< Represente le type Vide
    static const std::string NOM_COUVERCLE; ///< Represente le type Couvercle
    static const std::string NOM_TABLE; ///< Represente le type Table
+   static const std::string NOM_GATE; ///< Represente le type Table
 
 private:
 

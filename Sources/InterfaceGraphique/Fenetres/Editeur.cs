@@ -1925,6 +1925,29 @@ namespace InterfaceGraphique
 
         ////////////////////////////////////////////////////////////////////////
         ///
+        /// @fn private void Gate_Button_Click(object sender, EventArgs e)
+        /// @brief Gestion des evenements lorsque l'utilisateur clique sur 
+        ///        le bouton Gate.
+        /// 
+        /// @param[in] sender : Objet duquel provient un evenement
+        /// @param[in] e : evenement qui lance la fonction.
+        /// 
+        /// @return Aucune.
+        ///
+        ////////////////////////////////////////////////////////////////////////
+        private void Gate_Button_Click(object sender, EventArgs e)
+        {
+            etat = new EtatEditeurCreation(this);
+            //Console.WriteLine("Gate");
+            myObjectName = new StringBuilder("gate");
+            colorShift = false;
+            angleX = 0;
+            angleY = 0;
+            angleZ = 0;
+        }
+
+        ////////////////////////////////////////////////////////////////////////
+        ///
         /// @fn private void Mur_MenuItem_Click(object sender, EventArgs e)
         /// @brief Gestion des evenements lorsque l'utilisateur clique sur 
         ///        le menu Mur.

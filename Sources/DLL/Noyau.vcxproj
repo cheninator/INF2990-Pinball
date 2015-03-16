@@ -142,6 +142,7 @@
     <ClCompile Include="Arbre\Noeuds\NoeudButoirG.cpp" />
     <ClCompile Include="Arbre\Noeuds\NoeudCible.cpp" />
     <ClCompile Include="Arbre\Noeuds\NoeudCouvercle.cpp" />
+    <ClCompile Include="Arbre\Noeuds\NoeudGate.cpp" />
     <ClCompile Include="Arbre\Noeuds\NoeudGenerateurBille.cpp" />
     <ClCompile Include="Arbre\Noeuds\NoeudMur.cpp" />
     <ClCompile Include="Arbre\Noeuds\NoeudPaletteD.cpp" />
@@ -194,6 +195,7 @@
     <ClInclude Include="Arbre\Noeuds\NoeudButoirG.h" />
     <ClInclude Include="Arbre\Noeuds\NoeudCible.h" />
     <ClInclude Include="Arbre\Noeuds\NoeudCouvercle.h" />
+    <ClInclude Include="Arbre\Noeuds\NoeudGate.h" />
     <ClInclude Include="Arbre\Noeuds\NoeudGenerateurBille.h" />
     <ClInclude Include="Arbre\Noeuds\NoeudMur.h" />
     <ClInclude Include="Arbre\Noeuds\NoeudPaletteD.h" />
@@ -210,6 +212,7 @@
     <ClInclude Include="Arbre\Usines\UsineNoeudButoirG.h" />
     <ClInclude Include="Arbre\Usines\UsineNoeudCible.h" />
     <ClInclude Include="Arbre\Usines\UsineNoeudCouvercle.h" />
+    <ClInclude Include="Arbre\Usines\UsineNoeudGate.h" />
     <ClInclude Include="Arbre\Usines\UsineNoeudGenerateurBille.h" />
     <ClInclude Include="Arbre\Usines\UsineNoeudMur.h" />
     <ClInclude Include="Arbre\Usines\UsineNoeudPaletteD.h" />

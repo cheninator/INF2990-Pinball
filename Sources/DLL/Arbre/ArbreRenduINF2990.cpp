@@ -24,6 +24,7 @@
 #include "Usines/UsineNoeudVide.h"
 #include "Usines/UsineNoeudCouvercle.h"
 #include "Usines/UsineNoeudTable.h"
+#include "Usines/UsineNoeudGate.h"
 
 #include "EtatOpenGL.h"
 #include <iomanip>
@@ -45,6 +46,7 @@ const std::string ArbreRenduINF2990::NOM_TROU{ "trou" };
 const std::string ArbreRenduINF2990::NOM_VIDE{ "vide" };
 const std::string ArbreRenduINF2990::NOM_COUVERCLE{ "couvercle" };
 const std::string ArbreRenduINF2990::NOM_TABLE{ "table" };
+const std::string ArbreRenduINF2990::NOM_GATE{ "gate" };
 
 ////////////////////////////////////////////////////////////////////////
 ///
@@ -61,7 +63,7 @@ const std::string ArbreRenduINF2990::NOM_TABLE{ "table" };
 ArbreRenduINF2990::ArbreRenduINF2990(bool afficher)
 {
 	// Construction des usines
-	int i = 16;
+	int i = 17;
 	int j = 0;
 	if (afficher) std::cout << std::fixed << std::setw(2) << std::setprecision(2) << j++ * 100.0 / i << "%... ajout de l'usine Boutoire Droit" << std::endl;
 	ajouterUsine(NOM_BUTOIRD, new UsineNoeudButoirD{ NOM_BUTOIRD });
@@ -95,6 +97,8 @@ ArbreRenduINF2990::ArbreRenduINF2990(bool afficher)
 	ajouterUsine(NOM_COUVERCLE, new UsineNoeudCouvercle{ NOM_COUVERCLE });
 	if (afficher) std::cout << std::fixed << std::setw(2) << std::setprecision(2) << j++ * 100.0 / i << "%... ajout de l'usine Table" << std::endl;
 	ajouterUsine(NOM_TABLE, new UsineNoeudTable{ NOM_TABLE });
+	if (afficher) std::cout << std::fixed << std::setw(2) << std::setprecision(2) << j++ * 100.0 / i << "%... ajout de l'usine Gate" << std::endl;
+	ajouterUsine(NOM_GATE, new UsineNoeudGate{ NOM_GATE });
 	if (afficher) std::cout << std::fixed << std::setw(2) << std::setprecision(2) << j++ * 100.0 / i << "%... toute les usines sont genere" << std::endl;
 
 }

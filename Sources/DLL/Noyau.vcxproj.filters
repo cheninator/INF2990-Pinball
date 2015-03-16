@@ -228,6 +228,9 @@
     <ClCompile Include="Global\JoueurVirtuel.cpp">
       <Filter>Source Files\Global</Filter>
     </ClCompile>
+    <ClCompile Include="Arbre\Noeuds\NoeudGate.cpp">
+      <Filter>Source Files\Arbre\Noeuds</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Application\FacadeModele.h">
@@ -436,6 +439,15 @@
     </ClInclude>
     <ClInclude Include="Global\Commandes\CommandeAbstraite.h">
       <Filter>Header Files\Global\Commandes</Filter>
+    </ClInclude>
+    <ClInclude Include="Arbre\Noeuds\AnimationNoeudsDefine.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Arbre\Usines\UsineNoeudGate.h">
+      <Filter>Header Files\Arbre\Usines</Filter>
+    </ClInclude>
+    <ClInclude Include="Arbre\Noeuds\NoeudGate.h">
+      <Filter>Header Files\Arbre\Noeuds</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

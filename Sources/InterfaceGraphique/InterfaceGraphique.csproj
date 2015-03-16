@@ -300,6 +300,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="%24this.Icon.ico" />
+    <None Include="Resources\gate.jpg" />
     <None Include="Resources\annoying.wav" />
     <None Include="Resources\game_over.wav" />
     <None Include="Resources\Trombone.wav" />

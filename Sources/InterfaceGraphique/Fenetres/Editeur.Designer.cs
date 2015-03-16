@@ -51,6 +51,7 @@ namespace InterfaceGraphique
             this.butoirD_bouton = new System.Windows.Forms.Button();
             this.butoirG_bouton = new System.Windows.Forms.Button();
             this.Group_Elements = new System.Windows.Forms.GroupBox();
+            this.Gate = new System.Windows.Forms.Button();
             this.Mur_bouton = new System.Windows.Forms.Button();
             this.Portails_bouton = new System.Windows.Forms.Button();
             this.Cible_bouton = new System.Windows.Forms.Button();
@@ -116,6 +117,7 @@ namespace InterfaceGraphique
             this.Ressort_MenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.GB_MenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.Trou_MenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.gateToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.Vues_MenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.Orthographique_MenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.Orbite_MenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -312,6 +314,7 @@ namespace InterfaceGraphique
             // 
             // Group_Elements
             // 
+            this.Group_Elements.Controls.Add(this.Gate);
             this.Group_Elements.Controls.Add(this.Mur_bouton);
             this.Group_Elements.Controls.Add(this.Portails_bouton);
             this.Group_Elements.Controls.Add(this.Cible_bouton);
@@ -322,12 +325,27 @@ namespace InterfaceGraphique
             this.Group_Elements.TabStop = false;
             this.Group_Elements.Text = "Éléments";
             // 
+            // Gate
+            // 
+            this.Gate.BackColor = System.Drawing.Color.White;
+            this.Gate.BackgroundImage = global::InterfaceGraphique.Properties.Resources.gate;
+            this.Gate.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.Gate.Location = new System.Drawing.Point(109, 76);
+            this.Gate.Name = "Gate";
+            this.Gate.Size = new System.Drawing.Size(98, 48);
+            this.Gate.TabIndex = 7;
+            this.Gate.Tag = "Gate";
+            this.Gate.Text = "Gate";
+            this.Gate.TextAlign = System.Drawing.ContentAlignment.TopRight;
+            this.Gate.UseVisualStyleBackColor = false;
+            this.Gate.Click += new System.EventHandler(this.Gate_Button_Click);
+            // 
             // Mur_bouton
             // 
             this.Mur_bouton.BackColor = System.Drawing.Color.White;
             this.Mur_bouton.BackgroundImage = global::InterfaceGraphique.Properties.Resources.mur;
             this.Mur_bouton.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.Mur_bouton.Location = new System.Drawing.Point(62, 78);
+            this.Mur_bouton.Location = new System.Drawing.Point(8, 76);
             this.Mur_bouton.Name = "Mur_bouton";
             this.Mur_bouton.Size = new System.Drawing.Size(98, 48);
             this.Mur_bouton.TabIndex = 2;
@@ -898,7 +916,8 @@ namespace InterfaceGraphique
             this.Mur_MenuItem,
             this.Ressort_MenuItem,
             this.GB_MenuItem,
-            this.Trou_MenuItem});
+            this.Trou_MenuItem,
+            this.gateToolStripMenuItem});
             this.Creation_MenuItem.Name = "Creation_MenuItem";
             this.Creation_MenuItem.Size = new System.Drawing.Size(164, 22);
             this.Creation_MenuItem.Text = "Création d\'objets";
@@ -994,6 +1013,13 @@ namespace InterfaceGraphique
             this.Trou_MenuItem.Size = new System.Drawing.Size(211, 22);
             this.Trou_MenuItem.Text = "Trou";
             this.Trou_MenuItem.Click += new System.EventHandler(this.Trou_MenuItem_Click);
+            // 
+            // gateToolStripMenuItem
+            // 
+            this.gateToolStripMenuItem.Name = "gateToolStripMenuItem";
+            this.gateToolStripMenuItem.Size = new System.Drawing.Size(211, 22);
+            this.gateToolStripMenuItem.Text = "Gate";
+            this.gateToolStripMenuItem.Click += new System.EventHandler(this.Gate_Button_Click);
             // 
             // Vues_MenuItem
             // 
@@ -1242,6 +1268,8 @@ namespace InterfaceGraphique
         private System.Windows.Forms.ToolStripMenuItem caméraToolStripMenuItem1;
         private System.Windows.Forms.ToolStripMenuItem orthographiqueToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem orbiteToolStripMenuItem1;
+        private System.Windows.Forms.Button Gate;
+        private System.Windows.Forms.ToolStripMenuItem gateToolStripMenuItem;
     }
 }
 
