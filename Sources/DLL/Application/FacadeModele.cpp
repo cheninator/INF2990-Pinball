@@ -382,6 +382,7 @@ int FacadeModele::selectionnerObjetSousPointClique(int i, int j, int hauteur, in
 	glm::dvec3 pointDansLeMonde;
 	vue_->convertirClotureAVirtuelle(i, j, pointDansLeMonde);
 
+
 	int valeurStencil = 0;
 	glReadPixels(i ,hauteur -j , 1, 1, GL_STENCIL_INDEX, GL_UNSIGNED_INT, &valeurStencil);
 	// Merci de laisser le cout pour que je puisse le décommenter au besoin
