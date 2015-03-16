@@ -59,9 +59,6 @@ NoeudPaletteG::NoeudPaletteG(const std::string& typeNoeud)
 	: NoeudComposite{ typeNoeud }
 {
 	ajustable_ = false;
-
-	vitesseMonteAngulaire_ = { 0, 0, 9 };
-	vitesseDescenteAngulaire_ = { 0, 0, -3 };
 }
 
 
@@ -142,8 +139,10 @@ void NoeudPaletteG::afficherConcret() const
 void NoeudPaletteG::animer(float temps)
 {
 	NoeudComposite::animer(temps);
+
 	if (!animer_)
 		return;
+
 	switch (etatPalette_)
 	{
 
@@ -153,6 +152,7 @@ void NoeudPaletteG::animer(float temps)
 			// si impossible, la palette est bloquee et doit tomber dans l'etat INACTIVE
 			if (obtenirRotation().z - angleZOriginal_ < 60)
 				assignerRotation(glm::dvec3{ 0, 0, VITESSE_ANGULAIRE_PALETTE_ACTIVE * temps }); 
+
 			break;
 
 		case RETOUR:
@@ -164,38 +164,11 @@ void NoeudPaletteG::animer(float temps)
 				assignerRotationHard(glm::dvec3{ rotation_.x, rotation_.y, angleZOriginal_ });
 				etatPalette_ = INACTIVE;
 			}
+
 			break;
 
-		case ACTIVE_AI:
-
-			if (obtenirRotation().z - angleZOriginal_ < 60)
-			{
-				assignerRotation(glm::dvec3{ 0, 0, VITESSE_ANGULAIRE_PALETTE_ACTIVE * temps });
-			}
-			else
-			{
-				if (timer_ >= 0.25)
-				{
-					etatPalette_ = RETOUR_AI;
-					timer_ = 0;
-				}
-				else
-					timer_ += temps;
-			}
-			break;
-
-		case RETOUR_AI:
-			if (obtenirRotation().z - angleZOriginal_ > 0)
-			{
-				assignerRotation(glm::dvec3{ 0, 0, -VITESSE_ANGULAIRE_PALETTE_RETOUR * temps });
-			}
-			else
-			{
-				assignerRotationHard(glm::dvec3{ rotation_.x, rotation_.y, angleZOriginal_ });
-				etatPalette_ = INACTIVE;
-			}
-			break;
 		case INACTIVE:
+
 			break;
 	}
 
@@ -278,27 +251,6 @@ void NoeudPaletteG::desactiver()
 
 ////////////////////////////////////////////////////////////////////////
 ///
-/// @fn void NoeudPaletteG::activerAI()
-///
-/// Cette fonction active l'animation qui fait monter les palettes. C'est la
-/// méthode qui doit etre appelé par le joueur virtuel
-/// 
-/// @return Aucune 
-///
-////////////////////////////////////////////////////////////////////////
-void NoeudPaletteG::activerAI()
-{
-	// Les palettesAI doivent pouvoir etre activerAI meme si une bille ne se trouve pas proche
-	if (etatPalette_ == INACTIVE)
-	{
-		angleZOriginal_ = obtenirRotation().z;
-		etatPalette_ = ACTIVE_AI;
-	}
-}
-
-
-////////////////////////////////////////////////////////////////////////
-///
 /// @fn void NoeudPaletteD::traiterCollisions(aidecollision::DetailsCollision details, NoeudAbstrait* bille)
 ///
 /// Cette fonction effectue la réaction a la collision de la bille sur 
@@ -310,7 +262,7 @@ void NoeudPaletteG::activerAI()
 ////////////////////////////////////////////////////////////////////////
 void NoeudPaletteG::traiterCollisions(aidecollision::DetailsCollision details, NoeudAbstrait* bille)
 {
-	if (1 && (etatPalette_ == ACTIVE || etatPalette_ == ACTIVE_AI) && fonctionDroitePaletteEnMouvement(bille) > 0)
+	if (1 && (etatPalette_ == ACTIVE) && fonctionDroitePaletteEnMouvement(bille) > 0)
 	{
 		glm::dvec3 positionPalette = obtenirPositionRelative();
 		glm::dvec3 positionBille = bille->obtenirPositionRelative();

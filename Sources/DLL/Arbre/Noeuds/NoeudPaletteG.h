@@ -49,20 +49,11 @@ public:
 	/// Desactiver la palette.
 	void desactiver();
 
-	/// Activer la palette par le AI
-	void activerAI();
-
 	/// Pour le traitement logique des collisions
 	virtual void traiterCollisions(aidecollision::DetailsCollision, NoeudAbstrait* bille);
 
 	/// Obtenir l'angle initial de la palette
 	double obtenirAngleZOriginal() const { return angleZOriginal_; };
-
-	/// Modifier la vitesse de monte angulaire de la palette
-	void assignerVitesseMonteAngulaire(glm::dvec3 vitesse) { vitesseMonteAngulaire_ = vitesse; };
-
-	/// Modifier la vitesse de descente angulaire de la palette
-	void assignerVitesseDescenteAngulaire(glm::dvec3 vitesse) { vitesseDescenteAngulaire_ = vitesse; };
 
 	/// Savoir si la palette est activée par une bille
 	bool estActiveeParBille(NoeudAbstrait* noeud);
@@ -70,8 +61,10 @@ public:
 	/// Obtenir la premiere boite englobante custom de l'histoire!
 	virtual std::vector<glm::dvec3> obtenirVecteursEnglobants();
 
-
+	/// Fonction de droite pour la palette a l'etat original
 	double fonctionDroitePaletteOriginale(NoeudAbstrait* bille);
+
+	/// Fonction de droite pour la palette lorsqu'elle est en mouvement
 	double fonctionDroitePaletteEnMouvement(NoeudAbstrait* bille);
 
 private:
@@ -82,17 +75,10 @@ private:
 	double angleZOriginal_;
 
 	/// Enumeration pour contenir l'etat de la palette
-	enum Etat { ACTIVE, RETOUR, INACTIVE, ACTIVE_AI, RETOUR_AI };
+	enum Etat { ACTIVE, RETOUR, INACTIVE };
 
 	/// Etat courant de la palette
 	Etat etatPalette_{ INACTIVE };
-
-	/// Information des vitesses de monte et de descente de la palette
-	glm::dvec3 vitesseMonteAngulaire_;
-	glm::dvec3 vitesseDescenteAngulaire_;
-
-	/// Chronometre interne
-	float timer_{ 0 };
 
 };
 
