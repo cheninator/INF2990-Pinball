@@ -8,22 +8,18 @@
 </Proprietes>
 
 <arbreRenduINF2990>
-    <table nbEnfants="15">
+    <table nbEnfants="11">
         <generateurbille posX="248.26590538863988" posY="67.618276803867957" posZ="30.400221438290217" scaleX="0.74784138843446213" scaleY="0.74784138843446213" scaleZ="0.74784138843446213" angleX="0" angleY="0" angleZ="0"/>
         <trou posX="184.46329534282449" posY="-178.46329574032114" posZ="19.434864111061952" scaleX="0.53149983335494277" scaleY="0.53149983335494277" scaleZ="0.53149983335494277" angleX="0" angleY="0" angleZ="0"/>
+        <ressort posX="246.07137484666384" posY="10.61990850265158" posZ="10" scaleX="1" scaleY="1" scaleZ="1" angleX="0" angleY="0" angleZ="0"/>
         <paletteg posX="123.51550050632844" posY="-125.61501371777599" posZ="10.847329020500183" scaleX="1" scaleY="1" scaleZ="1" angleX="0" angleY="0" angleZ="139.33333333333258" color="0"/>
         <paletted posX="244.82055822034036" posY="-125.61501371777601" posZ="10.049136999994516" scaleX="1" scaleY="1" scaleZ="1" angleX="0" angleY="0" angleZ="220.66666666666782" color="0"/>
         <butoirg posX="134.24632586071104" posY="-100.88744260778218" posZ="10" scaleX="0.53149983335494277" scaleY="0.53149983335494277" scaleZ="0.53149983335494277" angleX="0" angleY="0" angleZ="0"/>
         <butoird posX="238.28874074619051" posY="-101.35400053488931" posZ="10" scaleX="0.53149983335494277" scaleY="0.53149983335494277" scaleZ="0.53149983335494277" angleX="0" angleY="0" angleZ="0"/>
         <paletteg posX="123.04893547293483" posY="-56.564439296227761" posZ="10.847329020500183" scaleX="1" scaleY="1" scaleZ="1" angleX="0" angleY="0" angleZ="147.3333333333324" color="1"/>
         <paletted posX="255.08482521549396" posY="-53.29853380647782" posZ="10.049136999994516" scaleX="1" scaleY="1" scaleZ="1" angleX="0" angleY="0" angleZ="218.00000000000108" color="1"/>
-        <butoird posX="250.65252219153632" posY="-14.107665799132739" posZ="10" scaleX="1" scaleY="1" scaleZ="1" angleX="0" angleY="0" angleZ="0"/>
-        <butoircirculaire posX="180.66883793769446" posY="26.482872990554078" posZ="21.662358283996582" scaleX="1" scaleY="1" scaleZ="1" angleX="0" angleY="0" angleZ="0"/>
-        <mur posX="220.32625901487148" posY="-40.234909158011632" posZ="14.159326076507568" scaleX="1" scaleY="10.880639161638026" scaleZ="1" angleX="0" angleY="0" angleZ="-90"/>
-        <mur posX="193.96573794592445" posY="-22.272429348782392" posZ="14.159326076507568" scaleX="1" scaleY="5.0769241702448245" scaleZ="1" angleX="0" angleY="0" angleZ="163.96766136637177"/>
-        <mur posX="209.59542742928244" posY="45.145189675467556" posZ="14.159326076507568" scaleX="1" scaleY="11.863168181511693" scaleZ="1" angleX="0" angleY="0" angleZ="-13.116435525645578"/>
-        <mur posX="242.0212011335625" posY="66.840132821679489" posZ="14.159326076507568" scaleX="1" scaleY="6.5622746367260127" scaleZ="1" angleX="0" angleY="0" angleZ="-89.510304383679255"/>
-        <mur posX="224.05872217507641" posY="6.1876035957106623" posZ="14.159326076507568" scaleX="1" scaleY="13.960851482437798" scaleZ="1" angleX="0" angleY="0" angleZ="169.81868046560854"/>
+        <cible posX="231.52365354749264" posY="-19.064845408256144" posZ="15.59148268623891" scaleX="0.6653851578497445" scaleY="0.6653851578497445" scaleZ="0.6653851578497445" angleX="0" angleY="0" angleZ="-28.999999999999964"/>
+        <cible posX="146.96003158339784" posY="40.421287007171635" posZ="15.59148268623891" scaleX="0.6653851578497445" scaleY="0.6653851578497445" scaleZ="0.6653851578497445" angleX="0" angleY="0" angleZ="44.333333333333393"/>
     </table>
     <couvercle/>
 </arbreRenduINF2990>

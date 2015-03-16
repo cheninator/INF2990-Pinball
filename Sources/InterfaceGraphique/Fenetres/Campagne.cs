@@ -85,7 +85,12 @@ namespace InterfaceGraphique
         private void listBox_SelectedValueChanged(object sender, EventArgs e)
         {
             screenShot.SizeMode = PictureBoxSizeMode.StretchImage;
-            screenShot.Image = Image.FromFile(Application.StartupPath + @"\zones\" + ZonesDisponibles.SelectedItems.ToString()+".jpg");
+            if (File.Exists(Application.StartupPath + @"\zones\" + ZonesDisponibles.SelectedItems.ToString() + ".jpg"))
+            {
+                screenShot.Image = Image.FromFile(Application.StartupPath + @"\zones\" + ZonesDisponibles.SelectedItems.ToString() + ".jpg");
+            }
+            else
+                screenShot.Image = Properties.Resources.SaintTrinity;
         }
 
 
@@ -199,7 +204,12 @@ namespace InterfaceGraphique
             {
                 fileNames = ZonesDisponibles.Items[index].Text;
                 screenShot.SizeMode = PictureBoxSizeMode.StretchImage;
-                screenShot.Image = Image.FromFile(Application.StartupPath + @"\zones\" + fileNames + ".jpg");
+                if (File.Exists(Application.StartupPath + @"\zones\" + fileNames + ".jpg")) 
+                {
+                    screenShot.Image = Image.FromFile(Application.StartupPath + @"\zones\" + fileNames + ".jpg");
+                }
+                else
+                    screenShot.Image = Properties.Resources.SaintTrinity;
 
             }
             
@@ -248,7 +258,12 @@ namespace InterfaceGraphique
             {
                 fileNames = ZonesChoisis.Items[index].Text;
                 screenShot.SizeMode = PictureBoxSizeMode.StretchImage;
-                screenShot.Image = Image.FromFile(Application.StartupPath + @"\zones\" + fileNames + ".jpg");
+                if (File.Exists(Application.StartupPath + @"\zones\" + fileNames + ".jpg"))
+                {
+                    screenShot.Image = Image.FromFile(Application.StartupPath + @"\zones\" + fileNames + ".jpg");
+                }
+                else
+                    screenShot.Image = Properties.Resources.SaintTrinity;
 
             }
         }

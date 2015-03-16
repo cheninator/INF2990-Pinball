@@ -1,3 +1,4 @@
 DEUX
+philTestPhysiquePalettes
 testCollisions
 VraisMapJouable

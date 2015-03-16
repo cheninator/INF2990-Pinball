@@ -52,6 +52,9 @@
             this.comboBoxBilles = new System.Windows.Forms.ComboBox();
             this.labelDoublesBilles = new System.Windows.Forms.Label();
             this.tabPage3 = new System.Windows.Forms.TabPage();
+            this.GLOB_Cancel = new System.Windows.Forms.RadioButton();
+            this.GLOB_OK = new System.Windows.Forms.RadioButton();
+            this.labelAffichage = new System.Windows.Forms.Label();
             this.GB_Portail = new System.Windows.Forms.GroupBox();
             this.PORTAL_Cancel = new System.Windows.Forms.RadioButton();
             this.PORTAL_OK = new System.Windows.Forms.RadioButton();
@@ -67,9 +70,6 @@
             this.GB_OK = new System.Windows.Forms.RadioButton();
             this.OK_bouton = new System.Windows.Forms.Button();
             this.Annuler_bouton = new System.Windows.Forms.Button();
-            this.labelAffichage = new System.Windows.Forms.Label();
-            this.GLOB_OK = new System.Windows.Forms.RadioButton();
-            this.GLOB_Cancel = new System.Windows.Forms.RadioButton();
             this.tabProprietes.SuspendLayout();
             this.tabPage1.SuspendLayout();
             this.tabPage2.SuspendLayout();
@@ -372,6 +372,39 @@
             this.tabPage3.Text = "Débogage";
             this.tabPage3.UseVisualStyleBackColor = true;
             // 
+            // GLOB_Cancel
+            // 
+            this.GLOB_Cancel.AutoSize = true;
+            this.GLOB_Cancel.Location = new System.Drawing.Point(162, 39);
+            this.GLOB_Cancel.Name = "GLOB_Cancel";
+            this.GLOB_Cancel.Size = new System.Drawing.Size(76, 17);
+            this.GLOB_Cancel.TabIndex = 8;
+            this.GLOB_Cancel.TabStop = true;
+            this.GLOB_Cancel.Text = "Désactiver";
+            this.GLOB_Cancel.UseVisualStyleBackColor = true;
+            this.GLOB_Cancel.CheckedChanged += new System.EventHandler(this.GLOB_Cancel_CheckedChanged);
+            // 
+            // GLOB_OK
+            // 
+            this.GLOB_OK.AutoSize = true;
+            this.GLOB_OK.Checked = true;
+            this.GLOB_OK.Location = new System.Drawing.Point(27, 39);
+            this.GLOB_OK.Name = "GLOB_OK";
+            this.GLOB_OK.Size = new System.Drawing.Size(58, 17);
+            this.GLOB_OK.TabIndex = 7;
+            this.GLOB_OK.TabStop = true;
+            this.GLOB_OK.Text = "Activer";
+            this.GLOB_OK.UseVisualStyleBackColor = true;
+            this.GLOB_OK.CheckedChanged += new System.EventHandler(this.GLOB_OK_CheckedChanged);
+            // 
+            // labelAffichage
+            // 
+            this.labelAffichage.Location = new System.Drawing.Point(11, 13);
+            this.labelAffichage.Name = "labelAffichage";
+            this.labelAffichage.Size = new System.Drawing.Size(277, 23);
+            this.labelAffichage.TabIndex = 6;
+            this.labelAffichage.Text = "Activation/Désactivation de l\'affichage de débogage:\r\n";
+            // 
             // GB_Portail
             // 
             this.GB_Portail.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
@@ -540,39 +573,6 @@
             this.Annuler_bouton.UseVisualStyleBackColor = true;
             this.Annuler_bouton.Click += new System.EventHandler(this.Annuler_bouton_Click);
             // 
-            // labelAffichage
-            // 
-            this.labelAffichage.Location = new System.Drawing.Point(11, 13);
-            this.labelAffichage.Name = "labelAffichage";
-            this.labelAffichage.Size = new System.Drawing.Size(277, 23);
-            this.labelAffichage.TabIndex = 6;
-            this.labelAffichage.Text = "Activation/Désactivation de l\'affichage de débogage:\r\n";
-            // 
-            // GLOB_OK
-            // 
-            this.GLOB_OK.AutoSize = true;
-            this.GLOB_OK.Checked = true;
-            this.GLOB_OK.Location = new System.Drawing.Point(27, 39);
-            this.GLOB_OK.Name = "GLOB_OK";
-            this.GLOB_OK.Size = new System.Drawing.Size(58, 17);
-            this.GLOB_OK.TabIndex = 7;
-            this.GLOB_OK.TabStop = true;
-            this.GLOB_OK.Text = "Activer";
-            this.GLOB_OK.UseVisualStyleBackColor = true;
-            this.GLOB_OK.CheckedChanged += new System.EventHandler(this.GLOB_OK_CheckedChanged);
-            // 
-            // GLOB_Cancel
-            // 
-            this.GLOB_Cancel.AutoSize = true;
-            this.GLOB_Cancel.Location = new System.Drawing.Point(162, 39);
-            this.GLOB_Cancel.Name = "GLOB_Cancel";
-            this.GLOB_Cancel.Size = new System.Drawing.Size(76, 17);
-            this.GLOB_Cancel.TabIndex = 8;
-            this.GLOB_Cancel.TabStop = true;
-            this.GLOB_Cancel.Text = "Désactiver";
-            this.GLOB_Cancel.UseVisualStyleBackColor = true;
-            this.GLOB_Cancel.CheckedChanged += new System.EventHandler(this.GLOB_Cancel_CheckedChanged);
-            // 
             // Configuration
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -584,6 +584,7 @@
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Icon = global::InterfaceGraphique.Properties.Resources.Pinball;
             this.Name = "Configuration";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Configuration";
             this.tabProprietes.ResumeLayout(false);
             this.tabPage1.ResumeLayout(false);
