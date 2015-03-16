@@ -128,22 +128,26 @@ void NoeudPaletteG::animer(float temps)
 			// TODO : Verifier que la rotation que je veux faire est possible,
 			// si impossible, la palette est bloquee et doit tomber dans l'etat INACTIVE
 			if (obtenirRotation().z - angleZOriginal_ < 60)
-				assignerRotation(vitesseMonteAngulaire_);
-		
+				assignerRotation(glm::dvec3{ 0, 0, VITESSE_ANGULAIRE_PALETTE_AVTIVE * temps }); 
 			break;
 
 		case RETOUR:
 
 			if (obtenirRotation().z - angleZOriginal_ > 0)
-				assignerRotation(vitesseDescenteAngulaire_);
-
+				assignerRotation(glm::dvec3{ 0, 0, -VITESSE_ANGULAIRE_PALETTE_RETOUR * temps });
 			else
+			{
+				assignerRotationHard(glm::dvec3{ rotation_.x, rotation_.y, angleZOriginal_ });
+				etatPalette_ = INACTIVE;
+			}
+			break;
 
 		case ACTIVE_AI:
 
 			if (obtenirRotation().z - angleZOriginal_ < 60)
-				assignerRotation(vitesseMonteAngulaire_);
-
+			{
+				assignerRotation(glm::dvec3{ 0, 0, VITESSE_ANGULAIRE_PALETTE_AVTIVE * temps });
+			}
 			else
 			{
 				if (timer_ >= 0.25)
@@ -154,25 +158,21 @@ void NoeudPaletteG::animer(float temps)
 				else
 					timer_ += temps;
 			}
-
-		break;
+			break;
 
 		case RETOUR_AI:
-
 			if (obtenirRotation().z - angleZOriginal_ > 0)
-				assignerRotation(vitesseDescenteAngulaire_);
-
+			{
+				assignerRotation(glm::dvec3{ 0, 0, -VITESSE_ANGULAIRE_PALETTE_RETOUR * temps });
+			}
 			else
 			{
 				assignerRotationHard(glm::dvec3{ rotation_.x, rotation_.y, angleZOriginal_ });
 				etatPalette_ = INACTIVE;
 			}
-
 			break;
-
-	case INACTIVE:
-
-		break;
+		case INACTIVE:
+			break;
 	}
 
 }
