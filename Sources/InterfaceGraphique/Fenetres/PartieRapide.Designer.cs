@@ -172,6 +172,7 @@
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Icon = global::InterfaceGraphique.Properties.Resources.Pinball;
             this.Name = "PartieRapide";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "PartieRapide";
             ((System.ComponentModel.ISupportInitialize)(this.screenShot)).EndInit();
             this.GB_Player.ResumeLayout(false);

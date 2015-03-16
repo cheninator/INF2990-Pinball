@@ -137,21 +137,21 @@ namespace InterfaceGraphique
                 FonctionsNatives.activerPalettesGJ1();
             }
 
-            else if (e.KeyValue == parent_.getTouches().PGJ2)
+             if (e.KeyValue == parent_.getTouches().PGJ2)
             {
-                // TODO: palette gauche joueur 2
+                FonctionsNatives.activerPalettesGJ2();
             }
-            else if (e.KeyValue == parent_.getTouches().PDJ1)
+             if (e.KeyValue == parent_.getTouches().PDJ1)
             {
                 FonctionsNatives.activerPalettesDJ1();
             }
-            else if (e.KeyValue == parent_.getTouches().PDJ2)
+             if (e.KeyValue == parent_.getTouches().PDJ2)
             {
-
+                FonctionsNatives.activerPalettesDJ2();
             }
             else if (e.KeyValue == parent_.getTouches().Ressort)
             {
-
+                FonctionsNatives.compresserRessort();
             }
             if (e.KeyCode == Keys.Left)
                 FonctionsNatives.translater(-10, 0);
@@ -183,10 +183,24 @@ namespace InterfaceGraphique
             {
                 FonctionsNatives.desactiverPalettesGJ1();
             }
-            else if (e.KeyValue == parent_.getTouches().PDJ1)
+            if (e.KeyValue == parent_.getTouches().PDJ1)
             {
                 FonctionsNatives.desactiverPalettesDJ1();
             }
+             if (e.KeyValue == parent_.getTouches().PGJ2)
+            {
+                FonctionsNatives.desactiverPalettesGJ2();
+            }
+             if (e.KeyValue == parent_.getTouches().PDJ2)
+            {
+                FonctionsNatives.desactiverPalettesDJ2();
+            }
+             if (e.KeyValue == parent_.getTouches().Ressort)
+            {
+                FonctionsNatives.relacherRessort();
+            }
+
+
             return true;
         }
 

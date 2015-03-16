@@ -54,6 +54,7 @@
             this.label_nbPointsButC = new System.Windows.Forms.Label();
             this.label_PointsButT = new System.Windows.Forms.Label();
             this.label_nbPointsButT = new System.Windows.Forms.Label();
+            this.label_Nom = new System.Windows.Forms.Label();
             this.panel_GL.SuspendLayout();
             this.menuStrip.SuspendLayout();
             this.InfoPanel.SuspendLayout();
@@ -124,6 +125,7 @@
             // 
             this.InfoPanel.BackColor = System.Drawing.Color.Transparent;
             this.InfoPanel.Controls.Add(this.label_Titre);
+            this.InfoPanel.Controls.Add(this.label_Nom);
             this.InfoPanel.Controls.Add(this.label_Points);
             this.InfoPanel.Controls.Add(this.label_nbPoints);
             this.InfoPanel.Controls.Add(this.label_Billes);
@@ -159,7 +161,7 @@
             // 
             // label_Points
             // 
-            this.label_Points.Location = new System.Drawing.Point(3, 23);
+            this.label_Points.Location = new System.Drawing.Point(3, 46);
             this.label_Points.Name = "label_Points";
             this.label_Points.Size = new System.Drawing.Size(82, 42);
             this.label_Points.TabIndex = 1;
@@ -168,7 +170,7 @@
             // 
             // label_nbPoints
             // 
-            this.label_nbPoints.Location = new System.Drawing.Point(91, 23);
+            this.label_nbPoints.Location = new System.Drawing.Point(91, 46);
             this.label_nbPoints.Name = "label_nbPoints";
             this.label_nbPoints.Size = new System.Drawing.Size(82, 42);
             this.label_nbPoints.TabIndex = 2;
@@ -177,7 +179,7 @@
             // 
             // label_Billes
             // 
-            this.label_Billes.Location = new System.Drawing.Point(3, 65);
+            this.label_Billes.Location = new System.Drawing.Point(3, 88);
             this.label_Billes.Name = "label_Billes";
             this.label_Billes.Size = new System.Drawing.Size(82, 42);
             this.label_Billes.TabIndex = 3;
@@ -186,7 +188,7 @@
             // 
             // label_nbBilles
             // 
-            this.label_nbBilles.Location = new System.Drawing.Point(91, 65);
+            this.label_nbBilles.Location = new System.Drawing.Point(91, 88);
             this.label_nbBilles.Name = "label_nbBilles";
             this.label_nbBilles.Size = new System.Drawing.Size(82, 42);
             this.label_nbBilles.TabIndex = 4;
@@ -195,7 +197,7 @@
             // 
             // label_Gagnes
             // 
-            this.label_Gagnes.Location = new System.Drawing.Point(3, 107);
+            this.label_Gagnes.Location = new System.Drawing.Point(3, 130);
             this.label_Gagnes.Name = "label_Gagnes";
             this.label_Gagnes.Size = new System.Drawing.Size(82, 42);
             this.label_Gagnes.TabIndex = 5;
@@ -204,7 +206,7 @@
             // 
             // label_nbGagnes
             // 
-            this.label_nbGagnes.Location = new System.Drawing.Point(91, 107);
+            this.label_nbGagnes.Location = new System.Drawing.Point(91, 130);
             this.label_nbGagnes.Name = "label_nbGagnes";
             this.label_nbGagnes.Size = new System.Drawing.Size(82, 42);
             this.label_nbGagnes.TabIndex = 6;
@@ -214,7 +216,7 @@
             // label_Titre2
             // 
             this.label_Titre2.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.label_Titre2.Location = new System.Drawing.Point(3, 149);
+            this.label_Titre2.Location = new System.Drawing.Point(3, 172);
             this.label_Titre2.Name = "label_Titre2";
             this.label_Titre2.Size = new System.Drawing.Size(187, 23);
             this.label_Titre2.TabIndex = 7;
@@ -223,7 +225,7 @@
             // 
             // label_Win
             // 
-            this.label_Win.Location = new System.Drawing.Point(3, 172);
+            this.label_Win.Location = new System.Drawing.Point(3, 195);
             this.label_Win.Name = "label_Win";
             this.label_Win.Size = new System.Drawing.Size(82, 42);
             this.label_Win.TabIndex = 8;
@@ -232,7 +234,7 @@
             // 
             // label_nbWin
             // 
-            this.label_nbWin.Location = new System.Drawing.Point(91, 172);
+            this.label_nbWin.Location = new System.Drawing.Point(91, 195);
             this.label_nbWin.Name = "label_nbWin";
             this.label_nbWin.Size = new System.Drawing.Size(82, 42);
             this.label_nbWin.TabIndex = 9;
@@ -241,7 +243,7 @@
             // 
             // label_PointsBille
             // 
-            this.label_PointsBille.Location = new System.Drawing.Point(3, 214);
+            this.label_PointsBille.Location = new System.Drawing.Point(3, 237);
             this.label_PointsBille.Name = "label_PointsBille";
             this.label_PointsBille.Size = new System.Drawing.Size(82, 42);
             this.label_PointsBille.TabIndex = 10;
@@ -250,7 +252,7 @@
             // 
             // label_nbPointsBille
             // 
-            this.label_nbPointsBille.Location = new System.Drawing.Point(91, 214);
+            this.label_nbPointsBille.Location = new System.Drawing.Point(91, 237);
             this.label_nbPointsBille.Name = "label_nbPointsBille";
             this.label_nbPointsBille.Size = new System.Drawing.Size(82, 42);
             this.label_nbPointsBille.TabIndex = 11;
@@ -259,7 +261,7 @@
             // 
             // label_PointsCible
             // 
-            this.label_PointsCible.Location = new System.Drawing.Point(3, 256);
+            this.label_PointsCible.Location = new System.Drawing.Point(3, 279);
             this.label_PointsCible.Name = "label_PointsCible";
             this.label_PointsCible.Size = new System.Drawing.Size(82, 42);
             this.label_PointsCible.TabIndex = 12;
@@ -268,7 +270,7 @@
             // 
             // label_nbPointsCible
             // 
-            this.label_nbPointsCible.Location = new System.Drawing.Point(91, 256);
+            this.label_nbPointsCible.Location = new System.Drawing.Point(91, 279);
             this.label_nbPointsCible.Name = "label_nbPointsCible";
             this.label_nbPointsCible.Size = new System.Drawing.Size(82, 42);
             this.label_nbPointsCible.TabIndex = 13;
@@ -277,7 +279,7 @@
             // 
             // label_PointsButC
             // 
-            this.label_PointsButC.Location = new System.Drawing.Point(3, 298);
+            this.label_PointsButC.Location = new System.Drawing.Point(3, 321);
             this.label_PointsButC.Name = "label_PointsButC";
             this.label_PointsButC.Size = new System.Drawing.Size(82, 42);
             this.label_PointsButC.TabIndex = 14;
@@ -286,7 +288,7 @@
             // 
             // label_nbPointsButC
             // 
-            this.label_nbPointsButC.Location = new System.Drawing.Point(91, 298);
+            this.label_nbPointsButC.Location = new System.Drawing.Point(91, 321);
             this.label_nbPointsButC.Name = "label_nbPointsButC";
             this.label_nbPointsButC.Size = new System.Drawing.Size(82, 42);
             this.label_nbPointsButC.TabIndex = 15;
@@ -295,7 +297,7 @@
             // 
             // label_PointsButT
             // 
-            this.label_PointsButT.Location = new System.Drawing.Point(3, 340);
+            this.label_PointsButT.Location = new System.Drawing.Point(3, 363);
             this.label_PointsButT.Name = "label_PointsButT";
             this.label_PointsButT.Size = new System.Drawing.Size(82, 42);
             this.label_PointsButT.TabIndex = 16;
@@ -304,12 +306,21 @@
             // 
             // label_nbPointsButT
             // 
-            this.label_nbPointsButT.Location = new System.Drawing.Point(91, 340);
+            this.label_nbPointsButT.Location = new System.Drawing.Point(91, 363);
             this.label_nbPointsButT.Name = "label_nbPointsButT";
             this.label_nbPointsButT.Size = new System.Drawing.Size(82, 42);
             this.label_nbPointsButT.TabIndex = 17;
             this.label_nbPointsButT.Text = "0";
             this.label_nbPointsButT.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // label_Nom
+            // 
+            this.label_Nom.Location = new System.Drawing.Point(3, 23);
+            this.label_Nom.Name = "label_Nom";
+            this.label_Nom.Size = new System.Drawing.Size(187, 23);
+            this.label_Nom.TabIndex = 18;
+            this.label_Nom.Text = "Nom de la zone:";
+            this.label_Nom.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // ModeJeu
             // 
@@ -366,5 +377,6 @@
         private System.Windows.Forms.Label label_nbPointsButC;
         private System.Windows.Forms.Label label_PointsButT;
         private System.Windows.Forms.Label label_nbPointsButT;
+        private System.Windows.Forms.Label label_Nom;
     }
 }

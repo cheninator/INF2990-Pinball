@@ -101,7 +101,7 @@ FacadeModele* FacadeModele::obtenirInstance()
 		instance_ = new FacadeModele();
 		instance_->configuration_ = new ConfigScene();
 		instance_->proprietes_ = new int[6];
-		instance_->joueur_ = new JoueurVirtuel(instance_->quad_);
+		instance_->joueur_ = new JoueurVirtuel();
 	}
 	return instance_;
 }
@@ -137,6 +137,7 @@ FacadeModele::~FacadeModele()
 	delete arbre_;
 	delete vue_;
 	delete proprietes_;
+	delete joueur_;
 }
 
 
@@ -336,16 +337,21 @@ void FacadeModele::animer(float temps)
 	// Si je commente la ligne suivante, rentrer et sortir du mode test fait crasher, 
 	// il manque un appel pour quand on sort du mode test.
 	mettreAJourListeBillesEtNoeuds();
+
+	/// Comportement du joueur virtuel
+	joueur_->jouer(listeBilles_);
+
+	/// Traiter les collisions entre objets
+	traiterCollisions(temps);
+
 	bool useQuadTree = false;
 	if (useQuadTree)
 		traiterCollisionsAvecQuadTree(temps);
 	else
 		traiterCollisions(temps);
-	updateForcesExternes();
 
-	// Laisse le code existant Yonners!! 
-	// aiPalettes();
-	aiPalettesYonni();
+	/// Faire la somme des forces
+	updateForcesExternes();
 
 	// Mise a jour des objets.
 	arbre_->animer(temps);
@@ -1093,6 +1099,7 @@ int FacadeModele::obtenirCentreMasseX()
 	VisiteurCentreDeMasse* visiteur = new VisiteurCentreDeMasse();
 	FacadeModele::obtenirInstance()->obtenirArbreRenduINF2990()->accepterVisiteur(visiteur);
 	centreMasseX = (int) visiteur->obtenirCentreDeMasse().x;
+	delete visiteur;
 	return centreMasseX;
 }
 
@@ -1210,7 +1217,10 @@ void FacadeModele::construireListesPalettes()
 	VisiteurConstruireListes visCL(&listePalettesGJ1_, &listePalettesDJ1_, &listePalettesGJ2_, &listePalettesDJ2_);
 	arbre_->accepterVisiteur(&visCL);
 	mettreAJourListeRessorts(); // que Dieu me pardonne.
+
+	joueur_->assignerPalettes(listePalettesGJ2_, listePalettesDJ2_);
 }
+
 
 ///////////////////////////////////////////////////////////////////////////////
 ///
@@ -1271,6 +1281,68 @@ void FacadeModele::desactiverPalettesDJ1()
 	for (NoeudPaletteD* palette : listePalettesDJ1_)
 		palette->desactiver();
 }
+
+///////////////////////////////////////////////////////////////////////////////
+///
+/// @fn void FacadeModele::activerPalettesGJ2()
+/// Active les palettes gauches du joueur 2. C'est la fonction qui dit a la 
+/// palette de bouger.
+/// 
+/// @remark Les listes de palettes doivent avoir etes construites
+/// 
+///////////////////////////////////////////////////////////////////////////////
+void FacadeModele::activerPalettesGJ2()
+{
+	for (NoeudPaletteG* palette : listePalettesGJ2_)
+		palette->activer();
+}
+
+///////////////////////////////////////////////////////////////////////////////
+///
+/// @fn void FacadeModele::desactiverPalettesGJ2()
+/// Desactive les palettes gauches du joueur 2. C'est la fonction qui dit a la 
+/// palette de revenir et d'arreter de bouger.
+/// 
+/// @remark Les listes de palettes doivent avoir etes construites
+/// 
+///////////////////////////////////////////////////////////////////////////////
+void FacadeModele::desactiverPalettesGJ2()
+{
+	for (NoeudPaletteG* palette : listePalettesGJ2_)
+		palette->desactiver();
+}
+
+///////////////////////////////////////////////////////////////////////////////
+///
+/// @fn void FacadeModele::activerPalettesDJ2()
+/// Active les palettes gauches du joueur 2. C'est la fonction qui dit a la 
+/// palette de bouger.
+/// 
+/// @remark Les listes de palettes doivent avoir etes construites
+/// 
+///////////////////////////////////////////////////////////////////////////////
+void FacadeModele::activerPalettesDJ2()
+{
+	for (NoeudPaletteD* palette : listePalettesDJ2_)
+		palette->activer();
+}
+
+///////////////////////////////////////////////////////////////////////////////
+///
+/// @fn void FacadeModele::desactiverPalettesDJ2()
+/// Desactive les palettes gauches du joueur 2. C'est la fonction qui dit a la 
+/// palette de revenir et d'arreter de bouger.
+/// 
+/// @remark Les listes de palettes doivent avoir etes construites
+/// 
+///////////////////////////////////////////////////////////////////////////////
+void FacadeModele::desactiverPalettesDJ2()
+{
+	for (NoeudPaletteD* palette : listePalettesDJ2_)
+		palette->desactiver();
+}
+
+
 
 
 void FacadeModele::supprimerBille()
@@ -1442,6 +1514,7 @@ void FacadeModele::updateForcesExternes()
 	}
 }
 
+
 ///////////////////////////////////////////////////////////////////////////////
 ///
 /// @fn void FacadeModele::mettreAJourListeBillesEtNoeuds()
@@ -1527,86 +1600,6 @@ void FacadeModele::relacherRessort()
 }
 
 
-// A chaque frame, checker si une bille est proche d'une palette AI.
-void FacadeModele::aiPalettes()
-{   
-	for(NoeudPaletteG* palette : listePalettesGJ2_)
-		for(NoeudAbstrait* bille : listeBilles_)
-		{
-			if (palette->estActiveeParBille(bille))
-			{
-				activerPalettesAIGauches();
-				return;
-			}
-		}
-	for(NoeudPaletteD* palette : listePalettesDJ2_)
-		for(NoeudAbstrait* bille : listeBilles_)
-		{
-			if (palette->estActiveeParBille(bille))
-			{
-				// Activer toutes les palettes GJ2 et DJ2
-				activerPalettesAIDroites();
-				return;
-			}
-		}
-		
-}
-
-// A chaque frame, checker si une bille est proche d'une palette AI.
-
-void FacadeModele::aiPalettesYonni()
-{
-	JoueurVirtuel joueur(quad_);
-	// La structure suivante est independante de quel AI on choisit,
-	// des que le AI décide qu'une de ses palettes doit être activée,
-	// il dit à FacadeModele d'activer toutes les palettes (peu importe dans quel quad elle se trouve)
-	for (NoeudPaletteG* palette : listePalettesGJ2_)
-		for (NoeudAbstrait* bille : listeBilles_)
-		{
-			// Autre note: les palettes de listePalettesGJ2 sont de vrais NoeudPaletteG*
-			// donc on n'a pas besoin du double dispatch pour connaitre leur type.
-			// C'est parce que j'ai utilisé un visiteur pour construire les listes de palettes
-			// donc le double dispatch est déja fait.
-			if (joueur.traiter(palette,bille))
-			{
-				activerPalettesAIGauches();
-				return;
-			}
-		}
-	for (NoeudPaletteD* palette : listePalettesDJ2_)
-	for (NoeudAbstrait* bille : listeBilles_)
-	{
-		/**/
-		if (joueur.traiter(palette, bille))
-		{
-			activerPalettesAIDroites();
-			return;
-		}
-	}
-
-}
-
-
-
-void FacadeModele::activerPalettesAIGauches()
-{
-	
-	for (NoeudPaletteG* palette : listePalettesGJ2_)
-	{
-		palette->activerAI();
-	}
-	
-}
-
-
-void FacadeModele::activerPalettesAIDroites()
-{
-	for (NoeudPaletteD* palette : listePalettesDJ2_)
-	{
-		palette->activerAI();
-	}
-}
-
 ///////////////////////////////////////////////////////////////////////////////
 ///
 /// @fn void FacadeModele::assignerAnimer(bool animer)
@@ -1625,3 +1618,4 @@ void FacadeModele::assignerAnimer(bool animer, NoeudAbstrait* noeud)
 	for (unsigned int i = 0; i < noeud->obtenirNombreEnfants(); i++)
 		assignerAnimer(animer, noeud->getEnfant(i));
 }
+

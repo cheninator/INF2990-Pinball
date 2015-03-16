@@ -167,6 +167,8 @@ public:
 
    /// Compresser un ressort
    void compresserRessort();
+
+   /// Relacher le ressort
    void relacherRessort();
 
 
@@ -188,10 +190,11 @@ public:
    void desactiverPalettesGJ1();
    void activerPalettesDJ1();
    void desactiverPalettesDJ1();
-   void aiPalettes();
-   void aiPalettesYonni();
-   void activerPalettesAIGauches();
-   void activerPalettesAIDroites();
+   
+   void activerPalettesGJ2();
+   void desactiverPalettesGJ2();
+   void activerPalettesDJ2();
+   void desactiverPalettesDJ2();
 
    void supprimerBille();
 

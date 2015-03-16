@@ -73,7 +73,8 @@ namespace InterfaceGraphique
             {/*
                 this.WindowState = FormWindowState.Normal;
                 this.FormBorderStyle = FormBorderStyle.None;
-                this.WindowState = FormWindowState.Maximized;*/
+                this.WindowState = FormWindowState.Maximized;
+              */
             }
            // timerBille2 = new Timer();
            // timerBille2.Interval = 1000;
@@ -107,7 +108,7 @@ namespace InterfaceGraphique
             currentZone++;
             Program.tempBool = true;
             panel_GL.Focus();
-            
+            label_Nom.Text = "Nom: " + Path.GetFileNameWithoutExtension(map.ToString());
             etat = new EtatJeuDebutDePartie(this);
             // Il faut changer le mode car le traitement de début est fini
             etat = new EtatJeuJouer(this);
@@ -284,6 +285,8 @@ namespace InterfaceGraphique
             etat = new EtatJeuDebutDePartie(this);
             // Il faut changer le mode car le traitement de début est fini
             etat = new EtatJeuJouer(this);
+            label_Nom.Text = "Nom: " + Path.GetFileNameWithoutExtension(map.ToString());
+
           
         }
 
@@ -338,6 +341,12 @@ namespace InterfaceGraphique
                                 FonctionsNatives.obtenirToucheRessort());
             }
 
+            
+                Console.WriteLine(touches.PGJ1);
+                Console.WriteLine(touches.PDJ1);
+                Console.WriteLine(touches.PGJ2);
+                Console.WriteLine(touches.PDJ2);
+            
 
 
         }
@@ -410,6 +419,8 @@ namespace InterfaceGraphique
            
            // gameOver.Close();
             gameOver.Dispose();
+            label_Nom.Text = "Nom: " + Path.GetFileNameWithoutExtension(map.ToString());
+
 
            
         }
