@@ -60,10 +60,6 @@ NoeudPaletteD::NoeudPaletteD(const std::string& typeNoeud)
 	: NoeudComposite{ typeNoeud }
 {
 	ajustable_ = false;
-
-	vitesseMonteAngulaire_ = { 0, 0, -9 };
-	vitesseDescenteAngulaire_ = { 0, 0, 3 };
-	angleZOriginal_ = 0;
 }
 
 ////////////////////////////////////////////////////////////////////////
@@ -149,6 +145,7 @@ void NoeudPaletteD::animer(float temps)
 	switch (etatPalette_)
 	{
 		case ACTIVE:
+
 		// TODO : Verifier que la rotation que je veux faire est possible,
 		// si impossible, la palette est bloquee et doit tomber dans l'etat INACTIVE
 
@@ -161,39 +158,6 @@ void NoeudPaletteD::animer(float temps)
 
 			if (angleZOriginal_ - obtenirRotation().z > 0)
 				assignerRotation(glm::dvec3{ 0, 0, VITESSE_ANGULAIRE_PALETTE_RETOUR * temps });
-			else
-			{
-				assignerRotationHard(glm::dvec3{ rotation_.x, rotation_.y, angleZOriginal_ });
-				etatPalette_ = INACTIVE;
-			}
-			break;
-
-			break;
-
-		case ACTIVE_AI:
-
-			if (angleZOriginal_ - obtenirRotation().z < 60)
-				assignerRotation(glm::dvec3{ 0, 0, - VITESSE_ANGULAIRE_PALETTE_ACTIVE * temps });
-
-			else
-			{
-				if (timer_ >= 0.25)
-				{
-					etatPalette_ = RETOUR_AI;
-					timer_ = 0;
-				}
-				else
-					timer_ += temps;
-			}
-		
-			break;
-
-		case RETOUR_AI:
-
-
-			if (angleZOriginal_ - obtenirRotation().z > 0)
-				assignerRotation(glm::dvec3{ 0, 0, VITESSE_ANGULAIRE_PALETTE_RETOUR * temps });
-
 			else
 			{
 				assignerRotationHard(glm::dvec3{ rotation_.x, rotation_.y, angleZOriginal_ });
@@ -286,27 +250,6 @@ void NoeudPaletteD::desactiver()
 
 ////////////////////////////////////////////////////////////////////////
 ///
-/// @fn void NoeudPaletteG::activerAI()
-///
-/// Cette fonction active l'animation qui fait monter les palettes. C'est la
-/// méthode qui doit etre appelé par le joueur virtuel
-/// 
-/// @return Aucune 
-///
-////////////////////////////////////////////////////////////////////////
-void NoeudPaletteD::activerAI()
-{
-	// Les palettesAI doivent pouvoir etre activerAI meme si une bille ne se trouve pas proche
-	if (etatPalette_ == INACTIVE)
-	{
-		angleZOriginal_ = obtenirRotation().z;
-		etatPalette_ = ACTIVE_AI;
-	}
-}
-
-
-////////////////////////////////////////////////////////////////////////
-///
 /// @fn void NoeudPaletteD::traiterCollisions(aidecollision::DetailsCollision details, NoeudAbstrait* bille)
 ///
 /// Cette fonction effectue la réaction a la collision de la bille sur 
@@ -318,7 +261,7 @@ void NoeudPaletteD::activerAI()
 ////////////////////////////////////////////////////////////////////////
 void NoeudPaletteD::traiterCollisions(aidecollision::DetailsCollision details, NoeudAbstrait* bille)
 {
-	if (1 && (etatPalette_ == ACTIVE || etatPalette_ == ACTIVE_AI) && fonctionDroitePaletteEnMouvement(bille) > 0)
+	if (1 && (etatPalette_ == ACTIVE) && fonctionDroitePaletteEnMouvement(bille) > 0)
 	{
 		glm::dvec3 positionPalette = obtenirPositionRelative();
 		glm::dvec3 positionBille = bille->obtenirPositionRelative();
