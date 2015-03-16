@@ -66,18 +66,21 @@ void JoueurVirtuel::jouer(const std::vector<NoeudAbstrait*>& listeBilles, const 
 	/// Traiter les palettes gauches
 	// Si le bouton n'est pas pesé, faire la vérification habituelle
 	if (!boutonGauche_)
+	{
 		if (timerGauche_ > 0)
 			timerGauche_ -= temps;
 		else
-			for (NoeudPaletteG* paletteGauche : listePalettesGauches)
-			if (paletteGauche->accepterJoueurVirtuel(this))
-			{
-				FacadeModele::obtenirInstance()->activerPalettesGJ2();
-				timerGauche_ = 0.25;
-				boutonGauche_ = true;
-				break;
-			}
+		for (NoeudPaletteG* paletteGauche : listePalettesGauches)
+		if (paletteGauche->accepterJoueurVirtuel(this))
+		{
+			FacadeModele::obtenirInstance()->activerPalettesGJ2();
+			timerGauche_ = 0.25;
+			boutonGauche_ = true;
+			break;
+		}
+	}
 	else
+	{
 		// Si le bouton EST pesé, compter du temps jusqu'à une certaine valeur et relacher le bouton après cette valeur.
 		if (timerGauche_ > 0)
 			timerGauche_ -= temps;
@@ -87,29 +90,33 @@ void JoueurVirtuel::jouer(const std::vector<NoeudAbstrait*>& listeBilles, const 
 			timerGauche_ = 0.4f;
 			boutonGauche_ = false;
 		}
-
+	}
 	// Même chose pour le bouton de droite.
 	if (!boutonDroit_)
+	{
 		if (timerDroit_ > 0)
 			timerDroit_ -= temps;
 		else
-			for (NoeudPaletteD* paletteDroite : listePalettesDroites)
-			if (paletteDroite->accepterJoueurVirtuel(this))
-			{
-				FacadeModele::obtenirInstance()->activerPalettesDJ2();
-				timerDroit_ = 0.25;
-				boutonDroit_ = true;
-				break;
-			}
+		for (NoeudPaletteD* paletteDroite : listePalettesDroites)
+		if (paletteDroite->accepterJoueurVirtuel(this))
+		{
+			FacadeModele::obtenirInstance()->activerPalettesDJ2();
+			timerDroit_ = 0.25;
+			boutonDroit_ = true;
+			break;
+		}
+	}
 	else
+	{
 		if (timerDroit_ > 0)
 			timerDroit_ -= temps;
 		else
 		{
-			FacadeModele::obtenirInstance()->desactiverPalettesGJ2();
+			FacadeModele::obtenirInstance()->desactiverPalettesDJ2();
 			timerDroit_ = 0.4f;
-			boutonDroit_ = false; 
+			boutonDroit_ = false;
 		}
+	}
 }
 
 ////////////////////////////////////////////////////////////////////////
