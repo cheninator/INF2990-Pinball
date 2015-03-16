@@ -342,8 +342,6 @@ void FacadeModele::animer(float temps)
 	joueur_->jouer(listeBilles_, listePalettesGJ2_, listePalettesDJ2_, temps);
 
 	/// Traiter les collisions entre objets
-	traiterCollisions(temps);
-
 	bool useQuadTree = false;
 	if (useQuadTree)
 		traiterCollisionsAvecQuadTree(temps);
