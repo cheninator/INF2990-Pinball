@@ -19,6 +19,32 @@
 #include "OpenGL_Storage/ModeleStorage_Liste.h"
 #include "../../Commun/Externe/glm/include/glm/gtx/Projection.hpp"
 
+static std::vector<glm::dvec3> boiteEnglobanteModele_;
+
+std::vector<glm::dvec3> NoeudPaletteG::boiteEnglobanteModele_{
+	{ -36.92, 11.96, 0 },
+	{ -54.41, 8.04, 0 },
+	{ -60.05, 6.97, 0 },
+	{ -62.18, 4.85, 0 },
+	{ -61.93, 1.58, 0 },
+	{ -59.65, -0.22, 0 },
+	{ -51.23, 1.25, 0 },
+	{ -44.03, 3.62, 0 },
+	{ -37.66, 4.69, 0 },
+	{ -30.71, 4.36, 0 },
+	{ -24.74, 2.89, 0 },
+	{ -12.48, -1.69, 0 },
+	{ -6.19, -2.75, 0 },
+	{ 0.27, -1.69, 0 },
+	{ 3.78, 0.11, 0 },
+	{ 9.26, 3.30, 0 },
+	{ 5.09, 6.73, 0 },
+	{ -1.12, 4.60, 0 },
+	{ -11.09, 6.07, 0 },
+	{ -24.91, 11.14, 0 },
+	{ -32.92, 12.53, 0 }
+};
+
 ////////////////////////////////////////////////////////////////////////
 ///
 /// @fn NoeudPaletteG::NoeudPaletteG(const std::string& typeNoeud)
@@ -412,4 +438,27 @@ double NoeudPaletteG::fonctionDroitePaletteEnMouvement(NoeudAbstrait* bille)
 		pente = directionPalette.y / directionPalette.x;
 	double b = positionPalette.y - positionPalette.x * pente;
 	return positionBille.y - pente * positionBille.x - b;
+}
+
+
+/// Obtenir la premiere boite englobante custom de l'histoire!
+std::vector<glm::dvec3> NoeudPaletteG::obtenirVecteursEnglobants()
+{
+	std::vector<glm::dvec3> boiteEnglobanteObjet;
+
+	glm::dmat3 echelle = glm::dmat3{ glm::dvec3{ scale_.x, 0, 0.0 },
+									 glm::dvec3{ 0,        scale_.y, 0.0f },
+									 glm::dvec3{ 0.0,      0.0,      scale_.z } };
+
+	double angleEnRadian = -rotation_[2] * utilitaire::PI_180;
+	glm::dmat3 transform = glm::dmat3{ glm::dvec3{ cos(angleEnRadian), -sin(angleEnRadian), 0.0 },
+		glm::dvec3{ sin(angleEnRadian), cos(angleEnRadian), 0.0f },
+		glm::dvec3{ 0.0, 0.0, 1.0 } };
+
+	for (glm::dvec3 vecteur : boiteEnglobanteModele_)
+	{
+		boiteEnglobanteObjet.push_back(transform * (echelle * vecteur));
+	}
+
+	return boiteEnglobanteObjet;
 }
