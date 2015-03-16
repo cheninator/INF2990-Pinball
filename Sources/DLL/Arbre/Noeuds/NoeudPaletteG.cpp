@@ -344,8 +344,8 @@ void NoeudPaletteG::traiterCollisions(aidecollision::DetailsCollision details, N
 
 		// S'assurer qu'on ne sera pas en collision avec la palette au prochain frame.
 		glm::dvec3 positionFinale = bille->obtenirPositionRelative()
-			+ details.enfoncement * glm::normalize(details.direction)
-			+ 1.1*deltaAngle*distanceProjetee*glm::normalize(vecteurNormal);
+			+ details.enfoncement * glm::normalize(details.direction);
+			//+ 1.1*deltaAngle*distanceProjetee*glm::normalize(vecteurNormal);
 
 		bille->assignerPositionRelative(positionFinale);
 		// Imposer une vitesse maximale
