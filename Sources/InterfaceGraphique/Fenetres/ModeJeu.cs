@@ -338,6 +338,12 @@ namespace InterfaceGraphique
                                 FonctionsNatives.obtenirToucheRessort());
             }
 
+            
+                Console.WriteLine(touches.PGJ1);
+                Console.WriteLine(touches.PDJ1);
+                Console.WriteLine(touches.PGJ2);
+                Console.WriteLine(touches.PDJ2);
+            
 
 
         }

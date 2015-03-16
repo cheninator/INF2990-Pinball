@@ -137,15 +137,15 @@ namespace InterfaceGraphique
                 FonctionsNatives.activerPalettesGJ1();
             }
 
-            else if (e.KeyValue == parent_.getTouches().PGJ2)
+             if (e.KeyValue == parent_.getTouches().PGJ2)
             {
                 FonctionsNatives.activerPalettesGJ2();
             }
-            else if (e.KeyValue == parent_.getTouches().PDJ1)
+             if (e.KeyValue == parent_.getTouches().PDJ1)
             {
                 FonctionsNatives.activerPalettesDJ1();
             }
-            else if (e.KeyValue == parent_.getTouches().PDJ2)
+             if (e.KeyValue == parent_.getTouches().PDJ2)
             {
                 FonctionsNatives.activerPalettesDJ2();
             }
@@ -183,19 +183,19 @@ namespace InterfaceGraphique
             {
                 FonctionsNatives.desactiverPalettesGJ1();
             }
-            else if (e.KeyValue == parent_.getTouches().PDJ1)
+            if (e.KeyValue == parent_.getTouches().PDJ1)
             {
                 FonctionsNatives.desactiverPalettesDJ1();
             }
-            else if (e.KeyValue == parent_.getTouches().PGJ2)
+             if (e.KeyValue == parent_.getTouches().PGJ2)
             {
                 FonctionsNatives.desactiverPalettesGJ2();
             }
-            else if (e.KeyValue == parent_.getTouches().PDJ2)
+             if (e.KeyValue == parent_.getTouches().PDJ2)
             {
                 FonctionsNatives.desactiverPalettesDJ2();
             }
-            else if (e.KeyValue == parent_.getTouches().Ressort)
+             if (e.KeyValue == parent_.getTouches().Ressort)
             {
                 FonctionsNatives.relacherRessort();
             }
