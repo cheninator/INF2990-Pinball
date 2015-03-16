@@ -45,7 +45,7 @@ NoeudPaletteD::NoeudPaletteD(const std::string& typeNoeud)
 ///
 /// @fn NoeudPaletteD::~NoeudPaletteD()
 ///
-/// Ce destructeur desallouee la liste d'affichage du noeud.
+/// Ce destructeur cllouee la liste d'affichage du noeud.
 ///
 /// @return Aucune (destructeur).
 ///
@@ -253,6 +253,8 @@ void NoeudPaletteD::activer()
 ////////////////////////////////////////////////////////////////////////
 void NoeudPaletteD::desactiver()
 {
+	if (etatPalette_ == INACTIVE)
+		angleZOriginal_ = obtenirRotation().z;
 	etatPalette_ = RETOUR;
 }
 

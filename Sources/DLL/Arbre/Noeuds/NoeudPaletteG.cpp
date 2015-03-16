@@ -246,6 +246,8 @@ void NoeudPaletteG::activer()
 ////////////////////////////////////////////////////////////////////////
 void NoeudPaletteG::desactiver()
 {
+	if (etatPalette_ == INACTIVE)
+		angleZOriginal_ = obtenirRotation().z;
 	etatPalette_ = RETOUR;
 }
 
