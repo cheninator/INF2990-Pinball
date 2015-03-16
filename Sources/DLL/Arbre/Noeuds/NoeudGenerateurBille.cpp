@@ -109,16 +109,65 @@ void NoeudGenerateurBille::afficherConcret() const
 ////////////////////////////////////////////////////////////////////////
 void NoeudGenerateurBille::animer(float temps)
 {
+	glm::dvec3 positionRelative = positionRelative_;
 	NoeudComposite::animer(temps);
-	positionRelative_.z = abs(obtenirVecteursEnglobants()[0].z);
-	if (!animer_)
+	positionRelative_ = positionRelative;
+	if (enCreation_)
 	{
-		compteurAnimation_ = TEMPS_ANIMATION_NOEUD_GENERATEURBILLE;
+		posZinitial = abs(boite_.coinMax.z * scale_.z);
+		posZfinal = abs(boite_.coinMin.z * scale_.z);
+		positionRelative_.z = posZfinal;
+		if (animer_)
+			enCreation_ = false;
+	}
+
+	double positionCouvercleX = obtenirParent()->obtenirParent()->getEnfant(1)->obtenirPositionRelative().x;
+	if (positionCouvercleX != positionCouvercleX_)
+	{
+		positionRelative_.z = posZfinal;
+		positionCouvercleX_ = positionCouvercleX;
 		return;
 	}
+
+	if (!animer_)
+	{
+		compteurAnimation_ = 0;
+		positionRelative_.z = posZfinal;
+		return;
+	}
+
+	if (billesGenerer_ == 0)
+	{
+		positionRelative_.z = -posZinitial;
+	}
+	else if (billesGenerer_ > 0)
+	{
+		compteurGeneration_ += temps;
+		if (compteurGeneration_ <= TIME_IDLE_NOEUD_BILLE)
+			positionRelative_.z += temps * posZfinal / TIME_IDLE_NOEUD_BILLE;
+		else if (compteurGeneration_ <= 2 * TIME_IDLE_NOEUD_BILLE)
+			positionRelative_.z += temps * -(posZfinal + posZinitial) / TIME_IDLE_NOEUD_BILLE;
+		else
+		{
+			compteurGeneration_ = 0;
+			billesGenerer_ = 0;
+		}
+		return;
+	}
+	else if (billesGenerer_ <= -1)
+	{
+		compteurGeneration_ += temps;
+		if (compteurGeneration_ <= TIME_IDLE_NOEUD_BILLE)
+			;
+		else if (compteurGeneration_ <= 2 * TIME_IDLE_NOEUD_BILLE)
+			positionRelative_.z += temps * -(posZfinal + posZinitial) / TIME_IDLE_NOEUD_BILLE;
+		else
+		{
+			compteurGeneration_ = 0;
+			billesGenerer_ = 0;
+		}
+	}
 	
-	// Au lieu de rajouter une condition "parkinson" fais juste return;
-	// Mais la je vais juste faire du parkinson pour quelques ssecodne puis s'arrete
 	if (compteurAnimation_ >= TEMPS_ANIMATION_NOEUD_GENERATEURBILLE && etatGenerateur_ == INITIAL)
 		return;
 	
@@ -185,7 +234,8 @@ void NoeudGenerateurBille::animer(float temps)
 			etatGenerateur_ = INITIAL;
 			distanceBouger_ = 0;
 			compteurAnimationBouger_ = 0;
-			positionRelative_ = positionPreDeplacement_;
+			positionRelative_.x = positionPreDeplacement_.x;
+			positionRelative_.y = positionPreDeplacement_.y;
 		}
 	}
 

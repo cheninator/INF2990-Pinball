@@ -39,6 +39,9 @@ public:
 	/// Accepte un visiteur.
 	virtual bool accepterVisiteur(VisiteurAbstrait* vis);
 
+	/// ajout d'une bille
+	virtual void genererBille() { billesGenerer_++; positionRelative_.z = -posZinitial; compteurGeneration_ = 0; };
+
 private:
 	Etat etatGenerateur_ { INITIAL };
 	Direction directionGenerateur_ { dirZ };
@@ -46,8 +49,14 @@ private:
 	float compteurAnimation_ { 0 };
 	float compteurAnimationBouger_{ 0 };
 	double distanceBouger_ { 0 };
+	double positionCouvercleX_{ -1 };
 	// Vu que le temps n'est pas constant, on dois remettre la table a sa position par defaut
-	glm::dvec3 positionPreDeplacement_{ 0 };	
+	glm::dvec3 positionPreDeplacement_{ 0 };
+	int billesGenerer_{ -2 };
+	float compteurGeneration_{ 0 };
+	bool enCreation_{ true };
+	double posZinitial;
+	double posZfinal;
 };
 
 #endif // __ARBRE_NOEUDS_NOEUDGENERATEURBILLE_H__

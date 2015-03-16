@@ -940,3 +940,17 @@ NoeudAbstrait* NoeudAbstrait::obtenirPortailDorigine()
 {
 	return portailDorigine_;
 }
+
+
+
+////////////////////////////////////////////////////////////////////////
+///
+/// @fn void NoeudAbstrait::genererBille()
+///
+/// Ne fais rien
+/// 
+////////////////////////////////////////////////////////////////////////
+void NoeudAbstrait::genererBille()
+{
+	return;
+}

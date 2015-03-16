@@ -135,7 +135,23 @@ void NoeudBille::afficherConcret() const
 ////////////////////////////////////////////////////////////////////////
 void NoeudBille::animer(float temps) // rajouter des parametres ou une fonction animerCollision(float temps, detailCollision detail)
 {
-	NoeudComposite::animer(temps);
+	if (timerMove_ < TIME_IDLE_NOEUD_BILLE)
+	{
+		glm::dvec3 positionRelative = positionRelative_;
+		NoeudComposite::animer(temps);
+		positionRelative_ = positionRelative;
+	}
+	else
+		NoeudComposite::animer(temps);
+
+	if (enCreation_)
+	{
+		posZinitial = -abs(boite_.coinMax.z * scale_.z);
+		posZfinal = 2 * abs(boite_.coinMax.z * scale_.z) + abs(boite_.coinMin.z * scale_.z) + HAUTEUR_TABLE_NOEUD_COMPOSITE;
+		positionRelative_.z = posZinitial;
+		enCreation_ = false;
+	}
+
 	if (!animer_)
 		return;
 	// Somme des forces agissant sur les particules.
@@ -150,6 +166,7 @@ void NoeudBille::animer(float temps) // rajouter des parametres ou une fonction 
 
 	if (timerMove_ < TIME_IDLE_NOEUD_BILLE)
 	{
+		positionRelative_.z += temps * posZfinal / (TIME_IDLE_NOEUD_BILLE);
 		timerMove_ += temps;
 		return;
 	}

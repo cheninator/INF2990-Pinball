@@ -282,7 +282,8 @@ public:
 	/// Obtenir l'adresse du pointeurDorigine_ 
 	NoeudAbstrait* obtenirPortailDorigine();
 
-
+	/// trigger lors de l'ajout d'une bille
+	virtual void genererBille();
 
 protected:
 

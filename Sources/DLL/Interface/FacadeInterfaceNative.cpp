@@ -308,6 +308,7 @@ extern "C"
 				int pos = rand() % generateurs.size();
 
 				NoeudAbstrait* generateur = noeudTable->getEnfant(generateurs[pos]);
+					generateur->genererBille();
 				glm::dvec3 scale = generateur->obtenirAgrandissement();
 				glm::dvec3 position = generateur->obtenirPositionRelative();
 				glm::dvec3 rotation = generateur->obtenirRotation();
