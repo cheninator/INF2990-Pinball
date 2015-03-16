@@ -19,8 +19,6 @@
 #include "OpenGL_Storage/ModeleStorage_Liste.h"
 #include "../../Commun/Externe/glm/include/glm/gtx/Projection.hpp"
 
-static std::vector<glm::dvec3> boiteEnglobanteModele_;
-
 std::vector<glm::dvec3> NoeudPaletteG::boiteEnglobanteModele_{
 	{ -36.92, 11.96, 0 },
 	{ -54.41, 8.04, 0 },

@@ -67,6 +67,9 @@ public:
 	/// Savoir si la palette est activée par une bille
 	bool estActiveeParBille(NoeudAbstrait* noeud);
 
+	/// Obtenir la  boite englobante custom.
+	virtual std::vector<glm::dvec3> obtenirVecteursEnglobants();
+
 	/// Retourne la fonction qui represente la palette originellement
 	double fonctionDroitePaletteOriginale(NoeudAbstrait* bille);
 
@@ -74,6 +77,8 @@ public:
 	double fonctionDroitePaletteEnMouvement(NoeudAbstrait* bille);
 
 private:
+
+	static std::vector<glm::dvec3> boiteEnglobanteModele_;
 
 	/// Angle Original pour le mouvement des palettes selon les touches du clavier
 	double angleZOriginal_;
