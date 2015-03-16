@@ -70,14 +70,14 @@ void JoueurVirtuel::jouer(const std::vector<NoeudAbstrait*>& listeBilles, const 
 		if (timerGauche_ > 0)
 			timerGauche_ -= temps;
 		else
-		for (NoeudPaletteG* paletteGauche : listePalettesGauches)
-		if (paletteGauche->accepterJoueurVirtuel(this))
-		{
-			FacadeModele::obtenirInstance()->activerPalettesGJ2();
-			timerGauche_ = 0.25;
-			boutonGauche_ = true;
-			break;
-		}
+			for (NoeudPaletteG* paletteGauche : listePalettesGauches)
+				if (paletteGauche->accepterJoueurVirtuel(this))
+				{
+					FacadeModele::obtenirInstance()->activerPalettesGJ2();
+					timerGauche_ = 0.25;
+					boutonGauche_ = true;
+					break;
+				}
 	}
 	else
 	{
@@ -97,14 +97,14 @@ void JoueurVirtuel::jouer(const std::vector<NoeudAbstrait*>& listeBilles, const 
 		if (timerDroit_ > 0)
 			timerDroit_ -= temps;
 		else
-		for (NoeudPaletteD* paletteDroite : listePalettesDroites)
-		if (paletteDroite->accepterJoueurVirtuel(this))
-		{
-			FacadeModele::obtenirInstance()->activerPalettesDJ2();
-			timerDroit_ = 0.25;
-			boutonDroit_ = true;
-			break;
-		}
+			for (NoeudPaletteD* paletteDroite : listePalettesDroites)
+				if (paletteDroite->accepterJoueurVirtuel(this))
+				{
+					FacadeModele::obtenirInstance()->activerPalettesDJ2();
+					timerDroit_ = 0.25;
+					boutonDroit_ = true;
+					break;
+				}
 	}
 	else
 	{
