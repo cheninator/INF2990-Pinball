@@ -721,6 +721,7 @@ extern "C"
 		FacadeModele::obtenirInstance()->obtenirArbreRenduINF2990()->vider();
 		FacadeModele::obtenirInstance()->obtenirArbreRenduINF2990()->initialiserXML(std::string(path));
 		FacadeModele::obtenirInstance()->setDebug();
+		FacadeModele::obtenirInstance()->construireListesPalettes();
 		return FacadeModele::obtenirInstance()->obtenirArbreRenduINF2990()->obtenirProprietes();
 	}
 	__declspec(dllexport) int* __cdecl ouvrirXMLString(std::string path)
@@ -728,6 +729,7 @@ extern "C"
 		FacadeModele::obtenirInstance()->obtenirArbreRenduINF2990()->vider();
 		FacadeModele::obtenirInstance()->obtenirArbreRenduINF2990()->initialiserXML(path);
 		FacadeModele::obtenirInstance()->setDebug();
+		FacadeModele::obtenirInstance()->construireListesPalettes();
 		return FacadeModele::obtenirInstance()->obtenirArbreRenduINF2990()->obtenirProprietes();
 	}
 
