@@ -249,6 +249,7 @@
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Icon = global::InterfaceGraphique.Properties.Resources.Pinball;
             this.Name = "Campagne";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Campagne";
             this.GB_Player.ResumeLayout(false);
             this.GB_Player.PerformLayout();

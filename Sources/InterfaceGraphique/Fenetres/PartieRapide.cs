@@ -55,8 +55,14 @@ namespace InterfaceGraphique
             {
                 fileNames = ZonesDisponibles.Items[index].Text;
                 screenShot.SizeMode = PictureBoxSizeMode.StretchImage;
-                screenShot.Image = Image.FromFile(Application.StartupPath + @"\zones\" + fileNames + ".jpg");
-
+                if (File.Exists(Application.StartupPath + @"\zones\" + fileNames + ".jpg"))
+                {
+                    screenShot.Image = Image.FromFile(Application.StartupPath + @"\zones\" + fileNames + ".jpg");
+                }
+                else
+                {
+                    screenShot.Image = Properties.Resources.SaintTrinity;
+                }
             }
         }
 
