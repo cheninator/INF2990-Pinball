@@ -111,6 +111,8 @@ extern "C" {
 
 	__declspec(dllexport) void animerJeu(bool animer);
 	__declspec(dllexport) void rechargerArbre(bool recharger);
+
+	__declspec(dllexport) void activerAI(bool actif);
 }
 
 #endif // __FACADE_INTERFACE_NATIVE_H__

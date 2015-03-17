@@ -80,7 +80,7 @@ namespace InterfaceGraphique
            // timerBille2.Interval = 1000;
            // timerBille2.Tick += new System.EventHandler(this.timerBille2_Tick);
             this.MouseWheel += new MouseEventHandler(panel_GL_MouseWheel);
-            EtablirTouches(playerType);
+            EtablirTouchesEtAI(playerType);
             this.KeyDown += new KeyEventHandler(PartieRapide_KeyDown);
             this.KeyUp += new KeyEventHandler(PartieRapide_KeyUp);
             InitializeComponent();
@@ -113,9 +113,7 @@ namespace InterfaceGraphique
             // Il faut changer le mode car le traitement de début est fini
             etat = new EtatJeuJouer(this);
             FonctionsNatives.animerJeu(true);
-            CreerBille();
-
-          
+            CreerBille();       
         }
 
 
@@ -313,7 +311,7 @@ namespace InterfaceGraphique
 
         }
 
-        private void EtablirTouches(int playerType)
+        private void EtablirTouchesEtAI(int playerType)
         {
             if (playerType == 1)
             {
@@ -322,6 +320,7 @@ namespace InterfaceGraphique
                                  FonctionsNatives.obtenirTouchePDJ1(),
                                  FonctionsNatives.obtenirTouchePDJ1(),
                                  FonctionsNatives.obtenirToucheRessort());
+                FonctionsNatives.activerAI(false);
             }
             else if (playerType == 2)
             {
@@ -330,6 +329,8 @@ namespace InterfaceGraphique
                                 FonctionsNatives.obtenirTouchePDJ1(),
                                 FonctionsNatives.obtenirTouchePDJ2(),
                                 FonctionsNatives.obtenirToucheRessort());
+
+                FonctionsNatives.activerAI(true);
             }
             else if (playerType == 3)
             {
@@ -339,6 +340,8 @@ namespace InterfaceGraphique
                                 FonctionsNatives.obtenirTouchePDJ1(),
                                 1337,
                                 FonctionsNatives.obtenirToucheRessort());
+
+                FonctionsNatives.activerAI(false);
             }
 
         }

@@ -1628,10 +1628,17 @@ extern "C"
 			creerXMLString(SingletonGlobal::obtenirInstance()->obtenirPathTemp(),
 				FacadeModele::obtenirInstance()->obtenirArbreRenduINF2990()->obtenirProprietes(), true);
 	}
+
+	__declspec(dllexport) void __cdecl activerAI(bool actif)
+	{
+		FacadeModele::obtenirInstance()->assignerAI(actif);
+	}
+
 	//__declspec(dllexport) int __cdecl obtenirNombreDePointsTotals()
 	//{
 	//	return SingletonGlobal::obtenirInstance()->getPointsTotales();
 	//}
+
 	/*
 	#include <FTGL/ftgl.h>
 

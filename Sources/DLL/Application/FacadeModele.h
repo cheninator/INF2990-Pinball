@@ -181,6 +181,7 @@ public:
    int  obtenirNombreDeBilles();
    int  obtenirAffichageGlobal();
    void bloquerAffichageGlobal(int active);
+   bool obtenirAI();
 
    /// Construire des les 4 listes de palettes GJ1,DJ1, GJ2,DJ2
    void construireListesPalettes(); 
@@ -212,6 +213,7 @@ public:
 
    // Assigner la valeur de l'animation a un objet
    void assignerAnimer( bool animer, NoeudAbstrait* noeud);
+   void assignerAI(bool actif);
 
 private:
 
@@ -252,6 +254,7 @@ private:
    bool duplicationHorsTable_;
 
    bool pause_{ false };
+   bool utiliserAI { true };
 
    /// Listes de palettes à activer pour chaque touche
    std::set<NoeudPaletteG*> listePalettesGJ1_; ///< Gauche joueur 1
