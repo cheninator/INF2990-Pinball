@@ -347,6 +347,9 @@ void FacadeModele::animer(float temps)
 		joueur_->jouer(listeBilles_, listePalettesGJ2_, listePalettesDJ2_, temps);
 	}
 
+	/// Faire la somme des forces
+	updateForcesExternes();
+
 	/// Traiter les collisions entre objets
 	bool useQuadTree = true;
 	if (useQuadTree)
@@ -354,8 +357,7 @@ void FacadeModele::animer(float temps)
 	else
 		traiterCollisions(temps);
 
-	/// Faire la somme des forces
-	updateForcesExternes();
+
 
 	// Mise a jour des objets.
 	arbre_->animer(temps);
@@ -1460,6 +1462,7 @@ void FacadeModele::traiterCollisionsAvecQuadTree(float temps)
 		quad_->insert(bille);
 
 	// Pour chaque bille, 
+	std::vector<NoeudAbstrait*> billesAEnlever;
 	for (NoeudAbstrait* bille : listeBilles_)
 	{
 		// Obtenir une liste de noeuds a verifier avec la bille courante.
@@ -1486,28 +1489,25 @@ void FacadeModele::traiterCollisionsAvecQuadTree(float temps)
 
 				if (noeudAVerifier->obtenirType() == "trou") // Traiter le cas où une bille entre en collision avec un trou
 				{
-					// Enlever la bille du Quadtree
 					quad_->remove(bille);
-					
-					// Mettre a jour le compte de billes
-					// SingletonGlobal::obtenirInstance()->retirerBille();
-					
-					// std::vector<NoeudAbstrait*>::iterator laBilleIt;
-					
-					// Enlever la bille de l'arbre de rendu, l'objet est détruit par cet appel
-					arbre_->effacer(bille);
-					
+					billesAEnlever.push_back(bille);
 					break;                                   // MODIF
 				}
 
 			}
 		}// Fin du for( noeudAVerifier : listeNoeudsAVerifier)
+	}// Fin du for( bille : listeBilles_)
 
-		//
-	}
-	mettreAJourListeBillesEtNoeuds();
+	// Enlever les billes du quadTree avant de les détruire pour pouvoir accéder à leurs positions.
 	for (NoeudAbstrait* bille : listeBilles_)
 		quad_->remove(bille);
+
+	// Detruire les billes a detruire
+	for (NoeudAbstrait* bille : billesAEnlever)
+	{
+		arbre_->effacer(bille);
+		SingletonGlobal::obtenirInstance()->retirerBille();
+	}		
 }
 
 
