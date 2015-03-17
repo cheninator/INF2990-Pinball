@@ -701,7 +701,9 @@ extern "C"
 	}
 	__declspec(dllexport) int __cdecl creerXMLString(std::string path, int prop[6], bool force)
 	{
-		return FacadeModele::obtenirInstance()->creerXML(path, prop, force);
+		 int valeur = FacadeModele::obtenirInstance()->creerXML(path, prop, force);
+		 FacadeModele::obtenirInstance()->construireQuadTree();
+		 return valeur;
 	}
 
 	////////////////////////////////////////////////////////////////////////
@@ -720,6 +722,7 @@ extern "C"
 	{
 		FacadeModele::obtenirInstance()->obtenirArbreRenduINF2990()->vider();
 		FacadeModele::obtenirInstance()->obtenirArbreRenduINF2990()->initialiserXML(std::string(path));
+		FacadeModele::obtenirInstance()->construireQuadTree();
 		FacadeModele::obtenirInstance()->setDebug();
 		FacadeModele::obtenirInstance()->construireListesPalettes();
 		return FacadeModele::obtenirInstance()->obtenirArbreRenduINF2990()->obtenirProprietes();
@@ -1628,6 +1631,7 @@ extern "C"
 			creerXMLString(SingletonGlobal::obtenirInstance()->obtenirPathTemp(),
 				FacadeModele::obtenirInstance()->obtenirArbreRenduINF2990()->obtenirProprietes(), true);
 	}
+
 	//__declspec(dllexport) int __cdecl obtenirNombreDePointsTotals()
 	//{
 	//	return SingletonGlobal::obtenirInstance()->getPointsTotales();

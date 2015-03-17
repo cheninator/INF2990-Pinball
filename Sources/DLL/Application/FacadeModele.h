@@ -171,6 +171,8 @@ public:
    /// Relacher le ressort
    void relacherRessort();
 
+   void construireQuadTree();
+
 
    int* obtenirConfiguration();
    int	obtenirTouchePGJ1();

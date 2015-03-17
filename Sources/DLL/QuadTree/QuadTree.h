@@ -39,6 +39,8 @@ public:
 	// Retirer un noeud du QuadTree
 	bool remove(NoeudAbstrait* noeud);
 
+	// Vider le QuadTree et les sous QuadTree
+	void clear();
 
 private:
 
@@ -47,9 +49,6 @@ private:
 
 	// Diviser le QuadTree lorsque la capacité maximale est atteinte
 	void divide();
-
-	// Vider le QuadTree et les sous QuadTree
-	void clear();
 
 	// Vérifier si l'objet est dans le QuadTree
 	bool estDansQuadTree(NoeudAbstrait* noeud, QuadTree* quad) const;
@@ -60,8 +59,11 @@ private:
 	// Retourne le QuadTree dans lequel il faut faire l'insertion
 	QuadTree* obtenirQuadrant(NoeudAbstrait* noeud);
 
+	// Trouver un pointeur nul et rafraichir la liste des noeuds des QuadTree
+	void rafraichir();
+
 	// Propriétés du QuadTree
-	const int MAX_CAPACITY = 10;
+	const int MAX_CAPACITY = 7;
 	const int MAX_LEVEL = 3;
 	int niveauCourant_;
 

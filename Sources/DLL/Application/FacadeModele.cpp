@@ -102,6 +102,8 @@ FacadeModele* FacadeModele::obtenirInstance()
 		instance_->configuration_ = new ConfigScene();
 		instance_->proprietes_ = new int[6];
 		instance_->joueur_ = new JoueurVirtuel();
+		instance_->quad_ = new QuadTree(glm::dvec3(coinGaucheTableX, coinGaucheTableY, 0),
+										glm::dvec3(coinDroitTableX,  coinDroitTableY,  0));
 	}
 	return instance_;
 }
@@ -138,6 +140,7 @@ FacadeModele::~FacadeModele()
 	delete vue_;
 	delete proprietes_;
 	delete joueur_;
+	delete quad_;
 }
 
 
@@ -1427,22 +1430,24 @@ void FacadeModele::traiterCollisionsAvecQuadTree(float temps)
 {
 	bool miseAJourListeBillesRequise = false;
 
+	for (NoeudAbstrait* bille : listeBilles_)
+		quad_->insert(bille);
+
 	// Pour chaque bille, 
 	for (NoeudAbstrait* bille : listeBilles_)
 	{
 		// Obtenir une liste de noeuds a verifier avec la bille courante.
-		std::vector<NoeudAbstrait*> noeudsAVeririer;
-		std::list<NoeudAbstrait*> listeNoeudsAVeririer;
+		std::list<NoeudAbstrait*> listeNoeudsAVerifier;
 
-		quad_->insert(bille);
-		listeNoeudsAVeririer = quad_->retrieve(bille);
-		std::cout << listeNoeudsAVeririer.size() << std::endl;
-		listeNoeudsAVeririer.push_back(arbre_->chercher(0));
+		listeNoeudsAVerifier = quad_->retrieve(bille);
+		std::cout << listeNoeudsAVerifier.size() << std::endl;
+		// Ajouter la table : 
+		listeNoeudsAVerifier.push_back(arbre_->chercher(0));
 
 		bille->assignerImpossible(false);
 
 		std::list<NoeudAbstrait*>::iterator itNoeudAVerifier;
-		for (itNoeudAVerifier = listeNoeudsAVeririer.begin(); itNoeudAVerifier != listeNoeudsAVeririer.end(); itNoeudAVerifier++)
+		for (itNoeudAVerifier = listeNoeudsAVerifier.begin(); itNoeudAVerifier != listeNoeudsAVerifier.end(); itNoeudAVerifier++)
 		{
 			NoeudAbstrait* noeudAVerifier = (*itNoeudAVerifier);
 			// Detecter les collisions entre le noeud et la bille
@@ -1450,22 +1455,33 @@ void FacadeModele::traiterCollisionsAvecQuadTree(float temps)
 
 			if (detail.type != aidecollision::COLLISION_AUCUNE)
 			{
-				// Traiter (reagir a) la collision.
+				// Traiter (reagir a) la collision. La bille n'est pas détruite
 				noeudAVerifier->traiterCollisions(detail, bille);
-				if (noeudAVerifier->obtenirType() == "trou") // MODIF
+
+				if (noeudAVerifier->obtenirType() == "trou") // Traiter le cas où une bille entre en collision avec un trou
 				{
-					miseAJourListeBillesRequise = true;
+					// Enlever la bille du Quadtree
+					quad_->remove(bille);
+					
+					// Mettre a jour le compte de billes
+					SingletonGlobal::obtenirInstance()->retirerBille();
+					
+					std::vector<NoeudAbstrait*>::iterator laBilleIt;
+					
+					// Enlever la bille de l'arbre de rendu, l'objet est détruit par cet appel
+					arbre_->effacer(bille);
+					
 					break;                                   // MODIF
 				}
+
 			}
 		}// Fin du for( noeudAVerifier : listeNoeudsAVerifier)
 
-		// Important: Si une bille est tombee dans un trou, il faut l'enlever du quadTree avant de poursuivre a la prochaine bille.
-		mettreAJourListeNoeuds();          // MODIF (Juste updater listeNoeuds_ pour pas avoir le assert de vector.
-	}// fin du for (NoeudAbstrait* bille : listeBilles_)
-	if (miseAJourListeBillesRequise)
-		mettreAJourListeBillesEtNoeuds();
+		//mettreAJourListeBillesEtNoeuds();
 
+		for (NoeudAbstrait* bille : listeBilles_)
+			quad_->remove(bille);
+	}
 }
 
 
@@ -1529,8 +1545,8 @@ void FacadeModele::mettreAJourListeBillesEtNoeuds()
 	for (unsigned int i = 0; i < arbre_->getEnfant(0)->obtenirNombreEnfants(); i++)
 	{
 		NoeudAbstrait* noeud = arbre_->getEnfant(0)->getEnfant(i);
-		if (noeud->obtenirType() != "generateurbille")
-			listeNoeuds_.push_back(noeud);
+		listeNoeuds_.push_back(noeud);
+
 		if (noeud->obtenirType() == "bille")
 			listeBilles_.push_back(noeud);
 	}
@@ -1618,3 +1634,9 @@ void FacadeModele::assignerAnimer(bool animer, NoeudAbstrait* noeud)
 		assignerAnimer(animer, noeud->getEnfant(i));
 }
 
+void FacadeModele::construireQuadTree()
+{
+	quad_->clear();
+	for (unsigned int i = 0; i < arbre_->getEnfant(0)->obtenirNombreEnfants(); i++)
+		quad_->insert(arbre_->getEnfant(0)->getEnfant(i));
+}

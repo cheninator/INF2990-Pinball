@@ -130,9 +130,16 @@ void QuadTree::clear()
 		sudOuest_->clear();
 
 		delete nordEst_;
+		nordEst_ = nullptr;
+
 		delete nordOuest_;
+		nordOuest_ = nullptr;
+
 		delete sudEst_;
+		sudEst_ = nullptr;
+
 		delete sudOuest_;
+		sudOuest_ = nullptr;
 	}
 
 }
@@ -439,6 +446,12 @@ std::list<NoeudAbstrait*> QuadTree::retrieve(NoeudAbstrait* noeud)
 ////////////////////////////////////////////////////////////////////////
 bool QuadTree::remove(NoeudAbstrait* noeud)
 {
+	if (noeud == nullptr)
+	{
+		rafraichir();
+		return false;
+	}
+
 	if (estDansQuadTree(noeud, this))
 	{
 		std::list<NoeudAbstrait*>::iterator iter;
@@ -459,4 +472,38 @@ bool QuadTree::remove(NoeudAbstrait* noeud)
 
 	else
 		return false;
+}
+
+
+////////////////////////////////////////////////////////////////////////
+///
+/// @fn std::vector<NoeudAbstrait*> QuadTree::retrieve(NoeudAbstrait* noeud)
+///
+////////////////////////////////////////////////////////////////////////
+void QuadTree::rafraichir()
+{
+	std::list<NoeudAbstrait*>::iterator iter = objets_.begin();
+	bool suspect = false;
+
+	for (; iter != objets_.end() && !suspect; iter++)
+	{
+		if (*iter == nullptr)
+			suspect = true;
+	}
+
+	if (suspect)
+	{
+		objets_.erase(iter);
+		return;
+	}
+
+
+	if (nordEst_ != nullptr)
+	{
+		nordEst_->rafraichir();
+		nordOuest_->rafraichir();
+		sudEst_->rafraichir();
+		sudOuest_->rafraichir();
+	}
+
 }

@@ -42,6 +42,8 @@ public:
 	/// ajout d'une bille
 	virtual void genererBille() { billesGenerer_++; positionRelative_.z = -posZinitial; compteurGeneration_ = 0; };
 
+	virtual	void traiterCollisions(aidecollision::DetailsCollision details, NoeudAbstrait* bille);
+
 private:
 	Etat etatGenerateur_ { INITIAL };
 	Direction directionGenerateur_ { dirZ };

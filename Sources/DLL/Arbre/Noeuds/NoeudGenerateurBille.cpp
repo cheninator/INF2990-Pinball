@@ -262,3 +262,7 @@ bool NoeudGenerateurBille::accepterVisiteur(VisiteurAbstrait* vis)
 	return reussi;
 }
 
+void NoeudGenerateurBille::traiterCollisions(aidecollision::DetailsCollision details, NoeudAbstrait* bille) 
+{
+
+}

@@ -119,11 +119,11 @@ void NoeudComposite::effacer(const NoeudAbstrait* noeud)
 		it++) {
 		if (*it == noeud) {
 			// On a trouve le noeud a effacer
-			if (noeud->obtenirType() == "bille")
-				SingletonGlobal::obtenirInstance()->retirerBille();
 			NoeudAbstrait* noeudAEffacer{ (*it) };
 			enfants_.erase(it);
 			delete noeudAEffacer;
+			noeudAEffacer = nullptr;
+			noeud = nullptr;
 			return;
 		}
 		else {
