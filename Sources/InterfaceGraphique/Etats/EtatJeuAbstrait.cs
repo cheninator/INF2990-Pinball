@@ -58,10 +58,12 @@ namespace InterfaceGraphique
                 if (FonctionsNatives.obtenirAffichageGlobal() == 0)
                 {
                     FonctionsNatives.bloquerAffichageGlobal(1);
+                    EtatAbstrait.cConsole.Show();
                 }
                 else
                 {
                     FonctionsNatives.bloquerAffichageGlobal(0);
+                    EtatAbstrait.cConsole.Hide();
                 }
             }
 

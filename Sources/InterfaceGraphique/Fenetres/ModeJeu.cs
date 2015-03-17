@@ -114,8 +114,6 @@ namespace InterfaceGraphique
             etat = new EtatJeuJouer(this);
             FonctionsNatives.animerJeu(true);
             CreerBille();
-
-          
         }
 
 
@@ -133,6 +131,8 @@ namespace InterfaceGraphique
             billesDisponibles = nombreBillesInit;
             label_nbGagnes.Text = nombreDeBillesGagnes.ToString();
             setProprietes();
+            if (FonctionsNatives.obtenirAffichageGlobal() == 1)
+                EtatAbstrait.cConsole.Show();
         }
 
         private void setProprietes()
@@ -302,6 +302,7 @@ namespace InterfaceGraphique
         }
         private void FinCampagne(bool active)
         {
+            EtatAbstrait.cConsole.Hide();
             peutAnimer = false;
             boolTemp = false;
             gameOver = new PartieTerminee(active);
