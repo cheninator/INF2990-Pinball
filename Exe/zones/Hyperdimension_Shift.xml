@@ -2,7 +2,7 @@
     <PointsButoir Nombre="15"/>
     <PointsTriangulaire Nombre="10"/>
     <PointsCible Nombre="20"/>
-    <PointsVictoire Nombre="400"/>
+    <PointsVictoire Nombre="500"/>
     <PointsBilleGratuite Nombre="10"/>
     <Difficulte Nombre="6"/>
 </Proprietes>
