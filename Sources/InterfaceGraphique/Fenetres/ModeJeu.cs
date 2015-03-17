@@ -80,6 +80,7 @@ namespace InterfaceGraphique
            // timerBille2.Interval = 1000;
            // timerBille2.Tick += new System.EventHandler(this.timerBille2_Tick);
             this.MouseWheel += new MouseEventHandler(panel_GL_MouseWheel);
+            
             EtablirTouches(playerType);
             this.KeyDown += new KeyEventHandler(PartieRapide_KeyDown);
             this.KeyUp += new KeyEventHandler(PartieRapide_KeyUp);
@@ -96,10 +97,7 @@ namespace InterfaceGraphique
             if (nbZones > 1)
                 this.Text = "Campagne";
             map = new StringBuilder(myMaps[0]);
-            //Console.WriteLine(nbZones);
             FonctionsNatives.ouvrirXML(map, map.Capacity);
-            //Console.WriteLine(pointsGagnerPartie);
-            //Console.WriteLine(pointsPartie);
             resetConfig();
             nombreBillesInit = FonctionsNatives.obtenirNombreDeBilles();
             FonctionsNatives.construireListesPalettes();
@@ -296,8 +294,6 @@ namespace InterfaceGraphique
             FonctionsNatives.creerObjet(bille, bille.Capacity);
             nombreDeBillesUtilise++;
             billesDisponibles--;
-          //  Console.WriteLine(nombreBillesInit);
-          //  Console.WriteLine(nombreDeBillesUtilise);
 
         }
         private void FinCampagne(bool active)

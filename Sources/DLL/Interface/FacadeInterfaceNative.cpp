@@ -1447,6 +1447,11 @@ extern "C"
 		return FacadeModele::obtenirInstance()->obtenirNombreDeBilles();
 	}
 
+	__declspec(dllexport) int __cdecl obtenirModeDoubleBille()
+	{
+		return FacadeModele::obtenirInstance()->obtenirModeDoubleBille();
+	}
+
 	__declspec(dllexport) int __cdecl obtenirAffichageGlobal()
 	{
 		return FacadeModele::obtenirInstance()->obtenirAffichageGlobal();

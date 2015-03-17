@@ -77,6 +77,8 @@ extern "C" {
 	__declspec(dllexport) int obtenirTouchePDJ2();
 	__declspec(dllexport) int obtenirToucheRessort();
 	__declspec(dllexport) int obtenirNombreDeBilles();
+	__declspec(dllexport) int obtenirModeDoubleBille();
+
 
 	__declspec(dllexport) int obtenirAffichageGlobal();
 	__declspec(dllexport) void bloquerAffichageGlobal(int active);

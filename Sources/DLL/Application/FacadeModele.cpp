@@ -1168,13 +1168,34 @@ int* FacadeModele::obtenirConfiguration()
 	return configuration_->obtenirConfiguration();
 }
 
-int	 FacadeModele::obtenirTouchePGJ1(){ return configuration_->obtenirRaccourciPGJ1(); }
-int  FacadeModele::obtenirTouchePGJ2(){ return configuration_->obtenirRaccourciPGJ2(); }
-int  FacadeModele::obtenirTouchePDJ1(){ return configuration_->obtenirRaccourciPDJ1(); }
-int  FacadeModele::obtenirTouchePDJ2(){ return configuration_->obtenirRaccourciPDJ2(); }
-int  FacadeModele::obtenirToucheRessort(){ return configuration_->obtenirRaccourciRessort(); }
-int  FacadeModele::obtenirAffichageGlobal(){ return configuration_->obtenirAffichageGlobal(); }
-int	 FacadeModele::obtenirNombreDeBilles(){ return configuration_->obtenirNombreBilles(); }
+int	 FacadeModele::obtenirTouchePGJ1(){ 
+	return configuration_->obtenirRaccourciPGJ1(); 
+}
+int  FacadeModele::obtenirTouchePGJ2(){ 
+	return configuration_->obtenirRaccourciPGJ2(); 
+}
+int  FacadeModele::obtenirTouchePDJ1(){ 
+	return configuration_->obtenirRaccourciPDJ1(); 
+}
+int  FacadeModele::obtenirTouchePDJ2(){ 
+	return configuration_->obtenirRaccourciPDJ2(); 
+}
+int  FacadeModele::obtenirToucheRessort(){ 
+	return configuration_->obtenirRaccourciRessort(); 
+}
+int  FacadeModele::obtenirAffichageGlobal(){ 
+	return configuration_->obtenirAffichageGlobal(); 
+}
+int	 FacadeModele::obtenirNombreDeBilles(){ 
+	return configuration_->obtenirNombreBilles(); 
+}
+int  FacadeModele::obtenirModeDoubleBille() { 
+	return configuration_->obtenirModeDoubleBille(); 
+}
+int  FacadeModele::obtenirModeForceRebond(){ 
+	return configuration_->obtenirModeForceRebond(); 
+}
+
 void FacadeModele::bloquerAffichageGlobal(int active){ configuration_->bloquerAffichageGlobal(active); };
 
 
