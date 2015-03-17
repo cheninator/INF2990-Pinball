@@ -235,7 +235,7 @@ public:
 	virtual aidecollision::DetailsCollision detecterCollisions(NoeudAbstrait* noeud);
 
 	/// Pour le traitement logique des collisions
-	virtual void traiterCollisions(aidecollision::DetailsCollision, NoeudAbstrait* bille, float facteurRebond = 1);
+	virtual void traiterCollisions(aidecollision::DetailsCollision, NoeudAbstrait* bille, float facteurRebond = 0.8);
 
 	/// Obtenir couleur
 	virtual bool getColorShift();
