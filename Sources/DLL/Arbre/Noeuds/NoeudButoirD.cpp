@@ -170,7 +170,7 @@ void NoeudButoirD::obtenirVecteursBoite(glm::dvec3 &v1, glm::dvec3 &v2, glm::dve
 /// @return details contient l'information sur la collision de la bille avec *this.
 ///
 ////////////////////////////////////////////////////////////////////////
-void NoeudButoirD::traiterCollisions(aidecollision::DetailsCollision details, NoeudAbstrait* bille)
+void NoeudButoirD::traiterCollisions(aidecollision::DetailsCollision details, NoeudAbstrait* bille, float facteurRebond)
 {
 	NoeudAbstrait::traiterCollisions(details, bille);
 	SingletonGlobal::obtenirInstance()->collisionButoirTriangulaire();
