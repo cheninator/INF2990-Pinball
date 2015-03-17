@@ -280,17 +280,18 @@ namespace InterfaceGraphique
                 FonctionsNatives.activerPalettesGJ1();
              }
 
-             else if (e.KeyValue == touches.PGJ2)
+              if (e.KeyValue == touches.PGJ2)
              {
                  // TODO: palette gauche joueur 2
+                 FonctionsNatives.activerPalettesGJ2();
              }
-             else if (e.KeyValue == touches.PDJ1)
+              if (e.KeyValue == touches.PDJ1)
              {
                  FonctionsNatives.activerPalettesDJ1();
              }
-             else if (e.KeyValue == touches.PDJ2)
+              if (e.KeyValue == touches.PDJ2)
              {
-
+                 FonctionsNatives.activerPalettesDJ2();
              }
              else if (e.KeyValue == touches.Ressort)
              {
@@ -316,19 +317,20 @@ namespace InterfaceGraphique
             {
                 FonctionsNatives.desactiverPalettesGJ1();
             }
-            else if (e.KeyValue == touches.PGJ2)
+             if (e.KeyValue == touches.PGJ2)
             {
                 // TO DO: palette gauche joueur 1
+                FonctionsNatives.desactiverPalettesGJ2();
             }
-            else if (e.KeyValue == touches.PDJ1)
+             if (e.KeyValue == touches.PDJ1)
             {
                 FonctionsNatives.desactiverPalettesDJ1();
             }
-            else if (e.KeyValue == touches.PDJ2)
+             if (e.KeyValue == touches.PDJ2)
             {
-
+                FonctionsNatives.desactiverPalettesDJ2();
             }
-            else if (e.KeyValue == touches.Ressort)
+             if (e.KeyValue == touches.Ressort)
             {
                 FonctionsNatives.relacherRessort();
             }
