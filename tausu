@@ -1,0 +1,120 @@
+diff --git a/Sources/InterfaceGraphique/Fenetres/Editeur.Designer.cs b/Sources/InterfaceGraphique/Fenetres/Editeur.Designer.cs
+index 605f2ce..492ab5c 100644
+--- a/Sources/InterfaceGraphique/Fenetres/Editeur.Designer.cs
++++ b/Sources/InterfaceGraphique/Fenetres/Editeur.Designer.cs
+@@ -167,9 +167,9 @@ private void InitializeComponent()
+             this.panel_GL.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+             this.panel_GL.BackColor = System.Drawing.Color.Transparent;
+             this.panel_GL.Dock = System.Windows.Forms.DockStyle.Fill;
+-            this.panel_GL.Location = new System.Drawing.Point(163, 24);
++            this.panel_GL.Location = new System.Drawing.Point(163, 48);
+             this.panel_GL.Name = "panel_GL";
+-            this.panel_GL.Size = new System.Drawing.Size(566, 705);
++            this.panel_GL.Size = new System.Drawing.Size(566, 681);
+             this.panel_GL.TabIndex = 4;
+             this.panel_GL.SizeChanged += new System.EventHandler(this.panel_GL_SizeChanged);
+             this.panel_GL.MouseClick += new System.Windows.Forms.MouseEventHandler(this.panel_GL_MouseClick);
+@@ -187,9 +187,9 @@ private void InitializeComponent()
+             this.Creation_Panel.Controls.Add(this.Group_Elements);
+             this.Creation_Panel.Controls.Add(this.Group_Element2);
+             this.Creation_Panel.Dock = System.Windows.Forms.DockStyle.Right;
+-            this.Creation_Panel.Location = new System.Drawing.Point(729, 24);
++            this.Creation_Panel.Location = new System.Drawing.Point(729, 48);
+             this.Creation_Panel.Name = "Creation_Panel";
+-            this.Creation_Panel.Size = new System.Drawing.Size(225, 705);
++            this.Creation_Panel.Size = new System.Drawing.Size(225, 681);
+             this.Creation_Panel.TabIndex = 2;
+             this.Creation_Panel.MouseEnter += new System.EventHandler(this.Creation_Panel_MouseEnter);
+             // 
+@@ -447,9 +447,9 @@ private void InitializeComponent()
+             this.flowLayoutPanel1.Controls.Add(this.Groupe_Proprietes);
+             this.flowLayoutPanel1.Controls.Add(this.richTextBox1);
+             this.flowLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Left;
+-            this.flowLayoutPanel1.Location = new System.Drawing.Point(0, 24);
++            this.flowLayoutPanel1.Location = new System.Drawing.Point(0, 48);
+             this.flowLayoutPanel1.Name = "flowLayoutPanel1";
+-            this.flowLayoutPanel1.Size = new System.Drawing.Size(163, 705);
++            this.flowLayoutPanel1.Size = new System.Drawing.Size(163, 681);
+             this.flowLayoutPanel1.TabIndex = 3;
+             this.flowLayoutPanel1.SizeChanged += new System.EventHandler(this.flowLayoutPanel1_SizeChanged);
+             // 
+@@ -741,7 +741,7 @@ private void InitializeComponent()
+             this.Vues_MenuItem,
+             this.Information_MenuItem,
+             this.Mute_MenuItem});
+-            this.menuStrip1.Location = new System.Drawing.Point(0, 0);
++            this.menuStrip1.Location = new System.Drawing.Point(0, 24);
+             this.menuStrip1.Name = "menuStrip1";
+             this.menuStrip1.Size = new System.Drawing.Size(954, 24);
+             this.menuStrip1.TabIndex = 0;
+@@ -765,7 +765,7 @@ private void InitializeComponent()
+             // 
+             this.Nouveau_MenuItem.Name = "Nouveau_MenuItem";
+             this.Nouveau_MenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.N)));
+-            this.Nouveau_MenuItem.Size = new System.Drawing.Size(230, 22);
++            this.Nouveau_MenuItem.Size = new System.Drawing.Size(226, 22);
+             this.Nouveau_MenuItem.Text = "Nouveau";
+             this.Nouveau_MenuItem.Click += new System.EventHandler(this.Nouveau_MenuItem_Click);
+             // 
+@@ -773,7 +773,7 @@ private void InitializeComponent()
+             // 
+             this.Ouvrir_MenuItem.Name = "Ouvrir_MenuItem";
+             this.Ouvrir_MenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.O)));
+-            this.Ouvrir_MenuItem.Size = new System.Drawing.Size(230, 22);
++            this.Ouvrir_MenuItem.Size = new System.Drawing.Size(226, 22);
+             this.Ouvrir_MenuItem.Text = "Ouvrir";
+             this.Ouvrir_MenuItem.Click += new System.EventHandler(this.Ouvrir_MenuItem_Click);
+             // 
+@@ -781,7 +781,7 @@ private void InitializeComponent()
+             // 
+             this.Enregistrer_MenuItem.Name = "Enregistrer_MenuItem";
+             this.Enregistrer_MenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.S)));
+-            this.Enregistrer_MenuItem.Size = new System.Drawing.Size(230, 22);
++            this.Enregistrer_MenuItem.Size = new System.Drawing.Size(226, 22);
+             this.Enregistrer_MenuItem.Text = "Enregistrer";
+             this.Enregistrer_MenuItem.Click += new System.EventHandler(this.Enregistrer_MenuItem_Click);
+             // 
+@@ -790,14 +790,14 @@ private void InitializeComponent()
+             this.EnregistrerS_MenuItem.Name = "EnregistrerS_MenuItem";
+             this.EnregistrerS_MenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)(((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.Shift) 
+             | System.Windows.Forms.Keys.S)));
+-            this.EnregistrerS_MenuItem.Size = new System.Drawing.Size(230, 22);
++            this.EnregistrerS_MenuItem.Size = new System.Drawing.Size(226, 22);
+             this.EnregistrerS_MenuItem.Text = "Enregistrer Sous";
+             this.EnregistrerS_MenuItem.Click += new System.EventHandler(this.EnregistrerS_MenuItem_Click);
+             // 
+             // Proprietes_MenuItem
+             // 
+             this.Proprietes_MenuItem.Name = "Proprietes_MenuItem";
+-            this.Proprietes_MenuItem.Size = new System.Drawing.Size(230, 22);
++            this.Proprietes_MenuItem.Size = new System.Drawing.Size(226, 22);
+             this.Proprietes_MenuItem.Text = "Propriétés";
+             this.Proprietes_MenuItem.Click += new System.EventHandler(this.Proprietes_MenuItem_Click);
+             // 
+@@ -805,7 +805,7 @@ private void InitializeComponent()
+             // 
+             this.ModeTest_MenuItem.Name = "ModeTest_MenuItem";
+             this.ModeTest_MenuItem.ShortcutKeyDisplayString = "t";
+-            this.ModeTest_MenuItem.Size = new System.Drawing.Size(230, 22);
++            this.ModeTest_MenuItem.Size = new System.Drawing.Size(226, 22);
+             this.ModeTest_MenuItem.Text = "Mode Test";
+             this.ModeTest_MenuItem.Click += new System.EventHandler(this.ModeTest_MenuItem_Click);
+             // 
+@@ -813,7 +813,7 @@ private void InitializeComponent()
+             // 
+             this.MenuP_MenuItem.Name = "MenuP_MenuItem";
+             this.MenuP_MenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.Q)));
+-            this.MenuP_MenuItem.Size = new System.Drawing.Size(230, 22);
++            this.MenuP_MenuItem.Size = new System.Drawing.Size(226, 22);
+             this.MenuP_MenuItem.Text = "Menu Principal";
+             this.MenuP_MenuItem.Click += new System.EventHandler(this.MenuP_MenuItem_Click);
+             // 
+@@ -831,7 +831,7 @@ private void InitializeComponent()
+             this.Supprimer_MenuItem.Enabled = false;
+             this.Supprimer_MenuItem.Name = "Supprimer_MenuItem";
+             this.Supprimer_MenuItem.ShortcutKeys = System.Windows.Forms.Keys.Delete;
+-            this.Supprimer_MenuItem.Size = new System.Drawing.Size(153, 22);
++            this.Supprimer_MenuItem.Size = new System.Drawing.Size(167, 22);
+             this.Supprimer_MenuItem.Text = "Supprimer";
+             this.Supprimer_MenuItem.Click += new System.EventHandler(this.Supprimer_MenuItem_Click);
+             // 

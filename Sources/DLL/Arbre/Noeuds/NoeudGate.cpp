@@ -148,7 +148,7 @@ bool NoeudGate::accepterVisiteur(VisiteurAbstrait* vis)
 /// @return aucun.
 ///
 ////////////////////////////////////////////////////////////////////////
-void NoeudGate::traiterCollisions(aidecollision::DetailsCollision details, NoeudAbstrait* bille)
+void NoeudGate::traiterCollisions(aidecollision::DetailsCollision details, NoeudAbstrait* bille, float facteurRebond)
 {
 	/* Traiter collision one way ici */
 	NoeudAbstrait::traiterCollisions(details, bille);

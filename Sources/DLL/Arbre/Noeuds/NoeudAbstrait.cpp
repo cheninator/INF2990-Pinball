@@ -894,7 +894,7 @@ aidecollision::DetailsCollision NoeudAbstrait::detecterCollisions(NoeudAbstrait*
 /// @return details contient l'information sur la collision de la bille avec *this.
 ///
 ////////////////////////////////////////////////////////////////////////
-void NoeudAbstrait::traiterCollisions(aidecollision::DetailsCollision details, NoeudAbstrait* bille)
+void NoeudAbstrait::traiterCollisions(aidecollision::DetailsCollision details, NoeudAbstrait* bille, float facteurRebond)
 {
 
 	assert(bille->obtenirType() == "bille");
@@ -908,7 +908,7 @@ void NoeudAbstrait::traiterCollisions(aidecollision::DetailsCollision details, N
 	glm::dvec3 vitesseInitiale = bille->obtenirVitesse();
 	glm::dvec3 vitesseNormaleInitiale = glm::proj(vitesseInitiale, details.direction); // Necessaire pour connaitre la vitesse tangentielle.
 	glm::dvec3 vitesseTangentielle = vitesseInitiale - vitesseNormaleInitiale;
-	glm::dvec2 vitesseNormaleFinale2D = aidecollision::calculerForceAmortissement2D(details, (glm::dvec2)vitesseInitiale, 1.0);
+	glm::dvec2 vitesseNormaleFinale2D = aidecollision::calculerForceAmortissement2D(details, (glm::dvec2)vitesseInitiale, facteurRebond);
 	glm::dvec3 vitesseFinale = vitesseTangentielle + glm::dvec3{ vitesseNormaleFinale2D.x, vitesseNormaleFinale2D.y, 0.0 };
 		((NoeudBille*)bille)->afficherVitesse(vitesseFinale); // Que Dieu me pardonne
 
