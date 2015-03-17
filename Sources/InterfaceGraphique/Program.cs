@@ -516,6 +516,9 @@ namespace InterfaceGraphique
         public static extern int obtenirNombreBillesCourante();
 
         [DllImport(@"Noyau.dll", CallingConvention = CallingConvention.Cdecl)]
+        public static extern int obtenirModeDoubleBille();
+
+        [DllImport(@"Noyau.dll", CallingConvention = CallingConvention.Cdecl)]
         public static extern int obtenirNombreDeBilles();
 
         [DllImport(@"Noyau.dll", CallingConvention = CallingConvention.Cdecl)]

@@ -179,6 +179,8 @@ public:
    int  obtenirTouchePDJ2();
    int  obtenirToucheRessort();
    int  obtenirNombreDeBilles();
+   int  obtenirModeDoubleBille();
+   int  obtenirModeForceRebond();
    int  obtenirAffichageGlobal();
    void bloquerAffichageGlobal(int active);
    bool obtenirAI();
