@@ -396,7 +396,7 @@ std::vector<glm::dvec3> NoeudPaletteD::obtenirVecteursEnglobants()
 
 	for (glm::dvec3 vecteur : boiteEnglobanteModele_)
 	{
-		boiteEnglobanteObjet.push_back(transform * (echelle * vecteur));
+		boiteEnglobanteObjet.push_back(transform * (.7*echelle * vecteur));
 	}
 
 	return boiteEnglobanteObjet;
