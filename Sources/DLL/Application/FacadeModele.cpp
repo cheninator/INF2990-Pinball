@@ -348,7 +348,7 @@ void FacadeModele::animer(float temps)
 	}
 
 	/// Traiter les collisions entre objets
-	bool useQuadTree = false;
+	bool useQuadTree = true;
 	if (useQuadTree)
 		traiterCollisionsAvecQuadTree(temps);
 	else
@@ -1481,7 +1481,7 @@ void FacadeModele::traiterCollisionsAvecQuadTree(float temps)
 
 			if (detail.type != aidecollision::COLLISION_AUCUNE)
 			{
-				// Traiter (reagir a) la collision. La bille n'est pas détruite
+				// Traiter (reagir a) la collision. La bille n'est pas détruite maintenant que NoeudTrou::traiterCollisions n'efface plus la bille (il le faisait au commit d'avant)
 				noeudAVerifier->traiterCollisions(detail, bille);
 
 				if (noeudAVerifier->obtenirType() == "trou") // Traiter le cas où une bille entre en collision avec un trou
@@ -1490,9 +1490,9 @@ void FacadeModele::traiterCollisionsAvecQuadTree(float temps)
 					quad_->remove(bille);
 					
 					// Mettre a jour le compte de billes
-					SingletonGlobal::obtenirInstance()->retirerBille();
+					// SingletonGlobal::obtenirInstance()->retirerBille();
 					
-					//std::vector<NoeudAbstrait*>::iterator laBilleIt;
+					// std::vector<NoeudAbstrait*>::iterator laBilleIt;
 					
 					// Enlever la bille de l'arbre de rendu, l'objet est détruit par cet appel
 					arbre_->effacer(bille);
@@ -1503,12 +1503,11 @@ void FacadeModele::traiterCollisionsAvecQuadTree(float temps)
 			}
 		}// Fin du for( noeudAVerifier : listeNoeudsAVerifier)
 
-		//mettreAJourListeBillesEtNoeuds();
+		//
 	}
-		// mettreAJourListeBillesEtNoeuds();
-
-		for (NoeudAbstrait* bille : listeBilles_)
-			quad_->remove(bille);
+	mettreAJourListeBillesEtNoeuds();
+	for (NoeudAbstrait* bille : listeBilles_)
+		quad_->remove(bille);
 }
 
 
