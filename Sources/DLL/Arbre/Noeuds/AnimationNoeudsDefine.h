@@ -23,7 +23,7 @@ enum Direction { dirY, dirYX, dirX, dirXY, dirZ }; // Pour fonctionner avec le s
 #define TEMPS_ILLUMINATION_NOEUD_BUTOIR .5		// Temsp pendant le quel un butoir s'illumine
 
 // Bille
-#define VITESSE_MAX_NOEUD_BILLE 200.		// Vitesse maximale de la bille
+#define VITESSE_MAX_NOEUD_BILLE 300.		// Vitesse maximale de la bille
 #define MASSE_NOEUD_BILLE 30.				// Poids (en kg?) de la bille
 #define FROTTEMENT_NOEUD_BILLE 10.		// Constante de frottement
 #define GRAVITE_NOEUD_BILLE glm::dvec3{ 0, -utilitaire::GRAVITE  * MASSE_NOEUD_BILLE, 0 }	// Force de la gravite appliquer sur la bille
@@ -54,7 +54,7 @@ enum Direction { dirY, dirYX, dirX, dirXY, dirZ }; // Pour fonctionner avec le s
 #define VITESSE_NOEUD_TROU 360./4.	// 1 tour toute les 4 secondes
 
 // Palettes
-#define VITESSE_ANGULAIRE_PALETTE_ACTIVE 500 // 500 degres par seconde approximativement 9 degres par 60ieme de seconde.
+#define VITESSE_ANGULAIRE_PALETTE_ACTIVE 700 // 500 degres par seconde approximativement 9 degres par 60ieme de seconde.
 #define VITESSE_ANGULAIRE_PALETTE_RETOUR 150 
 
 // Portails
