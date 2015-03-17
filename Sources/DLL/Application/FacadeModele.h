@@ -256,7 +256,7 @@ private:
    bool duplicationHorsTable_;
 
    bool pause_{ false };
-   bool utiliserAI { true };
+   bool utiliserAI { false };
 
    /// Listes de palettes à activer pour chaque touche
    std::set<NoeudPaletteG*> listePalettesGJ1_; ///< Gauche joueur 1
