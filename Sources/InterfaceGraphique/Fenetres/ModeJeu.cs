@@ -79,7 +79,7 @@ namespace InterfaceGraphique
            // timerBille2 = new Timer();
            // timerBille2.Interval = 1000;
            // timerBille2.Tick += new System.EventHandler(this.timerBille2_Tick);
-
+            this.MouseWheel += new MouseEventHandler(panel_GL_MouseWheel);
             EtablirTouches(playerType);
             this.KeyDown += new KeyEventHandler(PartieRapide_KeyDown);
             this.KeyUp += new KeyEventHandler(PartieRapide_KeyUp);
@@ -341,14 +341,6 @@ namespace InterfaceGraphique
                                 FonctionsNatives.obtenirToucheRessort());
             }
 
-            
-                Console.WriteLine(touches.PGJ1);
-                Console.WriteLine(touches.PDJ1);
-                Console.WriteLine(touches.PGJ2);
-                Console.WriteLine(touches.PDJ2);
-            
-
-
         }
 
         private void PartieRapide_KeyDown(object sender, KeyEventArgs e)
@@ -400,7 +392,6 @@ namespace InterfaceGraphique
             map = new StringBuilder(myMaps[0]);
             nextMap = new StringBuilder(map.ToString());
             nextMap.Remove(nextMap.Length - 4, 4);
-            //Console.WriteLine(map);
             this.Hide();
             zInfo = new ZoneInfo(Path.GetFileName(nextMap.ToString()), FonctionsNatives.obtenirDifficulte(map, map.Capacity).ToString(),false);
             zInfo.ShowDialog();
