@@ -75,7 +75,6 @@ namespace InterfaceGraphique
                         System.Console.WriteLine("Tests reussis.");
                         string s1 = System.Console.ReadLine();
                     }
-                    FonctionsNatives.FreeConsole();
                     return;
                 }
 
