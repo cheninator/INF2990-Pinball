@@ -197,7 +197,7 @@ bool VisiteurSelectionInverseMultiple::traiter(NoeudAbstrait* noeud)
 
 		if (estAInverser)
 		{
-			// std::cout << "Noeud de type " << noeud->getType() << " selection inverse " << std::endl;
+			// SingletonGlobal::obtenirInstance()->outPutStream_ << "Noeud de type " << noeud->getType() << " selection inverse " << std::endl;
 			noeud->assignerSelection(!noeud->estSelectionne());
 		}
 

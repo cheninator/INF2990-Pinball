@@ -57,6 +57,30 @@ void SingletonGlobal::resetConfigurationCollision(int collisionPointsCirculaire,
 
 }
 
+
+////////////////////////////////////////////////////////////////////////
+///
+/// @fn std::string SingletonGlobal::getAndEmptyStream()
+///
+/// Sauvegarde le output, vide le pour le prochain usage puis retourne le;
+/// "thread-safe".
+///
+/// @return Ce que la console contient presentement.
+///
+////////////////////////////////////////////////////////////////////////
+std::string SingletonGlobal::getAndEmptyStream()
+{ 
+		historyStream_ << outPutStream_.str();
+
+		std::string tempStream;
+		tempStream =  outPutStream_.str();
+
+		outPutStream_.clear();
+		outPutStream_.str(std::string());
+
+		return tempStream;
+	};
+
 ////////////////////////////////////////////////////////////////////////
 ///
 /// @fn void SingletonGlobal::libererInstance()
