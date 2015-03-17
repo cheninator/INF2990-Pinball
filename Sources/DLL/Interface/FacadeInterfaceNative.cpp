@@ -1518,6 +1518,8 @@ extern "C"
 
 	__declspec(dllexport) BSTR obtenirHistoriqueConsole()
 	{
+		// Rajouter ce qu'il y a en ce moment dans le stream dans l'historique
+		SingletonGlobal::obtenirInstance()->getAndEmptyStream();
 		std::string str = SingletonGlobal::obtenirInstance()->obtenirHistoriqueConsole();
 		return stringToBSTR(str);
 	}

@@ -100,6 +100,12 @@
     </Compile>
     <Compile Include="Etats\EtatAbstrait.cs" />
     <Compile Include="Etats\EtatEditeurAbstrait.cs" />
+    <Compile Include="Fenetres\CustomConsole.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Fenetres\CustomConsole.Designer.cs">
+      <DependentUpon>CustomConsole.cs</DependentUpon>
+    </Compile>
     <Compile Include="Fenetres\Editeur.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -155,6 +161,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Fenetres\Configuration.resx">
       <DependentUpon>Configuration.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Fenetres\CustomConsole.resx">
+      <DependentUpon>CustomConsole.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Fenetres\Editeur.resx">
       <DependentUpon>Editeur.cs</DependentUpon>

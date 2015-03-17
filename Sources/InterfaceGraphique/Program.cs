@@ -18,6 +18,7 @@ using System.Diagnostics;
 using System.Windows.Forms;
 using System.Runtime.InteropServices;
 using System.Text;
+using System.IO;
 
 namespace InterfaceGraphique
 {
@@ -45,6 +46,7 @@ namespace InterfaceGraphique
         private static Stopwatch chrono = Stopwatch.StartNew(); ///< Chronometre
         private static TimeSpan tempsEcouleVoulu = TimeSpan.FromTicks(TimeSpan.TicksPerSecond / (NB_IMAGES_PAR_SECONDE * 10)); ///< Temps avant le rafraichissement
         public static int compteurFrames = 0;
+        private static CustomConsole cConsole;
 
         ////////////////////////////////////////////////////////////////////////
         ///
@@ -57,6 +59,7 @@ namespace InterfaceGraphique
         ///
         ////////////////////////////////////////////////////////////////////////
         [STAThread]
+
         static void Main(string[] args)
         {
             if (args.Length != 0)
@@ -72,15 +75,18 @@ namespace InterfaceGraphique
                         System.Console.WriteLine("Tests reussis.");
                         string s1 = System.Console.ReadLine();
                     }
-
-                   return;
+                    FonctionsNatives.FreeConsole();
+                    return;
                 }
 
             chrono.Start();
             Application.Idle += ExecuterQuandInactif;
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-          
+
+            cConsole = new CustomConsole();
+            cConsole.Show();
+
             mMenu = new MainMenu();
 
             Application.Run(mMenu);
@@ -126,7 +132,8 @@ namespace InterfaceGraphique
                             mMenu.modeJeuMain.MettreAJour((double)tempsAccumule.Ticks / TimeSpan.TicksPerSecond);
                         }
                         // To remove from here
-                            Console.Write(FonctionsNatives.obtenirConsole());
+                        if (compteurFrames == 0)
+                            cConsole.UpdateConsoleTexte();
                         compteurFrames++;
                         if (compteurFrames >= 10)
                             compteurFrames = 0;
@@ -249,6 +256,8 @@ namespace InterfaceGraphique
     static partial class FonctionsNatives
     {
         [StructLayout(LayoutKind.Sequential)]
+
+        // User32.dll
         public struct Message
         {
             public IntPtr hWnd;
@@ -258,11 +267,11 @@ namespace InterfaceGraphique
             public uint Time;
             public System.Drawing.Point Point;
         }
-
         [DllImport("User32.dll")]
         [return: MarshalAs(UnmanagedType.Bool)]
         public static extern bool PeekMessage(out Message message, IntPtr hWnd, uint filterMin, uint filterMax, uint flags);
 
+        // Noyeau.dll
         [DllImport(@"Noyau.dll", CallingConvention = CallingConvention.Cdecl)]
         public static extern bool executerTests();
 
