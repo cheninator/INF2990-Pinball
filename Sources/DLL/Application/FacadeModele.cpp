@@ -200,9 +200,9 @@ void FacadeModele::initialiserOpenGL(HWND hWnd)
 	// Creation de l'arbre de rendu.  a moins d'etre completement certain
 	// d'avoir une bonne raison de faire autrement, il est plus sage de creer
 	// l'arbre apres avoir cree le contexte OpenGL.
-	SingletonGlobal::obtenirInstance()->outPutStream_ << "Creation de l'arbre de rendu..." << std::endl;
+	std::cout << "Creation de l'arbre de rendu..." << std::endl;
 	arbre_ = new ArbreRenduINF2990;
-	SingletonGlobal::obtenirInstance()->outPutStream_ << "Initialisation de l'arbre de rendu..." << std::endl;
+	std::cout << "Initialisation de l'arbre de rendu..." << std::endl;
 	arbre_->initialiser();
 	// On cree une vue par defaut.
 	vue_ = new vue::VueOrtho{
@@ -215,7 +215,7 @@ void FacadeModele::initialiserOpenGL(HWND hWnd)
 				double(coinGaucheTableX), double(coinGaucheTableY),
 				double(coinDroitTableX), double(coinDroitTableY)}
 	};
-	SingletonGlobal::obtenirInstance()->outPutStream_ << "Arbre de rendu generer !" << std::endl << std::endl << std::endl;
+	std::cout << "Arbre de rendu generer !" << std::endl << std::endl << std::endl;
 }
 
 
@@ -386,7 +386,7 @@ int FacadeModele::selectionnerObjetSousPointClique(int i, int j, int hauteur, in
 	int valeurStencil = 0;
 	glReadPixels(i ,hauteur -j , 1, 1, GL_STENCIL_INDEX, GL_UNSIGNED_INT, &valeurStencil);
 	// Merci de laisser le cout pour que je puisse le décommenter au besoin
-	//SingletonGlobal::obtenirInstance()->outPutStream_ << "Valeur du stencil sous le curseur " << valeurStencil << std::endl
+	//std::cout << "Valeur du stencil sous le curseur " << valeurStencil << std::endl
 	//	<< "============= Visite des noeuds ========================" << std::endl;
 	if (!ctrlDown)
 	{
@@ -1436,7 +1436,7 @@ void FacadeModele::traiterCollisionsAvecQuadTree(float temps)
 
 		quad_->insert(bille);
 		listeNoeudsAVeririer = quad_->retrieve(bille);
-		SingletonGlobal::obtenirInstance()->outPutStream_ << listeNoeudsAVeririer.size() << std::endl;
+		std::cout << listeNoeudsAVeririer.size() << std::endl;
 		listeNoeudsAVeririer.push_back(arbre_->chercher(0));
 
 		bille->assignerImpossible(false);

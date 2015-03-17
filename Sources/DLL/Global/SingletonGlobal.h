@@ -61,8 +61,6 @@ public:
 	bool obtenirAnimation() { return animer_; };
 
 	std::string obtenirPathTemp() { objectPathCreated_ ? NULL : getAndSetTempObjDirectory(); return objectPath_; };
-	
-	std::string getAndEmptyStream();
 
 	std::stringstream outPutStream_{""};
 
@@ -106,8 +104,6 @@ private:
 
 	std::string objectPath_;
 	bool objectPathCreated_{ false };
-
-	std::stringstream historyStream_{ "" };
 };
 
 #endif // __SINGLETONGLOBAL_H__
