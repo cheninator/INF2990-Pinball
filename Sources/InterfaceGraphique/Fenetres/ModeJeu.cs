@@ -16,6 +16,7 @@ namespace InterfaceGraphique
         private int currentZone = 0;
         private int nbZones;
         private int nombreBillesInit = 0;
+        private int nombreBillesMax;
         List<string> myMaps;
         StringBuilder map;
         StringBuilder nextMap;
@@ -80,7 +81,16 @@ namespace InterfaceGraphique
            // timerBille2.Interval = 1000;
            // timerBille2.Tick += new System.EventHandler(this.timerBille2_Tick);
             this.MouseWheel += new MouseEventHandler(panel_GL_MouseWheel);
-            
+            if (FonctionsNatives.obtenirModeDoubleBille() != 0)
+            {
+                nombreBillesMax = 2;
+            }
+            else
+            {
+                nombreBillesMax = 1;
+            }
+            Console.WriteLine("nbmax: " + nombreBillesMax);
+
             EtablirTouches(playerType);
             this.KeyDown += new KeyEventHandler(PartieRapide_KeyDown);
             this.KeyUp += new KeyEventHandler(PartieRapide_KeyUp);
@@ -189,7 +199,9 @@ namespace InterfaceGraphique
                     }
                     billesEnJeu = FonctionsNatives.obtenirNombreBillesCourante();
 
-                    if (billesEnJeu == 0 && (billesDisponibles >= 0))
+                    //if (billesEnJeu == 0 && (billesDisponibles >= 0))
+                    if (billesEnJeu < nombreBillesMax && (billesDisponibles >= 0))
+                    
                     {
                         // wait a certain time
                         CreerBille();
@@ -252,6 +264,7 @@ namespace InterfaceGraphique
         public void RecommencerPartie()
         {
             resetConfig();
+            FonctionsNatives.purgeAll();
             FonctionsNatives.ouvrirXML(map, map.Capacity);
             FonctionsNatives.resetNombreBillesCourantes();
             FonctionsNatives.construireListesPalettes();
