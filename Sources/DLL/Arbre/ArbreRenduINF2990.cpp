@@ -195,6 +195,7 @@ bool ArbreRenduINF2990::accepterVisiteur(VisiteurAbstrait* vis)
 ////////////////////////////////////////////////////////////////////////
 bool ArbreRenduINF2990::initialiserXML(std::string nomFichier)
 {
+	NoeudAbstrait::compteurNoeuds_ = 0;
 	bool fichierTrouve = false;
 	tinyxml2::XMLDocument document;
 
