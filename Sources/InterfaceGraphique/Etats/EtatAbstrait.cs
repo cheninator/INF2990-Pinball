@@ -11,6 +11,7 @@ namespace InterfaceGraphique
 {
     public abstract class EtatAbstrait
     {
+        public static CustomConsole cConsole = new CustomConsole(); 
         public virtual bool traiterClavier(KeyEventArgs e)
         {
             return false;

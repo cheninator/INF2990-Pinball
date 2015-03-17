@@ -46,7 +46,6 @@ namespace InterfaceGraphique
         private static Stopwatch chrono = Stopwatch.StartNew(); ///< Chronometre
         private static TimeSpan tempsEcouleVoulu = TimeSpan.FromTicks(TimeSpan.TicksPerSecond / (NB_IMAGES_PAR_SECONDE * 10)); ///< Temps avant le rafraichissement
         public static int compteurFrames = 0;
-        private static CustomConsole cConsole;
 
         ////////////////////////////////////////////////////////////////////////
         ///
@@ -82,9 +81,6 @@ namespace InterfaceGraphique
             Application.Idle += ExecuterQuandInactif;
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-
-            cConsole = new CustomConsole();
-            cConsole.Show();
 
             mMenu = new MainMenu();
 
@@ -132,7 +128,10 @@ namespace InterfaceGraphique
                         }
                         // To remove from here
                         if (compteurFrames == 0)
-                            cConsole.UpdateConsoleTexte();
+                        {
+                            if (EtatAbstrait.cConsole.Visible)
+                                EtatAbstrait.cConsole.UpdateConsoleTexte();
+                        }
                         compteurFrames++;
                         if (compteurFrames >= 10)
                             compteurFrames = 0;

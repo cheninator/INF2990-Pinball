@@ -461,7 +461,6 @@ namespace InterfaceGraphique
             }
             else
             {
-
                 if (e.KeyChar == (char)Keys.Escape)
                 {
                     if (etat is EtatEditeurPortail)
@@ -1597,7 +1596,8 @@ namespace InterfaceGraphique
             FonctionsNatives.translater(-mouvementX, mouvementY);
             FonctionsNatives.construireListesPalettes();
             FonctionsNatives.mettreAJourListeBillesEtNoeuds();
-
+            if (FonctionsNatives.obtenirAffichageGlobal() == 1)
+                EtatAbstrait.cConsole.Show();
             //panel_GL.Dock = DockStyle.Fill;
             //menuStrip3.BringToFront();
             
@@ -3032,6 +3032,7 @@ namespace InterfaceGraphique
             FonctionsNatives.translater(mouvementX, -mouvementY);
             FonctionsNatives.mettreAJourListeBillesEtNoeuds();
             FonctionsNatives.modePause(false);
+            EtatAbstrait.cConsole.Hide();
         }
 
         //////////////////////////////////////////////////////////////////////////////////////////
@@ -3048,20 +3049,4 @@ namespace InterfaceGraphique
             this.Close();
         }
     }
-
-   
-    ///////////////////////////////////////////////////////////////////////////
-    /// @class FonctionsNatives
-    /// @brief Importation des fonctions natives (logique C++).
-    ///
-    /// @author Inconnu
-    /// @date Incconue
-    /// 
-    /// @ingroup InterfaceGraphique
-    ///////////////////////////////////////////////////////////////////////////
-    static partial class FonctionsNatives
-    {
-        
-    }
-
 }

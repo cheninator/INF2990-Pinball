@@ -42,6 +42,7 @@ namespace InterfaceGraphique
         private bool webCamExiste = false;
         private Bitmap bit;
         private System.Windows.Forms.Timer webcamTimer;
+        public static bool consoleReady = false;
 
         ////////////////////////////////////////////////////////////////////////
         ///
