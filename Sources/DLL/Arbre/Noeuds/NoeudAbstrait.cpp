@@ -853,15 +853,22 @@ aidecollision::DetailsCollision NoeudAbstrait::detecterCollisions(NoeudAbstrait*
 		for (unsigned int i = 0; i < boite.size(); i++)
 			boite[i] += obtenirPositionRelative();
 		// Considerer tous les segments boite[i] --- boite[i+1 % size] 
+		aidecollision::DetailsCollision detailsRetour;
+		detailsRetour.type = aidecollision::COLLISION_AUCUNE;
 		for (unsigned int i = 0; i < boite.size(); i++)
 		{
 			// On veut calculer la collision en 2D et caster les paramêtres en glm::dvec2 "oublie" leur composante en Z et choisi la bonne surcharge de calculerCollisionSegment.
 			details = aidecollision::calculerCollisionSegment((glm::dvec2)boite[i], (glm::dvec2)boite[(i + 1) % boite.size()], (glm::dvec2)bille->obtenirPositionRelative(), rayonBille, true);
 			if (details.type != aidecollision::COLLISION_AUCUNE)
 			{
-				return details;
+				// Donner priorité aux collision sur les segments plutot que sur les points.
+				if (details.type == aidecollision::COLLISION_SEGMENT)
+					return details;
+				else
+					detailsRetour = details;
 			}
 		}
+		return details;
 	}
 	else if (boite.size() == 1)// a mettre dans la reimplementation pour les objets circulaires.
 	{
