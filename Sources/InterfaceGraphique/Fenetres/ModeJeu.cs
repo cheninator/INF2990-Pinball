@@ -286,6 +286,11 @@ namespace InterfaceGraphique
             FonctionsNatives.mettreAJourListeBillesEtNoeuds();
         }
 
+
+        public void AfficherInformations()
+        {
+            InfoPanel.Visible = !InfoPanel.Visible;
+        }
         private void ProchainePartie()
         {
             boolTemp = false;
