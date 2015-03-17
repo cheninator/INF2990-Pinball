@@ -46,7 +46,7 @@ public:
 
 
 	/// Pour le traitement logique des collisions
-	virtual void traiterCollisions(aidecollision::DetailsCollision, NoeudAbstrait* bille);
+	virtual void traiterCollisions(aidecollision::DetailsCollision, NoeudAbstrait* bille, float facteurRebond = 1);
 
 private:
 

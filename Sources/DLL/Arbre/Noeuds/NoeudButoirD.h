@@ -45,7 +45,7 @@ public:
 	virtual void obtenirVecteursBoite(glm::dvec3 &v1, glm::dvec3 &v2, glm::dvec3 &v3, glm::dvec3 &v4);
 
 	/// Pour le traitement logique des collisions
-	virtual void traiterCollisions(aidecollision::DetailsCollision, NoeudAbstrait* bille);
+	virtual void traiterCollisions(aidecollision::DetailsCollision, NoeudAbstrait* bille, float facteurRebond = 1);
 
 private:
 
