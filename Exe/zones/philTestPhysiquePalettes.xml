@@ -8,19 +8,20 @@
 </Proprietes>
 
 <arbreRenduINF2990>
-    <table nbEnfants="12">
+    <table nbEnfants="13">
         <generateurbille posX="146.4762757459269" posY="72.151418064904362" posZ="30.400221438290217" scaleX="0.74784138843446213" scaleY="0.74784138843446213" scaleZ="0.74784138843446213" angleX="0" angleY="0" angleZ="0"/>
-        <trou posX="184.46329534282449" posY="-178.46329574032114" posZ="0" scaleX="0.53149983335494277" scaleY="0.53149983335494277" scaleZ="0.53149983335494277" angleX="0" angleY="0" angleZ="2654"/>
-        <ressort posX="246.07137484666384" posY="10.61990850265158" posZ="0" scaleX="1" scaleY="1" scaleZ="1" angleX="0" angleY="0" angleZ="0"/>
-        <paletteg posX="123.51550050632844" posY="-125.61501371777599" posZ="0.84732902050018311" scaleX="1" scaleY="1" scaleZ="1" angleX="0" angleY="0" angleZ="139.33333333333258" color="0"/>
-        <paletted posX="244.82055822034036" posY="-125.61501371777601" posZ="0.049136999994516373" scaleX="1" scaleY="1" scaleZ="1" angleX="0" angleY="0" angleZ="220.66666666666782" color="0"/>
-        <butoirg posX="134.24632586071104" posY="-100.88744260778218" posZ="0" scaleX="0.53149983335494277" scaleY="0.53149983335494277" scaleZ="0.53149983335494277" angleX="0" angleY="0" angleZ="0"/>
-        <butoird posX="238.28874074619051" posY="-101.35400053488931" posZ="0" scaleX="0.53149983335494277" scaleY="0.53149983335494277" scaleZ="0.53149983335494277" angleX="0" angleY="0" angleZ="0"/>
-        <paletteg posX="123.04893547293483" posY="-56.564439296227761" posZ="0.84732902050018311" scaleX="1" scaleY="1" scaleZ="1" angleX="0" angleY="0" angleZ="147.3333333333324" color="1"/>
-        <paletted posX="255.08482521549396" posY="-53.29853380647782" posZ="0.049136999994516373" scaleX="1" scaleY="1" scaleZ="1" angleX="0" angleY="0" angleZ="218.00000000000108" color="1"/>
-        <cible posX="231.52365354749264" posY="-19.064845408256144" posZ="5.5914826862389102" scaleX="0.6653851578497445" scaleY="0.6653851578497445" scaleZ="0.6653851578497445" angleX="134" angleY="0" angleZ="-28.999999999999964"/>
-        <cible posX="146.96003158339784" posY="40.421287007171635" posZ="5.5914826862389102" scaleX="0.6653851578497445" scaleY="0.6653851578497445" scaleZ="0.6653851578497445" angleX="134" angleY="0" angleZ="44.333333333333393"/>
-        <mur posX="185.46686395639324" posY="-3.7291077428017161" posZ="4.1593260765075684" scaleX="1" scaleY="22.310709133634042" scaleZ="1" angleX="0" angleY="0" angleZ="-2.2906101133338872"/>
+        <trou posX="149.93800982077562" posY="-46.893963111681089" posZ="22.99976443499132" scaleX="0.7323234918402769" scaleY="0.7323234918402769" scaleZ="0.7323234918402769" angleX="0" angleY="0" angleZ="2654"/>
+        <ressort posX="246.07137484666384" posY="10.61990850265158" posZ="10" scaleX="1" scaleY="1" scaleZ="1" angleX="0" angleY="0" angleZ="0"/>
+        <paletteg posX="123.51550050632844" posY="-125.61501371777599" posZ="10.03439600020647" scaleX="1" scaleY="1" scaleZ="1" angleX="0" angleY="0" angleZ="139.33333333333258" color="0"/>
+        <paletted posX="244.82055822034036" posY="-125.61501371777601" posZ="10.03439600020647" scaleX="1" scaleY="1" scaleZ="1" angleX="0" angleY="0" angleZ="220.66666666666782" color="0"/>
+        <butoirg posX="134.24632586071104" posY="-100.88744260778218" posZ="10" scaleX="0.53149983335494277" scaleY="0.53149983335494277" scaleZ="0.53149983335494277" angleX="0" angleY="0" angleZ="0"/>
+        <butoird posX="238.28874074619051" posY="-101.35400053488931" posZ="10" scaleX="0.53149983335494277" scaleY="0.53149983335494277" scaleZ="0.53149983335494277" angleX="0" angleY="0" angleZ="0"/>
+        <paletteg posX="123.04893547293483" posY="-56.564439296227761" posZ="10.03439600020647" scaleX="1" scaleY="1" scaleZ="1" angleX="0" angleY="0" angleZ="147.3333333333324" color="1"/>
+        <paletted posX="255.08482521549396" posY="-53.29853380647782" posZ="10.03439600020647" scaleX="1" scaleY="1" scaleZ="1" angleX="0" angleY="0" angleZ="218.00000000000108" color="1"/>
+        <cible posX="231.52365354749264" posY="-19.064845408256144" posZ="15.59148268623891" scaleX="0.6653851578497445" scaleY="0.6653851578497445" scaleZ="0.6653851578497445" angleX="134" angleY="0" angleZ="-28.999999999999964"/>
+        <cible posX="146.96003158339784" posY="40.421287007171635" posZ="15.59148268623891" scaleX="0.6653851578497445" scaleY="0.6653851578497445" scaleZ="0.6653851578497445" angleX="134" angleY="0" angleZ="44.333333333333393"/>
+        <mur posX="185.46686395639324" posY="-3.7291077428017161" posZ="14.159326076507568" scaleX="1" scaleY="22.310709133634042" scaleZ="1" angleX="0" angleY="0" angleZ="-2.2906101133338872"/>
+        <mur posX="161.539966802002" posY="-85.257750802222205" posZ="14.159326076507568" scaleX="1" scaleY="5.1065778773788981" scaleZ="1" angleX="0" angleY="0" angleZ="-88.111811974402144"/>
     </table>
     <couvercle/>
 </arbreRenduINF2990>

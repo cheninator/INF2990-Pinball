@@ -121,6 +121,7 @@ namespace InterfaceGraphique
         {
             cameraControl(false);
             this.Dispose();
+            System.Environment.Exit(0);
         }
 
         private void pictureBox1_Click(object sender, EventArgs e)
@@ -407,6 +408,33 @@ namespace InterfaceGraphique
                 webcamTimer.Enabled = false;
                 webcamTimer.Stop();
             }
+        }
+
+        private void MainMenu_Activated(object sender, EventArgs e)
+        {
+            if (webcam.Count >= 1)
+            {
+                webCamExiste = true;
+                cam = new VideoCaptureDevice(webcam[0].MonikerString);
+                cam.NewFrame += new NewFrameEventHandler(cam_NewFrame);
+                cameraControl(true);
+            }
+        }
+
+        private void MainMenu_Deactivate(object sender, EventArgs e)
+        {
+            if (webCamExiste && bit != null)
+            {
+                webcamTimer.Enabled = false;
+                webcamTimer.Stop();
+            }
+        }
+
+        private void MainMenu_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            cameraControl(false);
+            this.Dispose();
+            System.Environment.Exit(0);
         }
     }
 }

@@ -168,6 +168,9 @@ namespace InterfaceGraphique
             this.MinimumSize = new System.Drawing.Size(400, 300);
             this.Name = "MainMenu";
             this.Text = "PainBall";
+            this.Activated += new System.EventHandler(this.MainMenu_Activated);
+            this.Deactivate += new System.EventHandler(this.MainMenu_Deactivate);
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.MainMenu_FormClosing);
             this.Shown += new System.EventHandler(this.MainMenu_Shown);
             this.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.Form1_KeyPress);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
