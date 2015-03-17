@@ -325,7 +325,7 @@ namespace InterfaceGraphique
                                 FonctionsNatives.obtenirTouchePDJ2(),
                                 FonctionsNatives.obtenirToucheRessort());
 
-                FonctionsNatives.activerAI(true);
+                FonctionsNatives.activerAI(false);
             }
             else if (playerType == 3)
             {
@@ -336,7 +336,7 @@ namespace InterfaceGraphique
                                 1337,
                                 FonctionsNatives.obtenirToucheRessort());
 
-                FonctionsNatives.activerAI(false);
+                FonctionsNatives.activerAI(true);
             }
 
         }
