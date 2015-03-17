@@ -368,8 +368,6 @@ namespace InterfaceGraphique
             etat.traiterKeyUp(sender, e);
         }
 
-        
-
         private void PartieRapide_redimensionner(object sender, EventArgs e)
         {
             FonctionsNatives.redimensionnerFenetre(panel_GL.Width == 0 ? 1 : panel_GL.Width, panel_GL.Height == 0 ? 1 : panel_GL.Height);
