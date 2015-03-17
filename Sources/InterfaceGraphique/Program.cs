@@ -45,7 +45,6 @@ namespace InterfaceGraphique
         private static Stopwatch chrono = Stopwatch.StartNew(); ///< Chronometre
         private static TimeSpan tempsEcouleVoulu = TimeSpan.FromTicks(TimeSpan.TicksPerSecond / (NB_IMAGES_PAR_SECONDE * 10)); ///< Temps avant le rafraichissement
         public static int compteurFrames = 0;
-
         ////////////////////////////////////////////////////////////////////////
         ///
         /// @fn static void Main(string[] args)
@@ -125,8 +124,7 @@ namespace InterfaceGraphique
                         {
                             mMenu.modeJeuMain.MettreAJour((double)tempsAccumule.Ticks / TimeSpan.TicksPerSecond);
                         }
-                        // To remove from here
-                            Console.Write(FonctionsNatives.obtenirConsole());
+                        Console.Write(FonctionsNatives.obtenirConsole());
                         compteurFrames++;
                         if (compteurFrames >= 10)
                             compteurFrames = 0;
@@ -468,6 +466,8 @@ namespace InterfaceGraphique
         [DllImport(@"Noyau.dll", CallingConvention = CallingConvention.Cdecl)]
         public static extern  void desactiverPalettesDJ2();
 
+
+
         [DllImport(@"Noyau.dll", CharSet = CharSet.Unicode, CallingConvention = CallingConvention.Cdecl)]
         [return: MarshalAs(UnmanagedType.BStr)]
         public static extern string obtenirDerniereCampagne();
@@ -475,13 +475,6 @@ namespace InterfaceGraphique
         [DllImport(@"Noyau.dll", CharSet = CharSet.Unicode, CallingConvention = CallingConvention.Cdecl)]
         [return: MarshalAs(UnmanagedType.BStr)]
         public static extern string obtenirConsole();
-
-        [DllImport(@"Noyau.dll", CharSet = CharSet.Unicode, CallingConvention = CallingConvention.Cdecl)]
-        [return: MarshalAs(UnmanagedType.BStr)]
-        public static extern string obtenirHistoriqueConsole();
-
-        [DllImport(@"Noyau.dll", CallingConvention = CallingConvention.Cdecl)]
-        public static extern void viderHistoricConsole();
 
         [DllImport(@"Noyau.dll", CallingConvention = CallingConvention.Cdecl)]
         public static extern void supprimerBille();
