@@ -247,7 +247,7 @@ namespace InterfaceGraphique
                 Program.peutAfficher = false;
                 Program.tempBool = false;
             }
-            //Console.WriteLine("closing");
+            Console.WriteLine("closing");
 
         }
 
@@ -342,10 +342,10 @@ namespace InterfaceGraphique
             }
 
             
-                //Console.WriteLine(touches.PGJ1);
-                //Console.WriteLine(touches.PDJ1);
-                //Console.WriteLine(touches.PGJ2);
-                //Console.WriteLine(touches.PDJ2);
+                Console.WriteLine(touches.PGJ1);
+                Console.WriteLine(touches.PDJ1);
+                Console.WriteLine(touches.PGJ2);
+                Console.WriteLine(touches.PDJ2);
             
 
 

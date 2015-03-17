@@ -1453,10 +1453,6 @@ extern "C"
 	}
 	__declspec(dllexport) void __cdecl bloquerAffichageGlobal(int active)
 	{
-		if (active)
-			SingletonGlobal::obtenirInstance()->outPutStream_ << "Affichage bloque. On debloque" << std::endl;
-		else
-			SingletonGlobal::obtenirInstance()->outPutStream_ << "Affichage permis. On bloque" << std::endl;
 		FacadeModele::obtenirInstance()->bloquerAffichageGlobal(active);
 		FacadeModele::obtenirInstance()->setDebug();
 	}
@@ -1509,11 +1505,6 @@ extern "C"
 	{
 		std::string str = SingletonGlobal::obtenirInstance()->getAndEmptyStream();
 		return stringToBSTR(str);
-	}
-
-	__declspec(dllexport) void ajouterTexteConsole(char* text, int length)
-	{
-		SingletonGlobal::obtenirInstance()->outPutStream_ << std::string(text);
 	}
 
 	__declspec(dllexport) BSTR obtenirHistoriqueConsole()

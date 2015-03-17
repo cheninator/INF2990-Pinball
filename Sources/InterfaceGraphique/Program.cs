@@ -476,9 +476,6 @@ namespace InterfaceGraphique
         [return: MarshalAs(UnmanagedType.BStr)]
         public static extern string obtenirConsole();
 
-        [DllImport(@"Noyau.dll", CallingConvention = CallingConvention.Cdecl)]
-        public static extern void ajouterTexteConsole(StringBuilder text, int length);
-
         [DllImport(@"Noyau.dll", CharSet = CharSet.Unicode, CallingConvention = CallingConvention.Cdecl)]
         [return: MarshalAs(UnmanagedType.BStr)]
         public static extern string obtenirHistoriqueConsole();
