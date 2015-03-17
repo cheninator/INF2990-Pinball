@@ -398,12 +398,10 @@ namespace InterfaceGraphique
                     
                     if (FonctionsNatives.obtenirAffichageGlobal() == 0)
                     {
-                        Console.WriteLine("Affichage bloque. On debloque");
                         FonctionsNatives.bloquerAffichageGlobal(1);
                     }
                     else
                     {
-                        Console.WriteLine("Affichage permis. On bloque");
                         FonctionsNatives.bloquerAffichageGlobal(0);
                     }
                 }
