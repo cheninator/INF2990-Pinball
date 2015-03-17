@@ -163,7 +163,7 @@ namespace InterfaceGraphique
             {
                 this.Invoke((MethodInvoker)delegate
                 {
-                    if (etat is EtatEditeurSelectionMultiple || etat is EtatEditeurSelectionMultiple)
+                    if (etat is EtatEditeurSelectionMultiple || etat is EtatEditeurZoomElastique)
                     {
                         if (Program.compteurFrames == 0)
                             rectangleElastique();
