@@ -50,7 +50,7 @@ public:
 	void desactiver();
 
 	/// Pour le traitement logique des collisions
-	virtual void traiterCollisions(aidecollision::DetailsCollision, NoeudAbstrait* bille);
+	virtual void traiterCollisions(aidecollision::DetailsCollision, NoeudAbstrait* bille, float facteurRebond = 1);
 
 	/// Obtenir l'angle initial de la palette
 	double obtenirAngleZOriginal() const { return angleZOriginal_; };

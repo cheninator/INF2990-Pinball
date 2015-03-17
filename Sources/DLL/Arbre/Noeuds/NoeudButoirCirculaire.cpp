@@ -10,6 +10,7 @@
 #include "NoeudButoirCirculaire.h"
 #include "Utilitaire.h"
 #include "../../Global/SingletonGlobal.h"
+#include "../../Application/FacadeModele.h"
 
 #include <windows.h>
 #include <GL/gl.h>
@@ -248,9 +249,17 @@ aidecollision::DetailsCollision NoeudButoirCirculaire::detecterCollisions(NoeudA
 /// @return details contient l'information sur la collision de la bille avec *this.
 ///
 ////////////////////////////////////////////////////////////////////////
-void NoeudButoirCirculaire::traiterCollisions(aidecollision::DetailsCollision details, NoeudAbstrait* bille)
+void NoeudButoirCirculaire::traiterCollisions(aidecollision::DetailsCollision details, NoeudAbstrait* bille, float facteurRebond)
 {
-	NoeudAbstrait::traiterCollisions(details, bille);
+	if (FacadeModele::obtenirInstance()->obtenirModeForceRebond())
+	{
+		NoeudAbstrait::traiterCollisions(details, bille, 2);
+	}
+	else
+	{
+		NoeudAbstrait::traiterCollisions(details, bille);
+	}
+
 	SingletonGlobal::obtenirInstance()->collisionButoirCirculaire();
 	compteurIllumination_ = 0;
 }

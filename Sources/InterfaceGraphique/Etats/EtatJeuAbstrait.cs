@@ -16,6 +16,11 @@ namespace InterfaceGraphique
             
             public virtual bool traiterRoulette(object sender, MouseEventArgs e)
             {
+                if (e.Delta > 0)
+                    FonctionsNatives.zoomIn();
+                else if (e.Delta < 0)
+                    FonctionsNatives.zoomOut();
+                parent_.setCurrentZoom(FonctionsNatives.obtenirZoomCourant());
                 return false;
             }
             public virtual bool traiterKeyDown(object sender, KeyEventArgs e)
@@ -229,38 +234,7 @@ namespace InterfaceGraphique
                 parent_.toggleSpotLight();
                 FonctionsNatives.spotLight(2, parent_.getSpotLight());
             }
-            /*
-            else
-                if (e.KeyChar == 'n')
-                {
-                    Console.WriteLine(parent_.currentZone);
-                    if (parent_.currentZone >= parent_.nbZones)
-                        if (MessageBox.Show("VICTOIRE! VOULEZ VOUR RECOMMENCER?", "FIN DE LA CAMPAGNE",
-                   MessageBoxButtons.YesNo, MessageBoxIcon.Exclamation) == DialogResult.Yes)
-                        {
-                            parent_.RecommencerTout();
-                        }
-                        else
-                        {
-                            parent_.Quitter();
-                        }
-                    else
-                    {
-                        parent_.map = new StringBuilder(parent_.myMaps[parent_.currentZone]);
-                        parent_.nextMap = new StringBuilder(parent_.map.ToString());
-                        parent_.nextMap.Remove(parent_.nextMap.Length - 4, 4);
-                        Console.WriteLine(Path.GetFileName(parent_.nextMap.ToString()));
-                        parent_.zInfo = new ZoneInfo(Path.GetFileName(parent_.nextMap.ToString()), FonctionsNatives.obtenirDifficulte(parent_.map, parent_.map.Capacity).ToString(),false);
-                        //this.Hide();
-                        parent_.zInfo.ShowDialog();
-                        //this.Show();
-
-                        FonctionsNatives.ouvrirXML(parent_.map, parent_.map.Capacity);
-                        parent_.resetConfig();
-                        FonctionsNatives.construireListesPalettes();
-                        parent_.currentZone++;
-                }
-            * */
+           
             else if (e.KeyChar == (char)8)
                 {
                     // RELOAD DE LA MAP
@@ -286,8 +260,6 @@ namespace InterfaceGraphique
     {
         public EtatJeuDebutDePartie(ModeJeu modeJeu) : base(modeJeu)
         {
-            //Console.WriteLine("Etat :" + '\t' + "DebutDePartie");
-            // Reset des points
             resetConfig();
             // TODO: Complete member initialization
         }

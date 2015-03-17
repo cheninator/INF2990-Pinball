@@ -1450,6 +1450,11 @@ extern "C"
 		return FacadeModele::obtenirInstance()->obtenirNombreDeBilles();
 	}
 
+	__declspec(dllexport) int __cdecl obtenirModeDoubleBille()
+	{
+		return FacadeModele::obtenirInstance()->obtenirModeDoubleBille();
+	}
+
 	__declspec(dllexport) int __cdecl obtenirAffichageGlobal()
 	{
 		return FacadeModele::obtenirInstance()->obtenirAffichageGlobal();
@@ -1632,10 +1637,16 @@ extern "C"
 				FacadeModele::obtenirInstance()->obtenirArbreRenduINF2990()->obtenirProprietes(), true);
 	}
 
+	__declspec(dllexport) void __cdecl activerAI(bool actif)
+	{
+		FacadeModele::obtenirInstance()->assignerAI(actif);
+	}
+
 	//__declspec(dllexport) int __cdecl obtenirNombreDePointsTotals()
 	//{
 	//	return SingletonGlobal::obtenirInstance()->getPointsTotales();
 	//}
+
 	/*
 	#include <FTGL/ftgl.h>
 

@@ -342,7 +342,10 @@ void FacadeModele::animer(float temps)
 	mettreAJourListeBillesEtNoeuds();
 
 	/// Comportement du joueur virtuel
-	joueur_->jouer(listeBilles_, listePalettesGJ2_, listePalettesDJ2_, temps);
+	if (utiliserAI)
+	{
+		joueur_->jouer(listeBilles_, listePalettesGJ2_, listePalettesDJ2_, temps);
+	}
 
 	/// Traiter les collisions entre objets
 	bool useQuadTree = false;
@@ -1171,14 +1174,36 @@ int* FacadeModele::obtenirConfiguration()
 	return configuration_->obtenirConfiguration();
 }
 
-int	 FacadeModele::obtenirTouchePGJ1(){ return configuration_->obtenirRaccourciPGJ1(); }
-int  FacadeModele::obtenirTouchePGJ2(){ return configuration_->obtenirRaccourciPGJ2(); }
-int  FacadeModele::obtenirTouchePDJ1(){ return configuration_->obtenirRaccourciPDJ1(); }
-int  FacadeModele::obtenirTouchePDJ2(){ return configuration_->obtenirRaccourciPDJ2(); }
-int  FacadeModele::obtenirToucheRessort(){ return configuration_->obtenirRaccourciRessort(); }
-int  FacadeModele::obtenirAffichageGlobal(){ return configuration_->obtenirAffichageGlobal(); }
-int	 FacadeModele::obtenirNombreDeBilles(){ return configuration_->obtenirNombreBilles(); }
+int	 FacadeModele::obtenirTouchePGJ1(){ 
+	return configuration_->obtenirRaccourciPGJ1(); 
+}
+int  FacadeModele::obtenirTouchePGJ2(){ 
+	return configuration_->obtenirRaccourciPGJ2(); 
+}
+int  FacadeModele::obtenirTouchePDJ1(){ 
+	return configuration_->obtenirRaccourciPDJ1(); 
+}
+int  FacadeModele::obtenirTouchePDJ2(){ 
+	return configuration_->obtenirRaccourciPDJ2(); 
+}
+int  FacadeModele::obtenirToucheRessort(){ 
+	return configuration_->obtenirRaccourciRessort(); 
+}
+int  FacadeModele::obtenirAffichageGlobal(){ 
+	return configuration_->obtenirAffichageGlobal(); 
+}
+int	 FacadeModele::obtenirNombreDeBilles(){ 
+	return configuration_->obtenirNombreBilles(); 
+}
+int  FacadeModele::obtenirModeDoubleBille() { 
+	return configuration_->obtenirModeDoubleBille(); 
+}
+int  FacadeModele::obtenirModeForceRebond(){ 
+	return configuration_->obtenirModeForceRebond(); 
+}
+
 void FacadeModele::bloquerAffichageGlobal(int active){ configuration_->bloquerAffichageGlobal(active); };
+bool FacadeModele::obtenirAI(){ return utiliserAI; }
 
 
 int FacadeModele::obtenirDifficulte(char* nomFichier, int length)
@@ -1619,8 +1644,7 @@ void FacadeModele::relacherRessort()
 ///
 /// @fn void FacadeModele::assignerAnimer(bool animer)
 ///
-/// @param[in]  animer : la valeur de animer a assigner
-/// @param[in]  noeud : Noeud au quel assigner la valeur
+/// @param[in]  animer : la valeur de animer a assigner.
 ///
 /// @return Aucune.
 ///
@@ -1639,4 +1663,18 @@ void FacadeModele::construireQuadTree()
 	quad_->clear();
 	for (unsigned int i = 0; i < arbre_->getEnfant(0)->obtenirNombreEnfants(); i++)
 		quad_->insert(arbre_->getEnfant(0)->getEnfant(i));
+}
+///////////////////////////////////////////////////////////////////////////////
+///
+/// @fn void FacadeModele::assignerAI(bool actif)
+/// @brief Cette fonction active ou désactive l'utilisation du joueur AI.
+///
+/// @param[in]  actif : la valeur d'utilisation de l'AI a assigner
+///
+/// @return Aucune.
+///
+///////////////////////////////////////////////////////////////////////////////
+void FacadeModele::assignerAI(bool actif)
+{
+	utiliserAI = actif;
 }

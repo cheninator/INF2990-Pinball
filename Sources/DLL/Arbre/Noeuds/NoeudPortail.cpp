@@ -191,7 +191,7 @@ std::vector<glm::dvec3> NoeudPortail::obtenirVecteursEnglobants()
 /// @return aucun.
 ///
 ////////////////////////////////////////////////////////////////////////
-void NoeudPortail::traiterCollisions(aidecollision::DetailsCollision, NoeudAbstrait* bille)
+void NoeudPortail::traiterCollisions(aidecollision::DetailsCollision, NoeudAbstrait* bille, float facteurRebond)
 {
 	if (bille->obtenirPortailDorigine() != this)
 	{

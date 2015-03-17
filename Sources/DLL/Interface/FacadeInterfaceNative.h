@@ -77,6 +77,8 @@ extern "C" {
 	__declspec(dllexport) int obtenirTouchePDJ2();
 	__declspec(dllexport) int obtenirToucheRessort();
 	__declspec(dllexport) int obtenirNombreDeBilles();
+	__declspec(dllexport) int obtenirModeDoubleBille();
+
 
 	__declspec(dllexport) int obtenirAffichageGlobal();
 	__declspec(dllexport) void bloquerAffichageGlobal(int active);
@@ -112,6 +114,7 @@ extern "C" {
 	__declspec(dllexport) void animerJeu(bool animer);
 	__declspec(dllexport) void rechargerArbre(bool recharger);
 
+	__declspec(dllexport) void activerAI(bool actif);
 }
 
 #endif // __FACADE_INTERFACE_NATIVE_H__

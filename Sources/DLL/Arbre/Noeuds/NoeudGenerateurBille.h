@@ -42,7 +42,10 @@ public:
 	/// ajout d'une bille
 	virtual void genererBille() { billesGenerer_++; positionRelative_.z = -posZinitial; compteurGeneration_ = 0; };
 
-	virtual	void traiterCollisions(aidecollision::DetailsCollision details, NoeudAbstrait* bille);
+	/// Pour la detections des collisions
+	virtual aidecollision::DetailsCollision detecterCollisions(NoeudAbstrait* noeud);
+
+	virtual	void traiterCollisions(aidecollision::DetailsCollision details, NoeudAbstrait* bille, float facteurRebond);
 
 private:
 	Etat etatGenerateur_ { INITIAL };
