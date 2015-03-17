@@ -61,8 +61,9 @@ public:
 	bool obtenirAnimation() { return animer_; };
 
 	std::string obtenirPathTemp() { objectPathCreated_ ? NULL : getAndSetTempObjDirectory(); return objectPath_; };
-	
 	std::string getAndEmptyStream();
+	std::string obtenirHistoriqueConsole() { return historyStream_.str(); };
+	void viderHistoricConsole() { historyStream_.clear(); historyStream_.str(std::string()); };
 
 	std::stringstream outPutStream_{""};
 

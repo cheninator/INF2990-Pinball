@@ -1507,6 +1507,17 @@ extern "C"
 		return stringToBSTR(str);
 	}
 
+	__declspec(dllexport) BSTR obtenirHistoriqueConsole()
+	{
+		std::string str = SingletonGlobal::obtenirInstance()->obtenirHistoriqueConsole();
+		return stringToBSTR(str);
+	}
+
+	__declspec(dllexport) void viderHistoricConsole()
+	{
+		SingletonGlobal::obtenirInstance()->viderHistoricConsole();
+	}
+
 	__declspec(dllexport) void __cdecl supprimerBille()
 	{
 		FacadeModele::obtenirInstance()->supprimerBille();
