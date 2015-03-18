@@ -12,6 +12,7 @@
 
 #include <windows.h>
 #include <GL/gl.h>
+#include <iostream>
 #include <cmath>
 
 #include "Modele3D.h"
@@ -137,8 +138,14 @@ void NoeudRessort::animer(float temps)
 			scale_ = { scale_.x, scaleYOriginal_, scale_.z };
 			positionRelative_ = positionOriginale_;
 			// Updater l'attribut distanceCompresseion_ 
-			etatRessort_ = AU_REPOS;
+			etatRessort_ = LANCER_BILLE;
 		}
+		break;
+
+	case LANCER_BILLE:
+
+		etatRessort_ = AU_REPOS;
+
 		break;
 
 	case AU_REPOS:
@@ -162,6 +169,7 @@ void NoeudRessort::compresser()
 {
 	if (etatRessort_ == AU_REPOS)
 	{
+		double longueurOriginale_ = scale_.y *(boite_.coinMax.y - boite_.coinMin.y);
 		scaleYOriginal_ = obtenirAgrandissement().y;
 		positionOriginale_ = positionRelative_;
 		double angleEnRadian = -rotation_[2] * utilitaire::PI_180;
@@ -185,6 +193,10 @@ void NoeudRessort::compresser()
 ////////////////////////////////////////////////////////////////////////
 void NoeudRessort::relacher()
 {
+	//                                 longueur originale                           -            Longueur courante.
+	// distanceCompression_ = scaleYOriginal_*(boite_.coinMax.y - boite_.coinMin.y) - scale_.y*(boite_.coinMax.y - boite_.coinMin.y);
+	distanceCompression_ = (scaleYOriginal_ - scale_.y) * (boite_.coinMax.y - boite_.coinMin.y);
+	std::cout << "Distance compression " << distanceCompression_ << std::endl;
 	etatRessort_ = EN_DECOMPRESSION;
 }
 
@@ -210,3 +222,35 @@ bool NoeudRessort::accepterVisiteur(VisiteurAbstrait* vis)
 
 
 
+void NoeudRessort::traiterCollisions(aidecollision::DetailsCollision details, NoeudAbstrait* bille, float facteurRebond)
+{
+	switch (etatRessort_)
+	{
+	case EN_COMPRESSION:
+	case AU_REPOS:	
+		NoeudAbstrait::traiterCollisions(details, bille, 0.2);
+		break;
+
+	case EN_DECOMPRESSION:
+		bille->assignerPositionRelative(bille->obtenirPositionRelative() + details.enfoncement * details.direction); // direction est un vecteur normal.
+		break;
+
+	case LANCER_BILLE:
+		
+		// energiePotentielle = (1. / 2.) * constanteRessort * (distanceCompression_*distanceCompression_);
+		// Energie cinetique = 1/2 m v^2
+		// ==> 2 E / m = v^2
+		// ==> sqrt(2 E / m) = v,
+		// Conservation d'energie : energie cinetique donnee a la bille = energie emmagasinee dans le ressort.
+		// ==> v = sqrt(2 (1/2 constanteRessort* distanceCompression^2 / m)
+		// ==> v = sqrt(constRessort/m) * distanceCompression
+		// ==> v = uneConstante * distanceCompression.
+	
+		double uneConstante = 400;
+		bille->assignerPositionRelative(bille->obtenirPositionRelative() + 1.1*details.enfoncement * details.direction); // direction est un vecteur normal.
+		bille->assignerVitesse(uneConstante * distanceCompression_ * details.direction);
+	
+		break;
+
+	}
+}

@@ -103,8 +103,6 @@ bool VisiteurListeEnglobante::traiter(NoeudAbstrait* noeud)
 {
 	if (noeud->estSelectionne())
 	{
-		glm::dvec3 coinsEnglobant[4];
-		noeud->obtenirVecteursBoite(coinsEnglobant[0], coinsEnglobant[1], coinsEnglobant[2], coinsEnglobant[3]);
 		conteneur_boite_englobante boite;
 		
 		boite.first = noeud->obtenirVecteursEnglobants();

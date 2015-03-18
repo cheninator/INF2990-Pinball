@@ -105,7 +105,6 @@ bool VisiteurLimitesSelection::traiter(NoeudTable* table)
 bool VisiteurLimitesSelection::traiter(NoeudAbstrait* noeud)
 {
 	glm::dvec3 position{ noeud->obtenirPositionRelative() };
-	glm::dvec3 coinsEnglobant[4];
 
 	if (noeud->estSelectionne())
 	{	
@@ -119,7 +118,7 @@ bool VisiteurLimitesSelection::traiter(NoeudAbstrait* noeud)
 			boite.push_back({ 0, -rayon, 0 });
 		}
 
-		for (int i = 0; i < 4; i++)
+		for (int i = 0; i < boite.size(); i++)
 		{
 			boite[i] += position;
 
