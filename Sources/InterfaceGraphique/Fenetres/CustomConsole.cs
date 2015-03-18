@@ -50,6 +50,7 @@ namespace InterfaceGraphique
         {
             richTextBox1.Text = "";
             richTextBox1.AppendText(FonctionsNatives.obtenirHistoriqueConsole());
+            scrollToEnd();
         }
 
         private void Close_External(object sender, FormClosingEventArgs e)
@@ -86,6 +87,7 @@ namespace InterfaceGraphique
                 {
                     pause_resume.Text = "Pause";
                     richTextBox1.AppendText(pauseString);
+                    pauseString = "";
                 }
                 else
                 {
@@ -116,7 +118,6 @@ namespace InterfaceGraphique
 
         private void scrollToEnd()
         {
-            pauseString = "";
             richTextBox1.AppendText("");
             richTextBox1.SelectionStart = richTextBox1.TextLength;
             richTextBox1.ScrollToCaret();
@@ -194,6 +195,7 @@ namespace InterfaceGraphique
         public void setCurrentText(string text)
         {
             richTextBox1.Text = text;
+            scrollToEnd();
         }
         public String getPauseText()
         {
