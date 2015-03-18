@@ -36,7 +36,6 @@ namespace InterfaceGraphique
                 MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
-            richTextBox1.Text = "";          
             this.Hide();
             FonctionsNatives.bloquerAffichageGlobal(0);
         }
@@ -124,6 +123,10 @@ namespace InterfaceGraphique
         public void ForceHide()
         {
             this.Hide();
+        }
+        public bool isVisible()
+        {
+            return this.Visible;
         }
     }
 }

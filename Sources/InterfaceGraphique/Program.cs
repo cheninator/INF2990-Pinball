@@ -259,7 +259,7 @@ namespace InterfaceGraphique
         }
         public void Show()
         {
-            if(FonctionsNatives.obtenirAffichageGlobal() == 1)
+            if (FonctionsNatives.obtenirAffichageGlobal() == 1)
                 cConsole.Show();
         }
         public void Hide()
@@ -279,14 +279,16 @@ namespace InterfaceGraphique
         public void Update()
         {
             ForceHide();
-            if (cConsole.isLocked() == true)
-                AlwaysShow();
-            else
+            if (cConsole.Visible || (FonctionsNatives.obtenirAffichageGlobal() == 1) )
                 Show();
         }
         public void ForceHide()
         {
             cConsole.ForceHide();
+        }
+        public bool isVisible()
+        {
+            return cConsole.isVisible();
         }
     }
 
