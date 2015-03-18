@@ -48,7 +48,7 @@ public:
 	virtual void obtenirVecteursBoite(glm::dvec3 &v1, glm::dvec3 &v2, glm::dvec3 &v3, glm::dvec3 &v4);
 
 	/// Detection de collisions.
-	virtual aidecollision::DetailsCollision NoeudButoirG::detecterCollisions(NoeudAbstrait* bille);
+	virtual aidecollision::DetailsCollision detecterCollisions(NoeudAbstrait* bille);
 
 	/// Pour le traitement logique des collisions
 	virtual void traiterCollisions(aidecollision::DetailsCollision, NoeudAbstrait* bille, float facteurRebond = 1);
