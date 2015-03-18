@@ -330,7 +330,7 @@ void NoeudPaletteD::traiterCollisions(aidecollision::DetailsCollision details, N
 	double distance = glm::length(vecteur);
 
 	double angleEnRadian = rotation_[2] * utilitaire::PI_180;
-	glm::dvec3 directionPalette = { -cos(angleEnRadian), -sin(angleEnRadian), 0 }; // Une palette pas tournee a un axe { - 1, 0, 0}
+	glm::dvec3 directionPalette = { cos(angleEnRadian), sin(angleEnRadian), 0 }; // Une palette pas tournee a un axe { - 1, 0, 0}
 	glm::dvec3 vecteurProjete = glm::proj(vecteur, directionPalette);
 	glm::dvec3 vecteurNormal = vecteur - vecteurProjete;
 
