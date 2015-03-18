@@ -371,7 +371,7 @@ namespace InterfaceGraphique
         {
             cameraControl(false);
             modeJeuMain = new ModeJeu(zones, playerType);
-            modeJeuMain.ShowDialog(this);
+            modeJeuMain.Show(this);
             if (campagne != null)
             {
                 campagne.Close();

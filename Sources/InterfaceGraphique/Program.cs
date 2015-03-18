@@ -71,13 +71,13 @@ namespace InterfaceGraphique
                         string s1 = System.Console.ReadLine();
                     }
                     else
-                    { 
+                    {
                         System.Console.WriteLine("Tests reussis.");
                         string s1 = System.Console.ReadLine();
                     }
                     return;
                 }
-            
+
             chrono.Start();
             Application.Idle += ExecuterQuandInactif;
             Application.EnableVisualStyles();
@@ -89,23 +89,23 @@ namespace InterfaceGraphique
 
             Application.Run(mMenu);
 
-        
 
-            
+
+
         }
 
-       ////////////////////////////////////////////////////////////////////////
-       ///
-       /// @fn static void ExecuterQuandInactif(object sender, EventArgs e)
-       /// @brief Operations executer lorsque l'application est inactive.
-       /// 
-       /// @param[in] sender : Objet duquel provient un evenement
-       /// @param[in] e : evenement qui lance la fonction.
-       /// 
-       /// @return Aucune.
-       ///
-       ////////////////////////////////////////////////////////////////////////
-       static void ExecuterQuandInactif(object sender, EventArgs e)
+        ////////////////////////////////////////////////////////////////////////
+        ///
+        /// @fn static void ExecuterQuandInactif(object sender, EventArgs e)
+        /// @brief Operations executer lorsque l'application est inactive.
+        /// 
+        /// @param[in] sender : Objet duquel provient un evenement
+        /// @param[in] e : evenement qui lance la fonction.
+        /// 
+        /// @return Aucune.
+        ///
+        ////////////////////////////////////////////////////////////////////////
+        static void ExecuterQuandInactif(object sender, EventArgs e)
         {
             FonctionsNatives.Message message;
 
@@ -123,11 +123,20 @@ namespace InterfaceGraphique
                     {
                         if (mMenu.modeEdit != null && peutAfficher)
                         {
+                            if (mMenu.Visible)
+                                mMenu.Visible = false;
                             mMenu.modeEdit.MettreAJour((double)tempsAccumule.Ticks / TimeSpan.TicksPerSecond);
                         }
                         else if (mMenu.modeJeuMain != null && peutAfficher)
                         {
+                            if (mMenu.Visible)
+                                mMenu.Visible = false;
                             mMenu.modeJeuMain.MettreAJour((double)tempsAccumule.Ticks / TimeSpan.TicksPerSecond);
+                        }
+                        else
+                        {
+                            if (!mMenu.Visible)
+                                mMenu.Visible = true;
                         }
                         // To remove from here
                         if (compteurFrames == 0)
@@ -446,7 +455,7 @@ namespace InterfaceGraphique
 
         [DllImport(@"Noyau.dll", CallingConvention = CallingConvention.Cdecl)]
         public static extern int obtenirTouchePGJ1();
-        
+
         [DllImport(@"Noyau.dll", CallingConvention = CallingConvention.Cdecl)]
         public static extern int obtenirTouchePGJ2();
 
@@ -497,18 +506,18 @@ namespace InterfaceGraphique
 
         [DllImport(@"Noyau.dll", CallingConvention = CallingConvention.Cdecl)]
         public static extern void desactiverPalettesDJ1();
-        
+
         [DllImport(@"Noyau.dll", CallingConvention = CallingConvention.Cdecl)]
-        public static extern  void activerPalettesGJ2();
-	    
+        public static extern void activerPalettesGJ2();
+
         [DllImport(@"Noyau.dll", CallingConvention = CallingConvention.Cdecl)]
-        public static extern  void desactiverPalettesGJ2();
-	    
+        public static extern void desactiverPalettesGJ2();
+
         [DllImport(@"Noyau.dll", CallingConvention = CallingConvention.Cdecl)]
-        public static extern  void activerPalettesDJ2();
-	    
+        public static extern void activerPalettesDJ2();
+
         [DllImport(@"Noyau.dll", CallingConvention = CallingConvention.Cdecl)]
-        public static extern  void desactiverPalettesDJ2();
+        public static extern void desactiverPalettesDJ2();
 
         [DllImport(@"Noyau.dll", CharSet = CharSet.Unicode, CallingConvention = CallingConvention.Cdecl)]
         [return: MarshalAs(UnmanagedType.BStr)]
@@ -542,7 +551,7 @@ namespace InterfaceGraphique
 
         [DllImport(@"Noyau.dll", CallingConvention = CallingConvention.Cdecl)]
         public static extern int obtenirAffichageGlobal();
-        
+
         [DllImport(@"Noyau.dll", CallingConvention = CallingConvention.Cdecl)]
         public static extern void bloquerAffichageGlobal(int active);
 

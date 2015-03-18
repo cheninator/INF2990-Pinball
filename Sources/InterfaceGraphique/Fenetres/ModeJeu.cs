@@ -247,8 +247,7 @@ namespace InterfaceGraphique
                 Program.peutAfficher = false;
                 Program.tempBool = false;
             }
-            //Console.WriteLine("closing");
-
+            Program.myCustomConsole.Hide();
         }
 
         public void RecommencerPartie()
@@ -436,12 +435,14 @@ namespace InterfaceGraphique
         ////////////////////////////////////////////////////////////////////////
         public void Quitter()
         {
-           // resetConfig();
+            // resetConfig();
+            Program.myCustomConsole.Hide();
             this.Close();
         }
         
         private void mPrincipal_menu_Click(object sender, EventArgs e)
         {
+            Program.myCustomConsole.Hide();
             this.Close();
         }
 
