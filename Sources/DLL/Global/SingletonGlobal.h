@@ -10,6 +10,7 @@
 #define __SINGLETONGLOBAL_H__
 
 #include "../Application/FacadeModele.h"
+#include <sstream>
 
 ///////////////////////////////////////////////////////////////////////////
 /// @class SingletonGlobal
@@ -36,7 +37,7 @@ public:
 	//void setPointsTotales(int pointsTotales) { pointsTotales_ = pointsTotales; };
 
 	int getPointsPartie() { return pointsPartie_; };
-	
+
 	void setPointsPartie(int pointsPartie) { pointsPartie_ = pointsPartie; };
 
 	//void checkBille() {};
@@ -46,10 +47,10 @@ public:
 	void collisionButoirCible() { pointsPartie_ += collisionPointsCible_; /*checkBille();*/ };
 
 	void resetConfigurationCollision(int collisionPointsCirculaire,
-											int collisionPointsTriangulaire,
-											int collisionPointsCible,
-											int collisionPointsPartieGagner,
-											int collisionPointsNouvelleBille);
+		int collisionPointsTriangulaire,
+		int collisionPointsCible,
+		int collisionPointsPartieGagner,
+		int collisionPointsNouvelleBille);
 
 	void retirerBille() { billesCourantes_--; };
 	void ajouterBille() { billesCourantes_++; };
@@ -60,6 +61,11 @@ public:
 	bool obtenirAnimation() { return animer_; };
 
 	std::string obtenirPathTemp() { objectPathCreated_ ? NULL : getAndSetTempObjDirectory(); return objectPath_; };
+	std::string getAndEmptyStream();
+	std::string obtenirHistoriqueConsole() { return historyStream_.str(); };
+	void viderHistoricConsole() { historyStream_.clear(); historyStream_.str(std::string()); };
+
+	std::stringstream outPutStream_{ "" };
 
 protected:
 
@@ -82,7 +88,7 @@ private:
 	SingletonGlobal& operator=(const SingletonGlobal&) = delete;
 
 	/// AJOUTER VOS VARIABLES GLOBAL ICI
-	
+
 	//int nombreDeBillesGagner_{ 0 };
 	//int nombreDeBillesDisponibles_{ 0 };
 
@@ -101,6 +107,8 @@ private:
 
 	std::string objectPath_;
 	bool objectPathCreated_{ false };
+
+	std::stringstream historyStream_{ "" };
 };
 
 #endif // __SINGLETONGLOBAL_H__

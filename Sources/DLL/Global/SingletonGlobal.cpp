@@ -38,10 +38,10 @@ SingletonGlobal* SingletonGlobal::obtenirInstance()
 ///
 ////////////////////////////////////////////////////////////////////////
 void SingletonGlobal::resetConfigurationCollision(int collisionPointsCirculaire,
-												  int collisionPointsTriangulaire,
-												  int collisionPointsCible,
-												  int collisionPointsPartieGagner,
-												  int collisionPointsNouvelleBille)
+	int collisionPointsTriangulaire,
+	int collisionPointsCible,
+	int collisionPointsPartieGagner,
+	int collisionPointsNouvelleBille)
 {
 	collisionPointsCirculaire_ = collisionPointsCirculaire;
 	collisionPointsTriangulaire_ = collisionPointsTriangulaire;
@@ -56,6 +56,30 @@ void SingletonGlobal::resetConfigurationCollision(int collisionPointsCirculaire,
 	pointsPartie_ = 0;
 
 }
+
+
+////////////////////////////////////////////////////////////////////////
+///
+/// @fn std::string SingletonGlobal::getAndEmptyStream()
+///
+/// Sauvegarde le output, vide le pour le prochain usage puis retourne le;
+/// "thread-safe".
+///
+/// @return Ce que la console contient presentement.
+///
+////////////////////////////////////////////////////////////////////////
+std::string SingletonGlobal::getAndEmptyStream()
+{
+	historyStream_ << outPutStream_.str();
+
+	std::string tempStream;
+	tempStream = outPutStream_.str();
+
+	outPutStream_.clear();
+	outPutStream_.str(std::string());
+
+	return tempStream;
+};
 
 ////////////////////////////////////////////////////////////////////////
 ///
@@ -111,7 +135,7 @@ void SingletonGlobal::getAndSetTempObjDirectory()
 ////////////////////////////////////////////////////////////////////////
 void SingletonGlobal::checkBille()
 {
-	if (pointsPartie_ > nombreDeBillesGagner_ * collisionPointsNouvelleBille_ + collisionPointsNouvelleBille_)
-		nombreDeBillesGagner_++;
+if (pointsPartie_ > nombreDeBillesGagner_ * collisionPointsNouvelleBille_ + collisionPointsNouvelleBille_)
+nombreDeBillesGagner_++;
 }
 */

@@ -414,6 +414,7 @@ namespace InterfaceGraphique
         private void ShowConsol_Click(object sender, EventArgs e)
         {
             Program.myCustomConsole.AlwaysShow();
+        }
         private void MainMenu_Activated(object sender, EventArgs e)
         {
             if (webcam.Count >= 1)
