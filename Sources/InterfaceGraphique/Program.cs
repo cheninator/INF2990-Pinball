@@ -66,12 +66,15 @@ namespace InterfaceGraphique
                 {
                     if (FonctionsNatives.executerTests())
                     {
-                        System.Console.WriteLine("Echec d'un ou plusieurs tests.");
+                        System.
+
+
+                        Console.WriteLine("Echec d'un ou plusieurs tests.");
                         string s1 = System.Console.ReadLine();
                     }
                     else
                     { 
-                        System.Console.WriteLine("Tests reussis.");
+                        Console.WriteLine("Tests reussis.");
                         string s1 = System.Console.ReadLine();
                     }
 
@@ -278,8 +281,9 @@ namespace InterfaceGraphique
         }
         public void Update()
         {
-            if (cConsole.getAlwaysVisible() || (FonctionsNatives.obtenirAffichageGlobal() == 1))
-                Show();
+            Hide();
+            if (cConsole.getAlwaysVisible())
+                cConsole.Show();
         }
         public bool isVisible()
         {
@@ -321,7 +325,17 @@ namespace InterfaceGraphique
             public uint Time;
             public System.Drawing.Point Point;
         }
-
+        public static void Write(string text)
+        {
+            StringBuilder myString = new StringBuilder(text);
+            ajouterTexteConsole(myString, myString.Capacity);
+        }
+        public static void WriteLine(string text)
+        {
+            text += '\n';
+            StringBuilder myString = new StringBuilder(text);
+            ajouterTexteConsole(myString, myString.Capacity);
+        }
         [DllImport("User32.dll")]
         [return: MarshalAs(UnmanagedType.Bool)]
         public static extern bool PeekMessage(out Message message, IntPtr hWnd, uint filterMin, uint filterMax, uint flags);
@@ -350,7 +364,7 @@ namespace InterfaceGraphique
         public static extern string obtenirConsole();
 
         [DllImport(@"Noyau.dll", CallingConvention = CallingConvention.Cdecl)]
-        public static extern void ajouterTexteConsole(StringBuilder text, int length);
+        private static extern void ajouterTexteConsole(StringBuilder text, int length);
 
         [DllImport(@"Noyau.dll", CharSet = CharSet.Unicode, CallingConvention = CallingConvention.Cdecl)]
         [return: MarshalAs(UnmanagedType.BStr)]

@@ -390,6 +390,7 @@ namespace InterfaceGraphique
             {
                 if (e.KeyChar == 't')
                 {
+                    Program.myCustomConsole.Show();
                     testRetourModeEdition.PerformClick();
                     OnSizeChanged(e);
                 }
@@ -398,13 +399,13 @@ namespace InterfaceGraphique
                     
                     if (FonctionsNatives.obtenirAffichageGlobal() == 0)
                     {
-                        Console.WriteLine("Affichage bloque. On debloque");
+                        FonctionsNatives.WriteLine("Affichage bloque. On debloque");
                         FonctionsNatives.bloquerAffichageGlobal(1);
                         Program.myCustomConsole.Show();
                     }
                     else
                     {
-                        Console.WriteLine("Affichage permis. On bloque");
+                        FonctionsNatives.WriteLine("Affichage permis. On bloque");
                         FonctionsNatives.bloquerAffichageGlobal(0);
                         Program.myCustomConsole.Hide();
                     }
