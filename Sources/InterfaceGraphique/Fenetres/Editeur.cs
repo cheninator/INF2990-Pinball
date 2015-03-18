@@ -595,7 +595,7 @@ namespace InterfaceGraphique
                 FonctionsNatives.libererOpenGL();
             }
             playSound("", true);    // Stop le son
-            
+            Program.myCustomConsole.Hide();
         }
 
         ////////////////////////////////////////////////////////////////////////

@@ -35,7 +35,7 @@ namespace InterfaceGraphique
     static class Program
     {
         private const int NB_IMAGES_PAR_SECONDE = 60; ///< Frame rate de l'application
-        public static CustomConsoleThread myCustomConsole;
+        public static CustomConsoleHandler myCustomConsole;
         public static Object unLock = new Object();
         public static bool peutAfficher = false;
         public static bool tempBool = false;
@@ -83,7 +83,7 @@ namespace InterfaceGraphique
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
 
-            myCustomConsole = new CustomConsoleThread();
+            myCustomConsole = new CustomConsoleHandler();
 
             mMenu = new MainMenu();
 
@@ -245,10 +245,10 @@ namespace InterfaceGraphique
         }
     }
 
-    public class CustomConsoleThread
+    public class CustomConsoleHandler
     {
         private CustomConsole cConsole;
-        public CustomConsoleThread()
+        public CustomConsoleHandler()
         {
             cConsole = new CustomConsole();
         }
@@ -259,7 +259,8 @@ namespace InterfaceGraphique
         }
         public void Show()
         {
-            cConsole.Show();
+            if(FonctionsNatives.obtenirAffichageGlobal() == 1)
+                cConsole.Show();
         }
         public void Hide()
         {
@@ -274,6 +275,18 @@ namespace InterfaceGraphique
         {
             if (cConsole.Visible)
                 cConsole.UpdateConsoleTexte();
+        }
+        public void Update()
+        {
+            ForceHide();
+            if (cConsole.isLocked() == true)
+                AlwaysShow();
+            else
+                Show();
+        }
+        public void ForceHide()
+        {
+            cConsole.ForceHide();
         }
     }
 

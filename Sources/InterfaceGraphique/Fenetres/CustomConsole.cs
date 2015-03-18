@@ -38,6 +38,7 @@ namespace InterfaceGraphique
             }
             richTextBox1.Text = "";          
             this.Hide();
+            FonctionsNatives.bloquerAffichageGlobal(0);
         }
 
         private void DeleteHistory_Click(object sender, EventArgs e)
@@ -62,6 +63,7 @@ namespace InterfaceGraphique
                 return;
             }
             this.Hide();
+            FonctionsNatives.bloquerAffichageGlobal(0);
         }
 
         private void pause_resume_CheckedChanged(object sender, EventArgs e)
@@ -114,6 +116,14 @@ namespace InterfaceGraphique
         public void AlwaysShow()
         {
             Always_Button.Checked = true;
+        }
+        public bool isLocked()
+        {
+            return Always_Button.Checked;
+        }
+        public void ForceHide()
+        {
+            this.Hide();
         }
     }
 }

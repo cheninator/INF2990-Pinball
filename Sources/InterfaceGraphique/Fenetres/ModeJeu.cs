@@ -9,6 +9,7 @@ namespace InterfaceGraphique
 {
     public partial class ModeJeu : Form
     {
+        private bool firstStart = true;
         public PartieTerminee gameOver;
         private double currentZoom = -1; ///< Zoom courant
         private Touches touches; ///< Les touches pour le jeu
@@ -131,6 +132,8 @@ namespace InterfaceGraphique
             billesDisponibles = nombreBillesInit;
             label_nbGagnes.Text = nombreDeBillesGagnes.ToString();
             setProprietes();
+            if(!firstStart)
+                Program.myCustomConsole.Update();
         }
 
         private void setProprietes()
@@ -243,7 +246,7 @@ namespace InterfaceGraphique
                 Program.tempBool = false;
             }
             //Console.WriteLine("closing");
-
+            Program.myCustomConsole.Hide();
         }
 
         public void RecommencerPartie()
@@ -264,9 +267,11 @@ namespace InterfaceGraphique
             nextMap.Remove(nextMap.Length - 4, 4);
             System.Threading.Thread.Sleep(500);
             zInfo = new ZoneInfo(Path.GetFileName(nextMap.ToString()), FonctionsNatives.obtenirDifficulte(map, map.Capacity).ToString(), true);
+            Program.myCustomConsole.Hide();
             this.Hide();
             zInfo.ShowDialog();
             this.Show();
+            Program.myCustomConsole.Show();
 
             FonctionsNatives.ouvrirXML(map, map.Capacity);
             FonctionsNatives.construireListesPalettes();
@@ -301,8 +306,9 @@ namespace InterfaceGraphique
             peutAnimer = false;
             boolTemp = false;
             gameOver = new PartieTerminee(active);
-            
+            Program.myCustomConsole.Hide();
             gameOver.ShowDialog(this);
+            Program.myCustomConsole.Show();
         }
         private void PartieRapide_Load(object sender, EventArgs e)
         {
@@ -397,10 +403,12 @@ namespace InterfaceGraphique
             nextMap = new StringBuilder(map.ToString());
             nextMap.Remove(nextMap.Length - 4, 4);
             //Console.WriteLine(map);
+            Program.myCustomConsole.Hide();
             this.Hide();
             zInfo = new ZoneInfo(Path.GetFileName(nextMap.ToString()), FonctionsNatives.obtenirDifficulte(map, map.Capacity).ToString(),false);
             zInfo.ShowDialog();
             this.Show();
+            Program.myCustomConsole.Show();
             FonctionsNatives.ouvrirXML(map, map.Capacity);
             FonctionsNatives.resetNombreDePointsDePartie();
             FonctionsNatives.resetNombreBillesCourantes();
@@ -445,6 +453,11 @@ namespace InterfaceGraphique
           //  panel_GL.Focus();
         }
 
+        private void ModeJeu_Shown(object sender, EventArgs e)
+        {
+            Program.myCustomConsole.Update();
+            firstStart = false;
+        }
     }
 
     public partial class FonctionsNatives

@@ -37,6 +37,7 @@
             this.Orbitale_MenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.InfoPanel = new System.Windows.Forms.FlowLayoutPanel();
             this.label_Titre = new System.Windows.Forms.Label();
+            this.label_Nom = new System.Windows.Forms.Label();
             this.label_Points = new System.Windows.Forms.Label();
             this.label_nbPoints = new System.Windows.Forms.Label();
             this.label_Billes = new System.Windows.Forms.Label();
@@ -54,7 +55,6 @@
             this.label_nbPointsButC = new System.Windows.Forms.Label();
             this.label_PointsButT = new System.Windows.Forms.Label();
             this.label_nbPointsButT = new System.Windows.Forms.Label();
-            this.label_Nom = new System.Windows.Forms.Label();
             this.panel_GL.SuspendLayout();
             this.menuStrip.SuspendLayout();
             this.InfoPanel.SuspendLayout();
@@ -158,6 +158,15 @@
             this.label_Titre.TabIndex = 0;
             this.label_Titre.Text = "Informations sur la partie courrante";
             this.label_Titre.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // label_Nom
+            // 
+            this.label_Nom.Location = new System.Drawing.Point(3, 23);
+            this.label_Nom.Name = "label_Nom";
+            this.label_Nom.Size = new System.Drawing.Size(187, 23);
+            this.label_Nom.TabIndex = 18;
+            this.label_Nom.Text = "Nom de la zone:";
+            this.label_Nom.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // label_Points
             // 
@@ -313,15 +322,6 @@
             this.label_nbPointsButT.Text = "0";
             this.label_nbPointsButT.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
-            // label_Nom
-            // 
-            this.label_Nom.Location = new System.Drawing.Point(3, 23);
-            this.label_Nom.Name = "label_Nom";
-            this.label_Nom.Size = new System.Drawing.Size(187, 23);
-            this.label_Nom.TabIndex = 18;
-            this.label_Nom.Text = "Nom de la zone:";
-            this.label_Nom.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
             // ModeJeu
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -335,6 +335,7 @@
             this.Text = "ModeJeu";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.PartieRapide_FormClosing);
             this.Load += new System.EventHandler(this.PartieRapide_Load);
+            this.Shown += new System.EventHandler(this.ModeJeu_Shown);
             this.SizeChanged += new System.EventHandler(this.PartieRapide_redimensionner);
             this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.PartieRapide_KeyDown);
             this.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.PartieRapide_KeyPress);
