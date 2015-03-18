@@ -412,7 +412,7 @@ namespace InterfaceGraphique
 
         private void ShowConsol_Click(object sender, EventArgs e)
         {
-            EtatAbstrait.cConsole.Show();
+            CustomConsoleThread.AlwaysShow();
         }
     }
 }

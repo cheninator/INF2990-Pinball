@@ -399,12 +399,12 @@ namespace InterfaceGraphique
                     if (FonctionsNatives.obtenirAffichageGlobal() == 0)
                     {
                         FonctionsNatives.bloquerAffichageGlobal(1);
-                        EtatAbstrait.cConsole.Show();
+                        CustomConsoleThread.Show();
                     }
                     else
                     {
                         FonctionsNatives.bloquerAffichageGlobal(0);
-                        EtatAbstrait.cConsole.Hide();
+                        CustomConsoleThread.Hide();
                     }
                 }
 
@@ -1599,7 +1599,7 @@ namespace InterfaceGraphique
             FonctionsNatives.construireListesPalettes();
             FonctionsNatives.mettreAJourListeBillesEtNoeuds();
             if (FonctionsNatives.obtenirAffichageGlobal() == 1)
-                EtatAbstrait.cConsole.Show();
+                CustomConsoleThread.Show();
             //panel_GL.Dock = DockStyle.Fill;
             //menuStrip3.BringToFront();
             
@@ -3034,7 +3034,7 @@ namespace InterfaceGraphique
             FonctionsNatives.translater(mouvementX, -mouvementY);
             FonctionsNatives.mettreAJourListeBillesEtNoeuds();
             FonctionsNatives.modePause(false);
-            EtatAbstrait.cConsole.Hide();
+            CustomConsoleThread.Hide();
         }
 
         //////////////////////////////////////////////////////////////////////////////////////////

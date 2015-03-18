@@ -87,7 +87,6 @@ namespace InterfaceGraphique
 
         private void CustomConsole_VisibleChanged(object sender, EventArgs e)
         {
-            
             if (this.Visible == true)
             {
                 pause_resume.Checked = false;
@@ -98,6 +97,11 @@ namespace InterfaceGraphique
                 this.Visible = true;
                 this.ActiveControl = null;
             }
+        }
+
+        public void AlwaysShow()
+        {
+            Always_Button.Checked = true;
         }
     }
 }

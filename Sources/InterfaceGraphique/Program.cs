@@ -46,7 +46,7 @@ namespace InterfaceGraphique
         private static Stopwatch chrono = Stopwatch.StartNew(); ///< Chronometre
         private static TimeSpan tempsEcouleVoulu = TimeSpan.FromTicks(TimeSpan.TicksPerSecond / (NB_IMAGES_PAR_SECONDE * 10)); ///< Temps avant le rafraichissement
         public static int compteurFrames = 0;
-
+        public static CustomConsole cConsole;
         ////////////////////////////////////////////////////////////////////////
         ///
         /// @fn static void Main(string[] args)
@@ -76,11 +76,13 @@ namespace InterfaceGraphique
                     }
                     return;
                 }
-
+            
             chrono.Start();
             Application.Idle += ExecuterQuandInactif;
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
+
+            CustomConsoleThread.generateForm();
 
             mMenu = new MainMenu();
 
@@ -129,8 +131,8 @@ namespace InterfaceGraphique
                         // To remove from here
                         if (compteurFrames == 0)
                         {
-                            if (EtatAbstrait.cConsole.Visible)
-                                EtatAbstrait.cConsole.UpdateConsoleTexte();
+                            if (Program.cConsole.Visible)
+                                Program.cConsole.UpdateConsoleTexte();
                         }
                         compteurFrames++;
                         if (compteurFrames >= 10)
@@ -242,6 +244,45 @@ namespace InterfaceGraphique
             Ressort = ressort;
         }
     }
+
+    public static class CustomConsoleThread
+    {
+        static bool alreadyGenerated = false;
+        public static void generateForm()
+        {
+            if (alreadyGenerated == true)
+                return;
+            Program.cConsole = new CustomConsole();
+
+            alreadyGenerated = true;
+        }
+        public static void stopForm()
+        {
+            if (alreadyGenerated == false)
+                return;
+            Program.cConsole.Dispose();
+            Program.cConsole.Close();
+            alreadyGenerated = false;
+        }
+        public static void Show()
+        {
+            generateForm();
+            Program.cConsole.Show();
+        }
+        public static void Hide()
+        {
+            if (alreadyGenerated == false)
+                return;
+            Program.cConsole.Hide();
+        }
+        public static void AlwaysShow()
+        {
+            generateForm();
+            Program.cConsole.Show();
+            Program.cConsole.AlwaysShow();
+        }
+    }
+
     ///////////////////////////////////////////////////////////////////////////
     /// @class FonctionsNatives
     /// @brief Classe qui importe les fontions natives C++.
