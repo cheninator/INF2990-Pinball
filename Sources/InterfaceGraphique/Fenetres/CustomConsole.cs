@@ -30,7 +30,13 @@ namespace InterfaceGraphique
 
         private void Close_Click(object sender, EventArgs e)
         {
-            richTextBox1.Text = "";
+            if (Always_Button.Checked)
+            {
+                MessageBox.Show("You are in 'Always show mode', please uncheck boxe to exit.", "CLOSING DENIED",
+                MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+            richTextBox1.Text = "";          
             this.Hide();
         }
 
@@ -48,6 +54,12 @@ namespace InterfaceGraphique
 
         private void Close_External(object sender, FormClosingEventArgs e)
         {
+            if (Always_Button.Checked)
+            {
+                MessageBox.Show("You are in 'Always show mode', please uncheck boxe to exit.", "CLOSING DENIED",
+                MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
             this.Hide();
             e.Cancel = true;
         }

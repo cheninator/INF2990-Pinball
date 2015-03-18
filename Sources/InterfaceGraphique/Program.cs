@@ -46,7 +46,7 @@ namespace InterfaceGraphique
         private static Stopwatch chrono = Stopwatch.StartNew(); ///< Chronometre
         private static TimeSpan tempsEcouleVoulu = TimeSpan.FromTicks(TimeSpan.TicksPerSecond / (NB_IMAGES_PAR_SECONDE * 10)); ///< Temps avant le rafraichissement
         public static int compteurFrames = 0;
-        public static CustomConsole cConsole;
+
         ////////////////////////////////////////////////////////////////////////
         ///
         /// @fn static void Main(string[] args)
@@ -131,8 +131,7 @@ namespace InterfaceGraphique
                         // To remove from here
                         if (compteurFrames == 0)
                         {
-                            if (Program.cConsole.Visible)
-                                Program.cConsole.UpdateConsoleTexte();
+                            CustomConsoleThread.UpdateConsoleTexte();
                         }
                         compteurFrames++;
                         if (compteurFrames >= 10)
@@ -247,39 +246,45 @@ namespace InterfaceGraphique
 
     public static class CustomConsoleThread
     {
-        static bool alreadyGenerated = false;
+        private static bool alreadyGenerated = false;
+        private static CustomConsole cConsole;
         public static void generateForm()
         {
             if (alreadyGenerated == true)
                 return;
-            Program.cConsole = new CustomConsole();
-
+            cConsole = new CustomConsole();
             alreadyGenerated = true;
         }
         public static void stopForm()
         {
             if (alreadyGenerated == false)
                 return;
-            Program.cConsole.Dispose();
-            Program.cConsole.Close();
+            cConsole.Dispose();
+            cConsole.Close();
             alreadyGenerated = false;
         }
         public static void Show()
         {
             generateForm();
-            Program.cConsole.Show();
+            cConsole.Show();
         }
         public static void Hide()
         {
             if (alreadyGenerated == false)
                 return;
-            Program.cConsole.Hide();
+            cConsole.Hide();
         }
         public static void AlwaysShow()
         {
             generateForm();
-            Program.cConsole.Show();
-            Program.cConsole.AlwaysShow();
+            cConsole.Show();
+            cConsole.AlwaysShow();
+        }
+        public static void UpdateConsoleTexte()
+        {
+            generateForm();
+            if (cConsole.Visible)
+                cConsole.UpdateConsoleTexte();
         }
     }
 
