@@ -152,6 +152,7 @@ void NoeudPaletteG::animer(float temps)
 			// si impossible, la palette est bloquee et doit tomber dans l'etat INACTIVE
 			if (obtenirRotation().z - angleZOriginal_ < 60)
 				assignerRotation(glm::dvec3{ 0, 0, VITESSE_ANGULAIRE_PALETTE_ACTIVE * temps }); 
+			else
 
 			break;
 
@@ -262,34 +263,36 @@ void NoeudPaletteG::desactiver()
 ////////////////////////////////////////////////////////////////////////
 void NoeudPaletteG::traiterCollisions(aidecollision::DetailsCollision details, NoeudAbstrait* bille, float facteurRebond)
 {
-	if (1 && (etatPalette_ == ACTIVE) && fonctionDroitePaletteEnMouvement(bille) > 0)
+	glm::dvec3 positionPalette = obtenirPositionRelative();
+	glm::dvec3 positionBille = bille->obtenirPositionRelative();
+	positionPalette.z = 0.0; // Les positions utilisees ici doivent etre en 2D
+	positionBille.z = 0.0; // Les positions utilisees ici doivent etre en 2D
+	glm::dvec3 vecteur = positionBille - positionPalette;
+	double distance = glm::length(vecteur);
+
+	double angleEnRadian = rotation_[2] * utilitaire::PI_180;
+	glm::dvec3 directionPalette = { -cos(angleEnRadian), -sin(angleEnRadian), 0 }; // Une palette pas tournee a un axe { - 1, 0, 0}
+	glm::dvec3 vecteurProjete = glm::proj(vecteur, directionPalette);
+	glm::dvec3 vecteurNormal = vecteur - vecteurProjete;
+
+	double distanceProjetee = glm::length(vecteurProjete);
+	double distanceNormale = glm::length(vecteurNormal);
+	if (1 && (etatPalette_ == ACTIVE) && glm::cross(directionPalette, vecteur).z > 0)
 	{
-		glm::dvec3 positionPalette = obtenirPositionRelative();
-		glm::dvec3 positionBille = bille->obtenirPositionRelative();
-		positionPalette.z = 0.0; // Les positions utilisees ici doivent etre en 2D
-		positionBille.z = 0.0; // Les positions utilisees ici doivent etre en 2D
-		glm::dvec3 vecteur = positionBille - positionPalette;
-		double distance = glm::length(vecteur);
 
-		double angleEnRadian = rotation_[2] * utilitaire::PI_180;
-		glm::dvec3 directionPalette = { -cos(angleEnRadian), -sin(angleEnRadian), 0 }; // Une palette pas tournee a un axe { - 1, 0, 0}
-		glm::dvec3 vecteurProjete = glm::proj(vecteur, directionPalette);
-		glm::dvec3 vecteurNormal = vecteur - vecteurProjete;
-
-		double distanceProjetee = glm::length(vecteurProjete);
-		double distanceNormale = glm::length(vecteurNormal);
 		double constanteMystere = 1;
 		double deltaAngle = (9 * utilitaire::PI_180);
-		double vitesseAngulaire = deltaAngle / 0.016; // 9 degres par 16 msec 
+		double vitesseAngulaire = VITESSE_ANGULAIRE_PALETTE_ACTIVE * utilitaire::PI_180; // en radian par secondes
 
 
-		glm::dvec3 vitesseInitiale = bille->obtenirVitesse();
+		glm::dvec3 vitesseInitiale = bille->obtenirVitesse() - vitesseAngulaire * distanceProjetee * glm::normalize(vecteurNormal); // RefPalette
+
 		glm::dvec3 vitesseNormaleInitiale = glm::proj(vitesseInitiale, details.direction); // Necessaire pour connaitre la vitesse tangentielle.
 		glm::dvec3 vitesseTangentielle = vitesseInitiale - vitesseNormaleInitiale;
 		glm::dvec2 vitesseNormaleFinale2D = aidecollision::calculerForceAmortissement2D(details, (glm::dvec2)vitesseInitiale, 1.0);
 
 		glm::dvec3 vitesseFinale = vitesseTangentielle + glm::dvec3{ vitesseNormaleFinale2D.x, vitesseNormaleFinale2D.y, 0.0 }
-		+2 * vitesseAngulaire * distanceProjetee * glm::normalize(vecteurNormal); // Calcul explique dans le PDF
+		+ vitesseAngulaire * distanceProjetee * glm::normalize(vecteurNormal); // Calcul explique dans le PDF
 		// Ajouter a la vitesse de la bille selon ou elle frappe la palette en mouvement
 
 		// S'assurer qu'on ne sera pas en collision avec la palette au prochain frame.
