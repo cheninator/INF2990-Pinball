@@ -14,7 +14,6 @@
 */
 
 using System;
-using System.Threading;
 using System.Diagnostics;
 using System.Windows.Forms;
 using System.Runtime.InteropServices;
@@ -23,23 +22,6 @@ using System.IO;
 
 namespace InterfaceGraphique
 {
-    public class ConsoleWorker
-    {
-        // This method will be called when the thread is started.
-        public void DoWork()
-        {
-            Program.cConsole = new CustomConsole();
-        }
-        public void RequestStop()
-        {
-            Program.cConsole.Dispose();
-            Program.cConsole.Close();
-            _shouldStop = true;
-        }
-        // Volatile is used as hint to the compiler that this data
-        // member will be accessed by multiple threads.
-        private volatile bool _shouldStop;
-    }
     ///////////////////////////////////////////////////////////////////////////
     /// @class Program
     /// @brief Classe qui gere le demarrage de l'application.
@@ -64,9 +46,7 @@ namespace InterfaceGraphique
         private static Stopwatch chrono = Stopwatch.StartNew(); ///< Chronometre
         private static TimeSpan tempsEcouleVoulu = TimeSpan.FromTicks(TimeSpan.TicksPerSecond / (NB_IMAGES_PAR_SECONDE * 10)); ///< Temps avant le rafraichissement
         public static int compteurFrames = 0;
-        public static CustomConsole cConsole;
-        public static Thread consoleThread;
-        public static ConsoleWorker consoleObject;
+
         ////////////////////////////////////////////////////////////////////////
         ///
         /// @fn static void Main(string[] args)
@@ -96,12 +76,6 @@ namespace InterfaceGraphique
                     }
                     return;
                 }
-
-            consoleObject = new ConsoleWorker();
-            consoleThread = new Thread(consoleObject.DoWork);
-            consoleThread.Start();
-            while (!consoleThread.IsAlive) ;
-            Thread.Sleep(1);
 
             chrono.Start();
             Application.Idle += ExecuterQuandInactif;
@@ -155,8 +129,8 @@ namespace InterfaceGraphique
                         // To remove from here
                         if (compteurFrames == 0)
                         {
-                            if (cConsole.Visible)
-                                cConsole.UpdateConsoleTexte();
+                            if (EtatAbstrait.cConsole.Visible)
+                                EtatAbstrait.cConsole.UpdateConsoleTexte();
                         }
                         compteurFrames++;
                         if (compteurFrames >= 10)

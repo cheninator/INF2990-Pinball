@@ -58,12 +58,12 @@ namespace InterfaceGraphique
                 if (FonctionsNatives.obtenirAffichageGlobal() == 0)
                 {
                     FonctionsNatives.bloquerAffichageGlobal(1);
-                    Program.cConsole.Show();
+                    EtatAbstrait.cConsole.Show();
                 }
                 else
                 {
                     FonctionsNatives.bloquerAffichageGlobal(0);
-                    Program.cConsole.Hide();
+                    EtatAbstrait.cConsole.Hide();
                 }
             }
 
@@ -73,6 +73,13 @@ namespace InterfaceGraphique
             }
         }
     }
+
+
+
+
+
+
+
 
     class EtatJeuPause : InterfaceGraphique.ModeJeu.EtatJeuAbstrait
     {
