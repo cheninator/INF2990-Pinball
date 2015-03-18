@@ -75,11 +75,12 @@ private:
 	double angleZOriginal_;
 
 	/// Enumeration pour contenir l'etat de la palette
-	enum Etat { ACTIVE, RETOUR, INACTIVE };
+	enum Etat { ACTIVE, RETOUR, INACTIVE, BLOQUEE };
 
 	/// Etat courant de la palette
 	Etat etatPalette_{ INACTIVE };
 
+	double vitesseAngulaire_;
 };
 
 #endif // __ARBRE_NOEUDS_NOEUDPALETTEG_H__
