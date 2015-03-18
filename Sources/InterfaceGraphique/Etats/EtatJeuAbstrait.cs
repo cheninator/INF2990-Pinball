@@ -234,6 +234,11 @@ namespace InterfaceGraphique
                 parent_.toggleSpotLight();
                 FonctionsNatives.spotLight(2, parent_.getSpotLight());
             }
+
+            else if (e.KeyChar == 'h')
+            {
+                parent_.AfficherInformations();
+            }
            
             else if (e.KeyChar == (char)8)
                 {

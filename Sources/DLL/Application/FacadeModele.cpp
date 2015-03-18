@@ -1469,7 +1469,7 @@ void FacadeModele::traiterCollisionsAvecQuadTree(float temps)
 		std::list<NoeudAbstrait*> listeNoeudsAVerifier;
 
 		listeNoeudsAVerifier = quad_->retrieve(bille);
-		std::cout << listeNoeudsAVerifier.size() << std::endl;
+		//std::cout << listeNoeudsAVerifier.size() << std::endl;
 		// Ajouter la table : 
 		listeNoeudsAVerifier.push_back(arbre_->chercher(0));
 

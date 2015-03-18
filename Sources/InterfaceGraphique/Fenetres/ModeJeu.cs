@@ -10,6 +10,7 @@ namespace InterfaceGraphique
     public partial class ModeJeu : Form
     {
         public PartieTerminee gameOver;
+        private Timer timerBille2;
         private double currentZoom = -1; ///< Zoom courant
         private Touches touches; ///< Les touches pour le jeu
         private ZoneInfo zInfo;
@@ -77,9 +78,10 @@ namespace InterfaceGraphique
                 this.WindowState = FormWindowState.Maximized;
               */
             }
-           // timerBille2 = new Timer();
-           // timerBille2.Interval = 1000;
-           // timerBille2.Tick += new System.EventHandler(this.timerBille2_Tick);
+            timerBille2 = new Timer();
+            timerBille2.Tick += new System.EventHandler(this.timerBille2_Tick);
+            timerBille2.Interval = 1500;
+
             this.MouseWheel += new MouseEventHandler(panel_GL_MouseWheel);
 
             if (FonctionsNatives.obtenirModeDoubleBille() != 0)
@@ -123,7 +125,7 @@ namespace InterfaceGraphique
             // Il faut changer le mode car le traitement de début est fini
             etat = new EtatJeuJouer(this);
             FonctionsNatives.animerJeu(true);
-            CreerBille();       
+           // CreerBille();       
         }
 
 
@@ -177,7 +179,15 @@ namespace InterfaceGraphique
         {
            // StringBuilder bille = new StringBuilder("bille");
            // FonctionsNatives.creerObjet(bille, bille.Capacity);
-            CreerBille();
+            if (FonctionsNatives.obtenirModeDoubleBille() != 0 && billesEnJeu < 2)
+            {
+               StringBuilder bille = new StringBuilder("bille");
+               FonctionsNatives.creerObjet(bille, bille.Capacity);
+               Console.WriteLine("2nd BIlle");
+               nombreDeBillesUtilise++;
+               billesDisponibles--;
+            } 
+            timerBille2.Stop();
             //Console.WriteLine("BILLE 2");
         }
 
@@ -200,11 +210,16 @@ namespace InterfaceGraphique
                     billesEnJeu = FonctionsNatives.obtenirNombreBillesCourante();
 
                     //if (billesEnJeu == 0 && (billesDisponibles >= 0))
+                   // if (billesEnJeu < nombreBillesMax && (billesDisponibles >= 0))
                     if (billesEnJeu < nombreBillesMax && (billesDisponibles >= 0))
                     
                     {
                         // wait a certain time
-                        CreerBille();
+                        if (!timerBille2.Enabled)
+                        {
+                            CreerBille();
+                            Console.WriteLine("spawn bille");
+                        }
                     }
                     if (billesDisponibles < 0 && boolTemp)
                     {
@@ -271,6 +286,11 @@ namespace InterfaceGraphique
             FonctionsNatives.mettreAJourListeBillesEtNoeuds();
         }
 
+
+        public void AfficherInformations()
+        {
+            InfoPanel.Visible = !InfoPanel.Visible;
+        }
         private void ProchainePartie()
         {
             boolTemp = false;
@@ -307,6 +327,7 @@ namespace InterfaceGraphique
             FonctionsNatives.creerObjet(bille, bille.Capacity);
             nombreDeBillesUtilise++;
             billesDisponibles--;
+            timerBille2.Start();
 
         }
         private void FinCampagne(bool active)
