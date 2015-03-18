@@ -351,7 +351,7 @@ void FacadeModele::animer(float temps)
 	updateForcesExternes();
 
 	/// Traiter les collisions entre objets
-	bool useQuadTree = true;
+	bool useQuadTree = false;
 	if (useQuadTree)
 		traiterCollisionsAvecQuadTree(temps);
 	else
