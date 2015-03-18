@@ -231,7 +231,7 @@ bool VisiteurAgrandissement::traiter(NoeudGenerateurBille* noeud)
 		double distancePositionTop = zTop;
 		double correctionZ = (1 - homothetie_[0]) * distancePositionTop; // Homothetie[0] est de l'ordre de 1.003, donc (1-homothetie[0]) est petie, donc la correction en z est petite.
 		position += glm::dvec3{ 0, 0, correctionZ };
-		// std::cout << "AVANT position.z : " << position.z << "   distancePositionTop : " << distancePositionTop << "    TOP : " << position.z + zTop << std::endl;
+		// SingletonGlobal::obtenirInstance()->outPutStream_<< "AVANT position.z : " << position.z << "   distancePositionTop : " << distancePositionTop << "    TOP : " << position.z + zTop << std::endl;
 		noeud->assignerEchelle(scaleFinal);
 		if (scaleFinal.x * noeud->obtenirAgrandissement().x < 1)
 			noeud->assignerPositionRelative(position);

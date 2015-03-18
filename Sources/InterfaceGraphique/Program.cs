@@ -278,13 +278,8 @@ namespace InterfaceGraphique
         }
         public void Update()
         {
-            ForceHide();
-            if (cConsole.Visible || (FonctionsNatives.obtenirAffichageGlobal() == 1) )
+            if (cConsole.getAlwaysVisible() || (FonctionsNatives.obtenirAffichageGlobal() == 1))
                 Show();
-        }
-        public void ForceHide()
-        {
-            cConsole.ForceHide();
         }
         public bool isVisible()
         {

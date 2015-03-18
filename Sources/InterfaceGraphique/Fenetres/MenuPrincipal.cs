@@ -122,6 +122,7 @@ namespace InterfaceGraphique
         {
             cameraControl(false);
             this.Dispose();
+            Program.myCustomConsole.stopForm();
             System.Environment.Exit(0);
         }
 

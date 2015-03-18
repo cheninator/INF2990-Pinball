@@ -65,41 +65,41 @@ ArbreRenduINF2990::ArbreRenduINF2990(bool afficher)
 	// Construction des usines
 	int i = 17;
 	int j = 0;
-	if (afficher) std::cout << std::fixed << std::setw(2) << std::setprecision(2) << j++ * 100.0 / i << "%... ajout de l'usine Boutoire Droit" << std::endl;
+	if (afficher) SingletonGlobal::obtenirInstance()->outPutStream_<< std::fixed << std::setw(2) << std::setprecision(2) << j++ * 100.0 / i << "%... ajout de l'usine Boutoire Droit" << std::endl;
 	ajouterUsine(NOM_BUTOIRD, new UsineNoeudButoirD{ NOM_BUTOIRD });
-	if (afficher) std::cout << std::fixed << std::setw(2) << std::setprecision(2) << j++ * 100.0 / i << "%... ajout de l'usine Boutoire Gauche" << std::endl;
+	if (afficher) SingletonGlobal::obtenirInstance()->outPutStream_<< std::fixed << std::setw(2) << std::setprecision(2) << j++ * 100.0 / i << "%... ajout de l'usine Boutoire Gauche" << std::endl;
 	ajouterUsine(NOM_BUTOIRG, new UsineNoeudButoirG{ NOM_BUTOIRG });
-	if (afficher) std::cout << std::fixed << std::setw(2) << std::setprecision(2) << j++ * 100.0 / i << "%... ajout de l'usine Boutoire Circulaire" << std::endl;
+	if (afficher) SingletonGlobal::obtenirInstance()->outPutStream_<< std::fixed << std::setw(2) << std::setprecision(2) << j++ * 100.0 / i << "%... ajout de l'usine Boutoire Circulaire" << std::endl;
 	ajouterUsine(NOM_BUTOIRCIRCULAIRE, new UsineNoeudButoirCirculaire{ NOM_BUTOIRCIRCULAIRE });
-	if (afficher) std::cout << std::fixed << std::setw(2) << std::setprecision(2) << j++ * 100.0 / i << "%... ajout de l'usine Cible" << std::endl;
+	if (afficher) SingletonGlobal::obtenirInstance()->outPutStream_<< std::fixed << std::setw(2) << std::setprecision(2) << j++ * 100.0 / i << "%... ajout de l'usine Cible" << std::endl;
 	ajouterUsine(NOM_CIBLE, new UsineNoeudCible{ NOM_CIBLE });
-	if (afficher) std::cout << std::fixed << std::setw(2) << std::setprecision(2) << j++ * 100.0 / i << "%... ajout de l'usine Bille" << std::endl;
+	if (afficher) SingletonGlobal::obtenirInstance()->outPutStream_<< std::fixed << std::setw(2) << std::setprecision(2) << j++ * 100.0 / i << "%... ajout de l'usine Bille" << std::endl;
 	ajouterUsine(NOM_BILLE, new UsineNoeudBille{ NOM_BILLE });
-	if (afficher) std::cout << std::fixed << std::setw(2) << std::setprecision(2) << j++ * 100.0 / i << "%... ajout de l'usine Generateur Bille" << std::endl;
+	if (afficher) SingletonGlobal::obtenirInstance()->outPutStream_<< std::fixed << std::setw(2) << std::setprecision(2) << j++ * 100.0 / i << "%... ajout de l'usine Generateur Bille" << std::endl;
 	ajouterUsine(NOM_GENERATEURBILLE, new UsineNoeudGenerateurBille{ NOM_GENERATEURBILLE });
-	if (afficher) std::cout << std::fixed << std::setw(2) << std::setprecision(2) << j++ * 100.0 / i << "%... ajout de l'usine Mur" << std::endl;
+	if (afficher) SingletonGlobal::obtenirInstance()->outPutStream_<< std::fixed << std::setw(2) << std::setprecision(2) << j++ * 100.0 / i << "%... ajout de l'usine Mur" << std::endl;
 	ajouterUsine(NOM_MUR, new UsineNoeudMur{ NOM_MUR });
-	if (afficher) std::cout << std::fixed << std::setw(2) << std::setprecision(2) << j++ * 100.0 / i << "%... ajout de l'usine Palette Droite" << std::endl;
+	if (afficher) SingletonGlobal::obtenirInstance()->outPutStream_<< std::fixed << std::setw(2) << std::setprecision(2) << j++ * 100.0 / i << "%... ajout de l'usine Palette Droite" << std::endl;
 	ajouterUsine(NOM_PALETTED, new UsineNoeudPaletteD{ NOM_PALETTED });
-	if (afficher) std::cout << std::fixed << std::setw(2) << std::setprecision(2) << j++ * 100.0 / i << "%... ajout de l'usine Palette Gauche" << std::endl;
+	if (afficher) SingletonGlobal::obtenirInstance()->outPutStream_<< std::fixed << std::setw(2) << std::setprecision(2) << j++ * 100.0 / i << "%... ajout de l'usine Palette Gauche" << std::endl;
 	ajouterUsine(NOM_PALETTEG, new UsineNoeudPaletteG{ NOM_PALETTEG });
-	if (afficher) std::cout << std::fixed << std::setw(2) << std::setprecision(2) << j++ * 100.0 / i << "%... ajout de l'usine Portail" << std::endl;
+	if (afficher) SingletonGlobal::obtenirInstance()->outPutStream_<< std::fixed << std::setw(2) << std::setprecision(2) << j++ * 100.0 / i << "%... ajout de l'usine Portail" << std::endl;
 	ajouterUsine(NOM_PORTAIL, new UsineNoeudPortail{ NOM_PORTAIL });
-	if (afficher) std::cout << std::fixed << std::setw(2) << std::setprecision(2) << j++ * 100.0 / i << "%... ajout de l'usine PortailTorus" << std::endl;
+	if (afficher) SingletonGlobal::obtenirInstance()->outPutStream_<< std::fixed << std::setw(2) << std::setprecision(2) << j++ * 100.0 / i << "%... ajout de l'usine PortailTorus" << std::endl;
 	ajouterUsine(NOM_PORTAILTORUS, new UsineNoeudPortailTorus{ NOM_PORTAILTORUS });
-	if (afficher) std::cout << std::fixed << std::setw(2) << std::setprecision(2) << j++ * 100.0 / i << "%... ajout de l'usine Ressort" << std::endl;
+	if (afficher) SingletonGlobal::obtenirInstance()->outPutStream_<< std::fixed << std::setw(2) << std::setprecision(2) << j++ * 100.0 / i << "%... ajout de l'usine Ressort" << std::endl;
 	ajouterUsine(NOM_RESSORT, new UsineNoeudRessort{ NOM_RESSORT });
-	if (afficher) std::cout << std::fixed << std::setw(2) << std::setprecision(2) << j++ * 100.0 / i << "%... ajout de l'usine Trou" << std::endl;
+	if (afficher) SingletonGlobal::obtenirInstance()->outPutStream_<< std::fixed << std::setw(2) << std::setprecision(2) << j++ * 100.0 / i << "%... ajout de l'usine Trou" << std::endl;
 	ajouterUsine(NOM_TROU, new UsineNoeudTrou{ NOM_TROU });
-	if (afficher) std::cout << std::fixed << std::setw(2) << std::setprecision(2) << j++ * 100.0 / i << "%... ajout de l'usine Tampon" << std::endl;
+	if (afficher) SingletonGlobal::obtenirInstance()->outPutStream_<< std::fixed << std::setw(2) << std::setprecision(2) << j++ * 100.0 / i << "%... ajout de l'usine Tampon" << std::endl;
 	ajouterUsine(NOM_VIDE, new UsineNoeudVide{ NOM_VIDE });
-	if (afficher) std::cout << std::fixed << std::setw(2) << std::setprecision(2) << j++ * 100.0 / i << "%... ajout de l'usine Couvercle" << std::endl;
+	if (afficher) SingletonGlobal::obtenirInstance()->outPutStream_<< std::fixed << std::setw(2) << std::setprecision(2) << j++ * 100.0 / i << "%... ajout de l'usine Couvercle" << std::endl;
 	ajouterUsine(NOM_COUVERCLE, new UsineNoeudCouvercle{ NOM_COUVERCLE });
-	if (afficher) std::cout << std::fixed << std::setw(2) << std::setprecision(2) << j++ * 100.0 / i << "%... ajout de l'usine Table" << std::endl;
+	if (afficher) SingletonGlobal::obtenirInstance()->outPutStream_<< std::fixed << std::setw(2) << std::setprecision(2) << j++ * 100.0 / i << "%... ajout de l'usine Table" << std::endl;
 	ajouterUsine(NOM_TABLE, new UsineNoeudTable{ NOM_TABLE });
-	if (afficher) std::cout << std::fixed << std::setw(2) << std::setprecision(2) << j++ * 100.0 / i << "%... ajout de l'usine Gate" << std::endl;
+	if (afficher) SingletonGlobal::obtenirInstance()->outPutStream_<< std::fixed << std::setw(2) << std::setprecision(2) << j++ * 100.0 / i << "%... ajout de l'usine Gate" << std::endl;
 	ajouterUsine(NOM_GATE, new UsineNoeudGate{ NOM_GATE });
-	if (afficher) std::cout << std::fixed << std::setw(2) << std::setprecision(2) << j++ * 100.0 / i << "%... toute les usines sont genere" << std::endl;
+	if (afficher) SingletonGlobal::obtenirInstance()->outPutStream_<< std::fixed << std::setw(2) << std::setprecision(2) << j++ * 100.0 / i << "%... toute les usines sont genere" << std::endl;
 
 }
 
@@ -203,7 +203,7 @@ bool ArbreRenduINF2990::initialiserXML(std::string nomFichier)
 	if (nomFichier == "zones/.xml")
 		;
 	else if (!utilitaire::fichierExiste(nomFichier))
-		std::cout << "Le fichier n'existe pas. " << std::endl;
+		SingletonGlobal::obtenirInstance()->outPutStream_<< "Le fichier n'existe pas. " << std::endl;
 		
 	else
 	{

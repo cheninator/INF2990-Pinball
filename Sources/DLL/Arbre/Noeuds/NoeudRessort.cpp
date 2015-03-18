@@ -196,7 +196,7 @@ void NoeudRessort::relacher()
 	//                                 longueur originale                           -            Longueur courante.
 	// distanceCompression_ = scaleYOriginal_*(boite_.coinMax.y - boite_.coinMin.y) - scale_.y*(boite_.coinMax.y - boite_.coinMin.y);
 	distanceCompression_ = (scaleYOriginal_ - scale_.y) * (boite_.coinMax.y - boite_.coinMin.y);
-	std::cout << "Distance compression " << distanceCompression_ << std::endl;
+	SingletonGlobal::obtenirInstance()->outPutStream_<< "Distance compression " << distanceCompression_ << std::endl;
 	etatRessort_ = EN_DECOMPRESSION;
 }
 

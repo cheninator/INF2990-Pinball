@@ -203,9 +203,9 @@ void FacadeModele::initialiserOpenGL(HWND hWnd)
 	// Creation de l'arbre de rendu.  a moins d'etre completement certain
 	// d'avoir une bonne raison de faire autrement, il est plus sage de creer
 	// l'arbre apres avoir cree le contexte OpenGL.
-	std::cout << "Creation de l'arbre de rendu..." << std::endl;
+	SingletonGlobal::obtenirInstance()->outPutStream_<< "Creation de l'arbre de rendu..." << std::endl;
 	arbre_ = new ArbreRenduINF2990;
-	std::cout << "Initialisation de l'arbre de rendu..." << std::endl;
+	SingletonGlobal::obtenirInstance()->outPutStream_<< "Initialisation de l'arbre de rendu..." << std::endl;
 	arbre_->initialiser();
 	// On cree une vue par defaut.
 	vue_ = new vue::VueOrtho{
@@ -218,7 +218,7 @@ void FacadeModele::initialiserOpenGL(HWND hWnd)
 				double(coinGaucheTableX), double(coinGaucheTableY),
 				double(coinDroitTableX), double(coinDroitTableY)}
 	};
-	std::cout << "Arbre de rendu generer !" << std::endl << std::endl << std::endl;
+	SingletonGlobal::obtenirInstance()->outPutStream_<< "Arbre de rendu generer !" << std::endl << std::endl << std::endl;
 }
 
 
@@ -396,7 +396,7 @@ int FacadeModele::selectionnerObjetSousPointClique(int i, int j, int hauteur, in
 	int valeurStencil = 0;
 	glReadPixels(i ,hauteur -j , 1, 1, GL_STENCIL_INDEX, GL_UNSIGNED_INT, &valeurStencil);
 	// Merci de laisser le cout pour que je puisse le décommenter au besoin
-	//std::cout << "Valeur du stencil sous le curseur " << valeurStencil << std::endl
+	//SingletonGlobal::obtenirInstance()->outPutStream_<< "Valeur du stencil sous le curseur " << valeurStencil << std::endl
 	//	<< "============= Visite des noeuds ========================" << std::endl;
 	if (!ctrlDown)
 	{

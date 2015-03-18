@@ -41,7 +41,7 @@ extern "C" {
 	__declspec(dllexport) double getPositionY(void);
 	__declspec(dllexport) double getAngle(void);
 	__declspec(dllexport) double getScale(void);
-	__declspec(dllexport) void creerMur(int originX, int originY,int x1, int y1, int x2, int y2);
+	__declspec(dllexport) void creerMur(int originX, int originY, int x1, int y1, int x2, int y2);
 	__declspec(dllexport) void translater(double deplacementX, double deplacementY);
 	__declspec(dllexport) int creerXML(char* path, int length, int prop[6], bool force = false);
 	__declspec(dllexport) int creerXMLString(std::string path, int prop[6], bool force = false);
@@ -79,7 +79,6 @@ extern "C" {
 	__declspec(dllexport) int obtenirNombreDeBilles();
 	__declspec(dllexport) int obtenirModeDoubleBille();
 
-
 	__declspec(dllexport) int obtenirAffichageGlobal();
 	__declspec(dllexport) void bloquerAffichageGlobal(int active);
 
@@ -88,6 +87,10 @@ extern "C" {
 	__declspec(dllexport) int obtenirDiffulte(char* nomFichier, int length);
 	__declspec(dllexport) int* obtenirProprietes(char* nomFichier, int length);
 	__declspec(dllexport) BSTR obtenirDerniereCampagne();
+	__declspec(dllexport) BSTR obtenirConsole();
+	__declspec(dllexport) void ajouterTexteConsole(char* text, int length);
+	__declspec(dllexport) BSTR obtenirHistoriqueConsole();
+	__declspec(dllexport) void viderHistoricConsole();
 	__declspec(dllexport) void creerFichierCampagne(char* nomFichier, int length);
 	__declspec(dllexport) void supprimerBille();
 	__declspec(dllexport) bool spotLight(int lum, bool state);
@@ -100,7 +103,7 @@ extern "C" {
 	__declspec(dllexport) void resetNombreDePointsDePartie();
 	__declspec(dllexport) int  obtenirNombreBillesCourante();
 	__declspec(dllexport) void resetNombreBillesCourantes();
-	
+
 	__declspec(dllexport) void activerPalettesGJ1();
 	__declspec(dllexport) void desactiverPalettesGJ1();
 	__declspec(dllexport) void activerPalettesDJ1();

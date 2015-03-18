@@ -163,10 +163,6 @@ namespace InterfaceGraphique
         {
             return Always_Button.Checked;
         }
-        public void ForceHide()
-        {
-            this.Hide();
-        }
         public bool isVisible()
         {
             return this.Visible;
