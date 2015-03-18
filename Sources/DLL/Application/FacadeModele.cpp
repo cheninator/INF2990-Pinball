@@ -1440,6 +1440,7 @@ void FacadeModele::traiterCollisions(float temps)
 				if (noeudAVerifier->obtenirType() == "trou") // MODIF
 				{
 					miseAJourListeBillesRequise = true;
+					SingletonGlobal::obtenirInstance()->retirerBille();
 					arbre_->effacer(bille);
 					break;                                   // MODIF
 				}
