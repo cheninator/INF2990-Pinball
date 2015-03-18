@@ -41,6 +41,8 @@ namespace aidecollision {
       glm::dvec3  direction;
       /// Enfoncement de l'objet à l'intérieur de la collision.
       double    enfoncement;
+	  /// Dire si la collision est sur le long segment d'un butoir
+	  bool longSegmentButoir = false;
    };
 
    /// Calcule la collision d'un objet circulaire avec un segment de droite.

@@ -40,15 +40,23 @@ public:
 	/// Accepte un visiteur.
 	virtual bool accepterVisiteur(VisiteurAbstrait* vis);
 
+	/// Obtenir la  boite englobante custom.
+	virtual std::vector<glm::dvec3> obtenirVecteursEnglobants();
+
 	/// Generer les boites englobantes de façon différente pour le butoir triangulaire
 	//Obtenir les 4 vecteurs de la boite englobante modifie
 	virtual void obtenirVecteursBoite(glm::dvec3 &v1, glm::dvec3 &v2, glm::dvec3 &v3, glm::dvec3 &v4);
 
+	/// Detection de collisions.
+	virtual aidecollision::DetailsCollision NoeudButoirG::detecterCollisions(NoeudAbstrait* bille);
 
 	/// Pour le traitement logique des collisions
 	virtual void traiterCollisions(aidecollision::DetailsCollision, NoeudAbstrait* bille, float facteurRebond = 1);
 
 private:
+
+	static std::vector<glm::dvec3> boiteEnglobanteModele_;
+
 
 	/// Angle dans le sinus de l'oscillation
 	float angle_{ 0 };
