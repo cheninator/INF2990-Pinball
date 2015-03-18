@@ -409,5 +409,10 @@ namespace InterfaceGraphique
                 webcamTimer.Stop();
             }
         }
+
+        private void ShowConsol_Click(object sender, EventArgs e)
+        {
+            EtatAbstrait.cConsole.Show();
+        }
     }
 }

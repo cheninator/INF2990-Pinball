@@ -44,6 +44,7 @@ namespace InterfaceGraphique
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.bouton_pRapide = new System.Windows.Forms.Button();
             this.bouton_campagne = new System.Windows.Forms.Button();
+            this.ShowConsol = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
@@ -149,12 +150,25 @@ namespace InterfaceGraphique
             this.bouton_campagne.MouseEnter += new System.EventHandler(this.bouton_campagne_MouseEnter);
             this.bouton_campagne.MouseLeave += new System.EventHandler(this.bouton_campagne_MouseLeave);
             // 
+            // ShowConsol
+            // 
+            this.ShowConsol.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.ShowConsol.Location = new System.Drawing.Point(309, 147);
+            this.ShowConsol.Margin = new System.Windows.Forms.Padding(9);
+            this.ShowConsol.Name = "ShowConsol";
+            this.ShowConsol.Size = new System.Drawing.Size(75, 23);
+            this.ShowConsol.TabIndex = 6;
+            this.ShowConsol.Text = "Console";
+            this.ShowConsol.UseVisualStyleBackColor = true;
+            this.ShowConsol.Click += new System.EventHandler(this.ShowConsol_Click);
+            // 
             // MainMenu
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.Control;
-            this.ClientSize = new System.Drawing.Size(384, 533);
+            this.ClientSize = new System.Drawing.Size(384, 564);
+            this.Controls.Add(this.ShowConsol);
             this.Controls.Add(this.bouton_campagne);
             this.Controls.Add(this.bouton_pRapide);
             this.Controls.Add(this.pictureBox1);
@@ -184,6 +198,7 @@ namespace InterfaceGraphique
         private System.Windows.Forms.PictureBox pictureBox1;
         private System.Windows.Forms.Button bouton_pRapide;
         private System.Windows.Forms.Button bouton_campagne;
+        private System.Windows.Forms.Button ShowConsol;
     }
 }
 
