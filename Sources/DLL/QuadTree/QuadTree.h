@@ -63,7 +63,7 @@ private:
 	void rafraichir();
 
 	// Propriétés du QuadTree
-	const int MAX_CAPACITY = 7;
+	const int MAX_CAPACITY = 3;
 	const int MAX_LEVEL = 3;
 	int niveauCourant_;
 

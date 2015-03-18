@@ -177,7 +177,7 @@ bool QuadTree::estDansQuadTree(NoeudAbstrait* noeud, QuadTree* quad) const
 		// Si un des points n'est pas dans le QuadTree, retourner false
 		for (unsigned int i = 0; i < points.size(); i++)
 		{
-			if (!(estDansQuadTree(points[0], quad)))
+			if (!(estDansQuadTree(points[i], quad)))
 				return false;
 		}
 
@@ -224,8 +224,8 @@ bool QuadTree::estDansQuadTree(NoeudAbstrait* noeud, QuadTree* quad) const
 ////////////////////////////////////////////////////////////////////////
 bool QuadTree::estDansQuadTree(glm::dvec3 points, QuadTree* quad) const
 {
-	if (points.x > quad->inferieurGauche_.x && points.x < quad->superieurDroit_.x
-		&& points.y > quad->inferieurGauche_.y && points.y < quad->superieurDroit_.y)
+	if ( (points.x > quad->inferieurGauche_.x) && (points.x < quad->superieurDroit_.x)
+	  && (points.y > quad->inferieurGauche_.y) && (points.y < quad->superieurDroit_.y))
 		return true;
 
 	else

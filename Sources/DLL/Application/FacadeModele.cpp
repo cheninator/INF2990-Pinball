@@ -352,8 +352,10 @@ void FacadeModele::animer(float temps)
 
 	/// Traiter les collisions entre objets
 	bool useQuadTree = true;
+
 	if (useQuadTree)
 		traiterCollisionsAvecQuadTree(temps);
+
 	else
 		traiterCollisions(temps);
 
@@ -1456,8 +1458,6 @@ void FacadeModele::traiterCollisions(float temps)
 
 void FacadeModele::traiterCollisionsAvecQuadTree(float temps)
 {
-	bool miseAJourListeBillesRequise = false;
-
 	for (NoeudAbstrait* bille : listeBilles_)
 		quad_->insert(bille);
 
@@ -1469,7 +1469,7 @@ void FacadeModele::traiterCollisionsAvecQuadTree(float temps)
 		std::list<NoeudAbstrait*> listeNoeudsAVerifier;
 
 		listeNoeudsAVerifier = quad_->retrieve(bille);
-		//std::cout << listeNoeudsAVerifier.size() << std::endl;
+
 		// Ajouter la table : 
 		listeNoeudsAVerifier.push_back(arbre_->chercher(0));
 
@@ -1490,7 +1490,6 @@ void FacadeModele::traiterCollisionsAvecQuadTree(float temps)
 				if (noeudAVerifier->obtenirType() == "trou") // Traiter le cas où une bille entre en collision avec un trou
 				{
 					quad_->remove(bille);
-					billesAEnlever.push_back(bille);
 					break;                                   // MODIF
 				}
 
