@@ -111,7 +111,6 @@ namespace InterfaceGraphique
                 this.ActiveControl = null;
             }
         }
-
         public void AlwaysShow()
         {
             Always_Button.Checked = true;
@@ -127,6 +126,38 @@ namespace InterfaceGraphique
         public bool isVisible()
         {
             return this.Visible;
+        }
+        public bool getPauseButton()
+        {
+            return pause_resume.Checked;
+        }
+        public void setPauseButton(bool check)
+        {
+            pause_resume.Checked = check;
+        }
+        public bool getAlwaysVisible()
+        {
+            return Always_Button.Checked;
+        }
+        public void setAlwaysVisible(bool check)
+        {
+            Always_Button.Checked = check;
+        }
+        public String getCurrentText()
+        {
+            return richTextBox1.Text;
+        }
+        public void setCurrentText(string text)
+        {
+            richTextBox1.Text = text;
+        }
+        public String getPauseText()
+        {
+            return pauseString;
+        }
+        public void setPauseText(string text)
+        {
+            pauseString = text;
         }
     }
 }

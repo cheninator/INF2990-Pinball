@@ -1,4 +1,6 @@
-﻿namespace InterfaceGraphique
+﻿using System;
+
+namespace InterfaceGraphique
 {
     partial class CustomConsole
     {

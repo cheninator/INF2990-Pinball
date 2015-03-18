@@ -290,6 +290,19 @@ namespace InterfaceGraphique
         {
             return cConsole.isVisible();
         }
+        public void reStart()
+        {
+            bool boutonPause = cConsole.getPauseButton();
+            bool alwaysVisible = cConsole.getAlwaysVisible();
+            string currentText = cConsole.getCurrentText();
+            string pauseText = cConsole.getPauseText();
+            stopForm();
+            cConsole = new CustomConsole();
+            cConsole.setPauseButton(boutonPause);
+            cConsole.setAlwaysVisible(alwaysVisible);
+            cConsole.setCurrentText(currentText);
+            cConsole.setPauseText(pauseText);
+        }
     }
 
     ///////////////////////////////////////////////////////////////////////////

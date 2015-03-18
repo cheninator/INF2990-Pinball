@@ -143,6 +143,7 @@ namespace InterfaceGraphique
         ////////////////////////////////////////////////////////////////////////
         private void bouton_edit_Click(object sender, EventArgs e)
         {
+            Program.myCustomConsole.reStart();
             cameraControl(false);
             while (myThread.IsAlive)
             {
@@ -369,6 +370,7 @@ namespace InterfaceGraphique
 
         public void LancerModeJeu(List<string> zones, int playerType)
         {
+            Program.myCustomConsole.reStart();
             cameraControl(false);
             modeJeuMain = new ModeJeu(zones, playerType);
             modeJeuMain.ShowDialog(this);
