@@ -11,8 +11,8 @@ namespace InterfaceGraphique
         }
         public void UpdateConsoleTexte()
         {
-            richTextBox1.Text += FonctionsNatives.obtenirConsole();
-            richTextBox1.ScrollToCaret();
+            richTextBox1.AppendText(FonctionsNatives.obtenirConsole());
+            richTextBox1.Select(richTextBox1.Text.Length, 0);
         }
 
         private void Clear_Click(object sender, EventArgs e)
@@ -30,13 +30,13 @@ namespace InterfaceGraphique
         {
             richTextBox1.Text = "";
             FonctionsNatives.viderHistoricConsole();
-            richTextBox1.ScrollToCaret();
         }
 
         private void ShowHistory_Click(object sender, EventArgs e)
         {
-            richTextBox1.Text = FonctionsNatives.obtenirHistoriqueConsole();
-            richTextBox1.ScrollToCaret();
+            richTextBox1.Text = "";
+            richTextBox1.AppendText(FonctionsNatives.obtenirHistoriqueConsole());
+            richTextBox1.Select(richTextBox1.Text.Length, 0);
         }
 
         private void Close_External(object sender, FormClosingEventArgs e)
