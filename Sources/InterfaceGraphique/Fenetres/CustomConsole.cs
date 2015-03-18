@@ -6,7 +6,7 @@ namespace InterfaceGraphique
     public partial class CustomConsole : Form
     {
         private string pauseString;
-
+        private bool forcePause = false;
         public CustomConsole()
         {
             InitializeComponent();
@@ -67,22 +67,51 @@ namespace InterfaceGraphique
 
         private void pause_resume_CheckedChanged(object sender, EventArgs e)
         {
-            pauseString += FonctionsNatives.obtenirConsole();
-            if (pause_resume.Checked == false)
+            if (forcePause)
             {
-                pause_resume.Text = "Pause";
-                richTextBox1.AppendText(pauseString);
+                forcePause = false;
+                if (pause_resume.Checked == false)
+                {
+                    pause_resume.Text = "Pause";
+                }
+                else
+                {
+                    pause_resume.Text = "Resume";
+                }
             }
             else
             {
-                pause_resume.Text = "Resume";
+                pauseString += FonctionsNatives.obtenirConsole();
+                if (pause_resume.Checked == false)
+                {
+                    pause_resume.Text = "Pause";
+                    richTextBox1.AppendText(pauseString);
+                }
+                else
+                {
+                    pause_resume.Text = "Resume";
+                }
             }
         }
 
         private void CustomConsole_Shown(object sender, EventArgs e)
         {
-            pause_resume.Checked = false;
-            pause_resume.Text = "Pause";
+            if (!Always_Button.Checked)
+            {
+                pause_resume.Checked = false;
+                pause_resume.Text = "Pause";
+            }
+            else
+            {
+                if (pause_resume.Checked == false)
+                {
+                    pause_resume.Text = "Pause";
+                }
+                else
+                {
+                    pause_resume.Text = "Resume";
+                }
+            }
         }
 
         private void scrollToEnd()
@@ -102,8 +131,22 @@ namespace InterfaceGraphique
         {
             if (this.Visible == true)
             {
-                pause_resume.Checked = false;
-                pause_resume.Text = "Pause";
+                if (!Always_Button.Checked)
+                {
+                    pause_resume.Checked = false;
+                    pause_resume.Text = "Pause";
+                }
+                else
+                {
+                    if (pause_resume.Checked == false)
+                    {
+                        pause_resume.Text = "Pause";
+                    }
+                    else
+                    {
+                        pause_resume.Text = "Resume";
+                    }
+                }
             }
             else if (Always_Button.Checked == true)
             {
@@ -133,6 +176,7 @@ namespace InterfaceGraphique
         }
         public void setPauseButton(bool check)
         {
+            forcePause = true;
             pause_resume.Checked = check;
         }
         public bool getAlwaysVisible()
