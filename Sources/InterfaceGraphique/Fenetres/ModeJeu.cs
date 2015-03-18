@@ -131,8 +131,6 @@ namespace InterfaceGraphique
             billesDisponibles = nombreBillesInit;
             label_nbGagnes.Text = nombreDeBillesGagnes.ToString();
             setProprietes();
-            if (FonctionsNatives.obtenirAffichageGlobal() == 1)
-                Program.myCustomConsole.Show();
         }
 
         private void setProprietes()
@@ -160,7 +158,6 @@ namespace InterfaceGraphique
             this.StartPosition = FormStartPosition.WindowsDefaultBounds;
             FonctionsNatives.initialiserOpenGL(panel_GL.Handle);
             FonctionsNatives.dessinerOpenGL();
-
         }
 
     
@@ -223,8 +220,6 @@ namespace InterfaceGraphique
                         {
                             ProchainePartie();
                         }
-
-
                     }
                     if (currentZoom <= 0)
                     {
@@ -247,7 +242,8 @@ namespace InterfaceGraphique
                 Program.peutAfficher = false;
                 Program.tempBool = false;
             }
-            Program.myCustomConsole.Hide();
+            //Console.WriteLine("closing");
+
         }
 
         public void RecommencerPartie()
@@ -435,14 +431,12 @@ namespace InterfaceGraphique
         ////////////////////////////////////////////////////////////////////////
         public void Quitter()
         {
-            // resetConfig();
-            Program.myCustomConsole.Hide();
+           // resetConfig();
             this.Close();
         }
         
         private void mPrincipal_menu_Click(object sender, EventArgs e)
         {
-            Program.myCustomConsole.Hide();
             this.Close();
         }
 
