@@ -132,7 +132,7 @@ namespace InterfaceGraphique
             label_nbGagnes.Text = nombreDeBillesGagnes.ToString();
             setProprietes();
             if (FonctionsNatives.obtenirAffichageGlobal() == 1)
-                EtatAbstrait.cConsole.Show();
+                Program.cConsole.Show();
         }
 
         private void setProprietes()
@@ -302,7 +302,7 @@ namespace InterfaceGraphique
         }
         private void FinCampagne(bool active)
         {
-            EtatAbstrait.cConsole.Hide();
+            Program.cConsole.Hide();
             peutAnimer = false;
             boolTemp = false;
             gameOver = new PartieTerminee(active);
