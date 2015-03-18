@@ -34,6 +34,7 @@
             this.CloseConsole = new System.Windows.Forms.Button();
             this.richTextBox1 = new System.Windows.Forms.RichTextBox();
             this.pause_resume = new System.Windows.Forms.CheckBox();
+            this.Always_Button = new System.Windows.Forms.CheckBox();
             this.SuspendLayout();
             // 
             // ShowHistory
@@ -80,28 +81,45 @@
             // 
             this.richTextBox1.BackColor = System.Drawing.Color.Black;
             this.richTextBox1.ForeColor = System.Drawing.Color.Lime;
+            this.richTextBox1.HideSelection = false;
+            this.richTextBox1.ImeMode = System.Windows.Forms.ImeMode.NoControl;
             this.richTextBox1.Location = new System.Drawing.Point(12, 12);
             this.richTextBox1.Name = "richTextBox1";
+            this.richTextBox1.ReadOnly = true;
+            this.richTextBox1.ShortcutsEnabled = false;
             this.richTextBox1.Size = new System.Drawing.Size(687, 393);
             this.richTextBox1.TabIndex = 6;
             this.richTextBox1.Text = "";
+            this.richTextBox1.TextChanged += new System.EventHandler(this.richTextBox1_TextChanged);
             // 
             // pause_resume
             // 
             this.pause_resume.Appearance = System.Windows.Forms.Appearance.Button;
             this.pause_resume.AutoSize = true;
-            this.pause_resume.Location = new System.Drawing.Point(301, 412);
+            this.pause_resume.Location = new System.Drawing.Point(253, 412);
             this.pause_resume.Name = "pause_resume";
             this.pause_resume.Size = new System.Drawing.Size(91, 23);
             this.pause_resume.TabIndex = 8;
             this.pause_resume.Text = "Pause/Resume";
             this.pause_resume.UseVisualStyleBackColor = true;
+            this.pause_resume.CheckedChanged += new System.EventHandler(this.pause_resume_CheckedChanged);
+            // 
+            // Always_Button
+            // 
+            this.Always_Button.AutoSize = true;
+            this.Always_Button.Location = new System.Drawing.Point(379, 416);
+            this.Always_Button.Name = "Always_Button";
+            this.Always_Button.Size = new System.Drawing.Size(89, 17);
+            this.Always_Button.TabIndex = 9;
+            this.Always_Button.Text = "Show Always";
+            this.Always_Button.UseVisualStyleBackColor = true;
             // 
             // CustomConsole
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(711, 446);
+            this.Controls.Add(this.Always_Button);
             this.Controls.Add(this.pause_resume);
             this.Controls.Add(this.richTextBox1);
             this.Controls.Add(this.CloseConsole);
@@ -111,6 +129,8 @@
             this.Name = "CustomConsole";
             this.Text = "CustomConsole";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.Close_External);
+            this.Shown += new System.EventHandler(this.CustomConsole_Shown);
+            this.VisibleChanged += new System.EventHandler(this.CustomConsole_VisibleChanged);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -123,5 +143,6 @@
         private System.Windows.Forms.Button CloseConsole;
         private System.Windows.Forms.RichTextBox richTextBox1;
         private System.Windows.Forms.CheckBox pause_resume;
+        private System.Windows.Forms.CheckBox Always_Button;
     }
 }
