@@ -150,7 +150,7 @@ namespace InterfaceGraphique
             }
             this.Hide();
             modeEdit = new Editeur();
-            modeEdit.ShowDialog();
+            modeEdit.ShowDialog(this);
             if (modeEdit != null)
             {
                 modeEdit = null;
@@ -364,7 +364,7 @@ namespace InterfaceGraphique
         private void bouton_config_Click(object sender, EventArgs e)
         {
             cameraControl(false);
-            configuration.ShowDialog();
+            configuration.ShowDialog(this);
         }
 
         public void LancerModeJeu(List<string> zones, int playerType)
