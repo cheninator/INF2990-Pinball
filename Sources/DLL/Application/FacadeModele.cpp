@@ -334,6 +334,7 @@ void FacadeModele::reinitialiser()
 /// @return Aucune.
 ///
 ////////////////////////////////////////////////////////////////////////
+bool FacadeModele::useQuadTree_{ false };
 void FacadeModele::animer(float temps)
 {
 	// Changer la vitesse des billes en fonction des collisions:
@@ -352,9 +353,7 @@ void FacadeModele::animer(float temps)
 
 	/// Traiter les collisions entre objets
 
-	bool useQuadTree = false;
-
-	if (useQuadTree)
+	if (useQuadTree_) 
 		traiterCollisionsAvecQuadTree(temps);
 
 	else
@@ -1662,9 +1661,12 @@ void FacadeModele::assignerAnimer(bool animer, NoeudAbstrait* noeud)
 
 void FacadeModele::construireQuadTree()
 {
-	quad_->clear();
-	for (unsigned int i = 0; i < arbre_->getEnfant(0)->obtenirNombreEnfants(); i++)
-		quad_->insert(arbre_->getEnfant(0)->getEnfant(i));
+	if (useQuadTree_)
+	{
+		quad_->clear();
+		for (unsigned int i = 0; i < arbre_->getEnfant(0)->obtenirNombreEnfants(); i++)
+			quad_->insert(arbre_->getEnfant(0)->getEnfant(i));
+	}
 }
 ///////////////////////////////////////////////////////////////////////////////
 ///
