@@ -14,6 +14,7 @@
 */
 
 using System;
+using System.Threading;
 using System.Diagnostics;
 using System.Windows.Forms;
 using System.Runtime.InteropServices;
@@ -34,7 +35,7 @@ namespace InterfaceGraphique
     static class Program
     {
         private const int NB_IMAGES_PAR_SECONDE = 60; ///< Frame rate de l'application
-
+        public static CustomConsoleThread myCustomConsole;
         public static Object unLock = new Object();
         public static bool peutAfficher = false;
         public static bool tempBool = false;
@@ -82,7 +83,7 @@ namespace InterfaceGraphique
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
 
-            CustomConsoleThread.generateForm();
+            myCustomConsole = new CustomConsoleThread();
 
             mMenu = new MainMenu();
 
@@ -131,7 +132,7 @@ namespace InterfaceGraphique
                         // To remove from here
                         if (compteurFrames == 0)
                         {
-                            CustomConsoleThread.UpdateConsoleTexte();
+                            myCustomConsole.UpdateConsoleTexte();
                         }
                         compteurFrames++;
                         if (compteurFrames >= 10)
@@ -244,45 +245,33 @@ namespace InterfaceGraphique
         }
     }
 
-    public static class CustomConsoleThread
+    public class CustomConsoleThread
     {
-        private static bool alreadyGenerated = false;
-        private static CustomConsole cConsole;
-        public static void generateForm()
+        private CustomConsole cConsole;
+        public CustomConsoleThread()
         {
-            if (alreadyGenerated == true)
-                return;
             cConsole = new CustomConsole();
-            alreadyGenerated = true;
         }
-        public static void stopForm()
+        public void stopForm()
         {
-            if (alreadyGenerated == false)
-                return;
             cConsole.Dispose();
             cConsole.Close();
-            alreadyGenerated = false;
         }
-        public static void Show()
+        public void Show()
         {
-            generateForm();
             cConsole.Show();
         }
-        public static void Hide()
+        public void Hide()
         {
-            if (alreadyGenerated == false)
-                return;
             cConsole.Hide();
         }
-        public static void AlwaysShow()
+        public void AlwaysShow()
         {
-            generateForm();
             cConsole.Show();
             cConsole.AlwaysShow();
         }
-        public static void UpdateConsoleTexte()
+        public void UpdateConsoleTexte()
         {
-            generateForm();
             if (cConsole.Visible)
                 cConsole.UpdateConsoleTexte();
         }

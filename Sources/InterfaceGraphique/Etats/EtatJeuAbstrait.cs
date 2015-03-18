@@ -58,12 +58,12 @@ namespace InterfaceGraphique
                 if (FonctionsNatives.obtenirAffichageGlobal() == 0)
                 {
                     FonctionsNatives.bloquerAffichageGlobal(1);
-                    CustomConsoleThread.Show();
+                    Program.myCustomConsole.Show();
                 }
                 else
                 {
                     FonctionsNatives.bloquerAffichageGlobal(0);
-                    CustomConsoleThread.Hide();
+                    Program.myCustomConsole.Hide();
                 }
             }
 

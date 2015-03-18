@@ -54,6 +54,7 @@ namespace InterfaceGraphique
 
         private void Close_External(object sender, FormClosingEventArgs e)
         {
+            e.Cancel = true;
             if (Always_Button.Checked)
             {
                 MessageBox.Show("You are in 'Always show mode', please uncheck boxe to exit.", "CLOSING DENIED",
@@ -61,7 +62,6 @@ namespace InterfaceGraphique
                 return;
             }
             this.Hide();
-            e.Cancel = true;
         }
 
         private void pause_resume_CheckedChanged(object sender, EventArgs e)
