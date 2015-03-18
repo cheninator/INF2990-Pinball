@@ -262,3 +262,13 @@ bool NoeudGenerateurBille::accepterVisiteur(VisiteurAbstrait* vis)
 	return reussi;
 }
 
+void NoeudGenerateurBille::traiterCollisions(aidecollision::DetailsCollision details, NoeudAbstrait* bille, float facteurRebond)
+{
+
+}
+
+aidecollision::DetailsCollision NoeudGenerateurBille::detecterCollisions(NoeudAbstrait* noeud)
+{
+	aidecollision::DetailsCollision detail;
+	return detail;
+}

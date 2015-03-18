@@ -11,12 +11,14 @@ namespace InterfaceGraphique
     {
         private bool firstStart = true;
         public PartieTerminee gameOver;
+        private Timer timerBille2;
         private double currentZoom = -1; ///< Zoom courant
         private Touches touches; ///< Les touches pour le jeu
         private ZoneInfo zInfo;
         private int currentZone = 0;
         private int nbZones;
         private int nombreBillesInit = 0;
+        private int nombreBillesMax;
         List<string> myMaps;
         StringBuilder map;
         StringBuilder nextMap;
@@ -77,11 +79,24 @@ namespace InterfaceGraphique
                 this.WindowState = FormWindowState.Maximized;
               */
             }
-           // timerBille2 = new Timer();
-           // timerBille2.Interval = 1000;
-           // timerBille2.Tick += new System.EventHandler(this.timerBille2_Tick);
+            timerBille2 = new Timer();
+            timerBille2.Tick += new System.EventHandler(this.timerBille2_Tick);
+            timerBille2.Interval = 1500;
 
-            EtablirTouches(playerType);
+            this.MouseWheel += new MouseEventHandler(panel_GL_MouseWheel);
+
+            if (FonctionsNatives.obtenirModeDoubleBille() != 0)
+            {
+                nombreBillesMax = 2;
+            }
+            else
+            {
+                nombreBillesMax = 1;
+            }
+            Console.WriteLine("nbmax: " + nombreBillesMax);
+
+            EtablirTouchesEtAI(playerType);
+
             this.KeyDown += new KeyEventHandler(PartieRapide_KeyDown);
             this.KeyUp += new KeyEventHandler(PartieRapide_KeyUp);
             InitializeComponent();
@@ -97,10 +112,7 @@ namespace InterfaceGraphique
             if (nbZones > 1)
                 this.Text = "Campagne";
             map = new StringBuilder(myMaps[0]);
-            //Console.WriteLine(nbZones);
             FonctionsNatives.ouvrirXML(map, map.Capacity);
-            //Console.WriteLine(pointsGagnerPartie);
-            //Console.WriteLine(pointsPartie);
             resetConfig();
             nombreBillesInit = FonctionsNatives.obtenirNombreDeBilles();
             FonctionsNatives.construireListesPalettes();
@@ -114,7 +126,7 @@ namespace InterfaceGraphique
             // Il faut changer le mode car le traitement de début est fini
             etat = new EtatJeuJouer(this);
             FonctionsNatives.animerJeu(true);
-            CreerBille();
+           // CreerBille();       
         }
 
 
@@ -169,7 +181,15 @@ namespace InterfaceGraphique
         {
            // StringBuilder bille = new StringBuilder("bille");
            // FonctionsNatives.creerObjet(bille, bille.Capacity);
-            CreerBille();
+            if (FonctionsNatives.obtenirModeDoubleBille() != 0 && billesEnJeu < 2)
+            {
+               StringBuilder bille = new StringBuilder("bille");
+               FonctionsNatives.creerObjet(bille, bille.Capacity);
+               Console.WriteLine("2nd BIlle");
+               nombreDeBillesUtilise++;
+               billesDisponibles--;
+            } 
+            timerBille2.Stop();
             //Console.WriteLine("BILLE 2");
         }
 
@@ -191,10 +211,17 @@ namespace InterfaceGraphique
                     }
                     billesEnJeu = FonctionsNatives.obtenirNombreBillesCourante();
 
-                    if (billesEnJeu == 0 && (billesDisponibles >= 0))
+                    //if (billesEnJeu == 0 && (billesDisponibles >= 0))
+                   // if (billesEnJeu < nombreBillesMax && (billesDisponibles >= 0))
+                    if (billesEnJeu < nombreBillesMax && (billesDisponibles >= 0))
+                    
                     {
                         // wait a certain time
-                        CreerBille();
+                        if (!timerBille2.Enabled)
+                        {
+                            CreerBille();
+                            Console.WriteLine("spawn bille");
+                        }
                     }
                     if (billesDisponibles < 0 && boolTemp)
                     {
@@ -247,17 +274,24 @@ namespace InterfaceGraphique
             }
             //Console.WriteLine("closing");
             Program.myCustomConsole.Hide();
+            Console.WriteLine("closing");
         }
 
         public void RecommencerPartie()
         {
             resetConfig();
+            FonctionsNatives.purgeAll();
             FonctionsNatives.ouvrirXML(map, map.Capacity);
             FonctionsNatives.resetNombreBillesCourantes();
             FonctionsNatives.construireListesPalettes();
             FonctionsNatives.mettreAJourListeBillesEtNoeuds();
         }
 
+
+        public void AfficherInformations()
+        {
+            InfoPanel.Visible = !InfoPanel.Visible;
+        }
         private void ProchainePartie()
         {
             boolTemp = false;
@@ -296,8 +330,7 @@ namespace InterfaceGraphique
             FonctionsNatives.creerObjet(bille, bille.Capacity);
             nombreDeBillesUtilise++;
             billesDisponibles--;
-          //  Console.WriteLine(nombreBillesInit);
-          //  Console.WriteLine(nombreDeBillesUtilise);
+            timerBille2.Start();
 
         }
         private void FinCampagne(bool active)
@@ -315,7 +348,7 @@ namespace InterfaceGraphique
 
         }
 
-        private void EtablirTouches(int playerType)
+        private void EtablirTouchesEtAI(int playerType)
         {
             if (playerType == 1)
             {
@@ -324,6 +357,7 @@ namespace InterfaceGraphique
                                  FonctionsNatives.obtenirTouchePDJ1(),
                                  FonctionsNatives.obtenirTouchePDJ1(),
                                  FonctionsNatives.obtenirToucheRessort());
+                FonctionsNatives.activerAI(false);
             }
             else if (playerType == 2)
             {
@@ -332,6 +366,8 @@ namespace InterfaceGraphique
                                 FonctionsNatives.obtenirTouchePDJ1(),
                                 FonctionsNatives.obtenirTouchePDJ2(),
                                 FonctionsNatives.obtenirToucheRessort());
+
+                FonctionsNatives.activerAI(false);
             }
             else if (playerType == 3)
             {
@@ -341,15 +377,9 @@ namespace InterfaceGraphique
                                 FonctionsNatives.obtenirTouchePDJ1(),
                                 1337,
                                 FonctionsNatives.obtenirToucheRessort());
+
+                FonctionsNatives.activerAI(true);
             }
-
-            
-                //Console.WriteLine(touches.PGJ1);
-                //Console.WriteLine(touches.PDJ1);
-                //Console.WriteLine(touches.PGJ2);
-                //Console.WriteLine(touches.PDJ2);
-            
-
 
         }
 
@@ -363,8 +393,6 @@ namespace InterfaceGraphique
         {
             etat.traiterKeyUp(sender, e);
         }
-
-        
 
         private void PartieRapide_redimensionner(object sender, EventArgs e)
         {

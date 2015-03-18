@@ -10,7 +10,6 @@
 #define __SINGLETONGLOBAL_H__
 
 #include "../Application/FacadeModele.h"
-#include <sstream>
 
 ///////////////////////////////////////////////////////////////////////////
 /// @class SingletonGlobal
@@ -61,11 +60,6 @@ public:
 	bool obtenirAnimation() { return animer_; };
 
 	std::string obtenirPathTemp() { objectPathCreated_ ? NULL : getAndSetTempObjDirectory(); return objectPath_; };
-	std::string getAndEmptyStream();
-	std::string obtenirHistoriqueConsole() { return historyStream_.str(); };
-	void viderHistoricConsole() { historyStream_.clear(); historyStream_.str(std::string()); };
-
-	std::stringstream outPutStream_{""};
 
 protected:
 
@@ -107,8 +101,6 @@ private:
 
 	std::string objectPath_;
 	bool objectPathCreated_{ false };
-
-	std::stringstream historyStream_{ "" };
 };
 
 #endif // __SINGLETONGLOBAL_H__

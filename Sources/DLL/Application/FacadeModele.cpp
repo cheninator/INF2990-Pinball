@@ -102,6 +102,8 @@ FacadeModele* FacadeModele::obtenirInstance()
 		instance_->configuration_ = new ConfigScene();
 		instance_->proprietes_ = new int[6];
 		instance_->joueur_ = new JoueurVirtuel();
+		instance_->quad_ = new QuadTree(glm::dvec3(coinGaucheTableX, coinGaucheTableY, 0),
+										glm::dvec3(coinDroitTableX,  coinDroitTableY,  0));
 	}
 	return instance_;
 }
@@ -138,6 +140,7 @@ FacadeModele::~FacadeModele()
 	delete vue_;
 	delete proprietes_;
 	delete joueur_;
+	delete quad_;
 }
 
 
@@ -200,9 +203,9 @@ void FacadeModele::initialiserOpenGL(HWND hWnd)
 	// Creation de l'arbre de rendu.  a moins d'etre completement certain
 	// d'avoir une bonne raison de faire autrement, il est plus sage de creer
 	// l'arbre apres avoir cree le contexte OpenGL.
-	SingletonGlobal::obtenirInstance()->outPutStream_ << "Creation de l'arbre de rendu..." << std::endl;
+	std::cout << "Creation de l'arbre de rendu..." << std::endl;
 	arbre_ = new ArbreRenduINF2990;
-	SingletonGlobal::obtenirInstance()->outPutStream_ << "Initialisation de l'arbre de rendu..." << std::endl;
+	std::cout << "Initialisation de l'arbre de rendu..." << std::endl;
 	arbre_->initialiser();
 	// On cree une vue par defaut.
 	vue_ = new vue::VueOrtho{
@@ -215,7 +218,7 @@ void FacadeModele::initialiserOpenGL(HWND hWnd)
 				double(coinGaucheTableX), double(coinGaucheTableY),
 				double(coinDroitTableX), double(coinDroitTableY)}
 	};
-	SingletonGlobal::obtenirInstance()->outPutStream_ << "Arbre de rendu generer !" << std::endl << std::endl << std::endl;
+	std::cout << "Arbre de rendu generer !" << std::endl << std::endl << std::endl;
 }
 
 
@@ -331,6 +334,7 @@ void FacadeModele::reinitialiser()
 /// @return Aucune.
 ///
 ////////////////////////////////////////////////////////////////////////
+bool FacadeModele::useQuadTree_{ false };
 void FacadeModele::animer(float temps)
 {
 	// Changer la vitesse des billes en fonction des collisions:
@@ -339,17 +343,23 @@ void FacadeModele::animer(float temps)
 	mettreAJourListeBillesEtNoeuds();
 
 	/// Comportement du joueur virtuel
-	joueur_->jouer(listeBilles_, listePalettesGJ2_, listePalettesDJ2_, temps);
-
-	/// Traiter les collisions entre objets
-	bool useQuadTree = false;
-	if (useQuadTree)
-		traiterCollisionsAvecQuadTree(temps);
-	else
-		traiterCollisions(temps);
+	if (utiliserAI)
+	{
+		joueur_->jouer(listeBilles_, listePalettesGJ2_, listePalettesDJ2_, temps);
+	}
 
 	/// Faire la somme des forces
 	updateForcesExternes();
+
+	/// Traiter les collisions entre objets
+
+	if (useQuadTree_) 
+		traiterCollisionsAvecQuadTree(temps);
+
+	else
+		traiterCollisions(temps);
+
+
 
 	// Mise a jour des objets.
 	arbre_->animer(temps);
@@ -386,7 +396,7 @@ int FacadeModele::selectionnerObjetSousPointClique(int i, int j, int hauteur, in
 	int valeurStencil = 0;
 	glReadPixels(i ,hauteur -j , 1, 1, GL_STENCIL_INDEX, GL_UNSIGNED_INT, &valeurStencil);
 	// Merci de laisser le cout pour que je puisse le décommenter au besoin
-	//SingletonGlobal::obtenirInstance()->outPutStream_ << "Valeur du stencil sous le curseur " << valeurStencil << std::endl
+	//std::cout << "Valeur du stencil sous le curseur " << valeurStencil << std::endl
 	//	<< "============= Visite des noeuds ========================" << std::endl;
 	if (!ctrlDown)
 	{
@@ -1168,14 +1178,36 @@ int* FacadeModele::obtenirConfiguration()
 	return configuration_->obtenirConfiguration();
 }
 
-int	 FacadeModele::obtenirTouchePGJ1(){ return configuration_->obtenirRaccourciPGJ1(); }
-int  FacadeModele::obtenirTouchePGJ2(){ return configuration_->obtenirRaccourciPGJ2(); }
-int  FacadeModele::obtenirTouchePDJ1(){ return configuration_->obtenirRaccourciPDJ1(); }
-int  FacadeModele::obtenirTouchePDJ2(){ return configuration_->obtenirRaccourciPDJ2(); }
-int  FacadeModele::obtenirToucheRessort(){ return configuration_->obtenirRaccourciRessort(); }
-int  FacadeModele::obtenirAffichageGlobal(){ return configuration_->obtenirAffichageGlobal(); }
-int	 FacadeModele::obtenirNombreDeBilles(){ return configuration_->obtenirNombreBilles(); }
+int	 FacadeModele::obtenirTouchePGJ1(){ 
+	return configuration_->obtenirRaccourciPGJ1(); 
+}
+int  FacadeModele::obtenirTouchePGJ2(){ 
+	return configuration_->obtenirRaccourciPGJ2(); 
+}
+int  FacadeModele::obtenirTouchePDJ1(){ 
+	return configuration_->obtenirRaccourciPDJ1(); 
+}
+int  FacadeModele::obtenirTouchePDJ2(){ 
+	return configuration_->obtenirRaccourciPDJ2(); 
+}
+int  FacadeModele::obtenirToucheRessort(){ 
+	return configuration_->obtenirRaccourciRessort(); 
+}
+int  FacadeModele::obtenirAffichageGlobal(){ 
+	return configuration_->obtenirAffichageGlobal(); 
+}
+int	 FacadeModele::obtenirNombreDeBilles(){ 
+	return configuration_->obtenirNombreBilles(); 
+}
+int  FacadeModele::obtenirModeDoubleBille() { 
+	return configuration_->obtenirModeDoubleBille(); 
+}
+int  FacadeModele::obtenirModeForceRebond(){ 
+	return configuration_->obtenirModeForceRebond(); 
+}
+
 void FacadeModele::bloquerAffichageGlobal(int active){ configuration_->bloquerAffichageGlobal(active); };
+bool FacadeModele::obtenirAI(){ return utiliserAI; }
 
 
 int FacadeModele::obtenirDifficulte(char* nomFichier, int length)
@@ -1407,6 +1439,8 @@ void FacadeModele::traiterCollisions(float temps)
 				if (noeudAVerifier->obtenirType() == "trou") // MODIF
 				{
 					miseAJourListeBillesRequise = true;
+					SingletonGlobal::obtenirInstance()->retirerBille();
+					arbre_->effacer(bille);
 					break;                                   // MODIF
 				}
 			}
@@ -1425,24 +1459,25 @@ void FacadeModele::traiterCollisions(float temps)
 
 void FacadeModele::traiterCollisionsAvecQuadTree(float temps)
 {
-	bool miseAJourListeBillesRequise = false;
+	for (NoeudAbstrait* bille : listeBilles_)
+		quad_->insert(bille);
 
 	// Pour chaque bille, 
+	std::vector<NoeudAbstrait*> billesAEnlever;
 	for (NoeudAbstrait* bille : listeBilles_)
 	{
 		// Obtenir une liste de noeuds a verifier avec la bille courante.
-		std::vector<NoeudAbstrait*> noeudsAVeririer;
-		std::list<NoeudAbstrait*> listeNoeudsAVeririer;
+		std::list<NoeudAbstrait*> listeNoeudsAVerifier;
 
-		quad_->insert(bille);
-		listeNoeudsAVeririer = quad_->retrieve(bille);
-		SingletonGlobal::obtenirInstance()->outPutStream_ << listeNoeudsAVeririer.size() << std::endl;
-		listeNoeudsAVeririer.push_back(arbre_->chercher(0));
+		listeNoeudsAVerifier = quad_->retrieve(bille);
+
+		// Ajouter la table : 
+		listeNoeudsAVerifier.push_back(arbre_->chercher(0));
 
 		bille->assignerImpossible(false);
 
 		std::list<NoeudAbstrait*>::iterator itNoeudAVerifier;
-		for (itNoeudAVerifier = listeNoeudsAVeririer.begin(); itNoeudAVerifier != listeNoeudsAVeririer.end(); itNoeudAVerifier++)
+		for (itNoeudAVerifier = listeNoeudsAVerifier.begin(); itNoeudAVerifier != listeNoeudsAVerifier.end(); itNoeudAVerifier++)
 		{
 			NoeudAbstrait* noeudAVerifier = (*itNoeudAVerifier);
 			// Detecter les collisions entre le noeud et la bille
@@ -1450,22 +1485,29 @@ void FacadeModele::traiterCollisionsAvecQuadTree(float temps)
 
 			if (detail.type != aidecollision::COLLISION_AUCUNE)
 			{
-				// Traiter (reagir a) la collision.
+				// Traiter (reagir a) la collision. La bille n'est pas détruite maintenant que NoeudTrou::traiterCollisions n'efface plus la bille (il le faisait au commit d'avant)
 				noeudAVerifier->traiterCollisions(detail, bille);
-				if (noeudAVerifier->obtenirType() == "trou") // MODIF
+
+				if (noeudAVerifier->obtenirType() == "trou") // Traiter le cas où une bille entre en collision avec un trou
 				{
-					miseAJourListeBillesRequise = true;
+					quad_->remove(bille);
 					break;                                   // MODIF
 				}
+
 			}
 		}// Fin du for( noeudAVerifier : listeNoeudsAVerifier)
+	}// Fin du for( bille : listeBilles_)
 
-		// Important: Si une bille est tombee dans un trou, il faut l'enlever du quadTree avant de poursuivre a la prochaine bille.
-		mettreAJourListeNoeuds();          // MODIF (Juste updater listeNoeuds_ pour pas avoir le assert de vector.
-	}// fin du for (NoeudAbstrait* bille : listeBilles_)
-	if (miseAJourListeBillesRequise)
-		mettreAJourListeBillesEtNoeuds();
+	// Enlever les billes du quadTree avant de les détruire pour pouvoir accéder à leurs positions.
+	for (NoeudAbstrait* bille : listeBilles_)
+		quad_->remove(bille);
 
+	// Detruire les billes a detruire
+	for (NoeudAbstrait* bille : billesAEnlever)
+	{
+		arbre_->effacer(bille);
+		SingletonGlobal::obtenirInstance()->retirerBille();
+	}		
 }
 
 
@@ -1529,8 +1571,8 @@ void FacadeModele::mettreAJourListeBillesEtNoeuds()
 	for (unsigned int i = 0; i < arbre_->getEnfant(0)->obtenirNombreEnfants(); i++)
 	{
 		NoeudAbstrait* noeud = arbre_->getEnfant(0)->getEnfant(i);
-		if (noeud->obtenirType() != "generateurbille")
-			listeNoeuds_.push_back(noeud);
+		listeNoeuds_.push_back(noeud);
+
 		if (noeud->obtenirType() == "bille")
 			listeBilles_.push_back(noeud);
 	}
@@ -1603,8 +1645,7 @@ void FacadeModele::relacherRessort()
 ///
 /// @fn void FacadeModele::assignerAnimer(bool animer)
 ///
-/// @param[in]  animer : la valeur de animer a assigner
-/// @param[in]  noeud : Noeud au quel assigner la valeur
+/// @param[in]  animer : la valeur de animer a assigner.
 ///
 /// @return Aucune.
 ///
@@ -1618,3 +1659,26 @@ void FacadeModele::assignerAnimer(bool animer, NoeudAbstrait* noeud)
 		assignerAnimer(animer, noeud->getEnfant(i));
 }
 
+void FacadeModele::construireQuadTree()
+{
+	if (useQuadTree_)
+	{
+		quad_->clear();
+		for (unsigned int i = 0; i < arbre_->getEnfant(0)->obtenirNombreEnfants(); i++)
+			quad_->insert(arbre_->getEnfant(0)->getEnfant(i));
+	}
+}
+///////////////////////////////////////////////////////////////////////////////
+///
+/// @fn void FacadeModele::assignerAI(bool actif)
+/// @brief Cette fonction active ou désactive l'utilisation du joueur AI.
+///
+/// @param[in]  actif : la valeur d'utilisation de l'AI a assigner
+///
+/// @return Aucune.
+///
+///////////////////////////////////////////////////////////////////////////////
+void FacadeModele::assignerAI(bool actif)
+{
+	utiliserAI = actif;
+}

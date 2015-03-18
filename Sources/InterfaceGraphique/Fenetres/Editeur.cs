@@ -163,7 +163,7 @@ namespace InterfaceGraphique
             {
                 this.Invoke((MethodInvoker)delegate
                 {
-                    if (etat is EtatEditeurSelectionMultiple || etat is EtatEditeurSelectionMultiple)
+                    if (etat is EtatEditeurSelectionMultiple || etat is EtatEditeurZoomElastique)
                     {
                         if (Program.compteurFrames == 0)
                             rectangleElastique();
@@ -398,11 +398,13 @@ namespace InterfaceGraphique
                     
                     if (FonctionsNatives.obtenirAffichageGlobal() == 0)
                     {
+                        Console.WriteLine("Affichage bloque. On debloque");
                         FonctionsNatives.bloquerAffichageGlobal(1);
                         Program.myCustomConsole.Show();
                     }
                     else
                     {
+                        Console.WriteLine("Affichage permis. On bloque");
                         FonctionsNatives.bloquerAffichageGlobal(0);
                         Program.myCustomConsole.Hide();
                     }
@@ -1587,8 +1589,8 @@ namespace InterfaceGraphique
             flowLayoutPanel1.Hide();
 
             menu1Enable(false);
-          //  StringBuilder bille = new StringBuilder("bille");
-          //  FonctionsNatives.creerObjet(bille, bille.Capacity);
+            StringBuilder bille = new StringBuilder("bille");
+            FonctionsNatives.creerObjet(bille, bille.Capacity);
             panel_GL.BringToFront();
             panel_GL.Anchor = AnchorStyles.None;
             panel_GL.Location = new Point(163, 24);

@@ -473,7 +473,7 @@ void ArbreRenduINF2990Test::testDuplication()
 	// Nombre d'enfants apres la duplication
 	int enfantsApres = arbre->getEnfant(0)->obtenirNombreEnfants();
 
-	// SingletonGlobal::obtenirInstance()->outPutStream_ << enfantsApres << " > " << enfantsAvant << "!!!";
+	// std::cout << enfantsApres << " > " << enfantsAvant << "!!!";
 
 	CPPUNIT_ASSERT(enfantsApres > enfantsAvant);
 	

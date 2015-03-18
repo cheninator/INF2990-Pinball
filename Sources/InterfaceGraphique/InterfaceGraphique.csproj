@@ -162,9 +162,6 @@
     <EmbeddedResource Include="Fenetres\Configuration.resx">
       <DependentUpon>Configuration.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Fenetres\CustomConsole.resx">
-      <DependentUpon>CustomConsole.cs</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="Fenetres\Editeur.resx">
       <DependentUpon>Editeur.cs</DependentUpon>
     </EmbeddedResource>

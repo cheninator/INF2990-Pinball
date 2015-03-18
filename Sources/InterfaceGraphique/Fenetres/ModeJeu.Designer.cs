@@ -55,6 +55,8 @@
             this.label_nbPointsButC = new System.Windows.Forms.Label();
             this.label_PointsButT = new System.Windows.Forms.Label();
             this.label_nbPointsButT = new System.Windows.Forms.Label();
+
+            this.labelShowInfo = new System.Windows.Forms.Label();
             this.panel_GL.SuspendLayout();
             this.menuStrip.SuspendLayout();
             this.InfoPanel.SuspendLayout();
@@ -143,6 +145,7 @@
             this.InfoPanel.Controls.Add(this.label_nbPointsButC);
             this.InfoPanel.Controls.Add(this.label_PointsButT);
             this.InfoPanel.Controls.Add(this.label_nbPointsButT);
+            this.InfoPanel.Controls.Add(this.labelShowInfo);
             this.InfoPanel.Dock = System.Windows.Forms.DockStyle.Right;
             this.InfoPanel.Location = new System.Drawing.Point(443, 0);
             this.InfoPanel.Name = "InfoPanel";
@@ -322,6 +325,15 @@
             this.label_nbPointsButT.Text = "0";
             this.label_nbPointsButT.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
+            // labelShowInfo
+            // 
+            this.labelShowInfo.Location = new System.Drawing.Point(3, 405);
+            this.labelShowInfo.Name = "labelShowInfo";
+            this.labelShowInfo.Size = new System.Drawing.Size(187, 48);
+            this.labelShowInfo.TabIndex = 19;
+            this.labelShowInfo.Text = "Appuyez sur \"h\" pour Afficher/Cacher l\'information";
+            this.labelShowInfo.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
             // ModeJeu
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -379,5 +391,6 @@
         private System.Windows.Forms.Label label_PointsButT;
         private System.Windows.Forms.Label label_nbPointsButT;
         private System.Windows.Forms.Label label_Nom;
+        private System.Windows.Forms.Label labelShowInfo;
     }
 }

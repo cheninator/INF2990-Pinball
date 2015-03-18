@@ -171,6 +171,8 @@ public:
    /// Relacher le ressort
    void relacherRessort();
 
+   void construireQuadTree();
+
 
    int* obtenirConfiguration();
    int	obtenirTouchePGJ1();
@@ -179,8 +181,11 @@ public:
    int  obtenirTouchePDJ2();
    int  obtenirToucheRessort();
    int  obtenirNombreDeBilles();
+   int  obtenirModeDoubleBille();
+   int  obtenirModeForceRebond();
    int  obtenirAffichageGlobal();
    void bloquerAffichageGlobal(int active);
+   bool obtenirAI();
 
    /// Construire des les 4 listes de palettes GJ1,DJ1, GJ2,DJ2
    void construireListesPalettes(); 
@@ -212,6 +217,7 @@ public:
 
    // Assigner la valeur de l'animation a un objet
    void assignerAnimer( bool animer, NoeudAbstrait* noeud);
+   void assignerAI(bool actif);
 
 private:
 
@@ -229,6 +235,7 @@ private:
 
    /// Pointeur vers l'instance unique de la classe.
    static FacadeModele* instance_; 
+   static bool useQuadTree_;
 
    HWND  hWnd_{ nullptr };	///< Poignee ("handle") vers la fenetre ou l'affichage se fait.
    HGLRC hGLRC_{ nullptr }; ///< Poignee ("handle") vers le contexte OpenGL.
@@ -252,6 +259,7 @@ private:
    bool duplicationHorsTable_;
 
    bool pause_{ false };
+   bool utiliserAI { false };
 
    /// Listes de palettes à activer pour chaque touche
    std::set<NoeudPaletteG*> listePalettesGJ1_; ///< Gauche joueur 1

@@ -20,6 +20,13 @@
 #include "OpenGL_Storage/ModeleStorage_Liste.h"
 
 
+std::vector<glm::dvec3> NoeudGate::boiteEnglobanteModele_{
+	{ 2.17, -1.86, 0.0 },
+	{ -56.0, -1.86, 0.0 },
+	{ -56.0, 1.86, 0.0 },
+	{ 2.17, 1.86, 0.0 }
+};
+
 ////////////////////////////////////////////////////////////////////////
 ///
 /// @fn NoeudGate::NoeudGate(const std::string& typeNoeud)
@@ -148,9 +155,14 @@ bool NoeudGate::accepterVisiteur(VisiteurAbstrait* vis)
 /// @return aucun.
 ///
 ////////////////////////////////////////////////////////////////////////
-void NoeudGate::traiterCollisions(aidecollision::DetailsCollision details, NoeudAbstrait* bille)
+void NoeudGate::traiterCollisions(aidecollision::DetailsCollision details, NoeudAbstrait* bille, float facteurRebond)
 {
-	/* Traiter collision one way ici */
+	glm::dvec3 vitesse = bille->obtenirVitesse();
+	double angleGate = rotation_[2] * utilitaire::PI_180;
+	glm::dvec3 vitesseEnCoordonneesDuGate = { cos(angleGate) *vitesse.x +sin(angleGate)*vitesse.y,
+												-sin(angleGate)*vitesse.x + cos(angleGate)*vitesse.y, 
+												0 };
+	if (vitesseEnCoordonneesDuGate.y > 0) return;
 	NoeudAbstrait::traiterCollisions(details, bille);
 }
 
@@ -166,13 +178,35 @@ void NoeudGate::traiterCollisions(aidecollision::DetailsCollision details, Noeud
 /// @return details contient l'information sur la collision de la bille avec *this.
 /// 
 ////////////////////////////////////////////////////////////////////////
-aidecollision::DetailsCollision NoeudGate::detecterCollisions(NoeudAbstrait* noeud)
+aidecollision::DetailsCollision NoeudGate::detecterCollisions(NoeudAbstrait* bille)
 {
 	/* Traiter collision one way ici */
 	aidecollision::DetailsCollision detailsAucune;
 	detailsAucune.type = aidecollision::COLLISION_AUCUNE;
 	if (affiche_)
-		return NoeudAbstrait::detecterCollisions(noeud);
+		return NoeudAbstrait::detecterCollisions(bille);
 	else
 		return detailsAucune;
+}
+
+
+std::vector<glm::dvec3> NoeudGate::obtenirVecteursEnglobants()
+{
+	std::vector<glm::dvec3> boiteEnglobanteObjet;
+
+	glm::dmat3 echelle = glm::dmat3{ glm::dvec3{ scale_.x, 0, 0.0 },
+		glm::dvec3{ 0, scale_.y, 0.0f },
+		glm::dvec3{ 0.0, 0.0, scale_.z } };
+
+	double angleEnRadian = -rotation_[2] * utilitaire::PI_180;
+	glm::dmat3 transform = glm::dmat3{ glm::dvec3{ cos(angleEnRadian), -sin(angleEnRadian), 0.0 },
+		glm::dvec3{ sin(angleEnRadian), cos(angleEnRadian), 0.0f },
+		glm::dvec3{ 0.0, 0.0, 1.0 } };
+
+	for (glm::dvec3 vecteur : boiteEnglobanteModele_)
+	{
+		boiteEnglobanteObjet.push_back(transform * (.7*echelle * vecteur));
+	}
+
+	return boiteEnglobanteObjet;
 }

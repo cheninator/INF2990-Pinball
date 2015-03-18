@@ -19,7 +19,6 @@ using System.Diagnostics;
 using System.Windows.Forms;
 using System.Runtime.InteropServices;
 using System.Text;
-using System.IO;
 
 namespace InterfaceGraphique
 {
@@ -48,6 +47,7 @@ namespace InterfaceGraphique
         private static TimeSpan tempsEcouleVoulu = TimeSpan.FromTicks(TimeSpan.TicksPerSecond / (NB_IMAGES_PAR_SECONDE * 10)); ///< Temps avant le rafraichissement
         public static int compteurFrames = 0;
 
+
         ////////////////////////////////////////////////////////////////////////
         ///
         /// @fn static void Main(string[] args)
@@ -59,7 +59,6 @@ namespace InterfaceGraphique
         ///
         ////////////////////////////////////////////////////////////////////////
         [STAThread]
-
         static void Main(string[] args)
         {
             if (args.Length != 0)
@@ -75,7 +74,8 @@ namespace InterfaceGraphique
                         System.Console.WriteLine("Tests reussis.");
                         string s1 = System.Console.ReadLine();
                     }
-                    return;
+
+                   return;
                 }
             
             chrono.Start();
@@ -317,8 +317,6 @@ namespace InterfaceGraphique
     static partial class FonctionsNatives
     {
         [StructLayout(LayoutKind.Sequential)]
-
-        // User32.dll
         public struct Message
         {
             public IntPtr hWnd;
@@ -328,11 +326,11 @@ namespace InterfaceGraphique
             public uint Time;
             public System.Drawing.Point Point;
         }
+
         [DllImport("User32.dll")]
         [return: MarshalAs(UnmanagedType.Bool)]
         public static extern bool PeekMessage(out Message message, IntPtr hWnd, uint filterMin, uint filterMax, uint flags);
 
-        // Noyeau.dll
         [DllImport(@"Noyau.dll", CallingConvention = CallingConvention.Cdecl)]
         public static extern bool executerTests();
 
@@ -347,6 +345,24 @@ namespace InterfaceGraphique
 
         [DllImport(@"Noyau.dll", CallingConvention = CallingConvention.Cdecl)]
         public static extern void animer(double temps);
+
+        [DllImport(@"Noyau.dll", CharSet = CharSet.Unicode, CallingConvention = CallingConvention.Cdecl)]
+        [return: MarshalAs(UnmanagedType.BStr)]
+        public static extern string obtenirDerniereCampagne();
+
+        [DllImport(@"Noyau.dll", CharSet = CharSet.Unicode, CallingConvention = CallingConvention.Cdecl)]
+        [return: MarshalAs(UnmanagedType.BStr)]
+        public static extern string obtenirConsole();
+
+        [DllImport(@"Noyau.dll", CallingConvention = CallingConvention.Cdecl)]
+        public static extern void ajouterTexteConsole(StringBuilder text, int length);
+
+        [DllImport(@"Noyau.dll", CharSet = CharSet.Unicode, CallingConvention = CallingConvention.Cdecl)]
+        [return: MarshalAs(UnmanagedType.BStr)]
+        public static extern string obtenirHistoriqueConsole();
+
+        [DllImport(@"Noyau.dll", CallingConvention = CallingConvention.Cdecl)]
+        public static extern void viderHistoricConsole();
 
         [DllImport(@"Noyau.dll", CallingConvention = CallingConvention.Cdecl)]
         public static extern void redimensionnerFenetre(int largeur, int hauteur);
@@ -538,23 +554,11 @@ namespace InterfaceGraphique
         [DllImport(@"Noyau.dll", CallingConvention = CallingConvention.Cdecl)]
         public static extern  void desactiverPalettesDJ2();
 
+
+
         [DllImport(@"Noyau.dll", CharSet = CharSet.Unicode, CallingConvention = CallingConvention.Cdecl)]
         [return: MarshalAs(UnmanagedType.BStr)]
         public static extern string obtenirDerniereCampagne();
-
-        [DllImport(@"Noyau.dll", CharSet = CharSet.Unicode, CallingConvention = CallingConvention.Cdecl)]
-        [return: MarshalAs(UnmanagedType.BStr)]
-        public static extern string obtenirConsole();
-
-        [DllImport(@"Noyau.dll", CallingConvention = CallingConvention.Cdecl)]
-        public static extern void ajouterTexteConsole(StringBuilder text, int length);
-
-        [DllImport(@"Noyau.dll", CharSet = CharSet.Unicode, CallingConvention = CallingConvention.Cdecl)]
-        [return: MarshalAs(UnmanagedType.BStr)]
-        public static extern string obtenirHistoriqueConsole();
-
-        [DllImport(@"Noyau.dll", CallingConvention = CallingConvention.Cdecl)]
-        public static extern void viderHistoricConsole();
 
         [DllImport(@"Noyau.dll", CallingConvention = CallingConvention.Cdecl)]
         public static extern void supprimerBille();
@@ -596,6 +600,9 @@ namespace InterfaceGraphique
         public static extern int obtenirNombreBillesCourante();
 
         [DllImport(@"Noyau.dll", CallingConvention = CallingConvention.Cdecl)]
+        public static extern int obtenirModeDoubleBille();
+
+        [DllImport(@"Noyau.dll", CallingConvention = CallingConvention.Cdecl)]
         public static extern int obtenirNombreDeBilles();
 
         [DllImport(@"Noyau.dll", CallingConvention = CallingConvention.Cdecl)]
@@ -612,5 +619,8 @@ namespace InterfaceGraphique
 
         [DllImport(@"Noyau.dll", CallingConvention = CallingConvention.Cdecl)]
         public static extern void rechargerArbre(bool recharger);
+
+        [DllImport(@"Noyau.dll", CallingConvention = CallingConvention.Cdecl)]
+        public static extern void activerAI(bool actif);
     }
 }

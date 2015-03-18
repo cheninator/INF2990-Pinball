@@ -77,6 +77,8 @@ extern "C" {
 	__declspec(dllexport) int obtenirTouchePDJ2();
 	__declspec(dllexport) int obtenirToucheRessort();
 	__declspec(dllexport) int obtenirNombreDeBilles();
+	__declspec(dllexport) int obtenirModeDoubleBille();
+
 
 	__declspec(dllexport) int obtenirAffichageGlobal();
 	__declspec(dllexport) void bloquerAffichageGlobal(int active);
@@ -86,10 +88,6 @@ extern "C" {
 	__declspec(dllexport) int obtenirDiffulte(char* nomFichier, int length);
 	__declspec(dllexport) int* obtenirProprietes(char* nomFichier, int length);
 	__declspec(dllexport) BSTR obtenirDerniereCampagne();
-	__declspec(dllexport) BSTR obtenirConsole();
-	__declspec(dllexport) void ajouterTexteConsole(char* text, int length);
-	__declspec(dllexport) BSTR obtenirHistoriqueConsole();
-	__declspec(dllexport) void viderHistoricConsole();
 	__declspec(dllexport) void creerFichierCampagne(char* nomFichier, int length);
 	__declspec(dllexport) void supprimerBille();
 	__declspec(dllexport) bool spotLight(int lum, bool state);
@@ -115,6 +113,8 @@ extern "C" {
 
 	__declspec(dllexport) void animerJeu(bool animer);
 	__declspec(dllexport) void rechargerArbre(bool recharger);
+
+	__declspec(dllexport) void activerAI(bool actif);
 }
 
 #endif // __FACADE_INTERFACE_NATIVE_H__

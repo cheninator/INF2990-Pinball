@@ -259,7 +259,7 @@ void NoeudPaletteD::desactiver()
 /// @return details contient l'information sur la collision de la bille avec *this.
 ///
 ////////////////////////////////////////////////////////////////////////
-void NoeudPaletteD::traiterCollisions(aidecollision::DetailsCollision details, NoeudAbstrait* bille)
+void NoeudPaletteD::traiterCollisions(aidecollision::DetailsCollision details, NoeudAbstrait* bille, float facteurRebond)
 {
 	if (1 && (etatPalette_ == ACTIVE) && fonctionDroitePaletteEnMouvement(bille) > 0)
 	{
@@ -396,7 +396,7 @@ std::vector<glm::dvec3> NoeudPaletteD::obtenirVecteursEnglobants()
 
 	for (glm::dvec3 vecteur : boiteEnglobanteModele_)
 	{
-		boiteEnglobanteObjet.push_back(transform * (echelle * vecteur));
+		boiteEnglobanteObjet.push_back(transform * (.7*echelle * vecteur));
 	}
 
 	return boiteEnglobanteObjet;
