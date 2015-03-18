@@ -39,6 +39,8 @@ public:
 	// Retirer un noeud du QuadTree
 	bool remove(NoeudAbstrait* noeud);
 
+	std::list<NoeudAbstrait*> QuadTree::obtenirContenu();
+
 	// Vider le QuadTree et les sous QuadTree
 	void clear();
 

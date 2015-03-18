@@ -334,7 +334,7 @@ void FacadeModele::reinitialiser()
 /// @return Aucune.
 ///
 ////////////////////////////////////////////////////////////////////////
-bool FacadeModele::useQuadTree_{ false };
+bool FacadeModele::useQuadTree_{ true };
 void FacadeModele::animer(float temps)
 {
 	// Changer la vitesse des billes en fonction des collisions:
@@ -1470,7 +1470,7 @@ void FacadeModele::traiterCollisionsAvecQuadTree(float temps)
 		std::list<NoeudAbstrait*> listeNoeudsAVerifier;
 
 		listeNoeudsAVerifier = quad_->retrieve(bille);
-
+		std::cout << "Grandeur ListeNoeudsAVerifier " << listeNoeudsAVerifier.size() << std::endl;
 		// Ajouter la table : 
 		listeNoeudsAVerifier.push_back(arbre_->chercher(0));
 
@@ -1491,6 +1491,7 @@ void FacadeModele::traiterCollisionsAvecQuadTree(float temps)
 				if (noeudAVerifier->obtenirType() == "trou") // Traiter le cas où une bille entre en collision avec un trou
 				{
 					quad_->remove(bille);
+					billesAEnlever.push_back(bille);
 					break;                                   // MODIF
 				}
 

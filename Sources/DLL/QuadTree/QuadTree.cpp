@@ -171,7 +171,7 @@ bool QuadTree::estDansQuadTree(NoeudAbstrait* noeud, QuadTree* quad) const
 	// Le cas ou ce n'est pas un objet qui a une forme circulaire
 	if (points.size() > 1)
 	{
-		for (int i = 0; i < 4; i++)
+		for (int i = 0; i < points.size(); i++)
 			points[i] += noeud->obtenirPositionRelative();
 
 		// Si un des points n'est pas dans le QuadTree, retourner false
@@ -286,53 +286,37 @@ bool QuadTree::insert(NoeudAbstrait* noeud)
 	if (!noeud->estAffiche())
 		return false;
 
-	// Insérer le noeud seulement si le noeud est dans le Quadtree
-	if (estDansQuadTree(noeud, this))
-	{
-		// Insérer l'objet dans le QuadTree courant si aucun de ses sous QuadTree ne peut l'accueuillir
-		if (objets_.size() < MAX_CAPACITY && niveauCourant_ < MAX_LEVEL && obtenirQuadrant(noeud) == this)
-		{
-			objets_.push_back(noeud);
-			return true;
-		}
+	objets_.push_back(noeud); // On insere dans objets_ et si MAX_CAPACITY est atteint, on essai de replacer les trucs.
 
-		// Subdiviser et reassigner les objets déjà existants
+	if (objets_.size() < MAX_CAPACITY && niveauCourant_ < MAX_LEVEL)
+		return true;
+	else
+	{
+		// Si les enfants du quad n'existent pas, les creer.
 		if (nordEst_ == nullptr)
-		{
 			divide();
 
-			std::list<NoeudAbstrait*> copy = objets_;
-			std::list<NoeudAbstrait*>::iterator iter;
-
-			objets_.clear();
-
-			// Reassigner les objets qui étaient précédemment insérés 
-			for (iter = copy.begin(); iter != copy.end(); iter++)
-				obtenirQuadrant(*iter)->insert(*iter);
-
-			// Ajouter le nouveau noeud
-			obtenirQuadrant(noeud)->insert(noeud);
-
-			return true;
-		}
-
-		// Si le QuadTree contient déjà des sous QuadTree, insérer le noeud dans le bon QuadTree
-		else if (nordEst_ != nullptr)
+		// Redistribuer les objets dans les quads enfants si possible
+		for (auto it = objets_.begin(); it != objets_.end();)
 		{
-			obtenirQuadrant(noeud)->insert(noeud);
-			return true;
-		}
+			// Les noeuds à mettre dans les sous quads, c'est les noeuds pour lesquels obtenirQuadrant != this 
+			// car si obtenirQuandrant == this, ça veut dire qu'on est obligés de mettre le noeud dans le quad courant même si capacity est dépassé
+			// donc c<est pas la peine d'essayer, de plus, a cause de la recursivite, re-essayer pourrait nous mettre dasn 
+			// une situation de stack overflow.
+			if (obtenirQuadrant(*it) != this)
+			{
+				// Insérer dans le bon sous-quad
+				obtenirQuadrant(*it)->insert(*it);
+				// le noeud va peut-être se ramasser dans un sous-sous-quad par récursivité
+				// Enlever du quad courant.
+				it = objets_.erase(it);
+			}
+			else
+				++it;
+		} // En passant, j'ai lu que ceci ^^^^ est la façon standart d'effacer des éléments d'une std::list pendant qu'on itère dessus.
 
-		// Ne devrait JAMAIS se rendre jusqu'ici
-		else
-			return false;
-
+		return true;
 	}
-
-	// Ne pas insérer le noeud, il n'est pas dans les limites
-	else
-		return false;
-
 }
 
 
@@ -353,81 +337,28 @@ std::list<NoeudAbstrait*> QuadTree::retrieve(NoeudAbstrait* noeud)
 {
 	std::list<NoeudAbstrait*> listeNoeuds;
 
-	if (estDansQuadTree(noeud, this))
+	// Si le noeud en question est dans plusieurs des sous-quad tree, on doit tout retourner.
+	if (obtenirQuadrant(noeud) == this)
 	{
-		// Le quad n'a pas de sous QuadTree
-		if (nordEst_ == nullptr)
-			return objets_;
-
-		// Le quad a un sous QuadTree et le parent de ce dernier ne contient aucun noeud
-		else if (nordEst_ != nullptr && objets_.size() == 0)
-			return obtenirQuadrant(noeud)->retrieve(noeud);
-
-		// Le quad a un sous QuadTree et le parent de ce dernier contient des noeuds
-		else if (nordEst_ != nullptr && objets_.size() != 0)
-		{
-			if (obtenirQuadrant(noeud) != this)
-			{
-				std::list<NoeudAbstrait*> sousQuad = obtenirQuadrant(noeud)->retrieve(noeud);
-				std::list<NoeudAbstrait*>::iterator iter;
-
-				// Ajouter d'abord les noeuds du parent
-				listeNoeuds = objets_;
-
-				// Ajouter les noeuds du sous QuadTree
-				for (iter = sousQuad.begin(); iter != sousQuad.end(); iter++)
-					listeNoeuds.push_back(*iter);
-
-				sousQuad.clear();
-
-				return listeNoeuds;
-			}
-
-			// Retourner tous les objets du QuadTree, incluant les objets de ses sous QuadTree
-			else if (obtenirQuadrant(noeud) == this)
-			{
-				std::list<NoeudAbstrait*> nordEst = nordEst_->objets_;
-				std::list<NoeudAbstrait*> nordOuest = nordOuest_->objets_;
-				std::list<NoeudAbstrait*> sudEst = sudEst_->objets_;
-				std::list<NoeudAbstrait*> sudOuest = sudOuest_->objets_;
-				std::list<NoeudAbstrait*>::iterator iter;
-
-				listeNoeuds = objets_;
-
-				for (iter = nordEst.begin(); iter != nordEst.end(); iter++)
-					listeNoeuds.push_back(*iter);
-
-				for (iter = nordOuest.begin(); iter != nordOuest.end(); iter++)
-					listeNoeuds.push_back(*iter);
-
-				for (iter = sudEst.begin(); iter != sudEst.end(); iter++)
-					listeNoeuds.push_back(*iter);
-
-				for (iter = sudOuest.begin(); iter != sudOuest.end(); iter++)
-					listeNoeuds.push_back(*iter);
-
-				nordEst.clear();
-				nordOuest.clear();
-				sudEst.clear();
-				sudOuest.clear();
-
-				return listeNoeuds;
-			}
-			
-			// Ne devrait JAMAIS se rendre ici
-			else
-				return listeNoeuds;
-		}
-
-		// Ne devrais JAMAIS se rendre ici
-		else
-			return listeNoeuds;
-
+		return obtenirContenu();
 	}
 
+	if (estDansQuadTree(noeud, this))
+	{
+		for (auto iter = objets_.begin(); iter != objets_.end(); iter++)
+			listeNoeuds.push_back(*iter);
+	}
+
+	if (nordEst_ != nullptr)
+	{
+		// Ajouter les du sous-quad qui contient le noeud.
+		std::list<NoeudAbstrait*> objets = obtenirQuadrant(noeud)->retrieve(noeud);
+
+		for (auto iter = objets.begin(); iter != objets.end(); iter++)
+			listeNoeuds.push_back(*iter);
+	}
 	// Liste vide si le noeud n'est pas dans le QuadTree
-	else
-		return listeNoeuds;
+	return listeNoeuds;
 }
 
 
@@ -506,4 +437,29 @@ void QuadTree::rafraichir()
 		sudOuest_->rafraichir();
 	}
 
+}
+
+
+std::list<NoeudAbstrait*> QuadTree::obtenirContenu()
+{
+	std::list<NoeudAbstrait*> listeNoeuds = objets_;
+
+	if (nordEst_ != nullptr)
+	{
+		std::list<NoeudAbstrait*> nordEstTemp = nordEst_->obtenirContenu();
+		std::list<NoeudAbstrait*> nordOuestTemp = nordOuest_->obtenirContenu();
+		std::list<NoeudAbstrait*> sudEstTemp = sudEst_->obtenirContenu();
+		std::list<NoeudAbstrait*> sudOuestTemp = sudOuest_->obtenirContenu();
+		
+		for (auto it = nordEstTemp.begin(); it != nordEstTemp.end(); it++)
+			listeNoeuds.push_back(*it);
+		for (auto it = nordOuestTemp.begin(); it != nordOuestTemp.end(); it++)
+			listeNoeuds.push_back(*it);
+		for (auto it = sudEstTemp.begin(); it != sudEstTemp.end(); it++)
+			listeNoeuds.push_back(*it);
+		for (auto it = sudOuestTemp.begin(); it != sudOuestTemp.end(); it++)
+			listeNoeuds.push_back(*it);
+	}
+
+	return listeNoeuds;
 }
