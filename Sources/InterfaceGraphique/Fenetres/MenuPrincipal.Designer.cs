@@ -167,7 +167,7 @@ namespace InterfaceGraphique
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.Control;
-            this.ClientSize = new System.Drawing.Size(384, 564);
+            this.ClientSize = new System.Drawing.Size(384, 533);
             this.Controls.Add(this.ShowConsol);
             this.Controls.Add(this.bouton_campagne);
             this.Controls.Add(this.bouton_pRapide);

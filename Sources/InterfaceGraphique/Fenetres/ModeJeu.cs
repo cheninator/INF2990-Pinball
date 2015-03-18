@@ -455,6 +455,7 @@ namespace InterfaceGraphique
 
         private void ModeJeu_Shown(object sender, EventArgs e)
         {
+            Program.myCustomConsole.reStart();
             Program.myCustomConsole.Update();
             firstStart = false;
         }

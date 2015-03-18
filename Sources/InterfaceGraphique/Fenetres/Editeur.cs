@@ -3050,5 +3050,11 @@ namespace InterfaceGraphique
         {
             this.Close();
         }
+
+        private void Editeur_Shown(object sender, EventArgs e)
+        {
+            Program.myCustomConsole.reStart();
+            Program.myCustomConsole.Update();
+        }
     }
 }

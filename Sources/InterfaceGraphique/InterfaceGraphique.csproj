@@ -103,7 +103,7 @@
     <Compile Include="Fenetres\CustomConsole.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Fenetres\CustomConsole.Designer.cs">
+    <Compile Include="Fenetres\CustomConsole.designer.cs">
       <DependentUpon>CustomConsole.cs</DependentUpon>
     </Compile>
     <Compile Include="Fenetres\Editeur.cs">
