@@ -337,38 +337,31 @@ void NoeudPaletteD::traiterCollisions(aidecollision::DetailsCollision details, N
 	double distanceProjetee = glm::length(vecteurProjete);
 	double distanceNormale = glm::length(vecteurNormal);
 
-	if (etatPalette_ == ACTIVE && glm::cross(directionPalette, vecteur).z > 0)
-	{
-		glm::dvec3 vecteurNormalPalette{ -directionPalette.y, directionPalette.x, 0.0 };
+	glm::dvec3 vecteurNormalPalette{ -directionPalette.y, directionPalette.x, 0.0 };
+	// En utilisant l'attribut vitesse angulaire, le calcul suivant va faire le bon calcul selon l'état de la palette.
+	glm::dvec3 vitesseInitiale = bille->obtenirVitesse() - vitesseAngulaire_ * distanceProjetee * vecteurNormalPalette; // RefPalette
+	glm::dvec3 vitesseNormaleInitiale = glm::proj(vitesseInitiale, details.direction); // Necessaire pour connaitre la vitesse tangentielle.
+	glm::dvec3 vitesseTangentielle = vitesseInitiale - vitesseNormaleInitiale;
+	glm::dvec2 vitesseNormaleFinale2D = aidecollision::calculerForceAmortissement2D(details, (glm::dvec2)vitesseInitiale, 1.0);
 
-		glm::dvec3 vitesseInitiale = bille->obtenirVitesse() - vitesseAngulaire_ * distanceProjetee * vecteurNormalPalette; // RefPalette
-		glm::dvec3 vitesseNormaleInitiale = glm::proj(vitesseInitiale, details.direction); // Necessaire pour connaitre la vitesse tangentielle.
-		glm::dvec3 vitesseTangentielle = vitesseInitiale - vitesseNormaleInitiale;
-		glm::dvec2 vitesseNormaleFinale2D = aidecollision::calculerForceAmortissement2D(details, (glm::dvec2)vitesseInitiale, 1.0);
+	glm::dvec3 vitesseFinale = vitesseTangentielle + glm::dvec3{ vitesseNormaleFinale2D.x, vitesseNormaleFinale2D.y, 0.0 }
+	+ vitesseAngulaire_ * distanceProjetee * vecteurNormalPalette; // Calcul explique dans le PDF
+	// Ajouter a la vitesse de la bille selon ou elle frappe la palette en mouvement
 
-		glm::dvec3 vitesseFinale = vitesseTangentielle + glm::dvec3{ vitesseNormaleFinale2D.x, vitesseNormaleFinale2D.y, 0.0 }
-		+ vitesseAngulaire_ * distanceProjetee * vecteurNormalPalette; // Calcul explique dans le PDF
-		// Ajouter a la vitesse de la bille selon ou elle frappe la palette en mouvement
+	// S'assurer qu'on ne sera pas en collision avec la palette au prochain frame.
+	glm::dvec3 positionFinale = bille->obtenirPositionRelative()
+	+ details.enfoncement * glm::normalize(details.direction);
 
-		// S'assurer qu'on ne sera pas en collision avec la palette au prochain frame.
-		glm::dvec3 positionFinale = bille->obtenirPositionRelative()
-		+ details.enfoncement * glm::normalize(details.direction);
-
-		bille->assignerPositionRelative(positionFinale);
-		// Imposer une vitesse maximale
-		double MODULE_VITESSE_MAX = 300;
-		if (glm::length(vitesseFinale) > MODULE_VITESSE_MAX)
-			vitesseFinale = MODULE_VITESSE_MAX * glm::normalize(vitesseFinale); //  Meme Direction mais ramener le module a 30.
-		bille->assignerVitesse(vitesseFinale);
-		bille->assignerImpossible(true);
-		((NoeudBille*)bille)->afficherVitesse(vitesseFinale); // Que Dieu me pardonne
-		// C'est la bille qui sait si debug_ == true ou false.
-		// donc j'ai mis le if (debug_) dans NoeudBille::afficherVitesse(vitesse).
-	}
-	else
-	{
-		NoeudAbstrait::traiterCollisions(details, bille);
-	}
+	bille->assignerPositionRelative(positionFinale);
+	// Imposer une vitesse maximale
+	double MODULE_VITESSE_MAX = 300;
+	if (glm::length(vitesseFinale) > MODULE_VITESSE_MAX)
+		vitesseFinale = MODULE_VITESSE_MAX * glm::normalize(vitesseFinale); //  Meme Direction mais ramener le module a 30.
+	bille->assignerVitesse(vitesseFinale);
+	bille->assignerImpossible(true);
+	((NoeudBille*)bille)->afficherVitesse(vitesseFinale); // Que Dieu me pardonne
+	// C'est la bille qui sait si debug_ == true ou false.
+	// donc j'ai mis le if (debug_) dans NoeudBille::afficherVitesse(vitesse).
 }
 
 
