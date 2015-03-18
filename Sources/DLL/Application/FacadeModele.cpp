@@ -352,7 +352,7 @@ void FacadeModele::animer(float temps)
 
 	/// Traiter les collisions entre objets
 
-	bool useQuadTree = true;
+	bool useQuadTree = false;
 
 	if (useQuadTree)
 		traiterCollisionsAvecQuadTree(temps);
@@ -1440,6 +1440,7 @@ void FacadeModele::traiterCollisions(float temps)
 				if (noeudAVerifier->obtenirType() == "trou") // MODIF
 				{
 					miseAJourListeBillesRequise = true;
+					SingletonGlobal::obtenirInstance()->retirerBille();
 					arbre_->effacer(bille);
 					break;                                   // MODIF
 				}
