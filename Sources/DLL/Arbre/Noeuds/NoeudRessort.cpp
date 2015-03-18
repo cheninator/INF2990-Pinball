@@ -245,7 +245,7 @@ void NoeudRessort::traiterCollisions(aidecollision::DetailsCollision details, No
 		// ==> v = sqrt(2 (1/2 constanteRessort* distanceCompression^2 / m)
 		// ==> v = sqrt(constRessort/m) * distanceCompression
 		// ==> v = uneConstante * distanceCompression.
-		std::cout << "TraiterCollision en etat LANCER_BILLE" << std::endl;
+	
 		double uneConstante = 400;
 		bille->assignerPositionRelative(bille->obtenirPositionRelative() + 1.1*details.enfoncement * details.direction); // direction est un vecteur normal.
 		bille->assignerVitesse(uneConstante * distanceCompression_ * details.direction);
