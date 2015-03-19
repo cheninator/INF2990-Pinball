@@ -84,13 +84,24 @@ namespace InterfaceGraphique
 
             myCustomConsole = new CustomConsoleHandler();
 
-            mMenu = new MainMenu();
+            string warningMessage = "\nNous ne sommes pas responsable des bogues et problemes encourus dans cette cituations.\n";
 
+            string machineName = System.Environment.MachineName;
+            string warningMessageM = "Vous ne semblez pas etre sur une des machines du L-4810 ou du L-4818" + warningMessage;
+            if (!(machineName.Contains("L-4810") || machineName.Contains("L-4818")))
+                MessageBox.Show(warningMessageM, "AVERTISSEMENT", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+
+            string windowsName = System.Environment.MachineName;
+            string warningMessageW = "Vous ne semblez pas etre sur une version de Windows 7 ou plus recent.\n" + warningMessageM;
+            if (!(System.Environment.OSVersion.Version.Major >= 6 &&
+                System.Environment.OSVersion.Version.Minor >= 1))
+                MessageBox.Show(warningMessageW, "AVERTISSEMENT", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+
+            mMenu = new MainMenu();
             Application.Run(mMenu);
 
-        
 
-            
+
         }
 
        ////////////////////////////////////////////////////////////////////////
