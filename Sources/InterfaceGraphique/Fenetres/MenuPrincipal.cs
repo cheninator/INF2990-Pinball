@@ -429,11 +429,14 @@ namespace InterfaceGraphique
 
         private void MainMenu_Deactivate(object sender, EventArgs e)
         {
-            if (webCamExiste && bit != null)
+           /* if (webCamExiste && bit != null)
             {
                 webcamTimer.Enabled = false;
                 webcamTimer.Stop();
             }
+            */
+            webcamTimer.Enabled = false;
+            webcamTimer.Stop();
         }
 
         private void MainMenu_FormClosing(object sender, FormClosingEventArgs e)
