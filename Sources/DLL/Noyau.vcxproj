@@ -162,6 +162,7 @@
     <ClCompile Include="Global\SingletonGlobal.cpp" />
     <ClCompile Include="Interface\FacadeInterfaceNative.cpp" />
     <ClCompile Include="QuadTree\QuadTree.cpp" />
+    <ClCompile Include="Sound\SoundControllerClass.cpp" />
     <ClCompile Include="Tests\ArbreRenduINF2990Test.cpp" />
     <ClCompile Include="Tests\NoeudCompositeTest.cpp" />
     <ClCompile Include="Tests\BancTests.cpp" />
@@ -234,6 +235,7 @@
     <ClInclude Include="Global\SingletonGlobal.h" />
     <ClInclude Include="Interface\FacadeInterfaceNative.h" />
     <ClInclude Include="QuadTree\QuadTree.h" />
+    <ClInclude Include="Sound\SoundControllerClass.h" />
     <ClInclude Include="Tests\ArbreRenduINF2990Test.h" />
     <ClInclude Include="Tests\NoeudCompositeTest.h" />
     <ClInclude Include="Tests\BancTests.h" />

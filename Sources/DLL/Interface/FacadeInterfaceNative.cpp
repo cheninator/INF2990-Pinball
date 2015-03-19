@@ -5,7 +5,7 @@
 ///
 /// @ingroup Interface
 ////////////////////////////////////////////////
-#include <fmod.h>
+#include "../Sound/SoundControllerClass.h"
 
 #include "FacadeInterfaceNative.h"
 #include "FacadeModele.h"

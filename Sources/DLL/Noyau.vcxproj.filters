@@ -79,6 +79,12 @@
     <Filter Include="Header Files\Global\Commandes">
       <UniqueIdentifier>{a816a8ba-7717-46ad-8dc5-a51c88a6de10}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Source Files\Sound">
+      <UniqueIdentifier>{59f0b8db-5000-488c-9099-2ab5206ae175}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Sound">
+      <UniqueIdentifier>{8eb9fab5-04e0-4a8f-93ad-415e9eb4f472}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Application\FacadeModele.cpp">
@@ -230,6 +236,9 @@
     </ClCompile>
     <ClCompile Include="Arbre\Noeuds\NoeudGate.cpp">
       <Filter>Source Files\Arbre\Noeuds</Filter>
+    </ClCompile>
+    <ClCompile Include="Sound\SoundControllerClass.cpp">
+      <Filter>Source Files\Sound</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -448,6 +457,9 @@
     </ClInclude>
     <ClInclude Include="Arbre\Noeuds\NoeudGate.h">
       <Filter>Header Files\Arbre\Noeuds</Filter>
+    </ClInclude>
+    <ClInclude Include="Sound\SoundControllerClass.h">
+      <Filter>Header Files\Sound</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>
