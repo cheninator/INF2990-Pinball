@@ -66,9 +66,6 @@ namespace InterfaceGraphique
                 {
                     if (FonctionsNatives.executerTests())
                     {
-                        System.
-
-
                         Console.WriteLine("Echec d'un ou plusieurs tests.");
                         string s1 = System.Console.ReadLine();
                     }
@@ -77,7 +74,6 @@ namespace InterfaceGraphique
                         Console.WriteLine("Tests reussis.");
                         string s1 = System.Console.ReadLine();
                     }
-
                    return;
                 }
             
