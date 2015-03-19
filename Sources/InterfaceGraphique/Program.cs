@@ -84,7 +84,7 @@ namespace InterfaceGraphique
 
             myCustomConsole = new CustomConsoleHandler();
 
-            string warningMessage = "\nNous ne sommes pas responsable des bogues et problemes encourus dans cette cituations.\n";
+            string warningMessage = "\nNous ne sommes pas responsables des bogues et problemes qui pourraient survenir dans cette situation.\n";
 
             string machineName = System.Environment.MachineName;
             string warningMessageM = "Vous ne semblez pas etre sur une des machines du L-4810 ou du L-4818" + warningMessage;

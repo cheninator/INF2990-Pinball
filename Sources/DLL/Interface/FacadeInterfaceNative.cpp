@@ -1395,117 +1395,293 @@ extern "C"
 		return FacadeModele::obtenirInstance()->duplicationEstHorsTable();
 	}
 
+	///////////////////////////////////////////////////////////////////////////////
+	///
+	/// @fn __declspec(dllexport) void __cdecl creerFichierConfig(int config[13])
+	/// @brief Cree un fichier de sauvegarde de configuration.
+	/// @param[in] config : Valeurs de la configuration de partie.
+	/// @return Aucune
+	///
+	///////////////////////////////////////////////////////////////////////////////
 	__declspec(dllexport) void __cdecl creerFichierConfig(int config[13])
 	{
 		FacadeModele::obtenirInstance()->sauvegarderConfig(config);
 	}
 	
+	///////////////////////////////////////////////////////////////////////////////
+	///
+	/// @fn __declspec(dllexport) int* __cdecl chargerFichierConfiguration()
+	/// @brief Charger un fichier de sauvegarde de configuration.
+	/// @return Les valeurs de configuration.
+	///
+	///////////////////////////////////////////////////////////////////////////////
 	__declspec(dllexport) int* __cdecl chargerFichierConfiguration()
 	{
 		return FacadeModele::obtenirInstance()->obtenirConfiguration();
 	}
 
+	///////////////////////////////////////////////////////////////////////////////
+	///
+	/// @fn __declspec(dllexport) int __cdecl obtenirDifficulte(char* nomFichier, int length)
+	/// @brief Obtenir le niveau de difficulte de la zone.
+	/// @param[in] nomFichier : Mom du fichier de la zone.
+	/// @param[in] length : Longueur du fichier.
+	/// @return Le niveau de difficulte de la zone.
+	///
+	///////////////////////////////////////////////////////////////////////////////
 	__declspec(dllexport) int __cdecl obtenirDifficulte(char* nomFichier, int length)
 	{
 		return FacadeModele::obtenirInstance()->obtenirDifficulte(nomFichier, length);
 	}
 
+	///////////////////////////////////////////////////////////////////////////////
+	///
+	/// @fn __declspec(dllexport) int* __cdecl obtenirProprietes(char* nomFichier, int length)
+	/// @brief Obtenir les proprietes de la zone.
+	/// @param[in] nomFichier : Mom du fichier de la zone.
+	/// @param[in] length : Longueur du fichier.
+	/// @return Les proprietes de difficulte de la zone.
+	///
+	///////////////////////////////////////////////////////////////////////////////
 	__declspec(dllexport) int* __cdecl obtenirProprietes(char* nomFichier, int length)
 	{
 		return FacadeModele::obtenirInstance()->obtenirProprietes(nomFichier, length);
 	}
+
+	///////////////////////////////////////////////////////////////////////////////
+	///
+	/// @fn __declspec(dllexport) void __cdecl creerFichierCampagne(char* listMaps, int length)
+	/// @brief Creer un fichier contenant les zones de la campagne.
+	/// @param[in] listMaps : Liste des zones de jeu.
+	/// @param[in] length : Longueur de la liste.
+	/// @return Aucune.
+	///
+	///////////////////////////////////////////////////////////////////////////////
 	__declspec(dllexport) void __cdecl creerFichierCampagne(char* listMaps, int length)
 	{
 		FacadeModele::obtenirInstance()->sauvegarderCampagne(listMaps, length);
 	}
 
+	///////////////////////////////////////////////////////////////////////////////
+	///
+	/// @fn __declspec(dllexport) int __cdecl obtenirTouchePGJ1()
+	/// @brief Retourne la touche associee a Palette Gauche J1.
+	/// @return La touche associee.
+	///
+	///////////////////////////////////////////////////////////////////////////////
 	__declspec(dllexport) int __cdecl obtenirTouchePGJ1()
 	{
 		return FacadeModele::obtenirInstance()->obtenirTouchePGJ1(); 
 	}
 
+	///////////////////////////////////////////////////////////////////////////////
+	///
+	/// @fn __declspec(dllexport) int __cdecl obtenirTouchePGJ2()
+	/// @brief Retourne la touche associee a Palette Gauche J2.
+	/// @return La touche associee.
+	///
+	///////////////////////////////////////////////////////////////////////////////
 	__declspec(dllexport) int __cdecl obtenirTouchePGJ2()
 	{
 		return FacadeModele::obtenirInstance()->obtenirTouchePGJ2(); 
 	}
 
+	///////////////////////////////////////////////////////////////////////////////
+	///
+	/// @fn __declspec(dllexport) int __cdecl obtenirTouchePDJ1()
+	/// @brief Retourne la touche associee a Palette Droite J1.
+	/// @return La touche associee.
+	///
+	///////////////////////////////////////////////////////////////////////////////
 	__declspec(dllexport) int __cdecl obtenirTouchePDJ1()
 	{
 		return FacadeModele::obtenirInstance()->obtenirTouchePDJ1(); 
 	}
 
+	///////////////////////////////////////////////////////////////////////////////
+	///
+	/// @fn __declspec(dllexport) int __cdecl obtenirTouchePDJ2()
+	/// @brief Retourne la touche associee a Palette Droite J2.
+	/// @return La touche associee.
+	///
+	///////////////////////////////////////////////////////////////////////////////
 	__declspec(dllexport) int __cdecl obtenirTouchePDJ2()
 	{
 		return FacadeModele::obtenirInstance()->obtenirTouchePDJ2(); 
 	}
 
+	///////////////////////////////////////////////////////////////////////////////
+	///
+	/// @fn __declspec(dllexport) int __cdecl obtenirToucheRessort()
+	/// @brief Retourne la touche associee au ressort.
+	/// @return La touche associee.
+	///
+	///////////////////////////////////////////////////////////////////////////////
 	__declspec(dllexport) int __cdecl obtenirToucheRessort()
 	{
 		return FacadeModele::obtenirInstance()->obtenirToucheRessort(); 
 	}
 
+	///////////////////////////////////////////////////////////////////////////////
+	///
+	/// @fn __declspec(dllexport) int __cdecl obtenirNombreDeBilles()
+	/// @brief Retourne le nombre de billes
+	/// @return Le nombre de billes.
+	///
+	///////////////////////////////////////////////////////////////////////////////
 	__declspec(dllexport) int __cdecl obtenirNombreDeBilles()
 	{
 		return FacadeModele::obtenirInstance()->obtenirNombreDeBilles();
 	}
 
+	///////////////////////////////////////////////////////////////////////////////
+	///
+	/// @fn __declspec(dllexport) int __cdecl obtenirModeDoubleBille()
+	/// @brief Retourne la valeur d'activation du mode correspondant.
+	/// @return 1 si le mode double bille est actif, 0 sinon.
+	///
+	///////////////////////////////////////////////////////////////////////////////
 	__declspec(dllexport) int __cdecl obtenirModeDoubleBille()
 	{
 		return FacadeModele::obtenirInstance()->obtenirModeDoubleBille();
 	}
 
+	///////////////////////////////////////////////////////////////////////////////
+	///
+	/// @fn __declspec(dllexport) int __cdecl obtenirNombreDeBilles()
+	/// @brief Retourne la valeur d'activation du mode correspondant.
+	/// @return 1 si l'affichage global est actif, 0 sinon.
+	///
+	///////////////////////////////////////////////////////////////////////////////
 	__declspec(dllexport) int __cdecl obtenirAffichageGlobal()
 	{
 		return FacadeModele::obtenirInstance()->obtenirAffichageGlobal();
 	}
+
+	///////////////////////////////////////////////////////////////////////////////
+	///
+	/// @fn __declspec(dllexport) void __cdecl bloquerAffichageGlobal(int active)
+	/// @brief Active ou desactive l'affichage global.
+	/// @param[in] active : Valeur d'activation.
+	/// @return Aucune.
+	///
+	///////////////////////////////////////////////////////////////////////////////
 	__declspec(dllexport) void __cdecl bloquerAffichageGlobal(int active)
 	{
 		FacadeModele::obtenirInstance()->bloquerAffichageGlobal(active);
 		FacadeModele::obtenirInstance()->setDebug();
 	}
 
+	///////////////////////////////////////////////////////////////////////////////
+	///
+	/// @fn __declspec(dllexport) void __cdecl activerPalettesGJ1()
+	/// @brief Active la Palette Gauche J1.
+	/// @return Aucune.
+	///
+	///////////////////////////////////////////////////////////////////////////////
 	__declspec(dllexport) void __cdecl activerPalettesGJ1()
 	{
 		FacadeModele::obtenirInstance()->activerPalettesGJ1();
 	}
 
+	///////////////////////////////////////////////////////////////////////////////
+	///
+	/// @fn __declspec(dllexport) void __cdecl desactiverPalettesGJ1()
+	/// @brief Desactive la Palette Gauche J1.
+	/// @return Aucune.
+	///
+	///////////////////////////////////////////////////////////////////////////////
 	__declspec(dllexport) void __cdecl desactiverPalettesGJ1()
 	{
 		FacadeModele::obtenirInstance()->desactiverPalettesGJ1();
 	}
 
+	///////////////////////////////////////////////////////////////////////////////
+	///
+	/// @fn __declspec(dllexport) void __cdecl activerPalettesDJ1()
+	/// @brief Active la Palette Droite J1.
+	/// @return Aucune.
+	///
+	///////////////////////////////////////////////////////////////////////////////
 	__declspec(dllexport) void __cdecl activerPalettesDJ1()
 	{
 		FacadeModele::obtenirInstance()->activerPalettesDJ1();
 	}
 
+	///////////////////////////////////////////////////////////////////////////////
+	///
+	/// @fn __declspec(dllexport) void __cdecl desactiverPalettesDJ1()
+	/// @brief Desactive la Palette Droite J1.
+	/// @return Aucune.
+	///
+	///////////////////////////////////////////////////////////////////////////////
 	__declspec(dllexport) void __cdecl desactiverPalettesDJ1()
 	{
 		FacadeModele::obtenirInstance()->desactiverPalettesDJ1();
 	}
 
+	///////////////////////////////////////////////////////////////////////////////
+	///
+	/// @fn __declspec(dllexport) void __cdecl activerPalettesGJ2()
+	/// @brief Active la Palette Gauche J2.
+	/// @return Aucune.
+	///
+	///////////////////////////////////////////////////////////////////////////////
 	__declspec(dllexport) void __cdecl activerPalettesGJ2()
 	{
 		FacadeModele::obtenirInstance()->activerPalettesGJ2();
 	}
+
+	///////////////////////////////////////////////////////////////////////////////
+	///
+	/// @fn __declspec(dllexport) void __cdecl desactiverPalettesGJ2()
+	/// @brief Desactive la Palette Gauche J2.
+	/// @return Aucune.
+	///
+	///////////////////////////////////////////////////////////////////////////////
 	__declspec(dllexport) void __cdecl desactiverPalettesGJ2()
 	{
 		FacadeModele::obtenirInstance()->desactiverPalettesGJ2();
 	}
+
+	///////////////////////////////////////////////////////////////////////////////
+	///
+	/// @fn __declspec(dllexport) void __cdecl activerPalettesDJ2()
+	/// @brief Active la Palette Droite J2.
+	/// @return Aucune.
+	///
+	///////////////////////////////////////////////////////////////////////////////
 	__declspec(dllexport) void __cdecl activerPalettesDJ2()
 	{
 		FacadeModele::obtenirInstance()->activerPalettesDJ2();
 	}
+
+	///////////////////////////////////////////////////////////////////////////////
+	///
+	/// @fn __declspec(dllexport) void __cdecl desactiverPalettesDJ2()
+	/// @brief Desactive la Palette Droite J2.
+	/// @return Aucune.
+	///
+	///////////////////////////////////////////////////////////////////////////////
 	__declspec(dllexport) void __cdecl desactiverPalettesDJ2()
 	{
 		FacadeModele::obtenirInstance()->desactiverPalettesDJ2();
 	}
+
+	///////////////////////////////////////////////////////////////////////////////
+	///
+	/// @fn __declspec(dllexport) BSTR obtenirDerniereCampagne()
+	/// @brief Retourne la derniere campagne.
+	/// @return La liste d'info de la derniere campagne.
+	///
+	///////////////////////////////////////////////////////////////////////////////
 	__declspec(dllexport) BSTR obtenirDerniereCampagne()
 	{
 		// http://stackoverflow.com/questions/6284524/bstr-to-stdstring-stdwstring-and-vice-versa
 		std::string str = FacadeModele::obtenirInstance()->obtenirDerniereCampagne();
 		return stringToBSTR(str);
 	}
+
 	__declspec(dllexport) BSTR obtenirConsole()
 	{
 		std::string str = SingletonGlobal::obtenirInstance()->getAndEmptyStream();
@@ -1529,21 +1705,50 @@ extern "C"
 		SingletonGlobal::obtenirInstance()->viderHistoricConsole();
 	}
 
+	///////////////////////////////////////////////////////////////////////////////
+	///
+	/// @fn __declspec(dllexport) void __cdecl supprimerBille()
+	/// @brief Supprime la bille en jeu (mode test).
+	/// @return Aucune.
+	///
+	///////////////////////////////////////////////////////////////////////////////
 	__declspec(dllexport) void __cdecl supprimerBille()
 	{
 		FacadeModele::obtenirInstance()->supprimerBille();
 	}
 
+	///////////////////////////////////////////////////////////////////////////////
+	///
+	/// @fn __declspec(dllexport) void __cdecl construireListesPalettes()
+	/// @brief Construit une liste des palettes dans FacadeModele.
+	/// @return Aucune.
+	///
+	///////////////////////////////////////////////////////////////////////////////
 	__declspec(dllexport) void __cdecl construireListesPalettes()
 	{
 		FacadeModele::obtenirInstance()->construireListesPalettes();
 	}
 
+	///////////////////////////////////////////////////////////////////////////////
+	///
+	/// @fn __declspec(dllexport) void __cdecl mettreAJourListeBillesEtNoeuds()
+	/// @brief Met a jour la liste des billes et des noeuds dans FacadeModele.
+	/// @return Aucune.
+	///
+	///////////////////////////////////////////////////////////////////////////////
 	__declspec(dllexport) void __cdecl mettreAJourListeBillesEtNoeuds()
 	{
 		FacadeModele::obtenirInstance()->mettreAJourListeBillesEtNoeuds();
 	}
 
+	///////////////////////////////////////////////////////////////////////////////
+	///
+	/// @fn __declspec(dllexport) void __cdecl modePause(bool pause)
+	/// @brief Active ou desactive le mode pause.
+	/// @param[in] pause : Activation ou desactivation.
+	/// @return Aucune.
+	///
+	///////////////////////////////////////////////////////////////////////////////
 	__declspec(dllexport) void __cdecl modePause(bool pause)
 	{
 		FacadeModele::obtenirInstance()->setPause(pause);
@@ -1588,56 +1793,134 @@ extern "C"
 		return true;
 	}
 
+	///////////////////////////////////////////////////////////////////////////////
+	///
+	/// @fn __declspec(dllexport) void __cdecl initialiserSingleton()
+	/// @brief Initialise le singleton global.
+	/// @return Aucune.
+	///
+	///////////////////////////////////////////////////////////////////////////////
 	__declspec(dllexport) void __cdecl initialiserSingleton()
 	{
 		SingletonGlobal::obtenirInstance();
 	}
 
+	///////////////////////////////////////////////////////////////////////////////
+	///
+	/// @fn __declspec(dllexport) void __cdecl detruireSingleton()
+	/// @brief Detruit le singleton global.
+	/// @return Aucune.
+	///
+	///////////////////////////////////////////////////////////////////////////////
 	__declspec(dllexport) void __cdecl detruireSingleton()
 	{
 		SingletonGlobal::libererInstance();
 	}
 
+	///////////////////////////////////////////////////////////////////////////////
+	///
+	/// @fn __declspec(dllexport) int __cdecl obtenirPointsGagnerBille()
+	/// @brief Retourne le nombre de points pour gagner une bille.
+	/// @return Le nombre de points pour gagner une bille.
+	///
+	///////////////////////////////////////////////////////////////////////////////
 	__declspec(dllexport) int __cdecl obtenirPointsGagnerBille()
 	{
 		return FacadeModele::obtenirInstance()->obtenirArbreRenduINF2990()->obtenirProprietes()[4];
 	}
 
+	///////////////////////////////////////////////////////////////////////////////
+	///
+	/// @fn __declspec(dllexport) int __cdecl obtenirPointsGagnerPartie()
+	/// @brief Retourne le nombre de points pour gagner la partie.
+	/// @return Le nombre de points pour gagner la partie.
+	///
+	///////////////////////////////////////////////////////////////////////////////
 	__declspec(dllexport) int __cdecl obtenirPointsGagnerPartie()
 	{
 		return FacadeModele::obtenirInstance()->obtenirArbreRenduINF2990()->obtenirProprietes()[3];
 	}
 
+	///////////////////////////////////////////////////////////////////////////////
+	///
+	/// @fn __declspec(dllexport) int __cdecl obtenirNombreDePointsDePartie()
+	/// @brief Retourne le nombre de points courant dans la partie.
+	/// @return Le nombre de points courant dans la partie.
+	///
+	///////////////////////////////////////////////////////////////////////////////
 	__declspec(dllexport) int __cdecl obtenirNombreDePointsDePartie()
 	{
 		return SingletonGlobal::obtenirInstance()->getPointsPartie();
 	}
 
+	///////////////////////////////////////////////////////////////////////////////
+	///
+	/// @fn __declspec(dllexport) void __cdecl resetNombreDePointsDePartie()
+	/// @brief Reinitialise le nombre de points dans la partie.
+	/// @return Aucune.
+	///
+	///////////////////////////////////////////////////////////////////////////////
 	__declspec(dllexport) void __cdecl resetNombreDePointsDePartie()
 	{
 		SingletonGlobal::obtenirInstance()->setPointsPartie(0);
 	}
 
+	///////////////////////////////////////////////////////////////////////////////
+	///
+	/// @fn __declspec(dllexport) int __cdecl obtenirNombreBillesCourante()
+	/// @brief Retourne le nombre de billes courantes.
+	/// @return Le nombre de billes courantes.
+	///
+	///////////////////////////////////////////////////////////////////////////////
 	__declspec(dllexport) int __cdecl obtenirNombreBillesCourante()
 	{
 		return SingletonGlobal::obtenirInstance()->obtenirBille();
 	}
 
+	///////////////////////////////////////////////////////////////////////////////
+	///
+	/// @fn __declspec(dllexport) void __cdecl resetNombreBillesCourantes()
+	/// @brief Reinitialise le nombre de billes courantes.
+	/// @return Aucune.
+	///
+	///////////////////////////////////////////////////////////////////////////////
 	__declspec(dllexport) void __cdecl resetNombreBillesCourantes()
 	{
 		SingletonGlobal::obtenirInstance()->resetBille();
 	}
 
+	///////////////////////////////////////////////////////////////////////////////
+	///
+	/// @fn __declspec(dllexport) void __cdecl compresserRessort()
+	/// @brief Compresser le ressort.
+	/// @return Aucune.
+	///
+	///////////////////////////////////////////////////////////////////////////////
 	__declspec(dllexport) void __cdecl compresserRessort()
 	{
 		return FacadeModele::obtenirInstance()->compresserRessort();
 	}
 
+	///////////////////////////////////////////////////////////////////////////////
+	///
+	/// @fn __declspec(dllexport) void __cdecl relacherRessort()
+	/// @brief Relacher le ressort.
+	/// @return Aucune.
+	///
+	///////////////////////////////////////////////////////////////////////////////
 	__declspec(dllexport) void __cdecl relacherRessort()
 	{
 		return FacadeModele::obtenirInstance()->relacherRessort();
 	}
 
+	///////////////////////////////////////////////////////////////////////////////
+	///
+	/// @fn __declspec(dllexport) void __cdecl animerJeu(bool animer)
+	/// @brief Active ou desactive l'animation du jeu.
+	/// @param[in] animer : Valeur d'ativation ou de desactivation.
+	/// @return Aucune.
+	///
+	///////////////////////////////////////////////////////////////////////////////
 	__declspec(dllexport) void __cdecl animerJeu(bool animer)
 	{
 		SingletonGlobal::obtenirInstance()->setAnimation(animer);
@@ -1645,6 +1928,14 @@ extern "C"
 			FacadeModele::obtenirInstance()->assignerAnimer(animer, FacadeModele::obtenirInstance()->obtenirArbreRenduINF2990()->getEnfant(i));
 	}
 
+	///////////////////////////////////////////////////////////////////////////////
+	///
+	/// @fn __declspec(dllexport) void __cdecl rechargerArbre(bool recharger)
+	/// @brief Recharge l'arbre de rendu.
+	/// @param[in] recharger : Recharge ou non l'arbre.
+	/// @return Aucune.
+	///
+	///////////////////////////////////////////////////////////////////////////////
 	__declspec(dllexport) void __cdecl rechargerArbre(bool recharger)
 	{
 		if (recharger)
@@ -1654,6 +1945,14 @@ extern "C"
 				FacadeModele::obtenirInstance()->obtenirArbreRenduINF2990()->obtenirProprietes(), true);
 	}
 
+	///////////////////////////////////////////////////////////////////////////////
+	///
+	/// @fn __declspec(dllexport) void __cdecl activerAI(bool actif)
+	/// @brief Active ou desactive le joueur virtuel (AI).
+	/// @param[in] animer : Valeur d'ativation ou de desactivation.
+	/// @return Aucune.
+	///
+	///////////////////////////////////////////////////////////////////////////////
 	__declspec(dllexport) void __cdecl activerAI(bool actif)
 	{
 		FacadeModele::obtenirInstance()->assignerAI(actif);
