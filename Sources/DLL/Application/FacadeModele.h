@@ -235,6 +235,7 @@ private:
 
    /// Pointeur vers l'instance unique de la classe.
    static FacadeModele* instance_; 
+   static bool useQuadTree_;
 
    HWND  hWnd_{ nullptr };	///< Poignee ("handle") vers la fenetre ou l'affichage se fait.
    HGLRC hGLRC_{ nullptr }; ///< Poignee ("handle") vers le contexte OpenGL.

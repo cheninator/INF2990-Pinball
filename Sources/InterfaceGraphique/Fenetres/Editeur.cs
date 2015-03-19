@@ -4,7 +4,7 @@
 /// @date 2015-01-13
 /// @version 1.0 
 ///
-/// @ingroup InterfaceGraphique
+/// @ingroup Fenetres
 //////////////////////////////////////////////////////////////////////////////
 
 using System;
@@ -26,7 +26,7 @@ namespace InterfaceGraphique
     /// @author The Ballers
     /// @date 2015-01-13
     /// 
-    /// @ingroup InterfaceGraphique
+    /// @ingroup Fenetres
     ///////////////////////////////////////////////////////////////////////////
     public partial class Editeur : Form
     {
@@ -3059,7 +3059,7 @@ namespace InterfaceGraphique
     /// @author Inconnu
     /// @date Incconue
     /// 
-    /// @ingroup InterfaceGraphique
+    /// @ingroup Fenetres
     ///////////////////////////////////////////////////////////////////////////
     static partial class FonctionsNatives
     {

@@ -1,4 +1,13 @@
-﻿using System;
+﻿//////////////////////////////////////////////////////////////////////////////
+/// @file ZoneInfo.cs
+/// @author Ballers
+/// @date 2015-03-12
+/// @version 1.0 
+///
+/// @ingroup Fenetres
+//////////////////////////////////////////////////////////////////////////////
+
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -11,10 +20,29 @@ using System.Windows.Forms;
 
 namespace InterfaceGraphique
 {
+    ///////////////////////////////////////////////////////////////////////////
+    /// @class ZoneInfo
+    /// @brief Classe d'interface de la fenetre d'info des zones de jeu.
+    ///
+    /// @author Ballers
+    /// @date 2015-03-12
+    /// 
+    /// @ingroup Fenetres
+    ///////////////////////////////////////////////////////////////////////////
     public partial class ZoneInfo : Form
     {
         int time;
         int[] proprietes = new int[5];
+
+        ////////////////////////////////////////////////////////////////////////
+        ///
+        /// @fn public ZoneInfo(string nomZone, string difficulte,bool win)
+        /// @brief Constructeur par parametre de la fenetre Partie Terminee.
+        /// @param[in] nomZone : Nom de la zone affichee.
+        /// @param[in] win : Indique si on a gagne la partie precedente.
+        /// @return Aucune (constructeur).
+        ///
+        ////////////////////////////////////////////////////////////////////////
         public ZoneInfo(string nomZone, string difficulte,bool win)
         {
             InitializeComponent();
@@ -54,6 +82,15 @@ namespace InterfaceGraphique
          //       this.Close();
         }
 
+        ////////////////////////////////////////////////////////////////////////
+        ///
+        /// @fn private void ZoneInfo_KeyPress(object sender, EventArgs e)
+        /// @brief Evenement lorsqu'on appuie et relache une touche sur la zone d'info.
+        /// @param[in] sender : Objet duquel provient un evenement.
+        /// @param[in] e : evenement qui lance la fonction.
+        /// @return Aucune.
+        ///
+        ////////////////////////////////////////////////////////////////////////
         private void ZoneInfo_KeyPress(object sender, KeyPressEventArgs e)
         {
             if (e.KeyChar == ' ')
@@ -62,6 +99,15 @@ namespace InterfaceGraphique
             }
         }
 
+        ////////////////////////////////////////////////////////////////////////
+        ///
+        /// @fn private void ZoneInfo_KeyPress(object sender, EventArgs e)
+        /// @brief Decrementation de la barre de progres (temps restant).
+        /// @param[in] sender : Objet duquel provient un evenement.
+        /// @param[in] e : evenement qui lance la fonction.
+        /// @return Aucune.
+        ///
+        ////////////////////////////////////////////////////////////////////////
         private void DecrementProgressBar(object sender, EventArgs e)
         {
             tempRestant.Value--;

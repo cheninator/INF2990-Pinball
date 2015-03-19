@@ -1,4 +1,13 @@
-﻿using System;
+﻿//////////////////////////////////////////////////////////////////////////////
+/// @file ModeJeu.cs
+/// @author Ballers
+/// @date 2015-03-10
+/// @version 1.0 
+///
+/// @ingroup Fenetres
+//////////////////////////////////////////////////////////////////////////////
+
+using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Runtime.InteropServices;
@@ -7,6 +16,15 @@ using System.Windows.Forms;
 
 namespace InterfaceGraphique
 {
+    ///////////////////////////////////////////////////////////////////////////
+    /// @class ModeJeu
+    /// @brief Classe d'interface du mode jeu.
+    ///
+    /// @author Ballers
+    /// @date 2015-03-10
+    /// 
+    /// @ingroup Fenetres
+    ///////////////////////////////////////////////////////////////////////////
     public partial class ModeJeu : Form
     {
         public PartieTerminee gameOver;
@@ -59,7 +77,16 @@ namespace InterfaceGraphique
         // Méthodes de changement d'état
         public void pauseGame() { etat = new EtatJeuPause(this); }
         public void resumeGame() { etat = new EtatJeuJouer(this); }
-        
+
+        ///////////////////////////////////////////////////////////////////////////
+        /// @class EtatJeuAbstrait
+        /// @brief Classe interne (ModeJeu) d'etat abstrait
+        ///
+        /// @author Ballers
+        /// @date 2015-3-10
+        ///
+        /// @ingroup Fenetres
+        ///////////////////////////////////////////////////////////////////////////
         public partial class EtatJeuAbstrait
         {
             public EtatJeuAbstrait() {}
@@ -70,13 +97,23 @@ namespace InterfaceGraphique
             }
         };
 
+        ////////////////////////////////////////////////////////////////////////
+        ///
+        /// @fn public Configuration()
+        /// @brief Constructeur par parametre de la fenetre de mode jeu.
+        /// @param[in] maps : Liste de zones a jouer.
+        /// @param[in] playerType : Type de joueur (Solo, 2P, AI)
+        /// @return Aucune (constructeur).
+        ///
+        ////////////////////////////////////////////////////////////////////////
         public ModeJeu(List<string> maps, int playerType)
         {
-            {/*
+            {
+                /*
                 this.WindowState = FormWindowState.Normal;
                 this.FormBorderStyle = FormBorderStyle.None;
                 this.WindowState = FormWindowState.Maximized;
-              */
+                */
             }
             timerBille2 = new Timer();
             timerBille2.Tick += new System.EventHandler(this.timerBille2_Tick);
@@ -128,7 +165,13 @@ namespace InterfaceGraphique
            // CreerBille();       
         }
 
-
+        ////////////////////////////////////////////////////////////////////////
+        ///
+        /// @fn protected void resetConfig()
+        /// @brief Reset des points et aux configurations de partie.
+        /// @return Aucune.
+        ///
+        ////////////////////////////////////////////////////////////////////////
         protected void resetConfig()
         {
             billesEnJeu = 0;
@@ -145,6 +188,13 @@ namespace InterfaceGraphique
             setProprietes();
         }
 
+        ////////////////////////////////////////////////////////////////////////
+        ///
+        /// @fn private void setProprietes()
+        /// @brief Affichage des proprietes dans les labels correspondants.
+        /// @return Aucune.
+        ///
+        ////////////////////////////////////////////////////////////////////////
         private void setProprietes()
         {
             IntPtr config = FonctionsNatives.obtenirProprietes(map,map.Capacity);
@@ -155,15 +205,14 @@ namespace InterfaceGraphique
             label_nbWin.Text = proprietes[3].ToString();
             label_nbPointsBille.Text = proprietes[4].ToString();
         }
+
         ////////////////////////////////////////////////////////////////////////
         ///
         /// @fn static public void InitialiserAnimation()
         /// @brief Initialise openGL et l'animation.
-        /// 
-        /// @return Aucune (constructeur).
+        /// @return Aucune.
         ///
         ////////////////////////////////////////////////////////////////////////
-        
         public void InitialiserAnimation()
         {
             this.DoubleBuffered = false;
@@ -173,24 +222,36 @@ namespace InterfaceGraphique
 
         }
 
-    
-        // And this
+        ////////////////////////////////////////////////////////////////////////
+        ///
+        /// @fn private void timerBille2_Tick(object sender, EventArgs e)
+        /// @brief Evenement appele a un certain intervalle lorsque le Timer est actif.
+        /// @param[in] sender : Objet duquel provient un evenement.
+        /// @param[in] e : evenement qui lance la fonction.
+        /// @return Aucune.
+        ///
+        ////////////////////////////////////////////////////////////////////////
         private void timerBille2_Tick(object sender, EventArgs e)
         {
-           // StringBuilder bille = new StringBuilder("bille");
-           // FonctionsNatives.creerObjet(bille, bille.Capacity);
             if (FonctionsNatives.obtenirModeDoubleBille() != 0 && billesEnJeu < 2)
             {
                StringBuilder bille = new StringBuilder("bille");
                FonctionsNatives.creerObjet(bille, bille.Capacity);
-               Console.WriteLine("2nd BIlle");
+               Console.WriteLine("2nd Bille");
                nombreDeBillesUtilise++;
                billesDisponibles--;
             } 
             timerBille2.Stop();
-            //Console.WriteLine("BILLE 2");
         }
 
+        ////////////////////////////////////////////////////////////////////////
+        ///
+        /// @fn public void MettreAJour(double tempsInterAffichage)
+        /// @brief Mise a jour du panneau OpenGL.
+        /// @param[in] tempsInterAffichage : Objet duquel provient un evenement.
+        /// @return Aucune.
+        ///
+        ////////////////////////////////////////////////////////////////////////
         public void MettreAJour(double tempsInterAffichage)
         {
             try
@@ -209,16 +270,14 @@ namespace InterfaceGraphique
                     }
                     billesEnJeu = FonctionsNatives.obtenirNombreBillesCourante();
 
-                    //if (billesEnJeu == 0 && (billesDisponibles >= 0))
-                   // if (billesEnJeu < nombreBillesMax && (billesDisponibles >= 0))
                     if (billesEnJeu < nombreBillesMax && (billesDisponibles >= 0))
                     
                     {
-                        // wait a certain time
+                        // Wait a certain time
                         if (!timerBille2.Enabled)
                         {
                             CreerBille();
-                            Console.WriteLine("spawn bille");
+                            Console.WriteLine("Spawn bille");
                         }
                     }
                     if (billesDisponibles < 0 && boolTemp)
@@ -264,6 +323,15 @@ namespace InterfaceGraphique
             }
         }
 
+        ////////////////////////////////////////////////////////////////////////
+        ///
+        /// @fn private void PartieRapide_FormClosing(object sender, EventArgs e)
+        /// @brief Evenement lorsqu'on ferme la form PartieRapide.
+        /// @param[in] sender : Objet duquel provient un evenement.
+        /// @param[in] e : evenement qui lance la fonction.
+        /// @return Aucune.
+        ///
+        ////////////////////////////////////////////////////////////////////////
         private void PartieRapide_FormClosing(object sender, FormClosingEventArgs e)
         {
             lock (Program.unLock)
@@ -276,6 +344,13 @@ namespace InterfaceGraphique
 
         }
 
+        ////////////////////////////////////////////////////////////////////////
+        ///
+        /// @fn public void RecommencerPartie()
+        /// @brief Recommence la partie.
+        /// @return Aucune.
+        ///
+        ////////////////////////////////////////////////////////////////////////
         public void RecommencerPartie()
         {
             resetConfig();
@@ -286,11 +361,25 @@ namespace InterfaceGraphique
             FonctionsNatives.mettreAJourListeBillesEtNoeuds();
         }
 
-
+        ////////////////////////////////////////////////////////////////////////
+        ///
+        /// @fn public void AfficherInformations()
+        /// @brief Afficher les informations de la partie.
+        /// @return Aucune.
+        ///
+        ////////////////////////////////////////////////////////////////////////
         public void AfficherInformations()
         {
             InfoPanel.Visible = !InfoPanel.Visible;
         }
+
+        ////////////////////////////////////////////////////////////////////////
+        ///
+        /// @fn private void ProchainePartie()
+        /// @brief Chargement de la prochaine partie.
+        /// @return Aucune.
+        ///
+        ////////////////////////////////////////////////////////////////////////
         private void ProchainePartie()
         {
             boolTemp = false;
@@ -321,6 +410,13 @@ namespace InterfaceGraphique
           
         }
 
+        ////////////////////////////////////////////////////////////////////////
+        ///
+        /// @fn private void CreerBille()
+        /// @brief Creation d'une nouvelle bille.
+        /// @return Aucune.
+        ///
+        ////////////////////////////////////////////////////////////////////////
         private void CreerBille()
         {
             StringBuilder bille = new StringBuilder("bille");
@@ -330,6 +426,15 @@ namespace InterfaceGraphique
             timerBille2.Start();
 
         }
+
+        ////////////////////////////////////////////////////////////////////////
+        ///
+        /// @fn private void FinCampagne(bool active)
+        /// @brief Desactivation d'options en fin de campagne.
+        /// @param[in] active : valeur d'activation.
+        /// @return Aucune.
+        ///
+        ////////////////////////////////////////////////////////////////////////
         private void FinCampagne(bool active)
         {
             peutAnimer = false;
@@ -338,11 +443,20 @@ namespace InterfaceGraphique
             
             gameOver.ShowDialog(this);
         }
+
         private void PartieRapide_Load(object sender, EventArgs e)
         {
 
         }
 
+        ////////////////////////////////////////////////////////////////////////
+        ///
+        /// @fn private void EtablirTouchesEtAI(int playerType)
+        /// @brief Etablit les touches de jeu et active ou non l'AI selon le mode choisi.
+        /// @param[in] playerType : Type de joueur (Solo, 2P, AI).
+        /// @return Aucune.
+        ///
+        ////////////////////////////////////////////////////////////////////////
         private void EtablirTouchesEtAI(int playerType)
         {
             if (playerType == 1)
@@ -378,27 +492,71 @@ namespace InterfaceGraphique
 
         }
 
+        ////////////////////////////////////////////////////////////////////////
+        ///
+        /// @fn private void PartieRapide_KeyDown(object sender, EventArgs e)
+        /// @brief Evenement lorsqu'on appuie sur une touche en partie rapide.
+        /// @param[in] sender : Objet duquel provient un evenement.
+        /// @param[in] e : evenement qui lance la fonction.
+        /// @return Aucune.
+        ///
+        ////////////////////////////////////////////////////////////////////////
         private void PartieRapide_KeyDown(object sender, KeyEventArgs e)
         {
             etat.traiterKeyDown(sender, e);
         }
 
-
+        ////////////////////////////////////////////////////////////////////////
+        ///
+        /// @fn private void PartieRapide_KeyUp(object sender, EventArgs e)
+        /// @brief Evenement lorsqu'on relache une touche en partie rapide.
+        /// @param[in] sender : Objet duquel provient un evenement.
+        /// @param[in] e : evenement qui lance la fonction.
+        /// @return Aucune.
+        ///
+        ////////////////////////////////////////////////////////////////////////
         private void PartieRapide_KeyUp(object sender, KeyEventArgs e)
         {
             etat.traiterKeyUp(sender, e);
         }
 
+        ////////////////////////////////////////////////////////////////////////
+        ///
+        /// @fn private void PartieRapide_redimensionner(object sender, EventArgs e)
+        /// @brief Evenement lorsqu'on redimensionne la fenetre de partie rapide.
+        /// @param[in] sender : Objet duquel provient un evenement.
+        /// @param[in] e : evenement qui lance la fonction.
+        /// @return Aucune.
+        ///
+        ////////////////////////////////////////////////////////////////////////
         private void PartieRapide_redimensionner(object sender, EventArgs e)
         {
             FonctionsNatives.redimensionnerFenetre(panel_GL.Width == 0 ? 1 : panel_GL.Width, panel_GL.Height == 0 ? 1 : panel_GL.Height);
         }
 
+        ////////////////////////////////////////////////////////////////////////
+        ///
+        /// @fn private void PartieRapide_KeyDown(object sender, EventArgs e)
+        /// @brief Evenement lorsqu'on appuie et relache une touche en partie rapide.
+        /// @param[in] sender : Objet duquel provient un evenement.
+        /// @param[in] e : evenement qui lance la fonction.
+        /// @return Aucune.
+        ///
+        ////////////////////////////////////////////////////////////////////////
         private void PartieRapide_KeyPress(object sender, KeyPressEventArgs e)
         {
             etat.traiterKeyPress(sender, e);
         }
 
+        ////////////////////////////////////////////////////////////////////////
+        ///
+        /// @fn private void panel_GL_MouseWheel(object sender, EventArgs e)
+        /// @brief Evenement lorsqu'on utilise la roulette de la souris sur le panel GL.
+        /// @param[in] sender : Objet duquel provient un evenement.
+        /// @param[in] e : evenement qui lance la fonction.
+        /// @return Aucune.
+        ///
+        ////////////////////////////////////////////////////////////////////////
         private void panel_GL_MouseWheel(object sender, MouseEventArgs e)
         {
             etat.traiterRoulette(sender, e);
@@ -408,7 +566,7 @@ namespace InterfaceGraphique
         ////////////////////////////////////////////////////////////////////////
         ///
         /// @fn private void RecommencerTout()
-        /// @brief Reinitialise la campagne ou la partie rapide lorsqu'on termine
+        /// @brief Reinitialise la campagne ou la partie rapide lorsqu'on termine.
         /// 
         /// @return Aucune.
         ///
@@ -452,7 +610,7 @@ namespace InterfaceGraphique
         ////////////////////////////////////////////////////////////////////////
         ///
         /// @fn private void Quitter()
-        /// @brief Quitte le mode Jeu
+        /// @brief Quitte le mode Jeu.
         /// 
         /// @return Aucune.
         ///
@@ -462,7 +620,16 @@ namespace InterfaceGraphique
            // resetConfig();
             this.Close();
         }
-        
+
+        ////////////////////////////////////////////////////////////////////////
+        ///
+        /// @fn private void mPrincipal_menu_Click(object sender, EventArgs e)
+        /// @brief Retour au menu principal lorsqu'on clique sur l'option dans le menu.
+        /// @param[in] sender : Objet duquel provient un evenement.
+        /// @param[in] e : evenement qui lance la fonction.
+        /// @return Aucune.
+        ///
+        ////////////////////////////////////////////////////////////////////////
         private void mPrincipal_menu_Click(object sender, EventArgs e)
         {
             this.Close();
@@ -475,6 +642,15 @@ namespace InterfaceGraphique
 
     }
 
+    ///////////////////////////////////////////////////////////////////////////
+    /// @class FonctionsNatives
+    /// @brief Importation des fonctions natives (logique C++).
+    ///
+    /// @author Inconnu
+    /// @date Inconnue
+    /// 
+    /// @ingroup Fenetres
+    ///////////////////////////////////////////////////////////////////////////
     public partial class FonctionsNatives
     {
        

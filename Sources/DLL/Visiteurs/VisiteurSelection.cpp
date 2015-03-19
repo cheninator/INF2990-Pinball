@@ -134,6 +134,14 @@ bool VisiteurSelection::traiter(NoeudAbstrait* noeud)
 	if (noeud->estSelectionne()) 
 		nbObjetsSelectionne_++;
 
+	// Utilise par Phil pour faire des boites englobantes custom
+	/*
+	if (noeud->obtenirType() == "butoirg")
+		{
+			glm::dvec3 vecteur = pointDansLeMonde_ - noeud->obtenirPositionRelative();
+			std::cout << "{ " << vecteur.x << " , " << vecteur.y << " , 0.0 }," << std::endl;
+		}
+	*/
 	return true;
 }
 

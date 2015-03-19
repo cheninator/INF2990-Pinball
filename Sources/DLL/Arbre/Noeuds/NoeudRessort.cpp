@@ -228,7 +228,7 @@ void NoeudRessort::traiterCollisions(aidecollision::DetailsCollision details, No
 	{
 	case EN_COMPRESSION:
 	case AU_REPOS:	
-		NoeudAbstrait::traiterCollisions(details, bille, 0.2);
+		NoeudAbstrait::traiterCollisions(details, bille, 0.2f);
 		break;
 
 	case EN_DECOMPRESSION:

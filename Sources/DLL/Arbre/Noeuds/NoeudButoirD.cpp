@@ -18,7 +18,14 @@
 #include "Modele3D.h"
 #include "OpenGL_Storage/ModeleStorage_Liste.h"
 
-
+std::vector<glm::dvec3> NoeudButoirD::boiteEnglobanteModele_{
+	{ 15.65, 45.30, 0.0 },
+	{ -27.36, -21.86, 0.0 },
+	{ -24.81, -26.14, 0.0 },
+	{ 15.14, -24.41, 0.0 },
+	{ 18.71, -21.35, 0.0 },
+	{ 20.65, 44.18, 0.0 }
+};
 ////////////////////////////////////////////////////////////////////////
 ///
 /// @fn NoeudButoirD::NoeudButoirD(const std::string& typeNoeud)
@@ -161,6 +168,49 @@ void NoeudButoirD::obtenirVecteursBoite(glm::dvec3 &v1, glm::dvec3 &v2, glm::dve
 
 ////////////////////////////////////////////////////////////////////////
 ///
+/// @fn void aidecollision::DetailsCollision NoeudAbstrait::detecterCollisions(NoeudAbstrait* bille)
+///
+/// Cette fonction retourne un objet detail collision pour la 
+/// collision de la bille sur l'objet courant.
+///
+/// @return details contient l'information sur la collision de la bille avec *this.
+///
+////////////////////////////////////////////////////////////////////////
+aidecollision::DetailsCollision NoeudButoirD::detecterCollisions(NoeudAbstrait* bille)
+{
+	std::vector<glm::dvec3> boite = obtenirVecteursEnglobants();
+	double rayonBille = bille->obtenirVecteursEnglobants()[0].x;
+	aidecollision::DetailsCollision details;
+
+	for (unsigned int i = 0; i < boite.size(); i++)
+		boite[i] += obtenirPositionRelative();
+	// Considerer tous les segments boite[i] --- boite[i+1 % size] 
+	aidecollision::DetailsCollision detailsRetour;
+	detailsRetour.type = aidecollision::COLLISION_AUCUNE;
+	for (unsigned int i = 0; i < boite.size(); i++)
+	{
+		// On veut calculer la collision en 2D et caster les paramêtres en glm::dvec2 "oublie" leur composante en Z et choisi la bonne surcharge de calculerCollisionSegment.
+		details = aidecollision::calculerCollisionSegment((glm::dvec2)boite[i], (glm::dvec2)boite[(i + 1) % boite.size()], (glm::dvec2)bille->obtenirPositionRelative(), rayonBille, true);
+		if (details.type != aidecollision::COLLISION_AUCUNE)
+		{
+			// Donner priorité aux collision sur les segments plutot que sur les points.
+			if (details.type == aidecollision::COLLISION_SEGMENT)
+			{
+				if (i == 0) // collision sur le long segment.
+				{
+					details.longSegmentButoir = true;
+				}
+				return details;
+			}
+			else
+				detailsRetour = details;
+		}
+	}
+	return details;
+}
+
+////////////////////////////////////////////////////////////////////////
+///
 /// @fn void NoeudAbstrait::traiterCollisions(aidecollision::DetailsCollision details, NoeudAbstrait* bille)
 ///
 /// Cette fonction effectue la réaction a la collision de la bille sur 
@@ -172,7 +222,34 @@ void NoeudButoirD::obtenirVecteursBoite(glm::dvec3 &v1, glm::dvec3 &v2, glm::dve
 ////////////////////////////////////////////////////////////////////////
 void NoeudButoirD::traiterCollisions(aidecollision::DetailsCollision details, NoeudAbstrait* bille, float facteurRebond)
 {
-	NoeudAbstrait::traiterCollisions(details, bille);
-	SingletonGlobal::obtenirInstance()->collisionButoirTriangulaire();
-	compteurIllumination_ = 0;
+	if (details.longSegmentButoir)
+	{
+		SingletonGlobal::obtenirInstance()->collisionButoirTriangulaire();
+		compteurIllumination_ = 0;
+		if (FacadeModele::obtenirInstance()->obtenirModeForceRebond())
+			facteurRebond = 2.0;
+	}
+	NoeudAbstrait::traiterCollisions(details, bille, facteurRebond);
+}
+
+
+std::vector<glm::dvec3> NoeudButoirD::obtenirVecteursEnglobants()
+{
+	std::vector<glm::dvec3> boiteEnglobanteObjet;
+
+	glm::dmat3 echelle = glm::dmat3{ glm::dvec3{ scale_.x, 0, 0.0 },
+		glm::dvec3{ 0, scale_.y, 0.0f },
+		glm::dvec3{ 0.0, 0.0, scale_.z } };
+
+	double angleEnRadian = -rotation_[2] * utilitaire::PI_180;
+	glm::dmat3 transform = glm::dmat3{ glm::dvec3{ cos(angleEnRadian), -sin(angleEnRadian), 0.0 },
+		glm::dvec3{ sin(angleEnRadian), cos(angleEnRadian), 0.0f },
+		glm::dvec3{ 0.0, 0.0, 1.0 } };
+
+	for (glm::dvec3 vecteur : boiteEnglobanteModele_)
+	{
+		boiteEnglobanteObjet.push_back(transform * (echelle * vecteur));
+	}
+
+	return boiteEnglobanteObjet;
 }

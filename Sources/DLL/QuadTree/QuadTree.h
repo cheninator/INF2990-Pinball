@@ -24,59 +24,64 @@ class QuadTree
 {
 public:
 
-	// Constructeur pour le 1er QuadTree
+	/// Constructeur pour le 1er QuadTree
 	QuadTree(glm::dvec3 inferieurGauche, glm::dvec3 superieurDroit);
 
-	// Destructeur
+	/// Destructeur
 	~QuadTree();
 
-	// Insérer des noeuds dans le QuadTree
+	/// Inserer des noeuds dans le QuadTree
 	bool insert(NoeudAbstrait* noeud);
 
-	// Retourne la liste des objets se trouvant dans le même quand que le noeud passé en paramètre
+	/// Retourne la liste des objets se trouvant dans le même quand que le noeud passe en paramètre
 	std::list<NoeudAbstrait*> retrieve(NoeudAbstrait* noeud);
 
-	// Retirer un noeud du QuadTree
+	/// Retirer un noeud du QuadTree
 	bool remove(NoeudAbstrait* noeud);
 
-	// Vider le QuadTree et les sous QuadTree
+	/// Vider le QuadTree et les sous QuadTree
 	void clear();
 
 private:
 
-	// Constructeur pour les sous QuadTree
+	/// Constructeur pour les sous QuadTree
 	QuadTree(int level, glm::dvec3 inferieurGauche, glm::dvec3 superieurDroit);
 
-	// Diviser le QuadTree lorsque la capacité maximale est atteinte
+	/// Diviser le QuadTree lorsque la capacite maximale est atteinte
 	void divide();
 
-	// Vérifier si l'objet est dans le QuadTree
+	/// Verifier si l'objet est dans le QuadTree
 	bool estDansQuadTree(NoeudAbstrait* noeud, QuadTree* quad) const;
 
-	// Vérifier si un point est dans le QuadTree
+	/// Verifier si un point est dans le QuadTree
 	bool estDansQuadTree(glm::dvec3 point, QuadTree* quad) const;
 
-	// Retourne le QuadTree dans lequel il faut faire l'insertion
+	/// Retourne le QuadTree dans lequel il faut faire l'insertion
 	QuadTree* obtenirQuadrant(NoeudAbstrait* noeud);
 
-	// Trouver un pointeur nul et rafraichir la liste des noeuds des QuadTree
+	/// Trouver un pointeur nul et rafraichir la liste des noeuds des QuadTree
 	void rafraichir();
 
 	// Propriétés du QuadTree
 	const int MAX_CAPACITY = 7;
 	const int MAX_LEVEL = 3;
+
+	/// Propriete du QuadTree
 	int niveauCourant_;
 
-	// Pour délimiter l'espace du QuadTree
+	/// Pour delimiter l'espace du QuadTree
 	glm::dvec3 inferieurGauche_, superieurDroit_;
 
-	// Contient la liste des objets appartenant au QuadTree
+	/// Contient la liste des objets appartenant au QuadTree
 	std::list<NoeudAbstrait*> objets_;
 
-	// Pour la subdivision du QuadTree en sous QuadTree
+	/// Pour la subdivision du QuadTree en sous QuadTree
 	QuadTree* nordEst_;
+	/// Pour la subdivision du QuadTree en sous QuadTree
 	QuadTree* nordOuest_;
+	/// Pour la subdivision du QuadTree en sous QuadTree
 	QuadTree* sudEst_;
+	/// Pour la subdivision du QuadTree en sous QuadTree
 	QuadTree* sudOuest_;
 
 };
