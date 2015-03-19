@@ -10,7 +10,7 @@
 /**
 *	@defgroup InterfaceGraphique InterfaceGraphique
 *	@ingroup INF2990
-*  Ce module contient le GUI de l'application.
+*  Ce module contient le GUI de l'application et la logique de l'interface.
 */
 
 using System;

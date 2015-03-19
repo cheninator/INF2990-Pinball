@@ -4,7 +4,7 @@
 /// @date 2015-01-18
 /// @version 1.0 
 ///
-/// @ingroup InterfaceGraphique
+/// @ingroup Fenetres
 //////////////////////////////////////////////////////////////////////////////
 
 using System;
@@ -26,7 +26,7 @@ namespace InterfaceGraphique
     /// @author The Ballers
     /// @date 2015-01-18
     /// 
-    /// @ingroup InterfaceGraphique
+    /// @ingroup Fenetres
     ///////////////////////////////////////////////////////////////////////////
     public partial class MainMenu : Form
     {

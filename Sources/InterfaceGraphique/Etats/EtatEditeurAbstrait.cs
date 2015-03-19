@@ -4,10 +4,10 @@
 /// @date 2015-17-02
 /// @version 1.0 
 ///
-/// @ingroup EtatEditeurAbstrait
+/// @ingroup Etats
 //////////////////////////////////////////////////////////////////////////////
 
-/** @defgroup EtatEditeurAbstrait EtatEditeurAbstrait
+/** @defgroup Etats Etats
 *	@ingroup InterfaceGraphique
 */
 

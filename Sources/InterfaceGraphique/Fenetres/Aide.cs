@@ -4,16 +4,22 @@
 /// @date 2015-01-27
 /// @version 1.0 
 ///
-/// @ingroup InterfaceGraphique
+/// @ingroup Fenetres
 //////////////////////////////////////////////////////////////////////////////
 
-    using System.Windows.Forms;
+/**
+*	@defgroup Fenetres Fenetres
+*	@ingroup InterfaceGraphique
+*   Ce module contient les différentes fenêtres de l'application.
+*/
+
+using System.Windows.Forms;
 
 namespace InterfaceGraphique
 {
     ///////////////////////////////////////////////////////////////////////////
     /// @class Aide
-    /// @brief Fenetre d'aide de l'editeur
+    /// @brief Fenetre d'aide de l'editeur.
     /// @author The Ballers
     /// @date 2015-01-27
     /// 
