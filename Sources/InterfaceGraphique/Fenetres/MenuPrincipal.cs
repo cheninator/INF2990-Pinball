@@ -376,10 +376,12 @@ namespace InterfaceGraphique
             modeJeuMain.ShowDialog(this);
             if (campagne != null)
             {
+                Program.myCustomConsole.Hide();
                 campagne.Close();
             }
             else if (pRapide != null)
             {
+                Program.myCustomConsole.Hide();
                 pRapide.Close();
             }
             this.Show();
@@ -415,6 +417,8 @@ namespace InterfaceGraphique
         private void ShowConsol_Click(object sender, EventArgs e)
         {
             Program.myCustomConsole.AlwaysShow();
+            if (Program.mMenu != null)
+                Program.mMenu.Focus();
         }
         private void MainMenu_Activated(object sender, EventArgs e)
         {

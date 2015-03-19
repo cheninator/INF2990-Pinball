@@ -390,8 +390,11 @@ namespace InterfaceGraphique
             {
                 if (e.KeyChar == 't')
                 {
-                    Program.myCustomConsole.Show();
-                    this.Focus();
+                    if (Program.mMenu.modeEdit != null)
+                    {
+                        Program.myCustomConsole.Show();
+                        Program.mMenu.modeEdit.Focus();
+                    }
                     testRetourModeEdition.PerformClick();
                     OnSizeChanged(e);
                 }
@@ -402,8 +405,11 @@ namespace InterfaceGraphique
                     {
                         FonctionsNatives.WriteLine("Affichage bloque. On debloque");
                         FonctionsNatives.bloquerAffichageGlobal(1);
-                        Program.myCustomConsole.Show();
-                        this.Focus();
+                        if (Program.mMenu.modeEdit != null)
+                        {
+                            Program.myCustomConsole.Show();
+                            Program.mMenu.modeEdit.Focus();
+                        }
                     }
                     else
                     {
@@ -1351,6 +1357,7 @@ namespace InterfaceGraphique
         ////////////////////////////////////////////////////////////////////////
         private void MenuP_MenuItem_Click(object sender, EventArgs e)
         {
+            Program.myCustomConsole.Hide();
             this.Close();
         }
 
@@ -1605,8 +1612,11 @@ namespace InterfaceGraphique
             FonctionsNatives.mettreAJourListeBillesEtNoeuds();
             if (FonctionsNatives.obtenirAffichageGlobal() == 1)
             {
-                Program.myCustomConsole.Show();
-                this.Focus();
+                if (Program.mMenu.modeEdit != null)
+                {
+                    Program.myCustomConsole.Show();
+                    Program.mMenu.modeEdit.Focus();
+                }
             }
             //panel_GL.Dock = DockStyle.Fill;
             //menuStrip3.BringToFront();
@@ -3056,6 +3066,7 @@ namespace InterfaceGraphique
         //////////////////////////////////////////////////////////////////////////////////////////
         private void testRetourMenuPrincipal_Click(object sender, EventArgs e)
         {
+            Program.myCustomConsole.Hide();
             this.Close();
         }
 
@@ -3063,7 +3074,8 @@ namespace InterfaceGraphique
         {
             Program.myCustomConsole.reStart();
             Program.myCustomConsole.Update();
-            this.Focus();
+            if (Program.mMenu.modeEdit != null)
+                Program.mMenu.modeEdit.Focus();
         }
     }
 }

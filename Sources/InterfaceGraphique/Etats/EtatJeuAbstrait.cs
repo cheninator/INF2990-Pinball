@@ -137,7 +137,11 @@ namespace InterfaceGraphique
                     FonctionsNatives.WriteLine("Affichage bloque. On debloque");
                     FonctionsNatives.bloquerAffichageGlobal(1);
                     Program.myCustomConsole.Show();
-                    parent_.Focus();
+                    if (Program.mMenu.modeJeuMain != null)
+                    {
+                        Program.myCustomConsole.Show();
+                        Program.mMenu.modeJeuMain.Focus();
+                    }
                 }
                 else
                 {

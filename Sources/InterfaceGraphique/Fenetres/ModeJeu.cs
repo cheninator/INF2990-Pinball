@@ -314,7 +314,6 @@ namespace InterfaceGraphique
                     {
                         FonctionsNatives.resetZoom();
                         currentZoom = FonctionsNatives.obtenirZoomCourant();
-
                     }
                 });
             }
@@ -395,7 +394,11 @@ namespace InterfaceGraphique
             zInfo.ShowDialog();
             this.Show();
             Program.myCustomConsole.Show();
-            this.Focus();
+            if (Program.mMenu.modeJeuMain != null)
+            {
+                Program.myCustomConsole.Show();
+                Program.mMenu.modeJeuMain.Focus();
+            }
             FonctionsNatives.ouvrirXML(map, map.Capacity);
             FonctionsNatives.construireListesPalettes();
             FonctionsNatives.resetNombreDePointsDePartie();
@@ -446,8 +449,11 @@ namespace InterfaceGraphique
             gameOver = new PartieTerminee(active);
             Program.myCustomConsole.Hide();
             gameOver.ShowDialog(this);
-            Program.myCustomConsole.Show();
-            this.Focus();
+            if (Program.mMenu.modeJeuMain != null)
+            {
+                Program.myCustomConsole.Show();
+                Program.mMenu.modeJeuMain.Focus();
+            }
         }
 
         private void PartieRapide_Load(object sender, EventArgs e)
@@ -595,8 +601,11 @@ namespace InterfaceGraphique
             zInfo = new ZoneInfo(Path.GetFileName(nextMap.ToString()), FonctionsNatives.obtenirDifficulte(map, map.Capacity).ToString(),false);
             zInfo.ShowDialog();
             this.Show();
-            Program.myCustomConsole.Show();
-            this.Focus();
+            if (Program.mMenu.modeJeuMain != null)
+            {
+                Program.myCustomConsole.Show();
+                Program.mMenu.modeJeuMain.Focus();
+            }
             FonctionsNatives.ouvrirXML(map, map.Capacity);
             FonctionsNatives.resetNombreDePointsDePartie();
             FonctionsNatives.resetNombreBillesCourantes();
@@ -628,6 +637,7 @@ namespace InterfaceGraphique
         public void Quitter()
         {
            // resetConfig();
+            Program.myCustomConsole.Hide();
             this.Close();
         }
 
@@ -642,6 +652,7 @@ namespace InterfaceGraphique
         ////////////////////////////////////////////////////////////////////////
         private void mPrincipal_menu_Click(object sender, EventArgs e)
         {
+            Program.myCustomConsole.Hide();
             this.Close();
         }
 
@@ -654,7 +665,8 @@ namespace InterfaceGraphique
         {
             Program.myCustomConsole.reStart();
             Program.myCustomConsole.Update();
-            this.Focus();
+            if (Program.mMenu.modeJeuMain != null)
+                Program.mMenu.modeJeuMain.Focus();
             firstStart = false;
         }
     }

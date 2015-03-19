@@ -290,8 +290,7 @@ namespace InterfaceGraphique
                 // modeJeu.ShowDialog();
                 //  this.Show();
                 //  this.Close();
-              
-             
+
             }
         }
 

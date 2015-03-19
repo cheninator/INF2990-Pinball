@@ -41,7 +41,7 @@ namespace InterfaceGraphique
         public static bool tempBool = false;
         //private static Exemple exemple;
         // private static mm menu;
-        private static MainMenu mMenu; ///< Main Menu de l'application
+        public static MainMenu mMenu; ///< Main Menu de l'application
         private static TimeSpan dernierTemps; ///< Dernier temps enregistre
         private static TimeSpan tempsAccumule; ///< Temps total accumule
         private static Stopwatch chrono = Stopwatch.StartNew(); ///< Chronometre
