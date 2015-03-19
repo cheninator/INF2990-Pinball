@@ -395,7 +395,7 @@ namespace InterfaceGraphique
             zInfo.ShowDialog();
             this.Show();
             Program.myCustomConsole.Show();
-
+            this.Focus();
             FonctionsNatives.ouvrirXML(map, map.Capacity);
             FonctionsNatives.construireListesPalettes();
             FonctionsNatives.resetNombreDePointsDePartie();
@@ -447,6 +447,7 @@ namespace InterfaceGraphique
             Program.myCustomConsole.Hide();
             gameOver.ShowDialog(this);
             Program.myCustomConsole.Show();
+            this.Focus();
         }
 
         private void PartieRapide_Load(object sender, EventArgs e)
@@ -595,6 +596,7 @@ namespace InterfaceGraphique
             zInfo.ShowDialog();
             this.Show();
             Program.myCustomConsole.Show();
+            this.Focus();
             FonctionsNatives.ouvrirXML(map, map.Capacity);
             FonctionsNatives.resetNombreDePointsDePartie();
             FonctionsNatives.resetNombreBillesCourantes();
@@ -652,6 +654,7 @@ namespace InterfaceGraphique
         {
             Program.myCustomConsole.reStart();
             Program.myCustomConsole.Update();
+            this.Focus();
             firstStart = false;
         }
     }

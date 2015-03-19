@@ -391,6 +391,7 @@ namespace InterfaceGraphique
                 if (e.KeyChar == 't')
                 {
                     Program.myCustomConsole.Show();
+                    this.Focus();
                     testRetourModeEdition.PerformClick();
                     OnSizeChanged(e);
                 }
@@ -402,6 +403,7 @@ namespace InterfaceGraphique
                         FonctionsNatives.WriteLine("Affichage bloque. On debloque");
                         FonctionsNatives.bloquerAffichageGlobal(1);
                         Program.myCustomConsole.Show();
+                        this.Focus();
                     }
                     else
                     {
@@ -1602,7 +1604,10 @@ namespace InterfaceGraphique
             FonctionsNatives.construireListesPalettes();
             FonctionsNatives.mettreAJourListeBillesEtNoeuds();
             if (FonctionsNatives.obtenirAffichageGlobal() == 1)
+            {
                 Program.myCustomConsole.Show();
+                this.Focus();
+            }
             //panel_GL.Dock = DockStyle.Fill;
             //menuStrip3.BringToFront();
             
@@ -3058,6 +3063,7 @@ namespace InterfaceGraphique
         {
             Program.myCustomConsole.reStart();
             Program.myCustomConsole.Update();
+            this.Focus();
         }
     }
 }
