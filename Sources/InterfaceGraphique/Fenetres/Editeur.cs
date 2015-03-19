@@ -3059,4 +3059,5 @@ namespace InterfaceGraphique
             Program.myCustomConsole.reStart();
             Program.myCustomConsole.Update();
         }
+    }
 }
