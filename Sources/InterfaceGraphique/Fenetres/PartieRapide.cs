@@ -1,4 +1,13 @@
-﻿using System;
+﻿//////////////////////////////////////////////////////////////////////////////
+/// @file PartieRapide.cs
+/// @author Ballers
+/// @date 2015-3-3
+/// @version 1.0 
+///
+/// @ingroup Fenetres
+//////////////////////////////////////////////////////////////////////////////
+
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -11,17 +20,35 @@ using System.Windows.Forms;
 
 namespace InterfaceGraphique
 {
+    ///////////////////////////////////////////////////////////////////////////
+    /// @class PartieRapide
+    /// @brief Classe d'interface du mode Partie Rapide.
+    ///
+    /// @author Ballers
+    /// @date 2015-3-3
+    /// 
+    /// @ingroup Fenetres
+    ///////////////////////////////////////////////////////////////////////////
     public partial class PartieRapide : Form
     {
-        string[] filePaths;
+        string[] filePaths; ///< Path des fichiers de zones
         string fileNames;
-        List<string> zonesCampagne;
-        int sortColumn = -1;
+        List<string> zonesCampagne; ///< Liste des zones de la campagne.
+        int sortColumn = -1; ///< Pour le tri des colonnes.
         int diff;
         int typeJoueur;
         StringBuilder pathMap;
         //StringBuilder mapList;
         public ModeJeu modeJeu;
+
+        ////////////////////////////////////////////////////////////////////////
+        ///
+        /// @fn public PartieRapide()
+        /// @brief Constructeur de la fenetre de Partie Rapide..
+        /// 
+        /// @return Aucune (constructeur).
+        ///
+        ////////////////////////////////////////////////////////////////////////
         public PartieRapide()
         {
             InitializeComponent();
@@ -42,11 +69,29 @@ namespace InterfaceGraphique
             }
         }
 
+        ////////////////////////////////////////////////////////////////////////
+        ///
+        /// @fn private void bouton_Cancel_Click(object sender, EventArgs e)
+        /// @brief Gestion d'evenement lorsqu'on clique sur le bouton Annuler.
+        /// @param[in] sender : Objet duquel provient un evenement.
+        /// @param[in] e : evenement qui lance la fonction.
+        /// @return Aucune.
+        ///
+        ////////////////////////////////////////////////////////////////////////
         private void bouton_Cancel_Click(object sender, EventArgs e)
         {
             this.Close();
         }
 
+        ////////////////////////////////////////////////////////////////////////
+        ///
+        /// @fn private void ZonesDisponibles_SelectedIndexChanged(object sender, EventArgs e)
+        /// @brief Affichage de l'image lorsqu'on clique sur un zone disponible dans la liste.
+        /// @param[in] sender : Objet duquel provient un evenement.
+        /// @param[in] e : evenement qui lance la fonction.
+        /// @return Aucune.
+        ///
+        ////////////////////////////////////////////////////////////////////////
         private void ZonesDisponibles_SelectedIndexChanged(object sender, EventArgs e)
         {
             if (ZonesDisponibles.SelectedIndices.Count <= 0) return;
@@ -66,6 +111,16 @@ namespace InterfaceGraphique
             }
         }
 
+        ////////////////////////////////////////////////////////////////////////
+        ///
+        /// @fn private void ZonesDisponibles_ColumnClick(object sender, EventArgs e)
+        /// @brief Appel des fonctions de tri lorsquon clique sur un colonne 
+        ///        de la ListBox.
+        /// @param[in] sender : Objet duquel provient un evenement.
+        /// @param[in] e : evenement qui lance la fonction.
+        /// @return Aucune.
+        ///
+        ////////////////////////////////////////////////////////////////////////
         private void ZonesDisponibles_ColumnClick(object sender, ColumnClickEventArgs e)
         {
 
@@ -88,12 +143,31 @@ namespace InterfaceGraphique
               
         }
 
+        ////////////////////////////////////////////////////////////////////////
+        ///
+        /// @fn private void ZonesDisponibles_ColumnWidthChanging(object sender, EventArgs e)
+        /// @brief Gestion d'evenement lorsqu'on change la taille des colonnes dans les
+        ///        zones disponibles.
+        /// @param[in] sender : Objet duquel provient un evenement.
+        /// @param[in] e : evenement qui lance la fonction.
+        /// @return Aucune.
+        ///
+        ////////////////////////////////////////////////////////////////////////
         private void ZonesDisponibles_ColumnWidthChanging(object sender, ColumnWidthChangingEventArgs e)
         {
             e.Cancel = true;
             e.NewWidth = ZonesDisponibles.Columns[e.ColumnIndex].Width;
         }
 
+        ////////////////////////////////////////////////////////////////////////
+        ///
+        /// @fn private void bouton_OK_Click(object sender, EventArgs e)
+        /// @brief Gestion d'evenement lorsqu'on clique sur le bouton OK.
+        /// @param[in] sender : Objet duquel provient un evenement.
+        /// @param[in] e : evenement qui lance la fonction.
+        /// @return Aucune.
+        ///
+        ////////////////////////////////////////////////////////////////////////
         private void bouton_OK_Click(object sender, EventArgs e)
         {
             if (ZonesDisponibles.SelectedItems.Count != 0)
@@ -114,8 +188,8 @@ namespace InterfaceGraphique
                 this.Hide();
                 ((MainMenu)this.Owner).LancerModeJeu(zonesCampagne, typeJoueur);
                 // modeJeu.ShowDialog();
-              //  this.Show();
-              //  this.Close();
+                //  this.Show();
+                //  this.Close();
             }
         }
     }

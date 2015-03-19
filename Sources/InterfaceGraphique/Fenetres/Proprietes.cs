@@ -4,7 +4,7 @@
 /// @date 2015-01-27
 /// @version 1.0 
 ///
-/// @ingroup InterfaceGraphique
+/// @ingroup Fenetres
 //////////////////////////////////////////////////////////////////////////////
 
 using System;
@@ -20,7 +20,7 @@ namespace InterfaceGraphique
     /// @author The Ballers
     /// @date 2015-01-27
     /// 
-    /// @ingroup InterfaceGraphique
+    /// @ingroup Fenetres
     ///////////////////////////////////////////////////////////////////////////
     public partial class Proprietes : Form
     {
@@ -32,7 +32,7 @@ namespace InterfaceGraphique
         /// @fn public Proprietes(List<int> a)
         /// @brief Constructeur par parameetre de la fenetre.
         /// 
-        /// param[in] a : liste des proprietes a instancier.
+        /// param[in] a : Liste des proprietes a instancier.
         /// 
         /// @return Aucune (constructeur).
         ///
