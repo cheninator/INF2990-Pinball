@@ -9,6 +9,7 @@
 
 #include "NoeudRessort.h"
 #include "Utilitaire.h"
+#include "NoeudBille.h"
 
 #include <windows.h>
 #include <GL/gl.h>
@@ -17,7 +18,10 @@
 
 #include "Modele3D.h"
 #include "OpenGL_Storage/ModeleStorage_Liste.h"
-
+#include "../../Commun/Externe/glm/include/glm/gtx/Projection.hpp"
+#ifndef AOUT
+# define AOUT SingletonGlobal::obtenirInstance()->outPutStream_
+#endif
 
 ////////////////////////////////////////////////////////////////////////
 ///
@@ -193,10 +197,12 @@ void NoeudRessort::compresser()
 ////////////////////////////////////////////////////////////////////////
 void NoeudRessort::relacher()
 {
+	if (etatRessort_ == AU_REPOS)
+		return;
 	//                                 longueur originale                           -            Longueur courante.
 	// distanceCompression_ = scaleYOriginal_*(boite_.coinMax.y - boite_.coinMin.y) - scale_.y*(boite_.coinMax.y - boite_.coinMin.y);
 	distanceCompression_ = (scaleYOriginal_ - scale_.y) * (boite_.coinMax.y - boite_.coinMin.y);
-	SingletonGlobal::obtenirInstance()->outPutStream_<< "Distance compression " << distanceCompression_ << std::endl;
+	AOUT << "Distance compression " << distanceCompression_ << std::endl;
 	etatRessort_ = EN_DECOMPRESSION;
 }
 
@@ -227,8 +233,23 @@ void NoeudRessort::traiterCollisions(aidecollision::DetailsCollision details, No
 	switch (etatRessort_)
 	{
 	case EN_COMPRESSION:
-	case AU_REPOS:	
-		NoeudAbstrait::traiterCollisions(details, bille, 0.2f);
+	case AU_REPOS:
+			// Modifier la vitesse de la bille en fonction de bille reçue en paramètre 
+		{
+			glm::dvec3 vitesseInitiale = bille->obtenirVitesse();
+			glm::dvec3 vitesseNormaleInitiale = glm::proj(vitesseInitiale, details.direction); // Necessaire pour connaitre la vitesse tangentielle.
+			glm::dvec3 vitesseTangentielle = vitesseInitiale - vitesseNormaleInitiale;
+			glm::dvec2 vitesseNormaleFinale2D = aidecollision::calculerForceAmortissement2D(details, (glm::dvec2)vitesseInitiale, 0.2f);
+			glm::dvec3 vitesseFinale = vitesseTangentielle + glm::dvec3{ vitesseNormaleFinale2D.x, vitesseNormaleFinale2D.y, 0.0 };
+			// ((NoeudBille*)bille)->afficherVitesse(vitesseFinale); // Que Dieu me pardonne
+
+
+			glm::dvec3 positionFinale = bille->obtenirPositionRelative() + details.enfoncement * glm::normalize(details.direction);
+			bille->assignerPositionRelative(positionFinale);
+
+			bille->assignerVitesse(vitesseFinale);
+			bille->assignerImpossible(true);
+		}
 		break;
 
 	case EN_DECOMPRESSION:
