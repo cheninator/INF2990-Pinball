@@ -17,6 +17,8 @@ namespace InterfaceGraphique
             pauseString += FonctionsNatives.obtenirConsole();
             if (pause_resume.Checked == false)
             {
+                if (pauseString == "")
+                    return;
                 richTextBox1.AppendText(pauseString);
                 pauseString = "";
                 richTextBox1.Select(richTextBox1.Text.Length, 0);

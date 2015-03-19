@@ -18,9 +18,9 @@ public:
 	// Pointer to the FMOD instance
 
 	SoundControllerClass();
-	void createSound(char* pFile);
-	void playSound(SoundClass pSound, bool bLoop = false);
-	void releaseSound(SoundClass pSound);
+	void createSound(char* sName);
+	void playSound(char* sName, bool bLoop = false);
+	void releaseSound(char* sName);
 
 private:
 	FMOD::System* m_pSystem;
