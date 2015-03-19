@@ -62,10 +62,10 @@ private:
 	/// Trouver un pointeur nul et rafraichir la liste des noeuds des QuadTree
 	void rafraichir();
 
-	/// Propriete du QuadTree
-	const int MAX_CAPACITY = 3;
-	/// Propriete du QuadTree
+	// Propriétés du QuadTree
+	const int MAX_CAPACITY = 7;
 	const int MAX_LEVEL = 3;
+
 	/// Propriete du QuadTree
 	int niveauCourant_;
 
