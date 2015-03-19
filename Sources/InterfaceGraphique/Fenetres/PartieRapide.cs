@@ -1,7 +1,7 @@
 ﻿//////////////////////////////////////////////////////////////////////////////
 /// @file PartieRapide.cs
 /// @author Ballers
-/// @date 2015-3-3
+/// @date 2015-03-03
 /// @version 1.0 
 ///
 /// @ingroup Fenetres
@@ -25,7 +25,7 @@ namespace InterfaceGraphique
     /// @brief Classe d'interface du mode Partie Rapide.
     ///
     /// @author Ballers
-    /// @date 2015-3-3
+    /// @date 2015-03-03
     /// 
     /// @ingroup Fenetres
     ///////////////////////////////////////////////////////////////////////////

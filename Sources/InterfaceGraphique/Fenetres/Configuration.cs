@@ -1,7 +1,7 @@
 ﻿//////////////////////////////////////////////////////////////////////////////
 /// @file Campagne.cs
 /// @author Ballers
-/// @date 2015-2-27
+/// @date 2015-02-27
 /// @version 1.0 
 ///
 /// @ingroup Fenetres
@@ -18,7 +18,7 @@ namespace InterfaceGraphique
     /// @brief Classe d'interface des configurations de la partie.
     ///
     /// @author Ballers
-    /// @date 2015-2-27
+    /// @date 2015-02-27
     /// 
     /// @ingroup Fenetres
     ///////////////////////////////////////////////////////////////////////////

@@ -1,4 +1,13 @@
-﻿using System;
+﻿//////////////////////////////////////////////////////////////////////////////
+/// @file EtatJeuAbstrait.cs
+/// @author Ballers
+/// @date 2015-03-06
+/// @version 1.0 
+///
+/// @ingroup Etats
+//////////////////////////////////////////////////////////////////////////////
+
+using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
@@ -9,11 +18,31 @@ using System.Windows.Forms;
 namespace InterfaceGraphique
 {
     public partial class ModeJeu : Form
-    { 
+    {
+        ///////////////////////////////////////////////////////////////////////////
+        /// @class EtatJeuAbstrait
+        /// @brief EtatJeuAbstrait du patron State.
+        ///
+        /// @author The Ballers
+        /// @date 2015-03-06
+        /// 
+        /// @ingroup Etats
+        ///////////////////////////////////////////////////////////////////////////
         public partial class EtatJeuAbstrait
         {
             protected ModeJeu parent_;
-            
+
+            ////////////////////////////////////////////////////////////////////////
+            ///
+            /// @fn public virtual bool traiterRoulette(object sender, KeyEventArgs e)
+            /// @brief Traiter le changement d'etat suite a une action de la roulette de souris.
+            /// 
+            /// @param[in] sender : Objet duquel provient un evenement.
+            /// @param[in] e : evenement qui lance la fonction.
+            /// 
+            /// @return True ou false selon la reussite des operations.
+            ///
+            ////////////////////////////////////////////////////////////////////////
             public virtual bool traiterRoulette(object sender, MouseEventArgs e)
             {
                 if (e.Delta > 0)
@@ -23,6 +52,18 @@ namespace InterfaceGraphique
                 parent_.setCurrentZoom(FonctionsNatives.obtenirZoomCourant());
                 return false;
             }
+
+            ////////////////////////////////////////////////////////////////////////
+            ///
+            /// @fn public virtual bool traiterKeyDown(object sender, KeyEventArgs e)
+            /// @brief Traiter le changement d'etat suite a une action du clavier.
+            /// 
+            /// @param[in] sender : Objet duquel provient un evenement.
+            /// @param[in] e : evenement qui lance la fonction.
+            /// 
+            /// @return True ou false selon la reussite des operations.
+            ///
+            ////////////////////////////////////////////////////////////////////////
             public virtual bool traiterKeyDown(object sender, KeyEventArgs e)
             {
                 
@@ -49,15 +90,46 @@ namespace InterfaceGraphique
                 }
                 return false;
             }
+
+            ////////////////////////////////////////////////////////////////////////
+            ///
+            /// @fn public virtual bool traiterKeyPress(KeyEventArgs e)
+            /// @brief Traiter le changement d'etat suite a une action du clavier.
+            /// 
+            /// @param[in] sender : Objet duquel provient un evenement.
+            /// @param[in] e : evenement qui lance la fonction.
+            /// 
+            /// @return True ou false selon la reussite des operations.
+            ///
+            ////////////////////////////////////////////////////////////////////////
             public virtual bool traiterKeyPress(object sender, KeyPressEventArgs e)
             {
                 return false;
             }
+
+            ////////////////////////////////////////////////////////////////////////
+            ///
+            /// @fn public virtual bool traiterKeyUp(KeyEventArgs e)
+            /// @brief Traiter le changement d'etat suite a une action du clavier.
+            /// 
+            /// @param[in] sender : Objet duquel provient un evenement.
+            /// @param[in] e : evenement qui lance la fonction.
+            /// 
+            /// @return True ou false selon la reussite des operations.
+            ///
+            ////////////////////////////////////////////////////////////////////////
             public virtual bool traiterKeyUp(object sender, KeyEventArgs e)
             {
                 return false;
             }
 
+            ////////////////////////////////////////////////////////////////////////
+            ///
+            /// @fn public void toggleDebugOutput()
+            /// @brief Bloque ou debloque l'affichage global.
+            /// @return Aucune.
+            ///
+            ////////////////////////////////////////////////////////////////////////
             public void toggleDebugOutput()
             {
                 if (FonctionsNatives.obtenirAffichageGlobal() == 0)
@@ -72,6 +144,13 @@ namespace InterfaceGraphique
                 }
             }
 
+            ////////////////////////////////////////////////////////////////////////
+            ///
+            /// @fn public void resetConfig()
+            /// @brief Reset les config du parent appelant.
+            /// @return Aucune.
+            ///
+            ////////////////////////////////////////////////////////////////////////
             public void resetConfig()
             {
                 parent_.resetConfig();
@@ -79,19 +158,30 @@ namespace InterfaceGraphique
         }
     }
 
-
-
-
-
-
-
-
+    ///////////////////////////////////////////////////////////////////////////
+    /// @class EtatJeuPause
+    /// @brief EtatJeuPause du patron State.
+    ///
+    /// @author The Ballers
+    /// @date 2015-03-06
+    /// 
+    /// @ingroup Etats
+    ///////////////////////////////////////////////////////////////////////////
     class EtatJeuPause : InterfaceGraphique.ModeJeu.EtatJeuAbstrait
     {
+        ////////////////////////////////////////////////////////////////////////
+        ///
+        /// @fn public EtatJeuPause(ModeJeu modeJeu)
+        /// @brief Constructeur par parametre de l'etat.
+        /// 
+        /// param[in] modeJeu : Mode de jeu associe a l'etat.
+        /// 
+        /// @return Aucune (constructeur).
+        ///
+        ////////////////////////////////////////////////////////////////////////
         public EtatJeuPause(ModeJeu modeJeu)
             : base(modeJeu)
         {
-            //Console.WriteLine("Constructeur Etat :" + '\t' + "Pause");
 
             parent_.setVisibilityMenuStrip(true);
             FonctionsNatives.modePause(true);
@@ -99,6 +189,17 @@ namespace InterfaceGraphique
 
         }
 
+        ////////////////////////////////////////////////////////////////////////
+        ///
+        /// @fn public override bool traiterKeyPress(KeyEventArgs e)
+        /// @brief Traiter le changement d'etat suite a une action du clavier.
+        /// 
+        /// @param[in] sender : Objet duquel provient un evenement.
+        /// @param[in] e : evenement qui lance la fonction.
+        /// 
+        /// @return True ou false selon la reussite des operations.
+        ///
+        ////////////////////////////////////////////////////////////////////////
         public override bool traiterKeyPress(object sender, KeyPressEventArgs e)
         {
             bool treated = false;
@@ -116,25 +217,47 @@ namespace InterfaceGraphique
         }
     }
 
-
-
-
-
-
-
+    ///////////////////////////////////////////////////////////////////////////
+    /// @class EtatJeuJouer
+    /// @brief EtatJeuJouer du patron State.
+    ///
+    /// @author The Ballers
+    /// @date 2015-03-06
+    /// 
+    /// @ingroup Etats
+    ///////////////////////////////////////////////////////////////////////////
     class EtatJeuJouer : InterfaceGraphique.ModeJeu.EtatJeuAbstrait
     {
+        ////////////////////////////////////////////////////////////////////////
+        ///
+        /// @fn public EtatJeuJouer(ModeJeu modeJeu)
+        /// @brief Constructeur par parametre de l'etat.
+        /// 
+        /// param[in] modeJeu : Mode de jeu associe a l'etat.
+        /// 
+        /// @return Aucune (constructeur).
+        ///
+        ////////////////////////////////////////////////////////////////////////
         public EtatJeuJouer(ModeJeu modeJeu)
             : base(modeJeu)
         {
-            //Console.WriteLine("Etat :" + '\t' + "Jouer");
-
             parent_.setVisibilityMenuStrip(false);
             FonctionsNatives.modePause(false);
             parent_.setPeutAnimer(true);
 
         }
 
+        ////////////////////////////////////////////////////////////////////////
+        ///
+        /// @fn public override bool traiterKeyDown(KeyEventArgs e)
+        /// @brief Traiter le changement d'etat suite a une action du clavier.
+        /// 
+        /// @param[in] sender : Objet duquel provient un evenement.
+        /// @param[in] e : evenement qui lance la fonction.
+        /// 
+        /// @return True ou false selon la reussite des operations.
+        ///
+        ////////////////////////////////////////////////////////////////////////
         public override bool traiterKeyDown(object sender, KeyEventArgs e)
         {
             if (e.KeyValue == parent_.getTouches().PGJ1)
@@ -182,6 +305,18 @@ namespace InterfaceGraphique
 
             return true;
         }
+
+        ////////////////////////////////////////////////////////////////////////
+        ///
+        /// @fn public override bool traiterKeyUp(KeyEventArgs e)
+        /// @brief Traiter le changement d'etat suite a une action du clavier.
+        /// 
+        /// @param[in] sender : Objet duquel provient un evenement.
+        /// @param[in] e : evenement qui lance la fonction.
+        /// 
+        /// @return True ou false selon la reussite des operations.
+        ///
+        ////////////////////////////////////////////////////////////////////////
         public override bool traiterKeyUp(object sender, KeyEventArgs e)
         {
             if (e.KeyValue == parent_.getTouches().PGJ1)
@@ -209,6 +344,17 @@ namespace InterfaceGraphique
             return true;
         }
 
+        ////////////////////////////////////////////////////////////////////////
+        ///
+        /// @fn public override bool traiterKeyPress(KeyEventArgs e)
+        /// @brief Traiter le changement d'etat suite a une action du clavier.
+        /// 
+        /// @param[in] sender : Objet duquel provient un evenement.
+        /// @param[in] e : evenement qui lance la fonction.
+        /// 
+        /// @return True ou false selon la reussite des operations.
+        ///
+        ////////////////////////////////////////////////////////////////////////
         public override bool traiterKeyPress(object sender, KeyPressEventArgs e)
         {
             if (e.KeyChar == 'b')
@@ -254,21 +400,44 @@ namespace InterfaceGraphique
         }
     }
 
-
-
-
-
-
-
-
+    ///////////////////////////////////////////////////////////////////////////
+    /// @class EtatJeuDebutDePartie
+    /// @brief EtatJeuDebutDePartie du patron State.
+    ///
+    /// @author The Ballers
+    /// @date 2015-03-06
+    /// 
+    /// @ingroup Etats
+    ///////////////////////////////////////////////////////////////////////////
     class EtatJeuDebutDePartie : InterfaceGraphique.ModeJeu.EtatJeuAbstrait
     {
+        ////////////////////////////////////////////////////////////////////////
+        ///
+        /// @fn public EtatJeuDebutDePartie(ModeJeu modeJeu)
+        /// @brief Constructeur par parametre de l'etat.
+        /// 
+        /// param[in] modeJeu : Mode de jeu associe a l'etat.
+        /// 
+        /// @return Aucune (constructeur).
+        ///
+        ////////////////////////////////////////////////////////////////////////
         public EtatJeuDebutDePartie(ModeJeu modeJeu) : base(modeJeu)
         {
             resetConfig();
             // TODO: Complete member initialization
         }
 
+        ////////////////////////////////////////////////////////////////////////
+        ///
+        /// @fn public override bool traiterRoulette(object sender, MouseEventArgs e)
+        /// @brief Traiter le changement d'etat suite a une action de la roulette de souris.
+        /// 
+        /// @param[in] sender : Objet duquel provient un evenement.
+        /// @param[in] e : evenement qui lance la fonction.
+        /// 
+        /// @return True ou false selon la reussite des operations.
+        ///
+        ////////////////////////////////////////////////////////////////////////
         public override bool traiterRoulette(object sender, MouseEventArgs e)
         {
             if (e.Delta > 0)
@@ -280,17 +449,30 @@ namespace InterfaceGraphique
         }
     }
 
-
-
-
-
-
-
+    ///////////////////////////////////////////////////////////////////////////
+    /// @class EtatJeuFinDePartie
+    /// @brief EtatJeuFinDePartie du patron State.
+    ///
+    /// @author The Ballers
+    /// @date 2015-03-06
+    /// 
+    /// @ingroup Etats
+    ///////////////////////////////////////////////////////////////////////////
     class EtatJeuFinDePartie : InterfaceGraphique.ModeJeu.EtatJeuAbstrait
     {
+        ////////////////////////////////////////////////////////////////////////
+        ///
+        /// @fn public EtatJeuFinDePartie(ModeJeu modeJeu)
+        /// @brief Constructeur par parametre de l'etat.
+        /// 
+        /// param[in] modeJeu : Mode de jeu associe a l'etat.
+        /// 
+        /// @return Aucune (constructeur).
+        ///
+        ////////////////////////////////////////////////////////////////////////
         public EtatJeuFinDePartie(ModeJeu modeJeu) : base(modeJeu)
         {
-            //Console.WriteLine("Etat :" + '\t' + "FinDePartie");
+            
         }
     }
 

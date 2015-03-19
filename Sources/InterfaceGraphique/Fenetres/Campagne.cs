@@ -1,7 +1,7 @@
 ﻿//////////////////////////////////////////////////////////////////////////////
 /// @file Campagne.cs
 /// @author Ballers
-/// @date 2015-3-3
+/// @date 2015-03-03
 /// @version 1.0 
 ///
 /// @ingroup Fenetres
@@ -24,7 +24,7 @@ namespace InterfaceGraphique
     ///        campagne.
     ///
     /// @author Ballers
-    /// @date 2015-3-3
+    /// @date 2015-03-03
     /// 
     /// @ingroup Fenetres
     ///////////////////////////////////////////////////////////////////////////

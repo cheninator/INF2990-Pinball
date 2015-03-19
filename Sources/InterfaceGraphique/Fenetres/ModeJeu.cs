@@ -1,7 +1,7 @@
 ﻿//////////////////////////////////////////////////////////////////////////////
 /// @file ModeJeu.cs
 /// @author Ballers
-/// @date 2015-3-10
+/// @date 2015-03-10
 /// @version 1.0 
 ///
 /// @ingroup Fenetres
@@ -21,7 +21,7 @@ namespace InterfaceGraphique
     /// @brief Classe d'interface du mode jeu.
     ///
     /// @author Ballers
-    /// @date 2015-3-10
+    /// @date 2015-03-10
     /// 
     /// @ingroup Fenetres
     ///////////////////////////////////////////////////////////////////////////

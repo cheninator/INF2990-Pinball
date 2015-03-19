@@ -1,7 +1,7 @@
 ﻿//////////////////////////////////////////////////////////////////////////////
 /// @file PartieTerminee.cs
 /// @author Ballers
-/// @date 2015-3-16
+/// @date 2015-03-16
 /// @version 1.0 
 ///
 /// @ingroup Fenetres
@@ -24,7 +24,7 @@ namespace InterfaceGraphique
     /// @brief Classe d'interface de la fenetre Partie Terminee
     ///
     /// @author Ballers
-    /// @date 2015-3-16
+    /// @date 2015-03-16
     /// 
     /// @ingroup Fenetres
     ///////////////////////////////////////////////////////////////////////////

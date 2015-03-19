@@ -1,7 +1,7 @@
 ﻿//////////////////////////////////////////////////////////////////////////////
 /// @file ZoneInfo.cs
 /// @author Ballers
-/// @date 2015-3-12
+/// @date 2015-03-12
 /// @version 1.0 
 ///
 /// @ingroup Fenetres
@@ -25,7 +25,7 @@ namespace InterfaceGraphique
     /// @brief Classe d'interface de la fenetre d'info des zones de jeu.
     ///
     /// @author Ballers
-    /// @date 2015-3-12
+    /// @date 2015-03-12
     /// 
     /// @ingroup Fenetres
     ///////////////////////////////////////////////////////////////////////////
