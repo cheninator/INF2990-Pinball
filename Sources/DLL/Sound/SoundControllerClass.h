@@ -5,6 +5,7 @@
 #include <fmod.hpp>
 #include <stdlib.h>
 #include <vector>
+#include <map>
 
 // MERCI
 // http://openclassrooms.com/courses/apprenez-a-programmer-en-c/jouer-du-son-avec-fmod
@@ -23,7 +24,7 @@ public:
 
 private:
 	FMOD::System* m_pSystem;
-	std::vector<std::pair<SoundClass*, char*>> sounds_;
+	std::map<const char*, SoundClass*> sounds_;
 };
 
 #endif //__FACADE_SOUND_CONTROLLER_CLASS_H__

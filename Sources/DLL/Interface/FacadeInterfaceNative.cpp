@@ -1144,6 +1144,12 @@ extern "C"
 			FMOD_System_CreateSound(system, "media/SFX/stone.wav", FMOD_CREATESAMPLE, 0, &soundTable.back().second);
 			SingletonGlobal::obtenirInstance()->outPutStream_<< " 100%... tout les sons sont initialise" << std::endl;
 			SingletonGlobal::obtenirInstance()->outPutStream_<< "Fin du chargement du son !" << std::endl << std::endl;
+		
+			//SoundControllerClass mySounds_;
+			//mySounds_.createSound("ambiant.wav");
+			//mySounds_.createSound("music.wav");
+			//mySounds_.createSound("no.wav");
+			//mySounds_.createSound("stone.wav");
 		}
 
 

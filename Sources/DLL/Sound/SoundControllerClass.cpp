@@ -23,9 +23,10 @@ SoundControllerClass::SoundControllerClass()
 
 void SoundControllerClass::createSound(char* pFile)
 {
-	std::pair<SoundClass*, char*> pSound;
-	sounds_.push_back(pSound);
-	m_pSystem->createSound(sounds_[sounds_.size() - 1].second, FMOD_HARDWARE, 0, sounds_[sounds_.size()-1].first);
+	std::string soundPath = "media/SFX/" + std::string(pFile);
+	const char* pSound = soundPath.c_str();
+	sounds_[pSound];
+	m_pSystem->createSound(pSound, FMOD_HARDWARE, 0, sounds_[pSound]);
 }
 
 void SoundControllerClass::playSound(SoundClass pSound, bool bLoop)
