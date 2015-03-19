@@ -264,20 +264,27 @@ void FacadeModele::afficher() const
 	glLoadIdentity();
 	vue_->appliquerCamera();
 
-	if (pause_) {
-		glEnable(GL_TEXTURE_2D); // Enable Texture Mapping
-		glClearColor(0.0f, 0.0f, 0.0f, 0.5f); // Black Background
-		glClearDepth(1.0f); // Depth Buffer Setup
-	}
-	else {
-		glClearColor(0.7843f, 0.7843f, 0.7843f, 0.0f);
-	}
-
 	// Afficher la scene
 	afficherBase();
 
 	// Compte de l'affichage
 	utilitaire::CompteurAffichage::obtenirInstance()->signalerAffichage();
+
+	if (pause_) {
+		glClearColor(0.0f, 0.0f, 0.0f, 0.5f); // Black Background
+
+		// noircir l'ecran
+		glDrawBuffer(GL_FRONT);
+		glClear(GL_DEPTH_BUFFER_BIT);
+		glDisable(GL_TEXTURE_2D);
+		glEnable(GL_BLEND);
+		glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
+		glColor4f(0.0F, 0.0F, 0.0F, 0.7F);
+		glRectd(-7000, -7000, 7000, 7000);
+	}
+	else {
+		glClearColor(0.7843f, 0.7843f, 0.7843f, 0.0f);
+	}
 
 	// echange les tampons pour que le resultat du rendu soit visible.
 	::SwapBuffers(hDC_);
@@ -1021,12 +1028,23 @@ bool FacadeModele::supprimer()
 /// @return Aucun
 ///
 ///////////////////////////////////////////////////////////////////////////////
-void FacadeModele::setPause( bool pause)
+void FacadeModele::setPause(bool pause)
 {
 	pause_ = pause;
-	VisiteurPause* visiteur = new VisiteurPause(pause);
+
+	// A enlever, on ne s'en sert plus
+	/*VisiteurPause* visiteur = new VisiteurPause(pause);
 	FacadeModele::obtenirInstance()->obtenirArbreRenduINF2990()->accepterVisiteur(visiteur);
-	delete visiteur;
+	delete visiteur;*/
+
+	// remettre l'affichage a la normale
+	if (!pause)
+	{
+		glDisable(GL_BLEND);
+		glEnable(GL_TEXTURE_2D);
+		glFlush();
+		glDrawBuffer(GL_BACK);
+	}	
 }
 
 
