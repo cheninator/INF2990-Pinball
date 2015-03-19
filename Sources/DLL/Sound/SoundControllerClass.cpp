@@ -1,6 +1,6 @@
 #include "SoundControllerClass.h"
 
-const char* getPath(char* sName);
+std::string getPath(char* sName);
 
 SoundControllerClass::SoundControllerClass()
 {
@@ -25,33 +25,38 @@ SoundControllerClass::SoundControllerClass()
 
 void SoundControllerClass::createSound(char* sName)
 {
-	const char* pSound = getPath(sName);
+	std::string pName = getPath(sName);
+	const char* pSound = pName.c_str();
 	sounds_[pSound];
 	m_pSystem->createSound(pSound, FMOD_HARDWARE, 0, sounds_[pSound]);
 }
 
 void SoundControllerClass::playSound(char* sName, bool bLoop)
 {
-	SoundClass pSound = *(sounds_[getPath(sName)]);
+	std::string pName = getPath(sName);
+	const char* pSound = pName.c_str();
+	SoundClass mySound = *(sounds_[pSound]);
 	if (!bLoop)
-		pSound->setMode(FMOD_LOOP_OFF);
+		mySound->setMode(FMOD_LOOP_OFF);
 	else
 	{
-		pSound->setMode(FMOD_LOOP_NORMAL);
-		pSound->setLoopCount(-1);
+		mySound->setMode(FMOD_LOOP_NORMAL);
+		mySound->setLoopCount(-1);
 	}
 	// Je me fais troll par intellisense
-	m_pSystem->playSound(FMOD_CHANNEL_FREE, pSound, false, 0);
+	m_pSystem->playSound(FMOD_CHANNEL_FREE, mySound, false, 0);
 }
 
 void SoundControllerClass::releaseSound(char* sName) 
 {
-	SoundClass pSound = *(sounds_[getPath(sName)]);
-	pSound->release();
+	std::string pName = getPath(sName);
+	const char* pSound = pName.c_str();
+	SoundClass mySound = *(sounds_[pSound]);
+	mySound->release();
 }
 
-const char* getPath(char* sName)
+std::string getPath(char* sName)
 {
 	std::string soundPath = "media/SFX/" + std::string(sName);
-	return soundPath.c_str();
+	return soundPath;
 }

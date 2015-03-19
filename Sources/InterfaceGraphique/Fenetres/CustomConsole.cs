@@ -1,16 +1,19 @@
 ﻿using System;
+using System.Drawing;
 using System.Windows.Forms;
 
 namespace InterfaceGraphique
 {
     public partial class CustomConsole : Form
     {
+        Point location;
         private string pauseString;
         private bool forcePause = false;
         public CustomConsole()
         {
             InitializeComponent();
             pauseString = "";
+            location = new Point(0, 0);
         }
         public void UpdateConsoleTexte()
         {
@@ -116,6 +119,7 @@ namespace InterfaceGraphique
                     pause_resume.Text = "Resume";
                 }
             }
+            this.Location = location;
         }
 
         private void scrollToEnd()
@@ -202,6 +206,14 @@ namespace InterfaceGraphique
         public void setPauseText(string text)
         {
             pauseString = text;
+        }
+        public Point getLocation()
+        {
+            return this.Location;
+        }
+        public void setLocation(Point newLocation)
+        {
+            location = newLocation;
         }
     }
 }

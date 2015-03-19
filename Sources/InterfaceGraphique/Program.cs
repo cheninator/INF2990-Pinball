@@ -14,6 +14,7 @@
 */
 
 using System;
+using System.Drawing;
 using System.Threading;
 using System.Diagnostics;
 using System.Windows.Forms;
@@ -302,12 +303,14 @@ namespace InterfaceGraphique
             bool alwaysVisible = cConsole.getAlwaysVisible();
             string currentText = cConsole.getCurrentText();
             string pauseText = cConsole.getPauseText();
+            Point location = cConsole.getLocation();
             stopForm();
             cConsole = new CustomConsole();
             cConsole.setPauseButton(boutonPause);
             cConsole.setAlwaysVisible(alwaysVisible);
             cConsole.setCurrentText(currentText);
             cConsole.setPauseText(pauseText);
+            cConsole.setLocation(location);
         }
     }
 

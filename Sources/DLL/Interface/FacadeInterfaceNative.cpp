@@ -1150,6 +1150,7 @@ extern "C"
 			//mySounds_.createSound("music.wav");
 			//mySounds_.createSound("no.wav");
 			//mySounds_.createSound("stone.wav");
+			//mySounds_.playSound("ambiant.wav");
 		}
 
 
