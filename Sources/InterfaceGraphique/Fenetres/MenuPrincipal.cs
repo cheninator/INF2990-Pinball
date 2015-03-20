@@ -62,15 +62,19 @@ namespace InterfaceGraphique
             StartPosition = FormStartPosition.CenterScreen;
             StringBuilder initSound = new StringBuilder("");
             configuration = new Configuration();
+            
             webcam = new FilterInfoCollection(FilterCategory.VideoInputDevice);
             webcamTimer = new System.Windows.Forms.Timer();
             webcamTimer.Tick += new EventHandler(webcamTimer_tick);
             if (webcam.Count >= 1)
             {
+                return;
+                /*
                 webCamExiste = true;
                 cam = new VideoCaptureDevice(webcam[0].MonikerString);
                 cam.NewFrame += new NewFrameEventHandler(cam_NewFrame);
                 cameraControl(true);
+                */
             }
         }
 
@@ -324,7 +328,7 @@ namespace InterfaceGraphique
         {
             player.Stream = Properties.Resources.annoying;
             player.Play();
-
+            /*
             if (webCamExiste && bit != null)
             {
                     pictureBox1.Image = bit;
@@ -334,15 +338,19 @@ namespace InterfaceGraphique
             {
                 pictureBox1.Image = Properties.Resources.newScary;              
             }
+            */
+            pictureBox1.Image = Properties.Resources.newScary;              
+
+
         }
 
         private void pictureBox1_MouseLeave(object sender, EventArgs e)
         {
-            if (webcamTimer.Enabled == true)
-            {
-                webcamTimer.Enabled = false;
-                webcamTimer.Stop();
-            }
+            //if (webcamTimer.Enabled == true)
+            //{
+            //    webcamTimer.Enabled = false;
+            //    webcamTimer.Stop();
+            //}
             pictureBox1.Image = Properties.Resources.pinball1;
             pictureBox1.SizeMode = PictureBoxSizeMode.StretchImage; 
             player.Stream = Properties.Resources.button_29;
@@ -388,29 +396,33 @@ namespace InterfaceGraphique
 
         private void pictureBox1_Click_1(object sender, EventArgs e)
         {
+            /*
             if (webCamExiste && bit != null)
             {
                 pictureBox1.Image = bit;
             }
+            */
         }
 
         private void pictureBox1_MouseDown(object sender, MouseEventArgs e)
         {
-            if (e.Button == MouseButtons.Left)
+           /* if (e.Button == MouseButtons.Left)
                 if (webCamExiste && bit != null)
                 {
                     webcamTimer.Enabled = true;
                     webcamTimer.Start();
                 }
+           */
+
         }
 
         private void pictureBox1_MouseUp(object sender, MouseEventArgs e)
         {
-            if (webCamExiste && bit != null)
-            {
-                webcamTimer.Enabled = false;
-                webcamTimer.Stop();
-            }
+            //if (webCamExiste && bit != null)
+            //{
+            //    webcamTimer.Enabled = false;
+            //    webcamTimer.Stop();
+            //}
         }
 
         private void ShowConsol_Click(object sender, EventArgs e)
@@ -421,6 +433,7 @@ namespace InterfaceGraphique
         }
         private void MainMenu_Activated(object sender, EventArgs e)
         {
+            /*
             if (webcam.Count >= 1)
             {
                 webCamExiste = true;
@@ -428,6 +441,7 @@ namespace InterfaceGraphique
                 cam.NewFrame += new NewFrameEventHandler(cam_NewFrame);
                 cameraControl(true);
             }
+            */
         }
 
         private void MainMenu_Deactivate(object sender, EventArgs e)
