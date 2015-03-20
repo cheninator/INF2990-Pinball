@@ -50,12 +50,14 @@ namespace InterfaceGraphique
               //  player = new System.Media.SoundPlayer(Properties.Resources.Trombone);
                 player = new System.Media.SoundPlayer(Properties.Resources.gOver);
 
-                labelTermine.Text = "Désolé! Vous avez perdu la partie...";
+                labelTermine.Text = "Désolé "+ Program.playerName + ". Vous avez perdu la partie...";
                 imageTermine.SizeMode = PictureBoxSizeMode.StretchImage;
                 imageTermine.Image = Properties.Resources.Lose;
             }
             else
             {
+                labelTermine.Text = "Félicitations " + Program.playerName + ". Vous avez remporté la partie!";
+
                 player = new System.Media.SoundPlayer(Properties.Resources.Fireworks);
                 imageTermine.SizeMode = PictureBoxSizeMode.StretchImage;
                 imageTermine.Image = Properties.Resources.Win;

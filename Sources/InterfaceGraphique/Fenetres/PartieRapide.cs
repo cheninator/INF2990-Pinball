@@ -186,6 +186,7 @@ namespace InterfaceGraphique
                 {
                     typeJoueur = 3;
                 }
+                Program.playerName = textBoxName.Text;
                 this.Hide();
                 ((MainMenu)this.Owner).LancerModeJeu(zonesCampagne, typeJoueur);
                

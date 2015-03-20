@@ -121,7 +121,7 @@ namespace InterfaceGraphique
             }
             timerBille2 = new Timer();
             timerBille2.Tick += new System.EventHandler(this.timerBille2_Tick);
-            timerBille2.Interval = 1500;
+            timerBille2.Interval = 1250;
 
             beginGame = new Timer();
             beginGame.Tick += new System.EventHandler(this.beginGame_Tick);
