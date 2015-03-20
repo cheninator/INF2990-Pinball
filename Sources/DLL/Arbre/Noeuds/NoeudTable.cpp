@@ -63,22 +63,20 @@ NoeudTable::~NoeudTable()
 ////////////////////////////////////////////////////////////////////////
 void NoeudTable::afficherConcret() const
 {
-	NoeudComposite::afficherConcret();
+	NoeudAbstrait::afficherConcret();
+
+	for (NoeudAbstrait const* enfant : enfants_) {
+		enfant->afficher();
+	}
 	// Sauvegarde de la matrice.
 	glPushMatrix();
 	glPushAttrib(GL_ALL_ATTRIB_BITS);
 	glTranslatef(200, -50, 0);
-	//glRotatef(180, 0, 0, 1);
-	// Affichage du modele.
-	if (pause_) {
-		glBlendFunc(GL_SRC_ALPHA, GL_ZERO); // Set The Blending Function For Translucency
-		glEnable(GL_BLEND);
-	}
 	glStencilFunc(GL_ALWAYS, 0, -1);
 	liste_->dessiner();
 	glPopAttrib();
-	// Restauration de la matrice.
 	glPopMatrix();
+	// Restauration de la matrice.
 }
 
 ////////////////////////////////////////////////////////////////////////

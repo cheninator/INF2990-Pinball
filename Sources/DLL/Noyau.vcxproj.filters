@@ -219,9 +219,6 @@
     <ClCompile Include="Visiteurs\VisiteurConstruireListes.cpp">
       <Filter>Source Files\Visiteurs</Filter>
     </ClCompile>
-    <ClCompile Include="Visiteurs\VisiteurPause.cpp">
-      <Filter>Source Files\Visiteurs</Filter>
-    </ClCompile>
     <ClCompile Include="Visiteurs\VisiteurDebug.cpp">
       <Filter>Source Files\Visiteurs</Filter>
     </ClCompile>
@@ -426,9 +423,6 @@
       <Filter>Header Files\QuadTree</Filter>
     </ClInclude>
     <ClInclude Include="Visiteurs\VisiteurConstruireListes.h">
-      <Filter>Header Files\Visiteurs</Filter>
-    </ClInclude>
-    <ClInclude Include="Visiteurs\VisiteurPause.h">
       <Filter>Header Files\Visiteurs</Filter>
     </ClInclude>
     <ClInclude Include="Visiteurs\VisiteurDebug.h">

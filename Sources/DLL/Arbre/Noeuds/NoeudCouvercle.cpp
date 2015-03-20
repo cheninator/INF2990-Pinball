@@ -62,18 +62,20 @@ NoeudCouvercle::~NoeudCouvercle()
 ////////////////////////////////////////////////////////////////////////
 void NoeudCouvercle::afficherConcret() const
 {
-	NoeudComposite::afficherConcret();
+	NoeudAbstrait::afficherConcret();
+
+	for (NoeudAbstrait const* enfant : enfants_) {
+		enfant->afficher();
+	}
 	// Sauvegarde de la matrice.
 	glPushMatrix();
+	//glPushAttrib(GL_ALL_ATTRIB_BITS);
 	glTranslatef(200, -50, 0);
-	// To remove for animation
-	//glTranslatef( -117, 0, 0 );
-	// glRotatef(-45.0, 0, 1, 0 );
-	// Affichage du modele.
 	glStencilFunc(GL_ALWAYS, 0, -1);
 	liste_->dessiner();
-	// Restauration de la matrice.
+	//glPopAttrib();
 	glPopMatrix();
+	// Restauration de la matrice.
 }
 
 ////////////////////////////////////////////////////////////////////////

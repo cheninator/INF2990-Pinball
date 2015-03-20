@@ -59,23 +59,14 @@ NoeudPortailTorus::~NoeudPortailTorus()
 ////////////////////////////////////////////////////////////////////////
 void NoeudPortailTorus::afficherConcret() const
 {
-	NoeudComposite::afficherConcret();
 	// Sauvegarde de la matrice.
 	glPushMatrix();
-	// Affichage du modele.
 	glPushAttrib(GL_ALL_ATTRIB_BITS);
-	if (pause_) {
-		glBlendFunc(GL_SRC_ALPHA, GL_ZERO); // Set The Blending Function For Translucency
-		glEnable(GL_BLEND);
-	}
-	else if (transparent_) {
-		glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
-		glEnable(GL_BLEND);
-	}
+	NoeudComposite::afficherConcret();
 	liste_->dessiner();
 	glPopAttrib();
-	// Restauration de la matrice.
 	glPopMatrix();
+	// Restauration de la matrice.
 }
 
 ////////////////////////////////////////////////////////////////////////

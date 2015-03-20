@@ -87,39 +87,14 @@ NoeudPaletteD::~NoeudPaletteD()
 ////////////////////////////////////////////////////////////////////////
 void NoeudPaletteD::afficherConcret() const
 {
-	NoeudComposite::afficherConcret();
 	// Sauvegarde de la matrice.
 	glPushMatrix();
-	// Affichage du modele.
 	glPushAttrib(GL_ALL_ATTRIB_BITS);
-	if (colorShift_)
-		glTexEnvf(GL_TEXTURE_ENV, GL_TEXTURE_ENV_MODE, GL_BLEND);
-	if (pause_) {
-		glBlendFunc(GL_SRC_ALPHA, GL_ZERO); // Set The Blending Function For Translucency
-		glEnable(GL_BLEND);
-	}
-	else if (impossible_)
-		glColorMask(0, 1, 1, 1);
-	else if (selectionne_) {
-		glTexEnvf(GL_TEXTURE_ENV, GL_TEXTURE_ENV_MODE, GL_ADD);
-		if (twin_ != nullptr && twin_ != NULL)
-			twin_->setTransparent(true);
-
-	}
-	else if (transparent_) {
-		glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
-		glEnable(GL_BLEND);
-	}
-	else
-		if (twin_ != nullptr && twin_ != NULL)
-			twin_->setTransparent(false);
-	if (twin_ != nullptr && twin_ != NULL)
-		if (!selectionne_ && !twin_->estSelectionne())
-			twin_->setTransparent(false);
+	NoeudComposite::afficherConcret();
 	liste_->dessiner();
 	glPopAttrib();
-	// Restauration de la matrice.
 	glPopMatrix();
+	// Restauration de la matrice.
 }
 
 

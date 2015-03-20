@@ -45,7 +45,6 @@ Samuel Millette <BR>
 #include "../Visiteurs/VisiteurRotationPoint.h"
 #include "../Visiteurs/VisiteurAgrandissement.h"
 #include "../Visiteurs/VisiteurDuplication.h"
-#include "../Visiteurs/VisiteurPause.h"
 #include "../Visiteurs/VisiteurLimitesSelection.h"
 #include "../Visiteurs/VisiteurListeEnglobante.h"
 #include "../Visiteurs/VisiteurPossibilite.h"
