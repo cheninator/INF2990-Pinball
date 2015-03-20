@@ -74,17 +74,18 @@ NoeudBille::~NoeudBille()
 ////////////////////////////////////////////////////////////////////////
 void NoeudBille::afficherConcret() const
 {
+	NoeudComposite::afficherConcret();
 	// Sauvegarde de la matrice.
 	glPushMatrix();
 	glPushAttrib(GL_ALL_ATTRIB_BITS);
-	if (spotLight_) {
+	if (spotLight_) 
+	{
 		/* TO DO SOMETHING HERE */
 	}
-	NoeudComposite::afficherConcret();
+	NoeudAbstrait::appliquerAfficher();
 	glTranslatef(0.0, -10, 0.0); // Il faudrait changer le modèle
 	liste_->dessiner();
 	glPopAttrib();
-
 	glPopMatrix();
 	// Restauration de la matrice.
 }

@@ -88,10 +88,11 @@ NoeudPaletteG::~NoeudPaletteG()
 ////////////////////////////////////////////////////////////////////////
 void NoeudPaletteG::afficherConcret() const
 {
+	NoeudComposite::afficherConcret();
 	// Sauvegarde de la matrice.
 	glPushMatrix();
 	glPushAttrib(GL_ALL_ATTRIB_BITS);
-	NoeudComposite::afficherConcret();
+	NoeudAbstrait::appliquerAfficher();
 	liste_->dessiner();
 	glPopAttrib();
 	glPopMatrix();

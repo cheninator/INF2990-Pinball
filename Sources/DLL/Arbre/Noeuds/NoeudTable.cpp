@@ -63,15 +63,12 @@ NoeudTable::~NoeudTable()
 ////////////////////////////////////////////////////////////////////////
 void NoeudTable::afficherConcret() const
 {
-	NoeudAbstrait::afficherConcret();
-
-	for (NoeudAbstrait const* enfant : enfants_) {
-		enfant->afficher();
-	}
+	NoeudComposite::afficherConcret();
 	// Sauvegarde de la matrice.
 	glPushMatrix();
 	glPushAttrib(GL_ALL_ATTRIB_BITS);
 	glTranslatef(200, -50, 0);
+	NoeudAbstrait::appliquerAfficher();
 	glStencilFunc(GL_ALWAYS, 0, -1);
 	liste_->dessiner();
 	glPopAttrib();
