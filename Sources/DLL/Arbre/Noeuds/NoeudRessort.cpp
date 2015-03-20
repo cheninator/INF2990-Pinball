@@ -20,7 +20,7 @@
 #include "OpenGL_Storage/ModeleStorage_Liste.h"
 #include "../../Commun/Externe/glm/include/glm/gtx/Projection.hpp"
 #ifndef AOUT
-# define AOUT SingletonGlobal::obtenirInstance()->outPutStream_
+# define AOUT std::cout 
 #endif
 
 ////////////////////////////////////////////////////////////////////////

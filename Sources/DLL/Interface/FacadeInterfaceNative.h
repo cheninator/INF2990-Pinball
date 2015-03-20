@@ -87,10 +87,6 @@ extern "C" {
 	__declspec(dllexport) int obtenirDiffulte(char* nomFichier, int length);
 	__declspec(dllexport) int* obtenirProprietes(char* nomFichier, int length);
 	__declspec(dllexport) BSTR obtenirDerniereCampagne();
-	__declspec(dllexport) BSTR obtenirConsole();
-	__declspec(dllexport) void ajouterTexteConsole(char* text, int length);
-	__declspec(dllexport) BSTR obtenirHistoriqueConsole();
-	__declspec(dllexport) void viderHistoricConsole();
 	__declspec(dllexport) void creerFichierCampagne(char* nomFichier, int length);
 	__declspec(dllexport) void supprimerBille();
 	__declspec(dllexport) bool spotLight(int lum, bool state);

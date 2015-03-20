@@ -61,11 +61,6 @@ public:
 	bool obtenirAnimation() { return animer_; };
 
 	std::string obtenirPathTemp() { objectPathCreated_ ? NULL : getAndSetTempObjDirectory(); return objectPath_; };
-	std::string getAndEmptyStream();
-	std::string obtenirHistoriqueConsole() { return historyStream_.str(); };
-	void viderHistoricConsole() { historyStream_.clear(); historyStream_.str(std::string()); };
-
-	std::stringstream outPutStream_{ "" };
 
 protected:
 
@@ -89,10 +84,6 @@ private:
 
 	/// AJOUTER VOS VARIABLES GLOBAL ICI
 
-	//int nombreDeBillesGagner_{ 0 };
-	//int nombreDeBillesDisponibles_{ 0 };
-
-	//int pointsTotales_{ 0 };
 	int pointsPartie_{ 0 };
 
 	int collisionPointsCirculaire_{ 0 };
@@ -107,8 +98,6 @@ private:
 
 	std::string objectPath_;
 	bool objectPathCreated_{ false };
-
-	std::stringstream historyStream_{ "" };
 };
 
 #endif // __SINGLETONGLOBAL_H__

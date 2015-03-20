@@ -9,15 +9,18 @@ namespace InterfaceGraphique
         Point location;
         private string pauseString;
         private bool forcePause = false;
+        private string history = "";
+
         public CustomConsole()
         {
             InitializeComponent();
             pauseString = "";
             location = new Point(0, 0);
         }
-        public void UpdateConsoleTexte()
+        public void UpdateConsoleTexte(string text)
         {
-            pauseString += FonctionsNatives.obtenirConsole();
+            pauseString += text;
+            history += text;
             if (pause_resume.Checked == false)
             {
                 if (pauseString == "")
@@ -48,13 +51,13 @@ namespace InterfaceGraphique
         private void DeleteHistory_Click(object sender, EventArgs e)
         {
             richTextBox1.Text = "";
-            FonctionsNatives.viderHistoricConsole();
+            history = "";
         }
 
         private void ShowHistory_Click(object sender, EventArgs e)
         {
             richTextBox1.Text = "";
-            richTextBox1.AppendText(FonctionsNatives.obtenirHistoriqueConsole());
+            richTextBox1.AppendText(history);
             scrollToEnd();
         }
 
@@ -87,7 +90,6 @@ namespace InterfaceGraphique
             }
             else
             {
-                pauseString += FonctionsNatives.obtenirConsole();
                 if (pause_resume.Checked == false)
                 {
                     pause_resume.Text = "Pause";
@@ -214,6 +216,14 @@ namespace InterfaceGraphique
         public void setLocation(Point newLocation)
         {
             location = newLocation;
+        }
+        public string getHistory()
+        {
+            return history;
+        }
+        public void setHistory(string precedentHistory)
+        {
+            history = precedentHistory;
         }
     }
 }

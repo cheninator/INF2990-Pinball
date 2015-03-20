@@ -80,6 +80,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="ConsoleRedirector.cs" />
     <Compile Include="Fenetres\Aide.cs">
       <SubType>Form</SubType>
     </Compile>

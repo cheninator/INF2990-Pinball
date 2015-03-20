@@ -1,4 +1,4 @@
-﻿//////////////////////////////////////////////////////////////////////////////
+﻿    //////////////////////////////////////////////////////////////////////////////
 /// @file Program.cs
 /// @author Inconnu
 /// @date Inconnue
@@ -20,6 +20,10 @@ using System.Diagnostics;
 using System.Windows.Forms;
 using System.Runtime.InteropServices;
 using System.Text;
+using System.IO;
+using System.IO.Pipes;
+using System.ComponentModel;
+using Microsoft.Win32.SafeHandles;
 
 namespace InterfaceGraphique
 {
@@ -98,13 +102,10 @@ namespace InterfaceGraphique
                 System.Environment.OSVersion.Version.Minor >= 1))
                 MessageBox.Show(warningMessageW, "AVERTISSEMENT", MessageBoxButtons.OK, MessageBoxIcon.Warning);
 
+            ConsoleRedirector.attachConsole();
             mMenu = new MainMenu();
             Application.Run(mMenu);
-
-
-
         }
-
        ////////////////////////////////////////////////////////////////////////
        ///
        /// @fn static void ExecuterQuandInactif(object sender, EventArgs e)
@@ -139,11 +140,6 @@ namespace InterfaceGraphique
                         else if (mMenu.modeJeuMain != null && peutAfficher)
                         {
                             mMenu.modeJeuMain.MettreAJour((double)tempsAccumule.Ticks / TimeSpan.TicksPerSecond);
-                        }
-                        // To remove from here
-                        if (compteurFrames == 0)
-                        {
-                            myCustomConsole.UpdateConsoleTexte();
                         }
                         compteurFrames++;
                         if (compteurFrames >= 10)
@@ -282,10 +278,9 @@ namespace InterfaceGraphique
             cConsole.Show();
             cConsole.AlwaysShow();
         }
-        public void UpdateConsoleTexte()
+        public void UpdateConsoleTexte(string text)
         {
-            if (cConsole.Visible)
-                cConsole.UpdateConsoleTexte();
+            cConsole.UpdateConsoleTexte(text);
         }
         public void Update()
         {
@@ -303,6 +298,7 @@ namespace InterfaceGraphique
             bool alwaysVisible = cConsole.getAlwaysVisible();
             string currentText = cConsole.getCurrentText();
             string pauseText = cConsole.getPauseText();
+            string currentHistory = cConsole.getHistory();
             Point location = cConsole.getLocation();
             stopForm();
             cConsole = new CustomConsole();
@@ -310,6 +306,7 @@ namespace InterfaceGraphique
             cConsole.setAlwaysVisible(alwaysVisible);
             cConsole.setCurrentText(currentText);
             cConsole.setPauseText(pauseText);
+            cConsole.setHistory(currentHistory);
             cConsole.setLocation(location);
         }
     }
@@ -337,14 +334,12 @@ namespace InterfaceGraphique
         }
         public static void Write(string text)
         {
-            StringBuilder myString = new StringBuilder(text);
-            ajouterTexteConsole(myString, myString.Capacity);
+            Program.myCustomConsole.UpdateConsoleTexte(text);
         }
         public static void WriteLine(string text)
         {
             text += '\n';
-            StringBuilder myString = new StringBuilder(text);
-            ajouterTexteConsole(myString, myString.Capacity);
+            Program.myCustomConsole.UpdateConsoleTexte(text);
         }
         [DllImport("User32.dll")]
         [return: MarshalAs(UnmanagedType.Bool)]
@@ -368,20 +363,6 @@ namespace InterfaceGraphique
         [DllImport(@"Noyau.dll", CharSet = CharSet.Unicode, CallingConvention = CallingConvention.Cdecl)]
         [return: MarshalAs(UnmanagedType.BStr)]
         public static extern string obtenirDerniereCampagne();
-
-        [DllImport(@"Noyau.dll", CharSet = CharSet.Unicode, CallingConvention = CallingConvention.Cdecl)]
-        [return: MarshalAs(UnmanagedType.BStr)]
-        public static extern string obtenirConsole();
-
-        [DllImport(@"Noyau.dll", CallingConvention = CallingConvention.Cdecl)]
-        private static extern void ajouterTexteConsole(StringBuilder text, int length);
-
-        [DllImport(@"Noyau.dll", CharSet = CharSet.Unicode, CallingConvention = CallingConvention.Cdecl)]
-        [return: MarshalAs(UnmanagedType.BStr)]
-        public static extern string obtenirHistoriqueConsole();
-
-        [DllImport(@"Noyau.dll", CallingConvention = CallingConvention.Cdecl)]
-        public static extern void viderHistoricConsole();
 
         [DllImport(@"Noyau.dll", CallingConvention = CallingConvention.Cdecl)]
         public static extern void redimensionnerFenetre(int largeur, int hauteur);

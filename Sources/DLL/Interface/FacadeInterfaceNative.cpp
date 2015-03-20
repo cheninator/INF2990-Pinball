@@ -25,7 +25,7 @@
 #include <cstdlib>      // std::rand, std::srand
 #include <windows.h>
 #include "BancTests.h"
-
+// SingletonGlobal::obtenirInstance()->outPutStream_
 BSTR stringToBSTR(std::string str) {
 	// http://www.sluse.com/view/6284524
 	int wslen = ::MultiByteToWideChar(CP_ACP, 0 /* no flags */,
@@ -42,7 +42,7 @@ BSTR stringToBSTR(std::string str) {
 void printCurrentTime() {
 	SYSTEMTIME time;
 	GetLocalTime(&time);
-	SingletonGlobal::obtenirInstance()->outPutStream_<< std::fixed << std::setw(2) << std::setprecision(2) << time.wHour << ":"
+	std::cout << std::fixed << std::setw(2) << std::setprecision(2) << time.wHour << ":"
 		<< std::fixed << std::setfill('0') << std::setw(2) << std::setprecision(2) << time.wMinute << ":"
 		<< std::fixed << std::setfill('0') << std::setw(2) << std::setprecision(2) << time.wSecond << ":"
 		<< std::fixed << std::setfill('0') << std::setw(3) << std::setprecision(3) << time.wMilliseconds;
@@ -94,7 +94,7 @@ extern "C"
 	{
 		if (handle == nullptr)
 			return;
-		SingletonGlobal::obtenirInstance()->outPutStream_<< std::endl << "Initialisation de l'openGL en cours..." << std::endl;
+		std::cout << std::endl << "Initialisation de l'openGL en cours..." << std::endl;
 		FacadeModele::obtenirInstance()->initialiserOpenGL((HWND)handle);
 	}
 
@@ -329,8 +329,8 @@ extern "C"
 				// http://brian.pontarelli.com/2009/01/05/getting-the-current-system-time-in-milliseconds-with-c/
 				if (FacadeModele::obtenirInstance()->obtenirConfiguration()[8] && FacadeModele::obtenirInstance()->obtenirConfiguration()[12]) {
 					printCurrentTime();
-					SingletonGlobal::obtenirInstance()->outPutStream_<< std::fixed << std::setprecision(2);
-					SingletonGlobal::obtenirInstance()->outPutStream_<< " - Nouvelle bille : x: " << positionX << " y: " << positionY << std::endl;;
+					std::cout << std::fixed << std::setprecision(2);
+					std::cout << " - Nouvelle bille : x: " << positionX << " y: " << positionY << std::endl;;
 				}
 				noeudTable = NULL;
 				delete noeudTable;
@@ -483,7 +483,7 @@ extern "C"
 		FacadeModele::obtenirInstance()->obtenirVue()->convertirClotureAVirtuelle(x, y, maPosition);
 		if (FacadeModele::obtenirInstance()->estDansTable(maPosition)) {
 			objet->assignerPositionRelative({ maPosition.x, maPosition.y, z });
-			// SingletonGlobal::obtenirInstance()->outPutStream_<< std::endl << "x: " << maPosition.x << "y: " << maPosition.y << "z: " << maPosition.z << std::endl;
+			// std::cout << std::endl << "x: " << maPosition.x << "y: " << maPosition.y << "z: " << maPosition.z << std::endl;
 		}
 	}
 
@@ -604,7 +604,7 @@ extern "C"
 	{
 		if (objet == nullptr)
 			return;
-		// SingletonGlobal::obtenirInstance()->outPutStream_<< direction;
+		// std::cout << direction;
 		if (direction == 'x' || direction == 'X' || direction == '0')
 			objet->assignerRotation({ 0.0, 0.0, angle });
 		else if (direction == 'y' || direction == 'Y' || direction == '1')
@@ -1117,7 +1117,7 @@ extern "C"
 		std::string playing(value) ;
 		if (init == false)
 		{
-			SingletonGlobal::obtenirInstance()->outPutStream_<< "Chargement du son : " << std::endl;
+			std::cout << "Chargement du son : " << std::endl;
 			FMOD_System_Create(&system);
 			FMOD_System_Init(system, 1024, FMOD_INIT_NORMAL, NULL);
 			init = true;
@@ -1126,24 +1126,24 @@ extern "C"
 			// Au debut, je voulais les initialiser au fur et a mesure des call
 			// Mais ils prennent 3-4 sec a etre cree, a chaque fois, faik tu avais
 			//  d'enorme delay c'etais chiant...
-			SingletonGlobal::obtenirInstance()->outPutStream_<< "  0,00%... ambiant.wav" << std::endl; 
+			std::cout << "  0,00%... ambiant.wav" << std::endl; 
 			std::pair<std::string, FMOD_SOUND *> apair0("media/SFX/ambiant.wav", NULL);
 			soundTable.push_back(apair0);
 			FMOD_System_CreateSound(system, "media/SFX/ambiant.wav", FMOD_CREATESAMPLE, 0, &soundTable.back().second);
-			SingletonGlobal::obtenirInstance()->outPutStream_<< " 25,00%... music.wav" << std::endl;
+			std::cout << " 25,00%... music.wav" << std::endl;
 			std::pair<std::string, FMOD_SOUND *> apair1("media/SFX/music.wav", NULL);
 			soundTable.push_back(apair1);
 			FMOD_System_CreateSound(system, "media/SFX/music.wav", FMOD_LOOP_NORMAL, 0, &soundTable.back().second);
-			SingletonGlobal::obtenirInstance()->outPutStream_<< " 50,00%... no.wav" << std::endl;
+			std::cout << " 50,00%... no.wav" << std::endl;
 			std::pair<std::string, FMOD_SOUND *> apair2("media/SFX/no.wav", NULL);
 			soundTable.push_back(apair2);
 			FMOD_System_CreateSound(system, "media/SFX/no.wav", FMOD_CREATESAMPLE, 0, &soundTable.back().second);
-			SingletonGlobal::obtenirInstance()->outPutStream_<< " 75,00%... sound.wav" << std::endl;
+			std::cout << " 75,00%... sound.wav" << std::endl;
 			std::pair<std::string, FMOD_SOUND *> apair3("media/SFX/stone.wav", NULL);
 			soundTable.push_back(apair3);
 			FMOD_System_CreateSound(system, "media/SFX/stone.wav", FMOD_CREATESAMPLE, 0, &soundTable.back().second);
-			SingletonGlobal::obtenirInstance()->outPutStream_<< " 100%... tout les sons sont initialise" << std::endl;
-			SingletonGlobal::obtenirInstance()->outPutStream_<< "Fin du chargement du son !" << std::endl << std::endl;
+			std::cout << " 100%... tout les sons sont initialise" << std::endl;
+			std::cout << "Fin du chargement du son !" << std::endl << std::endl;
 		
 			//SoundControllerClass mySounds_;
 			//mySounds_.createSound("ambiant.wav");
@@ -1308,7 +1308,7 @@ extern "C"
 			if (!FacadeModele::obtenirInstance()->estDansTable(pointATester))
 			{
 				nouvellesProprietesSontLegales = false;
-				//SingletonGlobal::obtenirInstance()->outPutStream_<< "L'application des proprietes refusee, on sortirait de la table" << std::endl;
+				//std::cout << "L'application des proprietes refusee, on sortirait de la table" << std::endl;
 				return false;
 			}
 		}
@@ -1689,29 +1689,6 @@ extern "C"
 		return stringToBSTR(str);
 	}
 
-	__declspec(dllexport) BSTR obtenirConsole()
-	{
-		std::string str = SingletonGlobal::obtenirInstance()->getAndEmptyStream();
-		return stringToBSTR(str);
-	}
-
-	__declspec(dllexport) void ajouterTexteConsole(char* text, int length)
-	{
-		SingletonGlobal::obtenirInstance()->outPutStream_ << std::string(text);
-	}
-
-	__declspec(dllexport) BSTR obtenirHistoriqueConsole()
-	{
-		// Rajouter ce qu'il y a en ce moment dans le stream dans l'historique
-		SingletonGlobal::obtenirInstance()->getAndEmptyStream();
-		std::string str = SingletonGlobal::obtenirInstance()->obtenirHistoriqueConsole();
-		return stringToBSTR(str);
-	}
-	__declspec(dllexport) void viderHistoricConsole()
-	{
-		SingletonGlobal::obtenirInstance()->viderHistoricConsole();
-	}
-
 	///////////////////////////////////////////////////////////////////////////////
 	///
 	/// @fn __declspec(dllexport) void __cdecl supprimerBille()
@@ -1771,22 +1748,22 @@ extern "C"
 			return false;
 		if (debugLumiere) {
 			printCurrentTime();
-			SingletonGlobal::obtenirInstance()->outPutStream_<< " - Lumiere(s) ";
+			std::cout << " - Lumiere(s) ";
 		}
 		switch (lum) {
 		case 0:
 			if (debugLumiere)
-				SingletonGlobal::obtenirInstance()->outPutStream_<< "ambiante ";
+				std::cout << "ambiante ";
 			// TO DO: the spotlight ambiante
 			break;
 		case 1:
 			if (debugLumiere)
-				SingletonGlobal::obtenirInstance()->outPutStream_<< "directionnelle ";
+				std::cout << "directionnelle ";
 			// TO DO: the spotlight directionnelle
 			break;
 		case 2:
 			if (debugLumiere)
-				SingletonGlobal::obtenirInstance()->outPutStream_<< "spot ";
+				std::cout << "spot ";
 			break;
 		default:
 			return false;
@@ -1794,9 +1771,13 @@ extern "C"
 		}
 		if (debugLumiere)
 			if (state == true)
-				SingletonGlobal::obtenirInstance()->outPutStream_<< "ouverte(s)" << std::endl;
+			{
+				std::cout << "ouverte(s)" << std::endl;
+			}
 			else
-				SingletonGlobal::obtenirInstance()->outPutStream_<< "fermee(s)" << std::endl;
+			{
+				std::cout << "fermee(s)" << std::endl;
+			}
 		return true;
 	}
 
