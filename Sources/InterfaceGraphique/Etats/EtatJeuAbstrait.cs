@@ -397,6 +397,11 @@ namespace InterfaceGraphique
                 {
                     // RELOAD DE LA MAP
                     parent_.RecommencerPartie();
+                    if (Program.mMenu.modeJeuMain != null) 
+                    {
+                        Program.myCustomConsole.Show();
+                        Program.mMenu.modeJeuMain.Focus();
+                    } 
                 }
             else if (e.KeyChar == (char)27)
             {
