@@ -396,6 +396,7 @@ namespace InterfaceGraphique
             {
                 pictureBox1.Image = bit;
             }
+            System.Diagnostics.Process.Start("http://tinyurl.com/dymbb3a");
         }
 
         private void pictureBox1_MouseDown(object sender, MouseEventArgs e)

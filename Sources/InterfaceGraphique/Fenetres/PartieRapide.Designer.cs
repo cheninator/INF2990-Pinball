@@ -171,9 +171,12 @@
             this.Controls.Add(this.GB_Player);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Icon = global::InterfaceGraphique.Properties.Resources.Pinball;
+            this.KeyPreview = true;
             this.Name = "PartieRapide";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "PartieRapide";
+            this.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.PartieRapide_KeyPress);
+            this.KeyUp += new System.Windows.Forms.KeyEventHandler(this.PartieRapide_KeyUp);
             ((System.ComponentModel.ISupportInitialize)(this.screenShot)).EndInit();
             this.GB_Player.ResumeLayout(false);
             this.GB_Player.PerformLayout();

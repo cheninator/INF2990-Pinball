@@ -285,11 +285,7 @@ namespace InterfaceGraphique
              zi.ShowDialog();
              ((MainMenu)this.Owner).LancerModeJeu(zonesCampagne,typeJoueur);
 
-                //this.Show();
-                // modeJeu = new ModeJeu(zonesCampagne);
-                // modeJeu.ShowDialog();
-                //  this.Show();
-                //  this.Close();
+           
 
             }
         }
@@ -411,6 +407,22 @@ namespace InterfaceGraphique
                 else
                     screenShot.Image = Properties.Resources.SaintTrinity;
 
+            }
+        }
+
+        private void Campagne_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (e.KeyChar == 13)
+            {
+                bouton_OK.PerformClick();
+            }
+        }
+
+        private void Campagne_KeyUp(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Q && ModifierKeys == Keys.Control)
+            {
+                this.Close();
             }
         }
 

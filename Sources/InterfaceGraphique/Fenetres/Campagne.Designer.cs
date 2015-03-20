@@ -248,9 +248,12 @@
             this.Controls.Add(this.ZonesChoisis);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Icon = global::InterfaceGraphique.Properties.Resources.Pinball;
+            this.KeyPreview = true;
             this.Name = "Campagne";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Campagne";
+            this.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.Campagne_KeyPress);
+            this.KeyUp += new System.Windows.Forms.KeyEventHandler(this.Campagne_KeyUp);
             this.GB_Player.ResumeLayout(false);
             this.GB_Player.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.screenShot)).EndInit();

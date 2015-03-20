@@ -157,6 +157,7 @@ namespace InterfaceGraphique
         {
             e.Cancel = true;
             e.NewWidth = ZonesDisponibles.Columns[e.ColumnIndex].Width;
+           
         }
 
         ////////////////////////////////////////////////////////////////////////
@@ -187,9 +188,27 @@ namespace InterfaceGraphique
                 }
                 this.Hide();
                 ((MainMenu)this.Owner).LancerModeJeu(zonesCampagne, typeJoueur);
-                // modeJeu.ShowDialog();
-                //  this.Show();
-                //  this.Close();
+               
+            }
+            else
+            {
+                MessageBox.Show("Selectionnez une zone pour commencer la partie", "ERREUR DE LANCEMENT",
+                    MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        private void PartieRapide_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if( e.KeyChar ==13)
+                bouton_OK.PerformClick();
+            
+        }
+
+        private void PartieRapide_KeyUp(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Q && ModifierKeys == Keys.Control)
+            {
+                this.Close();
             }
         }
     }
