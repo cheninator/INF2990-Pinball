@@ -150,7 +150,7 @@ void NoeudGenerateurBille::animer(float temps)
 	if (etatGenerateur_ == INITIAL) {
 		if (selectionne_ || impossible_ || transparent_)
 			return;
-		int direction = std::rand() % 4; // pcq ca me tente pas de dynamic cast un rand en Enum
+		int direction = std::rand() % 4; 
 		switch (direction)
 		{
 		case 0:

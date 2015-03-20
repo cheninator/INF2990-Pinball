@@ -290,9 +290,7 @@ extern "C"
 				std::vector<int> generateurs;
 				int i = 0;
 				int nbElements = FacadeModele::obtenirInstance()->obtenirArbreRenduINF2990()->getEnfant(0)->obtenirNombreEnfants();
-				NoeudComposite* noeudTable = new NoeudComposite;
-				noeudTable = (dynamic_cast <NoeudComposite*> (
-					FacadeModele::obtenirInstance()->obtenirArbreRenduINF2990()->getEnfant(0)));
+				NoeudAbstrait* noeudTable = FacadeModele::obtenirInstance()->obtenirArbreRenduINF2990()->getEnfant(0);
 				for (i = 0; i < nbElements; i++)
 				{
 					
