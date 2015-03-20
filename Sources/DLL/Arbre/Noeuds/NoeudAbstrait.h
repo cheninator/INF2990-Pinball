@@ -267,9 +267,6 @@ public:
 	/// Obtenir rotation
 	inline const glm::dvec3& NoeudAbstrait::obtenirRotation() const;
 
-	/// Mettre le mode pause on ou off
-	void assignerPause(bool pause);
-
 	/// Activer ou desactiver le mode debug.
 	virtual void setDebug(bool debug);
 
@@ -349,9 +346,6 @@ protected:
 
 	/// Impossibilite de position
 	bool impossible_;
-
-	/// Mode pause
-	bool pause_;
 
 	/// Mode Debug de la bille ou du portail
 	bool debug_{ false };

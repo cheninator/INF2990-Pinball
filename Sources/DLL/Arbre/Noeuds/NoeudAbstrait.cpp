@@ -37,7 +37,6 @@ NoeudAbstrait::NoeudAbstrait(
 	twin_ = nullptr;
 	transparent_ = false;
 	impossible_ = false;
-	pause_ = false;
 	animer_ = SingletonGlobal::obtenirInstance()->obtenirAnimation();
 }
 
@@ -773,22 +772,6 @@ bool NoeudAbstrait::getImpossible()
 void NoeudAbstrait::setImpossible(bool impossible)
 {
 	impossible_ = impossible;
-}
-
-////////////////////////////////////////////////////////////////////////
-///
-/// @fn NoeudAbstrait* NoeudAbstrait::assignerPause(bool pause)
-///
-/// Change de mode
-///
-/// @param[in] pause: activer ou desactiver le mode pause
-///
-/// @return Aucun.
-///
-////////////////////////////////////////////////////////////////////////
-void NoeudAbstrait::assignerPause(bool pause)
-{
-	pause_ = pause;
 }
 
 ////////////////////////////////////////////////////////////////////////

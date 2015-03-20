@@ -1031,11 +1031,6 @@ void FacadeModele::setPause(bool pause)
 {
 	pause_ = pause;
 
-	// A enlever, on ne s'en sert plus
-	/*VisiteurPause* visiteur = new VisiteurPause(pause);
-	FacadeModele::obtenirInstance()->obtenirArbreRenduINF2990()->accepterVisiteur(visiteur);
-	delete visiteur;*/
-
 	// remettre l'affichage a la normale
 	if (!pause)
 	{
@@ -1050,7 +1045,7 @@ void FacadeModele::setPause(bool pause)
 ///////////////////////////////////////////////////////////////////////////////
 ///
 /// @fn void FacadeModele::setDebug(bool valeurDebugBille, bool valeurDebugPortail)
-/// @brief Parcours l'arbre et met les objets en mode pause.
+/// @brief Parcours l'arbre et met les objets en mode debug.
 ///
 /// @param[in]  valeurDebugBille : valeur du mode debug pour la bille
 /// @param[in]  valeurDebugPortail : valeur du mode debug pour le portail
