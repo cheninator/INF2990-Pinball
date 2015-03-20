@@ -457,6 +457,7 @@ void NoeudAbstrait::appliquerAfficher() const
 		if (twin_ != nullptr && twin_ != NULL)
 			twin_->setTransparent(true);
 	}
+	
 	else if (transparent_) {
 		glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
 		glEnable(GL_BLEND);
