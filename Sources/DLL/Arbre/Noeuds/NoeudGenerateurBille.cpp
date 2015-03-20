@@ -147,10 +147,27 @@ void NoeudGenerateurBille::animer(float temps)
 	if (compteurAnimation_ >= TEMPS_ANIMATION_NOEUD_GENERATEURBILLE && etatGenerateur_ == INITIAL)
 		return;
 	
+	shakeHead(temps);
+}
+
+////////////////////////////////////////////////////////////////////////
+///
+/// @fn void NoeudGenerateurBille::shakeHead(float temps)
+///
+/// Cette fonction effectue l'animation "shake" 
+/// du noeud pour un certain intervalle de temps.
+///
+/// @param[in] temps : Intervalle de temps sur lequel faire l'animation.
+///
+/// @return Aucune.
+///
+////////////////////////////////////////////////////////////////////////
+void NoeudGenerateurBille::shakeHead(float temps)
+{
 	if (etatGenerateur_ == INITIAL) {
 		if (selectionne_ || impossible_ || transparent_)
 			return;
-		int direction = std::rand() % 4; 
+		int direction = std::rand() % 4;
 		switch (direction)
 		{
 		case 0:
@@ -175,7 +192,7 @@ void NoeudGenerateurBille::animer(float temps)
 
 	if (etatGenerateur_ != INITIAL)
 		switch (directionGenerateur_)
-		{
+	{
 		case dirXY:
 			positionRelative_.x += distanceBouger_ * temps / TEMPS_ANIMATION_MOUVEMENT_NOEUD_GENERATEURBILLE;
 			positionRelative_.y += distanceBouger_ * temps / TEMPS_ANIMATION_MOUVEMENT_NOEUD_GENERATEURBILLE;
@@ -192,7 +209,7 @@ void NoeudGenerateurBille::animer(float temps)
 			break;
 		case dirZ:
 			break;
-		}
+	}
 
 	if (etatGenerateur_ == ALLER)
 	{

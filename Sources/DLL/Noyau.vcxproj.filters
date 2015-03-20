@@ -73,12 +73,6 @@
     <Filter Include="Source Files\Global">
       <UniqueIdentifier>{d4d41da7-5c04-45fd-890d-9d66d60df0d7}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Source Files\Global\Commandes">
-      <UniqueIdentifier>{cabef561-a236-40a7-bd24-64ba579fe212}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Header Files\Global\Commandes">
-      <UniqueIdentifier>{a816a8ba-7717-46ad-8dc5-a51c88a6de10}</UniqueIdentifier>
-    </Filter>
     <Filter Include="Source Files\Sound">
       <UniqueIdentifier>{59f0b8db-5000-488c-9099-2ab5206ae175}</UniqueIdentifier>
     </Filter>
@@ -440,12 +434,6 @@
     <ClInclude Include="Global\JoueurVirtuel.h">
       <Filter>Header Files\Global</Filter>
     </ClInclude>
-    <ClInclude Include="Global\Commandes\CommandeAbstraite.h">
-      <Filter>Header Files\Global\Commandes</Filter>
-    </ClInclude>
-    <ClInclude Include="Arbre\Noeuds\AnimationNoeudsDefine.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="Arbre\Usines\UsineNoeudGate.h">
       <Filter>Header Files\Arbre\Usines</Filter>
     </ClInclude>
@@ -454,6 +442,9 @@
     </ClInclude>
     <ClInclude Include="Sound\SoundControllerClass.h">
       <Filter>Header Files\Sound</Filter>
+    </ClInclude>
+    <ClInclude Include="Arbre\Noeuds\AnimationNoeudsDefine.h">
+      <Filter>Header Files\Arbre\Noeuds</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

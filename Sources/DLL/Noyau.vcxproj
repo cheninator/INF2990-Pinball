@@ -229,7 +229,6 @@
     <ClInclude Include="Arbre\Noeuds\NoeudAbstrait.h" />
     <ClInclude Include="Arbre\Noeuds\NoeudComposite.h" />
     <ClInclude Include="Configuration\ConfigScene.h" />
-    <ClInclude Include="Global\Commandes\CommandeAbstraite.h" />
     <ClInclude Include="Global\JoueurVirtuel.h" />
     <ClInclude Include="Global\SingletonGlobal.h" />
     <ClInclude Include="Interface\FacadeInterfaceNative.h" />

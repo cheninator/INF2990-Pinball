@@ -90,7 +90,7 @@ void NoeudPortailTorus::animer(float temps)
 	if (!animer_)
 		return;
 
-	int direction = std::rand() % 2; // pcq ca me tente pas de dynamic cast un rand en Enum
+	int direction = std::rand() % 2; 
 	switch (direction)
 	{
 	case 0:

@@ -28,7 +28,7 @@ enum Direction { dirY, dirYX, dirX, dirXY, dirZ }; // Pour fonctionner avec le s
 #define FROTTEMENT_NOEUD_BILLE 10.		// Constante de frottement
 #define GRAVITE_NOEUD_BILLE glm::dvec3{ 0, -utilitaire::GRAVITE  * MASSE_NOEUD_BILLE, 0 }	// Force de la gravite appliquer sur la bille
 #define VITESSE_INITIALE_NORUD_BILLE { 0, 0, 0 }	// Vitesse initiale
-#define TIME_IDLE_NOEUD_BILLE 1.		// Temps que la bille ne bouge pas apres spawn
+#define TIME_IDLE_NOEUD_BILLE .5		// Temps que la bille ne bouge pas apres spawn
 
 // ButoirCirculaire
 #define SCALE_MAX_NOEUD_BUTOIRCIRCULAIRE 8./100.	// Pourcentage d'augmentation/raptissement maximal
@@ -43,7 +43,7 @@ enum Direction { dirY, dirYX, dirX, dirXY, dirZ }; // Pour fonctionner avec le s
 #define TEMPS_ANIMATION_NOEUD_COUVERCLE 2.		// L'animation dure 2 sec
 
 // GenerateurBille
-#define TEMPS_ANIMATION_NOEUD_GENERATEURBILLE 2.	// L'animation dure 3 
+#define TEMPS_ANIMATION_NOEUD_GENERATEURBILLE 2.	// L'animation dure 2 sec (le shake)
 #define TEMPS_ANIMATION_MOUVEMENT_NOEUD_GENERATEURBILLE .01	// L'animation par mouvement dure 0.2 sec
 #define DISTANCE_MAX_NOEUD_GENERATEURBILLE	5		// Distance maximale de translation
 

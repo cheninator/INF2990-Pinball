@@ -277,15 +277,7 @@ extern "C"
 		}
 		else 
 		{
-			objet = FacadeModele::obtenirInstance()->obtenirArbreRenduINF2990()->creerNoeud(nomObjet);
-			if (objet == nullptr)
-				return;
-			objet->setColorShift(colorShift);
-			if (nomObjet == "mur")
-			{
-				objet->assignerSelection(true);
-			}
-			else if (nomObjet == "bille")
+			if (nomObjet == "bille")
 			{
 				std::vector<int> generateurs;
 				int i = 0;
@@ -293,7 +285,7 @@ extern "C"
 				NoeudAbstrait* noeudTable = FacadeModele::obtenirInstance()->obtenirArbreRenduINF2990()->getEnfant(0);
 				for (i = 0; i < nbElements; i++)
 				{
-					
+
 					std::string typeNoeud = noeudTable->getEnfant(i)->obtenirType();
 
 					if (typeNoeud == "generateurbille")
@@ -305,44 +297,55 @@ extern "C"
 				int pos = rand() % generateurs.size();
 
 				NoeudAbstrait* generateur = noeudTable->getEnfant(generateurs[pos]);
-					generateur->genererBille();
+				generateur->genererBille();
 				glm::dvec3 scale = generateur->obtenirAgrandissement();
 				glm::dvec3 position = generateur->obtenirPositionRelative();
 				glm::dvec3 rotation = generateur->obtenirRotation();
-			
-				//objet->assignerRotation({ rotation.x, rotation.y, rotation.z });
-				
-				double positionX = position.x;
-				double positionY = position.y - ((30 * scale.x));
 
 				glm::dvec3 vecteur = { 0, -((30 * scale.x)), 0 };
 				double angleEnRadian = -rotation[2] * utilitaire::PI_180;
-				glm::dmat3 transform = glm::dmat3{  glm::dvec3{ cos(angleEnRadian), -sin(angleEnRadian), 0.0 },
-													glm::dvec3{ sin(angleEnRadian), cos(angleEnRadian), 0.0f },
-													glm::dvec3{ 0.0, 0.0, 1.0 } };
+				glm::dmat3 transform = glm::dmat3{ glm::dvec3{ cos(angleEnRadian), -sin(angleEnRadian), 0.0 },
+					glm::dvec3{ sin(angleEnRadian), cos(angleEnRadian), 0.0f },
+					glm::dvec3{ 0.0, 0.0, 1.0 } };
 
 				objet->assignerPositionRelative(position + transform * vecteur);
 				objet->assignerEchelle(scale);
-				//HH:MM:SS:mmm – Nouvelle bille : x: POSX y: POSY
-				// http://brian.pontarelli.com/2009/01/05/getting-the-current-system-time-in-milliseconds-with-c/
-				if (FacadeModele::obtenirInstance()->obtenirConfiguration()[8] && FacadeModele::obtenirInstance()->obtenirConfiguration()[12]) {
-					printCurrentTime();
-					std::cout << std::fixed << std::setprecision(2);
-					std::cout << " - Nouvelle bille : x: " << positionX << " y: " << positionY << std::endl;;
-				}
-				noeudTable = NULL;
-				delete noeudTable;
+
+				SingletonGlobal::obtenirInstance()->spawnBille(position + transform * vecteur, scale, generateur);
+				return;
+			}
+			objet = FacadeModele::obtenirInstance()->obtenirArbreRenduINF2990()->creerNoeud(nomObjet);
+			if (objet == nullptr)
+				return;
+			objet->setColorShift(colorShift);
+			if (nomObjet == "mur")
+			{
+				objet->assignerSelection(true);
 			}
 		}
 		FacadeModele::obtenirInstance()->obtenirArbreRenduINF2990()->getEnfant(0)->ajouter(objet);
 		FacadeModele::obtenirInstance()->mettreAJourListeBillesEtNoeuds();
 		FacadeModele::obtenirInstance()->construireListesPalettes();
 		FacadeModele::obtenirInstance()->setDebug();
-
 	}
 
-
-
+	void creeBille(glm::dvec3 position, glm::dvec3 echelle)
+	{
+		objet = FacadeModele::obtenirInstance()->obtenirArbreRenduINF2990()->creerNoeud("bille");
+		objet->assignerPositionRelative(position);
+		objet->assignerEchelle(echelle);
+		//HH:MM:SS:mmm – Nouvelle bille : x: POSX y: POSY
+		// http://brian.pontarelli.com/2009/01/05/getting-the-current-system-time-in-milliseconds-with-c/
+		if (FacadeModele::obtenirInstance()->obtenirConfiguration()[8] && FacadeModele::obtenirInstance()->obtenirConfiguration()[12]) {
+			printCurrentTime();
+			std::cout << std::fixed << std::setprecision(2);
+			std::cout << " - Nouvelle bille : x: " << objet->obtenirPositionRelative().x << " y: " << objet->obtenirPositionRelative().y << std::endl;;
+		}
+		FacadeModele::obtenirInstance()->obtenirArbreRenduINF2990()->getEnfant(0)->ajouter(objet);
+		FacadeModele::obtenirInstance()->mettreAJourListeBillesEtNoeuds();
+		FacadeModele::obtenirInstance()->construireListesPalettes();
+		FacadeModele::obtenirInstance()->setDebug();
+	}
 	////////////////////////////////////////////////////////////////////////
 	///
 	/// @fn __declspec(dllexport) void __cdecl  creerObjetAvecTests()
