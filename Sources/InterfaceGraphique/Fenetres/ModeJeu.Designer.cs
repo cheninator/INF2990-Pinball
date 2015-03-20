@@ -55,7 +55,6 @@
             this.label_nbPointsButC = new System.Windows.Forms.Label();
             this.label_PointsButT = new System.Windows.Forms.Label();
             this.label_nbPointsButT = new System.Windows.Forms.Label();
-
             this.labelShowInfo = new System.Windows.Forms.Label();
             this.panel_GL.SuspendLayout();
             this.menuStrip.SuspendLayout();
@@ -70,7 +69,7 @@
             this.panel_GL.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel_GL.Location = new System.Drawing.Point(0, 0);
             this.panel_GL.Name = "panel_GL";
-            this.panel_GL.Size = new System.Drawing.Size(633, 453);
+            this.panel_GL.Size = new System.Drawing.Size(633, 741);
             this.panel_GL.TabIndex = 4;
             this.panel_GL.MouseClick += new System.Windows.Forms.MouseEventHandler(this.panel_GL_MouseClick);
             // 
@@ -149,7 +148,7 @@
             this.InfoPanel.Dock = System.Windows.Forms.DockStyle.Right;
             this.InfoPanel.Location = new System.Drawing.Point(443, 0);
             this.InfoPanel.Name = "InfoPanel";
-            this.InfoPanel.Size = new System.Drawing.Size(190, 453);
+            this.InfoPanel.Size = new System.Drawing.Size(190, 741);
             this.InfoPanel.TabIndex = 5;
             // 
             // label_Titre
@@ -338,12 +337,13 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(633, 453);
+            this.ClientSize = new System.Drawing.Size(633, 741);
             this.Controls.Add(this.InfoPanel);
             this.Controls.Add(this.panel_GL);
             this.Icon = global::InterfaceGraphique.Properties.Resources.Pinball;
             this.MainMenuStrip = this.menuStrip;
             this.Name = "ModeJeu";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "ModeJeu";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.PartieRapide_FormClosing);
             this.Load += new System.EventHandler(this.PartieRapide_Load);

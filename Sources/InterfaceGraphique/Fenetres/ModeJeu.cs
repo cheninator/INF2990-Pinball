@@ -688,6 +688,9 @@ namespace InterfaceGraphique
 
         private void ModeJeu_Shown(object sender, EventArgs e)
         {
+            var scrren = Screen.PrimaryScreen.Bounds.Height;
+            this.Height = (scrren*3)/4;
+           
             Program.myCustomConsole.reStart();
             Program.myCustomConsole.Update();
             if (Program.mMenu.modeJeuMain != null)
