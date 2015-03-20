@@ -2,16 +2,73 @@
 using System.Drawing;
 using System.Threading;
 using System.Diagnostics;
-using System.Windows.Forms;
 using System.Runtime.InteropServices;
 using System.Text;
 using System.IO;
 using System.IO.Pipes;
 using System.ComponentModel;
-using Microsoft.Win32.SafeHandles;
 
 namespace InterfaceGraphique
 {
+    public class CustomConsoleHandler
+    {
+        private CustomConsole cConsole;
+        public CustomConsoleHandler()
+        {
+            cConsole = new CustomConsole();
+        }
+        public void stopForm()
+        {
+            cConsole.Dispose();
+            cConsole.Close();
+        }
+        public void Show()
+        {
+            if (FonctionsNatives.obtenirAffichageGlobal() == 1)
+                cConsole.Show();
+        }
+        public void Hide()
+        {
+            cConsole.Hide();
+        }
+        public void AlwaysShow()
+        {
+            cConsole.Show();
+            cConsole.AlwaysShow();
+        }
+        public void UpdateConsoleTexte(string text)
+        {
+            cConsole.UpdateConsoleTexte(text);
+        }
+        public void Update()
+        {
+            Hide();
+            if (cConsole.getAlwaysVisible())
+                cConsole.Show();
+        }
+        public bool isVisible()
+        {
+            return cConsole.isVisible();
+        }
+        public void reStart()
+        {
+            bool boutonPause = cConsole.getPauseButton();
+            bool alwaysVisible = cConsole.getAlwaysVisible();
+            string currentText = cConsole.getCurrentText();
+            string pauseText = cConsole.getPauseText();
+            string currentHistory = cConsole.getHistory();
+            Point location = cConsole.getLocation();
+            stopForm();
+            cConsole = new CustomConsole();
+            cConsole.setPauseButton(boutonPause);
+            cConsole.setAlwaysVisible(alwaysVisible);
+            cConsole.setCurrentText(currentText);
+            cConsole.setPauseText(pauseText);
+            cConsole.setHistory(currentHistory);
+            cConsole.setLocation(location);
+        }
+    }
+
     public class ConsoleRedirector : IDisposable
     {
         private static ConsoleRedirector _instance;
