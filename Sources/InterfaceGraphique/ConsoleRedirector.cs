@@ -17,6 +17,11 @@ namespace InterfaceGraphique
         {
             if (activate == false)
                 return;
+            IntPtr hConsole = GetConsoleWindow();
+            if (IntPtr.Zero != hConsole)
+            {
+                ShowWindow(hConsole, 0);
+            }
             cConsole = new CustomConsole();
             ConsoleRedirector.attachConsole();
         }
@@ -86,6 +91,11 @@ namespace InterfaceGraphique
             cConsole.setHistory(currentHistory);
             cConsole.setLocation(location);
         }
+
+        [DllImport("user32.dll")]
+        public static extern bool ShowWindow(IntPtr hWnd, int nCmdShow);
+        [DllImport("kernel32")]
+        public static extern IntPtr GetConsoleWindow();
     }
 
     public class ConsoleRedirector : IDisposable
