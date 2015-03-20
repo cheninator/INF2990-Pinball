@@ -29,7 +29,6 @@ namespace InterfaceGraphique
     {
         private bool firstStart = true;
         public PartieTerminee gameOver;
-        private Timer beginGame;
         private Timer timerBille2;
         private double currentZoom = -1; ///< Zoom courant
         private Touches touches; ///< Les touches pour le jeu
@@ -43,8 +42,6 @@ namespace InterfaceGraphique
         StringBuilder nextMap;
         bool peutAnimer;
         bool boolTemp = true;
-        bool okCreer = false;
-        bool startGame = false;
         private bool activateAmbiantLight = false; ///< Etat de la lumiere ambiante
         private bool activateDirectLight = false; ///< Etat de la lumiere directe
         private bool activateSpotLight = false; ///< Etat de la lumiere spot
@@ -122,9 +119,7 @@ namespace InterfaceGraphique
             timerBille2 = new Timer();
             timerBille2.Tick += new System.EventHandler(this.timerBille2_Tick);
             timerBille2.Interval = 1500;
-            beginGame = new Timer();
-            beginGame.Tick += new System.EventHandler(this.beginGame_Tick);
-            beginGame.Interval = 3500;
+
             this.MouseWheel += new MouseEventHandler(panel_GL_MouseWheel);
 
             if (FonctionsNatives.obtenirModeDoubleBille() != 0)
@@ -167,8 +162,7 @@ namespace InterfaceGraphique
             // Il faut changer le mode car le traitement de début est fini
             etat = new EtatJeuJouer(this);
             FonctionsNatives.animerJeu(true);
-            okCreer = true;
-            beginGame.Start(); 
+           // CreerBille();       
         }
 
         ////////////////////////////////////////////////////////////////////////
@@ -181,8 +175,6 @@ namespace InterfaceGraphique
         protected void resetConfig()
         {
             billesEnJeu = 0;
-            startGame = false;
-            okCreer = true;
             FonctionsNatives.resetNombreBillesCourantes();
             nombreDeBillesGagnes = 0;
             nombreDeBillesUtilise = 0;
@@ -244,27 +236,15 @@ namespace InterfaceGraphique
         {
             if (FonctionsNatives.obtenirModeDoubleBille() != 0 && billesEnJeu < 2)
             {
-            
-            }
-            okCreer = true;
+               StringBuilder bille = new StringBuilder("bille");
+               FonctionsNatives.creerObjet(bille, bille.Capacity);
+               Console.WriteLine("2nd Bille");
+               nombreDeBillesUtilise++;
+               billesDisponibles--;
+            } 
             timerBille2.Stop();
         }
 
-
-        ////////////////////////////////////////////////////////////////////////
-        ///
-        /// @fn private void beginGame_Tick(object sender, EventArgs e)
-        /// @brief Evenement appele a un certain intervalle lorsque le Timer est actif.
-        /// @param[in] sender : Objet duquel provient un evenement.
-        /// @param[in] e : evenement qui lance la fonction.
-        /// @return Aucune.
-        ///
-        ////////////////////////////////////////////////////////////////////////
-        private void beginGame_Tick(object sender, EventArgs e)
-        {
-            startGame = true;
-            beginGame.Stop();
-        }
         ////////////////////////////////////////////////////////////////////////
         ///
         /// @fn public void MettreAJour(double tempsInterAffichage)
@@ -291,7 +271,7 @@ namespace InterfaceGraphique
                     }
                     billesEnJeu = FonctionsNatives.obtenirNombreBillesCourante();
 
-                    if (startGame && billesEnJeu < nombreBillesMax && (billesDisponibles > 0) && okCreer)
+                    if (billesEnJeu < nombreBillesMax && (billesDisponibles >= 0))
                     
                     {
                         // Wait a certain time
@@ -301,9 +281,8 @@ namespace InterfaceGraphique
                             okCreer = false;
                             timerBille2.Start();
                         }
-                       
                     }
-                    if (billesDisponibles <= 0 && billesEnJeu == 0 && boolTemp)
+                    if (billesDisponibles < 0 && boolTemp)
                     {
                         FinCampagne(false);
                     }
@@ -360,7 +339,9 @@ namespace InterfaceGraphique
                 Program.peutAfficher = false;
                 Program.tempBool = false;
             }
+            //Console.WriteLine("closing");
             Program.myCustomConsole.Hide();
+            Console.WriteLine("closing");
         }
 
         ////////////////////////////////////////////////////////////////////////
@@ -378,7 +359,6 @@ namespace InterfaceGraphique
             FonctionsNatives.resetNombreBillesCourantes();
             FonctionsNatives.construireListesPalettes();
             FonctionsNatives.mettreAJourListeBillesEtNoeuds();
-            beginGame.Start();
         }
 
         ////////////////////////////////////////////////////////////////////////
@@ -404,7 +384,6 @@ namespace InterfaceGraphique
         {
             boolTemp = false;
             peutAnimer = false;
-            startGame = false;
             map = new StringBuilder(myMaps[currentZone]);
             nextMap = new StringBuilder(map.ToString());
             nextMap.Remove(nextMap.Length - 4, 4);
@@ -433,7 +412,6 @@ namespace InterfaceGraphique
             // Il faut changer le mode car le traitement de début est fini
             etat = new EtatJeuJouer(this);
             label_Nom.Text = "Nom: " + Path.GetFileNameWithoutExtension(map.ToString());
-            beginGame.Start();
 
           
         }
@@ -447,14 +425,11 @@ namespace InterfaceGraphique
         ////////////////////////////////////////////////////////////////////////
         private void CreerBille()
         {
-            if (okCreer) 
-            { 
-                StringBuilder bille = new StringBuilder("bille");
-                FonctionsNatives.creerObjet(bille, bille.Capacity);
-                nombreDeBillesUtilise++;
-                billesDisponibles--;
-        
-            }
+            StringBuilder bille = new StringBuilder("bille");
+            FonctionsNatives.creerObjet(bille, bille.Capacity);
+            nombreDeBillesUtilise++;
+            billesDisponibles--;
+            timerBille2.Start();
         }
 
         ////////////////////////////////////////////////////////////////////////
@@ -467,7 +442,6 @@ namespace InterfaceGraphique
         ////////////////////////////////////////////////////////////////////////
         private void FinCampagne(bool active)
         {
-            beginGame.Stop();
             Program.myCustomConsole.Hide();
             peutAnimer = false;
             boolTemp = false;
@@ -620,6 +594,7 @@ namespace InterfaceGraphique
             map = new StringBuilder(myMaps[0]);
             nextMap = new StringBuilder(map.ToString());
             nextMap.Remove(nextMap.Length - 4, 4);
+            //Console.WriteLine(map);
             Program.myCustomConsole.Hide();
             this.Hide();
             zInfo = new ZoneInfo(Path.GetFileName(nextMap.ToString()), FonctionsNatives.obtenirDifficulte(map, map.Capacity).ToString(),false);
@@ -642,10 +617,9 @@ namespace InterfaceGraphique
             // Il faut changer le mode car le traitement de début est fini
             etat = new EtatJeuJouer(this);
            
+           // gameOver.Close();
             gameOver.Dispose();
             label_Nom.Text = "Nom: " + Path.GetFileNameWithoutExtension(map.ToString());
-            startGame = false;
-            beginGame.Start();
 
 
            
@@ -697,19 +671,5 @@ namespace InterfaceGraphique
                 Program.mMenu.modeJeuMain.Focus();
             firstStart = false;
         }
-    }
-
-    ///////////////////////////////////////////////////////////////////////////
-    /// @class FonctionsNatives
-    /// @brief Importation des fonctions natives (logique C++).
-    ///
-    /// @author Inconnu
-    /// @date Inconnue
-    /// 
-    /// @ingroup Fenetres
-    ///////////////////////////////////////////////////////////////////////////
-    public partial class FonctionsNatives
-    {
-       
     }
 }
