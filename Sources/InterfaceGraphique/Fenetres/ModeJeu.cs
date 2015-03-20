@@ -135,7 +135,6 @@ namespace InterfaceGraphique
             {
                 nombreBillesMax = 1;
             }
-           // Console.WriteLine("nbmax: " + nombreBillesMax);
 
             EtablirTouchesEtAI(playerType);
 
@@ -298,12 +297,9 @@ namespace InterfaceGraphique
                         // Wait a certain time
                         if (!timerBille2.Enabled)
                         {
-                           // Console.WriteLine("timer is NOT enabled.");
-
                             CreerBille();
                             okCreer = false;
                             timerBille2.Start();
-                         //   Console.WriteLine("Spawn bille");
                         }
                        
                     }
@@ -457,11 +453,7 @@ namespace InterfaceGraphique
                 FonctionsNatives.creerObjet(bille, bille.Capacity);
                 nombreDeBillesUtilise++;
                 billesDisponibles--;
-             /*   if (!timerBille2.Enabled)
-                {
-                    timerBille2.Start();
-                }
-              */
+        
             }
         }
 
