@@ -200,6 +200,9 @@ public:
 	/// Affiche le noeud de maniere concrete.
 	virtual void afficherConcret() const;
 
+	/// Appliquer les modificateurs OpenGL sur les objets
+	virtual void appliquerAfficher() const;
+
 	/// Anime le noeud.
 	virtual void animer(float dt);
 
