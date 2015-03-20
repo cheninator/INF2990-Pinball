@@ -51,6 +51,7 @@ namespace InterfaceGraphique
         private static Stopwatch chrono = Stopwatch.StartNew(); ///< Chronometre
         private static TimeSpan tempsEcouleVoulu = TimeSpan.FromTicks(TimeSpan.TicksPerSecond / (NB_IMAGES_PAR_SECONDE * 10)); ///< Temps avant le rafraichissement
         public static int compteurFrames = 0;
+        public static bool customConsoleActive = false;
 
 
         ////////////////////////////////////////////////////////////////////////
@@ -67,27 +68,31 @@ namespace InterfaceGraphique
         static void Main(string[] args)
         {
             if (args.Length != 0)
-                if (args[0] == "testsC++")
-                {
-                    if (FonctionsNatives.executerTests())
-                    {
-                        Console.WriteLine("Echec d'un ou plusieurs tests.");
-                        string s1 = System.Console.ReadLine();
-                    }
-                    else
-                    { 
-                        Console.WriteLine("Tests reussis.");
-                        string s1 = System.Console.ReadLine();
-                    }
-                   return;
-                }
+             {
+                 if (args[0] == "testsC++")
+                 {
+                     if (FonctionsNatives.executerTests())
+                     {
+                         Console.WriteLine("Echec d'un ou plusieurs tests.");
+                         string s1 = System.Console.ReadLine();
+                     }
+                     else
+                     {
+                         Console.WriteLine("Tests reussis.");
+                         string s1 = System.Console.ReadLine();
+                     }
+                     return;
+                 }
+                 else if (args[0] == "console")
+                     customConsoleActive = true;
+             }
             
             chrono.Start();
             Application.Idle += ExecuterQuandInactif;
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
 
-            myCustomConsole = new CustomConsoleHandler();
+            myCustomConsole = new CustomConsoleHandler(customConsoleActive);
 
             string warningMessage = "\nNous ne sommes pas responsables des bogues et problemes qui pourraient survenir dans cette situation.\n";
 
@@ -102,7 +107,7 @@ namespace InterfaceGraphique
                 System.Environment.OSVersion.Version.Minor >= 1))
                 MessageBox.Show(warningMessageW, "AVERTISSEMENT", MessageBoxButtons.OK, MessageBoxIcon.Warning);
 
-            ConsoleRedirector.attachConsole();
+            
             mMenu = new MainMenu();
             Application.Run(mMenu);
         }

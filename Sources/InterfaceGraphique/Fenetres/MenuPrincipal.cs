@@ -217,7 +217,6 @@ namespace InterfaceGraphique
             bouton_quit.ForeColor = Color.Red;
             bouton_quit.FlatAppearance.BorderColor = Color.Black;
             player.Play();
-
         }
 
         ////////////////////////////////////////////////////////////////////////
@@ -254,7 +253,7 @@ namespace InterfaceGraphique
         {
             myThread = new Thread(new ThreadStart(initMusic));
             myThread.Start();
-
+            ShowConsol.Visible = Program.customConsoleActive;
         }
         ////////////////////////////////////////////////////////////////////////
         ///
