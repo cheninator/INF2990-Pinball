@@ -29,7 +29,6 @@ namespace InterfaceGraphique
     {
         private bool firstStart = true;
         public PartieTerminee gameOver;
-        private Timer timerBille2;
         private double currentZoom = -1; ///< Zoom courant
         private Touches touches; ///< Les touches pour le jeu
         private ZoneInfo zInfo;
@@ -49,7 +48,6 @@ namespace InterfaceGraphique
         int[] proprietes = new int[5];
         public int pointsPartie = 0;
         public int pointsTotale = 0;
-
 
         private int nombreDeBillesGagnes = 0;
         private int pointsGagnerBille = 0;  /// Nombre de Points pour gagner une nouvelle bille
@@ -116,9 +114,6 @@ namespace InterfaceGraphique
                 this.WindowState = FormWindowState.Maximized;
                 */
             }
-            timerBille2 = new Timer();
-            timerBille2.Tick += new System.EventHandler(this.timerBille2_Tick);
-            timerBille2.Interval = 1500;
 
             this.MouseWheel += new MouseEventHandler(panel_GL_MouseWheel);
 
@@ -242,7 +237,6 @@ namespace InterfaceGraphique
                nombreDeBillesUtilise++;
                billesDisponibles--;
             } 
-            timerBille2.Stop();
         }
 
         ////////////////////////////////////////////////////////////////////////
@@ -275,12 +269,7 @@ namespace InterfaceGraphique
                     
                     {
                         // Wait a certain time
-                        if (!timerBille2.Enabled)
-                        {
-                            CreerBille();
-                            okCreer = false;
-                            timerBille2.Start();
-                        }
+                        CreerBille();
                     }
                     if (billesDisponibles < 0 && boolTemp)
                     {
@@ -429,7 +418,6 @@ namespace InterfaceGraphique
             FonctionsNatives.creerObjet(bille, bille.Capacity);
             nombreDeBillesUtilise++;
             billesDisponibles--;
-            timerBille2.Start();
         }
 
         ////////////////////////////////////////////////////////////////////////
