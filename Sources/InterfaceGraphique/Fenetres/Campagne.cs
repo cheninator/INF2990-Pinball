@@ -409,7 +409,17 @@ namespace InterfaceGraphique
 
             }
         }
-
+        ////////////////////////////////////////////////////////////////////////
+        ///
+        /// @fn private void Campagne_KeyPress(Object o, KeyPressEventArgs e)
+        /// @brief Gestion des touches lorsqu'une touche est enfoncee.
+        /// 
+        /// @param[in] sender : Objet duquel provient un evenement
+        /// @param[in] e : evenement qui lance la fonction.
+        /// 
+        /// @return Aucune.
+        ///
+        ////////////////////////////////////////////////////////////////////////
         private void Campagne_KeyPress(object sender, KeyPressEventArgs e)
         {
             if (e.KeyChar == 13)
@@ -418,6 +428,17 @@ namespace InterfaceGraphique
             }
         }
 
+        ////////////////////////////////////////////////////////////////////////
+        ///
+        /// @fn private void Campagne_KeyUp(Object o, KeyPressEventArgs e)
+        /// @brief Permet de fermer la form lorsqu'on fait CTRL + Q.
+        /// 
+        /// @param[in] sender : Objet duquel provient un evenement
+        /// @param[in] e : evenement qui lance la fonction.
+        /// 
+        /// @return Aucune.
+        ///
+        ////////////////////////////////////////////////////////////////////////
         private void Campagne_KeyUp(object sender, KeyEventArgs e)
         {
             if (e.KeyCode == Keys.Q && ModifierKeys == Keys.Control)

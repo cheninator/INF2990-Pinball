@@ -99,7 +99,7 @@ void NoeudRessort::animer(float temps)
 	case EN_COMPRESSION:
 		if (scale_.y > 0.3)
 		{
-			scale_ = { scale_.x, scale_.y * exp(temps * log(0.002)), scale_.z }; // exp(temps * log(0.002)) = 0.002^temps
+			scale_ = { scale_.x, scale_.y * exp(temps * log(0.0002)), scale_.z }; // exp(temps * log(0.002)) = 0.002^temps
 			positionRelative_ -= scale_.y /5 * translationCompression_ ; // Très heuristique comme calcul 
 			// Updater l'attribut distanceCompresseion_
 		}
@@ -243,7 +243,7 @@ void NoeudRessort::traiterCollisions(aidecollision::DetailsCollision details, No
 		// ==> v = sqrt(constRessort/m) * distanceCompression
 		// ==> v = uneConstante * distanceCompression.
 	
-		double uneConstante = 400;
+		double uneConstante = 18;
 		bille->assignerPositionRelative(bille->obtenirPositionRelative() + 1.1*details.enfoncement * details.direction); // direction est un vecteur normal.
 		bille->assignerVitesse(uneConstante * distanceCompression_ * details.direction);
 	
