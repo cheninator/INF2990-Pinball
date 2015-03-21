@@ -145,7 +145,8 @@ bool VisiteurSelectionInverse::traiter(NoeudAbstrait* noeud)
 
 bool VisiteurSelectionInverse::traiter(NoeudPortail* noeud)
 {
-	if (valeurStencil_ - 1 == noeud->getNumero() && noeud->estSelectionnable() /*&& noeud->estModifiable()*/)
+	// Stencil -1 si le tore était dessiné 
+	if (valeurStencil_  == noeud->getNumero() && noeud->estSelectionnable() /*&& noeud->estModifiable()*/)
 	{
 
 		if (noeud->estSelectionne())
