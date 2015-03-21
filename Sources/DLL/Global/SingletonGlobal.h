@@ -10,6 +10,7 @@
 #define __SINGLETONGLOBAL_H__
 
 #include "../Application/FacadeModele.h"
+#include "../Arbre/Noeuds/NoeudAbstrait.h"
 #include <sstream>
 #include "glm\glm.hpp"
 
@@ -55,15 +56,19 @@ public:
 
 	void retirerBille() { billesCourantes_--; };
 	void ajouterBille() { billesCourantes_++; };
+	void afficherBille();
 	int obtenirBille() { return billesCourantes_; };
 	void resetBille()  { billesCourantes_ = 0; };
 
+	void updateBilles();
 	void setAnimation(bool animer) { animer_ = animer; };
 	bool obtenirAnimation() { return animer_; };
 
 	void spawnBille(glm::dvec3 position, glm::dvec3 echelle, NoeudAbstrait* portail);
 
 	std::string obtenirPathTemp() { objectPathCreated_ ? NULL : getAndSetTempObjDirectory(); return objectPath_; };
+
+	void finGeneration() { enCoursDeGeneration_ = 0; };
 
 protected:
 
@@ -76,6 +81,7 @@ protected:
 private:
 
 	void getAndSetTempObjDirectory();
+
 
 	static SingletonGlobal* singleton_;
 
@@ -101,6 +107,8 @@ private:
 
 	std::string objectPath_;
 	bool objectPathCreated_{ false };
+	bool enCoursDeGeneration_{ 0 };
+	std::vector<std::pair<std::pair<glm::dvec3, glm::dvec3>, NoeudAbstrait*>> launchSequence_;
 };
 
 #endif // __SINGLETONGLOBAL_H__

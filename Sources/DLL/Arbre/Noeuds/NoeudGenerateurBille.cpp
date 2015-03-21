@@ -127,6 +127,7 @@ void NoeudGenerateurBille::animer(float temps)
 		{
 			compteurGeneration_ = 0;
 			billesGenerer_ = 0;
+			SingletonGlobal::obtenirInstance()->finGeneration();
 		}
 		return;
 	}
@@ -141,6 +142,7 @@ void NoeudGenerateurBille::animer(float temps)
 		{
 			compteurGeneration_ = 0;
 			billesGenerer_ = 0;
+			SingletonGlobal::obtenirInstance()->finGeneration();
 		}
 	}
 	

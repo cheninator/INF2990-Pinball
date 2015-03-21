@@ -365,7 +365,7 @@ void FacadeModele::animer(float temps)
 	else
 		traiterCollisions(temps);
 
-
+	SingletonGlobal::obtenirInstance()->updateBilles();
 
 	// Mise a jour des objets.
 	arbre_->animer(temps);
@@ -1925,7 +1925,6 @@ void FacadeModele::preparerBille()
 	int pos = rand() % generateurs.size();
 
 	NoeudAbstrait* generateur = noeudTable->getEnfant(generateurs[pos]);
-	generateur->genererBille();
 	glm::dvec3 scale = generateur->obtenirAgrandissement();
 	glm::dvec3 position = generateur->obtenirPositionRelative();
 	glm::dvec3 rotation = generateur->obtenirRotation();

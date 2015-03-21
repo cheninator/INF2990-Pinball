@@ -54,7 +54,28 @@ void SingletonGlobal::resetConfigurationCollision(int collisionPointsCirculaire,
 	//pointsTotales_ += pointsPartie_;
 
 	pointsPartie_ = 0;
+	enCoursDeGeneration_ = 0;
+}
 
+////////////////////////////////////////////////////////////////////////
+///
+/// @fn void SingletonGlobal::updateBilles()
+///
+/// Met a jour le gestionaire de billes
+///
+/// @return Aucune.
+///
+////////////////////////////////////////////////////////////////////////
+void SingletonGlobal::updateBilles()
+{
+	if (enCoursDeGeneration_ == 0 && launchSequence_.size() > 0)
+	{
+		std::pair<std::pair<glm::dvec3, glm::dvec3>, NoeudAbstrait*> billeAAfficher
+			= launchSequence_.back();
+		billeAAfficher.second->genererBille();
+		enCoursDeGeneration_++;
+		afficherBille();
+	}
 }
 
 ////////////////////////////////////////////////////////////////////////
@@ -68,7 +89,24 @@ void SingletonGlobal::resetConfigurationCollision(int collisionPointsCirculaire,
 ////////////////////////////////////////////////////////////////////////
 void SingletonGlobal::spawnBille(glm::dvec3 position, glm::dvec3 echelle, NoeudAbstrait* portail)
 {
-	FacadeModele::obtenirInstance()->creeBille(position, echelle);
+	launchSequence_.push_back({ { position, echelle }, portail });
+}
+
+////////////////////////////////////////////////////////////////////////
+///
+/// @fn void SingletonGlobal::afficherBille()
+///
+/// Affiche la bille
+///
+/// @return Aucune.
+///
+////////////////////////////////////////////////////////////////////////
+void SingletonGlobal::afficherBille()
+{
+	std::pair<std::pair<glm::dvec3, glm::dvec3>, NoeudAbstrait*> billeAAfficher
+			= launchSequence_.back();
+	launchSequence_.pop_back();
+	FacadeModele::obtenirInstance()->creeBille(billeAAfficher.first.first, billeAAfficher.first.second);
 }
 
 ////////////////////////////////////////////////////////////////////////
