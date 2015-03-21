@@ -1914,7 +1914,6 @@ void FacadeModele::preparerBille()
 	NoeudAbstrait* noeudTable = FacadeModele::obtenirInstance()->obtenirArbreRenduINF2990()->getEnfant(0);
 	for (i = 0; i < nbElements; i++)
 	{
-
 		std::string typeNoeud = noeudTable->getEnfant(i)->obtenirType();
 
 		if (typeNoeud == "generateurbille")
@@ -1937,7 +1936,6 @@ void FacadeModele::preparerBille()
 		glm::dvec3{ 0.0, 0.0, 1.0 } };
 
 	SingletonGlobal::obtenirInstance()->spawnBille(position + transform * vecteur, scale, generateur);
-	FacadeModele::obtenirInstance()->creeBille(position + transform * vecteur, scale);
 }
 
 void FacadeModele::printCurrentTime()

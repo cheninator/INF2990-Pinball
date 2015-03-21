@@ -150,7 +150,7 @@ void NoeudPortail::setDebug(bool debug)
 ////////////////////////////////////////////////////////////////////////
 std::vector<glm::dvec3> NoeudPortail::obtenirVecteursEnglobants()
 {
-	double rayonModele = boite_.coinMax.x - 6;
+	double rayonModele = abs(boite_.coinMin.y);
 	return{ glm::dvec3{ rayonModele * scale_.x, 0, 0 } };
 }
 

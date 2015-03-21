@@ -65,12 +65,12 @@
             // columnHeader1
             // 
             this.columnHeader1.Text = "Zone de jeu";
-            this.columnHeader1.Width = 89;
+            this.columnHeader1.Width = 92;
             // 
             // columnHeader2
             // 
             this.columnHeader2.Text = "Difficulté";
-            this.columnHeader2.Width = 89;
+            this.columnHeader2.Width = 100;
             // 
             // screenShot
             // 
@@ -192,6 +192,7 @@
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Icon = global::InterfaceGraphique.Properties.Resources.Pinball;
             this.KeyPreview = true;
+            this.MaximizeBox = false;
             this.Name = "PartieRapide";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "PartieRapide";

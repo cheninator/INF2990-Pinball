@@ -48,10 +48,10 @@ public:
 	void collisionButoirCible() { pointsPartie_ += collisionPointsCible_; /*checkBille();*/ };
 
 	void resetConfigurationCollision(int collisionPointsCirculaire,
-		int collisionPointsTriangulaire,
-		int collisionPointsCible,
-		int collisionPointsPartieGagner,
-		int collisionPointsNouvelleBille);
+									 int collisionPointsTriangulaire,
+									 int collisionPointsCible,
+									 int collisionPointsPartieGagner,
+									 int collisionPointsNouvelleBille);
 
 	void retirerBille() { billesCourantes_--; };
 	void ajouterBille() { billesCourantes_++; };
@@ -61,7 +61,7 @@ public:
 	void setAnimation(bool animer) { animer_ = animer; };
 	bool obtenirAnimation() { return animer_; };
 
-	void spawnBille(glm::dvec3 position, glm::dvec3 echelle, NoeudAbstrait* portail){};
+	void spawnBille(glm::dvec3 position, glm::dvec3 echelle, NoeudAbstrait* portail);
 
 	std::string obtenirPathTemp() { objectPathCreated_ ? NULL : getAndSetTempObjDirectory(); return objectPath_; };
 

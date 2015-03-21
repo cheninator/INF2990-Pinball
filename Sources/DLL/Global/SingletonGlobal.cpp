@@ -59,6 +59,20 @@ void SingletonGlobal::resetConfigurationCollision(int collisionPointsCirculaire,
 
 ////////////////////////////////////////////////////////////////////////
 ///
+/// @fn void SingletonGlobal::spawnBille(glm::dvec3 position, glm::dvec3 echelle, NoeudAbstrait* portail)
+///
+/// Gere le moment de création d'une bille (pour respecter la regle des une secondes)
+///
+/// @return Aucune.
+///
+////////////////////////////////////////////////////////////////////////
+void SingletonGlobal::spawnBille(glm::dvec3 position, glm::dvec3 echelle, NoeudAbstrait* portail)
+{
+	FacadeModele::obtenirInstance()->creeBille(position, echelle);
+}
+
+////////////////////////////////////////////////////////////////////////
+///
 /// @fn void SingletonGlobal::libererInstance()
 ///
 /// Détruit l'instance unique de la classe.  Cette fonction n'est pas

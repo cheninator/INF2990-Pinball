@@ -46,6 +46,8 @@
             this.ZonesDisponibles = new System.Windows.Forms.ListView();
             this.columnHeader1 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnHeader2 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.label2 = new System.Windows.Forms.Label();
+            this.textBoxName = new System.Windows.Forms.TextBox();
             this.GB_Player.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.screenShot)).BeginInit();
             this.SuspendLayout();
@@ -164,9 +166,9 @@
             // 
             // bouton_REMOVEALL
             // 
-            this.bouton_REMOVEALL.Location = new System.Drawing.Point(542, 430);
+            this.bouton_REMOVEALL.Location = new System.Drawing.Point(537, 430);
             this.bouton_REMOVEALL.Name = "bouton_REMOVEALL";
-            this.bouton_REMOVEALL.Size = new System.Drawing.Size(86, 39);
+            this.bouton_REMOVEALL.Size = new System.Drawing.Size(91, 39);
             this.bouton_REMOVEALL.TabIndex = 7;
             this.bouton_REMOVEALL.Text = "Vider la liste";
             this.bouton_REMOVEALL.UseVisualStyleBackColor = true;
@@ -228,13 +230,31 @@
             // columnHeader2
             // 
             this.columnHeader2.Text = "Difficulté";
-            this.columnHeader2.Width = 89;
+            this.columnHeader2.Width = 98;
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(21, 513);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(103, 13);
+            this.label2.TabIndex = 21;
+            this.label2.Text = "Entrez votre nom ici:";
+            // 
+            // textBoxName
+            // 
+            this.textBoxName.Location = new System.Drawing.Point(24, 533);
+            this.textBoxName.Name = "textBoxName";
+            this.textBoxName.Size = new System.Drawing.Size(192, 20);
+            this.textBoxName.TabIndex = 20;
             // 
             // Campagne
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(650, 572);
+            this.Controls.Add(this.label2);
+            this.Controls.Add(this.textBoxName);
             this.Controls.Add(this.ZonesDisponibles);
             this.Controls.Add(this.screenShot);
             this.Controls.Add(this.bouton_OK);
@@ -249,6 +269,7 @@
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Icon = global::InterfaceGraphique.Properties.Resources.Pinball;
             this.KeyPreview = true;
+            this.MaximizeBox = false;
             this.Name = "Campagne";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Campagne";
@@ -258,6 +279,7 @@
             this.GB_Player.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.screenShot)).EndInit();
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
@@ -281,6 +303,8 @@
         private System.Windows.Forms.ListView ZonesDisponibles;
         private System.Windows.Forms.ColumnHeader columnHeader1;
         private System.Windows.Forms.ColumnHeader columnHeader2;
+        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.TextBox textBoxName;
 
 
     }
