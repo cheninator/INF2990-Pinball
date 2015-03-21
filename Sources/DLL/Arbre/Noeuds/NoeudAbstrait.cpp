@@ -436,8 +436,6 @@ void NoeudAbstrait::afficher() const
 		glPolygonMode(GL_FRONT_AND_BACK, modePolygones_);
 
 		// Affichage concret
-		glStencilFunc(GL_ALWAYS, numeroNoeud_, -1);
-
 		afficherConcret();
 
 		// Restauration
@@ -457,6 +455,7 @@ void NoeudAbstrait::appliquerAfficher() const
 		if (twin_ != nullptr && twin_ != NULL)
 			twin_->setTransparent(true);
 	}
+	
 	else if (transparent_) {
 		glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
 		glEnable(GL_BLEND);
@@ -467,6 +466,8 @@ void NoeudAbstrait::appliquerAfficher() const
 	if (twin_ != nullptr && twin_ != NULL)
 		if (!selectionne_ && !twin_->estSelectionne())
 			twin_->setTransparent(false);
+
+	glStencilFunc(GL_ALWAYS, numeroNoeud_, -1);
 }
 ////////////////////////////////////////////////////////////////////////
 ///

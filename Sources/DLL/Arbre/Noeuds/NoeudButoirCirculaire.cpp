@@ -67,9 +67,12 @@ void NoeudButoirCirculaire::afficherConcret() const
 	glPushMatrix();
 	glPushAttrib(GL_ALL_ATTRIB_BITS);
 	NoeudAbstrait::appliquerAfficher();
+	if (illumine_)
+		glTexEnvf(GL_TEXTURE_ENV, GL_TEXTURE_ENV_MODE, GL_DECAL);
 	liste_->dessiner();
 	glPopAttrib();
 	glPopMatrix();
+
 	// Restauration de la matrice.
 }
 

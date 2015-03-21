@@ -186,6 +186,7 @@ namespace InterfaceGraphique
                 {
                     typeJoueur = 3;
                 }
+                Program.playerName = textBoxName.Text;
                 this.Hide();
                 ((MainMenu)this.Owner).LancerModeJeu(zonesCampagne, typeJoueur);
                
@@ -197,6 +198,17 @@ namespace InterfaceGraphique
             }
         }
 
+        ////////////////////////////////////////////////////////////////////////
+        ///
+        /// @fn private void PartieRapide_KeyPress(Object o, KeyPressEventArgs e)
+        /// @brief Gestion des touches lorsqu'une touche est enfoncee.
+        /// 
+        /// @param[in] sender : Objet duquel provient un evenement
+        /// @param[in] e : evenement qui lance la fonction.
+        /// 
+        /// @return Aucune.
+        ///
+        ////////////////////////////////////////////////////////////////////////
         private void PartieRapide_KeyPress(object sender, KeyPressEventArgs e)
         {
             if( e.KeyChar ==13)
@@ -204,6 +216,17 @@ namespace InterfaceGraphique
             
         }
 
+        ////////////////////////////////////////////////////////////////////////
+        ///
+        /// @fn private void PartieRapide_KeyUp(Object o, KeyPressEventArgs e)
+        /// @brief Permet de fermer la form lorsqu'on fait CTRL + Q.
+        /// 
+        /// @param[in] sender : Objet duquel provient un evenement
+        /// @param[in] e : evenement qui lance la fonction.
+        /// 
+        /// @return Aucune.
+        ///
+        ////////////////////////////////////////////////////////////////////////
         private void PartieRapide_KeyUp(object sender, KeyEventArgs e)
         {
             if (e.KeyCode == Keys.Q && ModifierKeys == Keys.Control)

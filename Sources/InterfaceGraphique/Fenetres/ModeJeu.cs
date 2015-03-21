@@ -28,34 +28,34 @@ namespace InterfaceGraphique
     public partial class ModeJeu : Form
     {
         private bool firstStart = true;
-        public PartieTerminee gameOver;
+        public PartieTerminee gameOver; ///< Form de fin de partie
         private double currentZoom = -1; ///< Zoom courant
         private Touches touches; ///< Les touches pour le jeu
-        private ZoneInfo zInfo;
-        private int currentZone = 0;
-        private int nbZones;
-        private int nombreBillesInit = 0;
-        private int nombreBillesMax;
-        List<string> myMaps;
-        StringBuilder map;
-        StringBuilder nextMap;
+        private ZoneInfo zInfo;  ///< Form dinfo de prochaine zone
+        private int currentZone = 0; ///< la zone a laquelle on est rendue
+        private int nbZones;    ///< nombre de Zones dans la campagne/Partie rapide
+        private int nombreBillesInit = 0;   /// Nombre de Billes initiales ( 3/5/7)
+        private int nombreBillesMax;    ///< nombre maximal de billes en jeu
+        List<string> myMaps;    ///< liste des zones a jouer
+        StringBuilder map;      ///< la zone en jeu
+        StringBuilder nextMap;  ///< prochaine zone
         bool peutAnimer;
-        bool boolTemp = true;
+        bool boolTemp = true;   ///< bool pour ne pas spam FinDePartie
         private bool activateAmbiantLight = false; ///< Etat de la lumiere ambiante
         private bool activateDirectLight = false; ///< Etat de la lumiere directe
         private bool activateSpotLight = false; ///< Etat de la lumiere spot
         private EtatJeuAbstrait etat; ///< Machine à états
-        int[] proprietes = new int[5];
-        public int pointsPartie = 0;
-        public int pointsTotale = 0;
+        int[] proprietes = new int[5];  ///< les proprietes de la zone
+        public int pointsPartie = 0;    ///< nombre de points
+        public int pointsTotale = 0;    ///< no idea wtf is this
 
-        private int nombreDeBillesGagnes = 0;
-        private int pointsGagnerBille = 0;  /// Nombre de Points pour gagner une nouvelle bille
-        private int pointsGagnerPartie = 0; /// Nombre de Points pour gagner une zone
-        private int billesDisponibles = 0;  /// Billes dont le(s) joueur(s) disposent
-        public int billesEnJeu = 0;
-        private int nombreDeBillesUtilise = 0;
-        
+        private int nombreDeBillesGagnes = 0; ///< nombre de billes extras
+        private int pointsGagnerBille = 0;  ///< Nombre de Points pour gagner une nouvelle bille
+        private int pointsGagnerPartie = 0; ///< Nombre de Points pour gagner une zone
+        private int billesDisponibles = 0;  ///< Billes dont le(s) joueur(s) disposent
+        public int billesEnJeu = 0;         ///< Billes qui sont sur la zone
+        private int nombreDeBillesUtilise = 0; ///< Nombre de Billes deja utilises
+
         // Modificateurs
         public void setVisibilityMenuStrip(bool vis) { menuStrip.Visible = vis; }
         public void setCurrentZoom(double val)       { currentZoom = val; }
@@ -107,14 +107,6 @@ namespace InterfaceGraphique
         ////////////////////////////////////////////////////////////////////////
         public ModeJeu(List<string> maps, int playerType)
         {
-            {
-                /*
-                this.WindowState = FormWindowState.Normal;
-                this.FormBorderStyle = FormBorderStyle.None;
-                this.WindowState = FormWindowState.Maximized;
-                */
-            }
-
             this.MouseWheel += new MouseEventHandler(panel_GL_MouseWheel);
 
             if (FonctionsNatives.obtenirModeDoubleBille() != 0)
@@ -126,6 +118,7 @@ namespace InterfaceGraphique
                 nombreBillesMax = 1;
             }
 
+            // Permet d'etablir le type de joueur
             EtablirTouchesEtAI(playerType);
 
             this.KeyDown += new KeyEventHandler(PartieRapide_KeyDown);
@@ -138,10 +131,7 @@ namespace InterfaceGraphique
             currentZoom = -1;
             myMaps = new List<string>(maps);
             nbZones = maps.Count;
-            if( nbZones == 1)
-                this.Text = "Partie Rapide";
-            if (nbZones > 1)
-                this.Text = "Campagne";
+           
             map = new StringBuilder(myMaps[0]);
             FonctionsNatives.ouvrirXML(map, map.Capacity);
             resetConfig();
@@ -152,7 +142,12 @@ namespace InterfaceGraphique
             currentZone++;
             Program.tempBool = true;
             panel_GL.Focus();
-            label_Nom.Text = "Nom: " + Path.GetFileNameWithoutExtension(map.ToString());
+            string nomMap = Path.GetFileNameWithoutExtension(map.ToString());
+            label_Nom.Text = "Nom: " + nomMap;
+            if (nbZones == 1)
+                this.Text = "Partie Rapide: " + nomMap;
+            if (nbZones > 1)
+                this.Text = "Campagne: " + nomMap;
             etat = new EtatJeuDebutDePartie(this);
             // Il faut changer le mode car le traitement de début est fini
             etat = new EtatJeuJouer(this);
@@ -401,8 +396,11 @@ namespace InterfaceGraphique
             // Il faut changer le mode car le traitement de début est fini
             etat = new EtatJeuJouer(this);
             label_Nom.Text = "Nom: " + Path.GetFileNameWithoutExtension(map.ToString());
-
-          
+            if (nbZones == 1)
+                this.Text = "Partie Rapide: " + Path.GetFileNameWithoutExtension(map.ToString());
+            if (nbZones > 1)
+                this.Text = "Campagne: " + Path.GetFileNameWithoutExtension(map.ToString());
+        
         }
 
         ////////////////////////////////////////////////////////////////////////
@@ -596,8 +594,8 @@ namespace InterfaceGraphique
             FonctionsNatives.ouvrirXML(map, map.Capacity);
             FonctionsNatives.resetNombreDePointsDePartie();
             FonctionsNatives.resetNombreBillesCourantes();
-            currentZone = 1;
             FonctionsNatives.construireListesPalettes();
+            currentZone = 1;
             peutAnimer = true;
             boolTemp = true;
             /// La création de l'état s'occupe d'appeler resetConfig
@@ -648,6 +646,15 @@ namespace InterfaceGraphique
           //  panel_GL.Focus();
         }
 
+        ////////////////////////////////////////////////////////////////////////
+        ///
+        /// @fn private void ModeJeu_Shown(object sender, EventArgs e)
+        /// @brief Affichage/Ajustement de la console custom si utilisee
+        /// @param[in] sender : Objet duquel provient un evenement.
+        /// @param[in] e : evenement qui lance la fonction.
+        /// @return Aucune.
+        ///
+        ////////////////////////////////////////////////////////////////////////
         private void ModeJeu_Shown(object sender, EventArgs e)
         {
             var scrren = Screen.PrimaryScreen.Bounds.Height;

@@ -151,7 +151,8 @@ bool VisiteurSelection::traiter(NoeudPortail* noeud)
 	// Merci de laisser le cout pour que je puisse le décommenter au besoin
 	//std::cout << "Visite d'un noeudPortail de type " << noeud->getType()
 		//<< " avec numéro " << noeud->getNumero() << std::endl;
-	if (valeurStencil_ - 1 == noeud->getNumero() && noeud->estSelectionnable())
+	// Stencil - 1 si le tore était dessiné
+	if (valeurStencil_ == noeud->getNumero() && noeud->estSelectionnable())
 		noeud->assignerSelection(true);
 	else
 		noeud->assignerSelection(false);

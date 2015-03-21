@@ -347,6 +347,7 @@ protected:
 	/// Impossibilite de position
 	bool impossible_;
 
+
 	/// Mode Debug de la bille ou du portail
 	bool debug_{ false };
 
