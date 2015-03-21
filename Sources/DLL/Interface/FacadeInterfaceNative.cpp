@@ -39,15 +39,6 @@ BSTR stringToBSTR(std::string str) {
 	return wsdata;
 }
 
-void printCurrentTime() {
-	SYSTEMTIME time;
-	GetLocalTime(&time);
-	std::cout << std::fixed << std::setw(2) << std::setprecision(2) << time.wHour << ":"
-		<< std::fixed << std::setfill('0') << std::setw(2) << std::setprecision(2) << time.wMinute << ":"
-		<< std::fixed << std::setfill('0') << std::setw(2) << std::setprecision(2) << time.wSecond << ":"
-		<< std::fixed << std::setfill('0') << std::setw(3) << std::setprecision(3) << time.wMilliseconds;
-}
-
 extern "C"
 {
 	// TO DO : SUPPRIMER CETTE VARIABLE QUAND PLUS NECESSAIRE
@@ -243,7 +234,6 @@ extern "C"
 		return reussite ? 0 : 1;
 	}
 
-
 	////////////////////////////////////////////////////////////////////////
 	///
 	/// @fn __declspec(dllexport) void __cdecl  creerObjet()
@@ -264,11 +254,16 @@ extern "C"
 	__declspec(dllexport) void __cdecl  creerObjet(char* value, int length, bool isTwin, bool colorShift)
 	{
 		std::string nomObjet(value);
+		if (nomObjet == "bille")
+		{
+			FacadeModele::obtenirInstance()->preparerBille();
+			return;
+		}
 		if (isTwin == true) {
-			objet_temp = FacadeModele::obtenirInstance()->obtenirArbreRenduINF2990()->creerNoeud(nomObjet);
-			objet_temp->setColorShift(colorShift);
 			if (objet == nullptr)
 				return;
+			objet_temp = FacadeModele::obtenirInstance()->obtenirArbreRenduINF2990()->creerNoeud(nomObjet);
+			objet_temp->setColorShift(colorShift);
 			objet_temp->setTwin(objet);
 			objet->setTwin(objet_temp);
 			objet->assignerSelection(true);
@@ -277,43 +272,6 @@ extern "C"
 		}
 		else 
 		{
-			if (nomObjet == "bille")
-			{
-				std::vector<int> generateurs;
-				int i = 0;
-				int nbElements = FacadeModele::obtenirInstance()->obtenirArbreRenduINF2990()->getEnfant(0)->obtenirNombreEnfants();
-				NoeudAbstrait* noeudTable = FacadeModele::obtenirInstance()->obtenirArbreRenduINF2990()->getEnfant(0);
-				for (i = 0; i < nbElements; i++)
-				{
-
-					std::string typeNoeud = noeudTable->getEnfant(i)->obtenirType();
-
-					if (typeNoeud == "generateurbille")
-						generateurs.push_back(i);
-				}
-				if (generateurs.size() == 0)
-					return;
-
-				int pos = rand() % generateurs.size();
-
-				NoeudAbstrait* generateur = noeudTable->getEnfant(generateurs[pos]);
-				generateur->genererBille();
-				glm::dvec3 scale = generateur->obtenirAgrandissement();
-				glm::dvec3 position = generateur->obtenirPositionRelative();
-				glm::dvec3 rotation = generateur->obtenirRotation();
-
-				glm::dvec3 vecteur = { 0, -((30 * scale.x)), 0 };
-				double angleEnRadian = -rotation[2] * utilitaire::PI_180;
-				glm::dmat3 transform = glm::dmat3{ glm::dvec3{ cos(angleEnRadian), -sin(angleEnRadian), 0.0 },
-					glm::dvec3{ sin(angleEnRadian), cos(angleEnRadian), 0.0f },
-					glm::dvec3{ 0.0, 0.0, 1.0 } };
-
-				objet->assignerPositionRelative(position + transform * vecteur);
-				objet->assignerEchelle(scale);
-
-				SingletonGlobal::obtenirInstance()->spawnBille(position + transform * vecteur, scale, generateur);
-				return;
-			}
 			objet = FacadeModele::obtenirInstance()->obtenirArbreRenduINF2990()->creerNoeud(nomObjet);
 			if (objet == nullptr)
 				return;
@@ -329,23 +287,6 @@ extern "C"
 		FacadeModele::obtenirInstance()->setDebug();
 	}
 
-	void creeBille(glm::dvec3 position, glm::dvec3 echelle)
-	{
-		objet = FacadeModele::obtenirInstance()->obtenirArbreRenduINF2990()->creerNoeud("bille");
-		objet->assignerPositionRelative(position);
-		objet->assignerEchelle(echelle);
-		//HH:MM:SS:mmm – Nouvelle bille : x: POSX y: POSY
-		// http://brian.pontarelli.com/2009/01/05/getting-the-current-system-time-in-milliseconds-with-c/
-		if (FacadeModele::obtenirInstance()->obtenirConfiguration()[8] && FacadeModele::obtenirInstance()->obtenirConfiguration()[12]) {
-			printCurrentTime();
-			std::cout << std::fixed << std::setprecision(2);
-			std::cout << " - Nouvelle bille : x: " << objet->obtenirPositionRelative().x << " y: " << objet->obtenirPositionRelative().y << std::endl;;
-		}
-		FacadeModele::obtenirInstance()->obtenirArbreRenduINF2990()->getEnfant(0)->ajouter(objet);
-		FacadeModele::obtenirInstance()->mettreAJourListeBillesEtNoeuds();
-		FacadeModele::obtenirInstance()->construireListesPalettes();
-		FacadeModele::obtenirInstance()->setDebug();
-	}
 	////////////////////////////////////////////////////////////////////////
 	///
 	/// @fn __declspec(dllexport) void __cdecl  creerObjetAvecTests()
@@ -1748,7 +1689,7 @@ extern "C"
 		if (lum > 2 || lum < 0)
 			return false;
 		if (debugLumiere) {
-			printCurrentTime();
+			FacadeModele::obtenirInstance()->printCurrentTime();
 			std::cout << " - Lumiere(s) ";
 		}
 		switch (lum) {

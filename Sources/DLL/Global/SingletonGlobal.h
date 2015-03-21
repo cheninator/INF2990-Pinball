@@ -61,8 +61,7 @@ public:
 	void setAnimation(bool animer) { animer_ = animer; };
 	bool obtenirAnimation() { return animer_; };
 
-	void spawnBille(glm::dvec3 position, glm::dvec3 echelle, NoeudAbstrait* portail){
-		;};
+	void spawnBille(glm::dvec3 position, glm::dvec3 echelle, NoeudAbstrait* portail){};
 
 	std::string obtenirPathTemp() { objectPathCreated_ ? NULL : getAndSetTempObjDirectory(); return objectPath_; };
 

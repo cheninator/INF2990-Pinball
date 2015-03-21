@@ -28,6 +28,7 @@
 
 #include <windows.h>
 #include <string>
+#include <iomanip>
 #include <set>
 #include <vector>
 #include "glm/glm.hpp"
@@ -218,6 +219,13 @@ public:
    // Assigner la valeur de l'animation a un objet
    void assignerAnimer( bool animer, NoeudAbstrait* noeud);
    void assignerAI(bool actif);
+
+   /// Preare la création de la bille (choisis le portail d'ou elle sera generee)
+   void preparerBille();
+   /// Cree une bille a la position et scale demande
+   void creeBille(glm::dvec3 position, glm::dvec3 echelle);
+
+   void printCurrentTime();
 
 private:
 

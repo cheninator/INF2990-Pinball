@@ -1876,3 +1876,76 @@ void FacadeModele::assignerAI(bool actif)
 {
 	utiliserAI = actif;
 }
+
+///////////////////////////////////////////////////////////////////////////////
+///
+/// @fn void FacadeModele::creeBille(glm::dvec3 position, glm::dvec3 echelle)
+/// @brief Cette fonction genere une bille a la position voulue (avec l'echele voulue)
+///
+/// @param[in]  position : position de la bille generee
+/// @param[in]  echelle : scale de la bille
+///
+/// @return Aucun.
+///
+///////////////////////////////////////////////////////////////////////////////
+void FacadeModele::creeBille(glm::dvec3 position, glm::dvec3 echelle)
+{
+	NoeudAbstrait* objet = obtenirArbreRenduINF2990()->creerNoeud("bille");
+	objet->assignerPositionRelative(position);
+	objet->assignerEchelle(echelle);
+	//HH:MM:SS:mmm – Nouvelle bille : x: POSX y: POSY
+	// http://brian.pontarelli.com/2009/01/05/getting-the-current-system-time-in-milliseconds-with-c/
+	if (FacadeModele::obtenirInstance()->obtenirConfiguration()[8] && FacadeModele::obtenirInstance()->obtenirConfiguration()[12]) {
+		printCurrentTime();
+		std::cout << std::fixed << std::setprecision(2);
+		std::cout << " - Nouvelle bille : x: " << objet->obtenirPositionRelative().x << " y: " << objet->obtenirPositionRelative().y << std::endl;;
+	}
+	obtenirArbreRenduINF2990()->getEnfant(0)->ajouter(objet);
+	mettreAJourListeBillesEtNoeuds();
+	construireListesPalettes();
+	setDebug();
+}
+
+void FacadeModele::preparerBille()
+{
+	std::vector<int> generateurs;
+	int i = 0;
+	int nbElements = FacadeModele::obtenirInstance()->obtenirArbreRenduINF2990()->getEnfant(0)->obtenirNombreEnfants();
+	NoeudAbstrait* noeudTable = FacadeModele::obtenirInstance()->obtenirArbreRenduINF2990()->getEnfant(0);
+	for (i = 0; i < nbElements; i++)
+	{
+
+		std::string typeNoeud = noeudTable->getEnfant(i)->obtenirType();
+
+		if (typeNoeud == "generateurbille")
+			generateurs.push_back(i);
+	}
+	if (generateurs.size() == 0)
+		return;
+
+	int pos = rand() % generateurs.size();
+
+	NoeudAbstrait* generateur = noeudTable->getEnfant(generateurs[pos]);
+	generateur->genererBille();
+	glm::dvec3 scale = generateur->obtenirAgrandissement();
+	glm::dvec3 position = generateur->obtenirPositionRelative();
+	glm::dvec3 rotation = generateur->obtenirRotation();
+	glm::dvec3 vecteur = { 0, -((30 * scale.x)), 0 };
+	double angleEnRadian = -rotation[2] * utilitaire::PI_180;
+	glm::dmat3 transform = glm::dmat3{ glm::dvec3{ cos(angleEnRadian), -sin(angleEnRadian), 0.0 },
+		glm::dvec3{ sin(angleEnRadian), cos(angleEnRadian), 0.0f },
+		glm::dvec3{ 0.0, 0.0, 1.0 } };
+
+	SingletonGlobal::obtenirInstance()->spawnBille(position + transform * vecteur, scale, generateur);
+	FacadeModele::obtenirInstance()->creeBille(position + transform * vecteur, scale);
+}
+
+void FacadeModele::printCurrentTime()
+{
+	SYSTEMTIME time;
+	GetLocalTime(&time);
+	std::cout << std::fixed << std::setw(2) << std::setprecision(2) << time.wHour << ":"
+		<< std::fixed << std::setfill('0') << std::setw(2) << std::setprecision(2) << time.wMinute << ":"
+		<< std::fixed << std::setfill('0') << std::setw(2) << std::setprecision(2) << time.wSecond << ":"
+		<< std::fixed << std::setfill('0') << std::setw(3) << std::setprecision(3) << time.wMilliseconds;
+}
