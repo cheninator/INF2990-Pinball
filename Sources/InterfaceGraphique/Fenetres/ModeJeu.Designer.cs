@@ -107,8 +107,8 @@
             this.Ortho_MenuItem,
             this.Orbitale_MenuItem});
             this.Camera_MenuItem.Name = "Camera_MenuItem";
-            this.Camera_MenuItem.Size = new System.Drawing.Size(60, 20);
-            this.Camera_MenuItem.Text = "Camera";
+            this.Camera_MenuItem.Size = new System.Drawing.Size(39, 20);
+            this.Camera_MenuItem.Text = "Vue";
             // 
             // Ortho_MenuItem
             // 

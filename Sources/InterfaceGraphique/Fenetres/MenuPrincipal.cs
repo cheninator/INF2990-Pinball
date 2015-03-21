@@ -326,8 +326,8 @@ namespace InterfaceGraphique
 
         private void pictureBox1_MouseEnter(object sender, EventArgs e)
         {
-            player.Stream = Properties.Resources.man_scream_01;
-            player.Play();
+          //  player.Stream = Properties.Resources.man_scream_01;
+          //  player.Play();
             /*
             if (webCamExiste && bit != null)
             {
