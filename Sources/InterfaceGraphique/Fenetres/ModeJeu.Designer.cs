@@ -113,14 +113,16 @@
             // Ortho_MenuItem
             // 
             this.Ortho_MenuItem.Name = "Ortho_MenuItem";
-            this.Ortho_MenuItem.Size = new System.Drawing.Size(182, 22);
-            this.Ortho_MenuItem.Text = "Vue Orthographique";
+            this.Ortho_MenuItem.ShortcutKeyDisplayString = "1";
+            this.Ortho_MenuItem.Size = new System.Drawing.Size(172, 22);
+            this.Ortho_MenuItem.Text = "Orthographique";
             // 
             // Orbitale_MenuItem
             // 
             this.Orbitale_MenuItem.Name = "Orbitale_MenuItem";
-            this.Orbitale_MenuItem.Size = new System.Drawing.Size(182, 22);
-            this.Orbitale_MenuItem.Text = "Vue Orbitale";
+            this.Orbitale_MenuItem.ShortcutKeyDisplayString = "2";
+            this.Orbitale_MenuItem.Size = new System.Drawing.Size(172, 22);
+            this.Orbitale_MenuItem.Text = "Orbitale";
             // 
             // InfoPanel
             // 
