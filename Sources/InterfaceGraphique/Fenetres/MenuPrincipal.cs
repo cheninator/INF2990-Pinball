@@ -326,7 +326,7 @@ namespace InterfaceGraphique
 
         private void pictureBox1_MouseEnter(object sender, EventArgs e)
         {
-            player.Stream = Properties.Resources.annoying;
+            player.Stream = Properties.Resources.man_scream_01;
             player.Play();
             /*
             if (webCamExiste && bit != null)
@@ -339,7 +339,8 @@ namespace InterfaceGraphique
                 pictureBox1.Image = Properties.Resources.newScary;              
             }
             */
-            pictureBox1.Image = Properties.Resources.newScary;              
+           // pictureBox1.Image = Properties.Resources.newScary;              
+             pictureBox1.Image = Properties.Resources.SaintTrinity;              
 
 
         }

@@ -52,6 +52,7 @@ namespace InterfaceGraphique
         public Campagne()
         {
             InitializeComponent();
+           // this.FormBorderStyle = FormBorderStyle.None;
             sortColumnAscend(1);
             mapList = new StringBuilder();
             zonesCampagne = new List<string>();
@@ -283,6 +284,7 @@ namespace InterfaceGraphique
              ZoneInfo zi = new ZoneInfo(ZonesChoisis.Items[0].Text, ZonesChoisis.Items[0].SubItems[1].Text,false);
              this.Hide();
              zi.ShowDialog();
+             Program.playerName = textBoxName.Text;
              ((MainMenu)this.Owner).LancerModeJeu(zonesCampagne,typeJoueur);
 
            

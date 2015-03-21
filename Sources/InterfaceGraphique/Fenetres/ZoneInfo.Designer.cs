@@ -206,8 +206,10 @@
             this.Controls.Add(this.label_Rank);
             this.Controls.Add(this.label_Nom);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
+            this.MaximizeBox = false;
             this.Name = "ZoneInfo";
-            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
+            this.ShowInTaskbar = false;
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Information";
             this.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.ZoneInfo_KeyPress);
             ((System.ComponentModel.ISupportInitialize)(this.screenShot)).EndInit();
