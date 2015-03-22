@@ -10,7 +10,7 @@
 
 #include "ConfigScene.h"
 #include <fstream>
-#include <iostream>
+
 ////////////////////////////////////////////////////////////////////////
 ///
 /// @fn ConfigScene::ConfigScene()
@@ -235,7 +235,7 @@ void ConfigScene::modifierCampagne(char* maps, int length)
 ///
 /// Cette fonction retourne les informations de derniere campagne
 ///
-/// @return Aucune.
+/// @return string, la liste des zones de jeu de derniere campagne
 ///
 ////////////////////////////////////////////////////////////////////////
 std::string ConfigScene::obtenirCampagne() const 

@@ -10,7 +10,6 @@
 #include "../Arbre/ArbreRenduINF2990.h"
 #include "../Arbre/Noeuds/NoeudTable.h"
 #include <fstream>
-#include <iostream>
 
 
 ////////////////////////////////////////////////////////////////////////
@@ -46,6 +45,7 @@ VisiteurXML::VisiteurXML(std::string nom, int proprietes[])
 VisiteurXML::~VisiteurXML()
 {
 	delete proprietes_;
+	proprietes_ = 0;
 }
 
 

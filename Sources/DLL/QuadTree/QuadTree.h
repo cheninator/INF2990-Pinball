@@ -15,7 +15,8 @@
 
 ///////////////////////////////////////////////////////////////////////////
 /// @class QuadTree
-/// @brief 
+/// @brief Cette classe permet de reduire le nombre de calcul/comparaisons
+///			à effectuer pour la gestion de la physique.
 ///
 /// @author The Ballers
 /// @date 2015-02-24
@@ -59,14 +60,9 @@ private:
 	/// Retourne le QuadTree dans lequel il faut faire l'insertion
 	QuadTree* obtenirQuadrant(NoeudAbstrait* noeud);
 
-	/// Trouver un pointeur nul et rafraichir la liste des noeuds des QuadTree
-	void rafraichir();
-
 	// Propriétés du QuadTree
-	const int MAX_CAPACITY = 7;
+	const int MAX_CAPACITY = 10;
 	const int MAX_LEVEL = 3;
-
-	/// Propriete du QuadTree
 	int niveauCourant_;
 
 	/// Pour delimiter l'espace du QuadTree
@@ -77,11 +73,8 @@ private:
 
 	/// Pour la subdivision du QuadTree en sous QuadTree
 	QuadTree* nordEst_;
-	/// Pour la subdivision du QuadTree en sous QuadTree
 	QuadTree* nordOuest_;
-	/// Pour la subdivision du QuadTree en sous QuadTree
 	QuadTree* sudEst_;
-	/// Pour la subdivision du QuadTree en sous QuadTree
 	QuadTree* sudOuest_;
 
 };
