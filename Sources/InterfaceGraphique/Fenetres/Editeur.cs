@@ -30,6 +30,7 @@ namespace InterfaceGraphique
     ///////////////////////////////////////////////////////////////////////////
     public partial class Editeur : Form
     {
+        private bool updateFrame = false;
         FullScreen fs = new FullScreen();
         static public StringBuilder myObjectName = new StringBuilder("vide");
         static bool soundActif = false; ///< Play Sound or not
@@ -67,6 +68,7 @@ namespace InterfaceGraphique
         ////////////////////////////////////////////////////////////////////////
         public Editeur()
         {
+            updateFrame = false;
             this.KeyPreview = true;
             this.KeyPress += new KeyPressEventHandler(ToucheEnfonce);
             // Pour le deplacement de la vue
@@ -159,6 +161,8 @@ namespace InterfaceGraphique
         ////////////////////////////////////////////////////////////////////////
         public void MettreAJour(double tempsInterAffichage)
         {
+            if (updateFrame == false)
+                return;
             try
             {
                 this.Invoke((MethodInvoker)delegate
@@ -178,7 +182,7 @@ namespace InterfaceGraphique
                             Creation_Panel.Visible = true;
                         }
                         
-                        if (FonctionsNatives.obtenirNombreBillesCourante() == 0 && etat is EtatEditeurTest)
+                        if (etat is EtatEditeurTest && FonctionsNatives.obtenirNombreBillesCourante() == 0)
                         {
                             StringBuilder bille = new StringBuilder("bille");
                             FonctionsNatives.creerObjet(bille, bille.Capacity);
@@ -2994,21 +2998,6 @@ namespace InterfaceGraphique
 
         //////////////////////////////////////////////////////////////////////////////////////////
         ///
-        /// @fn private void Bille_bouton_Click(object sender, EventArgs e)
-        /// @brief Cree une bille lorsqu'on clique sur le bouton "Bille".
-        /// @param[in] sender : Objet duquel provient un evenement.
-        /// @param[in] e : Evenement qui lance la fonction.
-        /// @return Aucune.
-        ///
-        //////////////////////////////////////////////////////////////////////////////////////////
-        private void Bille_bouton_Click(object sender, EventArgs e)
-        {
-            StringBuilder bille = new StringBuilder("bille");
-            FonctionsNatives.creerObjet(bille, bille.Capacity);
-        }
-
-        //////////////////////////////////////////////////////////////////////////////////////////
-        ///
         /// @fn private void panel_GL_SizeChanged(object sender, EventArgs e)
         /// @brief Ajustement des dimensions du UI lorsque la taille du panel GL change.
         /// @param[in] sender : Objet duquel provient un evenement.
@@ -3072,6 +3061,7 @@ namespace InterfaceGraphique
 
         private void Editeur_Shown(object sender, EventArgs e)
         {
+            updateFrame = true;
             Program.myCustomConsole.reStart();
             Program.myCustomConsole.Update();
             if (Program.mMenu.modeEdit != null)

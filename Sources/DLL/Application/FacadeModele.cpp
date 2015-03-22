@@ -1920,7 +1920,11 @@ bool FacadeModele::preparerBille()
 			generateurs.push_back(i);
 	}
 	if (generateurs.size() == 0)
+	{
+		// On met le nombre de bille en jeu a -1, pour dire impossible
+		SingletonGlobal::obtenirInstance()->retirerBille();
 		return false;
+	}
 
 	int pos = rand() % generateurs.size();
 
