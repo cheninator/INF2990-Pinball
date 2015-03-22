@@ -133,8 +133,62 @@ void NoeudPaletteG::animer(float temps)
 			// si impossible, la palette est bloquee et doit tomber dans l'etat INACTIVE
 			if (obtenirRotation().z - angleZOriginal_ < 60)
 			{
-				assignerRotation(glm::dvec3{ 0, 0, VITESSE_ANGULAIRE_PALETTE_ACTIVE * temps });
-				vitesseAngulaire_ = VITESSE_ANGULAIRE_PALETTE_ACTIVE * utilitaire::PI_180;
+				//verifier si la palette entre en collision avec un autre objet
+				std::vector<glm::dvec3> boite = obtenirVecteursEnglobants();
+				NoeudAbstrait* parent = obtenirParent();
+				bool contact = false;
+				int i = 0;
+				while (i < parent->obtenirNombreEnfants() && contact == false)
+				{
+					std::string type = parent->getEnfant(i)->obtenirType();
+
+					if (parent->getEnfant(i) != this && type != "bille" && type != "generateurbille")
+					{
+						int j = 0;
+						while (j < boite.size() && contact == false)
+						{
+							if (type != "butoirg" && type != "butoird")
+							{
+								if (parent->getEnfant(i)->pointEstDansBoite(boite[j] + positionRelative_))
+									contact = true;
+							}
+							else //si butoir triangulaire
+							{
+								//verifier s'il y a intersection entre un segment de la palette avec
+								//un segment du butoir
+								std::vector<glm::dvec3> boiteButoir = parent->getEnfant(i)->obtenirVecteursEnglobants();
+								int k = 0;
+								while (k < boiteButoir.size() && contact == false)
+								{
+									glm::dvec3 a = boite[j] + positionRelative_;
+									glm::dvec3 b = boite[(j + 1) % boite.size()] + positionRelative_;
+									glm::dvec3 c = boiteButoir[k] + parent->getEnfant(i)->obtenirPositionRelative();
+									glm::dvec3 d = boite[(k + 1) % boiteButoir.size()] + parent->getEnfant(i)->obtenirPositionRelative();
+
+									if (utilitaire::intersectionDeuxSegments(a, b, c, d))
+										contact = true;
+
+									k++;
+								}
+							}
+							
+							j++;
+						}
+					}
+					
+					i++;
+				}
+
+				if (!contact)
+				{
+					assignerRotation(glm::dvec3{ 0, 0, VITESSE_ANGULAIRE_PALETTE_ACTIVE * temps });
+					vitesseAngulaire_ = VITESSE_ANGULAIRE_PALETTE_ACTIVE * utilitaire::PI_180;
+				}
+				else
+				{
+					vitesseAngulaire_ = 0;
+					etatPalette_ = BLOQUEE;
+				}					
 			}				
 			else
 			{
