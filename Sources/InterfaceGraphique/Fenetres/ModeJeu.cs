@@ -215,27 +215,6 @@ namespace InterfaceGraphique
 
         ////////////////////////////////////////////////////////////////////////
         ///
-        /// @fn private void timerBille2_Tick(object sender, EventArgs e)
-        /// @brief Evenement appele a un certain intervalle lorsque le Timer est actif.
-        /// @param[in] sender : Objet duquel provient un evenement.
-        /// @param[in] e : evenement qui lance la fonction.
-        /// @return Aucune.
-        ///
-        ////////////////////////////////////////////////////////////////////////
-        private void timerBille2_Tick(object sender, EventArgs e)
-        {
-            if (FonctionsNatives.obtenirModeDoubleBille() != 0 && billesEnJeu < 2)
-            {
-               StringBuilder bille = new StringBuilder("bille");
-               FonctionsNatives.creerObjet(bille, bille.Capacity);
-               Console.WriteLine("2nd Bille");
-               nombreDeBillesUtilise++;
-               billesDisponibles--;
-            } 
-        }
-
-        ////////////////////////////////////////////////////////////////////////
-        ///
         /// @fn public void MettreAJour(double tempsInterAffichage)
         /// @brief Mise a jour du panneau OpenGL.
         /// @param[in] tempsInterAffichage : Objet duquel provient un evenement.
@@ -260,13 +239,12 @@ namespace InterfaceGraphique
                     }
                     billesEnJeu = FonctionsNatives.obtenirNombreBillesCourante();
 
-                    if (billesEnJeu < nombreBillesMax && (billesDisponibles >= 0))
-                    
+                    if (billesEnJeu < nombreBillesMax && (billesDisponibles > 0))
                     {
                         // Wait a certain time
                         CreerBille();
                     }
-                    if (billesDisponibles < 0 && boolTemp)
+                    if (billesDisponibles == 0 && boolTemp && billesEnJeu == 0)
                     {
                         FinCampagne(false);
                     }
