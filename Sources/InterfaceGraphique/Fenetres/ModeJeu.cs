@@ -132,7 +132,7 @@ namespace InterfaceGraphique
             currentZoom = -1;
             myMaps = new List<string>(maps);
             nbZones = maps.Count;
-           
+            Console.WriteLine(nbZones);
             map = new StringBuilder(myMaps[0]);
             FonctionsNatives.ouvrirXML(map, map.Capacity);
             resetConfig();
@@ -262,7 +262,7 @@ namespace InterfaceGraphique
                     {
                         label_nbBilles.Text = billesDisponibles.ToString();
                     }
-                    if (pointsPartie >= pointsGagnerPartie && boolTemp)
+                    if (pointsPartie >= pointsGagnerPartie && boolTemp && (nbZones > 1))
                     {
                         if (currentZone >= nbZones)
                         {
