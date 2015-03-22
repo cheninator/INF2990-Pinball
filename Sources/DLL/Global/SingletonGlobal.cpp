@@ -52,9 +52,9 @@ void SingletonGlobal::resetConfigurationCollision(int collisionPointsCirculaire,
 	//nombreDeBillesGagner_ = 0;
 
 	//pointsTotales_ += pointsPartie_;
-
 	pointsPartie_ = 0;
 	enCoursDeGeneration_ = 0;
+	launchSequence_.clear();
 }
 
 ////////////////////////////////////////////////////////////////////////
@@ -70,9 +70,7 @@ void SingletonGlobal::updateBilles()
 {
 	if (enCoursDeGeneration_ == 0 && launchSequence_.size() > 0)
 	{
-		std::pair<std::pair<glm::dvec3, glm::dvec3>, NoeudAbstrait*> billeAAfficher
-			= launchSequence_.back();
-		billeAAfficher.second->genererBille();
+		launchSequence_.back().second->genererBille();
 		enCoursDeGeneration_++;
 		afficherBille();
 	}
