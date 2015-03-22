@@ -1298,7 +1298,7 @@ int FacadeModele::obtenirModeDoubleBille() {
 
 ///////////////////////////////////////////////////////////////////////////////
 ///
-/// @fn int	FacadeModele::obtenirModeDoubleBille()
+/// @fn int	FacadeModele::obtenirModeForceRebond()
 /// @brief Le mode avec force dans les rebonds.
 /// @return 1 si le mode est active, 0 sinon.
 ///

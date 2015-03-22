@@ -204,7 +204,7 @@ void NoeudButoirD::traiterCollisions(aidecollision::DetailsCollision details, No
 		SingletonGlobal::obtenirInstance()->collisionButoirTriangulaire();
 		compteurIllumination_ = 0;
 		if (FacadeModele::obtenirInstance()->obtenirModeForceRebond())
-			facteurRebond = 2.0;
+			facteurRebond = 1.3;
 	}
 	NoeudAbstrait::traiterCollisions(details, bille, facteurRebond);
 }
