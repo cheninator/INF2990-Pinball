@@ -55,6 +55,7 @@ namespace InterfaceGraphique
         private int billesDisponibles = 0;  ///< Billes dont le(s) joueur(s) disposent
         public int billesEnJeu = 0;         ///< Billes qui sont sur la zone
         private int nombreDeBillesUtilise = 0; ///< Nombre de Billes deja utilises
+        private int billesPerdus = 0;       ///< Nomrede billes tombees dans le trou
 
         // Modificateurs
         public void setVisibilityMenuStrip(bool vis) { menuStrip.Visible = vis; }
@@ -238,7 +239,8 @@ namespace InterfaceGraphique
                         FonctionsNatives.dessinerOpenGL();
                     }
                     billesEnJeu = FonctionsNatives.obtenirNombreBillesCourante();
-
+                    billesPerdus = FonctionsNatives.obtenirNombreBillesPerdus();
+                    billesDisponibles = nombreBillesInit + nombreDeBillesGagnes - billesPerdus - billesEnJeu;
                     if (billesEnJeu < nombreBillesMax && (billesDisponibles > 0))
                     {
                         // Wait a certain time
@@ -252,7 +254,7 @@ namespace InterfaceGraphique
                     {
                         nombreDeBillesGagnes++;
                         label_nbGagnes.Text = nombreDeBillesGagnes.ToString();
-                        billesDisponibles++;
+
                     }
 
                     label_nbPoints.Text = pointsPartie.ToString();
@@ -393,7 +395,6 @@ namespace InterfaceGraphique
             StringBuilder bille = new StringBuilder("bille");
             FonctionsNatives.creerObjet(bille, bille.Capacity);
             nombreDeBillesUtilise++;
-            billesDisponibles--;
         }
 
         ////////////////////////////////////////////////////////////////////////

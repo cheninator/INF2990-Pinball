@@ -1486,6 +1486,18 @@ extern "C"
 
 	///////////////////////////////////////////////////////////////////////////////
 	///
+	/// @fn __declspec(dllexport) int __cdecl obtenirNombreDeBillesPerdu()
+	/// @brief Retourne le nombre de billes detruite
+	/// @return Le nombre de billes.
+	///
+	///////////////////////////////////////////////////////////////////////////////
+	__declspec(dllexport) int __cdecl obtenirNombreBillesPerdus()
+	{
+		return SingletonGlobal::obtenirInstance()->obtenirNombreDeBillesPerdus();
+	}
+
+	///////////////////////////////////////////////////////////////////////////////
+	///
 	/// @fn __declspec(dllexport) int __cdecl obtenirModeDoubleBille()
 	/// @brief Retourne la valeur d'activation du mode correspondant.
 	/// @return 1 si le mode double bille est actif, 0 sinon.

@@ -54,10 +54,11 @@ public:
 									 int collisionPointsPartieGagner,
 									 int collisionPointsNouvelleBille);
 
-	void retirerBille() { billesCourantes_--; };
+	void retirerBille() { billesCourantes_--; billesPerdus_++; };
 	void ajouterBille() { billesCourantes_++; };
 	void afficherBille();
 	int obtenirBille() { return billesCourantes_; };
+	int obtenirNombreDeBillesPerdus()  { return billesPerdus_; };
 	void resetBille()  { billesCourantes_ = 0; };
 
 	void updateBilles();
@@ -94,6 +95,7 @@ private:
 	/// AJOUTER VOS VARIABLES GLOBAL ICI
 
 	int pointsPartie_{ 0 };
+	int billesPerdus_{ 0 };
 
 	int collisionPointsCirculaire_{ 0 };
 	int collisionPointsTriangulaire_{ 0 };

@@ -53,6 +53,7 @@ void SingletonGlobal::resetConfigurationCollision(int collisionPointsCirculaire,
 
 	//pointsTotales_ += pointsPartie_;
 	pointsPartie_ = 0;
+	billesPerdus_ = 0;
 	enCoursDeGeneration_ = 0;
 	launchSequence_.clear();
 }
