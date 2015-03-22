@@ -256,6 +256,7 @@ extern "C"
 		std::string nomObjet(value);
 		if (nomObjet == "bille")
 		{
+			SingletonGlobal::obtenirInstance()->ajouterBille();
 			FacadeModele::obtenirInstance()->preparerBille();
 			return;
 		}

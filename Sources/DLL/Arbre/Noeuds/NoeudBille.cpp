@@ -46,7 +46,6 @@ NoeudBille::NoeudBille(const std::string& typeNoeud)
 	vitesse_ = VITESSE_INITIALE_NORUD_BILLE;
 	masse_ = MASSE_NOEUD_BILLE;
 	constanteDeFrottement_ = FROTTEMENT_NOEUD_BILLE;
-	SingletonGlobal::obtenirInstance()->ajouterBille();
 }
 
 ////////////////////////////////////////////////////////////////////////

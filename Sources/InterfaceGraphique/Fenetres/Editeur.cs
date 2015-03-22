@@ -1599,8 +1599,8 @@ namespace InterfaceGraphique
             flowLayoutPanel1.Hide();
 
             menu1Enable(false);
-            StringBuilder bille = new StringBuilder("bille");
-            FonctionsNatives.creerObjet(bille, bille.Capacity);
+            //StringBuilder bille = new StringBuilder("bille");
+            //FonctionsNatives.creerObjet(bille, bille.Capacity);
             panel_GL.BringToFront();
             panel_GL.Anchor = AnchorStyles.None;
             panel_GL.Location = new Point(163, 24);
