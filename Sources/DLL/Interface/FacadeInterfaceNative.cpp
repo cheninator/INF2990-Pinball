@@ -256,8 +256,8 @@ extern "C"
 		std::string nomObjet(value);
 		if (nomObjet == "bille")
 		{
-			SingletonGlobal::obtenirInstance()->ajouterBille();
-			FacadeModele::obtenirInstance()->preparerBille();
+			if(FacadeModele::obtenirInstance()->preparerBille())
+				SingletonGlobal::obtenirInstance()->ajouterBille();
 			return;
 		}
 		if (isTwin == true) {

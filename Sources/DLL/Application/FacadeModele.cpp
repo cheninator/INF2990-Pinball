@@ -1906,7 +1906,7 @@ void FacadeModele::creeBille(glm::dvec3 position, glm::dvec3 echelle)
 	setDebug();
 }
 
-void FacadeModele::preparerBille()
+bool FacadeModele::preparerBille()
 {
 	std::vector<int> generateurs;
 	int i = 0;
@@ -1920,7 +1920,7 @@ void FacadeModele::preparerBille()
 			generateurs.push_back(i);
 	}
 	if (generateurs.size() == 0)
-		return;
+		return false;
 
 	int pos = rand() % generateurs.size();
 
@@ -1935,6 +1935,7 @@ void FacadeModele::preparerBille()
 		glm::dvec3{ 0.0, 0.0, 1.0 } };
 
 	SingletonGlobal::obtenirInstance()->spawnBille(position + transform * vecteur, scale, generateur);
+	return true;
 }
 
 void FacadeModele::printCurrentTime()

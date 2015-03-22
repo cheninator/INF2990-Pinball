@@ -221,7 +221,7 @@ public:
    void assignerAI(bool actif);
 
    /// Preare la création de la bille (choisis le portail d'ou elle sera generee)
-   void preparerBille();
+   bool preparerBille();
    /// Cree une bille a la position et scale demande
    void creeBille(glm::dvec3 position, glm::dvec3 echelle);
 

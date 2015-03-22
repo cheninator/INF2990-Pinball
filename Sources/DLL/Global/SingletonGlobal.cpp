@@ -101,10 +101,10 @@ void SingletonGlobal::spawnBille(glm::dvec3 position, glm::dvec3 echelle, NoeudA
 ////////////////////////////////////////////////////////////////////////
 void SingletonGlobal::afficherBille()
 {
-	std::pair<std::pair<glm::dvec3, glm::dvec3>, NoeudAbstrait*> billeAAfficher
-			= launchSequence_.back();
+	glm::dvec3 position = launchSequence_.back().first.first;
+	glm::dvec3 scale = launchSequence_.back().first.second;
 	launchSequence_.pop_back();
-	FacadeModele::obtenirInstance()->creeBille(billeAAfficher.first.first, billeAAfficher.first.second);
+	FacadeModele::obtenirInstance()->creeBille(position, scale);
 }
 
 ////////////////////////////////////////////////////////////////////////
