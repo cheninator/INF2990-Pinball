@@ -65,12 +65,11 @@
             // columnHeader1
             // 
             this.columnHeader1.Text = "Zone de jeu";
-            this.columnHeader1.Width = 92;
+            this.columnHeader1.Width = 120;
             // 
             // columnHeader2
             // 
             this.columnHeader2.Text = "Difficulté";
-            this.columnHeader2.Width = 100;
             // 
             // screenShot
             // 

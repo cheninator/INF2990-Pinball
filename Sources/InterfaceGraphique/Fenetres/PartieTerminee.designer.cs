@@ -41,7 +41,7 @@
             this.boutonRecommencer.Name = "boutonRecommencer";
             this.boutonRecommencer.Size = new System.Drawing.Size(92, 36);
             this.boutonRecommencer.TabIndex = 0;
-            this.boutonRecommencer.Text = "Recommencer la partie";
+            this.boutonRecommencer.Text = "Recommencer";
             this.boutonRecommencer.UseVisualStyleBackColor = true;
             this.boutonRecommencer.Click += new System.EventHandler(this.boutonRecommencer_Click);
             // 

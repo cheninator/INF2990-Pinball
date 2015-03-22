@@ -1598,6 +1598,9 @@ namespace InterfaceGraphique
             menuStrip1.Hide();
             FonctionsNatives.animerJeu(true);
             FonctionsNatives.rechargerArbre(false);
+            FonctionsNatives.resetNombreBillesCourantes();
+            FonctionsNatives.rechargerArbre(true);
+
             if (Creation_Panel.Visible)
                 Creation_Panel.Hide();
             flowLayoutPanel1.Hide();
