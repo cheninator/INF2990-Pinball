@@ -583,6 +583,7 @@
             this.Controls.Add(this.tabProprietes);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Icon = global::InterfaceGraphique.Properties.Resources.Pinball;
+            this.MaximizeBox = false;
             this.Name = "Configuration";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Configuration";
