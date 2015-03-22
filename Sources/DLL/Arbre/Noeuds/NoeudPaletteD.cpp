@@ -162,7 +162,7 @@ void NoeudPaletteD::animer(float temps)
 									glm::dvec3 a = boite[j] + positionRelative_;
 									glm::dvec3 b = boite[(j + 1) % boite.size()] + positionRelative_;
 									glm::dvec3 c = boiteButoir[k] + parent->getEnfant(i)->obtenirPositionRelative();
-									glm::dvec3 d = boite[(k + 1) % boiteButoir.size()] + parent->getEnfant(i)->obtenirPositionRelative();
+									glm::dvec3 d = boiteButoir[(k + 1) % boiteButoir.size()] + parent->getEnfant(i)->obtenirPositionRelative();
 
 									if (utilitaire::intersectionDeuxSegments(a, b, c, d))
 										contact = true;
