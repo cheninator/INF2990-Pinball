@@ -129,16 +129,16 @@ void QuadTree::clear()
 		sudEst_->clear();
 		sudOuest_->clear();
 
+		/// Desallouer la mémoire
 		delete nordEst_;
-		nordEst_ = nullptr;
-
 		delete nordOuest_;
-		nordOuest_ = nullptr;
-
 		delete sudEst_;
-		sudEst_ = nullptr;
-
 		delete sudOuest_;
+
+		/// Remettre les pointeurs à nullptr
+		nordEst_ = nullptr;
+		nordOuest_ = nullptr;
+		sudEst_ = nullptr;
 		sudOuest_ = nullptr;
 	}
 
@@ -224,6 +224,9 @@ bool QuadTree::estDansQuadTree(NoeudAbstrait* noeud, QuadTree* quad) const
 ////////////////////////////////////////////////////////////////////////
 bool QuadTree::estDansQuadTree(glm::dvec3 points, QuadTree* quad) const
 {
+	if (quad == nullptr)
+		return false;
+
 	if ( (points.x > quad->inferieurGauche_.x) && (points.x < quad->superieurDroit_.x)
 	  && (points.y > quad->inferieurGauche_.y) && (points.y < quad->superieurDroit_.y))
 		return true;
@@ -317,7 +320,7 @@ bool QuadTree::insert(NoeudAbstrait* noeud)
 		}
 
 		// Si le QuadTree contient déjà des sous QuadTree, insérer le noeud dans le bon QuadTree
-		else if (nordEst_ != nullptr)
+		else if (nordEst_ != nullptr && obtenirQuadrant(noeud) != this)
 		{
 			obtenirQuadrant(noeud)->insert(noeud);
 			return true;
@@ -447,10 +450,7 @@ std::list<NoeudAbstrait*> QuadTree::retrieve(NoeudAbstrait* noeud)
 bool QuadTree::remove(NoeudAbstrait* noeud)
 {
 	if (noeud == nullptr)
-	{
-		rafraichir();
 		return false;
-	}
 
 	if (estDansQuadTree(noeud, this))
 	{
@@ -472,38 +472,4 @@ bool QuadTree::remove(NoeudAbstrait* noeud)
 
 	else
 		return false;
-}
-
-
-////////////////////////////////////////////////////////////////////////
-///
-/// @fn std::vector<NoeudAbstrait*> QuadTree::retrieve(NoeudAbstrait* noeud)
-///
-////////////////////////////////////////////////////////////////////////
-void QuadTree::rafraichir()
-{
-	std::list<NoeudAbstrait*>::iterator iter = objets_.begin();
-	bool suspect = false;
-
-	for (; iter != objets_.end() && !suspect; iter++)
-	{
-		if (*iter == nullptr)
-			suspect = true;
-	}
-
-	if (suspect)
-	{
-		objets_.erase(iter);
-		return;
-	}
-
-
-	if (nordEst_ != nullptr)
-	{
-		nordEst_->rafraichir();
-		nordOuest_->rafraichir();
-		sudEst_->rafraichir();
-		sudOuest_->rafraichir();
-	}
-
 }
