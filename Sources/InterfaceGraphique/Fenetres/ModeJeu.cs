@@ -305,7 +305,7 @@ namespace InterfaceGraphique
             }
             //Console.WriteLine("closing");
             Program.myCustomConsole.Hide();
-            Console.WriteLine("closing");
+          //  Console.WriteLine("closing");
         }
 
         ////////////////////////////////////////////////////////////////////////

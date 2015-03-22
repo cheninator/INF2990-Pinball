@@ -423,11 +423,12 @@ namespace InterfaceGraphique
                     }
                 }
 
-                else if (e.KeyChar == 'n')
+                /*else if (e.KeyChar == 'n')
                 {
                     StringBuilder bille = new StringBuilder("bille");
-                    FonctionsNatives.creerObjet(bille, bille.Capacity);
+                   FonctionsNatives.creerObjet(bille, bille.Capacity);
                 }
+                */
                 else if (e.KeyChar == 'j')
                 {
                     //Console.WriteLine("LUMIERE AMBIANTE");
