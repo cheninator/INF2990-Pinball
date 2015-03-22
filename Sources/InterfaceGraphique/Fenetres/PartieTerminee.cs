@@ -44,7 +44,7 @@ namespace InterfaceGraphique
         {
             InitializeComponent();
             StartPosition = FormStartPosition.CenterScreen;
-
+           
             if (victoire == false)
             {
               //  player = new System.Media.SoundPlayer(Properties.Resources.Trombone);

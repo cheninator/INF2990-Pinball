@@ -587,6 +587,7 @@
             this.Name = "Configuration";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Configuration";
+            this.VisibleChanged += new System.EventHandler(this.Configuration_VisibleChanged);
             this.tabProprietes.ResumeLayout(false);
             this.tabPage1.ResumeLayout(false);
             this.tabPage2.ResumeLayout(false);

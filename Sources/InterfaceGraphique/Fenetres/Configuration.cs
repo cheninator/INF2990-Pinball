@@ -25,7 +25,7 @@ namespace InterfaceGraphique
     public partial class Configuration : Form
     {
         int[] defaultValues = { 65, 83, 52, 53};
-        int[] currentValues = { 65, 83, 52, 53, 32, 49, 50, 74, 75, 76, 66 };
+        int[] currentValues = { 65, 83, 52, 53, 32, 49, 50, 74, 75, 76, 66, 84 };
         int[] valuesXML = new int[13]; 
         string maTouche;
         bool mediaPlaying = false;
@@ -163,6 +163,8 @@ namespace InterfaceGraphique
         ////////////////////////////////////////////////////////////////////////
         private bool isValid(int touche)
         {
+            if (touche >= 96 && touche <= 105)
+                return true;
             if( (touche >= 65 && touche <= 90) || (touche >= 48 && touche <= 57) || (touche == 32) )
             {
                 foreach (int x in currentValues)
@@ -254,7 +256,7 @@ namespace InterfaceGraphique
         ///
         ////////////////////////////////////////////////////////////////////////
         private void PGJ1_bouton_KeyDown(object sender, KeyEventArgs e)
-        {         
+        {
             int touche = e.KeyValue;
             if( this.isValid(touche) == true)
             {
@@ -262,7 +264,10 @@ namespace InterfaceGraphique
                 maTouche = char.ConvertFromUtf32(touche);
                 if (maTouche == " ")
                     maTouche = "Espace";
-                PGJ1_bouton.Text = maTouche;
+                if (touche >= 96 && touche <= 105)
+                    PGJ1_bouton.Text = "NumPad" + char.ConvertFromUtf32(touche - '0');
+                else
+                    PGJ1_bouton.Text = maTouche;
             }
                    
 
@@ -280,14 +285,20 @@ namespace InterfaceGraphique
         ////////////////////////////////////////////////////////////////////////
         private void PDJ1_bouton_KeyDown(object sender, KeyEventArgs e)
         {
+            
             int touche = e.KeyValue;
+            Console.WriteLine(e.KeyData.ToString());
+            Console.WriteLine(touche);
             if (this.isValid(touche) == true)
             {
                 currentValues[1] = touche;
                 maTouche = char.ConvertFromUtf32(touche);
                 if (maTouche == " ")
                     maTouche = "Espace";
-                PDJ1_bouton.Text = maTouche;
+                if (touche >= 96 && touche <= 105)
+                   PDJ1_bouton.Text = "NumPad" + char.ConvertFromUtf32(touche - '0');
+                else
+                    PDJ1_bouton.Text = maTouche;
             }
         }
 
@@ -310,7 +321,10 @@ namespace InterfaceGraphique
                 currentValues[2] = touche;
                 if (maTouche == " ")
                     maTouche = "Espace";
-                PGJ2_bouton.Text = maTouche;
+                if (touche >= 96 && touche <= 105)
+                    PGJ2_bouton.Text = "NumPad" + char.ConvertFromUtf32(touche - '0');
+                else
+                    PGJ2_bouton.Text = maTouche;
             }
         }
 
@@ -333,7 +347,10 @@ namespace InterfaceGraphique
                 maTouche = char.ConvertFromUtf32(touche);
                 if (maTouche == " ")
                     maTouche = "Espace";
-                PDJ2_bouton.Text = maTouche;
+                if (touche >= 96 && touche <= 105)
+                    PDJ2_bouton.Text = "NumPad" + char.ConvertFromUtf32(touche - '0');
+                else
+                    PDJ2_bouton.Text = maTouche;
             }
         }
 
@@ -350,13 +367,18 @@ namespace InterfaceGraphique
         private void Ressort_bouton_KeyDown(object sender, KeyEventArgs e)
         {
             int touche = e.KeyValue;
+            
             if (this.isValid(touche) == true)
             {
                 currentValues[4] = touche;
                 maTouche = char.ConvertFromUtf32(touche);
                 if (maTouche == " ")
                     maTouche = "Espace";
-                Ressort_bouton.Text = maTouche;
+                if (touche >= 96 && touche <= 105)
+                    Ressort_bouton.Text = "NumPad" + char.ConvertFromUtf32(touche - '0');
+                else
+                    Ressort_bouton.Text = maTouche;
+               
             }
         }
 
@@ -535,6 +557,23 @@ namespace InterfaceGraphique
             if (GLOB_OK.Checked)
             {
                 radioButtonEnable(true);
+            }
+        }
+
+        ////////////////////////////////////////////////////////////////////////
+        ///
+        /// @fn private void Configuration_VisibleChanged(object sender, EventArgs e)
+        /// @brief Gestion d'evenement lorsqu'on active le menu Configuration
+        /// @param[in] sender : Objet duquel provient un evenement.
+        /// @param[in] e : evenement qui lance la fonction.
+        /// @return Aucune.
+        ///
+        ////////////////////////////////////////////////////////////////////////
+        private void Configuration_VisibleChanged(object sender, EventArgs e)
+        {
+            if (this.Visible)
+            {
+                InitialiserAvecBinaire();
             }
         }
     }

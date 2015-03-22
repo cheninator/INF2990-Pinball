@@ -215,7 +215,7 @@ namespace InterfaceGraphique
                 parent_.resumeGame();
                 treated = true;
             }
-            if (e.KeyChar == 'b')
+            if (Char.ToLower(e.KeyChar) == 'b')
             {
                 toggleDebugOutput();
                 treated = true;
@@ -364,31 +364,32 @@ namespace InterfaceGraphique
         ////////////////////////////////////////////////////////////////////////
         public override bool traiterKeyPress(object sender, KeyPressEventArgs e)
         {
-            if (e.KeyChar == 'b')
+            if (Char.ToLower(e.KeyChar) == 'b')
+
             {
                 toggleDebugOutput();
             }
 
-            else if (e.KeyChar == 'j')
+            else if (Char.ToLower(e.KeyChar) == 'j')
             {
                 //Console.WriteLine("LUMIERE AMBIANTE");
                 parent_.toggleAmbiantLight();
                 FonctionsNatives.spotLight(0, parent_.getAmbiantLight());
             }
-            else if (e.KeyChar == 'k')
+            else if (Char.ToLower(e.KeyChar) == 'k')
             {
                 //Console.WriteLine("LUMIERE DIRECTE");
                 parent_.toggleDirectLight();
                 FonctionsNatives.spotLight(1, parent_.getDirectLight());
             }
-            else if (e.KeyChar == 'l')
+            else if (Char.ToLower(e.KeyChar) == 'l')
             {
                 //Console.WriteLine("LUMIERE SPOTS");
                 parent_.toggleSpotLight();
                 FonctionsNatives.spotLight(2, parent_.getSpotLight());
             }
 
-            else if (e.KeyChar == 'h')
+            else if (Char.ToLower(e.KeyChar) == 'h')
             {
                 parent_.AfficherInformations();
             }
