@@ -187,6 +187,14 @@ namespace InterfaceGraphique
             var item1 = new ListViewItem(new[] { fileNames, diff.ToString() });
 
             ZonesChoisis.Items.Add(item1);
+            if (ZonesChoisis.Items.Count < 2)
+            {
+                bouton_OK.Enabled = false;
+            }
+            else
+            {
+                bouton_OK.Enabled = true;
+            }
         }
 
         ////////////////////////////////////////////////////////////////////////
@@ -203,6 +211,10 @@ namespace InterfaceGraphique
             foreach (ListViewItem eachItem in ZonesChoisis.SelectedItems)
             {
                 ZonesChoisis.Items.Remove(eachItem);
+            }
+            if (ZonesChoisis.Items.Count < 2)
+            {
+                bouton_OK.Enabled = false;
             }
         }
 
@@ -221,6 +233,7 @@ namespace InterfaceGraphique
             {
                 ZonesChoisis.Items.Remove(eachItem);
             }
+            bouton_OK.Enabled = false;
         }
 
         ////////////////////////////////////////////////////////////////////////
@@ -249,8 +262,11 @@ namespace InterfaceGraphique
         private void bouton_OK_Click(object sender, EventArgs e)
         {
             if (ZonesChoisis.Items.Count < 2)
+            {
                 MessageBox.Show("Vous ne pouvez pas lancer une campagne avec moins de 2 zones!", "ERREUR DE LANCEMENT",
-                       MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+
             else
             {
                 if (RB_Solo.Checked)
@@ -271,23 +287,23 @@ namespace InterfaceGraphique
                             typeJoueur = 3;
                         }
                 int i = 0;
-             foreach (ListViewItem eachItem in ZonesChoisis.Items)
-             {
-                 mapList.Append(eachItem.Text+" ");
-                 zonesCampagne.Insert(i, Application.StartupPath + @"\zones\" + eachItem.Text + ".xml");
-                 i++;                
-                        
-             }
-             mapList.Length--;
-             FonctionsNatives.creerFichierCampagne(mapList, mapList.Capacity);
+                foreach (ListViewItem eachItem in ZonesChoisis.Items)
+                {
+                    mapList.Append(eachItem.Text + " ");
+                    zonesCampagne.Insert(i, Application.StartupPath + @"\zones\" + eachItem.Text + ".xml");
+                    i++;
 
-             ZoneInfo zi = new ZoneInfo(ZonesChoisis.Items[0].Text, ZonesChoisis.Items[0].SubItems[1].Text,false);
-             this.Hide();
-             zi.ShowDialog();
-             Program.playerName = textBoxName.Text;
-             ((MainMenu)this.Owner).LancerModeJeu(zonesCampagne,typeJoueur);
+                }
+                mapList.Length--;
+                FonctionsNatives.creerFichierCampagne(mapList, mapList.Capacity);
 
-           
+                ZoneInfo zi = new ZoneInfo(ZonesChoisis.Items[0].Text, ZonesChoisis.Items[0].SubItems[1].Text, false);
+                this.Hide();
+                zi.ShowDialog();
+                Program.playerName = textBoxName.Text;
+                ((MainMenu)this.Owner).LancerModeJeu(zonesCampagne, typeJoueur);
+
+
 
             }
         }

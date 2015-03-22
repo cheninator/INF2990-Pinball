@@ -69,7 +69,7 @@
             this.panel_GL.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel_GL.Location = new System.Drawing.Point(0, 0);
             this.panel_GL.Name = "panel_GL";
-            this.panel_GL.Size = new System.Drawing.Size(633, 741);
+            this.panel_GL.Size = new System.Drawing.Size(784, 741);
             this.panel_GL.TabIndex = 4;
             this.panel_GL.MouseClick += new System.Windows.Forms.MouseEventHandler(this.panel_GL_MouseClick);
             // 
@@ -148,7 +148,7 @@
             this.InfoPanel.Controls.Add(this.label_nbPointsButT);
             this.InfoPanel.Controls.Add(this.labelShowInfo);
             this.InfoPanel.Dock = System.Windows.Forms.DockStyle.Right;
-            this.InfoPanel.Location = new System.Drawing.Point(443, 0);
+            this.InfoPanel.Location = new System.Drawing.Point(594, 0);
             this.InfoPanel.Name = "InfoPanel";
             this.InfoPanel.Size = new System.Drawing.Size(190, 741);
             this.InfoPanel.TabIndex = 5;
@@ -339,11 +339,12 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(633, 741);
+            this.ClientSize = new System.Drawing.Size(784, 741);
             this.Controls.Add(this.InfoPanel);
             this.Controls.Add(this.panel_GL);
             this.Icon = global::InterfaceGraphique.Properties.Resources.Pinball;
             this.MainMenuStrip = this.menuStrip;
+            this.MinimumSize = new System.Drawing.Size(800, 600);
             this.Name = "ModeJeu";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "ModeJeu";

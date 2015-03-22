@@ -108,6 +108,7 @@ namespace InterfaceGraphique
                 {
                     screenShot.Image = Properties.Resources.SaintTrinity;
                 }
+                bouton_OK.Enabled = true;
             }
         }
 

@@ -84,6 +84,7 @@
             // bouton_OK
             // 
             this.bouton_OK.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
+            this.bouton_OK.Enabled = false;
             this.bouton_OK.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.bouton_OK.Location = new System.Drawing.Point(260, 489);
             this.bouton_OK.Name = "bouton_OK";
