@@ -4,7 +4,7 @@
     <PointsCible Nombre="10"/>
     <PointsVictoire Nombre="40"/>
     <PointsBilleGratuite Nombre="10"/>
-    <Difficulte Nombre="2"/>
+    <Difficulte Nombre="1"/>
 </Proprietes>
 
 <arbreRenduINF2990>

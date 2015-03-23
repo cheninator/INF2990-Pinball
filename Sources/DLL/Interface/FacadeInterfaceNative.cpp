@@ -641,6 +641,7 @@ extern "C"
 	{
 		return FacadeModele::obtenirInstance()->creerXML(std::string(path), prop, force);
 	}
+
 	__declspec(dllexport) int __cdecl creerXMLString(std::string path, int prop[6], bool force)
 	{
 		 int valeur = FacadeModele::obtenirInstance()->creerXML(path, prop, force);
