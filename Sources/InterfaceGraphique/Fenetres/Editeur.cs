@@ -108,7 +108,7 @@ namespace InterfaceGraphique
         ////////////////////////////////////////////////////////////////////////
         private void ReinitialiserTout()
         {
-            
+
             Program.peutAfficher = true;
             pathXML = new StringBuilder("");
             this.Text = "Mode Edition - Nouvelle Zone";
@@ -130,7 +130,7 @@ namespace InterfaceGraphique
             else
                 playSound("", true);
 
-           
+
             FonctionsNatives.resetZoom();
             currentZoom = -1;
         }
@@ -183,7 +183,7 @@ namespace InterfaceGraphique
                             curZoomVal.Text = (Math.Round(currentZoom * 100) / 100).ToString();
                             Creation_Panel.Visible = true;
                         }
-                        
+
                         if (etat is EtatEditeurTest && FonctionsNatives.obtenirNombreBillesCourante() == 0)
                         {
                             StringBuilder bille = new StringBuilder("bille");
@@ -249,27 +249,27 @@ namespace InterfaceGraphique
 
                 else if (e.KeyData == Keys.Down)
                     FonctionsNatives.translater(0, -10);
-                
+
                 if (etat is EtatEditeurTest)
                 {
                     ToucheDownTest(o, e);
                 }
-               
+
             }
-                if (e.Modifiers == Keys.Control)
-                {
-                    ctrlDown = true;
+            if (e.Modifiers == Keys.Control)
+            {
+                ctrlDown = true;
 
-                }
-                if (e.Alt)
-                {
-                    e.Handled = true;
+            }
+            if (e.Alt)
+            {
+                e.Handled = true;
 
-                    altDown = true;
-                }
-           
+                altDown = true;
+            }
+
         }
-        
+
         ////////////////////////////////////////////////////////////////////////
         ///
         /// @fn private void ToucheDownTest(Object o, KeyEventArgs e)
@@ -281,30 +281,30 @@ namespace InterfaceGraphique
         /// @return Aucune.
         ///
         ////////////////////////////////////////////////////////////////////////
-        private void ToucheDownTest( Object o, KeyEventArgs e )
+        private void ToucheDownTest(Object o, KeyEventArgs e)
         {
-             if (e.KeyValue == touches.PGJ1)
-             {
+            if (e.KeyValue == touches.PGJ1)
+            {
                 FonctionsNatives.activerPalettesGJ1();
-             }
+            }
 
-              if (e.KeyValue == touches.PGJ2)
-             {
-                 // TODO: palette gauche joueur 2
-                 FonctionsNatives.activerPalettesGJ2();
-             }
-              if (e.KeyValue == touches.PDJ1)
-             {
-                 FonctionsNatives.activerPalettesDJ1();
-             }
-              if (e.KeyValue == touches.PDJ2)
-             {
-                 FonctionsNatives.activerPalettesDJ2();
-             }
-             else if (e.KeyValue == touches.Ressort)
-             {
-                 FonctionsNatives.compresserRessort();
-             }
+            if (e.KeyValue == touches.PGJ2)
+            {
+                // TODO: palette gauche joueur 2
+                FonctionsNatives.activerPalettesGJ2();
+            }
+            if (e.KeyValue == touches.PDJ1)
+            {
+                FonctionsNatives.activerPalettesDJ1();
+            }
+            if (e.KeyValue == touches.PDJ2)
+            {
+                FonctionsNatives.activerPalettesDJ2();
+            }
+            else if (e.KeyValue == touches.Ressort)
+            {
+                FonctionsNatives.compresserRessort();
+            }
             // TODO
         }
 
@@ -325,20 +325,20 @@ namespace InterfaceGraphique
             {
                 FonctionsNatives.desactiverPalettesGJ1();
             }
-             if (e.KeyValue == touches.PGJ2)
+            if (e.KeyValue == touches.PGJ2)
             {
                 // TO DO: palette gauche joueur 1
                 FonctionsNatives.desactiverPalettesGJ2();
             }
-             if (e.KeyValue == touches.PDJ1)
+            if (e.KeyValue == touches.PDJ1)
             {
                 FonctionsNatives.desactiverPalettesDJ1();
             }
-             if (e.KeyValue == touches.PDJ2)
+            if (e.KeyValue == touches.PDJ2)
             {
                 FonctionsNatives.desactiverPalettesDJ2();
             }
-             if (e.KeyValue == touches.Ressort)
+            if (e.KeyValue == touches.Ressort)
             {
                 FonctionsNatives.relacherRessort();
             }
@@ -358,11 +358,11 @@ namespace InterfaceGraphique
         ////////////////////////////////////////////////////////////////////////
         private void ToucheUp(Object o, KeyEventArgs e)
         {
-           
+
             if (e.KeyData.ToString() == "Menu")
             {
                 altDown = false;
-            }   
+            }
             if (e.KeyData.ToString() == "ControlKey") // == Keys.Control ?
             {
                 ctrlDown = false;
@@ -389,8 +389,8 @@ namespace InterfaceGraphique
         private void ToucheEnfonce(Object o, KeyPressEventArgs e)
         {
 
-           
-            if ((etat is EtatEditeurZoomElastique) || ( etat is EtatEditeurSelectionMultiple))
+
+            if ((etat is EtatEditeurZoomElastique) || (etat is EtatEditeurSelectionMultiple))
             {
                 return;
             }
@@ -408,7 +408,7 @@ namespace InterfaceGraphique
                 }
                 else if (e.KeyChar == 'b')
                 {
-                    
+
                     if (FonctionsNatives.obtenirAffichageGlobal() == 0)
                     {
                         FonctionsNatives.WriteLine("Affichage bloque. On debloque");
@@ -592,8 +592,8 @@ namespace InterfaceGraphique
                     outilCourant("Selectionnez au moins un objet.");
                 }
             }
-           
-            
+
+
         }
 
         ////////////////////////////////////////////////////////////////////////
@@ -635,7 +635,7 @@ namespace InterfaceGraphique
             BackgroundWorker bw = new BackgroundWorker();
             bw.WorkerReportsProgress = true;
             bw.DoWork += new DoWorkEventHandler(
-            delegate (object o, DoWorkEventArgs args)
+            delegate(object o, DoWorkEventArgs args)
             {
                 Aide aide = new Aide();
                 aide.StartPosition = FormStartPosition.CenterScreen;
@@ -667,10 +667,10 @@ namespace InterfaceGraphique
             if (ouvrir_fichier.ShowDialog() == DialogResult.OK)
             {
                 ReinitialiserTout();
-                
+
                 pathXML = new StringBuilder(ouvrir_fichier.FileName);
                 //Console.Write(Path.GetFileName(ouvrir_fichier.FileName));
-                
+
                 output = Path.GetFileName(pathXML.ToString());
                 output = output.Remove(output.Length - 4);
                 this.Text = "Mode Edition - " + output;
@@ -681,7 +681,7 @@ namespace InterfaceGraphique
                 for (int i = 0; i < 6; i++)
                     propZJ[i] = result[i];
 
-              
+
             }
         }
 
@@ -729,40 +729,40 @@ namespace InterfaceGraphique
                 return;
             }
             else
-                if( enregistrer_fichier.ShowDialog() == DialogResult.OK)
-            {
-                enregistrer_fichier.OverwritePrompt = true;
-                //ReinitialiserTout();
-                pathXML = new StringBuilder(enregistrer_fichier.FileName.Replace(' ','_'));
-                for (int i = 0; i < 6; i++)
-                    prop[i] = propZJ[i];
+                if (enregistrer_fichier.ShowDialog() == DialogResult.OK)
+                {
+                    enregistrer_fichier.OverwritePrompt = true;
+                    //ReinitialiserTout();
+                    pathXML = new StringBuilder(enregistrer_fichier.FileName.Replace(' ', '_'));
+                    for (int i = 0; i < 6; i++)
+                        prop[i] = propZJ[i];
 
 
-                int sauvegarde = FonctionsNatives.creerXML(pathXML, pathXML.Capacity, prop);
-                //Console.WriteLine(sauvegarde);
-                if (sauvegarde == 1)
-                {
-                    MessageBox.Show("Vous ne pouvez pas sauvegarder la zone de jeu par defaut!", "ERREUR DE SAUVEGARDE",
-                    MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    pathXML = new StringBuilder("");
+                    int sauvegarde = FonctionsNatives.creerXML(pathXML, pathXML.Capacity, prop);
+                    //Console.WriteLine(sauvegarde);
+                    if (sauvegarde == 1)
+                    {
+                        MessageBox.Show("Vous ne pouvez pas sauvegarder la zone de jeu par defaut!", "ERREUR DE SAUVEGARDE",
+                        MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        pathXML = new StringBuilder("");
+                    }
+                    else if (sauvegarde == 3 || sauvegarde == 0)
+                    {
+                        MessageBox.Show("Il doit avoir au moins un trou, un generateur de bille et un ressort dans la zone de jeu!", "ERREUR DE SAUVEGARDE",
+                        MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        pathXML = new StringBuilder("");
+                    }
+                    else if (sauvegarde == 4)
+                    {
+                        MessageBox.Show("Tout les trous doivent etre au minimum de la taille de la plus grande bille (le plus gros generateur de billes) !", "ERREUR DE SAUVEGARDE",
+                        MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        pathXML = new StringBuilder("");
+                    }
+                    else
+                    {
+                        takeScreenShot();
+                    }
                 }
-                else if (sauvegarde == 3 || sauvegarde == 0)
-                {
-                    MessageBox.Show("Il doit avoir au moins un trou, un generateur de bille et un ressort dans la zone de jeu!", "ERREUR DE SAUVEGARDE",
-                    MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    pathXML = new StringBuilder("");
-                }
-                else if (sauvegarde == 4)
-                {
-                    MessageBox.Show("Tout les trous doivent etre au minimum de la taille de la plus grande bille (le plus gros generateur de billes) !", "ERREUR DE SAUVEGARDE",
-                    MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    pathXML = new StringBuilder("");
-                }
-                else
-                {
-                    takeScreenShot();
-                }  
-            }          
         }
 
 
@@ -877,7 +877,7 @@ namespace InterfaceGraphique
         private void Selection_BO_Click(object sender, EventArgs e)
         {
             Selection_MenuItem_Click(this, e);
-            
+
         }
 
         ////////////////////////////////////////////////////////////////////////
@@ -955,14 +955,14 @@ namespace InterfaceGraphique
             if (Creation_Panel.Visible)
             {
                 Creation_Panel.Visible = false;
-               
+
                 this.OnSizeChanged(e);
-                
+
             }
             else
             {
                 Creation_Panel.Visible = true;
-               
+
             }
         }
 
@@ -1027,7 +1027,7 @@ namespace InterfaceGraphique
             proprietes.ShowDialog();
             propZJ = proprietes.getProps();
             proprietes.Close();
-            
+
         }
 
         ////////////////////////////////////////////////////////////////////////
@@ -1110,7 +1110,7 @@ namespace InterfaceGraphique
             try
             {
                 double value = ((double)dt.Compute(FMEbox.Text, ""));
-                FMEbox.Text = (Convert.ToInt32(Math.Round(value*100))/100.0).ToString();
+                FMEbox.Text = (Convert.ToInt32(Math.Round(value * 100)) / 100.0).ToString();
             }
             catch { }
 
@@ -1119,24 +1119,24 @@ namespace InterfaceGraphique
             if (!double.TryParse(FMEbox.Text, out echelle))
                 FMEbox.Text = "ERREUR";
 
-            if(  Xbox.Text == "ERREUR" ||
-                Ybox.Text == "ERREUR"   ||
+            if (Xbox.Text == "ERREUR" ||
+                Ybox.Text == "ERREUR" ||
                  Anglebox.Text == "ERREUR" ||
                 FMEbox.Text == "ERREUR"
                )
-                {
-                    return;
-                }
+            {
+                return;
+            }
             else
             {
-                if( FonctionsNatives.setProprietesNoeud(positionX, positionY, angle, echelle) == false)
+                if (FonctionsNatives.setProprietesNoeud(positionX, positionY, angle, echelle) == false)
                 {
                     MessageBox.Show("Les modifications sont invalides", "ERREUR DE PROPRIETES",
                MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
             }
 
-          
+
         }
 
         ////////////////////////////////////////////////////////////////////////
@@ -1230,7 +1230,7 @@ namespace InterfaceGraphique
         {
             // Console.Write("Width to send : " + panel_GL.Width.ToString() + "\n" + "Height to send : " + panel_GL.Height.ToString() + "\n");
             FonctionsNatives.redimensionnerFenetre(panel_GL.Width == 0 ? 1 : panel_GL.Width, panel_GL.Height == 0 ? 1 : panel_GL.Height);
-           
+
         }
 
         ////////////////////////////////////////////////////////////////////////
@@ -1320,7 +1320,7 @@ namespace InterfaceGraphique
         ////////////////////////////////////////////////////////////////////////
         private void Trou_bouton_Click(object sender, EventArgs e)
         {
-            
+
             etat = new EtatEditeurCreation(this);
             //Console.WriteLine("Trou");
             myObjectName = new StringBuilder("trou");
@@ -1463,7 +1463,7 @@ namespace InterfaceGraphique
             annulerModif();
             etat = null;
             etat = new EtatEditeurZoom(this);
-        
+
         }
 
         ////////////////////////////////////////////////////////////////////////
@@ -1481,13 +1481,13 @@ namespace InterfaceGraphique
         private void bouton_Duplication_Click(object sender, EventArgs e)
         {
             //Console.WriteLine("Outil Duplication.");
-            
-                 annulerModif();
-                etat = null;
-                etat = new EtatEditeurDuplication(this);
-      
-            
-                        
+
+            annulerModif();
+            etat = null;
+            etat = new EtatEditeurDuplication(this);
+
+
+
 
         }
 
@@ -1629,7 +1629,7 @@ namespace InterfaceGraphique
             menu1Enable(false);
             //StringBuilder bille = new StringBuilder("bille");
             //FonctionsNatives.creerObjet(bille, bille.Capacity);
-            
+
             panel_GL.BringToFront();
             panel_GL.Anchor = AnchorStyles.None;
             panel_GL.Location = new Point(163, 24);
@@ -2100,24 +2100,23 @@ namespace InterfaceGraphique
             previousP.Y = e.Y;
             currentP.X = e.X;
             currentP.Y = e.Y;
-           
+
             if (etat is EtatEditeurPortail && e.Button == MouseButtons.Left)
             {
                 etat = new EtatEditeurNone(this);
                 FonctionsNatives.obligerTransparence(false);
                 deselection();
             }
-            else if ((e.Button == MouseButtons.Left && (etat is EtatEditeurSelection   || 
+            else if ((e.Button == MouseButtons.Left && (etat is EtatEditeurSelection ||
                                                         etat is EtatEditeurDeplacement ||
-                                                        etat is EtatEditeurRotation    || 
-                                                        etat is EtatEditeurScale       || 
-                                                        etat is EtatEditeurZoom        ||
+                                                        etat is EtatEditeurRotation ||
+                                                        etat is EtatEditeurScale ||
+                                                        etat is EtatEditeurZoom ||
                                                         etat is EtatEditeurDuplication ||
-                                                        !(etat is EtatEditeurMur)      
+                                                        !(etat is EtatEditeurMur)
                                                        )
                      )
                      || e.Button == MouseButtons.Right)
-            
             {
                 panel_GL.MouseMove += new MouseEventHandler(panel_MouseMove);
             }
@@ -2136,7 +2135,7 @@ namespace InterfaceGraphique
         ///
         ////////////////////////////////////////////////////////////////////////
         private void panel_MouseMove(object sender, MouseEventArgs e)
-        {            
+        {
             currentP = panel_GL.PointToClient(MousePosition);
 
             if (nbSelection == 1 && !(etat is EtatEditeurDuplication) && (e.Button == MouseButtons.Left))
@@ -2150,7 +2149,7 @@ namespace InterfaceGraphique
             if (e.Button == MouseButtons.Right)
             {
                 deplacementVueSouris(e);
-            }          
+            }
             else if (etat is EtatEditeurCreation)
             {
                 if (!(FonctionsNatives.verifierCliqueDansTable(e.X, e.Y)))
@@ -2164,8 +2163,8 @@ namespace InterfaceGraphique
                 if (e.Button == MouseButtons.Right)
                 {
                     deplacementVueSouris(e);
-                }                
-            }           
+                }
+            }
             else if (!(clickValide(origin, currentP)) && (etat is EtatEditeurSelection) && e.Button == MouseButtons.Left)
             {
                 etat = new EtatEditeurSelectionMultiple(this);
@@ -2176,14 +2175,14 @@ namespace InterfaceGraphique
                 etat = new EtatEditeurZoomElastique(this);
                 FonctionsNatives.initialiserRectangleElastique(origin.X, origin.Y);
             }
-            else if (!(etat is EtatEditeurSelectionMultiple) && 
-                     !(etat is EtatEditeurCreation)          && 
-                     !(etat is EtatEditeurSelection)         && 
+            else if (!(etat is EtatEditeurSelectionMultiple) &&
+                     !(etat is EtatEditeurCreation) &&
+                     !(etat is EtatEditeurSelection) &&
                      !(etat is EtatEditeurZoomElastique)
-                    ) 
-            {                
-                etat.traiterSouris(e);                    
-            }              
+                    )
+            {
+                etat.traiterSouris(e);
+            }
         }
 
         ////////////////////////////////////////////////////////////////////////
@@ -2201,7 +2200,7 @@ namespace InterfaceGraphique
         private void panel_GL_MouseUp(object sender, MouseEventArgs e)
         {
             Point destination = panel_GL.PointToClient(MousePosition);
-            
+
             if (!(etat is EtatEditeurCreation) && !(etat is EtatEditeurDuplication))
             {
                 panel_GL.MouseMove -= panel_MouseMove;
@@ -2214,7 +2213,7 @@ namespace InterfaceGraphique
 
                 deselection();
                 panel_GL.MouseMove -= panel_MouseMove;
-                etat = new EtatEditeurNone(this);                  
+                etat = new EtatEditeurNone(this);
             }
             else if (etat is EtatEditeurMur && (clickExtraValide(origin, destination)))
             {
@@ -2223,21 +2222,21 @@ namespace InterfaceGraphique
                 return;
             }
             else if (e.Button == MouseButtons.Left)
-            {              
-               if (etat is EtatEditeurZoomElastique)
-               {
-                   etat.traiterSouris(e);
-                   etat = new EtatEditeurZoom(this);
-               }
-               else if (etat is EtatEditeurSelectionMultiple)
-               {                   
-                   etat.traiterSouris(e);
-                   etat = new EtatEditeurSelection(this);
-               }
-               else if(clickValide(origin,destination)) 
+            {
+                if (etat is EtatEditeurZoomElastique)
                 {
                     etat.traiterSouris(e);
-                }               
+                    etat = new EtatEditeurZoom(this);
+                }
+                else if (etat is EtatEditeurSelectionMultiple)
+                {
+                    etat.traiterSouris(e);
+                    etat = new EtatEditeurSelection(this);
+                }
+                else if (clickValide(origin, destination))
+                {
+                    etat.traiterSouris(e);
+                }
             }
         }
 
@@ -2256,7 +2255,7 @@ namespace InterfaceGraphique
         private void panel_GL_MouseWheel(object sender, MouseEventArgs e)
         {
             etat.traiterRoulette(e);
-            
+
         }
 
         ////////////////////////////////////////////////////////////////////////
@@ -2291,7 +2290,7 @@ namespace InterfaceGraphique
         public void deplacementSouris(MouseEventArgs e)
         {
             // On va calculer un point precedent et un point courrant pour faire le deplacement.
-          
+
             // Ce point est dans les coordonnees d'affichage d'openGL pour pouvoir calculer un deplacement
             // en coordonnees du monde en utilisant convertirClotureAVirtuelle(...) comme ça on n'a pas 
             // besoin de ce facteur misterieux.  Et aussi, cette technique devrait bien marcher 
@@ -2327,7 +2326,7 @@ namespace InterfaceGraphique
             double deltaX = (-(currentP.X - previousP.X)) * 100.0 / panel_GL.Size.Width;
             double deltaY = ((currentP.Y - previousP.Y)) * 100.0 / panel_GL.Size.Height;
             FonctionsNatives.translater(deltaX, deltaY);
-            
+
             previousP.X = currentP.X;
             previousP.Y = currentP.Y;
             currentP.X = e.X;
@@ -2381,18 +2380,18 @@ namespace InterfaceGraphique
         /// @return Aucune.
         ///
         ////////////////////////////////////////////////////////////////////////
-        public void selection(MouseEventArgs e) 
+        public void selection(MouseEventArgs e)
         {
             int x = panel_GL.PointToClient(MousePosition).X;
             int y = panel_GL.PointToClient(MousePosition).Y;
-         
+
             int h = panel_GL.Height;
             int w = panel_GL.Width;
 
             bool c = ctrlDown;
             int isSelected = nbSelection;
             // TODO PHIL : Faire que ceci n'arrive que quand on relâche le bouton de gauche et qu'on n'a pas bouge de plus de 3 pixels.
-            nbSelection = FonctionsNatives.selectionnerObjetSousPointClique( x, y, h, w, c);
+            nbSelection = FonctionsNatives.selectionnerObjetSousPointClique(x, y, h, w, c);
             //Console.WriteLine("SELECTION: " + nbSelection);
             if (nbSelection != 1)
             {
@@ -2430,7 +2429,7 @@ namespace InterfaceGraphique
         ////////////////////////////////////////////////////////////////////////
         public void rectangleElastique()
         {
-            FonctionsNatives.rectangleElastique(currentP.X, currentP.Y);            
+            FonctionsNatives.rectangleElastique(currentP.X, currentP.Y);
         }
 
         ////////////////////////////////////////////////////////////////////////
@@ -2462,7 +2461,7 @@ namespace InterfaceGraphique
             {
                 outilsEnable(false);
             }
-            else 
+            else
             {
                 if (nbSelection == 1)
                 {
@@ -2471,7 +2470,7 @@ namespace InterfaceGraphique
                     Ybox.Text = Math.Round(FonctionsNatives.getPositionY()).ToString();
                     Anglebox.Text = Math.Round(FonctionsNatives.getAngle()).ToString();
                     FMEbox.Text = (Math.Round(FonctionsNatives.getScale() * 100) / 100).ToString();
-                   
+
                 }
                 outilsEnable(true);
             }
@@ -2524,19 +2523,19 @@ namespace InterfaceGraphique
         public void creationObjet(MouseEventArgs e, bool twin = false)
         {
             bool fonctionAPhil = true;
-            if(fonctionAPhil)
+            if (fonctionAPhil)
             {
                 bool creationReussie;
                 creationReussie = FonctionsNatives.creerObjetAvecTests(myObjectName, myObjectName.Capacity, twin, colorShift,
                                                                         panel_GL.PointToClient(MousePosition).X, panel_GL.PointToClient(MousePosition).Y, 0,
                                                                         angleX, angleY, angleZ);
-               // if (creationReussie)
-                    //Console.WriteLine("Creation avec boite englobante respectee");
-               // else
-                   // Console.WriteLine("echec de la creation");
+                // if (creationReussie)
+                //Console.WriteLine("Creation avec boite englobante respectee");
+                // else
+                // Console.WriteLine("echec de la creation");
             }
             else
-            { 
+            {
                 if (FonctionsNatives.verifierCliqueDansTable(origin.X, origin.Y))
                 {
                     afficher_Objet(twin);
@@ -2547,10 +2546,10 @@ namespace InterfaceGraphique
                     previousP.X = panel_GL.PointToClient(MousePosition).X;
                     previousP.Y = panel_GL.PointToClient(MousePosition).Y;
 
-                  //  if (FonctionsNatives.verifierCliqueDansTable(panel_GL.PointToClient(MousePosition).X, panel_GL.PointToClient(MousePosition).Y))
-                  //      Console.WriteLine("Click dans la table");
-                  //  else
-                  //      Console.WriteLine("Click hors de la table");
+                    //  if (FonctionsNatives.verifierCliqueDansTable(panel_GL.PointToClient(MousePosition).X, panel_GL.PointToClient(MousePosition).Y))
+                    //      Console.WriteLine("Click dans la table");
+                    //  else
+                    //      Console.WriteLine("Click hors de la table");
                 }
             }
         }
@@ -2606,7 +2605,7 @@ namespace InterfaceGraphique
                     else
                     {
                         takeScreenShot();
-                    }  
+                    }
                 }
             }
         }
@@ -2638,7 +2637,7 @@ namespace InterfaceGraphique
                 Anglebox.Text = "";
                 FMEbox.Text = "";
             }
-            }
+        }
 
         //////////////////////////////////////////////////////////////////////////////////////////
         ///
@@ -2665,7 +2664,7 @@ namespace InterfaceGraphique
 
         //////////////////////////////////////////////////////////////////////////////////////////
         ///
-        /// @fn public void menuEnable(bool active)
+        /// @fn public void menu1Enable(bool active)
         /// @brief Active ou desactive les menus.
         /// 
         /// @param[in] active : Indique si les menus seront accessibles.
@@ -2679,12 +2678,6 @@ namespace InterfaceGraphique
             Ouvrir_MenuItem.Enabled = active;
             Enregistrer_MenuItem.Enabled = active;
             EnregistrerS_MenuItem.Enabled = active;
-        }
-
-        public void menu3Enable(bool active)
-        {
-            testRetourMenuPrincipal.Enabled = active;
-            testRetourModeEdition.Enabled = active;
         }
 
         //////////////////////////////////////////////////////////////////////////////////////////
@@ -2703,7 +2696,7 @@ namespace InterfaceGraphique
             return ((Math.Abs(destination.X - origin.X) < 3)
                      &&
                     (Math.Abs(destination.Y - origin.Y) < 3));
-                    
+
         }
 
         //////////////////////////////////////////////////////////////////////////////////////////
@@ -2753,7 +2746,7 @@ namespace InterfaceGraphique
         public void deselection()
         {
             FonctionsNatives.deselectAll();
-           
+
             nbSelection = 0;
             proprietesEnable(false);
             outilsEnable(false);
@@ -2778,7 +2771,7 @@ namespace InterfaceGraphique
             else
             {
                 panel_GL.MouseMove -= new MouseEventHandler(panel_MouseMove);
-            }            
+            }
         }
 
         //////////////////////////////////////////////////////////////////////////////////////////
@@ -2877,7 +2870,6 @@ namespace InterfaceGraphique
         {
             etat = new EtatEditeurMur(this);
             panel_GL.MouseMove += new MouseEventHandler(panel_MouseMove);
-
         }
 
 
@@ -2889,23 +2881,22 @@ namespace InterfaceGraphique
         /// @return Aucune.
         ///
         //////////////////////////////////////////////////////////////////////////////////////////
-
         public void creationMur()
         {
-          FonctionsNatives.creerMur(origin.X,origin.Y,previousP.X,previousP.Y,currentP.X,currentP.Y);
-         //  Console.WriteLine(FonctionsNatives.getScale());
-           previousP = currentP;
-           currentP = panel_GL.PointToClient(MousePosition);
+            FonctionsNatives.creerMur(origin.X, origin.Y, previousP.X, previousP.Y, currentP.X, currentP.Y);
+            //  Console.WriteLine(FonctionsNatives.getScale());
+            previousP = currentP;
+            currentP = panel_GL.PointToClient(MousePosition);
 
-        //////////////////////////////////////////////////////////////////////////////////////////
-        ///
-        /// @fn private void IncreaseZoomButton_Click(object sender, EventArgs e)
-        /// @brief Fonction qui incremente le Zoom.
-        /// @param[in] sender : Objet duquel provient un evenement.
-        /// @param[in] e : evenement qui lance la fonction.
-        /// @return Aucune.
-        ///
-        //////////////////////////////////////////////////////////////////////////////////////////
+            //////////////////////////////////////////////////////////////////////////////////////////
+            ///
+            /// @fn private void IncreaseZoomButton_Click(object sender, EventArgs e)
+            /// @brief Fonction qui incremente le Zoom.
+            /// @param[in] sender : Objet duquel provient un evenement.
+            /// @param[in] e : evenement qui lance la fonction.
+            /// @return Aucune.
+            ///
+            //////////////////////////////////////////////////////////////////////////////////////////
         }
         private void IncreaseZoomButton_Click(object sender, EventArgs e)
         {

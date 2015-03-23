@@ -59,20 +59,20 @@ namespace InterfaceGraphique
 
         // Modificateurs
         public void setVisibilityMenuStrip(bool vis) { menuStrip.Visible = vis; }
-        public void setCurrentZoom(double val)       { currentZoom = val; }
-        public void setPeutAnimer(bool activation)   { peutAnimer = activation; }
-        
+        public void setCurrentZoom(double val) { currentZoom = val; }
+        public void setPeutAnimer(bool activation) { peutAnimer = activation; }
+
         // Accesseurs
-        public double getCurrentZoom()    { return currentZoom; }
-        public Touches getTouches()       { return touches; }
-        public bool getAmbiantLight()     { return activateAmbiantLight;}
-        public bool getDirectLight()      { return activateDirectLight; }
-        public bool getSpotLight()        { return activateSpotLight; }
-        
+        public double getCurrentZoom() { return currentZoom; }
+        public Touches getTouches() { return touches; }
+        public bool getAmbiantLight() { return activateAmbiantLight; }
+        public bool getDirectLight() { return activateDirectLight; }
+        public bool getSpotLight() { return activateSpotLight; }
+
         // Toggle des lumières
         public void toggleAmbiantLight() { activateAmbiantLight = !activateAmbiantLight; }
-        public void toggleDirectLight()  { activateDirectLight  = !activateDirectLight; }
-        public void toggleSpotLight()    { activateSpotLight    = !activateSpotLight; }
+        public void toggleDirectLight() { activateDirectLight = !activateDirectLight; }
+        public void toggleSpotLight() { activateSpotLight = !activateSpotLight; }
 
         // Méthodes de changement d'état
         public void pauseGame() { etat = new EtatJeuPause(this); }
@@ -89,7 +89,7 @@ namespace InterfaceGraphique
         ///////////////////////////////////////////////////////////////////////////
         public partial class EtatJeuAbstrait
         {
-            public EtatJeuAbstrait() {}
+            public EtatJeuAbstrait() { }
             public EtatJeuAbstrait(ModeJeu parent)
             {
                 //Console.WriteLine("Etat :" + '\t' + "Abstrait");
@@ -99,10 +99,12 @@ namespace InterfaceGraphique
 
         ////////////////////////////////////////////////////////////////////////
         ///
-        /// @fn public Configuration()
+        /// @fn public ModeJeu(List<string> maps, int playerType)
         /// @brief Constructeur par parametre de la fenetre de mode jeu.
+        ///
         /// @param[in] maps : Liste de zones a jouer.
         /// @param[in] playerType : Type de joueur (Solo, 2P, AI)
+        /// 
         /// @return Aucune (constructeur).
         ///
         ////////////////////////////////////////////////////////////////////////
@@ -126,7 +128,7 @@ namespace InterfaceGraphique
             this.KeyUp += new KeyEventHandler(PartieRapide_KeyUp);
             InitializeComponent();
             peutAnimer = true;
-            Program.peutAfficher = true;              
+            Program.peutAfficher = true;
             InitialiserAnimation();
             FonctionsNatives.resetZoom();
             currentZoom = -1;
@@ -153,7 +155,7 @@ namespace InterfaceGraphique
             // Il faut changer le mode car le traitement de début est fini
             etat = new EtatJeuJouer(this);
             FonctionsNatives.animerJeu(true);
-           // CreerBille();       
+            // CreerBille();       
         }
 
         ////////////////////////////////////////////////////////////////////////
@@ -177,7 +179,7 @@ namespace InterfaceGraphique
             billesDisponibles = nombreBillesInit;
             label_nbGagnes.Text = nombreDeBillesGagnes.ToString();
             setProprietes();
-            if(!firstStart)
+            if (!firstStart)
                 Program.myCustomConsole.Update();
         }
 
@@ -190,7 +192,7 @@ namespace InterfaceGraphique
         ////////////////////////////////////////////////////////////////////////
         private void setProprietes()
         {
-            IntPtr config = FonctionsNatives.obtenirProprietes(map,map.Capacity);
+            IntPtr config = FonctionsNatives.obtenirProprietes(map, map.Capacity);
             Marshal.Copy(config, proprietes, 0, 5);
             label_nbPointsButC.Text = proprietes[0].ToString();
             label_nbPointsButT.Text = proprietes[1].ToString();
@@ -270,7 +272,7 @@ namespace InterfaceGraphique
                     {
                         if (currentZone >= nbZones)
                         {
-                            FinCampagne(true,-5);
+                            FinCampagne(true, -5);
                         }
                         else
                         {
@@ -308,7 +310,7 @@ namespace InterfaceGraphique
             }
             //Console.WriteLine("closing");
             Program.myCustomConsole.Hide();
-          //  Console.WriteLine("closing");
+            //  Console.WriteLine("closing");
         }
 
         ////////////////////////////////////////////////////////////////////////
@@ -383,7 +385,7 @@ namespace InterfaceGraphique
                 this.Text = "Partie Rapide: " + Path.GetFileNameWithoutExtension(map.ToString());
             if (nbZones > 1)
                 this.Text = "Campagne: " + Path.GetFileNameWithoutExtension(map.ToString());
-        
+
         }
 
         ////////////////////////////////////////////////////////////////////////
@@ -413,7 +415,7 @@ namespace InterfaceGraphique
             Program.myCustomConsole.Hide();
             peutAnimer = false;
             boolTemp = false;
-            gameOver = new PartieTerminee(active,nbPoints);
+            gameOver = new PartieTerminee(active, nbPoints);
             Program.myCustomConsole.Hide();
             gameOver.ShowDialog(this);
             if (Program.mMenu.modeJeuMain != null)
@@ -552,11 +554,11 @@ namespace InterfaceGraphique
         ////////////////////////////////////////////////////////////////////////
         public void RecommencerTout()
         {
-           if (gameOver.Enabled)
+            if (gameOver.Enabled)
             {
                 gameOver.Hide();
             }
-           
+
             pointsPartie = 0;
             currentZone = 0;
             map = new StringBuilder(myMaps[0]);
@@ -565,7 +567,7 @@ namespace InterfaceGraphique
             //Console.WriteLine(map);
             Program.myCustomConsole.Hide();
             this.Hide();
-            zInfo = new ZoneInfo(Path.GetFileName(nextMap.ToString()), FonctionsNatives.obtenirDifficulte(map, map.Capacity).ToString(),false);
+            zInfo = new ZoneInfo(Path.GetFileName(nextMap.ToString()), FonctionsNatives.obtenirDifficulte(map, map.Capacity).ToString(), false);
             zInfo.ShowDialog();
             this.Show();
             if (Program.mMenu.modeJeuMain != null)
@@ -584,13 +586,13 @@ namespace InterfaceGraphique
             etat = new EtatJeuDebutDePartie(this);
             // Il faut changer le mode car le traitement de début est fini
             etat = new EtatJeuJouer(this);
-           
-           // gameOver.Close();
+
+            // gameOver.Close();
             gameOver.Dispose();
             label_Nom.Text = "Nom: " + Path.GetFileNameWithoutExtension(map.ToString());
 
 
-           
+
         }
 
         ////////////////////////////////////////////////////////////////////////
@@ -603,7 +605,7 @@ namespace InterfaceGraphique
         ////////////////////////////////////////////////////////////////////////
         public void Quitter()
         {
-           // resetConfig();
+            // resetConfig();
             Program.myCustomConsole.Hide();
             this.Close();
         }
@@ -625,7 +627,7 @@ namespace InterfaceGraphique
 
         private void panel_GL_MouseClick(object sender, MouseEventArgs e)
         {
-          //  panel_GL.Focus();
+            //  panel_GL.Focus();
         }
 
         ////////////////////////////////////////////////////////////////////////
@@ -640,8 +642,8 @@ namespace InterfaceGraphique
         private void ModeJeu_Shown(object sender, EventArgs e)
         {
             var scrren = Screen.PrimaryScreen.Bounds.Height;
-            this.Height = (scrren*3)/4;
-           
+            this.Height = (scrren * 3) / 4;
+
             Program.myCustomConsole.reStart();
             Program.myCustomConsole.Update();
             if (Program.mMenu.modeJeuMain != null)
