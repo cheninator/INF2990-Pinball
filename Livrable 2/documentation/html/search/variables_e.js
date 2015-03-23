@@ -1,6 +1,5 @@
 var searchData=
 [
-  ['p',['p',['../dc/d6b/classInterfaceGraphique_1_1Configuration.html#a778669f4c97e9b34e85cfdc0b1308572',1,'InterfaceGraphique::Configuration']]],
   ['palettesdroite_5f',['palettesDroite_',['../d1/d90/classJoueurVirtuel.html#ac5cc5a065890a0d4e64ae0e39bac4d8c',1,'JoueurVirtuel']]],
   ['palettesgauche_5f',['palettesGauche_',['../d1/d90/classJoueurVirtuel.html#a1870b755a3382b6ed893d44f0474ed7c',1,'JoueurVirtuel']]],
   ['panel1',['panel1',['../dc/d30/classInterfaceGraphique_1_1Aide.html#ade80dcc949d5093af852b0f969c3b076',1,'InterfaceGraphique.Aide.panel1()'],['../de/d15/classInterfaceGraphique_1_1Editeur.html#af1a51c7c61a4efc09aa82059847f0f75',1,'InterfaceGraphique.Editeur.panel1()']]],

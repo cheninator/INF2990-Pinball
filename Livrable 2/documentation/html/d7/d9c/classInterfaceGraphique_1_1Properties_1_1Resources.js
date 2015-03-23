@@ -39,7 +39,6 @@ var classInterfaceGraphique_1_1Properties_1_1Resources =
     [ "SaintTrinity", "d7/d9c/classInterfaceGraphique_1_1Properties_1_1Resources.html#aca862fef9eab4538b228ee8a3cb9186a", null ],
     [ "spring", "d7/d9c/classInterfaceGraphique_1_1Properties_1_1Resources.html#a89e7112a1c25e9c5d0028792ee98f793", null ],
     [ "tablePhoto", "d7/d9c/classInterfaceGraphique_1_1Properties_1_1Resources.html#ac3e40a189ea5b5ba27d2efb067217cc7", null ],
-    [ "touche_invalide", "d7/d9c/classInterfaceGraphique_1_1Properties_1_1Resources.html#a4fc1d2913e78affeefb8ee593ab51ed5", null ],
     [ "Trombone", "d7/d9c/classInterfaceGraphique_1_1Properties_1_1Resources.html#af0c16b888c3ceb365bfcc7054d437428", null ],
     [ "Trou", "d7/d9c/classInterfaceGraphique_1_1Properties_1_1Resources.html#afca2a79004b54e4bc56e990a024374b3", null ],
     [ "Win", "d7/d9c/classInterfaceGraphique_1_1Properties_1_1Resources.html#ac0a0b67384d51765d287c41baea2ee60", null ],
