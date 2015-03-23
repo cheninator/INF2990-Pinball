@@ -399,15 +399,6 @@ namespace InterfaceGraphique.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.IO.UnmanagedMemoryStream similar to System.IO.MemoryStream.
         /// </summary>
-        internal static System.IO.UnmanagedMemoryStream touche_invalide {
-            get {
-                return ResourceManager.GetStream("touche_invalide", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized resource of type System.IO.UnmanagedMemoryStream similar to System.IO.MemoryStream.
-        /// </summary>
         internal static System.IO.UnmanagedMemoryStream Trombone {
             get {
                 return ResourceManager.GetStream("Trombone", resourceCulture);

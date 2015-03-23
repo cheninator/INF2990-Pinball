@@ -29,7 +29,6 @@ namespace InterfaceGraphique
         int[] valuesXML = new int[13]; 
         string maTouche;
         bool mediaPlaying = false;
-        System.Media.SoundPlayer p = new System.Media.SoundPlayer(Properties.Resources.touche_invalide);
 
         ////////////////////////////////////////////////////////////////////////
         ///
@@ -188,7 +187,6 @@ namespace InterfaceGraphique
                         return false;
                     }
                 }
-                p.Stop(); 
                 mediaPlaying = false;
                 return true;
             }
@@ -198,8 +196,6 @@ namespace InterfaceGraphique
                 //Console.WriteLine("Touche invalide");
                 if (!mediaPlaying)
                 {
-                    p.Stream = Properties.Resources.touche_invalide;
-                    p.PlayLooping();
                     mediaPlaying = true;
                 }
                 return false;
