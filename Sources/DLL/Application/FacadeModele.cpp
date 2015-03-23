@@ -93,7 +93,7 @@ const int FacadeModele::coinDroitTableY = 96;
 /// @return Un pointeur vers l'instance unique de cette classe.
 ///
 ////////////////////////////////////////////////////////////////////////
-FacadeModele* FacadeModele::obtenirInstance()
+FacadeModele* FacadeModele::obtenirInstance(bool console)
 {
 	if (instance_ == nullptr)
 	{
@@ -103,6 +103,10 @@ FacadeModele* FacadeModele::obtenirInstance()
 		instance_->joueur_ = new JoueurVirtuel();
 		instance_->quad_ = new QuadTree(glm::dvec3(coinGaucheTableX, coinGaucheTableY, 0),
 										glm::dvec3(coinDroitTableX,  coinDroitTableY,  0));
+		if (console)
+			instance_->old_ = std::cout.rdbuf(instance_->oss_.rdbuf());
+		else
+			instance_->old_ = nullptr;
 	}
 	return instance_;
 }
@@ -140,6 +144,8 @@ FacadeModele::~FacadeModele()
 	delete proprietes_;
 	delete joueur_;
 	delete quad_;
+	if (instance_->old_ != nullptr)
+		std::cout.rdbuf(instance_->old_);
 }
 
 
@@ -2027,4 +2033,12 @@ double FacadeModele::obtenirScaleMinMax()
 	}
 
 	return glm::length(scaleMax) - glm::length(scaleMin);
+}
+
+
+std::string FacadeModele::obtenirCout()
+{
+	std::string ss = oss_.str();
+	oss_.str(std::string());
+	return ss;
 }

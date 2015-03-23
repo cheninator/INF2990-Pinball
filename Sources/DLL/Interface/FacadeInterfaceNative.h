@@ -115,6 +115,9 @@ extern "C" {
 	__declspec(dllexport) void rechargerArbre(bool recharger);
 
 	__declspec(dllexport) void activerAI(bool actif);
+
+	__declspec(dllexport) void activerCustomConsole();
+	__declspec(dllexport) BSTR obtenirCout();
 }
 
 #endif // __FACADE_INTERFACE_NATIVE_H__

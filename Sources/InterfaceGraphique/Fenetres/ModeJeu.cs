@@ -232,7 +232,9 @@ namespace InterfaceGraphique
                     {
                         FonctionsNatives.animer(tempsInterAffichage);
                         if (Program.compteurFrames == 0)
+                        {
                             pointsPartie = FonctionsNatives.obtenirNombreDePointsDePartie();
+                        }
                     }
                     if (Program.compteurFrames == 0)
                     {
@@ -257,7 +259,6 @@ namespace InterfaceGraphique
                     {
                         nombreDeBillesGagnes++;
                         label_nbGagnes.Text = nombreDeBillesGagnes.ToString();
-
                     }
 
                     label_nbPoints.Text = pointsPartie.ToString();
@@ -270,7 +271,6 @@ namespace InterfaceGraphique
                         if (currentZone >= nbZones)
                         {
                             FinCampagne(true,-5);
-
                         }
                         else
                         {

@@ -190,7 +190,9 @@ namespace InterfaceGraphique
                             FonctionsNatives.creerObjet(bille, bille.Capacity);
                         }
                         if (Program.compteurFrames == 0)
+                        {
                             FonctionsNatives.dessinerOpenGL();
+                        }
                         FonctionsNatives.animer(tempsInterAffichage);
                     }
                 });

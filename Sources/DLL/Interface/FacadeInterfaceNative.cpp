@@ -1928,5 +1928,13 @@ extern "C"
 	font.Render("Hello World");
 
 	*/
+	__declspec(dllexport) void __cdecl activerCustomConsole()
+	{
+		FacadeModele::obtenirInstance(true);
+	}
 
+	__declspec(dllexport) BSTR __cdecl obtenirCout()
+	{
+		return stringToBSTR(FacadeModele::obtenirInstance()->obtenirCout());
+	}
 }// FIN DU extern "C"
