@@ -63,7 +63,8 @@ namespace InterfaceGraphique
             Marshal.Copy(config, valuesXML, 0, 13);
                 
             for(int i = 0; i < 5; i++){
-                currentValues[i] = valuesXML[i];             
+                currentValues[i] = valuesXML[i]; 
+                
             }
             InitialiserTouches();
             
@@ -128,26 +129,37 @@ namespace InterfaceGraphique
         private void InitialiserTouches()
         {
             maTouche = char.ConvertFromUtf32(currentValues[0]);
+            if (currentValues[0] >= 96 && currentValues[0] <= 105)
+                maTouche = "NumPad" + char.ConvertFromUtf32(currentValues[0] - 48);
             if (maTouche == " ")
                 maTouche = "Espace";
+            
             PGJ1_bouton.Text = maTouche;
 
             maTouche = char.ConvertFromUtf32(currentValues[1]);
+            if (currentValues[1] >= 96 && currentValues[1] <= 105)
+                maTouche = "NumPad" + char.ConvertFromUtf32(currentValues[1] - 48);
             if (maTouche == " ")
                 maTouche = "Espace";
             PDJ1_bouton.Text = maTouche;
 
             maTouche = char.ConvertFromUtf32(currentValues[2]);
+            if (currentValues[2] >= 96 && currentValues[2] <= 105)
+                maTouche = "NumPad" + char.ConvertFromUtf32(currentValues[2] - 48);
             if (maTouche == " ")
                 maTouche = "Espace";
             PGJ2_bouton.Text = maTouche;
 
             maTouche = char.ConvertFromUtf32(currentValues[3]);
+            if (currentValues[3] >= 96 && currentValues[3] <= 105)
+                maTouche = "NumPad" + char.ConvertFromUtf32(currentValues[3] - 48);
             if (maTouche == " ")
                 maTouche = "Espace";
             PDJ2_bouton.Text = maTouche;
 
             maTouche = char.ConvertFromUtf32(currentValues[4]);
+            if (currentValues[4] >= 96 && currentValues[4] <= 105)
+                maTouche = "NumPad" + char.ConvertFromUtf32(currentValues[4] - 48);
             if (maTouche == " ")
                 maTouche = "Espace";
             Ressort_bouton.Text = maTouche;
