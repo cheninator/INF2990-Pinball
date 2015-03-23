@@ -141,7 +141,7 @@ void NoeudPaletteD::animer(float temps)
 				{
 					std::string type = parent->getEnfant(i)->obtenirType();
 
-					if (parent->getEnfant(i) != this && type != "bille" && type != "generateurbille")
+					if (parent->getEnfant(i) != this && type != "bille" && type != "generateurbille" && parent->getEnfant(i)->estAffiche())
 					{
 						int j = 0;
 						while (j < boite.size() && contact == false)
