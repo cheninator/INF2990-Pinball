@@ -88,7 +88,7 @@ namespace InterfaceGraphique
 
             DialogResult dialogResult = MessageBox.Show("Voulez vous utiliez la console windows native, ou la console " +
             "sur mesure avec interface graphique? YES pour la console native, NO pour la console GUI.", "Utilisation de la console ?", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
-            if (dialogResult == DialogResult.Yes)
+            if (dialogResult == DialogResult.No)
             {
                 DialogResult dialogResult2 = MessageBox.Show("Cette console est encore tres experimentale. Avertissement: " +
                 "pour la correction des SRS, ne pas utiliser ce mode. Voulez vous toujours utilisez cette console ?", "Etes vous sur !", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
@@ -101,7 +101,7 @@ namespace InterfaceGraphique
                     customConsoleActive = false;
                 }
             }
-            else if (dialogResult == DialogResult.No)
+            else if (dialogResult == DialogResult.Yes)
             {
                 customConsoleActive = false;
             }
