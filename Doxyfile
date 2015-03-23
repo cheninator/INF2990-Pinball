@@ -58,7 +58,7 @@ PROJECT_LOGO           = C:/Users/Aymen/Desktop/handy.jpg
 # entered, it will be relative to the location where doxygen was started. If
 # left blank the current directory will be used.
 
-OUTPUT_DIRECTORY       = "../../../Desktop/Livrable 2"
+OUTPUT_DIRECTORY       = "Livrable 2/documentation"
 
 # If the CREATE_SUBDIRS tag is set to YES then doxygen will create 4096 sub-
 # directories (in 2 levels) under the output directory of each output format and
@@ -453,7 +453,7 @@ EXTRACT_LOCAL_CLASSES  = YES
 # included.
 # The default value is: NO.
 
-EXTRACT_LOCAL_METHODS  = NO
+EXTRACT_LOCAL_METHODS  = YES
 
 # If this flag is set to YES, the members of anonymous namespaces will be
 # extracted and appear in the documentation as a namespace called
@@ -462,7 +462,7 @@ EXTRACT_LOCAL_METHODS  = NO
 # are hidden.
 # The default value is: NO.
 
-EXTRACT_ANON_NSPACES   = NO
+EXTRACT_ANON_NSPACES   = YES
 
 # If the HIDE_UNDOC_MEMBERS tag is set to YES, doxygen will hide all
 # undocumented members inside documented classes or files. If set to NO these
@@ -508,7 +508,7 @@ INTERNAL_DOCS          = NO
 # and Mac users are advised to set this option to NO.
 # The default value is: system dependent.
 
-CASE_SENSE_NAMES       = NO
+CASE_SENSE_NAMES       = YES
 
 # If the HIDE_SCOPE_NAMES tag is set to NO then doxygen will show members with
 # their full class and namespace scopes in the documentation. If set to YES, the
@@ -740,7 +740,7 @@ WARN_IF_DOC_ERROR      = YES
 # parameter documentation, but not about the absence of documentation.
 # The default value is: NO.
 
-WARN_NO_PARAMDOC       = NO
+WARN_NO_PARAMDOC       = YES
 
 # The WARN_FORMAT tag determines the format of the warning messages that doxygen
 # can produce. The string should contain the $file, $line, and $text tags, which
@@ -1211,7 +1211,7 @@ HTML_TIMESTAMP         = YES
 # The default value is: NO.
 # This tag requires that the tag GENERATE_HTML is set to YES.
 
-HTML_DYNAMIC_SECTIONS  = NO
+HTML_DYNAMIC_SECTIONS  = YES
 
 # With HTML_INDEX_NUM_ENTRIES one can control the preferred number of entries
 # shown in the various tree structured indices initially; the user can expand

@@ -14,8 +14,9 @@ using System.Text;
 using System.Threading;
 using System.Windows.Forms;
 
-using AForge.Video;
-using AForge.Video.DirectShow;
+//<CAMERA> TO DO: Put back for video
+//<CAMERA> using AForge.Video;
+//<CAMERA> using AForge.Video.DirectShow;
 
 namespace InterfaceGraphique
 {
@@ -37,11 +38,11 @@ namespace InterfaceGraphique
         public PartieRapide pRapide;
         private Configuration configuration;
         public ModeJeu modeJeuMain;
-        private FilterInfoCollection webcam;
-        private VideoCaptureDevice cam;
-        private bool webCamExiste = false;
-        private Bitmap bit;
-        private System.Windows.Forms.Timer webcamTimer;
+        //<CAMERA> private FilterInfoCollection webcam;
+        //<CAMERA> private VideoCaptureDevice cam;
+        //<CAMERA> private bool webCamExiste = false;
+        //<CAMERA> private Bitmap bit;
+        //<CAMERA> private System.Windows.Forms.Timer webcamTimer;
         public static bool consoleReady = false;
 
         ////////////////////////////////////////////////////////////////////////
@@ -62,45 +63,45 @@ namespace InterfaceGraphique
             StartPosition = FormStartPosition.CenterScreen;
             StringBuilder initSound = new StringBuilder("");
             configuration = new Configuration();
-            webcam = new FilterInfoCollection(FilterCategory.VideoInputDevice);
-            webcamTimer = new System.Windows.Forms.Timer();
-            webcamTimer.Tick += new EventHandler(webcamTimer_tick);
-            if (webcam.Count >= 1)
-            {
-                return;
-                webCamExiste = true;
-                cam = new VideoCaptureDevice(webcam[0].MonikerString);
-                cam.NewFrame += new NewFrameEventHandler(cam_NewFrame);
-                cameraControl(true);
-            }
+            //<CAMERA> webcam = new FilterInfoCollection(FilterCategory.VideoInputDevice);
+            //<CAMERA> webcamTimer = new System.Windows.Forms.Timer();
+            //<CAMERA> webcamTimer.Tick += new EventHandler(webcamTimer_tick);
+            //<CAMERA>  if (webcam.Count >= 1)
+            //<CAMERA> {
+            //<CAMERA>     return;
+            //<CAMERA>     webCamExiste = true;
+            //<CAMERA>     cam = new VideoCaptureDevice(webcam[0].MonikerString);
+            //<CAMERA>     cam.NewFrame += new NewFrameEventHandler(cam_NewFrame);
+            //<CAMERA>     cameraControl(true);
+            //<CAMERA> }
         }
 
         private void webcamTimer_tick(object sender, EventArgs e)
         {
             //Console.WriteLine("Down");
-            if (webCamExiste && bit != null)
-                pictureBox1.Image = bit;
+            //<CAMERA>  if (webCamExiste && bit != null)
+            //<CAMERA>     pictureBox1.Image = bit;
         }
 
-        void cameraControl(bool control)
-         {
-            if (webCamExiste)
-            {
-                if (cam.IsRunning && !control) 
-                {
-                    cam.Stop();
-                }
-                else if (!cam.IsRunning && control)
-                {
-                    cam.Start();
-                }
-            }
-         }
+        //<CAMERA> void cameraControl(bool control)
+         //<CAMERA> {
+            //<CAMERA> if (webCamExiste)
+            //<CAMERA> {
+            //<CAMERA>     if (cam.IsRunning && !control) 
+            //<CAMERA>     {
+            //<CAMERA>         cam.Stop();
+            //<CAMERA>     }
+            //<CAMERA>     else if (!cam.IsRunning && control)
+            //<CAMERA>     {
+            //<CAMERA>         cam.Start();
+            //<CAMERA>     }
+            //<CAMERA> }
+        //<CAMERA> }
 
-        void cam_NewFrame(object sender, NewFrameEventArgs eventArgs)
-        {
-            bit = (Bitmap)eventArgs.Frame.Clone();
-        }
+        //<CAMERA> void cam_NewFrame(object sender, NewFrameEventArgs eventArgs)
+        //<CAMERA> {
+        //<CAMERA>     bit = (Bitmap)eventArgs.Frame.Clone();
+        //<CAMERA> }
 
         private void Form1_KeyPress(object sender, KeyPressEventArgs e)
         {
@@ -121,7 +122,7 @@ namespace InterfaceGraphique
         ////////////////////////////////////////////////////////////////////////
         private void bouton_quit_Click(object sender, EventArgs e)
         {
-            cameraControl(false);
+            //<CAMERA> cameraControl(false);
             this.Dispose();
             Program.myCustomConsole.stopForm();
             System.Environment.Exit(0);
@@ -146,7 +147,7 @@ namespace InterfaceGraphique
         ////////////////////////////////////////////////////////////////////////
         private void bouton_edit_Click(object sender, EventArgs e)
         {
-            cameraControl(false);
+            //<CAMERA> cameraControl(false);
             while (myThread.IsAlive)
             {
                 Thread.Sleep(100);
@@ -272,7 +273,7 @@ namespace InterfaceGraphique
 
         private void bouton_campagne_Click(object sender, EventArgs e)
         {
-            cameraControl(false);
+            //<CAMERA> cameraControl(false);
             campagne = new Campagne();
             this.Hide();
             campagne.ShowDialog(this);
@@ -326,24 +327,24 @@ namespace InterfaceGraphique
 
            // player.Stream = Properties.Resources.Trombone;
           //  player.Play();
-            if (webCamExiste && bit != null)
-            {
-                    pictureBox1.Image = bit;
-                    pictureBox1.SizeMode = PictureBoxSizeMode.Zoom;
-            }
-            else
-            {
+            //<CAMERA> if (webCamExiste && bit != null)
+            //<CAMERA> {
+            //<CAMERA>         pictureBox1.Image = bit;
+            //<CAMERA>         pictureBox1.SizeMode = PictureBoxSizeMode.Zoom;
+            //<CAMERA> }
+            //<CAMERA> else
+            //<CAMERA> {
                 pictureBox1.Image = Properties.Resources.SaintTrinity;
-            }          
+            //<CAMERA> }          
         }
 
         private void pictureBox1_MouseLeave(object sender, EventArgs e)
         {
-            if (webCamExiste && webcamTimer.Enabled == true)
-            {
-                webcamTimer.Enabled = false;
-                webcamTimer.Stop();
-            }
+            //<CAMERA> if (webCamExiste && webcamTimer.Enabled == true)
+            //<CAMERA> {
+            //<CAMERA>     webcamTimer.Enabled = false;
+            //<CAMERA>     webcamTimer.Stop();
+            //<CAMERA> }
             pictureBox1.Image = Properties.Resources.pinball1;
             pictureBox1.SizeMode = PictureBoxSizeMode.StretchImage; 
             player.Stream = Properties.Resources.button_29;
@@ -351,8 +352,8 @@ namespace InterfaceGraphique
 
         private void bouton_pRapide_Click(object sender, EventArgs e)
         {
-            if (webCamExiste)
-                cameraControl(false);
+            //<CAMERA> if (webCamExiste)
+            //<CAMERA>     cameraControl(false);
             while (myThread.IsAlive)
             {
                 // Thread.Sleep(100);
@@ -366,15 +367,15 @@ namespace InterfaceGraphique
 
         private void bouton_config_Click(object sender, EventArgs e)
         {
-            if (webCamExiste)
-                cameraControl(false);
+            //<CAMERA> if (webCamExiste)
+            //<CAMERA>      cameraControl(false);
             configuration.ShowDialog(this);
         }
 
         public void LancerModeJeu(List<string> zones, int playerType)
         {
-            if (webCamExiste)
-                cameraControl(false);
+            //<CAMERA> if (webCamExiste)
+            //<CAMERA>     cameraControl(false);
             modeJeuMain = new ModeJeu(zones, playerType);
             modeJeuMain.ShowDialog(this);
             if (campagne != null)
@@ -392,30 +393,30 @@ namespace InterfaceGraphique
 
         private void pictureBox1_Click_1(object sender, EventArgs e)
         {
-            if (webCamExiste && bit != null)
-            {
-                pictureBox1.Image = bit;
-            }
+            //<CAMERA> if (webCamExiste && bit != null)
+            //<CAMERA> {
+            //<CAMERA>     pictureBox1.Image = bit;
+            //<CAMERA> }
             System.Diagnostics.Process.Start("http://tinyurl.com/dymbb3a");
         }
 
         private void pictureBox1_MouseDown(object sender, MouseEventArgs e)
         {
-            if (e.Button == MouseButtons.Left)
-                if (webCamExiste && bit != null)
-                {
-                    webcamTimer.Enabled = true;
-                    webcamTimer.Start();
-                }
+            //<CAMERA>  if (e.Button == MouseButtons.Left)
+            //<CAMERA> if (webCamExiste && bit != null)
+                //<CAMERA> {
+                    //<CAMERA> webcamTimer.Enabled = true;
+                    //<CAMERA> webcamTimer.Start();
+            //<CAMERA> }
         }
 
         private void pictureBox1_MouseUp(object sender, MouseEventArgs e)
         {
-            if (webCamExiste && bit != null)
-            {
-                webcamTimer.Enabled = false;
-                webcamTimer.Stop();
-            }
+            //<CAMERA> if (webCamExiste && bit != null)
+            //<CAMERA> {
+                //<CAMERA> webcamTimer.Enabled = false;
+                //<CAMERA> webcamTimer.Stop();
+            //<CAMERA> }
         }
 
         private void ShowConsol_Click(object sender, EventArgs e)
@@ -426,28 +427,28 @@ namespace InterfaceGraphique
         }
         private void MainMenu_Activated(object sender, EventArgs e)
         {
-            if (webcam.Count >= 1)
-            {
-                return;
-                webCamExiste = true;
-                cam = new VideoCaptureDevice(webcam[0].MonikerString);
-                cam.NewFrame += new NewFrameEventHandler(cam_NewFrame);
-                cameraControl(true);
-            }
+            //<CAMERA> if (webcam.Count >= 1)
+            //<CAMERA> {
+            //<CAMERA>     return;
+            //<CAMERA>     webCamExiste = true;
+            //<CAMERA>     cam = new VideoCaptureDevice(webcam[0].MonikerString);
+            //<CAMERA>     cam.NewFrame += new NewFrameEventHandler(cam_NewFrame);
+            //<CAMERA>     cameraControl(true);
+            //<CAMERA> }
         }
 
         private void MainMenu_Deactivate(object sender, EventArgs e)
         {
-            if (webCamExiste && bit != null)
-            {
-                webcamTimer.Enabled = false;
-                webcamTimer.Stop();
-            }
+            //<CAMERA> if (webCamExiste && bit != null)
+            //<CAMERA> {
+            //<CAMERA>     webcamTimer.Enabled = false;
+            //<CAMERA>     webcamTimer.Stop();
+            //<CAMERA> }
         }
 
         private void MainMenu_FormClosing(object sender, FormClosingEventArgs e)
         {
-            cameraControl(false);
+            //<CAMERA> cameraControl(false);
             this.Dispose();
             System.Environment.Exit(0);
         }

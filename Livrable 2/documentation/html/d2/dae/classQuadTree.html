@@ -1,0 +1,815 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=9"/>
+<meta name="generator" content="Doxygen 1.8.9.1"/>
+<title>Pain Ball: RÃ©fÃ©rence de la classe QuadTree</title>
+<link href="../../tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="../../jquery.js"></script>
+<script type="text/javascript" src="../../dynsections.js"></script>
+<link href="../../navtree.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="../../resize.js"></script>
+<script type="text/javascript" src="../../navtreedata.js"></script>
+<script type="text/javascript" src="../../navtree.js"></script>
+<script type="text/javascript">
+  $(document).ready(initResizable);
+  $(window).load(resizeHeight);
+</script>
+<link href="../../search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="../../search/searchdata.js"></script>
+<script type="text/javascript" src="../../search/search.js"></script>
+<script type="text/javascript">
+  $(document).ready(function() { init_search(); });
+</script>
+<link href="../../doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr style="height: 56px;">
+  <td id="projectlogo"><img alt="Logo" src="../../handy.jpg"/></td>
+  <td style="padding-left: 0.5em;">
+   <div id="projectname">Pain Ball
+   &#160;<span id="projectnumber">Livrable 2</span>
+   </div>
+   <div id="projectbrief">by The Ballers</div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- GÃ©nÃ©rÃ© par Doxygen 1.8.9.1 -->
+<script type="text/javascript">
+var searchBox = new SearchBox("searchBox", "../../search",false,'Recherche');
+</script>
+  <div id="navrow1" class="tabs">
+    <ul class="tablist">
+      <li><a href="../../index.html"><span>Page&#160;principale</span></a></li>
+      <li><a href="../../modules.html"><span>Modules</span></a></li>
+      <li><a href="../../namespaces.html"><span>Espaces&#160;de&#160;nommage</span></a></li>
+      <li class="current"><a href="../../annotated.html"><span>Classes</span></a></li>
+      <li><a href="../../files.html"><span>Fichiers</span></a></li>
+      <li>
+        <div id="MSearchBox" class="MSearchBoxInactive">
+        <span class="left">
+          <img id="MSearchSelect" src="../../search/mag_sel.png"
+               onmouseover="return searchBox.OnSearchSelectShow()"
+               onmouseout="return searchBox.OnSearchSelectHide()"
+               alt=""/>
+          <input type="text" id="MSearchField" value="Recherche" accesskey="S"
+               onfocus="searchBox.OnSearchFieldFocus(true)" 
+               onblur="searchBox.OnSearchFieldFocus(false)" 
+               onkeyup="searchBox.OnSearchFieldChange(event)"/>
+          </span><span class="right">
+            <a id="MSearchClose" href="javascript:searchBox.CloseResultsWindow()"><img id="MSearchCloseImg" border="0" src="../../search/close.png" alt=""/></a>
+          </span>
+        </div>
+      </li>
+    </ul>
+  </div>
+  <div id="navrow2" class="tabs2">
+    <ul class="tablist">
+      <li><a href="../../annotated.html"><span>Liste&#160;des&#160;classes</span></a></li>
+      <li><a href="../../classes.html"><span>Index&#160;des&#160;classes</span></a></li>
+      <li><a href="../../hierarchy.html"><span>HiÃ©rarchie&#160;des&#160;classes</span></a></li>
+      <li><a href="../../functions.html"><span>Membres&#160;de&#160;classe</span></a></li>
+    </ul>
+  </div>
+</div><!-- top -->
+<div id="side-nav" class="ui-resizable side-nav-resizable">
+  <div id="nav-tree">
+    <div id="nav-tree-contents">
+      <div id="nav-sync" class="sync"></div>
+    </div>
+  </div>
+  <div id="splitbar" style="-moz-user-select:none;" 
+       class="ui-resizable-handle">
+  </div>
+</div>
+<script type="text/javascript">
+$(document).ready(function(){initNavTree('d2/dae/classQuadTree.html','../../');});
+</script>
+<div id="doc-content">
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<iframe src="javascript:void(0)" frameborder="0" 
+        name="MSearchResults" id="MSearchResults">
+</iframe>
+</div>
+
+<div class="header">
+  <div class="summary">
+<a href="#pub-methods">Fonctions membres publiques</a> &#124;
+<a href="#pri-methods">Fonctions membres privÃ©es</a> &#124;
+<a href="#pri-attribs">Attributs privÃ©s</a> &#124;
+<a href="../../df/de8/classQuadTree-members.html">Liste de tous les membres</a>  </div>
+  <div class="headertitle">
+<div class="title">RÃ©fÃ©rence de la classe QuadTree</div>  </div>
+</div><!--header-->
+<div class="contents">
+
+<p>Cette classe permet de reduire le nombre de calcul/comparaisons à effectuer pour la gestion de la physique.  
+ <a href="../../d2/dae/classQuadTree.html#details">Plus de dÃ©tails...</a></p>
+
+<p><code>#include &lt;<a class="el" href="../../d5/d32/QuadTree_8h_source.html">QuadTree.h</a>&gt;</code></p>
+<table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
+Fonctions membres publiques</h2></td></tr>
+<tr class="memitem:a6b32a564e393f62974476f292a6eca30"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d2/dae/classQuadTree.html#a6b32a564e393f62974476f292a6eca30">QuadTree</a> (glm::dvec3 inferieurGauche, glm::dvec3 superieurDroit)</td></tr>
+<tr class="memdesc:a6b32a564e393f62974476f292a6eca30"><td class="mdescLeft">&#160;</td><td class="mdescRight">Constructeur pour le 1er <a class="el" href="../../d2/dae/classQuadTree.html" title="Cette classe permet de reduire le nombre de calcul/comparaisons à effectuer pour la gestion de la phys...">QuadTree</a>.  <a href="#a6b32a564e393f62974476f292a6eca30">Plus de dÃ©tails...</a><br /></td></tr>
+<tr class="separator:a6b32a564e393f62974476f292a6eca30"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a236dde2058a3ccf2babbe4a289327b30"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d2/dae/classQuadTree.html#a236dde2058a3ccf2babbe4a289327b30">~QuadTree</a> ()</td></tr>
+<tr class="memdesc:a236dde2058a3ccf2babbe4a289327b30"><td class="mdescLeft">&#160;</td><td class="mdescRight">Destructeur.  <a href="#a236dde2058a3ccf2babbe4a289327b30">Plus de dÃ©tails...</a><br /></td></tr>
+<tr class="separator:a236dde2058a3ccf2babbe4a289327b30"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab4d0dad8e194a2f9c991c5027fe5c023"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d2/dae/classQuadTree.html#ab4d0dad8e194a2f9c991c5027fe5c023">insert</a> (<a class="el" href="../../d7/d8e/classNoeudAbstrait.html">NoeudAbstrait</a> *noeud)</td></tr>
+<tr class="memdesc:ab4d0dad8e194a2f9c991c5027fe5c023"><td class="mdescLeft">&#160;</td><td class="mdescRight">Inserer des noeuds dans le <a class="el" href="../../d2/dae/classQuadTree.html" title="Cette classe permet de reduire le nombre de calcul/comparaisons à effectuer pour la gestion de la phys...">QuadTree</a>.  <a href="#ab4d0dad8e194a2f9c991c5027fe5c023">Plus de dÃ©tails...</a><br /></td></tr>
+<tr class="separator:ab4d0dad8e194a2f9c991c5027fe5c023"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:abb80439d0db1d33c9d724409e0adba52"><td class="memItemLeft" align="right" valign="top">std::list&lt; <a class="el" href="../../d7/d8e/classNoeudAbstrait.html">NoeudAbstrait</a> * &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d2/dae/classQuadTree.html#abb80439d0db1d33c9d724409e0adba52">retrieve</a> (<a class="el" href="../../d7/d8e/classNoeudAbstrait.html">NoeudAbstrait</a> *noeud)</td></tr>
+<tr class="memdesc:abb80439d0db1d33c9d724409e0adba52"><td class="mdescLeft">&#160;</td><td class="mdescRight">Retourne la liste des objets se trouvant dans le même quand que le noeud passe en paramètre.  <a href="#abb80439d0db1d33c9d724409e0adba52">Plus de dÃ©tails...</a><br /></td></tr>
+<tr class="separator:abb80439d0db1d33c9d724409e0adba52"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a77b5bb6f8a754707f17e731893a322d9"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d2/dae/classQuadTree.html#a77b5bb6f8a754707f17e731893a322d9">remove</a> (<a class="el" href="../../d7/d8e/classNoeudAbstrait.html">NoeudAbstrait</a> *noeud)</td></tr>
+<tr class="memdesc:a77b5bb6f8a754707f17e731893a322d9"><td class="mdescLeft">&#160;</td><td class="mdescRight">Retirer un noeud du <a class="el" href="../../d2/dae/classQuadTree.html" title="Cette classe permet de reduire le nombre de calcul/comparaisons à effectuer pour la gestion de la phys...">QuadTree</a>.  <a href="#a77b5bb6f8a754707f17e731893a322d9">Plus de dÃ©tails...</a><br /></td></tr>
+<tr class="separator:a77b5bb6f8a754707f17e731893a322d9"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a0c1976706b3dd28abd50efce4024b087"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d2/dae/classQuadTree.html#a0c1976706b3dd28abd50efce4024b087">clear</a> ()</td></tr>
+<tr class="memdesc:a0c1976706b3dd28abd50efce4024b087"><td class="mdescLeft">&#160;</td><td class="mdescRight">Vider le <a class="el" href="../../d2/dae/classQuadTree.html" title="Cette classe permet de reduire le nombre de calcul/comparaisons à effectuer pour la gestion de la phys...">QuadTree</a> et les sous <a class="el" href="../../d2/dae/classQuadTree.html" title="Cette classe permet de reduire le nombre de calcul/comparaisons à effectuer pour la gestion de la phys...">QuadTree</a>.  <a href="#a0c1976706b3dd28abd50efce4024b087">Plus de dÃ©tails...</a><br /></td></tr>
+<tr class="separator:a0c1976706b3dd28abd50efce4024b087"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pri-methods"></a>
+Fonctions membres privÃ©es</h2></td></tr>
+<tr class="memitem:a13b8c25592d9d1af3dbd7bb2e2202d6c"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d2/dae/classQuadTree.html#a13b8c25592d9d1af3dbd7bb2e2202d6c">QuadTree</a> (int level, glm::dvec3 inferieurGauche, glm::dvec3 superieurDroit)</td></tr>
+<tr class="memdesc:a13b8c25592d9d1af3dbd7bb2e2202d6c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Constructeur pour les sous <a class="el" href="../../d2/dae/classQuadTree.html" title="Cette classe permet de reduire le nombre de calcul/comparaisons à effectuer pour la gestion de la phys...">QuadTree</a>.  <a href="#a13b8c25592d9d1af3dbd7bb2e2202d6c">Plus de dÃ©tails...</a><br /></td></tr>
+<tr class="separator:a13b8c25592d9d1af3dbd7bb2e2202d6c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a9d9df95646022de5aa568aad8a81e262"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d2/dae/classQuadTree.html#a9d9df95646022de5aa568aad8a81e262">divide</a> ()</td></tr>
+<tr class="memdesc:a9d9df95646022de5aa568aad8a81e262"><td class="mdescLeft">&#160;</td><td class="mdescRight">Diviser le <a class="el" href="../../d2/dae/classQuadTree.html" title="Cette classe permet de reduire le nombre de calcul/comparaisons à effectuer pour la gestion de la phys...">QuadTree</a> lorsque la capacite maximale est atteinte.  <a href="#a9d9df95646022de5aa568aad8a81e262">Plus de dÃ©tails...</a><br /></td></tr>
+<tr class="separator:a9d9df95646022de5aa568aad8a81e262"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aae64148c100af59b58031b4d785150ee"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d2/dae/classQuadTree.html#aae64148c100af59b58031b4d785150ee">estDansQuadTree</a> (<a class="el" href="../../d7/d8e/classNoeudAbstrait.html">NoeudAbstrait</a> *noeud, <a class="el" href="../../d2/dae/classQuadTree.html">QuadTree</a> *quad) const </td></tr>
+<tr class="memdesc:aae64148c100af59b58031b4d785150ee"><td class="mdescLeft">&#160;</td><td class="mdescRight">Verifier si l'objet est dans le <a class="el" href="../../d2/dae/classQuadTree.html" title="Cette classe permet de reduire le nombre de calcul/comparaisons à effectuer pour la gestion de la phys...">QuadTree</a>.  <a href="#aae64148c100af59b58031b4d785150ee">Plus de dÃ©tails...</a><br /></td></tr>
+<tr class="separator:aae64148c100af59b58031b4d785150ee"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:adad4259715b95588597028504a1eff91"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d2/dae/classQuadTree.html#adad4259715b95588597028504a1eff91">estDansQuadTree</a> (glm::dvec3 point, <a class="el" href="../../d2/dae/classQuadTree.html">QuadTree</a> *quad) const </td></tr>
+<tr class="memdesc:adad4259715b95588597028504a1eff91"><td class="mdescLeft">&#160;</td><td class="mdescRight">Verifier si un point est dans le <a class="el" href="../../d2/dae/classQuadTree.html" title="Cette classe permet de reduire le nombre de calcul/comparaisons à effectuer pour la gestion de la phys...">QuadTree</a>.  <a href="#adad4259715b95588597028504a1eff91">Plus de dÃ©tails...</a><br /></td></tr>
+<tr class="separator:adad4259715b95588597028504a1eff91"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a19595ac45a36043b7818c0b977bfd784"><td class="memItemLeft" align="right" valign="top"><a class="el" href="../../d2/dae/classQuadTree.html">QuadTree</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d2/dae/classQuadTree.html#a19595ac45a36043b7818c0b977bfd784">obtenirQuadrant</a> (<a class="el" href="../../d7/d8e/classNoeudAbstrait.html">NoeudAbstrait</a> *noeud)</td></tr>
+<tr class="memdesc:a19595ac45a36043b7818c0b977bfd784"><td class="mdescLeft">&#160;</td><td class="mdescRight">Retourne le <a class="el" href="../../d2/dae/classQuadTree.html" title="Cette classe permet de reduire le nombre de calcul/comparaisons à effectuer pour la gestion de la phys...">QuadTree</a> dans lequel il faut faire l'insertion.  <a href="#a19595ac45a36043b7818c0b977bfd784">Plus de dÃ©tails...</a><br /></td></tr>
+<tr class="separator:a19595ac45a36043b7818c0b977bfd784"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pri-attribs"></a>
+Attributs privÃ©s</h2></td></tr>
+<tr class="memitem:acdeb238897a55212e1add5d19b29c2a4"><td class="memItemLeft" align="right" valign="top">const int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d2/dae/classQuadTree.html#acdeb238897a55212e1add5d19b29c2a4">MAX_CAPACITY</a> = 10</td></tr>
+<tr class="separator:acdeb238897a55212e1add5d19b29c2a4"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a015dc6499f51411e4e275d1678dd3371"><td class="memItemLeft" align="right" valign="top">const int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d2/dae/classQuadTree.html#a015dc6499f51411e4e275d1678dd3371">MAX_LEVEL</a> = 3</td></tr>
+<tr class="separator:a015dc6499f51411e4e275d1678dd3371"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a71281baeba7249eefe737bf04b9f4b67"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d2/dae/classQuadTree.html#a71281baeba7249eefe737bf04b9f4b67">niveauCourant_</a></td></tr>
+<tr class="separator:a71281baeba7249eefe737bf04b9f4b67"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aff1e30e13b3a6052ed725fd9452a44be"><td class="memItemLeft" align="right" valign="top">glm::dvec3&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d2/dae/classQuadTree.html#aff1e30e13b3a6052ed725fd9452a44be">inferieurGauche_</a></td></tr>
+<tr class="memdesc:aff1e30e13b3a6052ed725fd9452a44be"><td class="mdescLeft">&#160;</td><td class="mdescRight">Pour delimiter l'espace du <a class="el" href="../../d2/dae/classQuadTree.html" title="Cette classe permet de reduire le nombre de calcul/comparaisons à effectuer pour la gestion de la phys...">QuadTree</a>.  <a href="#aff1e30e13b3a6052ed725fd9452a44be">Plus de dÃ©tails...</a><br /></td></tr>
+<tr class="separator:aff1e30e13b3a6052ed725fd9452a44be"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a1ff055e6f8fab140f968b78c1b27d4c7"><td class="memItemLeft" align="right" valign="top">glm::dvec3&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d2/dae/classQuadTree.html#a1ff055e6f8fab140f968b78c1b27d4c7">superieurDroit_</a></td></tr>
+<tr class="separator:a1ff055e6f8fab140f968b78c1b27d4c7"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a7a366d2d733a19c569a37e3d61719b8e"><td class="memItemLeft" align="right" valign="top">std::list&lt; <a class="el" href="../../d7/d8e/classNoeudAbstrait.html">NoeudAbstrait</a> * &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d2/dae/classQuadTree.html#a7a366d2d733a19c569a37e3d61719b8e">objets_</a></td></tr>
+<tr class="memdesc:a7a366d2d733a19c569a37e3d61719b8e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Contient la liste des objets appartenant au <a class="el" href="../../d2/dae/classQuadTree.html" title="Cette classe permet de reduire le nombre de calcul/comparaisons à effectuer pour la gestion de la phys...">QuadTree</a>.  <a href="#a7a366d2d733a19c569a37e3d61719b8e">Plus de dÃ©tails...</a><br /></td></tr>
+<tr class="separator:a7a366d2d733a19c569a37e3d61719b8e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad245026e27eef8dc49ea3f246a5fc453"><td class="memItemLeft" align="right" valign="top"><a class="el" href="../../d2/dae/classQuadTree.html">QuadTree</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d2/dae/classQuadTree.html#ad245026e27eef8dc49ea3f246a5fc453">nordEst_</a></td></tr>
+<tr class="memdesc:ad245026e27eef8dc49ea3f246a5fc453"><td class="mdescLeft">&#160;</td><td class="mdescRight">Pour la subdivision du <a class="el" href="../../d2/dae/classQuadTree.html" title="Cette classe permet de reduire le nombre de calcul/comparaisons à effectuer pour la gestion de la phys...">QuadTree</a> en sous <a class="el" href="../../d2/dae/classQuadTree.html" title="Cette classe permet de reduire le nombre de calcul/comparaisons à effectuer pour la gestion de la phys...">QuadTree</a>.  <a href="#ad245026e27eef8dc49ea3f246a5fc453">Plus de dÃ©tails...</a><br /></td></tr>
+<tr class="separator:ad245026e27eef8dc49ea3f246a5fc453"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a16db1d5bc24ad037e8a0727040fe11fc"><td class="memItemLeft" align="right" valign="top"><a class="el" href="../../d2/dae/classQuadTree.html">QuadTree</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d2/dae/classQuadTree.html#a16db1d5bc24ad037e8a0727040fe11fc">nordOuest_</a></td></tr>
+<tr class="separator:a16db1d5bc24ad037e8a0727040fe11fc"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a222a4d9b79c0a906fb737fbd55b41ec3"><td class="memItemLeft" align="right" valign="top"><a class="el" href="../../d2/dae/classQuadTree.html">QuadTree</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d2/dae/classQuadTree.html#a222a4d9b79c0a906fb737fbd55b41ec3">sudEst_</a></td></tr>
+<tr class="separator:a222a4d9b79c0a906fb737fbd55b41ec3"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a4299e241cfa928ec634277a8ceedeb74"><td class="memItemLeft" align="right" valign="top"><a class="el" href="../../d2/dae/classQuadTree.html">QuadTree</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d2/dae/classQuadTree.html#a4299e241cfa928ec634277a8ceedeb74">sudOuest_</a></td></tr>
+<tr class="separator:a4299e241cfa928ec634277a8ceedeb74"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table>
+<a name="details" id="details"></a><h2 class="groupheader">Description dÃ©taillÃ©e</h2>
+<div class="textblock"><p>Cette classe permet de reduire le nombre de calcul/comparaisons à effectuer pour la gestion de la physique. </p>
+<dl class="section author"><dt>Auteur</dt><dd>The Ballers </dd></dl>
+<dl class="section date"><dt>Date</dt><dd>2015-02-24 </dd></dl>
+
+<p>DÃ©finition Ã  la ligne <a class="el" href="../../d5/d32/QuadTree_8h_source.html#l00024">24</a> du fichier <a class="el" href="../../d5/d32/QuadTree_8h_source.html">QuadTree.h</a>.</p>
+</div><h2 class="groupheader">Documentation des constructeurs et destructeur</h2>
+<a class="anchor" id="a6b32a564e393f62974476f292a6eca30"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">QuadTree::QuadTree </td>
+          <td>(</td>
+          <td class="paramtype">glm::dvec3&#160;</td>
+          <td class="paramname"><em>inferieurGauche</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">glm::dvec3&#160;</td>
+          <td class="paramname"><em>superieurDroit</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Constructeur pour le 1er <a class="el" href="../../d2/dae/classQuadTree.html" title="Cette classe permet de reduire le nombre de calcul/comparaisons à effectuer pour la gestion de la phys...">QuadTree</a>. </p>
+<p>Constructeur qui initialise les variables membres de la classe.</p>
+<dl class="params"><dt>ParamÃ¨tres</dt><dd>
+  <table class="params">
+    <tr><td class="paramdir">[in]</td><td class="paramname">inferieurGauche</td><td>: Les limites du <a class="el" href="../../d2/dae/classQuadTree.html" title="Cette classe permet de reduire le nombre de calcul/comparaisons à effectuer pour la gestion de la phys...">QuadTree</a> </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">superieurDroit</td><td>: Les limites du <a class="el" href="../../d2/dae/classQuadTree.html" title="Cette classe permet de reduire le nombre de calcul/comparaisons à effectuer pour la gestion de la phys...">QuadTree</a></td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Renvoie</dt><dd>Aucune (constructeur). </dd></dl>
+
+<p>DÃ©finition Ã  la ligne <a class="el" href="../../d3/d89/QuadTree_8cpp_source.html#l00025">25</a> du fichier <a class="el" href="../../d3/d89/QuadTree_8cpp_source.html">QuadTree.cpp</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="a236dde2058a3ccf2babbe4a289327b30"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">QuadTree::~QuadTree </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Destructeur. </p>
+<p>Le destructeur desalloue l'espace attribué dynamiquement. Il appelle la méthode <a class="el" href="../../d2/dae/classQuadTree.html#a0c1976706b3dd28abd50efce4024b087" title="Vider le QuadTree et les sous QuadTree. ">clear()</a>.</p>
+<dl class="section return"><dt>Renvoie</dt><dd>Aucune (destructeur). </dd></dl>
+
+<p>DÃ©finition Ã  la ligne <a class="el" href="../../d3/d89/QuadTree_8cpp_source.html#l00075">75</a> du fichier <a class="el" href="../../d3/d89/QuadTree_8cpp_source.html">QuadTree.cpp</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="a13b8c25592d9d1af3dbd7bb2e2202d6c"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">QuadTree::QuadTree </td>
+          <td>(</td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>level</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">glm::dvec3&#160;</td>
+          <td class="paramname"><em>inferieurGauche</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">glm::dvec3&#160;</td>
+          <td class="paramname"><em>superieurDroit</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Constructeur pour les sous <a class="el" href="../../d2/dae/classQuadTree.html" title="Cette classe permet de reduire le nombre de calcul/comparaisons à effectuer pour la gestion de la phys...">QuadTree</a>. </p>
+<p>Constructeur qui initialise les variables membres de la classe.</p>
+<dl class="params"><dt>ParamÃ¨tres</dt><dd>
+  <table class="params">
+    <tr><td class="paramdir">[in]</td><td class="paramname">level</td><td>: le niveau du <a class="el" href="../../d2/dae/classQuadTree.html" title="Cette classe permet de reduire le nombre de calcul/comparaisons à effectuer pour la gestion de la phys...">QuadTree</a> </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">inferieurGauche</td><td>: Les limites du <a class="el" href="../../d2/dae/classQuadTree.html" title="Cette classe permet de reduire le nombre de calcul/comparaisons à effectuer pour la gestion de la phys...">QuadTree</a> Gauche </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">superieurDroit</td><td>: Les limites du <a class="el" href="../../d2/dae/classQuadTree.html" title="Cette classe permet de reduire le nombre de calcul/comparaisons à effectuer pour la gestion de la phys...">QuadTree</a> Droite</td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Renvoie</dt><dd>Aucune (constructeur). </dd></dl>
+
+<p>DÃ©finition Ã  la ligne <a class="el" href="../../d3/d89/QuadTree_8cpp_source.html#l00052">52</a> du fichier <a class="el" href="../../d3/d89/QuadTree_8cpp_source.html">QuadTree.cpp</a>.</p>
+
+</div>
+</div>
+<h2 class="groupheader">Documentation des fonctions membres</h2>
+<a class="anchor" id="a0c1976706b3dd28abd50efce4024b087"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void QuadTree::clear </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Vider le <a class="el" href="../../d2/dae/classQuadTree.html" title="Cette classe permet de reduire le nombre de calcul/comparaisons à effectuer pour la gestion de la phys...">QuadTree</a> et les sous <a class="el" href="../../d2/dae/classQuadTree.html" title="Cette classe permet de reduire le nombre de calcul/comparaisons à effectuer pour la gestion de la phys...">QuadTree</a>. </p>
+<p>Cette méthode vide la liste des noeuds d'un <a class="el" href="../../d2/dae/classQuadTree.html" title="Cette classe permet de reduire le nombre de calcul/comparaisons à effectuer pour la gestion de la phys...">QuadTree</a> et s'occupe de la désallocation de mémoire de ses sous <a class="el" href="../../d2/dae/classQuadTree.html" title="Cette classe permet de reduire le nombre de calcul/comparaisons à effectuer pour la gestion de la phys...">QuadTree</a>.</p>
+<dl class="section return"><dt>Renvoie</dt><dd>Aucune </dd></dl>
+<p>Desallouer la mémoire</p>
+<p>Remettre les pointeurs à nullptr </p>
+
+<p>DÃ©finition Ã  la ligne <a class="el" href="../../d3/d89/QuadTree_8cpp_source.html#l00123">123</a> du fichier <a class="el" href="../../d3/d89/QuadTree_8cpp_source.html">QuadTree.cpp</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="a9d9df95646022de5aa568aad8a81e262"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void QuadTree::divide </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Diviser le <a class="el" href="../../d2/dae/classQuadTree.html" title="Cette classe permet de reduire le nombre de calcul/comparaisons à effectuer pour la gestion de la phys...">QuadTree</a> lorsque la capacite maximale est atteinte. </p>
+<p>Cette méthode alloue dynamiquement les sous <a class="el" href="../../d2/dae/classQuadTree.html" title="Cette classe permet de reduire le nombre de calcul/comparaisons à effectuer pour la gestion de la phys...">QuadTree</a> avec les bonnes limites spaciales.</p>
+<dl class="section return"><dt>Renvoie</dt><dd>Aucune </dd></dl>
+
+<p>DÃ©finition Ã  la ligne <a class="el" href="../../d3/d89/QuadTree_8cpp_source.html#l00091">91</a> du fichier <a class="el" href="../../d3/d89/QuadTree_8cpp_source.html">QuadTree.cpp</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="aae64148c100af59b58031b4d785150ee"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool QuadTree::estDansQuadTree </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="../../d7/d8e/classNoeudAbstrait.html">NoeudAbstrait</a> *&#160;</td>
+          <td class="paramname"><em>noeud</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="../../d2/dae/classQuadTree.html">QuadTree</a> *&#160;</td>
+          <td class="paramname"><em>quad</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td> const</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Verifier si l'objet est dans le <a class="el" href="../../d2/dae/classQuadTree.html" title="Cette classe permet de reduire le nombre de calcul/comparaisons à effectuer pour la gestion de la phys...">QuadTree</a>. </p>
+<p>Cette méthode permet de savoir si un noeud est complétement contenu dans un <a class="el" href="../../d2/dae/classQuadTree.html" title="Cette classe permet de reduire le nombre de calcul/comparaisons à effectuer pour la gestion de la phys...">QuadTree</a>.</p>
+<dl class="params"><dt>ParamÃ¨tres</dt><dd>
+  <table class="params">
+    <tr><td class="paramdir">[in]</td><td class="paramname">noeud</td><td>: le noeud à insérer </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">quad</td><td>: le quad dans lequel on veut insérer</td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Renvoie</dt><dd>True lorsque le noeud est dans le <a class="el" href="../../d2/dae/classQuadTree.html" title="Cette classe permet de reduire le nombre de calcul/comparaisons à effectuer pour la gestion de la phys...">QuadTree</a> passé en paramètre. False autrement </dd></dl>
+
+<p>DÃ©finition Ã  la ligne <a class="el" href="../../d3/d89/QuadTree_8cpp_source.html#l00163">163</a> du fichier <a class="el" href="../../d3/d89/QuadTree_8cpp_source.html">QuadTree.cpp</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="adad4259715b95588597028504a1eff91"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool QuadTree::estDansQuadTree </td>
+          <td>(</td>
+          <td class="paramtype">glm::dvec3&#160;</td>
+          <td class="paramname"><em>points</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="../../d2/dae/classQuadTree.html">QuadTree</a> *&#160;</td>
+          <td class="paramname"><em>quad</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td> const</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Verifier si un point est dans le <a class="el" href="../../d2/dae/classQuadTree.html" title="Cette classe permet de reduire le nombre de calcul/comparaisons à effectuer pour la gestion de la phys...">QuadTree</a>. </p>
+<p>Cette méthode permet de savoir si un point est complétement contenu dans un <a class="el" href="../../d2/dae/classQuadTree.html" title="Cette classe permet de reduire le nombre de calcul/comparaisons à effectuer pour la gestion de la phys...">QuadTree</a>.</p>
+<dl class="params"><dt>ParamÃ¨tres</dt><dd>
+  <table class="params">
+    <tr><td class="paramdir">[in]</td><td class="paramname">points</td><td>: le point à vérifier </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">quad</td><td>: le quad dans lequel on veut insérer</td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Renvoie</dt><dd>True lorsque le point est dans le <a class="el" href="../../d2/dae/classQuadTree.html" title="Cette classe permet de reduire le nombre de calcul/comparaisons à effectuer pour la gestion de la phys...">QuadTree</a> passé en paramètre. False autrement </dd></dl>
+
+<p>DÃ©finition Ã  la ligne <a class="el" href="../../d3/d89/QuadTree_8cpp_source.html#l00227">227</a> du fichier <a class="el" href="../../d3/d89/QuadTree_8cpp_source.html">QuadTree.cpp</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="ab4d0dad8e194a2f9c991c5027fe5c023"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool QuadTree::insert </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="../../d7/d8e/classNoeudAbstrait.html">NoeudAbstrait</a> *&#160;</td>
+          <td class="paramname"><em>noeud</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Inserer des noeuds dans le <a class="el" href="../../d2/dae/classQuadTree.html" title="Cette classe permet de reduire le nombre de calcul/comparaisons à effectuer pour la gestion de la phys...">QuadTree</a>. </p>
+<p>Cette méthode insère un noeud dans le <a class="el" href="../../d2/dae/classQuadTree.html" title="Cette classe permet de reduire le nombre de calcul/comparaisons à effectuer pour la gestion de la phys...">QuadTree</a></p>
+<dl class="params"><dt>ParamÃ¨tres</dt><dd>
+  <table class="params">
+    <tr><td class="paramdir">[in]</td><td class="paramname">noeud</td><td>: le noeud à insérer</td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Renvoie</dt><dd>True lorsque le noeud a été insérer, false autrement </dd></dl>
+
+<p>DÃ©finition Ã  la ligne <a class="el" href="../../d3/d89/QuadTree_8cpp_source.html#l00289">289</a> du fichier <a class="el" href="../../d3/d89/QuadTree_8cpp_source.html">QuadTree.cpp</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="a19595ac45a36043b7818c0b977bfd784"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="../../d2/dae/classQuadTree.html">QuadTree</a> * QuadTree::obtenirQuadrant </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="../../d7/d8e/classNoeudAbstrait.html">NoeudAbstrait</a> *&#160;</td>
+          <td class="paramname"><em>noeud</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Retourne le <a class="el" href="../../d2/dae/classQuadTree.html" title="Cette classe permet de reduire le nombre de calcul/comparaisons à effectuer pour la gestion de la phys...">QuadTree</a> dans lequel il faut faire l'insertion. </p>
+<p>Cette méthode retourne le quadrant dans lequel il faudra insérer un noeud. Retourne le parent des quadrants si le noeud est à l'intersection de plusieurs quadrants</p>
+<dl class="params"><dt>ParamÃ¨tres</dt><dd>
+  <table class="params">
+    <tr><td class="paramdir">[in]</td><td class="paramname">noeud</td><td>: le noeud à insérer</td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Renvoie</dt><dd>QuadTree*, le quadTree dans lequel il faudra insérer le noeud </dd></dl>
+
+<p>DÃ©finition Ã  la ligne <a class="el" href="../../d3/d89/QuadTree_8cpp_source.html#l00254">254</a> du fichier <a class="el" href="../../d3/d89/QuadTree_8cpp_source.html">QuadTree.cpp</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="a77b5bb6f8a754707f17e731893a322d9"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool QuadTree::remove </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="../../d7/d8e/classNoeudAbstrait.html">NoeudAbstrait</a> *&#160;</td>
+          <td class="paramname"><em>noeud</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Retirer un noeud du <a class="el" href="../../d2/dae/classQuadTree.html" title="Cette classe permet de reduire le nombre de calcul/comparaisons à effectuer pour la gestion de la phys...">QuadTree</a>. </p>
+
+<p>DÃ©finition Ã  la ligne <a class="el" href="../../d3/d89/QuadTree_8cpp_source.html#l00452">452</a> du fichier <a class="el" href="../../d3/d89/QuadTree_8cpp_source.html">QuadTree.cpp</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="abb80439d0db1d33c9d724409e0adba52"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">std::vector&lt; <a class="el" href="../../d7/d8e/classNoeudAbstrait.html">NoeudAbstrait</a> * &gt; QuadTree::retrieve </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="../../d7/d8e/classNoeudAbstrait.html">NoeudAbstrait</a> *&#160;</td>
+          <td class="paramname"><em>noeud</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Retourne la liste des objets se trouvant dans le même quand que le noeud passe en paramètre. </p>
+<p>Cette méthode retourne la liste des noeuds qui sont dans le même <a class="el" href="../../d2/dae/classQuadTree.html" title="Cette classe permet de reduire le nombre de calcul/comparaisons à effectuer pour la gestion de la phys...">QuadTree</a> que le noeud passé en paramètre.</p>
+<dl class="params"><dt>ParamÃ¨tres</dt><dd>
+  <table class="params">
+    <tr><td class="paramdir">[in]</td><td class="paramname">noeud</td><td>: le noeud pour lequel on désire ses voisins</td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Renvoie</dt><dd>l'ensemble des noeuds qui sont dans le même <a class="el" href="../../d2/dae/classQuadTree.html" title="Cette classe permet de reduire le nombre de calcul/comparaisons à effectuer pour la gestion de la phys...">QuadTree</a> que le noeud passé en paramètre </dd></dl>
+
+<p>DÃ©finition Ã  la ligne <a class="el" href="../../d3/d89/QuadTree_8cpp_source.html#l00357">357</a> du fichier <a class="el" href="../../d3/d89/QuadTree_8cpp_source.html">QuadTree.cpp</a>.</p>
+
+</div>
+</div>
+<h2 class="groupheader">Documentation des donnÃ©es membres</h2>
+<a class="anchor" id="aff1e30e13b3a6052ed725fd9452a44be"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">glm::dvec3 QuadTree::inferieurGauche_</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Pour delimiter l'espace du <a class="el" href="../../d2/dae/classQuadTree.html" title="Cette classe permet de reduire le nombre de calcul/comparaisons à effectuer pour la gestion de la phys...">QuadTree</a>. </p>
+
+<p>DÃ©finition Ã  la ligne <a class="el" href="../../d5/d32/QuadTree_8h_source.html#l00069">69</a> du fichier <a class="el" href="../../d5/d32/QuadTree_8h_source.html">QuadTree.h</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="acdeb238897a55212e1add5d19b29c2a4"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">const int QuadTree::MAX_CAPACITY = 10</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>DÃ©finition Ã  la ligne <a class="el" href="../../d5/d32/QuadTree_8h_source.html#l00064">64</a> du fichier <a class="el" href="../../d5/d32/QuadTree_8h_source.html">QuadTree.h</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="a015dc6499f51411e4e275d1678dd3371"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">const int QuadTree::MAX_LEVEL = 3</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>DÃ©finition Ã  la ligne <a class="el" href="../../d5/d32/QuadTree_8h_source.html#l00065">65</a> du fichier <a class="el" href="../../d5/d32/QuadTree_8h_source.html">QuadTree.h</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="a71281baeba7249eefe737bf04b9f4b67"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">int QuadTree::niveauCourant_</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>DÃ©finition Ã  la ligne <a class="el" href="../../d5/d32/QuadTree_8h_source.html#l00066">66</a> du fichier <a class="el" href="../../d5/d32/QuadTree_8h_source.html">QuadTree.h</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="ad245026e27eef8dc49ea3f246a5fc453"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="../../d2/dae/classQuadTree.html">QuadTree</a>* QuadTree::nordEst_</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Pour la subdivision du <a class="el" href="../../d2/dae/classQuadTree.html" title="Cette classe permet de reduire le nombre de calcul/comparaisons à effectuer pour la gestion de la phys...">QuadTree</a> en sous <a class="el" href="../../d2/dae/classQuadTree.html" title="Cette classe permet de reduire le nombre de calcul/comparaisons à effectuer pour la gestion de la phys...">QuadTree</a>. </p>
+
+<p>DÃ©finition Ã  la ligne <a class="el" href="../../d5/d32/QuadTree_8h_source.html#l00075">75</a> du fichier <a class="el" href="../../d5/d32/QuadTree_8h_source.html">QuadTree.h</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="a16db1d5bc24ad037e8a0727040fe11fc"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="../../d2/dae/classQuadTree.html">QuadTree</a>* QuadTree::nordOuest_</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>DÃ©finition Ã  la ligne <a class="el" href="../../d5/d32/QuadTree_8h_source.html#l00076">76</a> du fichier <a class="el" href="../../d5/d32/QuadTree_8h_source.html">QuadTree.h</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="a7a366d2d733a19c569a37e3d61719b8e"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">std::list&lt;<a class="el" href="../../d7/d8e/classNoeudAbstrait.html">NoeudAbstrait</a>*&gt; QuadTree::objets_</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Contient la liste des objets appartenant au <a class="el" href="../../d2/dae/classQuadTree.html" title="Cette classe permet de reduire le nombre de calcul/comparaisons à effectuer pour la gestion de la phys...">QuadTree</a>. </p>
+
+<p>DÃ©finition Ã  la ligne <a class="el" href="../../d5/d32/QuadTree_8h_source.html#l00072">72</a> du fichier <a class="el" href="../../d5/d32/QuadTree_8h_source.html">QuadTree.h</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="a222a4d9b79c0a906fb737fbd55b41ec3"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="../../d2/dae/classQuadTree.html">QuadTree</a>* QuadTree::sudEst_</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>DÃ©finition Ã  la ligne <a class="el" href="../../d5/d32/QuadTree_8h_source.html#l00077">77</a> du fichier <a class="el" href="../../d5/d32/QuadTree_8h_source.html">QuadTree.h</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="a4299e241cfa928ec634277a8ceedeb74"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="../../d2/dae/classQuadTree.html">QuadTree</a>* QuadTree::sudOuest_</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>DÃ©finition Ã  la ligne <a class="el" href="../../d5/d32/QuadTree_8h_source.html#l00078">78</a> du fichier <a class="el" href="../../d5/d32/QuadTree_8h_source.html">QuadTree.h</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="a1ff055e6f8fab140f968b78c1b27d4c7"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">glm::dvec3 QuadTree::superieurDroit_</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>DÃ©finition Ã  la ligne <a class="el" href="../../d5/d32/QuadTree_8h_source.html#l00069">69</a> du fichier <a class="el" href="../../d5/d32/QuadTree_8h_source.html">QuadTree.h</a>.</p>
+
+</div>
+</div>
+<hr/>La documentation de cette classe a Ã©tÃ© gÃ©nÃ©rÃ©e Ã  partir des fichiers suivants :<ul>
+<li>Sources/DLL/QuadTree/<a class="el" href="../../d5/d32/QuadTree_8h_source.html">QuadTree.h</a></li>
+<li>Sources/DLL/QuadTree/<a class="el" href="../../d3/d89/QuadTree_8cpp_source.html">QuadTree.cpp</a></li>
+</ul>
+</div><!-- contents -->
+</div><!-- doc-content -->
+<!-- start footer part -->
+<div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
+  <ul>
+    <li class="navelem"><a class="el" href="../../d2/dae/classQuadTree.html">QuadTree</a></li>
+    <li class="footer">GÃ©nÃ©rÃ© le Lundi 23 Mars 2015 15:59:32 pour Pain Ball par
+    <a href="http://www.doxygen.org/index.html">
+    <img class="footer" src="../../doxygen.png" alt="doxygen"/></a> 1.8.9.1 </li>
+  </ul>
+</div>
+</body>
+</html>

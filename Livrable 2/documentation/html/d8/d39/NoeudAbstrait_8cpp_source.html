@@ -1,0 +1,672 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=9"/>
+<meta name="generator" content="Doxygen 1.8.9.1"/>
+<title>Pain Ball:  Fichier source de Sources/DLL/Arbre/Noeuds/NoeudAbstrait.cpp</title>
+<link href="../../tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="../../jquery.js"></script>
+<script type="text/javascript" src="../../dynsections.js"></script>
+<link href="../../navtree.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="../../resize.js"></script>
+<script type="text/javascript" src="../../navtreedata.js"></script>
+<script type="text/javascript" src="../../navtree.js"></script>
+<script type="text/javascript">
+  $(document).ready(initResizable);
+  $(window).load(resizeHeight);
+</script>
+<link href="../../search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="../../search/searchdata.js"></script>
+<script type="text/javascript" src="../../search/search.js"></script>
+<script type="text/javascript">
+  $(document).ready(function() { init_search(); });
+</script>
+<link href="../../doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr style="height: 56px;">
+  <td id="projectlogo"><img alt="Logo" src="../../handy.jpg"/></td>
+  <td style="padding-left: 0.5em;">
+   <div id="projectname">Pain Ball
+   &#160;<span id="projectnumber">Livrable 2</span>
+   </div>
+   <div id="projectbrief">by The Ballers</div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- GÃ©nÃ©rÃ© par Doxygen 1.8.9.1 -->
+<script type="text/javascript">
+var searchBox = new SearchBox("searchBox", "../../search",false,'Recherche');
+</script>
+  <div id="navrow1" class="tabs">
+    <ul class="tablist">
+      <li><a href="../../index.html"><span>Page&#160;principale</span></a></li>
+      <li><a href="../../modules.html"><span>Modules</span></a></li>
+      <li><a href="../../namespaces.html"><span>Espaces&#160;de&#160;nommage</span></a></li>
+      <li><a href="../../annotated.html"><span>Classes</span></a></li>
+      <li class="current"><a href="../../files.html"><span>Fichiers</span></a></li>
+      <li>
+        <div id="MSearchBox" class="MSearchBoxInactive">
+        <span class="left">
+          <img id="MSearchSelect" src="../../search/mag_sel.png"
+               onmouseover="return searchBox.OnSearchSelectShow()"
+               onmouseout="return searchBox.OnSearchSelectHide()"
+               alt=""/>
+          <input type="text" id="MSearchField" value="Recherche" accesskey="S"
+               onfocus="searchBox.OnSearchFieldFocus(true)" 
+               onblur="searchBox.OnSearchFieldFocus(false)" 
+               onkeyup="searchBox.OnSearchFieldChange(event)"/>
+          </span><span class="right">
+            <a id="MSearchClose" href="javascript:searchBox.CloseResultsWindow()"><img id="MSearchCloseImg" border="0" src="../../search/close.png" alt=""/></a>
+          </span>
+        </div>
+      </li>
+    </ul>
+  </div>
+  <div id="navrow2" class="tabs2">
+    <ul class="tablist">
+      <li><a href="../../files.html"><span>Liste&#160;des&#160;fichiers</span></a></li>
+      <li><a href="../../globals.html"><span>Membres&#160;de&#160;fichier</span></a></li>
+    </ul>
+  </div>
+</div><!-- top -->
+<div id="side-nav" class="ui-resizable side-nav-resizable">
+  <div id="nav-tree">
+    <div id="nav-tree-contents">
+      <div id="nav-sync" class="sync"></div>
+    </div>
+  </div>
+  <div id="splitbar" style="-moz-user-select:none;" 
+       class="ui-resizable-handle">
+  </div>
+</div>
+<script type="text/javascript">
+$(document).ready(function(){initNavTree('d8/d39/NoeudAbstrait_8cpp_source.html','../../');});
+</script>
+<div id="doc-content">
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<iframe src="javascript:void(0)" frameborder="0" 
+        name="MSearchResults" id="MSearchResults">
+</iframe>
+</div>
+
+<div class="header">
+  <div class="headertitle">
+<div class="title">NoeudAbstrait.cpp</div>  </div>
+</div><!--header-->
+<div class="contents">
+<a href="../../d8/d39/NoeudAbstrait_8cpp.html">Aller Ã  la documentation de ce fichier.</a><div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;</div>
+<div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="../../d1/d0f/NoeudAbstrait_8h.html">NoeudAbstrait.h</a>&quot;</span></div>
+<div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160;<span class="preprocessor">#include &quot;Utilitaire.h&quot;</span></div>
+<div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;<span class="preprocessor">#include &quot;../../Commun/Externe/glm/include/glm/gtx/Projection.hpp&quot;</span></div>
+<div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;</div>
+<div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="../../d7/d91/NoeudBille_8h.html">NoeudBille.h</a>&quot;</span></div>
+<div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;</div>
+<div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;<span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> <a class="code" href="../../d7/d8e/classNoeudAbstrait.html#a0ade8efd83885537c2185197eb304adb">NoeudAbstrait::compteurNoeuds_</a> = 0;</div>
+<div class="line"><a name="l00027"></a><span class="lineno"><a class="line" href="../../d7/d8e/classNoeudAbstrait.html#a1d1340ee36824e0c6013e65a1306d8f3">   27</a></span>&#160;<a class="code" href="../../d7/d8e/classNoeudAbstrait.html#a1d1340ee36824e0c6013e65a1306d8f3">NoeudAbstrait::NoeudAbstrait</a>(</div>
+<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;    <span class="keyword">const</span> std::string&amp; type <span class="comment">//= std::string{ &quot;&quot; }</span></div>
+<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;    ) :</div>
+<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;    vitesse_{ 0.0, 0.0, 0.0 },</div>
+<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;    type_(type)</div>
+<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;{</div>
+<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;    colorShift_ = <span class="keyword">false</span>;</div>
+<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;    compteurNoeuds_ += 1;</div>
+<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;    numeroNoeud_ = compteurNoeuds_;</div>
+<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;    scale_ = { 1.0, 1.0, 1.0 };</div>
+<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;    twin_ = <span class="keyword">nullptr</span>;</div>
+<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;    transparent_ = <span class="keyword">false</span>;</div>
+<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;    impossible_ = <span class="keyword">false</span>;</div>
+<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;    animer_ = <a class="code" href="../../d3/df4/classSingletonGlobal.html#a948a8014de62bb59ef604e032b156844">SingletonGlobal::obtenirInstance</a>()-&gt;<a class="code" href="../../d3/df4/classSingletonGlobal.html#a9d00652dd22d04b05f9f016f77adde00">obtenirAnimation</a>();</div>
+<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;}</div>
+<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;</div>
+<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;</div>
+<div class="line"><a name="l00055"></a><span class="lineno"><a class="line" href="../../d7/d8e/classNoeudAbstrait.html#a0ab3f7ab838e8349113da5074abcdc3a">   55</a></span>&#160;<a class="code" href="../../d7/d8e/classNoeudAbstrait.html#a0ab3f7ab838e8349113da5074abcdc3a">NoeudAbstrait::~NoeudAbstrait</a>()</div>
+<div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;{</div>
+<div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;    this-&gt;<a class="code" href="../../d7/d8e/classNoeudAbstrait.html#a55435ee83860c6a2101334ba67bbd9b6">vider</a>();</div>
+<div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;}</div>
+<div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;</div>
+<div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;</div>
+<div class="line"><a name="l00073"></a><span class="lineno"><a class="line" href="../../d7/d8e/classNoeudAbstrait.html#ad854800087fd6c13f1a63589caefb41d">   73</a></span>&#160;<span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> <a class="code" href="../../d7/d8e/classNoeudAbstrait.html#ad854800087fd6c13f1a63589caefb41d">NoeudAbstrait::calculerProfondeur</a>()<span class="keyword"> const</span></div>
+<div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160;<span class="keyword"></span>{</div>
+<div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160;    <span class="keywordflow">return</span> 1;</div>
+<div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160;}</div>
+<div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160;</div>
+<div class="line"><a name="l00078"></a><span class="lineno">   78</span>&#160;</div>
+<div class="line"><a name="l00091"></a><span class="lineno"><a class="line" href="../../d7/d8e/classNoeudAbstrait.html#a55435ee83860c6a2101334ba67bbd9b6">   91</a></span>&#160;<span class="keywordtype">void</span> <a class="code" href="../../d7/d8e/classNoeudAbstrait.html#a55435ee83860c6a2101334ba67bbd9b6">NoeudAbstrait::vider</a>()</div>
+<div class="line"><a name="l00092"></a><span class="lineno">   92</span>&#160;{</div>
+<div class="line"><a name="l00093"></a><span class="lineno">   93</span>&#160;}</div>
+<div class="line"><a name="l00094"></a><span class="lineno">   94</span>&#160;</div>
+<div class="line"><a name="l00095"></a><span class="lineno">   95</span>&#160;</div>
+<div class="line"><a name="l00111"></a><span class="lineno"><a class="line" href="../../d7/d8e/classNoeudAbstrait.html#a2ab3dc520026d1ad77aa848981688bfd">  111</a></span>&#160;<span class="keywordtype">void</span> <a class="code" href="../../d7/d8e/classNoeudAbstrait.html#a2ab3dc520026d1ad77aa848981688bfd">NoeudAbstrait::effacer</a>(<span class="keyword">const</span> <a class="code" href="../../d7/d8e/classNoeudAbstrait.html">NoeudAbstrait</a>* noeud)</div>
+<div class="line"><a name="l00112"></a><span class="lineno">  112</span>&#160;{</div>
+<div class="line"><a name="l00113"></a><span class="lineno">  113</span>&#160;}</div>
+<div class="line"><a name="l00114"></a><span class="lineno">  114</span>&#160;</div>
+<div class="line"><a name="l00115"></a><span class="lineno">  115</span>&#160;</div>
+<div class="line"><a name="l00131"></a><span class="lineno"><a class="line" href="../../d7/d8e/classNoeudAbstrait.html#aeda0df98faf404765d985fcde60fb924">  131</a></span>&#160;<span class="keyword">const</span> <a class="code" href="../../d7/d8e/classNoeudAbstrait.html">NoeudAbstrait</a>* <a class="code" href="../../d7/d8e/classNoeudAbstrait.html#aeda0df98faf404765d985fcde60fb924">NoeudAbstrait::chercher</a>(<span class="keyword">const</span> std::string&amp; typeNoeud)<span class="keyword"> const</span></div>
+<div class="line"><a name="l00132"></a><span class="lineno">  132</span>&#160;<span class="keyword"></span>{</div>
+<div class="line"><a name="l00133"></a><span class="lineno">  133</span>&#160;    <span class="keywordflow">if</span> (typeNoeud == <a class="code" href="../../d7/d8e/classNoeudAbstrait.html#ad53da47a60f4b4fbbd400234cbdcb06b">type_</a>)</div>
+<div class="line"><a name="l00134"></a><span class="lineno">  134</span>&#160;        <span class="keywordflow">return</span> <span class="keyword">this</span>;</div>
+<div class="line"><a name="l00135"></a><span class="lineno">  135</span>&#160;    <span class="keywordflow">else</span></div>
+<div class="line"><a name="l00136"></a><span class="lineno">  136</span>&#160;        <span class="keywordflow">return</span> <span class="keyword">nullptr</span>;</div>
+<div class="line"><a name="l00137"></a><span class="lineno">  137</span>&#160;}</div>
+<div class="line"><a name="l00138"></a><span class="lineno">  138</span>&#160;</div>
+<div class="line"><a name="l00139"></a><span class="lineno">  139</span>&#160;</div>
+<div class="line"><a name="l00155"></a><span class="lineno"><a class="line" href="../../d7/d8e/classNoeudAbstrait.html#a0868ae108165b071f6c8a68a7265c770">  155</a></span>&#160;<a class="code" href="../../d7/d8e/classNoeudAbstrait.html">NoeudAbstrait</a>* <a class="code" href="../../d7/d8e/classNoeudAbstrait.html#aeda0df98faf404765d985fcde60fb924">NoeudAbstrait::chercher</a>(<span class="keyword">const</span> std::string&amp; typeNoeud)</div>
+<div class="line"><a name="l00156"></a><span class="lineno">  156</span>&#160;{</div>
+<div class="line"><a name="l00157"></a><span class="lineno">  157</span>&#160;    <span class="keywordflow">if</span> (typeNoeud == <a class="code" href="../../d7/d8e/classNoeudAbstrait.html#ad53da47a60f4b4fbbd400234cbdcb06b">type_</a>)</div>
+<div class="line"><a name="l00158"></a><span class="lineno">  158</span>&#160;        <span class="keywordflow">return</span> <span class="keyword">this</span>;</div>
+<div class="line"><a name="l00159"></a><span class="lineno">  159</span>&#160;    <span class="keywordflow">else</span></div>
+<div class="line"><a name="l00160"></a><span class="lineno">  160</span>&#160;        <span class="keywordflow">return</span> <span class="keyword">nullptr</span>;</div>
+<div class="line"><a name="l00161"></a><span class="lineno">  161</span>&#160;}</div>
+<div class="line"><a name="l00162"></a><span class="lineno">  162</span>&#160;</div>
+<div class="line"><a name="l00163"></a><span class="lineno">  163</span>&#160;</div>
+<div class="line"><a name="l00178"></a><span class="lineno"><a class="line" href="../../d7/d8e/classNoeudAbstrait.html#ac334b078c318e39a065b85572778bf13">  178</a></span>&#160;<span class="keyword">const</span> <a class="code" href="../../d7/d8e/classNoeudAbstrait.html">NoeudAbstrait</a>* <a class="code" href="../../d7/d8e/classNoeudAbstrait.html#aeda0df98faf404765d985fcde60fb924">NoeudAbstrait::chercher</a>(<span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> indice)<span class="keyword"> const</span></div>
+<div class="line"><a name="l00179"></a><span class="lineno">  179</span>&#160;<span class="keyword"></span>{</div>
+<div class="line"><a name="l00180"></a><span class="lineno">  180</span>&#160;    <span class="keywordflow">return</span> <span class="keyword">nullptr</span>;</div>
+<div class="line"><a name="l00181"></a><span class="lineno">  181</span>&#160;}</div>
+<div class="line"><a name="l00182"></a><span class="lineno">  182</span>&#160;</div>
+<div class="line"><a name="l00183"></a><span class="lineno">  183</span>&#160;</div>
+<div class="line"><a name="l00198"></a><span class="lineno"><a class="line" href="../../d7/d8e/classNoeudAbstrait.html#a13f7e9a637f7439b1a0cec0c49f6fa88">  198</a></span>&#160;<a class="code" href="../../d7/d8e/classNoeudAbstrait.html">NoeudAbstrait</a>* <a class="code" href="../../d7/d8e/classNoeudAbstrait.html#aeda0df98faf404765d985fcde60fb924">NoeudAbstrait::chercher</a>(<span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> indice)</div>
+<div class="line"><a name="l00199"></a><span class="lineno">  199</span>&#160;{</div>
+<div class="line"><a name="l00200"></a><span class="lineno">  200</span>&#160;    <span class="keywordflow">return</span> <span class="keyword">nullptr</span>;</div>
+<div class="line"><a name="l00201"></a><span class="lineno">  201</span>&#160;}</div>
+<div class="line"><a name="l00202"></a><span class="lineno">  202</span>&#160;</div>
+<div class="line"><a name="l00203"></a><span class="lineno">  203</span>&#160;</div>
+<div class="line"><a name="l00218"></a><span class="lineno"><a class="line" href="../../d7/d8e/classNoeudAbstrait.html#a31dd45110fcb977a956a32b918f71819">  218</a></span>&#160;<span class="keywordtype">bool</span> <a class="code" href="../../d7/d8e/classNoeudAbstrait.html#a31dd45110fcb977a956a32b918f71819">NoeudAbstrait::ajouter</a>(<a class="code" href="../../d7/d8e/classNoeudAbstrait.html">NoeudAbstrait</a>* enfant)</div>
+<div class="line"><a name="l00219"></a><span class="lineno">  219</span>&#160;{</div>
+<div class="line"><a name="l00220"></a><span class="lineno">  220</span>&#160;    <span class="keywordflow">return</span> <span class="keyword">false</span>;</div>
+<div class="line"><a name="l00221"></a><span class="lineno">  221</span>&#160;}</div>
+<div class="line"><a name="l00222"></a><span class="lineno">  222</span>&#160;</div>
+<div class="line"><a name="l00223"></a><span class="lineno">  223</span>&#160;</div>
+<div class="line"><a name="l00233"></a><span class="lineno"><a class="line" href="../../d7/d8e/classNoeudAbstrait.html#a3e8ca80ea7c752e4619e95346121a638">  233</a></span>&#160;<a class="code" href="../../d7/d8e/classNoeudAbstrait.html">NoeudAbstrait</a>* <a class="code" href="../../d7/d8e/classNoeudAbstrait.html#a3e8ca80ea7c752e4619e95346121a638">NoeudAbstrait::obtenirDernierNoeud</a>()</div>
+<div class="line"><a name="l00234"></a><span class="lineno">  234</span>&#160;{</div>
+<div class="line"><a name="l00235"></a><span class="lineno">  235</span>&#160;    <span class="keywordflow">return</span> <span class="keyword">nullptr</span>;</div>
+<div class="line"><a name="l00236"></a><span class="lineno">  236</span>&#160;}</div>
+<div class="line"><a name="l00237"></a><span class="lineno">  237</span>&#160;</div>
+<div class="line"><a name="l00238"></a><span class="lineno">  238</span>&#160;</div>
+<div class="line"><a name="l00251"></a><span class="lineno"><a class="line" href="../../d7/d8e/classNoeudAbstrait.html#aa546cf629106318a2ee2dcea54b39330">  251</a></span>&#160;<a class="code" href="../../d7/d8e/classNoeudAbstrait.html">NoeudAbstrait</a>* <a class="code" href="../../d7/d8e/classNoeudAbstrait.html#aa546cf629106318a2ee2dcea54b39330">NoeudAbstrait::getEnfant</a>(<span class="keywordtype">int</span> position)</div>
+<div class="line"><a name="l00252"></a><span class="lineno">  252</span>&#160;{</div>
+<div class="line"><a name="l00253"></a><span class="lineno">  253</span>&#160;    <span class="keywordflow">return</span> <span class="keyword">nullptr</span>;</div>
+<div class="line"><a name="l00254"></a><span class="lineno">  254</span>&#160;}</div>
+<div class="line"><a name="l00255"></a><span class="lineno">  255</span>&#160;</div>
+<div class="line"><a name="l00268"></a><span class="lineno"><a class="line" href="../../d7/d8e/classNoeudAbstrait.html#ad5a99959e905fc2d9f0fef16a02546a2">  268</a></span>&#160;<span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> <a class="code" href="../../d7/d8e/classNoeudAbstrait.html#ad5a99959e905fc2d9f0fef16a02546a2">NoeudAbstrait::obtenirNombreEnfants</a>()<span class="keyword"> const</span></div>
+<div class="line"><a name="l00269"></a><span class="lineno">  269</span>&#160;<span class="keyword"></span>{</div>
+<div class="line"><a name="l00270"></a><span class="lineno">  270</span>&#160;    <span class="keywordflow">return</span> 0;</div>
+<div class="line"><a name="l00271"></a><span class="lineno">  271</span>&#160;}</div>
+<div class="line"><a name="l00272"></a><span class="lineno">  272</span>&#160;</div>
+<div class="line"><a name="l00273"></a><span class="lineno">  273</span>&#160;<span class="comment">// Aucune idee pk c&#39;est ici</span></div>
+<div class="line"><a name="l00274"></a><span class="lineno"><a class="line" href="../../d7/d8e/classNoeudAbstrait.html#a20d65e5d46efcb6e6a1c13cc8b8b5eb8">  274</a></span>&#160;modele::Modele3D <span class="keyword">const</span>* <a class="code" href="../../d7/d8e/classNoeudAbstrait.html#a20d65e5d46efcb6e6a1c13cc8b8b5eb8">NoeudAbstrait::obtenirModele</a>()<span class="keyword"> const</span></div>
+<div class="line"><a name="l00275"></a><span class="lineno">  275</span>&#160;<span class="keyword"></span>{</div>
+<div class="line"><a name="l00276"></a><span class="lineno">  276</span>&#160;    <span class="keywordflow">return</span> <a class="code" href="../../d7/d8e/classNoeudAbstrait.html#abc3dc8e24578214b7c6081be3246645e">modele_</a>;</div>
+<div class="line"><a name="l00277"></a><span class="lineno">  277</span>&#160;}</div>
+<div class="line"><a name="l00278"></a><span class="lineno">  278</span>&#160;</div>
+<div class="line"><a name="l00288"></a><span class="lineno"><a class="line" href="../../d7/d8e/classNoeudAbstrait.html#a2516eef94f98d4951baff6fd45020725">  288</a></span>&#160;<span class="keywordtype">void</span> <a class="code" href="../../d7/d8e/classNoeudAbstrait.html#a2516eef94f98d4951baff6fd45020725">NoeudAbstrait::inverserSelection</a>()</div>
+<div class="line"><a name="l00289"></a><span class="lineno">  289</span>&#160;{</div>
+<div class="line"><a name="l00290"></a><span class="lineno">  290</span>&#160;    <a class="code" href="../../d7/d8e/classNoeudAbstrait.html#a7b2d2410f947987765a9ef41fedcc703">selectionne_</a> = !<a class="code" href="../../d7/d8e/classNoeudAbstrait.html#a7b2d2410f947987765a9ef41fedcc703">selectionne_</a>;</div>
+<div class="line"><a name="l00291"></a><span class="lineno">  291</span>&#160;}</div>
+<div class="line"><a name="l00292"></a><span class="lineno">  292</span>&#160;</div>
+<div class="line"><a name="l00293"></a><span class="lineno">  293</span>&#160;</div>
+<div class="line"><a name="l00306"></a><span class="lineno"><a class="line" href="../../d7/d8e/classNoeudAbstrait.html#aa9b1fa06dad2695ea6870411c62652b3">  306</a></span>&#160;<span class="keywordtype">void</span> <a class="code" href="../../d7/d8e/classNoeudAbstrait.html#aa9b1fa06dad2695ea6870411c62652b3">NoeudAbstrait::selectionnerTout</a>()</div>
+<div class="line"><a name="l00307"></a><span class="lineno">  307</span>&#160;{</div>
+<div class="line"><a name="l00308"></a><span class="lineno">  308</span>&#160;    <a class="code" href="../../d7/d8e/classNoeudAbstrait.html#a0f39647390d357d8662a870f0c76242c">assignerSelection</a>(<span class="keyword">true</span>);</div>
+<div class="line"><a name="l00309"></a><span class="lineno">  309</span>&#160;}</div>
+<div class="line"><a name="l00310"></a><span class="lineno">  310</span>&#160;</div>
+<div class="line"><a name="l00311"></a><span class="lineno">  311</span>&#160;</div>
+<div class="line"><a name="l00324"></a><span class="lineno"><a class="line" href="../../d7/d8e/classNoeudAbstrait.html#a4f942bd122fc3402537ecac737c5248a">  324</a></span>&#160;<span class="keywordtype">void</span> <a class="code" href="../../d7/d8e/classNoeudAbstrait.html#a4f942bd122fc3402537ecac737c5248a">NoeudAbstrait::deselectionnerTout</a>()</div>
+<div class="line"><a name="l00325"></a><span class="lineno">  325</span>&#160;{</div>
+<div class="line"><a name="l00326"></a><span class="lineno">  326</span>&#160;    <a class="code" href="../../d7/d8e/classNoeudAbstrait.html#a7b2d2410f947987765a9ef41fedcc703">selectionne_</a> = <span class="keyword">false</span>;</div>
+<div class="line"><a name="l00327"></a><span class="lineno">  327</span>&#160;}</div>
+<div class="line"><a name="l00328"></a><span class="lineno">  328</span>&#160;</div>
+<div class="line"><a name="l00329"></a><span class="lineno">  329</span>&#160;</div>
+<div class="line"><a name="l00343"></a><span class="lineno"><a class="line" href="../../d7/d8e/classNoeudAbstrait.html#ae7c702b865babd20ddd30dd776adc82b">  343</a></span>&#160;<span class="keywordtype">bool</span> <a class="code" href="../../d7/d8e/classNoeudAbstrait.html#ae7c702b865babd20ddd30dd776adc82b">NoeudAbstrait::selectionExiste</a>()<span class="keyword"> const</span></div>
+<div class="line"><a name="l00344"></a><span class="lineno">  344</span>&#160;<span class="keyword"></span>{</div>
+<div class="line"><a name="l00345"></a><span class="lineno">  345</span>&#160;    <span class="keywordflow">return</span> <a class="code" href="../../d7/d8e/classNoeudAbstrait.html#a7b2d2410f947987765a9ef41fedcc703">selectionne_</a>;</div>
+<div class="line"><a name="l00346"></a><span class="lineno">  346</span>&#160;}</div>
+<div class="line"><a name="l00347"></a><span class="lineno">  347</span>&#160;</div>
+<div class="line"><a name="l00348"></a><span class="lineno">  348</span>&#160;</div>
+<div class="line"><a name="l00362"></a><span class="lineno"><a class="line" href="../../d7/d8e/classNoeudAbstrait.html#a13a97383c2081b405fc2e0d97cff80df">  362</a></span>&#160;<span class="keywordtype">void</span> <a class="code" href="../../d7/d8e/classNoeudAbstrait.html#a13a97383c2081b405fc2e0d97cff80df">NoeudAbstrait::changerModePolygones</a>(<span class="keywordtype">bool</span> estForce)</div>
+<div class="line"><a name="l00363"></a><span class="lineno">  363</span>&#160;{</div>
+<div class="line"><a name="l00364"></a><span class="lineno">  364</span>&#160;    <span class="keywordflow">if</span> ((estForce) || (<a class="code" href="../../d7/d8e/classNoeudAbstrait.html#a8fb7a3313ce4d361ef7ec8e45ba8add5">estSelectionne</a>())) {</div>
+<div class="line"><a name="l00365"></a><span class="lineno">  365</span>&#160;        <span class="keywordflow">if</span> (<a class="code" href="../../d7/d8e/classNoeudAbstrait.html#aa2b57eeb848bc8cb48562788daf81d3e">modePolygones_</a> == GL_FILL)</div>
+<div class="line"><a name="l00366"></a><span class="lineno">  366</span>&#160;            <a class="code" href="../../d7/d8e/classNoeudAbstrait.html#aa2b57eeb848bc8cb48562788daf81d3e">modePolygones_</a> = GL_LINE;</div>
+<div class="line"><a name="l00367"></a><span class="lineno">  367</span>&#160;        <span class="keywordflow">else</span> <span class="keywordflow">if</span> (<a class="code" href="../../d7/d8e/classNoeudAbstrait.html#aa2b57eeb848bc8cb48562788daf81d3e">modePolygones_</a> == GL_LINE)</div>
+<div class="line"><a name="l00368"></a><span class="lineno">  368</span>&#160;            <a class="code" href="../../d7/d8e/classNoeudAbstrait.html#aa2b57eeb848bc8cb48562788daf81d3e">modePolygones_</a> = GL_POINT;</div>
+<div class="line"><a name="l00369"></a><span class="lineno">  369</span>&#160;        <span class="keywordflow">else</span></div>
+<div class="line"><a name="l00370"></a><span class="lineno">  370</span>&#160;            <a class="code" href="../../d7/d8e/classNoeudAbstrait.html#aa2b57eeb848bc8cb48562788daf81d3e">modePolygones_</a> = GL_FILL;</div>
+<div class="line"><a name="l00371"></a><span class="lineno">  371</span>&#160;    }</div>
+<div class="line"><a name="l00372"></a><span class="lineno">  372</span>&#160;}</div>
+<div class="line"><a name="l00373"></a><span class="lineno">  373</span>&#160;</div>
+<div class="line"><a name="l00374"></a><span class="lineno">  374</span>&#160;</div>
+<div class="line"><a name="l00384"></a><span class="lineno"><a class="line" href="../../d7/d8e/classNoeudAbstrait.html#a726d9d0a524939f405aeeac3fbd06666">  384</a></span>&#160;<span class="keywordtype">void</span> <a class="code" href="../../d7/d8e/classNoeudAbstrait.html#a726d9d0a524939f405aeeac3fbd06666">NoeudAbstrait::assignerModePolygones</a>(GLenum modePolygones)</div>
+<div class="line"><a name="l00385"></a><span class="lineno">  385</span>&#160;{</div>
+<div class="line"><a name="l00386"></a><span class="lineno">  386</span>&#160;    <span class="comment">// Le mode par defaut si on passe une mauvaise valeur est GL_FILL</span></div>
+<div class="line"><a name="l00387"></a><span class="lineno">  387</span>&#160;    <span class="keywordflow">if</span> ((modePolygones != GL_FILL) &amp;&amp;</div>
+<div class="line"><a name="l00388"></a><span class="lineno">  388</span>&#160;        (modePolygones != GL_LINE) &amp;&amp;</div>
+<div class="line"><a name="l00389"></a><span class="lineno">  389</span>&#160;        (modePolygones != GL_POINT)) {</div>
+<div class="line"><a name="l00390"></a><span class="lineno">  390</span>&#160;        modePolygones = GL_FILL;</div>
+<div class="line"><a name="l00391"></a><span class="lineno">  391</span>&#160;    }</div>
+<div class="line"><a name="l00392"></a><span class="lineno">  392</span>&#160;</div>
+<div class="line"><a name="l00393"></a><span class="lineno">  393</span>&#160;    <a class="code" href="../../d7/d8e/classNoeudAbstrait.html#aa2b57eeb848bc8cb48562788daf81d3e">modePolygones_</a> = modePolygones;</div>
+<div class="line"><a name="l00394"></a><span class="lineno">  394</span>&#160;}</div>
+<div class="line"><a name="l00395"></a><span class="lineno">  395</span>&#160;</div>
+<div class="line"><a name="l00396"></a><span class="lineno">  396</span>&#160;</div>
+<div class="line"><a name="l00418"></a><span class="lineno"><a class="line" href="../../d7/d8e/classNoeudAbstrait.html#ae789271ea41032d717b8e4300be05de0">  418</a></span>&#160;<span class="keywordtype">void</span> <a class="code" href="../../d7/d8e/classNoeudAbstrait.html#ae789271ea41032d717b8e4300be05de0">NoeudAbstrait::afficher</a>()<span class="keyword"> const</span></div>
+<div class="line"><a name="l00419"></a><span class="lineno">  419</span>&#160;<span class="keyword"></span>{</div>
+<div class="line"><a name="l00420"></a><span class="lineno">  420</span>&#160;    <span class="keywordflow">if</span> (<a class="code" href="../../d7/d8e/classNoeudAbstrait.html#a20af11e8041b0af8a34b6f041bb24c7f">affiche_</a>) {</div>
+<div class="line"><a name="l00421"></a><span class="lineno">  421</span>&#160;        glPushMatrix();</div>
+<div class="line"><a name="l00422"></a><span class="lineno">  422</span>&#160;        glPushAttrib(GL_CURRENT_BIT | GL_POLYGON_BIT);</div>
+<div class="line"><a name="l00423"></a><span class="lineno">  423</span>&#160;</div>
+<div class="line"><a name="l00424"></a><span class="lineno">  424</span>&#160;        <span class="comment">// La translation de la position relative</span></div>
+<div class="line"><a name="l00425"></a><span class="lineno">  425</span>&#160;        glTranslated(</div>
+<div class="line"><a name="l00426"></a><span class="lineno">  426</span>&#160;            <a class="code" href="../../d7/d8e/classNoeudAbstrait.html#ae8a50095413ac131cd6d07a384a9ff5d">positionRelative_</a>[0], <a class="code" href="../../d7/d8e/classNoeudAbstrait.html#ae8a50095413ac131cd6d07a384a9ff5d">positionRelative_</a>[1], <a class="code" href="../../d7/d8e/classNoeudAbstrait.html#ae8a50095413ac131cd6d07a384a9ff5d">positionRelative_</a>[2]</div>
+<div class="line"><a name="l00427"></a><span class="lineno">  427</span>&#160;            );</div>
+<div class="line"><a name="l00428"></a><span class="lineno">  428</span>&#160;        </div>
+<div class="line"><a name="l00429"></a><span class="lineno">  429</span>&#160;        glRotated(<a class="code" href="../../d7/d8e/classNoeudAbstrait.html#ae787f108da33c57a01164f8df31cd986">rotation_</a>[2], 0.0F, 0.0F, 1.0F);</div>
+<div class="line"><a name="l00430"></a><span class="lineno">  430</span>&#160;        glRotated(<a class="code" href="../../d7/d8e/classNoeudAbstrait.html#ae787f108da33c57a01164f8df31cd986">rotation_</a>[0], 1.0F, 0.0F, 0.0F);</div>
+<div class="line"><a name="l00431"></a><span class="lineno">  431</span>&#160;        glRotated(<a class="code" href="../../d7/d8e/classNoeudAbstrait.html#ae787f108da33c57a01164f8df31cd986">rotation_</a>[1], 0.0F, 1.0F, 0.0F);</div>
+<div class="line"><a name="l00432"></a><span class="lineno">  432</span>&#160;</div>
+<div class="line"><a name="l00433"></a><span class="lineno">  433</span>&#160;        glScaled(<a class="code" href="../../d7/d8e/classNoeudAbstrait.html#ac59068cb47bf47badf16e8e6c74ed05c">scale_</a>[0], <a class="code" href="../../d7/d8e/classNoeudAbstrait.html#ac59068cb47bf47badf16e8e6c74ed05c">scale_</a>[1], <a class="code" href="../../d7/d8e/classNoeudAbstrait.html#ac59068cb47bf47badf16e8e6c74ed05c">scale_</a>[2]);</div>
+<div class="line"><a name="l00434"></a><span class="lineno">  434</span>&#160;</div>
+<div class="line"><a name="l00435"></a><span class="lineno">  435</span>&#160;        <span class="comment">// Assignation du mode d&#39;affichage des polygones</span></div>
+<div class="line"><a name="l00436"></a><span class="lineno">  436</span>&#160;        glPolygonMode(GL_FRONT_AND_BACK, <a class="code" href="../../d7/d8e/classNoeudAbstrait.html#aa2b57eeb848bc8cb48562788daf81d3e">modePolygones_</a>);</div>
+<div class="line"><a name="l00437"></a><span class="lineno">  437</span>&#160;</div>
+<div class="line"><a name="l00438"></a><span class="lineno">  438</span>&#160;        <span class="comment">// Affichage concret</span></div>
+<div class="line"><a name="l00439"></a><span class="lineno">  439</span>&#160;        <a class="code" href="../../d7/d8e/classNoeudAbstrait.html#a330df455c8b08440d3c8e64d0a480391">afficherConcret</a>();</div>
+<div class="line"><a name="l00440"></a><span class="lineno">  440</span>&#160;</div>
+<div class="line"><a name="l00441"></a><span class="lineno">  441</span>&#160;        <span class="comment">// Restauration</span></div>
+<div class="line"><a name="l00442"></a><span class="lineno">  442</span>&#160;        glPopAttrib();</div>
+<div class="line"><a name="l00443"></a><span class="lineno">  443</span>&#160;        glPopMatrix();</div>
+<div class="line"><a name="l00444"></a><span class="lineno">  444</span>&#160;    }</div>
+<div class="line"><a name="l00445"></a><span class="lineno">  445</span>&#160;}</div>
+<div class="line"><a name="l00446"></a><span class="lineno">  446</span>&#160;</div>
+<div class="line"><a name="l00447"></a><span class="lineno"><a class="line" href="../../d7/d8e/classNoeudAbstrait.html#afb47e14bf16a33e071e48da8ecbc0af1">  447</a></span>&#160;<span class="keywordtype">void</span> <a class="code" href="../../d7/d8e/classNoeudAbstrait.html#afb47e14bf16a33e071e48da8ecbc0af1">NoeudAbstrait::appliquerAfficher</a>()<span class="keyword"> const</span></div>
+<div class="line"><a name="l00448"></a><span class="lineno">  448</span>&#160;<span class="keyword"></span>{</div>
+<div class="line"><a name="l00449"></a><span class="lineno">  449</span>&#160;    <span class="keywordflow">if</span> (<a class="code" href="../../d7/d8e/classNoeudAbstrait.html#a2829edeb2bc03d270ba19c52a47c34d1">colorShift_</a>)</div>
+<div class="line"><a name="l00450"></a><span class="lineno">  450</span>&#160;        glTexEnvf(GL_TEXTURE_ENV, GL_TEXTURE_ENV_MODE, GL_BLEND);</div>
+<div class="line"><a name="l00451"></a><span class="lineno">  451</span>&#160;    <span class="keywordflow">if</span> (<a class="code" href="../../d7/d8e/classNoeudAbstrait.html#a67859b91d7ce98240b8da2e487171f1c">impossible_</a>)</div>
+<div class="line"><a name="l00452"></a><span class="lineno">  452</span>&#160;        glColorMask(0, 1, 1, 1);</div>
+<div class="line"><a name="l00453"></a><span class="lineno">  453</span>&#160;    <span class="keywordflow">else</span> <span class="keywordflow">if</span> (<a class="code" href="../../d7/d8e/classNoeudAbstrait.html#a7b2d2410f947987765a9ef41fedcc703">selectionne_</a>) {</div>
+<div class="line"><a name="l00454"></a><span class="lineno">  454</span>&#160;        glTexEnvf(GL_TEXTURE_ENV, GL_TEXTURE_ENV_MODE, GL_ADD);</div>
+<div class="line"><a name="l00455"></a><span class="lineno">  455</span>&#160;        <span class="keywordflow">if</span> (<a class="code" href="../../d7/d8e/classNoeudAbstrait.html#afb3243add657bec87f220effa0701c96">twin_</a> != <span class="keyword">nullptr</span> &amp;&amp; <a class="code" href="../../d7/d8e/classNoeudAbstrait.html#afb3243add657bec87f220effa0701c96">twin_</a> != NULL)</div>
+<div class="line"><a name="l00456"></a><span class="lineno">  456</span>&#160;            <a class="code" href="../../d7/d8e/classNoeudAbstrait.html#afb3243add657bec87f220effa0701c96">twin_</a>-&gt;<a class="code" href="../../d7/d8e/classNoeudAbstrait.html#a74f5f940080ac20b6fc843e71e9427c7">setTransparent</a>(<span class="keyword">true</span>);</div>
+<div class="line"><a name="l00457"></a><span class="lineno">  457</span>&#160;    }</div>
+<div class="line"><a name="l00458"></a><span class="lineno">  458</span>&#160;    </div>
+<div class="line"><a name="l00459"></a><span class="lineno">  459</span>&#160;    <span class="keywordflow">else</span> <span class="keywordflow">if</span> (<a class="code" href="../../d7/d8e/classNoeudAbstrait.html#aec2caee9f41157bf6b82f0838fb84aff">transparent_</a>) {</div>
+<div class="line"><a name="l00460"></a><span class="lineno">  460</span>&#160;        glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);</div>
+<div class="line"><a name="l00461"></a><span class="lineno">  461</span>&#160;        glEnable(GL_BLEND);</div>
+<div class="line"><a name="l00462"></a><span class="lineno">  462</span>&#160;    }</div>
+<div class="line"><a name="l00463"></a><span class="lineno">  463</span>&#160;    <span class="keywordflow">else</span></div>
+<div class="line"><a name="l00464"></a><span class="lineno">  464</span>&#160;        <span class="keywordflow">if</span> (<a class="code" href="../../d7/d8e/classNoeudAbstrait.html#afb3243add657bec87f220effa0701c96">twin_</a> != <span class="keyword">nullptr</span> &amp;&amp; <a class="code" href="../../d7/d8e/classNoeudAbstrait.html#afb3243add657bec87f220effa0701c96">twin_</a> != NULL)</div>
+<div class="line"><a name="l00465"></a><span class="lineno">  465</span>&#160;            <a class="code" href="../../d7/d8e/classNoeudAbstrait.html#afb3243add657bec87f220effa0701c96">twin_</a>-&gt;<a class="code" href="../../d7/d8e/classNoeudAbstrait.html#a74f5f940080ac20b6fc843e71e9427c7">setTransparent</a>(<span class="keyword">false</span>);</div>
+<div class="line"><a name="l00466"></a><span class="lineno">  466</span>&#160;    <span class="keywordflow">if</span> (<a class="code" href="../../d7/d8e/classNoeudAbstrait.html#afb3243add657bec87f220effa0701c96">twin_</a> != <span class="keyword">nullptr</span> &amp;&amp; <a class="code" href="../../d7/d8e/classNoeudAbstrait.html#afb3243add657bec87f220effa0701c96">twin_</a> != NULL)</div>
+<div class="line"><a name="l00467"></a><span class="lineno">  467</span>&#160;        <span class="keywordflow">if</span> (!<a class="code" href="../../d7/d8e/classNoeudAbstrait.html#a7b2d2410f947987765a9ef41fedcc703">selectionne_</a> &amp;&amp; !<a class="code" href="../../d7/d8e/classNoeudAbstrait.html#afb3243add657bec87f220effa0701c96">twin_</a>-&gt;<a class="code" href="../../d7/d8e/classNoeudAbstrait.html#a8fb7a3313ce4d361ef7ec8e45ba8add5">estSelectionne</a>())</div>
+<div class="line"><a name="l00468"></a><span class="lineno">  468</span>&#160;            <a class="code" href="../../d7/d8e/classNoeudAbstrait.html#afb3243add657bec87f220effa0701c96">twin_</a>-&gt;<a class="code" href="../../d7/d8e/classNoeudAbstrait.html#a74f5f940080ac20b6fc843e71e9427c7">setTransparent</a>(<span class="keyword">false</span>);</div>
+<div class="line"><a name="l00469"></a><span class="lineno">  469</span>&#160;</div>
+<div class="line"><a name="l00470"></a><span class="lineno">  470</span>&#160;    glStencilFunc(GL_ALWAYS, <a class="code" href="../../d7/d8e/classNoeudAbstrait.html#afc11c68b39c260ad8b72df5fbd8b3ff3">numeroNoeud_</a>, -1);</div>
+<div class="line"><a name="l00471"></a><span class="lineno">  471</span>&#160;}</div>
+<div class="line"><a name="l00483"></a><span class="lineno"><a class="line" href="../../d7/d8e/classNoeudAbstrait.html#a330df455c8b08440d3c8e64d0a480391">  483</a></span>&#160;<span class="keywordtype">void</span> <a class="code" href="../../d7/d8e/classNoeudAbstrait.html#a330df455c8b08440d3c8e64d0a480391">NoeudAbstrait::afficherConcret</a>()<span class="keyword"> const</span></div>
+<div class="line"><a name="l00484"></a><span class="lineno">  484</span>&#160;<span class="keyword"></span>{</div>
+<div class="line"><a name="l00485"></a><span class="lineno">  485</span>&#160;}</div>
+<div class="line"><a name="l00486"></a><span class="lineno">  486</span>&#160;</div>
+<div class="line"><a name="l00487"></a><span class="lineno">  487</span>&#160;</div>
+<div class="line"><a name="l00503"></a><span class="lineno"><a class="line" href="../../d7/d8e/classNoeudAbstrait.html#adc6ebe69894dbb682fdd0ecb1b6c11e9">  503</a></span>&#160;<span class="keywordtype">void</span> <a class="code" href="../../d7/d8e/classNoeudAbstrait.html#adc6ebe69894dbb682fdd0ecb1b6c11e9">NoeudAbstrait::animer</a>(<span class="keywordtype">float</span> dt)</div>
+<div class="line"><a name="l00504"></a><span class="lineno">  504</span>&#160;{</div>
+<div class="line"><a name="l00505"></a><span class="lineno">  505</span>&#160;</div>
+<div class="line"><a name="l00506"></a><span class="lineno">  506</span>&#160;}</div>
+<div class="line"><a name="l00507"></a><span class="lineno">  507</span>&#160;</div>
+<div class="line"><a name="l00508"></a><span class="lineno">  508</span>&#160;</div>
+<div class="line"><a name="l00518"></a><span class="lineno"><a class="line" href="../../d7/d8e/classNoeudAbstrait.html#a8af5cdbe562e51d1fb758b71e8c7c32e">  518</a></span>&#160;<span class="keywordtype">void</span> <a class="code" href="../../d7/d8e/classNoeudAbstrait.html#a8af5cdbe562e51d1fb758b71e8c7c32e">NoeudAbstrait::assignerAnimer</a>(<span class="keywordtype">bool</span> <a class="code" href="../../d4/da4/FacadeInterfaceNative_8cpp.html#a227f201168cb574e742384dac0ddcd76">animer</a>)</div>
+<div class="line"><a name="l00519"></a><span class="lineno">  519</span>&#160;{</div>
+<div class="line"><a name="l00520"></a><span class="lineno">  520</span>&#160;    <a class="code" href="../../d7/d8e/classNoeudAbstrait.html#af055f00a50379403db029bd4ce4983be">animer_</a> = <a class="code" href="../../d7/d8e/classNoeudAbstrait.html#adc6ebe69894dbb682fdd0ecb1b6c11e9">animer</a>;</div>
+<div class="line"><a name="l00521"></a><span class="lineno">  521</span>&#160;}</div>
+<div class="line"><a name="l00522"></a><span class="lineno">  522</span>&#160;</div>
+<div class="line"><a name="l00523"></a><span class="lineno">  523</span>&#160;</div>
+<div class="line"><a name="l00531"></a><span class="lineno"><a class="line" href="../../d7/d8e/classNoeudAbstrait.html#aadfb0dcaa9b3bb2d36e56eb6e64e068c">  531</a></span>&#160;<span class="keywordtype">bool</span> <a class="code" href="../../d7/d8e/classNoeudAbstrait.html#aadfb0dcaa9b3bb2d36e56eb6e64e068c">NoeudAbstrait::obtenirAnimer</a>()</div>
+<div class="line"><a name="l00532"></a><span class="lineno">  532</span>&#160;{</div>
+<div class="line"><a name="l00533"></a><span class="lineno">  533</span>&#160;    <span class="keywordflow">return</span> <a class="code" href="../../d7/d8e/classNoeudAbstrait.html#af055f00a50379403db029bd4ce4983be">animer_</a>;</div>
+<div class="line"><a name="l00534"></a><span class="lineno">  534</span>&#160;}</div>
+<div class="line"><a name="l00535"></a><span class="lineno">  535</span>&#160;</div>
+<div class="line"><a name="l00536"></a><span class="lineno">  536</span>&#160;</div>
+<div class="line"><a name="l00549"></a><span class="lineno"><a class="line" href="../../d7/d8e/classNoeudAbstrait.html#a6b4a6eb33872fe1d3d73c0c1fa70ccd8">  549</a></span>&#160;<span class="keywordtype">bool</span> <a class="code" href="../../d7/d8e/classNoeudAbstrait.html#a6b4a6eb33872fe1d3d73c0c1fa70ccd8">NoeudAbstrait::accepterVisiteur</a>(<a class="code" href="../../da/dd3/classVisiteurAbstrait.html">VisiteurAbstrait</a>* vis) </div>
+<div class="line"><a name="l00550"></a><span class="lineno">  550</span>&#160;{</div>
+<div class="line"><a name="l00551"></a><span class="lineno">  551</span>&#160;    vis-&gt;<a class="code" href="../../da/dd3/classVisiteurAbstrait.html#a71d6f684528356584f9d2c25763411de">traiter</a>(<span class="keyword">this</span>); </div>
+<div class="line"><a name="l00552"></a><span class="lineno">  552</span>&#160;    <span class="keywordflow">return</span> <span class="keyword">false</span>; </div>
+<div class="line"><a name="l00553"></a><span class="lineno">  553</span>&#160;}</div>
+<div class="line"><a name="l00554"></a><span class="lineno">  554</span>&#160;</div>
+<div class="line"><a name="l00555"></a><span class="lineno">  555</span>&#160;</div>
+<div class="line"><a name="l00568"></a><span class="lineno"><a class="line" href="../../d7/d8e/classNoeudAbstrait.html#a7469fc80f2e1031ed3fc301b8a06eb34">  568</a></span>&#160;<span class="keywordtype">bool</span> <a class="code" href="../../d7/d8e/classNoeudAbstrait.html#a7469fc80f2e1031ed3fc301b8a06eb34">NoeudAbstrait::accepterJoueurVirtuel</a>(<a class="code" href="../../d1/d90/classJoueurVirtuel.html">JoueurVirtuel</a>* joueur)</div>
+<div class="line"><a name="l00569"></a><span class="lineno">  569</span>&#160;{</div>
+<div class="line"><a name="l00570"></a><span class="lineno">  570</span>&#160;    joueur-&gt;<a class="code" href="../../d1/d90/classJoueurVirtuel.html#a26f833aca6840d74361cdad97a96de1f">traiter</a>(<span class="keyword">this</span>);</div>
+<div class="line"><a name="l00571"></a><span class="lineno">  571</span>&#160;    <span class="keywordflow">return</span> <span class="keyword">true</span>;</div>
+<div class="line"><a name="l00572"></a><span class="lineno">  572</span>&#160;}</div>
+<div class="line"><a name="l00573"></a><span class="lineno">  573</span>&#160;</div>
+<div class="line"><a name="l00574"></a><span class="lineno">  574</span>&#160;</div>
+<div class="line"><a name="l00584"></a><span class="lineno"><a class="line" href="../../d7/d8e/classNoeudAbstrait.html#ae81a18a1dd964ff9058ea58a8222e857">  584</a></span>&#160;<a class="code" href="../../d7/d8e/classNoeudAbstrait.html">NoeudAbstrait</a>* <a class="code" href="../../d7/d8e/classNoeudAbstrait.html#ae81a18a1dd964ff9058ea58a8222e857">NoeudAbstrait::getTwin</a>()</div>
+<div class="line"><a name="l00585"></a><span class="lineno">  585</span>&#160;{</div>
+<div class="line"><a name="l00586"></a><span class="lineno">  586</span>&#160;    <span class="keywordflow">return</span> <a class="code" href="../../d7/d8e/classNoeudAbstrait.html#afb3243add657bec87f220effa0701c96">twin_</a>;</div>
+<div class="line"><a name="l00587"></a><span class="lineno">  587</span>&#160;}</div>
+<div class="line"><a name="l00588"></a><span class="lineno">  588</span>&#160;</div>
+<div class="line"><a name="l00589"></a><span class="lineno">  589</span>&#160;</div>
+<div class="line"><a name="l00601"></a><span class="lineno"><a class="line" href="../../d7/d8e/classNoeudAbstrait.html#a6a7cdcf5adac5b95a0a87fd4005431ce">  601</a></span>&#160;<span class="keywordtype">void</span> <a class="code" href="../../d7/d8e/classNoeudAbstrait.html#a6a7cdcf5adac5b95a0a87fd4005431ce">NoeudAbstrait::setTwin</a>(<a class="code" href="../../d7/d8e/classNoeudAbstrait.html">NoeudAbstrait</a>* twin)</div>
+<div class="line"><a name="l00602"></a><span class="lineno">  602</span>&#160;{</div>
+<div class="line"><a name="l00603"></a><span class="lineno">  603</span>&#160;    <a class="code" href="../../d7/d8e/classNoeudAbstrait.html#afb3243add657bec87f220effa0701c96">twin_</a> = twin;</div>
+<div class="line"><a name="l00604"></a><span class="lineno">  604</span>&#160;}</div>
+<div class="line"><a name="l00605"></a><span class="lineno">  605</span>&#160;</div>
+<div class="line"><a name="l00620"></a><span class="lineno"><a class="line" href="../../d7/d8e/classNoeudAbstrait.html#a1d1ec6f883587620a7710a958d746ac2">  620</a></span>&#160;<span class="keywordtype">void</span> <a class="code" href="../../d7/d8e/classNoeudAbstrait.html#a1d1ec6f883587620a7710a958d746ac2">NoeudAbstrait::obtenirVecteursBoite</a>(glm::dvec3 &amp;v1, glm::dvec3 &amp;v2, glm::dvec3 &amp;v3, glm::dvec3 &amp;v4)</div>
+<div class="line"><a name="l00621"></a><span class="lineno">  621</span>&#160;{</div>
+<div class="line"><a name="l00622"></a><span class="lineno">  622</span>&#160;    <span class="comment">//initialiser les vecteurs</span></div>
+<div class="line"><a name="l00623"></a><span class="lineno">  623</span>&#160;    v1 = <a class="code" href="../../d7/d8e/classNoeudAbstrait.html#a251d9d95922275f885ead608a3628b0f">boite_</a>.coinMin;</div>
+<div class="line"><a name="l00624"></a><span class="lineno">  624</span>&#160;    v2.x = <a class="code" href="../../d7/d8e/classNoeudAbstrait.html#a251d9d95922275f885ead608a3628b0f">boite_</a>.coinMin.x;</div>
+<div class="line"><a name="l00625"></a><span class="lineno">  625</span>&#160;    v2.y = <a class="code" href="../../d7/d8e/classNoeudAbstrait.html#a251d9d95922275f885ead608a3628b0f">boite_</a>.coinMax.y;</div>
+<div class="line"><a name="l00626"></a><span class="lineno">  626</span>&#160;    v3 = <a class="code" href="../../d7/d8e/classNoeudAbstrait.html#a251d9d95922275f885ead608a3628b0f">boite_</a>.coinMax;</div>
+<div class="line"><a name="l00627"></a><span class="lineno">  627</span>&#160;    v4.x = <a class="code" href="../../d7/d8e/classNoeudAbstrait.html#a251d9d95922275f885ead608a3628b0f">boite_</a>.coinMax.x;</div>
+<div class="line"><a name="l00628"></a><span class="lineno">  628</span>&#160;    v4.y = <a class="code" href="../../d7/d8e/classNoeudAbstrait.html#a251d9d95922275f885ead608a3628b0f">boite_</a>.coinMin.y;</div>
+<div class="line"><a name="l00629"></a><span class="lineno">  629</span>&#160;</div>
+<div class="line"><a name="l00630"></a><span class="lineno">  630</span>&#160;    glm::dmat3 echelle = glm::dmat3{ glm::dvec3{ <a class="code" href="../../d7/d8e/classNoeudAbstrait.html#ac59068cb47bf47badf16e8e6c74ed05c">scale_</a>.x, 0, 0.0 },</div>
+<div class="line"><a name="l00631"></a><span class="lineno">  631</span>&#160;        glm::dvec3{ 0, <a class="code" href="../../d7/d8e/classNoeudAbstrait.html#ac59068cb47bf47badf16e8e6c74ed05c">scale_</a>.y , 0.0f },</div>
+<div class="line"><a name="l00632"></a><span class="lineno">  632</span>&#160;        glm::dvec3{ 0.0, 0.0, <a class="code" href="../../d7/d8e/classNoeudAbstrait.html#ac59068cb47bf47badf16e8e6c74ed05c">scale_</a>.z } };</div>
+<div class="line"><a name="l00633"></a><span class="lineno">  633</span>&#160;</div>
+<div class="line"><a name="l00634"></a><span class="lineno">  634</span>&#160;    <span class="comment">//mise a l&#39;echelle des vecteurs</span></div>
+<div class="line"><a name="l00635"></a><span class="lineno">  635</span>&#160;    v1 = echelle * v1;</div>
+<div class="line"><a name="l00636"></a><span class="lineno">  636</span>&#160;    v2 = echelle * v2;</div>
+<div class="line"><a name="l00637"></a><span class="lineno">  637</span>&#160;    v3 = echelle * v3;</div>
+<div class="line"><a name="l00638"></a><span class="lineno">  638</span>&#160;    v4 = echelle * v4;</div>
+<div class="line"><a name="l00639"></a><span class="lineno">  639</span>&#160;</div>
+<div class="line"><a name="l00640"></a><span class="lineno">  640</span>&#160;    <span class="comment">//calcul matrice de rotation</span></div>
+<div class="line"><a name="l00641"></a><span class="lineno">  641</span>&#160;    <span class="keywordtype">double</span> angleEnRadian = -<a class="code" href="../../d7/d8e/classNoeudAbstrait.html#ae787f108da33c57a01164f8df31cd986">rotation_</a>[2] * utilitaire::PI_180;</div>
+<div class="line"><a name="l00642"></a><span class="lineno">  642</span>&#160;    glm::dmat3 transform = glm::dmat3{ glm::dvec3{ cos(angleEnRadian), -sin(angleEnRadian), 0.0 },</div>
+<div class="line"><a name="l00643"></a><span class="lineno">  643</span>&#160;                                         glm::dvec3{ sin(angleEnRadian), cos(angleEnRadian), 0.0f },</div>
+<div class="line"><a name="l00644"></a><span class="lineno">  644</span>&#160;                                         glm::dvec3{ 0.0, 0.0, 1.0 } };</div>
+<div class="line"><a name="l00645"></a><span class="lineno">  645</span>&#160;    </div>
+<div class="line"><a name="l00646"></a><span class="lineno">  646</span>&#160;    <span class="comment">//applique la rotation aux vecteurs</span></div>
+<div class="line"><a name="l00647"></a><span class="lineno">  647</span>&#160;    v1 = transform * v1;</div>
+<div class="line"><a name="l00648"></a><span class="lineno">  648</span>&#160;    v2 = transform * v2;</div>
+<div class="line"><a name="l00649"></a><span class="lineno">  649</span>&#160;    v3 = transform * v3;</div>
+<div class="line"><a name="l00650"></a><span class="lineno">  650</span>&#160;    v4 = transform * v4;</div>
+<div class="line"><a name="l00651"></a><span class="lineno">  651</span>&#160;}</div>
+<div class="line"><a name="l00652"></a><span class="lineno">  652</span>&#160;</div>
+<div class="line"><a name="l00653"></a><span class="lineno"><a class="line" href="../../d7/d8e/classNoeudAbstrait.html#a83dee679ae86704207cc3b4cbed21800">  653</a></span>&#160;<span class="keywordtype">void</span> <a class="code" href="../../d7/d8e/classNoeudAbstrait.html#a83dee679ae86704207cc3b4cbed21800">NoeudAbstrait::obtenirBoiteModele</a>(glm::dvec3 &amp;v1, glm::dvec3 &amp;v2, glm::dvec3 &amp;v3, glm::dvec3 &amp;v4)</div>
+<div class="line"><a name="l00654"></a><span class="lineno">  654</span>&#160;{</div>
+<div class="line"><a name="l00655"></a><span class="lineno">  655</span>&#160;    <span class="comment">//initialiser les vecteurs</span></div>
+<div class="line"><a name="l00656"></a><span class="lineno">  656</span>&#160;    v1 = <a class="code" href="../../d7/d8e/classNoeudAbstrait.html#a251d9d95922275f885ead608a3628b0f">boite_</a>.coinMin;</div>
+<div class="line"><a name="l00657"></a><span class="lineno">  657</span>&#160;    v2.x = <a class="code" href="../../d7/d8e/classNoeudAbstrait.html#a251d9d95922275f885ead608a3628b0f">boite_</a>.coinMin.x;</div>
+<div class="line"><a name="l00658"></a><span class="lineno">  658</span>&#160;    v2.y = <a class="code" href="../../d7/d8e/classNoeudAbstrait.html#a251d9d95922275f885ead608a3628b0f">boite_</a>.coinMax.y;</div>
+<div class="line"><a name="l00659"></a><span class="lineno">  659</span>&#160;    v3 = <a class="code" href="../../d7/d8e/classNoeudAbstrait.html#a251d9d95922275f885ead608a3628b0f">boite_</a>.coinMax;</div>
+<div class="line"><a name="l00660"></a><span class="lineno">  660</span>&#160;    v4.x = <a class="code" href="../../d7/d8e/classNoeudAbstrait.html#a251d9d95922275f885ead608a3628b0f">boite_</a>.coinMax.x;</div>
+<div class="line"><a name="l00661"></a><span class="lineno">  661</span>&#160;    v4.y = <a class="code" href="../../d7/d8e/classNoeudAbstrait.html#a251d9d95922275f885ead608a3628b0f">boite_</a>.coinMin.y;</div>
+<div class="line"><a name="l00662"></a><span class="lineno">  662</span>&#160;}</div>
+<div class="line"><a name="l00663"></a><span class="lineno">  663</span>&#160;</div>
+<div class="line"><a name="l00674"></a><span class="lineno"><a class="line" href="../../d7/d8e/classNoeudAbstrait.html#aa250d8ba9bb1ab2256ef78b47b5e362b">  674</a></span>&#160;std::vector&lt;glm::dvec3&gt; <a class="code" href="../../d7/d8e/classNoeudAbstrait.html#aa250d8ba9bb1ab2256ef78b47b5e362b">NoeudAbstrait::obtenirVecteursEnglobants</a>()</div>
+<div class="line"><a name="l00675"></a><span class="lineno">  675</span>&#160;{</div>
+<div class="line"><a name="l00676"></a><span class="lineno">  676</span>&#160;    glm::dvec3 tableauVect[4];</div>
+<div class="line"><a name="l00677"></a><span class="lineno">  677</span>&#160;    <a class="code" href="../../d7/d8e/classNoeudAbstrait.html#a1d1ec6f883587620a7710a958d746ac2">obtenirVecteursBoite</a>(tableauVect[0], tableauVect[1], tableauVect[2], tableauVect[3]);</div>
+<div class="line"><a name="l00678"></a><span class="lineno">  678</span>&#160;    <span class="keywordflow">return</span>{ tableauVect[0], tableauVect[1], tableauVect[2], tableauVect[3] };</div>
+<div class="line"><a name="l00679"></a><span class="lineno">  679</span>&#160;}</div>
+<div class="line"><a name="l00680"></a><span class="lineno">  680</span>&#160;</div>
+<div class="line"><a name="l00681"></a><span class="lineno">  681</span>&#160;</div>
+<div class="line"><a name="l00691"></a><span class="lineno"><a class="line" href="../../d7/d8e/classNoeudAbstrait.html#a40a5a2fc7d6ea502b7b2b3764efabf48">  691</a></span>&#160;<span class="keywordtype">bool</span> <a class="code" href="../../d7/d8e/classNoeudAbstrait.html#a40a5a2fc7d6ea502b7b2b3764efabf48">NoeudAbstrait::getColorShift</a>()</div>
+<div class="line"><a name="l00692"></a><span class="lineno">  692</span>&#160;{</div>
+<div class="line"><a name="l00693"></a><span class="lineno">  693</span>&#160;    <span class="keywordflow">return</span> <a class="code" href="../../d7/d8e/classNoeudAbstrait.html#a2829edeb2bc03d270ba19c52a47c34d1">colorShift_</a>;</div>
+<div class="line"><a name="l00694"></a><span class="lineno">  694</span>&#160;}</div>
+<div class="line"><a name="l00695"></a><span class="lineno">  695</span>&#160;</div>
+<div class="line"><a name="l00696"></a><span class="lineno">  696</span>&#160;</div>
+<div class="line"><a name="l00708"></a><span class="lineno"><a class="line" href="../../d7/d8e/classNoeudAbstrait.html#a7ffd14ef424731ff536ad37c028fcd3f">  708</a></span>&#160;<span class="keywordtype">void</span> <a class="code" href="../../d7/d8e/classNoeudAbstrait.html#a7ffd14ef424731ff536ad37c028fcd3f">NoeudAbstrait::setColorShift</a>(<span class="keywordtype">bool</span> colorShift)</div>
+<div class="line"><a name="l00709"></a><span class="lineno">  709</span>&#160;{</div>
+<div class="line"><a name="l00710"></a><span class="lineno">  710</span>&#160;    <a class="code" href="../../d7/d8e/classNoeudAbstrait.html#a2829edeb2bc03d270ba19c52a47c34d1">colorShift_</a> = colorShift;</div>
+<div class="line"><a name="l00711"></a><span class="lineno">  711</span>&#160;}</div>
+<div class="line"><a name="l00712"></a><span class="lineno">  712</span>&#160;</div>
+<div class="line"><a name="l00713"></a><span class="lineno">  713</span>&#160;</div>
+<div class="line"><a name="l00723"></a><span class="lineno"><a class="line" href="../../d7/d8e/classNoeudAbstrait.html#ada2af852ca452030fe7481476f1d2e71">  723</a></span>&#160;<span class="keywordtype">bool</span> <a class="code" href="../../d7/d8e/classNoeudAbstrait.html#ada2af852ca452030fe7481476f1d2e71">NoeudAbstrait::getTransparent</a>()</div>
+<div class="line"><a name="l00724"></a><span class="lineno">  724</span>&#160;{</div>
+<div class="line"><a name="l00725"></a><span class="lineno">  725</span>&#160;    <span class="keywordflow">return</span> <a class="code" href="../../d7/d8e/classNoeudAbstrait.html#aec2caee9f41157bf6b82f0838fb84aff">transparent_</a>;</div>
+<div class="line"><a name="l00726"></a><span class="lineno">  726</span>&#160;}</div>
+<div class="line"><a name="l00727"></a><span class="lineno">  727</span>&#160;</div>
+<div class="line"><a name="l00728"></a><span class="lineno">  728</span>&#160;</div>
+<div class="line"><a name="l00740"></a><span class="lineno"><a class="line" href="../../d7/d8e/classNoeudAbstrait.html#a74f5f940080ac20b6fc843e71e9427c7">  740</a></span>&#160;<span class="keywordtype">void</span> <a class="code" href="../../d7/d8e/classNoeudAbstrait.html#a74f5f940080ac20b6fc843e71e9427c7">NoeudAbstrait::setTransparent</a>(<span class="keywordtype">bool</span> transparent)</div>
+<div class="line"><a name="l00741"></a><span class="lineno">  741</span>&#160;{</div>
+<div class="line"><a name="l00742"></a><span class="lineno">  742</span>&#160;    <a class="code" href="../../d7/d8e/classNoeudAbstrait.html#aec2caee9f41157bf6b82f0838fb84aff">transparent_</a> = transparent;</div>
+<div class="line"><a name="l00743"></a><span class="lineno">  743</span>&#160;}</div>
+<div class="line"><a name="l00744"></a><span class="lineno">  744</span>&#160;</div>
+<div class="line"><a name="l00745"></a><span class="lineno">  745</span>&#160;</div>
+<div class="line"><a name="l00746"></a><span class="lineno">  746</span>&#160;</div>
+<div class="line"><a name="l00756"></a><span class="lineno"><a class="line" href="../../d7/d8e/classNoeudAbstrait.html#ace1977c7dd717787c1cc73ee96298bb4">  756</a></span>&#160;<span class="keywordtype">bool</span> <a class="code" href="../../d7/d8e/classNoeudAbstrait.html#ace1977c7dd717787c1cc73ee96298bb4">NoeudAbstrait::getImpossible</a>()</div>
+<div class="line"><a name="l00757"></a><span class="lineno">  757</span>&#160;{</div>
+<div class="line"><a name="l00758"></a><span class="lineno">  758</span>&#160;    <span class="keywordflow">return</span> <a class="code" href="../../d7/d8e/classNoeudAbstrait.html#a67859b91d7ce98240b8da2e487171f1c">impossible_</a>;</div>
+<div class="line"><a name="l00759"></a><span class="lineno">  759</span>&#160;}</div>
+<div class="line"><a name="l00760"></a><span class="lineno">  760</span>&#160;</div>
+<div class="line"><a name="l00761"></a><span class="lineno">  761</span>&#160;</div>
+<div class="line"><a name="l00773"></a><span class="lineno"><a class="line" href="../../d7/d8e/classNoeudAbstrait.html#a601addb1081da55203024180ceb0c22c">  773</a></span>&#160;<span class="keywordtype">void</span> <a class="code" href="../../d7/d8e/classNoeudAbstrait.html#a601addb1081da55203024180ceb0c22c">NoeudAbstrait::setImpossible</a>(<span class="keywordtype">bool</span> impossible)</div>
+<div class="line"><a name="l00774"></a><span class="lineno">  774</span>&#160;{</div>
+<div class="line"><a name="l00775"></a><span class="lineno">  775</span>&#160;    <a class="code" href="../../d7/d8e/classNoeudAbstrait.html#a67859b91d7ce98240b8da2e487171f1c">impossible_</a> = impossible;</div>
+<div class="line"><a name="l00776"></a><span class="lineno">  776</span>&#160;}</div>
+<div class="line"><a name="l00777"></a><span class="lineno">  777</span>&#160;</div>
+<div class="line"><a name="l00788"></a><span class="lineno"><a class="line" href="../../d7/d8e/classNoeudAbstrait.html#a53b5c399182a73215dc4d300a14c707a">  788</a></span>&#160;<span class="keywordtype">bool</span> <a class="code" href="../../d7/d8e/classNoeudAbstrait.html#a53b5c399182a73215dc4d300a14c707a">NoeudAbstrait::pointEstDansBoite</a>(glm::dvec3 point)</div>
+<div class="line"><a name="l00789"></a><span class="lineno">  789</span>&#160;{</div>
+<div class="line"><a name="l00790"></a><span class="lineno">  790</span>&#160;    glm::dvec3 vecOP = point - <a class="code" href="../../d7/d8e/classNoeudAbstrait.html#ae8a50095413ac131cd6d07a384a9ff5d">positionRelative_</a>;</div>
+<div class="line"><a name="l00791"></a><span class="lineno">  791</span>&#160;</div>
+<div class="line"><a name="l00792"></a><span class="lineno">  792</span>&#160;    <span class="comment">//calcul matrice de rotation inverse</span></div>
+<div class="line"><a name="l00793"></a><span class="lineno">  793</span>&#160;    <span class="keywordtype">double</span> angleEnRadian = <a class="code" href="../../d7/d8e/classNoeudAbstrait.html#ae787f108da33c57a01164f8df31cd986">rotation_</a>[2] * utilitaire::PI_180;</div>
+<div class="line"><a name="l00794"></a><span class="lineno">  794</span>&#160;    glm::dmat3 transform = glm::dmat3{ glm::dvec3{ cos(angleEnRadian), -sin(angleEnRadian), 0.0 },</div>
+<div class="line"><a name="l00795"></a><span class="lineno">  795</span>&#160;        glm::dvec3{ sin(angleEnRadian), cos(angleEnRadian), 0.0f },</div>
+<div class="line"><a name="l00796"></a><span class="lineno">  796</span>&#160;        glm::dvec3{ 0.0, 0.0, 1.0 } };</div>
+<div class="line"><a name="l00797"></a><span class="lineno">  797</span>&#160;</div>
+<div class="line"><a name="l00798"></a><span class="lineno">  798</span>&#160;    <span class="comment">//appliquer rotation inverse au vecteur</span></div>
+<div class="line"><a name="l00799"></a><span class="lineno">  799</span>&#160;    vecOP = transform * vecOP;</div>
+<div class="line"><a name="l00800"></a><span class="lineno">  800</span>&#160;</div>
+<div class="line"><a name="l00801"></a><span class="lineno">  801</span>&#160;    <span class="comment">//appliquer la mise a l&#39;echelle inverse</span></div>
+<div class="line"><a name="l00802"></a><span class="lineno">  802</span>&#160;    glm::dmat3 echelle = glm::dmat3{ glm::dvec3{ 1/<a class="code" href="../../d7/d8e/classNoeudAbstrait.html#ac59068cb47bf47badf16e8e6c74ed05c">scale_</a>.x, 0, 0.0 },</div>
+<div class="line"><a name="l00803"></a><span class="lineno">  803</span>&#160;        glm::dvec3{ 0, 1/<a class="code" href="../../d7/d8e/classNoeudAbstrait.html#ac59068cb47bf47badf16e8e6c74ed05c">scale_</a>.y, 0.0f },</div>
+<div class="line"><a name="l00804"></a><span class="lineno">  804</span>&#160;        glm::dvec3{ 0.0, 0.0,1/ <a class="code" href="../../d7/d8e/classNoeudAbstrait.html#ac59068cb47bf47badf16e8e6c74ed05c">scale_</a>.z } };</div>
+<div class="line"><a name="l00805"></a><span class="lineno">  805</span>&#160;    vecOP = echelle * vecOP;</div>
+<div class="line"><a name="l00806"></a><span class="lineno">  806</span>&#160;</div>
+<div class="line"><a name="l00807"></a><span class="lineno">  807</span>&#160;    <span class="comment">//verifie si le vecteur est dans la boite</span></div>
+<div class="line"><a name="l00808"></a><span class="lineno">  808</span>&#160;    <span class="keywordflow">if</span> (vecOP.x &gt; <a class="code" href="../../d7/d8e/classNoeudAbstrait.html#a251d9d95922275f885ead608a3628b0f">boite_</a>.coinMin.x &amp;&amp; vecOP.x &lt; <a class="code" href="../../d7/d8e/classNoeudAbstrait.html#a251d9d95922275f885ead608a3628b0f">boite_</a>.coinMax.x &amp;&amp;</div>
+<div class="line"><a name="l00809"></a><span class="lineno">  809</span>&#160;        vecOP.y &gt; <a class="code" href="../../d7/d8e/classNoeudAbstrait.html#a251d9d95922275f885ead608a3628b0f">boite_</a>.coinMin.y &amp;&amp; vecOP.y &lt; <a class="code" href="../../d7/d8e/classNoeudAbstrait.html#a251d9d95922275f885ead608a3628b0f">boite_</a>.coinMax.y)</div>
+<div class="line"><a name="l00810"></a><span class="lineno">  810</span>&#160;        <span class="keywordflow">return</span> <span class="keyword">true</span>;</div>
+<div class="line"><a name="l00811"></a><span class="lineno">  811</span>&#160;    <span class="keywordflow">else</span></div>
+<div class="line"><a name="l00812"></a><span class="lineno">  812</span>&#160;        <span class="keywordflow">return</span> <span class="keyword">false</span>;</div>
+<div class="line"><a name="l00813"></a><span class="lineno">  813</span>&#160;}</div>
+<div class="line"><a name="l00814"></a><span class="lineno">  814</span>&#160;</div>
+<div class="line"><a name="l00822"></a><span class="lineno"><a class="line" href="../../d7/d8e/classNoeudAbstrait.html#a5cd51e29cb0002b603e9fc0595a2f2ee">  822</a></span>&#160;<span class="keywordtype">void</span> <a class="code" href="../../d7/d8e/classNoeudAbstrait.html#a5cd51e29cb0002b603e9fc0595a2f2ee">NoeudAbstrait::setDebug</a>(<span class="keywordtype">bool</span> debug)</div>
+<div class="line"><a name="l00823"></a><span class="lineno">  823</span>&#160;{</div>
+<div class="line"><a name="l00824"></a><span class="lineno">  824</span>&#160;    <a class="code" href="../../d7/d8e/classNoeudAbstrait.html#a779da2cd1f1a28fb16292c867d564ed4">debug_</a> = debug;</div>
+<div class="line"><a name="l00825"></a><span class="lineno">  825</span>&#160;}</div>
+<div class="line"><a name="l00826"></a><span class="lineno">  826</span>&#160;</div>
+<div class="line"><a name="l00836"></a><span class="lineno"><a class="line" href="../../d7/d8e/classNoeudAbstrait.html#ae776dfec9bb6c0680981a468002435fe">  836</a></span>&#160;<span class="keywordtype">void</span> <a class="code" href="../../d7/d8e/classNoeudAbstrait.html#ae776dfec9bb6c0680981a468002435fe">NoeudAbstrait::setSpotLight</a>(<span class="keywordtype">bool</span> debug)</div>
+<div class="line"><a name="l00837"></a><span class="lineno">  837</span>&#160;{</div>
+<div class="line"><a name="l00838"></a><span class="lineno">  838</span>&#160;    <a class="code" href="../../d7/d8e/classNoeudAbstrait.html#a2150f91703288899540f007a2fe2aff5">spotLight_</a> = debug;</div>
+<div class="line"><a name="l00839"></a><span class="lineno">  839</span>&#160;}</div>
+<div class="line"><a name="l00840"></a><span class="lineno">  840</span>&#160;</div>
+<div class="line"><a name="l00851"></a><span class="lineno"><a class="line" href="../../d7/d8e/classNoeudAbstrait.html#a841a291e26ecdfb2269f6090ecbab99a">  851</a></span>&#160;aidecollision::DetailsCollision <a class="code" href="../../d7/d8e/classNoeudAbstrait.html#a841a291e26ecdfb2269f6090ecbab99a">NoeudAbstrait::detecterCollisions</a>(<a class="code" href="../../d7/d8e/classNoeudAbstrait.html">NoeudAbstrait</a>* bille)</div>
+<div class="line"><a name="l00852"></a><span class="lineno">  852</span>&#160;{</div>
+<div class="line"><a name="l00853"></a><span class="lineno">  853</span>&#160;    std::vector&lt;glm::dvec3&gt; boite = <a class="code" href="../../d7/d8e/classNoeudAbstrait.html#aa250d8ba9bb1ab2256ef78b47b5e362b">obtenirVecteursEnglobants</a>();</div>
+<div class="line"><a name="l00854"></a><span class="lineno">  854</span>&#160;    <span class="keywordtype">double</span> rayonBille = bille-&gt;<a class="code" href="../../d7/d8e/classNoeudAbstrait.html#aa250d8ba9bb1ab2256ef78b47b5e362b">obtenirVecteursEnglobants</a>()[0].x;</div>
+<div class="line"><a name="l00855"></a><span class="lineno">  855</span>&#160;    aidecollision::DetailsCollision details;</div>
+<div class="line"><a name="l00856"></a><span class="lineno">  856</span>&#160;    <span class="keywordflow">if</span> (boite.size() &gt; 1)</div>
+<div class="line"><a name="l00857"></a><span class="lineno">  857</span>&#160;    {</div>
+<div class="line"><a name="l00858"></a><span class="lineno">  858</span>&#160;        <span class="keywordflow">for</span> (<span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> i = 0; i &lt; boite.size(); i++)</div>
+<div class="line"><a name="l00859"></a><span class="lineno">  859</span>&#160;            boite[i] += <a class="code" href="../../d7/d8e/classNoeudAbstrait.html#a62d73f67c3b33e2cb106630bd1736a58">obtenirPositionRelative</a>();</div>
+<div class="line"><a name="l00860"></a><span class="lineno">  860</span>&#160;        <span class="comment">// Considerer tous les segments boite[i] --- boite[i+1 % size] </span></div>
+<div class="line"><a name="l00861"></a><span class="lineno">  861</span>&#160;        aidecollision::DetailsCollision detailsRetour;</div>
+<div class="line"><a name="l00862"></a><span class="lineno">  862</span>&#160;        detailsRetour.type = aidecollision::COLLISION_AUCUNE;</div>
+<div class="line"><a name="l00863"></a><span class="lineno">  863</span>&#160;        <span class="keywordflow">for</span> (<span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> i = 0; i &lt; boite.size(); i++)</div>
+<div class="line"><a name="l00864"></a><span class="lineno">  864</span>&#160;        {</div>
+<div class="line"><a name="l00865"></a><span class="lineno">  865</span>&#160;            <span class="comment">// On veut calculer la collision en 2D et caster les paramêtres en glm::dvec2 &quot;oublie&quot; leur composante en Z et choisi la bonne surcharge de calculerCollisionSegment.</span></div>
+<div class="line"><a name="l00866"></a><span class="lineno">  866</span>&#160;            details = aidecollision::calculerCollisionSegment((glm::dvec2)boite[i], (glm::dvec2)boite[(i + 1) % boite.size()], (glm::dvec2)bille-&gt;<a class="code" href="../../d7/d8e/classNoeudAbstrait.html#a62d73f67c3b33e2cb106630bd1736a58">obtenirPositionRelative</a>(), rayonBille, <span class="keyword">true</span>);</div>
+<div class="line"><a name="l00867"></a><span class="lineno">  867</span>&#160;            <span class="keywordflow">if</span> (details.type != aidecollision::COLLISION_AUCUNE)</div>
+<div class="line"><a name="l00868"></a><span class="lineno">  868</span>&#160;            {</div>
+<div class="line"><a name="l00869"></a><span class="lineno">  869</span>&#160;                <span class="comment">// Donner priorité aux collision sur les segments plutot que sur les points.</span></div>
+<div class="line"><a name="l00870"></a><span class="lineno">  870</span>&#160;                <span class="keywordflow">if</span> (details.type == aidecollision::COLLISION_SEGMENT)</div>
+<div class="line"><a name="l00871"></a><span class="lineno">  871</span>&#160;                    <span class="keywordflow">return</span> details;</div>
+<div class="line"><a name="l00872"></a><span class="lineno">  872</span>&#160;                <span class="keywordflow">else</span></div>
+<div class="line"><a name="l00873"></a><span class="lineno">  873</span>&#160;                    detailsRetour = details;</div>
+<div class="line"><a name="l00874"></a><span class="lineno">  874</span>&#160;            }</div>
+<div class="line"><a name="l00875"></a><span class="lineno">  875</span>&#160;        }</div>
+<div class="line"><a name="l00876"></a><span class="lineno">  876</span>&#160;        <span class="keywordflow">return</span> details;</div>
+<div class="line"><a name="l00877"></a><span class="lineno">  877</span>&#160;    }</div>
+<div class="line"><a name="l00878"></a><span class="lineno">  878</span>&#160;    <span class="keywordflow">else</span> <span class="keywordflow">if</span> (boite.size() == 1)<span class="comment">// a mettre dans la reimplementation pour les objets circulaires.</span></div>
+<div class="line"><a name="l00879"></a><span class="lineno">  879</span>&#160;    {</div>
+<div class="line"><a name="l00880"></a><span class="lineno">  880</span>&#160;        <span class="keywordtype">double</span> rayon = boite[0].x;</div>
+<div class="line"><a name="l00881"></a><span class="lineno">  881</span>&#160;        details = aidecollision::calculerCollisionCercle((glm::dvec2)<a class="code" href="../../d7/d8e/classNoeudAbstrait.html#a62d73f67c3b33e2cb106630bd1736a58">obtenirPositionRelative</a>(), rayon, (glm::dvec2)bille-&gt;<a class="code" href="../../d7/d8e/classNoeudAbstrait.html#a62d73f67c3b33e2cb106630bd1736a58">obtenirPositionRelative</a>(), rayonBille);</div>
+<div class="line"><a name="l00882"></a><span class="lineno">  882</span>&#160;        <span class="keywordflow">if</span> (details.type != aidecollision::COLLISION_AUCUNE)</div>
+<div class="line"><a name="l00883"></a><span class="lineno">  883</span>&#160;        {</div>
+<div class="line"><a name="l00884"></a><span class="lineno">  884</span>&#160;            <span class="keywordflow">return</span> details;</div>
+<div class="line"><a name="l00885"></a><span class="lineno">  885</span>&#160;        }</div>
+<div class="line"><a name="l00886"></a><span class="lineno">  886</span>&#160;    }</div>
+<div class="line"><a name="l00887"></a><span class="lineno">  887</span>&#160;    <span class="keywordflow">return</span> details;</div>
+<div class="line"><a name="l00888"></a><span class="lineno">  888</span>&#160;}</div>
+<div class="line"><a name="l00889"></a><span class="lineno">  889</span>&#160;</div>
+<div class="line"><a name="l00890"></a><span class="lineno">  890</span>&#160;</div>
+<div class="line"><a name="l00902"></a><span class="lineno"><a class="line" href="../../d7/d8e/classNoeudAbstrait.html#a7360664d066c779a1cd17d33088c696e">  902</a></span>&#160;<span class="keywordtype">void</span> <a class="code" href="../../d7/d8e/classNoeudAbstrait.html#a7360664d066c779a1cd17d33088c696e">NoeudAbstrait::traiterCollisions</a>(aidecollision::DetailsCollision details, <a class="code" href="../../d7/d8e/classNoeudAbstrait.html">NoeudAbstrait</a>* bille, <span class="keywordtype">float</span> facteurRebond)</div>
+<div class="line"><a name="l00903"></a><span class="lineno">  903</span>&#160;{</div>
+<div class="line"><a name="l00904"></a><span class="lineno">  904</span>&#160;</div>
+<div class="line"><a name="l00905"></a><span class="lineno">  905</span>&#160;    assert(bille-&gt;<a class="code" href="../../d7/d8e/classNoeudAbstrait.html#a2df7c53ab456cc88bce73f7eb913e3e6">obtenirType</a>() == <span class="stringliteral">&quot;bille&quot;</span>);</div>
+<div class="line"><a name="l00906"></a><span class="lineno">  906</span>&#160;</div>
+<div class="line"><a name="l00907"></a><span class="lineno">  907</span>&#160;    <span class="keywordflow">if</span> (details.type == aidecollision::COLLISION_AUCUNE)</div>
+<div class="line"><a name="l00908"></a><span class="lineno">  908</span>&#160;        <span class="keywordflow">return</span>;</div>
+<div class="line"><a name="l00909"></a><span class="lineno">  909</span>&#160;    <span class="keywordflow">if</span> (bille == <span class="keyword">this</span>)</div>
+<div class="line"><a name="l00910"></a><span class="lineno">  910</span>&#160;        <span class="keywordflow">return</span>;</div>
+<div class="line"><a name="l00911"></a><span class="lineno">  911</span>&#160;</div>
+<div class="line"><a name="l00912"></a><span class="lineno">  912</span>&#160;    <span class="comment">// Modifier la vitesse de la bille en fonction de bille reçue en paramètre </span></div>
+<div class="line"><a name="l00913"></a><span class="lineno">  913</span>&#160;    glm::dvec3 vitesseInitiale = bille-&gt;<a class="code" href="../../d7/d8e/classNoeudAbstrait.html#aa0d8a8493fd9c26b50f8c256614f6e4a">obtenirVitesse</a>();</div>
+<div class="line"><a name="l00914"></a><span class="lineno">  914</span>&#160;    glm::dvec3 vitesseNormaleInitiale = glm::proj(vitesseInitiale, details.direction); <span class="comment">// Necessaire pour connaitre la vitesse tangentielle.</span></div>
+<div class="line"><a name="l00915"></a><span class="lineno">  915</span>&#160;    glm::dvec3 vitesseTangentielle = vitesseInitiale - vitesseNormaleInitiale;</div>
+<div class="line"><a name="l00916"></a><span class="lineno">  916</span>&#160;    glm::dvec2 vitesseNormaleFinale2D = aidecollision::calculerForceAmortissement2D(details, (glm::dvec2)vitesseInitiale, facteurRebond);</div>
+<div class="line"><a name="l00917"></a><span class="lineno">  917</span>&#160;    glm::dvec3 vitesseFinale = vitesseTangentielle + glm::dvec3{ vitesseNormaleFinale2D.x, vitesseNormaleFinale2D.y, 0.0 };</div>
+<div class="line"><a name="l00918"></a><span class="lineno">  918</span>&#160;        ((<a class="code" href="../../dc/d7e/classNoeudBille.html">NoeudBille</a>*)bille)-&gt;afficherVitesse(vitesseFinale); <span class="comment">// Que Dieu me pardonne</span></div>
+<div class="line"><a name="l00919"></a><span class="lineno">  919</span>&#160;</div>
+<div class="line"><a name="l00920"></a><span class="lineno">  920</span>&#160;</div>
+<div class="line"><a name="l00921"></a><span class="lineno">  921</span>&#160;    glm::dvec3 positionFinale = bille-&gt;<a class="code" href="../../d7/d8e/classNoeudAbstrait.html#a62d73f67c3b33e2cb106630bd1736a58">obtenirPositionRelative</a>() + details.enfoncement * glm::normalize(details.direction);</div>
+<div class="line"><a name="l00922"></a><span class="lineno">  922</span>&#160;    bille-&gt;<a class="code" href="../../d7/d8e/classNoeudAbstrait.html#a11e12e42b05a5327c92cd7fd1b7e5a24">assignerPositionRelative</a>(positionFinale);</div>
+<div class="line"><a name="l00923"></a><span class="lineno">  923</span>&#160;</div>
+<div class="line"><a name="l00924"></a><span class="lineno">  924</span>&#160;    bille-&gt;<a class="code" href="../../d7/d8e/classNoeudAbstrait.html#af75d7bda7885d6d9c581625569d78dc8">assignerVitesse</a>(vitesseFinale);</div>
+<div class="line"><a name="l00925"></a><span class="lineno">  925</span>&#160;    bille-&gt;<a class="code" href="../../d7/d8e/classNoeudAbstrait.html#ae36ecfd5d5fd69383b4f3ef10b8a9612">assignerImpossible</a>(<span class="keyword">true</span>);</div>
+<div class="line"><a name="l00926"></a><span class="lineno">  926</span>&#160;}</div>
+<div class="line"><a name="l00927"></a><span class="lineno">  927</span>&#160;</div>
+<div class="line"><a name="l00937"></a><span class="lineno"><a class="line" href="../../d7/d8e/classNoeudAbstrait.html#a3c5571d0730d6a5ff7837f9d19ae5280">  937</a></span>&#160;<span class="keywordtype">void</span> <a class="code" href="../../d7/d8e/classNoeudAbstrait.html#a3c5571d0730d6a5ff7837f9d19ae5280">NoeudAbstrait::assignerPortailDorigine</a>(<a class="code" href="../../d7/d8e/classNoeudAbstrait.html">NoeudAbstrait</a>* portail)</div>
+<div class="line"><a name="l00938"></a><span class="lineno">  938</span>&#160;{</div>
+<div class="line"><a name="l00939"></a><span class="lineno">  939</span>&#160;    <a class="code" href="../../d7/d8e/classNoeudAbstrait.html#a2c842e7bdd91e9fdcfa390f7afe84800">portailDorigine_</a> = portail;</div>
+<div class="line"><a name="l00940"></a><span class="lineno">  940</span>&#160;}</div>
+<div class="line"><a name="l00941"></a><span class="lineno">  941</span>&#160;</div>
+<div class="line"><a name="l00951"></a><span class="lineno"><a class="line" href="../../d7/d8e/classNoeudAbstrait.html#aa430a614f9452c7a81d7e54f06e3ae13">  951</a></span>&#160;<a class="code" href="../../d7/d8e/classNoeudAbstrait.html">NoeudAbstrait</a>* <a class="code" href="../../d7/d8e/classNoeudAbstrait.html#aa430a614f9452c7a81d7e54f06e3ae13">NoeudAbstrait::obtenirPortailDorigine</a>()</div>
+<div class="line"><a name="l00952"></a><span class="lineno">  952</span>&#160;{</div>
+<div class="line"><a name="l00953"></a><span class="lineno">  953</span>&#160;    <span class="keywordflow">return</span> <a class="code" href="../../d7/d8e/classNoeudAbstrait.html#a2c842e7bdd91e9fdcfa390f7afe84800">portailDorigine_</a>;</div>
+<div class="line"><a name="l00954"></a><span class="lineno">  954</span>&#160;}</div>
+<div class="line"><a name="l00955"></a><span class="lineno">  955</span>&#160;</div>
+<div class="line"><a name="l00956"></a><span class="lineno">  956</span>&#160;</div>
+<div class="line"><a name="l00957"></a><span class="lineno">  957</span>&#160;</div>
+<div class="line"><a name="l00965"></a><span class="lineno"><a class="line" href="../../d7/d8e/classNoeudAbstrait.html#a85885e2ea3691369cedae3071df3563a">  965</a></span>&#160;<span class="keywordtype">void</span> <a class="code" href="../../d7/d8e/classNoeudAbstrait.html#a85885e2ea3691369cedae3071df3563a">NoeudAbstrait::genererBille</a>()</div>
+<div class="line"><a name="l00966"></a><span class="lineno">  966</span>&#160;{</div>
+<div class="line"><a name="l00967"></a><span class="lineno">  967</span>&#160;    <span class="keywordflow">return</span>;</div>
+<div class="line"><a name="l00968"></a><span class="lineno">  968</span>&#160;}</div>
+<div class="ttc" id="classNoeudAbstrait_html_ae7c702b865babd20ddd30dd776adc82b"><div class="ttname"><a href="../../d7/d8e/classNoeudAbstrait.html#ae7c702b865babd20ddd30dd776adc82b">NoeudAbstrait::selectionExiste</a></div><div class="ttdeci">virtual bool selectionExiste() const </div><div class="ttdoc">Verifier si le noeud ou un de ses enfants est selectionne. </div><div class="ttdef"><b>Definition:</b> <a href="../../d8/d39/NoeudAbstrait_8cpp_source.html#l00343">NoeudAbstrait.cpp:343</a></div></div>
+<div class="ttc" id="classNoeudAbstrait_html_ae81a18a1dd964ff9058ea58a8222e857"><div class="ttname"><a href="../../d7/d8e/classNoeudAbstrait.html#ae81a18a1dd964ff9058ea58a8222e857">NoeudAbstrait::getTwin</a></div><div class="ttdeci">virtual NoeudAbstrait * getTwin()</div><div class="ttdoc">Obtenir jumeau. </div><div class="ttdef"><b>Definition:</b> <a href="../../d8/d39/NoeudAbstrait_8cpp_source.html#l00584">NoeudAbstrait.cpp:584</a></div></div>
+<div class="ttc" id="classNoeudAbstrait_html_a8af5cdbe562e51d1fb758b71e8c7c32e"><div class="ttname"><a href="../../d7/d8e/classNoeudAbstrait.html#a8af5cdbe562e51d1fb758b71e8c7c32e">NoeudAbstrait::assignerAnimer</a></div><div class="ttdeci">virtual void assignerAnimer(bool animer)</div><div class="ttdoc">Rend le noeud animable ou non le noeud. </div><div class="ttdef"><b>Definition:</b> <a href="../../d8/d39/NoeudAbstrait_8cpp_source.html#l00518">NoeudAbstrait.cpp:518</a></div></div>
+<div class="ttc" id="classNoeudAbstrait_html_a85885e2ea3691369cedae3071df3563a"><div class="ttname"><a href="../../d7/d8e/classNoeudAbstrait.html#a85885e2ea3691369cedae3071df3563a">NoeudAbstrait::genererBille</a></div><div class="ttdeci">virtual void genererBille()</div><div class="ttdoc">trigger lors de l&#39;ajout d&#39;une bille </div><div class="ttdef"><b>Definition:</b> <a href="../../d8/d39/NoeudAbstrait_8cpp_source.html#l00965">NoeudAbstrait.cpp:965</a></div></div>
+<div class="ttc" id="classNoeudAbstrait_html_ada2af852ca452030fe7481476f1d2e71"><div class="ttname"><a href="../../d7/d8e/classNoeudAbstrait.html#ada2af852ca452030fe7481476f1d2e71">NoeudAbstrait::getTransparent</a></div><div class="ttdeci">virtual bool getTransparent()</div><div class="ttdoc">Obtenir transparence. </div><div class="ttdef"><b>Definition:</b> <a href="../../d8/d39/NoeudAbstrait_8cpp_source.html#l00723">NoeudAbstrait.cpp:723</a></div></div>
+<div class="ttc" id="classNoeudAbstrait_html_a2ab3dc520026d1ad77aa848981688bfd"><div class="ttname"><a href="../../d7/d8e/classNoeudAbstrait.html#a2ab3dc520026d1ad77aa848981688bfd">NoeudAbstrait::effacer</a></div><div class="ttdeci">virtual void effacer(const NoeudAbstrait *noeud)</div><div class="ttdoc">Efface le noeud passe en parametre. </div><div class="ttdef"><b>Definition:</b> <a href="../../d8/d39/NoeudAbstrait_8cpp_source.html#l00111">NoeudAbstrait.cpp:111</a></div></div>
+<div class="ttc" id="classNoeudAbstrait_html_ae36ecfd5d5fd69383b4f3ef10b8a9612"><div class="ttname"><a href="../../d7/d8e/classNoeudAbstrait.html#ae36ecfd5d5fd69383b4f3ef10b8a9612">NoeudAbstrait::assignerImpossible</a></div><div class="ttdeci">void assignerImpossible(bool impossible)</div><div class="ttdoc">Assigner le statut de possibilite. </div><div class="ttdef"><b>Definition:</b> <a href="../../d1/d0f/NoeudAbstrait_8h_source.html#l00656">NoeudAbstrait.h:656</a></div></div>
+<div class="ttc" id="classNoeudAbstrait_html_a1d1ec6f883587620a7710a958d746ac2"><div class="ttname"><a href="../../d7/d8e/classNoeudAbstrait.html#a1d1ec6f883587620a7710a958d746ac2">NoeudAbstrait::obtenirVecteursBoite</a></div><div class="ttdeci">virtual void obtenirVecteursBoite(glm::dvec3 &amp;v1, glm::dvec3 &amp;v2, glm::dvec3 &amp;v3, glm::dvec3 &amp;v4)</div><div class="ttdef"><b>Definition:</b> <a href="../../d8/d39/NoeudAbstrait_8cpp_source.html#l00620">NoeudAbstrait.cpp:620</a></div></div>
+<div class="ttc" id="classNoeudAbstrait_html_aa250d8ba9bb1ab2256ef78b47b5e362b"><div class="ttname"><a href="../../d7/d8e/classNoeudAbstrait.html#aa250d8ba9bb1ab2256ef78b47b5e362b">NoeudAbstrait::obtenirVecteursEnglobants</a></div><div class="ttdeci">virtual std::vector&lt; glm::dvec3 &gt; obtenirVecteursEnglobants()</div><div class="ttdef"><b>Definition:</b> <a href="../../d8/d39/NoeudAbstrait_8cpp_source.html#l00674">NoeudAbstrait.cpp:674</a></div></div>
+<div class="ttc" id="classNoeudAbstrait_html_a20af11e8041b0af8a34b6f041bb24c7f"><div class="ttname"><a href="../../d7/d8e/classNoeudAbstrait.html#a20af11e8041b0af8a34b6f041bb24c7f">NoeudAbstrait::affiche_</a></div><div class="ttdeci">bool affiche_</div><div class="ttdoc">Vrai si on doit afficher le noeud. </div><div class="ttdef"><b>Definition:</b> <a href="../../d1/d0f/NoeudAbstrait_8h_source.html#l00309">NoeudAbstrait.h:309</a></div></div>
+<div class="ttc" id="classNoeudAbstrait_html_a5cd51e29cb0002b603e9fc0595a2f2ee"><div class="ttname"><a href="../../d7/d8e/classNoeudAbstrait.html#a5cd51e29cb0002b603e9fc0595a2f2ee">NoeudAbstrait::setDebug</a></div><div class="ttdeci">virtual void setDebug(bool debug)</div><div class="ttdoc">Activer ou desactiver le mode debug. </div><div class="ttdef"><b>Definition:</b> <a href="../../d8/d39/NoeudAbstrait_8cpp_source.html#l00822">NoeudAbstrait.cpp:822</a></div></div>
+<div class="ttc" id="classNoeudAbstrait_html_a841a291e26ecdfb2269f6090ecbab99a"><div class="ttname"><a href="../../d7/d8e/classNoeudAbstrait.html#a841a291e26ecdfb2269f6090ecbab99a">NoeudAbstrait::detecterCollisions</a></div><div class="ttdeci">virtual aidecollision::DetailsCollision detecterCollisions(NoeudAbstrait *noeud)</div><div class="ttdoc">Pour la detections des collisions. </div><div class="ttdef"><b>Definition:</b> <a href="../../d8/d39/NoeudAbstrait_8cpp_source.html#l00851">NoeudAbstrait.cpp:851</a></div></div>
+<div class="ttc" id="classNoeudAbstrait_html_aa9b1fa06dad2695ea6870411c62652b3"><div class="ttname"><a href="../../d7/d8e/classNoeudAbstrait.html#aa9b1fa06dad2695ea6870411c62652b3">NoeudAbstrait::selectionnerTout</a></div><div class="ttdeci">virtual void selectionnerTout()</div><div class="ttdoc">Selectionne tous les enfants de meme que le noeud. </div><div class="ttdef"><b>Definition:</b> <a href="../../d8/d39/NoeudAbstrait_8cpp_source.html#l00306">NoeudAbstrait.cpp:306</a></div></div>
+<div class="ttc" id="classNoeudAbstrait_html_aa0d8a8493fd9c26b50f8c256614f6e4a"><div class="ttname"><a href="../../d7/d8e/classNoeudAbstrait.html#aa0d8a8493fd9c26b50f8c256614f6e4a">NoeudAbstrait::obtenirVitesse</a></div><div class="ttdeci">glm::dvec3 obtenirVitesse() const </div><div class="ttdoc">Obtient la vitesse du noeud. </div><div class="ttdef"><b>Definition:</b> <a href="../../d1/d0f/NoeudAbstrait_8h_source.html#l00473">NoeudAbstrait.h:473</a></div></div>
+<div class="ttc" id="classNoeudAbstrait_html_afc11c68b39c260ad8b72df5fbd8b3ff3"><div class="ttname"><a href="../../d7/d8e/classNoeudAbstrait.html#afc11c68b39c260ad8b72df5fbd8b3ff3">NoeudAbstrait::numeroNoeud_</a></div><div class="ttdeci">int numeroNoeud_</div><div class="ttdoc">Numero d&#39;instance. </div><div class="ttdef"><b>Definition:</b> <a href="../../d1/d0f/NoeudAbstrait_8h_source.html#l00336">NoeudAbstrait.h:336</a></div></div>
+<div class="ttc" id="classNoeudAbstrait_html_aa430a614f9452c7a81d7e54f06e3ae13"><div class="ttname"><a href="../../d7/d8e/classNoeudAbstrait.html#aa430a614f9452c7a81d7e54f06e3ae13">NoeudAbstrait::obtenirPortailDorigine</a></div><div class="ttdeci">NoeudAbstrait * obtenirPortailDorigine()</div><div class="ttdoc">Obtenir l&#39;adresse du pointeurDorigine_. </div><div class="ttdef"><b>Definition:</b> <a href="../../d8/d39/NoeudAbstrait_8cpp_source.html#l00951">NoeudAbstrait.cpp:951</a></div></div>
+<div class="ttc" id="classNoeudAbstrait_html_ace1977c7dd717787c1cc73ee96298bb4"><div class="ttname"><a href="../../d7/d8e/classNoeudAbstrait.html#ace1977c7dd717787c1cc73ee96298bb4">NoeudAbstrait::getImpossible</a></div><div class="ttdeci">virtual bool getImpossible()</div><div class="ttdoc">Obtenir rouge. </div><div class="ttdef"><b>Definition:</b> <a href="../../d8/d39/NoeudAbstrait_8cpp_source.html#l00756">NoeudAbstrait.cpp:756</a></div></div>
+<div class="ttc" id="classNoeudAbstrait_html_a62d73f67c3b33e2cb106630bd1736a58"><div class="ttname"><a href="../../d7/d8e/classNoeudAbstrait.html#a62d73f67c3b33e2cb106630bd1736a58">NoeudAbstrait::obtenirPositionRelative</a></div><div class="ttdeci">const glm::dvec3 &amp; obtenirPositionRelative() const </div><div class="ttdoc">Obtient la position relative du noeud. </div><div class="ttdef"><b>Definition:</b> <a href="../../d1/d0f/NoeudAbstrait_8h_source.html#l00439">NoeudAbstrait.h:439</a></div></div>
+<div class="ttc" id="classNoeudAbstrait_html_a0f39647390d357d8662a870f0c76242c"><div class="ttname"><a href="../../d7/d8e/classNoeudAbstrait.html#a0f39647390d357d8662a870f0c76242c">NoeudAbstrait::assignerSelection</a></div><div class="ttdeci">void assignerSelection(bool selectionne)</div><div class="ttdoc">ecrit l&#39;etat de la selection du noeud. </div><div class="ttdef"><b>Definition:</b> <a href="../../d1/d0f/NoeudAbstrait_8h_source.html#l00555">NoeudAbstrait.h:555</a></div></div>
+<div class="ttc" id="classNoeudAbstrait_html_a251d9d95922275f885ead608a3628b0f"><div class="ttname"><a href="../../d7/d8e/classNoeudAbstrait.html#a251d9d95922275f885ead608a3628b0f">NoeudAbstrait::boite_</a></div><div class="ttdeci">utilitaire::BoiteEnglobante boite_</div><div class="ttdoc">boite englobante </div><div class="ttdef"><b>Definition:</b> <a href="../../d1/d0f/NoeudAbstrait_8h_source.html#l00339">NoeudAbstrait.h:339</a></div></div>
+<div class="ttc" id="NoeudAbstrait_8h_html"><div class="ttname"><a href="../../d1/d0f/NoeudAbstrait_8h.html">NoeudAbstrait.h</a></div></div>
+<div class="ttc" id="classNoeudAbstrait_html_adc6ebe69894dbb682fdd0ecb1b6c11e9"><div class="ttname"><a href="../../d7/d8e/classNoeudAbstrait.html#adc6ebe69894dbb682fdd0ecb1b6c11e9">NoeudAbstrait::animer</a></div><div class="ttdeci">virtual void animer(float dt)</div><div class="ttdoc">Anime le noeud. </div><div class="ttdef"><b>Definition:</b> <a href="../../d8/d39/NoeudAbstrait_8cpp_source.html#l00503">NoeudAbstrait.cpp:503</a></div></div>
+<div class="ttc" id="classNoeudAbstrait_html_a3e8ca80ea7c752e4619e95346121a638"><div class="ttname"><a href="../../d7/d8e/classNoeudAbstrait.html#a3e8ca80ea7c752e4619e95346121a638">NoeudAbstrait::obtenirDernierNoeud</a></div><div class="ttdeci">NoeudAbstrait * obtenirDernierNoeud()</div><div class="ttdoc">Retourne le dernier noeud ajouter. </div><div class="ttdef"><b>Definition:</b> <a href="../../d8/d39/NoeudAbstrait_8cpp_source.html#l00233">NoeudAbstrait.cpp:233</a></div></div>
+<div class="ttc" id="classNoeudAbstrait_html_a0ab3f7ab838e8349113da5074abcdc3a"><div class="ttname"><a href="../../d7/d8e/classNoeudAbstrait.html#a0ab3f7ab838e8349113da5074abcdc3a">NoeudAbstrait::~NoeudAbstrait</a></div><div class="ttdeci">virtual ~NoeudAbstrait()</div><div class="ttdoc">Destructeur. </div><div class="ttdef"><b>Definition:</b> <a href="../../d8/d39/NoeudAbstrait_8cpp_source.html#l00055">NoeudAbstrait.cpp:55</a></div></div>
+<div class="ttc" id="classNoeudAbstrait_html_a4f942bd122fc3402537ecac737c5248a"><div class="ttname"><a href="../../d7/d8e/classNoeudAbstrait.html#a4f942bd122fc3402537ecac737c5248a">NoeudAbstrait::deselectionnerTout</a></div><div class="ttdeci">virtual void deselectionnerTout()</div><div class="ttdoc">Deselectionne tous les enfants de meme que le noeud. </div><div class="ttdef"><b>Definition:</b> <a href="../../d8/d39/NoeudAbstrait_8cpp_source.html#l00324">NoeudAbstrait.cpp:324</a></div></div>
+<div class="ttc" id="classNoeudAbstrait_html_a779da2cd1f1a28fb16292c867d564ed4"><div class="ttname"><a href="../../d7/d8e/classNoeudAbstrait.html#a779da2cd1f1a28fb16292c867d564ed4">NoeudAbstrait::debug_</a></div><div class="ttdeci">bool debug_</div><div class="ttdoc">Mode Debug de la bille ou du portail. </div><div class="ttdef"><b>Definition:</b> <a href="../../d1/d0f/NoeudAbstrait_8h_source.html#l00352">NoeudAbstrait.h:352</a></div></div>
+<div class="ttc" id="classSingletonGlobal_html_a948a8014de62bb59ef604e032b156844"><div class="ttname"><a href="../../d3/df4/classSingletonGlobal.html#a948a8014de62bb59ef604e032b156844">SingletonGlobal::obtenirInstance</a></div><div class="ttdeci">static SingletonGlobal * obtenirInstance()</div><div class="ttdoc">Obtient l&#39;instance unique de la classe. </div><div class="ttdef"><b>Definition:</b> <a href="../../d7/d9d/SingletonGlobal_8cpp_source.html#l00023">SingletonGlobal.cpp:23</a></div></div>
+<div class="ttc" id="classNoeudAbstrait_html_a40a5a2fc7d6ea502b7b2b3764efabf48"><div class="ttname"><a href="../../d7/d8e/classNoeudAbstrait.html#a40a5a2fc7d6ea502b7b2b3764efabf48">NoeudAbstrait::getColorShift</a></div><div class="ttdeci">virtual bool getColorShift()</div><div class="ttdoc">Obtenir couleur. </div><div class="ttdef"><b>Definition:</b> <a href="../../d8/d39/NoeudAbstrait_8cpp_source.html#l00691">NoeudAbstrait.cpp:691</a></div></div>
+<div class="ttc" id="classNoeudAbstrait_html_a74f5f940080ac20b6fc843e71e9427c7"><div class="ttname"><a href="../../d7/d8e/classNoeudAbstrait.html#a74f5f940080ac20b6fc843e71e9427c7">NoeudAbstrait::setTransparent</a></div><div class="ttdeci">virtual void setTransparent(bool transparent)</div><div class="ttdoc">Selectionner transparence. </div><div class="ttdef"><b>Definition:</b> <a href="../../d8/d39/NoeudAbstrait_8cpp_source.html#l00740">NoeudAbstrait.cpp:740</a></div></div>
+<div class="ttc" id="classSingletonGlobal_html_a9d00652dd22d04b05f9f016f77adde00"><div class="ttname"><a href="../../d3/df4/classSingletonGlobal.html#a9d00652dd22d04b05f9f016f77adde00">SingletonGlobal::obtenirAnimation</a></div><div class="ttdeci">bool obtenirAnimation()</div><div class="ttdef"><b>Definition:</b> <a href="../../d4/d65/SingletonGlobal_8h_source.html#l00066">SingletonGlobal.h:66</a></div></div>
+<div class="ttc" id="classNoeudAbstrait_html_ad53da47a60f4b4fbbd400234cbdcb06b"><div class="ttname"><a href="../../d7/d8e/classNoeudAbstrait.html#ad53da47a60f4b4fbbd400234cbdcb06b">NoeudAbstrait::type_</a></div><div class="ttdeci">std::string type_</div><div class="ttdoc">Type du noeud. </div><div class="ttdef"><b>Definition:</b> <a href="../../d1/d0f/NoeudAbstrait_8h_source.html#l00294">NoeudAbstrait.h:294</a></div></div>
+<div class="ttc" id="classNoeudAbstrait_html_a11e12e42b05a5327c92cd7fd1b7e5a24"><div class="ttname"><a href="../../d7/d8e/classNoeudAbstrait.html#a11e12e42b05a5327c92cd7fd1b7e5a24">NoeudAbstrait::assignerPositionRelative</a></div><div class="ttdeci">void assignerPositionRelative(const glm::dvec3 &amp;positionRelative)</div><div class="ttdoc">Assigne la position relative du noeud. </div><div class="ttdef"><b>Definition:</b> <a href="../../d1/d0f/NoeudAbstrait_8h_source.html#l00457">NoeudAbstrait.h:457</a></div></div>
+<div class="ttc" id="classNoeudAbstrait_html_af055f00a50379403db029bd4ce4983be"><div class="ttname"><a href="../../d7/d8e/classNoeudAbstrait.html#af055f00a50379403db029bd4ce4983be">NoeudAbstrait::animer_</a></div><div class="ttdeci">bool animer_</div><div class="ttdoc">Determine si on affiche ou non l&#39;objet. </div><div class="ttdef"><b>Definition:</b> <a href="../../d1/d0f/NoeudAbstrait_8h_source.html#l00355">NoeudAbstrait.h:355</a></div></div>
+<div class="ttc" id="classNoeudAbstrait_html_a83dee679ae86704207cc3b4cbed21800"><div class="ttname"><a href="../../d7/d8e/classNoeudAbstrait.html#a83dee679ae86704207cc3b4cbed21800">NoeudAbstrait::obtenirBoiteModele</a></div><div class="ttdeci">virtual void obtenirBoiteModele(glm::dvec3 &amp;v1, glm::dvec3 &amp;v2, glm::dvec3 &amp;v3, glm::dvec3 &amp;v4)</div><div class="ttdef"><b>Definition:</b> <a href="../../d8/d39/NoeudAbstrait_8cpp_source.html#l00653">NoeudAbstrait.cpp:653</a></div></div>
+<div class="ttc" id="classNoeudAbstrait_html_a7360664d066c779a1cd17d33088c696e"><div class="ttname"><a href="../../d7/d8e/classNoeudAbstrait.html#a7360664d066c779a1cd17d33088c696e">NoeudAbstrait::traiterCollisions</a></div><div class="ttdeci">virtual void traiterCollisions(aidecollision::DetailsCollision, NoeudAbstrait *bille, float facteurRebond=0.8)</div><div class="ttdoc">Pour le traitement logique des collisions. </div><div class="ttdef"><b>Definition:</b> <a href="../../d8/d39/NoeudAbstrait_8cpp_source.html#l00902">NoeudAbstrait.cpp:902</a></div></div>
+<div class="ttc" id="classNoeudAbstrait_html_aa2b57eeb848bc8cb48562788daf81d3e"><div class="ttname"><a href="../../d7/d8e/classNoeudAbstrait.html#aa2b57eeb848bc8cb48562788daf81d3e">NoeudAbstrait::modePolygones_</a></div><div class="ttdeci">GLenum modePolygones_</div><div class="ttdoc">Mode d&#39;affichage des polygones. </div><div class="ttdef"><b>Definition:</b> <a href="../../d1/d0f/NoeudAbstrait_8h_source.html#l00297">NoeudAbstrait.h:297</a></div></div>
+<div class="ttc" id="FacadeInterfaceNative_8cpp_html_a227f201168cb574e742384dac0ddcd76"><div class="ttname"><a href="../../d4/da4/FacadeInterfaceNative_8cpp.html#a227f201168cb574e742384dac0ddcd76">animer</a></div><div class="ttdeci">void __cdecl animer(double temps)</div><div class="ttdef"><b>Definition:</b> <a href="../../d4/da4/FacadeInterfaceNative_8cpp_source.html#l00177">FacadeInterfaceNative.cpp:177</a></div></div>
+<div class="ttc" id="classNoeudAbstrait_html_afb3243add657bec87f220effa0701c96"><div class="ttname"><a href="../../d7/d8e/classNoeudAbstrait.html#afb3243add657bec87f220effa0701c96">NoeudAbstrait::twin_</a></div><div class="ttdeci">NoeudAbstrait * twin_</div><div class="ttdoc">Si jumeau, autrement nullptr. </div><div class="ttdef"><b>Definition:</b> <a href="../../d1/d0f/NoeudAbstrait_8h_source.html#l00291">NoeudAbstrait.h:291</a></div></div>
+<div class="ttc" id="classVisiteurAbstrait_html"><div class="ttname"><a href="../../da/dd3/classVisiteurAbstrait.html">VisiteurAbstrait</a></div><div class="ttdoc">Interface du patron Visiteur. </div><div class="ttdef"><b>Definition:</b> <a href="../../d1/d1d/VisiteurAbstrait_8h_source.html#l00039">VisiteurAbstrait.h:39</a></div></div>
+<div class="ttc" id="classNoeudAbstrait_html"><div class="ttname"><a href="../../d7/d8e/classNoeudAbstrait.html">NoeudAbstrait</a></div><div class="ttdoc">Classe de base du patron composite utilisee pour creer l&#39;arbre de rendu. </div><div class="ttdef"><b>Definition:</b> <a href="../../d1/d0f/NoeudAbstrait_8h_source.html#l00055">NoeudAbstrait.h:55</a></div></div>
+<div class="ttc" id="classNoeudAbstrait_html_a55435ee83860c6a2101334ba67bbd9b6"><div class="ttname"><a href="../../d7/d8e/classNoeudAbstrait.html#a55435ee83860c6a2101334ba67bbd9b6">NoeudAbstrait::vider</a></div><div class="ttdeci">virtual void vider()</div><div class="ttdoc">Vide le noeud de ses enfants. </div><div class="ttdef"><b>Definition:</b> <a href="../../d8/d39/NoeudAbstrait_8cpp_source.html#l00091">NoeudAbstrait.cpp:91</a></div></div>
+<div class="ttc" id="classNoeudAbstrait_html_a6a7cdcf5adac5b95a0a87fd4005431ce"><div class="ttname"><a href="../../d7/d8e/classNoeudAbstrait.html#a6a7cdcf5adac5b95a0a87fd4005431ce">NoeudAbstrait::setTwin</a></div><div class="ttdeci">virtual void setTwin(NoeudAbstrait *twin)</div><div class="ttdoc">Ajouter jumeau. </div><div class="ttdef"><b>Definition:</b> <a href="../../d8/d39/NoeudAbstrait_8cpp_source.html#l00601">NoeudAbstrait.cpp:601</a></div></div>
+<div class="ttc" id="classNoeudAbstrait_html_a3c5571d0730d6a5ff7837f9d19ae5280"><div class="ttname"><a href="../../d7/d8e/classNoeudAbstrait.html#a3c5571d0730d6a5ff7837f9d19ae5280">NoeudAbstrait::assignerPortailDorigine</a></div><div class="ttdeci">void assignerPortailDorigine(NoeudAbstrait *portail)</div><div class="ttdoc">Assigner l&#39;attribut portailDorigine_ pour tenir compte du portail d&#39;ou on est apparu. </div><div class="ttdef"><b>Definition:</b> <a href="../../d8/d39/NoeudAbstrait_8cpp_source.html#l00937">NoeudAbstrait.cpp:937</a></div></div>
+<div class="ttc" id="classNoeudAbstrait_html_ae789271ea41032d717b8e4300be05de0"><div class="ttname"><a href="../../d7/d8e/classNoeudAbstrait.html#ae789271ea41032d717b8e4300be05de0">NoeudAbstrait::afficher</a></div><div class="ttdeci">virtual void afficher() const </div><div class="ttdoc">Affiche le noeud. </div><div class="ttdef"><b>Definition:</b> <a href="../../d8/d39/NoeudAbstrait_8cpp_source.html#l00418">NoeudAbstrait.cpp:418</a></div></div>
+<div class="ttc" id="classNoeudAbstrait_html_ac59068cb47bf47badf16e8e6c74ed05c"><div class="ttname"><a href="../../d7/d8e/classNoeudAbstrait.html#ac59068cb47bf47badf16e8e6c74ed05c">NoeudAbstrait::scale_</a></div><div class="ttdeci">glm::dvec3 scale_</div><div class="ttdoc">Rescale relatif du noeud. </div><div class="ttdef"><b>Definition:</b> <a href="../../d1/d0f/NoeudAbstrait_8h_source.html#l00303">NoeudAbstrait.h:303</a></div></div>
+<div class="ttc" id="classNoeudAbstrait_html_a726d9d0a524939f405aeeac3fbd06666"><div class="ttname"><a href="../../d7/d8e/classNoeudAbstrait.html#a726d9d0a524939f405aeeac3fbd06666">NoeudAbstrait::assignerModePolygones</a></div><div class="ttdeci">virtual void assignerModePolygones(GLenum modePolygones)</div><div class="ttdoc">Assigne le mode d&#39;affichage des polygones. </div><div class="ttdef"><b>Definition:</b> <a href="../../d8/d39/NoeudAbstrait_8cpp_source.html#l00384">NoeudAbstrait.cpp:384</a></div></div>
+<div class="ttc" id="classVisiteurAbstrait_html_a71d6f684528356584f9d2c25763411de"><div class="ttname"><a href="../../da/dd3/classVisiteurAbstrait.html#a71d6f684528356584f9d2c25763411de">VisiteurAbstrait::traiter</a></div><div class="ttdeci">virtual bool traiter(ArbreRenduINF2990 *arbre)</div><div class="ttdoc">Traiter une operation sur l&#39;arbre de rendu. </div><div class="ttdef"><b>Definition:</b> <a href="../../d1/d1d/VisiteurAbstrait_8h_source.html#l00050">VisiteurAbstrait.h:50</a></div></div>
+<div class="ttc" id="classNoeudAbstrait_html_afb47e14bf16a33e071e48da8ecbc0af1"><div class="ttname"><a href="../../d7/d8e/classNoeudAbstrait.html#afb47e14bf16a33e071e48da8ecbc0af1">NoeudAbstrait::appliquerAfficher</a></div><div class="ttdeci">virtual void appliquerAfficher() const </div><div class="ttdoc">Appliquer les modificateurs OpenGL sur les objets. </div><div class="ttdef"><b>Definition:</b> <a href="../../d8/d39/NoeudAbstrait_8cpp_source.html#l00447">NoeudAbstrait.cpp:447</a></div></div>
+<div class="ttc" id="classNoeudAbstrait_html_a8fb7a3313ce4d361ef7ec8e45ba8add5"><div class="ttname"><a href="../../d7/d8e/classNoeudAbstrait.html#a8fb7a3313ce4d361ef7ec8e45ba8add5">NoeudAbstrait::estSelectionne</a></div><div class="ttdeci">bool estSelectionne() const </div><div class="ttdoc">Verifie si le noeud est selectionne. </div><div class="ttdef"><b>Definition:</b> <a href="../../d1/d0f/NoeudAbstrait_8h_source.html#l00620">NoeudAbstrait.h:620</a></div></div>
+<div class="ttc" id="classNoeudAbstrait_html_a53b5c399182a73215dc4d300a14c707a"><div class="ttname"><a href="../../d7/d8e/classNoeudAbstrait.html#a53b5c399182a73215dc4d300a14c707a">NoeudAbstrait::pointEstDansBoite</a></div><div class="ttdeci">virtual bool pointEstDansBoite(glm::dvec3 point)</div><div class="ttdoc">Cette fonction teste si un point se trouve dans la boîte englobante. </div><div class="ttdef"><b>Definition:</b> <a href="../../d8/d39/NoeudAbstrait_8cpp_source.html#l00788">NoeudAbstrait.cpp:788</a></div></div>
+<div class="ttc" id="classNoeudAbstrait_html_a2516eef94f98d4951baff6fd45020725"><div class="ttname"><a href="../../d7/d8e/classNoeudAbstrait.html#a2516eef94f98d4951baff6fd45020725">NoeudAbstrait::inverserSelection</a></div><div class="ttdeci">virtual void inverserSelection()</div><div class="ttdoc">Changer la selection du noeud. </div><div class="ttdef"><b>Definition:</b> <a href="../../d8/d39/NoeudAbstrait_8cpp_source.html#l00288">NoeudAbstrait.cpp:288</a></div></div>
+<div class="ttc" id="classNoeudAbstrait_html_a6b4a6eb33872fe1d3d73c0c1fa70ccd8"><div class="ttname"><a href="../../d7/d8e/classNoeudAbstrait.html#a6b4a6eb33872fe1d3d73c0c1fa70ccd8">NoeudAbstrait::accepterVisiteur</a></div><div class="ttdeci">virtual bool accepterVisiteur(VisiteurAbstrait *vis)</div><div class="ttdoc">Accepter un visiteur. </div><div class="ttdef"><b>Definition:</b> <a href="../../d8/d39/NoeudAbstrait_8cpp_source.html#l00549">NoeudAbstrait.cpp:549</a></div></div>
+<div class="ttc" id="classNoeudAbstrait_html_abc3dc8e24578214b7c6081be3246645e"><div class="ttname"><a href="../../d7/d8e/classNoeudAbstrait.html#abc3dc8e24578214b7c6081be3246645e">NoeudAbstrait::modele_</a></div><div class="ttdeci">modele::Modele3D const * modele_</div><div class="ttdoc">Modele 3D correspondant a ce noeud. </div><div class="ttdef"><b>Definition:</b> <a href="../../d1/d0f/NoeudAbstrait_8h_source.html#l00327">NoeudAbstrait.h:327</a></div></div>
+<div class="ttc" id="classNoeudBille_html"><div class="ttname"><a href="../../dc/d7e/classNoeudBille.html">NoeudBille</a></div><div class="ttdoc">Classe qui represente une bille. </div><div class="ttdef"><b>Definition:</b> <a href="../../d7/d91/NoeudBille_8h_source.html#l00023">NoeudBille.h:23</a></div></div>
+<div class="ttc" id="classNoeudAbstrait_html_ad854800087fd6c13f1a63589caefb41d"><div class="ttname"><a href="../../d7/d8e/classNoeudAbstrait.html#ad854800087fd6c13f1a63589caefb41d">NoeudAbstrait::calculerProfondeur</a></div><div class="ttdeci">virtual unsigned int calculerProfondeur() const </div><div class="ttdoc">Calcule la profondeur de l&#39;arbre sous le noeud courant. </div><div class="ttdef"><b>Definition:</b> <a href="../../d8/d39/NoeudAbstrait_8cpp_source.html#l00073">NoeudAbstrait.cpp:73</a></div></div>
+<div class="ttc" id="classJoueurVirtuel_html_a26f833aca6840d74361cdad97a96de1f"><div class="ttname"><a href="../../d1/d90/classJoueurVirtuel.html#a26f833aca6840d74361cdad97a96de1f">JoueurVirtuel::traiter</a></div><div class="ttdeci">virtual bool traiter(NoeudAbstrait *noeud)</div><div class="ttdoc">Traitement des noeuds abstraits. </div><div class="ttdef"><b>Definition:</b> <a href="../../d2/dc2/JoueurVirtuel_8h_source.html#l00048">JoueurVirtuel.h:48</a></div></div>
+<div class="ttc" id="classNoeudAbstrait_html_ad5a99959e905fc2d9f0fef16a02546a2"><div class="ttname"><a href="../../d7/d8e/classNoeudAbstrait.html#ad5a99959e905fc2d9f0fef16a02546a2">NoeudAbstrait::obtenirNombreEnfants</a></div><div class="ttdeci">virtual unsigned int obtenirNombreEnfants() const </div><div class="ttdoc">Obtient le nombre d&#39;enfants du noeud. </div><div class="ttdef"><b>Definition:</b> <a href="../../d8/d39/NoeudAbstrait_8cpp_source.html#l00268">NoeudAbstrait.cpp:268</a></div></div>
+<div class="ttc" id="classNoeudAbstrait_html_a7b2d2410f947987765a9ef41fedcc703"><div class="ttname"><a href="../../d7/d8e/classNoeudAbstrait.html#a7b2d2410f947987765a9ef41fedcc703">NoeudAbstrait::selectionne_</a></div><div class="ttdeci">bool selectionne_</div><div class="ttdoc">Selection du noeud. </div><div class="ttdef"><b>Definition:</b> <a href="../../d1/d0f/NoeudAbstrait_8h_source.html#l00312">NoeudAbstrait.h:312</a></div></div>
+<div class="ttc" id="classNoeudAbstrait_html_ae776dfec9bb6c0680981a468002435fe"><div class="ttname"><a href="../../d7/d8e/classNoeudAbstrait.html#ae776dfec9bb6c0680981a468002435fe">NoeudAbstrait::setSpotLight</a></div><div class="ttdeci">virtual void setSpotLight(bool debug)</div><div class="ttdoc">Activer ou desactiver le mode spotLight. </div><div class="ttdef"><b>Definition:</b> <a href="../../d8/d39/NoeudAbstrait_8cpp_source.html#l00836">NoeudAbstrait.cpp:836</a></div></div>
+<div class="ttc" id="classNoeudAbstrait_html_a7469fc80f2e1031ed3fc301b8a06eb34"><div class="ttname"><a href="../../d7/d8e/classNoeudAbstrait.html#a7469fc80f2e1031ed3fc301b8a06eb34">NoeudAbstrait::accepterJoueurVirtuel</a></div><div class="ttdeci">virtual bool accepterJoueurVirtuel(JoueurVirtuel *joueur)</div><div class="ttdoc">Accepter un joueur virtuel pour le controle. </div><div class="ttdef"><b>Definition:</b> <a href="../../d8/d39/NoeudAbstrait_8cpp_source.html#l00568">NoeudAbstrait.cpp:568</a></div></div>
+<div class="ttc" id="classNoeudAbstrait_html_a2829edeb2bc03d270ba19c52a47c34d1"><div class="ttname"><a href="../../d7/d8e/classNoeudAbstrait.html#a2829edeb2bc03d270ba19c52a47c34d1">NoeudAbstrait::colorShift_</a></div><div class="ttdeci">bool colorShift_</div><div class="ttdoc">Couleur du noeud. </div><div class="ttdef"><b>Definition:</b> <a href="../../d1/d0f/NoeudAbstrait_8h_source.html#l00342">NoeudAbstrait.h:342</a></div></div>
+<div class="ttc" id="classNoeudAbstrait_html_aadfb0dcaa9b3bb2d36e56eb6e64e068c"><div class="ttname"><a href="../../d7/d8e/classNoeudAbstrait.html#aadfb0dcaa9b3bb2d36e56eb6e64e068c">NoeudAbstrait::obtenirAnimer</a></div><div class="ttdeci">virtual bool obtenirAnimer()</div><div class="ttdoc">Retourne si le noeud est animer. </div><div class="ttdef"><b>Definition:</b> <a href="../../d8/d39/NoeudAbstrait_8cpp_source.html#l00531">NoeudAbstrait.cpp:531</a></div></div>
+<div class="ttc" id="classNoeudAbstrait_html_a330df455c8b08440d3c8e64d0a480391"><div class="ttname"><a href="../../d7/d8e/classNoeudAbstrait.html#a330df455c8b08440d3c8e64d0a480391">NoeudAbstrait::afficherConcret</a></div><div class="ttdeci">virtual void afficherConcret() const </div><div class="ttdoc">Affiche le noeud de maniere concrete. </div><div class="ttdef"><b>Definition:</b> <a href="../../d8/d39/NoeudAbstrait_8cpp_source.html#l00483">NoeudAbstrait.cpp:483</a></div></div>
+<div class="ttc" id="classNoeudAbstrait_html_a2df7c53ab456cc88bce73f7eb913e3e6"><div class="ttname"><a href="../../d7/d8e/classNoeudAbstrait.html#a2df7c53ab456cc88bce73f7eb913e3e6">NoeudAbstrait::obtenirType</a></div><div class="ttdeci">const std::string &amp; obtenirType() const </div><div class="ttdoc">Obtient le type du noeud. </div><div class="ttdef"><b>Definition:</b> <a href="../../d1/d0f/NoeudAbstrait_8h_source.html#l00504">NoeudAbstrait.h:504</a></div></div>
+<div class="ttc" id="classNoeudAbstrait_html_a2150f91703288899540f007a2fe2aff5"><div class="ttname"><a href="../../d7/d8e/classNoeudAbstrait.html#a2150f91703288899540f007a2fe2aff5">NoeudAbstrait::spotLight_</a></div><div class="ttdeci">bool spotLight_</div><div class="ttdoc">Mode SpotLight de la bille. </div><div class="ttdef"><b>Definition:</b> <a href="../../d1/d0f/NoeudAbstrait_8h_source.html#l00358">NoeudAbstrait.h:358</a></div></div>
+<div class="ttc" id="classNoeudAbstrait_html_a13a97383c2081b405fc2e0d97cff80df"><div class="ttname"><a href="../../d7/d8e/classNoeudAbstrait.html#a13a97383c2081b405fc2e0d97cff80df">NoeudAbstrait::changerModePolygones</a></div><div class="ttdeci">virtual void changerModePolygones(bool estForce)</div><div class="ttdoc">Change le mode d&#39;affichage des polygones. </div><div class="ttdef"><b>Definition:</b> <a href="../../d8/d39/NoeudAbstrait_8cpp_source.html#l00362">NoeudAbstrait.cpp:362</a></div></div>
+<div class="ttc" id="classNoeudAbstrait_html_a20d65e5d46efcb6e6a1c13cc8b8b5eb8"><div class="ttname"><a href="../../d7/d8e/classNoeudAbstrait.html#a20d65e5d46efcb6e6a1c13cc8b8b5eb8">NoeudAbstrait::obtenirModele</a></div><div class="ttdeci">modele::Modele3D const * obtenirModele() const </div><div class="ttdoc">Obtenir modele. </div><div class="ttdef"><b>Definition:</b> <a href="../../d8/d39/NoeudAbstrait_8cpp_source.html#l00274">NoeudAbstrait.cpp:274</a></div></div>
+<div class="ttc" id="classNoeudAbstrait_html_aeda0df98faf404765d985fcde60fb924"><div class="ttname"><a href="../../d7/d8e/classNoeudAbstrait.html#aeda0df98faf404765d985fcde60fb924">NoeudAbstrait::chercher</a></div><div class="ttdeci">virtual const NoeudAbstrait * chercher(const std::string &amp;typeNoeud) const </div><div class="ttdoc">Cherche un noeud par le type (sur un noeud constant). </div><div class="ttdef"><b>Definition:</b> <a href="../../d8/d39/NoeudAbstrait_8cpp_source.html#l00131">NoeudAbstrait.cpp:131</a></div></div>
+<div class="ttc" id="classNoeudAbstrait_html_a1d1340ee36824e0c6013e65a1306d8f3"><div class="ttname"><a href="../../d7/d8e/classNoeudAbstrait.html#a1d1340ee36824e0c6013e65a1306d8f3">NoeudAbstrait::NoeudAbstrait</a></div><div class="ttdeci">NoeudAbstrait(const std::string &amp;type=std::string{&quot;&quot;})</div><div class="ttdoc">Constructeur. </div><div class="ttdef"><b>Definition:</b> <a href="../../d8/d39/NoeudAbstrait_8cpp_source.html#l00027">NoeudAbstrait.cpp:27</a></div></div>
+<div class="ttc" id="classNoeudAbstrait_html_a7ffd14ef424731ff536ad37c028fcd3f"><div class="ttname"><a href="../../d7/d8e/classNoeudAbstrait.html#a7ffd14ef424731ff536ad37c028fcd3f">NoeudAbstrait::setColorShift</a></div><div class="ttdeci">virtual void setColorShift(bool colorShift)</div><div class="ttdoc">Selectionner couleur. </div><div class="ttdef"><b>Definition:</b> <a href="../../d8/d39/NoeudAbstrait_8cpp_source.html#l00708">NoeudAbstrait.cpp:708</a></div></div>
+<div class="ttc" id="classNoeudAbstrait_html_af75d7bda7885d6d9c581625569d78dc8"><div class="ttname"><a href="../../d7/d8e/classNoeudAbstrait.html#af75d7bda7885d6d9c581625569d78dc8">NoeudAbstrait::assignerVitesse</a></div><div class="ttdeci">void assignerVitesse(glm::dvec3 nouvelleVitesse)</div><div class="ttdoc">Assigne une vitesse au noeud. </div><div class="ttdef"><b>Definition:</b> <a href="../../d1/d0f/NoeudAbstrait_8h_source.html#l00489">NoeudAbstrait.h:489</a></div></div>
+<div class="ttc" id="classNoeudAbstrait_html_a31dd45110fcb977a956a32b918f71819"><div class="ttname"><a href="../../d7/d8e/classNoeudAbstrait.html#a31dd45110fcb977a956a32b918f71819">NoeudAbstrait::ajouter</a></div><div class="ttdeci">virtual bool ajouter(NoeudAbstrait *enfant)</div><div class="ttdoc">Ajoute un noeud enfant. </div><div class="ttdef"><b>Definition:</b> <a href="../../d8/d39/NoeudAbstrait_8cpp_source.html#l00218">NoeudAbstrait.cpp:218</a></div></div>
+<div class="ttc" id="classNoeudAbstrait_html_aec2caee9f41157bf6b82f0838fb84aff"><div class="ttname"><a href="../../d7/d8e/classNoeudAbstrait.html#aec2caee9f41157bf6b82f0838fb84aff">NoeudAbstrait::transparent_</a></div><div class="ttdeci">bool transparent_</div><div class="ttdoc">Transparence. </div><div class="ttdef"><b>Definition:</b> <a href="../../d1/d0f/NoeudAbstrait_8h_source.html#l00345">NoeudAbstrait.h:345</a></div></div>
+<div class="ttc" id="NoeudBille_8h_html"><div class="ttname"><a href="../../d7/d91/NoeudBille_8h.html">NoeudBille.h</a></div></div>
+<div class="ttc" id="classNoeudAbstrait_html_a0ade8efd83885537c2185197eb304adb"><div class="ttname"><a href="../../d7/d8e/classNoeudAbstrait.html#a0ade8efd83885537c2185197eb304adb">NoeudAbstrait::compteurNoeuds_</a></div><div class="ttdeci">static unsigned int compteurNoeuds_</div><div class="ttdoc">Compteur d&#39;instances;. </div><div class="ttdef"><b>Definition:</b> <a href="../../d1/d0f/NoeudAbstrait_8h_source.html#l00333">NoeudAbstrait.h:333</a></div></div>
+<div class="ttc" id="classNoeudAbstrait_html_ae8a50095413ac131cd6d07a384a9ff5d"><div class="ttname"><a href="../../d7/d8e/classNoeudAbstrait.html#ae8a50095413ac131cd6d07a384a9ff5d">NoeudAbstrait::positionRelative_</a></div><div class="ttdeci">glm::dvec3 positionRelative_</div><div class="ttdoc">Position relative du noeud. </div><div class="ttdef"><b>Definition:</b> <a href="../../d1/d0f/NoeudAbstrait_8h_source.html#l00300">NoeudAbstrait.h:300</a></div></div>
+<div class="ttc" id="classNoeudAbstrait_html_aa546cf629106318a2ee2dcea54b39330"><div class="ttname"><a href="../../d7/d8e/classNoeudAbstrait.html#aa546cf629106318a2ee2dcea54b39330">NoeudAbstrait::getEnfant</a></div><div class="ttdeci">virtual NoeudAbstrait * getEnfant(int position)</div><div class="ttdoc">Obtenir les enfants du noeud si il y a lieu. </div><div class="ttdef"><b>Definition:</b> <a href="../../d8/d39/NoeudAbstrait_8cpp_source.html#l00251">NoeudAbstrait.cpp:251</a></div></div>
+<div class="ttc" id="classNoeudAbstrait_html_a2c842e7bdd91e9fdcfa390f7afe84800"><div class="ttname"><a href="../../d7/d8e/classNoeudAbstrait.html#a2c842e7bdd91e9fdcfa390f7afe84800">NoeudAbstrait::portailDorigine_</a></div><div class="ttdeci">NoeudAbstrait * portailDorigine_</div><div class="ttdoc">Utilise pour tenir compte du fait qu&#39;on est apparu par un portail. </div><div class="ttdef"><b>Definition:</b> <a href="../../d1/d0f/NoeudAbstrait_8h_source.html#l00373">NoeudAbstrait.h:373</a></div></div>
+<div class="ttc" id="classNoeudAbstrait_html_a601addb1081da55203024180ceb0c22c"><div class="ttname"><a href="../../d7/d8e/classNoeudAbstrait.html#a601addb1081da55203024180ceb0c22c">NoeudAbstrait::setImpossible</a></div><div class="ttdeci">virtual void setImpossible(bool impossible)</div><div class="ttdoc">Selectionner rouge. </div><div class="ttdef"><b>Definition:</b> <a href="../../d8/d39/NoeudAbstrait_8cpp_source.html#l00773">NoeudAbstrait.cpp:773</a></div></div>
+<div class="ttc" id="classNoeudAbstrait_html_a67859b91d7ce98240b8da2e487171f1c"><div class="ttname"><a href="../../d7/d8e/classNoeudAbstrait.html#a67859b91d7ce98240b8da2e487171f1c">NoeudAbstrait::impossible_</a></div><div class="ttdeci">bool impossible_</div><div class="ttdoc">Impossibilite de position. </div><div class="ttdef"><b>Definition:</b> <a href="../../d1/d0f/NoeudAbstrait_8h_source.html#l00348">NoeudAbstrait.h:348</a></div></div>
+<div class="ttc" id="classJoueurVirtuel_html"><div class="ttname"><a href="../../d1/d90/classJoueurVirtuel.html">JoueurVirtuel</a></div><div class="ttdoc">Cette classe est issu du patron Visiteur. Elle représente le concept d&#39;intelligence artificielle pour ...</div><div class="ttdef"><b>Definition:</b> <a href="../../d2/dc2/JoueurVirtuel_8h_source.html#l00034">JoueurVirtuel.h:34</a></div></div>
+<div class="ttc" id="classNoeudAbstrait_html_ae787f108da33c57a01164f8df31cd986"><div class="ttname"><a href="../../d7/d8e/classNoeudAbstrait.html#ae787f108da33c57a01164f8df31cd986">NoeudAbstrait::rotation_</a></div><div class="ttdeci">glm::dvec3 rotation_</div><div class="ttdoc">Rotation relative du noeud. </div><div class="ttdef"><b>Definition:</b> <a href="../../d1/d0f/NoeudAbstrait_8h_source.html#l00306">NoeudAbstrait.h:306</a></div></div>
+</div><!-- fragment --></div><!-- contents -->
+</div><!-- doc-content -->
+<!-- start footer part -->
+<div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
+  <ul>
+    <li class="navelem"><a class="el" href="../../dir_937900b87e0c7a5fa01190c395fb83f7.html">Sources</a></li><li class="navelem"><a class="el" href="../../dir_5638be7ced97c879b21b23536e800e77.html">DLL</a></li><li class="navelem"><a class="el" href="../../dir_62d639a286ecc255a3a5ac9c06fd99c9.html">Arbre</a></li><li class="navelem"><a class="el" href="../../dir_e82573f31c5b178adacdeab0db63caa9.html">Noeuds</a></li><li class="navelem"><a class="el" href="../../d8/d39/NoeudAbstrait_8cpp.html">NoeudAbstrait.cpp</a></li>
+    <li class="footer">GÃ©nÃ©rÃ© le Lundi 23 Mars 2015 15:59:28 pour Pain Ball par
+    <a href="http://www.doxygen.org/index.html">
+    <img class="footer" src="../../doxygen.png" alt="doxygen"/></a> 1.8.9.1 </li>
+  </ul>
+</div>
+</body>
+</html>

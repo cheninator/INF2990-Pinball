@@ -1,0 +1,227 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=9"/>
+<meta name="generator" content="Doxygen 1.8.9.1"/>
+<title>Pain Ball:  Fichier source de Sources/DLL/Arbre/Noeuds/NoeudCible.cpp</title>
+<link href="../../tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="../../jquery.js"></script>
+<script type="text/javascript" src="../../dynsections.js"></script>
+<link href="../../navtree.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="../../resize.js"></script>
+<script type="text/javascript" src="../../navtreedata.js"></script>
+<script type="text/javascript" src="../../navtree.js"></script>
+<script type="text/javascript">
+  $(document).ready(initResizable);
+  $(window).load(resizeHeight);
+</script>
+<link href="../../search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="../../search/searchdata.js"></script>
+<script type="text/javascript" src="../../search/search.js"></script>
+<script type="text/javascript">
+  $(document).ready(function() { init_search(); });
+</script>
+<link href="../../doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr style="height: 56px;">
+  <td id="projectlogo"><img alt="Logo" src="../../handy.jpg"/></td>
+  <td style="padding-left: 0.5em;">
+   <div id="projectname">Pain Ball
+   &#160;<span id="projectnumber">Livrable 2</span>
+   </div>
+   <div id="projectbrief">by The Ballers</div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- Généré par Doxygen 1.8.9.1 -->
+<script type="text/javascript">
+var searchBox = new SearchBox("searchBox", "../../search",false,'Recherche');
+</script>
+  <div id="navrow1" class="tabs">
+    <ul class="tablist">
+      <li><a href="../../index.html"><span>Page&#160;principale</span></a></li>
+      <li><a href="../../modules.html"><span>Modules</span></a></li>
+      <li><a href="../../namespaces.html"><span>Espaces&#160;de&#160;nommage</span></a></li>
+      <li><a href="../../annotated.html"><span>Classes</span></a></li>
+      <li class="current"><a href="../../files.html"><span>Fichiers</span></a></li>
+      <li>
+        <div id="MSearchBox" class="MSearchBoxInactive">
+        <span class="left">
+          <img id="MSearchSelect" src="../../search/mag_sel.png"
+               onmouseover="return searchBox.OnSearchSelectShow()"
+               onmouseout="return searchBox.OnSearchSelectHide()"
+               alt=""/>
+          <input type="text" id="MSearchField" value="Recherche" accesskey="S"
+               onfocus="searchBox.OnSearchFieldFocus(true)" 
+               onblur="searchBox.OnSearchFieldFocus(false)" 
+               onkeyup="searchBox.OnSearchFieldChange(event)"/>
+          </span><span class="right">
+            <a id="MSearchClose" href="javascript:searchBox.CloseResultsWindow()"><img id="MSearchCloseImg" border="0" src="../../search/close.png" alt=""/></a>
+          </span>
+        </div>
+      </li>
+    </ul>
+  </div>
+  <div id="navrow2" class="tabs2">
+    <ul class="tablist">
+      <li><a href="../../files.html"><span>Liste&#160;des&#160;fichiers</span></a></li>
+      <li><a href="../../globals.html"><span>Membres&#160;de&#160;fichier</span></a></li>
+    </ul>
+  </div>
+</div><!-- top -->
+<div id="side-nav" class="ui-resizable side-nav-resizable">
+  <div id="nav-tree">
+    <div id="nav-tree-contents">
+      <div id="nav-sync" class="sync"></div>
+    </div>
+  </div>
+  <div id="splitbar" style="-moz-user-select:none;" 
+       class="ui-resizable-handle">
+  </div>
+</div>
+<script type="text/javascript">
+$(document).ready(function(){initNavTree('dd/d9c/NoeudCible_8cpp_source.html','../../');});
+</script>
+<div id="doc-content">
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<iframe src="javascript:void(0)" frameborder="0" 
+        name="MSearchResults" id="MSearchResults">
+</iframe>
+</div>
+
+<div class="header">
+  <div class="headertitle">
+<div class="title">NoeudCible.cpp</div>  </div>
+</div><!--header-->
+<div class="contents">
+<a href="../../dd/d9c/NoeudCible_8cpp.html">Aller à la documentation de ce fichier.</a><div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;</div>
+<div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="../../d2/d75/NoeudCible_8h.html">NoeudCible.h</a>&quot;</span></div>
+<div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;<span class="preprocessor">#include &quot;Utilitaire.h&quot;</span></div>
+<div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;<span class="preprocessor">#include &quot;../../Global/SingletonGlobal.h&quot;</span></div>
+<div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;</div>
+<div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;<span class="preprocessor">#include &lt;windows.h&gt;</span></div>
+<div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;<span class="preprocessor">#include &lt;GL/gl.h&gt;</span></div>
+<div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;<span class="preprocessor">#include &lt;cmath&gt;</span></div>
+<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;<span class="preprocessor">#include &lt;iostream&gt;</span></div>
+<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;</div>
+<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;<span class="preprocessor">#include &quot;Modele3D.h&quot;</span></div>
+<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;<span class="preprocessor">#include &quot;OpenGL_Storage/ModeleStorage_Liste.h&quot;</span></div>
+<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;</div>
+<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;</div>
+<div class="line"><a name="l00035"></a><span class="lineno"><a class="line" href="../../df/d1c/classNoeudCible.html#ad9c1b4f6cfbb2ebd97084ff84231dab2">   35</a></span>&#160;<a class="code" href="../../df/d1c/classNoeudCible.html#ad9c1b4f6cfbb2ebd97084ff84231dab2">NoeudCible::NoeudCible</a>(<span class="keyword">const</span> std::string&amp; typeNoeud)</div>
+<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;    : <a class="code" href="../../d4/d1e/classNoeudComposite.html">NoeudComposite</a>{ typeNoeud }</div>
+<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;{</div>
+<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;    </div>
+<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;}</div>
+<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;</div>
+<div class="line"><a name="l00050"></a><span class="lineno"><a class="line" href="../../df/d1c/classNoeudCible.html#a33faea6d890ed692b78869f1148bc85a">   50</a></span>&#160;<a class="code" href="../../df/d1c/classNoeudCible.html#a33faea6d890ed692b78869f1148bc85a">NoeudCible::~NoeudCible</a>()</div>
+<div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;{</div>
+<div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;</div>
+<div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;}</div>
+<div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;</div>
+<div class="line"><a name="l00064"></a><span class="lineno"><a class="line" href="../../df/d1c/classNoeudCible.html#a09e606d9babce09c5c587ee52455db5a">   64</a></span>&#160;<span class="keywordtype">void</span> <a class="code" href="../../df/d1c/classNoeudCible.html#a09e606d9babce09c5c587ee52455db5a">NoeudCible::afficherConcret</a>()<span class="keyword"> const</span></div>
+<div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;<span class="keyword"></span>{</div>
+<div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160;    <a class="code" href="../../d4/d1e/classNoeudComposite.html#ad440d00734a92e1bd99cdee2ac62bb68">NoeudComposite::afficherConcret</a>();</div>
+<div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160;    <span class="comment">// Sauvegarde de la matrice.</span></div>
+<div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160;    glPushMatrix();</div>
+<div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160;    glPushAttrib(GL_ALL_ATTRIB_BITS);</div>
+<div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160;    <a class="code" href="../../d7/d8e/classNoeudAbstrait.html#afb47e14bf16a33e071e48da8ecbc0af1">NoeudAbstrait::appliquerAfficher</a>();</div>
+<div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160;    <a class="code" href="../../d7/d8e/classNoeudAbstrait.html#ae8a66829b09228bb7091481234abb672">liste_</a>-&gt;dessiner();</div>
+<div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160;    glPopAttrib();</div>
+<div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160;    glPopMatrix();</div>
+<div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160;    <span class="comment">// Restauration de la matrice.</span></div>
+<div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160;}</div>
+<div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160;</div>
+<div class="line"><a name="l00089"></a><span class="lineno"><a class="line" href="../../df/d1c/classNoeudCible.html#ab65fc6ccdbfc4ce882d40d510b80b360">   89</a></span>&#160;<span class="keywordtype">void</span> <a class="code" href="../../df/d1c/classNoeudCible.html#ab65fc6ccdbfc4ce882d40d510b80b360">NoeudCible::animer</a>(<span class="keywordtype">float</span> temps)</div>
+<div class="line"><a name="l00090"></a><span class="lineno">   90</span>&#160;{</div>
+<div class="line"><a name="l00091"></a><span class="lineno">   91</span>&#160;    <a class="code" href="../../d4/d1e/classNoeudComposite.html#a57f31e1a0fd79628d04651001014fd41">NoeudComposite::animer</a>(temps);</div>
+<div class="line"><a name="l00092"></a><span class="lineno">   92</span>&#160;    <span class="keywordflow">if</span> (!<a class="code" href="../../d7/d8e/classNoeudAbstrait.html#af055f00a50379403db029bd4ce4983be">animer_</a>)</div>
+<div class="line"><a name="l00093"></a><span class="lineno">   93</span>&#160;        <span class="keywordflow">return</span>;</div>
+<div class="line"><a name="l00094"></a><span class="lineno">   94</span>&#160;    <span class="comment">//positionRelative_.z = (boite_.coinMax.y - boite_.coinMin.y) / 2.0;</span></div>
+<div class="line"><a name="l00095"></a><span class="lineno">   95</span>&#160;    <a class="code" href="../../d7/d8e/classNoeudAbstrait.html#ae787f108da33c57a01164f8df31cd986">rotation_</a>.x += temps * <a class="code" href="../../db/d8e/AnimationNoeudsDefine_8h.html#a1de04a8b5c94aaadfc61ffaaf95db7e3">VITESSE_NOEUD_CIBLE</a>;</div>
+<div class="line"><a name="l00096"></a><span class="lineno">   96</span>&#160;    <span class="comment">// Pour ne pas overflow le double un jour</span></div>
+<div class="line"><a name="l00097"></a><span class="lineno">   97</span>&#160;    <span class="keywordflow">if</span> (<a class="code" href="../../d7/d8e/classNoeudAbstrait.html#ae787f108da33c57a01164f8df31cd986">rotation_</a>.x &gt; 360)</div>
+<div class="line"><a name="l00098"></a><span class="lineno">   98</span>&#160;        <a class="code" href="../../d7/d8e/classNoeudAbstrait.html#ae787f108da33c57a01164f8df31cd986">rotation_</a>.x = <a class="code" href="../../d7/d8e/classNoeudAbstrait.html#ae787f108da33c57a01164f8df31cd986">rotation_</a>.x - 360;</div>
+<div class="line"><a name="l00099"></a><span class="lineno">   99</span>&#160;}</div>
+<div class="line"><a name="l00100"></a><span class="lineno">  100</span>&#160;</div>
+<div class="line"><a name="l00110"></a><span class="lineno"><a class="line" href="../../df/d1c/classNoeudCible.html#a756c2104efbbf1fdd4489881e9788e4e">  110</a></span>&#160;<span class="keywordtype">bool</span> <a class="code" href="../../df/d1c/classNoeudCible.html#a756c2104efbbf1fdd4489881e9788e4e">NoeudCible::accepterVisiteur</a>(<a class="code" href="../../da/dd3/classVisiteurAbstrait.html">VisiteurAbstrait</a>* vis)</div>
+<div class="line"><a name="l00111"></a><span class="lineno">  111</span>&#160;{</div>
+<div class="line"><a name="l00112"></a><span class="lineno">  112</span>&#160;    <span class="keywordtype">bool</span> reussi = <span class="keyword">false</span>;</div>
+<div class="line"><a name="l00113"></a><span class="lineno">  113</span>&#160;</div>
+<div class="line"><a name="l00114"></a><span class="lineno">  114</span>&#160;    <span class="keywordflow">if</span> (vis-&gt;<a class="code" href="../../da/dd3/classVisiteurAbstrait.html#a71d6f684528356584f9d2c25763411de">traiter</a>(<span class="keyword">this</span>))</div>
+<div class="line"><a name="l00115"></a><span class="lineno">  115</span>&#160;        reussi = <span class="keyword">true</span>;</div>
+<div class="line"><a name="l00116"></a><span class="lineno">  116</span>&#160;</div>
+<div class="line"><a name="l00117"></a><span class="lineno">  117</span>&#160;    <span class="keywordflow">return</span> reussi;</div>
+<div class="line"><a name="l00118"></a><span class="lineno">  118</span>&#160;}</div>
+<div class="line"><a name="l00119"></a><span class="lineno">  119</span>&#160;</div>
+<div class="line"><a name="l00131"></a><span class="lineno"><a class="line" href="../../df/d1c/classNoeudCible.html#a33685d44275ab7672d38be2b4c32a740">  131</a></span>&#160;<span class="keywordtype">void</span> <a class="code" href="../../df/d1c/classNoeudCible.html#a33685d44275ab7672d38be2b4c32a740">NoeudCible::traiterCollisions</a>(aidecollision::DetailsCollision details, <a class="code" href="../../d7/d8e/classNoeudAbstrait.html">NoeudAbstrait</a>* bille, <span class="keywordtype">float</span> facteurRebond)</div>
+<div class="line"><a name="l00132"></a><span class="lineno">  132</span>&#160;{</div>
+<div class="line"><a name="l00133"></a><span class="lineno">  133</span>&#160;    <a class="code" href="../../d7/d8e/classNoeudAbstrait.html#a7360664d066c779a1cd17d33088c696e">NoeudAbstrait::traiterCollisions</a>(details, bille);</div>
+<div class="line"><a name="l00134"></a><span class="lineno">  134</span>&#160;    this-&gt;<a class="code" href="../../d7/d8e/classNoeudAbstrait.html#ad5205d1e1b63fb66175a8580261d5eea">assignerAffiche</a>(<span class="keyword">false</span>);</div>
+<div class="line"><a name="l00135"></a><span class="lineno">  135</span>&#160;    <a class="code" href="../../d3/df4/classSingletonGlobal.html#a948a8014de62bb59ef604e032b156844">SingletonGlobal::obtenirInstance</a>()-&gt;<a class="code" href="../../d3/df4/classSingletonGlobal.html#ab35495e3f1425f244787148b2c9f602e">collisionButoirCible</a>();</div>
+<div class="line"><a name="l00136"></a><span class="lineno">  136</span>&#160;}</div>
+<div class="line"><a name="l00137"></a><span class="lineno">  137</span>&#160;</div>
+<div class="line"><a name="l00150"></a><span class="lineno"><a class="line" href="../../df/d1c/classNoeudCible.html#abb0d3528a05d885b7a816080f38e23b8">  150</a></span>&#160;aidecollision::DetailsCollision <a class="code" href="../../df/d1c/classNoeudCible.html#abb0d3528a05d885b7a816080f38e23b8">NoeudCible::detecterCollisions</a>(<a class="code" href="../../d7/d8e/classNoeudAbstrait.html">NoeudAbstrait</a>* noeud)</div>
+<div class="line"><a name="l00151"></a><span class="lineno">  151</span>&#160;{</div>
+<div class="line"><a name="l00152"></a><span class="lineno">  152</span>&#160;    aidecollision::DetailsCollision detailsAucune;</div>
+<div class="line"><a name="l00153"></a><span class="lineno">  153</span>&#160;    detailsAucune.type = aidecollision::COLLISION_AUCUNE;</div>
+<div class="line"><a name="l00154"></a><span class="lineno">  154</span>&#160;    <span class="keywordflow">if</span> (<a class="code" href="../../d7/d8e/classNoeudAbstrait.html#a20af11e8041b0af8a34b6f041bb24c7f">affiche_</a>)</div>
+<div class="line"><a name="l00155"></a><span class="lineno">  155</span>&#160;        <span class="keywordflow">return</span> <a class="code" href="../../d7/d8e/classNoeudAbstrait.html#a841a291e26ecdfb2269f6090ecbab99a">NoeudAbstrait::detecterCollisions</a>(noeud);</div>
+<div class="line"><a name="l00156"></a><span class="lineno">  156</span>&#160;    <span class="keywordflow">else</span></div>
+<div class="line"><a name="l00157"></a><span class="lineno">  157</span>&#160;        <span class="keywordflow">return</span> detailsAucune;</div>
+<div class="line"><a name="l00158"></a><span class="lineno">  158</span>&#160;}</div>
+<div class="ttc" id="classNoeudCible_html_abb0d3528a05d885b7a816080f38e23b8"><div class="ttname"><a href="../../df/d1c/classNoeudCible.html#abb0d3528a05d885b7a816080f38e23b8">NoeudCible::detecterCollisions</a></div><div class="ttdeci">virtual aidecollision::DetailsCollision detecterCollisions(NoeudAbstrait *noeud)</div><div class="ttdoc">Pour la detections des collisions. </div><div class="ttdef"><b>Definition:</b> <a href="../../dd/d9c/NoeudCible_8cpp_source.html#l00150">NoeudCible.cpp:150</a></div></div>
+<div class="ttc" id="classNoeudCible_html_a09e606d9babce09c5c587ee52455db5a"><div class="ttname"><a href="../../df/d1c/classNoeudCible.html#a09e606d9babce09c5c587ee52455db5a">NoeudCible::afficherConcret</a></div><div class="ttdeci">virtual void afficherConcret() const </div><div class="ttdoc">Surchage de la methode qui affiche l&#39;objet. </div><div class="ttdef"><b>Definition:</b> <a href="../../dd/d9c/NoeudCible_8cpp_source.html#l00064">NoeudCible.cpp:64</a></div></div>
+<div class="ttc" id="NoeudCible_8h_html"><div class="ttname"><a href="../../d2/d75/NoeudCible_8h.html">NoeudCible.h</a></div></div>
+<div class="ttc" id="classNoeudCible_html_ab65fc6ccdbfc4ce882d40d510b80b360"><div class="ttname"><a href="../../df/d1c/classNoeudCible.html#ab65fc6ccdbfc4ce882d40d510b80b360">NoeudCible::animer</a></div><div class="ttdeci">virtual void animer(float temps)</div><div class="ttdoc">Surchage de la methode qui anime l&#39;objet. </div><div class="ttdef"><b>Definition:</b> <a href="../../dd/d9c/NoeudCible_8cpp_source.html#l00089">NoeudCible.cpp:89</a></div></div>
+<div class="ttc" id="classNoeudAbstrait_html_a20af11e8041b0af8a34b6f041bb24c7f"><div class="ttname"><a href="../../d7/d8e/classNoeudAbstrait.html#a20af11e8041b0af8a34b6f041bb24c7f">NoeudAbstrait::affiche_</a></div><div class="ttdeci">bool affiche_</div><div class="ttdoc">Vrai si on doit afficher le noeud. </div><div class="ttdef"><b>Definition:</b> <a href="../../d1/d0f/NoeudAbstrait_8h_source.html#l00309">NoeudAbstrait.h:309</a></div></div>
+<div class="ttc" id="classNoeudAbstrait_html_a841a291e26ecdfb2269f6090ecbab99a"><div class="ttname"><a href="../../d7/d8e/classNoeudAbstrait.html#a841a291e26ecdfb2269f6090ecbab99a">NoeudAbstrait::detecterCollisions</a></div><div class="ttdeci">virtual aidecollision::DetailsCollision detecterCollisions(NoeudAbstrait *noeud)</div><div class="ttdoc">Pour la detections des collisions. </div><div class="ttdef"><b>Definition:</b> <a href="../../d8/d39/NoeudAbstrait_8cpp_source.html#l00851">NoeudAbstrait.cpp:851</a></div></div>
+<div class="ttc" id="classNoeudCible_html_a33685d44275ab7672d38be2b4c32a740"><div class="ttname"><a href="../../df/d1c/classNoeudCible.html#a33685d44275ab7672d38be2b4c32a740">NoeudCible::traiterCollisions</a></div><div class="ttdeci">virtual void traiterCollisions(aidecollision::DetailsCollision, NoeudAbstrait *bille, float facteurRebond=1)</div><div class="ttdoc">Pour le traitement logique des collisions. </div><div class="ttdef"><b>Definition:</b> <a href="../../dd/d9c/NoeudCible_8cpp_source.html#l00131">NoeudCible.cpp:131</a></div></div>
+<div class="ttc" id="classSingletonGlobal_html_ab35495e3f1425f244787148b2c9f602e"><div class="ttname"><a href="../../d3/df4/classSingletonGlobal.html#ab35495e3f1425f244787148b2c9f602e">SingletonGlobal::collisionButoirCible</a></div><div class="ttdeci">void collisionButoirCible()</div><div class="ttdef"><b>Definition:</b> <a href="../../d4/d65/SingletonGlobal_8h_source.html#l00049">SingletonGlobal.h:49</a></div></div>
+<div class="ttc" id="classSingletonGlobal_html_a948a8014de62bb59ef604e032b156844"><div class="ttname"><a href="../../d3/df4/classSingletonGlobal.html#a948a8014de62bb59ef604e032b156844">SingletonGlobal::obtenirInstance</a></div><div class="ttdeci">static SingletonGlobal * obtenirInstance()</div><div class="ttdoc">Obtient l&#39;instance unique de la classe. </div><div class="ttdef"><b>Definition:</b> <a href="../../d7/d9d/SingletonGlobal_8cpp_source.html#l00023">SingletonGlobal.cpp:23</a></div></div>
+<div class="ttc" id="classNoeudAbstrait_html_ae8a66829b09228bb7091481234abb672"><div class="ttname"><a href="../../d7/d8e/classNoeudAbstrait.html#ae8a66829b09228bb7091481234abb672">NoeudAbstrait::liste_</a></div><div class="ttdeci">modele::opengl_storage::OpenGL_Liste const * liste_</div><div class="ttdoc">Storage pour le dessin du modele. </div><div class="ttdef"><b>Definition:</b> <a href="../../d1/d0f/NoeudAbstrait_8h_source.html#l00330">NoeudAbstrait.h:330</a></div></div>
+<div class="ttc" id="classNoeudAbstrait_html_af055f00a50379403db029bd4ce4983be"><div class="ttname"><a href="../../d7/d8e/classNoeudAbstrait.html#af055f00a50379403db029bd4ce4983be">NoeudAbstrait::animer_</a></div><div class="ttdeci">bool animer_</div><div class="ttdoc">Determine si on affiche ou non l&#39;objet. </div><div class="ttdef"><b>Definition:</b> <a href="../../d1/d0f/NoeudAbstrait_8h_source.html#l00355">NoeudAbstrait.h:355</a></div></div>
+<div class="ttc" id="classNoeudCible_html_a756c2104efbbf1fdd4489881e9788e4e"><div class="ttname"><a href="../../df/d1c/classNoeudCible.html#a756c2104efbbf1fdd4489881e9788e4e">NoeudCible::accepterVisiteur</a></div><div class="ttdeci">virtual bool accepterVisiteur(VisiteurAbstrait *vis)</div><div class="ttdoc">Accepte un visiteur. </div><div class="ttdef"><b>Definition:</b> <a href="../../dd/d9c/NoeudCible_8cpp_source.html#l00110">NoeudCible.cpp:110</a></div></div>
+<div class="ttc" id="classNoeudAbstrait_html_a7360664d066c779a1cd17d33088c696e"><div class="ttname"><a href="../../d7/d8e/classNoeudAbstrait.html#a7360664d066c779a1cd17d33088c696e">NoeudAbstrait::traiterCollisions</a></div><div class="ttdeci">virtual void traiterCollisions(aidecollision::DetailsCollision, NoeudAbstrait *bille, float facteurRebond=0.8)</div><div class="ttdoc">Pour le traitement logique des collisions. </div><div class="ttdef"><b>Definition:</b> <a href="../../d8/d39/NoeudAbstrait_8cpp_source.html#l00902">NoeudAbstrait.cpp:902</a></div></div>
+<div class="ttc" id="classNoeudComposite_html_ad440d00734a92e1bd99cdee2ac62bb68"><div class="ttname"><a href="../../d4/d1e/classNoeudComposite.html#ad440d00734a92e1bd99cdee2ac62bb68">NoeudComposite::afficherConcret</a></div><div class="ttdeci">virtual void afficherConcret() const </div><div class="ttdoc">Affiche le noeud de maniere concrete. </div><div class="ttdef"><b>Definition:</b> <a href="../../db/db0/NoeudComposite_8cpp_source.html#l00447">NoeudComposite.cpp:447</a></div></div>
+<div class="ttc" id="classVisiteurAbstrait_html"><div class="ttname"><a href="../../da/dd3/classVisiteurAbstrait.html">VisiteurAbstrait</a></div><div class="ttdoc">Interface du patron Visiteur. </div><div class="ttdef"><b>Definition:</b> <a href="../../d1/d1d/VisiteurAbstrait_8h_source.html#l00039">VisiteurAbstrait.h:39</a></div></div>
+<div class="ttc" id="classNoeudAbstrait_html"><div class="ttname"><a href="../../d7/d8e/classNoeudAbstrait.html">NoeudAbstrait</a></div><div class="ttdoc">Classe de base du patron composite utilisee pour creer l&#39;arbre de rendu. </div><div class="ttdef"><b>Definition:</b> <a href="../../d1/d0f/NoeudAbstrait_8h_source.html#l00055">NoeudAbstrait.h:55</a></div></div>
+<div class="ttc" id="classNoeudCible_html_ad9c1b4f6cfbb2ebd97084ff84231dab2"><div class="ttname"><a href="../../df/d1c/classNoeudCible.html#ad9c1b4f6cfbb2ebd97084ff84231dab2">NoeudCible::NoeudCible</a></div><div class="ttdeci">NoeudCible(const std::string &amp;typeNoeud)</div><div class="ttdoc">Constructeur. </div><div class="ttdef"><b>Definition:</b> <a href="../../dd/d9c/NoeudCible_8cpp_source.html#l00035">NoeudCible.cpp:35</a></div></div>
+<div class="ttc" id="classNoeudComposite_html"><div class="ttname"><a href="../../d4/d1e/classNoeudComposite.html">NoeudComposite</a></div><div class="ttdoc">Implantation d&#39;un noeud du patron composite qui peut posseder des enfants. </div><div class="ttdef"><b>Definition:</b> <a href="../../d2/d67/NoeudComposite_8h_source.html#l00030">NoeudComposite.h:30</a></div></div>
+<div class="ttc" id="classVisiteurAbstrait_html_a71d6f684528356584f9d2c25763411de"><div class="ttname"><a href="../../da/dd3/classVisiteurAbstrait.html#a71d6f684528356584f9d2c25763411de">VisiteurAbstrait::traiter</a></div><div class="ttdeci">virtual bool traiter(ArbreRenduINF2990 *arbre)</div><div class="ttdoc">Traiter une operation sur l&#39;arbre de rendu. </div><div class="ttdef"><b>Definition:</b> <a href="../../d1/d1d/VisiteurAbstrait_8h_source.html#l00050">VisiteurAbstrait.h:50</a></div></div>
+<div class="ttc" id="classNoeudAbstrait_html_afb47e14bf16a33e071e48da8ecbc0af1"><div class="ttname"><a href="../../d7/d8e/classNoeudAbstrait.html#afb47e14bf16a33e071e48da8ecbc0af1">NoeudAbstrait::appliquerAfficher</a></div><div class="ttdeci">virtual void appliquerAfficher() const </div><div class="ttdoc">Appliquer les modificateurs OpenGL sur les objets. </div><div class="ttdef"><b>Definition:</b> <a href="../../d8/d39/NoeudAbstrait_8cpp_source.html#l00447">NoeudAbstrait.cpp:447</a></div></div>
+<div class="ttc" id="classNoeudCible_html_a33faea6d890ed692b78869f1148bc85a"><div class="ttname"><a href="../../df/d1c/classNoeudCible.html#a33faea6d890ed692b78869f1148bc85a">NoeudCible::~NoeudCible</a></div><div class="ttdeci">~NoeudCible()</div><div class="ttdoc">Destructeur. </div><div class="ttdef"><b>Definition:</b> <a href="../../dd/d9c/NoeudCible_8cpp_source.html#l00050">NoeudCible.cpp:50</a></div></div>
+<div class="ttc" id="classNoeudComposite_html_a57f31e1a0fd79628d04651001014fd41"><div class="ttname"><a href="../../d4/d1e/classNoeudComposite.html#a57f31e1a0fd79628d04651001014fd41">NoeudComposite::animer</a></div><div class="ttdeci">virtual void animer(float dt)</div><div class="ttdoc">Anime le noeud. </div><div class="ttdef"><b>Definition:</b> <a href="../../db/db0/NoeudComposite_8cpp_source.html#l00468">NoeudComposite.cpp:468</a></div></div>
+<div class="ttc" id="classNoeudAbstrait_html_ad5205d1e1b63fb66175a8580261d5eea"><div class="ttname"><a href="../../d7/d8e/classNoeudAbstrait.html#ad5205d1e1b63fb66175a8580261d5eea">NoeudAbstrait::assignerAffiche</a></div><div class="ttdeci">void assignerAffiche(bool affiche)</div><div class="ttdoc">ecrit l&#39;etat de l&#39;affichage du du noeud. </div><div class="ttdef"><b>Definition:</b> <a href="../../d1/d0f/NoeudAbstrait_8h_source.html#l00523">NoeudAbstrait.h:523</a></div></div>
+<div class="ttc" id="AnimationNoeudsDefine_8h_html_a1de04a8b5c94aaadfc61ffaaf95db7e3"><div class="ttname"><a href="../../db/d8e/AnimationNoeudsDefine_8h.html#a1de04a8b5c94aaadfc61ffaaf95db7e3">VITESSE_NOEUD_CIBLE</a></div><div class="ttdeci">#define VITESSE_NOEUD_CIBLE</div><div class="ttdef"><b>Definition:</b> <a href="../../db/d8e/AnimationNoeudsDefine_8h_source.html#l00041">AnimationNoeudsDefine.h:41</a></div></div>
+<div class="ttc" id="classNoeudAbstrait_html_ae787f108da33c57a01164f8df31cd986"><div class="ttname"><a href="../../d7/d8e/classNoeudAbstrait.html#ae787f108da33c57a01164f8df31cd986">NoeudAbstrait::rotation_</a></div><div class="ttdeci">glm::dvec3 rotation_</div><div class="ttdoc">Rotation relative du noeud. </div><div class="ttdef"><b>Definition:</b> <a href="../../d1/d0f/NoeudAbstrait_8h_source.html#l00306">NoeudAbstrait.h:306</a></div></div>
+</div><!-- fragment --></div><!-- contents -->
+</div><!-- doc-content -->
+<!-- start footer part -->
+<div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
+  <ul>
+    <li class="navelem"><a class="el" href="../../dir_937900b87e0c7a5fa01190c395fb83f7.html">Sources</a></li><li class="navelem"><a class="el" href="../../dir_5638be7ced97c879b21b23536e800e77.html">DLL</a></li><li class="navelem"><a class="el" href="../../dir_62d639a286ecc255a3a5ac9c06fd99c9.html">Arbre</a></li><li class="navelem"><a class="el" href="../../dir_e82573f31c5b178adacdeab0db63caa9.html">Noeuds</a></li><li class="navelem"><a class="el" href="../../dd/d9c/NoeudCible_8cpp.html">NoeudCible.cpp</a></li>
+    <li class="footer">Généré le Lundi 23 Mars 2015 15:59:28 pour Pain Ball par
+    <a href="http://www.doxygen.org/index.html">
+    <img class="footer" src="../../doxygen.png" alt="doxygen"/></a> 1.8.9.1 </li>
+  </ul>
+</div>
+</body>
+</html>

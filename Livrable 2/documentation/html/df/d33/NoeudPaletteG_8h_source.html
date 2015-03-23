@@ -1,0 +1,208 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=9"/>
+<meta name="generator" content="Doxygen 1.8.9.1"/>
+<title>Pain Ball:  Fichier source de Sources/DLL/Arbre/Noeuds/NoeudPaletteG.h</title>
+<link href="../../tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="../../jquery.js"></script>
+<script type="text/javascript" src="../../dynsections.js"></script>
+<link href="../../navtree.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="../../resize.js"></script>
+<script type="text/javascript" src="../../navtreedata.js"></script>
+<script type="text/javascript" src="../../navtree.js"></script>
+<script type="text/javascript">
+  $(document).ready(initResizable);
+  $(window).load(resizeHeight);
+</script>
+<link href="../../search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="../../search/searchdata.js"></script>
+<script type="text/javascript" src="../../search/search.js"></script>
+<script type="text/javascript">
+  $(document).ready(function() { init_search(); });
+</script>
+<link href="../../doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr style="height: 56px;">
+  <td id="projectlogo"><img alt="Logo" src="../../handy.jpg"/></td>
+  <td style="padding-left: 0.5em;">
+   <div id="projectname">Pain Ball
+   &#160;<span id="projectnumber">Livrable 2</span>
+   </div>
+   <div id="projectbrief">by The Ballers</div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- Généré par Doxygen 1.8.9.1 -->
+<script type="text/javascript">
+var searchBox = new SearchBox("searchBox", "../../search",false,'Recherche');
+</script>
+  <div id="navrow1" class="tabs">
+    <ul class="tablist">
+      <li><a href="../../index.html"><span>Page&#160;principale</span></a></li>
+      <li><a href="../../modules.html"><span>Modules</span></a></li>
+      <li><a href="../../namespaces.html"><span>Espaces&#160;de&#160;nommage</span></a></li>
+      <li><a href="../../annotated.html"><span>Classes</span></a></li>
+      <li class="current"><a href="../../files.html"><span>Fichiers</span></a></li>
+      <li>
+        <div id="MSearchBox" class="MSearchBoxInactive">
+        <span class="left">
+          <img id="MSearchSelect" src="../../search/mag_sel.png"
+               onmouseover="return searchBox.OnSearchSelectShow()"
+               onmouseout="return searchBox.OnSearchSelectHide()"
+               alt=""/>
+          <input type="text" id="MSearchField" value="Recherche" accesskey="S"
+               onfocus="searchBox.OnSearchFieldFocus(true)" 
+               onblur="searchBox.OnSearchFieldFocus(false)" 
+               onkeyup="searchBox.OnSearchFieldChange(event)"/>
+          </span><span class="right">
+            <a id="MSearchClose" href="javascript:searchBox.CloseResultsWindow()"><img id="MSearchCloseImg" border="0" src="../../search/close.png" alt=""/></a>
+          </span>
+        </div>
+      </li>
+    </ul>
+  </div>
+  <div id="navrow2" class="tabs2">
+    <ul class="tablist">
+      <li><a href="../../files.html"><span>Liste&#160;des&#160;fichiers</span></a></li>
+      <li><a href="../../globals.html"><span>Membres&#160;de&#160;fichier</span></a></li>
+    </ul>
+  </div>
+</div><!-- top -->
+<div id="side-nav" class="ui-resizable side-nav-resizable">
+  <div id="nav-tree">
+    <div id="nav-tree-contents">
+      <div id="nav-sync" class="sync"></div>
+    </div>
+  </div>
+  <div id="splitbar" style="-moz-user-select:none;" 
+       class="ui-resizable-handle">
+  </div>
+</div>
+<script type="text/javascript">
+$(document).ready(function(){initNavTree('df/d33/NoeudPaletteG_8h_source.html','../../');});
+</script>
+<div id="doc-content">
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<iframe src="javascript:void(0)" frameborder="0" 
+        name="MSearchResults" id="MSearchResults">
+</iframe>
+</div>
+
+<div class="header">
+  <div class="headertitle">
+<div class="title">NoeudPaletteG.h</div>  </div>
+</div><!--header-->
+<div class="contents">
+<a href="../../df/d33/NoeudPaletteG_8h.html">Aller à la documentation de ce fichier.</a><div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;</div>
+<div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160;<span class="preprocessor">#ifndef  __ARBRE_NOEUDS_NOEUDPALETTEG_H__</span></div>
+<div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;<span class="preprocessor">#define  __ARBRE_NOEUDS_NOEUDPALETTEG_H__</span></div>
+<div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;</div>
+<div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="../../d2/d67/NoeudComposite_8h.html">NoeudComposite.h</a>&quot;</span></div>
+<div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;<span class="preprocessor">#include &quot;Gl/gl.h&quot;</span></div>
+<div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;</div>
+<div class="line"><a name="l00024"></a><span class="lineno"><a class="line" href="../../d4/da9/classNoeudPaletteG.html">   24</a></span>&#160;<span class="keyword">class </span><a class="code" href="../../d4/da9/classNoeudPaletteG.html">NoeudPaletteG</a> : <span class="keyword">public</span> <a class="code" href="../../d4/d1e/classNoeudComposite.html">NoeudComposite</a></div>
+<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;{</div>
+<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;<span class="keyword">public</span>:</div>
+<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;</div>
+<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;    <a class="code" href="../../d4/da9/classNoeudPaletteG.html#a6d21c77b84bfa1d48907402fb08a0780">NoeudPaletteG</a>(<span class="keyword">const</span> std::string&amp; typeNoeud);</div>
+<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;</div>
+<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;    <a class="code" href="../../d4/da9/classNoeudPaletteG.html#ab1148a7a1278248470897de40bfede51">~NoeudPaletteG</a>();</div>
+<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;</div>
+<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;    <span class="keyword">virtual</span> <span class="keywordtype">void</span> <a class="code" href="../../d4/da9/classNoeudPaletteG.html#ad9eb61c216553b7ef4f64eb14b51f2a9">afficherConcret</a>() <span class="keyword">const</span>;</div>
+<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;</div>
+<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;    <span class="keyword">virtual</span> <span class="keywordtype">void</span> <a class="code" href="../../d4/da9/classNoeudPaletteG.html#a332b6b0dd92d01a646be40fe9ae98526">animer</a>(<span class="keywordtype">float</span> temps);</div>
+<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;</div>
+<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;    <span class="keyword">virtual</span> <span class="keywordtype">bool</span> <a class="code" href="../../d4/da9/classNoeudPaletteG.html#a97d1203cf11bd151d1d22587befb4dfb">accepterVisiteur</a>(<a class="code" href="../../da/dd3/classVisiteurAbstrait.html">VisiteurAbstrait</a>* vis);</div>
+<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;</div>
+<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;    <span class="keyword">virtual</span> <span class="keywordtype">bool</span> <a class="code" href="../../d4/da9/classNoeudPaletteG.html#adad659d69cb9295829f4b0208919d431">accepterJoueurVirtuel</a>(<a class="code" href="../../d1/d90/classJoueurVirtuel.html">JoueurVirtuel</a>* joueur);</div>
+<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;</div>
+<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="../../d4/da9/classNoeudPaletteG.html#a1beea707cc5cab60973334dcf6dfb9c8">activer</a>();</div>
+<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;</div>
+<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="../../d4/da9/classNoeudPaletteG.html#a1c617f0dbd08d6fded6317d72aeecb4a">desactiver</a>();</div>
+<div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;</div>
+<div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;    <span class="keyword">virtual</span> <span class="keywordtype">void</span> <a class="code" href="../../d4/da9/classNoeudPaletteG.html#a27ae356ea307d20b3e03b6c66a23479f">traiterCollisions</a>(aidecollision::DetailsCollision, <a class="code" href="../../d7/d8e/classNoeudAbstrait.html">NoeudAbstrait</a>* bille, <span class="keywordtype">float</span> facteurRebond = 1);</div>
+<div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;</div>
+<div class="line"><a name="l00056"></a><span class="lineno"><a class="line" href="../../d4/da9/classNoeudPaletteG.html#abd809876eb78fde42b44b282be0ede9e">   56</a></span>&#160;    <span class="keywordtype">double</span> <a class="code" href="../../d4/da9/classNoeudPaletteG.html#abd809876eb78fde42b44b282be0ede9e">obtenirAngleZOriginal</a>()<span class="keyword"> const </span>{ <span class="keywordflow">return</span> <a class="code" href="../../d4/da9/classNoeudPaletteG.html#a487910119fff165f9c812c2f9cbeaf23">angleZOriginal_</a>; };</div>
+<div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;</div>
+<div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;    <span class="keywordtype">bool</span> <a class="code" href="../../d4/da9/classNoeudPaletteG.html#a7880365ec987a3c779098783357142cc">estActiveeParBille</a>(<a class="code" href="../../d7/d8e/classNoeudAbstrait.html">NoeudAbstrait</a>* noeud);</div>
+<div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;</div>
+<div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;    <span class="keyword">virtual</span> std::vector&lt;glm::dvec3&gt; <a class="code" href="../../d4/da9/classNoeudPaletteG.html#ae13b15f50f39d644fb54673ff69b3e0b">obtenirVecteursEnglobants</a>();</div>
+<div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;</div>
+<div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;    <span class="keywordtype">double</span> <a class="code" href="../../d4/da9/classNoeudPaletteG.html#a175dcc884932b82875df380ae4be4578">fonctionDroitePaletteOriginale</a>(<a class="code" href="../../d7/d8e/classNoeudAbstrait.html">NoeudAbstrait</a>* bille);</div>
+<div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160;</div>
+<div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160;    <span class="keywordtype">double</span> <a class="code" href="../../d4/da9/classNoeudPaletteG.html#a50ea0db84d5506af3e0b77fb334b8567">fonctionDroitePaletteEnMouvement</a>(<a class="code" href="../../d7/d8e/classNoeudAbstrait.html">NoeudAbstrait</a>* bille);</div>
+<div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160;</div>
+<div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160;<span class="keyword">private</span>:</div>
+<div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160;</div>
+<div class="line"><a name="l00072"></a><span class="lineno"><a class="line" href="../../d4/da9/classNoeudPaletteG.html#a3f0a1595066dd8f64b48e7bb56f6b56a">   72</a></span>&#160;    <span class="keyword">static</span> std::vector&lt;glm::dvec3&gt; <a class="code" href="../../d4/da9/classNoeudPaletteG.html#a3f0a1595066dd8f64b48e7bb56f6b56a">boiteEnglobanteModele_</a>;</div>
+<div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160;</div>
+<div class="line"><a name="l00075"></a><span class="lineno"><a class="line" href="../../d4/da9/classNoeudPaletteG.html#a487910119fff165f9c812c2f9cbeaf23">   75</a></span>&#160;    <span class="keywordtype">double</span> <a class="code" href="../../d4/da9/classNoeudPaletteG.html#a487910119fff165f9c812c2f9cbeaf23">angleZOriginal_</a>;</div>
+<div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160;</div>
+<div class="line"><a name="l00078"></a><span class="lineno"><a class="line" href="../../d4/da9/classNoeudPaletteG.html#a491e0f39bb7f544eb8df3abade97d756a3a64314709bf5a61256fb5985608352b">   78</a></span>&#160;    <span class="keyword">enum</span> <a class="code" href="../../d4/da9/classNoeudPaletteG.html#a491e0f39bb7f544eb8df3abade97d756">Etat</a> { <a class="code" href="../../d4/da9/classNoeudPaletteG.html#a491e0f39bb7f544eb8df3abade97d756a71db373ebc54b74e4af0b9bc96db40dd">ACTIVE</a>, <a class="code" href="../../d4/da9/classNoeudPaletteG.html#a491e0f39bb7f544eb8df3abade97d756a3a64314709bf5a61256fb5985608352b">RETOUR</a>, <a class="code" href="../../d4/da9/classNoeudPaletteG.html#a491e0f39bb7f544eb8df3abade97d756a7d5eabbaa33c51198be64c575bb03774">INACTIVE</a>, <a class="code" href="../../d4/da9/classNoeudPaletteG.html#a491e0f39bb7f544eb8df3abade97d756a96a602020825d59daa265946c5fab203">BLOQUEE</a> };</div>
+<div class="line"><a name="l00079"></a><span class="lineno">   79</span>&#160;</div>
+<div class="line"><a name="l00081"></a><span class="lineno"><a class="line" href="../../d4/da9/classNoeudPaletteG.html#a6735306f11ede5c4f5e86d54b0630bc9">   81</a></span>&#160;    <a class="code" href="../../d4/da9/classNoeudPaletteG.html#a491e0f39bb7f544eb8df3abade97d756">Etat</a> <a class="code" href="../../d4/da9/classNoeudPaletteG.html#a6735306f11ede5c4f5e86d54b0630bc9">etatPalette_</a>{ <a class="code" href="../../d4/da9/classNoeudPaletteG.html#a491e0f39bb7f544eb8df3abade97d756a7d5eabbaa33c51198be64c575bb03774">INACTIVE</a> };</div>
+<div class="line"><a name="l00082"></a><span class="lineno">   82</span>&#160;</div>
+<div class="line"><a name="l00083"></a><span class="lineno"><a class="line" href="../../d4/da9/classNoeudPaletteG.html#ac41483ecd9e80fc8639b707c09329398">   83</a></span>&#160;    <span class="keywordtype">double</span> <a class="code" href="../../d4/da9/classNoeudPaletteG.html#ac41483ecd9e80fc8639b707c09329398">vitesseAngulaire_</a>;</div>
+<div class="line"><a name="l00084"></a><span class="lineno">   84</span>&#160;};</div>
+<div class="line"><a name="l00085"></a><span class="lineno">   85</span>&#160;</div>
+<div class="line"><a name="l00086"></a><span class="lineno">   86</span>&#160;<span class="preprocessor">#endif // __ARBRE_NOEUDS_NOEUDPALETTEG_H__</span></div>
+<div class="ttc" id="classNoeudPaletteG_html_a491e0f39bb7f544eb8df3abade97d756"><div class="ttname"><a href="../../d4/da9/classNoeudPaletteG.html#a491e0f39bb7f544eb8df3abade97d756">NoeudPaletteG::Etat</a></div><div class="ttdeci">Etat</div><div class="ttdoc">Enumeration pour contenir l&#39;etat de la palette. </div><div class="ttdef"><b>Definition:</b> <a href="../../df/d33/NoeudPaletteG_8h_source.html#l00078">NoeudPaletteG.h:78</a></div></div>
+<div class="ttc" id="classNoeudPaletteG_html_a97d1203cf11bd151d1d22587befb4dfb"><div class="ttname"><a href="../../d4/da9/classNoeudPaletteG.html#a97d1203cf11bd151d1d22587befb4dfb">NoeudPaletteG::accepterVisiteur</a></div><div class="ttdeci">virtual bool accepterVisiteur(VisiteurAbstrait *vis)</div><div class="ttdoc">Accepte un visiteur. </div><div class="ttdef"><b>Definition:</b> <a href="../../d7/da4/NoeudPaletteG_8cpp_source.html#l00232">NoeudPaletteG.cpp:232</a></div></div>
+<div class="ttc" id="classNoeudPaletteG_html_a491e0f39bb7f544eb8df3abade97d756a71db373ebc54b74e4af0b9bc96db40dd"><div class="ttname"><a href="../../d4/da9/classNoeudPaletteG.html#a491e0f39bb7f544eb8df3abade97d756a71db373ebc54b74e4af0b9bc96db40dd">NoeudPaletteG::ACTIVE</a></div><div class="ttdef"><b>Definition:</b> <a href="../../df/d33/NoeudPaletteG_8h_source.html#l00078">NoeudPaletteG.h:78</a></div></div>
+<div class="ttc" id="classNoeudPaletteG_html_a1c617f0dbd08d6fded6317d72aeecb4a"><div class="ttname"><a href="../../d4/da9/classNoeudPaletteG.html#a1c617f0dbd08d6fded6317d72aeecb4a">NoeudPaletteG::desactiver</a></div><div class="ttdeci">void desactiver()</div><div class="ttdoc">Desactiver la palette. </div><div class="ttdef"><b>Definition:</b> <a href="../../d7/da4/NoeudPaletteG_8cpp_source.html#l00290">NoeudPaletteG.cpp:290</a></div></div>
+<div class="ttc" id="classNoeudPaletteG_html_a27ae356ea307d20b3e03b6c66a23479f"><div class="ttname"><a href="../../d4/da9/classNoeudPaletteG.html#a27ae356ea307d20b3e03b6c66a23479f">NoeudPaletteG::traiterCollisions</a></div><div class="ttdeci">virtual void traiterCollisions(aidecollision::DetailsCollision, NoeudAbstrait *bille, float facteurRebond=1)</div><div class="ttdoc">Pour le traitement logique des collisions. </div><div class="ttdef"><b>Definition:</b> <a href="../../d7/da4/NoeudPaletteG_8cpp_source.html#l00310">NoeudPaletteG.cpp:310</a></div></div>
+<div class="ttc" id="classNoeudPaletteG_html_a332b6b0dd92d01a646be40fe9ae98526"><div class="ttname"><a href="../../d4/da9/classNoeudPaletteG.html#a332b6b0dd92d01a646be40fe9ae98526">NoeudPaletteG::animer</a></div><div class="ttdeci">virtual void animer(float temps)</div><div class="ttdoc">Surchage de la methode qui anime l&#39;objet. </div><div class="ttdef"><b>Definition:</b> <a href="../../d7/da4/NoeudPaletteG_8cpp_source.html#l00118">NoeudPaletteG.cpp:118</a></div></div>
+<div class="ttc" id="NoeudComposite_8h_html"><div class="ttname"><a href="../../d2/d67/NoeudComposite_8h.html">NoeudComposite.h</a></div></div>
+<div class="ttc" id="classNoeudPaletteG_html"><div class="ttname"><a href="../../d4/da9/classNoeudPaletteG.html">NoeudPaletteG</a></div><div class="ttdoc">Classe qui represente une palette gauche. </div><div class="ttdef"><b>Definition:</b> <a href="../../df/d33/NoeudPaletteG_8h_source.html#l00024">NoeudPaletteG.h:24</a></div></div>
+<div class="ttc" id="classVisiteurAbstrait_html"><div class="ttname"><a href="../../da/dd3/classVisiteurAbstrait.html">VisiteurAbstrait</a></div><div class="ttdoc">Interface du patron Visiteur. </div><div class="ttdef"><b>Definition:</b> <a href="../../d1/d1d/VisiteurAbstrait_8h_source.html#l00039">VisiteurAbstrait.h:39</a></div></div>
+<div class="ttc" id="classNoeudPaletteG_html_a6735306f11ede5c4f5e86d54b0630bc9"><div class="ttname"><a href="../../d4/da9/classNoeudPaletteG.html#a6735306f11ede5c4f5e86d54b0630bc9">NoeudPaletteG::etatPalette_</a></div><div class="ttdeci">Etat etatPalette_</div><div class="ttdoc">Etat courant de la palette. </div><div class="ttdef"><b>Definition:</b> <a href="../../df/d33/NoeudPaletteG_8h_source.html#l00081">NoeudPaletteG.h:81</a></div></div>
+<div class="ttc" id="classNoeudAbstrait_html"><div class="ttname"><a href="../../d7/d8e/classNoeudAbstrait.html">NoeudAbstrait</a></div><div class="ttdoc">Classe de base du patron composite utilisee pour creer l&#39;arbre de rendu. </div><div class="ttdef"><b>Definition:</b> <a href="../../d1/d0f/NoeudAbstrait_8h_source.html#l00055">NoeudAbstrait.h:55</a></div></div>
+<div class="ttc" id="classNoeudPaletteG_html_a175dcc884932b82875df380ae4be4578"><div class="ttname"><a href="../../d4/da9/classNoeudPaletteG.html#a175dcc884932b82875df380ae4be4578">NoeudPaletteG::fonctionDroitePaletteOriginale</a></div><div class="ttdeci">double fonctionDroitePaletteOriginale(NoeudAbstrait *bille)</div><div class="ttdoc">Fonction de droite pour la palette a l&#39;etat original. </div><div class="ttdef"><b>Definition:</b> <a href="../../d7/da4/NoeudPaletteG_8cpp_source.html#l00406">NoeudPaletteG.cpp:406</a></div></div>
+<div class="ttc" id="classNoeudComposite_html"><div class="ttname"><a href="../../d4/d1e/classNoeudComposite.html">NoeudComposite</a></div><div class="ttdoc">Implantation d&#39;un noeud du patron composite qui peut posseder des enfants. </div><div class="ttdef"><b>Definition:</b> <a href="../../d2/d67/NoeudComposite_8h_source.html#l00030">NoeudComposite.h:30</a></div></div>
+<div class="ttc" id="classNoeudPaletteG_html_a3f0a1595066dd8f64b48e7bb56f6b56a"><div class="ttname"><a href="../../d4/da9/classNoeudPaletteG.html#a3f0a1595066dd8f64b48e7bb56f6b56a">NoeudPaletteG::boiteEnglobanteModele_</a></div><div class="ttdeci">static std::vector&lt; glm::dvec3 &gt; boiteEnglobanteModele_</div><div class="ttdef"><b>Definition:</b> <a href="../../df/d33/NoeudPaletteG_8h_source.html#l00072">NoeudPaletteG.h:72</a></div></div>
+<div class="ttc" id="classNoeudPaletteG_html_ae13b15f50f39d644fb54673ff69b3e0b"><div class="ttname"><a href="../../d4/da9/classNoeudPaletteG.html#ae13b15f50f39d644fb54673ff69b3e0b">NoeudPaletteG::obtenirVecteursEnglobants</a></div><div class="ttdeci">virtual std::vector&lt; glm::dvec3 &gt; obtenirVecteursEnglobants()</div><div class="ttdoc">Obtenir la premiere boite englobante custom de l&#39;histoire! </div><div class="ttdef"><b>Definition:</b> <a href="../../d7/da4/NoeudPaletteG_8cpp_source.html#l00461">NoeudPaletteG.cpp:461</a></div></div>
+<div class="ttc" id="classNoeudPaletteG_html_a491e0f39bb7f544eb8df3abade97d756a96a602020825d59daa265946c5fab203"><div class="ttname"><a href="../../d4/da9/classNoeudPaletteG.html#a491e0f39bb7f544eb8df3abade97d756a96a602020825d59daa265946c5fab203">NoeudPaletteG::BLOQUEE</a></div><div class="ttdef"><b>Definition:</b> <a href="../../df/d33/NoeudPaletteG_8h_source.html#l00078">NoeudPaletteG.h:78</a></div></div>
+<div class="ttc" id="classNoeudPaletteG_html_a6d21c77b84bfa1d48907402fb08a0780"><div class="ttname"><a href="../../d4/da9/classNoeudPaletteG.html#a6d21c77b84bfa1d48907402fb08a0780">NoeudPaletteG::NoeudPaletteG</a></div><div class="ttdeci">NoeudPaletteG(const std::string &amp;typeNoeud)</div><div class="ttdoc">Constructeur. </div><div class="ttdef"><b>Definition:</b> <a href="../../d7/da4/NoeudPaletteG_8cpp_source.html#l00061">NoeudPaletteG.cpp:61</a></div></div>
+<div class="ttc" id="classNoeudPaletteG_html_a491e0f39bb7f544eb8df3abade97d756a3a64314709bf5a61256fb5985608352b"><div class="ttname"><a href="../../d4/da9/classNoeudPaletteG.html#a491e0f39bb7f544eb8df3abade97d756a3a64314709bf5a61256fb5985608352b">NoeudPaletteG::RETOUR</a></div><div class="ttdef"><b>Definition:</b> <a href="../../df/d33/NoeudPaletteG_8h_source.html#l00078">NoeudPaletteG.h:78</a></div></div>
+<div class="ttc" id="classNoeudPaletteG_html_abd809876eb78fde42b44b282be0ede9e"><div class="ttname"><a href="../../d4/da9/classNoeudPaletteG.html#abd809876eb78fde42b44b282be0ede9e">NoeudPaletteG::obtenirAngleZOriginal</a></div><div class="ttdeci">double obtenirAngleZOriginal() const </div><div class="ttdoc">Obtenir l&#39;angle initial de la palette. </div><div class="ttdef"><b>Definition:</b> <a href="../../df/d33/NoeudPaletteG_8h_source.html#l00056">NoeudPaletteG.h:56</a></div></div>
+<div class="ttc" id="classNoeudPaletteG_html_a487910119fff165f9c812c2f9cbeaf23"><div class="ttname"><a href="../../d4/da9/classNoeudPaletteG.html#a487910119fff165f9c812c2f9cbeaf23">NoeudPaletteG::angleZOriginal_</a></div><div class="ttdeci">double angleZOriginal_</div><div class="ttdoc">Angle Original pour le mouvement des palettes selon les touches du clavier. </div><div class="ttdef"><b>Definition:</b> <a href="../../df/d33/NoeudPaletteG_8h_source.html#l00075">NoeudPaletteG.h:75</a></div></div>
+<div class="ttc" id="classNoeudPaletteG_html_ad9eb61c216553b7ef4f64eb14b51f2a9"><div class="ttname"><a href="../../d4/da9/classNoeudPaletteG.html#ad9eb61c216553b7ef4f64eb14b51f2a9">NoeudPaletteG::afficherConcret</a></div><div class="ttdeci">virtual void afficherConcret() const </div><div class="ttdoc">Surchage de la methode qui affiche l&#39;objet. </div><div class="ttdef"><b>Definition:</b> <a href="../../d7/da4/NoeudPaletteG_8cpp_source.html#l00092">NoeudPaletteG.cpp:92</a></div></div>
+<div class="ttc" id="classNoeudPaletteG_html_a1beea707cc5cab60973334dcf6dfb9c8"><div class="ttname"><a href="../../d4/da9/classNoeudPaletteG.html#a1beea707cc5cab60973334dcf6dfb9c8">NoeudPaletteG::activer</a></div><div class="ttdeci">void activer()</div><div class="ttdoc">Activer la palette. </div><div class="ttdef"><b>Definition:</b> <a href="../../d7/da4/NoeudPaletteG_8cpp_source.html#l00271">NoeudPaletteG.cpp:271</a></div></div>
+<div class="ttc" id="classNoeudPaletteG_html_adad659d69cb9295829f4b0208919d431"><div class="ttname"><a href="../../d4/da9/classNoeudPaletteG.html#adad659d69cb9295829f4b0208919d431">NoeudPaletteG::accepterJoueurVirtuel</a></div><div class="ttdeci">virtual bool accepterJoueurVirtuel(JoueurVirtuel *joueur)</div><div class="ttdoc">Accepte un joueur virtuel. </div><div class="ttdef"><b>Definition:</b> <a href="../../d7/da4/NoeudPaletteG_8cpp_source.html#l00255">NoeudPaletteG.cpp:255</a></div></div>
+<div class="ttc" id="classNoeudPaletteG_html_a50ea0db84d5506af3e0b77fb334b8567"><div class="ttname"><a href="../../d4/da9/classNoeudPaletteG.html#a50ea0db84d5506af3e0b77fb334b8567">NoeudPaletteG::fonctionDroitePaletteEnMouvement</a></div><div class="ttdeci">double fonctionDroitePaletteEnMouvement(NoeudAbstrait *bille)</div><div class="ttdoc">Fonction de droite pour la palette lorsqu&#39;elle est en mouvement. </div><div class="ttdef"><b>Definition:</b> <a href="../../d7/da4/NoeudPaletteG_8cpp_source.html#l00438">NoeudPaletteG.cpp:438</a></div></div>
+<div class="ttc" id="classNoeudPaletteG_html_a491e0f39bb7f544eb8df3abade97d756a7d5eabbaa33c51198be64c575bb03774"><div class="ttname"><a href="../../d4/da9/classNoeudPaletteG.html#a491e0f39bb7f544eb8df3abade97d756a7d5eabbaa33c51198be64c575bb03774">NoeudPaletteG::INACTIVE</a></div><div class="ttdef"><b>Definition:</b> <a href="../../df/d33/NoeudPaletteG_8h_source.html#l00078">NoeudPaletteG.h:78</a></div></div>
+<div class="ttc" id="classNoeudPaletteG_html_a7880365ec987a3c779098783357142cc"><div class="ttname"><a href="../../d4/da9/classNoeudPaletteG.html#a7880365ec987a3c779098783357142cc">NoeudPaletteG::estActiveeParBille</a></div><div class="ttdeci">bool estActiveeParBille(NoeudAbstrait *noeud)</div><div class="ttdoc">Savoir si la palette est activ�e par une bille. </div><div class="ttdef"><b>Definition:</b> <a href="../../d7/da4/NoeudPaletteG_8cpp_source.html#l00353">NoeudPaletteG.cpp:353</a></div></div>
+<div class="ttc" id="classNoeudPaletteG_html_ab1148a7a1278248470897de40bfede51"><div class="ttname"><a href="../../d4/da9/classNoeudPaletteG.html#ab1148a7a1278248470897de40bfede51">NoeudPaletteG::~NoeudPaletteG</a></div><div class="ttdeci">~NoeudPaletteG()</div><div class="ttdoc">Destructeur. </div><div class="ttdef"><b>Definition:</b> <a href="../../d7/da4/NoeudPaletteG_8cpp_source.html#l00077">NoeudPaletteG.cpp:77</a></div></div>
+<div class="ttc" id="classJoueurVirtuel_html"><div class="ttname"><a href="../../d1/d90/classJoueurVirtuel.html">JoueurVirtuel</a></div><div class="ttdoc">Cette classe est issu du patron Visiteur. Elle repr�sente le concept d&#39;intelligence artificielle pour ...</div><div class="ttdef"><b>Definition:</b> <a href="../../d2/dc2/JoueurVirtuel_8h_source.html#l00034">JoueurVirtuel.h:34</a></div></div>
+<div class="ttc" id="classNoeudPaletteG_html_ac41483ecd9e80fc8639b707c09329398"><div class="ttname"><a href="../../d4/da9/classNoeudPaletteG.html#ac41483ecd9e80fc8639b707c09329398">NoeudPaletteG::vitesseAngulaire_</a></div><div class="ttdeci">double vitesseAngulaire_</div><div class="ttdef"><b>Definition:</b> <a href="../../df/d33/NoeudPaletteG_8h_source.html#l00083">NoeudPaletteG.h:83</a></div></div>
+</div><!-- fragment --></div><!-- contents -->
+</div><!-- doc-content -->
+<!-- start footer part -->
+<div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
+  <ul>
+    <li class="navelem"><a class="el" href="../../dir_937900b87e0c7a5fa01190c395fb83f7.html">Sources</a></li><li class="navelem"><a class="el" href="../../dir_5638be7ced97c879b21b23536e800e77.html">DLL</a></li><li class="navelem"><a class="el" href="../../dir_62d639a286ecc255a3a5ac9c06fd99c9.html">Arbre</a></li><li class="navelem"><a class="el" href="../../dir_e82573f31c5b178adacdeab0db63caa9.html">Noeuds</a></li><li class="navelem"><a class="el" href="../../df/d33/NoeudPaletteG_8h.html">NoeudPaletteG.h</a></li>
+    <li class="footer">Généré le Lundi 23 Mars 2015 15:59:28 pour Pain Ball par
+    <a href="http://www.doxygen.org/index.html">
+    <img class="footer" src="../../doxygen.png" alt="doxygen"/></a> 1.8.9.1 </li>
+  </ul>
+</div>
+</body>
+</html>

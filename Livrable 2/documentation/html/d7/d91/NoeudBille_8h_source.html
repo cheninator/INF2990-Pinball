@@ -1,0 +1,185 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=9"/>
+<meta name="generator" content="Doxygen 1.8.9.1"/>
+<title>Pain Ball:  Fichier source de Sources/DLL/Arbre/Noeuds/NoeudBille.h</title>
+<link href="../../tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="../../jquery.js"></script>
+<script type="text/javascript" src="../../dynsections.js"></script>
+<link href="../../navtree.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="../../resize.js"></script>
+<script type="text/javascript" src="../../navtreedata.js"></script>
+<script type="text/javascript" src="../../navtree.js"></script>
+<script type="text/javascript">
+  $(document).ready(initResizable);
+  $(window).load(resizeHeight);
+</script>
+<link href="../../search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="../../search/searchdata.js"></script>
+<script type="text/javascript" src="../../search/search.js"></script>
+<script type="text/javascript">
+  $(document).ready(function() { init_search(); });
+</script>
+<link href="../../doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr style="height: 56px;">
+  <td id="projectlogo"><img alt="Logo" src="../../handy.jpg"/></td>
+  <td style="padding-left: 0.5em;">
+   <div id="projectname">Pain Ball
+   &#160;<span id="projectnumber">Livrable 2</span>
+   </div>
+   <div id="projectbrief">by The Ballers</div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- Généré par Doxygen 1.8.9.1 -->
+<script type="text/javascript">
+var searchBox = new SearchBox("searchBox", "../../search",false,'Recherche');
+</script>
+  <div id="navrow1" class="tabs">
+    <ul class="tablist">
+      <li><a href="../../index.html"><span>Page&#160;principale</span></a></li>
+      <li><a href="../../modules.html"><span>Modules</span></a></li>
+      <li><a href="../../namespaces.html"><span>Espaces&#160;de&#160;nommage</span></a></li>
+      <li><a href="../../annotated.html"><span>Classes</span></a></li>
+      <li class="current"><a href="../../files.html"><span>Fichiers</span></a></li>
+      <li>
+        <div id="MSearchBox" class="MSearchBoxInactive">
+        <span class="left">
+          <img id="MSearchSelect" src="../../search/mag_sel.png"
+               onmouseover="return searchBox.OnSearchSelectShow()"
+               onmouseout="return searchBox.OnSearchSelectHide()"
+               alt=""/>
+          <input type="text" id="MSearchField" value="Recherche" accesskey="S"
+               onfocus="searchBox.OnSearchFieldFocus(true)" 
+               onblur="searchBox.OnSearchFieldFocus(false)" 
+               onkeyup="searchBox.OnSearchFieldChange(event)"/>
+          </span><span class="right">
+            <a id="MSearchClose" href="javascript:searchBox.CloseResultsWindow()"><img id="MSearchCloseImg" border="0" src="../../search/close.png" alt=""/></a>
+          </span>
+        </div>
+      </li>
+    </ul>
+  </div>
+  <div id="navrow2" class="tabs2">
+    <ul class="tablist">
+      <li><a href="../../files.html"><span>Liste&#160;des&#160;fichiers</span></a></li>
+      <li><a href="../../globals.html"><span>Membres&#160;de&#160;fichier</span></a></li>
+    </ul>
+  </div>
+</div><!-- top -->
+<div id="side-nav" class="ui-resizable side-nav-resizable">
+  <div id="nav-tree">
+    <div id="nav-tree-contents">
+      <div id="nav-sync" class="sync"></div>
+    </div>
+  </div>
+  <div id="splitbar" style="-moz-user-select:none;" 
+       class="ui-resizable-handle">
+  </div>
+</div>
+<script type="text/javascript">
+$(document).ready(function(){initNavTree('d7/d91/NoeudBille_8h_source.html','../../');});
+</script>
+<div id="doc-content">
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<iframe src="javascript:void(0)" frameborder="0" 
+        name="MSearchResults" id="MSearchResults">
+</iframe>
+</div>
+
+<div class="header">
+  <div class="headertitle">
+<div class="title">NoeudBille.h</div>  </div>
+</div><!--header-->
+<div class="contents">
+<a href="../../d7/d91/NoeudBille_8h.html">Aller à la documentation de ce fichier.</a><div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;</div>
+<div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160;<span class="preprocessor">#ifndef __ARBRES_NOEUDS_NOEUDBILLE_H__</span></div>
+<div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;<span class="preprocessor">#define __ARBRES_NOEUDS_NOEUDBILLE_H__</span></div>
+<div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;</div>
+<div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="../../d2/d67/NoeudComposite_8h.html">NoeudComposite.h</a>&quot;</span></div>
+<div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;<span class="preprocessor">#include &quot;Gl/gl.h&quot;</span></div>
+<div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;</div>
+<div class="line"><a name="l00023"></a><span class="lineno"><a class="line" href="../../dc/d7e/classNoeudBille.html">   23</a></span>&#160;<span class="keyword">class </span><a class="code" href="../../dc/d7e/classNoeudBille.html">NoeudBille</a> : <span class="keyword">public</span> <a class="code" href="../../d4/d1e/classNoeudComposite.html">NoeudComposite</a></div>
+<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;{</div>
+<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;<span class="keyword">public</span>:</div>
+<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;    <a class="code" href="../../dc/d7e/classNoeudBille.html#a08b0f89497684405781df57187ff61bd">NoeudBille</a>(<span class="keyword">const</span> std::string&amp; typeNoeud);</div>
+<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;</div>
+<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;    <a class="code" href="../../dc/d7e/classNoeudBille.html#a933465a978582f8863253b9921e13a6a">~NoeudBille</a>();</div>
+<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;</div>
+<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;    <span class="keyword">virtual</span> <span class="keywordtype">void</span> <a class="code" href="../../dc/d7e/classNoeudBille.html#a7693de9ffa0572ab3afa396c0ae1f0d0">afficherConcret</a>() <span class="keyword">const</span>;</div>
+<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;</div>
+<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;    <span class="keyword">virtual</span> <span class="keywordtype">void</span> <a class="code" href="../../dc/d7e/classNoeudBille.html#aff2f02780fd37d38f45530470e110a13">animer</a>(<span class="keywordtype">float</span> temps);</div>
+<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;</div>
+<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;    <span class="keyword">virtual</span> <span class="keywordtype">bool</span> <a class="code" href="../../dc/d7e/classNoeudBille.html#af4956dca72b8be58bdbc445a4a07129b">accepterVisiteur</a>(<a class="code" href="../../da/dd3/classVisiteurAbstrait.html">VisiteurAbstrait</a>* vis);</div>
+<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;</div>
+<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;    <span class="keyword">virtual</span> <span class="keywordtype">void</span> <a class="code" href="../../dc/d7e/classNoeudBille.html#ae4f181081259e4687ba1bf18574981c1">setDebug</a>( <span class="keywordtype">bool</span> debug);</div>
+<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;</div>
+<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;    <span class="keyword">virtual</span> <span class="keywordtype">void</span> <a class="code" href="../../dc/d7e/classNoeudBille.html#a1a326e3278b99b4235fe939691ca6659">setSpotLight</a>(<span class="keywordtype">bool</span> debug);</div>
+<div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;</div>
+<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="../../dc/d7e/classNoeudBille.html#a3311ab8ba81726a76a33ddce59acd583">afficherVitesse</a>(glm::dvec3 nouvelleVitesse);</div>
+<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;</div>
+<div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;    <span class="keyword">virtual</span> std::vector&lt;glm::dvec3&gt; <a class="code" href="../../dc/d7e/classNoeudBille.html#a8b18c41ebc674fe5364f48be0559bb0c">obtenirVecteursEnglobants</a>();</div>
+<div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;</div>
+<div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="../../dc/d7e/classNoeudBille.html#aed6b93a2254fa7b74bf058c16a0d853b">NoeudBille::mettreAJourCollision</a>(<a class="code" href="../../d7/d8e/classNoeudAbstrait.html">NoeudAbstrait</a>* noeud);</div>
+<div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;</div>
+<div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;<span class="keyword">private</span>:</div>
+<div class="line"><a name="l00057"></a><span class="lineno"><a class="line" href="../../dc/d7e/classNoeudBille.html#ac563517ddfdcd0460bd81009a03e7f6c">   57</a></span>&#160;    <span class="keywordtype">double</span> <a class="code" href="../../dc/d7e/classNoeudBille.html#ac563517ddfdcd0460bd81009a03e7f6c">positionCouvercleX_</a>{ -1 };</div>
+<div class="line"><a name="l00058"></a><span class="lineno"><a class="line" href="../../dc/d7e/classNoeudBille.html#a92c10c6d66b2295c088f438787a389d4">   58</a></span>&#160;    <span class="keywordtype">float</span> <a class="code" href="../../dc/d7e/classNoeudBille.html#a92c10c6d66b2295c088f438787a389d4">timerMove_</a>{ 0 };</div>
+<div class="line"><a name="l00059"></a><span class="lineno"><a class="line" href="../../dc/d7e/classNoeudBille.html#a4d55872fc9880f95cb20c41e8daa896b">   59</a></span>&#160;    <span class="keywordtype">bool</span> <a class="code" href="../../dc/d7e/classNoeudBille.html#a4d55872fc9880f95cb20c41e8daa896b">enCreation_</a>{ <span class="keyword">true</span> };</div>
+<div class="line"><a name="l00060"></a><span class="lineno"><a class="line" href="../../dc/d7e/classNoeudBille.html#a22afba2adc2c58de53a36fddf03c397d">   60</a></span>&#160;    <span class="keywordtype">double</span> <a class="code" href="../../dc/d7e/classNoeudBille.html#a22afba2adc2c58de53a36fddf03c397d">posZinitial</a>;</div>
+<div class="line"><a name="l00061"></a><span class="lineno"><a class="line" href="../../dc/d7e/classNoeudBille.html#a6cbf05198f047a72c4c16627560530f2">   61</a></span>&#160;    <span class="keywordtype">double</span> <a class="code" href="../../dc/d7e/classNoeudBille.html#a6cbf05198f047a72c4c16627560530f2">posZfinal</a>;</div>
+<div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;};</div>
+<div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;</div>
+<div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;<span class="preprocessor">#endif // __ARBRE_NOEUDS_NOEUDGENERATEURBILLE_H__</span></div>
+<div class="ttc" id="classNoeudBille_html_a933465a978582f8863253b9921e13a6a"><div class="ttname"><a href="../../dc/d7e/classNoeudBille.html#a933465a978582f8863253b9921e13a6a">NoeudBille::~NoeudBille</a></div><div class="ttdeci">~NoeudBille()</div><div class="ttdoc">Destructeur. </div><div class="ttdef"><b>Definition:</b> <a href="../../d6/de4/NoeudBille_8cpp_source.html#l00060">NoeudBille.cpp:60</a></div></div>
+<div class="ttc" id="classNoeudBille_html_a3311ab8ba81726a76a33ddce59acd583"><div class="ttname"><a href="../../dc/d7e/classNoeudBille.html#a3311ab8ba81726a76a33ddce59acd583">NoeudBille::afficherVitesse</a></div><div class="ttdeci">void afficherVitesse(glm::dvec3 nouvelleVitesse)</div><div class="ttdoc">Afficher la vitesse. </div><div class="ttdef"><b>Definition:</b> <a href="../../d6/de4/NoeudBille_8cpp_source.html#l00253">NoeudBille.cpp:253</a></div></div>
+<div class="ttc" id="classNoeudBille_html_a1a326e3278b99b4235fe939691ca6659"><div class="ttname"><a href="../../dc/d7e/classNoeudBille.html#a1a326e3278b99b4235fe939691ca6659">NoeudBille::setSpotLight</a></div><div class="ttdeci">virtual void setSpotLight(bool debug)</div><div class="ttdoc">Activer ou desactiver le mode spotLight. </div><div class="ttdef"><b>Definition:</b> <a href="../../d6/de4/NoeudBille_8cpp_source.html#l00238">NoeudBille.cpp:238</a></div></div>
+<div class="ttc" id="classNoeudBille_html_a08b0f89497684405781df57187ff61bd"><div class="ttname"><a href="../../dc/d7e/classNoeudBille.html#a08b0f89497684405781df57187ff61bd">NoeudBille::NoeudBille</a></div><div class="ttdeci">NoeudBille(const std::string &amp;typeNoeud)</div><div class="ttdoc">Constructeur. </div><div class="ttdef"><b>Definition:</b> <a href="../../d6/de4/NoeudBille_8cpp_source.html#l00043">NoeudBille.cpp:43</a></div></div>
+<div class="ttc" id="classNoeudBille_html_a7693de9ffa0572ab3afa396c0ae1f0d0"><div class="ttname"><a href="../../dc/d7e/classNoeudBille.html#a7693de9ffa0572ab3afa396c0ae1f0d0">NoeudBille::afficherConcret</a></div><div class="ttdeci">virtual void afficherConcret() const </div><div class="ttdoc">Surchage de la methode qui affiche l&#39;objet. </div><div class="ttdef"><b>Definition:</b> <a href="../../d6/de4/NoeudBille_8cpp_source.html#l00074">NoeudBille.cpp:74</a></div></div>
+<div class="ttc" id="classNoeudBille_html_a22afba2adc2c58de53a36fddf03c397d"><div class="ttname"><a href="../../dc/d7e/classNoeudBille.html#a22afba2adc2c58de53a36fddf03c397d">NoeudBille::posZinitial</a></div><div class="ttdeci">double posZinitial</div><div class="ttdef"><b>Definition:</b> <a href="../../d7/d91/NoeudBille_8h_source.html#l00060">NoeudBille.h:60</a></div></div>
+<div class="ttc" id="classNoeudBille_html_aed6b93a2254fa7b74bf058c16a0d853b"><div class="ttname"><a href="../../dc/d7e/classNoeudBille.html#aed6b93a2254fa7b74bf058c16a0d853b">NoeudBille::mettreAJourCollision</a></div><div class="ttdeci">void mettreAJourCollision(NoeudAbstrait *noeud)</div><div class="ttdoc">Met a jout le pointage des collisions. </div><div class="ttdef"><b>Definition:</b> <a href="../../d6/de4/NoeudBille_8cpp_source.html#l00280">NoeudBille.cpp:280</a></div></div>
+<div class="ttc" id="classNoeudBille_html_ae4f181081259e4687ba1bf18574981c1"><div class="ttname"><a href="../../dc/d7e/classNoeudBille.html#ae4f181081259e4687ba1bf18574981c1">NoeudBille::setDebug</a></div><div class="ttdeci">virtual void setDebug(bool debug)</div><div class="ttdoc">Activer ou desactiver le mode debug. </div><div class="ttdef"><b>Definition:</b> <a href="../../d6/de4/NoeudBille_8cpp_source.html#l00221">NoeudBille.cpp:221</a></div></div>
+<div class="ttc" id="NoeudComposite_8h_html"><div class="ttname"><a href="../../d2/d67/NoeudComposite_8h.html">NoeudComposite.h</a></div></div>
+<div class="ttc" id="classNoeudBille_html_ac563517ddfdcd0460bd81009a03e7f6c"><div class="ttname"><a href="../../dc/d7e/classNoeudBille.html#ac563517ddfdcd0460bd81009a03e7f6c">NoeudBille::positionCouvercleX_</a></div><div class="ttdeci">double positionCouvercleX_</div><div class="ttdef"><b>Definition:</b> <a href="../../d7/d91/NoeudBille_8h_source.html#l00057">NoeudBille.h:57</a></div></div>
+<div class="ttc" id="classVisiteurAbstrait_html"><div class="ttname"><a href="../../da/dd3/classVisiteurAbstrait.html">VisiteurAbstrait</a></div><div class="ttdoc">Interface du patron Visiteur. </div><div class="ttdef"><b>Definition:</b> <a href="../../d1/d1d/VisiteurAbstrait_8h_source.html#l00039">VisiteurAbstrait.h:39</a></div></div>
+<div class="ttc" id="classNoeudAbstrait_html"><div class="ttname"><a href="../../d7/d8e/classNoeudAbstrait.html">NoeudAbstrait</a></div><div class="ttdoc">Classe de base du patron composite utilisee pour creer l&#39;arbre de rendu. </div><div class="ttdef"><b>Definition:</b> <a href="../../d1/d0f/NoeudAbstrait_8h_source.html#l00055">NoeudAbstrait.h:55</a></div></div>
+<div class="ttc" id="classNoeudComposite_html"><div class="ttname"><a href="../../d4/d1e/classNoeudComposite.html">NoeudComposite</a></div><div class="ttdoc">Implantation d&#39;un noeud du patron composite qui peut posseder des enfants. </div><div class="ttdef"><b>Definition:</b> <a href="../../d2/d67/NoeudComposite_8h_source.html#l00030">NoeudComposite.h:30</a></div></div>
+<div class="ttc" id="classNoeudBille_html"><div class="ttname"><a href="../../dc/d7e/classNoeudBille.html">NoeudBille</a></div><div class="ttdoc">Classe qui represente une bille. </div><div class="ttdef"><b>Definition:</b> <a href="../../d7/d91/NoeudBille_8h_source.html#l00023">NoeudBille.h:23</a></div></div>
+<div class="ttc" id="classNoeudBille_html_af4956dca72b8be58bdbc445a4a07129b"><div class="ttname"><a href="../../dc/d7e/classNoeudBille.html#af4956dca72b8be58bdbc445a4a07129b">NoeudBille::accepterVisiteur</a></div><div class="ttdeci">virtual bool accepterVisiteur(VisiteurAbstrait *vis)</div><div class="ttdoc">Accepte un visiteur. </div><div class="ttdef"><b>Definition:</b> <a href="../../d6/de4/NoeudBille_8cpp_source.html#l00200">NoeudBille.cpp:200</a></div></div>
+<div class="ttc" id="classNoeudBille_html_a6cbf05198f047a72c4c16627560530f2"><div class="ttname"><a href="../../dc/d7e/classNoeudBille.html#a6cbf05198f047a72c4c16627560530f2">NoeudBille::posZfinal</a></div><div class="ttdeci">double posZfinal</div><div class="ttdef"><b>Definition:</b> <a href="../../d7/d91/NoeudBille_8h_source.html#l00061">NoeudBille.h:61</a></div></div>
+<div class="ttc" id="classNoeudBille_html_a4d55872fc9880f95cb20c41e8daa896b"><div class="ttname"><a href="../../dc/d7e/classNoeudBille.html#a4d55872fc9880f95cb20c41e8daa896b">NoeudBille::enCreation_</a></div><div class="ttdeci">bool enCreation_</div><div class="ttdef"><b>Definition:</b> <a href="../../d7/d91/NoeudBille_8h_source.html#l00059">NoeudBille.h:59</a></div></div>
+<div class="ttc" id="classNoeudBille_html_a92c10c6d66b2295c088f438787a389d4"><div class="ttname"><a href="../../dc/d7e/classNoeudBille.html#a92c10c6d66b2295c088f438787a389d4">NoeudBille::timerMove_</a></div><div class="ttdeci">float timerMove_</div><div class="ttdef"><b>Definition:</b> <a href="../../d7/d91/NoeudBille_8h_source.html#l00058">NoeudBille.h:58</a></div></div>
+<div class="ttc" id="classNoeudBille_html_aff2f02780fd37d38f45530470e110a13"><div class="ttname"><a href="../../dc/d7e/classNoeudBille.html#aff2f02780fd37d38f45530470e110a13">NoeudBille::animer</a></div><div class="ttdeci">virtual void animer(float temps)</div><div class="ttdoc">Surchage de la methode qui anime l&#39;objet. </div><div class="ttdef"><b>Definition:</b> <a href="../../d6/de4/NoeudBille_8cpp_source.html#l00109">NoeudBille.cpp:109</a></div></div>
+<div class="ttc" id="classNoeudBille_html_a8b18c41ebc674fe5364f48be0559bb0c"><div class="ttname"><a href="../../dc/d7e/classNoeudBille.html#a8b18c41ebc674fe5364f48be0559bb0c">NoeudBille::obtenirVecteursEnglobants</a></div><div class="ttdeci">virtual std::vector&lt; glm::dvec3 &gt; obtenirVecteursEnglobants()</div><div class="ttdoc">Redefinition de boite englobante pour objet circulaire. </div><div class="ttdef"><b>Definition:</b> <a href="../../d6/de4/NoeudBille_8cpp_source.html#l00306">NoeudBille.cpp:306</a></div></div>
+</div><!-- fragment --></div><!-- contents -->
+</div><!-- doc-content -->
+<!-- start footer part -->
+<div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
+  <ul>
+    <li class="navelem"><a class="el" href="../../dir_937900b87e0c7a5fa01190c395fb83f7.html">Sources</a></li><li class="navelem"><a class="el" href="../../dir_5638be7ced97c879b21b23536e800e77.html">DLL</a></li><li class="navelem"><a class="el" href="../../dir_62d639a286ecc255a3a5ac9c06fd99c9.html">Arbre</a></li><li class="navelem"><a class="el" href="../../dir_e82573f31c5b178adacdeab0db63caa9.html">Noeuds</a></li><li class="navelem"><a class="el" href="../../d7/d91/NoeudBille_8h.html">NoeudBille.h</a></li>
+    <li class="footer">Généré le Lundi 23 Mars 2015 15:59:28 pour Pain Ball par
+    <a href="http://www.doxygen.org/index.html">
+    <img class="footer" src="../../doxygen.png" alt="doxygen"/></a> 1.8.9.1 </li>
+  </ul>
+</div>
+</body>
+</html>
