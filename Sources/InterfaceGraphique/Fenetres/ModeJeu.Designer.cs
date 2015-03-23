@@ -348,6 +348,7 @@
             this.Name = "ModeJeu";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "ModeJeu";
+            this.Deactivate += new System.EventHandler(this.ModeJeu_Deactivate);
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.PartieRapide_FormClosing);
             this.Load += new System.EventHandler(this.PartieRapide_Load);
             this.Shown += new System.EventHandler(this.ModeJeu_Shown);

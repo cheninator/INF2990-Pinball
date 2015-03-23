@@ -193,6 +193,7 @@ namespace InterfaceGraphique
             parent_.setVisibilityMenuStrip(true);
             FonctionsNatives.modePause(true);
             parent_.setPeutAnimer(false);
+           
 
         }
 
@@ -251,6 +252,7 @@ namespace InterfaceGraphique
             parent_.setVisibilityMenuStrip(false);
             FonctionsNatives.modePause(false);
             parent_.setPeutAnimer(true);
+           
 
         }
 

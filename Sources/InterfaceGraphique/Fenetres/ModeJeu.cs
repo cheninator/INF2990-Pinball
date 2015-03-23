@@ -645,5 +645,13 @@ namespace InterfaceGraphique
                 Program.mMenu.modeJeuMain.Focus();
             firstStart = false;
         }
+
+        private void ModeJeu_Deactivate(object sender, EventArgs e)
+        {
+            FonctionsNatives.desactiverPalettesDJ1();
+            FonctionsNatives.desactiverPalettesDJ2();
+            FonctionsNatives.desactiverPalettesGJ1();
+            FonctionsNatives.desactiverPalettesGJ2();
+        }
     }
 }
