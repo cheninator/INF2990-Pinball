@@ -52,14 +52,20 @@ extern "C"
 
 	////////////////////////////////////////////////////////////////////////
 	///
-	/// @fn void trouverObjetSousPointClique(int i, int j)
+	/// @fn int selectionnerObjetSousPointClique(int i, int j, int hauteur, int largeur, bool ctrlDown)
 	///
-	/// @param[in] i: valeur en i dans l'ecran
-	/// @param[in] j: valeur en j dans l'ecran
+	/// @remark Cette fonction permet de selectionner un objet. La methode regarde la valeur
+	/// \remark du stencil et la donne a un visiteurSelection qui compare cette valeur
+	/// \remark aux numeros des noeuds et change les met selectionnes ou pas selon le resultat
+	/// \remark de la comparaison et selon qu'on a clique avec CTRL.
 	///
-	/// @return Aucune.
+	/// @param[in] i : Position souris i
+	/// @param[in] j : Position souris j
+	/// @param[in] hauteur : Hauteur de la fenetre
+	/// @param[in] largeur : Largeur de la fenetre
+	/// @param[in] ctrlDown : Si le bouton ctrl est appuie
 	///
-	/// @remark : Appel la fonction trouverObjetSousPointClique de FacadeModele
+	/// @return NoeudAbstrait.
 	///
 	////////////////////////////////////////////////////////////////////////
 	__declspec(dllexport) int __cdecl selectionnerObjetSousPointClique(int i, int j, int hauteur, int largeur, bool ctrlDown)
