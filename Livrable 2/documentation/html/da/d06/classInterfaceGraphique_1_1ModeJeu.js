@@ -16,6 +16,7 @@ var classInterfaceGraphique_1_1ModeJeu =
     [ "MettreAJour", "da/d06/classInterfaceGraphique_1_1ModeJeu.html#abaf3c27427d13faa31884dbcf7528af9", null ],
     [ "ModeJeu_Deactivate", "da/d06/classInterfaceGraphique_1_1ModeJeu.html#a171b62377bcde45e0f1c7f3bb3630ad9", null ],
     [ "ModeJeu_Shown", "da/d06/classInterfaceGraphique_1_1ModeJeu.html#a178ae01bd0c933660a8bce3f64c0dc03", null ],
+    [ "ModeJeu_VisibleChanged", "da/d06/classInterfaceGraphique_1_1ModeJeu.html#ac4077af3f4830b5d4ef86020ef687749", null ],
     [ "mPrincipal_menu_Click", "da/d06/classInterfaceGraphique_1_1ModeJeu.html#a40ab818b9d4b47593a9e376db48b1bfc", null ],
     [ "panel_GL_MouseClick", "da/d06/classInterfaceGraphique_1_1ModeJeu.html#a41fca995fcd601331c1a08bbe3094333", null ],
     [ "panel_GL_MouseWheel", "da/d06/classInterfaceGraphique_1_1ModeJeu.html#af321742b40504ee5c6f40b78f320e7c0", null ],

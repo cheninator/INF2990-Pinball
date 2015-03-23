@@ -2,8 +2,6 @@ var searchData=
 [
   ['calculerprofondeur',['calculerProfondeur',['../d7/d8e/classNoeudAbstrait.html#ad854800087fd6c13f1a63589caefb41d',1,'NoeudAbstrait::calculerProfondeur()'],['../d4/d1e/classNoeudComposite.html#ac2725a10b80438f67bb51076f13a78e1',1,'NoeudComposite::calculerProfondeur()']]],
   ['calculerprofondeurmaximale',['calculerProfondeurMaximale',['../d8/d43/classArbreRendu.html#acf0e53d52040b07cd6550fda79867bd5',1,'ArbreRendu']]],
-  ['cam_5fnewframe',['cam_NewFrame',['../de/df0/classInterfaceGraphique_1_1MainMenu.html#a854e9ed08537eac1470c8bb45965744e',1,'InterfaceGraphique::MainMenu']]],
-  ['cameracontrol',['cameraControl',['../de/df0/classInterfaceGraphique_1_1MainMenu.html#aff1ec6b6028424265ebd111c1cb9f631',1,'InterfaceGraphique::MainMenu']]],
   ['campagne',['Campagne',['../d3/dec/classInterfaceGraphique_1_1Campagne.html#a4fa77980ff9b0560856fcf3f3f0870c2',1,'InterfaceGraphique::Campagne']]],
   ['campagne_5fkeypress',['Campagne_KeyPress',['../d3/dec/classInterfaceGraphique_1_1Campagne.html#a56da8086ceea22ae57e8ed8d0b15765b',1,'InterfaceGraphique::Campagne']]],
   ['campagne_5fkeyup',['Campagne_KeyUp',['../d3/dec/classInterfaceGraphique_1_1Campagne.html#ac21646491ed17a5315ea3f95ab8fc8e9',1,'InterfaceGraphique::Campagne']]],
