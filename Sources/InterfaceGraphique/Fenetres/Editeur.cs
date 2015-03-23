@@ -51,7 +51,8 @@ namespace InterfaceGraphique
         private int nbSelection;
         private bool colorShift = false;
         private StringBuilder pathXML = new StringBuilder(""); ///< Chemin pour la lecture/sauvegarde XML
-
+        private char POINT1 = ',';
+        private char POINT2 = '.';
         private EtatEditeurAbstrait etat { get; set; } ///< Machine a etat
         private int[] prop = new int[6]; ///< Proprietes du jeu a sauvegarder
         private bool activateAmbianteLight = false; ///< EtatEditeurAbstrait de la lumiere ambiante
@@ -1064,6 +1065,16 @@ namespace InterfaceGraphique
         ////////////////////////////////////////////////////////////////////////
         private void OK_prop_bouton_Click(object sender, EventArgs e)
         {
+            if ((Math.Round(FonctionsNatives.getScale() * 100) / 100).ToString().Contains(","))
+            {
+                POINT1 = '.';
+                POINT2 = ',';
+            }
+            else
+            {
+                POINT2 = '.';
+                POINT1 = ',';
+            }
             annulerModif();
             int positionX;
             int positionY;
@@ -1080,7 +1091,7 @@ namespace InterfaceGraphique
             if (FMEbox.Text == "")
                 FMEbox.Text = "1";
 
-            FMEbox.Text = FMEbox.Text.Replace(",", ".");
+            FMEbox.Text = FMEbox.Text.Replace(POINT1, POINT2);
 
             if (!int.TryParse(Xbox.Text, out positionX))
                 Xbox.Text = "ERREUR";
