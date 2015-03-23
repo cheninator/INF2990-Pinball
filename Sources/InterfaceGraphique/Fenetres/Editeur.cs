@@ -3095,7 +3095,15 @@ namespace InterfaceGraphique
             Program.myCustomConsole.Hide();
             this.Close();
         }
-
+        //////////////////////////////////////////////////////////////////////////////////////////
+        ///
+        /// @fn private void Editeur_Shown(object sender, EventArgs e)
+        /// @brief Affichage de console custom lorsqu'on entre en mode Editeur.
+        /// @param[in] sender : Objet duquel provient un evenement.
+        /// @param[in] e : evenement qui lance la fonction.
+        /// @return Aucune.
+        ///
+        //////////////////////////////////////////////////////////////////////////////////////////
         private void Editeur_Shown(object sender, EventArgs e)
         {
             updateFrame = true;
