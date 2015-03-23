@@ -207,7 +207,7 @@ namespace InterfaceGraphique
         /// @fn private void ToucheDown(Object o, KeyEventArgs e)
         /// @brief Gestion des etats lorsqu'une touche est enfoncee.
         /// 
-        /// @param[in] sender : Objet duquel provient un evenement
+        /// @param[in] o : Objet duquel provient un evenement
         /// @param[in] e : evenement qui lance la fonction.
         /// 
         /// @return Aucune.
@@ -275,7 +275,7 @@ namespace InterfaceGraphique
         /// @fn private void ToucheDownTest(Object o, KeyEventArgs e)
         /// @brief Gestion des etats lorsqu'une touche est appuye dans le mode Test.
         /// 
-        /// @param[in] sender : Objet duquel provient un evenement
+        /// @param[in] o : Objet duquel provient un evenement
         /// @param[in] e : evenement qui lance la fonction.
         /// 
         /// @return Aucune.
@@ -313,7 +313,7 @@ namespace InterfaceGraphique
         /// @fn private void ToucheUpTest(Object o, KeyEventArgs e)
         /// @brief Gestion des etats lorsqu'une touche est relâchee en mode Test.
         /// 
-        /// @param[in] sender : Objet duquel provient un evenement
+        /// @param[in] o : Objet duquel provient un evenement
         /// @param[in] e : evenement qui lance la fonction.
         /// 
         /// @return Aucune.
@@ -350,7 +350,7 @@ namespace InterfaceGraphique
         /// @fn private void ToucheUp(Object o, KeyEventArgs e)
         /// @brief Gestion des etats lorsqu'une touche est relâchee.
         /// 
-        /// @param[in] sender : Objet duquel provient un evenement
+        /// @param[in] o : Objet duquel provient un evenement
         /// @param[in] e : evenement qui lance la fonction.
         /// 
         /// @return Aucune.
@@ -380,7 +380,7 @@ namespace InterfaceGraphique
         /// @fn private void ToucheEnfonce(Object o, KeyPressEventArgs e)
         /// @brief Gestion des etats lorsqu'une touche est enfoncee.
         /// 
-        /// @param[in] sender : Objet duquel provient un evenement
+        /// @param[in] o : Objet duquel provient un evenement
         /// @param[in] e : evenement qui lance la fonction.
         /// 
         /// @return Aucune.
@@ -388,8 +388,6 @@ namespace InterfaceGraphique
         ////////////////////////////////////////////////////////////////////////
         private void ToucheEnfonce(Object o, KeyPressEventArgs e)
         {
-
-
             if ((etat is EtatEditeurZoomElastique) || (etat is EtatEditeurSelectionMultiple))
             {
                 return;
@@ -408,7 +406,6 @@ namespace InterfaceGraphique
                 }
                 else if (e.KeyChar == 'b')
                 {
-
                     if (FonctionsNatives.obtenirAffichageGlobal() == 0)
                     {
                         FonctionsNatives.WriteLine("Affichage bloque. On debloque");
@@ -528,13 +525,10 @@ namespace InterfaceGraphique
                         fs.EnterFullScreenMode(this);
                     // A modifier si on veut            
                     //  FonctionsNatives.resetZoom();
-
                 }
-
                 else if (e.KeyChar == 's')
                 {
                     Selection_MenuItem_Click(this, e);
-
                 }
                 else if (e.KeyChar == 'p')
                 {
@@ -544,7 +538,6 @@ namespace InterfaceGraphique
                 {
                     Mute_MenuItem_Click(this, e);
                 }
-
                 else if (e.KeyChar == 'h')
                 {
                     if (richTextBox1.Visible)
@@ -552,39 +545,29 @@ namespace InterfaceGraphique
                     else
                         richTextBox1.Show();
                 }
-
                 else if (e.KeyChar == 'z')
                 {
                     Zoom_MenuItem_Click(this, e);
 
-
                 }
-
                 else if (nbSelection != 0)
                 {
-
                     if (e.KeyChar == 'd')
                     {
                         bouton_Deplacement_Click(this, e);
-
                     }
                     else if (e.KeyChar == 'e')
                     {
 
                         bouton_Scaling_Click(this, e);
                     }
-
                     else if (e.KeyChar == 'r')
                     {
                         bouton_Rotation_Click(this, e);
-
                     }
-
                     else if (e.KeyChar == 'c')
                     {
                         bouton_Duplication_Click(this, e);
-
-
                     }
                 }
                 else if (nbSelection == 0)
@@ -592,8 +575,6 @@ namespace InterfaceGraphique
                     outilCourant("Selectionnez au moins un objet.");
                 }
             }
-
-
         }
 
         ////////////////////////////////////////////////////////////////////////

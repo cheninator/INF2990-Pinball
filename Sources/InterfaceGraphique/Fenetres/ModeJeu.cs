@@ -404,9 +404,10 @@ namespace InterfaceGraphique
 
         ////////////////////////////////////////////////////////////////////////
         ///
-        /// @fn private void FinCampagne(bool active)
+        /// @fn private void FinCampagne(bool active, nbPoints)
         /// @brief Desactivation d'options en fin de campagne.
         /// @param[in] active : valeur d'activation.
+        /// @param[in] nbPoints : nombre de points gagne.
         /// @return Aucune.
         ///
         ////////////////////////////////////////////////////////////////////////
