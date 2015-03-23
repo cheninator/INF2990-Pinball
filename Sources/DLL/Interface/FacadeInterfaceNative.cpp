@@ -934,13 +934,22 @@ extern "C"
 	/// @remark : Retourne le x de la position du dernier objet selectionne qu'on a trouve dans l'arbre.
 	///
 	///////////////////////////////////////////////////////////////////////////////
-	__declspec(dllexport) double __cdecl getPositionX( void )
-	{
+	__declspec(dllexport) double __cdecl getPositionX( void ) {
+		double positionX = 0;
+		if (objet == nullptr)
+			return false;
+		
 		for (unsigned int j = 0; j < FacadeModele::obtenirInstance()->obtenirArbreRenduINF2990()->getEnfant(0)->obtenirNombreEnfants(); j++)
 		{
-			if (FacadeModele::obtenirInstance()->obtenirArbreRenduINF2990()->getEnfant(0)->chercher(j)->estSelectionne())
-				return FacadeModele::obtenirInstance()->obtenirArbreRenduINF2990()->getEnfant(0)->chercher(j)->obtenirPositionRelative().x;
+			if (
+				FacadeModele::obtenirInstance()->obtenirArbreRenduINF2990()->getEnfant(0)->chercher(j)->estSelectionne()
+				) {
+				objet = FacadeModele::obtenirInstance()->obtenirArbreRenduINF2990()->getEnfant(0)->chercher(j);
+				positionX = objet->obtenirPositionRelative().x;
+			}
 		}
+		
+		return positionX;
 	}
 
 
@@ -954,13 +963,23 @@ extern "C"
 	/// @remark : Retourne le y de la position du dernier objet selectionne qu'on a trouve dans l'arbre.
 	///
 	///////////////////////////////////////////////////////////////////////////////
-	__declspec(dllexport) double __cdecl getPositionY(void)
+	__declspec(dllexport) double __cdecl getPositionY( void )
 	{
+		double positionY = 0;
+		if (objet == nullptr)
+			return false;
 		for (unsigned int j = 0; j < FacadeModele::obtenirInstance()->obtenirArbreRenduINF2990()->getEnfant(0)->obtenirNombreEnfants(); j++)
 		{
-			if (FacadeModele::obtenirInstance()->obtenirArbreRenduINF2990()->getEnfant(0)->chercher(j)->estSelectionne())
-				return FacadeModele::obtenirInstance()->obtenirArbreRenduINF2990()->getEnfant(0)->chercher(j)->obtenirPositionRelative().y;
+			if (
+				FacadeModele::obtenirInstance()->obtenirArbreRenduINF2990()->getEnfant(0)->chercher(j)->estSelectionne()
+				) {
+				objet = FacadeModele::obtenirInstance()->obtenirArbreRenduINF2990()->getEnfant(0)->chercher(j);
+				positionY = objet->obtenirPositionRelative().y;
+				
+			}
 		}
+
+		return positionY;
 	}
 
 	///////////////////////////////////////////////////////////////////////////////
@@ -972,13 +991,22 @@ extern "C"
 	/// @remark : Retourne l'angleZ du dernier objet selectionne qu'on a trouve dans l'arbre.
 	///
 	///////////////////////////////////////////////////////////////////////////////
-	__declspec(dllexport) double __cdecl getAngle(void)
+	__declspec(dllexport) double getAngle( void )
 	{
+		if (objet == nullptr)
+			return false;
+		double angle=0;
 		for (unsigned int j = 0; j < FacadeModele::obtenirInstance()->obtenirArbreRenduINF2990()->getEnfant(0)->obtenirNombreEnfants(); j++)
 		{
-			if (FacadeModele::obtenirInstance()->obtenirArbreRenduINF2990()->getEnfant(0)->chercher(j)->estSelectionne())
-				return FacadeModele::obtenirInstance()->obtenirArbreRenduINF2990()->getEnfant(0)->chercher(j)->obtenirRotation().z;
+			if (
+				FacadeModele::obtenirInstance()->obtenirArbreRenduINF2990()->getEnfant(0)->chercher(j)->estSelectionne()
+				) {
+				objet = FacadeModele::obtenirInstance()->obtenirArbreRenduINF2990()->getEnfant(0)->chercher(j);
+				angle = objet->obtenirRotation().z;
+			}
 		}
+
+		return  angle;
 	}
 
 	///////////////////////////////////////////////////////////////////////////////
@@ -992,11 +1020,20 @@ extern "C"
 	///////////////////////////////////////////////////////////////////////////////
 	__declspec(dllexport) double getScale( void )
 	{
+		double scale =0;
+		if (objet == nullptr)
+			return false;
 		for (unsigned int j = 0; j < FacadeModele::obtenirInstance()->obtenirArbreRenduINF2990()->getEnfant(0)->obtenirNombreEnfants(); j++)
 		{
-			if (FacadeModele::obtenirInstance()->obtenirArbreRenduINF2990()->getEnfant(0)->chercher(j)->estSelectionne())
-				return FacadeModele::obtenirInstance()->obtenirArbreRenduINF2990()->getEnfant(0)->chercher(j)->obtenirAgrandissement().y;
+			if (
+				FacadeModele::obtenirInstance()->obtenirArbreRenduINF2990()->getEnfant(0)->chercher(j)->estSelectionne()
+				) {
+				objet = FacadeModele::obtenirInstance()->obtenirArbreRenduINF2990()->getEnfant(0)->chercher(j);
+				scale = objet->obtenirAgrandissement().y;
+			}
 		}
+
+		return  scale;
 	}
 
 	////////////////////////////////////////////////////////////////////////
