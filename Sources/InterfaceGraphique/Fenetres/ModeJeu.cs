@@ -248,7 +248,10 @@ namespace InterfaceGraphique
                     }
                     if (billesDisponibles == 0 && boolTemp && billesEnJeu == 0)
                     {
-                        FinCampagne(false);
+                        if (nbZones == 1)
+                            FinCampagne(false, pointsPartie);
+                        else
+                            FinCampagne(false, -5);
                     }
                     if (pointsPartie >= nombreDeBillesGagnes * pointsGagnerBille + pointsGagnerBille)
                     {
@@ -266,7 +269,7 @@ namespace InterfaceGraphique
                     {
                         if (currentZone >= nbZones)
                         {
-                            FinCampagne(true);
+                            FinCampagne(true,-5);
 
                         }
                         else
@@ -405,12 +408,12 @@ namespace InterfaceGraphique
         /// @return Aucune.
         ///
         ////////////////////////////////////////////////////////////////////////
-        private void FinCampagne(bool active)
+        private void FinCampagne(bool active, int nbPoints)
         {
             Program.myCustomConsole.Hide();
             peutAnimer = false;
             boolTemp = false;
-            gameOver = new PartieTerminee(active);
+            gameOver = new PartieTerminee(active,nbPoints);
             Program.myCustomConsole.Hide();
             gameOver.ShowDialog(this);
             if (Program.mMenu.modeJeuMain != null)
@@ -646,6 +649,16 @@ namespace InterfaceGraphique
             firstStart = false;
         }
 
+
+        ////////////////////////////////////////////////////////////////////////
+        ///
+        /// @fn private void ModeJeu_Deactivate(object sender, EventArgs e)
+        /// @brief Desactiver les palettes lorsqu'on sort de la form
+        /// @param[in] sender : Objet duquel provient un evenement.
+        /// @param[in] e : evenement qui lance la fonction.
+        /// @return Aucune.
+        ///
+        ////////////////////////////////////////////////////////////////////////
         private void ModeJeu_Deactivate(object sender, EventArgs e)
         {
             FonctionsNatives.desactiverPalettesDJ1();

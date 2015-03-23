@@ -136,9 +136,6 @@
   <data name="flipperL" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\pinballflipper_2.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="baby" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\baby.jpeg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
   <data name="ressort" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\ressort.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
@@ -228,5 +225,14 @@
   </data>
   <data name="gate" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\gate.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="baby" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\baby.jpeg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="wink" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\wink.gif;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="winSound" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\winSound.wav;System.IO.MemoryStream, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
 </root>

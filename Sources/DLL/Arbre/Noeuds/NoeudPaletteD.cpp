@@ -19,7 +19,9 @@
 #include "OpenGL_Storage/ModeleStorage_Liste.h"
 #include "../../Commun/Externe/glm/include/glm/gtx/Projection.hpp"
 
-
+///////////////////////////////////////////////////////////////////////
+//  Vecteurs de la boite englobante sur mesure du modèle
+///////////////////////////////////////////////////////////////////////
 std::vector<glm::dvec3> NoeudPaletteD::boiteEnglobanteModele_{
 	{ 36.92, 11.96, 0 },
 	{ 54.41, 8.04, 0 },
@@ -307,29 +309,43 @@ void NoeudPaletteD::traiterCollisions(aidecollision::DetailsCollision details, N
 {
 	glm::dvec3 vecteur = bille->obtenirPositionRelative() - obtenirPositionRelative();
 	double distance = glm::length(vecteur);
-
+	
+	// Traitement de la collision dans le referentiel de la palette
 	glm::dvec3 vitesseReferentielPalette = vitesseAngulaire_ * distance * glm::normalize(glm::dvec3{ -vecteur.y, vecteur.x, 0 });
-	// En utilisant l'attribut vitesse angulaire, le calcul suivant va faire le bon calcul selon l'état de la palette.
-	// glm::dvec3 vitesseInitiale = bille->obtenirVitesse() - vitesseAngulaire_ * distanceProjetee * vecteurNormalPalette; // RefPalette
 	glm::dvec3 vitesseInitiale = bille->obtenirVitesse() - vitesseReferentielPalette; // RefPalette
 	glm::dvec3 vitesseNormaleInitiale = glm::proj(vitesseInitiale, details.direction); // Necessaire pour connaitre la vitesse tangentielle.
 	glm::dvec3 vitesseTangentielle = vitesseInitiale - vitesseNormaleInitiale;
 	glm::dvec2 vitesseNormaleFinale2D = aidecollision::calculerForceAmortissement2D(details, (glm::dvec2)vitesseInitiale, 1.0);
 
+	// Calcul de la vitesse finale dans le referentiel de la table
 	glm::dvec3 vitesseFinale = vitesseTangentielle + glm::dvec3{ vitesseNormaleFinale2D.x, vitesseNormaleFinale2D.y, 0.0 } + vitesseReferentielPalette; 
-
-	// Maintenant, vitesseFinale est dans le referentiel de la table.
 
 	// S'assurer qu'on ne sera pas en collision avec la palette au prochain frame.
 	glm::dvec3 positionFinale = bille->obtenirPositionRelative() + details.enfoncement * glm::normalize(details.direction);
 
+	// Faire les assignations
 	bille->assignerPositionRelative(positionFinale);
 	bille->assignerVitesse(vitesseFinale);
 	bille->assignerImpossible(true);
+
+	// Affichage de debogage
 	((NoeudBille*)bille)->afficherVitesse(vitesseFinale); // Que Dieu me pardonne
 }
 
-
+////////////////////////////////////////////////////////////////////////
+///
+/// @fn bool NoeudPaletteD::estActiveeParBille(NoeudAbstrait* bille)
+///
+/// Cette fonction verifie si une bille passee en parametre est dans une 
+/// la zone balayee par la palette.  Cette fonction permet au joueur 
+/// virtuel de decider d'activer ses palettes
+/// 
+/// @param[in] bille : bille l'objet pour lequel on verifie s'il est
+/// dans la zone balayee par la palette.
+///
+/// @return true si la bille est dans la zone balayee par la palette.
+///
+////////////////////////////////////////////////////////////////////////
 bool NoeudPaletteD::estActiveeParBille(NoeudAbstrait* bille)
 {
 	// Si la palette n'a jamais etee activee, elle ne connait pas son angle original.
@@ -360,13 +376,28 @@ bool NoeudPaletteD::estActiveeParBille(NoeudAbstrait* bille)
 		&& asin(glm::length(produitVectoriel) / glm::length(vecteur)) < sin(60 * utilitaire::PI_180)
 		&& distance < longueurPalette)
 		return true;
-
 	else
 		return false;
 }
 
 
-
+////////////////////////////////////////////////////////////////////////
+///
+/// @fn double NoeudPaletteD::fonctionDroitePaletteOriginale(NoeudAbstrait* bille)
+///
+/// Traite la droite definie par la palette au repos comme une equation F(x,y) == 0.  La fonction
+/// calcule F(x,y) avec le x et le y de la bille passee en parametre.
+/// La fonction permet de savoir si la bille est au dessus ou en 
+/// dessous de la palette.
+///
+/// @param[in] bille : bille objet donnant le x et y pour calculer F(x,y)
+///
+/// @return la valeur de F(x,y) pour le x et le y de la bille
+///
+/// @remark deprecated. On devrait utiliser le signe de la composante z du produit
+/// vectoriel pour determiner si on est au dessus de l'axe de la palette ou en dessous
+///
+////////////////////////////////////////////////////////////////////////
 double NoeudPaletteD::fonctionDroitePaletteOriginale(NoeudAbstrait* bille)
 {
 	glm::dvec3 positionBille = bille->obtenirPositionRelative();
@@ -381,6 +412,24 @@ double NoeudPaletteD::fonctionDroitePaletteOriginale(NoeudAbstrait* bille)
 	return positionBille.y - pente * positionBille.x - b;
 }
 
+
+////////////////////////////////////////////////////////////////////////
+///
+/// @fn double NoeudPaletteD::fonctionDroitePaletteEnMouvement(NoeudAbstrait* bille)
+///
+/// Traite la droite definie par la palette dans sa position courante comme une equation F(x,y) == 0.  La fonction
+/// calcule F(x,y) avec le x et le y de la bille passee en parametre.
+/// La fonction permet de savoir si la bille est au dessus ou en 
+/// dessous de la palette.
+///
+/// @param[in] bille : bille objet donnant le x et y pour calculer F(x,y)
+///
+/// @return la valeur de F(x,y) pour le x et le y de la bille
+///
+/// @remark deprecated. On devrait utiliser le signe de la composante z du produit
+/// vectoriel pour determiner si on est au dessus de l'axe de la palette ou en dessous
+///
+////////////////////////////////////////////////////////////////////////
 double NoeudPaletteD::fonctionDroitePaletteEnMouvement(NoeudAbstrait* bille)
 {
 	glm::dvec3 positionBille = bille->obtenirPositionRelative();
@@ -396,8 +445,15 @@ double NoeudPaletteD::fonctionDroitePaletteEnMouvement(NoeudAbstrait* bille)
 }
 
 
-
-/// Obtenir la premiere boite englobante custom de l'histoire!
+////////////////////////////////////////////////////////////////////////
+///
+/// @fn std::vector<glm::dvec3> NoeudPaletteD::obtenirVecteursEnglobants()
+///
+/// Retourne la boite englobante de l'objet sous forme d'un vector de vecteurs
+///
+/// @remark Pour avoir les points de la boite englobante, il faut additionner la position de l'objet.
+///
+////////////////////////////////////////////////////////////////////////
 std::vector<glm::dvec3> NoeudPaletteD::obtenirVecteursEnglobants()
 {
 	std::vector<glm::dvec3> boiteEnglobanteObjet;
