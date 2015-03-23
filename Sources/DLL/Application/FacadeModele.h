@@ -28,7 +28,9 @@
 
 #include <windows.h>
 #include <string>
+#include <iostream>
 #include <iomanip>
+#include <sstream>
 #include <set>
 #include <vector>
 #include "glm/glm.hpp"
@@ -228,6 +230,8 @@ public:
    void printCurrentTime();
    double obtenirScaleMinMax();
 
+   std::string obtenirCout(){ std::string ss = instance_->oss_.str; instance_->oss_.str = "";  return ss; };
+
 private:
 
    /// Constructeur par defaut.
@@ -256,6 +260,9 @@ private:
    int* proprietes_;						/// Pour les proprietes de la zone de jeu
    JoueurVirtuel* joueur_{ nullptr };
    QuadTree* quad_{ nullptr };
+
+   std::stringstream oss_;
+   std::streambuf* old_;
 
    glm::dvec3 selectionBasGauche_, selectionHautDroit_;
    glm::ivec2 pointInitial_, pointAvant_;

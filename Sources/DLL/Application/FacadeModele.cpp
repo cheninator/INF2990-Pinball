@@ -103,6 +103,7 @@ FacadeModele* FacadeModele::obtenirInstance()
 		instance_->joueur_ = new JoueurVirtuel();
 		instance_->quad_ = new QuadTree(glm::dvec3(coinGaucheTableX, coinGaucheTableY, 0),
 										glm::dvec3(coinDroitTableX,  coinDroitTableY,  0));
+		instance_->old_ = std::cout.rdbuf(instance_->oss_.rdbuf());
 	}
 	return instance_;
 }
@@ -119,6 +120,7 @@ FacadeModele* FacadeModele::obtenirInstance()
 ////////////////////////////////////////////////////////////////////////
 void FacadeModele::libererInstance()
 {
+	std::cout.rdbuf(instance_->old_);
 	delete instance_;
 	instance_ = nullptr;
 }
