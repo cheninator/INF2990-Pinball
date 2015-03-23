@@ -1840,9 +1840,10 @@ void FacadeModele::relacherRessort()
 
 ///////////////////////////////////////////////////////////////////////////////
 ///
-/// @fn void FacadeModele::assignerAnimer(bool animer)
+/// @fn void FacadeModele::assignerAnimer(bool animer, NoeudAbstrait* noeud)
 ///
 /// @param[in]  animer : la valeur de animer a assigner.
+/// @param[in]  noeud : la noeud a animer
 ///
 /// @return Aucune.
 ///

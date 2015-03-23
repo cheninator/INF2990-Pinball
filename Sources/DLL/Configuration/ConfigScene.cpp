@@ -170,7 +170,7 @@ void ConfigScene::lireFichierBinaire()
 
 ////////////////////////////////////////////////////////////////////////
 ///
-/// @fn void ConfigScene::modifierConfiguration(int config[13])
+/// @fn void ConfigScene::modifierConfiguration(int config[])
 ///
 /// Cette fonction assigne les nouvelles configurations de zone de jeu.
 ///
@@ -204,6 +204,7 @@ void ConfigScene::modifierConfiguration(int config[13])
 /// Cette fonction assigne les nouvelles informations de derniere campagne jouée.
 ///
 /// @param[in] maps : La liste des informations de dernière campagne
+/// @param[in] length : Taille du string maps
 ///
 /// @return Aucune.
 ///

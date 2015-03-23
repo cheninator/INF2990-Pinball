@@ -397,13 +397,13 @@ void ArbreRenduINF2990::assignerDefaut()
 
 ////////////////////////////////////////////////////////////////////////
 ///
-/// @fn bool ArbreRenduINF2990::takeScreenShot(std::string path)
+/// @fn void ArbreRenduINF2990::takeScreenShot(char* path, int width, int height, bool square, int maxSize)
 ///
-/// @param[in] char* path : le chemin ou enregistrer
-/// @param[in] int width : largeur de la fenetre
-/// @param[in] int height : hauteur de la fenetre
-/// @param[in] int maxSize : taille maximale (pixel) de l'image
-/// @param[in] bool square : forme de l'image carre
+/// @param[in] path : le chemin ou enregistrer
+/// @param[in] width : largeur de la fenetre
+/// @param[in] height : hauteur de la fenetre
+/// @param[in] maxSize : taille maximale (pixel) de l'image
+/// @param[in] square : forme de l'image carre
 ///
 /// Cette fonction recoit un path vers le disque dur
 ///	et renregistre l'ecran afficher
