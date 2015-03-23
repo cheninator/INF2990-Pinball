@@ -113,7 +113,7 @@ namespace InterfaceGraphique
             Application.SetCompatibleTextRenderingDefault(false);
 
             myCustomConsole = new CustomConsoleHandler(customConsoleActive);
-            /*
+            
             string warningMessage = "\nNous ne sommes pas responsables des bogues et problemes qui pourraient survenir dans cette situation.\n";
 
             string machineName = System.Environment.MachineName;
@@ -126,7 +126,6 @@ namespace InterfaceGraphique
             if (!(System.Environment.OSVersion.Version.Major >= 6 &&
                 System.Environment.OSVersion.Version.Minor >= 1))
                 MessageBox.Show(warningMessageW, "AVERTISSEMENT", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-            */
             
             mMenu = new MainMenu();
             Application.Run(mMenu);
