@@ -105,6 +105,8 @@ FacadeModele* FacadeModele::obtenirInstance(bool console)
 										glm::dvec3(coinDroitTableX,  coinDroitTableY,  0));
 		if (console)
 			instance_->old_ = std::cout.rdbuf(instance_->oss_.rdbuf());
+		else
+			instance_->old_ = nullptr;
 	}
 	return instance_;
 }
@@ -121,7 +123,6 @@ FacadeModele* FacadeModele::obtenirInstance(bool console)
 ////////////////////////////////////////////////////////////////////////
 void FacadeModele::libererInstance()
 {
-	std::cout.rdbuf(instance_->old_);
 	delete instance_;
 	instance_ = nullptr;
 }
@@ -143,6 +144,8 @@ FacadeModele::~FacadeModele()
 	delete proprietes_;
 	delete joueur_;
 	delete quad_;
+	if (instance_->old_ != nullptr)
+		std::cout.rdbuf(instance_->old_);
 }
 
 
