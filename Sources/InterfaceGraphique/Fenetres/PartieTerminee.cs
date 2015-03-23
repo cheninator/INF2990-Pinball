@@ -40,27 +40,36 @@ namespace InterfaceGraphique
         /// @return Aucune (constructeur).
         ///
         ////////////////////////////////////////////////////////////////////////
-        public PartieTerminee(bool victoire)
+        public PartieTerminee(bool victoire, int nbPoints)
         {
             InitializeComponent();
             StartPosition = FormStartPosition.CenterScreen;
-           
-            if (victoire == false)
+            if (nbPoints > 0)
             {
-              //  player = new System.Media.SoundPlayer(Properties.Resources.Trombone);
-                player = new System.Media.SoundPlayer(Properties.Resources.gOver);
-
-                labelTermine.Text = "Désolé "+ Program.playerName + ". Vous avez perdu la partie...";
+                labelTermine.Text = "Félicitations " + Program.playerName + ". Vous avez terminé la partie avec " + nbPoints + " points!!!";
+                player = new System.Media.SoundPlayer(Properties.Resources.winSound);
                 imageTermine.SizeMode = PictureBoxSizeMode.StretchImage;
-                imageTermine.Image = Properties.Resources.Lose;
+                imageTermine.Image = Properties.Resources.wink;
             }
             else
             {
-                labelTermine.Text = "Félicitations " + Program.playerName + ". Vous avez remporté la partie!";
+                if (victoire == false)
+                {
+                    //  player = new System.Media.SoundPlayer(Properties.Resources.Trombone);
+                    player = new System.Media.SoundPlayer(Properties.Resources.gOver);
 
-                player = new System.Media.SoundPlayer(Properties.Resources.Fireworks);
-                imageTermine.SizeMode = PictureBoxSizeMode.StretchImage;
-                imageTermine.Image = Properties.Resources.Win;
+                    labelTermine.Text = "Désolé " + Program.playerName + ". Vous avez perdu la partie...";
+                    imageTermine.SizeMode = PictureBoxSizeMode.StretchImage;
+                    imageTermine.Image = Properties.Resources.Lose;
+                }
+                else
+                {
+                    labelTermine.Text = "Félicitations " + Program.playerName + ". Vous avez remporté la partie!";
+
+                    player = new System.Media.SoundPlayer(Properties.Resources.Fireworks);
+                    imageTermine.SizeMode = PictureBoxSizeMode.StretchImage;
+                    imageTermine.Image = Properties.Resources.Win;
+                }
             }
 
         }
