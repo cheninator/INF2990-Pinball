@@ -21,8 +21,8 @@
 #include <iomanip>
 #include <iostream>
 
-#include <ctime>        // std::time
-#include <cstdlib>      // std::rand, std::srand
+#include <ctime> // std::time
+#include <cstdlib> // std::rand, std::srand
 #include <windows.h>
 #include "BancTests.h"
 // SingletonGlobal::obtenirInstance()->outPutStream_
@@ -48,11 +48,11 @@ extern "C"
 
 	// Useless, pas d'orbite en ce moment
 	static double theta = 0; ///< Angle Theta
-	static double phi = 0;  /// < angle Phi
+	static double phi = 0; /// < angle Phi
 
 	////////////////////////////////////////////////////////////////////////
 	///
-	/// @fn __declspec(dllexport) void __cdecl  trouverObjetSousPointClique(int i, int j)
+	/// @fn void trouverObjetSousPointClique(int i, int j)
 	///
 	/// @param[in] i: valeur en i dans l'ecran
 	/// @param[in] j: valeur en j dans l'ecran
@@ -69,19 +69,19 @@ extern "C"
 
 	////////////////////////////////////////////////////////////////////////
 	///
-	/// @fn __declspec(dllexport) void __cdecl  initialiserOpenGL(int* handle)
+	/// @fn void initialiserOpenGL(int* handle)
 	///
 	/// @param[in] handle : Le handle.
 	///
 	/// @return Aucune.
 	///
 	/// @remark : Cette fonction initialise un contexte OpenGL dans la fenetre
-	/// \remark identifiee par le handle passe en parametre.  Cette fonction doit
+	/// \remark identifiee par le handle passe en parametre. Cette fonction doit
 	/// \remark etre la premiere a etre appelee, car la creation de l'objet du modele
 	/// \remark C++ s'attend a avoir un contexte OpenGL valide.
 	///
 	////////////////////////////////////////////////////////////////////////
-	__declspec(dllexport) void __cdecl  initialiserOpenGL(int* handle)
+	__declspec(dllexport) void __cdecl initialiserOpenGL(int* handle)
 	{
 		if (handle == nullptr)
 			return;
@@ -92,7 +92,7 @@ extern "C"
 
 	////////////////////////////////////////////////////////////////////////
 	///
-	/// @fn __declspec(dllexport) void __cdecl  libererOpenGL()
+	/// @fn void libererOpenGL()
 	///
 	/// @return Aucune.
 	///
@@ -101,11 +101,11 @@ extern "C"
 	/// \remark car elle libere egalement l'objet du modele C++
 	///
 	////////////////////////////////////////////////////////////////////////
-	__declspec(dllexport) void __cdecl  libererOpenGL()
+	__declspec(dllexport) void __cdecl libererOpenGL()
 	{
 		FacadeModele::obtenirInstance()->libererOpenGL();
 
-		/// Desinitialisation de la facade.  Le fait de le faire apres la
+		/// Desinitialisation de la facade. Le fait de le faire apres la
 		/// desinitialisation du contexte OpenGL aura pour consequence que la
 		/// liberation des listes d'affichages, par exemple, sera faite une fois que
 		/// le contexte n'existera plus, et sera donc sans effet.
@@ -115,14 +115,14 @@ extern "C"
 
 	////////////////////////////////////////////////////////////////////////
 	///
-	/// @fn __declspec(dllexport) void __cdecl  dessinerOpenGL()
+	/// @fn void dessinerOpenGL()
 	///
 	/// @return Aucune.
 	///
 	/// @remark : Cette fonction affiche la scene.
 	///
 	////////////////////////////////////////////////////////////////////////
-	__declspec(dllexport) void __cdecl  dessinerOpenGL()
+	__declspec(dllexport) void __cdecl dessinerOpenGL()
 	{
 		// Affiche la scene.
 		FacadeModele::obtenirInstance()->afficher();
@@ -134,19 +134,19 @@ extern "C"
 
 	////////////////////////////////////////////////////////////////////////
 	///
-	/// @fn __declspec(dllexport) void __cdecl  redimensionnerFenetre(int largeur, int hauteur)
+	/// @fn void redimensionnerFenetre(int largeur, int hauteur)
 	///
 	/// @param[in] largeur : La nouvelle largeur de la fenetre.
 	/// @param[in] hauteur : La nouvelle hauteur de la fenetre.
 	///
 	/// @return Aucune.
 	///
-	/// @remark :  Cette fonction doit etre appelee lorsque la fenetre est redimensionnee
+	/// @remark : Cette fonction doit etre appelee lorsque la fenetre est redimensionnee
 	/// \remark afin d'ajuster les parametres de la machine a etats
 	/// \remark d'OpenGL pour correspondre aux nouvelles dimensions de la fenetre.
 	///
 	////////////////////////////////////////////////////////////////////////
-	__declspec(dllexport) void __cdecl  redimensionnerFenetre(int largeur, int hauteur)
+	__declspec(dllexport) void __cdecl redimensionnerFenetre(int largeur, int hauteur)
 	{
 		FacadeModele::obtenirInstance()->obtenirVue()->redimensionnerFenetre(
 			glm::ivec2{ 0, 0 },
@@ -157,18 +157,18 @@ extern "C"
 
 	////////////////////////////////////////////////////////////////////////
 	///
-	/// @fn __declspec(dllexport) void __cdecl  animer(double temps)
+	/// @fn void animer(double temps)
 	///
 	/// @param[in] temps : Intervalle de temps sur lequel effectuer le calcul.
 	///
 	/// @return Aucune.
 	///
-	/// @remark :  Cette fonction effectue les differents calculs d'animations
+	/// @remark : Cette fonction effectue les differents calculs d'animations
 	/// \remark necessaires pour le mode jeu, tel que les differents calculs de
 	/// \remark physique du jeu.
 	///
 	////////////////////////////////////////////////////////////////////////
-	__declspec(dllexport) void __cdecl  animer(double temps)
+	__declspec(dllexport) void __cdecl animer(double temps)
 	{
 		FacadeModele::obtenirInstance()->animer((float)temps);
 	}
@@ -176,14 +176,14 @@ extern "C"
 
 	////////////////////////////////////////////////////////////////////////
 	///
-	/// @fn __declspec(dllexport) void __cdecl  zoomIn()
+	/// @fn void zoomIn()
 	///
 	/// @return Aucune.
 	///
-	/// @remark :  Cette fonction applique un zoom avant sur le present volume de vision.
+	/// @remark : Cette fonction applique un zoom avant sur le present volume de vision.
 	///
 	////////////////////////////////////////////////////////////////////////
-	__declspec(dllexport) void __cdecl  zoomIn()
+	__declspec(dllexport) void __cdecl zoomIn()
 	{
 		FacadeModele::obtenirInstance()->obtenirVue()->zoomerIn();
 	}
@@ -191,14 +191,14 @@ extern "C"
 
 	////////////////////////////////////////////////////////////////////////
 	///
-	/// @fn __declspec(dllexport) void __cdecl  zoomOut()
+	/// @fn void zoomOut()
 	///
 	/// @return Aucune.
 	///
-	/// @remark :  Cette fonction applique un zoom arriere sur le present volume de vision.
+	/// @remark : Cette fonction applique un zoom arriere sur le present volume de vision.
 	///
 	////////////////////////////////////////////////////////////////////////
-	__declspec(dllexport) void __cdecl  zoomOut()
+	__declspec(dllexport) void __cdecl zoomOut()
 	{
 		FacadeModele::obtenirInstance()->obtenirVue()->zoomerOut();
 	}
@@ -206,11 +206,11 @@ extern "C"
 
 	////////////////////////////////////////////////////////////////////////
 	///
-	/// @fn __declspec(dllexport) int __cdecl obtenirAffichagesParSeconde()
+	/// @fn int obtenirAffichagesParSeconde()
 	///
 	/// @return Le nombre d'affichage par seconde.
 	///
-	/// @remark :  Cette fonction permet d'obtenir le nombre d'affichages par seconde.
+	/// @remark : Cette fonction permet d'obtenir le nombre d'affichages par seconde.
 	///
 	////////////////////////////////////////////////////////////////////////
 	__declspec(dllexport) int __cdecl obtenirAffichagesParSeconde()
@@ -221,11 +221,11 @@ extern "C"
 
 	////////////////////////////////////////////////////////////////////////
 	///
-	/// @fn __declspec(dllexport) bool __cdecl executerTests()
+	/// @fn bool executerTests()
 	///
 	/// @return 0 si tous les tests ont reussi, 1 si au moins un test a echoue
 	///
-	/// @remark :  Cette fonction permet d'executer l'ensemble des tests unitaires
+	/// @remark : Cette fonction permet d'executer l'ensemble des tests unitaires
 	///
 	////////////////////////////////////////////////////////////////////////
 	__declspec(dllexport) bool __cdecl executerTests()
@@ -236,22 +236,22 @@ extern "C"
 
 	////////////////////////////////////////////////////////////////////////
 	///
-	/// @fn __declspec(dllexport) void __cdecl  creerObjet()
+	/// @fn void creerObjet()
 	///
 	///
-	/// @param[in]  value : Nom de l'objet
-	/// @param[in]  length : Taille du nom de l'objet
-	/// @param[in]  twin : si a un jumeau
-	/// @param[in]  colorShift : la couleur
+	/// @param[in] value : Nom de l'objet
+	/// @param[in] length : Taille du nom de l'objet
+	/// @param[in] twin : si a un jumeau
+	/// @param[in] colorShift : la couleur
 	///
 	/// @return Aucun
 	///
-	/// @remark :  Cette fonction permet de cree un objet 3D
+	/// @remark : Cette fonction permet de cree un objet 3D
 	///	\remark Cree un objet sans initialiser ses proprietes.La fonction C# qui
 	/// \remark L'appelle est responsable d'attribuer des proprietes.
 	///
 	////////////////////////////////////////////////////////////////////////
-	__declspec(dllexport) void __cdecl  creerObjet(char* value, int length, bool isTwin, bool colorShift)
+	__declspec(dllexport) void __cdecl creerObjet(char* value, int length, bool isTwin, bool colorShift)
 	{
 		std::string nomObjet(value);
 		if (nomObjet == "bille")
@@ -290,23 +290,23 @@ extern "C"
 
 	////////////////////////////////////////////////////////////////////////
 	///
-	/// @fn __declspec(dllexport) void __cdecl  creerObjetAvecTests()
+	/// @fn void creerObjetAvecTests()
 	///
-	/// @param[in]  value : Nom de l'objet
-	/// @param[in]  length : Taille du nom de l'objet
-	/// @param[in]  twin : si a un jumeau
-	/// @param[in]  colorShift : la couleur
-	/// @param[in]  posX : la position en X de l'objet a creer.
-	/// @param[in]  posY : la position en Y de l'objet a creer.
-	/// @param[in]  posZ : la position en Z de l'objet a creer.
-	/// @param[in]  angleX : l'angle en X de l'objet a creer.
-	/// @param[in]  angleY : l'angle en Y de l'objet a creer.
-	/// @param[in]  angleZ : l'angle en Z de l'objet a creer.
+	/// @param[in] value : Nom de l'objet
+	/// @param[in] length : Taille du nom de l'objet
+	/// @param[in] twin : si a un jumeau
+	/// @param[in] colorShift : la couleur
+	/// @param[in] posX : la position en X de l'objet a creer.
+	/// @param[in] posY : la position en Y de l'objet a creer.
+	/// @param[in] posZ : la position en Z de l'objet a creer.
+	/// @param[in] angleX : l'angle en X de l'objet a creer.
+	/// @param[in] angleY : l'angle en Y de l'objet a creer.
+	/// @param[in] angleZ : l'angle en Z de l'objet a creer.
 	///
 	/// @return True si l'objet a ete cree, false si une des etapes de la creation
 	///			a echoue.
 	///
-	/// @remark :  Cette fonction permet de cree un objet 3D.
+	/// @remark : Cette fonction permet de cree un objet 3D.
 	/// \remark Cette fonction contient toutes les etapes de la creation d'objet.
 	/// \remark Premierement, on fait quelques assignations specifiques aux portails et 
 	/// \remark aux murs. A la fin de ceci, l'objet est cree et on retient un pointeur
@@ -317,7 +317,7 @@ extern "C"
 	/// \remark de sa boite englobante.
 	/// \remark 
 	/// \remark Si chaque point de la boite englobante passe le test, on ajoute l'objet
-	/// \remark a l'arbre de rendu comme enfant de la table.  Sinon, on l'efface.
+	/// \remark a l'arbre de rendu comme enfant de la table. Sinon, on l'efface.
 	///
 	////////////////////////////////////////////////////////////////////////
 	__declspec(dllexport) bool __cdecl creerObjetAvecTests(char* value, int length, bool isTwin, bool colorShift, 
@@ -407,18 +407,18 @@ extern "C"
 
 	////////////////////////////////////////////////////////////////////////
 	///
-	/// @fn __declspec(dllexport) void __cdecl  positionObjet(int x, int y, int z)
+	/// @fn void positionObjet(int x, int y, int z)
 	///
-	/// @param[in]  x : La positon en x
-	/// @param[in]  y : La positon en y
-	/// @param[in]  z : La positon en z
+	/// @param[in] x : La positon en x
+	/// @param[in] y : La positon en y
+	/// @param[in] z : La positon en z
 	///
 	/// @return Aucune.
 	///
 	/// @remark : Permet de deplacer un objet en x y et/ou z
 	///
 	////////////////////////////////////////////////////////////////////////
-	__declspec(dllexport) void __cdecl  positionObjet(int x, int y, int z)
+	__declspec(dllexport) void __cdecl positionObjet(int x, int y, int z)
 	{
 		if (objet == nullptr)
 			return;
@@ -433,18 +433,18 @@ extern "C"
 
 	////////////////////////////////////////////////////////////////////////
 	///
-	/// @fn __declspec(dllexport) void __cdecl  translateObjet(int x, int y, int z)
+	/// @fn void translateObjet(int x, int y, int z)
 	///
-	/// @param[in]  x : La positon en x
-	/// @param[in]  y : La positon en y
-	/// @param[in]  z : La positon en z
+	/// @param[in] x : La positon en x
+	/// @param[in] y : La positon en y
+	/// @param[in] z : La positon en z
 	///
 	/// @return Aucune.
 	///
 	/// @remark : Permet de deplacer un objet en x y et/ou z
 	///
 	////////////////////////////////////////////////////////////////////////
-	__declspec(dllexport) void __cdecl  translateObjet(int x, int y, int z)
+	__declspec(dllexport) void __cdecl translateObjet(int x, int y, int z)
 	{
 		if (objet == nullptr)
 			return;
@@ -459,16 +459,16 @@ extern "C"
 
 	////////////////////////////////////////////////////////////////////////
 	///
-	/// @fn __declspec(dllexport) void __cdecl  scaleObjet(double scale)
+	/// @fn void scaleObjet(double scale)
 	///
-	/// @param[in]  scale : La multiplication en x
+	/// @param[in] scale : La multiplication en x
 	///
 	/// @return Aucune.
 	///
 	/// @remark : Permet de resize un objet uniformement
 	///
 	////////////////////////////////////////////////////////////////////////
-	__declspec(dllexport) void __cdecl  scaleObjet(double scale)
+	__declspec(dllexport) void __cdecl scaleObjet(double scale)
 	{
 		if (objet == nullptr)
 			return;
@@ -480,9 +480,9 @@ extern "C"
 
 	////////////////////////////////////////////////////////////////////////
 	///
-	/// @fn __declspec(dllexport) void __cdecl  addScaleObjet(int myScale)
+	/// @fn void addScaleObjet(int myScale)
 	///
-	/// @param[in]  myScale : La multiplication en x
+	/// @param[in] myScale : La multiplication en x
 	///
 	/// @return Aucune.
 	///
@@ -490,7 +490,7 @@ extern "C"
 	///
 	////////////////////////////////////////////////////////////////////////
 
-	__declspec(dllexport) void __cdecl  addScaleObjet(int myScale)
+	__declspec(dllexport) void __cdecl addScaleObjet(int myScale)
 	{
 		if (objet == nullptr)
 			return;
@@ -511,11 +511,11 @@ extern "C"
 
 	////////////////////////////////////////////////////////////////////////
 	///
-	/// @fn __declspec(dllexport) void __cdecl  scaleObjetXYZ(double x, double y, double z)
+	/// @fn void scaleObjetXYZ(double x, double y, double z)
 	///
-	/// @param[in]  x : La multiplication en x
-	/// @param[in]  y : La multiplication en y
-	/// @param[in]  z : La multiplication en z
+	/// @param[in] x : La multiplication en x
+	/// @param[in] y : La multiplication en y
+	/// @param[in] z : La multiplication en z
 	///
 	/// 
 	///
@@ -524,7 +524,7 @@ extern "C"
 	/// @remark : Permet de resize un objet en x y z
 	///
 	////////////////////////////////////////////////////////////////////////
-	__declspec(dllexport) void __cdecl  scaleObjetXYZ(double x, double y, double z)
+	__declspec(dllexport) void __cdecl scaleObjetXYZ(double x, double y, double z)
 	{
 		if (objet == nullptr)
 			return;
@@ -533,17 +533,17 @@ extern "C"
 
 	////////////////////////////////////////////////////////////////////////
 	///
-	/// @fn __declspec(dllexport) void __cdecl  rotate(float angle, char direction)
+	/// @fn void rotate(float angle, char direction)
 	///
-	/// @param[in]  angle : L'angle de rotation
-	/// @param[in]  direction : La direction dans la quel on applique la rotation.
+	/// @param[in] angle : L'angle de rotation
+	/// @param[in] direction : La direction dans la quel on applique la rotation.
 	///
 	/// @return Aucune.
 	///
 	/// @remark : Permet de faire tourner notre objet
 	///
 	////////////////////////////////////////////////////////////////////////
-	__declspec(dllexport) void __cdecl  rotate(float angle, char direction)
+	__declspec(dllexport) void __cdecl rotate(float angle, char direction)
 	{
 		if (objet == nullptr)
 			return;
@@ -559,14 +559,14 @@ extern "C"
 
 	////////////////////////////////////////////////////////////////////////
 	///
-	/// @fn __declspec(dllexport) void __cdecl  resetObject( void )
+	/// @fn void resetObject( void )
 	///
 	/// @return Aucune.
 	///
 	/// @remark : Remet les donnees d'un objet a 0
 	///
 	////////////////////////////////////////////////////////////////////////
-	__declspec(dllexport) void __cdecl  resetObject( void )
+	__declspec(dllexport) void __cdecl resetObject( void )
 	{
 		if (objet == nullptr)
 			return;
@@ -578,14 +578,14 @@ extern "C"
 
 	////////////////////////////////////////////////////////////////////////
 	///
-	/// @fn __declspec(dllexport) void __cdecl  removeObject( void )
+	/// @fn void removeObject( void )
 	///
 	/// Remet les donnees d'un objet a 0
 	///
 	/// @return Aucune.
 	///
 	////////////////////////////////////////////////////////////////////////
-	__declspec(dllexport) void __cdecl  removeObject( void )
+	__declspec(dllexport) void __cdecl removeObject( void )
 	{
 		FacadeModele::obtenirInstance()->supprimer();
 	}
@@ -593,14 +593,14 @@ extern "C"
 
 	////////////////////////////////////////////////////////////////////////
 	///
-	/// @fn __declspec(dllexport) void __cdecl  purgeAll( void )
+	/// @fn void purgeAll( void )
 	///
 	/// @return Aucune.
 	///
 	/// @remark : Detruit l'arbre de rendu
 	///
 	////////////////////////////////////////////////////////////////////////
-	__declspec(dllexport) void __cdecl  purgeAll( void )
+	__declspec(dllexport) void __cdecl purgeAll( void )
 	{
 		FacadeModele::obtenirInstance()->obtenirArbreRenduINF2990()->initialiser();
 	}
@@ -608,17 +608,17 @@ extern "C"
 
 	////////////////////////////////////////////////////////////////////////
 	///
-	/// @fn __declspec(dllexport) void __cdecl  translater(double deplacementX, double deplacementY)
+	/// @fn void translater(double deplacementX, double deplacementY)
 	///
-	/// @param[in]  deplacementX : Deplacement en pourcentage de la largeur.
-	/// @param[in]  deplacementY : Deplacement en pourcentage de la hauteur.
+	/// @param[in] deplacementX : Deplacement en pourcentage de la largeur.
+	/// @param[in] deplacementY : Deplacement en pourcentage de la hauteur.
 	///
 	/// @return Aucune.
 	///
 	/// @remark : Permet de faire un "plan" d'un certain pourcentage.
 	///
 	////////////////////////////////////////////////////////////////////////
-	__declspec(dllexport) void __cdecl  translater(double deplacementX, double deplacementY)
+	__declspec(dllexport) void __cdecl translater(double deplacementX, double deplacementY)
 	{
 		FacadeModele::obtenirInstance()->obtenirVue()->deplacerXY(deplacementX, deplacementY);
 	}
@@ -626,11 +626,11 @@ extern "C"
 
 	////////////////////////////////////////////////////////////////////////
 	///
-	/// @fn __declspec(dllexport) void __cdecl  creerXML(char* path, int length, int prop[6])
+	/// @fn void creerXML(char* path, int length, int prop[6])
 	///
-	/// @param[in]  position : Nom du path
-	/// @param[in]  length : Taille du nom du path
-	/// @param[in]  prop : Proprietes de la zone de jeu
+	/// @param[in] position : Nom du path
+	/// @param[in] length : Taille du nom du path
+	/// @param[in] prop : Proprietes de la zone de jeu
 	///
 	/// @remark : Sauvegarde le path
 	///
@@ -651,10 +651,10 @@ extern "C"
 
 	////////////////////////////////////////////////////////////////////////
 	///
-	/// @fn __declspec(dllexport) void __cdecl  ouvrirXML(char* path, int length)
+	/// @fn void ouvrirXML(char* path, int length)
 	///
-	/// @param[in]  position : Nom du path
-	/// @param[in]  length : Taille du nom du path
+	/// @param[in] position : Nom du path
+	/// @param[in] length : Taille du nom du path
 	///
 	/// @return Aucun
 	///
@@ -682,10 +682,10 @@ extern "C"
 
 	////////////////////////////////////////////////////////////////////////
 	///
-	/// @fn __declspec(dllexport) void __cdecl  takeScreenShot(char* path, int length, bool square, int maxSize)
+	/// @fn void takeScreenShot(char* path, int length, bool square, int maxSize)
 	///
-	/// @param[in]  position : Nom du path
-	/// @param[in]  length : Taille du nom du path
+	/// @param[in] position : Nom du path
+	/// @param[in] length : Taille du nom du path
 	/// @param[in] int maxSize : taille maximale (pixel) de l'image
 	/// @param[in] bool square : forme de l'image carre
 	///
@@ -703,17 +703,17 @@ extern "C"
 
 	////////////////////////////////////////////////////////////////////////
 	///
-	/// @fn __declspec(dllexport) void __cdecl  orbite(double x, double y)
+	/// @fn void orbite(double x, double y)
 	///
-	/// @param[in]  x :	Rotation x
-	/// @param[in]  y : Rotation Y
+	/// @param[in] x :	Rotation x
+	/// @param[in] y : Rotation Y
 	///
 	/// Vue orbite TO DO, INCOMPLETE
 	///
 	/// @return Aucun
 	///
 	////////////////////////////////////////////////////////////////////////
-	__declspec(dllexport) void __cdecl  orbite(double x, double y)
+	__declspec(dllexport) void __cdecl orbite(double x, double y)
 	{
 		glm::dvec3 maPosition;
 		FacadeModele::obtenirInstance()->obtenirVue()->convertirClotureAVirtuelle((int)x, (int)y, maPosition);
@@ -727,19 +727,19 @@ extern "C"
 	}
 	////////////////////////////////////////////////////////////////////////
 	///
-	/// @fn __declspec(dllexport) void __cdecl  zoomElastique(int xCoin1, int yCoin1, int xCoin2, int yCoin2)
+	/// @fn void zoomElastique(int xCoin1, int yCoin1, int xCoin2, int yCoin2)
 	///
-	/// @param[in]  xCoin1 : Coin initial du zoom elastique en x
-	/// @param[in]  yCoin1 : Coin initial du zoom elastique en y
-	/// @param[in]  xCoin2 : Coin final du zoom elastique en x
-	/// @param[in]  yCoin2 : Coin final du zoom elastique en y
+	/// @param[in] xCoin1 : Coin initial du zoom elastique en x
+	/// @param[in] yCoin1 : Coin initial du zoom elastique en y
+	/// @param[in] xCoin2 : Coin final du zoom elastique en x
+	/// @param[in] yCoin2 : Coin final du zoom elastique en y
 	///
 	/// @return Aucun
 	///
 	/// @remark : Permet de centrer l'ecran sur la region definie par les points passes
 	///
 	////////////////////////////////////////////////////////////////////////
-	__declspec(dllexport) void __cdecl  zoomInElastique(int xCoin1, int yCoin1, int xCoin2, int yCoin2)
+	__declspec(dllexport) void __cdecl zoomInElastique(int xCoin1, int yCoin1, int xCoin2, int yCoin2)
 	{
 		glm::dvec3 positionSouris1(xCoin1, yCoin1, 0.0);
 		glm::dvec3 positionSouris2(xCoin2, yCoin2, 0.0);
@@ -754,19 +754,19 @@ extern "C"
 
 	////////////////////////////////////////////////////////////////////////
 	///
-	/// @fn __declspec(dllexport) void __cdecl  zoomElastique(int xCoin1, int yCoin1, int xCoin2, int yCoin2)
+	/// @fn void zoomElastique(int xCoin1, int yCoin1, int xCoin2, int yCoin2)
 	///
-	/// @param[in]  xCoin1 : Coin initial du zoom elastique en x
-	/// @param[in]  yCoin1 : Coin initial du zoom elastique en y
-	/// @param[in]  xCoin2 : Coin final du zoom elastique en x
-	/// @param[in]  yCoin2 : Coin final du zoom elastique en y
+	/// @param[in] xCoin1 : Coin initial du zoom elastique en x
+	/// @param[in] yCoin1 : Coin initial du zoom elastique en y
+	/// @param[in] xCoin2 : Coin final du zoom elastique en x
+	/// @param[in] yCoin2 : Coin final du zoom elastique en y
 	///
 	/// Permet de centrer l'ecran sur la region definie par les points passes
 	///
 	/// @return Aucun
 	///
 	////////////////////////////////////////////////////////////////////////
-	__declspec(dllexport) void __cdecl  zoomOutElastique(int xCoin1, int yCoin1, int xCoin2, int yCoin2)
+	__declspec(dllexport) void __cdecl zoomOutElastique(int xCoin1, int yCoin1, int xCoin2, int yCoin2)
 	{
 		glm::dvec3 positionSouris1(xCoin1, yCoin1, 0.0);
 		glm::dvec3 positionSouris2(xCoin2, yCoin2, 0.0);
@@ -781,90 +781,90 @@ extern "C"
 
 	///////////////////////////////////////////////////////////////////////////////
 	///
-	/// @fn __declspec(dllexport) void __cdecl  deplacerSelection(int x1, int y1, int x2, int y2)
+	/// @fn void deplacerSelection(int x1, int y1, int x2, int y2)
 	///		deplace les noeuds selectionnes d'un deplacement calcule en coordonnees du monde
 	///		a partir des points initiaux et terminaux dans les coordonnees d'affichage OpenGL
 	///
 	///
-	/// @param[in]  x1 : abcisse du point initial
-	/// @param[in]  y1 : ordonnee du point initial
+	/// @param[in] x1 : abcisse du point initial
+	/// @param[in] y1 : ordonnee du point initial
 	///
-	/// @param[in]  x2 : abcisse du point initial
-	/// @param[in]  y2 : ordonnee du point initial
+	/// @param[in] x2 : abcisse du point initial
+	/// @param[in] y2 : ordonnee du point initial
 	///
 	/// @return Aucun
 	///
 	/// @remark : On doit donner des x,y qui ont ete transformes par panel_GL.PointToClient(...)
 	///
 	///////////////////////////////////////////////////////////////////////////////
-	__declspec(dllexport) void __cdecl  deplacerSelection(int x1, int y1, int x2, int y2, bool duplication)
+	__declspec(dllexport) void __cdecl deplacerSelection(int x1, int y1, int x2, int y2, bool duplication)
 	{
 		FacadeModele::obtenirInstance()->deplacerSelection(x1, y1, x2, y2, duplication);
 	}
 
 	///////////////////////////////////////////////////////////////////////////////
 	///
-	/// @fn __declspec(dllexport) void __cdecl  tournerSelectionSouris(int x1, int y1, int x2, int y2)
+	/// @fn void tournerSelectionSouris(int x1, int y1, int x2, int y2)
 	///		
 	///
-	/// @param[in]  x1 : abcisse du point initial
-	/// @param[in]  y1 : ordonnee du point initial
+	/// @param[in] x1 : abcisse du point initial
+	/// @param[in] y1 : ordonnee du point initial
 	///
-	/// @param[in]  x2 : abcisse du point initial
-	/// @param[in]  y2 : ordonnee du point initial
+	/// @param[in] x2 : abcisse du point initial
+	/// @param[in] y2 : ordonnee du point initial
 	///
 	/// @return Aucun
 	///
 	/// @remark : L'angle de rotation est calcule a partir du deplacement. On doit donner des x,y qui ont ete transformes par panel_GL.PointToClient(...)
 	///
 	///////////////////////////////////////////////////////////////////////////////
-	__declspec(dllexport) void __cdecl  tournerSelectionSouris(int x1, int y1, int x2, int y2)
+	__declspec(dllexport) void __cdecl tournerSelectionSouris(int x1, int y1, int x2, int y2)
 	{
 		FacadeModele::obtenirInstance()->tournerSelectionSouris(x1, y1, x2, y2);
 	}
 
 	///////////////////////////////////////////////////////////////////////////////
 	///
-	/// @fn __declspec(dllexport) void __cdecl  agrandirSelection(int x1, int y1, int x2, int y2)
+	/// @fn void agrandirSelection(int x1, int y1, int x2, int y2)
 	///
-	/// @param[in]  x1 : abcisse du point initial
-	/// @param[in]  y1 : ordonnee du point initial
+	/// @param[in] x1 : abcisse du point initial
+	/// @param[in] y1 : ordonnee du point initial
 	///
-	/// @param[in]  x2 : abcisse du point initial
-	/// @param[in]  y2 : ordonnee du point initial
+	/// @param[in] x2 : abcisse du point initial
+	/// @param[in] y2 : ordonnee du point initial
 	///
 	/// @return Aucun
 	///
-	/// @remark : On doit donner des x,y qui ont ete transformes par panel_GL.PointToClient(...). La focntion change l'echelle des objets selectionnes. Chaque deplacement de 1 pixel vers le haut  multiplie l'echelle courrante par 1.003, et chaque deplacement vers le bas divise par 1.003.
+	/// @remark : On doit donner des x,y qui ont ete transformes par panel_GL.PointToClient(...). La focntion change l'echelle des objets selectionnes. Chaque deplacement de 1 pixel vers le haut multiplie l'echelle courrante par 1.003, et chaque deplacement vers le bas divise par 1.003.
 	///
 	///////////////////////////////////////////////////////////////////////////////
-	__declspec(dllexport) void __cdecl  agrandirSelection(int x1, int y1, int x2, int y2)
+	__declspec(dllexport) void __cdecl agrandirSelection(int x1, int y1, int x2, int y2)
 	{
 		FacadeModele::obtenirInstance()->agrandirSelection(x1, y1, x2, y2);
 	}
 
 	///////////////////////////////////////////////////////////////////////////////
 	///
-	/// @fn __declspec(dllexport) void __cdecl  rectangleElastique(int i, int j)
+	/// @fn void rectangleElastique(int i, int j)
 	///
-	/// @param[in]  i : point suivant i de la souris
-	/// @param[in]  j : point suivant j de la souris
+	/// @param[in] i : point suivant i de la souris
+	/// @param[in] j : point suivant j de la souris
 	///
 	/// @return Aucun
 	///
 	/// @remark : Met a jour le rectangle elastique
 	///
 	///////////////////////////////////////////////////////////////////////////////
-	__declspec(dllexport) void __cdecl  rectangleElastique(int i, int j)
+	__declspec(dllexport) void __cdecl rectangleElastique(int i, int j)
 	{
 		FacadeModele::obtenirInstance()->rectangleElastique(i, j);
 	}
 
 	///////////////////////////////////////////////////////////////////////////////
 	///
-	/// @fn __declspec(dllexport) int __cdecl selectionMultiple(bool c)
+	/// @fn int selectionMultiple(bool c)
 	///
-	/// @param[in]  c : Selection inverser ou non
+	/// @param[in] c : Selection inverser ou non
 	///
 	/// @return Aucun
 	///
@@ -878,14 +878,14 @@ extern "C"
 
 	///////////////////////////////////////////////////////////////////////////////
 	///
-	/// @fn __declspec(dllexport) bool __cdecl verifierCliqueDansTable(int x, int y)
+	/// @fn bool verifierCliqueDansTable(int x, int y)
 	///
-	/// @param[in]  x : abcisse du point initial 
-	/// @param[in]  y : ordonnee du point initial
+	/// @param[in] x : abcisse du point initial 
+	/// @param[in] y : ordonnee du point initial
 	///
 	/// @return true si le clic est dans la table, faux sinon.
 	///
-	/// @remark : Verifie si un clic est dans la table.  On doit donner des x,y qui ont ete transformes par panel_GL.PointToClient(...)
+	/// @remark : Verifie si un clic est dans la table. On doit donner des x,y qui ont ete transformes par panel_GL.PointToClient(...)
 	///
 	///////////////////////////////////////////////////////////////////////////////
 	__declspec(dllexport) bool __cdecl verifierCliqueDansTable(int x, int y)
@@ -895,31 +895,31 @@ extern "C"
 
 	///////////////////////////////////////////////////////////////////////////////
 	///
-	/// @fn __declspec(dllexport) void __cdecl  deselectAll( void )
+	/// @fn void deselectAll( void )
 	///
 	/// @return Aucun
 	///
 	/// @remark : Ca deselectionne tout
 	///
 	///////////////////////////////////////////////////////////////////////////////
-	__declspec(dllexport) void __cdecl  deselectAll( void )
+	__declspec(dllexport) void __cdecl deselectAll( void )
 	{
 		FacadeModele::obtenirInstance()->obtenirArbreRenduINF2990()->getEnfant(0)->deselectionnerTout();
 	}
 
 	///////////////////////////////////////////////////////////////////////////////
 	///
-	/// @fn __declspec(dllexport) void __cdecl  dupliquerSelection(int i, int j)
+	/// @fn void dupliquerSelection(int i, int j)
 	///
-	/// @param[in]  i : point suivant i de la souris
-	/// @param[in]  j : point suivant j de la souris
+	/// @param[in] i : point suivant i de la souris
+	/// @param[in] j : point suivant j de la souris
 	///
 	/// @return Aucun
 	///
 	/// @remark : Permet duplique les objets selectionnes
 	///
 	///////////////////////////////////////////////////////////////////////////////
-	__declspec(dllexport) void __cdecl  dupliquerSelection(int i, int j)
+	__declspec(dllexport) void __cdecl dupliquerSelection(int i, int j)
 	{
 		FacadeModele::obtenirInstance()->dupliquerSelection(i, j);
 		FacadeModele::obtenirInstance()->setDebug();
@@ -927,7 +927,7 @@ extern "C"
 
 	///////////////////////////////////////////////////////////////////////////////
 	///
-	/// @fn __declspec(dllexport) double __cdecl getPositionX( void ) 
+	/// @fn doublegetPositionX( void ) 
 	///
 	/// @return la position en X
 	///
@@ -956,7 +956,7 @@ extern "C"
 
 	///////////////////////////////////////////////////////////////////////////////
 	///
-	/// @fn __declspec(dllexport) double __cdecl  getPositionY( void )
+	/// @fn double getPositionY( void )
 	///
 	/// @return la position en Y
 	///
@@ -984,7 +984,7 @@ extern "C"
 
 	///////////////////////////////////////////////////////////////////////////////
 	///
-	/// @fn __declspec(dllexport)  double getAngle( void )
+	/// @fn double getAngle( void )
 	///
 	/// @return l'angle de l'objet
 	///
@@ -1006,12 +1006,12 @@ extern "C"
 			}
 		}
 
-		return  angle;
+		return angle;
 	}
 
 	///////////////////////////////////////////////////////////////////////////////
 	///
-	/// @fn __declspec(dllexport) double getScale( void )
+	/// @fn double getScale( void )
 	///
 	/// @return la taille de l'objet (Retourne le scale du dernier objet selectionne qu'on a trouve dans l'arbre.)
 	///
@@ -1033,16 +1033,16 @@ extern "C"
 			}
 		}
 
-		return  scale;
+		return scale;
 	}
 
 	////////////////////////////////////////////////////////////////////////
 	///
-	/// @fn __declspec(dllexport) void __cdecl  playSound()
+	/// @fn void playSound()
 	///
-	/// @param[in]  value : Nom du son
-	/// @param[in]  length : Taille du nom
-	/// @param[in]  stop : Arret du son
+	/// @param[in] value : Nom du son
+	/// @param[in] length : Taille du nom
+	/// @param[in] stop : Arret du son
 	///
 	/// @return Aucun
 	///
@@ -1050,7 +1050,7 @@ extern "C"
 	///
 	////////////////////////////////////////////////////////////////////////
 
-	__declspec(dllexport) void __cdecl  playSound(char* value, int length, bool stop)
+	__declspec(dllexport) void __cdecl playSound(char* value, int length, bool stop)
 	{
 		// MERCI
 		// http://openclassrooms.com/courses/apprenez-a-programmer-en-c/jouer-du-son-avec-fmod
@@ -1069,8 +1069,8 @@ extern "C"
 			// Initialiser tout les bruits (fuck off, je fais pas d'usine);
 			// Au debut, je voulais les initialiser au fur et a mesure des call
 			// Mais ils prennent 3-4 sec a etre cree, a chaque fois, faik tu avais
-			//  d'enorme delay c'etais chiant...
-			std::cout << "  0,00%... ambiant.wav" << std::endl; 
+			// d'enorme delay c'etais chiant...
+			std::cout << " 0,00%... ambiant.wav" << std::endl; 
 			std::pair<std::string, FMOD_SOUND *> apair0("media/SFX/ambiant.wav", NULL);
 			soundTable.push_back(apair0);
 			FMOD_System_CreateSound(system, "media/SFX/ambiant.wav", FMOD_CREATESAMPLE, 0, &soundTable.back().second);
@@ -1122,16 +1122,16 @@ extern "C"
 
 	///////////////////////////////////////////////////////////////////////////////
 	///
-	/// @fn __declspec(dllexport) void __cdecl  obligerTransparence(bool transparence)
+	/// @fn void obligerTransparence(bool transparence)
 	///
-	/// @param[in]  transparence : booleen de transparence
+	/// @param[in] transparence : booleen de transparence
 	///
 	/// @return Aucun
 	///
 	/// @remark : On doit donner des x,y qui ont ete transformes par panel_GL.PointToClient(...)
 	///
 	///////////////////////////////////////////////////////////////////////////////
-	__declspec(dllexport) void __cdecl  obligerTransparence(bool transparence)
+	__declspec(dllexport) void __cdecl obligerTransparence(bool transparence)
 	{
 		if (objet == nullptr)
 			return;
@@ -1139,7 +1139,7 @@ extern "C"
 		objet->setTransparent(transparence);
 		if (objet->getTwin() != NULL && objet->getTwin() != nullptr){
 			objet->getTwin()->setTransparent(transparence);
-			if (objet->getTwin()->getTwin() != NULL  && objet->getTwin() != nullptr)
+			if (objet->getTwin()->getTwin() != NULL && objet->getTwin() != nullptr)
 				objet->getTwin()->getTwin()->setTransparent(transparence);
 		}
 	}
@@ -1147,17 +1147,17 @@ extern "C"
 
 	///////////////////////////////////////////////////////////////////////////////
 	///
-	/// @fn __declspec(dllexport) void __cdecl  initialiserRectangleElastique(int i, int j)
+	/// @fn void initialiserRectangleElastique(int i, int j)
 	///
-	/// @param[in]  i : coordonnees i de la souris
-	/// @param[in]  j : coordonnees j de la souris
+	/// @param[in] i : coordonnees i de la souris
+	/// @param[in] j : coordonnees j de la souris
 	///
 	/// @return Aucun
 	///
 	/// @remark Initialise le rectangle elastique
 	///
 	///////////////////////////////////////////////////////////////////////////////
-	__declspec(dllexport) void __cdecl  initialiserRectangleElastique(int i, int j)
+	__declspec(dllexport) void __cdecl initialiserRectangleElastique(int i, int j)
 	{
 		FacadeModele::obtenirInstance()->initialiserRectangleElastique(i, j);
 	}
@@ -1165,36 +1165,36 @@ extern "C"
 
 	///////////////////////////////////////////////////////////////////////////////
 	///
-	/// @fn __declspec(dllexport) void __cdecl  terminerRectangleElastique()
+	/// @fn void terminerRectangleElastique()
 	///
 	/// @return Aucun
 	///
 	/// @remark Suprime le rectangle elastique
 	///
 	///////////////////////////////////////////////////////////////////////////////
-	__declspec(dllexport) void __cdecl  terminerRectangleElastique()
+	__declspec(dllexport) void __cdecl terminerRectangleElastique()
 	{
 		FacadeModele::obtenirInstance()->terminerRectangleElastique();
 	}
 
 	///////////////////////////////////////////////////////////////////////////////
 	///
-	/// @fn __declspec(dllexport) void __cdecl creerMur(int originX, int originY,int x1, int y1, int x2, int y2) 
+	/// @fn void creerMur(int originX, int originY,int x1, int y1, int x2, int y2) 
 	///
 	///
-	/// @param[in]  originX : Position en X ou le bouton a ete appuye
-	/// @param[in]  originX : Position en Y ou le bouton a ete appuye
-	/// @param[in]  x1 : Position en X precedant un deplacement de la souris
-	/// @param[in]  Y1 : Position en Y precedant un deplacement de la souris
-	/// @param[in]  x2 : Position en X apres un deplacement de la souris (position actuelle de la souris)
-	/// @param[in]  y2 : Position en X apres un deplacement de la souris (position actuelle de la souris)
+	/// @param[in] originX : Position en X ou le bouton a ete appuye
+	/// @param[in] originX : Position en Y ou le bouton a ete appuye
+	/// @param[in] x1 : Position en X precedant un deplacement de la souris
+	/// @param[in] Y1 : Position en Y precedant un deplacement de la souris
+	/// @param[in] x2 : Position en X apres un deplacement de la souris (position actuelle de la souris)
+	/// @param[in] y2 : Position en X apres un deplacement de la souris (position actuelle de la souris)
 	///
 	/// @return Aucun
 	///
 	/// @remark : Cette fonction place un mur dont un bout est la ou le bouton gauche de la souris a ete appuye, et l'autre bout est sous le curseur de la souris.
 	///
 	///////////////////////////////////////////////////////////////////////////////
-	__declspec(dllexport) void __cdecl  creerMur(int originX, int originY, int x1, int y1, int x2, int y2)
+	__declspec(dllexport) void __cdecl creerMur(int originX, int originY, int x1, int y1, int x2, int y2)
 	{
 		FacadeModele::positionnerMur(originX,originY,x1, y1, x2, y2, objet);
 	}
@@ -1202,11 +1202,11 @@ extern "C"
 
 	///////////////////////////////////////////////////////////////////////////////
 	///
-	/// @fn __declspec(dllexport) bool __cdecl setProprietesNoeud(int x, int y, int angle, double scale)
+	/// @fn bool setProprietesNoeud(int x, int y, int angle, double scale)
 	///
 	///
-	/// @param[in]  x : X en coordonnees du monde qu'on veut donner a notre noeud.
-	/// @param[in]  y : Y en coordonnees du monde qu'on veut donner a notre noeud.
+	/// @param[in] x : X en coordonnees du monde qu'on veut donner a notre noeud.
+	/// @param[in] y : Y en coordonnees du monde qu'on veut donner a notre noeud.
 	/// @param[in]	angle : angle de rotation
 	///	@param[in]	scale: scale de l'objet
 	///
@@ -1217,7 +1217,7 @@ extern "C"
 	///////////////////////////////////////////////////////////////////////////////
 	__declspec(dllexport) bool __cdecl setProprietesNoeud(int x, int y, int angle, double scale)
 	{
-		// Calculer la position a assigner en coordonnees du monde.  Elle est deja en
+		// Calculer la position a assigner en coordonnees du monde. Elle est deja en
 		// coordonnees du monde car ce qui est dans les textBox, c'est l'attribut position du noeud.
 		glm::dvec3 nouvellePosition{ x, y, 0 };
 		bool nouvellesProprietesSontLegales = true;
@@ -1275,7 +1275,7 @@ extern "C"
 
 	///////////////////////////////////////////////////////////////////////////////
 	///
-	/// @fn __declspec(dllexport) double __cdecl obtenirZoomCourant( void )
+	/// @fn doubleobtenirZoomCourant( void )
 	///
 	/// @return : double, valeur du zoom courant	
 	///
@@ -1292,7 +1292,7 @@ extern "C"
 
 	///////////////////////////////////////////////////////////////////////////////
 	///
-	/// @fn __declspec(dllexport) int __cdecl obtenirCentreMasseX( void )
+	/// @fn int obtenirCentreMasseX( void )
 	///
 	/// @return : int, le centre de masse en x
 	///
@@ -1306,7 +1306,7 @@ extern "C"
 
 	///////////////////////////////////////////////////////////////////////////////
 	///
-	/// @fn __declspec(dllexport) int __cdecl obtenirCentreMasseY( void )
+	/// @fn int obtenirCentreMasseY( void )
 	///
 	/// @return le centre de masse en y
 	///
@@ -1320,7 +1320,7 @@ extern "C"
 
 	///////////////////////////////////////////////////////////////////////////////
 	///
-	/// @fn __declspec(dllexport) bool __cdecl resetZoom()
+	/// @fn bool resetZoom()
 	///
 	/// @return : booleen de reussite
 	///
@@ -1334,7 +1334,7 @@ extern "C"
 
 	///////////////////////////////////////////////////////////////////////////////
 	///
-	/// @fn __declspec(dllexport) bool __cdecl duplicationEstHorsTable( void )
+	/// @fn bool duplicationEstHorsTable( void )
 	///
 	/// @return bool d'etat si hors table
 	///
@@ -1348,7 +1348,7 @@ extern "C"
 
 	///////////////////////////////////////////////////////////////////////////////
 	///
-	/// @fn __declspec(dllexport) void __cdecl creerFichierConfig(int config[13])
+	/// @fn void creerFichierConfig(int config[13])
 	/// @brief Cree un fichier de sauvegarde de configuration.
 	/// @param[in] config : Valeurs de la configuration de partie.
 	/// @return Aucune
@@ -1361,7 +1361,7 @@ extern "C"
 	
 	///////////////////////////////////////////////////////////////////////////////
 	///
-	/// @fn __declspec(dllexport) int* __cdecl chargerFichierConfiguration()
+	/// @fn int* chargerFichierConfiguration()
 	/// @brief Charger un fichier de sauvegarde de configuration.
 	/// @return Les valeurs de configuration.
 	///
@@ -1373,7 +1373,7 @@ extern "C"
 
 	///////////////////////////////////////////////////////////////////////////////
 	///
-	/// @fn __declspec(dllexport) int __cdecl obtenirDifficulte(char* nomFichier, int length)
+	/// @fn int obtenirDifficulte(char* nomFichier, int length)
 	/// @brief Obtenir le niveau de difficulte de la zone.
 	/// @param[in] nomFichier : Mom du fichier de la zone.
 	/// @param[in] length : Longueur du fichier.
@@ -1387,7 +1387,7 @@ extern "C"
 
 	///////////////////////////////////////////////////////////////////////////////
 	///
-	/// @fn __declspec(dllexport) int* __cdecl obtenirProprietes(char* nomFichier, int length)
+	/// @fn int* obtenirProprietes(char* nomFichier, int length)
 	/// @brief Obtenir les proprietes de la zone.
 	/// @param[in] nomFichier : Mom du fichier de la zone.
 	/// @param[in] length : Longueur du fichier.
@@ -1401,7 +1401,7 @@ extern "C"
 
 	///////////////////////////////////////////////////////////////////////////////
 	///
-	/// @fn __declspec(dllexport) void __cdecl creerFichierCampagne(char* listMaps, int length)
+	/// @fn void creerFichierCampagne(char* listMaps, int length)
 	/// @brief Creer un fichier contenant les zones de la campagne.
 	/// @param[in] listMaps : Liste des zones de jeu.
 	/// @param[in] length : Longueur de la liste.
@@ -1415,7 +1415,7 @@ extern "C"
 
 	///////////////////////////////////////////////////////////////////////////////
 	///
-	/// @fn __declspec(dllexport) int __cdecl obtenirTouchePGJ1()
+	/// @fn int obtenirTouchePGJ1()
 	/// @brief Retourne la touche associee a Palette Gauche J1.
 	/// @return La touche associee.
 	///
@@ -1427,7 +1427,7 @@ extern "C"
 
 	///////////////////////////////////////////////////////////////////////////////
 	///
-	/// @fn __declspec(dllexport) int __cdecl obtenirTouchePGJ2()
+	/// @fn int obtenirTouchePGJ2()
 	/// @brief Retourne la touche associee a Palette Gauche J2.
 	/// @return La touche associee.
 	///
@@ -1439,7 +1439,7 @@ extern "C"
 
 	///////////////////////////////////////////////////////////////////////////////
 	///
-	/// @fn __declspec(dllexport) int __cdecl obtenirTouchePDJ1()
+	/// @fn int obtenirTouchePDJ1()
 	/// @brief Retourne la touche associee a Palette Droite J1.
 	/// @return La touche associee.
 	///
@@ -1451,7 +1451,7 @@ extern "C"
 
 	///////////////////////////////////////////////////////////////////////////////
 	///
-	/// @fn __declspec(dllexport) int __cdecl obtenirTouchePDJ2()
+	/// @fn int obtenirTouchePDJ2()
 	/// @brief Retourne la touche associee a Palette Droite J2.
 	/// @return La touche associee.
 	///
@@ -1463,7 +1463,7 @@ extern "C"
 
 	///////////////////////////////////////////////////////////////////////////////
 	///
-	/// @fn __declspec(dllexport) int __cdecl obtenirToucheRessort()
+	/// @fn int obtenirToucheRessort()
 	/// @brief Retourne la touche associee au ressort.
 	/// @return La touche associee.
 	///
@@ -1475,7 +1475,7 @@ extern "C"
 
 	///////////////////////////////////////////////////////////////////////////////
 	///
-	/// @fn __declspec(dllexport) int __cdecl obtenirNombreDeBilles()
+	/// @fn int obtenirNombreDeBilles()
 	/// @brief Retourne le nombre de billes
 	/// @return Le nombre de billes.
 	///
@@ -1487,7 +1487,7 @@ extern "C"
 
 	///////////////////////////////////////////////////////////////////////////////
 	///
-	/// @fn __declspec(dllexport) int __cdecl obtenirNombreDeBillesPerdu()
+	/// @fn int obtenirNombreDeBillesPerdu()
 	/// @brief Retourne le nombre de billes detruite
 	/// @return Le nombre de billes.
 	///
@@ -1499,7 +1499,7 @@ extern "C"
 
 	///////////////////////////////////////////////////////////////////////////////
 	///
-	/// @fn __declspec(dllexport) int __cdecl obtenirModeDoubleBille()
+	/// @fn int obtenirModeDoubleBille()
 	/// @brief Retourne la valeur d'activation du mode correspondant.
 	/// @return 1 si le mode double bille est actif, 0 sinon.
 	///
@@ -1511,7 +1511,7 @@ extern "C"
 
 	///////////////////////////////////////////////////////////////////////////////
 	///
-	/// @fn __declspec(dllexport) int __cdecl obtenirNombreDeBilles()
+	/// @fn int obtenirNombreDeBilles()
 	/// @brief Retourne la valeur d'activation du mode correspondant.
 	/// @return 1 si l'affichage global est actif, 0 sinon.
 	///
@@ -1523,7 +1523,7 @@ extern "C"
 
 	///////////////////////////////////////////////////////////////////////////////
 	///
-	/// @fn __declspec(dllexport) void __cdecl bloquerAffichageGlobal(int active)
+	/// @fn void bloquerAffichageGlobal(int active)
 	/// @brief Active ou desactive l'affichage global.
 	/// @param[in] active : Valeur d'activation.
 	/// @return Aucune.
@@ -1537,7 +1537,7 @@ extern "C"
 
 	///////////////////////////////////////////////////////////////////////////////
 	///
-	/// @fn __declspec(dllexport) void __cdecl activerPalettesGJ1()
+	/// @fn void activerPalettesGJ1()
 	/// @brief Active la Palette Gauche J1.
 	/// @return Aucune.
 	///
@@ -1549,7 +1549,7 @@ extern "C"
 
 	///////////////////////////////////////////////////////////////////////////////
 	///
-	/// @fn __declspec(dllexport) void __cdecl desactiverPalettesGJ1()
+	/// @fn void desactiverPalettesGJ1()
 	/// @brief Desactive la Palette Gauche J1.
 	/// @return Aucune.
 	///
@@ -1561,7 +1561,7 @@ extern "C"
 
 	///////////////////////////////////////////////////////////////////////////////
 	///
-	/// @fn __declspec(dllexport) void __cdecl activerPalettesDJ1()
+	/// @fn void activerPalettesDJ1()
 	/// @brief Active la Palette Droite J1.
 	/// @return Aucune.
 	///
@@ -1573,7 +1573,7 @@ extern "C"
 
 	///////////////////////////////////////////////////////////////////////////////
 	///
-	/// @fn __declspec(dllexport) void __cdecl desactiverPalettesDJ1()
+	/// @fn void desactiverPalettesDJ1()
 	/// @brief Desactive la Palette Droite J1.
 	/// @return Aucune.
 	///
@@ -1585,7 +1585,7 @@ extern "C"
 
 	///////////////////////////////////////////////////////////////////////////////
 	///
-	/// @fn __declspec(dllexport) void __cdecl activerPalettesGJ2()
+	/// @fn void activerPalettesGJ2()
 	/// @brief Active la Palette Gauche J2.
 	/// @return Aucune.
 	///
@@ -1597,7 +1597,7 @@ extern "C"
 
 	///////////////////////////////////////////////////////////////////////////////
 	///
-	/// @fn __declspec(dllexport) void __cdecl desactiverPalettesGJ2()
+	/// @fn void desactiverPalettesGJ2()
 	/// @brief Desactive la Palette Gauche J2.
 	/// @return Aucune.
 	///
@@ -1609,7 +1609,7 @@ extern "C"
 
 	///////////////////////////////////////////////////////////////////////////////
 	///
-	/// @fn __declspec(dllexport) void __cdecl activerPalettesDJ2()
+	/// @fn void activerPalettesDJ2()
 	/// @brief Active la Palette Droite J2.
 	/// @return Aucune.
 	///
@@ -1621,7 +1621,7 @@ extern "C"
 
 	///////////////////////////////////////////////////////////////////////////////
 	///
-	/// @fn __declspec(dllexport) void __cdecl desactiverPalettesDJ2()
+	/// @fn void desactiverPalettesDJ2()
 	/// @brief Desactive la Palette Droite J2.
 	/// @return Aucune.
 	///
@@ -1633,7 +1633,7 @@ extern "C"
 
 	///////////////////////////////////////////////////////////////////////////////
 	///
-	/// @fn __declspec(dllexport) BSTR obtenirDerniereCampagne()
+	/// @fn BSTR obtenirDerniereCampagne()
 	/// @brief Retourne la derniere campagne.
 	/// @return La liste d'info de la derniere campagne.
 	///
@@ -1647,7 +1647,7 @@ extern "C"
 
 	///////////////////////////////////////////////////////////////////////////////
 	///
-	/// @fn __declspec(dllexport) void __cdecl supprimerBille()
+	/// @fn void supprimerBille()
 	/// @brief Supprime la bille en jeu (mode test).
 	/// @return Aucune.
 	///
@@ -1659,7 +1659,7 @@ extern "C"
 
 	///////////////////////////////////////////////////////////////////////////////
 	///
-	/// @fn __declspec(dllexport) void __cdecl construireListesPalettes()
+	/// @fn void construireListesPalettes()
 	/// @brief Construit une liste des palettes dans FacadeModele.
 	/// @return Aucune.
 	///
@@ -1671,7 +1671,7 @@ extern "C"
 
 	///////////////////////////////////////////////////////////////////////////////
 	///
-	/// @fn __declspec(dllexport) void __cdecl mettreAJourListeBillesEtNoeuds()
+	/// @fn void mettreAJourListeBillesEtNoeuds()
 	/// @brief Met a jour la liste des billes et des noeuds dans FacadeModele.
 	/// @return Aucune.
 	///
@@ -1683,7 +1683,7 @@ extern "C"
 
 	///////////////////////////////////////////////////////////////////////////////
 	///
-	/// @fn __declspec(dllexport) void __cdecl modePause(bool pause)
+	/// @fn void modePause(bool pause)
 	/// @brief Active ou desactive le mode pause.
 	/// @param[in] pause : Activation ou desactivation.
 	/// @return Aucune.
@@ -1697,7 +1697,7 @@ extern "C"
 
 	///////////////////////////////////////////////////////////////////////////////
 	///
-	/// @fn __declspec(dllexport) bool __cdecl spotLight(int lum, bool state)
+	/// @fn bool spotLight(int lum, bool state)
 	/// @brief Active ou desactive la lumiere
 	/// @param[in] lum : Type de lumiere
 	/// @param[in] state : Activation ou desactivation.
@@ -1749,7 +1749,7 @@ extern "C"
 
 	///////////////////////////////////////////////////////////////////////////////
 	///
-	/// @fn __declspec(dllexport) void __cdecl initialiserSingleton()
+	/// @fn void initialiserSingleton()
 	/// @brief Initialise le singleton global.
 	/// @return Aucune.
 	///
@@ -1761,7 +1761,7 @@ extern "C"
 
 	///////////////////////////////////////////////////////////////////////////////
 	///
-	/// @fn __declspec(dllexport) void __cdecl detruireSingleton()
+	/// @fn void detruireSingleton()
 	/// @brief Detruit le singleton global.
 	/// @return Aucune.
 	///
@@ -1773,7 +1773,7 @@ extern "C"
 
 	///////////////////////////////////////////////////////////////////////////////
 	///
-	/// @fn __declspec(dllexport) int __cdecl obtenirPointsGagnerBille()
+	/// @fn int obtenirPointsGagnerBille()
 	/// @brief Retourne le nombre de points pour gagner une bille.
 	/// @return Le nombre de points pour gagner une bille.
 	///
@@ -1785,7 +1785,7 @@ extern "C"
 
 	///////////////////////////////////////////////////////////////////////////////
 	///
-	/// @fn __declspec(dllexport) int __cdecl obtenirPointsGagnerPartie()
+	/// @fn int obtenirPointsGagnerPartie()
 	/// @brief Retourne le nombre de points pour gagner la partie.
 	/// @return Le nombre de points pour gagner la partie.
 	///
@@ -1797,7 +1797,7 @@ extern "C"
 
 	///////////////////////////////////////////////////////////////////////////////
 	///
-	/// @fn __declspec(dllexport) int __cdecl obtenirNombreDePointsDePartie()
+	/// @fn int obtenirNombreDePointsDePartie()
 	/// @brief Retourne le nombre de points courant dans la partie.
 	/// @return Le nombre de points courant dans la partie.
 	///
@@ -1809,7 +1809,7 @@ extern "C"
 
 	///////////////////////////////////////////////////////////////////////////////
 	///
-	/// @fn __declspec(dllexport) void __cdecl resetNombreDePointsDePartie()
+	/// @fn void resetNombreDePointsDePartie()
 	/// @brief Reinitialise le nombre de points dans la partie.
 	/// @return Aucune.
 	///
@@ -1821,7 +1821,7 @@ extern "C"
 
 	///////////////////////////////////////////////////////////////////////////////
 	///
-	/// @fn __declspec(dllexport) int __cdecl obtenirNombreBillesCourante()
+	/// @fn int obtenirNombreBillesCourante()
 	/// @brief Retourne le nombre de billes courantes.
 	/// @return Le nombre de billes courantes.
 	///
@@ -1833,7 +1833,7 @@ extern "C"
 
 	///////////////////////////////////////////////////////////////////////////////
 	///
-	/// @fn __declspec(dllexport) void __cdecl resetNombreBillesCourantes()
+	/// @fn void resetNombreBillesCourantes()
 	/// @brief Reinitialise le nombre de billes courantes.
 	/// @return Aucune.
 	///
@@ -1845,7 +1845,7 @@ extern "C"
 
 	///////////////////////////////////////////////////////////////////////////////
 	///
-	/// @fn __declspec(dllexport) void __cdecl compresserRessort()
+	/// @fn void compresserRessort()
 	/// @brief Compresser le ressort.
 	/// @return Aucune.
 	///
@@ -1857,7 +1857,7 @@ extern "C"
 
 	///////////////////////////////////////////////////////////////////////////////
 	///
-	/// @fn __declspec(dllexport) void __cdecl relacherRessort()
+	/// @fn void relacherRessort()
 	/// @brief Relacher le ressort.
 	/// @return Aucune.
 	///
@@ -1869,7 +1869,7 @@ extern "C"
 
 	///////////////////////////////////////////////////////////////////////////////
 	///
-	/// @fn __declspec(dllexport) void __cdecl animerJeu(bool animer)
+	/// @fn void animerJeu(bool animer)
 	/// @brief Active ou desactive l'animation du jeu.
 	/// @param[in] animer : Valeur d'ativation ou de desactivation.
 	/// @return Aucune.
@@ -1884,7 +1884,7 @@ extern "C"
 
 	///////////////////////////////////////////////////////////////////////////////
 	///
-	/// @fn __declspec(dllexport) void __cdecl rechargerArbre(bool recharger)
+	/// @fn void rechargerArbre(bool recharger)
 	/// @brief Recharge l'arbre de rendu.
 	/// @param[in] recharger : Recharge ou non l'arbre.
 	/// @return Aucune.
@@ -1901,7 +1901,7 @@ extern "C"
 
 	///////////////////////////////////////////////////////////////////////////////
 	///
-	/// @fn __declspec(dllexport) void __cdecl activerAI(bool actif)
+	/// @fn void activerAI(bool actif)
 	/// @brief Active ou desactive le joueur virtuel (AI).
 	/// @param[in] animer : Valeur d'ativation ou de desactivation.
 	/// @return Aucune.
