@@ -477,11 +477,11 @@ inline glm::dvec3 NoeudAbstrait::obtenirVitesse() const
 
 ////////////////////////////////////////////////////////////////////////
 ///
-/// @fn inline void NoeudAbstrait::assignerPositionRelative( const glm::dvec3& positionRelative )
-///
-/// Cette fonction permet d'assigner la vitesse du noeud.
+/// @fn void NoeudAbstrait::assignerVitesse(glm::dvec3 nouvelleVitesse)
 ///
 /// @param nouvelleVitesse : La nouvelle vitesse a assigner.
+///
+/// @brief Cette fonction permet d'assigner la vitesse du noeud.
 ///
 /// @return Aucune
 ///

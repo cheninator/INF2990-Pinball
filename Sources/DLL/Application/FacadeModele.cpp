@@ -1054,12 +1054,11 @@ void FacadeModele::setPause(bool pause)
 
 ///////////////////////////////////////////////////////////////////////////////
 ///
-/// @fn void FacadeModele::setDebug(bool valeurDebugBille, bool valeurDebugPortail)
-/// @brief Parcours l'arbre et met les objets en mode debug.
+/// @fn void FacadeModele::setDebug(bool valeurSpotLight)
 ///
-/// @param[in]  valeurDebugBille : valeur du mode debug pour la bille
-/// @param[in]  valeurDebugPortail : valeur du mode debug pour le portail
-/// @param[in]  valeurSpotLight : valeur du mode debug pour la lumiere
+/// @param[in]  valeurSpotLight : valeur du mode debug pour le spotLight
+///
+/// @brief Met la valeur de debug de spotLight
 ///
 /// @return Aucun
 ///
@@ -1362,9 +1361,11 @@ int FacadeModele::obtenirDifficulte(char* nomFichier, int length)
 ///////////////////////////////////////////////////////////////////////////////
 ///
 /// @fn void FacadeModele::sauvegarderCampagne(char* nomMap, int length)
-/// @brief Sauvegarde la zone de jeu dans la compagne en cours.
-/// @param[in] nomFichier : Le nom de la zone de jeu.
+/// @param[in] nomMap : Le nom de la zone de jeu.
 /// @param[in] length : La longueur du nom de la zone.
+///
+/// @brief Sauvegarde la zone de jeu dans la compagne en cours.
+///
 /// @return Aucune.
 ///
 ///////////////////////////////////////////////////////////////////////////////
@@ -1377,9 +1378,9 @@ void FacadeModele::sauvegarderCampagne(char* nomMap, int length)
 ///////////////////////////////////////////////////////////////////////////////
 ///
 /// @fn std::string FacadeModele::obtenirDerniereCampagne()
+///
 /// @brief Retourne la derniere campagne choisie.
-/// @param[in] nomFichier : Le nom du fichier ou se trouve la zone.
-/// @param[in] length : La longueur du fichier.
+///
 /// @return Le niveau de difficulte.
 ///
 ///////////////////////////////////////////////////////////////////////////////
@@ -1648,8 +1649,8 @@ void FacadeModele::traiterCollisions(float temps)
 ///////////////////////////////////////////////////////////////////////////////
 ///
 /// @fn void FacadeModele::traiterCollisionsAvecQuadTree(float temps)
+/// @param[in] temps : le temps passe depuis la derniere frame.
 /// @brief Effectue la detection et reaction pour les collisions avec le QuadTree
-/// @param[in] : TODO: Phil.
 /// @return Aucune.
 /// 
 ///////////////////////////////////////////////////////////////////////////////

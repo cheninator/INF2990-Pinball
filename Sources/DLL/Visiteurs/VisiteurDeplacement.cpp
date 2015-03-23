@@ -28,9 +28,9 @@ VisiteurDeplacement::VisiteurDeplacement()
 ///
 /// @fn VisiteurDeplacement::VisiteurDeplacement(glm::dvec3 dep)
 ///
-/// Constructeur qui initialise les variables membres de la classe.
-///
 /// @param[in] dep : Le vecteur de deplacement
+///
+/// @brief Constructeur qui initialise les variables membres de la classe.
 ///
 /// @return Aucune (constructeur).
 ///

@@ -16,7 +16,7 @@
 /// @fn ConfigScene::ConfigScene()
 ///
 /// Assigne les valeurs par défaut des attributs de classe
-///
+////
 /// @return Aucune (constructeur).
 ///
 ////////////////////////////////////////////////////////////////////////
@@ -170,11 +170,11 @@ void ConfigScene::lireFichierBinaire()
 
 ////////////////////////////////////////////////////////////////////////
 ///
-/// @fn void ConfigScene::modifierConfiguration(int config[])
+/// @fn void ConfigScene::modifierConfiguration(int config[13])
 ///
 /// Cette fonction assigne les nouvelles configurations de zone de jeu.
 ///
-/// @param[in] config[13] : Un tableau contenant les informations de configuration
+/// @param[in] config : Un tableau contenant les informations de configuration
 ///
 /// @return Aucune.
 ///

@@ -29,8 +29,9 @@ VisiteurDebug::VisiteurDebug()
 ///
 /// Constructeur par parametres
 ///
-/// @param[in] bool valeurDebugBille : Le mode debug (on/off) a mettre pour la bille
-/// @param[in] bool valeurDebugPortail : Le mode debug (on/off) a mettre le portail
+/// @param[in] valeurDebugBille : Le mode debug (on/off) a mettre pour la bille
+/// @param[in] valeurDebugPortail : Le mode debug (on/off) a mettre le portail
+/// @param[in] valeurSpotLight : Le mode debug (on/off) a mettre la lumiere
 ///
 /// @return Aucune (constructeur).
 ///

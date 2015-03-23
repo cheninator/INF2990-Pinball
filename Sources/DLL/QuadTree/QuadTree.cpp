@@ -16,7 +16,8 @@
 ///
 /// Constructeur qui initialise les variables membres de la classe.
 ///
-/// @param[in] inferieurGauche, inferieurDroit : Les limites du QuadTree
+/// @param[in] inferieurGauche : Les limites du QuadTree
+/// @param[in] superieurDroit : Les limites du QuadTree
 ///
 /// @return Aucune (constructeur).
 ///
@@ -37,12 +38,13 @@ QuadTree::QuadTree(glm::dvec3 inferieurGauche, glm::dvec3 superieurDroit)
 
 ////////////////////////////////////////////////////////////////////////
 ///
-/// @fn QuadTree::QuadTree(glm::dvec3 inferieurGauche, glm::dvec3 superieurDroit)
+/// @fn QuadTree::QuadTree(int level, glm::dvec3 inferieurGauche, glm::dvec3 superieurDroit)
 ///
 /// Constructeur qui initialise les variables membres de la classe.
 ///
 /// @param[in] level : le niveau du QuadTree
-/// @param[in] inferieurGauche, inferieurDroit : Les limites du QuadTree
+/// @param[in] inferieurGauche, inferieurDroit : Les limites du QuadTree Gauche
+/// @param[in] superieurDroit, inferieurDroit : Les limites du QuadTree Droite
 ///
 /// @return Aucune (constructeur).
 ///
