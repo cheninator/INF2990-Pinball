@@ -51,7 +51,7 @@ namespace InterfaceGraphique
         private static TimeSpan tempsEcouleVoulu = TimeSpan.FromTicks(TimeSpan.TicksPerSecond / (NB_IMAGES_PAR_SECONDE * 10)); ///< Temps avant le rafraichissement
         public static int compteurFrames = 0;
         public static bool customConsoleActive = false;
-
+        private static bool noWarnings = false;
 
         ////////////////////////////////////////////////////////////////////////
         ///
@@ -67,45 +67,46 @@ namespace InterfaceGraphique
         static void Main(string[] args)
         {
             if (args.Length != 0)
-             {
-                 if (args[0] == "testsC++")
-                 {
-                     if (FonctionsNatives.executerTests())
-                     {
-                         Console.WriteLine("Echec d'un ou plusieurs tests.");
-                         string s1 = System.Console.ReadLine();
-                     }
-                     else
-                     {
-                         Console.WriteLine("Tests reussis.");
-                         string s1 = System.Console.ReadLine();
-                     }
-                     return;
-                 }
-                 else if (args[0] == "console")
-                     customConsoleActive = true;
-             }
-
-            DialogResult dialogResult = MessageBox.Show("Voulez vous utiliez la console windows native, ou la console " +
-            "sur mesure avec interface graphique? YES pour la console native, NO pour la console GUI.", "Utilisation de la console ?", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
-            if (dialogResult == DialogResult.No)
             {
-                DialogResult dialogResult2 = MessageBox.Show("Cette console est encore tres experimentale. Avertissement: " +
-                "pour la correction des SRS, ne pas utiliser ce mode. Voulez vous toujours utilisez cette console ?", "Etes vous sur !", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
-                if (dialogResult2 == DialogResult.Yes)
+                if (args[0] == "testsC++")
                 {
-                    customConsoleActive = true;
+                    if (FonctionsNatives.executerTests())
+                    {
+                        Console.WriteLine("Echec d'un ou plusieurs tests.");
+                        string s1 = System.Console.ReadLine();
+                    }
+                    else
+                    {
+                        Console.WriteLine("Tests reussis.");
+                        string s1 = System.Console.ReadLine();
+                    }
+                    return;
                 }
-                else if (dialogResult2 == DialogResult.No)
+                else if (args[0] == "nowarnings")
+                    noWarnings = true;
+            }
+            if (!noWarnings)
+            {
+                DialogResult dialogResult = MessageBox.Show("Voulez vous utiliez la console windows native, ou la console " +
+                "sur mesure avec interface graphique? YES pour la console native, NO pour la console GUI.", "Utilisation de la console ?", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+                if (dialogResult == DialogResult.No)
+                {
+                    DialogResult dialogResult2 = MessageBox.Show("Cette console est encore tres experimentale. Avertissement: " +
+                    "pour la correction des SRS, ne pas utiliser ce mode. Voulez vous toujours utilisez cette console ?", "Etes vous sur !", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
+                    if (dialogResult2 == DialogResult.Yes)
+                    {
+                        customConsoleActive = true;
+                    }
+                    else if (dialogResult2 == DialogResult.No)
+                    {
+                        customConsoleActive = false;
+                    }
+                }
+                else if (dialogResult == DialogResult.Yes)
                 {
                     customConsoleActive = false;
                 }
             }
-            else if (dialogResult == DialogResult.Yes)
-            {
-                customConsoleActive = false;
-            }
-
 
             chrono.Start();
             Application.Idle += ExecuterQuandInactif;
@@ -113,38 +114,39 @@ namespace InterfaceGraphique
             Application.SetCompatibleTextRenderingDefault(false);
 
             myCustomConsole = new CustomConsoleHandler(customConsoleActive);
-            
-            string warningMessage = "\nNous ne sommes pas responsables des bogues et problemes qui pourraient survenir dans cette situation.\n";
+            if (!noWarnings)
+            {
+                string warningMessage = "\nNous ne sommes pas responsables des bogues et problemes qui pourraient survenir dans cette situation.\n";
 
-            string machineName = System.Environment.MachineName;
-            string warningMessageM = "Vous ne semblez pas etre sur une des machines du L-4810 ou du L-4818" + warningMessage;
-            if (!(machineName.Contains("L-4810") || machineName.Contains("L-4818")))
-                MessageBox.Show(warningMessageM, "AVERTISSEMENT", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                string machineName = System.Environment.MachineName;
+                string warningMessageM = "Vous ne semblez pas etre sur une des machines du L-4810 ou du L-4818" + warningMessage;
+                if (!(machineName.Contains("L-4810") || machineName.Contains("L-4818")))
+                    MessageBox.Show(warningMessageM, "AVERTISSEMENT", MessageBoxButtons.OK, MessageBoxIcon.Warning);
 
-            string windowsName = System.Environment.MachineName;
-            string warningMessageW = "Vous ne semblez pas etre sur une version de Windows 7 ou plus recent.\n" + warningMessageM;
-            if (!(System.Environment.OSVersion.Version.Major >= 6 &&
-                System.Environment.OSVersion.Version.Minor >= 1))
-                MessageBox.Show(warningMessageW, "AVERTISSEMENT", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-            
+                string windowsName = System.Environment.MachineName;
+                string warningMessageW = "Vous ne semblez pas etre sur une version de Windows 7 ou plus recent.\n" + warningMessageM;
+                if (!(System.Environment.OSVersion.Version.Major >= 6 &&
+                    System.Environment.OSVersion.Version.Minor >= 1))
+                    MessageBox.Show(warningMessageW, "AVERTISSEMENT", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            }
             mMenu = new MainMenu();
             Application.Run(mMenu);
         }
-       ////////////////////////////////////////////////////////////////////////
-       ///
-       /// @fn static void ExecuterQuandInactif(object sender, EventArgs e)
-       /// @brief Operations executer lorsque l'application est inactive.
-       /// 
-       /// @param[in] sender : Objet duquel provient un evenement
-       /// @param[in] e : evenement qui lance la fonction.
-       /// 
-       /// @return Aucune.
-       ///
-       ////////////////////////////////////////////////////////////////////////
-       static void ExecuterQuandInactif(object sender, EventArgs e)
+        ////////////////////////////////////////////////////////////////////////
+        ///
+        /// @fn static void ExecuterQuandInactif(object sender, EventArgs e)
+        /// @brief Operations executer lorsque l'application est inactive.
+        /// 
+        /// @param[in] sender : Objet duquel provient un evenement
+        /// @param[in] e : evenement qui lance la fonction.
+        /// 
+        /// @return Aucune.
+        ///
+        ////////////////////////////////////////////////////////////////////////
+        static void ExecuterQuandInactif(object sender, EventArgs e)
         {
             FonctionsNatives.Message message;
-            
+
             while (!FonctionsNatives.PeekMessage(out message, IntPtr.Zero, 0, 0, 0))
             {
                 TimeSpan currentTime = chrono.Elapsed;
@@ -459,7 +461,7 @@ namespace InterfaceGraphique
 
         [DllImport(@"Noyau.dll", CallingConvention = CallingConvention.Cdecl)]
         public static extern int obtenirTouchePGJ1();
-        
+
         [DllImport(@"Noyau.dll", CallingConvention = CallingConvention.Cdecl)]
         public static extern int obtenirTouchePGJ2();
 
@@ -510,18 +512,18 @@ namespace InterfaceGraphique
 
         [DllImport(@"Noyau.dll", CallingConvention = CallingConvention.Cdecl)]
         public static extern void desactiverPalettesDJ1();
-        
+
         [DllImport(@"Noyau.dll", CallingConvention = CallingConvention.Cdecl)]
-        public static extern  void activerPalettesGJ2();
-	    
+        public static extern void activerPalettesGJ2();
+
         [DllImport(@"Noyau.dll", CallingConvention = CallingConvention.Cdecl)]
-        public static extern  void desactiverPalettesGJ2();
-	    
+        public static extern void desactiverPalettesGJ2();
+
         [DllImport(@"Noyau.dll", CallingConvention = CallingConvention.Cdecl)]
-        public static extern  void activerPalettesDJ2();
-	    
+        public static extern void activerPalettesDJ2();
+
         [DllImport(@"Noyau.dll", CallingConvention = CallingConvention.Cdecl)]
-        public static extern  void desactiverPalettesDJ2();
+        public static extern void desactiverPalettesDJ2();
 
         [DllImport(@"Noyau.dll", CallingConvention = CallingConvention.Cdecl)]
         public static extern void supprimerBille();
@@ -537,7 +539,7 @@ namespace InterfaceGraphique
 
         [DllImport(@"Noyau.dll", CallingConvention = CallingConvention.Cdecl)]
         public static extern int obtenirAffichageGlobal();
-        
+
         [DllImport(@"Noyau.dll", CallingConvention = CallingConvention.Cdecl)]
         public static extern void bloquerAffichageGlobal(int active);
 

@@ -16,13 +16,13 @@ PAINBALL
 <BR>
 <BR>
 Auteurs:<BR>
-Aymen Dje <BR>
-Nikolay Radoev <BR>
-Yonni Chen <BR>
+Aymen Djellal <BR>
 Emilio Rivera <BR>
-Philippe Carpin <BR>
 Kim Piche <BR>
+Nikolay Radoev <BR>
+Philippe Carpin <BR>
 Samuel Millette <BR>
+Yonni Chen <BR>
 
 */
 
@@ -1041,7 +1041,7 @@ void FacadeModele::setPause(bool pause)
 {	
 	//ne pas afficher le generateur en mode pause
 	NoeudAbstrait* table = arbre_->chercher(0);
-	for (int i = 0; i < table->obtenirNombreEnfants(); i++)
+	for (unsigned int i = 0; i < table->obtenirNombreEnfants(); i++)
 		if (table->chercher(i)->obtenirType() == "generateurbille")
 			table->chercher(i)->assignerAffiche(!pause);
 
