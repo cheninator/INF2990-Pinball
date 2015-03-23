@@ -1038,7 +1038,13 @@ bool FacadeModele::supprimer()
 ///
 ///////////////////////////////////////////////////////////////////////////////
 void FacadeModele::setPause(bool pause)
-{
+{	
+	//ne pas afficher le generateur en mode pause
+	NoeudAbstrait* table = arbre_->chercher(0);
+	for (int i = 0; i < table->obtenirNombreEnfants(); i++)
+		if (table->chercher(i)->obtenirType() == "generateurbille")
+			table->chercher(i)->assignerAffiche(!pause);
+
 	pause_ = pause;
 
 	// remettre l'affichage a la normale
@@ -1048,7 +1054,7 @@ void FacadeModele::setPause(bool pause)
 		glEnable(GL_TEXTURE_2D);
 		glFlush();
 		glDrawBuffer(GL_BACK);
-	}	
+	}
 }
 
 
