@@ -152,6 +152,20 @@ aidecollision::DetailsCollision NoeudTable::detecterCollisions(NoeudAbstrait* bi
 		}
 	}
 
+	// Si la bille sort de la table, la teleporter sur un trou pour qu'elle soit enlevee 
+	// en bonne et due forme.
+	if (!FacadeModele::obtenirInstance()->estDansTable(bille->obtenirPositionRelative()))
+	{
+		for (NoeudAbstrait* noeud : enfants_)
+		{
+			if (noeud->obtenirType() == "trou")
+			{
+				bille->assignerPositionRelative(noeud->obtenirPositionRelative());
+				break;
+			}
+		}
+	}
+
 
 
 	return detailsAucune;
