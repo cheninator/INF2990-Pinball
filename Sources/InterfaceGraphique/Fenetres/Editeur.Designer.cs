@@ -167,9 +167,9 @@ namespace InterfaceGraphique
             this.panel_GL.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.panel_GL.BackColor = System.Drawing.Color.Transparent;
             this.panel_GL.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel_GL.Location = new System.Drawing.Point(163, 48);
+            this.panel_GL.Location = new System.Drawing.Point(163, 24);
             this.panel_GL.Name = "panel_GL";
-            this.panel_GL.Size = new System.Drawing.Size(566, 681);
+            this.panel_GL.Size = new System.Drawing.Size(566, 705);
             this.panel_GL.TabIndex = 4;
             this.panel_GL.SizeChanged += new System.EventHandler(this.panel_GL_SizeChanged);
             this.panel_GL.MouseClick += new System.Windows.Forms.MouseEventHandler(this.panel_GL_MouseClick);
@@ -187,9 +187,9 @@ namespace InterfaceGraphique
             this.Creation_Panel.Controls.Add(this.Group_Elements);
             this.Creation_Panel.Controls.Add(this.Group_Element2);
             this.Creation_Panel.Dock = System.Windows.Forms.DockStyle.Right;
-            this.Creation_Panel.Location = new System.Drawing.Point(729, 48);
+            this.Creation_Panel.Location = new System.Drawing.Point(729, 24);
             this.Creation_Panel.Name = "Creation_Panel";
-            this.Creation_Panel.Size = new System.Drawing.Size(225, 681);
+            this.Creation_Panel.Size = new System.Drawing.Size(225, 705);
             this.Creation_Panel.TabIndex = 2;
             this.Creation_Panel.MouseEnter += new System.EventHandler(this.Creation_Panel_MouseEnter);
             // 
@@ -274,7 +274,7 @@ namespace InterfaceGraphique
             // 
             // butoirCirc_bouton
             // 
-            this.butoirCirc_bouton.BackgroundImage = global::InterfaceGraphique.Properties.Resources.CibleCirc;
+            this.butoirCirc_bouton.BackgroundImage = global::InterfaceGraphique.Properties.Resources.cible1;
             this.butoirCirc_bouton.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
             this.butoirCirc_bouton.Location = new System.Drawing.Point(62, 76);
             this.butoirCirc_bouton.Name = "butoirCirc_bouton";
@@ -447,9 +447,9 @@ namespace InterfaceGraphique
             this.flowLayoutPanel1.Controls.Add(this.Groupe_Proprietes);
             this.flowLayoutPanel1.Controls.Add(this.richTextBox1);
             this.flowLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Left;
-            this.flowLayoutPanel1.Location = new System.Drawing.Point(0, 48);
+            this.flowLayoutPanel1.Location = new System.Drawing.Point(0, 24);
             this.flowLayoutPanel1.Name = "flowLayoutPanel1";
-            this.flowLayoutPanel1.Size = new System.Drawing.Size(163, 681);
+            this.flowLayoutPanel1.Size = new System.Drawing.Size(163, 705);
             this.flowLayoutPanel1.TabIndex = 3;
             this.flowLayoutPanel1.SizeChanged += new System.EventHandler(this.flowLayoutPanel1_SizeChanged);
             // 
@@ -741,7 +741,7 @@ namespace InterfaceGraphique
             this.Vues_MenuItem,
             this.Information_MenuItem,
             this.Mute_MenuItem});
-            this.menuStrip1.Location = new System.Drawing.Point(0, 24);
+            this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
             this.menuStrip1.Size = new System.Drawing.Size(954, 24);
             this.menuStrip1.TabIndex = 0;
