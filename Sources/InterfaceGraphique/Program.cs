@@ -124,7 +124,7 @@ namespace InterfaceGraphique
        static void ExecuterQuandInactif(object sender, EventArgs e)
         {
             FonctionsNatives.Message message;
-
+            
             while (!FonctionsNatives.PeekMessage(out message, IntPtr.Zero, 0, 0, 0))
             {
                 TimeSpan currentTime = chrono.Elapsed;
@@ -147,7 +147,11 @@ namespace InterfaceGraphique
                         }
                         compteurFrames++;
                         if (compteurFrames >= 10)
+                        {
                             compteurFrames = 0;
+                            if (customConsoleActive)
+                                myCustomConsole.UpdateConsoleTexte(FonctionsNatives.obtenirCout());
+                        }
                     }
                     tempsAccumule = TimeSpan.Zero;
                 }
@@ -564,5 +568,12 @@ namespace InterfaceGraphique
 
         [DllImport(@"Noyau.dll", CallingConvention = CallingConvention.Cdecl)]
         public static extern void activerAI(bool actif);
+
+        [DllImport(@"Noyau.dll", CallingConvention = CallingConvention.Cdecl)]
+        public static extern void activerCustomConsole();
+
+        [DllImport(@"Noyau.dll", CharSet = CharSet.Unicode, CallingConvention = CallingConvention.Cdecl)]
+        [return: MarshalAs(UnmanagedType.BStr)]
+        public static extern string obtenirCout();
     }
 }

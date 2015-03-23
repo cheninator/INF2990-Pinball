@@ -61,7 +61,7 @@ class FacadeModele
 public:
 
    /// Obtient l'instance unique de la classe.
-   static FacadeModele* obtenirInstance();
+   static FacadeModele* obtenirInstance(bool console = false);
 
    /// Libere l'instance unique de la classe.
    static void libererInstance();
@@ -230,7 +230,7 @@ public:
    void printCurrentTime();
    double obtenirScaleMinMax();
 
-   std::string obtenirCout(){ std::string ss = instance_->oss_.str; instance_->oss_.str = "";  return ss; };
+   std::string obtenirCout();
 
 private:
 
