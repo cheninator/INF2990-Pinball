@@ -140,14 +140,14 @@ void NoeudPaletteG::animer(float temps)
 				std::vector<glm::dvec3> boite = obtenirVecteursEnglobants();
 				NoeudAbstrait* parent = obtenirParent();
 				bool contact = false;
-				int i = 0;
+				unsigned int i = 0;
 				while (i < parent->obtenirNombreEnfants() && contact == false)
 				{
 					std::string type = parent->getEnfant(i)->obtenirType();
 
 					if (parent->getEnfant(i) != this && type != "bille" && type != "generateurbille" && parent->getEnfant(i)->estAffiche())
 					{
-						int j = 0;
+						unsigned int j = 0;
 						while (j < boite.size() && contact == false)
 						{
 							if (type != "butoirg" && type != "butoird")
