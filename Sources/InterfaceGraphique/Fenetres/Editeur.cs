@@ -748,6 +748,12 @@ namespace InterfaceGraphique
                     MessageBoxButtons.OK, MessageBoxIcon.Error);
                     pathXML = new StringBuilder("");
                 }
+                else if (sauvegarde == 4)
+                {
+                    MessageBox.Show("Tout les trous doivent etre au minimum de la taille de la plus grande bille (le plus gros generateur de billes) !", "ERREUR DE SAUVEGARDE",
+                    MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    pathXML = new StringBuilder("");
+                }
                 else
                 {
                     takeScreenShot();
@@ -2564,20 +2570,34 @@ namespace InterfaceGraphique
                         prop[i] = propZJ[i];
 
                     int sauvegarde = FonctionsNatives.creerXML(pathXML, pathXML.Capacity, prop);
+                    //Console.WriteLine(sauvegarde);
                     if (sauvegarde == 1)
                     {
                         MessageBox.Show("Vous ne pouvez pas sauvegarder la zone de jeu par defaut!", "ERREUR DE SAUVEGARDE",
                         MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        pathXML = new StringBuilder("");
                     }
-                    if (sauvegarde == 3 || sauvegarde == 0)
+                    else if (sauvegarde == 3 || sauvegarde == 0)
                     {
                         MessageBox.Show("Il doit avoir au moins un trou, un generateur de bille et un ressort dans la zone de jeu!", "ERREUR DE SAUVEGARDE",
                         MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        pathXML = new StringBuilder("");
                     }
-                    takeScreenShot();
+                    else if (sauvegarde == 4)
+                    {
+                        MessageBox.Show("Tout les trous doivent etre au minimum de la taille de la plus grande bille (le plus gros generateur de billes) !", "ERREUR DE SAUVEGARDE",
+                        MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        pathXML = new StringBuilder("");
+                    }
+                    else
+                    {
+                        takeScreenShot();
+                    }  
                 }
             }
         }
+
+
 
         //////////////////////////////////////////////////////////////////////////////////////////
         ///
