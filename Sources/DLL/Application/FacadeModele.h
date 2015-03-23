@@ -226,6 +226,7 @@ public:
    void creeBille(glm::dvec3 position, glm::dvec3 echelle);
 
    void printCurrentTime();
+   double obtenirScaleMinMax();
 
 private:
 

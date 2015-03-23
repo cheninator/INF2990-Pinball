@@ -854,9 +854,13 @@ int FacadeModele::creerXML(std::string path, int prop[6], bool force)
 	// Ne pas permettre la sauvegarde si la zone ne contient pas au minimum  3 objets
 	if (FacadeModele::obtenirInstance()->obtenirArbreRenduINF2990()->getEnfant(0)->obtenirNombreEnfants() < 3)
 	{
-		sauvegardeAutorise = 0;
+		return sauvegardeAutorise = 0;
 	}
-
+	
+	if (FacadeModele::obtenirInstance()->obtenirScaleMinMax() < 0)
+	{
+		 sauvegardeAutorise = 4;
+	}
 	// Ne pas permettre de sauvegarder la zone de jeu par defaut
 	else if (FacadeModele::obtenirInstance()->obtenirArbreRenduINF2990()->getEnfant(0)->chercher("generateurbille")
 		&& FacadeModele::obtenirInstance()->obtenirArbreRenduINF2990()->getEnfant(0)->chercher("trou")
@@ -1950,4 +1954,49 @@ void FacadeModele::printCurrentTime()
 		<< std::fixed << std::setfill('0') << std::setw(2) << std::setprecision(2) << time.wMinute << ":"
 		<< std::fixed << std::setfill('0') << std::setw(2) << std::setprecision(2) << time.wSecond << ":"
 		<< std::fixed << std::setfill('0') << std::setw(3) << std::setprecision(3) << time.wMilliseconds;
+}
+
+double FacadeModele::obtenirScaleMinMax()
+{
+	glm::dvec3 scaleMax = { 0, 0, 0 };
+	glm::dvec3 scaleMin = { 0, 0, 0 };
+	std::vector<int> generateurs;
+	int i = 0;
+	int nbElements = FacadeModele::obtenirInstance()->obtenirArbreRenduINF2990()->getEnfant(0)->obtenirNombreEnfants();
+	NoeudAbstrait* noeudTable = FacadeModele::obtenirInstance()->obtenirArbreRenduINF2990()->getEnfant(0);
+	for (i = 0; i < nbElements; i++)
+	{
+		std::string typeNoeud = noeudTable->getEnfant(i)->obtenirType();
+
+		if (typeNoeud == "generateurbille")
+		{
+			glm::dvec3 scaleGen = noeudTable->getEnfant(i)->obtenirAgrandissement();
+			if (scaleMax.x < scaleGen.x
+				&& scaleMax.y < scaleGen.y
+				&& scaleMax.z < scaleGen.z)
+			{
+				scaleMax = scaleGen;
+			}
+		}
+	}
+
+	scaleMin = scaleMax;
+
+	for (i = 0; i < nbElements; i++)
+	{
+		std::string typeNoeud = noeudTable->getEnfant(i)->obtenirType();
+
+		if (typeNoeud == "trou")
+		{
+			glm::dvec3 scaleGen = noeudTable->getEnfant(i)->obtenirAgrandissement();
+			if (scaleMin.x > scaleGen.x
+				&& scaleMin.y > scaleGen.y
+				&& scaleMin.z > scaleGen.z)
+			{
+				scaleMax = scaleGen;
+			}
+		}
+	}
+
+	return glm::length(scaleMax) - glm::length(scaleMin);
 }

@@ -343,7 +343,7 @@ namespace InterfaceGraphique
         public static extern void translater(double deplacementX, double deplacementY);
 
         [DllImport(@"Noyau.dll", CallingConvention = CallingConvention.Cdecl)]
-        public static extern int creerXML(StringBuilder path, int taille, int[] prop);
+        public static extern int creerXML(StringBuilder path, int taille, int[] prop, bool force = false);
 
         [DllImport(@"Noyau.dll", CallingConvention = CallingConvention.Cdecl)]
         public static extern IntPtr ouvrirXML(StringBuilder path, int taille);
