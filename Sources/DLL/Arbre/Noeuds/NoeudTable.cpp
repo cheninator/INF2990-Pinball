@@ -154,7 +154,8 @@ aidecollision::DetailsCollision NoeudTable::detecterCollisions(NoeudAbstrait* bi
 
 	// Si la bille sort de la table, la teleporter sur un trou pour qu'elle soit enlevee 
 	// en bonne et due forme.
-	if (!FacadeModele::obtenirInstance()->estDansTable(bille->obtenirPositionRelative()))
+	// if (!FacadeModele::obtenirInstance()->estDansTable(bille->obtenirPositionRelative()) || bille->obtenirPositionRelative().z > 30 || bille->obtenirPositionRelative().z < -30)
+	if (FacadeModele::obtenirInstance()->estDansTable(bille->obtenirPositionRelative()))
 	{
 		for (NoeudAbstrait* noeud : enfants_)
 		{
@@ -163,6 +164,7 @@ aidecollision::DetailsCollision NoeudTable::detecterCollisions(NoeudAbstrait* bi
 				bille->assignerPositionRelative(noeud->obtenirPositionRelative());
 				break;
 			}
+			bille->assignerPositionRelative(glm::dvec3{ 160, 0, 0 });
 		}
 	}
 
