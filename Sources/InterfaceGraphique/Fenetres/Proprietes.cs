@@ -69,7 +69,7 @@ namespace InterfaceGraphique
             }
             else
             {
-                if( (n <= 0) || (n > 1000))
+                if( (n <= 0) || (n > 10000))
                 {
                     isValid = false;
                     errorMessage +="\nLa valeur de butoir circulaire est hors de la limite( 0 a 1000) ";
@@ -83,7 +83,7 @@ namespace InterfaceGraphique
             }
             else
             {
-                if ((n <= 0) || (n > 1000))
+                if ((n <= 0) || (n > 10000))
                 {
                     isValid = false;
                     errorMessage += "\nLa valeur de butoir triangulaire est hors la limite( 0 a 1000) ";
@@ -97,7 +97,7 @@ namespace InterfaceGraphique
             }
             else
             {
-                if ((n <= 0) || (n > 1000))
+                if ((n <= 0) || (n > 10000))
                 {
                     isValid = false;
                     errorMessage += "\nLa valeur de la cible est hors la limite( 0 a 1000) ";
@@ -111,7 +111,7 @@ namespace InterfaceGraphique
             }
             else
             {
-                if ((n <= 0) || (n > 1000))
+                if ((n <= 0) || (n > 10000))
                 {
                     isValid = false;
                     errorMessage += "\nLa valeur des points de victoire est hors la limite( 0 a 1000) ";
@@ -125,7 +125,7 @@ namespace InterfaceGraphique
             }
             else
             {
-                if ((n <= 0) || (n > 1000))
+                if ((n <= 0) || (n > 10000))
                 {
                     isValid = false;
                     errorMessage += "\nLa valeur de points pour une balle gratuite est hors la limite( 0 a 1000) ";
