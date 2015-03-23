@@ -659,8 +659,8 @@ extern "C"
 	///
 	/// @fn void ouvrirXML(char* path, int length)
 	///
-	/// @param[in] position : Nom du path
-	/// @param[in] length : Taille du nom du path
+	/// @param[in] path : Chemin du path
+	/// @param[in] length : Taille du path
 	///
 	/// @return Aucun
 	///
@@ -690,10 +690,10 @@ extern "C"
 	///
 	/// @fn void takeScreenShot(char* path, int length, bool square, int maxSize)
 	///
-	/// @param[in] position : Nom du path
+	/// @param[in] path : Nom du path
 	/// @param[in] length : Taille du nom du path
-	/// @param[in] int maxSize : taille maximale (pixel) de l'image
-	/// @param[in] bool square : forme de l'image carre
+	/// @param[in] square : forme de l'image carre
+	/// @param[in] maxSize : taille maximale (pixel) de l'image
 	///
 	/// @return Aucun
 	///
@@ -731,9 +731,10 @@ extern "C"
 		// A revori avec phil
 		FacadeModele::obtenirInstance()->obtenirVue()->obtenirCamera().orbiterXY(phi, theta);
 	}
+
 	////////////////////////////////////////////////////////////////////////
 	///
-	/// @fn void zoomElastique(int xCoin1, int yCoin1, int xCoin2, int yCoin2)
+	/// @fn void zoomInElastique(int xCoin1, int yCoin1, int xCoin2, int yCoin2)
 	///
 	/// @param[in] xCoin1 : Coin initial du zoom elastique en x
 	/// @param[in] yCoin1 : Coin initial du zoom elastique en y
@@ -757,10 +758,9 @@ extern "C"
 		FacadeModele::obtenirInstance()->obtenirVue()->zoomerInElastique(coin1, coin2);
 	}
 
-
 	////////////////////////////////////////////////////////////////////////
 	///
-	/// @fn void zoomElastique(int xCoin1, int yCoin1, int xCoin2, int yCoin2)
+	/// @fn void zoomOutElastique(int xCoin1, int yCoin1, int xCoin2, int yCoin2)
 	///
 	/// @param[in] xCoin1 : Coin initial du zoom elastique en x
 	/// @param[in] yCoin1 : Coin initial du zoom elastique en y
@@ -933,14 +933,15 @@ extern "C"
 
 	///////////////////////////////////////////////////////////////////////////////
 	///
-	/// @fn doublegetPositionX( void ) 
+	/// @fn getPositionX() 
 	///
 	/// @return la position en X
 	///
 	/// @remark : Retourne le x de la position du dernier objet selectionne qu'on a trouve dans l'arbre.
 	///
 	///////////////////////////////////////////////////////////////////////////////
-	__declspec(dllexport) double __cdecl getPositionX( void ) {
+	__declspec(dllexport) double __cdecl getPositionX() 
+	{
 		double positionX = 0;
 		if (objet == nullptr)
 			return false;
@@ -954,7 +955,6 @@ extern "C"
 				positionX = objet->obtenirPositionRelative().x;
 			}
 		}
-		
 		return positionX;
 	}
 
@@ -962,14 +962,14 @@ extern "C"
 
 	///////////////////////////////////////////////////////////////////////////////
 	///
-	/// @fn double getPositionY( void )
+	/// @fn double getPositionY()
 	///
 	/// @return la position en Y
 	///
 	/// @remark : Retourne le y de la position du dernier objet selectionne qu'on a trouve dans l'arbre.
 	///
 	///////////////////////////////////////////////////////////////////////////////
-	__declspec(dllexport) double __cdecl getPositionY( void )
+	__declspec(dllexport) double __cdecl getPositionY()
 	{
 		double positionY = 0;
 		if (objet == nullptr)
@@ -984,20 +984,19 @@ extern "C"
 				
 			}
 		}
-
 		return positionY;
 	}
 
 	///////////////////////////////////////////////////////////////////////////////
 	///
-	/// @fn double getAngle( void )
+	/// @fn double getAngle()
 	///
 	/// @return l'angle de l'objet
 	///
 	/// @remark : Retourne l'angleZ du dernier objet selectionne qu'on a trouve dans l'arbre.
 	///
 	///////////////////////////////////////////////////////////////////////////////
-	__declspec(dllexport) double getAngle( void )
+	__declspec(dllexport) double getAngle()
 	{
 		if (objet == nullptr)
 			return false;
@@ -1011,20 +1010,19 @@ extern "C"
 				angle = objet->obtenirRotation().z;
 			}
 		}
-
 		return angle;
 	}
 
 	///////////////////////////////////////////////////////////////////////////////
 	///
-	/// @fn double getScale( void )
+	/// @fn double getScale()
 	///
 	/// @return la taille de l'objet (Retourne le scale du dernier objet selectionne qu'on a trouve dans l'arbre.)
 	///
 	/// @remark : Le scale en y est representatif des objets normaux et des murs.
 	///
 	///////////////////////////////////////////////////////////////////////////////
-	__declspec(dllexport) double getScale( void )
+	__declspec(dllexport) double getScale()
 	{
 		double scale =0;
 		if (objet == nullptr)
@@ -1038,7 +1036,6 @@ extern "C"
 				scale = objet->obtenirAgrandissement().y;
 			}
 		}
-
 		return scale;
 	}
 
@@ -1189,9 +1186,9 @@ extern "C"
 	///
 	///
 	/// @param[in] originX : Position en X ou le bouton a ete appuye
-	/// @param[in] originX : Position en Y ou le bouton a ete appuye
+	/// @param[in] originY : Position en Y ou le bouton a ete appuye
 	/// @param[in] x1 : Position en X precedant un deplacement de la souris
-	/// @param[in] Y1 : Position en Y precedant un deplacement de la souris
+	/// @param[in] y1 : Position en Y precedant un deplacement de la souris
 	/// @param[in] x2 : Position en X apres un deplacement de la souris (position actuelle de la souris)
 	/// @param[in] y2 : Position en X apres un deplacement de la souris (position actuelle de la souris)
 	///
@@ -1281,14 +1278,14 @@ extern "C"
 
 	///////////////////////////////////////////////////////////////////////////////
 	///
-	/// @fn doubleobtenirZoomCourant( void )
+	/// @fn obtenirZoomCourant()
 	///
-	/// @return : double, valeur du zoom courant	
+	/// @return : valeur du zoom courant	
 	///
 	/// @remark La valeur du facteur de zoom appliquer sur la fenetre
 	///
 	///////////////////////////////////////////////////////////////////////////////
-	__declspec(dllexport) double __cdecl obtenirZoomCourant( void )
+	__declspec(dllexport) double __cdecl obtenirZoomCourant()
 	{
 		if (FacadeModele::obtenirInstance() == nullptr)
 			return -1;
@@ -1493,7 +1490,7 @@ extern "C"
 
 	///////////////////////////////////////////////////////////////////////////////
 	///
-	/// @fn int obtenirNombreDeBillesPerdu()
+	/// @fn int obtenirNombreBillesPerdus()
 	/// @brief Retourne le nombre de billes detruite
 	/// @return Le nombre de billes.
 	///
@@ -1909,7 +1906,7 @@ extern "C"
 	///
 	/// @fn void activerAI(bool actif)
 	/// @brief Active ou desactive le joueur virtuel (AI).
-	/// @param[in] animer : Valeur d'ativation ou de desactivation.
+	/// @param[in] actif : Valeur d'ativation ou de desactivation.
 	/// @return Aucune.
 	///
 	///////////////////////////////////////////////////////////////////////////////
@@ -1918,6 +1915,30 @@ extern "C"
 		FacadeModele::obtenirInstance()->assignerAI(actif);
 	}
 
+
+	///////////////////////////////////////////////////////////////////////////////
+	///
+	/// @fn void activerCustomConsole()
+	/// @brief Active la deviation du cout vers un sstream
+	/// @return Aucune.
+	///
+	///////////////////////////////////////////////////////////////////////////////
+	__declspec(dllexport) void __cdecl activerCustomConsole()
+	{
+		FacadeModele::obtenirInstance(true);
+	}
+
+
+	///////////////////////////////////////////////////////////////////////////////
+	///
+	/// @fn void obtenirCout()
+	/// @return Retourne la valeur du string qui serais dans la console.
+	///
+	///////////////////////////////////////////////////////////////////////////////
+	__declspec(dllexport) BSTR __cdecl obtenirCout()
+	{
+		return stringToBSTR(FacadeModele::obtenirInstance()->obtenirCout());
+	}
 	//__declspec(dllexport) int __cdecl obtenirNombreDePointsTotals()
 	//{
 	//	return SingletonGlobal::obtenirInstance()->getPointsTotales();
@@ -1934,13 +1955,4 @@ extern "C"
 	font.Render("Hello World");
 
 	*/
-	__declspec(dllexport) void __cdecl activerCustomConsole()
-	{
-		FacadeModele::obtenirInstance(true);
-	}
-
-	__declspec(dllexport) BSTR __cdecl obtenirCout()
-	{
-		return stringToBSTR(FacadeModele::obtenirInstance()->obtenirCout());
-	}
 }// FIN DU extern "C"

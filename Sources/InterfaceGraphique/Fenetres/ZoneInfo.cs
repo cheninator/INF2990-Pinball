@@ -36,14 +36,15 @@ namespace InterfaceGraphique
 
         ////////////////////////////////////////////////////////////////////////
         ///
-        /// @fn public ZoneInfo(string nomZone, string difficulte,bool win)
+        /// @fn public ZoneInfo(string nomZone, string difficulte, bool win)
         /// @brief Constructeur par parametre de la fenetre Partie Terminee.
         /// @param[in] nomZone : Nom de la zone affichee.
+        /// @param[in] difficulte : difficulte de la zone de jeu
         /// @param[in] win : Indique si on a gagne la partie precedente.
         /// @return Aucune (constructeur).
         ///
         ////////////////////////////////////////////////////////////////////////
-        public ZoneInfo(string nomZone, string difficulte,bool win)
+        public ZoneInfo(string nomZone, string difficulte, bool win)
         {
             InitializeComponent();
             this.Icon = Properties.Resources.Pinball;

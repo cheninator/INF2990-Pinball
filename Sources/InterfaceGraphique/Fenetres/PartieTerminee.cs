@@ -34,9 +34,10 @@ namespace InterfaceGraphique
 
         ////////////////////////////////////////////////////////////////////////
         ///
-        /// @fn public PartieTerminee(bool victoire)
+        /// @fn public PartieTerminee(bool victoire, int nbPoints)
         /// @brief Constructeur par parametre de la fenetre Partie Terminee.
         /// @param[in] victoire : Indique si la partie a ete gagnee ou perdue.
+        /// @param[in] nbPoints : Indique le nombre de points lors de la fin de la partie.
         /// @return Aucune (constructeur).
         ///
         ////////////////////////////////////////////////////////////////////////

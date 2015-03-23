@@ -18,6 +18,11 @@ namespace InterfaceGraphique
             if (activate == false)
                 return;
             cConsole = new CustomConsole();
+            IntPtr hConsole = GetConsoleWindow();
+            if (IntPtr.Zero != hConsole)
+            {
+                ShowWindow(hConsole, 0);
+            }
             FonctionsNatives.activerCustomConsole();
         }
         public void stopForm()
@@ -105,5 +110,10 @@ namespace InterfaceGraphique
                 UpdateConsoleTexte(text);
             }
         }
+
+        [DllImport("user32.dll")]
+        public static extern bool ShowWindow(IntPtr hWnd, int nCmdShow);
+        [DllImport("kernel32")]
+        public static extern IntPtr GetConsoleWindow();
     }
 }

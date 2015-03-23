@@ -2887,17 +2887,17 @@ namespace InterfaceGraphique
             //  Console.WriteLine(FonctionsNatives.getScale());
             previousP = currentP;
             currentP = panel_GL.PointToClient(MousePosition);
-
-            //////////////////////////////////////////////////////////////////////////////////////////
-            ///
-            /// @fn private void IncreaseZoomButton_Click(object sender, EventArgs e)
-            /// @brief Fonction qui incremente le Zoom.
-            /// @param[in] sender : Objet duquel provient un evenement.
-            /// @param[in] e : evenement qui lance la fonction.
-            /// @return Aucune.
-            ///
-            //////////////////////////////////////////////////////////////////////////////////////////
         }
+
+        //////////////////////////////////////////////////////////////////////////////////////////
+        ///
+        /// @fn private void IncreaseZoomButton_Click(object sender, EventArgs e) 
+        /// @brief Fonction qui incremente le Zoom.
+        /// @param[in] sender : Objet duquel provient un evenement.
+        /// @param[in] e : evenement qui lance la fonction.
+        /// @return Aucune.
+        ///
+        //////////////////////////////////////////////////////////////////////////////////////////
         private void IncreaseZoomButton_Click(object sender, EventArgs e)
         {
             FonctionsNatives.zoomIn();

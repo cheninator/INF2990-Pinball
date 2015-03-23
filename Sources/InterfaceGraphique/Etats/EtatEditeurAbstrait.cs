@@ -113,7 +113,7 @@ namespace InterfaceGraphique
     {
         ////////////////////////////////////////////////////////////////////////
         ///
-        /// @fn public EtatDeplacement(Editeur form)
+        /// @fn public EtatEditeurDeplacement(Editeur form) : base(form)
         /// @brief Constructeur par parametre de l'etat.
         /// 
         /// param[in] form : Form associee a l'etat.
