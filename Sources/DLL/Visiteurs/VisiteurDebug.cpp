@@ -21,12 +21,11 @@
 ////////////////////////////////////////////////////////////////////////
 VisiteurDebug::VisiteurDebug()
 {
-
 }
 
 ////////////////////////////////////////////////////////////////////////
 ///
-/// @fn VisiteurDebug::VisiteuDebug(int positionDebug, bool valeurDebug_);
+/// @fn VisiteurDebug::VisiteurDebug(bool valeurDebugBille, bool valeurDebugPortail, bool valeurSpotLight)
 ///
 /// Constructeur par parametres
 ///

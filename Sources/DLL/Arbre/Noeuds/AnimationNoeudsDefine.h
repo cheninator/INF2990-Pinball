@@ -30,6 +30,9 @@ enum Direction { dirY, dirYX, dirX, dirXY, dirZ }; // Pour fonctionner avec le s
 #define VITESSE_INITIALE_NORUD_BILLE { 0, 0, 0 }	// Vitesse initiale
 #define TIME_IDLE_NOEUD_BILLE .5		// Temps que la bille ne bouge pas apres spawn
 
+// Butoirs
+#define FACTEUR_REBOND_BUTOIRE 1.3f
+
 // ButoirCirculaire
 #define SCALE_MAX_NOEUD_BUTOIRCIRCULAIRE 8./100.	// Pourcentage d'augmentation/raptissement maximal
 #define TEMPS_DEMI_ANIMATION_NOEUD_BUTOIRCIRCULAIREE .5		// L'animation d'une demi animation dure 1/2 sec

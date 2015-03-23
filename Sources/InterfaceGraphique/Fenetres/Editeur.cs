@@ -58,6 +58,7 @@ namespace InterfaceGraphique
         private bool activateAmbianteLight = false; ///< EtatEditeurAbstrait de la lumiere ambiante
         private bool activateDirectLight = false; ///< EtatEditeurAbstrait de la lumiere directe
         private bool activateSpotLight = false; ///< EtatEditeurAbstrait de la lumiere spot
+        public void deselection();               ///< Fonction de deselection
 
         ////////////////////////////////////////////////////////////////////////
         ///

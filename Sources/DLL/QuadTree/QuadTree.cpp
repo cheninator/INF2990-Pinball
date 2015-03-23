@@ -147,7 +147,7 @@ void QuadTree::clear()
 
 ////////////////////////////////////////////////////////////////////////
 ///
-/// @fn bool QuadTree::estDansQuadTree(NoeudAbstrait* noeud, QuadTree* quad)
+/// @fn bool QuadTree::estDansQuadTree(NoeudAbstrait* noeud, QuadTree* quad) const
 ///
 /// Cette méthode permet de savoir si un noeud est complétement contenu dans
 ///	un QuadTree.
@@ -211,7 +211,7 @@ bool QuadTree::estDansQuadTree(NoeudAbstrait* noeud, QuadTree* quad) const
 
 ////////////////////////////////////////////////////////////////////////
 ///
-/// @fn bool QuadTree::estDansQuadTree(glm::dvec3 points, QuadTree* quad)
+/// @fn bool QuadTree::estDansQuadTree(glm::dvec3 points, QuadTree* quad) const
 ///
 /// Cette méthode permet de savoir si un point est complétement contenu dans
 ///	un QuadTree.

@@ -13,12 +13,8 @@
 #include "VisiteurAbstrait.h"
 
 ///////////////////////////////////////////////////////////////////////////
-/// @class VisiteurSelection
-/// @brief Classe pour selectionner les objets de l'arbre de rendu
-///
-///        Instancier cette classe avec en parametre le point clique
-///		   Ensuite, appeler la methode accepterVisiteur() de l'arbre de 
-///		   rendu et lui fournir CE visiteur en parametre
+/// @class VisiteurDebug
+/// @brief Classe pour afficher le debug des objets de l'arbre de rendu
 ///
 /// @author The Ballers
 /// @date 2015-02-02

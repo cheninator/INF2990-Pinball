@@ -138,7 +138,7 @@ void NoeudPaletteD::animer(float temps)
 				std::vector<glm::dvec3> boite = obtenirVecteursEnglobants();
 				NoeudAbstrait* parent = obtenirParent();
 				bool contact = false;
-				int i = 0;
+				unsigned int i = 0;
 				while (i < parent->obtenirNombreEnfants() && contact == false)
 				{
 					std::string type = parent->getEnfant(i)->obtenirType();

@@ -118,7 +118,7 @@ bool NoeudTable::accepterVisiteur(VisiteurAbstrait* vis)
 
 ////////////////////////////////////////////////////////////////////////
 ///
-/// @fn void NoeudTable::traiterCollisions(aidecollision::DetailsCollision details, NoeudAbstrait* bille)
+/// @fn aidecollision::DetailsCollision NoeudTable::detecterCollisions(NoeudAbstrait* bille)
 ///
 /// Reimplementation de detecterCollisions pour la des limites de la table.
 /// 

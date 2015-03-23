@@ -231,7 +231,7 @@ void NoeudButoirCirculaire::traiterCollisions(aidecollision::DetailsCollision de
 {
 	if (FacadeModele::obtenirInstance()->obtenirModeForceRebond())
 	{
-		NoeudAbstrait::traiterCollisions(details, bille, 1.3);
+		NoeudAbstrait::traiterCollisions(details, bille, FACTEUR_REBOND_BUTOIRE);
 	}
 	else
 	{
