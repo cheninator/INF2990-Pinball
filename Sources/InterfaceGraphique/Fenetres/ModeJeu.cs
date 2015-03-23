@@ -647,6 +647,7 @@ namespace InterfaceGraphique
 
             Program.myCustomConsole.reStart();
             Program.myCustomConsole.Update();
+            Program.myCustomConsole.Show();
             if (Program.mMenu.modeJeuMain != null)
                 Program.mMenu.modeJeuMain.Focus();
             firstStart = false;
@@ -668,6 +669,20 @@ namespace InterfaceGraphique
             FonctionsNatives.desactiverPalettesDJ2();
             FonctionsNatives.desactiverPalettesGJ1();
             FonctionsNatives.desactiverPalettesGJ2();
+        }
+
+        private void ModeJeu_VisibleChanged(object sender, EventArgs e)
+        {
+            if (this.Visible == true)
+            {
+                Program.myCustomConsole.reStart();
+                Program.myCustomConsole.Update();
+                Program.myCustomConsole.Show();
+                if (Program.mMenu.modeJeuMain != null)
+                    Program.mMenu.modeJeuMain.Focus();
+            }
+            else
+                Program.myCustomConsole.Hide();
         }
     }
 }

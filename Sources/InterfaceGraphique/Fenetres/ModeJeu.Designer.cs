@@ -353,6 +353,7 @@
             this.Load += new System.EventHandler(this.PartieRapide_Load);
             this.Shown += new System.EventHandler(this.ModeJeu_Shown);
             this.SizeChanged += new System.EventHandler(this.PartieRapide_redimensionner);
+            this.VisibleChanged += new System.EventHandler(this.ModeJeu_VisibleChanged);
             this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.PartieRapide_KeyDown);
             this.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.PartieRapide_KeyPress);
             this.KeyUp += new System.Windows.Forms.KeyEventHandler(this.PartieRapide_KeyUp);
