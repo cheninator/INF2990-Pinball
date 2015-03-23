@@ -1694,6 +1694,16 @@ extern "C"
 		FacadeModele::obtenirInstance()->setPause(pause);
 	}
 
+
+	///////////////////////////////////////////////////////////////////////////////
+	///
+	/// @fn __declspec(dllexport) bool __cdecl spotLight(int lum, bool state)
+	/// @brief Active ou desactive la lumiere
+	/// @param[in] lum : Type de lumiere
+	/// @param[in] state : Activation ou desactivation.
+	/// @return Aucune.
+	///
+	///////////////////////////////////////////////////////////////////////////////
 	__declspec(dllexport) bool __cdecl spotLight(int lum, bool state)
 	{
 		// See this for light:

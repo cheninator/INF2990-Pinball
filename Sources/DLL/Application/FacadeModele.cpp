@@ -1910,6 +1910,16 @@ void FacadeModele::creeBille(glm::dvec3 position, glm::dvec3 echelle)
 	setDebug();
 }
 
+
+///////////////////////////////////////////////////////////////////////////////
+///
+/// @fn bool FacadeModele::preparerBille()
+/// @brief Cette fonction prepare la creation d'une bille
+///
+///
+/// @return Reussite ou Echec.
+///
+///////////////////////////////////////////////////////////////////////////////
 bool FacadeModele::preparerBille()
 {
 	std::vector<int> generateurs;
@@ -1946,6 +1956,15 @@ bool FacadeModele::preparerBille()
 	return true;
 }
 
+///////////////////////////////////////////////////////////////////////////////
+///
+/// @fn void FacadeModele::printCurrentTime()
+/// @brief Cette fonction affiche le temps maintenant
+///
+///
+/// @return Aucune
+///
+///////////////////////////////////////////////////////////////////////////////
 void FacadeModele::printCurrentTime()
 {
 	SYSTEMTIME time;
@@ -1956,6 +1975,15 @@ void FacadeModele::printCurrentTime()
 		<< std::fixed << std::setfill('0') << std::setw(3) << std::setprecision(3) << time.wMilliseconds;
 }
 
+///////////////////////////////////////////////////////////////////////////////
+///
+/// @fn double FacadeModele::obtenirScaleMinMax()
+/// @brief Cette fonction retourne le scale min du trou/max du generateur
+///
+///
+/// @return Scale min/max
+///
+///////////////////////////////////////////////////////////////////////////////
 double FacadeModele::obtenirScaleMinMax()
 {
 	glm::dvec3 scaleMax = { 0, 0, 0 };
