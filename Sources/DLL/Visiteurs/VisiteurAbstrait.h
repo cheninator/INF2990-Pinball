@@ -7,7 +7,7 @@
 /// @ingroup Visiteur
 ///////////////////////////////////////////////////////////////////////////////
 
-/** @defgroup Visiteur Visiteur
+/* @defgroup Visiteur Visiteur
 *	@ingroup Noyau
 */
 
