@@ -243,7 +243,7 @@ void NoeudRessort::traiterCollisions(aidecollision::DetailsCollision details, No
 		// ==> v = sqrt(constRessort/m) * distanceCompression
 		// ==> v = uneConstante * distanceCompression.
 	
-		double uneConstante = 18;
+		double uneConstante = 15;
 		bille->assignerPositionRelative(bille->obtenirPositionRelative() + 1.1*details.enfoncement * details.direction); // direction est un vecteur normal.
 		bille->assignerVitesse(uneConstante * distanceCompression_ * details.direction);
 	
