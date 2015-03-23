@@ -65,11 +65,11 @@ ArbreRenduINF2990::ArbreRenduINF2990(bool afficher)
 	// Construction des usines
 	int i = 17;
 	int j = 0;
-	if (afficher) std::cout << std::fixed << std::setw(2) << std::setprecision(2) << j++ * 100.0 / i << "%... ajout de l'usine Boutoire Droit" << std::endl;
+	if (afficher) std::cout << std::fixed << std::setw(2) << std::setprecision(2) << j++ * 100.0 / i << "%... ajout de l'usine Butoire Droit" << std::endl;
 	ajouterUsine(NOM_BUTOIRD, new UsineNoeudButoirD{ NOM_BUTOIRD });
-	if (afficher) std::cout << std::fixed << std::setw(2) << std::setprecision(2) << j++ * 100.0 / i << "%... ajout de l'usine Boutoire Gauche" << std::endl;
+	if (afficher) std::cout << std::fixed << std::setw(2) << std::setprecision(2) << j++ * 100.0 / i << "%... ajout de l'usine Butoire Gauche" << std::endl;
 	ajouterUsine(NOM_BUTOIRG, new UsineNoeudButoirG{ NOM_BUTOIRG });
-	if (afficher) std::cout << std::fixed << std::setw(2) << std::setprecision(2) << j++ * 100.0 / i << "%... ajout de l'usine Boutoire Circulaire" << std::endl;
+	if (afficher) std::cout << std::fixed << std::setw(2) << std::setprecision(2) << j++ * 100.0 / i << "%... ajout de l'usine Butoire Circulaire" << std::endl;
 	ajouterUsine(NOM_BUTOIRCIRCULAIRE, new UsineNoeudButoirCirculaire{ NOM_BUTOIRCIRCULAIRE });
 	if (afficher) std::cout << std::fixed << std::setw(2) << std::setprecision(2) << j++ * 100.0 / i << "%... ajout de l'usine Cible" << std::endl;
 	ajouterUsine(NOM_CIBLE, new UsineNoeudCible{ NOM_CIBLE });
@@ -91,7 +91,7 @@ ArbreRenduINF2990::ArbreRenduINF2990(bool afficher)
 	ajouterUsine(NOM_RESSORT, new UsineNoeudRessort{ NOM_RESSORT });
 	if (afficher) std::cout << std::fixed << std::setw(2) << std::setprecision(2) << j++ * 100.0 / i << "%... ajout de l'usine Trou" << std::endl;
 	ajouterUsine(NOM_TROU, new UsineNoeudTrou{ NOM_TROU });
-	if (afficher) std::cout << std::fixed << std::setw(2) << std::setprecision(2) << j++ * 100.0 / i << "%... ajout de l'usine Tampon" << std::endl;
+	if (afficher) std::cout << std::fixed << std::setw(2) << std::setprecision(2) << j++ * 100.0 / i << "%... ajout de l'usine Vide (tampon)" << std::endl;
 	ajouterUsine(NOM_VIDE, new UsineNoeudVide{ NOM_VIDE });
 	if (afficher) std::cout << std::fixed << std::setw(2) << std::setprecision(2) << j++ * 100.0 / i << "%... ajout de l'usine Couvercle" << std::endl;
 	ajouterUsine(NOM_COUVERCLE, new UsineNoeudCouvercle{ NOM_COUVERCLE });
