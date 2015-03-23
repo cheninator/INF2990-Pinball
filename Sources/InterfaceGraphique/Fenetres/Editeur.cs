@@ -1096,9 +1096,18 @@ namespace InterfaceGraphique
             try
             {
                 double value = ((double)dt.Compute(FMEbox.Text, ""));
-                FMEbox.Text = (Convert.ToInt32(Math.Round(value*100))/100.0).ToString();
+                FMEbox.Text = (Convert.ToInt32(Math.Round(value * 100)) / 100.0).ToString();
             }
-            catch { }
+            catch
+            {
+                try
+                {
+                    FMEbox.Text = FMEbox.Text.Replace(".", ",");
+                    double value = ((double)dt.Compute(FMEbox.Text, ""));
+                    FMEbox.Text = (Convert.ToInt32(Math.Round(value * 100)) / 100.0).ToString();
+                }
+                catch { }
+            }
 
             if (!int.TryParse(Anglebox.Text, out angle))
                 Anglebox.Text = "ERREUR";
