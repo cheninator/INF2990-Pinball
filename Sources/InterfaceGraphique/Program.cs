@@ -44,8 +44,6 @@ namespace InterfaceGraphique
         public static bool peutAfficher = false;
         public static bool tempBool = false;
         public static String playerName;
-        //private static Exemple exemple;
-        // private static mm menu;
         public static MainMenu mMenu; ///< Main Menu de l'application
         private static TimeSpan dernierTemps; ///< Dernier temps enregistre
         private static TimeSpan tempsAccumule; ///< Temps total accumule
