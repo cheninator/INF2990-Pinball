@@ -9,6 +9,7 @@
 #ifndef __SINGLETONGLOBAL_H__
 #define __SINGLETONGLOBAL_H__
 
+#include "../Sound/ControleurSon.h"
 #include "../Application/FacadeModele.h"
 #include "../Arbre/Noeuds/NoeudAbstrait.h"
 #include <sstream>
@@ -70,9 +71,9 @@ public:
 	std::string obtenirPathTemp() { objectPathCreated_ ? NULL : getAndSetTempObjDirectory(); return objectPath_; };
 
 	void finGeneration() { enCoursDeGeneration_ = 0; };
+	ControleurSon*  obtenirControleurSon();
 
 protected:
-
 	/// Constructeur vide déclaré protected.
 	SingletonGlobal() {};
 
@@ -111,6 +112,9 @@ private:
 	bool objectPathCreated_{ false };
 	bool enCoursDeGeneration_{ 0 };
 	std::vector<std::pair<std::pair<glm::dvec3, glm::dvec3>, NoeudAbstrait*>> launchSequence_;
+
+	// Controleur de son
+	ControleurSon* mySound_{ nullptr };
 };
 
 #endif // __SINGLETONGLOBAL_H__

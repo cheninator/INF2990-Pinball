@@ -129,6 +129,7 @@ namespace InterfaceGraphique
                     System.Environment.OSVersion.Version.Minor >= 1))
                     MessageBox.Show(warningMessageW, "AVERTISSEMENT", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
+
             mMenu = new MainMenu();
             Application.Run(mMenu);
         }
@@ -312,9 +313,26 @@ namespace InterfaceGraphique
             text += '\n';
             Program.myCustomConsole.UpdateConsoleTexte(text);
         }
-        [DllImport("User32.dll")]
+        [DllImport(@"User32.dll")]
         [return: MarshalAs(UnmanagedType.Bool)]
         public static extern bool PeekMessage(out Message message, IntPtr hWnd, uint filterMin, uint filterMax, uint flags);
+
+        public static int setMasterVolume(float percentage)
+        {
+            if (percentage > 1)
+                percentage /= 100;
+            if (percentage > 1)
+                return -1;
+            // Calculate the volume that's being set
+            double newVolume = ushort.MaxValue * percentage;
+
+            uint v = ((uint)newVolume) & 0xffff;
+            uint vAll = v | (v << 16);
+            // Set the volume
+            return WaveOutSetVolume(IntPtr.Zero, vAll);
+        }
+        [DllImport(@"winmm.dll", EntryPoint = "waveOutSetVolume")]
+        private static extern int WaveOutSetVolume(IntPtr hwo, uint dwVolume);
 
         [DllImport(@"Noyau.dll", CallingConvention = CallingConvention.Cdecl)]
         public static extern bool executerTests();

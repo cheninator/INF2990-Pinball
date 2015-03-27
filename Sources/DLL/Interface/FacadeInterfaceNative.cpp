@@ -5,8 +5,6 @@
 ///
 /// @ingroup Interface
 ////////////////////////////////////////////////
-#include "../Sound/SoundControllerClass.h"
-
 #include "FacadeInterfaceNative.h"
 #include "FacadeModele.h"
 
@@ -1058,35 +1056,36 @@ extern "C"
 		// MERCI
 		// http://openclassrooms.com/courses/apprenez-a-programmer-en-c/jouer-du-son-avec-fmod
 		// MUCH LOVE
-		static SoundControllerClass* mySounds_ = new SoundControllerClass();
 		static bool init = false;
 		std::string playing(value) ;
 		if (init == false)
 		{
 			std::cout << "Initializing sound controller ..." << std::endl;
-			mySounds_->createSound("ambient.wav");
-			mySounds_->createSound("music.wav");
-			mySounds_->createSound("no.wav");
-			mySounds_->createSound("stone.wav");
-			mySounds_->loopSound("music.wav");
+			
+			SingletonGlobal::obtenirInstance()->obtenirControleurSon()->creeSon("ambient.wav");
+			SingletonGlobal::obtenirInstance()->obtenirControleurSon()->creeSon("music.wav");
+			SingletonGlobal::obtenirInstance()->obtenirControleurSon()->creeSon("no.wav");
+			SingletonGlobal::obtenirInstance()->obtenirControleurSon()->creeSon("stone.wav");
+			SingletonGlobal::obtenirInstance()->obtenirControleurSon()->bouclerSon("music.wav");
+			//SingletonGlobal::obtenirInstance()->obtenirControleurSon()->ajusterBGM(12.5);
 			std::cout << "Done" << std::endl;
 			init = true;
 			return;
 		}
 		if (stop) 
 		{
-			mySounds_->muteAll(true);
+			SingletonGlobal::obtenirInstance()->obtenirControleurSon()->sourdine(true);
 			return;
 		}
 		else
 		{
 			if (playing == "")
 			{
-				mySounds_->muteAll(false);
+				SingletonGlobal::obtenirInstance()->obtenirControleurSon()->sourdine(false);
 				return;
 			}
 		}
-		mySounds_->playSound(value);
+		SingletonGlobal::obtenirInstance()->obtenirControleurSon()->jouerSon(value);
 	}
 
 	///////////////////////////////////////////////////////////////////////////////

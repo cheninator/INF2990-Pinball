@@ -15,25 +15,35 @@
 // https://cuboidzone.wordpress.com/2013/07/26/tutorial-implementing-fmod/
 // MUCH LOVE
 typedef FMOD::Sound* SoundClass;
-class SoundControllerClass
+class ControleurSon
 {
 public:
 	// Pointer to the FMOD instance
 
-	SoundControllerClass();
-	~SoundControllerClass();
-	void createSound(char* sName, bool loop = false);
-	void playSound(char* sName, bool pause = false);
-	void loopSound(char* sName, bool loop = true);
-	void stopSound(char* sName);
-	void muteAll(bool mute);
+	ControleurSon();
+	~ControleurSon();
+	void creeSon(char* sName, bool loop = false);
+	void jouerSon(char* sName, bool pause = false);
+	void bouclerSon(char* sName, bool loop = true);
+	void arreterSon(char* sName);
+	void sourdine(bool mute);
 
-	unsigned int lookUp(std::string fileName);
+	void ajusterBGM(float percent);
+	void ajusterSFX(float percent);
+	
 
 private:
+	unsigned int lookUp(std::string fileName);
+	void setVolumeLimiter();
+	void setVolumeBGM();
+	void setVolumeSFX();
+
 	FMOD::System* system_;
 	std::vector< std::pair< std::string, std::pair< FMOD::Sound *, FMOD::Channel* > > > soundTable_;
-
+	std::vector<int> backGroundMusic_;
+	std::vector<int> specialEffectSounds_;
+	float maxBGM_;
+	float maxSFX_;
 };
 
 #endif //__FACADE_SOUND_CONTROLLER_CLASS_H__

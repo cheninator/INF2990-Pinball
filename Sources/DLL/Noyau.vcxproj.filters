@@ -228,7 +228,7 @@
     <ClCompile Include="Arbre\Noeuds\NoeudGate.cpp">
       <Filter>Source Files\Arbre\Noeuds</Filter>
     </ClCompile>
-    <ClCompile Include="Sound\SoundControllerClass.cpp">
+    <ClCompile Include="Sound\ControleurSon.cpp">
       <Filter>Source Files\Sound</Filter>
     </ClCompile>
   </ItemGroup>
@@ -440,11 +440,11 @@
     <ClInclude Include="Arbre\Noeuds\NoeudGate.h">
       <Filter>Header Files\Arbre\Noeuds</Filter>
     </ClInclude>
-    <ClInclude Include="Sound\SoundControllerClass.h">
-      <Filter>Header Files\Sound</Filter>
-    </ClInclude>
     <ClInclude Include="Arbre\Noeuds\AnimationNoeudsDefine.h">
       <Filter>Header Files\Arbre\Noeuds</Filter>
+    </ClInclude>
+    <ClInclude Include="Sound\ControleurSon.h">
+      <Filter>Header Files\Sound</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>
