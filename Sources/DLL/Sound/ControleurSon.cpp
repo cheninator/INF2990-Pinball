@@ -6,6 +6,40 @@ ControleurSon::ControleurSon()
 	maxBGM_ = 1;
 	maxSFX_ = 1;
 
+	TCHAR buffer[MAX_PATH];
+	GetModuleFileName(NULL, buffer, MAX_PATH);
+	std::wstring wBuffer(buffer);
+	std::string currentFolder(wBuffer.begin(), wBuffer.end());
+	std::string::size_type position = currentFolder.find_last_of("\\/");
+	std::string targetPath = std::string(currentFolder).substr(0, position);
+	targetPath += "\\media\\SFX\\";
+	const char* d = targetPath.c_str();
+	std::vector<std::string> f;
+
+	FILE* pipe = NULL;
+	std::string pCmd = "dir /B /S " + std::string(d);
+	char buf[256];
+
+	if (NULL == (pipe = _popen(pCmd.c_str(), "rt")))
+	{
+		return;
+	}
+
+	while (!feof(pipe))
+	{
+		if (fgets(buf, 256, pipe) != NULL)
+		{
+			f.push_back(std::string(buf));
+		}
+	}
+	_pclose(pipe);
+	for (unsigned int i = 0; i < f.size(); i++)
+	{
+		std::string name = f[i];
+		name.erase(0, targetPath.length());
+		name.erase(name.length() - 1);
+		creeSon((char*)name.c_str());
+	}
 }
 
 ControleurSon::~ControleurSon()
