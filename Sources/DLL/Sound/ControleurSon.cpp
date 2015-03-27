@@ -1,12 +1,10 @@
 #include "ControleurSon.h"
-
 ControleurSon::ControleurSon()
 {
 	FMOD::System_Create(&system_);
 	system_->init(1024, FMOD_INIT_NORMAL, 0);
 	maxBGM_ = 1;
 	maxSFX_ = 1;
-
 
 }
 
@@ -142,7 +140,7 @@ void ControleurSon::setVolumeSFX()
 		soundTable_[specialEffectSounds_[i]].second.second->setVolume(maxSFX_);
 }
 
-std::string getPath(char* sName)
+std::string ControleurSon::getPath(char* sName)
 {
 	std::string soundPath = "media/SFX/" + std::string(sName);
 	return soundPath;
