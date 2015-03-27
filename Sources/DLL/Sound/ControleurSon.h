@@ -33,6 +33,7 @@ private:
 	void setVolumeLimiter();
 	void setVolumeBGM();
 	void setVolumeSFX();
+	std::string getPath(char* sName);
 
 	FMOD::System* system_;
 	std::vector< std::pair< std::string, std::pair< FMOD::Sound *, FMOD::Channel* > > > soundTable_;
