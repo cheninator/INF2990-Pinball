@@ -50,6 +50,9 @@ public:
 	/// Redefinition de boite englobante pour objet circulaire
 	virtual std::vector<glm::dvec3> obtenirVecteursEnglobants();
 
+	/// Traiter collisions qui implante la physique de collision bille-bille.
+	void traiterCollisions(aidecollision::DetailsCollision details, NoeudAbstrait* bille, float facteurRebond = 1.0);
+
 	/// Met a jout le pointage des collisions
 	void NoeudBille::mettreAJourCollision(NoeudAbstrait* noeud);
 
