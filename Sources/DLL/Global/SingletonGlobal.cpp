@@ -150,6 +150,23 @@ void SingletonGlobal::getAndSetTempObjDirectory()
 	objectPath_ = targetPath;
 }
 
+
+////////////////////////////////////////////////////////////////////////
+///
+/// @fn ControleurSon* obtenirControleurSon()
+///
+/// Retourne un pointeur vers le controleur de son
+/// Et le construit si il n'existe pas
+/// @return Controleur de son (wrapper FMOD).
+///
+////////////////////////////////////////////////////////////////////////
+ControleurSon*  SingletonGlobal::obtenirControleurSon()
+{
+	if (mySound_ == nullptr)
+		mySound_ = new ControleurSon();
+	return mySound_;
+};
+
 /*
 ////////////////////////////////////////////////////////////////////////
 ///
