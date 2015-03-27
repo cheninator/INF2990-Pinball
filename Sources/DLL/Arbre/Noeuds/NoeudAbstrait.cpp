@@ -850,6 +850,11 @@ void NoeudAbstrait::setSpotLight(bool debug)
 ////////////////////////////////////////////////////////////////////////
 aidecollision::DetailsCollision NoeudAbstrait::detecterCollisions(NoeudAbstrait* bille)
 {
+	// Considerer tous les segments boite[i] --- boite[i+1 % size] 
+	aidecollision::DetailsCollision detailsRetour;
+	detailsRetour.type = aidecollision::COLLISION_AUCUNE;
+	if (this == bille) return detailsRetour;
+
 	std::vector<glm::dvec3> boite = obtenirVecteursEnglobants();
 	double rayonBille = bille->obtenirVecteursEnglobants()[0].x;
 	aidecollision::DetailsCollision details;
@@ -858,8 +863,6 @@ aidecollision::DetailsCollision NoeudAbstrait::detecterCollisions(NoeudAbstrait*
 		for (unsigned int i = 0; i < boite.size(); i++)
 			boite[i] += obtenirPositionRelative();
 		// Considerer tous les segments boite[i] --- boite[i+1 % size] 
-		aidecollision::DetailsCollision detailsRetour;
-		detailsRetour.type = aidecollision::COLLISION_AUCUNE;
 		for (unsigned int i = 0; i < boite.size(); i++)
 		{
 			// On veut calculer la collision en 2D et caster les paramêtres en glm::dvec2 "oublie" leur composante en Z et choisi la bonne surcharge de calculerCollisionSegment.
