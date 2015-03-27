@@ -4,6 +4,8 @@
 #include <fmod.h>
 #include <fmod.hpp>
 #include <stdlib.h>
+#include <iostream>
+#include <string>
 #include <vector>
 #include <map>
 
@@ -18,13 +20,18 @@ public:
 	// Pointer to the FMOD instance
 
 	SoundControllerClass();
-	void createSound(char* sName);
-	void playSound(char* sName, bool bLoop = false);
-	void releaseSound(char* sName);
+	~SoundControllerClass();
+	void createSound(char* sName, bool loop = false);
+	void playSound(char* sName, bool pause = false);
+	void loopSound(char* sName, int loop = -1);
+	void stopSound(char* sName);
+	void muteAll(bool mute);
+
+	unsigned int lookUp(std::string fileName);
 
 private:
-	FMOD::System* m_pSystem;
-	std::map<const char*, SoundClass*> sounds_;
+	FMOD_SYSTEM* system_;
+	std::vector< std::pair<std::string, FMOD_SOUND *> > soundTable_;
 };
 
 #endif //__FACADE_SOUND_CONTROLLER_CLASS_H__

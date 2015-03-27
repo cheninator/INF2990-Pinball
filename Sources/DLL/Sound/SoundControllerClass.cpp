@@ -4,55 +4,64 @@ std::string getPath(char* sName);
 
 SoundControllerClass::SoundControllerClass()
 {
-	if (FMOD::System_Create(&m_pSystem) != FMOD_OK)
-	{
-		// Report Error
-		return;
-	}
-
-	int driverCount = 0;
-	m_pSystem->getNumDrivers(&driverCount);
-
-	if (driverCount == 0)
-	{
-		// Report Error
-		return;
-	}
-
-	// Initialize our Instance with 36 Channels
-	m_pSystem->init(36, FMOD_INIT_NORMAL, NULL);
+	FMOD_System_Create(&system_);
+	FMOD_System_Init(system_, 1024, FMOD_INIT_NORMAL, NULL);
 }
 
-void SoundControllerClass::createSound(char* sName)
+SoundControllerClass::~SoundControllerClass()
 {
-	std::string pName = getPath(sName);
-	const char* pSound = pName.c_str();
-	sounds_[pSound];
-	m_pSystem->createSound(pSound, FMOD_HARDWARE, 0, sounds_[pSound]);
+	for (unsigned int i = 0; i < soundTable_.size(); i++)
+		FMOD_Sound_Release(soundTable_[i].second);
+	FMOD_System_Close(system_);
+	FMOD_System_Release(system_);
 }
 
-void SoundControllerClass::playSound(char* sName, bool bLoop)
+void SoundControllerClass::createSound(char* sName, bool loop)
 {
-	std::string pName = getPath(sName);
-	const char* pSound = pName.c_str();
-	SoundClass mySound = *(sounds_[pSound]);
-	if (!bLoop)
-		mySound->setMode(FMOD_LOOP_OFF);
-	else
-	{
-		mySound->setMode(FMOD_LOOP_NORMAL);
-		mySound->setLoopCount(-1);
-	}
-	// Je me fais troll par intellisense
-	m_pSystem->playSound(FMOD_CHANNEL_FREE, mySound, false, 0);
+	std::string path = getPath(sName);
+	const char* sPath = path.c_str();
+	std::cout << " Adding " << std::string(sName) << "...   ";
+
+	std::pair<std::string, FMOD_SOUND *> apair;
+	apair.first = std::string(sName);
+	apair.second = NULL;
+	soundTable_.push_back(apair);
+
+	FMOD_RESULT resultat;
+	resultat = FMOD_System_CreateSound(system_, "C:\ambiant.wav", FMOD_LOOP_NORMAL, 0, &soundTable_.back().second);
+	std::cout << resultat << std::endl;
 }
 
-void SoundControllerClass::releaseSound(char* sName) 
+void SoundControllerClass::playSound(char* sName, bool stop)
 {
-	std::string pName = getPath(sName);
-	const char* pSound = pName.c_str();
-	SoundClass mySound = *(sounds_[pSound]);
-	mySound->release();
+	unsigned int position = lookUp(std::string(sName));
+	position = lookUp("ambiant.wav");
+	FMOD_System_PlaySound(system_, FMOD_CHANNEL_FREE, soundTable_[position].second, stop, NULL);
+}
+
+void SoundControllerClass::loopSound(char* sName, int loop)
+{
+	unsigned int position = lookUp(std::string(sName));
+	FMOD_Sound_SetLoopCount(soundTable_[position].second, loop);
+}
+
+void SoundControllerClass::stopSound(char* sName) 
+{
+}
+
+void SoundControllerClass::muteAll(bool mute)
+{
+	FMOD_CHANNELGROUP *canal;
+	FMOD_System_GetMasterChannelGroup(system_, &canal);
+	FMOD_ChannelGroup_SetMute(canal, mute);
+}
+
+unsigned int SoundControllerClass::lookUp(std::string fileName)
+{
+	for (unsigned int i = 0; i < soundTable_.size(); i++)
+		if (soundTable_[i].first == fileName)
+			return i;
+	return -1;
 }
 
 std::string getPath(char* sName)

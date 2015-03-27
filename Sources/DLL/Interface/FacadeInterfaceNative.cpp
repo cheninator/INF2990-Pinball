@@ -1058,12 +1058,17 @@ extern "C"
 		// MERCI
 		// http://openclassrooms.com/courses/apprenez-a-programmer-en-c/jouer-du-son-avec-fmod
 		// MUCH LOVE
-		static FMOD_SYSTEM* system;
+		static SoundControllerClass* mySounds_ = new SoundControllerClass();
 		static bool init = false;
-		static std::vector< std::pair<std::string, FMOD_SOUND *> > soundTable;
 		std::string playing(value) ;
 		if (init == false)
 		{
+			mySounds_->createSound("ambiant.wav");
+			mySounds_->createSound("music.wav");
+			mySounds_->createSound("no.wav");
+			mySounds_->createSound("stone.wav");
+			mySounds_->playSound("ambiant.wav");
+			/*
 			std::cout << "Chargement du son : " << std::endl;
 			FMOD_System_Create(&system);
 			FMOD_System_Init(system, 1024, FMOD_INIT_NORMAL, NULL);
@@ -1074,37 +1079,50 @@ extern "C"
 			// Mais ils prennent 3-4 sec a etre cree, a chaque fois, faik tu avais
 			// d'enorme delay c'etais chiant...
 			std::cout << " 0,00%... ambiant.wav" << std::endl; 
-			std::pair<std::string, FMOD_SOUND *> apair0("media/SFX/ambiant.wav", NULL);
-			soundTable.push_back(apair0);
+			std::pair<std::string, FMOD_SOUND *> apair;
+			apair.first = "media/SFX/ambiant.wav"; apair.second =  NULL;
+			soundTable.push_back(apair);
 			FMOD_System_CreateSound(system, "media/SFX/ambiant.wav", FMOD_CREATESAMPLE, 0, &soundTable.back().second);
+
+
 			std::cout << " 25,00%... music.wav" << std::endl;
-			std::pair<std::string, FMOD_SOUND *> apair1("media/SFX/music.wav", NULL);
-			soundTable.push_back(apair1);
+			apair.first = "media/SFX/music.wav"; apair.second = NULL;
+			soundTable.push_back(apair);
 			FMOD_System_CreateSound(system, "media/SFX/music.wav", FMOD_LOOP_NORMAL, 0, &soundTable.back().second);
+
+
 			std::cout << " 50,00%... no.wav" << std::endl;
-			std::pair<std::string, FMOD_SOUND *> apair2("media/SFX/no.wav", NULL);
-			soundTable.push_back(apair2);
+			apair.first = "media/SFX/no.wav"; apair.second = NULL;
+			soundTable.push_back(apair);
 			FMOD_System_CreateSound(system, "media/SFX/no.wav", FMOD_CREATESAMPLE, 0, &soundTable.back().second);
+
+
 			std::cout << " 75,00%... sound.wav" << std::endl;
-			std::pair<std::string, FMOD_SOUND *> apair3("media/SFX/stone.wav", NULL);
-			soundTable.push_back(apair3);
+			apair.first = "media/SFX/stone.wav"; apair.second = NULL;
+			soundTable.push_back(apair);
 			FMOD_System_CreateSound(system, "media/SFX/stone.wav", FMOD_CREATESAMPLE, 0, &soundTable.back().second);
 			std::cout << " 100%... tout les sons sont initialise" << std::endl;
 			std::cout << "Fin du chargement du son !" << std::endl << std::endl;
-		
+
+
+			FMOD_System_PlaySound(system, FMOD_CHANNEL_FREE, soundTable[0].second, 0, NULL);
+			FMOD_System_PlaySound(system, FMOD_CHANNEL_FREE, soundTable[1].second, 0, NULL);
+			FMOD_System_PlaySound(system, FMOD_CHANNEL_FREE, soundTable[2].second, 0, NULL);
+			FMOD_System_PlaySound(system, FMOD_CHANNEL_FREE, soundTable[3].second, 0, NULL);
 			//SoundControllerClass mySounds_;
 			//mySounds_.createSound("ambiant.wav");
 			//mySounds_.createSound("music.wav");
 			//mySounds_.createSound("no.wav");
 			//mySounds_.createSound("stone.wav");
 			//mySounds_.playSound("ambiant.wav");
+			*/
 		}
 
-
+		/*
 		FMOD_CHANNELGROUP *canal;
 		FMOD_System_GetMasterChannelGroup(system, &canal);
 		if (stop) {
-			FMOD_ChannelGroup_SetMute(canal, 1);
+			FMOD_ChannelGroup_SetMute(canal, 0);
 			return;
 		}
 		else {
@@ -1121,6 +1139,7 @@ extern "C"
 				return;
 			}
 		}
+		*/
 	}
 
 	///////////////////////////////////////////////////////////////////////////////
