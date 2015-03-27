@@ -78,7 +78,7 @@ protected:
 	SingletonGlobal() {};
 
 	/// Destructeur vide déclaré protected.
-	~SingletonGlobal() {};
+	~SingletonGlobal() { delete mySound_; };
 
 private:
 

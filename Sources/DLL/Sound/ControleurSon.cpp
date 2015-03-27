@@ -1,13 +1,13 @@
 #include "ControleurSon.h"
 
-std::string getPath(char* sName);
-
 ControleurSon::ControleurSon()
 {
 	FMOD::System_Create(&system_);
 	system_->init(1024, FMOD_INIT_NORMAL, 0);
 	maxBGM_ = 1;
 	maxSFX_ = 1;
+
+
 }
 
 ControleurSon::~ControleurSon()
@@ -18,9 +18,15 @@ ControleurSon::~ControleurSon()
 	system_->close();
 }
 
-void ControleurSon::creeSon(char* sName, bool loop)
+void ControleurSon::creeSon(char* sName)
 {
 	std::string name(sName);
+
+	// Check if already created
+	for (unsigned int i = 0; i < soundTable_.size(); i++)
+		if (soundTable_[i].first == name)
+			return;
+
 	std::string path = getPath(sName);
 	const char* sPath = path.c_str();
 	std::cout << "\tAdding " << name << "..." << std::setw(40 - name.length());
@@ -85,6 +91,13 @@ unsigned int ControleurSon::lookUp(std::string fileName)
 	for (unsigned int i = 0; i < soundTable_.size(); i++)
 		if (soundTable_[i].first == fileName)
 			return i;
+	
+	creeSon((char*)fileName.c_str());
+
+	for (unsigned int i = 0; i < soundTable_.size(); i++)
+		if (soundTable_[i].first == fileName)
+			return i;	
+
 	std::cout << "ERROR: " << fileName << " not found !";
 	return -1;
 }

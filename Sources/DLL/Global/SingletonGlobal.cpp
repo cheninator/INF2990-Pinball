@@ -122,7 +122,6 @@ void SingletonGlobal::libererInstance()
 {
 	delete singleton_;
 	singleton_ = 0;
-	//free(objectPath_);
 }
 
 ////////////////////////////////////////////////////////////////////////

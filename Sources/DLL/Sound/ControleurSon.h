@@ -3,6 +3,7 @@
 
 #include "fmod.h"
 #include "fmod.hpp"
+#include <Windows.h>
 #include <stdlib.h>
 #include <iostream>
 #include <iomanip>
@@ -10,11 +11,6 @@
 #include <vector>
 #include <map>
 
-// MERCI
-// http://openclassrooms.com/courses/apprenez-a-programmer-en-c/jouer-du-son-avec-fmod
-// https://cuboidzone.wordpress.com/2013/07/26/tutorial-implementing-fmod/
-// MUCH LOVE
-typedef FMOD::Sound* SoundClass;
 class ControleurSon
 {
 public:
@@ -22,7 +18,7 @@ public:
 
 	ControleurSon();
 	~ControleurSon();
-	void creeSon(char* sName, bool loop = false);
+	void creeSon(char* sName);
 	void jouerSon(char* sName, bool pause = false);
 	void bouclerSon(char* sName, bool loop = true);
 	void arreterSon(char* sName);

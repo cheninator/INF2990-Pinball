@@ -118,6 +118,14 @@ extern "C" {
 
 	__declspec(dllexport) void activerCustomConsole();
 	__declspec(dllexport) BSTR obtenirCout();
+
+	__declspec(dllexport) void creeSon(char* value, int length);
+	__declspec(dllexport) void jouerSon(char* value, int length, bool pause = false);
+	__declspec(dllexport) void bouclerSon(char* value, int length, bool loop = true);
+	__declspec(dllexport) void sourdine(bool mute = true);
+	__declspec(dllexport) void arreterSon(char* value, int length);
+	__declspec(dllexport) void ajusterBGM(float pourcentage);
+	__declspec(dllexport) void ajusterSFX(float pourcentage);
 }
 
 #endif // __FACADE_INTERFACE_NATIVE_H__

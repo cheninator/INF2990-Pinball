@@ -1039,6 +1039,127 @@ extern "C"
 
 	////////////////////////////////////////////////////////////////////////
 	///
+	/// @fn void creeSon()
+	///
+	/// @param[in] value : Nom du son
+	/// @param[in] length : Taille du nom
+	///
+	/// @return Aucun
+	///
+	/// @remark Cette fonction permet de cree un son (le charger en memoire)
+	///
+	////////////////////////////////////////////////////////////////////////
+	__declspec(dllexport) void __cdecl creeSon(char* value, int length)
+	{
+		SingletonGlobal::obtenirInstance()->obtenirControleurSon()->creeSon(value);
+	}
+
+	////////////////////////////////////////////////////////////////////////
+	///
+	/// @fn void jouerSon()
+	///
+	/// @param[in] value : Nom du son
+	/// @param[in] length : Taille du nom
+	/// @param[in] pause : Arret du son
+	///
+	/// @return Aucun
+	///
+	/// @remark Cette fonction permet de jouer un son ou de l'arreter
+	///
+	////////////////////////////////////////////////////////////////////////
+	__declspec(dllexport) void __cdecl jouerSon(char* value, int length, bool pause)
+	{
+		SingletonGlobal::obtenirInstance()->obtenirControleurSon()->jouerSon(value, pause);
+	}
+
+	////////////////////////////////////////////////////////////////////////
+	///
+	/// @fn void bouclerSon()
+	///
+	/// @param[in] value : Nom du son
+	/// @param[in] length : Taille du nom
+	/// @param[in] loop : Faire boucler le son en continue ou non
+	///
+	/// @return Aucun
+	///
+	/// @remark Cette fonction permet de jouer un son en boucle
+	///
+	////////////////////////////////////////////////////////////////////////
+	__declspec(dllexport) void __cdecl bouclerSon(char* value, int length, bool loop)
+	{
+		SingletonGlobal::obtenirInstance()->obtenirControleurSon()->jouerSon(value, loop);
+	}
+
+	////////////////////////////////////////////////////////////////////////
+	///
+	/// @fn void sourdine()
+	///
+	/// @param[in] mute : Mute or unmute the sound
+	///
+	/// @return Aucun
+	///
+	/// @remark Cette fonction controle le canal de son global et l'active ou le desactive
+	/// @remark Attention, cette fonction ne fais pas de pause, elle coupe le son
+	///
+	////////////////////////////////////////////////////////////////////////
+	__declspec(dllexport) void __cdecl sourdine(bool mute)
+	{
+		SingletonGlobal::obtenirInstance()->obtenirControleurSon()->sourdine(mute);
+	}
+
+	////////////////////////////////////////////////////////////////////////
+	///
+	/// @fn void arreterSon()
+	///
+	/// @param[in] value : Nom du son
+	/// @param[in] length : Taille du nom
+	///
+	/// @return Aucun
+	///
+	/// @remark Permet d'arreter un son completement (mais ne le detruit pas)
+	///
+	////////////////////////////////////////////////////////////////////////
+	__declspec(dllexport) void __cdecl arreterSon(char* value, int length)
+	{
+		SingletonGlobal::obtenirInstance()->obtenirControleurSon()->creeSon(value);
+	}
+
+	////////////////////////////////////////////////////////////////////////
+	///
+	/// @fn void ajusterBGM()
+	///
+	/// @param[in] pourcentage : Valeur entre 0 et 100 pour ajuster le volume
+	///
+	/// @return Aucun
+	///
+	/// @remark Cette fonction permet de jouer modifier le volume des son en
+	/// @remark boucle (background music looping)
+	///
+	////////////////////////////////////////////////////////////////////////
+	__declspec(dllexport) void __cdecl ajusterBGM(float pourcentage)
+	{
+		SingletonGlobal::obtenirInstance()->obtenirControleurSon()->ajusterBGM(pourcentage);
+	}
+
+	////////////////////////////////////////////////////////////////////////
+	///
+	/// @fn void ajusterSFX()
+	///
+	/// @param[in] pourcentage : Valeur entre 0 et 100 pour ajuster le volume
+	///
+	/// @return Aucun
+	///
+	/// @remark Cette fonction permet de jouer modifier le volume des son
+	/// @remark bref (evenement ponctuel)
+	///
+	////////////////////////////////////////////////////////////////////////
+	__declspec(dllexport) void __cdecl ajusterSFX(float pourcentage)
+	{
+		SingletonGlobal::obtenirInstance()->obtenirControleurSon()->ajusterBGM(pourcentage);
+	}
+
+	////////////////////////////////////////////////////////////////////////
+	///
 	/// @fn void playSound()
 	///
 	/// @param[in] value : Nom du son
@@ -1048,9 +1169,9 @@ extern "C"
 	/// @return Aucun
 	///
 	/// @remark Cette fonction permet de jouer un son ou de l'arreter
+	/// Deprecated please dont use and delete
 	///
 	////////////////////////////////////////////////////////////////////////
-
 	__declspec(dllexport) void __cdecl playSound(char* value, int length, bool stop)
 	{
 		// MERCI
