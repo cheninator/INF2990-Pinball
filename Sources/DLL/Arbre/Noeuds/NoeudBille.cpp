@@ -308,3 +308,58 @@ std::vector<glm::dvec3> NoeudBille::obtenirVecteursEnglobants()
 	double rayonModele = (boite_.coinMax.x - boite_.coinMin.x) / 2.0;
 	return{ glm::dvec3{ rayonModele * scale_.x, 0, 0 } };
 }
+
+///////////////////////////////////////////////////////////////////////
+///
+/// 
+///
+/// Cette fonction effectue la réaction a la collision de la bille sur 
+/// l'objet courant. Cette fonction est a reimplementer si on veut autre 
+/// chose qu'un rebondissement ordinaire.
+///
+/// @return details contient l'information sur la collision de la bille avec *this.
+///
+////////////////////////////////////////////////////////////////////////
+void NoeudBille::traiterCollisions(aidecollision::DetailsCollision details, NoeudAbstrait* bille, float facteurRebond)
+{
+
+	// pour avoir l'ancien comportement exactement, simplement decommenter la ligne suivante
+	// return NoeudAbstrait::traiterCollisions(details, bille, facteurRebond);
+
+	// Pour alleger les formules, A == this et B == bille
+	// vA, vB les vecteurs vitesse initiaux
+	// vAn et vAt, les coefficients normaux et tangents respectivement
+	// wAn et wAt, les coefficients apres la collision.
+	glm::dvec3 vA = this->obtenirVitesse(); vA.z = 0;
+	glm::dvec3 vB = bille->obtenirVitesse(); vB.z = 0;
+
+	// Changer la masse selon le scale. 
+	double mA = this->obtenirAgrandissement().x * MASSE_NOEUD_BILLE;
+	double mB = bille->obtenirAgrandissement().x * MASSE_NOEUD_BILLE;
+
+	glm::dvec3 N = glm::normalize(this->obtenirPositionRelative() - bille->obtenirPositionRelative());
+	N.z = 0; // Juste pour etre sur
+	glm::dvec3 T = glm::dvec3{ -N.y, N.x, 0 };
+
+	// Composantes normales initiales
+	double vAn = glm::dot(vA, N);
+	double vBn = glm::dot(vB, N);
+
+	// Composantes tangentielles intitiales (et finales)
+	double vAt = glm::dot(vA, T);
+	double vBt = glm::dot(vB, T);
+
+	double wAn = (vAn * (mA - mB) + 2 * mB*vBn) / (mA + mB);
+	double wBn = (vBn * (mB - mA) + 2 * mA*vAn) / (mA + mB);
+
+	// wAt = vAt;
+	// wBt = vBt;
+
+	this->assignerVitesse(wAn * N + vAt * T); 
+	bille->assignerVitesse(wBn * N + vBt * T);
+
+	this->assignerPositionRelative(this->obtenirPositionRelative() - 0.6*details.enfoncement*details.direction);
+	bille->assignerPositionRelative(bille->obtenirPositionRelative() + 0.6*details.enfoncement*details.direction);
+
+}
+
