@@ -2772,7 +2772,7 @@ namespace InterfaceGraphique
             if (name == "")
                 path = "";
             else
-                path = "media/SFX/" + name + ".wav";
+                path = name + ".wav";
             StringBuilder music = new StringBuilder(path);
             FonctionsNatives.playSound(music, music.Capacity, stop);
         }

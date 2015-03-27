@@ -1063,83 +1063,30 @@ extern "C"
 		std::string playing(value) ;
 		if (init == false)
 		{
-			mySounds_->createSound("ambiant.wav");
+			std::cout << "Initializing sound controller ..." << std::endl;
+			mySounds_->createSound("ambient.wav");
 			mySounds_->createSound("music.wav");
 			mySounds_->createSound("no.wav");
 			mySounds_->createSound("stone.wav");
-			mySounds_->playSound("ambiant.wav");
-			/*
-			std::cout << "Chargement du son : " << std::endl;
-			FMOD_System_Create(&system);
-			FMOD_System_Init(system, 1024, FMOD_INIT_NORMAL, NULL);
+			mySounds_->loopSound("music.wav");
+			std::cout << "Done" << std::endl;
 			init = true;
-
-			// Initialiser tout les bruits (fuck off, je fais pas d'usine);
-			// Au debut, je voulais les initialiser au fur et a mesure des call
-			// Mais ils prennent 3-4 sec a etre cree, a chaque fois, faik tu avais
-			// d'enorme delay c'etais chiant...
-			std::cout << " 0,00%... ambiant.wav" << std::endl; 
-			std::pair<std::string, FMOD_SOUND *> apair;
-			apair.first = "media/SFX/ambiant.wav"; apair.second =  NULL;
-			soundTable.push_back(apair);
-			FMOD_System_CreateSound(system, "media/SFX/ambiant.wav", FMOD_CREATESAMPLE, 0, &soundTable.back().second);
-
-
-			std::cout << " 25,00%... music.wav" << std::endl;
-			apair.first = "media/SFX/music.wav"; apair.second = NULL;
-			soundTable.push_back(apair);
-			FMOD_System_CreateSound(system, "media/SFX/music.wav", FMOD_LOOP_NORMAL, 0, &soundTable.back().second);
-
-
-			std::cout << " 50,00%... no.wav" << std::endl;
-			apair.first = "media/SFX/no.wav"; apair.second = NULL;
-			soundTable.push_back(apair);
-			FMOD_System_CreateSound(system, "media/SFX/no.wav", FMOD_CREATESAMPLE, 0, &soundTable.back().second);
-
-
-			std::cout << " 75,00%... sound.wav" << std::endl;
-			apair.first = "media/SFX/stone.wav"; apair.second = NULL;
-			soundTable.push_back(apair);
-			FMOD_System_CreateSound(system, "media/SFX/stone.wav", FMOD_CREATESAMPLE, 0, &soundTable.back().second);
-			std::cout << " 100%... tout les sons sont initialise" << std::endl;
-			std::cout << "Fin du chargement du son !" << std::endl << std::endl;
-
-
-			FMOD_System_PlaySound(system, FMOD_CHANNEL_FREE, soundTable[0].second, 0, NULL);
-			FMOD_System_PlaySound(system, FMOD_CHANNEL_FREE, soundTable[1].second, 0, NULL);
-			FMOD_System_PlaySound(system, FMOD_CHANNEL_FREE, soundTable[2].second, 0, NULL);
-			FMOD_System_PlaySound(system, FMOD_CHANNEL_FREE, soundTable[3].second, 0, NULL);
-			//SoundControllerClass mySounds_;
-			//mySounds_.createSound("ambiant.wav");
-			//mySounds_.createSound("music.wav");
-			//mySounds_.createSound("no.wav");
-			//mySounds_.createSound("stone.wav");
-			//mySounds_.playSound("ambiant.wav");
-			*/
-		}
-
-		/*
-		FMOD_CHANNELGROUP *canal;
-		FMOD_System_GetMasterChannelGroup(system, &canal);
-		if (stop) {
-			FMOD_ChannelGroup_SetMute(canal, 0);
 			return;
 		}
-		else {
-			FMOD_ChannelGroup_SetMute(canal, 0);
-			if (playing == "")
-				return;
+		if (stop) 
+		{
+			mySounds_->muteAll(true);
+			return;
 		}
-
-		int i;
-		for (i = 0; i < soundTable.size(); i++) {		
-			if (soundTable[i].first == std::string(value)) {
-					FMOD_System_PlaySound(system, FMOD_CHANNEL_FREE, soundTable[i].second, 0, NULL);
-
+		else
+		{
+			if (playing == "")
+			{
+				mySounds_->muteAll(false);
 				return;
 			}
 		}
-		*/
+		mySounds_->playSound(value);
 	}
 
 	///////////////////////////////////////////////////////////////////////////////

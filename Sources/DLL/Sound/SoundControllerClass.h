@@ -1,10 +1,11 @@
 #ifndef __FACADE_SOUND_CONTROLLER_CLASS_H__
 #define __FACADE_SOUND_CONTROLLER_CLASS_H__
 
-#include <fmod.h>
-#include <fmod.hpp>
+#include "fmod.h"
+#include "fmod.hpp"
 #include <stdlib.h>
 #include <iostream>
+#include <iomanip>
 #include <string>
 #include <vector>
 #include <map>
@@ -23,15 +24,16 @@ public:
 	~SoundControllerClass();
 	void createSound(char* sName, bool loop = false);
 	void playSound(char* sName, bool pause = false);
-	void loopSound(char* sName, int loop = -1);
+	void loopSound(char* sName, bool loop = true);
 	void stopSound(char* sName);
 	void muteAll(bool mute);
 
 	unsigned int lookUp(std::string fileName);
 
 private:
-	FMOD_SYSTEM* system_;
-	std::vector< std::pair<std::string, FMOD_SOUND *> > soundTable_;
+	FMOD::System* system_;
+	std::vector< std::pair< std::string, std::pair< FMOD::Sound *, FMOD::Channel* > > > soundTable_;
+
 };
 
 #endif //__FACADE_SOUND_CONTROLLER_CLASS_H__

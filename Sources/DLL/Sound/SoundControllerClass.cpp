@@ -4,56 +4,63 @@ std::string getPath(char* sName);
 
 SoundControllerClass::SoundControllerClass()
 {
-	FMOD_System_Create(&system_);
-	FMOD_System_Init(system_, 1024, FMOD_INIT_NORMAL, NULL);
+	FMOD::System_Create(&system_);
+	system_->init(1024, FMOD_INIT_NORMAL, 0);
 }
 
 SoundControllerClass::~SoundControllerClass()
 {
 	for (unsigned int i = 0; i < soundTable_.size(); i++)
-		FMOD_Sound_Release(soundTable_[i].second);
-	FMOD_System_Close(system_);
-	FMOD_System_Release(system_);
+		soundTable_[i].second.second->stop();
+	system_->release();
+	system_->close();
 }
 
 void SoundControllerClass::createSound(char* sName, bool loop)
 {
+	std::string name(sName);
 	std::string path = getPath(sName);
 	const char* sPath = path.c_str();
-	std::cout << " Adding " << std::string(sName) << "...   ";
+	std::cout << "\tAdding " << name << "..." << std::setw(40 - name.length());
 
-	std::pair<std::string, FMOD_SOUND *> apair;
+	std::pair< std::string, std::pair< FMOD::Sound *, FMOD::Channel* > > apair;
 	apair.first = std::string(sName);
-	apair.second = NULL;
+	apair.second.first = NULL;
+	apair.second.second = NULL;
 	soundTable_.push_back(apair);
-
-	FMOD_RESULT resultat;
-	resultat = FMOD_System_CreateSound(system_, "C:\ambiant.wav", FMOD_LOOP_NORMAL, 0, &soundTable_.back().second);
-	std::cout << resultat << std::endl;
+	std::cout << ((system_->createSound(sPath, FMOD_DEFAULT, 0, &soundTable_[soundTable_.size()-1].second.first)
+				 == FMOD_OK) ? "OK" : "FAILED") << std::endl;
 }
 
-void SoundControllerClass::playSound(char* sName, bool stop)
+void SoundControllerClass::playSound(char* sName, bool pause)
 {
-	unsigned int position = lookUp(std::string(sName));
-	position = lookUp("ambiant.wav");
-	FMOD_System_PlaySound(system_, FMOD_CHANNEL_FREE, soundTable_[position].second, stop, NULL);
+	int i = lookUp(std::string(sName));
+	if (i == -1)
+		return;
+	system_->playSound(FMOD_CHANNEL_FREE, soundTable_[i].second.first, pause, &soundTable_[i].second.second);
 }
 
-void SoundControllerClass::loopSound(char* sName, int loop)
+void SoundControllerClass::stopSound(char* sName)
 {
-	unsigned int position = lookUp(std::string(sName));
-	FMOD_Sound_SetLoopCount(soundTable_[position].second, loop);
+	int i = lookUp(std::string(sName));
+		if (i == -1)
+			return;
+	soundTable_[i].second.second->stop();
 }
 
-void SoundControllerClass::stopSound(char* sName) 
+void SoundControllerClass::loopSound(char* sName, bool loop)
 {
+	int i = lookUp(std::string(sName));
+		if (i == -1)
+			return;
+	soundTable_[i].second.first->setMode(sName ? FMOD_LOOP_NORMAL : FMOD_LOOP_OFF);
 }
 
 void SoundControllerClass::muteAll(bool mute)
 {
-	FMOD_CHANNELGROUP *canal;
-	FMOD_System_GetMasterChannelGroup(system_, &canal);
-	FMOD_ChannelGroup_SetMute(canal, mute);
+	FMOD::ChannelGroup *canal;
+	system_->getMasterChannelGroup(&canal);
+	canal->setMute(mute);
 }
 
 unsigned int SoundControllerClass::lookUp(std::string fileName)
@@ -61,6 +68,7 @@ unsigned int SoundControllerClass::lookUp(std::string fileName)
 	for (unsigned int i = 0; i < soundTable_.size(); i++)
 		if (soundTable_[i].first == fileName)
 			return i;
+	std::cout << "ERROR: " << fileName << " not found !";
 	return -1;
 }
 
