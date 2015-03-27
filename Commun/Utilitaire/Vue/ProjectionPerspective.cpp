@@ -5,7 +5,7 @@
 #include <iostream>
 
 namespace vue {
-	
+
 	ProjectionPerspective::ProjectionPerspective(int xMinCloture, int xMaxCloture,
 		int yMinCloture, int yMaxCloture,
 		double zAvant, double zArriere,
@@ -26,13 +26,19 @@ namespace vue {
 
 	void ProjectionPerspective::appliquer() const
 	{
-		glFrustum(	left_, right_,
-					bottom_, top_, 
-					near_, far_);
+		glFrustum(left_, right_,
+			bottom_, top_,
+			near_, far_);
 	}
 
+	void ProjectionPerspective::zoomerIn()
+	{
+		return;
+	}
 
-
-
+	void ProjectionPerspective::zoomerOut()
+	{
+		return;
+	}
 
 };

@@ -53,7 +53,8 @@ namespace vue {
 		/// Application de la projection.
 		virtual void appliquer() const;
 
-
+		void tiltLeft(double deplacement);
+		void tiltRight(double deplacement);
 
 
 		/// Obtenir la dimension de la fenêtre virtuelle
