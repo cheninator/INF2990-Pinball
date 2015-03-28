@@ -30,6 +30,7 @@ Yonni Chen <BR>
 #include <cassert>
 #include <iostream>
 
+#include <FTGL/ftgl.h>
 #include "GL/glew.h"
 #include "FreeImage.h"
 
@@ -276,6 +277,7 @@ void FacadeModele::afficher() const
 	// Positionne la camera
 	glMatrixMode(GL_MODELVIEW);
 	glLoadIdentity();
+
 	vue_->appliquerCamera();
 
 	// Afficher la scene
@@ -323,6 +325,30 @@ void FacadeModele::afficherBase() const
 
 	// Afficher la scene.
 	arbre_->afficher();
+
+
+	// On affiche le texte ici
+/*
+	glMatrixMode(GL_PROJECTION);
+	glPushMatrix();
+	glMatrixMode(GL_MODELVIEW);
+	glPushMatrix();
+
+	glClear(GL_DEPTH_BUFFER_BIT);
+	glTranslatef(50.0, 50.0, 0.0);
+	glRotatef(12.0, 0.0, 0.0, 1.0);
+	glColor3f(1.0, 0.0, 0.0);
+	// Uncomment this for color, but it will be linked with image position...
+	//glRasterPos2f(0.0, 0.0);
+	static FTGLPixmapFont bloodyFont("media/fonts/Bloodthirsty.ttf");
+	bloodyFont.FaceSize(50);
+	bloodyFont.Render("Hello World");
+
+	glMatrixMode(GL_PROJECTION);
+	glPopMatrix();
+	glMatrixMode(GL_MODELVIEW);
+	glPopMatrix();
+*/
 }
 
 
