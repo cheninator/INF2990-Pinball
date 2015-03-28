@@ -339,13 +339,17 @@ void FacadeModele::afficherBase() const
 	glPushMatrix();
 
 	// Il faut deplacer dans le sens envers de la camera
-	glTranslated(0, 0, 0);
-	glRotatef(12.0, 0.0, 0.0, 1.0);
+	static long i = 0;
+	i++;
+	i = i % 6000;
+
+	glTranslated(50, -100, 0);
+	glRotatef((double)(i), 0.0, 0.0, 1.0);
 	glColor4f(1.0, 0.0, 0.0, 1.0);
 	static FTGLPolygonFont* bloodyFont = new FTGLPolygonFont("media/fonts/Arial.ttf");
-	
+	std::string text = "Compteur random : " + std::to_string((double)i/100.0);
 	bloodyFont->FaceSize(12);
-	bloodyFont->Render("Hello-World");
+	bloodyFont->Render(text.c_str());
 
 	glMatrixMode(GL_PROJECTION);
 	glPopMatrix();
