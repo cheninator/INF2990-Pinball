@@ -1,8 +1,8 @@
 #ifndef __FACADE_SOUND_CONTROLLER_CLASS_H__
 #define __FACADE_SOUND_CONTROLLER_CLASS_H__
 
-#include "fmod.h"
-#include "fmod.hpp"
+#include <fmod.h>
+#include <fmod.hpp>
 #include <Windows.h>
 #include <stdlib.h>
 #include <iostream>

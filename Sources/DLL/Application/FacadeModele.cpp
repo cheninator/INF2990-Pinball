@@ -326,29 +326,34 @@ void FacadeModele::afficherBase() const
 	// Afficher la scene.
 	arbre_->afficher();
 
-
 	// On affiche le texte ici
-/*
+
+	glPushAttrib(GL_ALL_ATTRIB_BITS);
+	glDisable(GL_LIGHTING);
+	glDisable(GL_DEPTH_TEST);
+	glDisable(GL_TEXTURE_2D);
+
 	glMatrixMode(GL_PROJECTION);
 	glPushMatrix();
 	glMatrixMode(GL_MODELVIEW);
 	glPushMatrix();
 
-	glClear(GL_DEPTH_BUFFER_BIT);
-	glTranslatef(50.0, 50.0, 0.0);
+	// Il faut deplacer dans le sens envers de la camera
+	glTranslated(0, 0, 0);
 	glRotatef(12.0, 0.0, 0.0, 1.0);
-	glColor3f(1.0, 0.0, 0.0);
-	// Uncomment this for color, but it will be linked with image position...
-	//glRasterPos2f(0.0, 0.0);
-	static FTGLPixmapFont bloodyFont("media/fonts/Bloodthirsty.ttf");
-	bloodyFont.FaceSize(50);
-	bloodyFont.Render("Hello World");
+	glColor4f(1.0, 0.0, 0.0, 1.0);
+	static FTGLPolygonFont* bloodyFont = new FTGLPolygonFont("media/fonts/Arial.ttf");
+	
+	bloodyFont->FaceSize(12);
+	bloodyFont->Render("Hello-World");
 
 	glMatrixMode(GL_PROJECTION);
 	glPopMatrix();
 	glMatrixMode(GL_MODELVIEW);
 	glPopMatrix();
-*/
+
+	glPopAttrib();
+
 }
 
 
