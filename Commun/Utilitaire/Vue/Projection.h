@@ -70,6 +70,8 @@ namespace vue {
 		/// Obtenir la dimension de la fenêtre virtuelle
 		virtual inline glm::ivec2 obtenirDimensionFenetreVirtuelle() const = 0;
 
+		virtual void conserverRapportAspect() const { return; };
+
 	protected:
 		/// Coordonnée inférieur de la clôture en X.
 		double xMinCloture_;
