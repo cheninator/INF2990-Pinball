@@ -2025,4 +2025,10 @@ extern "C"
 	{
 		return stringToBSTR(FacadeModele::obtenirInstance()->obtenirCout());
 	}
+
+	__declspec(dllexport) void utiliserCameraOrbite(bool utiliseOrbite)
+	{
+		FacadeModele::obtenirInstance()->utiliserCameraOrbite(utiliseOrbite);
+	}
+
 }// FIN DU extern "C"

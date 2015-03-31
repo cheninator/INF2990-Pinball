@@ -126,6 +126,8 @@ extern "C" {
 	__declspec(dllexport) void arreterSon(char* value, int length);
 	__declspec(dllexport) void ajusterBGM(float pourcentage);
 	__declspec(dllexport) void ajusterSFX(float pourcentage);
+
+	__declspec(dllexport) void utiliserCameraOrbite(bool utiliseOrbite);
 }
 
 #endif // __FACADE_INTERFACE_NATIVE_H__

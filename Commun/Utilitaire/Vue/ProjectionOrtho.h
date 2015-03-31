@@ -73,6 +73,8 @@ namespace vue {
 		/// Obtenir la dimension de la fenêtre virtuelle
 		virtual inline glm::ivec2 obtenirDimensionFenetreVirtuelle() const;
 
+		virtual void conserverRapportAspect();
+
 	private:
 		/// Décide la direction de correction en fonction du zoom.
 		void ajusterRapportAspect(DirectionZoom dir);

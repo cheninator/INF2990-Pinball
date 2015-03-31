@@ -58,8 +58,10 @@ Yonni Chen <BR>
 #include "../Eclairage/Lumiere.h"
 
 #include "VueOrtho.h"
+#include "VuePerspective.h"
 #include "Camera.h"
 #include "Projection.h"
+
 
 #include "Utilitaire.h"
 #include "AideGL.h"
@@ -2093,4 +2095,55 @@ std::string FacadeModele::obtenirCout()
 	std::string ss = oss_.str();
 	oss_.str(std::string());
 	return ss;
+}
+
+void FacadeModele::utiliserCameraOrbite(bool utiliseOrbite)
+{
+	std::cout << "Méthode appelee\n";
+	if (utiliseOrbite != vueEstOrbite_)
+	{
+		delete vue_;
+		if (utiliseOrbite)
+		{/*Créer une caméra orbite*/
+
+			vue_ = new vue::VueOrtho{
+				vue::Camera{
+					glm::dvec3(0, 0, 200), glm::dvec3(0, 0, 0),
+					glm::dvec3(0, 1, 0), glm::dvec3(0, 1, 0) },
+					vue::ProjectionOrtho{
+						0, 500, 0, 500,
+						1, 1000, 50, 5000, 1.25,
+						double(coinGaucheTableX), double(coinGaucheTableY),
+						double(coinDroitTableX), double(coinDroitTableY) }
+			};
+			
+			 /*vue_ = new vue::VuePerspective{
+				vue::Camera{
+					glm::dvec3(0, 0, 200), glm::dvec3(0, 0, 0),
+					glm::dvec3(0, 1, 0), glm::dvec3(0, 1, 0) },
+					vue::ProjectionPerspective{
+						0, 500, 0, 500,
+						1, 1000, 50, 5000, 1.25,
+						-400, 400, -400, 400, 0, 1000 }
+			}; */
+			std::cout << "La vue est passee en orbite \n";
+		}
+		else
+		{/*Créer une caméra ortho*/
+			vue_ = new vue::VueOrtho{
+				vue::Camera{
+					glm::dvec3(0, 0, 200), glm::dvec3(0, 0, 0),
+					glm::dvec3(0, 1, 0), glm::dvec3(0, 1, 0) },
+					vue::ProjectionOrtho{
+						0, 500, 0, 500,
+						1, 1000, 50, 5000, 1.25,
+						double(coinGaucheTableX), double(coinGaucheTableY),
+						double(coinDroitTableX), double(coinDroitTableY) }
+			};
+			std::cout << "La vue est passee en orthographique \n";
+		}
+//		vue_->obtenirProjection().conserverRapportAspect();
+		appliquerZoomInitial();
+		vueEstOrbite_ = utiliseOrbite;
+	}
 }

@@ -636,5 +636,8 @@ namespace InterfaceGraphique
 
         [DllImport(@"Noyau.dll", CallingConvention = CallingConvention.Cdecl)]
         public static extern void ajusterSFX(float pourcentage);
+
+        [DllImport(@"Noyau.dll", CallingConvention = CallingConvention.Cdecl)]
+        public static extern void utiliserCameraOrbite(bool utiliseOrbite);
     }
 }

@@ -117,6 +117,12 @@
     <ClCompile Include="OpenGL\OpenGL_Nuanceur.cpp">
       <Filter>Source Files\OpenGL</Filter>
     </ClCompile>
+    <ClCompile Include="Vue\ProjectionPerspective.cpp">
+      <Filter>Source Files\Vue</Filter>
+    </ClCompile>
+    <ClCompile Include="Vue\VuePerspective.cpp">
+      <Filter>Source Files\Vue</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="CEcritureFichierBinaire.h">
@@ -193,6 +199,12 @@
     </ClInclude>
     <ClInclude Include="OpenGL\OpenGL_Nuanceur.h">
       <Filter>Header Files\OpenGL</Filter>
+    </ClInclude>
+    <ClInclude Include="Vue\ProjectionPerspective.h">
+      <Filter>Header Files\Vue</Filter>
+    </ClInclude>
+    <ClInclude Include="Vue\VuePerspective.h">
+      <Filter>Header Files\Vue</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>
