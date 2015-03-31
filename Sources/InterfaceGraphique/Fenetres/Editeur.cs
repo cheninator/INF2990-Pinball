@@ -94,6 +94,7 @@ namespace InterfaceGraphique
             panelWidth = panel_GL.Size.Width;
 
             ReinitialiserTout();
+            fs.EnterFullScreenMode(this);
             FonctionsNatives.animerJeu(false);
         }
 
@@ -181,7 +182,6 @@ namespace InterfaceGraphique
                             FonctionsNatives.resetZoom();
                             currentZoom = FonctionsNatives.obtenirZoomCourant();
                             curZoomVal.Text = (Math.Round(currentZoom * 100) / 100).ToString();
-                            Creation_Panel.Visible = true;
                         }
 
                         if (etat is EtatEditeurTest && FonctionsNatives.obtenirNombreBillesCourante() == 0)
@@ -538,13 +538,7 @@ namespace InterfaceGraphique
                 {
                     Mute_MenuItem_Click(this, e);
                 }
-                else if (e.KeyChar == 'h')
-                {
-                    if (richTextBox1.Visible)
-                        richTextBox1.Hide();
-                    else
-                        richTextBox1.Show();
-                }
+               
                 else if (e.KeyChar == 'z')
                 {
                     Zoom_MenuItem_Click(this, e);
@@ -803,10 +797,7 @@ namespace InterfaceGraphique
         ////////////////////////////////////////////////////////////////////////
         private void Selectionner_BO_Click(object sender, EventArgs e)
         {
-            if (Creation_Panel.Visible)
-                Creation_Panel.Hide();
-            else
-                Creation_Panel.Show();
+           
         }
 
         ////////////////////////////////////////////////////////////////////////
@@ -932,19 +923,7 @@ namespace InterfaceGraphique
             annulerModif();
             if (etat is EtatEditeurMur)
                 etat = new EtatEditeurNone(this);
-            //Console.WriteLine("Outil Creation.");
-            if (Creation_Panel.Visible)
-            {
-                Creation_Panel.Visible = false;
-
-                this.OnSizeChanged(e);
-
-            }
-            else
-            {
-                Creation_Panel.Visible = true;
-
-            }
+           
         }
 
         ////////////////////////////////////////////////////////////////////////
@@ -1503,8 +1482,7 @@ namespace InterfaceGraphique
         ////////////////////////////////////////////////////////////////////////
         private void Creation_MenuItem_Click(object sender, EventArgs e)
         {
-            if (!Creation_Panel.Visible)
-                Creation_Panel.Visible = true;
+        
         }
 
         ////////////////////////////////////////////////////////////////////////
@@ -1603,8 +1581,7 @@ namespace InterfaceGraphique
             FonctionsNatives.resetNombreBillesCourantes();
             FonctionsNatives.rechargerArbre(true);
 
-            if (Creation_Panel.Visible)
-                Creation_Panel.Hide();
+           
             flowLayoutPanel1.Hide();
 
             menu1Enable(false);
@@ -3003,7 +2980,6 @@ namespace InterfaceGraphique
         //////////////////////////////////////////////////////////////////////////////////////////
         private void flowLayoutPanel1_SizeChanged(object sender, EventArgs e)
         {
-            richTextBox1.Height = flowLayoutPanel1.Height - 500;
         }
 
         //////////////////////////////////////////////////////////////////////////////////////////
@@ -3043,7 +3019,7 @@ namespace InterfaceGraphique
                 menuStrip3.Hide();
             menuStrip1.Show();
             menu1Enable(true);
-            Creation_Panel.Show();
+           
             flowLayoutPanel1.Show();
             panel_GL.Anchor = (AnchorStyles.Top | AnchorStyles.Left);
             panel_GL.Location = new Point(163, 24);
