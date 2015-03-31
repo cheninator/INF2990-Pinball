@@ -346,10 +346,10 @@ void FacadeModele::afficherBase() const
 	glTranslated(50, -100, 0);
 	glRotatef((double)(i), 0.0, 0.0, 1.0);
 	glColor4f(1.0, 0.0, 0.0, 1.0);
-	static FTGLPolygonFont* bloodyFont = new FTGLPolygonFont("media/fonts/Arial.ttf");
-	std::string text = "Compteur random : " + std::to_string((double)i/100.0);
-	bloodyFont->FaceSize(12);
-	bloodyFont->Render(text.c_str());
+	//static FTGLPolygonFont* bloodyFont = new FTGLPolygonFont("media/fonts/Arial.ttf");
+	//std::string text = "Compteur random : " + std::to_string((double)i/100.0);
+	//bloodyFont->FaceSize(12);
+	//bloodyFont->Render(text.c_str());
 
 	glMatrixMode(GL_PROJECTION);
 	glPopMatrix();
