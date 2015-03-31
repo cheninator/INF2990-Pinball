@@ -2097,6 +2097,7 @@ std::string FacadeModele::obtenirCout()
 	return ss;
 }
 
+//rajouter commentaire
 void FacadeModele::utiliserCameraOrbite(bool utiliseOrbite)
 {
 	std::cout << "Méthode appelee\n";
