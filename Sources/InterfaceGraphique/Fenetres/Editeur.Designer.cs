@@ -37,15 +37,35 @@ namespace InterfaceGraphique
         /// </summary>
         private void InitializeComponent()
         {
-            this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Editeur));
             this.panel1 = new System.Windows.Forms.Panel();
+            this.panel_GL = new System.Windows.Forms.Panel();
+            this.Creation_Panel = new System.Windows.Forms.FlowLayoutPanel();
+            this.Groupe_Palettes = new System.Windows.Forms.GroupBox();
+            this.PDJ2_bouton = new System.Windows.Forms.Button();
+            this.PGJ2_bouton = new System.Windows.Forms.Button();
+            this.PDJ1_bouton = new System.Windows.Forms.Button();
+            this.PGJ1_bouton = new System.Windows.Forms.Button();
+            this.Group_Butoir = new System.Windows.Forms.GroupBox();
+            this.butoirCirc_bouton = new System.Windows.Forms.Button();
+            this.butoirD_bouton = new System.Windows.Forms.Button();
+            this.butoirG_bouton = new System.Windows.Forms.Button();
+            this.Group_Elements = new System.Windows.Forms.GroupBox();
+            this.Gate = new System.Windows.Forms.Button();
+            this.Mur_bouton = new System.Windows.Forms.Button();
+            this.Portails_bouton = new System.Windows.Forms.Button();
+            this.Cible_bouton = new System.Windows.Forms.Button();
+            this.Group_Element2 = new System.Windows.Forms.GroupBox();
+            this.Trou_bouton = new System.Windows.Forms.Button();
+            this.Generateur_bouton = new System.Windows.Forms.Button();
+            this.Ressort_bouton = new System.Windows.Forms.Button();
             this.flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
             this.Groupe_Outils = new System.Windows.Forms.GroupBox();
             this.curZoomVal = new System.Windows.Forms.TextBox();
             this.DecreaseZoomButton = new System.Windows.Forms.Button();
             this.IncreaseZoomButton = new System.Windows.Forms.Button();
             this.label_Zoom = new System.Windows.Forms.Label();
+            this.bouton_Creation = new System.Windows.Forms.Button();
             this.bouton_Duplication = new System.Windows.Forms.Button();
             this.bouton_Scaling = new System.Windows.Forms.Button();
             this.bouton_Rotation = new System.Windows.Forms.Button();
@@ -64,6 +84,7 @@ namespace InterfaceGraphique
             this.Y_label = new System.Windows.Forms.Label();
             this.Xbox = new System.Windows.Forms.TextBox();
             this.X_label = new System.Windows.Forms.Label();
+            this.richTextBox1 = new System.Windows.Forms.RichTextBox();
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.fichierToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.Nouveau_MenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -103,7 +124,6 @@ namespace InterfaceGraphique
             this.Information_MenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.Aide_MenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.Mute_MenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.panel_GL = new System.Windows.Forms.Panel();
             this.menuStrip3 = new System.Windows.Forms.MenuStrip();
             this.fichierToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.testRetourMenuPrincipal = new System.Windows.Forms.ToolStripMenuItem();
@@ -111,64 +131,312 @@ namespace InterfaceGraphique
             this.caméraToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.orthographiqueToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.orbiteToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
-            this.Groupe_Palettes = new System.Windows.Forms.GroupBox();
-            this.PGJ1_bouton = new System.Windows.Forms.Button();
-            this.PDJ1_bouton = new System.Windows.Forms.Button();
-            this.PDJ2_bouton = new System.Windows.Forms.Button();
-            this.PGJ2_bouton = new System.Windows.Forms.Button();
-            this.Group_Elements = new System.Windows.Forms.GroupBox();
-            this.Gate = new System.Windows.Forms.Button();
-            this.Mur_bouton = new System.Windows.Forms.Button();
-            this.Portails_bouton = new System.Windows.Forms.Button();
-            this.Cible_bouton = new System.Windows.Forms.Button();
-            this.Group_Element2 = new System.Windows.Forms.GroupBox();
-            this.Trou_bouton = new System.Windows.Forms.Button();
-            this.Generateur_bouton = new System.Windows.Forms.Button();
-            this.Ressort_bouton = new System.Windows.Forms.Button();
-            this.Group_Butoir = new System.Windows.Forms.GroupBox();
-            this.butoirCirc_bouton = new System.Windows.Forms.Button();
-            this.butoirD_bouton = new System.Windows.Forms.Button();
-            this.butoirG_bouton = new System.Windows.Forms.Button();
             this.printPreviewDialog1 = new System.Windows.Forms.PrintPreviewDialog();
-            this.panel2 = new System.Windows.Forms.Panel();
-            this.tabControl1 = new System.Windows.Forms.TabControl();
-            this.tabPage_Accueil = new System.Windows.Forms.TabPage();
-            this.tabPage_Outils = new System.Windows.Forms.TabPage();
-            this.tabPage_Creation = new System.Windows.Forms.TabPage();
-            this.tabPage_Vues = new System.Windows.Forms.TabPage();
-            this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
             this.panel1.SuspendLayout();
+            this.Creation_Panel.SuspendLayout();
+            this.Groupe_Palettes.SuspendLayout();
+            this.Group_Butoir.SuspendLayout();
+            this.Group_Elements.SuspendLayout();
+            this.Group_Element2.SuspendLayout();
             this.flowLayoutPanel1.SuspendLayout();
             this.Groupe_Outils.SuspendLayout();
             this.OutilGraphique.SuspendLayout();
             this.Groupe_Proprietes.SuspendLayout();
             this.menuStrip1.SuspendLayout();
             this.menuStrip3.SuspendLayout();
-            this.Groupe_Palettes.SuspendLayout();
-            this.Group_Elements.SuspendLayout();
-            this.Group_Element2.SuspendLayout();
-            this.Group_Butoir.SuspendLayout();
-            this.panel2.SuspendLayout();
-            this.tabControl1.SuspendLayout();
-            this.tabPage_Creation.SuspendLayout();
             this.SuspendLayout();
             // 
             // panel1
             // 
-            this.panel1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
             this.panel1.BackColor = System.Drawing.SystemColors.ActiveCaption;
             this.panel1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.panel1.Controls.Add(this.panel_GL);
+            this.panel1.Controls.Add(this.Creation_Panel);
             this.panel1.Controls.Add(this.flowLayoutPanel1);
             this.panel1.Controls.Add(this.menuStrip1);
-            this.panel1.Controls.Add(this.panel_GL);
             this.panel1.Controls.Add(this.menuStrip3);
-            this.panel1.Location = new System.Drawing.Point(0, 93);
+            this.panel1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panel1.Location = new System.Drawing.Point(0, 0);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(1251, 638);
+            this.panel1.Size = new System.Drawing.Size(956, 731);
             this.panel1.TabIndex = 0;
             this.panel1.Click += new System.EventHandler(this.panel1_Click);
+            // 
+            // panel_GL
+            // 
+            this.panel_GL.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            this.panel_GL.BackColor = System.Drawing.Color.Transparent;
+            this.panel_GL.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panel_GL.Location = new System.Drawing.Point(163, 24);
+            this.panel_GL.Name = "panel_GL";
+            this.panel_GL.Size = new System.Drawing.Size(566, 705);
+            this.panel_GL.TabIndex = 4;
+            this.panel_GL.SizeChanged += new System.EventHandler(this.panel_GL_SizeChanged);
+            this.panel_GL.MouseClick += new System.Windows.Forms.MouseEventHandler(this.panel_GL_MouseClick);
+            this.panel_GL.MouseDown += new System.Windows.Forms.MouseEventHandler(this.panel_GL_MouseDown);
+            this.panel_GL.MouseLeave += new System.EventHandler(this.panel_GL_MouseLeave);
+            this.panel_GL.MouseUp += new System.Windows.Forms.MouseEventHandler(this.panel_GL_MouseUp);
+            this.panel_GL.MouseWheel += new System.Windows.Forms.MouseEventHandler(this.panel_GL_MouseWheel);
+            // 
+            // Creation_Panel
+            // 
+            this.Creation_Panel.BackColor = System.Drawing.SystemColors.InactiveBorder;
+            this.Creation_Panel.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.Creation_Panel.Controls.Add(this.Groupe_Palettes);
+            this.Creation_Panel.Controls.Add(this.Group_Butoir);
+            this.Creation_Panel.Controls.Add(this.Group_Elements);
+            this.Creation_Panel.Controls.Add(this.Group_Element2);
+            this.Creation_Panel.Dock = System.Windows.Forms.DockStyle.Right;
+            this.Creation_Panel.Location = new System.Drawing.Point(729, 24);
+            this.Creation_Panel.Name = "Creation_Panel";
+            this.Creation_Panel.Size = new System.Drawing.Size(225, 705);
+            this.Creation_Panel.TabIndex = 2;
+            this.Creation_Panel.MouseEnter += new System.EventHandler(this.Creation_Panel_MouseEnter);
+            // 
+            // Groupe_Palettes
+            // 
+            this.Groupe_Palettes.Controls.Add(this.PDJ2_bouton);
+            this.Groupe_Palettes.Controls.Add(this.PGJ2_bouton);
+            this.Groupe_Palettes.Controls.Add(this.PDJ1_bouton);
+            this.Groupe_Palettes.Controls.Add(this.PGJ1_bouton);
+            this.Groupe_Palettes.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.Groupe_Palettes.Location = new System.Drawing.Point(3, 3);
+            this.Groupe_Palettes.Name = "Groupe_Palettes";
+            this.Groupe_Palettes.Size = new System.Drawing.Size(216, 126);
+            this.Groupe_Palettes.TabIndex = 5;
+            this.Groupe_Palettes.TabStop = false;
+            this.Groupe_Palettes.Text = "Palettes";
+            // 
+            // PDJ2_bouton
+            // 
+            this.PDJ2_bouton.BackgroundImage = global::InterfaceGraphique.Properties.Resources.PDJ2;
+            this.PDJ2_bouton.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.PDJ2_bouton.Location = new System.Drawing.Point(110, 70);
+            this.PDJ2_bouton.Name = "PDJ2_bouton";
+            this.PDJ2_bouton.Size = new System.Drawing.Size(100, 50);
+            this.PDJ2_bouton.TabIndex = 3;
+            this.PDJ2_bouton.Text = "J2";
+            this.PDJ2_bouton.TextAlign = System.Drawing.ContentAlignment.TopRight;
+            this.PDJ2_bouton.UseVisualStyleBackColor = true;
+            this.PDJ2_bouton.Click += new System.EventHandler(this.PDJ2_bouton_Click);
+            // 
+            // PGJ2_bouton
+            // 
+            this.PGJ2_bouton.BackgroundImage = global::InterfaceGraphique.Properties.Resources.PGJ2;
+            this.PGJ2_bouton.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.PGJ2_bouton.Location = new System.Drawing.Point(6, 71);
+            this.PGJ2_bouton.Name = "PGJ2_bouton";
+            this.PGJ2_bouton.Size = new System.Drawing.Size(100, 49);
+            this.PGJ2_bouton.TabIndex = 2;
+            this.PGJ2_bouton.Text = "J2";
+            this.PGJ2_bouton.TextAlign = System.Drawing.ContentAlignment.TopRight;
+            this.PGJ2_bouton.UseVisualStyleBackColor = true;
+            this.PGJ2_bouton.Click += new System.EventHandler(this.PGJ2_bouton_Click);
+            // 
+            // PDJ1_bouton
+            // 
+            this.PDJ1_bouton.BackgroundImage = global::InterfaceGraphique.Properties.Resources.PDJ1;
+            this.PDJ1_bouton.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.PDJ1_bouton.Location = new System.Drawing.Point(110, 19);
+            this.PDJ1_bouton.Name = "PDJ1_bouton";
+            this.PDJ1_bouton.Size = new System.Drawing.Size(100, 47);
+            this.PDJ1_bouton.TabIndex = 1;
+            this.PDJ1_bouton.Text = "J1";
+            this.PDJ1_bouton.TextAlign = System.Drawing.ContentAlignment.TopRight;
+            this.PDJ1_bouton.UseVisualStyleBackColor = true;
+            this.PDJ1_bouton.Click += new System.EventHandler(this.PDJ1_bouton_Click);
+            // 
+            // PGJ1_bouton
+            // 
+            this.PGJ1_bouton.BackgroundImage = global::InterfaceGraphique.Properties.Resources.PGJ1;
+            this.PGJ1_bouton.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.PGJ1_bouton.Location = new System.Drawing.Point(6, 19);
+            this.PGJ1_bouton.Name = "PGJ1_bouton";
+            this.PGJ1_bouton.Size = new System.Drawing.Size(100, 47);
+            this.PGJ1_bouton.TabIndex = 0;
+            this.PGJ1_bouton.Text = "J1";
+            this.PGJ1_bouton.TextAlign = System.Drawing.ContentAlignment.TopRight;
+            this.PGJ1_bouton.UseVisualStyleBackColor = true;
+            this.PGJ1_bouton.Click += new System.EventHandler(this.PGJ1_bouton_Click);
+            // 
+            // Group_Butoir
+            // 
+            this.Group_Butoir.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.Group_Butoir.Controls.Add(this.butoirCirc_bouton);
+            this.Group_Butoir.Controls.Add(this.butoirD_bouton);
+            this.Group_Butoir.Controls.Add(this.butoirG_bouton);
+            this.Group_Butoir.Location = new System.Drawing.Point(3, 135);
+            this.Group_Butoir.Name = "Group_Butoir";
+            this.Group_Butoir.Size = new System.Drawing.Size(216, 133);
+            this.Group_Butoir.TabIndex = 6;
+            this.Group_Butoir.TabStop = false;
+            this.Group_Butoir.Text = "Butoirs";
+            // 
+            // butoirCirc_bouton
+            // 
+            this.butoirCirc_bouton.BackgroundImage = global::InterfaceGraphique.Properties.Resources.cible1;
+            this.butoirCirc_bouton.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.butoirCirc_bouton.Location = new System.Drawing.Point(62, 76);
+            this.butoirCirc_bouton.Name = "butoirCirc_bouton";
+            this.butoirCirc_bouton.Size = new System.Drawing.Size(98, 48);
+            this.butoirCirc_bouton.TabIndex = 2;
+            this.butoirCirc_bouton.Text = "Circulaire";
+            this.butoirCirc_bouton.TextAlign = System.Drawing.ContentAlignment.TopRight;
+            this.butoirCirc_bouton.UseVisualStyleBackColor = true;
+            this.butoirCirc_bouton.Click += new System.EventHandler(this.butourCirc_bouton_Click);
+            // 
+            // butoirD_bouton
+            // 
+            this.butoirD_bouton.BackgroundImage = global::InterfaceGraphique.Properties.Resources.ButoirTriangD;
+            this.butoirD_bouton.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.butoirD_bouton.Cursor = System.Windows.Forms.Cursors.Arrow;
+            this.butoirD_bouton.Location = new System.Drawing.Point(110, 16);
+            this.butoirD_bouton.Name = "butoirD_bouton";
+            this.butoirD_bouton.Size = new System.Drawing.Size(100, 54);
+            this.butoirD_bouton.TabIndex = 1;
+            this.butoirD_bouton.Text = "Droit";
+            this.butoirD_bouton.TextAlign = System.Drawing.ContentAlignment.TopRight;
+            this.butoirD_bouton.UseVisualStyleBackColor = true;
+            this.butoirD_bouton.Click += new System.EventHandler(this.butoirD_bouton_Click);
+            // 
+            // butoirG_bouton
+            // 
+            this.butoirG_bouton.BackgroundImage = global::InterfaceGraphique.Properties.Resources.ButoirTriangG;
+            this.butoirG_bouton.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.butoirG_bouton.Location = new System.Drawing.Point(4, 16);
+            this.butoirG_bouton.Name = "butoirG_bouton";
+            this.butoirG_bouton.Size = new System.Drawing.Size(101, 54);
+            this.butoirG_bouton.TabIndex = 0;
+            this.butoirG_bouton.Text = "Gauche";
+            this.butoirG_bouton.TextAlign = System.Drawing.ContentAlignment.TopRight;
+            this.butoirG_bouton.UseVisualStyleBackColor = true;
+            this.butoirG_bouton.Click += new System.EventHandler(this.butoirG_bouton_Click);
+            // 
+            // Group_Elements
+            // 
+            this.Group_Elements.Controls.Add(this.Gate);
+            this.Group_Elements.Controls.Add(this.Mur_bouton);
+            this.Group_Elements.Controls.Add(this.Portails_bouton);
+            this.Group_Elements.Controls.Add(this.Cible_bouton);
+            this.Group_Elements.Location = new System.Drawing.Point(3, 274);
+            this.Group_Elements.Name = "Group_Elements";
+            this.Group_Elements.Size = new System.Drawing.Size(216, 133);
+            this.Group_Elements.TabIndex = 7;
+            this.Group_Elements.TabStop = false;
+            this.Group_Elements.Text = "Éléments";
+            // 
+            // Gate
+            // 
+            this.Gate.BackColor = System.Drawing.Color.White;
+            this.Gate.BackgroundImage = global::InterfaceGraphique.Properties.Resources.gate;
+            this.Gate.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.Gate.Location = new System.Drawing.Point(109, 76);
+            this.Gate.Name = "Gate";
+            this.Gate.Size = new System.Drawing.Size(98, 48);
+            this.Gate.TabIndex = 7;
+            this.Gate.Tag = "Gate";
+            this.Gate.Text = "Gate";
+            this.Gate.TextAlign = System.Drawing.ContentAlignment.TopRight;
+            this.Gate.UseVisualStyleBackColor = false;
+            this.Gate.Click += new System.EventHandler(this.Gate_Button_Click);
+            // 
+            // Mur_bouton
+            // 
+            this.Mur_bouton.BackColor = System.Drawing.Color.White;
+            this.Mur_bouton.BackgroundImage = global::InterfaceGraphique.Properties.Resources.mur;
+            this.Mur_bouton.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.Mur_bouton.Location = new System.Drawing.Point(8, 76);
+            this.Mur_bouton.Name = "Mur_bouton";
+            this.Mur_bouton.Size = new System.Drawing.Size(98, 48);
+            this.Mur_bouton.TabIndex = 2;
+            this.Mur_bouton.Text = "Mur";
+            this.Mur_bouton.TextAlign = System.Drawing.ContentAlignment.TopRight;
+            this.Mur_bouton.UseVisualStyleBackColor = false;
+            this.Mur_bouton.Click += new System.EventHandler(this.Mur_bouton_Click);
+            // 
+            // Portails_bouton
+            // 
+            this.Portails_bouton.BackColor = System.Drawing.Color.White;
+            this.Portails_bouton.BackgroundImage = global::InterfaceGraphique.Properties.Resources.portail;
+            this.Portails_bouton.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.Portails_bouton.Location = new System.Drawing.Point(110, 18);
+            this.Portails_bouton.Name = "Portails_bouton";
+            this.Portails_bouton.Size = new System.Drawing.Size(100, 54);
+            this.Portails_bouton.TabIndex = 1;
+            this.Portails_bouton.Text = "Portail";
+            this.Portails_bouton.TextAlign = System.Drawing.ContentAlignment.TopRight;
+            this.Portails_bouton.UseVisualStyleBackColor = false;
+            this.Portails_bouton.Click += new System.EventHandler(this.Portails_bouton_Click);
+            // 
+            // Cible_bouton
+            // 
+            this.Cible_bouton.BackColor = System.Drawing.Color.White;
+            this.Cible_bouton.BackgroundImage = global::InterfaceGraphique.Properties.Resources.cible;
+            this.Cible_bouton.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.Cible_bouton.Location = new System.Drawing.Point(6, 18);
+            this.Cible_bouton.Name = "Cible_bouton";
+            this.Cible_bouton.Size = new System.Drawing.Size(100, 54);
+            this.Cible_bouton.TabIndex = 0;
+            this.Cible_bouton.Text = "Cible";
+            this.Cible_bouton.TextAlign = System.Drawing.ContentAlignment.TopRight;
+            this.Cible_bouton.UseVisualStyleBackColor = false;
+            this.Cible_bouton.Click += new System.EventHandler(this.Cible_bouton_Click);
+            // 
+            // Group_Element2
+            // 
+            this.Group_Element2.Controls.Add(this.Trou_bouton);
+            this.Group_Element2.Controls.Add(this.Generateur_bouton);
+            this.Group_Element2.Controls.Add(this.Ressort_bouton);
+            this.Group_Element2.Location = new System.Drawing.Point(3, 413);
+            this.Group_Element2.Name = "Group_Element2";
+            this.Group_Element2.Size = new System.Drawing.Size(216, 133);
+            this.Group_Element2.TabIndex = 8;
+            this.Group_Element2.TabStop = false;
+            this.Group_Element2.Text = "Éléments de base";
+            // 
+            // Trou_bouton
+            // 
+            this.Trou_bouton.BackColor = System.Drawing.Color.White;
+            this.Trou_bouton.BackgroundImage = global::InterfaceGraphique.Properties.Resources.Trou;
+            this.Trou_bouton.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.Trou_bouton.Location = new System.Drawing.Point(61, 79);
+            this.Trou_bouton.Name = "Trou_bouton";
+            this.Trou_bouton.Size = new System.Drawing.Size(98, 48);
+            this.Trou_bouton.TabIndex = 5;
+            this.Trou_bouton.Tag = "Hole";
+            this.Trou_bouton.Text = "Trou";
+            this.Trou_bouton.TextAlign = System.Drawing.ContentAlignment.TopRight;
+            this.Trou_bouton.UseVisualStyleBackColor = false;
+            this.Trou_bouton.Click += new System.EventHandler(this.Trou_bouton_Click);
+            // 
+            // Generateur_bouton
+            // 
+            this.Generateur_bouton.BackColor = System.Drawing.Color.White;
+            this.Generateur_bouton.BackgroundImage = global::InterfaceGraphique.Properties.Resources.Generateur;
+            this.Generateur_bouton.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.Generateur_bouton.Location = new System.Drawing.Point(109, 19);
+            this.Generateur_bouton.Name = "Generateur_bouton";
+            this.Generateur_bouton.Size = new System.Drawing.Size(100, 54);
+            this.Generateur_bouton.TabIndex = 4;
+            this.Generateur_bouton.Text = "Generateur de billes";
+            this.Generateur_bouton.TextAlign = System.Drawing.ContentAlignment.TopRight;
+            this.Generateur_bouton.TextImageRelation = System.Windows.Forms.TextImageRelation.TextAboveImage;
+            this.Generateur_bouton.UseVisualStyleBackColor = false;
+            this.Generateur_bouton.Click += new System.EventHandler(this.Generateur_bouton_Click);
+            // 
+            // Ressort_bouton
+            // 
+            this.Ressort_bouton.BackColor = System.Drawing.Color.White;
+            this.Ressort_bouton.BackgroundImage = global::InterfaceGraphique.Properties.Resources.ressort;
+            this.Ressort_bouton.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.Ressort_bouton.Location = new System.Drawing.Point(5, 19);
+            this.Ressort_bouton.Name = "Ressort_bouton";
+            this.Ressort_bouton.Size = new System.Drawing.Size(100, 54);
+            this.Ressort_bouton.TabIndex = 3;
+            this.Ressort_bouton.Text = "Ressort";
+            this.Ressort_bouton.TextAlign = System.Drawing.ContentAlignment.TopRight;
+            this.Ressort_bouton.UseVisualStyleBackColor = false;
+            this.Ressort_bouton.Click += new System.EventHandler(this.Ressort_bouton_Click);
             // 
             // flowLayoutPanel1
             // 
@@ -177,10 +445,11 @@ namespace InterfaceGraphique
             this.flowLayoutPanel1.Controls.Add(this.Groupe_Outils);
             this.flowLayoutPanel1.Controls.Add(this.OutilGraphique);
             this.flowLayoutPanel1.Controls.Add(this.Groupe_Proprietes);
+            this.flowLayoutPanel1.Controls.Add(this.richTextBox1);
             this.flowLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Left;
-            this.flowLayoutPanel1.Location = new System.Drawing.Point(0, 0);
+            this.flowLayoutPanel1.Location = new System.Drawing.Point(0, 24);
             this.flowLayoutPanel1.Name = "flowLayoutPanel1";
-            this.flowLayoutPanel1.Size = new System.Drawing.Size(163, 636);
+            this.flowLayoutPanel1.Size = new System.Drawing.Size(163, 705);
             this.flowLayoutPanel1.TabIndex = 3;
             this.flowLayoutPanel1.SizeChanged += new System.EventHandler(this.flowLayoutPanel1_SizeChanged);
             // 
@@ -190,6 +459,7 @@ namespace InterfaceGraphique
             this.Groupe_Outils.Controls.Add(this.DecreaseZoomButton);
             this.Groupe_Outils.Controls.Add(this.IncreaseZoomButton);
             this.Groupe_Outils.Controls.Add(this.label_Zoom);
+            this.Groupe_Outils.Controls.Add(this.bouton_Creation);
             this.Groupe_Outils.Controls.Add(this.bouton_Duplication);
             this.Groupe_Outils.Controls.Add(this.bouton_Scaling);
             this.Groupe_Outils.Controls.Add(this.bouton_Rotation);
@@ -247,6 +517,16 @@ namespace InterfaceGraphique
             this.label_Zoom.Click += new System.EventHandler(this.label_Zoom_Click);
             this.label_Zoom.MouseEnter += new System.EventHandler(this.label_Zoom_MouseEnter);
             this.label_Zoom.MouseLeave += new System.EventHandler(this.label_Zoom_MouseLeave);
+            // 
+            // bouton_Creation
+            // 
+            this.bouton_Creation.Location = new System.Drawing.Point(13, 176);
+            this.bouton_Creation.Name = "bouton_Creation";
+            this.bouton_Creation.Size = new System.Drawing.Size(130, 24);
+            this.bouton_Creation.TabIndex = 5;
+            this.bouton_Creation.Text = "Paneau Création";
+            this.bouton_Creation.UseVisualStyleBackColor = true;
+            this.bouton_Creation.Click += new System.EventHandler(this.bouton_Creation_Click);
             // 
             // bouton_Duplication
             // 
@@ -441,6 +721,17 @@ namespace InterfaceGraphique
             this.X_label.Text = "Position en X:";
             this.X_label.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
+            // richTextBox1
+            // 
+            this.richTextBox1.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.richTextBox1.Location = new System.Drawing.Point(3, 503);
+            this.richTextBox1.Name = "richTextBox1";
+            this.richTextBox1.ReadOnly = true;
+            this.richTextBox1.Size = new System.Drawing.Size(151, 109);
+            this.richTextBox1.TabIndex = 11;
+            this.richTextBox1.TabStop = false;
+            this.richTextBox1.Text = resources.GetString("richTextBox1.Text");
+            // 
             // menuStrip1
             // 
             this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
@@ -455,7 +746,6 @@ namespace InterfaceGraphique
             this.menuStrip1.Size = new System.Drawing.Size(954, 24);
             this.menuStrip1.TabIndex = 0;
             this.menuStrip1.Text = "menuStrip1";
-            this.menuStrip1.Visible = false;
             // 
             // fichierToolStripMenuItem
             // 
@@ -779,22 +1069,6 @@ namespace InterfaceGraphique
             this.Mute_MenuItem.Text = "Mute";
             this.Mute_MenuItem.Click += new System.EventHandler(this.Mute_MenuItem_Click);
             // 
-            // panel_GL
-            // 
-            this.panel_GL.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.panel_GL.BackColor = System.Drawing.Color.Transparent;
-            this.panel_GL.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel_GL.Location = new System.Drawing.Point(0, 0);
-            this.panel_GL.Name = "panel_GL";
-            this.panel_GL.Size = new System.Drawing.Size(1249, 636);
-            this.panel_GL.TabIndex = 4;
-            this.panel_GL.SizeChanged += new System.EventHandler(this.panel_GL_SizeChanged);
-            this.panel_GL.MouseClick += new System.Windows.Forms.MouseEventHandler(this.panel_GL_MouseClick);
-            this.panel_GL.MouseDown += new System.Windows.Forms.MouseEventHandler(this.panel_GL_MouseDown);
-            this.panel_GL.MouseLeave += new System.EventHandler(this.panel_GL_MouseLeave);
-            this.panel_GL.MouseUp += new System.Windows.Forms.MouseEventHandler(this.panel_GL_MouseUp);
-            this.panel_GL.MouseWheel += new System.Windows.Forms.MouseEventHandler(this.panel_GL_MouseWheel);
-            // 
             // menuStrip3
             // 
             this.menuStrip3.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
@@ -855,239 +1129,6 @@ namespace InterfaceGraphique
             this.orbiteToolStripMenuItem1.Size = new System.Drawing.Size(172, 22);
             this.orbiteToolStripMenuItem1.Text = "Orbite";
             // 
-            // Groupe_Palettes
-            // 
-            this.Groupe_Palettes.Controls.Add(this.PGJ1_bouton);
-            this.Groupe_Palettes.Controls.Add(this.PDJ1_bouton);
-            this.Groupe_Palettes.Controls.Add(this.PDJ2_bouton);
-            this.Groupe_Palettes.Controls.Add(this.PGJ2_bouton);
-            this.Groupe_Palettes.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.Groupe_Palettes.Location = new System.Drawing.Point(0, 0);
-            this.Groupe_Palettes.Name = "Groupe_Palettes";
-            this.Groupe_Palettes.Size = new System.Drawing.Size(345, 65);
-            this.Groupe_Palettes.TabIndex = 5;
-            this.Groupe_Palettes.TabStop = false;
-            this.Groupe_Palettes.Text = "Palettes";
-            // 
-            // PGJ1_bouton
-            // 
-            this.PGJ1_bouton.BackgroundImage = global::InterfaceGraphique.Properties.Resources.PGJ1;
-            this.PGJ1_bouton.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.PGJ1_bouton.Location = new System.Drawing.Point(6, 18);
-            this.PGJ1_bouton.Name = "PGJ1_bouton";
-            this.PGJ1_bouton.Size = new System.Drawing.Size(78, 38);
-            this.PGJ1_bouton.TabIndex = 0;
-            this.PGJ1_bouton.TextAlign = System.Drawing.ContentAlignment.TopRight;
-            this.toolTip1.SetToolTip(this.PGJ1_bouton, "Yonni est Con");
-            this.PGJ1_bouton.UseVisualStyleBackColor = true;
-            this.PGJ1_bouton.Click += new System.EventHandler(this.PGJ1_bouton_Click);
-            // 
-            // PDJ1_bouton
-            // 
-            this.PDJ1_bouton.BackgroundImage = global::InterfaceGraphique.Properties.Resources.PDJ1;
-            this.PDJ1_bouton.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.PDJ1_bouton.Location = new System.Drawing.Point(90, 18);
-            this.PDJ1_bouton.Name = "PDJ1_bouton";
-            this.PDJ1_bouton.Size = new System.Drawing.Size(78, 38);
-            this.PDJ1_bouton.TabIndex = 1;
-            this.PDJ1_bouton.TextAlign = System.Drawing.ContentAlignment.TopRight;
-            this.PDJ1_bouton.UseVisualStyleBackColor = true;
-            this.PDJ1_bouton.Click += new System.EventHandler(this.PDJ1_bouton_Click);
-            // 
-            // PDJ2_bouton
-            // 
-            this.PDJ2_bouton.BackgroundImage = global::InterfaceGraphique.Properties.Resources.PDJ2;
-            this.PDJ2_bouton.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.PDJ2_bouton.Location = new System.Drawing.Point(254, 18);
-            this.PDJ2_bouton.Name = "PDJ2_bouton";
-            this.PDJ2_bouton.Size = new System.Drawing.Size(78, 38);
-            this.PDJ2_bouton.TabIndex = 3;
-            this.PDJ2_bouton.TextAlign = System.Drawing.ContentAlignment.TopRight;
-            this.PDJ2_bouton.UseVisualStyleBackColor = true;
-            this.PDJ2_bouton.Click += new System.EventHandler(this.PDJ2_bouton_Click);
-            // 
-            // PGJ2_bouton
-            // 
-            this.PGJ2_bouton.BackgroundImage = global::InterfaceGraphique.Properties.Resources.PGJ2;
-            this.PGJ2_bouton.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.PGJ2_bouton.Location = new System.Drawing.Point(174, 18);
-            this.PGJ2_bouton.Name = "PGJ2_bouton";
-            this.PGJ2_bouton.Size = new System.Drawing.Size(78, 38);
-            this.PGJ2_bouton.TabIndex = 2;
-            this.PGJ2_bouton.TextAlign = System.Drawing.ContentAlignment.TopRight;
-            this.PGJ2_bouton.UseVisualStyleBackColor = true;
-            this.PGJ2_bouton.Click += new System.EventHandler(this.PGJ2_bouton_Click);
-            // 
-            // Group_Elements
-            // 
-            this.Group_Elements.Controls.Add(this.Gate);
-            this.Group_Elements.Controls.Add(this.Mur_bouton);
-            this.Group_Elements.Controls.Add(this.Portails_bouton);
-            this.Group_Elements.Controls.Add(this.Cible_bouton);
-            this.Group_Elements.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Group_Elements.Location = new System.Drawing.Point(617, 0);
-            this.Group_Elements.Name = "Group_Elements";
-            this.Group_Elements.Size = new System.Drawing.Size(353, 65);
-            this.Group_Elements.TabIndex = 7;
-            this.Group_Elements.TabStop = false;
-            this.Group_Elements.Text = "Éléments";
-            // 
-            // Gate
-            // 
-            this.Gate.BackColor = System.Drawing.Color.White;
-            this.Gate.BackgroundImage = global::InterfaceGraphique.Properties.Resources.gate;
-            this.Gate.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.Gate.Location = new System.Drawing.Point(258, 18);
-            this.Gate.Name = "Gate";
-            this.Gate.Size = new System.Drawing.Size(78, 38);
-            this.Gate.TabIndex = 7;
-            this.Gate.Tag = "Gate";
-            this.Gate.TextAlign = System.Drawing.ContentAlignment.TopRight;
-            this.Gate.UseVisualStyleBackColor = false;
-            this.Gate.Click += new System.EventHandler(this.Gate_Button_Click);
-            // 
-            // Mur_bouton
-            // 
-            this.Mur_bouton.BackColor = System.Drawing.Color.White;
-            this.Mur_bouton.BackgroundImage = global::InterfaceGraphique.Properties.Resources.mur;
-            this.Mur_bouton.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.Mur_bouton.Location = new System.Drawing.Point(174, 18);
-            this.Mur_bouton.Name = "Mur_bouton";
-            this.Mur_bouton.Size = new System.Drawing.Size(78, 38);
-            this.Mur_bouton.TabIndex = 2;
-            this.Mur_bouton.TextAlign = System.Drawing.ContentAlignment.TopRight;
-            this.Mur_bouton.UseVisualStyleBackColor = false;
-            this.Mur_bouton.Click += new System.EventHandler(this.Mur_bouton_Click);
-            // 
-            // Portails_bouton
-            // 
-            this.Portails_bouton.BackColor = System.Drawing.Color.White;
-            this.Portails_bouton.BackgroundImage = global::InterfaceGraphique.Properties.Resources.portail;
-            this.Portails_bouton.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            this.Portails_bouton.Location = new System.Drawing.Point(90, 18);
-            this.Portails_bouton.Name = "Portails_bouton";
-            this.Portails_bouton.Size = new System.Drawing.Size(78, 38);
-            this.Portails_bouton.TabIndex = 1;
-            this.Portails_bouton.TextAlign = System.Drawing.ContentAlignment.TopRight;
-            this.Portails_bouton.UseVisualStyleBackColor = false;
-            this.Portails_bouton.Click += new System.EventHandler(this.Portails_bouton_Click);
-            // 
-            // Cible_bouton
-            // 
-            this.Cible_bouton.BackColor = System.Drawing.Color.White;
-            this.Cible_bouton.BackgroundImage = global::InterfaceGraphique.Properties.Resources.cible;
-            this.Cible_bouton.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            this.Cible_bouton.Location = new System.Drawing.Point(6, 18);
-            this.Cible_bouton.Name = "Cible_bouton";
-            this.Cible_bouton.Size = new System.Drawing.Size(78, 38);
-            this.Cible_bouton.TabIndex = 0;
-            this.Cible_bouton.TextAlign = System.Drawing.ContentAlignment.TopRight;
-            this.Cible_bouton.UseVisualStyleBackColor = false;
-            this.Cible_bouton.Click += new System.EventHandler(this.Cible_bouton_Click);
-            // 
-            // Group_Element2
-            // 
-            this.Group_Element2.Controls.Add(this.Trou_bouton);
-            this.Group_Element2.Controls.Add(this.Generateur_bouton);
-            this.Group_Element2.Controls.Add(this.Ressort_bouton);
-            this.Group_Element2.Location = new System.Drawing.Point(978, 0);
-            this.Group_Element2.Name = "Group_Element2";
-            this.Group_Element2.Size = new System.Drawing.Size(268, 65);
-            this.Group_Element2.TabIndex = 8;
-            this.Group_Element2.TabStop = false;
-            this.Group_Element2.Text = "Éléments de base";
-            // 
-            // Trou_bouton
-            // 
-            this.Trou_bouton.BackColor = System.Drawing.Color.White;
-            this.Trou_bouton.BackgroundImage = global::InterfaceGraphique.Properties.Resources.Trou;
-            this.Trou_bouton.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.Trou_bouton.Location = new System.Drawing.Point(173, 18);
-            this.Trou_bouton.Name = "Trou_bouton";
-            this.Trou_bouton.Size = new System.Drawing.Size(78, 38);
-            this.Trou_bouton.TabIndex = 5;
-            this.Trou_bouton.Tag = "Hole";
-            this.Trou_bouton.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.Trou_bouton.UseVisualStyleBackColor = false;
-            this.Trou_bouton.Click += new System.EventHandler(this.Trou_bouton_Click);
-            // 
-            // Generateur_bouton
-            // 
-            this.Generateur_bouton.BackColor = System.Drawing.Color.White;
-            this.Generateur_bouton.BackgroundImage = global::InterfaceGraphique.Properties.Resources.Generateur;
-            this.Generateur_bouton.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            this.Generateur_bouton.Location = new System.Drawing.Point(89, 18);
-            this.Generateur_bouton.Name = "Generateur_bouton";
-            this.Generateur_bouton.Size = new System.Drawing.Size(78, 38);
-            this.Generateur_bouton.TabIndex = 4;
-            this.Generateur_bouton.TextAlign = System.Drawing.ContentAlignment.TopRight;
-            this.Generateur_bouton.TextImageRelation = System.Windows.Forms.TextImageRelation.TextAboveImage;
-            this.Generateur_bouton.UseVisualStyleBackColor = false;
-            this.Generateur_bouton.Click += new System.EventHandler(this.Generateur_bouton_Click);
-            // 
-            // Ressort_bouton
-            // 
-            this.Ressort_bouton.BackColor = System.Drawing.Color.White;
-            this.Ressort_bouton.BackgroundImage = global::InterfaceGraphique.Properties.Resources.ressort;
-            this.Ressort_bouton.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            this.Ressort_bouton.Location = new System.Drawing.Point(5, 18);
-            this.Ressort_bouton.Name = "Ressort_bouton";
-            this.Ressort_bouton.Size = new System.Drawing.Size(78, 38);
-            this.Ressort_bouton.TabIndex = 3;
-            this.Ressort_bouton.TextAlign = System.Drawing.ContentAlignment.TopRight;
-            this.Ressort_bouton.UseVisualStyleBackColor = false;
-            this.Ressort_bouton.Click += new System.EventHandler(this.Ressort_bouton_Click);
-            // 
-            // Group_Butoir
-            // 
-            this.Group_Butoir.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.Group_Butoir.Controls.Add(this.butoirCirc_bouton);
-            this.Group_Butoir.Controls.Add(this.butoirD_bouton);
-            this.Group_Butoir.Controls.Add(this.butoirG_bouton);
-            this.Group_Butoir.Location = new System.Drawing.Point(351, 0);
-            this.Group_Butoir.Name = "Group_Butoir";
-            this.Group_Butoir.Size = new System.Drawing.Size(260, 65);
-            this.Group_Butoir.TabIndex = 6;
-            this.Group_Butoir.TabStop = false;
-            this.Group_Butoir.Text = "Butoirs";
-            // 
-            // butoirCirc_bouton
-            // 
-            this.butoirCirc_bouton.BackgroundImage = global::InterfaceGraphique.Properties.Resources.cible1;
-            this.butoirCirc_bouton.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            this.butoirCirc_bouton.Location = new System.Drawing.Point(172, 18);
-            this.butoirCirc_bouton.Name = "butoirCirc_bouton";
-            this.butoirCirc_bouton.Size = new System.Drawing.Size(78, 38);
-            this.butoirCirc_bouton.TabIndex = 2;
-            this.butoirCirc_bouton.TextAlign = System.Drawing.ContentAlignment.TopRight;
-            this.butoirCirc_bouton.UseVisualStyleBackColor = true;
-            this.butoirCirc_bouton.Click += new System.EventHandler(this.butourCirc_bouton_Click);
-            // 
-            // butoirD_bouton
-            // 
-            this.butoirD_bouton.BackgroundImage = global::InterfaceGraphique.Properties.Resources.ButoirTriangD;
-            this.butoirD_bouton.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.butoirD_bouton.Cursor = System.Windows.Forms.Cursors.Arrow;
-            this.butoirD_bouton.Location = new System.Drawing.Point(88, 18);
-            this.butoirD_bouton.Name = "butoirD_bouton";
-            this.butoirD_bouton.Size = new System.Drawing.Size(78, 38);
-            this.butoirD_bouton.TabIndex = 1;
-            this.butoirD_bouton.TextAlign = System.Drawing.ContentAlignment.TopRight;
-            this.butoirD_bouton.UseVisualStyleBackColor = true;
-            this.butoirD_bouton.Click += new System.EventHandler(this.butoirD_bouton_Click);
-            // 
-            // butoirG_bouton
-            // 
-            this.butoirG_bouton.BackgroundImage = global::InterfaceGraphique.Properties.Resources.ButoirTriangG;
-            this.butoirG_bouton.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.butoirG_bouton.Location = new System.Drawing.Point(6, 18);
-            this.butoirG_bouton.Name = "butoirG_bouton";
-            this.butoirG_bouton.Size = new System.Drawing.Size(78, 38);
-            this.butoirG_bouton.TabIndex = 0;
-            this.butoirG_bouton.TextAlign = System.Drawing.ContentAlignment.TopRight;
-            this.butoirG_bouton.UseVisualStyleBackColor = true;
-            this.butoirG_bouton.Click += new System.EventHandler(this.butoirG_bouton_Click);
-            // 
             // printPreviewDialog1
             // 
             this.printPreviewDialog1.AutoScrollMargin = new System.Drawing.Size(0, 0);
@@ -1098,81 +1139,11 @@ namespace InterfaceGraphique
             this.printPreviewDialog1.Name = "printPreviewDialog1";
             this.printPreviewDialog1.Visible = false;
             // 
-            // panel2
-            // 
-            this.panel2.BackColor = System.Drawing.SystemColors.InactiveBorder;
-            this.panel2.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.panel2.Controls.Add(this.tabControl1);
-            this.panel2.Dock = System.Windows.Forms.DockStyle.Top;
-            this.panel2.Location = new System.Drawing.Point(0, 0);
-            this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(1251, 91);
-            this.panel2.TabIndex = 1;
-            // 
-            // tabControl1
-            // 
-            this.tabControl1.Controls.Add(this.tabPage_Accueil);
-            this.tabControl1.Controls.Add(this.tabPage_Outils);
-            this.tabControl1.Controls.Add(this.tabPage_Creation);
-            this.tabControl1.Controls.Add(this.tabPage_Vues);
-            this.tabControl1.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.tabControl1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tabControl1.Location = new System.Drawing.Point(0, 0);
-            this.tabControl1.Name = "tabControl1";
-            this.tabControl1.SelectedIndex = 0;
-            this.tabControl1.Size = new System.Drawing.Size(1249, 89);
-            this.tabControl1.TabIndex = 0;
-            // 
-            // tabPage_Accueil
-            // 
-            this.tabPage_Accueil.Location = new System.Drawing.Point(4, 22);
-            this.tabPage_Accueil.Name = "tabPage_Accueil";
-            this.tabPage_Accueil.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage_Accueil.Size = new System.Drawing.Size(1241, 63);
-            this.tabPage_Accueil.TabIndex = 0;
-            this.tabPage_Accueil.Text = "Accueil";
-            this.tabPage_Accueil.UseVisualStyleBackColor = true;
-            // 
-            // tabPage_Outils
-            // 
-            this.tabPage_Outils.Location = new System.Drawing.Point(4, 22);
-            this.tabPage_Outils.Name = "tabPage_Outils";
-            this.tabPage_Outils.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage_Outils.Size = new System.Drawing.Size(1241, 63);
-            this.tabPage_Outils.TabIndex = 1;
-            this.tabPage_Outils.Text = "Outils";
-            this.tabPage_Outils.UseVisualStyleBackColor = true;
-            // 
-            // tabPage_Creation
-            // 
-            this.tabPage_Creation.Controls.Add(this.Group_Element2);
-            this.tabPage_Creation.Controls.Add(this.Group_Elements);
-            this.tabPage_Creation.Controls.Add(this.Groupe_Palettes);
-            this.tabPage_Creation.Controls.Add(this.Group_Butoir);
-            this.tabPage_Creation.Location = new System.Drawing.Point(4, 22);
-            this.tabPage_Creation.Name = "tabPage_Creation";
-            this.tabPage_Creation.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage_Creation.Size = new System.Drawing.Size(1241, 63);
-            this.tabPage_Creation.TabIndex = 2;
-            this.tabPage_Creation.Text = "Création";
-            this.tabPage_Creation.UseVisualStyleBackColor = true;
-            // 
-            // tabPage_Vues
-            // 
-            this.tabPage_Vues.Location = new System.Drawing.Point(4, 22);
-            this.tabPage_Vues.Name = "tabPage_Vues";
-            this.tabPage_Vues.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage_Vues.Size = new System.Drawing.Size(1241, 63);
-            this.tabPage_Vues.TabIndex = 3;
-            this.tabPage_Vues.Text = "Vues";
-            this.tabPage_Vues.UseVisualStyleBackColor = true;
-            // 
             // Editeur
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1251, 731);
-            this.Controls.Add(this.panel2);
+            this.ClientSize = new System.Drawing.Size(956, 731);
             this.Controls.Add(this.panel1);
             this.KeyPreview = true;
             this.MainMenuStrip = this.menuStrip1;
@@ -1185,6 +1156,11 @@ namespace InterfaceGraphique
             this.SizeChanged += new System.EventHandler(this.Fenetre_Redimension);
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
+            this.Creation_Panel.ResumeLayout(false);
+            this.Groupe_Palettes.ResumeLayout(false);
+            this.Group_Butoir.ResumeLayout(false);
+            this.Group_Elements.ResumeLayout(false);
+            this.Group_Element2.ResumeLayout(false);
             this.flowLayoutPanel1.ResumeLayout(false);
             this.Groupe_Outils.ResumeLayout(false);
             this.Groupe_Outils.PerformLayout();
@@ -1195,13 +1171,6 @@ namespace InterfaceGraphique
             this.menuStrip1.PerformLayout();
             this.menuStrip3.ResumeLayout(false);
             this.menuStrip3.PerformLayout();
-            this.Groupe_Palettes.ResumeLayout(false);
-            this.Group_Elements.ResumeLayout(false);
-            this.Group_Element2.ResumeLayout(false);
-            this.Group_Butoir.ResumeLayout(false);
-            this.panel2.ResumeLayout(false);
-            this.tabControl1.ResumeLayout(false);
-            this.tabPage_Creation.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -1246,6 +1215,7 @@ namespace InterfaceGraphique
         private System.Windows.Forms.ToolStripMenuItem Ressort_MenuItem;
         private System.Windows.Forms.ToolStripMenuItem GB_MenuItem;
         private System.Windows.Forms.ToolStripMenuItem Trou_MenuItem;
+        private System.Windows.Forms.FlowLayoutPanel Creation_Panel;
         private System.Windows.Forms.GroupBox Groupe_Palettes;
         private System.Windows.Forms.PrintPreviewDialog printPreviewDialog1;
         private System.Windows.Forms.Button PDJ1_bouton;
@@ -1261,6 +1231,7 @@ namespace InterfaceGraphique
         private System.Windows.Forms.GroupBox Groupe_Outils;
         private System.Windows.Forms.GroupBox Groupe_Proprietes;
         private System.Windows.Forms.Button bouton_Selection;
+        private System.Windows.Forms.Button bouton_Creation;
         private System.Windows.Forms.Button bouton_Duplication;
         private System.Windows.Forms.Button bouton_Scaling;
         private System.Windows.Forms.Button bouton_Rotation;
@@ -1290,6 +1261,7 @@ namespace InterfaceGraphique
         private System.Windows.Forms.ToolStripMenuItem Mute_MenuItem;
         private System.Windows.Forms.GroupBox OutilGraphique;
         private System.Windows.Forms.Label labelOCourant;
+        private System.Windows.Forms.RichTextBox richTextBox1;
         private System.Windows.Forms.MenuStrip menuStrip3;
         private System.Windows.Forms.ToolStripMenuItem fichierToolStripMenuItem1;
         private System.Windows.Forms.ToolStripMenuItem testRetourMenuPrincipal;
@@ -1299,13 +1271,6 @@ namespace InterfaceGraphique
         private System.Windows.Forms.ToolStripMenuItem orbiteToolStripMenuItem1;
         private System.Windows.Forms.Button Gate;
         private System.Windows.Forms.ToolStripMenuItem gateToolStripMenuItem;
-        private System.Windows.Forms.Panel panel2;
-        private System.Windows.Forms.TabControl tabControl1;
-        private System.Windows.Forms.TabPage tabPage_Accueil;
-        private System.Windows.Forms.TabPage tabPage_Outils;
-        private System.Windows.Forms.TabPage tabPage_Creation;
-        private System.Windows.Forms.TabPage tabPage_Vues;
-        private System.Windows.Forms.ToolTip toolTip1;
     }
 }
 
