@@ -615,16 +615,16 @@ namespace InterfaceGraphique
         ////////////////////////////////////////////////////////////////////////
         private void Aide_MenuItem_Click(object sender, EventArgs e)
         {
-            BackgroundWorker bw = new BackgroundWorker();
-            bw.WorkerReportsProgress = true;
-            bw.DoWork += new DoWorkEventHandler(
-            delegate(object o, DoWorkEventArgs args)
-            {
+         //   BackgroundWorker bw = new BackgroundWorker();
+         //   bw.WorkerReportsProgress = true;
+         //   bw.DoWork += new DoWorkEventHandler(
+         //   delegate(object o, DoWorkEventArgs args)
+         //   {
                 Aide aide = new Aide();
                 aide.StartPosition = FormStartPosition.CenterScreen;
                 aide.ShowDialog();
-            });
-            bw.RunWorkerAsync();
+         //   });
+         //   bw.RunWorkerAsync();
         }
 
         ////////////////////////////////////////////////////////////////////////
@@ -2607,6 +2607,7 @@ namespace InterfaceGraphique
         //////////////////////////////////////////////////////////////////////////////////////////
         public void proprietesEnable(bool active)
         {
+            Groupe_Proprietes.Visible = active;
             Xbox.Enabled = active;
             Ybox.Enabled = active;
             Anglebox.Enabled = active;
