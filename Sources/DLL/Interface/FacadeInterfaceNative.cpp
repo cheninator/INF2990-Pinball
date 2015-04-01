@@ -2012,6 +2012,7 @@ extern "C"
 	__declspec(dllexport) void __cdecl activerCustomConsole()
 	{
 		FacadeModele::obtenirInstance(true);
+		SingletonGlobal::obtenirInstance()->activerSon();
 	}
 
 
