@@ -1541,7 +1541,7 @@ namespace InterfaceGraphique
         private void Orthographique_MenuItem_Click(object sender, EventArgs e)
         {
             //Console.WriteLine("Vue Orthoraphique.");
-            // TO DO
+            FonctionsNatives.utiliserCameraOrbite(false);
         }
         ////////////////////////////////////////////////////////////////////////
         ///
@@ -1558,8 +1558,7 @@ namespace InterfaceGraphique
         private void Orbite_MenuItem_Click(object sender, EventArgs e)
         {
             //Console.WriteLine("Vue Orbitale.");
-            // TO DO
-            FonctionsNatives.orbite(0, 0);
+            FonctionsNatives.utiliserCameraOrbite(true);
         }
 
         ////////////////////////////////////////////////////////////////////////

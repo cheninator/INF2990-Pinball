@@ -71,6 +71,8 @@ public:
 	std::string obtenirPathTemp() { objectPathCreated_ ? NULL : getAndSetTempObjDirectory(); return objectPath_; };
 
 	void finGeneration() { enCoursDeGeneration_ = 0; };
+
+	void activerSon() { desactiverSon = false; };
 	ControleurSon*  obtenirControleurSon();
 
 protected:
@@ -83,7 +85,6 @@ protected:
 private:
 
 	void getAndSetTempObjDirectory();
-
 
 	static SingletonGlobal* singleton_;
 
@@ -114,6 +115,7 @@ private:
 	std::vector<std::pair<std::pair<glm::dvec3, glm::dvec3>, NoeudAbstrait*>> launchSequence_;
 
 	// Controleur de son
+	bool desactiverSon{ true };
 	ControleurSon* mySound_{ nullptr };
 };
 
