@@ -174,6 +174,7 @@ void NoeudPortail::traiterCollisions(aidecollision::DetailsCollision, NoeudAbstr
 		bille->assignerPositionRelative(this->getTwin()->obtenirPositionRelative());
 		bille->assignerPortailDorigine(this->getTwin());
 	}
+	//SingletonGlobal::obtenirInstance()->obtenirControleurSon()->jouerSon("portal.wav");
 }
 
 ////////////////////////////////////////////////////////////////////////

@@ -166,6 +166,8 @@ void NoeudGenerateurBille::animer(float temps)
 ////////////////////////////////////////////////////////////////////////
 void NoeudGenerateurBille::shakeHead(float temps)
 {
+	//SingletonGlobal::obtenirInstance()->obtenirControleurSon()->jouerSon("generateur.wav");
+
 	if (etatGenerateur_ == INITIAL) {
 		if (selectionne_ || impossible_ || transparent_)
 			return;

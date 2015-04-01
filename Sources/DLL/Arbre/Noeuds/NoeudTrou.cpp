@@ -147,5 +147,5 @@ std::vector<glm::dvec3> NoeudTrou::obtenirVecteursEnglobants()
 ////////////////////////////////////////////////////////////////////////
 void NoeudTrou::traiterCollisions(aidecollision::DetailsCollision, NoeudAbstrait* bille, float facteurRebond)
 {
-	// bille->obtenirParent()->effacer(bille);
+	SingletonGlobal::obtenirInstance()->obtenirControleurSon()->jouerSon("hole.wav");
 }
