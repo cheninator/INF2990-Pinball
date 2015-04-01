@@ -94,7 +94,9 @@ namespace InterfaceGraphique
             panelWidth = panel_GL.Size.Width;
 
             ReinitialiserTout();
+            fs.EnterFullScreenMode(this);
             FonctionsNatives.animerJeu(false);
+            
         }
 
 
