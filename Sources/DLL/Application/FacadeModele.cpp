@@ -2103,6 +2103,10 @@ void FacadeModele::utiliserCameraOrbite(bool utiliseOrbite)
 	std::cout << "Méthode appelee\n";
 	if (utiliseOrbite != vueEstOrbite_)
 	{
+		/*Sauvegarde des mesures de la clôture */
+		int clotMinX, clotMaxX, clotMinY, clotMaxY;
+		vue_->obtenirProjection().obtenirCoordonneesCloture(clotMinX, clotMaxX, clotMinY, clotMaxY);
+
 		delete vue_;
 		if (utiliseOrbite)
 		{/*Créer une caméra orbite*/
@@ -2112,7 +2116,7 @@ void FacadeModele::utiliserCameraOrbite(bool utiliseOrbite)
 					glm::dvec3(0, 0, 200), glm::dvec3(0, 0, 0),
 					glm::dvec3(0, 1, 0), glm::dvec3(0, 1, 0) },
 					vue::ProjectionOrtho{
-						0, 500, 0, 500,
+						clotMinX, clotMaxX, clotMinY, clotMaxY,
 						1, 1000, 50, 5000, 1.25,
 						double(coinGaucheTableX), double(coinGaucheTableY),
 						double(coinDroitTableX), double(coinDroitTableY) }
@@ -2136,7 +2140,7 @@ void FacadeModele::utiliserCameraOrbite(bool utiliseOrbite)
 					glm::dvec3(0, 0, 200), glm::dvec3(0, 0, 0),
 					glm::dvec3(0, 1, 0), glm::dvec3(0, 1, 0) },
 					vue::ProjectionOrtho{
-						0, 500, 0, 500,
+						clotMinX, clotMaxX, clotMinY, clotMaxY,
 						1, 1000, 50, 5000, 1.25,
 						double(coinGaucheTableX), double(coinGaucheTableY),
 						double(coinDroitTableX), double(coinDroitTableY) }
