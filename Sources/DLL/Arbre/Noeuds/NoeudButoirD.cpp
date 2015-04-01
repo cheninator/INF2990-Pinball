@@ -201,13 +201,11 @@ void NoeudButoirD::traiterCollisions(aidecollision::DetailsCollision details, No
 {
 	if (details.longSegmentButoir)
 	{
-		SingletonGlobal::obtenirInstance()->obtenirControleurSon()->jouerSon("butoir.wav");
 		SingletonGlobal::obtenirInstance()->collisionButoirTriangulaire();
 		compteurIllumination_ = 0;
 		if (FacadeModele::obtenirInstance()->obtenirModeForceRebond())
 			facteurRebond = FACTEUR_REBOND_BUTOIRE;
 	}
-	SingletonGlobal::obtenirInstance()->obtenirControleurSon()->jouerSon("butoir.wav");
 	NoeudAbstrait::traiterCollisions(details, bille, facteurRebond);
 }
 

@@ -140,7 +140,6 @@ void NoeudGate::traiterCollisions(aidecollision::DetailsCollision details, Noeud
 												0 };
 	if (vitesseEnCoordonneesDuGate.y > 0) return;
 	NoeudAbstrait::traiterCollisions(details, bille);
-	SingletonGlobal::obtenirInstance()->obtenirControleurSon()->jouerSon("gate.wav");
 }
 
 ////////////////////////////////////////////////////////////////////////

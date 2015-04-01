@@ -333,8 +333,6 @@ void NoeudPaletteG::traiterCollisions(aidecollision::DetailsCollision details, N
 	
 	// Affichage de debogage
 	((NoeudBille*)bille)->afficherVitesse(vitesseFinale); // Que Dieu me pardonne
-
-	//SingletonGlobal::obtenirInstance()->obtenirControleurSon()->jouerSon("palette.wav");
 }
 
 
