@@ -218,7 +218,8 @@ namespace InterfaceGraphique
         ////////////////////////////////////////////////////////////////////////
         private void ToucheDown(Object o, KeyEventArgs e)
         {
-            if (etat is EtatEditeurZoom || etat is EtatEditeurTest)
+           // if (etat is EtatEditeurZoom || etat is EtatEditeurTest)
+            if(true)
             {
                 if ((e.KeyData == Keys.Subtract ||
                    e.KeyCode == Keys.OemMinus))
@@ -625,9 +626,7 @@ namespace InterfaceGraphique
          //   bw.DoWork += new DoWorkEventHandler(
          //   delegate(object o, DoWorkEventArgs args)
          //   {
-                Aide aide = new Aide();
-                aide.StartPosition = FormStartPosition.CenterScreen;
-                aide.ShowDialog();
+             
          //   });
          //   bw.RunWorkerAsync();
         }
@@ -945,16 +944,18 @@ namespace InterfaceGraphique
             //Console.WriteLine("Outil Creation.");
             if (Creation_Panel.Visible)
             {
+                bouton_Creation.Text = "<<<";            
                 Creation_Panel.Visible = false;
-
                 this.OnSizeChanged(e);
 
             }
             else
             {
                 Creation_Panel.Visible = true;
+                bouton_Creation.Text = ">>>";
 
             }
+            panel_GL.Focus();
         }
 
         ////////////////////////////////////////////////////////////////////////
@@ -1609,6 +1610,7 @@ namespace InterfaceGraphique
             etat = new EtatEditeurTest(this);
             menuStrip1.Hide();
             toolStrip1.Hide();
+            bouton_Creation.Hide();
             FonctionsNatives.animerJeu(true);
             FonctionsNatives.rechargerArbre(false);
             FonctionsNatives.resetNombreBillesCourantes();
@@ -3063,6 +3065,7 @@ namespace InterfaceGraphique
                 menuStrip3.Hide();
             menuStrip1.Show();
             toolStrip1.Show();
+            bouton_Creation.Show();
             menu1Enable(true);
             Creation_Panel.Show();
             flowLayoutPanel1.Show();
@@ -3110,6 +3113,13 @@ namespace InterfaceGraphique
         private void toolStripButton1_Click(object sender, EventArgs e)
         {
 
+        }
+
+        private void Information_MenuItem_Click(object sender, EventArgs e)
+        {
+            Aide aide = new Aide();
+            aide.StartPosition = FormStartPosition.CenterScreen;
+            aide.ShowDialog();
         }
     }
 }

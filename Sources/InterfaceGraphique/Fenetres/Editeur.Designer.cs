@@ -125,7 +125,6 @@ namespace InterfaceGraphique
             this.Orthographique_MenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.Orbite_MenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.Information_MenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.Aide_MenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.Mute_MenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip3 = new System.Windows.Forms.MenuStrip();
             this.fichierToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
@@ -147,6 +146,7 @@ namespace InterfaceGraphique
             this.OutilGraphique.SuspendLayout();
             this.Groupe_Proprietes.SuspendLayout();
             this.toolStrip1.SuspendLayout();
+            this.panel_GL.SuspendLayout();
             this.menuStrip1.SuspendLayout();
             this.menuStrip3.SuspendLayout();
             this.SuspendLayout();
@@ -169,10 +169,10 @@ namespace InterfaceGraphique
             // 
             this.panel1.BackColor = System.Drawing.SystemColors.ActiveCaption;
             this.panel1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.panel1.Controls.Add(this.panel_GL);
             this.panel1.Controls.Add(this.Creation_Panel);
             this.panel1.Controls.Add(this.flowLayoutPanel1);
             this.panel1.Controls.Add(this.toolStrip1);
-            this.panel1.Controls.Add(this.panel_GL);
             this.panel1.Controls.Add(this.menuStrip1);
             this.panel1.Controls.Add(this.menuStrip3);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Fill;
@@ -463,7 +463,6 @@ namespace InterfaceGraphique
             this.Groupe_Outils.Controls.Add(this.DecreaseZoomButton);
             this.Groupe_Outils.Controls.Add(this.IncreaseZoomButton);
             this.Groupe_Outils.Controls.Add(this.label_Zoom);
-            this.Groupe_Outils.Controls.Add(this.bouton_Creation);
             this.Groupe_Outils.Controls.Add(this.bouton_Duplication);
             this.Groupe_Outils.Controls.Add(this.bouton_Scaling);
             this.Groupe_Outils.Controls.Add(this.bouton_Rotation);
@@ -524,11 +523,14 @@ namespace InterfaceGraphique
             // 
             // bouton_Creation
             // 
-            this.bouton_Creation.Location = new System.Drawing.Point(13, 176);
+            this.bouton_Creation.Dock = System.Windows.Forms.DockStyle.Right;
+            this.bouton_Creation.Font = new System.Drawing.Font("Stencil", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.bouton_Creation.Location = new System.Drawing.Point(543, 0);
             this.bouton_Creation.Name = "bouton_Creation";
-            this.bouton_Creation.Size = new System.Drawing.Size(130, 24);
+            this.bouton_Creation.Size = new System.Drawing.Size(23, 660);
             this.bouton_Creation.TabIndex = 5;
-            this.bouton_Creation.Text = "Paneau Création";
+            this.bouton_Creation.Text = ">>>";
+            this.bouton_Creation.TextAlign = System.Drawing.ContentAlignment.TopCenter;
             this.bouton_Creation.UseVisualStyleBackColor = true;
             this.bouton_Creation.Click += new System.EventHandler(this.bouton_Creation_Click);
             // 
@@ -731,7 +733,7 @@ namespace InterfaceGraphique
             this.richTextBox1.Location = new System.Drawing.Point(3, 503);
             this.richTextBox1.Name = "richTextBox1";
             this.richTextBox1.ReadOnly = true;
-            this.richTextBox1.Size = new System.Drawing.Size(151, 109);
+            this.richTextBox1.Size = new System.Drawing.Size(151, 10);
             this.richTextBox1.TabIndex = 11;
             this.richTextBox1.TabStop = false;
             this.richTextBox1.Text = resources.GetString("richTextBox1.Text");
@@ -767,10 +769,11 @@ namespace InterfaceGraphique
             // 
             this.panel_GL.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.panel_GL.BackColor = System.Drawing.Color.Transparent;
+            this.panel_GL.Controls.Add(this.bouton_Creation);
             this.panel_GL.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel_GL.Location = new System.Drawing.Point(0, 24);
+            this.panel_GL.Location = new System.Drawing.Point(163, 69);
             this.panel_GL.Name = "panel_GL";
-            this.panel_GL.Size = new System.Drawing.Size(954, 705);
+            this.panel_GL.Size = new System.Drawing.Size(566, 660);
             this.panel_GL.TabIndex = 4;
             this.panel_GL.SizeChanged += new System.EventHandler(this.panel_GL_SizeChanged);
             this.panel_GL.MouseClick += new System.Windows.Forms.MouseEventHandler(this.panel_GL_MouseClick);
@@ -1098,18 +1101,10 @@ namespace InterfaceGraphique
             // Information_MenuItem
             // 
             this.Information_MenuItem.CheckOnClick = true;
-            this.Information_MenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.Aide_MenuItem});
             this.Information_MenuItem.Name = "Information_MenuItem";
             this.Information_MenuItem.Size = new System.Drawing.Size(87, 20);
             this.Information_MenuItem.Text = "Informations";
-            // 
-            // Aide_MenuItem
-            // 
-            this.Aide_MenuItem.Name = "Aide_MenuItem";
-            this.Aide_MenuItem.Size = new System.Drawing.Size(152, 22);
-            this.Aide_MenuItem.Text = "Aide";
-            this.Aide_MenuItem.Click += new System.EventHandler(this.Aide_MenuItem_Click);
+            this.Information_MenuItem.Click += new System.EventHandler(this.Information_MenuItem_Click);
             // 
             // Mute_MenuItem
             // 
@@ -1219,6 +1214,7 @@ namespace InterfaceGraphique
             this.Groupe_Proprietes.PerformLayout();
             this.toolStrip1.ResumeLayout(false);
             this.toolStrip1.PerformLayout();
+            this.panel_GL.ResumeLayout(false);
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
             this.menuStrip3.ResumeLayout(false);
@@ -1244,7 +1240,6 @@ namespace InterfaceGraphique
         private System.Windows.Forms.ToolStripMenuItem ModeTest_MenuItem;
         private System.Windows.Forms.ToolStripMenuItem Supprimer_MenuItem;
         private System.Windows.Forms.ToolStripMenuItem Information_MenuItem;
-        private System.Windows.Forms.ToolStripMenuItem Aide_MenuItem;
         private System.Windows.Forms.ToolStripMenuItem Orthographique_MenuItem;
         private System.Windows.Forms.ToolStripMenuItem Orbite_MenuItem;
         private System.Windows.Forms.ToolStripMenuItem Selection_MenuItem;
