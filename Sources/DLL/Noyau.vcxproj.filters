@@ -240,6 +240,9 @@
     <ClCompile Include="Eclairage\Lumiere.cpp">
       <Filter>Source Files\Eclairage</Filter>
     </ClCompile>
+    <ClCompile Include="Eclairage\ProgrammeINF2990.cpp">
+      <Filter>Source Files\Eclairage</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Application\FacadeModele.h">
@@ -456,6 +459,9 @@
       <Filter>Header Files\Sound</Filter>
     </ClInclude>
     <ClInclude Include="Eclairage\Lumiere.h">
+      <Filter>Header Files\Eclairage</Filter>
+    </ClInclude>
+    <ClInclude Include="Eclairage\ProgrammeINF2990.h">
       <Filter>Header Files\Eclairage</Filter>
     </ClInclude>
   </ItemGroup>
