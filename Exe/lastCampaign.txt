@@ -1,4 +1,3 @@
 DEUX
-TwoGuyOneBall
 VictoireAssure
-DoubleP
+DefaiteAssure

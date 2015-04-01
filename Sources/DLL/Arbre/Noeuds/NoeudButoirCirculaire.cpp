@@ -239,5 +239,6 @@ void NoeudButoirCirculaire::traiterCollisions(aidecollision::DetailsCollision de
 	}
 
 	SingletonGlobal::obtenirInstance()->collisionButoirCirculaire();
+	SingletonGlobal::obtenirInstance()->obtenirControleurSon()->jouerSon("butoirCirc.wav");
 	compteurIllumination_ = 0;
 }
