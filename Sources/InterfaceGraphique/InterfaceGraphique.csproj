@@ -309,6 +309,9 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="%24this.Icon.ico" />
+    <None Include="Resources\save.bmp" />
+    <None Include="Resources\open.png" />
+    <Content Include="Resources\save.png" />
     <None Include="Resources\cible.jpeg" />
     <None Include="Resources\winSound.wav" />
     <None Include="Resources\wink.gif" />

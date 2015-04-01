@@ -3088,5 +3088,10 @@ namespace InterfaceGraphique
             if (Program.mMenu.modeEdit != null)
                 Program.mMenu.modeEdit.Focus();
         }
+
+        private void toolStripButton1_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }
