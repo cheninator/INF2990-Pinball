@@ -80,6 +80,8 @@ namespace vue {
 	////////////////////////////////////////////////////////////////////////////
 	void Camera::deplacerZ(double deplacement, bool bougePointVise)
 	{
+		/*TODO : Tenir du bougePointVise*/
+		this->position_.z += deplacement;
 	}
 
 

@@ -126,7 +126,7 @@ namespace vue {
 	////////////////////////////////////////////////////////////////////////
 	void VuePerspective::zoomerIn()
 	{
-		projection_.zoomerIn();
+		camera_.deplacerZ(1, false);
 	}
 
 
@@ -141,7 +141,7 @@ namespace vue {
 	////////////////////////////////////////////////////////////////////////
 	void VuePerspective::zoomerOut()
 	{
-		projection_.zoomerOut();
+		camera_.deplacerZ(-1, false);
 	}
 
 
@@ -285,6 +285,15 @@ namespace vue {
 		//projection_.centrerSurPoint(pointCentre);
 	}
 
+	void VuePerspective::deplacerXY(double deplacementX, double deplacementY)
+	{
+		camera_.orbiterXY(deplacementX, deplacementY, false);
+	}
+
+	void VuePerspective::deplacerXY(const glm::ivec2& deplacement)
+	{
+		camera_.orbiterXY(deplacement.x, deplacement.y, false);
+	}
 
 }; // Fin du namespace vue.
 

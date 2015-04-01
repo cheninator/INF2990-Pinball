@@ -1221,7 +1221,7 @@ int FacadeModele::obtenirCentreMasseY()
 bool FacadeModele::appliquerZoomInitial()
 {
 	bool applique = false;
-	if (obtenirInstance() != nullptr)
+	if (obtenirInstance() != nullptr && vue_->obtenirProjection().estPerspective() == false)
 	{
 		vue_->zoomerInElastique(glm::dvec2(coinGaucheTableX, coinGaucheTableY), glm::ivec2(coinDroitTableX, coinDroitTableY));
 		applique = true;
@@ -2111,7 +2111,7 @@ void FacadeModele::utiliserCameraOrbite(bool utiliseOrbite)
 		if (utiliseOrbite)
 		{/*Créer une caméra orbite*/
 
-			vue_ = new vue::VueOrtho{
+			/*vue_ = new vue::VueOrtho{
 				vue::Camera{
 					glm::dvec3(0, 0, 200), glm::dvec3(0, 0, 0),
 					glm::dvec3(0, 1, 0), glm::dvec3(0, 1, 0) },
@@ -2120,17 +2120,18 @@ void FacadeModele::utiliserCameraOrbite(bool utiliseOrbite)
 						1, 1000, 50, 5000, 1.25,
 						double(coinGaucheTableX), double(coinGaucheTableY),
 						double(coinDroitTableX), double(coinDroitTableY) }
-			};
+			};*/
 			
-			 /*vue_ = new vue::VuePerspective{
+			 vue_ = new vue::VuePerspective{
 				vue::Camera{
 					glm::dvec3(0, 0, 200), glm::dvec3(0, 0, 0),
 					glm::dvec3(0, 1, 0), glm::dvec3(0, 1, 0) },
 					vue::ProjectionPerspective{
-						0, 500, 0, 500,
+						clotMinX, clotMaxX, clotMinY, clotMaxY,
 						1, 1000, 50, 5000, 1.25,
-						-400, 400, -400, 400, 0, 1000 }
-			}; */
+						-400, 400, -400, 400, 10, 1000}
+			}; 
+			vue_->appliquerCamera();
 			std::cout << "La vue est passee en orbite \n";
 		}
 		else

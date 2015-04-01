@@ -21,7 +21,7 @@ namespace vue {
 		bottom_(bottom), top_(top),
 		near_(Znear), far_(Zfar)
 	{
-
+		appliquer();
 	}
 
 	void ProjectionPerspective::appliquer() const
@@ -41,4 +41,14 @@ namespace vue {
 		return;
 	}
 
+	inline glm::ivec2 ProjectionPerspective::obtenirDimensionFenetreVirtuelle() const
+	{
+		return glm::ivec2{ right_ - left_, top_ - bottom_ };
+	}
+
+	void ProjectionPerspective::redimensionnerFenetre(const glm::ivec2& coinMin,
+		const glm::ivec2& coinMax)
+	{
+		std::cout << " Redimension de fenetre non implémenté \n";
+	}
 };
