@@ -20,8 +20,8 @@ private:
 
 	bool EstInitialise_{ false };
 
-	opengl::Programme* programme_;
-	opengl::Nuanceur* nuanceurSommets_;
-	opengl::Nuanceur* nuanceurFragments_;
+	opengl::Programme* programme_{ nullptr };
+	opengl::Nuanceur* nuanceurSommets_{ nullptr };
+	opengl::Nuanceur* nuanceurFragments_{ nullptr };
 
 };
