@@ -43,6 +43,7 @@ class NoeudPaletteD;
 class NoeudRessort;
 class JoueurVirtuel;
 class QuadTree;
+class ProgrammeINF2990;
 
 namespace vue {
    class Vue;
@@ -290,6 +291,8 @@ private:
    std::vector<NoeudAbstrait*> listeBilles_;
    std::vector<NoeudAbstrait*> listeNoeuds_;
    std::vector<NoeudAbstrait*> listeRessorts_;
+
+   ProgrammeINF2990* progNuanceur_;
 };
 
 

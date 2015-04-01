@@ -56,6 +56,7 @@ Yonni Chen <BR>
 #include "../Arbre/Noeuds/NoeudRessort.h"
 #include "../Global/JoueurVirtuel.h"
 #include "../Eclairage/Lumiere.h"
+#include "../Eclairage/ProgrammeINF2990.h"
 
 #include "VueOrtho.h"
 #include "VuePerspective.h"
@@ -107,6 +108,7 @@ FacadeModele* FacadeModele::obtenirInstance(bool console)
 		instance_->joueur_ = new JoueurVirtuel();
 		instance_->quad_ = new QuadTree(glm::dvec3(coinGaucheTableX, coinGaucheTableY, 0),
 										glm::dvec3(coinDroitTableX,  coinDroitTableY,  0));
+		instance_->progNuanceur_ = new ProgrammeINF2990();
 		if (console)
 			instance_->old_ = std::cout.rdbuf(instance_->oss_.rdbuf());
 		else
@@ -196,7 +198,9 @@ void FacadeModele::initialiserOpenGL(HWND hWnd)
 	/// Pour normaliser les normales dans le cas d'utilisation de glScale[fd]
 	glEnable(GL_NORMALIZE);
 	Lumiere lumiere(GL_LIGHT1);
-	lumiere.definir();
+	// lumiere.definir();
+	// progNuanceur_->initialiser();
+	// progNuanceur_->activer();
 
 	// Pour voir le spot, commenter le glEnable(GL_LIGHT0) et decommenter la ligne suivante.
 	// La c'est sans shaders, donc c'est normal que ca soit weird car je n'ai pas de controle sur le 

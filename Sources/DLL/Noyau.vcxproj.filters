@@ -79,6 +79,12 @@
     <Filter Include="Header Files\Sound">
       <UniqueIdentifier>{8eb9fab5-04e0-4a8f-93ad-415e9eb4f472}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Source Files\Eclairage">
+      <UniqueIdentifier>{d9757b3e-80f0-4a6c-88ab-df6af2bccda9}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Eclairage">
+      <UniqueIdentifier>{e7dac68f-698b-4100-ac66-90ffb263d7b6}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Application\FacadeModele.cpp">
@@ -230,6 +236,12 @@
     </ClCompile>
     <ClCompile Include="Sound\ControleurSon.cpp">
       <Filter>Source Files\Sound</Filter>
+    </ClCompile>
+    <ClCompile Include="Eclairage\Lumiere.cpp">
+      <Filter>Source Files\Eclairage</Filter>
+    </ClCompile>
+    <ClCompile Include="Eclairage\ProgrammeINF2990.cpp">
+      <Filter>Source Files\Eclairage</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -445,6 +457,12 @@
     </ClInclude>
     <ClInclude Include="Sound\ControleurSon.h">
       <Filter>Header Files\Sound</Filter>
+    </ClInclude>
+    <ClInclude Include="Eclairage\Lumiere.h">
+      <Filter>Header Files\Eclairage</Filter>
+    </ClInclude>
+    <ClInclude Include="Eclairage\ProgrammeINF2990.h">
+      <Filter>Header Files\Eclairage</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>
