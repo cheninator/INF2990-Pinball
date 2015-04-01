@@ -37,8 +37,8 @@ namespace InterfaceGraphique
         /// </summary>
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Editeur));
             System.Windows.Forms.ToolStripButton toolStripButton1;
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Editeur));
             this.panel1 = new System.Windows.Forms.Panel();
             this.Creation_Panel = new System.Windows.Forms.FlowLayoutPanel();
             this.Groupe_Palettes = new System.Windows.Forms.GroupBox();
@@ -86,6 +86,7 @@ namespace InterfaceGraphique
             this.X_label = new System.Windows.Forms.Label();
             this.richTextBox1 = new System.Windows.Forms.RichTextBox();
             this.toolStrip1 = new System.Windows.Forms.ToolStrip();
+            this.toolStripButton2 = new System.Windows.Forms.ToolStripButton();
             this.panel_GL = new System.Windows.Forms.Panel();
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.fichierToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -134,7 +135,6 @@ namespace InterfaceGraphique
             this.orthographiqueToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.orbiteToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.printPreviewDialog1 = new System.Windows.Forms.PrintPreviewDialog();
-            this.toolStripButton2 = new System.Windows.Forms.ToolStripButton();
             toolStripButton1 = new System.Windows.Forms.ToolStripButton();
             this.panel1.SuspendLayout();
             this.Creation_Panel.SuspendLayout();
@@ -150,6 +150,20 @@ namespace InterfaceGraphique
             this.menuStrip1.SuspendLayout();
             this.menuStrip3.SuspendLayout();
             this.SuspendLayout();
+            // 
+            // toolStripButton1
+            // 
+            toolStripButton1.AutoSize = false;
+            toolStripButton1.BackColor = System.Drawing.Color.Transparent;
+            toolStripButton1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            toolStripButton1.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            toolStripButton1.Image = global::InterfaceGraphique.Properties.Resources.save1;
+            toolStripButton1.ImageTransparentColor = System.Drawing.Color.Magenta;
+            toolStripButton1.Margin = new System.Windows.Forms.Padding(0, 4, 0, 4);
+            toolStripButton1.Name = "toolStripButton1";
+            toolStripButton1.Size = new System.Drawing.Size(40, 40);
+            toolStripButton1.Text = "toolStripButton1";
+            toolStripButton1.Click += new System.EventHandler(this.toolStripButton1_Click);
             // 
             // panel1
             // 
@@ -736,19 +750,18 @@ namespace InterfaceGraphique
             this.toolStrip1.TabIndex = 6;
             this.toolStrip1.Text = "toolStrip1";
             // 
-            // toolStripButton1
+            // toolStripButton2
             // 
-            toolStripButton1.AutoSize = false;
-            toolStripButton1.BackColor = System.Drawing.Color.Transparent;
-            toolStripButton1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            toolStripButton1.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            toolStripButton1.Image = global::InterfaceGraphique.Properties.Resources.save1;
-            toolStripButton1.ImageTransparentColor = System.Drawing.Color.Magenta;
-            toolStripButton1.Margin = new System.Windows.Forms.Padding(0, 4, 0, 4);
-            toolStripButton1.Name = "toolStripButton1";
-            toolStripButton1.Size = new System.Drawing.Size(40, 40);
-            toolStripButton1.Text = "toolStripButton1";
-            toolStripButton1.Click += new System.EventHandler(this.toolStripButton1_Click);
+            this.toolStripButton2.AutoSize = false;
+            this.toolStripButton2.BackColor = System.Drawing.Color.Transparent;
+            this.toolStripButton2.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.toolStripButton2.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.toolStripButton2.Image = global::InterfaceGraphique.Properties.Resources.open1;
+            this.toolStripButton2.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.toolStripButton2.Margin = new System.Windows.Forms.Padding(4, 4, 0, 4);
+            this.toolStripButton2.Name = "toolStripButton2";
+            this.toolStripButton2.Size = new System.Drawing.Size(40, 40);
+            this.toolStripButton2.Text = "toolStripButton2";
             // 
             // panel_GL
             // 
@@ -801,7 +814,7 @@ namespace InterfaceGraphique
             // 
             this.Nouveau_MenuItem.Name = "Nouveau_MenuItem";
             this.Nouveau_MenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.N)));
-            this.Nouveau_MenuItem.Size = new System.Drawing.Size(226, 22);
+            this.Nouveau_MenuItem.Size = new System.Drawing.Size(230, 22);
             this.Nouveau_MenuItem.Text = "Nouveau";
             this.Nouveau_MenuItem.Click += new System.EventHandler(this.Nouveau_MenuItem_Click);
             // 
@@ -809,7 +822,7 @@ namespace InterfaceGraphique
             // 
             this.Ouvrir_MenuItem.Name = "Ouvrir_MenuItem";
             this.Ouvrir_MenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.O)));
-            this.Ouvrir_MenuItem.Size = new System.Drawing.Size(226, 22);
+            this.Ouvrir_MenuItem.Size = new System.Drawing.Size(230, 22);
             this.Ouvrir_MenuItem.Text = "Ouvrir";
             this.Ouvrir_MenuItem.Click += new System.EventHandler(this.Ouvrir_MenuItem_Click);
             // 
@@ -817,7 +830,7 @@ namespace InterfaceGraphique
             // 
             this.Enregistrer_MenuItem.Name = "Enregistrer_MenuItem";
             this.Enregistrer_MenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.S)));
-            this.Enregistrer_MenuItem.Size = new System.Drawing.Size(226, 22);
+            this.Enregistrer_MenuItem.Size = new System.Drawing.Size(230, 22);
             this.Enregistrer_MenuItem.Text = "Enregistrer";
             this.Enregistrer_MenuItem.Click += new System.EventHandler(this.Enregistrer_MenuItem_Click);
             // 
@@ -826,14 +839,14 @@ namespace InterfaceGraphique
             this.EnregistrerS_MenuItem.Name = "EnregistrerS_MenuItem";
             this.EnregistrerS_MenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)(((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.Shift) 
             | System.Windows.Forms.Keys.S)));
-            this.EnregistrerS_MenuItem.Size = new System.Drawing.Size(226, 22);
+            this.EnregistrerS_MenuItem.Size = new System.Drawing.Size(230, 22);
             this.EnregistrerS_MenuItem.Text = "Enregistrer Sous";
             this.EnregistrerS_MenuItem.Click += new System.EventHandler(this.EnregistrerS_MenuItem_Click);
             // 
             // Proprietes_MenuItem
             // 
             this.Proprietes_MenuItem.Name = "Proprietes_MenuItem";
-            this.Proprietes_MenuItem.Size = new System.Drawing.Size(226, 22);
+            this.Proprietes_MenuItem.Size = new System.Drawing.Size(230, 22);
             this.Proprietes_MenuItem.Text = "Propriétés";
             this.Proprietes_MenuItem.Click += new System.EventHandler(this.Proprietes_MenuItem_Click);
             // 
@@ -841,7 +854,7 @@ namespace InterfaceGraphique
             // 
             this.ModeTest_MenuItem.Name = "ModeTest_MenuItem";
             this.ModeTest_MenuItem.ShortcutKeyDisplayString = "t";
-            this.ModeTest_MenuItem.Size = new System.Drawing.Size(226, 22);
+            this.ModeTest_MenuItem.Size = new System.Drawing.Size(230, 22);
             this.ModeTest_MenuItem.Text = "Mode Test";
             this.ModeTest_MenuItem.Click += new System.EventHandler(this.ModeTest_MenuItem_Click);
             // 
@@ -849,7 +862,7 @@ namespace InterfaceGraphique
             // 
             this.MenuP_MenuItem.Name = "MenuP_MenuItem";
             this.MenuP_MenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.Q)));
-            this.MenuP_MenuItem.Size = new System.Drawing.Size(226, 22);
+            this.MenuP_MenuItem.Size = new System.Drawing.Size(230, 22);
             this.MenuP_MenuItem.Text = "Menu Principal";
             this.MenuP_MenuItem.Click += new System.EventHandler(this.MenuP_MenuItem_Click);
             // 
@@ -867,7 +880,7 @@ namespace InterfaceGraphique
             this.Supprimer_MenuItem.Enabled = false;
             this.Supprimer_MenuItem.Name = "Supprimer_MenuItem";
             this.Supprimer_MenuItem.ShortcutKeys = System.Windows.Forms.Keys.Delete;
-            this.Supprimer_MenuItem.Size = new System.Drawing.Size(167, 22);
+            this.Supprimer_MenuItem.Size = new System.Drawing.Size(153, 22);
             this.Supprimer_MenuItem.Text = "Supprimer";
             this.Supprimer_MenuItem.Click += new System.EventHandler(this.Supprimer_MenuItem_Click);
             // 
@@ -1094,7 +1107,7 @@ namespace InterfaceGraphique
             // Aide_MenuItem
             // 
             this.Aide_MenuItem.Name = "Aide_MenuItem";
-            this.Aide_MenuItem.Size = new System.Drawing.Size(98, 22);
+            this.Aide_MenuItem.Size = new System.Drawing.Size(152, 22);
             this.Aide_MenuItem.Text = "Aide";
             this.Aide_MenuItem.Click += new System.EventHandler(this.Aide_MenuItem_Click);
             // 
@@ -1103,6 +1116,7 @@ namespace InterfaceGraphique
             this.Mute_MenuItem.Name = "Mute_MenuItem";
             this.Mute_MenuItem.Size = new System.Drawing.Size(47, 20);
             this.Mute_MenuItem.Text = "Mute";
+            this.Mute_MenuItem.Visible = false;
             this.Mute_MenuItem.Click += new System.EventHandler(this.Mute_MenuItem_Click);
             // 
             // menuStrip3
@@ -1174,19 +1188,6 @@ namespace InterfaceGraphique
             this.printPreviewDialog1.Icon = ((System.Drawing.Icon)(resources.GetObject("printPreviewDialog1.Icon")));
             this.printPreviewDialog1.Name = "printPreviewDialog1";
             this.printPreviewDialog1.Visible = false;
-            // 
-            // toolStripButton2
-            // 
-            this.toolStripButton2.AutoSize = false;
-            this.toolStripButton2.BackColor = System.Drawing.Color.Transparent;
-            this.toolStripButton2.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.toolStripButton2.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.toolStripButton2.Image = global::InterfaceGraphique.Properties.Resources.open1;
-            this.toolStripButton2.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.toolStripButton2.Margin = new System.Windows.Forms.Padding(4, 4, 0, 4);
-            this.toolStripButton2.Name = "toolStripButton2";
-            this.toolStripButton2.Size = new System.Drawing.Size(40, 40);
-            this.toolStripButton2.Text = "toolStripButton2";
             // 
             // Editeur
             // 

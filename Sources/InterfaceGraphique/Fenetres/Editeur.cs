@@ -87,7 +87,7 @@ namespace InterfaceGraphique
                                   FonctionsNatives.obtenirToucheRessort());
             Program.peutAfficher = true;
             mouvementX = 100 * (double)(this.flowLayoutPanel1.Width) / (double)this.panel1.Width;
-            mouvementY = 100 * (double)(this.menuStrip1.Height) / (double)this.panel1.Width;
+            mouvementY = 100 * (double)(this.menuStrip1.Height+this.toolStrip1.Height) / (double)this.panel1.Width;
             InitialiserAnimation();
 
             panelHeight = panel_GL.Size.Height;
@@ -115,7 +115,8 @@ namespace InterfaceGraphique
             pathXML = new StringBuilder("");
             this.Text = "Mode Edition - Nouvelle Zone";
             panel_GL.Select();
-            etat = new EtatEditeurNone(this);
+           // etat = new EtatEditeurNone(this);
+            etat = new EtatEditeurSelection(this);
             deselection();
             ctrlDown = false;
             altDown = false;
@@ -488,7 +489,8 @@ namespace InterfaceGraphique
                     {
                         FonctionsNatives.removeObject();
                         etat = null;
-                        etat = new EtatEditeurNone(this);
+                       // etat = new EtatEditeurNone(this);
+                        etat = new EtatEditeurSelection(this);
                         deselection();
                     }
                     else if (etat is EtatEditeurMur)
@@ -501,12 +503,15 @@ namespace InterfaceGraphique
                     {
                         FonctionsNatives.removeObject();
                         deselection();
-                        etat = new EtatEditeurNone(this);
+                     //   etat = new EtatEditeurNone(this);
+                        etat = new EtatEditeurSelection(this);
+
                     }
                     else
                     {
                         etat = null;
-                        etat = new EtatEditeurNone(this);
+                       // etat = new EtatEditeurNone(this);
+                        etat = new EtatEditeurSelection(this);                    
                         deselection();
                     }
 
@@ -933,7 +938,10 @@ namespace InterfaceGraphique
         {
             annulerModif();
             if (etat is EtatEditeurMur)
-                etat = new EtatEditeurNone(this);
+            {
+                //    etat = new EtatEditeurNone(this);
+                etat = new EtatEditeurSelection(this);
+            }
             //Console.WriteLine("Outil Creation.");
             if (Creation_Panel.Visible)
             {
@@ -1600,6 +1608,7 @@ namespace InterfaceGraphique
             etat = null;
             etat = new EtatEditeurTest(this);
             menuStrip1.Hide();
+            toolStrip1.Hide();
             FonctionsNatives.animerJeu(true);
             FonctionsNatives.rechargerArbre(false);
             FonctionsNatives.resetNombreBillesCourantes();
@@ -2086,7 +2095,9 @@ namespace InterfaceGraphique
 
             if (etat is EtatEditeurPortail && e.Button == MouseButtons.Left)
             {
-                etat = new EtatEditeurNone(this);
+                //etat = new EtatEditeurNone(this);
+                etat = new EtatEditeurSelection(this);
+                
                 FonctionsNatives.obligerTransparence(false);
                 deselection();
             }
@@ -2196,7 +2207,9 @@ namespace InterfaceGraphique
 
                 deselection();
                 panel_GL.MouseMove -= panel_MouseMove;
-                etat = new EtatEditeurNone(this);
+              //  etat = new EtatEditeurNone(this);
+                etat = new EtatEditeurSelection(this);
+
             }
             else if (etat is EtatEditeurMur && (clickExtraValide(origin, destination)))
             {
@@ -2237,7 +2250,9 @@ namespace InterfaceGraphique
         ////////////////////////////////////////////////////////////////////////
         private void panel_GL_MouseWheel(object sender, MouseEventArgs e)
         {
-            etat.traiterRoulette(e);
+           // etat.traiterRoulette(e);
+           // On peut zoomer avec la Roulette en tout temps
+            zoomRoulette(e);
 
         }
 
@@ -3021,7 +3036,7 @@ namespace InterfaceGraphique
         private void panel_GL_SizeChanged(object sender, EventArgs e)
         {
             mouvementX = 100 * (double)(this.flowLayoutPanel1.Width) / (double)this.panel1.Width;
-            mouvementY = 100 * (double)(this.menuStrip1.Height) / (double)this.panel1.Width;
+            mouvementY = 100 * (double)(this.menuStrip1.Height+this.toolStrip1.Height) / (double)this.panel1.Width;
         }
 
         //////////////////////////////////////////////////////////////////////////////////////////
@@ -3036,7 +3051,9 @@ namespace InterfaceGraphique
         private void toolStripMenuItem1_Click(object sender, EventArgs e)
         {
             etat = null;
-            etat = new EtatEditeurNone(this);
+           // etat = new EtatEditeurNone(this);
+            etat = new EtatEditeurSelection(this);
+
             FonctionsNatives.animerJeu(false);
             FonctionsNatives.rechargerArbre(true);
             FonctionsNatives.supprimerBille();
@@ -3045,6 +3062,7 @@ namespace InterfaceGraphique
             if (menuStrip3.Visible)
                 menuStrip3.Hide();
             menuStrip1.Show();
+            toolStrip1.Show();
             menu1Enable(true);
             Creation_Panel.Show();
             flowLayoutPanel1.Show();
