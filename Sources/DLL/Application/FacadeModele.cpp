@@ -198,9 +198,9 @@ void FacadeModele::initialiserOpenGL(HWND hWnd)
 	/// Pour normaliser les normales dans le cas d'utilisation de glScale[fd]
 	glEnable(GL_NORMALIZE);
 	Lumiere lumiere(GL_LIGHT1);
-	lumiere.definir();
-	progNuanceur_->initialiser();
-	progNuanceur_->activer();
+	// lumiere.definir();
+	// progNuanceur_->initialiser();
+	// progNuanceur_->activer();
 
 	// Pour voir le spot, commenter le glEnable(GL_LIGHT0) et decommenter la ligne suivante.
 	// La c'est sans shaders, donc c'est normal que ca soit weird car je n'ai pas de controle sur le 
