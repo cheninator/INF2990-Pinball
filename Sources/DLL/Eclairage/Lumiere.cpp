@@ -7,9 +7,10 @@ Lumiere::Lumiere(GLuint handle)
 	assert(GL_LIGHT1 <= handle && handle <= GL_LIGHT7);
 	handle_ = handle;
 
-	ambient_ = glm::fvec4{ 0.0f, 1.0f, 1.0f, 1.0f };
-	diffuse_ = glm::fvec4{ 1.0f, 0.0f, 1.0f, 1.0f };
-	specular_ = glm::fvec4{ 1.0f, 1.0f, 0.0f, 1.0f };
+	// Couleurs qui font pas de sens mais sont utiles pour tester
+	ambient_ = glm::fvec4{ 1.0f, 0.0f, 0.0f, 1.0f };
+	diffuse_ = glm::fvec4{ 0.0f, 1.0f, 0.0f, 1.0f };
+	specular_ = glm::fvec4{ 0.0f, 0.0f, 1.0f, 1.0f };
 
 	spotPosition_ = glm::fvec3{ 50.0f, -47.0f, 30.0f };
 	spotDirection_ = glm::fvec3{ 0.5f, .0f, -1.0f };
