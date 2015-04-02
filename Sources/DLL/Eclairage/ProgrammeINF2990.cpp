@@ -1,5 +1,6 @@
 #include "ProgrammeINF2990.h"
 #include <iostream>
+#include "glm/gtc/type_ptr.hpp"
 
 void ProgrammeINF2990::initialiser()
 {
@@ -20,14 +21,15 @@ void ProgrammeINF2990::initialiser()
 	programme_->initialiser();
 	programme_->attacherNuanceur(*nuanceurSommets_);
 	programme_->attacherNuanceur(*nuanceurFragments_);
-	std::cout << "============================  PROGRAMME ====================== " << std::endl;
-	std::cout << programme_->serialiser();
-	
+	//std::cout << "============================  PROGRAMME ====================== " << std::endl;
+	//std::cout << programme_->serialiser();
+	int tempaasd = 0;
 	// Checker que tout est correct
 	if (programme_->estValide() && programme_->estInitialise())
 	{
 		EstInitialise_ = true;
 		std::cout << "Le programme est valide" << std::endl;
+		// programme_->opengl::Programme::assignerUniforme("laTexture", (int)0);
 	}
 	// std::cout << "============================ FIN INFO ====================== " << std::endl;
 
