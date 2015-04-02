@@ -2012,6 +2012,7 @@ extern "C"
 	__declspec(dllexport) void __cdecl activerCustomConsole()
 	{
 		FacadeModele::obtenirInstance(true);
+		SingletonGlobal::obtenirInstance()->activerSon();
 	}
 
 
@@ -2025,4 +2026,10 @@ extern "C"
 	{
 		return stringToBSTR(FacadeModele::obtenirInstance()->obtenirCout());
 	}
+
+	__declspec(dllexport) void utiliserCameraOrbite(bool utiliseOrbite)
+	{
+		FacadeModele::obtenirInstance()->utiliserCameraOrbite(utiliseOrbite);
+	}
+
 }// FIN DU extern "C"

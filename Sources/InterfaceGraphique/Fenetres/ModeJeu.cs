@@ -39,6 +39,7 @@ namespace InterfaceGraphique
         List<string> myMaps;    ///< liste des zones a jouer
         StringBuilder map;      ///< la zone en jeu
         StringBuilder nextMap;  ///< prochaine zone
+        StringBuilder bgm;
         bool peutAnimer;
         bool boolTemp = true;   ///< bool pour ne pas spam FinDePartie
         private bool activateAmbiantLight = false; ///< Etat de la lumiere ambiante
@@ -155,7 +156,11 @@ namespace InterfaceGraphique
             // Il faut changer le mode car le traitement de début est fini
             etat = new EtatJeuJouer(this);
             FonctionsNatives.animerJeu(true);
-            // CreerBille();       
+
+            bgm = new StringBuilder("baccano.mp3");
+            FonctionsNatives.bouclerSon(bgm, bgm.Length);
+            FonctionsNatives.ajusterBGM(50);
+            //FonctionsNatives.jouerSon(bgm, bgm.Length);
         }
 
         ////////////////////////////////////////////////////////////////////////

@@ -56,10 +56,13 @@ Yonni Chen <BR>
 #include "../Arbre/Noeuds/NoeudRessort.h"
 #include "../Global/JoueurVirtuel.h"
 #include "../Eclairage/Lumiere.h"
+#include "../Eclairage/ProgrammeINF2990.h"
 
 #include "VueOrtho.h"
+#include "VuePerspective.h"
 #include "Camera.h"
 #include "Projection.h"
+
 
 #include "Utilitaire.h"
 #include "AideGL.h"
@@ -105,6 +108,7 @@ FacadeModele* FacadeModele::obtenirInstance(bool console)
 		instance_->joueur_ = new JoueurVirtuel();
 		instance_->quad_ = new QuadTree(glm::dvec3(coinGaucheTableX, coinGaucheTableY, 0),
 										glm::dvec3(coinDroitTableX,  coinDroitTableY,  0));
+		instance_->progNuanceur_ = new ProgrammeINF2990();
 		if (console)
 			instance_->old_ = std::cout.rdbuf(instance_->oss_.rdbuf());
 		else
@@ -194,7 +198,9 @@ void FacadeModele::initialiserOpenGL(HWND hWnd)
 	/// Pour normaliser les normales dans le cas d'utilisation de glScale[fd]
 	glEnable(GL_NORMALIZE);
 	Lumiere lumiere(GL_LIGHT1);
-	lumiere.definir();
+	// lumiere.definir();
+	// progNuanceur_->initialiser();
+	// progNuanceur_->activer();
 
 	// Pour voir le spot, commenter le glEnable(GL_LIGHT0) et decommenter la ligne suivante.
 	// La c'est sans shaders, donc c'est normal que ca soit weird car je n'ai pas de controle sur le 
@@ -2093,4 +2099,55 @@ std::string FacadeModele::obtenirCout()
 	std::string ss = oss_.str();
 	oss_.str(std::string());
 	return ss;
+}
+
+void FacadeModele::utiliserCameraOrbite(bool utiliseOrbite)
+{
+	std::cout << "Méthode appelee\n";
+	if (utiliseOrbite != vueEstOrbite_)
+	{
+		delete vue_;
+		if (utiliseOrbite)
+		{/*Créer une caméra orbite*/
+
+			vue_ = new vue::VueOrtho{
+				vue::Camera{
+					glm::dvec3(0, 0, 200), glm::dvec3(0, 0, 0),
+					glm::dvec3(0, 1, 0), glm::dvec3(0, 1, 0) },
+					vue::ProjectionOrtho{
+						0, 500, 0, 500,
+						1, 1000, 50, 5000, 1.25,
+						double(coinGaucheTableX), double(coinGaucheTableY),
+						double(coinDroitTableX), double(coinDroitTableY) }
+			};
+			
+			 /*vue_ = new vue::VuePerspective{
+				vue::Camera{
+					glm::dvec3(0, 0, 200), glm::dvec3(0, 0, 0),
+					glm::dvec3(0, 1, 0), glm::dvec3(0, 1, 0) },
+					vue::ProjectionPerspective{
+						0, 500, 0, 500,
+						1, 1000, 50, 5000, 1.25,
+						-400, 400, -400, 400, 0, 1000 }
+			}; */
+			std::cout << "La vue est passee en orbite \n";
+		}
+		else
+		{/*Créer une caméra ortho*/
+			vue_ = new vue::VueOrtho{
+				vue::Camera{
+					glm::dvec3(0, 0, 200), glm::dvec3(0, 0, 0),
+					glm::dvec3(0, 1, 0), glm::dvec3(0, 1, 0) },
+					vue::ProjectionOrtho{
+						0, 500, 0, 500,
+						1, 1000, 50, 5000, 1.25,
+						double(coinGaucheTableX), double(coinGaucheTableY),
+						double(coinDroitTableX), double(coinDroitTableY) }
+			};
+			std::cout << "La vue est passee en orthographique \n";
+		}
+//		vue_->obtenirProjection().conserverRapportAspect();
+		appliquerZoomInitial();
+		vueEstOrbite_ = utiliseOrbite;
+	}
 }

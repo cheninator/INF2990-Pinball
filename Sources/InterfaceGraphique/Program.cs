@@ -87,12 +87,12 @@ namespace InterfaceGraphique
             }
             if (!noWarnings)
             {
-                DialogResult dialogResult = MessageBox.Show("Voulez vous utiliez la console windows native, ou la console " +
+                DialogResult dialogResult = MessageBox.Show("Voulez vous utiliser la console Windows native, ou la console " +
                 "sur mesure avec interface graphique? YES pour la console native, NO pour la console GUI.", "Utilisation de la console ?", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
                 if (dialogResult == DialogResult.No)
                 {
-                    DialogResult dialogResult2 = MessageBox.Show("Cette console est encore tres experimentale. Avertissement: " +
-                    "pour la correction des SRS, ne pas utiliser ce mode. Voulez vous toujours utilisez cette console ?", "Etes vous sur !", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
+                    DialogResult dialogResult2 = MessageBox.Show("Cette console est encore experimentale. Avertissement: " +
+                    "pour la correction des SRS, ne pas utiliser ce mode. Voulez vous toujours utilisez cette console ?", "Etes vous sur ?", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
                     if (dialogResult2 == DialogResult.Yes)
                     {
                         customConsoleActive = true;
@@ -636,5 +636,8 @@ namespace InterfaceGraphique
 
         [DllImport(@"Noyau.dll", CallingConvention = CallingConvention.Cdecl)]
         public static extern void ajusterSFX(float pourcentage);
+
+        [DllImport(@"Noyau.dll", CallingConvention = CallingConvention.Cdecl)]
+        public static extern void utiliserCameraOrbite(bool utiliseOrbite);
     }
 }

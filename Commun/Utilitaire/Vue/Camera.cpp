@@ -132,27 +132,6 @@ namespace vue {
 		bool   empecheInversion //=true
 		)
 	{
-		double dist = 200;
-		position_[0] = dist * cos(rotationX) * sin(rotationY);
-		position_[1] = dist * sin(rotationX) * sin(rotationY);
-		position_[1] = dist * cos(rotationY);
-		/*
-		std::cout << std::endl << "position_[0] : " << position_[0];
-		std::cout << std::endl << "position_[1] : " << position_[1];
-		std::cout << std::endl << "position_[2] : " << position_[2];
-		std::cout << std::endl;
-		std::cout << std::endl << "pointVise_[0] : " << pointVise_[0];
-		std::cout << std::endl << "pointVise_[1] : " << pointVise_[1];
-		std::cout << std::endl << "pointVise_[2] : " << pointVise_[2];
-		std::cout << std::endl;
-		std::cout << std::endl << "directionHaut_[0] : " << directionHaut_[0];
-		std::cout << std::endl << "directionHaut_[1] : " << directionHaut_[1];
-		std::cout << std::endl << "directionHaut_[2] : " << directionHaut_[2];
-		std::cout << std::endl;
-		std::cout << std::endl;
-		std::cout << std::endl;
-		std::cout << std::endl;
-		*/
 	}
 
 
