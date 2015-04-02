@@ -50,16 +50,18 @@ public:
 private:
 	GLuint handle_;
 
-	glm::fvec4 ambient_{ 1.0f, 1.0f, 1.0f, 1.0f },    // GL_AMBIENT
-		diffuse_{ 1.0f, 1.0f, 1.0f, 1.0f },           // GL_DIFFUSE
-		specular_{ 1.0f, 1.0f, 1.0f, 1.0f };          // GL_SPECULAR
+	glm::fvec4	ambient_{ 1.0f, 1.0f, 1.0f, 1.0f },           // GL_AMBIENT
+				diffuse_{ 1.0f, 1.0f, 1.0f, 1.0f },           // GL_DIFFUSE
+				specular_{ 1.0f, 1.0f, 1.0f, 1.0f };          // GL_SPECULAR
 
-	glm::fvec4 position_{ 190.0f, -47.0f, 30.0f,1.0 }, // GL_POSITION
-		direction_{ 1.0f, 0.0f, 1.0f ,1.0};           // GL_SPOT_DIRECTION
+	glm::fvec4	position_{ 190.0f, -47.0f, 30.0f,1.0 },       // GL_POSITION
+				direction_{ 1.0f, 0.0f, 1.0f ,1.0};           // GL_SPOT_DIRECTION
 
-	GLfloat spotExponent_{ 0.0f },			               // GL_SPOT_EXPONENT
-		spotCutoffAngle_{ 30.0f };                   // GL_SPOT_CUTOFF 
-	glm::fvec3 attenuation_{ 1.0, 0.0, 0.0 };               // GL_CONSTANT_ATTENUATION, GL_LINEAR_ATTENUATION, GL_QUADRATIC_ATTENUATION
+	GLfloat spotExponent_{ 0.0f },			                  // GL_SPOT_EXPONENT
+			spotCutoffAngle_{ 30.0f };                        // GL_SPOT_CUTOFF 
+	glm::fvec3 attenuation_{ 1.0, 0.0, 0.0 };                 // GL_CONSTANT_ATTENUATION, 
+																	// GL_LINEAR_ATTENUATION, 
+																	// GL_QUADRATIC_ATTENUATION
 
 };
 

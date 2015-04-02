@@ -47,5 +47,9 @@ void Lumiere::definir()
 void Lumiere::enable()
 {
 	glEnable(handle_);
+}
 
+void Lumiere::disable()
+{
+	glDisable(handle_);
 }
