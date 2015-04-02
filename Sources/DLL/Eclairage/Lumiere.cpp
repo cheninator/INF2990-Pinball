@@ -17,9 +17,9 @@ Lumiere::Lumiere(GLuint handle)
 
 	spotExponent_ = 1.0f;			               // GL_SPOT_EXPONENT
 	spotCutoffAngle_ = 15.0f;                    // GL_SPOT_CUTOFF 
-	constantAttenuation_ = 1.0f;              // GL_CONSTANT_ATTENUATION
-	linearAttenuation_ = 0.0f;              // GL_LINEAR_ATTENUATION
-	quadraticAttenuation_ = 0.0f;
+	attenuation_[0] = 1.0f;              // GL_CONSTANT_ATTENUATION
+	attenuation_[1] = 0.0f;              // GL_LINEAR_ATTENUATION
+	attenuation_[2] = 0.0f;
 }
 
 
@@ -37,9 +37,9 @@ void Lumiere::definir()
 	// Floats
 	glLightf(handle_, GL_SPOT_EXPONENT, spotExponent_);
 	glLightf(handle_, GL_SPOT_CUTOFF, spotCutoffAngle_);
-	glLightf(handle_, GL_CONSTANT_ATTENUATION, constantAttenuation_);
-	glLightf(handle_, GL_LINEAR_ATTENUATION, linearAttenuation_);
-	glLightf(handle_, GL_QUADRATIC_ATTENUATION, quadraticAttenuation_);
+	glLightf(handle_, GL_CONSTANT_ATTENUATION, attenuation_[0]);
+	glLightf(handle_, GL_LINEAR_ATTENUATION, attenuation_[1]);
+	glLightf(handle_, GL_QUADRATIC_ATTENUATION, attenuation_[2]);
 
 
 }
