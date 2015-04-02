@@ -55,8 +55,8 @@ Yonni Chen <BR>
 #include "../Visiteurs/VisiteurDebug.h"
 #include "../Arbre/Noeuds/NoeudRessort.h"
 #include "../Global/JoueurVirtuel.h"
-#include "../Eclairage/Lumiere.h"
 #include "../Eclairage/ProgrammeINF2990.h"
+#include "../Eclairage/ControleurLumieres.h"
 
 #include "VueOrtho.h"
 #include "VuePerspective.h"
@@ -109,6 +109,7 @@ FacadeModele* FacadeModele::obtenirInstance(bool console)
 		instance_->quad_ = new QuadTree(glm::dvec3(coinGaucheTableX, coinGaucheTableY, 0),
 										glm::dvec3(coinDroitTableX,  coinDroitTableY,  0));
 		instance_->progNuanceur_ = new ProgrammeINF2990();
+		instance_->controleurLumieres_ = new ControleurLumieres();
 		if (console)
 			instance_->old_ = std::cout.rdbuf(instance_->oss_.rdbuf());
 		else
@@ -150,6 +151,8 @@ FacadeModele::~FacadeModele()
 	delete proprietes_;
 	delete joueur_;
 	delete quad_;
+	delete progNuanceur_;
+	delete controleurLumieres_;
 	if (instance_->old_ != nullptr)
 		std::cout.rdbuf(instance_->old_);
 }
@@ -197,16 +200,17 @@ void FacadeModele::initialiserOpenGL(HWND hWnd)
 	glEnable(GL_COLOR_MATERIAL);
 	/// Pour normaliser les normales dans le cas d'utilisation de glScale[fd]
 	glEnable(GL_NORMALIZE);
-	Lumiere lumiere(GL_LIGHT1);
-	lumiere.definir();
+
+
+	controleurLumieres_->initialiserLumieres();
 	progNuanceur_->initialiser();
 
 	// Pour voir le spot, commenter le glEnable(GL_LIGHT0) et decommenter la ligne suivante.
 	// La c'est sans shaders, donc c'est normal que ca soit weird car je n'ai pas de controle sur le 
 	// calcul d'eclairage. Par exemple, la table semble ne pas etre eclairee, mais c'est parce qu'elle 
 	// n'est pas subdivisee.
-	glEnable(GL_LIGHT0);
-	// lumiere.enable();
+	// glEnable(GL_LIGHT0);
+
 
 	// Qualite
 	glShadeModel(GL_SMOOTH);
@@ -329,9 +333,11 @@ void FacadeModele::afficherBase() const
 	glLightfv(GL_LIGHT0, GL_POSITION, glm::value_ptr(position));
 
 	// Afficher la scene.
-	// progNuanceur_->activer();
+	progNuanceur_->activer();
+	controleurLumieres_->definirLumieres();
+	glDisable(GL_LIGHT1);
 	arbre_->afficher();
-	// progNuanceur_->desactiver();
+	progNuanceur_->desactiver();
 
 	// On affiche le texte ici
 
