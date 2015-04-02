@@ -1,10 +1,26 @@
+///////////////////////////////////////////////////////////////////////////////
+/// @file ProgrammeINF2990.h
+/// @author The ballers
+/// @date 2015-03-20
+/// @version 1.0
+///
+/// @ingroup Eclairage
+///////////////////////////////////////////////////////////////////////////////
+
 #include <GL/glew.h>
 
 #include "../../Commun/Utilitaire/OpenGL/OpenGL_Programme.h"
 #include "../../Commun/Utilitaire/OpenGL/OpenGL_Nuanceur.h"
 
 
-
+////////////////////////////////////////////////////////////////////////////////
+///
+/// @class ProgrammeINF2990
+/// @brief TODO PHIL
+///
+/// @author The ballers
+/// @date 2015-04-02
+////////////////////////////////////////////////////////////////////////////////
 class ProgrammeINF2990 
 {
 
@@ -12,7 +28,7 @@ public:
 	ProgrammeINF2990() = default;
 	~ProgrammeINF2990();
 
-	void initialiser();
+	void initialiser(); 
 	
 	void activer();
 	void desactiver();

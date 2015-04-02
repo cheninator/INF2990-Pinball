@@ -16,6 +16,14 @@
 #include "glm/glm.hpp"
 #include "glm/gtc/type_ptr.hpp"
 
+////////////////////////////////////////////////////////////////////////////////
+///
+/// @class Lumiere
+/// @brief TODO PHIL
+///
+/// @author The ballers
+/// @date 2015-04-02
+////////////////////////////////////////////////////////////////////////////////
 class Lumiere{
 
 public:
@@ -67,24 +75,36 @@ private:
 
 
 
-	// Methodes set
-	inline void Lumiere::setAmbientColor(glm::fvec4 ambientColor)    { ambient_ = ambientColor; }
-	inline void Lumiere::setDiffuseColor(glm::fvec4 diffuseColor)    { diffuse_ = diffuseColor; }
-	inline void Lumiere::setSpecurlarColor(glm::fvec4 specularColor) { specular_ = specularColor; }
-	inline void Lumiere::setPosition(glm::fvec4 position)            { position_ = position; }
-	inline void Lumiere::setDirection(glm::fvec4 direction)          { direction_ = direction; }
-	inline void Lumiere::setExponent( float exponent )               { spotExponent_ = exponent; }
-	inline void Lumiere::setCutoffAngle( float cutoffAngle )         { spotCutoffAngle_ = cutoffAngle; }
-	inline void Lumiere::setAttenuation( glm::fvec3 attenuation )    { attenuation_ = attenuation; }
+////////////////////////////////////////////////////////////////////////
+///
+/// @fn Methodes 'set' pour chaque attribut
+///
+/// @return aucun.
+///
+////////////////////////////////////////////////////////////////////////
+inline void Lumiere::setAmbientColor(glm::fvec4 ambientColor)    { ambient_ = ambientColor; }
+inline void Lumiere::setDiffuseColor(glm::fvec4 diffuseColor)    { diffuse_ = diffuseColor; }
+inline void Lumiere::setSpecurlarColor(glm::fvec4 specularColor) { specular_ = specularColor; }
+inline void Lumiere::setPosition(glm::fvec4 position)            { position_ = position; }
+inline void Lumiere::setDirection(glm::fvec4 direction)          { direction_ = direction; }
+inline void Lumiere::setExponent( float exponent )               { spotExponent_ = exponent; }
+inline void Lumiere::setCutoffAngle( float cutoffAngle )         { spotCutoffAngle_ = cutoffAngle; }
+inline void Lumiere::setAttenuation( glm::fvec3 attenuation )    { attenuation_ = attenuation; }
 
-	// Methodes get
-	inline const glm::fvec4& Lumiere::getAmbientColor() const  { return ambient_; }
-	inline const glm::fvec4& Lumiere::getDiffuseColor() const  { return diffuse_; }
-	inline const glm::fvec4& Lumiere::getSpecularColor() const { return specular_; }
-	inline const glm::fvec4& Lumiere::getPosition() const      { return position_; }
-	inline const glm::fvec4& Lumiere::getDirection() const     { return direction_; }
-	inline const float& Lumiere::getExponent() const           { return spotExponent_; }
-	inline const float& Lumiere::getCutoffAngle() const        { return spotCutoffAngle_; }
-	inline const glm::fvec3& Lumiere::getAttenuation() const   { return attenuation_; }
+////////////////////////////////////////////////////////////////////////
+///
+/// @fn Methodes 'get' pour chaque attribut
+///
+/// @return aucun.
+///
+////////////////////////////////////////////////////////////////////////
+inline const glm::fvec4& Lumiere::getAmbientColor() const  { return ambient_; }
+inline const glm::fvec4& Lumiere::getDiffuseColor() const  { return diffuse_; }
+inline const glm::fvec4& Lumiere::getSpecularColor() const { return specular_; }
+inline const glm::fvec4& Lumiere::getPosition() const      { return position_; }
+inline const glm::fvec4& Lumiere::getDirection() const     { return direction_; }
+inline const float& Lumiere::getExponent() const           { return spotExponent_; }
+inline const float& Lumiere::getCutoffAngle() const        { return spotCutoffAngle_; }
+inline const glm::fvec3& Lumiere::getAttenuation() const   { return attenuation_; }
 
 #endif //  __ECLAIRAGE_LUMIERE_H__
