@@ -3,6 +3,15 @@
 
 #include <iostream>
 
+void ProgrammeINF2990::~ProgrammeINF2990();
+{
+	// Les destructeurs s'occuppent de relacher les ressources OpenGL liés aux objets.
+	desactiver();
+	delete programme_;
+	delete nuanceurSommets_;
+	delete nuanceurFragments_;
+}
+
 void ProgrammeINF2990::initialiser()
 {
 	// Initialiser le nuanceur de sommets
@@ -21,13 +30,13 @@ void ProgrammeINF2990::initialiser()
 	
 
 	// Checker que tout est correct
-	if (programme_->estValide() && programme_->estInitialise())
-	{
-		EstInitialise_ = true;
-		std::cout << "Le programme est valide" << std::endl;
-		int monIntTest = 0;
-		programme_->assignerUniforme("monIntTest", monIntTest);
-	}
+	//	if (programme_->estValide() && programme_->estInitialise())
+	//	{
+	//		EstInitialise_ = true;
+	//		std::cout << "Le programme est valide" << std::endl;
+	//		int monIntTest = 0;
+	//		programme_->assignerUniforme("monIntTest", monIntTest);
+	//	}
 }
 
 

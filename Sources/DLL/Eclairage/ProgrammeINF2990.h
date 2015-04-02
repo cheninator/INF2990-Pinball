@@ -10,6 +10,7 @@ class ProgrammeINF2990
 
 public:
 	ProgrammeINF2990() = default;
+	~ProgrammeINF2990();
 
 	void initialiser();
 	
