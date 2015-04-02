@@ -1,38 +1,33 @@
 #include "ProgrammeINF2990.h"
+#include "../../Commun/Utilitaire/OpenGL/OpenGL_Programme.h"
+
 #include <iostream>
-#include "glm/gtc/type_ptr.hpp"
 
 void ProgrammeINF2990::initialiser()
 {
 	// Initialiser le nuanceur de sommets
 	nuanceurSommets_ = new opengl::Nuanceur();
 	nuanceurSommets_->initialiser(opengl::Nuanceur::Type::NUANCEUR_VERTEX, "Nuanceurs/NuanceurSommetsINF2990.glsl");
-	// std::cout << "============================  SOMMETS ====================== " << std::endl;
-	// std::cout << nuanceurSommets_->serialiser();
 	
 	// Initialiser le nuanceur de fragments
 	nuanceurFragments_ = new opengl::Nuanceur();
 	nuanceurFragments_->initialiser(opengl::Nuanceur::Type::NUANCEUR_FRAGMENT, "Nuanceurs/NuanceurFragmentsINF2990.glsl");
-	// std::cout << "============================  FRAGMENTS ====================== " << std::endl;
-	// std::cout << nuanceurFragments_->serialiser();
 
 	// Initialiser le programme
-	programme_ = new opengl::Programme;
+	programme_ = new opengl::Programme();
 	programme_->initialiser();
 	programme_->attacherNuanceur(*nuanceurSommets_);
 	programme_->attacherNuanceur(*nuanceurFragments_);
-	//std::cout << "============================  PROGRAMME ====================== " << std::endl;
-	//std::cout << programme_->serialiser();
-	int tempaasd = 0;
+	
+
 	// Checker que tout est correct
 	if (programme_->estValide() && programme_->estInitialise())
 	{
 		EstInitialise_ = true;
 		std::cout << "Le programme est valide" << std::endl;
-		// programme_->opengl::Programme::assignerUniforme("laTexture", (int)0);
+		const int monIntTest = 0;
+		// programme_->assignerUniforme("monIntTest",(int const) monIntTest);
 	}
-	// std::cout << "============================ FIN INFO ====================== " << std::endl;
-
 }
 
 
