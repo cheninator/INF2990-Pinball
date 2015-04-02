@@ -12,8 +12,8 @@ Lumiere::Lumiere(GLuint handle)
 	diffuse_ = glm::fvec4{ 0.0f, 1.0f, 0.0f, 1.0f };
 	specular_ = glm::fvec4{ 0.0f, 0.0f, 1.0f, 1.0f };
 
-	spotPosition_ = glm::fvec3{ 50.0f, -47.0f, 30.0f };
-	spotDirection_ = glm::fvec3{ 0.5f, .0f, -1.0f };
+	position_ = glm::fvec4{ 50.0f, -47.0f, 30.0f ,1.0};
+	direction_ = glm::fvec4{ 0.5f, .0f, -1.0f, 1.0 };
 
 	spotExponent_ = 1.0f;			               // GL_SPOT_EXPONENT
 	spotCutoffAngle_ = 15.0f;                    // GL_SPOT_CUTOFF 
@@ -31,8 +31,8 @@ void Lumiere::definir()
 	glLightfv(handle_, GL_SPECULAR, glm::value_ptr(specular_));
 
 	// vec3
-	glLightfv(handle_, GL_POSITION, glm::value_ptr(spotPosition_));
-	glLightfv(handle_, GL_SPOT_DIRECTION, glm::value_ptr(spotDirection_));
+	glLightfv(handle_, GL_POSITION, glm::value_ptr(position_));
+	glLightfv(handle_, GL_SPOT_DIRECTION, glm::value_ptr(direction_));
 
 	// Floats
 	glLightf(handle_, GL_SPOT_EXPONENT, spotExponent_);
@@ -46,7 +46,6 @@ void Lumiere::definir()
 
 void Lumiere::enable()
 {
-	std::cout << "Lumiere a la position ( " << spotPosition_.x << " , " << spotPosition_.y << " , " << spotPosition_.z << " )." << std::endl;
 	glEnable(handle_);
 
 }

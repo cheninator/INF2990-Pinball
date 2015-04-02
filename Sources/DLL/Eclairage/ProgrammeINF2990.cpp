@@ -3,7 +3,7 @@
 
 #include <iostream>
 
-void ProgrammeINF2990::~ProgrammeINF2990();
+ProgrammeINF2990::~ProgrammeINF2990()
 {
 	// Les destructeurs s'occuppent de relacher les ressources OpenGL liés aux objets.
 	desactiver();
