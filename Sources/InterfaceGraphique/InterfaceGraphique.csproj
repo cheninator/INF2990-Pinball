@@ -309,8 +309,13 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="%24this.Icon.ico" />
+    <None Include="Resources\Scale.gif" />
+    <None Include="Resources\SelectionSimple.gif" />
     <None Include="Resources\save.bmp" />
     <None Include="Resources\open.png" />
+    <None Include="Resources\Deplacement.gif" />
+    <None Include="Resources\Duplication.gif" />
+    <None Include="Resources\RotationSimple.gif" />
     <Content Include="Resources\save.png" />
     <None Include="Resources\cible.jpeg" />
     <None Include="Resources\winSound.wav" />
