@@ -201,16 +201,12 @@ void FacadeModele::initialiserOpenGL(HWND hWnd)
 	/// Pour normaliser les normales dans le cas d'utilisation de glScale[fd]
 	glEnable(GL_NORMALIZE);
 
-
+	/// Initialisation des lumieres et du programme de nuanceurs.
 	controleurLumieres_->initialiserLumieres();
 	progNuanceur_->initialiser();
 
-	// Pour voir le spot, commenter le glEnable(GL_LIGHT0) et decommenter la ligne suivante.
-	// La c'est sans shaders, donc c'est normal que ca soit weird car je n'ai pas de controle sur le 
-	// calcul d'eclairage. Par exemple, la table semble ne pas etre eclairee, mais c'est parce qu'elle 
-	// n'est pas subdivisee.
-	// glEnable(GL_LIGHT0);
-
+	/// Activation de GL_LIGHT0 pour le mode sans nuanceurs.
+	glEnable(GL_LIGHT0);
 
 	// Qualite
 	glShadeModel(GL_SMOOTH);
@@ -333,11 +329,10 @@ void FacadeModele::afficherBase() const
 	glLightfv(GL_LIGHT0, GL_POSITION, glm::value_ptr(position));
 
 	// Afficher la scene.
-	progNuanceur_->activer();
-	controleurLumieres_->definirLumieres();
-	glDisable(GL_LIGHT1);
+	// progNuanceur_->activer();
+	// controleurLumieres_->definirLumieres();
 	arbre_->afficher();
-	progNuanceur_->desactiver();
+	// progNuanceur_->desactiver();
 
 	// On affiche le texte ici
 
