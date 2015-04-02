@@ -25,8 +25,8 @@ void ProgrammeINF2990::initialiser()
 	{
 		EstInitialise_ = true;
 		std::cout << "Le programme est valide" << std::endl;
-		const int monIntTest = 0;
-		// programme_->assignerUniforme("monIntTest",(int const) monIntTest);
+		int monIntTest = 0;
+		programme_->assignerUniforme("monIntTest", monIntTest);
 	}
 }
 
