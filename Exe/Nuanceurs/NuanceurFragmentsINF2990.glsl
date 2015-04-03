@@ -102,7 +102,7 @@ void main()
 	// if(distance[SPOT] > 100) discard;
 
 	vec4 couleurFinale = vec4(0);
-	// couleurFinale += lumiereReflechie[AMBIANTE];
+	couleurFinale += lumiereReflechie[AMBIANTE];
 	couleurFinale += lumiereReflechie[DIRECTIONNELLE];
 	couleurFinale += lumiereReflechie[SPOT];
 	gl_FragColor = couleurFinale ;
