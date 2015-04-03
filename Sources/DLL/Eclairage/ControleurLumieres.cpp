@@ -56,7 +56,7 @@ void ControleurLumieres::initialiserLumieres()
 
 
 	// Initialiser lumAmbiante
-	lumAmbiante_->setAmbientColor({ 0.1f, 0.1f, 0.1f, 1.0f });
+	lumAmbiante_->setAmbientColor({ 0.05f, 0.05f, 0.05f, 1.0f });
 	lumAmbiante_->setDiffuseColor({ 0.1f, 0.1f, 0.1f, 1.0f });
 	lumAmbiante_->setSpecularColor({ 0.1f, 0.1f, 0.1f, 1.0f });
 
