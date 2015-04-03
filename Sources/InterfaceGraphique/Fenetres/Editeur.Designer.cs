@@ -40,6 +40,8 @@ namespace InterfaceGraphique
             System.Windows.Forms.ToolStripButton toolStripButton1;
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Editeur));
             this.panel1 = new System.Windows.Forms.Panel();
+            this.panel_GL = new System.Windows.Forms.Panel();
+            this.bouton_Creation = new System.Windows.Forms.Button();
             this.Creation_Panel = new System.Windows.Forms.FlowLayoutPanel();
             this.Groupe_Palettes = new System.Windows.Forms.GroupBox();
             this.PDJ2_bouton = new System.Windows.Forms.Button();
@@ -65,7 +67,6 @@ namespace InterfaceGraphique
             this.DecreaseZoomButton = new System.Windows.Forms.Button();
             this.IncreaseZoomButton = new System.Windows.Forms.Button();
             this.label_Zoom = new System.Windows.Forms.Label();
-            this.bouton_Creation = new System.Windows.Forms.Button();
             this.bouton_Duplication = new System.Windows.Forms.Button();
             this.bouton_Scaling = new System.Windows.Forms.Button();
             this.bouton_Rotation = new System.Windows.Forms.Button();
@@ -87,7 +88,6 @@ namespace InterfaceGraphique
             this.richTextBox1 = new System.Windows.Forms.RichTextBox();
             this.toolStrip1 = new System.Windows.Forms.ToolStrip();
             this.toolStripButton2 = new System.Windows.Forms.ToolStripButton();
-            this.panel_GL = new System.Windows.Forms.Panel();
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.fichierToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.Nouveau_MenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -136,6 +136,7 @@ namespace InterfaceGraphique
             this.printPreviewDialog1 = new System.Windows.Forms.PrintPreviewDialog();
             toolStripButton1 = new System.Windows.Forms.ToolStripButton();
             this.panel1.SuspendLayout();
+            this.panel_GL.SuspendLayout();
             this.Creation_Panel.SuspendLayout();
             this.Groupe_Palettes.SuspendLayout();
             this.Group_Butoir.SuspendLayout();
@@ -146,7 +147,6 @@ namespace InterfaceGraphique
             this.OutilGraphique.SuspendLayout();
             this.Groupe_Proprietes.SuspendLayout();
             this.toolStrip1.SuspendLayout();
-            this.panel_GL.SuspendLayout();
             this.menuStrip1.SuspendLayout();
             this.menuStrip3.SuspendLayout();
             this.SuspendLayout();
@@ -181,6 +181,36 @@ namespace InterfaceGraphique
             this.panel1.Size = new System.Drawing.Size(956, 731);
             this.panel1.TabIndex = 0;
             this.panel1.Click += new System.EventHandler(this.panel1_Click);
+            // 
+            // panel_GL
+            // 
+            this.panel_GL.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            this.panel_GL.BackColor = System.Drawing.Color.Transparent;
+            this.panel_GL.Controls.Add(this.bouton_Creation);
+            this.panel_GL.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panel_GL.Location = new System.Drawing.Point(163, 69);
+            this.panel_GL.Name = "panel_GL";
+            this.panel_GL.Size = new System.Drawing.Size(566, 660);
+            this.panel_GL.TabIndex = 4;
+            this.panel_GL.SizeChanged += new System.EventHandler(this.panel_GL_SizeChanged);
+            this.panel_GL.MouseClick += new System.Windows.Forms.MouseEventHandler(this.panel_GL_MouseClick);
+            this.panel_GL.MouseDown += new System.Windows.Forms.MouseEventHandler(this.panel_GL_MouseDown);
+            this.panel_GL.MouseLeave += new System.EventHandler(this.panel_GL_MouseLeave);
+            this.panel_GL.MouseUp += new System.Windows.Forms.MouseEventHandler(this.panel_GL_MouseUp);
+            this.panel_GL.MouseWheel += new System.Windows.Forms.MouseEventHandler(this.panel_GL_MouseWheel);
+            // 
+            // bouton_Creation
+            // 
+            this.bouton_Creation.Dock = System.Windows.Forms.DockStyle.Right;
+            this.bouton_Creation.Font = new System.Drawing.Font("Stencil", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.bouton_Creation.Location = new System.Drawing.Point(543, 0);
+            this.bouton_Creation.Name = "bouton_Creation";
+            this.bouton_Creation.Size = new System.Drawing.Size(23, 660);
+            this.bouton_Creation.TabIndex = 5;
+            this.bouton_Creation.Text = ">>>";
+            this.bouton_Creation.TextAlign = System.Drawing.ContentAlignment.TopCenter;
+            this.bouton_Creation.UseVisualStyleBackColor = true;
+            this.bouton_Creation.Click += new System.EventHandler(this.bouton_Creation_Click);
             // 
             // Creation_Panel
             // 
@@ -519,19 +549,6 @@ namespace InterfaceGraphique
             this.label_Zoom.MouseEnter += new System.EventHandler(this.label_Zoom_MouseEnter);
             this.label_Zoom.MouseLeave += new System.EventHandler(this.label_Zoom_MouseLeave);
             // 
-            // bouton_Creation
-            // 
-            this.bouton_Creation.Dock = System.Windows.Forms.DockStyle.Right;
-            this.bouton_Creation.Font = new System.Drawing.Font("Stencil", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.bouton_Creation.Location = new System.Drawing.Point(543, 0);
-            this.bouton_Creation.Name = "bouton_Creation";
-            this.bouton_Creation.Size = new System.Drawing.Size(23, 660);
-            this.bouton_Creation.TabIndex = 5;
-            this.bouton_Creation.Text = ">>>";
-            this.bouton_Creation.TextAlign = System.Drawing.ContentAlignment.TopCenter;
-            this.bouton_Creation.UseVisualStyleBackColor = true;
-            this.bouton_Creation.Click += new System.EventHandler(this.bouton_Creation_Click);
-            // 
             // bouton_Duplication
             // 
             this.bouton_Duplication.Enabled = false;
@@ -762,23 +779,6 @@ namespace InterfaceGraphique
             this.toolStripButton2.Name = "toolStripButton2";
             this.toolStripButton2.Size = new System.Drawing.Size(40, 40);
             this.toolStripButton2.Text = "toolStripButton2";
-            // 
-            // panel_GL
-            // 
-            this.panel_GL.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.panel_GL.BackColor = System.Drawing.Color.Transparent;
-            this.panel_GL.Controls.Add(this.bouton_Creation);
-            this.panel_GL.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel_GL.Location = new System.Drawing.Point(163, 69);
-            this.panel_GL.Name = "panel_GL";
-            this.panel_GL.Size = new System.Drawing.Size(566, 660);
-            this.panel_GL.TabIndex = 4;
-            this.panel_GL.SizeChanged += new System.EventHandler(this.panel_GL_SizeChanged);
-            this.panel_GL.MouseClick += new System.Windows.Forms.MouseEventHandler(this.panel_GL_MouseClick);
-            this.panel_GL.MouseDown += new System.Windows.Forms.MouseEventHandler(this.panel_GL_MouseDown);
-            this.panel_GL.MouseLeave += new System.EventHandler(this.panel_GL_MouseLeave);
-            this.panel_GL.MouseUp += new System.Windows.Forms.MouseEventHandler(this.panel_GL_MouseUp);
-            this.panel_GL.MouseWheel += new System.Windows.Forms.MouseEventHandler(this.panel_GL_MouseWheel);
             // 
             // menuStrip1
             // 
@@ -1100,6 +1100,7 @@ namespace InterfaceGraphique
             // 
             this.Information_MenuItem.CheckOnClick = true;
             this.Information_MenuItem.Name = "Information_MenuItem";
+            this.Information_MenuItem.ShortcutKeys = System.Windows.Forms.Keys.F1;
             this.Information_MenuItem.Size = new System.Drawing.Size(87, 20);
             this.Information_MenuItem.Text = "Informations";
             this.Information_MenuItem.Click += new System.EventHandler(this.Information_MenuItem_Click);
@@ -1199,6 +1200,7 @@ namespace InterfaceGraphique
             this.SizeChanged += new System.EventHandler(this.Fenetre_Redimension);
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
+            this.panel_GL.ResumeLayout(false);
             this.Creation_Panel.ResumeLayout(false);
             this.Groupe_Palettes.ResumeLayout(false);
             this.Group_Butoir.ResumeLayout(false);
@@ -1212,7 +1214,6 @@ namespace InterfaceGraphique
             this.Groupe_Proprietes.PerformLayout();
             this.toolStrip1.ResumeLayout(false);
             this.toolStrip1.PerformLayout();
-            this.panel_GL.ResumeLayout(false);
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
             this.menuStrip3.ResumeLayout(false);

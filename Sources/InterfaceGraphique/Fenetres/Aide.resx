@@ -143,6 +143,7 @@ C = Duplication
 R = Rotation 
 D = Translation 
 E = Mise a echelle
+T = Mode Test
 Z = Zoom vue
 +/- = Zoom avant/arriere
 Fleches = Deplacement vue

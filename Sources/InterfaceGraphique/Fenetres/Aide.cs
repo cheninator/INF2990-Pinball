@@ -58,30 +58,55 @@ namespace InterfaceGraphique
                         }
                     case 1:
                         {
+                            labelDescOutil.Text = "Description: Description de l'outil Selection Multiple TODO";
+                            pictureBoxOutils.Image = Properties.Resources.SelectionSimple;
+                            break;
+                        }
+                    case 2:
+                        {
                             Console.WriteLine("DEPLACEMENT");
                             labelDescOutil.Text = "Description: Description de l'outil Deplacement TODO";
                             pictureBoxOutils.Image = Properties.Resources.Deplacement;
 
                             break;
                         }
-                    case 2:
+                    case 3:
                         {
                             Console.WriteLine("ROTATION");
                             labelDescOutil.Text = "Description: Description de l'outil Rotation TODO";
                             pictureBoxOutils.Image = Properties.Resources.RotationSimple;
                             break;
                         }
-                    case 3:
+                    case 4:
                         {
                             Console.WriteLine("DUPLICATION");
                             labelDescOutil.Text = "Description: Description de l'outil Duplication TODO";
                             pictureBoxOutils.Image = Properties.Resources.Duplication;
                             break;
                         }
-                    case 4:
+                    case 5:
                         {
                             Console.WriteLine("MISE A ECHELLE");
                             labelDescOutil.Text = "Description: Description de l'outil Mise a Echelle TODO";
+                            pictureBoxOutils.Image = Properties.Resources.Scale;
+                            break;
+                        }
+
+                    case 6:
+                        {
+                            labelDescOutil.Text = "Description: Description de l'outil Suppression TODO";
+                            pictureBoxOutils.Image = Properties.Resources.Scale;
+                            break;
+                        }
+                    case 7:
+                        {
+                            labelDescOutil.Text = "Description: Description de l'outil Creation TODO";
+                            pictureBoxOutils.Image = Properties.Resources.Scale;
+                            break;
+                        }
+                    case 8:
+                        {
+                            labelDescOutil.Text = "Description: Description de l'outil Zoom TODO";
                             pictureBoxOutils.Image = Properties.Resources.Scale;
                             break;
                         }
