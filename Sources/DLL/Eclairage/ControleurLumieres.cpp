@@ -65,16 +65,17 @@ void ControleurLumieres::initialiserLumieres()
 	lumDirectionnelle_->setSpecularColor({ 1.0f, 1.0f, 1.0f, 1.0f });
 
 	lumDirectionnelle_->setDirection({ 0.0f, 0.0f, -1.0f, 1.0f });
-	lumDirectionnelle_->setPosition({ 0.0f, 0.0f, 0.0f, 0.0f });
+	lumDirectionnelle_->setPosition({ 0.0f, 0.0f, 100.0f, 0.0f });
 
 	// Inisialiser lumSpot
 
-	lumSpot_->setAmbientColor({ 0.0f, 0.0f, 1.0f, 1.0f });
-	lumSpot_->setDiffuseColor({ 0.0f, 1.0f, 0.0f, 1.0f });
-	lumSpot_->setSpecularColor({ 1.0f, 0.0f, 0.0f, 1.0f });
+	lumSpot_->setAmbientColor({ 0.1f, 0.1f, 0.1f, 1.0f }); // BLEU
+	lumSpot_->setDiffuseColor({ 0.4f, 0.4f, 0.4f, 1.0f }); // VERT
+	lumSpot_->setSpecularColor({ 0.7f, 0.7f, 0.7f, 1.0f });// ROUGE
 	   
+	lumSpot_->setPosition({ 50.0f, -47.0f, 100.0f, 1.0 });
 	lumSpot_->setDirection({ 0.0f, 0.0f, -1.0f, 1.0f });
-	lumSpot_->setPosition({ 50.0f, -47.0f, 30.0f, 1.0 });
+	lumSpot_->setCutoffAngle(30.0f);
 
 }
 

@@ -329,10 +329,10 @@ void FacadeModele::afficherBase() const
 	glLightfv(GL_LIGHT0, GL_POSITION, glm::value_ptr(position));
 
 	// Afficher la scene.
-	// progNuanceur_->activer();
-	// controleurLumieres_->definirLumieres();
+	progNuanceur_->activer();
+	controleurLumieres_->definirLumieres();
 	arbre_->afficher();
-	// progNuanceur_->desactiver();
+	progNuanceur_->desactiver();
 
 	// On affiche le texte ici
 
