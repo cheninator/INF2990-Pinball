@@ -595,13 +595,24 @@ namespace InterfaceGraphique
         ////////////////////////////////////////////////////////////////////////
         private void Editeur_FormClosing(object sender, FormClosingEventArgs e)
         {
-            lock (Program.unLock)
+            if (MessageBox.Show("Voulez vous quitter? Tout changement non-sauvegardé sera oublié.", "Fermeture d'application", MessageBoxButtons.YesNo) == DialogResult.Yes)
             {
-                Program.peutAfficher = false;
-                FonctionsNatives.libererOpenGL();
+                lock (Program.unLock)
+                {
+                    Program.peutAfficher = false;
+                    FonctionsNatives.libererOpenGL();
+                }
+                playSound("", true);    // Stop le son
+                Program.myCustomConsole.Hide();
             }
-            playSound("", true);    // Stop le son
-            Program.myCustomConsole.Hide();
+            else
+            {
+                e.Cancel = true;
+                this.Activate();
+            } 
+            
+            
+         
         }
 
         ////////////////////////////////////////////////////////////////////////
