@@ -52,6 +52,30 @@ ControleurLumieres::~ControleurLumieres()
 void ControleurLumieres::initialiserLumieres()
 {
 	// Gros de la job: setter toutes les propriétés des 3 lumieres.
+
+
+	// Initialiser lumAmbiante
+	lumAmbiante_->setAmbientColor({ 0.1f, 0.1f, 0.1f, 1.0f });
+	lumAmbiante_->setDiffuseColor({ 0.1f, 0.1f, 0.1f, 1.0f });
+	lumAmbiante_->setSpecularColor({ 0.1f, 0.1f, 0.1f, 1.0f });
+
+	// Initialiser lumDirectionnelle
+	lumDirectionnelle_->setAmbientColor({ 0.1f, 0.1f, 0.1f, 1.0f });
+	lumDirectionnelle_->setDiffuseColor({ 0.7f, 0.7f, 0.7f, 1.0f });
+	lumDirectionnelle_->setSpecularColor({ 1.0f, 1.0f, 1.0f, 1.0f });
+
+	lumDirectionnelle_->setDirection({ 0.0f, 0.0f, -1.0f, 1.0f });
+	lumDirectionnelle_->setPosition({ 0.0f, 0.0f, 0.0f, 0.0f });
+
+	// Inisialiser lumSpot
+
+	lumSpot_->setAmbientColor({ 0.0f, 0.0f, 1.0f, 1.0f });
+	lumSpot_->setDiffuseColor({ 0.0f, 1.0f, 0.0f, 1.0f });
+	lumSpot_->setSpecularColor({ 1.0f, 0.0f, 0.0f, 1.0f });
+	   
+	lumSpot_->setDirection({ 0.0f, 0.0f, -1.0f, 1.0f });
+	lumSpot_->setPosition({ 50.0f, -47.0f, 30.0f, 1.0 });
+
 }
 
 ////////////////////////////////////////////////////////////////////////
