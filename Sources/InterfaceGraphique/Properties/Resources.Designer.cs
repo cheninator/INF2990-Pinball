@@ -192,6 +192,16 @@ namespace InterfaceGraphique.Properties {
         /// <summary>
         ///   Recherche une ressource localisée de type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap delete {
+            get {
+                object obj = ResourceManager.GetObject("delete", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Recherche une ressource localisée de type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap Deplacement {
             get {
                 object obj = ResourceManager.GetObject("Deplacement", resourceCulture);
@@ -205,6 +215,16 @@ namespace InterfaceGraphique.Properties {
         internal static System.Drawing.Bitmap Duplication {
             get {
                 object obj = ResourceManager.GetObject("Duplication", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Recherche une ressource localisée de type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap enregistrersous {
+            get {
+                object obj = ResourceManager.GetObject("enregistrersous", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -489,6 +509,16 @@ namespace InterfaceGraphique.Properties {
         /// <summary>
         ///   Recherche une ressource localisée de type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap settings {
+            get {
+                object obj = ResourceManager.GetObject("settings", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Recherche une ressource localisée de type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap spring {
             get {
                 object obj = ResourceManager.GetObject("spring", resourceCulture);
@@ -561,6 +591,26 @@ namespace InterfaceGraphique.Properties {
         internal static System.IO.UnmanagedMemoryStream winSound {
             get {
                 return ResourceManager.GetStream("winSound", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Recherche une ressource localisée de type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap zoomIN {
+            get {
+                object obj = ResourceManager.GetObject("zoomIN", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Recherche une ressource localisée de type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap ZoomOut {
+            get {
+                object obj = ResourceManager.GetObject("ZoomOut", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
             }
         }
     }
