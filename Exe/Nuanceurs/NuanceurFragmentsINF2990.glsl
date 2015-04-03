@@ -72,10 +72,10 @@ void main()
 
 	// Lumiere DIRECTIONNELLE
 	composanteAmbiante = gl_LightSource[DIRECTIONNELLE].ambient*textureColor;
-	composanteDiffuse = max(NdotL[DIRECTIONNELLE], 0.0) * gl_LightSource[DIRECTIONNELLE].diffuse*textureColor;
+	composanteDiffuse = max(-NdotL[DIRECTIONNELLE], 0.0) * gl_LightSource[DIRECTIONNELLE].diffuse*textureColor;
 	composanteSpeculaire = pow(max(NdotR[DIRECTIONNELLE], 0.0),100.0) * gl_LightSource[DIRECTIONNELLE].specular;
-	//lumiereReflechie[DIRECTIONNELLE] += clamp(composanteAmbiante, 0.0,1.0);
-	//lumiereReflechie[DIRECTIONNELLE] += clamp(composanteDiffuse, 0.0,1.0);
+	lumiereReflechie[DIRECTIONNELLE] += clamp(composanteAmbiante, 0.0,1.0);
+	lumiereReflechie[DIRECTIONNELLE] += clamp(composanteDiffuse, 0.0,1.0);
 	lumiereReflechie[DIRECTIONNELLE] +=composanteSpeculaire, 0.0,1.0;
 
 	// Lumiere SPOT
@@ -92,7 +92,7 @@ void main()
 
 	composanteAmbiante = gl_LightSource[SPOT].ambient*textureColor; // ROUGE
 	composanteDiffuse = max(NdotL[SPOT],0.0) * gl_LightSource[SPOT].diffuse*textureColor; 
-	composanteSpeculaire = pow(max(NdotHV[SPOT], 0.0),6.0) * gl_LightSource[SPOT].specular;
+	composanteSpeculaire = pow(max(NdotHV[SPOT], 0.0),10.0) * gl_LightSource[SPOT].specular;
 	lumiereReflechie[SPOT] += effetSpot*clamp(composanteAmbiante, 0.0, 1.0) ;
 	lumiereReflechie[SPOT] += effetSpot*clamp(composanteDiffuse, 0.0, 1.0);
 	lumiereReflechie[SPOT] += effetSpot*clamp(composanteSpeculaire, 0.0, 1.0);
@@ -103,7 +103,7 @@ void main()
 
 	vec4 couleurFinale = vec4(0);
 	// couleurFinale += lumiereReflechie[AMBIANTE];
-	// couleurFinale += lumiereReflechie[DIRECTIONNELLE];
+	couleurFinale += lumiereReflechie[DIRECTIONNELLE];
 	couleurFinale += lumiereReflechie[SPOT];
 	gl_FragColor = couleurFinale ;
 	// gl_FragColor = gl_LightSource[1].ambient * texture2D( laTexture, gl_TexCoord[0].st ); // vec4(0.7,0.7,0.7,1.0);

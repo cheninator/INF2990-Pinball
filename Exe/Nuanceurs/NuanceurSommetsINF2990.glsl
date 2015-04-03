@@ -28,7 +28,7 @@ void main()
 	for(int i = AMBIANTE; i < NB_LUMIERES; i++)
 	{
 		rayonReflechi[i] = -reflect( lightDir[i], normal);
-		halfVect[i] = normalize(-normalize(lightDir[i]) + eyeVec);
+		halfVect[i] = normalize(normalize(lightDir[i]) + eyeVec);
 	}
 
 	gl_TexCoord[0] = gl_MultiTexCoord0;

@@ -61,22 +61,23 @@ void ControleurLumieres::initialiserLumieres()
 	lumAmbiante_->setSpecularColor({ 0.1f, 0.1f, 0.1f, 1.0f });
 
 	// Initialiser lumDirectionnelle
-	lumDirectionnelle_->setAmbientColor({ 0.1f, 0.1f, 0.1f, 1.0f });
-	lumDirectionnelle_->setDiffuseColor({ 1.0f, 0.4f, 0.4f, 1.0f });
-	lumDirectionnelle_->setSpecularColor({ 1.0f, 1.0f, 1.0f, 1.0f });
+	lumDirectionnelle_->setAmbientColor({ 0.0f, 0.0f, 0.0f, 1.0f });
+	lumDirectionnelle_->setDiffuseColor({ 0.0f, 0.0f, 0.0f, 1.0f });
+	lumDirectionnelle_->setSpecularColor({ 0.0f, 0.0f, 0.0f, 1.0f });
 
 	lumDirectionnelle_->setPosition({ 200.0f, -47.0f, 110.0f, 1.0f });
 	lumDirectionnelle_->setDirection({ 0.0f, 0.0f, -1.0f, 1.0f });
 
 	// Inisialiser lumSpot
 
-	lumSpot_->setAmbientColor({ 0.1f, 0.1f, 0.1f, 1.0f }); // BLEU
-	lumSpot_->setDiffuseColor({ 0.4f, 0.4f, 0.4f, 1.0f }); // VERT
-	lumSpot_->setSpecularColor({ 0.7f, 0.7f, 0.7f, 1.0f });// ROUGE
+	lumSpot_->setAmbientColor({ 0.0f, 0.0f, 0.0f, 1.0f }); 
+	lumSpot_->setDiffuseColor({ 0.4f, 0.4f, 0.3f, 1.0f }); 
+	lumSpot_->setSpecularColor({ 1.0f, 1.0f, 1.0f, 1.0f });
 	   
-	lumSpot_->setPosition({ 200.0f, -47.0f, 110.0f, 1.0f });
+	lumSpot_->setPosition({ 200.0f, -47.0f, 400.0f, 1.0f });
 	lumSpot_->setDirection({ 0.0f, 0.0f, -1.0f, 1.0f });
-	lumSpot_->setCutoffAngle(30.0f);
+	lumSpot_->setCutoffAngle(10.0f);
+	lumSpot_->setExponent(0.2f);
 
 	lumSpot_->setAttenuation({ 1.0f, 1.0f, 0.1f });
 
@@ -176,22 +177,21 @@ void ControleurLumieres::desactiverSpot()
 void ControleurLumieres::touche1()
 {
 	std::cout << "ControleurLumieres::touche1()" << std::endl;
-	lumDirectionnelle_->setPosition(lumDirectionnelle_->getPosition() + glm::fvec4{ +10.0f, 0.0f, 0.0f, 0.0f });
+	// lumDirectionnelle_->setPosition(lumDirectionnelle_->getPosition() + glm::fvec4{ +10.0f, 0.0f, 0.0f, 0.0f });
 
-	// lumDirectionnelle_->setCutoffAngle(lumDirectionnelle_->getCutoffAngle() - 1);
+	lumSpot_->setCutoffAngle(lumSpot_->getCutoffAngle() - 1);
 }
 
 void ControleurLumieres::touche2()
 {
 	std::cout << "ControleurLumieres::touche2()" << std::endl;
-	lumDirectionnelle_->setPosition(lumDirectionnelle_->getPosition() + glm::fvec4{ 0.0f, 0.0f, -10.0f, 0.0f });
+	lumSpot_->setCutoffAngle(lumSpot_->getCutoffAngle() + 1);
 }
 
 void ControleurLumieres::touche3()
 {
 	std::cout << "ControleurLumieres::touche3()" << std::endl;
+	lumSpot_->setExponent(lumSpot_->getExponent() + 0.1);
 	lumDirectionnelle_->setPosition(lumDirectionnelle_->getPosition() + glm::fvec4{ 0.0f, 0.0f, 10.0f, 0.0f });
-	std::cout << "Position du SPOT ( " << lumDirectionnelle_->getPosition().x << " , "
-		<< lumDirectionnelle_->getPosition().y << " , "
-		<< lumDirectionnelle_->getPosition().z << " ) " << std::endl;
+	
 }
