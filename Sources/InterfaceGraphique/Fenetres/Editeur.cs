@@ -3120,5 +3120,10 @@ namespace InterfaceGraphique
             aide.StartPosition = FormStartPosition.CenterScreen;
             aide.ShowDialog();
         }
+
+        private void button_delete_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }

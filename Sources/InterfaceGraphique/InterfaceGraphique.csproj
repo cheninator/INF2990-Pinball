@@ -309,6 +309,10 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="%24this.Icon.ico" />
+    <None Include="Resources\ZoomOut.png" />
+    <None Include="Resources\zoomIN.png" />
+    <None Include="Resources\settings.png" />
+    <None Include="Resources\Tester.png" />
     <None Include="Resources\Scale.gif" />
     <None Include="Resources\SelectionSimple.gif" />
     <None Include="Resources\save.bmp" />
@@ -316,6 +320,11 @@
     <None Include="Resources\Deplacement.gif" />
     <None Include="Resources\Duplication.gif" />
     <None Include="Resources\RotationSimple.gif" />
+    <None Include="Resources\new-file-512.png" />
+    <None Include="Resources\NouveauFichier.png" />
+    <None Include="Resources\Return home.png" />
+    <None Include="Resources\delete.png" />
+    <None Include="Resources\enregistrersous.png" />
     <Content Include="Resources\save.png" />
     <None Include="Resources\cible.jpeg" />
     <None Include="Resources\winSound.wav" />
