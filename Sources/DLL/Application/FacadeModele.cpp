@@ -284,6 +284,7 @@ void FacadeModele::afficher() const
 	glLoadIdentity();
 
 	vue_->appliquerCamera();
+	controleurLumieres_->definirLumieres();
 
 	// Afficher la scene
 	afficherBase();
@@ -330,7 +331,6 @@ void FacadeModele::afficherBase() const
 
 	// Afficher la scene.
 	progNuanceur_->activer();
-	controleurLumieres_->definirLumieres();
 	arbre_->afficher();
 	progNuanceur_->desactiver();
 
@@ -2151,5 +2151,25 @@ void FacadeModele::utiliserCameraOrbite(bool utiliseOrbite)
 //		vue_->obtenirProjection().conserverRapportAspect();
 		appliquerZoomInitial();
 		vueEstOrbite_ = utiliseOrbite;
+	}
+}
+
+
+void FacadeModele::setLight(int lum, bool state)
+{
+	switch (lum)
+	{
+	case 0:
+		controleurLumieres_->touche1();
+		//(state ? controleurLumieres_->activerAmbiante() : controleurLumieres_->desactiverAmbiante());
+		break;
+	case 1:
+		controleurLumieres_->touche2();
+		//(state ? controleurLumieres_->activerDirectionnelle() : controleurLumieres_->desactiverDirectionnelle());
+		break;
+	case 2:
+		controleurLumieres_->touche3();
+		//(state ? controleurLumieres_->activerAmbiante() : controleurLumieres_->desactiverSpot());
+		break;
 	}
 }

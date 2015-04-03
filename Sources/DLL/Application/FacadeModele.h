@@ -236,6 +236,8 @@ public:
 
 	std::string obtenirCout();
 
+	void setLight(int lum, bool state);
+
 private:
 
 	/// Constructeur par defaut.
