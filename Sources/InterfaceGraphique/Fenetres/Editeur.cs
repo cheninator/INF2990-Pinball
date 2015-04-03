@@ -535,13 +535,17 @@ namespace InterfaceGraphique
                 {
                     Selection_MenuItem_Click(this, e);
                 }
+                else if (e.KeyChar == '1')
+                {
+                    Orthographique_MenuItem.PerformClick();
+                }
+                else if (e.KeyChar == '2')
+                {
+                    Orbite_MenuItem.PerformClick();
+                }
                 else if (e.KeyChar == 'p')
                 {
                     bouton_Creation_Click(this, e);
-                }
-                else if (e.KeyChar == 'm')
-                {
-                    Mute_MenuItem_Click(this, e);
                 }
                 else if (e.KeyChar == 'h')
                 {
@@ -1557,7 +1561,6 @@ namespace InterfaceGraphique
         ////////////////////////////////////////////////////////////////////////
         private void Orthographique_MenuItem_Click(object sender, EventArgs e)
         {
-            //Console.WriteLine("Vue Orthoraphique.");
             FonctionsNatives.utiliserCameraOrbite(false);
         }
         ////////////////////////////////////////////////////////////////////////
@@ -1574,7 +1577,6 @@ namespace InterfaceGraphique
         ////////////////////////////////////////////////////////////////////////
         private void Orbite_MenuItem_Click(object sender, EventArgs e)
         {
-            //Console.WriteLine("Vue Orbitale.");
             FonctionsNatives.utiliserCameraOrbite(true);
         }
 
@@ -2939,23 +2941,6 @@ namespace InterfaceGraphique
             }
         }
 
-        //////////////////////////////////////////////////////////////////////////////////////////
-        ///
-        /// @fn private void Mute_MenuItem_Click(object sender, EventArgs e)
-        /// @brief Fonction qui ferme ou ouvre le son
-        /// @param[in] sender : Objet duquel provient un evenement.
-        /// @param[in] e : evenement qui lance la fonction.
-        /// @return Aucune.
-        ///
-        //////////////////////////////////////////////////////////////////////////////////////////
-        private void Mute_MenuItem_Click(object sender, EventArgs e)
-        {
-            soundActif = !soundActif;
-            if (soundActif)
-                playSound("");
-            else
-                playSound("", true);
-        }
 
         //////////////////////////////////////////////////////////////////////////////////////////
         ///

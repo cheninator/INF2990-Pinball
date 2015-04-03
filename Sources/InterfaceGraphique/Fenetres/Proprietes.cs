@@ -72,7 +72,7 @@ namespace InterfaceGraphique
                 if( (n <= 0) || (n > 10000))
                 {
                     isValid = false;
-                    errorMessage += "\nLa valeur des points pour un butoir circulaire est hors de la limite( 0 a 1000) ";
+                    errorMessage += "\nLa valeur des points pour un butoir circulaire est hors de la limite( 0 a 10000) ";
                 }
                     
             }
@@ -86,7 +86,7 @@ namespace InterfaceGraphique
                 if ((n <= 0) || (n > 10000))
                 {
                     isValid = false;
-                    errorMessage += "\nLa valeur des points pour un butoir triangulaire est hors la limite( 0 a 1000) ";
+                    errorMessage += "\nLa valeur des points pour un butoir triangulaire est hors la limite( 0 a 10000) ";
                 }
 
             }
@@ -100,7 +100,7 @@ namespace InterfaceGraphique
                 if ((n <= 0) || (n > 10000))
                 {
                     isValid = false;
-                    errorMessage += "\nLa valeur des points pour une cible est hors la limite( 0 a 1000) ";
+                    errorMessage += "\nLa valeur des points pour une cible est hors la limite( 0 a 10000) ";
                 }
 
             }
@@ -114,7 +114,7 @@ namespace InterfaceGraphique
                 if ((n <= 0) || (n > 10000))
                 {
                     isValid = false;
-                    errorMessage += "\nLa valeur des points pour une victoire est hors la limite( 0 a 1000) ";
+                    errorMessage += "\nLa valeur des points pour une victoire est hors la limite( 0 a 10000) ";
                 }
 
             }
@@ -128,7 +128,7 @@ namespace InterfaceGraphique
                 if ((n <= 0) || (n > 10000))
                 {
                     isValid = false;
-                    errorMessage += "\nLa valeur des points pour une balle gratuite est hors la limite( 0 a 1000) ";
+                    errorMessage += "\nLa valeur des points pour une balle gratuite est hors la limite( 0 a 10000) ";
                 }
 
             }

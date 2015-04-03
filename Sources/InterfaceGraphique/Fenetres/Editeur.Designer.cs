@@ -64,6 +64,7 @@ namespace InterfaceGraphique
             this.Ressort_bouton = new System.Windows.Forms.Button();
             this.flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
             this.Groupe_Outils = new System.Windows.Forms.GroupBox();
+            this.bouton_Suppression = new System.Windows.Forms.Button();
             this.bouton_Duplication = new System.Windows.Forms.Button();
             this.bouton_Scaling = new System.Windows.Forms.Button();
             this.bouton_Rotation = new System.Windows.Forms.Button();
@@ -130,7 +131,6 @@ namespace InterfaceGraphique
             this.Orthographique_MenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.Orbite_MenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.Information_MenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.Mute_MenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip3 = new System.Windows.Forms.MenuStrip();
             this.fichierToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.testRetourMenuPrincipal = new System.Windows.Forms.ToolStripMenuItem();
@@ -140,7 +140,6 @@ namespace InterfaceGraphique
             this.orbiteToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.printPreviewDialog1 = new System.Windows.Forms.PrintPreviewDialog();
             this.toolTipPaneauCreation = new System.Windows.Forms.ToolTip(this.components);
-            this.bouton_Suppression = new System.Windows.Forms.Button();
             Enregistrer = new System.Windows.Forms.ToolStripButton();
             this.panel1.SuspendLayout();
             this.panel_GL.SuspendLayout();
@@ -511,6 +510,16 @@ namespace InterfaceGraphique
             this.Groupe_Outils.TabStop = false;
             this.Groupe_Outils.Text = "Outils";
             // 
+            // bouton_Suppression
+            // 
+            this.bouton_Suppression.Location = new System.Drawing.Point(13, 177);
+            this.bouton_Suppression.Name = "bouton_Suppression";
+            this.bouton_Suppression.Size = new System.Drawing.Size(130, 24);
+            this.bouton_Suppression.TabIndex = 5;
+            this.bouton_Suppression.Text = "Supprimer";
+            this.bouton_Suppression.UseVisualStyleBackColor = true;
+            this.bouton_Suppression.Click += new System.EventHandler(this.bouton_Suppression_Click);
+            // 
             // bouton_Duplication
             // 
             this.bouton_Duplication.Enabled = false;
@@ -867,8 +876,7 @@ namespace InterfaceGraphique
             this.fichierToolStripMenuItem,
             this.Outils_MenuItem,
             this.Vues_MenuItem,
-            this.Information_MenuItem,
-            this.Mute_MenuItem});
+            this.Information_MenuItem});
             this.menuStrip1.LayoutStyle = System.Windows.Forms.ToolStripLayoutStyle.HorizontalStackWithOverflow;
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
@@ -1166,14 +1174,6 @@ namespace InterfaceGraphique
             this.Information_MenuItem.Text = "Informations";
             this.Information_MenuItem.Click += new System.EventHandler(this.Information_MenuItem_Click);
             // 
-            // Mute_MenuItem
-            // 
-            this.Mute_MenuItem.Name = "Mute_MenuItem";
-            this.Mute_MenuItem.Size = new System.Drawing.Size(47, 20);
-            this.Mute_MenuItem.Text = "Mute";
-            this.Mute_MenuItem.Visible = false;
-            this.Mute_MenuItem.Click += new System.EventHandler(this.Mute_MenuItem_Click);
-            // 
             // menuStrip3
             // 
             this.menuStrip3.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
@@ -1243,16 +1243,6 @@ namespace InterfaceGraphique
             this.printPreviewDialog1.Icon = ((System.Drawing.Icon)(resources.GetObject("printPreviewDialog1.Icon")));
             this.printPreviewDialog1.Name = "printPreviewDialog1";
             this.printPreviewDialog1.Visible = false;
-            // 
-            // bouton_Suppression
-            // 
-            this.bouton_Suppression.Location = new System.Drawing.Point(13, 177);
-            this.bouton_Suppression.Name = "bouton_Suppression";
-            this.bouton_Suppression.Size = new System.Drawing.Size(130, 24);
-            this.bouton_Suppression.TabIndex = 5;
-            this.bouton_Suppression.Text = "Supprimer";
-            this.bouton_Suppression.UseVisualStyleBackColor = true;
-            this.bouton_Suppression.Click += new System.EventHandler(this.bouton_Suppression_Click);
             // 
             // Editeur
             // 
@@ -1368,7 +1358,6 @@ namespace InterfaceGraphique
         private System.Windows.Forms.Button Trou_bouton;
         private System.Windows.Forms.Button Generateur_bouton;
         private System.Windows.Forms.Button Ressort_bouton;
-        private System.Windows.Forms.ToolStripMenuItem Mute_MenuItem;
         private System.Windows.Forms.GroupBox OutilGraphique;
         private System.Windows.Forms.Label labelOCourant;
         private System.Windows.Forms.RichTextBox richTextBox1;
