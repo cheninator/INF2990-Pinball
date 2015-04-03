@@ -3111,7 +3111,7 @@ namespace InterfaceGraphique
 
         private void toolStripButton1_Click(object sender, EventArgs e)
         {
-
+            Enregistrer_MenuItem.PerformClick();
         }
 
         private void Information_MenuItem_Click(object sender, EventArgs e)
@@ -3124,6 +3124,46 @@ namespace InterfaceGraphique
         private void button_delete_Click(object sender, EventArgs e)
         {
 
+        }
+
+        private void toolStripButton2_Click(object sender, EventArgs e)
+        {
+            MenuP_MenuItem.PerformClick();
+        }
+
+        private void Nouveau_Click(object sender, EventArgs e)
+        {
+            Nouveau_MenuItem.PerformClick();
+        }
+
+        private void Ouvrir_Click(object sender, EventArgs e)
+        {
+            Ouvrir_MenuItem.PerformClick();
+        }
+
+        private void toolStripButton4_Click(object sender, EventArgs e)
+        {
+            EnregistrerS_MenuItem.PerformClick();
+        }
+
+        private void toolStripButton3_Click(object sender, EventArgs e)
+        {
+            Proprietes_MenuItem.PerformClick();
+        }
+
+        private void toolStripButton1_Click_1(object sender, EventArgs e)
+        {
+            ModeTest_MenuItem.PerformClick();
+        }
+
+        private void toolStripButton5_Click(object sender, EventArgs e)
+        {
+            FonctionsNatives.zoomIn();
+        }
+
+        private void toolStripButton6_Click(object sender, EventArgs e)
+        {
+            FonctionsNatives.zoomOut();
         }
     }
 }
