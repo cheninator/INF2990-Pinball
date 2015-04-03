@@ -8,9 +8,9 @@ uniform sampler2D laTexture;
 
 varying vec3 normal, eyeVec;
 
-varying vec3 rayonReflechi[3];
-varying vec3 halfVect[3];
-varying vec3 lightDir[3];
+varying vec3 rayonReflechi[NB_LUMIERES];
+varying vec3 halfVect[NB_LUMIERES];
+varying vec3 lightDir[NB_LUMIERES];
 
 
 void main()
@@ -39,9 +39,9 @@ void main()
 	HV[DIRECTIONNELLE] = normalize(halfVect[DIRECTIONNELLE]);
 
 	// Lumiere Spot
-	L[SPOT] = normalize(lightDir[DIRECTIONNELLE]);
-	R[SPOT] = normalize(rayonReflechi[DIRECTIONNELLE]);
-	HV[SPOT] = normalize(halfVect[DIRECTIONNELLE]);
+	L[SPOT] = normalize(lightDir[SPOT]);
+	R[SPOT] = normalize(rayonReflechi[SPOT]);
+	HV[SPOT] = normalize(halfVect[SPOT]);
 
 	for(int i = AMBIANTE ; i < NB_LUMIERES; i++)
 	{

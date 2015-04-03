@@ -22,13 +22,13 @@ void main()
 	normal = normalize(gl_NormalMatrix * gl_Normal);
 	eyeVec = normalize(-ecPosition);
 
-	lightDir[DIRECTIONNELLE] = normalize(gl_LightSource[DIRECTIONNELLE].spotDirection.xyz);
-	lightDir[SPOT] = normalize(gl_LightSource[SPOT].position.xyz - ecPosition);
+	lightDir[DIRECTIONNELLE] = gl_LightSource[DIRECTIONNELLE].spotDirection.xyz;
+	lightDir[SPOT] = vec3(gl_LightSource[SPOT].position.xyz - ecPosition);
 
 	for(int i = AMBIANTE; i < NB_LUMIERES; i++)
 	{
 		rayonReflechi[i] = -reflect( lightDir[i], normal);
-		halfVect[i] = normalize(lightDir[i] + eyeVec);
+		halfVect[i] = normalize(normalize(lightDir[i]) + eyeVec);
 	}
 
 	gl_TexCoord[0] = gl_MultiTexCoord0;
