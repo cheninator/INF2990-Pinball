@@ -37,7 +37,7 @@ public:
 	// TODO ajouter get, set,
 	inline void setAmbientColor(glm::fvec4 ambientColor);
 	inline void setDiffuseColor(glm::fvec4 diffuseColor);
-	inline void setSpecurlarColor(glm::fvec4 specularColor);
+	inline void setSpecularColor(glm::fvec4 specularColor);
 	inline void setPosition(glm::fvec4 position);
 	inline void setDirection(glm::fvec4 direction);
 
@@ -84,7 +84,7 @@ private:
 ////////////////////////////////////////////////////////////////////////
 inline void Lumiere::setAmbientColor(glm::fvec4 ambientColor)    { ambient_ = ambientColor; }
 inline void Lumiere::setDiffuseColor(glm::fvec4 diffuseColor)    { diffuse_ = diffuseColor; }
-inline void Lumiere::setSpecurlarColor(glm::fvec4 specularColor) { specular_ = specularColor; }
+inline void Lumiere::setSpecularColor(glm::fvec4 specularColor)	 { specular_ = specularColor; }
 inline void Lumiere::setPosition(glm::fvec4 position)            { position_ = position; }
 inline void Lumiere::setDirection(glm::fvec4 direction)          { direction_ = direction; }
 inline void Lumiere::setExponent( float exponent )               { spotExponent_ = exponent; }
