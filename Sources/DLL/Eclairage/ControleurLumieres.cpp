@@ -62,11 +62,11 @@ void ControleurLumieres::initialiserLumieres()
 
 	// Initialiser lumDirectionnelle
 	lumDirectionnelle_->setAmbientColor({ 0.1f, 0.1f, 0.1f, 1.0f });
-	lumDirectionnelle_->setDiffuseColor({ 0.7f, 0.7f, 0.7f, 1.0f });
+	lumDirectionnelle_->setDiffuseColor({ 1.0f, 0.4f, 0.4f, 1.0f });
 	lumDirectionnelle_->setSpecularColor({ 1.0f, 1.0f, 1.0f, 1.0f });
 
+	lumDirectionnelle_->setPosition({ 200.0f, -47.0f, 110.0f, 1.0f });
 	lumDirectionnelle_->setDirection({ 0.0f, 0.0f, -1.0f, 1.0f });
-	lumDirectionnelle_->setPosition({ 0.0f, 0.0f, 100.0f, 0.0f });
 
 	// Inisialiser lumSpot
 
@@ -74,7 +74,7 @@ void ControleurLumieres::initialiserLumieres()
 	lumSpot_->setDiffuseColor({ 0.4f, 0.4f, 0.4f, 1.0f }); // VERT
 	lumSpot_->setSpecularColor({ 0.7f, 0.7f, 0.7f, 1.0f });// ROUGE
 	   
-	lumSpot_->setPosition({ 50.0f, -47.0f, 200.0f, 1.0f });
+	lumSpot_->setPosition({ 200.0f, -47.0f, 110.0f, 1.0f });
 	lumSpot_->setDirection({ 0.0f, 0.0f, -1.0f, 1.0f });
 	lumSpot_->setCutoffAngle(30.0f);
 
@@ -176,17 +176,22 @@ void ControleurLumieres::desactiverSpot()
 void ControleurLumieres::touche1()
 {
 	std::cout << "ControleurLumieres::touche1()" << std::endl;
-	lumSpot_->setPosition(lumSpot_->getPosition() + glm::fvec4{ 10.0f, 0.0f, 0.0f, 0.0f });
+	lumDirectionnelle_->setPosition(lumDirectionnelle_->getPosition() + glm::fvec4{ +10.0f, 0.0f, 0.0f, 0.0f });
+
+	// lumDirectionnelle_->setCutoffAngle(lumDirectionnelle_->getCutoffAngle() - 1);
 }
 
 void ControleurLumieres::touche2()
 {
 	std::cout << "ControleurLumieres::touche2()" << std::endl;
-	lumSpot_->setPosition(lumSpot_->getPosition() + glm::fvec4{ 10.0f, 0.0f,-10.0f, 0.0f });
+	lumDirectionnelle_->setPosition(lumDirectionnelle_->getPosition() + glm::fvec4{ 0.0f, 0.0f, -10.0f, 0.0f });
 }
 
 void ControleurLumieres::touche3()
 {
 	std::cout << "ControleurLumieres::touche3()" << std::endl;
-	lumSpot_->setPosition(lumSpot_->getPosition() + glm::fvec4{ 0.0f, 0.0f, 10.0f, 0.0f });
+	lumDirectionnelle_->setPosition(lumDirectionnelle_->getPosition() + glm::fvec4{ 0.0f, 0.0f, 10.0f, 0.0f });
+	std::cout << "Position du SPOT ( " << lumDirectionnelle_->getPosition().x << " , "
+		<< lumDirectionnelle_->getPosition().y << " , "
+		<< lumDirectionnelle_->getPosition().z << " ) " << std::endl;
 }

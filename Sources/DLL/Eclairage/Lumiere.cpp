@@ -64,6 +64,21 @@ void Lumiere::definir()
 	glLightf(handle_, GL_CONSTANT_ATTENUATION, attenuation_[0]);
 	glLightf(handle_, GL_LINEAR_ATTENUATION, attenuation_[1]);
 	glLightf(handle_, GL_QUADRATIC_ATTENUATION, attenuation_[2]);
+	
+#if(1)
+	glDisable(GL_LIGHTING);
+	glDisable(GL_TEXTURE_2D);
+	glEnable(GL_POINT_SMOOTH);
+	glPointSize(50.0f);
+	glColor4f(1.0f, 1.0f, 0.7f, 1.0f);
+	glBegin(GL_POINTS);
+		glVertex3f(position_.x, position_.y, position_.z);
+	glEnd();
+	glColor4f(0.0f, 0.0f, 0.0f, 1.0f);
+	glEnable(GL_LIGHTING);
+	glEnable(GL_TEXTURE_2D);
+#endif
+
 }
 
 ////////////////////////////////////////////////////////////////////////
