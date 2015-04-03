@@ -9,6 +9,7 @@
 
 
 #include "ControleurLumieres.h"
+#include <iostream>
 
 
 ////////////////////////////////////////////////////////////////////////
@@ -73,9 +74,11 @@ void ControleurLumieres::initialiserLumieres()
 	lumSpot_->setDiffuseColor({ 0.4f, 0.4f, 0.4f, 1.0f }); // VERT
 	lumSpot_->setSpecularColor({ 0.7f, 0.7f, 0.7f, 1.0f });// ROUGE
 	   
-	lumSpot_->setPosition({ 50.0f, -47.0f, 100.0f, 1.0 });
+	lumSpot_->setPosition({ 50.0f, -47.0f, 200.0f, 1.0f });
 	lumSpot_->setDirection({ 0.0f, 0.0f, -1.0f, 1.0f });
 	lumSpot_->setCutoffAngle(30.0f);
+
+	lumSpot_->setAttenuation({ 1.0f, 1.0f, 0.1f });
 
 }
 
@@ -88,8 +91,13 @@ void ControleurLumieres::initialiserLumieres()
 ////////////////////////////////////////////////////////////////////////
 void ControleurLumieres::definirLumieres()
 {
+	lumAmbiante_->enable();
 	lumAmbiante_->definir();
+
+	lumDirectionnelle_->enable();
 	lumDirectionnelle_->definir();
+
+	lumSpot_->enable();
 	lumSpot_->definir();
 }
 
@@ -136,7 +144,7 @@ void ControleurLumieres::activerDirectionnelle()
 /// @return aucun.
 ///
 ////////////////////////////////////////////////////////////////////////
-void ControleurLumieres::desactiverDirectionnnelle()
+void ControleurLumieres::desactiverDirectionnelle()
 {
 	lumDirectionnelle_->enable();
 }
@@ -163,4 +171,22 @@ void ControleurLumieres::activerSpot()
 void ControleurLumieres::desactiverSpot()
 {
 	lumSpot_->enable();
+}
+
+void ControleurLumieres::touche1()
+{
+	std::cout << "ControleurLumieres::touche1()" << std::endl;
+	lumSpot_->setPosition(lumSpot_->getPosition() + glm::fvec4{ 10.0f, 0.0f, 0.0f, 0.0f });
+}
+
+void ControleurLumieres::touche2()
+{
+	std::cout << "ControleurLumieres::touche2()" << std::endl;
+	lumSpot_->setPosition(lumSpot_->getPosition() + glm::fvec4{ 10.0f, 0.0f,-10.0f, 0.0f });
+}
+
+void ControleurLumieres::touche3()
+{
+	std::cout << "ControleurLumieres::touche3()" << std::endl;
+	lumSpot_->setPosition(lumSpot_->getPosition() + glm::fvec4{ 0.0f, 0.0f, 10.0f, 0.0f });
 }

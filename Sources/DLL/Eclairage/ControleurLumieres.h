@@ -36,10 +36,14 @@ public:
 	void desactiverAmbiante();
 
 	void activerDirectionnelle();
-	void desactiverDirectionnnelle();
+	void desactiverDirectionnelle();
 
 	void activerSpot();
 	void desactiverSpot();
+
+	void touche1();
+	void touche2();
+	void touche3();
 
 private:
 
