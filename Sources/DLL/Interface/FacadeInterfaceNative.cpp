@@ -1805,10 +1805,9 @@ extern "C"
 			FacadeModele::obtenirInstance()->printCurrentTime();
 			std::cout << " - Lumiere(s) ";
 		}
-
-		FacadeModele::obtenirInstance()->setLight(lum, state);
-
+		
 		if (debugLumiere)
+		{
 			if (state == true)
 			{
 				std::cout << "ouverte(s)" << std::endl;
@@ -1817,6 +1816,10 @@ extern "C"
 			{
 				std::cout << "fermee(s)" << std::endl;
 			}
+		}
+
+		FacadeModele::obtenirInstance()->setLight(lum, state);
+
 		return true;
 	}
 
