@@ -64,10 +64,6 @@ namespace InterfaceGraphique
             this.Ressort_bouton = new System.Windows.Forms.Button();
             this.flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
             this.Groupe_Outils = new System.Windows.Forms.GroupBox();
-            this.curZoomVal = new System.Windows.Forms.TextBox();
-            this.DecreaseZoomButton = new System.Windows.Forms.Button();
-            this.IncreaseZoomButton = new System.Windows.Forms.Button();
-            this.label_Zoom = new System.Windows.Forms.Label();
             this.bouton_Duplication = new System.Windows.Forms.Button();
             this.bouton_Scaling = new System.Windows.Forms.Button();
             this.bouton_Rotation = new System.Windows.Forms.Button();
@@ -108,8 +104,6 @@ namespace InterfaceGraphique
             this.Proprietes_MenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.ModeTest_MenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.MenuP_MenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.Edition_MenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.Supprimer_MenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.Outils_MenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.Selection_MenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.Deplacement_MenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -146,6 +140,7 @@ namespace InterfaceGraphique
             this.orbiteToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.printPreviewDialog1 = new System.Windows.Forms.PrintPreviewDialog();
             this.toolTipPaneauCreation = new System.Windows.Forms.ToolTip(this.components);
+            this.bouton_Suppression = new System.Windows.Forms.Button();
             Enregistrer = new System.Windows.Forms.ToolStripButton();
             this.panel1.SuspendLayout();
             this.panel_GL.SuspendLayout();
@@ -503,10 +498,7 @@ namespace InterfaceGraphique
             // 
             // Groupe_Outils
             // 
-            this.Groupe_Outils.Controls.Add(this.curZoomVal);
-            this.Groupe_Outils.Controls.Add(this.DecreaseZoomButton);
-            this.Groupe_Outils.Controls.Add(this.IncreaseZoomButton);
-            this.Groupe_Outils.Controls.Add(this.label_Zoom);
+            this.Groupe_Outils.Controls.Add(this.bouton_Suppression);
             this.Groupe_Outils.Controls.Add(this.bouton_Duplication);
             this.Groupe_Outils.Controls.Add(this.bouton_Scaling);
             this.Groupe_Outils.Controls.Add(this.bouton_Rotation);
@@ -518,50 +510,6 @@ namespace InterfaceGraphique
             this.Groupe_Outils.TabIndex = 0;
             this.Groupe_Outils.TabStop = false;
             this.Groupe_Outils.Text = "Outils";
-            // 
-            // curZoomVal
-            // 
-            this.curZoomVal.Location = new System.Drawing.Point(46, 237);
-            this.curZoomVal.Name = "curZoomVal";
-            this.curZoomVal.ReadOnly = true;
-            this.curZoomVal.Size = new System.Drawing.Size(64, 20);
-            this.curZoomVal.TabIndex = 9;
-            this.curZoomVal.TabStop = false;
-            this.curZoomVal.Text = "000";
-            this.curZoomVal.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            // 
-            // DecreaseZoomButton
-            // 
-            this.DecreaseZoomButton.Location = new System.Drawing.Point(6, 233);
-            this.DecreaseZoomButton.Name = "DecreaseZoomButton";
-            this.DecreaseZoomButton.Size = new System.Drawing.Size(31, 23);
-            this.DecreaseZoomButton.TabIndex = 8;
-            this.DecreaseZoomButton.Text = "-";
-            this.DecreaseZoomButton.UseVisualStyleBackColor = true;
-            this.DecreaseZoomButton.Click += new System.EventHandler(this.DecreaseZoomButton_Click);
-            // 
-            // IncreaseZoomButton
-            // 
-            this.IncreaseZoomButton.Location = new System.Drawing.Point(120, 234);
-            this.IncreaseZoomButton.Name = "IncreaseZoomButton";
-            this.IncreaseZoomButton.Size = new System.Drawing.Size(31, 23);
-            this.IncreaseZoomButton.TabIndex = 7;
-            this.IncreaseZoomButton.Text = "+";
-            this.IncreaseZoomButton.UseVisualStyleBackColor = true;
-            this.IncreaseZoomButton.Click += new System.EventHandler(this.IncreaseZoomButton_Click);
-            // 
-            // label_Zoom
-            // 
-            this.label_Zoom.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label_Zoom.Location = new System.Drawing.Point(13, 209);
-            this.label_Zoom.Name = "label_Zoom";
-            this.label_Zoom.Size = new System.Drawing.Size(130, 14);
-            this.label_Zoom.TabIndex = 6;
-            this.label_Zoom.Text = "(-)        Zoom        (+)";
-            this.label_Zoom.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
-            this.label_Zoom.Click += new System.EventHandler(this.label_Zoom_Click);
-            this.label_Zoom.MouseEnter += new System.EventHandler(this.label_Zoom_MouseEnter);
-            this.label_Zoom.MouseLeave += new System.EventHandler(this.label_Zoom_MouseLeave);
             // 
             // bouton_Duplication
             // 
@@ -800,7 +748,7 @@ namespace InterfaceGraphique
             this.toolStripButton2.Name = "toolStripButton2";
             this.toolStripButton2.Size = new System.Drawing.Size(35, 30);
             this.toolStripButton2.Text = "toolStripButton2";
-            this.toolStripButton2.ToolTipText = "Retour au menu principal";
+            this.toolStripButton2.ToolTipText = "Retour au menu principal( CTRL + Q)";
             this.toolStripButton2.Click += new System.EventHandler(this.toolStripButton2_Click);
             // 
             // toolStripSeparator2
@@ -896,7 +844,7 @@ namespace InterfaceGraphique
             this.toolStripButton5.Name = "toolStripButton5";
             this.toolStripButton5.Size = new System.Drawing.Size(35, 30);
             this.toolStripButton5.Text = "toolStripButton5";
-            this.toolStripButton5.ToolTipText = "Zoom avant";
+            this.toolStripButton5.ToolTipText = "Zoom avant( + )";
             this.toolStripButton5.Click += new System.EventHandler(this.toolStripButton5_Click);
             // 
             // toolStripButton6
@@ -909,7 +857,7 @@ namespace InterfaceGraphique
             this.toolStripButton6.Name = "toolStripButton6";
             this.toolStripButton6.Size = new System.Drawing.Size(35, 30);
             this.toolStripButton6.Text = "toolStripButton6";
-            this.toolStripButton6.ToolTipText = "Zoom arrière ";
+            this.toolStripButton6.ToolTipText = "Zoom arrière ( - )";
             this.toolStripButton6.Click += new System.EventHandler(this.toolStripButton6_Click);
             // 
             // menuStrip1
@@ -917,7 +865,6 @@ namespace InterfaceGraphique
             this.menuStrip1.AutoSize = false;
             this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.fichierToolStripMenuItem,
-            this.Edition_MenuItem,
             this.Outils_MenuItem,
             this.Vues_MenuItem,
             this.Information_MenuItem,
@@ -998,24 +945,6 @@ namespace InterfaceGraphique
             this.MenuP_MenuItem.Size = new System.Drawing.Size(230, 22);
             this.MenuP_MenuItem.Text = "Menu Principal";
             this.MenuP_MenuItem.Click += new System.EventHandler(this.MenuP_MenuItem_Click);
-            // 
-            // Edition_MenuItem
-            // 
-            this.Edition_MenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.Supprimer_MenuItem});
-            this.Edition_MenuItem.Name = "Edition_MenuItem";
-            this.Edition_MenuItem.ShortcutKeyDisplayString = "Delete";
-            this.Edition_MenuItem.Size = new System.Drawing.Size(56, 20);
-            this.Edition_MenuItem.Text = "Édition";
-            // 
-            // Supprimer_MenuItem
-            // 
-            this.Supprimer_MenuItem.Enabled = false;
-            this.Supprimer_MenuItem.Name = "Supprimer_MenuItem";
-            this.Supprimer_MenuItem.ShortcutKeys = System.Windows.Forms.Keys.Delete;
-            this.Supprimer_MenuItem.Size = new System.Drawing.Size(153, 22);
-            this.Supprimer_MenuItem.Text = "Supprimer";
-            this.Supprimer_MenuItem.Click += new System.EventHandler(this.Supprimer_MenuItem_Click);
             // 
             // Outils_MenuItem
             // 
@@ -1315,6 +1244,16 @@ namespace InterfaceGraphique
             this.printPreviewDialog1.Name = "printPreviewDialog1";
             this.printPreviewDialog1.Visible = false;
             // 
+            // bouton_Suppression
+            // 
+            this.bouton_Suppression.Location = new System.Drawing.Point(13, 177);
+            this.bouton_Suppression.Name = "bouton_Suppression";
+            this.bouton_Suppression.Size = new System.Drawing.Size(130, 24);
+            this.bouton_Suppression.TabIndex = 5;
+            this.bouton_Suppression.Text = "Supprimer";
+            this.bouton_Suppression.UseVisualStyleBackColor = true;
+            this.bouton_Suppression.Click += new System.EventHandler(this.bouton_Suppression_Click);
+            // 
             // Editeur
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -1340,7 +1279,6 @@ namespace InterfaceGraphique
             this.Group_Element2.ResumeLayout(false);
             this.flowLayoutPanel1.ResumeLayout(false);
             this.Groupe_Outils.ResumeLayout(false);
-            this.Groupe_Outils.PerformLayout();
             this.OutilGraphique.ResumeLayout(false);
             this.Groupe_Proprietes.ResumeLayout(false);
             this.Groupe_Proprietes.PerformLayout();
@@ -1365,11 +1303,9 @@ namespace InterfaceGraphique
         private System.Windows.Forms.ToolStripMenuItem Enregistrer_MenuItem;
         private System.Windows.Forms.ToolStripMenuItem EnregistrerS_MenuItem;
         private System.Windows.Forms.ToolStripMenuItem Vues_MenuItem;
-        private System.Windows.Forms.ToolStripMenuItem Edition_MenuItem;
         private System.Windows.Forms.ToolStripMenuItem Ouvrir_MenuItem;
         private System.Windows.Forms.ToolStripMenuItem Proprietes_MenuItem;
         private System.Windows.Forms.ToolStripMenuItem ModeTest_MenuItem;
-        private System.Windows.Forms.ToolStripMenuItem Supprimer_MenuItem;
         private System.Windows.Forms.ToolStripMenuItem Information_MenuItem;
         private System.Windows.Forms.ToolStripMenuItem Orthographique_MenuItem;
         private System.Windows.Forms.ToolStripMenuItem Orbite_MenuItem;
@@ -1414,7 +1350,6 @@ namespace InterfaceGraphique
         private System.Windows.Forms.Button bouton_Scaling;
         private System.Windows.Forms.Button bouton_Rotation;
         private System.Windows.Forms.Button bouton_Deplacement;
-        private System.Windows.Forms.Label label_Zoom;
         private System.Windows.Forms.TextBox Anglebox;
         private System.Windows.Forms.Label Angle_label;
         private System.Windows.Forms.TextBox FMEbox;
@@ -1433,9 +1368,6 @@ namespace InterfaceGraphique
         private System.Windows.Forms.Button Trou_bouton;
         private System.Windows.Forms.Button Generateur_bouton;
         private System.Windows.Forms.Button Ressort_bouton;
-        private System.Windows.Forms.Button IncreaseZoomButton;
-        private System.Windows.Forms.Button DecreaseZoomButton;
-        private System.Windows.Forms.TextBox curZoomVal;
         private System.Windows.Forms.ToolStripMenuItem Mute_MenuItem;
         private System.Windows.Forms.GroupBox OutilGraphique;
         private System.Windows.Forms.Label labelOCourant;
@@ -1462,6 +1394,7 @@ namespace InterfaceGraphique
         private System.Windows.Forms.ToolStripButton toolStripButton5;
         private System.Windows.Forms.ToolStripButton toolStripButton6;
         private System.Windows.Forms.ToolTip toolTipPaneauCreation;
+        private System.Windows.Forms.Button bouton_Suppression;
     }
 }
 

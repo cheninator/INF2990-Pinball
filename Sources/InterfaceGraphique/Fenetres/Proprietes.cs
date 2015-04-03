@@ -65,70 +65,70 @@ namespace InterfaceGraphique
           
             if( !(int.TryParse(ptsButCirc_Box.Text, out n))){
                 isValid = false;
-                errorMessage += "\nLa valeur de butoir circulaire est invalide";
+                errorMessage += "\nLa valeur des points pour un butoir circulaire est invalide";
             }
             else
             {
                 if( (n <= 0) || (n > 10000))
                 {
                     isValid = false;
-                    errorMessage +="\nLa valeur de butoir circulaire est hors de la limite( 0 a 1000) ";
+                    errorMessage += "\nLa valeur des points pour un butoir circulaire est hors de la limite( 0 a 1000) ";
                 }
                     
             }
             if (!(int.TryParse(ptsButTri_Box.Text, out n)))
             {
                 isValid = false;
-                errorMessage += "\nLa valeur de butoir triangulaire est invalide";
+                errorMessage += "\nLa valeur des points pour un butoir triangulaire est invalide";
             }
             else
             {
                 if ((n <= 0) || (n > 10000))
                 {
                     isValid = false;
-                    errorMessage += "\nLa valeur de butoir triangulaire est hors la limite( 0 a 1000) ";
+                    errorMessage += "\nLa valeur des points pour un butoir triangulaire est hors la limite( 0 a 1000) ";
                 }
 
             }
             if (!(int.TryParse(ptsCible_Box.Text, out n)))
             {
                 isValid = false;
-                errorMessage += "\nLa valeur de la cible est invalide";
+                errorMessage += "\nLa valeur des points pour une cible est invalide";
             }
             else
             {
                 if ((n <= 0) || (n > 10000))
                 {
                     isValid = false;
-                    errorMessage += "\nLa valeur de la cible est hors la limite( 0 a 1000) ";
+                    errorMessage += "\nLa valeur des points pour une cible est hors la limite( 0 a 1000) ";
                 }
 
             }
             if (!(int.TryParse(ptsVictoire_Box.Text, out n)))
             {
                 isValid = false;
-                errorMessage += "\nLa valeur de la victoire est invalide";
+                errorMessage += "\nLa valeur des points pour une victoire est invalide";
             }
             else
             {
                 if ((n <= 0) || (n > 10000))
                 {
                     isValid = false;
-                    errorMessage += "\nLa valeur des points de victoire est hors la limite( 0 a 1000) ";
+                    errorMessage += "\nLa valeur des points pour une victoire est hors la limite( 0 a 1000) ";
                 }
 
             }
             if (!(int.TryParse(ptsFreeBall_Box.Text, out n)))
             {
                 isValid = false;
-                errorMessage += "\nLa valeur de la balle gratuite est invalide";
+                errorMessage += "\nLa valeur des points pour une balle gratuite est invalide";
             }
             else
             {
                 if ((n <= 0) || (n > 10000))
                 {
                     isValid = false;
-                    errorMessage += "\nLa valeur de points pour une balle gratuite est hors la limite( 0 a 1000) ";
+                    errorMessage += "\nLa valeur des points pour une balle gratuite est hors la limite( 0 a 1000) ";
                 }
 
             }
@@ -208,7 +208,7 @@ namespace InterfaceGraphique
             }
             else
             {
-                MessageBox.Show(errorMessage, "Messsage d'erreur",
+                MessageBox.Show(errorMessage, "Valeurs incorrectes",
                 MessageBoxButtons.OK, MessageBoxIcon.Error);
                 errorMessage = "";
             }

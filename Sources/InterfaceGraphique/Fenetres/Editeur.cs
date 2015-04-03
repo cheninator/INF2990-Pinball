@@ -183,7 +183,6 @@ namespace InterfaceGraphique
                         {
                             FonctionsNatives.resetZoom();
                             currentZoom = FonctionsNatives.obtenirZoomCourant();
-                            curZoomVal.Text = (Math.Round(currentZoom * 100) / 100).ToString();
                             Creation_Panel.Visible = true;
                         }
 
@@ -226,14 +225,12 @@ namespace InterfaceGraphique
                 {
                     FonctionsNatives.zoomOut();
                     currentZoom = FonctionsNatives.obtenirZoomCourant();
-                    curZoomVal.Text = (Math.Round(currentZoom * 100) / 100).ToString();
                 }
                 if ((e.KeyData == Keys.Add ||
                     e.KeyCode == Keys.Oemplus && e.Modifiers == Keys.Shift))
                 {
                     FonctionsNatives.zoomIn();
                     currentZoom = FonctionsNatives.obtenirZoomCourant();
-                    curZoomVal.Text = (Math.Round(currentZoom * 100) / 100).ToString();
                 }
                 if (e.KeyData == Keys.Alt)
                     altDown = true;
@@ -2366,7 +2363,6 @@ namespace InterfaceGraphique
             else if (e.Delta < 0)
                 FonctionsNatives.zoomOut();
             currentZoom = FonctionsNatives.obtenirZoomCourant();
-            curZoomVal.Text = (Math.Round(currentZoom * 100) / 100).ToString();
         }
 
         ////////////////////////////////////////////////////////////////////////
@@ -2491,7 +2487,6 @@ namespace InterfaceGraphique
             else if (altDown)
                 FonctionsNatives.zoomOutElastique(origin.X, origin.Y, destination.X, destination.Y);
             currentZoom = FonctionsNatives.obtenirZoomCourant();
-            curZoomVal.Text = (Math.Round(currentZoom * 100) / 100).ToString();
         }
 
         ////////////////////////////////////////////////////////////////////////
@@ -2659,7 +2654,6 @@ namespace InterfaceGraphique
             Rotation_MenuItem.Enabled = active;
             MiseE_MenuItem.Enabled = active;
             Deplacement_MenuItem.Enabled = active;
-            Supprimer_MenuItem.Enabled = active;
         }
 
         //////////////////////////////////////////////////////////////////////////////////////////
@@ -2840,8 +2834,6 @@ namespace InterfaceGraphique
         //////////////////////////////////////////////////////////////////////////////////////////
         public void enableZoom(bool active)
         {
-            IncreaseZoomButton.Enabled = active;
-            DecreaseZoomButton.Enabled = active;
         }
 
         //////////////////////////////////////////////////////////////////////////////////////////
@@ -2902,7 +2894,6 @@ namespace InterfaceGraphique
         {
             FonctionsNatives.zoomIn();
             currentZoom = FonctionsNatives.obtenirZoomCourant();
-            curZoomVal.Text = (Math.Round(currentZoom * 100) / 100).ToString();
 
         }
 
@@ -2919,7 +2910,6 @@ namespace InterfaceGraphique
         {
             FonctionsNatives.zoomOut();
             currentZoom = FonctionsNatives.obtenirZoomCourant();
-            curZoomVal.Text = (Math.Round(currentZoom * 100) / 100).ToString();
         }
 
         //////////////////////////////////////////////////////////////////////////////////////////
@@ -2981,7 +2971,6 @@ namespace InterfaceGraphique
         //////////////////////////////////////////////////////////////////////////////////////////
         private void label_Zoom_MouseEnter(object sender, EventArgs e)
         {
-            label_Zoom.ForeColor = Color.Blue;
         }
 
         //////////////////////////////////////////////////////////////////////////////////////////
@@ -2995,7 +2984,6 @@ namespace InterfaceGraphique
         //////////////////////////////////////////////////////////////////////////////////////////
         private void label_Zoom_MouseLeave(object sender, EventArgs e)
         {
-            label_Zoom.ForeColor = Color.Black;
         }
 
         //////////////////////////////////////////////////////////////////////////////////////////
@@ -3164,6 +3152,12 @@ namespace InterfaceGraphique
         private void toolStripButton6_Click(object sender, EventArgs e)
         {
             FonctionsNatives.zoomOut();
+        }
+
+        private void bouton_Suppression_Click(object sender, EventArgs e)
+        {
+            FonctionsNatives.removeObject();
+            deselection();
         }
     }
 }
