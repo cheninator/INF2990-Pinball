@@ -488,7 +488,6 @@ namespace InterfaceGraphique
             // 
             // DecreaseZoomButton
             // 
-            this.DecreaseZoomButton.Enabled = false;
             this.DecreaseZoomButton.Location = new System.Drawing.Point(6, 233);
             this.DecreaseZoomButton.Name = "DecreaseZoomButton";
             this.DecreaseZoomButton.Size = new System.Drawing.Size(31, 23);
@@ -499,7 +498,6 @@ namespace InterfaceGraphique
             // 
             // IncreaseZoomButton
             // 
-            this.IncreaseZoomButton.Enabled = false;
             this.IncreaseZoomButton.Location = new System.Drawing.Point(120, 234);
             this.IncreaseZoomButton.Name = "IncreaseZoomButton";
             this.IncreaseZoomButton.Size = new System.Drawing.Size(31, 23);

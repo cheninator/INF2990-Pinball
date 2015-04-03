@@ -1123,7 +1123,7 @@ namespace InterfaceGraphique
             {
                 if (FonctionsNatives.setProprietesNoeud(positionX, positionY, angle, echelle) == false)
                 {
-                    MessageBox.Show("Les modifications sont invalides", "ERREUR DE PROPRIETES",
+                    MessageBox.Show("Les modifications feront sortir l'objet de la table.", "ERREUR DE PROPRIETES",
                MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
             }
