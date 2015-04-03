@@ -73,7 +73,7 @@ void main()
 	// Lumiere DIRECTIONNELLE
 	composanteAmbiante = gl_LightSource[DIRECTIONNELLE].ambient*textureColor;
 	composanteDiffuse = max(-NdotL[DIRECTIONNELLE], 0.0) * gl_LightSource[DIRECTIONNELLE].diffuse*textureColor;
-	composanteSpeculaire = pow(max(NdotR[DIRECTIONNELLE], 0.0),100.0) * gl_LightSource[DIRECTIONNELLE].specular;
+	composanteSpeculaire = pow(max(NdotR[DIRECTIONNELLE], 0.0),1000.0) * gl_LightSource[DIRECTIONNELLE].specular;
 	lumiereReflechie[DIRECTIONNELLE] += clamp(composanteAmbiante, 0.0,1.0);
 	lumiereReflechie[DIRECTIONNELLE] += clamp(composanteDiffuse, 0.0,1.0);
 	lumiereReflechie[DIRECTIONNELLE] +=composanteSpeculaire, 0.0,1.0;

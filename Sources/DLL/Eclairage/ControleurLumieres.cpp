@@ -63,10 +63,10 @@ void ControleurLumieres::initialiserLumieres()
 	// Initialiser lumDirectionnelle
 	lumDirectionnelle_->setAmbientColor({ 0.0f, 0.0f, 0.0f, 1.0f });
 	lumDirectionnelle_->setDiffuseColor({ 0.2f, 0.2f, 0.2f, 1.0f });
-	lumDirectionnelle_->setSpecularColor({ 0.5f, 0.5f, 0.5f, 1.0f });
+	lumDirectionnelle_->setSpecularColor({ 0.5f, 0.5f, 0.7f, 1.0f });
 
 	lumDirectionnelle_->setPosition({ 200.0f, -47.0f, 110.0f, 1.0f });
-	lumDirectionnelle_->setDirection({ 0.0f, 0.0f, -1.0f, 1.0f });
+	lumDirectionnelle_->setDirection({ 0.1f, 0.0f, -1.0f, 1.0f });
 
 	// Inisialiser lumSpot
 
