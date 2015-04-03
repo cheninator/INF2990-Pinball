@@ -88,7 +88,7 @@ inline void Lumiere::setSpecularColor(glm::fvec4 specularColor)	 { specular_ = s
 inline void Lumiere::setPosition(glm::fvec4 position)            { position_ = position; }
 inline void Lumiere::setDirection(glm::fvec4 direction)          { direction_ = direction; }
 inline void Lumiere::setExponent( float exponent )               { spotExponent_ = exponent; }
-inline void Lumiere::setCutoffAngle( float cutoffAngle )         { spotCutoffAngle_ = cutoffAngle; }
+inline void Lumiere::setCutoffAngle( float cutoffAngle )         { if(cutoffAngle > 0.1) spotCutoffAngle_ = cutoffAngle; }
 inline void Lumiere::setAttenuation( glm::fvec3 attenuation )    { attenuation_ = attenuation; }
 
 ////////////////////////////////////////////////////////////////////////
