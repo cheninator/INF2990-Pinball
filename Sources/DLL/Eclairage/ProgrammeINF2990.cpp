@@ -13,6 +13,22 @@
 
 #include <iostream>
 
+ProgrammeINF2990* ProgrammeINF2990::instance_{ nullptr };
+
+ProgrammeINF2990* ProgrammeINF2990::obtenirInstance()
+{
+	if (instance_ == nullptr)
+		instance_ = new ProgrammeINF2990();
+
+	return instance_;
+}
+
+void ProgrammeINF2990::libererInstance()
+{
+	delete instance_;
+	instance_ = nullptr;
+}
+
 ////////////////////////////////////////////////////////////////////////
 ///
 /// @fn ProgrammeINF2990::~ProgrammeINF2990() // TODO PHIL

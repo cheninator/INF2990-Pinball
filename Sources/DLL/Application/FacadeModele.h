@@ -43,7 +43,6 @@ class NoeudPaletteD;
 class NoeudRessort;
 class JoueurVirtuel;
 class QuadTree;
-class ProgrammeINF2990;
 class ControleurLumieres;
 
 namespace vue {
@@ -236,6 +235,7 @@ public:
 
 	std::string obtenirCout();
 
+	/// Pour transmettre les appels de lumiere du C# au controleur de Lumieres
 	void setLight(int lum, bool state);
 
 private:
@@ -295,7 +295,6 @@ private:
    std::vector<NoeudAbstrait*> listeNoeuds_;
    std::vector<NoeudAbstrait*> listeRessorts_;
 
-   ProgrammeINF2990* progNuanceur_{ nullptr };
    ControleurLumieres* controleurLumieres_{ nullptr };
 };
 

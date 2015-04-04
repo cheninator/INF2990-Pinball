@@ -25,7 +25,8 @@ class ProgrammeINF2990
 {
 
 public:
-	ProgrammeINF2990() = default;
+	static ProgrammeINF2990* obtenirInstance();
+	static void libererInstance();
 	~ProgrammeINF2990();
 
 	void initialiser(); 
@@ -34,6 +35,9 @@ public:
 	void desactiver();
 
 private:
+
+	static ProgrammeINF2990* instance_;
+	ProgrammeINF2990() = default;
 
 	bool EstInitialise_{ false };
 

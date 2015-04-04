@@ -108,7 +108,6 @@ FacadeModele* FacadeModele::obtenirInstance(bool console)
 		instance_->joueur_ = new JoueurVirtuel();
 		instance_->quad_ = new QuadTree(glm::dvec3(coinGaucheTableX, coinGaucheTableY, 0),
 										glm::dvec3(coinDroitTableX,  coinDroitTableY,  0));
-		instance_->progNuanceur_ = new ProgrammeINF2990();
 		instance_->controleurLumieres_ = new ControleurLumieres();
 		if (console)
 			instance_->old_ = std::cout.rdbuf(instance_->oss_.rdbuf());
@@ -151,7 +150,6 @@ FacadeModele::~FacadeModele()
 	delete proprietes_;
 	delete joueur_;
 	delete quad_;
-	delete progNuanceur_;
 	delete controleurLumieres_;
 	if (instance_->old_ != nullptr)
 		std::cout.rdbuf(instance_->old_);
@@ -203,7 +201,7 @@ void FacadeModele::initialiserOpenGL(HWND hWnd)
 
 	/// Initialisation des lumieres et du programme de nuanceurs.
 	controleurLumieres_->initialiserLumieres();
-	progNuanceur_->initialiser();
+	ProgrammeINF2990::obtenirInstance()->initialiser();
 
 	/// Activation de GL_LIGHT0 pour le mode sans nuanceurs.
 	glEnable(GL_LIGHT0);
@@ -330,9 +328,9 @@ void FacadeModele::afficherBase() const
 
 	// Afficher la scene.
 	controleurLumieres_->definirLumieres();
-	progNuanceur_->activer();
+	ProgrammeINF2990::obtenirInstance()->activer();
 	arbre_->afficher();
-	progNuanceur_->desactiver();
+	ProgrammeINF2990::obtenirInstance()->desactiver();
 
 	// On affiche le texte ici
 #if NOT_NIKOLAY
