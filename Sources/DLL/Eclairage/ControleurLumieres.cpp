@@ -92,13 +92,10 @@ void ControleurLumieres::initialiserLumieres()
 ////////////////////////////////////////////////////////////////////////
 void ControleurLumieres::definirLumieres()
 {
-	lumAmbiante_->enable();
 	lumAmbiante_->definir();
 
-	lumDirectionnelle_->enable();
 	lumDirectionnelle_->definir();
 
-	lumSpot_->enable();
 	lumSpot_->definir();
 }
 
@@ -123,7 +120,7 @@ void ControleurLumieres::activerAmbiante()
 ////////////////////////////////////////////////////////////////////////
 void ControleurLumieres::desactiverAmbiante()
 {
-	lumAmbiante_->enable();
+	lumAmbiante_->disable();
 }
 
 ////////////////////////////////////////////////////////////////////////
@@ -147,7 +144,7 @@ void ControleurLumieres::activerDirectionnelle()
 ////////////////////////////////////////////////////////////////////////
 void ControleurLumieres::desactiverDirectionnelle()
 {
-	lumDirectionnelle_->enable();
+	lumDirectionnelle_->disable();
 }
 
 ////////////////////////////////////////////////////////////////////////
@@ -171,7 +168,7 @@ void ControleurLumieres::activerSpot()
 ////////////////////////////////////////////////////////////////////////
 void ControleurLumieres::desactiverSpot()
 {
-	lumSpot_->enable();
+	lumSpot_->disable();
 }
 
 void ControleurLumieres::touche1()
@@ -190,7 +187,7 @@ void ControleurLumieres::touche2()
 void ControleurLumieres::touche3()
 {
 	std::cout << "ControleurLumieres::touche3()" << std::endl;
-	lumSpot_->setExponent(lumSpot_->getExponent() + 0.1);
+	desactiverSpot();// lumSpot_->setExponent(lumSpot_->getExponent() + 0.1);
 	// lumDirectionnelle_->setPosition(lumDirectionnelle_->getPosition() + glm::fvec4{ 0.0f, 0.0f, 10.0f, 0.0f });
 	
 }
