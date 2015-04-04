@@ -517,6 +517,7 @@ namespace InterfaceGraphique
                 else if (e.KeyChar == 't')
                 {
                     deselection();
+                    
                     ModeTest_MenuItem.PerformClick();
                     panel_GL.Focus();
                 }
@@ -535,11 +536,11 @@ namespace InterfaceGraphique
                 {
                     Selection_MenuItem_Click(this, e);
                 }
-                else if (e.KeyChar == '1')
+                else if (e.KeyChar == '1' && panel_GL.Focused)
                 {
                     Orthographique_MenuItem.PerformClick();
                 }
-                else if (e.KeyChar == '2')
+                else if (e.KeyChar == '2'&& panel_GL.Focused)
                 {
                     Orbite_MenuItem.PerformClick();
                 }
