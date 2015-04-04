@@ -163,6 +163,9 @@
     <ClCompile Include="Global\JoueurVirtuel.cpp" />
     <ClCompile Include="Global\SingletonGlobal.cpp" />
     <ClCompile Include="Interface\FacadeInterfaceNative.cpp" />
+    <ClCompile Include="Memento\CareTaker.cpp" />
+    <ClCompile Include="Memento\Memento.cpp" />
+    <ClCompile Include="Memento\Originator.cpp" />
     <ClCompile Include="QuadTree\QuadTree.cpp" />
     <ClCompile Include="Sound\ControleurSon.cpp" />
     <ClCompile Include="Tests\ArbreRenduINF2990Test.cpp" />
@@ -236,6 +239,9 @@
     <ClInclude Include="Global\JoueurVirtuel.h" />
     <ClInclude Include="Global\SingletonGlobal.h" />
     <ClInclude Include="Interface\FacadeInterfaceNative.h" />
+    <ClInclude Include="Memento\CareTaker.h" />
+    <ClInclude Include="Memento\Memento.h" />
+    <ClInclude Include="Memento\Originator.h" />
     <ClInclude Include="QuadTree\QuadTree.h" />
     <ClInclude Include="Sound\ControleurSon.h" />
     <ClInclude Include="Tests\ArbreRenduINF2990Test.h" />

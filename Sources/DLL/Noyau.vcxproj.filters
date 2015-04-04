@@ -85,6 +85,12 @@
     <Filter Include="Header Files\Eclairage">
       <UniqueIdentifier>{e7dac68f-698b-4100-ac66-90ffb263d7b6}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Header Files\Memento">
+      <UniqueIdentifier>{7fa627b5-6751-43f0-b4c8-44fb6853c544}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Memento">
+      <UniqueIdentifier>{5a0b94c8-bf4f-4de3-ae5d-17537138a4cd}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Application\FacadeModele.cpp">
@@ -242,6 +248,15 @@
     </ClCompile>
     <ClCompile Include="Eclairage\ProgrammeINF2990.cpp">
       <Filter>Source Files\Eclairage</Filter>
+    </ClCompile>
+    <ClCompile Include="Memento\CareTaker.cpp">
+      <Filter>Source Files\Memento</Filter>
+    </ClCompile>
+    <ClCompile Include="Memento\Originator.cpp">
+      <Filter>Source Files\Memento</Filter>
+    </ClCompile>
+    <ClCompile Include="Memento\Memento.cpp">
+      <Filter>Source Files\Memento</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -463,6 +478,15 @@
     </ClInclude>
     <ClInclude Include="Eclairage\ProgrammeINF2990.h">
       <Filter>Header Files\Eclairage</Filter>
+    </ClInclude>
+    <ClInclude Include="Memento\CareTaker.h">
+      <Filter>Header Files\Memento</Filter>
+    </ClInclude>
+    <ClInclude Include="Memento\Originator.h">
+      <Filter>Header Files\Memento</Filter>
+    </ClInclude>
+    <ClInclude Include="Memento\Memento.h">
+      <Filter>Header Files\Memento</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>
