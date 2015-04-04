@@ -512,6 +512,7 @@ namespace InterfaceGraphique
             // 
             // bouton_Suppression
             // 
+            this.bouton_Suppression.Enabled = false;
             this.bouton_Suppression.Location = new System.Drawing.Point(13, 177);
             this.bouton_Suppression.Name = "bouton_Suppression";
             this.bouton_Suppression.Size = new System.Drawing.Size(130, 24);

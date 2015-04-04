@@ -309,13 +309,17 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="%24this.Icon.ico" />
+    <None Include="Resources\ZoomElastique.gif" />
+    <None Include="Resources\Suppression.gif" />
+    <None Include="Resources\SelectionSimple.gif" />
+    <None Include="Resources\SelectionMultiple.gif" />
+    <None Include="Resources\Trou.gif" />
     <None Include="Resources\SaveAs.png" />
     <None Include="Resources\ZoomOut.png" />
     <None Include="Resources\zoomIN.png" />
     <None Include="Resources\settings.png" />
     <None Include="Resources\Tester.png" />
     <None Include="Resources\Scale.gif" />
-    <None Include="Resources\SelectionSimple.gif" />
     <None Include="Resources\save.bmp" />
     <None Include="Resources\open.png" />
     <None Include="Resources\Deplacement.gif" />
@@ -330,6 +334,16 @@
     <None Include="Resources\Proprietes.png" />
     <None Include="Resources\Quit.png" />
     <None Include="Resources\NewMap.jpg" />
+    <None Include="Resources\Palettes.gif" />
+    <None Include="Resources\ButoirTriangulaire.gif" />
+    <None Include="Resources\Cible.gif" />
+    <None Include="Resources\Generateur.gif" />
+    <None Include="Resources\Mur.gif" />
+    <None Include="Resources\Portals.gif" />
+    <None Include="Resources\Porte.gif" />
+    <None Include="Resources\Ressort.gif" />
+    <None Include="Resources\ButoirCirculaire.gif" />
+    <None Include="Resources\Creation.gif" />
     <Content Include="Resources\save.png" />
     <None Include="Resources\cible.jpeg" />
     <None Include="Resources\winSound.wav" />

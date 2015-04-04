@@ -250,7 +250,18 @@ namespace InterfaceGraphique
 
                 else if (e.KeyData == Keys.Down)
                     FonctionsNatives.translater(0, -10);
-
+                else if (e.KeyData == Keys.Delete)
+                {
+                    bouton_Suppression.PerformClick();
+                }
+                else if (e.KeyData == Keys.D1)
+                {
+                    Orthographique_MenuItem.PerformClick();
+                }
+                else if (e.KeyData == Keys.D2)
+                {
+                    Orbite_MenuItem.PerformClick();
+                }
                 if (etat is EtatEditeurTest)
                 {
                     ToucheDownTest(o, e);
@@ -536,18 +547,12 @@ namespace InterfaceGraphique
                 {
                     Selection_MenuItem_Click(this, e);
                 }
-                else if (e.KeyChar == '1' && panel_GL.Focused)
-                {
-                    Orthographique_MenuItem.PerformClick();
-                }
-                else if (e.KeyChar == '2'&& panel_GL.Focused)
-                {
-                    Orbite_MenuItem.PerformClick();
-                }
+               
                 else if (e.KeyChar == 'p')
                 {
                     bouton_Creation_Click(this, e);
                 }
+              
                 else if (e.KeyChar == 'h')
                 {
                     /*if (richTextBox1.Visible)
@@ -2662,6 +2667,7 @@ namespace InterfaceGraphique
         public void outilsEnable(bool active)
         {
             bouton_Deplacement.Enabled = active;
+            bouton_Suppression.Enabled = active;
             bouton_Rotation.Enabled = active;
             bouton_Scaling.Enabled = active;
             bouton_Duplication.Enabled = active;

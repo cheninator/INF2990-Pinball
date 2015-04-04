@@ -113,6 +113,16 @@ namespace InterfaceGraphique.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap ButoirCirculaire {
+            get {
+                object obj = ResourceManager.GetObject("ButoirCirculaire", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap butoirD {
             get {
                 object obj = ResourceManager.GetObject("butoirD", resourceCulture);
@@ -151,6 +161,16 @@ namespace InterfaceGraphique.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap ButoirTriangulaire {
+            get {
+                object obj = ResourceManager.GetObject("ButoirTriangulaire", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized resource of type System.IO.UnmanagedMemoryStream similar to System.IO.MemoryStream.
         /// </summary>
         internal static System.IO.UnmanagedMemoryStream button_29 {
@@ -182,9 +202,29 @@ namespace InterfaceGraphique.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap Cible2 {
+            get {
+                object obj = ResourceManager.GetObject("Cible2", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap CibleCirc {
             get {
                 object obj = ResourceManager.GetObject("CibleCirc", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap Creation {
+            get {
+                object obj = ResourceManager.GetObject("Creation", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -279,6 +319,16 @@ namespace InterfaceGraphique.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap Generateur1 {
+            get {
+                object obj = ResourceManager.GetObject("Generateur1", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized resource of type System.IO.UnmanagedMemoryStream similar to System.IO.MemoryStream.
         /// </summary>
         internal static System.IO.UnmanagedMemoryStream gOver {
@@ -312,6 +362,16 @@ namespace InterfaceGraphique.Properties {
         internal static System.Drawing.Bitmap mur {
             get {
                 object obj = ResourceManager.GetObject("mur", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap Mur1 {
+            get {
+                object obj = ResourceManager.GetObject("Mur1", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -372,6 +432,16 @@ namespace InterfaceGraphique.Properties {
         internal static System.Drawing.Bitmap Ouvrir {
             get {
                 object obj = ResourceManager.GetObject("Ouvrir", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap Palettes {
+            get {
+                object obj = ResourceManager.GetObject("Palettes", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -449,6 +519,26 @@ namespace InterfaceGraphique.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap Portals {
+            get {
+                object obj = ResourceManager.GetObject("Portals", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap Porte {
+            get {
+                object obj = ResourceManager.GetObject("Porte", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap Proprietes {
             get {
                 object obj = ResourceManager.GetObject("Proprietes", resourceCulture);
@@ -472,6 +562,16 @@ namespace InterfaceGraphique.Properties {
         internal static System.Drawing.Bitmap ressort {
             get {
                 object obj = ResourceManager.GetObject("ressort", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap Ressort1 {
+            get {
+                object obj = ResourceManager.GetObject("Ressort1", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -549,6 +649,16 @@ namespace InterfaceGraphique.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap SelectionMultiple {
+            get {
+                object obj = ResourceManager.GetObject("SelectionMultiple", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap SelectionSimple {
             get {
                 object obj = ResourceManager.GetObject("SelectionSimple", resourceCulture);
@@ -572,6 +682,16 @@ namespace InterfaceGraphique.Properties {
         internal static System.Drawing.Bitmap spring {
             get {
                 object obj = ResourceManager.GetObject("spring", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap Suppression {
+            get {
+                object obj = ResourceManager.GetObject("Suppression", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -618,6 +738,16 @@ namespace InterfaceGraphique.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap Trou1 {
+            get {
+                object obj = ResourceManager.GetObject("Trou1", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap Win {
             get {
                 object obj = ResourceManager.GetObject("Win", resourceCulture);
@@ -641,6 +771,16 @@ namespace InterfaceGraphique.Properties {
         internal static System.IO.UnmanagedMemoryStream winSound {
             get {
                 return ResourceManager.GetStream("winSound", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap ZoomElastique {
+            get {
+                object obj = ResourceManager.GetObject("ZoomElastique", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
             }
         }
         

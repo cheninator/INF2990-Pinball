@@ -39,36 +39,36 @@ namespace InterfaceGraphique
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Aide));
-            System.Windows.Forms.ListViewItem listViewItem27 = new System.Windows.Forms.ListViewItem("Nouveau");
-            System.Windows.Forms.ListViewItem listViewItem28 = new System.Windows.Forms.ListViewItem("Ouvrir");
-            System.Windows.Forms.ListViewItem listViewItem29 = new System.Windows.Forms.ListViewItem("Enregistrer");
-            System.Windows.Forms.ListViewItem listViewItem30 = new System.Windows.Forms.ListViewItem("Enregistrer Sous");
-            System.Windows.Forms.ListViewItem listViewItem31 = new System.Windows.Forms.ListViewItem("Propriétés");
-            System.Windows.Forms.ListViewItem listViewItem32 = new System.Windows.Forms.ListViewItem("Mode Test");
-            System.Windows.Forms.ListViewItem listViewItem33 = new System.Windows.Forms.ListViewItem("Menu Principal");
-            System.Windows.Forms.ListViewItem listViewItem34 = new System.Windows.Forms.ListViewItem("             Selection");
-            System.Windows.Forms.ListViewItem listViewItem35 = new System.Windows.Forms.ListViewItem("             Séléction Multiple");
-            System.Windows.Forms.ListViewItem listViewItem36 = new System.Windows.Forms.ListViewItem("             Déplacement");
-            System.Windows.Forms.ListViewItem listViewItem37 = new System.Windows.Forms.ListViewItem("             Rotation");
-            System.Windows.Forms.ListViewItem listViewItem38 = new System.Windows.Forms.ListViewItem("             Duplication");
-            System.Windows.Forms.ListViewItem listViewItem39 = new System.Windows.Forms.ListViewItem("             Mise à échelle");
-            System.Windows.Forms.ListViewItem listViewItem40 = new System.Windows.Forms.ListViewItem("             Suppression");
-            System.Windows.Forms.ListViewItem listViewItem41 = new System.Windows.Forms.ListViewItem("             Création");
-            System.Windows.Forms.ListViewItem listViewItem42 = new System.Windows.Forms.ListViewItem("             Zoom Élastique");
-            System.Windows.Forms.ListViewItem listViewItem43 = new System.Windows.Forms.ListViewItem("                Palette");
-            System.Windows.Forms.ListViewItem listViewItem44 = new System.Windows.Forms.ListViewItem("                Butoir Triangulaire");
-            System.Windows.Forms.ListViewItem listViewItem45 = new System.Windows.Forms.ListViewItem("                Butoir Circulaire");
-            System.Windows.Forms.ListViewItem listViewItem46 = new System.Windows.Forms.ListViewItem("                Cible");
-            System.Windows.Forms.ListViewItem listViewItem47 = new System.Windows.Forms.ListViewItem("                Portail");
-            System.Windows.Forms.ListViewItem listViewItem48 = new System.Windows.Forms.ListViewItem("                Mur");
-            System.Windows.Forms.ListViewItem listViewItem49 = new System.Windows.Forms.ListViewItem("                Porte");
-            System.Windows.Forms.ListViewItem listViewItem50 = new System.Windows.Forms.ListViewItem("                Ressort");
-            System.Windows.Forms.ListViewItem listViewItem51 = new System.Windows.Forms.ListViewItem("                Générateur de Billes");
-            System.Windows.Forms.ListViewItem listViewItem52 = new System.Windows.Forms.ListViewItem("                Trou");
-            System.Windows.Forms.ListViewGroup listViewGroup5 = new System.Windows.Forms.ListViewGroup("Outils", System.Windows.Forms.HorizontalAlignment.Left);
-            System.Windows.Forms.ListViewGroup listViewGroup6 = new System.Windows.Forms.ListViewGroup("Divers", System.Windows.Forms.HorizontalAlignment.Left);
-            System.Windows.Forms.ListViewGroup listViewGroup7 = new System.Windows.Forms.ListViewGroup("Mode Test", System.Windows.Forms.HorizontalAlignment.Left);
-            System.Windows.Forms.ListViewGroup listViewGroup8 = new System.Windows.Forms.ListViewGroup("Fichiers", System.Windows.Forms.HorizontalAlignment.Left);
+            System.Windows.Forms.ListViewItem listViewItem1 = new System.Windows.Forms.ListViewItem("Nouveau");
+            System.Windows.Forms.ListViewItem listViewItem2 = new System.Windows.Forms.ListViewItem("Ouvrir");
+            System.Windows.Forms.ListViewItem listViewItem3 = new System.Windows.Forms.ListViewItem("Enregistrer");
+            System.Windows.Forms.ListViewItem listViewItem4 = new System.Windows.Forms.ListViewItem("Enregistrer Sous");
+            System.Windows.Forms.ListViewItem listViewItem5 = new System.Windows.Forms.ListViewItem("Propriétés");
+            System.Windows.Forms.ListViewItem listViewItem6 = new System.Windows.Forms.ListViewItem("Mode Test");
+            System.Windows.Forms.ListViewItem listViewItem7 = new System.Windows.Forms.ListViewItem("Menu Principal");
+            System.Windows.Forms.ListViewItem listViewItem8 = new System.Windows.Forms.ListViewItem("             Selection");
+            System.Windows.Forms.ListViewItem listViewItem9 = new System.Windows.Forms.ListViewItem("             Séléction Multiple");
+            System.Windows.Forms.ListViewItem listViewItem10 = new System.Windows.Forms.ListViewItem("             Déplacement");
+            System.Windows.Forms.ListViewItem listViewItem11 = new System.Windows.Forms.ListViewItem("             Rotation");
+            System.Windows.Forms.ListViewItem listViewItem12 = new System.Windows.Forms.ListViewItem("             Duplication");
+            System.Windows.Forms.ListViewItem listViewItem13 = new System.Windows.Forms.ListViewItem("             Mise à échelle");
+            System.Windows.Forms.ListViewItem listViewItem14 = new System.Windows.Forms.ListViewItem("             Suppression");
+            System.Windows.Forms.ListViewItem listViewItem15 = new System.Windows.Forms.ListViewItem("             Création");
+            System.Windows.Forms.ListViewItem listViewItem16 = new System.Windows.Forms.ListViewItem("             Zoom Élastique");
+            System.Windows.Forms.ListViewItem listViewItem17 = new System.Windows.Forms.ListViewItem("                Palette");
+            System.Windows.Forms.ListViewItem listViewItem18 = new System.Windows.Forms.ListViewItem("                Butoir Triangulaire");
+            System.Windows.Forms.ListViewItem listViewItem19 = new System.Windows.Forms.ListViewItem("                Butoir Circulaire");
+            System.Windows.Forms.ListViewItem listViewItem20 = new System.Windows.Forms.ListViewItem("                Cible");
+            System.Windows.Forms.ListViewItem listViewItem21 = new System.Windows.Forms.ListViewItem("                Portail");
+            System.Windows.Forms.ListViewItem listViewItem22 = new System.Windows.Forms.ListViewItem("                Mur");
+            System.Windows.Forms.ListViewItem listViewItem23 = new System.Windows.Forms.ListViewItem("                Porte");
+            System.Windows.Forms.ListViewItem listViewItem24 = new System.Windows.Forms.ListViewItem("                Ressort");
+            System.Windows.Forms.ListViewItem listViewItem25 = new System.Windows.Forms.ListViewItem("                Générateur de Billes");
+            System.Windows.Forms.ListViewItem listViewItem26 = new System.Windows.Forms.ListViewItem("                Trou");
+            System.Windows.Forms.ListViewGroup listViewGroup1 = new System.Windows.Forms.ListViewGroup("Outils", System.Windows.Forms.HorizontalAlignment.Left);
+            System.Windows.Forms.ListViewGroup listViewGroup2 = new System.Windows.Forms.ListViewGroup("Divers", System.Windows.Forms.HorizontalAlignment.Left);
+            System.Windows.Forms.ListViewGroup listViewGroup3 = new System.Windows.Forms.ListViewGroup("Mode Test", System.Windows.Forms.HorizontalAlignment.Left);
+            System.Windows.Forms.ListViewGroup listViewGroup4 = new System.Windows.Forms.ListViewGroup("Fichiers", System.Windows.Forms.HorizontalAlignment.Left);
             this.panel1 = new System.Windows.Forms.Panel();
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
@@ -143,7 +143,7 @@ namespace InterfaceGraphique
             this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
             this.tabPage1.Size = new System.Drawing.Size(594, 370);
             this.tabPage1.TabIndex = 0;
-            this.tabPage1.Text = "  Accueil ";
+            this.tabPage1.Text = "  ACCUEIL";
             this.tabPage1.ToolTipText = "Aide";
             this.tabPage1.UseVisualStyleBackColor = true;
             // 
@@ -175,7 +175,7 @@ namespace InterfaceGraphique
             this.tabPage6.Padding = new System.Windows.Forms.Padding(3);
             this.tabPage6.Size = new System.Drawing.Size(594, 370);
             this.tabPage6.TabIndex = 5;
-            this.tabPage6.Text = "Éléments de base";
+            this.tabPage6.Text = "ÉLÉMENTS DE BASE";
             this.tabPage6.UseVisualStyleBackColor = true;
             // 
             // pictureBoxBase
@@ -203,13 +203,13 @@ namespace InterfaceGraphique
             this.columnHeader3});
             this.listViewBase.FullRowSelect = true;
             this.listViewBase.Items.AddRange(new System.Windows.Forms.ListViewItem[] {
-            listViewItem27,
-            listViewItem28,
-            listViewItem29,
-            listViewItem30,
-            listViewItem31,
-            listViewItem32,
-            listViewItem33});
+            listViewItem1,
+            listViewItem2,
+            listViewItem3,
+            listViewItem4,
+            listViewItem5,
+            listViewItem6,
+            listViewItem7});
             this.listViewBase.Location = new System.Drawing.Point(9, 17);
             this.listViewBase.Name = "listViewBase";
             this.listViewBase.Size = new System.Drawing.Size(206, 189);
@@ -233,7 +233,7 @@ namespace InterfaceGraphique
             this.tabPage5.Padding = new System.Windows.Forms.Padding(3);
             this.tabPage5.Size = new System.Drawing.Size(594, 370);
             this.tabPage5.TabIndex = 4;
-            this.tabPage5.Text = "    Outils     ";
+            this.tabPage5.Text = "    OUTILS     ";
             this.tabPage5.UseVisualStyleBackColor = true;
             // 
             // labelDescOutil
@@ -260,25 +260,25 @@ namespace InterfaceGraphique
             this.listView1.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
             this.columnHeader1});
             this.listView1.FullRowSelect = true;
-            listViewItem34.ToolTipText = "Outil de séléction";
-            listViewItem35.ToolTipText = "Outil Séléction Multiple";
-            listViewItem36.ToolTipText = "Outil Déplacement";
-            listViewItem37.ToolTipText = "Outil Rotation";
-            listViewItem38.ToolTipText = "Outil Duplication";
-            listViewItem39.ToolTipText = "Outil Mise à échelle";
-            listViewItem40.ToolTipText = "Outil Suppression";
-            listViewItem41.ToolTipText = "Outil Création";
-            listViewItem42.ToolTipText = "Outil Zoom";
+            listViewItem8.ToolTipText = "Outil de séléction";
+            listViewItem9.ToolTipText = "Outil Séléction Multiple";
+            listViewItem10.ToolTipText = "Outil Déplacement";
+            listViewItem11.ToolTipText = "Outil Rotation";
+            listViewItem12.ToolTipText = "Outil Duplication";
+            listViewItem13.ToolTipText = "Outil Mise à échelle";
+            listViewItem14.ToolTipText = "Outil Suppression";
+            listViewItem15.ToolTipText = "Outil Création";
+            listViewItem16.ToolTipText = "Outil Zoom";
             this.listView1.Items.AddRange(new System.Windows.Forms.ListViewItem[] {
-            listViewItem34,
-            listViewItem35,
-            listViewItem36,
-            listViewItem37,
-            listViewItem38,
-            listViewItem39,
-            listViewItem40,
-            listViewItem41,
-            listViewItem42});
+            listViewItem8,
+            listViewItem9,
+            listViewItem10,
+            listViewItem11,
+            listViewItem12,
+            listViewItem13,
+            listViewItem14,
+            listViewItem15,
+            listViewItem16});
             this.listView1.Location = new System.Drawing.Point(9, 17);
             this.listView1.Name = "listView1";
             this.listView1.Size = new System.Drawing.Size(206, 189);
@@ -302,7 +302,7 @@ namespace InterfaceGraphique
             this.tabPage3.Name = "tabPage3";
             this.tabPage3.Size = new System.Drawing.Size(594, 370);
             this.tabPage3.TabIndex = 2;
-            this.tabPage3.Text = "     Objets     ";
+            this.tabPage3.Text = "     OBJETS     ";
             this.tabPage3.UseVisualStyleBackColor = true;
             // 
             // listView2
@@ -311,16 +311,16 @@ namespace InterfaceGraphique
             this.columnHeader2});
             this.listView2.FullRowSelect = true;
             this.listView2.Items.AddRange(new System.Windows.Forms.ListViewItem[] {
-            listViewItem43,
-            listViewItem44,
-            listViewItem45,
-            listViewItem46,
-            listViewItem47,
-            listViewItem48,
-            listViewItem49,
-            listViewItem50,
-            listViewItem51,
-            listViewItem52});
+            listViewItem17,
+            listViewItem18,
+            listViewItem19,
+            listViewItem20,
+            listViewItem21,
+            listViewItem22,
+            listViewItem23,
+            listViewItem24,
+            listViewItem25,
+            listViewItem26});
             this.listView2.Location = new System.Drawing.Point(8, 17);
             this.listView2.Name = "listView2";
             this.listView2.Size = new System.Drawing.Size(208, 198);
@@ -365,7 +365,7 @@ namespace InterfaceGraphique
             this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
             this.tabPage2.Size = new System.Drawing.Size(594, 370);
             this.tabPage2.TabIndex = 1;
-            this.tabPage2.Text = "  Raccourcis  ";
+            this.tabPage2.Text = "  RACCOURCIS  ";
             this.tabPage2.UseVisualStyleBackColor = true;
             // 
             // listViewShortcut
@@ -374,19 +374,19 @@ namespace InterfaceGraphique
             this.Commande,
             this.Touche});
             this.listViewShortcut.FullRowSelect = true;
-            listViewGroup5.Header = "Outils";
-            listViewGroup5.Name = "listViewGroup1";
-            listViewGroup6.Header = "Divers";
-            listViewGroup6.Name = "listViewGroup2";
-            listViewGroup7.Header = "Mode Test";
-            listViewGroup7.Name = "listViewGroup3";
-            listViewGroup8.Header = "Fichiers";
-            listViewGroup8.Name = "listViewGroup4";
+            listViewGroup1.Header = "Outils";
+            listViewGroup1.Name = "listViewGroup1";
+            listViewGroup2.Header = "Divers";
+            listViewGroup2.Name = "listViewGroup2";
+            listViewGroup3.Header = "Mode Test";
+            listViewGroup3.Name = "listViewGroup3";
+            listViewGroup4.Header = "Fichiers";
+            listViewGroup4.Name = "listViewGroup4";
             this.listViewShortcut.Groups.AddRange(new System.Windows.Forms.ListViewGroup[] {
-            listViewGroup5,
-            listViewGroup6,
-            listViewGroup7,
-            listViewGroup8});
+            listViewGroup1,
+            listViewGroup2,
+            listViewGroup3,
+            listViewGroup4});
             this.listViewShortcut.Location = new System.Drawing.Point(10, 18);
             this.listViewShortcut.Name = "listViewShortcut";
             this.listViewShortcut.Size = new System.Drawing.Size(578, 344);
@@ -422,7 +422,7 @@ namespace InterfaceGraphique
             this.tabPage4.Name = "tabPage4";
             this.tabPage4.Size = new System.Drawing.Size(594, 370);
             this.tabPage4.TabIndex = 3;
-            this.tabPage4.Text = "Remerciements";
+            this.tabPage4.Text = "REMERCIMENTS";
             this.tabPage4.UseVisualStyleBackColor = true;
             // 
             // Aide

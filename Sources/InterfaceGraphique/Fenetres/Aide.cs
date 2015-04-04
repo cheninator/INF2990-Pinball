@@ -200,7 +200,7 @@ namespace InterfaceGraphique
                             labelDescOutil.Text = "La Sélection Multiple se fait à l'aide d'un réctangle élastique."+
                                                   " Pour créer le réctangle élastique, il suffit d'enfoncer le bouton gauche de la souris et deplacer la souris"+
                                                   " Tout objet sous le rectangle élastique sera sélectionné. Si le bouton CTRL est appuyé pendant la séléction, l'état de sélection est inversé.";
-                            pictureBoxOutils.Image = Properties.Resources.SelectionSimple;
+                            pictureBoxOutils.Image = Properties.Resources.SelectionMultiple;
                             break;
                         }
                     case 2:
@@ -243,7 +243,7 @@ namespace InterfaceGraphique
                         {
                             labelDescOutil.Text = "La suppression d'un ou plusieurs objets sélectionnés se fait à l'aide du bouton Suppression ou le raccourci Suppr."+
                                                   "La suppression fait disparaitre les objets sélectionnés de la zone de jeu";
-                            pictureBoxOutils.Image = Properties.Resources.Scale;
+                            pictureBoxOutils.Image = Properties.Resources.Suppression;
                             break;
                         }
                     case 7:
@@ -253,7 +253,7 @@ namespace InterfaceGraphique
                                                   "Un clic dans la table féra apparaitre l'objet sur la zone de jeu."+
                                                   "Un objet ne peut pas être crée en dehor de la table."+
                                                   "Pour plus d'information, voir l'onglet Objets sur les différents objets.";
-                            pictureBoxOutils.Image = Properties.Resources.Scale;
+                            pictureBoxOutils.Image = Properties.Resources.Creation;
                             break;
                         }
                     case 8:
@@ -261,7 +261,7 @@ namespace InterfaceGraphique
                             labelDescOutil.Text = "L'effet de loupe se fait à l'aide du bouton Zoom ou le raccourci Z et un rectangle élastique"+
                                                   " Pour créer le réctangle élastique, il suffit d'enfoncer le bouton gauche de la souris et deplacer la souris" +
                                                   " La surface sous le rectangle élastique sera agrandie pour remplir l'écran. Si le bouton ALT est appuyé pendant la création du réctangle, il y aura un effet  de loupe négatif.";
-                            pictureBoxOutils.Image = Properties.Resources.Scale;
+                            pictureBoxOutils.Image = Properties.Resources.ZoomElastique;
                             break;
                         }
                 }
@@ -294,12 +294,14 @@ namespace InterfaceGraphique
                             labelDescObj.Text = "Il y a des palettes gauches et droite pour chaque joueur." +
                                 " Les palettes pivottent avec un angle maximal de 60 degrées" +
                                 " Les palettes du joueur 2 sont contrôlées par le joueur 1 en mode Solo et par l'ordinateur en mode IA. ";
+                            pictureBoxObjets.Image = Properties.Resources.Palettes;
                             break;
                         }
                     case 1:
                         {
                             labelDescObj.Text = "Lorsqu'une bille frappe le butoir, les points appropriées sont accordés au joeur et le butoir s'illuminera." +
                                                " Si l'option de force de rebond supplémentaire est activée, la vitesse de la balle augmentera après la collision.";
+                            pictureBoxObjets.Image = Properties.Resources.ButoirTriangulaire;
                             break;
 
                         }
@@ -307,6 +309,7 @@ namespace InterfaceGraphique
                         {
                             labelDescObj.Text = "Ce butoir a une forme circulaire. Lorsqu'une bille frappe le butoir, les points appropriées sont accordés au joeur et le butoir s'illuminera." +
                                                 " Si l'option de force de rebond supplémentaire est activée, la vitesse de la balle augmentera après la collision.";
+                            pictureBoxObjets.Image = Properties.Resources.ButoirCirculaire;
                             break;
 
                         }
@@ -314,6 +317,7 @@ namespace InterfaceGraphique
                         {
                             labelDescObj.Text = "La cible est un obstancle rectangulaire qui, lorsque frappé par la bille, disparait et donne des points au joueur." +
                                                 " La collision retire la cible de la zone de jeu de façon permanente jusqu'une réinitialisation de la zone.";
+                            pictureBoxObjets.Image = Properties.Resources.Cible2;
                             break;
 
                         }
@@ -322,6 +326,8 @@ namespace InterfaceGraphique
                             labelDescObj.Text = "Les portails sont des objets toujours liés en pairs. La création des portails se fait un à la suite de l'autre " +
                                                " Lorsque la bille entre dans un des portail, elle sort par l'autre." +
                                                " Les portails sont entourés par un champ d'attraction dont la force est inversement proportionnelle à la distance avec la bille.";
+                            pictureBoxObjets.Image = Properties.Resources.Portals;
+                            
                             break;
 
                         }
@@ -329,12 +335,16 @@ namespace InterfaceGraphique
                         {
                             labelDescObj.Text = "Les murs sont des obstacles rectangulaires dont la longueur est determinée durant la création." +
                                                 "La création du mur se fait avec 2 étapes. Un premier clique indque le début du mur et celui-ci suit le pointeur de la souris. Le deuxième clic détermine la fin du mur.";
+                            pictureBoxObjets.Image = Properties.Resources.Mur1;
+                           
                             break;
 
                         }
                     case 6:
                         {
                             labelDescObj.Text = "La porte permet de laisser passer la balle d'un seule côté seulement. Si la balle frappe le côté opposée, elle rebondit comme sur un mur.";
+                            pictureBoxObjets.Image = Properties.Resources.Porte;
+                            
                             break;
 
                         }
@@ -342,6 +352,8 @@ namespace InterfaceGraphique
                         {
                             labelDescObj.Text = "Le ressort permet de propulser la balle pour lui donner une vitesse initiale."+
                                                 " La force donnée à la balle est proportionnelle à la compression du ressort. Il peut avoir plusieurs ressorts sur une zone et ils sont tous contrôlés par le même bouton.";
+                            pictureBoxObjets.Image = Properties.Resources.Ressort1;
+                            
                             break;
 
                         }
@@ -350,13 +362,18 @@ namespace InterfaceGraphique
                             labelDescObj.Text = "Le générateur de bille est la source des billes qui arrivent sur la table." +
                                                 " Une bille est toujours générée par un générateur aléatoire si plusieurs sont présents et sa taille est proportionelle à celle du générateur." +
                                                 " Le générateur disparait après avoir généré la balle et ne cause pas de collisions pendant le jeu.";
+                            pictureBoxObjets.Image = Properties.Resources.Generateur1;
+                           
                             break;
 
                         }
                     case 9:
                         {
                             labelDescObj.Text = "Le trou est un objet circulaire qui fait disparaitre une balle si celle-ci passe au-dessus d'un trou.";
+                            pictureBoxObjets.Image = Properties.Resources.Trou1;
+                            
                             break;
+
 
                         }
                 }
@@ -371,7 +388,6 @@ namespace InterfaceGraphique
 
         private void listViewBase_SelectedIndexChanged(object sender, EventArgs e)
         {
-           // pictureBoxBase.SizeMode = PictureBoxSizeMode.StretchImage;
             if (listViewBase.SelectedIndices.Count <= 0) return;
             int index = listViewBase.SelectedIndices[0];
             if (index >= 0)
@@ -433,7 +449,6 @@ namespace InterfaceGraphique
                             labelBase.Text = "l'option Menu Principal quitte le mode Éditeur et retourne au menu principal." +
                                                                          "Un message sera présent lorsque vous quittez pour vous assurer que vous voulez bien quitter le mdoe Éditeur." +
                                                                          "\nATTENTION: Si vous quittez, toute modification sur la zone de jeu non sauvegardée sera perdue.";
-                       //     pictureBoxBase.SizeMode = PictureBoxSizeMode.Normal;
                             pictureBoxBase.Image = Properties.Resources.Quit;
                             break;
                         }
