@@ -368,5 +368,79 @@ namespace InterfaceGraphique
             e.Cancel = true;
             e.NewWidth = listViewShortcut.Columns[e.ColumnIndex].Width;
         }
+
+        private void listViewBase_SelectedIndexChanged(object sender, EventArgs e)
+        {
+           // pictureBoxBase.SizeMode = PictureBoxSizeMode.StretchImage;
+            if (listViewBase.SelectedIndices.Count <= 0) return;
+            int index = listViewBase.SelectedIndices[0];
+            if (index >= 0)
+            {
+                switch (index)
+                {
+                    case 0:
+                        {
+                            labelBase.Text = "L'option Nouveau permet de remplacer la zone de jeu en modification avec la zone de jeu par défaut."+
+                                             "\nATTENTION: toute modification à la zone de jeu sera perdue si vous choisissez cette option.";
+                            pictureBoxBase.Image = Properties.Resources.NewMap;
+                            break;
+
+                        }
+                    case 1:
+                        {
+                            labelBase.Text = "L'option Ouvrir permet d'ouvrir une zone de jeu existante."+
+                                             "La zone choisie remplacera la zone en cours de modification."+
+                                             "\nATTENTION: toute modification à la zone de jeu sera perdue si vous ouvrez une nouvelle.";
+                            pictureBoxBase.Image = Properties.Resources.Ouvrir;
+                            break;
+                        }
+                    case 2:
+                        {
+                            labelBase.Text = "L'option Enregistrer permet d'enregistrer la zone de jeu en cours de modification." +
+                                                                         "Si la zone n'a jamais été enregistrée auparavant, vous serez amenés à l'enregistrer avec un nom de votre choix." +
+                                                                         " Sinon, vos modifications seront enregistrés pardesus le fichier déjà existant.";
+                            pictureBoxBase.Image = Properties.Resources.SaveAs;
+                            break;
+                        }
+                    case 3:
+                        {
+                            labelBase.Text = "L'option Enregistrer Sous permet d'enregistrer la zone de jeu en cours de modification." +
+                                             "Vous serez amenés à l'enregistrer avec un nom de votre choix dans le répertoires Zones.";
+                            pictureBoxBase.Image = Properties.Resources.SaveAs;
+                            break;
+                        }
+                    case 4:
+                        {
+                            labelBase.Text = "L'option Propriétés permet de modifier les propriétés de la zone de jeu." +
+                                                                         "Dans ce menu, vous pouvez spécifier le nombre de points accordés au joueur lors d'un collision,"+
+                                                                         " le nombre de points pour gagner la zone de jeu"+
+                                                                         "et le nombre de points pour une bille gratuite. Ces valeurs peuvent aller de 0 à 10 000." +
+                                                                         " Finalement, vous pouvez donner une côte de difficulté à votre zone qui va de 1 à 10.";
+                            pictureBoxBase.Image = Properties.Resources.Proprietes;
+                            break;
+                        }
+
+                    case 5:
+                        {
+                            labelBase.Text = "Le mode Test permet d'essayer la zone de jeu en cours de modification." +
+                                                                         "Vous pouvez passer du mode Éditeur au mode Test en tout moment avec la touche T." +
+                                                                         " Le mode Test se joue comme une partie normale avec 1 seul joueur et une infinité de billes";
+                            pictureBoxBase.Image = Properties.Resources.Tester;
+                            break;
+                        }
+                    case 6:
+                        {
+                            labelBase.Text = "l'option Menu Principal quitte le mode Éditeur et retourne au menu principal." +
+                                                                         "Un message sera présent lorsque vous quittez pour vous assurer que vous voulez bien quitter le mdoe Éditeur." +
+                                                                         "\nATTENTION: Si vous quittez, toute modification sur la zone de jeu non sauvegardée sera perdue.";
+                       //     pictureBoxBase.SizeMode = PictureBoxSizeMode.Normal;
+                            pictureBoxBase.Image = Properties.Resources.Quit;
+                            break;
+                        }
+
+
+                }
+            }
+        }
     }
 }

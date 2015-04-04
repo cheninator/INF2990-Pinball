@@ -309,6 +309,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="%24this.Icon.ico" />
+    <None Include="Resources\SaveAs.png" />
     <None Include="Resources\ZoomOut.png" />
     <None Include="Resources\zoomIN.png" />
     <None Include="Resources\settings.png" />
@@ -325,6 +326,10 @@
     <None Include="Resources\Return home.png" />
     <None Include="Resources\delete.png" />
     <None Include="Resources\enregistrersous.png" />
+    <None Include="Resources\Ouvrir.png" />
+    <None Include="Resources\Proprietes.png" />
+    <None Include="Resources\Quit.png" />
+    <None Include="Resources\NewMap.jpg" />
     <Content Include="Resources\save.png" />
     <None Include="Resources\cible.jpeg" />
     <None Include="Resources\winSound.wav" />
