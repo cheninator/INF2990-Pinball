@@ -186,6 +186,7 @@ namespace InterfaceGraphique
             this.Deactivate += new System.EventHandler(this.MainMenu_Deactivate);
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.MainMenu_FormClosing);
             this.Shown += new System.EventHandler(this.MainMenu_Shown);
+            this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.MainMenu_KeyDown);
             this.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.Form1_KeyPress);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
