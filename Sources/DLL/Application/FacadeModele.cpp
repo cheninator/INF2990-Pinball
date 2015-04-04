@@ -252,6 +252,7 @@ void FacadeModele::initialiserOpenGL(HWND hWnd)
 void FacadeModele::libererOpenGL()
 {
 	utilitaire::CompteurAffichage::libererInstance();
+	ProgrammeINF2990::libererInstance();
 
 	bool succes{ aidegl::detruireContexteGL(hWnd_, hDC_, hGLRC_) };
 	assert(succes && "Le contexte OpenGL n'a pu etre detruit.");
