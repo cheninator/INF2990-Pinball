@@ -5,11 +5,11 @@
 ///
 /// @ingroup Noeud
 ////////////////////////////////////////////////
-
+#include <GL/glew.h>
 #include "NoeudAbstrait.h"
 #include "Utilitaire.h"
 #include "../../Commun/Externe/glm/include/glm/gtx/Projection.hpp"
-
+#include "../../Eclairage/ProgrammeINF2990.h"
 #include "NoeudBille.h"
 
 unsigned int NoeudAbstrait::compteurNoeuds_ = 0;
@@ -446,8 +446,14 @@ void NoeudAbstrait::afficher() const
 
 void NoeudAbstrait::appliquerAfficher() const
 {
+	int colorShift = 0;
 	if (colorShift_)
+	{
 		glTexEnvf(GL_TEXTURE_ENV, GL_TEXTURE_ENV_MODE, GL_BLEND);
+		colorShift = 1;
+	}
+	ProgrammeINF2990::obtenirInstance()->assignerColorShift(colorShift);
+
 	if (impossible_)
 		glColorMask(0, 1, 1, 1);
 	else if (selectionne_) {

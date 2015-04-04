@@ -5,16 +5,18 @@
 #define NB_LUMIERES 4
 
 uniform sampler2D laTexture;
+uniform int colorShift;
 
 varying vec3 normal, eyeVec;
 
 varying vec3 rayonReflechi[NB_LUMIERES];
 varying vec3 halfVect[NB_LUMIERES];
 varying vec3 lightDir[NB_LUMIERES];
-varying 
 
 void main()
 {
+	vec4 colorMask = vec4(1.0);
+	if(colorShift) colorMask = vec4(0.0,0.5,1.0,1.0);
 	// Variables a calculer par fragment:
 	vec3 N = normal ;
 	if(!gl_FrontFacing)
@@ -105,6 +107,6 @@ void main()
 	couleurFinale += lumiereReflechie[AMBIANTE];
 	couleurFinale += lumiereReflechie[DIRECTIONNELLE];
 	couleurFinale += lumiereReflechie[SPOT];
-	gl_FragColor = couleurFinale ;
+	gl_FragColor = colorMask*couleurFinale ;
 	// gl_FragColor = gl_LightSource[1].ambient * texture2D( laTexture, gl_TexCoord[0].st ); // vec4(0.7,0.7,0.7,1.0);
 }

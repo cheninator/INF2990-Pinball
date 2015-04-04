@@ -7,7 +7,6 @@
 /// @ingroup Eclairage
 ///////////////////////////////////////////////////////////////////////////////
 
-
 #include "ProgrammeINF2990.h"
 #include "../../Commun/Utilitaire/OpenGL/OpenGL_Programme.h"
 
@@ -28,6 +27,12 @@ void ProgrammeINF2990::libererInstance()
 	delete instance_;
 	instance_ = nullptr;
 }
+
+void ProgrammeINF2990::assignerColorShift(int colorShift)
+{
+	programme_->assignerUniforme("colorShift", colorShift);
+}
+
 
 ////////////////////////////////////////////////////////////////////////
 ///

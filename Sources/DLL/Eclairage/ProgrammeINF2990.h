@@ -34,6 +34,8 @@ public:
 	void activer();
 	void desactiver();
 
+	void assignerColorShift(int);
+
 private:
 
 	static ProgrammeINF2990* instance_;
