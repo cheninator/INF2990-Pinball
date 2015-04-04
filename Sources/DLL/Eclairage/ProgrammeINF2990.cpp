@@ -14,6 +14,13 @@
 
 ProgrammeINF2990* ProgrammeINF2990::instance_{ nullptr };
 
+////////////////////////////////////////////////////////////////////////
+///
+/// @fn ProgrammeINF2990* ProgrammeINF2990::obtenirInstance() // TODO PHIL
+///
+/// @return aucun.
+///
+////////////////////////////////////////////////////////////////////////
 ProgrammeINF2990* ProgrammeINF2990::obtenirInstance()
 {
 	if (instance_ == nullptr)
@@ -22,22 +29,50 @@ ProgrammeINF2990* ProgrammeINF2990::obtenirInstance()
 	return instance_;
 }
 
+////////////////////////////////////////////////////////////////////////
+///
+/// @fn void ProgrammeINF2990::libererInstance() // TODO PHIL
+///
+/// @return aucun.
+///
+////////////////////////////////////////////////////////////////////////
 void ProgrammeINF2990::libererInstance()
 {
 	delete instance_;
 	instance_ = nullptr;
 }
 
+////////////////////////////////////////////////////////////////////////
+///
+/// @fn void ProgrammeINF2990::assignerColorShift(int colorShift)// TODO PHIL
+///
+/// @return aucun.
+///
+////////////////////////////////////////////////////////////////////////
 void ProgrammeINF2990::assignerColorShift(int colorShift)
 {
 	programme_->assignerUniforme("colorShift", colorShift);
 }
 
+////////////////////////////////////////////////////////////////////////
+///
+/// @fn ProgrammeINF2990::assignerEtatNoeud(int etat) // TODO PHIL
+///
+/// @return aucun.
+///
+////////////////////////////////////////////////////////////////////////
 void ProgrammeINF2990::assignerEtatNoeud(int etat)
 {
 	programme_->assignerUniforme("etatNoeud", etat);
 }
 
+////////////////////////////////////////////////////////////////////////
+///
+/// @fn void ProgrammeINF2990::assignerNumeroNoeud(int numero) // TODO PHIL
+///
+/// @return aucun.
+///
+////////////////////////////////////////////////////////////////////////
 void ProgrammeINF2990::assignerNumeroNoeud(int numero)
 {
 	programme_->assignerUniforme("numeroNoeud", numero);
