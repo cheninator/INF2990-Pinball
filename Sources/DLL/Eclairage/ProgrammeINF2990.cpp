@@ -33,6 +33,16 @@ void ProgrammeINF2990::assignerColorShift(int colorShift)
 	programme_->assignerUniforme("colorShift", colorShift);
 }
 
+void ProgrammeINF2990::assignerEtatNoeud(int etat)
+{
+	programme_->assignerUniforme("etatNoeud", etat);
+}
+
+void ProgrammeINF2990::assignerNumeroNoeud(int numero)
+{
+	programme_->assignerUniforme("numeroNoeud", numero);
+}
+
 
 ////////////////////////////////////////////////////////////////////////
 ///

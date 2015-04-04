@@ -35,6 +35,8 @@ public:
 	void desactiver();
 
 	void assignerColorShift(int);
+	void assignerEtatNoeud(int etat);
+	void assignerNumeroNoeud(int numero);
 
 private:
 

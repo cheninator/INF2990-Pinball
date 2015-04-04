@@ -4,8 +4,17 @@
 #define SPOT 3
 #define NB_LUMIERES 4
 
+#define NOEUD_NORMAL 0
+#define NOEUD_COLOR_SHIFT 1
+#define NOEUD_IMPOSSIBLE 2
+#define NOEUD_SELECTIONNE 3
+#define NOEUD_TRANSPARENT 4
+#define NOEUD_ILLUMINE 5
+
 uniform sampler2D laTexture;
 uniform int colorShift;
+uniform int etatNoeud;
+uniform int numeroNoeud;
 
 varying vec3 normal, eyeVec;
 
