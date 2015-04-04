@@ -102,5 +102,5 @@ void Lumiere::enable()
 ////////////////////////////////////////////////////////////////////////
 void Lumiere::disable()
 {
-	glDisable(GL_LIGHT3);
+	glDisable(handle_);
 }
