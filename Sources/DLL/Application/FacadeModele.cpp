@@ -25,7 +25,7 @@ Samuel Millette <BR>
 Yonni Chen <BR>
 
 */
-
+#define NOT_NIKOLAY FALSE
 #include <windows.h>
 #include <cassert>
 #include <iostream>
@@ -333,7 +333,7 @@ void FacadeModele::afficherBase() const
 	arbre_->afficher();
 
 	// On affiche le texte ici
-
+#if NOT_NIKOLAY
 	glPushAttrib(GL_ALL_ATTRIB_BITS);
 	glDisable(GL_LIGHTING);
 	glDisable(GL_DEPTH_TEST);
@@ -349,13 +349,15 @@ void FacadeModele::afficherBase() const
 	i++;
 	i = i % 6000;
 
-	glTranslated(50, -100, 0);
-	glRotatef((double)(i), 0.0, 0.0, 1.0);
+	FTPoint positionTexte = FTPoint((i % 100), 0 ,0);
+	
 	glColor4f(1.0, 0.0, 0.0, 1.0);
-	//static FTGLPolygonFont* bloodyFont = new FTGLPolygonFont("media/fonts/Arial.ttf");
-	//std::string text = "Compteur random : " + std::to_string((double)i/100.0);
-	//bloodyFont->FaceSize(12);
-	//bloodyFont->Render(text.c_str());
+	static FTGLPolygonFont* bloodyFont = new FTGLPolygonFont("media/fonts/Arial.ttf");
+	std::string text = "Compteur random : " + std::to_string(positionTexte.X());
+	bloodyFont->FaceSize(12);
+
+	bloodyFont->Render(text.c_str(), -1, positionTexte);
+	glRotatef((double)(i), 0.0, 0.0, 1.0);
 
 	glMatrixMode(GL_PROJECTION);
 	glPopMatrix();
@@ -363,7 +365,7 @@ void FacadeModele::afficherBase() const
 	glPopMatrix();
 
 	glPopAttrib();
-
+#endif
 }
 
 
