@@ -1,5 +1,5 @@
 ///////////////////////////////////////////////////////////////////////////////
-/// @file ProgrammeINF2990.h
+/// @file ControleurNuanceurs.h
 /// @author The ballers
 /// @date 2015-03-20
 /// @version 1.0
@@ -15,19 +15,19 @@
 
 ////////////////////////////////////////////////////////////////////////////////
 ///
-/// @class ProgrammeINF2990
+/// @class ControleurNuanceurs
 /// @brief TODO PHIL
 ///
 /// @author The ballers
 /// @date 2015-04-02
 ////////////////////////////////////////////////////////////////////////////////
-class ProgrammeINF2990 
+class ControleurNuanceurs 
 {
 
 public:
-	static ProgrammeINF2990* obtenirInstance();
+	static ControleurNuanceurs* obtenirInstance();
 	static void libererInstance();
-	~ProgrammeINF2990();
+	~ControleurNuanceurs();
 
 	void initialiser(); 
 	
@@ -40,8 +40,8 @@ public:
 
 private:
 
-	static ProgrammeINF2990* instance_;
-	ProgrammeINF2990() = default;
+	static ControleurNuanceurs* instance_;
+	ControleurNuanceurs() = default;
 
 	bool EstInitialise_{ false };
 

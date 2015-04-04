@@ -9,7 +9,7 @@
 #include "NoeudAbstrait.h"
 #include "Utilitaire.h"
 #include "../../Commun/Externe/glm/include/glm/gtx/Projection.hpp"
-#include "../../Eclairage/ProgrammeINF2990.h"
+#include "../../Eclairage/ControleurNuanceurs.h"
 #include "NoeudBille.h"
 
 #define NOEUD_NORMAL 0
@@ -460,7 +460,7 @@ void NoeudAbstrait::appliquerAfficher() const
 		glTexEnvf(GL_TEXTURE_ENV, GL_TEXTURE_ENV_MODE, GL_BLEND);
 		colorShift = NOEUD_COLOR_SHIFT;
 	}
-	ProgrammeINF2990::obtenirInstance()->assignerColorShift(colorShift);
+	ControleurNuanceurs::obtenirInstance()->assignerColorShift(colorShift);
 
 	if (impossible_)
 	{
@@ -487,8 +487,8 @@ void NoeudAbstrait::appliquerAfficher() const
 		if (!selectionne_ && !twin_->estSelectionne())
 			twin_->setTransparent(false);
 
-	ProgrammeINF2990::obtenirInstance()->assignerEtatNoeud(etat);
-	ProgrammeINF2990::obtenirInstance()->assignerNumeroNoeud(numeroNoeud_);
+	ControleurNuanceurs::obtenirInstance()->assignerEtatNoeud(etat);
+	ControleurNuanceurs::obtenirInstance()->assignerNumeroNoeud(numeroNoeud_);
 
 	glStencilFunc(GL_ALWAYS, numeroNoeud_, -1);
 }

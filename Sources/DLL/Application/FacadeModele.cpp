@@ -55,7 +55,7 @@ Yonni Chen <BR>
 #include "../Visiteurs/VisiteurDebug.h"
 #include "../Arbre/Noeuds/NoeudRessort.h"
 #include "../Global/JoueurVirtuel.h"
-#include "../Eclairage/ProgrammeINF2990.h"
+#include "../Eclairage/ControleurNuanceurs.h"
 #include "../Eclairage/ControleurLumieres.h"
 
 #include "VueOrtho.h"
@@ -201,7 +201,7 @@ void FacadeModele::initialiserOpenGL(HWND hWnd)
 
 	/// Initialisation des lumieres et du programme de nuanceurs.
 	controleurLumieres_->initialiserLumieres();
-	ProgrammeINF2990::obtenirInstance()->initialiser();
+	ControleurNuanceurs::obtenirInstance()->initialiser();
 
 	/// Activation de GL_LIGHT0 pour le mode sans nuanceurs.
 	glEnable(GL_LIGHT0);
@@ -252,7 +252,7 @@ void FacadeModele::initialiserOpenGL(HWND hWnd)
 void FacadeModele::libererOpenGL()
 {
 	utilitaire::CompteurAffichage::libererInstance();
-	ProgrammeINF2990::libererInstance();
+	ControleurNuanceurs::libererInstance();
 
 	bool succes{ aidegl::detruireContexteGL(hWnd_, hDC_, hGLRC_) };
 	assert(succes && "Le contexte OpenGL n'a pu etre detruit.");
@@ -329,9 +329,9 @@ void FacadeModele::afficherBase() const
 
 	// Afficher la scene.
 	controleurLumieres_->definirLumieres();
-	ProgrammeINF2990::obtenirInstance()->activer();
+	ControleurNuanceurs::obtenirInstance()->activer();
 	arbre_->afficher();
-	ProgrammeINF2990::obtenirInstance()->desactiver();
+	ControleurNuanceurs::obtenirInstance()->desactiver();
 
 	// On affiche le texte ici
 #if NOT_NIKOLAY

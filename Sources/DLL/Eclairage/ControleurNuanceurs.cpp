@@ -1,5 +1,5 @@
 ///////////////////////////////////////////////////////////////////////////////
-/// @file ProgrammeINF2990.cpp
+/// @file ControleurNuanceurs.cpp
 /// @author The ballers
 /// @date 2015-03-20
 /// @version 1.0
@@ -7,36 +7,36 @@
 /// @ingroup Eclairage
 ///////////////////////////////////////////////////////////////////////////////
 
-#include "ProgrammeINF2990.h"
+#include "ControleurNuanceurs.h"
 #include "../../Commun/Utilitaire/OpenGL/OpenGL_Programme.h"
 
 #include <iostream>
 
-ProgrammeINF2990* ProgrammeINF2990::instance_{ nullptr };
+ControleurNuanceurs* ControleurNuanceurs::instance_{ nullptr };
 
 ////////////////////////////////////////////////////////////////////////
 ///
-/// @fn ProgrammeINF2990* ProgrammeINF2990::obtenirInstance() // TODO PHIL
+/// @fn ControleurNuanceurs* ControleurNuanceurs::obtenirInstance() // TODO PHIL
 ///
 /// @return aucun.
 ///
 ////////////////////////////////////////////////////////////////////////
-ProgrammeINF2990* ProgrammeINF2990::obtenirInstance()
+ControleurNuanceurs* ControleurNuanceurs::obtenirInstance()
 {
 	if (instance_ == nullptr)
-		instance_ = new ProgrammeINF2990();
+		instance_ = new ControleurNuanceurs();
 
 	return instance_;
 }
 
 ////////////////////////////////////////////////////////////////////////
 ///
-/// @fn void ProgrammeINF2990::libererInstance() // TODO PHIL
+/// @fn void ControleurNuanceurs::libererInstance() // TODO PHIL
 ///
 /// @return aucun.
 ///
 ////////////////////////////////////////////////////////////////////////
-void ProgrammeINF2990::libererInstance()
+void ControleurNuanceurs::libererInstance()
 {
 	delete instance_;
 	instance_ = nullptr;
@@ -44,12 +44,12 @@ void ProgrammeINF2990::libererInstance()
 
 ////////////////////////////////////////////////////////////////////////
 ///
-/// @fn ProgrammeINF2990::~ProgrammeINF2990() // TODO PHIL
+/// @fn ControleurNuanceurs::~ControleurNuanceurs() // TODO PHIL
 ///
 /// @return aucun.
 ///
 ////////////////////////////////////////////////////////////////////////
-ProgrammeINF2990::~ProgrammeINF2990()
+ControleurNuanceurs::~ControleurNuanceurs()
 {
 	// Les destructeurs s'occuppent de relacher les ressources OpenGL liés aux objets.
 	desactiver();
@@ -60,12 +60,12 @@ ProgrammeINF2990::~ProgrammeINF2990()
 
 ////////////////////////////////////////////////////////////////////////
 ///
-/// @fn void ProgrammeINF2990::initialiser() // TODO PHIL
+/// @fn void ControleurNuanceurs::initialiser() // TODO PHIL
 ///
 /// @return aucun.
 ///
 ////////////////////////////////////////////////////////////////////////
-void ProgrammeINF2990::initialiser()
+void ControleurNuanceurs::initialiser()
 {
 	// Initialiser le nuanceur de sommets
 	nuanceurSommets_ = new opengl::Nuanceur();
@@ -85,12 +85,12 @@ void ProgrammeINF2990::initialiser()
 
 ////////////////////////////////////////////////////////////////////////
 ///
-/// @fn void ProgrammeINF2990::activer() // TODO PHIL
+/// @fn void ControleurNuanceurs::activer() // TODO PHIL
 ///
 /// @return aucun.
 ///
 ////////////////////////////////////////////////////////////////////////
-void ProgrammeINF2990::activer()
+void ControleurNuanceurs::activer()
 {
 	assert(programme_ != nullptr && "Activation d'un programme de nuanceurs pas initialise");
 	opengl::Programme::Start(*programme_);
@@ -98,12 +98,12 @@ void ProgrammeINF2990::activer()
 
 ////////////////////////////////////////////////////////////////////////
 ///
-/// @fn void ProgrammeINF2990::desactiver() // TODO PHIL
+/// @fn void ControleurNuanceurs::desactiver() // TODO PHIL
 ///
 /// @return aucun.
 ///
 ////////////////////////////////////////////////////////////////////////
-void ProgrammeINF2990::desactiver()
+void ControleurNuanceurs::desactiver()
 {
 	assert(programme_ != nullptr && "Desactivation d'un programme de nuanceurs pas initialise");
 	opengl::Programme::Stop(*programme_);
@@ -111,36 +111,36 @@ void ProgrammeINF2990::desactiver()
 
 ////////////////////////////////////////////////////////////////////////
 ///
-/// @fn void ProgrammeINF2990::assignerColorShift(int colorShift)// TODO PHIL
+/// @fn void ControleurNuanceurs::assignerColorShift(int colorShift)// TODO PHIL
 ///
 /// @return aucun.
 ///
 ////////////////////////////////////////////////////////////////////////
-void ProgrammeINF2990::assignerColorShift(int colorShift)
+void ControleurNuanceurs::assignerColorShift(int colorShift)
 {
 	programme_->assignerUniforme("colorShift", colorShift);
 }
 
 ////////////////////////////////////////////////////////////////////////
 ///
-/// @fn ProgrammeINF2990::assignerEtatNoeud(int etat) // TODO PHIL
+/// @fn ControleurNuanceurs::assignerEtatNoeud(int etat) // TODO PHIL
 ///
 /// @return aucun.
 ///
 ////////////////////////////////////////////////////////////////////////
-void ProgrammeINF2990::assignerEtatNoeud(int etat)
+void ControleurNuanceurs::assignerEtatNoeud(int etat)
 {
 	programme_->assignerUniforme("etatNoeud", etat);
 }
 
 ////////////////////////////////////////////////////////////////////////
 ///
-/// @fn void ProgrammeINF2990::assignerNumeroNoeud(int numero) // TODO PHIL
+/// @fn void ControleurNuanceurs::assignerNumeroNoeud(int numero) // TODO PHIL
 ///
 /// @return aucun.
 ///
 ////////////////////////////////////////////////////////////////////////
-void ProgrammeINF2990::assignerNumeroNoeud(int numero)
+void ControleurNuanceurs::assignerNumeroNoeud(int numero)
 {
 	programme_->assignerUniforme("numeroNoeud", numero);
 }
