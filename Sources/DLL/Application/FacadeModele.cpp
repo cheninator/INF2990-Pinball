@@ -25,7 +25,7 @@ Samuel Millette <BR>
 Yonni Chen <BR>
 
 */
-
+#define NOT_NIKOLAY TRUE
 #include <windows.h>
 #include <cassert>
 #include <iostream>
@@ -333,37 +333,36 @@ void FacadeModele::afficherBase() const
 	arbre_->afficher();
 
 	// On affiche le texte ici
+#if NOT_NIKOLAY
+	static int i = 0;
+	i++;
+	i %= 999999;
 
-	glPushAttrib(GL_ALL_ATTRIB_BITS);
-	glDisable(GL_LIGHTING);
 	glDisable(GL_DEPTH_TEST);
 	glDisable(GL_TEXTURE_2D);
 
-	glMatrixMode(GL_PROJECTION);
-	glPushMatrix();
-	glMatrixMode(GL_MODELVIEW);
-	glPushMatrix();
+	static FTGLPixmapFont* bloodyFont = new FTGLPixmapFont("media/fonts/Arial.ttf");
+	std::string bonjourMonde = "Hello World " + std::to_string(i);
+	bloodyFont->FaceSize(25);
 
-	// Il faut deplacer dans le sens envers de la camera
-	static long i = 0;
-	i++;
-	i = i % 6000;
+	//Dark red text
+	glPixelTransferf(GL_RED_BIAS, -0.5f);
+	glPixelTransferf(GL_GREEN_BIAS, -1.0f);
+	glPixelTransferf(GL_BLUE_BIAS, -1.0f);
 
-	glTranslated(50, -100, 0);
-	glRotatef((double)(i), 0.0, 0.0, 1.0);
-	glColor4f(1.0, 0.0, 0.0, 1.0);
-	//static FTGLPolygonFont* bloodyFont = new FTGLPolygonFont("media/fonts/Arial.ttf");
-	//std::string text = "Compteur random : " + std::to_string((double)i/100.0);
-	//bloodyFont->FaceSize(12);
-	//bloodyFont->Render(text.c_str());
 
-	glMatrixMode(GL_PROJECTION);
-	glPopMatrix();
-	glMatrixMode(GL_MODELVIEW);
-	glPopMatrix();
 
-	glPopAttrib();
+	glm::ivec2 pos = obtenirInstance()->obtenirVue()->obtenirProjection().obtenirDimensionCloture();
+	FTBBox boiteText = bloodyFont->BBox(bonjourMonde.c_str());
+	FTPoint boiteTextLower = boiteText.Lower();
+	FTPoint boiteTextUpper = boiteText.Upper();
+	FTPoint positionTexte = FTPoint(pos.x - (boiteTextUpper.X() - boiteTextLower.X()),
+									pos.y - (boiteTextUpper.Y() - boiteTextLower.Y()));
+	bloodyFont->Render(bonjourMonde.c_str(), -1, positionTexte);
 
+	glEnable(GL_TEXTURE_2D);
+	glEnable(GL_DEPTH_TEST);
+#endif
 }
 
 
