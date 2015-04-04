@@ -446,10 +446,23 @@ namespace InterfaceGraphique
                         }
                     case 6:
                         {
-                            labelBase.Text = "l'option Menu Principal quitte le mode Éditeur et retourne au menu principal." +
+                            labelBase.Text = "L'option Menu Principal quitte le mode Éditeur et retourne au menu principal." +
                                                                          "Un message sera présent lorsque vous quittez pour vous assurer que vous voulez bien quitter le mdoe Éditeur." +
                                                                          "\nATTENTION: Si vous quittez, toute modification sur la zone de jeu non sauvegardée sera perdue.";
                             pictureBoxBase.Image = Properties.Resources.Quit;
+                            break;
+                        }
+                    case 7:
+                        {
+                            labelBase.Text = "La Vue Orthogonale est une vue dans laquelle la caméra est toujours perpendiculaire à la zone de jeu." +
+                                            " Vous pouvez vous déplacer à l'aide des flèches ainsi qu'avec le bouton droit de la souris appuyé.";
+                            break;
+                        }
+                    case 8:
+                        {
+                            labelBase.Text = "La Vue Orbitale est une vue dans laquelle la caméra peut être contrôlée par l'utilisateur." +
+                                            " Vous pouvez vous déplacer à l'aide des flèches ainsi qu'avec le bouton droit de la souris appuyé." +
+                                            " Un déplacement gauche/droite permet de tourner la caméra. Un déplacement haut/bas permet de changer l'angle de la caméra.";
                             break;
                         }
 
