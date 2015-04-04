@@ -787,6 +787,16 @@ namespace InterfaceGraphique.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap ZoomElastique1 {
+            get {
+                object obj = ResourceManager.GetObject("ZoomElastique1", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap zoomIN {
             get {
                 object obj = ResourceManager.GetObject("zoomIN", resourceCulture);
