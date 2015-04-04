@@ -454,7 +454,7 @@ namespace InterfaceGraphique
                         }
                     case 7:
                         {
-                            labelBase.Text = "La Vue Orthogonale est une vue dans laquelle la caméra est toujours perpendiculaire à la zone de jeu." +
+                            labelBase.Text = "La Vue Orthographique est une vue dans laquelle la caméra est toujours perpendiculaire à la zone de jeu." +
                                             " Vous pouvez vous déplacer à l'aide des flèches ainsi qu'avec le bouton droit de la souris appuyé.";
                             break;
                         }
