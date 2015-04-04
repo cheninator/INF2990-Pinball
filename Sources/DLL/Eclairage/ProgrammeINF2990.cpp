@@ -44,43 +44,6 @@ void ProgrammeINF2990::libererInstance()
 
 ////////////////////////////////////////////////////////////////////////
 ///
-/// @fn void ProgrammeINF2990::assignerColorShift(int colorShift)// TODO PHIL
-///
-/// @return aucun.
-///
-////////////////////////////////////////////////////////////////////////
-void ProgrammeINF2990::assignerColorShift(int colorShift)
-{
-	programme_->assignerUniforme("colorShift", colorShift);
-}
-
-////////////////////////////////////////////////////////////////////////
-///
-/// @fn ProgrammeINF2990::assignerEtatNoeud(int etat) // TODO PHIL
-///
-/// @return aucun.
-///
-////////////////////////////////////////////////////////////////////////
-void ProgrammeINF2990::assignerEtatNoeud(int etat)
-{
-	programme_->assignerUniforme("etatNoeud", etat);
-}
-
-////////////////////////////////////////////////////////////////////////
-///
-/// @fn void ProgrammeINF2990::assignerNumeroNoeud(int numero) // TODO PHIL
-///
-/// @return aucun.
-///
-////////////////////////////////////////////////////////////////////////
-void ProgrammeINF2990::assignerNumeroNoeud(int numero)
-{
-	programme_->assignerUniforme("numeroNoeud", numero);
-}
-
-
-////////////////////////////////////////////////////////////////////////
-///
 /// @fn ProgrammeINF2990::~ProgrammeINF2990() // TODO PHIL
 ///
 /// @return aucun.
@@ -129,7 +92,6 @@ void ProgrammeINF2990::initialiser()
 ////////////////////////////////////////////////////////////////////////
 void ProgrammeINF2990::activer()
 {
-	// std::cout <<"Etat de validite de progNuanceur: "<< programme_->estValide() << std::endl;
 	assert(programme_ != nullptr && "Activation d'un programme de nuanceurs pas initialise");
 	opengl::Programme::Start(*programme_);
 }
@@ -147,3 +109,38 @@ void ProgrammeINF2990::desactiver()
 	opengl::Programme::Stop(*programme_);
 }
 
+////////////////////////////////////////////////////////////////////////
+///
+/// @fn void ProgrammeINF2990::assignerColorShift(int colorShift)// TODO PHIL
+///
+/// @return aucun.
+///
+////////////////////////////////////////////////////////////////////////
+void ProgrammeINF2990::assignerColorShift(int colorShift)
+{
+	programme_->assignerUniforme("colorShift", colorShift);
+}
+
+////////////////////////////////////////////////////////////////////////
+///
+/// @fn ProgrammeINF2990::assignerEtatNoeud(int etat) // TODO PHIL
+///
+/// @return aucun.
+///
+////////////////////////////////////////////////////////////////////////
+void ProgrammeINF2990::assignerEtatNoeud(int etat)
+{
+	programme_->assignerUniforme("etatNoeud", etat);
+}
+
+////////////////////////////////////////////////////////////////////////
+///
+/// @fn void ProgrammeINF2990::assignerNumeroNoeud(int numero) // TODO PHIL
+///
+/// @return aucun.
+///
+////////////////////////////////////////////////////////////////////////
+void ProgrammeINF2990::assignerNumeroNoeud(int numero)
+{
+	programme_->assignerUniforme("numeroNoeud", numero);
+}
