@@ -39,6 +39,143 @@ namespace InterfaceGraphique
         public Aide()
         {
             InitializeComponent();
+            InitializeShortcuts();
+        }
+
+        private void InitializeShortcuts()
+        {
+            string shortcutTemp;
+            var item1 = new ListViewItem(new[] { "Sélection", " S " });
+            listViewShortcut.Items.Insert(0, item1);
+            listViewShortcut.Items[0].Group = listViewShortcut.Groups[0];
+
+            item1 = new ListViewItem(new[] { "Rotation", " R " });
+            listViewShortcut.Items.Insert(1, item1);
+            listViewShortcut.Items[1].Group = listViewShortcut.Groups[0];
+
+            item1 = new ListViewItem(new[] { "Mise à Échelle", " E " });
+            listViewShortcut.Items.Insert(2, item1);
+            listViewShortcut.Items[2].Group = listViewShortcut.Groups[0];
+
+            item1 = new ListViewItem(new[] { "Duplication", " C " });
+            listViewShortcut.Items.Insert(3, item1);
+            listViewShortcut.Items[3].Group = listViewShortcut.Groups[0];
+
+            item1 = new ListViewItem(new[] { "Suppression", " Suppr. " });
+            listViewShortcut.Items.Insert(4, item1);
+            listViewShortcut.Items[4].Group = listViewShortcut.Groups[0];
+
+            item1 = new ListViewItem(new[] { "Zoom Élastique", " Z " });
+            listViewShortcut.Items.Insert(5, item1);
+            listViewShortcut.Items[5].Group = listViewShortcut.Groups[0];
+
+            item1 = new ListViewItem(new[] { "Paneau Création", " P " });
+            listViewShortcut.Items.Insert(6, item1);
+            listViewShortcut.Items[6].Group = listViewShortcut.Groups[0];
+
+            item1 = new ListViewItem(new[] { "Vue Orthographique", " 1 " });
+            listViewShortcut.Items.Insert(7, item1);
+            listViewShortcut.Items[7].Group = listViewShortcut.Groups[1];
+
+            item1 = new ListViewItem(new[] { "Vue Orbile", " 2 " });
+            listViewShortcut.Items.Insert(8, item1);
+            listViewShortcut.Items[8].Group = listViewShortcut.Groups[1];
+
+            item1 = new ListViewItem(new[] { "Déplacement Clavier", " Flèches " });
+            listViewShortcut.Items.Insert(9, item1);
+            listViewShortcut.Items[9].Group = listViewShortcut.Groups[1];
+
+            item1 = new ListViewItem(new[] { "Déplacement Souris", " Bouton Droit " });
+            listViewShortcut.Items.Insert(10, item1);
+            listViewShortcut.Items[10].Group = listViewShortcut.Groups[1];
+
+            item1 = new ListViewItem(new[] { "Zoom Clavier", " + / -" });
+            listViewShortcut.Items.Insert(11, item1);
+            listViewShortcut.Items[11].Group = listViewShortcut.Groups[1];
+
+            item1 = new ListViewItem(new[] { "Zoom Souris", " Roulette " });
+            listViewShortcut.Items.Insert(12, item1);
+            listViewShortcut.Items[12].Group = listViewShortcut.Groups[1];
+
+            item1 = new ListViewItem(new[] { "Mode Test", " T " });
+            listViewShortcut.Items.Insert(13, item1);
+            listViewShortcut.Items[13].Group = listViewShortcut.Groups[2];
+
+            item1 = new ListViewItem(new[] { "Pause", " Échapp. " });
+            listViewShortcut.Items.Insert(14, item1);
+            listViewShortcut.Items[14].Group = listViewShortcut.Groups[2];
+
+            item1 = new ListViewItem(new[] { "Recommencer", " Retour Arrière " });
+            listViewShortcut.Items.Insert(15, item1);
+            listViewShortcut.Items[15].Group = listViewShortcut.Groups[2];
+
+            item1 = new ListViewItem(new[] { "Affichage de débogage ", " B " });
+            listViewShortcut.Items.Insert(16, item1);
+            listViewShortcut.Items[16].Group = listViewShortcut.Groups[2];
+
+
+            shortcutTemp = char.ConvertFromUtf32(FonctionsNatives.obtenirTouchePGJ1()).ToString();
+            if (shortcutTemp == " ")
+            {
+                shortcutTemp = "Espace";
+            }
+            item1 = new ListViewItem(new[] { "Palettes Gauches", " " + shortcutTemp });
+            listViewShortcut.Items.Insert(17, item1);
+            listViewShortcut.Items[17].Group = listViewShortcut.Groups[2];
+
+            shortcutTemp = char.ConvertFromUtf32(FonctionsNatives.obtenirTouchePDJ1()).ToString();
+            if (shortcutTemp == " ")
+            {
+                shortcutTemp = "Espace";
+            }
+            item1 = new ListViewItem(new[] { "Palettes Droites", " " + shortcutTemp });
+            listViewShortcut.Items.Insert(18, item1);
+            listViewShortcut.Items[18].Group = listViewShortcut.Groups[2];
+
+            shortcutTemp = char.ConvertFromUtf32(FonctionsNatives.obtenirToucheRessort()).ToString();
+            if (shortcutTemp == " ")
+            {
+                shortcutTemp = "Espace";
+            }
+            item1 = new ListViewItem(new[] { "Ressorts ", " " + shortcutTemp });
+            listViewShortcut.Items.Insert(19, item1);
+            listViewShortcut.Items[19].Group = listViewShortcut.Groups[2];     
+
+            item1 = new ListViewItem(new[] { "Nouvelle Zone ", " CTRL + N "  });
+            listViewShortcut.Items.Insert(20, item1);
+            listViewShortcut.Items[20].Group = listViewShortcut.Groups[3];
+
+            item1 = new ListViewItem(new[] { "Ouvrir une Zone ", " CTRL + O " });
+            listViewShortcut.Items.Insert(21, item1);
+            listViewShortcut.Items[21].Group = listViewShortcut.Groups[3];
+
+            item1 = new ListViewItem(new[] { "Enregistrer ", " CTRL + S " });
+            listViewShortcut.Items.Insert(22, item1);
+            listViewShortcut.Items[22].Group = listViewShortcut.Groups[3];
+
+            item1 = new ListViewItem(new[] { "Enregistrer Sous ", " CTRL + SHIFT + S " });
+            listViewShortcut.Items.Insert(23, item1);
+            listViewShortcut.Items[23].Group = listViewShortcut.Groups[3];
+
+            item1 = new ListViewItem(new[] { "Menu Principal ", " CTRL + Q " });
+            listViewShortcut.Items.Insert(24, item1);
+            listViewShortcut.Items[24].Group = listViewShortcut.Groups[3];
+
+            item1 = new ListViewItem(new[] { "Aide ", " F1 " });
+            listViewShortcut.Items.Insert(25, item1);
+            listViewShortcut.Items[25].Group = listViewShortcut.Groups[3];
+
+            item1 = new ListViewItem(new[] { "Lumière Ambiante ", " J " });
+            listViewShortcut.Items.Insert(26, item1);
+            listViewShortcut.Items[26].Group = listViewShortcut.Groups[2];
+
+            item1 = new ListViewItem(new[] { "Lumière Directionnelle ", " K " });
+            listViewShortcut.Items.Insert(27, item1);
+            listViewShortcut.Items[27].Group = listViewShortcut.Groups[2];
+
+            item1 = new ListViewItem(new[] { "Lumière Spot ", " L " });
+            listViewShortcut.Items.Insert(28, item1);
+            listViewShortcut.Items[28].Group = listViewShortcut.Groups[2];
         }
 
         private void listView1_SelectedIndexChanged(object sender, System.EventArgs e)
@@ -224,6 +361,12 @@ namespace InterfaceGraphique
                         }
                 }
             }
+        }
+
+        private void listViewShortcut_ColumnWidthChanging(object sender, ColumnWidthChangingEventArgs e)
+        {
+            e.Cancel = true;
+            e.NewWidth = listViewShortcut.Columns[e.ColumnIndex].Width;
         }
     }
 }

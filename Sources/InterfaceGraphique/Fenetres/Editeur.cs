@@ -550,10 +550,11 @@ namespace InterfaceGraphique
                 }
                 else if (e.KeyChar == 'h')
                 {
-                    if (richTextBox1.Visible)
+                    /*if (richTextBox1.Visible)
                         richTextBox1.Hide();
                     else
                         richTextBox1.Show();
+                    */
                 }
                 else if (e.KeyChar == 'z')
                 {
