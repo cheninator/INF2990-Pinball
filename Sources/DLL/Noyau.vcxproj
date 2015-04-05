@@ -245,6 +245,7 @@
     <ClInclude Include="Tests\NoeudAbstraitTest.h" />
     <ClInclude Include="Tests\TestUtilitaire.h" />
     <ClInclude Include="Text\ControleurTexte.h" />
+    <ClInclude Include="Text\ControleurTexteDefine.h" />
     <ClInclude Include="Visiteurs\VisiteurAbstrait.h" />
     <ClInclude Include="Visiteurs\VisiteurAgrandissement.h" />
     <ClInclude Include="Visiteurs\VisiteurCentreDeMasse.h" />

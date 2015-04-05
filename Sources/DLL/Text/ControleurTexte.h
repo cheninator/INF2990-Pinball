@@ -11,6 +11,7 @@
 #include <FTGL/ftgl.h>
 #include "GL/glew.h"
 #include "glm/glm.hpp"
+#include "ControleurTexteDefine.h"
 #include <algorithm>
 
 typedef std::tuple<FTPoint, glm::fvec3, unsigned int, char* > textContainer;
@@ -27,6 +28,7 @@ public:
 	void creeTexte(char* text, char* font = "");
 	void afficherTexte(bool afficher = false);
 	void changerCouleur(char* text, float rouge, float vert, float bleu);
+	void changerCouleur(char* text, glm::fvec3 couleur);
 	void repositionner(char* text, float posX, float posY);
 	void resize(char* text, unsigned int size);
 
