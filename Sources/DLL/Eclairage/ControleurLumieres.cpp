@@ -15,8 +15,8 @@
 ////////////////////////////////////////////////////////////////////////
 ///
 /// @fn ControleurLumieres::ControleurLumieres()
-///
-/// @return 
+/// 
+/// @brief Assigne des poignees openGL choisies aux trois lumieres
 ///
 ////////////////////////////////////////////////////////////////////////
 ControleurLumieres::ControleurLumieres()
@@ -30,7 +30,7 @@ ControleurLumieres::ControleurLumieres()
 ///
 /// @fn ControleurLumieres::~ControleurLumieres()
 ///
-/// @return 
+/// @brief Destructeur, detruit les lumieres.
 ///
 ////////////////////////////////////////////////////////////////////////
 ControleurLumieres::~ControleurLumieres()
@@ -42,16 +42,15 @@ ControleurLumieres::~ControleurLumieres()
 
 ////////////////////////////////////////////////////////////////////////
 ///
-/// @fn void ControleurLumieres::initialiserLumieres() // TODO PHIL
-///
+/// @fn void ControleurLumieres::initialiserLumieres() 
+/// 
+/// @Brief Place les lumieres et definit leur proprietes.
+/// 
 /// @return aucun.
 ///
 ////////////////////////////////////////////////////////////////////////
 void ControleurLumieres::initialiserLumieres()
 {
-	// Gros de la job: setter toutes les propriétés des 3 lumieres.
-
-
 	// Initialiser lumAmbiante
 	lumAmbiante_->setAmbientColor({ 0.05f, 0.05f, 0.05f, 1.0f });
 	lumAmbiante_->setDiffuseColor({ 0.1f, 0.1f, 0.1f, 1.0f });
@@ -66,7 +65,6 @@ void ControleurLumieres::initialiserLumieres()
 	lumDirectionnelle_->setDirection({ 0.1f, 0.0f, -1.0f, 1.0f });
 
 	// Inisialiser lumSpot
-
 	lumSpot_->setAmbientColor({ 0.0f, 0.0f, 0.0f, 1.0f }); 
 	lumSpot_->setDiffuseColor({ 0.4f, 0.4f, 0.3f, 1.0f }); 
 	lumSpot_->setSpecularColor({ 1.0f, 1.0f, 1.0f, 1.0f });
@@ -77,29 +75,30 @@ void ControleurLumieres::initialiserLumieres()
 	lumSpot_->setExponent(0.2f);
 
 	lumSpot_->setAttenuation({ 1.0f, 1.0f, 0.1f });
-
 }
 
 ////////////////////////////////////////////////////////////////////////
 ///
-/// @fn void ControleurLumieres::definirLumieres() // TODO PHIL
-///
+/// @fn void ControleurLumieres::definirLumieres()
+/// 
+/// @brief Envoi les donnees des lumieres au serveur openGL
+/// 
 /// @return aucun.
 ///
 ////////////////////////////////////////////////////////////////////////
 void ControleurLumieres::definirLumieres()
 {
 	lumAmbiante_->definir();
-
 	lumDirectionnelle_->definir();
-
 	lumSpot_->definir();
 }
 
 ////////////////////////////////////////////////////////////////////////
 ///
-/// @fn void ControleurLumieres::activerAmbiante() // TODO PHIL
-///
+/// @fn void ControleurLumieres::activerAmbiante() 
+/// 
+/// @brief Active le calcul de lumiere ambiante dans le nuanceur
+/// 
 /// @return aucun.
 ///
 ////////////////////////////////////////////////////////////////////////
@@ -111,6 +110,8 @@ void ControleurLumieres::activerAmbiante()
 ///
 /// @fn void ControleurLumieres::desactiverAmbiante() // TODO PHIL
 ///
+/// @brief Desactive le calcul de lumiere ambiante dans le nuanceur
+/// 
 /// @return aucun.
 ///
 ////////////////////////////////////////////////////////////////////////
@@ -120,8 +121,10 @@ void ControleurLumieres::desactiverAmbiante()
 
 ////////////////////////////////////////////////////////////////////////
 ///
-/// @fn void ControleurLumieres::activerDirectionnelle() // TODO PHIL
-///
+/// @fn void ControleurLumieres::activerDirectionnelle() 
+/// 
+/// @brief Active le calcul de lumiere directionnelle dans le nuanceur
+/// 
 /// @return aucun.
 ///
 ////////////////////////////////////////////////////////////////////////
@@ -131,8 +134,10 @@ void ControleurLumieres::activerDirectionnelle()
 
 ////////////////////////////////////////////////////////////////////////
 ///
-/// @fn void ControleurLumieres::desactiverDirectionnelle() // TODO PHIL
+/// @fn void ControleurLumieres::desactiverDirectionnelle() 
 ///
+/// @brief Desactive le calcul de lumiere directionnelle dans le nuanceur
+/// 
 /// @return aucun.
 ///
 ////////////////////////////////////////////////////////////////////////
@@ -142,8 +147,10 @@ void ControleurLumieres::desactiverDirectionnelle()
 
 ////////////////////////////////////////////////////////////////////////
 ///
-/// @fn void ControleurLumieres::activerSpot() // TODO PHIL
+/// @fn void ControleurLumieres::activerSpot() 
 ///
+/// @brief Active le calcul de lumiere spot dans le nuanceur
+/// 
 /// @return aucun.
 ///
 ////////////////////////////////////////////////////////////////////////
@@ -153,8 +160,10 @@ void ControleurLumieres::activerSpot()
 
 ////////////////////////////////////////////////////////////////////////
 ///
-/// @fn void ControleurLumieres::desactiverSpot() // TODO PHIL
+/// @fn void ControleurLumieres::desactiverSpot()
 ///
+/// @brief Desactive le calcul de lumiere spot dans le nuanceur
+/// 
 /// @return aucun.
 ///
 ////////////////////////////////////////////////////////////////////////
