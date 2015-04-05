@@ -133,7 +133,7 @@ void ControleurSon::sourdine(bool mute)
 	canal->setMute(mute);
 }
 
-unsigned int ControleurSon::lookUp(std::string fileName)
+int ControleurSon::lookUp(std::string fileName)
 {
 	for (unsigned int i = 0; i < soundTable_.size(); i++)
 		if (soundTable_[i].first == fileName)

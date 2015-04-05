@@ -29,7 +29,7 @@ public:
 	
 
 private:
-	unsigned int lookUp(std::string fileName);
+	int lookUp(std::string fileName);
 	void setVolumeLimiter();
 	void setVolumeBGM();
 	void setVolumeSFX();
