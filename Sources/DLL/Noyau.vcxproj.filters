@@ -85,11 +85,19 @@
     <Filter Include="Header Files\Eclairage">
       <UniqueIdentifier>{e7dac68f-698b-4100-ac66-90ffb263d7b6}</UniqueIdentifier>
     </Filter>
+<<<<<<< HEAD
     <Filter Include="Header Files\Memento">
       <UniqueIdentifier>{7fa627b5-6751-43f0-b4c8-44fb6853c544}</UniqueIdentifier>
     </Filter>
     <Filter Include="Source Files\Memento">
       <UniqueIdentifier>{5a0b94c8-bf4f-4de3-ae5d-17537138a4cd}</UniqueIdentifier>
+=======
+    <Filter Include="Header Files\Text">
+      <UniqueIdentifier>{ed5b5eb0-c8fd-476d-a85f-365a55a821db}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Texte">
+      <UniqueIdentifier>{30d299ed-3e43-42d2-a0da-66fd50207eab}</UniqueIdentifier>
+>>>>>>> origin/master
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -249,6 +257,7 @@
     <ClCompile Include="Eclairage\ProgrammeINF2990.cpp">
       <Filter>Source Files\Eclairage</Filter>
     </ClCompile>
+<<<<<<< HEAD
     <ClCompile Include="Memento\CareTaker.cpp">
       <Filter>Source Files\Memento</Filter>
     </ClCompile>
@@ -257,6 +266,10 @@
     </ClCompile>
     <ClCompile Include="Memento\Memento.cpp">
       <Filter>Source Files\Memento</Filter>
+=======
+    <ClCompile Include="Text\ControleurTexte.cpp">
+      <Filter>Source Files\Texte</Filter>
+>>>>>>> origin/master
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -479,6 +492,7 @@
     <ClInclude Include="Eclairage\ProgrammeINF2990.h">
       <Filter>Header Files\Eclairage</Filter>
     </ClInclude>
+<<<<<<< HEAD
     <ClInclude Include="Memento\CareTaker.h">
       <Filter>Header Files\Memento</Filter>
     </ClInclude>
@@ -487,6 +501,10 @@
     </ClInclude>
     <ClInclude Include="Memento\Memento.h">
       <Filter>Header Files\Memento</Filter>
+=======
+    <ClInclude Include="Text\ControleurTexte.h">
+      <Filter>Header Files\Text</Filter>
+>>>>>>> origin/master
     </ClInclude>
   </ItemGroup>
 </Project>

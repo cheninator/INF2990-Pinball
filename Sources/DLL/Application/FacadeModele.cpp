@@ -25,17 +25,14 @@ Samuel Millette <BR>
 Yonni Chen <BR>
 
 */
-#define NOT_NIKOLAY TRUE
 #include <windows.h>
 #include <cassert>
 #include <iostream>
 
-#include <FTGL/ftgl.h>
 #include "GL/glew.h"
 #include "FreeImage.h"
-
 #include "FacadeModele.h"
-
+#include "../Text/ControleurTexte.h"
 #include "../Visiteurs/VisiteurAbstrait.h"
 #include "../Visiteurs/VisiteurSelection.h"
 #include "../Visiteurs/VisiteurSelectionInverse.h"
@@ -333,36 +330,10 @@ void FacadeModele::afficherBase() const
 	arbre_->afficher();
 
 	// On affiche le texte ici
-#if NOT_NIKOLAY
-	static int i = 0;
-	i++;
-	i %= 999999;
 
-	glDisable(GL_DEPTH_TEST);
-	glDisable(GL_TEXTURE_2D);
-
-	static FTGLPixmapFont* bloodyFont = new FTGLPixmapFont("media/fonts/Arial.ttf");
-	std::string bonjourMonde = "Hello World " + std::to_string(i);
-	bloodyFont->FaceSize(25);
-
-	//Dark red text
-	glPixelTransferf(GL_RED_BIAS, -0.5f);
-	glPixelTransferf(GL_GREEN_BIAS, -1.0f);
-	glPixelTransferf(GL_BLUE_BIAS, -1.0f);
-
-
-
-	glm::ivec2 pos = obtenirInstance()->obtenirVue()->obtenirProjection().obtenirDimensionCloture();
-	FTBBox boiteText = bloodyFont->BBox(bonjourMonde.c_str());
-	FTPoint boiteTextLower = boiteText.Lower();
-	FTPoint boiteTextUpper = boiteText.Upper();
-	FTPoint positionTexte = FTPoint(pos.x - (boiteTextUpper.X() - boiteTextLower.X()),
-									pos.y - (boiteTextUpper.Y() - boiteTextLower.Y()));
-	bloodyFont->Render(bonjourMonde.c_str(), -1, positionTexte);
-
-	glEnable(GL_TEXTURE_2D);
-	glEnable(GL_DEPTH_TEST);
-#endif
+	// fuck that shit... si je met cette ligne la dans le .h ca compile plus...
+	static ControleurTexte* controleurTexte_ = new ControleurTexte();
+	controleurTexte_->afficherTexte("lol");
 }
 
 
