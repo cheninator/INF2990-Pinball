@@ -11,14 +11,17 @@ ControleurTexte::ControleurTexte()
 	std::string::size_type position = currentFolder.find_last_of("\\/");
 	std::string targetPath = std::string(currentFolder).substr(0, position);
 	targetPath += "\\media\\Fonts\\";
+	std::cout << "Debut de la generation des fonts: " << std::endl;
 	populateFontVector(targetPath);
+	std::cout << "Fin de la génération des fonts." << std::endl;
 	//populateFontVector("C:\\Windows\\Fonts\\");
 }
 
 ControleurTexte::~ControleurTexte()
 {
+	// Si je fais delete ici, ca shie...
 	for (unsigned int i = 0; i < fontTable_.size(); i++)
-		delete fontTable_[i].second;
+		fontTable_[i].second = nullptr;
 }
 
 void ControleurTexte::populateFontVector(std::string targetPath)

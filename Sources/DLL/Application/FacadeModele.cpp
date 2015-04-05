@@ -106,6 +106,8 @@ FacadeModele* FacadeModele::obtenirInstance(bool console)
 		instance_->quad_ = new QuadTree(glm::dvec3(coinGaucheTableX, coinGaucheTableY, 0),
 										glm::dvec3(coinDroitTableX,  coinDroitTableY,  0));
 		instance_->progNuanceur_ = new ProgrammeINF2990();
+		instance_->controleurTexte_ = new ControleurTexte();
+
 		if (console)
 			instance_->old_ = std::cout.rdbuf(instance_->oss_.rdbuf());
 		else
@@ -147,6 +149,7 @@ FacadeModele::~FacadeModele()
 	delete proprietes_;
 	delete joueur_;
 	delete quad_;
+	delete controleurTexte_;
 	if (instance_->old_ != nullptr)
 		std::cout.rdbuf(instance_->old_);
 }
@@ -334,11 +337,10 @@ void FacadeModele::afficherBase() const
 	// fuck that shit... si je met cette ligne la dans le .h ca compile plus...
 	// TODO bouger shit dans l'API et le C#, pis juste appeler afficherTexte();
 	bool creation = true;
-	static ControleurTexte* controleurTexte_ = new ControleurTexte();
 	if (creation)
 	{
 		// le Texte a Ecrire
-		char* myText = "lol";
+		char* myText = "Hello World";
 
 		// On spécifie la font
 		controleurTexte_->creeTexte(myText, "Bloodthirsty.ttf");

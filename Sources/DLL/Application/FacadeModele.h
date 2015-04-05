@@ -44,6 +44,7 @@ class NoeudRessort;
 class JoueurVirtuel;
 class QuadTree;
 class ProgrammeINF2990;
+class ControleurTexte;
 
 namespace vue {
    class Vue;
@@ -293,6 +294,7 @@ private:
    std::vector<NoeudAbstrait*> listeRessorts_;
 
    ProgrammeINF2990* progNuanceur_;
+   ControleurTexte* controleurTexte_;
 };
 
 
