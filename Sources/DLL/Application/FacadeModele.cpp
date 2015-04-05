@@ -332,8 +332,29 @@ void FacadeModele::afficherBase() const
 	// On affiche le texte ici
 
 	// fuck that shit... si je met cette ligne la dans le .h ca compile plus...
+	// TODO bouger shit dans l'API et le C#, pis juste appeler afficherTexte();
+	bool creation = true;
 	static ControleurTexte* controleurTexte_ = new ControleurTexte();
-	controleurTexte_->afficherTexte("lol");
+	if (creation)
+	{
+		// le Texte a Ecrire
+		char* myText = "lol";
+
+		// On spécifie la font
+		controleurTexte_->creeTexte(myText, "Bloodthirsty.ttf");
+
+		// On specifie la taille (en 1/72 de pouce)
+		controleurTexte_->resize(myText, 72);
+
+		// On specifie une couleur RGB
+		controleurTexte_->changerCouleur(myText, 0, 1, 1);
+
+		// On specifie la position
+		controleurTexte_->repositionner(myText, 50, 50);
+
+		creation = false;
+	}
+	controleurTexte_->afficherTexte();
 }
 
 
