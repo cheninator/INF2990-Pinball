@@ -377,7 +377,7 @@ namespace InterfaceGraphique
             this.Gate.Size = new System.Drawing.Size(98, 48);
             this.Gate.TabIndex = 7;
             this.Gate.Tag = "Gate";
-            this.Gate.Text = "Gate";
+            this.Gate.Text = "Porte";
             this.Gate.TextAlign = System.Drawing.ContentAlignment.TopRight;
             this.Gate.UseVisualStyleBackColor = false;
             this.Gate.Click += new System.EventHandler(this.Gate_Button_Click);
@@ -434,7 +434,7 @@ namespace InterfaceGraphique
             this.Group_Element2.Size = new System.Drawing.Size(216, 133);
             this.Group_Element2.TabIndex = 8;
             this.Group_Element2.TabStop = false;
-            this.Group_Element2.Text = "Éléments de base";
+            this.Group_Element2.Text = "Éléments essentiels";
             // 
             // Trou_bouton
             // 
@@ -578,6 +578,7 @@ namespace InterfaceGraphique
             // OutilGraphique
             // 
             this.OutilGraphique.Controls.Add(this.labelOCourant);
+            this.OutilGraphique.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.OutilGraphique.Location = new System.Drawing.Point(3, 274);
             this.OutilGraphique.Name = "OutilGraphique";
             this.OutilGraphique.Size = new System.Drawing.Size(153, 49);
