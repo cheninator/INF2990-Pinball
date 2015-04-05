@@ -12,7 +12,7 @@ ControleurTexte::ControleurTexte()
 	std::string targetPath = std::string(currentFolder).substr(0, position);
 	targetPath += "\\media\\Fonts\\";
 	populateFontVector(targetPath);
-	populateFontVector("C:\\Windows\\Fonts\\");
+	//populateFontVector("C:\\Windows\\Fonts\\");
 }
 
 ControleurTexte::~ControleurTexte()
