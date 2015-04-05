@@ -200,8 +200,8 @@ void FacadeModele::initialiserOpenGL(HWND hWnd)
 	glEnable(GL_NORMALIZE);
 
 	/// Initialisation des lumieres et du programme de nuanceurs.
-	controleurLumieres_->initialiserLumieres();
 	ControleurNuanceurs::obtenirInstance()->initialiser();
+	controleurLumieres_->initialiserLumieres();
 
 	/// Activation de GL_LIGHT0 pour le mode sans nuanceurs.
 	glEnable(GL_LIGHT0);
