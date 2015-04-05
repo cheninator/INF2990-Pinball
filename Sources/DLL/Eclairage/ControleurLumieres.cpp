@@ -9,7 +9,11 @@
 
 
 #include "ControleurLumieres.h"
+#include "ControleurNuanceurs.h"
 #include <iostream>
+
+#define LUMIERE_OFF 0
+#define LUMIERE_ON 1
 
 
 ////////////////////////////////////////////////////////////////////////
@@ -104,6 +108,7 @@ void ControleurLumieres::definirLumieres()
 ////////////////////////////////////////////////////////////////////////
 void ControleurLumieres::activerAmbiante()
 {
+	ControleurNuanceurs::obtenirInstance()->assignerEtatAmbiante(LUMIERE_ON);
 }
 
 ////////////////////////////////////////////////////////////////////////
@@ -117,6 +122,7 @@ void ControleurLumieres::activerAmbiante()
 ////////////////////////////////////////////////////////////////////////
 void ControleurLumieres::desactiverAmbiante()
 {
+	ControleurNuanceurs::obtenirInstance()->assignerEtatAmbiante(LUMIERE_OFF);
 }
 
 ////////////////////////////////////////////////////////////////////////
@@ -130,6 +136,7 @@ void ControleurLumieres::desactiverAmbiante()
 ////////////////////////////////////////////////////////////////////////
 void ControleurLumieres::activerDirectionnelle()
 {
+	ControleurNuanceurs::obtenirInstance()->assignerEtatDirectionnelle(LUMIERE_ON);
 }
 
 ////////////////////////////////////////////////////////////////////////
@@ -143,6 +150,7 @@ void ControleurLumieres::activerDirectionnelle()
 ////////////////////////////////////////////////////////////////////////
 void ControleurLumieres::desactiverDirectionnelle()
 {
+	ControleurNuanceurs::obtenirInstance()->assignerEtatDirectionnelle(LUMIERE_OFF);
 }
 
 ////////////////////////////////////////////////////////////////////////
@@ -156,6 +164,7 @@ void ControleurLumieres::desactiverDirectionnelle()
 ////////////////////////////////////////////////////////////////////////
 void ControleurLumieres::activerSpot()
 {
+	ControleurNuanceurs::obtenirInstance()->assignerEtatSpot(LUMIERE_ON);
 }
 
 ////////////////////////////////////////////////////////////////////////
@@ -169,6 +178,7 @@ void ControleurLumieres::activerSpot()
 ////////////////////////////////////////////////////////////////////////
 void ControleurLumieres::desactiverSpot()
 {
+	ControleurNuanceurs::obtenirInstance()->assignerEtatSpot(LUMIERE_OFF);
 }
 
 void ControleurLumieres::touche1()

@@ -144,3 +144,39 @@ void ControleurNuanceurs::assignerNumeroNoeud(int numero)
 {
 	programme_->assignerUniforme("numeroNoeud", numero);
 }
+
+////////////////////////////////////////////////////////////////////////
+///
+/// @fn void ControleurNuanceurs::assignerEtatAmbiante(int etat)
+///
+/// @return aucun.
+///
+////////////////////////////////////////////////////////////////////////
+void ControleurNuanceurs::assignerEtatAmbiante(int etat)
+{
+	programme_->assignerUniforme("etatAmbiante", etat);
+}
+
+////////////////////////////////////////////////////////////////////////
+///
+/// @fn void ControleurNuanceurs::assignerEtatDirectionnelle(int etat)
+///
+/// @return aucun.
+///
+////////////////////////////////////////////////////////////////////////	
+void ControleurNuanceurs::assignerEtatDirectionnelle(int etat)
+{
+	programme_->assignerUniforme("etatDirectionnelle", etat);
+}
+
+////////////////////////////////////////////////////////////////////////
+///
+/// @fn void ControleurNuanceurs::assignerEtatSpot(int etat)
+///
+/// @return aucun.
+///
+////////////////////////////////////////////////////////////////////////	
+void ControleurNuanceurs::assignerEtatSpot(int etat)
+{
+	programme_->assignerUniforme("etatSpot", etat);
+}

@@ -38,6 +38,10 @@ public:
 	void assignerEtatNoeud(int etat);
 	void assignerNumeroNoeud(int numero);
 
+	void assignerEtatAmbiante(int etat);
+	void assignerEtatDirectionnelle(int etat);
+	void assignerEtatSpot(int etat);
+
 private:
 
 	static ControleurNuanceurs* instance_;
