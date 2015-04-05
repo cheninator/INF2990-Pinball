@@ -13,9 +13,8 @@ ControleurTexte::ControleurTexte()
 	targetPath += "\\media\\Fonts\\";
 	std::cout << "Debut de la generation des fonts: " << std::endl;
 	populateFontVector(targetPath);
-	populateFontVector("C:\\Windows\\Fonts\\");
-	std::cout << "Fin de la génération des fonts." << std::endl;
 	//populateFontVector("C:\\Windows\\Fonts\\");
+	std::cout << "Fin de la generation des fonts." << std::endl;
 }
 
 ControleurTexte::~ControleurTexte()
