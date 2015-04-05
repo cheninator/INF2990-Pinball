@@ -181,23 +181,3 @@ void ControleurLumieres::desactiverSpot()
 	ControleurNuanceurs::obtenirInstance()->assignerEtatSpot(LUMIERE_OFF);
 }
 
-void ControleurLumieres::touche1()
-{
-	std::cout << "ControleurLumieres::touche1()" << std::endl;
-	// lumDirectionnelle_->setPosition(lumDirectionnelle_->getPosition() + glm::fvec4{ +10.0f, 0.0f, 0.0f, 0.0f });
-	lumSpot_->setCutoffAngle(lumSpot_->getCutoffAngle() - 1);
-}
-
-void ControleurLumieres::touche2()
-{
-	std::cout << "ControleurLumieres::touche2()" << std::endl;
-	lumSpot_->setCutoffAngle(lumSpot_->getCutoffAngle() + 1);
-}
-
-void ControleurLumieres::touche3()
-{
-	std::cout << "ControleurLumieres::touche3()" << std::endl;
-	desactiverSpot();// lumSpot_->setExponent(lumSpot_->getExponent() + 0.1);
-	// lumDirectionnelle_->setPosition(lumDirectionnelle_->getPosition() + glm::fvec4{ 0.0f, 0.0f, 10.0f, 0.0f });
-	
-}

@@ -55,12 +55,6 @@ public:
 	/// Desactiver la lumiere spot
 	void desactiverSpot();
 
-
-	// Touche utilisees pour l'experimentation
-	void touche1();
-	void touche2();
-	void touche3();
-
 private:
 
 	/// Objet pour la lumiere ambiante

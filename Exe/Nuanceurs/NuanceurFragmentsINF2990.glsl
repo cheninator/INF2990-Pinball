@@ -16,6 +16,10 @@ uniform int colorShift;
 uniform int etatNoeud;
 uniform int numeroNoeud;
 
+uniform int etatAmbiante;
+uniform int etatDirectionnelle;
+uniform int etatSpot;
+
 varying vec3 normal, eyeVec;
 
 varying vec3 rayonReflechi[NB_LUMIERES];
@@ -113,8 +117,11 @@ void main()
 	// if(distance[SPOT] > 100) discard;
 
 	vec4 couleurFinale = vec4(0);
+	if(etatAmbiante)
 	couleurFinale += lumiereReflechie[AMBIANTE];
+	if(etatDirectionnelle)
 	couleurFinale += lumiereReflechie[DIRECTIONNELLE];
+	if(etatSpot == 1)
 	couleurFinale += lumiereReflechie[SPOT];
 	gl_FragColor = colorMask*couleurFinale ;
 	// gl_FragColor = gl_LightSource[1].ambient * texture2D( laTexture, gl_TexCoord[0].st ); // vec4(0.7,0.7,0.7,1.0);

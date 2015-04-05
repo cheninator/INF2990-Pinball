@@ -2158,16 +2158,13 @@ void FacadeModele::setLight(int lum, bool state)
 	switch (lum)
 	{
 	case 0:
-		controleurLumieres_->touche1();
-		//(state ? controleurLumieres_->activerAmbiante() : controleurLumieres_->desactiverAmbiante());
+		(state ? controleurLumieres_->activerAmbiante() : controleurLumieres_->desactiverAmbiante());
 		break;
 	case 1:
-		controleurLumieres_->touche2();
-		//(state ? controleurLumieres_->activerDirectionnelle() : controleurLumieres_->desactiverDirectionnelle());
+		(state ? controleurLumieres_->activerDirectionnelle() : controleurLumieres_->desactiverDirectionnelle());
 		break;
 	case 2:
-		controleurLumieres_->touche3();
-		//(state ? controleurLumieres_->activerAmbiante() : controleurLumieres_->desactiverSpot());
+		(state ? controleurLumieres_->activerSpot() : controleurLumieres_->desactiverSpot());
 		break;
 	}
 }
