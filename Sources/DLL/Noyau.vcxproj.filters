@@ -500,5 +500,8 @@
     <ClInclude Include="Text\ControleurTexte.h">
       <Filter>Header Files\Text</Filter>
     </ClInclude>
+    <ClInclude Include="Text\ControleurTexteDefine.h">
+      <Filter>Header Files\Text</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>

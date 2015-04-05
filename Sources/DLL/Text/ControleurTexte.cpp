@@ -148,13 +148,27 @@ void ControleurTexte::changerCouleur(char* text, float rouge, float vert, float 
 		bleu = 0;
 	
 	int textIndex = lookUpText(text);
-	float red = 1 - rouge;
-	float green = 1 - vert;
-	float blue = 1 - bleu;
-	std::get<1>(texts_[textIndex].second) = {red, green, blue};
-
+	std::get<1>(texts_[textIndex].second) = {1 - rouge, 1 - vert, 1 - bleu};
 }
 
+void ControleurTexte::changerCouleur(char* text, glm::fvec3 couleur)
+{
+	if (couleur.x > 1)
+		couleur.x /= 255;
+	else if (couleur.x < 0)
+		couleur.x = 0;
+	if (couleur.y > 1)
+		couleur.y /= 255;
+	else if (couleur.y < 0)
+		couleur.y = 0;
+	if (couleur.z > 1)
+		couleur.z /= 255;
+	else if (couleur.z < 0)
+		couleur.z = 0;
+
+	int textIndex = lookUpText(text);
+	std::get<1>(texts_[textIndex].second) = { 1 - couleur.x, 1 - couleur.y, 1 - couleur.z };
+}
 // TODO cree une enum de position (comme au theatre)
 void ControleurTexte::repositionner(char* text, float posX, float posY)
 {

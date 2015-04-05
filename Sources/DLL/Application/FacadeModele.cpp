@@ -349,7 +349,9 @@ void FacadeModele::afficherBase() const
 		controleurTexte_->resize(myText, 72);
 
 		// On specifie une couleur RGB
-		controleurTexte_->changerCouleur(myText, 0, 1, 1);
+		controleurTexte_->changerCouleur(myText, 0.5, 1, 1);
+		// Ou encore
+		controleurTexte_->changerCouleur(myText, COLOR_salmon);
 
 		// On specifie la position
 		controleurTexte_->repositionner(myText, 50, 50);
