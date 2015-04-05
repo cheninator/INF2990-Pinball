@@ -173,6 +173,7 @@
     <ClCompile Include="Tests\BancTests.cpp" />
     <ClCompile Include="Tests\NoeudAbstraitTest.cpp" />
     <ClCompile Include="Tests\TestUtilitaire.cpp" />
+    <ClCompile Include="Text\ControleurTexte.cpp" />
     <ClCompile Include="Visiteurs\VisiteurAgrandissement.cpp" />
     <ClCompile Include="Visiteurs\VisiteurCentreDeMasse.cpp" />
     <ClCompile Include="Visiteurs\VisiteurConstruireListes.cpp" />
@@ -249,6 +250,7 @@
     <ClInclude Include="Tests\BancTests.h" />
     <ClInclude Include="Tests\NoeudAbstraitTest.h" />
     <ClInclude Include="Tests\TestUtilitaire.h" />
+    <ClInclude Include="Text\ControleurTexte.h" />
     <ClInclude Include="Visiteurs\VisiteurAbstrait.h" />
     <ClInclude Include="Visiteurs\VisiteurAgrandissement.h" />
     <ClInclude Include="Visiteurs\VisiteurCentreDeMasse.h" />

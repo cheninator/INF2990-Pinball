@@ -25,7 +25,6 @@
 #ifndef __APPLICATION_FACADEMODELE_H__
 #define __APPLICATION_FACADEMODELE_H__
 
-
 #include <windows.h>
 #include <string>
 #include <iostream>
@@ -34,6 +33,7 @@
 #include <set>
 #include <vector>
 #include "glm/glm.hpp"
+
 
 class NoeudAbstrait;
 class ArbreRenduINF2990;

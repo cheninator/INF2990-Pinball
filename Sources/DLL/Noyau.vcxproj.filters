@@ -91,6 +91,12 @@
     <Filter Include="Source Files\Memento">
       <UniqueIdentifier>{5a0b94c8-bf4f-4de3-ae5d-17537138a4cd}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Header Files\Text">
+      <UniqueIdentifier>{ed5b5eb0-c8fd-476d-a85f-365a55a821db}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Texte">
+      <UniqueIdentifier>{30d299ed-3e43-42d2-a0da-66fd50207eab}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Application\FacadeModele.cpp">
@@ -257,6 +263,9 @@
     </ClCompile>
     <ClCompile Include="Memento\Memento.cpp">
       <Filter>Source Files\Memento</Filter>
+    </ClCompile>
+    <ClCompile Include="Text\ControleurTexte.cpp">
+      <Filter>Source Files\Texte</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -487,6 +496,9 @@
     </ClInclude>
     <ClInclude Include="Memento\Memento.h">
       <Filter>Header Files\Memento</Filter>
+    </ClInclude>
+    <ClInclude Include="Text\ControleurTexte.h">
+      <Filter>Header Files\Text</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>
