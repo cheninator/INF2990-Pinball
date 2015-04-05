@@ -106,6 +106,8 @@ FacadeModele* FacadeModele::obtenirInstance(bool console)
 		instance_->quad_ = new QuadTree(glm::dvec3(coinGaucheTableX, coinGaucheTableY, 0),
 										glm::dvec3(coinDroitTableX,  coinDroitTableY,  0));
 		instance_->progNuanceur_ = new ProgrammeINF2990();
+		instance_->controleurTexte_ = new ControleurTexte();
+
 		if (console)
 			instance_->old_ = std::cout.rdbuf(instance_->oss_.rdbuf());
 		else
@@ -147,6 +149,7 @@ FacadeModele::~FacadeModele()
 	delete proprietes_;
 	delete joueur_;
 	delete quad_;
+	delete controleurTexte_;
 	if (instance_->old_ != nullptr)
 		std::cout.rdbuf(instance_->old_);
 }
@@ -332,8 +335,28 @@ void FacadeModele::afficherBase() const
 	// On affiche le texte ici
 
 	// fuck that shit... si je met cette ligne la dans le .h ca compile plus...
-	static ControleurTexte* controleurTexte_ = new ControleurTexte();
-	controleurTexte_->afficherTexte("lol");
+	// TODO bouger shit dans l'API et le C#, pis juste appeler afficherTexte();
+	bool creation = true;
+	if (creation)
+	{
+		// le Texte a Ecrire
+		char* myText = "Hello World";
+
+		// On spécifie la font
+		controleurTexte_->creeTexte(myText, "Bloodthirsty.ttf");
+
+		// On specifie la taille (en 1/72 de pouce)
+		controleurTexte_->resize(myText, 72);
+
+		// On specifie une couleur RGB
+		controleurTexte_->changerCouleur(myText, 0, 1, 1);
+
+		// On specifie la position
+		controleurTexte_->repositionner(myText, 50, 50);
+
+		creation = false;
+	}
+	controleurTexte_->afficherTexte();
 }
 
 

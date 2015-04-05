@@ -13,6 +13,8 @@
 #include "glm/glm.hpp"
 #include <algorithm>
 
+typedef std::tuple<FTPoint, glm::fvec3, unsigned int, char* > textContainer;
+
 class ControleurTexte
 {
 public:
@@ -21,24 +23,25 @@ public:
 	ControleurTexte();
 	~ControleurTexte();
 	void populateFontVector(std::string targetPath);
-	void creeTexte(char* path);
-	void afficherTexte(char* texte = "Hello World", bool afficher = false, char* useFont = "arial.tff");
-
-	void changerCouleur(float rouge, float vert, float bleu);
-	void repositionner(float posX, float posY);
-	void resize(float size) { size_ = size; }
+	void creeFont(char* path);
+	void creeTexte(char* text, char* font = "");
+	void afficherTexte(bool afficher = false);
+	void changerCouleur(char* text, float rouge, float vert, float bleu);
+	void repositionner(char* text, float posX, float posY);
+	void resize(char* text, unsigned int size);
 
 private:
 	std::string getPath(char* sName);
-	int lookUp(std::string fileName);
-	std::vector<std::pair<std::string, FTGLPixmapFont*>> fontTable;
+	int lookUpFont(std::string fileName);
+	int lookUpText(char* textString);
+	void renderText(int i);
 
-	float red_{ .5f };
-	float green_{ 1.f };
-	float blue_{ 1.f };
+	std::vector<std::pair<char*, FTGLPixmapFont*>> fontTable_;
 
-	float size_{ 32.f };
-	glm::ivec2 position_{ 500, 500 };
+	std::vector<std::pair<char*, textContainer>> texts_;
+
+	// default const
+	textContainer const defaultObject_{	{ 500, 500 }, { .5f, 1.f, 1.f }, { 32 },  { "arial.tff" } };
 };
 
 #endif //__FACADE_TEXT_CONTROLLER_CLASS_H__
