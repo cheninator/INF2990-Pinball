@@ -15,7 +15,11 @@
 
 ////////////////////////////////////////////////////////////////////////
 ///
-/// @fn Lumiere::Lumiere(GLuint handle) // TODO PHIL
+/// @fn Lumiere::Lumiere(GLuint handle)
+///
+/// @brief Construit un objet Lumiere avec un handle OpenGL
+///
+/// @remarks Doit être un handle entre GL_LIGHT1 et GL_LIGHT7
 ///
 /// @return aucun.
 ///
@@ -25,7 +29,6 @@ Lumiere::Lumiere(GLuint handle)
 	assert(GL_LIGHT1 <= handle && handle <= GL_LIGHT7);
 	handle_ = handle;
 
-	// Couleurs qui font pas de sens mais sont utiles pour tester
 	ambient_ = glm::fvec4{ 1.0f, 1.0f, 1.0f, 1.0f };		// GL_AMBIENT
 	diffuse_ = glm::fvec4{ 1.0f, 1.0f, 1.0f, 1.0f };		// GL_DIFFUSE
 	specular_ = glm::fvec4{ 1.0f, 1.0f, 1.0f, 1.0f };		// GL_SPECULAR
@@ -42,8 +45,14 @@ Lumiere::Lumiere(GLuint handle)
 
 ////////////////////////////////////////////////////////////////////////
 ///
-/// @fn void Lumiere::definir() // TODO PHIL
-///
+/// @fn void Lumiere::definir() 
+/// 
+/// @brief Envoi les attributs de la lumiere au serveur OpenGL.
+/// 
+/// @remark Les coordonnees sont multiplies automatiquement par la 
+/// matrice de modelisation courrante.  On doit donc definir la lumiere
+/// apres avoir defini la camera.
+/// 
 /// @return aucun.
 ///
 ////////////////////////////////////////////////////////////////////////
@@ -64,7 +73,8 @@ void Lumiere::definir()
 	glLightf(handle_, GL_CONSTANT_ATTENUATION, attenuation_[0]);
 	glLightf(handle_, GL_LINEAR_ATTENUATION, attenuation_[1]);
 	glLightf(handle_, GL_QUADRATIC_ATTENUATION, attenuation_[2]);
-	
+
+	// TODO PHIL Enlever ceci, c'est la pour voir la position de la source.
 #if(1)
 	glDisable(GL_LIGHTING);
 	glDisable(GL_TEXTURE_2D);
@@ -79,28 +89,4 @@ void Lumiere::definir()
 	glEnable(GL_TEXTURE_2D);
 #endif
 
-}
-
-////////////////////////////////////////////////////////////////////////
-///
-/// @fn void Lumiere::enable() // TODO PHIL
-///
-/// @return aucun.
-///
-////////////////////////////////////////////////////////////////////////
-void Lumiere::enable()
-{
-	glEnable(handle_);
-}
-
-////////////////////////////////////////////////////////////////////////
-///
-/// @fn void Lumiere::disable() // TODO PHIL
-///
-/// @return aucun.
-///
-////////////////////////////////////////////////////////////////////////
-void Lumiere::disable()
-{
-	glDisable(handle_);
 }
