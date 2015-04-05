@@ -16,8 +16,10 @@ ControleurNuanceurs* ControleurNuanceurs::instance_{ nullptr };
 
 ////////////////////////////////////////////////////////////////////////
 ///
-/// @fn ControleurNuanceurs* ControleurNuanceurs::obtenirInstance() // TODO PHIL
-///
+/// @fn ControleurNuanceurs* ControleurNuanceurs::obtenirInstance() 
+/// 
+/// @brief Accesseur de l'instance unique du singleton
+/// 
 /// @return aucun.
 ///
 ////////////////////////////////////////////////////////////////////////
@@ -31,8 +33,10 @@ ControleurNuanceurs* ControleurNuanceurs::obtenirInstance()
 
 ////////////////////////////////////////////////////////////////////////
 ///
-/// @fn void ControleurNuanceurs::libererInstance() // TODO PHIL
-///
+/// @fn void ControleurNuanceurs::libererInstance() 
+/// 
+/// @brief Liberateur de l'instance unique
+/// 
 /// @return aucun.
 ///
 ////////////////////////////////////////////////////////////////////////
@@ -44,14 +48,18 @@ void ControleurNuanceurs::libererInstance()
 
 ////////////////////////////////////////////////////////////////////////
 ///
-/// @fn ControleurNuanceurs::~ControleurNuanceurs() // TODO PHIL
+/// @fn ControleurNuanceurs::~ControleurNuanceurs()
+/// 
+/// @brief Destructeur prive
+/// 
+/// @remark Les destructeurs s'occuppent de relacher les ressources
+/// OpenGL liés aux objets.
 ///
 /// @return aucun.
 ///
 ////////////////////////////////////////////////////////////////////////
 ControleurNuanceurs::~ControleurNuanceurs()
 {
-	// Les destructeurs s'occuppent de relacher les ressources OpenGL liés aux objets.
 	desactiver();
 	delete programme_;
 	delete nuanceurSommets_;
@@ -60,8 +68,12 @@ ControleurNuanceurs::~ControleurNuanceurs()
 
 ////////////////////////////////////////////////////////////////////////
 ///
-/// @fn void ControleurNuanceurs::initialiser() // TODO PHIL
-///
+/// @fn void ControleurNuanceurs::initialiser() 
+/// 
+/// @brief Charge les fichiers .glsl contenant le code des nuanceurs,
+/// les compile et les lient a des nuanceurs dans le serveur OpenGL.
+/// Ensuite les nuanceurs sont lies au programme.
+/// 
 /// @return aucun.
 ///
 ////////////////////////////////////////////////////////////////////////
@@ -80,13 +92,14 @@ void ControleurNuanceurs::initialiser()
 	programme_->initialiser();
 	programme_->attacherNuanceur(*nuanceurSommets_);
 	programme_->attacherNuanceur(*nuanceurFragments_);
-
 }
 
 ////////////////////////////////////////////////////////////////////////
 ///
-/// @fn void ControleurNuanceurs::activer() // TODO PHIL
-///
+/// @fn void ControleurNuanceurs::activer()
+/// 
+/// @brief Active le programme de nuanceurs
+/// 
 /// @return aucun.
 ///
 ////////////////////////////////////////////////////////////////////////
@@ -98,8 +111,10 @@ void ControleurNuanceurs::activer()
 
 ////////////////////////////////////////////////////////////////////////
 ///
-/// @fn void ControleurNuanceurs::desactiver() // TODO PHIL
-///
+/// @fn void ControleurNuanceurs::desactiver() 
+/// 
+/// @brief Desactive le programme de nuanceurs
+/// 
 /// @return aucun.
 ///
 ////////////////////////////////////////////////////////////////////////
@@ -111,8 +126,11 @@ void ControleurNuanceurs::desactiver()
 
 ////////////////////////////////////////////////////////////////////////
 ///
-/// @fn void ControleurNuanceurs::assignerColorShift(int colorShift)// TODO PHIL
-///
+/// @fn void ControleurNuanceurs::assignerColorShift(int colorShift)
+/// 
+/// @brief Assigne la variable uniforme colorShift qui sert pour 
+/// distinguer visuellement les palettes du joueur 2.
+/// 
 /// @return aucun.
 ///
 ////////////////////////////////////////////////////////////////////////
@@ -123,8 +141,11 @@ void ControleurNuanceurs::assignerColorShift(int colorShift)
 
 ////////////////////////////////////////////////////////////////////////
 ///
-/// @fn ControleurNuanceurs::assignerEtatNoeud(int etat) // TODO PHIL
-///
+/// @fn ControleurNuanceurs::assignerEtatNoeud(int etat)
+/// 
+/// @brief Assigne la variable uniforme etatNoeud qui sert pour les 
+/// etats selectionne, impossible, transparent, illumine.
+/// 
 /// @return aucun.
 ///
 ////////////////////////////////////////////////////////////////////////
@@ -135,8 +156,11 @@ void ControleurNuanceurs::assignerEtatNoeud(int etat)
 
 ////////////////////////////////////////////////////////////////////////
 ///
-/// @fn void ControleurNuanceurs::assignerNumeroNoeud(int numero) // TODO PHIL
-///
+/// @fn void ControleurNuanceurs::assignerNumeroNoeud(int numero) 
+/// 
+/// @brief Assigne la variable uniforme numeroNoeud qui pourrait servir
+/// si on decidait de faire la selection par couleur.
+/// 
 /// @return aucun.
 ///
 ////////////////////////////////////////////////////////////////////////
@@ -148,7 +172,10 @@ void ControleurNuanceurs::assignerNumeroNoeud(int numero)
 ////////////////////////////////////////////////////////////////////////
 ///
 /// @fn void ControleurNuanceurs::assignerEtatAmbiante(int etat)
-///
+/// 
+/// @brief Assigne la variable uniforme etatAmbiante qui sert a 
+/// activer/desactiver la lumiere ambiante.
+/// 
 /// @return aucun.
 ///
 ////////////////////////////////////////////////////////////////////////
@@ -160,7 +187,10 @@ void ControleurNuanceurs::assignerEtatAmbiante(int etat)
 ////////////////////////////////////////////////////////////////////////
 ///
 /// @fn void ControleurNuanceurs::assignerEtatDirectionnelle(int etat)
-///
+/// 
+/// @brief Assigne la variable uniforme etatDirectionnelle qui sert a 
+/// activer/desactiver la lumiere directionnelle.
+/// 
 /// @return aucun.
 ///
 ////////////////////////////////////////////////////////////////////////	
@@ -172,7 +202,10 @@ void ControleurNuanceurs::assignerEtatDirectionnelle(int etat)
 ////////////////////////////////////////////////////////////////////////
 ///
 /// @fn void ControleurNuanceurs::assignerEtatSpot(int etat)
-///
+/// 
+/// @brief Assigne la variable uniforme etatSpot qui sert a 
+/// activer/desactiver la lumiere spot.
+/// 
 /// @return aucun.
 ///
 ////////////////////////////////////////////////////////////////////////	
