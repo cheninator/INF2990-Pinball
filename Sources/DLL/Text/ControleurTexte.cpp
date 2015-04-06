@@ -75,8 +75,8 @@ void ControleurTexte::creeFont(char* sName)
 	std::cout << (fontGenerated ? "OK" : "FAILED") << std::endl;
 	if (fontGenerated)
 	{
-		std::pair<char*, FTGLPixmapFont*> aPair;
-		aPair.first = sName;
+		std::pair<std::string, FTGLPixmapFont*> aPair;
+		aPair.first = name;
 		aPair.second = someFont;
 		fontTable_.push_back(aPair);
 	}

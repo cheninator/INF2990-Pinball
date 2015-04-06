@@ -42,7 +42,7 @@ private:
 	void renderText(int i);
 	float obtenirDecalageY(unsigned int objectIndex);
 
-	std::vector<std::pair<char*, FTGLPixmapFont*>> fontTable_;
+	std::vector<std::pair<std::string, FTGLPixmapFont*>> fontTable_;
 	std::vector<std::pair<char*, textContainer>> texts_;
 
 	// default const
