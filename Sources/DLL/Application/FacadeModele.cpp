@@ -338,8 +338,10 @@ void FacadeModele::afficherBase() const
 	// TODO bouger shit dans l'API et le C#, pis juste appeler afficherTexte();
 
 	{
+		char* myText;
+
 		// le Texte a Ecrire
-		char* myText = "Hello World";
+		myText = "Hello World";
 
 		// On spécifie la font
 		controleurTexte_->creeTexte(myText, "Bloodthirsty.ttf");
@@ -355,34 +357,82 @@ void FacadeModele::afficherBase() const
 		// On specifie la position
 		controleurTexte_->repositionner(myText, 1, 1);
 
-
 		// Voici un autre exemple
 		myText = "Well This is easy";
 		controleurTexte_->creeTexte(myText, "Bloodthirsty.ttf");
-		controleurTexte_->resize(myText, 72);
+		controleurTexte_->resize(myText, 24);
 		controleurTexte_->changerCouleur(myText, COLOR_red);
+		controleurTexte_->repositionner(myText, 1, 1);
+
+		// Voici un autre exemple
+		myText = "Petite ligne 1 1";
+		controleurTexte_->creeTexte(myText, "Bloodthirsty.ttf");
+		controleurTexte_->resize(myText, 24);
+		controleurTexte_->changerCouleur(myText, COLOR_blue);
 		controleurTexte_->repositionner(myText, 1, 1);
 
 		// Voici un autre exemple
 		myText = "Random 0 1";
 		controleurTexte_->creeTexte(myText, "Bloodthirsty.ttf");
-		controleurTexte_->resize(myText, 72);
+		controleurTexte_->resize(myText, 24);
 		controleurTexte_->changerCouleur(myText, COLOR_blue);
+		controleurTexte_->repositionner(myText, 0, 1);
+
+		// Voici un autre exemple
+		myText = "2e Random 0 1";
+		controleurTexte_->creeTexte(myText, "Bloodthirsty.ttf");
+		controleurTexte_->resize(myText, 24);
+		controleurTexte_->changerCouleur(myText, COLOR_black);
+		controleurTexte_->repositionner(myText, 0, 1);
+
+		// Voici un autre exemple
+		myText = "3e shit weird ici en  0 1";
+		controleurTexte_->creeTexte(myText, "Bloodthirsty.ttf");
+		controleurTexte_->resize(myText, 24);
+		controleurTexte_->changerCouleur(myText, COLOR_alice_blue);
 		controleurTexte_->repositionner(myText, 0, 1);
 
 		// Voici un autre exemple
 		myText = "Test 1 0";
 		controleurTexte_->creeTexte(myText, "Bloodthirsty.ttf");
-		controleurTexte_->resize(myText, 72);
+		controleurTexte_->resize(myText, 42);
 		controleurTexte_->changerCouleur(myText, COLOR_cadet_blue);
+		controleurTexte_->repositionner(myText, 1, 0);
+
+		// Voici un autre exemple
+		myText = "Test --2-- 1 0";
+		controleurTexte_->creeTexte(myText, "Bloodthirsty.ttf");
+		controleurTexte_->resize(myText, 24);
+		controleurTexte_->changerCouleur(myText, COLOR_magenta_fuchsia);
+		controleurTexte_->repositionner(myText, 1, 0);
+
+		// Voici un autre exemple
+		myText = "Test --3-- 1 0";
+		controleurTexte_->creeTexte(myText, "Bloodthirsty.ttf");
+		controleurTexte_->resize(myText, 24);
+		controleurTexte_->changerCouleur(myText, COLOR_Magenta_Fuchsia);
 		controleurTexte_->repositionner(myText, 1, 0);
 
 		// Voici un autre exemple
 		myText = "Je sais pas pk je fais ca";
 		controleurTexte_->creeTexte(myText, "Bloodthirsty.ttf");
-		controleurTexte_->resize(myText, 72);
+		controleurTexte_->resize(myText, 24);
 		controleurTexte_->changerCouleur(myText, COLOR_khaki);
-		controleurTexte_->repositionner(myText, 1, 1);
+		controleurTexte_->repositionner(myText, 0, 0);
+
+		// Voici un autre exemple
+		myText = "C'est genre meme pas beau";
+		controleurTexte_->creeTexte(myText, "Bloodthirsty.ttf");
+		controleurTexte_->resize(myText, 21);
+		controleurTexte_->changerCouleur(myText, COLOR_azure);
+		controleurTexte_->repositionner(myText, 0, 0);
+
+		// Voici un autre exemple
+		myText = "C'est probablement useless en plus";
+		controleurTexte_->creeTexte(myText, "Bloodthirsty.ttf");
+		controleurTexte_->resize(myText, 24);
+		controleurTexte_->changerCouleur(myText, COLOR_beige);
+		controleurTexte_->repositionner(myText, 0, 0);
 	}
 	controleurTexte_->afficherTexte();
 }

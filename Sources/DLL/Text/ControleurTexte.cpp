@@ -2,7 +2,8 @@
 
 #include "../Application/FacadeModele.h"
 #include "../Global/SingletonGlobal.h"
-
+#define DECALAGE_X 5
+#define DECALAGE_BORDURE_Y 5
 ControleurTexte::ControleurTexte()
 {
 	TCHAR buffer[MAX_PATH];
@@ -211,14 +212,14 @@ void ControleurTexte::repositionner(char* text, float posX, float posY)
 		if (posY == 0)			// A
 		{
 			std::get<4>(texts_[textIndex].second) = Position::A;
-			positionTexte = FTPoint(0,
-									0 + textIndex);
+			positionTexte = FTPoint(0 + DECALAGE_X,
+									0 + textIndex + decalage);
 		}
 		else if (posY == 1)		// B
 		{
 			std::get<4>(texts_[textIndex].second) = Position::B;
-			positionTexte = FTPoint(posMax.x - (boiteTextUpper.X() - boiteTextLower.X()),
-									0 + textIndex);
+			positionTexte = FTPoint(posMax.x - abs(boiteTextUpper.X() - boiteTextLower.X()) - DECALAGE_X,
+									0 + textIndex + decalage);
 		}
 	}
 	else if (posX == 1)
@@ -226,14 +227,14 @@ void ControleurTexte::repositionner(char* text, float posX, float posY)
 		if (posY == 0)			// D
 		{
 			std::get<4>(texts_[textIndex].second) = Position::D;
-			positionTexte = FTPoint(0,
-									posMax.y - (boiteTextUpper.Y() - boiteTextLower.Y()) - decalage);
+			positionTexte = FTPoint(0 + DECALAGE_X,
+									posMax.y - abs(boiteTextUpper.Y() - boiteTextLower.Y()) - decalage);
 		}
 		else if (posY == 1)		// C
 		{
 			std::get<4>(texts_[textIndex].second) = Position::C;
-			positionTexte = FTPoint(posMax.x - (boiteTextUpper.X() - boiteTextLower.X()),
-									posMax.y - (boiteTextUpper.Y() - boiteTextLower.Y()) - decalage);
+			positionTexte = FTPoint(posMax.x - abs(boiteTextUpper.X() - boiteTextLower.X()) - DECALAGE_X,
+									posMax.y - abs(boiteTextUpper.Y() - boiteTextLower.Y()) - decalage);
 		}
 	}
 	
@@ -243,18 +244,20 @@ float ControleurTexte::obtenirDecalageY(unsigned int objectIndex)
 {
 	// Foutre de quoi ici, je sais pas encore quoi	TODO
 	float decalage = 0;
+	Position p = std::get<4>(texts_[objectIndex].second);
+	if (p == Position::E)
+		return 0;
 	for (unsigned int i = 0; i < objectIndex; i++)
 	{
+		if (std::get<4>(texts_[i].second) != p)
+			break;
 		unsigned int fontIndex = lookUpFont(std::get<3>(texts_[i].second));
 		FTBBox boiteText = fontTable_[fontIndex].second->BBox(texts_[i].first);
 		FTPoint boiteTextLower = boiteText.Lower();
 		FTPoint boiteTextUpper = boiteText.Upper();
-		if (std::get<0>(texts_[i].second).Yf() + boiteTextUpper.Yf() >= posMax.y - 2*posMax.y/100)
-			decalage += boiteTextUpper.Yf() - boiteTextLower.Yf();
-		else if (std::get<0>(texts_[i].second).Yf() + boiteTextUpper.Yf() <= posMax.y / 100)
-			decalage += boiteTextUpper.Yf() - boiteTextLower.Yf();
+		decalage += abs(boiteTextUpper.Yf() - boiteTextLower.Yf());
 	}
- 	return decalage;
+ 	return abs(decalage);
 }
 
 void ControleurTexte::resize(char* text, unsigned int size)
