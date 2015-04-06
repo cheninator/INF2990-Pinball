@@ -266,6 +266,7 @@ private:
 	int* proprietes_;						/// Pour les proprietes de la zone de jeu
 	JoueurVirtuel* joueur_{ nullptr };
 	QuadTree* quad_{ nullptr };
+	Originator* originator_{ nullptr };
 
 	std::stringstream oss_;
 	std::streambuf* old_;

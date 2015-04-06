@@ -93,9 +93,9 @@ void Originator::sauvegarder()
 	// On est au milieu
 	else
 	{
-
+		historique_->ecraser(++position_);
+		historique_->ajouter(new Memento(arbreActuel_));
+		position_++;
 	}
 	
-
-
 }

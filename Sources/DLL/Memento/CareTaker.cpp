@@ -26,6 +26,19 @@ void CareTaker::ajouter(Memento* memento)
 	}
 }
 
+void CareTaker::ecraser(int index)
+{
+	if (index < 0 && index > historique_.size())
+		return;
+
+	std::list<Memento*>::iterator iter = historique_.begin();
+
+	for (unsigned int i = 0; i < index; i++)
+		iter++;
+
+	historique_.erase(iter, historique_.end());
+}
+
 void CareTaker::vider()
 {
 	historique_.clear();

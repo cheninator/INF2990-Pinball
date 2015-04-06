@@ -33,6 +33,9 @@ public:
 	/// Ajouter une sauvegarde dans l'historique
 	void ajouter(Memento* memento);
 
+	/// Ecrase les sauvegarde anterieurs a partir d'un index
+	void ecraser(int index);
+
 	/// Vider l'historique
 	void vider();
 
@@ -40,7 +43,7 @@ public:
 	Memento* obtenirMemento(int index);
 
 	/// La taille actuelle
-	int size() const { return historique_.size(); };
+	int size() const { return (int)historique_.size(); };
 
 private:
 
