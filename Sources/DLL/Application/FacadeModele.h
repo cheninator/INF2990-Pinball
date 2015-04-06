@@ -236,6 +236,8 @@ public:
 
 	std::string obtenirCout();
 
+	glm::ivec2 obteniCoordonneeMax();
+
 private:
 
 	/// Constructeur par defaut.

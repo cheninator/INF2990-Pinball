@@ -1,6 +1,7 @@
 #include "ControleurTexte.h"
 
 #include "../Application/FacadeModele.h"
+#include "../Global/SingletonGlobal.h"
 
 ControleurTexte::ControleurTexte()
 {
@@ -81,6 +82,17 @@ void ControleurTexte::creeFont(char* sName)
 	}
 }
 
+void ControleurTexte::updateText(char* oldText, char* newText)
+{
+	int textIndex = lookUpText(oldText);
+	texts_[textIndex].first = newText;
+}
+void ControleurTexte::suprimerText(char* text)
+{
+	int textIndex = lookUpText(text);
+	texts_.erase(texts_.begin() + textIndex);
+}
+
 void ControleurTexte::creeTexte(char* texte, char* font)
 {
 	int textIndex = lookUpText(texte);
@@ -91,6 +103,7 @@ void ControleurTexte::afficherTexte(bool pause)
 {	
 	if (fontTable_.size() <= 0 || pause)
 		return;
+	mettreAjourBordures();
 	for (unsigned int i = 0; i < texts_.size(); i++)
 		renderText(i);
 }
@@ -104,8 +117,6 @@ void ControleurTexte::renderText(int textIndex)
 	FTPoint position = std::get<0>(texts_[textIndex].second);
 
 	int fontIndex = lookUpFont(std::string(useFont));
-	if (fontIndex < 0)
-		fontIndex = 0;
 
 	glDisable(GL_DEPTH_TEST);
 	glDisable(GL_TEXTURE_2D);
@@ -165,44 +176,95 @@ void ControleurTexte::changerCouleur(char* text, glm::fvec3 couleur)
 	else if (couleur.z < 0)
 		couleur.z = 0;
 
-	int textIndex = lookUpText(text);
+	unsigned int textIndex = lookUpText(text);
 	std::get<1>(texts_[textIndex].second) = { 1 - couleur.x, 1 - couleur.y, 1 - couleur.z };
 }
 // TODO cree une enum de position (comme au theatre)
 void ControleurTexte::repositionner(char* text, float posX, float posY)
 {
-	int textIndex = lookUpText(text);
+	mettreAjourBordures();
+	unsigned int textIndex = lookUpText(text);
 	char* myFont = std::get<3>(texts_[textIndex].second);
-	int fontIndex = lookUpFont(std::string(myFont));
-	if (fontIndex < 0)
-		fontIndex = 0;
+	unsigned int fontIndex = lookUpFont(std::string(myFont));
 	FTBBox boiteText = fontTable_[fontIndex].second->BBox(text);
 	FTPoint boiteTextLower = boiteText.Lower();
 	FTPoint boiteTextUpper = boiteText.Upper();
 
-	// TODO Revoir le calcul ici
-	FTPoint positionTexte = FTPoint(posX - (boiteTextUpper.X() - boiteTextLower.X()),
-		posY - (boiteTextUpper.Y() - boiteTextLower.Y()));
+	/* ICI on as 5 cas possible : 
+		A: (X = 0, Y = 0) -> coin inferieur gauche
+		B: (X = 0, Y = 1) -> coin superieur gauche
+		C: (X = 1, Y = 1) -> coin superieur droit
+		D: (X = 1, Y = 0) -> coin inferieur droit
+		E: (X > 1, Y > 1) -> quelque part dans la map
+
+				   D __________ C
+					|		   |
+					|		   |
+					|	.E	   |
+					|__________|
+			 (0,0) A			B
+	*/
+	FTPoint positionTexte = FTPoint(posX, posY);
+	float decalage = obtenirDecalageY(textIndex);
+	if (posX == 0)
+	{
+		if (posY == 0)			// A
+		{
+			positionTexte = FTPoint(0,
+									0 + textIndex);
+		}
+		else if (posY == 1)		// B
+		{
+			positionTexte = FTPoint(posMax.x - (boiteTextUpper.X() - boiteTextLower.X()),
+									0 + textIndex);
+		}
+	}
+	else if (posX == 1)
+	{
+		if (posY == 0)			// D
+		{
+			positionTexte = FTPoint(0,
+									posMax.y - (boiteTextUpper.Y() - boiteTextLower.Y()) - decalage);
+		}
+		else if (posY == 1)		// C
+		{
+			positionTexte = FTPoint(posMax.x - (boiteTextUpper.X() - boiteTextLower.X()),
+									posMax.y - (boiteTextUpper.Y() - boiteTextLower.Y()) - decalage);
+		}
+	}
 	
-	std::get<0>(texts_[textIndex].second) = FTPoint(posX, posY);
+	std::get<0>(texts_[textIndex].second) = positionTexte;
+}
+float ControleurTexte::obtenirDecalageY(unsigned int objectIndex)
+{
+	float decalage = 0;
+	for (unsigned int i = 0; i < objectIndex; i++)
+	{
+		unsigned int fontIndex = lookUpFont(std::get<3>(texts_[i].second));
+		FTBBox boiteText = fontTable_[fontIndex].second->BBox(texts_[i].first);
+		FTPoint boiteTextLower = boiteText.Lower();
+		FTPoint boiteTextUpper = boiteText.Upper();
+		if (boiteTextUpper.Yf() >= posMax.y - 2*posMax.y/100);
+			decalage += boiteTextUpper.Yf() - boiteTextLower.Yf();
+	}
+ 	return decalage;
 }
 
 void ControleurTexte::resize(char* text, unsigned int size)
 {
-	int textIndex = lookUpText(text);
+	unsigned int textIndex = lookUpText(text);
 	std::get<2>(texts_[textIndex].second) = size;
 }
 
-int ControleurTexte::lookUpFont(std::string fileName)
+unsigned int ControleurTexte::lookUpFont(std::string fileName)
 {
 	for (unsigned int i = 0; i < fontTable_.size(); i++)
 		if (fontTable_[i].first == fileName)
 			return i;
-	return -1;
+	return 0;
 }
 
-
-int ControleurTexte::lookUpText(char* textString)
+unsigned int ControleurTexte::lookUpText(char* textString)
 {
 	for (unsigned int i = 0; i < texts_.size(); i++)
 		if (texts_[i].first == textString)
@@ -212,4 +274,9 @@ int ControleurTexte::lookUpText(char* textString)
 	newDefaultText.second = defaultObject_;
 	texts_.push_back(newDefaultText);
 	return (int)texts_.size() - 1;
+}
+
+void ControleurTexte::mettreAjourBordures()
+{
+	posMax = FacadeModele::obtenirInstance()->obteniCoordonneeMax();
 }

@@ -336,8 +336,7 @@ void FacadeModele::afficherBase() const
 
 	// fuck that shit... si je met cette ligne la dans le .h ca compile plus...
 	// TODO bouger shit dans l'API et le C#, pis juste appeler afficherTexte();
-	bool creation = true;
-	if (creation)
+
 	{
 		// le Texte a Ecrire
 		char* myText = "Hello World";
@@ -354,9 +353,16 @@ void FacadeModele::afficherBase() const
 		controleurTexte_->changerCouleur(myText, COLOR_salmon);
 
 		// On specifie la position
-		controleurTexte_->repositionner(myText, 50, 50);
+		controleurTexte_->repositionner(myText, 1, 1);
 
-		creation = false;
+
+		// Voici un autre exemple
+		myText = "Well This is easy";
+		controleurTexte_->creeTexte(myText, "Bloodthirsty.ttf");
+		controleurTexte_->resize(myText, 72);
+		// Ou encore
+		controleurTexte_->changerCouleur(myText, COLOR_red);
+		controleurTexte_->repositionner(myText, 1, 1);
 	}
 	controleurTexte_->afficherTexte();
 }
@@ -2145,4 +2151,9 @@ void FacadeModele::utiliserCameraOrbite(bool utiliseOrbite)
 		appliquerZoomInitial();
 		vueEstOrbite_ = utiliseOrbite;
 	}
+}
+
+glm::ivec2 FacadeModele::obteniCoordonneeMax()
+{
+	return  obtenirInstance()->obtenirVue()->obtenirProjection().obtenirDimensionCloture();
 }
