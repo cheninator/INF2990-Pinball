@@ -23,7 +23,6 @@ public:
 
 	ControleurTexte();
 	~ControleurTexte();
-	void populateFontVector(std::string targetPath);
 	void creeFont(char* path);
 	void creeTexte(char* text, char* font = "");
 	void updateText(char* oldText, char* newText);
@@ -35,7 +34,8 @@ public:
 	void resize(char* text, unsigned int size);
 
 private:
-	std::string getPath(char* sName);
+	std::string getFontPath(char* sName);
+	void populateFontVector(std::string targetPath);
 	unsigned int lookUpFont(std::string fileName);
 	unsigned int lookUpText(char* textString);
 	void renderText(int i);
@@ -43,7 +43,6 @@ private:
 	float obtenirDecalageY(unsigned int objectIndex);
 
 	std::vector<std::pair<char*, FTGLPixmapFont*>> fontTable_;
-
 	std::vector<std::pair<char*, textContainer>> texts_;
 
 	// default const
