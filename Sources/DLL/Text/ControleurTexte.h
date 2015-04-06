@@ -26,6 +26,8 @@ public:
 	void populateFontVector(std::string targetPath);
 	void creeFont(char* path);
 	void creeTexte(char* text, char* font = "");
+	void updateText(char* oldText, char* newText);
+	void suprimerText(char* text);
 	void afficherTexte(bool afficher = false);
 	void changerCouleur(char* text, float rouge, float vert, float bleu);
 	void changerCouleur(char* text, glm::fvec3 couleur);
@@ -34,9 +36,11 @@ public:
 
 private:
 	std::string getPath(char* sName);
-	int lookUpFont(std::string fileName);
-	int lookUpText(char* textString);
+	unsigned int lookUpFont(std::string fileName);
+	unsigned int lookUpText(char* textString);
 	void renderText(int i);
+	void mettreAjourBordures();
+	float obtenirDecalageY(unsigned int objectIndex);
 
 	std::vector<std::pair<char*, FTGLPixmapFont*>> fontTable_;
 
@@ -44,6 +48,7 @@ private:
 
 	// default const
 	textContainer const defaultObject_{	{ 500, 500 }, { .5f, 1.f, 1.f }, { 32 },  { "arial.tff" } };
+	glm::ivec2 posMax { 500, 500 };
 };
 
 #endif //__FACADE_TEXT_CONTROLLER_CLASS_H__
