@@ -346,7 +346,7 @@ void FacadeModele::afficherBase() const
 		controleurTexte_->creeTexte(myText, "Bloodthirsty.ttf");
 
 		// On specifie la taille (en 1/72 de pouce)
-		controleurTexte_->resize(myText, 72);
+		controleurTexte_->resize(myText, 35);
 
 		// On specifie une couleur RGB
 		controleurTexte_->changerCouleur(myText, 0.5, 1, 1);

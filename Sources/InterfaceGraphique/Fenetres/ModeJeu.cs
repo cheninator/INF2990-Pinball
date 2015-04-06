@@ -246,7 +246,7 @@ namespace InterfaceGraphique
                     {
                         panelHeight = panel_GL.Size.Height;
                         panelWidth = panel_GL.Size.Width;
-                        FonctionsNatives.refreshText(panelWidth, panelHeight);
+                        FonctionsNatives.refreshText(panelWidth - InfoPanel.Width, panelHeight);
                     }
                     if (peutAnimer)
                     {
