@@ -1021,6 +1021,7 @@ namespace InterfaceGraphique
             // 
             // Nouveau_MenuItem
             // 
+            this.Nouveau_MenuItem.Image = global::InterfaceGraphique.Properties.Resources.NouveauFichier;
             this.Nouveau_MenuItem.Name = "Nouveau_MenuItem";
             this.Nouveau_MenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.N)));
             this.Nouveau_MenuItem.Size = new System.Drawing.Size(230, 22);
@@ -1029,6 +1030,7 @@ namespace InterfaceGraphique
             // 
             // Ouvrir_MenuItem
             // 
+            this.Ouvrir_MenuItem.Image = global::InterfaceGraphique.Properties.Resources.open;
             this.Ouvrir_MenuItem.Name = "Ouvrir_MenuItem";
             this.Ouvrir_MenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.O)));
             this.Ouvrir_MenuItem.Size = new System.Drawing.Size(230, 22);
@@ -1037,6 +1039,7 @@ namespace InterfaceGraphique
             // 
             // Enregistrer_MenuItem
             // 
+            this.Enregistrer_MenuItem.Image = global::InterfaceGraphique.Properties.Resources.save;
             this.Enregistrer_MenuItem.Name = "Enregistrer_MenuItem";
             this.Enregistrer_MenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.S)));
             this.Enregistrer_MenuItem.Size = new System.Drawing.Size(230, 22);
@@ -1045,6 +1048,7 @@ namespace InterfaceGraphique
             // 
             // EnregistrerS_MenuItem
             // 
+            this.EnregistrerS_MenuItem.Image = global::InterfaceGraphique.Properties.Resources.enregistrersous;
             this.EnregistrerS_MenuItem.Name = "EnregistrerS_MenuItem";
             this.EnregistrerS_MenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)(((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.Shift) 
             | System.Windows.Forms.Keys.S)));
@@ -1054,6 +1058,7 @@ namespace InterfaceGraphique
             // 
             // Proprietes_MenuItem
             // 
+            this.Proprietes_MenuItem.Image = global::InterfaceGraphique.Properties.Resources.settings;
             this.Proprietes_MenuItem.Name = "Proprietes_MenuItem";
             this.Proprietes_MenuItem.Size = new System.Drawing.Size(230, 22);
             this.Proprietes_MenuItem.Text = "Propriétés";
@@ -1061,6 +1066,7 @@ namespace InterfaceGraphique
             // 
             // ModeTest_MenuItem
             // 
+            this.ModeTest_MenuItem.Image = global::InterfaceGraphique.Properties.Resources.Tester;
             this.ModeTest_MenuItem.Name = "ModeTest_MenuItem";
             this.ModeTest_MenuItem.ShortcutKeyDisplayString = "t";
             this.ModeTest_MenuItem.Size = new System.Drawing.Size(230, 22);
@@ -1069,6 +1075,7 @@ namespace InterfaceGraphique
             // 
             // MenuP_MenuItem
             // 
+            this.MenuP_MenuItem.Image = global::InterfaceGraphique.Properties.Resources.Return_home;
             this.MenuP_MenuItem.Name = "MenuP_MenuItem";
             this.MenuP_MenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.Q)));
             this.MenuP_MenuItem.Size = new System.Drawing.Size(230, 22);
@@ -1091,6 +1098,7 @@ namespace InterfaceGraphique
             // 
             // Selection_MenuItem
             // 
+            this.Selection_MenuItem.Image = global::InterfaceGraphique.Properties.Resources.Selection;
             this.Selection_MenuItem.Name = "Selection_MenuItem";
             this.Selection_MenuItem.ShortcutKeyDisplayString = "s";
             this.Selection_MenuItem.Size = new System.Drawing.Size(164, 22);
@@ -1100,6 +1108,7 @@ namespace InterfaceGraphique
             // Deplacement_MenuItem
             // 
             this.Deplacement_MenuItem.Enabled = false;
+            this.Deplacement_MenuItem.Image = global::InterfaceGraphique.Properties.Resources.move;
             this.Deplacement_MenuItem.Name = "Deplacement_MenuItem";
             this.Deplacement_MenuItem.ShortcutKeyDisplayString = "d";
             this.Deplacement_MenuItem.Size = new System.Drawing.Size(164, 22);
@@ -1109,6 +1118,7 @@ namespace InterfaceGraphique
             // Rotation_MenuItem
             // 
             this.Rotation_MenuItem.Enabled = false;
+            this.Rotation_MenuItem.Image = global::InterfaceGraphique.Properties.Resources.rotation;
             this.Rotation_MenuItem.Name = "Rotation_MenuItem";
             this.Rotation_MenuItem.ShortcutKeyDisplayString = "r";
             this.Rotation_MenuItem.Size = new System.Drawing.Size(164, 22);
@@ -1118,6 +1128,7 @@ namespace InterfaceGraphique
             // MiseE_MenuItem
             // 
             this.MiseE_MenuItem.Enabled = false;
+            this.MiseE_MenuItem.Image = global::InterfaceGraphique.Properties.Resources.scale1;
             this.MiseE_MenuItem.Name = "MiseE_MenuItem";
             this.MiseE_MenuItem.ShortcutKeyDisplayString = "e";
             this.MiseE_MenuItem.Size = new System.Drawing.Size(164, 22);
@@ -1127,6 +1138,7 @@ namespace InterfaceGraphique
             // Duplication_MenuItem
             // 
             this.Duplication_MenuItem.Enabled = false;
+            this.Duplication_MenuItem.Image = global::InterfaceGraphique.Properties.Resources.duplicate;
             this.Duplication_MenuItem.Name = "Duplication_MenuItem";
             this.Duplication_MenuItem.ShortcutKeyDisplayString = "c";
             this.Duplication_MenuItem.Size = new System.Drawing.Size(164, 22);
@@ -1135,6 +1147,7 @@ namespace InterfaceGraphique
             // 
             // Zoom_MenuItem
             // 
+            this.Zoom_MenuItem.Image = global::InterfaceGraphique.Properties.Resources.zoomElastique2;
             this.Zoom_MenuItem.Name = "Zoom_MenuItem";
             this.Zoom_MenuItem.ShortcutKeyDisplayString = "z";
             this.Zoom_MenuItem.Size = new System.Drawing.Size(164, 22);
@@ -1158,6 +1171,7 @@ namespace InterfaceGraphique
             this.GB_MenuItem,
             this.Trou_MenuItem,
             this.gateToolStripMenuItem});
+            this.Creation_MenuItem.Image = global::InterfaceGraphique.Properties.Resources.add;
             this.Creation_MenuItem.Name = "Creation_MenuItem";
             this.Creation_MenuItem.Size = new System.Drawing.Size(164, 22);
             this.Creation_MenuItem.Text = "Création d\'objets";
