@@ -360,8 +360,28 @@ void FacadeModele::afficherBase() const
 		myText = "Well This is easy";
 		controleurTexte_->creeTexte(myText, "Bloodthirsty.ttf");
 		controleurTexte_->resize(myText, 72);
-		// Ou encore
 		controleurTexte_->changerCouleur(myText, COLOR_red);
+		controleurTexte_->repositionner(myText, 1, 1);
+
+		// Voici un autre exemple
+		myText = "Random 0 1";
+		controleurTexte_->creeTexte(myText, "Bloodthirsty.ttf");
+		controleurTexte_->resize(myText, 72);
+		controleurTexte_->changerCouleur(myText, COLOR_blue);
+		controleurTexte_->repositionner(myText, 0, 1);
+
+		// Voici un autre exemple
+		myText = "Test 1 0";
+		controleurTexte_->creeTexte(myText, "Bloodthirsty.ttf");
+		controleurTexte_->resize(myText, 72);
+		controleurTexte_->changerCouleur(myText, COLOR_cadet_blue);
+		controleurTexte_->repositionner(myText, 1, 0);
+
+		// Voici un autre exemple
+		myText = "Je sais pas pk je fais ca";
+		controleurTexte_->creeTexte(myText, "Bloodthirsty.ttf");
+		controleurTexte_->resize(myText, 72);
+		controleurTexte_->changerCouleur(myText, COLOR_khaki);
 		controleurTexte_->repositionner(myText, 1, 1);
 	}
 	controleurTexte_->afficherTexte();

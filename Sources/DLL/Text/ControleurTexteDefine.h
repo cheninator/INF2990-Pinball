@@ -157,4 +157,27 @@
 #define COLOR_white_smoke glm::fvec3{245,245,245}
 #define COLOR_white glm::fvec3{255,255,255}
 
+	/* ICI on as 5 cas possible : 
+		A: (X = 0, Y = 0) -> coin inferieur gauche
+		B: (X = 0, Y = 1) -> coin superieur gauche
+		C: (X = 1, Y = 1) -> coin superieur droit
+		D: (X = 1, Y = 0) -> coin inferieur droit
+		E: (X > 1, Y > 1) -> quelque part dans la map
+
+				   D __________ C
+					|		   |
+					|		   |
+					|	.E	   |
+					|__________|
+			 (0,0) A			B
+	*/
+enum Position 
+{
+	A,
+	B,
+	C,
+	D,
+	E,
+};
+
 #endif //_TEXT_DEFINE_
