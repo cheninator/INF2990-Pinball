@@ -2032,4 +2032,20 @@ extern "C"
 		FacadeModele::obtenirInstance()->utiliserCameraOrbite(utiliseOrbite);
 	}
 
+
+	__declspec(dllexport) void sauvegarderHistorique()
+	{
+		FacadeModele::obtenirInstance()->sauvegarderHistorique();
+	}
+
+	__declspec(dllexport) void annulerModifications(e)
+	{
+		FacadeModele::obtenirInstance()->annulerModifications();
+	}
+
+	__declspec(dllexport) void retablirModifications()
+	{
+		FacadeModele::obtenirInstance()->retablirModifications();
+	}
+
 }// FIN DU extern "C"

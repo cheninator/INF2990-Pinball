@@ -43,6 +43,7 @@ class NoeudPaletteD;
 class NoeudRessort;
 class JoueurVirtuel;
 class QuadTree;
+class Originator;
 class ProgrammeINF2990;
 class ControleurTexte;
 
@@ -237,6 +238,11 @@ public:
 	std::string obtenirCout();
 
 	glm::ivec2 obteniCoordonneeMax();
+
+	/// Journal des modifications
+	void sauvegarderHistorique();
+	void annulerModifications();
+	void retablirModifications();
 
 private:
 

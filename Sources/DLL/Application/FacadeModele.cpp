@@ -2180,3 +2180,21 @@ glm::ivec2 FacadeModele::obteniCoordonneeMax()
 {
 	return  obtenirInstance()->obtenirVue()->obtenirProjection().obtenirDimensionCloture();
 }
+
+
+
+void FacadeModele::sauvegarderHistorique()
+{
+	originator_->sauvegarder();
+}
+
+void FacadeModele::annulerModifications()
+{
+	originator_->annuler();
+}
+
+void FacadeModele::retablirModifications()
+{
+	originator_->retablir();
+}
+
