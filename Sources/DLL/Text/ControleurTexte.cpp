@@ -224,11 +224,11 @@ void ControleurTexte::repositionner(char* text, float posX, float posY)
 	{
 		case Position::A:
 			positionTexte = FTPoint(0 + MARGE_X,
-									0 + textIndex + decalage);
+									0 + decalage);
 			break;
 		case Position::B:
 			positionTexte = FTPoint(posMax.x - abs(boiteTextUpper.X() - boiteTextLower.X()) - MARGE_X,
-									0 + textIndex + decalage);
+									0 + decalage);
 			break;
 		case Position::C:
 			positionTexte = FTPoint(posMax.x - abs(boiteTextUpper.X() - boiteTextLower.X()) - MARGE_X,
