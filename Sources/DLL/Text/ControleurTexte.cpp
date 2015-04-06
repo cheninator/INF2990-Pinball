@@ -244,7 +244,7 @@ float ControleurTexte::obtenirDecalageY(unsigned int objectIndex)
 		FTBBox boiteText = fontTable_[fontIndex].second->BBox(texts_[i].first);
 		FTPoint boiteTextLower = boiteText.Lower();
 		FTPoint boiteTextUpper = boiteText.Upper();
-		if (boiteTextUpper.Yf() >= posMax.y - 2*posMax.y/100);
+		if (boiteTextUpper.Yf() >= posMax.y - 2*posMax.y/100)
 			decalage += boiteTextUpper.Yf() - boiteTextLower.Yf();
 	}
  	return decalage;
