@@ -2035,9 +2035,9 @@ extern "C"
 		return stringToBSTR(FacadeModele::obtenirInstance()->obtenirCout());
 	}
 
-	__declspec(dllexport) void __cdecl refreshText()
+	__declspec(dllexport) void __cdecl refreshText(int x, int y)
 	{
-		FacadeModele::obtenirInstance()->obtenircontroleurTexte()->refresh();
+		FacadeModele::obtenirInstance()->obtenircontroleurTexte()->refresh(x, y);
 	}
 
 	__declspec(dllexport) void utiliserCameraOrbite(bool utiliseOrbite)

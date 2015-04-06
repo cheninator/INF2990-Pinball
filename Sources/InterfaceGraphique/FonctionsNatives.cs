@@ -362,6 +362,6 @@ namespace InterfaceGraphique
         public static extern void utiliserCameraOrbite(bool utiliseOrbite);
 
         [DllImport(@"Noyau.dll", CallingConvention = CallingConvention.Cdecl)]
-        public static extern void refreshText();
+        public static extern void refreshText(int x, int y);
     }
 }

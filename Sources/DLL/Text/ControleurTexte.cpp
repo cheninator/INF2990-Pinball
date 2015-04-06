@@ -103,7 +103,6 @@ void ControleurTexte::afficherTexte(bool pause)
 {	
 	if (fontTable_.size() <= 0 || pause)
 		return;
-	mettreAjourBordures();
 	for (unsigned int i = 0; i < texts_.size(); i++)
 		renderText(i);
 }
@@ -181,7 +180,6 @@ void ControleurTexte::changerCouleur(char* text, glm::fvec3 couleur)
 
 void ControleurTexte::repositionner(char* text, float posX, float posY)
 {
-	mettreAjourBordures();
 	unsigned int textIndex = lookUpText(text);
 	char* myFont = std::get<3>(texts_[textIndex].second);
 	unsigned int fontIndex = lookUpFont(std::string(myFont));
@@ -248,8 +246,9 @@ void ControleurTexte::repositionner(char* text, float posX, float posY)
 	std::get<0>(texts_[textIndex].second) = positionTexte;
 }
 
-void ControleurTexte::refresh()
+void ControleurTexte::refresh(int x, int y)
 {
+	posMax = glm::ivec2(x, y);
 	for (unsigned int i = 0; i < texts_.size(); i++)
 	{
 		switch (std::get<4>(texts_[i].second))
@@ -316,9 +315,4 @@ unsigned int ControleurTexte::lookUpText(char* textString)
 	newDefaultText.second = defaultObject_;
 	texts_.push_back(newDefaultText);
 	return (int)texts_.size() - 1;
-}
-
-void ControleurTexte::mettreAjourBordures()
-{
-	posMax = FacadeModele::obtenirInstance()->obteniCoordonneeMax();
 }

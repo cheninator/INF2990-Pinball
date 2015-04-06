@@ -58,6 +58,9 @@ namespace InterfaceGraphique
         private int nombreDeBillesUtilise = 0; ///< Nombre de Billes deja utilises
         private int billesPerdus = 0;       ///< Nomrede billes tombees dans le trou
 
+        public int panelHeight; ///< Hauteur de la fenetre
+        public int panelWidth; ///< Largeur de la fenetre
+
         // Modificateurs
         public void setVisibilityMenuStrip(bool vis) { menuStrip.Visible = vis; }
         public void setCurrentZoom(double val) { currentZoom = val; }
@@ -161,6 +164,10 @@ namespace InterfaceGraphique
             FonctionsNatives.bouclerSon(bgm, bgm.Length);
             FonctionsNatives.ajusterBGM(50);
             //FonctionsNatives.jouerSon(bgm, bgm.Length);
+
+            panelHeight = panel_GL.Size.Height;
+            panelWidth = panel_GL.Size.Width;
+
         }
 
         ////////////////////////////////////////////////////////////////////////
@@ -235,6 +242,12 @@ namespace InterfaceGraphique
             {
                 this.Invoke((MethodInvoker)delegate
                 {
+                    if (panelHeight != panel_GL.Size.Height || panelWidth != panel_GL.Size.Width)
+                    {
+                        panelHeight = panel_GL.Size.Height;
+                        panelWidth = panel_GL.Size.Width;
+                        FonctionsNatives.refreshText(panelWidth, panelHeight);
+                    }
                     if (peutAnimer)
                     {
                         FonctionsNatives.animer(tempsInterAffichage);

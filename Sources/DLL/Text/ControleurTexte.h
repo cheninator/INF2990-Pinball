@@ -32,7 +32,7 @@ public:
 	void changerCouleur(char* text, glm::fvec3 couleur);
 	void repositionner(char* text, float posX, float posY);
 	void resize(char* text, unsigned int size);
-	void refresh();
+	void refresh(int x, int y);
 
 private:
 	std::string getFontPath(char* sName);
@@ -40,7 +40,6 @@ private:
 	unsigned int lookUpFont(std::string fileName);
 	unsigned int lookUpText(char* textString);
 	void renderText(int i);
-	void mettreAjourBordures();
 	float obtenirDecalageY(unsigned int objectIndex);
 
 	std::vector<std::pair<char*, FTGLPixmapFont*>> fontTable_;

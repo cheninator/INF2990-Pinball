@@ -197,7 +197,6 @@ namespace InterfaceGraphique
         //////////////////////////////////////////////////////////////////////////////////////////
         public void EnterFullScreenMode(Form targetForm)
         {
-
             targetForm.WindowState = FormWindowState.Normal;
             //targetForm.FormBorderStyle = FormBorderStyle.None;
             targetForm.WindowState = FormWindowState.Maximized;
