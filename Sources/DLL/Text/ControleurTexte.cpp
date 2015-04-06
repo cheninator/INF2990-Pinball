@@ -281,7 +281,7 @@ float ControleurTexte::obtenirDecalageY(unsigned int objectIndex)
 	for (unsigned int i = 0; i < objectIndex; i++)
 	{
 		if (std::get<4>(texts_[i].second) != p)
-			break;
+			continue;
 		unsigned int fontIndex = lookUpFont(std::get<3>(texts_[i].second));
 		FTBBox boiteText = fontTable_[fontIndex].second->BBox(texts_[i].first);
 		FTPoint boiteTextLower = boiteText.Lower();
