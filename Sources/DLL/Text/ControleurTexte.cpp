@@ -3,6 +3,7 @@
 #include "../Application/FacadeModele.h"
 #include "../Global/SingletonGlobal.h"
 #define MARGE_X 5
+#define MARGE_Y 5
 ControleurTexte::ControleurTexte()
 {
 	TCHAR buffer[MAX_PATH];
@@ -182,7 +183,9 @@ void ControleurTexte::repositionner(char* text, float posX, float posY)
 {
 	unsigned int textIndex = lookUpText(text);
 	char* myFont = std::get<3>(texts_[textIndex].second);
+	int textSize = std::get<2>(texts_[textIndex].second);
 	unsigned int fontIndex = lookUpFont(std::string(myFont));
+	fontTable_[fontIndex].second->FaceSize(textSize);
 	FTBBox boiteText = fontTable_[fontIndex].second->BBox(text);
 	FTPoint boiteTextLower = boiteText.Lower();
 	FTPoint boiteTextUpper = boiteText.Upper();
@@ -278,6 +281,7 @@ float ControleurTexte::obtenirDecalageY(unsigned int objectIndex)
 	Position p = std::get<4>(texts_[objectIndex].second);
 	if (p == Position::E)
 		return 0;
+
 	for (unsigned int i = 0; i < objectIndex; i++)
 	{
 		if (std::get<4>(texts_[i].second) != p)
