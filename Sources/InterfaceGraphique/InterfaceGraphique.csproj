@@ -309,6 +309,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="%24this.Icon.ico" />
+    <None Include="Resources\zoomElastique.png" />
     <None Include="Resources\SelectionSimple.gif" />
     <None Include="Resources\ZoomElastique.gif" />
     <None Include="Resources\Suppression.gif" />
