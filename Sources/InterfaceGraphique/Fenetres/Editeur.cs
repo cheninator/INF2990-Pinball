@@ -3173,5 +3173,10 @@ namespace InterfaceGraphique
         {
 
         }
+
+        private void Groupe_Proprietes_Enter(object sender, EventArgs e)
+        {
+
+        }
     }
 }

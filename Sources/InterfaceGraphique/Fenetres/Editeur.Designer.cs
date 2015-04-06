@@ -65,11 +65,11 @@ namespace InterfaceGraphique
             this.flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
             this.Groupe_Outils = new System.Windows.Forms.GroupBox();
             this.bouton_Suppression = new System.Windows.Forms.Button();
-            this.bouton_Duplication = new System.Windows.Forms.Button();
-            this.bouton_Scaling = new System.Windows.Forms.Button();
-            this.bouton_Rotation = new System.Windows.Forms.Button();
-            this.bouton_Deplacement = new System.Windows.Forms.Button();
             this.bouton_Selection = new System.Windows.Forms.Button();
+            this.bouton_Deplacement = new System.Windows.Forms.Button();
+            this.bouton_Duplication = new System.Windows.Forms.Button();
+            this.bouton_Rotation = new System.Windows.Forms.Button();
+            this.bouton_Scaling = new System.Windows.Forms.Button();
             this.OutilGraphique = new System.Windows.Forms.GroupBox();
             this.labelOCourant = new System.Windows.Forms.Label();
             this.Groupe_Proprietes = new System.Windows.Forms.GroupBox();
@@ -144,6 +144,12 @@ namespace InterfaceGraphique
             this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
             this.toolTip2 = new System.Windows.Forms.ToolTip(this.components);
             this.toolTip3 = new System.Windows.Forms.ToolTip(this.components);
+            this.toolTip4 = new System.Windows.Forms.ToolTip(this.components);
+            this.toolTip5 = new System.Windows.Forms.ToolTip(this.components);
+            this.toolTip6 = new System.Windows.Forms.ToolTip(this.components);
+            this.toolTip7 = new System.Windows.Forms.ToolTip(this.components);
+            this.toolTip8 = new System.Windows.Forms.ToolTip(this.components);
+            this.toolTip9 = new System.Windows.Forms.ToolTip(this.components);
             Enregistrer = new System.Windows.Forms.ToolStripButton();
             this.panel1.SuspendLayout();
             this.panel_GL.SuspendLayout();
@@ -199,9 +205,9 @@ namespace InterfaceGraphique
             this.panel_GL.BackColor = System.Drawing.Color.Transparent;
             this.panel_GL.Controls.Add(this.bouton_Creation);
             this.panel_GL.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel_GL.Location = new System.Drawing.Point(163, 59);
+            this.panel_GL.Location = new System.Drawing.Point(189, 59);
             this.panel_GL.Name = "panel_GL";
-            this.panel_GL.Size = new System.Drawing.Size(554, 670);
+            this.panel_GL.Size = new System.Drawing.Size(528, 670);
             this.panel_GL.TabIndex = 4;
             this.panel_GL.SizeChanged += new System.EventHandler(this.panel_GL_SizeChanged);
             this.panel_GL.MouseClick += new System.Windows.Forms.MouseEventHandler(this.panel_GL_MouseClick);
@@ -214,7 +220,7 @@ namespace InterfaceGraphique
             // 
             this.bouton_Creation.Dock = System.Windows.Forms.DockStyle.Right;
             this.bouton_Creation.Font = new System.Drawing.Font("Stencil", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.bouton_Creation.Location = new System.Drawing.Point(531, 0);
+            this.bouton_Creation.Location = new System.Drawing.Point(505, 0);
             this.bouton_Creation.Name = "bouton_Creation";
             this.bouton_Creation.Size = new System.Drawing.Size(23, 670);
             this.bouton_Creation.TabIndex = 5;
@@ -513,105 +519,144 @@ namespace InterfaceGraphique
             this.flowLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Left;
             this.flowLayoutPanel1.Location = new System.Drawing.Point(0, 59);
             this.flowLayoutPanel1.Name = "flowLayoutPanel1";
-            this.flowLayoutPanel1.Size = new System.Drawing.Size(163, 670);
+            this.flowLayoutPanel1.Size = new System.Drawing.Size(189, 670);
             this.flowLayoutPanel1.TabIndex = 3;
             this.flowLayoutPanel1.SizeChanged += new System.EventHandler(this.flowLayoutPanel1_SizeChanged);
             // 
             // Groupe_Outils
             // 
+            this.Groupe_Outils.BackColor = System.Drawing.SystemColors.GradientInactiveCaption;
             this.Groupe_Outils.Controls.Add(this.bouton_Suppression);
-            this.Groupe_Outils.Controls.Add(this.bouton_Duplication);
-            this.Groupe_Outils.Controls.Add(this.bouton_Scaling);
-            this.Groupe_Outils.Controls.Add(this.bouton_Rotation);
-            this.Groupe_Outils.Controls.Add(this.bouton_Deplacement);
             this.Groupe_Outils.Controls.Add(this.bouton_Selection);
-            this.Groupe_Outils.Location = new System.Drawing.Point(3, 3);
+            this.Groupe_Outils.Controls.Add(this.bouton_Deplacement);
+            this.Groupe_Outils.Controls.Add(this.bouton_Duplication);
+            this.Groupe_Outils.Controls.Add(this.bouton_Rotation);
+            this.Groupe_Outils.Controls.Add(this.bouton_Scaling);
+            this.Groupe_Outils.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Groupe_Outils.Location = new System.Drawing.Point(7, 10);
+            this.Groupe_Outils.Margin = new System.Windows.Forms.Padding(7, 10, 3, 3);
             this.Groupe_Outils.Name = "Groupe_Outils";
-            this.Groupe_Outils.Size = new System.Drawing.Size(153, 265);
+            this.Groupe_Outils.Size = new System.Drawing.Size(169, 280);
             this.Groupe_Outils.TabIndex = 0;
             this.Groupe_Outils.TabStop = false;
-            this.Groupe_Outils.Text = "Outils";
+            this.Groupe_Outils.Text = "OUTILS";
             // 
             // bouton_Suppression
             // 
             this.bouton_Suppression.Enabled = false;
-            this.bouton_Suppression.Location = new System.Drawing.Point(13, 177);
+            this.bouton_Suppression.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.bouton_Suppression.Image = global::InterfaceGraphique.Properties.Resources.delete;
+            this.bouton_Suppression.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.bouton_Suppression.Location = new System.Drawing.Point(13, 233);
             this.bouton_Suppression.Name = "bouton_Suppression";
-            this.bouton_Suppression.Size = new System.Drawing.Size(130, 24);
+            this.bouton_Suppression.Size = new System.Drawing.Size(139, 32);
             this.bouton_Suppression.TabIndex = 5;
-            this.bouton_Suppression.Text = "Supprimer";
+            this.bouton_Suppression.Text = "       Supprimer";
+            this.bouton_Suppression.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.bouton_Suppression.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.toolTip1.SetToolTip(this.bouton_Suppression, "( Del )");
             this.bouton_Suppression.UseVisualStyleBackColor = true;
             this.bouton_Suppression.Click += new System.EventHandler(this.bouton_Suppression_Click);
             // 
-            // bouton_Duplication
+            // bouton_Selection
             // 
-            this.bouton_Duplication.Enabled = false;
-            this.bouton_Duplication.Location = new System.Drawing.Point(13, 146);
-            this.bouton_Duplication.Name = "bouton_Duplication";
-            this.bouton_Duplication.Size = new System.Drawing.Size(130, 24);
-            this.bouton_Duplication.TabIndex = 4;
-            this.bouton_Duplication.Text = "Duplication";
-            this.bouton_Duplication.UseVisualStyleBackColor = true;
-            this.bouton_Duplication.Click += new System.EventHandler(this.bouton_Duplication_Click);
-            // 
-            // bouton_Scaling
-            // 
-            this.bouton_Scaling.Enabled = false;
-            this.bouton_Scaling.Location = new System.Drawing.Point(13, 116);
-            this.bouton_Scaling.Name = "bouton_Scaling";
-            this.bouton_Scaling.Size = new System.Drawing.Size(130, 24);
-            this.bouton_Scaling.TabIndex = 3;
-            this.bouton_Scaling.Text = "Mise à échelle";
-            this.bouton_Scaling.UseVisualStyleBackColor = true;
-            this.bouton_Scaling.Click += new System.EventHandler(this.bouton_Scaling_Click);
-            // 
-            // bouton_Rotation
-            // 
-            this.bouton_Rotation.Enabled = false;
-            this.bouton_Rotation.Location = new System.Drawing.Point(13, 86);
-            this.bouton_Rotation.Name = "bouton_Rotation";
-            this.bouton_Rotation.Size = new System.Drawing.Size(130, 24);
-            this.bouton_Rotation.TabIndex = 2;
-            this.bouton_Rotation.Text = "Rotation";
-            this.bouton_Rotation.UseVisualStyleBackColor = true;
-            this.bouton_Rotation.Click += new System.EventHandler(this.bouton_Rotation_Click);
+            this.bouton_Selection.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.bouton_Selection.Image = global::InterfaceGraphique.Properties.Resources.Selection;
+            this.bouton_Selection.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.bouton_Selection.Location = new System.Drawing.Point(13, 28);
+            this.bouton_Selection.Name = "bouton_Selection";
+            this.bouton_Selection.Size = new System.Drawing.Size(139, 32);
+            this.bouton_Selection.TabIndex = 0;
+            this.bouton_Selection.Text = "     Sélection";
+            this.bouton_Selection.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.bouton_Selection.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.toolTip1.SetToolTip(this.bouton_Selection, "( S )");
+            this.bouton_Selection.UseVisualStyleBackColor = true;
+            this.bouton_Selection.Click += new System.EventHandler(this.bouton_Selection_Click);
             // 
             // bouton_Deplacement
             // 
             this.bouton_Deplacement.Enabled = false;
-            this.bouton_Deplacement.Location = new System.Drawing.Point(13, 55);
+            this.bouton_Deplacement.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.bouton_Deplacement.Image = global::InterfaceGraphique.Properties.Resources.move;
+            this.bouton_Deplacement.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.bouton_Deplacement.Location = new System.Drawing.Point(13, 69);
             this.bouton_Deplacement.Name = "bouton_Deplacement";
-            this.bouton_Deplacement.Size = new System.Drawing.Size(130, 24);
+            this.bouton_Deplacement.Size = new System.Drawing.Size(139, 32);
             this.bouton_Deplacement.TabIndex = 1;
-            this.bouton_Deplacement.Text = "Déplacement";
+            this.bouton_Deplacement.Text = "     Déplacement";
+            this.bouton_Deplacement.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.bouton_Deplacement.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.toolTip1.SetToolTip(this.bouton_Deplacement, "( D )");
             this.bouton_Deplacement.UseVisualStyleBackColor = true;
             this.bouton_Deplacement.Click += new System.EventHandler(this.bouton_Deplacement_Click);
             // 
-            // bouton_Selection
+            // bouton_Duplication
             // 
-            this.bouton_Selection.Location = new System.Drawing.Point(13, 25);
-            this.bouton_Selection.Name = "bouton_Selection";
-            this.bouton_Selection.Size = new System.Drawing.Size(130, 24);
-            this.bouton_Selection.TabIndex = 0;
-            this.bouton_Selection.Text = "Sélection";
-            this.bouton_Selection.UseVisualStyleBackColor = true;
-            this.bouton_Selection.Click += new System.EventHandler(this.bouton_Selection_Click);
+            this.bouton_Duplication.Enabled = false;
+            this.bouton_Duplication.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.bouton_Duplication.Image = global::InterfaceGraphique.Properties.Resources.duplicate;
+            this.bouton_Duplication.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.bouton_Duplication.Location = new System.Drawing.Point(13, 192);
+            this.bouton_Duplication.Name = "bouton_Duplication";
+            this.bouton_Duplication.Size = new System.Drawing.Size(139, 32);
+            this.bouton_Duplication.TabIndex = 4;
+            this.bouton_Duplication.Text = "     Duplication";
+            this.bouton_Duplication.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.toolTip1.SetToolTip(this.bouton_Duplication, "( C )");
+            this.bouton_Duplication.UseVisualStyleBackColor = true;
+            this.bouton_Duplication.Click += new System.EventHandler(this.bouton_Duplication_Click);
+            // 
+            // bouton_Rotation
+            // 
+            this.bouton_Rotation.Enabled = false;
+            this.bouton_Rotation.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.bouton_Rotation.Image = global::InterfaceGraphique.Properties.Resources.rotation;
+            this.bouton_Rotation.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.bouton_Rotation.Location = new System.Drawing.Point(13, 110);
+            this.bouton_Rotation.Name = "bouton_Rotation";
+            this.bouton_Rotation.Size = new System.Drawing.Size(139, 32);
+            this.bouton_Rotation.TabIndex = 2;
+            this.bouton_Rotation.Text = "     Rotation";
+            this.bouton_Rotation.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.bouton_Rotation.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.toolTip1.SetToolTip(this.bouton_Rotation, "( R )");
+            this.bouton_Rotation.UseVisualStyleBackColor = true;
+            this.bouton_Rotation.Click += new System.EventHandler(this.bouton_Rotation_Click);
+            // 
+            // bouton_Scaling
+            // 
+            this.bouton_Scaling.Enabled = false;
+            this.bouton_Scaling.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.bouton_Scaling.Image = global::InterfaceGraphique.Properties.Resources.scale1;
+            this.bouton_Scaling.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.bouton_Scaling.Location = new System.Drawing.Point(13, 151);
+            this.bouton_Scaling.Name = "bouton_Scaling";
+            this.bouton_Scaling.Size = new System.Drawing.Size(139, 32);
+            this.bouton_Scaling.TabIndex = 3;
+            this.bouton_Scaling.Text = "     Mise à échelle";
+            this.bouton_Scaling.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.toolTip1.SetToolTip(this.bouton_Scaling, "( E )");
+            this.bouton_Scaling.UseVisualStyleBackColor = true;
+            this.bouton_Scaling.Click += new System.EventHandler(this.bouton_Scaling_Click);
             // 
             // OutilGraphique
             // 
+            this.OutilGraphique.BackColor = System.Drawing.SystemColors.GradientInactiveCaption;
             this.OutilGraphique.Controls.Add(this.labelOCourant);
-            this.OutilGraphique.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.OutilGraphique.Location = new System.Drawing.Point(3, 274);
+            this.OutilGraphique.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold);
+            this.OutilGraphique.Location = new System.Drawing.Point(7, 308);
+            this.OutilGraphique.Margin = new System.Windows.Forms.Padding(7, 15, 3, 3);
             this.OutilGraphique.Name = "OutilGraphique";
-            this.OutilGraphique.Size = new System.Drawing.Size(153, 49);
+            this.OutilGraphique.Size = new System.Drawing.Size(169, 60);
             this.OutilGraphique.TabIndex = 10;
             this.OutilGraphique.TabStop = false;
-            this.OutilGraphique.Text = "Outil Courant";
+            this.OutilGraphique.Text = "OUTIL COURANT";
             // 
             // labelOCourant
             // 
             this.labelOCourant.ForeColor = System.Drawing.SystemColors.InfoText;
-            this.labelOCourant.Location = new System.Drawing.Point(8, 16);
+            this.labelOCourant.Location = new System.Drawing.Point(9, 23);
             this.labelOCourant.Name = "labelOCourant";
             this.labelOCourant.Size = new System.Drawing.Size(135, 30);
             this.labelOCourant.TabIndex = 0;
@@ -620,6 +665,7 @@ namespace InterfaceGraphique
             // Groupe_Proprietes
             // 
             this.Groupe_Proprietes.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.Groupe_Proprietes.BackColor = System.Drawing.SystemColors.GradientInactiveCaption;
             this.Groupe_Proprietes.Controls.Add(this.Annuler_prop_boutn);
             this.Groupe_Proprietes.Controls.Add(this.OK_prop_bouton);
             this.Groupe_Proprietes.Controls.Add(this.Anglebox);
@@ -630,17 +676,21 @@ namespace InterfaceGraphique
             this.Groupe_Proprietes.Controls.Add(this.Y_label);
             this.Groupe_Proprietes.Controls.Add(this.Xbox);
             this.Groupe_Proprietes.Controls.Add(this.X_label);
-            this.Groupe_Proprietes.Location = new System.Drawing.Point(3, 329);
+            this.Groupe_Proprietes.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold);
+            this.Groupe_Proprietes.Location = new System.Drawing.Point(7, 386);
+            this.Groupe_Proprietes.Margin = new System.Windows.Forms.Padding(7, 15, 3, 3);
             this.Groupe_Proprietes.Name = "Groupe_Proprietes";
-            this.Groupe_Proprietes.Size = new System.Drawing.Size(153, 168);
+            this.Groupe_Proprietes.Size = new System.Drawing.Size(169, 193);
             this.Groupe_Proprietes.TabIndex = 1;
             this.Groupe_Proprietes.TabStop = false;
-            this.Groupe_Proprietes.Text = "Propriétés spaciales";
+            this.Groupe_Proprietes.Text = "Propriétés";
+            this.Groupe_Proprietes.Enter += new System.EventHandler(this.Groupe_Proprietes_Enter);
             // 
             // Annuler_prop_boutn
             // 
             this.Annuler_prop_boutn.Enabled = false;
-            this.Annuler_prop_boutn.Location = new System.Drawing.Point(84, 137);
+            this.Annuler_prop_boutn.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.25F);
+            this.Annuler_prop_boutn.Location = new System.Drawing.Point(27, 164);
             this.Annuler_prop_boutn.Name = "Annuler_prop_boutn";
             this.Annuler_prop_boutn.Size = new System.Drawing.Size(65, 23);
             this.Annuler_prop_boutn.TabIndex = 9;
@@ -652,95 +702,104 @@ namespace InterfaceGraphique
             // OK_prop_bouton
             // 
             this.OK_prop_bouton.Enabled = false;
-            this.OK_prop_bouton.Location = new System.Drawing.Point(8, 137);
+            this.OK_prop_bouton.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.25F);
+            this.OK_prop_bouton.Location = new System.Drawing.Point(98, 164);
             this.OK_prop_bouton.Name = "OK_prop_bouton";
             this.OK_prop_bouton.Size = new System.Drawing.Size(65, 23);
             this.OK_prop_bouton.TabIndex = 8;
             this.OK_prop_bouton.TabStop = false;
-            this.OK_prop_bouton.Text = "Accepter";
+            this.OK_prop_bouton.Text = "OK";
             this.OK_prop_bouton.UseVisualStyleBackColor = true;
             this.OK_prop_bouton.Click += new System.EventHandler(this.OK_prop_bouton_Click);
             // 
             // Anglebox
             // 
             this.Anglebox.Enabled = false;
-            this.Anglebox.Location = new System.Drawing.Point(93, 73);
+            this.Anglebox.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.25F);
+            this.Anglebox.Location = new System.Drawing.Point(112, 95);
             this.Anglebox.Name = "Anglebox";
-            this.Anglebox.Size = new System.Drawing.Size(51, 20);
+            this.Anglebox.Size = new System.Drawing.Size(51, 21);
             this.Anglebox.TabIndex = 5;
             this.Anglebox.TabStop = false;
             // 
             // Angle_label
             // 
             this.Angle_label.Enabled = false;
-            this.Angle_label.Location = new System.Drawing.Point(14, 73);
+            this.Angle_label.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.25F);
+            this.Angle_label.Location = new System.Drawing.Point(2, 96);
             this.Angle_label.Name = "Angle_label";
-            this.Angle_label.Size = new System.Drawing.Size(50, 20);
+            this.Angle_label.Size = new System.Drawing.Size(57, 20);
             this.Angle_label.TabIndex = 6;
-            this.Angle_label.Text = "Angle:";
+            this.Angle_label.Text = "Angle :";
             this.Angle_label.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // FMEbox
             // 
             this.FMEbox.Enabled = false;
-            this.FMEbox.Location = new System.Drawing.Point(92, 101);
+            this.FMEbox.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.25F);
+            this.FMEbox.Location = new System.Drawing.Point(112, 122);
             this.FMEbox.Name = "FMEbox";
-            this.FMEbox.Size = new System.Drawing.Size(51, 20);
+            this.FMEbox.Size = new System.Drawing.Size(51, 21);
             this.FMEbox.TabIndex = 7;
             this.FMEbox.TabStop = false;
             // 
             // FME_label
             // 
             this.FME_label.Enabled = false;
-            this.FME_label.Location = new System.Drawing.Point(17, 102);
+            this.FME_label.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.25F);
+            this.FME_label.Location = new System.Drawing.Point(-3, 123);
             this.FME_label.Name = "FME_label";
             this.FME_label.Size = new System.Drawing.Size(67, 19);
             this.FME_label.TabIndex = 4;
-            this.FME_label.Text = "Scale:";
+            this.FME_label.Text = "Scale :";
             this.FME_label.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // Ybox
             // 
             this.Ybox.Enabled = false;
-            this.Ybox.Location = new System.Drawing.Point(93, 47);
+            this.Ybox.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.25F);
+            this.Ybox.Location = new System.Drawing.Point(112, 57);
             this.Ybox.Name = "Ybox";
-            this.Ybox.Size = new System.Drawing.Size(51, 20);
+            this.Ybox.Size = new System.Drawing.Size(51, 21);
             this.Ybox.TabIndex = 3;
             this.Ybox.TabStop = false;
             // 
             // Y_label
             // 
             this.Y_label.Enabled = false;
-            this.Y_label.Location = new System.Drawing.Point(14, 46);
+            this.Y_label.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.25F);
+            this.Y_label.Location = new System.Drawing.Point(-1, 32);
             this.Y_label.Name = "Y_label";
-            this.Y_label.Size = new System.Drawing.Size(73, 20);
+            this.Y_label.Size = new System.Drawing.Size(106, 20);
             this.Y_label.TabIndex = 2;
-            this.Y_label.Text = "Position en Y:";
+            this.Y_label.Text = "Position en Y :";
             this.Y_label.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // Xbox
             // 
             this.Xbox.Enabled = false;
-            this.Xbox.Location = new System.Drawing.Point(93, 21);
+            this.Xbox.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.25F);
+            this.Xbox.Location = new System.Drawing.Point(112, 32);
             this.Xbox.Name = "Xbox";
-            this.Xbox.Size = new System.Drawing.Size(51, 20);
+            this.Xbox.Size = new System.Drawing.Size(51, 21);
             this.Xbox.TabIndex = 1;
             this.Xbox.TabStop = false;
             // 
             // X_label
             // 
             this.X_label.Enabled = false;
-            this.X_label.Location = new System.Drawing.Point(14, 21);
+            this.X_label.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.25F);
+            this.X_label.Location = new System.Drawing.Point(-2, 57);
             this.X_label.Name = "X_label";
-            this.X_label.Size = new System.Drawing.Size(73, 20);
+            this.X_label.Size = new System.Drawing.Size(106, 20);
             this.X_label.TabIndex = 0;
-            this.X_label.Text = "Position en X:";
+            this.X_label.Text = "Position en X :";
             this.X_label.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // richTextBox1
             // 
             this.richTextBox1.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.richTextBox1.Location = new System.Drawing.Point(3, 503);
+            this.richTextBox1.Location = new System.Drawing.Point(3, 585);
             this.richTextBox1.Name = "richTextBox1";
             this.richTextBox1.ReadOnly = true;
             this.richTextBox1.Size = new System.Drawing.Size(151, 10);
@@ -1426,6 +1485,12 @@ namespace InterfaceGraphique
         private System.Windows.Forms.ToolTip toolTip2;
         private System.Windows.Forms.ToolTip toolTip3;
         private System.Windows.Forms.ToolStripButton toolStripButton7;
+        private System.Windows.Forms.ToolTip toolTip5;
+        private System.Windows.Forms.ToolTip toolTip6;
+        private System.Windows.Forms.ToolTip toolTip4;
+        private System.Windows.Forms.ToolTip toolTip7;
+        private System.Windows.Forms.ToolTip toolTip8;
+        private System.Windows.Forms.ToolTip toolTip9;
     }
 }
 

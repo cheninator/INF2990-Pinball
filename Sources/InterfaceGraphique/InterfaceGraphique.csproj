@@ -311,6 +311,8 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="%24this.Icon.ico" />
+    <None Include="Resources\scale.png" />
+    <None Include="Resources\Selection.png" />
     <None Include="Resources\zoomElastique.png" />
     <None Include="Resources\SelectionSimple.gif" />
     <None Include="Resources\ZoomElastique.gif" />
@@ -356,6 +358,10 @@
     <None Include="Resources\butoirGauche.png" />
     <None Include="Resources\ressort2.png" />
     <None Include="Resources\add.png" />
+    <None Include="Resources\Cursor-Select-icon.png" />
+    <None Include="Resources\move.png" />
+    <None Include="Resources\rotation.png" />
+    <None Include="Resources\duplicate.png" />
     <Content Include="Resources\save.png" />
     <None Include="Resources\cible.jpeg" />
     <None Include="Resources\winSound.wav" />

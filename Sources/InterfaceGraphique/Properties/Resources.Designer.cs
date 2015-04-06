@@ -312,6 +312,16 @@ namespace InterfaceGraphique.Properties {
         /// <summary>
         ///   Recherche une ressource localisée de type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap duplicate {
+            get {
+                object obj = ResourceManager.GetObject("duplicate", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Recherche une ressource localisée de type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap Duplication {
             get {
                 object obj = ResourceManager.GetObject("Duplication", resourceCulture);
@@ -433,6 +443,16 @@ namespace InterfaceGraphique.Properties {
         internal static System.IO.UnmanagedMemoryStream man_scream_01 {
             get {
                 return ResourceManager.GetStream("man_scream_01", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Recherche une ressource localisée de type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap move {
+            get {
+                object obj = ResourceManager.GetObject("move", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
             }
         }
         
@@ -679,6 +699,16 @@ namespace InterfaceGraphique.Properties {
         /// <summary>
         ///   Recherche une ressource localisée de type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap rotation {
+            get {
+                object obj = ResourceManager.GetObject("rotation", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Recherche une ressource localisée de type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap RotationSimple {
             get {
                 object obj = ResourceManager.GetObject("RotationSimple", resourceCulture);
@@ -732,6 +762,26 @@ namespace InterfaceGraphique.Properties {
         internal static System.Drawing.Bitmap Scale {
             get {
                 object obj = ResourceManager.GetObject("Scale", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Recherche une ressource localisée de type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap scale1 {
+            get {
+                object obj = ResourceManager.GetObject("scale1", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Recherche une ressource localisée de type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap Selection {
+            get {
+                object obj = ResourceManager.GetObject("Selection", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
