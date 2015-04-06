@@ -66,7 +66,7 @@ void ControleurTexte::creeFont(char* sName)
 		if (fontTable_[i].first == name)
 			return;
 
-	std::string path = getPath(sName);
+	std::string path = getFontPath(sName);
 	const char* sPath = path.c_str();
 	std::cout << "\tAdding " << name << "..." << std::setw(40 - name.length());
 	FTGLPixmapFont* someFont = new FTGLPixmapFont(sPath);
@@ -135,7 +135,7 @@ void ControleurTexte::renderText(int textIndex)
 }
 
 
-std::string ControleurTexte::getPath(char* sName)
+std::string ControleurTexte::getFontPath(char* sName)
 {
 	std::string soundPath = "media/Fonts/" + std::string(sName);
 	return soundPath;

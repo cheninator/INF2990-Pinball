@@ -66,7 +66,7 @@ void ControleurSon::creeSon(char* sName)
 		if (soundTable_[i].first == name)
 			return;
 
-	std::string path = getPath(sName);
+	std::string path = getSFXPath(sName);
 	const char* sPath = path.c_str();
 	std::cout << "\tAdding " << name << "..." << std::setw(40 - name.length());
 
@@ -77,7 +77,7 @@ void ControleurSon::creeSon(char* sName)
 	soundTable_.push_back(apair);
 	std::cout << ((system_->createSound(sPath, FMOD_DEFAULT, 0, &soundTable_[soundTable_.size()-1].second.first)
 				 == FMOD_OK) ? "OK" : "FAILED") << std::endl;
-	specialEffectSounds_.push_back(soundTable_.size() - 1);
+	specialEffectSounds_.push_back((int)soundTable_.size() - 1);
 }
 
 void ControleurSon::jouerSon(char* sName, bool pause)
@@ -199,7 +199,7 @@ void ControleurSon::setVolumeSFX()
 		soundTable_[specialEffectSounds_[i]].second.second->setVolume(maxSFX_);
 }
 
-std::string ControleurSon::getPath(char* sName)
+std::string ControleurSon::getSFXPath(char* sName)
 {
 	std::string soundPath = "media/SFX/" + std::string(sName);
 	return soundPath;
