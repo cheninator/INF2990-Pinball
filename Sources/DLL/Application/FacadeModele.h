@@ -34,7 +34,6 @@
 #include <vector>
 #include "glm/glm.hpp"
 
-
 class NoeudAbstrait;
 class ArbreRenduINF2990;
 class ConfigScene;
@@ -233,6 +232,8 @@ public:
 	double obtenirScaleMinMax();
 
 	void utiliserCameraOrbite(bool utiliseOrbite);
+
+	ControleurTexte* obtenircontroleurTexte();
 
 	std::string obtenirCout();
 

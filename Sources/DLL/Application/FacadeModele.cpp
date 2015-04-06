@@ -29,7 +29,6 @@ Yonni Chen <BR>
 #include <cassert>
 #include <iostream>
 
-#include "GL/glew.h"
 #include "FreeImage.h"
 #include "FacadeModele.h"
 #include "../Text/ControleurTexte.h"
@@ -336,8 +335,8 @@ void FacadeModele::afficherBase() const
 
 	// fuck that shit... si je met cette ligne la dans le .h ca compile plus...
 	// TODO bouger shit dans l'API et le C#, pis juste appeler afficherTexte();
-
-	{
+	static bool oneTime = true;
+	if(oneTime){
 		char* myText;
 
 		// le Texte a Ecrire
@@ -433,10 +432,11 @@ void FacadeModele::afficherBase() const
 		controleurTexte_->resize(myText, 24);
 		controleurTexte_->changerCouleur(myText, COLOR_beige);
 		controleurTexte_->repositionner(myText, 0, 0);
+
+		oneTime = false;
 	}
 	controleurTexte_->afficherTexte();
 }
-
 
 ////////////////////////////////////////////////////////////////////////
 ///
@@ -2164,6 +2164,19 @@ double FacadeModele::obtenirScaleMinMax()
 	return glm::length(scaleMax) - glm::length(scaleMin);
 }
 
+////////////////////////////////////////////////////////////////////////
+///
+/// @fn void FacadeModele::obtenircontroleurTexte()
+///
+/// @remark Cette fonction retourne la classe de controle du texte.
+///
+/// @return Le controleur de texte.
+///
+////////////////////////////////////////////////////////////////////////
+ControleurTexte* FacadeModele::obtenircontroleurTexte()
+{
+	return controleurTexte_;
+}
 
 std::string FacadeModele::obtenirCout()
 {

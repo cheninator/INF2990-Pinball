@@ -218,6 +218,7 @@ namespace InterfaceGraphique
             this.bouton_Creation.TextAlign = System.Drawing.ContentAlignment.TopCenter;
             this.toolTipPaneauCreation.SetToolTip(this.bouton_Creation, "Paneau Création");
             this.bouton_Creation.UseVisualStyleBackColor = true;
+            this.bouton_Creation.Visible = false;
             this.bouton_Creation.Click += new System.EventHandler(this.bouton_Creation_Click);
             // 
             // Creation_Panel

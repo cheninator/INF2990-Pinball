@@ -32,6 +32,7 @@ public:
 	void changerCouleur(char* text, glm::fvec3 couleur);
 	void repositionner(char* text, float posX, float posY);
 	void resize(char* text, unsigned int size);
+	void refresh();
 
 private:
 	std::string getFontPath(char* sName);

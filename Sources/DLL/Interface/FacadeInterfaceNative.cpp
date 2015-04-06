@@ -5,8 +5,16 @@
 ///
 /// @ingroup Interface
 ////////////////////////////////////////////////
+
+// pour que ca arrete de chialer que gl.h est included avant glew.h
+// Ca leur tenter pas de faire include glew.h dans gl.h ???
+#include "GL/glew.h"
+#include <gl/GLU.h>
+#include <gl/GL.h>
+
 #include "FacadeInterfaceNative.h"
 #include "FacadeModele.h"
+#include "../Text/ControleurTexte.h"
 
 #include "glm\glm.hpp"
 #include "FacadeModele.h"
@@ -2025,6 +2033,11 @@ extern "C"
 	__declspec(dllexport) BSTR __cdecl obtenirCout()
 	{
 		return stringToBSTR(FacadeModele::obtenirInstance()->obtenirCout());
+	}
+
+	__declspec(dllexport) void __cdecl refreshText()
+	{
+		FacadeModele::obtenirInstance()->obtenircontroleurTexte()->refresh();
 	}
 
 	__declspec(dllexport) void utiliserCameraOrbite(bool utiliseOrbite)

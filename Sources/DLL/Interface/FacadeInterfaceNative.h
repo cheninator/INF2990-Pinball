@@ -128,6 +128,7 @@ extern "C" {
 	__declspec(dllexport) void ajusterSFX(float pourcentage);
 
 	__declspec(dllexport) void utiliserCameraOrbite(bool utiliseOrbite);
+	__declspec(dllexport) void refreshText();
 }
 
 #endif // __FACADE_INTERFACE_NATIVE_H__
