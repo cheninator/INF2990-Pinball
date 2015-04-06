@@ -14,7 +14,7 @@
 #include "ControleurTexteDefine.h"
 #include <algorithm>
 
-typedef std::tuple<FTPoint, glm::fvec3, unsigned int, char* > textContainer;
+typedef std::tuple<FTPoint, glm::fvec3, unsigned int, char*, Position > textContainer;
 
 class ControleurTexte
 {
@@ -46,7 +46,7 @@ private:
 	std::vector<std::pair<char*, textContainer>> texts_;
 
 	// default const
-	textContainer const defaultObject_{	{ 500, 500 }, { .5f, 1.f, 1.f }, { 32 },  { "arial.tff" } };
+	textContainer const defaultObject_{	{ 500, 500 }, { .5f, 1.f, 1.f }, { 32 },  { "arial.tff" }, Position::E };
 	glm::ivec2 posMax { 500, 500 };
 };
 

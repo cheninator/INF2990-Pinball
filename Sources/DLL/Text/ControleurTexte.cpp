@@ -141,7 +141,6 @@ std::string ControleurTexte::getFontPath(char* sName)
 	return soundPath;
 }
 
-// TODO cree une enum de couleur
 void ControleurTexte::changerCouleur(char* text, float rouge, float vert, float bleu)
 {
 	if (rouge > 1)
@@ -179,7 +178,7 @@ void ControleurTexte::changerCouleur(char* text, glm::fvec3 couleur)
 	unsigned int textIndex = lookUpText(text);
 	std::get<1>(texts_[textIndex].second) = { 1 - couleur.x, 1 - couleur.y, 1 - couleur.z };
 }
-// TODO cree une enum de position (comme au theatre)
+
 void ControleurTexte::repositionner(char* text, float posX, float posY)
 {
 	mettreAjourBordures();
@@ -208,15 +207,18 @@ void ControleurTexte::repositionner(char* text, float posX, float posY)
 	*/
 	FTPoint positionTexte = FTPoint(posX, posY);
 	float decalage = obtenirDecalageY(textIndex);
+	std::get<4>(texts_[textIndex].second) = Position::E;
 	if (posX == 0)
 	{
 		if (posY == 0)			// A
 		{
+			std::get<4>(texts_[textIndex].second) = Position::A;
 			positionTexte = FTPoint(0,
 									0 + textIndex);
 		}
 		else if (posY == 1)		// B
 		{
+			std::get<4>(texts_[textIndex].second) = Position::B;
 			positionTexte = FTPoint(posMax.x - (boiteTextUpper.X() - boiteTextLower.X()),
 									0 + textIndex);
 		}
@@ -225,11 +227,13 @@ void ControleurTexte::repositionner(char* text, float posX, float posY)
 	{
 		if (posY == 0)			// D
 		{
+			std::get<4>(texts_[textIndex].second) = Position::D;
 			positionTexte = FTPoint(0,
 									posMax.y - (boiteTextUpper.Y() - boiteTextLower.Y()) - decalage);
 		}
 		else if (posY == 1)		// C
 		{
+			std::get<4>(texts_[textIndex].second) = Position::C;
 			positionTexte = FTPoint(posMax.x - (boiteTextUpper.X() - boiteTextLower.X()),
 									posMax.y - (boiteTextUpper.Y() - boiteTextLower.Y()) - decalage);
 		}
@@ -239,6 +243,7 @@ void ControleurTexte::repositionner(char* text, float posX, float posY)
 }
 float ControleurTexte::obtenirDecalageY(unsigned int objectIndex)
 {
+	// Foutre de quoi ici, je sais pas encore quoi	TODO
 	float decalage = 0;
 	for (unsigned int i = 0; i < objectIndex; i++)
 	{
