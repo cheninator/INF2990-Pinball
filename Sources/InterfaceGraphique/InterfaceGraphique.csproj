@@ -80,6 +80,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="ColorList.cs" />
     <Compile Include="ConsoleRedirector.cs" />
     <Compile Include="Fenetres\Aide.cs">
       <SubType>Form</SubType>
@@ -140,6 +141,7 @@
     <Compile Include="Fenetres\PartieTerminee.designer.cs">
       <DependentUpon>PartieTerminee.cs</DependentUpon>
     </Compile>
+    <Compile Include="FonctionsNatives.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Fenetres\Proprietes.cs">
