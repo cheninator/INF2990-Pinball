@@ -176,7 +176,7 @@ namespace InterfaceGraphique
                     {
                         panelHeight = panel_GL.Size.Height;
                         panelWidth = panel_GL.Size.Width;
-                        FonctionsNatives.refreshText(panelWidth, panelHeight);
+                        FonctionsNatives.refreshText(panelWidth - bouton_Creation.Width, panelHeight);
                     }
                     if (etat is EtatEditeurSelectionMultiple || etat is EtatEditeurZoomElastique)
                     {
