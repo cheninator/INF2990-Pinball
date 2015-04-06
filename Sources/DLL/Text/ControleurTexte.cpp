@@ -186,6 +186,8 @@ void ControleurTexte::repositionner(char* text, float posX, float posY)
 	unsigned int textIndex = lookUpText(text);
 	char* myFont = std::get<3>(texts_[textIndex].second);
 	unsigned int fontIndex = lookUpFont(std::string(myFont));
+	if (fontTable_.size() == 0)
+		return;
 	FTBBox boiteText = fontTable_[fontIndex].second->BBox(text);
 	FTPoint boiteTextLower = boiteText.Lower();
 	FTPoint boiteTextUpper = boiteText.Upper();

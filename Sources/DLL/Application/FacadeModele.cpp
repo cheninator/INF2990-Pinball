@@ -336,7 +336,6 @@ void FacadeModele::afficherBase() const
 
 	// fuck that shit... si je met cette ligne la dans le .h ca compile plus...
 	// TODO bouger shit dans l'API et le C#, pis juste appeler afficherTexte();
-	/*
 	{
 		// le Texte a Ecrire
 		char* myText = "Hello World";
@@ -365,7 +364,7 @@ void FacadeModele::afficherBase() const
 		controleurTexte_->repositionner(myText, 1, 1);
 	}
 	controleurTexte_->afficherTexte();
-	*/
+	
 }
 
 
