@@ -3178,5 +3178,10 @@ namespace InterfaceGraphique
         {
 
         }
+
+        private void toolStripButton7_Click(object sender, EventArgs e)
+        {
+            Zoom_MenuItem.PerformClick();
+        }
     }
 }

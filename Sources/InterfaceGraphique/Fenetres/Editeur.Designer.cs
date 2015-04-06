@@ -144,14 +144,6 @@ namespace InterfaceGraphique
             this.printPreviewDialog1 = new System.Windows.Forms.PrintPreviewDialog();
             this.toolTipPaneauCreation = new System.Windows.Forms.ToolTip(this.components);
             this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
-            this.toolTip2 = new System.Windows.Forms.ToolTip(this.components);
-            this.toolTip3 = new System.Windows.Forms.ToolTip(this.components);
-            this.toolTip4 = new System.Windows.Forms.ToolTip(this.components);
-            this.toolTip5 = new System.Windows.Forms.ToolTip(this.components);
-            this.toolTip6 = new System.Windows.Forms.ToolTip(this.components);
-            this.toolTip7 = new System.Windows.Forms.ToolTip(this.components);
-            this.toolTip8 = new System.Windows.Forms.ToolTip(this.components);
-            this.toolTip9 = new System.Windows.Forms.ToolTip(this.components);
             Enregistrer = new System.Windows.Forms.ToolStripButton();
             this.panel1.SuspendLayout();
             this.panel_GL.SuspendLayout();
@@ -412,12 +404,13 @@ namespace InterfaceGraphique
             this.Gate.BackColor = System.Drawing.Color.White;
             this.Gate.BackgroundImage = global::InterfaceGraphique.Properties.Resources.gate;
             this.Gate.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.Gate.Location = new System.Drawing.Point(19, 80);
+            this.Gate.Location = new System.Drawing.Point(68, 80);
             this.Gate.Name = "Gate";
             this.Gate.Size = new System.Drawing.Size(85, 50);
             this.Gate.TabIndex = 7;
             this.Gate.Tag = "Gate";
             this.Gate.TextAlign = System.Drawing.ContentAlignment.TopRight;
+            this.toolTip1.SetToolTip(this.Gate, "Porte");
             this.Gate.UseVisualStyleBackColor = false;
             this.Gate.Click += new System.EventHandler(this.Gate_Button_Click);
             // 
@@ -471,7 +464,7 @@ namespace InterfaceGraphique
             this.Trou_bouton.BackColor = System.Drawing.Color.White;
             this.Trou_bouton.BackgroundImage = global::InterfaceGraphique.Properties.Resources.Trou;
             this.Trou_bouton.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.Trou_bouton.Location = new System.Drawing.Point(19, 81);
+            this.Trou_bouton.Location = new System.Drawing.Point(68, 81);
             this.Trou_bouton.Name = "Trou_bouton";
             this.Trou_bouton.Size = new System.Drawing.Size(85, 50);
             this.Trou_bouton.TabIndex = 5;
@@ -534,7 +527,7 @@ namespace InterfaceGraphique
             this.Groupe_Outils.Controls.Add(this.bouton_Duplication);
             this.Groupe_Outils.Controls.Add(this.bouton_Rotation);
             this.Groupe_Outils.Controls.Add(this.bouton_Scaling);
-            this.Groupe_Outils.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.25F, System.Drawing.FontStyle.Bold);
+            this.Groupe_Outils.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Groupe_Outils.Location = new System.Drawing.Point(7, 10);
             this.Groupe_Outils.Margin = new System.Windows.Forms.Padding(7, 10, 3, 3);
             this.Groupe_Outils.Name = "Groupe_Outils";
@@ -646,7 +639,7 @@ namespace InterfaceGraphique
             // 
             this.OutilGraphique.BackColor = System.Drawing.SystemColors.GradientInactiveCaption;
             this.OutilGraphique.Controls.Add(this.labelOCourant);
-            this.OutilGraphique.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.25F, System.Drawing.FontStyle.Bold);
+            this.OutilGraphique.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.OutilGraphique.Location = new System.Drawing.Point(7, 308);
             this.OutilGraphique.Margin = new System.Windows.Forms.Padding(7, 15, 3, 3);
             this.OutilGraphique.Name = "OutilGraphique";
@@ -678,20 +671,20 @@ namespace InterfaceGraphique
             this.Groupe_Proprietes.Controls.Add(this.Y_label);
             this.Groupe_Proprietes.Controls.Add(this.Xbox);
             this.Groupe_Proprietes.Controls.Add(this.X_label);
-            this.Groupe_Proprietes.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.25F, System.Drawing.FontStyle.Bold);
+            this.Groupe_Proprietes.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Groupe_Proprietes.Location = new System.Drawing.Point(7, 386);
             this.Groupe_Proprietes.Margin = new System.Windows.Forms.Padding(7, 15, 3, 3);
             this.Groupe_Proprietes.Name = "Groupe_Proprietes";
             this.Groupe_Proprietes.Size = new System.Drawing.Size(169, 193);
             this.Groupe_Proprietes.TabIndex = 1;
             this.Groupe_Proprietes.TabStop = false;
-            this.Groupe_Proprietes.Text = "Propriétés";
+            this.Groupe_Proprietes.Text = "PROPRIÉTÉS";
             this.Groupe_Proprietes.Enter += new System.EventHandler(this.Groupe_Proprietes_Enter);
             // 
             // Annuler_prop_boutn
             // 
             this.Annuler_prop_boutn.Enabled = false;
-            this.Annuler_prop_boutn.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.25F);
+            this.Annuler_prop_boutn.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Annuler_prop_boutn.Location = new System.Drawing.Point(27, 164);
             this.Annuler_prop_boutn.Name = "Annuler_prop_boutn";
             this.Annuler_prop_boutn.Size = new System.Drawing.Size(65, 23);
@@ -704,7 +697,7 @@ namespace InterfaceGraphique
             // OK_prop_bouton
             // 
             this.OK_prop_bouton.Enabled = false;
-            this.OK_prop_bouton.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.25F);
+            this.OK_prop_bouton.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.OK_prop_bouton.Location = new System.Drawing.Point(98, 164);
             this.OK_prop_bouton.Name = "OK_prop_bouton";
             this.OK_prop_bouton.Size = new System.Drawing.Size(65, 23);
@@ -717,17 +710,18 @@ namespace InterfaceGraphique
             // Anglebox
             // 
             this.Anglebox.Enabled = false;
-            this.Anglebox.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.25F);
+            this.Anglebox.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Anglebox.Location = new System.Drawing.Point(112, 95);
             this.Anglebox.Name = "Anglebox";
             this.Anglebox.Size = new System.Drawing.Size(51, 21);
             this.Anglebox.TabIndex = 5;
             this.Anglebox.TabStop = false;
+            this.Anglebox.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // Angle_label
             // 
             this.Angle_label.Enabled = false;
-            this.Angle_label.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.25F);
+            this.Angle_label.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Angle_label.Location = new System.Drawing.Point(2, 96);
             this.Angle_label.Name = "Angle_label";
             this.Angle_label.Size = new System.Drawing.Size(57, 20);
@@ -738,17 +732,18 @@ namespace InterfaceGraphique
             // FMEbox
             // 
             this.FMEbox.Enabled = false;
-            this.FMEbox.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.25F);
+            this.FMEbox.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.FMEbox.Location = new System.Drawing.Point(112, 122);
             this.FMEbox.Name = "FMEbox";
             this.FMEbox.Size = new System.Drawing.Size(51, 21);
             this.FMEbox.TabIndex = 7;
             this.FMEbox.TabStop = false;
+            this.FMEbox.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // FME_label
             // 
             this.FME_label.Enabled = false;
-            this.FME_label.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.25F);
+            this.FME_label.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.FME_label.Location = new System.Drawing.Point(-3, 123);
             this.FME_label.Name = "FME_label";
             this.FME_label.Size = new System.Drawing.Size(67, 19);
@@ -759,17 +754,18 @@ namespace InterfaceGraphique
             // Ybox
             // 
             this.Ybox.Enabled = false;
-            this.Ybox.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.25F);
+            this.Ybox.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Ybox.Location = new System.Drawing.Point(112, 57);
             this.Ybox.Name = "Ybox";
             this.Ybox.Size = new System.Drawing.Size(51, 21);
             this.Ybox.TabIndex = 3;
             this.Ybox.TabStop = false;
+            this.Ybox.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // Y_label
             // 
             this.Y_label.Enabled = false;
-            this.Y_label.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.25F);
+            this.Y_label.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Y_label.Location = new System.Drawing.Point(-1, 32);
             this.Y_label.Name = "Y_label";
             this.Y_label.Size = new System.Drawing.Size(106, 20);
@@ -780,17 +776,18 @@ namespace InterfaceGraphique
             // Xbox
             // 
             this.Xbox.Enabled = false;
-            this.Xbox.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.25F);
+            this.Xbox.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Xbox.Location = new System.Drawing.Point(112, 32);
             this.Xbox.Name = "Xbox";
             this.Xbox.Size = new System.Drawing.Size(51, 21);
             this.Xbox.TabIndex = 1;
             this.Xbox.TabStop = false;
+            this.Xbox.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // X_label
             // 
             this.X_label.Enabled = false;
-            this.X_label.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.25F);
+            this.X_label.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.X_label.Location = new System.Drawing.Point(-2, 57);
             this.X_label.Name = "X_label";
             this.X_label.Size = new System.Drawing.Size(106, 20);
@@ -991,6 +988,7 @@ namespace InterfaceGraphique
             this.toolStripButton7.Size = new System.Drawing.Size(35, 30);
             this.toolStripButton7.Text = "toolStripButton7";
             this.toolStripButton7.ToolTipText = "Zoom Elastique";
+            this.toolStripButton7.Click += new System.EventHandler(this.toolStripButton7_Click);
             // 
             // menuStrip1
             // 
@@ -1025,7 +1023,7 @@ namespace InterfaceGraphique
             // 
             this.Nouveau_MenuItem.Name = "Nouveau_MenuItem";
             this.Nouveau_MenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.N)));
-            this.Nouveau_MenuItem.Size = new System.Drawing.Size(226, 22);
+            this.Nouveau_MenuItem.Size = new System.Drawing.Size(230, 22);
             this.Nouveau_MenuItem.Text = "Nouveau";
             this.Nouveau_MenuItem.Click += new System.EventHandler(this.Nouveau_MenuItem_Click);
             // 
@@ -1033,7 +1031,7 @@ namespace InterfaceGraphique
             // 
             this.Ouvrir_MenuItem.Name = "Ouvrir_MenuItem";
             this.Ouvrir_MenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.O)));
-            this.Ouvrir_MenuItem.Size = new System.Drawing.Size(226, 22);
+            this.Ouvrir_MenuItem.Size = new System.Drawing.Size(230, 22);
             this.Ouvrir_MenuItem.Text = "Ouvrir";
             this.Ouvrir_MenuItem.Click += new System.EventHandler(this.Ouvrir_MenuItem_Click);
             // 
@@ -1041,7 +1039,7 @@ namespace InterfaceGraphique
             // 
             this.Enregistrer_MenuItem.Name = "Enregistrer_MenuItem";
             this.Enregistrer_MenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.S)));
-            this.Enregistrer_MenuItem.Size = new System.Drawing.Size(226, 22);
+            this.Enregistrer_MenuItem.Size = new System.Drawing.Size(230, 22);
             this.Enregistrer_MenuItem.Text = "Enregistrer";
             this.Enregistrer_MenuItem.Click += new System.EventHandler(this.Enregistrer_MenuItem_Click);
             // 
@@ -1050,14 +1048,14 @@ namespace InterfaceGraphique
             this.EnregistrerS_MenuItem.Name = "EnregistrerS_MenuItem";
             this.EnregistrerS_MenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)(((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.Shift) 
             | System.Windows.Forms.Keys.S)));
-            this.EnregistrerS_MenuItem.Size = new System.Drawing.Size(226, 22);
+            this.EnregistrerS_MenuItem.Size = new System.Drawing.Size(230, 22);
             this.EnregistrerS_MenuItem.Text = "Enregistrer Sous";
             this.EnregistrerS_MenuItem.Click += new System.EventHandler(this.EnregistrerS_MenuItem_Click);
             // 
             // Proprietes_MenuItem
             // 
             this.Proprietes_MenuItem.Name = "Proprietes_MenuItem";
-            this.Proprietes_MenuItem.Size = new System.Drawing.Size(226, 22);
+            this.Proprietes_MenuItem.Size = new System.Drawing.Size(230, 22);
             this.Proprietes_MenuItem.Text = "Propriétés";
             this.Proprietes_MenuItem.Click += new System.EventHandler(this.Proprietes_MenuItem_Click);
             // 
@@ -1065,7 +1063,7 @@ namespace InterfaceGraphique
             // 
             this.ModeTest_MenuItem.Name = "ModeTest_MenuItem";
             this.ModeTest_MenuItem.ShortcutKeyDisplayString = "t";
-            this.ModeTest_MenuItem.Size = new System.Drawing.Size(226, 22);
+            this.ModeTest_MenuItem.Size = new System.Drawing.Size(230, 22);
             this.ModeTest_MenuItem.Text = "Mode Test";
             this.ModeTest_MenuItem.Click += new System.EventHandler(this.ModeTest_MenuItem_Click);
             // 
@@ -1073,7 +1071,7 @@ namespace InterfaceGraphique
             // 
             this.MenuP_MenuItem.Name = "MenuP_MenuItem";
             this.MenuP_MenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.Q)));
-            this.MenuP_MenuItem.Size = new System.Drawing.Size(226, 22);
+            this.MenuP_MenuItem.Size = new System.Drawing.Size(230, 22);
             this.MenuP_MenuItem.Text = "Menu Principal";
             this.MenuP_MenuItem.Click += new System.EventHandler(this.MenuP_MenuItem_Click);
             // 
@@ -1508,15 +1506,7 @@ namespace InterfaceGraphique
         private System.Windows.Forms.ToolTip toolTipPaneauCreation;
         private System.Windows.Forms.Button bouton_Suppression;
         private System.Windows.Forms.ToolTip toolTip1;
-        private System.Windows.Forms.ToolTip toolTip2;
-        private System.Windows.Forms.ToolTip toolTip3;
         private System.Windows.Forms.ToolStripButton toolStripButton7;
-        private System.Windows.Forms.ToolTip toolTip5;
-        private System.Windows.Forms.ToolTip toolTip6;
-        private System.Windows.Forms.ToolTip toolTip4;
-        private System.Windows.Forms.ToolTip toolTip7;
-        private System.Windows.Forms.ToolTip toolTip8;
-        private System.Windows.Forms.ToolTip toolTip9;
         private System.Windows.Forms.ToolStripButton toolStripButton8;
         private System.Windows.Forms.ToolStripButton toolStripButton9;
     }
