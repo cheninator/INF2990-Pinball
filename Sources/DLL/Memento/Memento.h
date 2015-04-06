@@ -11,6 +11,7 @@
 
 
 #include "../Arbre/ArbreRenduINF2990.h"
+#include <vector>
 
 ///////////////////////////////////////////////////////////////////////////
 /// @class Originator
@@ -24,19 +25,22 @@ class Memento
 
 public:
 
-	virtual ~Memento();
+	/// Constructeur
+	Memento(ArbreRenduINF2990* arbreAEnregistrer);
+
+	/// Destructeur
+	~Memento();
+
+	/// Obtenir la sauvegarde
+	std::vector<NoeudAbstrait*> obtenirSauvegarde() const { return sauvegarde; };
 
 private:
 
-	friend class Originator;
+	/// Enregistrer l'information des noeuds
+	void sauvegarder(ArbreRenduINF2990* arbreAEnregistrer);
 
-	/// Constructeur
-	Memento(ArbreRenduINF2990* arbreAEnregistrer) { arbreEnregistrer_ = arbreAEnregistrer; };
-
-	/// Obtenir l'arbre sauvegarde
-	ArbreRenduINF2990* obtenirArbreEnregistrer() const { return arbreEnregistrer_; };
-
-	ArbreRenduINF2990* arbreEnregistrer_;
+	/// Structure de donnee qui contient l'information des noeuds
+	std::vector<NoeudAbstrait*> sauvegarde;
 
 };
 

@@ -9,7 +9,6 @@
 #ifndef __CARETAKER_H__
 #define __CARETAKER_H__
 
-
 #include "Memento.h"
 #include <list>
 
@@ -25,20 +24,31 @@ class CareTaker
 
 public:
 
+	/// Constructeur
+	CareTaker();
+
+	/// Destructeur
+	~CareTaker();
+
+	/// Ajouter une sauvegarde dans l'historique
 	void ajouter(Memento* memento);
 
-	void obtenirMemento(int index);
+	/// Vider l'historique
+	void vider();
+
+	/// Obtenir une certaine sauvegarde
+	Memento* obtenirMemento(int index);
+
+	/// La taille actuelle
+	int size() const { return historique_.size(); };
 
 private:
 
 	/// Liste de tous les etats passes
-	std::list<Memento*> arbres_;
+	std::list<Memento*> historique_;
 
 	/// Combien d'etat on veut enregistrer
-	int tailleMax;
-
-	/// Nombre d'etat actuelle present dans la liste
-	int tailleActuelle_;
+	const int tailleMax = 10;
 
 };
 

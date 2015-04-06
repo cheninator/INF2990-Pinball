@@ -67,6 +67,7 @@ Yonni Chen <BR>
 
 #include "CompteurAffichage.h"
 #include "../Configuration/ConfigScene.h"
+#include "../Memento/Originator.h"
 
 // Remplacement de EnveloppeXML/XercesC par TinyXML
 // Julien Gascon-Samson, ete 2011
@@ -228,6 +229,7 @@ void FacadeModele::initialiserOpenGL(HWND hWnd)
 	arbre_ = new ArbreRenduINF2990;
 	std::cout << "Initialisation de l'arbre de rendu..." << std::endl;
 	arbre_->initialiser();
+
 	// On cree une vue par defaut.
 	vue_ = new vue::VueOrtho{
 		vue::Camera{ 

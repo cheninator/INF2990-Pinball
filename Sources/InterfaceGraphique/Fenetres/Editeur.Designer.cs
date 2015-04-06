@@ -532,7 +532,7 @@ namespace InterfaceGraphique
             this.Groupe_Outils.Controls.Add(this.bouton_Duplication);
             this.Groupe_Outils.Controls.Add(this.bouton_Rotation);
             this.Groupe_Outils.Controls.Add(this.bouton_Scaling);
-            this.Groupe_Outils.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Groupe_Outils.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.25F, System.Drawing.FontStyle.Bold);
             this.Groupe_Outils.Location = new System.Drawing.Point(7, 10);
             this.Groupe_Outils.Margin = new System.Windows.Forms.Padding(7, 10, 3, 3);
             this.Groupe_Outils.Name = "Groupe_Outils";
@@ -644,7 +644,7 @@ namespace InterfaceGraphique
             // 
             this.OutilGraphique.BackColor = System.Drawing.SystemColors.GradientInactiveCaption;
             this.OutilGraphique.Controls.Add(this.labelOCourant);
-            this.OutilGraphique.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold);
+            this.OutilGraphique.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.25F, System.Drawing.FontStyle.Bold);
             this.OutilGraphique.Location = new System.Drawing.Point(7, 308);
             this.OutilGraphique.Margin = new System.Windows.Forms.Padding(7, 15, 3, 3);
             this.OutilGraphique.Name = "OutilGraphique";
@@ -676,7 +676,7 @@ namespace InterfaceGraphique
             this.Groupe_Proprietes.Controls.Add(this.Y_label);
             this.Groupe_Proprietes.Controls.Add(this.Xbox);
             this.Groupe_Proprietes.Controls.Add(this.X_label);
-            this.Groupe_Proprietes.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold);
+            this.Groupe_Proprietes.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.25F, System.Drawing.FontStyle.Bold);
             this.Groupe_Proprietes.Location = new System.Drawing.Point(7, 386);
             this.Groupe_Proprietes.Margin = new System.Windows.Forms.Padding(7, 15, 3, 3);
             this.Groupe_Proprietes.Name = "Groupe_Proprietes";

@@ -12,6 +12,7 @@
 
 #include "../Arbre/ArbreRenduINF2990.h"
 #include "Memento.h"
+#include "CareTaker.h"
 
 ///////////////////////////////////////////////////////////////////////////
 /// @class Originator
@@ -26,20 +27,30 @@ class Originator
 public :
 
 	/// Constructeur
-	Originator();
+	Originator(ArbreRenduINF2990* arbre);
 
-	/// Assigner un arbre a l'Originator
-	void assigner(ArbreRenduINF2990* arbre);
+	/// Destructeur
+	~Originator();
+
+	/// Operation annuler
+	void annuler();
+
+	/// Operation retablir
+	void retablir();
 
 	/// Sauvegarder l'arbre dans un memento
-	Memento* sauvegarderMemento() { return new Memento(arbreActuel_); };
-
-	/// Restaurer l'arbre à partir d'un memento
-	ArbreRenduINF2990* restaurerMemento(Memento* memento);
+	void sauvegarder();
 
 private:
 
+	/// L'arbre dont il faut manipuler les changements d'etats
 	ArbreRenduINF2990* arbreActuel_;
+
+	/// Contient l'historique des etats
+	CareTaker* historique_;
+
+	/// Position courrante
+	int position_;
 
 };
 
