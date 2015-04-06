@@ -201,7 +201,7 @@ namespace InterfaceGraphique
             this.panel_GL.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel_GL.Location = new System.Drawing.Point(163, 59);
             this.panel_GL.Name = "panel_GL";
-            this.panel_GL.Size = new System.Drawing.Size(549, 670);
+            this.panel_GL.Size = new System.Drawing.Size(554, 670);
             this.panel_GL.TabIndex = 4;
             this.panel_GL.SizeChanged += new System.EventHandler(this.panel_GL_SizeChanged);
             this.panel_GL.MouseClick += new System.Windows.Forms.MouseEventHandler(this.panel_GL_MouseClick);
@@ -214,7 +214,7 @@ namespace InterfaceGraphique
             // 
             this.bouton_Creation.Dock = System.Windows.Forms.DockStyle.Right;
             this.bouton_Creation.Font = new System.Drawing.Font("Stencil", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.bouton_Creation.Location = new System.Drawing.Point(526, 0);
+            this.bouton_Creation.Location = new System.Drawing.Point(531, 0);
             this.bouton_Creation.Name = "bouton_Creation";
             this.bouton_Creation.Size = new System.Drawing.Size(23, 670);
             this.bouton_Creation.TabIndex = 5;
@@ -233,9 +233,9 @@ namespace InterfaceGraphique
             this.Creation_Panel.Controls.Add(this.Group_Elements);
             this.Creation_Panel.Controls.Add(this.Group_Element2);
             this.Creation_Panel.Dock = System.Windows.Forms.DockStyle.Right;
-            this.Creation_Panel.Location = new System.Drawing.Point(712, 59);
+            this.Creation_Panel.Location = new System.Drawing.Point(717, 59);
             this.Creation_Panel.Name = "Creation_Panel";
-            this.Creation_Panel.Size = new System.Drawing.Size(242, 670);
+            this.Creation_Panel.Size = new System.Drawing.Size(237, 670);
             this.Creation_Panel.TabIndex = 2;
             this.Creation_Panel.MouseEnter += new System.EventHandler(this.Creation_Panel_MouseEnter);
             // 
@@ -247,10 +247,10 @@ namespace InterfaceGraphique
             this.Groupe_Palettes.Controls.Add(this.PDJ1_bouton);
             this.Groupe_Palettes.Controls.Add(this.PGJ1_bouton);
             this.Groupe_Palettes.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Groupe_Palettes.Location = new System.Drawing.Point(12, 10);
-            this.Groupe_Palettes.Margin = new System.Windows.Forms.Padding(12, 10, 3, 5);
+            this.Groupe_Palettes.Location = new System.Drawing.Point(15, 10);
+            this.Groupe_Palettes.Margin = new System.Windows.Forms.Padding(15, 10, 3, 5);
             this.Groupe_Palettes.Name = "Groupe_Palettes";
-            this.Groupe_Palettes.Size = new System.Drawing.Size(216, 150);
+            this.Groupe_Palettes.Size = new System.Drawing.Size(205, 140);
             this.Groupe_Palettes.TabIndex = 5;
             this.Groupe_Palettes.TabStop = false;
             this.Groupe_Palettes.Text = "Palettes";
@@ -260,9 +260,9 @@ namespace InterfaceGraphique
             this.PDJ2_bouton.BackColor = System.Drawing.Color.White;
             this.PDJ2_bouton.BackgroundImage = global::InterfaceGraphique.Properties.Resources.gauche2;
             this.PDJ2_bouton.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.PDJ2_bouton.Location = new System.Drawing.Point(110, 85);
+            this.PDJ2_bouton.Location = new System.Drawing.Point(107, 79);
             this.PDJ2_bouton.Name = "PDJ2_bouton";
-            this.PDJ2_bouton.Size = new System.Drawing.Size(100, 58);
+            this.PDJ2_bouton.Size = new System.Drawing.Size(85, 50);
             this.PDJ2_bouton.TabIndex = 3;
             this.PDJ2_bouton.TextAlign = System.Drawing.ContentAlignment.TopRight;
             this.toolTip1.SetToolTip(this.PDJ2_bouton, "Joueur 2");
@@ -274,9 +274,9 @@ namespace InterfaceGraphique
             this.PGJ2_bouton.BackColor = System.Drawing.Color.White;
             this.PGJ2_bouton.BackgroundImage = global::InterfaceGraphique.Properties.Resources.droite2;
             this.PGJ2_bouton.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.PGJ2_bouton.Location = new System.Drawing.Point(6, 85);
+            this.PGJ2_bouton.Location = new System.Drawing.Point(16, 79);
             this.PGJ2_bouton.Name = "PGJ2_bouton";
-            this.PGJ2_bouton.Size = new System.Drawing.Size(100, 58);
+            this.PGJ2_bouton.Size = new System.Drawing.Size(85, 50);
             this.PGJ2_bouton.TabIndex = 2;
             this.PGJ2_bouton.TextAlign = System.Drawing.ContentAlignment.TopRight;
             this.toolTip1.SetToolTip(this.PGJ2_bouton, "Joueur 2");
@@ -288,9 +288,9 @@ namespace InterfaceGraphique
             this.PDJ1_bouton.BackColor = System.Drawing.Color.White;
             this.PDJ1_bouton.BackgroundImage = global::InterfaceGraphique.Properties.Resources.gauche1;
             this.PDJ1_bouton.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.PDJ1_bouton.Location = new System.Drawing.Point(110, 19);
+            this.PDJ1_bouton.Location = new System.Drawing.Point(106, 23);
             this.PDJ1_bouton.Name = "PDJ1_bouton";
-            this.PDJ1_bouton.Size = new System.Drawing.Size(100, 58);
+            this.PDJ1_bouton.Size = new System.Drawing.Size(85, 50);
             this.PDJ1_bouton.TabIndex = 1;
             this.PDJ1_bouton.TextAlign = System.Drawing.ContentAlignment.TopRight;
             this.toolTip1.SetToolTip(this.PDJ1_bouton, "Joueur 1");
@@ -302,9 +302,9 @@ namespace InterfaceGraphique
             this.PGJ1_bouton.BackColor = System.Drawing.Color.White;
             this.PGJ1_bouton.BackgroundImage = global::InterfaceGraphique.Properties.Resources.droite1;
             this.PGJ1_bouton.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.PGJ1_bouton.Location = new System.Drawing.Point(6, 19);
+            this.PGJ1_bouton.Location = new System.Drawing.Point(16, 23);
             this.PGJ1_bouton.Name = "PGJ1_bouton";
-            this.PGJ1_bouton.Size = new System.Drawing.Size(100, 58);
+            this.PGJ1_bouton.Size = new System.Drawing.Size(85, 50);
             this.PGJ1_bouton.TabIndex = 0;
             this.PGJ1_bouton.TextAlign = System.Drawing.ContentAlignment.TopRight;
             this.toolTip1.SetToolTip(this.PGJ1_bouton, "Joueur 1");
@@ -320,10 +320,10 @@ namespace InterfaceGraphique
             this.Group_Butoir.Controls.Add(this.butoirG_bouton);
             this.Group_Butoir.Controls.Add(this.Cible_bouton);
             this.Group_Butoir.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Group_Butoir.Location = new System.Drawing.Point(12, 172);
-            this.Group_Butoir.Margin = new System.Windows.Forms.Padding(12, 7, 3, 5);
+            this.Group_Butoir.Location = new System.Drawing.Point(15, 162);
+            this.Group_Butoir.Margin = new System.Windows.Forms.Padding(15, 7, 3, 5);
             this.Group_Butoir.Name = "Group_Butoir";
-            this.Group_Butoir.Size = new System.Drawing.Size(216, 156);
+            this.Group_Butoir.Size = new System.Drawing.Size(205, 140);
             this.Group_Butoir.TabIndex = 6;
             this.Group_Butoir.TabStop = false;
             this.Group_Butoir.Text = "Butoirs et Cibles";
@@ -333,9 +333,9 @@ namespace InterfaceGraphique
             // 
             this.butoirCirc_bouton.BackgroundImage = global::InterfaceGraphique.Properties.Resources.circulaire;
             this.butoirCirc_bouton.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            this.butoirCirc_bouton.Location = new System.Drawing.Point(4, 89);
+            this.butoirCirc_bouton.Location = new System.Drawing.Point(16, 81);
             this.butoirCirc_bouton.Name = "butoirCirc_bouton";
-            this.butoirCirc_bouton.Size = new System.Drawing.Size(100, 58);
+            this.butoirCirc_bouton.Size = new System.Drawing.Size(85, 50);
             this.butoirCirc_bouton.TabIndex = 2;
             this.butoirCirc_bouton.TextAlign = System.Drawing.ContentAlignment.TopRight;
             this.toolTip1.SetToolTip(this.butoirCirc_bouton, "Butoir circulaire");
@@ -347,9 +347,9 @@ namespace InterfaceGraphique
             this.butoirD_bouton.BackgroundImage = global::InterfaceGraphique.Properties.Resources.butoirDroit;
             this.butoirD_bouton.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.butoirD_bouton.Cursor = System.Windows.Forms.Cursors.Arrow;
-            this.butoirD_bouton.Location = new System.Drawing.Point(110, 21);
+            this.butoirD_bouton.Location = new System.Drawing.Point(107, 25);
             this.butoirD_bouton.Name = "butoirD_bouton";
-            this.butoirD_bouton.Size = new System.Drawing.Size(100, 58);
+            this.butoirD_bouton.Size = new System.Drawing.Size(85, 50);
             this.butoirD_bouton.TabIndex = 1;
             this.butoirD_bouton.TextAlign = System.Drawing.ContentAlignment.TopRight;
             this.toolTip1.SetToolTip(this.butoirD_bouton, "Butoir droit");
@@ -360,9 +360,9 @@ namespace InterfaceGraphique
             // 
             this.butoirG_bouton.BackgroundImage = global::InterfaceGraphique.Properties.Resources.butoirGauche;
             this.butoirG_bouton.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.butoirG_bouton.Location = new System.Drawing.Point(4, 21);
+            this.butoirG_bouton.Location = new System.Drawing.Point(16, 25);
             this.butoirG_bouton.Name = "butoirG_bouton";
-            this.butoirG_bouton.Size = new System.Drawing.Size(100, 58);
+            this.butoirG_bouton.Size = new System.Drawing.Size(85, 50);
             this.butoirG_bouton.TabIndex = 0;
             this.butoirG_bouton.TextAlign = System.Drawing.ContentAlignment.TopRight;
             this.toolTip1.SetToolTip(this.butoirG_bouton, "Butoir gauche");
@@ -374,9 +374,9 @@ namespace InterfaceGraphique
             this.Cible_bouton.BackColor = System.Drawing.Color.White;
             this.Cible_bouton.BackgroundImage = global::InterfaceGraphique.Properties.Resources.cible;
             this.Cible_bouton.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            this.Cible_bouton.Location = new System.Drawing.Point(110, 89);
+            this.Cible_bouton.Location = new System.Drawing.Point(107, 81);
             this.Cible_bouton.Name = "Cible_bouton";
-            this.Cible_bouton.Size = new System.Drawing.Size(100, 58);
+            this.Cible_bouton.Size = new System.Drawing.Size(85, 50);
             this.Cible_bouton.TabIndex = 0;
             this.Cible_bouton.TextAlign = System.Drawing.ContentAlignment.TopRight;
             this.toolTip1.SetToolTip(this.Cible_bouton, "Cible");
@@ -390,10 +390,10 @@ namespace InterfaceGraphique
             this.Group_Elements.Controls.Add(this.Mur_bouton);
             this.Group_Elements.Controls.Add(this.Portails_bouton);
             this.Group_Elements.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Group_Elements.Location = new System.Drawing.Point(12, 340);
-            this.Group_Elements.Margin = new System.Windows.Forms.Padding(12, 7, 3, 5);
+            this.Group_Elements.Location = new System.Drawing.Point(15, 314);
+            this.Group_Elements.Margin = new System.Windows.Forms.Padding(15, 7, 3, 5);
             this.Group_Elements.Name = "Group_Elements";
-            this.Group_Elements.Size = new System.Drawing.Size(216, 144);
+            this.Group_Elements.Size = new System.Drawing.Size(205, 140);
             this.Group_Elements.TabIndex = 7;
             this.Group_Elements.TabStop = false;
             this.Group_Elements.Text = "Éléments";
@@ -404,9 +404,9 @@ namespace InterfaceGraphique
             this.Gate.BackColor = System.Drawing.Color.White;
             this.Gate.BackgroundImage = global::InterfaceGraphique.Properties.Resources.gate;
             this.Gate.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.Gate.Location = new System.Drawing.Point(109, 76);
+            this.Gate.Location = new System.Drawing.Point(19, 80);
             this.Gate.Name = "Gate";
-            this.Gate.Size = new System.Drawing.Size(100, 58);
+            this.Gate.Size = new System.Drawing.Size(85, 50);
             this.Gate.TabIndex = 7;
             this.Gate.Tag = "Gate";
             this.Gate.TextAlign = System.Drawing.ContentAlignment.TopRight;
@@ -418,9 +418,9 @@ namespace InterfaceGraphique
             this.Mur_bouton.BackColor = System.Drawing.Color.White;
             this.Mur_bouton.BackgroundImage = global::InterfaceGraphique.Properties.Resources.mur;
             this.Mur_bouton.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.Mur_bouton.Location = new System.Drawing.Point(6, 18);
+            this.Mur_bouton.Location = new System.Drawing.Point(19, 24);
             this.Mur_bouton.Name = "Mur_bouton";
-            this.Mur_bouton.Size = new System.Drawing.Size(100, 58);
+            this.Mur_bouton.Size = new System.Drawing.Size(85, 50);
             this.Mur_bouton.TabIndex = 2;
             this.Mur_bouton.TextAlign = System.Drawing.ContentAlignment.TopRight;
             this.toolTip1.SetToolTip(this.Mur_bouton, "Mur");
@@ -432,9 +432,9 @@ namespace InterfaceGraphique
             this.Portails_bouton.BackColor = System.Drawing.Color.White;
             this.Portails_bouton.BackgroundImage = global::InterfaceGraphique.Properties.Resources.portail;
             this.Portails_bouton.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            this.Portails_bouton.Location = new System.Drawing.Point(110, 18);
+            this.Portails_bouton.Location = new System.Drawing.Point(110, 23);
             this.Portails_bouton.Name = "Portails_bouton";
-            this.Portails_bouton.Size = new System.Drawing.Size(100, 58);
+            this.Portails_bouton.Size = new System.Drawing.Size(85, 50);
             this.Portails_bouton.TabIndex = 1;
             this.Portails_bouton.TextAlign = System.Drawing.ContentAlignment.TopRight;
             this.toolTip1.SetToolTip(this.Portails_bouton, "Portail");
@@ -450,10 +450,10 @@ namespace InterfaceGraphique
             this.Group_Element2.Controls.Add(this.Ressort_bouton);
             this.Group_Element2.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Group_Element2.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.Group_Element2.Location = new System.Drawing.Point(12, 496);
-            this.Group_Element2.Margin = new System.Windows.Forms.Padding(12, 7, 3, 7);
+            this.Group_Element2.Location = new System.Drawing.Point(15, 466);
+            this.Group_Element2.Margin = new System.Windows.Forms.Padding(15, 7, 3, 7);
             this.Group_Element2.Name = "Group_Element2";
-            this.Group_Element2.Size = new System.Drawing.Size(216, 158);
+            this.Group_Element2.Size = new System.Drawing.Size(205, 140);
             this.Group_Element2.TabIndex = 8;
             this.Group_Element2.TabStop = false;
             this.Group_Element2.Text = "Éléments essentiels";
@@ -463,9 +463,9 @@ namespace InterfaceGraphique
             this.Trou_bouton.BackColor = System.Drawing.Color.White;
             this.Trou_bouton.BackgroundImage = global::InterfaceGraphique.Properties.Resources.Trou;
             this.Trou_bouton.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.Trou_bouton.Location = new System.Drawing.Point(6, 85);
+            this.Trou_bouton.Location = new System.Drawing.Point(19, 81);
             this.Trou_bouton.Name = "Trou_bouton";
-            this.Trou_bouton.Size = new System.Drawing.Size(100, 58);
+            this.Trou_bouton.Size = new System.Drawing.Size(85, 50);
             this.Trou_bouton.TabIndex = 5;
             this.Trou_bouton.Tag = "Hole";
             this.Trou_bouton.TextAlign = System.Drawing.ContentAlignment.TopRight;
@@ -478,9 +478,9 @@ namespace InterfaceGraphique
             this.Generateur_bouton.BackColor = System.Drawing.Color.White;
             this.Generateur_bouton.BackgroundImage = global::InterfaceGraphique.Properties.Resources.Generateur;
             this.Generateur_bouton.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            this.Generateur_bouton.Location = new System.Drawing.Point(109, 21);
+            this.Generateur_bouton.Location = new System.Drawing.Point(110, 25);
             this.Generateur_bouton.Name = "Generateur_bouton";
-            this.Generateur_bouton.Size = new System.Drawing.Size(100, 58);
+            this.Generateur_bouton.Size = new System.Drawing.Size(85, 50);
             this.Generateur_bouton.TabIndex = 4;
             this.Generateur_bouton.TextAlign = System.Drawing.ContentAlignment.TopRight;
             this.Generateur_bouton.TextImageRelation = System.Windows.Forms.TextImageRelation.TextAboveImage;
@@ -493,9 +493,9 @@ namespace InterfaceGraphique
             this.Ressort_bouton.BackColor = System.Drawing.Color.White;
             this.Ressort_bouton.BackgroundImage = global::InterfaceGraphique.Properties.Resources.ressort2;
             this.Ressort_bouton.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            this.Ressort_bouton.Location = new System.Drawing.Point(6, 21);
+            this.Ressort_bouton.Location = new System.Drawing.Point(19, 25);
             this.Ressort_bouton.Name = "Ressort_bouton";
-            this.Ressort_bouton.Size = new System.Drawing.Size(100, 58);
+            this.Ressort_bouton.Size = new System.Drawing.Size(85, 50);
             this.Ressort_bouton.TabIndex = 3;
             this.Ressort_bouton.TextAlign = System.Drawing.ContentAlignment.TopRight;
             this.toolTip1.SetToolTip(this.Ressort_bouton, "Ressort");

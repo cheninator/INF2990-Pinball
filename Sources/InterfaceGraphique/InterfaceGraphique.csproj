@@ -353,6 +353,7 @@
     <None Include="Resources\butoirDroit.png" />
     <None Include="Resources\butoirGauche.png" />
     <None Include="Resources\ressort2.png" />
+    <None Include="Resources\add.png" />
     <Content Include="Resources\save.png" />
     <None Include="Resources\cible.jpeg" />
     <None Include="Resources\winSound.wav" />

@@ -61,6 +61,16 @@ namespace InterfaceGraphique.Properties {
         }
         
         /// <summary>
+        ///   Recherche une ressource localisée de type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap add {
+            get {
+                object obj = ResourceManager.GetObject("add", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
         ///   Recherche une chaîne localisée semblable à Lorem ipsum dolor sit amet, mel cu liber legendos, mea ea idque gloriatur intellegebat. Nam mucius feugiat reformidans ne, civibus adipiscing his ei. Scripta recusabo ut quo, sed mucius putent propriae cu. Eu fabulas blandit omnesque vix, facilisi dissentias usu cu. Et oratio civibus vis. Adhuc dicant ex ius.
         ///
         ///At aeque malorum consetetur cum. Sed no prompta theophrastus. Cu percipit inciderint has. Affert putant qui ei, nonumy imperdiet molestiae ne vel. Ex vim omittam sapientem reprehendunt, latine moles [le reste de la chaîne a été tronqué]&quot;;.
