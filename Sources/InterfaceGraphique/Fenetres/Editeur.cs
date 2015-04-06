@@ -3163,5 +3163,15 @@ namespace InterfaceGraphique
             FonctionsNatives.removeObject();
             deselection();
         }
+
+        private void Group_Butoir_Enter(object sender, EventArgs e)
+        {
+
+        }
+
+        private void Group_Elements_Enter(object sender, EventArgs e)
+        {
+
+        }
     }
 }

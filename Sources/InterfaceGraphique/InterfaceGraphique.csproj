@@ -344,6 +344,14 @@
     <None Include="Resources\Ressort.gif" />
     <None Include="Resources\ButoirCirculaire.gif" />
     <None Include="Resources\Creation.gif" />
+    <None Include="Resources\gauche1.png" />
+    <None Include="Resources\droite1.png" />
+    <None Include="Resources\droite2.png" />
+    <None Include="Resources\gauche2.png" />
+    <None Include="Resources\circulaire.png" />
+    <None Include="Resources\butoirDroit.png" />
+    <None Include="Resources\butoirGauche.png" />
+    <None Include="Resources\ressort2.png" />
     <Content Include="Resources\save.png" />
     <None Include="Resources\cible.jpeg" />
     <None Include="Resources\winSound.wav" />
