@@ -277,7 +277,7 @@ void ControleurTexte::refresh(int x, int y)
 float ControleurTexte::obtenirDecalageY(unsigned int objectIndex)
 {
 	// Foutre de quoi ici, je sais pas encore quoi	TODO
-	float decalage = 0;
+	float decalage = MARGE_Y;
 	Position p = std::get<4>(texts_[objectIndex].second);
 	if (p == Position::E)
 		return 0;
@@ -287,10 +287,12 @@ float ControleurTexte::obtenirDecalageY(unsigned int objectIndex)
 		if (std::get<4>(texts_[i].second) != p)
 			continue;
 		unsigned int fontIndex = lookUpFont(std::get<3>(texts_[i].second));
+		int textSize = std::get<2>(texts_[i].second);
+		fontTable_[fontIndex].second->FaceSize(textSize);
 		FTBBox boiteText = fontTable_[fontIndex].second->BBox(texts_[i].first);
 		FTPoint boiteTextLower = boiteText.Lower();
 		FTPoint boiteTextUpper = boiteText.Upper();
-		decalage += abs(boiteTextUpper.Yf() - boiteTextLower.Yf());
+		decalage += abs(boiteTextUpper.Yf() - boiteTextLower.Yf()) + MARGE_Y;
 	}
  	return abs(decalage);
 }
