@@ -91,6 +91,8 @@ namespace InterfaceGraphique
             this.Ouvrir = new System.Windows.Forms.ToolStripButton();
             this.toolStripButton4 = new System.Windows.Forms.ToolStripButton();
             this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
+            this.toolStripButton8 = new System.Windows.Forms.ToolStripButton();
+            this.toolStripButton9 = new System.Windows.Forms.ToolStripButton();
             this.toolStripButton3 = new System.Windows.Forms.ToolStripButton();
             this.toolStripButton1 = new System.Windows.Forms.ToolStripButton();
             this.toolStripSeparator3 = new System.Windows.Forms.ToolStripSeparator();
@@ -820,6 +822,8 @@ namespace InterfaceGraphique
             Enregistrer,
             this.toolStripButton4,
             this.toolStripSeparator1,
+            this.toolStripButton8,
+            this.toolStripButton9,
             this.toolStripButton3,
             this.toolStripButton1,
             this.toolStripSeparator3,
@@ -896,6 +900,28 @@ namespace InterfaceGraphique
             this.toolStripSeparator1.Margin = new System.Windows.Forms.Padding(10, 0, 10, 0);
             this.toolStripSeparator1.Name = "toolStripSeparator1";
             this.toolStripSeparator1.Size = new System.Drawing.Size(6, 35);
+            // 
+            // toolStripButton8
+            // 
+            this.toolStripButton8.AutoSize = false;
+            this.toolStripButton8.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.toolStripButton8.Image = global::InterfaceGraphique.Properties.Resources.undo;
+            this.toolStripButton8.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.toolStripButton8.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.toolStripButton8.Name = "toolStripButton8";
+            this.toolStripButton8.Size = new System.Drawing.Size(35, 30);
+            this.toolStripButton8.Text = "toolStripButton8";
+            // 
+            // toolStripButton9
+            // 
+            this.toolStripButton9.AutoSize = false;
+            this.toolStripButton9.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.toolStripButton9.Image = global::InterfaceGraphique.Properties.Resources.redo;
+            this.toolStripButton9.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.toolStripButton9.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.toolStripButton9.Name = "toolStripButton9";
+            this.toolStripButton9.Size = new System.Drawing.Size(35, 30);
+            this.toolStripButton9.Text = "toolStripButton9";
             // 
             // toolStripButton3
             // 
@@ -1491,6 +1517,8 @@ namespace InterfaceGraphique
         private System.Windows.Forms.ToolTip toolTip7;
         private System.Windows.Forms.ToolTip toolTip8;
         private System.Windows.Forms.ToolTip toolTip9;
+        private System.Windows.Forms.ToolStripButton toolStripButton8;
+        private System.Windows.Forms.ToolStripButton toolStripButton9;
     }
 }
 

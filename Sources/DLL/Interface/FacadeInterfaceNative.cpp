@@ -2038,7 +2038,7 @@ extern "C"
 		FacadeModele::obtenirInstance()->sauvegarderHistorique();
 	}
 
-	__declspec(dllexport) void annulerModifications(e)
+	__declspec(dllexport) void annulerModifications()
 	{
 		FacadeModele::obtenirInstance()->annulerModifications();
 	}

@@ -311,6 +311,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="%24this.Icon.ico" />
+    <None Include="Resources\undo.png" />
     <None Include="Resources\scale.png" />
     <None Include="Resources\Selection.png" />
     <None Include="Resources\zoomElastique.png" />
@@ -362,6 +363,7 @@
     <None Include="Resources\move.png" />
     <None Include="Resources\rotation.png" />
     <None Include="Resources\duplicate.png" />
+    <None Include="Resources\redo.png" />
     <Content Include="Resources\save.png" />
     <None Include="Resources\cible.jpeg" />
     <None Include="Resources\winSound.wav" />
