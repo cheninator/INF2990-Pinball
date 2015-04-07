@@ -312,7 +312,7 @@ unsigned int ControleurTexte::lookUpFont(std::string fileName)
 unsigned int ControleurTexte::lookUpText(char* textString)
 {
 	for (unsigned int i = 0; i < texts_.size(); i++)
-		if (texts_[i].first == textString)
+		if (std::string(texts_[i].first) == textString)
 			return i;
 	std::pair<char*, textContainer> newDefaultText;
 	newDefaultText.first = textString;
