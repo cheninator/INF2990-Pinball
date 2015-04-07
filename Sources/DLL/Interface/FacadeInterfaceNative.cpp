@@ -2023,7 +2023,6 @@ extern "C"
 		SingletonGlobal::obtenirInstance()->activerSon();
 	}
 
-
 	///////////////////////////////////////////////////////////////////////////////
 	///
 	/// @fn void obtenirCout()
@@ -2035,11 +2034,100 @@ extern "C"
 		return stringToBSTR(FacadeModele::obtenirInstance()->obtenirCout());
 	}
 
+	///////////////////////////////////////////////////////////////////////////////
+	///
+	/// @fn void refreshText(int x, int y)
+	/// @brief Rafraichit la position du texte
+	/// @param[in] x : Taille max de la fenetre en x
+	/// @param[in] y : Taille max de la fenetre en y
+	/// @return Aucune.
+	///
+	///////////////////////////////////////////////////////////////////////////////
 	__declspec(dllexport) void __cdecl refreshText(int x, int y)
 	{
 		FacadeModele::obtenirInstance()->obtenircontroleurTexte()->refresh(x, y);
 	}
 
+	///////////////////////////////////////////////////////////////////////////////
+	///
+	/// @fn void creeTexte(char* text, char* font)
+	/// @brief Cree le texte
+	/// @param[in] text : Le texte a modifier
+	/// @param[in] font : La font a utiliser
+	/// @return Aucune.
+	///
+	///////////////////////////////////////////////////////////////////////////////
+	__declspec(dllexport) void __cdecl creeTexte(char* text, char* font)
+	{
+		FacadeModele::obtenirInstance()->obtenircontroleurTexte()->creeTexte(text, font);
+	}
+
+	///////////////////////////////////////////////////////////////////////////////
+	///
+	/// @fn void creeTexte(char* text, char* font)
+	/// @brief Modifie un texte existant
+	/// @param[in] oldText : Le texte a modifier
+	/// @param[in] newText : La texte apres modification
+	/// @return Aucune.
+	///
+	///////////////////////////////////////////////////////////////////////////////
+	__declspec(dllexport) void __cdecl updateText(char* oldText, char* newText)
+	{
+		FacadeModele::obtenirInstance()->obtenircontroleurTexte()->updateText(oldText, newText);
+	}
+	
+	///////////////////////////////////////////////////////////////////////////////
+	///
+	/// @fn void resize(char* text, unsigned int size)
+	/// @brief Modifie la taille du texte
+	/// @param[in] text : Le texte a modifier
+	/// @param[in] size : La taille a appliquer au text
+	/// @return Aucune.
+	///
+	///////////////////////////////////////////////////////////////////////////////
+	__declspec(dllexport) void __cdecl resize(char* text, unsigned int size)
+	{
+		FacadeModele::obtenirInstance()->obtenircontroleurTexte()->resize(text, size);
+	}
+
+	///////////////////////////////////////////////////////////////////////////////
+	///
+	/// @fn void changerCouleur(char* text, float couleur[3])
+	/// @brief Change la couleur du texte
+	/// @param[in] text : Le texte a modifier
+	/// @param[in] couleur : La couleur a appliquer (en RGB)
+	/// @return Aucune.
+	///
+	///////////////////////////////////////////////////////////////////////////////
+	__declspec(dllexport) void __cdecl changerCouleur(char* text, float couleur[3])
+	{
+		glm::fvec3 couleurV(couleur[0], couleur[1], couleur[2]);
+		FacadeModele::obtenirInstance()->obtenircontroleurTexte()->changerCouleur(text, couleurV);
+	}
+
+	///////////////////////////////////////////////////////////////////////////////
+	///
+	/// @fn void repositionner(char* text, int x, int y)
+	/// @brief Modifie la position du texte
+	/// @param[in] text : Le texte a modifier
+	/// @param[in] x : La position du texte en x
+	/// @param[in] y : La position du texte en y
+	/// @return Aucune.
+	///
+	///////////////////////////////////////////////////////////////////////////////
+	__declspec(dllexport) void __cdecl repositionner(char* text, int x, int y)
+	{
+		FacadeModele::obtenirInstance()->obtenircontroleurTexte()->repositionner(text, x, y);
+	}
+
+	///////////////////////////////////////////////////////////////////////////////
+	///
+	/// @fn void utiliserCameraOrbite(bool utiliseOrbite)
+	/// @brief Change l'etat de la camera
+	/// @param[in] utiliseOrbite : La valeur de l'etat a utiliser
+	/// @return Aucune.
+	///
+	///////////////////////////////////////////////////////////////////////////////
 	__declspec(dllexport) void utiliserCameraOrbite(bool utiliseOrbite)
 	{
 		FacadeModele::obtenirInstance()->utiliserCameraOrbite(utiliseOrbite);

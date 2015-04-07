@@ -128,7 +128,14 @@ extern "C" {
 	__declspec(dllexport) void ajusterSFX(float pourcentage);
 
 	__declspec(dllexport) void utiliserCameraOrbite(bool utiliseOrbite);
-	__declspec(dllexport) void refreshText(int x, int y);
+
+	__declspec(dllexport) void creeTexte(char* text, char* font);
+	//__declspec(dllexport) void updateText(char* oldText, char* newText);
+	__declspec(dllexport) void resize(char* text, unsigned int size);
+	__declspec(dllexport) void changerCouleur(char* text, float couleur[3]);
+	__declspec(dllexport) void repositionner(char* text, int x, int y);
+	//__declspec(dllexport) void suprimerText(char* text);
+	void afficherTextes(bool afficher = false);
 }
 
 #endif // __FACADE_INTERFACE_NATIVE_H__

@@ -434,7 +434,7 @@ void FacadeModele::afficherBase() const
 		controleurTexte_->changerCouleur(myText, COLOR_beige);
 		controleurTexte_->repositionner(myText, 0, 0);
 
-		oneTime = false;
+		//oneTime = false;
 	}
 	controleurTexte_->afficherTexte();
 }

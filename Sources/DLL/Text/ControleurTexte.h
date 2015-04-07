@@ -23,11 +23,10 @@ public:
 
 	ControleurTexte();
 	~ControleurTexte();
-	void creeFont(char* path);
 	void creeTexte(char* text, char* font = "");
 	void updateText(char* oldText, char* newText);
 	void suprimerText(char* text);
-	void afficherTexte(bool afficher = false);
+	void afficherTextes(bool afficher = false);
 	void changerCouleur(char* text, float rouge, float vert, float bleu);
 	void changerCouleur(char* text, glm::fvec3 couleur);
 	void repositionner(char* text, float posX, float posY);
@@ -35,6 +34,7 @@ public:
 	void refresh(int x, int y);
 
 private:
+	void creeFont(char* path);
 	std::string getFontPath(char* sName);
 	void populateFontVector(std::string targetPath);
 	unsigned int lookUpFont(std::string fileName);
