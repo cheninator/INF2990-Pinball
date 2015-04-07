@@ -159,7 +159,7 @@ void ControleurTexte::changerCouleur(char* text, float rouge, float vert, float 
 	std::get<1>(texts_[textIndex].second) = {1 - rouge, 1 - vert, 1 - bleu};
 }
 
-void ControleurTexte::changerCouleur(char* text, glm::fvec3 couleur)
+void ControleurTexte::changerCouleurV(char* text, glm::fvec3 couleur)
 {
 	if (couleur.x > 1)
 		couleur.x /= 255;

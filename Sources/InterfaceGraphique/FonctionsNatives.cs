@@ -380,10 +380,13 @@ namespace InterfaceGraphique
         public static extern void resize(StringBuilder text, int length, int size);
 
         [DllImport(@"Noyau.dll", CallingConvention = CallingConvention.Cdecl)]
-        public static extern void changerCouleur(StringBuilder text, int length, float[] couleur);
+        public static extern void changerCouleur(StringBuilder text, int length, float rouge, float vert, float bleu);
 
         [DllImport(@"Noyau.dll", CallingConvention = CallingConvention.Cdecl)]
-        public static extern void repositionner(StringBuilder text, int length, int x, int y);
+        public static extern void changerCouleurV(StringBuilder text, int length, float[] couleur);
+
+        [DllImport(@"Noyau.dll", CallingConvention = CallingConvention.Cdecl)]
+        public static extern void repositionner(StringBuilder text, int length, float x, float y);
 
         [DllImport(@"Noyau.dll", CallingConvention = CallingConvention.Cdecl)]
         public static extern void suprimerText(StringBuilder text, int length);

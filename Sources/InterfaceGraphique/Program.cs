@@ -16,6 +16,7 @@
 using System;
 using System.Diagnostics;
 using System.Windows.Forms;
+using System.Text;
 
 namespace InterfaceGraphique
 {
@@ -44,6 +45,8 @@ namespace InterfaceGraphique
         public static int compteurFrames = 0;
         public static bool customConsoleActive = false;
         private static bool noWarnings = false;
+
+        static StringBuilder FPS = new StringBuilder("FPS : ");
 
         ////////////////////////////////////////////////////////////////////////
         ///
@@ -121,6 +124,24 @@ namespace InterfaceGraphique
                     System.Environment.OSVersion.Version.Minor >= 1))
                     MessageBox.Show(warningMessageW, "AVERTISSEMENT", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
+
+            // Exemple de texte
+            // le Texte a Ecrire
+            StringBuilder myFont = new StringBuilder("Bloodthirsty.ttf");
+                                         // On spécifie la font
+            FonctionsNatives.creeTexte(FPS, FPS.Capacity, myFont, myFont.Capacity);
+
+            // On specifie la taille (en 1/72 de pouce)
+            FonctionsNatives.resize(FPS, FPS.Capacity, 35);
+
+            // On specifie une couleur RGB
+            FonctionsNatives.changerCouleurV(FPS, FPS.Capacity, ColorList.COLOR_salmon);
+
+            // On specifie la position
+            FonctionsNatives.repositionner(FPS, FPS.Capacity, 1, 1);
+
+            // On demande d'afficher !
+            FonctionsNatives.afficherTextes();
 
             mMenu = new MainMenu();
             Application.Run(mMenu);

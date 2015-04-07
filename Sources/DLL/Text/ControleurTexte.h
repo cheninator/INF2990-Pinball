@@ -29,7 +29,7 @@ public:
 	void afficherTextes(bool afficher = true) { afficher_ = afficher;};
 	void refreshAffichage();
 	void changerCouleur(char* text, float rouge, float vert, float bleu);
-	void changerCouleur(char* text, glm::fvec3 couleur);
+	void changerCouleurV(char* text, glm::fvec3 couleur);
 	void repositionner(char* text, float posX, float posY);
 	void resize(char* text, unsigned int size);
 	void refresh(int x, int y);
@@ -46,7 +46,7 @@ private:
 	std::vector<std::pair<std::string, FTGLPixmapFont*>> fontTable_;
 	std::vector<std::pair<char*, textContainer>> texts_;
 
-	bool afficher_{ true };
+	bool afficher_{ false };
 
 	// default const
 	textContainer const defaultObject_{	{ 500, 500 }, { .5f, 1.f, 1.f }, { 32 },  { "arial.tff" }, Position::E };

@@ -2092,6 +2092,22 @@ extern "C"
 
 	///////////////////////////////////////////////////////////////////////////////
 	///
+	/// @fn void changerCouleur(char* text, int length, float rouge, float vert, float bleu)
+	/// @brief Change la couleur du texte
+	/// @param[in] text : Le texte a modifier
+	/// @param[in] rouge : La couleur rouge a appliquer (en RGB)
+	/// @param[in] vert : La couleur vert a appliquer (en RGB)
+	/// @param[in] bleu : La couleur bleu a appliquer (en RGB)
+	/// @return Aucune.
+	///
+	///////////////////////////////////////////////////////////////////////////////
+	__declspec(dllexport) void __cdecl changerCouleur(char* text, int length, float rouge, float vert, float bleu)
+	{
+		FacadeModele::obtenirInstance()->obtenircontroleurTexte()->changerCouleur(text, rouge, vert, bleu);
+	}
+
+	///////////////////////////////////////////////////////////////////////////////
+	///
 	/// @fn void changerCouleur(char* text, float couleur[3])
 	/// @brief Change la couleur du texte
 	/// @param[in] text : Le texte a modifier
@@ -2099,10 +2115,10 @@ extern "C"
 	/// @return Aucune.
 	///
 	///////////////////////////////////////////////////////////////////////////////
-	__declspec(dllexport) void __cdecl changerCouleur(char* text, int length, float couleur[3])
+	__declspec(dllexport) void __cdecl changerCouleurV(char* text, int length, float couleur[3])
 	{
 		glm::fvec3 couleurV(couleur[0], couleur[1], couleur[2]);
-		FacadeModele::obtenirInstance()->obtenircontroleurTexte()->changerCouleur(text, couleurV);
+		FacadeModele::obtenirInstance()->obtenircontroleurTexte()->changerCouleurV(text, couleurV);
 	}
 
 	///////////////////////////////////////////////////////////////////////////////
@@ -2115,7 +2131,7 @@ extern "C"
 	/// @return Aucune.
 	///
 	///////////////////////////////////////////////////////////////////////////////
-	__declspec(dllexport) void __cdecl repositionner(char* text, int length, int x, int y)
+	__declspec(dllexport) void __cdecl repositionner(char* text, int length, float x, float y)
 	{
 		FacadeModele::obtenirInstance()->obtenircontroleurTexte()->repositionner(text, x, y);
 	}

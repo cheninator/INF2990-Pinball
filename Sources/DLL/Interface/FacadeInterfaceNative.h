@@ -133,8 +133,9 @@ extern "C" {
 	__declspec(dllexport) void creeTexte(char* text, int lengthT, char* font, int lengthF);
 	__declspec(dllexport) void updateText(char* oldText, int lengthO, char* newText, int lengthN);
 	__declspec(dllexport) void resize(char* text, int length, int size);
-	__declspec(dllexport) void changerCouleur(char* text, int length, float couleur[3]);
-	__declspec(dllexport) void repositionner(char* text, int length, int x, int y);
+	__declspec(dllexport) void changerCouleur(char* text, int length, float rouge, float vert, float bleu);
+	__declspec(dllexport) void changerCouleurV(char* text, int length, float couleur[3]);
+	__declspec(dllexport) void repositionner(char* text, int length, float x, float y);
 	__declspec(dllexport) void suprimerText(char* text, int length);
 	__declspec(dllexport) void afficherTextes(bool afficher = true);
 }
