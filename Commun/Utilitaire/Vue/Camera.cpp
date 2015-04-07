@@ -13,7 +13,9 @@
 #include "Utilitaire.h"
 #include "Camera.h"
 #include <iostream>
-
+#include "../Utilitaire.h"
+//#include "../../Sources/DLL/Application/FacadeModele.h"
+//#include "../../Sources/DLL/Text/ControleurTexte.h"
 
 namespace vue {
 
@@ -138,13 +140,22 @@ namespace vue {
 		bool   empecheInversion //=true
 		)
 	{
-		// gluLookAt( dist*sin(phi)*sin(theta), dist*cos(phi), dist*sin(phi)*cos(theta), 0, 1, 0, 0, 2, 0 );
 		if (empecheInversion)
 			return;
 
+		/* Les angles doivent être en radian*/
 		float dist = glm::distance(position_, pointVise_);
-		float deltaTheta = 1.0;
-		float deltaPhi = 1.0;
+		//float deltaTheta = utilitaire::DEG_TO_RAD(rotationX);
+		//float deltaPhi   = utilitaire::DEG_TO_RAD(rotationY);
+		float deltaTheta = utilitaire::DEG_TO_RAD(1.0);
+		float deltaPhi = utilitaire::DEG_TO_RAD(1.0);
+		/*std::string ancienTexte;
+		std::string informationAngle = "Phi | Theta" + std::to_string(theta_)
+			+ " | " + std::to_string(phi_) + " \n";
+		FacadeModele::obtenirInstance()->obtenircontroleurTexte()->updateText(ancienTexte, );*/
+		std::cout << "Phi | Theta" + std::to_string(theta_)
+			+ " | " + std::to_string(phi_) + " \n";
+		std::cout << "Distance : " << dist << std::endl;
 
 		theta_ += deltaPhi;
 		phi_ += deltaPhi;

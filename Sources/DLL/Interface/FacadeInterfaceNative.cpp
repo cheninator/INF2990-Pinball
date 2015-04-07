@@ -632,7 +632,7 @@ extern "C"
 	////////////////////////////////////////////////////////////////////////
 	__declspec(dllexport) void __cdecl translater(double deplacementX, double deplacementY)
 	{
-	
+		std::cout << "Facade X | Y : " << deplacementX << " | " << deplacementY << std::endl;
 		if (FacadeModele::obtenirInstance()->cameraEstOrbite())
 		{
 			FacadeModele::obtenirInstance()->obtenirVue()->obtenirCamera().orbiterXY(deplacementX, deplacementY, false);

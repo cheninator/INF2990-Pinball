@@ -80,8 +80,9 @@ namespace vue {
 		glm::dvec3 directionHaut_;
 		/// La direction du haut du monde de la caméra.
 		const glm::dvec3 directionHautMonde_;
-
+		/* Notez que les angles doivent être en radian*/
 		float phi_;
+
 		float theta_;
 	};
 
