@@ -14,7 +14,7 @@
 #include "ControleurTexteDefine.h"
 #include <algorithm>
 
-typedef std::tuple<FTPoint, glm::fvec3, unsigned int, char*, Position > textContainer;
+typedef std::tuple<FTPoint, glm::fvec3, unsigned int, std::string, Position > textContainer;
 
 class ControleurTexte
 {
@@ -23,28 +23,28 @@ public:
 
 	ControleurTexte();
 	~ControleurTexte();
-	void creeTexte(char* text, char* font = "");
-	void updateText(char* oldText, char* newText);
-	void suprimerText(char* text);
+	void creeTexte(std::string text, std::string font = "");
+	void updateText(std::string oldText, std::string newText);
+	void suprimerText(std::string text);
 	void afficherTextes(bool afficher = true) { afficher_ = afficher;};
 	void refreshAffichage();
-	void changerCouleur(char* text, float rouge, float vert, float bleu);
-	void changerCouleurV(char* text, glm::fvec3 couleur);
-	void repositionner(char* text, float posX, float posY);
-	void resize(char* text, unsigned int size);
+	void changerCouleur(std::string text, float rouge, float vert, float bleu);
+	void changerCouleurV(std::string text, glm::fvec3 couleur);
+	void repositionner(std::string text, float posX, float posY);
+	void resize(std::string text, unsigned int size);
 	void refresh(int x, int y);
 
 private:
-	void creeFont(char* path);
-	std::string getFontPath(char* sName);
+	void creeFont(std::string path);
+	std::string getFontPath(std::string sName);
 	void populateFontVector(std::string targetPath);
 	unsigned int lookUpFont(std::string fileName);
-	unsigned int lookUpText(char* textString);
+	unsigned int lookUpText(std::string textString);
 	void renderText(int i);
 	float obtenirDecalageY(unsigned int objectIndex);
 
 	std::vector<std::pair<std::string, FTGLPixmapFont*>> fontTable_;
-	std::vector<std::pair<char*, textContainer>> texts_;
+	std::vector<std::pair<std::string, textContainer>> texts_;
 
 	bool afficher_{ false };
 

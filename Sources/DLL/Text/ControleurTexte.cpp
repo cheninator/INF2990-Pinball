@@ -57,7 +57,7 @@ void ControleurTexte::populateFontVector(std::string targetPath)
 	}
 }
 
-void ControleurTexte::creeFont(char* sName)
+void ControleurTexte::creeFont(std::string sName)
 {
 	std::string name(sName);
 	bool fontGenerated = true;
@@ -83,18 +83,18 @@ void ControleurTexte::creeFont(char* sName)
 	}
 }
 
-void ControleurTexte::updateText(char* oldText, char* newText)
+void ControleurTexte::updateText(std::string oldText, std::string newText)
 {
 	int textIndex = lookUpText(oldText);
 	texts_[textIndex].first = newText;
 }
-void ControleurTexte::suprimerText(char* text)
+void ControleurTexte::suprimerText(std::string  text)
 {
 	int textIndex = lookUpText(text);
 	texts_.erase(texts_.begin() + textIndex);
 }
 
-void ControleurTexte::creeTexte(char* texte, char* font)
+void ControleurTexte::creeTexte(std::string texte, std::string font)
 {
 	int textIndex = lookUpText(texte);
 	std::get<3>(texts_[textIndex].second) = font;
@@ -109,10 +109,10 @@ void ControleurTexte::refreshAffichage()
 }
 void ControleurTexte::renderText(int textIndex)
 {
-	char* useFont = std::get<3>(texts_[textIndex].second);
+	char* useFont = (char*)(std::get<3>(texts_[textIndex].second)).c_str();
 	unsigned int size = std::get<2>(texts_[textIndex].second);
 	glm::fvec3 color = std::get<1>(texts_[textIndex].second);
-	char* texte = texts_[textIndex].first;
+	char* texte = (char*)texts_[textIndex].first.c_str();
 	FTPoint position = std::get<0>(texts_[textIndex].second);
 
 	int fontIndex = lookUpFont(std::string(useFont));
@@ -134,13 +134,13 @@ void ControleurTexte::renderText(int textIndex)
 }
 
 
-std::string ControleurTexte::getFontPath(char* sName)
+std::string ControleurTexte::getFontPath(std::string sName)
 {
 	std::string soundPath = "media/Fonts/" + std::string(sName);
 	return soundPath;
 }
 
-void ControleurTexte::changerCouleur(char* text, float rouge, float vert, float bleu)
+void ControleurTexte::changerCouleur(std::string text, float rouge, float vert, float bleu)
 {
 	if (rouge > 1)
 		rouge = 1;
@@ -159,7 +159,7 @@ void ControleurTexte::changerCouleur(char* text, float rouge, float vert, float 
 	std::get<1>(texts_[textIndex].second) = {1 - rouge, 1 - vert, 1 - bleu};
 }
 
-void ControleurTexte::changerCouleurV(char* text, glm::fvec3 couleur)
+void ControleurTexte::changerCouleurV(std::string text, glm::fvec3 couleur)
 {
 	if (couleur.x > 1)
 		couleur.x /= 255;
@@ -178,14 +178,14 @@ void ControleurTexte::changerCouleurV(char* text, glm::fvec3 couleur)
 	std::get<1>(texts_[textIndex].second) = { 1 - couleur.x, 1 - couleur.y, 1 - couleur.z };
 }
 
-void ControleurTexte::repositionner(char* text, float posX, float posY)
+void ControleurTexte::repositionner(std::string text, float posX, float posY)
 {
 	unsigned int textIndex = lookUpText(text);
-	char* myFont = std::get<3>(texts_[textIndex].second);
+	char* myFont = (char*)(std::get<3>(texts_[textIndex].second)).c_str();
 	int textSize = std::get<2>(texts_[textIndex].second);
 	unsigned int fontIndex = lookUpFont(std::string(myFont));
 	fontTable_[fontIndex].second->FaceSize(textSize);
-	FTBBox boiteText = fontTable_[fontIndex].second->BBox(text);
+	FTBBox boiteText = fontTable_[fontIndex].second->BBox((char*)text.c_str());
 	FTPoint boiteTextLower = boiteText.Lower();
 	FTPoint boiteTextUpper = boiteText.Upper();
 
@@ -287,7 +287,7 @@ float ControleurTexte::obtenirDecalageY(unsigned int objectIndex)
 		unsigned int fontIndex = lookUpFont(std::get<3>(texts_[i].second));
 		int textSize = std::get<2>(texts_[i].second);
 		fontTable_[fontIndex].second->FaceSize(textSize);
-		FTBBox boiteText = fontTable_[fontIndex].second->BBox(texts_[i].first);
+		FTBBox boiteText = fontTable_[fontIndex].second->BBox((char*)texts_[i].first.c_str());
 		FTPoint boiteTextLower = boiteText.Lower();
 		FTPoint boiteTextUpper = boiteText.Upper();
 		decalage += abs(boiteTextUpper.Yf() - boiteTextLower.Yf()) + MARGE_Y;
@@ -295,7 +295,7 @@ float ControleurTexte::obtenirDecalageY(unsigned int objectIndex)
  	return abs(decalage);
 }
 
-void ControleurTexte::resize(char* text, unsigned int size)
+void ControleurTexte::resize(std::string text, unsigned int size)
 {
 	unsigned int textIndex = lookUpText(text);
 	std::get<2>(texts_[textIndex].second) = size;
@@ -309,14 +309,11 @@ unsigned int ControleurTexte::lookUpFont(std::string fileName)
 	return 0;
 }
 
-unsigned int ControleurTexte::lookUpText(char* textString)
+unsigned int ControleurTexte::lookUpText(std::string textString)
 {
 	for (unsigned int i = 0; i < texts_.size(); i++)
 		if (std::string(texts_[i].first) == textString)
 			return i;
-	std::pair<char*, textContainer> newDefaultText;
-	newDefaultText.first = textString;
-	newDefaultText.second = defaultObject_;
-	texts_.push_back(newDefaultText);
+	texts_.push_back(std::make_pair(textString, defaultObject_));
 	return (int)texts_.size() - 1;
 }

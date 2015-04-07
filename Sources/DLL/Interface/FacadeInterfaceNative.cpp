@@ -2059,7 +2059,8 @@ extern "C"
 	///////////////////////////////////////////////////////////////////////////////
 	__declspec(dllexport) void __cdecl creeTexte(char* text, int lengthT, char* font, int lengthF)
 	{
-		FacadeModele::obtenirInstance()->obtenircontroleurTexte()->creeTexte(text, font);
+		std::string myText = std::string(text);
+		FacadeModele::obtenirInstance()->obtenircontroleurTexte()->creeTexte(myText, font);
 	}
 
 	///////////////////////////////////////////////////////////////////////////////
@@ -2073,7 +2074,9 @@ extern "C"
 	///////////////////////////////////////////////////////////////////////////////
 	__declspec(dllexport) void __cdecl updateText(char* oldText, int lengthO, char* newText, int lengthN)
 	{
-		FacadeModele::obtenirInstance()->obtenircontroleurTexte()->updateText(oldText, newText);
+		std::string myOldText = std::string(oldText);
+		std::string myNewText = std::string(newText);
+		FacadeModele::obtenirInstance()->obtenircontroleurTexte()->updateText(myOldText, myNewText);
 	}
 	
 	///////////////////////////////////////////////////////////////////////////////
@@ -2087,7 +2090,8 @@ extern "C"
 	///////////////////////////////////////////////////////////////////////////////
 	__declspec(dllexport) void __cdecl resize(char* text, int length, int size)
 	{
-		FacadeModele::obtenirInstance()->obtenircontroleurTexte()->resize(text, (unsigned int)size);
+			std::string myText = std::string(text);
+		FacadeModele::obtenirInstance()->obtenircontroleurTexte()->resize(myText, (unsigned int)size);
 	}
 
 	///////////////////////////////////////////////////////////////////////////////
@@ -2103,7 +2107,8 @@ extern "C"
 	///////////////////////////////////////////////////////////////////////////////
 	__declspec(dllexport) void __cdecl changerCouleur(char* text, int length, float rouge, float vert, float bleu)
 	{
-		FacadeModele::obtenirInstance()->obtenircontroleurTexte()->changerCouleur(text, rouge, vert, bleu);
+		std::string myText = std::string(text);
+		FacadeModele::obtenirInstance()->obtenircontroleurTexte()->changerCouleur(myText, rouge, vert, bleu);
 	}
 
 	///////////////////////////////////////////////////////////////////////////////
@@ -2117,8 +2122,9 @@ extern "C"
 	///////////////////////////////////////////////////////////////////////////////
 	__declspec(dllexport) void __cdecl changerCouleurV(char* text, int length, float couleur[3])
 	{
+		std::string myText = std::string(text);
 		glm::fvec3 couleurV(couleur[0], couleur[1], couleur[2]);
-		FacadeModele::obtenirInstance()->obtenircontroleurTexte()->changerCouleurV(text, couleurV);
+		FacadeModele::obtenirInstance()->obtenircontroleurTexte()->changerCouleurV(myText, couleurV);
 	}
 
 	///////////////////////////////////////////////////////////////////////////////
@@ -2133,7 +2139,8 @@ extern "C"
 	///////////////////////////////////////////////////////////////////////////////
 	__declspec(dllexport) void __cdecl repositionner(char* text, int length, float x, float y)
 	{
-		FacadeModele::obtenirInstance()->obtenircontroleurTexte()->repositionner(text, x, y);
+		std::string myText = std::string(text);
+		FacadeModele::obtenirInstance()->obtenircontroleurTexte()->repositionner(myText, x, y);
 	}
 
 
@@ -2147,7 +2154,8 @@ extern "C"
 	///////////////////////////////////////////////////////////////////////////////
 	__declspec(dllexport) void __cdecl suprimerText(char* text, int length)
 	{
-		FacadeModele::obtenirInstance()->obtenircontroleurTexte()->suprimerText(text);
+		std::string myText = std::string(text);
+		FacadeModele::obtenirInstance()->obtenircontroleurTexte()->suprimerText(myText);
 	}
 
 	///////////////////////////////////////////////////////////////////////////////
