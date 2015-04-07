@@ -2146,6 +2146,10 @@ namespace InterfaceGraphique
                      || e.Button == MouseButtons.Right || e.Button == MouseButtons.Middle)
             {
                 panel_GL.MouseMove += new MouseEventHandler(panel_MouseMove);
+                if (e.Button == MouseButtons.Middle)
+                {
+                    FonctionsNatives.sauvegarderHistorique();
+                }
             }
         }
 
@@ -2238,6 +2242,10 @@ namespace InterfaceGraphique
             if (!(etat is EtatEditeurCreation) && !(etat is EtatEditeurDuplication))
             {
                 panel_GL.MouseMove -= panel_MouseMove;
+                if (e.Button == MouseButtons.Middle)
+                {
+                    FonctionsNatives.sauvegarderHistorique();
+                }
             }
 
             if (etat is EtatEditeurDeplacement)
@@ -3132,7 +3140,7 @@ namespace InterfaceGraphique
             
         }
 
-        private void toolStripButton1_Click(object sender, EventArgs e)
+        private void Enregistrer_ToolStrip_Click(object sender, EventArgs e)
         {
             Enregistrer_MenuItem.PerformClick();
         }
@@ -3149,7 +3157,7 @@ namespace InterfaceGraphique
 
         }
 
-        private void toolStripButton2_Click(object sender, EventArgs e)
+        private void MenuP_ToolStrip_Click(object sender, EventArgs e)
         {
             MenuP_MenuItem.PerformClick();
         }
@@ -3164,27 +3172,27 @@ namespace InterfaceGraphique
             Ouvrir_MenuItem.PerformClick();
         }
 
-        private void toolStripButton4_Click(object sender, EventArgs e)
+        private void EnregistrerSous_ToolStrip_Click(object sender, EventArgs e)
         {
             EnregistrerS_MenuItem.PerformClick();
         }
 
-        private void toolStripButton3_Click(object sender, EventArgs e)
+        private void Proprietes_ToolStrip_Click(object sender, EventArgs e)
         {
             Proprietes_MenuItem.PerformClick();
         }
 
-        private void toolStripButton1_Click_1(object sender, EventArgs e)
+        private void ModeTest_ToolStrip_Click(object sender, EventArgs e)
         {
             ModeTest_MenuItem.PerformClick();
         }
 
-        private void toolStripButton5_Click(object sender, EventArgs e)
+        private void ZoomIn_ToolStrip_Click(object sender, EventArgs e)
         {
             FonctionsNatives.zoomIn();
         }
 
-        private void toolStripButton6_Click(object sender, EventArgs e)
+        private void ZoomOut_ToolStrip_Click(object sender, EventArgs e)
         {
             FonctionsNatives.zoomOut();
         }
@@ -3210,17 +3218,17 @@ namespace InterfaceGraphique
 
         }
 
-        private void toolStripButton7_Click(object sender, EventArgs e)
+        private void ZoomElastique_ToolStrip_Click(object sender, EventArgs e)
         {
             Zoom_MenuItem.PerformClick();
         }
 
-        private void toolStripButton8_Click(object sender, EventArgs e)
+        private void Annuler_ToolStrip_Click(object sender, EventArgs e)
         {
             FonctionsNatives.annulerModifications();
         }
 
-        private void toolStripButton9_Click(object sender, EventArgs e)
+        private void Retablir_ToolStrip_Click(object sender, EventArgs e)
         {
             FonctionsNatives.retablirModifications();
         }
@@ -3232,12 +3240,12 @@ namespace InterfaceGraphique
 
         private void Annuler_MenuItem_Click(object sender, EventArgs e)
         {
-            toolStripButton8.PerformClick();
+            Annuler_ToolStrip.PerformClick();
         }
 
         private void Retablir_MenuItem_Click(object sender, EventArgs e)
         {
-            toolStripButton9.PerformClick();
+            Retablir_ToolStrip.PerformClick();
         }
     }
 }
