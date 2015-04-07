@@ -213,7 +213,8 @@ namespace InterfaceGraphique
                         }
                     case 2:
                         {
-                            labelDescOutil.Text = "Le déplacement d'un ou plusieurs objets sélectionnés se fait en appuyant sur le bouton gauche de la souris et, tout en gardant le bouton enfoncé, se déplaçant. Les objets sélectionnés suiveront la souris.";
+                            labelDescOutil.Text = "Le déplacement d'un ou plusieurs objets sélectionnés se fait en appuyant sur le bouton de milieu de la souris et, tout en gardant le bouton enfoncé, se déplaçant. Les objets sélectionnés suiveront la souris."+
+                                                  " Si vous n'avez pas de bouton milieu( laptop par exemple ), vous pouvez utiliser l'outil Déplacement et utiliser le bouton gauche de la souris.";
                             pictureBoxOutils.Image = Properties.Resources.Deplacement;
 
                             break;
