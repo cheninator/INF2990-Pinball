@@ -47,7 +47,7 @@ namespace InterfaceGraphique
         public EtatEditeurAbstrait(Editeur form) { 
             form_ = form;
             form_.Cursor = Cursors.Arrow;
-            form_.enableZoom(false);
+            form_.enableZoom(true);
             
         }
 

@@ -39,6 +39,7 @@ namespace InterfaceGraphique
         List<string> myMaps;    ///< liste des zones a jouer
         StringBuilder map;      ///< la zone en jeu
         StringBuilder nextMap;  ///< prochaine zone
+        StringBuilder bgm;
         bool peutAnimer;
         bool boolTemp = true;   ///< bool pour ne pas spam FinDePartie
         private bool activateAmbiantLight = false; ///< Etat de la lumiere ambiante
@@ -56,6 +57,9 @@ namespace InterfaceGraphique
         public int billesEnJeu = 0;         ///< Billes qui sont sur la zone
         private int nombreDeBillesUtilise = 0; ///< Nombre de Billes deja utilises
         private int billesPerdus = 0;       ///< Nomrede billes tombees dans le trou
+
+        public int panelHeight; ///< Hauteur de la fenetre
+        public int panelWidth; ///< Largeur de la fenetre
 
         // Modificateurs
         public void setVisibilityMenuStrip(bool vis) { menuStrip.Visible = vis; }
@@ -155,7 +159,15 @@ namespace InterfaceGraphique
             // Il faut changer le mode car le traitement de début est fini
             etat = new EtatJeuJouer(this);
             FonctionsNatives.animerJeu(true);
-            // CreerBille();       
+
+            bgm = new StringBuilder("baccano.mp3");
+            FonctionsNatives.bouclerSon(bgm, bgm.Length);
+            FonctionsNatives.ajusterBGM(50);
+            //FonctionsNatives.jouerSon(bgm, bgm.Length);
+
+            panelHeight = panel_GL.Size.Height;
+            panelWidth = panel_GL.Size.Width;
+
         }
 
         ////////////////////////////////////////////////////////////////////////
@@ -230,6 +242,12 @@ namespace InterfaceGraphique
             {
                 this.Invoke((MethodInvoker)delegate
                 {
+                    if (panelHeight != panel_GL.Size.Height || panelWidth != panel_GL.Size.Width)
+                    {
+                        panelHeight = panel_GL.Size.Height;
+                        panelWidth = panel_GL.Size.Width;
+                        FonctionsNatives.refreshText(panelWidth - InfoPanel.Width, panelHeight);
+                    }
                     if (peutAnimer)
                     {
                         FonctionsNatives.animer(tempsInterAffichage);

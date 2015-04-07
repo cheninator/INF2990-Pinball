@@ -1,6 +1,9 @@
 #include "ControleurSon.h"
-ControleurSon::ControleurSon()
+ControleurSon::ControleurSon(bool desactiverSon)
 {
+	sonDesactive = desactiverSon;
+	if (sonDesactive)
+		return;
 	FMOD::System_Create(&system_);
 	system_->init(1024, FMOD_INIT_NORMAL, 0);
 	maxBGM_ = 1;
@@ -44,6 +47,8 @@ ControleurSon::ControleurSon()
 
 ControleurSon::~ControleurSon()
 {
+	if (sonDesactive)
+		return;
 	for (unsigned int i = 0; i < soundTable_.size(); i++)
 		soundTable_[i].second.second->stop();
 	system_->release();
@@ -52,6 +57,8 @@ ControleurSon::~ControleurSon()
 
 void ControleurSon::creeSon(char* sName)
 {
+	if (sonDesactive)
+		return;
 	std::string name(sName);
 
 	// Check if already created
@@ -59,7 +66,7 @@ void ControleurSon::creeSon(char* sName)
 		if (soundTable_[i].first == name)
 			return;
 
-	std::string path = getPath(sName);
+	std::string path = getSFXPath(sName);
 	const char* sPath = path.c_str();
 	std::cout << "\tAdding " << name << "..." << std::setw(40 - name.length());
 
@@ -70,11 +77,13 @@ void ControleurSon::creeSon(char* sName)
 	soundTable_.push_back(apair);
 	std::cout << ((system_->createSound(sPath, FMOD_DEFAULT, 0, &soundTable_[soundTable_.size()-1].second.first)
 				 == FMOD_OK) ? "OK" : "FAILED") << std::endl;
-	specialEffectSounds_.push_back(soundTable_.size() - 1);
+	specialEffectSounds_.push_back((int)soundTable_.size() - 1);
 }
 
 void ControleurSon::jouerSon(char* sName, bool pause)
 {
+	if (sonDesactive)
+		return;
 	int i = lookUp(std::string(sName));
 	if (i == -1)
 		return;
@@ -84,6 +93,8 @@ void ControleurSon::jouerSon(char* sName, bool pause)
 
 void ControleurSon::bouclerSon(char* sName, bool loop)
 {
+	if (sonDesactive)
+		return;
 	int i = lookUp(std::string(sName));
 		if (i == -1)
 			return;
@@ -105,6 +116,8 @@ void ControleurSon::bouclerSon(char* sName, bool loop)
 
 void ControleurSon::arreterSon(char* sName)
 {
+	if (sonDesactive)
+		return;
 	int i = lookUp(std::string(sName));
 	if (i == -1)
 		return;
@@ -113,12 +126,14 @@ void ControleurSon::arreterSon(char* sName)
 
 void ControleurSon::sourdine(bool mute)
 {
+	if (sonDesactive)
+		return;
 	FMOD::ChannelGroup *canal;
 	system_->getMasterChannelGroup(&canal);
 	canal->setMute(mute);
 }
 
-unsigned int ControleurSon::lookUp(std::string fileName)
+int ControleurSon::lookUp(std::string fileName)
 {
 	for (unsigned int i = 0; i < soundTable_.size(); i++)
 		if (soundTable_[i].first == fileName)
@@ -136,6 +151,8 @@ unsigned int ControleurSon::lookUp(std::string fileName)
 
 void ControleurSon::ajusterBGM(float percent)
 {
+	if (sonDesactive)
+		return;
 	// Si n'Est pas entre 0 et 1 mais plus tot entre 0 et 100
 	if (percent > 1.0)
 		percent /= 100;
@@ -146,6 +163,8 @@ void ControleurSon::ajusterBGM(float percent)
 
 void ControleurSon::ajusterSFX(float percent)
 {
+	if (sonDesactive)
+		return;
 	// Si n'Est pas entre 0 et 1 mais plus tot entre 0 et 100
 	if (percent > 1.0)
 		percent /= 100;
@@ -156,12 +175,16 @@ void ControleurSon::ajusterSFX(float percent)
 
 void ControleurSon::setVolumeLimiter()
 {
+	if (sonDesactive)
+		return;
 	setVolumeBGM();
 	setVolumeSFX();
 }
 
 void ControleurSon::setVolumeBGM()
 {
+	if (sonDesactive)
+		return;
 	if (maxBGM_ == -1) return;
 	for (unsigned int i = 0; i < backGroundMusic_.size(); i++)
 		soundTable_[backGroundMusic_[i]].second.second->setVolume(maxBGM_);
@@ -169,12 +192,14 @@ void ControleurSon::setVolumeBGM()
 
 void ControleurSon::setVolumeSFX()
 {
+	if (sonDesactive)
+		return;
 	if (maxSFX_ == -1) return;
 	for (unsigned int i = 0; i < specialEffectSounds_.size(); i++)
 		soundTable_[specialEffectSounds_[i]].second.second->setVolume(maxSFX_);
 }
 
-std::string ControleurSon::getPath(char* sName)
+std::string ControleurSon::getSFXPath(char* sName)
 {
 	std::string soundPath = "media/SFX/" + std::string(sName);
 	return soundPath;

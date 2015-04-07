@@ -162,7 +162,9 @@ void SingletonGlobal::getAndSetTempObjDirectory()
 ControleurSon*  SingletonGlobal::obtenirControleurSon()
 {
 	if (mySound_ == nullptr)
-		mySound_ = new ControleurSon();
+	{
+		mySound_ = new ControleurSon(desactiverSon);
+	}
 	return mySound_;
 };
 

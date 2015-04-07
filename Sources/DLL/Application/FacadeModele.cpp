@@ -25,17 +25,13 @@ Samuel Millette <BR>
 Yonni Chen <BR>
 
 */
-
 #include <windows.h>
 #include <cassert>
 #include <iostream>
 
-#include <FTGL/ftgl.h>
-#include "GL/glew.h"
 #include "FreeImage.h"
-
 #include "FacadeModele.h"
-
+#include "../Text/ControleurTexte.h"
 #include "../Visiteurs/VisiteurAbstrait.h"
 #include "../Visiteurs/VisiteurSelection.h"
 #include "../Visiteurs/VisiteurSelectionInverse.h"
@@ -56,6 +52,7 @@ Yonni Chen <BR>
 #include "../Arbre/Noeuds/NoeudRessort.h"
 #include "../Global/JoueurVirtuel.h"
 #include "../Eclairage/Lumiere.h"
+#include "../Eclairage/ProgrammeINF2990.h"
 
 #include "VueOrtho.h"
 #include "VuePerspective.h"
@@ -69,6 +66,7 @@ Yonni Chen <BR>
 
 #include "CompteurAffichage.h"
 #include "../Configuration/ConfigScene.h"
+#include "../Memento/Originator.h"
 
 // Remplacement de EnveloppeXML/XercesC par TinyXML
 // Julien Gascon-Samson, ete 2011
@@ -107,6 +105,10 @@ FacadeModele* FacadeModele::obtenirInstance(bool console)
 		instance_->joueur_ = new JoueurVirtuel();
 		instance_->quad_ = new QuadTree(glm::dvec3(coinGaucheTableX, coinGaucheTableY, 0),
 										glm::dvec3(coinDroitTableX,  coinDroitTableY,  0));
+		instance_->originator_ = new Originator(instance_->arbre_);
+		instance_->progNuanceur_ = new ProgrammeINF2990();
+		instance_->controleurTexte_ = new ControleurTexte();
+
 		if (console)
 			instance_->old_ = std::cout.rdbuf(instance_->oss_.rdbuf());
 		else
@@ -148,6 +150,7 @@ FacadeModele::~FacadeModele()
 	delete proprietes_;
 	delete joueur_;
 	delete quad_;
+	delete controleurTexte_;
 	if (instance_->old_ != nullptr)
 		std::cout.rdbuf(instance_->old_);
 }
@@ -196,7 +199,9 @@ void FacadeModele::initialiserOpenGL(HWND hWnd)
 	/// Pour normaliser les normales dans le cas d'utilisation de glScale[fd]
 	glEnable(GL_NORMALIZE);
 	Lumiere lumiere(GL_LIGHT1);
-	lumiere.definir();
+	// lumiere.definir();
+	// progNuanceur_->initialiser();
+	// progNuanceur_->activer();
 
 	// Pour voir le spot, commenter le glEnable(GL_LIGHT0) et decommenter la ligne suivante.
 	// La c'est sans shaders, donc c'est normal que ca soit weird car je n'ai pas de controle sur le 
@@ -224,6 +229,7 @@ void FacadeModele::initialiserOpenGL(HWND hWnd)
 	arbre_ = new ArbreRenduINF2990;
 	std::cout << "Initialisation de l'arbre de rendu..." << std::endl;
 	arbre_->initialiser();
+
 	// On cree une vue par defaut.
 	vue_ = new vue::VueOrtho{
 		vue::Camera{ 
@@ -329,39 +335,114 @@ void FacadeModele::afficherBase() const
 	arbre_->afficher();
 
 	// On affiche le texte ici
+	controleurTexte_->refreshAffichage();
 
-	glPushAttrib(GL_ALL_ATTRIB_BITS);
-	glDisable(GL_LIGHTING);
-	glDisable(GL_DEPTH_TEST);
-	glDisable(GL_TEXTURE_2D);
+	// fuck that shit... si je met cette ligne la dans le .h ca compile plus...
+	// TODO bouger shit dans l'API et le C#, pis juste appeler afficherTexte();
+	/* //Exemple d'affichage
+	static bool oneTime = true;
+	if(oneTime){
+		char* myText;
+		char* myFont;
 
-	glMatrixMode(GL_PROJECTION);
-	glPushMatrix();
-	glMatrixMode(GL_MODELVIEW);
-	glPushMatrix();
+		// le Texte a Ecrire
+		myText = "Hello World";
+		myFont = "arial.ttf"; // Ou encore Bloodthirsty.ttf
+		// On spécifie la font
+		controleurTexte_->creeTexte(myText, myFont);
 
-	// Il faut deplacer dans le sens envers de la camera
-	static long i = 0;
-	i++;
-	i = i % 6000;
+		// On specifie la taille (en 1/72 de pouce)
+		controleurTexte_->resize(myText, 35);
 
-	glTranslated(50, -100, 0);
-	glRotatef((double)(i), 0.0, 0.0, 1.0);
-	glColor4f(1.0, 0.0, 0.0, 1.0);
-	//static FTGLPolygonFont* bloodyFont = new FTGLPolygonFont("media/fonts/Arial.ttf");
-	//std::string text = "Compteur random : " + std::to_string((double)i/100.0);
-	//bloodyFont->FaceSize(12);
-	//bloodyFont->Render(text.c_str());
+		// On specifie une couleur RGB
+		controleurTexte_->changerCouleur(myText, 0.5, 1, 1);
+		// Ou encore
+		controleurTexte_->changerCouleur(myText, COLOR_salmon);
 
-	glMatrixMode(GL_PROJECTION);
-	glPopMatrix();
-	glMatrixMode(GL_MODELVIEW);
-	glPopMatrix();
+		// On specifie la position
+		controleurTexte_->repositionner(myText, 1, 1);
 
-	glPopAttrib();
+		// Voici un autre exemple
+		myText = "Well This is easy";
+		controleurTexte_->creeTexte(myText, myFont);
+		controleurTexte_->resize(myText, 24);
+		controleurTexte_->changerCouleur(myText, COLOR_red);
+		controleurTexte_->repositionner(myText, 1, 1);
 
+		// Voici un autre exemple
+		myText = "Petite ligne 1 1";
+		controleurTexte_->creeTexte(myText, myFont);
+		controleurTexte_->resize(myText, 24);
+		controleurTexte_->changerCouleur(myText, COLOR_blue);
+		controleurTexte_->repositionner(myText, 1, 1);
+
+		// Voici un autre exemple
+		myText = "Random 0 1";
+		controleurTexte_->creeTexte(myText, myFont);
+		controleurTexte_->resize(myText, 24);
+		controleurTexte_->changerCouleur(myText, COLOR_blue);
+		controleurTexte_->repositionner(myText, 0, 1);
+
+		// Voici un autre exemple
+		myText = "2e Random 0 1";
+		controleurTexte_->creeTexte(myText, myFont);
+		controleurTexte_->resize(myText, 24);
+		controleurTexte_->changerCouleur(myText, COLOR_black);
+		controleurTexte_->repositionner(myText, 0, 1);
+
+		// Voici un autre exemple
+		myText = "3e shit weird ici en  0 1";
+		controleurTexte_->creeTexte(myText, myFont);
+		controleurTexte_->resize(myText, 24);
+		controleurTexte_->changerCouleur(myText, COLOR_alice_blue);
+		controleurTexte_->repositionner(myText, 0, 1);
+
+		// Voici un autre exemple
+		myText = "Test 1 0";
+		controleurTexte_->creeTexte(myText, myFont);
+		controleurTexte_->resize(myText, 42);
+		controleurTexte_->changerCouleur(myText, COLOR_cadet_blue);
+		controleurTexte_->repositionner(myText, 1, 0);
+
+		// Voici un autre exemple
+		myText = "Test --2-- 1 0";
+		controleurTexte_->creeTexte(myText, myFont);
+		controleurTexte_->resize(myText, 24);
+		controleurTexte_->changerCouleur(myText, COLOR_magenta_fuchsia);
+		controleurTexte_->repositionner(myText, 1, 0);
+
+		// Voici un autre exemple
+		myText = "Test --3-- 1 0";
+		controleurTexte_->creeTexte(myText, myFont);
+		controleurTexte_->resize(myText, 24);
+		controleurTexte_->changerCouleur(myText, COLOR_Magenta_Fuchsia);
+		controleurTexte_->repositionner(myText, 1, 0);
+
+		// Voici un autre exemple
+		myText = "Je sais pas pk je fais ca";
+		controleurTexte_->creeTexte(myText, myFont);
+		controleurTexte_->resize(myText, 24);
+		controleurTexte_->changerCouleur(myText, COLOR_khaki);
+		controleurTexte_->repositionner(myText, 0, 0);
+
+		// Voici un autre exemple
+		myText = "C'est genre meme pas beau";
+		controleurTexte_->creeTexte(myText, myFont);
+		controleurTexte_->resize(myText, 21);
+		controleurTexte_->changerCouleur(myText, COLOR_azure);
+		controleurTexte_->repositionner(myText, 0, 0);
+
+		// Voici un autre exemple
+		myText = "C'est probablement useless en plus";
+		controleurTexte_->creeTexte(myText, myFont);
+		controleurTexte_->resize(myText, 24);
+		controleurTexte_->changerCouleur(myText, COLOR_beige);
+		controleurTexte_->repositionner(myText, 0, 0);
+
+		//oneTime = false;
+	}
+	*/
 }
-
 
 ////////////////////////////////////////////////////////////////////////
 ///
@@ -2089,6 +2170,19 @@ double FacadeModele::obtenirScaleMinMax()
 	return glm::length(scaleMax) - glm::length(scaleMin);
 }
 
+////////////////////////////////////////////////////////////////////////
+///
+/// @fn void FacadeModele::obtenircontroleurTexte()
+///
+/// @remark Cette fonction retourne la classe de controle du texte.
+///
+/// @return Le controleur de texte.
+///
+////////////////////////////////////////////////////////////////////////
+ControleurTexte* FacadeModele::obtenircontroleurTexte()
+{
+	return controleurTexte_;
+}
 
 std::string FacadeModele::obtenirCout()
 {
@@ -2153,3 +2247,26 @@ void FacadeModele::utiliserCameraOrbite(bool utiliseOrbite)
 		vueEstOrbite_ = utiliseOrbite;
 	}
 }
+
+glm::ivec2 FacadeModele::obteniCoordonneeMax()
+{
+	return  obtenirInstance()->obtenirVue()->obtenirProjection().obtenirDimensionCloture();
+}
+
+
+
+void FacadeModele::sauvegarderHistorique()
+{
+	originator_->sauvegarder();
+}
+
+void FacadeModele::annulerModifications()
+{
+	originator_->annuler();
+}
+
+void FacadeModele::retablirModifications()
+{
+	originator_->retablir();
+}
+

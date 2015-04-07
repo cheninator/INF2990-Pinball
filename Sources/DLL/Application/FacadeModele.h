@@ -25,7 +25,6 @@
 #ifndef __APPLICATION_FACADEMODELE_H__
 #define __APPLICATION_FACADEMODELE_H__
 
-
 #include <windows.h>
 #include <string>
 #include <iostream>
@@ -43,6 +42,9 @@ class NoeudPaletteD;
 class NoeudRessort;
 class JoueurVirtuel;
 class QuadTree;
+class Originator;
+class ProgrammeINF2990;
+class ControleurTexte;
 
 namespace vue {
    class Vue;
@@ -232,7 +234,16 @@ public:
 
 	void utiliserCameraOrbite(bool utiliseOrbite);
 
+	ControleurTexte* obtenircontroleurTexte();
+
 	std::string obtenirCout();
+
+	glm::ivec2 obteniCoordonneeMax();
+
+	/// Journal des modifications
+	void sauvegarderHistorique();
+	void annulerModifications();
+	void retablirModifications();
 
 private:
 
@@ -262,6 +273,7 @@ private:
 	int* proprietes_;						/// Pour les proprietes de la zone de jeu
 	JoueurVirtuel* joueur_{ nullptr };
 	QuadTree* quad_{ nullptr };
+	Originator* originator_{ nullptr };
 
 	std::stringstream oss_;
 	std::streambuf* old_;
@@ -290,6 +302,9 @@ private:
    std::vector<NoeudAbstrait*> listeBilles_;
    std::vector<NoeudAbstrait*> listeNoeuds_;
    std::vector<NoeudAbstrait*> listeRessorts_;
+
+   ProgrammeINF2990* progNuanceur_;
+   ControleurTexte* controleurTexte_;
 };
 
 
