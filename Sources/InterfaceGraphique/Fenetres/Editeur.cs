@@ -2143,7 +2143,7 @@ namespace InterfaceGraphique
                                                         !(etat is EtatEditeurMur)
                                                        )
                      )
-                     || e.Button == MouseButtons.Right)
+                     || e.Button == MouseButtons.Right || e.Button == MouseButtons.Middle)
             {
                 panel_GL.MouseMove += new MouseEventHandler(panel_MouseMove);
             }
@@ -2165,7 +2165,7 @@ namespace InterfaceGraphique
         {
             currentP = panel_GL.PointToClient(MousePosition);
 
-            if (nbSelection == 1 && !(etat is EtatEditeurDuplication) && (e.Button == MouseButtons.Left))
+            if (nbSelection == 1 && !(etat is EtatEditeurDuplication) && (e.Button == MouseButtons.Left || e.Button == MouseButtons.Middle))
             {
                 Xbox.Text = Math.Round(FonctionsNatives.getPositionX()).ToString();
                 Ybox.Text = Math.Round(FonctionsNatives.getPositionY()).ToString();
@@ -2176,6 +2176,13 @@ namespace InterfaceGraphique
             if (e.Button == MouseButtons.Right)
             {
                 deplacementVueSouris(e);
+
+            }
+
+            if (e.Button == MouseButtons.Middle)
+            {
+                deplacementSouris(e);
+
             }
             else if (etat is EtatEditeurCreation)
             {
