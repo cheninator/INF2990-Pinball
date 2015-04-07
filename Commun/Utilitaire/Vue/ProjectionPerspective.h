@@ -11,7 +11,6 @@
 #define __UTILITAIRE_PROJECTIONPERSPECTIVE_H__
 
 
-
 #include "Projection.h"
 
 namespace vue {

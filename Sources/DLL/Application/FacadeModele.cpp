@@ -2225,7 +2225,7 @@ void FacadeModele::utiliserCameraOrbite(bool utiliseOrbite)
 						1, 1000, 50, 5000, 1.25,
 						-400, 400, -400, 400, 10, 1000}
 			}; 
-			vue_->appliquerCamera();
+			//vue_->appliquerCamera();
 			std::cout << "La vue est passee en orbite \n";
 		}
 		else
@@ -2240,10 +2240,10 @@ void FacadeModele::utiliserCameraOrbite(bool utiliseOrbite)
 						double(coinGaucheTableX), double(coinGaucheTableY),
 						double(coinDroitTableX), double(coinDroitTableY) }
 			};
+			appliquerZoomInitial();
 			std::cout << "La vue est passee en orthographique \n";
 		}
 //		vue_->obtenirProjection().conserverRapportAspect();
-		appliquerZoomInitial();
 		vueEstOrbite_ = utiliseOrbite;
 	}
 }

@@ -1,4 +1,5 @@
 #include <windows.h>
+#include <GL/glew.h>
 #include <GL/gl.h>
 #include "ProjectionPerspective.h"
 
@@ -26,9 +27,7 @@ namespace vue {
 
 	void ProjectionPerspective::appliquer() const
 	{
-		glFrustum(left_, right_,
-			bottom_, top_,
-			near_, far_);
+		gluPerspective(60, 1.6, 1, 1000);
 	}
 
 	void ProjectionPerspective::zoomerIn()
