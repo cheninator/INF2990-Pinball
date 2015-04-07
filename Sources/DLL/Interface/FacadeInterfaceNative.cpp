@@ -2120,6 +2120,33 @@ extern "C"
 		FacadeModele::obtenirInstance()->obtenircontroleurTexte()->repositionner(text, x, y);
 	}
 
+
+	///////////////////////////////////////////////////////////////////////////////
+	///
+	/// @fn void suprimerText(char* text)
+	/// @brief Efface un texte du rendu
+	/// @param[in] text : Le texte a effacer
+	/// @return Aucune.
+	///
+	///////////////////////////////////////////////////////////////////////////////
+	__declspec(dllexport) void __cdecl suprimerText(char* text)
+	{
+		FacadeModele::obtenirInstance()->obtenircontroleurTexte()->suprimerText(text);
+	}
+
+	///////////////////////////////////////////////////////////////////////////////
+	///
+	/// @fn void afficherTextes(bool afficher)
+	/// @brief Affiche ou non tout les textes
+	/// @param[in] afficher : L'etat d'affichage
+	/// @return Aucune.
+	///
+	///////////////////////////////////////////////////////////////////////////////
+	__declspec(dllexport) void __cdecl afficherTextes(bool afficher)
+	{
+		FacadeModele::obtenirInstance()->obtenircontroleurTexte()->afficherTextes(afficher);
+	}
+
 	///////////////////////////////////////////////////////////////////////////////
 	///
 	/// @fn void utiliserCameraOrbite(bool utiliseOrbite)

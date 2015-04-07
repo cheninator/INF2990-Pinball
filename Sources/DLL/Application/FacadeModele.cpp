@@ -436,7 +436,7 @@ void FacadeModele::afficherBase() const
 
 		//oneTime = false;
 	}
-	controleurTexte_->afficherTextes();
+	controleurTexte_->refreshAffichage();
 }
 
 ////////////////////////////////////////////////////////////////////////

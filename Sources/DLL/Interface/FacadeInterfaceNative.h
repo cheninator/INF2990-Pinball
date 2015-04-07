@@ -135,7 +135,7 @@ extern "C" {
 	__declspec(dllexport) void changerCouleur(char* text, float couleur[3]);
 	__declspec(dllexport) void repositionner(char* text, int x, int y);
 	__declspec(dllexport) void suprimerText(char* text);
-	__declspec(dllexport) void afficherTextes(bool afficher = false);
+	__declspec(dllexport) void afficherTextes(bool afficher = true);
 }
 
 #endif // __FACADE_INTERFACE_NATIVE_H__

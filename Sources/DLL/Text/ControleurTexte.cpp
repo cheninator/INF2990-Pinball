@@ -100,14 +100,13 @@ void ControleurTexte::creeTexte(char* texte, char* font)
 	std::get<3>(texts_[textIndex].second) = font;
 }
 
-void ControleurTexte::afficherTextes(bool pause)
-{	
-	if (fontTable_.size() <= 0 || pause)
+void ControleurTexte::refreshAffichage()
+{
+	if (fontTable_.size() <= 0 || !afficher_)
 		return;
 	for (unsigned int i = 0; i < texts_.size(); i++)
 		renderText(i);
 }
-
 void ControleurTexte::renderText(int textIndex)
 {
 	char* useFont = std::get<3>(texts_[textIndex].second);
@@ -230,17 +229,16 @@ void ControleurTexte::repositionner(char* text, float posX, float posY)
 									0 + decalage);
 			break;
 		case Position::B:
-			positionTexte = FTPoint(posMax.x - abs(boiteTextUpper.X() - boiteTextLower.X()) - MARGE_X,
+			positionTexte = FTPoint(posMax_.x - abs(boiteTextUpper.X() - boiteTextLower.X()) - MARGE_X,
 									0 + decalage);
 			break;
 		case Position::C:
-			positionTexte = FTPoint(posMax.x - abs(boiteTextUpper.X() - boiteTextLower.X()) - MARGE_X,
-									posMax.y - abs(boiteTextUpper.Y() - boiteTextLower.Y()) - decalage);
+			positionTexte = FTPoint(posMax_.x - abs(boiteTextUpper.X() - boiteTextLower.X()) - MARGE_X,
+									posMax_.y - abs(boiteTextUpper.Y() - boiteTextLower.Y()) - decalage);
 			break;
 		case Position::D:
 			positionTexte = FTPoint(0 + MARGE_X,
-									posMax.y - abs(boiteTextUpper.Y() - boiteTextLower.Y()) - decalage);
-			std::cout << decalage << std::endl;
+									posMax_.y - abs(boiteTextUpper.Y() - boiteTextLower.Y()) - decalage);
 			break;
 		case Position::E:
 			positionTexte = FTPoint(posX, posY);
@@ -251,7 +249,7 @@ void ControleurTexte::repositionner(char* text, float posX, float posY)
 
 void ControleurTexte::refresh(int x, int y)
 {
-	posMax = glm::ivec2(x, y);
+	posMax_ = glm::ivec2(x, y);
 	for (unsigned int i = 0; i < texts_.size(); i++)
 	{
 		switch (std::get<4>(texts_[i].second))

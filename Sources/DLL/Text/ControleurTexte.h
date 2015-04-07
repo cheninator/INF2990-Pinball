@@ -26,7 +26,8 @@ public:
 	void creeTexte(char* text, char* font = "");
 	void updateText(char* oldText, char* newText);
 	void suprimerText(char* text);
-	void afficherTextes(bool afficher = false);
+	void afficherTextes(bool afficher = true) { afficher_ = afficher;};
+	void refreshAffichage();
 	void changerCouleur(char* text, float rouge, float vert, float bleu);
 	void changerCouleur(char* text, glm::fvec3 couleur);
 	void repositionner(char* text, float posX, float posY);
@@ -45,9 +46,11 @@ private:
 	std::vector<std::pair<std::string, FTGLPixmapFont*>> fontTable_;
 	std::vector<std::pair<char*, textContainer>> texts_;
 
+	bool afficher_{ true };
+
 	// default const
 	textContainer const defaultObject_{	{ 500, 500 }, { .5f, 1.f, 1.f }, { 32 },  { "arial.tff" }, Position::E };
-	glm::ivec2 posMax { 500, 500 };
+	glm::ivec2 posMax_{ 500, 500 };
 };
 
 #endif //__FACADE_TEXT_CONTROLLER_CLASS_H__
