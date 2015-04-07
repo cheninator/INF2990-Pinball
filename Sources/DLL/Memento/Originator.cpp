@@ -1,9 +1,8 @@
 #include "Originator.h"
 
 
-Originator::Originator(ArbreRenduINF2990* arbre)
+Originator::Originator()
 {
-	arbreActuel_ = arbre;
 	historique_ = new CareTaker();
 	position_ = 0;
 }

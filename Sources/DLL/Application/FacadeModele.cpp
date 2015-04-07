@@ -105,7 +105,7 @@ FacadeModele* FacadeModele::obtenirInstance(bool console)
 		instance_->joueur_ = new JoueurVirtuel();
 		instance_->quad_ = new QuadTree(glm::dvec3(coinGaucheTableX, coinGaucheTableY, 0),
 										glm::dvec3(coinDroitTableX,  coinDroitTableY,  0));
-		instance_->originator_ = new Originator(instance_->arbre_);
+		instance_->originator_ = new Originator();
 		instance_->progNuanceur_ = new ProgrammeINF2990();
 		instance_->controleurTexte_ = new ControleurTexte();
 
@@ -229,6 +229,7 @@ void FacadeModele::initialiserOpenGL(HWND hWnd)
 	arbre_ = new ArbreRenduINF2990;
 	std::cout << "Initialisation de l'arbre de rendu..." << std::endl;
 	arbre_->initialiser();
+	originator_->assignerArbre(arbre_);
 
 	// On cree une vue par defaut.
 	vue_ = new vue::VueOrtho{
