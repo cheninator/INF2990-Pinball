@@ -21,6 +21,10 @@ void Originator::annuler()
 	if (position_ == 0)
 		return;
 
+	// Ne rien faire lorsqu'il n'y a pas d'historique
+	if (historique_->size() == 0)
+		return;
+
 	// Tenter d'obtenir l'element de sauvegarde precedent
 	if (historique_->obtenirMemento(position_ - 1) == nullptr)
 		return;
@@ -54,6 +58,10 @@ void Originator::retablir()
 {
 	// Ne rien faire lorsqu'il n'y a pas eu d'autres modifications
 	if (position_ == historique_->size() - 1)
+		return;
+
+	// Ne rien faire lorsqu'il n'y a pas d'historique
+	if (historique_->size() == 0)
 		return;
 
 	// Tenter d'obtenir l'element de sauvegarde suivant

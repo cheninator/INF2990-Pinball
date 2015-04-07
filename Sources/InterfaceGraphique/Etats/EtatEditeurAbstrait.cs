@@ -545,8 +545,9 @@ namespace InterfaceGraphique
             }
             else if (e.Button == MouseButtons.Right)
                 form_.deplacementVueSouris(e);
-           
-           // form_.creationObjet(e);
+
+            FonctionsNatives.sauvegarderHistorique();
+            //form_.creationObjet(e);
             return true;
         }
     }

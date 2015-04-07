@@ -579,7 +579,6 @@ namespace InterfaceGraphique
                     }
                     else if (e.KeyChar == 'e')
                     {
-
                         bouton_Scaling_Click(this, e);
                     }
                     else if (e.KeyChar == 'r')
@@ -1372,7 +1371,10 @@ namespace InterfaceGraphique
             //Console.WriteLine("Outil Deplacement.");
             // TO DO
             annulerModif();
-            FonctionsNatives.sauvegarderHistorique();
+
+            if(etat is EtatEditeurSelection)
+                FonctionsNatives.sauvegarderHistorique();
+
             etat = null;
             etat = new EtatEditeurDeplacement(this);
         }
@@ -1429,6 +1431,10 @@ namespace InterfaceGraphique
             //Console.WriteLine("Outil Rotation.");
             // TO DO
             annulerModif();
+
+            if (etat is EtatEditeurSelection)
+                FonctionsNatives.sauvegarderHistorique();
+
             etat = null;
             etat = new EtatEditeurRotation(this);
         }
@@ -1450,6 +1456,10 @@ namespace InterfaceGraphique
             //Console.WriteLine("Outil Mise a echelle.");
             // TO DO
             annulerModif();
+
+            if(etat is EtatEditeurSelection)
+                FonctionsNatives.sauvegarderHistorique();
+
             etat = null;
             etat = new EtatEditeurScale(this);
         }
@@ -1509,6 +1519,10 @@ namespace InterfaceGraphique
             //Console.WriteLine("Outil Duplication.");
 
             annulerModif();
+
+            if (etat is EtatEditeurSelection)
+                FonctionsNatives.sauvegarderHistorique();
+
             etat = null;
             etat = new EtatEditeurDuplication(this);
 
@@ -2240,7 +2254,7 @@ namespace InterfaceGraphique
                 panel_GL.MouseMove -= panel_MouseMove;
             }
 
-            if (etat is EtatEditeurDeplacement)
+            if (etat is EtatEditeurDeplacement || etat is EtatEditeurScale || etat is EtatEditeurRotation)
                 FonctionsNatives.sauvegarderHistorique();
 
             if (etat is EtatEditeurDuplication && e.Button == MouseButtons.Left)
@@ -2248,6 +2262,7 @@ namespace InterfaceGraphique
                 if (FonctionsNatives.duplicationEstHorsTable())
                     FonctionsNatives.removeObject();
 
+                FonctionsNatives.sauvegarderHistorique();
                 deselection();
                 panel_GL.MouseMove -= panel_MouseMove;
               //  etat = new EtatEditeurNone(this);
