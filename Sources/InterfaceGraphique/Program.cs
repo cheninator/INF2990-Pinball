@@ -124,7 +124,7 @@ namespace InterfaceGraphique
                     System.Environment.OSVersion.Version.Minor >= 1))
                     MessageBox.Show(warningMessageW, "AVERTISSEMENT", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
-
+            // TODO Exemple a delete
             // Exemple de texte
             // le Texte a Ecrire
             StringBuilder myFont = new StringBuilder("Bloodthirsty.ttf");
@@ -142,7 +142,7 @@ namespace InterfaceGraphique
 
             // On demande d'afficher !
             FonctionsNatives.afficherTextes();
-
+            // FIN DE L'EXEMPLE A DELETE
             mMenu = new MainMenu();
             Application.Run(mMenu);
         }
@@ -173,13 +173,19 @@ namespace InterfaceGraphique
                 {
                     lock (unLock)
                     {
+                        double tempsInterAffichage = (double)tempsAccumule.Ticks / TimeSpan.TicksPerSecond;
+                        // TODO Exemple a delete
+                        StringBuilder precedentText = FPS;
+                        FPS = new StringBuilder("FPS : " + (Math.Round((.1/tempsInterAffichage), 2)).ToString());
+                        FonctionsNatives.updateText(precedentText, precedentText.Capacity, FPS, FPS.Capacity);
+                        // FIN DE L'EXEMPLE
                         if (mMenu.modeEdit != null && peutAfficher)
                         {
-                            mMenu.modeEdit.MettreAJour((double)tempsAccumule.Ticks / TimeSpan.TicksPerSecond);
+                            mMenu.modeEdit.MettreAJour(tempsInterAffichage);
                         }
                         else if (mMenu.modeJeuMain != null && peutAfficher)
                         {
-                            mMenu.modeJeuMain.MettreAJour((double)tempsAccumule.Ticks / TimeSpan.TicksPerSecond);
+                            mMenu.modeJeuMain.MettreAJour(tempsInterAffichage);
                         }
                         compteurFrames++;
                         if (compteurFrames >= 10)
