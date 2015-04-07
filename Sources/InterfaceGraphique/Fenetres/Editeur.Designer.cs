@@ -38,7 +38,7 @@ namespace InterfaceGraphique
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.Windows.Forms.ToolStripButton Enregistrer;
+            System.Windows.Forms.ToolStripButton Enregistrer_ToolStrip;
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Editeur));
             this.panel1 = new System.Windows.Forms.Panel();
             this.panel_GL = new System.Windows.Forms.Panel();
@@ -85,20 +85,20 @@ namespace InterfaceGraphique
             this.X_label = new System.Windows.Forms.Label();
             this.richTextBox1 = new System.Windows.Forms.RichTextBox();
             this.toolStrip1 = new System.Windows.Forms.ToolStrip();
-            this.toolStripButton2 = new System.Windows.Forms.ToolStripButton();
+            this.MenuP_ToolStrip = new System.Windows.Forms.ToolStripButton();
             this.toolStripSeparator2 = new System.Windows.Forms.ToolStripSeparator();
-            this.Nouveau = new System.Windows.Forms.ToolStripButton();
-            this.Ouvrir = new System.Windows.Forms.ToolStripButton();
-            this.toolStripButton4 = new System.Windows.Forms.ToolStripButton();
+            this.Nouveau_ToolStrip = new System.Windows.Forms.ToolStripButton();
+            this.Ouvrir_ToolStrip = new System.Windows.Forms.ToolStripButton();
+            this.EnregistrerSous_ToolStrip = new System.Windows.Forms.ToolStripButton();
             this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
-            this.toolStripButton8 = new System.Windows.Forms.ToolStripButton();
-            this.toolStripButton9 = new System.Windows.Forms.ToolStripButton();
-            this.toolStripButton3 = new System.Windows.Forms.ToolStripButton();
-            this.toolStripButton1 = new System.Windows.Forms.ToolStripButton();
+            this.Annuler_ToolStrip = new System.Windows.Forms.ToolStripButton();
+            this.Retablir_ToolStrip = new System.Windows.Forms.ToolStripButton();
+            this.Proprietes_ToolStrip = new System.Windows.Forms.ToolStripButton();
+            this.ModeTest_ToolStrip = new System.Windows.Forms.ToolStripButton();
             this.toolStripSeparator3 = new System.Windows.Forms.ToolStripSeparator();
-            this.toolStripButton5 = new System.Windows.Forms.ToolStripButton();
-            this.toolStripButton6 = new System.Windows.Forms.ToolStripButton();
-            this.toolStripButton7 = new System.Windows.Forms.ToolStripButton();
+            this.ZoomIn_ToolStrip = new System.Windows.Forms.ToolStripButton();
+            this.ZoomOut_ToolStrip = new System.Windows.Forms.ToolStripButton();
+            this.ZoomElastique_ToolStrip = new System.Windows.Forms.ToolStripButton();
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.fichierToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.Nouveau_MenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -148,7 +148,7 @@ namespace InterfaceGraphique
             this.printPreviewDialog1 = new System.Windows.Forms.PrintPreviewDialog();
             this.toolTipPaneauCreation = new System.Windows.Forms.ToolTip(this.components);
             this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
-            Enregistrer = new System.Windows.Forms.ToolStripButton();
+            Enregistrer_ToolStrip = new System.Windows.Forms.ToolStripButton();
             this.panel1.SuspendLayout();
             this.panel_GL.SuspendLayout();
             this.Creation_Panel.SuspendLayout();
@@ -165,20 +165,20 @@ namespace InterfaceGraphique
             this.menuStrip3.SuspendLayout();
             this.SuspendLayout();
             // 
-            // Enregistrer
+            // Enregistrer_ToolStrip
             // 
-            Enregistrer.AutoSize = false;
-            Enregistrer.BackColor = System.Drawing.Color.Transparent;
-            Enregistrer.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            Enregistrer.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            Enregistrer.Image = global::InterfaceGraphique.Properties.Resources.save1;
-            Enregistrer.ImageTransparentColor = System.Drawing.Color.Magenta;
-            Enregistrer.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            Enregistrer.Name = "Enregistrer";
-            Enregistrer.Size = new System.Drawing.Size(35, 30);
-            Enregistrer.Text = "Enregistrer";
-            Enregistrer.ToolTipText = "Enregistrer (CTRL + S)";
-            Enregistrer.Click += new System.EventHandler(this.toolStripButton1_Click);
+            Enregistrer_ToolStrip.AutoSize = false;
+            Enregistrer_ToolStrip.BackColor = System.Drawing.Color.Transparent;
+            Enregistrer_ToolStrip.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            Enregistrer_ToolStrip.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            Enregistrer_ToolStrip.Image = global::InterfaceGraphique.Properties.Resources.save1;
+            Enregistrer_ToolStrip.ImageTransparentColor = System.Drawing.Color.Magenta;
+            Enregistrer_ToolStrip.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            Enregistrer_ToolStrip.Name = "Enregistrer_ToolStrip";
+            Enregistrer_ToolStrip.Size = new System.Drawing.Size(35, 30);
+            Enregistrer_ToolStrip.Text = "Enregistrer";
+            Enregistrer_ToolStrip.ToolTipText = "Enregistrer (CTRL + S)";
+            Enregistrer_ToolStrip.Click += new System.EventHandler(this.Enregistrer_ToolStrip_Click);
             // 
             // panel1
             // 
@@ -816,38 +816,38 @@ namespace InterfaceGraphique
             this.toolStrip1.AutoSize = false;
             this.toolStrip1.ImageScalingSize = new System.Drawing.Size(40, 40);
             this.toolStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.toolStripButton2,
+            this.MenuP_ToolStrip,
             this.toolStripSeparator2,
-            this.Nouveau,
-            this.Ouvrir,
-            Enregistrer,
-            this.toolStripButton4,
+            this.Nouveau_ToolStrip,
+            this.Ouvrir_ToolStrip,
+            Enregistrer_ToolStrip,
+            this.EnregistrerSous_ToolStrip,
             this.toolStripSeparator1,
-            this.toolStripButton8,
-            this.toolStripButton9,
-            this.toolStripButton3,
-            this.toolStripButton1,
+            this.Annuler_ToolStrip,
+            this.Retablir_ToolStrip,
+            this.Proprietes_ToolStrip,
+            this.ModeTest_ToolStrip,
             this.toolStripSeparator3,
-            this.toolStripButton5,
-            this.toolStripButton6,
-            this.toolStripButton7});
+            this.ZoomIn_ToolStrip,
+            this.ZoomOut_ToolStrip,
+            this.ZoomElastique_ToolStrip});
             this.toolStrip1.Location = new System.Drawing.Point(0, 24);
             this.toolStrip1.Name = "toolStrip1";
             this.toolStrip1.Size = new System.Drawing.Size(954, 35);
             this.toolStrip1.TabIndex = 6;
             this.toolStrip1.Text = "toolStrip1";
             // 
-            // toolStripButton2
+            // MenuP_ToolStrip
             // 
-            this.toolStripButton2.AutoSize = false;
-            this.toolStripButton2.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.toolStripButton2.Image = global::InterfaceGraphique.Properties.Resources.Return_home;
-            this.toolStripButton2.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.toolStripButton2.Name = "toolStripButton2";
-            this.toolStripButton2.Size = new System.Drawing.Size(35, 30);
-            this.toolStripButton2.Text = "toolStripButton2";
-            this.toolStripButton2.ToolTipText = "Retour au menu principal( CTRL + Q)";
-            this.toolStripButton2.Click += new System.EventHandler(this.toolStripButton2_Click);
+            this.MenuP_ToolStrip.AutoSize = false;
+            this.MenuP_ToolStrip.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.MenuP_ToolStrip.Image = global::InterfaceGraphique.Properties.Resources.Return_home;
+            this.MenuP_ToolStrip.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.MenuP_ToolStrip.Name = "MenuP_ToolStrip";
+            this.MenuP_ToolStrip.Size = new System.Drawing.Size(35, 30);
+            this.MenuP_ToolStrip.Text = "toolStripButton2";
+            this.MenuP_ToolStrip.ToolTipText = "Retour au menu principal( CTRL + Q)";
+            this.MenuP_ToolStrip.Click += new System.EventHandler(this.MenuP_ToolStrip_Click);
             // 
             // toolStripSeparator2
             // 
@@ -855,46 +855,46 @@ namespace InterfaceGraphique
             this.toolStripSeparator2.Name = "toolStripSeparator2";
             this.toolStripSeparator2.Size = new System.Drawing.Size(6, 35);
             // 
-            // Nouveau
+            // Nouveau_ToolStrip
             // 
-            this.Nouveau.AutoSize = false;
-            this.Nouveau.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.Nouveau.Image = global::InterfaceGraphique.Properties.Resources.NouveauFichier;
-            this.Nouveau.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.Nouveau.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.Nouveau.Name = "Nouveau";
-            this.Nouveau.Size = new System.Drawing.Size(35, 30);
-            this.Nouveau.Text = "Nouveau";
-            this.Nouveau.ToolTipText = "Nouveau (CTRL + N)";
-            this.Nouveau.Click += new System.EventHandler(this.Nouveau_Click);
+            this.Nouveau_ToolStrip.AutoSize = false;
+            this.Nouveau_ToolStrip.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.Nouveau_ToolStrip.Image = global::InterfaceGraphique.Properties.Resources.NouveauFichier;
+            this.Nouveau_ToolStrip.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.Nouveau_ToolStrip.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.Nouveau_ToolStrip.Name = "Nouveau_ToolStrip";
+            this.Nouveau_ToolStrip.Size = new System.Drawing.Size(35, 30);
+            this.Nouveau_ToolStrip.Text = "Nouveau";
+            this.Nouveau_ToolStrip.ToolTipText = "Nouveau (CTRL + N)";
+            this.Nouveau_ToolStrip.Click += new System.EventHandler(this.Nouveau_Click);
             // 
-            // Ouvrir
+            // Ouvrir_ToolStrip
             // 
-            this.Ouvrir.AutoSize = false;
-            this.Ouvrir.BackColor = System.Drawing.Color.Transparent;
-            this.Ouvrir.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.Ouvrir.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.Ouvrir.Image = global::InterfaceGraphique.Properties.Resources.open1;
-            this.Ouvrir.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.Ouvrir.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.Ouvrir.Name = "Ouvrir";
-            this.Ouvrir.Size = new System.Drawing.Size(35, 30);
-            this.Ouvrir.Text = "Ouvrir";
-            this.Ouvrir.ToolTipText = "Ouvrir (CTRL + O)";
-            this.Ouvrir.Click += new System.EventHandler(this.Ouvrir_Click);
+            this.Ouvrir_ToolStrip.AutoSize = false;
+            this.Ouvrir_ToolStrip.BackColor = System.Drawing.Color.Transparent;
+            this.Ouvrir_ToolStrip.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.Ouvrir_ToolStrip.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.Ouvrir_ToolStrip.Image = global::InterfaceGraphique.Properties.Resources.open1;
+            this.Ouvrir_ToolStrip.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.Ouvrir_ToolStrip.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.Ouvrir_ToolStrip.Name = "Ouvrir_ToolStrip";
+            this.Ouvrir_ToolStrip.Size = new System.Drawing.Size(35, 30);
+            this.Ouvrir_ToolStrip.Text = "Ouvrir";
+            this.Ouvrir_ToolStrip.ToolTipText = "Ouvrir (CTRL + O)";
+            this.Ouvrir_ToolStrip.Click += new System.EventHandler(this.Ouvrir_Click);
             // 
-            // toolStripButton4
+            // EnregistrerSous_ToolStrip
             // 
-            this.toolStripButton4.AutoSize = false;
-            this.toolStripButton4.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.toolStripButton4.Image = global::InterfaceGraphique.Properties.Resources.enregistrersous;
-            this.toolStripButton4.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.toolStripButton4.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.toolStripButton4.Name = "toolStripButton4";
-            this.toolStripButton4.Size = new System.Drawing.Size(35, 30);
-            this.toolStripButton4.Text = "toolStripButton4";
-            this.toolStripButton4.ToolTipText = "Enregistrer sous (CTRL + SHIFT + S)";
-            this.toolStripButton4.Click += new System.EventHandler(this.toolStripButton4_Click);
+            this.EnregistrerSous_ToolStrip.AutoSize = false;
+            this.EnregistrerSous_ToolStrip.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.EnregistrerSous_ToolStrip.Image = global::InterfaceGraphique.Properties.Resources.enregistrersous;
+            this.EnregistrerSous_ToolStrip.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.EnregistrerSous_ToolStrip.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.EnregistrerSous_ToolStrip.Name = "EnregistrerSous_ToolStrip";
+            this.EnregistrerSous_ToolStrip.Size = new System.Drawing.Size(35, 30);
+            this.EnregistrerSous_ToolStrip.Text = "toolStripButton4";
+            this.EnregistrerSous_ToolStrip.ToolTipText = "Enregistrer sous (CTRL + SHIFT + S)";
+            this.EnregistrerSous_ToolStrip.Click += new System.EventHandler(this.EnregistrerSous_ToolStrip_Click);
             // 
             // toolStripSeparator1
             // 
@@ -902,53 +902,53 @@ namespace InterfaceGraphique
             this.toolStripSeparator1.Name = "toolStripSeparator1";
             this.toolStripSeparator1.Size = new System.Drawing.Size(6, 35);
             // 
-            // toolStripButton8
+            // Annuler_ToolStrip
             // 
-            this.toolStripButton8.AutoSize = false;
-            this.toolStripButton8.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.toolStripButton8.Image = global::InterfaceGraphique.Properties.Resources.undo;
-            this.toolStripButton8.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.toolStripButton8.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.toolStripButton8.Name = "toolStripButton8";
-            this.toolStripButton8.Size = new System.Drawing.Size(35, 30);
-            this.toolStripButton8.Text = "Annuler ( CTRL + Z )";
-            this.toolStripButton8.Click += new System.EventHandler(this.toolStripButton8_Click);
+            this.Annuler_ToolStrip.AutoSize = false;
+            this.Annuler_ToolStrip.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.Annuler_ToolStrip.Image = global::InterfaceGraphique.Properties.Resources.undo;
+            this.Annuler_ToolStrip.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.Annuler_ToolStrip.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.Annuler_ToolStrip.Name = "Annuler_ToolStrip";
+            this.Annuler_ToolStrip.Size = new System.Drawing.Size(35, 30);
+            this.Annuler_ToolStrip.Text = "Annuler ( CTRL + Z )";
+            this.Annuler_ToolStrip.Click += new System.EventHandler(this.Annuler_ToolStrip_Click);
             // 
-            // toolStripButton9
+            // Retablir_ToolStrip
             // 
-            this.toolStripButton9.AutoSize = false;
-            this.toolStripButton9.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.toolStripButton9.Image = global::InterfaceGraphique.Properties.Resources.redo;
-            this.toolStripButton9.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.toolStripButton9.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.toolStripButton9.Name = "toolStripButton9";
-            this.toolStripButton9.Size = new System.Drawing.Size(35, 30);
-            this.toolStripButton9.Text = "Rétablir ( CTRL + Y )";
-            this.toolStripButton9.Click += new System.EventHandler(this.toolStripButton9_Click);
+            this.Retablir_ToolStrip.AutoSize = false;
+            this.Retablir_ToolStrip.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.Retablir_ToolStrip.Image = global::InterfaceGraphique.Properties.Resources.redo;
+            this.Retablir_ToolStrip.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.Retablir_ToolStrip.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.Retablir_ToolStrip.Name = "Retablir_ToolStrip";
+            this.Retablir_ToolStrip.Size = new System.Drawing.Size(35, 30);
+            this.Retablir_ToolStrip.Text = "Rétablir ( CTRL + Y )";
+            this.Retablir_ToolStrip.Click += new System.EventHandler(this.Retablir_ToolStrip_Click);
             // 
-            // toolStripButton3
+            // Proprietes_ToolStrip
             // 
-            this.toolStripButton3.AutoSize = false;
-            this.toolStripButton3.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.toolStripButton3.Image = global::InterfaceGraphique.Properties.Resources.settings;
-            this.toolStripButton3.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.toolStripButton3.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.toolStripButton3.Name = "toolStripButton3";
-            this.toolStripButton3.Size = new System.Drawing.Size(35, 30);
-            this.toolStripButton3.Text = "Propriétés de zone de jeu";
-            this.toolStripButton3.Click += new System.EventHandler(this.toolStripButton3_Click);
+            this.Proprietes_ToolStrip.AutoSize = false;
+            this.Proprietes_ToolStrip.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.Proprietes_ToolStrip.Image = global::InterfaceGraphique.Properties.Resources.settings;
+            this.Proprietes_ToolStrip.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.Proprietes_ToolStrip.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.Proprietes_ToolStrip.Name = "Proprietes_ToolStrip";
+            this.Proprietes_ToolStrip.Size = new System.Drawing.Size(35, 30);
+            this.Proprietes_ToolStrip.Text = "Propriétés de zone de jeu";
+            this.Proprietes_ToolStrip.Click += new System.EventHandler(this.Proprietes_ToolStrip_Click);
             // 
-            // toolStripButton1
+            // ModeTest_ToolStrip
             // 
-            this.toolStripButton1.AutoSize = false;
-            this.toolStripButton1.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.toolStripButton1.Image = ((System.Drawing.Image)(resources.GetObject("toolStripButton1.Image")));
-            this.toolStripButton1.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.toolStripButton1.Name = "toolStripButton1";
-            this.toolStripButton1.Size = new System.Drawing.Size(80, 30);
-            this.toolStripButton1.Text = "Tester";
-            this.toolStripButton1.ToolTipText = "Mode Test (T)";
-            this.toolStripButton1.Click += new System.EventHandler(this.toolStripButton1_Click_1);
+            this.ModeTest_ToolStrip.AutoSize = false;
+            this.ModeTest_ToolStrip.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.ModeTest_ToolStrip.Image = ((System.Drawing.Image)(resources.GetObject("ModeTest_ToolStrip.Image")));
+            this.ModeTest_ToolStrip.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.ModeTest_ToolStrip.Name = "ModeTest_ToolStrip";
+            this.ModeTest_ToolStrip.Size = new System.Drawing.Size(80, 30);
+            this.ModeTest_ToolStrip.Text = "Tester";
+            this.ModeTest_ToolStrip.ToolTipText = "Mode Test (T)";
+            this.ModeTest_ToolStrip.Click += new System.EventHandler(this.ModeTest_ToolStrip_Click);
             // 
             // toolStripSeparator3
             // 
@@ -956,45 +956,45 @@ namespace InterfaceGraphique
             this.toolStripSeparator3.Name = "toolStripSeparator3";
             this.toolStripSeparator3.Size = new System.Drawing.Size(6, 35);
             // 
-            // toolStripButton5
+            // ZoomIn_ToolStrip
             // 
-            this.toolStripButton5.AutoSize = false;
-            this.toolStripButton5.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.toolStripButton5.Image = global::InterfaceGraphique.Properties.Resources.zoomIN;
-            this.toolStripButton5.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.toolStripButton5.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.toolStripButton5.Name = "toolStripButton5";
-            this.toolStripButton5.Size = new System.Drawing.Size(35, 30);
-            this.toolStripButton5.Text = "toolStripButton5";
-            this.toolStripButton5.ToolTipText = "Zoom avant( + )";
-            this.toolStripButton5.Click += new System.EventHandler(this.toolStripButton5_Click);
+            this.ZoomIn_ToolStrip.AutoSize = false;
+            this.ZoomIn_ToolStrip.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.ZoomIn_ToolStrip.Image = global::InterfaceGraphique.Properties.Resources.zoomIN;
+            this.ZoomIn_ToolStrip.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.ZoomIn_ToolStrip.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.ZoomIn_ToolStrip.Name = "ZoomIn_ToolStrip";
+            this.ZoomIn_ToolStrip.Size = new System.Drawing.Size(35, 30);
+            this.ZoomIn_ToolStrip.Text = "toolStripButton5";
+            this.ZoomIn_ToolStrip.ToolTipText = "Zoom avant( + )";
+            this.ZoomIn_ToolStrip.Click += new System.EventHandler(this.ZoomIn_ToolStrip_Click);
             // 
-            // toolStripButton6
+            // ZoomOut_ToolStrip
             // 
-            this.toolStripButton6.AutoSize = false;
-            this.toolStripButton6.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.toolStripButton6.Image = global::InterfaceGraphique.Properties.Resources.ZoomOut;
-            this.toolStripButton6.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.toolStripButton6.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.toolStripButton6.Name = "toolStripButton6";
-            this.toolStripButton6.Size = new System.Drawing.Size(35, 30);
-            this.toolStripButton6.Text = "toolStripButton6";
-            this.toolStripButton6.ToolTipText = "Zoom arrière ( - )";
-            this.toolStripButton6.Click += new System.EventHandler(this.toolStripButton6_Click);
+            this.ZoomOut_ToolStrip.AutoSize = false;
+            this.ZoomOut_ToolStrip.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.ZoomOut_ToolStrip.Image = global::InterfaceGraphique.Properties.Resources.ZoomOut;
+            this.ZoomOut_ToolStrip.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.ZoomOut_ToolStrip.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.ZoomOut_ToolStrip.Name = "ZoomOut_ToolStrip";
+            this.ZoomOut_ToolStrip.Size = new System.Drawing.Size(35, 30);
+            this.ZoomOut_ToolStrip.Text = "toolStripButton6";
+            this.ZoomOut_ToolStrip.ToolTipText = "Zoom arrière ( - )";
+            this.ZoomOut_ToolStrip.Click += new System.EventHandler(this.ZoomOut_ToolStrip_Click);
             // 
-            // toolStripButton7
+            // ZoomElastique_ToolStrip
             // 
-            this.toolStripButton7.AutoSize = false;
-            this.toolStripButton7.BackColor = System.Drawing.Color.Transparent;
-            this.toolStripButton7.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.toolStripButton7.Image = global::InterfaceGraphique.Properties.Resources.zoomElastique2;
-            this.toolStripButton7.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.toolStripButton7.Margin = new System.Windows.Forms.Padding(0, 4, 0, 4);
-            this.toolStripButton7.Name = "toolStripButton7";
-            this.toolStripButton7.Size = new System.Drawing.Size(35, 30);
-            this.toolStripButton7.Text = "toolStripButton7";
-            this.toolStripButton7.ToolTipText = "Zoom Elastique";
-            this.toolStripButton7.Click += new System.EventHandler(this.toolStripButton7_Click);
+            this.ZoomElastique_ToolStrip.AutoSize = false;
+            this.ZoomElastique_ToolStrip.BackColor = System.Drawing.Color.Transparent;
+            this.ZoomElastique_ToolStrip.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.ZoomElastique_ToolStrip.Image = global::InterfaceGraphique.Properties.Resources.zoomElastique2;
+            this.ZoomElastique_ToolStrip.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.ZoomElastique_ToolStrip.Margin = new System.Windows.Forms.Padding(0, 4, 0, 4);
+            this.ZoomElastique_ToolStrip.Name = "ZoomElastique_ToolStrip";
+            this.ZoomElastique_ToolStrip.Size = new System.Drawing.Size(35, 30);
+            this.ZoomElastique_ToolStrip.Text = "toolStripButton7";
+            this.ZoomElastique_ToolStrip.ToolTipText = "Zoom Elastique";
+            this.ZoomElastique_ToolStrip.Click += new System.EventHandler(this.ZoomElastique_ToolStrip_Click);
             // 
             // menuStrip1
             // 
@@ -1031,7 +1031,7 @@ namespace InterfaceGraphique
             this.Nouveau_MenuItem.Image = global::InterfaceGraphique.Properties.Resources.NouveauFichier;
             this.Nouveau_MenuItem.Name = "Nouveau_MenuItem";
             this.Nouveau_MenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.N)));
-            this.Nouveau_MenuItem.Size = new System.Drawing.Size(226, 22);
+            this.Nouveau_MenuItem.Size = new System.Drawing.Size(230, 22);
             this.Nouveau_MenuItem.Text = "Nouveau";
             this.Nouveau_MenuItem.Click += new System.EventHandler(this.Nouveau_MenuItem_Click);
             // 
@@ -1040,7 +1040,7 @@ namespace InterfaceGraphique
             this.Ouvrir_MenuItem.Image = global::InterfaceGraphique.Properties.Resources.open;
             this.Ouvrir_MenuItem.Name = "Ouvrir_MenuItem";
             this.Ouvrir_MenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.O)));
-            this.Ouvrir_MenuItem.Size = new System.Drawing.Size(226, 22);
+            this.Ouvrir_MenuItem.Size = new System.Drawing.Size(230, 22);
             this.Ouvrir_MenuItem.Text = "Ouvrir";
             this.Ouvrir_MenuItem.Click += new System.EventHandler(this.Ouvrir_MenuItem_Click);
             // 
@@ -1049,7 +1049,7 @@ namespace InterfaceGraphique
             this.Enregistrer_MenuItem.Image = global::InterfaceGraphique.Properties.Resources.save;
             this.Enregistrer_MenuItem.Name = "Enregistrer_MenuItem";
             this.Enregistrer_MenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.S)));
-            this.Enregistrer_MenuItem.Size = new System.Drawing.Size(226, 22);
+            this.Enregistrer_MenuItem.Size = new System.Drawing.Size(230, 22);
             this.Enregistrer_MenuItem.Text = "Enregistrer";
             this.Enregistrer_MenuItem.Click += new System.EventHandler(this.Enregistrer_MenuItem_Click);
             // 
@@ -1059,7 +1059,7 @@ namespace InterfaceGraphique
             this.EnregistrerS_MenuItem.Name = "EnregistrerS_MenuItem";
             this.EnregistrerS_MenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)(((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.Shift) 
             | System.Windows.Forms.Keys.S)));
-            this.EnregistrerS_MenuItem.Size = new System.Drawing.Size(226, 22);
+            this.EnregistrerS_MenuItem.Size = new System.Drawing.Size(230, 22);
             this.EnregistrerS_MenuItem.Text = "Enregistrer Sous";
             this.EnregistrerS_MenuItem.Click += new System.EventHandler(this.EnregistrerS_MenuItem_Click);
             // 
@@ -1067,7 +1067,7 @@ namespace InterfaceGraphique
             // 
             this.Proprietes_MenuItem.Image = global::InterfaceGraphique.Properties.Resources.settings;
             this.Proprietes_MenuItem.Name = "Proprietes_MenuItem";
-            this.Proprietes_MenuItem.Size = new System.Drawing.Size(226, 22);
+            this.Proprietes_MenuItem.Size = new System.Drawing.Size(230, 22);
             this.Proprietes_MenuItem.Text = "Propriétés";
             this.Proprietes_MenuItem.Click += new System.EventHandler(this.Proprietes_MenuItem_Click);
             // 
@@ -1076,7 +1076,7 @@ namespace InterfaceGraphique
             this.ModeTest_MenuItem.Image = global::InterfaceGraphique.Properties.Resources.Tester;
             this.ModeTest_MenuItem.Name = "ModeTest_MenuItem";
             this.ModeTest_MenuItem.ShortcutKeyDisplayString = "t";
-            this.ModeTest_MenuItem.Size = new System.Drawing.Size(226, 22);
+            this.ModeTest_MenuItem.Size = new System.Drawing.Size(230, 22);
             this.ModeTest_MenuItem.Text = "Mode Test";
             this.ModeTest_MenuItem.Click += new System.EventHandler(this.ModeTest_MenuItem_Click);
             // 
@@ -1085,7 +1085,7 @@ namespace InterfaceGraphique
             this.MenuP_MenuItem.Image = global::InterfaceGraphique.Properties.Resources.Return_home;
             this.MenuP_MenuItem.Name = "MenuP_MenuItem";
             this.MenuP_MenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.Q)));
-            this.MenuP_MenuItem.Size = new System.Drawing.Size(226, 22);
+            this.MenuP_MenuItem.Size = new System.Drawing.Size(230, 22);
             this.MenuP_MenuItem.Text = "Menu Principal";
             this.MenuP_MenuItem.Click += new System.EventHandler(this.MenuP_MenuItem_Click);
             // 
@@ -1565,23 +1565,23 @@ namespace InterfaceGraphique
         private System.Windows.Forms.Button Gate;
         private System.Windows.Forms.ToolStripMenuItem gateToolStripMenuItem;
         private System.Windows.Forms.ToolStrip toolStrip1;
-        private System.Windows.Forms.ToolStripButton Ouvrir;
-        private System.Windows.Forms.ToolStripButton Nouveau;
-        private System.Windows.Forms.ToolStripButton toolStripButton1;
+        private System.Windows.Forms.ToolStripButton Ouvrir_ToolStrip;
+        private System.Windows.Forms.ToolStripButton Nouveau_ToolStrip;
+        private System.Windows.Forms.ToolStripButton ModeTest_ToolStrip;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator1;
-        private System.Windows.Forms.ToolStripButton toolStripButton2;
+        private System.Windows.Forms.ToolStripButton MenuP_ToolStrip;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator2;
-        private System.Windows.Forms.ToolStripButton toolStripButton3;
-        private System.Windows.Forms.ToolStripButton toolStripButton4;
+        private System.Windows.Forms.ToolStripButton Proprietes_ToolStrip;
+        private System.Windows.Forms.ToolStripButton EnregistrerSous_ToolStrip;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator3;
-        private System.Windows.Forms.ToolStripButton toolStripButton5;
-        private System.Windows.Forms.ToolStripButton toolStripButton6;
+        private System.Windows.Forms.ToolStripButton ZoomIn_ToolStrip;
+        private System.Windows.Forms.ToolStripButton ZoomOut_ToolStrip;
         private System.Windows.Forms.ToolTip toolTipPaneauCreation;
         private System.Windows.Forms.Button bouton_Suppression;
         private System.Windows.Forms.ToolTip toolTip1;
-        private System.Windows.Forms.ToolStripButton toolStripButton7;
-        private System.Windows.Forms.ToolStripButton toolStripButton8;
-        private System.Windows.Forms.ToolStripButton toolStripButton9;
+        private System.Windows.Forms.ToolStripButton ZoomElastique_ToolStrip;
+        private System.Windows.Forms.ToolStripButton Annuler_ToolStrip;
+        private System.Windows.Forms.ToolStripButton Retablir_ToolStrip;
         private System.Windows.Forms.ToolStripMenuItem Edition_MenuItem;
         private System.Windows.Forms.ToolStripMenuItem Supprimer_MenuItem;
         private System.Windows.Forms.ToolStripMenuItem Annuler_MenuItem;
