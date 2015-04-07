@@ -2273,3 +2273,7 @@ void FacadeModele::retablirModifications()
 	originator_->retablir();
 }
 
+bool FacadeModele::cameraEstOrbite()
+{
+	return vueEstOrbite_;
+}

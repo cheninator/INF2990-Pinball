@@ -141,7 +141,19 @@ namespace vue {
 		// gluLookAt( dist*sin(phi)*sin(theta), dist*cos(phi), dist*sin(phi)*cos(theta), 0, 1, 0, 0, 2, 0 );
 		if (empecheInversion)
 			return;
-		//position_.x = position_.z*sin(phi_)*sin(theta_)
+
+		float dist = glm::distance(position_, pointVise_);
+		float deltaTheta = 1.0;
+		float deltaPhi = 1.0;
+
+		theta_ += deltaPhi;
+		phi_ += deltaPhi;
+
+		position_.x = dist * sin(phi_) * sin(theta_);
+		position_.y = dist * cos(phi_);
+		position_.z = dist * sin(phi_) * cos(theta_);
+
+		positionner();
 	}
 
 
