@@ -98,7 +98,6 @@ namespace InterfaceGraphique
             public EtatJeuAbstrait() { }
             public EtatJeuAbstrait(ModeJeu parent)
             {
-                //Console.WriteLine("Etat :" + '\t' + "Abstrait");
                 this.parent_ = parent;
             }
         };
@@ -140,7 +139,6 @@ namespace InterfaceGraphique
             currentZoom = -1;
             myMaps = new List<string>(maps);
             nbZones = maps.Count;
-            Console.WriteLine(nbZones);
             map = new StringBuilder(myMaps[0]);
             FonctionsNatives.ouvrirXML(map, map.Capacity);
             resetConfig();
@@ -362,9 +360,7 @@ namespace InterfaceGraphique
                 Program.peutAfficher = false;
                 Program.tempBool = false;
             }
-            //Console.WriteLine("closing");
             Program.myCustomConsole.Hide();
-            //  Console.WriteLine("closing");
         }
 
         ////////////////////////////////////////////////////////////////////////
@@ -619,7 +615,6 @@ namespace InterfaceGraphique
             map = new StringBuilder(myMaps[0]);
             nextMap = new StringBuilder(map.ToString());
             nextMap.Remove(nextMap.Length - 4, 4);
-            //Console.WriteLine(map);
             Program.myCustomConsole.Hide();
             this.Hide();
             zInfo = new ZoneInfo(Path.GetFileName(nextMap.ToString()), FonctionsNatives.obtenirDifficulte(map, map.Capacity).ToString(), false);
