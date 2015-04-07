@@ -2,7 +2,8 @@
 
 #include "../Application/FacadeModele.h"
 #include "../Global/SingletonGlobal.h"
-
+#define MARGE_X 5
+#define MARGE_Y 5
 ControleurTexte::ControleurTexte()
 {
 	TCHAR buffer[MAX_PATH];
@@ -56,7 +57,7 @@ void ControleurTexte::populateFontVector(std::string targetPath)
 	}
 }
 
-void ControleurTexte::creeFont(char* sName)
+void ControleurTexte::creeFont(std::string sName)
 {
 	std::string name(sName);
 	bool fontGenerated = true;
@@ -75,45 +76,43 @@ void ControleurTexte::creeFont(char* sName)
 	std::cout << (fontGenerated ? "OK" : "FAILED") << std::endl;
 	if (fontGenerated)
 	{
-		std::pair<char*, FTGLPixmapFont*> aPair;
-		aPair.first = sName;
+		std::pair<std::string, FTGLPixmapFont*> aPair;
+		aPair.first = name;
 		aPair.second = someFont;
 		fontTable_.push_back(aPair);
 	}
 }
 
-void ControleurTexte::updateText(char* oldText, char* newText)
+void ControleurTexte::updateText(std::string oldText, std::string newText)
 {
 	int textIndex = lookUpText(oldText);
 	texts_[textIndex].first = newText;
 }
-void ControleurTexte::suprimerText(char* text)
+void ControleurTexte::suprimerText(std::string  text)
 {
 	int textIndex = lookUpText(text);
 	texts_.erase(texts_.begin() + textIndex);
 }
 
-void ControleurTexte::creeTexte(char* texte, char* font)
+void ControleurTexte::creeTexte(std::string texte, std::string font)
 {
 	int textIndex = lookUpText(texte);
 	std::get<3>(texts_[textIndex].second) = font;
 }
 
-void ControleurTexte::afficherTexte(bool pause)
-{	
-	if (fontTable_.size() <= 0 || pause)
+void ControleurTexte::refreshAffichage()
+{
+	if (fontTable_.size() <= 0 || !afficher_)
 		return;
-	mettreAjourBordures();
 	for (unsigned int i = 0; i < texts_.size(); i++)
 		renderText(i);
 }
-
 void ControleurTexte::renderText(int textIndex)
 {
-	char* useFont = std::get<3>(texts_[textIndex].second);
+	char* useFont = (char*)(std::get<3>(texts_[textIndex].second)).c_str();
 	unsigned int size = std::get<2>(texts_[textIndex].second);
 	glm::fvec3 color = std::get<1>(texts_[textIndex].second);
-	char* texte = texts_[textIndex].first;
+	char* texte = (char*)texts_[textIndex].first.c_str();
 	FTPoint position = std::get<0>(texts_[textIndex].second);
 
 	int fontIndex = lookUpFont(std::string(useFont));
@@ -135,13 +134,13 @@ void ControleurTexte::renderText(int textIndex)
 }
 
 
-std::string ControleurTexte::getFontPath(char* sName)
+std::string ControleurTexte::getFontPath(std::string sName)
 {
 	std::string soundPath = "media/Fonts/" + std::string(sName);
 	return soundPath;
 }
 
-void ControleurTexte::changerCouleur(char* text, float rouge, float vert, float bleu)
+void ControleurTexte::changerCouleur(std::string text, float rouge, float vert, float bleu)
 {
 	if (rouge > 1)
 		rouge = 1;
@@ -160,7 +159,7 @@ void ControleurTexte::changerCouleur(char* text, float rouge, float vert, float 
 	std::get<1>(texts_[textIndex].second) = {1 - rouge, 1 - vert, 1 - bleu};
 }
 
-void ControleurTexte::changerCouleur(char* text, glm::fvec3 couleur)
+void ControleurTexte::changerCouleurV(std::string text, glm::fvec3 couleur)
 {
 	if (couleur.x > 1)
 		couleur.x /= 255;
@@ -179,15 +178,16 @@ void ControleurTexte::changerCouleur(char* text, glm::fvec3 couleur)
 	std::get<1>(texts_[textIndex].second) = { 1 - couleur.x, 1 - couleur.y, 1 - couleur.z };
 }
 
-void ControleurTexte::repositionner(char* text, float posX, float posY)
+void ControleurTexte::repositionner(std::string text, float posX, float posY)
 {
-	mettreAjourBordures();
 	unsigned int textIndex = lookUpText(text);
-	char* myFont = std::get<3>(texts_[textIndex].second);
+	char* myFont = (char*)(std::get<3>(texts_[textIndex].second)).c_str();
+	int textSize = std::get<2>(texts_[textIndex].second);
 	unsigned int fontIndex = lookUpFont(std::string(myFont));
 	if (fontTable_.size() == 0)
 		return;
-	FTBBox boiteText = fontTable_[fontIndex].second->BBox(text);
+	fontTable_[fontIndex].second->FaceSize(textSize);
+	FTBBox boiteText = fontTable_[fontIndex].second->BBox((char*)text.c_str());
 	FTPoint boiteTextLower = boiteText.Lower();
 	FTPoint boiteTextUpper = boiteText.Upper();
 
@@ -205,61 +205,99 @@ void ControleurTexte::repositionner(char* text, float posX, float posY)
 					|__________|
 			 (0,0) A			B
 	*/
-	FTPoint positionTexte = FTPoint(posX, posY);
-	float decalage = obtenirDecalageY(textIndex);
-	std::get<4>(texts_[textIndex].second) = Position::E;
 	if (posX == 0)
 	{
 		if (posY == 0)			// A
-		{
 			std::get<4>(texts_[textIndex].second) = Position::A;
-			positionTexte = FTPoint(0,
-									0 + textIndex);
-		}
 		else if (posY == 1)		// B
-		{
 			std::get<4>(texts_[textIndex].second) = Position::B;
-			positionTexte = FTPoint(posMax.x - (boiteTextUpper.X() - boiteTextLower.X()),
-									0 + textIndex);
-		}
 	}
 	else if (posX == 1)
 	{
 		if (posY == 0)			// D
-		{
 			std::get<4>(texts_[textIndex].second) = Position::D;
-			positionTexte = FTPoint(0,
-									posMax.y - (boiteTextUpper.Y() - boiteTextLower.Y()) - decalage);
-		}
 		else if (posY == 1)		// C
-		{
 			std::get<4>(texts_[textIndex].second) = Position::C;
-			positionTexte = FTPoint(posMax.x - (boiteTextUpper.X() - boiteTextLower.X()),
-									posMax.y - (boiteTextUpper.Y() - boiteTextLower.Y()) - decalage);
-		}
 	}
+	else
+		std::get<4>(texts_[textIndex].second) = Position::E;
 	
+	FTPoint positionTexte;
+	float decalage = obtenirDecalageY(textIndex);
+	switch (std::get<4>(texts_[textIndex].second))
+	{
+		case Position::A:
+			positionTexte = FTPoint(0 + MARGE_X,
+									0 + decalage);
+			break;
+		case Position::B:
+			positionTexte = FTPoint(posMax_.x - abs(boiteTextUpper.X() - boiteTextLower.X()) - MARGE_X,
+									0 + decalage);
+			break;
+		case Position::C:
+			positionTexte = FTPoint(posMax_.x - abs(boiteTextUpper.X() - boiteTextLower.X()) - MARGE_X,
+									posMax_.y - abs(boiteTextUpper.Y() - boiteTextLower.Y()) - decalage);
+			break;
+		case Position::D:
+			positionTexte = FTPoint(0 + MARGE_X,
+									posMax_.y - abs(boiteTextUpper.Y() - boiteTextLower.Y()) - decalage);
+			break;
+		case Position::E:
+			positionTexte = FTPoint(posX, posY);
+			break;
+	}
 	std::get<0>(texts_[textIndex].second) = positionTexte;
 }
+
+void ControleurTexte::refresh(int x, int y)
+{
+	posMax_ = glm::ivec2(x, y);
+	for (unsigned int i = 0; i < texts_.size(); i++)
+	{
+		switch (std::get<4>(texts_[i].second))
+		{
+			case Position::A:
+				repositionner(texts_[i].first, 0, 0);
+				break;
+			case Position::B:
+				repositionner(texts_[i].first, 0, 1);
+				break;
+			case Position::C:
+				repositionner(texts_[i].first, 1, 1);
+				break;
+			case Position::D:
+				repositionner(texts_[i].first, 1, 0);
+				break;
+			default:
+				break;
+		}
+	}
+}
+
 float ControleurTexte::obtenirDecalageY(unsigned int objectIndex)
 {
 	// Foutre de quoi ici, je sais pas encore quoi	TODO
-	float decalage = 0;
+	float decalage = MARGE_Y;
+	Position p = std::get<4>(texts_[objectIndex].second);
+	if (p == Position::E)
+		return 0;
+
 	for (unsigned int i = 0; i < objectIndex; i++)
 	{
+		if (std::get<4>(texts_[i].second) != p)
+			continue;
 		unsigned int fontIndex = lookUpFont(std::get<3>(texts_[i].second));
-		FTBBox boiteText = fontTable_[fontIndex].second->BBox(texts_[i].first);
+		int textSize = std::get<2>(texts_[i].second);
+		fontTable_[fontIndex].second->FaceSize(textSize);
+		FTBBox boiteText = fontTable_[fontIndex].second->BBox((char*)texts_[i].first.c_str());
 		FTPoint boiteTextLower = boiteText.Lower();
 		FTPoint boiteTextUpper = boiteText.Upper();
-		if (std::get<0>(texts_[i].second).Yf() + boiteTextUpper.Yf() >= posMax.y - 2*posMax.y/100)
-			decalage += boiteTextUpper.Yf() - boiteTextLower.Yf();
-		else if (std::get<0>(texts_[i].second).Yf() + boiteTextUpper.Yf() <= posMax.y / 100)
-			decalage += boiteTextUpper.Yf() - boiteTextLower.Yf();
+		decalage += abs(boiteTextUpper.Yf() - boiteTextLower.Yf()) + MARGE_Y;
 	}
- 	return decalage;
+ 	return abs(decalage);
 }
 
-void ControleurTexte::resize(char* text, unsigned int size)
+void ControleurTexte::resize(std::string text, unsigned int size)
 {
 	unsigned int textIndex = lookUpText(text);
 	std::get<2>(texts_[textIndex].second) = size;
@@ -273,19 +311,11 @@ unsigned int ControleurTexte::lookUpFont(std::string fileName)
 	return 0;
 }
 
-unsigned int ControleurTexte::lookUpText(char* textString)
+unsigned int ControleurTexte::lookUpText(std::string textString)
 {
 	for (unsigned int i = 0; i < texts_.size(); i++)
-		if (texts_[i].first == textString)
+		if (std::string(texts_[i].first) == textString)
 			return i;
-	std::pair<char*, textContainer> newDefaultText;
-	newDefaultText.first = textString;
-	newDefaultText.second = defaultObject_;
-	texts_.push_back(newDefaultText);
+	texts_.push_back(std::make_pair(textString, defaultObject_));
 	return (int)texts_.size() - 1;
-}
-
-void ControleurTexte::mettreAjourBordures()
-{
-	posMax = FacadeModele::obtenirInstance()->obteniCoordonneeMax();
 }

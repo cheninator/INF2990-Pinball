@@ -5,8 +5,16 @@
 ///
 /// @ingroup Interface
 ////////////////////////////////////////////////
+
+// pour que ca arrete de chialer que gl.h est included avant glew.h
+// Ca leur tenter pas de faire include glew.h dans gl.h ???
+#include "GL/glew.h"
+#include <gl/GLU.h>
+#include <gl/GL.h>
+
 #include "FacadeInterfaceNative.h"
 #include "FacadeModele.h"
+#include "../Text/ControleurTexte.h"
 
 #include "glm\glm.hpp"
 #include "FacadeModele.h"
@@ -2015,7 +2023,6 @@ extern "C"
 		SingletonGlobal::obtenirInstance()->activerSon();
 	}
 
-
 	///////////////////////////////////////////////////////////////////////////////
 	///
 	/// @fn void obtenirCout()
@@ -2027,6 +2034,151 @@ extern "C"
 		return stringToBSTR(FacadeModele::obtenirInstance()->obtenirCout());
 	}
 
+	///////////////////////////////////////////////////////////////////////////////
+	///
+	/// @fn void refreshText(int x, int y)
+	/// @brief Rafraichit la position du texte
+	/// @param[in] x : Taille max de la fenetre en x
+	/// @param[in] y : Taille max de la fenetre en y
+	/// @return Aucune.
+	///
+	///////////////////////////////////////////////////////////////////////////////
+	__declspec(dllexport) void __cdecl refreshText(int x, int y)
+	{
+		FacadeModele::obtenirInstance()->obtenircontroleurTexte()->refresh(x, y);
+	}
+
+	///////////////////////////////////////////////////////////////////////////////
+	///
+	/// @fn void creeTexte(char* text, char* font)
+	/// @brief Cree le texte
+	/// @param[in] text : Le texte a modifier
+	/// @param[in] font : La font a utiliser
+	/// @return Aucune.
+	///
+	///////////////////////////////////////////////////////////////////////////////
+	__declspec(dllexport) void __cdecl creeTexte(char* text, int lengthT, char* font, int lengthF)
+	{
+		std::string myText = std::string(text);
+		FacadeModele::obtenirInstance()->obtenircontroleurTexte()->creeTexte(myText, font);
+	}
+
+	///////////////////////////////////////////////////////////////////////////////
+	///
+	/// @fn void creeTexte(char* text, char* font)
+	/// @brief Modifie un texte existant
+	/// @param[in] oldText : Le texte a modifier
+	/// @param[in] newText : La texte apres modification
+	/// @return Aucune.
+	///
+	///////////////////////////////////////////////////////////////////////////////
+	__declspec(dllexport) void __cdecl updateText(char* oldText, int lengthO, char* newText, int lengthN)
+	{
+		std::string myOldText = std::string(oldText);
+		std::string myNewText = std::string(newText);
+		FacadeModele::obtenirInstance()->obtenircontroleurTexte()->updateText(myOldText, myNewText);
+	}
+	
+	///////////////////////////////////////////////////////////////////////////////
+	///
+	/// @fn void resize(char* text, unsigned int size)
+	/// @brief Modifie la taille du texte
+	/// @param[in] text : Le texte a modifier
+	/// @param[in] size : La taille a appliquer au text
+	/// @return Aucune.
+	///
+	///////////////////////////////////////////////////////////////////////////////
+	__declspec(dllexport) void __cdecl resize(char* text, int length, int size)
+	{
+			std::string myText = std::string(text);
+		FacadeModele::obtenirInstance()->obtenircontroleurTexte()->resize(myText, (unsigned int)size);
+	}
+
+	///////////////////////////////////////////////////////////////////////////////
+	///
+	/// @fn void changerCouleur(char* text, int length, float rouge, float vert, float bleu)
+	/// @brief Change la couleur du texte
+	/// @param[in] text : Le texte a modifier
+	/// @param[in] rouge : La couleur rouge a appliquer (en RGB)
+	/// @param[in] vert : La couleur vert a appliquer (en RGB)
+	/// @param[in] bleu : La couleur bleu a appliquer (en RGB)
+	/// @return Aucune.
+	///
+	///////////////////////////////////////////////////////////////////////////////
+	__declspec(dllexport) void __cdecl changerCouleur(char* text, int length, float rouge, float vert, float bleu)
+	{
+		std::string myText = std::string(text);
+		FacadeModele::obtenirInstance()->obtenircontroleurTexte()->changerCouleur(myText, rouge, vert, bleu);
+	}
+
+	///////////////////////////////////////////////////////////////////////////////
+	///
+	/// @fn void changerCouleur(char* text, float couleur[3])
+	/// @brief Change la couleur du texte
+	/// @param[in] text : Le texte a modifier
+	/// @param[in] couleur : La couleur a appliquer (en RGB)
+	/// @return Aucune.
+	///
+	///////////////////////////////////////////////////////////////////////////////
+	__declspec(dllexport) void __cdecl changerCouleurV(char* text, int length, float couleur[3])
+	{
+		std::string myText = std::string(text);
+		glm::fvec3 couleurV(couleur[0], couleur[1], couleur[2]);
+		FacadeModele::obtenirInstance()->obtenircontroleurTexte()->changerCouleurV(myText, couleurV);
+	}
+
+	///////////////////////////////////////////////////////////////////////////////
+	///
+	/// @fn void repositionner(char* text, int x, int y)
+	/// @brief Modifie la position du texte
+	/// @param[in] text : Le texte a modifier
+	/// @param[in] x : La position du texte en x
+	/// @param[in] y : La position du texte en y
+	/// @return Aucune.
+	///
+	///////////////////////////////////////////////////////////////////////////////
+	__declspec(dllexport) void __cdecl repositionner(char* text, int length, float x, float y)
+	{
+		std::string myText = std::string(text);
+		FacadeModele::obtenirInstance()->obtenircontroleurTexte()->repositionner(myText, x, y);
+	}
+
+
+	///////////////////////////////////////////////////////////////////////////////
+	///
+	/// @fn void suprimerText(char* text)
+	/// @brief Efface un texte du rendu
+	/// @param[in] text : Le texte a effacer
+	/// @return Aucune.
+	///
+	///////////////////////////////////////////////////////////////////////////////
+	__declspec(dllexport) void __cdecl suprimerText(char* text, int length)
+	{
+		std::string myText = std::string(text);
+		FacadeModele::obtenirInstance()->obtenircontroleurTexte()->suprimerText(myText);
+	}
+
+	///////////////////////////////////////////////////////////////////////////////
+	///
+	/// @fn void afficherTextes(bool afficher)
+	/// @brief Affiche ou non tout les textes
+	/// @param[in] afficher : L'etat d'affichage
+	/// @return Aucune.
+	///
+	///////////////////////////////////////////////////////////////////////////////
+	__declspec(dllexport) void __cdecl afficherTextes(bool afficher)
+	{
+		FacadeModele::obtenirInstance()->obtenircontroleurTexte()->afficherTextes(afficher);
+	}
+
+	///////////////////////////////////////////////////////////////////////////////
+	///
+	/// @fn void utiliserCameraOrbite(bool utiliseOrbite)
+	/// @brief Change l'etat de la camera
+	/// @param[in] utiliseOrbite : La valeur de l'etat a utiliser
+	/// @return Aucune.
+	///
+	///////////////////////////////////////////////////////////////////////////////
 	__declspec(dllexport) void utiliserCameraOrbite(bool utiliseOrbite)
 	{
 		FacadeModele::obtenirInstance()->utiliserCameraOrbite(utiliseOrbite);

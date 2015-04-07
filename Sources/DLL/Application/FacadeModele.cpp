@@ -29,7 +29,6 @@ Yonni Chen <BR>
 #include <cassert>
 #include <iostream>
 
-#include "GL/glew.h"
 #include "FreeImage.h"
 #include "FacadeModele.h"
 #include "../Text/ControleurTexte.h"
@@ -336,18 +335,24 @@ void FacadeModele::afficherBase() const
 	arbre_->afficher();
 
 	// On affiche le texte ici
+	controleurTexte_->refreshAffichage();
 
 	// fuck that shit... si je met cette ligne la dans le .h ca compile plus...
 	// TODO bouger shit dans l'API et le C#, pis juste appeler afficherTexte();
-	{
-		// le Texte a Ecrire
-		char* myText = "Hello World";
+	/* //Exemple d'affichage
+	static bool oneTime = true;
+	if(oneTime){
+		char* myText;
+		char* myFont;
 
+		// le Texte a Ecrire
+		myText = "Hello World";
+		myFont = "arial.ttf"; // Ou encore Bloodthirsty.ttf
 		// On spécifie la font
-		controleurTexte_->creeTexte(myText, "Bloodthirsty.ttf");
+		controleurTexte_->creeTexte(myText, myFont);
 
 		// On specifie la taille (en 1/72 de pouce)
-		controleurTexte_->resize(myText, 72);
+		controleurTexte_->resize(myText, 35);
 
 		// On specifie une couleur RGB
 		controleurTexte_->changerCouleur(myText, 0.5, 1, 1);
@@ -357,39 +362,87 @@ void FacadeModele::afficherBase() const
 		// On specifie la position
 		controleurTexte_->repositionner(myText, 1, 1);
 
-
 		// Voici un autre exemple
 		myText = "Well This is easy";
-		controleurTexte_->creeTexte(myText, "Bloodthirsty.ttf");
-		controleurTexte_->resize(myText, 72);
+		controleurTexte_->creeTexte(myText, myFont);
+		controleurTexte_->resize(myText, 24);
 		controleurTexte_->changerCouleur(myText, COLOR_red);
 		controleurTexte_->repositionner(myText, 1, 1);
 
 		// Voici un autre exemple
+		myText = "Petite ligne 1 1";
+		controleurTexte_->creeTexte(myText, myFont);
+		controleurTexte_->resize(myText, 24);
+		controleurTexte_->changerCouleur(myText, COLOR_blue);
+		controleurTexte_->repositionner(myText, 1, 1);
+
+		// Voici un autre exemple
 		myText = "Random 0 1";
-		controleurTexte_->creeTexte(myText, "Bloodthirsty.ttf");
-		controleurTexte_->resize(myText, 72);
+		controleurTexte_->creeTexte(myText, myFont);
+		controleurTexte_->resize(myText, 24);
 		controleurTexte_->changerCouleur(myText, COLOR_blue);
 		controleurTexte_->repositionner(myText, 0, 1);
 
 		// Voici un autre exemple
+		myText = "2e Random 0 1";
+		controleurTexte_->creeTexte(myText, myFont);
+		controleurTexte_->resize(myText, 24);
+		controleurTexte_->changerCouleur(myText, COLOR_black);
+		controleurTexte_->repositionner(myText, 0, 1);
+
+		// Voici un autre exemple
+		myText = "3e shit weird ici en  0 1";
+		controleurTexte_->creeTexte(myText, myFont);
+		controleurTexte_->resize(myText, 24);
+		controleurTexte_->changerCouleur(myText, COLOR_alice_blue);
+		controleurTexte_->repositionner(myText, 0, 1);
+
+		// Voici un autre exemple
 		myText = "Test 1 0";
-		controleurTexte_->creeTexte(myText, "Bloodthirsty.ttf");
-		controleurTexte_->resize(myText, 72);
+		controleurTexte_->creeTexte(myText, myFont);
+		controleurTexte_->resize(myText, 42);
 		controleurTexte_->changerCouleur(myText, COLOR_cadet_blue);
 		controleurTexte_->repositionner(myText, 1, 0);
 
 		// Voici un autre exemple
-		myText = "Je sais pas pk je fais ca";
-		controleurTexte_->creeTexte(myText, "Bloodthirsty.ttf");
-		controleurTexte_->resize(myText, 72);
-		controleurTexte_->changerCouleur(myText, COLOR_khaki);
-		controleurTexte_->repositionner(myText, 1, 1);
-	}
-	controleurTexte_->afficherTexte();
-	
-}
+		myText = "Test --2-- 1 0";
+		controleurTexte_->creeTexte(myText, myFont);
+		controleurTexte_->resize(myText, 24);
+		controleurTexte_->changerCouleur(myText, COLOR_magenta_fuchsia);
+		controleurTexte_->repositionner(myText, 1, 0);
 
+		// Voici un autre exemple
+		myText = "Test --3-- 1 0";
+		controleurTexte_->creeTexte(myText, myFont);
+		controleurTexte_->resize(myText, 24);
+		controleurTexte_->changerCouleur(myText, COLOR_Magenta_Fuchsia);
+		controleurTexte_->repositionner(myText, 1, 0);
+
+		// Voici un autre exemple
+		myText = "Je sais pas pk je fais ca";
+		controleurTexte_->creeTexte(myText, myFont);
+		controleurTexte_->resize(myText, 24);
+		controleurTexte_->changerCouleur(myText, COLOR_khaki);
+		controleurTexte_->repositionner(myText, 0, 0);
+
+		// Voici un autre exemple
+		myText = "C'est genre meme pas beau";
+		controleurTexte_->creeTexte(myText, myFont);
+		controleurTexte_->resize(myText, 21);
+		controleurTexte_->changerCouleur(myText, COLOR_azure);
+		controleurTexte_->repositionner(myText, 0, 0);
+
+		// Voici un autre exemple
+		myText = "C'est probablement useless en plus";
+		controleurTexte_->creeTexte(myText, myFont);
+		controleurTexte_->resize(myText, 24);
+		controleurTexte_->changerCouleur(myText, COLOR_beige);
+		controleurTexte_->repositionner(myText, 0, 0);
+
+		//oneTime = false;
+	}
+	*/
+}
 
 ////////////////////////////////////////////////////////////////////////
 ///
@@ -2117,6 +2170,19 @@ double FacadeModele::obtenirScaleMinMax()
 	return glm::length(scaleMax) - glm::length(scaleMin);
 }
 
+////////////////////////////////////////////////////////////////////////
+///
+/// @fn void FacadeModele::obtenircontroleurTexte()
+///
+/// @remark Cette fonction retourne la classe de controle du texte.
+///
+/// @return Le controleur de texte.
+///
+////////////////////////////////////////////////////////////////////////
+ControleurTexte* FacadeModele::obtenircontroleurTexte()
+{
+	return controleurTexte_;
+}
 
 std::string FacadeModele::obtenirCout()
 {
