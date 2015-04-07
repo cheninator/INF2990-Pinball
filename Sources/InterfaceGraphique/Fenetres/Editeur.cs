@@ -2990,7 +2990,7 @@ namespace InterfaceGraphique
         //////////////////////////////////////////////////////////////////////////////////////////
         public void annulerModif()
         {
-            if (etat is EtatEditeurPortail || etat is EtatEditeurMur || etat is EtatEditeurDuplication)
+            if (etat is EtatEditeurPortail /*|| etat is EtatEditeurMur*/ || etat is EtatEditeurDuplication)
             {
                 FonctionsNatives.removeObject();
                 deselection();
