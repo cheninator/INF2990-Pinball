@@ -108,6 +108,10 @@ namespace InterfaceGraphique
             this.Proprietes_MenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.ModeTest_MenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.MenuP_MenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.Edition_MenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.Supprimer_MenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.Annuler_MenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.Retablir_MenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.Outils_MenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.Selection_MenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.Deplacement_MenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -995,6 +999,7 @@ namespace InterfaceGraphique
             this.menuStrip1.AutoSize = false;
             this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.fichierToolStripMenuItem,
+            this.Edition_MenuItem,
             this.Outils_MenuItem,
             this.Vues_MenuItem,
             this.Information_MenuItem});
@@ -1081,6 +1086,43 @@ namespace InterfaceGraphique
             this.MenuP_MenuItem.Size = new System.Drawing.Size(230, 22);
             this.MenuP_MenuItem.Text = "Menu Principal";
             this.MenuP_MenuItem.Click += new System.EventHandler(this.MenuP_MenuItem_Click);
+            // 
+            // Edition_MenuItem
+            // 
+            this.Edition_MenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.Supprimer_MenuItem,
+            this.Annuler_MenuItem,
+            this.Retablir_MenuItem});
+            this.Edition_MenuItem.Name = "Edition_MenuItem";
+            this.Edition_MenuItem.Size = new System.Drawing.Size(56, 20);
+            this.Edition_MenuItem.Text = "Édition";
+            // 
+            // Supprimer_MenuItem
+            // 
+            this.Supprimer_MenuItem.Image = global::InterfaceGraphique.Properties.Resources.delete;
+            this.Supprimer_MenuItem.Name = "Supprimer_MenuItem";
+            this.Supprimer_MenuItem.ShortcutKeys = System.Windows.Forms.Keys.Delete;
+            this.Supprimer_MenuItem.Size = new System.Drawing.Size(157, 22);
+            this.Supprimer_MenuItem.Text = "Supprimer";
+            this.Supprimer_MenuItem.Click += new System.EventHandler(this.Supprimer_MenuItem_Click_1);
+            // 
+            // Annuler_MenuItem
+            // 
+            this.Annuler_MenuItem.Image = global::InterfaceGraphique.Properties.Resources.undo;
+            this.Annuler_MenuItem.Name = "Annuler_MenuItem";
+            this.Annuler_MenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.Z)));
+            this.Annuler_MenuItem.Size = new System.Drawing.Size(157, 22);
+            this.Annuler_MenuItem.Text = "Annuler";
+            this.Annuler_MenuItem.Click += new System.EventHandler(this.Annuler_MenuItem_Click);
+            // 
+            // Retablir_MenuItem
+            // 
+            this.Retablir_MenuItem.Image = global::InterfaceGraphique.Properties.Resources.redo;
+            this.Retablir_MenuItem.Name = "Retablir_MenuItem";
+            this.Retablir_MenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.Y)));
+            this.Retablir_MenuItem.Size = new System.Drawing.Size(157, 22);
+            this.Retablir_MenuItem.Text = "Rétablir";
+            this.Retablir_MenuItem.Click += new System.EventHandler(this.Retablir_MenuItem_Click);
             // 
             // Outils_MenuItem
             // 
@@ -1538,6 +1580,10 @@ namespace InterfaceGraphique
         private System.Windows.Forms.ToolStripButton toolStripButton7;
         private System.Windows.Forms.ToolStripButton toolStripButton8;
         private System.Windows.Forms.ToolStripButton toolStripButton9;
+        private System.Windows.Forms.ToolStripMenuItem Edition_MenuItem;
+        private System.Windows.Forms.ToolStripMenuItem Supprimer_MenuItem;
+        private System.Windows.Forms.ToolStripMenuItem Annuler_MenuItem;
+        private System.Windows.Forms.ToolStripMenuItem Retablir_MenuItem;
     }
 }
 

@@ -92,7 +92,6 @@ namespace InterfaceGraphique
 
             panelHeight = panel_GL.Size.Height;
             panelWidth = panel_GL.Size.Width;
-
             ReinitialiserTout();
             fs.EnterFullScreenMode(this);
             FonctionsNatives.animerJeu(false);
@@ -3210,6 +3209,21 @@ namespace InterfaceGraphique
         private void toolStripButton7_Click(object sender, EventArgs e)
         {
             Zoom_MenuItem.PerformClick();
+        }
+
+        private void Supprimer_MenuItem_Click_1(object sender, EventArgs e)
+        {
+            bouton_Suppression.PerformClick();
+        }
+
+        private void Annuler_MenuItem_Click(object sender, EventArgs e)
+        {
+            toolStripButton8.PerformClick();
+        }
+
+        private void Retablir_MenuItem_Click(object sender, EventArgs e)
+        {
+            toolStripButton9.PerformClick();
         }
     }
 }
