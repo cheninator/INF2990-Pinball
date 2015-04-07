@@ -100,7 +100,7 @@ void ControleurTexte::creeTexte(char* texte, char* font)
 	std::get<3>(texts_[textIndex].second) = font;
 }
 
-void ControleurTexte::afficherTexte(bool pause)
+void ControleurTexte::afficherTextes(bool pause)
 {	
 	if (fontTable_.size() <= 0 || pause)
 		return;
