@@ -234,7 +234,8 @@ void FacadeModele::initialiserOpenGL(HWND hWnd)
 	vue_ = new vue::VueOrtho{
 		vue::Camera{ 
 			glm::dvec3(0, 0, 200), glm::dvec3(0, 0, 0),
-			glm::dvec3(0, 1, 0),   glm::dvec3(0, 1, 0)},
+			glm::dvec3(0, 1, 0),   glm::dvec3(0, 1, 0),
+			0.0 , 0.0 },
 		vue::ProjectionOrtho{ 
 				0, 500, 0, 500,
 				1, 1000, 50, 5000, 1.25,
@@ -2219,7 +2220,8 @@ void FacadeModele::utiliserCameraOrbite(bool utiliseOrbite)
 			 vue_ = new vue::VuePerspective{
 				vue::Camera{
 					glm::dvec3(0, 0, 200), glm::dvec3(0, 0, 0),
-					glm::dvec3(0, 1, 0), glm::dvec3(0, 1, 0) },
+					glm::dvec3(0, 1, 0), glm::dvec3(0, 1, 0),
+				    0.0 , 0.0},
 					vue::ProjectionPerspective{
 						clotMinX, clotMaxX, clotMinY, clotMaxY,
 						1, 1000, 50, 5000, 1.25,
@@ -2233,7 +2235,8 @@ void FacadeModele::utiliserCameraOrbite(bool utiliseOrbite)
 			vue_ = new vue::VueOrtho{
 				vue::Camera{
 					glm::dvec3(0, 0, 200), glm::dvec3(0, 0, 0),
-					glm::dvec3(0, 1, 0), glm::dvec3(0, 1, 0) },
+					glm::dvec3(0, 1, 0), glm::dvec3(0, 1, 0),
+					0.0 , 0.0 },
 					vue::ProjectionOrtho{
 						clotMinX, clotMaxX, clotMinY, clotMaxY,
 						1, 1000, 50, 5000, 1.25,

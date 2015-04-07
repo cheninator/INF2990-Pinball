@@ -36,12 +36,16 @@ namespace vue {
 	Camera::Camera(const glm::dvec3& position,
 		const glm::dvec3& pointVise,
 		const glm::dvec3& directionHautCamera,
-		const glm::dvec3& directionHautMonde
+		const glm::dvec3& directionHautMonde,
+		float angleTheta,
+		float anglePhi
 		)
 		: position_{ position },
 		pointVise_{ pointVise },
 		directionHaut_{ directionHautCamera },
-		directionHautMonde_{ directionHautMonde }
+		directionHautMonde_{ directionHautMonde },
+		theta_{angleTheta},
+		phi_{anglePhi}
 	{
 	}
 
@@ -134,6 +138,10 @@ namespace vue {
 		bool   empecheInversion //=true
 		)
 	{
+		// gluLookAt( dist*sin(phi)*sin(theta), dist*cos(phi), dist*sin(phi)*cos(theta), 0, 1, 0, 0, 2, 0 );
+		if (empecheInversion)
+			return;
+		//position_.x = position_.z*sin(phi_)*sin(theta_)
 	}
 
 

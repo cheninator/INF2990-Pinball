@@ -33,7 +33,10 @@ namespace vue {
 		Camera(const glm::dvec3& position,
 			const glm::dvec3& pointVise,
 			const glm::dvec3& directionHautCamera,
-			const glm::dvec3& directionHautMonde);
+			const glm::dvec3& directionHautMonde,
+			float angleTheta,
+			float anglePhi
+			);
 
 		/// Destructeur virtuel vide.
 		virtual ~Camera() {}
@@ -78,6 +81,8 @@ namespace vue {
 		/// La direction du haut du monde de la caméra.
 		const glm::dvec3 directionHautMonde_;
 
+		float phi_;
+		float theta_;
 	};
 
 
