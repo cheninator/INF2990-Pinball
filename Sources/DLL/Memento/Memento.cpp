@@ -23,6 +23,7 @@ void Memento::sauvegarder(ArbreRenduINF2990* arbre)
 		noeud->assignerPositionRelative(temp[i]->obtenirPositionRelative());
 		noeud->assignerEchelle(temp[i]->obtenirAgrandissement());
 		noeud->assignerRotation(temp[i]->obtenirRotation());
+		noeud->setColorShift(temp[i]->getColorShift());
 
 		sauvegarde.push_back(noeud);
 	}

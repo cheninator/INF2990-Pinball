@@ -30,13 +30,12 @@ void CareTaker::ecraser(int index)
 {
 	if (index < 0 && index > historique_.size())
 		return;
+	
+	int diff = historique_.size() - index - 1;
 
-	std::list<Memento*>::iterator iter = historique_.begin();
+	for (diff; diff != 0; diff--)
+		historique_.pop_back();
 
-	for (unsigned int i = 0; i < index; i++)
-		iter++;
-
-	historique_.erase(iter, historique_.end());
 }
 
 void CareTaker::vider()
@@ -49,10 +48,5 @@ Memento* CareTaker::obtenirMemento(int index)
 	if (index < 0 && index > historique_.size())
 		return nullptr;
 
-	std::list<Memento*>::iterator iter = historique_.begin();
-
-	for (unsigned int i = 0; i < index; i++)
-		iter++;
-
-	return *iter;
+	return historique_[index];
 }

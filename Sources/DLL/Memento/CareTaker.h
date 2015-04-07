@@ -10,7 +10,7 @@
 #define __CARETAKER_H__
 
 #include "Memento.h"
-#include <list>
+#include <deque>
 
 ///////////////////////////////////////////////////////////////////////////
 /// @class CareTaker
@@ -48,7 +48,7 @@ public:
 private:
 
 	/// Liste de tous les etats passes
-	std::list<Memento*> historique_;
+	std::deque<Memento*> historique_;
 
 	/// Combien d'etat on veut enregistrer
 	const int tailleMax = 10;

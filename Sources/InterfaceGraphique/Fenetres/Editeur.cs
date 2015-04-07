@@ -1373,6 +1373,7 @@ namespace InterfaceGraphique
             //Console.WriteLine("Outil Deplacement.");
             // TO DO
             annulerModif();
+            FonctionsNatives.sauvegarderHistorique();
             etat = null;
             etat = new EtatEditeurDeplacement(this);
         }
@@ -2239,6 +2240,9 @@ namespace InterfaceGraphique
             {
                 panel_GL.MouseMove -= panel_MouseMove;
             }
+
+            if (etat is EtatEditeurDeplacement)
+                FonctionsNatives.sauvegarderHistorique();
 
             if (etat is EtatEditeurDuplication && e.Button == MouseButtons.Left)
             {
@@ -3210,6 +3214,16 @@ namespace InterfaceGraphique
         private void toolStripButton7_Click(object sender, EventArgs e)
         {
             Zoom_MenuItem.PerformClick();
+        }
+
+        private void toolStripButton8_Click(object sender, EventArgs e)
+        {
+            FonctionsNatives.annulerModifications();
+        }
+
+        private void toolStripButton9_Click(object sender, EventArgs e)
+        {
+            FonctionsNatives.retablirModifications();
         }
     }
 }
