@@ -129,12 +129,13 @@ extern "C" {
 
 	__declspec(dllexport) void utiliserCameraOrbite(bool utiliseOrbite);
 
-	__declspec(dllexport) void creeTexte(char* text, char* font);
-	__declspec(dllexport) void updateText(char* oldText, char* newText);
-	__declspec(dllexport) void resize(char* text, unsigned int size);
-	__declspec(dllexport) void changerCouleur(char* text, float couleur[3]);
-	__declspec(dllexport) void repositionner(char* text, int x, int y);
-	__declspec(dllexport) void suprimerText(char* text);
+	__declspec(dllexport) void refresh(int x, int y);
+	__declspec(dllexport) void creeTexte(char* text, int lengthT, char* font, int lengthF);
+	__declspec(dllexport) void updateText(char* oldText, int lengthO, char* newText, int lengthN);
+	__declspec(dllexport) void resize(char* text, int length, int size);
+	__declspec(dllexport) void changerCouleur(char* text, int length, float couleur[3]);
+	__declspec(dllexport) void repositionner(char* text, int length, int x, int y);
+	__declspec(dllexport) void suprimerText(char* text, int length);
 	__declspec(dllexport) void afficherTextes(bool afficher = true);
 }
 

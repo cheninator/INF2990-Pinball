@@ -332,9 +332,9 @@ void FacadeModele::afficherBase() const
 	arbre_->afficher();
 
 	// On affiche le texte ici
+	controleurTexte_->refreshAffichage();
 
-	// fuck that shit... si je met cette ligne la dans le .h ca compile plus...
-	// TODO bouger shit dans l'API et le C#, pis juste appeler afficherTexte();
+	/* //Exemple d'affichage
 	static bool oneTime = true;
 	if(oneTime){
 		char* myText;
@@ -436,7 +436,7 @@ void FacadeModele::afficherBase() const
 
 		//oneTime = false;
 	}
-	controleurTexte_->refreshAffichage();
+	*/
 }
 
 ////////////////////////////////////////////////////////////////////////

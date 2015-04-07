@@ -2057,7 +2057,7 @@ extern "C"
 	/// @return Aucune.
 	///
 	///////////////////////////////////////////////////////////////////////////////
-	__declspec(dllexport) void __cdecl creeTexte(char* text, char* font)
+	__declspec(dllexport) void __cdecl creeTexte(char* text, int lengthT, char* font, int lengthF)
 	{
 		FacadeModele::obtenirInstance()->obtenircontroleurTexte()->creeTexte(text, font);
 	}
@@ -2071,7 +2071,7 @@ extern "C"
 	/// @return Aucune.
 	///
 	///////////////////////////////////////////////////////////////////////////////
-	__declspec(dllexport) void __cdecl updateText(char* oldText, char* newText)
+	__declspec(dllexport) void __cdecl updateText(char* oldText, int lengthO, char* newText, int lengthN)
 	{
 		FacadeModele::obtenirInstance()->obtenircontroleurTexte()->updateText(oldText, newText);
 	}
@@ -2085,9 +2085,9 @@ extern "C"
 	/// @return Aucune.
 	///
 	///////////////////////////////////////////////////////////////////////////////
-	__declspec(dllexport) void __cdecl resize(char* text, unsigned int size)
+	__declspec(dllexport) void __cdecl resize(char* text, int length, int size)
 	{
-		FacadeModele::obtenirInstance()->obtenircontroleurTexte()->resize(text, size);
+		FacadeModele::obtenirInstance()->obtenircontroleurTexte()->resize(text, (unsigned int)size);
 	}
 
 	///////////////////////////////////////////////////////////////////////////////
@@ -2099,7 +2099,7 @@ extern "C"
 	/// @return Aucune.
 	///
 	///////////////////////////////////////////////////////////////////////////////
-	__declspec(dllexport) void __cdecl changerCouleur(char* text, float couleur[3])
+	__declspec(dllexport) void __cdecl changerCouleur(char* text, int length, float couleur[3])
 	{
 		glm::fvec3 couleurV(couleur[0], couleur[1], couleur[2]);
 		FacadeModele::obtenirInstance()->obtenircontroleurTexte()->changerCouleur(text, couleurV);
@@ -2115,7 +2115,7 @@ extern "C"
 	/// @return Aucune.
 	///
 	///////////////////////////////////////////////////////////////////////////////
-	__declspec(dllexport) void __cdecl repositionner(char* text, int x, int y)
+	__declspec(dllexport) void __cdecl repositionner(char* text, int length, int x, int y)
 	{
 		FacadeModele::obtenirInstance()->obtenircontroleurTexte()->repositionner(text, x, y);
 	}
@@ -2129,7 +2129,7 @@ extern "C"
 	/// @return Aucune.
 	///
 	///////////////////////////////////////////////////////////////////////////////
-	__declspec(dllexport) void __cdecl suprimerText(char* text)
+	__declspec(dllexport) void __cdecl suprimerText(char* text, int length)
 	{
 		FacadeModele::obtenirInstance()->obtenircontroleurTexte()->suprimerText(text);
 	}
