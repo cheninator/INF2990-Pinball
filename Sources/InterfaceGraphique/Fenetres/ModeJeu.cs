@@ -40,6 +40,8 @@ namespace InterfaceGraphique
         StringBuilder map;      ///< la zone en jeu
         StringBuilder nextMap;  ///< prochaine zone
         StringBuilder bgm;
+        static StringBuilder Points = new StringBuilder("Points : ");
+        static StringBuilder Billes = new StringBuilder("Billes : ");
         bool peutAnimer;
         bool boolTemp = true;   ///< bool pour ne pas spam FinDePartie
         private bool activateAmbiantLight = false; ///< Etat de la lumiere ambiante
@@ -96,7 +98,6 @@ namespace InterfaceGraphique
             public EtatJeuAbstrait() { }
             public EtatJeuAbstrait(ModeJeu parent)
             {
-                //Console.WriteLine("Etat :" + '\t' + "Abstrait");
                 this.parent_ = parent;
             }
         };
@@ -138,7 +139,6 @@ namespace InterfaceGraphique
             currentZoom = -1;
             myMaps = new List<string>(maps);
             nbZones = maps.Count;
-            Console.WriteLine(nbZones);
             map = new StringBuilder(myMaps[0]);
             FonctionsNatives.ouvrirXML(map, map.Capacity);
             resetConfig();
@@ -160,10 +160,36 @@ namespace InterfaceGraphique
             etat = new EtatJeuJouer(this);
             FonctionsNatives.animerJeu(true);
 
-            bgm = new StringBuilder("baccano.mp3");
-            FonctionsNatives.bouclerSon(bgm, bgm.Length);
-            FonctionsNatives.ajusterBGM(50);
+            //bgm = new StringBuilder("baccano.mp3");
+            //FonctionsNatives.bouclerSon(bgm, bgm.Length);
+            //FonctionsNatives.ajusterBGM(50);
             //FonctionsNatives.jouerSon(bgm, bgm.Length);
+
+            if (true)
+            {
+                // TODO Exemple a delete
+                // Exemple de texte
+                // le Texte a Ecrire
+                StringBuilder myFont = new StringBuilder("Bloodthirsty.ttf");
+                // On spécifie la font
+                FonctionsNatives.creeTexte(Points, Points.Capacity, myFont, myFont.Capacity);
+                FonctionsNatives.creeTexte(Billes, Billes.Capacity, myFont, myFont.Capacity);
+                
+                // On specifie la taille (en 1/72 de pouce)
+                FonctionsNatives.resize(Points, Points.Capacity, 35);
+                FonctionsNatives.resize(Billes, Billes.Capacity, 35);
+
+                // On specifie une couleur RGB
+                FonctionsNatives.changerCouleurV(Points, Points.Capacity, ColorList.COLOR_Black);
+                FonctionsNatives.changerCouleurV(Billes, Billes.Capacity, ColorList.COLOR_black);
+
+                // On specifie la position
+                FonctionsNatives.repositionner(Points, Points.Capacity, 1, 1);
+                FonctionsNatives.repositionner(Billes, Billes.Capacity, 1, 1);
+
+                // On demande d'afficher !
+                FonctionsNatives.afficherTextes();
+            }
 
             panelHeight = panel_GL.Size.Height;
             panelWidth = panel_GL.Size.Width;
@@ -246,7 +272,7 @@ namespace InterfaceGraphique
                     {
                         panelHeight = panel_GL.Size.Height;
                         panelWidth = panel_GL.Size.Width;
-                        FonctionsNatives.refreshText(panelWidth - InfoPanel.Width, panelHeight);
+                        FonctionsNatives.refreshText(panelWidth - 40, panelHeight);
                     }
                     if (peutAnimer)
                     {
@@ -254,6 +280,11 @@ namespace InterfaceGraphique
                         if (Program.compteurFrames == 0)
                         {
                             pointsPartie = FonctionsNatives.obtenirNombreDePointsDePartie();
+                            // TODO Exemple a delete
+                            StringBuilder precedentText = Points;
+                            Points = new StringBuilder("Points : " + pointsPartie.ToString());
+                            FonctionsNatives.updateText(precedentText, precedentText.Capacity, Points, Points.Capacity);
+                            // FIN DE L'EXEMPLE
                         }
                     }
                     if (Program.compteurFrames == 0)
@@ -285,6 +316,9 @@ namespace InterfaceGraphique
                     if (billesDisponibles >= 0)
                     {
                         label_nbBilles.Text = billesDisponibles.ToString();
+                        StringBuilder precedentText = Billes;
+                        Billes = new StringBuilder("Billes : " + billesDisponibles.ToString());
+                        FonctionsNatives.updateText(precedentText, precedentText.Capacity, Billes, Billes.Capacity);
                     }
                     if (pointsPartie >= pointsGagnerPartie && boolTemp && (nbZones > 1))
                     {
@@ -326,9 +360,7 @@ namespace InterfaceGraphique
                 Program.peutAfficher = false;
                 Program.tempBool = false;
             }
-            //Console.WriteLine("closing");
             Program.myCustomConsole.Hide();
-            //  Console.WriteLine("closing");
         }
 
         ////////////////////////////////////////////////////////////////////////
@@ -583,7 +615,6 @@ namespace InterfaceGraphique
             map = new StringBuilder(myMaps[0]);
             nextMap = new StringBuilder(map.ToString());
             nextMap.Remove(nextMap.Length - 4, 4);
-            //Console.WriteLine(map);
             Program.myCustomConsole.Hide();
             this.Hide();
             zInfo = new ZoneInfo(Path.GetFileName(nextMap.ToString()), FonctionsNatives.obtenirDifficulte(map, map.Capacity).ToString(), false);
