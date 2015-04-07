@@ -44,6 +44,7 @@ namespace InterfaceGraphique
         private static TimeSpan tempsEcouleVoulu = TimeSpan.FromTicks(TimeSpan.TicksPerSecond / (NB_IMAGES_PAR_SECONDE * 10)); ///< Temps avant le rafraichissement
         public static int compteurFrames = 0;
         public static bool customConsoleActive = false;
+        public static bool helpMenu = true;
         private static bool noWarnings = false;
 
         static StringBuilder FPS = new StringBuilder("FPS : ");

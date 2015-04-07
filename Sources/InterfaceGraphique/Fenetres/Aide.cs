@@ -39,6 +39,14 @@ namespace InterfaceGraphique
         public Aide()
         {
             InitializeComponent();
+            if (!Program.helpMenu)
+            {
+                checkBoxHelp.Checked = true;
+            }
+            else
+            {
+                checkBoxHelp.Checked = false;
+            }
             InitializeShortcuts();
         }
 
@@ -468,6 +476,18 @@ namespace InterfaceGraphique
 
 
                 }
+            }
+        }
+
+        private void checkBoxHelp_CheckedChanged(object sender, EventArgs e)
+        {
+            if (checkBoxHelp.Checked)
+            {
+                Program.helpMenu = false;
+            }
+            else
+            {
+                Program.helpMenu = true;
             }
         }
     }

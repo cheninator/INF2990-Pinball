@@ -96,7 +96,7 @@ namespace InterfaceGraphique
             ReinitialiserTout();
             fs.EnterFullScreenMode(this);
             FonctionsNatives.animerJeu(false);
-            
+        
         }
 
 
@@ -592,10 +592,7 @@ namespace InterfaceGraphique
                         bouton_Duplication_Click(this, e);
                     }
                 }
-                else if (nbSelection == 0)
-                {
-                    outilCourant("Selectionnez au moins un objet.");
-                }
+             
             }
         }
 
@@ -612,7 +609,25 @@ namespace InterfaceGraphique
         ////////////////////////////////////////////////////////////////////////
         private void Editeur_FormClosing(object sender, FormClosingEventArgs e)
         {
-            if (MessageBox.Show("Voulez vous quitter? Tout changement non-sauvegardé sera oublié.", "Fermeture d'application", MessageBoxButtons.YesNo) == DialogResult.Yes)
+            if (!(etat is EtatEditeurTest))
+            {
+                if (MessageBox.Show("Voulez vous quitter? Tout changement non-sauvegardé sera oublié.", "Fermeture d'application", MessageBoxButtons.YesNo) == DialogResult.Yes)
+                {
+                    lock (Program.unLock)
+                    {
+                        Program.peutAfficher = false;
+                        FonctionsNatives.libererOpenGL();
+                    }
+                    playSound("", true);    // Stop le son
+                    Program.myCustomConsole.Hide();
+                }
+                else
+                {
+                    e.Cancel = true;
+                    this.Activate();
+                }
+            }
+            else
             {
                 lock (Program.unLock)
                 {
@@ -622,12 +637,6 @@ namespace InterfaceGraphique
                 playSound("", true);    // Stop le son
                 Program.myCustomConsole.Hide();
             }
-            else
-            {
-                e.Cancel = true;
-                this.Activate();
-            } 
-            
             
          
         }
@@ -3105,6 +3114,12 @@ namespace InterfaceGraphique
             Program.myCustomConsole.Update();
             if (Program.mMenu.modeEdit != null)
                 Program.mMenu.modeEdit.Focus();
+
+            if (Program.helpMenu)
+            {
+                Information_MenuItem.PerformClick();
+            }
+            
         }
 
         private void toolStripButton1_Click(object sender, EventArgs e)

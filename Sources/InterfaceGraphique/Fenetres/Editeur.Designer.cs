@@ -258,7 +258,7 @@ namespace InterfaceGraphique
             // PDJ2_bouton
             // 
             this.PDJ2_bouton.BackColor = System.Drawing.Color.White;
-            this.PDJ2_bouton.BackgroundImage = global::InterfaceGraphique.Properties.Resources.gauche2;
+            this.PDJ2_bouton.BackgroundImage = global::InterfaceGraphique.Properties.Resources.PDJ2;
             this.PDJ2_bouton.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.PDJ2_bouton.Location = new System.Drawing.Point(107, 79);
             this.PDJ2_bouton.Name = "PDJ2_bouton";
@@ -272,7 +272,7 @@ namespace InterfaceGraphique
             // PGJ2_bouton
             // 
             this.PGJ2_bouton.BackColor = System.Drawing.Color.White;
-            this.PGJ2_bouton.BackgroundImage = global::InterfaceGraphique.Properties.Resources.droite2;
+            this.PGJ2_bouton.BackgroundImage = global::InterfaceGraphique.Properties.Resources.PGJ2;
             this.PGJ2_bouton.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.PGJ2_bouton.Location = new System.Drawing.Point(16, 79);
             this.PGJ2_bouton.Name = "PGJ2_bouton";
@@ -286,7 +286,7 @@ namespace InterfaceGraphique
             // PDJ1_bouton
             // 
             this.PDJ1_bouton.BackColor = System.Drawing.Color.White;
-            this.PDJ1_bouton.BackgroundImage = global::InterfaceGraphique.Properties.Resources.gauche1;
+            this.PDJ1_bouton.BackgroundImage = global::InterfaceGraphique.Properties.Resources.PDJ1;
             this.PDJ1_bouton.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.PDJ1_bouton.Location = new System.Drawing.Point(106, 23);
             this.PDJ1_bouton.Name = "PDJ1_bouton";
@@ -300,7 +300,7 @@ namespace InterfaceGraphique
             // PGJ1_bouton
             // 
             this.PGJ1_bouton.BackColor = System.Drawing.Color.White;
-            this.PGJ1_bouton.BackgroundImage = global::InterfaceGraphique.Properties.Resources.droite1;
+            this.PGJ1_bouton.BackgroundImage = global::InterfaceGraphique.Properties.Resources.PGJ1;
             this.PGJ1_bouton.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.PGJ1_bouton.Location = new System.Drawing.Point(16, 23);
             this.PGJ1_bouton.Name = "PGJ1_bouton";
@@ -331,7 +331,7 @@ namespace InterfaceGraphique
             // 
             // butoirCirc_bouton
             // 
-            this.butoirCirc_bouton.BackgroundImage = global::InterfaceGraphique.Properties.Resources.circulaire;
+            this.butoirCirc_bouton.BackgroundImage = global::InterfaceGraphique.Properties.Resources.cible1;
             this.butoirCirc_bouton.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
             this.butoirCirc_bouton.Location = new System.Drawing.Point(16, 81);
             this.butoirCirc_bouton.Name = "butoirCirc_bouton";
@@ -344,7 +344,7 @@ namespace InterfaceGraphique
             // 
             // butoirD_bouton
             // 
-            this.butoirD_bouton.BackgroundImage = global::InterfaceGraphique.Properties.Resources.butoirDroit;
+            this.butoirD_bouton.BackgroundImage = global::InterfaceGraphique.Properties.Resources.ButoirTriangD;
             this.butoirD_bouton.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.butoirD_bouton.Cursor = System.Windows.Forms.Cursors.Arrow;
             this.butoirD_bouton.Location = new System.Drawing.Point(107, 25);
@@ -358,7 +358,7 @@ namespace InterfaceGraphique
             // 
             // butoirG_bouton
             // 
-            this.butoirG_bouton.BackgroundImage = global::InterfaceGraphique.Properties.Resources.butoirGauche;
+            this.butoirG_bouton.BackgroundImage = global::InterfaceGraphique.Properties.Resources.ButoirTriangG;
             this.butoirG_bouton.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.butoirG_bouton.Location = new System.Drawing.Point(16, 25);
             this.butoirG_bouton.Name = "butoirG_bouton";
@@ -492,7 +492,7 @@ namespace InterfaceGraphique
             // Ressort_bouton
             // 
             this.Ressort_bouton.BackColor = System.Drawing.Color.White;
-            this.Ressort_bouton.BackgroundImage = global::InterfaceGraphique.Properties.Resources.ressort2;
+            this.Ressort_bouton.BackgroundImage = global::InterfaceGraphique.Properties.Resources.ressort;
             this.Ressort_bouton.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
             this.Ressort_bouton.Location = new System.Drawing.Point(19, 25);
             this.Ressort_bouton.Name = "Ressort_bouton";
@@ -534,7 +534,7 @@ namespace InterfaceGraphique
             this.Groupe_Outils.Size = new System.Drawing.Size(169, 280);
             this.Groupe_Outils.TabIndex = 0;
             this.Groupe_Outils.TabStop = false;
-            this.Groupe_Outils.Text = "OUTILS";
+            this.Groupe_Outils.Text = "Outils";
             // 
             // bouton_Suppression
             // 
@@ -646,7 +646,7 @@ namespace InterfaceGraphique
             this.OutilGraphique.Size = new System.Drawing.Size(169, 60);
             this.OutilGraphique.TabIndex = 10;
             this.OutilGraphique.TabStop = false;
-            this.OutilGraphique.Text = "OUTIL COURANT";
+            this.OutilGraphique.Text = "Outil Courant";
             // 
             // labelOCourant
             // 
@@ -678,14 +678,14 @@ namespace InterfaceGraphique
             this.Groupe_Proprietes.Size = new System.Drawing.Size(169, 193);
             this.Groupe_Proprietes.TabIndex = 1;
             this.Groupe_Proprietes.TabStop = false;
-            this.Groupe_Proprietes.Text = "PROPRIÉTÉS";
+            this.Groupe_Proprietes.Text = "Propriétés";
             this.Groupe_Proprietes.Enter += new System.EventHandler(this.Groupe_Proprietes_Enter);
             // 
             // Annuler_prop_boutn
             // 
             this.Annuler_prop_boutn.Enabled = false;
             this.Annuler_prop_boutn.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Annuler_prop_boutn.Location = new System.Drawing.Point(27, 164);
+            this.Annuler_prop_boutn.Location = new System.Drawing.Point(98, 161);
             this.Annuler_prop_boutn.Name = "Annuler_prop_boutn";
             this.Annuler_prop_boutn.Size = new System.Drawing.Size(65, 23);
             this.Annuler_prop_boutn.TabIndex = 9;
@@ -698,7 +698,7 @@ namespace InterfaceGraphique
             // 
             this.OK_prop_bouton.Enabled = false;
             this.OK_prop_bouton.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.OK_prop_bouton.Location = new System.Drawing.Point(98, 164);
+            this.OK_prop_bouton.Location = new System.Drawing.Point(27, 161);
             this.OK_prop_bouton.Name = "OK_prop_bouton";
             this.OK_prop_bouton.Size = new System.Drawing.Size(65, 23);
             this.OK_prop_bouton.TabIndex = 8;
@@ -1179,6 +1179,7 @@ namespace InterfaceGraphique
             // 
             // PG_J1_MenuItem
             // 
+            this.PG_J1_MenuItem.Image = global::InterfaceGraphique.Properties.Resources.PGJ1;
             this.PG_J1_MenuItem.Name = "PG_J1_MenuItem";
             this.PG_J1_MenuItem.Size = new System.Drawing.Size(211, 22);
             this.PG_J1_MenuItem.Text = "Palette gauche J1";
@@ -1186,6 +1187,7 @@ namespace InterfaceGraphique
             // 
             // PD_J1_MenuItem
             // 
+            this.PD_J1_MenuItem.Image = global::InterfaceGraphique.Properties.Resources.PDJ1;
             this.PD_J1_MenuItem.Name = "PD_J1_MenuItem";
             this.PD_J1_MenuItem.Size = new System.Drawing.Size(211, 22);
             this.PD_J1_MenuItem.Text = "Palette droite J1";
@@ -1193,6 +1195,7 @@ namespace InterfaceGraphique
             // 
             // PG_J2_MenuItem
             // 
+            this.PG_J2_MenuItem.Image = global::InterfaceGraphique.Properties.Resources.PGJ2;
             this.PG_J2_MenuItem.Name = "PG_J2_MenuItem";
             this.PG_J2_MenuItem.Size = new System.Drawing.Size(211, 22);
             this.PG_J2_MenuItem.Text = "Palette gauche J2";
@@ -1200,6 +1203,7 @@ namespace InterfaceGraphique
             // 
             // PD_J2_MenuItem
             // 
+            this.PD_J2_MenuItem.Image = global::InterfaceGraphique.Properties.Resources.PDJ2;
             this.PD_J2_MenuItem.Name = "PD_J2_MenuItem";
             this.PD_J2_MenuItem.Size = new System.Drawing.Size(211, 22);
             this.PD_J2_MenuItem.Text = "Palette droite J2";
@@ -1207,6 +1211,7 @@ namespace InterfaceGraphique
             // 
             // BTG_MenuItem
             // 
+            this.BTG_MenuItem.Image = global::InterfaceGraphique.Properties.Resources.ButoirTriangG;
             this.BTG_MenuItem.Name = "BTG_MenuItem";
             this.BTG_MenuItem.Size = new System.Drawing.Size(211, 22);
             this.BTG_MenuItem.Text = "Butoir triangulaire gauche";
@@ -1214,6 +1219,7 @@ namespace InterfaceGraphique
             // 
             // BTD_MenuItem
             // 
+            this.BTD_MenuItem.Image = global::InterfaceGraphique.Properties.Resources.ButoirTriangD;
             this.BTD_MenuItem.Name = "BTD_MenuItem";
             this.BTD_MenuItem.Size = new System.Drawing.Size(211, 22);
             this.BTD_MenuItem.Text = "Butoire triangulaire droit";
@@ -1221,6 +1227,7 @@ namespace InterfaceGraphique
             // 
             // BC_MenuItem
             // 
+            this.BC_MenuItem.Image = global::InterfaceGraphique.Properties.Resources.cible1;
             this.BC_MenuItem.Name = "BC_MenuItem";
             this.BC_MenuItem.Size = new System.Drawing.Size(211, 22);
             this.BC_MenuItem.Text = "Butoir circulaire";
@@ -1228,6 +1235,7 @@ namespace InterfaceGraphique
             // 
             // Cible_MenuItem
             // 
+            this.Cible_MenuItem.Image = global::InterfaceGraphique.Properties.Resources.cible;
             this.Cible_MenuItem.Name = "Cible_MenuItem";
             this.Cible_MenuItem.Size = new System.Drawing.Size(211, 22);
             this.Cible_MenuItem.Text = "Cible";
@@ -1235,6 +1243,7 @@ namespace InterfaceGraphique
             // 
             // Portails_MenuItem
             // 
+            this.Portails_MenuItem.Image = global::InterfaceGraphique.Properties.Resources.portail;
             this.Portails_MenuItem.Name = "Portails_MenuItem";
             this.Portails_MenuItem.Size = new System.Drawing.Size(211, 22);
             this.Portails_MenuItem.Text = "Portails";
@@ -1242,6 +1251,7 @@ namespace InterfaceGraphique
             // 
             // Mur_MenuItem
             // 
+            this.Mur_MenuItem.Image = global::InterfaceGraphique.Properties.Resources.mur;
             this.Mur_MenuItem.Name = "Mur_MenuItem";
             this.Mur_MenuItem.Size = new System.Drawing.Size(211, 22);
             this.Mur_MenuItem.Text = "Mur";
@@ -1249,6 +1259,7 @@ namespace InterfaceGraphique
             // 
             // Ressort_MenuItem
             // 
+            this.Ressort_MenuItem.Image = global::InterfaceGraphique.Properties.Resources.ressort;
             this.Ressort_MenuItem.Name = "Ressort_MenuItem";
             this.Ressort_MenuItem.Size = new System.Drawing.Size(211, 22);
             this.Ressort_MenuItem.Text = "Ressort";
@@ -1256,6 +1267,7 @@ namespace InterfaceGraphique
             // 
             // GB_MenuItem
             // 
+            this.GB_MenuItem.Image = global::InterfaceGraphique.Properties.Resources.Generateur;
             this.GB_MenuItem.Name = "GB_MenuItem";
             this.GB_MenuItem.Size = new System.Drawing.Size(211, 22);
             this.GB_MenuItem.Text = "Générateur de billes";
@@ -1263,6 +1275,7 @@ namespace InterfaceGraphique
             // 
             // Trou_MenuItem
             // 
+            this.Trou_MenuItem.Image = global::InterfaceGraphique.Properties.Resources.Trou;
             this.Trou_MenuItem.Name = "Trou_MenuItem";
             this.Trou_MenuItem.Size = new System.Drawing.Size(211, 22);
             this.Trou_MenuItem.Text = "Trou";
@@ -1270,6 +1283,7 @@ namespace InterfaceGraphique
             // 
             // gateToolStripMenuItem
             // 
+            this.gateToolStripMenuItem.Image = global::InterfaceGraphique.Properties.Resources.gate;
             this.gateToolStripMenuItem.Name = "gateToolStripMenuItem";
             this.gateToolStripMenuItem.Size = new System.Drawing.Size(211, 22);
             this.gateToolStripMenuItem.Text = "Gate";
@@ -1307,6 +1321,7 @@ namespace InterfaceGraphique
             this.Information_MenuItem.ShortcutKeys = System.Windows.Forms.Keys.F1;
             this.Information_MenuItem.Size = new System.Drawing.Size(87, 20);
             this.Information_MenuItem.Text = "Informations";
+            this.Information_MenuItem.ToolTipText = "F1";
             this.Information_MenuItem.Click += new System.EventHandler(this.Information_MenuItem_Click);
             // 
             // menuStrip3
