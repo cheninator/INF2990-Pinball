@@ -14,7 +14,7 @@ using System.Text;
 using System.Threading;
 using System.Windows.Forms;
 
-//<CAMERA> TO DO: Put back for video
+//<CAMERA> //TO DO: Put back for video
 //<CAMERA> using AForge.Video;
 //<CAMERA> using AForge.Video.DirectShow;
 
