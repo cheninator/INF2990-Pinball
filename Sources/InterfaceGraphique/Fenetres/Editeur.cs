@@ -172,12 +172,7 @@ namespace InterfaceGraphique
             {
                 this.Invoke((MethodInvoker)delegate
                 {
-                    if (panelHeight != panel_GL.Size.Height || panelWidth != panel_GL.Size.Width)
-                    {
-                        panelHeight = panel_GL.Size.Height;
-                        panelWidth = panel_GL.Size.Width;
-                        FonctionsNatives.refreshText(panelWidth - bouton_Creation.Width, panelHeight);
-                    }
+                    FonctionsNatives.refreshText(panel_GL.Size.Width, panel_GL.Size.Height);
                     if (etat is EtatEditeurSelectionMultiple || etat is EtatEditeurZoomElastique)
                     {
                         if (Program.compteurFrames == 0)

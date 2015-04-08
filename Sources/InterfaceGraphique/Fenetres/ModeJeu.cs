@@ -60,6 +60,9 @@ namespace InterfaceGraphique
         private int nombreDeBillesUtilise = 0; ///< Nombre de Billes deja utilises
         private int billesPerdus = 0;       ///< Nomrede billes tombees dans le trou
 
+        private static StringBuilder informations = new StringBuilder("Appuyez sur 'h' pour afficher plus d'information");
+        private static StringBuilder fontArial = new StringBuilder(@"arial.tff");
+
         public int panelHeight; ///< Hauteur de la fenetre
         public int panelWidth; ///< Largeur de la fenetre
 
@@ -194,6 +197,10 @@ namespace InterfaceGraphique
             panelHeight = panel_GL.Size.Height;
             panelWidth = panel_GL.Size.Width;
 
+            FonctionsNatives.creeTexte(informations, informations.Capacity, fontArial, fontArial.Capacity);
+            FonctionsNatives.resize(informations, informations.Capacity, 12);
+            FonctionsNatives.changerCouleurV(informations, informations.Capacity, ColorList.COLOR_dark_red);
+            FonctionsNatives.repositionner(informations, informations.Capacity, 0, 1);
         }
 
         ////////////////////////////////////////////////////////////////////////
@@ -269,12 +276,7 @@ namespace InterfaceGraphique
             {
                 this.Invoke((MethodInvoker)delegate
                 {
-                    if (panelHeight != panel_GL.Size.Height || panelWidth != panel_GL.Size.Width)
-                    {
-                        panelHeight = panel_GL.Size.Height;
-                        panelWidth = panel_GL.Size.Width;
-                        FonctionsNatives.refreshText(panelWidth - 40, panelHeight);
-                    }
+                    FonctionsNatives.refreshText(panel_GL.Size.Width, panel_GL.Size.Height);
                     if (peutAnimer)
                     {
                         FonctionsNatives.animer(tempsInterAffichage);
@@ -390,7 +392,13 @@ namespace InterfaceGraphique
         ////////////////////////////////////////////////////////////////////////
         public void AfficherInformations()
         {
+            bool estVisible = InfoPanel.Visible;
             InfoPanel.Visible = !InfoPanel.Visible;
+
+            if (!estVisible)
+                FonctionsNatives.updateText(informations, informations.Capacity, new StringBuilder(""), 0);
+            else
+                FonctionsNatives.updateText(new StringBuilder(""), 0, informations, informations.Capacity);
         }
 
         ////////////////////////////////////////////////////////////////////////
