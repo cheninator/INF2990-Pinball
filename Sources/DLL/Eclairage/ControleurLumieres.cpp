@@ -55,6 +55,9 @@ ControleurLumieres::~ControleurLumieres()
 ////////////////////////////////////////////////////////////////////////
 void ControleurLumieres::initialiserLumieres()
 {
+// Si 1, normal.
+// Si 0, lumiere speculaire en bleu et lumiere diffuse en jaune pour les sources spot et directionnelle
+#if(1)
 	// Initialiser lumAmbiante
 	lumAmbiante_->setAmbientColor({ 0.1f, 0.1f, 0.1f, 1.0f });
 	lumAmbiante_->setDiffuseColor({ 0.0f, 0.0f, 0.0f, 1.0f });
@@ -79,6 +82,32 @@ void ControleurLumieres::initialiserLumieres()
 	lumSpot_->setExponent(0.2f);
 
 	lumSpot_->setAttenuation({ 1.0f, 1.0f, 0.1f });
+#else
+	// Initialiser lumAmbiante
+	lumAmbiante_->setAmbientColor({ 0.1f, 0.1f, 0.1f, 1.0f });
+	lumAmbiante_->setDiffuseColor({ 0.0f, 0.0f, 0.0f, 1.0f });
+	lumAmbiante_->setSpecularColor({ 0.0f, 0.0f, 0.0f, 1.0f });
+
+	// Initialiser lumDirectionnelle
+	lumDirectionnelle_->setAmbientColor({ 0.0f, 0.0f, 0.0f, 1.0f });
+	lumDirectionnelle_->setDiffuseColor({ 0.1f, 0.1f, 0.0f, 1.0f });
+	lumDirectionnelle_->setSpecularColor({ 0.0f, 0.0f, 1.f, 1.0f });
+
+	lumDirectionnelle_->setPosition({ 200.0f, -47.0f, 110.0f, 1.0f });
+	lumDirectionnelle_->setDirection({ 0.1f, 0.0f, -1.0f, 1.0f });
+
+	// Inisialiser lumSpot
+	lumSpot_->setAmbientColor({ 0.0f, 0.0f, 0.0f, 1.0f });
+	lumSpot_->setDiffuseColor({ 0.1f, 0.1f, 0.0f, 1.0f });
+	lumSpot_->setSpecularColor({ 0.0f, 0.0f, 1.0f, 1.0f });
+
+	lumSpot_->setPosition({ 200.0f, -47.0f, 200.0f, 1.0f });
+	lumSpot_->setDirection({ 0.0f, 0.0f, -1.0f, 1.0f });
+	lumSpot_->setCutoffAngle(20.0f);
+	lumSpot_->setExponent(0.2f);
+
+	lumSpot_->setAttenuation({ 1.0f, 1.0f, 0.1f });
+#endif
 }
 
 ////////////////////////////////////////////////////////////////////////
