@@ -2230,6 +2230,7 @@ void FacadeModele::utiliserCameraOrbite(bool utiliseOrbite)
 						1, 1000, 50, 5000, 1.25,
 						-400, 400, -400, 400, 10, 1000}
 			}; 
+			 vue_->obtenirCamera().assignerPhi(utilitaire::DEG_TO_RAD(90.0));
 			//vue_->appliquerCamera();
 			std::cout << "La vue est passee en orbite \n";
 		}

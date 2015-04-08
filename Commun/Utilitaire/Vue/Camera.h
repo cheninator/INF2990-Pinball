@@ -49,6 +49,10 @@ namespace vue {
 		inline void assignerDirectionHaut(const glm::dvec3& directionHaut);
 		/// Assigner la distance au point visé
 		inline void assignerDistance(const double newDist);
+		/// Assigner l'angle theta
+		inline void assignerTheta(const double theta);
+		/// Assigner l'angle phi
+		inline void assignerPhi(const double phi);
 
 		/// Obtenir la position de la caméra.
 		inline const glm::dvec3& obtenirPosition() const;
@@ -217,6 +221,16 @@ namespace vue {
 		calculerPositionOrbite();
 		// Le calcul de position ne mets pas à jour la caméra, il faut donc la repositionner
 		positionner();
+	}
+
+	inline void Camera::assignerTheta(const double theta)
+	{
+		theta_ = theta;
+	}
+
+	inline void Camera::assignerPhi(const double phi)
+	{
+		phi_ = phi;
 	}
 
 } // Fin de l'espace de nom vue.
