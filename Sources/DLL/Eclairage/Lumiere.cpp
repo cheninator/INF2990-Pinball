@@ -74,8 +74,8 @@ void Lumiere::definir()
 	glLightf(handle_, GL_LINEAR_ATTENUATION, attenuation_[1]);
 	glLightf(handle_, GL_QUADRATIC_ATTENUATION, attenuation_[2]);
 
-	// TODO PHIL Enlever ceci, c'est la pour voir la position de la source.
-#if(1)
+	
+#if(0)
 	glDisable(GL_LIGHTING);
 	glDisable(GL_TEXTURE_2D);
 	glEnable(GL_POINT_SMOOTH);

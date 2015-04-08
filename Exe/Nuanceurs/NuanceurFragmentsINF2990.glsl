@@ -34,7 +34,7 @@ void main()
 	// Variables a calculer par fragment:
 	vec3 N = (gl_FrontFacing ? normal : -normal) ;
 	N = normalize(N);
-	vec3 E = eyeVec;	// Vecteur pointant du fragment vers la caméra
+	vec3 E = normalize(eyeVec);	// Vecteur pointant du fragment vers la caméra
 
 	// Variables a calculer par lumiere
 	vec3 L[NB_LUMIERES], 
@@ -54,13 +54,13 @@ void main()
 
 	// Lumiere Directionnelle
 	L[DIRECTIONNELLE] = normalize(gl_LightSource[DIRECTIONNELLE].spotDirection);
-	R[DIRECTIONNELLE] = normalize(rayonReflechi[DIRECTIONNELLE]);
-	HV[DIRECTIONNELLE] = normalize(halfVect[DIRECTIONNELLE]);
+	R[DIRECTIONNELLE] = normalize(reflect(L[DIRECTIONNELLE],N));
+	HV[DIRECTIONNELLE] = normalize(-L[DIRECTIONNELLE] + E);
 
 	// Lumiere Spot
 	L[SPOT] = normalize(lightDir[SPOT]);
-	R[SPOT] = normalize(rayonReflechi[SPOT]);
-	HV[SPOT] = normalize(halfVect[SPOT]);
+	R[SPOT] = normalize(reflect(L[SPOT],N));
+	HV[SPOT] = normalize(L[SPOT] + E);
 	distance[SPOT] = length(lightDir[SPOT]);
 
 	for(int i = AMBIANTE ; i < NB_LUMIERES; i++)
@@ -97,7 +97,7 @@ void main()
 
 	composanteAmbiante = gl_LightSource[DIRECTIONNELLE].ambient*textureColor;
 	composanteDiffuse = max(-NdotL[DIRECTIONNELLE], 0.0) * gl_LightSource[DIRECTIONNELLE].diffuse*textureColor;
-	composanteSpeculaire = pow(max(NdotR[DIRECTIONNELLE], 0.0),1000.0) * gl_LightSource[DIRECTIONNELLE].specular;
+	composanteSpeculaire = pow(max(NdotHV[DIRECTIONNELLE], 0.0),100.0) * gl_LightSource[DIRECTIONNELLE].specular;
 	lumiereReflechie[DIRECTIONNELLE] += clamp(composanteAmbiante, 0.0,1.0);
 	lumiereReflechie[DIRECTIONNELLE] += clamp(composanteDiffuse, 0.0,1.0);
 	lumiereReflechie[DIRECTIONNELLE] += clamp(composanteSpeculaire, 0.0,1.0);
@@ -118,7 +118,7 @@ void main()
 
 	composanteAmbiante = gl_LightSource[SPOT].ambient*textureColor; // ROUGE
 	composanteDiffuse = max(NdotL[SPOT],0.0) * gl_LightSource[SPOT].diffuse*textureColor; 
-	composanteSpeculaire = pow(max(NdotHV[SPOT], 0.0),10.0) * gl_LightSource[SPOT].specular;
+	composanteSpeculaire = pow(max(NdotHV[SPOT], 0.0),50.0) * gl_LightSource[SPOT].specular;
 	lumiereReflechie[SPOT] += effetSpot*clamp(composanteAmbiante, 0.0, 1.0) ;
 	lumiereReflechie[SPOT] += effetSpot*clamp(composanteDiffuse, 0.0, 1.0);
 	lumiereReflechie[SPOT] += effetSpot*clamp(composanteSpeculaire, 0.0, 1.0);
