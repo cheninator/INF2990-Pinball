@@ -33,6 +33,7 @@ void main()
 
 	// Variables a calculer par fragment:
 	vec3 N = (gl_FrontFacing ? normal : -normal) ;
+	N = normalize(N);
 	vec3 E = eyeVec;	// Vecteur pointant du fragment vers la caméra
 
 	// Variables a calculer par lumiere
