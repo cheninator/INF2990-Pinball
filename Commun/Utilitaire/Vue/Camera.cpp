@@ -49,6 +49,7 @@ namespace vue {
 		theta_{angleTheta},
 		phi_{anglePhi}
 	{
+		dist_ = 100.0;
 	}
 
 
@@ -142,28 +143,41 @@ namespace vue {
 	{
 		if (empecheInversion)
 			return;
-
+#if 0
+		else if (phi_ + rotationY >= utilitaire::PI)  
+		{
+			std::cout << "Angle phi trop grand : on le remet à PI \n";
+			phi_ = utilitaire::PI - 0.01;	
+		}
+		else if (phi_ + rotationY <= 0.0)
+		{
+			std::cout << "Angle phi trop petit : on le remet à 0 \n";
+			phi_ = 0.01;
+		}
+#endif
 		/* Les angles doivent être en radian*/
+		//gluLookAt( dist*cos(theta)*sin(phi), dist*sin(theta)*sin(phi), dist*cos(phi),   <--- TP3 INF2705
+		//gluLookAt( dist*sin(phi)*sin(theta), dist*cos(phi), dist*sin(phi)*cos(theta), 0, 1, 0, 0, 2, 0 ); <---TP4 INF2705
 		float dist = glm::distance(position_, pointVise_);
-		//float deltaTheta = utilitaire::DEG_TO_RAD(rotationX);
-		//float deltaPhi   = utilitaire::DEG_TO_RAD(rotationY);
-		float deltaTheta = utilitaire::DEG_TO_RAD(1.0);
-		float deltaPhi = utilitaire::DEG_TO_RAD(1.0);
+		float deltaTheta = utilitaire::DEG_TO_RAD(rotationX);
+		float deltaPhi   = utilitaire::DEG_TO_RAD(rotationY);
 		/*std::string ancienTexte;
 		std::string informationAngle = "Phi | Theta" + std::to_string(theta_)
 			+ " | " + std::to_string(phi_) + " \n";
 		FacadeModele::obtenirInstance()->obtenircontroleurTexte()->updateText(ancienTexte, );*/
-		std::cout << "Phi | Theta" + std::to_string(theta_)
-			+ " | " + std::to_string(phi_) + " \n";
+		std::cout << "RECU --- deltaPhi | deltaTheta" + std::to_string(deltaPhi)
+			+ " | " + std::to_string(deltaTheta) + " \n";
 		std::cout << "Distance : " << dist << std::endl;
 
-		theta_ += deltaPhi;
+		// Assignation des nouveaux angles
+		theta_ += deltaTheta;
 		phi_ += deltaPhi;
 
-		position_.x = dist * sin(phi_) * sin(theta_);
-		position_.y = dist * cos(phi_);
-		position_.z = dist * sin(phi_) * cos(theta_);
+		std::cout << "Nouveau Phi | Theta" + std::to_string(phi_)
+			+ " | " + std::to_string(theta_) + " \n";
 
+		// On calcule la bonne position en fonction des angles 
+		calculerPositionOrbite();
 		positionner();
 	}
 
@@ -179,11 +193,26 @@ namespace vue {
 	////////////////////////////////////////////////////////////////////////
 	void Camera::positionner() const
 	{
+		glMatrixMode(GL_MODELVIEW);
+		glLoadIdentity();
 		gluLookAt(position_[0], position_[1], position_[2],
 			pointVise_[0], pointVise_[1], pointVise_[2],
 			directionHaut_[0], directionHaut_[1], directionHaut_[2]);
 	}
 
+	void Camera::calculerPositionOrbite()
+	{
+#if 1 /* Version du TP3*/
+		position_.x = dist_ * sin(phi_) * cos(theta_);
+		position_.y = dist_ * sin(phi_) * sin(theta_);
+		position_.z = dist_ * cos(phi_);
+#else /*Version du TP4*/
+		position_.x = dist_ * sin(phi_) * sin(theta_);
+		position_.y = dist_ * cos(phi_);
+		position_.z = dist_ * sin(phi_) * cos(theta_);
+#endif
+
+	}
 
 }; // Fin du namespace vue.
 

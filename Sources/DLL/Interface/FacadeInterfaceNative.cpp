@@ -632,12 +632,9 @@ extern "C"
 	////////////////////////////////////////////////////////////////////////
 	__declspec(dllexport) void __cdecl translater(double deplacementX, double deplacementY)
 	{
-		std::cout << "Facade X | Y : " << deplacementX << " | " << deplacementY << std::endl;
+		/* Si la caméra est orbite, on redirige la méthode vers celle appropriée*/
 		if (FacadeModele::obtenirInstance()->cameraEstOrbite())
-		{
-			FacadeModele::obtenirInstance()->obtenirVue()->obtenirCamera().orbiterXY(deplacementX, deplacementY, false);
-			std::cout << "Translation orbite \n";
-		}
+			orbite(deplacementX, deplacementY);
 		else
 		{
 			FacadeModele::obtenirInstance()->obtenirVue()->deplacerXY(deplacementX, deplacementY);
@@ -737,15 +734,9 @@ extern "C"
 	////////////////////////////////////////////////////////////////////////
 	__declspec(dllexport) void __cdecl orbite(double x, double y)
 	{
-		glm::dvec3 maPosition;
-		FacadeModele::obtenirInstance()->obtenirVue()->convertirClotureAVirtuelle((int)x, (int)y, maPosition);
-
-		theta += maPosition.x / 100.0;
-		phi += maPosition.y / 100.0;
-		double dist = 200.0;
-
-		// A revori avec phil
-		FacadeModele::obtenirInstance()->obtenirVue()->obtenirCamera().orbiterXY(phi, theta);
+		std::cout << "Nouveau transmis X | Y : " << x << " | " << y << std::endl;
+		FacadeModele::obtenirInstance()->obtenirVue()->rotaterXY(x, y);
+		std::cout << "Translation orbite \n \n";
 	}
 
 	////////////////////////////////////////////////////////////////////////

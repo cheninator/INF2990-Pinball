@@ -47,7 +47,8 @@ namespace vue {
 		inline void assignerPointVise(const glm::dvec3& pointVise);
 		/// Assigner la direction du haut de la caméra.
 		inline void assignerDirectionHaut(const glm::dvec3& directionHaut);
-
+		/// Assigner la distance au point visé
+		inline void assignerDistance(const double newDist);
 
 		/// Obtenir la position de la caméra.
 		inline const glm::dvec3& obtenirPosition() const;
@@ -55,6 +56,12 @@ namespace vue {
 		inline const glm::dvec3& obtenirPointVise() const;
 		/// Obtenir la direction du haut de la caméra.
 		inline const glm::dvec3& obtenirDirectionHaut() const;
+		/// Obtenir l'angle theta en radian de la caméra
+		inline const double obtenirTheta() const;
+		/// Obtenir l'angle phi en radian de la caméra
+		inline const double obtenirPhi() const;
+		/// Obtenir la distance au point visé
+		inline const double obtenirDistance() const;
 
 		/// Déplacement dans le plan perpendiculaire à la direction visée.
 		void deplacerXY(double deplacementX, double deplacementY);
@@ -64,6 +71,8 @@ namespace vue {
 		void tournerXY(double rotationX, double rotationY, bool empecheInversion = true);
 		/// Rotation de la position de la caméra autour de son point de visé.
 		void orbiterXY(double rotationX, double rotationY, bool empecheInversion = true);
+		/// Appliquer la caméra orbite en fonction des angles
+		void calculerPositionOrbite();
 
 
 
@@ -81,9 +90,11 @@ namespace vue {
 		/// La direction du haut du monde de la caméra.
 		const glm::dvec3 directionHautMonde_;
 		/* Notez que les angles doivent être en radian*/
-		float phi_;
+		double phi_;
 
-		float theta_;
+		double theta_;
+
+		double dist_;
 	};
 
 
@@ -184,6 +195,29 @@ namespace vue {
 		return directionHaut_;
 	}
 
+	inline const double Camera::obtenirTheta() const
+	{
+		return theta_;
+	}
+	
+	inline const double Camera::obtenirPhi() const
+	{
+		return phi_;
+	}
+	inline const double Camera::obtenirDistance() const
+	{
+		return dist_;
+	}
+
+	inline void Camera::assignerDistance(double newDist)
+	{
+		if (newDist > 0.0)
+			dist_ = newDist;
+		// On fait le calcul des nouvelles coordonnées
+		calculerPositionOrbite();
+		// Le calcul de position ne mets pas à jour la caméra, il faut donc la repositionner
+		positionner();
+	}
 
 } // Fin de l'espace de nom vue.
 

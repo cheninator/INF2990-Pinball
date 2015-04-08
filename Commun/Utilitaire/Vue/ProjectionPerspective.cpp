@@ -27,6 +27,8 @@ namespace vue {
 
 	void ProjectionPerspective::appliquer() const
 	{
+		glMatrixMode(GL_PROJECTION);
+		glLoadIdentity();
 		gluPerspective(60, 1.6, 1, 1000);
 	}
 

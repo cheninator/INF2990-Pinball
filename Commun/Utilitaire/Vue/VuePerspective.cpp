@@ -10,7 +10,7 @@
 
 #include "Utilitaire.h"
 #include "VuePerspective.h"
-
+#include <iostream>
 
 namespace vue {
 
@@ -126,7 +126,11 @@ namespace vue {
 	////////////////////////////////////////////////////////////////////////
 	void VuePerspective::zoomerIn()
 	{
-		camera_.deplacerZ(1, false);
+		/*Obtenir l'incrément de zoom à partir de la projection plus tard*/
+		double increment = 1.25;
+		std::cout << "On fait un zoomIn Perspective ! \n";
+		camera_.assignerDistance(camera_.obtenirDistance() / increment);
+		std::cout << "Nouvelle distance est de : " << camera_.obtenirDistance() << '\n';
 	}
 
 
@@ -141,7 +145,11 @@ namespace vue {
 	////////////////////////////////////////////////////////////////////////
 	void VuePerspective::zoomerOut()
 	{
-		camera_.deplacerZ(-1, false);
+		/*Obtenir l'incrément de zoom à partir de la projection plus tard*/
+		double increment = 1.25;
+		std::cout << "On fait un zoomOut Perspective ! \n";
+		camera_.assignerDistance(camera_.obtenirDistance() * increment);
+		std::cout << "Nouvelle distance est de : " << camera_.obtenirDistance() << '\n';
 	}
 
 
@@ -224,7 +232,8 @@ namespace vue {
 	////////////////////////////////////////////////////////////////////////
 	void VuePerspective::rotaterXY(double rotationX, double rotationY)
 	{
-		camera_.orbiterXY(rotationX * 360, rotationY * 180);
+		rotationX /= 100.0; rotationY /= 100.0;
+		camera_.orbiterXY(rotationX * 360, rotationY * 180, false);
 	}
 
 
