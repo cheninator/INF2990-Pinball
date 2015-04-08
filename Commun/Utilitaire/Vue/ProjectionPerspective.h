@@ -37,8 +37,8 @@ namespace vue {
 			double zAvant, double zArriere,
 			double zoomInMax, double zoomOutMax,
 			double incrementZoom,
-			double ratio, double fovy,
-			double Znear , double Zfar);
+			double ratio, double fovy
+			);
 
 
 		/// Zoom in, c'est-à-dire un agrandissement.

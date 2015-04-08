@@ -12,13 +12,11 @@ namespace vue {
 		double zAvant, double zArriere,
 		double zoomInMax, double zoomOutMax,
 		double incrementZoom,
-		double ratio, double fovy,
-		double Znear, double Zfar) :
+		double ratio, double fovy) :
 		Projection{ xMinCloture, xMaxCloture, yMinCloture, yMaxCloture,
 		zAvant, zArriere,
 		zoomInMax, zoomOutMax, incrementZoom, true },
-		ratio_(ratio), fovy_(fovy),
-		near_(Znear), far_(Zfar)
+		ratio_(ratio), fovy_(fovy)
 	{
 		appliquer();
 	}
@@ -27,7 +25,7 @@ namespace vue {
 	{
 		glMatrixMode(GL_PROJECTION);
 		glLoadIdentity();
-		gluPerspective(60, 1.6, near_, far_);
+		gluPerspective(60, 1.6, zAvant_, zArriere_);
 	}
 
 	void ProjectionPerspective::zoomerIn()

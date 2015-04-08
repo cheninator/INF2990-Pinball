@@ -2238,10 +2238,11 @@ void FacadeModele::utiliserCameraOrbite(bool utiliseOrbite)
 				    0.0 , 0.0},
 					vue::ProjectionPerspective{
 						clotMinX, clotMaxX, clotMinY, clotMaxY,
-						1, 1000, 50, 1000, 1.10,
-						ratio,    /* Le rapport d'aspect précédent*/
-						60.0,       /* L'angle de vision */
-						10.0, 2000.0 /* La valeur minimale et maximale en Z dans le volume de visualisation*/
+						10.0, 2000, /* La valeur minimale et maximale en Z dans le volume de visualisation*/
+						50, 1000,   /* La valeur minimal et maximale que l'on peut parcourir dans le jeu*/
+						1.10,       /* L'incrément de zoom*/
+						ratio,      /* Le rapport d'aspect précédent*/
+						60.0,       /* L'angle de vision */ 
 					}
 			}; 
 			 vue_->obtenirCamera().assignerPhi(utilitaire::DEG_TO_RAD(90.0));
