@@ -31,7 +31,7 @@ public:
 	~CareTaker();
 
 	/// Ajouter une sauvegarde dans l'historique
-	bool ajouter(Memento* memento);
+	void ajouter(Memento* memento);
 
 	/// Ecrase les sauvegarde anterieurs a partir d'un index
 	void ecraser(int index);
@@ -44,6 +44,9 @@ public:
 
 	/// La taille actuelle
 	int size() const { return (int)historique_.size(); };
+
+	/// Obtenir la taille maximale
+	int obtenirTailleMaximale() const { return tailleMax; };
 
 private:
 

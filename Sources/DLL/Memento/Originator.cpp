@@ -52,8 +52,6 @@ void Originator::annuler()
 		temp = nullptr;
 	}
 
-
-
 	// Position courante dans l'historique change
 	position_--;
 }
@@ -61,7 +59,7 @@ void Originator::annuler()
 void Originator::retablir()
 {
 	// Ne rien faire lorsqu'il n'y a pas eu d'autres modifications
-	if (position_ == historique_->size() - 1)
+	if (position_ + 1 == historique_->size())
 		return;
 
 	// Ne rien faire lorsqu'il n'y a pas d'historique
@@ -103,19 +101,29 @@ void Originator::sauvegarder()
 	// La sauvegarde courante est deja la derniere sauvegarde
 	if (position_ + 1 == historique_->size())
 	{
-		if(!(historique_->ajouter(new Memento(arbreActuel_))))
+		historique_->ajouter(new Memento(arbreActuel_));
+
+		// Incrementer la position si seulement elle est inferieur a 10
+		if ((position_ + 1 ) != historique_->obtenirTailleMaximale())
 			position_++;
 	}
 
-	// On est au debut
-	else if (position_ == 0)
+	// 1ere sauvegarde
+	else if (position_ == 0 && historique_->size() == 0)
 	{
-		historique_->vider();
 		historique_->ajouter(new Memento(arbreActuel_));
 	}
 
-	// On est au milieu
-	else
+	// Ecraser les sauvegardes suivantes
+	else if (position_ == 0 && historique_->size() != 0)
+	{
+		historique_->ecraser(position_);
+		historique_->ajouter(new Memento(arbreActuel_));
+		position_++;
+	}
+
+	// On est entre la 1ere et la derniere sauvegarde
+	else if (position_ < historique_->size())
 	{
 		historique_->ecraser(position_);
 		historique_->ajouter(new Memento(arbreActuel_));

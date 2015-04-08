@@ -174,7 +174,10 @@ public:
 	virtual unsigned int obtenirNombreEnfants() const;
 
 	/// Obtient le numero du noeud.
-	int getNumero(){ return numeroNoeud_; };
+	int getNumero() const { return numeroNoeud_; };
+
+	/// Obtient le numero du noeud.
+	void setNumero(int numero);
 
 	/// Changer la selection du noeud.
 	virtual void inverserSelection();
