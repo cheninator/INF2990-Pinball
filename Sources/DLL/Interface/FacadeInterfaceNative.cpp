@@ -632,7 +632,16 @@ extern "C"
 	////////////////////////////////////////////////////////////////////////
 	__declspec(dllexport) void __cdecl translater(double deplacementX, double deplacementY)
 	{
-		FacadeModele::obtenirInstance()->obtenirVue()->deplacerXY(deplacementX, deplacementY);
+		// Notez bien que cette valeur transmise est d'habitude de 10 depuis le C#
+
+		/* Si la caméra est orbite, on redirige la méthode vers celle appropriée*/
+		if (FacadeModele::obtenirInstance()->cameraEstOrbite())
+			orbite(deplacementX / 10.0, deplacementY / 10.0);
+		else
+		{
+			FacadeModele::obtenirInstance()->obtenirVue()->deplacerXY(deplacementX, deplacementY);
+			std::cout << "Translation normale dans le plan \n";
+		}
 	}
 
 
@@ -727,15 +736,11 @@ extern "C"
 	////////////////////////////////////////////////////////////////////////
 	__declspec(dllexport) void __cdecl orbite(double x, double y)
 	{
-		glm::dvec3 maPosition;
-		FacadeModele::obtenirInstance()->obtenirVue()->convertirClotureAVirtuelle((int)x, (int)y, maPosition);
-
-		theta += maPosition.x / 100.0;
-		phi += maPosition.y / 100.0;
-		double dist = 200.0;
-
-		// A revori avec phil
-		FacadeModele::obtenirInstance()->obtenirVue()->obtenirCamera().orbiterXY(phi, theta);
+		// Habituellement la valeur de x et y est de 10 depuis le C#
+		std::cout << "Deplacement  X | Y : " << x << " | " << y << std::endl;
+		/// En theta, pour correspondre à une rotation dans le sens de la flèche il faut envoyer l'opposé
+		FacadeModele::obtenirInstance()->obtenirVue()->rotaterXY( -1 * x, y);
+		std::cout << "Translation orbite \n \n";
 	}
 
 	////////////////////////////////////////////////////////////////////////

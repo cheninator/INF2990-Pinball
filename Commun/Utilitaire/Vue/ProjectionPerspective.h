@@ -11,7 +11,6 @@
 #define __UTILITAIRE_PROJECTIONPERSPECTIVE_H__
 
 
-
 #include "Projection.h"
 
 namespace vue {
@@ -38,9 +37,8 @@ namespace vue {
 			double zAvant, double zArriere,
 			double zoomInMax, double zoomOutMax,
 			double incrementZoom,
-			double left  , double right,
-			double bottom, double top,
-			double Znear , double Zfar);
+			double ratio, double fovy
+			);
 
 
 		/// Zoom in, c'est-à-dire un agrandissement.
@@ -52,6 +50,12 @@ namespace vue {
 			const glm::ivec2& coinMax);
 		/// Application de la projection.
 		virtual void appliquer() const;
+		/// Obtenir la valeur minimale du zoom
+		double obtenirZoomOutMax() const;
+		/// Obtenir la valeur maximale du zoom
+		double obtenirZoomInMax() const;
+		/// Obtenir le facteur de zoom
+		double obtenirIncrementZoom() const;
 
 		void tiltLeft(double deplacement);
 		void tiltRight(double deplacement);
@@ -61,10 +65,8 @@ namespace vue {
 		virtual inline glm::ivec2 obtenirDimensionFenetreVirtuelle() const;
 
 	private:
-		double left_;
-		double right_;
-		double bottom_;
-		double top_;
+		double ratio_;
+		double fovy_;
 		double near_;
 		double far_;
 	};

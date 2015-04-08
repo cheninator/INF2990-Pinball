@@ -233,6 +233,7 @@ public:
 	double obtenirScaleMinMax();
 
 	void utiliserCameraOrbite(bool utiliseOrbite);
+	bool cameraEstOrbite();
 
 	ControleurTexte* obtenircontroleurTexte();
 

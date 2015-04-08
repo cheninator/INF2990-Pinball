@@ -33,7 +33,10 @@ namespace vue {
 		Camera(const glm::dvec3& position,
 			const glm::dvec3& pointVise,
 			const glm::dvec3& directionHautCamera,
-			const glm::dvec3& directionHautMonde);
+			const glm::dvec3& directionHautMonde,
+			float angleTheta,
+			float anglePhi
+			);
 
 		/// Destructeur virtuel vide.
 		virtual ~Camera() {}
@@ -44,7 +47,12 @@ namespace vue {
 		inline void assignerPointVise(const glm::dvec3& pointVise);
 		/// Assigner la direction du haut de la caméra.
 		inline void assignerDirectionHaut(const glm::dvec3& directionHaut);
-
+		/// Assigner la distance au point visé
+		inline void assignerDistance(const double newDist);
+		/// Assigner l'angle theta
+		inline void assignerTheta(const double theta);
+		/// Assigner l'angle phi
+		inline void assignerPhi(const double phi);
 
 		/// Obtenir la position de la caméra.
 		inline const glm::dvec3& obtenirPosition() const;
@@ -52,6 +60,12 @@ namespace vue {
 		inline const glm::dvec3& obtenirPointVise() const;
 		/// Obtenir la direction du haut de la caméra.
 		inline const glm::dvec3& obtenirDirectionHaut() const;
+		/// Obtenir l'angle theta en radian de la caméra
+		inline const double obtenirTheta() const;
+		/// Obtenir l'angle phi en radian de la caméra
+		inline const double obtenirPhi() const;
+		/// Obtenir la distance au point visé
+		inline const double obtenirDistance() const;
 
 		/// Déplacement dans le plan perpendiculaire à la direction visée.
 		void deplacerXY(double deplacementX, double deplacementY);
@@ -61,12 +75,15 @@ namespace vue {
 		void tournerXY(double rotationX, double rotationY, bool empecheInversion = true);
 		/// Rotation de la position de la caméra autour de son point de visé.
 		void orbiterXY(double rotationX, double rotationY, bool empecheInversion = true);
+		/// Appliquer la caméra orbite en fonction des angles
+		void calculerPositionOrbite();
 
 
 
-		/// Positionner la caméra (appel à gluLookAt).
-		void positionner() const;
-
+		/// Positionner la caméra (appel à gluLookAt) en mode perspective 
+		void positionnerOrbite() const;
+		/// Positionner la caméra (appel à gluLookAt) en mode ortho
+		void positionnerOrtho() const;
 
 	private:
 		/// La position de la caméra.
@@ -77,7 +94,12 @@ namespace vue {
 		glm::dvec3 directionHaut_;
 		/// La direction du haut du monde de la caméra.
 		const glm::dvec3 directionHautMonde_;
+		/* Notez que les angles doivent être en radian*/
+		double phi_;
 
+		double theta_;
+
+		double dist_;
 	};
 
 
@@ -178,6 +200,39 @@ namespace vue {
 		return directionHaut_;
 	}
 
+	inline const double Camera::obtenirTheta() const
+	{
+		return theta_;
+	}
+	
+	inline const double Camera::obtenirPhi() const
+	{
+		return phi_;
+	}
+	inline const double Camera::obtenirDistance() const
+	{
+		return dist_;
+	}
+
+	inline void Camera::assignerDistance(double newDist)
+	{
+		if (newDist > 0.0)
+			dist_ = newDist;
+		// On fait le calcul des nouvelles coordonnées
+		calculerPositionOrbite();
+		// Le calcul de position ne mets pas à jour la caméra, il faut donc la repositionner
+		positionnerOrbite();
+	}
+
+	inline void Camera::assignerTheta(const double theta)
+	{
+		theta_ = theta;
+	}
+
+	inline void Camera::assignerPhi(const double phi)
+	{
+		phi_ = phi;
+	}
 
 } // Fin de l'espace de nom vue.
 
