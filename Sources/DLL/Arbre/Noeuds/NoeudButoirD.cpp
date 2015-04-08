@@ -7,6 +7,7 @@
 /// @ingroup Noeud
 ///////////////////////////////////////////////////////////////////////////
 
+#include "../../Eclairage/ControleurNuanceurs.h"
 #include "NoeudButoirD.h"
 #include "Utilitaire.h"
 
@@ -26,6 +27,15 @@ std::vector<glm::dvec3> NoeudButoirD::boiteEnglobanteModele_{
 	{ 18.71, -21.35, 0.0 },
 	{ 20.65, 44.18, 0.0 }
 };
+
+#define NOEUD_NORMAL 0
+#define NOEUD_COLOR_SHIFT 1
+#define NOEUD_IMPOSSIBLE 2
+#define NOEUD_SELECTIONNE 3
+#define NOEUD_TRANSPARENT 4
+#define NOEUD_ILLUMINE 5
+
+
 ////////////////////////////////////////////////////////////////////////
 ///
 /// @fn NoeudButoirD::NoeudButoirD(const std::string& typeNoeud)
@@ -75,7 +85,10 @@ void NoeudButoirD::afficherConcret() const
 	glPushAttrib(GL_ALL_ATTRIB_BITS);
 	NoeudAbstrait::appliquerAfficher();
 	if (illumine_)
+	{
+		ControleurNuanceurs::obtenirInstance()->assignerEtatNoeud(NOEUD_ILLUMINE);
 		glTexEnvf(GL_TEXTURE_ENV, GL_TEXTURE_ENV_MODE, GL_DECAL);
+	}
 	liste_->dessiner();
 	glPopAttrib();
 	glPopMatrix();

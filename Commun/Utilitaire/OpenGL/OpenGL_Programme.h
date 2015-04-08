@@ -15,7 +15,9 @@
 #include <map>
 #include <vector>
 
-#include "glm/fwd.hpp"
+#include "gl\glew.h"
+#include "glm\glm.hpp"
+#include "glm/gtc/type_ptr.hpp"
 
 namespace opengl {
 	class Nuanceur;
@@ -231,7 +233,7 @@ namespace opengl {
 	{
 		if (recupererLocationUniforme(nomUniforme))
 		{
-			lierUniforme(nomUniforme, const& valeurUniforme);
+			lierUniforme(nomUniforme, valeurUniforme);
 		}
 	}
 
@@ -258,142 +260,618 @@ namespace opengl {
 		static_assert(false, "OpenGL_Programme : un type d'uniforme non-supporte a ete utilise.  Seuls les types fondamentaux, les vecteurs et les matrices glm sont supportes.");
 	}
 
-	/// int
+	////////////////////////////////////////////////////////////////////////
+	///
+	/// @fn template <> inline void Programme::lierUniforme(std::string attribute_name, int const& uniform_value)
+	///
+	/// Permet de lier une valeur à une uniforme des nuanceurs.
+	///
+	/// @param[in] attribute_name : le nom de l'uniforme
+	/// @param[in]  uniform_value : la valeur de l'uniforme.
+	///
+	/// @return Aucune.
+	///
+	////////////////////////////////////////////////////////////////////////
 	template <>
-	void Programme::lierUniforme(std::string nomUniforme, int const& valeurUniforme);
+	inline void Programme::lierUniforme(std::string attribute_name, int const& uniform_value)
+	{
+		glProgramUniform1i(handle_, mapUniforme[attribute_name], uniform_value);
+	}
 
-	/// vec2i
+	////////////////////////////////////////////////////////////////////////
+	///
+	/// @fn template <> inline void Programme::lierUniforme(std::string attribute_name, glm::ivec2 const& uniform_vector)
+	///
+	/// Permet de lier une valeur à une uniforme des nuanceurs.
+	///
+	/// @param[in] attribute_name : le nom de l'uniforme
+	/// @param[in]  uniform_vector : la valeur de l'uniforme.
+	///
+	/// @return Aucune.
+	///
+	////////////////////////////////////////////////////////////////////////
 	template <>
-	void Programme::lierUniforme(std::string nomUniforme, glm::ivec2 const& uniform_vector);
+	inline void Programme::lierUniforme(std::string attribute_name, glm::ivec2 const& uniform_vector)
+	{
+		glProgramUniform2iv(handle_, mapUniforme[attribute_name], 1, glm::value_ptr(uniform_vector));
+	}
 
-	/// vec3i
+	////////////////////////////////////////////////////////////////////////
+	///
+	/// @fn template <> inline void Programme::lierUniforme(std::string attribute_name, glm::ivec3 const& uniform_vector)
+	///
+	/// Permet de lier une valeur à une uniforme des nuanceurs.
+	///
+	/// @param[in] attribute_name : le nom de l'uniforme
+	/// @param[in]  uniform_vector : la valeur de l'uniforme.
+	///
+	/// @return Aucune.
+	///
+	////////////////////////////////////////////////////////////////////////
 	template <>
-	void Programme::lierUniforme(std::string nomUniforme, glm::ivec3 const& uniform_vector);
+	inline void Programme::lierUniforme(std::string attribute_name, glm::ivec3 const& uniform_vector)
+	{
+		glProgramUniform3iv(handle_, mapUniforme[attribute_name], 1, glm::value_ptr(uniform_vector));
+	}
 
-	/// vec4i
+	////////////////////////////////////////////////////////////////////////
+	///
+	/// @fn template <> inline void Programme::lierUniforme(std::string attribute_name, glm::ivec4 const& uniform_vector)
+	///
+	/// Permet de lier une valeur à une uniforme des nuanceurs.
+	///
+	/// @param[in] attribute_name : le nom de l'uniforme
+	/// @param[in]  uniform_vector : la valeur de l'uniforme.
+	///
+	/// @return Aucune.
+	///
+	////////////////////////////////////////////////////////////////////////
 	template <>
-	void Programme::lierUniforme(std::string nomUniforme, glm::ivec4 const& uniform_vector);
+	inline void Programme::lierUniforme(std::string attribute_name, glm::ivec4 const& uniform_vector)
+	{
+		glProgramUniform4iv(handle_, mapUniforme[attribute_name], 1, glm::value_ptr(uniform_vector));
+	}
 
-	/// unsigned int
+	////////////////////////////////////////////////////////////////////////
+	///
+	/// @fn template <> inline void Programme::lierUniforme(std::string attribute_name, unsigned int const& uniform_value)
+	///
+	/// Permet de lier une valeur à une uniforme des nuanceurs.
+	///
+	/// @param[in] attribute_name : le nom de l'uniforme
+	/// @param[in]  uniform_value : la valeur de l'uniforme.
+	///
+	/// @return Aucune.
+	///
+	////////////////////////////////////////////////////////////////////////
 	template <>
-	void Programme::lierUniforme(std::string nomUniforme, unsigned int const& valeurUniforme);
+	inline void Programme::lierUniforme(std::string attribute_name, unsigned int const& uniform_value)
+	{
+		glProgramUniform1ui(handle_, mapUniforme[attribute_name], uniform_value);
+	}
 
-	/// uvec2
+	////////////////////////////////////////////////////////////////////////
+	///
+	/// @fn template <> inline void Programme::lierUniforme(std::string attribute_name, glm::uvec2 const& uniform_vector)
+	///
+	/// Permet de lier une valeur à une uniforme des nuanceurs.
+	///
+	/// @param[in] attribute_name : le nom de l'uniforme
+	/// @param[in]  uniform_vector : la valeur de l'uniforme.
+	///
+	/// @return Aucune.
+	///
+	////////////////////////////////////////////////////////////////////////
 	template <>
-	void Programme::lierUniforme(std::string nomUniforme, glm::uvec2 const& uniform_vector);
+	inline void Programme::lierUniforme(std::string attribute_name, glm::uvec2 const& uniform_vector)
+	{
+		glProgramUniform2uiv(handle_, mapUniforme[attribute_name], 1, glm::value_ptr(uniform_vector));
+	}
 
-	/// uvec3
+	////////////////////////////////////////////////////////////////////////
+	///
+	/// @fn template <> inline void Programme::lierUniforme(std::string attribute_name, glm::uvec3 const& uniform_vector)
+	///
+	/// Permet de lier une valeur à une uniforme des nuanceurs.
+	///
+	/// @param[in] attribute_name : le nom de l'uniforme
+	/// @param[in]  uniform_vector : la valeur de l'uniforme.
+	///
+	/// @return Aucune.
+	///
+	////////////////////////////////////////////////////////////////////////
 	template <>
-	void Programme::lierUniforme(std::string nomUniforme, glm::uvec3 const& uniform_vector);
+	inline void Programme::lierUniforme(std::string attribute_name, glm::uvec3 const& uniform_vector)
+	{
+		glProgramUniform3uiv(handle_, mapUniforme[attribute_name], 1, glm::value_ptr(uniform_vector));
+	}
 
-	/// uvec4
+	////////////////////////////////////////////////////////////////////////
+	///
+	/// @fn template <> inline void Programme::lierUniforme(std::string attribute_name, glm::uvec4 const& uniform_vector)
+	///
+	/// Permet de lier une valeur à une uniforme des nuanceurs.
+	///
+	/// @param[in] attribute_name : le nom de l'uniforme
+	/// @param[in]  uniform_vector : la valeur de l'uniforme.
+	///
+	/// @return Aucune.
+	///
+	////////////////////////////////////////////////////////////////////////
 	template <>
-	void Programme::lierUniforme(std::string nomUniforme, glm::uvec4 const& uniform_vector);
+	inline void Programme::lierUniforme(std::string attribute_name, glm::uvec4 const& uniform_vector)
+	{
+		glProgramUniform4uiv(handle_, mapUniforme[attribute_name], 1, glm::value_ptr(uniform_vector));
+	}
 
-	/// float
+	////////////////////////////////////////////////////////////////////////
+	///
+	/// @fn template <> inline void Programme::lierUniforme(std::string attribute_name, float const& uniform_value)
+	///
+	/// Permet de lier une valeur à une uniforme des nuanceurs.
+	///
+	/// @param[in] attribute_name : le nom de l'uniforme
+	/// @param[in]  uniform_value : la valeur de l'uniforme.
+	///
+	/// @return Aucune.
+	///
+	////////////////////////////////////////////////////////////////////////
 	template <>
-	void Programme::lierUniforme(std::string nomUniforme, float const& valeurUniforme);
+	inline void Programme::lierUniforme(std::string attribute_name, float const& uniform_value)
+	{
+		glProgramUniform1f(handle_, mapUniforme[attribute_name], uniform_value);
+	}
 
-	/// vec2
+	////////////////////////////////////////////////////////////////////////
+	///
+	/// @fn template <> inline void Programme::lierUniforme(std::string attribute_name, glm::vec2 const& uniform_vector)
+	///
+	/// Permet de lier une valeur à une uniforme des nuanceurs.
+	///
+	/// @param[in] attribute_name : le nom de l'uniforme
+	/// @param[in]  uniform_vector : la valeur de l'uniforme.
+	///
+	/// @return Aucune.
+	///
+	////////////////////////////////////////////////////////////////////////
 	template <>
-	void Programme::lierUniforme(std::string nomUniforme, glm::vec2 const& uniform_vector);
+	inline void Programme::lierUniforme(std::string attribute_name, glm::vec2 const& uniform_vector)
+	{
+		glProgramUniform2fv(handle_, mapUniforme[attribute_name], 1, glm::value_ptr(uniform_vector));
+	}
 
-	/// vec3
+	////////////////////////////////////////////////////////////////////////
+	///
+	/// @fn template <> inline void Programme::lierUniforme(std::string attribute_name, glm::vec3 const& uniform_vector)
+	///
+	/// Permet de lier une valeur à une uniforme des nuanceurs.
+	///
+	/// @param[in] attribute_name : le nom de l'uniforme
+	/// @param[in]  uniform_vector : la valeur de l'uniforme.
+	///
+	/// @return Aucune.
+	///
+	////////////////////////////////////////////////////////////////////////
 	template <>
-	void Programme::lierUniforme(std::string nomUniforme, glm::vec3 const& uniform_vector);
+	inline void Programme::lierUniforme(std::string attribute_name, glm::vec3 const& uniform_vector)
+	{
+		glProgramUniform3fv(handle_, mapUniforme[attribute_name], 1, glm::value_ptr(uniform_vector));
+	}
 
-	/// vec4
+	////////////////////////////////////////////////////////////////////////
+	///
+	/// @fn template <> inline void Programme::lierUniforme(std::string attribute_name, glm::vec4 const& uniform_vector)
+	///
+	/// Permet de lier une valeur à une uniforme des nuanceurs.
+	///
+	/// @param[in] attribute_name : le nom de l'uniforme
+	/// @param[in]  uniform_vector : la valeur de l'uniforme.
+	///
+	/// @return Aucune.
+	///
+	////////////////////////////////////////////////////////////////////////
 	template <>
-	void Programme::lierUniforme(std::string nomUniforme, glm::vec4 const& uniform_vector);
+	inline void Programme::lierUniforme(std::string attribute_name, glm::vec4 const& uniform_vector)
+	{
+		glProgramUniform4fv(handle_, mapUniforme[attribute_name], 1, glm::value_ptr(uniform_vector));
+	}
 
-	/// double
+	////////////////////////////////////////////////////////////////////////
+	///
+	/// @fn template <> inline void Programme::lierUniforme(std::string attribute_name, double const& uniform_value)
+	///
+	/// Permet de lier une valeur à une uniforme des nuanceurs.
+	///
+	/// @param[in] attribute_name : le nom de l'uniforme
+	/// @param[in]  uniform_value : la valeur de l'uniforme.
+	///
+	/// @return Aucune.
+	///
+	////////////////////////////////////////////////////////////////////////
 	template <>
-	void Programme::lierUniforme(std::string nomUniforme, double const& valeurUniforme);
+	inline void Programme::lierUniforme(std::string attribute_name, double const& uniform_value)
+	{
+		glProgramUniform1d(handle_, mapUniforme[attribute_name], uniform_value);
+	}
 
-	/// dvec2
+	////////////////////////////////////////////////////////////////////////
+	///
+	/// @fn template <> inline void Programme::lierUniforme(std::string attribute_name, glm::dvec2 const& uniform_vector)
+	///
+	/// Permet de lier une valeur à une uniforme des nuanceurs.
+	///
+	/// @param[in] attribute_name : le nom de l'uniforme
+	/// @param[in]  uniform_vector : la valeur de l'uniforme.
+	///
+	/// @return Aucune.
+	///
+	////////////////////////////////////////////////////////////////////////
 	template <>
-	void Programme::lierUniforme(std::string nomUniforme, glm::dvec2 const& uniform_vector);
+	inline void Programme::lierUniforme(std::string attribute_name, glm::dvec2 const& uniform_vector)
+	{
+		glProgramUniform2dv(handle_, mapUniforme[attribute_name], 1, glm::value_ptr(uniform_vector));
+	}
 
-	/// dvec3
+	////////////////////////////////////////////////////////////////////////
+	///
+	/// @fn template <> inline void Programme::lierUniforme(std::string attribute_name, glm::dvec3 const& uniform_vector)
+	///
+	/// Permet de lier une valeur à une uniforme des nuanceurs.
+	///
+	/// @param[in] attribute_name : le nom de l'uniforme
+	/// @param[in]  uniform_vector : la valeur de l'uniforme.
+	///
+	/// @return Aucune.
+	///
+	////////////////////////////////////////////////////////////////////////
 	template <>
-	void Programme::lierUniforme(std::string nomUniforme, glm::dvec3 const& uniform_vector);
+	inline void Programme::lierUniforme(std::string attribute_name, glm::dvec3 const& uniform_vector)
+	{
+		glProgramUniform3dv(handle_, mapUniforme[attribute_name], 1, glm::value_ptr(uniform_vector));
+	}
 
-	/// dvec4
+	////////////////////////////////////////////////////////////////////////
+	///
+	/// @fn template <> inline void Programme::lierUniforme(std::string attribute_name, glm::dvec4 const& uniform_vector)
+	///
+	/// Permet de lier une valeur à une uniforme des nuanceurs.
+	///
+	/// @param[in] attribute_name : le nom de l'uniforme
+	/// @param[in]  uniform_vector : la valeur de l'uniforme.
+	///
+	/// @return Aucune.
+	///
+	////////////////////////////////////////////////////////////////////////
 	template <>
-	void Programme::lierUniforme(std::string nomUniforme, glm::dvec4 const& uniform_vector);
+	inline void Programme::lierUniforme(std::string attribute_name, glm::dvec4 const& uniform_vector)
+	{
+		glProgramUniform4dv(handle_, mapUniforme[attribute_name], 1, glm::value_ptr(uniform_vector));
+	}
 
-	/// mat2
+
+	////////////////////////////////////////////////////////////////////////
+	///
+	/// @fn template <> inline void Programme::lierUniforme(std::string attribute_name, glm::mat2 const& uniform_matrix)
+	///
+	/// Permet de lier une valeur à une uniforme des nuanceurs.
+	///
+	/// @param[in] attribute_name : le nom de l'uniforme
+	/// @param[in]  uniform_matrix : la valeur de l'uniforme.
+	///
+	/// @return Aucune.
+	///
+	////////////////////////////////////////////////////////////////////////
 	template <>
-	void Programme::lierUniforme(std::string nomUniforme, glm::mat2 const& uniform_matrix);
+	inline void Programme::lierUniforme(std::string attribute_name, glm::mat2 const& uniform_matrix)
+	{
+		glProgramUniformMatrix2fv(handle_, mapUniforme[attribute_name], 1, false, glm::value_ptr(uniform_matrix));
+	}
 
-	/// mat2x3
+	////////////////////////////////////////////////////////////////////////
+	///
+	/// @fn template <> inline void Programme::lierUniforme(std::string attribute_name, glm::mat2x3 const& uniform_matrix)
+	///
+	/// Permet de lier une valeur à une uniforme des nuanceurs.
+	///
+	/// @param[in] attribute_name : le nom de l'uniforme
+	/// @param[in]  uniform_matrix : la valeur de l'uniforme.
+	///
+	/// @return Aucune.
+	///
+	////////////////////////////////////////////////////////////////////////
 	template <>
-	void Programme::lierUniforme(std::string nomUniforme, glm::mat2x3 const& uniform_matrix);
+	inline void Programme::lierUniforme(std::string attribute_name, glm::mat2x3 const& uniform_matrix)
+	{
+		glProgramUniformMatrix2x3fv(handle_, mapUniforme[attribute_name], 1, false, glm::value_ptr(uniform_matrix));
+	}
 
-	/// mat2x4
+	////////////////////////////////////////////////////////////////////////
+	///
+	/// @fn template <> inline void Programme::lierUniforme(std::string attribute_name, glm::mat2x4 const& uniform_matrix)
+	///
+	/// Permet de lier une valeur à une uniforme des nuanceurs.
+	///
+	/// @param[in] attribute_name : le nom de l'uniforme
+	/// @param[in]  uniform_matrix : la valeur de l'uniforme.
+	///
+	/// @return Aucune.
+	///
+	////////////////////////////////////////////////////////////////////////
 	template <>
-	void Programme::lierUniforme(std::string nomUniforme, glm::mat2x4 const& uniform_matrix);
+	inline void Programme::lierUniforme(std::string attribute_name, glm::mat2x4 const& uniform_matrix)
+	{
+		glProgramUniformMatrix2x4fv(handle_, mapUniforme[attribute_name], 1, false, glm::value_ptr(uniform_matrix));
+	}
 
-	/// mat3
+	////////////////////////////////////////////////////////////////////////
+	///
+	/// @fn template <> inline void Programme::lierUniforme(std::string attribute_name, glm::mat3 const& uniform_matrix)
+	///
+	/// Permet de lier une valeur à une uniforme des nuanceurs.
+	///
+	/// @param[in] attribute_name : le nom de l'uniforme
+	/// @param[in]  uniform_matrix : la valeur de l'uniforme.
+	///
+	/// @return Aucune.
+	///
+	////////////////////////////////////////////////////////////////////////
 	template <>
-	void Programme::lierUniforme(std::string nomUniforme, glm::mat3 const& uniform_matrix);
+	inline void Programme::lierUniforme(std::string attribute_name, glm::mat3 const& uniform_matrix)
+	{
+		glProgramUniformMatrix3fv(handle_, mapUniforme[attribute_name], 1, false, glm::value_ptr(uniform_matrix));
+	}
 
-	/// mat3x2
+	////////////////////////////////////////////////////////////////////////
+	///
+	/// @fn template <> inline void Programme::lierUniforme(std::string attribute_name, glm::mat3x2 const& uniform_matrix)
+	///
+	/// Permet de lier une valeur à une uniforme des nuanceurs.
+	///
+	/// @param[in] attribute_name : le nom de l'uniforme
+	/// @param[in]  uniform_matrix : la valeur de l'uniforme.
+	///
+	/// @return Aucune.
+	///
+	////////////////////////////////////////////////////////////////////////
 	template <>
-	void Programme::lierUniforme(std::string nomUniforme, glm::mat3x2 const& uniform_matrix);
+	inline void Programme::lierUniforme(std::string attribute_name, glm::mat3x2 const& uniform_matrix)
+	{
+		glProgramUniformMatrix3x2fv(handle_, mapUniforme[attribute_name], 1, false, glm::value_ptr(uniform_matrix));
+	}
 
-	/// mat3x4
+	////////////////////////////////////////////////////////////////////////
+	///
+	/// @fn template <> inline void Programme::lierUniforme(std::string attribute_name, glm::mat3x4 const& uniform_matrix)
+	///
+	/// Permet de lier une valeur à une uniforme des nuanceurs.
+	///
+	/// @param[in] attribute_name : le nom de l'uniforme
+	/// @param[in]  uniform_matrix : la valeur de l'uniforme.
+	///
+	/// @return Aucune.
+	///
+	////////////////////////////////////////////////////////////////////////
 	template <>
-	void Programme::lierUniforme(std::string nomUniforme, glm::mat3x4 const& uniform_matrix);
+	inline void Programme::lierUniforme(std::string attribute_name, glm::mat3x4 const& uniform_matrix)
+	{
+		glProgramUniformMatrix3x4fv(handle_, mapUniforme[attribute_name], 1, false, glm::value_ptr(uniform_matrix));
+	}
 
-	/// mat4
+	////////////////////////////////////////////////////////////////////////
+	///
+	/// @fn template <> inline void Programme::lierUniforme(std::string attribute_name, glm::mat4 const& uniform_matrix)
+	///
+	/// Permet de lier une valeur à une uniforme des nuanceurs.
+	///
+	/// @param[in] attribute_name : le nom de l'uniforme
+	/// @param[in]  uniform_matrix : la valeur de l'uniforme.
+	///
+	/// @return Aucune.
+	///
+	////////////////////////////////////////////////////////////////////////
 	template <>
-	void Programme::lierUniforme(std::string nomUniforme, glm::mat4 const& uniform_matrix);
+	inline void Programme::lierUniforme(std::string attribute_name, glm::mat4 const& uniform_matrix)
+	{
+		glProgramUniformMatrix4fv(handle_, mapUniforme[attribute_name], 1, false, glm::value_ptr(uniform_matrix));
+	}
 
-	/// mat4x2
+	////////////////////////////////////////////////////////////////////////
+	///
+	/// @fn template <> inline void Programme::lierUniforme(std::string attribute_name, glm::mat4x2 const& uniform_matrix)
+	///
+	/// Permet de lier une valeur à une uniforme des nuanceurs.
+	///
+	/// @param[in] attribute_name : le nom de l'uniforme
+	/// @param[in]  uniform_matrix : la valeur de l'uniforme.
+	///
+	/// @return Aucune.
+	///
+	////////////////////////////////////////////////////////////////////////
 	template <>
-	void Programme::lierUniforme(std::string nomUniforme, glm::mat4x2 const& uniform_matrix);
+	inline void Programme::lierUniforme(std::string attribute_name, glm::mat4x2 const& uniform_matrix)
+	{
+		glProgramUniformMatrix4x2fv(handle_, mapUniforme[attribute_name], 1, false, glm::value_ptr(uniform_matrix));
+	}
 
-	/// mat4x3
+	////////////////////////////////////////////////////////////////////////
+	///
+	/// @fn template <> inline void Programme::lierUniforme(std::string attribute_name,, glm::mat4x3 const& uniform_matrix)
+	///
+	/// Permet de lier une valeur à une uniforme des nuanceurs.
+	///
+	/// @param[in] attribute_name : le nom de l'uniforme
+	/// @param[in]  uniform_matrix : la valeur de l'uniforme.
+	///
+	/// @return Aucune.
+	///
+	////////////////////////////////////////////////////////////////////////
 	template <>
-	void Programme::lierUniforme(std::string nomUniforme, glm::mat4x3 const& uniform_matrix);
+	inline void Programme::lierUniforme(std::string attribute_name, glm::mat4x3 const& uniform_matrix)
+	{
+		glProgramUniformMatrix4x3fv(handle_, mapUniforme[attribute_name], 1, false, glm::value_ptr(uniform_matrix));
+	}
 
-	/// dmat2
+	////////////////////////////////////////////////////////////////////////
+	///
+	/// @fn template <> inline void Programme::lierUniforme(std::string attribute_name, glm::dmat2 const& uniform_matrix)
+	///
+	/// Permet de lier une valeur à une uniforme des nuanceurs.
+	///
+	/// @param[in] attribute_name : le nom de l'uniforme
+	/// @param[in]  uniform_matrix : la valeur de l'uniforme.
+	///
+	/// @return Aucune.
+	///
+	////////////////////////////////////////////////////////////////////////
 	template <>
-	void Programme::lierUniforme(std::string nomUniforme, glm::dmat2 const& uniform_matrix);
+	inline void Programme::lierUniforme(std::string attribute_name, glm::dmat2 const& uniform_matrix)
+	{
+		glProgramUniformMatrix2dv(handle_, mapUniforme[attribute_name], 1, false, glm::value_ptr(uniform_matrix));
+	}
 
-	/// dmat2x3
+	////////////////////////////////////////////////////////////////////////
+	///
+	/// @fn template <> inline void Programme::lierUniforme(std::string attribute_name, glm::dmat2x3 const& uniform_matrix)
+	///
+	/// Permet de lier une valeur à une uniforme des nuanceurs.
+	///
+	/// @param[in] attribute_name : le nom de l'uniforme
+	/// @param[in]  uniform_matrix : la valeur de l'uniforme.
+	///
+	/// @return Aucune.
+	///
+	////////////////////////////////////////////////////////////////////////
 	template <>
-	void Programme::lierUniforme(std::string nomUniforme, glm::dmat2x3 const& uniform_matrix);
+	inline void Programme::lierUniforme(std::string attribute_name, glm::dmat2x3 const& uniform_matrix)
+	{
+		glProgramUniformMatrix2x3dv(handle_, mapUniforme[attribute_name], 1, false, glm::value_ptr(uniform_matrix));
+	}
 
-	/// dmat2x4
+	////////////////////////////////////////////////////////////////////////
+	///
+	/// @fn template <> inline void Programme::lierUniforme(std::string attribute_name, glm::dmat2x4 const& uniform_matrix)
+	///
+	/// Permet de lier une valeur à une uniforme des nuanceurs.
+	///
+	/// @param[in] attribute_name : le nom de l'uniforme
+	/// @param[in]  uniform_matrix : la valeur de l'uniforme.
+	///
+	/// @return Aucune.
+	///
+	////////////////////////////////////////////////////////////////////////
 	template <>
-	void Programme::lierUniforme(std::string nomUniforme, glm::dmat2x4 const& uniform_matrix);
+	inline void Programme::lierUniforme(std::string attribute_name, glm::dmat2x4 const& uniform_matrix)
+	{
+		glProgramUniformMatrix2x4dv(handle_, mapUniforme[attribute_name], 1, false, glm::value_ptr(uniform_matrix));
+	}
 
-	/// dmat3
+	////////////////////////////////////////////////////////////////////////
+	///
+	/// @fn template <> inline void Programme::lierUniforme(std::string attribute_name, glm::dmat3 const& uniform_matrix)
+	///
+	/// Permet de lier une valeur à une uniforme des nuanceurs.
+	///
+	/// @param[in] attribute_name : le nom de l'uniforme
+	/// @param[in]  uniform_matrix : la valeur de l'uniforme.
+	///
+	/// @return Aucune.
+	///
+	////////////////////////////////////////////////////////////////////////
 	template <>
-	void Programme::lierUniforme(std::string nomUniforme, glm::dmat3 const& uniform_matrix);
+	inline void Programme::lierUniforme(std::string attribute_name, glm::dmat3 const& uniform_matrix)
+	{
+		glProgramUniformMatrix3dv(handle_, mapUniforme[attribute_name], 1, false, glm::value_ptr(uniform_matrix));
+	}
 
-	/// dmat3x2
+	////////////////////////////////////////////////////////////////////////
+	///
+	/// @fn template <> inline void Programme::lierUniforme(std::string attribute_name, glm::dmat3x2 const& uniform_matrix)
+	///
+	/// Permet de lier une valeur à une uniforme des nuanceurs.
+	///
+	/// @param[in] attribute_name : le nom de l'uniforme
+	/// @param[in]  uniform_matrix : la valeur de l'uniforme.
+	///
+	/// @return Aucune.
+	///
+	////////////////////////////////////////////////////////////////////////
 	template <>
-	void Programme::lierUniforme(std::string nomUniforme, glm::dmat3x2 const& uniform_matrix);
+	inline void Programme::lierUniforme(std::string attribute_name, glm::dmat3x2 const& uniform_matrix)
+	{
+		glProgramUniformMatrix3x2dv(handle_, mapUniforme[attribute_name], 1, false, glm::value_ptr(uniform_matrix));
+	}
 
-	/// dmat3x4
+	////////////////////////////////////////////////////////////////////////
+	///
+	/// @fn template <> inline void Programme::lierUniforme(std::string attribute_name, glm::dmat3x4 const& uniform_matrix)
+	///
+	/// Permet de lier une valeur à une uniforme des nuanceurs.
+	///
+	/// @param[in] attribute_name : le nom de l'uniforme
+	/// @param[in]  uniform_matrix : la valeur de l'uniforme.
+	///
+	/// @return Aucune.
+	///
+	////////////////////////////////////////////////////////////////////////
 	template <>
-	void Programme::lierUniforme(std::string nomUniforme, glm::dmat3x4 const& uniform_matrix);
+	inline void Programme::lierUniforme(std::string attribute_name, glm::dmat3x4 const& uniform_matrix)
+	{
+		glProgramUniformMatrix3x4dv(handle_, mapUniforme[attribute_name], 1, false, glm::value_ptr(uniform_matrix));
+	}
 
-	/// dmat4
+	////////////////////////////////////////////////////////////////////////
+	///
+	/// @fn template <> inline void Programme::lierUniforme(std::string attribute_name, glm::dmat4 const& uniform_matrix)
+	///
+	/// Permet de lier une valeur à une uniforme des nuanceurs.
+	///
+	/// @param[in] attribute_name : le nom de l'uniforme
+	/// @param[in]  uniform_matrix : la valeur de l'uniforme.
+	///
+	/// @return Aucune.
+	///
+	////////////////////////////////////////////////////////////////////////
 	template <>
-	void Programme::lierUniforme(std::string nomUniforme, glm::dmat4 const& uniform_matrix);
+	inline void Programme::lierUniforme(std::string attribute_name, glm::dmat4 const& uniform_matrix)
+	{
+		glProgramUniformMatrix4dv(handle_, mapUniforme[attribute_name], 1, false, glm::value_ptr(uniform_matrix));
+	}
 
-	/// dmat4x2
+	////////////////////////////////////////////////////////////////////////
+	///
+	/// @fn template <> inline void Programme::lierUniforme(std::string attribute_name, glm::dmat4x2 const& uniform_matrix)
+	///
+	/// Permet de lier une valeur à une uniforme des nuanceurs.
+	///
+	/// @param[in] attribute_name : le nom de l'uniforme
+	/// @param[in]  uniform_matrix : la valeur de l'uniforme.
+	///
+	/// @return Aucune.
+	///
+	////////////////////////////////////////////////////////////////////////
 	template <>
-	void Programme::lierUniforme(std::string nomUniforme, glm::dmat4x2 const& uniform_matrix);
+	inline void Programme::lierUniforme(std::string attribute_name, glm::dmat4x2 const& uniform_matrix)
+	{
+		glProgramUniformMatrix4x2dv(handle_, mapUniforme[attribute_name], 1, false, glm::value_ptr(uniform_matrix));
+	}
 
-	/// dmat4x3
+	////////////////////////////////////////////////////////////////////////
+	///
+	/// @fn template <> inline void Programme::lierUniforme(std::string attribute_name, glm::dmat4x3 const& uniform_matrix)
+	///
+	/// Permet de lier une valeur à une uniforme des nuanceurs.
+	///
+	/// @param[in] attribute_name : le nom de l'uniforme
+	/// @param[in]  uniform_matrix : la valeur de l'uniforme.
+	///
+	/// @return Aucune.
+	///
+	////////////////////////////////////////////////////////////////////////
 	template <>
-	void Programme::lierUniforme(std::string nomUniforme, glm::dmat4x3 const& uniform_matrix);
-
+	inline void Programme::lierUniforme(std::string attribute_name, glm::dmat4x3 const& uniform_matrix)
+	{
+		glProgramUniformMatrix4x3dv(handle_, mapUniforme[attribute_name], 1, false, glm::value_ptr(uniform_matrix));
+	}
 
 	namespace debug{
 		/// Affiche les info de débug

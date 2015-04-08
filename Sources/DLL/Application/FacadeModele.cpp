@@ -51,8 +51,8 @@ Yonni Chen <BR>
 #include "../Visiteurs/VisiteurDebug.h"
 #include "../Arbre/Noeuds/NoeudRessort.h"
 #include "../Global/JoueurVirtuel.h"
-#include "../Eclairage/Lumiere.h"
-#include "../Eclairage/ProgrammeINF2990.h"
+#include "../Eclairage/ControleurNuanceurs.h"
+#include "../Eclairage/ControleurLumieres.h"
 
 #include "VueOrtho.h"
 #include "VuePerspective.h"
@@ -105,8 +105,12 @@ FacadeModele* FacadeModele::obtenirInstance(bool console)
 		instance_->joueur_ = new JoueurVirtuel();
 		instance_->quad_ = new QuadTree(glm::dvec3(coinGaucheTableX, coinGaucheTableY, 0),
 										glm::dvec3(coinDroitTableX,  coinDroitTableY,  0));
-		instance_->originator_ = new Originator();
-		instance_->progNuanceur_ = new ProgrammeINF2990();
+
+		instance_->controleurLumieres_ = new ControleurLumieres();
+		instance_->originator_ = new Originator(instance_->arbre_);
+		//instance_->controleurTexte_ = new ControleurTexte();
+
+
 
 		if (console)
 			instance_->old_ = std::cout.rdbuf(instance_->oss_.rdbuf());
@@ -149,6 +153,7 @@ FacadeModele::~FacadeModele()
 	delete proprietes_;
 	delete joueur_;
 	delete quad_;
+	delete controleurLumieres_;
 	delete controleurTexte_;
 	if (instance_->old_ != nullptr)
 		std::cout.rdbuf(instance_->old_);
@@ -197,17 +202,13 @@ void FacadeModele::initialiserOpenGL(HWND hWnd)
 	glEnable(GL_COLOR_MATERIAL);
 	/// Pour normaliser les normales dans le cas d'utilisation de glScale[fd]
 	glEnable(GL_NORMALIZE);
-	Lumiere lumiere(GL_LIGHT1);
-	// lumiere.definir();
-	// progNuanceur_->initialiser();
-	// progNuanceur_->activer();
 
-	// Pour voir le spot, commenter le glEnable(GL_LIGHT0) et decommenter la ligne suivante.
-	// La c'est sans shaders, donc c'est normal que ca soit weird car je n'ai pas de controle sur le 
-	// calcul d'eclairage. Par exemple, la table semble ne pas etre eclairee, mais c'est parce qu'elle 
-	// n'est pas subdivisee.
+	/// Initialisation des lumieres et du programme de nuanceurs.
+	ControleurNuanceurs::obtenirInstance()->initialiser();
+	controleurLumieres_->initialiserLumieres();
+
+	/// Activation de GL_LIGHT0 pour le mode sans nuanceurs.
 	glEnable(GL_LIGHT0);
-	// lumiere.enable();
 
 	// Qualite
 	glShadeModel(GL_SMOOTH);
@@ -255,6 +256,7 @@ void FacadeModele::initialiserOpenGL(HWND hWnd)
 void FacadeModele::libererOpenGL()
 {
 	utilitaire::CompteurAffichage::libererInstance();
+	ControleurNuanceurs::libererInstance();
 
 	bool succes{ aidegl::detruireContexteGL(hWnd_, hDC_, hGLRC_) };
 	assert(succes && "Le contexte OpenGL n'a pu etre detruit.");
@@ -330,7 +332,10 @@ void FacadeModele::afficherBase() const
 	glLightfv(GL_LIGHT0, GL_POSITION, glm::value_ptr(position));
 
 	// Afficher la scene.
+	controleurLumieres_->definirLumieres();
+	ControleurNuanceurs::obtenirInstance()->activer();
 	arbre_->afficher();
+	ControleurNuanceurs::obtenirInstance()->desactiver();
 
 	// On affiche le texte ici
 	if (controleurTexte_ != nullptr)
@@ -2241,6 +2246,23 @@ void FacadeModele::utiliserCameraOrbite(bool utiliseOrbite)
 //		vue_->obtenirProjection().conserverRapportAspect();
 		appliquerZoomInitial();
 		vueEstOrbite_ = utiliseOrbite;
+	}
+}
+
+
+void FacadeModele::setLight(int lum, bool state)
+{
+	switch (lum)
+	{
+	case 0:
+		(state ? controleurLumieres_->activerAmbiante() : controleurLumieres_->desactiverAmbiante());
+		break;
+	case 1:
+		(state ? controleurLumieres_->activerDirectionnelle() : controleurLumieres_->desactiverDirectionnelle());
+		break;
+	case 2:
+		(state ? controleurLumieres_->activerSpot() : controleurLumieres_->desactiverSpot());
+		break;
 	}
 }
 

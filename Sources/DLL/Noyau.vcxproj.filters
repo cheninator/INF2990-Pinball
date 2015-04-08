@@ -252,7 +252,10 @@
     <ClCompile Include="Eclairage\Lumiere.cpp">
       <Filter>Source Files\Eclairage</Filter>
     </ClCompile>
-    <ClCompile Include="Eclairage\ProgrammeINF2990.cpp">
+    <ClCompile Include="Eclairage\ControleurLumieres.cpp">
+      <Filter>Source Files\Eclairage</Filter>
+    </ClCompile>
+    <ClCompile Include="Eclairage\ControleurNuanceurs.cpp">
       <Filter>Source Files\Eclairage</Filter>
     </ClCompile>
     <ClCompile Include="Memento\CareTaker.cpp">
@@ -485,7 +488,10 @@
     <ClInclude Include="Eclairage\Lumiere.h">
       <Filter>Header Files\Eclairage</Filter>
     </ClInclude>
-    <ClInclude Include="Eclairage\ProgrammeINF2990.h">
+    <ClInclude Include="Eclairage\ControleurLumieres.h">
+      <Filter>Header Files\Eclairage</Filter>
+    </ClInclude>
+    <ClInclude Include="Eclairage\ControleurNuanceurs.h">
       <Filter>Header Files\Eclairage</Filter>
     </ClInclude>
     <ClInclude Include="Memento\CareTaker.h">

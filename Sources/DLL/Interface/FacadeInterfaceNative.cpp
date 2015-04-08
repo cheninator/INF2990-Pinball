@@ -1813,26 +1813,9 @@ extern "C"
 			FacadeModele::obtenirInstance()->printCurrentTime();
 			std::cout << " - Lumiere(s) ";
 		}
-		switch (lum) {
-		case 0:
-			if (debugLumiere)
-				std::cout << "ambiante ";
-			// TO DO: the spotlight ambiante
-			break;
-		case 1:
-			if (debugLumiere)
-				std::cout << "directionnelle ";
-			// TO DO: the spotlight directionnelle
-			break;
-		case 2:
-			if (debugLumiere)
-				std::cout << "spot ";
-			break;
-		default:
-			return false;
-			break;
-		}
+		
 		if (debugLumiere)
+		{
 			if (state == true)
 			{
 				std::cout << "ouverte(s)" << std::endl;
@@ -1841,6 +1824,10 @@ extern "C"
 			{
 				std::cout << "fermee(s)" << std::endl;
 			}
+		}
+
+		FacadeModele::obtenirInstance()->setLight(lum, state);
+
 		return true;
 	}
 
