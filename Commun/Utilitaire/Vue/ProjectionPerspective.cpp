@@ -47,6 +47,34 @@ namespace vue {
 		const glm::ivec2& coinMax)
 	{
 		std::cout << " Redimension de fenetre non implémenté \n";
+		
+		/* Portion qui provient de la projection orthographique*/
+
+		// coinMax contient les dimensions de la nouvelle fenêtree, car coinMin
+		// est essentiellement tout le temps à zéro. on établi le facteur qu'il
+		// faut élargir le viewport vers la gauche et la droite en fonction des
+		// valeurs précédentes: 
+		double xScaleFactor = coinMax[0] * 1.0 / ((xMaxCloture_ - xMinCloture_) * 1.0);
+		double yScaleFactor = coinMax[1] * 1.0 / ((yMaxCloture_ - yMinCloture_) * 1.0);
+
+		// On sauvegarde la nouvelle taille de la clotûre : 
+		if (xScaleFactor > 1)
+			xMaxCloture_ += (xScaleFactor - 1.0) * (xMaxCloture_ - xMinCloture_);
+		else if (xScaleFactor < 1)
+			xMaxCloture_ -= (1.0 - xScaleFactor) * (xMaxCloture_ - xMinCloture_);
+
+		if (yScaleFactor > 1)
+			yMaxCloture_ += (yScaleFactor - 1.0) * (yMaxCloture_ - yMinCloture_);
+		else if (yScaleFactor < 1)
+			yMaxCloture_ -= (1.0 - yScaleFactor) * (yMaxCloture_ - yMinCloture_);
+
+		/* Calculer le nouvel angle*/
+		double nouveauRatio = abs(coinMax.x - coinMin.x) * 1.0 / abs(coinMax.y - coinMin.y);
+		fovy_ = nouveauRatio;
+
+		// On update le rendu
+		appliquer();
+		mettreAJourCloture();
 	}
 
 	double ProjectionPerspective::obtenirZoomOutMax() const

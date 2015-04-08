@@ -2213,19 +2213,7 @@ void FacadeModele::utiliserCameraOrbite(bool utiliseOrbite)
 		
 		delete vue_;
 		if (utiliseOrbite)
-		{/*Créer une caméra orbite*/
-
-			/*vue_ = new vue::VueOrtho{
-				vue::Camera{
-					glm::dvec3(0, 0, 200), glm::dvec3(0, 0, 0),
-					glm::dvec3(0, 1, 0), glm::dvec3(0, 1, 0) },
-					vue::ProjectionOrtho{
-						clotMinX, clotMaxX, clotMinY, clotMaxY,
-						1, 1000, 50, 5000, 1.25,
-						double(coinGaucheTableX), double(coinGaucheTableY),
-						double(coinDroitTableX), double(coinDroitTableY) }
-			};*/
-			
+		{
 			 vue_ = new vue::VuePerspective{
 				vue::Camera{
 					glm::dvec3((coinGaucheTableX + coinDroitTableX) / 2.0, 
@@ -2246,11 +2234,12 @@ void FacadeModele::utiliserCameraOrbite(bool utiliseOrbite)
 					}
 			}; 
 			 vue_->obtenirCamera().assignerPhi(utilitaire::DEG_TO_RAD(90.0));
-			//vue_->appliquerCamera();
+			
 			std::cout << "La vue est passee en orbite \n";
 		}
 		else
-		{/*Créer une caméra ortho*/
+		{
+			/*Créer une caméra ortho*/
 			vue_ = new vue::VueOrtho{
 				vue::Camera{
 					glm::dvec3(0, 0, 200), glm::dvec3(0, 0, 0),
@@ -2265,7 +2254,6 @@ void FacadeModele::utiliserCameraOrbite(bool utiliseOrbite)
 			appliquerZoomInitial();
 			std::cout << "La vue est passee en orthographique \n";
 		}
-//		vue_->obtenirProjection().conserverRapportAspect();
 		vueEstOrbite_ = utiliseOrbite;
 	}
 }
