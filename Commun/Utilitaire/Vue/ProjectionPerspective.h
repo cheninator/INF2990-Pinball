@@ -37,8 +37,7 @@ namespace vue {
 			double zAvant, double zArriere,
 			double zoomInMax, double zoomOutMax,
 			double incrementZoom,
-			double left  , double right,
-			double bottom, double top,
+			double ratio, double fovy,
 			double Znear , double Zfar);
 
 
@@ -66,10 +65,8 @@ namespace vue {
 		virtual inline glm::ivec2 obtenirDimensionFenetreVirtuelle() const;
 
 	private:
-		double left_;
-		double right_;
-		double bottom_;
-		double top_;
+		double ratio_;
+		double fovy_;
 		double near_;
 		double far_;
 	};

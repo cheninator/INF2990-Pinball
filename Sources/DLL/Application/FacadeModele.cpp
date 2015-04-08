@@ -2206,7 +2206,11 @@ void FacadeModele::utiliserCameraOrbite(bool utiliseOrbite)
 		/*Sauvegarde des mesures de la clôture */
 		int clotMinX, clotMaxX, clotMinY, clotMaxY;
 		vue_->obtenirProjection().obtenirCoordonneesCloture(clotMinX, clotMaxX, clotMinY, clotMaxY);
-
+		
+		/* On obtient le rapport d'aspect*/
+		glm::ivec2 fenetreVirt = vue_->obtenirProjection().obtenirDimensionFenetreVirtuelle();
+		double ratio = fenetreVirt.x / fenetreVirt.y;
+		
 		delete vue_;
 		if (utiliseOrbite)
 		{/*Créer une caméra orbite*/
@@ -2234,8 +2238,11 @@ void FacadeModele::utiliserCameraOrbite(bool utiliseOrbite)
 				    0.0 , 0.0},
 					vue::ProjectionPerspective{
 						clotMinX, clotMaxX, clotMinY, clotMaxY,
-						1, 1000, 50, 2000, 1.10,
-						-400, 400, -400, 400, 10, 1000}
+						1, 1000, 50, 1000, 1.10,
+						ratio,    /* Le rapport d'aspect précédent*/
+						60.0,       /* L'angle de vision */
+						10.0, 2000.0 /* La valeur minimale et maximale en Z dans le volume de visualisation*/
+					}
 			}; 
 			 vue_->obtenirCamera().assignerPhi(utilitaire::DEG_TO_RAD(90.0));
 			//vue_->appliquerCamera();
