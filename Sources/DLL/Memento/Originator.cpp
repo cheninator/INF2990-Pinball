@@ -30,25 +30,29 @@ void Originator::annuler()
 		return;
 
 	// Obtenir la sauvegarde desiree
-	std::vector<NoeudAbstrait*> sauvegarde;
+	std::map<int, NoeudAbstrait*> sauvegarde;
 	sauvegarde = historique_->obtenirMemento(position_ - 1)->obtenirSauvegarde();
 
-	// Vider l'ancien arbre
-	arbreActuel_->getEnfant(0)->vider();
+	NoeudAbstrait* temp;
+	std::map<int, NoeudAbstrait*>::iterator iter;
 
-	// Repeupler avec les informations de sauvegarde
-	for (unsigned int i = 0; i < sauvegarde.size(); i++)
+	// Modifier l'arbre courant avec les informations de sauvegarde
+	for (iter = sauvegarde.begin(); iter != sauvegarde.end(); iter++)
 	{
-		NoeudAbstrait* noeud{ arbreActuel_->creerNoeud(sauvegarde[i]->obtenirType())};
+		temp = arbreActuel_->obtenirNoeudSelonNumero(iter->first);
 
-		// Copier les informations
-		noeud->assignerPositionRelative(sauvegarde[i]->obtenirPositionRelative());
-		noeud->assignerEchelle(sauvegarde[i]->obtenirAgrandissement());
-		noeud->assignerRotation(sauvegarde[i]->obtenirRotation());
-		noeud->setColorShift(sauvegarde[i]->getColorShift());
+		if (temp != nullptr)
+		{
+			temp->assignerPositionRelative(iter->second->obtenirPositionRelative());
+			temp->assignerEchelle(iter->second->obtenirAgrandissement());
+			temp->assignerRotationHard(iter->second->obtenirRotation());
+			temp->setColorShift(iter->second->getColorShift());
+		}
 
-		arbreActuel_->getEnfant(0)->ajouter(noeud);
+		temp = nullptr;
 	}
+
+
 
 	// Position courante dans l'historique change
 	position_--;
@@ -69,28 +73,29 @@ void Originator::retablir()
 		return;
 	
 	// Obtenir la sauvegarde desiree
-	std::vector<NoeudAbstrait*> sauvegarde;
+	std::map<int, NoeudAbstrait*> sauvegarde;
 	sauvegarde = historique_->obtenirMemento(position_ + 1)->obtenirSauvegarde();
 
-	// Vider l'ancien arbre
-	arbreActuel_->getEnfant(0)->vider();
+	NoeudAbstrait* temp;
+	std::map<int, NoeudAbstrait*>::iterator iter;
 
-	// Repeupler avec les informations de sauvegarde
-	for (unsigned int i = 0; i < sauvegarde.size(); i++)
+	// Modifier l'arbre courant avec les informations de sauvegarde
+	for (iter = sauvegarde.begin(); iter != sauvegarde.end(); iter++)
 	{
-		NoeudAbstrait* noeud{ arbreActuel_->creerNoeud(sauvegarde[i]->obtenirType()) };
+		temp = arbreActuel_->obtenirNoeudSelonNumero(iter->first);
 
-		// Copier les informations
-		noeud->assignerPositionRelative(sauvegarde[i]->obtenirPositionRelative());
-		noeud->assignerEchelle(sauvegarde[i]->obtenirAgrandissement());
-		noeud->assignerRotation(sauvegarde[i]->obtenirRotation());
-		noeud->setColorShift(sauvegarde[i]->getColorShift());
-
-		arbreActuel_->getEnfant(0)->ajouter(noeud);
+		if (temp != nullptr)
+		{
+			temp->assignerPositionRelative(iter->second->obtenirPositionRelative());
+			temp->assignerEchelle(iter->second->obtenirAgrandissement());
+			temp->assignerRotationHard(iter->second->obtenirRotation());
+			temp->setColorShift(iter->second->getColorShift());
+		}
 	}
 
 	// Position courante dans l'historique change
 	position_++;
+
 }
 
 void Originator::sauvegarder()

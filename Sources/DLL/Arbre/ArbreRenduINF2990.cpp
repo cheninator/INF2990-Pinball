@@ -450,3 +450,17 @@ std::vector<NoeudAbstrait*> ArbreRenduINF2990::obtenirElementsTable()
 
 	return listeNoeuds_;
 }
+
+
+NoeudAbstrait* ArbreRenduINF2990::obtenirNoeudSelonNumero(int numero)
+{
+	std::vector<NoeudAbstrait*> temp = obtenirElementsTable();
+
+	for (unsigned int i = 0; i < temp.size(); i++)
+	{
+		if (temp[i]->getNumero() == numero)
+			return temp[i];
+	}
+
+	return nullptr;
+}

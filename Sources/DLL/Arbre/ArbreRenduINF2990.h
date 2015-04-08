@@ -66,6 +66,9 @@ public:
    // /// Permet de savoir si l'arbre est la zone de jeu par defaut
    //bool estDefaut() const;
 
+   /// Obtenir un noeud selon son numero
+   NoeudAbstrait* obtenirNoeudSelonNumero(int numero);
+
    /// Prend une capture d'ecran de la zone de jeu
    void takeScreenShot(char* path, int width, int height, bool square = false, int maxSize = 0);
 

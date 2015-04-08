@@ -25,7 +25,7 @@ void Memento::sauvegarder(ArbreRenduINF2990* arbre)
 		noeud->assignerRotation(temp[i]->obtenirRotation());
 		noeud->setColorShift(temp[i]->getColorShift());
 
-		sauvegarde.push_back(noeud);
+		sauvegarde.insert(std::make_pair(temp[i]->getNumero(), noeud));
 	}
 
 }
