@@ -47,7 +47,6 @@ namespace InterfaceGraphique
         public static bool helpMenu = true;
         private static bool noWarnings = false;
 
-
         ////////////////////////////////////////////////////////////////////////
         ///
         /// @fn static void Main(string[] args)
@@ -124,7 +123,7 @@ namespace InterfaceGraphique
                     System.Environment.OSVersion.Version.Minor >= 1))
                     MessageBox.Show(warningMessageW, "AVERTISSEMENT", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
-           
+
             // FIN DE L'EXEMPLE A DELETE
             mMenu = new MainMenu();
             Application.Run(mMenu);

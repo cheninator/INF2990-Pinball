@@ -150,6 +150,7 @@ namespace InterfaceGraphique
             this.DoubleBuffered = false;
             this.StartPosition = FormStartPosition.WindowsDefaultBounds;
             FonctionsNatives.initialiserOpenGL(panel_GL.Handle);
+            FonctionsNatives.populateUsines();
             FonctionsNatives.dessinerOpenGL();
         }
 

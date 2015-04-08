@@ -2065,7 +2065,7 @@ extern "C"
 
 	///////////////////////////////////////////////////////////////////////////////
 	///
-	/// @fn void creeTexte(char* text, char* font)
+	/// @fn void updateText(char* oldText, int lengthO, char* newText, int lengthN)
 	/// @brief Modifie un texte existant
 	/// @param[in] oldText : Le texte a modifier
 	/// @param[in] newText : La texte apres modification
@@ -2081,7 +2081,7 @@ extern "C"
 	
 	///////////////////////////////////////////////////////////////////////////////
 	///
-	/// @fn void resize(char* text, unsigned int size)
+	/// @fn void resize(char* text, int length, unsigned int size)
 	/// @brief Modifie la taille du texte
 	/// @param[in] text : Le texte a modifier
 	/// @param[in] size : La taille a appliquer au text
@@ -2113,7 +2113,7 @@ extern "C"
 
 	///////////////////////////////////////////////////////////////////////////////
 	///
-	/// @fn void changerCouleur(char* text, float couleur[3])
+	/// @fn void changerCouleurV(char* text, int length, float couleur[3])
 	/// @brief Change la couleur du texte
 	/// @param[in] text : Le texte a modifier
 	/// @param[in] couleur : La couleur a appliquer (en RGB)
@@ -2129,7 +2129,7 @@ extern "C"
 
 	///////////////////////////////////////////////////////////////////////////////
 	///
-	/// @fn void repositionner(char* text, int x, int y)
+	/// @fn void repositionner(char* text, int length, int x, int y)
 	/// @brief Modifie la position du texte
 	/// @param[in] text : Le texte a modifier
 	/// @param[in] x : La position du texte en x
@@ -2146,7 +2146,7 @@ extern "C"
 
 	///////////////////////////////////////////////////////////////////////////////
 	///
-	/// @fn void suprimerText(char* text)
+	/// @fn void suprimerText(char* text, int length)
 	/// @brief Efface un texte du rendu
 	/// @param[in] text : Le texte a effacer
 	/// @return Aucune.
@@ -2173,6 +2173,33 @@ extern "C"
 
 	///////////////////////////////////////////////////////////////////////////////
 	///
+	/// @fn void preparerUsineArbre(char* text, int length)
+	/// @brief Cree une usine
+	/// @param[in] text L'usine a cree
+	/// @param[in] length Taille d string de l'usine
+	/// @return Aucune.
+	///
+	///////////////////////////////////////////////////////////////////////////////
+	__declspec(dllexport) void __cdecl preparerUsineArbre(char* text, int length)
+	{
+		FacadeModele::obtenirInstance()->obtenirArbreRenduINF2990()->preparerUsine(std::string(text));
+	}
+
+
+	///////////////////////////////////////////////////////////////////////////////
+	///
+	/// @fn void initialiserArbre()
+	/// @brief initialise l'arbre
+	/// @return Aucune.
+	///
+	///////////////////////////////////////////////////////////////////////////////
+	__declspec(dllexport) void __cdecl initialiserArbre()
+	{
+		FacadeModele::obtenirInstance()->obtenirArbreRenduINF2990()->initialiser();
+	}
+
+	///////////////////////////////////////////////////////////////////////////////
+	///
 	/// @fn void utiliserCameraOrbite(bool utiliseOrbite)
 	/// @brief Change l'etat de la camera
 	/// @param[in] utiliseOrbite : La valeur de l'etat a utiliser
@@ -2183,7 +2210,6 @@ extern "C"
 	{
 		FacadeModele::obtenirInstance()->utiliserCameraOrbite(utiliseOrbite);
 	}
-
 
 	__declspec(dllexport) void sauvegarderHistorique()
 	{

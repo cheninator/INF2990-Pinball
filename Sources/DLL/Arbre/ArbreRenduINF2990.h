@@ -39,6 +39,9 @@ public:
    /// Constructeur par defaut.
    ArbreRenduINF2990(bool afficher = true);
 
+   /// Preparation de l'usine
+   void preparerUsine(const std::string usine);
+
    /// Destructeur.
    virtual ~ArbreRenduINF2990();
 

@@ -225,10 +225,9 @@ void FacadeModele::initialiserOpenGL(HWND hWnd)
 	// Creation de l'arbre de rendu.  a moins d'etre completement certain
 	// d'avoir une bonne raison de faire autrement, il est plus sage de creer
 	// l'arbre apres avoir cree le contexte OpenGL.
-	std::cout << "Creation de l'arbre de rendu..." << std::endl;
 	arbre_ = new ArbreRenduINF2990;
-	std::cout << "Initialisation de l'arbre de rendu..." << std::endl;
-	arbre_->initialiser();
+	
+	//arbre_->initialiser();
 	originator_->assignerArbre(arbre_);
 
 	// On cree une vue par defaut.
@@ -242,7 +241,6 @@ void FacadeModele::initialiserOpenGL(HWND hWnd)
 				double(coinGaucheTableX), double(coinGaucheTableY),
 				double(coinDroitTableX), double(coinDroitTableY)}
 	};
-	std::cout << "Arbre de rendu generer !" << std::endl << std::endl << std::endl;
 }
 
 
@@ -1697,7 +1695,8 @@ void FacadeModele::desactiverPalettesDJ2()
 ///////////////////////////////////////////////////////////////////////////////
 void FacadeModele::supprimerBille()
 {
-	arbre_->effacer(arbre_->chercher(ArbreRenduINF2990::NOM_BILLE));
+	//arbre_->effacer(arbre_->chercher(ArbreRenduINF2990::NOM_BILLE));
+	arbre_->effacer(arbre_->chercher("bille"));
 }
 
 ///////////////////////////////////////////////////////////////////////////////

@@ -67,12 +67,10 @@ namespace InterfaceGraphique
                 //fileNames = fileNames.Remove(fileNames.Length - 4);
                 var item1 = new ListViewItem(new[] { fileNames, diff.ToString() });
                 ZonesDisponibles.Items.Add(item1);
- 
             }
             pathMap = new StringBuilder("");
+
             InitialiserConfigurations();
-
-
         }
 
         ////////////////////////////////////////////////////////////////////////

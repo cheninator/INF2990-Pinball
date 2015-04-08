@@ -1,6 +1,7 @@
-﻿using System;
-using System.Runtime.InteropServices;
+﻿using System.Runtime.InteropServices;
+using System.Windows.Forms;
 using System.Text;
+using System;
 
 namespace InterfaceGraphique
 {
@@ -27,12 +28,20 @@ namespace InterfaceGraphique
         }
         public static void Write(string text)
         {
-            Program.myCustomConsole.UpdateConsoleTexte(text);
+            if (Program.customConsoleActive)
+                Program.myCustomConsole.UpdateConsoleTexte(text);
+            else
+                Console.Write(text);
         }
         public static void WriteLine(string text)
         {
-            text += '\n';
-            Program.myCustomConsole.UpdateConsoleTexte(text);
+            if (Program.customConsoleActive)
+            {
+                text += '\n';
+                Program.myCustomConsole.UpdateConsoleTexte(text);
+            }
+            else
+                Console.WriteLine(text);
         }
         [DllImport(@"User32.dll")]
         [return: MarshalAs(UnmanagedType.Bool)]
@@ -399,5 +408,29 @@ namespace InterfaceGraphique
 
         [DllImport(@"Noyau.dll", CallingConvention = CallingConvention.Cdecl)]
         public static extern void afficherTextes(bool afficher = true);
+
+        public static void populateUsines()
+        {
+            WriteLine("Creation de l'arbre de rendu...");
+            string[] usine = System.IO.File.ReadAllLines(Application.StartupPath + @"\media\objets\liste.txt");
+            for (int i = 0; i < usine.Length; i++)
+            {
+                StringBuilder monUsine = new StringBuilder(usine[i]);
+                Write(((i * 100.0 / usine.Length).ToString("0.##") + "%...").PadLeft(13));
+                WriteLine(" ajout de l'usine " + usine[i].ToString());
+                preparerUsineArbre(monUsine, monUsine.Capacity);
+            }
+            Write("100%   ".PadLeft(13) + " Arbre de rendu cree");
+            WriteLine("");
+            WriteLine("Initialisation de l'arbre de rendu...");
+            initialiserArbre();
+            WriteLine("Arbre de rendu generer !");
+            WriteLine(""); WriteLine("");
+        }
+        [DllImport(@"Noyau.dll", CallingConvention = CallingConvention.Cdecl)]
+        private static extern void preparerUsineArbre(StringBuilder text, int length);
+
+        [DllImport(@"Noyau.dll", CallingConvention = CallingConvention.Cdecl)]
+        private static extern void initialiserArbre();
     }
 }

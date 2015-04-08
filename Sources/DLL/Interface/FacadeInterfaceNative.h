@@ -142,6 +142,9 @@ extern "C" {
 	__declspec(dllexport) void repositionner(char* text, int length, float x, float y);
 	__declspec(dllexport) void suprimerText(char* text, int length);
 	__declspec(dllexport) void afficherTextes(bool afficher = true);
+
+	__declspec(dllexport) void preparerUsineArbre(char* text, int length);
+	__declspec(dllexport) void initialiserArbre();
 }
 
 #endif // __FACADE_INTERFACE_NATIVE_H__
