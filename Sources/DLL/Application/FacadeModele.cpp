@@ -2219,7 +2219,9 @@ void FacadeModele::utiliserCameraOrbite(bool utiliseOrbite)
 			
 			 vue_ = new vue::VuePerspective{
 				vue::Camera{
-					glm::dvec3(0, 0, 200),
+					glm::dvec3((coinGaucheTableX + coinDroitTableX) / 2.0, 
+								(coinGaucheTableY + coinDroitTableY) / 2.0, 
+								200),
 					glm::dvec3( (coinGaucheTableX + coinDroitTableX) / 2.0 ,
 								(coinGaucheTableY + coinDroitTableY) / 2.0,
 								0), /* Le point visé*/

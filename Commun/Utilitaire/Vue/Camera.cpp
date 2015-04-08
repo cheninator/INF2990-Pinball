@@ -205,9 +205,13 @@ namespace vue {
 	{
 		glMatrixMode(GL_MODELVIEW);
 		glLoadIdentity();
-		gluLookAt(position_[0], position_[1], position_[2],
-			pointVise_[0], pointVise_[1], pointVise_[2],
-			directionHaut_[0], directionHaut_[1], directionHaut_[2]);
+		//	gluLookAt(position_[0], position_[1], position_[2],
+		//		pointVise_[0], pointVise_[1], pointVise_[2],
+		//		directionHaut_[0], directionHaut_[1], directionHaut_[2]);
+		glTranslated(0.0, 0.0, -dist_);
+		glRotated(180.0 / 3.1415 * phi_ - 90.0, 1.0, 0.0, 0.0);
+		glRotated(180.0 / 3.1415 * theta_, 0.0, 1.0, 0.0);
+		glTranslated(-pointVise_.x, -pointVise_.y, 0.0);
 	}
 
 	void Camera::calculerPositionOrbite()
