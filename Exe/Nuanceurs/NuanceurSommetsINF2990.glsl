@@ -1,9 +1,11 @@
 #define LUMIERE0_TOUCHE_PAS 0
 #define AMBIANTE 1
 #define DIRECTIONNELLE 2
-#define SPOT 3
-#define NB_LUMIERES 4
+#define SPOT_A 3
+#define SPOT_B 4
+#define NB_LUMIERES 5
 
+// uniform gl_LightSourceParameters gl_LightSource[5];
 
 varying vec3 normal, eyeVec;
 
@@ -23,7 +25,8 @@ void main()
 	eyeVec = normalize(-ecPosition);
 
 	lightDir[DIRECTIONNELLE] = -gl_LightSource[DIRECTIONNELLE].spotDirection.xyz;
-	lightDir[SPOT] = vec3(gl_LightSource[SPOT].position.xyz - ecPosition);
+	lightDir[SPOT_A] = vec3(gl_LightSource[SPOT_A].position.xyz - ecPosition);
+	lightDir[SPOT_B] = vec3(gl_LightSource[SPOT_B].position.xyz - ecPosition);
 
 	for(int i = AMBIANTE; i < NB_LUMIERES; i++)
 	{

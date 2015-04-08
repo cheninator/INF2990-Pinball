@@ -234,7 +234,8 @@ void FacadeModele::initialiserOpenGL(HWND hWnd)
 	vue_ = new vue::VueOrtho{
 		vue::Camera{ 
 			glm::dvec3(0, 0, 200), glm::dvec3(0, 0, 0),
-			glm::dvec3(0, 1, 0),   glm::dvec3(0, 1, 0)},
+			glm::dvec3(0, 1, 0),   glm::dvec3(0, 1, 0),
+			0.0 , 0.0 },
 		vue::ProjectionOrtho{ 
 				0, 500, 0, 500,
 				1, 1000, 50, 5000, 1.25,
@@ -332,6 +333,7 @@ void FacadeModele::afficherBase() const
 	glLightfv(GL_LIGHT0, GL_POSITION, glm::value_ptr(position));
 
 	// Afficher la scene.
+	controleurLumieres_->trackerLesBilles((NoeudTable*)arbre_->chercher(0));
 	controleurLumieres_->definirLumieres();
 	ControleurNuanceurs::obtenirInstance()->activer();
 	arbre_->afficher();
@@ -1306,7 +1308,7 @@ int FacadeModele::obtenirCentreMasseY()
 bool FacadeModele::appliquerZoomInitial()
 {
 	bool applique = false;
-	if (obtenirInstance() != nullptr)
+	if (obtenirInstance() != nullptr && vue_->obtenirProjection().estPerspective() == false)
 	{
 		vue_->zoomerInElastique(glm::dvec2(coinGaucheTableX, coinGaucheTableY), glm::ivec2(coinDroitTableX, coinDroitTableY));
 		applique = true;
@@ -2198,53 +2200,63 @@ std::string FacadeModele::obtenirCout()
 	return ss;
 }
 
+//rajouter commentaire
 void FacadeModele::utiliserCameraOrbite(bool utiliseOrbite)
 {
 	std::cout << "Méthode appelee\n";
 	if (utiliseOrbite != vueEstOrbite_)
 	{
+		/*Sauvegarde des mesures de la clôture */
+		int clotMinX, clotMaxX, clotMinY, clotMaxY;
+		vue_->obtenirProjection().obtenirCoordonneesCloture(clotMinX, clotMaxX, clotMinY, clotMaxY);
+		
+		/* On obtient le rapport d'aspect*/
+		glm::ivec2 fenetreVirt = vue_->obtenirProjection().obtenirDimensionFenetreVirtuelle();
+		double ratio = fenetreVirt.x / fenetreVirt.y;
+		
 		delete vue_;
 		if (utiliseOrbite)
-		{/*Créer une caméra orbite*/
-
-			vue_ = new vue::VueOrtho{
+		{
+			 vue_ = new vue::VuePerspective{
 				vue::Camera{
-					glm::dvec3(0, 0, 200), glm::dvec3(0, 0, 0),
-					glm::dvec3(0, 1, 0), glm::dvec3(0, 1, 0) },
-					vue::ProjectionOrtho{
-						0, 500, 0, 500,
-						1, 1000, 50, 5000, 1.25,
-						double(coinGaucheTableX), double(coinGaucheTableY),
-						double(coinDroitTableX), double(coinDroitTableY) }
-			};
-			
-			 /*vue_ = new vue::VuePerspective{
-				vue::Camera{
-					glm::dvec3(0, 0, 200), glm::dvec3(0, 0, 0),
-					glm::dvec3(0, 1, 0), glm::dvec3(0, 1, 0) },
+					glm::dvec3((coinGaucheTableX + coinDroitTableX) / 2.0, 
+								(coinGaucheTableY + coinDroitTableY) / 2.0, 
+								200),
+					glm::dvec3( (coinGaucheTableX + coinDroitTableX) / 2.0 ,
+								(coinGaucheTableY + coinDroitTableY) / 2.0,
+								100), /* Le point visé*/
+					glm::dvec3(0, 1, 0), glm::dvec3(0, 1, 0),
+				    0.0 , 0.0},
 					vue::ProjectionPerspective{
-						0, 500, 0, 500,
-						1, 1000, 50, 5000, 1.25,
-						-400, 400, -400, 400, 0, 1000 }
-			}; */
+						clotMinX, clotMaxX, clotMinY, clotMaxY,
+						10.0, 2000, /* La valeur minimale et maximale en Z dans le volume de visualisation*/
+						50, 1000,   /* La valeur minimal et maximale que l'on peut parcourir dans le jeu*/
+						1.10,       /* L'incrément de zoom*/
+						ratio,      /* Le rapport d'aspect précédent*/
+						60.0,       /* L'angle de vision */ 
+					}
+			}; 
+			 vue_->obtenirCamera().assignerPhi(utilitaire::DEG_TO_RAD(90.0));
+			
 			std::cout << "La vue est passee en orbite \n";
 		}
 		else
-		{/*Créer une caméra ortho*/
+		{
+			/*Créer une caméra ortho*/
 			vue_ = new vue::VueOrtho{
 				vue::Camera{
 					glm::dvec3(0, 0, 200), glm::dvec3(0, 0, 0),
-					glm::dvec3(0, 1, 0), glm::dvec3(0, 1, 0) },
+					glm::dvec3(0, 1, 0), glm::dvec3(0, 1, 0),
+					0.0 , 0.0 },
 					vue::ProjectionOrtho{
-						0, 500, 0, 500,
+						clotMinX, clotMaxX, clotMinY, clotMaxY,
 						1, 1000, 50, 5000, 1.25,
 						double(coinGaucheTableX), double(coinGaucheTableY),
 						double(coinDroitTableX), double(coinDroitTableY) }
 			};
+			appliquerZoomInitial();
 			std::cout << "La vue est passee en orthographique \n";
 		}
-//		vue_->obtenirProjection().conserverRapportAspect();
-		appliquerZoomInitial();
 		vueEstOrbite_ = utiliseOrbite;
 	}
 }
@@ -2288,3 +2300,7 @@ void FacadeModele::retablirModifications()
 	originator_->retablir();
 }
 
+bool FacadeModele::cameraEstOrbite()
+{
+	return vueEstOrbite_;
+}
