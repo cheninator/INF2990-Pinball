@@ -147,17 +147,15 @@ namespace vue {
 		else if (phi_ + rotationY >= utilitaire::PI)  
 		{
 			std::cout << "Angle phi trop grand : on le remet à PI \n";
-			phi_ = utilitaire::PI - 0.01;	
+			phi_ = utilitaire::PI - 0.0001;	
 		}
 		else if (phi_ + rotationY <= 0.0)
 		{
 			std::cout << "Angle phi trop petit : on le remet à 0 \n";
-			phi_ = 0.01;
+			phi_ = 0.0001;
 		}
 #endif
 		/* Les angles doivent être en radian*/
-		//gluLookAt( dist*cos(theta)*sin(phi), dist*sin(theta)*sin(phi), dist*cos(phi),   <--- TP3 INF2705
-		//gluLookAt( dist*sin(phi)*sin(theta), dist*cos(phi), dist*sin(phi)*cos(theta), 0, 1, 0, 0, 2, 0 ); <---TP4 INF2705
 		float dist = glm::distance(position_, pointVise_);
 		float deltaTheta = utilitaire::DEG_TO_RAD(rotationX);
 		float deltaPhi   = utilitaire::DEG_TO_RAD(rotationY);
@@ -202,6 +200,8 @@ namespace vue {
 
 	void Camera::calculerPositionOrbite()
 	{
+		//gluLookAt( dist*cos(theta)*sin(phi), dist*sin(theta)*sin(phi), dist*cos(phi),   <--- TP3 INF2705
+		//gluLookAt( dist*sin(phi)*sin(theta), dist*cos(phi), dist*sin(phi)*cos(theta), 0, 1, 0, 0, 2, 0 ); <---TP4 INF2705
 #if 1 /* Version du TP3*/
 		position_.x = dist_ * sin(phi_) * cos(theta_);
 		position_.y = dist_ * sin(phi_) * sin(theta_);

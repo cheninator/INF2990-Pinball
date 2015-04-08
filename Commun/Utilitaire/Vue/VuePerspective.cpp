@@ -232,6 +232,9 @@ namespace vue {
 	////////////////////////////////////////////////////////////////////////
 	void VuePerspective::rotaterXY(double rotationX, double rotationY)
 	{
+		// On veut une rotation entre 0.0 et 1.0. COmme déjà expliqué, 
+		// les valeurs habituelles de rotationX et rotationY sont 
+		// de 10.0 avec le signe correspondant
 		rotationX /= 100.0; rotationY /= 100.0;
 		camera_.orbiterXY(rotationX * 360, rotationY * 180, false);
 	}

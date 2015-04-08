@@ -632,9 +632,11 @@ extern "C"
 	////////////////////////////////////////////////////////////////////////
 	__declspec(dllexport) void __cdecl translater(double deplacementX, double deplacementY)
 	{
+		// Notez bien que cette valeur transmise est d'habitude de 10 depuis le C#
+
 		/* Si la caméra est orbite, on redirige la méthode vers celle appropriée*/
 		if (FacadeModele::obtenirInstance()->cameraEstOrbite())
-			orbite(deplacementX, deplacementY);
+			orbite(deplacementX / 10.0, deplacementY / 10.0);
 		else
 		{
 			FacadeModele::obtenirInstance()->obtenirVue()->deplacerXY(deplacementX, deplacementY);
@@ -734,7 +736,8 @@ extern "C"
 	////////////////////////////////////////////////////////////////////////
 	__declspec(dllexport) void __cdecl orbite(double x, double y)
 	{
-		std::cout << "Nouveau transmis X | Y : " << x << " | " << y << std::endl;
+		// Habituellement la valeur de x et y est de 10 depuis le C#
+		std::cout << "Deplacement  X | Y : " << x << " | " << y << std::endl;
 		FacadeModele::obtenirInstance()->obtenirVue()->rotaterXY(x, y);
 		std::cout << "Translation orbite \n \n";
 	}
