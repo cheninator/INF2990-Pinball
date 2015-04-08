@@ -36,8 +36,11 @@ void CareTaker::ecraser(int index)
 	
 	int diff = (int)historique_.size() - index - 1;
 
-	for (diff; diff != 0; diff--)
-		historique_.pop_back();
+	if (diff > historique_.size())
+	{
+		for (diff; diff != 0; diff--)
+			historique_.pop_back();
+	}
 
 }
 
