@@ -107,7 +107,7 @@ FacadeModele* FacadeModele::obtenirInstance(bool console)
 										glm::dvec3(coinDroitTableX,  coinDroitTableY,  0));
 
 		instance_->controleurLumieres_ = new ControleurLumieres();
-		instance_->originator_ = new Originator(instance_->arbre_);
+		instance_->originator_ = new Originator();
 		//instance_->controleurTexte_ = new ControleurTexte();
 
 
