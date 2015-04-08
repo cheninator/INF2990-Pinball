@@ -80,9 +80,10 @@ namespace vue {
 
 
 
-		/// Positionner la caméra (appel à gluLookAt).
-		void positionner() const;
-
+		/// Positionner la caméra (appel à gluLookAt) en mode perspective 
+		void positionnerOrbite() const;
+		/// Positionner la caméra (appel à gluLookAt) en mode ortho
+		void positionnerOrtho() const;
 
 	private:
 		/// La position de la caméra.
@@ -220,7 +221,7 @@ namespace vue {
 		// On fait le calcul des nouvelles coordonnées
 		calculerPositionOrbite();
 		// Le calcul de position ne mets pas à jour la caméra, il faut donc la repositionner
-		positionner();
+		positionnerOrbite();
 	}
 
 	inline void Camera::assignerTheta(const double theta)

@@ -89,7 +89,7 @@ namespace vue {
 	////////////////////////////////////////////////////////////////////////
 	void VuePerspective::appliquerCamera() const
 	{
-		camera_.positionner();
+		camera_.positionnerOrbite();
 	}
 
 

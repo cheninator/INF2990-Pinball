@@ -188,20 +188,20 @@ namespace vue {
 
 		// On calcule la bonne position en fonction des angles 
 		calculerPositionOrbite();
-		positionner();
+		positionnerOrbite();
 	}
 
 
 	////////////////////////////////////////////////////////////////////////
 	///
-	/// @fn void Camera::positionner() const
+	/// @fn void Camera::positionnerOrbite() const
 	///
 	/// Positionne la caméra dans la scène à l'aide de gluLookAt().
 	///
 	/// @return Aucune.
 	///
 	////////////////////////////////////////////////////////////////////////
-	void Camera::positionner() const
+	void Camera::positionnerOrbite() const
 	{
 		glMatrixMode(GL_MODELVIEW);
 		glLoadIdentity();
@@ -228,6 +228,24 @@ namespace vue {
 		position_.z = dist_ * sin(phi_) * cos(theta_);
 #endif
 
+	}
+
+	////////////////////////////////////////////////////////////////////////
+	///
+	/// @fn void Camera::positionnerOrbite() const
+	///
+	/// Positionne la caméra dans la scène à l'aide de gluLookAt().
+	///
+	/// @return Aucune.
+	///
+	////////////////////////////////////////////////////////////////////////
+	void Camera::positionnerOrtho() const
+	{
+		glMatrixMode(GL_MODELVIEW);
+		glLoadIdentity();
+		gluLookAt(position_[0], position_[1], position_[2],
+			pointVise_[0], pointVise_[1], pointVise_[2],
+			directionHaut_[0], directionHaut_[1], directionHaut_[2]);
 	}
 
 }; // Fin du namespace vue.
