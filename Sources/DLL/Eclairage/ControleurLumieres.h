@@ -12,6 +12,7 @@
 
 #include "Lumiere.h"
 
+class NoeudTable;
 
 ////////////////////////////////////////////////////////////////////////////////
 ///
@@ -55,6 +56,8 @@ public:
 	/// Desactiver la lumiere spot
 	void desactiverSpot();
 
+	void trackerLesBilles(NoeudTable* table);
+
 private:
 
 	/// Objet pour la lumiere ambiante
@@ -64,7 +67,8 @@ private:
 	Lumiere* lumDirectionnelle_;
 
 	/// Objet pour la lumiere spot
-	Lumiere* lumSpot_;
+	Lumiere* lumSpotA_;
+	Lumiere* lumSpotB_;
 
 };
 

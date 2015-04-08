@@ -1,8 +1,10 @@
 #define LUMIERE0_TOUCHE_PAS 0
 #define AMBIANTE 1
 #define DIRECTIONNELLE 2
-#define SPOT 3
-#define NB_LUMIERES 4
+#define SPOT_A 3
+#define SPOT_B 4
+
+#define NB_LUMIERES 5
 
 #define NOEUD_NORMAL 0
 #define NOEUD_COLOR_SHIFT 1
@@ -10,6 +12,7 @@
 #define NOEUD_SELECTIONNE 3
 #define NOEUD_TRANSPARENT 4
 #define NOEUD_ILLUMINE 5
+uniform gl_LightSourceParameters gl_LightSource[gl_MaxLights];
 
 uniform sampler2D laTexture;
 uniform int colorShift;
@@ -58,10 +61,16 @@ void main()
 	HV[DIRECTIONNELLE] = normalize(-L[DIRECTIONNELLE] + E);
 
 	// Lumiere Spot
-	L[SPOT] = normalize(lightDir[SPOT]);
-	R[SPOT] = normalize(reflect(L[SPOT],N));
-	HV[SPOT] = normalize(L[SPOT] + E);
-	distance[SPOT] = length(lightDir[SPOT]);
+	L[SPOT_A] = normalize(lightDir[SPOT_A]);
+	R[SPOT_A] = normalize(reflect(L[SPOT_A],N));
+	HV[SPOT_A] = normalize(L[SPOT_A] + E);
+	distance[SPOT_A] = length(lightDir[SPOT_A]);
+
+	L[SPOT_B] = normalize(lightDir[SPOT_B]);
+	R[SPOT_B] = normalize(reflect(L[SPOT_B],N));
+	HV[SPOT_B] = normalize(L[SPOT_B] + E);
+	distance[SPOT_B] = length(lightDir[SPOT_B]);
+
 
 	for(int i = AMBIANTE ; i < NB_LUMIERES; i++)
 	{
@@ -102,26 +111,47 @@ void main()
 	lumiereReflechie[DIRECTIONNELLE] += clamp(composanteDiffuse, 0.0,1.0);
 	lumiereReflechie[DIRECTIONNELLE] += clamp(composanteSpeculaire, 0.0,1.0);
 
-	// Lumiere SPOT
-	// ============
+	// Lumiere SPOT_A
+	// ==============
 
 	// Effet spot
 	// Cos de l'angle entre le rayon de lumiere et l'axe du spot
-	float cosGamma = dot( -L[SPOT], normalize(gl_LightSource[SPOT].spotDirection));
+	float cosGammaA = dot( -L[SPOT_A], normalize(gl_LightSource[SPOT_A].spotDirection));
 
 	// Variables des formules du TP pour direct3D
-	float c = gl_LightSource[SPOT].spotExponent;							// Pour racourcir les formules
-	float cosDelta = gl_LightSource[SPOT].spotCosCutoff;					// cos de l'angle d'ouverture du cone
-	float cosInner = cosDelta;
-	float cosOuter = pow(cosDelta, 1.01 + clamp(c/2.0, 0.0,4.0));	
-	float effetSpot = clamp((cosGamma - cosOuter)/(cosInner - cosOuter),0.0,1.0);  // Vaut 0 quand cosGamma == cosOuter, vaut 1 quand cosGamma == cosInner
+	float cA = gl_LightSource[SPOT_A].spotExponent;							// Pour racourcir les formules
+	float cosDeltaA = gl_LightSource[SPOT_A].spotCosCutoff;					// cos de l'angle d'ouverture du cone
+	float cosInnerA = cosDeltaA;
+	float cosOuterA = pow(cosDeltaA, 1.01 + clamp(cA/2.0, 0.0,4.0));	
+	float effetSpotA = clamp((cosGammaA - cosOuterA)/(cosInnerA - cosOuterA),0.0,1.0);  // Vaut 0 quand cosGamma == cosOuter, vaut 1 quand cosGamma == cosInner
 
-	composanteAmbiante = gl_LightSource[SPOT].ambient*textureColor; // ROUGE
-	composanteDiffuse = max(NdotL[SPOT],0.0) * gl_LightSource[SPOT].diffuse*textureColor; 
-	composanteSpeculaire = pow(max(NdotHV[SPOT], 0.0),50.0) * gl_LightSource[SPOT].specular;
-	lumiereReflechie[SPOT] += effetSpot*clamp(composanteAmbiante, 0.0, 1.0) ;
-	lumiereReflechie[SPOT] += effetSpot*clamp(composanteDiffuse, 0.0, 1.0);
-	lumiereReflechie[SPOT] += effetSpot*clamp(composanteSpeculaire, 0.0, 1.0);
+	composanteAmbiante = gl_LightSource[SPOT_A].ambient*textureColor; // ROUGE
+	composanteDiffuse = max(NdotL[SPOT_A],0.0) * gl_LightSource[SPOT_A].diffuse*textureColor; 
+	composanteSpeculaire = pow(max(NdotHV[SPOT_A], 0.0),50.0) * gl_LightSource[SPOT_A].specular;
+	lumiereReflechie[SPOT_A] += effetSpotA*clamp(composanteAmbiante, 0.0, 1.0) ;
+	lumiereReflechie[SPOT_A] += effetSpotA*clamp(composanteDiffuse, 0.0, 1.0);
+	lumiereReflechie[SPOT_A] += effetSpotA*clamp(composanteSpeculaire, 0.0, 1.0);
+
+	// Lumiere SPOT_B
+	// ==============
+
+	// Effet spot
+	// Cos de l'angle entre le rayon de lumiere et l'axe du spot
+	float cosGammaB = dot( -L[SPOT_B], normalize(gl_LightSource[SPOT_B].spotDirection));
+
+	// Variables des formules du TP pour direct3D
+	float cB = gl_LightSource[SPOT_B].spotExponent;							// Pour racourcir les formules
+	float cosDeltaB = gl_LightSource[SPOT_B].spotCosCutoff;					// cos de l'angle d'ouverture du cone
+	float cosInnerB = cosDeltaB;
+	float cosOuterB = pow(cosDeltaB, 1.01 + clamp(cB/2.0, 0.0,4.0));	
+	float effetSpotB = clamp((cosGammaB - cosOuterB)/(cosInnerB - cosOuterB),0.0,1.0);  // Vaut 0 quand cosGamma == cosOuter, vaut 1 quand cosGamma == cosInner
+
+	composanteAmbiante = gl_LightSource[SPOT_B].ambient*textureColor; // ROUGE
+	composanteDiffuse = max(NdotL[SPOT_B],0.0) * gl_LightSource[SPOT_B].diffuse*textureColor; 
+	composanteSpeculaire = pow(max(NdotHV[SPOT_B], 0.0),50.0) * gl_LightSource[SPOT_B].specular;
+	lumiereReflechie[SPOT_B] += effetSpotB*clamp(composanteAmbiante, 0.0, 1.0) ;
+	lumiereReflechie[SPOT_B] += effetSpotB*clamp(composanteDiffuse, 0.0, 1.0);
+	lumiereReflechie[SPOT_B] += effetSpotB*clamp(composanteSpeculaire, 0.0, 1.0);
 
 	// Calcul d'effets a appliquer a la couleur
 	// ========================================
@@ -145,7 +175,9 @@ void main()
 	if(etatDirectionnelle != 1)
 		couleurFinale += lumiereReflechie[DIRECTIONNELLE];
 	if(etatSpot != 1)
-		couleurFinale += lumiereReflechie[SPOT];
-
+	{
+		couleurFinale += lumiereReflechie[SPOT_A];
+		couleurFinale += lumiereReflechie[SPOT_B];
+	}
 	gl_FragColor = colorMask*couleurFinale ;
 }

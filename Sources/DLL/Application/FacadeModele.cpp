@@ -334,6 +334,7 @@ void FacadeModele::afficherBase() const
 	glLightfv(GL_LIGHT0, GL_POSITION, glm::value_ptr(position));
 
 	// Afficher la scene.
+	controleurLumieres_->trackerLesBilles((NoeudTable*)arbre_->chercher(0));
 	controleurLumieres_->definirLumieres();
 	ControleurNuanceurs::obtenirInstance()->activer();
 	arbre_->afficher();
