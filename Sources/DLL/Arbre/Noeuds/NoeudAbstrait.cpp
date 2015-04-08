@@ -5,11 +5,11 @@
 ///
 /// @ingroup Noeud
 ////////////////////////////////////////////////
-#include <GL/glew.h>
+#include "../../Eclairage/ControleurNuanceurs.h"
 #include "NoeudAbstrait.h"
 #include "Utilitaire.h"
 #include "../../Commun/Externe/glm/include/glm/gtx/Projection.hpp"
-#include "../../Eclairage/ControleurNuanceurs.h"
+
 #include "NoeudBille.h"
 
 #define NOEUD_NORMAL 0
@@ -464,12 +464,12 @@ void NoeudAbstrait::appliquerAfficher() const
 
 	if (impossible_)
 	{
-		glColorMask(0, 1, 1, 1);
+		// glColorMask(0, 1, 1, 1);
 		etat = NOEUD_IMPOSSIBLE;
 		}
 	else if (selectionne_) 
 	{
-		glTexEnvf(GL_TEXTURE_ENV, GL_TEXTURE_ENV_MODE, GL_ADD);
+		// glTexEnvf(GL_TEXTURE_ENV, GL_TEXTURE_ENV_MODE, GL_ADD);
 		etat = NOEUD_SELECTIONNE;
 		if (twin_ != nullptr && twin_ != NULL)
 			twin_->setTransparent(true);

@@ -28,14 +28,11 @@ varying vec3 lightDir[NB_LUMIERES];
 
 void main()
 {
-	vec4 colorMask = vec4(1.0);
-	if(colorShift) colorMask = vec4(0.0,0.5,1.0,1.0);
+	// Calcul de variables geometriques
+	// ================================
+
 	// Variables a calculer par fragment:
-	vec3 N = normal ;
-	if(!gl_FrontFacing)
-	{
-		N = -N;
-	} 	// vecteur normal
+	vec3 N = (gl_FrontFacing ? normal : -normal) ;
 	vec3 E = eyeVec;	// Vecteur pointant du fragment vers la caméra
 
 	// Variables a calculer par lumiere
@@ -72,28 +69,41 @@ void main()
 		NdotR[i] = dot(N,R[i]);
 	}
 
+	// Obtention de la couleur de la texture
+	// =====================================
+
 	vec4 textureColor = texture2D( laTexture, gl_TexCoord[0].st );
 
-	// Lumiere Reflechie par la lumiere ambiante:
-	vec4 lumiereReflechie[4];
+
+
+	// Calcul de lumiere:
+	// ==================
+
+	vec4 lumiereReflechie[NB_LUMIERES];
 	for(int i = AMBIANTE; i < NB_LUMIERES ; i++) 
 		lumiereReflechie[i] = vec4(0);
 
-	// Lumiere AMBIANTE:
+	// Lumiere AMBIANTE
+	// ================
+
 	vec4 composanteAmbiante = gl_LightSource[AMBIANTE].ambient*textureColor;
 	vec4 composanteDiffuse = vec4(0);
 	vec4 composanteSpeculaire = vec4(0);
 	lumiereReflechie[AMBIANTE] = composanteAmbiante;
 
 	// Lumiere DIRECTIONNELLE
+	// ======================
+
 	composanteAmbiante = gl_LightSource[DIRECTIONNELLE].ambient*textureColor;
 	composanteDiffuse = max(-NdotL[DIRECTIONNELLE], 0.0) * gl_LightSource[DIRECTIONNELLE].diffuse*textureColor;
 	composanteSpeculaire = pow(max(NdotR[DIRECTIONNELLE], 0.0),1000.0) * gl_LightSource[DIRECTIONNELLE].specular;
 	lumiereReflechie[DIRECTIONNELLE] += clamp(composanteAmbiante, 0.0,1.0);
 	lumiereReflechie[DIRECTIONNELLE] += clamp(composanteDiffuse, 0.0,1.0);
-	lumiereReflechie[DIRECTIONNELLE] +=composanteSpeculaire, 0.0,1.0;
+	lumiereReflechie[DIRECTIONNELLE] += clamp(composanteSpeculaire, 0.0,1.0);
 
 	// Lumiere SPOT
+	// ============
+
 	// Effet spot
 	// Cos de l'angle entre le rayon de lumiere et l'axe du spot
 	float cosGamma = dot( -L[SPOT], normalize(gl_LightSource[SPOT].spotDirection));
@@ -112,17 +122,29 @@ void main()
 	lumiereReflechie[SPOT] += effetSpot*clamp(composanteDiffuse, 0.0, 1.0);
 	lumiereReflechie[SPOT] += effetSpot*clamp(composanteSpeculaire, 0.0, 1.0);
 
+	// Calcul d'effets a appliquer a la couleur
+	// ========================================
 
-	// if(lightDir[SPOT].z > 10 || lightDir[SPOT].z < -10) discard;
-	// if(distance[SPOT] > 100) discard;
+	vec4 colorMask = vec4(1.0);
+	if(colorShift == 1) colorMask = vec4(0.0,0.5,1.0,1.0);
+	if(etatNoeud == NOEUD_IMPOSSIBLE) colorMask = vec4(1.0,0.5,0.5,1.0);
+	float colorMultiplier = 1.0;
+	if(etatNoeud == NOEUD_SELECTIONNE || etatNoeud == NOEUD_ILLUMINE)
+		colorMask *= vec4( 2.5, 3.5, 2.5, 1.0);
+	if(etatNoeud == NOEUD_TRANSPARENT)
+		colorMask *= vec4(1.0, 0.5, 1.0, 1.0);
+
+	// Calcul de la couleur finale du fragment selon les lumieres et les effets.
+	// =========================================================================
 
 	vec4 couleurFinale = vec4(0);
-	if(etatAmbiante)
-	couleurFinale += lumiereReflechie[AMBIANTE];
-	if(etatDirectionnelle)
-	couleurFinale += lumiereReflechie[DIRECTIONNELLE];
-	if(etatSpot == 1)
-	couleurFinale += lumiereReflechie[SPOT];
+
+	if(etatAmbiante != 1)
+		couleurFinale += lumiereReflechie[AMBIANTE];
+	if(etatDirectionnelle != 1)
+		couleurFinale += lumiereReflechie[DIRECTIONNELLE];
+	if(etatSpot != 1)
+		couleurFinale += lumiereReflechie[SPOT];
+
 	gl_FragColor = colorMask*couleurFinale ;
-	// gl_FragColor = gl_LightSource[1].ambient * texture2D( laTexture, gl_TexCoord[0].st ); // vec4(0.7,0.7,0.7,1.0);
 }
