@@ -2229,12 +2229,12 @@ void FacadeModele::utiliserCameraOrbite(bool utiliseOrbite)
 								200),
 					glm::dvec3( (coinGaucheTableX + coinDroitTableX) / 2.0 ,
 								(coinGaucheTableY + coinDroitTableY) / 2.0,
-								0), /* Le point visé*/
+								100), /* Le point visé*/
 					glm::dvec3(0, 1, 0), glm::dvec3(0, 1, 0),
 				    0.0 , 0.0},
 					vue::ProjectionPerspective{
 						clotMinX, clotMaxX, clotMinY, clotMaxY,
-						1, 1000, 50, 5000, 1.25,
+						1, 1000, 50, 2000, 1.10,
 						-400, 400, -400, 400, 10, 1000}
 			}; 
 			 vue_->obtenirCamera().assignerPhi(utilitaire::DEG_TO_RAD(90.0));

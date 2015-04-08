@@ -29,7 +29,7 @@ namespace vue {
 	{
 		glMatrixMode(GL_PROJECTION);
 		glLoadIdentity();
-		gluPerspective(60, 1.6, 1, 1000);
+		gluPerspective(60, 1.6, 1, 2000);
 	}
 
 	void ProjectionPerspective::zoomerIn()
@@ -51,5 +51,21 @@ namespace vue {
 		const glm::ivec2& coinMax)
 	{
 		std::cout << " Redimension de fenetre non implémenté \n";
+	}
+
+	double ProjectionPerspective::obtenirZoomOutMax() const
+	{
+		return zoomOutMax_;
+	}
+
+	double ProjectionPerspective::obtenirZoomInMax() const
+	{
+		return zoomInMax_;
+	}
+
+	double ProjectionPerspective::obtenirIncrementZoom() const
+	{
+		// S'assurer de ne pas renvoyer une valeur nulle
+		return (incrementZoom_ != 0.0 ? incrementZoom_ : 1);
 	}
 };

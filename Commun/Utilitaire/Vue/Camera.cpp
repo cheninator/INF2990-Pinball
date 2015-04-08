@@ -47,9 +47,9 @@ namespace vue {
 		directionHaut_{ directionHautCamera },
 		directionHautMonde_{ directionHautMonde },
 		theta_{angleTheta},
-		phi_{anglePhi}
-	{
-		dist_ = 300.0;
+		phi_{anglePhi},
+		dist_{position.z}
+	{		
 	}
 
 
@@ -210,7 +210,7 @@ namespace vue {
 		//		directionHaut_[0], directionHaut_[1], directionHaut_[2]);
 		glTranslated(0.0, 0.0, -dist_);
 		glRotated(180.0 / 3.1415 * phi_ - 90.0, 1.0, 0.0, 0.0);
-		glRotated(180.0 / 3.1415 * theta_, 0.0, 0.0, 1.0);
+		glRotated(180.0 / 3.1415 * theta_, 0.0, 1.0, 0.0);
 		glTranslated(-pointVise_.x, -pointVise_.y, 0.0);
 	}
 

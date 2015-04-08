@@ -738,7 +738,8 @@ extern "C"
 	{
 		// Habituellement la valeur de x et y est de 10 depuis le C#
 		std::cout << "Deplacement  X | Y : " << x << " | " << y << std::endl;
-		FacadeModele::obtenirInstance()->obtenirVue()->rotaterXY(x, y);
+		/// En theta, pour correspondre à une rotation dans le sens de la flèche il faut envoyer l'opposé
+		FacadeModele::obtenirInstance()->obtenirVue()->rotaterXY( -1 * x, y);
 		std::cout << "Translation orbite \n \n";
 	}
 

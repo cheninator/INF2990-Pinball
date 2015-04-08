@@ -51,6 +51,12 @@ namespace vue {
 			const glm::ivec2& coinMax);
 		/// Application de la projection.
 		virtual void appliquer() const;
+		/// Obtenir la valeur minimale du zoom
+		double obtenirZoomOutMax() const;
+		/// Obtenir la valeur maximale du zoom
+		double obtenirZoomInMax() const;
+		/// Obtenir le facteur de zoom
+		double obtenirIncrementZoom() const;
 
 		void tiltLeft(double deplacement);
 		void tiltRight(double deplacement);
