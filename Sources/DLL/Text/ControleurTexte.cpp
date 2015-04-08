@@ -32,7 +32,7 @@ void ControleurTexte::populateFontVector(std::string targetPath)
 	std::vector<std::string> f;
 
 	FILE* pipe = NULL;
-	std::string pCmd = "dir /B /S " + std::string(d);
+	std::string pCmd = "dir /B /S \"" + std::string(d) + char(34);
 	char buf[256];
 
 	if (NULL == (pipe = _popen(pCmd.c_str(), "rt")))

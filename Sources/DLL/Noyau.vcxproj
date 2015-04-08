@@ -158,8 +158,9 @@
     <ClCompile Include="Arbre\Noeuds\NoeudAbstrait.cpp" />
     <ClCompile Include="Arbre\Noeuds\NoeudComposite.cpp" />
     <ClCompile Include="Configuration\ConfigScene.cpp" />
+    <ClCompile Include="Eclairage\ControleurLumieres.cpp" />
     <ClCompile Include="Eclairage\Lumiere.cpp" />
-    <ClCompile Include="Eclairage\ProgrammeINF2990.cpp" />
+    <ClCompile Include="Eclairage\ControleurNuanceurs.cpp" />
     <ClCompile Include="Global\JoueurVirtuel.cpp" />
     <ClCompile Include="Global\SingletonGlobal.cpp" />
     <ClCompile Include="Interface\FacadeInterfaceNative.cpp" />
@@ -235,8 +236,9 @@
     <ClInclude Include="Arbre\Noeuds\NoeudAbstrait.h" />
     <ClInclude Include="Arbre\Noeuds\NoeudComposite.h" />
     <ClInclude Include="Configuration\ConfigScene.h" />
+    <ClInclude Include="Eclairage\ControleurLumieres.h" />
     <ClInclude Include="Eclairage\Lumiere.h" />
-    <ClInclude Include="Eclairage\ProgrammeINF2990.h" />
+    <ClInclude Include="Eclairage\ControleurNuanceurs.h" />
     <ClInclude Include="Global\JoueurVirtuel.h" />
     <ClInclude Include="Global\SingletonGlobal.h" />
     <ClInclude Include="Interface\FacadeInterfaceNative.h" />

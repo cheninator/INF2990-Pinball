@@ -1,27 +1,61 @@
+//////////////////////////////////////////////////////////////////////////////
+/// @file Lumiere.cpp
+/// @author The Ballers
+/// @date 2015-03-27
+/// @version 1.0 
+///
+/// @ingroup Eclairage
+//////////////////////////////////////////////////////////////////////////////
+
+
 #include "Lumiere.h"
 #include <cassert>
 #include <iostream>
 
+
+////////////////////////////////////////////////////////////////////////
+///
+/// @fn Lumiere::Lumiere(GLuint handle)
+///
+/// @brief Construit un objet Lumiere avec un handle OpenGL
+///
+/// @remarks Doit être un handle entre GL_LIGHT1 et GL_LIGHT7
+///
+/// @return aucun.
+///
+////////////////////////////////////////////////////////////////////////
 Lumiere::Lumiere(GLuint handle)
 {
 	assert(GL_LIGHT1 <= handle && handle <= GL_LIGHT7);
 	handle_ = handle;
 
-	ambient_ = glm::fvec4{ 1.0f, 1.0f, 1.0f, 1.0f };
-	diffuse_ = glm::fvec4{ 1.0f, 1.0f, 1.0f, 1.0f };
-	specular_ = glm::fvec4{ 1.0f, 1.0f, 1.0f, 1.0f };
+	ambient_ = glm::fvec4{ 1.0f, 1.0f, 1.0f, 1.0f };		// GL_AMBIENT
+	diffuse_ = glm::fvec4{ 1.0f, 1.0f, 1.0f, 1.0f };		// GL_DIFFUSE
+	specular_ = glm::fvec4{ 1.0f, 1.0f, 1.0f, 1.0f };		// GL_SPECULAR
 
-	spotPosition_ = glm::fvec3{ 50.0f, -47.0f, 30.0f };
-	spotDirection_ = glm::fvec3{ 0.5f, .0f, -1.0f };
+	position_ = glm::fvec4{ 50.0f, -47.0f, 30.0f ,1.0};		// GL_SPOT_POSITION
+	direction_ = glm::fvec4{ 0.5f, .0f, -1.0f, 1.0 };		// GL_SPOT_DIRECTION
 
-	spotExponent_ = 1.0f;			               // GL_SPOT_EXPONENT
-	spotCutoffAngle_ = 15.0f;                    // GL_SPOT_CUTOFF 
-	constantAttenuation_ = 1.0f;              // GL_CONSTANT_ATTENUATION
-	linearAttenuation_ = 0.0f;              // GL_LINEAR_ATTENUATION
-	quadraticAttenuation_ = 0.0f;
+	spotExponent_ = 1.0f;			// GL_SPOT_EXPONENT
+	spotCutoffAngle_ = 30.0f;		// GL_SPOT_CUTOFF 
+	attenuation_[0] = 1.0f;			// GL_CONSTANT_ATTENUATION
+	attenuation_[1] = 0.0f;			// GL_LINEAR_ATTENUATION
+	attenuation_[2] = 0.0f;			// GL_QUADRATI_ATTENUATION
 }
 
-
+////////////////////////////////////////////////////////////////////////
+///
+/// @fn void Lumiere::definir() 
+/// 
+/// @brief Envoi les attributs de la lumiere au serveur OpenGL.
+/// 
+/// @remark Les coordonnees sont multiplies automatiquement par la 
+/// matrice de modelisation courrante.  On doit donc definir la lumiere
+/// apres avoir defini la camera.
+/// 
+/// @return aucun.
+///
+////////////////////////////////////////////////////////////////////////
 void Lumiere::definir()
 {
 	// vec4
@@ -30,22 +64,29 @@ void Lumiere::definir()
 	glLightfv(handle_, GL_SPECULAR, glm::value_ptr(specular_));
 
 	// vec3
-	glLightfv(handle_, GL_POSITION, glm::value_ptr(spotPosition_));
-	glLightfv(handle_, GL_SPOT_DIRECTION, glm::value_ptr(spotDirection_));
+	glLightfv(handle_, GL_POSITION, glm::value_ptr(position_));
+	glLightfv(handle_, GL_SPOT_DIRECTION, glm::value_ptr(direction_));
 
 	// Floats
 	glLightf(handle_, GL_SPOT_EXPONENT, spotExponent_);
 	glLightf(handle_, GL_SPOT_CUTOFF, spotCutoffAngle_);
-	glLightf(handle_, GL_CONSTANT_ATTENUATION, constantAttenuation_);
-	glLightf(handle_, GL_LINEAR_ATTENUATION, linearAttenuation_);
-	glLightf(handle_, GL_QUADRATIC_ATTENUATION, quadraticAttenuation_);
+	glLightf(handle_, GL_CONSTANT_ATTENUATION, attenuation_[0]);
+	glLightf(handle_, GL_LINEAR_ATTENUATION, attenuation_[1]);
+	glLightf(handle_, GL_QUADRATIC_ATTENUATION, attenuation_[2]);
 
-
-}
-
-void Lumiere::enable()
-{
-	std::cout << "Lumiere a la position ( " << spotPosition_.x << " , " << spotPosition_.y << " , " << spotPosition_.z << " )." << std::endl;
-	glEnable(handle_);
+	
+#if(0)
+	glDisable(GL_LIGHTING);
+	glDisable(GL_TEXTURE_2D);
+	glEnable(GL_POINT_SMOOTH);
+	glPointSize(50.0f);
+	glColor4f(1.0f, 1.0f, 0.7f, 1.0f);
+	glBegin(GL_POINTS);
+		glVertex3f(position_.x, position_.y, position_.z);
+	glEnd();
+	glColor4f(0.0f, 0.0f, 0.0f, 1.0f);
+	glEnable(GL_LIGHTING);
+	glEnable(GL_TEXTURE_2D);
+#endif
 
 }
