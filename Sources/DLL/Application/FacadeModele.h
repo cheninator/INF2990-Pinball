@@ -304,7 +304,7 @@ private:
    std::vector<NoeudAbstrait*> listeRessorts_;
 
    ProgrammeINF2990* progNuanceur_;
-   ControleurTexte* controleurTexte_;
+   ControleurTexte* controleurTexte_{ nullptr };
 };
 
 

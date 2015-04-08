@@ -107,7 +107,6 @@ FacadeModele* FacadeModele::obtenirInstance(bool console)
 										glm::dvec3(coinDroitTableX,  coinDroitTableY,  0));
 		instance_->originator_ = new Originator();
 		instance_->progNuanceur_ = new ProgrammeINF2990();
-		instance_->controleurTexte_ = new ControleurTexte();
 
 		if (console)
 			instance_->old_ = std::cout.rdbuf(instance_->oss_.rdbuf());
@@ -334,7 +333,8 @@ void FacadeModele::afficherBase() const
 	arbre_->afficher();
 
 	// On affiche le texte ici
-	controleurTexte_->refreshAffichage();
+	if (controleurTexte_ != nullptr)
+		controleurTexte_->refreshAffichage();
 
 	// fuck that shit... si je met cette ligne la dans le .h ca compile plus...
 	// TODO bouger shit dans l'API et le C#, pis juste appeler afficherTexte();
@@ -2181,6 +2181,8 @@ double FacadeModele::obtenirScaleMinMax()
 ////////////////////////////////////////////////////////////////////////
 ControleurTexte* FacadeModele::obtenircontroleurTexte()
 {
+	if (controleurTexte_ == nullptr)
+		instance_->controleurTexte_ = new ControleurTexte();
 	return controleurTexte_;
 }
 
