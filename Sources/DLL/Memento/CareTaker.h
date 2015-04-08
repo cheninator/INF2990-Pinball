@@ -31,7 +31,7 @@ public:
 	~CareTaker();
 
 	/// Ajouter une sauvegarde dans l'historique
-	void ajouter(Memento* memento);
+	bool ajouter(Memento* memento);
 
 	/// Ecrase les sauvegarde anterieurs a partir d'un index
 	void ecraser(int index);

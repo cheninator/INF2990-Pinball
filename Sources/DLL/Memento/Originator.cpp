@@ -103,8 +103,8 @@ void Originator::sauvegarder()
 	// La sauvegarde courante est deja la derniere sauvegarde
 	if (position_ + 1 == historique_->size())
 	{
-		historique_->ajouter(new Memento(arbreActuel_));
-		position_++;
+		if(!(historique_->ajouter(new Memento(arbreActuel_))))
+			position_++;
 	}
 
 	// On est au debut

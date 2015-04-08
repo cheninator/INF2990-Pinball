@@ -11,10 +11,10 @@ CareTaker::~CareTaker()
 	vider();
 }
 
-void CareTaker::ajouter(Memento* memento)
+bool CareTaker::ajouter(Memento* memento)
 {
 	if (memento == nullptr)
-		return;
+		return false;
 
 	if (historique_.size() < tailleMax)
 		historique_.push_back(memento);
@@ -23,7 +23,10 @@ void CareTaker::ajouter(Memento* memento)
 	{
 		historique_.pop_front();
 		historique_.push_back(memento);
+		return true;
 	}
+
+	return false;
 }
 
 void CareTaker::ecraser(int index)
