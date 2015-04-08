@@ -117,42 +117,22 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="label1.Text" xml:space="preserve">
-    <value>PAIN BALL:
+  <data name="labelAccueil.Text" xml:space="preserve">
+    <value>                         PAINBALL v 1.3.37
 
-Mode editeur:
+                               Mode Éditeur
 
-Pour pouvoir creer un objet, il suffit de cliquer sur le bouton Paneau de Creation et choisir l'objet voulu parmi la liste dans le menu a droite.
-Les differents Outils peuvent etre choisis dans le menu Outils, la barre d'Outils ou a l'aide des raccourcis.
-Le deplacement de la vue se fait avec un drag-drop avec le bouton droit de la souris ou avec les fleches du clavier.
-Le zoom se fait avec les boutons + et - ou la roulette de la souris lorsqu'on est dans le mode Zoom.
-Pour une selection multiple, se mettre dans le mode Selection et faire un drag-drop avec le bouton gauche pour creer un rectange elastique.	
-Pour un zoom avec un rectangle elastique, se mettre dans le mode Zoom et faire un drag-drop avec le bouton gauche pour creer un rectange elastique.	
-Pour pouvoir appliquer une modifiction, il suffit de choisir l'outil desire.
-L'outil Deplacement deplace un ou plusieurs objets dans la table avec un drag-drop avec le bouton gauche.
-L'outil Rotation tourne un ou plusieurs objets dans la table avec un drag-drop avec le bouton gauche.
-L'outil Mise a echelle change la taille d'un ou plusieurs objets dans la table avec un drag-drop avec le bouton gauche.
-L'outil Duplication duplique un ou plusieurs objets dans la table. L'outil cree une etampe qui suit la souris.
-</value>
-  </data>
-  <data name="label2.Text" xml:space="preserve">
-    <value>              Touches:
-Outils:
-S = Selection
-C = Duplication
-R = Rotation 
-D = Translation 
-E = Mise a echelle
-Z = Zoom vue
-+/- = Zoom avant/arriere
-Fleches = Deplacement vue
+        Ceci est un outil de création et de modification de zones de jeu pour notre de jeu  de Billard Électronique. 
+        Ce menu d'aide permet de  vous familiariser  avec  l'utilisateur de  cet outil. Chaque  onglet  présente  des  informations sur  l'utilisation précise du logiciel d'édition. 
+        Vous pouvez à tout moment, appuyer sur F1 pour obtenir ce  menu et trouver  de l'aide sur le sujet désiré.
 
-Divers:
-F = Plein Ecran
-M = Mute
-P = Montrer/Cacher le paneau creation
-H = Montrer/Cacher l'aide
-</value>
+
+                               Mode Test
+
+        Ceci est un outil supplémentaire qui est disponible avec  le  mode Éditeur. En  mode  Test,  vous  pouvez   essayer la zone de jeu que vous modifiez. 
+        Le mode  Test se joue toujours en  mode  Solo  et vous disposez à un nombre infini de billes. 
+        Vous pouvez faire pause avec le bouton Échapper et réinitialiser la zone de jeu avec Retour Arrière.
+        Pour plus d'information sur les raccourcis en mode Test, veuillez voir l'onglet RACCOURCIS.</value>
   </data>
   <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
   <data name="$this.Icon" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">

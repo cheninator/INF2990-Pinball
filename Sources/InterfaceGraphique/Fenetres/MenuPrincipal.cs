@@ -14,7 +14,7 @@ using System.Text;
 using System.Threading;
 using System.Windows.Forms;
 
-//<CAMERA> TO DO: Put back for video
+//<CAMERA> //TO DO: Put back for video
 //<CAMERA> using AForge.Video;
 //<CAMERA> using AForge.Video.DirectShow;
 
@@ -63,6 +63,7 @@ namespace InterfaceGraphique
             StartPosition = FormStartPosition.CenterScreen;
             StringBuilder initSound = new StringBuilder("");
             configuration = new Configuration();
+            this.Focus();
             //<CAMERA> webcam = new FilterInfoCollection(FilterCategory.VideoInputDevice);
             //<CAMERA> webcamTimer = new System.Windows.Forms.Timer();
             //<CAMERA> webcamTimer.Tick += new EventHandler(webcamTimer_tick);
@@ -451,6 +452,15 @@ namespace InterfaceGraphique
             //<CAMERA> cameraControl(false);
             this.Dispose();
             System.Environment.Exit(0);
+        }
+
+        private void MainMenu_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyData == Keys.F1)
+            {
+                Aide helpMenu = new Aide();
+                helpMenu.ShowDialog(this);
+            }
         }
     }
 }

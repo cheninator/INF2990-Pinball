@@ -87,14 +87,16 @@ namespace InterfaceGraphique
                                   FonctionsNatives.obtenirToucheRessort());
             Program.peutAfficher = true;
             mouvementX = 100 * (double)(this.flowLayoutPanel1.Width) / (double)this.panel1.Width;
-            mouvementY = 100 * (double)(this.menuStrip1.Height) / (double)this.panel1.Width;
+            mouvementY = 100 * (double)(this.menuStrip1.Height+this.toolStrip1.Height) / (double)this.panel1.Width;
             InitialiserAnimation();
 
             panelHeight = panel_GL.Size.Height;
             panelWidth = panel_GL.Size.Width;
 
             ReinitialiserTout();
+            fs.EnterFullScreenMode(this);
             FonctionsNatives.animerJeu(false);
+            
         }
 
 
@@ -113,7 +115,8 @@ namespace InterfaceGraphique
             pathXML = new StringBuilder("");
             this.Text = "Mode Edition - Nouvelle Zone";
             panel_GL.Select();
-            etat = new EtatEditeurNone(this);
+           // etat = new EtatEditeurNone(this);
+            etat = new EtatEditeurSelection(this);
             deselection();
             ctrlDown = false;
             altDown = false;
@@ -169,6 +172,12 @@ namespace InterfaceGraphique
             {
                 this.Invoke((MethodInvoker)delegate
                 {
+                    if (panelHeight != panel_GL.Size.Height || panelWidth != panel_GL.Size.Width)
+                    {
+                        panelHeight = panel_GL.Size.Height;
+                        panelWidth = panel_GL.Size.Width;
+                        FonctionsNatives.refreshText(panelWidth - bouton_Creation.Width, panelHeight);
+                    }
                     if (etat is EtatEditeurSelectionMultiple || etat is EtatEditeurZoomElastique)
                     {
                         if (Program.compteurFrames == 0)
@@ -180,7 +189,6 @@ namespace InterfaceGraphique
                         {
                             FonctionsNatives.resetZoom();
                             currentZoom = FonctionsNatives.obtenirZoomCourant();
-                            curZoomVal.Text = (Math.Round(currentZoom * 100) / 100).ToString();
                             Creation_Panel.Visible = true;
                         }
 
@@ -215,21 +223,20 @@ namespace InterfaceGraphique
         ////////////////////////////////////////////////////////////////////////
         private void ToucheDown(Object o, KeyEventArgs e)
         {
-            if (etat is EtatEditeurZoom || etat is EtatEditeurTest)
+           // if (etat is EtatEditeurZoom || etat is EtatEditeurTest)
+            if(true)
             {
                 if ((e.KeyData == Keys.Subtract ||
                    e.KeyCode == Keys.OemMinus))
                 {
                     FonctionsNatives.zoomOut();
                     currentZoom = FonctionsNatives.obtenirZoomCourant();
-                    curZoomVal.Text = (Math.Round(currentZoom * 100) / 100).ToString();
                 }
                 if ((e.KeyData == Keys.Add ||
                     e.KeyCode == Keys.Oemplus && e.Modifiers == Keys.Shift))
                 {
                     FonctionsNatives.zoomIn();
                     currentZoom = FonctionsNatives.obtenirZoomCourant();
-                    curZoomVal.Text = (Math.Round(currentZoom * 100) / 100).ToString();
                 }
                 if (e.KeyData == Keys.Alt)
                     altDown = true;
@@ -249,7 +256,18 @@ namespace InterfaceGraphique
 
                 else if (e.KeyData == Keys.Down)
                     FonctionsNatives.translater(0, -10);
-
+                else if (e.KeyData == Keys.Delete)
+                {
+                    bouton_Suppression.PerformClick();
+                }
+                else if (e.KeyData == Keys.D1)
+                {
+                    Orthographique_MenuItem.PerformClick();
+                }
+                else if (e.KeyData == Keys.D2)
+                {
+                    Orbite_MenuItem.PerformClick();
+                }
                 if (etat is EtatEditeurTest)
                 {
                     ToucheDownTest(o, e);
@@ -486,7 +504,8 @@ namespace InterfaceGraphique
                     {
                         FonctionsNatives.removeObject();
                         etat = null;
-                        etat = new EtatEditeurNone(this);
+                       // etat = new EtatEditeurNone(this);
+                        etat = new EtatEditeurSelection(this);
                         deselection();
                     }
                     else if (etat is EtatEditeurMur)
@@ -499,12 +518,15 @@ namespace InterfaceGraphique
                     {
                         FonctionsNatives.removeObject();
                         deselection();
-                        etat = new EtatEditeurNone(this);
+                     //   etat = new EtatEditeurNone(this);
+                        etat = new EtatEditeurSelection(this);
+
                     }
                     else
                     {
                         etat = null;
-                        etat = new EtatEditeurNone(this);
+                       // etat = new EtatEditeurNone(this);
+                        etat = new EtatEditeurSelection(this);                    
                         deselection();
                     }
 
@@ -512,6 +534,7 @@ namespace InterfaceGraphique
                 else if (e.KeyChar == 't')
                 {
                     deselection();
+                    
                     ModeTest_MenuItem.PerformClick();
                     panel_GL.Focus();
                 }
@@ -530,20 +553,19 @@ namespace InterfaceGraphique
                 {
                     Selection_MenuItem_Click(this, e);
                 }
+               
                 else if (e.KeyChar == 'p')
                 {
                     bouton_Creation_Click(this, e);
                 }
-                else if (e.KeyChar == 'm')
-                {
-                    Mute_MenuItem_Click(this, e);
-                }
+              
                 else if (e.KeyChar == 'h')
                 {
-                    if (richTextBox1.Visible)
+                    /*if (richTextBox1.Visible)
                         richTextBox1.Hide();
                     else
                         richTextBox1.Show();
+                    */
                 }
                 else if (e.KeyChar == 'z')
                 {
@@ -590,13 +612,24 @@ namespace InterfaceGraphique
         ////////////////////////////////////////////////////////////////////////
         private void Editeur_FormClosing(object sender, FormClosingEventArgs e)
         {
-            lock (Program.unLock)
+            if (MessageBox.Show("Voulez vous quitter? Tout changement non-sauvegardé sera oublié.", "Fermeture d'application", MessageBoxButtons.YesNo) == DialogResult.Yes)
             {
-                Program.peutAfficher = false;
-                FonctionsNatives.libererOpenGL();
+                lock (Program.unLock)
+                {
+                    Program.peutAfficher = false;
+                    FonctionsNatives.libererOpenGL();
+                }
+                playSound("", true);    // Stop le son
+                Program.myCustomConsole.Hide();
             }
-            playSound("", true);    // Stop le son
-            Program.myCustomConsole.Hide();
+            else
+            {
+                e.Cancel = true;
+                this.Activate();
+            } 
+            
+            
+         
         }
 
         ////////////////////////////////////////////////////////////////////////
@@ -613,16 +646,14 @@ namespace InterfaceGraphique
         ////////////////////////////////////////////////////////////////////////
         private void Aide_MenuItem_Click(object sender, EventArgs e)
         {
-            BackgroundWorker bw = new BackgroundWorker();
-            bw.WorkerReportsProgress = true;
-            bw.DoWork += new DoWorkEventHandler(
-            delegate(object o, DoWorkEventArgs args)
-            {
-                Aide aide = new Aide();
-                aide.StartPosition = FormStartPosition.CenterScreen;
-                aide.ShowDialog();
-            });
-            bw.RunWorkerAsync();
+         //   BackgroundWorker bw = new BackgroundWorker();
+         //   bw.WorkerReportsProgress = true;
+         //   bw.DoWork += new DoWorkEventHandler(
+         //   delegate(object o, DoWorkEventArgs args)
+         //   {
+             
+         //   });
+         //   bw.RunWorkerAsync();
         }
 
         ////////////////////////////////////////////////////////////////////////
@@ -931,20 +962,25 @@ namespace InterfaceGraphique
         {
             annulerModif();
             if (etat is EtatEditeurMur)
-                etat = new EtatEditeurNone(this);
+            {
+                //    etat = new EtatEditeurNone(this);
+                etat = new EtatEditeurSelection(this);
+            }
             //Console.WriteLine("Outil Creation.");
             if (Creation_Panel.Visible)
             {
+                bouton_Creation.Text = "<<<";            
                 Creation_Panel.Visible = false;
-
                 this.OnSizeChanged(e);
 
             }
             else
             {
                 Creation_Panel.Visible = true;
+                bouton_Creation.Text = ">>>";
 
             }
+            panel_GL.Focus();
         }
 
         ////////////////////////////////////////////////////////////////////////
@@ -1112,7 +1148,7 @@ namespace InterfaceGraphique
             {
                 if (FonctionsNatives.setProprietesNoeud(positionX, positionY, angle, echelle) == false)
                 {
-                    MessageBox.Show("Les modifications sont invalides", "ERREUR DE PROPRIETES",
+                    MessageBox.Show("Les modifications feront sortir l'objet de la table.", "ERREUR DE PROPRIETES",
                MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
             }
@@ -1538,7 +1574,6 @@ namespace InterfaceGraphique
         ////////////////////////////////////////////////////////////////////////
         private void Orthographique_MenuItem_Click(object sender, EventArgs e)
         {
-            //Console.WriteLine("Vue Orthoraphique.");
             FonctionsNatives.utiliserCameraOrbite(false);
         }
         ////////////////////////////////////////////////////////////////////////
@@ -1555,7 +1590,6 @@ namespace InterfaceGraphique
         ////////////////////////////////////////////////////////////////////////
         private void Orbite_MenuItem_Click(object sender, EventArgs e)
         {
-            //Console.WriteLine("Vue Orbitale.");
             FonctionsNatives.utiliserCameraOrbite(true);
         }
 
@@ -1597,6 +1631,8 @@ namespace InterfaceGraphique
             etat = null;
             etat = new EtatEditeurTest(this);
             menuStrip1.Hide();
+            toolStrip1.Hide();
+            bouton_Creation.Hide();
             FonctionsNatives.animerJeu(true);
             FonctionsNatives.rechargerArbre(false);
             FonctionsNatives.resetNombreBillesCourantes();
@@ -2083,7 +2119,9 @@ namespace InterfaceGraphique
 
             if (etat is EtatEditeurPortail && e.Button == MouseButtons.Left)
             {
-                etat = new EtatEditeurNone(this);
+                //etat = new EtatEditeurNone(this);
+                etat = new EtatEditeurSelection(this);
+                
                 FonctionsNatives.obligerTransparence(false);
                 deselection();
             }
@@ -2193,7 +2231,9 @@ namespace InterfaceGraphique
 
                 deselection();
                 panel_GL.MouseMove -= panel_MouseMove;
-                etat = new EtatEditeurNone(this);
+              //  etat = new EtatEditeurNone(this);
+                etat = new EtatEditeurSelection(this);
+
             }
             else if (etat is EtatEditeurMur && (clickExtraValide(origin, destination)))
             {
@@ -2234,7 +2274,9 @@ namespace InterfaceGraphique
         ////////////////////////////////////////////////////////////////////////
         private void panel_GL_MouseWheel(object sender, MouseEventArgs e)
         {
-            etat.traiterRoulette(e);
+           // etat.traiterRoulette(e);
+           // On peut zoomer avec la Roulette en tout temps
+            zoomRoulette(e);
 
         }
 
@@ -2347,7 +2389,6 @@ namespace InterfaceGraphique
             else if (e.Delta < 0)
                 FonctionsNatives.zoomOut();
             currentZoom = FonctionsNatives.obtenirZoomCourant();
-            curZoomVal.Text = (Math.Round(currentZoom * 100) / 100).ToString();
         }
 
         ////////////////////////////////////////////////////////////////////////
@@ -2472,7 +2513,6 @@ namespace InterfaceGraphique
             else if (altDown)
                 FonctionsNatives.zoomOutElastique(origin.X, origin.Y, destination.X, destination.Y);
             currentZoom = FonctionsNatives.obtenirZoomCourant();
-            curZoomVal.Text = (Math.Round(currentZoom * 100) / 100).ToString();
         }
 
         ////////////////////////////////////////////////////////////////////////
@@ -2604,6 +2644,7 @@ namespace InterfaceGraphique
         //////////////////////////////////////////////////////////////////////////////////////////
         public void proprietesEnable(bool active)
         {
+            Groupe_Proprietes.Visible = active;
             Xbox.Enabled = active;
             Ybox.Enabled = active;
             Anglebox.Enabled = active;
@@ -2632,6 +2673,7 @@ namespace InterfaceGraphique
         public void outilsEnable(bool active)
         {
             bouton_Deplacement.Enabled = active;
+            bouton_Suppression.Enabled = active;
             bouton_Rotation.Enabled = active;
             bouton_Scaling.Enabled = active;
             bouton_Duplication.Enabled = active;
@@ -2639,7 +2681,6 @@ namespace InterfaceGraphique
             Rotation_MenuItem.Enabled = active;
             MiseE_MenuItem.Enabled = active;
             Deplacement_MenuItem.Enabled = active;
-            Supprimer_MenuItem.Enabled = active;
         }
 
         //////////////////////////////////////////////////////////////////////////////////////////
@@ -2820,8 +2861,6 @@ namespace InterfaceGraphique
         //////////////////////////////////////////////////////////////////////////////////////////
         public void enableZoom(bool active)
         {
-            IncreaseZoomButton.Enabled = active;
-            DecreaseZoomButton.Enabled = active;
         }
 
         //////////////////////////////////////////////////////////////////////////////////////////
@@ -2882,7 +2921,6 @@ namespace InterfaceGraphique
         {
             FonctionsNatives.zoomIn();
             currentZoom = FonctionsNatives.obtenirZoomCourant();
-            curZoomVal.Text = (Math.Round(currentZoom * 100) / 100).ToString();
 
         }
 
@@ -2899,7 +2937,6 @@ namespace InterfaceGraphique
         {
             FonctionsNatives.zoomOut();
             currentZoom = FonctionsNatives.obtenirZoomCourant();
-            curZoomVal.Text = (Math.Round(currentZoom * 100) / 100).ToString();
         }
 
         //////////////////////////////////////////////////////////////////////////////////////////
@@ -2918,23 +2955,6 @@ namespace InterfaceGraphique
             }
         }
 
-        //////////////////////////////////////////////////////////////////////////////////////////
-        ///
-        /// @fn private void Mute_MenuItem_Click(object sender, EventArgs e)
-        /// @brief Fonction qui ferme ou ouvre le son
-        /// @param[in] sender : Objet duquel provient un evenement.
-        /// @param[in] e : evenement qui lance la fonction.
-        /// @return Aucune.
-        ///
-        //////////////////////////////////////////////////////////////////////////////////////////
-        private void Mute_MenuItem_Click(object sender, EventArgs e)
-        {
-            soundActif = !soundActif;
-            if (soundActif)
-                playSound("");
-            else
-                playSound("", true);
-        }
 
         //////////////////////////////////////////////////////////////////////////////////////////
         ///
@@ -2961,7 +2981,6 @@ namespace InterfaceGraphique
         //////////////////////////////////////////////////////////////////////////////////////////
         private void label_Zoom_MouseEnter(object sender, EventArgs e)
         {
-            label_Zoom.ForeColor = Color.Blue;
         }
 
         //////////////////////////////////////////////////////////////////////////////////////////
@@ -2975,7 +2994,6 @@ namespace InterfaceGraphique
         //////////////////////////////////////////////////////////////////////////////////////////
         private void label_Zoom_MouseLeave(object sender, EventArgs e)
         {
-            label_Zoom.ForeColor = Color.Black;
         }
 
         //////////////////////////////////////////////////////////////////////////////////////////
@@ -3017,7 +3035,7 @@ namespace InterfaceGraphique
         private void panel_GL_SizeChanged(object sender, EventArgs e)
         {
             mouvementX = 100 * (double)(this.flowLayoutPanel1.Width) / (double)this.panel1.Width;
-            mouvementY = 100 * (double)(this.menuStrip1.Height) / (double)this.panel1.Width;
+            mouvementY = 100 * (double)(this.menuStrip1.Height+this.toolStrip1.Height) / (double)this.panel1.Width;
         }
 
         //////////////////////////////////////////////////////////////////////////////////////////
@@ -3032,7 +3050,9 @@ namespace InterfaceGraphique
         private void toolStripMenuItem1_Click(object sender, EventArgs e)
         {
             etat = null;
-            etat = new EtatEditeurNone(this);
+           // etat = new EtatEditeurNone(this);
+            etat = new EtatEditeurSelection(this);
+
             FonctionsNatives.animerJeu(false);
             FonctionsNatives.rechargerArbre(true);
             FonctionsNatives.supprimerBille();
@@ -3041,6 +3061,8 @@ namespace InterfaceGraphique
             if (menuStrip3.Visible)
                 menuStrip3.Hide();
             menuStrip1.Show();
+            toolStrip1.Show();
+            bouton_Creation.Show();
             menu1Enable(true);
             Creation_Panel.Show();
             flowLayoutPanel1.Show();
@@ -3083,6 +3105,89 @@ namespace InterfaceGraphique
             Program.myCustomConsole.Update();
             if (Program.mMenu.modeEdit != null)
                 Program.mMenu.modeEdit.Focus();
+        }
+
+        private void toolStripButton1_Click(object sender, EventArgs e)
+        {
+            Enregistrer_MenuItem.PerformClick();
+        }
+
+        private void Information_MenuItem_Click(object sender, EventArgs e)
+        {
+            Aide aide = new Aide();
+            aide.StartPosition = FormStartPosition.CenterScreen;
+            aide.ShowDialog();
+        }
+
+        private void button_delete_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void toolStripButton2_Click(object sender, EventArgs e)
+        {
+            MenuP_MenuItem.PerformClick();
+        }
+
+        private void Nouveau_Click(object sender, EventArgs e)
+        {
+            Nouveau_MenuItem.PerformClick();
+        }
+
+        private void Ouvrir_Click(object sender, EventArgs e)
+        {
+            Ouvrir_MenuItem.PerformClick();
+        }
+
+        private void toolStripButton4_Click(object sender, EventArgs e)
+        {
+            EnregistrerS_MenuItem.PerformClick();
+        }
+
+        private void toolStripButton3_Click(object sender, EventArgs e)
+        {
+            Proprietes_MenuItem.PerformClick();
+        }
+
+        private void toolStripButton1_Click_1(object sender, EventArgs e)
+        {
+            ModeTest_MenuItem.PerformClick();
+        }
+
+        private void toolStripButton5_Click(object sender, EventArgs e)
+        {
+            FonctionsNatives.zoomIn();
+        }
+
+        private void toolStripButton6_Click(object sender, EventArgs e)
+        {
+            FonctionsNatives.zoomOut();
+        }
+
+        private void bouton_Suppression_Click(object sender, EventArgs e)
+        {
+            FonctionsNatives.removeObject();
+            deselection();
+        }
+
+        private void Group_Butoir_Enter(object sender, EventArgs e)
+        {
+
+        }
+
+        private void Group_Elements_Enter(object sender, EventArgs e)
+        {
+
+        }
+
+        private void Groupe_Proprietes_Enter(object sender, EventArgs e)
+        {
+
+        }
+
+        private void toolStripButton7_Click(object sender, EventArgs e)
+        {
+            Zoom_MenuItem.PerformClick();
         }
     }
 }

@@ -216,7 +216,10 @@ namespace InterfaceGraphique
             this.Controls.Add(this.ptsFreeBall_Label);
             this.Controls.Add(this.ptsVictoire_Label);
             this.Controls.Add(this.groupe_Collisions);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Icon = global::InterfaceGraphique.Properties.Resources.Pinball;
+            this.MaximizeBox = false;
+            this.MinimizeBox = false;
             this.Name = "Proprietes";
             this.Text = "Proprietes";
             this.groupe_Collisions.ResumeLayout(false);
