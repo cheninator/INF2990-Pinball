@@ -230,7 +230,7 @@ extern "C"
 		return utilitaire::CompteurAffichage::obtenirInstance()->obtenirAffichagesSeconde();
 	}
 
-
+	/*
 	////////////////////////////////////////////////////////////////////////
 	///
 	/// @fn bool executerTests()
@@ -245,7 +245,7 @@ extern "C"
 		bool reussite = BancTests::obtenirInstance()->executer();
 		return reussite ? 0 : 1;
 	}
-
+	*/
 	////////////////////////////////////////////////////////////////////////
 	///
 	/// @fn void creerObjet()

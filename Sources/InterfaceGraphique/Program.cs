@@ -63,7 +63,7 @@ namespace InterfaceGraphique
         {
             if (args.Length != 0)
             {
-                if (args[0] == "testsC++")
+                /*if (args[0] == "testsC++")
                 {
                     if (FonctionsNatives.executerTests())
                     {
@@ -77,7 +77,7 @@ namespace InterfaceGraphique
                     }
                     return;
                 }
-                else if (args[0] == "nowarnings")
+                else */if (args[0] == "nowarnings")
                     noWarnings = true;
             }
             if (!noWarnings)

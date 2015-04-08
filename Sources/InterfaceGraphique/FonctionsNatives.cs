@@ -55,8 +55,8 @@ namespace InterfaceGraphique
         [DllImport(@"winmm.dll", EntryPoint = "waveOutSetVolume")]
         private static extern int WaveOutSetVolume(IntPtr hwo, uint dwVolume);
 
-        [DllImport(@"Noyau.dll", CallingConvention = CallingConvention.Cdecl)]
-        public static extern bool executerTests();
+        //[DllImport(@"Noyau.dll", CallingConvention = CallingConvention.Cdecl)]
+        //public static extern bool executerTests();
 
         [DllImport(@"Noyau.dll", CallingConvention = CallingConvention.Cdecl)]
         public static extern void initialiserOpenGL(IntPtr handle);
