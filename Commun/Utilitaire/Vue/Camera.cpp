@@ -231,6 +231,16 @@ namespace vue {
 			directionHaut_[0], directionHaut_[1], directionHaut_[2]);
 	}
 
+	////////////////////////////////////////////////////////////////////////
+	///
+	/// @fn void Camera::clampAngles() 
+	///
+	/// Ajuste la valeur des angles pour qu'elle ne dépasse pas un certain 
+	/// angle. Ceci est fait pour éviter de voir l'arrière de la zone de jeu
+	///
+	/// @return Aucune.
+	///
+	////////////////////////////////////////////////////////////////////////
 	void Camera::clampAngles()
 	{
 		if (phi_ >= utilitaire::PI)
