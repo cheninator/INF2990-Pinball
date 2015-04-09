@@ -336,7 +336,6 @@ extern "C"
 															int posX, int posY, int posZ, 
 															float angleX, float angleY, float angleZ)
 	{
-
 		// Meme chose que dans creer objet, sauf que je test le nouvel objet avant de l'ajouter a l'arbre.
 		// Pour pouvoir tester l'objet avant de l'ajouter, je dois setter ses proprietes
 
@@ -350,7 +349,7 @@ extern "C"
 				return false;
 			objet_temp->setTwin(objet);
 			objet->setTwin(objet_temp);
-			objet->assignerSelection(true);
+			objet->assignerSelection(false);
 			objet->setTransparent(true);
 			objet = objet_temp;
 		}
@@ -384,7 +383,7 @@ extern "C"
 		// Tester si l'objet est legal.
 		// =============================
 		bool objetEstLegal = true;
-		glm::dvec3 boite[4];
+		/*glm::dvec3 boite[4];
 		objet->obtenirVecteursBoite(boite[0], boite[1], boite[2], boite[3]);
 		glm::dvec3 pointATester;
 		for (int i = 0; i < 4; i++)
@@ -395,7 +394,7 @@ extern "C"
 				objetEstLegal = false;
 			}
 
-		}
+		}*/
 
 		// Ajouter l'objet s'il est legal
 		// ==============================
@@ -406,6 +405,9 @@ extern "C"
 			FacadeModele::obtenirInstance()->obtenirArbreRenduINF2990()->getEnfant(0)->ajouter(objet);
 			if (nomObjet == "portail")
 				FacadeModele::obtenirInstance()->setDebug();
+
+			objet->assignerSelection(true);
+
 			return true;
 		}
 		else
@@ -414,7 +416,6 @@ extern "C"
 			// objet = nullptr;
 			return false;
 		}
-		return true;
 	}
 
 	////////////////////////////////////////////////////////////////////////

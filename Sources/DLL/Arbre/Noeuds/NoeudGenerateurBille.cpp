@@ -92,7 +92,7 @@ void NoeudGenerateurBille::animer(float temps)
 	{
 		posZinitial = abs(boite_.coinMax.z * scale_.z);
 		posZfinal = abs(boite_.coinMin.z * scale_.z);
-		positionRelative_.z = posZfinal;
+		positionRelative_.z = posZfinal - posZinitial;;
 		if (animer_)
 			enCreation_ = false;
 	}
@@ -100,7 +100,7 @@ void NoeudGenerateurBille::animer(float temps)
 	double positionCouvercleX = obtenirParent()->obtenirParent()->getEnfant(1)->obtenirPositionRelative().x;
 	if (positionCouvercleX != positionCouvercleX_)
 	{
-		positionRelative_.z = posZfinal;
+		positionRelative_.z = posZfinal - posZinitial;;
 		positionCouvercleX_ = positionCouvercleX;
 		return;
 	}
@@ -108,7 +108,7 @@ void NoeudGenerateurBille::animer(float temps)
 	if (!animer_)
 	{
 		compteurAnimation_ = 0;
-		positionRelative_.z = posZfinal;
+		positionRelative_.z = posZfinal - posZinitial;;
 		return;
 	}
 

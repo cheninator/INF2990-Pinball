@@ -410,7 +410,7 @@ namespace InterfaceGraphique
         public static extern void suprimerText(StringBuilder text, int length);
 
         [DllImport(@"Noyau.dll", CallingConvention = CallingConvention.Cdecl)]
-        public static extern void afficherTextes(bool afficher = true);
+        public static extern void afficherTextes(bool afficher = true);      
 
         public static void populateUsines()
         {

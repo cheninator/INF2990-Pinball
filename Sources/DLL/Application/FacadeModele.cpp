@@ -623,7 +623,6 @@ void FacadeModele::deplacerSelection(int x1, int y1 ,int x2, int y2, bool duplic
 			visDep.setEstDansLaTable(true);
 			duplicationHorsTable_ = false;
 		}
-
 		else
 			duplicationHorsTable_ = true;
 
@@ -1138,7 +1137,6 @@ void FacadeModele::positionnerMur(int originX, int originY,int x1, int y1, int x
 	noeud->assignerEchelle(scaleFinal);
 	noeud->assignerRotationHard(angles);
 	noeud->assignerPositionRelative(position);
-
 }
 
 
@@ -2200,10 +2198,19 @@ std::string FacadeModele::obtenirCout()
 	return ss;
 }
 
-//rajouter commentaire
+////////////////////////////////////////////////////////////////////////
+///
+/// @fn void FacadeModele::utiliserCameraOrbite(bool utiliseOrbite)
+///
+/// @brief Cette fonction change la vision pour refléter une caméra orbite ou non
+///
+/// @param[in] utiliseOrbite : Indique s'il faut utiliser une caméra orbite ou non
+///
+/// @return Aucune
+///
+////////////////////////////////////////////////////////////////////////
 void FacadeModele::utiliserCameraOrbite(bool utiliseOrbite)
 {
-	std::cout << "Méthode appelee\n";
 	if (utiliseOrbite != vueEstOrbite_)
 	{
 		/*Sauvegarde des mesures de la clôture */
@@ -2215,6 +2222,7 @@ void FacadeModele::utiliserCameraOrbite(bool utiliseOrbite)
 		double ratio = fenetreVirt.x / fenetreVirt.y;
 		
 		delete vue_;
+
 		if (utiliseOrbite)
 		{
 			 vue_ = new vue::VuePerspective{
@@ -2257,6 +2265,8 @@ void FacadeModele::utiliserCameraOrbite(bool utiliseOrbite)
 			appliquerZoomInitial();
 			std::cout << "La vue est passee en orthographique \n";
 		}
+
+		// On change l'attribut pour refléter la vue courante
 		vueEstOrbite_ = utiliseOrbite;
 	}
 }

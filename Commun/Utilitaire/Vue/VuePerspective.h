@@ -1,7 +1,7 @@
 //////////////////////////////////////////////////////////////////////////////
 /// @file VuePerspective.h
-/// @author DGI
-/// @date 2006-12-16
+/// @author The Ballers
+/// @date 2015-04-01
 /// @version 1.0
 ///
 /// @addtogroup utilitaire Utilitaire
@@ -24,8 +24,6 @@ namespace vue {
 	///
 	/// Cette classe implante le comportement attendu d'une vue perspective.
 	///
-	/// @author Martin Bisson
-	/// @date 2006-12-16
 	////////////////////////////////////////////////////////////////////////
 	class VuePerspective : public Vue
 	{

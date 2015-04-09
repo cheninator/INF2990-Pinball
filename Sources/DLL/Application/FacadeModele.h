@@ -251,7 +251,6 @@ public:
 	void retablirModifications();
 	void viderHistorique();
 
-
 private:
 
 	/// Constructeur par defaut.
