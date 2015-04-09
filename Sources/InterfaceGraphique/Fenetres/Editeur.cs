@@ -2118,6 +2118,7 @@ namespace InterfaceGraphique
 
             if (etat is EtatEditeurPortail && e.Button == MouseButtons.Left)
             {
+                FonctionsNatives.sauvegarderHistorique();
                 etat = new EtatEditeurSelection(this);
                 
                 FonctionsNatives.obligerTransparence(false);
@@ -2125,6 +2126,7 @@ namespace InterfaceGraphique
             }
             else if (etat is EtatEditeurMur)
             {
+                FonctionsNatives.sauvegarderHistorique();
                 etat = new EtatEditeurSelection(this);
                 deselection();
             }
@@ -2268,6 +2270,7 @@ namespace InterfaceGraphique
                         stateMur();
                     else
                     {
+                        FonctionsNatives.sauvegarderHistorique();
                         deselection();
                         panel_GL.MouseMove -= panel_MouseMove;
                         etat = new EtatEditeurSelection(this);
