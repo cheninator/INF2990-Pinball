@@ -151,6 +151,21 @@ namespace InterfaceGraphique
                 }
             }
 
+            public virtual bool traiterMouseDown(object sender, MouseEventArgs e)
+            {
+                return false;
+            }
+
+            public virtual bool traiterMouseUp(object sender, MouseEventArgs e)
+            {
+                return false;
+            }
+
+            public virtual bool traiterMouseMove(object sender, MouseEventArgs e)
+            {
+                return false;
+            }
+
             ////////////////////////////////////////////////////////////////////////
             ///
             /// @fn public void resetConfig()
@@ -426,6 +441,35 @@ namespace InterfaceGraphique
             }
             return true;
         }
+
+
+        public override bool traiterMouseDown(object sender, MouseEventArgs e)
+        {
+            return base.traiterMouseDown(sender, e);
+        }
+
+
+        public override bool traiterMouseUp(object sender, MouseEventArgs e)
+        {
+            return base.traiterMouseUp(sender, e);
+        }
+
+        public override bool traiterMouseMove(object sender, MouseEventArgs e)
+        {
+            return base.traiterMouseMove(sender, e);
+
+            if (e.Button == MouseButtons.Right)
+            { /*
+                double deltaX = (-(parent_.currentP.X - parent_.previousP.X)) * 100.0 / parent_.panel_GL.Size.Width;
+                double deltaY = ((currentP.Y - previousP.Y)) * 100.0 / panel_GL.Size.Height;
+                FonctionsNatives.translater(deltaX, deltaY);
+
+                previousP.X = currentP.X;
+                previousP.Y = currentP.Y;
+                currentP.X = e.X;
+                currentP.Y = e.Y;*/
+            }
+        }
     }
 
     ///////////////////////////////////////////////////////////////////////////
@@ -452,7 +496,6 @@ namespace InterfaceGraphique
         public EtatJeuDebutDePartie(ModeJeu modeJeu) : base(modeJeu)
         {
             resetConfig();
-            // TODO: Complete member initialization
         }
 
         ////////////////////////////////////////////////////////////////////////
