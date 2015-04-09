@@ -67,8 +67,8 @@ namespace InterfaceGraphique
         public int panelHeight { get; set; } ///< Hauteur de la fenetre
         public int panelWidth  { get; set; }///< Largeur de la fenetre
         public Point previousP { get; set;}
-        public Point currentP  { get; set;} 
-                                          
+        public Point currentP  { get; set;}
+        
         // Modificateurs
         public void setVisibilityMenuStrip(bool vis) { menuStrip.Visible = vis; }
         public void setCurrentZoom(double val) { currentZoom = val; }
@@ -769,6 +769,12 @@ namespace InterfaceGraphique
         private void panel_GL_MouseMove(object sender, MouseEventArgs e)
         {
             etat.traiterMouseMove(sender, e);
+        }
+
+        private void panel_GL_SizeChanged(object sender, EventArgs e)
+        {
+            panelHeight = panel_GL.Size.Height;
+            panelWidth = panel_GL.Size.Width;
         }
     }
 }

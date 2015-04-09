@@ -13,6 +13,7 @@ using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Drawing;
 using System.Windows.Forms;
 
 namespace InterfaceGraphique
@@ -445,7 +446,10 @@ namespace InterfaceGraphique
 
         public override bool traiterMouseDown(object sender, MouseEventArgs e)
         {
-            return base.traiterMouseDown(sender, e);
+            parent_.previousP = new Point(e.X, e.Y);
+            parent_.currentP = new Point(e.X, e.Y);
+            
+            return true;
         }
 
 
@@ -456,19 +460,17 @@ namespace InterfaceGraphique
 
         public override bool traiterMouseMove(object sender, MouseEventArgs e)
         {
-            return base.traiterMouseMove(sender, e);
-
             if (e.Button == MouseButtons.Right)
-            { /*
-                double deltaX = (-(parent_.currentP.X - parent_.previousP.X)) * 100.0 / parent_.panel_GL.Size.Width;
-                double deltaY = ((currentP.Y - previousP.Y)) * 100.0 / panel_GL.Size.Height;
+            { 
+                double deltaX = (-(parent_.currentP.X - parent_.previousP.X)) * 100.0 / parent_.panelWidth;
+                double deltaY = ( (parent_.currentP.Y - parent_.previousP.Y)) * 100.0 / parent_.panelHeight;
                 FonctionsNatives.translater(deltaX, deltaY);
-
-                previousP.X = currentP.X;
-                previousP.Y = currentP.Y;
-                currentP.X = e.X;
-                currentP.Y = e.Y;*/
+                
+                parent_.previousP = new Point(parent_.currentP.X, parent_.currentP.Y);
+                parent_.currentP  = new Point(e.X, e.Y);
             }
+
+            return true;
         }
     }
 
