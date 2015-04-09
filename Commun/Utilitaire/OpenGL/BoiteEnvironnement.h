@@ -13,7 +13,6 @@
 
 #include <string>
 #include "glm\fwd.hpp"
-#include "../../../Commun/Utilitaire/OpenGL/BoiteEnvironnement.h"
 
 
 namespace utilitaire {
