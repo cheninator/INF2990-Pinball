@@ -33,8 +33,8 @@ namespace vue {
 	{
 	public:
 		/// Constructeur.
-		ProjectionOrtho(int xMinCloture, int xMaxCloture,
-			int yMinCloture, int yMaxCloture,
+		ProjectionOrtho(double xMinCloture, double xMaxCloture,
+			double yMinCloture, double yMaxCloture,
 			double zAvant, double zArriere,
 			double zoomInMax, double zoomOutMax,
 			double incrementZoom,
