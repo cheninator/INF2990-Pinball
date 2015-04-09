@@ -2349,6 +2349,38 @@ void FacadeModele::viderHistorique()
 	originator_->viderHistorique();
 }
 
+
+////////////////////////////////////////////////////////////////////////
+///
+/// @fn void FacadeModele::sauvegarderHistorique()
+///
+/// @remark Cette fonction vide l'historique de modifications
+///
+/// @return Aucune
+///
+////////////////////////////////////////////////////////////////////////
+bool FacadeModele::possedeSuivant() const
+{
+	return originator_->possedeSuivant();
+}
+
+
+////////////////////////////////////////////////////////////////////////
+///
+/// @fn void FacadeModele::sauvegarderHistorique()
+///
+/// @remark Cette fonction vide l'historique de modifications
+///
+/// @return Aucune
+///
+////////////////////////////////////////////////////////////////////////
+bool FacadeModele::possedePrecedent() const
+{
+	return originator_->possedePrecedent();
+}
+
+
+
 int FacadeModele::obtenirNombreSelection() const
 {
 	return arbre_->obtenirNombreSelectionne();

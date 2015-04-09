@@ -36,6 +36,8 @@ extern "C" {
 	__declspec(dllexport) void annulerModifications();
 	__declspec(dllexport) void retablirModifications();
 	__declspec(dllexport) void viderHistorique();
+	__declspec(dllexport) bool possedeSuivant();
+	__declspec(dllexport) bool possedePrecedent();
 	__declspec(dllexport) int obtenirNombreSelection();
 
 	

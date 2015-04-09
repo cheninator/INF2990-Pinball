@@ -386,6 +386,14 @@ namespace InterfaceGraphique
         public static extern int obtenirNombreSelection();
 
         [DllImport(@"Noyau.dll", CallingConvention = CallingConvention.Cdecl)]
+        [return: MarshalAsAttribute(UnmanagedType.I1)]
+        public static extern bool possedeSuivant();
+
+        [DllImport(@"Noyau.dll", CallingConvention = CallingConvention.Cdecl)]
+        [return: MarshalAsAttribute(UnmanagedType.I1)]
+        public static extern bool possedePrecedent();
+
+        [DllImport(@"Noyau.dll", CallingConvention = CallingConvention.Cdecl)]
         public static extern void refreshText(int x, int y);
 
         [DllImport(@"Noyau.dll", CallingConvention = CallingConvention.Cdecl)]

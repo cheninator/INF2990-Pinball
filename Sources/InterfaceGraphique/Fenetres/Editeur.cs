@@ -3230,7 +3230,7 @@ namespace InterfaceGraphique
                 proprietesEnable(false);
 
             etat = new EtatEditeurSelection(this);
-
+            Annuler_ToolStrip.Enabled = (FonctionsNatives.possedePrecedent());
         }
 
         private void Retablir_ToolStrip_Click(object sender, EventArgs e)
@@ -3253,6 +3253,8 @@ namespace InterfaceGraphique
                 proprietesEnable(false);
 
             etat = new EtatEditeurSelection(this);
+
+            Annuler_ToolStrip.Enabled = (FonctionsNatives.possedeSuivant());
         }
 
         private void Supprimer_MenuItem_Click_1(object sender, EventArgs e)
@@ -3269,5 +3271,6 @@ namespace InterfaceGraphique
         {
             Retablir_ToolStrip.PerformClick();
         }
+
     }
 }

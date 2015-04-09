@@ -2226,4 +2226,14 @@ extern "C"
 		return FacadeModele::obtenirInstance()->obtenirNombreSelection();
 	}
 
+	__declspec(dllexport) bool possedeSuivant()
+	{
+		return FacadeModele::obtenirInstance()->possedeSuivant();
+	}
+
+	__declspec(dllexport) bool possedePrecedent()
+	{
+		return FacadeModele::obtenirInstance()->possedePrecedent();
+	}
+
 }// FIN DU extern "C"
