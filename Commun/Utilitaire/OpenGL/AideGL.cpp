@@ -583,7 +583,8 @@ namespace aidegl {
 			return false;
 		}
 
-		// dib32 = FreeImage_Rotate(dib32, 180);
+		dib32 = FreeImage_Rotate(dib32, 180);
+		FreeImage_FlipHorizontal(dib32);
 		unsigned int pitch{ FreeImage_GetPitch(dib32) };
 		glCreateTexture(
 			FreeImage_GetBits(dib32),
