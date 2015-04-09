@@ -776,5 +776,15 @@ namespace InterfaceGraphique
             panelHeight = panel_GL.Size.Height;
             panelWidth = panel_GL.Size.Width;
         }
+
+        private void Ortho_MenuItem_Click(object sender, EventArgs e)
+        {
+            FonctionsNatives.utiliserCameraOrbite(false);
+        }
+
+        private void Orbitale_MenuItem_Click(object sender, EventArgs e)
+        {
+            FonctionsNatives.utiliserCameraOrbite(true);
+        }
     }
 }
