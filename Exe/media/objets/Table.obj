@@ -1,6 +1,6 @@
 # Blender v2.73 (sub 0) OBJ File: ''
 # www.blender.org
-mtllib Table.mtl
+mtllib ../media/materiaux/Table.mtl
 o Cube.002_Cube.002_Material.000
 v -95.453499 -150.801300 9.487216
 v -91.100906 -143.063400 -10.512786
