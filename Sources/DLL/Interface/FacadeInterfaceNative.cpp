@@ -637,7 +637,7 @@ extern "C"
 
 		/* Si la caméra est orbite, on redirige la méthode vers celle appropriée*/
 		if (FacadeModele::obtenirInstance()->cameraEstOrbite())
-			orbite(deplacementX/5.0, deplacementY/5.0);
+			orbite(deplacementX/3.0, deplacementY/3.0);
 		else
 		{
 			FacadeModele::obtenirInstance()->obtenirVue()->deplacerXY(deplacementX, deplacementY);

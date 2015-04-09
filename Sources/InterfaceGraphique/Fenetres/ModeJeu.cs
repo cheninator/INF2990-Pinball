@@ -9,6 +9,7 @@
 
 using System;
 using System.Collections.Generic;
+using System.Drawing;
 using System.IO;
 using System.Runtime.InteropServices;
 using System.Text;
@@ -63,13 +64,18 @@ namespace InterfaceGraphique
         private static StringBuilder informations = new StringBuilder("Appuyez sur 'h' pour afficher plus d'information");
         private static StringBuilder fontArial = new StringBuilder(@"arial.tff");
 
-        public int panelHeight; ///< Hauteur de la fenetre
-        public int panelWidth; ///< Largeur de la fenetre
-
+        public int panelHeight { get; set; } ///< Hauteur de la fenetre
+        public int panelWidth  { get; set; }///< Largeur de la fenetre
+        public Point previousP { get; set;}
+        public Point currentP  { get; set;}
+        
         // Modificateurs
         public void setVisibilityMenuStrip(bool vis) { menuStrip.Visible = vis; }
         public void setCurrentZoom(double val) { currentZoom = val; }
         public void setPeutAnimer(bool activation) { peutAnimer = activation; }
+        /*public void setPreviousP(Point prevP) { previousP = prevP; }
+        public void setCurrentP(Point currP) { currentP = currP; }*/
+
 
         // Accesseurs
         public double getCurrentZoom() { return currentZoom; }
@@ -77,7 +83,10 @@ namespace InterfaceGraphique
         public bool getAmbiantLight() { return activateAmbiantLight; }
         public bool getDirectLight() { return activateDirectLight; }
         public bool getSpotLight() { return activateSpotLight; }
+       /* public Point getPreviousP() { return previousP ; }
+        public Point getCurrentP() { return currentP ; }*/
 
+        
         // Toggle des lumières
         public void toggleAmbiantLight() { activateAmbiantLight = !activateAmbiantLight; }
         public void toggleDirectLight() { activateDirectLight = !activateDirectLight; }
@@ -745,6 +754,27 @@ namespace InterfaceGraphique
             }
             else
                 Program.myCustomConsole.Hide();
+        }
+
+        private void panel_GL_MouseDown(object sender, MouseEventArgs e)
+        {
+            etat.traiterMouseDown(sender, e);
+        }
+
+        private void panel_GL_MouseUp(object sender, MouseEventArgs e)
+        {
+            etat.traiterMouseUp(sender, e);
+        }
+
+        private void panel_GL_MouseMove(object sender, MouseEventArgs e)
+        {
+            etat.traiterMouseMove(sender, e);
+        }
+
+        private void panel_GL_SizeChanged(object sender, EventArgs e)
+        {
+            panelHeight = panel_GL.Size.Height;
+            panelWidth = panel_GL.Size.Width;
         }
     }
 }
