@@ -291,13 +291,16 @@ namespace InterfaceGraphique
                 FonctionsNatives.compresserRessort();
             }
             if (e.KeyCode == Keys.Left)
-                FonctionsNatives.translater(-10, 0);
+                FonctionsNatives.translater(-1, 0);
             else if (e.KeyCode == Keys.Right)
-                FonctionsNatives.translater(10, 0);
+                FonctionsNatives.translater(1, 0);
             else if (e.KeyCode == Keys.Up)
-                FonctionsNatives.translater(0, 10);
+                FonctionsNatives.translater(0, 1);
             else if (e.KeyCode == Keys.Down)
-                FonctionsNatives.translater(0, -10);
+                FonctionsNatives.translater(0, -1);
+
+
+
 
             if ((e.KeyData == Keys.Subtract ||
                    e.KeyCode == Keys.OemMinus))
@@ -305,11 +308,21 @@ namespace InterfaceGraphique
                 FonctionsNatives.zoomOut();
                 parent_.setCurrentZoom(FonctionsNatives.obtenirZoomCourant());
             }
-            if ((e.KeyData == Keys.Add ||
+            else if ((e.KeyData == Keys.Add ||
                 e.KeyCode == Keys.Oemplus && e.Modifiers == Keys.Shift))
             {
                 FonctionsNatives.zoomIn();
                 parent_.setCurrentZoom(FonctionsNatives.obtenirZoomCourant());
+            }
+
+
+            if (e.KeyData == Keys.D1)
+            {
+                FonctionsNatives.utiliserCameraOrbite(false);
+            }
+            else if (e.KeyData == Keys.D2)
+            {
+                FonctionsNatives.utiliserCameraOrbite(true);
             }
 
             return true;
@@ -391,7 +404,7 @@ namespace InterfaceGraphique
                 FonctionsNatives.spotLight(2, parent_.getSpotLight());
             }
 
-            else if (Char.ToLower(e.KeyChar) == 'h')// && Program.playerName.ToUpper() =="ADMIN")
+            else if (Char.ToLower(e.KeyChar) == 'h' && Program.playerName.ToUpper() =="ADMIN")
             {
                 parent_.AfficherInformations();
             }
