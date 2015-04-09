@@ -241,16 +241,16 @@ namespace InterfaceGraphique
             {
 
                 if (e.KeyData == Keys.Left)
-                    FonctionsNatives.translater(-2, 0);
+                    FonctionsNatives.translater(-10, 0);
 
                 else if (e.KeyData == Keys.Right)
-                    FonctionsNatives.translater(2, 0);
+                    FonctionsNatives.translater(10, 0);
 
                 else if (e.KeyData == Keys.Up)
-                    FonctionsNatives.translater(0, 2);
+                    FonctionsNatives.translater(0, 10);
 
                 else if (e.KeyData == Keys.Down)
-                    FonctionsNatives.translater(0, -2);
+                    FonctionsNatives.translater(0, -10);
                 else if (e.KeyData == Keys.Delete)
                 {
                     bouton_Suppression.PerformClick();

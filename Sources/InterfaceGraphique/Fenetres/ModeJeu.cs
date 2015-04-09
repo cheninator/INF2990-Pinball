@@ -712,6 +712,7 @@ namespace InterfaceGraphique
             if (Program.mMenu.modeJeuMain != null)
                 Program.mMenu.modeJeuMain.Focus();
             firstStart = false;
+
         }
 
 

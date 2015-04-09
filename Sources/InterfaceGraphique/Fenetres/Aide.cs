@@ -480,6 +480,7 @@ namespace InterfaceGraphique
                         {
                             labelBase.Text = "La Vue Orthographique est une vue dans laquelle la caméra est toujours perpendiculaire à la zone de jeu." +
                                             " Vous pouvez vous déplacer à l'aide des flèches ainsi qu'avec le bouton droit de la souris appuyé.";
+                            pictureBoxBase.Image = Properties.Resources.NewMap;
                             break;
                         }
                     case 8:

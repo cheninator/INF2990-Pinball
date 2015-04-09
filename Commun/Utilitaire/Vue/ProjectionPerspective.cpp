@@ -70,7 +70,7 @@ namespace vue {
 
 		/* Calculer le nouvel angle*/
 		double nouveauRatio = abs(coinMax.x - coinMin.x) * 1.0 / abs(coinMax.y - coinMin.y);
-		fovy_ = nouveauRatio;
+		ratio_ = nouveauRatio;
 
 		// On update le rendu
 		appliquer();

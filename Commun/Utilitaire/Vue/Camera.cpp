@@ -118,7 +118,7 @@ namespace vue {
 	}
 
 
-//	#define SHOW_OUTPUT 1
+	#define SHOW_OUTPUT 1
 	////////////////////////////////////////////////////////////////////////////
 	///
 	/// @fn void Camera::orbiterXY( double rotationX, double rotationY, bool empecheInversion )
@@ -233,19 +233,19 @@ namespace vue {
 
 	void Camera::clampAngles()
 	{
-		if (phi_ >= utilitaire::PI)
+		if (phi_ >= (utilitaire::PI/2.0))
 		{
 #ifdef SHOW_OUTPUT
 			std::cout << "Angle phi trop grand : on le remet à PI \n";
 #endif
-			phi_ = utilitaire::PI - 0.0001;
+			phi_ = (utilitaire::PI/2.0) - 0.0001;
 		}
-		else if (phi_ <= 0.0)
+		else if (phi_ <= (utilitaire::PI/6.0))
 		{
 #ifdef SHOW_OUTPUT
 			std::cout << "Angle phi trop petit : on le remet à 0 \n";
 #endif
-			phi_ = 0.0001;
+			phi_ = (utilitaire::PI/6.0) +0.0001;
 		}
 		if (theta_ >= utilitaire::PI / 2.0)
 		{
