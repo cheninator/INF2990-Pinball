@@ -291,7 +291,6 @@ namespace vue {
 		const double xDroiteCoin = (coin1.x > coin2.x ? coin1.x : coin2.x);
 		const double xRatioSelectionFenetreActuelle = (xDroiteCoin - xGaucheCoin) * 1.0 / longueurFenetreActuelle;
 		
-		double longueurFenetreSelection = abs(xDroiteCoin - xGaucheCoin);
 		double nouvelleLongueurX = longueurFenetreActuelle / xRatioSelectionFenetreActuelle;
 		double proportionRelativeCoinGauche = (xGaucheCoin - xMinFenetre_) / longueurFenetreActuelle;
 
