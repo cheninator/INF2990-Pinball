@@ -227,12 +227,18 @@ void FacadeModele::initialiserOpenGL(HWND hWnd)
 	// l'arbre apres avoir cree le contexte OpenGL.
 	arbre_ = new ArbreRenduINF2990;
 	instance_->skybox_ = new utilitaire::BoiteEnvironnement(
-		"/skybox/left.jpg",
-		"/skybox/right.jpg",
-		"/skybox/top.jpg",
-		"/skybox/bottom.jpg",
-		"/skybox/front.jpg",
-		"/skybox/top.jpg"
+		//"/skybox/left.jpg",
+		//"/skybox/right.jpg",
+		//"/skybox/top.jpg",
+		//"/skybox/bottom.jpg",
+		//"/skybox/front.jpg",
+		//"/skybox/back.jpg"
+		"media/skybox/lf.jpg",
+		"media/skybox/rt.jpg",
+		"media/skybox/up.jpg",
+		"media/skybox/dn.jpg",
+		"media/skybox/ft.jpg",
+		"media/skybox/bk.jpg"
 		);
 
 	
