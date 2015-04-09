@@ -53,7 +53,7 @@ Yonni Chen <BR>
 #include "../Global/JoueurVirtuel.h"
 #include "../Eclairage/ControleurNuanceurs.h"
 #include "../Eclairage/ControleurLumieres.h"
-#include "../../../Commun/Utilitaire/BoiteEnvironnement.h"
+//#include "../../../Commun/Utilitaire/OpenGL/BoiteEnvironnement.h"
 
 #include "VueOrtho.h"
 #include "VuePerspective.h"
@@ -226,13 +226,13 @@ void FacadeModele::initialiserOpenGL(HWND hWnd)
 	// d'avoir une bonne raison de faire autrement, il est plus sage de creer
 	// l'arbre apres avoir cree le contexte OpenGL.
 	arbre_ = new ArbreRenduINF2990;
-	instance_->skybox = new BoiteEnvironnement(
+	instance_->skybox_ = new utilitaire::BoiteEnvironnement(
 		"/skybox/left.jpg",
 		"/skybox/right.jpg",
 		"/skybox/top.jpg",
 		"/skybox/bottom.jpg",
 		"/skybox/front.jpg",
-		"/skybox/top.jpg",
+		"/skybox/top.jpg"
 		);
 
 	
