@@ -148,6 +148,7 @@ namespace InterfaceGraphique
             this.printPreviewDialog1 = new System.Windows.Forms.PrintPreviewDialog();
             this.toolTipPaneauCreation = new System.Windows.Forms.ToolTip(this.components);
             this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
+            this.toolStripSeparator4 = new System.Windows.Forms.ToolStripSeparator();
             Enregistrer_ToolStrip = new System.Windows.Forms.ToolStripButton();
             this.panel1.SuspendLayout();
             this.panel_GL.SuspendLayout();
@@ -825,9 +826,10 @@ namespace InterfaceGraphique
             this.toolStripSeparator1,
             this.Annuler_ToolStrip,
             this.Retablir_ToolStrip,
+            this.toolStripSeparator3,
             this.Proprietes_ToolStrip,
             this.ModeTest_ToolStrip,
-            this.toolStripSeparator3,
+            this.toolStripSeparator4,
             this.ZoomIn_ToolStrip,
             this.ZoomOut_ToolStrip,
             this.ZoomElastique_ToolStrip});
@@ -1438,6 +1440,11 @@ namespace InterfaceGraphique
             this.printPreviewDialog1.Name = "printPreviewDialog1";
             this.printPreviewDialog1.Visible = false;
             // 
+            // toolStripSeparator4
+            // 
+            this.toolStripSeparator4.Name = "toolStripSeparator4";
+            this.toolStripSeparator4.Size = new System.Drawing.Size(6, 35);
+            // 
             // Editeur
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -1586,6 +1593,7 @@ namespace InterfaceGraphique
         private System.Windows.Forms.ToolStripMenuItem Supprimer_MenuItem;
         private System.Windows.Forms.ToolStripMenuItem Annuler_MenuItem;
         private System.Windows.Forms.ToolStripMenuItem Retablir_MenuItem;
+        private System.Windows.Forms.ToolStripSeparator toolStripSeparator4;
     }
 }
 

@@ -184,6 +184,19 @@ namespace InterfaceGraphique
             item1 = new ListViewItem(new[] { "Lumière Spot ", " L " });
             listViewShortcut.Items.Insert(28, item1);
             listViewShortcut.Items[28].Group = listViewShortcut.Groups[2];
+
+            item1 = new ListViewItem(new[] { "Déplacement", " D / Bouton Milieu " });
+            listViewShortcut.Items.Insert(2, item1);
+            listViewShortcut.Items[2].Group = listViewShortcut.Groups[0];
+
+            item1 = new ListViewItem(new[] { "Annuler", " CTRL + Z " });
+            listViewShortcut.Items.Insert(7, item1);
+            listViewShortcut.Items[7].Group = listViewShortcut.Groups[0];
+
+            item1 = new ListViewItem(new[] { "Rétablir", " CTRL + Y " });
+            listViewShortcut.Items.Insert(8, item1);
+            listViewShortcut.Items[8].Group = listViewShortcut.Groups[0];
+
         }
 
         private void listView1_SelectedIndexChanged(object sender, System.EventArgs e)
@@ -423,14 +436,16 @@ namespace InterfaceGraphique
                         {
                             labelBase.Text = "L'option Enregistrer permet d'enregistrer la zone de jeu en cours de modification." +
                                                                          "Si la zone n'a jamais été enregistrée auparavant, vous serez amenés à l'enregistrer avec un nom de votre choix." +
-                                                                         " Sinon, vos modifications seront enregistrés pardesus le fichier déjà existant.";
+                                                                         " Sinon, vos modifications seront enregistrés pardesus le fichier déjà existant."+
+                                                                         " Lorsque vous sauvegardez votre zone, une image sera automatiquement générée."; 
                             pictureBoxBase.Image = Properties.Resources.SaveAs;
                             break;
                         }
                     case 3:
                         {
                             labelBase.Text = "L'option Enregistrer Sous permet d'enregistrer la zone de jeu en cours de modification." +
-                                             "Vous serez amenés à l'enregistrer avec un nom de votre choix dans le répertoires Zones.";
+                                             " Vous serez amenés à l'enregistrer avec un nom de votre choix dans le répertoire Zones."+
+                                             " Lorsque vous sauvegardez votre zone, une image sera automatiquement générée.";
                             pictureBoxBase.Image = Properties.Resources.SaveAs;
                             break;
                         }
