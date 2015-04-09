@@ -2221,4 +2221,9 @@ extern "C"
 		FacadeModele::obtenirInstance()->viderHistorique();
 	}
 
+	__declspec(dllexport) int obtenirNombreSelection()
+	{
+		return FacadeModele::obtenirInstance()->obtenirNombreSelection();
+	}
+
 }// FIN DU extern "C"

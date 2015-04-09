@@ -250,6 +250,7 @@ public:
 	void annulerModifications();
 	void retablirModifications();
 	void viderHistorique();
+	int obtenirNombreSelection() const;
 
 private:
 

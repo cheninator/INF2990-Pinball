@@ -2351,6 +2351,11 @@ void FacadeModele::viderHistorique()
 	originator_->viderHistorique();
 }
 
+int FacadeModele::obtenirNombreSelection() const
+{
+	return arbre_->obtenirNombreSelectionne();
+}
+
 
 
 

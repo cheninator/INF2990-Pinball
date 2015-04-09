@@ -63,6 +63,9 @@ public:
    /// Obtenir les proprietes de la zone de jeu
    int* obtenirProprietes() const { return proprietes_; };
 
+   /// Obtenir le nombre de noeuds selectionne
+   int obtenirNombreSelectionne() const;
+
    /// Obtenir les éléments de la table
    std::vector<NoeudAbstrait*> obtenirElementsTable();
 

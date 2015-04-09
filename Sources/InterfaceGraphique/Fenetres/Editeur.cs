@@ -694,6 +694,7 @@ namespace InterfaceGraphique
 
 
             }
+            FonctionsNatives.viderHistorique();
         }
 
         ////////////////////////////////////////////////////////////////////////
@@ -750,6 +751,7 @@ namespace InterfaceGraphique
 
 
                     int sauvegarde = FonctionsNatives.creerXML(pathXML, pathXML.Capacity, prop);
+                    FonctionsNatives.viderHistorique();
                     //Console.WriteLine(sauvegarde);
                     if (sauvegarde == 1)
                     {
@@ -2094,6 +2096,7 @@ namespace InterfaceGraphique
             FonctionsNatives.purgeAll();
             propZJ = new List<int> { 10, 10, 10, 10, 10, 1 };
             ReinitialiserTout();
+            FonctionsNatives.viderHistorique();
         }
 
         ////////////////////////////////////////////////////////////////////////
@@ -2602,7 +2605,7 @@ namespace InterfaceGraphique
                 if (pathXML.ToString().Substring(pathXML.ToString().Length - 11) == "default.xml")
                 {
                     MessageBox.Show("Il ne faut pas sauvegarder par dessus la zone par defaut", "ERREUR DE SAUVEGARDE",
-                MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
                 else
                 {
@@ -2633,8 +2636,14 @@ namespace InterfaceGraphique
                     {
                         takeScreenShot();
                     }
+
+                    FonctionsNatives.viderHistorique();
                 }
             }
+
+            
+
+
         }
 
 
@@ -3175,9 +3184,13 @@ namespace InterfaceGraphique
 
         private void bouton_Suppression_Click(object sender, EventArgs e)
         {
-            FonctionsNatives.sauvegarderHistorique();
+            if(etat is EtatEditeurSelection)
+                FonctionsNatives.sauvegarderHistorique();
+
             FonctionsNatives.removeObject();
             deselection();
+
+            FonctionsNatives.sauvegarderHistorique();
         }
 
         private void Group_Butoir_Enter(object sender, EventArgs e)
@@ -3204,11 +3217,45 @@ namespace InterfaceGraphique
         {
             deselection();
             FonctionsNatives.annulerModifications();
+            nbSelection = FonctionsNatives.obtenirNombreSelection();
+            outilsEnable(true);
+
+            if (nbSelection == 1)
+            {
+                proprietesEnable(true);
+                Xbox.Text = Math.Round(FonctionsNatives.getPositionX()).ToString();
+                Ybox.Text = Math.Round(FonctionsNatives.getPositionY()).ToString();
+                Anglebox.Text = Math.Round(FonctionsNatives.getAngle()).ToString();
+                FMEbox.Text = (Math.Round(FonctionsNatives.getScale() * 100) / 100).ToString();
+            }
+
+            else
+                proprietesEnable(false);
+
+            etat = new EtatEditeurSelection(this);
+
         }
 
         private void Retablir_ToolStrip_Click(object sender, EventArgs e)
         {
+            deselection();
             FonctionsNatives.retablirModifications();
+            nbSelection = FonctionsNatives.obtenirNombreSelection();
+            outilsEnable(true);
+
+            if (nbSelection == 1)
+            {
+                proprietesEnable(true);
+                Xbox.Text = Math.Round(FonctionsNatives.getPositionX()).ToString();
+                Ybox.Text = Math.Round(FonctionsNatives.getPositionY()).ToString();
+                Anglebox.Text = Math.Round(FonctionsNatives.getAngle()).ToString();
+                FMEbox.Text = (Math.Round(FonctionsNatives.getScale() * 100) / 100).ToString();
+            }
+
+            else
+                proprietesEnable(false);
+
+            etat = new EtatEditeurSelection(this);
         }
 
         private void Supprimer_MenuItem_Click_1(object sender, EventArgs e)
