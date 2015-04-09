@@ -118,7 +118,7 @@ namespace vue {
 	}
 
 
-	#define SHOW_OUTPUT 1
+	//#define SHOW_OUTPUT 1
 	////////////////////////////////////////////////////////////////////////////
 	///
 	/// @fn void Camera::orbiterXY( double rotationX, double rotationY, bool empecheInversion )
