@@ -32,8 +32,8 @@ namespace vue {
 	{
 	public:
 		/// Constructeur.
-		Projection(int xMinCloture, int xMaxCloture,
-			int yMinCloture, int yMaxCloture,
+		Projection(double xMinCloture, double xMaxCloture,
+			double yMinCloture, double yMaxCloture,
 			double zAvant, double zArriere,
 			double zoomInMax, double zoomOutMax,
 			double incrementZoom, bool estPerspective);
@@ -69,6 +69,8 @@ namespace vue {
 
 		/// Obtenir la dimension de la fenêtre virtuelle
 		virtual inline glm::ivec2 obtenirDimensionFenetreVirtuelle() const = 0;
+
+		virtual void conserverRapportAspect() const { return; };
 
 	protected:
 		/// Coordonnée inférieur de la clôture en X.
@@ -130,7 +132,7 @@ namespace vue {
 	///
 	////////////////////////////////////////////////////////////////////////
 	inline void Projection::obtenirCoordonneesCloture(
-		double &xMin, double& xMax, double& yMin, double& yMax
+		double& xMin, double& xMax, double& yMin, double& yMax
 		) const
 	{
 		xMin = xMinCloture_;

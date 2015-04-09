@@ -1,3 +1,4 @@
+/*
 ////////////////////////////////////////////////////////////////////////////////////
 /// @file ArbreRenduINF2990Test.cpp
 /// @author The Ballers
@@ -782,3 +783,4 @@ void ArbreRenduINF2990Test::testDeplacement()
 	// On vide l'arbre.
 	arbre->vider();
 }
+*/

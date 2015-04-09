@@ -33,8 +33,8 @@ namespace vue {
 	{
 	public:
 		/// Constructeur.
-		ProjectionOrtho(int xMinCloture, int xMaxCloture,
-			int yMinCloture, int yMaxCloture,
+		ProjectionOrtho(double xMinCloture, double xMaxCloture,
+			double yMinCloture, double yMaxCloture,
 			double zAvant, double zArriere,
 			double zoomInMax, double zoomOutMax,
 			double incrementZoom,
@@ -72,6 +72,8 @@ namespace vue {
 
 		/// Obtenir la dimension de la fenêtre virtuelle
 		virtual inline glm::ivec2 obtenirDimensionFenetreVirtuelle() const;
+
+		virtual void conserverRapportAspect();
 
 	private:
 		/// Décide la direction de correction en fonction du zoom.

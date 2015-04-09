@@ -1,7 +1,7 @@
 ////////////////////////////////////////////////////////////////////////////////////
 /// @file ProjectionOrtho.h
-/// @author DGI
-/// @date 2006-12-15
+/// @author The Ballers
+/// @date 2015-04-01
 /// @version 1.0
 ///
 /// @addtogroup utilitaire Utilitaire
@@ -9,7 +9,6 @@
 ////////////////////////////////////////////////////////////////////////////////////
 #ifndef __UTILITAIRE_PROJECTIONPERSPECTIVE_H__
 #define __UTILITAIRE_PROJECTIONPERSPECTIVE_H__
-
 
 
 #include "Projection.h"
@@ -23,24 +22,21 @@ namespace vue {
 	/// Cette classe implante l'interface de projection définie par la
 	/// classe de base Projection et ajoute certaines fonctionnalitées
 	/// spécifiques à la projection perspective, comme le zoom autour d'un
-	/// point en particulier et le zoom élastique.
+	/// point en particulier.
 	///
-	/// @author Martin Bisson
-	/// @date 2006-12-15
 	////////////////////////////////////////////////////////////////////////
 	class ProjectionPerspective : public Projection
 	{
 
 	public:
 		/// Constructeur.
-		ProjectionPerspective(int xMinCloture, int xMaxCloture,
-			int yMinCloture, int yMaxCloture,
+		ProjectionPerspective(double xMinCloture, double xMaxCloture,
+			double yMinCloture, double yMaxCloture,
 			double zAvant, double zArriere,
 			double zoomInMax, double zoomOutMax,
 			double incrementZoom,
-			double left  , double right,
-			double bottom, double top,
-			double Znear , double Zfar);
+			double ratio, double fovy
+			);
 
 
 		/// Zoom in, c'est-à-dire un agrandissement.
@@ -52,21 +48,21 @@ namespace vue {
 			const glm::ivec2& coinMax);
 		/// Application de la projection.
 		virtual void appliquer() const;
-
-		void tiltLeft(double deplacement);
-		void tiltRight(double deplacement);
-
-
+		/// Obtenir la valeur minimale du zoom
+		double obtenirZoomOutMax() const;
+		/// Obtenir la valeur maximale du zoom
+		double obtenirZoomInMax() const;
+		/// Obtenir le facteur de zoom
+		double obtenirIncrementZoom() const;
+		
 		/// Obtenir la dimension de la fenêtre virtuelle
 		virtual inline glm::ivec2 obtenirDimensionFenetreVirtuelle() const;
 
 	private:
-		double left_;
-		double right_;
-		double bottom_;
-		double top_;
-		double near_;
-		double far_;
+		/// Le rapport d'aspect du plan avant de la projection perspective
+		double ratio_;
+		/// L'angle de visionnement de la projection perspective
+		double fovy_;
 	};
 };
 

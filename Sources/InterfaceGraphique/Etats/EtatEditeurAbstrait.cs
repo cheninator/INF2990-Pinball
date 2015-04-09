@@ -47,7 +47,7 @@ namespace InterfaceGraphique
         public EtatEditeurAbstrait(Editeur form) { 
             form_ = form;
             form_.Cursor = Cursors.Arrow;
-            form_.enableZoom(false);
+            form_.enableZoom(true);
             
         }
 
@@ -495,9 +495,7 @@ namespace InterfaceGraphique
         /// @return Aucune (constructeur).
         ///
         ////////////////////////////////////////////////////////////////////////
-        public EtatEditeurCreation(Editeur form)
-            : base(form)
-        {
+        public EtatEditeurCreation(Editeur form) : base(form) {
             form_.deselection();
             form_.outilCourant("Creation");
             form_.trackCursor(true);
@@ -535,7 +533,7 @@ namespace InterfaceGraphique
                 form_.deplacementVueSouris(e);
             else
                 form_.deplacementSouris(e);
-
+            
             return true;
         }
     }

@@ -13,7 +13,9 @@
 #include "Utilitaire.h"
 #include "Camera.h"
 #include <iostream>
-
+#include "../Utilitaire.h"
+//#include "../../Sources/DLL/Application/FacadeModele.h"
+//#include "../../Sources/DLL/Text/ControleurTexte.h"
 
 namespace vue {
 
@@ -36,13 +38,18 @@ namespace vue {
 	Camera::Camera(const glm::dvec3& position,
 		const glm::dvec3& pointVise,
 		const glm::dvec3& directionHautCamera,
-		const glm::dvec3& directionHautMonde
+		const glm::dvec3& directionHautMonde,
+		float angleTheta,
+		float anglePhi
 		)
 		: position_{ position },
 		pointVise_{ pointVise },
 		directionHaut_{ directionHautCamera },
-		directionHautMonde_{ directionHautMonde }
-	{
+		directionHautMonde_{ directionHautMonde },
+		theta_{angleTheta},
+		phi_{anglePhi},
+		dist_{position.z}
+	{		
 	}
 
 
@@ -80,6 +87,8 @@ namespace vue {
 	////////////////////////////////////////////////////////////////////////////
 	void Camera::deplacerZ(double deplacement, bool bougePointVise)
 	{
+		/*TODO : Tenir du bougePointVise*/
+		this->position_.z += deplacement;
 	}
 
 
@@ -109,6 +118,7 @@ namespace vue {
 	}
 
 
+//	#define SHOW_OUTPUT 1
 	////////////////////////////////////////////////////////////////////////////
 	///
 	/// @fn void Camera::orbiterXY( double rotationX, double rotationY, bool empecheInversion )
@@ -132,46 +142,136 @@ namespace vue {
 		bool   empecheInversion //=true
 		)
 	{
-		double dist = 200;
-		position_[0] = dist * cos(rotationX) * sin(rotationY);
-		position_[1] = dist * sin(rotationX) * sin(rotationY);
-		position_[1] = dist * cos(rotationY);
-		/*
-		std::cout << std::endl << "position_[0] : " << position_[0];
-		std::cout << std::endl << "position_[1] : " << position_[1];
-		std::cout << std::endl << "position_[2] : " << position_[2];
-		std::cout << std::endl;
-		std::cout << std::endl << "pointVise_[0] : " << pointVise_[0];
-		std::cout << std::endl << "pointVise_[1] : " << pointVise_[1];
-		std::cout << std::endl << "pointVise_[2] : " << pointVise_[2];
-		std::cout << std::endl;
-		std::cout << std::endl << "directionHaut_[0] : " << directionHaut_[0];
-		std::cout << std::endl << "directionHaut_[1] : " << directionHaut_[1];
-		std::cout << std::endl << "directionHaut_[2] : " << directionHaut_[2];
-		std::cout << std::endl;
-		std::cout << std::endl;
-		std::cout << std::endl;
-		std::cout << std::endl;
-		*/
+		if (empecheInversion)
+			return;
+		/* Les angles doivent être en radian*/
+		double dist = glm::distance(position_, pointVise_);
+		
+		double deltaTheta = utilitaire::SIGN(rotationX) * utilitaire::DEG_TO_RAD(abs(rotationX));
+		double deltaPhi   = utilitaire::SIGN(rotationY) * utilitaire::DEG_TO_RAD(abs(rotationY));
+	
+		/*std::string ancienTexte;
+		std::string informationAngle = "Phi | Theta" + std::to_string(theta_)
+			+ " | " + std::to_string(phi_) + " \n";
+		FacadeModele::obtenirInstance()->obtenircontroleurTexte()->updateText(ancienTexte, );*/
+#ifdef SHOW_OUTPUT
+		std::cout << "RECU --- deltaPhi | deltaTheta" + std::to_string(deltaPhi)
+			+ " | " + std::to_string(deltaTheta) + " \n";
+		std::cout << "Distance : " << dist << std::endl;
+#endif
+		// Assignation des nouveaux angles
+		theta_ += deltaTheta;
+		phi_ += deltaPhi;
+
+		// On s'assure de ne pas dépasser certains angles
+		clampAngles();
+#ifdef SHOW_OUTPUT		
+		std::cout << "Nouveau Phi | Theta" + std::to_string(phi_)
+			+ " | " + std::to_string(theta_) + " \n";
+#endif
+		// On calcule la bonne position en fonction des angles 
+		calculerPositionOrbite();
+		positionnerOrbite();
 	}
 
 
 	////////////////////////////////////////////////////////////////////////
 	///
-	/// @fn void Camera::positionner() const
+	/// @fn void Camera::positionnerOrbite() const
 	///
 	/// Positionne la caméra dans la scène à l'aide de gluLookAt().
 	///
 	/// @return Aucune.
 	///
 	////////////////////////////////////////////////////////////////////////
-	void Camera::positionner() const
+	void Camera::positionnerOrbite() const
 	{
+		glMatrixMode(GL_MODELVIEW);
+		glLoadIdentity();
+		//	gluLookAt(position_[0], position_[1], position_[2],
+		//		pointVise_[0], pointVise_[1], pointVise_[2],
+		//		directionHaut_[0], directionHaut_[1], directionHaut_[2]);
+		glTranslated(0.0, 0.0, -dist_);
+		glRotated(180.0 / 3.1415 * phi_ - 90.0, 1.0, 0.0, 0.0);
+		glRotated(180.0 / 3.1415 * theta_, 0.0, 1.0, 0.0);
+		glTranslated(-pointVise_.x, -pointVise_.y, 0.0);
+	}
+
+	void Camera::calculerPositionOrbite()
+	{
+		//gluLookAt( dist*cos(theta)*sin(phi), dist*sin(theta)*sin(phi), dist*cos(phi),   <--- TP3 INF2705
+		//gluLookAt( dist*sin(phi)*sin(theta), dist*cos(phi), dist*sin(phi)*cos(theta), 0, 1, 0, 0, 2, 0 ); <---TP4 INF2705
+#if 1 /* Version du TP3*/
+		position_.x = dist_ * sin(phi_) * sin(theta_);
+		position_.y = dist_ * cos(phi_);
+		position_.z = dist_ * sin(phi_) * cos(theta_);
+#else /*Version du TP4*/
+		position_.x = dist_ * sin(phi_) * sin(theta_);
+		position_.y = dist_ * cos(phi_);
+		position_.z = dist_ * sin(phi_) * cos(theta_);
+#endif
+
+	}
+
+	////////////////////////////////////////////////////////////////////////
+	///
+	/// @fn void Camera::positionnerOrbite() const
+	///
+	/// Positionne la caméra dans la scène à l'aide de gluLookAt().
+	///
+	/// @return Aucune.
+	///
+	////////////////////////////////////////////////////////////////////////
+	void Camera::positionnerOrtho() const
+	{
+		glMatrixMode(GL_MODELVIEW);
+		glLoadIdentity();
 		gluLookAt(position_[0], position_[1], position_[2],
 			pointVise_[0], pointVise_[1], pointVise_[2],
 			directionHaut_[0], directionHaut_[1], directionHaut_[2]);
 	}
 
+	////////////////////////////////////////////////////////////////////////
+	///
+	/// @fn void Camera::clampAngles() 
+	///
+	/// Ajuste la valeur des angles pour qu'elle ne dépasse pas un certain 
+	/// angle. Ceci est fait pour éviter de voir l'arrière de la zone de jeu
+	///
+	/// @return Aucune.
+	///
+	////////////////////////////////////////////////////////////////////////
+	void Camera::clampAngles()
+	{
+		if (phi_ >= utilitaire::PI)
+		{
+#ifdef SHOW_OUTPUT
+			std::cout << "Angle phi trop grand : on le remet à PI \n";
+#endif
+			phi_ = utilitaire::PI - 0.0001;
+		}
+		else if (phi_ <= 0.0)
+		{
+#ifdef SHOW_OUTPUT
+			std::cout << "Angle phi trop petit : on le remet à 0 \n";
+#endif
+			phi_ = 0.0001;
+		}
+		if (theta_ >= utilitaire::PI / 2.0)
+		{
+#ifdef SHOW_OUTPUT
+			std::cout << "Angle theta trop grand : on le remet à PI \n";
+#endif
+			theta_ = (utilitaire::PI / 2.0) - 0.0001;
+		}
+		else if (theta_ <= -utilitaire::PI / 2.0)
+		{
+#ifdef SHOW_OUTPUT
+			std::cout << "Angle theta trop petit : on le remet à 0 \n";
+#endif
+			theta_ = -(utilitaire::PI / 2.0) + 0.0001;
+		}
+	}
 
 }; // Fin du namespace vue.
 

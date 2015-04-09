@@ -16,7 +16,7 @@ class ControleurSon
 public:
 	// Pointer to the FMOD instance
 
-	ControleurSon();
+	ControleurSon( bool desactiverSon );
 	~ControleurSon();
 	void creeSon(char* sName);
 	void jouerSon(char* sName, bool pause = false);
@@ -29,11 +29,11 @@ public:
 	
 
 private:
-	unsigned int lookUp(std::string fileName);
+	int lookUp(std::string fileName);
 	void setVolumeLimiter();
 	void setVolumeBGM();
 	void setVolumeSFX();
-	std::string getPath(char* sName);
+	std::string getSFXPath(char* sName);
 
 	FMOD::System* system_;
 	std::vector< std::pair< std::string, std::pair< FMOD::Sound *, FMOD::Channel* > > > soundTable_;
@@ -41,6 +41,8 @@ private:
 	std::vector<int> specialEffectSounds_;
 	float maxBGM_;
 	float maxSFX_;
+
+	bool sonDesactive;
 };
 
 #endif //__FACADE_SOUND_CONTROLLER_CLASS_H__

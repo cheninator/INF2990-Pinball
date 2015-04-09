@@ -49,7 +49,7 @@
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
     <Prefer32Bit>false</Prefer32Bit>
-    <UseVSHostingProcess>false</UseVSHostingProcess>
+    <UseVSHostingProcess>true</UseVSHostingProcess>
   </PropertyGroup>
   <PropertyGroup>
     <StartupObject />
@@ -80,6 +80,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="ColorList.cs" />
     <Compile Include="ConsoleRedirector.cs" />
     <Compile Include="Fenetres\Aide.cs">
       <SubType>Form</SubType>
@@ -140,6 +141,7 @@
     <Compile Include="Fenetres\PartieTerminee.designer.cs">
       <DependentUpon>PartieTerminee.cs</DependentUpon>
     </Compile>
+    <Compile Include="FonctionsNatives.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Fenetres\Proprietes.cs">
@@ -163,6 +165,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Fenetres\Configuration.resx">
       <DependentUpon>Configuration.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Fenetres\CustomConsole.resx">
+      <DependentUpon>CustomConsole.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Fenetres\Editeur.resx">
       <DependentUpon>Editeur.cs</DependentUpon>
@@ -309,6 +314,60 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="%24this.Icon.ico" />
+    <None Include="Resources\undo.png" />
+    <None Include="Resources\scale.png" />
+    <None Include="Resources\Selection.png" />
+    <None Include="Resources\zoomElastique.png" />
+    <None Include="Resources\SelectionSimple.gif" />
+    <None Include="Resources\ZoomElastique.gif" />
+    <None Include="Resources\Suppression.gif" />
+    <None Include="Resources\SelectionMultiple.gif" />
+    <None Include="Resources\Trou.gif" />
+    <None Include="Resources\SaveAs.png" />
+    <None Include="Resources\ZoomOut.png" />
+    <None Include="Resources\zoomIN.png" />
+    <None Include="Resources\settings.png" />
+    <None Include="Resources\Tester.png" />
+    <None Include="Resources\Scale.gif" />
+    <None Include="Resources\save.bmp" />
+    <None Include="Resources\open.png" />
+    <None Include="Resources\Deplacement.gif" />
+    <None Include="Resources\Duplication.gif" />
+    <None Include="Resources\RotationSimple.gif" />
+    <None Include="Resources\new-file-512.png" />
+    <None Include="Resources\NouveauFichier.png" />
+    <None Include="Resources\Return home.png" />
+    <None Include="Resources\delete.png" />
+    <None Include="Resources\enregistrersous.png" />
+    <None Include="Resources\Ouvrir.png" />
+    <None Include="Resources\Proprietes.png" />
+    <None Include="Resources\Quit.png" />
+    <None Include="Resources\NewMap.jpg" />
+    <None Include="Resources\Palettes.gif" />
+    <None Include="Resources\ButoirTriangulaire.gif" />
+    <None Include="Resources\Cible.gif" />
+    <None Include="Resources\Generateur.gif" />
+    <None Include="Resources\Mur.gif" />
+    <None Include="Resources\Portals.gif" />
+    <None Include="Resources\Porte.gif" />
+    <None Include="Resources\Ressort.gif" />
+    <None Include="Resources\ButoirCirculaire.gif" />
+    <None Include="Resources\Creation.gif" />
+    <None Include="Resources\gauche1.png" />
+    <None Include="Resources\droite1.png" />
+    <None Include="Resources\droite2.png" />
+    <None Include="Resources\gauche2.png" />
+    <None Include="Resources\circulaire.png" />
+    <None Include="Resources\butoirDroit.png" />
+    <None Include="Resources\butoirGauche.png" />
+    <None Include="Resources\ressort2.png" />
+    <None Include="Resources\add.png" />
+    <None Include="Resources\Cursor-Select-icon.png" />
+    <None Include="Resources\move.png" />
+    <None Include="Resources\rotation.png" />
+    <None Include="Resources\duplicate.png" />
+    <None Include="Resources\redo.png" />
+    <Content Include="Resources\save.png" />
     <None Include="Resources\cible.jpeg" />
     <None Include="Resources\winSound.wav" />
     <None Include="Resources\wink.gif" />

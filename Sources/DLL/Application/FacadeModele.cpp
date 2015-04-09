@@ -25,17 +25,13 @@ Samuel Millette <BR>
 Yonni Chen <BR>
 
 */
-
 #include <windows.h>
 #include <cassert>
 #include <iostream>
 
-#include <FTGL/ftgl.h>
-#include "GL/glew.h"
 #include "FreeImage.h"
-
 #include "FacadeModele.h"
-
+#include "../Text/ControleurTexte.h"
 #include "../Visiteurs/VisiteurAbstrait.h"
 #include "../Visiteurs/VisiteurSelection.h"
 #include "../Visiteurs/VisiteurSelectionInverse.h"
@@ -55,11 +51,14 @@ Yonni Chen <BR>
 #include "../Visiteurs/VisiteurDebug.h"
 #include "../Arbre/Noeuds/NoeudRessort.h"
 #include "../Global/JoueurVirtuel.h"
-#include "../Eclairage/Lumiere.h"
+#include "../Eclairage/ControleurNuanceurs.h"
+#include "../Eclairage/ControleurLumieres.h"
 
 #include "VueOrtho.h"
+#include "VuePerspective.h"
 #include "Camera.h"
 #include "Projection.h"
+
 
 #include "Utilitaire.h"
 #include "AideGL.h"
@@ -67,6 +66,7 @@ Yonni Chen <BR>
 
 #include "CompteurAffichage.h"
 #include "../Configuration/ConfigScene.h"
+#include "../Memento/Originator.h"
 
 // Remplacement de EnveloppeXML/XercesC par TinyXML
 // Julien Gascon-Samson, ete 2011
@@ -105,6 +105,13 @@ FacadeModele* FacadeModele::obtenirInstance(bool console)
 		instance_->joueur_ = new JoueurVirtuel();
 		instance_->quad_ = new QuadTree(glm::dvec3(coinGaucheTableX, coinGaucheTableY, 0),
 										glm::dvec3(coinDroitTableX,  coinDroitTableY,  0));
+
+		instance_->controleurLumieres_ = new ControleurLumieres();
+		instance_->originator_ = new Originator();
+		//instance_->controleurTexte_ = new ControleurTexte();
+
+
+
 		if (console)
 			instance_->old_ = std::cout.rdbuf(instance_->oss_.rdbuf());
 		else
@@ -146,6 +153,8 @@ FacadeModele::~FacadeModele()
 	delete proprietes_;
 	delete joueur_;
 	delete quad_;
+	delete controleurLumieres_;
+	delete controleurTexte_;
 	if (instance_->old_ != nullptr)
 		std::cout.rdbuf(instance_->old_);
 }
@@ -193,15 +202,13 @@ void FacadeModele::initialiserOpenGL(HWND hWnd)
 	glEnable(GL_COLOR_MATERIAL);
 	/// Pour normaliser les normales dans le cas d'utilisation de glScale[fd]
 	glEnable(GL_NORMALIZE);
-	Lumiere lumiere(GL_LIGHT1);
-	lumiere.definir();
 
-	// Pour voir le spot, commenter le glEnable(GL_LIGHT0) et decommenter la ligne suivante.
-	// La c'est sans shaders, donc c'est normal que ca soit weird car je n'ai pas de controle sur le 
-	// calcul d'eclairage. Par exemple, la table semble ne pas etre eclairee, mais c'est parce qu'elle 
-	// n'est pas subdivisee.
+	/// Initialisation des lumieres et du programme de nuanceurs.
+	ControleurNuanceurs::obtenirInstance()->initialiser();
+	controleurLumieres_->initialiserLumieres();
+
+	/// Activation de GL_LIGHT0 pour le mode sans nuanceurs.
 	glEnable(GL_LIGHT0);
-	// lumiere.enable();
 
 	// Qualite
 	glShadeModel(GL_SMOOTH);
@@ -218,22 +225,23 @@ void FacadeModele::initialiserOpenGL(HWND hWnd)
 	// Creation de l'arbre de rendu.  a moins d'etre completement certain
 	// d'avoir une bonne raison de faire autrement, il est plus sage de creer
 	// l'arbre apres avoir cree le contexte OpenGL.
-	std::cout << "Creation de l'arbre de rendu..." << std::endl;
 	arbre_ = new ArbreRenduINF2990;
-	std::cout << "Initialisation de l'arbre de rendu..." << std::endl;
-	arbre_->initialiser();
+	
+	//arbre_->initialiser();
+	originator_->assignerArbre(arbre_);
+
 	// On cree une vue par defaut.
 	vue_ = new vue::VueOrtho{
 		vue::Camera{ 
 			glm::dvec3(0, 0, 200), glm::dvec3(0, 0, 0),
-			glm::dvec3(0, 1, 0),   glm::dvec3(0, 1, 0)},
+			glm::dvec3(0, 1, 0),   glm::dvec3(0, 1, 0),
+			0.0 , 0.0 },
 		vue::ProjectionOrtho{ 
 				0, 500, 0, 500,
 				1, 1000, 50, 5000, 1.25,
 				double(coinGaucheTableX), double(coinGaucheTableY),
 				double(coinDroitTableX), double(coinDroitTableY)}
 	};
-	std::cout << "Arbre de rendu generer !" << std::endl << std::endl << std::endl;
 }
 
 
@@ -249,6 +257,7 @@ void FacadeModele::initialiserOpenGL(HWND hWnd)
 void FacadeModele::libererOpenGL()
 {
 	utilitaire::CompteurAffichage::libererInstance();
+	ControleurNuanceurs::libererInstance();
 
 	bool succes{ aidegl::detruireContexteGL(hWnd_, hDC_, hGLRC_) };
 	assert(succes && "Le contexte OpenGL n'a pu etre detruit.");
@@ -324,42 +333,122 @@ void FacadeModele::afficherBase() const
 	glLightfv(GL_LIGHT0, GL_POSITION, glm::value_ptr(position));
 
 	// Afficher la scene.
+	controleurLumieres_->trackerLesBilles((NoeudTable*)arbre_->chercher(0));
+	controleurLumieres_->definirLumieres();
+	ControleurNuanceurs::obtenirInstance()->activer();
 	arbre_->afficher();
+	ControleurNuanceurs::obtenirInstance()->desactiver();
 
 	// On affiche le texte ici
+	if (controleurTexte_ != nullptr)
+		controleurTexte_->refreshAffichage();
 
-	glPushAttrib(GL_ALL_ATTRIB_BITS);
-	glDisable(GL_LIGHTING);
-	glDisable(GL_DEPTH_TEST);
-	glDisable(GL_TEXTURE_2D);
+	// fuck that shit... si je met cette ligne la dans le .h ca compile plus...
+	// TODO bouger shit dans l'API et le C#, pis juste appeler afficherTexte();
+	/* //Exemple d'affichage
+	static bool oneTime = true;
+	if(oneTime){
+		char* myText;
+		char* myFont;
 
-	glMatrixMode(GL_PROJECTION);
-	glPushMatrix();
-	glMatrixMode(GL_MODELVIEW);
-	glPushMatrix();
+		// le Texte a Ecrire
+		myText = "Hello World";
+		myFont = "arial.ttf"; // Ou encore Bloodthirsty.ttf
+		// On spécifie la font
+		controleurTexte_->creeTexte(myText, myFont);
 
-	// Il faut deplacer dans le sens envers de la camera
-	static long i = 0;
-	i++;
-	i = i % 6000;
+		// On specifie la taille (en 1/72 de pouce)
+		controleurTexte_->resize(myText, 35);
 
-	glTranslated(50, -100, 0);
-	glRotatef((double)(i), 0.0, 0.0, 1.0);
-	glColor4f(1.0, 0.0, 0.0, 1.0);
-	//static FTGLPolygonFont* bloodyFont = new FTGLPolygonFont("media/fonts/Arial.ttf");
-	//std::string text = "Compteur random : " + std::to_string((double)i/100.0);
-	//bloodyFont->FaceSize(12);
-	//bloodyFont->Render(text.c_str());
+		// On specifie une couleur RGB
+		controleurTexte_->changerCouleur(myText, 0.5, 1, 1);
+		// Ou encore
+		controleurTexte_->changerCouleur(myText, COLOR_salmon);
 
-	glMatrixMode(GL_PROJECTION);
-	glPopMatrix();
-	glMatrixMode(GL_MODELVIEW);
-	glPopMatrix();
+		// On specifie la position
+		controleurTexte_->repositionner(myText, 1, 1);
 
-	glPopAttrib();
+		// Voici un autre exemple
+		myText = "Well This is easy";
+		controleurTexte_->creeTexte(myText, myFont);
+		controleurTexte_->resize(myText, 24);
+		controleurTexte_->changerCouleur(myText, COLOR_red);
+		controleurTexte_->repositionner(myText, 1, 1);
 
+		// Voici un autre exemple
+		myText = "Petite ligne 1 1";
+		controleurTexte_->creeTexte(myText, myFont);
+		controleurTexte_->resize(myText, 24);
+		controleurTexte_->changerCouleur(myText, COLOR_blue);
+		controleurTexte_->repositionner(myText, 1, 1);
+
+		// Voici un autre exemple
+		myText = "Random 0 1";
+		controleurTexte_->creeTexte(myText, myFont);
+		controleurTexte_->resize(myText, 24);
+		controleurTexte_->changerCouleur(myText, COLOR_blue);
+		controleurTexte_->repositionner(myText, 0, 1);
+
+		// Voici un autre exemple
+		myText = "2e Random 0 1";
+		controleurTexte_->creeTexte(myText, myFont);
+		controleurTexte_->resize(myText, 24);
+		controleurTexte_->changerCouleur(myText, COLOR_black);
+		controleurTexte_->repositionner(myText, 0, 1);
+
+		// Voici un autre exemple
+		myText = "3e shit weird ici en  0 1";
+		controleurTexte_->creeTexte(myText, myFont);
+		controleurTexte_->resize(myText, 24);
+		controleurTexte_->changerCouleur(myText, COLOR_alice_blue);
+		controleurTexte_->repositionner(myText, 0, 1);
+
+		// Voici un autre exemple
+		myText = "Test 1 0";
+		controleurTexte_->creeTexte(myText, myFont);
+		controleurTexte_->resize(myText, 42);
+		controleurTexte_->changerCouleur(myText, COLOR_cadet_blue);
+		controleurTexte_->repositionner(myText, 1, 0);
+
+		// Voici un autre exemple
+		myText = "Test --2-- 1 0";
+		controleurTexte_->creeTexte(myText, myFont);
+		controleurTexte_->resize(myText, 24);
+		controleurTexte_->changerCouleur(myText, COLOR_magenta_fuchsia);
+		controleurTexte_->repositionner(myText, 1, 0);
+
+		// Voici un autre exemple
+		myText = "Test --3-- 1 0";
+		controleurTexte_->creeTexte(myText, myFont);
+		controleurTexte_->resize(myText, 24);
+		controleurTexte_->changerCouleur(myText, COLOR_Magenta_Fuchsia);
+		controleurTexte_->repositionner(myText, 1, 0);
+
+		// Voici un autre exemple
+		myText = "Je sais pas pk je fais ca";
+		controleurTexte_->creeTexte(myText, myFont);
+		controleurTexte_->resize(myText, 24);
+		controleurTexte_->changerCouleur(myText, COLOR_khaki);
+		controleurTexte_->repositionner(myText, 0, 0);
+
+		// Voici un autre exemple
+		myText = "C'est genre meme pas beau";
+		controleurTexte_->creeTexte(myText, myFont);
+		controleurTexte_->resize(myText, 21);
+		controleurTexte_->changerCouleur(myText, COLOR_azure);
+		controleurTexte_->repositionner(myText, 0, 0);
+
+		// Voici un autre exemple
+		myText = "C'est probablement useless en plus";
+		controleurTexte_->creeTexte(myText, myFont);
+		controleurTexte_->resize(myText, 24);
+		controleurTexte_->changerCouleur(myText, COLOR_beige);
+		controleurTexte_->repositionner(myText, 0, 0);
+
+		//oneTime = false;
+	}
+	*/
 }
-
 
 ////////////////////////////////////////////////////////////////////////
 ///
@@ -1218,7 +1307,7 @@ int FacadeModele::obtenirCentreMasseY()
 bool FacadeModele::appliquerZoomInitial()
 {
 	bool applique = false;
-	if (obtenirInstance() != nullptr)
+	if (obtenirInstance() != nullptr && vue_->obtenirProjection().estPerspective() == false)
 	{
 		vue_->zoomerInElastique(glm::dvec2(coinGaucheTableX, coinGaucheTableY), glm::ivec2(coinDroitTableX, coinDroitTableY));
 		applique = true;
@@ -1612,7 +1701,8 @@ void FacadeModele::desactiverPalettesDJ2()
 ///////////////////////////////////////////////////////////////////////////////
 void FacadeModele::supprimerBille()
 {
-	arbre_->effacer(arbre_->chercher(ArbreRenduINF2990::NOM_BILLE));
+	//arbre_->effacer(arbre_->chercher(ArbreRenduINF2990::NOM_BILLE));
+	arbre_->effacer(arbre_->chercher("bille"));
 }
 
 ///////////////////////////////////////////////////////////////////////////////
@@ -2086,10 +2176,186 @@ double FacadeModele::obtenirScaleMinMax()
 	return glm::length(scaleMax) - glm::length(scaleMin);
 }
 
+////////////////////////////////////////////////////////////////////////
+///
+/// @fn void FacadeModele::obtenircontroleurTexte()
+///
+/// @remark Cette fonction retourne la classe de controle du texte.
+///
+/// @return Le controleur de texte.
+///
+////////////////////////////////////////////////////////////////////////
+ControleurTexte* FacadeModele::obtenircontroleurTexte()
+{
+	if (controleurTexte_ == nullptr)
+		instance_->controleurTexte_ = new ControleurTexte();
+	return controleurTexte_;
+}
 
 std::string FacadeModele::obtenirCout()
 {
 	std::string ss = oss_.str();
 	oss_.str(std::string());
 	return ss;
+}
+
+////////////////////////////////////////////////////////////////////////
+///
+/// @fn void FacadeModele::utiliserCameraOrbite(bool utiliseOrbite)
+///
+/// @brief Cette fonction change la vision pour refléter une caméra orbite ou non
+///
+/// @param[in] utiliseOrbite : Indique s'il faut utiliser une caméra orbite ou non
+///
+/// @return Aucune
+///
+////////////////////////////////////////////////////////////////////////
+void FacadeModele::utiliserCameraOrbite(bool utiliseOrbite)
+{
+	if (utiliseOrbite != vueEstOrbite_)
+	{
+		/*Sauvegarde des mesures de la clôture */
+		double clotMinX, clotMaxX, clotMinY, clotMaxY;
+		vue_->obtenirProjection().obtenirCoordonneesCloture(clotMinX, clotMaxX, clotMinY, clotMaxY);
+		
+		/* On obtient le rapport d'aspect*/
+		glm::ivec2 fenetreVirt = vue_->obtenirProjection().obtenirDimensionFenetreVirtuelle();
+		double ratio = fenetreVirt.x / fenetreVirt.y;
+		
+		delete vue_;
+
+		if (utiliseOrbite)
+		{
+			 vue_ = new vue::VuePerspective{
+				vue::Camera{
+					glm::dvec3((coinGaucheTableX + coinDroitTableX) / 2.0, 
+								(coinGaucheTableY + coinDroitTableY) / 2.0, 
+								200),
+					glm::dvec3( (coinGaucheTableX + coinDroitTableX) / 2.0 ,
+								(coinGaucheTableY + coinDroitTableY) / 2.0,
+								100), /* Le point visé*/
+					glm::dvec3(0, 1, 0), glm::dvec3(0, 1, 0),
+				    0.0 , 0.0},
+					vue::ProjectionPerspective{
+						clotMinX, clotMaxX, clotMinY, clotMaxY,
+						10.0, 2000, /* La valeur minimale et maximale en Z dans le volume de visualisation*/
+						50, 1000,   /* La valeur minimal et maximale que l'on peut parcourir dans le jeu*/
+						1.10,       /* L'incrément de zoom*/
+						ratio,      /* Le rapport d'aspect précédent*/
+						60.0,       /* L'angle de vision */ 
+					}
+			}; 
+			 vue_->obtenirCamera().assignerPhi(utilitaire::DEG_TO_RAD(90.0));
+			
+			std::cout << "La vue est passee en orbite \n";
+		}
+		else
+		{
+			/*Créer une caméra ortho*/
+			vue_ = new vue::VueOrtho{
+				vue::Camera{
+					glm::dvec3(0, 0, 200), glm::dvec3(0, 0, 0),
+					glm::dvec3(0, 1, 0), glm::dvec3(0, 1, 0),
+					0.0 , 0.0 },
+					vue::ProjectionOrtho{
+						clotMinX, clotMaxX, clotMinY, clotMaxY,
+						1, 1000, 50, 5000, 1.25,
+						double(coinGaucheTableX), double(coinGaucheTableY),
+						double(coinDroitTableX), double(coinDroitTableY) }
+			};
+			appliquerZoomInitial();
+			std::cout << "La vue est passee en orthographique \n";
+		}
+
+		// On change l'attribut pour refléter la vue courante
+		vueEstOrbite_ = utiliseOrbite;
+	}
+}
+
+
+void FacadeModele::setLight(int lum, bool state)
+{
+	switch (lum)
+	{
+	case 0:
+		(state ? controleurLumieres_->activerAmbiante() : controleurLumieres_->desactiverAmbiante());
+		break;
+	case 1:
+		(state ? controleurLumieres_->activerDirectionnelle() : controleurLumieres_->desactiverDirectionnelle());
+		break;
+	case 2:
+		(state ? controleurLumieres_->activerSpot() : controleurLumieres_->desactiverSpot());
+		break;
+	}
+}
+
+glm::ivec2 FacadeModele::obteniCoordonneeMax()
+{
+	return  obtenirInstance()->obtenirVue()->obtenirProjection().obtenirDimensionCloture();
+}
+
+
+////////////////////////////////////////////////////////////////////////
+///
+/// @fn void FacadeModele::sauvegarderHistorique()
+///
+/// @remark Cette fonction prend un screenshot de l'etat de l'arbre de rendu
+///
+/// @return Aucune
+///
+////////////////////////////////////////////////////////////////////////
+void FacadeModele::sauvegarderHistorique()
+{
+	originator_->sauvegarder();
+}
+
+
+////////////////////////////////////////////////////////////////////////
+///
+/// @fn void FacadeModele::annulerModifications()
+///
+/// @remark Cette fonction implemente la feature "undo"
+///
+/// @return Aucune
+///
+////////////////////////////////////////////////////////////////////////
+void FacadeModele::annulerModifications()
+{
+	originator_->annuler();
+}
+
+////////////////////////////////////////////////////////////////////////
+///
+/// @fn void FacadeModele::retablirModifications()
+///
+/// @remark Cette fonction implemente la feature "redo"
+///
+/// @return Aucune
+///
+////////////////////////////////////////////////////////////////////////
+void FacadeModele::retablirModifications()
+{
+	originator_->retablir();
+}
+
+////////////////////////////////////////////////////////////////////////
+///
+/// @fn void FacadeModele::sauvegarderHistorique()
+///
+/// @remark Cette fonction vide l'historique de modifications
+///
+/// @return Aucune
+///
+////////////////////////////////////////////////////////////////////////
+void FacadeModele::viderHistorique()
+{
+	originator_->viderHistorique();
+}
+
+
+
+
+bool FacadeModele::cameraEstOrbite()
+{
+	return vueEstOrbite_;
 }

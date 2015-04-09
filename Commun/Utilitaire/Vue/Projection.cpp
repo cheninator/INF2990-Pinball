@@ -37,8 +37,8 @@ namespace vue {
 	/// @return Aucune (constructeur).
 	///
 	////////////////////////////////////////////////////////////////////////
-	Projection::Projection(int xMinCloture, int xMaxCloture,
-		int yMinCloture, int yMaxCloture,
+	Projection::Projection(double xMinCloture, double xMaxCloture,
+		double yMinCloture, double yMaxCloture,
 		double zAvant, double zArriere,
 		double zoomInMax, double zoomOutMax,
 		double incrementZoom, bool estPerspective) :

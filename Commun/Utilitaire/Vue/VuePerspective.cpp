@@ -1,7 +1,7 @@
 ////////////////////////////////////////////////////////////////////////////////////
 /// @file VuePerspective.cpp
-/// @author DGI
-/// @date 2006-12-16
+/// @author The Ballers
+/// @date 2015-04-01
 /// @version 1.0
 ///
 /// @addtogroup utilitaire Utilitaire
@@ -10,7 +10,7 @@
 
 #include "Utilitaire.h"
 #include "VuePerspective.h"
-
+#include <iostream>
 
 namespace vue {
 
@@ -32,10 +32,8 @@ namespace vue {
 	/// @param[in] zoomInMax     : facteur de zoom in maximal.
 	/// @param[in] zoomOutMax    : facteur de zoom out maximal.
 	/// @param[in] incrementZoom : distance du plan arrière (en @a z).
-	/// @param[in]    : 
-	/// @param[in]    : 
-	/// @param[in]    : 
-	/// @param[in]    : 
+	/// @param[in] ratio         : Le rapport d'aspect du plan avant du volume de visualisation 
+	/// @param[in] fovy          : L'angle de visionnement de la projection perspective
 	/// 
 	/// @return Aucune (constructeur).
 	///
@@ -89,7 +87,7 @@ namespace vue {
 	////////////////////////////////////////////////////////////////////////
 	void VuePerspective::appliquerCamera() const
 	{
-		camera_.positionner();
+		camera_.positionnerOrbite();
 	}
 
 
@@ -126,7 +124,13 @@ namespace vue {
 	////////////////////////////////////////////////////////////////////////
 	void VuePerspective::zoomerIn()
 	{
-		projection_.zoomerIn();
+		std::cout << "On fait un zoomIn Perspective ! \n";
+		
+		double nouvelleDistance =camera_.obtenirDistance() /  projection_.obtenirIncrementZoom();
+		if (nouvelleDistance >= projection_.obtenirZoomInMax())
+			camera_.assignerDistance(nouvelleDistance);
+		
+		std::cout << "Nouvelle distance est de : " << camera_.obtenirDistance() << '\n';
 	}
 
 
@@ -141,7 +145,14 @@ namespace vue {
 	////////////////////////////////////////////////////////////////////////
 	void VuePerspective::zoomerOut()
 	{
-		projection_.zoomerOut();
+		/*Obtenir l'incrément de zoom à partir de la projection plus tard*/
+		std::cout << "On fait un zoomOut Perspective ! \n";
+
+		double nouvelleDistance = camera_.obtenirDistance() * projection_.obtenirIncrementZoom();
+		if (nouvelleDistance <= projection_.obtenirZoomOutMax())
+			camera_.assignerDistance(nouvelleDistance);
+
+		std::cout << "Nouvelle distance est de : " << camera_.obtenirDistance() << '\n';
 	}
 
 
@@ -224,7 +235,11 @@ namespace vue {
 	////////////////////////////////////////////////////////////////////////
 	void VuePerspective::rotaterXY(double rotationX, double rotationY)
 	{
-		camera_.orbiterXY(rotationX * 360, rotationY * 180);
+		// On veut une rotation entre 0.0 et 1.0. COmme déjà expliqué, 
+		// les valeurs habituelles de rotationX et rotationY sont 
+		// de 10.0 avec le signe correspondant
+		rotationX /= 100.0; rotationY /= 100.0;
+		camera_.orbiterXY(rotationX * 360, rotationY * 180, false);
 	}
 
 
@@ -285,6 +300,15 @@ namespace vue {
 		//projection_.centrerSurPoint(pointCentre);
 	}
 
+	void VuePerspective::deplacerXY(double deplacementX, double deplacementY)
+	{
+		camera_.orbiterXY(deplacementX, deplacementY, false);
+	}
+
+	void VuePerspective::deplacerXY(const glm::ivec2& deplacement)
+	{
+		camera_.orbiterXY(deplacement.x, deplacement.y, false);
+	}
 
 }; // Fin du namespace vue.
 

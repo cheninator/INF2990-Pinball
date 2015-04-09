@@ -93,7 +93,7 @@ namespace vue {
 	////////////////////////////////////////////////////////////////////////
 	void VueOrtho::appliquerCamera() const
 	{
-		camera_.positionner();
+		camera_.positionnerOrtho();
 	}
 
 

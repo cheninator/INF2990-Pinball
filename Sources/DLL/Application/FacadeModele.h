@@ -25,7 +25,6 @@
 #ifndef __APPLICATION_FACADEMODELE_H__
 #define __APPLICATION_FACADEMODELE_H__
 
-
 #include <windows.h>
 #include <string>
 #include <iostream>
@@ -43,6 +42,9 @@ class NoeudPaletteD;
 class NoeudRessort;
 class JoueurVirtuel;
 class QuadTree;
+class ControleurLumieres;
+class Originator;
+class ControleurTexte;
 
 namespace vue {
    class Vue;
@@ -60,222 +62,243 @@ class FacadeModele
 {
 public:
 
-   /// Obtient l'instance unique de la classe.
-   static FacadeModele* obtenirInstance(bool console = false);
+	/// Obtient l'instance unique de la classe.
+	static FacadeModele* obtenirInstance(bool console = false);
 
-   /// Libere l'instance unique de la classe.
-   static void libererInstance();
+	/// Libere l'instance unique de la classe.
+	static void libererInstance();
 
-   /// Cree un contexte OpenGL et initialise celui-ci.
-   void initialiserOpenGL(HWND hWnd);
+	/// Cree un contexte OpenGL et initialise celui-ci.
+	void initialiserOpenGL(HWND hWnd);
 
-   /// Libere le contexte OpenGL.
-   void libererOpenGL();
+	/// Libere le contexte OpenGL.
+	void libererOpenGL();
 
-   /// Affiche le contenu du modele.
-   void afficher() const;
+	/// Affiche le contenu du modele.
+	void afficher() const;
 
-   /// Affiche la base du contenu du modele.
-   void afficherBase() const;
- 
-   /// Retourne la vue courante.
-   inline vue::Vue* obtenirVue();
+	/// Affiche la base du contenu du modele.
+	void afficherBase() const;
 
-   /// Retourne l'arbre de rendu.
-   inline const ArbreRenduINF2990* obtenirArbreRenduINF2990() const;
+	/// Retourne la vue courante.
+	inline vue::Vue* obtenirVue();
 
-   /// Retourne l'arbre de rendu.
-   inline ArbreRenduINF2990* obtenirArbreRenduINF2990();
+	/// Retourne l'arbre de rendu.
+	inline const ArbreRenduINF2990* obtenirArbreRenduINF2990() const;
 
-   /// Reinitialise la scene.
-   void reinitialiser();
+	/// Retourne l'arbre de rendu.
+	inline ArbreRenduINF2990* obtenirArbreRenduINF2990();
 
-   /// Anime la scene.
-   void animer(float temps);
+	/// Reinitialise la scene.
+	void reinitialiser();
 
-   /// Deplacement des noeuds selectionnes dans l'arbre de rendu.
-   void deplacerSelection(int x1, int y1, int x2, int y2, bool duplication);
+	/// Anime la scene.
+	void animer(float temps);
 
-   /// Rotation des noeuds selectionnes
-   void tournerSelectionSouris(int x1, int y1, int x2, int y2);
+	/// Deplacement des noeuds selectionnes dans l'arbre de rendu.
+	void deplacerSelection(int x1, int y1, int x2, int y2, bool duplication);
 
-   /// Scale de la selection
-   void agrandirSelection(int x1, int y1, int x2, int y2);
+	/// Rotation des noeuds selectionnes
+	void tournerSelectionSouris(int x1, int y1, int x2, int y2);
 
-   /// Verifier si un point clique est dans la table
-   bool verifierCliqueDansTable(int x, int y);
+	/// Scale de la selection
+	void agrandirSelection(int x1, int y1, int x2, int y2);
 
-   /// Pour la duplication d'objets selectionnes
-   void dupliquerSelection(int i, int j);
+	/// Verifier si un point clique est dans la table
+	bool verifierCliqueDansTable(int x, int y);
 
-   /// Pour la sauvegarde de fichier XML
-   int creerXML(std::string path, int prop[6], bool force = false);
+	/// Pour la duplication d'objets selectionnes
+	void dupliquerSelection(int i, int j);
 
-   /// Verifier si un point clique est dans la table 
-   bool estDansTable(glm::dvec3 pointDuMonde);
+	/// Pour la sauvegarde de fichier XML
+	int creerXML(std::string path, int prop[6], bool force = false);
 
-   /// Pour la suppression des objets selectionnes
-   bool supprimer();
+	/// Verifier si un point clique est dans la table 
+	bool estDansTable(glm::dvec3 pointDuMonde);
 
-   /// Obtenir le facteur de zoom applique
-   double obtenirZoomCourant();
+	/// Pour la suppression des objets selectionnes
+	bool supprimer();
 
-   /// Obtenir la taille de la fenetre
-   glm::ivec2 FacadeModele::obtenirTailleFenetre();
+	/// Obtenir le facteur de zoom applique
+	double obtenirZoomCourant();
 
-   /// Obtenir le centre de masse en X
-   int obtenirCentreMasseX();
+	/// Obtenir la taille de la fenetre
+	glm::ivec2 FacadeModele::obtenirTailleFenetre();
 
-   /// Obtenir le centre de masse en Y
-   int obtenirCentreMasseY();
+	/// Obtenir le centre de masse en X
+	int obtenirCentreMasseX();
 
-   /// Selectionner les objets sous un point clique
-   int selectionnerObjetSousPointClique(int i, int j, int largeur, int hauteur, bool ctrlDown = false);
+	/// Obtenir le centre de masse en Y
+	int obtenirCentreMasseY();
 
-   /// Pour le rectangle elastique
-   void rectangleElastique(int i, int j);
-   
-   /// Pour la selection multiple d'objets
-   int selectionMultiple(bool c);
+	/// Selectionner les objets sous un point clique
+	int selectionnerObjetSousPointClique(int i, int j, int largeur, int hauteur, bool ctrlDown = false);
 
-   /// Initialisation du rectangle elastique
-   void initialiserRectangleElastique(int i, int j);
+	/// Pour le rectangle elastique
+	void rectangleElastique(int i, int j);
 
-   /// Fin du rectangle elastique
-   void terminerRectangleElastique();
+	/// Pour la selection multiple d'objets
+	int selectionMultiple(bool c);
 
-   /// Appliquer le zoom initial
-   bool appliquerZoomInitial();
+	/// Initialisation du rectangle elastique
+	void initialiserRectangleElastique(int i, int j);
 
-   /// Position du mur
-   static void positionnerMur(int originX, int originY, int x1, int y1, int x2, int y2, NoeudAbstrait* noeud);
+	/// Fin du rectangle elastique
+	void terminerRectangleElastique();
 
-   /// Verifie si la selection est hors table lors de la duplication
-   bool duplicationEstHorsTable();
+	/// Appliquer le zoom initial
+	bool appliquerZoomInitial();
 
-   /// Sauvegarde la derniere configuration valide et confirmee par l'usager
-   void sauvegarderConfig(int config[13]);
+	/// Position du mur
+	static void positionnerMur(int originX, int originY, int x1, int y1, int x2, int y2, NoeudAbstrait* noeud);
 
-   /// Obtenir toutes les proprietes sans initialiser l'arbre de rendu
-   int* obtenirProprietes(char* nomFichier, int length);
+	/// Verifie si la selection est hors table lors de la duplication
+	bool duplicationEstHorsTable();
 
-   /// Obtenir la difficulte du nom de la carte passe en parametre
-   int obtenirDifficulte(char* nomFichier, int length);
+	/// Sauvegarde la derniere configuration valide et confirmee par l'usager
+	void sauvegarderConfig(int config[13]);
 
-   /// Sauvegarder la derniere campagne jouee par l'usager
-   void sauvegarderCampagne(char* nomFichier, int length);
+	/// Obtenir toutes les proprietes sans initialiser l'arbre de rendu
+	int* obtenirProprietes(char* nomFichier, int length);
 
-   /// Obtenir les informations de derniere campagne jouee par l'usager
-   std::string obtenirDerniereCampagne();
+	/// Obtenir la difficulte du nom de la carte passe en parametre
+	int obtenirDifficulte(char* nomFichier, int length);
 
-   /// Compresser un ressort
-   void compresserRessort();
+	/// Sauvegarder la derniere campagne jouee par l'usager
+	void sauvegarderCampagne(char* nomFichier, int length);
 
-   /// Relacher le ressort
-   void relacherRessort();
+	/// Obtenir les informations de derniere campagne jouee par l'usager
+	std::string obtenirDerniereCampagne();
 
-   void construireQuadTree();
+	/// Compresser un ressort
+	void compresserRessort();
+
+	/// Relacher le ressort
+	void relacherRessort();
+
+	void construireQuadTree();
 
 
-   int* obtenirConfiguration();
-   int	obtenirTouchePGJ1();
-   int  obtenirTouchePGJ2();
-   int  obtenirTouchePDJ1();
-   int  obtenirTouchePDJ2();
-   int  obtenirToucheRessort();
-   int  obtenirNombreDeBilles();
-   int  obtenirModeDoubleBille();
-   int  obtenirModeForceRebond();
-   int  obtenirAffichageGlobal();
-   void bloquerAffichageGlobal(int active);
-   bool obtenirAI();
+	int* obtenirConfiguration();
+	int	obtenirTouchePGJ1();
+	int  obtenirTouchePGJ2();
+	int  obtenirTouchePDJ1();
+	int  obtenirTouchePDJ2();
+	int  obtenirToucheRessort();
+	int  obtenirNombreDeBilles();
+	int  obtenirModeDoubleBille();
+	int  obtenirModeForceRebond();
+	int  obtenirAffichageGlobal();
+	void bloquerAffichageGlobal(int active);
+	bool obtenirAI();
 
-   /// Construire des les 4 listes de palettes GJ1,DJ1, GJ2,DJ2
-   void construireListesPalettes(); 
-   
-   /// Activer les palettes de chaque joueur
-   void activerPalettesGJ1();
-   void desactiverPalettesGJ1();
-   void activerPalettesDJ1();
-   void desactiverPalettesDJ1();
-   
-   void activerPalettesGJ2();
-   void desactiverPalettesGJ2();
-   void activerPalettesDJ2();
-   void desactiverPalettesDJ2();
+	/// Construire des les 4 listes de palettes GJ1,DJ1, GJ2,DJ2
+	void construireListesPalettes();
 
-   void supprimerBille();
+	/// Activer les palettes de chaque joueur
+	void activerPalettesGJ1();
+	void desactiverPalettesGJ1();
+	void activerPalettesDJ1();
+	void desactiverPalettesDJ1();
 
-   void setPause(bool pause);
-   void setDebug(bool valeurSpotLight = false);
+	void activerPalettesGJ2();
+	void desactiverPalettesGJ2();
+	void activerPalettesDJ2();
+	void desactiverPalettesDJ2();
 
-   // Traiter l'ensemble des collisions
-   void traiterCollisions(float temps);
-   void traiterCollisionsAvecQuadTree(float temps);
-   void updateForcesExternes();
-   
-   void mettreAJourListeBillesEtNoeuds();
-   void mettreAJourListeNoeuds();
-   void mettreAJourListeRessorts();
+	void supprimerBille();
 
-   // Assigner la valeur de l'animation a un objet
-   void assignerAnimer( bool animer, NoeudAbstrait* noeud);
-   void assignerAI(bool actif);
+	void setPause(bool pause);
+	void setDebug(bool valeurSpotLight = false);
 
-   /// Preare la création de la bille (choisis le portail d'ou elle sera generee)
-   bool preparerBille();
-   /// Cree une bille a la position et scale demande
-   void creeBille(glm::dvec3 position, glm::dvec3 echelle);
+	// Traiter l'ensemble des collisions
+	void traiterCollisions(float temps);
+	void traiterCollisionsAvecQuadTree(float temps);
+	void updateForcesExternes();
 
-   void printCurrentTime();
-   double obtenirScaleMinMax();
+	void mettreAJourListeBillesEtNoeuds();
+	void mettreAJourListeNoeuds();
+	void mettreAJourListeRessorts();
 
-   std::string obtenirCout();
+	// Assigner la valeur de l'animation a un objet
+	void assignerAnimer(bool animer, NoeudAbstrait* noeud);
+	void assignerAI(bool actif);
+
+	/// Preare la création de la bille (choisis le portail d'ou elle sera generee)
+	bool preparerBille();
+	/// Cree une bille a la position et scale demande
+	void creeBille(glm::dvec3 position, glm::dvec3 echelle);
+
+	void printCurrentTime();
+	double obtenirScaleMinMax();
+
+	void utiliserCameraOrbite(bool utiliseOrbite);
+	bool cameraEstOrbite();
+
+	ControleurTexte* obtenircontroleurTexte();
+
+	std::string obtenirCout();
+
+
+	/// Pour transmettre les appels de lumiere du C# au controleur de Lumieres
+	void setLight(int lum, bool state);
+
+	glm::ivec2 obteniCoordonneeMax();
+
+	/// Journal des modifications
+	void sauvegarderHistorique();
+	void annulerModifications();
+	void retablirModifications();
+	void viderHistorique();
+
 
 private:
 
-   /// Constructeur par defaut.
-   FacadeModele() = default;
+	/// Constructeur par defaut.
+	FacadeModele() = default;
 
-   /// Destructeur.
-   ~FacadeModele();
+	/// Destructeur.
+	~FacadeModele();
 
-   /// Constructeur copie desactive.
-   FacadeModele(const FacadeModele&) = delete;
+	/// Constructeur copie desactive.
+	FacadeModele(const FacadeModele&) = delete;
 
-   /// Operateur d'assignation desactive.
-   FacadeModele& operator =(const FacadeModele&) = delete;
+	/// Operateur d'assignation desactive.
+	FacadeModele& operator =(const FacadeModele&) = delete;
 
-   /// Pointeur vers l'instance unique de la classe.
-   static FacadeModele* instance_; 
-   static bool useQuadTree_;
+	/// Pointeur vers l'instance unique de la classe.
+	static FacadeModele* instance_;
+	static bool useQuadTree_;
 
-   HWND  hWnd_{ nullptr };	///< Poignee ("handle") vers la fenetre ou l'affichage se fait.
-   HGLRC hGLRC_{ nullptr }; ///< Poignee ("handle") vers le contexte OpenGL.
-   HDC   hDC_{ nullptr };	///< Poignee ("handle") vers le "device context".
+	HWND  hWnd_{ nullptr };	///< Poignee ("handle") vers la fenetre ou l'affichage se fait.
+	HGLRC hGLRC_{ nullptr }; ///< Poignee ("handle") vers le contexte OpenGL.
+	HDC   hDC_{ nullptr };	///< Poignee ("handle") vers le "device context".
 
-   vue::Vue* vue_{ nullptr };				/// Vue courante de la scene.
-   ArbreRenduINF2990* arbre_{ nullptr };	/// Arbre de rendu contenant les differents objets de la scene.
-   ConfigScene* configuration_{ nullptr };
-   int* proprietes_;						/// Pour les proprietes de la zone de jeu
-   JoueurVirtuel* joueur_{ nullptr };
-   QuadTree* quad_{ nullptr };
+	vue::Vue* vue_{ nullptr };				/// Vue courante de la scene.
+	ArbreRenduINF2990* arbre_{ nullptr };	/// Arbre de rendu contenant les differents objets de la scene.
+	ConfigScene* configuration_{ nullptr };
+	int* proprietes_;						/// Pour les proprietes de la zone de jeu
+	JoueurVirtuel* joueur_{ nullptr };
+	QuadTree* quad_{ nullptr };
+	Originator* originator_{ nullptr };
 
-   std::stringstream oss_;
-   std::streambuf* old_;
+	std::stringstream oss_;
+	std::streambuf* old_;
 
-   glm::dvec3 selectionBasGauche_, selectionHautDroit_;
-   glm::ivec2 pointInitial_, pointAvant_;
+	glm::dvec3 selectionBasGauche_, selectionHautDroit_;
+	glm::ivec2 pointInitial_, pointAvant_;
 
-   static const int coinGaucheTableX;
-   static const int coinGaucheTableY;
-   static const int coinDroitTableX;
-   static const int coinDroitTableY;
+	static const int coinGaucheTableX;
+	static const int coinGaucheTableY;
+	static const int coinDroitTableX;
+	static const int coinDroitTableY;
 
-   bool duplicationHorsTable_;
+	bool duplicationHorsTable_;
 
-   bool pause_{ false };
-   bool utiliserAI { false };
+	bool pause_{ false };
+	bool utiliserAI{ false };
+
+	bool vueEstOrbite_{ false };
 
    /// Listes de palettes à activer pour chaque touche
    std::set<NoeudPaletteG*> listePalettesGJ1_; ///< Gauche joueur 1
@@ -286,6 +309,9 @@ private:
    std::vector<NoeudAbstrait*> listeBilles_;
    std::vector<NoeudAbstrait*> listeNoeuds_;
    std::vector<NoeudAbstrait*> listeRessorts_;
+
+   ControleurLumieres* controleurLumieres_{ nullptr };
+   ControleurTexte* controleurTexte_{ nullptr };
 };
 
 

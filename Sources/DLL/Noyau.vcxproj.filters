@@ -79,6 +79,24 @@
     <Filter Include="Header Files\Sound">
       <UniqueIdentifier>{8eb9fab5-04e0-4a8f-93ad-415e9eb4f472}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Source Files\Eclairage">
+      <UniqueIdentifier>{d9757b3e-80f0-4a6c-88ab-df6af2bccda9}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Eclairage">
+      <UniqueIdentifier>{e7dac68f-698b-4100-ac66-90ffb263d7b6}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Memento">
+      <UniqueIdentifier>{7fa627b5-6751-43f0-b4c8-44fb6853c544}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Memento">
+      <UniqueIdentifier>{5a0b94c8-bf4f-4de3-ae5d-17537138a4cd}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Text">
+      <UniqueIdentifier>{ed5b5eb0-c8fd-476d-a85f-365a55a821db}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Texte">
+      <UniqueIdentifier>{30d299ed-3e43-42d2-a0da-66fd50207eab}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Application\FacadeModele.cpp">
@@ -230,6 +248,27 @@
     </ClCompile>
     <ClCompile Include="Sound\ControleurSon.cpp">
       <Filter>Source Files\Sound</Filter>
+    </ClCompile>
+    <ClCompile Include="Eclairage\Lumiere.cpp">
+      <Filter>Source Files\Eclairage</Filter>
+    </ClCompile>
+    <ClCompile Include="Eclairage\ControleurLumieres.cpp">
+      <Filter>Source Files\Eclairage</Filter>
+    </ClCompile>
+    <ClCompile Include="Eclairage\ControleurNuanceurs.cpp">
+      <Filter>Source Files\Eclairage</Filter>
+    </ClCompile>
+    <ClCompile Include="Memento\CareTaker.cpp">
+      <Filter>Source Files\Memento</Filter>
+    </ClCompile>
+    <ClCompile Include="Memento\Originator.cpp">
+      <Filter>Source Files\Memento</Filter>
+    </ClCompile>
+    <ClCompile Include="Memento\Memento.cpp">
+      <Filter>Source Files\Memento</Filter>
+    </ClCompile>
+    <ClCompile Include="Text\ControleurTexte.cpp">
+      <Filter>Source Files\Texte</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -445,6 +484,30 @@
     </ClInclude>
     <ClInclude Include="Sound\ControleurSon.h">
       <Filter>Header Files\Sound</Filter>
+    </ClInclude>
+    <ClInclude Include="Eclairage\Lumiere.h">
+      <Filter>Header Files\Eclairage</Filter>
+    </ClInclude>
+    <ClInclude Include="Eclairage\ControleurLumieres.h">
+      <Filter>Header Files\Eclairage</Filter>
+    </ClInclude>
+    <ClInclude Include="Eclairage\ControleurNuanceurs.h">
+      <Filter>Header Files\Eclairage</Filter>
+    </ClInclude>
+    <ClInclude Include="Memento\CareTaker.h">
+      <Filter>Header Files\Memento</Filter>
+    </ClInclude>
+    <ClInclude Include="Memento\Originator.h">
+      <Filter>Header Files\Memento</Filter>
+    </ClInclude>
+    <ClInclude Include="Memento\Memento.h">
+      <Filter>Header Files\Memento</Filter>
+    </ClInclude>
+    <ClInclude Include="Text\ControleurTexte.h">
+      <Filter>Header Files\Text</Filter>
+    </ClInclude>
+    <ClInclude Include="Text\ControleurTexteDefine.h">
+      <Filter>Header Files\Text</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

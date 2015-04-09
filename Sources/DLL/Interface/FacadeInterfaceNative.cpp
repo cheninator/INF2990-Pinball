@@ -5,8 +5,16 @@
 ///
 /// @ingroup Interface
 ////////////////////////////////////////////////
+
+// pour que ca arrete de chialer que gl.h est included avant glew.h
+// Ca leur tenter pas de faire include glew.h dans gl.h ???
+#include "GL/glew.h"
+#include <gl/GLU.h>
+#include <gl/GL.h>
+
 #include "FacadeInterfaceNative.h"
 #include "FacadeModele.h"
+#include "../Text/ControleurTexte.h"
 
 #include "glm\glm.hpp"
 #include "FacadeModele.h"
@@ -222,7 +230,7 @@ extern "C"
 		return utilitaire::CompteurAffichage::obtenirInstance()->obtenirAffichagesSeconde();
 	}
 
-
+	/*
 	////////////////////////////////////////////////////////////////////////
 	///
 	/// @fn bool executerTests()
@@ -237,7 +245,7 @@ extern "C"
 		bool reussite = BancTests::obtenirInstance()->executer();
 		return reussite ? 0 : 1;
 	}
-
+	*/
 	////////////////////////////////////////////////////////////////////////
 	///
 	/// @fn void creerObjet()
@@ -625,7 +633,15 @@ extern "C"
 	////////////////////////////////////////////////////////////////////////
 	__declspec(dllexport) void __cdecl translater(double deplacementX, double deplacementY)
 	{
-		FacadeModele::obtenirInstance()->obtenirVue()->deplacerXY(deplacementX, deplacementY);
+		// Notez bien que cette valeur transmise est d'habitude de 10 depuis le C#
+
+		/* Si la caméra est orbite, on redirige la méthode vers celle appropriée*/
+		if (FacadeModele::obtenirInstance()->cameraEstOrbite())
+			orbite(deplacementX, deplacementY);
+		else
+		{
+			FacadeModele::obtenirInstance()->obtenirVue()->deplacerXY(deplacementX, deplacementY);
+		}
 	}
 
 
@@ -720,15 +736,9 @@ extern "C"
 	////////////////////////////////////////////////////////////////////////
 	__declspec(dllexport) void __cdecl orbite(double x, double y)
 	{
-		glm::dvec3 maPosition;
-		FacadeModele::obtenirInstance()->obtenirVue()->convertirClotureAVirtuelle((int)x, (int)y, maPosition);
-
-		theta += maPosition.x / 100.0;
-		phi += maPosition.y / 100.0;
-		double dist = 200.0;
-
-		// A revori avec phil
-		FacadeModele::obtenirInstance()->obtenirVue()->obtenirCamera().orbiterXY(phi, theta);
+		// Habituellement la valeur de x et y est de 10 depuis le C#
+		/// En theta, pour correspondre à une rotation dans le sens de la flèche il faut envoyer l'opposé
+		FacadeModele::obtenirInstance()->obtenirVue()->rotaterXY( -1 * x, y);
 	}
 
 	////////////////////////////////////////////////////////////////////////
@@ -1806,26 +1816,9 @@ extern "C"
 			FacadeModele::obtenirInstance()->printCurrentTime();
 			std::cout << " - Lumiere(s) ";
 		}
-		switch (lum) {
-		case 0:
-			if (debugLumiere)
-				std::cout << "ambiante ";
-			// TO DO: the spotlight ambiante
-			break;
-		case 1:
-			if (debugLumiere)
-				std::cout << "directionnelle ";
-			// TO DO: the spotlight directionnelle
-			break;
-		case 2:
-			if (debugLumiere)
-				std::cout << "spot ";
-			break;
-		default:
-			return false;
-			break;
-		}
+		
 		if (debugLumiere)
+		{
 			if (state == true)
 			{
 				std::cout << "ouverte(s)" << std::endl;
@@ -1834,6 +1827,10 @@ extern "C"
 			{
 				std::cout << "fermee(s)" << std::endl;
 			}
+		}
+
+		FacadeModele::obtenirInstance()->setLight(lum, state);
+
 		return true;
 	}
 
@@ -2013,8 +2010,8 @@ extern "C"
 	__declspec(dllexport) void __cdecl activerCustomConsole()
 	{
 		FacadeModele::obtenirInstance(true);
+		SingletonGlobal::obtenirInstance()->activerSon();
 	}
-
 
 	///////////////////////////////////////////////////////////////////////////////
 	///
@@ -2026,4 +2023,202 @@ extern "C"
 	{
 		return stringToBSTR(FacadeModele::obtenirInstance()->obtenirCout());
 	}
+
+	///////////////////////////////////////////////////////////////////////////////
+	///
+	/// @fn void refreshText(int x, int y)
+	/// @brief Rafraichit la position du texte
+	/// @param[in] x : Taille max de la fenetre en x
+	/// @param[in] y : Taille max de la fenetre en y
+	/// @return Aucune.
+	///
+	///////////////////////////////////////////////////////////////////////////////
+	__declspec(dllexport) void __cdecl refreshText(int x, int y)
+	{
+		FacadeModele::obtenirInstance()->obtenircontroleurTexte()->refresh(x, y);
+	}
+
+	///////////////////////////////////////////////////////////////////////////////
+	///
+	/// @fn void creeTexte(char* text, char* font)
+	/// @brief Cree le texte
+	/// @param[in] text : Le texte a modifier
+	/// @param[in] font : La font a utiliser
+	/// @return Aucune.
+	///
+	///////////////////////////////////////////////////////////////////////////////
+	__declspec(dllexport) void __cdecl creeTexte(char* text, int lengthT, char* font, int lengthF)
+	{
+		std::string myText = std::string(text);
+		FacadeModele::obtenirInstance()->obtenircontroleurTexte()->creeTexte(myText, font);
+	}
+
+	///////////////////////////////////////////////////////////////////////////////
+	///
+	/// @fn void updateText(char* oldText, int lengthO, char* newText, int lengthN)
+	/// @brief Modifie un texte existant
+	/// @param[in] oldText : Le texte a modifier
+	/// @param[in] newText : La texte apres modification
+	/// @return Aucune.
+	///
+	///////////////////////////////////////////////////////////////////////////////
+	__declspec(dllexport) void __cdecl updateText(char* oldText, int lengthO, char* newText, int lengthN)
+	{
+		std::string myOldText = std::string(oldText);
+		std::string myNewText = std::string(newText);
+		FacadeModele::obtenirInstance()->obtenircontroleurTexte()->updateText(myOldText, myNewText);
+	}
+	
+	///////////////////////////////////////////////////////////////////////////////
+	///
+	/// @fn void resize(char* text, int length, unsigned int size)
+	/// @brief Modifie la taille du texte
+	/// @param[in] text : Le texte a modifier
+	/// @param[in] size : La taille a appliquer au text
+	/// @return Aucune.
+	///
+	///////////////////////////////////////////////////////////////////////////////
+	__declspec(dllexport) void __cdecl resize(char* text, int length, int size)
+	{
+			std::string myText = std::string(text);
+		FacadeModele::obtenirInstance()->obtenircontroleurTexte()->resize(myText, (unsigned int)size);
+	}
+
+	///////////////////////////////////////////////////////////////////////////////
+	///
+	/// @fn void changerCouleur(char* text, int length, float rouge, float vert, float bleu)
+	/// @brief Change la couleur du texte
+	/// @param[in] text : Le texte a modifier
+	/// @param[in] rouge : La couleur rouge a appliquer (en RGB)
+	/// @param[in] vert : La couleur vert a appliquer (en RGB)
+	/// @param[in] bleu : La couleur bleu a appliquer (en RGB)
+	/// @return Aucune.
+	///
+	///////////////////////////////////////////////////////////////////////////////
+	__declspec(dllexport) void __cdecl changerCouleur(char* text, int length, float rouge, float vert, float bleu)
+	{
+		std::string myText = std::string(text);
+		FacadeModele::obtenirInstance()->obtenircontroleurTexte()->changerCouleur(myText, rouge, vert, bleu);
+	}
+
+	///////////////////////////////////////////////////////////////////////////////
+	///
+	/// @fn void changerCouleurV(char* text, int length, float couleur[3])
+	/// @brief Change la couleur du texte
+	/// @param[in] text : Le texte a modifier
+	/// @param[in] couleur : La couleur a appliquer (en RGB)
+	/// @return Aucune.
+	///
+	///////////////////////////////////////////////////////////////////////////////
+	__declspec(dllexport) void __cdecl changerCouleurV(char* text, int length, float couleur[3])
+	{
+		std::string myText = std::string(text);
+		glm::fvec3 couleurV(couleur[0], couleur[1], couleur[2]);
+		FacadeModele::obtenirInstance()->obtenircontroleurTexte()->changerCouleurV(myText, couleurV);
+	}
+
+	///////////////////////////////////////////////////////////////////////////////
+	///
+	/// @fn void repositionner(char* text, int length, int x, int y)
+	/// @brief Modifie la position du texte
+	/// @param[in] text : Le texte a modifier
+	/// @param[in] x : La position du texte en x
+	/// @param[in] y : La position du texte en y
+	/// @return Aucune.
+	///
+	///////////////////////////////////////////////////////////////////////////////
+	__declspec(dllexport) void __cdecl repositionner(char* text, int length, float x, float y)
+	{
+		std::string myText = std::string(text);
+		FacadeModele::obtenirInstance()->obtenircontroleurTexte()->repositionner(myText, x, y);
+	}
+
+
+	///////////////////////////////////////////////////////////////////////////////
+	///
+	/// @fn void suprimerText(char* text, int length)
+	/// @brief Efface un texte du rendu
+	/// @param[in] text : Le texte a effacer
+	/// @return Aucune.
+	///
+	///////////////////////////////////////////////////////////////////////////////
+	__declspec(dllexport) void __cdecl suprimerText(char* text, int length)
+	{
+		std::string myText = std::string(text);
+		FacadeModele::obtenirInstance()->obtenircontroleurTexte()->suprimerText(myText);
+	}
+
+	///////////////////////////////////////////////////////////////////////////////
+	///
+	/// @fn void afficherTextes(bool afficher)
+	/// @brief Affiche ou non tout les textes
+	/// @param[in] afficher : L'etat d'affichage
+	/// @return Aucune.
+	///
+	///////////////////////////////////////////////////////////////////////////////
+	__declspec(dllexport) void __cdecl afficherTextes(bool afficher)
+	{
+		FacadeModele::obtenirInstance()->obtenircontroleurTexte()->afficherTextes(afficher);
+	}
+
+	///////////////////////////////////////////////////////////////////////////////
+	///
+	/// @fn void preparerUsineArbre(char* text, int length)
+	/// @brief Cree une usine
+	/// @param[in] text L'usine a cree
+	/// @param[in] length Taille d string de l'usine
+	/// @return Aucune.
+	///
+	///////////////////////////////////////////////////////////////////////////////
+	__declspec(dllexport) void __cdecl preparerUsineArbre(char* text, int length)
+	{
+		FacadeModele::obtenirInstance()->obtenirArbreRenduINF2990()->preparerUsine(std::string(text));
+	}
+
+
+	///////////////////////////////////////////////////////////////////////////////
+	///
+	/// @fn void initialiserArbre()
+	/// @brief initialise l'arbre
+	/// @return Aucune.
+	///
+	///////////////////////////////////////////////////////////////////////////////
+	__declspec(dllexport) void __cdecl initialiserArbre()
+	{
+		FacadeModele::obtenirInstance()->obtenirArbreRenduINF2990()->initialiser();
+	}
+
+	///////////////////////////////////////////////////////////////////////////////
+	///
+	/// @fn void utiliserCameraOrbite(bool utiliseOrbite)
+	/// @brief Change l'etat de la camera
+	/// @param[in] utiliseOrbite : La valeur de l'etat a utiliser
+	/// @return Aucune.
+	///
+	///////////////////////////////////////////////////////////////////////////////
+	__declspec(dllexport) void utiliserCameraOrbite(bool utiliseOrbite)
+	{
+		FacadeModele::obtenirInstance()->utiliserCameraOrbite(utiliseOrbite);
+	}
+
+	__declspec(dllexport) void sauvegarderHistorique()
+	{
+		FacadeModele::obtenirInstance()->sauvegarderHistorique();
+	}
+
+	__declspec(dllexport) void annulerModifications()
+	{
+		FacadeModele::obtenirInstance()->annulerModifications();
+	}
+
+	__declspec(dllexport) void retablirModifications()
+	{
+		FacadeModele::obtenirInstance()->retablirModifications();
+	}
+
+	__declspec(dllexport) void viderHistorique()
+	{
+		FacadeModele::obtenirInstance()->viderHistorique();
+	}
+
 }// FIN DU extern "C"

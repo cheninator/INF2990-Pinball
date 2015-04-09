@@ -45,8 +45,8 @@ namespace vue {
 	/// @return Aucune (constructeur).
 	///
 	////////////////////////////////////////////////////////////////////////
-	ProjectionOrtho::ProjectionOrtho(int xMinCloture, int xMaxCloture,
-		int yMinCloture, int yMaxCloture,
+	ProjectionOrtho::ProjectionOrtho(double xMinCloture, double xMaxCloture,
+		double yMinCloture, double yMaxCloture,
 		double zAvant, double zArriere,
 		double zoomInMax, double zoomOutMax,
 		double incrementZoom,
@@ -420,7 +420,7 @@ namespace vue {
 				
 		if (abs(rapportAspect - rapportAspectVirtuel) / rapportAspect < (0.0001 * rapportAspect))
 		{
-			//std::cout << "\n Rapports aspects sont egaux : pas d'ajustation \n";
+			std::cout << "\n Rapports aspects sont egaux : pas d'ajustation \n";
 			return; // Les deux rapports d'aspects sont considérés dans la marge d'erreur
 		}
 		if (rapportAspectVirtuel > rapportAspect)
@@ -534,6 +534,12 @@ namespace vue {
 		else
 			valide = true;
 		return valide;
+	}
+
+	void ProjectionOrtho::conserverRapportAspect()
+	{
+		this->ajusterRapportAspect(DirectionZoom::OUT_);
+		appliquer();
 	}
 
 }; // Fin du namespace vue.

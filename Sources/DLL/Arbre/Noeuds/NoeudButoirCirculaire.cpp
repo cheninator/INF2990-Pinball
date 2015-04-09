@@ -7,6 +7,7 @@
 /// @ingroup Noeud
 ///////////////////////////////////////////////////////////////////////////
 
+#include "../../Eclairage/ControleurNuanceurs.h"
 #include "NoeudButoirCirculaire.h"
 #include "Utilitaire.h"
 #include "../../Global/SingletonGlobal.h"
@@ -19,6 +20,12 @@
 #include "Modele3D.h"
 #include "OpenGL_Storage/ModeleStorage_Liste.h"
 
+#define NOEUD_NORMAL 0
+#define NOEUD_COLOR_SHIFT 1
+#define NOEUD_IMPOSSIBLE 2
+#define NOEUD_SELECTIONNE 3
+#define NOEUD_TRANSPARENT 4
+#define NOEUD_ILLUMINE 5
 
 ////////////////////////////////////////////////////////////////////////
 ///
@@ -68,7 +75,10 @@ void NoeudButoirCirculaire::afficherConcret() const
 	glPushAttrib(GL_ALL_ATTRIB_BITS);
 	NoeudAbstrait::appliquerAfficher();
 	if (illumine_)
+	{
+		ControleurNuanceurs::obtenirInstance()->assignerEtatNoeud(NOEUD_ILLUMINE);
 		glTexEnvf(GL_TEXTURE_ENV, GL_TEXTURE_ENV_MODE, GL_DECAL);
+	}
 	liste_->dessiner();
 	glPopAttrib();
 	glPopMatrix();
@@ -239,5 +249,6 @@ void NoeudButoirCirculaire::traiterCollisions(aidecollision::DetailsCollision de
 	}
 
 	SingletonGlobal::obtenirInstance()->collisionButoirCirculaire();
+	SingletonGlobal::obtenirInstance()->obtenirControleurSon()->jouerSon("butoirCirc.wav");
 	compteurIllumination_ = 0;
 }

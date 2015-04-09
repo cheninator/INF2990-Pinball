@@ -154,6 +154,31 @@ namespace utilitaire {
 
 	////////////////////////////////////////////////////////////////////////
 	///
+	/// @fn double SIGN( double nombre )
+	///
+	/// Fonction pour connaître le signe d'un nombre.
+	///
+	/// @param[in] nombre : Valeur dont on veut trouver le signe.
+	///
+	/// @return int => 1 si positif, -1 si négatif, 0 si = 0.
+	///
+	////////////////////////////////////////////////////////////////////////
+	double SIGN(double nombre)
+	{
+		if (nombre == 0.0) {
+			return 0.0;
+		}
+		else if (nombre > 0.0) {
+			return  1.0;
+		}
+		else {
+			return -1.0;
+		}
+	}
+
+
+	////////////////////////////////////////////////////////////////////////
+	///
 	/// @fn float ABS( float nombre )
 	///
 	/// Fonction qui retourne la valeur absolue.

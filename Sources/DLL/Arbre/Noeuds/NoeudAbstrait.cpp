@@ -5,12 +5,19 @@
 ///
 /// @ingroup Noeud
 ////////////////////////////////////////////////
-
+#include "../../Eclairage/ControleurNuanceurs.h"
 #include "NoeudAbstrait.h"
 #include "Utilitaire.h"
 #include "../../Commun/Externe/glm/include/glm/gtx/Projection.hpp"
 
 #include "NoeudBille.h"
+
+#define NOEUD_NORMAL 0
+#define NOEUD_COLOR_SHIFT 1
+#define NOEUD_IMPOSSIBLE 2
+#define NOEUD_SELECTIONNE 3
+#define NOEUD_TRANSPARENT 4
+#define NOEUD_ILLUMINE 5
 
 unsigned int NoeudAbstrait::compteurNoeuds_ = 0;
 ////////////////////////////////////////////////////////////////////////
@@ -446,17 +453,30 @@ void NoeudAbstrait::afficher() const
 
 void NoeudAbstrait::appliquerAfficher() const
 {
+	int etat = NOEUD_NORMAL;
+	int colorShift = NOEUD_NORMAL;
 	if (colorShift_)
+	{
 		glTexEnvf(GL_TEXTURE_ENV, GL_TEXTURE_ENV_MODE, GL_BLEND);
+		colorShift = NOEUD_COLOR_SHIFT;
+	}
+	ControleurNuanceurs::obtenirInstance()->assignerColorShift(colorShift);
+
 	if (impossible_)
-		glColorMask(0, 1, 1, 1);
-	else if (selectionne_) {
-		glTexEnvf(GL_TEXTURE_ENV, GL_TEXTURE_ENV_MODE, GL_ADD);
+	{
+		// glColorMask(0, 1, 1, 1);
+		etat = NOEUD_IMPOSSIBLE;
+		}
+	else if (selectionne_) 
+	{
+		// glTexEnvf(GL_TEXTURE_ENV, GL_TEXTURE_ENV_MODE, GL_ADD);
+		etat = NOEUD_SELECTIONNE;
 		if (twin_ != nullptr && twin_ != NULL)
 			twin_->setTransparent(true);
 	}
 	
 	else if (transparent_) {
+		etat = NOEUD_TRANSPARENT;
 		glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
 		glEnable(GL_BLEND);
 	}
@@ -466,6 +486,9 @@ void NoeudAbstrait::appliquerAfficher() const
 	if (twin_ != nullptr && twin_ != NULL)
 		if (!selectionne_ && !twin_->estSelectionne())
 			twin_->setTransparent(false);
+
+	ControleurNuanceurs::obtenirInstance()->assignerEtatNoeud(etat);
+	ControleurNuanceurs::obtenirInstance()->assignerNumeroNoeud(numeroNoeud_);
 
 	glStencilFunc(GL_ALWAYS, numeroNoeud_, -1);
 }
@@ -957,7 +980,6 @@ NoeudAbstrait* NoeudAbstrait::obtenirPortailDorigine()
 }
 
 
-
 ////////////////////////////////////////////////////////////////////////
 ///
 /// @fn void NoeudAbstrait::genererBille()
@@ -969,3 +991,16 @@ void NoeudAbstrait::genererBille()
 {
 	return;
 }
+
+////////////////////////////////////////////////////////////////////////
+///
+/// @fn void NoeudAbstrait::setNumero(int numero)
+///
+/// Modifie le numero de noeud du noeud courant
+/// 
+////////////////////////////////////////////////////////////////////////
+void NoeudAbstrait::setNumero(int numero) 
+{ 
+	numeroNoeud_ = numero; 
+	compteurNoeuds_--; 
+};

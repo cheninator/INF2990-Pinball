@@ -87,6 +87,7 @@ void NoeudTrou::afficherConcret() const
 void NoeudTrou::animer(float temps)
 {
 	NoeudComposite::animer(temps);
+	positionRelative_.z = 0;
 	if (!animer_)
 		return;
 	rotation_.z += temps * VITESSE_NOEUD_TROU;
@@ -147,5 +148,6 @@ std::vector<glm::dvec3> NoeudTrou::obtenirVecteursEnglobants()
 ////////////////////////////////////////////////////////////////////////
 void NoeudTrou::traiterCollisions(aidecollision::DetailsCollision, NoeudAbstrait* bille, float facteurRebond)
 {
+	SingletonGlobal::obtenirInstance()->obtenirControleurSon()->jouerSon("hole.wav");
 	// bille->obtenirParent()->effacer(bille);
 }
