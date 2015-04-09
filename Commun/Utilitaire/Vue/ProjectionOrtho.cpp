@@ -16,6 +16,7 @@
 
 namespace vue {
 
+//#define SHOW_OUTPUT_PROJECTION_ORTHO
 
 	////////////////////////////////////////////////////////////////////////
 	///
@@ -60,8 +61,10 @@ namespace vue {
 		yMinFenetre_{ yMinFenetre },
 		yMaxFenetre_{ yMaxFenetre }
 	{
-		//std::cout << "\n Zoom in Maximal : " << zoomInMax
-		//	<< "\n Zoom out Maximale: " << zoomOutMax << '\n';
+#ifdef SHOW_OUTPUT_PROJECTION_ORTHO
+		std::cout << "\n Zoom in Maximal : "  << zoomInMax
+			      << "\n Zoom out Maximale: " << zoomOutMax << '\n';
+#endif
 		ajusterRapportAspect(DirectionZoom::IN_);
 	}
 
@@ -97,9 +100,10 @@ namespace vue {
 			yMaxFenetre_ = yMaxCopie;
 			yMinFenetre_ = yMinCopie;
 		}
-
-		//std::cout << "Taille de la fenetre virtuelle : " <<
-		//	(xMaxFenetre_ - xMinFenetre_) << "x" << (yMaxFenetre_ - yMinFenetre_) << std::endl;
+#ifdef SHOW_OUTPUT_PROJECTION_ORTHO
+		std::cout << "Taille de la fenetre virtuelle : " <<
+			(xMaxFenetre_ - xMinFenetre_) << "x" << (yMaxFenetre_ - yMinFenetre_) << std::endl;
+#endif
 	}
 
 
@@ -128,9 +132,10 @@ namespace vue {
 
 		yMinFenetre_ -= augmentationY;
 		yMaxFenetre_ += augmentationY;
-		
-		//std::cout << "Taille de la fenetre virtuelle : " <<
-		//	(xMaxFenetre_ - xMinFenetre_) << "x" << (yMaxFenetre_ - yMinFenetre_) << std::endl;
+#ifdef SHOW_OUTPUT_PROJECTION_ORTHO
+		std::cout << "Taille de la fenetre virtuelle : " <<
+			         (xMaxFenetre_ - xMinFenetre_) << "x" << (yMaxFenetre_ - yMinFenetre_) << std::endl;
+#endif
 	}
 
 
@@ -238,7 +243,9 @@ namespace vue {
 		/// soit plus petite que le zoom maximal permit pour que le zoom soit annulé
 		if (abs(coin2.x - coin1.x) < zoomInMax_ || abs(coin2.y - coin1.y) < zoomInMax_)
 		{
-			//std::cout << "Le zoom out minimal a été atteint : zoom annulé ! \n";
+#ifdef SHOW_OUTPUT_PROJECTION_ORTHO
+			std::cout << "Le zoom out minimal a été atteint : zoom annulé ! \n";
+#endif
 			return;
 		}
 
@@ -389,8 +396,9 @@ namespace vue {
 		
 		glm::dvec2 currentPoint((xMinFenetre_ + xMaxFenetre_) / 2.0, (yMinFenetre_ + yMaxFenetre_) / 2.0);
 		glm::dvec2 deplacement(pointCentre - currentPoint);
-
-		// std::cout << "\n Vecteur de deplacemnt: (" << deplacement.x << ", " << deplacement.y << ") \n";
+#ifdef SHOW_OUTPUT_PROJECTION_ORTHO
+		std::cout << "\n Vecteur de deplacemnt: (" << deplacement.x << ", " << deplacement.y << ") \n";
+#endif
 		// Déplacement (en supposant que le vecteur est bon)
 		xMinFenetre_ += deplacement.x;
 		xMaxFenetre_ += deplacement.x;
@@ -420,7 +428,9 @@ namespace vue {
 				
 		if (abs(rapportAspect - rapportAspectVirtuel) / rapportAspect < (0.0001 * rapportAspect))
 		{
+#ifdef SHOW_OUTPUT_PROJECTION_ORTHO
 			std::cout << "\n Rapports aspects sont egaux : pas d'ajustation \n";
+#endif
 			return; // Les deux rapports d'aspects sont considérés dans la marge d'erreur
 		}
 		if (rapportAspectVirtuel > rapportAspect)
@@ -428,11 +438,11 @@ namespace vue {
 		
 		else // if (rapportAspectVirtuel < rapportAspect)
 			ajusterRapportAspectX(rapportAspect, dir);
-		
-		//std::cout << "\n Après ajustement de rapport d'aspect : \n";
-		//std::cout << "Rapport d'aspect Virtuel : " << (xMaxFenetre_ - xMinFenetre_) / (yMaxFenetre_ - yMinFenetre_) << '\n';
-		//std::cout << "Rapport d'aspect Cloture : " << rapportAspect << "\n \n";
-
+#ifdef SHOW_OUTPUT_PROJECTION_ORTHO
+		std::cout << "\n Après ajustement de rapport d'aspect : \n";
+		std::cout << "Rapport d'aspect Virtuel : " << (xMaxFenetre_ - xMinFenetre_) / (yMaxFenetre_ - yMinFenetre_) << '\n';
+		std::cout << "Rapport d'aspect Cloture : " << rapportAspect << "\n \n";
+#endif
 	}
 
 	////////////////////////////////////////////////////////////////////////
@@ -500,7 +510,9 @@ namespace vue {
 		bool valide = false;
 		if (xBorneMax - xBorneMin >= zoomOutMax_ || yBorneMax - yBorneMin >= zoomOutMax_)
 		{
-			// std::cout << "Le zoom out maximal a été atteint : zoom annulé ! \n";
+#ifdef SHOW_OUTPUT_PROJECTION_ORTHO
+			 std::cout << "Le zoom out maximal a été atteint : zoom annulé ! \n";
+#endif
 		}
 		else
 			valide = true;
@@ -529,7 +541,9 @@ namespace vue {
 		bool valide = false;
 		if ((xBorneMax - xBorneMin) <= zoomInMax_ || (yBorneMax - yBorneMin) <= zoomInMax_)
 		{
-			// std::cout << "Le zoom out minimal a été atteint : zoom annulé ! \n";
+#ifdef SHOW_OUTPUT_PROJECTION_ORTHO
+			std::cout << "Le zoom out minimal a été atteint : zoom annulé ! \n";
+#endif
 		}
 		else
 			valide = true;
