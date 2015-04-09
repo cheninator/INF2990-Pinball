@@ -114,7 +114,6 @@ namespace InterfaceGraphique
             pathXML = new StringBuilder("");
             this.Text = "Mode Edition - Nouvelle Zone";
             panel_GL.Select();
-           // etat = new EtatEditeurNone(this);
             etat = new EtatEditeurSelection(this);
             deselection();
             ctrlDown = false;
@@ -498,26 +497,25 @@ namespace InterfaceGraphique
                     if (etat is EtatEditeurPortail)
                     {
                         FonctionsNatives.removeObject();
-                        etat = new EtatEditeurNone(this);
+                        etat = new EtatEditeurSelection(this);
                         deselection();
                     }
                     else if (etat is EtatEditeurMur)
                     {
                         FonctionsNatives.removeObject();
-                        etat = new EtatEditeurNone(this);
+                        etat = new EtatEditeurSelection(this);
                         deselection();
                     }
                     else if (etat is EtatEditeurDuplication || etat is EtatEditeurCreation)
                     {
                         FonctionsNatives.removeObject();
                         deselection();
-                     //   etat = new EtatEditeurNone(this);
                         etat = new EtatEditeurSelection(this);
 
                     }
                     else
                     {
-                        etat = new EtatEditeurNone(this);
+                        etat = new EtatEditeurSelection(this);
                         deselection();
                     }
 
@@ -962,7 +960,6 @@ namespace InterfaceGraphique
             annulerModif();
             if (etat is EtatEditeurMur)
             {
-                //    etat = new EtatEditeurNone(this);
                 etat = new EtatEditeurSelection(this);
             }
             //Console.WriteLine("Outil Creation.");
@@ -2118,7 +2115,6 @@ namespace InterfaceGraphique
 
             if (etat is EtatEditeurPortail && e.Button == MouseButtons.Left)
             {
-                //etat = new EtatEditeurNone(this);
                 etat = new EtatEditeurSelection(this);
                 
                 FonctionsNatives.obligerTransparence(false);
@@ -2126,7 +2122,7 @@ namespace InterfaceGraphique
             }
             else if (etat is EtatEditeurMur)
             {
-                etat = new EtatEditeurNone(this);
+                etat = new EtatEditeurSelection(this);
                 deselection();
             }
             else if ((e.Button == MouseButtons.Left && (etat is EtatEditeurSelection ||
@@ -2246,7 +2242,6 @@ namespace InterfaceGraphique
                 FonctionsNatives.sauvegarderHistorique();
                 deselection();
                 panel_GL.MouseMove -= panel_MouseMove;
-              //  etat = new EtatEditeurNone(this);
                 etat = new EtatEditeurSelection(this);
 
             }
@@ -2257,7 +2252,7 @@ namespace InterfaceGraphique
                     FonctionsNatives.removeObject();
                     deselection();
                     panel_GL.MouseMove -= panel_MouseMove;
-                    etat = new EtatEditeurNone(this);
+                    etat = new EtatEditeurSelection(this);
                 }
                 else
                 {
@@ -2272,13 +2267,13 @@ namespace InterfaceGraphique
                     {
                         deselection();
                         panel_GL.MouseMove -= panel_MouseMove;
-                        etat = new EtatEditeurNone(this);
+                        etat = new EtatEditeurSelection(this);
                     }
                 }       
             }
             else if (etat is EtatEditeurMur && (clickExtraValide(origin, destination)))
             {
-                etat = new EtatEditeurNone(this);
+                etat = new EtatEditeurSelection(this);
                 deselection();
                 return;
             }
@@ -2954,7 +2949,7 @@ namespace InterfaceGraphique
         //////////////////////////////////////////////////////////////////////////////////////////
         public void annulerModif()
         {
-            if (etat is EtatEditeurPortail || /* etat is EtatEditeurCreation || */ etat is EtatEditeurDuplication)
+            if (etat is EtatEditeurPortail ||  etat is EtatEditeurCreation || etat is EtatEditeurDuplication)
             {
                 FonctionsNatives.removeObject();
                 deselection();
@@ -3056,7 +3051,6 @@ namespace InterfaceGraphique
         private void toolStripMenuItem1_Click(object sender, EventArgs e)
         {
             etat = null;
-           // etat = new EtatEditeurNone(this);
             etat = new EtatEditeurSelection(this);
 
             FonctionsNatives.animerJeu(false);
