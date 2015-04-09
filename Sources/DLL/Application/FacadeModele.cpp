@@ -233,12 +233,18 @@ void FacadeModele::initialiserOpenGL(HWND hWnd)
 		//"/skybox/bottom.jpg",
 		//"/skybox/front.jpg",
 		//"/skybox/back.jpg"
-		"media/skybox/lf.jpg",
-		"media/skybox/rt.jpg",
-		"media/skybox/up.jpg",
-		"media/skybox/dn.jpg",
-		"media/skybox/ft.jpg",
-		"media/skybox/bk.jpg"
+		// "media/skybox/lf.jpg",
+		// "media/skybox/rt.jpg",
+		// "media/skybox/up.jpg",
+		// "media/skybox/dn.jpg",
+		// "media/skybox/ft.jpg",
+		// "media/skybox/bk.jpg"
+		"media/skybox/left.jpg",
+		"media/skybox/right.jpg",
+		"media/skybox/top.jpg",
+		"media/skybox/bottom.jpg",
+		"media/skybox/front.jpg",
+		"media/skybox/back.jpg"
 		);
 
 	
@@ -352,10 +358,7 @@ void FacadeModele::afficherBase() const
 	controleurLumieres_->definirLumieres();
 	ControleurNuanceurs::obtenirInstance()->activer();
 	ControleurNuanceurs::obtenirInstance()->assignerSkybox(1);
-	skybox_->afficher(glm::dvec3{ (double)(coinDroitTableX + coinGaucheTableX)/2.0, 
-									(double)(coinDroitTableY + coinGaucheTableY)/2.0, 
-									0.0},
-					  1000);
+
 	ControleurNuanceurs::obtenirInstance()->assignerSkybox(0);
 	arbre_->afficher();
 	ControleurNuanceurs::obtenirInstance()->desactiver();
@@ -2413,4 +2416,13 @@ int FacadeModele::obtenirNombreSelection() const
 bool FacadeModele::cameraEstOrbite()
 {
 	return vueEstOrbite_;
+}
+
+
+void FacadeModele::dessinerSkybox() const
+{
+	skybox_->afficher(glm::dvec3{ (double)(coinDroitTableX + coinGaucheTableX) / 2.0,
+		(double)(coinDroitTableY + coinGaucheTableY) / 2.0,
+		0.0 },
+		1000);
 }

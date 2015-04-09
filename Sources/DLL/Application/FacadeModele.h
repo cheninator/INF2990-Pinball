@@ -257,6 +257,8 @@ public:
 	bool possedeSuivant() const;
 	bool possedePrecedent() const;
 
+	void dessinerSkybox() const;
+
 private:
 
 	/// Constructeur par defaut.
