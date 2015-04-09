@@ -321,11 +321,11 @@ void FacadeModele::afficher() const
 	glMatrixMode(GL_MODELVIEW);
 	glLoadIdentity();
 
-	// ControleurNuanceurs::obtenirInstance()->activer();
-	// ControleurNuanceurs::obtenirInstance()->assignerSkybox(1);
+	ControleurNuanceurs::obtenirInstance()->activer();
+	ControleurNuanceurs::obtenirInstance()->assignerSkybox(1);
 	vue_->appliquerCamera();
-	// ControleurNuanceurs::obtenirInstance()->assignerSkybox(0);
-	// ControleurNuanceurs::obtenirInstance()->desactiver();
+	ControleurNuanceurs::obtenirInstance()->assignerSkybox(0);
+	ControleurNuanceurs::obtenirInstance()->desactiver();
 	// Afficher la scene
 	afficherBase();
 
