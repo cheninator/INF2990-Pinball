@@ -94,12 +94,15 @@ namespace vue {
 		glm::dvec3 directionHaut_;
 		/// La direction du haut du monde de la caméra.
 		const glm::dvec3 directionHautMonde_;
-		/* Notez que les angles doivent être en radian*/
+		/// Angle phi de la caméra pour la vue perspective avec caméra orbite
 		double phi_;
-
+		/// Angle theta de la caméra pour la vue perspective avec caméra orbite
 		double theta_;
-
+		/// Distance entre la caméra et le point visé par la caméra
 		double dist_;
+
+		// Méthode privée qui vérifie et remet les angles correctement s'ils dépassent certaines valeurs
+		void clampAngles();
 	};
 
 

@@ -160,29 +160,10 @@ namespace vue {
 		// Assignation des nouveaux angles
 		theta_ += deltaTheta;
 		phi_ += deltaPhi;
-#if 1
-		if (phi_ >= utilitaire::PI)
-		{
-			std::cout << "Angle phi trop grand : on le remet à PI \n";
-			phi_ = utilitaire::PI - 0.0001;
-		}
-		else if (phi_ <= 0.0)
-		{
-			std::cout << "Angle phi trop petit : on le remet à 0 \n";
-			phi_ = 0.0001;
-		}
-		/*if (theta_ + rotationX >= utilitaire::PI * 2)
-		{
-			std::cout << "Angle theta trop grand : on le remet à PI \n";
-			phi_ = utilitaire::PI - 0.001;
-		}
-		else if (theta_ + rotationX <= 0.0)
-		{
-			std::cout << "Angle theta trop petit : on le remet à 0 \n";
-			phi_ = 0.0001;
-		}*/
-#endif
 
+		// On s'assure de ne pas dépasser certains angles
+		clampAngles();
+		
 		std::cout << "Nouveau Phi | Theta" + std::to_string(phi_)
 			+ " | " + std::to_string(theta_) + " \n";
 
@@ -246,6 +227,30 @@ namespace vue {
 		gluLookAt(position_[0], position_[1], position_[2],
 			pointVise_[0], pointVise_[1], pointVise_[2],
 			directionHaut_[0], directionHaut_[1], directionHaut_[2]);
+	}
+
+	void Camera::clampAngles()
+	{
+		if (phi_ >= utilitaire::PI)
+		{
+			std::cout << "Angle phi trop grand : on le remet à PI \n";
+			phi_ = utilitaire::PI - 0.0001;
+		}
+		else if (phi_ <= 0.0)
+		{
+			std::cout << "Angle phi trop petit : on le remet à 0 \n";
+			phi_ = 0.0001;
+		}
+		if (theta_ >= utilitaire::PI / 2.0)
+		{
+			std::cout << "Angle theta trop grand : on le remet à PI \n";
+			theta_ = (utilitaire::PI / 2.0) - 0.0001;
+		}
+		else if (theta_ <= -utilitaire::PI / 2.0)
+		{
+			std::cout << "Angle theta trop petit : on le remet à 0 \n";
+			theta_ = -(utilitaire::PI / 2.0) + 0.0001;
+		}
 	}
 
 }; // Fin du namespace vue.
