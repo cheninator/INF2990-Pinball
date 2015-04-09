@@ -1,10 +1,12 @@
-////////////////////////////////////////////////
-/// @file   CareTaker.h
+//////////////////////////////////////////////////////////////////////////////
+/// @file CareTaker.h
 /// @author The Ballers
-/// @date   2015-02-24
+/// @date 2015-02-25
+/// @version 1.0
 ///
 /// @ingroup Memento
-////////////////////////////////////////////////
+///
+//////////////////////////////////////////////////////////////////////////////
 
 #ifndef __CARETAKER_H__
 #define __CARETAKER_H__
@@ -14,7 +16,7 @@
 
 ///////////////////////////////////////////////////////////////////////////
 /// @class CareTaker
-/// @brief 
+/// @brief Structure de donnee qui contient des Memento. Offre des interfaces utiles.
 ///
 /// @author The Ballers
 /// @date 2015-02-24
@@ -54,7 +56,7 @@ private:
 	std::deque<Memento*> historique_;
 
 	/// Combien d'etat on veut enregistrer
-	const int tailleMax = 10;
+	const int tailleMax = 15;
 
 };
 

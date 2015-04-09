@@ -1,10 +1,12 @@
-////////////////////////////////////////////////
-/// @file   Originator.h
+//////////////////////////////////////////////////////////////////////////////
+/// @file Originator.h
 /// @author The Ballers
-/// @date   2015-02-24
+/// @date 2015-02-25
+/// @version 1.0
 ///
 /// @ingroup Memento
-////////////////////////////////////////////////
+///
+//////////////////////////////////////////////////////////////////////////////
 
 #ifndef __ORIGINATOR_H__
 #define __ORIGINATOR_H__
@@ -16,7 +18,7 @@
 
 ///////////////////////////////////////////////////////////////////////////
 /// @class Originator
-/// @brief 
+/// @brief Classe qui gère l'historique des modifications. Permet de faire l'operation undo/redo
 ///
 /// @author The Ballers
 /// @date 2015-02-24
@@ -41,6 +43,9 @@ public :
 	/// Sauvegarder l'arbre dans un memento
 	void sauvegarder();
 
+	/// Vider l'historique des modifications
+	void viderHistorique();
+
 	/// Assigner un arbre de rendu
 	void assignerArbre(ArbreRenduINF2990* arbre) { arbreActuel_ = arbre; };
 
@@ -54,6 +59,9 @@ private:
 
 	/// Position courrante
 	int position_;
+
+	/// Appliquer les modifications à l'arbre de rendu a partir de la sauvegarde
+	void appliquerModifications();
 
 };
 
