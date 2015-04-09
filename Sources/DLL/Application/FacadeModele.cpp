@@ -53,7 +53,7 @@ Yonni Chen <BR>
 #include "../Global/JoueurVirtuel.h"
 #include "../Eclairage/ControleurNuanceurs.h"
 #include "../Eclairage/ControleurLumieres.h"
-//#include "../../../Commun/Utilitaire/OpenGL/BoiteEnvironnement.h"
+#include "../../../Commun/Utilitaire/OpenGL/BoiteEnvironnement.h"
 
 #include "VueOrtho.h"
 #include "VuePerspective.h"

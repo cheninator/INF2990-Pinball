@@ -34,8 +34,8 @@
 #include <vector>
 #include "glm/glm.hpp"
 
-#include "../../../Commun/Utilitaire/OpenGL/BoiteEnvironnement.h"
-//class utilitaire::BoiteEnvironnement;
+// #include "../../../Commun/Utilitaire/OpenGL/BoiteEnvironnement.h"
+class BoiteEnvironnement;
 class NoeudAbstrait;
 class ArbreRenduINF2990;
 class ConfigScene;
@@ -313,7 +313,7 @@ private:
 
    ControleurLumieres* controleurLumieres_{ nullptr };
    ControleurTexte* controleurTexte_{ nullptr };
-   utilitaire::BoiteEnvironnement* skybox_{ nullptr };
+   BoiteEnvironnement* skybox_{ nullptr };
 };
 
 
