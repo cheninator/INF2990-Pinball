@@ -52,10 +52,6 @@ extern "C"
 	static NoeudAbstrait* objet = new NoeudAbstrait();
 	static NoeudAbstrait* objet_temp = new NoeudAbstrait();
 
-	// Useless, pas d'orbite en ce moment
-	static double theta = 0; ///< Angle Theta
-	static double phi = 0; /// < angle Phi
-
 	////////////////////////////////////////////////////////////////////////
 	///
 	/// @fn int selectionnerObjetSousPointClique(int i, int j, int hauteur, int largeur, bool ctrlDown)
