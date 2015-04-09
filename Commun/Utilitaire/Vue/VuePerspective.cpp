@@ -124,13 +124,11 @@ namespace vue {
 	////////////////////////////////////////////////////////////////////////
 	void VuePerspective::zoomerIn()
 	{
-		std::cout << "On fait un zoomIn Perspective ! \n";
 		
 		double nouvelleDistance =camera_.obtenirDistance() /  projection_.obtenirIncrementZoom();
 		if (nouvelleDistance >= projection_.obtenirZoomInMax())
 			camera_.assignerDistance(nouvelleDistance);
 		
-		std::cout << "Nouvelle distance est de : " << camera_.obtenirDistance() << '\n';
 	}
 
 
@@ -146,13 +144,11 @@ namespace vue {
 	void VuePerspective::zoomerOut()
 	{
 		/*Obtenir l'incrément de zoom à partir de la projection plus tard*/
-		std::cout << "On fait un zoomOut Perspective ! \n";
 
 		double nouvelleDistance = camera_.obtenirDistance() * projection_.obtenirIncrementZoom();
 		if (nouvelleDistance <= projection_.obtenirZoomOutMax())
 			camera_.assignerDistance(nouvelleDistance);
 
-		std::cout << "Nouvelle distance est de : " << camera_.obtenirDistance() << '\n';
 	}
 
 

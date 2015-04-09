@@ -84,7 +84,7 @@
             this.Camera_MenuItem});
             this.menuStrip.Location = new System.Drawing.Point(0, 0);
             this.menuStrip.Name = "menuStrip";
-            this.menuStrip.Size = new System.Drawing.Size(633, 24);
+            this.menuStrip.Size = new System.Drawing.Size(784, 24);
             this.menuStrip.TabIndex = 0;
             this.menuStrip.Text = "menuStrip1";
             this.menuStrip.Visible = false;
@@ -120,6 +120,7 @@
             this.Ortho_MenuItem.ShortcutKeyDisplayString = "1";
             this.Ortho_MenuItem.Size = new System.Drawing.Size(172, 22);
             this.Ortho_MenuItem.Text = "Orthographique";
+            this.Ortho_MenuItem.Click += new System.EventHandler(this.Ortho_MenuItem_Click);
             // 
             // Orbitale_MenuItem
             // 
@@ -127,6 +128,7 @@
             this.Orbitale_MenuItem.ShortcutKeyDisplayString = "2";
             this.Orbitale_MenuItem.Size = new System.Drawing.Size(172, 22);
             this.Orbitale_MenuItem.Text = "Orbitale";
+            this.Orbitale_MenuItem.Click += new System.EventHandler(this.Orbitale_MenuItem_Click);
             // 
             // InfoPanel
             // 

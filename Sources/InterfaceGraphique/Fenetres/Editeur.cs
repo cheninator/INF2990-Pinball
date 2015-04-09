@@ -1630,6 +1630,8 @@ namespace InterfaceGraphique
             etat = new EtatEditeurTest(this);
             menuStrip1.Hide();
             toolStrip1.Hide();
+            Annuler_ToolStrip.Enabled = false;
+            Retablir_ToolStrip.Enabled = false;
             bouton_Creation.Hide();
             FonctionsNatives.animerJeu(true);
             FonctionsNatives.rechargerArbre(false);
@@ -1641,13 +1643,11 @@ namespace InterfaceGraphique
             flowLayoutPanel1.Hide();
 
             menu1Enable(false);
-            //StringBuilder bille = new StringBuilder("bille");
-            //FonctionsNatives.creerObjet(bille, bille.Capacity);
+         
 
             panel_GL.BringToFront();
             panel_GL.Anchor = AnchorStyles.None;
             panel_GL.Location = new Point(163, 24);
-            //panel_GL.Location = new Point(this.ClientSize.Width / 2 - panel_GL.Size.Width / 2, this.ClientSize.Height / 2 - panel_GL.Size.Height / 2);
             panel_GL.Dock = DockStyle.Fill;
             this.OnSizeChanged(e);
             FonctionsNatives.translater(-mouvementX, mouvementY);
@@ -1661,8 +1661,7 @@ namespace InterfaceGraphique
                     Program.mMenu.modeEdit.Focus();
                 }
             }
-            //panel_GL.Dock = DockStyle.Fill;
-            //menuStrip3.BringToFront();
+       
         }
 
         ////////////////////////////////////////////////////////////////////////
@@ -3074,6 +3073,8 @@ namespace InterfaceGraphique
                 menuStrip3.Hide();
             menuStrip1.Show();
             toolStrip1.Show();
+            Annuler_ToolStrip.Enabled = true;
+            Retablir_ToolStrip.Enabled = true;
             bouton_Creation.Show();
             menu1Enable(true);
             Creation_Panel.Show();
