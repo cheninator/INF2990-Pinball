@@ -2217,9 +2217,7 @@ void FacadeModele::utiliserCameraOrbite(bool utiliseOrbite)
 		double clotMinX, clotMaxX, clotMinY, clotMaxY;
 		vue_->obtenirProjection().obtenirCoordonneesCloture(clotMinX, clotMaxX, clotMinY, clotMaxY);
 		
-		/* On obtient le rapport d'aspect*/
-		glm::ivec2 fenetreVirt = vue_->obtenirProjection().obtenirDimensionFenetreVirtuelle();
-		double ratio = fenetreVirt.x / fenetreVirt.y;
+		double ratio = (clotMaxX - clotMinX) / (clotMaxY - clotMinY);
 		
 		delete vue_;
 

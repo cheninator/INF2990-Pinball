@@ -34,7 +34,7 @@ namespace vue {
 	{
 		glMatrixMode(GL_PROJECTION);
 		glLoadIdentity();
-		gluPerspective(60, 1.6, zAvant_, zArriere_);
+		gluPerspective(fovy_, ratio_, zAvant_, zArriere_);
 	}
 
 	////////////////////////////////////////////////////////////////////////
