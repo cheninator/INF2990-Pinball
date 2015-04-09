@@ -2954,7 +2954,7 @@ namespace InterfaceGraphique
         //////////////////////////////////////////////////////////////////////////////////////////
         public void annulerModif()
         {
-            if (etat is EtatEditeurPortail /*|| etat is EtatEditeurMur*/ || etat is EtatEditeurDuplication)
+            if (etat is EtatEditeurPortail || /* etat is EtatEditeurCreation || */ etat is EtatEditeurDuplication)
             {
                 FonctionsNatives.removeObject();
                 deselection();
@@ -3112,10 +3112,7 @@ namespace InterfaceGraphique
             if (Program.mMenu.modeEdit != null)
                 Program.mMenu.modeEdit.Focus();
 
-            if (Program.helpMenu)
-            {
-                Information_MenuItem.PerformClick();
-            }
+          
             
         }
 
@@ -3205,6 +3202,7 @@ namespace InterfaceGraphique
 
         private void Annuler_ToolStrip_Click(object sender, EventArgs e)
         {
+            deselection();
             FonctionsNatives.annulerModifications();
         }
 
