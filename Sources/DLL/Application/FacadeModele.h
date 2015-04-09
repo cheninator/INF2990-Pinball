@@ -249,6 +249,7 @@ public:
 	void sauvegarderHistorique();
 	void annulerModifications();
 	void retablirModifications();
+	void viderHistorique();
 
 
 private:

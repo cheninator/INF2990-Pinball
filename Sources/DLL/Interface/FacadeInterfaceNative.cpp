@@ -2218,4 +2218,9 @@ extern "C"
 		FacadeModele::obtenirInstance()->retablirModifications();
 	}
 
+	__declspec(dllexport) void viderHistorique()
+	{
+		FacadeModele::obtenirInstance()->viderHistorique();
+	}
+
 }// FIN DU extern "C"

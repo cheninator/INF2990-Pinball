@@ -2284,21 +2284,65 @@ glm::ivec2 FacadeModele::obteniCoordonneeMax()
 }
 
 
-
+////////////////////////////////////////////////////////////////////////
+///
+/// @fn void FacadeModele::sauvegarderHistorique()
+///
+/// @remark Cette fonction prend un screenshot de l'etat de l'arbre de rendu
+///
+/// @return Aucune
+///
+////////////////////////////////////////////////////////////////////////
 void FacadeModele::sauvegarderHistorique()
 {
 	originator_->sauvegarder();
 }
 
+
+////////////////////////////////////////////////////////////////////////
+///
+/// @fn void FacadeModele::annulerModifications()
+///
+/// @remark Cette fonction implemente la feature "undo"
+///
+/// @return Aucune
+///
+////////////////////////////////////////////////////////////////////////
 void FacadeModele::annulerModifications()
 {
 	originator_->annuler();
 }
 
+////////////////////////////////////////////////////////////////////////
+///
+/// @fn void FacadeModele::retablirModifications()
+///
+/// @remark Cette fonction implemente la feature "redo"
+///
+/// @return Aucune
+///
+////////////////////////////////////////////////////////////////////////
 void FacadeModele::retablirModifications()
 {
 	originator_->retablir();
 }
+
+////////////////////////////////////////////////////////////////////////
+///
+/// @fn void FacadeModele::sauvegarderHistorique()
+///
+/// @remark Cette fonction vide l'historique de modifications
+///
+/// @return Aucune
+///
+////////////////////////////////////////////////////////////////////////
+void FacadeModele::viderHistorique()
+{
+	originator_->viderHistorique();
+}
+
+
+
 
 bool FacadeModele::cameraEstOrbite()
 {

@@ -188,7 +188,6 @@ void Originator::viderHistorique()
 ////////////////////////////////////////////////////////////////////////
 void Originator::appliquerModifications(std::map<int, NoeudAbstrait*> sauvegarde)
 {
-	NoeudAbstrait* temp;
 	std::map<int, NoeudAbstrait*>::iterator iter;
 
 	// Vider l'ancien arbre
