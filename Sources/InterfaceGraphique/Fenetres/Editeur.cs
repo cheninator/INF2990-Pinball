@@ -92,11 +92,10 @@ namespace InterfaceGraphique
 
             panelHeight = panel_GL.Size.Height;
             panelWidth = panel_GL.Size.Width;
-
             ReinitialiserTout();
             fs.EnterFullScreenMode(this);
             FonctionsNatives.animerJeu(false);
-            
+        
         }
 
 
@@ -151,6 +150,7 @@ namespace InterfaceGraphique
             this.DoubleBuffered = false;
             this.StartPosition = FormStartPosition.WindowsDefaultBounds;
             FonctionsNatives.initialiserOpenGL(panel_GL.Handle);
+            FonctionsNatives.populateUsines();
             FonctionsNatives.dessinerOpenGL();
         }
 
@@ -172,12 +172,7 @@ namespace InterfaceGraphique
             {
                 this.Invoke((MethodInvoker)delegate
                 {
-                    if (panelHeight != panel_GL.Size.Height || panelWidth != panel_GL.Size.Width)
-                    {
-                        panelHeight = panel_GL.Size.Height;
-                        panelWidth = panel_GL.Size.Width;
-                        FonctionsNatives.refreshText(panelWidth - bouton_Creation.Width, panelHeight);
-                    }
+                    FonctionsNatives.refreshText(panel_GL.Size.Width, panel_GL.Size.Height);
                     if (etat is EtatEditeurSelectionMultiple || etat is EtatEditeurZoomElastique)
                     {
                         if (Program.compteurFrames == 0)
@@ -580,7 +575,6 @@ namespace InterfaceGraphique
                     }
                     else if (e.KeyChar == 'e')
                     {
-
                         bouton_Scaling_Click(this, e);
                     }
                     else if (e.KeyChar == 'r')
@@ -592,10 +586,7 @@ namespace InterfaceGraphique
                         bouton_Duplication_Click(this, e);
                     }
                 }
-                else if (nbSelection == 0)
-                {
-                    outilCourant("Selectionnez au moins un objet.");
-                }
+             
             }
         }
 
@@ -612,7 +603,25 @@ namespace InterfaceGraphique
         ////////////////////////////////////////////////////////////////////////
         private void Editeur_FormClosing(object sender, FormClosingEventArgs e)
         {
-            if (MessageBox.Show("Voulez vous quitter? Tout changement non-sauvegardé sera oublié.", "Fermeture d'application", MessageBoxButtons.YesNo) == DialogResult.Yes)
+            if (!(etat is EtatEditeurTest))
+            {
+                if (MessageBox.Show("Voulez vous quitter? Tout changement non-sauvegardé sera oublié.", "Fermeture d'application", MessageBoxButtons.YesNo) == DialogResult.Yes)
+                {
+                    lock (Program.unLock)
+                    {
+                        Program.peutAfficher = false;
+                        FonctionsNatives.libererOpenGL();
+                    }
+                    playSound("", true);    // Stop le son
+                    Program.myCustomConsole.Hide();
+                }
+                else
+                {
+                    e.Cancel = true;
+                    this.Activate();
+                }
+            }
+            else
             {
                 lock (Program.unLock)
                 {
@@ -622,12 +631,6 @@ namespace InterfaceGraphique
                 playSound("", true);    // Stop le son
                 Program.myCustomConsole.Hide();
             }
-            else
-            {
-                e.Cancel = true;
-                this.Activate();
-            } 
-            
             
          
         }
@@ -1364,6 +1367,10 @@ namespace InterfaceGraphique
             //Console.WriteLine("Outil Deplacement.");
             // TO DO
             annulerModif();
+
+            if(etat is EtatEditeurSelection)
+                FonctionsNatives.sauvegarderHistorique();
+
             etat = null;
             etat = new EtatEditeurDeplacement(this);
         }
@@ -1420,6 +1427,10 @@ namespace InterfaceGraphique
             //Console.WriteLine("Outil Rotation.");
             // TO DO
             annulerModif();
+
+            if (etat is EtatEditeurSelection)
+                FonctionsNatives.sauvegarderHistorique();
+
             etat = null;
             etat = new EtatEditeurRotation(this);
         }
@@ -1441,6 +1452,10 @@ namespace InterfaceGraphique
             //Console.WriteLine("Outil Mise a echelle.");
             // TO DO
             annulerModif();
+
+            if(etat is EtatEditeurSelection)
+                FonctionsNatives.sauvegarderHistorique();
+
             etat = null;
             etat = new EtatEditeurScale(this);
         }
@@ -1500,6 +1515,10 @@ namespace InterfaceGraphique
             //Console.WriteLine("Outil Duplication.");
 
             annulerModif();
+
+            if (etat is EtatEditeurSelection)
+                FonctionsNatives.sauvegarderHistorique();
+
             etat = null;
             etat = new EtatEditeurDuplication(this);
 
@@ -2134,9 +2153,13 @@ namespace InterfaceGraphique
                                                         !(etat is EtatEditeurMur)
                                                        )
                      )
-                     || e.Button == MouseButtons.Right)
+                     || e.Button == MouseButtons.Right || e.Button == MouseButtons.Middle)
             {
                 panel_GL.MouseMove += new MouseEventHandler(panel_MouseMove);
+                if (e.Button == MouseButtons.Middle)
+                {
+                    FonctionsNatives.sauvegarderHistorique();
+                }
             }
         }
 
@@ -2156,7 +2179,7 @@ namespace InterfaceGraphique
         {
             currentP = panel_GL.PointToClient(MousePosition);
 
-            if (nbSelection == 1 && !(etat is EtatEditeurDuplication) && (e.Button == MouseButtons.Left))
+            if (nbSelection == 1 && !(etat is EtatEditeurDuplication) && (e.Button == MouseButtons.Left || e.Button == MouseButtons.Middle))
             {
                 Xbox.Text = Math.Round(FonctionsNatives.getPositionX()).ToString();
                 Ybox.Text = Math.Round(FonctionsNatives.getPositionY()).ToString();
@@ -2167,6 +2190,13 @@ namespace InterfaceGraphique
             if (e.Button == MouseButtons.Right)
             {
                 deplacementVueSouris(e);
+
+            }
+
+            if (e.Button == MouseButtons.Middle)
+            {
+                deplacementSouris(e);
+
             }
             else if (etat is EtatEditeurCreation)
             {
@@ -2222,13 +2252,21 @@ namespace InterfaceGraphique
             if (!(etat is EtatEditeurCreation) && !(etat is EtatEditeurDuplication))
             {
                 panel_GL.MouseMove -= panel_MouseMove;
+                if (e.Button == MouseButtons.Middle)
+                {
+                    FonctionsNatives.sauvegarderHistorique();
+                }
             }
+
+            if (etat is EtatEditeurDeplacement || etat is EtatEditeurScale || etat is EtatEditeurRotation)
+                FonctionsNatives.sauvegarderHistorique();
 
             if (etat is EtatEditeurDuplication && e.Button == MouseButtons.Left)
             {
                 if (FonctionsNatives.duplicationEstHorsTable())
                     FonctionsNatives.removeObject();
 
+                FonctionsNatives.sauvegarderHistorique();
                 deselection();
                 panel_GL.MouseMove -= panel_MouseMove;
               //  etat = new EtatEditeurNone(this);
@@ -2948,7 +2986,7 @@ namespace InterfaceGraphique
         //////////////////////////////////////////////////////////////////////////////////////////
         public void annulerModif()
         {
-            if (etat is EtatEditeurPortail || etat is EtatEditeurMur || etat is EtatEditeurDuplication)
+            if (etat is EtatEditeurPortail /*|| etat is EtatEditeurMur*/ || etat is EtatEditeurDuplication)
             {
                 FonctionsNatives.removeObject();
                 deselection();
@@ -3105,9 +3143,15 @@ namespace InterfaceGraphique
             Program.myCustomConsole.Update();
             if (Program.mMenu.modeEdit != null)
                 Program.mMenu.modeEdit.Focus();
+
+            if (Program.helpMenu)
+            {
+                Information_MenuItem.PerformClick();
+            }
+            
         }
 
-        private void toolStripButton1_Click(object sender, EventArgs e)
+        private void Enregistrer_ToolStrip_Click(object sender, EventArgs e)
         {
             Enregistrer_MenuItem.PerformClick();
         }
@@ -3124,7 +3168,7 @@ namespace InterfaceGraphique
 
         }
 
-        private void toolStripButton2_Click(object sender, EventArgs e)
+        private void MenuP_ToolStrip_Click(object sender, EventArgs e)
         {
             MenuP_MenuItem.PerformClick();
         }
@@ -3139,27 +3183,27 @@ namespace InterfaceGraphique
             Ouvrir_MenuItem.PerformClick();
         }
 
-        private void toolStripButton4_Click(object sender, EventArgs e)
+        private void EnregistrerSous_ToolStrip_Click(object sender, EventArgs e)
         {
             EnregistrerS_MenuItem.PerformClick();
         }
 
-        private void toolStripButton3_Click(object sender, EventArgs e)
+        private void Proprietes_ToolStrip_Click(object sender, EventArgs e)
         {
             Proprietes_MenuItem.PerformClick();
         }
 
-        private void toolStripButton1_Click_1(object sender, EventArgs e)
+        private void ModeTest_ToolStrip_Click(object sender, EventArgs e)
         {
             ModeTest_MenuItem.PerformClick();
         }
 
-        private void toolStripButton5_Click(object sender, EventArgs e)
+        private void ZoomIn_ToolStrip_Click(object sender, EventArgs e)
         {
             FonctionsNatives.zoomIn();
         }
 
-        private void toolStripButton6_Click(object sender, EventArgs e)
+        private void ZoomOut_ToolStrip_Click(object sender, EventArgs e)
         {
             FonctionsNatives.zoomOut();
         }
@@ -3185,9 +3229,34 @@ namespace InterfaceGraphique
 
         }
 
-        private void toolStripButton7_Click(object sender, EventArgs e)
+        private void ZoomElastique_ToolStrip_Click(object sender, EventArgs e)
         {
             Zoom_MenuItem.PerformClick();
+        }
+
+        private void Annuler_ToolStrip_Click(object sender, EventArgs e)
+        {
+            FonctionsNatives.annulerModifications();
+        }
+
+        private void Retablir_ToolStrip_Click(object sender, EventArgs e)
+        {
+            FonctionsNatives.retablirModifications();
+        }
+
+        private void Supprimer_MenuItem_Click_1(object sender, EventArgs e)
+        {
+            bouton_Suppression.PerformClick();
+        }
+
+        private void Annuler_MenuItem_Click(object sender, EventArgs e)
+        {
+            Annuler_ToolStrip.PerformClick();
+        }
+
+        private void Retablir_MenuItem_Click(object sender, EventArgs e)
+        {
+            Retablir_ToolStrip.PerformClick();
         }
     }
 }

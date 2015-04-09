@@ -11,7 +11,7 @@
 
 
 #include "../Arbre/ArbreRenduINF2990.h"
-#include <vector>
+#include <map>
 
 ///////////////////////////////////////////////////////////////////////////
 /// @class Originator
@@ -32,7 +32,7 @@ public:
 	~Memento();
 
 	/// Obtenir la sauvegarde
-	std::vector<NoeudAbstrait*> obtenirSauvegarde() const { return sauvegarde; };
+	std::map<int, NoeudAbstrait*> obtenirSauvegarde() const { return sauvegarde; };
 
 private:
 
@@ -40,7 +40,7 @@ private:
 	void sauvegarder(ArbreRenduINF2990* arbreAEnregistrer);
 
 	/// Structure de donnee qui contient l'information des noeuds
-	std::vector<NoeudAbstrait*> sauvegarde;
+	std::map<int, NoeudAbstrait*> sauvegarde;
 
 };
 

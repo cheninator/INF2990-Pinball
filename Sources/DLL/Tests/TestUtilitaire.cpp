@@ -1,3 +1,4 @@
+/*
 ////////////////////////////////////////////////////////////////////////////////////
 /// @file TestUtilitaire.cpp
 /// @author The Ballers
@@ -66,3 +67,4 @@ void TestUtilitaire::testIntersection()
 
 	CPPUNIT_ASSERT(utilitaire::intersectionDeuxSegments(p5, p6, p7, p8) == false);
 }
+*/

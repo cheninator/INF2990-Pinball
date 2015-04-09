@@ -26,7 +26,7 @@ extern "C" {
 	__declspec(dllexport) void zoomIn();
 	__declspec(dllexport) void zoomOut();
 	__declspec(dllexport) int  obtenirAffichagesParSeconde();
-	__declspec(dllexport) bool executerTests();
+	//__declspec(dllexport) bool executerTests();
 	__declspec(dllexport) void creerObjet(char* value, int length, bool isTwin = false, bool colorShift = false);
 	__declspec(dllexport) bool creerObjetAvecTests(char* value, int length, bool isTwin, bool colorShift, int posX, int posY, int posZ, float angleX, float angleY, float angleZ);
 	__declspec(dllexport) void positionObjet(int x, int y, int z = 0);
@@ -142,6 +142,9 @@ extern "C" {
 	__declspec(dllexport) void repositionner(char* text, int length, float x, float y);
 	__declspec(dllexport) void suprimerText(char* text, int length);
 	__declspec(dllexport) void afficherTextes(bool afficher = true);
+
+	__declspec(dllexport) void preparerUsineArbre(char* text, int length);
+	__declspec(dllexport) void initialiserArbre();
 }
 
 #endif // __FACADE_INTERFACE_NATIVE_H__

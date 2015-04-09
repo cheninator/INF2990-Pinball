@@ -391,7 +391,7 @@ namespace InterfaceGraphique
                 FonctionsNatives.spotLight(2, parent_.getSpotLight());
             }
 
-            else if (Char.ToLower(e.KeyChar) == 'h')
+            else if (Char.ToLower(e.KeyChar) == 'h')// && Program.playerName.ToUpper() =="ADMIN")
             {
                 parent_.AfficherInformations();
             }

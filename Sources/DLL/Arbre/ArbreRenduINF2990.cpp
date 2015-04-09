@@ -29,7 +29,6 @@
 #include "EtatOpenGL.h"
 #include <iomanip>
 
-
 const std::string ArbreRenduINF2990::NOM_BUTOIRD{ "butoird" };
 const std::string ArbreRenduINF2990::NOM_BUTOIRG{ "butoirg" };
 const std::string ArbreRenduINF2990::NOM_BUTOIRCIRCULAIRE{ "butoircirculaire" };
@@ -62,6 +61,7 @@ const std::string ArbreRenduINF2990::NOM_GATE{ "gate" };
 ////////////////////////////////////////////////////////////////////////
 ArbreRenduINF2990::ArbreRenduINF2990(bool afficher)
 {
+	/*
 	// Construction des usines
 	int i = 17;
 	int j = 0;
@@ -100,9 +100,52 @@ ArbreRenduINF2990::ArbreRenduINF2990(bool afficher)
 	if (afficher) std::cout << std::fixed << std::setw(2) << std::setprecision(2) << "\t" << j++ * 100.0 / i << "%... ajout de l'usine Gate" << std::endl;
 	ajouterUsine(NOM_GATE, new UsineNoeudGate{ NOM_GATE });
 	if (afficher) std::cout << std::fixed << std::setw(2) << std::setprecision(2) << "\t" << j++ * 100.0 / i << "%... toute les usines sont genere" << std::endl;
-
+	*/
 }
 
+void ArbreRenduINF2990::preparerUsine(const std::string usine)
+{
+	if (usine == NOM_BUTOIRD)
+		ajouterUsine(NOM_BUTOIRD, new UsineNoeudButoirD{ NOM_BUTOIRD });
+	else if (usine == NOM_BUTOIRG)
+		ajouterUsine(NOM_BUTOIRG, new UsineNoeudButoirG{ NOM_BUTOIRG });
+	else if (usine == NOM_BUTOIRCIRCULAIRE)
+		ajouterUsine(NOM_BUTOIRCIRCULAIRE, new UsineNoeudButoirCirculaire{ NOM_BUTOIRCIRCULAIRE });
+	else if (usine == NOM_CIBLE)
+		ajouterUsine(NOM_CIBLE, new UsineNoeudCible{ NOM_CIBLE });
+	else if (usine == NOM_BILLE)
+		ajouterUsine(NOM_BILLE, new UsineNoeudBille{ NOM_BILLE });
+	else if (usine == NOM_GENERATEURBILLE)
+		ajouterUsine(NOM_GENERATEURBILLE, new UsineNoeudGenerateurBille{ NOM_GENERATEURBILLE });
+	else if (usine == NOM_MUR)
+		ajouterUsine(NOM_MUR, new UsineNoeudMur{ NOM_MUR });
+	else if (usine == NOM_PALETTED)
+		ajouterUsine(NOM_PALETTED, new UsineNoeudPaletteD{ NOM_PALETTED });
+	else if (usine == NOM_PALETTEG)
+		ajouterUsine(NOM_PALETTEG, new UsineNoeudPaletteG{ NOM_PALETTEG });
+	else if (usine == NOM_PORTAIL)
+		ajouterUsine(NOM_PORTAIL, new UsineNoeudPortail{ NOM_PORTAIL });
+	else if (usine == NOM_PORTAILTORUS)
+		ajouterUsine(NOM_PORTAILTORUS, new UsineNoeudPortailTorus{ NOM_PORTAILTORUS });
+	else if (usine == NOM_RESSORT)
+		ajouterUsine(NOM_RESSORT, new UsineNoeudRessort{ NOM_RESSORT });
+	else if (usine == NOM_TROU)
+		ajouterUsine(NOM_TROU, new UsineNoeudTrou{ NOM_TROU });
+	else if (usine == NOM_VIDE)
+		ajouterUsine(NOM_VIDE, new UsineNoeudVide{ NOM_VIDE });
+	else if (usine == NOM_COUVERCLE)
+		ajouterUsine(NOM_COUVERCLE, new UsineNoeudCouvercle{ NOM_COUVERCLE });
+	else if (usine == NOM_TABLE)
+		ajouterUsine(NOM_TABLE, new UsineNoeudTable{ NOM_TABLE });
+	else if (usine == NOM_GATE)
+		ajouterUsine(NOM_GATE, new UsineNoeudGate{ NOM_GATE });
+	else
+	{
+		std::string erreur = "Imposible d'ajouter l'usine " + usine + " car celle ci n'existe pas ou n'est pas encore implemente.";
+		std::cerr << erreur;
+		assert(false);
+	}
+}
 
 ////////////////////////////////////////////////////////////////////////
 ///
@@ -449,4 +492,18 @@ std::vector<NoeudAbstrait*> ArbreRenduINF2990::obtenirElementsTable()
 		listeNoeuds_.push_back(getEnfant(0)->getEnfant(i));
 
 	return listeNoeuds_;
+}
+
+
+NoeudAbstrait* ArbreRenduINF2990::obtenirNoeudSelonNumero(int numero)
+{
+	std::vector<NoeudAbstrait*> temp = obtenirElementsTable();
+
+	for (unsigned int i = 0; i < temp.size(); i++)
+	{
+		if (temp[i]->getNumero() == numero)
+			return temp[i];
+	}
+
+	return nullptr;
 }

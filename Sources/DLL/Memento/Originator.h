@@ -27,7 +27,7 @@ class Originator
 public :
 
 	/// Constructeur
-	Originator(ArbreRenduINF2990* arbre);
+	Originator();
 
 	/// Destructeur
 	~Originator();
@@ -40,6 +40,9 @@ public :
 
 	/// Sauvegarder l'arbre dans un memento
 	void sauvegarder();
+
+	/// Assigner un arbre de rendu
+	void assignerArbre(ArbreRenduINF2990* arbre) { arbreActuel_ = arbre; };
 
 private:
 

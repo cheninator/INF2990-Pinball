@@ -1,9 +1,8 @@
 #include "Originator.h"
 
 
-Originator::Originator(ArbreRenduINF2990* arbre)
+Originator::Originator()
 {
-	arbreActuel_ = arbre;
 	historique_ = new CareTaker();
 	position_ = 0;
 }
@@ -18,28 +17,42 @@ Originator::~Originator()
 
 void Originator::annuler()
 {
+	// Ne rien faire lorsque qu'il n'y a pas eu de modification
 	if (position_ == 0)
 		return;
 
+	// Ne rien faire lorsqu'il n'y a pas d'historique
+	if (historique_->size() == 0)
+		return;
+
+	// Tenter d'obtenir l'element de sauvegarde precedent
+	if (historique_->obtenirMemento(position_ - 1) == nullptr)
+		return;
+
 	// Obtenir la sauvegarde desiree
-	std::vector<NoeudAbstrait*> sauvegarde;
+	std::map<int, NoeudAbstrait*> sauvegarde;
 	sauvegarde = historique_->obtenirMemento(position_ - 1)->obtenirSauvegarde();
 
-	// Vider l'ancien arbre
-	arbreActuel_->getEnfant(0)->vider();
+	NoeudAbstrait* temp;
+	std::map<int, NoeudAbstrait*>::iterator iter;
 
-	// Repeupler avec les informations de sauvegarde
-	for (unsigned int i = 0; i < sauvegarde.size(); i++)
+	// Modifier l'arbre courant avec les informations de sauvegarde
+	for (iter = sauvegarde.begin(); iter != sauvegarde.end(); iter++)
 	{
-		NoeudAbstrait* noeud{ arbreActuel_->creerNoeud(sauvegarde[i]->obtenirType())};
+		temp = arbreActuel_->obtenirNoeudSelonNumero(iter->first);
 
-		// Copier les informations
-		noeud->assignerPositionRelative(sauvegarde[i]->obtenirPositionRelative());
-		noeud->assignerEchelle(sauvegarde[i]->obtenirAgrandissement());
-		noeud->assignerRotation(sauvegarde[i]->obtenirRotation());
+		if (temp != nullptr)
+		{
+			temp->assignerPositionRelative(iter->second->obtenirPositionRelative());
+			temp->assignerEchelle(iter->second->obtenirAgrandissement());
+			temp->assignerRotationHard(iter->second->obtenirRotation());
+			temp->setColorShift(iter->second->getColorShift());
+		}
 
-		arbreActuel_->getEnfant(0)->ajouter(noeud);
+		temp = nullptr;
 	}
+
+
 
 	// Position courante dans l'historique change
 	position_--;
@@ -47,40 +60,51 @@ void Originator::annuler()
 
 void Originator::retablir()
 {
+	// Ne rien faire lorsqu'il n'y a pas eu d'autres modifications
 	if (position_ == historique_->size() - 1)
 		return;
 
+	// Ne rien faire lorsqu'il n'y a pas d'historique
+	if (historique_->size() == 0)
+		return;
+
+	// Tenter d'obtenir l'element de sauvegarde suivant
+	if (historique_->obtenirMemento(position_ + 1) == nullptr)
+		return;
+	
 	// Obtenir la sauvegarde desiree
-	std::vector<NoeudAbstrait*> sauvegarde;
-	sauvegarde = historique_->obtenirMemento(++position_)->obtenirSauvegarde();
+	std::map<int, NoeudAbstrait*> sauvegarde;
+	sauvegarde = historique_->obtenirMemento(position_ + 1)->obtenirSauvegarde();
 
-	// Vider l'ancien arbre
-	arbreActuel_->getEnfant(0)->vider();
+	NoeudAbstrait* temp;
+	std::map<int, NoeudAbstrait*>::iterator iter;
 
-	// Repeupler avec les informations de sauvegarde
-	for (unsigned int i = 0; i < sauvegarde.size(); i++)
+	// Modifier l'arbre courant avec les informations de sauvegarde
+	for (iter = sauvegarde.begin(); iter != sauvegarde.end(); iter++)
 	{
-		NoeudAbstrait* noeud{ arbreActuel_->creerNoeud(sauvegarde[i]->obtenirType()) };
+		temp = arbreActuel_->obtenirNoeudSelonNumero(iter->first);
 
-		// Copier les informations
-		noeud->assignerPositionRelative(sauvegarde[i]->obtenirPositionRelative());
-		noeud->assignerEchelle(sauvegarde[i]->obtenirAgrandissement());
-		noeud->assignerRotation(sauvegarde[i]->obtenirRotation());
-
-		arbreActuel_->getEnfant(0)->ajouter(noeud);
+		if (temp != nullptr)
+		{
+			temp->assignerPositionRelative(iter->second->obtenirPositionRelative());
+			temp->assignerEchelle(iter->second->obtenirAgrandissement());
+			temp->assignerRotationHard(iter->second->obtenirRotation());
+			temp->setColorShift(iter->second->getColorShift());
+		}
 	}
 
 	// Position courante dans l'historique change
 	position_++;
+
 }
 
 void Originator::sauvegarder()
 {
 	// La sauvegarde courante est deja la derniere sauvegarde
-	if (position_ == historique_->size() - 1)
+	if (position_ + 1 == historique_->size())
 	{
-		historique_->ajouter(new Memento(arbreActuel_));
-		position_++;
+		if(!(historique_->ajouter(new Memento(arbreActuel_))))
+			position_++;
 	}
 
 	// On est au debut
@@ -93,7 +117,7 @@ void Originator::sauvegarder()
 	// On est au milieu
 	else
 	{
-		historique_->ecraser(++position_);
+		historique_->ecraser(position_);
 		historique_->ajouter(new Memento(arbreActuel_));
 		position_++;
 	}

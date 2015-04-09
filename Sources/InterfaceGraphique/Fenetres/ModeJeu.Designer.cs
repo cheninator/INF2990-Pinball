@@ -152,6 +152,7 @@
             this.InfoPanel.Name = "InfoPanel";
             this.InfoPanel.Size = new System.Drawing.Size(190, 741);
             this.InfoPanel.TabIndex = 5;
+            this.InfoPanel.Visible = false;
             // 
             // label_Titre
             // 

@@ -39,6 +39,14 @@ namespace InterfaceGraphique
         public Aide()
         {
             InitializeComponent();
+            if (!Program.helpMenu)
+            {
+                checkBoxHelp.Checked = true;
+            }
+            else
+            {
+                checkBoxHelp.Checked = false;
+            }
             InitializeShortcuts();
         }
 
@@ -189,7 +197,7 @@ namespace InterfaceGraphique
                     case 0:
                         {
                             labelDescOutil.Text = "La Sélection Simple se fait avec un seul clic sur un objet."+
-                                                  "La séléction simple fait apparaitre le menu des Propriétés Spatiales à gauche qui permet de modifier les propriétés de l'objet sélectionné."+
+                                                  " La Séléction Simple fait apparaître le menu des Propriétés Spatiales à gauche qui permet de modifier les propriétés de l'objet sélectionné."+
                                                   "\nPour désélectionner, il suffit de simplement cliquer sur un espace vide de la table"+
                                                   " Si le bouton CTRL est appuyé pendant la séléction, l'état de sélection de l'objet est inversé.";
                             pictureBoxOutils.Image = Properties.Resources.SelectionSimple;
@@ -198,14 +206,15 @@ namespace InterfaceGraphique
                     case 1:
                         {
                             labelDescOutil.Text = "La Sélection Multiple se fait à l'aide d'un réctangle élastique."+
-                                                  " Pour créer le réctangle élastique, il suffit d'enfoncer le bouton gauche de la souris et deplacer la souris"+
+                                                  " Pour créer le réctangle élastique, il suffit d'enfoncer le bouton gauche de la souris et déplacer la souris"+
                                                   " Tout objet sous le rectangle élastique sera sélectionné. Si le bouton CTRL est appuyé pendant la séléction, l'état de sélection est inversé.";
                             pictureBoxOutils.Image = Properties.Resources.SelectionMultiple;
                             break;
                         }
                     case 2:
                         {
-                            labelDescOutil.Text = "Le déplacement d'un ou plusieurs objets sélectionnés se fait en appuyant sur le bouton gauche de la souris et, tout en gardant le bouton enfoncé, se déplaçant. Les objets sélectionnés suiveront la souris.";
+                            labelDescOutil.Text = "Le déplacement d'un ou plusieurs objets sélectionnés se fait en appuyant sur le bouton de milieu de la souris et, tout en gardant le bouton enfoncé, se déplaçant. Les objets sélectionnés suiveront la souris."+
+                                                  " Si vous n'avez pas de bouton milieu( laptop par exemple ), vous pouvez utiliser l'outil Déplacement et utiliser le bouton gauche de la souris.";
                             pictureBoxOutils.Image = Properties.Resources.Deplacement;
 
                             break;
@@ -221,9 +230,9 @@ namespace InterfaceGraphique
                         }
                     case 4:
                         {
-                            labelDescOutil.Text = "La rotation d'un ou plusieurs objets sélectionnés se fait en choisissant l'outil Duplication" +
+                            labelDescOutil.Text = "La duplication d'un ou plusieurs objets sélectionnés se fait en choisissant l'outil Duplication" +
                                                   "à l'aide du bouton Duplication ou le raccourci C." +
-                                                  " les objets dupliqués sont créés et suivent la souris. Un déplacement de la souris fait bouger les objets copies. " +
+                                                  " les objets dupliqués sont créés et suivent la souris. Un déplacement de la souris fait bouger les objets copiés. " +
                                                   " Le clic du bouton gauche de la souris confirme la duplication et place définitivement les objets." +
                                                   " Le bouton Échapper annule la duplication et enlève les objets dupliqués.";
                             pictureBoxOutils.Image = Properties.Resources.Duplication;
@@ -468,6 +477,18 @@ namespace InterfaceGraphique
 
 
                 }
+            }
+        }
+
+        private void checkBoxHelp_CheckedChanged(object sender, EventArgs e)
+        {
+            if (checkBoxHelp.Checked)
+            {
+                Program.helpMenu = false;
+            }
+            else
+            {
+                Program.helpMenu = true;
             }
         }
     }

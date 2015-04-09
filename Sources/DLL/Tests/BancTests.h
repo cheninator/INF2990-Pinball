@@ -1,3 +1,4 @@
+/*
 //////////////////////////////////////////////////////////////////////////////
 /// @file BancTests.h
 /// @author Julien Gascon-Samson
@@ -9,7 +10,7 @@
 
 /** @defgroup Test Test
 *	@ingroup Noyau
-*/
+* /
 
 #ifndef _TESTS_BANCTESTS_H
 #define _TESTS_BANCTESTS_H
@@ -35,3 +36,4 @@ public:
 };
 
 #endif // _TESTS_BANCTESTS_H
+*/

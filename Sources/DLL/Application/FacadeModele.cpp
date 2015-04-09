@@ -107,10 +107,9 @@ FacadeModele* FacadeModele::obtenirInstance(bool console)
 										glm::dvec3(coinDroitTableX,  coinDroitTableY,  0));
 
 		instance_->controleurLumieres_ = new ControleurLumieres();
+		instance_->originator_ = new Originator();
+		//instance_->controleurTexte_ = new ControleurTexte();
 
-		instance_->originator_ = new Originator(instance_->arbre_);
-
-		instance_->controleurTexte_ = new ControleurTexte();
 
 
 		if (console)
@@ -226,23 +225,23 @@ void FacadeModele::initialiserOpenGL(HWND hWnd)
 	// Creation de l'arbre de rendu.  a moins d'etre completement certain
 	// d'avoir une bonne raison de faire autrement, il est plus sage de creer
 	// l'arbre apres avoir cree le contexte OpenGL.
-	std::cout << "Creation de l'arbre de rendu..." << std::endl;
 	arbre_ = new ArbreRenduINF2990;
-	std::cout << "Initialisation de l'arbre de rendu..." << std::endl;
-	arbre_->initialiser();
+	
+	//arbre_->initialiser();
+	originator_->assignerArbre(arbre_);
 
 	// On cree une vue par defaut.
 	vue_ = new vue::VueOrtho{
 		vue::Camera{ 
 			glm::dvec3(0, 0, 200), glm::dvec3(0, 0, 0),
-			glm::dvec3(0, 1, 0),   glm::dvec3(0, 1, 0)},
+			glm::dvec3(0, 1, 0),   glm::dvec3(0, 1, 0),
+			0.0 , 0.0 },
 		vue::ProjectionOrtho{ 
 				0, 500, 0, 500,
 				1, 1000, 50, 5000, 1.25,
 				double(coinGaucheTableX), double(coinGaucheTableY),
 				double(coinDroitTableX), double(coinDroitTableY)}
 	};
-	std::cout << "Arbre de rendu generer !" << std::endl << std::endl << std::endl;
 }
 
 
@@ -341,7 +340,8 @@ void FacadeModele::afficherBase() const
 	ControleurNuanceurs::obtenirInstance()->desactiver();
 
 	// On affiche le texte ici
-	controleurTexte_->refreshAffichage();
+	if (controleurTexte_ != nullptr)
+		controleurTexte_->refreshAffichage();
 
 	// fuck that shit... si je met cette ligne la dans le .h ca compile plus...
 	// TODO bouger shit dans l'API et le C#, pis juste appeler afficherTexte();
@@ -1308,7 +1308,7 @@ int FacadeModele::obtenirCentreMasseY()
 bool FacadeModele::appliquerZoomInitial()
 {
 	bool applique = false;
-	if (obtenirInstance() != nullptr)
+	if (obtenirInstance() != nullptr && vue_->obtenirProjection().estPerspective() == false)
 	{
 		vue_->zoomerInElastique(glm::dvec2(coinGaucheTableX, coinGaucheTableY), glm::ivec2(coinDroitTableX, coinDroitTableY));
 		applique = true;
@@ -1702,7 +1702,8 @@ void FacadeModele::desactiverPalettesDJ2()
 ///////////////////////////////////////////////////////////////////////////////
 void FacadeModele::supprimerBille()
 {
-	arbre_->effacer(arbre_->chercher(ArbreRenduINF2990::NOM_BILLE));
+	//arbre_->effacer(arbre_->chercher(ArbreRenduINF2990::NOM_BILLE));
+	arbre_->effacer(arbre_->chercher("bille"));
 }
 
 ///////////////////////////////////////////////////////////////////////////////
@@ -2187,6 +2188,8 @@ double FacadeModele::obtenirScaleMinMax()
 ////////////////////////////////////////////////////////////////////////
 ControleurTexte* FacadeModele::obtenircontroleurTexte()
 {
+	if (controleurTexte_ == nullptr)
+		instance_->controleurTexte_ = new ControleurTexte();
 	return controleurTexte_;
 }
 
@@ -2197,53 +2200,63 @@ std::string FacadeModele::obtenirCout()
 	return ss;
 }
 
+//rajouter commentaire
 void FacadeModele::utiliserCameraOrbite(bool utiliseOrbite)
 {
 	std::cout << "Méthode appelee\n";
 	if (utiliseOrbite != vueEstOrbite_)
 	{
+		/*Sauvegarde des mesures de la clôture */
+		int clotMinX, clotMaxX, clotMinY, clotMaxY;
+		vue_->obtenirProjection().obtenirCoordonneesCloture(clotMinX, clotMaxX, clotMinY, clotMaxY);
+		
+		/* On obtient le rapport d'aspect*/
+		glm::ivec2 fenetreVirt = vue_->obtenirProjection().obtenirDimensionFenetreVirtuelle();
+		double ratio = fenetreVirt.x / fenetreVirt.y;
+		
 		delete vue_;
 		if (utiliseOrbite)
-		{/*Créer une caméra orbite*/
-
-			vue_ = new vue::VueOrtho{
+		{
+			 vue_ = new vue::VuePerspective{
 				vue::Camera{
-					glm::dvec3(0, 0, 200), glm::dvec3(0, 0, 0),
-					glm::dvec3(0, 1, 0), glm::dvec3(0, 1, 0) },
-					vue::ProjectionOrtho{
-						0, 500, 0, 500,
-						1, 1000, 50, 5000, 1.25,
-						double(coinGaucheTableX), double(coinGaucheTableY),
-						double(coinDroitTableX), double(coinDroitTableY) }
-			};
-			
-			 /*vue_ = new vue::VuePerspective{
-				vue::Camera{
-					glm::dvec3(0, 0, 200), glm::dvec3(0, 0, 0),
-					glm::dvec3(0, 1, 0), glm::dvec3(0, 1, 0) },
+					glm::dvec3((coinGaucheTableX + coinDroitTableX) / 2.0, 
+								(coinGaucheTableY + coinDroitTableY) / 2.0, 
+								200),
+					glm::dvec3( (coinGaucheTableX + coinDroitTableX) / 2.0 ,
+								(coinGaucheTableY + coinDroitTableY) / 2.0,
+								100), /* Le point visé*/
+					glm::dvec3(0, 1, 0), glm::dvec3(0, 1, 0),
+				    0.0 , 0.0},
 					vue::ProjectionPerspective{
-						0, 500, 0, 500,
-						1, 1000, 50, 5000, 1.25,
-						-400, 400, -400, 400, 0, 1000 }
-			}; */
+						clotMinX, clotMaxX, clotMinY, clotMaxY,
+						10.0, 2000, /* La valeur minimale et maximale en Z dans le volume de visualisation*/
+						50, 1000,   /* La valeur minimal et maximale que l'on peut parcourir dans le jeu*/
+						1.10,       /* L'incrément de zoom*/
+						ratio,      /* Le rapport d'aspect précédent*/
+						60.0,       /* L'angle de vision */ 
+					}
+			}; 
+			 vue_->obtenirCamera().assignerPhi(utilitaire::DEG_TO_RAD(90.0));
+			
 			std::cout << "La vue est passee en orbite \n";
 		}
 		else
-		{/*Créer une caméra ortho*/
+		{
+			/*Créer une caméra ortho*/
 			vue_ = new vue::VueOrtho{
 				vue::Camera{
 					glm::dvec3(0, 0, 200), glm::dvec3(0, 0, 0),
-					glm::dvec3(0, 1, 0), glm::dvec3(0, 1, 0) },
+					glm::dvec3(0, 1, 0), glm::dvec3(0, 1, 0),
+					0.0 , 0.0 },
 					vue::ProjectionOrtho{
-						0, 500, 0, 500,
+						clotMinX, clotMaxX, clotMinY, clotMaxY,
 						1, 1000, 50, 5000, 1.25,
 						double(coinGaucheTableX), double(coinGaucheTableY),
 						double(coinDroitTableX), double(coinDroitTableY) }
 			};
+			appliquerZoomInitial();
 			std::cout << "La vue est passee en orthographique \n";
 		}
-//		vue_->obtenirProjection().conserverRapportAspect();
-		appliquerZoomInitial();
 		vueEstOrbite_ = utiliseOrbite;
 	}
 }
@@ -2287,3 +2300,7 @@ void FacadeModele::retablirModifications()
 	originator_->retablir();
 }
 
+bool FacadeModele::cameraEstOrbite()
+{
+	return vueEstOrbite_;
+}

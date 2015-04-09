@@ -233,6 +233,7 @@ public:
 	double obtenirScaleMinMax();
 
 	void utiliserCameraOrbite(bool utiliseOrbite);
+	bool cameraEstOrbite();
 
 	ControleurTexte* obtenircontroleurTexte();
 
@@ -308,11 +309,8 @@ private:
    std::vector<NoeudAbstrait*> listeNoeuds_;
    std::vector<NoeudAbstrait*> listeRessorts_;
 
-
    ControleurLumieres* controleurLumieres_{ nullptr };
-
-   ControleurTexte* controleurTexte_;
-
+   ControleurTexte* controleurTexte_{ nullptr };
 };
 
 

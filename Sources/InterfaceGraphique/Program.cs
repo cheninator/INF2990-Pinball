@@ -44,9 +44,8 @@ namespace InterfaceGraphique
         private static TimeSpan tempsEcouleVoulu = TimeSpan.FromTicks(TimeSpan.TicksPerSecond / (NB_IMAGES_PAR_SECONDE * 10)); ///< Temps avant le rafraichissement
         public static int compteurFrames = 0;
         public static bool customConsoleActive = false;
+        public static bool helpMenu = true;
         private static bool noWarnings = false;
-
-        static StringBuilder FPS = new StringBuilder("FPS : ");
 
         ////////////////////////////////////////////////////////////////////////
         ///
@@ -63,7 +62,7 @@ namespace InterfaceGraphique
         {
             if (args.Length != 0)
             {
-                if (args[0] == "testsC++")
+                /*if (args[0] == "testsC++")
                 {
                     if (FonctionsNatives.executerTests())
                     {
@@ -77,7 +76,7 @@ namespace InterfaceGraphique
                     }
                     return;
                 }
-                else if (args[0] == "nowarnings")
+                else */if (args[0] == "nowarnings")
                     noWarnings = true;
             }
             if (!noWarnings)
@@ -124,24 +123,7 @@ namespace InterfaceGraphique
                     System.Environment.OSVersion.Version.Minor >= 1))
                     MessageBox.Show(warningMessageW, "AVERTISSEMENT", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
-            // TODO Exemple a delete
-            // Exemple de texte
-            // le Texte a Ecrire
-            StringBuilder myFont = new StringBuilder("Bloodthirsty.ttf");
-                                         // On spécifie la font
-            FonctionsNatives.creeTexte(FPS, FPS.Capacity, myFont, myFont.Capacity);
 
-            // On specifie la taille (en 1/72 de pouce)
-            FonctionsNatives.resize(FPS, FPS.Capacity, 35);
-
-            // On specifie une couleur RGB
-            FonctionsNatives.changerCouleurV(FPS, FPS.Capacity, ColorList.COLOR_salmon);
-
-            // On specifie la position
-            FonctionsNatives.repositionner(FPS, FPS.Capacity, 1, 1);
-
-            // On demande d'afficher !
-            FonctionsNatives.afficherTextes();
             // FIN DE L'EXEMPLE A DELETE
             mMenu = new MainMenu();
             Application.Run(mMenu);
@@ -174,11 +156,7 @@ namespace InterfaceGraphique
                     lock (unLock)
                     {
                         double tempsInterAffichage = (double)tempsAccumule.Ticks / TimeSpan.TicksPerSecond;
-                        // TODO Exemple a delete
-                        StringBuilder precedentText = FPS;
-                        FPS = new StringBuilder("FPS : " + (Math.Round((.1/tempsInterAffichage), 2)).ToString());
-                        FonctionsNatives.updateText(precedentText, precedentText.Capacity, FPS, FPS.Capacity);
-                        // FIN DE L'EXEMPLE
+                      
                         if (mMenu.modeEdit != null && peutAfficher)
                         {
                             mMenu.modeEdit.MettreAJour(tempsInterAffichage);
