@@ -39,7 +39,7 @@ namespace InterfaceGraphique
         List<string> myMaps;    ///< liste des zones a jouer
         StringBuilder map;      ///< la zone en jeu
         StringBuilder nextMap;  ///< prochaine zone
-        StringBuilder bgm;
+        //StringBuilder bgm;
         static StringBuilder Points = new StringBuilder("Points : ");
         static StringBuilder Billes = new StringBuilder("Billes : ");
         bool peutAnimer;
