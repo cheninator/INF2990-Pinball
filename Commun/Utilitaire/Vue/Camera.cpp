@@ -193,7 +193,7 @@ namespace vue {
 		//		directionHaut_[0], directionHaut_[1], directionHaut_[2]);
 		glTranslated(0.0, 0.0, -dist_);
 		glRotated(180.0 / 3.1415 * phi_ - 90.0, 1.0, 0.0, 0.0);
-		glRotated(180.0 / 3.1415 * theta_, 0.0, 1.0, 0.0);
+		glRotated(180.0 / 3.1415 * theta_, 0.0, 0.0, 1.0);
 		glTranslated(-pointVise_.x, -pointVise_.y, 0.0);
 	}
 

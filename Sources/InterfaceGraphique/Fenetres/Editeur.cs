@@ -241,16 +241,16 @@ namespace InterfaceGraphique
             {
 
                 if (e.KeyData == Keys.Left)
-                    FonctionsNatives.translater(-10, 0);
+                    FonctionsNatives.translater(-2, 0);
 
                 else if (e.KeyData == Keys.Right)
-                    FonctionsNatives.translater(10, 0);
+                    FonctionsNatives.translater(2, 0);
 
                 else if (e.KeyData == Keys.Up)
-                    FonctionsNatives.translater(0, 10);
+                    FonctionsNatives.translater(0, 2);
 
                 else if (e.KeyData == Keys.Down)
-                    FonctionsNatives.translater(0, -10);
+                    FonctionsNatives.translater(0, -2);
                 else if (e.KeyData == Keys.Delete)
                 {
                     bouton_Suppression.PerformClick();
@@ -1594,6 +1594,7 @@ namespace InterfaceGraphique
         private void Orthographique_MenuItem_Click(object sender, EventArgs e)
         {
             FonctionsNatives.utiliserCameraOrbite(false);
+            ZoomElastique_ToolStrip.Enabled = true;
         }
         ////////////////////////////////////////////////////////////////////////
         ///
@@ -1610,6 +1611,7 @@ namespace InterfaceGraphique
         private void Orbite_MenuItem_Click(object sender, EventArgs e)
         {
             FonctionsNatives.utiliserCameraOrbite(true);
+            ZoomElastique_ToolStrip.Enabled = false;
         }
 
         ////////////////////////////////////////////////////////////////////////
@@ -2218,7 +2220,7 @@ namespace InterfaceGraphique
                 etat = new EtatEditeurSelectionMultiple(this);
                 FonctionsNatives.initialiserRectangleElastique(origin.X, origin.Y);
             }
-            else if (!(clickValide(origin, currentP)) && (etat is EtatEditeurZoom) && e.Button == MouseButtons.Left)
+            else if (!(clickValide(origin, currentP)) && (etat is EtatEditeurZoom) && e.Button == MouseButtons.Left && ZoomElastique_ToolStrip.Enabled == true)
             {
                 etat = new EtatEditeurZoomElastique(this);
                 FonctionsNatives.initialiserRectangleElastique(origin.X, origin.Y);
