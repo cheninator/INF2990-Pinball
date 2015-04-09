@@ -291,13 +291,13 @@ namespace InterfaceGraphique
                 FonctionsNatives.compresserRessort();
             }
             if (e.KeyCode == Keys.Left)
-                FonctionsNatives.translater(-1, 0);
+                FonctionsNatives.translater(-10, 0);
             else if (e.KeyCode == Keys.Right)
-                FonctionsNatives.translater(1, 0);
+                FonctionsNatives.translater(10, 0);
             else if (e.KeyCode == Keys.Up)
-                FonctionsNatives.translater(0, 1);
+                FonctionsNatives.translater(0, 10);
             else if (e.KeyCode == Keys.Down)
-                FonctionsNatives.translater(0, -1);
+                FonctionsNatives.translater(0, -10);
 
 
 
