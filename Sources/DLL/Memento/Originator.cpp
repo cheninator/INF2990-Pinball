@@ -72,24 +72,8 @@ void Originator::annuler()
 	std::map<int, NoeudAbstrait*> sauvegarde;
 	sauvegarde = historique_->obtenirMemento(position_ - 1)->obtenirSauvegarde();
 
-	NoeudAbstrait* temp;
-	std::map<int, NoeudAbstrait*>::iterator iter;
-
-	// Modifier l'arbre courant avec les informations de sauvegarde
-	for (iter = sauvegarde.begin(); iter != sauvegarde.end(); iter++)
-	{
-		temp = arbreActuel_->obtenirNoeudSelonNumero(iter->first);
-
-		if (temp != nullptr)
-		{
-			temp->assignerPositionRelative(iter->second->obtenirPositionRelative());
-			temp->assignerEchelle(iter->second->obtenirAgrandissement());
-			temp->assignerRotationHard(iter->second->obtenirRotation());
-			temp->setColorShift(iter->second->getColorShift());
-		}
-
-		temp = nullptr;
-	}
+	// Appliquer les modifications a l'arbre
+	appliquerModifications(sauvegarde);
 
 	// Position courante dans l'historique change
 	position_--;
@@ -123,22 +107,8 @@ void Originator::retablir()
 	std::map<int, NoeudAbstrait*> sauvegarde;
 	sauvegarde = historique_->obtenirMemento(position_ + 1)->obtenirSauvegarde();
 
-	NoeudAbstrait* temp;
-	std::map<int, NoeudAbstrait*>::iterator iter;
-
-	// Modifier l'arbre courant avec les informations de sauvegarde
-	for (iter = sauvegarde.begin(); iter != sauvegarde.end(); iter++)
-	{
-		temp = arbreActuel_->obtenirNoeudSelonNumero(iter->first);
-
-		if (temp != nullptr)
-		{
-			temp->assignerPositionRelative(iter->second->obtenirPositionRelative());
-			temp->assignerEchelle(iter->second->obtenirAgrandissement());
-			temp->assignerRotationHard(iter->second->obtenirRotation());
-			temp->setColorShift(iter->second->getColorShift());
-		}
-	}
+	// Appliquer les modifications a l'arbre
+	appliquerModifications(sauvegarde);
 
 	// Position courante dans l'historique change
 	position_++;
@@ -216,7 +186,27 @@ void Originator::viderHistorique()
 /// @return Aucune.
 ///
 ////////////////////////////////////////////////////////////////////////
-void Originator::appliquerModifications()
+void Originator::appliquerModifications(std::map<int, NoeudAbstrait*> sauvegarde)
 {
+	NoeudAbstrait* temp;
+	std::map<int, NoeudAbstrait*>::iterator iter;
+
+	// Vider l'ancien arbre
+	arbreActuel_->getEnfant(0)->vider();
+
+	NoeudAbstrait::changerNumero(0);
+
+	// Modifier l'arbre courant avec les informations de sauvegarde
+	for (iter = sauvegarde.begin(); iter != sauvegarde.end(); iter++)
+	{
+		NoeudAbstrait* noeud{ arbreActuel_->creerNoeud(iter->second->obtenirType())};
+
+		noeud->assignerPositionRelative(iter->second->obtenirPositionRelative());
+		noeud->assignerEchelle(iter->second->obtenirAgrandissement());
+		noeud->assignerRotation(iter->second->obtenirRotation());
+		noeud->setColorShift(iter->second->getColorShift());
+
+		arbreActuel_->getEnfant(0)->ajouter(noeud);
+	}
 
 }

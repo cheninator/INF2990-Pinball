@@ -176,6 +176,9 @@ public:
 	/// Obtient le numero du noeud.
 	int getNumero() const { return numeroNoeud_; };
 
+	/// Forcer le compteur a prendre une certaine valeur
+	static void changerNumero(int numero) { compteurNoeuds_ = numero; };
+
 	/// Obtient le numero du noeud.
 	void setNumero(int numero);
 

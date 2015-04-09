@@ -61,7 +61,7 @@ private:
 	int position_;
 
 	/// Appliquer les modifications à l'arbre de rendu a partir de la sauvegarde
-	void appliquerModifications();
+	void appliquerModifications(std::map<int, NoeudAbstrait*> sauvegarde);
 
 };
 
