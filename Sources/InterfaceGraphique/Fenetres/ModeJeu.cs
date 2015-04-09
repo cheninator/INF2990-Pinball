@@ -170,9 +170,6 @@ namespace InterfaceGraphique
 
             if (true)
             {
-                // TODO Exemple a delete
-                // Exemple de texte
-                // le Texte a Ecrire
                 StringBuilder myFont = new StringBuilder("Bloodthirsty.ttf");
                 // On spécifie la font
                 FonctionsNatives.creeTexte(Points, Points.Capacity, myFont, myFont.Capacity);
@@ -197,11 +194,17 @@ namespace InterfaceGraphique
             panelHeight = panel_GL.Size.Height;
             panelWidth = panel_GL.Size.Width;
 
-            FonctionsNatives.creeTexte(informations, informations.Capacity, fontArial, fontArial.Capacity);
-            FonctionsNatives.resize(informations, informations.Capacity, 12);
-            FonctionsNatives.changerCouleurV(informations, informations.Capacity, ColorList.COLOR_dark_red);
-            FonctionsNatives.repositionner(informations, informations.Capacity, 0, 1);
-        }
+
+            if (Program.playerName.ToLower() == "admin")
+            {
+
+                FonctionsNatives.creeTexte(informations, informations.Capacity, fontArial, fontArial.Capacity);
+                FonctionsNatives.resize(informations, informations.Capacity, 12);
+                FonctionsNatives.changerCouleurV(informations, informations.Capacity, ColorList.COLOR_dark_red);
+                FonctionsNatives.repositionner(informations, informations.Capacity, 0, 1);
+            }
+             
+         }
 
         ////////////////////////////////////////////////////////////////////////
         ///
