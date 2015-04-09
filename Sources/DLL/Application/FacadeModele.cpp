@@ -623,7 +623,6 @@ void FacadeModele::deplacerSelection(int x1, int y1 ,int x2, int y2, bool duplic
 			visDep.setEstDansLaTable(true);
 			duplicationHorsTable_ = false;
 		}
-
 		else
 			duplicationHorsTable_ = true;
 

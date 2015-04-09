@@ -2170,6 +2170,14 @@ namespace InterfaceGraphique
                 FMEbox.Text = (Math.Round(FonctionsNatives.getScale() * 100) / 100).ToString();
             }
 
+            if (etat is EtatEditeurCreation || etat is EtatEditeurDuplication)
+            {
+                if (FonctionsNatives.duplicationEstHorsTable())
+                    Cursor = Cursors.No;
+                else
+                    Cursor = Cursors.Arrow;
+            }
+
             if (e.Button == MouseButtons.Right)
             {
                 deplacementVueSouris(e);
@@ -2181,14 +2189,6 @@ namespace InterfaceGraphique
                 deplacementSouris(e);
 
             }
-            /*//ancienne methode pour demontrer que le curseur est hors table
-            else if (etat is EtatEditeurCreation)
-            {
-                if (!(FonctionsNatives.verifierCliqueDansTable(e.X, e.Y)))
-                    Cursor = Cursors.No;
-                else
-                    Cursor = Cursors.Arrow;
-            }*/
             else if (!(clickValide(origin, currentP)) && (etat is EtatEditeurSelection) && e.Button == MouseButtons.Left)
             {
                 etat = new EtatEditeurSelectionMultiple(this);
