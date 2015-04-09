@@ -314,6 +314,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="%24this.Icon.ico" />
+    <None Include="Resources\VueOrbite.png" />
     <None Include="Resources\undo.png" />
     <None Include="Resources\scale.png" />
     <None Include="Resources\Selection.png" />

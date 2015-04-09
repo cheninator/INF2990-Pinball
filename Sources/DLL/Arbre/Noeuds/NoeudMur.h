@@ -24,19 +24,22 @@
 class NoeudMur : public NoeudComposite
 {
 public:
-	// Constructeur
+	/// Constructeur
 	NoeudMur(const std::string& typeNoeud);
 
-	// Destructeur 
+	/// Destructeur 
 	~NoeudMur();
 
-	// Surchage de la methode qui affiche l'objet
+	/// Surchage de la methode qui affiche l'objet
 	virtual void afficherConcret() const;
 
-	// Surchage de la methode qui anime l'objet
+	/// Surchage de la methode qui anime l'objet
 	virtual void animer(float temps);
 
-	// Pour accepter un visiteur
+	/// Pour le traitement logique des collisions
+	virtual void traiterCollisions(aidecollision::DetailsCollision, NoeudAbstrait* bille, float facteurRebond = 1);
+
+	/// Pour accepter un visiteur
 	virtual bool accepterVisiteur(VisiteurAbstrait* vis);
 
 private:

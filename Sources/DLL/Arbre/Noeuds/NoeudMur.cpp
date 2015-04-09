@@ -93,6 +93,23 @@ void NoeudMur::animer(float temps)
 
 ////////////////////////////////////////////////////////////////////////
 ///
+/// @fn void NoeudAbstrait::traiterCollisions(aidecollision::DetailsCollision details, NoeudAbstrait* bille)
+///
+/// Cette fonction effectue la réaction a la collision de la bille sur 
+/// l'objet courant. Cette fonction est a reimplementer si on veut autre 
+/// chose qu'un rebondissement ordinaire.
+///
+/// @return aucun.
+///
+////////////////////////////////////////////////////////////////////////
+void NoeudMur::traiterCollisions(aidecollision::DetailsCollision details, NoeudAbstrait* bille, float facteurRebond)
+{
+	NoeudAbstrait::traiterCollisions(details, bille);
+	SingletonGlobal::obtenirInstance()->obtenirControleurSon()->jouerSon("wall.wav");
+}
+
+////////////////////////////////////////////////////////////////////////
+///
 /// @fn bool NoeudMur::accepterVisiteur(VisiteurAbstrait* vis)
 ///
 /// Cette fonction appelle la methode traiter du visiteur.

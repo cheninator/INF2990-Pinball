@@ -496,7 +496,11 @@ namespace InterfaceGraphique
         ///
         ////////////////////////////////////////////////////////////////////////
         public EtatEditeurCreation(Editeur form) : base(form) {
+
+            form_.annulerModif();
+            FonctionsNatives.sauvegarderHistorique();
             form_.deselection();
+
             form_.outilCourant("Creation");
             form_.trackCursor(true);
             form_.creationObjet();

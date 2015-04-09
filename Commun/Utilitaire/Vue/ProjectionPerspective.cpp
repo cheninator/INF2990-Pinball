@@ -103,7 +103,6 @@ namespace vue {
 	void ProjectionPerspective::redimensionnerFenetre(const glm::ivec2& coinMin,
 		const glm::ivec2& coinMax)
 	{
-		std::cout << " Redimension de fenetre non implémenté \n";
 		
 		/* Portion qui provient de la projection orthographique*/
 

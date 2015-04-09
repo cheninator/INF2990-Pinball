@@ -507,3 +507,17 @@ NoeudAbstrait* ArbreRenduINF2990::obtenirNoeudSelonNumero(int numero)
 
 	return nullptr;
 }
+
+
+int ArbreRenduINF2990::obtenirNombreSelectionne() const
+{
+	int nombre = 0;
+
+	for (unsigned int i = 0; i < getEnfant(0)->obtenirNombreEnfants(); i++)
+	{
+		if (getEnfant(0)->getEnfant(i)->estSelectionne())
+			nombre++;
+	}
+	
+	return nombre;
+}

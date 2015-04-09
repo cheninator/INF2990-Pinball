@@ -114,7 +114,6 @@ namespace InterfaceGraphique
             pathXML = new StringBuilder("");
             this.Text = "Mode Edition - Nouvelle Zone";
             panel_GL.Select();
-           // etat = new EtatEditeurNone(this);
             etat = new EtatEditeurSelection(this);
             deselection();
             ctrlDown = false;
@@ -498,26 +497,25 @@ namespace InterfaceGraphique
                     if (etat is EtatEditeurPortail)
                     {
                         FonctionsNatives.removeObject();
-                        etat = new EtatEditeurNone(this);
+                        etat = new EtatEditeurSelection(this);
                         deselection();
                     }
                     else if (etat is EtatEditeurMur)
                     {
                         FonctionsNatives.removeObject();
-                        etat = new EtatEditeurNone(this);
+                        etat = new EtatEditeurSelection(this);
                         deselection();
                     }
                     else if (etat is EtatEditeurDuplication || etat is EtatEditeurCreation)
                     {
                         FonctionsNatives.removeObject();
                         deselection();
-                     //   etat = new EtatEditeurNone(this);
                         etat = new EtatEditeurSelection(this);
 
                     }
                     else
                     {
-                        etat = new EtatEditeurNone(this);
+                        etat = new EtatEditeurSelection(this);
                         deselection();
                     }
 
@@ -694,6 +692,7 @@ namespace InterfaceGraphique
 
 
             }
+            FonctionsNatives.viderHistorique();
         }
 
         ////////////////////////////////////////////////////////////////////////
@@ -750,6 +749,7 @@ namespace InterfaceGraphique
 
 
                     int sauvegarde = FonctionsNatives.creerXML(pathXML, pathXML.Capacity, prop);
+                    FonctionsNatives.viderHistorique();
                     //Console.WriteLine(sauvegarde);
                     if (sauvegarde == 1)
                     {
@@ -962,7 +962,6 @@ namespace InterfaceGraphique
             annulerModif();
             if (etat is EtatEditeurMur)
             {
-                //    etat = new EtatEditeurNone(this);
                 etat = new EtatEditeurSelection(this);
             }
             //Console.WriteLine("Outil Creation.");
@@ -1631,6 +1630,8 @@ namespace InterfaceGraphique
             etat = new EtatEditeurTest(this);
             menuStrip1.Hide();
             toolStrip1.Hide();
+            Annuler_ToolStrip.Enabled = false;
+            Retablir_ToolStrip.Enabled = false;
             bouton_Creation.Hide();
             FonctionsNatives.animerJeu(true);
             FonctionsNatives.rechargerArbre(false);
@@ -1642,13 +1643,11 @@ namespace InterfaceGraphique
             flowLayoutPanel1.Hide();
 
             menu1Enable(false);
-            //StringBuilder bille = new StringBuilder("bille");
-            //FonctionsNatives.creerObjet(bille, bille.Capacity);
+         
 
             panel_GL.BringToFront();
             panel_GL.Anchor = AnchorStyles.None;
             panel_GL.Location = new Point(163, 24);
-            //panel_GL.Location = new Point(this.ClientSize.Width / 2 - panel_GL.Size.Width / 2, this.ClientSize.Height / 2 - panel_GL.Size.Height / 2);
             panel_GL.Dock = DockStyle.Fill;
             this.OnSizeChanged(e);
             FonctionsNatives.translater(-mouvementX, mouvementY);
@@ -1662,8 +1661,7 @@ namespace InterfaceGraphique
                     Program.mMenu.modeEdit.Focus();
                 }
             }
-            //panel_GL.Dock = DockStyle.Fill;
-            //menuStrip3.BringToFront();
+       
         }
 
         ////////////////////////////////////////////////////////////////////////
@@ -2094,6 +2092,7 @@ namespace InterfaceGraphique
             FonctionsNatives.purgeAll();
             propZJ = new List<int> { 10, 10, 10, 10, 10, 1 };
             ReinitialiserTout();
+            FonctionsNatives.viderHistorique();
         }
 
         ////////////////////////////////////////////////////////////////////////
@@ -2118,7 +2117,7 @@ namespace InterfaceGraphique
 
             if (etat is EtatEditeurPortail && e.Button == MouseButtons.Left)
             {
-                //etat = new EtatEditeurNone(this);
+                FonctionsNatives.sauvegarderHistorique();
                 etat = new EtatEditeurSelection(this);
                 
                 FonctionsNatives.obligerTransparence(false);
@@ -2126,7 +2125,8 @@ namespace InterfaceGraphique
             }
             else if (etat is EtatEditeurMur)
             {
-                etat = new EtatEditeurNone(this);
+                FonctionsNatives.sauvegarderHistorique();
+                etat = new EtatEditeurSelection(this);
                 deselection();
             }
             else if ((e.Button == MouseButtons.Left && (etat is EtatEditeurSelection ||
@@ -2246,7 +2246,6 @@ namespace InterfaceGraphique
                 FonctionsNatives.sauvegarderHistorique();
                 deselection();
                 panel_GL.MouseMove -= panel_MouseMove;
-              //  etat = new EtatEditeurNone(this);
                 etat = new EtatEditeurSelection(this);
 
             }
@@ -2257,7 +2256,7 @@ namespace InterfaceGraphique
                     FonctionsNatives.removeObject();
                     deselection();
                     panel_GL.MouseMove -= panel_MouseMove;
-                    etat = new EtatEditeurNone(this);
+                    etat = new EtatEditeurSelection(this);
                 }
                 else
                 {
@@ -2270,15 +2269,16 @@ namespace InterfaceGraphique
                         stateMur();
                     else
                     {
+                        FonctionsNatives.sauvegarderHistorique();
                         deselection();
                         panel_GL.MouseMove -= panel_MouseMove;
-                        etat = new EtatEditeurNone(this);
+                        etat = new EtatEditeurSelection(this);
                     }
                 }       
             }
             else if (etat is EtatEditeurMur && (clickExtraValide(origin, destination)))
             {
-                etat = new EtatEditeurNone(this);
+                etat = new EtatEditeurSelection(this);
                 deselection();
                 return;
             }
@@ -2602,7 +2602,7 @@ namespace InterfaceGraphique
                 if (pathXML.ToString().Substring(pathXML.ToString().Length - 11) == "default.xml")
                 {
                     MessageBox.Show("Il ne faut pas sauvegarder par dessus la zone par defaut", "ERREUR DE SAUVEGARDE",
-                MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
                 else
                 {
@@ -2633,8 +2633,14 @@ namespace InterfaceGraphique
                     {
                         takeScreenShot();
                     }
+
+                    FonctionsNatives.viderHistorique();
                 }
             }
+
+            
+
+
         }
 
 
@@ -2954,7 +2960,7 @@ namespace InterfaceGraphique
         //////////////////////////////////////////////////////////////////////////////////////////
         public void annulerModif()
         {
-            if (etat is EtatEditeurPortail /*|| etat is EtatEditeurMur*/ || etat is EtatEditeurDuplication)
+            if (etat is EtatEditeurPortail ||  etat is EtatEditeurCreation || etat is EtatEditeurDuplication)
             {
                 FonctionsNatives.removeObject();
                 deselection();
@@ -3056,7 +3062,6 @@ namespace InterfaceGraphique
         private void toolStripMenuItem1_Click(object sender, EventArgs e)
         {
             etat = null;
-           // etat = new EtatEditeurNone(this);
             etat = new EtatEditeurSelection(this);
 
             FonctionsNatives.animerJeu(false);
@@ -3068,6 +3073,8 @@ namespace InterfaceGraphique
                 menuStrip3.Hide();
             menuStrip1.Show();
             toolStrip1.Show();
+            Annuler_ToolStrip.Enabled = true;
+            Retablir_ToolStrip.Enabled = true;
             bouton_Creation.Show();
             menu1Enable(true);
             Creation_Panel.Show();
@@ -3112,10 +3119,7 @@ namespace InterfaceGraphique
             if (Program.mMenu.modeEdit != null)
                 Program.mMenu.modeEdit.Focus();
 
-            if (Program.helpMenu)
-            {
-                Information_MenuItem.PerformClick();
-            }
+          
             
         }
 
@@ -3178,8 +3182,13 @@ namespace InterfaceGraphique
 
         private void bouton_Suppression_Click(object sender, EventArgs e)
         {
+            if(etat is EtatEditeurSelection)
+                FonctionsNatives.sauvegarderHistorique();
+
             FonctionsNatives.removeObject();
             deselection();
+
+            FonctionsNatives.sauvegarderHistorique();
         }
 
         private void Group_Butoir_Enter(object sender, EventArgs e)
@@ -3204,12 +3213,49 @@ namespace InterfaceGraphique
 
         private void Annuler_ToolStrip_Click(object sender, EventArgs e)
         {
+            deselection();
             FonctionsNatives.annulerModifications();
+            nbSelection = FonctionsNatives.obtenirNombreSelection();
+            outilsEnable(true);
+
+            if (nbSelection == 1)
+            {
+                proprietesEnable(true);
+                Xbox.Text = Math.Round(FonctionsNatives.getPositionX()).ToString();
+                Ybox.Text = Math.Round(FonctionsNatives.getPositionY()).ToString();
+                Anglebox.Text = Math.Round(FonctionsNatives.getAngle()).ToString();
+                FMEbox.Text = (Math.Round(FonctionsNatives.getScale() * 100) / 100).ToString();
+            }
+
+            else
+                proprietesEnable(false);
+
+            etat = new EtatEditeurSelection(this);
+            Annuler_ToolStrip.Enabled = (FonctionsNatives.possedePrecedent());
         }
 
         private void Retablir_ToolStrip_Click(object sender, EventArgs e)
         {
+            deselection();
             FonctionsNatives.retablirModifications();
+            nbSelection = FonctionsNatives.obtenirNombreSelection();
+            outilsEnable(true);
+
+            if (nbSelection == 1)
+            {
+                proprietesEnable(true);
+                Xbox.Text = Math.Round(FonctionsNatives.getPositionX()).ToString();
+                Ybox.Text = Math.Round(FonctionsNatives.getPositionY()).ToString();
+                Anglebox.Text = Math.Round(FonctionsNatives.getAngle()).ToString();
+                FMEbox.Text = (Math.Round(FonctionsNatives.getScale() * 100) / 100).ToString();
+            }
+
+            else
+                proprietesEnable(false);
+
+            etat = new EtatEditeurSelection(this);
+
+            Annuler_ToolStrip.Enabled = (FonctionsNatives.possedeSuivant());
         }
 
         private void Supprimer_MenuItem_Click_1(object sender, EventArgs e)
@@ -3226,5 +3272,6 @@ namespace InterfaceGraphique
         {
             Retablir_ToolStrip.PerformClick();
         }
+
     }
 }

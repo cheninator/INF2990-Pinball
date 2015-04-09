@@ -204,8 +204,27 @@ void Originator::appliquerModifications(std::map<int, NoeudAbstrait*> sauvegarde
 		noeud->assignerEchelle(iter->second->obtenirAgrandissement());
 		noeud->assignerRotation(iter->second->obtenirRotation());
 		noeud->setColorShift(iter->second->getColorShift());
+		noeud->assignerSelection(iter->second->estSelectionne());
 
 		arbreActuel_->getEnfant(0)->ajouter(noeud);
+
+		if (noeud->obtenirType() == "portail")
+		{
+			// Nombre actuel d'enfants de la table
+			unsigned int enfantsTable = arbreActuel_->getEnfant(0)->obtenirNombreEnfants();
+
+			// Interroger l'enfant au dessus de lui
+			if (arbreActuel_->getEnfant(0)->chercher(enfantsTable - 2)->obtenirType() == "portail"
+				&& arbreActuel_->getEnfant(0)->chercher(enfantsTable - 2)->getTwin() == nullptr)
+			{
+				// Si c'est un portail et qu'il n'est pas relie, les relier tous les deux
+				noeud->setTwin(arbreActuel_->getEnfant(0)->chercher(enfantsTable - 2));
+				arbreActuel_->getEnfant(0)->chercher(enfantsTable - 2)->setTwin(noeud);
+			}
+		}
+
+
+
 	}
 
 }
