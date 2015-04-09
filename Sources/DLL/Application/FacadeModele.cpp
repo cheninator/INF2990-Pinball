@@ -226,7 +226,14 @@ void FacadeModele::initialiserOpenGL(HWND hWnd)
 	// d'avoir une bonne raison de faire autrement, il est plus sage de creer
 	// l'arbre apres avoir cree le contexte OpenGL.
 	arbre_ = new ArbreRenduINF2990;
-	instance_->skybox = new BoiteEnvironnement(6 fichiers);
+	instance_->skybox = new BoiteEnvironnement(
+		"/skybox/left.jpg",
+		"/skybox/right.jpg",
+		"/skybox/top.jpg",
+		"/skybox/bottom.jpg",
+		"/skybox/front.jpg",
+		"/skybox/top.jpg",
+		);
 
 	
 	//arbre_->initialiser();
@@ -339,7 +346,10 @@ void FacadeModele::afficherBase() const
 	controleurLumieres_->definirLumieres();
 	ControleurNuanceurs::obtenirInstance()->activer();
 	ControleurNuanceurs::obtenirInstance()->assignerSkybox(1);
-	skybox_->afficher(glm::dvec3{ (Xmax + Xmin)/2.0, (Ymax + Ymin)/2.0, 0.0});
+	skybox_->afficher(glm::dvec3{ (double)(coinDroitTableX + coinGaucheTableX)/2.0, 
+									(double)(coinDroitTableY + coinGaucheTableY)/2.0, 
+									0.0},
+					  1000);
 	ControleurNuanceurs::obtenirInstance()->assignerSkybox(0);
 	arbre_->afficher();
 	ControleurNuanceurs::obtenirInstance()->desactiver();
