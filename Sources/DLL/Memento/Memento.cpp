@@ -67,6 +67,7 @@ void Memento::sauvegarder(ArbreRenduINF2990* arbre)
 		noeud->assignerEchelle(temp[i]->obtenirAgrandissement());
 		noeud->assignerRotation(temp[i]->obtenirRotation());
 		noeud->setColorShift(temp[i]->getColorShift());
+		noeud->assignerSelection(temp[i]->estSelectionne());
 
 		// Attribuer un numero arbitraire qui ne causera pas de problemes avec le stencil
 		noeud->setNumero(1024);

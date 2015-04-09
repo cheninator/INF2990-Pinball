@@ -204,6 +204,7 @@ void Originator::appliquerModifications(std::map<int, NoeudAbstrait*> sauvegarde
 		noeud->assignerEchelle(iter->second->obtenirAgrandissement());
 		noeud->assignerRotation(iter->second->obtenirRotation());
 		noeud->setColorShift(iter->second->getColorShift());
+		noeud->assignerSelection(iter->second->estSelectionne());
 
 		arbreActuel_->getEnfant(0)->ajouter(noeud);
 	}

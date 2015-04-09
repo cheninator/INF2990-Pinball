@@ -3178,6 +3178,7 @@ namespace InterfaceGraphique
 
         private void bouton_Suppression_Click(object sender, EventArgs e)
         {
+            FonctionsNatives.sauvegarderHistorique();
             FonctionsNatives.removeObject();
             deselection();
         }
