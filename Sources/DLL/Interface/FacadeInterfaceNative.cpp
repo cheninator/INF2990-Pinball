@@ -636,11 +636,10 @@ extern "C"
 
 		/* Si la caméra est orbite, on redirige la méthode vers celle appropriée*/
 		if (FacadeModele::obtenirInstance()->cameraEstOrbite())
-			orbite(deplacementX / 10.0, deplacementY / 10.0);
+			orbite(deplacementX, deplacementY);
 		else
 		{
 			FacadeModele::obtenirInstance()->obtenirVue()->deplacerXY(deplacementX, deplacementY);
-			std::cout << "Translation normale dans le plan \n";
 		}
 	}
 
@@ -737,10 +736,8 @@ extern "C"
 	__declspec(dllexport) void __cdecl orbite(double x, double y)
 	{
 		// Habituellement la valeur de x et y est de 10 depuis le C#
-		std::cout << "Deplacement  X | Y : " << x << " | " << y << std::endl;
 		/// En theta, pour correspondre à une rotation dans le sens de la flèche il faut envoyer l'opposé
 		FacadeModele::obtenirInstance()->obtenirVue()->rotaterXY( -1 * x, y);
-		std::cout << "Translation orbite \n \n";
 	}
 
 	////////////////////////////////////////////////////////////////////////
