@@ -226,6 +226,12 @@ void FacadeModele::initialiserOpenGL(HWND hWnd)
 	// d'avoir une bonne raison de faire autrement, il est plus sage de creer
 	// l'arbre apres avoir cree le contexte OpenGL.
 	arbre_ = new ArbreRenduINF2990;
+
+	//	BoiteEnvironnement::BoiteEnvironnement(
+	//		const std::string& fichierXpos, const std::string& fichierXneg,
+	//		const std::string& fichierYpos, const std::string& fichierYneg,
+	//		const std::string& fichierZpos, const std::string& fichierZneg
+	//		)
 	instance_->skybox_ = new utilitaire::BoiteEnvironnement(
 		//"/skybox/left.jpg",
 		//"/skybox/right.jpg",
@@ -239,12 +245,19 @@ void FacadeModele::initialiserOpenGL(HWND hWnd)
 		// "media/skybox/dn.jpg",
 		// "media/skybox/ft.jpg",
 		// "media/skybox/bk.jpg"
-		"media/skybox/left.jpg",
-		"media/skybox/right.jpg",
-		"media/skybox/top.jpg",
-		"media/skybox/bottom.jpg",
-		"media/skybox/front.jpg",
-		"media/skybox/back.jpg"
+		// "media/skybox/left.jpg",	// << RIGHT
+		// "media/skybox/right.jpg",	// << LEFT
+		// "media/skybox/top.jpg",		// << BACK
+		// "media/skybox/bottom.jpg",	// << FRONT
+		// "media/skybox/front.jpg",	// << BOTTOM 
+		// "media/skybox/back.jpg"		// << TOP
+
+		"media/skybox/right.jpg",	// << RIGHT
+		"media/skybox/left.jpg",	// << LEFT
+		"media/skybox/back.jpg",		// << BACK
+		"media/skybox/front.jpg",	// << FRONT
+		"media/skybox/bottom.jpg",	// << BOTTOM 
+		"media/skybox/top.jpg"		// << TOP
 		);
 
 	
@@ -308,25 +321,33 @@ void FacadeModele::afficher() const
 	glMatrixMode(GL_MODELVIEW);
 	glLoadIdentity();
 
+	// ControleurNuanceurs::obtenirInstance()->activer();
+	// ControleurNuanceurs::obtenirInstance()->assignerSkybox(1);
 	vue_->appliquerCamera();
-
+	// ControleurNuanceurs::obtenirInstance()->assignerSkybox(0);
+	// ControleurNuanceurs::obtenirInstance()->desactiver();
 	// Afficher la scene
 	afficherBase();
 
 	// Compte de l'affichage
 	utilitaire::CompteurAffichage::obtenirInstance()->signalerAffichage();
-
+	glLoadIdentity();
+	glMatrixMode(GL_PROJECTION);
+	glLoadIdentity();
 	if (pause_) {
 		glClearColor(0.0f, 0.0f, 0.0f, 0.5f); // Black Background
 
 		// noircir l'ecran
-		glDrawBuffer(GL_FRONT);
+		glDrawBuffer(GL_BACK);
 		glClear(GL_DEPTH_BUFFER_BIT);
 		glDisable(GL_TEXTURE_2D);
 		glEnable(GL_BLEND);
 		glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
 		glColor4f(0.0F, 0.0F, 0.0F, 0.7F);
 		glRectd(-7000, -7000, 7000, 7000);
+
+		glEnable(GL_TEXTURE_2D);
+		glDisable(GL_BLEND);
 	}
 	else {
 		glClearColor(0.7843f, 0.7843f, 0.7843f, 0.0f);
@@ -357,9 +378,7 @@ void FacadeModele::afficherBase() const
 	controleurLumieres_->trackerLesBilles((NoeudTable*)arbre_->chercher(0));
 	controleurLumieres_->definirLumieres();
 	ControleurNuanceurs::obtenirInstance()->activer();
-	ControleurNuanceurs::obtenirInstance()->assignerSkybox(1);
 
-	ControleurNuanceurs::obtenirInstance()->assignerSkybox(0);
 	arbre_->afficher();
 	ControleurNuanceurs::obtenirInstance()->desactiver();
 
