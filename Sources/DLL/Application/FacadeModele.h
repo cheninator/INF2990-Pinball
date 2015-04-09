@@ -34,6 +34,7 @@
 #include <vector>
 #include "glm/glm.hpp"
 
+class BoiteEnvironnement;
 class NoeudAbstrait;
 class ArbreRenduINF2990;
 class ConfigScene;
@@ -311,6 +312,7 @@ private:
 
    ControleurLumieres* controleurLumieres_{ nullptr };
    ControleurTexte* controleurTexte_{ nullptr };
+   BoiteEnvironnement* skybox_{ nullptr };
 };
 
 

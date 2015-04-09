@@ -23,6 +23,8 @@ uniform int etatAmbiante;
 uniform int etatDirectionnelle;
 uniform int etatSpot;
 
+uniform int skybox;
+
 varying vec3 normal, eyeVec;
 
 varying vec3 rayonReflechi[NB_LUMIERES];
@@ -179,5 +181,13 @@ void main()
 		couleurFinale += lumiereReflechie[SPOT_A];
 		couleurFinale += lumiereReflechie[SPOT_B];
 	}
-	gl_FragColor = colorMask*couleurFinale ;
+
+	if(skybox == 1)
+	{
+		gl_FragColor = textureColor;
+	}
+	else
+	{
+		gl_FragColor = colorMask*couleurFinale ;
+	}
 }

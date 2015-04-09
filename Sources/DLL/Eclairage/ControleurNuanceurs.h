@@ -53,6 +53,8 @@ public:
 	void assignerEtatDirectionnelle(int etat);
 	/// Assignation de l'etat (actif/inactif) de la lumiere spot
 	void assignerEtatSpot(int etat);
+	/// Dire au nuanceur de fragments si on est en train de dessiner le skybox ou la scene.
+	void assignerSkybox(int skybox);
 
 private:
 

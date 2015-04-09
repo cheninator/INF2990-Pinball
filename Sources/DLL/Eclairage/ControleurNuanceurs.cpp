@@ -213,3 +213,17 @@ void ControleurNuanceurs::assignerEtatSpot(int etat)
 {
 	programme_->assignerUniforme("etatSpot", etat);
 }
+
+////////////////////////////////////////////////////////////////////////
+///
+/// @fn void ControleurNuanceurs::assignerSkybox(int skybox)
+/// 
+/// @brief Dit au nuanceur si le fragment vient de la scene ou du skybox.
+/// 
+/// @return aucun.
+///
+////////////////////////////////////////////////////////////////////////	
+void ControleurNuanceurs::assignerSkybox(int skybox)
+{
+	programme_->assignerUniforme("skybox", skybox);
+}

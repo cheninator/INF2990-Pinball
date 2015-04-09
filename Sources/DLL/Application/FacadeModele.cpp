@@ -53,6 +53,7 @@ Yonni Chen <BR>
 #include "../Global/JoueurVirtuel.h"
 #include "../Eclairage/ControleurNuanceurs.h"
 #include "../Eclairage/ControleurLumieres.h"
+#include "../../../Commun/Utilitaire/BoiteEnvironnement.h"
 
 #include "VueOrtho.h"
 #include "VuePerspective.h"
@@ -109,7 +110,6 @@ FacadeModele* FacadeModele::obtenirInstance(bool console)
 		instance_->controleurLumieres_ = new ControleurLumieres();
 		instance_->originator_ = new Originator();
 		//instance_->controleurTexte_ = new ControleurTexte();
-
 
 
 		if (console)
@@ -226,6 +226,8 @@ void FacadeModele::initialiserOpenGL(HWND hWnd)
 	// d'avoir une bonne raison de faire autrement, il est plus sage de creer
 	// l'arbre apres avoir cree le contexte OpenGL.
 	arbre_ = new ArbreRenduINF2990;
+	instance_->skybox = new BoiteEnvironnement(6 fichiers);
+
 	
 	//arbre_->initialiser();
 	originator_->assignerArbre(arbre_);
@@ -336,6 +338,9 @@ void FacadeModele::afficherBase() const
 	controleurLumieres_->trackerLesBilles((NoeudTable*)arbre_->chercher(0));
 	controleurLumieres_->definirLumieres();
 	ControleurNuanceurs::obtenirInstance()->activer();
+	ControleurNuanceurs::obtenirInstance()->assignerSkybox(1);
+	skybox_->afficher(glm::dvec3{ (Xmax + Xmin)/2.0, (Ymax + Ymin)/2.0, 0.0});
+	ControleurNuanceurs::obtenirInstance()->assignerSkybox(0);
 	arbre_->afficher();
 	ControleurNuanceurs::obtenirInstance()->desactiver();
 
