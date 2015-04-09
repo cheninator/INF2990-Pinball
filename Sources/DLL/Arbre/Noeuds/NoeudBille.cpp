@@ -108,6 +108,15 @@ void NoeudBille::afficherConcret() const
 ////////////////////////////////////////////////////////////////////////
 void NoeudBille::animer(float temps) // rajouter des parametres ou une fonction animerCollision(float temps, detailCollision detail)
 {
+	if (temps > EPSILON_ANIMATION_NOEUD_COMPOSITE)
+		return;
+	for (NoeudAbstrait * enfant : enfants_){
+		enfant->animer(temps);
+	}
+	glm::dvec3 coinMinAvecScale = boite_.coinMin * scale_.z;
+	if (positionRelative_.z >  abs(coinMinAvecScale.z))
+		positionRelative_.z = abs(coinMinAvecScale.z);
+
 	if (timerMove_ < TIME_IDLE_NOEUD_BILLE)
 	{
 		glm::dvec3 positionRelative = positionRelative_;
@@ -183,7 +192,9 @@ void NoeudBille::animer(float temps) // rajouter des parametres ou une fonction 
 	assignerRotation(rotation);
 	positionRelative_ = nouvellePosition;
 	vitesse_ = nouvelleVitesse;
-	
+
+	if (positionRelative_.z >  abs(coinMinAvecScale.z))
+		positionRelative_.z = abs(coinMinAvecScale.z);
 }
 
 ////////////////////////////////////////////////////////////////////////
