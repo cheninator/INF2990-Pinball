@@ -573,7 +573,6 @@ namespace aidegl {
 			);
 			return false;
 		}
-
 		FIBITMAP* dib32{ FreeImage_ConvertTo32Bits(dib) };
 		if (dib32 == 0) {
 			utilitaire::afficherErreur(
@@ -584,8 +583,8 @@ namespace aidegl {
 			return false;
 		}
 
+		dib32 = FreeImage_Rotate(dib32, 180);
 		unsigned int pitch{ FreeImage_GetPitch(dib32) };
-
 		glCreateTexture(
 			FreeImage_GetBits(dib32),
 			FreeImage_GetWidth(dib32),
