@@ -12,7 +12,7 @@
 #define NOEUD_SELECTIONNE 3
 #define NOEUD_TRANSPARENT 4
 #define NOEUD_ILLUMINE 5
-uniform gl_LightSourceParameters gl_LightSource[gl_MaxLights];
+//uniform gl_LightSourceParameters gl_LightSource[5];
 
 uniform sampler2D laTexture;
 uniform int colorShift;

@@ -59,7 +59,7 @@ ControleurLumieres::~ControleurLumieres()
 void ControleurLumieres::initialiserLumieres()
 {
 // Si 1, normal.
-// Si 0, lumiere speculaire en bleu et lumiere diffuse en jaune pour les sources spot et directionnelle
+// Si 0, les spots suiveurs de bille sont un bleu, un rouge.
 #if(1)
 	// Initialiser lumAmbiante
 	lumAmbiante_->setAmbientColor({ 0.1f, 0.1f, 0.1f, 1.0f });
@@ -79,7 +79,7 @@ void ControleurLumieres::initialiserLumieres()
 	lumSpotA_->setDiffuseColor({ 0.4f, 0.4f, 0.3f, 1.0f });
 	lumSpotA_->setSpecularColor({ 0.9f, 0.9f, 0.9f, 1.0f });
 	   	   
-	lumSpotA_->setPosition({ 200.0f, -47.0f, 200.0f, 1.0f });
+	lumSpotA_->setPosition({ 250.0f, -47.0f, 200.0f, 1.0f });
 	lumSpotA_->setDirection({ 0.0f, 0.0f, -1.0f, 1.0f });
 
 	lumSpotA_->setCutoffAngle(8.0f);
@@ -92,10 +92,10 @@ void ControleurLumieres::initialiserLumieres()
 	lumSpotB_->setDiffuseColor({ 0.4f, 0.4f, 0.3f, 1.0f });
 	lumSpotB_->setSpecularColor({ 0.9f, 0.9f, 0.9f, 1.0f });
 		   
-	lumSpotB_->setPosition({ 200.0f, -47.0f, 200.0f, 1.0f });
+	lumSpotB_->setPosition({ 150.0f, -47.0f, 200.0f, 1.0f });
 	lumSpotB_->setDirection({ 0.0f, 0.0f, -1.0f, 1.0f }); 
 
-	lumSpotB_->setCutoffAngle(20.0f);
+	lumSpotB_->setCutoffAngle(8.0f);
 	lumSpotB_->setExponent(0.2f);
 		   
 	lumSpotB_->setAttenuation({ 1.0f, 1.0f, 0.1f });
@@ -107,23 +107,37 @@ void ControleurLumieres::initialiserLumieres()
 
 	// Initialiser lumDirectionnelle
 	lumDirectionnelle_->setAmbientColor({ 0.0f, 0.0f, 0.0f, 1.0f });
-	lumDirectionnelle_->setDiffuseColor({ 0.1f, 0.1f, 0.0f, 1.0f });
-	lumDirectionnelle_->setSpecularColor({ 0.0f, 0.0f, 1.f, 1.0f });
+	lumDirectionnelle_->setDiffuseColor({ 0.3f, 0.3f, 0.3f, 1.0f });
+	lumDirectionnelle_->setSpecularColor({ 0.6f, 0.6f, 0.7f, 1.0f });
 
 	lumDirectionnelle_->setPosition({ 200.0f, -47.0f, 110.0f, 1.0f });
 	lumDirectionnelle_->setDirection({ 0.1f, 0.0f, -1.0f, 1.0f });
 
 	// Inisialiser lumSpot
 	lumSpotA_->setAmbientColor({ 0.0f, 0.0f, 0.0f, 1.0f });
-	lumSpotA_->setDiffuseColor({ 0.1f, 0.1f, 0.0f, 1.0f });
-	lumSpotA_->setSpecularColor({ 0.0f, 0.0f, 1.0f, 1.0f });
-		   
-	lumSpotA_->setPosition({ 200.0f, -47.0f, 200.0f, 1.0f });
+	lumSpotA_->setDiffuseColor({ 0.1f, 0.1f, 0.8f, 1.0f });
+	lumSpotA_->setSpecularColor({ 0.9f, 0.9f, 0.9f, 1.0f });
+
+	lumSpotA_->setPosition({ 250.0f, -47.0f, 200.0f, 1.0f });
 	lumSpotA_->setDirection({ 0.0f, 0.0f, -1.0f, 1.0f });
-	lumSpotA_->setCutoffAngle(20.0f);
+
+	lumSpotA_->setCutoffAngle(8.0f);
 	lumSpotA_->setExponent(0.2f);
-		   
+
 	lumSpotA_->setAttenuation({ 1.0f, 1.0f, 0.1f });
+
+	// Inisialiser lumSpot
+	lumSpotB_->setAmbientColor({ 0.0f, 0.0f, 0.0f, 1.0f });
+	lumSpotB_->setDiffuseColor({ 0.8f, 0.1f, 0.1f, 1.0f });
+	lumSpotB_->setSpecularColor({ 0.9f, 0.9f, 0.9f, 1.0f });
+
+	lumSpotB_->setPosition({ 150.0f, -47.0f, 200.0f, 1.0f });
+	lumSpotB_->setDirection({ 0.0f, 0.0f, -1.0f, 1.0f });
+
+	lumSpotB_->setCutoffAngle(8.0f);
+	lumSpotB_->setExponent(0.2f);
+
+	lumSpotB_->setAttenuation({ 1.0f, 1.0f, 0.1f });
 #endif
 }
 
@@ -262,6 +276,16 @@ void ControleurLumieres::trackerLesBilles(NoeudTable* table)
 
 			spotsLeft--;
 			if (spotsLeft == 0) return;
+		}
+
+		if (spotsLeft == 2)
+		{
+			lumSpotA_->setDirection({ 0.0, 0.0, 1.0, 1.0 });
+			lumSpotB_->setDirection({ 0.0, 0.0, 1.0, 1.0 });
+		}
+		else if (spotsLeft == 1)
+		{
+			lumSpotB_->setDirection({ 0.0, 0.0, 1.0, 1.0 });
 		}
 
 		
