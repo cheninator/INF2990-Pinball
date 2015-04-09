@@ -138,7 +138,7 @@ namespace InterfaceGraphique
         public override bool traiterClavier(KeyEventArgs e)
         {
 
-            // Traiter le deplacement par clavier
+            // Traiter le deplacement par clavire
             return base.traiterClavier(e);
         }
 
@@ -495,10 +495,13 @@ namespace InterfaceGraphique
         /// @return Aucune (constructeur).
         ///
         ////////////////////////////////////////////////////////////////////////
-        public EtatEditeurCreation(Editeur form) : base(form) {
+        public EtatEditeurCreation(Editeur form)
+            : base(form)
+        {
             form_.deselection();
             form_.outilCourant("Creation");
             form_.trackCursor(true);
+            form_.creationObjet();
         }
 
         ////////////////////////////////////////////////////////////////////////
@@ -527,25 +530,12 @@ namespace InterfaceGraphique
         ///
         ////////////////////////////////////////////////////////////////////////
         public override bool traiterSouris(MouseEventArgs e)
-        {
-            
-            if (e.Button == MouseButtons.Left)
-            {
-                form_.creationObjet(e);
-                if (Editeur.myObjectName.ToString() == "portail")
-                {
-                    form_.creationObjet(e, true);
-                    form_.statePortail();
-                }
-                else if (Editeur.myObjectName.ToString() == "mur")
-                {
-                    form_.stateMur();
-                }
-            }
-            else if (e.Button == MouseButtons.Right)
+        {            
+            if (e.Button == MouseButtons.Right)
                 form_.deplacementVueSouris(e);
-           
-           // form_.creationObjet(e);
+            else
+                form_.deplacementSouris(e);
+
             return true;
         }
     }
@@ -684,12 +674,12 @@ namespace InterfaceGraphique
         ///
         ////////////////////////////////////////////////////////////////////////
         public override bool traiterSouris(MouseEventArgs e)
-        {
-            
+        {            
             form_.deplacementSouris(e);
 
             if (e.Button == MouseButtons.Right)
                 form_.deplacementVueSouris(e);
+
             return true;
         }
     }

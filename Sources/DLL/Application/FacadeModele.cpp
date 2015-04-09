@@ -1049,7 +1049,6 @@ void FacadeModele::positionnerMur(int originX, int originY,int x1, int y1, int x
 	noeud->assignerEchelle(scaleFinal);
 	noeud->assignerRotationHard(angles);
 	noeud->assignerPositionRelative(position);
-
 }
 
 
