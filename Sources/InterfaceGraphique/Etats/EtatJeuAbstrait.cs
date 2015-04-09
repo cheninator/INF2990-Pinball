@@ -13,6 +13,7 @@ using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Drawing;
 using System.Windows.Forms;
 
 namespace InterfaceGraphique
@@ -149,6 +150,21 @@ namespace InterfaceGraphique
                     FonctionsNatives.bloquerAffichageGlobal(0);
                     Program.myCustomConsole.Hide();
                 }
+            }
+
+            public virtual bool traiterMouseDown(object sender, MouseEventArgs e)
+            {
+                return false;
+            }
+
+            public virtual bool traiterMouseUp(object sender, MouseEventArgs e)
+            {
+                return false;
+            }
+
+            public virtual bool traiterMouseMove(object sender, MouseEventArgs e)
+            {
+                return false;
             }
 
             ////////////////////////////////////////////////////////////////////////
@@ -299,17 +315,30 @@ namespace InterfaceGraphique
             else if (e.KeyCode == Keys.Down)
                 FonctionsNatives.translater(0, -10);
 
+
+
+
             if ((e.KeyData == Keys.Subtract ||
                    e.KeyCode == Keys.OemMinus))
             {
                 FonctionsNatives.zoomOut();
                 parent_.setCurrentZoom(FonctionsNatives.obtenirZoomCourant());
             }
-            if ((e.KeyData == Keys.Add ||
+            else if ((e.KeyData == Keys.Add ||
                 e.KeyCode == Keys.Oemplus && e.Modifiers == Keys.Shift))
             {
                 FonctionsNatives.zoomIn();
                 parent_.setCurrentZoom(FonctionsNatives.obtenirZoomCourant());
+            }
+
+
+            if (e.KeyData == Keys.D1)
+            {
+                FonctionsNatives.utiliserCameraOrbite(false);
+            }
+            else if (e.KeyData == Keys.D2)
+            {
+                FonctionsNatives.utiliserCameraOrbite(true);
             }
 
             return true;
@@ -391,7 +420,7 @@ namespace InterfaceGraphique
                 FonctionsNatives.spotLight(2, parent_.getSpotLight());
             }
 
-            else if (Char.ToLower(e.KeyChar) == 'h')// && Program.playerName.ToUpper() =="ADMIN")
+            else if (Char.ToLower(e.KeyChar) == 'h' && Program.playerName.ToUpper() =="ADMIN")
             {
                 parent_.AfficherInformations();
             }
@@ -411,6 +440,36 @@ namespace InterfaceGraphique
                 //Console.WriteLine("¨METTRE EN PAUSE");
                 parent_.pauseGame();
             }
+            return true;
+        }
+
+
+        public override bool traiterMouseDown(object sender, MouseEventArgs e)
+        {
+            parent_.previousP = new Point(e.X, e.Y);
+            parent_.currentP = new Point(e.X, e.Y);
+            
+            return true;
+        }
+
+
+        public override bool traiterMouseUp(object sender, MouseEventArgs e)
+        {
+            return base.traiterMouseUp(sender, e);
+        }
+
+        public override bool traiterMouseMove(object sender, MouseEventArgs e)
+        {
+            if (e.Button == MouseButtons.Right)
+            { 
+                double deltaX = (-(parent_.currentP.X - parent_.previousP.X)) * 100.0 / parent_.panelWidth;
+                double deltaY = ( (parent_.currentP.Y - parent_.previousP.Y)) * 100.0 / parent_.panelHeight;
+                FonctionsNatives.translater(deltaX, deltaY);
+                
+                parent_.previousP = new Point(parent_.currentP.X, parent_.currentP.Y);
+                parent_.currentP  = new Point(e.X, e.Y);
+            }
+
             return true;
         }
     }
@@ -439,7 +498,6 @@ namespace InterfaceGraphique
         public EtatJeuDebutDePartie(ModeJeu modeJeu) : base(modeJeu)
         {
             resetConfig();
-            // TODO: Complete member initialization
         }
 
         ////////////////////////////////////////////////////////////////////////

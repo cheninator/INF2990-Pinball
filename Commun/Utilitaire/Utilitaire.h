@@ -59,6 +59,7 @@ namespace utilitaire {
 
    /// Fonction pour connaître le signe d'un nombre.
    float SIGN( float nombre );
+   double SIGN( double nombre );
 
    /// Fonction qui retourne la valeur absolue d'un nombre.
    float ABS( float nombre );

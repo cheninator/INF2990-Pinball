@@ -19,8 +19,12 @@ enum Direction { dirY, dirYX, dirX, dirXY, dirZ }; // Pour fonctionner avec le s
 
 // Composite
 #define EPSILON_ANIMATION_NOEUD_COMPOSITE 1./30. + .1/30. * .1	// Si en dessous de 30fps (+10%), on n'anime plus
-#define HAUTEUR_TABLE_NOEUD_COMPOSITE 10
+#define HAUTEUR_TABLE_NOEUD_COMPOSITE 0
 #define TEMPS_ILLUMINATION_NOEUD_BUTOIR .5		// Temsp pendant le quel un butoir s'illumine
+
+//Table
+#define TRANSLATE_X_NOEUD_TABLE 200
+#define TRANSLATE_Y_NOEUD_TABLE -50
 
 // Bille
 #define VITESSE_MAX_NOEUD_BILLE 400.		// Vitesse maximale de la bille

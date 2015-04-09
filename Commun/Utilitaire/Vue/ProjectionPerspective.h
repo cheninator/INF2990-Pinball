@@ -1,7 +1,7 @@
 ////////////////////////////////////////////////////////////////////////////////////
 /// @file ProjectionOrtho.h
-/// @author DGI
-/// @date 2006-12-15
+/// @author The Ballers
+/// @date 2015-04-01
 /// @version 1.0
 ///
 /// @addtogroup utilitaire Utilitaire
@@ -22,18 +22,16 @@ namespace vue {
 	/// Cette classe implante l'interface de projection définie par la
 	/// classe de base Projection et ajoute certaines fonctionnalitées
 	/// spécifiques à la projection perspective, comme le zoom autour d'un
-	/// point en particulier et le zoom élastique.
+	/// point en particulier.
 	///
-	/// @author Martin Bisson
-	/// @date 2006-12-15
 	////////////////////////////////////////////////////////////////////////
 	class ProjectionPerspective : public Projection
 	{
 
 	public:
 		/// Constructeur.
-		ProjectionPerspective(int xMinCloture, int xMaxCloture,
-			int yMinCloture, int yMaxCloture,
+		ProjectionPerspective(double xMinCloture, double xMaxCloture,
+			double yMinCloture, double yMaxCloture,
 			double zAvant, double zArriere,
 			double zoomInMax, double zoomOutMax,
 			double incrementZoom,
@@ -56,19 +54,15 @@ namespace vue {
 		double obtenirZoomInMax() const;
 		/// Obtenir le facteur de zoom
 		double obtenirIncrementZoom() const;
-
-		void tiltLeft(double deplacement);
-		void tiltRight(double deplacement);
-
-
+		
 		/// Obtenir la dimension de la fenêtre virtuelle
 		virtual inline glm::ivec2 obtenirDimensionFenetreVirtuelle() const;
 
 	private:
+		/// Le rapport d'aspect du plan avant de la projection perspective
 		double ratio_;
+		/// L'angle de visionnement de la projection perspective
 		double fovy_;
-		double near_;
-		double far_;
 	};
 };
 

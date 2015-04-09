@@ -1,7 +1,7 @@
 ////////////////////////////////////////////////////////////////////////////////////
 /// @file VuePerspective.cpp
-/// @author DGI
-/// @date 2006-12-16
+/// @author The Ballers
+/// @date 2015-04-01
 /// @version 1.0
 ///
 /// @addtogroup utilitaire Utilitaire
@@ -32,10 +32,8 @@ namespace vue {
 	/// @param[in] zoomInMax     : facteur de zoom in maximal.
 	/// @param[in] zoomOutMax    : facteur de zoom out maximal.
 	/// @param[in] incrementZoom : distance du plan arrière (en @a z).
-	/// @param[in]    : 
-	/// @param[in]    : 
-	/// @param[in]    : 
-	/// @param[in]    : 
+	/// @param[in] ratio         : Le rapport d'aspect du plan avant du volume de visualisation 
+	/// @param[in] fovy          : L'angle de visionnement de la projection perspective
 	/// 
 	/// @return Aucune (constructeur).
 	///
@@ -126,13 +124,11 @@ namespace vue {
 	////////////////////////////////////////////////////////////////////////
 	void VuePerspective::zoomerIn()
 	{
-		std::cout << "On fait un zoomIn Perspective ! \n";
 		
 		double nouvelleDistance =camera_.obtenirDistance() /  projection_.obtenirIncrementZoom();
 		if (nouvelleDistance >= projection_.obtenirZoomInMax())
 			camera_.assignerDistance(nouvelleDistance);
 		
-		std::cout << "Nouvelle distance est de : " << camera_.obtenirDistance() << '\n';
 	}
 
 
@@ -148,13 +144,11 @@ namespace vue {
 	void VuePerspective::zoomerOut()
 	{
 		/*Obtenir l'incrément de zoom à partir de la projection plus tard*/
-		std::cout << "On fait un zoomOut Perspective ! \n";
 
 		double nouvelleDistance = camera_.obtenirDistance() * projection_.obtenirIncrementZoom();
 		if (nouvelleDistance <= projection_.obtenirZoomOutMax())
 			camera_.assignerDistance(nouvelleDistance);
 
-		std::cout << "Nouvelle distance est de : " << camera_.obtenirDistance() << '\n';
 	}
 
 

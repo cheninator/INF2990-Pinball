@@ -184,6 +184,19 @@ namespace InterfaceGraphique
             item1 = new ListViewItem(new[] { "Lumière Spot ", " L " });
             listViewShortcut.Items.Insert(28, item1);
             listViewShortcut.Items[28].Group = listViewShortcut.Groups[2];
+
+            item1 = new ListViewItem(new[] { "Déplacement", " D / Bouton Milieu " });
+            listViewShortcut.Items.Insert(2, item1);
+            listViewShortcut.Items[2].Group = listViewShortcut.Groups[0];
+
+            item1 = new ListViewItem(new[] { "Annuler", " CTRL + Z " });
+            listViewShortcut.Items.Insert(7, item1);
+            listViewShortcut.Items[7].Group = listViewShortcut.Groups[0];
+
+            item1 = new ListViewItem(new[] { "Rétablir", " CTRL + Y " });
+            listViewShortcut.Items.Insert(8, item1);
+            listViewShortcut.Items[8].Group = listViewShortcut.Groups[0];
+
         }
 
         private void listView1_SelectedIndexChanged(object sender, System.EventArgs e)
@@ -213,7 +226,7 @@ namespace InterfaceGraphique
                         }
                     case 2:
                         {
-                            labelDescOutil.Text = "Le déplacement d'un ou plusieurs objets sélectionnés se fait en appuyant sur le bouton de milieu de la souris et, tout en gardant le bouton enfoncé, se déplaçant. Les objets sélectionnés suiveront la souris."+
+                            labelDescOutil.Text = "Le déplacement des objets sélectionnés se fait en appuyant sur le bouton de milieu de la souris et, tout en gardant le bouton enfoncé, se déplaçant. Les objets sélectionnés suiveront la souris."+
                                                   " Si vous n'avez pas de bouton milieu( laptop par exemple ), vous pouvez utiliser l'outil Déplacement et utiliser le bouton gauche de la souris.";
                             pictureBoxOutils.Image = Properties.Resources.Deplacement;
 
@@ -221,18 +234,18 @@ namespace InterfaceGraphique
                         }
                     case 3:
                         {
-                            labelDescOutil.Text = "La rotation d'un ou plusieurs objets sélectionnés se fait en choisissant l'outil Rotation"+
-                                                  "à l'aide du bouton Rotation ou le raccourci R et en déplaçant la souris en gardant le bouton gauche enfoncé."+
-                                                  "Un déplacement vers le haut fait tourner les objets dans le sens horaire."+
+                            labelDescOutil.Text = "La rotation des objets sélectionnés se fait en choisissant l'outil Rotation"+
+                                                  " à l'aide du bouton Rotation ou le raccourci R puis en déplaçant la souris en gardant le bouton gauche enfoncé."+
+                                                  " Un déplacement vers le haut fait tourner les objets dans le sens horaire."+
                                                   " Un déplacement vers le bas fait tourner les objets dans le sens anti-horaire.";
                             pictureBoxOutils.Image = Properties.Resources.RotationSimple;
                             break;
                         }
                     case 4:
                         {
-                            labelDescOutil.Text = "La duplication d'un ou plusieurs objets sélectionnés se fait en choisissant l'outil Duplication" +
-                                                  "à l'aide du bouton Duplication ou le raccourci C." +
-                                                  " les objets dupliqués sont créés et suivent la souris. Un déplacement de la souris fait bouger les objets copiés. " +
+                            labelDescOutil.Text = "La duplication des objets sélectionnés se fait en choisissant l'outil Duplication" +
+                                                  " à l'aide du bouton Duplication ou le raccourci C." +
+                                                  " Les objets dupliqués sont créés et suivent la souris. Un déplacement de la souris fait bouger les objets copiés. " +
                                                   " Le clic du bouton gauche de la souris confirme la duplication et place définitivement les objets." +
                                                   " Le bouton Échapper annule la duplication et enlève les objets dupliqués.";
                             pictureBoxOutils.Image = Properties.Resources.Duplication;
@@ -240,9 +253,9 @@ namespace InterfaceGraphique
                         }
                     case 5:
                         {
-                            labelDescOutil.Text = "La mise à échelle d'un ou plusieurs objets sélectionnés se fait en choisissant l'outil Mise à Échelle" +
-                                                  "à l'aide du bouton Mise à Échelle ou le raccourci E et en déplaçant la souris en gardant le bouton gauche enfoncé." +
-                                                  "Un déplacement vers le haut fait agrandir les objets." +
+                            labelDescOutil.Text = "La mise à échelle des objets sélectionnés se fait en choisissant l'outil Mise à Échelle" +
+                                                  " à l'aide du bouton Mise à Échelle ou le raccourci E et en déplaçant la souris en gardant le bouton gauche enfoncé." +
+                                                  " Un déplacement vers le haut fait agrandir les objets." +
                                                   " Un déplacement vers le bas fait retrécir les objets.";
                             pictureBoxOutils.Image = Properties.Resources.Scale;
                             break;
@@ -250,7 +263,7 @@ namespace InterfaceGraphique
 
                     case 6:
                         {
-                            labelDescOutil.Text = "La suppression d'un ou plusieurs objets sélectionnés se fait à l'aide du bouton Suppression ou le raccourci Suppr."+
+                            labelDescOutil.Text = "La suppression des objets sélectionnés se fait à l'aide du bouton Suppression ou le raccourci Suppr."+
                                                   "La suppression fait disparaitre les objets sélectionnés de la zone de jeu";
                             pictureBoxOutils.Image = Properties.Resources.Suppression;
                             break;
@@ -259,8 +272,8 @@ namespace InterfaceGraphique
                         {
                             labelDescOutil.Text = "La création se fait un objet à la fois."+
                                                   "Pour créer un objet, il suffit de choisir l'objet voulu dans le paneau de création à droite."+
-                                                  "Un clic dans la table féra apparaitre l'objet sur la zone de jeu."+
-                                                  "Un objet ne peut pas être crée en dehor de la table."+
+                                                  "Un clic dans la table fera apparaitre l'objet sur la zone de jeu."+
+                                                  "Un objet ne peut pas être créé en dehors de la table."+
                                                   "Pour plus d'information, voir l'onglet Objets sur les différents objets.";
                             pictureBoxOutils.Image = Properties.Resources.Creation;
                             break;
@@ -268,8 +281,8 @@ namespace InterfaceGraphique
                     case 8:
                         {
                             labelDescOutil.Text = "L'effet de loupe se fait à l'aide du bouton Zoom ou le raccourci Z et un rectangle élastique"+
-                                                  " Pour créer le réctangle élastique, il suffit d'enfoncer le bouton gauche de la souris et deplacer la souris" +
-                                                  " La surface sous le rectangle élastique sera agrandie pour remplir l'écran. Si le bouton ALT est appuyé pendant la création du réctangle, il y aura un effet  de loupe négatif.";
+                                                  " Pour créer le réctangle élastique, il suffit d'enfoncer le bouton gauche de la souris et déplacer la souris" +
+                                                  " La surface sous le rectangle élastique sera agrandie pour remplir l'écran. Si le bouton ALT est appuyé pendant la création du réctangle, il y aura un effet  de loupe inverse.";
                             pictureBoxOutils.Image = Properties.Resources.ZoomElastique;
                             break;
                         }
@@ -300,41 +313,41 @@ namespace InterfaceGraphique
                 {
                     case 0:
                         {
-                            labelDescObj.Text = "Il y a des palettes gauches et droite pour chaque joueur." +
-                                " Les palettes pivottent avec un angle maximal de 60 degrées" +
-                                " Les palettes du joueur 2 sont contrôlées par le joueur 1 en mode Solo et par l'ordinateur en mode IA. ";
+                            labelDescObj.Text = "Il y a des palettes gauches et droites pour chaque joueur." +
+                                " Les palettes pivotent avec un angle maximal de 60 degrées" +
+                                " Les palettes du joueur 2 sont contrôlées par le joueur 1 en mode Solo ou par l'ordinateur en mode Intelligence Artificielle. ";
                             pictureBoxObjets.Image = Properties.Resources.Palettes;
                             break;
                         }
                     case 1:
                         {
-                            labelDescObj.Text = "Lorsqu'une bille frappe le butoir, les points appropriées sont accordés au joeur et le butoir s'illuminera." +
-                                               " Si l'option de force de rebond supplémentaire est activée, la vitesse de la balle augmentera après la collision.";
+                            labelDescObj.Text = "Lorsqu'une bille frappe le butoir, les points appropriés sont accordés au joueur et le butoir s'illuminera." +
+                                               " Si l'option de force de rebond supplémentaire est activée, la vitesse de la bille augmentera après la collision.";
                             pictureBoxObjets.Image = Properties.Resources.ButoirTriangulaire;
                             break;
 
                         }
                     case 2:
                         {
-                            labelDescObj.Text = "Ce butoir a une forme circulaire. Lorsqu'une bille frappe le butoir, les points appropriées sont accordés au joeur et le butoir s'illuminera." +
-                                                " Si l'option de force de rebond supplémentaire est activée, la vitesse de la balle augmentera après la collision.";
+                            labelDescObj.Text = "Ce butoir a une forme circulaire. Lorsqu'une bille frappe le butoir, les points appropriés sont accordés au joueur et le butoir s'illuminera." +
+                                                " Si l'option de force de rebond supplémentaire est activée, la vitesse de la bille augmentera après la collision.";
                             pictureBoxObjets.Image = Properties.Resources.ButoirCirculaire;
                             break;
 
                         }
                     case 3:
                         {
-                            labelDescObj.Text = "La cible est un obstancle rectangulaire qui, lorsque frappé par la bille, disparait et donne des points au joueur." +
-                                                " La collision retire la cible de la zone de jeu de façon permanente jusqu'une réinitialisation de la zone.";
+                            labelDescObj.Text = "La cible est un obstacle rectangulaire qui, lorsque frappé par la bille, disparait et donne des points au joueur." +
+                                                " La collision retire la cible de la zone de jeu de façon permanente.";
                             pictureBoxObjets.Image = Properties.Resources.Cible2;
                             break;
 
                         }
                     case 4:
                         {
-                            labelDescObj.Text = "Les portails sont des objets toujours liés en pairs. La création des portails se fait un à la suite de l'autre " +
+                            labelDescObj.Text = "Les portails sont des objets toujours liés en pairs. La création des portails se fait une à la suite de l'autre " +
                                                " Lorsque la bille entre dans un des portail, elle sort par l'autre." +
-                                               " Les portails sont entourés par un champ d'attraction dont la force est inversement proportionnelle à la distance avec la bille.";
+                                               " Les portails sont entourés d'un champ d'attraction dont la force est inversement proportionnelle à la distance avec la bille.";
                             pictureBoxObjets.Image = Properties.Resources.Portals;
                             
                             break;
@@ -343,7 +356,7 @@ namespace InterfaceGraphique
                     case 5:
                         {
                             labelDescObj.Text = "Les murs sont des obstacles rectangulaires dont la longueur est determinée durant la création." +
-                                                "La création du mur se fait avec 2 étapes. Un premier clique indque le début du mur et celui-ci suit le pointeur de la souris. Le deuxième clic détermine la fin du mur.";
+                                                "La création du mur se fait en 2 étapes. Un premier clic indique le début du mur et celui-ci suit la souris. Le deuxième clic détermine la fin du mur.";
                             pictureBoxObjets.Image = Properties.Resources.Mur1;
                            
                             break;
@@ -351,7 +364,7 @@ namespace InterfaceGraphique
                         }
                     case 6:
                         {
-                            labelDescObj.Text = "La porte permet de laisser passer la balle d'un seule côté seulement. Si la balle frappe le côté opposée, elle rebondit comme sur un mur.";
+                            labelDescObj.Text = "La porte permet de laisser passer la bille d'un seul côté seulement. Si la bille frappe le côté opposé, elle rebondit comme sur un mur.";
                             pictureBoxObjets.Image = Properties.Resources.Porte;
                             
                             break;
@@ -359,8 +372,8 @@ namespace InterfaceGraphique
                         }
                     case 7:
                         {
-                            labelDescObj.Text = "Le ressort permet de propulser la balle pour lui donner une vitesse initiale."+
-                                                " La force donnée à la balle est proportionnelle à la compression du ressort. Il peut avoir plusieurs ressorts sur une zone et ils sont tous contrôlés par le même bouton.";
+                            labelDescObj.Text = "Le ressort permet de propulser la bille pour lui donner une vitesse initiale."+
+                                                " La force donnée à la bille est proportionnelle à la compression du ressort. Il peut y avoir plusieurs ressorts sur une zone et ils sont tous contrôlés par le même bouton.";
                             pictureBoxObjets.Image = Properties.Resources.Ressort1;
                             
                             break;
@@ -368,9 +381,9 @@ namespace InterfaceGraphique
                         }
                     case 8:
                         {
-                            labelDescObj.Text = "Le générateur de bille est la source des billes qui arrivent sur la table." +
-                                                " Une bille est toujours générée par un générateur aléatoire si plusieurs sont présents et sa taille est proportionelle à celle du générateur." +
-                                                " Le générateur disparait après avoir généré la balle et ne cause pas de collisions pendant le jeu.";
+                            labelDescObj.Text = "Le générateur de Billes est la source des billes qui arrivent sur la table." +
+                                                " Une bille est toujours générée par un générateur aléatoire si plusieurs générateurs sont présents et sa taille est proportionelle à celle du générateur." +
+                                                " Le générateur disparait après avoir généré la bille et ne cause pas de collisions pendant le jeu.";
                             pictureBoxObjets.Image = Properties.Resources.Generateur1;
                            
                             break;
@@ -378,7 +391,7 @@ namespace InterfaceGraphique
                         }
                     case 9:
                         {
-                            labelDescObj.Text = "Le trou est un objet circulaire qui fait disparaitre une balle si celle-ci passe au-dessus d'un trou.";
+                            labelDescObj.Text = "Le trou est un objet circulaire qui fait disparaitre une bille si celle-ci passe au-dessus d'un trou.";
                             pictureBoxObjets.Image = Properties.Resources.Trou1;
                             
                             break;
@@ -405,7 +418,7 @@ namespace InterfaceGraphique
                 {
                     case 0:
                         {
-                            labelBase.Text = "L'option Nouveau permet de remplacer la zone de jeu en modification avec la zone de jeu par défaut."+
+                            labelBase.Text = "L'option Nouveau permet de remplacer la zone de jeu en modification par la zone de jeu par défaut."+
                                              "\nATTENTION: toute modification à la zone de jeu sera perdue si vous choisissez cette option.";
                             pictureBoxBase.Image = Properties.Resources.NewMap;
                             break;
@@ -422,25 +435,27 @@ namespace InterfaceGraphique
                     case 2:
                         {
                             labelBase.Text = "L'option Enregistrer permet d'enregistrer la zone de jeu en cours de modification." +
-                                                                         "Si la zone n'a jamais été enregistrée auparavant, vous serez amenés à l'enregistrer avec un nom de votre choix." +
-                                                                         " Sinon, vos modifications seront enregistrés pardesus le fichier déjà existant.";
+                                             " Si la zone n'a jamais été enregistrée auparavant, vous serez amené à l'enregistrer avec un nom de votre choix." +
+                                             " Sinon, vos modifications seront enregistrées par-dessus le fichier déjà existant."+
+                                             " Lorsque vous sauvegardez votre zone, une image sera automatiquement générée."; 
                             pictureBoxBase.Image = Properties.Resources.SaveAs;
                             break;
                         }
                     case 3:
                         {
                             labelBase.Text = "L'option Enregistrer Sous permet d'enregistrer la zone de jeu en cours de modification." +
-                                             "Vous serez amenés à l'enregistrer avec un nom de votre choix dans le répertoires Zones.";
+                                             " Vous serez amené à l'enregistrer avec un nom de votre choix dans le répertoire Zones."+
+                                             " Lorsque vous sauvegardez votre zone, une image sera automatiquement générée.";
                             pictureBoxBase.Image = Properties.Resources.SaveAs;
                             break;
                         }
                     case 4:
                         {
                             labelBase.Text = "L'option Propriétés permet de modifier les propriétés de la zone de jeu." +
-                                                                         "Dans ce menu, vous pouvez spécifier le nombre de points accordés au joueur lors d'un collision,"+
-                                                                         " le nombre de points pour gagner la zone de jeu"+
-                                                                         "et le nombre de points pour une bille gratuite. Ces valeurs peuvent aller de 0 à 10 000." +
-                                                                         " Finalement, vous pouvez donner une côte de difficulté à votre zone qui va de 1 à 10.";
+                                             " Dans ce menu, vous pouvez spécifier le nombre de points accordé au joueur lors d'un collision,"+
+                                             " le nombre de points pour gagner la zone de jeu"+
+                                             " et le nombre de points pour une bille gratuite. Ces valeurs peuvent être de 0 à 10 000." +
+                                             " Finalement, vous pouvez donner une côte de difficulté à votre zone qui va de 1 à 10.";
                             pictureBoxBase.Image = Properties.Resources.Proprietes;
                             break;
                         }
@@ -448,16 +463,16 @@ namespace InterfaceGraphique
                     case 5:
                         {
                             labelBase.Text = "Le mode Test permet d'essayer la zone de jeu en cours de modification." +
-                                                                         "Vous pouvez passer du mode Éditeur au mode Test en tout moment avec la touche T." +
-                                                                         " Le mode Test se joue comme une partie normale avec 1 seul joueur et une infinité de billes";
+                                             " Vous pouvez passer du mode Éditeur au mode Test à tout moment avec la touche T." +
+                                             " Le mode Test se joue comme une partie normale avec 1 seul joueur et une infinité de billes";
                             pictureBoxBase.Image = Properties.Resources.Tester;
                             break;
                         }
                     case 6:
                         {
                             labelBase.Text = "L'option Menu Principal quitte le mode Éditeur et retourne au menu principal." +
-                                                                         "Un message sera présent lorsque vous quittez pour vous assurer que vous voulez bien quitter le mdoe Éditeur." +
-                                                                         "\nATTENTION: Si vous quittez, toute modification sur la zone de jeu non sauvegardée sera perdue.";
+                                             " Un message sera présent lorsque vous quittez pour vous assurer que vous voulez bien quitter le mdoe Éditeur." +
+                                             "\nATTENTION: Si vous quittez, toute modification sur la zone de jeu non sauvegardée sera perdue.";
                             pictureBoxBase.Image = Properties.Resources.Quit;
                             break;
                         }
@@ -465,13 +480,15 @@ namespace InterfaceGraphique
                         {
                             labelBase.Text = "La Vue Orthographique est une vue dans laquelle la caméra est toujours perpendiculaire à la zone de jeu." +
                                             " Vous pouvez vous déplacer à l'aide des flèches ainsi qu'avec le bouton droit de la souris appuyé.";
+                            pictureBoxBase.Image = Properties.Resources.NewMap;
                             break;
                         }
                     case 8:
                         {
-                            labelBase.Text = "La Vue Orbitale est une vue dans laquelle la caméra peut être contrôlée par l'utilisateur." +
+                            labelBase.Text = "La Vue Orbite est une vue dans laquelle la caméra peut être contrôlée par l'utilisateur." +
                                             " Vous pouvez vous déplacer à l'aide des flèches ainsi qu'avec le bouton droit de la souris appuyé." +
                                             " Un déplacement gauche/droite permet de tourner la caméra. Un déplacement haut/bas permet de changer l'angle de la caméra.";
+                            pictureBoxBase.Image = Properties.Resources.VueOrbite;
                             break;
                         }
 

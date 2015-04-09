@@ -980,7 +980,6 @@ NoeudAbstrait* NoeudAbstrait::obtenirPortailDorigine()
 }
 
 
-
 ////////////////////////////////////////////////////////////////////////
 ///
 /// @fn void NoeudAbstrait::genererBille()
@@ -992,3 +991,16 @@ void NoeudAbstrait::genererBille()
 {
 	return;
 }
+
+////////////////////////////////////////////////////////////////////////
+///
+/// @fn void NoeudAbstrait::setNumero(int numero)
+///
+/// Modifie le numero de noeud du noeud courant
+/// 
+////////////////////////////////////////////////////////////////////////
+void NoeudAbstrait::setNumero(int numero) 
+{ 
+	numeroNoeud_ = numero; 
+	compteurNoeuds_--; 
+};

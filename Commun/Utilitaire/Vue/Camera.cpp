@@ -118,6 +118,7 @@ namespace vue {
 	}
 
 
+	//#define SHOW_OUTPUT 1
 	////////////////////////////////////////////////////////////////////////////
 	///
 	/// @fn void Camera::orbiterXY( double rotationX, double rotationY, bool empecheInversion )
@@ -153,39 +154,21 @@ namespace vue {
 		std::string informationAngle = "Phi | Theta" + std::to_string(theta_)
 			+ " | " + std::to_string(phi_) + " \n";
 		FacadeModele::obtenirInstance()->obtenircontroleurTexte()->updateText(ancienTexte, );*/
+#ifdef SHOW_OUTPUT
 		std::cout << "RECU --- deltaPhi | deltaTheta" + std::to_string(deltaPhi)
 			+ " | " + std::to_string(deltaTheta) + " \n";
 		std::cout << "Distance : " << dist << std::endl;
-
+#endif
 		// Assignation des nouveaux angles
 		theta_ += deltaTheta;
 		phi_ += deltaPhi;
-#if 1
-		if (phi_ >= utilitaire::PI)
-		{
-			std::cout << "Angle phi trop grand : on le remet à PI \n";
-			phi_ = utilitaire::PI - 0.0001;
-		}
-		else if (phi_ <= 0.0)
-		{
-			std::cout << "Angle phi trop petit : on le remet à 0 \n";
-			phi_ = 0.0001;
-		}
-		/*if (theta_ + rotationX >= utilitaire::PI * 2)
-		{
-			std::cout << "Angle theta trop grand : on le remet à PI \n";
-			phi_ = utilitaire::PI - 0.001;
-		}
-		else if (theta_ + rotationX <= 0.0)
-		{
-			std::cout << "Angle theta trop petit : on le remet à 0 \n";
-			phi_ = 0.0001;
-		}*/
-#endif
 
+		// On s'assure de ne pas dépasser certains angles
+		clampAngles();
+#ifdef SHOW_OUTPUT		
 		std::cout << "Nouveau Phi | Theta" + std::to_string(phi_)
 			+ " | " + std::to_string(theta_) + " \n";
-
+#endif
 		// On calcule la bonne position en fonction des angles 
 		calculerPositionOrbite();
 		positionnerOrbite();
@@ -210,7 +193,7 @@ namespace vue {
 		//		directionHaut_[0], directionHaut_[1], directionHaut_[2]);
 		glTranslated(0.0, 0.0, -dist_);
 		glRotated(180.0 / 3.1415 * phi_ - 90.0, 1.0, 0.0, 0.0);
-		glRotated(180.0 / 3.1415 * theta_, 0.0, 1.0, 0.0);
+		glRotated(180.0 / 3.1415 * theta_, 0.0, 0.0, 1.0);
 		glTranslated(-pointVise_.x, -pointVise_.y, 0.0);
 	}
 
@@ -246,6 +229,48 @@ namespace vue {
 		gluLookAt(position_[0], position_[1], position_[2],
 			pointVise_[0], pointVise_[1], pointVise_[2],
 			directionHaut_[0], directionHaut_[1], directionHaut_[2]);
+	}
+
+	////////////////////////////////////////////////////////////////////////
+	///
+	/// @fn void Camera::clampAngles() 
+	///
+	/// Ajuste la valeur des angles pour qu'elle ne dépasse pas un certain 
+	/// angle. Ceci est fait pour éviter de voir l'arrière de la zone de jeu
+	///
+	/// @return Aucune.
+	///
+	////////////////////////////////////////////////////////////////////////
+	void Camera::clampAngles()
+	{
+		if (phi_ >= (utilitaire::PI/2.0))
+		{
+#ifdef SHOW_OUTPUT
+			std::cout << "Angle phi trop grand : on le remet à PI \n";
+#endif
+			phi_ = (utilitaire::PI/2.0) - 0.0001;
+		}
+		else if (phi_ <= (utilitaire::PI/6.0))
+		{
+#ifdef SHOW_OUTPUT
+			std::cout << "Angle phi trop petit : on le remet à 0 \n";
+#endif
+			phi_ = (utilitaire::PI/6.0) +0.0001;
+		}
+		if (theta_ >= utilitaire::PI / 2.0)
+		{
+#ifdef SHOW_OUTPUT
+			std::cout << "Angle theta trop grand : on le remet à PI \n";
+#endif
+			theta_ = (utilitaire::PI / 2.0) - 0.0001;
+		}
+		else if (theta_ <= -utilitaire::PI / 2.0)
+		{
+#ifdef SHOW_OUTPUT
+			std::cout << "Angle theta trop petit : on le remet à 0 \n";
+#endif
+			theta_ = -(utilitaire::PI / 2.0) + 0.0001;
+		}
 	}
 
 }; // Fin du namespace vue.

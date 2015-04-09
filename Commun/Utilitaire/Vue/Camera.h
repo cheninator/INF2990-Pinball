@@ -94,12 +94,15 @@ namespace vue {
 		glm::dvec3 directionHaut_;
 		/// La direction du haut du monde de la caméra.
 		const glm::dvec3 directionHautMonde_;
-		/* Notez que les angles doivent être en radian*/
+		/// Angle phi de la caméra pour la vue perspective avec caméra orbite
 		double phi_;
-
+		/// Angle theta de la caméra pour la vue perspective avec caméra orbite
 		double theta_;
-
+		/// Distance entre la caméra et le point visé par la caméra
 		double dist_;
+
+		// Méthode privée qui vérifie et remet les angles correctement s'ils dépassent certaines valeurs
+		void clampAngles();
 	};
 
 
@@ -200,20 +203,63 @@ namespace vue {
 		return directionHaut_;
 	}
 
+	////////////////////////////////////////////////////////////////////////
+	///
+	/// @fn inline const glm::dvec3& Camera::obtenirTheta() const
+	///
+	/// Cette fonction permet d'obtenir l'angle theta de la caméra
+	///
+	/// @return L'angle theta courant de la caméra
+	///
+	////////////////////////////////////////////////////////////////////////
 	inline const double Camera::obtenirTheta() const
 	{
 		return theta_;
 	}
 	
+	////////////////////////////////////////////////////////////////////////
+	///
+	/// @fn inline const glm::dvec3& Camera::obtenirPhi() const
+	///
+	/// Cette fonction permet d'obtenir l'angle phi de la caméra
+	///
+	/// @return L'angle phi courant de la caméra
+	///
+	////////////////////////////////////////////////////////////////////////
 	inline const double Camera::obtenirPhi() const
 	{
 		return phi_;
 	}
+
+	////////////////////////////////////////////////////////////////////////
+	///
+	/// @fn inline const glm::dvec3& Camera::obtenirDistance() const
+	///
+	/// Cette fonction permet d'obtenir la distance entre la position de la
+	/// caméra et le point visé, qui est un attribut de la caméra.
+	///
+	/// @return L'angle theta courant de la caméra
+	///
+	////////////////////////////////////////////////////////////////////////
 	inline const double Camera::obtenirDistance() const
 	{
 		return dist_;
 	}
 
+	////////////////////////////////////////////////////////////////////////
+	///
+	/// @fn inline void Camera::assignerDistance(double newDist)
+	///
+	/// Cette fonction permet de régler la distance de la caméra par rapport
+	/// au point visé. 
+	///
+	/// @remark : Assigne la distance uniquement si elle est positive.
+	///
+	/// @param[in]	newDist		: La nouvelle distance désirée
+	///
+	/// @return Aucune
+	///
+	////////////////////////////////////////////////////////////////////////
 	inline void Camera::assignerDistance(double newDist)
 	{
 		if (newDist > 0.0)
@@ -224,11 +270,33 @@ namespace vue {
 		positionnerOrbite();
 	}
 
+	////////////////////////////////////////////////////////////////////////
+	///
+	/// @fn inline void Camera::assignerTheta(const double theta)
+	///
+	/// Cette fonction permet de régler l'angle theta de la caméra
+	///
+	/// @param[in]	theta		: Le nouvel angle theta
+	///
+	/// @return Aucune
+	///
+	////////////////////////////////////////////////////////////////////////
 	inline void Camera::assignerTheta(const double theta)
 	{
 		theta_ = theta;
 	}
-
+	
+	////////////////////////////////////////////////////////////////////////
+	///
+	/// @fn inline void Camera::assignerTheta(const double phi)
+	///
+	/// Cette fonction permet de régler l'angle phi de la caméra
+	///
+	/// @param[in]	phi			: Le nouvel angle phi
+	///
+	/// @return Aucune
+	///
+	////////////////////////////////////////////////////////////////////////
 	inline void Camera::assignerPhi(const double phi)
 	{
 		phi_ = phi;

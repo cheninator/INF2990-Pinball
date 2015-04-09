@@ -255,7 +255,7 @@ void ControleurLumieres::trackerLesBilles(NoeudTable* table)
 {
 	int spotsLeft = 2;
 
-	const int n = table->obtenirNombreEnfants();
+	const unsigned int n = table->obtenirNombreEnfants();
 	for (unsigned int i = 0; i < n; i++)
 	{
 		NoeudAbstrait* noeud = table->chercher(i);

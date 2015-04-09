@@ -644,7 +644,6 @@ void FacadeModele::deplacerSelection(int x1, int y1 ,int x2, int y2, bool duplic
 			visDep.setEstDansLaTable(true);
 			duplicationHorsTable_ = false;
 		}
-
 		else
 			duplicationHorsTable_ = true;
 
@@ -1159,7 +1158,6 @@ void FacadeModele::positionnerMur(int originX, int originY,int x1, int y1, int x
 	noeud->assignerEchelle(scaleFinal);
 	noeud->assignerRotationHard(angles);
 	noeud->assignerPositionRelative(position);
-
 }
 
 
@@ -2221,21 +2219,29 @@ std::string FacadeModele::obtenirCout()
 	return ss;
 }
 
-//rajouter commentaire
+////////////////////////////////////////////////////////////////////////
+///
+/// @fn void FacadeModele::utiliserCameraOrbite(bool utiliseOrbite)
+///
+/// @brief Cette fonction change la vision pour refléter une caméra orbite ou non
+///
+/// @param[in] utiliseOrbite : Indique s'il faut utiliser une caméra orbite ou non
+///
+/// @return Aucune
+///
+////////////////////////////////////////////////////////////////////////
 void FacadeModele::utiliserCameraOrbite(bool utiliseOrbite)
 {
-	std::cout << "Méthode appelee\n";
 	if (utiliseOrbite != vueEstOrbite_)
 	{
 		/*Sauvegarde des mesures de la clôture */
-		int clotMinX, clotMaxX, clotMinY, clotMaxY;
+		double clotMinX, clotMaxX, clotMinY, clotMaxY;
 		vue_->obtenirProjection().obtenirCoordonneesCloture(clotMinX, clotMaxX, clotMinY, clotMaxY);
 		
-		/* On obtient le rapport d'aspect*/
-		glm::ivec2 fenetreVirt = vue_->obtenirProjection().obtenirDimensionFenetreVirtuelle();
-		double ratio = fenetreVirt.x / fenetreVirt.y;
+		double ratio = (clotMaxX - clotMinX) / (clotMaxY - clotMinY);
 		
 		delete vue_;
+
 		if (utiliseOrbite)
 		{
 			 vue_ = new vue::VuePerspective{
@@ -2278,6 +2284,8 @@ void FacadeModele::utiliserCameraOrbite(bool utiliseOrbite)
 			appliquerZoomInitial();
 			std::cout << "La vue est passee en orthographique \n";
 		}
+
+		// On change l'attribut pour refléter la vue courante
 		vueEstOrbite_ = utiliseOrbite;
 	}
 }
@@ -2305,21 +2313,102 @@ glm::ivec2 FacadeModele::obteniCoordonneeMax()
 }
 
 
-
+////////////////////////////////////////////////////////////////////////
+///
+/// @fn void FacadeModele::sauvegarderHistorique()
+///
+/// @remark Cette fonction prend un screenshot de l'etat de l'arbre de rendu
+///
+/// @return Aucune
+///
+////////////////////////////////////////////////////////////////////////
 void FacadeModele::sauvegarderHistorique()
 {
 	originator_->sauvegarder();
 }
 
+
+////////////////////////////////////////////////////////////////////////
+///
+/// @fn void FacadeModele::annulerModifications()
+///
+/// @remark Cette fonction implemente la feature "undo"
+///
+/// @return Aucune
+///
+////////////////////////////////////////////////////////////////////////
 void FacadeModele::annulerModifications()
 {
 	originator_->annuler();
 }
 
+////////////////////////////////////////////////////////////////////////
+///
+/// @fn void FacadeModele::retablirModifications()
+///
+/// @remark Cette fonction implemente la feature "redo"
+///
+/// @return Aucune
+///
+////////////////////////////////////////////////////////////////////////
 void FacadeModele::retablirModifications()
 {
 	originator_->retablir();
 }
+
+////////////////////////////////////////////////////////////////////////
+///
+/// @fn void FacadeModele::sauvegarderHistorique()
+///
+/// @remark Cette fonction vide l'historique de modifications
+///
+/// @return Aucune
+///
+////////////////////////////////////////////////////////////////////////
+void FacadeModele::viderHistorique()
+{
+	originator_->viderHistorique();
+}
+
+
+////////////////////////////////////////////////////////////////////////
+///
+/// @fn void FacadeModele::sauvegarderHistorique()
+///
+/// @remark Cette fonction vide l'historique de modifications
+///
+/// @return Aucune
+///
+////////////////////////////////////////////////////////////////////////
+bool FacadeModele::possedeSuivant() const
+{
+	return originator_->possedeSuivant();
+}
+
+
+////////////////////////////////////////////////////////////////////////
+///
+/// @fn void FacadeModele::sauvegarderHistorique()
+///
+/// @remark Cette fonction vide l'historique de modifications
+///
+/// @return Aucune
+///
+////////////////////////////////////////////////////////////////////////
+bool FacadeModele::possedePrecedent() const
+{
+	return originator_->possedePrecedent();
+}
+
+
+
+int FacadeModele::obtenirNombreSelection() const
+{
+	return arbre_->obtenirNombreSelectionne();
+}
+
+
+
 
 bool FacadeModele::cameraEstOrbite()
 {

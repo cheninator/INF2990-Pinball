@@ -336,7 +336,6 @@ extern "C"
 															int posX, int posY, int posZ, 
 															float angleX, float angleY, float angleZ)
 	{
-
 		// Meme chose que dans creer objet, sauf que je test le nouvel objet avant de l'ajouter a l'arbre.
 		// Pour pouvoir tester l'objet avant de l'ajouter, je dois setter ses proprietes
 
@@ -350,7 +349,7 @@ extern "C"
 				return false;
 			objet_temp->setTwin(objet);
 			objet->setTwin(objet_temp);
-			objet->assignerSelection(true);
+			objet->assignerSelection(false);
 			objet->setTransparent(true);
 			objet = objet_temp;
 		}
@@ -384,7 +383,7 @@ extern "C"
 		// Tester si l'objet est legal.
 		// =============================
 		bool objetEstLegal = true;
-		glm::dvec3 boite[4];
+		/*glm::dvec3 boite[4];
 		objet->obtenirVecteursBoite(boite[0], boite[1], boite[2], boite[3]);
 		glm::dvec3 pointATester;
 		for (int i = 0; i < 4; i++)
@@ -395,7 +394,7 @@ extern "C"
 				objetEstLegal = false;
 			}
 
-		}
+		}*/
 
 		// Ajouter l'objet s'il est legal
 		// ==============================
@@ -406,6 +405,9 @@ extern "C"
 			FacadeModele::obtenirInstance()->obtenirArbreRenduINF2990()->getEnfant(0)->ajouter(objet);
 			if (nomObjet == "portail")
 				FacadeModele::obtenirInstance()->setDebug();
+
+			objet->assignerSelection(true);
+
 			return true;
 		}
 		else
@@ -414,7 +416,6 @@ extern "C"
 			// objet = nullptr;
 			return false;
 		}
-		return true;
 	}
 
 	////////////////////////////////////////////////////////////////////////
@@ -636,11 +637,10 @@ extern "C"
 
 		/* Si la caméra est orbite, on redirige la méthode vers celle appropriée*/
 		if (FacadeModele::obtenirInstance()->cameraEstOrbite())
-			orbite(deplacementX / 10.0, deplacementY / 10.0);
+			orbite(deplacementX/3.0, deplacementY/3.0);
 		else
 		{
 			FacadeModele::obtenirInstance()->obtenirVue()->deplacerXY(deplacementX, deplacementY);
-			std::cout << "Translation normale dans le plan \n";
 		}
 	}
 
@@ -737,10 +737,8 @@ extern "C"
 	__declspec(dllexport) void __cdecl orbite(double x, double y)
 	{
 		// Habituellement la valeur de x et y est de 10 depuis le C#
-		std::cout << "Deplacement  X | Y : " << x << " | " << y << std::endl;
 		/// En theta, pour correspondre à une rotation dans le sens de la flèche il faut envoyer l'opposé
 		FacadeModele::obtenirInstance()->obtenirVue()->rotaterXY( -1 * x, y);
-		std::cout << "Translation orbite \n \n";
 	}
 
 	////////////////////////////////////////////////////////////////////////
@@ -2216,6 +2214,26 @@ extern "C"
 	__declspec(dllexport) void retablirModifications()
 	{
 		FacadeModele::obtenirInstance()->retablirModifications();
+	}
+
+	__declspec(dllexport) void viderHistorique()
+	{
+		FacadeModele::obtenirInstance()->viderHistorique();
+	}
+
+	__declspec(dllexport) int obtenirNombreSelection()
+	{
+		return FacadeModele::obtenirInstance()->obtenirNombreSelection();
+	}
+
+	__declspec(dllexport) bool possedeSuivant()
+	{
+		return FacadeModele::obtenirInstance()->possedeSuivant();
+	}
+
+	__declspec(dllexport) bool possedePrecedent()
+	{
+		return FacadeModele::obtenirInstance()->possedePrecedent();
 	}
 
 }// FIN DU extern "C"

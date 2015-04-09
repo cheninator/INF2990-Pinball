@@ -252,7 +252,10 @@ public:
 	void sauvegarderHistorique();
 	void annulerModifications();
 	void retablirModifications();
-
+	void viderHistorique();
+	int obtenirNombreSelection() const;
+	bool possedeSuivant() const;
+	bool possedePrecedent() const;
 
 private:
 

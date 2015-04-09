@@ -93,9 +93,10 @@ namespace InterfaceGraphique
             this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
             this.Annuler_ToolStrip = new System.Windows.Forms.ToolStripButton();
             this.Retablir_ToolStrip = new System.Windows.Forms.ToolStripButton();
+            this.toolStripSeparator3 = new System.Windows.Forms.ToolStripSeparator();
             this.Proprietes_ToolStrip = new System.Windows.Forms.ToolStripButton();
             this.ModeTest_ToolStrip = new System.Windows.Forms.ToolStripButton();
-            this.toolStripSeparator3 = new System.Windows.Forms.ToolStripSeparator();
+            this.toolStripSeparator4 = new System.Windows.Forms.ToolStripSeparator();
             this.ZoomIn_ToolStrip = new System.Windows.Forms.ToolStripButton();
             this.ZoomOut_ToolStrip = new System.Windows.Forms.ToolStripButton();
             this.ZoomElastique_ToolStrip = new System.Windows.Forms.ToolStripButton();
@@ -825,9 +826,10 @@ namespace InterfaceGraphique
             this.toolStripSeparator1,
             this.Annuler_ToolStrip,
             this.Retablir_ToolStrip,
+            this.toolStripSeparator3,
             this.Proprietes_ToolStrip,
             this.ModeTest_ToolStrip,
-            this.toolStripSeparator3,
+            this.toolStripSeparator4,
             this.ZoomIn_ToolStrip,
             this.ZoomOut_ToolStrip,
             this.ZoomElastique_ToolStrip});
@@ -906,6 +908,7 @@ namespace InterfaceGraphique
             // 
             this.Annuler_ToolStrip.AutoSize = false;
             this.Annuler_ToolStrip.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.Annuler_ToolStrip.Enabled = false;
             this.Annuler_ToolStrip.Image = global::InterfaceGraphique.Properties.Resources.undo;
             this.Annuler_ToolStrip.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.Annuler_ToolStrip.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
@@ -918,6 +921,7 @@ namespace InterfaceGraphique
             // 
             this.Retablir_ToolStrip.AutoSize = false;
             this.Retablir_ToolStrip.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.Retablir_ToolStrip.Enabled = false;
             this.Retablir_ToolStrip.Image = global::InterfaceGraphique.Properties.Resources.redo;
             this.Retablir_ToolStrip.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.Retablir_ToolStrip.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
@@ -925,6 +929,12 @@ namespace InterfaceGraphique
             this.Retablir_ToolStrip.Size = new System.Drawing.Size(35, 30);
             this.Retablir_ToolStrip.Text = "Rétablir ( CTRL + Y )";
             this.Retablir_ToolStrip.Click += new System.EventHandler(this.Retablir_ToolStrip_Click);
+            // 
+            // toolStripSeparator3
+            // 
+            this.toolStripSeparator3.Margin = new System.Windows.Forms.Padding(10, 0, 10, 0);
+            this.toolStripSeparator3.Name = "toolStripSeparator3";
+            this.toolStripSeparator3.Size = new System.Drawing.Size(6, 35);
             // 
             // Proprietes_ToolStrip
             // 
@@ -950,11 +960,10 @@ namespace InterfaceGraphique
             this.ModeTest_ToolStrip.ToolTipText = "Mode Test (T)";
             this.ModeTest_ToolStrip.Click += new System.EventHandler(this.ModeTest_ToolStrip_Click);
             // 
-            // toolStripSeparator3
+            // toolStripSeparator4
             // 
-            this.toolStripSeparator3.Margin = new System.Windows.Forms.Padding(10, 0, 10, 0);
-            this.toolStripSeparator3.Name = "toolStripSeparator3";
-            this.toolStripSeparator3.Size = new System.Drawing.Size(6, 35);
+            this.toolStripSeparator4.Name = "toolStripSeparator4";
+            this.toolStripSeparator4.Size = new System.Drawing.Size(6, 35);
             // 
             // ZoomIn_ToolStrip
             // 
@@ -1031,7 +1040,7 @@ namespace InterfaceGraphique
             this.Nouveau_MenuItem.Image = global::InterfaceGraphique.Properties.Resources.NouveauFichier;
             this.Nouveau_MenuItem.Name = "Nouveau_MenuItem";
             this.Nouveau_MenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.N)));
-            this.Nouveau_MenuItem.Size = new System.Drawing.Size(230, 22);
+            this.Nouveau_MenuItem.Size = new System.Drawing.Size(226, 22);
             this.Nouveau_MenuItem.Text = "Nouveau";
             this.Nouveau_MenuItem.Click += new System.EventHandler(this.Nouveau_MenuItem_Click);
             // 
@@ -1040,7 +1049,7 @@ namespace InterfaceGraphique
             this.Ouvrir_MenuItem.Image = global::InterfaceGraphique.Properties.Resources.open;
             this.Ouvrir_MenuItem.Name = "Ouvrir_MenuItem";
             this.Ouvrir_MenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.O)));
-            this.Ouvrir_MenuItem.Size = new System.Drawing.Size(230, 22);
+            this.Ouvrir_MenuItem.Size = new System.Drawing.Size(226, 22);
             this.Ouvrir_MenuItem.Text = "Ouvrir";
             this.Ouvrir_MenuItem.Click += new System.EventHandler(this.Ouvrir_MenuItem_Click);
             // 
@@ -1049,7 +1058,7 @@ namespace InterfaceGraphique
             this.Enregistrer_MenuItem.Image = global::InterfaceGraphique.Properties.Resources.save;
             this.Enregistrer_MenuItem.Name = "Enregistrer_MenuItem";
             this.Enregistrer_MenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.S)));
-            this.Enregistrer_MenuItem.Size = new System.Drawing.Size(230, 22);
+            this.Enregistrer_MenuItem.Size = new System.Drawing.Size(226, 22);
             this.Enregistrer_MenuItem.Text = "Enregistrer";
             this.Enregistrer_MenuItem.Click += new System.EventHandler(this.Enregistrer_MenuItem_Click);
             // 
@@ -1059,7 +1068,7 @@ namespace InterfaceGraphique
             this.EnregistrerS_MenuItem.Name = "EnregistrerS_MenuItem";
             this.EnregistrerS_MenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)(((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.Shift) 
             | System.Windows.Forms.Keys.S)));
-            this.EnregistrerS_MenuItem.Size = new System.Drawing.Size(230, 22);
+            this.EnregistrerS_MenuItem.Size = new System.Drawing.Size(226, 22);
             this.EnregistrerS_MenuItem.Text = "Enregistrer Sous";
             this.EnregistrerS_MenuItem.Click += new System.EventHandler(this.EnregistrerS_MenuItem_Click);
             // 
@@ -1067,7 +1076,7 @@ namespace InterfaceGraphique
             // 
             this.Proprietes_MenuItem.Image = global::InterfaceGraphique.Properties.Resources.settings;
             this.Proprietes_MenuItem.Name = "Proprietes_MenuItem";
-            this.Proprietes_MenuItem.Size = new System.Drawing.Size(230, 22);
+            this.Proprietes_MenuItem.Size = new System.Drawing.Size(226, 22);
             this.Proprietes_MenuItem.Text = "Propriétés";
             this.Proprietes_MenuItem.Click += new System.EventHandler(this.Proprietes_MenuItem_Click);
             // 
@@ -1076,7 +1085,7 @@ namespace InterfaceGraphique
             this.ModeTest_MenuItem.Image = global::InterfaceGraphique.Properties.Resources.Tester;
             this.ModeTest_MenuItem.Name = "ModeTest_MenuItem";
             this.ModeTest_MenuItem.ShortcutKeyDisplayString = "t";
-            this.ModeTest_MenuItem.Size = new System.Drawing.Size(230, 22);
+            this.ModeTest_MenuItem.Size = new System.Drawing.Size(226, 22);
             this.ModeTest_MenuItem.Text = "Mode Test";
             this.ModeTest_MenuItem.Click += new System.EventHandler(this.ModeTest_MenuItem_Click);
             // 
@@ -1085,7 +1094,7 @@ namespace InterfaceGraphique
             this.MenuP_MenuItem.Image = global::InterfaceGraphique.Properties.Resources.Return_home;
             this.MenuP_MenuItem.Name = "MenuP_MenuItem";
             this.MenuP_MenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.Q)));
-            this.MenuP_MenuItem.Size = new System.Drawing.Size(230, 22);
+            this.MenuP_MenuItem.Size = new System.Drawing.Size(226, 22);
             this.MenuP_MenuItem.Text = "Menu Principal";
             this.MenuP_MenuItem.Click += new System.EventHandler(this.MenuP_MenuItem_Click);
             // 
@@ -1104,7 +1113,7 @@ namespace InterfaceGraphique
             this.Supprimer_MenuItem.Image = global::InterfaceGraphique.Properties.Resources.delete;
             this.Supprimer_MenuItem.Name = "Supprimer_MenuItem";
             this.Supprimer_MenuItem.ShortcutKeys = System.Windows.Forms.Keys.Delete;
-            this.Supprimer_MenuItem.Size = new System.Drawing.Size(157, 22);
+            this.Supprimer_MenuItem.Size = new System.Drawing.Size(167, 22);
             this.Supprimer_MenuItem.Text = "Supprimer";
             this.Supprimer_MenuItem.Click += new System.EventHandler(this.Supprimer_MenuItem_Click_1);
             // 
@@ -1113,7 +1122,7 @@ namespace InterfaceGraphique
             this.Annuler_MenuItem.Image = global::InterfaceGraphique.Properties.Resources.undo;
             this.Annuler_MenuItem.Name = "Annuler_MenuItem";
             this.Annuler_MenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.Z)));
-            this.Annuler_MenuItem.Size = new System.Drawing.Size(157, 22);
+            this.Annuler_MenuItem.Size = new System.Drawing.Size(167, 22);
             this.Annuler_MenuItem.Text = "Annuler";
             this.Annuler_MenuItem.Click += new System.EventHandler(this.Annuler_MenuItem_Click);
             // 
@@ -1122,7 +1131,7 @@ namespace InterfaceGraphique
             this.Retablir_MenuItem.Image = global::InterfaceGraphique.Properties.Resources.redo;
             this.Retablir_MenuItem.Name = "Retablir_MenuItem";
             this.Retablir_MenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.Y)));
-            this.Retablir_MenuItem.Size = new System.Drawing.Size(157, 22);
+            this.Retablir_MenuItem.Size = new System.Drawing.Size(167, 22);
             this.Retablir_MenuItem.Text = "Rétablir";
             this.Retablir_MenuItem.Click += new System.EventHandler(this.Retablir_MenuItem_Click);
             // 
@@ -1586,6 +1595,7 @@ namespace InterfaceGraphique
         private System.Windows.Forms.ToolStripMenuItem Supprimer_MenuItem;
         private System.Windows.Forms.ToolStripMenuItem Annuler_MenuItem;
         private System.Windows.Forms.ToolStripMenuItem Retablir_MenuItem;
+        private System.Windows.Forms.ToolStripSeparator toolStripSeparator4;
     }
 }
 

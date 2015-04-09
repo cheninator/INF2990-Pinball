@@ -1,3 +1,12 @@
+///////////////////////////////////////////////////////////////////////////////////
+/// @file ProjectionPerspective.cpp
+/// @author The Ballers
+/// @date 2015-04-01
+/// @version 1.0
+///
+/// @addtogroup utilitaire Utilitaire
+/// @{
+////////////////////////////////////////////////////////////////////////////////////
 #include <windows.h>
 #include <GL/glew.h>
 #include <GL/gl.h>
@@ -7,8 +16,8 @@
 
 namespace vue {
 
-	ProjectionPerspective::ProjectionPerspective(int xMinCloture, int xMaxCloture,
-		int yMinCloture, int yMaxCloture,
+	ProjectionPerspective::ProjectionPerspective(double xMinCloture, double xMaxCloture,
+		double yMinCloture, double yMaxCloture,
 		double zAvant, double zArriere,
 		double zoomInMax, double zoomOutMax,
 		double incrementZoom,
@@ -25,28 +34,75 @@ namespace vue {
 	{
 		glMatrixMode(GL_PROJECTION);
 		glLoadIdentity();
-		gluPerspective(60, 1.6, zAvant_, zArriere_);
+		gluPerspective(fovy_, ratio_, zAvant_, zArriere_);
 	}
 
+	////////////////////////////////////////////////////////////////////////
+	///
+	/// @fn void ProjectionPerspective::zoomerIn()
+	///
+	/// Pour un vue perspective, cette fonctionnalité n'est pas contrôlée
+	/// par la projection.
+	///
+	/// @return Aucune.
+	///
+	//////////////////////////////////////////////////////////////////////// 
 	void ProjectionPerspective::zoomerIn()
 	{
 		return;
 	}
-
+	////////////////////////////////////////////////////////////////////////
+	///
+	/// @fn void ProjectionPerspective::zoomerOut()
+	///
+	/// Pour un vue perspective, cette fonctionnalité n'est pas contrôlée
+	/// par la projection.
+	///
+	/// @return Aucune.
+	///
+	//////////////////////////////////////////////////////////////////////// 
 	void ProjectionPerspective::zoomerOut()
 	{
 		return;
 	}
 
+	////////////////////////////////////////////////////////////////////////
+	///
+	/// @fn inline glm::ivec2 ProjectionPerspective::obtenirDimensionFenetreVirtuelle() const
+	///
+	/// Cette fonction ne devrait pas exister, pour l'instant il faut
+	/// l'implanter pour éviter des erreurs de méthodes virtuelles pure
+	/// non implémentées.
+	/// Cette fonction retourne les dimensions de la fenêtre virtuelle.
+	/// 
+	/// @return Les dimensions de la fenêtre virtuellle
+	///
+	////////////////////////////////////////////////////////////////////////
 	inline glm::ivec2 ProjectionPerspective::obtenirDimensionFenetreVirtuelle() const
 	{
 		return glm::ivec2(-1); // À changer
 	}
 
+
+	////////////////////////////////////////////////////////////////////////
+	///
+	/// @fn void ProjectionPerspective::redimensionnerFenetre()const glm::ivec2& coinMin , const glm::ivec2& coinMax)
+	///
+	/// Cette fonction fait repositionne le Viewport pour que la caméra orbite
+	/// soit correctement placée avec les bons attributs lors d'un 
+	/// redimensionnement de fenêtre
+	///
+	/// @param[in]  coinMin : Coin contenant les coordonnées minimales de la
+	///                       nouvelle clôture
+	/// @param[in]  coinMax : Coin contenant les coordonnées maximales de la
+	///                       nouvelle clôture
+	///
+	/// @return Aucune
+	///
+	////////////////////////////////////////////////////////////////////////
 	void ProjectionPerspective::redimensionnerFenetre(const glm::ivec2& coinMin,
 		const glm::ivec2& coinMax)
 	{
-		std::cout << " Redimension de fenetre non implémenté \n";
 		
 		/* Portion qui provient de la projection orthographique*/
 
@@ -70,23 +126,57 @@ namespace vue {
 
 		/* Calculer le nouvel angle*/
 		double nouveauRatio = abs(coinMax.x - coinMin.x) * 1.0 / abs(coinMax.y - coinMin.y);
-		fovy_ = nouveauRatio;
+		ratio_ = nouveauRatio;
 
 		// On update le rendu
 		appliquer();
 		mettreAJourCloture();
 	}
 
+	////////////////////////////////////////////////////////////////////////
+	///
+	/// @fn double ProjectionPerspective::obtenirZoomOutMax() const
+	///
+	/// Cette fonction retourne la distance maximale à laquelle la caméra 
+	/// devrait pouvoir se positionner.
+	///
+	/// @return La valeur du zoomOutMax
+	///
+	////////////////////////////////////////////////////////////////////////
 	double ProjectionPerspective::obtenirZoomOutMax() const
 	{
 		return zoomOutMax_;
 	}
 
+	////////////////////////////////////////////////////////////////////////
+	///
+	/// @fn double ProjectionPerspective::obtenirZoomOutMin() const
+	///
+	/// Cette fonction retourne la distance minimale à laquelle la caméra 
+	/// devrait pouvoir se positionner.
+	///
+	/// @return La valeur du zoomInMax
+	///
+	////////////////////////////////////////////////////////////////////////
 	double ProjectionPerspective::obtenirZoomInMax() const
 	{
 		return zoomInMax_;
 	}
 
+
+	////////////////////////////////////////////////////////////////////////
+	///
+	/// @fn double ProjectionPerspective::obtenirZoomOutMax() const
+	///
+	/// Cette fonction retourne le facteur de zoom que la projection établie.
+	/// 
+	/// @remark : Cette fonction s'assure de ne pas pouvoir renvoyer une 
+	/// \remark négative. De plus, il ne s'agit pas d'un incrément, mais bien
+	/// \remark d'un facteur qui est multiplié.
+	///
+	/// @return La valeur de l'incrément de zoom.
+	///
+	////////////////////////////////////////////////////////////////////////
 	double ProjectionPerspective::obtenirIncrementZoom() const
 	{
 		// S'assurer de ne pas renvoyer une valeur nulle

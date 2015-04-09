@@ -114,7 +114,6 @@ namespace InterfaceGraphique
             pathXML = new StringBuilder("");
             this.Text = "Mode Edition - Nouvelle Zone";
             panel_GL.Select();
-           // etat = new EtatEditeurNone(this);
             etat = new EtatEditeurSelection(this);
             deselection();
             ctrlDown = false;
@@ -498,30 +497,25 @@ namespace InterfaceGraphique
                     if (etat is EtatEditeurPortail)
                     {
                         FonctionsNatives.removeObject();
-                        etat = null;
-                       // etat = new EtatEditeurNone(this);
                         etat = new EtatEditeurSelection(this);
                         deselection();
                     }
                     else if (etat is EtatEditeurMur)
                     {
                         FonctionsNatives.removeObject();
-                        etat = new EtatEditeurCreation(this);
+                        etat = new EtatEditeurSelection(this);
                         deselection();
                     }
-                    else if (etat is EtatEditeurDuplication)
+                    else if (etat is EtatEditeurDuplication || etat is EtatEditeurCreation)
                     {
                         FonctionsNatives.removeObject();
                         deselection();
-                     //   etat = new EtatEditeurNone(this);
                         etat = new EtatEditeurSelection(this);
 
                     }
                     else
                     {
-                        etat = null;
-                       // etat = new EtatEditeurNone(this);
-                        etat = new EtatEditeurSelection(this);                    
+                        etat = new EtatEditeurSelection(this);
                         deselection();
                     }
 
@@ -698,6 +692,7 @@ namespace InterfaceGraphique
 
 
             }
+            FonctionsNatives.viderHistorique();
         }
 
         ////////////////////////////////////////////////////////////////////////
@@ -754,6 +749,7 @@ namespace InterfaceGraphique
 
 
                     int sauvegarde = FonctionsNatives.creerXML(pathXML, pathXML.Capacity, prop);
+                    FonctionsNatives.viderHistorique();
                     //Console.WriteLine(sauvegarde);
                     if (sauvegarde == 1)
                     {
@@ -966,7 +962,6 @@ namespace InterfaceGraphique
             annulerModif();
             if (etat is EtatEditeurMur)
             {
-                //    etat = new EtatEditeurNone(this);
                 etat = new EtatEditeurSelection(this);
             }
             //Console.WriteLine("Outil Creation.");
@@ -1018,13 +1013,13 @@ namespace InterfaceGraphique
         ////////////////////////////////////////////////////////////////////////
         private void butourCirc_bouton_Click(object sender, EventArgs e)
         {
-            etat = new EtatEditeurCreation(this);
             //Console.WriteLine("ButoirCirculaire");
-            myObjectName = new StringBuilder("butoircirculaire");
             colorShift = false;
             angleX = 0;
             angleY = 0;
             angleZ = 0;
+            myObjectName = new StringBuilder("butoircirculaire");
+            etat = new EtatEditeurCreation(this);
         }
 
         ////////////////////////////////////////////////////////////////////////
@@ -1064,14 +1059,13 @@ namespace InterfaceGraphique
         ////////////////////////////////////////////////////////////////////////
         private void butoirG_bouton_Click(object sender, EventArgs e)
         {
-            etat = new EtatEditeurCreation(this);
             //Console.WriteLine("Butoir Gauche.");
-            myObjectName = new StringBuilder("butoirg");
             colorShift = false;
             angleX = 0;
             angleY = 0;
             angleZ = 0;
-
+            myObjectName = new StringBuilder("butoirg");
+            etat = new EtatEditeurCreation(this);
         }
 
         ////////////////////////////////////////////////////////////////////////
@@ -1157,22 +1151,6 @@ namespace InterfaceGraphique
             }
 
 
-        }
-
-        ////////////////////////////////////////////////////////////////////////
-        ///
-        /// @fn public void afficher_Objet(bool twin)
-        /// @brief Affiche et cree un objet jumeau.
-        /// 
-        /// @param[in] twin : Objet jumeau.
-        /// 
-        /// @return Aucune.
-        ///
-        ////////////////////////////////////////////////////////////////////////
-        public void afficher_Objet(bool twin)
-        {
-            //Console.WriteLine(myObjectName);
-            FonctionsNatives.creerObjet(myObjectName, myObjectName.Capacity, twin, colorShift);
         }
 
         ////////////////////////////////////////////////////////////////////////
@@ -1294,13 +1272,13 @@ namespace InterfaceGraphique
         ////////////////////////////////////////////////////////////////////////
         private void Ressort_bouton_Click(object sender, EventArgs e)
         {
-            etat = new EtatEditeurCreation(this);
             //Console.WriteLine("Ressort");
-            myObjectName = new StringBuilder("ressort");
             colorShift = false;
             angleX = 0;
             angleY = 0;
             angleZ = 0;
+            myObjectName = new StringBuilder("ressort");
+            etat = new EtatEditeurCreation(this);
         }
 
         ////////////////////////////////////////////////////////////////////////
@@ -1317,13 +1295,13 @@ namespace InterfaceGraphique
         ////////////////////////////////////////////////////////////////////////
         private void Generateur_bouton_Click(object sender, EventArgs e)
         {
-            etat = new EtatEditeurCreation(this);
             //Console.WriteLine("Generateur");
-            myObjectName = new StringBuilder("generateurbille");
             colorShift = false;
             angleX = 0;
-            angleY = 0;// 90;
-            angleZ = 0;//180;
+            angleY = 0;
+            angleZ = 0;
+            myObjectName = new StringBuilder("generateurbille");
+            etat = new EtatEditeurCreation(this);
         }
 
         ////////////////////////////////////////////////////////////////////////
@@ -1340,14 +1318,13 @@ namespace InterfaceGraphique
         ////////////////////////////////////////////////////////////////////////
         private void Trou_bouton_Click(object sender, EventArgs e)
         {
-
-            etat = new EtatEditeurCreation(this);
             //Console.WriteLine("Trou");
-            myObjectName = new StringBuilder("trou");
             colorShift = false;
             angleX = 0;
             angleY = 0;
             angleZ = 0;
+            myObjectName = new StringBuilder("trou");
+            etat = new EtatEditeurCreation(this);
         }
 
         ////////////////////////////////////////////////////////////////////////
@@ -1594,6 +1571,7 @@ namespace InterfaceGraphique
         private void Orthographique_MenuItem_Click(object sender, EventArgs e)
         {
             FonctionsNatives.utiliserCameraOrbite(false);
+            ZoomElastique_ToolStrip.Enabled = true;
         }
         ////////////////////////////////////////////////////////////////////////
         ///
@@ -1610,6 +1588,7 @@ namespace InterfaceGraphique
         private void Orbite_MenuItem_Click(object sender, EventArgs e)
         {
             FonctionsNatives.utiliserCameraOrbite(true);
+            ZoomElastique_ToolStrip.Enabled = false;
         }
 
         ////////////////////////////////////////////////////////////////////////
@@ -1651,6 +1630,8 @@ namespace InterfaceGraphique
             etat = new EtatEditeurTest(this);
             menuStrip1.Hide();
             toolStrip1.Hide();
+            Annuler_ToolStrip.Enabled = false;
+            Retablir_ToolStrip.Enabled = false;
             bouton_Creation.Hide();
             FonctionsNatives.animerJeu(true);
             FonctionsNatives.rechargerArbre(false);
@@ -1662,13 +1643,11 @@ namespace InterfaceGraphique
             flowLayoutPanel1.Hide();
 
             menu1Enable(false);
-            //StringBuilder bille = new StringBuilder("bille");
-            //FonctionsNatives.creerObjet(bille, bille.Capacity);
+         
 
             panel_GL.BringToFront();
             panel_GL.Anchor = AnchorStyles.None;
             panel_GL.Location = new Point(163, 24);
-            //panel_GL.Location = new Point(this.ClientSize.Width / 2 - panel_GL.Size.Width / 2, this.ClientSize.Height / 2 - panel_GL.Size.Height / 2);
             panel_GL.Dock = DockStyle.Fill;
             this.OnSizeChanged(e);
             FonctionsNatives.translater(-mouvementX, mouvementY);
@@ -1682,8 +1661,7 @@ namespace InterfaceGraphique
                     Program.mMenu.modeEdit.Focus();
                 }
             }
-            //panel_GL.Dock = DockStyle.Fill;
-            //menuStrip3.BringToFront();
+       
         }
 
         ////////////////////////////////////////////////////////////////////////
@@ -1700,13 +1678,13 @@ namespace InterfaceGraphique
         ////////////////////////////////////////////////////////////////////////
         private void PGJ1_bouton_Click(object sender, EventArgs e)
         {
-            etat = new EtatEditeurCreation(this);
             //Console.WriteLine("Palette gauche J1.");
-            myObjectName = new StringBuilder("paletteg");
+            colorShift = false;
             angleX = 180;
             angleY = 0;
             angleZ = 0;
-            colorShift = false;
+            myObjectName = new StringBuilder("paletteg");
+            etat = new EtatEditeurCreation(this);
         }
 
         ////////////////////////////////////////////////////////////////////////
@@ -1740,13 +1718,13 @@ namespace InterfaceGraphique
         ////////////////////////////////////////////////////////////////////////
         private void PDJ1_bouton_Click(object sender, EventArgs e)
         {
-            etat = new EtatEditeurCreation(this);
             //Console.WriteLine("Palette droite J1.");
-            myObjectName = new StringBuilder("paletted");
+            colorShift = false;
             angleX = 180;
             angleY = 0;
             angleZ = 0;
-            colorShift = false;
+            myObjectName = new StringBuilder("paletted");
+            etat = new EtatEditeurCreation(this);
         }
 
         ////////////////////////////////////////////////////////////////////////
@@ -1780,13 +1758,13 @@ namespace InterfaceGraphique
         ////////////////////////////////////////////////////////////////////////
         private void PGJ2_bouton_Click(object sender, EventArgs e)
         {
-            etat = new EtatEditeurCreation(this);
             //Console.WriteLine("Palette gauche J2.");
-            myObjectName = new StringBuilder("paletteg");
             colorShift = true;
             angleX = 180;
             angleY = 0;
             angleZ = 0;
+            myObjectName = new StringBuilder("paletteg");
+            etat = new EtatEditeurCreation(this);
         }
 
         ////////////////////////////////////////////////////////////////////////
@@ -1820,13 +1798,13 @@ namespace InterfaceGraphique
         ////////////////////////////////////////////////////////////////////////
         private void PDJ2_bouton_Click(object sender, EventArgs e)
         {
-            etat = new EtatEditeurCreation(this);
             //Console.WriteLine("Palette droite J2.");
-            myObjectName = new StringBuilder("paletted");
             colorShift = true;
             angleX = 180;
             angleY = 0;
             angleZ = 0;
+            myObjectName = new StringBuilder("paletted");
+            etat = new EtatEditeurCreation(this);
         }
 
         ////////////////////////////////////////////////////////////////////////
@@ -1877,13 +1855,13 @@ namespace InterfaceGraphique
         ////////////////////////////////////////////////////////////////////////
         private void butoirD_bouton_Click(object sender, EventArgs e)
         {
-            etat = new EtatEditeurCreation(this);
             //Console.WriteLine("Butoir Droit.");
-            myObjectName = new StringBuilder("butoird");
             colorShift = false;
             angleX = 0;
             angleY = 0;
             angleZ = 0;
+            myObjectName = new StringBuilder("butoird");
+            etat = new EtatEditeurCreation(this);
         }
 
         ////////////////////////////////////////////////////////////////////////
@@ -1917,13 +1895,13 @@ namespace InterfaceGraphique
         ////////////////////////////////////////////////////////////////////////
         private void Cible_bouton_Click(object sender, EventArgs e)
         {
-            etat = new EtatEditeurCreation(this);
             //Console.WriteLine("Cible.");
-            myObjectName = new StringBuilder("cible");
             colorShift = false;
             angleX = 0;
             angleY = 0;
             angleZ = 0;
+            myObjectName = new StringBuilder("cible");
+            etat = new EtatEditeurCreation(this);
         }
 
         ////////////////////////////////////////////////////////////////////////
@@ -1957,13 +1935,13 @@ namespace InterfaceGraphique
         ////////////////////////////////////////////////////////////////////////
         private void Portails_bouton_Click(object sender, EventArgs e)
         {
-            etat = new EtatEditeurCreation(this);
             //Console.WriteLine("Portail");
-            myObjectName = new StringBuilder("portail");
             colorShift = false;
             angleX = 0;
             angleY = 0;
             angleZ = 0;
+            myObjectName = new StringBuilder("portail");
+            etat = new EtatEditeurCreation(this);
         }
 
         ////////////////////////////////////////////////////////////////////////
@@ -1997,13 +1975,13 @@ namespace InterfaceGraphique
         ////////////////////////////////////////////////////////////////////////
         private void Mur_bouton_Click(object sender, EventArgs e)
         {
-            etat = new EtatEditeurCreation(this);
             //Console.WriteLine("Mur");
-            myObjectName = new StringBuilder("mur");
             colorShift = false;
             angleX = 0;
             angleY = 0;
             angleZ = 0;
+            myObjectName = new StringBuilder("mur");
+            etat = new EtatEditeurCreation(this);
         }
 
         ////////////////////////////////////////////////////////////////////////
@@ -2020,13 +1998,13 @@ namespace InterfaceGraphique
         ////////////////////////////////////////////////////////////////////////
         private void Gate_Button_Click(object sender, EventArgs e)
         {
-            etat = new EtatEditeurCreation(this);
             //Console.WriteLine("Gate");
-            myObjectName = new StringBuilder("gate");
             colorShift = false;
             angleX = 0;
             angleY = 0;
             angleZ = 0;
+            myObjectName = new StringBuilder("gate");
+            etat = new EtatEditeurCreation(this);
         }
 
         ////////////////////////////////////////////////////////////////////////
@@ -2114,6 +2092,7 @@ namespace InterfaceGraphique
             FonctionsNatives.purgeAll();
             propZJ = new List<int> { 10, 10, 10, 10, 10, 1 };
             ReinitialiserTout();
+            FonctionsNatives.viderHistorique();
         }
 
         ////////////////////////////////////////////////////////////////////////
@@ -2138,10 +2117,16 @@ namespace InterfaceGraphique
 
             if (etat is EtatEditeurPortail && e.Button == MouseButtons.Left)
             {
-                //etat = new EtatEditeurNone(this);
+                FonctionsNatives.sauvegarderHistorique();
                 etat = new EtatEditeurSelection(this);
                 
                 FonctionsNatives.obligerTransparence(false);
+                deselection();
+            }
+            else if (etat is EtatEditeurMur)
+            {
+                FonctionsNatives.sauvegarderHistorique();
+                etat = new EtatEditeurSelection(this);
                 deselection();
             }
             else if ((e.Button == MouseButtons.Left && (etat is EtatEditeurSelection ||
@@ -2187,6 +2172,14 @@ namespace InterfaceGraphique
                 FMEbox.Text = (Math.Round(FonctionsNatives.getScale() * 100) / 100).ToString();
             }
 
+            if (etat is EtatEditeurCreation || etat is EtatEditeurDuplication)
+            {
+                if (FonctionsNatives.duplicationEstHorsTable())
+                    Cursor = Cursors.No;
+                else
+                    Cursor = Cursors.Arrow;
+            }
+
             if (e.Button == MouseButtons.Right)
             {
                 deplacementVueSouris(e);
@@ -2198,33 +2191,17 @@ namespace InterfaceGraphique
                 deplacementSouris(e);
 
             }
-            else if (etat is EtatEditeurCreation)
-            {
-                if (!(FonctionsNatives.verifierCliqueDansTable(e.X, e.Y)))
-                {
-                    Cursor = Cursors.No;
-                }
-                else
-                {
-                    Cursor = Cursors.Arrow;
-                }
-                if (e.Button == MouseButtons.Right)
-                {
-                    deplacementVueSouris(e);
-                }
-            }
             else if (!(clickValide(origin, currentP)) && (etat is EtatEditeurSelection) && e.Button == MouseButtons.Left)
             {
                 etat = new EtatEditeurSelectionMultiple(this);
                 FonctionsNatives.initialiserRectangleElastique(origin.X, origin.Y);
             }
-            else if (!(clickValide(origin, currentP)) && (etat is EtatEditeurZoom) && e.Button == MouseButtons.Left)
+            else if (!(clickValide(origin, currentP)) && (etat is EtatEditeurZoom) && e.Button == MouseButtons.Left && ZoomElastique_ToolStrip.Enabled == true)
             {
                 etat = new EtatEditeurZoomElastique(this);
                 FonctionsNatives.initialiserRectangleElastique(origin.X, origin.Y);
             }
             else if (!(etat is EtatEditeurSelectionMultiple) &&
-                     !(etat is EtatEditeurCreation) &&
                      !(etat is EtatEditeurSelection) &&
                      !(etat is EtatEditeurZoomElastique)
                     )
@@ -2269,13 +2246,39 @@ namespace InterfaceGraphique
                 FonctionsNatives.sauvegarderHistorique();
                 deselection();
                 panel_GL.MouseMove -= panel_MouseMove;
-              //  etat = new EtatEditeurNone(this);
                 etat = new EtatEditeurSelection(this);
 
             }
+            else if (etat is EtatEditeurCreation && e.Button == MouseButtons.Left)
+            {
+                if (FonctionsNatives.duplicationEstHorsTable())
+                {
+                    FonctionsNatives.removeObject();
+                    deselection();
+                    panel_GL.MouseMove -= panel_MouseMove;
+                    etat = new EtatEditeurSelection(this);
+                }
+                else
+                {
+                    if (myObjectName.ToString() == "portail")
+                    {
+                        creationObjet(true);
+                        statePortail();
+                    }
+                    else if (myObjectName.ToString() == "mur")
+                        stateMur();
+                    else
+                    {
+                        FonctionsNatives.sauvegarderHistorique();
+                        deselection();
+                        panel_GL.MouseMove -= panel_MouseMove;
+                        etat = new EtatEditeurSelection(this);
+                    }
+                }       
+            }
             else if (etat is EtatEditeurMur && (clickExtraValide(origin, destination)))
             {
-                etat = new EtatEditeurCreation(this);
+                etat = new EtatEditeurSelection(this);
                 deselection();
                 return;
             }
@@ -2355,18 +2358,11 @@ namespace InterfaceGraphique
             // en coordonnees du monde en utilisant convertirClotureAVirtuelle(...) comme ça on n'a pas 
             // besoin de ce facteur misterieux.  Et aussi, cette technique devrait bien marcher 
             // quand on sera rendu avec la vue orbite.
-            if (etat is EtatEditeurDuplication)
-            {
+            if (etat is EtatEditeurDuplication || etat is EtatEditeurCreation)
                 FonctionsNatives.deplacerSelection(previousP.X, previousP.Y, currentP.X, currentP.Y, true);
-                if (!FonctionsNatives.verifierCliqueDansTable(currentP.X, currentP.Y))
-                    Cursor = Cursors.No;
-                else
-                    Cursor = Cursors.Arrow;
-            }
-
             else
                 FonctionsNatives.deplacerSelection(previousP.X, previousP.Y, currentP.X, currentP.Y, false);
-            //Xbox.Text = currentP.X.ToString();
+            
             previousP = currentP;
             currentP = panel_GL.PointToClient(MousePosition);
         }
@@ -2578,38 +2574,11 @@ namespace InterfaceGraphique
         /// @return Aucune.
         ///
         ////////////////////////////////////////////////////////////////////////
-        public void creationObjet(MouseEventArgs e, bool twin = false)
+        public void creationObjet(bool twin = false)
         {
-            bool fonctionAPhil = true;
-            if (fonctionAPhil)
-            {
-                bool creationReussie;
-                creationReussie = FonctionsNatives.creerObjetAvecTests(myObjectName, myObjectName.Capacity, twin, colorShift,
-                                                                        panel_GL.PointToClient(MousePosition).X, panel_GL.PointToClient(MousePosition).Y, 0,
-                                                                        angleX, angleY, angleZ);
-                // if (creationReussie)
-                //Console.WriteLine("Creation avec boite englobante respectee");
-                // else
-                // Console.WriteLine("echec de la creation");
-            }
-            else
-            {
-                if (FonctionsNatives.verifierCliqueDansTable(origin.X, origin.Y))
-                {
-                    afficher_Objet(twin);
-                    FonctionsNatives.positionObjet(panel_GL.PointToClient(MousePosition).X, panel_GL.PointToClient(MousePosition).Y, 0);
-                    FonctionsNatives.rotate(angleX, 'x');
-                    FonctionsNatives.rotate(angleY, 'y');
-                    FonctionsNatives.rotate(angleZ, 'z');
-                    previousP.X = panel_GL.PointToClient(MousePosition).X;
-                    previousP.Y = panel_GL.PointToClient(MousePosition).Y;
-
-                    //  if (FonctionsNatives.verifierCliqueDansTable(panel_GL.PointToClient(MousePosition).X, panel_GL.PointToClient(MousePosition).Y))
-                    //      Console.WriteLine("Click dans la table");
-                    //  else
-                    //      Console.WriteLine("Click hors de la table");
-                }
-            }
+            FonctionsNatives.creerObjetAvecTests(myObjectName, myObjectName.Capacity, twin, colorShift,
+                                                 panel_GL.PointToClient(MousePosition).X, panel_GL.PointToClient(MousePosition).Y, 
+                                                 0, angleX, angleY, angleZ);      
         }
 
         ////////////////////////////////////////////////////////////////////////
@@ -2633,7 +2602,7 @@ namespace InterfaceGraphique
                 if (pathXML.ToString().Substring(pathXML.ToString().Length - 11) == "default.xml")
                 {
                     MessageBox.Show("Il ne faut pas sauvegarder par dessus la zone par defaut", "ERREUR DE SAUVEGARDE",
-                MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
                 else
                 {
@@ -2664,8 +2633,14 @@ namespace InterfaceGraphique
                     {
                         takeScreenShot();
                     }
+
+                    FonctionsNatives.viderHistorique();
                 }
             }
+
+            
+
+
         }
 
 
@@ -2926,7 +2901,6 @@ namespace InterfaceGraphique
         public void stateMur()
         {
             etat = new EtatEditeurMur(this);
-            panel_GL.MouseMove += new MouseEventHandler(panel_MouseMove);
         }
 
 
@@ -2986,7 +2960,7 @@ namespace InterfaceGraphique
         //////////////////////////////////////////////////////////////////////////////////////////
         public void annulerModif()
         {
-            if (etat is EtatEditeurPortail /*|| etat is EtatEditeurMur*/ || etat is EtatEditeurDuplication)
+            if (etat is EtatEditeurPortail ||  etat is EtatEditeurCreation || etat is EtatEditeurDuplication)
             {
                 FonctionsNatives.removeObject();
                 deselection();
@@ -3088,7 +3062,6 @@ namespace InterfaceGraphique
         private void toolStripMenuItem1_Click(object sender, EventArgs e)
         {
             etat = null;
-           // etat = new EtatEditeurNone(this);
             etat = new EtatEditeurSelection(this);
 
             FonctionsNatives.animerJeu(false);
@@ -3100,6 +3073,8 @@ namespace InterfaceGraphique
                 menuStrip3.Hide();
             menuStrip1.Show();
             toolStrip1.Show();
+            Annuler_ToolStrip.Enabled = true;
+            Retablir_ToolStrip.Enabled = true;
             bouton_Creation.Show();
             menu1Enable(true);
             Creation_Panel.Show();
@@ -3144,10 +3119,7 @@ namespace InterfaceGraphique
             if (Program.mMenu.modeEdit != null)
                 Program.mMenu.modeEdit.Focus();
 
-            if (Program.helpMenu)
-            {
-                Information_MenuItem.PerformClick();
-            }
+          
             
         }
 
@@ -3210,8 +3182,13 @@ namespace InterfaceGraphique
 
         private void bouton_Suppression_Click(object sender, EventArgs e)
         {
+            if(etat is EtatEditeurSelection)
+                FonctionsNatives.sauvegarderHistorique();
+
             FonctionsNatives.removeObject();
             deselection();
+
+            FonctionsNatives.sauvegarderHistorique();
         }
 
         private void Group_Butoir_Enter(object sender, EventArgs e)
@@ -3236,12 +3213,49 @@ namespace InterfaceGraphique
 
         private void Annuler_ToolStrip_Click(object sender, EventArgs e)
         {
+            deselection();
             FonctionsNatives.annulerModifications();
+            nbSelection = FonctionsNatives.obtenirNombreSelection();
+            outilsEnable(true);
+
+            if (nbSelection == 1)
+            {
+                proprietesEnable(true);
+                Xbox.Text = Math.Round(FonctionsNatives.getPositionX()).ToString();
+                Ybox.Text = Math.Round(FonctionsNatives.getPositionY()).ToString();
+                Anglebox.Text = Math.Round(FonctionsNatives.getAngle()).ToString();
+                FMEbox.Text = (Math.Round(FonctionsNatives.getScale() * 100) / 100).ToString();
+            }
+
+            else
+                proprietesEnable(false);
+
+            etat = new EtatEditeurSelection(this);
+            Annuler_ToolStrip.Enabled = (FonctionsNatives.possedePrecedent());
         }
 
         private void Retablir_ToolStrip_Click(object sender, EventArgs e)
         {
+            deselection();
             FonctionsNatives.retablirModifications();
+            nbSelection = FonctionsNatives.obtenirNombreSelection();
+            outilsEnable(true);
+
+            if (nbSelection == 1)
+            {
+                proprietesEnable(true);
+                Xbox.Text = Math.Round(FonctionsNatives.getPositionX()).ToString();
+                Ybox.Text = Math.Round(FonctionsNatives.getPositionY()).ToString();
+                Anglebox.Text = Math.Round(FonctionsNatives.getAngle()).ToString();
+                FMEbox.Text = (Math.Round(FonctionsNatives.getScale() * 100) / 100).ToString();
+            }
+
+            else
+                proprietesEnable(false);
+
+            etat = new EtatEditeurSelection(this);
+
+            Annuler_ToolStrip.Enabled = (FonctionsNatives.possedeSuivant());
         }
 
         private void Supprimer_MenuItem_Click_1(object sender, EventArgs e)
@@ -3258,5 +3272,6 @@ namespace InterfaceGraphique
         {
             Retablir_ToolStrip.PerformClick();
         }
+
     }
 }

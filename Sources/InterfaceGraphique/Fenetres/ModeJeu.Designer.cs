@@ -71,7 +71,11 @@
             this.panel_GL.Name = "panel_GL";
             this.panel_GL.Size = new System.Drawing.Size(784, 741);
             this.panel_GL.TabIndex = 4;
+            this.panel_GL.SizeChanged += new System.EventHandler(this.panel_GL_SizeChanged);
             this.panel_GL.MouseClick += new System.Windows.Forms.MouseEventHandler(this.panel_GL_MouseClick);
+            this.panel_GL.MouseDown += new System.Windows.Forms.MouseEventHandler(this.panel_GL_MouseDown);
+            this.panel_GL.MouseMove += new System.Windows.Forms.MouseEventHandler(this.panel_GL_MouseMove);
+            this.panel_GL.MouseUp += new System.Windows.Forms.MouseEventHandler(this.panel_GL_MouseUp);
             // 
             // menuStrip
             // 
@@ -80,7 +84,7 @@
             this.Camera_MenuItem});
             this.menuStrip.Location = new System.Drawing.Point(0, 0);
             this.menuStrip.Name = "menuStrip";
-            this.menuStrip.Size = new System.Drawing.Size(633, 24);
+            this.menuStrip.Size = new System.Drawing.Size(784, 24);
             this.menuStrip.TabIndex = 0;
             this.menuStrip.Text = "menuStrip1";
             this.menuStrip.Visible = false;
@@ -116,6 +120,7 @@
             this.Ortho_MenuItem.ShortcutKeyDisplayString = "1";
             this.Ortho_MenuItem.Size = new System.Drawing.Size(172, 22);
             this.Ortho_MenuItem.Text = "Orthographique";
+            this.Ortho_MenuItem.Click += new System.EventHandler(this.Ortho_MenuItem_Click);
             // 
             // Orbitale_MenuItem
             // 
@@ -123,6 +128,7 @@
             this.Orbitale_MenuItem.ShortcutKeyDisplayString = "2";
             this.Orbitale_MenuItem.Size = new System.Drawing.Size(172, 22);
             this.Orbitale_MenuItem.Text = "Orbitale";
+            this.Orbitale_MenuItem.Click += new System.EventHandler(this.Orbitale_MenuItem_Click);
             // 
             // InfoPanel
             // 

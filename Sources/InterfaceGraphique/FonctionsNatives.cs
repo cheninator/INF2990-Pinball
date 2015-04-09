@@ -380,6 +380,20 @@ namespace InterfaceGraphique
         public static extern void retablirModifications();
 
         [DllImport(@"Noyau.dll", CallingConvention = CallingConvention.Cdecl)]
+        public static extern void viderHistorique();
+
+        [DllImport(@"Noyau.dll", CallingConvention = CallingConvention.Cdecl)]
+        public static extern int obtenirNombreSelection();
+
+        [DllImport(@"Noyau.dll", CallingConvention = CallingConvention.Cdecl)]
+        [return: MarshalAsAttribute(UnmanagedType.I1)]
+        public static extern bool possedeSuivant();
+
+        [DllImport(@"Noyau.dll", CallingConvention = CallingConvention.Cdecl)]
+        [return: MarshalAsAttribute(UnmanagedType.I1)]
+        public static extern bool possedePrecedent();
+
+        [DllImport(@"Noyau.dll", CallingConvention = CallingConvention.Cdecl)]
         public static extern void refreshText(int x, int y);
 
         [DllImport(@"Noyau.dll", CallingConvention = CallingConvention.Cdecl)]
@@ -407,7 +421,7 @@ namespace InterfaceGraphique
         public static extern void suprimerText(StringBuilder text, int length);
 
         [DllImport(@"Noyau.dll", CallingConvention = CallingConvention.Cdecl)]
-        public static extern void afficherTextes(bool afficher = true);
+        public static extern void afficherTextes(bool afficher = true);      
 
         public static void populateUsines()
         {
@@ -427,6 +441,7 @@ namespace InterfaceGraphique
             WriteLine("Arbre de rendu generer !");
             WriteLine(""); WriteLine("");
         }
+
         [DllImport(@"Noyau.dll", CallingConvention = CallingConvention.Cdecl)]
         private static extern void preparerUsineArbre(StringBuilder text, int length);
 
