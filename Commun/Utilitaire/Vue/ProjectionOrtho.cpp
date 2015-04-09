@@ -19,7 +19,7 @@ namespace vue {
 
 	////////////////////////////////////////////////////////////////////////
 	///
-	/// @fn ProjectionOrtho::ProjectionOrtho(int xMinCloture, int xMaxCloture, int yMinCloture, int yMaxCloture, double zAvant,  double zArriere, double zoomInMax, double zoomOutMax, double incrementZoom, double xMinFenetre, double xMaxFenetre, double yMinFenetre, double yMaxFenetre)
+	/// @fn ProjectionOrtho::ProjectionOrtho(double xMinCloture, double xMaxCloture, double yMinCloture, double yMaxCloture, double zAvant,  double zArriere, double zoomInMax, double zoomOutMax, double incrementZoom, double xMinFenetre, double xMaxFenetre, double yMinFenetre, double yMaxFenetre)
 	///
 	/// Constructeur d'une projection orthogonale.  Ne fait qu'assigner les
 	/// variables membres et ajuste ensuite le rapport d'aspect.

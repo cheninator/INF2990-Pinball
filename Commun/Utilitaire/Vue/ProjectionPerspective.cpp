@@ -15,7 +15,28 @@
 #include <iostream>
 
 namespace vue {
-
+	////////////////////////////////////////////////////////////////////////
+	///
+	/// @fn ProjectionPerspective::ProjectionPerspective(double xMinCloture, double xMaxCloture, double yMinCloture, double yMaxCloture, double zAvant,  double zArriere, double zoomInMax, double zoomOutMax, double incrementZoom, double xMinFenetre, double xMaxFenetre, double yMinFenetre, double yMaxFenetre)
+	///
+	/// Constructeur d'une projection perspective.  Ne fait qu'assigner les
+	/// variables membres.
+	///
+	/// @param[in] xMinCloture   : coordonnée minimale en @a x de la clôture.
+	/// @param[in] xMaxCloture   : coordonnée maximale en @a x de la clôture.
+	/// @param[in] yMinCloture   : coordonnée minimale en @a y de la clôture.
+	/// @param[in] yMaxCloture   : coordonnée maximale en @a y de la clôture.
+	/// @param[in] zAvant        : distance du plan avant (en @a z).
+	/// @param[in] zArriere      : distance du plan arrière (en @a z).
+	/// @param[in] zoomInMax     : facteur de zoom in maximal.
+	/// @param[in] zoomOutMax    : facteur de zoom out maximal.
+	/// @param[in] incrementZoom : distance du plan arrière (en @a z).
+	/// @param[in] ratio         : rapport d'aspect du plan avant de visualisation
+	/// @param[in] fovy          : angle de visionnement de la vue perspective
+	/// 
+	/// @return Aucune (constructeur).
+	///
+	////////////////////////////////////////////////////////////////////////
 	ProjectionPerspective::ProjectionPerspective(double xMinCloture, double xMaxCloture,
 		double yMinCloture, double yMaxCloture,
 		double zAvant, double zArriere,
@@ -30,6 +51,16 @@ namespace vue {
 		appliquer();
 	}
 
+	////////////////////////////////////////////////////////////////////////
+	///
+	/// @fn void ProjectionPerspective::appliquer() const
+	///
+	/// Cette fonction permet d'appliquer la projection perspective en appelant 
+	/// les fonctions d'OpenGL selon les attributs de la classe.
+	///
+	/// @return Aucune.
+	///
+	////////////////////////////////////////////////////////////////////////
 	void ProjectionPerspective::appliquer() const
 	{
 		glMatrixMode(GL_PROJECTION);
