@@ -2207,7 +2207,7 @@ void FacadeModele::utiliserCameraOrbite(bool utiliseOrbite)
 	if (utiliseOrbite != vueEstOrbite_)
 	{
 		/*Sauvegarde des mesures de la clôture */
-		int clotMinX, clotMaxX, clotMinY, clotMaxY;
+		double clotMinX, clotMaxX, clotMinY, clotMaxY;
 		vue_->obtenirProjection().obtenirCoordonneesCloture(clotMinX, clotMaxX, clotMinY, clotMaxY);
 		
 		/* On obtient le rapport d'aspect*/

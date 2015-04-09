@@ -32,8 +32,8 @@ namespace vue {
 
 	public:
 		/// Constructeur.
-		ProjectionPerspective(int xMinCloture, int xMaxCloture,
-			int yMinCloture, int yMaxCloture,
+		ProjectionPerspective(double xMinCloture, double xMaxCloture,
+			double yMinCloture, double yMaxCloture,
 			double zAvant, double zArriere,
 			double zoomInMax, double zoomOutMax,
 			double incrementZoom,

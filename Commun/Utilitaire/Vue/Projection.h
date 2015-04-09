@@ -32,8 +32,8 @@ namespace vue {
 	{
 	public:
 		/// Constructeur.
-		Projection(int xMinCloture, int xMaxCloture,
-			int yMinCloture, int yMaxCloture,
+		Projection(double xMinCloture, double xMaxCloture,
+			double yMinCloture, double yMaxCloture,
 			double zAvant, double zArriere,
 			double zoomInMax, double zoomOutMax,
 			double incrementZoom, bool estPerspective);
@@ -61,7 +61,7 @@ namespace vue {
 		inline glm::ivec2 obtenirDimensionCloture() const;
 		/// Obtention des coordonnées de la fenêtre de clôture.
 		inline void obtenirCoordonneesCloture(
-			int& xMin, int& xMax, int& yMin, int& yMax
+			double& xMin, double& xMax, double& yMin, double& yMax
 			) const;
 
 		/// Vérification de si la projection est perspective.
@@ -132,7 +132,7 @@ namespace vue {
 	///
 	////////////////////////////////////////////////////////////////////////
 	inline void Projection::obtenirCoordonneesCloture(
-		int& xMin, int& xMax, int& yMin, int& yMax
+		double& xMin, double& xMax, double& yMin, double& yMax
 		) const
 	{
 		xMin = xMinCloture_;
