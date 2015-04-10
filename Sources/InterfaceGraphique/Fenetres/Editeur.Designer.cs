@@ -111,9 +111,9 @@ namespace InterfaceGraphique
             this.MenuP_MenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.Edition_MenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.Supprimer_MenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.SelectAll_MenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.Annuler_MenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.Retablir_MenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.SelectAll_MenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.Outils_MenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.Selection_MenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.Deplacement_MenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -266,6 +266,9 @@ namespace InterfaceGraphique
             this.PDJ2_bouton.BackColor = System.Drawing.Color.White;
             this.PDJ2_bouton.BackgroundImage = global::InterfaceGraphique.Properties.Resources.PDJ2;
             this.PDJ2_bouton.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.PDJ2_bouton.FlatAppearance.BorderSize = 3;
+            this.PDJ2_bouton.FlatAppearance.CheckedBackColor = System.Drawing.Color.Red;
+            this.PDJ2_bouton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.PDJ2_bouton.Location = new System.Drawing.Point(107, 79);
             this.PDJ2_bouton.Name = "PDJ2_bouton";
             this.PDJ2_bouton.Size = new System.Drawing.Size(85, 50);
@@ -274,12 +277,16 @@ namespace InterfaceGraphique
             this.toolTip1.SetToolTip(this.PDJ2_bouton, "Joueur 2");
             this.PDJ2_bouton.UseVisualStyleBackColor = false;
             this.PDJ2_bouton.Click += new System.EventHandler(this.PDJ2_bouton_Click);
+            this.PDJ2_bouton.Leave += new System.EventHandler(this.PDJ2_bouton_Leave);
             // 
             // PGJ2_bouton
             // 
             this.PGJ2_bouton.BackColor = System.Drawing.Color.White;
             this.PGJ2_bouton.BackgroundImage = global::InterfaceGraphique.Properties.Resources.PGJ2;
             this.PGJ2_bouton.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.PGJ2_bouton.FlatAppearance.BorderSize = 3;
+            this.PGJ2_bouton.FlatAppearance.CheckedBackColor = System.Drawing.Color.Red;
+            this.PGJ2_bouton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.PGJ2_bouton.Location = new System.Drawing.Point(16, 79);
             this.PGJ2_bouton.Name = "PGJ2_bouton";
             this.PGJ2_bouton.Size = new System.Drawing.Size(85, 50);
@@ -288,12 +295,16 @@ namespace InterfaceGraphique
             this.toolTip1.SetToolTip(this.PGJ2_bouton, "Joueur 2");
             this.PGJ2_bouton.UseVisualStyleBackColor = false;
             this.PGJ2_bouton.Click += new System.EventHandler(this.PGJ2_bouton_Click);
+            this.PGJ2_bouton.Leave += new System.EventHandler(this.PGJ2_bouton_Leave_1);
             // 
             // PDJ1_bouton
             // 
             this.PDJ1_bouton.BackColor = System.Drawing.Color.White;
             this.PDJ1_bouton.BackgroundImage = global::InterfaceGraphique.Properties.Resources.PDJ1;
             this.PDJ1_bouton.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.PDJ1_bouton.FlatAppearance.BorderSize = 3;
+            this.PDJ1_bouton.FlatAppearance.CheckedBackColor = System.Drawing.Color.Red;
+            this.PDJ1_bouton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.PDJ1_bouton.Location = new System.Drawing.Point(106, 23);
             this.PDJ1_bouton.Name = "PDJ1_bouton";
             this.PDJ1_bouton.Size = new System.Drawing.Size(85, 50);
@@ -302,12 +313,18 @@ namespace InterfaceGraphique
             this.toolTip1.SetToolTip(this.PDJ1_bouton, "Joueur 1");
             this.PDJ1_bouton.UseVisualStyleBackColor = false;
             this.PDJ1_bouton.Click += new System.EventHandler(this.PDJ1_bouton_Click);
+            this.PDJ1_bouton.Leave += new System.EventHandler(this.PDJ1_bouton_Leave_1);
             // 
             // PGJ1_bouton
             // 
             this.PGJ1_bouton.BackColor = System.Drawing.Color.White;
             this.PGJ1_bouton.BackgroundImage = global::InterfaceGraphique.Properties.Resources.PGJ1;
             this.PGJ1_bouton.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.PGJ1_bouton.FlatAppearance.BorderColor = System.Drawing.SystemColors.ActiveCaptionText;
+            this.PGJ1_bouton.FlatAppearance.BorderSize = 3;
+            this.PGJ1_bouton.FlatAppearance.CheckedBackColor = System.Drawing.Color.Red;
+            this.PGJ1_bouton.FlatAppearance.MouseDownBackColor = System.Drawing.SystemColors.ActiveBorder;
+            this.PGJ1_bouton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.PGJ1_bouton.Location = new System.Drawing.Point(16, 23);
             this.PGJ1_bouton.Name = "PGJ1_bouton";
             this.PGJ1_bouton.Size = new System.Drawing.Size(85, 50);
@@ -316,6 +333,7 @@ namespace InterfaceGraphique
             this.toolTip1.SetToolTip(this.PGJ1_bouton, "Joueur 1");
             this.PGJ1_bouton.UseVisualStyleBackColor = false;
             this.PGJ1_bouton.Click += new System.EventHandler(this.PGJ1_bouton_Click);
+            this.PGJ1_bouton.Leave += new System.EventHandler(this.PGJ1_bouton_Leave);
             // 
             // Group_Butoir
             // 
@@ -338,7 +356,9 @@ namespace InterfaceGraphique
             // butoirCirc_bouton
             // 
             this.butoirCirc_bouton.BackgroundImage = global::InterfaceGraphique.Properties.Resources.cible1;
-            this.butoirCirc_bouton.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.butoirCirc_bouton.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.butoirCirc_bouton.FlatAppearance.BorderSize = 3;
+            this.butoirCirc_bouton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.butoirCirc_bouton.Location = new System.Drawing.Point(16, 81);
             this.butoirCirc_bouton.Name = "butoirCirc_bouton";
             this.butoirCirc_bouton.Size = new System.Drawing.Size(85, 50);
@@ -347,12 +367,15 @@ namespace InterfaceGraphique
             this.toolTip1.SetToolTip(this.butoirCirc_bouton, "Butoir circulaire");
             this.butoirCirc_bouton.UseVisualStyleBackColor = true;
             this.butoirCirc_bouton.Click += new System.EventHandler(this.butourCirc_bouton_Click);
+            this.butoirCirc_bouton.Leave += new System.EventHandler(this.butoirCirc_bouton_Leave);
             // 
             // butoirD_bouton
             // 
             this.butoirD_bouton.BackgroundImage = global::InterfaceGraphique.Properties.Resources.ButoirTriangD;
             this.butoirD_bouton.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.butoirD_bouton.Cursor = System.Windows.Forms.Cursors.Arrow;
+            this.butoirD_bouton.FlatAppearance.BorderSize = 3;
+            this.butoirD_bouton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.butoirD_bouton.Location = new System.Drawing.Point(107, 25);
             this.butoirD_bouton.Name = "butoirD_bouton";
             this.butoirD_bouton.Size = new System.Drawing.Size(85, 50);
@@ -361,11 +384,14 @@ namespace InterfaceGraphique
             this.toolTip1.SetToolTip(this.butoirD_bouton, "Butoir droit");
             this.butoirD_bouton.UseVisualStyleBackColor = true;
             this.butoirD_bouton.Click += new System.EventHandler(this.butoirD_bouton_Click);
+            this.butoirD_bouton.Leave += new System.EventHandler(this.butoirD_bouton_Leave);
             // 
             // butoirG_bouton
             // 
             this.butoirG_bouton.BackgroundImage = global::InterfaceGraphique.Properties.Resources.ButoirTriangG;
             this.butoirG_bouton.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.butoirG_bouton.FlatAppearance.BorderSize = 3;
+            this.butoirG_bouton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.butoirG_bouton.Location = new System.Drawing.Point(16, 25);
             this.butoirG_bouton.Name = "butoirG_bouton";
             this.butoirG_bouton.Size = new System.Drawing.Size(85, 50);
@@ -374,12 +400,15 @@ namespace InterfaceGraphique
             this.toolTip1.SetToolTip(this.butoirG_bouton, "Butoir gauche");
             this.butoirG_bouton.UseVisualStyleBackColor = true;
             this.butoirG_bouton.Click += new System.EventHandler(this.butoirG_bouton_Click);
+            this.butoirG_bouton.Leave += new System.EventHandler(this.butoirG_bouton_Leave);
             // 
             // Cible_bouton
             // 
             this.Cible_bouton.BackColor = System.Drawing.Color.White;
             this.Cible_bouton.BackgroundImage = global::InterfaceGraphique.Properties.Resources.cible;
-            this.Cible_bouton.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.Cible_bouton.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.Cible_bouton.FlatAppearance.BorderSize = 3;
+            this.Cible_bouton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.Cible_bouton.Location = new System.Drawing.Point(107, 81);
             this.Cible_bouton.Name = "Cible_bouton";
             this.Cible_bouton.Size = new System.Drawing.Size(85, 50);
@@ -388,6 +417,7 @@ namespace InterfaceGraphique
             this.toolTip1.SetToolTip(this.Cible_bouton, "Cible");
             this.Cible_bouton.UseVisualStyleBackColor = false;
             this.Cible_bouton.Click += new System.EventHandler(this.Cible_bouton_Click);
+            this.Cible_bouton.Leave += new System.EventHandler(this.Cible_bouton_Leave);
             // 
             // Group_Elements
             // 
@@ -410,6 +440,8 @@ namespace InterfaceGraphique
             this.Gate.BackColor = System.Drawing.Color.White;
             this.Gate.BackgroundImage = global::InterfaceGraphique.Properties.Resources.gate;
             this.Gate.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.Gate.FlatAppearance.BorderSize = 3;
+            this.Gate.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.Gate.Location = new System.Drawing.Point(68, 80);
             this.Gate.Name = "Gate";
             this.Gate.Size = new System.Drawing.Size(85, 50);
@@ -419,12 +451,15 @@ namespace InterfaceGraphique
             this.toolTip1.SetToolTip(this.Gate, "Porte");
             this.Gate.UseVisualStyleBackColor = false;
             this.Gate.Click += new System.EventHandler(this.Gate_Button_Click);
+            this.Gate.Leave += new System.EventHandler(this.Gate_Leave);
             // 
             // Mur_bouton
             // 
             this.Mur_bouton.BackColor = System.Drawing.Color.White;
             this.Mur_bouton.BackgroundImage = global::InterfaceGraphique.Properties.Resources.mur;
             this.Mur_bouton.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.Mur_bouton.FlatAppearance.BorderSize = 3;
+            this.Mur_bouton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.Mur_bouton.Location = new System.Drawing.Point(19, 24);
             this.Mur_bouton.Name = "Mur_bouton";
             this.Mur_bouton.Size = new System.Drawing.Size(85, 50);
@@ -433,12 +468,15 @@ namespace InterfaceGraphique
             this.toolTip1.SetToolTip(this.Mur_bouton, "Mur");
             this.Mur_bouton.UseVisualStyleBackColor = false;
             this.Mur_bouton.Click += new System.EventHandler(this.Mur_bouton_Click);
+            this.Mur_bouton.Leave += new System.EventHandler(this.Mur_bouton_Leave);
             // 
             // Portails_bouton
             // 
             this.Portails_bouton.BackColor = System.Drawing.Color.White;
             this.Portails_bouton.BackgroundImage = global::InterfaceGraphique.Properties.Resources.portail;
             this.Portails_bouton.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.Portails_bouton.FlatAppearance.BorderSize = 3;
+            this.Portails_bouton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.Portails_bouton.Location = new System.Drawing.Point(110, 23);
             this.Portails_bouton.Name = "Portails_bouton";
             this.Portails_bouton.Size = new System.Drawing.Size(85, 50);
@@ -447,6 +485,7 @@ namespace InterfaceGraphique
             this.toolTip1.SetToolTip(this.Portails_bouton, "Portail");
             this.Portails_bouton.UseVisualStyleBackColor = false;
             this.Portails_bouton.Click += new System.EventHandler(this.Portails_bouton_Click);
+            this.Portails_bouton.Leave += new System.EventHandler(this.Portails_bouton_Leave);
             // 
             // Group_Element2
             // 
@@ -470,6 +509,8 @@ namespace InterfaceGraphique
             this.Trou_bouton.BackColor = System.Drawing.Color.White;
             this.Trou_bouton.BackgroundImage = global::InterfaceGraphique.Properties.Resources.Trou;
             this.Trou_bouton.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.Trou_bouton.FlatAppearance.BorderSize = 3;
+            this.Trou_bouton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.Trou_bouton.Location = new System.Drawing.Point(68, 81);
             this.Trou_bouton.Name = "Trou_bouton";
             this.Trou_bouton.Size = new System.Drawing.Size(85, 50);
@@ -479,12 +520,15 @@ namespace InterfaceGraphique
             this.toolTip1.SetToolTip(this.Trou_bouton, "Trou");
             this.Trou_bouton.UseVisualStyleBackColor = false;
             this.Trou_bouton.Click += new System.EventHandler(this.Trou_bouton_Click);
+            this.Trou_bouton.Leave += new System.EventHandler(this.Trou_bouton_Leave);
             // 
             // Generateur_bouton
             // 
             this.Generateur_bouton.BackColor = System.Drawing.Color.White;
             this.Generateur_bouton.BackgroundImage = global::InterfaceGraphique.Properties.Resources.Generateur;
             this.Generateur_bouton.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.Generateur_bouton.FlatAppearance.BorderSize = 3;
+            this.Generateur_bouton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.Generateur_bouton.Location = new System.Drawing.Point(110, 25);
             this.Generateur_bouton.Name = "Generateur_bouton";
             this.Generateur_bouton.Size = new System.Drawing.Size(85, 50);
@@ -494,12 +538,15 @@ namespace InterfaceGraphique
             this.toolTip1.SetToolTip(this.Generateur_bouton, "Générateur de bille");
             this.Generateur_bouton.UseVisualStyleBackColor = false;
             this.Generateur_bouton.Click += new System.EventHandler(this.Generateur_bouton_Click);
+            this.Generateur_bouton.Leave += new System.EventHandler(this.Generateur_bouton_Leave);
             // 
             // Ressort_bouton
             // 
             this.Ressort_bouton.BackColor = System.Drawing.Color.White;
             this.Ressort_bouton.BackgroundImage = global::InterfaceGraphique.Properties.Resources.ressort;
             this.Ressort_bouton.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.Ressort_bouton.FlatAppearance.BorderSize = 3;
+            this.Ressort_bouton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.Ressort_bouton.Location = new System.Drawing.Point(19, 25);
             this.Ressort_bouton.Name = "Ressort_bouton";
             this.Ressort_bouton.Size = new System.Drawing.Size(85, 50);
@@ -508,6 +555,7 @@ namespace InterfaceGraphique
             this.toolTip1.SetToolTip(this.Ressort_bouton, "Ressort");
             this.Ressort_bouton.UseVisualStyleBackColor = false;
             this.Ressort_bouton.Click += new System.EventHandler(this.Ressort_bouton_Click);
+            this.Ressort_bouton.Leave += new System.EventHandler(this.Ressort_bouton_Leave);
             // 
             // flowLayoutPanel1
             // 
@@ -1119,6 +1167,15 @@ namespace InterfaceGraphique
             this.Supprimer_MenuItem.Text = "Supprimer";
             this.Supprimer_MenuItem.Click += new System.EventHandler(this.Supprimer_MenuItem_Click_1);
             // 
+            // SelectAll_MenuItem
+            // 
+            this.SelectAll_MenuItem.Image = global::InterfaceGraphique.Properties.Resources.Selection;
+            this.SelectAll_MenuItem.Name = "SelectAll_MenuItem";
+            this.SelectAll_MenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.A)));
+            this.SelectAll_MenuItem.Size = new System.Drawing.Size(209, 22);
+            this.SelectAll_MenuItem.Text = "Sélectionner Tout";
+            this.SelectAll_MenuItem.Click += new System.EventHandler(this.SelectAll_MenuItem_Click);
+            // 
             // Annuler_MenuItem
             // 
             this.Annuler_MenuItem.Image = global::InterfaceGraphique.Properties.Resources.undo;
@@ -1136,15 +1193,6 @@ namespace InterfaceGraphique
             this.Retablir_MenuItem.Size = new System.Drawing.Size(209, 22);
             this.Retablir_MenuItem.Text = "Rétablir";
             this.Retablir_MenuItem.Click += new System.EventHandler(this.Retablir_MenuItem_Click);
-            // 
-            // SelectAll_MenuItem
-            // 
-            this.SelectAll_MenuItem.Image = global::InterfaceGraphique.Properties.Resources.Selection;
-            this.SelectAll_MenuItem.Name = "SelectAll_MenuItem";
-            this.SelectAll_MenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.A)));
-            this.SelectAll_MenuItem.Size = new System.Drawing.Size(209, 22);
-            this.SelectAll_MenuItem.Text = "Sélectionner Tout";
-            this.SelectAll_MenuItem.Click += new System.EventHandler(this.SelectAll_MenuItem_Click);
             // 
             // Outils_MenuItem
             // 

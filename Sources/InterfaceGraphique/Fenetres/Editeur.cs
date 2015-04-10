@@ -1024,6 +1024,8 @@ namespace InterfaceGraphique
         ////////////////////////////////////////////////////////////////////////
         private void butourCirc_bouton_Click(object sender, EventArgs e)
         {
+            butoirCirc_bouton.FlatAppearance.BorderColor = Color.DarkOrange;
+            
             //Console.WriteLine("ButoirCirculaire");
             colorShift = false;
             angleX = 0;
@@ -1070,6 +1072,8 @@ namespace InterfaceGraphique
         ////////////////////////////////////////////////////////////////////////
         private void butoirG_bouton_Click(object sender, EventArgs e)
         {
+            butoirG_bouton.FlatAppearance.BorderColor = Color.DarkOrange;
+            
             //Console.WriteLine("Butoir Gauche.");
             colorShift = false;
             angleX = 0;
@@ -1283,6 +1287,8 @@ namespace InterfaceGraphique
         ////////////////////////////////////////////////////////////////////////
         private void Ressort_bouton_Click(object sender, EventArgs e)
         {
+            Ressort_bouton.FlatAppearance.BorderColor = Color.DarkOrange;
+            
             //Console.WriteLine("Ressort");
             colorShift = false;
             angleX = 0;
@@ -1306,6 +1312,8 @@ namespace InterfaceGraphique
         ////////////////////////////////////////////////////////////////////////
         private void Generateur_bouton_Click(object sender, EventArgs e)
         {
+            Generateur_bouton.FlatAppearance.BorderColor = Color.DarkOrange;
+            
             //Console.WriteLine("Generateur");
             colorShift = false;
             angleX = 0;
@@ -1329,6 +1337,8 @@ namespace InterfaceGraphique
         ////////////////////////////////////////////////////////////////////////
         private void Trou_bouton_Click(object sender, EventArgs e)
         {
+            Trou_bouton.FlatAppearance.BorderColor = Color.DarkOrange;
+            
             //Console.WriteLine("Trou");
             colorShift = false;
             angleX = 0;
@@ -1690,6 +1700,7 @@ namespace InterfaceGraphique
         ////////////////////////////////////////////////////////////////////////
         private void PGJ1_bouton_Click(object sender, EventArgs e)
         {
+            PGJ1_bouton.FlatAppearance.BorderColor = Color.DarkOrange;
             //Console.WriteLine("Palette gauche J1.");
             colorShift = false;
             angleX = 180;
@@ -1730,6 +1741,8 @@ namespace InterfaceGraphique
         ////////////////////////////////////////////////////////////////////////
         private void PDJ1_bouton_Click(object sender, EventArgs e)
         {
+            PDJ1_bouton.FlatAppearance.BorderColor = Color.DarkOrange;
+            
             //Console.WriteLine("Palette droite J1.");
             colorShift = false;
             angleX = 180;
@@ -1770,6 +1783,8 @@ namespace InterfaceGraphique
         ////////////////////////////////////////////////////////////////////////
         private void PGJ2_bouton_Click(object sender, EventArgs e)
         {
+            PGJ2_bouton.FlatAppearance.BorderColor = Color.DarkOrange;
+            
             //Console.WriteLine("Palette gauche J2.");
             colorShift = true;
             angleX = 180;
@@ -1810,6 +1825,8 @@ namespace InterfaceGraphique
         ////////////////////////////////////////////////////////////////////////
         private void PDJ2_bouton_Click(object sender, EventArgs e)
         {
+            PDJ2_bouton.FlatAppearance.BorderColor = Color.DarkOrange;
+            
             //Console.WriteLine("Palette droite J2.");
             colorShift = true;
             angleX = 180;
@@ -1867,6 +1884,7 @@ namespace InterfaceGraphique
         ////////////////////////////////////////////////////////////////////////
         private void butoirD_bouton_Click(object sender, EventArgs e)
         {
+            butoirD_bouton.FlatAppearance.BorderColor = Color.DarkOrange;
             //Console.WriteLine("Butoir Droit.");
             colorShift = false;
             angleX = 0;
@@ -1907,6 +1925,8 @@ namespace InterfaceGraphique
         ////////////////////////////////////////////////////////////////////////
         private void Cible_bouton_Click(object sender, EventArgs e)
         {
+            Cible_bouton.FlatAppearance.BorderColor = Color.DarkOrange;
+            
             //Console.WriteLine("Cible.");
             colorShift = false;
             angleX = 0;
@@ -1947,6 +1967,8 @@ namespace InterfaceGraphique
         ////////////////////////////////////////////////////////////////////////
         private void Portails_bouton_Click(object sender, EventArgs e)
         {
+            Portails_bouton.FlatAppearance.BorderColor = Color.DarkOrange;
+            
             //Console.WriteLine("Portail");
             colorShift = false;
             angleX = 0;
@@ -1987,6 +2009,8 @@ namespace InterfaceGraphique
         ////////////////////////////////////////////////////////////////////////
         private void Mur_bouton_Click(object sender, EventArgs e)
         {
+            Mur_bouton.FlatAppearance.BorderColor = Color.DarkOrange;
+           
             //Console.WriteLine("Mur");
             colorShift = false;
             angleX = 0;
@@ -2010,6 +2034,8 @@ namespace InterfaceGraphique
         ////////////////////////////////////////////////////////////////////////
         private void Gate_Button_Click(object sender, EventArgs e)
         {
+            Gate.FlatAppearance.BorderColor = Color.DarkOrange;
+            
             //Console.WriteLine("Gate");
             colorShift = false;
             angleX = 0;
@@ -3302,7 +3328,96 @@ namespace InterfaceGraphique
         private void SelectAll_MenuItem_Click(object sender, EventArgs e)
         {
             FonctionsNatives.selectAll();
+            nbSelection = FonctionsNatives.obtenirNombreSelection();
             outilsEnable(true);
+        }
+
+        private void PGJ1_bouton_Leave(object sender, EventArgs e)
+        {
+            PGJ1_bouton.FlatAppearance.BorderColor = Color.Black;
+        }
+
+        private void PDJ1_bouton_Leave(object sender, EventArgs e)
+        {
+            PDJ1_bouton.FlatAppearance.BorderColor = Color.Black;
+        }
+
+        private void PGJ2_bouton_Leave(object sender, EventArgs e)
+        {
+            PGJ2_bouton.FlatAppearance.BorderColor = Color.Black;
+        }
+
+        private void PDJ1_bouton_Leave_1(object sender, EventArgs e)
+        {
+            PDJ1_bouton.FlatAppearance.BorderColor = Color.Black;
+        }
+
+        private void PGJ2_bouton_Leave_1(object sender, EventArgs e)
+        {
+            PGJ2_bouton.FlatAppearance.BorderColor = Color.Black;
+        }
+
+        private void PDJ2_bouton_Leave(object sender, EventArgs e)
+        {
+            PDJ2_bouton.FlatAppearance.BorderColor = Color.Black;
+        }
+
+        private void butoirG_bouton_Leave(object sender, EventArgs e)
+        {
+            butoirG_bouton.FlatAppearance.BorderColor = Color.Black;
+        }
+
+        private void butoirD_bouton_Leave(object sender, EventArgs e)
+        {
+            butoirD_bouton.FlatAppearance.BorderColor = Color.Black;
+
+        }
+
+        private void butoirCirc_bouton_Leave(object sender, EventArgs e)
+        {
+            butoirCirc_bouton.FlatAppearance.BorderColor = Color.Black;
+
+        }
+
+        private void Cible_bouton_Leave(object sender, EventArgs e)
+        {
+            Cible_bouton.FlatAppearance.BorderColor = Color.Black;
+
+        }
+
+        private void Mur_bouton_Leave(object sender, EventArgs e)
+        {
+            Mur_bouton.FlatAppearance.BorderColor = Color.Black;
+
+        }
+
+        private void Portails_bouton_Leave(object sender, EventArgs e)
+        {
+            Portails_bouton.FlatAppearance.BorderColor = Color.Black;
+        }
+
+        private void Gate_Leave(object sender, EventArgs e)
+        {
+            Gate.FlatAppearance.BorderColor = Color.Black;
+
+        }
+
+        private void Ressort_bouton_Leave(object sender, EventArgs e)
+        {
+            Ressort_bouton.FlatAppearance.BorderColor = Color.Black;
+
+        }
+
+        private void Generateur_bouton_Leave(object sender, EventArgs e)
+        {
+            Generateur_bouton.FlatAppearance.BorderColor = Color.Black;
+
+        }
+
+        private void Trou_bouton_Leave(object sender, EventArgs e)
+        {
+            Trou_bouton.FlatAppearance.BorderColor = Color.Black;
+
         }
 
     }
