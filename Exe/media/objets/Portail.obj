@@ -1,6 +1,6 @@
 # Blender v2.73 (sub 0) OBJ File: ''
 # www.blender.org
-mtllib Portail.mtl
+mtllib ../materiaux/Portail.mtl
 o BezierCurve_Mesh
 v 19.114529 2.119462 8.771009
 v 16.513172 7.125041 8.789745
