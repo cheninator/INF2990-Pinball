@@ -82,6 +82,11 @@ FacadeModele* FacadeModele::instance_{ nullptr };
 #define coinGaucheTableY -190//  SingletonGlobal::obtenirInstance()->obtenirBoiteTable().coinMax.y
 #define coinDroitTableX 272//  SingletonGlobal::obtenirInstance()->obtenirBoiteTable().coinMin.x
 #define coinDroitTableY 96//  SingletonGlobal::obtenirInstance()->obtenirBoiteTable().coinMin.x
+#define MINIMUM_TROIS 0
+#define RAPPORT_BILLE_GENERATEUR 1
+#define EST_DEFAUT 2
+#define AUTORISE 3
+#define REFUSE 4
 
 ////////////////////////////////////////////////////////////////////////
 ///
@@ -1093,6 +1098,57 @@ int FacadeModele::creerXML(std::string path, int prop[6], bool force)
 
 	return sauvegardeAutorise;
 }
+
+
+///////////////////////////////////////////////////////////////////////////////
+///
+/// @fn void FacadeModele::creerXML(char* path, int prop[6])
+///	@remark	Enregistre une zone de jeu en fichier XML
+///
+/// @return Aucune.
+///
+///////////////////////////////////////////////////////////////////////////////
+int FacadeModele::peutSauvegarder()
+{
+	// Ne pas permettre la sauvegarde si la zone ne contient pas au minimum  3 objets
+	if (FacadeModele::obtenirInstance()->obtenirArbreRenduINF2990()->getEnfant(0)->obtenirNombreEnfants() < 3)
+	{
+		return MINIMUM_TROIS;
+	}
+
+	/// Ne pas permettre la sauvegarde si la taille de la bille est plus petite que la taille de la bille
+	if (FacadeModele::obtenirInstance()->obtenirScaleMinMax() < 0)
+	{
+		return RAPPORT_BILLE_GENERATEUR;
+	}
+
+	// Ne pas permettre de sauvegarder la zone de jeu par defaut
+	if (FacadeModele::obtenirInstance()->obtenirArbreRenduINF2990()->getEnfant(0)->chercher("generateurbille")
+		&& FacadeModele::obtenirInstance()->obtenirArbreRenduINF2990()->getEnfant(0)->chercher("trou")
+		&& FacadeModele::obtenirInstance()->obtenirArbreRenduINF2990()->getEnfant(0)->chercher("ressort")
+		&& FacadeModele::obtenirInstance()->obtenirArbreRenduINF2990()->getEnfant(0)->obtenirNombreEnfants() == 3
+		&& FacadeModele::obtenirInstance()->obtenirArbreRenduINF2990()->estDefaut())
+	{
+		return EST_DEFAUT;
+	}
+
+	// Permettre la sauvegarde que lorsque il y a les 3 objets obligatoires + d'autres objets
+	if (FacadeModele::obtenirInstance()->obtenirArbreRenduINF2990()->getEnfant(0)->chercher("generateurbille")
+		&& FacadeModele::obtenirInstance()->obtenirArbreRenduINF2990()->getEnfant(0)->chercher("trou")
+		&& FacadeModele::obtenirInstance()->obtenirArbreRenduINF2990()->getEnfant(0)->chercher("ressort")
+		&& FacadeModele::obtenirInstance()->obtenirArbreRenduINF2990()->getEnfant(0)->obtenirNombreEnfants() > 3)
+	{
+		return AUTORISE;
+	}
+
+	// Ne pas permettre dans les autres cas
+	else
+		return REFUSE;
+
+
+}
+
+
 
 
 ///////////////////////////////////////////////////////////////////////////////

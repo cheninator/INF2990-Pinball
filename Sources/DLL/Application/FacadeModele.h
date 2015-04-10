@@ -116,6 +116,9 @@ public:
 	/// Pour la sauvegarde de fichier XML
 	int creerXML(std::string path, int prop[6], bool force = false);
 
+	/// Retourne true si la sauvegarde est autorise
+	int peutSauvegarder();
+
 	/// Verifier si un point clique est dans la table 
 	bool estDansTable(glm::dvec3 pointDuMonde);
 

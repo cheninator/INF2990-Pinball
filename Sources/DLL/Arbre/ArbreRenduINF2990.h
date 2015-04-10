@@ -70,7 +70,7 @@ public:
    std::vector<NoeudAbstrait*> obtenirElementsTable();
 
    // /// Permet de savoir si l'arbre est la zone de jeu par defaut
-   //bool estDefaut() const;
+   bool estDefaut() const;
 
    /// Obtenir un noeud selon son numero
    NoeudAbstrait* obtenirNoeudSelonNumero(int numero);
@@ -102,11 +102,11 @@ private:
 	bool lireXML(tinyxml2::XMLDocument& doc);
 
 	// Definir ce qu'est la zone de jeu par defaut
-	//void assignerDefaut();
+	void assignerDefaut();
 
 	/// Proprietes de la zone de jeu
 	int* proprietes_ = new int[6];
-	/*
+	
 	// Zone de jeu par defaut
 	glm::dvec3 posRessort;
 	glm::dvec3 scaleRessort;
@@ -117,7 +117,7 @@ private:
 	glm::dvec3 posGenerateur;
 	glm::dvec3 scaleGenerateur;
 	glm::dvec3 angleGenerateur;
-	*/
+	
 	std::vector<NoeudAbstrait*> listeNoeuds_;
 
 };
