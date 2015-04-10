@@ -44,8 +44,6 @@ public:
 	 
 private:
 
-	double translateX { 0 };
-
 };
 
 #endif // __ARBRE_NOEUDS_NOEUDCOUVERCLE_H__

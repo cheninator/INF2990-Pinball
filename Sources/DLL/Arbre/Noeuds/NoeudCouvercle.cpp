@@ -17,7 +17,7 @@
 #include "Modele3D.h"
 #include "OpenGL_Storage/ModeleStorage_Liste.h"
 
-# define deplacementCouvercle abs(SingletonGlobal::obtenirInstance()->obtenirBoiteTable().coinMax.x - SingletonGlobal::obtenirInstance()->obtenirBoiteTable().coinMin.x + MARGE_NOEUD_COUVERCLE)
+# define deplacementCouvercle (abs(SingletonGlobal::obtenirInstance()->obtenirBoiteTable().coinMax.x - SingletonGlobal::obtenirInstance()->obtenirBoiteTable().coinMin.x) * cos(INCLINAISON_NOEUD_COUVERCLE) - MARGE_NOEUD_COUVERCLE)
 ////////////////////////////////////////////////////////////////////////
 ///
 /// @fn NoeudCouvercle::NoeudCouvercle(const std::string& typeNoeud)
@@ -67,7 +67,10 @@ void NoeudCouvercle::afficherConcret() const
 	// Sauvegarde de la matrice.
 	glPushMatrix();
 	//glPushAttrib(GL_ALL_ATTRIB_BITS);
-	glTranslatef(TRANSLATE_X_NOEUD_TABLE + translateX, TRANSLATE_Y_NOEUD_TABLE, 0);
+	float translateZ = SingletonGlobal::obtenirInstance()->obtenirBoiteTable().coinMin.z;
+	translateZ = translateZ - boite_.coinMin.z;
+	glTranslatef(TRANSLATE_X_NOEUD_TABLE, TRANSLATE_Y_NOEUD_TABLE, translateZ);
+
 	//NoeudAbstrait::appliquerAfficher();
 	glStencilFunc(GL_ALWAYS, 0, -1);
 	liste_->dessiner();
@@ -90,31 +93,24 @@ void NoeudCouvercle::afficherConcret() const
 ////////////////////////////////////////////////////////////////////////
 void NoeudCouvercle::animer(float temps)
 {
-	static bool firstTime = true;
-	if (firstTime || translateX == 0)
-	{
-		// Appel a la version de la classe de base pour l'animation des enfants.
-		double tableZ = SingletonGlobal::obtenirInstance()->obtenirBoiteTable().coinMax.z
-			- obtenirParent()->getEnfant(0)->obtenirPositionRelative().z;
-		double couvercleZ = boite_.coinMin.z;
-		// pourquoi 3 ? AUCUNE IDEE
-		positionRelative_.z = 3*(tableZ - couvercleZ);
-		firstTime = false;
-	}
 	for (NoeudAbstrait * enfant : enfants_) {
 		enfant->animer(temps);
 	}
+
 	//if (!animer_)
 	//	return;
+	double useless = positionRelative_.z;
 
-	if (translateX > -deplacementCouvercle) {
-		translateX -= temps * (deplacementCouvercle / TEMPS_ANIMATION_NOEUD_COUVERCLE);
-		rotation_.y -= INCLINAISON_NOEUD_COUVERCLE / (TEMPS_ANIMATION_NOEUD_COUVERCLE / temps);
-		//positionRelative_.z = temps * (deplacement / TEMPS_ANIMATION_NOEUD_COUVERCLE);
+	// Il me faut la boite qui prend en compte la rotation
+
+	if (positionRelative_.x > -deplacementCouvercle) {
+		positionRelative_.x -= temps * (deplacementCouvercle / TEMPS_ANIMATION_NOEUD_COUVERCLE);
+		//rotation_.y -= INCLINAISON_NOEUD_COUVERCLE / (TEMPS_ANIMATION_NOEUD_COUVERCLE / temps);
+		//positionRelative_.z = temps * (deplacementCouvercle / TEMPS_ANIMATION_NOEUD_COUVERCLE);
 	}
 	else
 		animer_ = false;
-	double useless = positionRelative_.z;
+
 }
 
 ////////////////////////////////////////////////////////////////////////
