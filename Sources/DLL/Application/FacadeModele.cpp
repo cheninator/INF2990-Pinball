@@ -331,8 +331,11 @@ void FacadeModele::afficher() const
 
 	// Compte de l'affichage
 	utilitaire::CompteurAffichage::obtenirInstance()->signalerAffichage();
+	glMatrixMode(GL_MODELVIEW);
+	glPushMatrix();
 	glLoadIdentity();
 	glMatrixMode(GL_PROJECTION);
+	glPushMatrix();
 	glLoadIdentity();
 	if (pause_) {
 		glClearColor(0.0f, 0.0f, 0.0f, 0.5f); // Black Background
@@ -352,7 +355,9 @@ void FacadeModele::afficher() const
 	else {
 		glClearColor(0.7843f, 0.7843f, 0.7843f, 0.0f);
 	}
-
+	glPopMatrix();
+	glMatrixMode(GL_MODELVIEW);
+	glPopMatrix();
 	// echange les tampons pour que le resultat du rendu soit visible.
 	::SwapBuffers(hDC_);
 }
