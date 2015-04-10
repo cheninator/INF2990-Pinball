@@ -42,8 +42,8 @@ public:
 	/// Retourne l'enfant du noeud courant.
 	virtual NoeudAbstrait* getEnfant(int i) { return NoeudComposite::getEnfant(i); };
 
-	///Obtenir les 4 vecteurs de la boite englobante modifie
-	virtual void obtenirVecteursBoite(glm::dvec3 &v1, glm::dvec3 &v2, glm::dvec3 &v3, glm::dvec3 &v4);
+	//Obtenir les 4 vecteurs de la boite englobante modifie
+	//virtual void obtenirVecteursBoite(glm::dvec3 &v1, glm::dvec3 &v2, glm::dvec3 &v3, glm::dvec3 &v4);
 	 
 private:
 

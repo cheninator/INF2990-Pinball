@@ -117,13 +117,7 @@ void NoeudCouvercle::animer(float temps)
 	}
 
 
-	// On calcule a boite englobante (prenant en compte les rotations
 
-
-	// On calcule la hauteur de la table
-	// float translateZ = SingletonGlobal::obtenirInstance()->obtenirBoiteTable().coinMin.z;
-	// On se deplace pour que notre coin superieur gauche soit a la meme hauteur que la table
-	// positionRelative_.z = translateZ - v1.z; // Ici devrais etre la boite tenant compte des rotations en z
 }
 
 ////////////////////////////////////////////////////////////////////////
@@ -145,7 +139,7 @@ bool NoeudCouvercle::accepterVisiteur(VisiteurAbstrait* vis)
 	return reussi;
 }
 
-
+/*
 ////////////////////////////////////////////////////////////////////////
 ///
 /// @fn void NoeudCouvercle::obtenirVecteursBoite(glm::dvec3 &v1, glm::dvec3 &v2, glm::dvec3 &v3, glm::dvec3 &v4)
@@ -198,3 +192,4 @@ void NoeudCouvercle::obtenirVecteursBoite(glm::dvec3 &v1, glm::dvec3 &v2, glm::d
 	v3 = transformY*transform * v3;
 	v4 = transformY*transform * v4;
 }
+*/
