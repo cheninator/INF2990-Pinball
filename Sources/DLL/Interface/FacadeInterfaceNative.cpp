@@ -920,6 +920,21 @@ extern "C"
 
 	///////////////////////////////////////////////////////////////////////////////
 	///
+	/// @fn void selectAll( void )
+	///
+	/// @return Aucun
+	///
+	/// @remark : Ca deselectionne tout
+	///
+	///////////////////////////////////////////////////////////////////////////////
+	__declspec(dllexport) void __cdecl selectAll(void)
+	{
+		FacadeModele::obtenirInstance()->obtenirArbreRenduINF2990()->getEnfant(0)->selectionnerTout();
+	}
+
+
+	///////////////////////////////////////////////////////////////////////////////
+	///
 	/// @fn void dupliquerSelection(int i, int j)
 	///
 	/// @param[in] i : point suivant i de la souris

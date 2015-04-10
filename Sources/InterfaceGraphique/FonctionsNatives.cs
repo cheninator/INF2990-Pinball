@@ -165,6 +165,9 @@ namespace InterfaceGraphique
         public static extern void deselectAll();
 
         [DllImport(@"Noyau.dll", CallingConvention = CallingConvention.Cdecl)]
+        public static extern void selectAll();
+
+        [DllImport(@"Noyau.dll", CallingConvention = CallingConvention.Cdecl)]
         public static extern double getPositionX();
 
         [DllImport(@"Noyau.dll", CallingConvention = CallingConvention.Cdecl)]

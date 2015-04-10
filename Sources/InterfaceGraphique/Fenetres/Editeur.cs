@@ -317,6 +317,8 @@ namespace InterfaceGraphique
             {
                 FonctionsNatives.compresserRessort();
             }
+
+        
             // TODO
         }
 
@@ -3293,6 +3295,12 @@ namespace InterfaceGraphique
         {
             FonctionsNatives.sauvegarderHistorique();
             Annuler_ToolStrip.Enabled = true;
+        }
+
+        private void SelectAll_MenuItem_Click(object sender, EventArgs e)
+        {
+            FonctionsNatives.selectAll();
+            outilsEnable(true);
         }
 
     }
