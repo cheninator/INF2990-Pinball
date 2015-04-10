@@ -67,7 +67,6 @@ void NoeudCouvercle::afficherConcret() const
 	// Sauvegarde de la matrice.
 	glPushMatrix();
 	//glPushAttrib(GL_ALL_ATTRIB_BITS);
-	// glTranslatef(TRANSLATE_X_NOEUD_TABLE, TRANSLATE_Y_NOEUD_TABLE, NULL);
 
 	//NoeudAbstrait::appliquerAfficher();
 	glStencilFunc(GL_ALWAYS, 0, -1);
@@ -100,10 +99,18 @@ void NoeudCouvercle::animer(float temps)
 	if (!animer_)
 		return;
 
+	glm::dvec3 v1, v2, v3, v4;
+	obtenirVecteursBoite(v1, v2, v3, v4);
+
+
+	const double HAUTEUR_ORIGINALE = 30.0;
+	const double DEMIE_LARGEUR = abs(v1.x - v3.x) / 2.0;
 	// Tant que on as pas deplacer de la largeur de la table, on continue a se deplacer
 	if (positionRelative_.x > -deplacementCouvercle) {
 		// On se deplace en prenant en compte le temps de deplacement
 		positionRelative_.x -= temps * (deplacementCouvercle / TEMPS_ANIMATION_NOEUD_COUVERCLE);
+		// Maintenir la hauteur du cote droit du couvercle.
+		positionRelative_.z = HAUTEUR_ORIGINALE + sin(utilitaire::DEG_TO_RAD(rotation_.y))*DEMIE_LARGEUR;
 		// On tourne sur soit en meme temps
 		rotation_.y -= INCLINAISON_NOEUD_COUVERCLE / (TEMPS_ANIMATION_NOEUD_COUVERCLE / temps);
 	}
@@ -113,13 +120,12 @@ void NoeudCouvercle::animer(float temps)
 
 
 	// On calcule a boite englobante (prenant en compte les rotations
-	glm::dvec3 v1, v2, v3, v4;
-	obtenirVecteursBoite(v1, v2, v3, v4);
+
 
 	// On calcule la hauteur de la table
-	float translateZ = SingletonGlobal::obtenirInstance()->obtenirBoiteTable().coinMin.z;
+	// float translateZ = SingletonGlobal::obtenirInstance()->obtenirBoiteTable().coinMin.z;
 	// On se deplace pour que notre coin superieur gauche soit a la meme hauteur que la table
-	positionRelative_.z = translateZ - v1.z; // Ici devrais etre la boite tenant compte des rotations en z
+	// positionRelative_.z = translateZ - v1.z; // Ici devrais etre la boite tenant compte des rotations en z
 }
 
 ////////////////////////////////////////////////////////////////////////
@@ -177,7 +183,7 @@ void NoeudCouvercle::obtenirVecteursBoite(glm::dvec3 &v1, glm::dvec3 &v2, glm::d
 	v4 = echelle * v4;
 
 	//calcul matrice de rotation
-	double angleEnRadian = -rotation_[1] * utilitaire::PI_180;
+	double angleEnRadian = -rotation_[2] * utilitaire::PI_180;
 	glm::dmat3 transform = glm::dmat3{ glm::dvec3{ cos(angleEnRadian), -sin(angleEnRadian), 0.0 },
 		glm::dvec3{ sin(angleEnRadian), cos(angleEnRadian), 0.0f },
 		glm::dvec3{ 0.0, 0.0, 1.0 } };
