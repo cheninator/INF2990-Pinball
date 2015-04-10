@@ -103,7 +103,7 @@ void NoeudCouvercle::animer(float temps)
 	// Tant que on as pas deplacer de la largeur de la table, on continue a se deplacer
 	if (positionRelative_.x > -deplacementCouvercle) {
 		// On se deplace en prenant en compte le temps de deplacement
-		// positionRelative_.x -= temps * (deplacementCouvercle / TEMPS_ANIMATION_NOEUD_COUVERCLE);
+		positionRelative_.x -= temps * (deplacementCouvercle / TEMPS_ANIMATION_NOEUD_COUVERCLE);
 		// On tourne sur soit en meme temps
 		rotation_.y -= INCLINAISON_NOEUD_COUVERCLE / (TEMPS_ANIMATION_NOEUD_COUVERCLE / temps);
 	}
