@@ -68,7 +68,8 @@ void NoeudCouvercle::afficherConcret() const
 	glPushMatrix();
 	//glPushAttrib(GL_ALL_ATTRIB_BITS);
 	float translateZ = SingletonGlobal::obtenirInstance()->obtenirBoiteTable().coinMin.z;
-	translateZ = translateZ - boite_.coinMin.z;
+	translateZ = translateZ - boite_.coinMin.z; // Ici devrais etre la boite tenant compte des rotations
+	//translateZ = SOME_INT;
 	glTranslatef(TRANSLATE_X_NOEUD_TABLE, TRANSLATE_Y_NOEUD_TABLE, translateZ);
 
 	//NoeudAbstrait::appliquerAfficher();
@@ -105,12 +106,11 @@ void NoeudCouvercle::animer(float temps)
 
 	if (positionRelative_.x > -deplacementCouvercle) {
 		positionRelative_.x -= temps * (deplacementCouvercle / TEMPS_ANIMATION_NOEUD_COUVERCLE);
-		//rotation_.y -= INCLINAISON_NOEUD_COUVERCLE / (TEMPS_ANIMATION_NOEUD_COUVERCLE / temps);
+		rotation_.y -= INCLINAISON_NOEUD_COUVERCLE / (TEMPS_ANIMATION_NOEUD_COUVERCLE / temps);
 		//positionRelative_.z = temps * (deplacementCouvercle / TEMPS_ANIMATION_NOEUD_COUVERCLE);
 	}
 	else
 		animer_ = false;
-
 }
 
 ////////////////////////////////////////////////////////////////////////
