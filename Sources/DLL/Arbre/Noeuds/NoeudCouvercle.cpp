@@ -103,7 +103,8 @@ void NoeudCouvercle::animer(float temps)
 	double useless = positionRelative_.z;
 
 	// Il me faut la boite qui prend en compte la rotation
-
+	glm::dvec3 v1, v2, v3, v4;
+	obtenirVecteursBoite(v1, v2, v3, v4);
 	if (positionRelative_.x > -deplacementCouvercle) {
 		positionRelative_.x -= temps * (deplacementCouvercle / TEMPS_ANIMATION_NOEUD_COUVERCLE);
 		rotation_.y -= INCLINAISON_NOEUD_COUVERCLE / (TEMPS_ANIMATION_NOEUD_COUVERCLE / temps);
@@ -132,3 +133,50 @@ bool NoeudCouvercle::accepterVisiteur(VisiteurAbstrait* vis)
 	return reussi;
 }
 
+
+////////////////////////////////////////////////////////////////////////
+///
+/// @fn void NoeudCouvercle::obtenirVecteursBoite(glm::dvec3 &v1, glm::dvec3 &v2, glm::dvec3 &v3, glm::dvec3 &v4)
+///
+/// Cette fonction obtient les vecteurs de la boite.
+///
+/// @param[out] v1 : Vecteur 1.
+/// @param[out] v2 : Vecteur 2.
+/// @param[out] v3 : Vecteur 3.
+/// @param[out] v4 : Vecteur 4.
+///
+/// @return Aucune
+///
+////////////////////////////////////////////////////////////////////////
+void NoeudCouvercle::obtenirVecteursBoite(glm::dvec3 &v1, glm::dvec3 &v2, glm::dvec3 &v3, glm::dvec3 &v4)
+{
+	//initialiser les vecteurs
+	v1 = boite_.coinMin;
+	v2.x = boite_.coinMin.x;
+	v2.y = boite_.coinMax.y;
+	v3 = boite_.coinMax;
+	v4.x = boite_.coinMax.x;
+	v4.y = boite_.coinMin.y;
+
+	glm::dmat3 echelle = glm::dmat3{ glm::dvec3{ scale_.x, 0, 0.0 },
+		glm::dvec3{ 0, scale_.y , 0.0f },
+		glm::dvec3{ 0.0, 0.0, scale_.z } };
+
+	//mise a l'echelle des vecteurs
+	v1 = echelle * v1;
+	v2 = echelle * v2;
+	v3 = echelle * v3;
+	v4 = echelle * v4;
+
+	//calcul matrice de rotation
+	double angleEnRadian = -rotation_[1] * utilitaire::PI_180;
+	glm::dmat3 transform = glm::dmat3{ glm::dvec3{ cos(angleEnRadian), -sin(angleEnRadian), 0.0 },
+		glm::dvec3{ sin(angleEnRadian), cos(angleEnRadian), 0.0f },
+		glm::dvec3{ 0.0, 0.0, 1.0 } };
+
+	//applique la rotation aux vecteurs
+	v1 = transform * v1;
+	v2 = transform * v2;
+	v3 = transform * v3;
+	v4 = transform * v4;
+}
