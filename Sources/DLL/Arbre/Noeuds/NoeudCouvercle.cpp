@@ -67,10 +67,7 @@ void NoeudCouvercle::afficherConcret() const
 	// Sauvegarde de la matrice.
 	glPushMatrix();
 	//glPushAttrib(GL_ALL_ATTRIB_BITS);
-	float translateZ = SingletonGlobal::obtenirInstance()->obtenirBoiteTable().coinMin.z;
-	translateZ = translateZ - boite_.coinMin.z; // Ici devrais etre la boite tenant compte des rotations
-	//translateZ = SOME_INT;
-	glTranslatef(TRANSLATE_X_NOEUD_TABLE, TRANSLATE_Y_NOEUD_TABLE, translateZ);
+	glTranslatef(TRANSLATE_X_NOEUD_TABLE, TRANSLATE_Y_NOEUD_TABLE, NULL);
 
 	//NoeudAbstrait::appliquerAfficher();
 	glStencilFunc(GL_ALWAYS, 0, -1);
@@ -112,6 +109,9 @@ void NoeudCouvercle::animer(float temps)
 	}
 	else
 		animer_ = false;
+	SingletonGlobal::obtenirInstance()->obtenirBoiteTable().coinMin;
+	float translateZ = SingletonGlobal::obtenirInstance()->obtenirBoiteTable().coinMin.z;
+	positionRelative_.z = translateZ - v1.z; // Ici devrais etre la boite tenant compte des rotations en z
 }
 
 ////////////////////////////////////////////////////////////////////////
@@ -160,7 +160,7 @@ void NoeudCouvercle::obtenirVecteursBoite(glm::dvec3 &v1, glm::dvec3 &v2, glm::d
 
 	glm::dmat3 echelle = glm::dmat3{ glm::dvec3{ scale_.x, 0, 0.0 },
 		glm::dvec3{ 0, scale_.y , 0.0f },
-		glm::dvec3{ 0.0, 0.0, scale_.z } };
+		glm::dvec3{ 0.0, 0.0, scale_.z } };	//TODO something for the z
 
 	//mise a l'echelle des vecteurs
 	v1 = echelle * v1;
