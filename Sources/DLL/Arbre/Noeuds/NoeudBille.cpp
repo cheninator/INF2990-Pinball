@@ -140,10 +140,8 @@ void NoeudBille::animer(float temps) // rajouter des parametres ou une fonction 
 	// Somme des forces agissant sur les particules.
 	// =============================================
 
-	double positionCouvercleX = obtenirParent()->obtenirParent()->getEnfant(1)->obtenirPositionRelative().x;
-	if (positionCouvercleX != positionCouvercleX_)
+	if (obtenirParent()->obtenirParent()->getEnfant(1)->obtenirAnimer())
 	{
-		positionCouvercleX_ = positionCouvercleX;
 		return;
 	}
 

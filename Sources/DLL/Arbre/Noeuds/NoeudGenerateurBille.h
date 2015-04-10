@@ -54,7 +54,6 @@ private:
 	float compteurAnimation_ { 0 };
 	float compteurAnimationBouger_{ 0 };
 	double distanceBouger_ { 0 };
-	double positionCouvercleX_{ -1 };
 	// Vu que le temps n'est pas constant, on dois remettre la table a sa position par defaut
 	glm::dvec3 positionPreDeplacement_{ 0 };
 	int billesGenerer_{ -2 };

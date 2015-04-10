@@ -17,6 +17,7 @@
 #include "Modele3D.h"
 #include "OpenGL_Storage/ModeleStorage_Liste.h"
 
+# define deplacementCouvercle (abs(abs(boite_.coinMax.y - boite_.coinMin.y) * scale_.x * sin(INCLINAISON_NOEUD_COUVERCLE)) - MARGE_NOEUD_COUVERCLE)
 ////////////////////////////////////////////////////////////////////////
 ///
 /// @fn NoeudCouvercle::NoeudCouvercle(const std::string& typeNoeud)
@@ -66,7 +67,7 @@ void NoeudCouvercle::afficherConcret() const
 	// Sauvegarde de la matrice.
 	glPushMatrix();
 	//glPushAttrib(GL_ALL_ATTRIB_BITS);
-	glTranslatef(200, -50, 0);
+	glTranslatef(TRANSLATE_X_NOEUD_TABLE + translateX, TRANSLATE_Y_NOEUD_TABLE, 0);
 	//NoeudAbstrait::appliquerAfficher();
 	glStencilFunc(GL_ALWAYS, 0, -1);
 	liste_->dessiner();
@@ -89,16 +90,31 @@ void NoeudCouvercle::afficherConcret() const
 ////////////////////////////////////////////////////////////////////////
 void NoeudCouvercle::animer(float temps)
 {
-	static const double deplacement = abs(abs(boite_.coinMax.y - boite_.coinMin.y) * scale_.x * sin(INCLINAISON_NOEUD_COUVERCLE)) - MARGE_NOEUD_COUVERCLE;
-	// Appel a la version de la classe de base pour l'animation des enfants.
-	NoeudComposite::animer(temps);
+	static bool firstTime = true;
+	if (firstTime || translateX == 0)
+	{
+		// Appel a la version de la classe de base pour l'animation des enfants.
+		double tableZ = SingletonGlobal::obtenirInstance()->obtenirBoiteTable().coinMax.z
+			- obtenirParent()->getEnfant(0)->obtenirPositionRelative().z;
+		double couvercleZ = boite_.coinMin.z;
+		// pourquoi 3 ? AUCUNE IDEE
+		positionRelative_.z = 3 * (tableZ - couvercleZ);
+		firstTime = false;
+	}
+	for (NoeudAbstrait * enfant : enfants_) {
+		enfant->animer(temps);
+	}
 	//if (!animer_)
 	//	return;
-	if (positionRelative_.x > -deplacement) {
-		positionRelative_.x -= temps * (deplacement / TEMPS_ANIMATION_NOEUD_COUVERCLE);
+
+	if (translateX > -deplacementCouvercle) {
+		translateX -= temps * (deplacementCouvercle / TEMPS_ANIMATION_NOEUD_COUVERCLE);
 		rotation_.y -= INCLINAISON_NOEUD_COUVERCLE / (TEMPS_ANIMATION_NOEUD_COUVERCLE / temps);
-		positionRelative_.z -= temps * (deplacement / TEMPS_ANIMATION_NOEUD_COUVERCLE);
+		//positionRelative_.z = temps * (deplacement / TEMPS_ANIMATION_NOEUD_COUVERCLE);
 	}
+	else
+		animer_ = false;
+	double useless = positionRelative_.z;
 }
 
 ////////////////////////////////////////////////////////////////////////

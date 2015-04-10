@@ -97,11 +97,9 @@ void NoeudGenerateurBille::animer(float temps)
 			enCreation_ = false;
 	}
 
-	double positionCouvercleX = obtenirParent()->obtenirParent()->getEnfant(1)->obtenirPositionRelative().x;
-	if (positionCouvercleX != positionCouvercleX_)
+	if (obtenirParent()->obtenirParent()->getEnfant(1)->obtenirAnimer())
 	{
 		positionRelative_.z = posZfinal - posZinitial;;
-		positionCouvercleX_ = positionCouvercleX;
 		return;
 	}
 

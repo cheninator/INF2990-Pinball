@@ -57,7 +57,6 @@ public:
 	void NoeudBille::mettreAJourCollision(NoeudAbstrait* noeud);
 
 private:
-	double positionCouvercleX_{ -1 };
 	float timerMove_{ 0 };
 	bool enCreation_{ true };
 	double posZinitial;
