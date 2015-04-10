@@ -1643,6 +1643,7 @@ namespace InterfaceGraphique
             toolStrip1.Hide();
             Annuler_ToolStrip.Enabled = false;
             Retablir_ToolStrip.Enabled = false;
+            SelectAll_MenuItem.Enabled = false;
             bouton_Creation.Hide();
             FonctionsNatives.animerJeu(true);
             FonctionsNatives.rechargerArbre(false);
@@ -3090,6 +3091,7 @@ namespace InterfaceGraphique
             toolStrip1.Show();
             Annuler_ToolStrip.Enabled = true;
             Retablir_ToolStrip.Enabled = true;
+            SelectAll_MenuItem.Enabled = true;
             bouton_Creation.Show();
             menu1Enable(true);
             Creation_Panel.Show();
