@@ -96,10 +96,6 @@ void NoeudCouvercle::animer(float temps)
 		enfant->animer(temps);
 	}
 
-	// Si on as pas besoin de s'animer, alors en quite
-	if (!animer_)
-		return;
-
 	// Tant que on as pas deplacer de la largeur de la table, on continue a se deplacer
 	if (positionRelative_.x > -deplacementCouvercle) {
 		// On se deplace en prenant en compte le temps de deplacement
@@ -108,9 +104,11 @@ void NoeudCouvercle::animer(float temps)
 		rotation_.y -= INCLINAISON_NOEUD_COUVERCLE / (TEMPS_ANIMATION_NOEUD_COUVERCLE / temps);
 	}
 	else
+	{
 		// On arrete de se deplacer
 		animer_ = false;
-
+		return;
+	}
 
 	// On calcule a boite englobante (prenant en compte les rotations
 	glm::dvec3 v1, v2, v3, v4;
