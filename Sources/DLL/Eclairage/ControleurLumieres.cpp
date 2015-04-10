@@ -62,7 +62,7 @@ void ControleurLumieres::initialiserLumieres()
 // Si 0, les spots suiveurs de bille sont un bleu, un rouge.
 #if(1)
 	// Initialiser lumAmbiante
-	lumAmbiante_->setAmbientColor({ 0.1f, 0.1f, 0.1f, 1.0f });
+	lumAmbiante_->setAmbientColor({ 0.3f, 0.3f, 0.3f, 1.0f });
 	lumAmbiante_->setDiffuseColor({ 0.0f, 0.0f, 0.0f, 1.0f });
 	lumAmbiante_->setSpecularColor({ 0.0f, 0.0f, 0.0f, 1.0f });
 
