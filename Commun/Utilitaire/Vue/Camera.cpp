@@ -253,6 +253,9 @@ namespace vue {
 	////////////////////////////////////////////////////////////////////////
 	void Camera::clampAngles()
 	{
+#if _DEBUG
+		return;
+#endif
 		if (phi_ >= (utilitaire::PI/2.0))
 		{
 #ifdef SHOW_OUTPUT_CAMERA

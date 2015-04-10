@@ -17,7 +17,7 @@
 #include "Modele3D.h"
 #include "OpenGL_Storage/ModeleStorage_Liste.h"
 
-# define deplacementCouvercle (abs(SingletonGlobal::obtenirInstance()->obtenirBoiteTable().coinMax.x - SingletonGlobal::obtenirInstance()->obtenirBoiteTable().coinMin.x) * cos(INCLINAISON_NOEUD_COUVERCLE) - MARGE_NOEUD_COUVERCLE)
+# define deplacementCouvercle (abs(SingletonGlobal::obtenirInstance()->obtenirBoiteTable().coinMax.x - SingletonGlobal::obtenirInstance()->obtenirBoiteTable().coinMin.x) - MARGE_NOEUD_COUVERCLE)
 ////////////////////////////////////////////////////////////////////////
 ///
 /// @fn NoeudCouvercle::NoeudCouvercle(const std::string& typeNoeud)
