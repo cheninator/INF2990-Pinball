@@ -222,9 +222,6 @@ void Originator::appliquerModifications(std::map<int, NoeudAbstrait*> sauvegarde
 				arbreActuel_->getEnfant(0)->chercher(enfantsTable - 2)->setTwin(noeud);
 			}
 		}
-
-
-
 	}
 
 }

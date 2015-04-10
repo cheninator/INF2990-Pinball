@@ -1346,7 +1346,7 @@ namespace InterfaceGraphique
             annulerModif();
 
             if(etat is EtatEditeurSelection)
-                FonctionsNatives.sauvegarderHistorique();
+                sauvegarderHistorique();
 
             etat = null;
             etat = new EtatEditeurDeplacement(this);
@@ -1406,7 +1406,7 @@ namespace InterfaceGraphique
             annulerModif();
 
             if (etat is EtatEditeurSelection)
-                FonctionsNatives.sauvegarderHistorique();
+                sauvegarderHistorique();
 
             etat = null;
             etat = new EtatEditeurRotation(this);
@@ -1431,7 +1431,7 @@ namespace InterfaceGraphique
             annulerModif();
 
             if(etat is EtatEditeurSelection)
-                FonctionsNatives.sauvegarderHistorique();
+                sauvegarderHistorique();
 
             etat = null;
             etat = new EtatEditeurScale(this);
@@ -1494,7 +1494,7 @@ namespace InterfaceGraphique
             annulerModif();
 
             if (etat is EtatEditeurSelection)
-                FonctionsNatives.sauvegarderHistorique();
+                sauvegarderHistorique();
 
             etat = null;
             etat = new EtatEditeurDuplication(this);
@@ -2231,12 +2231,12 @@ namespace InterfaceGraphique
                 panel_GL.MouseMove -= panel_MouseMove;
                 if (e.Button == MouseButtons.Middle)
                 {
-                    FonctionsNatives.sauvegarderHistorique();
+                    sauvegarderHistorique();
                 }
             }
 
             if (etat is EtatEditeurDeplacement || etat is EtatEditeurScale || etat is EtatEditeurRotation)
-                FonctionsNatives.sauvegarderHistorique();
+                sauvegarderHistorique();
 
             if (etat is EtatEditeurDuplication && e.Button == MouseButtons.Left)
             {
@@ -2269,7 +2269,7 @@ namespace InterfaceGraphique
                         stateMur();
                     else
                     {
-                        FonctionsNatives.sauvegarderHistorique();
+                        sauvegarderHistorique();
                         deselection();
                         panel_GL.MouseMove -= panel_MouseMove;
                         etat = new EtatEditeurSelection(this);
@@ -3232,6 +3232,7 @@ namespace InterfaceGraphique
 
             etat = new EtatEditeurSelection(this);
             Annuler_ToolStrip.Enabled = (FonctionsNatives.possedePrecedent());
+            Retablir_ToolStrip.Enabled = (FonctionsNatives.possedeSuivant());
         }
 
         private void Retablir_ToolStrip_Click(object sender, EventArgs e)
@@ -3255,7 +3256,8 @@ namespace InterfaceGraphique
 
             etat = new EtatEditeurSelection(this);
 
-            Annuler_ToolStrip.Enabled = (FonctionsNatives.possedeSuivant());
+            Annuler_ToolStrip.Enabled = (FonctionsNatives.possedePrecedent());
+            Retablir_ToolStrip.Enabled = (FonctionsNatives.possedeSuivant());
         }
 
         private void Supprimer_MenuItem_Click_1(object sender, EventArgs e)
@@ -3271,6 +3273,12 @@ namespace InterfaceGraphique
         private void Retablir_MenuItem_Click(object sender, EventArgs e)
         {
             Retablir_ToolStrip.PerformClick();
+        }
+
+        private void sauvegarderHistorique()
+        {
+            FonctionsNatives.sauvegarderHistorique();
+            Annuler_ToolStrip.Enabled = true;
         }
 
     }
