@@ -40,7 +40,7 @@ namespace InterfaceGraphique
         List<string> myMaps;    ///< liste des zones a jouer
         StringBuilder map;      ///< la zone en jeu
         StringBuilder nextMap;  ///< prochaine zone
-        //StringBuilder bgm;
+        private FullScreen fullscreen = new FullScreen();
         static StringBuilder Points = new StringBuilder("Points : ");
         static StringBuilder Billes = new StringBuilder("Billes : ");
         bool peutAnimer;
@@ -189,8 +189,8 @@ namespace InterfaceGraphique
                 FonctionsNatives.resize(Billes, Billes.Capacity, 35);
 
                 // On specifie une couleur RGB
-                FonctionsNatives.changerCouleurV(Points, Points.Capacity, ColorList.COLOR_Black);
-                FonctionsNatives.changerCouleurV(Billes, Billes.Capacity, ColorList.COLOR_black);
+                FonctionsNatives.changerCouleurV(Points, Points.Capacity, ColorList.COLOR_Green);
+                FonctionsNatives.changerCouleurV(Billes, Billes.Capacity, ColorList.COLOR_White);
 
                 // On specifie la position
                 FonctionsNatives.repositionner(Points, Points.Capacity, 1, 1);
@@ -212,9 +212,24 @@ namespace InterfaceGraphique
                 FonctionsNatives.changerCouleurV(informations, informations.Capacity, ColorList.COLOR_dark_red);
                 FonctionsNatives.repositionner(informations, informations.Capacity, 0, 1);
             }
+
+            fullscreen.EnterFullScreenMode(this);
              
          }
 
+
+
+        public void FullScreenChange()
+        {
+            if (fullscreen.IsFullScreen(this))
+            {
+                fullscreen.LeaveFullScreenMode(this);
+            }
+            else
+            {
+                fullscreen.EnterFullScreenMode(this);
+            }
+        }
         ////////////////////////////////////////////////////////////////////////
         ///
         /// @fn protected void resetConfig()
