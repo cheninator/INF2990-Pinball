@@ -112,6 +112,7 @@ void main()
 	composanteSpeculaire = pow(max(NdotHV[DIRECTIONNELLE], 0.0),100.0) * gl_LightSource[DIRECTIONNELLE].specular;
 	lumiereReflechie[DIRECTIONNELLE] += clamp(composanteAmbiante, 0.0,1.0);
 	lumiereReflechie[DIRECTIONNELLE] += clamp(composanteDiffuse, 0.0,1.0);
+	if(estTable != 1)
 	lumiereReflechie[DIRECTIONNELLE] += clamp(composanteSpeculaire, 0.0,1.0);
 
 	// Lumiere SPOT_A
@@ -127,13 +128,24 @@ void main()
 	float cosInnerA = cosDeltaA;
 	float cosOuterA = pow(cosDeltaA, 1.01 + clamp(cA/2.0, 0.0,4.0));	
 	float effetSpotA = clamp((cosGammaA - cosOuterA)/(cosInnerA - cosOuterA),0.0,1.0);  // Vaut 0 quand cosGamma == cosOuter, vaut 1 quand cosGamma == cosInner
-	if(cosGammaA > 0.9997 && estTable == 1) effetSpotA = 0.0;
+
+
+	float cosChi = 0.9996;
+	float cosXi = 0.9995;
+
+	float effetSpotOmbreBilleA = 1.0;
+	if(estTable == 1)
+	effetSpotOmbreBilleA = clamp((cosChi - cosGammaA)/(cosChi - cosXi),0.0,1.0);
+
+
+
 	composanteAmbiante = gl_LightSource[SPOT_A].ambient*textureColor; // ROUGE
 	composanteDiffuse = max(NdotL[SPOT_A],0.0) * gl_LightSource[SPOT_A].diffuse*textureColor; 
 	composanteSpeculaire = pow(max(NdotHV[SPOT_A], 0.0),50.0) * gl_LightSource[SPOT_A].specular;
-	lumiereReflechie[SPOT_A] += effetSpotA*clamp(composanteAmbiante, 0.0, 1.0) ;
-	lumiereReflechie[SPOT_A] += effetSpotA*clamp(composanteDiffuse, 0.0, 1.0);
-	lumiereReflechie[SPOT_A] += effetSpotA*clamp(composanteSpeculaire, 0.0, 1.0);
+	lumiereReflechie[SPOT_A] += effetSpotOmbreBilleA*effetSpotA*clamp(composanteAmbiante, 0.0, 1.0) ;
+	lumiereReflechie[SPOT_A] += effetSpotOmbreBilleA*effetSpotA*clamp(composanteDiffuse, 0.0, 1.0);
+	if(estTable != 1)
+	lumiereReflechie[SPOT_A] += effetSpotOmbreBilleA*effetSpotA*clamp(composanteSpeculaire, 0.0, 1.0);
 
 	// Lumiere SPOT_B
 	// ==============
@@ -149,12 +161,17 @@ void main()
 	float cosOuterB = pow(cosDeltaB, 1.01 + clamp(cB/2.0, 0.0,4.0));	
 	float effetSpotB = clamp((cosGammaB - cosOuterB)/(cosInnerB - cosOuterB),0.0,1.0);  // Vaut 0 quand cosGamma == cosOuter, vaut 1 quand cosGamma == cosInner
 
+	float effetSpotOmbreBilleB = 1.0;
+	if(estTable == 1)
+	effetSpotOmbreBilleB = clamp((cosChi - cosGammaB)/(cosChi - cosXi),0.0,1.0);
+
 	composanteAmbiante = gl_LightSource[SPOT_B].ambient*textureColor; // ROUGE
 	composanteDiffuse = max(NdotL[SPOT_B],0.0) * gl_LightSource[SPOT_B].diffuse*textureColor; 
 	composanteSpeculaire = pow(max(NdotHV[SPOT_B], 0.0),50.0) * gl_LightSource[SPOT_B].specular;
-	lumiereReflechie[SPOT_B] += effetSpotB*clamp(composanteAmbiante, 0.0, 1.0) ;
-	lumiereReflechie[SPOT_B] += effetSpotB*clamp(composanteDiffuse, 0.0, 1.0);
-	lumiereReflechie[SPOT_B] += effetSpotB*clamp(composanteSpeculaire, 0.0, 1.0);
+	lumiereReflechie[SPOT_B] += effetSpotOmbreBilleB*effetSpotB*clamp(composanteAmbiante, 0.0, 1.0) ;
+	lumiereReflechie[SPOT_B] += effetSpotOmbreBilleB*effetSpotB*clamp(composanteDiffuse, 0.0, 1.0);
+	if(estTable != 1)
+	lumiereReflechie[SPOT_B] += effetSpotOmbreBilleB*effetSpotB*clamp(composanteSpeculaire, 0.0, 1.0);
 
 	// Calcul d'effets a appliquer a la couleur
 	// ========================================
