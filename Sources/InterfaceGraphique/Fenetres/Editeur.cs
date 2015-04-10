@@ -408,7 +408,7 @@ namespace InterfaceGraphique
             }
             if (etat is EtatEditeurTest)
             {
-                if (e.KeyChar == 't')
+                if (Char.ToLower(e.KeyChar) == 't')
                 {
                     if (Program.mMenu.modeEdit != null)
                     {
@@ -421,7 +421,7 @@ namespace InterfaceGraphique
                     Annuler_ToolStrip.Enabled = FonctionsNatives.possedePrecedent();
                     Retablir_ToolStrip.Enabled = FonctionsNatives.possedeSuivant();
                 }
-                else if (e.KeyChar == 'b')
+                else if (Char.ToLower(e.KeyChar) == 'b')
                 {
                     if (FonctionsNatives.obtenirAffichageGlobal() == 0)
                     {
@@ -447,19 +447,19 @@ namespace InterfaceGraphique
                    FonctionsNatives.creerObjet(bille, bille.Capacity);
                 }
                 */
-                else if (e.KeyChar == 'j')
+                else if (Char.ToLower(e.KeyChar) == 'j')
                 {
                     //Console.WriteLine("LUMIERE AMBIANTE");
                     activateAmbianteLight = !activateAmbianteLight;
                     FonctionsNatives.spotLight(0, activateAmbianteLight);
                 }
-                else if (e.KeyChar == 'k')
+                else if (Char.ToLower(e.KeyChar) == 'k')
                 {
                     //Console.WriteLine("LUMIERE DIRECTE");
                     activateDirectLight = !activateDirectLight;
                     FonctionsNatives.spotLight(1, activateDirectLight);
                 }
-                else if (e.KeyChar == 'l')
+                else if (Char.ToLower(e.KeyChar) == 'l')
                 {
                     //Console.WriteLine("LUMIERE SPOTS");
                     activateSpotLight = !activateSpotLight;
@@ -489,7 +489,7 @@ namespace InterfaceGraphique
                     etat = null;
                     etat = new EtatEditeurTest(this);
                 }
-                if (e.KeyChar == 't')
+                if (Char.ToLower(e.KeyChar) == 't')
                 {
                     testRetourModeEdition.PerformClick();
                     OnSizeChanged(e);
@@ -525,14 +525,14 @@ namespace InterfaceGraphique
                     }
 
                 }
-                else if (e.KeyChar == 't')
+                else if (Char.ToLower(e.KeyChar) == 't')
                 {
                     deselection();
                     
                     ModeTest_MenuItem.PerformClick();
                     panel_GL.Focus();
                 }
-                else if (e.KeyChar == 'f')
+                else if (Char.ToLower(e.KeyChar) == 'f')
                 {
                     if (fs.IsFullScreen(this))
                     {
@@ -543,12 +543,12 @@ namespace InterfaceGraphique
                     // A modifier si on veut            
                     //  FonctionsNatives.resetZoom();
                 }
-                else if (e.KeyChar == 's')
+                else if (Char.ToLower(e.KeyChar) == 's')
                 {
                     Selection_MenuItem_Click(this, e);
                 }
                
-                else if (e.KeyChar == 'p')
+                else if (Char.ToLower(e.KeyChar) == 'p')
                 {
                     bouton_Creation_Click(this, e);
                 }
@@ -561,26 +561,26 @@ namespace InterfaceGraphique
                         richTextBox1.Show();
                     */
                 }
-                else if (e.KeyChar == 'z')
+                else if (Char.ToLower(e.KeyChar) == 'z')
                 {
                     Zoom_MenuItem_Click(this, e);
 
                 }
                 else if (nbSelection != 0)
                 {
-                    if (e.KeyChar == 'd')
+                    if (Char.ToLower(e.KeyChar) == 'd')
                     {
                         bouton_Deplacement_Click(this, e);
                     }
-                    else if (e.KeyChar == 'e')
+                    else if (Char.ToLower(e.KeyChar) == 'e')
                     {
                         bouton_Scaling_Click(this, e);
                     }
-                    else if (e.KeyChar == 'r')
+                    else if (Char.ToLower(e.KeyChar) == 'r')
                     {
                         bouton_Rotation_Click(this, e);
                     }
-                    else if (e.KeyChar == 'c')
+                    else if (Char.ToLower(e.KeyChar) == 'c')
                     {
                         bouton_Duplication_Click(this, e);
                     }

@@ -441,7 +441,7 @@ namespace InterfaceGraphique
                 parent_.pauseGame();
             }
 
-            else if (e.KeyChar == 'f')
+            else if (Char.ToLower(e.KeyChar) == 'f')
             {
                 parent_.FullScreenChange();
             }
