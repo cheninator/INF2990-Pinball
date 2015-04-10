@@ -15,7 +15,28 @@
 #include <iostream>
 
 namespace vue {
-
+	////////////////////////////////////////////////////////////////////////
+	///
+	/// @fn ProjectionPerspective::ProjectionPerspective(double xMinCloture, double xMaxCloture, double yMinCloture, double yMaxCloture, double zAvant,  double zArriere, double zoomInMax, double zoomOutMax, double incrementZoom, double xMinFenetre, double xMaxFenetre, double yMinFenetre, double yMaxFenetre)
+	///
+	/// Constructeur d'une projection perspective.  Ne fait qu'assigner les
+	/// variables membres.
+	///
+	/// @param[in] xMinCloture   : coordonnée minimale en @a x de la clôture.
+	/// @param[in] xMaxCloture   : coordonnée maximale en @a x de la clôture.
+	/// @param[in] yMinCloture   : coordonnée minimale en @a y de la clôture.
+	/// @param[in] yMaxCloture   : coordonnée maximale en @a y de la clôture.
+	/// @param[in] zAvant        : distance du plan avant (en @a z).
+	/// @param[in] zArriere      : distance du plan arrière (en @a z).
+	/// @param[in] zoomInMax     : facteur de zoom in maximal.
+	/// @param[in] zoomOutMax    : facteur de zoom out maximal.
+	/// @param[in] incrementZoom : distance du plan arrière (en @a z).
+	/// @param[in] ratio         : rapport d'aspect du plan avant de visualisation
+	/// @param[in] fovy          : angle de visionnement de la vue perspective
+	/// 
+	/// @return Aucune (constructeur).
+	///
+	////////////////////////////////////////////////////////////////////////
 	ProjectionPerspective::ProjectionPerspective(double xMinCloture, double xMaxCloture,
 		double yMinCloture, double yMaxCloture,
 		double zAvant, double zArriere,
@@ -30,6 +51,16 @@ namespace vue {
 		appliquer();
 	}
 
+	////////////////////////////////////////////////////////////////////////
+	///
+	/// @fn void ProjectionPerspective::appliquer() const
+	///
+	/// Cette fonction permet d'appliquer la projection perspective en appelant 
+	/// les fonctions d'OpenGL selon les attributs de la classe.
+	///
+	/// @return Aucune.
+	///
+	////////////////////////////////////////////////////////////////////////
 	void ProjectionPerspective::appliquer() const
 	{
 		glMatrixMode(GL_PROJECTION);
@@ -68,7 +99,7 @@ namespace vue {
 
 	////////////////////////////////////////////////////////////////////////
 	///
-	/// @fn inline glm::ivec2 ProjectionPerspective::obtenirDimensionFenetreVirtuelle() const
+	/// @fn inline glm::dvec2 ProjectionPerspective::obtenirDimensionFenetreVirtuelle() const
 	///
 	/// Cette fonction ne devrait pas exister, pour l'instant il faut
 	/// l'implanter pour éviter des erreurs de méthodes virtuelles pure
@@ -78,9 +109,9 @@ namespace vue {
 	/// @return Les dimensions de la fenêtre virtuellle
 	///
 	////////////////////////////////////////////////////////////////////////
-	inline glm::ivec2 ProjectionPerspective::obtenirDimensionFenetreVirtuelle() const
+	inline glm::dvec2 ProjectionPerspective::obtenirDimensionFenetreVirtuelle() const
 	{
-		return glm::ivec2(-1); // À changer
+		return glm::dvec2(-1.0); // À changer
 	}
 
 

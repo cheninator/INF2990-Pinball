@@ -56,7 +56,7 @@ namespace vue {
 		double obtenirIncrementZoom() const;
 		
 		/// Obtenir la dimension de la fenêtre virtuelle
-		virtual inline glm::ivec2 obtenirDimensionFenetreVirtuelle() const;
+		virtual inline glm::dvec2 obtenirDimensionFenetreVirtuelle() const;
 
 	private:
 		/// Le rapport d'aspect du plan avant de la projection perspective

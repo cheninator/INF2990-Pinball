@@ -20,6 +20,7 @@
 
 namespace vue {
 
+	//#define SHOW_OUTPUT_CAMERA 1
 
 	////////////////////////////////////////////////////////////////////////////
 	///
@@ -119,7 +120,6 @@ namespace vue {
 	}
 
 
-	//#define SHOW_OUTPUT 1
 	////////////////////////////////////////////////////////////////////////////
 	///
 	/// @fn void Camera::orbiterXY( double rotationX, double rotationY, bool empecheInversion )
@@ -155,7 +155,7 @@ namespace vue {
 		std::string informationAngle = "Phi | Theta" + std::to_string(theta_)
 			+ " | " + std::to_string(phi_) + " \n";
 		FacadeModele::obtenirInstance()->obtenircontroleurTexte()->updateText(ancienTexte, );*/
-#ifdef SHOW_OUTPUT
+#ifdef SHOW_OUTPUT_CAMERA
 		std::cout << "RECU --- deltaPhi | deltaTheta" + std::to_string(deltaPhi)
 			+ " | " + std::to_string(deltaTheta) + " \n";
 		std::cout << "Distance : " << dist << std::endl;
@@ -166,7 +166,7 @@ namespace vue {
 
 		// On s'assure de ne pas dépasser certains angles
 		clampAngles();
-#ifdef SHOW_OUTPUT		
+#ifdef SHOW_OUTPUT_CAMERA		
 		std::cout << "Nouveau Phi | Theta" + std::to_string(phi_)
 			+ " | " + std::to_string(theta_) + " \n";
 #endif
@@ -189,6 +189,7 @@ namespace vue {
 	{
 		glMatrixMode(GL_MODELVIEW);
 		glLoadIdentity();
+
 		//	gluLookAt(position_[0], position_[1], position_[2],
 		//		pointVise_[0], pointVise_[1], pointVise_[2],
 		//		directionHaut_[0], directionHaut_[1], directionHaut_[2]);
@@ -199,8 +200,8 @@ namespace vue {
 		glPopMatrix();
 
 		glTranslated(0.0, 0.0, -dist_);
-		glRotated(180.0 / 3.1415 * phi_ - 90.0, 1.0, 0.0, 0.0);
-		glRotated(180.0 / 3.1415 * theta_, 0.0, 0.0, 1.0);
+		glRotated(180.0 / utilitaire::PI * phi_ - 90.0, 1.0, 0.0, 0.0);
+		glRotated(180.0 / utilitaire::PI * theta_, 0.0, 0.0, 1.0);
 		glTranslated(-pointVise_.x, -pointVise_.y, 0.0);
 	}
 
@@ -222,7 +223,7 @@ namespace vue {
 
 	////////////////////////////////////////////////////////////////////////
 	///
-	/// @fn void Camera::positionnerOrbite() const
+	/// @fn void Camera::positionnerOrtho() const
 	///
 	/// Positionne la caméra dans la scène à l'aide de gluLookAt().
 	///
@@ -254,28 +255,28 @@ namespace vue {
 	{
 		if (phi_ >= (utilitaire::PI/2.0))
 		{
-#ifdef SHOW_OUTPUT
+#ifdef SHOW_OUTPUT_CAMERA
 			std::cout << "Angle phi trop grand : on le remet à PI \n";
 #endif
 			phi_ = (utilitaire::PI/2.0) - 0.0001;
 		}
 		else if (phi_ <= (utilitaire::PI/6.0))
 		{
-#ifdef SHOW_OUTPUT
+#ifdef SHOW_OUTPUT_CAMERA
 			std::cout << "Angle phi trop petit : on le remet à 0 \n";
 #endif
 			phi_ = (utilitaire::PI/6.0) +0.0001;
 		}
 		if (theta_ >= utilitaire::PI / 2.0)
 		{
-#ifdef SHOW_OUTPUT
+#ifdef SHOW_OUTPUT_CAMERA
 			std::cout << "Angle theta trop grand : on le remet à PI \n";
 #endif
 			theta_ = (utilitaire::PI / 2.0) - 0.0001;
 		}
 		else if (theta_ <= -utilitaire::PI / 2.0)
 		{
-#ifdef SHOW_OUTPUT
+#ifdef SHOW_OUTPUT_CAMERA
 			std::cout << "Angle theta trop petit : on le remet à 0 \n";
 #endif
 			theta_ = -(utilitaire::PI / 2.0) + 0.0001;
