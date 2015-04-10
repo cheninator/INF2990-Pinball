@@ -50,7 +50,7 @@ public :
 	void assignerArbre(ArbreRenduINF2990* arbre) { arbreActuel_ = arbre; };
 
 	/// Retourne vrai si on n'est pas à la fin de l'historique de sauvegarde
-	bool possedeSuivant()	const{ return ((position_ + 1 != historique_->size()) && position_ != 0); };
+	bool possedeSuivant()	const{ return ((position_ + 1 != historique_->size()) && historique_->size() != 0); };
 
 	/// Retourne vrai si on n'est pas au debut de l'historique de sauvegarde
 	bool possedePrecedent() const{ return (position_ != 0); };

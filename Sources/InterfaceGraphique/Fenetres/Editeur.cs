@@ -3244,6 +3244,7 @@ namespace InterfaceGraphique
                 proprietesEnable(false);
 
             etat = new EtatEditeurSelection(this);
+
             Annuler_ToolStrip.Enabled = (FonctionsNatives.possedePrecedent());
             Retablir_ToolStrip.Enabled = (FonctionsNatives.possedeSuivant());
         }

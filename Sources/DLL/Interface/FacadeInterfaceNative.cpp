@@ -2197,36 +2197,92 @@ extern "C"
 		FacadeModele::obtenirInstance()->utiliserCameraOrbite(utiliseOrbite);
 	}
 
+
+	///////////////////////////////////////////////////////////////////////////////
+	///
+	/// @fn void sauvegarderHistorique()
+	/// @brief Sauvegarde l'etat de l'arbre de rendu
+	/// @return Aucune.
+	///
+	///////////////////////////////////////////////////////////////////////////////
 	__declspec(dllexport) void sauvegarderHistorique()
 	{
 		FacadeModele::obtenirInstance()->sauvegarderHistorique();
 	}
 
+
+	///////////////////////////////////////////////////////////////////////////////
+	///
+	/// @fn void annulerModifications()
+	/// @brief Annule les modifications et restaure l'arbre de rendu
+	/// @return Aucune.
+	///
+	///////////////////////////////////////////////////////////////////////////////
 	__declspec(dllexport) void annulerModifications()
 	{
 		FacadeModele::obtenirInstance()->annulerModifications();
 	}
 
+
+	///////////////////////////////////////////////////////////////////////////////
+	///
+	/// @fn void retablirModifications()
+	/// @brief Retablit les modifications et restaure l'arbre de rendu
+	/// @return Aucune.
+	///
+	///////////////////////////////////////////////////////////////////////////////
 	__declspec(dllexport) void retablirModifications()
 	{
 		FacadeModele::obtenirInstance()->retablirModifications();
 	}
+	
 
+	///////////////////////////////////////////////////////////////////////////////
+	///
+	/// @fn void viderHistorique()
+	/// @brief Vide l'historique des dernieres modifications
+	/// @return Aucune.
+	///
+	///////////////////////////////////////////////////////////////////////////////
 	__declspec(dllexport) void viderHistorique()
 	{
 		FacadeModele::obtenirInstance()->viderHistorique();
 	}
 
+
+	///////////////////////////////////////////////////////////////////////////////
+	///
+	/// @fn void obtenirNombreSelection()
+	/// @brief Retourne le nombre d'objets de l'arbre de rendu qui sont selectionnes
+	/// @return int, le nombre d'objets selectiones.
+	///
+	///////////////////////////////////////////////////////////////////////////////
 	__declspec(dllexport) int obtenirNombreSelection()
 	{
 		return FacadeModele::obtenirInstance()->obtenirNombreSelection();
 	}
 
+
+	///////////////////////////////////////////////////////////////////////////////
+	///
+	/// @fn bool possedeSuivant()
+	/// @brief Retourne vrai s'il existe une sauvegarde suivante dans l'historique
+	/// @return bool, true s'il existe une sauvegarde suivante dans l'historique.
+	///
+	///////////////////////////////////////////////////////////////////////////////
 	__declspec(dllexport) bool possedeSuivant()
 	{
 		return FacadeModele::obtenirInstance()->possedeSuivant();
 	}
 
+
+	///////////////////////////////////////////////////////////////////////////////
+	///
+	/// @fn bool possedePrecedent()
+	/// @brief Retourne vrai s'il existe une sauvegarde precedente dans l'historique
+	/// @return bool, true s'il existe une sauvegarde precedente dans l'historique.
+	///
+	///////////////////////////////////////////////////////////////////////////////
 	__declspec(dllexport) bool possedePrecedent()
 	{
 		return FacadeModele::obtenirInstance()->possedePrecedent();

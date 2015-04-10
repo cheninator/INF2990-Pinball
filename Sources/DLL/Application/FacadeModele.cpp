@@ -2409,11 +2409,12 @@ void FacadeModele::viderHistorique()
 
 ////////////////////////////////////////////////////////////////////////
 ///
-/// @fn void FacadeModele::sauvegarderHistorique()
+/// @fn void FacadeModele::possedeSuivant()
 ///
-/// @remark Cette fonction vide l'historique de modifications
+/// @remark Cette fonction retourne vrai s'il existe une sauvegarde suivante dans 
+///			l'historique des modifications
 ///
-/// @return Aucune
+/// @return True pour dire qu'il existe une sauvegarde suivante
 ///
 ////////////////////////////////////////////////////////////////////////
 bool FacadeModele::possedeSuivant() const
@@ -2424,11 +2425,12 @@ bool FacadeModele::possedeSuivant() const
 
 ////////////////////////////////////////////////////////////////////////
 ///
-/// @fn void FacadeModele::sauvegarderHistorique()
+/// @fn void FacadeModele::possedePrecedent()
 ///
-/// @remark Cette fonction vide l'historique de modifications
+/// @remark Cette fonction retourne vrai s'il existe une sauvegarde precedente dans 
+///			l'historique des modifications
 ///
-/// @return Aucune
+/// @return True pour dire qu'il existe une sauvegarde precedente
 ///
 ////////////////////////////////////////////////////////////////////////
 bool FacadeModele::possedePrecedent() const
@@ -2437,7 +2439,16 @@ bool FacadeModele::possedePrecedent() const
 }
 
 
-
+////////////////////////////////////////////////////////////////////////
+///
+/// @fn void FacadeModele::possedePrecedent()
+///
+/// @remark Cette fonction retourne la quantite de noeuds selectionnes dans
+///			l'arbre de rendu
+///
+/// @return int, le nombre de noeuds qui sont selectionnes
+///
+////////////////////////////////////////////////////////////////////////
 int FacadeModele::obtenirNombreSelection() const
 {
 	return arbre_->obtenirNombreSelectionne();
