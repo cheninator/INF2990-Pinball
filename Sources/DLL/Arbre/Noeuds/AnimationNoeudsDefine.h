@@ -25,6 +25,7 @@ enum Direction { dirY, dirYX, dirX, dirXY, dirZ }; // Pour fonctionner avec le s
 //Table
 #define TRANSLATE_X_NOEUD_TABLE 200
 #define TRANSLATE_Y_NOEUD_TABLE -50
+#define TRANSLATE_Z_NOEUD_TABLE SingletonGlobal::obtenirInstance()->obtenirBoiteTable().coinMin.z
 
 // Bille
 #define VITESSE_MAX_NOEUD_BILLE 400.		// Vitesse maximale de la bille
@@ -48,6 +49,8 @@ enum Direction { dirY, dirYX, dirX, dirXY, dirZ }; // Pour fonctionner avec le s
 #define MARGE_NOEUD_COUVERCLE 6*2				// Une marge pour que le couvercle touche encore un peu a la table
 #define INCLINAISON_NOEUD_COUVERCLE 90./6.	// Le niveau d'inclinaison (15 degrees)
 #define TEMPS_ANIMATION_NOEUD_COUVERCLE 2.	// L'animation dure 2 sec
+#define DEPLACEMENT_NOEUD_COUVERCLE (abs(SingletonGlobal::obtenirInstance()->obtenirBoiteTable().coinMax.x - SingletonGlobal::obtenirInstance()->obtenirBoiteTable().coinMin.x) - MARGE_NOEUD_COUVERCLE)
+#define DEMIE_LARGEUR_NOEUD_COUVERCLE (abs(boite_.coinMax.x - boite_.coinMin.x) / 2.0)
 
 // GenerateurBille
 #define TEMPS_ANIMATION_NOEUD_GENERATEURBILLE 2.	// L'animation dure 2 sec (le shake)

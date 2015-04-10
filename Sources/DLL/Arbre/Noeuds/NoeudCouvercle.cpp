@@ -17,7 +17,6 @@
 #include "Modele3D.h"
 #include "OpenGL_Storage/ModeleStorage_Liste.h"
 
-# define deplacementCouvercle (abs(SingletonGlobal::obtenirInstance()->obtenirBoiteTable().coinMax.x - SingletonGlobal::obtenirInstance()->obtenirBoiteTable().coinMin.x) - MARGE_NOEUD_COUVERCLE)
 ////////////////////////////////////////////////////////////////////////
 ///
 /// @fn NoeudCouvercle::NoeudCouvercle(const std::string& typeNoeud)
@@ -36,6 +35,7 @@ NoeudCouvercle::NoeudCouvercle(const std::string& typeNoeud)
 	assignerSelection(false);
 	selectionnable_ = false;
 	modifiable_ = false;
+	positionRelative_ = { TRANSLATE_X_NOEUD_TABLE, TRANSLATE_Y_NOEUD_TABLE, TRANSLATE_Z_NOEUD_TABLE };
 }
 
 ////////////////////////////////////////////////////////////////////////
@@ -99,22 +99,13 @@ void NoeudCouvercle::animer(float temps)
 	//if (!animer_)
 	//	return;
 
-	glm::dvec3 v1, v2, v3, v4;
-	obtenirVecteursBoite(v1, v2, v3, v4);
-
-	glm::dvec3 v5, v6, v7, v8;
-	obtenirBoiteModele(v5, v6, v7, v8);
-
-
-	const double HAUTEUR_ORIGINALE = 30.0;
-	const double DEMIE_LARGEUR = abs(v5.x - v3.x) / 2.0;
 	// Tant que on as pas deplacer de la largeur de la table, on continue a se deplacer
-	if (positionRelative_.x > -deplacementCouvercle + TRANSLATE_X_NOEUD_TABLE) 
+	if (positionRelative_.x > -DEPLACEMENT_NOEUD_COUVERCLE + TRANSLATE_X_NOEUD_TABLE)
 	{
 		// On se deplace en prenant en compte le temps de deplacement
-		positionRelative_.x -= temps * (deplacementCouvercle / TEMPS_ANIMATION_NOEUD_COUVERCLE);
+		positionRelative_.x -= temps * (DEPLACEMENT_NOEUD_COUVERCLE / TEMPS_ANIMATION_NOEUD_COUVERCLE);
 		// Maintenir la hauteur du cote droit du couvercle.
-		positionRelative_.z = HAUTEUR_ORIGINALE + sin(utilitaire::DEG_TO_RAD(rotation_.y))*DEMIE_LARGEUR;
+		positionRelative_.z = TRANSLATE_Z_NOEUD_TABLE + sin(utilitaire::DEG_TO_RAD(rotation_.y))*DEMIE_LARGEUR_NOEUD_COUVERCLE;
 		// On tourne sur soit en meme temps
 		rotation_.y -= INCLINAISON_NOEUD_COUVERCLE / (TEMPS_ANIMATION_NOEUD_COUVERCLE / temps);
 	}
