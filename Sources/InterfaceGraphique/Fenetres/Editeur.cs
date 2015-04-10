@@ -415,6 +415,9 @@ namespace InterfaceGraphique
                     }
                     testRetourModeEdition.PerformClick();
                     OnSizeChanged(e);
+
+                    Annuler_ToolStrip.Enabled = FonctionsNatives.possedePrecedent();
+                    Retablir_ToolStrip.Enabled = FonctionsNatives.possedeSuivant();
                 }
                 else if (e.KeyChar == 'b')
                 {
@@ -693,6 +696,8 @@ namespace InterfaceGraphique
 
             }
             FonctionsNatives.viderHistorique();
+            Annuler_ToolStrip.Enabled = false;
+            Retablir_ToolStrip.Enabled = false;
         }
 
         ////////////////////////////////////////////////////////////////////////
@@ -749,7 +754,11 @@ namespace InterfaceGraphique
 
 
                     int sauvegarde = FonctionsNatives.creerXML(pathXML, pathXML.Capacity, prop);
+                    
                     FonctionsNatives.viderHistorique();
+                    Annuler_ToolStrip.Enabled = false;
+                    Retablir_ToolStrip.Enabled = false;
+
                     //Console.WriteLine(sauvegarde);
                     if (sauvegarde == 1)
                     {
@@ -2093,6 +2102,8 @@ namespace InterfaceGraphique
             propZJ = new List<int> { 10, 10, 10, 10, 10, 1 };
             ReinitialiserTout();
             FonctionsNatives.viderHistorique();
+            Annuler_ToolStrip.Enabled = false;
+            Retablir_ToolStrip.Enabled = false;
         }
 
         ////////////////////////////////////////////////////////////////////////
@@ -2635,6 +2646,8 @@ namespace InterfaceGraphique
                     }
 
                     FonctionsNatives.viderHistorique();
+                    Annuler_ToolStrip.Enabled = false;
+                    Retablir_ToolStrip.Enabled = false;
                 }
             }
 

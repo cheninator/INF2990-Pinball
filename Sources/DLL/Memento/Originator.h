@@ -49,8 +49,10 @@ public :
 	/// Assigner un arbre de rendu
 	void assignerArbre(ArbreRenduINF2990* arbre) { arbreActuel_ = arbre; };
 
-	/// Afin d'activer ou desactiver le bouton
+	/// Retourne vrai si on n'est pas à la fin de l'historique de sauvegarde
 	bool possedeSuivant()	const{ return (position_ + 1 != historique_->size()); };
+
+	/// Retourne vrai si on n'est pas au debut de l'historique de sauvegarde
 	bool possedePrecedent() const{ return (position_ != 0); };
 
 private:
