@@ -3195,13 +3195,13 @@ namespace InterfaceGraphique
 
         private void bouton_Suppression_Click(object sender, EventArgs e)
         {
-            if(etat is EtatEditeurSelection)
-                FonctionsNatives.sauvegarderHistorique();
+            if (etat is EtatEditeurSelection)
+                sauvegarderHistorique();
 
             FonctionsNatives.removeObject();
             deselection();
 
-            FonctionsNatives.sauvegarderHistorique();
+            sauvegarderHistorique();
         }
 
         private void Group_Butoir_Enter(object sender, EventArgs e)
