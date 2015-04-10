@@ -96,8 +96,8 @@ void NoeudCouvercle::animer(float temps)
 	}
 
 	// Si on as pas besoin de s'animer, alors en quite
-	if (!animer_)
-		return;
+	//if (!animer_)
+	//	return;
 
 	glm::dvec3 v1, v2, v3, v4;
 	obtenirVecteursBoite(v1, v2, v3, v4);
@@ -109,7 +109,8 @@ void NoeudCouvercle::animer(float temps)
 	const double HAUTEUR_ORIGINALE = 30.0;
 	const double DEMIE_LARGEUR = abs(v5.x - v3.x) / 2.0;
 	// Tant que on as pas deplacer de la largeur de la table, on continue a se deplacer
-	if (positionRelative_.x > -deplacementCouvercle + TRANSLATE_X_NOEUD_TABLE) {
+	if (positionRelative_.x > -deplacementCouvercle + TRANSLATE_X_NOEUD_TABLE) 
+	{
 		// On se deplace en prenant en compte le temps de deplacement
 		positionRelative_.x -= temps * (deplacementCouvercle / TEMPS_ANIMATION_NOEUD_COUVERCLE);
 		// Maintenir la hauteur du cote droit du couvercle.
@@ -118,8 +119,11 @@ void NoeudCouvercle::animer(float temps)
 		rotation_.y -= INCLINAISON_NOEUD_COUVERCLE / (TEMPS_ANIMATION_NOEUD_COUVERCLE / temps);
 	}
 	else
+	{
 		// On arrete de se deplacer
 		animer_ = false;
+		return;
+	}
 
 
 	// On calcule a boite englobante (prenant en compte les rotations

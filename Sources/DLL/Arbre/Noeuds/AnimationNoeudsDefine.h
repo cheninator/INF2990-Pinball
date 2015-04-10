@@ -45,7 +45,7 @@ enum Direction { dirY, dirYX, dirX, dirXY, dirZ }; // Pour fonctionner avec le s
 #define VITESSE_NOEUD_CIBLE 360./4.	// 1 tour toute les 4 secondes
 
 // Couvercle
-#define MARGE_NOEUD_COUVERCLE 7				// Une marge pour que le couvercle touche encore un peu a la table
+#define MARGE_NOEUD_COUVERCLE 6*2				// Une marge pour que le couvercle touche encore un peu a la table
 #define INCLINAISON_NOEUD_COUVERCLE 90./6.	// Le niveau d'inclinaison (15 degrees)
 #define TEMPS_ANIMATION_NOEUD_COUVERCLE 2.	// L'animation dure 2 sec
 
