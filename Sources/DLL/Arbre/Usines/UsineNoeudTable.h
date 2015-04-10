@@ -63,6 +63,9 @@ NoeudAbstrait* UsineNoeudTable::creerNoeud() const
 {
 	auto noeud = new NoeudTable{ obtenirNom() };
 	noeud->assignerObjetRendu(&modele_, &liste_);
+	utilitaire::BoiteEnglobante boite;
+	noeud->obtenirBoiteModele(boite.coinMax, glm::dvec3(), boite.coinMin, glm::dvec3());
+	SingletonGlobal::obtenirInstance()->setBoiteTable(boite);
 	return noeud;
 }
 
