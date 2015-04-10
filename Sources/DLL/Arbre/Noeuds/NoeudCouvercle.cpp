@@ -106,13 +106,13 @@ void NoeudCouvercle::animer(float temps)
 	const double HAUTEUR_ORIGINALE = 30.0;
 	const double DEMIE_LARGEUR = abs(v1.x - v3.x) / 2.0;
 	// Tant que on as pas deplacer de la largeur de la table, on continue a se deplacer
-	if (positionRelative_.x > -deplacementCouvercle) {
+	if (positionRelative_.x > -deplacementCouvercle + TRANSLATE_X_NOEUD_TABLE) {
 		// On se deplace en prenant en compte le temps de deplacement
 		positionRelative_.x -= temps * (deplacementCouvercle / TEMPS_ANIMATION_NOEUD_COUVERCLE);
 		// Maintenir la hauteur du cote droit du couvercle.
 		positionRelative_.z = HAUTEUR_ORIGINALE + sin(utilitaire::DEG_TO_RAD(rotation_.y))*DEMIE_LARGEUR;
 		// On tourne sur soit en meme temps
-		rotation_.y -= INCLINAISON_NOEUD_COUVERCLE / (TEMPS_ANIMATION_NOEUD_COUVERCLE / temps);
+		rotation_.y -= sqrt(INCLINAISON_NOEUD_COUVERCLE / (TEMPS_ANIMATION_NOEUD_COUVERCLE / temps));
 	}
 	else
 		// On arrete de se deplacer
@@ -184,13 +184,19 @@ void NoeudCouvercle::obtenirVecteursBoite(glm::dvec3 &v1, glm::dvec3 &v2, glm::d
 
 	//calcul matrice de rotation
 	double angleEnRadian = -rotation_[2] * utilitaire::PI_180;
-	glm::dmat3 transform = glm::dmat3{ glm::dvec3{ cos(angleEnRadian), -sin(angleEnRadian), 0.0 },
-		glm::dvec3{ sin(angleEnRadian), cos(angleEnRadian), 0.0f },
-		glm::dvec3{ 0.0, 0.0, 1.0 } };
+	glm::dmat3 transform =	glm::dmat3{ glm::dvec3{ cos(angleEnRadian), -sin(angleEnRadian),	0.0 },
+										glm::dvec3{ sin(angleEnRadian), cos(angleEnRadian),		0.0f },
+										glm::dvec3{			0.0,				0.0,			1.0 } };
+
+	//calcul matrice de rotation
+	angleEnRadian = -rotation_[1] * utilitaire::PI_180;
+	glm::dmat3 transformY = glm::dmat3{	glm::dvec3{ cos(angleEnRadian),		0.0f,	sin(angleEnRadian)	},
+										glm::dvec3{			0.0f,			1.0,			0.0f		},
+										glm::dvec3{ -sin(angleEnRadian),	0.0,	cos(angleEnRadian)	} };
 
 	//applique la rotation aux vecteurs
-	v1 = transform * v1;
-	v2 = transform * v2;
-	v3 = transform * v3;
-	v4 = transform * v4;
+	v1 = transformY*transform * v1;
+	v2 = transformY*transform * v2;
+	v3 = transformY*transform * v3;
+	v4 = transformY*transform * v4;
 }
