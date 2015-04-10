@@ -181,6 +181,7 @@ void ArbreRenduINF2990::initialiser()
 
 	// Charger la zone de jeu par defaut
 	initialiserXML("zones/default.xml");
+	this->chercher(1)->assignerPositionRelative({ TRANSLATE_X_NOEUD_TABLE, TRANSLATE_Y_NOEUD_TABLE, 30.0 });
 	SingletonGlobal::obtenirInstance()->resetConfigurationCollision(proprietes_[0], proprietes_[1], proprietes_[2], proprietes_[3], proprietes_[4]);
 }
 
@@ -255,6 +256,8 @@ bool ArbreRenduINF2990::initialiserXML(std::string nomFichier)
 		lireXML(document);
 		fichierTrouve = true;
 	}
+	// C'est la façon la plus rapide que j'ai trouvé de faire commencer le couvercle a cette position.
+	this->chercher(1)->assignerPositionRelative({ TRANSLATE_X_NOEUD_TABLE, TRANSLATE_Y_NOEUD_TABLE, 30.0 });
 	SingletonGlobal::obtenirInstance()->resetConfigurationCollision(proprietes_[0], proprietes_[1], proprietes_[2], proprietes_[3], proprietes_[4]);
 
 	return fichierTrouve;
