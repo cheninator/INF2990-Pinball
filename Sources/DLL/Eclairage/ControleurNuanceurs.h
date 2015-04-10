@@ -55,6 +55,8 @@ public:
 	void assignerEtatSpot(int etat);
 	/// Dire au nuanceur de fragments si on est en train de dessiner le skybox ou la scene.
 	void assignerSkybox(int skybox);
+	/// Dire au nuanceur de fragments que je suis la table
+	void assignerEstTable(int estTable);
 
 private:
 
