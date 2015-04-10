@@ -317,6 +317,8 @@ namespace InterfaceGraphique
             {
                 FonctionsNatives.compresserRessort();
             }
+
+        
             // TODO
         }
 
@@ -406,7 +408,7 @@ namespace InterfaceGraphique
             }
             if (etat is EtatEditeurTest)
             {
-                if (e.KeyChar == 't')
+                if (Char.ToLower(e.KeyChar) == 't')
                 {
                     if (Program.mMenu.modeEdit != null)
                     {
@@ -415,8 +417,11 @@ namespace InterfaceGraphique
                     }
                     testRetourModeEdition.PerformClick();
                     OnSizeChanged(e);
+
+                    Annuler_ToolStrip.Enabled = FonctionsNatives.possedePrecedent();
+                    Retablir_ToolStrip.Enabled = FonctionsNatives.possedeSuivant();
                 }
-                else if (e.KeyChar == 'b')
+                else if (Char.ToLower(e.KeyChar) == 'b')
                 {
                     if (FonctionsNatives.obtenirAffichageGlobal() == 0)
                     {
@@ -442,19 +447,19 @@ namespace InterfaceGraphique
                    FonctionsNatives.creerObjet(bille, bille.Capacity);
                 }
                 */
-                else if (e.KeyChar == 'j')
+                else if (Char.ToLower(e.KeyChar) == 'j')
                 {
                     //Console.WriteLine("LUMIERE AMBIANTE");
                     activateAmbianteLight = !activateAmbianteLight;
                     FonctionsNatives.spotLight(0, activateAmbianteLight);
                 }
-                else if (e.KeyChar == 'k')
+                else if (Char.ToLower(e.KeyChar) == 'k')
                 {
                     //Console.WriteLine("LUMIERE DIRECTE");
                     activateDirectLight = !activateDirectLight;
                     FonctionsNatives.spotLight(1, activateDirectLight);
                 }
-                else if (e.KeyChar == 'l')
+                else if (Char.ToLower(e.KeyChar) == 'l')
                 {
                     //Console.WriteLine("LUMIERE SPOTS");
                     activateSpotLight = !activateSpotLight;
@@ -484,7 +489,7 @@ namespace InterfaceGraphique
                     etat = null;
                     etat = new EtatEditeurTest(this);
                 }
-                if (e.KeyChar == 't')
+                if (Char.ToLower(e.KeyChar) == 't')
                 {
                     testRetourModeEdition.PerformClick();
                     OnSizeChanged(e);
@@ -520,14 +525,14 @@ namespace InterfaceGraphique
                     }
 
                 }
-                else if (e.KeyChar == 't')
+                else if (Char.ToLower(e.KeyChar) == 't')
                 {
                     deselection();
                     
                     ModeTest_MenuItem.PerformClick();
                     panel_GL.Focus();
                 }
-                else if (e.KeyChar == 'f')
+                else if (Char.ToLower(e.KeyChar) == 'f')
                 {
                     if (fs.IsFullScreen(this))
                     {
@@ -538,12 +543,12 @@ namespace InterfaceGraphique
                     // A modifier si on veut            
                     //  FonctionsNatives.resetZoom();
                 }
-                else if (e.KeyChar == 's')
+                else if (Char.ToLower(e.KeyChar) == 's')
                 {
                     Selection_MenuItem_Click(this, e);
                 }
                
-                else if (e.KeyChar == 'p')
+                else if (Char.ToLower(e.KeyChar) == 'p')
                 {
                     bouton_Creation_Click(this, e);
                 }
@@ -556,26 +561,26 @@ namespace InterfaceGraphique
                         richTextBox1.Show();
                     */
                 }
-                else if (e.KeyChar == 'z')
+                else if (Char.ToLower(e.KeyChar) == 'z')
                 {
                     Zoom_MenuItem_Click(this, e);
 
                 }
                 else if (nbSelection != 0)
                 {
-                    if (e.KeyChar == 'd')
+                    if (Char.ToLower(e.KeyChar) == 'd')
                     {
                         bouton_Deplacement_Click(this, e);
                     }
-                    else if (e.KeyChar == 'e')
+                    else if (Char.ToLower(e.KeyChar) == 'e')
                     {
                         bouton_Scaling_Click(this, e);
                     }
-                    else if (e.KeyChar == 'r')
+                    else if (Char.ToLower(e.KeyChar) == 'r')
                     {
                         bouton_Rotation_Click(this, e);
                     }
-                    else if (e.KeyChar == 'c')
+                    else if (Char.ToLower(e.KeyChar) == 'c')
                     {
                         bouton_Duplication_Click(this, e);
                     }
@@ -693,6 +698,8 @@ namespace InterfaceGraphique
 
             }
             FonctionsNatives.viderHistorique();
+            Annuler_ToolStrip.Enabled = false;
+            Retablir_ToolStrip.Enabled = false;
         }
 
         ////////////////////////////////////////////////////////////////////////
@@ -749,7 +756,11 @@ namespace InterfaceGraphique
 
 
                     int sauvegarde = FonctionsNatives.creerXML(pathXML, pathXML.Capacity, prop);
+                    
                     FonctionsNatives.viderHistorique();
+                    Annuler_ToolStrip.Enabled = false;
+                    Retablir_ToolStrip.Enabled = false;
+
                     //Console.WriteLine(sauvegarde);
                     if (sauvegarde == 1)
                     {
@@ -1346,7 +1357,7 @@ namespace InterfaceGraphique
             annulerModif();
 
             if(etat is EtatEditeurSelection)
-                FonctionsNatives.sauvegarderHistorique();
+                sauvegarderHistorique();
 
             etat = null;
             etat = new EtatEditeurDeplacement(this);
@@ -1406,7 +1417,7 @@ namespace InterfaceGraphique
             annulerModif();
 
             if (etat is EtatEditeurSelection)
-                FonctionsNatives.sauvegarderHistorique();
+                sauvegarderHistorique();
 
             etat = null;
             etat = new EtatEditeurRotation(this);
@@ -1431,7 +1442,7 @@ namespace InterfaceGraphique
             annulerModif();
 
             if(etat is EtatEditeurSelection)
-                FonctionsNatives.sauvegarderHistorique();
+                sauvegarderHistorique();
 
             etat = null;
             etat = new EtatEditeurScale(this);
@@ -1494,7 +1505,7 @@ namespace InterfaceGraphique
             annulerModif();
 
             if (etat is EtatEditeurSelection)
-                FonctionsNatives.sauvegarderHistorique();
+                sauvegarderHistorique();
 
             etat = null;
             etat = new EtatEditeurDuplication(this);
@@ -2093,6 +2104,8 @@ namespace InterfaceGraphique
             propZJ = new List<int> { 10, 10, 10, 10, 10, 1 };
             ReinitialiserTout();
             FonctionsNatives.viderHistorique();
+            Annuler_ToolStrip.Enabled = false;
+            Retablir_ToolStrip.Enabled = false;
         }
 
         ////////////////////////////////////////////////////////////////////////
@@ -2231,12 +2244,12 @@ namespace InterfaceGraphique
                 panel_GL.MouseMove -= panel_MouseMove;
                 if (e.Button == MouseButtons.Middle)
                 {
-                    FonctionsNatives.sauvegarderHistorique();
+                    sauvegarderHistorique();
                 }
             }
 
             if (etat is EtatEditeurDeplacement || etat is EtatEditeurScale || etat is EtatEditeurRotation)
-                FonctionsNatives.sauvegarderHistorique();
+                sauvegarderHistorique();
 
             if (etat is EtatEditeurDuplication && e.Button == MouseButtons.Left)
             {
@@ -2269,7 +2282,7 @@ namespace InterfaceGraphique
                         stateMur();
                     else
                     {
-                        FonctionsNatives.sauvegarderHistorique();
+                        sauvegarderHistorique();
                         deselection();
                         panel_GL.MouseMove -= panel_MouseMove;
                         etat = new EtatEditeurSelection(this);
@@ -2635,6 +2648,8 @@ namespace InterfaceGraphique
                     }
 
                     FonctionsNatives.viderHistorique();
+                    Annuler_ToolStrip.Enabled = false;
+                    Retablir_ToolStrip.Enabled = false;
                 }
             }
 
@@ -3182,13 +3197,13 @@ namespace InterfaceGraphique
 
         private void bouton_Suppression_Click(object sender, EventArgs e)
         {
-            if(etat is EtatEditeurSelection)
-                FonctionsNatives.sauvegarderHistorique();
+            if (etat is EtatEditeurSelection)
+                sauvegarderHistorique();
 
             FonctionsNatives.removeObject();
             deselection();
 
-            FonctionsNatives.sauvegarderHistorique();
+            sauvegarderHistorique();
         }
 
         private void Group_Butoir_Enter(object sender, EventArgs e)
@@ -3231,7 +3246,9 @@ namespace InterfaceGraphique
                 proprietesEnable(false);
 
             etat = new EtatEditeurSelection(this);
+
             Annuler_ToolStrip.Enabled = (FonctionsNatives.possedePrecedent());
+            Retablir_ToolStrip.Enabled = (FonctionsNatives.possedeSuivant());
         }
 
         private void Retablir_ToolStrip_Click(object sender, EventArgs e)
@@ -3255,7 +3272,8 @@ namespace InterfaceGraphique
 
             etat = new EtatEditeurSelection(this);
 
-            Annuler_ToolStrip.Enabled = (FonctionsNatives.possedeSuivant());
+            Annuler_ToolStrip.Enabled = (FonctionsNatives.possedePrecedent());
+            Retablir_ToolStrip.Enabled = (FonctionsNatives.possedeSuivant());
         }
 
         private void Supprimer_MenuItem_Click_1(object sender, EventArgs e)
@@ -3271,6 +3289,18 @@ namespace InterfaceGraphique
         private void Retablir_MenuItem_Click(object sender, EventArgs e)
         {
             Retablir_ToolStrip.PerformClick();
+        }
+
+        private void sauvegarderHistorique()
+        {
+            FonctionsNatives.sauvegarderHistorique();
+            Annuler_ToolStrip.Enabled = true;
+        }
+
+        private void SelectAll_MenuItem_Click(object sender, EventArgs e)
+        {
+            FonctionsNatives.selectAll();
+            outilsEnable(true);
         }
 
     }

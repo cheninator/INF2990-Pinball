@@ -143,7 +143,7 @@ void Originator::sauvegarder()
 		historique_->ajouter(new Memento(arbreActuel_));
 	}
 
-	// Ecraser les sauvegardes suivantes
+	// Ecraser les sauvegardes suivantes a partir du debut si l'historique en contienait deja
 	else if (position_ == 0 && historique_->size() != 0)
 	{
 		historique_->ecraser(position_);
@@ -151,7 +151,7 @@ void Originator::sauvegarder()
 		position_++;
 	}
 
-	// On est entre la 1ere et la derniere sauvegarde
+	// Ecraser les sauvegardes suivantes a partir d'une certaine position si l'historique en contienait deja
 	else if (position_ < historique_->size())
 	{
 		historique_->ecraser(position_);
@@ -222,9 +222,6 @@ void Originator::appliquerModifications(std::map<int, NoeudAbstrait*> sauvegarde
 				arbreActuel_->getEnfant(0)->chercher(enfantsTable - 2)->setTwin(noeud);
 			}
 		}
-
-
-
 	}
 
 }

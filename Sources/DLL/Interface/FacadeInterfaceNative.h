@@ -79,6 +79,7 @@ extern "C" {
 	__declspec(dllexport) void purgeAll(void);
 
 	__declspec(dllexport) void deselectAll(void);
+	__declspec(dllexport) void selectAll(void);
 	__declspec(dllexport) int selectionnerObjetSousPointClique(int i, int j, int largeur, int hauteur, bool ctrlDown = false);
 	__declspec(dllexport) int selectionMultiple(bool c);
 

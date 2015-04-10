@@ -36,6 +36,7 @@ NoeudTable::NoeudTable(const std::string& typeNoeud)
 	assignerSelection(false);
 	selectionnable_ = false;
 	modifiable_ = false;
+	SingletonGlobal::obtenirInstance()->setBoiteTable(boite_);
 }
 
 ////////////////////////////////////////////////////////////////////////

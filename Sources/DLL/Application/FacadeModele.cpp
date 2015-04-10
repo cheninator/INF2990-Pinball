@@ -78,10 +78,10 @@ Yonni Chen <BR>
 /// Pointeur vers l'instance unique de la classe.
 FacadeModele* FacadeModele::instance_{ nullptr };
 
-const int FacadeModele::coinGaucheTableX= 108;
-const int FacadeModele::coinGaucheTableY = -190;
-const int FacadeModele::coinDroitTableX = 272;
-const int FacadeModele::coinDroitTableY = 96;
+#define coinGaucheTableX 108// SingletonGlobal::obtenirInstance()->obtenirBoiteTable().coinMin.x
+#define coinGaucheTableY -190//  SingletonGlobal::obtenirInstance()->obtenirBoiteTable().coinMin.y
+#define coinDroitTableX 272//  SingletonGlobal::obtenirInstance()->obtenirBoiteTable().coinMax.x
+#define coinDroitTableY 96//  SingletonGlobal::obtenirInstance()->obtenirBoiteTable().coinMax.x
 
 ////////////////////////////////////////////////////////////////////////
 ///
@@ -2409,11 +2409,12 @@ void FacadeModele::viderHistorique()
 
 ////////////////////////////////////////////////////////////////////////
 ///
-/// @fn void FacadeModele::sauvegarderHistorique()
+/// @fn void FacadeModele::possedeSuivant()
 ///
-/// @remark Cette fonction vide l'historique de modifications
+/// @remark Cette fonction retourne vrai s'il existe une sauvegarde suivante dans 
+///			l'historique des modifications
 ///
-/// @return Aucune
+/// @return True pour dire qu'il existe une sauvegarde suivante
 ///
 ////////////////////////////////////////////////////////////////////////
 bool FacadeModele::possedeSuivant() const
@@ -2424,11 +2425,12 @@ bool FacadeModele::possedeSuivant() const
 
 ////////////////////////////////////////////////////////////////////////
 ///
-/// @fn void FacadeModele::sauvegarderHistorique()
+/// @fn void FacadeModele::possedePrecedent()
 ///
-/// @remark Cette fonction vide l'historique de modifications
+/// @remark Cette fonction retourne vrai s'il existe une sauvegarde precedente dans 
+///			l'historique des modifications
 ///
-/// @return Aucune
+/// @return True pour dire qu'il existe une sauvegarde precedente
 ///
 ////////////////////////////////////////////////////////////////////////
 bool FacadeModele::possedePrecedent() const
@@ -2437,7 +2439,16 @@ bool FacadeModele::possedePrecedent() const
 }
 
 
-
+////////////////////////////////////////////////////////////////////////
+///
+/// @fn void FacadeModele::possedePrecedent()
+///
+/// @remark Cette fonction retourne la quantite de noeuds selectionnes dans
+///			l'arbre de rendu
+///
+/// @return int, le nombre de noeuds qui sont selectionnes
+///
+////////////////////////////////////////////////////////////////////////
 int FacadeModele::obtenirNombreSelection() const
 {
 	return arbre_->obtenirNombreSelectionne();
