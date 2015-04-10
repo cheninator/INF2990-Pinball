@@ -75,6 +75,8 @@ public:
 	void activerSon() { desactiverSon = false; };
 	ControleurSon*  obtenirControleurSon();
 
+	utilitaire::BoiteEnglobante obtenirBoiteTable() const { return boiteTable_; };
+	void setBoiteTable(utilitaire::BoiteEnglobante boiteTable) { boiteTable_ = boiteTable; };
 protected:
 	/// Constructeur vide déclaré protected.
 	SingletonGlobal() {};
@@ -117,6 +119,8 @@ private:
 	// Controleur de son
 	bool desactiverSon{ true };
 	ControleurSon* mySound_{ nullptr };
+
+	utilitaire::BoiteEnglobante boiteTable_;
 };
 
 #endif // __SINGLETONGLOBAL_H__
