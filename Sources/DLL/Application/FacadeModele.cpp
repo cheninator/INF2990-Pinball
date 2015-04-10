@@ -251,20 +251,21 @@ void FacadeModele::initialiserOpenGL(HWND hWnd)
 		// "media/skybox/bottom.jpg",	// << FRONT
 		// "media/skybox/front.jpg",	// << BOTTOM 
 		// "media/skybox/back.jpg"		// << TOP
-
-		// "media/skybox/right.jpg",	// << RIGHT
-		// "media/skybox/left.jpg",	// << LEFT
-		// "media/skybox/back.jpg",		// << BACK
-		// "media/skybox/front.jpg",	// << FRONT
-		// "media/skybox/bottom.jpg",	// << BOTTOM 
-		// "media/skybox/top.jpg"		// << TOP
-
+#if(0)
+		"media/skybox/right.jpg",	// << RIGHT
+		"media/skybox/left.jpg",	// << LEFT
+		"media/skybox/back.jpg",		// << BACK
+		"media/skybox/front.jpg",	// << FRONT
+		"media/skybox/bottom.jpg",	// << BOTTOM 
+		"media/skybox/top.jpg"		// << TOP
+#else
 		"media/skybox/rt.jpg",
 		"media/skybox/lf.jpg",
 		"media/skybox/bk.jpg",
 		"media/skybox/ft.jpg",
 		"media/skybox/dn.jpg",
 		"media/skybox/up.jpg"
+#endif
 		);
 
 	
