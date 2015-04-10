@@ -99,7 +99,7 @@ namespace vue {
 
 	////////////////////////////////////////////////////////////////////////
 	///
-	/// @fn inline glm::ivec2 ProjectionPerspective::obtenirDimensionFenetreVirtuelle() const
+	/// @fn inline glm::dvec2 ProjectionPerspective::obtenirDimensionFenetreVirtuelle() const
 	///
 	/// Cette fonction ne devrait pas exister, pour l'instant il faut
 	/// l'implanter pour éviter des erreurs de méthodes virtuelles pure
@@ -111,7 +111,7 @@ namespace vue {
 	////////////////////////////////////////////////////////////////////////
 	inline glm::dvec2 ProjectionPerspective::obtenirDimensionFenetreVirtuelle() const
 	{
-		return glm::ivec2(-1.0); // À changer
+		return glm::dvec2(-1.0); // À changer
 	}
 
 

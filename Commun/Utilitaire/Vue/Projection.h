@@ -102,7 +102,7 @@ namespace vue {
 
 	////////////////////////////////////////////////////////////////////////
 	///
-	/// @fn inline glm::ivec2 Projection::obtenirDimensionCloture() const
+	/// @fn inline glm::dvec2 Projection::obtenirDimensionCloture() const
 	///
 	/// Cette fonction retourne les dimensions de la fenêtre de clôture
 	/// associée à cette projection.
@@ -112,7 +112,7 @@ namespace vue {
 	////////////////////////////////////////////////////////////////////////
 	inline glm::dvec2 Projection::obtenirDimensionCloture() const
 	{
-		return glm::ivec2{ xMaxCloture_ - xMinCloture_, yMaxCloture_ - yMinCloture_ };
+		return glm::dvec2{ xMaxCloture_ - xMinCloture_, yMaxCloture_ - yMinCloture_ };
 	}
 
 
