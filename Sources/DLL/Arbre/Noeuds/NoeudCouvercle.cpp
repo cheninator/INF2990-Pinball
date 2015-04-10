@@ -17,7 +17,7 @@
 #include "Modele3D.h"
 #include "OpenGL_Storage/ModeleStorage_Liste.h"
 
-# define deplacementCouvercle (abs(abs(boite_.coinMax.y - boite_.coinMin.y) * scale_.x * sin(INCLINAISON_NOEUD_COUVERCLE)) - MARGE_NOEUD_COUVERCLE)
+# define deplacementCouvercle abs(SingletonGlobal::obtenirInstance()->obtenirBoiteTable().coinMax.x - SingletonGlobal::obtenirInstance()->obtenirBoiteTable().coinMin.x + MARGE_NOEUD_COUVERCLE)
 ////////////////////////////////////////////////////////////////////////
 ///
 /// @fn NoeudCouvercle::NoeudCouvercle(const std::string& typeNoeud)
@@ -98,7 +98,7 @@ void NoeudCouvercle::animer(float temps)
 			- obtenirParent()->getEnfant(0)->obtenirPositionRelative().z;
 		double couvercleZ = boite_.coinMin.z;
 		// pourquoi 3 ? AUCUNE IDEE
-		positionRelative_.z = 3 * (tableZ - couvercleZ);
+		positionRelative_.z = 3*(tableZ - couvercleZ);
 		firstTime = false;
 	}
 	for (NoeudAbstrait * enfant : enfants_) {
