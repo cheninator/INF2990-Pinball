@@ -58,7 +58,7 @@ namespace vue {
 		void mettreAJourProjection() const;
 
 		/// Obtention des dimensions de la fenêtre de clotûre.
-		inline glm::ivec2 obtenirDimensionCloture() const;
+		inline glm::dvec2 obtenirDimensionCloture() const;
 		/// Obtention des coordonnées de la fenêtre de clôture.
 		inline void obtenirCoordonneesCloture(
 			double& xMin, double& xMax, double& yMin, double& yMax
@@ -68,7 +68,7 @@ namespace vue {
 		inline bool estPerspective() const;
 
 		/// Obtenir la dimension de la fenêtre virtuelle
-		virtual inline glm::ivec2 obtenirDimensionFenetreVirtuelle() const = 0;
+		virtual inline glm::dvec2 obtenirDimensionFenetreVirtuelle() const = 0;
 
 		virtual void conserverRapportAspect() const { return; };
 
@@ -110,7 +110,7 @@ namespace vue {
 	/// @return Les dimensions de la fenêtre de clôture.
 	///
 	////////////////////////////////////////////////////////////////////////
-	inline glm::ivec2 Projection::obtenirDimensionCloture() const
+	inline glm::dvec2 Projection::obtenirDimensionCloture() const
 	{
 		return glm::ivec2{ xMaxCloture_ - xMinCloture_, yMaxCloture_ - yMinCloture_ };
 	}

@@ -71,7 +71,7 @@ namespace vue {
 			) const;
 
 		/// Obtenir la dimension de la fenêtre virtuelle
-		virtual inline glm::ivec2 obtenirDimensionFenetreVirtuelle() const;
+		virtual inline glm::dvec2 obtenirDimensionFenetreVirtuelle() const;
 
 		virtual void conserverRapportAspect();
 
@@ -140,7 +140,7 @@ namespace vue {
 	/// @return Les dimensions de la fenêtre de virtuelle.
 	///
 	////////////////////////////////////////////////////////////////////////
-	inline glm::ivec2 ProjectionOrtho::obtenirDimensionFenetreVirtuelle() const
+	inline glm::dvec2 ProjectionOrtho::obtenirDimensionFenetreVirtuelle() const
 	{
 		return glm::ivec2{ xMaxFenetre_ - xMinFenetre_, yMaxFenetre_ - yMinFenetre_ };
 	}

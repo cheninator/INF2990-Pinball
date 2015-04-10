@@ -109,9 +109,9 @@ namespace vue {
 	/// @return Les dimensions de la fenêtre virtuellle
 	///
 	////////////////////////////////////////////////////////////////////////
-	inline glm::ivec2 ProjectionPerspective::obtenirDimensionFenetreVirtuelle() const
+	inline glm::dvec2 ProjectionPerspective::obtenirDimensionFenetreVirtuelle() const
 	{
-		return glm::ivec2(-1); // À changer
+		return glm::ivec2(-1.0); // À changer
 	}
 
 
