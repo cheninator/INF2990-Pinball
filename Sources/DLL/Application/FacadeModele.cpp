@@ -2211,6 +2211,7 @@ std::string FacadeModele::obtenirCout()
 ////////////////////////////////////////////////////////////////////////
 void FacadeModele::utiliserCameraOrbite(bool utiliseOrbite)
 {
+	// Si le mode désiré n'est pas celui qui est déjà présentement utilisé
 	if (utiliseOrbite != vueEstOrbite_)
 	{
 		/*Sauvegarde des mesures de la clôture */
@@ -2356,7 +2357,15 @@ int FacadeModele::obtenirNombreSelection() const
 
 
 
-
+////////////////////////////////////////////////////////////////////////
+///
+/// @fn void FacadeModele::cameraEstOrbite()
+///
+/// @brief Indique si le mode de caméra est orbite ou non
+///
+/// @return Si oui ou non la caméra est en mode orbite
+///
+////////////////////////////////////////////////////////////////////////
 bool FacadeModele::cameraEstOrbite()
 {
 	return vueEstOrbite_;
