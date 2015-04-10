@@ -91,26 +91,34 @@ void NoeudCouvercle::afficherConcret() const
 ////////////////////////////////////////////////////////////////////////
 void NoeudCouvercle::animer(float temps)
 {
+	// On anime les enfants
 	for (NoeudAbstrait * enfant : enfants_) {
 		enfant->animer(temps);
 	}
 
-	//if (!animer_)
-	//	return;
-	double useless = positionRelative_.z;
+	// Si on as pas besoin de s'animer, alors en quite
+	if (!animer_)
+		return;
 
-	// Il me faut la boite qui prend en compte la rotation
-	glm::dvec3 v1, v2, v3, v4;
-	obtenirVecteursBoite(v1, v2, v3, v4);
+	// Tant que on as pas deplacer de la largeur de la table, on continue a se deplacer
 	if (positionRelative_.x > -deplacementCouvercle) {
+		// On se deplace en prenant en compte le temps de deplacement
 		positionRelative_.x -= temps * (deplacementCouvercle / TEMPS_ANIMATION_NOEUD_COUVERCLE);
+		// On tourne sur soit en meme temps
 		rotation_.y -= INCLINAISON_NOEUD_COUVERCLE / (TEMPS_ANIMATION_NOEUD_COUVERCLE / temps);
-		//positionRelative_.z = temps * (deplacementCouvercle / TEMPS_ANIMATION_NOEUD_COUVERCLE);
 	}
 	else
+		// On arrete de se deplacer
 		animer_ = false;
-	SingletonGlobal::obtenirInstance()->obtenirBoiteTable().coinMin;
+
+
+	// On calcule a boite englobante (prenant en compte les rotations
+	glm::dvec3 v1, v2, v3, v4;
+	obtenirVecteursBoite(v1, v2, v3, v4);
+
+	// On calcule la hauteur de la table
 	float translateZ = SingletonGlobal::obtenirInstance()->obtenirBoiteTable().coinMin.z;
+	// On se deplace pour que notre coin superieur gauche soit a la meme hauteur que la table
 	positionRelative_.z = translateZ - v1.z; // Ici devrais etre la boite tenant compte des rotations en z
 }
 
