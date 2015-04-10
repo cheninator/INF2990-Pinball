@@ -113,6 +113,7 @@ namespace InterfaceGraphique
             this.Supprimer_MenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.Annuler_MenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.Retablir_MenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.SelectAll_MenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.Outils_MenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.Selection_MenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.Deplacement_MenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -149,7 +150,6 @@ namespace InterfaceGraphique
             this.printPreviewDialog1 = new System.Windows.Forms.PrintPreviewDialog();
             this.toolTipPaneauCreation = new System.Windows.Forms.ToolTip(this.components);
             this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
-            this.SelectAll_MenuItem = new System.Windows.Forms.ToolStripMenuItem();
             Enregistrer_ToolStrip = new System.Windows.Forms.ToolStripButton();
             this.panel1.SuspendLayout();
             this.panel_GL.SuspendLayout();
@@ -1103,9 +1103,9 @@ namespace InterfaceGraphique
             // 
             this.Edition_MenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.Supprimer_MenuItem,
+            this.SelectAll_MenuItem,
             this.Annuler_MenuItem,
-            this.Retablir_MenuItem,
-            this.SelectAll_MenuItem});
+            this.Retablir_MenuItem});
             this.Edition_MenuItem.Name = "Edition_MenuItem";
             this.Edition_MenuItem.Size = new System.Drawing.Size(56, 20);
             this.Edition_MenuItem.Text = "Édition";
@@ -1136,6 +1136,15 @@ namespace InterfaceGraphique
             this.Retablir_MenuItem.Size = new System.Drawing.Size(209, 22);
             this.Retablir_MenuItem.Text = "Rétablir";
             this.Retablir_MenuItem.Click += new System.EventHandler(this.Retablir_MenuItem_Click);
+            // 
+            // SelectAll_MenuItem
+            // 
+            this.SelectAll_MenuItem.Image = global::InterfaceGraphique.Properties.Resources.Selection;
+            this.SelectAll_MenuItem.Name = "SelectAll_MenuItem";
+            this.SelectAll_MenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.A)));
+            this.SelectAll_MenuItem.Size = new System.Drawing.Size(209, 22);
+            this.SelectAll_MenuItem.Text = "Sélectionner Tout";
+            this.SelectAll_MenuItem.Click += new System.EventHandler(this.SelectAll_MenuItem_Click);
             // 
             // Outils_MenuItem
             // 
@@ -1448,15 +1457,6 @@ namespace InterfaceGraphique
             this.printPreviewDialog1.Icon = ((System.Drawing.Icon)(resources.GetObject("printPreviewDialog1.Icon")));
             this.printPreviewDialog1.Name = "printPreviewDialog1";
             this.printPreviewDialog1.Visible = false;
-            // 
-            // SelectAll_MenuItem
-            // 
-            this.SelectAll_MenuItem.Image = global::InterfaceGraphique.Properties.Resources.Selection;
-            this.SelectAll_MenuItem.Name = "SelectAll_MenuItem";
-            this.SelectAll_MenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.A)));
-            this.SelectAll_MenuItem.Size = new System.Drawing.Size(209, 22);
-            this.SelectAll_MenuItem.Text = "Sélectionner Tout";
-            this.SelectAll_MenuItem.Click += new System.EventHandler(this.SelectAll_MenuItem_Click);
             // 
             // Editeur
             // 

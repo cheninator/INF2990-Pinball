@@ -197,6 +197,10 @@ namespace InterfaceGraphique
             listViewShortcut.Items.Insert(8, item1);
             listViewShortcut.Items[8].Group = listViewShortcut.Groups[0];
 
+            item1 = new ListViewItem(new[] { "Sélectionner Tout", " CTRL + A " });
+            listViewShortcut.Items.Insert(9, item1);
+            listViewShortcut.Items[9].Group = listViewShortcut.Groups[0];
+
         }
 
         private void listView1_SelectedIndexChanged(object sender, System.EventArgs e)
