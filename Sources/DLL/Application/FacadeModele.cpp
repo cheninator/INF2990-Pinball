@@ -78,10 +78,10 @@ Yonni Chen <BR>
 /// Pointeur vers l'instance unique de la classe.
 FacadeModele* FacadeModele::instance_{ nullptr };
 
-const int FacadeModele::coinGaucheTableX= 108;
-const int FacadeModele::coinGaucheTableY = -190;
-const int FacadeModele::coinDroitTableX = 272;
-const int FacadeModele::coinDroitTableY = 96;
+#define coinGaucheTableX 108// SingletonGlobal::obtenirInstance()->obtenirBoiteTable().coinMin.x
+#define coinGaucheTableY -190//  SingletonGlobal::obtenirInstance()->obtenirBoiteTable().coinMin.y
+#define coinDroitTableX 272//  SingletonGlobal::obtenirInstance()->obtenirBoiteTable().coinMax.x
+#define coinDroitTableY 96//  SingletonGlobal::obtenirInstance()->obtenirBoiteTable().coinMax.x
 
 ////////////////////////////////////////////////////////////////////////
 ///
