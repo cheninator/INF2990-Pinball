@@ -227,3 +227,17 @@ void ControleurNuanceurs::assignerSkybox(int skybox)
 {
 	programme_->assignerUniforme("skybox", skybox);
 }
+
+////////////////////////////////////////////////////////////////////////
+///
+/// @fn void ControleurNuanceurs::assignerSkybox(int skybox)
+/// 
+/// @brief Dit au nuanceur si le fragment vient de la scene ou du skybox.
+/// 
+/// @return aucun.
+///
+////////////////////////////////////////////////////////////////////////	
+void ControleurNuanceurs::assignerEstTable(int estTable)
+{
+	programme_->assignerUniforme("estTable", estTable);
+}

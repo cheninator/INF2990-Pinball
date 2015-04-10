@@ -6,7 +6,7 @@
 ///
 /// @ingroup Noeud
 ///////////////////////////////////////////////////////////////////////////
-
+#include "../../Eclairage/ControleurNuanceurs.h"
 #include "NoeudTable.h"
 #include "Utilitaire.h"
 
@@ -70,7 +70,9 @@ void NoeudTable::afficherConcret() const
 	glTranslatef(200, -50, 0);
 	NoeudAbstrait::appliquerAfficher();
 	glStencilFunc(GL_ALWAYS, 0, -1);
+	ControleurNuanceurs::obtenirInstance()->assignerEstTable(1);
 	liste_->dessiner();
+	ControleurNuanceurs::obtenirInstance()->assignerEstTable(0);
 	glPopAttrib();
 	glPopMatrix();
 	// Restauration de la matrice.

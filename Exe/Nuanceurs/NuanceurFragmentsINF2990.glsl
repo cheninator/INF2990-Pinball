@@ -22,6 +22,7 @@ uniform int numeroNoeud;
 uniform int etatAmbiante;
 uniform int etatDirectionnelle;
 uniform int etatSpot;
+uniform int estTable;
 
 uniform int skybox;
 
@@ -126,7 +127,7 @@ void main()
 	float cosInnerA = cosDeltaA;
 	float cosOuterA = pow(cosDeltaA, 1.01 + clamp(cA/2.0, 0.0,4.0));	
 	float effetSpotA = clamp((cosGammaA - cosOuterA)/(cosInnerA - cosOuterA),0.0,1.0);  // Vaut 0 quand cosGamma == cosOuter, vaut 1 quand cosGamma == cosInner
-
+	if(cosGammaA > 0.9997 && estTable == 1) effetSpotA = 0.0;
 	composanteAmbiante = gl_LightSource[SPOT_A].ambient*textureColor; // ROUGE
 	composanteDiffuse = max(NdotL[SPOT_A],0.0) * gl_LightSource[SPOT_A].diffuse*textureColor; 
 	composanteSpeculaire = pow(max(NdotHV[SPOT_A], 0.0),50.0) * gl_LightSource[SPOT_A].specular;
@@ -184,7 +185,7 @@ void main()
 
 	if(skybox == 1)
 	{
-		gl_FragColor = textureColor;
+		gl_FragColor = vec4(0.3,1.0,1.0,1.0)*textureColor;
 	}
 	else
 	{
