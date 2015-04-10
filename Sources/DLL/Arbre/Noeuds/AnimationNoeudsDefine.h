@@ -46,7 +46,7 @@ enum Direction { dirY, dirYX, dirX, dirXY, dirZ }; // Pour fonctionner avec le s
 
 // Couvercle
 #define MARGE_NOEUD_COUVERCLE 7				// Une marge pour que le couvercle touche encore un peu a la table
-#define INCLINAISON_NOEUD_COUVERCLE 45./2.	// Le niveau d'inclinaison (22.5 degrees)
+#define INCLINAISON_NOEUD_COUVERCLE 90./6.	// Le niveau d'inclinaison (15 degrees)
 #define TEMPS_ANIMATION_NOEUD_COUVERCLE 2.	// L'animation dure 2 sec
 
 // GenerateurBille
