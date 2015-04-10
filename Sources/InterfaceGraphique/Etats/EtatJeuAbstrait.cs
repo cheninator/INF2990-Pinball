@@ -340,7 +340,7 @@ namespace InterfaceGraphique
             {
                 FonctionsNatives.utiliserCameraOrbite(true);
             }
-
+          
             return true;
         }
 
@@ -439,6 +439,11 @@ namespace InterfaceGraphique
             {
                 //Console.WriteLine("¨METTRE EN PAUSE");
                 parent_.pauseGame();
+            }
+
+            else if (e.KeyChar == 'f')
+            {
+                parent_.FullScreenChange();
             }
             return true;
         }
