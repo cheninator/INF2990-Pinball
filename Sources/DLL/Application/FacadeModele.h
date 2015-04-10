@@ -251,6 +251,8 @@ public:
 	void retablirModifications();
 	void viderHistorique();
 	int obtenirNombreSelection() const;
+	bool possedeSuivant() const;
+	bool possedePrecedent() const;
 
 private:
 

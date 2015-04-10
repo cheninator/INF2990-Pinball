@@ -49,6 +49,10 @@ public :
 	/// Assigner un arbre de rendu
 	void assignerArbre(ArbreRenduINF2990* arbre) { arbreActuel_ = arbre; };
 
+	/// Afin d'activer ou desactiver le bouton
+	bool possedeSuivant()	const{ return (position_ == historique_->obtenirTailleMaximale()); };
+	bool possedePrecedent() const{ return (position_ == 0); };
+
 private:
 
 	/// L'arbre dont il faut manipuler les changements d'etats
