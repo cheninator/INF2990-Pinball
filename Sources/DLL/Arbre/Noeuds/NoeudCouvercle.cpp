@@ -107,7 +107,8 @@ void NoeudCouvercle::animer(float temps)
 		// Maintenir la hauteur du cote droit du couvercle.
 		positionRelative_.z = TRANSLATE_Z_NOEUD_TABLE + sin(utilitaire::DEG_TO_RAD(rotation_.y))*DEMIE_LARGEUR_NOEUD_COUVERCLE;
 		// On tourne sur soit en meme temps
-		rotation_.y -= INCLINAISON_NOEUD_COUVERCLE / (TEMPS_ANIMATION_NOEUD_COUVERCLE / temps);
+		if (!(positionRelative_.x - DEMIE_LARGEUR_NOEUD_COUVERCLE  > -DEPLACEMENT_NOEUD_COUVERCLE + TRANSLATE_X_NOEUD_TABLE))
+			rotation_.y -= INCLINAISON_NOEUD_COUVERCLE / ((TEMPS_ANIMATION_NOEUD_COUVERCLE/2) / temps);
 	}
 	else
 	{
@@ -115,9 +116,6 @@ void NoeudCouvercle::animer(float temps)
 		animer_ = false;
 		return;
 	}
-
-
-
 }
 
 ////////////////////////////////////////////////////////////////////////
