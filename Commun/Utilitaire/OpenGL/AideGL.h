@@ -90,7 +90,7 @@ namespace aidegl {
 
 
    /// Charge une texture OpenGL à partir d'un fichier image.
-   bool glLoadTexture(const std::string& nomFichier, unsigned int& idTexture, bool genererTexture=true);
+   bool glLoadTexture(const std::string& nomFichier, unsigned int& idTexture, bool genererTexture=true, unsigned int boiteEnvironnement=0);
 
    /// Crée une texture à partir des pixels en mémoire.
    void glCreateTexture(

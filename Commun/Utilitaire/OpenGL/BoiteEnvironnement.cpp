@@ -51,12 +51,12 @@ namespace utilitaire {
 		const std::string& fichierZpos, const std::string& fichierZneg
 		)
 	{
-		aidegl::glLoadTexture(fichierXpos, texturesEnvironnement_[0]);
-		aidegl::glLoadTexture(fichierXneg, texturesEnvironnement_[1]);
-		aidegl::glLoadTexture(fichierYpos, texturesEnvironnement_[2]);
-		aidegl::glLoadTexture(fichierYneg, texturesEnvironnement_[3]);
-		aidegl::glLoadTexture(fichierZpos, texturesEnvironnement_[4]);
-		aidegl::glLoadTexture(fichierZneg, texturesEnvironnement_[5]);
+		aidegl::glLoadTexture(fichierXpos, texturesEnvironnement_[0], true, 1);
+		aidegl::glLoadTexture(fichierXneg, texturesEnvironnement_[1], true, 2);
+		aidegl::glLoadTexture(fichierYpos, texturesEnvironnement_[2], true, 3);
+		aidegl::glLoadTexture(fichierYneg, texturesEnvironnement_[3], true, 4);
+		aidegl::glLoadTexture(fichierZpos, texturesEnvironnement_[4], true, 5);
+		aidegl::glLoadTexture(fichierZneg, texturesEnvironnement_[5], true, 6);
 
 		for (int i = 0; i < 6; ++i) {
 			glBindTexture(GL_TEXTURE_2D, texturesEnvironnement_[i]);

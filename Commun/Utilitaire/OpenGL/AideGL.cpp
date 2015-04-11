@@ -542,7 +542,7 @@ namespace aidegl {
 	/// @return Vrai si le chargement a réussi, faux autrement.
 	///
 	///////////////////////////////////////////////////////////////////////////
-	bool glLoadTexture(const std::string& nomFichier, unsigned int& idTexture, bool genererTexture)
+	bool glLoadTexture(const std::string& nomFichier, unsigned int& idTexture, bool genererTexture, unsigned int boiteEnvironnement)
 	{
 		// Ce code de lecture générique d'un fichier provient de la
 		// documentation de FreeImage
@@ -583,8 +583,34 @@ namespace aidegl {
 			return false;
 		}
 
+		switch (boiteEnvironnement) {
+			case(1) :	// fichierXpos -> RIGHT
+				// Rotate 90 vers la droite
+				dib32 = FreeImage_Rotate(dib32, -90);				
+				break;
+			case(2) :	// fichierXneg -> LEFT
+				// Rotate 90 vers la gauche
+				dib32 = FreeImage_Rotate(dib32, 90);
+				break;
+			case(3) :	// fichierYpos -> BACK
+				// Do nothing
+				break;
+			case(4) :	// fichierYneg -> FRONT
+				// Rotate 180
+				dib32 = FreeImage_Rotate(dib32, 180);
+				break;
+			case(5) :	// fichierZpos -> BOTTOM
+				// Rotate 90 vers la droite
+				dib32 = FreeImage_Rotate(dib32, -90);
+				break;
+			case(6) :	// fichierZneg -> TOP
+				// Rotate 90 vers la droite
+				dib32 = FreeImage_Rotate(dib32, -90);
+				break;
+		}
 		//dib32 = FreeImage_Rotate(dib32, 180);
 		// FreeImage_FlipHorizontal(dib32);
+
 		FreeImage_FlipVertical(dib32);
 		unsigned int pitch{ FreeImage_GetPitch(dib32) };
 		glCreateTexture(
