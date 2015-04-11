@@ -119,8 +119,9 @@ namespace vue {
 	///
 	////////////////////////////////////////////////////////////////////////////
 	bool Vue::convertirClotureAVirtuelle(int x, int y, glm::dvec3& point) const
-	{
-		const math::Plan3D plan{ glm::dvec3(0, 0, 1), glm::dvec3(0, 0, 0) };
+	{	
+		// Le plan est donné sous la forme (normale du plan, un point dans le plan.
+		const math::Plan3D plan{ glm::dvec3(0, 0, 1), glm::dvec3(0, 0, 10) };
 		return convertirClotureAVirtuelle(x, y, plan, point);
 	}
 
