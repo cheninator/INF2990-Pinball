@@ -75,8 +75,12 @@ void ControleurSon::creeSon(char* sName)
 	apair.second.first = NULL;
 	apair.second.second = NULL;
 	soundTable_.push_back(apair);
-	std::cout << ((system_->createSound(sPath, FMOD_DEFAULT, 0, &soundTable_[soundTable_.size()-1].second.first)
-				 == FMOD_OK) ? "OK" : "FAILED") << std::endl;
+	if (path.substr(path.size() - 3) == "wav")
+		std::cout << ((system_->createSound(sPath, FMOD_DEFAULT, 0, &soundTable_[soundTable_.size() - 1].second.first)
+		== FMOD_OK) ? "OK" : "FAILED") << std::endl;
+	else
+		std::cout << ((system_->createStream(sPath, FMOD_DEFAULT, 0, &soundTable_[soundTable_.size() - 1].second.first)
+		== FMOD_OK) ? "OK" : "FAILED") << std::endl;
 	specialEffectSounds_.push_back((int)soundTable_.size() - 1);
 }
 

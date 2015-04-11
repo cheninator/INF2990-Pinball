@@ -584,6 +584,7 @@ namespace aidegl {
 		}
 
 		switch (boiteEnvironnement) {
+			// Attention, FreeImage_Rotate fais une rotation ANTI-HORAIRE
 			case(1) :	// fichierXpos -> RIGHT
 				// Rotate 90 vers la droite
 				dib32 = FreeImage_Rotate(dib32, -90);				
