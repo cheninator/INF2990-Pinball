@@ -180,7 +180,7 @@ void NoeudRessort::relacher()
 	distanceCompression_ = (scaleYOriginal_ - scale_.y) * (boite_.coinMax.y - boite_.coinMin.y);
 	AOUT << "Distance compression " << distanceCompression_ << std::endl;
 	etatRessort_ = EN_DECOMPRESSION;
-	SingletonGlobal::obtenirInstance()->obtenirControleurSon()->jouerSon("spring.wav");
+	SoundControl->jouerSon("spring.wav");
 }
 
 
