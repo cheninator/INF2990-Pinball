@@ -1,5 +1,5 @@
 #include "ControleurSon.h"
-
+#define DEFAULT_FREQUENCY 44100 // Hz
 ControleurSon::ControleurSon(bool desactiverSon)
 {
 	sonDesactive = desactiverSon;
@@ -116,7 +116,7 @@ void ControleurSon::accelererSon(char* sName, float facteurAcceleration)
 	if (i == -1)
 		return;
 	
-	soundTable_[i].second.first->setMusicSpeed(facteurAcceleration);
+	soundTable_[i].second.second->setFrequency(DEFAULT_FREQUENCY * facteurAcceleration);
 }
 
 void ControleurSon::bouclerSon(char* sName, bool loop)
