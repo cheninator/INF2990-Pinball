@@ -131,10 +131,10 @@ void ControleurSon::bouclerSon(char* sName, bool loop)
 
 	for (unsigned int j = 0; j < backGroundMusic_.size(); j++)
 		if (backGroundMusic_[j] == i)
-			backGroundMusic_.erase(backGroundMusic_.begin() + i);
+			backGroundMusic_.erase(backGroundMusic_.begin() + j);
 	for (unsigned int j = 0; j < specialEffectSounds_.size(); j++)
 		if (specialEffectSounds_[j] == i)
-			specialEffectSounds_.erase(specialEffectSounds_.begin() + i);
+			specialEffectSounds_.erase(specialEffectSounds_.begin() + j);
 
 	if (loop)
 		backGroundMusic_.push_back(i);
