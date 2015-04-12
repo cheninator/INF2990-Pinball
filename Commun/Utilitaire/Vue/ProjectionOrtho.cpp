@@ -570,7 +570,7 @@ namespace vue {
 
 	bool ProjectionOrtho::translationDepasseBordure(double xBorneMin, double xBorneMax, double yBorneMin, double yBorneMax)
 	{
-		
+		return false;
 	}
 
 }; // Fin du namespace vue.
