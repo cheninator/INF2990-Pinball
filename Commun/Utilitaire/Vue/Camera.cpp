@@ -236,7 +236,6 @@ namespace vue {
 	{
 		glMatrixMode(GL_MODELVIEW);
 		glLoadIdentity();
-		double maxZoomOut = 5000;
 		double xMin, xMax, yMin, yMax;
 		FacadeModele::obtenirInstance()->obtenirVue()->obtenirProjection().obtenirCoordornneesFenetreVirtuelle(xMin, xMax, yMin, yMax);
 		glm::dvec3 pointMilieu = { (xMax + xMin) / 2.0, (yMax+ yMin) / 2.0, 0.0 };
@@ -244,7 +243,6 @@ namespace vue {
 		double smallestComp = FacadeModele::obtenirInstance()->obtenirVue()->obtenirProjection().obtenirDimensionFenetreVirtuelle().x
 			> FacadeModele::obtenirInstance()->obtenirVue()->obtenirProjection().obtenirDimensionFenetreVirtuelle().y ? FacadeModele::obtenirInstance()->obtenirVue()->obtenirProjection().obtenirDimensionFenetreVirtuelle().x :
 			FacadeModele::obtenirInstance()->obtenirVue()->obtenirProjection().obtenirDimensionFenetreVirtuelle().y;
-		std::cout << smallestComp << '\n';
 		
 		FacadeModele::obtenirInstance()->dessinerSkybox(smallestComp / 2.0, true, pointMilieu);
 		gluLookAt(position_[0], position_[1], position_[2],
