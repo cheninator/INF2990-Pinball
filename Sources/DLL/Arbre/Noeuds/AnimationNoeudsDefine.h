@@ -24,7 +24,7 @@ enum Direction { dirY, dirYX, dirX, dirXY, dirZ }; // Pour fonctionner avec le s
 
 //Table
 #define TRANSLATE_X_NOEUD_TABLE 0	// 200
-#define TRANSLATE_Y_NOEUD_TABLE 0	// 50
+#define TRANSLATE_Y_NOEUD_TABLE 0	// -50
 #define TRANSLATE_Z_NOEUD_TABLE SingletonGlobal::obtenirInstance()->obtenirTableMinZ()
 
 #define coinGaucheTableX SingletonGlobal::obtenirInstance()->obtenirTableMaxX()
@@ -35,10 +35,10 @@ enum Direction { dirY, dirYX, dirX, dirXY, dirZ }; // Pour fonctionner avec le s
 #define deltaLargeur 12.9103851318	// Ces deux mesures sont calculer via blender
 #define deltaHauteur 22.9518280029	// avec la largeur de la bordure
 
-#define interieurGaucheTableX (coinGaucheTableX + deltaLargeur)
-#define interieurGaucheTableY (coinGaucheTableY + deltaHauteur)
-#define interieurDroitTableX (coinDroitTableX - deltaLargeur)
-#define interieurDroitTableY (coinDroitTableY - deltaHauteur)
+#define interieurGaucheTableX (coinGaucheTableX + deltaLargeur)	// 108
+#define interieurGaucheTableY (coinGaucheTableY + deltaHauteur)	// -190
+#define interieurDroitTableX (coinDroitTableX - deltaLargeur)	// 272
+#define interieurDroitTableY (coinDroitTableY - deltaHauteur)	// 96
 
 // Bille
 #define VITESSE_MAX_NOEUD_BILLE 400.		// Vitesse maximale de la bille

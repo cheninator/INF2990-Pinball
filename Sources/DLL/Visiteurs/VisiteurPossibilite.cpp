@@ -107,8 +107,8 @@ bool VisiteurPossibilite::traiter(NoeudAbstrait* noeud)
 	for (int i = 0; i < 4; i++)
 	{
 		point = position + coinsEnglobant[i];
-		if (!(108 < point.x && point.x < 272
-			&& -190 < point.y && point.y < 96)) // Si le point n'est pas dans la table, alors le noeud est impossible.
+		if (!(interieurGaucheTableX < point.x && point.x < interieurDroitTableX
+			&& interieurGaucheTableY < point.y && point.y < interieurDroitTableY)) // Si le point n'est pas dans la table, alors le noeud est impossible.
 		{
 			noeud->assignerImpossible(true);
 			return true; // Si on trouve un point illegal, le noeud est impossible, on a fini.

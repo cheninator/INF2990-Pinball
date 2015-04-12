@@ -133,10 +133,10 @@ aidecollision::DetailsCollision NoeudTable::detecterCollisions(NoeudAbstrait* bi
 	detailsAucune.type = aidecollision::COLLISION_AUCUNE;
 
 	std::vector<glm::dvec3> boite;
-	boite.push_back({ 108, -190, 0 });
-	boite.push_back({ 272, -190, 0 });
-	boite.push_back({ 272, 96, 0 });
-	boite.push_back({ 108, 96, 0 });
+	boite.push_back({ interieurGaucheTableX, interieurGaucheTableY, 0 });
+	boite.push_back({ interieurDroitTableX, interieurGaucheTableY, 0 });
+	boite.push_back({ interieurDroitTableX, interieurDroitTableY, 0 });
+	boite.push_back({ interieurGaucheTableX, interieurDroitTableY, 0 });
 	// Considerer tous les segments boite[i] --- boite[i+1 % size] 
 	aidecollision::DetailsCollision details;
 	double rayonBille = bille->obtenirVecteursEnglobants()[0].x;
