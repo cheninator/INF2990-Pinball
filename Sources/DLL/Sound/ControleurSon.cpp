@@ -85,16 +85,12 @@ void ControleurSon::creeSon(char* sName)
 		== FMOD_OK) ? "OK" : "FAILED") << std::endl;
 }
 
-bool ControleurSon::sonJoue(char* sName)
+void ControleurSon::pauseGlobal(bool pause)
 {
-	if (sonDesactive)
-		return false;
-	int i = lookUp(std::string(sName));
-	if (i == -1)
-		return false;
-	bool isPlaying = false;
-	soundTable_[i].second.second->isPlaying(&isPlaying);
-	return isPlaying;
+	for (unsigned int i = 0; i < soundTable_.size(); i++)
+	{
+		soundTable_[i].second.second->setPaused(pause);
+	}
 }
 
 void ControleurSon::jouerSon(char* sName, bool pause)
@@ -145,7 +141,9 @@ void ControleurSon::arreterSon()
 		return;
 	// Arret de tout les sons
 	for (unsigned int i = 0; i < soundTable_.size(); i++)
+	{
 		soundTable_[i].second.second->stop();
+	}
 }
 
 void ControleurSon::sourdine(bool mute)

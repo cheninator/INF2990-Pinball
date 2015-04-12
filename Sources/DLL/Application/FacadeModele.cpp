@@ -1277,6 +1277,7 @@ bool FacadeModele::supprimer()
 ///////////////////////////////////////////////////////////////////////////////
 void FacadeModele::setPause(bool pause)
 {	
+	SoundControl->pauseGlobal(pause);
 	//ne pas afficher le generateur en mode pause
 	NoeudAbstrait* table = arbre_->chercher(0);
 	for (unsigned int i = 0; i < table->obtenirNombreEnfants(); i++)

@@ -23,7 +23,7 @@
 #include "ArbreRenduINF2990.h"
 #include "CompteurAffichage.h"
 
-#include <string>
+#include <string>	
 #include <iomanip>
 #include <iostream>
 
