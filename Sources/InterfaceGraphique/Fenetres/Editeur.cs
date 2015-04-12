@@ -33,7 +33,6 @@ namespace InterfaceGraphique
         private bool updateFrame = false;
         FullScreen fs = new FullScreen();
         static public StringBuilder myObjectName = new StringBuilder("vide");
-        static bool soundActif = false; ///< Play Sound or not
         private Touches touches;
         public Point origin;
         string output = "";
@@ -2491,8 +2490,7 @@ namespace InterfaceGraphique
                 }
                 proprietesEnable(false);
                 if (isSelected == 0)
-                    if (soundActif)
-                        playSound("no");
+                    playSound("no");
             }
             else
             {
@@ -2854,7 +2852,7 @@ namespace InterfaceGraphique
         //////////////////////////////////////////////////////////////////////////////////////////
         private void playSound(String name, bool stop = false)
         {
-            StringBuilder music = new StringBuilder(name + ".wav");
+            StringBuilder music = new StringBuilder(name);
             FonctionsNatives.jouerSon(music, music.Capacity, stop);
         }
 

@@ -1206,9 +1206,12 @@ extern "C"
 	////////////////////////////////////////////////////////////////////////
 	__declspec(dllexport) void __cdecl initialiserSon()
 	{
+#if !(_DEBUG)
+		SingletonGlobal::obtenirInstance()->activerSon();
 		std::cout << "Initialisation des sons ..." << std::endl;
 		SoundControl;
 		std::cout << "Sons initialiser." << std::endl;
+#endif
 	}
 
 	///////////////////////////////////////////////////////////////////////////////
@@ -2001,7 +2004,6 @@ extern "C"
 	__declspec(dllexport) void __cdecl activerCustomConsole()
 	{
 		FacadeModele::obtenirInstance(true);
-		SingletonGlobal::obtenirInstance()->activerSon();
 	}
 
 	///////////////////////////////////////////////////////////////////////////////
