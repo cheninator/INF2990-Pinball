@@ -60,7 +60,7 @@ NoeudBille::NoeudBille(const std::string& typeNoeud)
 ////////////////////////////////////////////////////////////////////////
 NoeudBille::~NoeudBille()
 {
-
+	SoundControl->jouerSon("rolling", true);
 }
 
 ////////////////////////////////////////////////////////////////////////
@@ -112,9 +112,6 @@ void NoeudBille::animer(float temps) // rajouter des parametres ou une fonction 
 
 	if (enCreation_ || !animer_ || timerMove_ < TIME_IDLE_NOEUD_BILLE || temps > EPSILON_ANIMATION_NOEUD_COMPOSITE)
 		SoundControl->jouerSon("rolling", true);
-	else
-		if (!SoundControl->sonJoue("rolling"))
-			SoundControl->jouerSon("rolling");
 
 	if (temps > EPSILON_ANIMATION_NOEUD_COMPOSITE)
 	{
@@ -204,6 +201,12 @@ void NoeudBille::animer(float temps) // rajouter des parametres ou une fonction 
 
 	if (positionRelative_.z >  abs(coinMinAvecScale.z))
 		positionRelative_.z = abs(coinMinAvecScale.z);
+
+	if (leSonJoue == false)
+	{
+		SoundControl->jouerSon("rolling");
+		leSonJoue = true;
+	}
 }
 
 ////////////////////////////////////////////////////////////////////////

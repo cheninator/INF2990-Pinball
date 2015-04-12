@@ -40,8 +40,6 @@ private:
 
 	FMOD::System* system_;
 	std::vector< std::pair< std::string, std::pair< FMOD::Sound *, FMOD::Channel* > > > soundTable_;
-	std::vector<int> backGroundMusic_;
-	std::vector<int> specialEffectSounds_;
 	float maxBGM_;
 	float maxSFX_;
 

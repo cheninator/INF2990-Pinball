@@ -83,7 +83,6 @@ void ControleurSon::creeSon(char* sName)
 	else
 		std::cout << ((system_->createStream(sPath, FMOD_DEFAULT, 0, &soundTable_[soundTable_.size() - 1].second.first)
 		== FMOD_OK) ? "OK" : "FAILED") << std::endl;
-	specialEffectSounds_.push_back((int)soundTable_.size() - 1);
 }
 
 bool ControleurSon::sonJoue(char* sName)
@@ -128,18 +127,6 @@ void ControleurSon::bouclerSon(char* sName, bool loop)
 		if (i == -1)
 			return;
 	soundTable_[i].second.first->setMode(sName ? FMOD_LOOP_NORMAL : FMOD_LOOP_OFF);
-
-	for (unsigned int j = 0; j < backGroundMusic_.size(); j++)
-		if (backGroundMusic_[j] == i)
-			backGroundMusic_.erase(backGroundMusic_.begin() + j);
-	for (unsigned int j = 0; j < specialEffectSounds_.size(); j++)
-		if (specialEffectSounds_[j] == i)
-			specialEffectSounds_.erase(specialEffectSounds_.begin() + j);
-
-	if (loop)
-		backGroundMusic_.push_back(i);
-	else
-		specialEffectSounds_.push_back(i);
 }
 
 void ControleurSon::arreterSon(char* sName)
@@ -223,8 +210,13 @@ void ControleurSon::setVolumeBGM()
 	if (sonDesactive)
 		return;
 	if (maxBGM_ == -1) return;
-	for (unsigned int i = 0; i < backGroundMusic_.size(); i++)
-		soundTable_[backGroundMusic_[i]].second.second->setVolume(maxBGM_);
+	FMOD_MODE mode = FMOD_LOOP_OFF;
+	for (unsigned int i = 0; i < soundTable_.size(); i++)
+	{
+		soundTable_[i].second.first->getMode(&mode);
+		if (mode == FMOD_LOOP_NORMAL)
+			soundTable_[i].second.second->setVolume(maxBGM_);
+	}
 }
 
 void ControleurSon::setVolumeSFX()
@@ -232,8 +224,13 @@ void ControleurSon::setVolumeSFX()
 	if (sonDesactive)
 		return;
 	if (maxSFX_ == -1) return;
-	for (unsigned int i = 0; i < specialEffectSounds_.size(); i++)
-		soundTable_[specialEffectSounds_[i]].second.second->setVolume(maxSFX_);
+	FMOD_MODE mode = FMOD_LOOP_NORMAL;
+	for (unsigned int i = 0; i < soundTable_.size(); i++)
+	{
+		soundTable_[i].second.first->getMode(&mode);
+		if (mode != FMOD_LOOP_NORMAL)
+			soundTable_[i].second.second->setVolume(maxSFX_);
+	}
 }
 
 std::string ControleurSon::getSFXPath(char* sName)
