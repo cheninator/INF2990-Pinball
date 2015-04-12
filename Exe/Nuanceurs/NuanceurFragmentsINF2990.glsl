@@ -112,7 +112,7 @@ void main()
 	composanteSpeculaire = pow(max(NdotHV[DIRECTIONNELLE], 0.0),100.0) * gl_LightSource[DIRECTIONNELLE].specular;
 	lumiereReflechie[DIRECTIONNELLE] += clamp(composanteAmbiante, 0.0,1.0);
 	lumiereReflechie[DIRECTIONNELLE] += clamp(composanteDiffuse, 0.0,1.0);
-	if(estTable != 1)
+	// if(estTable != 1)
 	lumiereReflechie[DIRECTIONNELLE] += clamp(composanteSpeculaire, 0.0,1.0);
 
 	// Lumiere SPOT_A
@@ -144,7 +144,7 @@ void main()
 	composanteSpeculaire = pow(max(NdotHV[SPOT_A], 0.0),50.0) * gl_LightSource[SPOT_A].specular;
 	lumiereReflechie[SPOT_A] += effetSpotOmbreBilleA*effetSpotA*clamp(composanteAmbiante, 0.0, 1.0) ;
 	lumiereReflechie[SPOT_A] += effetSpotOmbreBilleA*effetSpotA*clamp(composanteDiffuse, 0.0, 1.0);
-	if(estTable != 1)
+	// if(estTable != 1)
 	lumiereReflechie[SPOT_A] += effetSpotOmbreBilleA*effetSpotA*clamp(composanteSpeculaire, 0.0, 1.0);
 
 	// Lumiere SPOT_B
