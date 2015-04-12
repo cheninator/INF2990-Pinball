@@ -20,6 +20,7 @@ public:
 	~ControleurSon();
 	void creeSon(char* sName);
 	void jouerSon(char* sName, bool pause = false);
+	bool sonJoue(char* sName);
 	void accelererSon(char* sName, float facteurAcceleration);
 	void bouclerSon(char* sName, bool loop = true);
 	void arreterSon(char* sName);

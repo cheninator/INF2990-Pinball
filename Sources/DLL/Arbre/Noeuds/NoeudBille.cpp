@@ -46,6 +46,7 @@ NoeudBille::NoeudBille(const std::string& typeNoeud)
 	vitesse_ = VITESSE_INITIALE_NORUD_BILLE;
 	masse_ = MASSE_NOEUD_BILLE;
 	constanteDeFrottement_ = FROTTEMENT_NOEUD_BILLE;
+	SoundControl->bouclerSon("rolling", true);
 }
 
 ////////////////////////////////////////////////////////////////////////
@@ -108,8 +109,18 @@ void NoeudBille::afficherConcret() const
 ////////////////////////////////////////////////////////////////////////
 void NoeudBille::animer(float temps) // rajouter des parametres ou une fonction animerCollision(float temps, detailCollision detail)
 {
+
+	if (enCreation_ || !animer_ || timerMove_ < TIME_IDLE_NOEUD_BILLE || temps > EPSILON_ANIMATION_NOEUD_COMPOSITE)
+		SoundControl->jouerSon("rolling", true);
+	else
+		if (!SoundControl->sonJoue("rolling"))
+			SoundControl->jouerSon("rolling");
+
 	if (temps > EPSILON_ANIMATION_NOEUD_COMPOSITE)
+	{
 		return;
+	}
+
 	for (NoeudAbstrait * enfant : enfants_){
 		enfant->animer(temps);
 	}
@@ -124,8 +135,6 @@ void NoeudBille::animer(float temps) // rajouter des parametres ou une fonction 
 		NoeudComposite::animer(temps);
 		positionRelative_ = positionRelative;
 	}
-	else
-		NoeudComposite::animer(temps);
 
 	if (enCreation_)
 	{
@@ -137,6 +146,7 @@ void NoeudBille::animer(float temps) // rajouter des parametres ou une fonction 
 
 	if (!animer_)
 		return;
+
 	// Somme des forces agissant sur les particules.
 	// =============================================
 
