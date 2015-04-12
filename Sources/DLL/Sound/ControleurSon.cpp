@@ -1,4 +1,5 @@
 #include "ControleurSon.h"
+#define DEFAULT_FREQ 44100.0F
 ControleurSon::ControleurSon(bool desactiverSon)
 {
 	sonDesactive = desactiverSon;
@@ -95,6 +96,17 @@ void ControleurSon::jouerSon(char* sName, bool pause)
 	setVolumeLimiter();
 }
 
+void ControleurSon::accelererSon(char* sName, float facteurAcceleration)
+{
+	if (sonDesactive)
+		return;
+	int i = lookUp(std::string(sName));
+	if (i == -1)
+		return;
+	
+	soundTable_[i].second.second->setFrequency(DEFAULT_FREQ * facteurAcceleration);
+}
+
 void ControleurSon::bouclerSon(char* sName, bool loop)
 {
 	if (sonDesactive)
@@ -115,7 +127,6 @@ void ControleurSon::bouclerSon(char* sName, bool loop)
 		backGroundMusic_.push_back(i);
 	else
 		specialEffectSounds_.push_back(i);
-
 }
 
 void ControleurSon::arreterSon(char* sName)
