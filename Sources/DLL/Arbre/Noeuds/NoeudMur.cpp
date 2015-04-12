@@ -105,7 +105,8 @@ void NoeudMur::animer(float temps)
 void NoeudMur::traiterCollisions(aidecollision::DetailsCollision details, NoeudAbstrait* bille, float facteurRebond)
 {
 	NoeudAbstrait::traiterCollisions(details, bille);
-	SoundControl->jouerSon("wall");
+	if (glm::length(bille->obtenirVitesse()) > 10)
+		SoundControl->jouerSon("wall");
 }
 
 ////////////////////////////////////////////////////////////////////////
