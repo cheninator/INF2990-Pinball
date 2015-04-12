@@ -172,6 +172,7 @@ double SingletonGlobal::obtenirTableMaxX() const
 { 
 	double position = boiteTable_.coinMax.x + TRANSLATE_X_NOEUD_TABLE;
 	if (position == TRANSLATE_X_NOEUD_TABLE)
+		position = -100;	// Random value
 	return position;
 }
 
@@ -179,6 +180,7 @@ double SingletonGlobal::obtenirTableMaxY() const
 { 
 	double position = boiteTable_.coinMax.y + TRANSLATE_Y_NOEUD_TABLE;
 	if (position == TRANSLATE_X_NOEUD_TABLE)
+		position = -100;	// Random value
 	return position;
 }
 
@@ -186,6 +188,7 @@ double SingletonGlobal::obtenirTableMinX() const
 { 
 	double position = boiteTable_.coinMin.x + TRANSLATE_X_NOEUD_TABLE;
 	if (position == TRANSLATE_X_NOEUD_TABLE)
+		position = 100;	// Random value
 	return position;
 }
 
@@ -193,6 +196,7 @@ double SingletonGlobal::obtenirTableMinY() const
 {
 	double position = boiteTable_.coinMin.y + TRANSLATE_Y_NOEUD_TABLE; 
 	if (position == TRANSLATE_Y_NOEUD_TABLE)
+		position = 100;	// Random value
 	return position;
 }
 
