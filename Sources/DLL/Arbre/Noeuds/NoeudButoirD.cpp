@@ -220,7 +220,7 @@ void NoeudButoirD::traiterCollisions(aidecollision::DetailsCollision details, No
 			facteurRebond = FACTEUR_REBOND_BUTOIRE;
 	}
 	NoeudAbstrait::traiterCollisions(details, bille, facteurRebond);
-	SoundControl->jouerSon("butoir.wav");
+	SoundControl->jouerSon("butoir");
 }
 
 

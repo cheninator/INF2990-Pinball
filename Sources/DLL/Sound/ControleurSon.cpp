@@ -72,7 +72,8 @@ void ControleurSon::creeSon(char* sName)
 	std::cout << "\tAdding " << name << "..." << std::setw(40 - name.length());
 
 	std::pair< std::string, std::pair< FMOD::Sound *, FMOD::Channel* > > apair;
-	apair.first = std::string(sName);
+	std::string nameOfMusic = std::string(sName);
+	apair.first = nameOfMusic.substr(0, nameOfMusic.size() - 4);
 	apair.second.first = NULL;
 	apair.second.second = NULL;
 	soundTable_.push_back(apair);

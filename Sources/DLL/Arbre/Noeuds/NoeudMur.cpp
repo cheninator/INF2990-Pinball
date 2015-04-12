@@ -105,7 +105,7 @@ void NoeudMur::animer(float temps)
 void NoeudMur::traiterCollisions(aidecollision::DetailsCollision details, NoeudAbstrait* bille, float facteurRebond)
 {
 	NoeudAbstrait::traiterCollisions(details, bille);
-	SoundControl->jouerSon("wall.wav");
+	SoundControl->jouerSon("wall");
 }
 
 ////////////////////////////////////////////////////////////////////////

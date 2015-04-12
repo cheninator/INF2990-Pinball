@@ -133,7 +133,7 @@ void NoeudCible::traiterCollisions(aidecollision::DetailsCollision details, Noeu
 	NoeudAbstrait::traiterCollisions(details, bille);
 	this->assignerAffiche(false);
 	SingletonGlobal::obtenirInstance()->collisionButoirCible();
-	SoundControl->jouerSon("cible.wav");
+	SoundControl->jouerSon("cible");
 }
 
 ////////////////////////////////////////////////////////////////////////
