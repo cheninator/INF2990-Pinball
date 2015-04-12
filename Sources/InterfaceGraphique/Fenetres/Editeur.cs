@@ -398,6 +398,7 @@ namespace InterfaceGraphique
                 {
                     if (Program.mMenu.modeEdit != null)
                     {
+                        FonctionsNatives.arreterToutSons();
                         Program.myCustomConsole.Show();
                         Program.mMenu.modeEdit.Focus();
                     }

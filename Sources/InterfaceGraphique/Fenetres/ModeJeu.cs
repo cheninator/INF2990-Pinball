@@ -174,8 +174,8 @@ namespace InterfaceGraphique
             etat = new EtatJeuJouer(this);
             FonctionsNatives.animerJeu(true);
 
-            FonctionsNatives.bouclerSon(bgm, bgm.Length);   // Ne fonctionne pas
-            FonctionsNatives.ajusterBGM(50);                // Ne fonctionne pas
+            FonctionsNatives.bouclerSon(bgm, bgm.Length);
+            FonctionsNatives.ajusterBGM(50/100);             // C'est un pourcentage que tu met ici
             FonctionsNatives.jouerSon(bgm, bgm.Length);
 
             if (true)
@@ -455,6 +455,7 @@ namespace InterfaceGraphique
             Program.myCustomConsole.Show();
             if (Program.mMenu.modeJeuMain != null)
             {
+                FonctionsNatives.arreterToutSons();
                 Program.myCustomConsole.Show();
                 Program.mMenu.modeJeuMain.Focus();
             }
