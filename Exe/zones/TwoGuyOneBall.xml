@@ -25,10 +25,10 @@
         <gate posX="25.735331394505039" posY="142.72648261506396" posZ="10.139884948730469" scaleX="1" scaleY="1" scaleZ="1" angleX="0" angleY="0" angleZ="90.3333333333333"/>
         <generateurbille posX="-69.007390980228081" posY="118.83851371731706" posZ="-0.95108607763458153" scaleX="0.70435375887200025" scaleY="0.70435375887200025" scaleZ="0.70435375887200025" angleX="0" angleY="0" angleZ="0"/>
         <paletteg posX="-69.647567815269369" posY="-83.676571599456139" posZ="0.068792000412940979" scaleX="1" scaleY="1" scaleZ="1" angleX="0" angleY="0" angleZ="140.33333333333383" color="0"/>
-        <paletted posX="23.197457127378264" posY="-84.143129492150308" posZ="0.068792000412940979" scaleX="1" scaleY="1" scaleZ="1" angleX="0" angleY="0" angleZ="219.99999999999977" color="0"/>
+        <paletted posX="20.622714839362654" posY="-84.143129492150308" posZ="0.068792000412940979" scaleX="1" scaleY="1" scaleZ="1" angleX="0" angleY="0" angleZ="219.99999999999977" color="0"/>
         <trou posX="-23.458338528058761" posY="-130.33236246789988" posZ="0" scaleX="1" scaleY="1" scaleZ="1" angleX="0" angleY="0" angleZ="0"/>
         <butoircirculaire posX="-80.844961985071876" posY="-68.746719930080872" posZ="10.252889092407536" scaleX="0.87914372399935947" scaleY="0.87914372399935947" scaleZ="0.87914372399935947" angleX="0" angleY="0" angleZ="0"/>
-        <portail posX="19.464989586130251" posY="-31.888646407234887" posZ="0.9581490159034729" scaleX="0.49909536797089737" scaleY="0.49909536797089737" scaleZ="1" angleX="0" angleY="0" angleZ="0"/>
+        <portail posX="18.606742156791697" posY="-31.459522706285654" posZ="0.9581490159034729" scaleX="0.49909536797089737" scaleY="0.49909536797089737" scaleZ="1" angleX="0" angleY="0" angleZ="0"/>
         <portail posX="46.525348614640507" posY="122.07545818186912" posZ="0.9581490159034729" scaleX="0.49611421763711522" scaleY="0.49611421763711522" scaleZ="1" angleX="0" angleY="0" angleZ="182.33333333333377"/>
         <cible posX="2.6689046718824425" posY="-24.8902780168211" posZ="3.5891275907250058" scaleX="0.42710536051106202" scaleY="0.42710536051106202" scaleZ="0.42710536051106202" angleX="0" angleY="0" angleZ="89.666666666666572"/>
         <cible posX="-2.4632323852488645" posY="-24.423720124126845" posZ="3.5891275907250058" scaleX="0.42710536051106202" scaleY="0.42710536051106202" scaleZ="0.42710536051106202" angleX="0" angleY="0" angleZ="89.666666666666572"/>
