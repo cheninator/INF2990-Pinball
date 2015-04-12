@@ -19,6 +19,8 @@
 #include "../../Sources/DLL/Application/FacadeModele.h"
 //#include "../../Sources/DLL/Text/ControleurTexte.h"
 
+#define projectionDeLaCamera  FacadeModele::obtenirInstance()->obtenirVue()->obtenirProjection()
+#define dimensionFenetreVirtuelle projectionDeLaCamera.obtenirDimensionFenetreVirtuelle()
 
 namespace vue {
 
@@ -241,14 +243,13 @@ namespace vue {
 
 		/* On obtient les coordonnées des coins de la projection */
 		double xMin, xMax, yMin, yMax;
-		FacadeModele::obtenirInstance()->obtenirVue()->obtenirProjection().obtenirCoordornneesFenetreVirtuelle(xMin, xMax, yMin, yMax);
+		projectionDeLaCamera.obtenirCoordornneesFenetreVirtuelle(xMin, xMax, yMin, yMax);
 		glm::dvec3 pointMilieu = { (xMax + xMin) / 2.0, (yMax+ yMin) / 2.0, 0.0 };
 
 		/* On trouve quel est la plus grande composante (en X et Y) pour faire la passer à la skybox */
-		double smallestComp = FacadeModele::obtenirInstance()->obtenirVue()->obtenirProjection().obtenirDimensionFenetreVirtuelle().x
-			> FacadeModele::obtenirInstance()->obtenirVue()->obtenirProjection().obtenirDimensionFenetreVirtuelle().y ? FacadeModele::obtenirInstance()->obtenirVue()->obtenirProjection().obtenirDimensionFenetreVirtuelle().x :
-			FacadeModele::obtenirInstance()->obtenirVue()->obtenirProjection().obtenirDimensionFenetreVirtuelle().y;
-		
+		double smallestComp = dimensionFenetreVirtuelle.x > dimensionFenetreVirtuelle.y ?
+						      dimensionFenetreVirtuelle.x : dimensionFenetreVirtuelle.y;
+
 		FacadeModele::obtenirInstance()->dessinerSkybox(smallestComp / 2.0, true, pointMilieu);
 		gluLookAt(position_[0], position_[1], position_[2],
 			pointVise_[0], pointVise_[1], pointVise_[2],
