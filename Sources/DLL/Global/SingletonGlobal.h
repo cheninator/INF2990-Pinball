@@ -86,7 +86,7 @@ public:
 	void setBoiteTable(utilitaire::BoiteEnglobante boiteTable) { boiteTable_ = boiteTable; };
 protected:
 	/// Constructeur vide déclaré protected.
-	SingletonGlobal() {};
+	SingletonGlobal() {   boiteTable_.coinMax = { 0, 0, 0 }; boiteTable_.coinMin = { 0, 0, 0 };   };
 
 	/// Destructeur vide déclaré protected.
 	~SingletonGlobal() { delete mySound_; };
