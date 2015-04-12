@@ -1073,7 +1073,7 @@ extern "C"
 	////////////////////////////////////////////////////////////////////////
 	__declspec(dllexport) void __cdecl creeSon(char* value, int length)
 	{
-		SingletonGlobal::obtenirInstance()->obtenirControleurSon()->creeSon(value);
+		SoundControl->creeSon(value);
 	}
 
 	////////////////////////////////////////////////////////////////////////
@@ -1091,7 +1091,7 @@ extern "C"
 	////////////////////////////////////////////////////////////////////////
 	__declspec(dllexport) void __cdecl jouerSon(char* value, int length, bool pause)
 	{
-		SingletonGlobal::obtenirInstance()->obtenirControleurSon()->jouerSon(value, pause);
+		SoundControl->jouerSon(value, pause);
 	}
 
 	////////////////////////////////////////////////////////////////////////
@@ -1109,7 +1109,7 @@ extern "C"
 	////////////////////////////////////////////////////////////////////////
 	__declspec(dllexport) void __cdecl bouclerSon(char* value, int length, bool loop)
 	{
-		SingletonGlobal::obtenirInstance()->obtenirControleurSon()->jouerSon(value, loop);
+		SoundControl->jouerSon(value, loop);
 	}
 
 	////////////////////////////////////////////////////////////////////////
@@ -1126,7 +1126,7 @@ extern "C"
 	////////////////////////////////////////////////////////////////////////
 	__declspec(dllexport) void __cdecl sourdine(bool mute)
 	{
-		SingletonGlobal::obtenirInstance()->obtenirControleurSon()->sourdine(mute);
+		SoundControl->sourdine(mute);
 	}
 
 	////////////////////////////////////////////////////////////////////////
@@ -1143,7 +1143,7 @@ extern "C"
 	////////////////////////////////////////////////////////////////////////
 	__declspec(dllexport) void __cdecl arreterSon(char* value, int length)
 	{
-		SingletonGlobal::obtenirInstance()->obtenirControleurSon()->creeSon(value);
+		SoundControl->creeSon(value);
 	}
 
 	////////////////////////////////////////////////////////////////////////
@@ -1160,7 +1160,7 @@ extern "C"
 	////////////////////////////////////////////////////////////////////////
 	__declspec(dllexport) void __cdecl ajusterBGM(float pourcentage)
 	{
-		SingletonGlobal::obtenirInstance()->obtenirControleurSon()->ajusterBGM(pourcentage);
+		SoundControl->ajusterBGM(pourcentage);
 	}
 
 	////////////////////////////////////////////////////////////////////////
@@ -1177,7 +1177,7 @@ extern "C"
 	////////////////////////////////////////////////////////////////////////
 	__declspec(dllexport) void __cdecl ajusterSFX(float pourcentage)
 	{
-		SingletonGlobal::obtenirInstance()->obtenirControleurSon()->ajusterBGM(pourcentage);
+		SoundControl->ajusterBGM(pourcentage);
 	}
 
 	////////////////////////////////////////////////////////////////////////
@@ -1205,30 +1205,30 @@ extern "C"
 		{
 			std::cout << "Initializing sound controller ..." << std::endl;
 			
-			SingletonGlobal::obtenirInstance()->obtenirControleurSon()->creeSon("ambient.wav");
-			SingletonGlobal::obtenirInstance()->obtenirControleurSon()->creeSon("music.wav");
-			SingletonGlobal::obtenirInstance()->obtenirControleurSon()->creeSon("no.wav");
-			SingletonGlobal::obtenirInstance()->obtenirControleurSon()->creeSon("stone.wav");
-			SingletonGlobal::obtenirInstance()->obtenirControleurSon()->bouclerSon("music.wav");
-			//SingletonGlobal::obtenirInstance()->obtenirControleurSon()->ajusterBGM(12.5);
+			SoundControl->creeSon("ambient.wav");
+			SoundControl->creeSon("music.wav");
+			SoundControl->creeSon("no.wav");
+			SoundControl->creeSon("stone.wav");
+			SoundControl->bouclerSon("music.wav");
+			//SoundControl->ajusterBGM(12.5);
 			std::cout << "Done" << std::endl;
 			init = true;
 			return;
 		}
 		if (stop) 
 		{
-			SingletonGlobal::obtenirInstance()->obtenirControleurSon()->sourdine(true);
+			SoundControl->sourdine(true);
 			return;
 		}
 		else
 		{
 			if (playing == "")
 			{
-				SingletonGlobal::obtenirInstance()->obtenirControleurSon()->sourdine(false);
+				SoundControl->sourdine(false);
 				return;
 			}
 		}
-		SingletonGlobal::obtenirInstance()->obtenirControleurSon()->jouerSon(value);
+		SoundControl->jouerSon(value);
 	}
 
 	///////////////////////////////////////////////////////////////////////////////

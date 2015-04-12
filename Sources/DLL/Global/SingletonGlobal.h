@@ -15,6 +15,8 @@
 #include <sstream>
 #include "glm\glm.hpp"
 
+#define SoundControl SingletonGlobal::obtenirInstance()->obtenirControleurSon()
+
 ///////////////////////////////////////////////////////////////////////////
 /// @class SingletonGlobal
 /// @brief 
