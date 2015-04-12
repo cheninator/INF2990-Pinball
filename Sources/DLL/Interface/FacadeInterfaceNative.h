@@ -170,7 +170,7 @@ extern "C" {
 	////////////////////////////		SONS			/////////////////////////////////////////////
 
 
-	__declspec(dllexport) void playSound(char* value, int length, bool stop = false);
+	__declspec(dllexport) void initialiserSon();
 
 	__declspec(dllexport) void creeSon(char* value, int length);
 	__declspec(dllexport) void jouerSon(char* value, int length, bool pause = false);
@@ -178,6 +178,7 @@ extern "C" {
 
 	__declspec(dllexport) void sourdine(bool mute = true);
 	__declspec(dllexport) void arreterSon(char* value, int length);
+	__declspec(dllexport) void arreterToutSons();
 
 	__declspec(dllexport) void ajusterBGM(float pourcentage);
 	__declspec(dllexport) void ajusterSFX(float pourcentage);

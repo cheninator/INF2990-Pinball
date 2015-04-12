@@ -254,22 +254,21 @@ namespace InterfaceGraphique
         ////////////////////////////////////////////////////////////////////////
         private void MainMenu_Shown(object sender, EventArgs e)
         {
-            myThread = new Thread(new ThreadStart(initMusic));
+            myThread = new Thread(new ThreadStart(initDll));
             myThread.Start();
             ShowConsol.Visible = Program.customConsoleActive;
         }
         ////////////////////////////////////////////////////////////////////////
         ///
-        /// @fn private void initMusic()
-        /// @brief Joue un son.
+        /// @fn private void initDll()
+        /// @brief Initialise la DLL
         /// 
         /// @return Aucune.
         ///
         ////////////////////////////////////////////////////////////////////////
-        private void initMusic()
+        private void initDll()
         {
-            StringBuilder initSound = new StringBuilder("");
-            InterfaceGraphique.FonctionsNatives.playSound(initSound, initSound.Capacity, true); // Initialise le son
+            InterfaceGraphique.FonctionsNatives.initialiserSon(); // Initialise le son
         }
 
         private void bouton_campagne_Click(object sender, EventArgs e)

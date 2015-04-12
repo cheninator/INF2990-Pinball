@@ -120,17 +120,8 @@ namespace InterfaceGraphique
             altDown = false;
 
             //Musique
-            if (soundActif)
-            {
-                playSound("stone");
-            }
+            playSound("stone");
             playSound("music");
-
-            if (soundActif)
-                playSound("");
-            else
-                playSound("", true);
-
 
             FonctionsNatives.resetZoom();
             currentZoom = -1;
@@ -611,7 +602,7 @@ namespace InterfaceGraphique
                         Program.peutAfficher = false;
                         FonctionsNatives.libererOpenGL();
                     }
-                    playSound("", true);    // Stop le son
+                    FonctionsNatives.arreterToutSons();
                     Program.myCustomConsole.Hide();
                 }
                 else
@@ -627,7 +618,7 @@ namespace InterfaceGraphique
                     Program.peutAfficher = false;
                     FonctionsNatives.libererOpenGL();
                 }
-                playSound("", true);    // Stop le son
+                FonctionsNatives.arreterToutSons();
                 Program.myCustomConsole.Hide();
             }
             
@@ -2863,13 +2854,8 @@ namespace InterfaceGraphique
         //////////////////////////////////////////////////////////////////////////////////////////
         private void playSound(String name, bool stop = false)
         {
-            String path;
-            if (name == "")
-                path = "";
-            else
-                path = name + ".wav";
-            StringBuilder music = new StringBuilder(path);
-            FonctionsNatives.playSound(music, music.Capacity, stop);
+            StringBuilder music = new StringBuilder(name + ".wav");
+            FonctionsNatives.jouerSon(music, music.Capacity, stop);
         }
 
         //////////////////////////////////////////////////////////////////////////////////////////

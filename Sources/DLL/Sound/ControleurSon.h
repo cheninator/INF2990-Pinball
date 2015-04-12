@@ -23,6 +23,7 @@ public:
 	void accelererSon(char* sName, float facteurAcceleration);
 	void bouclerSon(char* sName, bool loop = true);
 	void arreterSon(char* sName);
+	void arreterSon();
 	void sourdine(bool mute);
 
 	void ajusterBGM(float percent);

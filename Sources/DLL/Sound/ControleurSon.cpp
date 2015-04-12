@@ -139,6 +139,15 @@ void ControleurSon::arreterSon(char* sName)
 	soundTable_[i].second.second->stop();
 }
 
+void ControleurSon::arreterSon()
+{
+	if (sonDesactive)
+		return;
+	// Arret de tout les sons
+	for (unsigned int i = 0; i < soundTable_.size(); i++)
+		soundTable_[i].second.second->stop();
+}
+
 void ControleurSon::sourdine(bool mute)
 {
 	if (sonDesactive)

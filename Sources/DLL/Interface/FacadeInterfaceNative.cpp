@@ -1131,7 +1131,7 @@ extern "C"
 
 	////////////////////////////////////////////////////////////////////////
 	///
-	/// @fn void arreterSon()
+	/// @fn void arreterSon(char* value, int length)
 	///
 	/// @param[in] value : Nom du son
 	/// @param[in] length : Taille du nom
@@ -1143,7 +1143,21 @@ extern "C"
 	////////////////////////////////////////////////////////////////////////
 	__declspec(dllexport) void __cdecl arreterSon(char* value, int length)
 	{
-		SoundControl->creeSon(value);
+		SoundControl->arreterSon(value);
+	}
+
+	////////////////////////////////////////////////////////////////////////
+	///
+	/// @fn void arreterToutSon()
+	///
+	/// @return Aucun
+	///
+	/// @remark Permet d'arreter completement tout les sons (mais ne le detruit pas)
+	///
+	////////////////////////////////////////////////////////////////////////
+	__declspec(dllexport) void __cdecl arreterToutSons()
+	{
+		SoundControl->arreterSon();
 	}
 
 	////////////////////////////////////////////////////////////////////////
@@ -1182,53 +1196,19 @@ extern "C"
 
 	////////////////////////////////////////////////////////////////////////
 	///
-	/// @fn void playSound()
+	/// @fn void  initialiserSon();
 	///
-	/// @param[in] value : Nom du son
-	/// @param[in] length : Taille du nom
-	/// @param[in] stop : Arret du son
 	///
 	/// @return Aucun
 	///
-	/// @remark Cette fonction permet de jouer un son ou de l'arreter
-	/// Deprecated please dont use and delete
+	/// @remark Cette fonction permet d'initialiser les sons
 	///
 	////////////////////////////////////////////////////////////////////////
-	__declspec(dllexport) void __cdecl playSound(char* value, int length, bool stop)
+	__declspec(dllexport) void __cdecl initialiserSon()
 	{
-		// MERCI
-		// http://openclassrooms.com/courses/apprenez-a-programmer-en-c/jouer-du-son-avec-fmod
-		// MUCH LOVE
-		static bool init = false;
-		std::string playing(value) ;
-		if (init == false)
-		{
-			std::cout << "Initializing sound controller ..." << std::endl;
-			
-			SoundControl->creeSon("ambient.wav");
-			SoundControl->creeSon("music.wav");
-			SoundControl->creeSon("no.wav");
-			SoundControl->creeSon("stone.wav");
-			SoundControl->bouclerSon("music.wav");
-			//SoundControl->ajusterBGM(12.5);
-			std::cout << "Done" << std::endl;
-			init = true;
-			return;
-		}
-		if (stop) 
-		{
-			SoundControl->sourdine(true);
-			return;
-		}
-		else
-		{
-			if (playing == "")
-			{
-				SoundControl->sourdine(false);
-				return;
-			}
-		}
-		SoundControl->jouerSon(value);
+		std::cout << "Initialisation des sons ..." << std::endl;
+		SoundControl;
+		std::cout << "Sons initialiser." << std::endl;
 	}
 
 	///////////////////////////////////////////////////////////////////////////////
