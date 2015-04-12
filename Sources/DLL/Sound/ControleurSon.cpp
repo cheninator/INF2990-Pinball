@@ -93,7 +93,7 @@ void ControleurSon::jouerSon(char* sName, bool pause)
 	int i = lookUp(std::string(sName));
 	if (i == -1)
 		return;
-	system_->playSound(FMOD_CHANNEL_FREE, soundTable_[i].second.first, pause, &soundTable_[i].second.second);
+	system_->playSound(FMOD_CHANNEL_REUSE, soundTable_[i].second.first, pause, &soundTable_[i].second.second);
 	setVolumeLimiter();
 }
 
