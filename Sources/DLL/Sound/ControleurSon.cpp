@@ -1,5 +1,5 @@
 #include "ControleurSon.h"
-#define DEFAULT_FREQ 44100.0F
+
 ControleurSon::ControleurSon(bool desactiverSon)
 {
 	sonDesactive = desactiverSon;
@@ -86,6 +86,18 @@ void ControleurSon::creeSon(char* sName)
 	specialEffectSounds_.push_back((int)soundTable_.size() - 1);
 }
 
+bool ControleurSon::sonJoue(char* sName)
+{
+	if (sonDesactive)
+		return false;
+	int i = lookUp(std::string(sName));
+	if (i == -1)
+		return false;
+	bool isPlaying = false;
+	soundTable_[i].second.second->isPlaying(&isPlaying);
+	return isPlaying;
+}
+
 void ControleurSon::jouerSon(char* sName, bool pause)
 {
 	if (sonDesactive)
@@ -105,7 +117,7 @@ void ControleurSon::accelererSon(char* sName, float facteurAcceleration)
 	if (i == -1)
 		return;
 	
-	soundTable_[i].second.second->setFrequency(DEFAULT_FREQ * facteurAcceleration);
+	soundTable_[i].second.first->setMusicSpeed(facteurAcceleration);
 }
 
 void ControleurSon::bouclerSon(char* sName, bool loop)
