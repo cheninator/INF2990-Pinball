@@ -461,5 +461,10 @@ namespace InterfaceGraphique
                 helpMenu.ShowDialog(this);
             }
         }
+
+        private void MainMenu_VisibleChanged(object sender, EventArgs e)
+        {
+            FonctionsNatives.arreterToutSons();
+        }
     }
 }
