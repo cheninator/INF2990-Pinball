@@ -148,6 +148,6 @@ std::vector<glm::dvec3> NoeudTrou::obtenirVecteursEnglobants()
 ////////////////////////////////////////////////////////////////////////
 void NoeudTrou::traiterCollisions(aidecollision::DetailsCollision, NoeudAbstrait* bille, float facteurRebond)
 {
-	SoundControl->jouerSon("hole");
+	SoundControl->jouerSon("hole2");
 	// bille->obtenirParent()->effacer(bille);
 }

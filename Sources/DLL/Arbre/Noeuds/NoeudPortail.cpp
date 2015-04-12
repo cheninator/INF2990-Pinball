@@ -171,6 +171,7 @@ void NoeudPortail::traiterCollisions(aidecollision::DetailsCollision, NoeudAbstr
 {
 	if (bille->obtenirPortailDorigine() != this)
 	{
+		SoundControl->jouerSon("portal");
 		bille->assignerPositionRelative(this->getTwin()->obtenirPositionRelative());
 		bille->assignerPortailDorigine(this->getTwin());
 	}

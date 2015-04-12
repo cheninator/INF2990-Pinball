@@ -272,7 +272,10 @@ void NoeudPaletteD::activer()
 		angleZOriginal_ = obtenirRotation().z;
 
 	if (etatPalette_ != BLOQUEE)
+	{
+		SoundControl->jouerSon("palette");
 		etatPalette_ = ACTIVE;
+	}	
 }
 
 
@@ -327,6 +330,9 @@ void NoeudPaletteD::traiterCollisions(aidecollision::DetailsCollision details, N
 	bille->assignerPositionRelative(positionFinale);
 	bille->assignerVitesse(vitesseFinale);
 	bille->assignerImpossible(true);
+
+	// Effet sonore
+	SoundControl->jouerSon("palette2");
 
 	// Affichage de debogage
 	((NoeudBille*)bille)->afficherVitesse(vitesseFinale); // Que Dieu me pardonne
