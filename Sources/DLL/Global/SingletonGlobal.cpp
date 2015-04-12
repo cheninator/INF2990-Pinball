@@ -168,6 +168,37 @@ ControleurSon*  SingletonGlobal::obtenirControleurSon()
 	return mySound_;
 };
 
+double SingletonGlobal::obtenirTableMaxX() const 
+{ 
+	double position = boiteTable_.coinMax.x + TRANSLATE_X_NOEUD_TABLE;
+	return position;
+}
+
+double SingletonGlobal::obtenirTableMaxY() const
+{ 
+	double position = boiteTable_.coinMax.y + TRANSLATE_Y_NOEUD_TABLE; 
+	return position;
+}
+
+double SingletonGlobal::obtenirTableMinX() const
+{ 
+	double position = boiteTable_.coinMin.x + TRANSLATE_X_NOEUD_TABLE;
+	return position;
+}
+
+double SingletonGlobal::obtenirTableMinY() const 
+{
+	double position = boiteTable_.coinMin.y + TRANSLATE_Y_NOEUD_TABLE; 
+	return position;
+}
+
+double SingletonGlobal::obtenirTableMinZ() const
+{
+	double position = boiteTable_.coinMin.z;
+	return position;
+}
+
+
 /*
 ////////////////////////////////////////////////////////////////////////
 ///

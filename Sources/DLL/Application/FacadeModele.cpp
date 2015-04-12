@@ -78,10 +78,6 @@ Yonni Chen <BR>
 /// Pointeur vers l'instance unique de la classe.
 FacadeModele* FacadeModele::instance_{ nullptr };
 
-#define coinGaucheTableX 108// SingletonGlobal::obtenirInstance()->obtenirBoiteTable().coinMax.x
-#define coinGaucheTableY -190//  SingletonGlobal::obtenirInstance()->obtenirBoiteTable().coinMax.y
-#define coinDroitTableX 272//  SingletonGlobal::obtenirInstance()->obtenirBoiteTable().coinMin.x
-#define coinDroitTableY 96//  SingletonGlobal::obtenirInstance()->obtenirBoiteTable().coinMin.x
 #define MINIMUM_TROIS 0
 #define RAPPORT_BILLE_GENERATEUR 1
 #define EST_DEFAUT 2
@@ -273,7 +269,6 @@ void FacadeModele::initialiserOpenGL(HWND hWnd)
 #endif
 		);
 
-	
 	//arbre_->initialiser();
 	originator_->assignerArbre(arbre_);
 	/*Créer une caméra ortho*/
@@ -978,8 +973,8 @@ bool FacadeModele::verifierCliqueDansTable(int x, int y)
 {
 	glm::dvec3 positionDansLeMonde;
 	obtenirInstance()->obtenirVue()->convertirClotureAVirtuelle(x, y, positionDansLeMonde);
-	if (   coinGaucheTableX < positionDansLeMonde.x && positionDansLeMonde.x < coinDroitTableX
-		&& coinGaucheTableY < positionDansLeMonde.y && positionDansLeMonde.y < coinDroitTableY)
+	if (   interieurGaucheTableX < positionDansLeMonde.x && positionDansLeMonde.x < interieurDroitTableX
+		&& interieurGaucheTableY < positionDansLeMonde.y && positionDansLeMonde.y < interieurDroitTableY)
 		return true;
 	else
 		return false;
@@ -999,8 +994,8 @@ bool FacadeModele::verifierCliqueDansTable(int x, int y)
 ///////////////////////////////////////////////////////////////////////////////
 bool FacadeModele::estDansTable(glm::dvec3 pointDuMonde)
 {
-	if (coinGaucheTableX < pointDuMonde.x && pointDuMonde.x < coinDroitTableX
-		&& coinGaucheTableY < pointDuMonde.y && pointDuMonde.y < coinDroitTableY)
+	if (interieurGaucheTableX < pointDuMonde.x && pointDuMonde.x < interieurDroitTableX
+		&& interieurGaucheTableY < pointDuMonde.y && pointDuMonde.y <interieurDroitTableY)
 		return true;
 	else
 		return false;

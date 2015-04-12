@@ -75,7 +75,12 @@ public:
 	void activerSon() { desactiverSon = false; };
 	ControleurSon*  obtenirControleurSon();
 
-	utilitaire::BoiteEnglobante obtenirBoiteTable() const { return boiteTable_; };
+	double obtenirTableMaxX() const;
+	double obtenirTableMaxY() const;
+	double obtenirTableMinX() const;
+	double obtenirTableMinY() const;
+	double obtenirTableMinZ() const;
+
 	void setBoiteTable(utilitaire::BoiteEnglobante boiteTable) { boiteTable_ = boiteTable; };
 protected:
 	/// Constructeur vide déclaré protected.
