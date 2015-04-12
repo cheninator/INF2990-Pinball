@@ -61,6 +61,8 @@ private:
 	bool enCreation_{ true };
 	double posZinitial;
 	double posZfinal;
+
+	bool leSonJoue{ false };
 };
 
 #endif // __ARBRE_NOEUDS_NOEUDGENERATEURBILLE_H__
