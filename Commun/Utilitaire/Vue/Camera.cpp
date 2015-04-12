@@ -12,6 +12,8 @@
 #include <GL/glu.h>
 #include "Utilitaire.h"
 #include "Camera.h"
+#include "Vue.h"
+#include "Projection.h"
 #include <iostream>
 #include "../Utilitaire.h"
 #include "../../Sources/DLL/Application/FacadeModele.h"
@@ -234,7 +236,17 @@ namespace vue {
 	{
 		glMatrixMode(GL_MODELVIEW);
 		glLoadIdentity();
-		FacadeModele::obtenirInstance()->dessinerSkybox();
+		double maxZoomOut = 5000;
+		double xMin, xMax, yMin, yMax;
+		FacadeModele::obtenirInstance()->obtenirVue()->obtenirProjection().obtenirCoordornneesFenetreVirtuelle(xMin, xMax, yMin, yMax);
+		glm::dvec3 pointMilieu = { (xMax + xMin) / 2.0, (yMax+ yMin) / 2.0, 0.0 };
+
+		double smallestComp = FacadeModele::obtenirInstance()->obtenirVue()->obtenirProjection().obtenirDimensionFenetreVirtuelle().x
+			> FacadeModele::obtenirInstance()->obtenirVue()->obtenirProjection().obtenirDimensionFenetreVirtuelle().y ? FacadeModele::obtenirInstance()->obtenirVue()->obtenirProjection().obtenirDimensionFenetreVirtuelle().x :
+			FacadeModele::obtenirInstance()->obtenirVue()->obtenirProjection().obtenirDimensionFenetreVirtuelle().y;
+		std::cout << smallestComp << '\n';
+		
+		FacadeModele::obtenirInstance()->dessinerSkybox(smallestComp / 2.0, true, pointMilieu);
 		gluLookAt(position_[0], position_[1], position_[2],
 			pointVise_[0], pointVise_[1], pointVise_[2],
 			directionHaut_[0], directionHaut_[1], directionHaut_[2]);

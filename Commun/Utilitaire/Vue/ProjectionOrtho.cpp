@@ -344,6 +344,18 @@ namespace vue {
 
 		double deltaX = deplacementX * xTailleCourante / 100.0;
 		double deltaY = deplacementY * yTailleCourante / 100.0;
+		
+#if (0)
+		if (deplacementX < 0 && (abs(xMinFenetre_ + deltaX) < zoomOutMax_ / 2.0))
+			return;
+		if (deplacementX > 0 && (abs(xMaxFenetre_ + deltaX) > zoomOutMax_ / 2.0))
+			return;
+		if (deplacementY < 0 && (abs(yMinFenetre_ + deltaY) < zoomOutMax_ / 2.0))
+			return;
+		if (deplacementY > 0 && (abs(yMaxFenetre_ + deltaY) > zoomOutMax_ / 2.0))
+			return;
+#endif	
+
 
 		xMaxFenetre_ += deltaX;
 		xMinFenetre_ += deltaX;
@@ -553,6 +565,12 @@ namespace vue {
 	{
 		this->ajusterRapportAspect(DirectionZoom::OUT_);
 		appliquer();
+	}
+
+
+	bool ProjectionOrtho::translationDepasseBordure(double xBorneMin, double xBorneMax, double yBorneMin, double yBorneMax)
+	{
+		
 	}
 
 }; // Fin du namespace vue.

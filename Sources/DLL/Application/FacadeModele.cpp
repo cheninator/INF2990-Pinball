@@ -276,19 +276,19 @@ void FacadeModele::initialiserOpenGL(HWND hWnd)
 	
 	//arbre_->initialiser();
 	originator_->assignerArbre(arbre_);
-
-	// On cree une vue par defaut.
+	/*Créer une caméra ortho*/
 	vue_ = new vue::VueOrtho{
-		vue::Camera{ 
+		vue::Camera{
 			glm::dvec3(0, 0, 200), glm::dvec3(0, 0, 0),
-			glm::dvec3(0, 1, 0),   glm::dvec3(0, 1, 0),
-			0.0 , 0.0 },
-		vue::ProjectionOrtho{ 
+			glm::dvec3(0, 1, 0), glm::dvec3(0, 1, 0),
+			0.0, 0.0 },
+			vue::ProjectionOrtho{
 				0, 500, 0, 500,
-				1, 1000, 50, 5000, 1.25,
+				1, 5000, 50, 3000, 1.25,
 				double(coinGaucheTableX), double(coinGaucheTableY),
-				double(coinDroitTableX), double(coinDroitTableY)}
+				double(coinDroitTableX), double(coinDroitTableY) }
 	};
+	appliquerZoomInitial();
 }
 
 
@@ -2369,7 +2369,7 @@ void FacadeModele::utiliserCameraOrbite(bool utiliseOrbite)
 					0.0 , 0.0 },
 					vue::ProjectionOrtho{
 						clotMinX, clotMaxX, clotMinY, clotMaxY,
-						1, 1000, 50, 5000, 1.25,
+						1, 5000, 50, 3000, 1.25,
 						double(coinGaucheTableX), double(coinGaucheTableY),
 						double(coinDroitTableX), double(coinDroitTableY) }
 			};
@@ -2527,10 +2527,14 @@ bool FacadeModele::cameraEstOrbite()
 }
 
 
-void FacadeModele::dessinerSkybox() const
+void FacadeModele::dessinerSkybox(double demiLargeur, bool vueOrtho, glm::dvec3 pointMilieu) const
 {
-	skybox_->afficher(glm::dvec3{ (double)(coinDroitTableX + coinGaucheTableX) / 2.0,
-		(double)(coinDroitTableY + coinGaucheTableY) / 2.0,
-		0.0 },
-		1000);
+	if (!vueOrtho)
+		skybox_->afficher(glm::dvec3{ (double)(coinDroitTableX + coinGaucheTableX) / 2.0,
+			(double)(coinDroitTableY + coinGaucheTableY) / 2.0,
+			0.0 },
+			demiLargeur);
+	else
+		skybox_->afficher(pointMilieu,
+		demiLargeur);
 }

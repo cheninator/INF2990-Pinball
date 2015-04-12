@@ -260,7 +260,7 @@ public:
 	bool possedeSuivant() const;
 	bool possedePrecedent() const;
 
-	void dessinerSkybox() const;
+	void dessinerSkybox(double demiLargeur = 1000, bool vueOrtho = false, glm::dvec3 pointMilieu = {0.0,0.0,0.0}) const;
 
 private:
 

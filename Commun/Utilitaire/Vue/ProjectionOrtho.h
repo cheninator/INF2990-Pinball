@@ -66,16 +66,20 @@ namespace vue {
 		void centrerSurPoint(const glm::dvec2& pointCentre);
 
 		/// Obtenir les coordonnées de la fenêtre virtuelle.
-		inline void obtenirCoordonneesFenetreVirtuelle(
+		virtual inline void obtenirCoordornneesFenetreVirtuelle(
 			double& xMin, double& xMax, double& yMin, double& yMax
 			) const;
 
 		/// Obtenir la dimension de la fenêtre virtuelle
 		virtual inline glm::dvec2 obtenirDimensionFenetreVirtuelle() const;
-
+		
 		virtual void conserverRapportAspect();
 
 	private:
+
+		/// Vérifie que la translation ne dépasse pas les bordures maximales du centre du jeu
+		bool translationDepasseBordure(double xBorneMin, double xBorneMax, double yBorneMin, double yBorneMax);
+
 		/// Décide la direction de correction en fonction du zoom.
 		void ajusterRapportAspect(DirectionZoom dir);
 
@@ -120,7 +124,7 @@ namespace vue {
 	/// @return Les coordonnées de la fenêtre virtuelle.
 	///
 	////////////////////////////////////////////////////////////////////////
-	inline void ProjectionOrtho::obtenirCoordonneesFenetreVirtuelle(
+	inline void ProjectionOrtho::obtenirCoordornneesFenetreVirtuelle(
 		double& xMin, double& xMax, double& yMin, double& yMax
 		) const
 	{

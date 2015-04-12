@@ -113,7 +113,13 @@ namespace vue {
 	{
 		return glm::dvec2(-1.0); // À changer
 	}
-
+	inline void ProjectionPerspective::obtenirCoordornneesFenetreVirtuelle(double& xMin, double& xMax, double& yMin, double& yMax) const
+	{
+		xMax = -1.0;
+		xMin = -1.0;
+		yMax = -1.0;
+		yMin = -1.0;
+	}
 
 	////////////////////////////////////////////////////////////////////////
 	///

@@ -57,7 +57,10 @@ namespace vue {
 		
 		/// Obtenir la dimension de la fenêtre virtuelle
 		virtual inline glm::dvec2 obtenirDimensionFenetreVirtuelle() const;
-
+		/// Obtenir les coordonnées de la fenêtre virtuelle
+		virtual inline void obtenirCoordornneesFenetreVirtuelle(
+			double& xMin, double& xMax, double& yMin, double& yMax
+			) const;
 	private:
 		/// Le rapport d'aspect du plan avant de la projection perspective
 		double ratio_;
