@@ -46,7 +46,7 @@ public:
 	void relacher();
 
 	/// Pour le traitement logique des collisions
-	virtual void traiterCollisions(aidecollision::DetailsCollision, NoeudAbstrait* bille, float facteurRebond = 1);
+	virtual void traiterCollisions(aidecollision::DetailsCollision details, NoeudAbstrait* bille, float facteurRebond = 1);
 
 private:
 	enum EtatRessort { EN_COMPRESSION, EN_DECOMPRESSION, AU_REPOS, LANCER_BILLE };

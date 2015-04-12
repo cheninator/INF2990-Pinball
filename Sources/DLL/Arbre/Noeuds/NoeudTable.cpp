@@ -174,3 +174,9 @@ aidecollision::DetailsCollision NoeudTable::detecterCollisions(NoeudAbstrait* bi
 
 	return detailsAucune;
 }
+
+void NoeudTable::traiterCollisions(aidecollision::DetailsCollision details, NoeudAbstrait* bille, float facteurRebond)
+{
+	SingletonGlobal::obtenirInstance()->obtenirControleurSon()->jouerSon("table.wav");
+	NoeudAbstrait::traiterCollisions(details,bille);
+}
