@@ -146,7 +146,6 @@ void NoeudGenerateurBille::animer(float temps)
 	
 	if (compteurAnimation_ >= TEMPS_ANIMATION_NOEUD_GENERATEURBILLE && etatGenerateur_ == INITIAL)
 		return;
-	
 	shakeHead(temps);
 }
 
@@ -166,7 +165,10 @@ void NoeudGenerateurBille::shakeHead(float temps)
 {
 	if (etatGenerateur_ == INITIAL) {
 		if (selectionne_ || impossible_ || transparent_)
+		{ 
+			SoundControl->jouerSon("generateur", "true");
 			return;
+		}
 		int direction = std::rand() % 4;
 		switch (direction)
 		{
@@ -234,6 +236,12 @@ void NoeudGenerateurBille::shakeHead(float temps)
 
 	compteurAnimation_ += temps;
 	compteurAnimationBouger_ += temps;
+
+	if (leSonJoue == false)
+	{
+		SoundControl->jouerSon("generateur");
+		leSonJoue = true;	
+	}
 }
 
 ////////////////////////////////////////////////////////////////////////

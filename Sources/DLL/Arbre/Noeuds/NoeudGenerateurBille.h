@@ -62,6 +62,8 @@ private:
 	double posZinitial;
 	double posZfinal;
 	void NoeudGenerateurBille::shakeHead(float temps);
+
+	bool leSonJoue{false};
 };
 
 #endif // __ARBRE_NOEUDS_NOEUDGENERATEURBILLE_H__

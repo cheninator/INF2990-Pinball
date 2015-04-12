@@ -208,7 +208,7 @@ void NoeudBille::animer(float temps) // rajouter des parametres ou une fonction 
 		leSonJoue = true;
 	}
 
-	float vitesseSon = (2 * glm::length(vitesse_) ) / VITESSE_MAX_NOEUD_BILLE;
+	float vitesseSon = (SOUDN_SPEED_UP_MAX * glm::length(vitesse_)) / VITESSE_MAX_NOEUD_BILLE;
 	glm::length(vitesse_);
 	SoundControl->accelererSon("rolling", vitesseSon);
 }

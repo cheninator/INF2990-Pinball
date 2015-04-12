@@ -41,6 +41,7 @@ enum Direction { dirY, dirYX, dirX, dirXY, dirZ }; // Pour fonctionner avec le s
 #define interieurDroitTableY (coinDroitTableY - deltaHauteur)	// 96
 
 // Bille
+#define SOUDN_SPEED_UP_MAX 2.5				// Acceleration maximale du son
 #define VITESSE_MAX_NOEUD_BILLE 400.		// Vitesse maximale de la bille
 #define MASSE_NOEUD_BILLE 30.				// Poids (en kg?) de la bille
 #define FROTTEMENT_NOEUD_BILLE 10.		// Constante de frottement
