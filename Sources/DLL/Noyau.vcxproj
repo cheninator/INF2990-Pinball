@@ -131,7 +131,7 @@
       </Message>
     </PostBuildEvent>
     <Bscmake>
-      <PreserveSbr>true</PreserveSbr>
+      <PreserveSbr>false</PreserveSbr>
     </Bscmake>
   </ItemDefinitionGroup>
   <ItemGroup>

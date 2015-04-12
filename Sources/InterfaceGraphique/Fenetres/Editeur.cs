@@ -118,10 +118,6 @@ namespace InterfaceGraphique
             ctrlDown = false;
             altDown = false;
 
-            //Musique
-            playSound("stone");
-            playSound("music");
-
             FonctionsNatives.resetZoom();
             currentZoom = -1;
         }
