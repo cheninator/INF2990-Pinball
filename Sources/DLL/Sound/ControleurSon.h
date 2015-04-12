@@ -27,6 +27,7 @@ public:
 	void sourdine(bool mute);
 	void pauseGlobal(bool pause);
 
+	void ajusterVolume(char* sName, float pourcentage);
 	void ajusterBGM(float percent);
 	void ajusterSFX(float percent);
 	

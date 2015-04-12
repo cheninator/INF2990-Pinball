@@ -359,6 +359,9 @@ namespace InterfaceGraphique
         public static extern void bouclerSon(StringBuilder name, int length, bool loop = true);
 
         [DllImport(@"Noyau.dll", CallingConvention = CallingConvention.Cdecl)]
+        public static extern void ajusterVolume(StringBuilder name, int length, float pourcentage);
+
+        [DllImport(@"Noyau.dll", CallingConvention = CallingConvention.Cdecl)]
         public static extern void sourdine(bool mute = true);
 
         [DllImport(@"Noyau.dll", CallingConvention = CallingConvention.Cdecl)]

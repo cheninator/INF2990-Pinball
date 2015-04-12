@@ -174,8 +174,11 @@ namespace InterfaceGraphique
             etat = new EtatJeuJouer(this);
             FonctionsNatives.animerJeu(true);
 
+            StringBuilder billeSound = new StringBuilder("rolling");
+
             FonctionsNatives.bouclerSon(bgm, bgm.Length);
-            FonctionsNatives.ajusterBGM(50/100);             // C'est un pourcentage que tu met ici
+            FonctionsNatives.ajusterBGM(50);
+            FonctionsNatives.ajusterVolume(billeSound, billeSound.Length, 100);
             FonctionsNatives.jouerSon(bgm, bgm.Length);
 
             if (true)

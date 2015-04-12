@@ -171,6 +171,19 @@ int ControleurSon::lookUp(std::string fileName)
 	return -1;
 }
 
+void ControleurSon::ajusterVolume(char* sName, float percent)
+{
+	if (sonDesactive)
+		return;
+	int i = lookUp(std::string(sName));
+	if (i == -1)
+		return;
+	if (percent > 1.0)
+		percent /= 100;
+	if (percent > 1 || percent < 0)
+		percent = -1;
+	soundTable_[i].second.second->setVolume(percent);
+}
 void ControleurSon::ajusterBGM(float percent)
 {
 	if (sonDesactive)

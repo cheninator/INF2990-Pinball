@@ -1179,6 +1179,24 @@ extern "C"
 
 	////////////////////////////////////////////////////////////////////////
 	///
+	/// @fn void ajusterVolume(char* value, float pourcentage)
+	///
+	/// @param[in] value : Nom du son
+	/// @param[in] length : Taille du nom
+	/// @param[in] pourcentage : Valeur entre 0 et 100 pour ajuster le volume
+	///
+	/// @return Aucun
+	///
+	/// @remark Cette fonction permet d'ajuster le volume d'un son precis
+	///
+	////////////////////////////////////////////////////////////////////////
+	__declspec(dllexport) void __cdecl ajusterVolume(char* value, float pourcentage)
+	{
+		SoundControl->ajusterVolume(value, pourcentage);
+	}
+
+	////////////////////////////////////////////////////////////////////////
+	///
 	/// @fn void ajusterSFX()
 	///
 	/// @param[in] pourcentage : Valeur entre 0 et 100 pour ajuster le volume
