@@ -239,10 +239,12 @@ namespace vue {
 
 		// Désolé pour projet 3.....
 
+		/* On obtient les coordonnées des coins de la projection */
 		double xMin, xMax, yMin, yMax;
 		FacadeModele::obtenirInstance()->obtenirVue()->obtenirProjection().obtenirCoordornneesFenetreVirtuelle(xMin, xMax, yMin, yMax);
 		glm::dvec3 pointMilieu = { (xMax + xMin) / 2.0, (yMax+ yMin) / 2.0, 0.0 };
 
+		/* On trouve quel est la plus grande composante (en X et Y) pour faire la passer à la skybox */
 		double smallestComp = FacadeModele::obtenirInstance()->obtenirVue()->obtenirProjection().obtenirDimensionFenetreVirtuelle().x
 			> FacadeModele::obtenirInstance()->obtenirVue()->obtenirProjection().obtenirDimensionFenetreVirtuelle().y ? FacadeModele::obtenirInstance()->obtenirVue()->obtenirProjection().obtenirDimensionFenetreVirtuelle().x :
 			FacadeModele::obtenirInstance()->obtenirVue()->obtenirProjection().obtenirDimensionFenetreVirtuelle().y;

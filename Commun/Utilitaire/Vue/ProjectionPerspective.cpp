@@ -113,6 +113,23 @@ namespace vue {
 	{
 		return glm::dvec2(-1.0); // À changer
 	}
+
+	////////////////////////////////////////////////////////////////////////
+	///
+	/// @fn inline void ProjectionPerspective::obtenirCoordonneesFenetreVirtuelle(double& xMin, double& xMax, double& yMin, double& yMax) const
+	///
+	/// Cette fonction retourne les coordonnées de la fenêtre virtuelle
+	/// associée à cette projection. Pour une projection perspective,
+	/// ceci ne fait aucun sens, on retourne donc -1 à chaque composante.
+	///
+	/// @param[out]  xMin : La variable qui contiendra l'abcsisse minimale.
+	/// @param[out]  xMax : La variable qui contiendra l'abcsisse maximale.
+	/// @param[out]  yMin : La variable qui contiendra l'ordonnée minimale.
+	/// @param[out]  yMax : La variable qui contiendra l'ordonnée maximale.
+	///
+	/// @return Les coordonnées de la fenêtre virtuelle.
+	///
+	////////////////////////////////////////////////////////////////////////
 	inline void ProjectionPerspective::obtenirCoordornneesFenetreVirtuelle(double& xMin, double& xMax, double& yMin, double& yMax) const
 	{
 		xMax = -1.0;
