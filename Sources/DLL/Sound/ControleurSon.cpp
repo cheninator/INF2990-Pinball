@@ -146,6 +146,16 @@ void ControleurSon::arreterSon()
 	}
 }
 
+void ControleurSon::muteSound(char* sName, bool mute)
+{
+	if (sonDesactive)
+		return;
+	int i = lookUp(std::string(sName));
+	if (i == -1)
+		return;
+	soundTable_[i].second.second->setMute(mute);
+}
+
 void ControleurSon::sourdine(bool mute)
 {
 	if (sonDesactive)

@@ -210,7 +210,13 @@ void NoeudBille::animer(float temps) // rajouter des parametres ou une fonction 
 
 	double vitesseSon = (SOUDN_SPEED_UP_MAX * abs(glm::length(vitesse_))) / VITESSE_MAX_NOEUD_BILLE;
 	glm::length(vitesse_);
+
 	SoundControl->accelererSon("rolling", (float)vitesseSon);
+
+	if (glm::length(rotation_) > 10)
+		SoundControl->muteSound("rolling", true);
+	else
+		SoundControl->muteSound("rolling", false);
 }
 
 ////////////////////////////////////////////////////////////////////////
