@@ -211,6 +211,7 @@
             this.ShowInTaskbar = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Information";
+            this.Shown += new System.EventHandler(this.ZoneInfo_Shown);
             this.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.ZoneInfo_KeyPress);
             ((System.ComponentModel.ISupportInitialize)(this.screenShot)).EndInit();
             this.ResumeLayout(false);

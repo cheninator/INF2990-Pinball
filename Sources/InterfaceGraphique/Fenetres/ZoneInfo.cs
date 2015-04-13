@@ -126,5 +126,11 @@ namespace InterfaceGraphique
                 this.Close();
             }
         }
+
+        private void ZoneInfo_Shown(object sender, EventArgs e)
+        {
+            //FonctionsNatives.jouerSon(winSound, winSound.Length);
+
+        }
     }
 }
