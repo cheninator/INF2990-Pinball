@@ -177,7 +177,7 @@ namespace InterfaceGraphique
             StringBuilder billeSound = new StringBuilder("rolling");
 
             FonctionsNatives.bouclerSon(bgm, bgm.Length);
-            FonctionsNatives.ajusterBGM(50);
+            FonctionsNatives.ajusterBGM(90);
             FonctionsNatives.ajusterVolume(billeSound, billeSound.Length, 100);
             FonctionsNatives.jouerSon(bgm, bgm.Length);
 
