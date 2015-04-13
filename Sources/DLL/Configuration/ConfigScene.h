@@ -47,7 +47,7 @@ public:
 	void modifierConfiguration(int config[12]);
 
 	// Modifier la liste des cartes de campagne
-	void modifierCampagne(char* maps, int length);
+	void modifierCampagne(char* maps);
 
 	// Retourne les configurations de l'objets
 	int* obtenirConfiguration() const { return config_; };
