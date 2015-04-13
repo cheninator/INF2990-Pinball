@@ -50,6 +50,19 @@ namespace InterfaceGraphique
             InitializeShortcuts();
         }
 
+        ////////////////////////////////////////////////////////////////////////
+        ///
+        /// @fn public InitializeShortcuts()
+        /// @brief Constructeur des raccourcis. Il y a plusieurs groupes.
+        ///        chaque groupe est cree dans le Designer. Chaque element
+        ///        est rajoute dans le code. La fonction Insert prend le item
+        ///        et la position de l'element. Les positions sont sequentielles
+        ///        mais suivent les groupes. Un element 26 dans le groupe 0 precede
+        ///        l'element 25 dans le groupe 1.
+        /// 
+        /// @return Aucune
+        ///
+        ////////////////////////////////////////////////////////////////////////
         private void InitializeShortcuts()
         {
             string shortcutTemp;
@@ -203,6 +216,22 @@ namespace InterfaceGraphique
 
         }
 
+
+        ////////////////////////////////////////////////////////////////////////
+        ///
+        /// @fn private void listView1_SelectedIndexChanged(object sender, EventArgs e)
+        /// @brief Affichage d'une image et d'une description lorsqu'on clique sur un
+        ///        outil different. Le numero de l'index suit le numero de l'outil ajoute
+        ///        dans le Designer. Pour ajouter un nouveau outil, il suffit d'ajouter un 
+        ///        element dans le Designer avec le nom voulu et ajouter le traitement dans
+        ///        le switch/case. labelDescOutil contient la description de l'outil.
+        ///        pictureBoxOutils contient l'image( nous utilisons des GIFs) qui demontre
+        ///        l'outil en  question.
+        /// @param[in] sender : Objet duquel provient un evenement.
+        /// @param[in] e : evenement qui lance la fonction.
+        /// @return Aucune.
+        ///
+        ////////////////////////////////////////////////////////////////////////
         private void listView1_SelectedIndexChanged(object sender, System.EventArgs e)
         {
             if (listView1.SelectedIndices.Count <= 0) return;
@@ -303,18 +332,55 @@ namespace InterfaceGraphique
             }
         }
 
+
+        ////////////////////////////////////////////////////////////////////////
+        ///
+        /// @fn private void listView2_ColumnWidthChanging(object sender, EventArgs e)
+        /// @brief S'assurer du fait que l'utilisateur ne cause pas de problemes avec la
+        ///        taille des colonnes dans le menu des Objets.
+        /// @param[in] sender : Objet duquel provient un evenement.
+        /// @param[in] e : evenement qui lance la fonction.
+        /// @return Aucune.
+        ///
+        ////////////////////////////////////////////////////////////////////////
         private void listView2_ColumnWidthChanging(object sender, ColumnWidthChangingEventArgs e)
         {
             e.Cancel = true;
             e.NewWidth = listView2.Columns[e.ColumnIndex].Width;
         }
 
+
+        ////////////////////////////////////////////////////////////////////////
+        ///
+        /// @fn private void listView1_ColumnWidthChanging(object sender, EventArgs e)
+        /// @brief S'assurer du fait que l'utilisateur ne cause pas de problemes avec la
+        ///        taille des colonnes dans le menu des Outils.
+        /// @param[in] sender : Objet duquel provient un evenement.
+        /// @param[in] e : evenement qui lance la fonction.
+        /// @return Aucune.
+        ///
+        ////////////////////////////////////////////////////////////////////////
         private void listView1_ColumnWidthChanging(object sender, ColumnWidthChangingEventArgs e)
         {
             e.Cancel = true;
             e.NewWidth = listView1.Columns[e.ColumnIndex].Width;
         }
 
+        ////////////////////////////////////////////////////////////////////////
+        ///
+        /// @fn private void listView2_SelectedIndexChanged(object sender, EventArgs e)
+        /// @brief Affichage d'une image et d'une description lorsqu'on clique sur un
+        ///        objet différent. Le numero de l'index suit le numero de l'objet ajoute
+        ///        dans le Designer. Pour ajouter un nouveau outil, il suffit d'ajouter un 
+        ///        element dans le Designer avec le nom voulu et ajouter le traitement dans
+        ///        le switch/case. labelDescObj contient la description de l'outil.
+        ///        pictureBoxObjets contient l'image( nous utilisons des GIFs) qui demontre
+        ///        l'objet en  question.
+        /// @param[in] sender : Objet duquel provient un evenement.
+        /// @param[in] e : evenement qui lance la fonction.
+        /// @return Aucune.
+        ///
+        ////////////////////////////////////////////////////////////////////////
         private void listView2_SelectedIndexChanged(object sender, EventArgs e)
         {
              if (listView2.SelectedIndices.Count <= 0) return;
@@ -414,12 +480,37 @@ namespace InterfaceGraphique
             }
         }
 
+        ////////////////////////////////////////////////////////////////////////
+        ///
+        /// @fn private void listViewShortcut_ColumnWidthChanging(object sender, EventArgs e)
+        /// @brief S'assurer du fait que l'utilisateur ne cause pas de problemes avec la
+        ///        taille des colonnes dans le menu des Raccourcis.
+        /// @param[in] sender : Objet duquel provient un evenement.
+        /// @param[in] e : evenement qui lance la fonction.
+        /// @return Aucune.
+        ///
+        ////////////////////////////////////////////////////////////////////////
         private void listViewShortcut_ColumnWidthChanging(object sender, ColumnWidthChangingEventArgs e)
         {
             e.Cancel = true;
             e.NewWidth = listViewShortcut.Columns[e.ColumnIndex].Width;
         }
 
+        ////////////////////////////////////////////////////////////////////////
+        ///
+        /// @fn private void listViewBase_SelectedIndexChanged(object sender, EventArgs e)
+        /// @brief Affichage d'une image et d'une description lorsqu'on clique sur un
+        ///        element different. Le numero de l'index suit le numéro de l'element ajoute
+        ///        dans le Designer. Pour ajouter un nouveau element de base, il suffit d'ajouter 
+        ///        un element dans le Designer avec le nom voulu et ajouter le traitement dans
+        ///        le switch/case. labelBase contient la description de l'outil.
+        ///        pictureBoxBase contient l'image( nous utilisons des GIFs) qui demontre
+        ///        l'element en  question.
+        /// @param[in] sender : Objet duquel provient un evenement.
+        /// @param[in] e : evenement qui lance la fonction.
+        /// @return Aucune.
+        ///
+        ////////////////////////////////////////////////////////////////////////
         private void listViewBase_SelectedIndexChanged(object sender, EventArgs e)
         {
             if (listViewBase.SelectedIndices.Count <= 0) return;
@@ -509,16 +600,5 @@ namespace InterfaceGraphique
             }
         }
 
-        private void checkBoxHelp_CheckedChanged(object sender, EventArgs e)
-        {
-            if (checkBoxHelp.Checked)
-            {
-                Program.helpMenu = false;
-            }
-            else
-            {
-                Program.helpMenu = true;
-            }
-        }
     }
 }

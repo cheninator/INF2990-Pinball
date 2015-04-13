@@ -72,7 +72,6 @@
             this.panel_GL.Size = new System.Drawing.Size(784, 741);
             this.panel_GL.TabIndex = 4;
             this.panel_GL.SizeChanged += new System.EventHandler(this.panel_GL_SizeChanged);
-            this.panel_GL.MouseClick += new System.Windows.Forms.MouseEventHandler(this.panel_GL_MouseClick);
             this.panel_GL.MouseDown += new System.Windows.Forms.MouseEventHandler(this.panel_GL_MouseDown);
             this.panel_GL.MouseMove += new System.Windows.Forms.MouseEventHandler(this.panel_GL_MouseMove);
             this.panel_GL.MouseUp += new System.Windows.Forms.MouseEventHandler(this.panel_GL_MouseUp);
