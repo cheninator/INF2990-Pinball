@@ -1,0 +1,2 @@
+Pour éviter les warnings a chaque éxécution du projet, veuillez executer le jeu avec l'argument "nowarnings", desactivant ainsi les popup.
+Pour votre convenience, il y a un fichier "noPopUp.bat" qui fais cela pour vous dans le dossier "application".
