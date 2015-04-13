@@ -1178,7 +1178,7 @@ void FacadeModele::positionnerMur(int originX, int originY,int x1, int y1, int x
 	glm::dvec3 angles{ 0, 0, 0 };
 	glm::dvec3 position = positionOriginale;
 
-	double angleRadian;
+	double angleRadian = 0.0;
 
 	// Les calculs sont fait seulement si la souris est assez loin de ou on a cree le noeud.
 	if (glm::length(vecteur) > 0.1)
