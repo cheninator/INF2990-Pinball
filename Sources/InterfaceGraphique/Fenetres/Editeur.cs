@@ -593,8 +593,16 @@ namespace InterfaceGraphique
         {
             if (!(etat is EtatEditeurTest))
             {
-                if (MessageBox.Show("Voulez vous quitter? Tout changement non-sauvegardé sera oublié.", "Fermeture d'application", MessageBoxButtons.YesNo) == DialogResult.Yes)
+                DialogResult dRes= MessageBox.Show("Voulez vous sauvegarder avant de quitter? Tout changement non-sauvegardé sera oublié.", "Fermeture d'application", MessageBoxButtons.YesNoCancel);
+                if (dRes == DialogResult.Cancel)
                 {
+                    e.Cancel = true;
+                    this.Activate();
+                }
+                else if (dRes == DialogResult.Yes)
+                    EnregistrerSous();
+                
+               
                     lock (Program.unLock)
                     {
                         Program.peutAfficher = false;
@@ -602,12 +610,9 @@ namespace InterfaceGraphique
                     }
                     FonctionsNatives.arreterToutSons();
                     Program.myCustomConsole.Hide();
-                }
-                else
-                {
-                    e.Cancel = true;
-                    this.Activate();
-                }
+               
+               
+             
             }
             else
             {
