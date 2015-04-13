@@ -38,6 +38,9 @@ namespace vue {
 			double ratio, double fovy
 			);
 
+		/// Assignation par copie non-nécessaire dans le contexte
+		ProjectionPerspective& operator=(ProjectionPerspective const&) = delete;
+
 
 		/// Zoom in, c'est-à-dire un agrandissement.
 		virtual void zoomerIn();

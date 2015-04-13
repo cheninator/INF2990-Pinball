@@ -23,6 +23,7 @@ public:
 
 	ControleurTexte();
 	~ControleurTexte();
+	ControleurTexte& operator=(ControleurTexte const&) = delete;
 	void creeTexte(std::string text, std::string font = "");
 	void updateText(std::string oldText, std::string newText);
 	void suprimerText(std::string text);

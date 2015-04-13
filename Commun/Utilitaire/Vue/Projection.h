@@ -38,6 +38,9 @@ namespace vue {
 			double zoomInMax, double zoomOutMax,
 			double incrementZoom, bool estPerspective);
 
+		/// Assignation par copie non-nécessaire dans le contexte
+		Projection& operator=(Projection const&) = delete;
+
 		/// Destructeur virtuel vide.
 		virtual ~Projection() {}
 

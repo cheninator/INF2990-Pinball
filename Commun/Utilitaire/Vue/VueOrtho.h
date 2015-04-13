@@ -33,6 +33,9 @@ namespace vue {
 		// Constructeur.
 		VueOrtho(Camera const& camera, ProjectionOrtho const& projection);
 
+		/// Assignation par copie non-nécessaire dans le contexte
+		VueOrtho& operator=(VueOrtho const&) = delete;
+
 		/// Obtention de la projection.
 		virtual const ProjectionOrtho& obtenirProjection() const;
 		/// Application de la projection.
