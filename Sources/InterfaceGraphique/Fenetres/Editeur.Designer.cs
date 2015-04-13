@@ -173,7 +173,7 @@ namespace InterfaceGraphique
             Enregistrer_ToolStrip.BackColor = System.Drawing.Color.Transparent;
             Enregistrer_ToolStrip.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             Enregistrer_ToolStrip.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            Enregistrer_ToolStrip.Image = global::InterfaceGraphique.Properties.Resources.save1;
+            Enregistrer_ToolStrip.Image = global::InterfaceGraphique.Properties.Resources.save;
             Enregistrer_ToolStrip.ImageTransparentColor = System.Drawing.Color.Magenta;
             Enregistrer_ToolStrip.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             Enregistrer_ToolStrip.Name = "Enregistrer_ToolStrip";

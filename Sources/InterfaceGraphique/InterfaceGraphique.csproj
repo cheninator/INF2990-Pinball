@@ -381,7 +381,6 @@
     <None Include="Resources\Fireworks.wav" />
     <None Include="Resources\Win.gif" />
     <None Include="Resources\Lose.jpg" />
-    <None Include="Resources\1416982812770.jpg" />
     <None Include="Resources\man-scream-01.wav" />
     <None Include="Resources\baby.jpeg" />
   </ItemGroup>
