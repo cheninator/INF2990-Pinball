@@ -76,7 +76,7 @@ namespace InterfaceGraphique
         public void setVisibilityMenuStrip(bool vis) { menuStrip.Visible = vis; }
         public void setCurrentZoom(double val) { currentZoom = val; }
         public void setPeutAnimer(bool activation) { peutAnimer = activation; }
-       
+      
 
 
         // Accesseurs
@@ -532,6 +532,15 @@ namespace InterfaceGraphique
             }
         }
 
+        ////////////////////////////////////////////////////////////////////////
+        ///
+        /// @fn private void PartieRapide_Load(object sender, EventArgs e)
+        /// @brief Evenement lorsqu'on charge le ModeJeu.
+        /// @param[in] sender : Objet duquel provient un evenement.
+        /// @param[in] e : evenement qui lance la fonction.
+        /// @return Aucune.
+        ///
+        ////////////////////////////////////////////////////////////////////////
         private void PartieRapide_Load(object sender, EventArgs e)
         {
 

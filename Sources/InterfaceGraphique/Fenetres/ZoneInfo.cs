@@ -68,7 +68,6 @@ namespace InterfaceGraphique
            
             timer1.Interval = 25;
             timer1.Tick += new EventHandler(DecrementProgressBar);
-            timer1.Tick += new System.EventHandler(this.timer1_Tick);
             label_Zone.Text = nomZone;
             label_Difficulte.Text = difficulte;
             label_Points.Text = proprietes[3].ToString();
@@ -77,13 +76,7 @@ namespace InterfaceGraphique
             screenShot.Image = Image.FromFile(Application.StartupPath + @"\zones\" + nomZone+ ".jpg");
         }
 
-        private void timer1_Tick(object sender, EventArgs e)
-        {
-         //   time--;
-         //   labelTimeLeft.Text = time.ToString();
-          //  if (time == 0)
-         //       this.Close();
-        }
+       
 
         ////////////////////////////////////////////////////////////////////////
         ///
@@ -127,10 +120,6 @@ namespace InterfaceGraphique
             }
         }
 
-        private void ZoneInfo_Shown(object sender, EventArgs e)
-        {
-            //FonctionsNatives.jouerSon(winSound, winSound.Length);
-
-        }
+    
     }
 }
