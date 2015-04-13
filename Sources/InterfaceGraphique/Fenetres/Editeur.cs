@@ -593,8 +593,16 @@ namespace InterfaceGraphique
         {
             if (!(etat is EtatEditeurTest))
             {
-                if (MessageBox.Show("Voulez vous quitter? Tout changement non-sauvegardé sera oublié.", "Fermeture d'application", MessageBoxButtons.YesNo) == DialogResult.Yes)
+                DialogResult dRes= MessageBox.Show("Voulez vous sauvegarder avant de quitter? Tout changement non-sauvegardé sera oublié.", "Fermeture d'application", MessageBoxButtons.YesNoCancel);
+                if (dRes == DialogResult.Cancel)
                 {
+                    e.Cancel = true;
+                    this.Activate();
+                }
+                else if (dRes == DialogResult.Yes)
+                    EnregistrerSous();
+                
+               
                     lock (Program.unLock)
                     {
                         Program.peutAfficher = false;
@@ -602,12 +610,9 @@ namespace InterfaceGraphique
                     }
                     FonctionsNatives.arreterToutSons();
                     Program.myCustomConsole.Hide();
-                }
-                else
-                {
-                    e.Cancel = true;
-                    this.Activate();
-                }
+               
+               
+             
             }
             else
             {
@@ -2187,10 +2192,7 @@ namespace InterfaceGraphique
                      || e.Button == MouseButtons.Right || e.Button == MouseButtons.Middle)
             {
                 panel_GL.MouseMove += new MouseEventHandler(panel_MouseMove);
-                if (e.Button == MouseButtons.Middle)
-                {
-                    FonctionsNatives.sauvegarderHistorique();
-                }
+             
             }
         }
 
@@ -2233,10 +2235,7 @@ namespace InterfaceGraphique
                 deplacementVueSouris(e);
 
             }
-            else if (e.Button == MouseButtons.Middle)
-            {
-                deplacementSouris(e);
-            }
+          
             else if (!(clickValide(origin, currentP)) && etat is EtatEditeurSelection)
             {
                 int h = panel_GL.Height;
@@ -2292,10 +2291,7 @@ namespace InterfaceGraphique
             if (!(etat is EtatEditeurCreation) && !(etat is EtatEditeurDuplication))
             {
                 panel_GL.MouseMove -= panel_MouseMove;
-                if (e.Button == MouseButtons.Middle)
-                {
-                    sauvegarderHistorique();
-                }
+               
             }
 
             if (etat is EtatEditeurDeplacement || etat is EtatEditeurScale || etat is EtatEditeurRotation)
