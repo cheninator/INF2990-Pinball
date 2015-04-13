@@ -233,7 +233,7 @@ public:
 	void assignerAnimer(bool animer, NoeudAbstrait* noeud);
 	void assignerAI(bool actif);
 
-	/// Preare la création de la bille (choisis le portail d'ou elle sera generee)
+	/// Preare la creation de la bille (choisis le portail d'ou elle sera generee)
 	bool preparerBille();
 	/// Cree une bille a la position et scale demande
 	void creeBille(glm::dvec3 position, glm::dvec3 echelle);
@@ -312,7 +312,7 @@ private:
 
 	bool vueEstOrbite_{ false };
 
-   /// Listes de palettes à activer pour chaque touche
+   /// Listes de palettes a activer pour chaque touche
    std::set<NoeudPaletteG*> listePalettesGJ1_; ///< Gauche joueur 1
    std::set<NoeudPaletteD*> listePalettesDJ1_; ///< Droite joueur 1
    std::set<NoeudPaletteG*> listePalettesGJ2_; ///< Gauche joueur 2

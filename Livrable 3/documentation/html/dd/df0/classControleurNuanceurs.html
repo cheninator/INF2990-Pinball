@@ -1,0 +1,748 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=9"/>
+<meta name="generator" content="Doxygen 1.8.9.1"/>
+<title>Pain Ball: Référence de la classe ControleurNuanceurs</title>
+<link href="../../tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="../../jquery.js"></script>
+<script type="text/javascript" src="../../dynsections.js"></script>
+<link href="../../navtree.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="../../resize.js"></script>
+<script type="text/javascript" src="../../navtreedata.js"></script>
+<script type="text/javascript" src="../../navtree.js"></script>
+<script type="text/javascript">
+  $(document).ready(initResizable);
+  $(window).load(resizeHeight);
+</script>
+<link href="../../search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="../../search/searchdata.js"></script>
+<script type="text/javascript" src="../../search/search.js"></script>
+<script type="text/javascript">
+  $(document).ready(function() { init_search(); });
+</script>
+<link href="../../doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr style="height: 56px;">
+  <td id="projectlogo"><img alt="Logo" src="../../handy.jpg"/></td>
+  <td style="padding-left: 0.5em;">
+   <div id="projectname">Pain Ball
+   &#160;<span id="projectnumber">Livrable 3</span>
+   </div>
+   <div id="projectbrief">by The Ballers</div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- Généré par Doxygen 1.8.9.1 -->
+<script type="text/javascript">
+var searchBox = new SearchBox("searchBox", "../../search",false,'Recherche');
+</script>
+  <div id="navrow1" class="tabs">
+    <ul class="tablist">
+      <li><a href="../../index.html"><span>Page&#160;principale</span></a></li>
+      <li><a href="../../modules.html"><span>Modules</span></a></li>
+      <li><a href="../../namespaces.html"><span>Espaces&#160;de&#160;nommage</span></a></li>
+      <li class="current"><a href="../../annotated.html"><span>Classes</span></a></li>
+      <li><a href="../../files.html"><span>Fichiers</span></a></li>
+      <li>
+        <div id="MSearchBox" class="MSearchBoxInactive">
+        <span class="left">
+          <img id="MSearchSelect" src="../../search/mag_sel.png"
+               onmouseover="return searchBox.OnSearchSelectShow()"
+               onmouseout="return searchBox.OnSearchSelectHide()"
+               alt=""/>
+          <input type="text" id="MSearchField" value="Recherche" accesskey="S"
+               onfocus="searchBox.OnSearchFieldFocus(true)" 
+               onblur="searchBox.OnSearchFieldFocus(false)" 
+               onkeyup="searchBox.OnSearchFieldChange(event)"/>
+          </span><span class="right">
+            <a id="MSearchClose" href="javascript:searchBox.CloseResultsWindow()"><img id="MSearchCloseImg" border="0" src="../../search/close.png" alt=""/></a>
+          </span>
+        </div>
+      </li>
+    </ul>
+  </div>
+  <div id="navrow2" class="tabs2">
+    <ul class="tablist">
+      <li><a href="../../annotated.html"><span>Liste&#160;des&#160;classes</span></a></li>
+      <li><a href="../../classes.html"><span>Index&#160;des&#160;classes</span></a></li>
+      <li><a href="../../hierarchy.html"><span>Hiérarchie&#160;des&#160;classes</span></a></li>
+      <li><a href="../../functions.html"><span>Membres&#160;de&#160;classe</span></a></li>
+    </ul>
+  </div>
+</div><!-- top -->
+<div id="side-nav" class="ui-resizable side-nav-resizable">
+  <div id="nav-tree">
+    <div id="nav-tree-contents">
+      <div id="nav-sync" class="sync"></div>
+    </div>
+  </div>
+  <div id="splitbar" style="-moz-user-select:none;" 
+       class="ui-resizable-handle">
+  </div>
+</div>
+<script type="text/javascript">
+$(document).ready(function(){initNavTree('dd/df0/classControleurNuanceurs.html','../../');});
+</script>
+<div id="doc-content">
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<iframe src="javascript:void(0)" frameborder="0" 
+        name="MSearchResults" id="MSearchResults">
+</iframe>
+</div>
+
+<div class="header">
+  <div class="summary">
+<a href="#pub-methods">Fonctions membres publiques</a> &#124;
+<a href="#pub-static-methods">Fonctions membres publiques statiques</a> &#124;
+<a href="#pri-methods">Fonctions membres privées</a> &#124;
+<a href="#pri-attribs">Attributs privés</a> &#124;
+<a href="#pri-static-attribs">Attributs privés statiques</a> &#124;
+<a href="../../d3/dc0/classControleurNuanceurs-members.html">Liste de tous les membres</a>  </div>
+  <div class="headertitle">
+<div class="title">Référence de la classe ControleurNuanceurs</div>  </div>
+</div><!--header-->
+<div class="contents">
+
+<p>Cette classe sert d'interface entre le programme et le serveur OpenGL.  
+ <a href="../../dd/df0/classControleurNuanceurs.html#details">Plus de détails...</a></p>
+
+<p><code>#include &lt;<a class="el" href="../../de/d00/ControleurNuanceurs_8h_source.html">ControleurNuanceurs.h</a>&gt;</code></p>
+<table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
+Fonctions membres publiques</h2></td></tr>
+<tr class="memitem:a4491fd5b780f61178607b2a823e770fd"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../dd/df0/classControleurNuanceurs.html#a4491fd5b780f61178607b2a823e770fd">initialiser</a> ()</td></tr>
+<tr class="memdesc:a4491fd5b780f61178607b2a823e770fd"><td class="mdescLeft">&#160;</td><td class="mdescRight">Initialise le programme de nuanceurs.  <a href="#a4491fd5b780f61178607b2a823e770fd">Plus de détails...</a><br /></td></tr>
+<tr class="separator:a4491fd5b780f61178607b2a823e770fd"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af943bac9c1e52eec53cbe4e129b7494a"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../dd/df0/classControleurNuanceurs.html#af943bac9c1e52eec53cbe4e129b7494a">activer</a> ()</td></tr>
+<tr class="memdesc:af943bac9c1e52eec53cbe4e129b7494a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Active le programme.  <a href="#af943bac9c1e52eec53cbe4e129b7494a">Plus de détails...</a><br /></td></tr>
+<tr class="separator:af943bac9c1e52eec53cbe4e129b7494a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a937e96b98892c7f5d6e10326c49e1146"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../dd/df0/classControleurNuanceurs.html#a937e96b98892c7f5d6e10326c49e1146">desactiver</a> ()</td></tr>
+<tr class="memdesc:a937e96b98892c7f5d6e10326c49e1146"><td class="mdescLeft">&#160;</td><td class="mdescRight">Desactive le programme.  <a href="#a937e96b98892c7f5d6e10326c49e1146">Plus de détails...</a><br /></td></tr>
+<tr class="separator:a937e96b98892c7f5d6e10326c49e1146"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a5e91008d2d4e6338c9193a46ad943090"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../dd/df0/classControleurNuanceurs.html#a5e91008d2d4e6338c9193a46ad943090">assignerColorShift</a> (int)</td></tr>
+<tr class="memdesc:a5e91008d2d4e6338c9193a46ad943090"><td class="mdescLeft">&#160;</td><td class="mdescRight">Assignation de colorshift pour les palettes du joueur 2.  <a href="#a5e91008d2d4e6338c9193a46ad943090">Plus de détails...</a><br /></td></tr>
+<tr class="separator:a5e91008d2d4e6338c9193a46ad943090"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a194b89735fb323f8b0262afbb1f83d11"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../dd/df0/classControleurNuanceurs.html#a194b89735fb323f8b0262afbb1f83d11">assignerEtatNoeud</a> (int etat)</td></tr>
+<tr class="memdesc:a194b89735fb323f8b0262afbb1f83d11"><td class="mdescLeft">&#160;</td><td class="mdescRight">Assignation de l'etat d'affichage (selectionne, transparent impossible, illumine)  <a href="#a194b89735fb323f8b0262afbb1f83d11">Plus de détails...</a><br /></td></tr>
+<tr class="separator:a194b89735fb323f8b0262afbb1f83d11"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a63fd1200137f902114bd880a3eb447ab"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../dd/df0/classControleurNuanceurs.html#a63fd1200137f902114bd880a3eb447ab">assignerNumeroNoeud</a> (int numero)</td></tr>
+<tr class="memdesc:a63fd1200137f902114bd880a3eb447ab"><td class="mdescLeft">&#160;</td><td class="mdescRight">Assignation du numero du noeud au cas ou on voudrait faire la selection par couleurs.  <a href="#a63fd1200137f902114bd880a3eb447ab">Plus de détails...</a><br /></td></tr>
+<tr class="separator:a63fd1200137f902114bd880a3eb447ab"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a4551b099fa843d64712e4b7a38d9fbe2"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../dd/df0/classControleurNuanceurs.html#a4551b099fa843d64712e4b7a38d9fbe2">assignerEtatAmbiante</a> (int etat)</td></tr>
+<tr class="memdesc:a4551b099fa843d64712e4b7a38d9fbe2"><td class="mdescLeft">&#160;</td><td class="mdescRight">Assignation de l'etat (actif/inactif) de la lumiere ambiante.  <a href="#a4551b099fa843d64712e4b7a38d9fbe2">Plus de détails...</a><br /></td></tr>
+<tr class="separator:a4551b099fa843d64712e4b7a38d9fbe2"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a72cd896f7d8bd72ec6e446f29e15ec1c"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../dd/df0/classControleurNuanceurs.html#a72cd896f7d8bd72ec6e446f29e15ec1c">assignerEtatDirectionnelle</a> (int etat)</td></tr>
+<tr class="memdesc:a72cd896f7d8bd72ec6e446f29e15ec1c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Assignation de l'etat (actif/inactif) de la lumiere directionnelle.  <a href="#a72cd896f7d8bd72ec6e446f29e15ec1c">Plus de détails...</a><br /></td></tr>
+<tr class="separator:a72cd896f7d8bd72ec6e446f29e15ec1c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a826e2f6ad17d88b427fad14a7cfb6e89"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../dd/df0/classControleurNuanceurs.html#a826e2f6ad17d88b427fad14a7cfb6e89">assignerEtatSpot</a> (int etat)</td></tr>
+<tr class="memdesc:a826e2f6ad17d88b427fad14a7cfb6e89"><td class="mdescLeft">&#160;</td><td class="mdescRight">Assignation de l'etat (actif/inactif) de la lumiere spot.  <a href="#a826e2f6ad17d88b427fad14a7cfb6e89">Plus de détails...</a><br /></td></tr>
+<tr class="separator:a826e2f6ad17d88b427fad14a7cfb6e89"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a5bff4d78d43720244933cfe45cd39e7b"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../dd/df0/classControleurNuanceurs.html#a5bff4d78d43720244933cfe45cd39e7b">assignerSkybox</a> (int skybox)</td></tr>
+<tr class="memdesc:a5bff4d78d43720244933cfe45cd39e7b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Dire au nuanceur de fragments si on est en train de dessiner le skybox ou la scene.  <a href="#a5bff4d78d43720244933cfe45cd39e7b">Plus de détails...</a><br /></td></tr>
+<tr class="separator:a5bff4d78d43720244933cfe45cd39e7b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a18cae2e14c1be54df25aa8f37a5d7244"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../dd/df0/classControleurNuanceurs.html#a18cae2e14c1be54df25aa8f37a5d7244">assignerEstTable</a> (int estTable)</td></tr>
+<tr class="memdesc:a18cae2e14c1be54df25aa8f37a5d7244"><td class="mdescLeft">&#160;</td><td class="mdescRight">Dire au nuanceur de fragments que je suis la table.  <a href="#a18cae2e14c1be54df25aa8f37a5d7244">Plus de détails...</a><br /></td></tr>
+<tr class="separator:a18cae2e14c1be54df25aa8f37a5d7244"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-static-methods"></a>
+Fonctions membres publiques statiques</h2></td></tr>
+<tr class="memitem:ac0f39dd02b17971622fc488bb5cabb21"><td class="memItemLeft" align="right" valign="top">static <a class="el" href="../../dd/df0/classControleurNuanceurs.html">ControleurNuanceurs</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../dd/df0/classControleurNuanceurs.html#ac0f39dd02b17971622fc488bb5cabb21">obtenirInstance</a> ()</td></tr>
+<tr class="memdesc:ac0f39dd02b17971622fc488bb5cabb21"><td class="mdescLeft">&#160;</td><td class="mdescRight">Accesseur de l'instance unique.  <a href="#ac0f39dd02b17971622fc488bb5cabb21">Plus de détails...</a><br /></td></tr>
+<tr class="separator:ac0f39dd02b17971622fc488bb5cabb21"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aea29dab8bfde5ac40e60f04b2c8ee8ff"><td class="memItemLeft" align="right" valign="top">static void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../dd/df0/classControleurNuanceurs.html#aea29dab8bfde5ac40e60f04b2c8ee8ff">libererInstance</a> ()</td></tr>
+<tr class="memdesc:aea29dab8bfde5ac40e60f04b2c8ee8ff"><td class="mdescLeft">&#160;</td><td class="mdescRight">Liberateur de l'instance unique;.  <a href="#aea29dab8bfde5ac40e60f04b2c8ee8ff">Plus de détails...</a><br /></td></tr>
+<tr class="separator:aea29dab8bfde5ac40e60f04b2c8ee8ff"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pri-methods"></a>
+Fonctions membres privées</h2></td></tr>
+<tr class="memitem:aa01093be5dc85cc395bf11466408670d"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../dd/df0/classControleurNuanceurs.html#aa01093be5dc85cc395bf11466408670d">ControleurNuanceurs</a> ()=default</td></tr>
+<tr class="memdesc:aa01093be5dc85cc395bf11466408670d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Constructeur prive.  <a href="#aa01093be5dc85cc395bf11466408670d">Plus de détails...</a><br /></td></tr>
+<tr class="separator:aa01093be5dc85cc395bf11466408670d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a6f5275d934e9e305dd2a972cd22b0e35"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../dd/df0/classControleurNuanceurs.html#a6f5275d934e9e305dd2a972cd22b0e35">~ControleurNuanceurs</a> ()</td></tr>
+<tr class="memdesc:a6f5275d934e9e305dd2a972cd22b0e35"><td class="mdescLeft">&#160;</td><td class="mdescRight">Destructeur prive.  <a href="#a6f5275d934e9e305dd2a972cd22b0e35">Plus de détails...</a><br /></td></tr>
+<tr class="separator:a6f5275d934e9e305dd2a972cd22b0e35"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pri-attribs"></a>
+Attributs privés</h2></td></tr>
+<tr class="memitem:ac3c787a8cd5a33fe2247374dd29b5940"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../dd/df0/classControleurNuanceurs.html#ac3c787a8cd5a33fe2247374dd29b5940">EstInitialise_</a> { false }</td></tr>
+<tr class="memdesc:ac3c787a8cd5a33fe2247374dd29b5940"><td class="mdescLeft">&#160;</td><td class="mdescRight">Bool pour s'assurer qu'on n'essaye pas d'activer un programme pas initialiser.  <a href="#ac3c787a8cd5a33fe2247374dd29b5940">Plus de détails...</a><br /></td></tr>
+<tr class="separator:ac3c787a8cd5a33fe2247374dd29b5940"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a9a7834fe2a98742f29bf5e1bc312791c"><td class="memItemLeft" align="right" valign="top">opengl::Programme *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../dd/df0/classControleurNuanceurs.html#a9a7834fe2a98742f29bf5e1bc312791c">programme_</a> { nullptr }</td></tr>
+<tr class="memdesc:a9a7834fe2a98742f29bf5e1bc312791c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Programme openGL constitue de deux nuanceurs.  <a href="#a9a7834fe2a98742f29bf5e1bc312791c">Plus de détails...</a><br /></td></tr>
+<tr class="separator:a9a7834fe2a98742f29bf5e1bc312791c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a5a97bf23ea2dc7bff91e27b991fe42dd"><td class="memItemLeft" align="right" valign="top">opengl::Nuanceur *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../dd/df0/classControleurNuanceurs.html#a5a97bf23ea2dc7bff91e27b991fe42dd">nuanceurSommets_</a> { nullptr }</td></tr>
+<tr class="memdesc:a5a97bf23ea2dc7bff91e27b991fe42dd"><td class="mdescLeft">&#160;</td><td class="mdescRight">Nuanceur de sommets.  <a href="#a5a97bf23ea2dc7bff91e27b991fe42dd">Plus de détails...</a><br /></td></tr>
+<tr class="separator:a5a97bf23ea2dc7bff91e27b991fe42dd"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a3463a181a95b87e232ed0e92b7b2a867"><td class="memItemLeft" align="right" valign="top">opengl::Nuanceur *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../dd/df0/classControleurNuanceurs.html#a3463a181a95b87e232ed0e92b7b2a867">nuanceurFragments_</a> { nullptr }</td></tr>
+<tr class="memdesc:a3463a181a95b87e232ed0e92b7b2a867"><td class="mdescLeft">&#160;</td><td class="mdescRight">Nuanceur de fragments.  <a href="#a3463a181a95b87e232ed0e92b7b2a867">Plus de détails...</a><br /></td></tr>
+<tr class="separator:a3463a181a95b87e232ed0e92b7b2a867"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pri-static-attribs"></a>
+Attributs privés statiques</h2></td></tr>
+<tr class="memitem:afdf8dcd9065095e1fa7daa20e4b2d447"><td class="memItemLeft" align="right" valign="top">static <a class="el" href="../../dd/df0/classControleurNuanceurs.html">ControleurNuanceurs</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../dd/df0/classControleurNuanceurs.html#afdf8dcd9065095e1fa7daa20e4b2d447">instance_</a> { nullptr }</td></tr>
+<tr class="memdesc:afdf8dcd9065095e1fa7daa20e4b2d447"><td class="mdescLeft">&#160;</td><td class="mdescRight">Pointeur vers l'instance unique.  <a href="#afdf8dcd9065095e1fa7daa20e4b2d447">Plus de détails...</a><br /></td></tr>
+<tr class="separator:afdf8dcd9065095e1fa7daa20e4b2d447"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table>
+<a name="details" id="details"></a><h2 class="groupheader">Description détaillée</h2>
+<div class="textblock"><p>Cette classe sert d'interface entre le programme et le serveur OpenGL. </p>
+<dl class="section author"><dt>Auteur</dt><dd>The ballers </dd></dl>
+<dl class="section date"><dt>Date</dt><dd>2015-04-02 </dd></dl>
+
+<p>Définition à la ligne <a class="el" href="../../de/d00/ControleurNuanceurs_8h_source.html#l00024">24</a> du fichier <a class="el" href="../../de/d00/ControleurNuanceurs_8h_source.html">ControleurNuanceurs.h</a>.</p>
+</div><h2 class="groupheader">Documentation des constructeurs et destructeur</h2>
+<a class="anchor" id="aa01093be5dc85cc395bf11466408670d"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">ControleurNuanceurs::ControleurNuanceurs </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span><span class="mlabel">default</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Constructeur prive. </p>
+
+</div>
+</div>
+<a class="anchor" id="a6f5275d934e9e305dd2a972cd22b0e35"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">ControleurNuanceurs::~ControleurNuanceurs </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Destructeur prive. </p>
+<dl class="section remark"><dt>Remarques</dt><dd>Les destructeurs s'occuppent de relacher les ressources OpenGL liés aux objets.</dd></dl>
+<dl class="section return"><dt>Renvoie</dt><dd>aucun. </dd></dl>
+
+<p>Définition à la ligne <a class="el" href="../../db/d3d/ControleurNuanceurs_8cpp_source.html#l00061">61</a> du fichier <a class="el" href="../../db/d3d/ControleurNuanceurs_8cpp_source.html">ControleurNuanceurs.cpp</a>.</p>
+
+</div>
+</div>
+<h2 class="groupheader">Documentation des fonctions membres</h2>
+<a class="anchor" id="af943bac9c1e52eec53cbe4e129b7494a"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void ControleurNuanceurs::activer </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Active le programme. </p>
+<p>Active le programme de nuanceurs.</p>
+<dl class="section return"><dt>Renvoie</dt><dd>aucun. </dd></dl>
+
+<p>Définition à la ligne <a class="el" href="../../db/d3d/ControleurNuanceurs_8cpp_source.html#l00106">106</a> du fichier <a class="el" href="../../db/d3d/ControleurNuanceurs_8cpp_source.html">ControleurNuanceurs.cpp</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="a5e91008d2d4e6338c9193a46ad943090"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void ControleurNuanceurs::assignerColorShift </td>
+          <td>(</td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>colorShift</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Assignation de colorshift pour les palettes du joueur 2. </p>
+<p>Assigne la variable uniforme colorShift qui sert pour distinguer visuellement les palettes du joueur 2.</p>
+<dl class="params"><dt>Paramètres</dt><dd>
+  <table class="params">
+    <tr><td class="paramdir">[in]</td><td class="paramname">colorShift</td><td>1 pour true, 0 pour false</td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Renvoie</dt><dd>aucun. </dd></dl>
+
+<p>Définition à la ligne <a class="el" href="../../db/d3d/ControleurNuanceurs_8cpp_source.html#l00139">139</a> du fichier <a class="el" href="../../db/d3d/ControleurNuanceurs_8cpp_source.html">ControleurNuanceurs.cpp</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="a18cae2e14c1be54df25aa8f37a5d7244"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void ControleurNuanceurs::assignerEstTable </td>
+          <td>(</td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>estTable</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Dire au nuanceur de fragments que je suis la table. </p>
+<p>Dit au nuanceur si le fragment vient de la scene ou du skybox.</p>
+<dl class="params"><dt>Paramètres</dt><dd>
+  <table class="params">
+    <tr><td class="paramdir">[in]</td><td class="paramname">etat</td><td>: 1 skybox, 0 pour pas skybox</td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Renvoie</dt><dd>aucun. </dd></dl>
+
+<p>Définition à la ligne <a class="el" href="../../db/d3d/ControleurNuanceurs_8cpp_source.html#l00256">256</a> du fichier <a class="el" href="../../db/d3d/ControleurNuanceurs_8cpp_source.html">ControleurNuanceurs.cpp</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="a4551b099fa843d64712e4b7a38d9fbe2"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void ControleurNuanceurs::assignerEtatAmbiante </td>
+          <td>(</td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>etat</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Assignation de l'etat (actif/inactif) de la lumiere ambiante. </p>
+<p>Assigne la variable uniforme etatAmbiante qui sert a activer/desactiver la lumiere ambiante.</p>
+<dl class="params"><dt>Paramètres</dt><dd>
+  <table class="params">
+    <tr><td class="paramdir">[in]</td><td class="paramname">etat</td><td>: 1 pour ON, 0 pour OFF</td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Renvoie</dt><dd>aucun. </dd></dl>
+
+<p>Définition à la ligne <a class="el" href="../../db/d3d/ControleurNuanceurs_8cpp_source.html#l00190">190</a> du fichier <a class="el" href="../../db/d3d/ControleurNuanceurs_8cpp_source.html">ControleurNuanceurs.cpp</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="a72cd896f7d8bd72ec6e446f29e15ec1c"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void ControleurNuanceurs::assignerEtatDirectionnelle </td>
+          <td>(</td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>etat</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Assignation de l'etat (actif/inactif) de la lumiere directionnelle. </p>
+<p>Assigne la variable uniforme etatDirectionnelle qui sert a activer/desactiver la lumiere directionnelle.</p>
+<dl class="params"><dt>Paramètres</dt><dd>
+  <table class="params">
+    <tr><td class="paramdir">[in]</td><td class="paramname">etat</td><td>: 1 pour ON, 0 pour OFF</td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Renvoie</dt><dd>aucun. </dd></dl>
+
+<p>Définition à la ligne <a class="el" href="../../db/d3d/ControleurNuanceurs_8cpp_source.html#l00207">207</a> du fichier <a class="el" href="../../db/d3d/ControleurNuanceurs_8cpp_source.html">ControleurNuanceurs.cpp</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="a194b89735fb323f8b0262afbb1f83d11"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void ControleurNuanceurs::assignerEtatNoeud </td>
+          <td>(</td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>etat</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Assignation de l'etat d'affichage (selectionne, transparent impossible, illumine) </p>
+<p>Assigne la variable uniforme etatNoeud qui sert pour les etats selectionne, impossible, transparent, illumine.</p>
+<dl class="params"><dt>Paramètres</dt><dd>
+  <table class="params">
+    <tr><td class="paramdir">[in]</td><td class="paramname">etat</td><td>Voir <a class="el" href="../../db/d8e/AnimationNoeudsDefine_8h.html">animationNoeudsDefine.h</a> pour les macros</td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Renvoie</dt><dd>aucun. </dd></dl>
+
+<p>Définition à la ligne <a class="el" href="../../db/d3d/ControleurNuanceurs_8cpp_source.html#l00156">156</a> du fichier <a class="el" href="../../db/d3d/ControleurNuanceurs_8cpp_source.html">ControleurNuanceurs.cpp</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="a826e2f6ad17d88b427fad14a7cfb6e89"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void ControleurNuanceurs::assignerEtatSpot </td>
+          <td>(</td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>etat</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Assignation de l'etat (actif/inactif) de la lumiere spot. </p>
+<p>Assigne la variable uniforme etatSpot qui sert a activer/desactiver la lumiere spot.</p>
+<dl class="params"><dt>Paramètres</dt><dd>
+  <table class="params">
+    <tr><td class="paramdir">[in]</td><td class="paramname">etat</td><td>: 1 pour ON, 0 pour OFF</td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Renvoie</dt><dd>aucun. </dd></dl>
+
+<p>Définition à la ligne <a class="el" href="../../db/d3d/ControleurNuanceurs_8cpp_source.html#l00224">224</a> du fichier <a class="el" href="../../db/d3d/ControleurNuanceurs_8cpp_source.html">ControleurNuanceurs.cpp</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="a63fd1200137f902114bd880a3eb447ab"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void ControleurNuanceurs::assignerNumeroNoeud </td>
+          <td>(</td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>numero</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Assignation du numero du noeud au cas ou on voudrait faire la selection par couleurs. </p>
+<p>Assigne la variable uniforme numeroNoeud qui pourrait servir si on decidait de faire la selection par couleur.</p>
+<dl class="params"><dt>Paramètres</dt><dd>
+  <table class="params">
+    <tr><td class="paramdir">[in]</td><td class="paramname">numero</td><td>Numero du noeud pour selection par couleur</td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Renvoie</dt><dd>aucun. </dd></dl>
+
+<p>Définition à la ligne <a class="el" href="../../db/d3d/ControleurNuanceurs_8cpp_source.html#l00173">173</a> du fichier <a class="el" href="../../db/d3d/ControleurNuanceurs_8cpp_source.html">ControleurNuanceurs.cpp</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="a5bff4d78d43720244933cfe45cd39e7b"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void ControleurNuanceurs::assignerSkybox </td>
+          <td>(</td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>skybox</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Dire au nuanceur de fragments si on est en train de dessiner le skybox ou la scene. </p>
+<p>Dit au nuanceur si le fragment vient de la scene ou du skybox.</p>
+<dl class="params"><dt>Paramètres</dt><dd>
+  <table class="params">
+    <tr><td class="paramdir">[in]</td><td class="paramname">etat</td><td>: 1 skybox, 0 pour pas skybox</td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Renvoie</dt><dd>aucun. </dd></dl>
+
+<p>Définition à la ligne <a class="el" href="../../db/d3d/ControleurNuanceurs_8cpp_source.html#l00240">240</a> du fichier <a class="el" href="../../db/d3d/ControleurNuanceurs_8cpp_source.html">ControleurNuanceurs.cpp</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="a937e96b98892c7f5d6e10326c49e1146"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void ControleurNuanceurs::desactiver </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Desactive le programme. </p>
+<p>Desactive le programme de nuanceurs.</p>
+<dl class="section return"><dt>Renvoie</dt><dd>aucun. </dd></dl>
+
+<p>Définition à la ligne <a class="el" href="../../db/d3d/ControleurNuanceurs_8cpp_source.html#l00121">121</a> du fichier <a class="el" href="../../db/d3d/ControleurNuanceurs_8cpp_source.html">ControleurNuanceurs.cpp</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="a4491fd5b780f61178607b2a823e770fd"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void ControleurNuanceurs::initialiser </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Initialise le programme de nuanceurs. </p>
+<p>Charge les fichiers .glsl contenant le code des nuanceurs, les compile et les lient a des nuanceurs dans le serveur OpenGL. Ensuite les nuanceurs sont lies au programme.</p>
+<dl class="section return"><dt>Renvoie</dt><dd>aucun. </dd></dl>
+
+<p>Définition à la ligne <a class="el" href="../../db/d3d/ControleurNuanceurs_8cpp_source.html#l00080">80</a> du fichier <a class="el" href="../../db/d3d/ControleurNuanceurs_8cpp_source.html">ControleurNuanceurs.cpp</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="aea29dab8bfde5ac40e60f04b2c8ee8ff"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void ControleurNuanceurs::libererInstance </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Liberateur de l'instance unique;. </p>
+<p>Liberateur de l'instance unique.</p>
+<dl class="section return"><dt>Renvoie</dt><dd>aucun. </dd></dl>
+
+<p>Définition à la ligne <a class="el" href="../../db/d3d/ControleurNuanceurs_8cpp_source.html#l00043">43</a> du fichier <a class="el" href="../../db/d3d/ControleurNuanceurs_8cpp_source.html">ControleurNuanceurs.cpp</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="ac0f39dd02b17971622fc488bb5cabb21"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="../../dd/df0/classControleurNuanceurs.html">ControleurNuanceurs</a> * ControleurNuanceurs::obtenirInstance </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Accesseur de l'instance unique. </p>
+<p>Accesseur de l'instance unique du singleton.</p>
+<dl class="section return"><dt>Renvoie</dt><dd>aucun. </dd></dl>
+
+<p>Définition à la ligne <a class="el" href="../../db/d3d/ControleurNuanceurs_8cpp_source.html#l00026">26</a> du fichier <a class="el" href="../../db/d3d/ControleurNuanceurs_8cpp_source.html">ControleurNuanceurs.cpp</a>.</p>
+
+</div>
+</div>
+<h2 class="groupheader">Documentation des données membres</h2>
+<a class="anchor" id="ac3c787a8cd5a33fe2247374dd29b5940"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool ControleurNuanceurs::EstInitialise_ { false }</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Bool pour s'assurer qu'on n'essaye pas d'activer un programme pas initialiser. </p>
+
+<p>Définition à la ligne <a class="el" href="../../de/d00/ControleurNuanceurs_8h_source.html#l00071">71</a> du fichier <a class="el" href="../../de/d00/ControleurNuanceurs_8h_source.html">ControleurNuanceurs.h</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="afdf8dcd9065095e1fa7daa20e4b2d447"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="../../dd/df0/classControleurNuanceurs.html">ControleurNuanceurs</a> * ControleurNuanceurs::instance_ { nullptr }</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Pointeur vers l'instance unique. </p>
+
+<p>Définition à la ligne <a class="el" href="../../de/d00/ControleurNuanceurs_8h_source.html#l00064">64</a> du fichier <a class="el" href="../../de/d00/ControleurNuanceurs_8h_source.html">ControleurNuanceurs.h</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="a3463a181a95b87e232ed0e92b7b2a867"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">opengl::Nuanceur* ControleurNuanceurs::nuanceurFragments_ { nullptr }</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Nuanceur de fragments. </p>
+
+<p>Définition à la ligne <a class="el" href="../../de/d00/ControleurNuanceurs_8h_source.html#l00078">78</a> du fichier <a class="el" href="../../de/d00/ControleurNuanceurs_8h_source.html">ControleurNuanceurs.h</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="a5a97bf23ea2dc7bff91e27b991fe42dd"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">opengl::Nuanceur* ControleurNuanceurs::nuanceurSommets_ { nullptr }</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Nuanceur de sommets. </p>
+
+<p>Définition à la ligne <a class="el" href="../../de/d00/ControleurNuanceurs_8h_source.html#l00076">76</a> du fichier <a class="el" href="../../de/d00/ControleurNuanceurs_8h_source.html">ControleurNuanceurs.h</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="a9a7834fe2a98742f29bf5e1bc312791c"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">opengl::Programme* ControleurNuanceurs::programme_ { nullptr }</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Programme openGL constitue de deux nuanceurs. </p>
+
+<p>Définition à la ligne <a class="el" href="../../de/d00/ControleurNuanceurs_8h_source.html#l00074">74</a> du fichier <a class="el" href="../../de/d00/ControleurNuanceurs_8h_source.html">ControleurNuanceurs.h</a>.</p>
+
+</div>
+</div>
+<hr/>La documentation de cette classe a été générée à partir des fichiers suivants :<ul>
+<li>Sources/DLL/Eclairage/<a class="el" href="../../de/d00/ControleurNuanceurs_8h_source.html">ControleurNuanceurs.h</a></li>
+<li>Sources/DLL/Eclairage/<a class="el" href="../../db/d3d/ControleurNuanceurs_8cpp_source.html">ControleurNuanceurs.cpp</a></li>
+</ul>
+</div><!-- contents -->
+</div><!-- doc-content -->
+<!-- start footer part -->
+<div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
+  <ul>
+    <li class="navelem"><a class="el" href="../../dd/df0/classControleurNuanceurs.html">ControleurNuanceurs</a></li>
+    <li class="footer">Généré le Lundi 13 Avril 2015 19:48:01 pour Pain Ball par
+    <a href="http://www.doxygen.org/index.html">
+    <img class="footer" src="../../doxygen.png" alt="doxygen"/></a> 1.8.9.1 </li>
+  </ul>
+</div>
+</body>
+</html>

@@ -181,11 +181,11 @@ aidecollision::DetailsCollision NoeudButoirD::detecterCollisions(NoeudAbstrait* 
 	detailsRetour.type = aidecollision::COLLISION_AUCUNE;
 	for (unsigned int i = 0; i < boite.size(); i++)
 	{
-		// On veut calculer la collision en 2D et caster les paramêtres en glm::dvec2 "oublie" leur composante en Z et choisi la bonne surcharge de calculerCollisionSegment.
+		// On veut calculer la collision en 2D et caster les parametres en glm::dvec2 "oublie" leur composante en Z et choisi la bonne surcharge de calculerCollisionSegment.
 		details = aidecollision::calculerCollisionSegment((glm::dvec2)boite[i], (glm::dvec2)boite[(i + 1) % boite.size()], (glm::dvec2)bille->obtenirPositionRelative(), rayonBille, true);
 		if (details.type != aidecollision::COLLISION_AUCUNE)
 		{
-			// Donner priorité aux collision sur les segments plutot que sur les points.
+			// Donner priorite aux collision sur les segments plutot que sur les points.
 			if (details.type == aidecollision::COLLISION_SEGMENT)
 			{
 				if (i == 0) // collision sur le long segment.
@@ -205,7 +205,7 @@ aidecollision::DetailsCollision NoeudButoirD::detecterCollisions(NoeudAbstrait* 
 ///
 /// @fn void NoeudButoirD::traiterCollisions(aidecollision::DetailsCollision details, NoeudAbstrait* bille, float facteurRebond)
 ///
-/// @brief Cette fonction effectue la réaction a la collision de la bille sur 
+/// @brief Cette fonction effectue la reaction a la collision de la bille sur 
 /// l'objet courant. La collision est plus forte sur le long segment si le mode force supplementaire est actif.
 ///
 /// @param[in] details Objet contenant les details de la collision a traiter

@@ -32,7 +32,7 @@ public:
 	/// Obtient l'instance unique de la classe.
 	static SingletonGlobal* obtenirInstance();
 
-	/// Libère l'instance unique de la classe.
+	/// Libere l'instance unique de la classe.
 	static void libererInstance();
 
 	/// AJOUTER VOS GET/SET sur les variables ici
@@ -85,10 +85,10 @@ public:
 
 	void setBoiteTable(utilitaire::BoiteEnglobante boiteTable) { boiteTable_ = boiteTable; };
 protected:
-	/// Constructeur vide déclaré protected.
+	/// Constructeur vide declare protected.
 	SingletonGlobal() {   boiteTable_.coinMax = { 0, 0, 0 }; boiteTable_.coinMin = { 0, 0, 0 };   };
 
-	/// Destructeur vide déclaré protected.
+	/// Destructeur vide declare protected.
 	~SingletonGlobal() { delete mySound_; };
 
 private:
@@ -97,10 +97,10 @@ private:
 
 	static SingletonGlobal* singleton_;
 
-	/// Constructeur par copie déclaré mais non défini.
+	/// Constructeur par copie declare mais non defini.
 	SingletonGlobal(const SingletonGlobal&) = delete;
 
-	/// Opérateur d'assignation déclaré mais non défini.
+	/// Operateur d'assignation declare mais non defini.
 	SingletonGlobal& operator=(const SingletonGlobal&) = delete;
 
 	/// AJOUTER VOS VARIABLES GLOBAL ICI

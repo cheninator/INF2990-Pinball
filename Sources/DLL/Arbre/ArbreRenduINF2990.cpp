@@ -260,7 +260,7 @@ bool ArbreRenduINF2990::initialiserXML(std::string nomFichier)
 		lireXML(document);
 		fichierTrouve = true;
 	}
-	// C'est la façon la plus rapide que j'ai trouvé de faire commencer le couvercle a cette position.
+	// C'est la façon la plus rapide que j'ai trouve de faire commencer le couvercle a cette position.
 	SingletonGlobal::obtenirInstance()->resetConfigurationCollision(proprietes_[0], proprietes_[1], proprietes_[2], proprietes_[3], proprietes_[4]);
 
 	return fichierTrouve;

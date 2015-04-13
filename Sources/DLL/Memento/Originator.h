@@ -18,7 +18,7 @@
 
 ///////////////////////////////////////////////////////////////////////////
 /// @class Originator
-/// @brief Classe qui gère l'historique des modifications. Permet de faire l'operation undo/redo
+/// @brief Classe qui gere l'historique des modifications. Permet de faire l'operation undo/redo
 ///
 /// @author The Ballers
 /// @date 2015-02-24
@@ -55,7 +55,7 @@ public :
 	/// Assigner un arbre de rendu
 	void assignerArbre(ArbreRenduINF2990* arbre) { arbreActuel_ = arbre; };
 
-	/// Retourne vrai si on n'est pas à la fin de l'historique de sauvegarde
+	/// Retourne vrai si on n'est pas a la fin de l'historique de sauvegarde
 	bool possedeSuivant()	const{ return ((position_ + 1 != historique_->size()) && historique_->size() != 0); };
 
 	/// Retourne vrai si on n'est pas au debut de l'historique de sauvegarde
@@ -72,7 +72,7 @@ private:
 	/// Position courrante
 	int position_;
 
-	/// Appliquer les modifications à l'arbre de rendu a partir de la sauvegarde
+	/// Appliquer les modifications a l'arbre de rendu a partir de la sauvegarde
 	void appliquerModifications(std::map<int, NoeudAbstrait*> sauvegarde);
 
 };

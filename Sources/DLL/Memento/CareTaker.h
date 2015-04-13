@@ -29,7 +29,7 @@ public:
 	/// Constructeur
 	CareTaker();
 
-	/// Assignation par copie non-nécessaire dans le contexte
+	/// Assignation par copie non-necessaire dans le contexte
 	CareTaker& operator=(CareTaker const&) = delete;
 
 	/// Destructeur

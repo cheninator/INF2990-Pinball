@@ -1,0 +1,194 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=9"/>
+<meta name="generator" content="Doxygen 1.8.9.1"/>
+<title>Pain Ball:  Fichier source de Sources/DLL/Eclairage/ControleurLumieres.h</title>
+<link href="../../tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="../../jquery.js"></script>
+<script type="text/javascript" src="../../dynsections.js"></script>
+<link href="../../navtree.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="../../resize.js"></script>
+<script type="text/javascript" src="../../navtreedata.js"></script>
+<script type="text/javascript" src="../../navtree.js"></script>
+<script type="text/javascript">
+  $(document).ready(initResizable);
+  $(window).load(resizeHeight);
+</script>
+<link href="../../search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="../../search/searchdata.js"></script>
+<script type="text/javascript" src="../../search/search.js"></script>
+<script type="text/javascript">
+  $(document).ready(function() { init_search(); });
+</script>
+<link href="../../doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr style="height: 56px;">
+  <td id="projectlogo"><img alt="Logo" src="../../handy.jpg"/></td>
+  <td style="padding-left: 0.5em;">
+   <div id="projectname">Pain Ball
+   &#160;<span id="projectnumber">Livrable 3</span>
+   </div>
+   <div id="projectbrief">by The Ballers</div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- Généré par Doxygen 1.8.9.1 -->
+<script type="text/javascript">
+var searchBox = new SearchBox("searchBox", "../../search",false,'Recherche');
+</script>
+  <div id="navrow1" class="tabs">
+    <ul class="tablist">
+      <li><a href="../../index.html"><span>Page&#160;principale</span></a></li>
+      <li><a href="../../modules.html"><span>Modules</span></a></li>
+      <li><a href="../../namespaces.html"><span>Espaces&#160;de&#160;nommage</span></a></li>
+      <li><a href="../../annotated.html"><span>Classes</span></a></li>
+      <li class="current"><a href="../../files.html"><span>Fichiers</span></a></li>
+      <li>
+        <div id="MSearchBox" class="MSearchBoxInactive">
+        <span class="left">
+          <img id="MSearchSelect" src="../../search/mag_sel.png"
+               onmouseover="return searchBox.OnSearchSelectShow()"
+               onmouseout="return searchBox.OnSearchSelectHide()"
+               alt=""/>
+          <input type="text" id="MSearchField" value="Recherche" accesskey="S"
+               onfocus="searchBox.OnSearchFieldFocus(true)" 
+               onblur="searchBox.OnSearchFieldFocus(false)" 
+               onkeyup="searchBox.OnSearchFieldChange(event)"/>
+          </span><span class="right">
+            <a id="MSearchClose" href="javascript:searchBox.CloseResultsWindow()"><img id="MSearchCloseImg" border="0" src="../../search/close.png" alt=""/></a>
+          </span>
+        </div>
+      </li>
+    </ul>
+  </div>
+  <div id="navrow2" class="tabs2">
+    <ul class="tablist">
+      <li><a href="../../files.html"><span>Liste&#160;des&#160;fichiers</span></a></li>
+      <li><a href="../../globals.html"><span>Membres&#160;de&#160;fichier</span></a></li>
+    </ul>
+  </div>
+</div><!-- top -->
+<div id="side-nav" class="ui-resizable side-nav-resizable">
+  <div id="nav-tree">
+    <div id="nav-tree-contents">
+      <div id="nav-sync" class="sync"></div>
+    </div>
+  </div>
+  <div id="splitbar" style="-moz-user-select:none;" 
+       class="ui-resizable-handle">
+  </div>
+</div>
+<script type="text/javascript">
+$(document).ready(function(){initNavTree('dd/d4d/ControleurLumieres_8h_source.html','../../');});
+</script>
+<div id="doc-content">
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<iframe src="javascript:void(0)" frameborder="0" 
+        name="MSearchResults" id="MSearchResults">
+</iframe>
+</div>
+
+<div class="header">
+  <div class="headertitle">
+<div class="title">ControleurLumieres.h</div>  </div>
+</div><!--header-->
+<div class="contents">
+<a href="../../dd/d4d/ControleurLumieres_8h.html">Aller à la documentation de ce fichier.</a><div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;</div>
+<div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160;<span class="preprocessor">#ifndef __ECLAIRAGE_CONTROLEUR_LUMIERES_H__</span></div>
+<div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;<span class="preprocessor">#define __ECLAIRAGE_CONTROLEUR_LUMIERES_H__</span></div>
+<div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;</div>
+<div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="../../d5/dab/Lumiere_8h.html">Lumiere.h</a>&quot;</span></div>
+<div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;</div>
+<div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;<span class="keyword">class </span><a class="code" href="../../d0/d64/classNoeudTable.html">NoeudTable</a>;</div>
+<div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;</div>
+<div class="line"><a name="l00026"></a><span class="lineno"><a class="line" href="../../d3/da5/classControleurLumieres.html">   26</a></span>&#160;<span class="keyword">class </span><a class="code" href="../../d3/da5/classControleurLumieres.html">ControleurLumieres</a></div>
+<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;{</div>
+<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;</div>
+<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;<span class="keyword">public</span>:</div>
+<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;    </div>
+<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;    <a class="code" href="../../d3/da5/classControleurLumieres.html#a64cdbae4d56471e969cc9279d2f73490">ControleurLumieres</a>();</div>
+<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;</div>
+<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;    <a class="code" href="../../d3/da5/classControleurLumieres.html#a6bb75882075a84945fe81ed1b5aa2033">~ControleurLumieres</a>();</div>
+<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;</div>
+<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;    <a class="code" href="../../d3/da5/classControleurLumieres.html#a64cdbae4d56471e969cc9279d2f73490">ControleurLumieres</a>(<span class="keyword">const</span> <a class="code" href="../../d3/da5/classControleurLumieres.html">ControleurLumieres</a> &amp;) = <span class="keyword">delete</span>;</div>
+<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;</div>
+<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;    <a class="code" href="../../d3/da5/classControleurLumieres.html">ControleurLumieres</a>&amp; <a class="code" href="../../d3/da5/classControleurLumieres.html#a66cc5bfb73b70ac31931e7c2f5500007">operator=</a>(<a class="code" href="../../d3/da5/classControleurLumieres.html">ControleurLumieres</a> <span class="keyword">const</span>&amp;) = <span class="keyword">delete</span>;</div>
+<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;</div>
+<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="../../d3/da5/classControleurLumieres.html#a0136c3e5640b2b61afeb8ff778cd34c5">initialiserLumieres</a>();</div>
+<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;</div>
+<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="../../d3/da5/classControleurLumieres.html#af8f1a1418b20e57a3ca4ee44d9a2fb4f">definirLumieres</a>();</div>
+<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;</div>
+<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="../../d3/da5/classControleurLumieres.html#aa2a157ee946816a17cb5d2dafa96ab08">activerAmbiante</a>();</div>
+<div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="../../d3/da5/classControleurLumieres.html#ae07b62ecb713639c644e882383d1d28d">desactiverAmbiante</a>();</div>
+<div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;</div>
+<div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="../../d3/da5/classControleurLumieres.html#ae7e682ae3f3777d666bdcc15899b7e7a">activerDirectionnelle</a>();</div>
+<div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;</div>
+<div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="../../d3/da5/classControleurLumieres.html#ae70b95ce6be2c48c6ce047587d18cdda">desactiverDirectionnelle</a>();</div>
+<div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;</div>
+<div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="../../d3/da5/classControleurLumieres.html#af8057bbba944f4376702c1c124d99145">activerSpot</a>();</div>
+<div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="../../d3/da5/classControleurLumieres.html#ae192a61cab8f7aac1ab673908b18e66e">desactiverSpot</a>();</div>
+<div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="../../d3/da5/classControleurLumieres.html#ab4ee01ec018dabef35c3e1990dff76ef">trackerLesBilles</a>(<a class="code" href="../../d0/d64/classNoeudTable.html">NoeudTable</a>* table);</div>
+<div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160;</div>
+<div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160;<span class="keyword">private</span>:</div>
+<div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160;</div>
+<div class="line"><a name="l00070"></a><span class="lineno"><a class="line" href="../../d3/da5/classControleurLumieres.html#a81bb11f8fca48a79f640a798eaf608e2">   70</a></span>&#160;    <a class="code" href="../../d9/d80/classLumiere.html">Lumiere</a>* <a class="code" href="../../d3/da5/classControleurLumieres.html#a81bb11f8fca48a79f640a798eaf608e2">lumAmbiante_</a>;</div>
+<div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160;</div>
+<div class="line"><a name="l00073"></a><span class="lineno"><a class="line" href="../../d3/da5/classControleurLumieres.html#a55ca2629ed1d58e61eb6bba1e3abaccc">   73</a></span>&#160;    <a class="code" href="../../d9/d80/classLumiere.html">Lumiere</a>* <a class="code" href="../../d3/da5/classControleurLumieres.html#a55ca2629ed1d58e61eb6bba1e3abaccc">lumDirectionnelle_</a>;</div>
+<div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160;</div>
+<div class="line"><a name="l00076"></a><span class="lineno"><a class="line" href="../../d3/da5/classControleurLumieres.html#a32ce66fd2832da1232cc25ab3def8882">   76</a></span>&#160;    <a class="code" href="../../d9/d80/classLumiere.html">Lumiere</a>* <a class="code" href="../../d3/da5/classControleurLumieres.html#a32ce66fd2832da1232cc25ab3def8882">lumSpotA_</a>;</div>
+<div class="line"><a name="l00077"></a><span class="lineno"><a class="line" href="../../d3/da5/classControleurLumieres.html#ad8658fa2f6358336dd149ffd45cb6fe9">   77</a></span>&#160;    <a class="code" href="../../d9/d80/classLumiere.html">Lumiere</a>* <a class="code" href="../../d3/da5/classControleurLumieres.html#ad8658fa2f6358336dd149ffd45cb6fe9">lumSpotB_</a>;</div>
+<div class="line"><a name="l00078"></a><span class="lineno">   78</span>&#160;</div>
+<div class="line"><a name="l00079"></a><span class="lineno">   79</span>&#160;};</div>
+<div class="line"><a name="l00080"></a><span class="lineno">   80</span>&#160;</div>
+<div class="line"><a name="l00081"></a><span class="lineno">   81</span>&#160;<span class="preprocessor">#endif // __ECLAIRAGE_CONTROLEUR_LUMIERES_H__</span></div>
+<div class="ttc" id="classControleurLumieres_html_a81bb11f8fca48a79f640a798eaf608e2"><div class="ttname"><a href="../../d3/da5/classControleurLumieres.html#a81bb11f8fca48a79f640a798eaf608e2">ControleurLumieres::lumAmbiante_</a></div><div class="ttdeci">Lumiere * lumAmbiante_</div><div class="ttdoc">Objet pour la lumiere ambiante. </div><div class="ttdef"><b>Definition:</b> <a href="../../dd/d4d/ControleurLumieres_8h_source.html#l00070">ControleurLumieres.h:70</a></div></div>
+<div class="ttc" id="classControleurLumieres_html_a0136c3e5640b2b61afeb8ff778cd34c5"><div class="ttname"><a href="../../d3/da5/classControleurLumieres.html#a0136c3e5640b2b61afeb8ff778cd34c5">ControleurLumieres::initialiserLumieres</a></div><div class="ttdeci">void initialiserLumieres()</div><div class="ttdoc">Donne les valeurs choisies par le controleur aux lumieres. </div><div class="ttdef"><b>Definition:</b> <a href="../../d7/d55/ControleurLumieres_8cpp_source.html#l00059">ControleurLumieres.cpp:59</a></div></div>
+<div class="ttc" id="classControleurLumieres_html_a64cdbae4d56471e969cc9279d2f73490"><div class="ttname"><a href="../../d3/da5/classControleurLumieres.html#a64cdbae4d56471e969cc9279d2f73490">ControleurLumieres::ControleurLumieres</a></div><div class="ttdeci">ControleurLumieres()</div><div class="ttdoc">Constructeur. </div><div class="ttdef"><b>Definition:</b> <a href="../../d7/d55/ControleurLumieres_8cpp_source.html#l00027">ControleurLumieres.cpp:27</a></div></div>
+<div class="ttc" id="classControleurLumieres_html_aa2a157ee946816a17cb5d2dafa96ab08"><div class="ttname"><a href="../../d3/da5/classControleurLumieres.html#aa2a157ee946816a17cb5d2dafa96ab08">ControleurLumieres::activerAmbiante</a></div><div class="ttdeci">void activerAmbiante()</div><div class="ttdoc">Activer la lumiere Ambiante. </div><div class="ttdef"><b>Definition:</b> <a href="../../d7/d55/ControleurLumieres_8cpp_source.html#l00170">ControleurLumieres.cpp:170</a></div></div>
+<div class="ttc" id="classControleurLumieres_html_ab4ee01ec018dabef35c3e1990dff76ef"><div class="ttname"><a href="../../d3/da5/classControleurLumieres.html#ab4ee01ec018dabef35c3e1990dff76ef">ControleurLumieres::trackerLesBilles</a></div><div class="ttdeci">void trackerLesBilles(NoeudTable *table)</div><div class="ttdoc">Pointer les spots sur les billes. </div><div class="ttdef"><b>Definition:</b> <a href="../../d7/d55/ControleurLumieres_8cpp_source.html#l00256">ControleurLumieres.cpp:256</a></div></div>
+<div class="ttc" id="Lumiere_8h_html"><div class="ttname"><a href="../../d5/dab/Lumiere_8h.html">Lumiere.h</a></div></div>
+<div class="ttc" id="classControleurLumieres_html_ae70b95ce6be2c48c6ce047587d18cdda"><div class="ttname"><a href="../../d3/da5/classControleurLumieres.html#ae70b95ce6be2c48c6ce047587d18cdda">ControleurLumieres::desactiverDirectionnelle</a></div><div class="ttdeci">void desactiverDirectionnelle()</div><div class="ttdoc">Desactiver la lumiere directionnelle. </div><div class="ttdef"><b>Definition:</b> <a href="../../d7/d55/ControleurLumieres_8cpp_source.html#l00212">ControleurLumieres.cpp:212</a></div></div>
+<div class="ttc" id="classControleurLumieres_html_ae7e682ae3f3777d666bdcc15899b7e7a"><div class="ttname"><a href="../../d3/da5/classControleurLumieres.html#ae7e682ae3f3777d666bdcc15899b7e7a">ControleurLumieres::activerDirectionnelle</a></div><div class="ttdeci">void activerDirectionnelle()</div><div class="ttdoc">Activer la lumiere directionnnelle. </div><div class="ttdef"><b>Definition:</b> <a href="../../d7/d55/ControleurLumieres_8cpp_source.html#l00198">ControleurLumieres.cpp:198</a></div></div>
+<div class="ttc" id="classControleurLumieres_html"><div class="ttname"><a href="../../d3/da5/classControleurLumieres.html">ControleurLumieres</a></div><div class="ttdoc">Cette classe controle les lumieres. Elle s&#39;occuppe de definir leurs couleurs, position etc...</div><div class="ttdef"><b>Definition:</b> <a href="../../dd/d4d/ControleurLumieres_8h_source.html#l00026">ControleurLumieres.h:26</a></div></div>
+<div class="ttc" id="classNoeudTable_html"><div class="ttname"><a href="../../d0/d64/classNoeudTable.html">NoeudTable</a></div><div class="ttdoc">Classe qui represente une table. </div><div class="ttdef"><b>Definition:</b> <a href="../../db/d72/NoeudTable_8h_source.html#l00024">NoeudTable.h:24</a></div></div>
+<div class="ttc" id="classLumiere_html"><div class="ttname"><a href="../../d9/d80/classLumiere.html">Lumiere</a></div><div class="ttdoc">TODO PHIL. </div><div class="ttdef"><b>Definition:</b> <a href="../../d5/dab/Lumiere_8h_source.html#l00026">Lumiere.h:26</a></div></div>
+<div class="ttc" id="classControleurLumieres_html_ae192a61cab8f7aac1ab673908b18e66e"><div class="ttname"><a href="../../d3/da5/classControleurLumieres.html#ae192a61cab8f7aac1ab673908b18e66e">ControleurLumieres::desactiverSpot</a></div><div class="ttdeci">void desactiverSpot()</div><div class="ttdoc">Desactiver la lumiere spot. </div><div class="ttdef"><b>Definition:</b> <a href="../../d7/d55/ControleurLumieres_8cpp_source.html#l00240">ControleurLumieres.cpp:240</a></div></div>
+<div class="ttc" id="classControleurLumieres_html_a55ca2629ed1d58e61eb6bba1e3abaccc"><div class="ttname"><a href="../../d3/da5/classControleurLumieres.html#a55ca2629ed1d58e61eb6bba1e3abaccc">ControleurLumieres::lumDirectionnelle_</a></div><div class="ttdeci">Lumiere * lumDirectionnelle_</div><div class="ttdoc">Objet pour la lumiere directionnelle. </div><div class="ttdef"><b>Definition:</b> <a href="../../dd/d4d/ControleurLumieres_8h_source.html#l00073">ControleurLumieres.h:73</a></div></div>
+<div class="ttc" id="classControleurLumieres_html_ae07b62ecb713639c644e882383d1d28d"><div class="ttname"><a href="../../d3/da5/classControleurLumieres.html#ae07b62ecb713639c644e882383d1d28d">ControleurLumieres::desactiverAmbiante</a></div><div class="ttdeci">void desactiverAmbiante()</div><div class="ttdoc">Desactiver la lumiere ambiante. </div><div class="ttdef"><b>Definition:</b> <a href="../../d7/d55/ControleurLumieres_8cpp_source.html#l00184">ControleurLumieres.cpp:184</a></div></div>
+<div class="ttc" id="classControleurLumieres_html_af8f1a1418b20e57a3ca4ee44d9a2fb4f"><div class="ttname"><a href="../../d3/da5/classControleurLumieres.html#af8f1a1418b20e57a3ca4ee44d9a2fb4f">ControleurLumieres::definirLumieres</a></div><div class="ttdeci">void definirLumieres()</div><div class="ttdoc">Passe les donnees des lumieres au serveur OpenGL. </div><div class="ttdef"><b>Definition:</b> <a href="../../d7/d55/ControleurLumieres_8cpp_source.html#l00153">ControleurLumieres.cpp:153</a></div></div>
+<div class="ttc" id="classControleurLumieres_html_a6bb75882075a84945fe81ed1b5aa2033"><div class="ttname"><a href="../../d3/da5/classControleurLumieres.html#a6bb75882075a84945fe81ed1b5aa2033">ControleurLumieres::~ControleurLumieres</a></div><div class="ttdeci">~ControleurLumieres()</div><div class="ttdoc">Destructeur. </div><div class="ttdef"><b>Definition:</b> <a href="../../d7/d55/ControleurLumieres_8cpp_source.html#l00042">ControleurLumieres.cpp:42</a></div></div>
+<div class="ttc" id="classControleurLumieres_html_ad8658fa2f6358336dd149ffd45cb6fe9"><div class="ttname"><a href="../../d3/da5/classControleurLumieres.html#ad8658fa2f6358336dd149ffd45cb6fe9">ControleurLumieres::lumSpotB_</a></div><div class="ttdeci">Lumiere * lumSpotB_</div><div class="ttdef"><b>Definition:</b> <a href="../../dd/d4d/ControleurLumieres_8h_source.html#l00077">ControleurLumieres.h:77</a></div></div>
+<div class="ttc" id="classControleurLumieres_html_af8057bbba944f4376702c1c124d99145"><div class="ttname"><a href="../../d3/da5/classControleurLumieres.html#af8057bbba944f4376702c1c124d99145">ControleurLumieres::activerSpot</a></div><div class="ttdeci">void activerSpot()</div><div class="ttdoc">Activer la lumiere spot. </div><div class="ttdef"><b>Definition:</b> <a href="../../d7/d55/ControleurLumieres_8cpp_source.html#l00226">ControleurLumieres.cpp:226</a></div></div>
+<div class="ttc" id="classControleurLumieres_html_a32ce66fd2832da1232cc25ab3def8882"><div class="ttname"><a href="../../d3/da5/classControleurLumieres.html#a32ce66fd2832da1232cc25ab3def8882">ControleurLumieres::lumSpotA_</a></div><div class="ttdeci">Lumiere * lumSpotA_</div><div class="ttdoc">Objet pour la lumiere spot. </div><div class="ttdef"><b>Definition:</b> <a href="../../dd/d4d/ControleurLumieres_8h_source.html#l00076">ControleurLumieres.h:76</a></div></div>
+<div class="ttc" id="classControleurLumieres_html_a66cc5bfb73b70ac31931e7c2f5500007"><div class="ttname"><a href="../../d3/da5/classControleurLumieres.html#a66cc5bfb73b70ac31931e7c2f5500007">ControleurLumieres::operator=</a></div><div class="ttdeci">ControleurLumieres &amp; operator=(ControleurLumieres const &amp;)=delete</div><div class="ttdoc">Assignation par copie non-necessaire dans le contexte. </div></div>
+</div><!-- fragment --></div><!-- contents -->
+</div><!-- doc-content -->
+<!-- start footer part -->
+<div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
+  <ul>
+    <li class="navelem"><a class="el" href="../../dir_937900b87e0c7a5fa01190c395fb83f7.html">Sources</a></li><li class="navelem"><a class="el" href="../../dir_5638be7ced97c879b21b23536e800e77.html">DLL</a></li><li class="navelem"><a class="el" href="../../dir_e8539fdd1ef7831df447341c701486a6.html">Eclairage</a></li><li class="navelem"><a class="el" href="../../dd/d4d/ControleurLumieres_8h.html">ControleurLumieres.h</a></li>
+    <li class="footer">Généré le Lundi 13 Avril 2015 19:47:54 pour Pain Ball par
+    <a href="http://www.doxygen.org/index.html">
+    <img class="footer" src="../../doxygen.png" alt="doxygen"/></a> 1.8.9.1 </li>
+  </ul>
+</div>
+</body>
+</html>

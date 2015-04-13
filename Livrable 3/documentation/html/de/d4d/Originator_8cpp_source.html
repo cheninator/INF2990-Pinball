@@ -1,0 +1,302 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=9"/>
+<meta name="generator" content="Doxygen 1.8.9.1"/>
+<title>Pain Ball:  Fichier source de Sources/DLL/Memento/Originator.cpp</title>
+<link href="../../tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="../../jquery.js"></script>
+<script type="text/javascript" src="../../dynsections.js"></script>
+<link href="../../navtree.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="../../resize.js"></script>
+<script type="text/javascript" src="../../navtreedata.js"></script>
+<script type="text/javascript" src="../../navtree.js"></script>
+<script type="text/javascript">
+  $(document).ready(initResizable);
+  $(window).load(resizeHeight);
+</script>
+<link href="../../search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="../../search/searchdata.js"></script>
+<script type="text/javascript" src="../../search/search.js"></script>
+<script type="text/javascript">
+  $(document).ready(function() { init_search(); });
+</script>
+<link href="../../doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr style="height: 56px;">
+  <td id="projectlogo"><img alt="Logo" src="../../handy.jpg"/></td>
+  <td style="padding-left: 0.5em;">
+   <div id="projectname">Pain Ball
+   &#160;<span id="projectnumber">Livrable 3</span>
+   </div>
+   <div id="projectbrief">by The Ballers</div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- Généré par Doxygen 1.8.9.1 -->
+<script type="text/javascript">
+var searchBox = new SearchBox("searchBox", "../../search",false,'Recherche');
+</script>
+  <div id="navrow1" class="tabs">
+    <ul class="tablist">
+      <li><a href="../../index.html"><span>Page&#160;principale</span></a></li>
+      <li><a href="../../modules.html"><span>Modules</span></a></li>
+      <li><a href="../../namespaces.html"><span>Espaces&#160;de&#160;nommage</span></a></li>
+      <li><a href="../../annotated.html"><span>Classes</span></a></li>
+      <li class="current"><a href="../../files.html"><span>Fichiers</span></a></li>
+      <li>
+        <div id="MSearchBox" class="MSearchBoxInactive">
+        <span class="left">
+          <img id="MSearchSelect" src="../../search/mag_sel.png"
+               onmouseover="return searchBox.OnSearchSelectShow()"
+               onmouseout="return searchBox.OnSearchSelectHide()"
+               alt=""/>
+          <input type="text" id="MSearchField" value="Recherche" accesskey="S"
+               onfocus="searchBox.OnSearchFieldFocus(true)" 
+               onblur="searchBox.OnSearchFieldFocus(false)" 
+               onkeyup="searchBox.OnSearchFieldChange(event)"/>
+          </span><span class="right">
+            <a id="MSearchClose" href="javascript:searchBox.CloseResultsWindow()"><img id="MSearchCloseImg" border="0" src="../../search/close.png" alt=""/></a>
+          </span>
+        </div>
+      </li>
+    </ul>
+  </div>
+  <div id="navrow2" class="tabs2">
+    <ul class="tablist">
+      <li><a href="../../files.html"><span>Liste&#160;des&#160;fichiers</span></a></li>
+      <li><a href="../../globals.html"><span>Membres&#160;de&#160;fichier</span></a></li>
+    </ul>
+  </div>
+</div><!-- top -->
+<div id="side-nav" class="ui-resizable side-nav-resizable">
+  <div id="nav-tree">
+    <div id="nav-tree-contents">
+      <div id="nav-sync" class="sync"></div>
+    </div>
+  </div>
+  <div id="splitbar" style="-moz-user-select:none;" 
+       class="ui-resizable-handle">
+  </div>
+</div>
+<script type="text/javascript">
+$(document).ready(function(){initNavTree('de/d4d/Originator_8cpp_source.html','../../');});
+</script>
+<div id="doc-content">
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<iframe src="javascript:void(0)" frameborder="0" 
+        name="MSearchResults" id="MSearchResults">
+</iframe>
+</div>
+
+<div class="header">
+  <div class="headertitle">
+<div class="title">Originator.cpp</div>  </div>
+</div><!--header-->
+<div class="contents">
+<a href="../../de/d4d/Originator_8cpp.html">Aller à la documentation de ce fichier.</a><div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;</div>
+<div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="../../de/d7f/Originator_8h.html">Originator.h</a>&quot;</span></div>
+<div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;</div>
+<div class="line"><a name="l00022"></a><span class="lineno"><a class="line" href="../../d5/d94/classOriginator.html#a8f0760dd0c809ced78a5483f96020220">   22</a></span>&#160;<a class="code" href="../../d5/d94/classOriginator.html#a8f0760dd0c809ced78a5483f96020220">Originator::Originator</a>()</div>
+<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;{</div>
+<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;    <a class="code" href="../../d5/d94/classOriginator.html#a581abd19051e103e60ad6fb14e0a476e">historique_</a> = <span class="keyword">new</span> <a class="code" href="../../dd/de3/classCareTaker.html">CareTaker</a>();</div>
+<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;    <a class="code" href="../../d5/d94/classOriginator.html#ab9256e5e555677383d7a3052c8f0a599">position_</a> = 0;</div>
+<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;}</div>
+<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;</div>
+<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;</div>
+<div class="line"><a name="l00039"></a><span class="lineno"><a class="line" href="../../d5/d94/classOriginator.html#a9f9666b89828e8c1010db765975ab583">   39</a></span>&#160;<a class="code" href="../../d5/d94/classOriginator.html#a9f9666b89828e8c1010db765975ab583">Originator::~Originator</a>()</div>
+<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;{</div>
+<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;    <span class="keyword">delete</span> <a class="code" href="../../d5/d94/classOriginator.html#a581abd19051e103e60ad6fb14e0a476e">historique_</a>;</div>
+<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;</div>
+<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;    arbreActuel_ = <span class="keyword">nullptr</span>;</div>
+<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;    <a class="code" href="../../d5/d94/classOriginator.html#a581abd19051e103e60ad6fb14e0a476e">historique_</a> = <span class="keyword">nullptr</span>;</div>
+<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;}</div>
+<div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;</div>
+<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;</div>
+<div class="line"><a name="l00057"></a><span class="lineno"><a class="line" href="../../d5/d94/classOriginator.html#a40cbb69704024d2d553d8961b7324757">   57</a></span>&#160;<span class="keywordtype">void</span> <a class="code" href="../../d5/d94/classOriginator.html#a40cbb69704024d2d553d8961b7324757">Originator::annuler</a>()</div>
+<div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;{</div>
+<div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;    <span class="comment">// Ne rien faire lorsque qu&#39;il n&#39;y a pas eu de modification</span></div>
+<div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;    <span class="keywordflow">if</span> (<a class="code" href="../../d5/d94/classOriginator.html#ab9256e5e555677383d7a3052c8f0a599">position_</a> == 0)</div>
+<div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;        <span class="keywordflow">return</span>;</div>
+<div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;</div>
+<div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;    <span class="comment">// Ne rien faire lorsqu&#39;il n&#39;y a pas d&#39;historique</span></div>
+<div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;    <span class="keywordflow">if</span> (<a class="code" href="../../d5/d94/classOriginator.html#a581abd19051e103e60ad6fb14e0a476e">historique_</a>-&gt;<a class="code" href="../../dd/de3/classCareTaker.html#a294c888be3c1bf2546e008e45ba18419">size</a>() == 0)</div>
+<div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;        <span class="keywordflow">return</span>;</div>
+<div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160;</div>
+<div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160;    <span class="comment">// Tenter d&#39;obtenir l&#39;element de sauvegarde precedent</span></div>
+<div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160;    <span class="keywordflow">if</span> (<a class="code" href="../../d5/d94/classOriginator.html#a581abd19051e103e60ad6fb14e0a476e">historique_</a>-&gt;<a class="code" href="../../dd/de3/classCareTaker.html#a8468e954d6942a4b0c1103cce9f0b788">obtenirMemento</a>(<a class="code" href="../../d5/d94/classOriginator.html#ab9256e5e555677383d7a3052c8f0a599">position_</a> - 1) == <span class="keyword">nullptr</span>)</div>
+<div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160;        <span class="keywordflow">return</span>;</div>
+<div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160;</div>
+<div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160;    <span class="comment">// Obtenir la sauvegarde desiree</span></div>
+<div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160;    std::map&lt;int, NoeudAbstrait*&gt; sauvegarde;</div>
+<div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160;    sauvegarde = <a class="code" href="../../d5/d94/classOriginator.html#a581abd19051e103e60ad6fb14e0a476e">historique_</a>-&gt;<a class="code" href="../../dd/de3/classCareTaker.html#a8468e954d6942a4b0c1103cce9f0b788">obtenirMemento</a>(<a class="code" href="../../d5/d94/classOriginator.html#ab9256e5e555677383d7a3052c8f0a599">position_</a> - 1)-&gt;<a class="code" href="../../d2/dfd/classMemento.html#a8f27eec558dfb7d18d2940074468c3d3">obtenirSauvegarde</a>();</div>
+<div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160;</div>
+<div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160;    <span class="comment">// Appliquer les modifications a l&#39;arbre</span></div>
+<div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160;    <a class="code" href="../../d5/d94/classOriginator.html#abdaa19668d6f8ffb0908abede465e716">appliquerModifications</a>(sauvegarde);</div>
+<div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160;</div>
+<div class="line"><a name="l00078"></a><span class="lineno">   78</span>&#160;    <span class="comment">// Position courante dans l&#39;historique change</span></div>
+<div class="line"><a name="l00079"></a><span class="lineno">   79</span>&#160;    <a class="code" href="../../d5/d94/classOriginator.html#ab9256e5e555677383d7a3052c8f0a599">position_</a>--;</div>
+<div class="line"><a name="l00080"></a><span class="lineno">   80</span>&#160;}</div>
+<div class="line"><a name="l00081"></a><span class="lineno">   81</span>&#160;</div>
+<div class="line"><a name="l00082"></a><span class="lineno">   82</span>&#160;</div>
+<div class="line"><a name="l00092"></a><span class="lineno"><a class="line" href="../../d5/d94/classOriginator.html#aa3dfe7db6007d384b728bc15e231def9">   92</a></span>&#160;<span class="keywordtype">void</span> <a class="code" href="../../d5/d94/classOriginator.html#aa3dfe7db6007d384b728bc15e231def9">Originator::retablir</a>()</div>
+<div class="line"><a name="l00093"></a><span class="lineno">   93</span>&#160;{</div>
+<div class="line"><a name="l00094"></a><span class="lineno">   94</span>&#160;    <span class="comment">// Ne rien faire lorsqu&#39;il n&#39;y a pas eu d&#39;autres modifications</span></div>
+<div class="line"><a name="l00095"></a><span class="lineno">   95</span>&#160;    <span class="keywordflow">if</span> (<a class="code" href="../../d5/d94/classOriginator.html#ab9256e5e555677383d7a3052c8f0a599">position_</a> + 1 == <a class="code" href="../../d5/d94/classOriginator.html#a581abd19051e103e60ad6fb14e0a476e">historique_</a>-&gt;<a class="code" href="../../dd/de3/classCareTaker.html#a294c888be3c1bf2546e008e45ba18419">size</a>())</div>
+<div class="line"><a name="l00096"></a><span class="lineno">   96</span>&#160;        <span class="keywordflow">return</span>;</div>
+<div class="line"><a name="l00097"></a><span class="lineno">   97</span>&#160;</div>
+<div class="line"><a name="l00098"></a><span class="lineno">   98</span>&#160;    <span class="comment">// Ne rien faire lorsqu&#39;il n&#39;y a pas d&#39;historique</span></div>
+<div class="line"><a name="l00099"></a><span class="lineno">   99</span>&#160;    <span class="keywordflow">if</span> (<a class="code" href="../../d5/d94/classOriginator.html#a581abd19051e103e60ad6fb14e0a476e">historique_</a>-&gt;<a class="code" href="../../dd/de3/classCareTaker.html#a294c888be3c1bf2546e008e45ba18419">size</a>() == 0)</div>
+<div class="line"><a name="l00100"></a><span class="lineno">  100</span>&#160;        <span class="keywordflow">return</span>;</div>
+<div class="line"><a name="l00101"></a><span class="lineno">  101</span>&#160;</div>
+<div class="line"><a name="l00102"></a><span class="lineno">  102</span>&#160;    <span class="comment">// Tenter d&#39;obtenir l&#39;element de sauvegarde suivant</span></div>
+<div class="line"><a name="l00103"></a><span class="lineno">  103</span>&#160;    <span class="keywordflow">if</span> (<a class="code" href="../../d5/d94/classOriginator.html#a581abd19051e103e60ad6fb14e0a476e">historique_</a>-&gt;<a class="code" href="../../dd/de3/classCareTaker.html#a8468e954d6942a4b0c1103cce9f0b788">obtenirMemento</a>(<a class="code" href="../../d5/d94/classOriginator.html#ab9256e5e555677383d7a3052c8f0a599">position_</a> + 1) == <span class="keyword">nullptr</span>)</div>
+<div class="line"><a name="l00104"></a><span class="lineno">  104</span>&#160;        <span class="keywordflow">return</span>;</div>
+<div class="line"><a name="l00105"></a><span class="lineno">  105</span>&#160;    </div>
+<div class="line"><a name="l00106"></a><span class="lineno">  106</span>&#160;    <span class="comment">// Obtenir la sauvegarde desiree</span></div>
+<div class="line"><a name="l00107"></a><span class="lineno">  107</span>&#160;    std::map&lt;int, NoeudAbstrait*&gt; sauvegarde;</div>
+<div class="line"><a name="l00108"></a><span class="lineno">  108</span>&#160;    sauvegarde = <a class="code" href="../../d5/d94/classOriginator.html#a581abd19051e103e60ad6fb14e0a476e">historique_</a>-&gt;<a class="code" href="../../dd/de3/classCareTaker.html#a8468e954d6942a4b0c1103cce9f0b788">obtenirMemento</a>(<a class="code" href="../../d5/d94/classOriginator.html#ab9256e5e555677383d7a3052c8f0a599">position_</a> + 1)-&gt;<a class="code" href="../../d2/dfd/classMemento.html#a8f27eec558dfb7d18d2940074468c3d3">obtenirSauvegarde</a>();</div>
+<div class="line"><a name="l00109"></a><span class="lineno">  109</span>&#160;</div>
+<div class="line"><a name="l00110"></a><span class="lineno">  110</span>&#160;    <span class="comment">// Appliquer les modifications a l&#39;arbre</span></div>
+<div class="line"><a name="l00111"></a><span class="lineno">  111</span>&#160;    <a class="code" href="../../d5/d94/classOriginator.html#abdaa19668d6f8ffb0908abede465e716">appliquerModifications</a>(sauvegarde);</div>
+<div class="line"><a name="l00112"></a><span class="lineno">  112</span>&#160;</div>
+<div class="line"><a name="l00113"></a><span class="lineno">  113</span>&#160;    <span class="comment">// Position courante dans l&#39;historique change</span></div>
+<div class="line"><a name="l00114"></a><span class="lineno">  114</span>&#160;    <a class="code" href="../../d5/d94/classOriginator.html#ab9256e5e555677383d7a3052c8f0a599">position_</a>++;</div>
+<div class="line"><a name="l00115"></a><span class="lineno">  115</span>&#160;</div>
+<div class="line"><a name="l00116"></a><span class="lineno">  116</span>&#160;}</div>
+<div class="line"><a name="l00117"></a><span class="lineno">  117</span>&#160;</div>
+<div class="line"><a name="l00118"></a><span class="lineno">  118</span>&#160;</div>
+<div class="line"><a name="l00128"></a><span class="lineno"><a class="line" href="../../d5/d94/classOriginator.html#a48a6544916e0a7866e8fdd2540c83a94">  128</a></span>&#160;<span class="keywordtype">void</span> <a class="code" href="../../d5/d94/classOriginator.html#a48a6544916e0a7866e8fdd2540c83a94">Originator::sauvegarder</a>()</div>
+<div class="line"><a name="l00129"></a><span class="lineno">  129</span>&#160;{</div>
+<div class="line"><a name="l00130"></a><span class="lineno">  130</span>&#160;    <span class="comment">// La sauvegarde courante est deja la derniere sauvegarde</span></div>
+<div class="line"><a name="l00131"></a><span class="lineno">  131</span>&#160;    <span class="keywordflow">if</span> (<a class="code" href="../../d5/d94/classOriginator.html#ab9256e5e555677383d7a3052c8f0a599">position_</a> + 1 == <a class="code" href="../../d5/d94/classOriginator.html#a581abd19051e103e60ad6fb14e0a476e">historique_</a>-&gt;<a class="code" href="../../dd/de3/classCareTaker.html#a294c888be3c1bf2546e008e45ba18419">size</a>())</div>
+<div class="line"><a name="l00132"></a><span class="lineno">  132</span>&#160;    {</div>
+<div class="line"><a name="l00133"></a><span class="lineno">  133</span>&#160;        <a class="code" href="../../d5/d94/classOriginator.html#a581abd19051e103e60ad6fb14e0a476e">historique_</a>-&gt;<a class="code" href="../../dd/de3/classCareTaker.html#aade365fc8d05c1989008ce9263d81e87">ajouter</a>(<span class="keyword">new</span> <a class="code" href="../../d2/dfd/classMemento.html">Memento</a>(arbreActuel_));</div>
+<div class="line"><a name="l00134"></a><span class="lineno">  134</span>&#160;</div>
+<div class="line"><a name="l00135"></a><span class="lineno">  135</span>&#160;        <span class="comment">// Incrementer la position si seulement elle est inferieur a 10</span></div>
+<div class="line"><a name="l00136"></a><span class="lineno">  136</span>&#160;        <span class="keywordflow">if</span> ((<a class="code" href="../../d5/d94/classOriginator.html#ab9256e5e555677383d7a3052c8f0a599">position_</a> + 1 ) != <a class="code" href="../../d5/d94/classOriginator.html#a581abd19051e103e60ad6fb14e0a476e">historique_</a>-&gt;<a class="code" href="../../dd/de3/classCareTaker.html#a8b04ade3b8e1742a3f3d30e1e2e51bd1">obtenirTailleMaximale</a>())</div>
+<div class="line"><a name="l00137"></a><span class="lineno">  137</span>&#160;            <a class="code" href="../../d5/d94/classOriginator.html#ab9256e5e555677383d7a3052c8f0a599">position_</a>++;</div>
+<div class="line"><a name="l00138"></a><span class="lineno">  138</span>&#160;    }</div>
+<div class="line"><a name="l00139"></a><span class="lineno">  139</span>&#160;</div>
+<div class="line"><a name="l00140"></a><span class="lineno">  140</span>&#160;    <span class="comment">// 1ere sauvegarde</span></div>
+<div class="line"><a name="l00141"></a><span class="lineno">  141</span>&#160;    <span class="keywordflow">else</span> <span class="keywordflow">if</span> (<a class="code" href="../../d5/d94/classOriginator.html#ab9256e5e555677383d7a3052c8f0a599">position_</a> == 0 &amp;&amp; <a class="code" href="../../d5/d94/classOriginator.html#a581abd19051e103e60ad6fb14e0a476e">historique_</a>-&gt;<a class="code" href="../../dd/de3/classCareTaker.html#a294c888be3c1bf2546e008e45ba18419">size</a>() == 0)</div>
+<div class="line"><a name="l00142"></a><span class="lineno">  142</span>&#160;    {</div>
+<div class="line"><a name="l00143"></a><span class="lineno">  143</span>&#160;        <a class="code" href="../../d5/d94/classOriginator.html#a581abd19051e103e60ad6fb14e0a476e">historique_</a>-&gt;<a class="code" href="../../dd/de3/classCareTaker.html#aade365fc8d05c1989008ce9263d81e87">ajouter</a>(<span class="keyword">new</span> <a class="code" href="../../d2/dfd/classMemento.html">Memento</a>(arbreActuel_));</div>
+<div class="line"><a name="l00144"></a><span class="lineno">  144</span>&#160;    }</div>
+<div class="line"><a name="l00145"></a><span class="lineno">  145</span>&#160;</div>
+<div class="line"><a name="l00146"></a><span class="lineno">  146</span>&#160;    <span class="comment">// Ecraser les sauvegardes suivantes a partir du debut si l&#39;historique en contienait deja</span></div>
+<div class="line"><a name="l00147"></a><span class="lineno">  147</span>&#160;    <span class="keywordflow">else</span> <span class="keywordflow">if</span> (<a class="code" href="../../d5/d94/classOriginator.html#ab9256e5e555677383d7a3052c8f0a599">position_</a> == 0 &amp;&amp; <a class="code" href="../../d5/d94/classOriginator.html#a581abd19051e103e60ad6fb14e0a476e">historique_</a>-&gt;<a class="code" href="../../dd/de3/classCareTaker.html#a294c888be3c1bf2546e008e45ba18419">size</a>() != 0)</div>
+<div class="line"><a name="l00148"></a><span class="lineno">  148</span>&#160;    {</div>
+<div class="line"><a name="l00149"></a><span class="lineno">  149</span>&#160;        <a class="code" href="../../d5/d94/classOriginator.html#a581abd19051e103e60ad6fb14e0a476e">historique_</a>-&gt;<a class="code" href="../../dd/de3/classCareTaker.html#ac30b37c3d0afe80df661ca672e5a26b5">ecraser</a>(<a class="code" href="../../d5/d94/classOriginator.html#ab9256e5e555677383d7a3052c8f0a599">position_</a>);</div>
+<div class="line"><a name="l00150"></a><span class="lineno">  150</span>&#160;        <a class="code" href="../../d5/d94/classOriginator.html#a581abd19051e103e60ad6fb14e0a476e">historique_</a>-&gt;<a class="code" href="../../dd/de3/classCareTaker.html#aade365fc8d05c1989008ce9263d81e87">ajouter</a>(<span class="keyword">new</span> <a class="code" href="../../d2/dfd/classMemento.html">Memento</a>(arbreActuel_));</div>
+<div class="line"><a name="l00151"></a><span class="lineno">  151</span>&#160;        <a class="code" href="../../d5/d94/classOriginator.html#ab9256e5e555677383d7a3052c8f0a599">position_</a>++;</div>
+<div class="line"><a name="l00152"></a><span class="lineno">  152</span>&#160;    }</div>
+<div class="line"><a name="l00153"></a><span class="lineno">  153</span>&#160;</div>
+<div class="line"><a name="l00154"></a><span class="lineno">  154</span>&#160;    <span class="comment">// Ecraser les sauvegardes suivantes a partir d&#39;une certaine position si l&#39;historique en contienait deja</span></div>
+<div class="line"><a name="l00155"></a><span class="lineno">  155</span>&#160;    <span class="keywordflow">else</span> <span class="keywordflow">if</span> (position_ &lt; historique_-&gt;size())</div>
+<div class="line"><a name="l00156"></a><span class="lineno">  156</span>&#160;    {</div>
+<div class="line"><a name="l00157"></a><span class="lineno">  157</span>&#160;        <a class="code" href="../../d5/d94/classOriginator.html#a581abd19051e103e60ad6fb14e0a476e">historique_</a>-&gt;<a class="code" href="../../dd/de3/classCareTaker.html#ac30b37c3d0afe80df661ca672e5a26b5">ecraser</a>(<a class="code" href="../../d5/d94/classOriginator.html#ab9256e5e555677383d7a3052c8f0a599">position_</a>);</div>
+<div class="line"><a name="l00158"></a><span class="lineno">  158</span>&#160;        <a class="code" href="../../d5/d94/classOriginator.html#a581abd19051e103e60ad6fb14e0a476e">historique_</a>-&gt;<a class="code" href="../../dd/de3/classCareTaker.html#aade365fc8d05c1989008ce9263d81e87">ajouter</a>(<span class="keyword">new</span> <a class="code" href="../../d2/dfd/classMemento.html">Memento</a>(arbreActuel_));</div>
+<div class="line"><a name="l00159"></a><span class="lineno">  159</span>&#160;        <a class="code" href="../../d5/d94/classOriginator.html#ab9256e5e555677383d7a3052c8f0a599">position_</a>++;</div>
+<div class="line"><a name="l00160"></a><span class="lineno">  160</span>&#160;    }</div>
+<div class="line"><a name="l00161"></a><span class="lineno">  161</span>&#160;    </div>
+<div class="line"><a name="l00162"></a><span class="lineno">  162</span>&#160;}</div>
+<div class="line"><a name="l00163"></a><span class="lineno">  163</span>&#160;</div>
+<div class="line"><a name="l00164"></a><span class="lineno">  164</span>&#160;</div>
+<div class="line"><a name="l00174"></a><span class="lineno"><a class="line" href="../../d5/d94/classOriginator.html#a3ea2bfdd13553d72b3e31df3d577200d">  174</a></span>&#160;<span class="keywordtype">void</span> <a class="code" href="../../d5/d94/classOriginator.html#a3ea2bfdd13553d72b3e31df3d577200d">Originator::viderHistorique</a>()</div>
+<div class="line"><a name="l00175"></a><span class="lineno">  175</span>&#160;{</div>
+<div class="line"><a name="l00176"></a><span class="lineno">  176</span>&#160;    <a class="code" href="../../d5/d94/classOriginator.html#a581abd19051e103e60ad6fb14e0a476e">historique_</a>-&gt;<a class="code" href="../../dd/de3/classCareTaker.html#adba62622660e5c3d85cd914b4daa40f8">vider</a>();</div>
+<div class="line"><a name="l00177"></a><span class="lineno">  177</span>&#160;}</div>
+<div class="line"><a name="l00178"></a><span class="lineno">  178</span>&#160;</div>
+<div class="line"><a name="l00179"></a><span class="lineno">  179</span>&#160;</div>
+<div class="line"><a name="l00189"></a><span class="lineno"><a class="line" href="../../d5/d94/classOriginator.html#abdaa19668d6f8ffb0908abede465e716">  189</a></span>&#160;<span class="keywordtype">void</span> <a class="code" href="../../d5/d94/classOriginator.html#abdaa19668d6f8ffb0908abede465e716">Originator::appliquerModifications</a>(std::map&lt;int, NoeudAbstrait*&gt; sauvegarde)</div>
+<div class="line"><a name="l00190"></a><span class="lineno">  190</span>&#160;{</div>
+<div class="line"><a name="l00191"></a><span class="lineno">  191</span>&#160;    std::map&lt;int, NoeudAbstrait*&gt;::iterator iter;</div>
+<div class="line"><a name="l00192"></a><span class="lineno">  192</span>&#160;</div>
+<div class="line"><a name="l00193"></a><span class="lineno">  193</span>&#160;    <span class="comment">// Vider l&#39;ancien arbre</span></div>
+<div class="line"><a name="l00194"></a><span class="lineno">  194</span>&#160;    arbreActuel_-&gt;getEnfant(0)-&gt;vider();</div>
+<div class="line"><a name="l00195"></a><span class="lineno">  195</span>&#160;</div>
+<div class="line"><a name="l00196"></a><span class="lineno">  196</span>&#160;    <a class="code" href="../../d7/d8e/classNoeudAbstrait.html#a69b8e860ab0d49b30a5bde60e6c1c8fd">NoeudAbstrait::changerNumero</a>(0);</div>
+<div class="line"><a name="l00197"></a><span class="lineno">  197</span>&#160;</div>
+<div class="line"><a name="l00198"></a><span class="lineno">  198</span>&#160;    <span class="comment">// Modifier l&#39;arbre courant avec les informations de sauvegarde</span></div>
+<div class="line"><a name="l00199"></a><span class="lineno">  199</span>&#160;    <span class="keywordflow">for</span> (iter = sauvegarde.begin(); iter != sauvegarde.end(); ++iter)</div>
+<div class="line"><a name="l00200"></a><span class="lineno">  200</span>&#160;    {</div>
+<div class="line"><a name="l00201"></a><span class="lineno">  201</span>&#160;        <a class="code" href="../../d7/d8e/classNoeudAbstrait.html">NoeudAbstrait</a>* noeud{ arbreActuel_-&gt;creerNoeud(iter-&gt;second-&gt;obtenirType())};</div>
+<div class="line"><a name="l00202"></a><span class="lineno">  202</span>&#160;</div>
+<div class="line"><a name="l00203"></a><span class="lineno">  203</span>&#160;        noeud-&gt;<a class="code" href="../../d7/d8e/classNoeudAbstrait.html#a11e12e42b05a5327c92cd7fd1b7e5a24">assignerPositionRelative</a>(iter-&gt;second-&gt;obtenirPositionRelative());</div>
+<div class="line"><a name="l00204"></a><span class="lineno">  204</span>&#160;        noeud-&gt;assignerEchelle(iter-&gt;second-&gt;obtenirAgrandissement());</div>
+<div class="line"><a name="l00205"></a><span class="lineno">  205</span>&#160;        noeud-&gt;assignerRotation(iter-&gt;second-&gt;obtenirRotation());</div>
+<div class="line"><a name="l00206"></a><span class="lineno">  206</span>&#160;        noeud-&gt;setColorShift(iter-&gt;second-&gt;getColorShift());</div>
+<div class="line"><a name="l00207"></a><span class="lineno">  207</span>&#160;        noeud-&gt;assignerSelection(iter-&gt;second-&gt;estSelectionne());</div>
+<div class="line"><a name="l00208"></a><span class="lineno">  208</span>&#160;</div>
+<div class="line"><a name="l00209"></a><span class="lineno">  209</span>&#160;        arbreActuel_-&gt;getEnfant(0)-&gt;ajouter(noeud);</div>
+<div class="line"><a name="l00210"></a><span class="lineno">  210</span>&#160;</div>
+<div class="line"><a name="l00211"></a><span class="lineno">  211</span>&#160;        <span class="keywordflow">if</span> (noeud-&gt;obtenirType() == <span class="stringliteral">&quot;portail&quot;</span>)</div>
+<div class="line"><a name="l00212"></a><span class="lineno">  212</span>&#160;        {</div>
+<div class="line"><a name="l00213"></a><span class="lineno">  213</span>&#160;            <span class="comment">// Nombre actuel d&#39;enfants de la table</span></div>
+<div class="line"><a name="l00214"></a><span class="lineno">  214</span>&#160;            <span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> enfantsTable = arbreActuel_-&gt;getEnfant(0)-&gt;obtenirNombreEnfants();</div>
+<div class="line"><a name="l00215"></a><span class="lineno">  215</span>&#160;</div>
+<div class="line"><a name="l00216"></a><span class="lineno">  216</span>&#160;            <span class="comment">// Interroger l&#39;enfant au dessus de lui</span></div>
+<div class="line"><a name="l00217"></a><span class="lineno">  217</span>&#160;            <span class="keywordflow">if</span> (arbreActuel_-&gt;getEnfant(0)-&gt;chercher(enfantsTable - 2)-&gt;obtenirType() == <span class="stringliteral">&quot;portail&quot;</span></div>
+<div class="line"><a name="l00218"></a><span class="lineno">  218</span>&#160;                &amp;&amp; arbreActuel_-&gt;getEnfant(0)-&gt;chercher(enfantsTable - 2)-&gt;getTwin() == <span class="keyword">nullptr</span>)</div>
+<div class="line"><a name="l00219"></a><span class="lineno">  219</span>&#160;            {</div>
+<div class="line"><a name="l00220"></a><span class="lineno">  220</span>&#160;                <span class="comment">// Si c&#39;est un portail et qu&#39;il n&#39;est pas relie, les relier tous les deux</span></div>
+<div class="line"><a name="l00221"></a><span class="lineno">  221</span>&#160;                noeud-&gt;setTwin(arbreActuel_-&gt;getEnfant(0)-&gt;chercher(enfantsTable - 2));</div>
+<div class="line"><a name="l00222"></a><span class="lineno">  222</span>&#160;                arbreActuel_-&gt;getEnfant(0)-&gt;chercher(enfantsTable - 2)-&gt;setTwin(noeud);</div>
+<div class="line"><a name="l00223"></a><span class="lineno">  223</span>&#160;            }</div>
+<div class="line"><a name="l00224"></a><span class="lineno">  224</span>&#160;        }</div>
+<div class="line"><a name="l00225"></a><span class="lineno">  225</span>&#160;    }</div>
+<div class="line"><a name="l00226"></a><span class="lineno">  226</span>&#160;</div>
+<div class="line"><a name="l00227"></a><span class="lineno">  227</span>&#160;}</div>
+<div class="ttc" id="classCareTaker_html_aade365fc8d05c1989008ce9263d81e87"><div class="ttname"><a href="../../dd/de3/classCareTaker.html#aade365fc8d05c1989008ce9263d81e87">CareTaker::ajouter</a></div><div class="ttdeci">void ajouter(Memento *memento)</div><div class="ttdoc">Ajouter une sauvegarde dans l&#39;historique. </div><div class="ttdef"><b>Definition:</b> <a href="../../d1/d2a/CareTaker_8cpp_source.html#l00054">CareTaker.cpp:54</a></div></div>
+<div class="ttc" id="classCareTaker_html_ac30b37c3d0afe80df661ca672e5a26b5"><div class="ttname"><a href="../../dd/de3/classCareTaker.html#ac30b37c3d0afe80df661ca672e5a26b5">CareTaker::ecraser</a></div><div class="ttdeci">void ecraser(int index)</div><div class="ttdoc">Ecrase les sauvegarde anterieurs a partir d&#39;un index. </div><div class="ttdef"><b>Definition:</b> <a href="../../d1/d2a/CareTaker_8cpp_source.html#l00082">CareTaker.cpp:82</a></div></div>
+<div class="ttc" id="Originator_8h_html"><div class="ttname"><a href="../../de/d7f/Originator_8h.html">Originator.h</a></div></div>
+<div class="ttc" id="classMemento_html"><div class="ttname"><a href="../../d2/dfd/classMemento.html">Memento</a></div><div class="ttdoc">Structure de donnee qui contient les informations utiles pour sauvegarder l&#39;arbre. </div><div class="ttdef"><b>Definition:</b> <a href="../../d5/d61/Memento_8h_source.html#l00024">Memento.h:24</a></div></div>
+<div class="ttc" id="classOriginator_html_a40cbb69704024d2d553d8961b7324757"><div class="ttname"><a href="../../d5/d94/classOriginator.html#a40cbb69704024d2d553d8961b7324757">Originator::annuler</a></div><div class="ttdeci">void annuler()</div><div class="ttdoc">Operation annuler. </div><div class="ttdef"><b>Definition:</b> <a href="../../de/d4d/Originator_8cpp_source.html#l00057">Originator.cpp:57</a></div></div>
+<div class="ttc" id="classOriginator_html_ab9256e5e555677383d7a3052c8f0a599"><div class="ttname"><a href="../../d5/d94/classOriginator.html#ab9256e5e555677383d7a3052c8f0a599">Originator::position_</a></div><div class="ttdeci">int position_</div><div class="ttdoc">Position courrante. </div><div class="ttdef"><b>Definition:</b> <a href="../../de/d7f/Originator_8h_source.html#l00073">Originator.h:73</a></div></div>
+<div class="ttc" id="classCareTaker_html_adba62622660e5c3d85cd914b4daa40f8"><div class="ttname"><a href="../../dd/de3/classCareTaker.html#adba62622660e5c3d85cd914b4daa40f8">CareTaker::vider</a></div><div class="ttdeci">void vider()</div><div class="ttdoc">Vider l&#39;historique. </div><div class="ttdef"><b>Definition:</b> <a href="../../d1/d2a/CareTaker_8cpp_source.html#l00108">CareTaker.cpp:108</a></div></div>
+<div class="ttc" id="classCareTaker_html_a294c888be3c1bf2546e008e45ba18419"><div class="ttname"><a href="../../dd/de3/classCareTaker.html#a294c888be3c1bf2546e008e45ba18419">CareTaker::size</a></div><div class="ttdeci">int size() const </div><div class="ttdoc">La taille actuelle. </div><div class="ttdef"><b>Definition:</b> <a href="../../df/d23/CareTaker_8h_source.html#l00051">CareTaker.h:51</a></div></div>
+<div class="ttc" id="classOriginator_html_aa3dfe7db6007d384b728bc15e231def9"><div class="ttname"><a href="../../d5/d94/classOriginator.html#aa3dfe7db6007d384b728bc15e231def9">Originator::retablir</a></div><div class="ttdeci">void retablir()</div><div class="ttdoc">Operation retablir. </div><div class="ttdef"><b>Definition:</b> <a href="../../de/d4d/Originator_8cpp_source.html#l00092">Originator.cpp:92</a></div></div>
+<div class="ttc" id="classNoeudAbstrait_html_a11e12e42b05a5327c92cd7fd1b7e5a24"><div class="ttname"><a href="../../d7/d8e/classNoeudAbstrait.html#a11e12e42b05a5327c92cd7fd1b7e5a24">NoeudAbstrait::assignerPositionRelative</a></div><div class="ttdeci">void assignerPositionRelative(const glm::dvec3 &amp;positionRelative)</div><div class="ttdoc">Assigne la position relative du noeud. </div><div class="ttdef"><b>Definition:</b> <a href="../../d1/d0f/NoeudAbstrait_8h_source.html#l00465">NoeudAbstrait.h:465</a></div></div>
+<div class="ttc" id="classOriginator_html_abdaa19668d6f8ffb0908abede465e716"><div class="ttname"><a href="../../d5/d94/classOriginator.html#abdaa19668d6f8ffb0908abede465e716">Originator::appliquerModifications</a></div><div class="ttdeci">void appliquerModifications(std::map&lt; int, NoeudAbstrait * &gt; sauvegarde)</div><div class="ttdoc">Appliquer les modifications � l&#39;arbre de rendu a partir de la sauvegarde. </div><div class="ttdef"><b>Definition:</b> <a href="../../de/d4d/Originator_8cpp_source.html#l00189">Originator.cpp:189</a></div></div>
+<div class="ttc" id="classOriginator_html_a48a6544916e0a7866e8fdd2540c83a94"><div class="ttname"><a href="../../d5/d94/classOriginator.html#a48a6544916e0a7866e8fdd2540c83a94">Originator::sauvegarder</a></div><div class="ttdeci">void sauvegarder()</div><div class="ttdoc">Sauvegarder l&#39;arbre dans un memento. </div><div class="ttdef"><b>Definition:</b> <a href="../../de/d4d/Originator_8cpp_source.html#l00128">Originator.cpp:128</a></div></div>
+<div class="ttc" id="classNoeudAbstrait_html"><div class="ttname"><a href="../../d7/d8e/classNoeudAbstrait.html">NoeudAbstrait</a></div><div class="ttdoc">Classe de base du patron composite utilisee pour creer l&#39;arbre de rendu. </div><div class="ttdef"><b>Definition:</b> <a href="../../d1/d0f/NoeudAbstrait_8h_source.html#l00055">NoeudAbstrait.h:55</a></div></div>
+<div class="ttc" id="classOriginator_html_a9f9666b89828e8c1010db765975ab583"><div class="ttname"><a href="../../d5/d94/classOriginator.html#a9f9666b89828e8c1010db765975ab583">Originator::~Originator</a></div><div class="ttdeci">~Originator()</div><div class="ttdoc">Destructeur. </div><div class="ttdef"><b>Definition:</b> <a href="../../de/d4d/Originator_8cpp_source.html#l00039">Originator.cpp:39</a></div></div>
+<div class="ttc" id="classMemento_html_a8f27eec558dfb7d18d2940074468c3d3"><div class="ttname"><a href="../../d2/dfd/classMemento.html#a8f27eec558dfb7d18d2940074468c3d3">Memento::obtenirSauvegarde</a></div><div class="ttdeci">std::map&lt; int, NoeudAbstrait * &gt; obtenirSauvegarde() const </div><div class="ttdoc">Obtenir la sauvegarde. </div><div class="ttdef"><b>Definition:</b> <a href="../../d5/d61/Memento_8h_source.html#l00036">Memento.h:36</a></div></div>
+<div class="ttc" id="classOriginator_html_a581abd19051e103e60ad6fb14e0a476e"><div class="ttname"><a href="../../d5/d94/classOriginator.html#a581abd19051e103e60ad6fb14e0a476e">Originator::historique_</a></div><div class="ttdeci">CareTaker * historique_</div><div class="ttdoc">Contient l&#39;historique des etats. </div><div class="ttdef"><b>Definition:</b> <a href="../../de/d7f/Originator_8h_source.html#l00070">Originator.h:70</a></div></div>
+<div class="ttc" id="classOriginator_html_a8f0760dd0c809ced78a5483f96020220"><div class="ttname"><a href="../../d5/d94/classOriginator.html#a8f0760dd0c809ced78a5483f96020220">Originator::Originator</a></div><div class="ttdeci">Originator()</div><div class="ttdoc">Constructeur. </div><div class="ttdef"><b>Definition:</b> <a href="../../de/d4d/Originator_8cpp_source.html#l00022">Originator.cpp:22</a></div></div>
+<div class="ttc" id="classNoeudAbstrait_html_a69b8e860ab0d49b30a5bde60e6c1c8fd"><div class="ttname"><a href="../../d7/d8e/classNoeudAbstrait.html#a69b8e860ab0d49b30a5bde60e6c1c8fd">NoeudAbstrait::changerNumero</a></div><div class="ttdeci">static void changerNumero(int numero)</div><div class="ttdoc">Forcer le compteur a prendre une certaine valeur. </div><div class="ttdef"><b>Definition:</b> <a href="../../d1/d0f/NoeudAbstrait_8h_source.html#l00180">NoeudAbstrait.h:180</a></div></div>
+<div class="ttc" id="classCareTaker_html_a8b04ade3b8e1742a3f3d30e1e2e51bd1"><div class="ttname"><a href="../../dd/de3/classCareTaker.html#a8b04ade3b8e1742a3f3d30e1e2e51bd1">CareTaker::obtenirTailleMaximale</a></div><div class="ttdeci">int obtenirTailleMaximale() const </div><div class="ttdoc">Obtenir la taille maximale. </div><div class="ttdef"><b>Definition:</b> <a href="../../df/d23/CareTaker_8h_source.html#l00054">CareTaker.h:54</a></div></div>
+<div class="ttc" id="classCareTaker_html"><div class="ttname"><a href="../../dd/de3/classCareTaker.html">CareTaker</a></div><div class="ttdoc">Structure de donnee qui contient des Memento. Offre des interfaces utiles. </div><div class="ttdef"><b>Definition:</b> <a href="../../df/d23/CareTaker_8h_source.html#l00024">CareTaker.h:24</a></div></div>
+<div class="ttc" id="classOriginator_html_a3ea2bfdd13553d72b3e31df3d577200d"><div class="ttname"><a href="../../d5/d94/classOriginator.html#a3ea2bfdd13553d72b3e31df3d577200d">Originator::viderHistorique</a></div><div class="ttdeci">void viderHistorique()</div><div class="ttdoc">Vider l&#39;historique des modifications. </div><div class="ttdef"><b>Definition:</b> <a href="../../de/d4d/Originator_8cpp_source.html#l00174">Originator.cpp:174</a></div></div>
+<div class="ttc" id="classCareTaker_html_a8468e954d6942a4b0c1103cce9f0b788"><div class="ttname"><a href="../../dd/de3/classCareTaker.html#a8468e954d6942a4b0c1103cce9f0b788">CareTaker::obtenirMemento</a></div><div class="ttdeci">Memento * obtenirMemento(int index)</div><div class="ttdoc">Obtenir une certaine sauvegarde. </div><div class="ttdef"><b>Definition:</b> <a href="../../d1/d2a/CareTaker_8cpp_source.html#l00125">CareTaker.cpp:125</a></div></div>
+</div><!-- fragment --></div><!-- contents -->
+</div><!-- doc-content -->
+<!-- start footer part -->
+<div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
+  <ul>
+    <li class="navelem"><a class="el" href="../../dir_937900b87e0c7a5fa01190c395fb83f7.html">Sources</a></li><li class="navelem"><a class="el" href="../../dir_5638be7ced97c879b21b23536e800e77.html">DLL</a></li><li class="navelem"><a class="el" href="../../dir_1f9ecdc172d1f7e6fe207d5eb4f8db61.html">Memento</a></li><li class="navelem"><a class="el" href="../../de/d4d/Originator_8cpp.html">Originator.cpp</a></li>
+    <li class="footer">Généré le Lundi 13 Avril 2015 19:47:54 pour Pain Ball par
+    <a href="http://www.doxygen.org/index.html">
+    <img class="footer" src="../../doxygen.png" alt="doxygen"/></a> 1.8.9.1 </li>
+  </ul>
+</div>
+</body>
+</html>

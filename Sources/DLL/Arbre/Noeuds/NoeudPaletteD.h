@@ -55,7 +55,7 @@ public:
 	/// Obtenir l'angle initial de la palette
 	double obtenirAngleZOriginal() const { return angleZOriginal_; };
 
-	/// Savoir si la palette est activée par une bille
+	/// Savoir si la palette est activee par une bille
 	bool estActiveeParBille(NoeudAbstrait* noeud);
 
 	/// Obtenir la  boite englobante custom.

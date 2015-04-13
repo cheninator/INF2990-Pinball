@@ -69,7 +69,7 @@ public:
    /// Obtenir le nombre de noeuds selectionne
    int obtenirNombreSelectionne() const;
 
-   /// Obtenir les éléments de la table
+   /// Obtenir les elements de la table
    std::vector<NoeudAbstrait*> obtenirElementsTable();
 
    // /// Permet de savoir si l'arbre est la zone de jeu par defaut

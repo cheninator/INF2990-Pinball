@@ -1,0 +1,228 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=9"/>
+<meta name="generator" content="Doxygen 1.8.9.1"/>
+<title>Pain Ball:  Fichier source de Sources/InterfaceGraphique/Fenetres/ZoneInfo.cs</title>
+<link href="../../tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="../../jquery.js"></script>
+<script type="text/javascript" src="../../dynsections.js"></script>
+<link href="../../navtree.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="../../resize.js"></script>
+<script type="text/javascript" src="../../navtreedata.js"></script>
+<script type="text/javascript" src="../../navtree.js"></script>
+<script type="text/javascript">
+  $(document).ready(initResizable);
+  $(window).load(resizeHeight);
+</script>
+<link href="../../search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="../../search/searchdata.js"></script>
+<script type="text/javascript" src="../../search/search.js"></script>
+<script type="text/javascript">
+  $(document).ready(function() { init_search(); });
+</script>
+<link href="../../doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr style="height: 56px;">
+  <td id="projectlogo"><img alt="Logo" src="../../handy.jpg"/></td>
+  <td style="padding-left: 0.5em;">
+   <div id="projectname">Pain Ball
+   &#160;<span id="projectnumber">Livrable 3</span>
+   </div>
+   <div id="projectbrief">by The Ballers</div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- Généré par Doxygen 1.8.9.1 -->
+<script type="text/javascript">
+var searchBox = new SearchBox("searchBox", "../../search",false,'Recherche');
+</script>
+  <div id="navrow1" class="tabs">
+    <ul class="tablist">
+      <li><a href="../../index.html"><span>Page&#160;principale</span></a></li>
+      <li><a href="../../modules.html"><span>Modules</span></a></li>
+      <li><a href="../../namespaces.html"><span>Espaces&#160;de&#160;nommage</span></a></li>
+      <li><a href="../../annotated.html"><span>Classes</span></a></li>
+      <li class="current"><a href="../../files.html"><span>Fichiers</span></a></li>
+      <li>
+        <div id="MSearchBox" class="MSearchBoxInactive">
+        <span class="left">
+          <img id="MSearchSelect" src="../../search/mag_sel.png"
+               onmouseover="return searchBox.OnSearchSelectShow()"
+               onmouseout="return searchBox.OnSearchSelectHide()"
+               alt=""/>
+          <input type="text" id="MSearchField" value="Recherche" accesskey="S"
+               onfocus="searchBox.OnSearchFieldFocus(true)" 
+               onblur="searchBox.OnSearchFieldFocus(false)" 
+               onkeyup="searchBox.OnSearchFieldChange(event)"/>
+          </span><span class="right">
+            <a id="MSearchClose" href="javascript:searchBox.CloseResultsWindow()"><img id="MSearchCloseImg" border="0" src="../../search/close.png" alt=""/></a>
+          </span>
+        </div>
+      </li>
+    </ul>
+  </div>
+  <div id="navrow2" class="tabs2">
+    <ul class="tablist">
+      <li><a href="../../files.html"><span>Liste&#160;des&#160;fichiers</span></a></li>
+      <li><a href="../../globals.html"><span>Membres&#160;de&#160;fichier</span></a></li>
+    </ul>
+  </div>
+</div><!-- top -->
+<div id="side-nav" class="ui-resizable side-nav-resizable">
+  <div id="nav-tree">
+    <div id="nav-tree-contents">
+      <div id="nav-sync" class="sync"></div>
+    </div>
+  </div>
+  <div id="splitbar" style="-moz-user-select:none;" 
+       class="ui-resizable-handle">
+  </div>
+</div>
+<script type="text/javascript">
+$(document).ready(function(){initNavTree('db/ddf/ZoneInfo_8cs_source.html','../../');});
+</script>
+<div id="doc-content">
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<iframe src="javascript:void(0)" frameborder="0" 
+        name="MSearchResults" id="MSearchResults">
+</iframe>
+</div>
+
+<div class="header">
+  <div class="headertitle">
+<div class="title">ZoneInfo.cs</div>  </div>
+</div><!--header-->
+<div class="contents">
+<a href="../../db/ddf/ZoneInfo_8cs.html">Aller à la documentation de ce fichier.</a><div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;</div>
+<div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160;<span class="keyword">using</span> <a class="code" href="../../d6/d27/namespaceSystem.html">System</a>;</div>
+<div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;<span class="keyword">using</span> <a class="code" href="../../d6/d27/namespaceSystem.html">System</a>.Collections.Generic;</div>
+<div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;<span class="keyword">using</span> <a class="code" href="../../d6/d27/namespaceSystem.html">System</a>.ComponentModel;</div>
+<div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;<span class="keyword">using</span> <a class="code" href="../../d6/d27/namespaceSystem.html">System</a>.Data;</div>
+<div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;<span class="keyword">using</span> <a class="code" href="../../d6/d27/namespaceSystem.html">System</a>.Drawing;</div>
+<div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;<span class="keyword">using</span> <a class="code" href="../../d6/d27/namespaceSystem.html">System</a>.Linq;</div>
+<div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;<span class="keyword">using</span> <a class="code" href="../../d6/d27/namespaceSystem.html">System</a>.Runtime.InteropServices;</div>
+<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;<span class="keyword">using</span> <a class="code" href="../../d6/d27/namespaceSystem.html">System</a>.Text;</div>
+<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;<span class="keyword">using</span> <a class="code" href="../../d6/d27/namespaceSystem.html">System</a>.Threading.Tasks;</div>
+<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;<span class="keyword">using</span> <a class="code" href="../../d6/d27/namespaceSystem.html">System</a>.Windows.Forms;</div>
+<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;</div>
+<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;<span class="keyword">namespace </span><a class="code" href="../../d1/d3b/namespaceInterfaceGraphique.html">InterfaceGraphique</a></div>
+<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;{</div>
+<div class="line"><a name="l00032"></a><span class="lineno"><a class="line" href="../../df/da3/classInterfaceGraphique_1_1ZoneInfo.html">   32</a></span>&#160;    <span class="keyword">public</span> <span class="keyword">partial class </span><a class="code" href="../../df/da3/classInterfaceGraphique_1_1ZoneInfo.html">ZoneInfo</a> : Form</div>
+<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;    {</div>
+<div class="line"><a name="l00034"></a><span class="lineno"><a class="line" href="../../df/da3/classInterfaceGraphique_1_1ZoneInfo.html#a134e332ca968713ff8d5428f7b34b234">   34</a></span>&#160;        <span class="keywordtype">int</span> <a class="code" href="../../df/da3/classInterfaceGraphique_1_1ZoneInfo.html#a134e332ca968713ff8d5428f7b34b234">time</a>;</div>
+<div class="line"><a name="l00035"></a><span class="lineno"><a class="line" href="../../df/da3/classInterfaceGraphique_1_1ZoneInfo.html#a473c772bc67a092948334920898a5b8d">   35</a></span>&#160;        <span class="keywordtype">int</span>[] <a class="code" href="../../df/da3/classInterfaceGraphique_1_1ZoneInfo.html#a473c772bc67a092948334920898a5b8d">proprietes</a> = <span class="keyword">new</span> <span class="keywordtype">int</span>[5];</div>
+<div class="line"><a name="l00036"></a><span class="lineno"><a class="line" href="../../df/da3/classInterfaceGraphique_1_1ZoneInfo.html#a513f36de12045d99bfcddca5855657c3">   36</a></span>&#160;        StringBuilder <a class="code" href="../../df/da3/classInterfaceGraphique_1_1ZoneInfo.html#a513f36de12045d99bfcddca5855657c3">winSound</a> = <span class="keyword">new</span> StringBuilder(<span class="stringliteral">&quot;campagneWin&quot;</span>);</div>
+<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;</div>
+<div class="line"><a name="l00048"></a><span class="lineno"><a class="line" href="../../df/da3/classInterfaceGraphique_1_1ZoneInfo.html#a5dcf895a775a6d8b967654ed9a41b94d">   48</a></span>&#160;        <span class="keyword">public</span> <a class="code" href="../../df/da3/classInterfaceGraphique_1_1ZoneInfo.html#a5dcf895a775a6d8b967654ed9a41b94d">ZoneInfo</a>(<span class="keywordtype">string</span> nomZone, <span class="keywordtype">string</span> difficulte, <span class="keywordtype">bool</span> win)</div>
+<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;        {</div>
+<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;            <a class="code" href="../../df/da3/classInterfaceGraphique_1_1ZoneInfo.html#a3bb6bc82ce99c0b366d9c007ca9a228f">InitializeComponent</a>();</div>
+<div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;            this.Icon = Properties.Resources.Pinball;</div>
+<div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;            this.WindowState = FormWindowState.Normal;</div>
+<div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;            this.FormBorderStyle = FormBorderStyle.None;</div>
+<div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;            StringBuilder zoneProps = <span class="keyword">new</span> StringBuilder(Application.StartupPath + <span class="stringliteral">@&quot;\zones\&quot;</span> + nomZone + <span class="stringliteral">&quot;.xml&quot;</span>);</div>
+<div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;            IntPtr config = <a class="code" href="../../dc/d2e/classInterfaceGraphique_1_1FonctionsNatives.html">FonctionsNatives</a>.<a class="code" href="../../dc/d2e/classInterfaceGraphique_1_1FonctionsNatives.html#a28f0abdcadb1b843f155f88d8e3590e8">obtenirProprietes</a>(zoneProps, zoneProps.Capacity);</div>
+<div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;            Marshal.Copy(config, proprietes, 0, 5);</div>
+<div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;            <span class="keywordflow">if</span> (win)</div>
+<div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;            {</div>
+<div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;                <a class="code" href="../../df/da3/classInterfaceGraphique_1_1ZoneInfo.html#aa0194a38137723ec87d43015054a3804">labelWin</a>.Text = <span class="stringliteral">&quot;Vous avez gagné!&quot;</span>;</div>
+<div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;                <a class="code" href="../../dc/d2e/classInterfaceGraphique_1_1FonctionsNatives.html">FonctionsNatives</a>.<a class="code" href="../../dc/d2e/classInterfaceGraphique_1_1FonctionsNatives.html#afb2007be5c0b953b6d26132a7140f382">jouerSon</a>(winSound,winSound.Length,<span class="keyword">false</span>);</div>
+<div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;            }</div>
+<div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;            <span class="keywordflow">else</span></div>
+<div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;            {</div>
+<div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;                <a class="code" href="../../df/da3/classInterfaceGraphique_1_1ZoneInfo.html#aa0194a38137723ec87d43015054a3804">labelWin</a>.Text = <span class="stringliteral">&quot;Début de la partie&quot;</span>;</div>
+<div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;            }</div>
+<div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160;            time = 5;</div>
+<div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160;            <a class="code" href="../../df/da3/classInterfaceGraphique_1_1ZoneInfo.html#a2f93b22e3151c76ddf8e3cfa23a373f6">timer1</a>.Enabled = <span class="keyword">true</span>;</div>
+<div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160;           </div>
+<div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160;            <a class="code" href="../../df/da3/classInterfaceGraphique_1_1ZoneInfo.html#a2f93b22e3151c76ddf8e3cfa23a373f6">timer1</a>.Interval = 25;</div>
+<div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160;            <a class="code" href="../../df/da3/classInterfaceGraphique_1_1ZoneInfo.html#a2f93b22e3151c76ddf8e3cfa23a373f6">timer1</a>.Tick += <span class="keyword">new</span> EventHandler(<a class="code" href="../../df/da3/classInterfaceGraphique_1_1ZoneInfo.html#a712197a5d1ca93c8969b0fcb70b28ace">DecrementProgressBar</a>);</div>
+<div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160;            <a class="code" href="../../df/da3/classInterfaceGraphique_1_1ZoneInfo.html#ab10f8ef2ea9ce389c1679f469b8cc31d">label_Zone</a>.Text = nomZone;</div>
+<div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160;            <a class="code" href="../../df/da3/classInterfaceGraphique_1_1ZoneInfo.html#a55b9d325814d5cccdcbb9108036d7950">label_Difficulte</a>.Text = difficulte;</div>
+<div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160;            <a class="code" href="../../df/da3/classInterfaceGraphique_1_1ZoneInfo.html#aafb58e809712654a0518f78bb15a76d8">label_Points</a>.Text = proprietes[3].ToString();</div>
+<div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160;            <a class="code" href="../../df/da3/classInterfaceGraphique_1_1ZoneInfo.html#a206299e729530186afbb6b5191b22cf4">label_Bille</a>.Text = proprietes[4].ToString();</div>
+<div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160;            <a class="code" href="../../df/da3/classInterfaceGraphique_1_1ZoneInfo.html#adad23ed171f0f50ac1f655f71bea52cc">screenShot</a>.SizeMode = PictureBoxSizeMode.StretchImage;</div>
+<div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160;            <a class="code" href="../../df/da3/classInterfaceGraphique_1_1ZoneInfo.html#adad23ed171f0f50ac1f655f71bea52cc">screenShot</a>.Image = Image.FromFile(Application.StartupPath + <span class="stringliteral">@&quot;\zones\&quot;</span> + nomZone+ <span class="stringliteral">&quot;.jpg&quot;</span>);</div>
+<div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160;        }</div>
+<div class="line"><a name="l00078"></a><span class="lineno">   78</span>&#160;</div>
+<div class="line"><a name="l00079"></a><span class="lineno">   79</span>&#160;       </div>
+<div class="line"><a name="l00080"></a><span class="lineno">   80</span>&#160;</div>
+<div class="line"><a name="l00090"></a><span class="lineno"><a class="line" href="../../df/da3/classInterfaceGraphique_1_1ZoneInfo.html#afec59ce22c89ed1081ba5707be873f0b">   90</a></span>&#160;        <span class="keyword">private</span> <span class="keywordtype">void</span> <a class="code" href="../../df/da3/classInterfaceGraphique_1_1ZoneInfo.html#afec59ce22c89ed1081ba5707be873f0b">ZoneInfo_KeyPress</a>(<span class="keywordtype">object</span> sender, KeyPressEventArgs e)</div>
+<div class="line"><a name="l00091"></a><span class="lineno">   91</span>&#160;        {</div>
+<div class="line"><a name="l00092"></a><span class="lineno">   92</span>&#160;            <span class="keywordflow">if</span> (e.KeyChar == <span class="charliteral">&#39; &#39;</span>)</div>
+<div class="line"><a name="l00093"></a><span class="lineno">   93</span>&#160;            {</div>
+<div class="line"><a name="l00094"></a><span class="lineno">   94</span>&#160;                this.Close();</div>
+<div class="line"><a name="l00095"></a><span class="lineno">   95</span>&#160;            }</div>
+<div class="line"><a name="l00096"></a><span class="lineno">   96</span>&#160;        }</div>
+<div class="line"><a name="l00097"></a><span class="lineno">   97</span>&#160;</div>
+<div class="line"><a name="l00107"></a><span class="lineno"><a class="line" href="../../df/da3/classInterfaceGraphique_1_1ZoneInfo.html#a712197a5d1ca93c8969b0fcb70b28ace">  107</a></span>&#160;        <span class="keyword">private</span> <span class="keywordtype">void</span> <a class="code" href="../../df/da3/classInterfaceGraphique_1_1ZoneInfo.html#a712197a5d1ca93c8969b0fcb70b28ace">DecrementProgressBar</a>(<span class="keywordtype">object</span> sender, EventArgs e)</div>
+<div class="line"><a name="l00108"></a><span class="lineno">  108</span>&#160;        {</div>
+<div class="line"><a name="l00109"></a><span class="lineno">  109</span>&#160;            <a class="code" href="../../df/da3/classInterfaceGraphique_1_1ZoneInfo.html#a398c66312f0695f6982d5c562dbc7b64">tempRestant</a>.Value--;</div>
+<div class="line"><a name="l00110"></a><span class="lineno">  110</span>&#160;            <span class="keywordflow">if</span> (<a class="code" href="../../df/da3/classInterfaceGraphique_1_1ZoneInfo.html#a398c66312f0695f6982d5c562dbc7b64">tempRestant</a>.Value % 40 == 0)</div>
+<div class="line"><a name="l00111"></a><span class="lineno">  111</span>&#160;            {</div>
+<div class="line"><a name="l00112"></a><span class="lineno">  112</span>&#160;                time--;</div>
+<div class="line"><a name="l00113"></a><span class="lineno">  113</span>&#160;               </div>
+<div class="line"><a name="l00114"></a><span class="lineno">  114</span>&#160;                <a class="code" href="../../df/da3/classInterfaceGraphique_1_1ZoneInfo.html#ac21a8be50efb995d0520988b5ac2cb77">labelTimeLeft</a>.Text = time.ToString();</div>
+<div class="line"><a name="l00115"></a><span class="lineno">  115</span>&#160;            }</div>
+<div class="line"><a name="l00116"></a><span class="lineno">  116</span>&#160;            <span class="keywordflow">if</span> (<a class="code" href="../../df/da3/classInterfaceGraphique_1_1ZoneInfo.html#a398c66312f0695f6982d5c562dbc7b64">tempRestant</a>.Value == <a class="code" href="../../df/da3/classInterfaceGraphique_1_1ZoneInfo.html#a398c66312f0695f6982d5c562dbc7b64">tempRestant</a>.Minimum)</div>
+<div class="line"><a name="l00117"></a><span class="lineno">  117</span>&#160;            {</div>
+<div class="line"><a name="l00118"></a><span class="lineno">  118</span>&#160;                <a class="code" href="../../df/da3/classInterfaceGraphique_1_1ZoneInfo.html#a2f93b22e3151c76ddf8e3cfa23a373f6">timer1</a>.Stop();</div>
+<div class="line"><a name="l00119"></a><span class="lineno">  119</span>&#160;                this.Close();</div>
+<div class="line"><a name="l00120"></a><span class="lineno">  120</span>&#160;            }</div>
+<div class="line"><a name="l00121"></a><span class="lineno">  121</span>&#160;        }</div>
+<div class="line"><a name="l00122"></a><span class="lineno">  122</span>&#160;</div>
+<div class="line"><a name="l00123"></a><span class="lineno">  123</span>&#160;    </div>
+<div class="line"><a name="l00124"></a><span class="lineno">  124</span>&#160;    }</div>
+<div class="line"><a name="l00125"></a><span class="lineno">  125</span>&#160;}</div>
+<div class="ttc" id="classInterfaceGraphique_1_1FonctionsNatives_html_afb2007be5c0b953b6d26132a7140f382"><div class="ttname"><a href="../../dc/d2e/classInterfaceGraphique_1_1FonctionsNatives.html#afb2007be5c0b953b6d26132a7140f382">InterfaceGraphique.FonctionsNatives.jouerSon</a></div><div class="ttdeci">static void jouerSon(StringBuilder name, int length, bool pause=false)</div></div>
+<div class="ttc" id="namespaceInterfaceGraphique_html"><div class="ttname"><a href="../../d1/d3b/namespaceInterfaceGraphique.html">InterfaceGraphique</a></div><div class="ttdef"><b>Definition:</b> <a href="../../d1/d98/ColorList_8cs_source.html#l00001">ColorList.cs:1</a></div></div>
+<div class="ttc" id="classInterfaceGraphique_1_1ZoneInfo_html_aa0194a38137723ec87d43015054a3804"><div class="ttname"><a href="../../df/da3/classInterfaceGraphique_1_1ZoneInfo.html#aa0194a38137723ec87d43015054a3804">InterfaceGraphique.ZoneInfo.labelWin</a></div><div class="ttdeci">System.Windows.Forms.Label labelWin</div><div class="ttdef"><b>Definition:</b> <a href="../../d6/d2e/ZoneInfo_8Designer_8cs_source.html#l00237">ZoneInfo.Designer.cs:237</a></div></div>
+<div class="ttc" id="classInterfaceGraphique_1_1ZoneInfo_html_aafb58e809712654a0518f78bb15a76d8"><div class="ttname"><a href="../../df/da3/classInterfaceGraphique_1_1ZoneInfo.html#aafb58e809712654a0518f78bb15a76d8">InterfaceGraphique.ZoneInfo.label_Points</a></div><div class="ttdeci">System.Windows.Forms.Label label_Points</div><div class="ttdef"><b>Definition:</b> <a href="../../d6/d2e/ZoneInfo_8Designer_8cs_source.html#l00234">ZoneInfo.Designer.cs:234</a></div></div>
+<div class="ttc" id="classInterfaceGraphique_1_1ZoneInfo_html_afec59ce22c89ed1081ba5707be873f0b"><div class="ttname"><a href="../../df/da3/classInterfaceGraphique_1_1ZoneInfo.html#afec59ce22c89ed1081ba5707be873f0b">InterfaceGraphique.ZoneInfo.ZoneInfo_KeyPress</a></div><div class="ttdeci">void ZoneInfo_KeyPress(object sender, KeyPressEventArgs e)</div><div class="ttdoc">Evenement lorsqu&#39;on appuie et relache une touche sur la zone d&#39;info. </div><div class="ttdef"><b>Definition:</b> <a href="../../db/ddf/ZoneInfo_8cs_source.html#l00090">ZoneInfo.cs:90</a></div></div>
+<div class="ttc" id="classInterfaceGraphique_1_1ZoneInfo_html_a2f93b22e3151c76ddf8e3cfa23a373f6"><div class="ttname"><a href="../../df/da3/classInterfaceGraphique_1_1ZoneInfo.html#a2f93b22e3151c76ddf8e3cfa23a373f6">InterfaceGraphique.ZoneInfo.timer1</a></div><div class="ttdeci">System.Windows.Forms.Timer timer1</div><div class="ttdef"><b>Definition:</b> <a href="../../d6/d2e/ZoneInfo_8Designer_8cs_source.html#l00228">ZoneInfo.Designer.cs:228</a></div></div>
+<div class="ttc" id="classInterfaceGraphique_1_1ZoneInfo_html_adad23ed171f0f50ac1f655f71bea52cc"><div class="ttname"><a href="../../df/da3/classInterfaceGraphique_1_1ZoneInfo.html#adad23ed171f0f50ac1f655f71bea52cc">InterfaceGraphique.ZoneInfo.screenShot</a></div><div class="ttdeci">System.Windows.Forms.PictureBox screenShot</div><div class="ttdef"><b>Definition:</b> <a href="../../d6/d2e/ZoneInfo_8Designer_8cs_source.html#l00227">ZoneInfo.Designer.cs:227</a></div></div>
+<div class="ttc" id="classInterfaceGraphique_1_1ZoneInfo_html_ac21a8be50efb995d0520988b5ac2cb77"><div class="ttname"><a href="../../df/da3/classInterfaceGraphique_1_1ZoneInfo.html#ac21a8be50efb995d0520988b5ac2cb77">InterfaceGraphique.ZoneInfo.labelTimeLeft</a></div><div class="ttdeci">System.Windows.Forms.Label labelTimeLeft</div><div class="ttdef"><b>Definition:</b> <a href="../../d6/d2e/ZoneInfo_8Designer_8cs_source.html#l00229">ZoneInfo.Designer.cs:229</a></div></div>
+<div class="ttc" id="classInterfaceGraphique_1_1ZoneInfo_html_a473c772bc67a092948334920898a5b8d"><div class="ttname"><a href="../../df/da3/classInterfaceGraphique_1_1ZoneInfo.html#a473c772bc67a092948334920898a5b8d">InterfaceGraphique.ZoneInfo.proprietes</a></div><div class="ttdeci">int[] proprietes</div><div class="ttdef"><b>Definition:</b> <a href="../../db/ddf/ZoneInfo_8cs_source.html#l00035">ZoneInfo.cs:35</a></div></div>
+<div class="ttc" id="classInterfaceGraphique_1_1ZoneInfo_html_a5dcf895a775a6d8b967654ed9a41b94d"><div class="ttname"><a href="../../df/da3/classInterfaceGraphique_1_1ZoneInfo.html#a5dcf895a775a6d8b967654ed9a41b94d">InterfaceGraphique.ZoneInfo.ZoneInfo</a></div><div class="ttdeci">ZoneInfo(string nomZone, string difficulte, bool win)</div><div class="ttdoc">Constructeur par parametre de la fenetre Partie Terminee. </div><div class="ttdef"><b>Definition:</b> <a href="../../db/ddf/ZoneInfo_8cs_source.html#l00048">ZoneInfo.cs:48</a></div></div>
+<div class="ttc" id="classInterfaceGraphique_1_1ZoneInfo_html_a206299e729530186afbb6b5191b22cf4"><div class="ttname"><a href="../../df/da3/classInterfaceGraphique_1_1ZoneInfo.html#a206299e729530186afbb6b5191b22cf4">InterfaceGraphique.ZoneInfo.label_Bille</a></div><div class="ttdeci">System.Windows.Forms.Label label_Bille</div><div class="ttdef"><b>Definition:</b> <a href="../../d6/d2e/ZoneInfo_8Designer_8cs_source.html#l00236">ZoneInfo.Designer.cs:236</a></div></div>
+<div class="ttc" id="classInterfaceGraphique_1_1FonctionsNatives_html"><div class="ttname"><a href="../../dc/d2e/classInterfaceGraphique_1_1FonctionsNatives.html">InterfaceGraphique.FonctionsNatives</a></div><div class="ttdoc">Classe qui importe les fontions natives C++. </div><div class="ttdef"><b>Definition:</b> <a href="../../d9/d2c/FonctionsNatives_8cs_source.html#l00017">FonctionsNatives.cs:17</a></div></div>
+<div class="ttc" id="classInterfaceGraphique_1_1ZoneInfo_html"><div class="ttname"><a href="../../df/da3/classInterfaceGraphique_1_1ZoneInfo.html">InterfaceGraphique.ZoneInfo</a></div><div class="ttdoc">Classe d&#39;interface de la fenetre d&#39;info des zones de jeu. </div><div class="ttdef"><b>Definition:</b> <a href="../../db/ddf/ZoneInfo_8cs_source.html#l00032">ZoneInfo.cs:32</a></div></div>
+<div class="ttc" id="classInterfaceGraphique_1_1ZoneInfo_html_ab10f8ef2ea9ce389c1679f469b8cc31d"><div class="ttname"><a href="../../df/da3/classInterfaceGraphique_1_1ZoneInfo.html#ab10f8ef2ea9ce389c1679f469b8cc31d">InterfaceGraphique.ZoneInfo.label_Zone</a></div><div class="ttdeci">System.Windows.Forms.Label label_Zone</div><div class="ttdef"><b>Definition:</b> <a href="../../d6/d2e/ZoneInfo_8Designer_8cs_source.html#l00226">ZoneInfo.Designer.cs:226</a></div></div>
+<div class="ttc" id="classInterfaceGraphique_1_1ZoneInfo_html_a513f36de12045d99bfcddca5855657c3"><div class="ttname"><a href="../../df/da3/classInterfaceGraphique_1_1ZoneInfo.html#a513f36de12045d99bfcddca5855657c3">InterfaceGraphique.ZoneInfo.winSound</a></div><div class="ttdeci">StringBuilder winSound</div><div class="ttdef"><b>Definition:</b> <a href="../../db/ddf/ZoneInfo_8cs_source.html#l00036">ZoneInfo.cs:36</a></div></div>
+<div class="ttc" id="namespaceSystem_html"><div class="ttname"><a href="../../d6/d27/namespaceSystem.html">System</a></div></div>
+<div class="ttc" id="classInterfaceGraphique_1_1ZoneInfo_html_a3bb6bc82ce99c0b366d9c007ca9a228f"><div class="ttname"><a href="../../df/da3/classInterfaceGraphique_1_1ZoneInfo.html#a3bb6bc82ce99c0b366d9c007ca9a228f">InterfaceGraphique.ZoneInfo.InitializeComponent</a></div><div class="ttdeci">void InitializeComponent()</div><div class="ttdoc">Required method for Designer support - do not modify the contents of this method with the code editor...</div><div class="ttdef"><b>Definition:</b> <a href="../../d6/d2e/ZoneInfo_8Designer_8cs_source.html#l00029">ZoneInfo.Designer.cs:29</a></div></div>
+<div class="ttc" id="classInterfaceGraphique_1_1ZoneInfo_html_a712197a5d1ca93c8969b0fcb70b28ace"><div class="ttname"><a href="../../df/da3/classInterfaceGraphique_1_1ZoneInfo.html#a712197a5d1ca93c8969b0fcb70b28ace">InterfaceGraphique.ZoneInfo.DecrementProgressBar</a></div><div class="ttdeci">void DecrementProgressBar(object sender, EventArgs e)</div><div class="ttdef"><b>Definition:</b> <a href="../../db/ddf/ZoneInfo_8cs_source.html#l00107">ZoneInfo.cs:107</a></div></div>
+<div class="ttc" id="classInterfaceGraphique_1_1FonctionsNatives_html_a28f0abdcadb1b843f155f88d8e3590e8"><div class="ttname"><a href="../../dc/d2e/classInterfaceGraphique_1_1FonctionsNatives.html#a28f0abdcadb1b843f155f88d8e3590e8">InterfaceGraphique.FonctionsNatives.obtenirProprietes</a></div><div class="ttdeci">static IntPtr obtenirProprietes(StringBuilder path, int length)</div></div>
+<div class="ttc" id="classInterfaceGraphique_1_1ZoneInfo_html_a55b9d325814d5cccdcbb9108036d7950"><div class="ttname"><a href="../../df/da3/classInterfaceGraphique_1_1ZoneInfo.html#a55b9d325814d5cccdcbb9108036d7950">InterfaceGraphique.ZoneInfo.label_Difficulte</a></div><div class="ttdeci">System.Windows.Forms.Label label_Difficulte</div><div class="ttdef"><b>Definition:</b> <a href="../../d6/d2e/ZoneInfo_8Designer_8cs_source.html#l00225">ZoneInfo.Designer.cs:225</a></div></div>
+<div class="ttc" id="classInterfaceGraphique_1_1ZoneInfo_html_a134e332ca968713ff8d5428f7b34b234"><div class="ttname"><a href="../../df/da3/classInterfaceGraphique_1_1ZoneInfo.html#a134e332ca968713ff8d5428f7b34b234">InterfaceGraphique.ZoneInfo.time</a></div><div class="ttdeci">int time</div><div class="ttdef"><b>Definition:</b> <a href="../../db/ddf/ZoneInfo_8cs_source.html#l00034">ZoneInfo.cs:34</a></div></div>
+<div class="ttc" id="classInterfaceGraphique_1_1ZoneInfo_html_a398c66312f0695f6982d5c562dbc7b64"><div class="ttname"><a href="../../df/da3/classInterfaceGraphique_1_1ZoneInfo.html#a398c66312f0695f6982d5c562dbc7b64">InterfaceGraphique.ZoneInfo.tempRestant</a></div><div class="ttdeci">System.Windows.Forms.ProgressBar tempRestant</div><div class="ttdef"><b>Definition:</b> <a href="../../d6/d2e/ZoneInfo_8Designer_8cs_source.html#l00232">ZoneInfo.Designer.cs:232</a></div></div>
+</div><!-- fragment --></div><!-- contents -->
+</div><!-- doc-content -->
+<!-- start footer part -->
+<div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
+  <ul>
+    <li class="navelem"><a class="el" href="../../dir_937900b87e0c7a5fa01190c395fb83f7.html">Sources</a></li><li class="navelem"><a class="el" href="../../dir_903cae1878afb17c5827c93124f0aaca.html">InterfaceGraphique</a></li><li class="navelem"><a class="el" href="../../dir_8466bca247855f8d0f8a357547b963bf.html">Fenetres</a></li><li class="navelem"><a class="el" href="../../db/ddf/ZoneInfo_8cs.html">ZoneInfo.cs</a></li>
+    <li class="footer">Généré le Lundi 13 Avril 2015 19:47:56 pour Pain Ball par
+    <a href="http://www.doxygen.org/index.html">
+    <img class="footer" src="../../doxygen.png" alt="doxygen"/></a> 1.8.9.1 </li>
+  </ul>
+</div>
+</body>
+</html>

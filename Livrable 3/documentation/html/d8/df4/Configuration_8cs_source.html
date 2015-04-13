@@ -1,0 +1,548 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=9"/>
+<meta name="generator" content="Doxygen 1.8.9.1"/>
+<title>Pain Ball:  Fichier source de Sources/InterfaceGraphique/Fenetres/Configuration.cs</title>
+<link href="../../tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="../../jquery.js"></script>
+<script type="text/javascript" src="../../dynsections.js"></script>
+<link href="../../navtree.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="../../resize.js"></script>
+<script type="text/javascript" src="../../navtreedata.js"></script>
+<script type="text/javascript" src="../../navtree.js"></script>
+<script type="text/javascript">
+  $(document).ready(initResizable);
+  $(window).load(resizeHeight);
+</script>
+<link href="../../search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="../../search/searchdata.js"></script>
+<script type="text/javascript" src="../../search/search.js"></script>
+<script type="text/javascript">
+  $(document).ready(function() { init_search(); });
+</script>
+<link href="../../doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr style="height: 56px;">
+  <td id="projectlogo"><img alt="Logo" src="../../handy.jpg"/></td>
+  <td style="padding-left: 0.5em;">
+   <div id="projectname">Pain Ball
+   &#160;<span id="projectnumber">Livrable 3</span>
+   </div>
+   <div id="projectbrief">by The Ballers</div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- Généré par Doxygen 1.8.9.1 -->
+<script type="text/javascript">
+var searchBox = new SearchBox("searchBox", "../../search",false,'Recherche');
+</script>
+  <div id="navrow1" class="tabs">
+    <ul class="tablist">
+      <li><a href="../../index.html"><span>Page&#160;principale</span></a></li>
+      <li><a href="../../modules.html"><span>Modules</span></a></li>
+      <li><a href="../../namespaces.html"><span>Espaces&#160;de&#160;nommage</span></a></li>
+      <li><a href="../../annotated.html"><span>Classes</span></a></li>
+      <li class="current"><a href="../../files.html"><span>Fichiers</span></a></li>
+      <li>
+        <div id="MSearchBox" class="MSearchBoxInactive">
+        <span class="left">
+          <img id="MSearchSelect" src="../../search/mag_sel.png"
+               onmouseover="return searchBox.OnSearchSelectShow()"
+               onmouseout="return searchBox.OnSearchSelectHide()"
+               alt=""/>
+          <input type="text" id="MSearchField" value="Recherche" accesskey="S"
+               onfocus="searchBox.OnSearchFieldFocus(true)" 
+               onblur="searchBox.OnSearchFieldFocus(false)" 
+               onkeyup="searchBox.OnSearchFieldChange(event)"/>
+          </span><span class="right">
+            <a id="MSearchClose" href="javascript:searchBox.CloseResultsWindow()"><img id="MSearchCloseImg" border="0" src="../../search/close.png" alt=""/></a>
+          </span>
+        </div>
+      </li>
+    </ul>
+  </div>
+  <div id="navrow2" class="tabs2">
+    <ul class="tablist">
+      <li><a href="../../files.html"><span>Liste&#160;des&#160;fichiers</span></a></li>
+      <li><a href="../../globals.html"><span>Membres&#160;de&#160;fichier</span></a></li>
+    </ul>
+  </div>
+</div><!-- top -->
+<div id="side-nav" class="ui-resizable side-nav-resizable">
+  <div id="nav-tree">
+    <div id="nav-tree-contents">
+      <div id="nav-sync" class="sync"></div>
+    </div>
+  </div>
+  <div id="splitbar" style="-moz-user-select:none;" 
+       class="ui-resizable-handle">
+  </div>
+</div>
+<script type="text/javascript">
+$(document).ready(function(){initNavTree('d8/df4/Configuration_8cs_source.html','../../');});
+</script>
+<div id="doc-content">
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<iframe src="javascript:void(0)" frameborder="0" 
+        name="MSearchResults" id="MSearchResults">
+</iframe>
+</div>
+
+<div class="header">
+  <div class="headertitle">
+<div class="title">Configuration.cs</div>  </div>
+</div><!--header-->
+<div class="contents">
+<a href="../../d8/df4/Configuration_8cs.html">Aller à la documentation de ce fichier.</a><div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;</div>
+<div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160;<span class="keyword">using</span> <a class="code" href="../../d6/d27/namespaceSystem.html">System</a>;</div>
+<div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;<span class="keyword">using</span> <a class="code" href="../../d6/d27/namespaceSystem.html">System</a>.Windows.Forms;</div>
+<div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;<span class="keyword">using</span> <a class="code" href="../../d6/d27/namespaceSystem.html">System</a>.Runtime.InteropServices;</div>
+<div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;</div>
+<div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;<span class="keyword">namespace </span><a class="code" href="../../d1/d3b/namespaceInterfaceGraphique.html">InterfaceGraphique</a></div>
+<div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;{</div>
+<div class="line"><a name="l00025"></a><span class="lineno"><a class="line" href="../../dc/d6b/classInterfaceGraphique_1_1Configuration.html">   25</a></span>&#160;    <span class="keyword">public</span> <span class="keyword">partial class </span><a class="code" href="../../dc/d6b/classInterfaceGraphique_1_1Configuration.html">Configuration</a> : Form</div>
+<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;    {</div>
+<div class="line"><a name="l00027"></a><span class="lineno"><a class="line" href="../../dc/d6b/classInterfaceGraphique_1_1Configuration.html#a17b20a023a191e4f99daf8f94efe6a11">   27</a></span>&#160;        <span class="keywordtype">int</span>[] <a class="code" href="../../dc/d6b/classInterfaceGraphique_1_1Configuration.html#a17b20a023a191e4f99daf8f94efe6a11">defaultValues</a> = { 65, 83, 52, 53};</div>
+<div class="line"><a name="l00028"></a><span class="lineno"><a class="line" href="../../dc/d6b/classInterfaceGraphique_1_1Configuration.html#a50e6cc8b869aa6c13b73395e5891822e">   28</a></span>&#160;        <span class="keywordtype">int</span>[] <a class="code" href="../../dc/d6b/classInterfaceGraphique_1_1Configuration.html#a50e6cc8b869aa6c13b73395e5891822e">currentValues</a> = { 65, 83, 52, 53, 32, 49, 50, 74, 75, 76, 66, 84 };</div>
+<div class="line"><a name="l00029"></a><span class="lineno"><a class="line" href="../../dc/d6b/classInterfaceGraphique_1_1Configuration.html#ac8442083d04fb3344efb82e1a0bf0cd6">   29</a></span>&#160;        <span class="keywordtype">int</span>[] <a class="code" href="../../dc/d6b/classInterfaceGraphique_1_1Configuration.html#ac8442083d04fb3344efb82e1a0bf0cd6">valuesXML</a> = <span class="keyword">new</span> <span class="keywordtype">int</span>[13]; </div>
+<div class="line"><a name="l00030"></a><span class="lineno"><a class="line" href="../../dc/d6b/classInterfaceGraphique_1_1Configuration.html#aa9147231adf94dd02463c92b21094339">   30</a></span>&#160;        <span class="keywordtype">string</span> <a class="code" href="../../dc/d6b/classInterfaceGraphique_1_1Configuration.html#aa9147231adf94dd02463c92b21094339">maTouche</a>;</div>
+<div class="line"><a name="l00031"></a><span class="lineno"><a class="line" href="../../dc/d6b/classInterfaceGraphique_1_1Configuration.html#a05b1dc9820a7c93d409e6fe048b82567">   31</a></span>&#160;        <span class="keywordtype">bool</span> <a class="code" href="../../dc/d6b/classInterfaceGraphique_1_1Configuration.html#a05b1dc9820a7c93d409e6fe048b82567">mediaPlaying</a> = <span class="keyword">false</span>;</div>
+<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;</div>
+<div class="line"><a name="l00041"></a><span class="lineno"><a class="line" href="../../dc/d6b/classInterfaceGraphique_1_1Configuration.html#ad326532d6f7176c99056037fccbce6fa">   41</a></span>&#160;        <span class="keyword">public</span> <a class="code" href="../../dc/d6b/classInterfaceGraphique_1_1Configuration.html#ad326532d6f7176c99056037fccbce6fa">Configuration</a>()</div>
+<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;        {</div>
+<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;            <a class="code" href="../../dc/d6b/classInterfaceGraphique_1_1Configuration.html#a87e13984f0bc9838b16abede43d8f024">InitializeComponent</a>();</div>
+<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;            <a class="code" href="../../dc/d6b/classInterfaceGraphique_1_1Configuration.html#acb9b216963866c6b1fb4a535ee8ed2ad">comboBoxBilles</a>.Text = <span class="stringliteral">&quot;3&quot;</span>;</div>
+<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;            KeyPreview = <span class="keyword">true</span>;</div>
+<div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;            <a class="code" href="../../dc/d6b/classInterfaceGraphique_1_1Configuration.html#a6810f9329f02b53394159bf0f1bafe15">InitialiserAvecBinaire</a>();</div>
+<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;        }</div>
+<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;</div>
+<div class="line"><a name="l00057"></a><span class="lineno"><a class="line" href="../../dc/d6b/classInterfaceGraphique_1_1Configuration.html#a6810f9329f02b53394159bf0f1bafe15">   57</a></span>&#160;        <span class="keyword">private</span> <span class="keywordtype">void</span> <a class="code" href="../../dc/d6b/classInterfaceGraphique_1_1Configuration.html#a6810f9329f02b53394159bf0f1bafe15">InitialiserAvecBinaire</a>()</div>
+<div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;        {</div>
+<div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;         </div>
+<div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;            IntPtr config = <a class="code" href="../../dc/d2e/classInterfaceGraphique_1_1FonctionsNatives.html">FonctionsNatives</a>.<a class="code" href="../../dc/d2e/classInterfaceGraphique_1_1FonctionsNatives.html#add978a24d1de3741b1b6941830cb9a83">chargerFichierConfiguration</a>();</div>
+<div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;            <span class="keywordtype">int</span>[] result = <span class="keyword">new</span> <span class="keywordtype">int</span>[13];</div>
+<div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;            Marshal.Copy(config, valuesXML, 0, 13);</div>
+<div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;                </div>
+<div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;            <span class="keywordflow">for</span>(<span class="keywordtype">int</span> i = 0; i &lt; 5; i++){</div>
+<div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;                currentValues[i] = valuesXML[i]; </div>
+<div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160;                </div>
+<div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160;            }</div>
+<div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160;            <a class="code" href="../../dc/d6b/classInterfaceGraphique_1_1Configuration.html#a9a1c53acc4a91c6ee8c3aac1e246dcf6">InitialiserTouches</a>();</div>
+<div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160;            </div>
+<div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160;            <span class="comment">//valuesXML[5] = Convert.ToInt32(comboBoxBilles.Text.ToString());</span></div>
+<div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160;            <a class="code" href="../../dc/d6b/classInterfaceGraphique_1_1Configuration.html#acb9b216963866c6b1fb4a535ee8ed2ad">comboBoxBilles</a>.Text = valuesXML[5].ToString();</div>
+<div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160;</div>
+<div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160;            <span class="comment">//valuesXML[6] = Convert.ToInt32(MDB_OK.Checked);</span></div>
+<div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160;            <span class="keywordflow">if</span> (valuesXML[6] != 0)</div>
+<div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160;                <a class="code" href="../../dc/d6b/classInterfaceGraphique_1_1Configuration.html#ad118a4832f6daeecacfa7e350f4e7bb6">MDB_OK</a>.Checked = <span class="keyword">true</span>;</div>
+<div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160;            <span class="keywordflow">else</span></div>
+<div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160;                <a class="code" href="../../dc/d6b/classInterfaceGraphique_1_1Configuration.html#a2a08eec1c7ede59ad7df87fc9a7598e0">MDB_Cancel</a>.Checked = <span class="keyword">true</span>;</div>
+<div class="line"><a name="l00078"></a><span class="lineno">   78</span>&#160;</div>
+<div class="line"><a name="l00079"></a><span class="lineno">   79</span>&#160;            <span class="comment">//valuesXML[7] = Convert.ToInt32(FRS_OK.Checked);</span></div>
+<div class="line"><a name="l00080"></a><span class="lineno">   80</span>&#160;            <span class="keywordflow">if</span>( valuesXML[7] != 0)</div>
+<div class="line"><a name="l00081"></a><span class="lineno">   81</span>&#160;                <a class="code" href="../../dc/d6b/classInterfaceGraphique_1_1Configuration.html#a07ced3a1c051249b897bb5e5f5397b3f">FRS_OK</a>.Checked = <span class="keyword">true</span>;</div>
+<div class="line"><a name="l00082"></a><span class="lineno">   82</span>&#160;            <span class="keywordflow">else</span></div>
+<div class="line"><a name="l00083"></a><span class="lineno">   83</span>&#160;                <a class="code" href="../../dc/d6b/classInterfaceGraphique_1_1Configuration.html#a13e9c133d41026ade9982138667dc7fb">FRS_Cancel</a>.Checked = <span class="keyword">true</span>;</div>
+<div class="line"><a name="l00084"></a><span class="lineno">   84</span>&#160;</div>
+<div class="line"><a name="l00085"></a><span class="lineno">   85</span>&#160;            <span class="comment">//valuesXML[8] = Convert.ToInt32(GB_OK.Checked);</span></div>
+<div class="line"><a name="l00086"></a><span class="lineno">   86</span>&#160;              <span class="keywordflow">if</span>( valuesXML[8] != 0)</div>
+<div class="line"><a name="l00087"></a><span class="lineno">   87</span>&#160;                <a class="code" href="../../dc/d6b/classInterfaceGraphique_1_1Configuration.html#a99faf54f30c9d852ab370f9209c383fd">GB_OK</a>.Checked = <span class="keyword">true</span>;</div>
+<div class="line"><a name="l00088"></a><span class="lineno">   88</span>&#160;              <span class="keywordflow">else</span></div>
+<div class="line"><a name="l00089"></a><span class="lineno">   89</span>&#160;                <a class="code" href="../../dc/d6b/classInterfaceGraphique_1_1Configuration.html#a0226573ed8a1f60963fb2f679bbacb95">GB_Cancel</a>.Checked = <span class="keyword">true</span>;</div>
+<div class="line"><a name="l00090"></a><span class="lineno">   90</span>&#160;</div>
+<div class="line"><a name="l00091"></a><span class="lineno">   91</span>&#160;            <span class="comment">//valuesXML[9] = Convert.ToInt32(VAC_OK.Checked);</span></div>
+<div class="line"><a name="l00092"></a><span class="lineno">   92</span>&#160;             <span class="keywordflow">if</span>( valuesXML[9] != 0)</div>
+<div class="line"><a name="l00093"></a><span class="lineno">   93</span>&#160;                <a class="code" href="../../dc/d6b/classInterfaceGraphique_1_1Configuration.html#a4d22995872a4cdf49e9a7d26e4d327bf">VAC_OK</a>.Checked = <span class="keyword">true</span>;</div>
+<div class="line"><a name="l00094"></a><span class="lineno">   94</span>&#160;              <span class="keywordflow">else</span></div>
+<div class="line"><a name="l00095"></a><span class="lineno">   95</span>&#160;                <a class="code" href="../../dc/d6b/classInterfaceGraphique_1_1Configuration.html#af65bd4dc9088703d1ae4a80e628acb2c">VAC_Cancel</a>.Checked = <span class="keyword">true</span>;</div>
+<div class="line"><a name="l00096"></a><span class="lineno">   96</span>&#160;</div>
+<div class="line"><a name="l00097"></a><span class="lineno">   97</span>&#160;            <span class="comment">//valuesXML[10] = Convert.ToInt32(AE_OK.Checked);</span></div>
+<div class="line"><a name="l00098"></a><span class="lineno">   98</span>&#160;            <span class="keywordflow">if</span> (valuesXML[10] != 0)</div>
+<div class="line"><a name="l00099"></a><span class="lineno">   99</span>&#160;                <a class="code" href="../../dc/d6b/classInterfaceGraphique_1_1Configuration.html#a603036c1c54d274c4d53417ef2e81ce0">AE_OK</a>.Checked = <span class="keyword">true</span>;</div>
+<div class="line"><a name="l00100"></a><span class="lineno">  100</span>&#160;            <span class="keywordflow">else</span></div>
+<div class="line"><a name="l00101"></a><span class="lineno">  101</span>&#160;                <a class="code" href="../../dc/d6b/classInterfaceGraphique_1_1Configuration.html#ae5dd6892523331ef7eba33b4f9f5545b">AE_Cancel</a>.Checked = <span class="keyword">true</span>;</div>
+<div class="line"><a name="l00102"></a><span class="lineno">  102</span>&#160;</div>
+<div class="line"><a name="l00103"></a><span class="lineno">  103</span>&#160;            <span class="comment">//valuesXML[11] = Convert.ToInt32(PORTAL_OK.Checked);    </span></div>
+<div class="line"><a name="l00104"></a><span class="lineno">  104</span>&#160;            <span class="keywordflow">if</span>( valuesXML[11] != 0)</div>
+<div class="line"><a name="l00105"></a><span class="lineno">  105</span>&#160;                <a class="code" href="../../dc/d6b/classInterfaceGraphique_1_1Configuration.html#ae7520764ff3d00532b06b0552f46ea6b">PORTAL_OK</a>.Checked = <span class="keyword">true</span>;</div>
+<div class="line"><a name="l00106"></a><span class="lineno">  106</span>&#160;            <span class="keywordflow">else</span></div>
+<div class="line"><a name="l00107"></a><span class="lineno">  107</span>&#160;                <a class="code" href="../../dc/d6b/classInterfaceGraphique_1_1Configuration.html#aeddbe91cd9ba6d259b9c393d8563adc9">PORTAL_Cancel</a>.Checked = <span class="keyword">true</span>;</div>
+<div class="line"><a name="l00108"></a><span class="lineno">  108</span>&#160;</div>
+<div class="line"><a name="l00109"></a><span class="lineno">  109</span>&#160;            <span class="keywordflow">if</span> (valuesXML[12] != 0)</div>
+<div class="line"><a name="l00110"></a><span class="lineno">  110</span>&#160;            {</div>
+<div class="line"><a name="l00111"></a><span class="lineno">  111</span>&#160;                <a class="code" href="../../dc/d6b/classInterfaceGraphique_1_1Configuration.html#ab1b558a9d9315164ad64bd3d5b52e0ae">GLOB_OK</a>.Checked = <span class="keyword">true</span>;</div>
+<div class="line"><a name="l00112"></a><span class="lineno">  112</span>&#160;               </div>
+<div class="line"><a name="l00113"></a><span class="lineno">  113</span>&#160;            }</div>
+<div class="line"><a name="l00114"></a><span class="lineno">  114</span>&#160;            <span class="keywordflow">else</span></div>
+<div class="line"><a name="l00115"></a><span class="lineno">  115</span>&#160;            {</div>
+<div class="line"><a name="l00116"></a><span class="lineno">  116</span>&#160;                <a class="code" href="../../dc/d6b/classInterfaceGraphique_1_1Configuration.html#ac26c3bf730c21522a706c54bb1872b90">GLOB_Cancel</a>.Checked = <span class="keyword">true</span>;</div>
+<div class="line"><a name="l00117"></a><span class="lineno">  117</span>&#160;            }</div>
+<div class="line"><a name="l00118"></a><span class="lineno">  118</span>&#160;        }</div>
+<div class="line"><a name="l00119"></a><span class="lineno">  119</span>&#160;</div>
+<div class="line"><a name="l00128"></a><span class="lineno"><a class="line" href="../../dc/d6b/classInterfaceGraphique_1_1Configuration.html#a9a1c53acc4a91c6ee8c3aac1e246dcf6">  128</a></span>&#160;        <span class="keyword">private</span> <span class="keywordtype">void</span> <a class="code" href="../../dc/d6b/classInterfaceGraphique_1_1Configuration.html#a9a1c53acc4a91c6ee8c3aac1e246dcf6">InitialiserTouches</a>()</div>
+<div class="line"><a name="l00129"></a><span class="lineno">  129</span>&#160;        {</div>
+<div class="line"><a name="l00130"></a><span class="lineno">  130</span>&#160;            maTouche = <span class="keywordtype">char</span>.ConvertFromUtf32(currentValues[0]);</div>
+<div class="line"><a name="l00131"></a><span class="lineno">  131</span>&#160;            <span class="keywordflow">if</span> (currentValues[0] &gt;= 96 &amp;&amp; currentValues[0] &lt;= 105)</div>
+<div class="line"><a name="l00132"></a><span class="lineno">  132</span>&#160;                maTouche = <span class="stringliteral">&quot;NumPad&quot;</span> + <span class="keywordtype">char</span>.ConvertFromUtf32(currentValues[0] - 48);</div>
+<div class="line"><a name="l00133"></a><span class="lineno">  133</span>&#160;            <span class="keywordflow">if</span> (maTouche == <span class="stringliteral">&quot; &quot;</span>)</div>
+<div class="line"><a name="l00134"></a><span class="lineno">  134</span>&#160;                maTouche = <span class="stringliteral">&quot;Espace&quot;</span>;</div>
+<div class="line"><a name="l00135"></a><span class="lineno">  135</span>&#160;            </div>
+<div class="line"><a name="l00136"></a><span class="lineno">  136</span>&#160;            <a class="code" href="../../dc/d6b/classInterfaceGraphique_1_1Configuration.html#a57839957f284c5c0a4c9bb6c99afb990">PGJ1_bouton</a>.Text = <a class="code" href="../../dc/d6b/classInterfaceGraphique_1_1Configuration.html#aa9147231adf94dd02463c92b21094339">maTouche</a>;</div>
+<div class="line"><a name="l00137"></a><span class="lineno">  137</span>&#160;</div>
+<div class="line"><a name="l00138"></a><span class="lineno">  138</span>&#160;            maTouche = <span class="keywordtype">char</span>.ConvertFromUtf32(currentValues[1]);</div>
+<div class="line"><a name="l00139"></a><span class="lineno">  139</span>&#160;            <span class="keywordflow">if</span> (currentValues[1] &gt;= 96 &amp;&amp; currentValues[1] &lt;= 105)</div>
+<div class="line"><a name="l00140"></a><span class="lineno">  140</span>&#160;                maTouche = <span class="stringliteral">&quot;NumPad&quot;</span> + <span class="keywordtype">char</span>.ConvertFromUtf32(currentValues[1] - 48);</div>
+<div class="line"><a name="l00141"></a><span class="lineno">  141</span>&#160;            <span class="keywordflow">if</span> (maTouche == <span class="stringliteral">&quot; &quot;</span>)</div>
+<div class="line"><a name="l00142"></a><span class="lineno">  142</span>&#160;                maTouche = <span class="stringliteral">&quot;Espace&quot;</span>;</div>
+<div class="line"><a name="l00143"></a><span class="lineno">  143</span>&#160;            <a class="code" href="../../dc/d6b/classInterfaceGraphique_1_1Configuration.html#ae06562c8c5353609a09081fb0556d61b">PDJ1_bouton</a>.Text = <a class="code" href="../../dc/d6b/classInterfaceGraphique_1_1Configuration.html#aa9147231adf94dd02463c92b21094339">maTouche</a>;</div>
+<div class="line"><a name="l00144"></a><span class="lineno">  144</span>&#160;</div>
+<div class="line"><a name="l00145"></a><span class="lineno">  145</span>&#160;            maTouche = <span class="keywordtype">char</span>.ConvertFromUtf32(currentValues[2]);</div>
+<div class="line"><a name="l00146"></a><span class="lineno">  146</span>&#160;            <span class="keywordflow">if</span> (currentValues[2] &gt;= 96 &amp;&amp; currentValues[2] &lt;= 105)</div>
+<div class="line"><a name="l00147"></a><span class="lineno">  147</span>&#160;                maTouche = <span class="stringliteral">&quot;NumPad&quot;</span> + <span class="keywordtype">char</span>.ConvertFromUtf32(currentValues[2] - 48);</div>
+<div class="line"><a name="l00148"></a><span class="lineno">  148</span>&#160;            <span class="keywordflow">if</span> (maTouche == <span class="stringliteral">&quot; &quot;</span>)</div>
+<div class="line"><a name="l00149"></a><span class="lineno">  149</span>&#160;                maTouche = <span class="stringliteral">&quot;Espace&quot;</span>;</div>
+<div class="line"><a name="l00150"></a><span class="lineno">  150</span>&#160;            <a class="code" href="../../dc/d6b/classInterfaceGraphique_1_1Configuration.html#a6ad38e13e901b0c33f3e6323a231ab2b">PGJ2_bouton</a>.Text = <a class="code" href="../../dc/d6b/classInterfaceGraphique_1_1Configuration.html#aa9147231adf94dd02463c92b21094339">maTouche</a>;</div>
+<div class="line"><a name="l00151"></a><span class="lineno">  151</span>&#160;</div>
+<div class="line"><a name="l00152"></a><span class="lineno">  152</span>&#160;            maTouche = <span class="keywordtype">char</span>.ConvertFromUtf32(currentValues[3]);</div>
+<div class="line"><a name="l00153"></a><span class="lineno">  153</span>&#160;            <span class="keywordflow">if</span> (currentValues[3] &gt;= 96 &amp;&amp; currentValues[3] &lt;= 105)</div>
+<div class="line"><a name="l00154"></a><span class="lineno">  154</span>&#160;                maTouche = <span class="stringliteral">&quot;NumPad&quot;</span> + <span class="keywordtype">char</span>.ConvertFromUtf32(currentValues[3] - 48);</div>
+<div class="line"><a name="l00155"></a><span class="lineno">  155</span>&#160;            <span class="keywordflow">if</span> (maTouche == <span class="stringliteral">&quot; &quot;</span>)</div>
+<div class="line"><a name="l00156"></a><span class="lineno">  156</span>&#160;                maTouche = <span class="stringliteral">&quot;Espace&quot;</span>;</div>
+<div class="line"><a name="l00157"></a><span class="lineno">  157</span>&#160;            <a class="code" href="../../dc/d6b/classInterfaceGraphique_1_1Configuration.html#a7592384c48b0a55c7e1e331875a8b6fd">PDJ2_bouton</a>.Text = <a class="code" href="../../dc/d6b/classInterfaceGraphique_1_1Configuration.html#aa9147231adf94dd02463c92b21094339">maTouche</a>;</div>
+<div class="line"><a name="l00158"></a><span class="lineno">  158</span>&#160;</div>
+<div class="line"><a name="l00159"></a><span class="lineno">  159</span>&#160;            maTouche = <span class="keywordtype">char</span>.ConvertFromUtf32(currentValues[4]);</div>
+<div class="line"><a name="l00160"></a><span class="lineno">  160</span>&#160;            <span class="keywordflow">if</span> (currentValues[4] &gt;= 96 &amp;&amp; currentValues[4] &lt;= 105)</div>
+<div class="line"><a name="l00161"></a><span class="lineno">  161</span>&#160;                maTouche = <span class="stringliteral">&quot;NumPad&quot;</span> + <span class="keywordtype">char</span>.ConvertFromUtf32(currentValues[4] - 48);</div>
+<div class="line"><a name="l00162"></a><span class="lineno">  162</span>&#160;            <span class="keywordflow">if</span> (maTouche == <span class="stringliteral">&quot; &quot;</span>)</div>
+<div class="line"><a name="l00163"></a><span class="lineno">  163</span>&#160;                maTouche = <span class="stringliteral">&quot;Espace&quot;</span>;</div>
+<div class="line"><a name="l00164"></a><span class="lineno">  164</span>&#160;            <a class="code" href="../../dc/d6b/classInterfaceGraphique_1_1Configuration.html#a260e94d2c458c9b3cc30c1e81093a898">Ressort_bouton</a>.Text = <a class="code" href="../../dc/d6b/classInterfaceGraphique_1_1Configuration.html#aa9147231adf94dd02463c92b21094339">maTouche</a>;</div>
+<div class="line"><a name="l00165"></a><span class="lineno">  165</span>&#160;        }</div>
+<div class="line"><a name="l00166"></a><span class="lineno">  166</span>&#160;</div>
+<div class="line"><a name="l00175"></a><span class="lineno"><a class="line" href="../../dc/d6b/classInterfaceGraphique_1_1Configuration.html#a214975d72c0a0c9c953a04e078e62c32">  175</a></span>&#160;        <span class="keyword">private</span> <span class="keywordtype">bool</span> <a class="code" href="../../dc/d6b/classInterfaceGraphique_1_1Configuration.html#a214975d72c0a0c9c953a04e078e62c32">isValid</a>(<span class="keywordtype">int</span> touche)</div>
+<div class="line"><a name="l00176"></a><span class="lineno">  176</span>&#160;        {</div>
+<div class="line"><a name="l00177"></a><span class="lineno">  177</span>&#160;            <span class="keywordflow">if</span> (touche &gt;= 96 &amp;&amp; touche &lt;= 105)</div>
+<div class="line"><a name="l00178"></a><span class="lineno">  178</span>&#160;                <span class="keywordflow">return</span> <span class="keyword">true</span>;</div>
+<div class="line"><a name="l00179"></a><span class="lineno">  179</span>&#160;            <span class="keywordflow">if</span>( (touche &gt;= 65 &amp;&amp; touche &lt;= 90) || (touche &gt;= 48 &amp;&amp; touche &lt;= 57) || (touche == 32) )</div>
+<div class="line"><a name="l00180"></a><span class="lineno">  180</span>&#160;            {</div>
+<div class="line"><a name="l00181"></a><span class="lineno">  181</span>&#160;                <span class="keywordflow">foreach</span> (<span class="keywordtype">int</span> x <span class="keywordflow">in</span> currentValues)</div>
+<div class="line"><a name="l00182"></a><span class="lineno">  182</span>&#160;                {</div>
+<div class="line"><a name="l00183"></a><span class="lineno">  183</span>&#160;                    <span class="keywordflow">if</span> (x.Equals(touche))</div>
+<div class="line"><a name="l00184"></a><span class="lineno">  184</span>&#160;                    {</div>
+<div class="line"><a name="l00185"></a><span class="lineno">  185</span>&#160;                        <a class="code" href="../../dc/d6b/classInterfaceGraphique_1_1Configuration.html#ab2b247c82beb74a0b0178f8a2c688a72">label_Rebind</a>.Text = <span class="stringliteral">&quot;Touche deja utilisée&quot;</span>;</div>
+<div class="line"><a name="l00186"></a><span class="lineno">  186</span>&#160;                        <span class="comment">//Console.WriteLine(&quot;Touche deja utilise&quot;);</span></div>
+<div class="line"><a name="l00187"></a><span class="lineno">  187</span>&#160;                        <span class="keywordflow">return</span> <span class="keyword">false</span>;</div>
+<div class="line"><a name="l00188"></a><span class="lineno">  188</span>&#160;                    }</div>
+<div class="line"><a name="l00189"></a><span class="lineno">  189</span>&#160;                }</div>
+<div class="line"><a name="l00190"></a><span class="lineno">  190</span>&#160;                mediaPlaying = <span class="keyword">false</span>;</div>
+<div class="line"><a name="l00191"></a><span class="lineno">  191</span>&#160;                <span class="keywordflow">return</span> <span class="keyword">true</span>;</div>
+<div class="line"><a name="l00192"></a><span class="lineno">  192</span>&#160;            }</div>
+<div class="line"><a name="l00193"></a><span class="lineno">  193</span>&#160;            <span class="keywordflow">else</span></div>
+<div class="line"><a name="l00194"></a><span class="lineno">  194</span>&#160;            {</div>
+<div class="line"><a name="l00195"></a><span class="lineno">  195</span>&#160;                <a class="code" href="../../dc/d6b/classInterfaceGraphique_1_1Configuration.html#ab2b247c82beb74a0b0178f8a2c688a72">label_Rebind</a>.Text = <span class="stringliteral">&quot;Touche invalide&quot;</span>;</div>
+<div class="line"><a name="l00196"></a><span class="lineno">  196</span>&#160;                <span class="comment">//Console.WriteLine(&quot;Touche invalide&quot;);</span></div>
+<div class="line"><a name="l00197"></a><span class="lineno">  197</span>&#160;                <span class="keywordflow">if</span> (!mediaPlaying)</div>
+<div class="line"><a name="l00198"></a><span class="lineno">  198</span>&#160;                {</div>
+<div class="line"><a name="l00199"></a><span class="lineno">  199</span>&#160;                    mediaPlaying = <span class="keyword">true</span>;</div>
+<div class="line"><a name="l00200"></a><span class="lineno">  200</span>&#160;                }</div>
+<div class="line"><a name="l00201"></a><span class="lineno">  201</span>&#160;                <span class="keywordflow">return</span> <span class="keyword">false</span>;</div>
+<div class="line"><a name="l00202"></a><span class="lineno">  202</span>&#160;            }</div>
+<div class="line"><a name="l00203"></a><span class="lineno">  203</span>&#160;</div>
+<div class="line"><a name="l00204"></a><span class="lineno">  204</span>&#160;        }</div>
+<div class="line"><a name="l00214"></a><span class="lineno"><a class="line" href="../../dc/d6b/classInterfaceGraphique_1_1Configuration.html#afae02d9446cbea0cc2c6ae7780ab2a7b">  214</a></span>&#160;        <span class="keyword">private</span> <span class="keywordtype">void</span> <a class="code" href="../../dc/d6b/classInterfaceGraphique_1_1Configuration.html#afae02d9446cbea0cc2c6ae7780ab2a7b">Annuler_bouton_Click</a>(<span class="keywordtype">object</span> sender, EventArgs e)</div>
+<div class="line"><a name="l00215"></a><span class="lineno">  215</span>&#160;        {</div>
+<div class="line"><a name="l00216"></a><span class="lineno">  216</span>&#160;            this.Close();</div>
+<div class="line"><a name="l00217"></a><span class="lineno">  217</span>&#160;        }</div>
+<div class="line"><a name="l00218"></a><span class="lineno">  218</span>&#160;</div>
+<div class="line"><a name="l00228"></a><span class="lineno"><a class="line" href="../../dc/d6b/classInterfaceGraphique_1_1Configuration.html#a9221997820ef88d9463ef0ce2deb6265">  228</a></span>&#160;        <span class="keyword">private</span> <span class="keywordtype">void</span> <a class="code" href="../../dc/d6b/classInterfaceGraphique_1_1Configuration.html#a9221997820ef88d9463ef0ce2deb6265">Default_bouton_Click</a>(<span class="keywordtype">object</span> sender, EventArgs e)</div>
+<div class="line"><a name="l00229"></a><span class="lineno">  229</span>&#160;        {</div>
+<div class="line"><a name="l00230"></a><span class="lineno">  230</span>&#160;            <a class="code" href="../../dc/d6b/classInterfaceGraphique_1_1Configuration.html#a57839957f284c5c0a4c9bb6c99afb990">PGJ1_bouton</a>.Text = <span class="keywordtype">char</span>.ConvertFromUtf32(defaultValues[0]);</div>
+<div class="line"><a name="l00231"></a><span class="lineno">  231</span>&#160;            <a class="code" href="../../dc/d6b/classInterfaceGraphique_1_1Configuration.html#ae06562c8c5353609a09081fb0556d61b">PDJ1_bouton</a>.Text = <span class="keywordtype">char</span>.ConvertFromUtf32(defaultValues[1]);</div>
+<div class="line"><a name="l00232"></a><span class="lineno">  232</span>&#160;            <a class="code" href="../../dc/d6b/classInterfaceGraphique_1_1Configuration.html#a6ad38e13e901b0c33f3e6323a231ab2b">PGJ2_bouton</a>.Text = <span class="keywordtype">char</span>.ConvertFromUtf32(defaultValues[2]);</div>
+<div class="line"><a name="l00233"></a><span class="lineno">  233</span>&#160;            <a class="code" href="../../dc/d6b/classInterfaceGraphique_1_1Configuration.html#a7592384c48b0a55c7e1e331875a8b6fd">PDJ2_bouton</a>.Text = <span class="keywordtype">char</span>.ConvertFromUtf32(defaultValues[3]);</div>
+<div class="line"><a name="l00234"></a><span class="lineno">  234</span>&#160;            <a class="code" href="../../dc/d6b/classInterfaceGraphique_1_1Configuration.html#a260e94d2c458c9b3cc30c1e81093a898">Ressort_bouton</a>.Text = <span class="stringliteral">&quot;Espace&quot;</span>;</div>
+<div class="line"><a name="l00235"></a><span class="lineno">  235</span>&#160;            currentValues[0] = 65;</div>
+<div class="line"><a name="l00236"></a><span class="lineno">  236</span>&#160;            currentValues[1] = 83;</div>
+<div class="line"><a name="l00237"></a><span class="lineno">  237</span>&#160;            currentValues[2] = 52;</div>
+<div class="line"><a name="l00238"></a><span class="lineno">  238</span>&#160;            currentValues[3] = 53;</div>
+<div class="line"><a name="l00239"></a><span class="lineno">  239</span>&#160;            currentValues[4] = 32;</div>
+<div class="line"><a name="l00240"></a><span class="lineno">  240</span>&#160;        }</div>
+<div class="line"><a name="l00241"></a><span class="lineno">  241</span>&#160;</div>
+<div class="line"><a name="l00250"></a><span class="lineno"><a class="line" href="../../dc/d6b/classInterfaceGraphique_1_1Configuration.html#a8be343114a30fe901ec35029aacdb58f">  250</a></span>&#160;        <span class="keyword">private</span> <span class="keywordtype">void</span> <a class="code" href="../../dc/d6b/classInterfaceGraphique_1_1Configuration.html#a8be343114a30fe901ec35029aacdb58f">LabelChange</a>(<span class="keywordtype">string</span> message)</div>
+<div class="line"><a name="l00251"></a><span class="lineno">  251</span>&#160;        {</div>
+<div class="line"><a name="l00252"></a><span class="lineno">  252</span>&#160;            <a class="code" href="../../dc/d6b/classInterfaceGraphique_1_1Configuration.html#ab2b247c82beb74a0b0178f8a2c688a72">label_Rebind</a>.Text = <span class="stringliteral">&quot;Appuyez sur une touche pour changer la touche de &quot;</span> + message;</div>
+<div class="line"><a name="l00253"></a><span class="lineno">  253</span>&#160;</div>
+<div class="line"><a name="l00254"></a><span class="lineno">  254</span>&#160;        }</div>
+<div class="line"><a name="l00255"></a><span class="lineno">  255</span>&#160;</div>
+<div class="line"><a name="l00266"></a><span class="lineno"><a class="line" href="../../dc/d6b/classInterfaceGraphique_1_1Configuration.html#a0976a9c7922bc67a4a63320aa4cc527b">  266</a></span>&#160;        <span class="keyword">private</span> <span class="keywordtype">void</span> <a class="code" href="../../dc/d6b/classInterfaceGraphique_1_1Configuration.html#a0976a9c7922bc67a4a63320aa4cc527b">PGJ1_bouton_KeyDown</a>(<span class="keywordtype">object</span> sender, KeyEventArgs e)</div>
+<div class="line"><a name="l00267"></a><span class="lineno">  267</span>&#160;        {</div>
+<div class="line"><a name="l00268"></a><span class="lineno">  268</span>&#160;            <span class="keywordtype">int</span> touche = e.KeyValue;</div>
+<div class="line"><a name="l00269"></a><span class="lineno">  269</span>&#160;            <span class="keywordflow">if</span>( this.<a class="code" href="../../dc/d6b/classInterfaceGraphique_1_1Configuration.html#a214975d72c0a0c9c953a04e078e62c32">isValid</a>(touche) == <span class="keyword">true</span>)</div>
+<div class="line"><a name="l00270"></a><span class="lineno">  270</span>&#160;            {</div>
+<div class="line"><a name="l00271"></a><span class="lineno">  271</span>&#160;                currentValues[0] = touche;</div>
+<div class="line"><a name="l00272"></a><span class="lineno">  272</span>&#160;                maTouche = <span class="keywordtype">char</span>.ConvertFromUtf32(touche);</div>
+<div class="line"><a name="l00273"></a><span class="lineno">  273</span>&#160;                <span class="keywordflow">if</span> (maTouche == <span class="stringliteral">&quot; &quot;</span>)</div>
+<div class="line"><a name="l00274"></a><span class="lineno">  274</span>&#160;                    maTouche = <span class="stringliteral">&quot;Espace&quot;</span>;</div>
+<div class="line"><a name="l00275"></a><span class="lineno">  275</span>&#160;                <span class="keywordflow">if</span> (touche &gt;= 96 &amp;&amp; touche &lt;= 105)</div>
+<div class="line"><a name="l00276"></a><span class="lineno">  276</span>&#160;                    <a class="code" href="../../dc/d6b/classInterfaceGraphique_1_1Configuration.html#a57839957f284c5c0a4c9bb6c99afb990">PGJ1_bouton</a>.Text = <span class="stringliteral">&quot;NumPad&quot;</span> + <span class="keywordtype">char</span>.ConvertFromUtf32(touche - <span class="charliteral">&#39;0&#39;</span>);</div>
+<div class="line"><a name="l00277"></a><span class="lineno">  277</span>&#160;                <span class="keywordflow">else</span></div>
+<div class="line"><a name="l00278"></a><span class="lineno">  278</span>&#160;                    <a class="code" href="../../dc/d6b/classInterfaceGraphique_1_1Configuration.html#a57839957f284c5c0a4c9bb6c99afb990">PGJ1_bouton</a>.Text = <a class="code" href="../../dc/d6b/classInterfaceGraphique_1_1Configuration.html#aa9147231adf94dd02463c92b21094339">maTouche</a>;</div>
+<div class="line"><a name="l00279"></a><span class="lineno">  279</span>&#160;            }</div>
+<div class="line"><a name="l00280"></a><span class="lineno">  280</span>&#160;                   </div>
+<div class="line"><a name="l00281"></a><span class="lineno">  281</span>&#160;</div>
+<div class="line"><a name="l00282"></a><span class="lineno">  282</span>&#160;        }</div>
+<div class="line"><a name="l00283"></a><span class="lineno">  283</span>&#160;</div>
+<div class="line"><a name="l00294"></a><span class="lineno"><a class="line" href="../../dc/d6b/classInterfaceGraphique_1_1Configuration.html#a74ef913ca84d94bad4d22ff89387b156">  294</a></span>&#160;        <span class="keyword">private</span> <span class="keywordtype">void</span> <a class="code" href="../../dc/d6b/classInterfaceGraphique_1_1Configuration.html#a74ef913ca84d94bad4d22ff89387b156">PDJ1_bouton_KeyDown</a>(<span class="keywordtype">object</span> sender, KeyEventArgs e)</div>
+<div class="line"><a name="l00295"></a><span class="lineno">  295</span>&#160;        {</div>
+<div class="line"><a name="l00296"></a><span class="lineno">  296</span>&#160;            </div>
+<div class="line"><a name="l00297"></a><span class="lineno">  297</span>&#160;            <span class="keywordtype">int</span> touche = e.KeyValue;</div>
+<div class="line"><a name="l00298"></a><span class="lineno">  298</span>&#160;           <span class="comment">// Console.WriteLine(e.KeyData.ToString());</span></div>
+<div class="line"><a name="l00299"></a><span class="lineno">  299</span>&#160;           <span class="comment">// Console.WriteLine(touche);</span></div>
+<div class="line"><a name="l00300"></a><span class="lineno">  300</span>&#160;            <span class="keywordflow">if</span> (this.<a class="code" href="../../dc/d6b/classInterfaceGraphique_1_1Configuration.html#a214975d72c0a0c9c953a04e078e62c32">isValid</a>(touche) == <span class="keyword">true</span>)</div>
+<div class="line"><a name="l00301"></a><span class="lineno">  301</span>&#160;            {</div>
+<div class="line"><a name="l00302"></a><span class="lineno">  302</span>&#160;                currentValues[1] = touche;</div>
+<div class="line"><a name="l00303"></a><span class="lineno">  303</span>&#160;                maTouche = <span class="keywordtype">char</span>.ConvertFromUtf32(touche);</div>
+<div class="line"><a name="l00304"></a><span class="lineno">  304</span>&#160;                <span class="keywordflow">if</span> (maTouche == <span class="stringliteral">&quot; &quot;</span>)</div>
+<div class="line"><a name="l00305"></a><span class="lineno">  305</span>&#160;                    maTouche = <span class="stringliteral">&quot;Espace&quot;</span>;</div>
+<div class="line"><a name="l00306"></a><span class="lineno">  306</span>&#160;                <span class="keywordflow">if</span> (touche &gt;= 96 &amp;&amp; touche &lt;= 105)</div>
+<div class="line"><a name="l00307"></a><span class="lineno">  307</span>&#160;                   <a class="code" href="../../dc/d6b/classInterfaceGraphique_1_1Configuration.html#ae06562c8c5353609a09081fb0556d61b">PDJ1_bouton</a>.Text = <span class="stringliteral">&quot;NumPad&quot;</span> + <span class="keywordtype">char</span>.ConvertFromUtf32(touche - <span class="charliteral">&#39;0&#39;</span>);</div>
+<div class="line"><a name="l00308"></a><span class="lineno">  308</span>&#160;                <span class="keywordflow">else</span></div>
+<div class="line"><a name="l00309"></a><span class="lineno">  309</span>&#160;                    <a class="code" href="../../dc/d6b/classInterfaceGraphique_1_1Configuration.html#ae06562c8c5353609a09081fb0556d61b">PDJ1_bouton</a>.Text = <a class="code" href="../../dc/d6b/classInterfaceGraphique_1_1Configuration.html#aa9147231adf94dd02463c92b21094339">maTouche</a>;</div>
+<div class="line"><a name="l00310"></a><span class="lineno">  310</span>&#160;            }</div>
+<div class="line"><a name="l00311"></a><span class="lineno">  311</span>&#160;        }</div>
+<div class="line"><a name="l00312"></a><span class="lineno">  312</span>&#160;</div>
+<div class="line"><a name="l00323"></a><span class="lineno"><a class="line" href="../../dc/d6b/classInterfaceGraphique_1_1Configuration.html#abf083d89599fb025191a5ab8bae3bbc8">  323</a></span>&#160;        <span class="keyword">private</span> <span class="keywordtype">void</span> <a class="code" href="../../dc/d6b/classInterfaceGraphique_1_1Configuration.html#abf083d89599fb025191a5ab8bae3bbc8">PGJ2_bouton_KeyDown</a>(<span class="keywordtype">object</span> sender, KeyEventArgs e)</div>
+<div class="line"><a name="l00324"></a><span class="lineno">  324</span>&#160;        {</div>
+<div class="line"><a name="l00325"></a><span class="lineno">  325</span>&#160;            <span class="keywordtype">int</span> touche = e.KeyValue;</div>
+<div class="line"><a name="l00326"></a><span class="lineno">  326</span>&#160;            <span class="keywordflow">if</span> (this.<a class="code" href="../../dc/d6b/classInterfaceGraphique_1_1Configuration.html#a214975d72c0a0c9c953a04e078e62c32">isValid</a>(touche) == <span class="keyword">true</span>)</div>
+<div class="line"><a name="l00327"></a><span class="lineno">  327</span>&#160;            {</div>
+<div class="line"><a name="l00328"></a><span class="lineno">  328</span>&#160;                maTouche = <span class="keywordtype">char</span>.ConvertFromUtf32(touche);</div>
+<div class="line"><a name="l00329"></a><span class="lineno">  329</span>&#160;                currentValues[2] = touche;</div>
+<div class="line"><a name="l00330"></a><span class="lineno">  330</span>&#160;                <span class="keywordflow">if</span> (maTouche == <span class="stringliteral">&quot; &quot;</span>)</div>
+<div class="line"><a name="l00331"></a><span class="lineno">  331</span>&#160;                    maTouche = <span class="stringliteral">&quot;Espace&quot;</span>;</div>
+<div class="line"><a name="l00332"></a><span class="lineno">  332</span>&#160;                <span class="keywordflow">if</span> (touche &gt;= 96 &amp;&amp; touche &lt;= 105)</div>
+<div class="line"><a name="l00333"></a><span class="lineno">  333</span>&#160;                    <a class="code" href="../../dc/d6b/classInterfaceGraphique_1_1Configuration.html#a6ad38e13e901b0c33f3e6323a231ab2b">PGJ2_bouton</a>.Text = <span class="stringliteral">&quot;NumPad&quot;</span> + <span class="keywordtype">char</span>.ConvertFromUtf32(touche - <span class="charliteral">&#39;0&#39;</span>);</div>
+<div class="line"><a name="l00334"></a><span class="lineno">  334</span>&#160;                <span class="keywordflow">else</span></div>
+<div class="line"><a name="l00335"></a><span class="lineno">  335</span>&#160;                    <a class="code" href="../../dc/d6b/classInterfaceGraphique_1_1Configuration.html#a6ad38e13e901b0c33f3e6323a231ab2b">PGJ2_bouton</a>.Text = <a class="code" href="../../dc/d6b/classInterfaceGraphique_1_1Configuration.html#aa9147231adf94dd02463c92b21094339">maTouche</a>;</div>
+<div class="line"><a name="l00336"></a><span class="lineno">  336</span>&#160;            }</div>
+<div class="line"><a name="l00337"></a><span class="lineno">  337</span>&#160;        }</div>
+<div class="line"><a name="l00338"></a><span class="lineno">  338</span>&#160;</div>
+<div class="line"><a name="l00349"></a><span class="lineno"><a class="line" href="../../dc/d6b/classInterfaceGraphique_1_1Configuration.html#ac5d1b022011a3f33cb3447a1c146be47">  349</a></span>&#160;        <span class="keyword">private</span> <span class="keywordtype">void</span> <a class="code" href="../../dc/d6b/classInterfaceGraphique_1_1Configuration.html#ac5d1b022011a3f33cb3447a1c146be47">PDJ2_bouton_KeyDown</a>(<span class="keywordtype">object</span> sender, KeyEventArgs e)</div>
+<div class="line"><a name="l00350"></a><span class="lineno">  350</span>&#160;        {</div>
+<div class="line"><a name="l00351"></a><span class="lineno">  351</span>&#160;            <span class="keywordtype">int</span> touche = e.KeyValue;</div>
+<div class="line"><a name="l00352"></a><span class="lineno">  352</span>&#160;            <span class="keywordflow">if</span> (this.<a class="code" href="../../dc/d6b/classInterfaceGraphique_1_1Configuration.html#a214975d72c0a0c9c953a04e078e62c32">isValid</a>(touche) == <span class="keyword">true</span>)</div>
+<div class="line"><a name="l00353"></a><span class="lineno">  353</span>&#160;            {</div>
+<div class="line"><a name="l00354"></a><span class="lineno">  354</span>&#160;                currentValues[3] = touche;</div>
+<div class="line"><a name="l00355"></a><span class="lineno">  355</span>&#160;                maTouche = <span class="keywordtype">char</span>.ConvertFromUtf32(touche);</div>
+<div class="line"><a name="l00356"></a><span class="lineno">  356</span>&#160;                <span class="keywordflow">if</span> (maTouche == <span class="stringliteral">&quot; &quot;</span>)</div>
+<div class="line"><a name="l00357"></a><span class="lineno">  357</span>&#160;                    maTouche = <span class="stringliteral">&quot;Espace&quot;</span>;</div>
+<div class="line"><a name="l00358"></a><span class="lineno">  358</span>&#160;                <span class="keywordflow">if</span> (touche &gt;= 96 &amp;&amp; touche &lt;= 105)</div>
+<div class="line"><a name="l00359"></a><span class="lineno">  359</span>&#160;                    <a class="code" href="../../dc/d6b/classInterfaceGraphique_1_1Configuration.html#a7592384c48b0a55c7e1e331875a8b6fd">PDJ2_bouton</a>.Text = <span class="stringliteral">&quot;NumPad&quot;</span> + <span class="keywordtype">char</span>.ConvertFromUtf32(touche - <span class="charliteral">&#39;0&#39;</span>);</div>
+<div class="line"><a name="l00360"></a><span class="lineno">  360</span>&#160;                <span class="keywordflow">else</span></div>
+<div class="line"><a name="l00361"></a><span class="lineno">  361</span>&#160;                    <a class="code" href="../../dc/d6b/classInterfaceGraphique_1_1Configuration.html#a7592384c48b0a55c7e1e331875a8b6fd">PDJ2_bouton</a>.Text = <a class="code" href="../../dc/d6b/classInterfaceGraphique_1_1Configuration.html#aa9147231adf94dd02463c92b21094339">maTouche</a>;</div>
+<div class="line"><a name="l00362"></a><span class="lineno">  362</span>&#160;            }</div>
+<div class="line"><a name="l00363"></a><span class="lineno">  363</span>&#160;        }</div>
+<div class="line"><a name="l00364"></a><span class="lineno">  364</span>&#160;</div>
+<div class="line"><a name="l00375"></a><span class="lineno"><a class="line" href="../../dc/d6b/classInterfaceGraphique_1_1Configuration.html#acd4207b8f1f04b539d0dbeb9eb084975">  375</a></span>&#160;        <span class="keyword">private</span> <span class="keywordtype">void</span> <a class="code" href="../../dc/d6b/classInterfaceGraphique_1_1Configuration.html#acd4207b8f1f04b539d0dbeb9eb084975">Ressort_bouton_KeyDown</a>(<span class="keywordtype">object</span> sender, KeyEventArgs e)</div>
+<div class="line"><a name="l00376"></a><span class="lineno">  376</span>&#160;        {</div>
+<div class="line"><a name="l00377"></a><span class="lineno">  377</span>&#160;            <span class="keywordtype">int</span> touche = e.KeyValue;</div>
+<div class="line"><a name="l00378"></a><span class="lineno">  378</span>&#160;            </div>
+<div class="line"><a name="l00379"></a><span class="lineno">  379</span>&#160;            <span class="keywordflow">if</span> (this.<a class="code" href="../../dc/d6b/classInterfaceGraphique_1_1Configuration.html#a214975d72c0a0c9c953a04e078e62c32">isValid</a>(touche) == <span class="keyword">true</span>)</div>
+<div class="line"><a name="l00380"></a><span class="lineno">  380</span>&#160;            {</div>
+<div class="line"><a name="l00381"></a><span class="lineno">  381</span>&#160;                currentValues[4] = touche;</div>
+<div class="line"><a name="l00382"></a><span class="lineno">  382</span>&#160;                maTouche = <span class="keywordtype">char</span>.ConvertFromUtf32(touche);</div>
+<div class="line"><a name="l00383"></a><span class="lineno">  383</span>&#160;                <span class="keywordflow">if</span> (maTouche == <span class="stringliteral">&quot; &quot;</span>)</div>
+<div class="line"><a name="l00384"></a><span class="lineno">  384</span>&#160;                    maTouche = <span class="stringliteral">&quot;Espace&quot;</span>;</div>
+<div class="line"><a name="l00385"></a><span class="lineno">  385</span>&#160;                <span class="keywordflow">if</span> (touche &gt;= 96 &amp;&amp; touche &lt;= 105)</div>
+<div class="line"><a name="l00386"></a><span class="lineno">  386</span>&#160;                    <a class="code" href="../../dc/d6b/classInterfaceGraphique_1_1Configuration.html#a260e94d2c458c9b3cc30c1e81093a898">Ressort_bouton</a>.Text = <span class="stringliteral">&quot;NumPad&quot;</span> + <span class="keywordtype">char</span>.ConvertFromUtf32(touche - <span class="charliteral">&#39;0&#39;</span>);</div>
+<div class="line"><a name="l00387"></a><span class="lineno">  387</span>&#160;                <span class="keywordflow">else</span></div>
+<div class="line"><a name="l00388"></a><span class="lineno">  388</span>&#160;                    <a class="code" href="../../dc/d6b/classInterfaceGraphique_1_1Configuration.html#a260e94d2c458c9b3cc30c1e81093a898">Ressort_bouton</a>.Text = <a class="code" href="../../dc/d6b/classInterfaceGraphique_1_1Configuration.html#aa9147231adf94dd02463c92b21094339">maTouche</a>;</div>
+<div class="line"><a name="l00389"></a><span class="lineno">  389</span>&#160;               </div>
+<div class="line"><a name="l00390"></a><span class="lineno">  390</span>&#160;            }</div>
+<div class="line"><a name="l00391"></a><span class="lineno">  391</span>&#160;        }</div>
+<div class="line"><a name="l00392"></a><span class="lineno">  392</span>&#160;</div>
+<div class="line"><a name="l00402"></a><span class="lineno"><a class="line" href="../../dc/d6b/classInterfaceGraphique_1_1Configuration.html#a4c6f20d61a9f5a7fdbc3ff57395265b2">  402</a></span>&#160;        <span class="keyword">private</span> <span class="keywordtype">void</span> <a class="code" href="../../dc/d6b/classInterfaceGraphique_1_1Configuration.html#a4c6f20d61a9f5a7fdbc3ff57395265b2">PGJ1_bouton_Click</a>(<span class="keywordtype">object</span> sender, EventArgs e)</div>
+<div class="line"><a name="l00403"></a><span class="lineno">  403</span>&#160;        {</div>
+<div class="line"><a name="l00404"></a><span class="lineno">  404</span>&#160;           <span class="comment">// PGJ1_bouton.ForeColor = Color.Red;</span></div>
+<div class="line"><a name="l00405"></a><span class="lineno">  405</span>&#160;            <a class="code" href="../../dc/d6b/classInterfaceGraphique_1_1Configuration.html#a8be343114a30fe901ec35029aacdb58f">LabelChange</a>(<span class="stringliteral">&quot;palette gauche de Joueur 1&quot;</span>);</div>
+<div class="line"><a name="l00406"></a><span class="lineno">  406</span>&#160;        }</div>
+<div class="line"><a name="l00407"></a><span class="lineno">  407</span>&#160;</div>
+<div class="line"><a name="l00417"></a><span class="lineno"><a class="line" href="../../dc/d6b/classInterfaceGraphique_1_1Configuration.html#a2e13db7544deb14d3e9772df41e0110b">  417</a></span>&#160;        <span class="keyword">private</span> <span class="keywordtype">void</span> <a class="code" href="../../dc/d6b/classInterfaceGraphique_1_1Configuration.html#a2e13db7544deb14d3e9772df41e0110b">PDJ1_bouton_Click</a>(<span class="keywordtype">object</span> sender, EventArgs e)</div>
+<div class="line"><a name="l00418"></a><span class="lineno">  418</span>&#160;        {</div>
+<div class="line"><a name="l00419"></a><span class="lineno">  419</span>&#160;           <span class="comment">// PDJ1_bouton.ForeColor = Color.Red;</span></div>
+<div class="line"><a name="l00420"></a><span class="lineno">  420</span>&#160;            <a class="code" href="../../dc/d6b/classInterfaceGraphique_1_1Configuration.html#a8be343114a30fe901ec35029aacdb58f">LabelChange</a>(<span class="stringliteral">&quot;palette droite de Joueur 1&quot;</span>);</div>
+<div class="line"><a name="l00421"></a><span class="lineno">  421</span>&#160;        }</div>
+<div class="line"><a name="l00422"></a><span class="lineno">  422</span>&#160;</div>
+<div class="line"><a name="l00432"></a><span class="lineno"><a class="line" href="../../dc/d6b/classInterfaceGraphique_1_1Configuration.html#a9d2eedbb8347d1b4cb1936db6442b719">  432</a></span>&#160;        <span class="keyword">private</span> <span class="keywordtype">void</span> <a class="code" href="../../dc/d6b/classInterfaceGraphique_1_1Configuration.html#a9d2eedbb8347d1b4cb1936db6442b719">PGJ2_bouton_Click</a>(<span class="keywordtype">object</span> sender, EventArgs e)</div>
+<div class="line"><a name="l00433"></a><span class="lineno">  433</span>&#160;        {</div>
+<div class="line"><a name="l00434"></a><span class="lineno">  434</span>&#160;            <span class="comment">//PGJ2_bouton.ForeColor = Color.Red;</span></div>
+<div class="line"><a name="l00435"></a><span class="lineno">  435</span>&#160;            <a class="code" href="../../dc/d6b/classInterfaceGraphique_1_1Configuration.html#a8be343114a30fe901ec35029aacdb58f">LabelChange</a>(<span class="stringliteral">&quot;palette gauche de Joueur 2&quot;</span>);</div>
+<div class="line"><a name="l00436"></a><span class="lineno">  436</span>&#160;        }</div>
+<div class="line"><a name="l00437"></a><span class="lineno">  437</span>&#160;</div>
+<div class="line"><a name="l00447"></a><span class="lineno"><a class="line" href="../../dc/d6b/classInterfaceGraphique_1_1Configuration.html#ac40c66b47351f1db8cd07ea2d888dbca">  447</a></span>&#160;        <span class="keyword">private</span> <span class="keywordtype">void</span> <a class="code" href="../../dc/d6b/classInterfaceGraphique_1_1Configuration.html#ac40c66b47351f1db8cd07ea2d888dbca">PDJ2_bouton_Click</a>(<span class="keywordtype">object</span> sender, EventArgs e)</div>
+<div class="line"><a name="l00448"></a><span class="lineno">  448</span>&#160;        {</div>
+<div class="line"><a name="l00449"></a><span class="lineno">  449</span>&#160;            <span class="comment">//PDJ2_bouton.ForeColor = Color.Red;</span></div>
+<div class="line"><a name="l00450"></a><span class="lineno">  450</span>&#160;            <a class="code" href="../../dc/d6b/classInterfaceGraphique_1_1Configuration.html#a8be343114a30fe901ec35029aacdb58f">LabelChange</a>(<span class="stringliteral">&quot;palette droite de Joueur 2&quot;</span>);</div>
+<div class="line"><a name="l00451"></a><span class="lineno">  451</span>&#160;        }</div>
+<div class="line"><a name="l00452"></a><span class="lineno">  452</span>&#160;</div>
+<div class="line"><a name="l00462"></a><span class="lineno"><a class="line" href="../../dc/d6b/classInterfaceGraphique_1_1Configuration.html#a58765a3cfc8af9f4b2a3e86f9b87daf1">  462</a></span>&#160;        <span class="keyword">private</span> <span class="keywordtype">void</span> <a class="code" href="../../dc/d6b/classInterfaceGraphique_1_1Configuration.html#a58765a3cfc8af9f4b2a3e86f9b87daf1">Ressort_bouton_Click</a>(<span class="keywordtype">object</span> sender, EventArgs e)</div>
+<div class="line"><a name="l00463"></a><span class="lineno">  463</span>&#160;        {</div>
+<div class="line"><a name="l00464"></a><span class="lineno">  464</span>&#160;            <span class="comment">//Ressort_bouton.ForeColor = Color.Red;</span></div>
+<div class="line"><a name="l00465"></a><span class="lineno">  465</span>&#160;            <a class="code" href="../../dc/d6b/classInterfaceGraphique_1_1Configuration.html#a8be343114a30fe901ec35029aacdb58f">LabelChange</a>(<span class="stringliteral">&quot;Ressorts&quot;</span>);</div>
+<div class="line"><a name="l00466"></a><span class="lineno">  466</span>&#160;        }</div>
+<div class="line"><a name="l00467"></a><span class="lineno">  467</span>&#160;</div>
+<div class="line"><a name="l00477"></a><span class="lineno"><a class="line" href="../../dc/d6b/classInterfaceGraphique_1_1Configuration.html#aaa4a069b00fb5cfdb8a06bd323bdd92c">  477</a></span>&#160;        <span class="keyword">private</span> <span class="keywordtype">void</span> <a class="code" href="../../dc/d6b/classInterfaceGraphique_1_1Configuration.html#aaa4a069b00fb5cfdb8a06bd323bdd92c">OK_bouton_Click</a>(<span class="keywordtype">object</span> sender, EventArgs e)</div>
+<div class="line"><a name="l00478"></a><span class="lineno">  478</span>&#160;        {</div>
+<div class="line"><a name="l00479"></a><span class="lineno">  479</span>&#160;            <span class="keywordflow">for</span>(<span class="keywordtype">int</span> i = 0; i &lt; 5; i++)</div>
+<div class="line"><a name="l00480"></a><span class="lineno">  480</span>&#160;                valuesXML[i] = currentValues[i];</div>
+<div class="line"><a name="l00481"></a><span class="lineno">  481</span>&#160;            valuesXML[5] = Convert.ToInt32(<a class="code" href="../../dc/d6b/classInterfaceGraphique_1_1Configuration.html#acb9b216963866c6b1fb4a535ee8ed2ad">comboBoxBilles</a>.Text.ToString());</div>
+<div class="line"><a name="l00482"></a><span class="lineno">  482</span>&#160;            valuesXML[6] = Convert.ToInt32(<a class="code" href="../../dc/d6b/classInterfaceGraphique_1_1Configuration.html#ad118a4832f6daeecacfa7e350f4e7bb6">MDB_OK</a>.Checked);</div>
+<div class="line"><a name="l00483"></a><span class="lineno">  483</span>&#160;            valuesXML[7] = Convert.ToInt32(<a class="code" href="../../dc/d6b/classInterfaceGraphique_1_1Configuration.html#a07ced3a1c051249b897bb5e5f5397b3f">FRS_OK</a>.Checked);</div>
+<div class="line"><a name="l00484"></a><span class="lineno">  484</span>&#160;            valuesXML[8] = Convert.ToInt32(<a class="code" href="../../dc/d6b/classInterfaceGraphique_1_1Configuration.html#a99faf54f30c9d852ab370f9209c383fd">GB_OK</a>.Checked);</div>
+<div class="line"><a name="l00485"></a><span class="lineno">  485</span>&#160;            valuesXML[9] = Convert.ToInt32(<a class="code" href="../../dc/d6b/classInterfaceGraphique_1_1Configuration.html#a4d22995872a4cdf49e9a7d26e4d327bf">VAC_OK</a>.Checked);</div>
+<div class="line"><a name="l00486"></a><span class="lineno">  486</span>&#160;            valuesXML[10] = Convert.ToInt32(<a class="code" href="../../dc/d6b/classInterfaceGraphique_1_1Configuration.html#a603036c1c54d274c4d53417ef2e81ce0">AE_OK</a>.Checked);</div>
+<div class="line"><a name="l00487"></a><span class="lineno">  487</span>&#160;            valuesXML[11] = Convert.ToInt32(<a class="code" href="../../dc/d6b/classInterfaceGraphique_1_1Configuration.html#ae7520764ff3d00532b06b0552f46ea6b">PORTAL_OK</a>.Checked);</div>
+<div class="line"><a name="l00488"></a><span class="lineno">  488</span>&#160;            valuesXML[12] = Convert.ToInt32(<a class="code" href="../../dc/d6b/classInterfaceGraphique_1_1Configuration.html#ab1b558a9d9315164ad64bd3d5b52e0ae">GLOB_OK</a>.Checked);</div>
+<div class="line"><a name="l00489"></a><span class="lineno">  489</span>&#160;</div>
+<div class="line"><a name="l00490"></a><span class="lineno">  490</span>&#160;            <a class="code" href="../../dc/d2e/classInterfaceGraphique_1_1FonctionsNatives.html">FonctionsNatives</a>.<a class="code" href="../../dc/d2e/classInterfaceGraphique_1_1FonctionsNatives.html#aa3ea68616561160b00bda764a60b3b64">creerFichierConfig</a>(valuesXML);</div>
+<div class="line"><a name="l00491"></a><span class="lineno">  491</span>&#160;            this.Close();</div>
+<div class="line"><a name="l00492"></a><span class="lineno">  492</span>&#160;        }</div>
+<div class="line"><a name="l00493"></a><span class="lineno">  493</span>&#160;</div>
+<div class="line"><a name="l00502"></a><span class="lineno"><a class="line" href="../../dc/d6b/classInterfaceGraphique_1_1Configuration.html#ac052a2dcc27bce114dda47fa2b405145">  502</a></span>&#160;        <span class="keyword">public</span> <span class="keywordtype">bool</span> <a class="code" href="../../dc/d6b/classInterfaceGraphique_1_1Configuration.html#ac052a2dcc27bce114dda47fa2b405145">getConfig</a>(<span class="keywordtype">int</span> i)</div>
+<div class="line"><a name="l00503"></a><span class="lineno">  503</span>&#160;        {</div>
+<div class="line"><a name="l00504"></a><span class="lineno">  504</span>&#160;            <span class="keywordflow">if</span> (i == 0)</div>
+<div class="line"><a name="l00505"></a><span class="lineno">  505</span>&#160;                <span class="keywordflow">return</span> <a class="code" href="../../dc/d6b/classInterfaceGraphique_1_1Configuration.html#a99faf54f30c9d852ab370f9209c383fd">GB_OK</a>.Checked;</div>
+<div class="line"><a name="l00506"></a><span class="lineno">  506</span>&#160;            <span class="keywordflow">else</span> <span class="keywordflow">if</span> (i == 1)</div>
+<div class="line"><a name="l00507"></a><span class="lineno">  507</span>&#160;                <span class="keywordflow">return</span> <a class="code" href="../../dc/d6b/classInterfaceGraphique_1_1Configuration.html#a4d22995872a4cdf49e9a7d26e4d327bf">VAC_OK</a>.Checked;</div>
+<div class="line"><a name="l00508"></a><span class="lineno">  508</span>&#160;            <span class="keywordflow">else</span> <span class="keywordflow">if</span> (i == 2)</div>
+<div class="line"><a name="l00509"></a><span class="lineno">  509</span>&#160;                <span class="keywordflow">return</span> <a class="code" href="../../dc/d6b/classInterfaceGraphique_1_1Configuration.html#a603036c1c54d274c4d53417ef2e81ce0">AE_OK</a>.Checked;</div>
+<div class="line"><a name="l00510"></a><span class="lineno">  510</span>&#160;            <span class="keywordflow">else</span> <span class="keywordflow">if</span> (i == 3)</div>
+<div class="line"><a name="l00511"></a><span class="lineno">  511</span>&#160;                <span class="keywordflow">return</span> <a class="code" href="../../dc/d6b/classInterfaceGraphique_1_1Configuration.html#ae7520764ff3d00532b06b0552f46ea6b">PORTAL_OK</a>.Checked;</div>
+<div class="line"><a name="l00512"></a><span class="lineno">  512</span>&#160;            <span class="keywordflow">else</span></div>
+<div class="line"><a name="l00513"></a><span class="lineno">  513</span>&#160;                <span class="keywordflow">return</span> <span class="keyword">false</span>;</div>
+<div class="line"><a name="l00514"></a><span class="lineno">  514</span>&#160;        }</div>
+<div class="line"><a name="l00515"></a><span class="lineno">  515</span>&#160;</div>
+<div class="line"><a name="l00524"></a><span class="lineno"><a class="line" href="../../dc/d6b/classInterfaceGraphique_1_1Configuration.html#a9360a35967c82e3e1dfd059ff5962ce7">  524</a></span>&#160;        <span class="keyword">private</span> <span class="keywordtype">void</span> <a class="code" href="../../dc/d6b/classInterfaceGraphique_1_1Configuration.html#a9360a35967c82e3e1dfd059ff5962ce7">radioButtonEnable</a>(<span class="keywordtype">bool</span> active)</div>
+<div class="line"><a name="l00525"></a><span class="lineno">  525</span>&#160;        {</div>
+<div class="line"><a name="l00526"></a><span class="lineno">  526</span>&#160;            <a class="code" href="../../dc/d6b/classInterfaceGraphique_1_1Configuration.html#a0226573ed8a1f60963fb2f679bbacb95">GB_Cancel</a>.Enabled = active;</div>
+<div class="line"><a name="l00527"></a><span class="lineno">  527</span>&#160;            <a class="code" href="../../dc/d6b/classInterfaceGraphique_1_1Configuration.html#a99faf54f30c9d852ab370f9209c383fd">GB_OK</a>.Enabled = active;</div>
+<div class="line"><a name="l00528"></a><span class="lineno">  528</span>&#160;            <a class="code" href="../../dc/d6b/classInterfaceGraphique_1_1Configuration.html#af65bd4dc9088703d1ae4a80e628acb2c">VAC_Cancel</a>.Enabled = active;</div>
+<div class="line"><a name="l00529"></a><span class="lineno">  529</span>&#160;            <a class="code" href="../../dc/d6b/classInterfaceGraphique_1_1Configuration.html#a4d22995872a4cdf49e9a7d26e4d327bf">VAC_OK</a>.Enabled = active;</div>
+<div class="line"><a name="l00530"></a><span class="lineno">  530</span>&#160;            <a class="code" href="../../dc/d6b/classInterfaceGraphique_1_1Configuration.html#ae5dd6892523331ef7eba33b4f9f5545b">AE_Cancel</a>.Enabled = active;</div>
+<div class="line"><a name="l00531"></a><span class="lineno">  531</span>&#160;            <a class="code" href="../../dc/d6b/classInterfaceGraphique_1_1Configuration.html#a603036c1c54d274c4d53417ef2e81ce0">AE_OK</a>.Enabled = active;</div>
+<div class="line"><a name="l00532"></a><span class="lineno">  532</span>&#160;            <a class="code" href="../../dc/d6b/classInterfaceGraphique_1_1Configuration.html#aeddbe91cd9ba6d259b9c393d8563adc9">PORTAL_Cancel</a>.Enabled = active;</div>
+<div class="line"><a name="l00533"></a><span class="lineno">  533</span>&#160;            <a class="code" href="../../dc/d6b/classInterfaceGraphique_1_1Configuration.html#ae7520764ff3d00532b06b0552f46ea6b">PORTAL_OK</a>.Enabled = active;</div>
+<div class="line"><a name="l00534"></a><span class="lineno">  534</span>&#160;</div>
+<div class="line"><a name="l00535"></a><span class="lineno">  535</span>&#160;        }</div>
+<div class="line"><a name="l00536"></a><span class="lineno">  536</span>&#160;</div>
+<div class="line"><a name="l00546"></a><span class="lineno"><a class="line" href="../../dc/d6b/classInterfaceGraphique_1_1Configuration.html#af9e6835e8cf60e269a03715d9a6ce84b">  546</a></span>&#160;        <span class="keyword">private</span> <span class="keywordtype">void</span> <a class="code" href="../../dc/d6b/classInterfaceGraphique_1_1Configuration.html#af9e6835e8cf60e269a03715d9a6ce84b">GLOB_Cancel_CheckedChanged</a>(<span class="keywordtype">object</span> sender, EventArgs e)</div>
+<div class="line"><a name="l00547"></a><span class="lineno">  547</span>&#160;        {</div>
+<div class="line"><a name="l00548"></a><span class="lineno">  548</span>&#160;            <span class="keywordflow">if</span> (<a class="code" href="../../dc/d6b/classInterfaceGraphique_1_1Configuration.html#ac26c3bf730c21522a706c54bb1872b90">GLOB_Cancel</a>.Checked)</div>
+<div class="line"><a name="l00549"></a><span class="lineno">  549</span>&#160;            {</div>
+<div class="line"><a name="l00550"></a><span class="lineno">  550</span>&#160;                <a class="code" href="../../dc/d6b/classInterfaceGraphique_1_1Configuration.html#a9360a35967c82e3e1dfd059ff5962ce7">radioButtonEnable</a>(<span class="keyword">false</span>);   </div>
+<div class="line"><a name="l00551"></a><span class="lineno">  551</span>&#160;            }</div>
+<div class="line"><a name="l00552"></a><span class="lineno">  552</span>&#160;        }</div>
+<div class="line"><a name="l00553"></a><span class="lineno">  553</span>&#160;</div>
+<div class="line"><a name="l00563"></a><span class="lineno"><a class="line" href="../../dc/d6b/classInterfaceGraphique_1_1Configuration.html#aeadec05929cc3f26406f67e2dfa71efb">  563</a></span>&#160;        <span class="keyword">private</span> <span class="keywordtype">void</span> <a class="code" href="../../dc/d6b/classInterfaceGraphique_1_1Configuration.html#aeadec05929cc3f26406f67e2dfa71efb">GLOB_OK_CheckedChanged</a>(<span class="keywordtype">object</span> sender, EventArgs e)</div>
+<div class="line"><a name="l00564"></a><span class="lineno">  564</span>&#160;        {</div>
+<div class="line"><a name="l00565"></a><span class="lineno">  565</span>&#160;            <span class="keywordflow">if</span> (<a class="code" href="../../dc/d6b/classInterfaceGraphique_1_1Configuration.html#ab1b558a9d9315164ad64bd3d5b52e0ae">GLOB_OK</a>.Checked)</div>
+<div class="line"><a name="l00566"></a><span class="lineno">  566</span>&#160;            {</div>
+<div class="line"><a name="l00567"></a><span class="lineno">  567</span>&#160;                <a class="code" href="../../dc/d6b/classInterfaceGraphique_1_1Configuration.html#a9360a35967c82e3e1dfd059ff5962ce7">radioButtonEnable</a>(<span class="keyword">true</span>);</div>
+<div class="line"><a name="l00568"></a><span class="lineno">  568</span>&#160;            }</div>
+<div class="line"><a name="l00569"></a><span class="lineno">  569</span>&#160;        }</div>
+<div class="line"><a name="l00570"></a><span class="lineno">  570</span>&#160;</div>
+<div class="line"><a name="l00580"></a><span class="lineno"><a class="line" href="../../dc/d6b/classInterfaceGraphique_1_1Configuration.html#afe7b43d01c15dd84bfbeb4dc4e815d98">  580</a></span>&#160;        <span class="keyword">private</span> <span class="keywordtype">void</span> <a class="code" href="../../dc/d6b/classInterfaceGraphique_1_1Configuration.html#afe7b43d01c15dd84bfbeb4dc4e815d98">Configuration_VisibleChanged</a>(<span class="keywordtype">object</span> sender, EventArgs e)</div>
+<div class="line"><a name="l00581"></a><span class="lineno">  581</span>&#160;        {</div>
+<div class="line"><a name="l00582"></a><span class="lineno">  582</span>&#160;            <span class="keywordflow">if</span> (this.Visible)</div>
+<div class="line"><a name="l00583"></a><span class="lineno">  583</span>&#160;            {</div>
+<div class="line"><a name="l00584"></a><span class="lineno">  584</span>&#160;                <a class="code" href="../../dc/d6b/classInterfaceGraphique_1_1Configuration.html#a6810f9329f02b53394159bf0f1bafe15">InitialiserAvecBinaire</a>();</div>
+<div class="line"><a name="l00585"></a><span class="lineno">  585</span>&#160;            }</div>
+<div class="line"><a name="l00586"></a><span class="lineno">  586</span>&#160;        }</div>
+<div class="line"><a name="l00587"></a><span class="lineno">  587</span>&#160;    }</div>
+<div class="line"><a name="l00588"></a><span class="lineno">  588</span>&#160;}</div>
+<div class="ttc" id="classInterfaceGraphique_1_1Configuration_html_abf083d89599fb025191a5ab8bae3bbc8"><div class="ttname"><a href="../../dc/d6b/classInterfaceGraphique_1_1Configuration.html#abf083d89599fb025191a5ab8bae3bbc8">InterfaceGraphique.Configuration.PGJ2_bouton_KeyDown</a></div><div class="ttdeci">void PGJ2_bouton_KeyDown(object sender, KeyEventArgs e)</div><div class="ttdoc">Gestion d&#39;evenement lorsqu&#39;on entre une touche au clavier sur un bouton de palette. </div><div class="ttdef"><b>Definition:</b> <a href="../../d8/df4/Configuration_8cs_source.html#l00323">Configuration.cs:323</a></div></div>
+<div class="ttc" id="classInterfaceGraphique_1_1Configuration_html_ad118a4832f6daeecacfa7e350f4e7bb6"><div class="ttname"><a href="../../dc/d6b/classInterfaceGraphique_1_1Configuration.html#ad118a4832f6daeecacfa7e350f4e7bb6">InterfaceGraphique.Configuration.MDB_OK</a></div><div class="ttdeci">System.Windows.Forms.RadioButton MDB_OK</div><div class="ttdef"><b>Definition:</b> <a href="../../dc/ddf/Configuration_8Designer_8cs_source.html#l00641">Configuration.Designer.cs:641</a></div></div>
+<div class="ttc" id="namespaceInterfaceGraphique_html"><div class="ttname"><a href="../../d1/d3b/namespaceInterfaceGraphique.html">InterfaceGraphique</a></div><div class="ttdef"><b>Definition:</b> <a href="../../d1/d98/ColorList_8cs_source.html#l00001">ColorList.cs:1</a></div></div>
+<div class="ttc" id="classInterfaceGraphique_1_1Configuration_html_aeadec05929cc3f26406f67e2dfa71efb"><div class="ttname"><a href="../../dc/d6b/classInterfaceGraphique_1_1Configuration.html#aeadec05929cc3f26406f67e2dfa71efb">InterfaceGraphique.Configuration.GLOB_OK_CheckedChanged</a></div><div class="ttdeci">void GLOB_OK_CheckedChanged(object sender, EventArgs e)</div><div class="ttdoc">Gestion d&#39;evenement lorsqu&#39;on active ou desactive GLOB_OK. </div><div class="ttdef"><b>Definition:</b> <a href="../../d8/df4/Configuration_8cs_source.html#l00563">Configuration.cs:563</a></div></div>
+<div class="ttc" id="classInterfaceGraphique_1_1Configuration_html_af65bd4dc9088703d1ae4a80e628acb2c"><div class="ttname"><a href="../../dc/d6b/classInterfaceGraphique_1_1Configuration.html#af65bd4dc9088703d1ae4a80e628acb2c">InterfaceGraphique.Configuration.VAC_Cancel</a></div><div class="ttdeci">System.Windows.Forms.RadioButton VAC_Cancel</div><div class="ttdef"><b>Definition:</b> <a href="../../dc/ddf/Configuration_8Designer_8cs_source.html#l00650">Configuration.Designer.cs:650</a></div></div>
+<div class="ttc" id="classInterfaceGraphique_1_1FonctionsNatives_html_aa3ea68616561160b00bda764a60b3b64"><div class="ttname"><a href="../../dc/d2e/classInterfaceGraphique_1_1FonctionsNatives.html#aa3ea68616561160b00bda764a60b3b64">InterfaceGraphique.FonctionsNatives.creerFichierConfig</a></div><div class="ttdeci">static void creerFichierConfig(int[] config)</div></div>
+<div class="ttc" id="classInterfaceGraphique_1_1Configuration_html_acd4207b8f1f04b539d0dbeb9eb084975"><div class="ttname"><a href="../../dc/d6b/classInterfaceGraphique_1_1Configuration.html#acd4207b8f1f04b539d0dbeb9eb084975">InterfaceGraphique.Configuration.Ressort_bouton_KeyDown</a></div><div class="ttdeci">void Ressort_bouton_KeyDown(object sender, KeyEventArgs e)</div><div class="ttdoc">Gestion d&#39;evenement lorsqu&#39;on entre une touche au clavier sur le bouton de ressort. </div><div class="ttdef"><b>Definition:</b> <a href="../../d8/df4/Configuration_8cs_source.html#l00375">Configuration.cs:375</a></div></div>
+<div class="ttc" id="classInterfaceGraphique_1_1Configuration_html_a214975d72c0a0c9c953a04e078e62c32"><div class="ttname"><a href="../../dc/d6b/classInterfaceGraphique_1_1Configuration.html#a214975d72c0a0c9c953a04e078e62c32">InterfaceGraphique.Configuration.isValid</a></div><div class="ttdeci">bool isValid(int touche)</div><div class="ttdoc">Verifie si la touche choisie est valide. </div><div class="ttdef"><b>Definition:</b> <a href="../../d8/df4/Configuration_8cs_source.html#l00175">Configuration.cs:175</a></div></div>
+<div class="ttc" id="classInterfaceGraphique_1_1Configuration_html_ac8442083d04fb3344efb82e1a0bf0cd6"><div class="ttname"><a href="../../dc/d6b/classInterfaceGraphique_1_1Configuration.html#ac8442083d04fb3344efb82e1a0bf0cd6">InterfaceGraphique.Configuration.valuesXML</a></div><div class="ttdeci">int[] valuesXML</div><div class="ttdef"><b>Definition:</b> <a href="../../d8/df4/Configuration_8cs_source.html#l00029">Configuration.cs:29</a></div></div>
+<div class="ttc" id="classInterfaceGraphique_1_1Configuration_html_a9221997820ef88d9463ef0ce2deb6265"><div class="ttname"><a href="../../dc/d6b/classInterfaceGraphique_1_1Configuration.html#a9221997820ef88d9463ef0ce2deb6265">InterfaceGraphique.Configuration.Default_bouton_Click</a></div><div class="ttdeci">void Default_bouton_Click(object sender, EventArgs e)</div><div class="ttdoc">Gestion d&#39;evenement lorsqu&#39;on clique sur le bouton Defaut. </div><div class="ttdef"><b>Definition:</b> <a href="../../d8/df4/Configuration_8cs_source.html#l00228">Configuration.cs:228</a></div></div>
+<div class="ttc" id="classInterfaceGraphique_1_1Configuration_html_a87e13984f0bc9838b16abede43d8f024"><div class="ttname"><a href="../../dc/d6b/classInterfaceGraphique_1_1Configuration.html#a87e13984f0bc9838b16abede43d8f024">InterfaceGraphique.Configuration.InitializeComponent</a></div><div class="ttdeci">void InitializeComponent()</div><div class="ttdoc">Required method for Designer support - do not modify the contents of this method with the code editor...</div><div class="ttdef"><b>Definition:</b> <a href="../../dc/ddf/Configuration_8Designer_8cs_source.html#l00029">Configuration.Designer.cs:29</a></div></div>
+<div class="ttc" id="classInterfaceGraphique_1_1Configuration_html_afae02d9446cbea0cc2c6ae7780ab2a7b"><div class="ttname"><a href="../../dc/d6b/classInterfaceGraphique_1_1Configuration.html#afae02d9446cbea0cc2c6ae7780ab2a7b">InterfaceGraphique.Configuration.Annuler_bouton_Click</a></div><div class="ttdeci">void Annuler_bouton_Click(object sender, EventArgs e)</div><div class="ttdoc">Gestion d&#39;evenement lorsqu&#39;on clique sur le bouton Annuler. </div><div class="ttdef"><b>Definition:</b> <a href="../../d8/df4/Configuration_8cs_source.html#l00214">Configuration.cs:214</a></div></div>
+<div class="ttc" id="classInterfaceGraphique_1_1Configuration_html_a13e9c133d41026ade9982138667dc7fb"><div class="ttname"><a href="../../dc/d6b/classInterfaceGraphique_1_1Configuration.html#a13e9c133d41026ade9982138667dc7fb">InterfaceGraphique.Configuration.FRS_Cancel</a></div><div class="ttdeci">System.Windows.Forms.RadioButton FRS_Cancel</div><div class="ttdef"><b>Definition:</b> <a href="../../dc/ddf/Configuration_8Designer_8cs_source.html#l00637">Configuration.Designer.cs:637</a></div></div>
+<div class="ttc" id="classInterfaceGraphique_1_1Configuration_html_a17b20a023a191e4f99daf8f94efe6a11"><div class="ttname"><a href="../../dc/d6b/classInterfaceGraphique_1_1Configuration.html#a17b20a023a191e4f99daf8f94efe6a11">InterfaceGraphique.Configuration.defaultValues</a></div><div class="ttdeci">int[] defaultValues</div><div class="ttdef"><b>Definition:</b> <a href="../../d8/df4/Configuration_8cs_source.html#l00027">Configuration.cs:27</a></div></div>
+<div class="ttc" id="classInterfaceGraphique_1_1Configuration_html_ab1b558a9d9315164ad64bd3d5b52e0ae"><div class="ttname"><a href="../../dc/d6b/classInterfaceGraphique_1_1Configuration.html#ab1b558a9d9315164ad64bd3d5b52e0ae">InterfaceGraphique.Configuration.GLOB_OK</a></div><div class="ttdeci">System.Windows.Forms.RadioButton GLOB_OK</div><div class="ttdef"><b>Definition:</b> <a href="../../dc/ddf/Configuration_8Designer_8cs_source.html#l00656">Configuration.Designer.cs:656</a></div></div>
+<div class="ttc" id="classInterfaceGraphique_1_1Configuration_html_a74ef913ca84d94bad4d22ff89387b156"><div class="ttname"><a href="../../dc/d6b/classInterfaceGraphique_1_1Configuration.html#a74ef913ca84d94bad4d22ff89387b156">InterfaceGraphique.Configuration.PDJ1_bouton_KeyDown</a></div><div class="ttdeci">void PDJ1_bouton_KeyDown(object sender, KeyEventArgs e)</div><div class="ttdoc">Gestion d&#39;evenement lorsqu&#39;on entre une touche au clavier sur un bouton de palette. </div><div class="ttdef"><b>Definition:</b> <a href="../../d8/df4/Configuration_8cs_source.html#l00294">Configuration.cs:294</a></div></div>
+<div class="ttc" id="classInterfaceGraphique_1_1Configuration_html_ae7520764ff3d00532b06b0552f46ea6b"><div class="ttname"><a href="../../dc/d6b/classInterfaceGraphique_1_1Configuration.html#ae7520764ff3d00532b06b0552f46ea6b">InterfaceGraphique.Configuration.PORTAL_OK</a></div><div class="ttdeci">System.Windows.Forms.RadioButton PORTAL_OK</div><div class="ttdef"><b>Definition:</b> <a href="../../dc/ddf/Configuration_8Designer_8cs_source.html#l00644">Configuration.Designer.cs:644</a></div></div>
+<div class="ttc" id="classInterfaceGraphique_1_1Configuration_html_a2e13db7544deb14d3e9772df41e0110b"><div class="ttname"><a href="../../dc/d6b/classInterfaceGraphique_1_1Configuration.html#a2e13db7544deb14d3e9772df41e0110b">InterfaceGraphique.Configuration.PDJ1_bouton_Click</a></div><div class="ttdeci">void PDJ1_bouton_Click(object sender, EventArgs e)</div><div class="ttdef"><b>Definition:</b> <a href="../../d8/df4/Configuration_8cs_source.html#l00417">Configuration.cs:417</a></div></div>
+<div class="ttc" id="classInterfaceGraphique_1_1Configuration_html_ac052a2dcc27bce114dda47fa2b405145"><div class="ttname"><a href="../../dc/d6b/classInterfaceGraphique_1_1Configuration.html#ac052a2dcc27bce114dda47fa2b405145">InterfaceGraphique.Configuration.getConfig</a></div><div class="ttdeci">bool getConfig(int i)</div><div class="ttdoc">Verifie si une option est activee (RadioButton) selon l&#39;indice choisi. </div><div class="ttdef"><b>Definition:</b> <a href="../../d8/df4/Configuration_8cs_source.html#l00502">Configuration.cs:502</a></div></div>
+<div class="ttc" id="classInterfaceGraphique_1_1Configuration_html_acb9b216963866c6b1fb4a535ee8ed2ad"><div class="ttname"><a href="../../dc/d6b/classInterfaceGraphique_1_1Configuration.html#acb9b216963866c6b1fb4a535ee8ed2ad">InterfaceGraphique.Configuration.comboBoxBilles</a></div><div class="ttdeci">System.Windows.Forms.ComboBox comboBoxBilles</div><div class="ttdef"><b>Definition:</b> <a href="../../dc/ddf/Configuration_8Designer_8cs_source.html#l00634">Configuration.Designer.cs:634</a></div></div>
+<div class="ttc" id="classInterfaceGraphique_1_1Configuration_html_ab2b247c82beb74a0b0178f8a2c688a72"><div class="ttname"><a href="../../dc/d6b/classInterfaceGraphique_1_1Configuration.html#ab2b247c82beb74a0b0178f8a2c688a72">InterfaceGraphique.Configuration.label_Rebind</a></div><div class="ttdeci">System.Windows.Forms.Label label_Rebind</div><div class="ttdef"><b>Definition:</b> <a href="../../dc/ddf/Configuration_8Designer_8cs_source.html#l00633">Configuration.Designer.cs:633</a></div></div>
+<div class="ttc" id="classInterfaceGraphique_1_1Configuration_html_a07ced3a1c051249b897bb5e5f5397b3f"><div class="ttname"><a href="../../dc/d6b/classInterfaceGraphique_1_1Configuration.html#a07ced3a1c051249b897bb5e5f5397b3f">InterfaceGraphique.Configuration.FRS_OK</a></div><div class="ttdeci">System.Windows.Forms.RadioButton FRS_OK</div><div class="ttdef"><b>Definition:</b> <a href="../../dc/ddf/Configuration_8Designer_8cs_source.html#l00638">Configuration.Designer.cs:638</a></div></div>
+<div class="ttc" id="classInterfaceGraphique_1_1Configuration_html_a0976a9c7922bc67a4a63320aa4cc527b"><div class="ttname"><a href="../../dc/d6b/classInterfaceGraphique_1_1Configuration.html#a0976a9c7922bc67a4a63320aa4cc527b">InterfaceGraphique.Configuration.PGJ1_bouton_KeyDown</a></div><div class="ttdeci">void PGJ1_bouton_KeyDown(object sender, KeyEventArgs e)</div><div class="ttdoc">Gestion d&#39;evenement lorsqu&#39;on entre une touche au clavier sur un bouton de palette. </div><div class="ttdef"><b>Definition:</b> <a href="../../d8/df4/Configuration_8cs_source.html#l00266">Configuration.cs:266</a></div></div>
+<div class="ttc" id="classInterfaceGraphique_1_1Configuration_html_a6ad38e13e901b0c33f3e6323a231ab2b"><div class="ttname"><a href="../../dc/d6b/classInterfaceGraphique_1_1Configuration.html#a6ad38e13e901b0c33f3e6323a231ab2b">InterfaceGraphique.Configuration.PGJ2_bouton</a></div><div class="ttdeci">System.Windows.Forms.Button PGJ2_bouton</div><div class="ttdef"><b>Definition:</b> <a href="../../dc/ddf/Configuration_8Designer_8cs_source.html#l00630">Configuration.Designer.cs:630</a></div></div>
+<div class="ttc" id="classInterfaceGraphique_1_1FonctionsNatives_html_add978a24d1de3741b1b6941830cb9a83"><div class="ttname"><a href="../../dc/d2e/classInterfaceGraphique_1_1FonctionsNatives.html#add978a24d1de3741b1b6941830cb9a83">InterfaceGraphique.FonctionsNatives.chargerFichierConfiguration</a></div><div class="ttdeci">static IntPtr chargerFichierConfiguration()</div></div>
+<div class="ttc" id="classInterfaceGraphique_1_1Configuration_html_a57839957f284c5c0a4c9bb6c99afb990"><div class="ttname"><a href="../../dc/d6b/classInterfaceGraphique_1_1Configuration.html#a57839957f284c5c0a4c9bb6c99afb990">InterfaceGraphique.Configuration.PGJ1_bouton</a></div><div class="ttdeci">System.Windows.Forms.Button PGJ1_bouton</div><div class="ttdef"><b>Definition:</b> <a href="../../dc/ddf/Configuration_8Designer_8cs_source.html#l00632">Configuration.Designer.cs:632</a></div></div>
+<div class="ttc" id="classInterfaceGraphique_1_1Configuration_html_aeddbe91cd9ba6d259b9c393d8563adc9"><div class="ttname"><a href="../../dc/d6b/classInterfaceGraphique_1_1Configuration.html#aeddbe91cd9ba6d259b9c393d8563adc9">InterfaceGraphique.Configuration.PORTAL_Cancel</a></div><div class="ttdeci">System.Windows.Forms.RadioButton PORTAL_Cancel</div><div class="ttdef"><b>Definition:</b> <a href="../../dc/ddf/Configuration_8Designer_8cs_source.html#l00643">Configuration.Designer.cs:643</a></div></div>
+<div class="ttc" id="classInterfaceGraphique_1_1Configuration_html_aa9147231adf94dd02463c92b21094339"><div class="ttname"><a href="../../dc/d6b/classInterfaceGraphique_1_1Configuration.html#aa9147231adf94dd02463c92b21094339">InterfaceGraphique.Configuration.maTouche</a></div><div class="ttdeci">string maTouche</div><div class="ttdef"><b>Definition:</b> <a href="../../d8/df4/Configuration_8cs_source.html#l00030">Configuration.cs:30</a></div></div>
+<div class="ttc" id="classInterfaceGraphique_1_1FonctionsNatives_html"><div class="ttname"><a href="../../dc/d2e/classInterfaceGraphique_1_1FonctionsNatives.html">InterfaceGraphique.FonctionsNatives</a></div><div class="ttdoc">Classe qui importe les fontions natives C++. </div><div class="ttdef"><b>Definition:</b> <a href="../../d9/d2c/FonctionsNatives_8cs_source.html#l00017">FonctionsNatives.cs:17</a></div></div>
+<div class="ttc" id="classInterfaceGraphique_1_1Configuration_html_ac40c66b47351f1db8cd07ea2d888dbca"><div class="ttname"><a href="../../dc/d6b/classInterfaceGraphique_1_1Configuration.html#ac40c66b47351f1db8cd07ea2d888dbca">InterfaceGraphique.Configuration.PDJ2_bouton_Click</a></div><div class="ttdeci">void PDJ2_bouton_Click(object sender, EventArgs e)</div><div class="ttdoc">Gestion d&#39;evenement lorsqu&#39;on clique sur un bouton de palette. </div><div class="ttdef"><b>Definition:</b> <a href="../../d8/df4/Configuration_8cs_source.html#l00447">Configuration.cs:447</a></div></div>
+<div class="ttc" id="classInterfaceGraphique_1_1Configuration_html_a260e94d2c458c9b3cc30c1e81093a898"><div class="ttname"><a href="../../dc/d6b/classInterfaceGraphique_1_1Configuration.html#a260e94d2c458c9b3cc30c1e81093a898">InterfaceGraphique.Configuration.Ressort_bouton</a></div><div class="ttdeci">System.Windows.Forms.Button Ressort_bouton</div><div class="ttdef"><b>Definition:</b> <a href="../../dc/ddf/Configuration_8Designer_8cs_source.html#l00628">Configuration.Designer.cs:628</a></div></div>
+<div class="ttc" id="namespaceSystem_html"><div class="ttname"><a href="../../d6/d27/namespaceSystem.html">System</a></div></div>
+<div class="ttc" id="classInterfaceGraphique_1_1Configuration_html_ad326532d6f7176c99056037fccbce6fa"><div class="ttname"><a href="../../dc/d6b/classInterfaceGraphique_1_1Configuration.html#ad326532d6f7176c99056037fccbce6fa">InterfaceGraphique.Configuration.Configuration</a></div><div class="ttdeci">Configuration()</div><div class="ttdoc">Constructeur de la fenetre de configuration. </div><div class="ttdef"><b>Definition:</b> <a href="../../d8/df4/Configuration_8cs_source.html#l00041">Configuration.cs:41</a></div></div>
+<div class="ttc" id="classInterfaceGraphique_1_1Configuration_html_a4c6f20d61a9f5a7fdbc3ff57395265b2"><div class="ttname"><a href="../../dc/d6b/classInterfaceGraphique_1_1Configuration.html#a4c6f20d61a9f5a7fdbc3ff57395265b2">InterfaceGraphique.Configuration.PGJ1_bouton_Click</a></div><div class="ttdeci">void PGJ1_bouton_Click(object sender, EventArgs e)</div><div class="ttdoc">Gestion d&#39;evenement lorsqu&#39;on clique sur un bouton de palette. </div><div class="ttdef"><b>Definition:</b> <a href="../../d8/df4/Configuration_8cs_source.html#l00402">Configuration.cs:402</a></div></div>
+<div class="ttc" id="classInterfaceGraphique_1_1Configuration_html_a99faf54f30c9d852ab370f9209c383fd"><div class="ttname"><a href="../../dc/d6b/classInterfaceGraphique_1_1Configuration.html#a99faf54f30c9d852ab370f9209c383fd">InterfaceGraphique.Configuration.GB_OK</a></div><div class="ttdeci">System.Windows.Forms.RadioButton GB_OK</div><div class="ttdef"><b>Definition:</b> <a href="../../dc/ddf/Configuration_8Designer_8cs_source.html#l00654">Configuration.Designer.cs:654</a></div></div>
+<div class="ttc" id="classInterfaceGraphique_1_1Configuration_html_a58765a3cfc8af9f4b2a3e86f9b87daf1"><div class="ttname"><a href="../../dc/d6b/classInterfaceGraphique_1_1Configuration.html#a58765a3cfc8af9f4b2a3e86f9b87daf1">InterfaceGraphique.Configuration.Ressort_bouton_Click</a></div><div class="ttdeci">void Ressort_bouton_Click(object sender, EventArgs e)</div><div class="ttdoc">Gestion d&#39;evenement lorsqu&#39;on clique sur un bouton de ressort. </div><div class="ttdef"><b>Definition:</b> <a href="../../d8/df4/Configuration_8cs_source.html#l00462">Configuration.cs:462</a></div></div>
+<div class="ttc" id="classInterfaceGraphique_1_1Configuration_html_a9a1c53acc4a91c6ee8c3aac1e246dcf6"><div class="ttname"><a href="../../dc/d6b/classInterfaceGraphique_1_1Configuration.html#a9a1c53acc4a91c6ee8c3aac1e246dcf6">InterfaceGraphique.Configuration.InitialiserTouches</a></div><div class="ttdeci">void InitialiserTouches()</div><div class="ttdef"><b>Definition:</b> <a href="../../d8/df4/Configuration_8cs_source.html#l00128">Configuration.cs:128</a></div></div>
+<div class="ttc" id="classInterfaceGraphique_1_1Configuration_html_a8be343114a30fe901ec35029aacdb58f"><div class="ttname"><a href="../../dc/d6b/classInterfaceGraphique_1_1Configuration.html#a8be343114a30fe901ec35029aacdb58f">InterfaceGraphique.Configuration.LabelChange</a></div><div class="ttdeci">void LabelChange(string message)</div><div class="ttdoc">Modification du label avec un message. </div><div class="ttdef"><b>Definition:</b> <a href="../../d8/df4/Configuration_8cs_source.html#l00250">Configuration.cs:250</a></div></div>
+<div class="ttc" id="classInterfaceGraphique_1_1Configuration_html_a0226573ed8a1f60963fb2f679bbacb95"><div class="ttname"><a href="../../dc/d6b/classInterfaceGraphique_1_1Configuration.html#a0226573ed8a1f60963fb2f679bbacb95">InterfaceGraphique.Configuration.GB_Cancel</a></div><div class="ttdeci">System.Windows.Forms.RadioButton GB_Cancel</div><div class="ttdef"><b>Definition:</b> <a href="../../dc/ddf/Configuration_8Designer_8cs_source.html#l00653">Configuration.Designer.cs:653</a></div></div>
+<div class="ttc" id="classInterfaceGraphique_1_1Configuration_html_af9e6835e8cf60e269a03715d9a6ce84b"><div class="ttname"><a href="../../dc/d6b/classInterfaceGraphique_1_1Configuration.html#af9e6835e8cf60e269a03715d9a6ce84b">InterfaceGraphique.Configuration.GLOB_Cancel_CheckedChanged</a></div><div class="ttdeci">void GLOB_Cancel_CheckedChanged(object sender, EventArgs e)</div><div class="ttdoc">Gestion d&#39;evenement lorsqu&#39;on active ou desactive GLOB_CANCEL. </div><div class="ttdef"><b>Definition:</b> <a href="../../d8/df4/Configuration_8cs_source.html#l00546">Configuration.cs:546</a></div></div>
+<div class="ttc" id="classInterfaceGraphique_1_1Configuration_html_a50e6cc8b869aa6c13b73395e5891822e"><div class="ttname"><a href="../../dc/d6b/classInterfaceGraphique_1_1Configuration.html#a50e6cc8b869aa6c13b73395e5891822e">InterfaceGraphique.Configuration.currentValues</a></div><div class="ttdeci">int[] currentValues</div><div class="ttdef"><b>Definition:</b> <a href="../../d8/df4/Configuration_8cs_source.html#l00028">Configuration.cs:28</a></div></div>
+<div class="ttc" id="classInterfaceGraphique_1_1Configuration_html_a05b1dc9820a7c93d409e6fe048b82567"><div class="ttname"><a href="../../dc/d6b/classInterfaceGraphique_1_1Configuration.html#a05b1dc9820a7c93d409e6fe048b82567">InterfaceGraphique.Configuration.mediaPlaying</a></div><div class="ttdeci">bool mediaPlaying</div><div class="ttdef"><b>Definition:</b> <a href="../../d8/df4/Configuration_8cs_source.html#l00031">Configuration.cs:31</a></div></div>
+<div class="ttc" id="classInterfaceGraphique_1_1Configuration_html_a7592384c48b0a55c7e1e331875a8b6fd"><div class="ttname"><a href="../../dc/d6b/classInterfaceGraphique_1_1Configuration.html#a7592384c48b0a55c7e1e331875a8b6fd">InterfaceGraphique.Configuration.PDJ2_bouton</a></div><div class="ttdeci">System.Windows.Forms.Button PDJ2_bouton</div><div class="ttdef"><b>Definition:</b> <a href="../../dc/ddf/Configuration_8Designer_8cs_source.html#l00629">Configuration.Designer.cs:629</a></div></div>
+<div class="ttc" id="classInterfaceGraphique_1_1Configuration_html_aaa4a069b00fb5cfdb8a06bd323bdd92c"><div class="ttname"><a href="../../dc/d6b/classInterfaceGraphique_1_1Configuration.html#aaa4a069b00fb5cfdb8a06bd323bdd92c">InterfaceGraphique.Configuration.OK_bouton_Click</a></div><div class="ttdeci">void OK_bouton_Click(object sender, EventArgs e)</div><div class="ttdoc">Gestion d&#39;evenement lorsqu&#39;on clique sur le bouton OK. </div><div class="ttdef"><b>Definition:</b> <a href="../../d8/df4/Configuration_8cs_source.html#l00477">Configuration.cs:477</a></div></div>
+<div class="ttc" id="classInterfaceGraphique_1_1Configuration_html_a9d2eedbb8347d1b4cb1936db6442b719"><div class="ttname"><a href="../../dc/d6b/classInterfaceGraphique_1_1Configuration.html#a9d2eedbb8347d1b4cb1936db6442b719">InterfaceGraphique.Configuration.PGJ2_bouton_Click</a></div><div class="ttdeci">void PGJ2_bouton_Click(object sender, EventArgs e)</div><div class="ttdoc">Gestion d&#39;evenement lorsqu&#39;on clique sur un bouton de palette. </div><div class="ttdef"><b>Definition:</b> <a href="../../d8/df4/Configuration_8cs_source.html#l00432">Configuration.cs:432</a></div></div>
+<div class="ttc" id="classInterfaceGraphique_1_1Configuration_html_ac26c3bf730c21522a706c54bb1872b90"><div class="ttname"><a href="../../dc/d6b/classInterfaceGraphique_1_1Configuration.html#ac26c3bf730c21522a706c54bb1872b90">InterfaceGraphique.Configuration.GLOB_Cancel</a></div><div class="ttdeci">System.Windows.Forms.RadioButton GLOB_Cancel</div><div class="ttdef"><b>Definition:</b> <a href="../../dc/ddf/Configuration_8Designer_8cs_source.html#l00655">Configuration.Designer.cs:655</a></div></div>
+<div class="ttc" id="classInterfaceGraphique_1_1Configuration_html_a603036c1c54d274c4d53417ef2e81ce0"><div class="ttname"><a href="../../dc/d6b/classInterfaceGraphique_1_1Configuration.html#a603036c1c54d274c4d53417ef2e81ce0">InterfaceGraphique.Configuration.AE_OK</a></div><div class="ttdeci">System.Windows.Forms.RadioButton AE_OK</div><div class="ttdef"><b>Definition:</b> <a href="../../dc/ddf/Configuration_8Designer_8cs_source.html#l00648">Configuration.Designer.cs:648</a></div></div>
+<div class="ttc" id="classInterfaceGraphique_1_1Configuration_html_ac5d1b022011a3f33cb3447a1c146be47"><div class="ttname"><a href="../../dc/d6b/classInterfaceGraphique_1_1Configuration.html#ac5d1b022011a3f33cb3447a1c146be47">InterfaceGraphique.Configuration.PDJ2_bouton_KeyDown</a></div><div class="ttdeci">void PDJ2_bouton_KeyDown(object sender, KeyEventArgs e)</div><div class="ttdoc">Gestion d&#39;evenement lorsqu&#39;on entre une touche au clavier sur un bouton de palette. </div><div class="ttdef"><b>Definition:</b> <a href="../../d8/df4/Configuration_8cs_source.html#l00349">Configuration.cs:349</a></div></div>
+<div class="ttc" id="classInterfaceGraphique_1_1Configuration_html_ae06562c8c5353609a09081fb0556d61b"><div class="ttname"><a href="../../dc/d6b/classInterfaceGraphique_1_1Configuration.html#ae06562c8c5353609a09081fb0556d61b">InterfaceGraphique.Configuration.PDJ1_bouton</a></div><div class="ttdeci">System.Windows.Forms.Button PDJ1_bouton</div><div class="ttdef"><b>Definition:</b> <a href="../../dc/ddf/Configuration_8Designer_8cs_source.html#l00631">Configuration.Designer.cs:631</a></div></div>
+<div class="ttc" id="classInterfaceGraphique_1_1Configuration_html_afe7b43d01c15dd84bfbeb4dc4e815d98"><div class="ttname"><a href="../../dc/d6b/classInterfaceGraphique_1_1Configuration.html#afe7b43d01c15dd84bfbeb4dc4e815d98">InterfaceGraphique.Configuration.Configuration_VisibleChanged</a></div><div class="ttdeci">void Configuration_VisibleChanged(object sender, EventArgs e)</div><div class="ttdoc">Gestion d&#39;evenement lorsqu&#39;on active le menu Configuration. </div><div class="ttdef"><b>Definition:</b> <a href="../../d8/df4/Configuration_8cs_source.html#l00580">Configuration.cs:580</a></div></div>
+<div class="ttc" id="classInterfaceGraphique_1_1Configuration_html_a6810f9329f02b53394159bf0f1bafe15"><div class="ttname"><a href="../../dc/d6b/classInterfaceGraphique_1_1Configuration.html#a6810f9329f02b53394159bf0f1bafe15">InterfaceGraphique.Configuration.InitialiserAvecBinaire</a></div><div class="ttdeci">void InitialiserAvecBinaire()</div><div class="ttdoc">Initialisation des configurations par defaut a l&#39;aide d&#39;un fichier binaire. </div><div class="ttdef"><b>Definition:</b> <a href="../../d8/df4/Configuration_8cs_source.html#l00057">Configuration.cs:57</a></div></div>
+<div class="ttc" id="classInterfaceGraphique_1_1Configuration_html_a9360a35967c82e3e1dfd059ff5962ce7"><div class="ttname"><a href="../../dc/d6b/classInterfaceGraphique_1_1Configuration.html#a9360a35967c82e3e1dfd059ff5962ce7">InterfaceGraphique.Configuration.radioButtonEnable</a></div><div class="ttdeci">void radioButtonEnable(bool active)</div><div class="ttdoc">Active ou desactive les Radio Buttons. </div><div class="ttdef"><b>Definition:</b> <a href="../../d8/df4/Configuration_8cs_source.html#l00524">Configuration.cs:524</a></div></div>
+<div class="ttc" id="classInterfaceGraphique_1_1Configuration_html_a2a08eec1c7ede59ad7df87fc9a7598e0"><div class="ttname"><a href="../../dc/d6b/classInterfaceGraphique_1_1Configuration.html#a2a08eec1c7ede59ad7df87fc9a7598e0">InterfaceGraphique.Configuration.MDB_Cancel</a></div><div class="ttdeci">System.Windows.Forms.RadioButton MDB_Cancel</div><div class="ttdef"><b>Definition:</b> <a href="../../dc/ddf/Configuration_8Designer_8cs_source.html#l00640">Configuration.Designer.cs:640</a></div></div>
+<div class="ttc" id="classInterfaceGraphique_1_1Configuration_html_ae5dd6892523331ef7eba33b4f9f5545b"><div class="ttname"><a href="../../dc/d6b/classInterfaceGraphique_1_1Configuration.html#ae5dd6892523331ef7eba33b4f9f5545b">InterfaceGraphique.Configuration.AE_Cancel</a></div><div class="ttdeci">System.Windows.Forms.RadioButton AE_Cancel</div><div class="ttdef"><b>Definition:</b> <a href="../../dc/ddf/Configuration_8Designer_8cs_source.html#l00647">Configuration.Designer.cs:647</a></div></div>
+<div class="ttc" id="classInterfaceGraphique_1_1Configuration_html_a4d22995872a4cdf49e9a7d26e4d327bf"><div class="ttname"><a href="../../dc/d6b/classInterfaceGraphique_1_1Configuration.html#a4d22995872a4cdf49e9a7d26e4d327bf">InterfaceGraphique.Configuration.VAC_OK</a></div><div class="ttdeci">System.Windows.Forms.RadioButton VAC_OK</div><div class="ttdef"><b>Definition:</b> <a href="../../dc/ddf/Configuration_8Designer_8cs_source.html#l00651">Configuration.Designer.cs:651</a></div></div>
+<div class="ttc" id="classInterfaceGraphique_1_1Configuration_html"><div class="ttname"><a href="../../dc/d6b/classInterfaceGraphique_1_1Configuration.html">InterfaceGraphique.Configuration</a></div><div class="ttdoc">Classe d&#39;interface des configurations de la partie. </div><div class="ttdef"><b>Definition:</b> <a href="../../d8/df4/Configuration_8cs_source.html#l00025">Configuration.cs:25</a></div></div>
+</div><!-- fragment --></div><!-- contents -->
+</div><!-- doc-content -->
+<!-- start footer part -->
+<div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
+  <ul>
+    <li class="navelem"><a class="el" href="../../dir_937900b87e0c7a5fa01190c395fb83f7.html">Sources</a></li><li class="navelem"><a class="el" href="../../dir_903cae1878afb17c5827c93124f0aaca.html">InterfaceGraphique</a></li><li class="navelem"><a class="el" href="../../dir_8466bca247855f8d0f8a357547b963bf.html">Fenetres</a></li><li class="navelem"><a class="el" href="../../d8/df4/Configuration_8cs.html">Configuration.cs</a></li>
+    <li class="footer">Généré le Lundi 13 Avril 2015 19:47:56 pour Pain Ball par
+    <a href="http://www.doxygen.org/index.html">
+    <img class="footer" src="../../doxygen.png" alt="doxygen"/></a> 1.8.9.1 </li>
+  </ul>
+</div>
+</body>
+</html>

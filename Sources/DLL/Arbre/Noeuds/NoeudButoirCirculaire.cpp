@@ -225,7 +225,7 @@ aidecollision::DetailsCollision NoeudButoirCirculaire::detecterCollisions(NoeudA
 ///
 /// @fn void NoeudButoirCirculaire::traiterCollisions(aidecollision::DetailsCollision details, NoeudAbstrait* bille, float facteurRebond)
 ///
-/// @brief Cette fonction effectue la réaction a la collision de la bille sur 
+/// @brief Cette fonction effectue la reaction a la collision de la bille sur 
 /// l'objet courant. La collision est plus forte si le mode force supplementaire est actif.
 ///
 /// @param[in] details Objet contenant les details de la collision a traiter

@@ -149,7 +149,7 @@ aidecollision::DetailsCollision NoeudTable::detecterCollisions(NoeudAbstrait* bi
 		// Considerer tous les segments boite[i] --- boite[i+1 % size] 
 		for (unsigned int i = 0; i < boite.size(); i++)
 		{
-			// On veut calculer la collision en 2D et caster les paramêtres en glm::dvec2 "oublie" leur composante en Z et choisi la bonne surcharge de calculerCollisionSegment.
+			// On veut calculer la collision en 2D et caster les parametres en glm::dvec2 "oublie" leur composante en Z et choisi la bonne surcharge de calculerCollisionSegment.
 			details = aidecollision::calculerCollisionSegment((glm::dvec2)boite[i], (glm::dvec2)boite[(i + 1) % boite.size()], (glm::dvec2)bille->obtenirPositionRelative(), rayonBille, true);
 			if (details.type != aidecollision::COLLISION_AUCUNE)
 			{

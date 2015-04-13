@@ -17,7 +17,7 @@
 ///////////////////////////////////////////////////////////////////////////
 /// @class QuadTree
 /// @brief Cette classe permet de reduire le nombre de calcul/comparaisons
-///			à effectuer pour la gestion de la physique.
+///			a effectuer pour la gestion de la physique.
 ///
 /// @author The Ballers
 /// @date 2015-02-24
@@ -35,7 +35,7 @@ public:
 	/// Inserer des noeuds dans le QuadTree
 	bool insert(NoeudAbstrait* noeud);
 
-	/// Retourne la liste des objets se trouvant dans le même quand que le noeud passe en paramètre
+	/// Retourne la liste des objets se trouvant dans le meme quand que le noeud passe en parametre
 	std::list<NoeudAbstrait*> retrieve(NoeudAbstrait* noeud);
 
 	/// Retirer un noeud du QuadTree
@@ -61,7 +61,7 @@ private:
 	/// Retourne le QuadTree dans lequel il faut faire l'insertion
 	QuadTree* obtenirQuadrant(NoeudAbstrait* noeud);
 
-	// Propriétés du QuadTree
+	// Proprietes du QuadTree
 	const int MAX_CAPACITY = 10;
 	const int MAX_LEVEL = 3;
 	int niveauCourant_;

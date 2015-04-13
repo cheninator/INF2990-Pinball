@@ -1,0 +1,176 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=9"/>
+<meta name="generator" content="Doxygen 1.8.9.1"/>
+<title>Pain Ball:  Fichier source de Sources/DLL/Memento/Memento.cpp</title>
+<link href="../../tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="../../jquery.js"></script>
+<script type="text/javascript" src="../../dynsections.js"></script>
+<link href="../../navtree.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="../../resize.js"></script>
+<script type="text/javascript" src="../../navtreedata.js"></script>
+<script type="text/javascript" src="../../navtree.js"></script>
+<script type="text/javascript">
+  $(document).ready(initResizable);
+  $(window).load(resizeHeight);
+</script>
+<link href="../../search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="../../search/searchdata.js"></script>
+<script type="text/javascript" src="../../search/search.js"></script>
+<script type="text/javascript">
+  $(document).ready(function() { init_search(); });
+</script>
+<link href="../../doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr style="height: 56px;">
+  <td id="projectlogo"><img alt="Logo" src="../../handy.jpg"/></td>
+  <td style="padding-left: 0.5em;">
+   <div id="projectname">Pain Ball
+   &#160;<span id="projectnumber">Livrable 3</span>
+   </div>
+   <div id="projectbrief">by The Ballers</div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- Généré par Doxygen 1.8.9.1 -->
+<script type="text/javascript">
+var searchBox = new SearchBox("searchBox", "../../search",false,'Recherche');
+</script>
+  <div id="navrow1" class="tabs">
+    <ul class="tablist">
+      <li><a href="../../index.html"><span>Page&#160;principale</span></a></li>
+      <li><a href="../../modules.html"><span>Modules</span></a></li>
+      <li><a href="../../namespaces.html"><span>Espaces&#160;de&#160;nommage</span></a></li>
+      <li><a href="../../annotated.html"><span>Classes</span></a></li>
+      <li class="current"><a href="../../files.html"><span>Fichiers</span></a></li>
+      <li>
+        <div id="MSearchBox" class="MSearchBoxInactive">
+        <span class="left">
+          <img id="MSearchSelect" src="../../search/mag_sel.png"
+               onmouseover="return searchBox.OnSearchSelectShow()"
+               onmouseout="return searchBox.OnSearchSelectHide()"
+               alt=""/>
+          <input type="text" id="MSearchField" value="Recherche" accesskey="S"
+               onfocus="searchBox.OnSearchFieldFocus(true)" 
+               onblur="searchBox.OnSearchFieldFocus(false)" 
+               onkeyup="searchBox.OnSearchFieldChange(event)"/>
+          </span><span class="right">
+            <a id="MSearchClose" href="javascript:searchBox.CloseResultsWindow()"><img id="MSearchCloseImg" border="0" src="../../search/close.png" alt=""/></a>
+          </span>
+        </div>
+      </li>
+    </ul>
+  </div>
+  <div id="navrow2" class="tabs2">
+    <ul class="tablist">
+      <li><a href="../../files.html"><span>Liste&#160;des&#160;fichiers</span></a></li>
+      <li><a href="../../globals.html"><span>Membres&#160;de&#160;fichier</span></a></li>
+    </ul>
+  </div>
+</div><!-- top -->
+<div id="side-nav" class="ui-resizable side-nav-resizable">
+  <div id="nav-tree">
+    <div id="nav-tree-contents">
+      <div id="nav-sync" class="sync"></div>
+    </div>
+  </div>
+  <div id="splitbar" style="-moz-user-select:none;" 
+       class="ui-resizable-handle">
+  </div>
+</div>
+<script type="text/javascript">
+$(document).ready(function(){initNavTree('d7/d28/Memento_8cpp_source.html','../../');});
+</script>
+<div id="doc-content">
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<iframe src="javascript:void(0)" frameborder="0" 
+        name="MSearchResults" id="MSearchResults">
+</iframe>
+</div>
+
+<div class="header">
+  <div class="headertitle">
+<div class="title">Memento.cpp</div>  </div>
+</div><!--header-->
+<div class="contents">
+<a href="../../d7/d28/Memento_8cpp.html">Aller à la documentation de ce fichier.</a><div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;</div>
+<div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="../../d5/d61/Memento_8h.html">Memento.h</a>&quot;</span></div>
+<div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;</div>
+<div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;</div>
+<div class="line"><a name="l00025"></a><span class="lineno"><a class="line" href="../../d2/dfd/classMemento.html#ad4f6b7c8de3d43fc0fca2e0a6d2e3a8a">   25</a></span>&#160;<a class="code" href="../../d2/dfd/classMemento.html#ad4f6b7c8de3d43fc0fca2e0a6d2e3a8a">Memento::Memento</a>(<a class="code" href="../../d9/db3/classArbreRenduINF2990.html">ArbreRenduINF2990</a>* arbre)</div>
+<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;{</div>
+<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;    <a class="code" href="../../d2/dfd/classMemento.html#a839b7e8c03215e25b3a66e36078ea9e1">sauvegarder</a>(arbre);</div>
+<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;}</div>
+<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;</div>
+<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;</div>
+<div class="line"><a name="l00040"></a><span class="lineno"><a class="line" href="../../d2/dfd/classMemento.html#af680b5488989567d0f03d655c4232924">   40</a></span>&#160;<a class="code" href="../../d2/dfd/classMemento.html#af680b5488989567d0f03d655c4232924">Memento::~Memento</a>()</div>
+<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;{</div>
+<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;    <a class="code" href="../../d2/dfd/classMemento.html#a8236cd118199e153d96dd85f54b85372">sauvegarde</a>.clear();</div>
+<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;}</div>
+<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;</div>
+<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;</div>
+<div class="line"><a name="l00057"></a><span class="lineno"><a class="line" href="../../d2/dfd/classMemento.html#a839b7e8c03215e25b3a66e36078ea9e1">   57</a></span>&#160;<span class="keywordtype">void</span> <a class="code" href="../../d2/dfd/classMemento.html#a839b7e8c03215e25b3a66e36078ea9e1">Memento::sauvegarder</a>(<a class="code" href="../../d9/db3/classArbreRenduINF2990.html">ArbreRenduINF2990</a>* arbre)</div>
+<div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;{</div>
+<div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;    std::vector&lt;NoeudAbstrait*&gt; temp = arbre-&gt;<a class="code" href="../../d9/db3/classArbreRenduINF2990.html#a93c34556e4ed01a68752cef33667c52f">obtenirElementsTable</a>();</div>
+<div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;</div>
+<div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;    <span class="keywordflow">for</span> (<span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> i = 0; i &lt; temp.size(); i++)</div>
+<div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;    {</div>
+<div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;        <a class="code" href="../../d7/d8e/classNoeudAbstrait.html">NoeudAbstrait</a>* noeud{ arbre-&gt;<a class="code" href="../../d8/d43/classArbreRendu.html#a33ae9013f9cec73854d32527b85b41f9">creerNoeud</a>(temp[i]-&gt;obtenirType())};</div>
+<div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;</div>
+<div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;        <span class="comment">// Copier les informations</span></div>
+<div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160;        noeud-&gt;<a class="code" href="../../d7/d8e/classNoeudAbstrait.html#a11e12e42b05a5327c92cd7fd1b7e5a24">assignerPositionRelative</a>(temp[i]-&gt;obtenirPositionRelative());</div>
+<div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160;        noeud-&gt;assignerEchelle(temp[i]-&gt;obtenirAgrandissement());</div>
+<div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160;        noeud-&gt;assignerRotation(temp[i]-&gt;obtenirRotation());</div>
+<div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160;        noeud-&gt;setColorShift(temp[i]-&gt;getColorShift());</div>
+<div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160;        noeud-&gt;assignerSelection(temp[i]-&gt;estSelectionne());</div>
+<div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160;</div>
+<div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160;        <span class="comment">// Attribuer un numero arbitraire qui ne causera pas de problemes avec le stencil</span></div>
+<div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160;        noeud-&gt;setNumero(1024);</div>
+<div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160;</div>
+<div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160;        <span class="comment">// Inserer la sauvegarde dans une structure de donnee</span></div>
+<div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160;        <a class="code" href="../../d2/dfd/classMemento.html#a8236cd118199e153d96dd85f54b85372">sauvegarde</a>.insert(std::make_pair(temp[i]-&gt;getNumero(), noeud));</div>
+<div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160;</div>
+<div class="line"><a name="l00078"></a><span class="lineno">   78</span>&#160;    }</div>
+<div class="line"><a name="l00079"></a><span class="lineno">   79</span>&#160;</div>
+<div class="line"><a name="l00080"></a><span class="lineno">   80</span>&#160;}</div>
+<div class="ttc" id="classMemento_html_a8236cd118199e153d96dd85f54b85372"><div class="ttname"><a href="../../d2/dfd/classMemento.html#a8236cd118199e153d96dd85f54b85372">Memento::sauvegarde</a></div><div class="ttdeci">std::map&lt; int, NoeudAbstrait * &gt; sauvegarde</div><div class="ttdoc">Structure de donnee qui contient l&#39;information des noeuds. </div><div class="ttdef"><b>Definition:</b> <a href="../../d5/d61/Memento_8h_source.html#l00044">Memento.h:44</a></div></div>
+<div class="ttc" id="classArbreRenduINF2990_html_a93c34556e4ed01a68752cef33667c52f"><div class="ttname"><a href="../../d9/db3/classArbreRenduINF2990.html#a93c34556e4ed01a68752cef33667c52f">ArbreRenduINF2990::obtenirElementsTable</a></div><div class="ttdeci">std::vector&lt; NoeudAbstrait * &gt; obtenirElementsTable()</div><div class="ttdoc">Obtenir les �l�ments de la table. </div><div class="ttdef"><b>Definition:</b> <a href="../../d1/d9b/ArbreRenduINF2990_8cpp_source.html#l00490">ArbreRenduINF2990.cpp:490</a></div></div>
+<div class="ttc" id="classNoeudAbstrait_html_a11e12e42b05a5327c92cd7fd1b7e5a24"><div class="ttname"><a href="../../d7/d8e/classNoeudAbstrait.html#a11e12e42b05a5327c92cd7fd1b7e5a24">NoeudAbstrait::assignerPositionRelative</a></div><div class="ttdeci">void assignerPositionRelative(const glm::dvec3 &amp;positionRelative)</div><div class="ttdoc">Assigne la position relative du noeud. </div><div class="ttdef"><b>Definition:</b> <a href="../../d1/d0f/NoeudAbstrait_8h_source.html#l00465">NoeudAbstrait.h:465</a></div></div>
+<div class="ttc" id="classNoeudAbstrait_html"><div class="ttname"><a href="../../d7/d8e/classNoeudAbstrait.html">NoeudAbstrait</a></div><div class="ttdoc">Classe de base du patron composite utilisee pour creer l&#39;arbre de rendu. </div><div class="ttdef"><b>Definition:</b> <a href="../../d1/d0f/NoeudAbstrait_8h_source.html#l00055">NoeudAbstrait.h:55</a></div></div>
+<div class="ttc" id="Memento_8h_html"><div class="ttname"><a href="../../d5/d61/Memento_8h.html">Memento.h</a></div></div>
+<div class="ttc" id="classMemento_html_a839b7e8c03215e25b3a66e36078ea9e1"><div class="ttname"><a href="../../d2/dfd/classMemento.html#a839b7e8c03215e25b3a66e36078ea9e1">Memento::sauvegarder</a></div><div class="ttdeci">void sauvegarder(ArbreRenduINF2990 *arbreAEnregistrer)</div><div class="ttdoc">Enregistrer l&#39;information des noeuds. </div><div class="ttdef"><b>Definition:</b> <a href="../../d7/d28/Memento_8cpp_source.html#l00057">Memento.cpp:57</a></div></div>
+<div class="ttc" id="classMemento_html_ad4f6b7c8de3d43fc0fca2e0a6d2e3a8a"><div class="ttname"><a href="../../d2/dfd/classMemento.html#ad4f6b7c8de3d43fc0fca2e0a6d2e3a8a">Memento::Memento</a></div><div class="ttdeci">Memento(ArbreRenduINF2990 *arbreAEnregistrer)</div><div class="ttdoc">Constructeur. </div><div class="ttdef"><b>Definition:</b> <a href="../../d7/d28/Memento_8cpp_source.html#l00025">Memento.cpp:25</a></div></div>
+<div class="ttc" id="classMemento_html_af680b5488989567d0f03d655c4232924"><div class="ttname"><a href="../../d2/dfd/classMemento.html#af680b5488989567d0f03d655c4232924">Memento::~Memento</a></div><div class="ttdeci">~Memento()</div><div class="ttdoc">Destructeur. </div><div class="ttdef"><b>Definition:</b> <a href="../../d7/d28/Memento_8cpp_source.html#l00040">Memento.cpp:40</a></div></div>
+<div class="ttc" id="classArbreRendu_html_a33ae9013f9cec73854d32527b85b41f9"><div class="ttname"><a href="../../d8/d43/classArbreRendu.html#a33ae9013f9cec73854d32527b85b41f9">ArbreRendu::creerNoeud</a></div><div class="ttdeci">NoeudAbstrait * creerNoeud(const std::string &amp;typeNouveauNoeud) const </div><div class="ttdoc">Cree un nouveau noeud. </div><div class="ttdef"><b>Definition:</b> <a href="../../da/dca/ArbreRendu_8cpp_source.html#l00059">ArbreRendu.cpp:59</a></div></div>
+<div class="ttc" id="classArbreRenduINF2990_html"><div class="ttname"><a href="../../d9/db3/classArbreRenduINF2990.html">ArbreRenduINF2990</a></div><div class="ttdoc">Classe qui represente l&#39;arbre de rendu specifique au projet de INF2990. </div><div class="ttdef"><b>Definition:</b> <a href="../../df/dbb/ArbreRenduINF2990_8h_source.html#l00035">ArbreRenduINF2990.h:35</a></div></div>
+</div><!-- fragment --></div><!-- contents -->
+</div><!-- doc-content -->
+<!-- start footer part -->
+<div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
+  <ul>
+    <li class="navelem"><a class="el" href="../../dir_937900b87e0c7a5fa01190c395fb83f7.html">Sources</a></li><li class="navelem"><a class="el" href="../../dir_5638be7ced97c879b21b23536e800e77.html">DLL</a></li><li class="navelem"><a class="el" href="../../dir_1f9ecdc172d1f7e6fe207d5eb4f8db61.html">Memento</a></li><li class="navelem"><a class="el" href="../../d7/d28/Memento_8cpp.html">Memento.cpp</a></li>
+    <li class="footer">Généré le Lundi 13 Avril 2015 19:47:54 pour Pain Ball par
+    <a href="http://www.doxygen.org/index.html">
+    <img class="footer" src="../../doxygen.png" alt="doxygen"/></a> 1.8.9.1 </li>
+  </ul>
+</div>
+</body>
+</html>

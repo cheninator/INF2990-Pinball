@@ -631,7 +631,7 @@ extern "C"
 	{
 		// Notez bien que cette valeur transmise est d'habitude de 10 depuis le C#
 
-		/* Si la caméra est orbite, on redirige la méthode vers celle appropriée*/
+		/* Si la camera est orbite, on redirige la methode vers celle appropriee*/
 		if (FacadeModele::obtenirInstance()->cameraEstOrbite())
 			orbite(deplacementX/3.0, deplacementY/3.0);
 		else
@@ -733,7 +733,7 @@ extern "C"
 	__declspec(dllexport) void __cdecl orbite(double x, double y)
 	{
 		// Habituellement la valeur de x et y est de 10 depuis le C#
-		/// En theta, pour correspondre à une rotation dans le sens de la flèche il faut envoyer l'opposé
+		/// En theta, pour correspondre a une rotation dans le sens de la fleche il faut envoyer l'oppose
 		FacadeModele::obtenirInstance()->obtenirVue()->rotaterXY( -1 * x, y);
 	}
 
@@ -1324,7 +1324,7 @@ extern "C"
 	///
 	/// @return bool
 	///
-	/// @remark : La fonction calcule la boite englobante de l'objet transforme, le calcul est differend pour les murs. Il manque quelque chose pour le calcul des boîtes englobantes transformees des objets de type mur.
+	/// @remark : La fonction calcule la boite englobante de l'objet transforme, le calcul est differend pour les murs. Il manque quelque chose pour le calcul des boites englobantes transformees des objets de type mur.
 	///
 	///////////////////////////////////////////////////////////////////////////////
 	__declspec(dllexport) bool __cdecl setProprietesNoeud(int x, int y, int angle, double scale)
@@ -2319,8 +2319,8 @@ extern "C"
 	///////////////////////////////////////////////////////////////////////////////
 	///
 	/// @fn bool cameraEstOrbite()
-	/// @brief Retourne vrai si la ve est en perspective / la caméra est orbite
-	/// @return bool, true si la caméra est en mode orbite
+	/// @brief Retourne vrai si la ve est en perspective / la camera est orbite
+	/// @return bool, true si la camera est en mode orbite
 	///
 	///////////////////////////////////////////////////////////////////////////////
 	__declspec(dllexport) bool cameraEstOrbite()

@@ -14,7 +14,7 @@ SingletonGlobal* SingletonGlobal::singleton_{ nullptr };
 /// @fn SingletonGlobal* SingletonGlobal::obtenirInstance()
 ///
 /// Cette fonction retourne l'instance unique de la classe. Si l'instance
-/// n'existe pas, elle est créée. Ainsi, une seule instance sera créée.
+/// n'existe pas, elle est creee. Ainsi, une seule instance sera creee.
 /// Cette fonction n'est pas "thread-safe".
 ///
 /// @return L'instance unique de la classe.
@@ -81,7 +81,7 @@ void SingletonGlobal::updateBilles()
 ///
 /// @fn void SingletonGlobal::spawnBille(glm::dvec3 position, glm::dvec3 echelle, NoeudAbstrait* portail)
 ///
-/// Gere le moment de création d'une bille (pour respecter la regle des une secondes)
+/// Gere le moment de creation d'une bille (pour respecter la regle des une secondes)
 ///
 /// @return Aucune.
 ///
@@ -112,7 +112,7 @@ void SingletonGlobal::afficherBille()
 ///
 /// @fn void SingletonGlobal::libererInstance()
 ///
-/// Détruit l'instance unique de la classe.  Cette fonction n'est pas
+/// Detruit l'instance unique de la classe.  Cette fonction n'est pas
 /// "thread-safe".
 ///
 /// @return Aucune.

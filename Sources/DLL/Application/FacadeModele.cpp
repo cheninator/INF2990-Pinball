@@ -274,7 +274,7 @@ void FacadeModele::initialiserOpenGL(HWND hWnd)
 
 	//arbre_->initialiser();
 	originator_->assignerArbre(arbre_);
-	/*Créer une caméra ortho*/
+	/*Creer une camera ortho*/
 	vue_ = new vue::VueOrtho{
 		vue::Camera{
 			glm::dvec3(0, 0, 200), glm::dvec3(0, 0, 0),
@@ -414,7 +414,7 @@ void FacadeModele::afficherBase() const
 		// le Texte a Ecrire
 		myText = "Hello World";
 		myFont = "arial.ttf"; // Ou encore Bloodthirsty.ttf
-		// On spécifie la font
+		// On specifie la font
 		controleurTexte_->creeTexte(myText, myFont);
 
 		// On specifie la taille (en 1/72 de pouce)
@@ -600,7 +600,7 @@ int FacadeModele::selectionnerObjetSousPointClique(int i, int j, int hauteur, in
 	int valeurStencil = 0;
 	glReadPixels(i ,hauteur -j , 1, 1, GL_STENCIL_INDEX, GL_UNSIGNED_INT, &valeurStencil);
 
-	// Merci de laisser le cout pour que je puisse le décommenter au besoin
+	// Merci de laisser le cout pour que je puisse le decommenter au besoin
 	//std::cout << "Valeur du stencil sous le curseur " << valeurStencil << std::endl
 
 	// Merci de laisser le cout pour que je puisse le decommenter au besoin
@@ -711,7 +711,7 @@ void FacadeModele::deplacerSelection(int x1, int y1 ,int x2, int y2, bool duplic
 ///	\remark  	L'angle est calcule en fonction du deplacement de (x1,y1) a (x2,y2):
 ///	\remark 	Presentement, l'angle est proportionnel a (y1 - y2).
 ///	\remark 	
-///	\remark 	Pour tester si la rotation est faisable, on prend tous les points des boîtes
+///	\remark 	Pour tester si la rotation est faisable, on prend tous les points des boites
 ///	\remark 	englobantes.  Si un seul de ces points, une fois transforme, n'est pas dans la 
 ///	\remark 	table, on ne fait pas la rotation.
 ///		
@@ -1891,7 +1891,7 @@ void FacadeModele::traiterCollisions(float)
 
 	if (miseAJourListeBillesRequise)
 		mettreAJourListeBillesEtNoeuds(); // Cette methode est appelee a chaque frame dand animer(temps)
-	// mais si on trouve toutes les places ou elle doit être appelee, 
+	// mais si on trouve toutes les places ou elle doit etre appelee, 
 	// on n'aura plus besoin de l'appeler a chaque frame et donc ici serait le bon endroit pour l'appeler quand on a efface une bille.
 }
 
@@ -1935,7 +1935,7 @@ void FacadeModele::traiterCollisionsAvecQuadTree(float temps)
 				// Traiter (reagir a) la collision. La bille n'est pas detruite maintenant que NoeudTrou::traiterCollisions n'efface plus la bille (il le faisait au commit d'avant)
 				noeudAVerifier->traiterCollisions(detail, bille);
 
-				if (noeudAVerifier->obtenirType() == "trou") // Traiter le cas où une bille entre en collision avec un trou
+				if (noeudAVerifier->obtenirType() == "trou") // Traiter le cas ou une bille entre en collision avec un trou
 				{
 					quad_->remove(bille);
 					break;                                   // MODIF
@@ -1945,7 +1945,7 @@ void FacadeModele::traiterCollisionsAvecQuadTree(float temps)
 		}// Fin du for( noeudAVerifier : listeNoeudsAVerifier)
 	}// Fin du for( bille : listeBilles_)
 
-	// Enlever les billes du quadTree avant de les detruire pour pouvoir acceder à leurs positions.
+	// Enlever les billes du quadTree avant de les detruire pour pouvoir acceder a leurs positions.
 	for (NoeudAbstrait* bille : listeBilles_)
 		quad_->remove(bille);
 
@@ -2316,16 +2316,16 @@ std::string FacadeModele::obtenirCout()
 ///
 /// @fn void FacadeModele::utiliserCameraOrbite(bool utiliseOrbite)
 ///
-/// @brief Cette fonction change la vision pour refléter une caméra orbite ou non
+/// @brief Cette fonction change la vision pour refleter une camera orbite ou non
 ///
-/// @param[in] utiliseOrbite : Indique s'il faut utiliser une caméra orbite ou non
+/// @param[in] utiliseOrbite : Indique s'il faut utiliser une camera orbite ou non
 ///
 /// @return Aucune
 ///
 ////////////////////////////////////////////////////////////////////////
 void FacadeModele::utiliserCameraOrbite(bool utiliseOrbite)
 {
-	// Si le mode désiré n'est pas celui qui est déjà présentement utilisé
+	// Si le mode desire n'est pas celui qui est deja presentement utilise
 	if (utiliseOrbite != vueEstOrbite_)
 	{
 		/*Sauvegarde des mesures de la clôture */
@@ -2345,15 +2345,15 @@ void FacadeModele::utiliserCameraOrbite(bool utiliseOrbite)
 								289),
 					glm::dvec3( (coinGaucheTableX + coinDroitTableX) / 2.0 ,
 								(coinGaucheTableY + coinDroitTableY) / 2.0,
-								100), /* Le point visé*/
+								100), /* Le point vise*/
 					glm::dvec3(0, 1, 0), glm::dvec3(0, 1, 0),
 				    0.0 , 0.0},
 					vue::ProjectionPerspective{
 						clotMinX, clotMaxX, clotMinY, clotMaxY,
 						10.0, 2000, /* La valeur minimale et maximale en Z dans le volume de visualisation*/
 						50, 1000,   /* La valeur minimal et maximale que l'on peut parcourir dans le jeu*/
-						1.10,       /* L'incrément de zoom*/
-						ratio,      /* Le rapport d'aspect précédent*/
+						1.10,       /* L'increment de zoom*/
+						ratio,      /* Le rapport d'aspect precedent*/
 						60.0,       /* L'angle de vision */ 
 					}
 			}; 
@@ -2363,7 +2363,7 @@ void FacadeModele::utiliserCameraOrbite(bool utiliseOrbite)
 		}
 		else
 		{
-			/*Créer une caméra ortho*/
+			/*Creer une camera ortho*/
 			vue_ = new vue::VueOrtho{
 				vue::Camera{
 					glm::dvec3(0, 0, 200), glm::dvec3(0, 0, 0),
@@ -2379,7 +2379,7 @@ void FacadeModele::utiliserCameraOrbite(bool utiliseOrbite)
 			std::cout << "La vue est passee en orthographique \n";
 		}
 
-		// On change l'attribut pour refléter la vue courante
+		// On change l'attribut pour refleter la vue courante
 		vueEstOrbite_ = utiliseOrbite;
 	}
 }
@@ -2518,9 +2518,9 @@ int FacadeModele::obtenirNombreSelection() const
 ///
 /// @fn void FacadeModele::cameraEstOrbite()
 ///
-/// @brief Indique si le mode de caméra est orbite ou non
+/// @brief Indique si le mode de camera est orbite ou non
 ///
-/// @return Si oui ou non la caméra est en mode orbite
+/// @return Si oui ou non la camera est en mode orbite
 ///
 ////////////////////////////////////////////////////////////////////////
 bool FacadeModele::cameraEstOrbite()

@@ -53,7 +53,7 @@ void ControleurNuanceurs::libererInstance()
 /// @brief Destructeur prive
 /// 
 /// @remark Les destructeurs s'occuppent de relacher les ressources
-/// OpenGL liés aux objets.
+/// OpenGL lies aux objets.
 ///
 /// @return aucun.
 ///

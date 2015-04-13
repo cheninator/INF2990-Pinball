@@ -24,7 +24,7 @@ class NoeudPaletteD;
 ///////////////////////////////////////////////////////////////////////////
 /// @class JoueurVirtuel
 ///
-/// @brief Cette classe est issu du patron Visiteur. Elle représente le 
+/// @brief Cette classe est issu du patron Visiteur. Elle represente le 
 ///		   concept d'intelligence artificielle pour le 2eme joueur
 ///
 /// @author The Ballers

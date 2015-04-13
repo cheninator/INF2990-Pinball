@@ -43,7 +43,7 @@ public:
 	/// Obtenir la  boite englobante custom.
 	virtual std::vector<glm::dvec3> obtenirVecteursEnglobants();
 
-	/// Generer les boites englobantes de façon différente pour le butoir triangulaire
+	/// Generer les boites englobantes de façon differente pour le butoir triangulaire
 	//Obtenir les 4 vecteurs de la boite englobante modifie
 	virtual void obtenirVecteursBoite(glm::dvec3 &v1, glm::dvec3 &v2, glm::dvec3 &v3, glm::dvec3 &v4);
 

@@ -1,0 +1,293 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=9"/>
+<meta name="generator" content="Doxygen 1.8.9.1"/>
+<title>Pain Ball:  Fichier source de Sources/DLL/Eclairage/Lumiere.h</title>
+<link href="../../tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="../../jquery.js"></script>
+<script type="text/javascript" src="../../dynsections.js"></script>
+<link href="../../navtree.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="../../resize.js"></script>
+<script type="text/javascript" src="../../navtreedata.js"></script>
+<script type="text/javascript" src="../../navtree.js"></script>
+<script type="text/javascript">
+  $(document).ready(initResizable);
+  $(window).load(resizeHeight);
+</script>
+<link href="../../search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="../../search/searchdata.js"></script>
+<script type="text/javascript" src="../../search/search.js"></script>
+<script type="text/javascript">
+  $(document).ready(function() { init_search(); });
+</script>
+<link href="../../doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr style="height: 56px;">
+  <td id="projectlogo"><img alt="Logo" src="../../handy.jpg"/></td>
+  <td style="padding-left: 0.5em;">
+   <div id="projectname">Pain Ball
+   &#160;<span id="projectnumber">Livrable 3</span>
+   </div>
+   <div id="projectbrief">by The Ballers</div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- Généré par Doxygen 1.8.9.1 -->
+<script type="text/javascript">
+var searchBox = new SearchBox("searchBox", "../../search",false,'Recherche');
+</script>
+  <div id="navrow1" class="tabs">
+    <ul class="tablist">
+      <li><a href="../../index.html"><span>Page&#160;principale</span></a></li>
+      <li><a href="../../modules.html"><span>Modules</span></a></li>
+      <li><a href="../../namespaces.html"><span>Espaces&#160;de&#160;nommage</span></a></li>
+      <li><a href="../../annotated.html"><span>Classes</span></a></li>
+      <li class="current"><a href="../../files.html"><span>Fichiers</span></a></li>
+      <li>
+        <div id="MSearchBox" class="MSearchBoxInactive">
+        <span class="left">
+          <img id="MSearchSelect" src="../../search/mag_sel.png"
+               onmouseover="return searchBox.OnSearchSelectShow()"
+               onmouseout="return searchBox.OnSearchSelectHide()"
+               alt=""/>
+          <input type="text" id="MSearchField" value="Recherche" accesskey="S"
+               onfocus="searchBox.OnSearchFieldFocus(true)" 
+               onblur="searchBox.OnSearchFieldFocus(false)" 
+               onkeyup="searchBox.OnSearchFieldChange(event)"/>
+          </span><span class="right">
+            <a id="MSearchClose" href="javascript:searchBox.CloseResultsWindow()"><img id="MSearchCloseImg" border="0" src="../../search/close.png" alt=""/></a>
+          </span>
+        </div>
+      </li>
+    </ul>
+  </div>
+  <div id="navrow2" class="tabs2">
+    <ul class="tablist">
+      <li><a href="../../files.html"><span>Liste&#160;des&#160;fichiers</span></a></li>
+      <li><a href="../../globals.html"><span>Membres&#160;de&#160;fichier</span></a></li>
+    </ul>
+  </div>
+</div><!-- top -->
+<div id="side-nav" class="ui-resizable side-nav-resizable">
+  <div id="nav-tree">
+    <div id="nav-tree-contents">
+      <div id="nav-sync" class="sync"></div>
+    </div>
+  </div>
+  <div id="splitbar" style="-moz-user-select:none;" 
+       class="ui-resizable-handle">
+  </div>
+</div>
+<script type="text/javascript">
+$(document).ready(function(){initNavTree('d5/dab/Lumiere_8h_source.html','../../');});
+</script>
+<div id="doc-content">
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<iframe src="javascript:void(0)" frameborder="0" 
+        name="MSearchResults" id="MSearchResults">
+</iframe>
+</div>
+
+<div class="header">
+  <div class="headertitle">
+<div class="title">Lumiere.h</div>  </div>
+</div><!--header-->
+<div class="contents">
+<a href="../../d5/dab/Lumiere_8h.html">Aller à la documentation de ce fichier.</a><div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;</div>
+<div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160;<span class="preprocessor">#ifndef __ECLAIRAGE_LUMIERE_H__</span></div>
+<div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;<span class="preprocessor">#define __ECLAIRAGE_LUMIERE_H__</span></div>
+<div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;</div>
+<div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;<span class="preprocessor">#include &quot;GL/glew.h&quot;</span></div>
+<div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;<span class="preprocessor">#include &lt;GL/gl.h&gt;</span></div>
+<div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;<span class="preprocessor">#include &quot;glm/glm.hpp&quot;</span></div>
+<div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;<span class="preprocessor">#include &quot;glm/gtc/type_ptr.hpp&quot;</span></div>
+<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;</div>
+<div class="line"><a name="l00026"></a><span class="lineno"><a class="line" href="../../d9/d80/classLumiere.html">   26</a></span>&#160;<span class="keyword">class </span><a class="code" href="../../d9/d80/classLumiere.html">Lumiere</a>{</div>
+<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;</div>
+<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;<span class="keyword">public</span>:</div>
+<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;    <a class="code" href="../../d9/d80/classLumiere.html#af5134c8cb21ab8864bd4889c836e6df2">Lumiere</a>(GLuint handle);</div>
+<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;</div>
+<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="../../d9/d80/classLumiere.html#ac5e0d8456c75bff4efd6557bc6d10d9d">definir</a>();</div>
+<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;</div>
+<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;    <span class="keyword">inline</span> <span class="keywordtype">void</span> <a class="code" href="../../d9/d80/classLumiere.html#af34932c75de6dd88d117942bb257eb6c">setAmbientColor</a>(glm::fvec4 ambientColor);</div>
+<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;</div>
+<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;    <span class="keyword">inline</span> <span class="keywordtype">void</span> <a class="code" href="../../d9/d80/classLumiere.html#aa74d3d57175977d01ce96e5860602ffa">setDiffuseColor</a>(glm::fvec4 diffuseColor);</div>
+<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;    <span class="keyword">inline</span> <span class="keywordtype">void</span> <a class="code" href="../../d9/d80/classLumiere.html#a53dee08a9faa4f459a0a170f2d45d347">setSpecularColor</a>(glm::fvec4 specularColor);</div>
+<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;    <span class="keyword">inline</span> <span class="keywordtype">void</span> <a class="code" href="../../d9/d80/classLumiere.html#a21b1bdd546381dc912e5236e2ccf733a">setPosition</a>(glm::fvec4 position);</div>
+<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;    <span class="keyword">inline</span> <span class="keywordtype">void</span> <a class="code" href="../../d9/d80/classLumiere.html#abfa8625854192f9e5babc9c821764841">setDirection</a>(glm::fvec4 direction);</div>
+<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;    <span class="keyword">inline</span> <span class="keywordtype">void</span> <a class="code" href="../../d9/d80/classLumiere.html#ae13720903123ef407ad34b40234497ec">setExponent</a>(<span class="keywordtype">float</span> exponent);</div>
+<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;    <span class="keyword">inline</span> <span class="keywordtype">void</span> <a class="code" href="../../d9/d80/classLumiere.html#acf0760a72582e8d3a35de474bac079e3">setCutoffAngle</a>(<span class="keywordtype">float</span> cutoffAngle);</div>
+<div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;    <span class="keyword">inline</span> <span class="keywordtype">void</span> <a class="code" href="../../d9/d80/classLumiere.html#a6ffd8b12d71c0b066d22a8b3d13d2d54">setAttenuation</a>(glm::fvec3 attenuation);</div>
+<div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;</div>
+<div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;    <span class="keyword">inline</span> <span class="keyword">const</span> glm::fvec4&amp; <a class="code" href="../../d9/d80/classLumiere.html#a647e4b182044a38c375393534c968a3d">getAmbientColor</a>() <span class="keyword">const</span>;</div>
+<div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;    <span class="keyword">inline</span> <span class="keyword">const</span> glm::fvec4&amp; <a class="code" href="../../d9/d80/classLumiere.html#ad5e1e19f0cf94eddf9e39e880ba9e0fd">getDiffuseColor</a>() <span class="keyword">const</span>;</div>
+<div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;    <span class="keyword">inline</span> <span class="keyword">const</span> glm::fvec4&amp; <a class="code" href="../../d9/d80/classLumiere.html#ae2ed42d2b08e86e6b725a281b26c4ed6">getSpecularColor</a>() <span class="keyword">const</span>;</div>
+<div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;    <span class="keyword">inline</span> <span class="keyword">const</span> glm::fvec4&amp; <a class="code" href="../../d9/d80/classLumiere.html#ad4443e042d91297b5eac6545bffbf866">getPosition</a>() <span class="keyword">const</span>;</div>
+<div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;    <span class="keyword">inline</span> <span class="keyword">const</span> glm::fvec4&amp; <a class="code" href="../../d9/d80/classLumiere.html#afccfcec5b1ea43226a49119800051b84">getDirection</a>() <span class="keyword">const</span>;</div>
+<div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;    <span class="keyword">inline</span> <span class="keyword">const</span> <span class="keywordtype">float</span>&amp; <a class="code" href="../../d9/d80/classLumiere.html#a04fdc7cb2b70c807149b9adbfa849941">getExponent</a>() <span class="keyword">const</span>;</div>
+<div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160;    <span class="keyword">inline</span> <span class="keyword">const</span> <span class="keywordtype">float</span>&amp; <a class="code" href="../../d9/d80/classLumiere.html#a021b2b67ae32124cd9c00507d5344d78">getCutoffAngle</a>() <span class="keyword">const</span>;</div>
+<div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160;    <span class="keyword">inline</span> <span class="keyword">const</span> glm::fvec3&amp; <a class="code" href="../../d9/d80/classLumiere.html#a3cfc899a6ae11b523d2de2d3084f6226">getAttenuation</a>() <span class="keyword">const</span>;</div>
+<div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160;</div>
+<div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160;<span class="keyword">private</span>:</div>
+<div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160;</div>
+<div class="line"><a name="l00073"></a><span class="lineno"><a class="line" href="../../d9/d80/classLumiere.html#a7afc7a33d5ef9c854715875b7b555235">   73</a></span>&#160;    GLuint <a class="code" href="../../d9/d80/classLumiere.html#a7afc7a33d5ef9c854715875b7b555235">handle_</a>;</div>
+<div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160;</div>
+<div class="line"><a name="l00076"></a><span class="lineno"><a class="line" href="../../d9/d80/classLumiere.html#af745a8e6a005a424a142f0c33c9bd3b0">   76</a></span>&#160;    glm::fvec4  <a class="code" href="../../d9/d80/classLumiere.html#af745a8e6a005a424a142f0c33c9bd3b0">ambient_</a>{ 1.0f, 1.0f, 1.0f, 1.0f };           <span class="comment">// GL_AMBIENT</span></div>
+<div class="line"><a name="l00077"></a><span class="lineno"><a class="line" href="../../d9/d80/classLumiere.html#a9eac2c81f7a82eab67ab5cf0a54926f3">   77</a></span>&#160;    glm::fvec4  <a class="code" href="../../d9/d80/classLumiere.html#a9eac2c81f7a82eab67ab5cf0a54926f3">diffuse_</a>{ 1.0f, 1.0f, 1.0f, 1.0f };           <span class="comment">// GL_DIFFUSE</span></div>
+<div class="line"><a name="l00078"></a><span class="lineno"><a class="line" href="../../d9/d80/classLumiere.html#a926109d07787326c193ec2ac95ddfe3d">   78</a></span>&#160;    glm::fvec4  <a class="code" href="../../d9/d80/classLumiere.html#a926109d07787326c193ec2ac95ddfe3d">specular_</a>{ 1.0f, 1.0f, 1.0f, 1.0f };          <span class="comment">// GL_SPECULAR</span></div>
+<div class="line"><a name="l00079"></a><span class="lineno">   79</span>&#160;</div>
+<div class="line"><a name="l00081"></a><span class="lineno"><a class="line" href="../../d9/d80/classLumiere.html#a5acf4dd77e9d74ebc24c50021775e5e0">   81</a></span>&#160;    glm::fvec4  <a class="code" href="../../d9/d80/classLumiere.html#a5acf4dd77e9d74ebc24c50021775e5e0">position_</a>{ 190.0f, -47.0f, 30.0f, 1.0 };       <span class="comment">// GL_POSITION</span></div>
+<div class="line"><a name="l00082"></a><span class="lineno">   82</span>&#160;</div>
+<div class="line"><a name="l00084"></a><span class="lineno"><a class="line" href="../../d9/d80/classLumiere.html#a3bb1ff21fb2e95c711193b74f74bc187">   84</a></span>&#160;    glm::fvec4  <a class="code" href="../../d9/d80/classLumiere.html#a3bb1ff21fb2e95c711193b74f74bc187">direction_</a>{ 1.0f, 0.0f, 1.0f, 1.0 };           <span class="comment">// GL_SPOT_DIRECTION</span></div>
+<div class="line"><a name="l00085"></a><span class="lineno">   85</span>&#160;</div>
+<div class="line"><a name="l00087"></a><span class="lineno"><a class="line" href="../../d9/d80/classLumiere.html#aa06ec826d0078cece25debbeb526067f">   87</a></span>&#160;    GLfloat <a class="code" href="../../d9/d80/classLumiere.html#aa06ec826d0078cece25debbeb526067f">spotExponent_</a>{ 0.0f };                            <span class="comment">// GL_SPOT_EXPONENT</span></div>
+<div class="line"><a name="l00088"></a><span class="lineno">   88</span>&#160;</div>
+<div class="line"><a name="l00090"></a><span class="lineno"><a class="line" href="../../d9/d80/classLumiere.html#ac0d15ded706b6ec8b31213c6c970867f">   90</a></span>&#160;    GLfloat <a class="code" href="../../d9/d80/classLumiere.html#ac0d15ded706b6ec8b31213c6c970867f">spotCutoffAngle_</a>{ 30.0f };                        <span class="comment">// GL_SPOT_CUTOFF </span></div>
+<div class="line"><a name="l00091"></a><span class="lineno">   91</span>&#160;</div>
+<div class="line"><a name="l00093"></a><span class="lineno"><a class="line" href="../../d9/d80/classLumiere.html#ad723c1e915576a60e0f8b6eb867869e0">   93</a></span>&#160;    glm::fvec3 <a class="code" href="../../d9/d80/classLumiere.html#ad723c1e915576a60e0f8b6eb867869e0">attenuation_</a>{ 1.0, 0.0, 0.0 };                 <span class="comment">// GL_CONSTANT_ATTENUATION, // GL_LINEAR_ATTENUATION, // GL_QUADRATIC_ATTENUATION</span></div>
+<div class="line"><a name="l00094"></a><span class="lineno">   94</span>&#160;</div>
+<div class="line"><a name="l00095"></a><span class="lineno">   95</span>&#160;};</div>
+<div class="line"><a name="l00096"></a><span class="lineno">   96</span>&#160;</div>
+<div class="line"><a name="l00097"></a><span class="lineno">   97</span>&#160;</div>
+<div class="line"><a name="l00098"></a><span class="lineno">   98</span>&#160;</div>
+<div class="line"><a name="l00110"></a><span class="lineno"><a class="line" href="../../d9/d80/classLumiere.html#af34932c75de6dd88d117942bb257eb6c">  110</a></span>&#160;<span class="keyword">inline</span> <span class="keywordtype">void</span> <a class="code" href="../../d9/d80/classLumiere.html#af34932c75de6dd88d117942bb257eb6c">Lumiere::setAmbientColor</a>(glm::fvec4 ambientColor)</div>
+<div class="line"><a name="l00111"></a><span class="lineno">  111</span>&#160;{</div>
+<div class="line"><a name="l00112"></a><span class="lineno">  112</span>&#160;    <a class="code" href="../../d9/d80/classLumiere.html#af745a8e6a005a424a142f0c33c9bd3b0">ambient_</a> = ambientColor;</div>
+<div class="line"><a name="l00113"></a><span class="lineno">  113</span>&#160;}</div>
+<div class="line"><a name="l00114"></a><span class="lineno">  114</span>&#160;</div>
+<div class="line"><a name="l00126"></a><span class="lineno"><a class="line" href="../../d9/d80/classLumiere.html#aa74d3d57175977d01ce96e5860602ffa">  126</a></span>&#160;<span class="keyword">inline</span> <span class="keywordtype">void</span> <a class="code" href="../../d9/d80/classLumiere.html#aa74d3d57175977d01ce96e5860602ffa">Lumiere::setDiffuseColor</a>(glm::fvec4 diffuseColor)</div>
+<div class="line"><a name="l00127"></a><span class="lineno">  127</span>&#160;{</div>
+<div class="line"><a name="l00128"></a><span class="lineno">  128</span>&#160;    <a class="code" href="../../d9/d80/classLumiere.html#a9eac2c81f7a82eab67ab5cf0a54926f3">diffuse_</a> = diffuseColor;</div>
+<div class="line"><a name="l00129"></a><span class="lineno">  129</span>&#160;}</div>
+<div class="line"><a name="l00130"></a><span class="lineno">  130</span>&#160;</div>
+<div class="line"><a name="l00142"></a><span class="lineno"><a class="line" href="../../d9/d80/classLumiere.html#a53dee08a9faa4f459a0a170f2d45d347">  142</a></span>&#160;<span class="keyword">inline</span> <span class="keywordtype">void</span> <a class="code" href="../../d9/d80/classLumiere.html#a53dee08a9faa4f459a0a170f2d45d347">Lumiere::setSpecularColor</a>(glm::fvec4 specularColor)</div>
+<div class="line"><a name="l00143"></a><span class="lineno">  143</span>&#160;{</div>
+<div class="line"><a name="l00144"></a><span class="lineno">  144</span>&#160;    <a class="code" href="../../d9/d80/classLumiere.html#a926109d07787326c193ec2ac95ddfe3d">specular_</a> = specularColor;</div>
+<div class="line"><a name="l00145"></a><span class="lineno">  145</span>&#160;}</div>
+<div class="line"><a name="l00146"></a><span class="lineno">  146</span>&#160;</div>
+<div class="line"><a name="l00158"></a><span class="lineno"><a class="line" href="../../d9/d80/classLumiere.html#a21b1bdd546381dc912e5236e2ccf733a">  158</a></span>&#160;<span class="keyword">inline</span> <span class="keywordtype">void</span> <a class="code" href="../../d9/d80/classLumiere.html#a21b1bdd546381dc912e5236e2ccf733a">Lumiere::setPosition</a>(glm::fvec4 position)</div>
+<div class="line"><a name="l00159"></a><span class="lineno">  159</span>&#160;{</div>
+<div class="line"><a name="l00160"></a><span class="lineno">  160</span>&#160;    <a class="code" href="../../d9/d80/classLumiere.html#a5acf4dd77e9d74ebc24c50021775e5e0">position_</a> = position;</div>
+<div class="line"><a name="l00161"></a><span class="lineno">  161</span>&#160;}</div>
+<div class="line"><a name="l00162"></a><span class="lineno">  162</span>&#160;</div>
+<div class="line"><a name="l00176"></a><span class="lineno"><a class="line" href="../../d9/d80/classLumiere.html#abfa8625854192f9e5babc9c821764841">  176</a></span>&#160;<span class="keyword">inline</span> <span class="keywordtype">void</span> <a class="code" href="../../d9/d80/classLumiere.html#abfa8625854192f9e5babc9c821764841">Lumiere::setDirection</a>(glm::fvec4 direction)</div>
+<div class="line"><a name="l00177"></a><span class="lineno">  177</span>&#160;{</div>
+<div class="line"><a name="l00178"></a><span class="lineno">  178</span>&#160;    <a class="code" href="../../d9/d80/classLumiere.html#a3bb1ff21fb2e95c711193b74f74bc187">direction_</a> = direction;</div>
+<div class="line"><a name="l00179"></a><span class="lineno">  179</span>&#160;}</div>
+<div class="line"><a name="l00180"></a><span class="lineno">  180</span>&#160;</div>
+<div class="line"><a name="l00193"></a><span class="lineno"><a class="line" href="../../d9/d80/classLumiere.html#ae13720903123ef407ad34b40234497ec">  193</a></span>&#160;<span class="keyword">inline</span> <span class="keywordtype">void</span> <a class="code" href="../../d9/d80/classLumiere.html#ae13720903123ef407ad34b40234497ec">Lumiere::setExponent</a>(<span class="keywordtype">float</span> exponent)</div>
+<div class="line"><a name="l00194"></a><span class="lineno">  194</span>&#160;{</div>
+<div class="line"><a name="l00195"></a><span class="lineno">  195</span>&#160;    <a class="code" href="../../d9/d80/classLumiere.html#aa06ec826d0078cece25debbeb526067f">spotExponent_</a> = exponent;</div>
+<div class="line"><a name="l00196"></a><span class="lineno">  196</span>&#160;}</div>
+<div class="line"><a name="l00197"></a><span class="lineno">  197</span>&#160;</div>
+<div class="line"><a name="l00209"></a><span class="lineno"><a class="line" href="../../d9/d80/classLumiere.html#acf0760a72582e8d3a35de474bac079e3">  209</a></span>&#160;<span class="keyword">inline</span> <span class="keywordtype">void</span> <a class="code" href="../../d9/d80/classLumiere.html#acf0760a72582e8d3a35de474bac079e3">Lumiere::setCutoffAngle</a>(<span class="keywordtype">float</span> cutoffAngle)</div>
+<div class="line"><a name="l00210"></a><span class="lineno">  210</span>&#160;{</div>
+<div class="line"><a name="l00211"></a><span class="lineno">  211</span>&#160;    <span class="keywordflow">if</span> (cutoffAngle &gt; 0.1) <a class="code" href="../../d9/d80/classLumiere.html#ac0d15ded706b6ec8b31213c6c970867f">spotCutoffAngle_</a> = cutoffAngle;</div>
+<div class="line"><a name="l00212"></a><span class="lineno">  212</span>&#160;}</div>
+<div class="line"><a name="l00213"></a><span class="lineno">  213</span>&#160;</div>
+<div class="line"><a name="l00226"></a><span class="lineno"><a class="line" href="../../d9/d80/classLumiere.html#a6ffd8b12d71c0b066d22a8b3d13d2d54">  226</a></span>&#160;<span class="keyword">inline</span> <span class="keywordtype">void</span> <a class="code" href="../../d9/d80/classLumiere.html#a6ffd8b12d71c0b066d22a8b3d13d2d54">Lumiere::setAttenuation</a>(glm::fvec3 attenuation)</div>
+<div class="line"><a name="l00227"></a><span class="lineno">  227</span>&#160;{</div>
+<div class="line"><a name="l00228"></a><span class="lineno">  228</span>&#160;    <a class="code" href="../../d9/d80/classLumiere.html#ad723c1e915576a60e0f8b6eb867869e0">attenuation_</a> = attenuation;</div>
+<div class="line"><a name="l00229"></a><span class="lineno">  229</span>&#160;}</div>
+<div class="line"><a name="l00230"></a><span class="lineno">  230</span>&#160;</div>
+<div class="line"><a name="l00231"></a><span class="lineno">  231</span>&#160;</div>
+<div class="line"><a name="l00241"></a><span class="lineno"><a class="line" href="../../d9/d80/classLumiere.html#a647e4b182044a38c375393534c968a3d">  241</a></span>&#160;<span class="keyword">inline</span> <span class="keyword">const</span> glm::fvec4&amp; <a class="code" href="../../d9/d80/classLumiere.html#a647e4b182044a38c375393534c968a3d">Lumiere::getAmbientColor</a>()<span class="keyword"> const</span></div>
+<div class="line"><a name="l00242"></a><span class="lineno">  242</span>&#160;<span class="keyword"></span>{</div>
+<div class="line"><a name="l00243"></a><span class="lineno">  243</span>&#160;    <span class="keywordflow">return</span> <a class="code" href="../../d9/d80/classLumiere.html#af745a8e6a005a424a142f0c33c9bd3b0">ambient_</a>;</div>
+<div class="line"><a name="l00244"></a><span class="lineno">  244</span>&#160;}</div>
+<div class="line"><a name="l00245"></a><span class="lineno">  245</span>&#160;</div>
+<div class="line"><a name="l00255"></a><span class="lineno"><a class="line" href="../../d9/d80/classLumiere.html#ad5e1e19f0cf94eddf9e39e880ba9e0fd">  255</a></span>&#160;<span class="keyword">inline</span> <span class="keyword">const</span> glm::fvec4&amp; <a class="code" href="../../d9/d80/classLumiere.html#ad5e1e19f0cf94eddf9e39e880ba9e0fd">Lumiere::getDiffuseColor</a>()<span class="keyword"> const</span></div>
+<div class="line"><a name="l00256"></a><span class="lineno">  256</span>&#160;<span class="keyword"></span>{</div>
+<div class="line"><a name="l00257"></a><span class="lineno">  257</span>&#160;    <span class="keywordflow">return</span> <a class="code" href="../../d9/d80/classLumiere.html#a9eac2c81f7a82eab67ab5cf0a54926f3">diffuse_</a>;</div>
+<div class="line"><a name="l00258"></a><span class="lineno">  258</span>&#160;}</div>
+<div class="line"><a name="l00259"></a><span class="lineno">  259</span>&#160;</div>
+<div class="line"><a name="l00269"></a><span class="lineno"><a class="line" href="../../d9/d80/classLumiere.html#ae2ed42d2b08e86e6b725a281b26c4ed6">  269</a></span>&#160;<span class="keyword">inline</span> <span class="keyword">const</span> glm::fvec4&amp; <a class="code" href="../../d9/d80/classLumiere.html#ae2ed42d2b08e86e6b725a281b26c4ed6">Lumiere::getSpecularColor</a>()<span class="keyword"> const</span></div>
+<div class="line"><a name="l00270"></a><span class="lineno">  270</span>&#160;<span class="keyword"></span>{</div>
+<div class="line"><a name="l00271"></a><span class="lineno">  271</span>&#160;    <span class="keywordflow">return</span> <a class="code" href="../../d9/d80/classLumiere.html#a926109d07787326c193ec2ac95ddfe3d">specular_</a>;</div>
+<div class="line"><a name="l00272"></a><span class="lineno">  272</span>&#160;}</div>
+<div class="line"><a name="l00273"></a><span class="lineno">  273</span>&#160;</div>
+<div class="line"><a name="l00283"></a><span class="lineno"><a class="line" href="../../d9/d80/classLumiere.html#ad4443e042d91297b5eac6545bffbf866">  283</a></span>&#160;<span class="keyword">inline</span> <span class="keyword">const</span> glm::fvec4&amp; <a class="code" href="../../d9/d80/classLumiere.html#ad4443e042d91297b5eac6545bffbf866">Lumiere::getPosition</a>()<span class="keyword"> const</span></div>
+<div class="line"><a name="l00284"></a><span class="lineno">  284</span>&#160;<span class="keyword"></span>{</div>
+<div class="line"><a name="l00285"></a><span class="lineno">  285</span>&#160;    <span class="keywordflow">return</span> <a class="code" href="../../d9/d80/classLumiere.html#a5acf4dd77e9d74ebc24c50021775e5e0">position_</a>;</div>
+<div class="line"><a name="l00286"></a><span class="lineno">  286</span>&#160;}</div>
+<div class="line"><a name="l00287"></a><span class="lineno">  287</span>&#160;</div>
+<div class="line"><a name="l00298"></a><span class="lineno"><a class="line" href="../../d9/d80/classLumiere.html#afccfcec5b1ea43226a49119800051b84">  298</a></span>&#160;<span class="keyword">inline</span> <span class="keyword">const</span> glm::fvec4&amp; <a class="code" href="../../d9/d80/classLumiere.html#afccfcec5b1ea43226a49119800051b84">Lumiere::getDirection</a>()<span class="keyword"> const</span></div>
+<div class="line"><a name="l00299"></a><span class="lineno">  299</span>&#160;<span class="keyword"></span>{</div>
+<div class="line"><a name="l00300"></a><span class="lineno">  300</span>&#160;    <span class="keywordflow">return</span> <a class="code" href="../../d9/d80/classLumiere.html#a3bb1ff21fb2e95c711193b74f74bc187">direction_</a>;</div>
+<div class="line"><a name="l00301"></a><span class="lineno">  301</span>&#160;}</div>
+<div class="line"><a name="l00302"></a><span class="lineno">  302</span>&#160;</div>
+<div class="line"><a name="l00312"></a><span class="lineno"><a class="line" href="../../d9/d80/classLumiere.html#a04fdc7cb2b70c807149b9adbfa849941">  312</a></span>&#160;<span class="keyword">inline</span> <span class="keyword">const</span> <span class="keywordtype">float</span>&amp; <a class="code" href="../../d9/d80/classLumiere.html#a04fdc7cb2b70c807149b9adbfa849941">Lumiere::getExponent</a>()<span class="keyword"> const</span></div>
+<div class="line"><a name="l00313"></a><span class="lineno">  313</span>&#160;<span class="keyword"></span>{</div>
+<div class="line"><a name="l00314"></a><span class="lineno">  314</span>&#160;    <span class="keywordflow">return</span> <a class="code" href="../../d9/d80/classLumiere.html#aa06ec826d0078cece25debbeb526067f">spotExponent_</a>;</div>
+<div class="line"><a name="l00315"></a><span class="lineno">  315</span>&#160;}</div>
+<div class="line"><a name="l00316"></a><span class="lineno">  316</span>&#160;</div>
+<div class="line"><a name="l00326"></a><span class="lineno"><a class="line" href="../../d9/d80/classLumiere.html#a021b2b67ae32124cd9c00507d5344d78">  326</a></span>&#160;<span class="keyword">inline</span> <span class="keyword">const</span> <span class="keywordtype">float</span>&amp; <a class="code" href="../../d9/d80/classLumiere.html#a021b2b67ae32124cd9c00507d5344d78">Lumiere::getCutoffAngle</a>()<span class="keyword"> const</span></div>
+<div class="line"><a name="l00327"></a><span class="lineno">  327</span>&#160;<span class="keyword"></span>{</div>
+<div class="line"><a name="l00328"></a><span class="lineno">  328</span>&#160;    <span class="keywordflow">return</span> <a class="code" href="../../d9/d80/classLumiere.html#ac0d15ded706b6ec8b31213c6c970867f">spotCutoffAngle_</a>;</div>
+<div class="line"><a name="l00329"></a><span class="lineno">  329</span>&#160;}</div>
+<div class="line"><a name="l00330"></a><span class="lineno">  330</span>&#160;</div>
+<div class="line"><a name="l00341"></a><span class="lineno"><a class="line" href="../../d9/d80/classLumiere.html#a3cfc899a6ae11b523d2de2d3084f6226">  341</a></span>&#160;<span class="keyword">inline</span> <span class="keyword">const</span> glm::fvec3&amp; <a class="code" href="../../d9/d80/classLumiere.html#a3cfc899a6ae11b523d2de2d3084f6226">Lumiere::getAttenuation</a>()<span class="keyword"> const</span></div>
+<div class="line"><a name="l00342"></a><span class="lineno">  342</span>&#160;<span class="keyword"></span>{</div>
+<div class="line"><a name="l00343"></a><span class="lineno">  343</span>&#160;    <span class="keywordflow">return</span> <a class="code" href="../../d9/d80/classLumiere.html#ad723c1e915576a60e0f8b6eb867869e0">attenuation_</a>;</div>
+<div class="line"><a name="l00344"></a><span class="lineno">  344</span>&#160;}</div>
+<div class="line"><a name="l00345"></a><span class="lineno">  345</span>&#160;</div>
+<div class="line"><a name="l00346"></a><span class="lineno">  346</span>&#160;<span class="preprocessor">#endif //  __ECLAIRAGE_LUMIERE_H__</span></div>
+<div class="ttc" id="classLumiere_html_a926109d07787326c193ec2ac95ddfe3d"><div class="ttname"><a href="../../d9/d80/classLumiere.html#a926109d07787326c193ec2ac95ddfe3d">Lumiere::specular_</a></div><div class="ttdeci">glm::fvec4 specular_</div><div class="ttdef"><b>Definition:</b> <a href="../../d5/dab/Lumiere_8h_source.html#l00078">Lumiere.h:78</a></div></div>
+<div class="ttc" id="classLumiere_html_ad5e1e19f0cf94eddf9e39e880ba9e0fd"><div class="ttname"><a href="../../d9/d80/classLumiere.html#ad5e1e19f0cf94eddf9e39e880ba9e0fd">Lumiere::getDiffuseColor</a></div><div class="ttdeci">const glm::fvec4 &amp; getDiffuseColor() const </div><div class="ttdoc">Accesseur de la couleur diffuse. </div><div class="ttdef"><b>Definition:</b> <a href="../../d5/dab/Lumiere_8h_source.html#l00255">Lumiere.h:255</a></div></div>
+<div class="ttc" id="classLumiere_html_abfa8625854192f9e5babc9c821764841"><div class="ttname"><a href="../../d9/d80/classLumiere.html#abfa8625854192f9e5babc9c821764841">Lumiere::setDirection</a></div><div class="ttdeci">void setDirection(glm::fvec4 direction)</div><div class="ttdoc">Assignations de la direction. </div><div class="ttdef"><b>Definition:</b> <a href="../../d5/dab/Lumiere_8h_source.html#l00176">Lumiere.h:176</a></div></div>
+<div class="ttc" id="classLumiere_html_a021b2b67ae32124cd9c00507d5344d78"><div class="ttname"><a href="../../d9/d80/classLumiere.html#a021b2b67ae32124cd9c00507d5344d78">Lumiere::getCutoffAngle</a></div><div class="ttdeci">const float &amp; getCutoffAngle() const </div><div class="ttdoc">Accesseur de l&#39;angle d&#39;ouverture du spot. </div><div class="ttdef"><b>Definition:</b> <a href="../../d5/dab/Lumiere_8h_source.html#l00326">Lumiere.h:326</a></div></div>
+<div class="ttc" id="classLumiere_html_a6ffd8b12d71c0b066d22a8b3d13d2d54"><div class="ttname"><a href="../../d9/d80/classLumiere.html#a6ffd8b12d71c0b066d22a8b3d13d2d54">Lumiere::setAttenuation</a></div><div class="ttdeci">void setAttenuation(glm::fvec3 attenuation)</div><div class="ttdoc">Assignations des coefficients d&#39;attenuation. </div><div class="ttdef"><b>Definition:</b> <a href="../../d5/dab/Lumiere_8h_source.html#l00226">Lumiere.h:226</a></div></div>
+<div class="ttc" id="classLumiere_html_a9eac2c81f7a82eab67ab5cf0a54926f3"><div class="ttname"><a href="../../d9/d80/classLumiere.html#a9eac2c81f7a82eab67ab5cf0a54926f3">Lumiere::diffuse_</a></div><div class="ttdeci">glm::fvec4 diffuse_</div><div class="ttdef"><b>Definition:</b> <a href="../../d5/dab/Lumiere_8h_source.html#l00077">Lumiere.h:77</a></div></div>
+<div class="ttc" id="classLumiere_html_a7afc7a33d5ef9c854715875b7b555235"><div class="ttname"><a href="../../d9/d80/classLumiere.html#a7afc7a33d5ef9c854715875b7b555235">Lumiere::handle_</a></div><div class="ttdeci">GLuint handle_</div><div class="ttdoc">Poigee OpenGL. </div><div class="ttdef"><b>Definition:</b> <a href="../../d5/dab/Lumiere_8h_source.html#l00073">Lumiere.h:73</a></div></div>
+<div class="ttc" id="classLumiere_html_a647e4b182044a38c375393534c968a3d"><div class="ttname"><a href="../../d9/d80/classLumiere.html#a647e4b182044a38c375393534c968a3d">Lumiere::getAmbientColor</a></div><div class="ttdeci">const glm::fvec4 &amp; getAmbientColor() const </div><div class="ttdoc">Accesseur de la couleur ambiante. </div><div class="ttdef"><b>Definition:</b> <a href="../../d5/dab/Lumiere_8h_source.html#l00241">Lumiere.h:241</a></div></div>
+<div class="ttc" id="classLumiere_html_a3cfc899a6ae11b523d2de2d3084f6226"><div class="ttname"><a href="../../d9/d80/classLumiere.html#a3cfc899a6ae11b523d2de2d3084f6226">Lumiere::getAttenuation</a></div><div class="ttdeci">const glm::fvec3 &amp; getAttenuation() const </div><div class="ttdoc">Accesseur des coefficients d&#39;attenuation. </div><div class="ttdef"><b>Definition:</b> <a href="../../d5/dab/Lumiere_8h_source.html#l00341">Lumiere.h:341</a></div></div>
+<div class="ttc" id="classLumiere_html_af5134c8cb21ab8864bd4889c836e6df2"><div class="ttname"><a href="../../d9/d80/classLumiere.html#af5134c8cb21ab8864bd4889c836e6df2">Lumiere::Lumiere</a></div><div class="ttdeci">Lumiere(GLuint handle)</div><div class="ttdoc">Constructeur. </div><div class="ttdef"><b>Definition:</b> <a href="../../dc/d4f/Lumiere_8cpp_source.html#l00029">Lumiere.cpp:29</a></div></div>
+<div class="ttc" id="classLumiere_html_ae13720903123ef407ad34b40234497ec"><div class="ttname"><a href="../../d9/d80/classLumiere.html#ae13720903123ef407ad34b40234497ec">Lumiere::setExponent</a></div><div class="ttdeci">void setExponent(float exponent)</div><div class="ttdoc">Assignations de l&#39;exposant du spot. </div><div class="ttdef"><b>Definition:</b> <a href="../../d5/dab/Lumiere_8h_source.html#l00193">Lumiere.h:193</a></div></div>
+<div class="ttc" id="classLumiere_html"><div class="ttname"><a href="../../d9/d80/classLumiere.html">Lumiere</a></div><div class="ttdoc">TODO PHIL. </div><div class="ttdef"><b>Definition:</b> <a href="../../d5/dab/Lumiere_8h_source.html#l00026">Lumiere.h:26</a></div></div>
+<div class="ttc" id="classLumiere_html_a3bb1ff21fb2e95c711193b74f74bc187"><div class="ttname"><a href="../../d9/d80/classLumiere.html#a3bb1ff21fb2e95c711193b74f74bc187">Lumiere::direction_</a></div><div class="ttdeci">glm::fvec4 direction_</div><div class="ttdoc">Direction de la lumiere. </div><div class="ttdef"><b>Definition:</b> <a href="../../d5/dab/Lumiere_8h_source.html#l00084">Lumiere.h:84</a></div></div>
+<div class="ttc" id="classLumiere_html_af34932c75de6dd88d117942bb257eb6c"><div class="ttname"><a href="../../d9/d80/classLumiere.html#af34932c75de6dd88d117942bb257eb6c">Lumiere::setAmbientColor</a></div><div class="ttdeci">void setAmbientColor(glm::fvec4 ambientColor)</div><div class="ttdoc">Assignations de la couleur ambiante. </div><div class="ttdef"><b>Definition:</b> <a href="../../d5/dab/Lumiere_8h_source.html#l00110">Lumiere.h:110</a></div></div>
+<div class="ttc" id="classLumiere_html_ac5e0d8456c75bff4efd6557bc6d10d9d"><div class="ttname"><a href="../../d9/d80/classLumiere.html#ac5e0d8456c75bff4efd6557bc6d10d9d">Lumiere::definir</a></div><div class="ttdeci">void definir()</div><div class="ttdoc">Passer les attributs au serveur OpenGL. </div><div class="ttdef"><b>Definition:</b> <a href="../../dc/d4f/Lumiere_8cpp_source.html#l00061">Lumiere.cpp:61</a></div></div>
+<div class="ttc" id="classLumiere_html_ad4443e042d91297b5eac6545bffbf866"><div class="ttname"><a href="../../d9/d80/classLumiere.html#ad4443e042d91297b5eac6545bffbf866">Lumiere::getPosition</a></div><div class="ttdeci">const glm::fvec4 &amp; getPosition() const </div><div class="ttdoc">Accesseur de la position. </div><div class="ttdef"><b>Definition:</b> <a href="../../d5/dab/Lumiere_8h_source.html#l00283">Lumiere.h:283</a></div></div>
+<div class="ttc" id="classLumiere_html_af745a8e6a005a424a142f0c33c9bd3b0"><div class="ttname"><a href="../../d9/d80/classLumiere.html#af745a8e6a005a424a142f0c33c9bd3b0">Lumiere::ambient_</a></div><div class="ttdeci">glm::fvec4 ambient_</div><div class="ttdoc">Couleurs de lumieres reflechie pour les differents modeles de reflection. </div><div class="ttdef"><b>Definition:</b> <a href="../../d5/dab/Lumiere_8h_source.html#l00076">Lumiere.h:76</a></div></div>
+<div class="ttc" id="classLumiere_html_aa06ec826d0078cece25debbeb526067f"><div class="ttname"><a href="../../d9/d80/classLumiere.html#aa06ec826d0078cece25debbeb526067f">Lumiere::spotExponent_</a></div><div class="ttdeci">GLfloat spotExponent_</div><div class="ttdoc">Exposant du spot (controle l&#39;attenuation proche des bords du spot. </div><div class="ttdef"><b>Definition:</b> <a href="../../d5/dab/Lumiere_8h_source.html#l00087">Lumiere.h:87</a></div></div>
+<div class="ttc" id="classLumiere_html_a53dee08a9faa4f459a0a170f2d45d347"><div class="ttname"><a href="../../d9/d80/classLumiere.html#a53dee08a9faa4f459a0a170f2d45d347">Lumiere::setSpecularColor</a></div><div class="ttdeci">void setSpecularColor(glm::fvec4 specularColor)</div><div class="ttdoc">Assignations de la couleur speculaire. </div><div class="ttdef"><b>Definition:</b> <a href="../../d5/dab/Lumiere_8h_source.html#l00142">Lumiere.h:142</a></div></div>
+<div class="ttc" id="classLumiere_html_ae2ed42d2b08e86e6b725a281b26c4ed6"><div class="ttname"><a href="../../d9/d80/classLumiere.html#ae2ed42d2b08e86e6b725a281b26c4ed6">Lumiere::getSpecularColor</a></div><div class="ttdeci">const glm::fvec4 &amp; getSpecularColor() const </div><div class="ttdoc">Accesseur de la couleur speculaire. </div><div class="ttdef"><b>Definition:</b> <a href="../../d5/dab/Lumiere_8h_source.html#l00269">Lumiere.h:269</a></div></div>
+<div class="ttc" id="classLumiere_html_ad723c1e915576a60e0f8b6eb867869e0"><div class="ttname"><a href="../../d9/d80/classLumiere.html#ad723c1e915576a60e0f8b6eb867869e0">Lumiere::attenuation_</a></div><div class="ttdeci">glm::fvec3 attenuation_</div><div class="ttdoc">Coefficients Constant, Lineaire, Quadratiques (respectivement) d&#39;attenuation en fonction de la distan...</div><div class="ttdef"><b>Definition:</b> <a href="../../d5/dab/Lumiere_8h_source.html#l00093">Lumiere.h:93</a></div></div>
+<div class="ttc" id="classLumiere_html_afccfcec5b1ea43226a49119800051b84"><div class="ttname"><a href="../../d9/d80/classLumiere.html#afccfcec5b1ea43226a49119800051b84">Lumiere::getDirection</a></div><div class="ttdeci">const glm::fvec4 &amp; getDirection() const </div><div class="ttdoc">Accesseur de la direction. </div><div class="ttdef"><b>Definition:</b> <a href="../../d5/dab/Lumiere_8h_source.html#l00298">Lumiere.h:298</a></div></div>
+<div class="ttc" id="classLumiere_html_a21b1bdd546381dc912e5236e2ccf733a"><div class="ttname"><a href="../../d9/d80/classLumiere.html#a21b1bdd546381dc912e5236e2ccf733a">Lumiere::setPosition</a></div><div class="ttdeci">void setPosition(glm::fvec4 position)</div><div class="ttdoc">Assignations de la position. </div><div class="ttdef"><b>Definition:</b> <a href="../../d5/dab/Lumiere_8h_source.html#l00158">Lumiere.h:158</a></div></div>
+<div class="ttc" id="classLumiere_html_a5acf4dd77e9d74ebc24c50021775e5e0"><div class="ttname"><a href="../../d9/d80/classLumiere.html#a5acf4dd77e9d74ebc24c50021775e5e0">Lumiere::position_</a></div><div class="ttdeci">glm::fvec4 position_</div><div class="ttdoc">Position de la source de lumiere dans les coordonnees du modele. </div><div class="ttdef"><b>Definition:</b> <a href="../../d5/dab/Lumiere_8h_source.html#l00081">Lumiere.h:81</a></div></div>
+<div class="ttc" id="classLumiere_html_a04fdc7cb2b70c807149b9adbfa849941"><div class="ttname"><a href="../../d9/d80/classLumiere.html#a04fdc7cb2b70c807149b9adbfa849941">Lumiere::getExponent</a></div><div class="ttdeci">const float &amp; getExponent() const </div><div class="ttdoc">Accesseur de l&#39;exposant du spot. </div><div class="ttdef"><b>Definition:</b> <a href="../../d5/dab/Lumiere_8h_source.html#l00312">Lumiere.h:312</a></div></div>
+<div class="ttc" id="classLumiere_html_ac0d15ded706b6ec8b31213c6c970867f"><div class="ttname"><a href="../../d9/d80/classLumiere.html#ac0d15ded706b6ec8b31213c6c970867f">Lumiere::spotCutoffAngle_</a></div><div class="ttdeci">GLfloat spotCutoffAngle_</div><div class="ttdoc">Angle d&#39;ouverture du spot. </div><div class="ttdef"><b>Definition:</b> <a href="../../d5/dab/Lumiere_8h_source.html#l00090">Lumiere.h:90</a></div></div>
+<div class="ttc" id="classLumiere_html_acf0760a72582e8d3a35de474bac079e3"><div class="ttname"><a href="../../d9/d80/classLumiere.html#acf0760a72582e8d3a35de474bac079e3">Lumiere::setCutoffAngle</a></div><div class="ttdeci">void setCutoffAngle(float cutoffAngle)</div><div class="ttdoc">Assignations de l&#39;angle d&#39;ouverture du spot. </div><div class="ttdef"><b>Definition:</b> <a href="../../d5/dab/Lumiere_8h_source.html#l00209">Lumiere.h:209</a></div></div>
+<div class="ttc" id="classLumiere_html_aa74d3d57175977d01ce96e5860602ffa"><div class="ttname"><a href="../../d9/d80/classLumiere.html#aa74d3d57175977d01ce96e5860602ffa">Lumiere::setDiffuseColor</a></div><div class="ttdeci">void setDiffuseColor(glm::fvec4 diffuseColor)</div><div class="ttdoc">Assignations de la couleur diffuse. </div><div class="ttdef"><b>Definition:</b> <a href="../../d5/dab/Lumiere_8h_source.html#l00126">Lumiere.h:126</a></div></div>
+</div><!-- fragment --></div><!-- contents -->
+</div><!-- doc-content -->
+<!-- start footer part -->
+<div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
+  <ul>
+    <li class="navelem"><a class="el" href="../../dir_937900b87e0c7a5fa01190c395fb83f7.html">Sources</a></li><li class="navelem"><a class="el" href="../../dir_5638be7ced97c879b21b23536e800e77.html">DLL</a></li><li class="navelem"><a class="el" href="../../dir_e8539fdd1ef7831df447341c701486a6.html">Eclairage</a></li><li class="navelem"><a class="el" href="../../d5/dab/Lumiere_8h.html">Lumiere.h</a></li>
+    <li class="footer">Généré le Lundi 13 Avril 2015 19:47:54 pour Pain Ball par
+    <a href="http://www.doxygen.org/index.html">
+    <img class="footer" src="../../doxygen.png" alt="doxygen"/></a> 1.8.9.1 </li>
+  </ul>
+</div>
+</body>
+</html>
