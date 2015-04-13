@@ -147,9 +147,9 @@ void NoeudRessort::animer(float temps)
 ////////////////////////////////////////////////////////////////////////
 void NoeudRessort::compresser()
 {
-	SoundControl->arreterSon("spring");
 	if (etatRessort_ == AU_REPOS)
 	{
+		SoundControl->arreterSon("spring");
 		double longueurOriginale_ = scale_.y *(boite_.coinMax.y - boite_.coinMin.y);
 		scaleYOriginal_ = obtenirAgrandissement().y;
 		positionOriginale_ = positionRelative_;
@@ -158,10 +158,10 @@ void NoeudRessort::compresser()
 											glm::dvec3{ sin(angleEnRadian), cos(angleEnRadian), 0.0f },
 											glm::dvec3{ 0.0, 0.0, 1.0 } };
 		translationCompression_ = transform * glm::dvec3{ 0, 0.8, 0 };
+		SoundControl->jouerSon("springComp");
 	}
 
 	etatRessort_ = EN_COMPRESSION;
-	SoundControl->jouerSon("springComp");
 }
 
 ////////////////////////////////////////////////////////////////////////
