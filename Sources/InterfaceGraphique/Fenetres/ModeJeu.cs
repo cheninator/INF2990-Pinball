@@ -64,6 +64,7 @@ namespace InterfaceGraphique
         private static StringBuilder informations = new StringBuilder("Appuyez sur 'h' pour afficher plus d'information");
         private static StringBuilder fontArial = new StringBuilder(@"arial.tff");
         private static StringBuilder bgm = new StringBuilder("birdsofsorrow");
+        private static StringBuilder winSound = new StringBuilder("campagneWin");
         private static StringBuilder newBallSFX = new StringBuilder("newBall");
 
         public int panelHeight { get; set; } ///< Hauteur de la fenetre
@@ -510,6 +511,9 @@ namespace InterfaceGraphique
         ////////////////////////////////////////////////////////////////////////
         private void FinCampagne(bool active, int nbPoints)
         {
+            if (active)
+                FonctionsNatives.jouerSon(winSound, winSound.Length);
+
             FonctionsNatives.arreterToutSons();
             Program.myCustomConsole.Hide();
             peutAnimer = false;
