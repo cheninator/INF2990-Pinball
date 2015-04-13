@@ -1618,7 +1618,8 @@ namespace InterfaceGraphique
             //Console.WriteLine("Supprimer.");
             FonctionsNatives.removeObject();
             deselection();
-            // TO DO
+
+            etat = new EtatEditeurSelection(this);
         }
 
         ////////////////////////////////////////////////////////////////////////
@@ -2207,6 +2208,8 @@ namespace InterfaceGraphique
         ////////////////////////////////////////////////////////////////////////
         private void panel_MouseMove(object sender, MouseEventArgs e)
         {
+            Console.WriteLine("move");
+
             currentP = panel_GL.PointToClient(MousePosition);
 
             if (nbSelection == 1 && !(etat is EtatEditeurDuplication) && (e.Button == MouseButtons.Left || e.Button == MouseButtons.Middle))
@@ -2245,7 +2248,10 @@ namespace InterfaceGraphique
                 etat.traiterSouris(e);
 
                 if (nbSelection > 0 && ((EtatEditeurSelection)etat).SourisSurSelection == true)
+                {
+                    sauvegarderHistorique();
                     etat = new EtatEditeurDeplacement(this);
+                }                    
                 else if (!((EtatEditeurSelection)etat).SourisSurObjet)
                 {
                     etat = new EtatEditeurSelectionMultiple(this);
@@ -2315,7 +2321,7 @@ namespace InterfaceGraphique
                 etat = new EtatEditeurSelection(this);
             }
             else if (etat is EtatEditeurCreation && e.Button == MouseButtons.Left)
-            {
+            {    
                 if (FonctionsNatives.duplicationEstHorsTable())
                 {
                     FonctionsNatives.removeObject();
@@ -2342,9 +2348,9 @@ namespace InterfaceGraphique
                 }       
             }
             else if (etat is EtatEditeurMur && (clickExtraValide(origin, destination)))
-            {
+            {                
+                deselection();                
                 etat = new EtatEditeurSelection(this);
-                deselection();
                 return;
             }
             else if (e.Button == MouseButtons.Left)
