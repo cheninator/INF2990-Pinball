@@ -1652,7 +1652,8 @@ namespace InterfaceGraphique
             panel_GL.Location = new Point(163, 24);
             panel_GL.Dock = DockStyle.Fill;
             this.OnSizeChanged(e);
-            FonctionsNatives.translater(-mouvementX, mouvementY);
+            if (!FonctionsNatives.cameraEstOrbite())
+                FonctionsNatives.translater(-mouvementX, mouvementY);
             FonctionsNatives.construireListesPalettes();
             FonctionsNatives.mettreAJourListeBillesEtNoeuds();
             if (FonctionsNatives.obtenirAffichageGlobal() == 1)
@@ -3145,7 +3146,8 @@ namespace InterfaceGraphique
             panel_GL.Anchor = (AnchorStyles.Top | AnchorStyles.Left);
             panel_GL.Location = new Point(163, 24);
             panel_GL.Dock = DockStyle.Fill;
-            FonctionsNatives.translater(mouvementX, -mouvementY);
+            if (!FonctionsNatives.cameraEstOrbite())
+                FonctionsNatives.translater(mouvementX, -mouvementY);
             FonctionsNatives.mettreAJourListeBillesEtNoeuds();
             FonctionsNatives.modePause(false);
             Program.myCustomConsole.Hide();

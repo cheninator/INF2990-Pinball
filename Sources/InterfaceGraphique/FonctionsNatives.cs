@@ -435,6 +435,9 @@ namespace InterfaceGraphique
         [DllImport(@"Noyau.dll", CallingConvention = CallingConvention.Cdecl)]
         public static extern bool sourisEstSurObjet(int i, int j, int hauteur, int largeur, out bool estSelectionne);
 
+        [DllImport(@"Noyau.dll", CallingConvention = CallingConvention.Cdecl)]
+        public static extern bool cameraEstOrbite();
+
         public static void populateUsines()
         {
             WriteLine("Creation de l'arbre de rendu...");

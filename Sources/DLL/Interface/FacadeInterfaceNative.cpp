@@ -2315,4 +2315,18 @@ extern "C"
 		return FacadeModele::obtenirInstance()->sourisEstSurObjet(i, j, hauteur, largeur, estSelectionne);
 	}
 
+
+	///////////////////////////////////////////////////////////////////////////////
+	///
+	/// @fn bool cameraEstOrbite()
+	/// @brief Retourne vrai si la ve est en perspective / la caméra est orbite
+	/// @return bool, true si la caméra est en mode orbite
+	///
+	///////////////////////////////////////////////////////////////////////////////
+	__declspec(dllexport) bool cameraEstOrbite()
+	{
+		return FacadeModele::obtenirInstance()->cameraEstOrbite();
+	}
+
+
 }// FIN DU extern "C"
