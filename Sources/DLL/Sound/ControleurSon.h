@@ -20,13 +20,14 @@ public:
 	~ControleurSon();
 	void creeSon(char* sName);
 	void jouerSon(char* sName, bool pause = false);
-	bool sonJoue(char* sName);
 	void accelererSon(char* sName, float facteurAcceleration);
 	void bouclerSon(char* sName, bool loop = true);
 	void arreterSon(char* sName);
 	void arreterSon();
 	void sourdine(bool mute);
+	void pauseGlobal(bool pause);
 
+	void ajusterVolume(char* sName, float pourcentage);
 	void ajusterBGM(float percent);
 	void ajusterSFX(float percent);
 	
@@ -39,9 +40,8 @@ private:
 	std::string getSFXPath(char* sName);
 
 	FMOD::System* system_;
-	std::vector< std::pair< std::string, std::pair< FMOD::Sound *, FMOD::Channel* > > > soundTable_;
-	std::vector<int> backGroundMusic_;
-	std::vector<int> specialEffectSounds_;
+	std::vector < std::pair< std::string, std::pair< FMOD::Sound *, FMOD::Channel* > > > soundTable_;
+
 	float maxBGM_;
 	float maxSFX_;
 

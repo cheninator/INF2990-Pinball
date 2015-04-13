@@ -118,10 +118,6 @@ namespace InterfaceGraphique
             ctrlDown = false;
             altDown = false;
 
-            //Musique
-            playSound("stone");
-            playSound("music");
-
             FonctionsNatives.resetZoom();
             currentZoom = -1;
         }
@@ -400,6 +396,7 @@ namespace InterfaceGraphique
             {
                 if (Char.ToLower(e.KeyChar) == 't')
                 {
+                    FonctionsNatives.arreterToutSons();
                     if (Program.mMenu.modeEdit != null)
                     {
                         Program.myCustomConsole.Show();
@@ -481,6 +478,7 @@ namespace InterfaceGraphique
                 }
                 if (Char.ToLower(e.KeyChar) == 't')
                 {
+                    FonctionsNatives.arreterToutSons();
                     testRetourModeEdition.PerformClick();
                     OnSizeChanged(e);
                 }
@@ -517,8 +515,8 @@ namespace InterfaceGraphique
                 }
                 else if (Char.ToLower(e.KeyChar) == 't')
                 {
+                    FonctionsNatives.arreterToutSons();
                     deselection();
-                    
                     ModeTest_MenuItem.PerformClick();
                     panel_GL.Focus();
                 }

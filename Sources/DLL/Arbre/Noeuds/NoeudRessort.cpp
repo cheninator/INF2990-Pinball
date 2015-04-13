@@ -147,6 +147,7 @@ void NoeudRessort::animer(float temps)
 ////////////////////////////////////////////////////////////////////////
 void NoeudRessort::compresser()
 {
+	SoundControl->arreterSon("spring");
 	if (etatRessort_ == AU_REPOS)
 	{
 		double longueurOriginale_ = scale_.y *(boite_.coinMax.y - boite_.coinMin.y);
@@ -160,6 +161,7 @@ void NoeudRessort::compresser()
 	}
 
 	etatRessort_ = EN_COMPRESSION;
+	SoundControl->jouerSon("springComp");
 }
 
 ////////////////////////////////////////////////////////////////////////
@@ -173,6 +175,7 @@ void NoeudRessort::compresser()
 ////////////////////////////////////////////////////////////////////////
 void NoeudRessort::relacher()
 {
+	SoundControl->arreterSon("springComp");
 	if (etatRessort_ == AU_REPOS)
 		return;
 	//                                 longueur originale                           -            Longueur courante.

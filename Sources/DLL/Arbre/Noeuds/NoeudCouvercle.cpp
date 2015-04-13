@@ -116,6 +116,12 @@ void NoeudCouvercle::animer(float temps)
 		animer_ = false;
 		return;
 	}
+
+	if (leSonJoue == false)
+	{
+		SoundControl->jouerSon("stone");
+		leSonJoue = true;
+	}
 }
 
 ////////////////////////////////////////////////////////////////////////

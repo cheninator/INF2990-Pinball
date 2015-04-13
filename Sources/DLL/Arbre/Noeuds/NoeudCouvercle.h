@@ -46,7 +46,7 @@ public:
 	//virtual void obtenirVecteursBoite(glm::dvec3 &v1, glm::dvec3 &v2, glm::dvec3 &v3, glm::dvec3 &v4);
 	 
 private:
-
+	bool leSonJoue{ false };
 };
 
 #endif // __ARBRE_NOEUDS_NOEUDCOUVERCLE_H__

@@ -59,10 +59,12 @@ namespace InterfaceGraphique
         private int billesDisponibles = 0;  ///< Billes dont le(s) joueur(s) disposent
         public int billesEnJeu = 0;         ///< Billes qui sont sur la zone
         private int nombreDeBillesUtilise = 0; ///< Nombre de Billes deja utilises
-        private int billesPerdus = 0;       ///< Nomrede billes tombees dans le trou
+        private int billesPerdus = 0;       ///< Nombre de billes tombees dans le trou
 
         private static StringBuilder informations = new StringBuilder("Appuyez sur 'h' pour afficher plus d'information");
         private static StringBuilder fontArial = new StringBuilder(@"arial.tff");
+        private static StringBuilder bgm = new StringBuilder("birdsofsorrow");
+        private static StringBuilder newBallSFX = new StringBuilder("newBall");
 
         public int panelHeight { get; set; } ///< Hauteur de la fenetre
         public int panelWidth  { get; set; }///< Largeur de la fenetre
@@ -172,10 +174,12 @@ namespace InterfaceGraphique
             etat = new EtatJeuJouer(this);
             FonctionsNatives.animerJeu(true);
 
-            //bgm = new StringBuilder("baccano.mp3");
-            //FonctionsNatives.bouclerSon(bgm, bgm.Length);
-            //FonctionsNatives.ajusterBGM(50);
-            //FonctionsNatives.jouerSon(bgm, bgm.Length);
+            StringBuilder billeSound = new StringBuilder("rolling");
+
+            FonctionsNatives.bouclerSon(bgm, bgm.Length);
+            FonctionsNatives.ajusterBGM(90);
+            FonctionsNatives.ajusterVolume(billeSound, billeSound.Length, 100);
+            FonctionsNatives.jouerSon(bgm, bgm.Length);
 
             if (true)
             {
@@ -338,6 +342,7 @@ namespace InterfaceGraphique
                     }
                     if (pointsPartie >= nombreDeBillesGagnes * pointsGagnerBille + pointsGagnerBille)
                     {
+                        FonctionsNatives.jouerSon(newBallSFX, newBallSFX.Length);
                         nombreDeBillesGagnes++;
                         label_nbGagnes.Text = nombreDeBillesGagnes.ToString();
                     }
@@ -384,6 +389,7 @@ namespace InterfaceGraphique
         ////////////////////////////////////////////////////////////////////////
         private void PartieRapide_FormClosing(object sender, FormClosingEventArgs e)
         {
+            FonctionsNatives.arreterToutSons();
             lock (Program.unLock)
             {
                 FonctionsNatives.libererOpenGL();
@@ -437,6 +443,7 @@ namespace InterfaceGraphique
         ////////////////////////////////////////////////////////////////////////
         private void ProchainePartie()
         {
+            FonctionsNatives.arreterToutSons();
             boolTemp = false;
             peutAnimer = false;
             map = new StringBuilder(myMaps[currentZone]);
@@ -451,6 +458,7 @@ namespace InterfaceGraphique
             Program.myCustomConsole.Show();
             if (Program.mMenu.modeJeuMain != null)
             {
+                FonctionsNatives.arreterToutSons();
                 Program.myCustomConsole.Show();
                 Program.mMenu.modeJeuMain.Focus();
             }
@@ -462,6 +470,7 @@ namespace InterfaceGraphique
             currentZone++;
             peutAnimer = true;
             boolTemp = true;
+            FonctionsNatives.jouerSon(bgm, bgm.Length);
             /// La création de l'état s'occupe d'appeler resetConfig
             etat = new EtatJeuDebutDePartie(this);
             // Il faut changer le mode car le traitement de début est fini
@@ -499,6 +508,7 @@ namespace InterfaceGraphique
         ////////////////////////////////////////////////////////////////////////
         private void FinCampagne(bool active, int nbPoints)
         {
+            FonctionsNatives.arreterToutSons();
             Program.myCustomConsole.Hide();
             peutAnimer = false;
             boolTemp = false;
@@ -509,6 +519,7 @@ namespace InterfaceGraphique
             {
                 Program.myCustomConsole.Show();
                 Program.mMenu.modeJeuMain.Focus();
+                FonctionsNatives.jouerSon(bgm, bgm.Length);
             }
         }
 
@@ -668,6 +679,7 @@ namespace InterfaceGraphique
             currentZone = 1;
             peutAnimer = true;
             boolTemp = true;
+            FonctionsNatives.jouerSon(bgm, bgm.Length);
             /// La création de l'état s'occupe d'appeler resetConfig
             etat = new EtatJeuDebutDePartie(this);
             // Il faut changer le mode car le traitement de début est fini
@@ -691,6 +703,7 @@ namespace InterfaceGraphique
         ////////////////////////////////////////////////////////////////////////
         public void Quitter()
         {
+            FonctionsNatives.arreterToutSons();
             // resetConfig();
             Program.myCustomConsole.Hide();
             this.Close();

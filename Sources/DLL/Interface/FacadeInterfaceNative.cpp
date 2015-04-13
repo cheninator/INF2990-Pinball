@@ -23,7 +23,7 @@
 #include "ArbreRenduINF2990.h"
 #include "CompteurAffichage.h"
 
-#include <string>
+#include <string>	
 #include <iomanip>
 #include <iostream>
 
@@ -1109,7 +1109,7 @@ extern "C"
 	////////////////////////////////////////////////////////////////////////
 	__declspec(dllexport) void __cdecl bouclerSon(char* value, int length, bool loop)
 	{
-		SoundControl->jouerSon(value, loop);
+		SoundControl->bouclerSon(value, loop);
 	}
 
 	////////////////////////////////////////////////////////////////////////
@@ -1179,6 +1179,24 @@ extern "C"
 
 	////////////////////////////////////////////////////////////////////////
 	///
+	/// @fn void ajusterVolume(char* value, float pourcentage)
+	///
+	/// @param[in] value : Nom du son
+	/// @param[in] length : Taille du nom
+	/// @param[in] pourcentage : Valeur entre 0 et 100 pour ajuster le volume
+	///
+	/// @return Aucun
+	///
+	/// @remark Cette fonction permet d'ajuster le volume d'un son precis
+	///
+	////////////////////////////////////////////////////////////////////////
+	__declspec(dllexport) void __cdecl ajusterVolume(char* value, float pourcentage)
+	{
+		SoundControl->ajusterVolume(value, pourcentage);
+	}
+
+	////////////////////////////////////////////////////////////////////////
+	///
 	/// @fn void ajusterSFX()
 	///
 	/// @param[in] pourcentage : Valeur entre 0 et 100 pour ajuster le volume
@@ -1191,7 +1209,7 @@ extern "C"
 	////////////////////////////////////////////////////////////////////////
 	__declspec(dllexport) void __cdecl ajusterSFX(float pourcentage)
 	{
-		SoundControl->ajusterBGM(pourcentage);
+		SoundControl->ajusterSFX(pourcentage);
 	}
 
 	////////////////////////////////////////////////////////////////////////
