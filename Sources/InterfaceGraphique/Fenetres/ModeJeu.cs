@@ -789,7 +789,7 @@ namespace InterfaceGraphique
             else
             {
                 Program.myCustomConsole.Hide();
-                FonctionsNatives.arreterToutSons();
+               // FonctionsNatives.arreterToutSons();
             }
         }
 
