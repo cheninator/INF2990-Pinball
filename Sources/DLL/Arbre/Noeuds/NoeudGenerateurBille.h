@@ -61,7 +61,7 @@ private:
 	bool enCreation_{ true };
 	double posZinitial;
 	double posZfinal;
-	void NoeudGenerateurBille::shakeHead(float temps);
+	void shakeHead(float temps);
 
 	bool leSonJoue{false};
 };

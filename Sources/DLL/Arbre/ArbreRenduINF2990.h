@@ -40,7 +40,10 @@ public:
    ArbreRenduINF2990();
 
    /// Preparation de l'usine
-   void preparerUsine(const std::string usine);
+   void preparerUsine(const std::string& usine);
+
+   /// Assignation par copie non-necessaire dans le contexte
+   ArbreRenduINF2990& operator=(ArbreRenduINF2990 const&) = delete;
 
    /// Destructeur.
    virtual ~ArbreRenduINF2990();

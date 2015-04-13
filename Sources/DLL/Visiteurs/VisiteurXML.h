@@ -51,8 +51,8 @@ private:
 	std::string nomFichier;			///< Nom du fichier a ecrire.
 	int* proprietes_ = new int[6];	///< Proprietes de la partie a ecrire
 	
-	tinyxml2::XMLElement* elementArbreRendu;
-	tinyxml2::XMLElement* elementTable;
+	tinyxml2::XMLElement* elementArbreRendu{};
+	tinyxml2::XMLElement* elementTable{};
 };
 
 #endif //__VISITEURS_VISITEURXML_H__

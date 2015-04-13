@@ -31,6 +31,12 @@ public:
 	// Destructeur
 	~ConfigScene();
 
+	/// Constructeur par copie non-necessaire dans le contexte
+	ConfigScene(const ConfigScene &) = delete;
+
+	/// Assignation par copie non-necessaire dans le contexte
+	ConfigScene& operator=(ConfigScene const&) = delete;
+
 	// Sauvegarder derniere configuration en fichier binaire
 	void sauvegarderConfiguration();
 
@@ -77,8 +83,8 @@ private:
 	void lireFichierBinaire();
 
 	// Nom de la dernière sauvegarde de configuration
-	std::string derniereConfiguration_;
-	std::string derniereCampagne_;
+	std::string derniereConfiguration_{ "lastConfig.bin" };
+	std::string derniereCampagne_{ "lastCampaign.txt" };
 
 	// Contient toutes les informations relative à la configuration du jeu
 	int* config_;

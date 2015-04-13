@@ -466,7 +466,7 @@ void NoeudAbstrait::appliquerAfficher() const
 	{
 		// glTexEnvf(GL_TEXTURE_ENV, GL_TEXTURE_ENV_MODE, GL_ADD);
 		etat = NOEUD_SELECTIONNE;
-		if (twin_ != nullptr && twin_ != NULL)
+		if (twin_ != nullptr)
 			twin_->setTransparent(true);
 	}
 	
@@ -476,9 +476,9 @@ void NoeudAbstrait::appliquerAfficher() const
 		glEnable(GL_BLEND);
 	}
 	else
-		if (twin_ != nullptr && twin_ != NULL)
+		if (twin_ != nullptr)
 			twin_->setTransparent(false);
-	if (twin_ != nullptr && twin_ != NULL)
+	if (twin_ != nullptr)
 		if (!selectionne_ && !twin_->estSelectionne())
 			twin_->setTransparent(false);
 
@@ -947,8 +947,7 @@ void NoeudAbstrait::traiterCollisions(aidecollision::DetailsCollision details, N
 	glm::dvec3 vitesseTangentielle = vitesseInitiale - vitesseNormaleInitiale;
 	glm::dvec2 vitesseNormaleFinale2D = aidecollision::calculerForceAmortissement2D(details, (glm::dvec2)vitesseInitiale, facteurRebond);
 	glm::dvec3 vitesseFinale = vitesseTangentielle + glm::dvec3{ vitesseNormaleFinale2D.x, vitesseNormaleFinale2D.y, 0.0 };
-		((NoeudBille*)bille)->afficherVitesse(vitesseFinale); // Que Dieu me pardonne
-
+	(static_cast<NoeudBille*>(bille))->afficherVitesse(vitesseFinale); // Que Dieu me pardonne
 
 	glm::dvec3 positionFinale = bille->obtenirPositionRelative() + details.enfoncement * glm::normalize(details.direction);
 	bille->assignerPositionRelative(positionFinale);

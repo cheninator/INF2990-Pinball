@@ -273,7 +273,7 @@ public:
 	inline const glm::dvec3& obtenirAgrandissement() const;
 
 	/// Obtenir rotation
-	inline const glm::dvec3& NoeudAbstrait::obtenirRotation() const;
+	inline const glm::dvec3& obtenirRotation() const;
 
 	/// Activer ou desactiver le mode debug.
 	virtual void setDebug(bool debug);
@@ -332,10 +332,10 @@ protected:
 	NoeudAbstrait*   parent_{ nullptr };
 
 	/// Modele 3D correspondant a ce noeud.
-	modele::Modele3D const* modele_;
+	modele::Modele3D const* modele_ { };
 
 	/// Storage pour le dessin du modele
-	modele::opengl_storage::OpenGL_Liste const* liste_;
+	modele::opengl_storage::OpenGL_Liste const* liste_ { };
 
 	/// Compteur d'instances;
 	static unsigned int compteurNoeuds_;

@@ -22,9 +22,6 @@
 ////////////////////////////////////////////////////////////////////////
 ConfigScene::ConfigScene()
 {
-	derniereConfiguration_ = "lastConfig.bin";
-	derniereCampagne_ = "lastCampaign.txt";
-
 	config_ = new int[13];
 	lireConfiguration();
 	lireCampagne();
@@ -104,12 +101,12 @@ void ConfigScene::sauvegarderCampagne()
 ////////////////////////////////////////////////////////////////////////
 bool ConfigScene::lireConfiguration()
 {
-	bool lectureOK = false;
+	//bool lectureOK = false;
 
 	lireFichierBinaire();
-	lectureOK = true;
+	//lectureOK = true;
 	
-	return lectureOK;
+	return true; //lectureOK;
 }
 
 

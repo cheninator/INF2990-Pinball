@@ -54,7 +54,7 @@ public:
 	void traiterCollisions(aidecollision::DetailsCollision details, NoeudAbstrait* bille, float facteurRebond = 1.0);
 
 	/// Met a jout le pointage des collisions
-	void NoeudBille::mettreAJourCollision(NoeudAbstrait* noeud);
+	void mettreAJourCollision(NoeudAbstrait* noeud);
 
 private:
 	float timerMove_{ 0 };

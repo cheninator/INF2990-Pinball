@@ -41,7 +41,7 @@ public:
 
 private:
 
-	ArbreRenduINF2990* arbreTemp;
+	ArbreRenduINF2990* arbreTemp{ nullptr };
 	std::vector<NoeudAbstrait*> suppression;
 };
 

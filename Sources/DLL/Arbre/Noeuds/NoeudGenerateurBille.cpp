@@ -33,6 +33,8 @@
 NoeudGenerateurBille::NoeudGenerateurBille(const std::string& typeNoeud)
 	: NoeudComposite{ typeNoeud }
 {
+	posZfinal = 0;
+	posZinitial = 0;
 }
 
 ////////////////////////////////////////////////////////////////////////

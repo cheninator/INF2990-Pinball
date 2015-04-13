@@ -34,6 +34,12 @@ public :
 	/// Destructeur
 	~Originator();
 
+	/// Constructeur par copie non-necessaire dans le contexte
+	Originator(const Originator &) = delete;
+
+	/// Assignation par copie non-necessaire dans le contexte
+	Originator& operator=(Originator const&) = delete;
+
 	/// Operation annuler
 	void annuler();
 
@@ -58,7 +64,7 @@ public :
 private:
 
 	/// L'arbre dont il faut manipuler les changements d'etats
-	ArbreRenduINF2990* arbreActuel_;
+	ArbreRenduINF2990* arbreActuel_{ nullptr };
 
 	/// Contient l'historique des etats
 	CareTaker* historique_;

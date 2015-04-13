@@ -212,7 +212,7 @@ NoeudAbstrait* NoeudComposite::chercher(const std::string& typeNoeud)
 ////////////////////////////////////////////////////////////////////////
 const NoeudAbstrait* NoeudComposite::chercher(unsigned int indice) const
 {
-	if ((indice >= 0) && (indice < enfants_.size())) {
+	if (indice < enfants_.size()) {
 		return enfants_[indice];
 	}
 	else {
@@ -234,7 +234,7 @@ const NoeudAbstrait* NoeudComposite::chercher(unsigned int indice) const
 ////////////////////////////////////////////////////////////////////////
 NoeudAbstrait* NoeudComposite::chercher(unsigned int indice)
 {
-	if ((indice >= 0) && (indice < enfants_.size())) {
+	if (indice < enfants_.size()) {
 		return enfants_[indice];
 	}
 	else {

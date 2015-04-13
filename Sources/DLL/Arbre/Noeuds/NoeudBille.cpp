@@ -47,6 +47,8 @@ NoeudBille::NoeudBille(const std::string& typeNoeud)
 	masse_ = MASSE_NOEUD_BILLE;
 	constanteDeFrottement_ = FROTTEMENT_NOEUD_BILLE;
 	SoundControl->bouclerSon("rolling", true);
+	posZinitial = 0;
+	posZfinal = 0;
 }
 
 ////////////////////////////////////////////////////////////////////////

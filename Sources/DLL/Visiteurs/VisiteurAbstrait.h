@@ -56,22 +56,22 @@ public:
 	virtual bool traiter(NoeudAbstrait*){ return false; };
 
 	/// Si traiter(NoeudMur* ) n'est pas reimplemente, appeler celui de NoeudAbstrait qui appelle traiter(NoeudAbstrait*), qui EST reimplementee.
-	virtual bool traiter(NoeudMur* noeud){ return traiter((NoeudAbstrait*)noeud); };
-
+	virtual bool traiter(NoeudMur* noeud){ return traiter(reinterpret_cast<NoeudAbstrait*>(noeud)); };
+	
 	/// Si traiter(NoeudGenerateurBille*) n'est pas reimplemente, appeler celui de NoeudAbstrait qui appelle traiter(NoeudAbstrait*), qui EST reimplementee.
-	virtual bool traiter(NoeudGenerateurBille* noeud){ return traiter((NoeudAbstrait*)noeud); };
+	virtual bool traiter(NoeudGenerateurBille* noeud){ return traiter(reinterpret_cast<NoeudAbstrait*>(noeud)); };
 
 	/// Si traiter(NoeudPortail*) n'est pas reimplemente, appeler celui de NoeudAbstrait qui appelle traiter(NoeudAbstrait*), qui EST reimplementee.
-	virtual bool traiter(NoeudPortail* noeud){ return traiter((NoeudAbstrait*)noeud); };
+	virtual bool traiter(NoeudPortail* noeud){ return traiter(reinterpret_cast<NoeudAbstrait*>(noeud)); };
 
 	/// Si traiter(NoeudPaletteG*) n'est pas reimplemente, appeler celui de NoeudAbstrait qui appelle traiter(NoeudAbstrait*), qui EST reimplementee.
-	virtual bool traiter(NoeudPaletteG* noeud){ return traiter((NoeudAbstrait*)noeud); };
+	virtual bool traiter(NoeudPaletteG* noeud){ return traiter(reinterpret_cast<NoeudAbstrait*>(noeud)); };
 
 	/// Si traiter(NoeudPaletteD*) n'est pas reimplemente, appeler celui de NoeudAbstrait qui appelle traiter(NoeudAbstrait*), qui EST reimplementee.
-	virtual bool traiter(NoeudPaletteD* noeud){ return traiter((NoeudAbstrait*)noeud); };
+	virtual bool traiter(NoeudPaletteD* noeud){ return traiter(reinterpret_cast<NoeudAbstrait*>(noeud)); };
 
 	/// Si traiter(NoeudComposite*) n'est pas reimplemente, appeler celui de NoeudAbstrait qui appelle traiter(NoeudAbstrait*), qui EST reimplementee.
-	virtual bool traiter(NoeudComposite* noeud){ return traiter((NoeudAbstrait*)noeud); };
+	virtual bool traiter(NoeudComposite* noeud){ return traiter(reinterpret_cast<NoeudAbstrait*>(noeud)); };
 
 };
 

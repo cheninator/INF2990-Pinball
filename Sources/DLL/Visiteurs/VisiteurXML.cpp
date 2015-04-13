@@ -25,9 +25,8 @@
 ///
 ////////////////////////////////////////////////////////////////////////
 VisiteurXML::VisiteurXML(std::string nom, int proprietes[])
+	: nomFichier(nom)
 {
-	nomFichier = nom;
-
 	for (int i = 0; i < 6; i++)
 		proprietes_[i] = proprietes[i];
 }

@@ -129,7 +129,7 @@ public:
 	double obtenirZoomCourant();
 
 	/// Obtenir la taille de la fenetre
-	glm::ivec2 FacadeModele::obtenirTailleFenetre();
+	glm::ivec2 obtenirTailleFenetre();
 
 	/// Obtenir le centre de masse en X
 	int obtenirCentreMasseX();

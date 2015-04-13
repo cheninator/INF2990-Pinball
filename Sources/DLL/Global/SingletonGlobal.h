@@ -72,7 +72,7 @@ public:
 
 	std::string obtenirPathTemp() { objectPathCreated_ ? NULL : getAndSetTempObjDirectory(); return objectPath_; };
 
-	void finGeneration() { enCoursDeGeneration_ = 0; };
+	void finGeneration() { enCoursDeGeneration_ = false; };
 
 	void activerSon() { desactiverSon = false; };
 	ControleurSon*  obtenirControleurSon();

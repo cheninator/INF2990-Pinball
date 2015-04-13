@@ -72,7 +72,7 @@ void SingletonGlobal::updateBilles()
 	if (enCoursDeGeneration_ == 0 && launchSequence_.size() > 0)
 	{
 		launchSequence_.back().second->genererBille();
-		enCoursDeGeneration_++;
+		enCoursDeGeneration_ = true;
 		afficherBille();
 	}
 }

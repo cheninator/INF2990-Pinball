@@ -34,6 +34,12 @@ public:
 	/// Destructeur
 	~ControleurLumieres();
 
+	/// Constructeur par copie non-necessaire dans le contexte
+	ControleurLumieres(const ControleurLumieres &) = delete;
+
+	/// Assignation par copie non-necessaire dans le contexte
+	ControleurLumieres& operator=(ControleurLumieres const&) = delete;
+
 	/// Donne les valeurs choisies par le controleur aux lumieres
 	void initialiserLumieres();
 

@@ -392,7 +392,7 @@ void FacadeModele::afficherBase() const
 	glLightfv(GL_LIGHT0, GL_POSITION, glm::value_ptr(position));
 
 	// Afficher la scene.
-	controleurLumieres_->trackerLesBilles((NoeudTable*)arbre_->chercher(0));
+	controleurLumieres_->trackerLesBilles(static_cast<NoeudTable*>(arbre_->chercher(0)));
 	controleurLumieres_->definirLumieres();
 	ControleurNuanceurs::obtenirInstance()->activer();
 
@@ -1051,7 +1051,8 @@ int FacadeModele::creerXML(std::string path, int prop[6], bool force)
 	// Ne pas permettre la sauvegarde si la zone ne contient pas au minimum  3 objets
 	if (FacadeModele::obtenirInstance()->obtenirArbreRenduINF2990()->getEnfant(0)->obtenirNombreEnfants() < 3)
 	{
-		return sauvegardeAutorise = 0;
+		sauvegardeAutorise = 0;
+		return sauvegardeAutorise;
 	}
 	
 	if (FacadeModele::obtenirInstance()->obtenirScaleMinMax() < 0)
@@ -2071,7 +2072,7 @@ void FacadeModele::mettreAJourListeRessorts()
 void FacadeModele::compresserRessort()
 {
 	for (NoeudAbstrait* ressort : listeRessorts_)
-		((NoeudRessort*)ressort)->compresser();
+		static_cast<NoeudRessort*>(ressort)->compresser();
 }
 
 ///////////////////////////////////////////////////////////////////////////////
@@ -2084,7 +2085,7 @@ void FacadeModele::compresserRessort()
 void FacadeModele::relacherRessort()
 {
 	for (NoeudAbstrait* ressort : listeRessorts_)
-		((NoeudRessort*)ressort)->relacher();
+		static_cast<NoeudRessort*>(ressort)->relacher();
 }
 
 
@@ -2247,7 +2248,7 @@ double FacadeModele::obtenirScaleMinMax()
 {
 	glm::dvec3 scaleMax = { 0, 0, 0 };
 	glm::dvec3 scaleMin = { 0, 0, 0 };
-	std::vector<int> generateurs;
+	//std::vector<int> generateurs;
 	int i = 0;
 	int nbElements = FacadeModele::obtenirInstance()->obtenirArbreRenduINF2990()->getEnfant(0)->obtenirNombreEnfants();
 	NoeudAbstrait* noeudTable = FacadeModele::obtenirInstance()->obtenirArbreRenduINF2990()->getEnfant(0);

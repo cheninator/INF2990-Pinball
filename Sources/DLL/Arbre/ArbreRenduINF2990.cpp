@@ -103,7 +103,7 @@ ArbreRenduINF2990::ArbreRenduINF2990()
 	*/
 }
 
-void ArbreRenduINF2990::preparerUsine(const std::string usine)
+void ArbreRenduINF2990::preparerUsine(const std::string& usine)
 {
 	if (usine == NOM_BUTOIRD)
 		ajouterUsine(NOM_BUTOIRD, new UsineNoeudButoirD{ NOM_BUTOIRD });
@@ -283,16 +283,6 @@ bool ArbreRenduINF2990::lireXML(tinyxml2::XMLDocument& doc)
 {
 	bool lecture = false;
 
-	const char* positionX = "posX";
-	const char* positionY = "posY";
-	const char* positionZ = "posZ";
-	const char* scaleX = "scaleX";
-	const char* scaleY = "scaleY";
-	const char* scaleZ = "scaleZ";
-	const char* angleX = "angleX";
-	const char* angleY = "angleY";
-	const char* angleZ = "angleZ";
-
 	// Charger les proprietes de la zone de jeu
 	tinyxml2::XMLElement* elementPropriete = doc.FirstChildElement("Proprietes");
 	tinyxml2::XMLElement* element = elementPropriete->FirstChildElement("PointsButoir");
@@ -325,6 +315,16 @@ bool ArbreRenduINF2990::lireXML(tinyxml2::XMLDocument& doc)
 
 			// Premier enfant de la table
 			const tinyxml2::XMLElement* enfant{ elementTable->FirstChildElement() };
+
+			const char* positionX = "posX";
+			const char* positionY = "posY";
+			const char* positionZ = "posZ";
+			const char* scaleX = "scaleX";
+			const char* scaleY = "scaleY";
+			const char* scaleZ = "scaleZ";
+			const char* angleX = "angleX";
+			const char* angleY = "angleY";
+			const char* angleZ = "angleZ";
 
 			// Creer les enfants et les ajouter a la table
 			for (int i = 0; i < nombreEnfants; i++)

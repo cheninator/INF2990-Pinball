@@ -36,6 +36,9 @@ NoeudRessort::NoeudRessort(const std::string& typeNoeud)
 	: NoeudComposite{ typeNoeud }
 {
 	assignerEstAjustable(false);
+	scaleYOriginal_ = 0;
+	longueurOriginale_ = 0;
+	distanceCompression_ = 0;
 }
 
 ////////////////////////////////////////////////////////////////////////

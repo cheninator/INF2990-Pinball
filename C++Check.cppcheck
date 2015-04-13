@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="1">
+    <includedir>
+        <dir name="Commun/"/>
+    </includedir>
+    <paths>
+        <dir name="C:/Users/Aymen/Documents/GitHub/INF2990-Pinball/Sources/DLL"/>
+    </paths>
+    <libraries>
+        <library>windows</library>
+    </libraries>
+</project>

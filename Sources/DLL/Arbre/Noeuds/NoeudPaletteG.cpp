@@ -62,6 +62,8 @@ NoeudPaletteG::NoeudPaletteG(const std::string& typeNoeud)
 	: NoeudComposite{ typeNoeud }
 {
 	ajustable_ = false;
+	angleZOriginal_ = 0;
+	vitesseAngulaire_ = 0;
 }
 
 
@@ -340,7 +342,7 @@ void NoeudPaletteG::traiterCollisions(aidecollision::DetailsCollision details, N
 	SoundControl->jouerSon("palette2");
 	
 	// Affichage de debogage
-	((NoeudBille*)bille)->afficherVitesse(vitesseFinale); // Que Dieu me pardonne
+	(static_cast<NoeudBille*>(bille))->afficherVitesse(vitesseFinale); // Que Dieu me pardonne
 }
 
 
@@ -376,7 +378,7 @@ bool NoeudPaletteG::estActiveeParBille(NoeudAbstrait* bille)
 	glm::dvec3 directionPalette = { -cos(angleEnRadian), -sin(angleEnRadian), 0 }; // Une palette pas tournee a un axe { - 1, 0, 0}
 	glm::dvec3 vecteurProjete = glm::proj(vecteur, directionPalette);
 	glm::dvec3 vecteurNormal = vecteur - vecteurProjete;
-	std::vector<glm::dvec3> boite = obtenirVecteursEnglobants();
+	//std::vector<glm::dvec3> boite = obtenirVecteursEnglobants();
 	double longueurPalette = scale_.x*(boite_.coinMax.x - boite_.coinMin.x);
 
 	//double distanceProjetee = glm::length(vecteurProjete);
