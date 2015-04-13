@@ -295,8 +295,8 @@ namespace InterfaceGraphique
         {
             
             int touche = e.KeyValue;
-            Console.WriteLine(e.KeyData.ToString());
-            Console.WriteLine(touche);
+           // Console.WriteLine(e.KeyData.ToString());
+           // Console.WriteLine(touche);
             if (this.isValid(touche) == true)
             {
                 currentValues[1] = touche;
