@@ -2184,12 +2184,10 @@ namespace InterfaceGraphique
             }
             else if ((e.Button == MouseButtons.Left && (etat is EtatEditeurRotation ||
                                                         etat is EtatEditeurScale ||
-                                                        etat is EtatEditeurZoom ||
-                                                        etat is EtatEditeurDuplication ||
-                                                        !(etat is EtatEditeurMur)
+                                                        etat is EtatEditeurZoom
                                                        )
                      )
-                     || e.Button == MouseButtons.Right || e.Button == MouseButtons.Middle)
+                     || e.Button == MouseButtons.Right)
             {
                 panel_GL.MouseMove += new MouseEventHandler(panel_MouseMove);
              
