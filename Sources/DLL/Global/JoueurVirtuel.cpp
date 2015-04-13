@@ -61,7 +61,7 @@ void JoueurVirtuel::jouer(const std::vector<NoeudAbstrait*>& listeBilles, const 
 	// Le joueur pourrait posséder des pointeurs vers listePalettesGJ2_ et listePalettesDJ2_ de facadeModele.
 	billes_.clear();
 	billes_ = listeBilles;
-	bool detecter = false;
+	//bool detecter = false;
 
 	/// Traiter les palettes gauches
 	// Si le bouton n'est pas pesé, faire la vérification habituelle

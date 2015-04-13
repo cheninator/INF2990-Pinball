@@ -37,7 +37,7 @@ class ArbreRenduINF2990 : public ArbreRendu
 public:
 
    /// Constructeur par defaut.
-   ArbreRenduINF2990(bool afficher = true);
+   ArbreRenduINF2990();
 
    /// Preparation de l'usine
    void preparerUsine(const std::string usine);

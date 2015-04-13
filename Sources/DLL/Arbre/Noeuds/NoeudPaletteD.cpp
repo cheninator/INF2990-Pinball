@@ -373,8 +373,8 @@ bool NoeudPaletteD::estActiveeParBille(NoeudAbstrait* bille)
 	std::vector<glm::dvec3> boite = obtenirVecteursEnglobants();
 	double longueurPalette = scale_.x*(boite_.coinMax.x - boite_.coinMin.x);
 
-	double distanceProjetee = glm::length(vecteurProjete);
-	double distanceNormale = glm::length(vecteurNormal);
+	//double distanceProjetee = glm::length(vecteurProjete);
+	//double distanceNormale = glm::length(vecteurNormal);
 	glm::dvec3 produitVectoriel = glm::cross(directionPalette, vecteur);
 
 	if (produitVectoriel.z < 0// << vrai si on la bille est au dessus de la droite definie par la palette. C<est ce qui fait que les palettes n'activent pas par en dessous.

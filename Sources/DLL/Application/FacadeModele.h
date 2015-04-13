@@ -44,7 +44,7 @@ class NoeudPaletteG;
 class NoeudPaletteD;
 class NoeudRessort;
 class JoueurVirtuel;
-class QuadTree;
+//class QuadTree;
 class ControleurLumieres;
 class Originator;
 class ControleurTexte;
@@ -182,7 +182,7 @@ public:
 	/// Relacher le ressort
 	void relacherRessort();
 
-	void construireQuadTree();
+	//void construireQuadTree();
 
 
 	int* obtenirConfiguration();
@@ -219,7 +219,7 @@ public:
 
 	// Traiter l'ensemble des collisions
 	void traiterCollisions(float temps);
-	void traiterCollisionsAvecQuadTree(float temps);
+	//void traiterCollisionsAvecQuadTree(float temps);
 	void updateForcesExternes();
 
 	void mettreAJourListeBillesEtNoeuds();
@@ -278,7 +278,7 @@ private:
 
 	/// Pointeur vers l'instance unique de la classe.
 	static FacadeModele* instance_;
-	static bool useQuadTree_;
+	//static bool useQuadTree_;
 
 	HWND  hWnd_{ nullptr };	///< Poignee ("handle") vers la fenetre ou l'affichage se fait.
 	HGLRC hGLRC_{ nullptr }; ///< Poignee ("handle") vers le contexte OpenGL.
@@ -289,7 +289,7 @@ private:
 	ConfigScene* configuration_{ nullptr };
 	int* proprietes_;						/// Pour les proprietes de la zone de jeu
 	JoueurVirtuel* joueur_{ nullptr };
-	QuadTree* quad_{ nullptr };
+	//QuadTree* quad_{ nullptr };
 	Originator* originator_{ nullptr };
 
 	std::stringstream oss_;

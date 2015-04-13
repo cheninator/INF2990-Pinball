@@ -59,7 +59,7 @@ const std::string ArbreRenduINF2990::NOM_GATE{ "gate" };
 /// @return Aucune (constructeur).
 ///
 ////////////////////////////////////////////////////////////////////////
-ArbreRenduINF2990::ArbreRenduINF2990(bool afficher)
+ArbreRenduINF2990::ArbreRenduINF2990()
 {
 	/*
 	// Construction des usines

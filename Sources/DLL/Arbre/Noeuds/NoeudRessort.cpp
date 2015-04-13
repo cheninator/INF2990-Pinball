@@ -150,7 +150,7 @@ void NoeudRessort::compresser()
 	if (etatRessort_ == AU_REPOS)
 	{
 		SoundControl->arreterSon("spring");
-		double longueurOriginale_ = scale_.y *(boite_.coinMax.y - boite_.coinMin.y);
+	//	double longueurOriginale_ = scale_.y *(boite_.coinMax.y - boite_.coinMin.y);
 		scaleYOriginal_ = obtenirAgrandissement().y;
 		positionOriginale_ = positionRelative_;
 		double angleEnRadian = -rotation_[2] * utilitaire::PI_180;

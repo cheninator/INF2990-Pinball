@@ -105,8 +105,8 @@ FacadeModele* FacadeModele::obtenirInstance(bool console)
 		instance_->configuration_ = new ConfigScene();
 		instance_->proprietes_ = new int[6];
 		instance_->joueur_ = new JoueurVirtuel();
-		instance_->quad_ = new QuadTree(glm::dvec3(coinGaucheTableX, coinGaucheTableY, 0),
-										glm::dvec3(coinDroitTableX,  coinDroitTableY,  0));
+		//instance_->quad_ = new QuadTree(glm::dvec3(coinGaucheTableX, coinGaucheTableY, 0),
+		//								glm::dvec3(coinDroitTableX,  coinDroitTableY,  0));
 
 		instance_->controleurLumieres_ = new ControleurLumieres();
 		instance_->originator_ = new Originator();
@@ -153,7 +153,7 @@ FacadeModele::~FacadeModele()
 	delete vue_;
 	delete proprietes_;
 	delete joueur_;
-	delete quad_;
+	//delete quad_;
 	delete controleurLumieres_;
 	delete controleurTexte_;
 	if (instance_->old_ != nullptr)
@@ -179,7 +179,8 @@ void FacadeModele::initialiserOpenGL(HWND hWnd)
 {
 	hWnd_ = hWnd;
 	bool succes{ aidegl::creerContexteGL(hWnd_, hDC_, hGLRC_) };
-	assert(succes && "Le contexte OpenGL n'a pu etre cree.");
+	if (succes == false)
+		assert(succes && "Le contexte OpenGL n'a pu etre cree.");
 
 	// Initialisation des extensions de OpenGL
 	glewInit();
@@ -302,7 +303,8 @@ void FacadeModele::libererOpenGL()
 	ControleurNuanceurs::libererInstance();
 
 	bool succes{ aidegl::detruireContexteGL(hWnd_, hDC_, hGLRC_) };
-	assert(succes && "Le contexte OpenGL n'a pu etre detruit.");
+	if (succes == false)
+		assert(succes && "Le contexte OpenGL n'a pu etre detruit.");
 
 	FreeImage_DeInitialise();
 }
@@ -535,7 +537,7 @@ void FacadeModele::reinitialiser()
 /// @return Aucune.
 ///
 ////////////////////////////////////////////////////////////////////////
-bool FacadeModele::useQuadTree_{ false };
+//bool FacadeModele::useQuadTree_{ false };
 void FacadeModele::animer(float temps)
 {
 	// Changer la vitesse des billes en fonction des collisions:
@@ -554,10 +556,10 @@ void FacadeModele::animer(float temps)
 
 	/// Traiter les collisions entre objets
 
-	if (useQuadTree_) 
-		traiterCollisionsAvecQuadTree(temps);
+	//if (useQuadTree_) 
+	//	traiterCollisionsAvecQuadTree(temps);
 
-	else
+	//else
 		traiterCollisions(temps);
 
 	SingletonGlobal::obtenirInstance()->updateBilles();
@@ -1890,6 +1892,7 @@ void FacadeModele::traiterCollisions(float temps)
 	// on n'aura plus besoin de l'appeler a chaque frame et donc ici serait le bon endroit pour l'appeler quand on a efface une bille.
 }
 
+/*
 ///////////////////////////////////////////////////////////////////////////////
 ///
 /// @fn void FacadeModele::traiterCollisionsAvecQuadTree(float temps)
@@ -1950,7 +1953,7 @@ void FacadeModele::traiterCollisionsAvecQuadTree(float temps)
 		SingletonGlobal::obtenirInstance()->retirerBille();
 	}		
 }
-
+*/
 
 ///////////////////////////////////////////////////////////////////////////////
 ///
@@ -2102,6 +2105,7 @@ void FacadeModele::assignerAnimer(bool animer, NoeudAbstrait* noeud)
 		assignerAnimer(animer, noeud->getEnfant(i));
 }
 
+/*
 ///////////////////////////////////////////////////////////////////////////////
 ///
 /// @fn void FacadeModele::construireQuadTree()
@@ -2118,6 +2122,7 @@ void FacadeModele::construireQuadTree()
 			quad_->insert(arbre_->getEnfant(0)->getEnfant(i));
 	}
 }
+*/
 ///////////////////////////////////////////////////////////////////////////////
 ///
 /// @fn void FacadeModele::assignerAI(bool actif)
