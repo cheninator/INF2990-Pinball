@@ -775,6 +775,7 @@ namespace InterfaceGraphique
         {
             if (this.Visible == true)
             {
+                FonctionsNatives.jouerSon(Program.couvercle, Program.couvercle.Length);
                 Program.myCustomConsole.reStart();
                 Program.myCustomConsole.Update();
                 Program.myCustomConsole.Show();
@@ -782,7 +783,10 @@ namespace InterfaceGraphique
                     Program.mMenu.modeJeuMain.Focus();
             }
             else
+            {
                 Program.myCustomConsole.Hide();
+                FonctionsNatives.arreterToutSons();
+            }
         }
 
         private void panel_GL_MouseDown(object sender, MouseEventArgs e)

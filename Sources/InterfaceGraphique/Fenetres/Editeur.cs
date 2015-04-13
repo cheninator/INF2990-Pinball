@@ -397,6 +397,7 @@ namespace InterfaceGraphique
                 if (Char.ToLower(e.KeyChar) == 't')
                 {
                     FonctionsNatives.arreterToutSons();
+                    FonctionsNatives.jouerSon(Program.couvercle, Program.couvercle.Length);
                     if (Program.mMenu.modeEdit != null)
                     {
                         Program.myCustomConsole.Show();
@@ -478,7 +479,6 @@ namespace InterfaceGraphique
                 }
                 if (Char.ToLower(e.KeyChar) == 't')
                 {
-                    FonctionsNatives.arreterToutSons();
                     testRetourModeEdition.PerformClick();
                     OnSizeChanged(e);
                 }
@@ -516,6 +516,7 @@ namespace InterfaceGraphique
                 else if (Char.ToLower(e.KeyChar) == 't')
                 {
                     FonctionsNatives.arreterToutSons();
+                    FonctionsNatives.jouerSon(Program.couvercle, Program.couvercle.Length);
                     deselection();
                     ModeTest_MenuItem.PerformClick();
                     panel_GL.Focus();
