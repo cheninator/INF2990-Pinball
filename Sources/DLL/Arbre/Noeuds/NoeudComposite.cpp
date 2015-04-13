@@ -413,8 +413,9 @@ void NoeudComposite::changerModePolygones(bool estForce)
 ///
 /// @fn void NoeudComposite::assignerModePolygones( GLenum modePolygones )
 ///
-/// Cette fonction assigne le mode de rendu des polygones du noeud et
-/// de ses enfants.
+/// @brief Cette fonction assigne le mode de rendu des polygones du noeud.
+///
+/// @param[in] modePolygones Mode de remplissage des polygones
 ///
 /// @return Aucune.
 ///

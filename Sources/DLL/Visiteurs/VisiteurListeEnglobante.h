@@ -13,7 +13,7 @@
 #include "VisiteurAbstrait.h"
 #include "glm\glm.hpp"
 #include <vector>
-
+/// Conteneur pour les boites englobantes des objets visites
 using conteneur_boite_englobante = std::pair<std::vector<glm::dvec3>, NoeudAbstrait*>;
 ///////////////////////////////////////////////////////////////////////////
 /// @class VisiteurListeEnglobante
@@ -38,6 +38,7 @@ public:
 	virtual bool traiter(NoeudAbstrait* noeud);
 	virtual bool traiter(NoeudTable* table);
 
+	/// Conteneur pour les boites englobantes des objets visites
 	std::vector<conteneur_boite_englobante> obtenirListeEnglobante(){ return boitesEnglobantes_; };
 
 private:

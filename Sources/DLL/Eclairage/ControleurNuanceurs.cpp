@@ -131,6 +131,8 @@ void ControleurNuanceurs::desactiver()
 /// @brief Assigne la variable uniforme colorShift qui sert pour 
 /// distinguer visuellement les palettes du joueur 2.
 /// 
+/// @param[in] colorShift 1 pour true, 0 pour false
+/// 
 /// @return aucun.
 ///
 ////////////////////////////////////////////////////////////////////////
@@ -146,6 +148,8 @@ void ControleurNuanceurs::assignerColorShift(int colorShift)
 /// @brief Assigne la variable uniforme etatNoeud qui sert pour les 
 /// etats selectionne, impossible, transparent, illumine.
 /// 
+/// @param[in] etat Voir animationNoeudsDefine.h pour les macros
+/// 
 /// @return aucun.
 ///
 ////////////////////////////////////////////////////////////////////////
@@ -160,6 +164,8 @@ void ControleurNuanceurs::assignerEtatNoeud(int etat)
 /// 
 /// @brief Assigne la variable uniforme numeroNoeud qui pourrait servir
 /// si on decidait de faire la selection par couleur.
+/// 
+/// @param[in] numero Numero du noeud pour selection par couleur
 /// 
 /// @return aucun.
 ///
@@ -238,9 +244,11 @@ void ControleurNuanceurs::assignerSkybox(int skybox)
 
 ////////////////////////////////////////////////////////////////////////
 ///
-/// @fn void ControleurNuanceurs::assignerSkybox(int skybox)
+/// @fn void ControleurNuanceurs::assignerEstTable(int estTable)
 /// 
 /// @brief Dit au nuanceur si le fragment vient de la scene ou du skybox.
+///
+/// @param[in] etat : 1 skybox, 0 pour pas skybox
 /// 
 /// @return aucun.
 ///

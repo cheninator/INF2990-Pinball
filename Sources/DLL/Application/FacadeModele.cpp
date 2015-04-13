@@ -88,11 +88,13 @@ FacadeModele* FacadeModele::instance_{ nullptr };
 ///
 /// @fn FacadeModele* FacadeModele::obtenirInstance()
 ///
-/// Cette fonction retourne un pointeur vers l'instance unique de la
+/// @brief Cette fonction retourne un pointeur vers l'instance unique de la
 /// classe.  Si cette instance n'a pas ete creee, elle la cree.  Cette
 /// creation n'est toutefois pas necessairement "thread-safe", car
 /// aucun verrou n'est pris entre le test pour savoir si l'instance
 /// existe et le moment de sa creation.
+///
+/// @param console : True si on utilise la console a Aymen.
 ///
 /// @return Un pointeur vers l'instance unique de cette classe.
 ///

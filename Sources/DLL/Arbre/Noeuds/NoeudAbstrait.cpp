@@ -376,7 +376,9 @@ void NoeudAbstrait::changerModePolygones(bool estForce)
 ///
 /// @fn void NoeudAbstrait::assignerModePolygones( GLenum modePolygones )
 ///
-/// Cette fonction assigne le mode de rendu des polygones du noeud.
+/// @brief Cette fonction assigne le mode de rendu des polygones du noeud.
+///
+/// @param[in] modePolygones Mode de remplissage des polygones
 ///
 /// @return Aucune.
 ///
@@ -833,6 +835,8 @@ bool NoeudAbstrait::pointEstDansBoite(glm::dvec3 point)
 ///
 /// @fn void NoeudAbstrait::setDebug(bool debug)
 ///
+/// @param[in] debug Valeur assignee a l'attribut debug_
+///
 /// @return Aucun.
 ///
 ////////////////////////////////////////////////////////////////////////
@@ -957,9 +961,11 @@ void NoeudAbstrait::traiterCollisions(aidecollision::DetailsCollision details, N
 ///
 /// @fn void NoeudAbstrait::assignerPortailDorigine(NoeudAbstrait* portail)
 ///
-/// Assigne l'attribut portailDorigine avec un portail.  Ce portail ne causera pas
+/// @brief Assigne l'attribut portailDorigine avec un portail.  Ce portail ne causera pas
 /// de force sur la bille.  Une fois que la bille s'est assez eloignee du
 /// portail, on remet cet attirbut a nullptr.
+///
+/// @param[in] portail Pointeur vers le portail d'ou la bille est apparue.
 ///
 ////////////////////////////////////////////////////////////////////////
 void NoeudAbstrait::assignerPortailDorigine(NoeudAbstrait* portail)
@@ -975,6 +981,8 @@ void NoeudAbstrait::assignerPortailDorigine(NoeudAbstrait* portail)
 /// Si un portail est le portail d'origine, il ne cree pas de force sur 
 /// la bille.
 /// 
+/// @return portailDorigine_
+///
 ////////////////////////////////////////////////////////////////////////
 NoeudAbstrait* NoeudAbstrait::obtenirPortailDorigine()
 {

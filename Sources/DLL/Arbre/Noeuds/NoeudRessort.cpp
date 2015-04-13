@@ -19,9 +19,6 @@
 #include "Modele3D.h"
 #include "OpenGL_Storage/ModeleStorage_Liste.h"
 #include "../../Commun/Externe/glm/include/glm/gtx/Projection.hpp"
-#ifndef AOUT
-# define AOUT std::cout 
-#endif
 
 ////////////////////////////////////////////////////////////////////////
 ///
@@ -181,7 +178,7 @@ void NoeudRessort::relacher()
 	//                                 longueur originale                           -            Longueur courante.
 	// distanceCompression_ = scaleYOriginal_*(boite_.coinMax.y - boite_.coinMin.y) - scale_.y*(boite_.coinMax.y - boite_.coinMin.y);
 	distanceCompression_ = (scaleYOriginal_ - scale_.y) * (boite_.coinMax.y - boite_.coinMin.y);
-	AOUT << "Distance compression " << distanceCompression_ << std::endl;
+	std::cout << "Distance compression " << distanceCompression_ << std::endl;
 	etatRessort_ = EN_DECOMPRESSION;
 	SoundControl->jouerSon("spring");
 }

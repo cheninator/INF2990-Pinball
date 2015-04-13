@@ -27,7 +27,7 @@ class Lumiere{
 
 public:
 	/// Constructeur
-	Lumiere(GLenum handle_);
+	Lumiere(GLuint handle);
 
 	/// Passer les attributs au serveur OpenGL
 	void definir();

@@ -259,10 +259,14 @@ public:
 	void annulerModifications();
 	void retablirModifications();
 	void viderHistorique();
+
+	/// Obtient le nombre d'objets selectionnes 
 	int obtenirNombreSelection() const;
+
 	bool possedeSuivant() const;
 	bool possedePrecedent() const;
 
+	/// Dessiner le skybox
 	void dessinerSkybox(double demiLargeur = 1000, bool vueOrtho = false, glm::dvec3 pointMilieu = {0.0,0.0,0.0}) const;
 
 private:

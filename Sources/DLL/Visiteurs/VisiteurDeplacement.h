@@ -45,6 +45,7 @@ public:
 	virtual bool traiter(NoeudTable* table);
 	virtual bool traiter(NoeudAbstrait* noeud);
 
+	/// Assignateurs
 	void setEstDansLaTable(bool b) { estDansLaTable_ = b; };
 	void setEstDuplication(bool b) { estDuplication_ = b; };
 

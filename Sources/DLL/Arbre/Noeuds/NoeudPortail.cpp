@@ -186,7 +186,7 @@ void NoeudPortail::traiterCollisions(aidecollision::DetailsCollision, NoeudAbstr
 
 ////////////////////////////////////////////////////////////////////////
 ///
-/// @fn aidecollision::DetailsCollision NoeudPortail::traiterCollisions(aidecollision::DetailsCollision details, NoeudAbstrait* bille)
+/// @fn aidecollision::DetailsCollision NoeudPortail::detecterCollisions(NoeudAbstrait* bille)
 ///
 /// @brief Reimplementation de detecterCollisions pour un objet circulaire.  De plus,
 /// pour le portail, on utilise rayonPortail/4 plutot que le rayonPortail parce

@@ -13,8 +13,8 @@
 #include "../Arbre/Noeuds/NoeudTable.h"
 #include <iostream>
 
-#define LUMIERE_OFF 0 /// Sigale une lumiere eteinte au nuanceur
-#define LUMIERE_ON 1 /// Sigale une lumiere allumee au nuanceur
+#define LUMIERE_OFF 0 ///< Sigale une lumiere eteinte au nuanceur
+#define LUMIERE_ON 1 ///< Sigale une lumiere allumee au nuanceur
 
 
 ////////////////////////////////////////////////////////////////////////

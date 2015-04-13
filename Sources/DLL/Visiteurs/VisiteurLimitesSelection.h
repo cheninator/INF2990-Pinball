@@ -38,9 +38,11 @@ public:
 	virtual bool traiter(NoeudTable* table);
 	virtual bool traiter(NoeudAbstrait* noeud);
 
+	/// Obtenir les limites inferieures de la selection
 	double getXMin() const { return xMin_; };
 	double getYMin() const { return yMin_; };
 
+	/// Obtenir les limites superieures de la selection
 	double getXMax() const { return xMax_; };
 	double getYMax() const { return yMax_; };
 

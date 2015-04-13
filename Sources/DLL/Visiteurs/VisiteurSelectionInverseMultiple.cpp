@@ -64,12 +64,13 @@ VisiteurSelectionInverseMultiple::~VisiteurSelectionInverseMultiple()
 ////////////////////////////////////////////////////////////////////////
 ///
 /// @fn bool VisiteurSelectionInverseMultiple::traiter(ArbreRenduINF2990* arbre)
+///
 /// @brief Cette fonction traite l'arbre de rendu pour selectionner ses enfants.
 ///
-/// Cette fonction retourne true pour dire que l'operation s'est
-/// fait correctement.
+/// @param[in] arbre Noeud arbre a traiter
 ///
-/// @return Retourne toujours true.
+/// @return Cette fonction retourne true pour dire que l'operation s'est
+/// fait correctement.
 ///
 ////////////////////////////////////////////////////////////////////////
 bool VisiteurSelectionInverseMultiple::traiter(ArbreRenduINF2990* arbre)
