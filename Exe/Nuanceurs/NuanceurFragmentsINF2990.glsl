@@ -134,7 +134,7 @@ void main()
 
 
 	float cosChi = 0.9996;
-	float cosXi = 0.9995;
+	float cosXi = 0.9993;
 
 	float effetSpotOmbreBilleA = 1.0;
 	if(estTable == 1)
@@ -211,7 +211,7 @@ void main()
 
 	if(skybox == 1)
 	{
-		gl_FragColor = vec4(1.0,1.0,1.0,1.0) *textureColor;
+		gl_FragColor = vec4(0.4,1.0,1.0,1.0) *textureColor;
 	}
 	else
 	{
