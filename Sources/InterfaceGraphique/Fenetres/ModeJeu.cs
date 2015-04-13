@@ -177,7 +177,7 @@ namespace InterfaceGraphique
             StringBuilder billeSound = new StringBuilder("rolling");
 
             FonctionsNatives.bouclerSon(bgm, bgm.Length);
-            FonctionsNatives.ajusterBGM(90);
+            FonctionsNatives.ajusterVolume(bgm, bgm.Length,90);
             FonctionsNatives.ajusterVolume(billeSound, billeSound.Length, 100);
             FonctionsNatives.jouerSon(bgm, bgm.Length);
 
@@ -470,6 +470,8 @@ namespace InterfaceGraphique
             currentZone++;
             peutAnimer = true;
             boolTemp = true;
+            FonctionsNatives.bouclerSon(bgm, bgm.Length);
+            FonctionsNatives.ajusterVolume(bgm, bgm.Length, 90);
             FonctionsNatives.jouerSon(bgm, bgm.Length);
             /// La création de l'état s'occupe d'appeler resetConfig
             etat = new EtatJeuDebutDePartie(this);
@@ -519,7 +521,6 @@ namespace InterfaceGraphique
             {
                 Program.myCustomConsole.Show();
                 Program.mMenu.modeJeuMain.Focus();
-                FonctionsNatives.jouerSon(bgm, bgm.Length);
             }
         }
 
@@ -774,6 +775,7 @@ namespace InterfaceGraphique
         {
             if (this.Visible == true)
             {
+                FonctionsNatives.jouerSon(Program.couvercle, Program.couvercle.Length);
                 Program.myCustomConsole.reStart();
                 Program.myCustomConsole.Update();
                 Program.myCustomConsole.Show();
@@ -781,7 +783,10 @@ namespace InterfaceGraphique
                     Program.mMenu.modeJeuMain.Focus();
             }
             else
+            {
                 Program.myCustomConsole.Hide();
+                FonctionsNatives.arreterToutSons();
+            }
         }
 
         private void panel_GL_MouseDown(object sender, MouseEventArgs e)

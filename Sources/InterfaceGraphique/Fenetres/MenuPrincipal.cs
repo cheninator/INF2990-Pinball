@@ -58,7 +58,7 @@ namespace InterfaceGraphique
             this.KeyPress += new KeyPressEventHandler(Form1_KeyPress);
             InitializeComponent();
             pictureBox1.SizeMode = PictureBoxSizeMode.StretchImage;
-            pictureBox1.Image = Properties.Resources.pinball1;
+            pictureBox1.Image = Properties.Resources.titleScreen;
             this.KeyPreview = true;
             StartPosition = FormStartPosition.CenterScreen;
             StringBuilder initSound = new StringBuilder("");
@@ -345,7 +345,7 @@ namespace InterfaceGraphique
             //<CAMERA>     webcamTimer.Enabled = false;
             //<CAMERA>     webcamTimer.Stop();
             //<CAMERA> }
-            pictureBox1.Image = Properties.Resources.pinball1;
+            pictureBox1.Image = Properties.Resources.titleScreen;
             pictureBox1.SizeMode = PictureBoxSizeMode.StretchImage; 
             player.Stream = Properties.Resources.button_29;
         }

@@ -10,7 +10,7 @@
 /**
 *	@defgroup InterfaceGraphique InterfaceGraphique
 *	@ingroup INF2990
-*  Ce module contient le GUI de l'application et la logique de l'interface.
+*	Ce module contient le GUI de l'application et la logique de l'interface.
 */
 
 using System;
@@ -47,6 +47,7 @@ namespace InterfaceGraphique
         public static bool customConsoleActive = false;
         public static bool helpMenu = true;
         private static bool noWarnings = false;
+        public static StringBuilder couvercle = new StringBuilder("stone");
 
         ////////////////////////////////////////////////////////////////////////
         ///
