@@ -216,7 +216,7 @@ namespace InterfaceGraphique
         ////////////////////////////////////////////////////////////////////////
         public override bool traiterSouris(MouseEventArgs e)
         {
-            form_.deplacementSouris(e);
+             form_.deplacementSouris(e);
            
             return true;
 

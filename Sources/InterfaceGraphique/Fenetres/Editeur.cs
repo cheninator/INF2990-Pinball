@@ -58,6 +58,7 @@ namespace InterfaceGraphique
         private bool activateDirectLight = false; ///< EtatEditeurAbstrait de la lumiere directe
         private bool activateSpotLight = false; ///< EtatEditeurAbstrait de la lumiere spot
         //public void deselection();               ///< Fonction de deselection
+        private bool etaitEtatPortail = false;
 
         ////////////////////////////////////////////////////////////////////////
         ///
@@ -487,30 +488,14 @@ namespace InterfaceGraphique
             {
                 if (e.KeyChar == (char)Keys.Escape)
                 {
-                    if (etat is EtatEditeurPortail)
+                    if (etat is EtatEditeurPortail || etat is EtatEditeurMur || etat is EtatEditeurDuplication || etat is EtatEditeurCreation)
                     {
-                        FonctionsNatives.removeObject();
-                        etat = new EtatEditeurSelection(this);
-                        deselection();
+                        FonctionsNatives.removeObject();                        
                     }
-                    else if (etat is EtatEditeurMur)
-                    {
-                        FonctionsNatives.removeObject();
-                        etat = new EtatEditeurSelection(this);
-                        deselection();
-                    }
-                    else if (etat is EtatEditeurDuplication || etat is EtatEditeurCreation)
-                    {
-                        FonctionsNatives.removeObject();
-                        deselection();
-                        etat = new EtatEditeurSelection(this);
 
-                    }
-                    else
-                    {
-                        etat = new EtatEditeurSelection(this);
-                        deselection();
-                    }
+                    panel_GL.MouseMove -= panel_MouseMove;                  
+                    deselection();
+                    etat = new EtatEditeurSelection(this);                   
 
                 }
                 else if (Char.ToLower(e.KeyChar) == 't')
@@ -2170,11 +2155,12 @@ namespace InterfaceGraphique
             }
             else if (etat is EtatEditeurPortail && e.Button == MouseButtons.Left)
             {
-                sauvegarderHistorique();
-                etat = new EtatEditeurSelection(this);
-                
+                sauvegarderHistorique();                
                 FonctionsNatives.obligerTransparence(false);
+                panel_GL.MouseMove -= panel_MouseMove;
                 deselection();
+                etaitEtatPortail = false;
+                etat = new EtatEditeurSelection(this);
             }
             else if (etat is EtatEditeurMur)
             {
@@ -2184,7 +2170,8 @@ namespace InterfaceGraphique
             }
             else if ((e.Button == MouseButtons.Left && (etat is EtatEditeurRotation ||
                                                         etat is EtatEditeurScale ||
-                                                        etat is EtatEditeurZoom
+                                                        etat is EtatEditeurZoom ||
+                                                        etat is EtatEditeurDeplacement
                                                        )
                      )
                      || e.Button == MouseButtons.Right)
@@ -2207,9 +2194,7 @@ namespace InterfaceGraphique
         ///
         ////////////////////////////////////////////////////////////////////////
         private void panel_MouseMove(object sender, MouseEventArgs e)
-        {
-            Console.WriteLine("move");
-
+        {      
             currentP = panel_GL.PointToClient(MousePosition);
 
             if (nbSelection == 1 && !(etat is EtatEditeurDuplication) && (e.Button == MouseButtons.Left || e.Button == MouseButtons.Middle))
@@ -2232,27 +2217,34 @@ namespace InterfaceGraphique
             {
                 deplacementVueSouris(e);
 
-            }
-          
+            }          
             else if (!(clickValide(origin, currentP)) && etat is EtatEditeurSelection)
             {
-                int h = panel_GL.Height;
-                int w = panel_GL.Width;
-                bool b;
-                ((EtatEditeurSelection)etat).SourisSurObjet = FonctionsNatives.sourisEstSurObjet(origin.X, origin.Y, h, w, out b);
-                ((EtatEditeurSelection)etat).SourisSurSelection = b;
-                ((EtatEditeurSelection)etat).GaucheEnfonce = true;
-                etat.traiterSouris(e);
+                if (etaitEtatPortail)
+                {
+                    etaitEtatPortail = false;
+                    panel_GL.MouseMove -= panel_MouseMove;
+                }
+                else
+                {
+                    int h = panel_GL.Height;
+                    int w = panel_GL.Width;
+                    bool b;
+                    ((EtatEditeurSelection)etat).SourisSurObjet = FonctionsNatives.sourisEstSurObjet(origin.X, origin.Y, h, w, out b);
+                    ((EtatEditeurSelection)etat).SourisSurSelection = b;
+                    ((EtatEditeurSelection)etat).GaucheEnfonce = true;
+                    etat.traiterSouris(e);
 
-                if (nbSelection > 0 && ((EtatEditeurSelection)etat).SourisSurSelection == true)
-                {
-                    sauvegarderHistorique();
-                    etat = new EtatEditeurDeplacement(this);
-                }                    
-                else if (!((EtatEditeurSelection)etat).SourisSurObjet)
-                {
-                    etat = new EtatEditeurSelectionMultiple(this);
-                    FonctionsNatives.initialiserRectangleElastique(origin.X, origin.Y);
+                    if (nbSelection > 0 && ((EtatEditeurSelection)etat).SourisSurSelection == true)
+                    {
+                        sauvegarderHistorique();
+                        etat = new EtatEditeurDeplacement(this);
+                    }
+                    else if (!((EtatEditeurSelection)etat).SourisSurObjet)
+                    {
+                        etat = new EtatEditeurSelectionMultiple(this);
+                        FonctionsNatives.initialiserRectangleElastique(origin.X, origin.Y);
+                    }
                 }
             }            
             else if (!(clickValide(origin, currentP)) && (etat is EtatEditeurZoom) && e.Button == MouseButtons.Left && ZoomElastique_ToolStrip.Enabled == true)
@@ -2288,8 +2280,7 @@ namespace InterfaceGraphique
 
             if (!(etat is EtatEditeurCreation) && !(etat is EtatEditeurDuplication))
             {
-                panel_GL.MouseMove -= panel_MouseMove;
-               
+                panel_GL.MouseMove -= panel_MouseMove;               
             }
 
             if (etat is EtatEditeurDeplacement || etat is EtatEditeurScale || etat is EtatEditeurRotation)
@@ -2954,7 +2945,7 @@ namespace InterfaceGraphique
         {
             etat = new EtatEditeurPortail(this);
             panel_GL.MouseMove += new MouseEventHandler(panel_MouseMove);
-
+            etaitEtatPortail = true;
         }
         //////////////////////////////////////////////////////////////////////////////////////////
         ///
@@ -3029,7 +3020,9 @@ namespace InterfaceGraphique
             if (etat is EtatEditeurPortail ||  etat is EtatEditeurCreation || etat is EtatEditeurDuplication)
             {
                 FonctionsNatives.removeObject();
+                panel_GL.MouseMove -= panel_MouseMove;
                 deselection();
+                etat = new EtatEditeurSelection(this);
             }
         }
 
