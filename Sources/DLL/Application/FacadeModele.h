@@ -165,13 +165,13 @@ public:
 	void sauvegarderConfig(int config[13]);
 
 	/// Obtenir toutes les proprietes sans initialiser l'arbre de rendu
-	int* obtenirProprietes(char* nomFichier, int length);
+	int* obtenirProprietes(char* nomFichier);
 
 	/// Obtenir la difficulte du nom de la carte passe en parametre
-	int obtenirDifficulte(char* nomFichier, int length);
+	int obtenirDifficulte(char* nomFichier);
 
 	/// Sauvegarder la derniere campagne jouee par l'usager
-	void sauvegarderCampagne(char* nomFichier, int length);
+	void sauvegarderCampagne(char* nomFichier);
 
 	/// Obtenir les informations de derniere campagne jouee par l'usager
 	std::string obtenirDerniereCampagne();

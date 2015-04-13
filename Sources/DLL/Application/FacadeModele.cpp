@@ -1583,14 +1583,13 @@ bool FacadeModele::obtenirAI()
 
 ///////////////////////////////////////////////////////////////////////////////
 ///
-/// @fn int FacadeModele::obtenirDifficulte(char* nomFichier, int length)
+/// @fn int FacadeModele::obtenirDifficulte(char* nomFichier)
 /// @brief Retourne le niveau de difficulte de la zone de jeu.
 /// @param[in] nomFichier : Le nom du fichier ou se trouve la zone.
-/// @param[in] length : La longueur du fichier.
 /// @return Le niveau de difficulte.
 ///
 ///////////////////////////////////////////////////////////////////////////////
-int FacadeModele::obtenirDifficulte(char* nomFichier, int length)
+int FacadeModele::obtenirDifficulte(char* nomFichier)
 {
 	int niveau;
 	tinyxml2::XMLDocument* fichierXML = new tinyxml2::XMLDocument();
@@ -1605,18 +1604,17 @@ int FacadeModele::obtenirDifficulte(char* nomFichier, int length)
 
 ///////////////////////////////////////////////////////////////////////////////
 ///
-/// @fn void FacadeModele::sauvegarderCampagne(char* nomMap, int length)
+/// @fn void FacadeModele::sauvegarderCampagne(char* nomMap)
 /// @param[in] nomMap : Le nom de la zone de jeu.
-/// @param[in] length : La longueur du nom de la zone.
 ///
 /// @brief Sauvegarde la zone de jeu dans la compagne en cours.
 ///
 /// @return Aucune.
 ///
 ///////////////////////////////////////////////////////////////////////////////
-void FacadeModele::sauvegarderCampagne(char* nomMap, int length)
+void FacadeModele::sauvegarderCampagne(char* nomMap)
 {
-	configuration_->modifierCampagne(nomMap, length);
+	configuration_->modifierCampagne(nomMap);
 	configuration_->sauvegarderCampagne();
 }
 
@@ -1814,14 +1812,14 @@ void FacadeModele::supprimerBille()
 
 ///////////////////////////////////////////////////////////////////////////////
 ///
-/// @fn int* FacadeModele::obtenirProprietes(char* nomFichier, int length)
+/// @fn int* FacadeModele::obtenirProprietes(char* nomFichier)
 /// @brief Retourne les proprietes de jeu de la zone.
 /// @param[in] nomFichier : Nom du fichier de la zone.
 /// @param[in] length : Longueur du nom du fichier.
 /// @return Les prorietes de jeu.
 /// 
 ///////////////////////////////////////////////////////////////////////////////
-int* FacadeModele::obtenirProprietes(char* nomFichier, int length)
+int* FacadeModele::obtenirProprietes(char* nomFichier)
 {
 	tinyxml2::XMLDocument* fichierXML = new tinyxml2::XMLDocument();
 	fichierXML->LoadFile(nomFichier);

@@ -209,7 +209,7 @@ void ConfigScene::modifierConfiguration(int config[13])
 /// @return Aucune.
 ///
 ////////////////////////////////////////////////////////////////////////
-void ConfigScene::modifierCampagne(char* maps, int length)
+void ConfigScene::modifierCampagne(char* maps)
 {
 	std::string map(maps);
 	std::string delimiter = " ";
