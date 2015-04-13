@@ -170,12 +170,12 @@ namespace modele{
 			glGenTextures(nombreTextures, &identificateursTextures_[0]);
 
 			// Itérateur STL
-			std::map<std::string, unsigned int*>::iterator itr{ mapTextures_.begin() };
+			std::map<std::string, unsigned int*>::iterator itr = mapTextures_.begin();
 
 			for (unsigned int j{ 0 }; j < nombreTextures; j++) {
 				std::string nomFichier{ itr->first };
 				itr->second = &(identificateursTextures_[j]);
-				itr++;
+				++itr;
 
 				// Charger la texture
 				aidegl::glLoadTexture(std::string{ "media/" } +nomFichier, identificateursTextures_[j], false);

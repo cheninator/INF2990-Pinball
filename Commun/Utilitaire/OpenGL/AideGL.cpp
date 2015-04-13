@@ -15,12 +15,12 @@
 #include "AideGL.h"
 #include "Utilitaire.h"
 
-#ifdef WIN32
+//#ifdef WIN32
 #include <windows.h>
 // Nous pouvons charger la librairie OpenGL (GLU) en indiquant cette directive
 // au précompilateur
-#pragma comment ( lib, "glu32.lib" )
-#endif
+//#pragma comment ( lib, "glu32.lib" )
+//#endif
 
 #include "FreeImage.h"
 #include <GL/gl.h>

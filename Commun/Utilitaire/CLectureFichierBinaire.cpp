@@ -56,7 +56,7 @@ CLectureFichierBinaire::CLectureFichierBinaire(const char* nomFichier, openmode 
 ////////////////////////////////////////////////////////////////////////
 CLectureFichierBinaire& operator> (CLectureFichierBinaire& in, std::string& s)
 {
-	int size;
+	int size = 0;
 	in > size;
 
 	char* ptr{ new char[size + 1] };

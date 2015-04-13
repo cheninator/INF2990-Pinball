@@ -34,7 +34,7 @@ EtatOpenGL::EtatOpenGL()
 	// mémoire à zéro puis on réinitialise.
 	glClipPlanei_.~vector();
 	glLighti_.~vector();
-	memset(this, 0, sizeof(EtatOpenGL));
+	memset(this, 0, );
 	new (&glClipPlanei_) std::vector<GLboolean>();
 	new (&glLighti_) std::vector<GLboolean>();
 

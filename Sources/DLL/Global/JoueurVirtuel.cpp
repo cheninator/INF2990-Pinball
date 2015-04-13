@@ -188,10 +188,10 @@ void JoueurVirtuel::assignerPalettes(const std::set<NoeudPaletteG*>& gauche, con
 	std::set<NoeudPaletteG*>::iterator iterG = gauche.begin();
 	std::set<NoeudPaletteD*>::iterator iterD = droite.begin();
 
-	for (; iterG != gauche.end(); iterG++)
+	for (; iterG != gauche.end(); ++iterG)
 		palettesGauche_.push_back(*iterG);
 
-	for (; iterD != droite.end(); iterD++)
+	for (; iterD != droite.end(); ++iterD)
 		palettesDroite_.push_back(*iterD);
 	
 }

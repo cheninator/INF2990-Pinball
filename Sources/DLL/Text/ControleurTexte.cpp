@@ -53,7 +53,8 @@ void ControleurTexte::populateFontVector(std::string targetPath)
 		std::string name = f[i];
 		name.erase(0, targetPath.length());
 		name.erase(name.length() - 1);
-		creeFont((char*)name.c_str());
+		char* fileName = (char*)name.c_str();
+		creeFont(fileName);
 	}
 }
 

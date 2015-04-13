@@ -196,7 +196,7 @@ void Originator::appliquerModifications(std::map<int, NoeudAbstrait*> sauvegarde
 	NoeudAbstrait::changerNumero(0);
 
 	// Modifier l'arbre courant avec les informations de sauvegarde
-	for (iter = sauvegarde.begin(); iter != sauvegarde.end(); iter++)
+	for (iter = sauvegarde.begin(); iter != sauvegarde.end(); ++iter)
 	{
 		NoeudAbstrait* noeud{ arbreActuel_->creerNoeud(iter->second->obtenirType())};
 

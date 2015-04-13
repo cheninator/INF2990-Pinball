@@ -5,6 +5,7 @@
     </includedir>
     <paths>
         <dir name="C:/Users/Aymen/Documents/GitHub/INF2990-Pinball/Sources/DLL"/>
+        <dir name="C:/Users/Aymen/Documents/GitHub/INF2990-Pinball/Commun/Utilitaire"/>
     </paths>
     <libraries>
         <library>windows</library>

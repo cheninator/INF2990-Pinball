@@ -92,7 +92,6 @@ namespace math {
 		planCoupe.lireParam(A, B, C, D);
 
 		//Le résultat
-		double x, y, z;
 
 		// On regarde si le plan et la droite sont parallèles.
 		bool bParalleles = utilitaire::EGAL_ZERO(
@@ -100,6 +99,7 @@ namespace math {
 			);
 
 		if (!bParalleles) {
+			double x = 0, y = 0, z = 0;
 			// On doit faire attention aux divisions par 0
 			if (!utilitaire::EGAL_ZERO(a)) {
 				x = ((B * b + C * c) * x0 / a - B * y0 - C * z0 - D) / (A + B * b / a + C * c / a);
@@ -215,8 +215,8 @@ namespace math {
 		const double cd{ -1.0 * direction_[1] * pointDroite_[0] +
 			direction_[0] * pointDroite_[1] };
 
-		double num{ fabs(ad * centre[0] + bd * centre[1] + cd) };
-		double den{ sqrt(pow(ad, 2) + pow(bd, 2)) };
+		double num = fabs(ad * centre[0] + bd * centre[1] + cd);
+		double den = sqrt(pow(ad, 2) + pow(bd, 2));
 
 		// En 3D
 		const glm::dvec3 centreNul{ centre[0], centre[1], 0.0 };

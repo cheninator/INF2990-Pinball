@@ -116,7 +116,7 @@ void NoeudComposite::effacer(const NoeudAbstrait* noeud)
 {
 	for (conteneur_enfants::iterator it{ enfants_.begin() };
 		it != enfants_.end();
-		it++) {
+		++it) {
 		if (*it == noeud) {
 			// On a trouve le noeud a effacer
 			NoeudAbstrait* noeudAEffacer{ (*it) };
