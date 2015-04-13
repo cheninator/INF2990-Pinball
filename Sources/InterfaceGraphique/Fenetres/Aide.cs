@@ -224,7 +224,8 @@ namespace InterfaceGraphique
                         {
                             labelDescOutil.Text = "La Sélection Multiple se fait à l'aide d'un réctangle élastique."+
                                                   " Pour créer le réctangle élastique, il suffit d'enfoncer le bouton gauche de la souris et déplacer la souris"+
-                                                  " Tout objet sous le rectangle élastique sera sélectionné. Si le bouton CTRL est appuyé pendant la séléction, l'état de sélection est inversé.";
+                                                  " Tout objet sous le rectangle élastique sera sélectionné. Si le bouton CTRL est appuyé pendant la séléction, l'état de sélection est inversé."+
+                                                  " Le raccourci CTRL + A permet de séléctionner tous les éléments sur la zone en édition.";
                             pictureBoxOutils.Image = Properties.Resources.SelectionMultiple;
                             break;
                         }
@@ -288,6 +289,13 @@ namespace InterfaceGraphique
                                                   " Pour créer le réctangle élastique, il suffit d'enfoncer le bouton gauche de la souris et déplacer la souris" +
                                                   " La surface sous le rectangle élastique sera agrandie pour remplir l'écran. Si le bouton ALT est appuyé pendant la création du réctangle, il y aura un effet  de loupe inverse.";
                             pictureBoxOutils.Image = Properties.Resources.ZoomElastique;
+                            break;
+                        }
+                    case 9:
+                        {
+                            labelDescOutil.Text = "Pendant l'édition d'une zone de jeu, vous pouvez toujours annuler ou rétablir vos dernières modifications." +
+                                                  " Pour le faire, vous pouvez utiliser les flèches dans la bare de menu ou directement les raccourcis CTRL + Z et CTRL + Y.";
+                            pictureBoxOutils.Image = Properties.Resources.DoUndo;
                             break;
                         }
                 }
