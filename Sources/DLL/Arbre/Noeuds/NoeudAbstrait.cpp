@@ -490,7 +490,7 @@ void NoeudAbstrait::appliquerAfficher() const
 	ControleurNuanceurs::obtenirInstance()->assignerEtatNoeud(etat);
 	ControleurNuanceurs::obtenirInstance()->assignerNumeroNoeud(numeroNoeud_);
 
-	glStencilFunc(GL_ALWAYS, numeroNoeud_, -1);
+	glStencilFunc(GL_ALWAYS, numeroNoeud_, (GLuint)-1);
 }
 ////////////////////////////////////////////////////////////////////////
 ///

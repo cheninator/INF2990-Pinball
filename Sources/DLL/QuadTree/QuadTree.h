@@ -1,3 +1,4 @@
+/*
 ////////////////////////////////////////////////
 /// @file   QuadTree.h
 /// @author The Ballers
@@ -80,3 +81,4 @@ private:
 };
 
 #endif // __QUADTREE_H__
+*/

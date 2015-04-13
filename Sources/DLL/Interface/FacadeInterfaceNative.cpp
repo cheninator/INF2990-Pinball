@@ -504,7 +504,7 @@ extern "C"
 		if (objet == nullptr)
 			return;
 		glm::dvec3 monScalePresent;
-		float deltaScale = (float)myScale;
+		//float deltaScale = (float)myScale;
 		monScalePresent = objet->obtenirAgrandissement();
 		monScalePresent.x += myScale / 10.0;
 		monScalePresent.y += myScale / 10.0;
@@ -662,7 +662,7 @@ extern "C"
 	__declspec(dllexport) int __cdecl creerXMLString(std::string path, int prop[6], bool force)
 	{
 		 int valeur = FacadeModele::obtenirInstance()->creerXML(path, prop, force);
-		 FacadeModele::obtenirInstance()->construireQuadTree();
+//		 FacadeModele::obtenirInstance()->construireQuadTree();
 		 return valeur;
 	}
 
@@ -682,7 +682,7 @@ extern "C"
 	{
 		FacadeModele::obtenirInstance()->obtenirArbreRenduINF2990()->vider();
 		FacadeModele::obtenirInstance()->obtenirArbreRenduINF2990()->initialiserXML(std::string(path));
-		FacadeModele::obtenirInstance()->construireQuadTree();
+//		FacadeModele::obtenirInstance()->construireQuadTree();
 		FacadeModele::obtenirInstance()->setDebug();
 		FacadeModele::obtenirInstance()->construireListesPalettes();
 		return FacadeModele::obtenirInstance()->obtenirArbreRenduINF2990()->obtenirProprietes();
@@ -1494,7 +1494,7 @@ extern "C"
 	///////////////////////////////////////////////////////////////////////////////
 	__declspec(dllexport) int __cdecl obtenirDifficulte(char* nomFichier, int length)
 	{
-		return FacadeModele::obtenirInstance()->obtenirDifficulte(nomFichier, length);
+		return FacadeModele::obtenirInstance()->obtenirDifficulte(nomFichier);
 	}
 
 	///////////////////////////////////////////////////////////////////////////////
@@ -1508,7 +1508,7 @@ extern "C"
 	///////////////////////////////////////////////////////////////////////////////
 	__declspec(dllexport) int* __cdecl obtenirProprietes(char* nomFichier, int length)
 	{
-		return FacadeModele::obtenirInstance()->obtenirProprietes(nomFichier, length);
+		return FacadeModele::obtenirInstance()->obtenirProprietes(nomFichier);
 	}
 
 	///////////////////////////////////////////////////////////////////////////////
@@ -1522,7 +1522,7 @@ extern "C"
 	///////////////////////////////////////////////////////////////////////////////
 	__declspec(dllexport) void __cdecl creerFichierCampagne(char* listMaps, int length)
 	{
-		FacadeModele::obtenirInstance()->sauvegarderCampagne(listMaps, length);
+		FacadeModele::obtenirInstance()->sauvegarderCampagne(listMaps);
 	}
 
 	///////////////////////////////////////////////////////////////////////////////

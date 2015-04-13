@@ -149,7 +149,7 @@ bool VisiteurAgrandissement::traiter(NoeudAbstrait* noeud)
 				zTop = boite[i].z;
 		}
 
-		double distancePositionTop = zTop;
+		//double distancePositionTop = zTop;
 		// On as plus besoin de la correction en Z grace aux boites englobantes
 		//double correctionZ = (1 - homothetie_[0]) * distancePositionTop; // Homothetie[0] est de l'ordre de 1.003, donc (1-homothetie[0]) est petie, donc la correction en z est petite.
 		//position += glm::dvec3{ 0, 0, -correctionZ };

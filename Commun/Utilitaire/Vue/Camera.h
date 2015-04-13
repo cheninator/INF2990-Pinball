@@ -38,6 +38,9 @@ namespace vue {
 			float anglePhi
 			);
 
+		/// Assignation par copie non-nécessaire dans le contexte
+		Camera& operator=(Camera const&) = delete;
+
 		/// Destructeur virtuel vide.
 		virtual ~Camera() {}
 

@@ -41,6 +41,8 @@ namespace vue {
 			double xMinFenetre, double xMaxFenetre,
 			double yMinFenetre, double yMaxFenetre);
 
+		/// Assignation par copie non-nécessaire dans le contexte
+		ProjectionOrtho& operator=(ProjectionOrtho const&) = delete;
 
 		/// Zoom in, c'est-à-dire un agrandissement.
 		virtual void zoomerIn();

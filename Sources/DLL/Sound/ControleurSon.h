@@ -24,6 +24,7 @@ public:
 	void bouclerSon(char* sName, bool loop = true);
 	void arreterSon(char* sName);
 	void arreterSon();
+	void muteSound(char* sName, bool mute);
 	void sourdine(bool mute);
 	void pauseGlobal(bool pause);
 

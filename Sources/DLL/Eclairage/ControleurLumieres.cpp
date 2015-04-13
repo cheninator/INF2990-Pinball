@@ -79,7 +79,7 @@ void ControleurLumieres::initialiserLumieres()
 	lumSpotA_->setDiffuseColor({ 0.4f, 0.4f, 0.3f, 1.0f });
 	lumSpotA_->setSpecularColor({ 0.9f, 0.9f, 0.9f, 1.0f });
 	   	   
-	lumSpotA_->setPosition({ 250.0f, -47.0f, 200.0f, 1.0f });
+	lumSpotA_->setPosition({ 50.0f, -47.0f, 200.0f, 1.0f });
 	lumSpotA_->setDirection({ 0.0f, 0.0f, -1.0f, 1.0f });
 
 	lumSpotA_->setCutoffAngle(8.0f);
@@ -92,7 +92,7 @@ void ControleurLumieres::initialiserLumieres()
 	lumSpotB_->setDiffuseColor({ 0.4f, 0.4f, 0.3f, 1.0f });
 	lumSpotB_->setSpecularColor({ 0.9f, 0.9f, 0.9f, 1.0f });
 		   
-	lumSpotB_->setPosition({ 150.0f, -47.0f, 200.0f, 1.0f });
+	lumSpotB_->setPosition({ -50.0f, -47.0f, 200.0f, 1.0f });
 	lumSpotB_->setDirection({ 0.0f, 0.0f, -1.0f, 1.0f }); 
 
 	lumSpotB_->setCutoffAngle(8.0f);

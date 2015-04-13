@@ -49,7 +49,7 @@
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
     <Prefer32Bit>false</Prefer32Bit>
-    <UseVSHostingProcess>true</UseVSHostingProcess>
+    <UseVSHostingProcess>false</UseVSHostingProcess>
   </PropertyGroup>
   <PropertyGroup>
     <StartupObject />
@@ -314,6 +314,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="%24this.Icon.ico" />
+    <None Include="Resources\titleScreen.png" />
     <None Include="Resources\VueOrbite.png" />
     <None Include="Resources\undo.png" />
     <None Include="Resources\scale.png" />
@@ -368,6 +369,7 @@
     <None Include="Resources\rotation.png" />
     <None Include="Resources\duplicate.png" />
     <None Include="Resources\redo.png" />
+    <None Include="Resources\DoUndo.gif" />
     <Content Include="Resources\save.png" />
     <None Include="Resources\cible.jpeg" />
     <None Include="Resources\winSound.wav" />

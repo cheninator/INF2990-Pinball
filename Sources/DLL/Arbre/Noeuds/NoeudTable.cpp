@@ -69,7 +69,7 @@ void NoeudTable::afficherConcret() const
 	glPushAttrib(GL_ALL_ATTRIB_BITS);
 	glTranslatef(TRANSLATE_X_NOEUD_TABLE, TRANSLATE_Y_NOEUD_TABLE, 0);
 	NoeudAbstrait::appliquerAfficher();
-	glStencilFunc(GL_ALWAYS, 0, -1);
+	glStencilFunc(GL_ALWAYS, 0, (GLuint)-1);
 	ControleurNuanceurs::obtenirInstance()->assignerEstTable(1);
 	liste_->dessiner();
 	ControleurNuanceurs::obtenirInstance()->assignerEstTable(0);
@@ -177,6 +177,7 @@ aidecollision::DetailsCollision NoeudTable::detecterCollisions(NoeudAbstrait* bi
 
 void NoeudTable::traiterCollisions(aidecollision::DetailsCollision details, NoeudAbstrait* bille, float facteurRebond)
 {
-	SoundControl->jouerSon("table");
 	NoeudAbstrait::traiterCollisions(details,bille);
+	if (glm::length(bille->obtenirVitesse()) > 10)
+		SoundControl->jouerSon("table");
 }

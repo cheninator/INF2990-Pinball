@@ -85,6 +85,10 @@ void NoeudGenerateurBille::afficherConcret() const
 ////////////////////////////////////////////////////////////////////////
 void NoeudGenerateurBille::animer(float temps)
 {
+	if (positionRelative_.z == -posZinitial)
+		affiche_ = false;
+	else
+		affiche_ = true;
 	glm::dvec3 positionRelative = positionRelative_;
 	NoeudComposite::animer(temps);
 	positionRelative_ = positionRelative;
@@ -145,7 +149,10 @@ void NoeudGenerateurBille::animer(float temps)
 	}
 	
 	if (compteurAnimation_ >= TEMPS_ANIMATION_NOEUD_GENERATEURBILLE && etatGenerateur_ == INITIAL)
+	{
+
 		return;
+	}
 	shakeHead(temps);
 }
 

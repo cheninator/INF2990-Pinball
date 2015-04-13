@@ -69,7 +69,7 @@ void NoeudCouvercle::afficherConcret() const
 	//glPushAttrib(GL_ALL_ATTRIB_BITS);
 
 	//NoeudAbstrait::appliquerAfficher();
-	glStencilFunc(GL_ALWAYS, 0, -1);
+	glStencilFunc(GL_ALWAYS, 0, (GLuint)-1);
 	liste_->dessiner();
 	//glPopAttrib();
 	glPopMatrix();

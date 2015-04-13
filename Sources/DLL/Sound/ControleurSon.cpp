@@ -69,7 +69,7 @@ void ControleurSon::creeSon(char* sName)
 
 	std::string path = getSFXPath(sName);
 	const char* sPath = path.c_str();
-	std::cout << "\tAdding " << name << "..." << std::setw(40 - name.length());
+	std::cout << "\tAdding " << name << "..." << std::setfill(' ') << std::setw(40 - name.length());
 
 	std::pair< std::string, std::pair< FMOD::Sound *, FMOD::Channel* > > apair;
 	std::string nameOfMusic = std::string(sName);
@@ -122,7 +122,7 @@ void ControleurSon::bouclerSon(char* sName, bool loop)
 	int i = lookUp(std::string(sName));
 		if (i == -1)
 			return;
-	soundTable_[i].second.first->setMode(sName ? FMOD_LOOP_NORMAL : FMOD_LOOP_OFF);
+	soundTable_[i].second.first->setMode(loop ? FMOD_LOOP_NORMAL : FMOD_LOOP_OFF);
 }
 
 void ControleurSon::arreterSon(char* sName)
@@ -144,6 +144,16 @@ void ControleurSon::arreterSon()
 	{
 		soundTable_[i].second.second->stop();
 	}
+}
+
+void ControleurSon::muteSound(char* sName, bool mute)
+{
+	if (sonDesactive)
+		return;
+	int i = lookUp(std::string(sName));
+	if (i == -1)
+		return;
+	soundTable_[i].second.second->setMute(mute);
 }
 
 void ControleurSon::sourdine(bool mute)

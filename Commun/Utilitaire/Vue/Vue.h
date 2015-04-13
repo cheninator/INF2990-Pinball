@@ -45,9 +45,10 @@ namespace vue {
 	public:
 		/// Constructeur à partir d'une caméra
 		Vue(const Camera& camera);
+		/// Assignation par copie non-nécessaire dans le contexte
+		Vue& operator=(Vue const&) = delete;
 		/// Destructeur virtuel vide.
 		virtual ~Vue() {}
-
 		/// Conversion de coordonnées de clôture à coordonnées virtuelles
 		bool convertirClotureAVirtuelle(int x, int y, glm::dvec3& point) const;
 		/// Conversion de coordonnées de clôture à coordonnées virtuelles sur un plan donné

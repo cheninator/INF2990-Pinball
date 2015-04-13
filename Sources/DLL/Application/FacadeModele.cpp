@@ -105,8 +105,8 @@ FacadeModele* FacadeModele::obtenirInstance(bool console)
 		instance_->configuration_ = new ConfigScene();
 		instance_->proprietes_ = new int[6];
 		instance_->joueur_ = new JoueurVirtuel();
-		instance_->quad_ = new QuadTree(glm::dvec3(coinGaucheTableX, coinGaucheTableY, 0),
-										glm::dvec3(coinDroitTableX,  coinDroitTableY,  0));
+		//instance_->quad_ = new QuadTree(glm::dvec3(coinGaucheTableX, coinGaucheTableY, 0),
+		//								glm::dvec3(coinDroitTableX,  coinDroitTableY,  0));
 
 		instance_->controleurLumieres_ = new ControleurLumieres();
 		instance_->originator_ = new Originator();
@@ -153,7 +153,7 @@ FacadeModele::~FacadeModele()
 	delete vue_;
 	delete proprietes_;
 	delete joueur_;
-	delete quad_;
+	//delete quad_;
 	delete controleurLumieres_;
 	delete controleurTexte_;
 	if (instance_->old_ != nullptr)
@@ -179,7 +179,8 @@ void FacadeModele::initialiserOpenGL(HWND hWnd)
 {
 	hWnd_ = hWnd;
 	bool succes{ aidegl::creerContexteGL(hWnd_, hDC_, hGLRC_) };
-	assert(succes && "Le contexte OpenGL n'a pu etre cree.");
+	if (succes == false)
+		assert(succes && "Le contexte OpenGL n'a pu etre cree.");
 
 	// Initialisation des extensions de OpenGL
 	glewInit();
@@ -302,7 +303,8 @@ void FacadeModele::libererOpenGL()
 	ControleurNuanceurs::libererInstance();
 
 	bool succes{ aidegl::detruireContexteGL(hWnd_, hDC_, hGLRC_) };
-	assert(succes && "Le contexte OpenGL n'a pu etre detruit.");
+	if (succes == false)
+		assert(succes && "Le contexte OpenGL n'a pu etre detruit.");
 
 	FreeImage_DeInitialise();
 }
@@ -535,7 +537,7 @@ void FacadeModele::reinitialiser()
 /// @return Aucune.
 ///
 ////////////////////////////////////////////////////////////////////////
-bool FacadeModele::useQuadTree_{ false };
+//bool FacadeModele::useQuadTree_{ false };
 void FacadeModele::animer(float temps)
 {
 	// Changer la vitesse des billes en fonction des collisions:
@@ -554,10 +556,10 @@ void FacadeModele::animer(float temps)
 
 	/// Traiter les collisions entre objets
 
-	if (useQuadTree_) 
-		traiterCollisionsAvecQuadTree(temps);
+	//if (useQuadTree_) 
+	//	traiterCollisionsAvecQuadTree(temps);
 
-	else
+	//else
 		traiterCollisions(temps);
 
 	SingletonGlobal::obtenirInstance()->updateBilles();
@@ -1177,7 +1179,7 @@ void FacadeModele::positionnerMur(int originX, int originY,int x1, int y1, int x
 	glm::dvec3 angles{ 0, 0, 0 };
 	glm::dvec3 position = positionOriginale;
 
-	double angleRadian;
+	double angleRadian = 0.0;
 
 	// Les calculs sont fait seulement si la souris est assez loin de ou on a cree le noeud.
 	if (glm::length(vecteur) > 0.1)
@@ -1582,14 +1584,13 @@ bool FacadeModele::obtenirAI()
 
 ///////////////////////////////////////////////////////////////////////////////
 ///
-/// @fn int FacadeModele::obtenirDifficulte(char* nomFichier, int length)
+/// @fn int FacadeModele::obtenirDifficulte(char* nomFichier)
 /// @brief Retourne le niveau de difficulte de la zone de jeu.
 /// @param[in] nomFichier : Le nom du fichier ou se trouve la zone.
-/// @param[in] length : La longueur du fichier.
 /// @return Le niveau de difficulte.
 ///
 ///////////////////////////////////////////////////////////////////////////////
-int FacadeModele::obtenirDifficulte(char* nomFichier, int length)
+int FacadeModele::obtenirDifficulte(char* nomFichier)
 {
 	int niveau;
 	tinyxml2::XMLDocument* fichierXML = new tinyxml2::XMLDocument();
@@ -1604,18 +1605,17 @@ int FacadeModele::obtenirDifficulte(char* nomFichier, int length)
 
 ///////////////////////////////////////////////////////////////////////////////
 ///
-/// @fn void FacadeModele::sauvegarderCampagne(char* nomMap, int length)
+/// @fn void FacadeModele::sauvegarderCampagne(char* nomMap)
 /// @param[in] nomMap : Le nom de la zone de jeu.
-/// @param[in] length : La longueur du nom de la zone.
 ///
 /// @brief Sauvegarde la zone de jeu dans la compagne en cours.
 ///
 /// @return Aucune.
 ///
 ///////////////////////////////////////////////////////////////////////////////
-void FacadeModele::sauvegarderCampagne(char* nomMap, int length)
+void FacadeModele::sauvegarderCampagne(char* nomMap)
 {
-	configuration_->modifierCampagne(nomMap, length);
+	configuration_->modifierCampagne(nomMap);
 	configuration_->sauvegarderCampagne();
 }
 
@@ -1813,14 +1813,14 @@ void FacadeModele::supprimerBille()
 
 ///////////////////////////////////////////////////////////////////////////////
 ///
-/// @fn int* FacadeModele::obtenirProprietes(char* nomFichier, int length)
+/// @fn int* FacadeModele::obtenirProprietes(char* nomFichier)
 /// @brief Retourne les proprietes de jeu de la zone.
 /// @param[in] nomFichier : Nom du fichier de la zone.
 /// @param[in] length : Longueur du nom du fichier.
 /// @return Les prorietes de jeu.
 /// 
 ///////////////////////////////////////////////////////////////////////////////
-int* FacadeModele::obtenirProprietes(char* nomFichier, int length)
+int* FacadeModele::obtenirProprietes(char* nomFichier)
 {
 	tinyxml2::XMLDocument* fichierXML = new tinyxml2::XMLDocument();
 	fichierXML->LoadFile(nomFichier);
@@ -1891,6 +1891,7 @@ void FacadeModele::traiterCollisions(float temps)
 	// on n'aura plus besoin de l'appeler a chaque frame et donc ici serait le bon endroit pour l'appeler quand on a efface une bille.
 }
 
+/*
 ///////////////////////////////////////////////////////////////////////////////
 ///
 /// @fn void FacadeModele::traiterCollisionsAvecQuadTree(float temps)
@@ -1951,7 +1952,7 @@ void FacadeModele::traiterCollisionsAvecQuadTree(float temps)
 		SingletonGlobal::obtenirInstance()->retirerBille();
 	}		
 }
-
+*/
 
 ///////////////////////////////////////////////////////////////////////////////
 ///
@@ -2103,6 +2104,7 @@ void FacadeModele::assignerAnimer(bool animer, NoeudAbstrait* noeud)
 		assignerAnimer(animer, noeud->getEnfant(i));
 }
 
+/*
 ///////////////////////////////////////////////////////////////////////////////
 ///
 /// @fn void FacadeModele::construireQuadTree()
@@ -2119,6 +2121,7 @@ void FacadeModele::construireQuadTree()
 			quad_->insert(arbre_->getEnfant(0)->getEnfant(i));
 	}
 }
+*/
 ///////////////////////////////////////////////////////////////////////////////
 ///
 /// @fn void FacadeModele::assignerAI(bool actif)
@@ -2335,7 +2338,7 @@ void FacadeModele::utiliserCameraOrbite(bool utiliseOrbite)
 				vue::Camera{
 					glm::dvec3((coinGaucheTableX + coinDroitTableX) / 2.0, 
 								(coinGaucheTableY + coinDroitTableY) / 2.0, 
-								200),
+								289),
 					glm::dvec3( (coinGaucheTableX + coinDroitTableX) / 2.0 ,
 								(coinGaucheTableY + coinDroitTableY) / 2.0,
 								100), /* Le point visé*/

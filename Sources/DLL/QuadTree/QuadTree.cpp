@@ -1,3 +1,4 @@
+/*
 ////////////////////////////////////////////////
 /// @file QuadTree.cpp
 /// @author The Ballers
@@ -475,3 +476,4 @@ bool QuadTree::remove(NoeudAbstrait* noeud)
 	else
 		return false;
 }
+*/

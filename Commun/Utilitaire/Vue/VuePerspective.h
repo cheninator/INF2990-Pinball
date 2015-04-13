@@ -31,6 +31,9 @@ namespace vue {
 		// Constructeur.
 		VuePerspective(Camera const& camera, ProjectionPerspective const& projection);
 
+		/// Assignation par copie non-nécessaire dans le contexte
+		VuePerspective& operator=(VuePerspective const&) = delete;
+
 		/// Obtention de la projection.
 		virtual const ProjectionPerspective& obtenirProjection() const;
 		/// Application de la projection.

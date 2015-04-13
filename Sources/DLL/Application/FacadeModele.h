@@ -44,7 +44,7 @@ class NoeudPaletteG;
 class NoeudPaletteD;
 class NoeudRessort;
 class JoueurVirtuel;
-class QuadTree;
+//class QuadTree;
 class ControleurLumieres;
 class Originator;
 class ControleurTexte;
@@ -168,13 +168,13 @@ public:
 	void sauvegarderConfig(int config[13]);
 
 	/// Obtenir toutes les proprietes sans initialiser l'arbre de rendu
-	int* obtenirProprietes(char* nomFichier, int length);
+	int* obtenirProprietes(char* nomFichier);
 
 	/// Obtenir la difficulte du nom de la carte passe en parametre
-	int obtenirDifficulte(char* nomFichier, int length);
+	int obtenirDifficulte(char* nomFichier);
 
 	/// Sauvegarder la derniere campagne jouee par l'usager
-	void sauvegarderCampagne(char* nomFichier, int length);
+	void sauvegarderCampagne(char* nomFichier);
 
 	/// Obtenir les informations de derniere campagne jouee par l'usager
 	std::string obtenirDerniereCampagne();
@@ -185,7 +185,7 @@ public:
 	/// Relacher le ressort
 	void relacherRessort();
 
-	void construireQuadTree();
+	//void construireQuadTree();
 
 
 	int* obtenirConfiguration();
@@ -222,7 +222,7 @@ public:
 
 	// Traiter l'ensemble des collisions
 	void traiterCollisions(float temps);
-	void traiterCollisionsAvecQuadTree(float temps);
+	//void traiterCollisionsAvecQuadTree(float temps);
 	void updateForcesExternes();
 
 	void mettreAJourListeBillesEtNoeuds();
@@ -281,7 +281,7 @@ private:
 
 	/// Pointeur vers l'instance unique de la classe.
 	static FacadeModele* instance_;
-	static bool useQuadTree_;
+	//static bool useQuadTree_;
 
 	HWND  hWnd_{ nullptr };	///< Poignee ("handle") vers la fenetre ou l'affichage se fait.
 	HGLRC hGLRC_{ nullptr }; ///< Poignee ("handle") vers le contexte OpenGL.
@@ -292,7 +292,7 @@ private:
 	ConfigScene* configuration_{ nullptr };
 	int* proprietes_;						/// Pour les proprietes de la zone de jeu
 	JoueurVirtuel* joueur_{ nullptr };
-	QuadTree* quad_{ nullptr };
+	//QuadTree* quad_{ nullptr };
 	Originator* originator_{ nullptr };
 
 	std::stringstream oss_;

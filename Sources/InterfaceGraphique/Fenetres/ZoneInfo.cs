@@ -33,6 +33,7 @@ namespace InterfaceGraphique
     {
         int time;
         int[] proprietes = new int[5];
+        StringBuilder winSound = new StringBuilder("campagneWin");
 
         ////////////////////////////////////////////////////////////////////////
         ///
@@ -56,6 +57,7 @@ namespace InterfaceGraphique
             if (win)
             {
                 labelWin.Text = "Vous avez gagné!";
+                FonctionsNatives.jouerSon(winSound,winSound.Length,false);
             }
             else
             {
@@ -123,6 +125,12 @@ namespace InterfaceGraphique
                 timer1.Stop();
                 this.Close();
             }
+        }
+
+        private void ZoneInfo_Shown(object sender, EventArgs e)
+        {
+            //FonctionsNatives.jouerSon(winSound, winSound.Length);
+
         }
     }
 }
