@@ -126,7 +126,9 @@ bool NoeudPortail::accepterVisiteur(VisiteurAbstrait* vis)
 ///
 /// @fn void NoeudPortail::setDebug(bool debug)
 ///
-/// Cette fonction change al valeur du mode debug
+/// @brief Cette fonction change al valeur du mode debug
+///
+/// @param[in] debug Valeur a assigner
 ///
 /// @return Aucun.
 ///

@@ -132,7 +132,7 @@ public:
 	/// ecrit si le noeud peut etre agrandi ou non.
 	void assignerEstAjustable(bool ajust) { ajustable_ = ajust; };
 
-	// Verifie qu'on peut agrandir l'objet
+	/// Verifie qu'on peut agrandir l'objet
 	bool estAjustable() const { return ajustable_; }
 
 	/// Assigne le modele3D et la liste d'affichage du noeud courant

@@ -248,6 +248,8 @@ void ControleurLumieres::desactiverSpot()
 ///
 /// @brief Pointe deux spotslights sur les billes de la zone de jeu. 
 /// 
+/// @param[in] table Table a parcourir pour trouver des billes.
+/// 
 /// @return aucun.
 ///
 ////////////////////////////////////////////////////////////////////////

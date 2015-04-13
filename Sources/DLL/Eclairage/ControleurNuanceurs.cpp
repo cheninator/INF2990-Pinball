@@ -176,6 +176,8 @@ void ControleurNuanceurs::assignerNumeroNoeud(int numero)
 /// @brief Assigne la variable uniforme etatAmbiante qui sert a 
 /// activer/desactiver la lumiere ambiante.
 /// 
+/// @param[in] etat : 1 pour ON, 0 pour OFF
+/// 
 /// @return aucun.
 ///
 ////////////////////////////////////////////////////////////////////////
@@ -190,6 +192,8 @@ void ControleurNuanceurs::assignerEtatAmbiante(int etat)
 /// 
 /// @brief Assigne la variable uniforme etatDirectionnelle qui sert a 
 /// activer/desactiver la lumiere directionnelle.
+/// 
+/// @param[in] etat : 1 pour ON, 0 pour OFF
 /// 
 /// @return aucun.
 ///
@@ -206,6 +210,8 @@ void ControleurNuanceurs::assignerEtatDirectionnelle(int etat)
 /// @brief Assigne la variable uniforme etatSpot qui sert a 
 /// activer/desactiver la lumiere spot.
 /// 
+/// @param[in] etat : 1 pour ON, 0 pour OFF
+/// 
 /// @return aucun.
 ///
 ////////////////////////////////////////////////////////////////////////	
@@ -219,6 +225,8 @@ void ControleurNuanceurs::assignerEtatSpot(int etat)
 /// @fn void ControleurNuanceurs::assignerSkybox(int skybox)
 /// 
 /// @brief Dit au nuanceur si le fragment vient de la scene ou du skybox.
+/// 
+/// @param[in] etat : 1 skybox, 0 pour pas skybox
 /// 
 /// @return aucun.
 ///
