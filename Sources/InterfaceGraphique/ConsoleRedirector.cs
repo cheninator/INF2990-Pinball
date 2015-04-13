@@ -10,9 +10,28 @@ using System.ComponentModel;
 
 namespace InterfaceGraphique
 {
+    ///////////////////////////////////////////////////////////////////////////
+    /// @class CustomConsoleHandler
+    /// @brief Controle de la console Custom.
+    /// @author The Ballers
+    /// @date 2015-02-29
+    /// 
+    /// @ingroup InterfaceGraphique
+    ///////////////////////////////////////////////////////////////////////////
     public class CustomConsoleHandler
     {
         private CustomConsole cConsole = null;
+
+        //////////////////////////////////////////////////////////////////////////////////////////
+        ///
+        /// @fn public void CustomConsoleHandler(bool active)
+        /// @brief Constructeur
+        /// 
+        /// @param[in] active : Indique si la console est active.
+        /// 
+        /// @return Aucune.
+        ///
+        //////////////////////////////////////////////////////////////////////////////////////////
         public CustomConsoleHandler(bool activate)
         {
             if (activate == false)
@@ -25,6 +44,15 @@ namespace InterfaceGraphique
             }
             FonctionsNatives.activerCustomConsole();
         }
+
+        ////////////////////////////////////////////////////////////////////////
+        ///
+        /// @fn public stopForm()
+        /// @brief Ferme la Console.
+        /// 
+        /// @return Aucune
+        ///
+        ////////////////////////////////////////////////////////////////////////
         public void stopForm()
         {
             if (cConsole == null)
@@ -32,6 +60,15 @@ namespace InterfaceGraphique
             cConsole.Dispose();
             cConsole.Close();
         }
+
+        ////////////////////////////////////////////////////////////////////////
+        ///
+        /// @fn public Show()
+        /// @brief Affiche la Console.
+        /// 
+        /// @return Aucune
+        ///
+        ////////////////////////////////////////////////////////////////////////
         public void Show()
         {
             if (cConsole == null)
@@ -39,12 +76,30 @@ namespace InterfaceGraphique
             if (FonctionsNatives.obtenirAffichageGlobal() == 1)
                 cConsole.Show();
         }
+
+        ////////////////////////////////////////////////////////////////////////
+        ///
+        /// @fn public Hide()
+        /// @brief Cache la Console.
+        /// 
+        /// @return Aucune
+        ///
+        ////////////////////////////////////////////////////////////////////////
         public void Hide()
         {
             if (cConsole == null)
                 return;
             cConsole.Hide();
         }
+
+        ////////////////////////////////////////////////////////////////////////
+        ///
+        /// @fn public AlwaysShow()
+        /// @brief Affiche toujours la Console.
+        /// 
+        /// @return Aucune
+        ///
+        ////////////////////////////////////////////////////////////////////////
         public void AlwaysShow()
         {
             if (cConsole == null)
@@ -52,12 +107,30 @@ namespace InterfaceGraphique
             cConsole.Show();
             cConsole.AlwaysShow();
         }
+
+        ////////////////////////////////////////////////////////////////////////
+        ///
+        /// @fn public UpdateConsoleTexte(string text)
+        /// @brief Affiche du texte dans la console.
+        /// @param[in] text : le texte a afficher.
+        /// @return Aucune
+        ///
+        ////////////////////////////////////////////////////////////////////////
         public void UpdateConsoleTexte(string text)
         {
             if (cConsole == null)
                 return;
             cConsole.UpdateConsoleTexte(text);
         }
+
+        ////////////////////////////////////////////////////////////////////////
+        ///
+        /// @fn public Update()
+        /// @brief Mettre a Jour la Console.
+        /// 
+        /// @return Aucune
+        ///
+        ////////////////////////////////////////////////////////////////////////
         public void Update()
         {
             if (cConsole == null)
@@ -66,12 +139,30 @@ namespace InterfaceGraphique
             if (cConsole.getAlwaysVisible())
                 cConsole.Show();
         }
+
+        ////////////////////////////////////////////////////////////////////////
+        ///
+        /// @fn public isVibile()
+        /// @brief Mettre a Jour la Console.
+        /// 
+        /// @return Aucune
+        ///
+        ////////////////////////////////////////////////////////////////////////
         public bool isVisible()
         {
             if (cConsole == null)
                 return false;
             return cConsole.isVisible();
         }
+
+        ////////////////////////////////////////////////////////////////////////
+        ///
+        /// @fn public reStart()
+        /// @brief Redemarre la Console.
+        /// 
+        /// @return Aucune
+        ///
+        ////////////////////////////////////////////////////////////////////////
         public void reStart()
         {
             if (cConsole == null)
@@ -91,6 +182,15 @@ namespace InterfaceGraphique
             cConsole.setHistory(currentHistory);
             cConsole.setLocation(location);
         }
+
+        ////////////////////////////////////////////////////////////////////////
+        ///
+        /// @fn public WriteLine(string text)
+        /// @brief Affiche du texte dans la console.
+        /// @param[in] text : le texte a afficher.
+        /// @return Aucune
+        ///
+        ////////////////////////////////////////////////////////////////////////
         public void WriteLine( string text)
         {
             if (this == null)
@@ -101,6 +201,15 @@ namespace InterfaceGraphique
                 UpdateConsoleTexte(text);
             }
         }
+
+        ////////////////////////////////////////////////////////////////////////
+        ///
+        /// @fn public Write(string text)
+        /// @brief Affiche du texte dans la console.
+        /// @param[in] text : le texte a afficher.
+        /// @return Aucune
+        ///
+        ////////////////////////////////////////////////////////////////////////
         public void Write(string text)
         {
             if (this == null)

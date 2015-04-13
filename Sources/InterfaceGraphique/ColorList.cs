@@ -1,5 +1,14 @@
 ﻿namespace InterfaceGraphique
 {
+
+    ///////////////////////////////////////////////////////////////////////////
+    /// @class ColorList
+    /// @brief Classe qui contient des couleurs.
+    /// @author The Ballers
+    /// @date 2015-03-26
+    /// 
+    /// @ingroup InterfaceGraphique
+    ///////////////////////////////////////////////////////////////////////////
     public static class ColorList
     {
         public static float[] COLOR_Black = new float[] { 0, 0, 0 };
