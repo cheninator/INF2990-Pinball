@@ -2205,7 +2205,7 @@ namespace InterfaceGraphique
                 FMEbox.Text = (Math.Round(FonctionsNatives.getScale() * 100) / 100).ToString();
             }
 
-            if (etat is EtatEditeurCreation || etat is EtatEditeurDuplication)
+            if (etat is EtatEditeurCreation || etat is EtatEditeurDuplication || etat is EtatEditeurDeplacement)
             {
                 if (FonctionsNatives.duplicationEstHorsTable())
                     Cursor = Cursors.No;
@@ -2288,6 +2288,9 @@ namespace InterfaceGraphique
 
             if (etat is EtatEditeurDeplacement)
             {
+                if (FonctionsNatives.duplicationEstHorsTable())
+                    Annuler_ToolStrip_Click(sender, e);
+
                 etat = new EtatEditeurSelection(this);
             }
             else if (etat is EtatEditeurSelection)
@@ -2417,7 +2420,7 @@ namespace InterfaceGraphique
             if (etat is EtatEditeurDuplication || etat is EtatEditeurCreation)
                 FonctionsNatives.deplacerSelection(previousP.X, previousP.Y, currentP.X, currentP.Y, true);
             else
-                FonctionsNatives.deplacerSelection(previousP.X, previousP.Y, currentP.X, currentP.Y, false);
+                FonctionsNatives.deplacerSelection(previousP.X, previousP.Y, currentP.X, currentP.Y, true);
             
             previousP = currentP;
             currentP = panel_GL.PointToClient(MousePosition);
