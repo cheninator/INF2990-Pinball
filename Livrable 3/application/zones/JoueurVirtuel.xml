@@ -1,0 +1,25 @@
+<Proprietes>
+    <PointsButoir Nombre="10"/>
+    <PointsTriangulaire Nombre="10"/>
+    <PointsCible Nombre="10"/>
+    <PointsVictoire Nombre="10"/>
+    <PointsBilleGratuite Nombre="10"/>
+    <Difficulte Nombre="1"/>
+</Proprietes>
+
+<arbreRenduINF2990>
+    <table nbEnfants="11">
+        <generateurbille posX="-53.988482550683841" posY="107.34101156546637" posZ="-0.98571609497070511" scaleX="0.72999999999999998" scaleY="0.72999999999999998" scaleZ="0.72999999999999998" angleX="0" angleY="0" angleZ="0"/>
+        <trou posX="-13.26555780356014" posY="-130.18808044260641" posZ="0" scaleX="0.73232349184027634" scaleY="0.73232349184027634" scaleZ="0.73232349184027634" angleX="0" angleY="0" angleZ="12587"/>
+        <ressort posX="53.158651814579486" posY="121.27760693587101" posZ="0" scaleX="1" scaleY="1" scaleZ="1" angleX="0" angleY="0" angleZ="0"/>
+        <paletted posX="46.362113208741633" posY="-75.880614730284123" posZ="0.068792000412940979" scaleX="1" scaleY="1" scaleZ="1" angleX="0" angleY="0" angleZ="220.66666666666782" color="0"/>
+        <paletted posX="44.941271982356582" posY="2.4154015420690804" posZ="0.068792000412940979" scaleX="1" scaleY="1" scaleZ="1" angleX="0" angleY="0" angleZ="220.66666666666774" color="1"/>
+        <paletteg posX="-74.121716393811226" posY="-77.885501470838989" posZ="0.068792000412940979" scaleX="1" scaleY="1" scaleZ="1" angleX="0" angleY="0" angleZ="141.99999999999977" color="0"/>
+        <paletteg posX="-72.662532663382905" posY="0.54562185467677082" posZ="0.068792000412940979" scaleX="1" scaleY="1" scaleZ="1" angleX="0" angleY="0" angleZ="140.9999999999998" color="1"/>
+        <mur posX="-83.241614708988038" posY="-37.940347963192572" posZ="4.1593260765075684" scaleX="1" scaleY="2.2115752798183212" scaleZ="1" angleX="0" angleY="0" angleZ="180"/>
+        <mur posX="55.016043749092461" posY="-35.204378544860639" posZ="4.1593260765075684" scaleX="1" scaleY="2.2115752798183212" scaleZ="1" angleX="0" angleY="0" angleZ="180"/>
+        <mur posX="-66.459768393313141" posY="-116.36074028686956" posZ="4.1593260765075684" scaleX="1" scaleY="6.404767678408434" scaleZ="1" angleX="0" angleY="0" angleZ="235.30484564830215"/>
+        <mur posX="44.107239768534434" posY="-116.99255178141219" posZ="4.1593260765075684" scaleX="1" scaleY="6.146992261283371" scaleZ="1" angleX="0" angleY="0" angleZ="-53.035709868229212"/>
+    </table>
+    <couvercle/>
+</arbreRenduINF2990>

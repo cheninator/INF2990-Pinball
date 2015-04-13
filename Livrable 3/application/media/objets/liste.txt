@@ -1,0 +1,17 @@
+butoird
+butoirg
+butoircirculaire
+cible
+bille
+generateurbille
+mur
+paletted
+paletteg
+portail
+portailtorus
+ressort
+trou
+vide
+couvercle
+table
+gate

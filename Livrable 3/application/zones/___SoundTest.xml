@@ -1,0 +1,31 @@
+<Proprietes>
+    <PointsButoir Nombre="100"/>
+    <PointsTriangulaire Nombre="100"/>
+    <PointsCible Nombre="100"/>
+    <PointsVictoire Nombre="1000"/>
+    <PointsBilleGratuite Nombre="500"/>
+    <Difficulte Nombre="1"/>
+</Proprietes>
+
+<arbreRenduINF2990>
+    <table nbEnfants="17">
+        <generateurbille posX="-14.82113292368836" posY="102.17242020624312" posZ="-1.3502960205078125" scaleX="1" scaleY="1" scaleZ="1" angleX="0" angleY="0" angleZ="0"/>
+        <gate posX="-26.493297962692523" posY="42.781699994868468" posZ="10.139884948730469" scaleX="1" scaleY="1" scaleZ="1" angleX="0" angleY="0" angleZ="180.33333333333323"/>
+        <butoircirculaire posX="-42.971648605992542" posY="31.796133250567962" posZ="11.662358283996582" scaleX="1" scaleY="1" scaleZ="1" angleX="0" angleY="0" angleZ="0"/>
+        <butoircirculaire posX="-51.554122899377958" posY="6.392010154373021" posZ="11.662358283996582" scaleX="1" scaleY="1" scaleZ="1" angleX="0" angleY="0" angleZ="0"/>
+        <butoircirculaire posX="-56.703607475409228" posY="-21.071906706378286" posZ="11.662358283996582" scaleX="1" scaleY="1" scaleZ="1" angleX="0" angleY="0" angleZ="0"/>
+        <butoircirculaire posX="-56.703607475409228" posY="-50.595617331685922" posZ="11.662358283996582" scaleX="1" scaleY="1" scaleZ="1" angleX="0" angleY="0" angleZ="0"/>
+        <butoircirculaire posX="-56.017009531938378" posY="-78.40283315319661" posZ="11.662358283996582" scaleX="1" scaleY="1" scaleZ="1" angleX="0" angleY="0" angleZ="0"/>
+        <butoircirculaire posX="-39.195359916902945" posY="-103.46365728863215" posZ="11.662358283996582" scaleX="1" scaleY="1" scaleZ="1" angleX="0" angleY="0" angleZ="0"/>
+        <butoircirculaire posX="-14.477833951952915" posY="-105.18015209242911" posZ="11.662358283996582" scaleX="1" scaleY="1" scaleZ="1" angleX="0" angleY="0" angleZ="0"/>
+        <butoircirculaire posX="5.4335064087012448" posY="-99.68736872027884" posZ="11.662358283996582" scaleX="1" scaleY="1" scaleZ="1" angleX="0" angleY="0" angleZ="0"/>
+        <butoircirculaire posX="28.777836486709599" posY="-81.835822760790506" posZ="11.662358283996582" scaleX="1" scaleY="1" scaleZ="1" angleX="0" angleY="0" angleZ="0"/>
+        <butoircirculaire posX="30.151032373651287" posY="-48.192524606370178" posZ="11.662358283996582" scaleX="1" scaleY="1" scaleZ="1" angleX="0" angleY="0" angleZ="0"/>
+        <butoircirculaire posX="27.747939571503348" posY="-15.235824373468633" posZ="11.662358283996582" scaleX="1" scaleY="1" scaleZ="1" angleX="0" angleY="0" angleZ="0"/>
+        <butoircirculaire posX="25.34484676935541" posY="14.974484173357798" posZ="11.662358283996582" scaleX="1" scaleY="1" scaleZ="1" angleX="0" angleY="0" angleZ="0"/>
+        <butoircirculaire posX="24.314949854149173" posY="43.124998955627852" posZ="11.662358283996582" scaleX="1" scaleY="1" scaleZ="1" angleX="0" angleY="0" angleZ="0"/>
+        <ressort posX="37.017011808359598" posY="96.679636834092861" posZ="0" scaleX="1" scaleY="1" scaleZ="1" angleX="0" angleY="0" angleZ="0"/>
+        <trou posX="-71.122164288296716" posY="93.933245148017733" posZ="0" scaleX="1" scaleY="1" scaleZ="1" angleX="0" angleY="0" angleZ="0"/>
+    </table>
+    <couvercle/>
+</arbreRenduINF2990>

@@ -1,0 +1,30 @@
+<Proprietes>
+    <PointsButoir Nombre="100"/>
+    <PointsTriangulaire Nombre="100"/>
+    <PointsCible Nombre="100"/>
+    <PointsVictoire Nombre="500"/>
+    <PointsBilleGratuite Nombre="100"/>
+    <Difficulte Nombre="10"/>
+</Proprietes>
+
+<arbreRenduINF2990>
+    <table nbEnfants="16">
+        <generateurbille posX="-68.260922682829033" posY="110.68901468399284" posZ="-1.0098072507740916" scaleX="0.74784138843446213" scaleY="0.74784138843446213" scaleZ="0.74784138843446213" angleX="0" angleY="0" angleZ="0"/>
+        <mur posX="-26.923067211809634" posY="91.393967658187833" posZ="4.1593260765075684" scaleX="1" scaleY="6.812779129781207" scaleZ="1" angleX="0" angleY="0" angleZ="246.34578729412473"/>
+        <mur posX="-55.770380957327781" posY="61.579577750600023" posZ="4.1593260765075684" scaleX="1" scaleY="7.7302800686017958" scaleZ="1" angleX="0" angleY="0" angleZ="240.05620773854065"/>
+        <mur posX="-53.331068582376197" posY="8.9305391219338581" posZ="4.1593260765075684" scaleX="1" scaleY="11.610838758628779" scaleZ="1" angleX="0" angleY="0" angleZ="149.8431721606303"/>
+        <generateurbille posX="47.59185113580439" posY="114.69342938603452" posZ="-1.0098072507740916" scaleX="0.74784138843446213" scaleY="0.74784138843446213" scaleZ="0.74784138843446213" angleX="0" angleY="0" angleZ="0"/>
+        <mur posX="15.523040527045264" posY="89.583058499628038" posZ="4.1593260765075684" scaleX="1" scaleY="5.8555266875824525" scaleZ="1" angleX="0" angleY="0" angleZ="126.43085728154871"/>
+        <mur posX="45.382748727950926" posY="68.82123077719065" posZ="4.1593260765075684" scaleX="1" scaleY="6.9412800993802124" scaleZ="1" angleX="0" angleY="0" angleZ="135.98211628615834"/>
+        <mur posX="4.768469030117509" posY="20.415160973136857" posZ="4.1593260765075684" scaleX="1" scaleY="8.2031745670482081" scaleZ="1" angleX="0" angleY="0" angleZ="142.70933223403759"/>
+        <mur posX="-56.460974562908817" posY="-72.533499812788904" posZ="4.1593260765075684" scaleX="1" scaleY="11.831306897802294" scaleZ="1" angleX="0" angleY="0" angleZ="204.68977119686662"/>
+        <mur posX="16.322064176798907" posY="-38.941329115811477" posZ="4.1593260765075684" scaleX="1" scaleY="10.489089306047752" scaleZ="1" angleX="0" angleY="0" angleZ="221.53177161224107"/>
+        <mur posX="41.049635030673997" posY="-98.660743688215803" posZ="4.1593260765075684" scaleX="1" scaleY="7.1102958109600713" scaleZ="1" angleX="0" angleY="0" angleZ="173.65980806145024"/>
+        <trou posX="-5.1396010926020121" posY="-123.38831378460191" posZ="0" scaleX="1.4939120307640281" scaleY="1.4939120307640281" scaleZ="1.4939120307640281" angleX="0" angleY="0" angleZ="0"/>
+        <mur posX="26.353059900540689" posY="-123.15503482142847" posZ="4.1593260765075684" scaleX="1" scaleY="4.0946456157190685" scaleZ="1" angleX="0" angleY="0" angleZ="126.08507220742089"/>
+        <mur posX="-34.06619341222946" posY="-116.85650281574524" posZ="4.1593260765075684" scaleX="1" scaleY="3.252974865351355" scaleZ="1" angleX="0" angleY="0" angleZ="226.39718190383434"/>
+        <ressort posX="53.759343270380825" posY="129.80090177610407" posZ="0" scaleX="1" scaleY="1" scaleZ="1" angleX="0" angleY="0" angleZ="180"/>
+        <ressort posX="-64.213273620332089" posY="129.70070565858518" posZ="0" scaleX="1" scaleY="1" scaleZ="1" angleX="0" angleY="0" angleZ="180"/>
+    </table>
+    <couvercle/>
+</arbreRenduINF2990>
