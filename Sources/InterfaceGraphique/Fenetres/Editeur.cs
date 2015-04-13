@@ -3800,5 +3800,15 @@ namespace InterfaceGraphique
 
         }
 
+        private void toolStripButton1_Click(object sender, EventArgs e)
+        {
+            Orthographique_MenuItem_Click(sender, e);
+        }
+
+        private void toolStripButton2_Click(object sender, EventArgs e)
+        {
+            Orbite_MenuItem_Click(sender, e);
+        }
+
     }
 }
