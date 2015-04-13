@@ -2336,7 +2336,7 @@ void FacadeModele::utiliserCameraOrbite(bool utiliseOrbite)
 				vue::Camera{
 					glm::dvec3((coinGaucheTableX + coinDroitTableX) / 2.0, 
 								(coinGaucheTableY + coinDroitTableY) / 2.0, 
-								200),
+								289),
 					glm::dvec3( (coinGaucheTableX + coinDroitTableX) / 2.0 ,
 								(coinGaucheTableY + coinDroitTableY) / 2.0,
 								100), /* Le point visé*/
