@@ -179,7 +179,7 @@ aidecollision::DetailsCollision NoeudTable::detecterCollisions(NoeudAbstrait* bi
 	return detailsAucune;
 }
 
-void NoeudTable::traiterCollisions(aidecollision::DetailsCollision details, NoeudAbstrait* bille, float facteurRebond)
+void NoeudTable::traiterCollisions(aidecollision::DetailsCollision details, NoeudAbstrait* bille, float)
 {
 	NoeudAbstrait::traiterCollisions(details,bille);
 	if (glm::length(bille->obtenirVitesse()) > 10)

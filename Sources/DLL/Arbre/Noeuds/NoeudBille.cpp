@@ -359,7 +359,7 @@ std::vector<glm::dvec3> NoeudBille::obtenirVecteursEnglobants()
 /// @return details contient l'information sur la collision de la bille avec *this.
 ///
 ////////////////////////////////////////////////////////////////////////
-void NoeudBille::traiterCollisions(aidecollision::DetailsCollision details, NoeudAbstrait* bille, float facteurRebond)
+void NoeudBille::traiterCollisions(aidecollision::DetailsCollision details, NoeudAbstrait* bille, float)
 {
 
 	// pour avoir l'ancien comportement exactement, simplement decommenter la ligne suivante

@@ -76,7 +76,7 @@ void NoeudVide::afficherConcret() const
 /// @return Aucune.
 ///
 ////////////////////////////////////////////////////////////////////////
-void NoeudVide::animer(float temps)
+void NoeudVide::animer(float)
 {
 }
 

@@ -133,7 +133,7 @@ bool NoeudGate::accepterVisiteur(VisiteurAbstrait* vis)
 /// @return aucun.
 ///
 ////////////////////////////////////////////////////////////////////////
-void NoeudGate::traiterCollisions(aidecollision::DetailsCollision details, NoeudAbstrait* bille, float facteurRebond)
+void NoeudGate::traiterCollisions(aidecollision::DetailsCollision details, NoeudAbstrait* bille, float)
 {
 	glm::dvec3 vitesse = bille->obtenirVitesse();
 	double angleGate = rotation_[2] * utilitaire::PI_180;

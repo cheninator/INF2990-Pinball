@@ -310,7 +310,7 @@ void NoeudPaletteD::desactiver()
 /// @return details contient l'information sur la collision de la bille avec *this.
 ///
 ////////////////////////////////////////////////////////////////////////
-void NoeudPaletteD::traiterCollisions(aidecollision::DetailsCollision details, NoeudAbstrait* bille, float facteurRebond)
+void NoeudPaletteD::traiterCollisions(aidecollision::DetailsCollision details, NoeudAbstrait* bille, float)
 {
 	glm::dvec3 vecteur = bille->obtenirPositionRelative() - obtenirPositionRelative();
 	double distance = glm::length(vecteur);

@@ -154,8 +154,10 @@ std::vector<glm::dvec3> NoeudTrou::obtenirVecteursEnglobants()
 /// pour voir les etapes supplementaires que l'effacement d'une bille necessite.
 /// 
 ////////////////////////////////////////////////////////////////////////
-void NoeudTrou::traiterCollisions(aidecollision::DetailsCollision, NoeudAbstrait* bille, float facteurRebond)
+void NoeudTrou::traiterCollisions(aidecollision::DetailsCollision, NoeudAbstrait*, float)
 {
+
 	SoundControl->jouerSon("hole2");
 	// bille->obtenirParent()->effacer(bille);
+
 }

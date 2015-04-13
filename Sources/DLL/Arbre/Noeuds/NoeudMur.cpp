@@ -102,7 +102,7 @@ void NoeudMur::animer(float temps)
 /// @return aucun.
 ///
 ////////////////////////////////////////////////////////////////////////
-void NoeudMur::traiterCollisions(aidecollision::DetailsCollision details, NoeudAbstrait* bille, float facteurRebond)
+void NoeudMur::traiterCollisions(aidecollision::DetailsCollision details, NoeudAbstrait* bille, float)
 {
 	NoeudAbstrait::traiterCollisions(details, bille);
 	if (glm::length(bille->obtenirVitesse()) > 10)

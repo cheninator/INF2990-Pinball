@@ -124,7 +124,7 @@ void NoeudPortailTorus::animer(float temps)
 /// @return reussi (TRUE)
 ///
 ////////////////////////////////////////////////////////////////////////
-bool NoeudPortailTorus::accepterVisiteur(VisiteurAbstrait* vis)
+bool NoeudPortailTorus::accepterVisiteur(VisiteurAbstrait*)
 {
 	bool reussi = false;
 

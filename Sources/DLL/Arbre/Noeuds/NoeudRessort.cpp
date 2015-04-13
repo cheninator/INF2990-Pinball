@@ -207,7 +207,7 @@ bool NoeudRessort::accepterVisiteur(VisiteurAbstrait* vis)
 
 
 
-void NoeudRessort::traiterCollisions(aidecollision::DetailsCollision details, NoeudAbstrait* bille, float facteurRebond)
+void NoeudRessort::traiterCollisions(aidecollision::DetailsCollision details, NoeudAbstrait* bille, float)
 {
 	switch (etatRessort_)
 	{

@@ -47,13 +47,13 @@ public:
 	virtual ~VisiteurAbstrait(){};
 
 	/// Traiter une operation sur l'arbre de rendu
-	virtual bool traiter(ArbreRenduINF2990* arbre) { return false; };
+	virtual bool traiter(ArbreRenduINF2990*) { return false; };
 
 	/// Traiter une operation sur la table de l'arbre de rendu
-	virtual bool traiter(NoeudTable* noeud) { return false; };
+	virtual bool traiter(NoeudTable*) { return false; };
 
 	/// Traiter une operation sur les noeuds abstraits de l'arbre de rendu
-	virtual bool traiter(NoeudAbstrait* noeud){ return false; };
+	virtual bool traiter(NoeudAbstrait*){ return false; };
 
 	/// Si traiter(NoeudMur* ) n'est pas reimplemente, appeler celui de NoeudAbstrait qui appelle traiter(NoeudAbstrait*), qui EST reimplementee.
 	virtual bool traiter(NoeudMur* noeud){ return traiter((NoeudAbstrait*)noeud); };

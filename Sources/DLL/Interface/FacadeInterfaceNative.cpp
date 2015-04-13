@@ -259,7 +259,7 @@ extern "C"
 	/// \remark L'appelle est responsable d'attribuer des proprietes.
 	///
 	////////////////////////////////////////////////////////////////////////
-	__declspec(dllexport) void __cdecl creerObjet(char* value, int length, bool isTwin, bool colorShift)
+	__declspec(dllexport) void __cdecl creerObjet(char* value, int, bool isTwin, bool colorShift)
 	{
 		std::string nomObjet(value);
 		if (nomObjet == "bille")
@@ -328,8 +328,8 @@ extern "C"
 	/// \remark a l'arbre de rendu comme enfant de la table. Sinon, on l'efface.
 	///
 	////////////////////////////////////////////////////////////////////////
-	__declspec(dllexport) bool __cdecl creerObjetAvecTests(char* value, int length, bool isTwin, bool colorShift, 
-															int posX, int posY, int posZ, 
+	__declspec(dllexport) bool __cdecl creerObjetAvecTests(char* value, int, bool isTwin, bool colorShift, 
+															int posX, int posY, int, 
 															float angleX, float angleY, float angleZ)
 	{
 		// Meme chose que dans creer objet, sauf que je test le nouvel objet avant de l'ajouter a l'arbre.
@@ -453,7 +453,7 @@ extern "C"
 	/// @remark : Permet de deplacer un objet en x y et/ou z
 	///
 	////////////////////////////////////////////////////////////////////////
-	__declspec(dllexport) void __cdecl translateObjet(int x, int y, int z)
+	__declspec(dllexport) void __cdecl translateObjet(int x, int y, int)
 	{
 		if (objet == nullptr)
 			return;
@@ -654,7 +654,7 @@ extern "C"
 	/// @return Aucun
 	///
 	////////////////////////////////////////////////////////////////////////
-	__declspec(dllexport) int __cdecl creerXML(char* path, int length, int prop[6], bool force)
+	__declspec(dllexport) int __cdecl creerXML(char* path, int, int prop[6], bool force)
 	{
 		return FacadeModele::obtenirInstance()->creerXML(std::string(path), prop, force);
 	}
@@ -678,7 +678,7 @@ extern "C"
 	/// @remark : Ouvre le path
 	/// 
 	////////////////////////////////////////////////////////////////////////
-	__declspec(dllexport) int* __cdecl ouvrirXML(char* path, int length)
+	__declspec(dllexport) int* __cdecl ouvrirXML(char* path, int)
 	{
 		FacadeModele::obtenirInstance()->obtenirArbreRenduINF2990()->vider();
 		FacadeModele::obtenirInstance()->obtenirArbreRenduINF2990()->initialiserXML(std::string(path));
@@ -711,7 +711,7 @@ extern "C"
 	/// @remark : Prend un screenshot de la zone de jeu
 	/// 
 	////////////////////////////////////////////////////////////////////////
-	__declspec(dllexport) void __cdecl takeScreenShot(char* path, int length, bool square, int maxSize)
+	__declspec(dllexport) void __cdecl takeScreenShot(char* path, int, bool square, int maxSize)
 	{
 		glm::ivec2 size = FacadeModele::obtenirInstance()->obtenirTailleFenetre();
 		FacadeModele::obtenirInstance()->obtenirArbreRenduINF2990()->takeScreenShot(path, size.x, size.y, square, maxSize);
@@ -1071,7 +1071,7 @@ extern "C"
 	/// @remark Cette fonction permet de cree un son (le charger en memoire)
 	///
 	////////////////////////////////////////////////////////////////////////
-	__declspec(dllexport) void __cdecl creeSon(char* value, int length)
+	__declspec(dllexport) void __cdecl creeSon(char* value, int)
 	{
 		SoundControl->creeSon(value);
 	}
@@ -1089,7 +1089,7 @@ extern "C"
 	/// @remark Cette fonction permet de jouer un son ou de l'arreter
 	///
 	////////////////////////////////////////////////////////////////////////
-	__declspec(dllexport) void __cdecl jouerSon(char* value, int length, bool pause)
+	__declspec(dllexport) void __cdecl jouerSon(char* value, int, bool pause)
 	{
 		SoundControl->jouerSon(value, pause);
 	}
@@ -1107,7 +1107,7 @@ extern "C"
 	/// @remark Cette fonction permet de jouer un son en boucle
 	///
 	////////////////////////////////////////////////////////////////////////
-	__declspec(dllexport) void __cdecl bouclerSon(char* value, int length, bool loop)
+	__declspec(dllexport) void __cdecl bouclerSon(char* value, int, bool loop)
 	{
 		SoundControl->bouclerSon(value, loop);
 	}
@@ -1141,7 +1141,7 @@ extern "C"
 	/// @remark Permet d'arreter un son completement (mais ne le detruit pas)
 	///
 	////////////////////////////////////////////////////////////////////////
-	__declspec(dllexport) void __cdecl arreterSon(char* value, int length)
+	__declspec(dllexport) void __cdecl arreterSon(char* value, int)
 	{
 		SoundControl->arreterSon(value);
 	}
@@ -1492,7 +1492,7 @@ extern "C"
 	/// @return Le niveau de difficulte de la zone.
 	///
 	///////////////////////////////////////////////////////////////////////////////
-	__declspec(dllexport) int __cdecl obtenirDifficulte(char* nomFichier, int length)
+	__declspec(dllexport) int __cdecl obtenirDifficulte(char* nomFichier, int)
 	{
 		return FacadeModele::obtenirInstance()->obtenirDifficulte(nomFichier);
 	}
@@ -1506,7 +1506,7 @@ extern "C"
 	/// @return Les proprietes de difficulte de la zone.
 	///
 	///////////////////////////////////////////////////////////////////////////////
-	__declspec(dllexport) int* __cdecl obtenirProprietes(char* nomFichier, int length)
+	__declspec(dllexport) int* __cdecl obtenirProprietes(char* nomFichier, int)
 	{
 		return FacadeModele::obtenirInstance()->obtenirProprietes(nomFichier);
 	}
@@ -1520,7 +1520,7 @@ extern "C"
 	/// @return Aucune.
 	///
 	///////////////////////////////////////////////////////////////////////////////
-	__declspec(dllexport) void __cdecl creerFichierCampagne(char* listMaps, int length)
+	__declspec(dllexport) void __cdecl creerFichierCampagne(char* listMaps, int)
 	{
 		FacadeModele::obtenirInstance()->sauvegarderCampagne(listMaps);
 	}
@@ -2058,7 +2058,7 @@ extern "C"
 	/// @return Aucune.
 	///
 	///////////////////////////////////////////////////////////////////////////////
-	__declspec(dllexport) void __cdecl creeTexte(char* text, int lengthT, char* font, int lengthF)
+	__declspec(dllexport) void __cdecl creeTexte(char* text, int, char* font, int)
 	{
 		std::string myText = std::string(text);
 		FacadeModele::obtenirInstance()->obtenircontroleurTexte()->creeTexte(myText, font);
@@ -2073,7 +2073,7 @@ extern "C"
 	/// @return Aucune.
 	///
 	///////////////////////////////////////////////////////////////////////////////
-	__declspec(dllexport) void __cdecl updateText(char* oldText, int lengthO, char* newText, int lengthN)
+	__declspec(dllexport) void __cdecl updateText(char* oldText, int, char* newText, int)
 	{
 		std::string myOldText = std::string(oldText);
 		std::string myNewText = std::string(newText);
@@ -2089,7 +2089,7 @@ extern "C"
 	/// @return Aucune.
 	///
 	///////////////////////////////////////////////////////////////////////////////
-	__declspec(dllexport) void __cdecl resize(char* text, int length, int size)
+	__declspec(dllexport) void __cdecl resize(char* text, int, int size)
 	{
 			std::string myText = std::string(text);
 		FacadeModele::obtenirInstance()->obtenircontroleurTexte()->resize(myText, (unsigned int)size);
@@ -2106,7 +2106,7 @@ extern "C"
 	/// @return Aucune.
 	///
 	///////////////////////////////////////////////////////////////////////////////
-	__declspec(dllexport) void __cdecl changerCouleur(char* text, int length, float rouge, float vert, float bleu)
+	__declspec(dllexport) void __cdecl changerCouleur(char* text, int, float rouge, float vert, float bleu)
 	{
 		std::string myText = std::string(text);
 		FacadeModele::obtenirInstance()->obtenircontroleurTexte()->changerCouleur(myText, rouge, vert, bleu);
@@ -2121,7 +2121,7 @@ extern "C"
 	/// @return Aucune.
 	///
 	///////////////////////////////////////////////////////////////////////////////
-	__declspec(dllexport) void __cdecl changerCouleurV(char* text, int length, float couleur[3])
+	__declspec(dllexport) void __cdecl changerCouleurV(char* text, int, float couleur[3])
 	{
 		std::string myText = std::string(text);
 		glm::fvec3 couleurV(couleur[0], couleur[1], couleur[2]);
@@ -2138,7 +2138,7 @@ extern "C"
 	/// @return Aucune.
 	///
 	///////////////////////////////////////////////////////////////////////////////
-	__declspec(dllexport) void __cdecl repositionner(char* text, int length, float x, float y)
+	__declspec(dllexport) void __cdecl repositionner(char* text, int, float x, float y)
 	{
 		std::string myText = std::string(text);
 		FacadeModele::obtenirInstance()->obtenircontroleurTexte()->repositionner(myText, x, y);
@@ -2153,7 +2153,7 @@ extern "C"
 	/// @return Aucune.
 	///
 	///////////////////////////////////////////////////////////////////////////////
-	__declspec(dllexport) void __cdecl suprimerText(char* text, int length)
+	__declspec(dllexport) void __cdecl suprimerText(char* text, int)
 	{
 		std::string myText = std::string(text);
 		FacadeModele::obtenirInstance()->obtenircontroleurTexte()->suprimerText(myText);
@@ -2181,7 +2181,7 @@ extern "C"
 	/// @return Aucune.
 	///
 	///////////////////////////////////////////////////////////////////////////////
-	__declspec(dllexport) void __cdecl preparerUsineArbre(char* text, int length)
+	__declspec(dllexport) void __cdecl preparerUsineArbre(char* text, int)
 	{
 		FacadeModele::obtenirInstance()->obtenirArbreRenduINF2990()->preparerUsine(std::string(text));
 	}

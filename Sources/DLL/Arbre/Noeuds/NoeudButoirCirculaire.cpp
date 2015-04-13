@@ -235,7 +235,7 @@ aidecollision::DetailsCollision NoeudButoirCirculaire::detecterCollisions(NoeudA
 /// @return details contient l'information sur la collision de la bille avec *this.
 ///
 ////////////////////////////////////////////////////////////////////////
-void NoeudButoirCirculaire::traiterCollisions(aidecollision::DetailsCollision details, NoeudAbstrait* bille, float facteurRebond)
+void NoeudButoirCirculaire::traiterCollisions(aidecollision::DetailsCollision details, NoeudAbstrait* bille, float)
 {
 	if (FacadeModele::obtenirInstance()->obtenirModeForceRebond())
 	{

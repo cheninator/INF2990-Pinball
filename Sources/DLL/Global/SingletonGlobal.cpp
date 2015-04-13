@@ -47,7 +47,7 @@ void SingletonGlobal::resetConfigurationCollision(int collisionPointsCirculaire,
 	collisionPointsTriangulaire_ = collisionPointsTriangulaire;
 	collisionPointsCible_ = collisionPointsCible;
 	collisionPointsPartieGagner_ = collisionPointsPartieGagner;
-	collisionPointsNouvelleBille_ = collisionPointsPartieGagner;
+	collisionPointsNouvelleBille_ = collisionPointsNouvelleBille;
 	//nombreDeBillesDisponibles_ = FacadeModele::obtenirInstance()->obtenirConfiguration()[5];
 	//nombreDeBillesGagner_ = 0;
 

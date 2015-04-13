@@ -592,7 +592,7 @@ void FacadeModele::animer(float temps)
 /// @return NoeudAbstrait.
 ///
 ////////////////////////////////////////////////////////////////////////
-int FacadeModele::selectionnerObjetSousPointClique(int i, int j, int hauteur, int largeur, bool ctrlDown, bool gaucheEnfonce, bool sourisSurSelection)
+int FacadeModele::selectionnerObjetSousPointClique(int i, int j, int hauteur, int, bool ctrlDown, bool gaucheEnfonce, bool sourisSurSelection)
 {
 	glm::dvec3 pointDansLeMonde;
 	vue_->convertirClotureAVirtuelle(i, j, pointDansLeMonde);
@@ -726,7 +726,7 @@ void FacadeModele::deplacerSelection(int x1, int y1 ,int x2, int y2, bool duplic
 /// @remark : On doit donner des x,y qui ont ete transformes par panel_GL.PointToClient(...)
 ///
 ///////////////////////////////////////////////////////////////////////////////
-void FacadeModele::tournerSelectionSouris(int x1, int y1, int x2, int y2)
+void FacadeModele::tournerSelectionSouris(int, int y1, int, int y2)
 {
 	// Visiter l'arbre pour trouver le centre de masse des noeuds selectionnes
 	VisiteurCentreDeMasse visCM;
@@ -801,7 +801,7 @@ void FacadeModele::tournerSelectionSouris(int x1, int y1, int x2, int y2)
 /// @remark : On doit donner des x,y qui ont ete transformes par panel_GL.PointToClient(...)
 ///
 ///////////////////////////////////////////////////////////////////////////////
-void FacadeModele::agrandirSelection(int x1, int y1, int x2, int y2)
+void FacadeModele::agrandirSelection(int, int y1, int, int y2)
 {
 	double scale = glm::exp((y1 - y2) * glm::log(1.003)); // exp(b log(a)) = a^b
 	// Pour agrandir on multiplie le scale courrant par 1.003 et ce une fois pour chaque deplacement en y
@@ -1168,7 +1168,7 @@ int FacadeModele::peutSauvegarder()
 ///	\remark	La methode verifie aussi la boite englobante du mur pour ne pas qu'il depasse de la table.
 ///
 ///////////////////////////////////////////////////////////////////////////////
-void FacadeModele::positionnerMur(int originX, int originY,int x1, int y1, int x2, int y2, NoeudAbstrait* noeud)
+void FacadeModele::positionnerMur(int originX, int originY,int, int, int x2, int y2, NoeudAbstrait* noeud)
 {
 	glm::dvec3 positionOriginale,positionInitiale, positionFinale;
 	FacadeModele::obtenirInstance()->obtenirVue()->convertirClotureAVirtuelle(originX, originY, positionOriginale);
@@ -1850,7 +1850,7 @@ int* FacadeModele::obtenirProprietes(char* nomFichier)
 /// @return Aucune.
 /// 
 ///////////////////////////////////////////////////////////////////////////////
-void FacadeModele::traiterCollisions(float temps)
+void FacadeModele::traiterCollisions(float)
 {
 	bool miseAJourListeBillesRequise = false;
 
@@ -2553,7 +2553,7 @@ void FacadeModele::dessinerSkybox(double demiLargeur, bool vueOrtho, glm::dvec3 
 /// @return bool, true si la souris est situe sur un objet
 ///
 ////////////////////////////////////////////////////////////////////////
-bool FacadeModele::sourisEstSurObjet(int i, int j, int hauteur, int largeur, bool& estSelectionne)
+bool FacadeModele::sourisEstSurObjet(int i, int j, int hauteur, int, bool& estSelectionne)
 {
 	glm::dvec3 pointDansLeMonde;
 	vue_->convertirClotureAVirtuelle(i, j, pointDansLeMonde);

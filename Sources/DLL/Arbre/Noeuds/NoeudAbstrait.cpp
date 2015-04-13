@@ -108,7 +108,7 @@ void NoeudAbstrait::vider()
 /// @return Aucune.
 ///
 ////////////////////////////////////////////////////////////////////////
-void NoeudAbstrait::effacer(const NoeudAbstrait* noeud)
+void NoeudAbstrait::effacer(const NoeudAbstrait*)
 {
 }
 
@@ -175,7 +175,7 @@ NoeudAbstrait* NoeudAbstrait::chercher(const std::string& typeNoeud)
 /// @return Le pointeur vers le noeud s'il est trouve.
 ///
 ////////////////////////////////////////////////////////////////////////
-const NoeudAbstrait* NoeudAbstrait::chercher(unsigned int indice) const
+const NoeudAbstrait* NoeudAbstrait::chercher(unsigned int) const
 {
 	return nullptr;
 }
@@ -195,7 +195,7 @@ const NoeudAbstrait* NoeudAbstrait::chercher(unsigned int indice) const
 /// @return Le pointeur vers le noeud s'il est trouve.
 ///
 ////////////////////////////////////////////////////////////////////////
-NoeudAbstrait* NoeudAbstrait::chercher(unsigned int indice)
+NoeudAbstrait* NoeudAbstrait::chercher(unsigned int)
 {
 	return nullptr;
 }
@@ -215,7 +215,7 @@ NoeudAbstrait* NoeudAbstrait::chercher(unsigned int indice)
 /// @return Vrai si l'ajout a bien ete effectue, faux autrement.
 ///
 ////////////////////////////////////////////////////////////////////////
-bool NoeudAbstrait::ajouter(NoeudAbstrait* enfant)
+bool NoeudAbstrait::ajouter(NoeudAbstrait*)
 {
 	return false;
 }
@@ -248,7 +248,7 @@ NoeudAbstrait* NoeudAbstrait::obtenirDernierNoeud()
 /// @return Le nombre d'enfants directement sous ce noeud.
 ///
 ////////////////////////////////////////////////////////////////////////
-NoeudAbstrait* NoeudAbstrait::getEnfant(int position)
+NoeudAbstrait* NoeudAbstrait::getEnfant(int)
 {
 	return nullptr;
 }
@@ -518,7 +518,7 @@ void NoeudAbstrait::afficherConcret() const
 /// @return Aucune.
 ///
 ////////////////////////////////////////////////////////////////////////
-void NoeudAbstrait::animer(float dt)
+void NoeudAbstrait::animer(float)
 {
 
 }

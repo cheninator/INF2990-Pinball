@@ -130,7 +130,7 @@ bool NoeudCible::accepterVisiteur(VisiteurAbstrait* vis)
 /// @return aucun.
 ///
 ////////////////////////////////////////////////////////////////////////
-void NoeudCible::traiterCollisions(aidecollision::DetailsCollision details, NoeudAbstrait* bille, float facteurRebond)
+void NoeudCible::traiterCollisions(aidecollision::DetailsCollision details, NoeudAbstrait* bille, float)
 {
 	NoeudAbstrait::traiterCollisions(details, bille);
 	this->assignerAffiche(false);

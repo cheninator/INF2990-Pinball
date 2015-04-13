@@ -45,7 +45,7 @@ public:
 	virtual void jouer(const std::vector<NoeudAbstrait*>& listeBilles, const std::set<NoeudPaletteG*>& listePalettesG, const std::set<NoeudPaletteD*>& listePalettesD, float temps);
 
 	/// Traitement des noeuds abstraits
-	virtual bool traiter(NoeudAbstrait* noeud) { return false; };
+	virtual bool traiter(NoeudAbstrait*) { return false; };
 
 	/// Traiter une operation sur les palettes gauches
 	virtual bool traiter(NoeudPaletteG* noeud);

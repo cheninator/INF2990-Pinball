@@ -286,7 +286,7 @@ bool NoeudGenerateurBille::accepterVisiteur(VisiteurAbstrait* vis)
 /// @return details contient l'information sur la collision de la bille avec *this.
 ///
 ////////////////////////////////////////////////////////////////////////
-void NoeudGenerateurBille::traiterCollisions(aidecollision::DetailsCollision details, NoeudAbstrait* bille, float facteurRebond)
+void NoeudGenerateurBille::traiterCollisions(aidecollision::DetailsCollision, NoeudAbstrait*, float)
 {
 
 }
@@ -302,7 +302,7 @@ void NoeudGenerateurBille::traiterCollisions(aidecollision::DetailsCollision det
 /// @return details : contient l'information sur la collision de la bille avec *this.
 ///
 ////////////////////////////////////////////////////////////////////////
-aidecollision::DetailsCollision NoeudGenerateurBille::detecterCollisions(NoeudAbstrait* noeud)
+aidecollision::DetailsCollision NoeudGenerateurBille::detecterCollisions(NoeudAbstrait*)
 {
 	aidecollision::DetailsCollision detail;
 	return detail;

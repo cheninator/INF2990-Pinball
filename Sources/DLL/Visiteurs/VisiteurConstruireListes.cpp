@@ -113,7 +113,7 @@ bool VisiteurConstruireListes::traiter(NoeudTable* table)
 /// @return Retourne toujours true.
 ///
 ////////////////////////////////////////////////////////////////////////
-bool VisiteurConstruireListes::traiter(NoeudAbstrait* noeud)
+bool VisiteurConstruireListes::traiter(NoeudAbstrait*)
 {
 	return true;
 }
