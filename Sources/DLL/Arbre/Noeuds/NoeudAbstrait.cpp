@@ -12,12 +12,7 @@
 
 #include "NoeudBille.h"
 
-#define NOEUD_NORMAL 0
-#define NOEUD_COLOR_SHIFT 1
-#define NOEUD_IMPOSSIBLE 2
-#define NOEUD_SELECTIONNE 3
-#define NOEUD_TRANSPARENT 4
-#define NOEUD_ILLUMINE 5
+
 
 unsigned int NoeudAbstrait::compteurNoeuds_ = 0;
 ////////////////////////////////////////////////////////////////////////
