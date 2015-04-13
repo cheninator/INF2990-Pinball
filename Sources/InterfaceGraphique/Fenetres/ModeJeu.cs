@@ -223,7 +223,13 @@ namespace InterfaceGraphique
          }
 
 
-
+        ////////////////////////////////////////////////////////////////////////
+        ///
+        /// @fn public void FullScreenChange()
+        /// @brief Changement du mode de la fenetre( Plein Ecran ou Non).
+        /// @return Aucune.
+        ///
+        ////////////////////////////////////////////////////////////////////////
         public void FullScreenChange()
         {
             if (fullscreen.IsFullScreen(this))
@@ -729,10 +735,7 @@ namespace InterfaceGraphique
             this.Close();
         }
 
-        private void panel_GL_MouseClick(object sender, MouseEventArgs e)
-        {
-            //  panel_GL.Focus();
-        }
+      
 
         ////////////////////////////////////////////////////////////////////////
         ///
@@ -775,6 +778,15 @@ namespace InterfaceGraphique
             FonctionsNatives.desactiverPalettesGJ2();
         }
 
+        ////////////////////////////////////////////////////////////////////////
+        ///
+        /// @fn private void ModeJeu_VisibleChanged(object sender, EventArgs e)
+        /// @brief Fonction qui fait de quoi lorsqu'on met le mode Jeu visible.
+        /// @param[in] sender : Objet duquel provient un evenement.
+        /// @param[in] e : evenement qui lance la fonction.
+        /// @return Aucune.
+        ///
+        ////////////////////////////////////////////////////////////////////////
         private void ModeJeu_VisibleChanged(object sender, EventArgs e)
         {
             if (this.Visible == true)
@@ -793,32 +805,86 @@ namespace InterfaceGraphique
             }
         }
 
+        ////////////////////////////////////////////////////////////////////////
+        ///
+        /// @fn private void panel_GL_MouseDown(object sender, EventArgs e)
+        /// @brief Fonction qui traite l'enfoncement de la souris.
+        /// @param[in] sender : Objet duquel provient un evenement.
+        /// @param[in] e : evenement qui lance la fonction.
+        /// @return Aucune.
+        ///
+        ////////////////////////////////////////////////////////////////////////
         private void panel_GL_MouseDown(object sender, MouseEventArgs e)
         {
             etat.traiterMouseDown(sender, e);
         }
 
+        ////////////////////////////////////////////////////////////////////////
+        ///
+        /// @fn private void panel_GL_MouseUp(object sender, EventArgs e)
+        /// @brief Fonction qui traite le relachement de la souris.
+        /// @param[in] sender : Objet duquel provient un evenement.
+        /// @param[in] e : evenement qui lance la fonction.
+        /// @return Aucune.
+        ///
+        ////////////////////////////////////////////////////////////////////////
         private void panel_GL_MouseUp(object sender, MouseEventArgs e)
         {
             etat.traiterMouseUp(sender, e);
         }
 
+        ////////////////////////////////////////////////////////////////////////
+        ///
+        /// @fn private void panel_GL_MouseMove(object sender, EventArgs e)
+        /// @brief Fonction qui traite le deplacement de la souris.
+        /// @param[in] sender : Objet duquel provient un evenement.
+        /// @param[in] e : evenement qui lance la fonction.
+        /// @return Aucune.
+        ///
+        ////////////////////////////////////////////////////////////////////////
         private void panel_GL_MouseMove(object sender, MouseEventArgs e)
         {
             etat.traiterMouseMove(sender, e);
         }
 
+        ////////////////////////////////////////////////////////////////////////
+        ///
+        /// @fn private void panel_GL_SizeChanged(object sender, EventArgs e)
+        /// @brief Fonction qui traite le changement de taille de la fenetre.
+        /// @param[in] sender : Objet duquel provient un evenement.
+        /// @param[in] e : evenement qui lance la fonction.
+        /// @return Aucune.
+        ///
+        ////////////////////////////////////////////////////////////////////////
         private void panel_GL_SizeChanged(object sender, EventArgs e)
         {
             panelHeight = panel_GL.Size.Height;
             panelWidth = panel_GL.Size.Width;
         }
 
+        ////////////////////////////////////////////////////////////////////////
+        ///
+        /// @fn private void Ortho_MenuItem_Click(object sender, EventArgs e)
+        /// @brief Fonction qui change la Camera en Camera Orthographique.
+        /// @param[in] sender : Objet duquel provient un evenement.
+        /// @param[in] e : evenement qui lance la fonction.
+        /// @return Aucune.
+        ///
+        ////////////////////////////////////////////////////////////////////////
         private void Ortho_MenuItem_Click(object sender, EventArgs e)
         {
             FonctionsNatives.utiliserCameraOrbite(false);
         }
 
+        ////////////////////////////////////////////////////////////////////////
+        ///
+        /// @fn private void Orbitale_MenuItem_Click(object sender, EventArgs e)
+        /// @brief Fonction qui change la Camera en Camera Orbite.
+        /// @param[in] sender : Objet duquel provient un evenement.
+        /// @param[in] e : evenement qui lance la fonction.
+        /// @return Aucune.
+        ///
+        ////////////////////////////////////////////////////////////////////////
         private void Orbitale_MenuItem_Click(object sender, EventArgs e)
         {
             FonctionsNatives.utiliserCameraOrbite(true);

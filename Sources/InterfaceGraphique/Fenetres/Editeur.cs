@@ -3190,11 +3190,31 @@ namespace InterfaceGraphique
             
         }
 
+
+        //////////////////////////////////////////////////////////////////////////////////////////
+        ///
+        /// @fn private void Enregistrer_ToolStrip_Click(object sender, EventArgs e)
+        /// @brief Appel de la fonction d'enregistrement.
+        /// @param[in] sender : Objet duquel provient un evenement.
+        /// @param[in] e : evenement qui lance la fonction.
+        /// @return Aucune.
+        ///
+        //////////////////////////////////////////////////////////////////////////////////////////
         private void Enregistrer_ToolStrip_Click(object sender, EventArgs e)
         {
             Enregistrer_MenuItem.PerformClick();
         }
 
+
+        //////////////////////////////////////////////////////////////////////////////////////////
+        ///
+        /// @fn private void Information_MenuItem_Click(object sender, EventArgs e)
+        /// @brief Affichage du menu aide.
+        /// @param[in] sender : Objet duquel provient un evenement.
+        /// @param[in] e : evenement qui lance la fonction.
+        /// @return Aucune.
+        ///
+        //////////////////////////////////////////////////////////////////////////////////////////
         private void Information_MenuItem_Click(object sender, EventArgs e)
         {
             Aide aide = new Aide();
@@ -3202,51 +3222,144 @@ namespace InterfaceGraphique
             aide.ShowDialog();
         }
 
+
+        //////////////////////////////////////////////////////////////////////////////////////////
+        ///
+        /// @fn private void button_delete_Click(object sender, EventArgs e)
+        /// @brief Affichage de la fonction supprimer.
+        /// @param[in] sender : Objet duquel provient un evenement.
+        /// @param[in] e : evenement qui lance la fonction.
+        /// @return Aucune.
+        ///
+        //////////////////////////////////////////////////////////////////////////////////////////
         private void button_delete_Click(object sender, EventArgs e)
         {
 
         }
 
+        //////////////////////////////////////////////////////////////////////////////////////////
+        ///
+        /// @fn private void MenuP_ToolStrip_Click(object sender, EventArgs e)
+        /// @brief Appel de la fonction MenuPrincipal.
+        /// @param[in] sender : Objet duquel provient un evenement.
+        /// @param[in] e : evenement qui lance la fonction.
+        /// @return Aucune.
+        ///
+        //////////////////////////////////////////////////////////////////////////////////////////
         private void MenuP_ToolStrip_Click(object sender, EventArgs e)
         {
             MenuP_MenuItem.PerformClick();
         }
 
+
+        //////////////////////////////////////////////////////////////////////////////////////////
+        ///
+        /// @fn private void Nouveau_Click(object sender, EventArgs e)
+        /// @brief Appel de la fonction Nouveau.
+        /// @param[in] sender : Objet duquel provient un evenement.
+        /// @param[in] e : evenement qui lance la fonction.
+        /// @return Aucune.
+        ///
+        //////////////////////////////////////////////////////////////////////////////////////////
         private void Nouveau_Click(object sender, EventArgs e)
         {
             Nouveau_MenuItem.PerformClick();
         }
 
+        //////////////////////////////////////////////////////////////////////////////////////////
+        ///
+        /// @fn private void Ouvrir_Click(object sender, EventArgs e)
+        /// @brief Appel de la fonction Ouvrir.
+        /// @param[in] sender : Objet duquel provient un evenement.
+        /// @param[in] e : evenement qui lance la fonction.
+        /// @return Aucune.
+        ///
+        //////////////////////////////////////////////////////////////////////////////////////////
         private void Ouvrir_Click(object sender, EventArgs e)
         {
             Ouvrir_MenuItem.PerformClick();
         }
 
+        //////////////////////////////////////////////////////////////////////////////////////////
+        ///
+        /// @fn private void EnregistrerSous_ToolStrip_Click(object sender, EventArgs e)
+        /// @brief Appel de la fonction Enregistrer Sous.
+        /// @param[in] sender : Objet duquel provient un evenement.
+        /// @param[in] e : evenement qui lance la fonction.
+        /// @return Aucune.
+        ///
+        //////////////////////////////////////////////////////////////////////////////////////////
         private void EnregistrerSous_ToolStrip_Click(object sender, EventArgs e)
         {
             EnregistrerS_MenuItem.PerformClick();
         }
 
+        //////////////////////////////////////////////////////////////////////////////////////////
+        ///
+        /// @fn private void Proprietes_ToolStrip_Click(object sender, EventArgs e)
+        /// @brief Appel des Proprietes de la zone de jeu.
+        /// @param[in] sender : Objet duquel provient un evenement.
+        /// @param[in] e : evenement qui lance la fonction.
+        /// @return Aucune.
+        ///
+        //////////////////////////////////////////////////////////////////////////////////////////
         private void Proprietes_ToolStrip_Click(object sender, EventArgs e)
         {
             Proprietes_MenuItem.PerformClick();
         }
 
+        //////////////////////////////////////////////////////////////////////////////////////////
+        ///
+        /// @fn private void ModeTest_ToolStrip_Click(object sender, EventArgs e)
+        /// @brief Passage au mode Test.
+        /// @param[in] sender : Objet duquel provient un evenement.
+        /// @param[in] e : evenement qui lance la fonction.
+        /// @return Aucune.
+        ///
+        //////////////////////////////////////////////////////////////////////////////////////////
         private void ModeTest_ToolStrip_Click(object sender, EventArgs e)
         {
             ModeTest_MenuItem.PerformClick();
         }
 
+        //////////////////////////////////////////////////////////////////////////////////////////
+        ///
+        /// @fn private void ZoomIn_ToolStrip_Click(object sender, EventArgs e)
+        /// @brief Zoom in.
+        /// @param[in] sender : Objet duquel provient un evenement.
+        /// @param[in] e : evenement qui lance la fonction.
+        /// @return Aucune.
+        ///
+        //////////////////////////////////////////////////////////////////////////////////////////
         private void ZoomIn_ToolStrip_Click(object sender, EventArgs e)
         {
             FonctionsNatives.zoomIn();
         }
 
+        //////////////////////////////////////////////////////////////////////////////////////////
+        ///
+        /// @fn private void ZoomOut_ToolStrip_Click(object sender, EventArgs e)
+        /// @brief Zoom out.
+        /// @param[in] sender : Objet duquel provient un evenement.
+        /// @param[in] e : evenement qui lance la fonction.
+        /// @return Aucune.
+        ///
+        //////////////////////////////////////////////////////////////////////////////////////////
         private void ZoomOut_ToolStrip_Click(object sender, EventArgs e)
         {
             FonctionsNatives.zoomOut();
         }
 
+
+        //////////////////////////////////////////////////////////////////////////////////////////
+        ///
+        /// @fn private void bouton_Suppression_Click(object sender, EventArgs e)
+        /// @brief Appel de la fonction Supprimer.
+        /// @param[in] sender : Objet duquel provient un evenement.
+        /// @param[in] e : evenement qui lance la fonction.
+        /// @return Aucune.
+        ///
+        //////////////////////////////////////////////////////////////////////////////////////////
         private void bouton_Suppression_Click(object sender, EventArgs e)
         {
             if (etat is EtatEditeurSelection)
@@ -3258,26 +3371,74 @@ namespace InterfaceGraphique
             sauvegarderHistorique();
         }
 
+
+        //////////////////////////////////////////////////////////////////////////////////////////
+        ///
+        /// @fn private void Group_Butoir_Enter(object sender, EventArgs e)
+        /// @brief Rien.
+        /// @param[in] sender : Objet duquel provient un evenement.
+        /// @param[in] e : evenement qui lance la fonction.
+        /// @return Aucune.
+        ///
+        //////////////////////////////////////////////////////////////////////////////////////////
         private void Group_Butoir_Enter(object sender, EventArgs e)
         {
 
         }
 
+
+        //////////////////////////////////////////////////////////////////////////////////////////
+        ///
+        /// @fn private void Group_Elements_Enter(object sender, EventArgs e)
+        /// @brief Rien.
+        /// @param[in] sender : Objet duquel provient un evenement.
+        /// @param[in] e : evenement qui lance la fonction.
+        /// @return Aucune.
+        ///
+        //////////////////////////////////////////////////////////////////////////////////////////
         private void Group_Elements_Enter(object sender, EventArgs e)
         {
 
         }
 
+
+        //////////////////////////////////////////////////////////////////////////////////////////
+        ///
+        /// @fn private void Groupe_Proprietes_Enter(object sender, EventArgs e)
+        /// @brief Rien.
+        /// @param[in] sender : Objet duquel provient un evenement.
+        /// @param[in] e : evenement qui lance la fonction.
+        /// @return Aucune.
+        ///
+        //////////////////////////////////////////////////////////////////////////////////////////
         private void Groupe_Proprietes_Enter(object sender, EventArgs e)
         {
 
         }
 
+        //////////////////////////////////////////////////////////////////////////////////////////
+        ///
+        /// @fn private void ZoomElastique_ToolStrip_Click(object sender, EventArgs e)
+        /// @brief Passage au mode Zoom.
+        /// @param[in] sender : Objet duquel provient un evenement.
+        /// @param[in] e : evenement qui lance la fonction.
+        /// @return Aucune.
+        ///
+        //////////////////////////////////////////////////////////////////////////////////////////
         private void ZoomElastique_ToolStrip_Click(object sender, EventArgs e)
         {
             Zoom_MenuItem.PerformClick();
         }
 
+        //////////////////////////////////////////////////////////////////////////////////////////
+        ///
+        /// @fn private void Annuler_ToolStrip_Click(object sender, EventArgs e)
+        /// @brief Appel a la fonction Annuler( UNDO ).
+        /// @param[in] sender : Objet duquel provient un evenement.
+        /// @param[in] e : evenement qui lance la fonction.
+        /// @return Aucune.
+        ///
+        //////////////////////////////////////////////////////////////////////////////////////////
         private void Annuler_ToolStrip_Click(object sender, EventArgs e)
         {
             deselection();
@@ -3303,6 +3464,15 @@ namespace InterfaceGraphique
             Retablir_ToolStrip.Enabled = (FonctionsNatives.possedeSuivant());
         }
 
+        //////////////////////////////////////////////////////////////////////////////////////////
+        ///
+        /// @fn private void Retablir_ToolStrip_Click(object sender, EventArgs e)
+        /// @brief Appel a la fonction Retablir( REDO ).
+        /// @param[in] sender : Objet duquel provient un evenement.
+        /// @param[in] e : evenement qui lance la fonction.
+        /// @return Aucune.
+        ///
+        //////////////////////////////////////////////////////////////////////////////////////////
         private void Retablir_ToolStrip_Click(object sender, EventArgs e)
         {
             deselection();
@@ -3328,27 +3498,71 @@ namespace InterfaceGraphique
             Retablir_ToolStrip.Enabled = (FonctionsNatives.possedeSuivant());
         }
 
+        //////////////////////////////////////////////////////////////////////////////////////////
+        ///
+        /// @fn private void Supprimer_MenuItem_Click_1(object sender, EventArgs e)
+        /// @brief Appel a la fonction Supprimer.
+        /// @param[in] sender : Objet duquel provient un evenement.
+        /// @param[in] e : evenement qui lance la fonction.
+        /// @return Aucune.
+        ///
+        //////////////////////////////////////////////////////////////////////////////////////////
         private void Supprimer_MenuItem_Click_1(object sender, EventArgs e)
         {
             bouton_Suppression.PerformClick();
         }
 
+        //////////////////////////////////////////////////////////////////////////////////////////
+        ///
+        /// @fn private void Annuler_MenuItem_Click(object sender, EventArgs e)
+        /// @brief Appel a la fonction Annuler.
+        /// @param[in] sender : Objet duquel provient un evenement.
+        /// @param[in] e : evenement qui lance la fonction.
+        /// @return Aucune.
+        ///
+        //////////////////////////////////////////////////////////////////////////////////////////
         private void Annuler_MenuItem_Click(object sender, EventArgs e)
         {
             Annuler_ToolStrip.PerformClick();
         }
 
+        //////////////////////////////////////////////////////////////////////////////////////////
+        ///
+        /// @fn private void Retablir_MenuItem_Click(object sender, EventArgs e)
+        /// @brief Appel a la fonction Retablir.
+        /// @param[in] sender : Objet duquel provient un evenement.
+        /// @param[in] e : evenement qui lance la fonction.
+        /// @return Aucune.
+        ///
+        //////////////////////////////////////////////////////////////////////////////////////////
         private void Retablir_MenuItem_Click(object sender, EventArgs e)
         {
             Retablir_ToolStrip.PerformClick();
         }
 
+        //////////////////////////////////////////////////////////////////////////////////////////
+        ///
+        /// @fn private void sauvegarderHistorique()
+        /// @brief Sauvegarde l'historique des manipulations.
+        /// @return Aucune.
+        ///
+        //////////////////////////////////////////////////////////////////////////////////////////
         private void sauvegarderHistorique()
         {
             FonctionsNatives.sauvegarderHistorique();
             Annuler_ToolStrip.Enabled = true;
         }
 
+
+        //////////////////////////////////////////////////////////////////////////////////////////
+        ///
+        /// @fn private void SelectAll_MenuItem_Click(object sender, EventArgs e)
+        /// @brief Appel a la fonction Selectionner Tout.
+        /// @param[in] sender : Objet duquel provient un evenement.
+        /// @param[in] e : evenement qui lance la fonction.
+        /// @return Aucune.
+        ///
+        //////////////////////////////////////////////////////////////////////////////////////////
         private void SelectAll_MenuItem_Click(object sender, EventArgs e)
         {
             FonctionsNatives.selectAll();
@@ -3356,88 +3570,232 @@ namespace InterfaceGraphique
             outilsEnable(true);
         }
 
+        //////////////////////////////////////////////////////////////////////////////////////////
+        ///
+        /// @fn private void PGJ1_bouton_Leave(object sender, EventArgs e)
+        /// @brief Remet la bordure a noir.
+        /// @param[in] sender : Objet duquel provient un evenement.
+        /// @param[in] e : evenement qui lance la fonction.
+        /// @return Aucune.
+        ///
+        //////////////////////////////////////////////////////////////////////////////////////////
         private void PGJ1_bouton_Leave(object sender, EventArgs e)
         {
             PGJ1_bouton.FlatAppearance.BorderColor = Color.Black;
         }
 
+        //////////////////////////////////////////////////////////////////////////////////////////
+        ///
+        /// @fn private void PDJ1_bouton_Leave(object sender, EventArgs e)
+        /// @brief Remet la bordure a noir.
+        /// @param[in] sender : Objet duquel provient un evenement.
+        /// @param[in] e : evenement qui lance la fonction.
+        /// @return Aucune.
+        ///
+        //////////////////////////////////////////////////////////////////////////////////////////
         private void PDJ1_bouton_Leave(object sender, EventArgs e)
         {
             PDJ1_bouton.FlatAppearance.BorderColor = Color.Black;
         }
 
+        //////////////////////////////////////////////////////////////////////////////////////////
+        ///
+        /// @fn private void PGJ2_bouton_Leave(object sender, EventArgs e)
+        /// @brief Remet la bordure a noir.
+        /// @param[in] sender : Objet duquel provient un evenement.
+        /// @param[in] e : evenement qui lance la fonction.
+        /// @return Aucune.
+        ///
+        //////////////////////////////////////////////////////////////////////////////////////////
         private void PGJ2_bouton_Leave(object sender, EventArgs e)
         {
             PGJ2_bouton.FlatAppearance.BorderColor = Color.Black;
         }
 
+        //////////////////////////////////////////////////////////////////////////////////////////
+        ///
+        /// @fn private void PDJ1_bouton_Leave_1(object sender, EventArgs e)
+        /// @brief Remet la bordure a noir.
+        /// @param[in] sender : Objet duquel provient un evenement.
+        /// @param[in] e : evenement qui lance la fonction.
+        /// @return Aucune.
+        ///
+        //////////////////////////////////////////////////////////////////////////////////////////
         private void PDJ1_bouton_Leave_1(object sender, EventArgs e)
         {
             PDJ1_bouton.FlatAppearance.BorderColor = Color.Black;
         }
 
+        //////////////////////////////////////////////////////////////////////////////////////////
+        ///
+        /// @fn private void PGJ2_bouton_Leave_1(object sender, EventArgs e)
+        /// @brief Remet la bordure a noir.
+        /// @param[in] sender : Objet duquel provient un evenement.
+        /// @param[in] e : evenement qui lance la fonction.
+        /// @return Aucune.
+        ///
+        //////////////////////////////////////////////////////////////////////////////////////////
         private void PGJ2_bouton_Leave_1(object sender, EventArgs e)
         {
             PGJ2_bouton.FlatAppearance.BorderColor = Color.Black;
         }
 
+        //////////////////////////////////////////////////////////////////////////////////////////
+        ///
+        /// @fn private void PDJ2_bouton_Leave(object sender, EventArgs e)
+        /// @brief Remet la bordure a noir.
+        /// @param[in] sender : Objet duquel provient un evenement.
+        /// @param[in] e : evenement qui lance la fonction.
+        /// @return Aucune.
+        ///
+        //////////////////////////////////////////////////////////////////////////////////////////
         private void PDJ2_bouton_Leave(object sender, EventArgs e)
         {
             PDJ2_bouton.FlatAppearance.BorderColor = Color.Black;
         }
 
+        //////////////////////////////////////////////////////////////////////////////////////////
+        ///
+        /// @fn private void butoirG_bouton_Leave(object sender, EventArgs e)
+        /// @brief Remet la bordure a noir.
+        /// @param[in] sender : Objet duquel provient un evenement.
+        /// @param[in] e : evenement qui lance la fonction.
+        /// @return Aucune.
+        ///
+        //////////////////////////////////////////////////////////////////////////////////////////
         private void butoirG_bouton_Leave(object sender, EventArgs e)
         {
             butoirG_bouton.FlatAppearance.BorderColor = Color.Black;
         }
 
+        //////////////////////////////////////////////////////////////////////////////////////////
+        ///
+        /// @fn private void butoirD_bouton_Leave(object sender, EventArgs e)
+        /// @brief Remet la bordure a noir.
+        /// @param[in] sender : Objet duquel provient un evenement.
+        /// @param[in] e : evenement qui lance la fonction.
+        /// @return Aucune.
+        ///
+        //////////////////////////////////////////////////////////////////////////////////////////
         private void butoirD_bouton_Leave(object sender, EventArgs e)
         {
             butoirD_bouton.FlatAppearance.BorderColor = Color.Black;
 
         }
 
+        //////////////////////////////////////////////////////////////////////////////////////////
+        ///
+        /// @fn private void butoirCirc_bouton_Leave(object sender, EventArgs e)
+        /// @brief Remet la bordure a noir.
+        /// @param[in] sender : Objet duquel provient un evenement.
+        /// @param[in] e : evenement qui lance la fonction.
+        /// @return Aucune.
+        ///
+        //////////////////////////////////////////////////////////////////////////////////////////
         private void butoirCirc_bouton_Leave(object sender, EventArgs e)
         {
             butoirCirc_bouton.FlatAppearance.BorderColor = Color.Black;
 
         }
 
+        //////////////////////////////////////////////////////////////////////////////////////////
+        ///
+        /// @fn private void Cible_bouton_Leave(object sender, EventArgs e)
+        /// @brief Remet la bordure a noir.
+        /// @param[in] sender : Objet duquel provient un evenement.
+        /// @param[in] e : evenement qui lance la fonction.
+        /// @return Aucune.
+        ///
+        //////////////////////////////////////////////////////////////////////////////////////////
         private void Cible_bouton_Leave(object sender, EventArgs e)
         {
             Cible_bouton.FlatAppearance.BorderColor = Color.Black;
 
         }
 
+        //////////////////////////////////////////////////////////////////////////////////////////
+        ///
+        /// @fn private void Mur_bouton_Leave(object sender, EventArgs e)
+        /// @brief Remet la bordure a noir.
+        /// @param[in] sender : Objet duquel provient un evenement.
+        /// @param[in] e : evenement qui lance la fonction.
+        /// @return Aucune.
+        ///
+        //////////////////////////////////////////////////////////////////////////////////////////
         private void Mur_bouton_Leave(object sender, EventArgs e)
         {
             Mur_bouton.FlatAppearance.BorderColor = Color.Black;
 
         }
 
+        //////////////////////////////////////////////////////////////////////////////////////////
+        ///
+        /// @fn private void Portails_bouton_Leave(object sender, EventArgs e)
+        /// @brief Remet la bordure a noir.
+        /// @param[in] sender : Objet duquel provient un evenement.
+        /// @param[in] e : evenement qui lance la fonction.
+        /// @return Aucune.
+        ///
+        //////////////////////////////////////////////////////////////////////////////////////////
         private void Portails_bouton_Leave(object sender, EventArgs e)
         {
             Portails_bouton.FlatAppearance.BorderColor = Color.Black;
         }
 
+        //////////////////////////////////////////////////////////////////////////////////////////
+        ///
+        /// @fn private void Gate_Leave(object sender, EventArgs e)
+        /// @brief Remet la bordure a noir.
+        /// @param[in] sender : Objet duquel provient un evenement.
+        /// @param[in] e : evenement qui lance la fonction.
+        /// @return Aucune.
+        ///
+        //////////////////////////////////////////////////////////////////////////////////////////
         private void Gate_Leave(object sender, EventArgs e)
         {
             Gate.FlatAppearance.BorderColor = Color.Black;
 
         }
 
+        //////////////////////////////////////////////////////////////////////////////////////////
+        ///
+        /// @fn private void Ressort_bouton_Leave(object sender, EventArgs e)
+        /// @brief Remet la bordure a noir.
+        /// @param[in] sender : Objet duquel provient un evenement.
+        /// @param[in] e : evenement qui lance la fonction.
+        /// @return Aucune.
+        ///
+        //////////////////////////////////////////////////////////////////////////////////////////
         private void Ressort_bouton_Leave(object sender, EventArgs e)
         {
             Ressort_bouton.FlatAppearance.BorderColor = Color.Black;
 
         }
 
+        //////////////////////////////////////////////////////////////////////////////////////////
+        ///
+        /// @fn private void Generateur_bouton_Leave(object sender, EventArgs e)
+        /// @brief Remet la bordure a noir.
+        /// @param[in] sender : Objet duquel provient un evenement.
+        /// @param[in] e : evenement qui lance la fonction.
+        /// @return Aucune.
+        ///
+        //////////////////////////////////////////////////////////////////////////////////////////
         private void Generateur_bouton_Leave(object sender, EventArgs e)
         {
             Generateur_bouton.FlatAppearance.BorderColor = Color.Black;
 
         }
 
+        //////////////////////////////////////////////////////////////////////////////////////////
+        ///
+        /// @fn private void Trou_bouton_Leave(object sender, EventArgs e)
+        /// @brief Remet la bordure a noir.
+        /// @param[in] sender : Objet duquel provient un evenement.
+        /// @param[in] e : evenement qui lance la fonction.
+        /// @return Aucune.
+        ///
+        //////////////////////////////////////////////////////////////////////////////////////////
         private void Trou_bouton_Leave(object sender, EventArgs e)
         {
             Trou_bouton.FlatAppearance.BorderColor = Color.Black;
