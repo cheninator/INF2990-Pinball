@@ -153,10 +153,7 @@ namespace InterfaceGraphique
                 dernierTemps = currentTime;
 
                 tempsAccumule += elapsedTime;
-                if (currentTime.TotalSeconds % 30 == 0)
-                {
-                    FonctionsNatives.jouerSon(spooky, spooky.Length);
-                }
+               
 
                 if (tempsAccumule >= tempsEcouleVoulu)
                 {
