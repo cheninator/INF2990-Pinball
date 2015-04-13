@@ -109,7 +109,10 @@ void main()
 
 	composanteAmbiante = gl_LightSource[DIRECTIONNELLE].ambient*textureColor;
 	composanteDiffuse = max(-NdotL[DIRECTIONNELLE], 0.0) * gl_LightSource[DIRECTIONNELLE].diffuse*textureColor;
-	composanteSpeculaire = pow(max(NdotHV[DIRECTIONNELLE], 0.0),100.0) * gl_LightSource[DIRECTIONNELLE].specular;
+	if(estTable == 1)
+		composanteSpeculaire = pow(max(NdotHV[DIRECTIONNELLE], 0.0),3000.0) * gl_LightSource[DIRECTIONNELLE].specular;
+	else 
+		composanteSpeculaire = pow(max(NdotHV[DIRECTIONNELLE], 0.0),100.0) * gl_LightSource[DIRECTIONNELLE].specular;
 	lumiereReflechie[DIRECTIONNELLE] += clamp(composanteAmbiante, 0.0,1.0);
 	lumiereReflechie[DIRECTIONNELLE] += clamp(composanteDiffuse, 0.0,1.0);
 	// if(estTable != 1)
@@ -141,10 +144,12 @@ void main()
 
 	composanteAmbiante = gl_LightSource[SPOT_A].ambient*textureColor; // ROUGE
 	composanteDiffuse = max(NdotL[SPOT_A],0.0) * gl_LightSource[SPOT_A].diffuse*textureColor; 
+	if(estTable == 1)
+	composanteSpeculaire = pow(max(NdotHV[SPOT_A], 0.0),500.0) * gl_LightSource[SPOT_A].specular;
+	else 
 	composanteSpeculaire = pow(max(NdotHV[SPOT_A], 0.0),50.0) * gl_LightSource[SPOT_A].specular;
 	lumiereReflechie[SPOT_A] += effetSpotOmbreBilleA*effetSpotA*clamp(composanteAmbiante, 0.0, 1.0) ;
 	lumiereReflechie[SPOT_A] += effetSpotOmbreBilleA*effetSpotA*clamp(composanteDiffuse, 0.0, 1.0);
-	// if(estTable != 1)
 	lumiereReflechie[SPOT_A] += effetSpotOmbreBilleA*effetSpotA*clamp(composanteSpeculaire, 0.0, 1.0);
 
 	// Lumiere SPOT_B
@@ -167,10 +172,12 @@ void main()
 
 	composanteAmbiante = gl_LightSource[SPOT_B].ambient*textureColor; // ROUGE
 	composanteDiffuse = max(NdotL[SPOT_B],0.0) * gl_LightSource[SPOT_B].diffuse*textureColor; 
+	if(estTable == 1)
+	composanteSpeculaire = pow(max(NdotHV[SPOT_B], 0.0),500.0) * gl_LightSource[SPOT_B].specular;
+	else 
 	composanteSpeculaire = pow(max(NdotHV[SPOT_B], 0.0),50.0) * gl_LightSource[SPOT_B].specular;
 	lumiereReflechie[SPOT_B] += effetSpotOmbreBilleB*effetSpotB*clamp(composanteAmbiante, 0.0, 1.0) ;
 	lumiereReflechie[SPOT_B] += effetSpotOmbreBilleB*effetSpotB*clamp(composanteDiffuse, 0.0, 1.0);
-	if(estTable != 1)
 	lumiereReflechie[SPOT_B] += effetSpotOmbreBilleB*effetSpotB*clamp(composanteSpeculaire, 0.0, 1.0);
 
 	// Calcul d'effets a appliquer a la couleur
@@ -189,6 +196,8 @@ void main()
 	// =========================================================================
 
 	vec4 couleurFinale = vec4(0);
+	const vec4 lumiereAmbianteBase = vec4(0.04, 0.04,0.04,1.0);
+	couleurFinale += lumiereAmbianteBase * textureColor;
 
 	if(etatAmbiante != 1)
 		couleurFinale += lumiereReflechie[AMBIANTE];
@@ -202,7 +211,7 @@ void main()
 
 	if(skybox == 1)
 	{
-		gl_FragColor = vec4(0.3,1.0,1.0,1.0)*textureColor;
+		gl_FragColor = vec4(1.0,1.0,1.0,1.0) *textureColor;
 	}
 	else
 	{
