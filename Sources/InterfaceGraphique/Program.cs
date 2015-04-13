@@ -41,7 +41,8 @@ namespace InterfaceGraphique
         private static TimeSpan dernierTemps; ///< Dernier temps enregistre
         private static TimeSpan tempsAccumule; ///< Temps total accumule
         private static Stopwatch chrono = Stopwatch.StartNew(); ///< Chronometre
-        private static TimeSpan tempsEcouleVoulu = TimeSpan.FromTicks(TimeSpan.TicksPerSecond / (NB_IMAGES_PAR_SECONDE * 10)); ///< Temps avant le rafraichissement
+        private static int RAFRAICHISSEMENT = 10;
+        private static TimeSpan tempsEcouleVoulu = TimeSpan.FromTicks(TimeSpan.TicksPerSecond / (NB_IMAGES_PAR_SECONDE * RAFRAICHISSEMENT)); ///< Temps avant le rafraichissement
         public static int compteurFrames = 0;
         public static bool customConsoleActive = false;
         public static bool helpMenu = true;
@@ -166,7 +167,7 @@ namespace InterfaceGraphique
                             mMenu.modeJeuMain.MettreAJour(tempsInterAffichage);
                         }
                         compteurFrames++;
-                        if (compteurFrames >= 10)
+                        if (compteurFrames >= RAFRAICHISSEMENT)
                         {
                             compteurFrames = 0;
                             if (customConsoleActive)
