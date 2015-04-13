@@ -561,10 +561,9 @@ bool NoeudAbstrait::obtenirAnimer()
 ///
 /// @fn bool NoeudAbstrait::accepterVisiteur(VisiteurAbstrait* vis)
 ///
+/// @brief Cette fonction appelle la methode traiter du visiteur.
 ///
-/// Cette fonction permet d'accepter un visiteur (voir le livre de Gamma)
-///
-/// @param[in] vis : Prend un visiteur abstrait.
+/// @param[in] vis Pointeur sur le visiteur a accepter
 ///
 /// @return Reusite ou echec.
 ///
@@ -851,7 +850,9 @@ void NoeudAbstrait::setDebug(bool debug)
 ///
 /// @fn void NoeudAbstrait::setSpotLight(bool debug)
 ///
-/// Cette fonction change la valeur du mode spotLight
+/// @brief Cette fonction change la valeur du mode spotLight
+///
+/// @param[in] debug Valeur assignee a l'attribut spotLight_
 ///
 /// @return Aucun.
 ///
@@ -865,8 +866,10 @@ void NoeudAbstrait::setSpotLight(bool debug)
 ///
 /// @fn void aidecollision::DetailsCollision NoeudAbstrait::detecterCollisions(NoeudAbstrait* bille)
 ///
-/// Cette fonction retourne un objet detail collision pour la 
+/// @brief Cette fonction retourne un objet detail collision pour la 
 /// collision de la bille sur l'objet courant.
+///
+/// @param[in] bille Objet avec le noeud se compare pour trouver une collision.
 ///
 /// @return details contient l'information sur la collision de la bille avec *this.
 ///
@@ -918,9 +921,12 @@ aidecollision::DetailsCollision NoeudAbstrait::detecterCollisions(NoeudAbstrait*
 ///
 /// @fn void NoeudAbstrait::traiterCollisions(aidecollision::DetailsCollision details, NoeudAbstrait* bille)
 ///
-/// Cette fonction effectue la réaction a la collision de la bille sur 
+/// @brief Cette fonction effectue la réaction a la collision de la bille sur 
 /// l'objet courant. Cette fonction est a reimplementer si on veut autre 
 /// chose qu'un rebondissement ordinaire.
+///
+/// @param[in] details Objet contenant les details de la collision a traiter
+/// @param bille Objet modifie par la collision
 ///
 /// @return details contient l'information sur la collision de la bille avec *this.
 ///
@@ -967,9 +973,9 @@ void NoeudAbstrait::assignerPortailDorigine(NoeudAbstrait* portail)
 
 ////////////////////////////////////////////////////////////////////////
 ///
-/// @fn void NoeudAbstrait::assignerPortailDorigine(NoeudAbstrait* portail)
+/// @fn void NoeudAbstrait::obtenirPortailDorigine()
 ///
-/// Obtient l'attribut portailDorigine_ pour le comparer avec les portails.
+/// @brief Obtient l'attribut portailDorigine_ pour le comparer avec les portails.
 /// Si un portail est le portail d'origine, il ne cree pas de force sur 
 /// la bille.
 /// 
@@ -996,7 +1002,9 @@ void NoeudAbstrait::genererBille()
 ///
 /// @fn void NoeudAbstrait::setNumero(int numero)
 ///
-/// Modifie le numero de noeud du noeud courant
+/// @brief Modifie le numero de noeud du noeud courant
+/// 
+/// @param[in] numero Numero assigne au noeud.
 /// 
 ////////////////////////////////////////////////////////////////////////
 void NoeudAbstrait::setNumero(int numero) 

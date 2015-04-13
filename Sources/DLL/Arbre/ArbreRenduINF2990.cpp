@@ -211,7 +211,9 @@ NoeudAbstrait* ArbreRenduINF2990::getEnfant(int position) const
 ///
 /// @fn bool ArbreRenduINF2990::accepterVisiteur(VisiteurAbstrait* vis)
 ///
-/// Cette fonction appelle la methode traiter du visiteur
+/// @brief Cette fonction appelle la methode traiter du visiteur.
+///
+/// @param[in] vis Pointeur sur le visiteur a accepter
 ///
 /// @return operationReussie (TRUE)
 ///

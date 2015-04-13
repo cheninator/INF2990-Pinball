@@ -103,6 +103,8 @@ private:
 /// 
 /// @brief Cette fonction assigne la couleur ambiante de la lumiere
 /// 
+/// @param ambientColor Couleur ambiante de la lumiere.
+/// 
 /// @return aucun.
 ///
 ////////////////////////////////////////////////////////////////////////
@@ -116,6 +118,8 @@ inline void Lumiere::setAmbientColor(glm::fvec4 ambientColor)
 /// @fn inline void Lumiere::setDiffuseColor(glm::fvec4 diffuseColor) 
 /// 
 /// @brief Cette fonction assigne la couleur diffuse de la lumiere
+///
+/// @param[in] diffuseColor Couleur diffuse de la lumeire
 ///
 /// @return aucun.
 ///
@@ -131,6 +135,8 @@ inline void Lumiere::setDiffuseColor(glm::fvec4 diffuseColor)
 /// 
 /// @brief Cette fonction assigne la couleur speculaire de la lumiere
 /// 
+/// @param[in] specularColor Couleur de la lumiere reflechie de facon speculaire.
+/// 
 /// @return aucun.
 ///
 ////////////////////////////////////////////////////////////////////////
@@ -144,6 +150,8 @@ inline void Lumiere::setSpecularColor(glm::fvec4 specularColor)
 /// @fn inline void Lumiere::setPosition(glm::fvec4 position)
 /// 
 /// @brief Cette fonction assigne la possition de la source lumineuse
+/// 
+/// @param[in] position Position de la source de lumiere.
 /// 
 /// @return aucun.
 ///
@@ -161,6 +169,8 @@ inline void Lumiere::setPosition(glm::fvec4 position)
 /// pour un spot et la direction de la lumiere pour une lumiere 
 /// directionnelle
 /// 
+/// @param[in] direction Direction du spot ou direction de la lumiere directionnelle
+/// 
 /// @return aucun.
 ///
 ////////////////////////////////////////////////////////////////////////
@@ -176,6 +186,8 @@ inline void Lumiere::setDirection(glm::fvec4 direction)
 /// @brief Cette fonction assinge l'exposant utilise dans le calcul
 /// d'attenuation proche des bords du cpot             
 ///
+/// @param[in] exponent assigne a la lumiere.
+/// 
 /// @return aucun.
 ///
 ////////////////////////////////////////////////////////////////////////
@@ -190,6 +202,8 @@ inline void Lumiere::setExponent(float exponent)
 /// 
 /// @brief Cette fonction assigne l'angle d'ouverture du spot. 
 ///
+/// @param[in] cutoffAngle angle d'ouverture du spot.
+/// 
 /// @return aucun.
 ///
 ////////////////////////////////////////////////////////////////////////
@@ -204,7 +218,9 @@ inline void Lumiere::setCutoffAngle(float cutoffAngle)
 /// 
 /// @brief Cette fonction assigne les coefficients d'attenuation 
 /// utilises dans le calcul de l'atenuation due a la distance.
-///
+/// 
+/// @param[in] attenuation la valeur d'attenuation de la lumiere.
+/// 
 /// @return aucun.
 ///
 ////////////////////////////////////////////////////////////////////////
@@ -234,7 +250,7 @@ inline const glm::fvec4& Lumiere::getAmbientColor() const
 ///
 /// @brief Cette fonction retourne la couleur diffuse de la lumiere
 ///
-/// @return 
+/// @return Couleur diffuse de la lumiere
 ///
 ////////////////////////////////////////////////////////////////////////
 inline const glm::fvec4& Lumiere::getDiffuseColor() const
@@ -319,7 +335,7 @@ inline const float& Lumiere::getCutoffAngle() const
 ///
 /// @brief Cette fonction retourne un fvec3 avec contenant les coefficients
 /// de l'attenuation due a la distance
-///
+/// 
 /// @return Coefficients d'attenuation
 ///
 ////////////////////////////////////////////////////////////////////////

@@ -113,7 +113,9 @@ void NoeudMur::traiterCollisions(aidecollision::DetailsCollision details, NoeudA
 ///
 /// @fn bool NoeudMur::accepterVisiteur(VisiteurAbstrait* vis)
 ///
-/// Cette fonction appelle la methode traiter du visiteur.
+/// @brief Cette fonction appelle la methode traiter du visiteur.
+///
+/// @param[in] vis Pointeur sur le visiteur a accepter
 ///
 /// @return reussi (TRUE)
 ///
