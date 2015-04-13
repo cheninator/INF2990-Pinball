@@ -2191,10 +2191,7 @@ namespace InterfaceGraphique
                      || e.Button == MouseButtons.Right || e.Button == MouseButtons.Middle)
             {
                 panel_GL.MouseMove += new MouseEventHandler(panel_MouseMove);
-                if (e.Button == MouseButtons.Middle)
-                {
-                    FonctionsNatives.sauvegarderHistorique();
-                }
+             
             }
         }
 
@@ -2235,10 +2232,7 @@ namespace InterfaceGraphique
                 deplacementVueSouris(e);
 
             }
-            else if (e.Button == MouseButtons.Middle)
-            {
-                deplacementSouris(e);
-            }
+          
             else if (!(clickValide(origin, currentP)) && etat is EtatEditeurSelection)
             {
                 int h = panel_GL.Height;
@@ -2291,10 +2285,7 @@ namespace InterfaceGraphique
             if (!(etat is EtatEditeurCreation) && !(etat is EtatEditeurDuplication))
             {
                 panel_GL.MouseMove -= panel_MouseMove;
-                if (e.Button == MouseButtons.Middle)
-                {
-                    sauvegarderHistorique();
-                }
+               
             }
 
             if (etat is EtatEditeurDeplacement || etat is EtatEditeurScale || etat is EtatEditeurRotation)
