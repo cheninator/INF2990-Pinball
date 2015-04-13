@@ -48,6 +48,7 @@ namespace InterfaceGraphique
         public static bool helpMenu = true;
         private static bool noWarnings = false;
         public static StringBuilder couvercle = new StringBuilder("stone");
+        public static StringBuilder spooky = new StringBuilder("spooky");
 
         ////////////////////////////////////////////////////////////////////////
         ///
@@ -152,6 +153,10 @@ namespace InterfaceGraphique
                 dernierTemps = currentTime;
 
                 tempsAccumule += elapsedTime;
+                if (currentTime.TotalSeconds % 30 == 0)
+                {
+                    FonctionsNatives.jouerSon(spooky, spooky.Length);
+                }
 
                 if (tempsAccumule >= tempsEcouleVoulu)
                 {
