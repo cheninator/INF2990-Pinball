@@ -215,25 +215,10 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Resources\Aide.txt" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\Pinball.ico" />
-  </ItemGroup>
-  <ItemGroup>
     <None Include="Resources\Icons8-Windows-8-Gaming-Pinball.ico" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Resources\Flicker_Cap_Set.jpg" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\pinball.jpg" />
-  </ItemGroup>
-  <ItemGroup>
     <None Include="Resources\pinball-ball-silver.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\pinballflipper.png" />
   </ItemGroup>
   <ItemGroup>
     <BootstrapperPackage Include=".NETFramework,Version=v4.5.1">
@@ -253,18 +238,6 @@
     </BootstrapperPackage>
   </ItemGroup>
   <ItemGroup>
-    <None Include="Resources\spring.jpg" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\pinballflipper_2.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\butoirD.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\butoirL.png" />
-  </ItemGroup>
-  <ItemGroup>
     <None Include="Resources\button-29.wav" />
   </ItemGroup>
   <ItemGroup>
@@ -281,9 +254,6 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\Cible.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\CibleCirc.png" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\Generateur.png" />
@@ -331,12 +301,10 @@
     <None Include="Resources\settings.png" />
     <None Include="Resources\Tester.png" />
     <None Include="Resources\Scale.gif" />
-    <None Include="Resources\save.bmp" />
     <None Include="Resources\open.png" />
     <None Include="Resources\Deplacement.gif" />
     <None Include="Resources\Duplication.gif" />
     <None Include="Resources\RotationSimple.gif" />
-    <None Include="Resources\new-file-512.png" />
     <None Include="Resources\NouveauFichier.png" />
     <None Include="Resources\Return home.png" />
     <None Include="Resources\delete.png" />
@@ -355,16 +323,8 @@
     <None Include="Resources\Ressort.gif" />
     <None Include="Resources\ButoirCirculaire.gif" />
     <None Include="Resources\Creation.gif" />
-    <None Include="Resources\gauche1.png" />
-    <None Include="Resources\droite1.png" />
-    <None Include="Resources\droite2.png" />
-    <None Include="Resources\gauche2.png" />
-    <None Include="Resources\circulaire.png" />
-    <None Include="Resources\butoirDroit.png" />
-    <None Include="Resources\butoirGauche.png" />
     <None Include="Resources\ressort2.png" />
     <None Include="Resources\add.png" />
-    <None Include="Resources\Cursor-Select-icon.png" />
     <None Include="Resources\move.png" />
     <None Include="Resources\rotation.png" />
     <None Include="Resources\duplicate.png" />
@@ -375,14 +335,10 @@
     <None Include="Resources\winSound.wav" />
     <None Include="Resources\wink.gif" />
     <None Include="Resources\gate.jpg" />
-    <None Include="Resources\annoying.wav" />
     <None Include="Resources\game_over.wav" />
-    <None Include="Resources\Trombone.wav" />
     <None Include="Resources\Fireworks.wav" />
     <None Include="Resources\Win.gif" />
     <None Include="Resources\Lose.jpg" />
-    <None Include="Resources\man-scream-01.wav" />
-    <None Include="Resources\baby.jpeg" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>
