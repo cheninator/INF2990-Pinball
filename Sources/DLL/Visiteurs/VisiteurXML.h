@@ -44,8 +44,8 @@ public:
 
 private:
 
-	VisiteurXML();					/// Constructeur par defaut
-	bool traiterProprietes();		/// Methode pour enregistrer les proprietes de la zone de jeu
+	VisiteurXML();					///< Constructeur par defaut
+	bool traiterProprietes();		///< Methode pour enregistrer les proprietes de la zone de jeu
 
 	tinyxml2::XMLDocument document; ///< Document XML pour l'ecriture
 	std::string nomFichier;			///< Nom du fichier a ecrire.
