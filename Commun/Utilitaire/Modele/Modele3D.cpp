@@ -140,7 +140,7 @@ namespace modele{
 			// Par la suite, nous initialiserons la mémoire de textures OpenGL et procéderons
 			// au chargement des fichiers graphiques.
 			int idTexture{ 0 };
-			while (true) {
+			for ( ; ; ) {
 
 				// Chaîne UTF-8 (fort possiblement compatible ASCII) qui contient le nom de fichier associé à la texture
 				// On peut l'utiliser comme une chaîne C standard (char *) sans réel risque (selon la doc. assimp !)

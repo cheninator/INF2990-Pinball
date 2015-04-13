@@ -240,7 +240,7 @@ namespace vue {
 	/// @return Aucune.
 	///
 	////////////////////////////////////////////////////////////////////////
-	void VueOrtho::deplacerZ(double deplacement)
+	void VueOrtho::deplacerZ(double)
 	{
 	}
 
@@ -303,7 +303,7 @@ namespace vue {
 	/// @return Aucune.
 	///
 	////////////////////////////////////////////////////////////////////////
-	void VueOrtho::rotaterZ(double rotation)
+	void VueOrtho::rotaterZ(double)
 	{
 	}
 

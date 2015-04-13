@@ -34,6 +34,9 @@ namespace math {
       /// Constructeur.
       Plan3D(const glm::dvec3& normale, const glm::dvec3& pointDuPlan);
 
+	  /// Assignation par copie non-necessaire dans le contexte
+	  Plan3D& operator=(Plan3D const&) = delete;
+
       /// Lire la normale du plan.
       inline const glm::dvec3& lireNormale() const;
 

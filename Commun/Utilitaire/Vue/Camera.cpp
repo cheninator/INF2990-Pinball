@@ -73,7 +73,7 @@ namespace vue {
 	/// @return Aucune.
 	///
 	////////////////////////////////////////////////////////////////////////////
-	void Camera::deplacerXY(double deplacementX, double deplacementY)
+	void Camera::deplacerXY(double, double)
 	{
 	}
 
@@ -91,7 +91,7 @@ namespace vue {
 	/// @return Aucune.
 	///
 	////////////////////////////////////////////////////////////////////////////
-	void Camera::deplacerZ(double deplacement, bool bougePointVise)
+	void Camera::deplacerZ(double deplacement, bool)
 	{
 		/*TODO : Tenir du bougePointVise*/
 		this->position_.z += deplacement;
@@ -116,9 +116,9 @@ namespace vue {
 	/// @return Aucune.
 	///
 	////////////////////////////////////////////////////////////////////////////
-	void Camera::tournerXY(double rotationX,
-		double rotationY,
-		bool   empecheInversion //=true
+	void Camera::tournerXY(double,
+		double,
+		bool//=true
 		)
 	{
 	}
@@ -150,7 +150,7 @@ namespace vue {
 		if (empecheInversion)
 			return;
 		/* Les angles doivent être en radian*/
-		double dist = glm::distance(position_, pointVise_);
+//		double dist = glm::distance(position_, pointVise_);
 		
 		double deltaTheta = utilitaire::SIGN(rotationX) * utilitaire::DEG_TO_RAD(abs(rotationX));
 		double deltaPhi   = utilitaire::SIGN(rotationY) * utilitaire::DEG_TO_RAD(abs(rotationY));

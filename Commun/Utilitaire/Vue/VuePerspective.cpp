@@ -166,8 +166,8 @@ namespace vue {
 	/// @return Aucune.
 	///
 	////////////////////////////////////////////////////////////////////////
-	void VuePerspective::zoomerInElastique(const glm::ivec2& coin1,
-		const glm::ivec2& coin2)
+	void VuePerspective::zoomerInElastique(const glm::ivec2&,
+		const glm::ivec2&)
 	{
 		/// Not implemented for the moment was : projection_.zoomerIn(coin1, coin2)
 	}
@@ -187,8 +187,8 @@ namespace vue {
 	/// @return Aucune.
 	///
 	////////////////////////////////////////////////////////////////////////
-	void VuePerspective::zoomerOutElastique(const glm::ivec2& coin1,
-		const glm::ivec2& coin2)
+	void VuePerspective::zoomerOutElastique(const glm::ivec2&,
+		const glm::ivec2&)
 	{
 		/// Not implemented for the moment was : projection_.zoomerOut(coin1, coin2)
 	}
@@ -207,7 +207,7 @@ namespace vue {
 	/// @return Aucune.
 	///
 	////////////////////////////////////////////////////////////////////////
-	void VuePerspective::deplacerZ(double deplacement)
+	void VuePerspective::deplacerZ(double)
 	{
 	}
 
@@ -274,7 +274,7 @@ namespace vue {
 	/// @return Aucune.
 	///
 	////////////////////////////////////////////////////////////////////////
-	void VuePerspective::rotaterZ(double rotation)
+	void VuePerspective::rotaterZ(double)
 	{
 	}
 
@@ -291,7 +291,7 @@ namespace vue {
 	/// @return Aucune.
 	///
 	////////////////////////////////////////////////////////////////////////
-	void VuePerspective::centrerSurPoint(glm::ivec2 pointCentre)
+	void VuePerspective::centrerSurPoint(glm::ivec2)
 	{
 		//projection_.centrerSurPoint(pointCentre);
 	}

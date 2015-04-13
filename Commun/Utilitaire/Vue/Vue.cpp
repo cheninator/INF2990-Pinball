@@ -140,7 +140,7 @@ namespace vue {
 	/// @return Aucune.
 	///
 	////////////////////////////////////////////////////////////////////////////
-	void Vue::animer(double temps)
+	void Vue::animer(double)
 	{
 	}
 

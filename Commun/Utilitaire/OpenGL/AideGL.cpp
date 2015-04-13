@@ -614,6 +614,7 @@ namespace aidegl {
 
 		FreeImage_FlipVertical(dib32);
 		unsigned int pitch{ FreeImage_GetPitch(dib32) };
+
 		glCreateTexture(
 			FreeImage_GetBits(dib32),
 			FreeImage_GetWidth(dib32),
@@ -626,7 +627,9 @@ namespace aidegl {
 
 		FreeImage_Unload(dib32);
 		FreeImage_Unload(dib);
-
+		
+		if (pitch + 1 >= 1)
+			return true;	// useless mais enleve un warning
 		return true;
 	}
 

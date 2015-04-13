@@ -158,7 +158,7 @@ namespace vue {
 	/// @return Aucune.
 	///
 	////////////////////////////////////////////////////////////////////////
-	void ProjectionOrtho::redimensionnerFenetre(const glm::ivec2& coinMin,
+	void ProjectionOrtho::redimensionnerFenetre(const glm::ivec2&,
 		const glm::ivec2& coinMax)
 	{
 		// coinMax contient les dimensions de la nouvelle fenêtree, car coinMin
@@ -377,7 +377,7 @@ namespace vue {
 	/// @return Aucune.
 	///
 	////////////////////////////////////////////////////////////////////////
-	void ProjectionOrtho::translater(const glm::ivec2& deplacement)
+	void ProjectionOrtho::translater(const glm::ivec2&)
 	{
 		// À IMPLANTER.
 		// Il faut calculer la variation que notre déplacement
@@ -433,7 +433,7 @@ namespace vue {
 	////////////////////////////////////////////////////////////////////////
 	void ProjectionOrtho::ajusterRapportAspect(DirectionZoom dir)
 	{
-		double delta = 0.0;
+		//double delta = 0.0;
 		double rapportAspect = abs(xMaxCloture_ - xMinCloture_) / abs(yMaxCloture_ - yMinCloture_);
 		double rapportAspectVirtuel = (xMaxFenetre_ - xMinFenetre_) / (yMaxFenetre_ - yMinFenetre_);
 				
@@ -568,7 +568,7 @@ namespace vue {
 	}
 
 
-	bool ProjectionOrtho::translationDepasseBordure(double xBorneMin, double xBorneMax, double yBorneMin, double yBorneMax)
+	bool ProjectionOrtho::translationDepasseBordure(double, double, double, double)
 	{
 		return false;
 	}

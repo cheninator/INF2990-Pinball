@@ -51,7 +51,8 @@ namespace math {
    public:
       /// Constructeur.
       Droite3D(const glm::dvec3& point1, const glm::dvec3& point2);
-
+	  /// Assignation par copie non-necessaire dans le contexte
+	  Droite3D& operator=(Droite3D const&) = delete;
       /// Trouve l'intersection entre la droite et un plan.
       bool      intersection(const Plan3D& planCoupe, glm::dvec3& intersection);
       /// Trouve l'intersection entre la droite et un segment.
