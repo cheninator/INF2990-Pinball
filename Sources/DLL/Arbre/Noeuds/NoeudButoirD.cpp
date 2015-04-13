@@ -140,7 +140,12 @@ bool NoeudButoirD::accepterVisiteur(VisiteurAbstrait* vis)
 ///
 /// @fn void NoeudButoirD::obtenirVecteursBoite(glm::dvec3 &v1, glm::dvec3 &v2, glm::dvec3 &v3, glm::dvec3 &v4)
 ///
-/// Faire une boite speciale pour le NoeudButoirD.
+/// @brief Faire une boite speciale pour le NoeudButoirD.
+///
+/// @param[out] v1 : Vecteur 1.
+/// @param[out] v2 : Vecteur 2.
+/// @param[out] v3 : Vecteur 3.
+/// @param[out] v4 : Vecteur 4.
 ///
 /// @return reussi (TRUE)
 ///
@@ -153,10 +158,12 @@ void NoeudButoirD::obtenirVecteursBoite(glm::dvec3 &v1, glm::dvec3 &v2, glm::dve
 
 ////////////////////////////////////////////////////////////////////////
 ///
-/// @fn void aidecollision::DetailsCollision NoeudAbstrait::detecterCollisions(NoeudAbstrait* bille)
+/// @fn aidecollision::DetailsCollision NoeudAbstrait::detecterCollisions(NoeudAbstrait* bille)
 ///
-/// Cette fonction retourne un objet detail collision pour la 
+/// @brief Cette fonction retourne un objet detail collision pour la 
 /// collision de la bille sur l'objet courant.
+///
+/// @param[in] bille Objet avec le noeud se compare pour trouver une collision.
 ///
 /// @return details contient l'information sur la collision de la bille avec *this.
 ///
@@ -196,11 +203,14 @@ aidecollision::DetailsCollision NoeudButoirD::detecterCollisions(NoeudAbstrait* 
 
 ////////////////////////////////////////////////////////////////////////
 ///
-/// @fn void NoeudAbstrait::traiterCollisions(aidecollision::DetailsCollision details, NoeudAbstrait* bille)
+/// @fn void NoeudButoirD::traiterCollisions(aidecollision::DetailsCollision details, NoeudAbstrait* bille, float facteurRebond)
 ///
-/// Cette fonction effectue la réaction a la collision de la bille sur 
-/// l'objet courant. Cette fonction est a reimplementer si on veut autre 
-/// chose qu'un rebondissement ordinaire.
+/// @brief Cette fonction effectue la réaction a la collision de la bille sur 
+/// l'objet courant. La collision est plus forte sur le long segment si le mode force supplementaire est actif.
+///
+/// @param[in] details Objet contenant les details de la collision a traiter
+/// @param bille Objet modifie par la collision
+/// @param[in] facteurRebond Facteur par lequel la vitesse normale de la bille sera multipliee
 ///
 /// @return details contient l'information sur la collision de la bille avec *this.
 ///
@@ -218,7 +228,17 @@ void NoeudButoirD::traiterCollisions(aidecollision::DetailsCollision details, No
 	SoundControl->jouerSon("butoir");
 }
 
-
+////////////////////////////////////////////////////////////////////////
+///
+/// @fn std::vector<glm::dvec3> NoeudButoirD::obtenirVecteursEnglobants()
+///
+/// @brief Retourne la boite englobante de l'objet sous forme d'un vector de vecteurs
+///
+/// @remark Pour avoir les points de la boite englobante, il faut additionner la position de l'objet.
+///
+/// @return boiteEnglobanteObjet Vecteur contenant les vecteurs de la boite de l'objet
+///
+////////////////////////////////////////////////////////////////////////
 std::vector<glm::dvec3> NoeudButoirD::obtenirVecteursEnglobants()
 {
 	std::vector<glm::dvec3> boiteEnglobanteObjet;

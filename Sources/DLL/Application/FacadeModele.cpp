@@ -1841,9 +1841,10 @@ int* FacadeModele::obtenirProprietes(char* nomFichier)
 
 ///////////////////////////////////////////////////////////////////////////////
 ///
-/// @fn void FacadeModele::traiterCollisions()
+/// @fn void FacadeModele::traiterCollisions(float temps)
 /// @brief Effectue la detection et reaction pour les collisions entre tous les noeuds.
 /// @remark Les listes doivent etre construites et la liste de billes doit etre tenue a jour.
+/// @param[in] temps : temps entre les calculs de physique.
 /// @return Aucune.
 /// 
 ///////////////////////////////////////////////////////////////////////////////

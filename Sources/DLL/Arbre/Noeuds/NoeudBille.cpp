@@ -346,7 +346,7 @@ std::vector<glm::dvec3> NoeudBille::obtenirVecteursEnglobants()
 
 ////////////////////////////////////////////////////////////////////////
 ///
-/// @fn void NoeudBille::traiterCollisions(aidecollision::DetailsCollision details, NoeudAbstrait* bille)
+/// @fn void NoeudBille::traiterCollisions(aidecollision::DetailsCollision details, NoeudAbstrait* bille, float facteurRebond)
 ///
 /// @brief Cette fonction effectue la réaction a la collision de la bille sur 
 /// l'objet courant. Cette fonction est a reimplementer si on veut autre 
@@ -354,6 +354,7 @@ std::vector<glm::dvec3> NoeudBille::obtenirVecteursEnglobants()
 ///
 /// @param[in] details Objet contenant les details de la collision a traiter
 /// @param bille Objet modifie par la collision
+/// @param[in] facteurRebond Facteur par lequel la vitesse normale de la bille sera multipliee
 ///
 /// @return details contient l'information sur la collision de la bille avec *this.
 ///

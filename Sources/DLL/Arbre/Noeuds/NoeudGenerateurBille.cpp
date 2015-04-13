@@ -272,11 +272,36 @@ bool NoeudGenerateurBille::accepterVisiteur(VisiteurAbstrait* vis)
 	return reussi;
 }
 
+
+////////////////////////////////////////////////////////////////////////
+///
+/// @fn void NoeudGenerateurBille::traiterCollisions(aidecollision::DetailsCollision details, NoeudAbstrait* bille, float facteurRebond)
+///
+/// @brief Implementation vide pour le generateur de billes.
+///
+/// @param[in] details Objet contenant les details de la collision a traiter
+/// @param bille Objet modifie par la collision
+/// @param[in] facteurRebond Facteur par lequel la vitesse normale de la bille sera multipliee
+///
+/// @return details contient l'information sur la collision de la bille avec *this.
+///
+////////////////////////////////////////////////////////////////////////
 void NoeudGenerateurBille::traiterCollisions(aidecollision::DetailsCollision details, NoeudAbstrait* bille, float facteurRebond)
 {
 
 }
 
+////////////////////////////////////////////////////////////////////////
+///
+/// @fn aidecollision::DetailsCollision NoeudGenerateurBille::detecterCollisions(NoeudAbstrait* bille)
+///
+/// @brief Implementation vide pour le generateur.
+///
+/// @param[in] bille Objet avec le noeud se compare pour trouver une collision.
+///
+/// @return details : contient l'information sur la collision de la bille avec *this.
+///
+////////////////////////////////////////////////////////////////////////
 aidecollision::DetailsCollision NoeudGenerateurBille::detecterCollisions(NoeudAbstrait* noeud)
 {
 	aidecollision::DetailsCollision detail;

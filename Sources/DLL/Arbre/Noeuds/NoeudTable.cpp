@@ -124,8 +124,10 @@ bool NoeudTable::accepterVisiteur(VisiteurAbstrait* vis)
 ///
 /// @fn aidecollision::DetailsCollision NoeudTable::detecterCollisions(NoeudAbstrait* bille)
 ///
-/// Reimplementation de detecterCollisions pour la des limites de la table.
+/// @brief Reimplementation de detecterCollisions pour la des limites de la table.
 /// 
+/// @param[in] bille Objet avec le noeud se compare pour trouver une collision.
+///
 /// @return details contient l'information sur la collision de la bille avec *this.
 /// 
 ////////////////////////////////////////////////////////////////////////

@@ -10,7 +10,6 @@
 #ifndef __ECLAIRAGE_LUMIERE_H__
 #define __ECLAIRAGE_LUMIERE_H__
 
-#define GL_GLEXT_PROTOTYPES 1
 #include "GL/glew.h"
 #include <GL/gl.h>
 #include "glm/glm.hpp"

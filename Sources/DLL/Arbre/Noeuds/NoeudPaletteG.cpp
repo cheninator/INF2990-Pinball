@@ -461,9 +461,11 @@ double NoeudPaletteG::fonctionDroitePaletteEnMouvement(NoeudAbstrait* bille)
 ///
 /// @fn std::vector<glm::dvec3> NoeudPaletteG::obtenirVecteursEnglobants()
 ///
-/// Retourne la boite englobante de l'objet sous forme d'un vector de vecteurs
+/// @brief Retourne la boite englobante de l'objet sous forme d'un vector de vecteurs
 ///
 /// @remark Pour avoir les points de la boite englobante, il faut additionner la position de l'objet.
+///
+/// @return boiteEnglobanteObjet Vecteur contenant les vecteurs de la boite de l'objet
 ///
 ////////////////////////////////////////////////////////////////////////
 std::vector<glm::dvec3> NoeudPaletteG::obtenirVecteursEnglobants()

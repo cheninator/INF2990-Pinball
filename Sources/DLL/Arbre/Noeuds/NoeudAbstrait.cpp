@@ -12,8 +12,6 @@
 
 #include "NoeudBille.h"
 
-
-
 unsigned int NoeudAbstrait::compteurNoeuds_ = 0;
 ////////////////////////////////////////////////////////////////////////
 ///
@@ -682,10 +680,12 @@ void NoeudAbstrait::obtenirBoiteModele(glm::dvec3 &v1, glm::dvec3 &v2, glm::dvec
 ///
 /// @fn std::vector<glm::dvec3> NoeudAbstrait::obtenirVecteursEnglobants()
 /// 
-/// Implementation par defaut de la boite englobante.
+/// @brief Implementation par defaut de la boite englobante.
 ///
 /// @return Un vector<glm::dvec3> contenant 4 vecteurs allant de la position
 /// du noeud aux coins de sa boite englobante
+///
+/// @return boiteEnglobanteObjet Vecteur contenant les vecteurs de la boite de l'objet
 /// 
 ////////////////////////////////////////////////////////////////////////
 std::vector<glm::dvec3> NoeudAbstrait::obtenirVecteursEnglobants()
@@ -859,14 +859,14 @@ void NoeudAbstrait::setSpotLight(bool debug)
 
 ////////////////////////////////////////////////////////////////////////
 ///
-/// @fn void aidecollision::DetailsCollision NoeudAbstrait::detecterCollisions(NoeudAbstrait* bille)
+/// @fn aidecollision::DetailsCollision NoeudAbstrait::detecterCollisions(NoeudAbstrait* bille)
 ///
 /// @brief Cette fonction retourne un objet detail collision pour la 
 /// collision de la bille sur l'objet courant.
 ///
 /// @param[in] bille Objet avec le noeud se compare pour trouver une collision.
 ///
-/// @return details contient l'information sur la collision de la bille avec *this.
+/// @return details : contient l'information sur la collision de la bille avec *this.
 ///
 ////////////////////////////////////////////////////////////////////////
 aidecollision::DetailsCollision NoeudAbstrait::detecterCollisions(NoeudAbstrait* bille)
@@ -914,7 +914,7 @@ aidecollision::DetailsCollision NoeudAbstrait::detecterCollisions(NoeudAbstrait*
 
 ////////////////////////////////////////////////////////////////////////
 ///
-/// @fn void NoeudAbstrait::traiterCollisions(aidecollision::DetailsCollision details, NoeudAbstrait* bille)
+/// @fn void NoeudAbstrait::traiterCollisions(aidecollision::DetailsCollision details, NoeudAbstrait* bille, float facteurRebond)
 ///
 /// @brief Cette fonction effectue la réaction a la collision de la bille sur 
 /// l'objet courant. Cette fonction est a reimplementer si on veut autre 
@@ -922,6 +922,7 @@ aidecollision::DetailsCollision NoeudAbstrait::detecterCollisions(NoeudAbstrait*
 ///
 /// @param[in] details Objet contenant les details de la collision a traiter
 /// @param bille Objet modifie par la collision
+/// @param[in] facteurRebond Facteur par lequel la vitesse normale de la bille sera multipliee
 ///
 /// @return details contient l'information sur la collision de la bille avec *this.
 ///

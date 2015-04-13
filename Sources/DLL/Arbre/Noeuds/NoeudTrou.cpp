@@ -121,13 +121,15 @@ bool NoeudTrou::accepterVisiteur(VisiteurAbstrait* vis)
 ///
 /// @fn std::vector<glm::dvec3> NoeudTrou::obtenirVecteursEnglobants()
 ///
-/// La boite englobante d'un butoir circulaire, c'est un rayon.
+/// @brief La boite englobante d'un butoir circulaire, c'est un rayon.
 /// Pour etre conforme avec les boites englobantes des autres noeuds, 
 /// on retourne quand meme un vector<glm::dvec3> mais avec un seul element
 /// dont le x contient le rayon.
 ///
 /// @return Un vecteur<glm::dvec3> dont le seul element a le rayon de l'objet
 /// comme premiere coordonnee.
+/// 
+/// @return boiteEnglobanteObjet Vecteur contenant les vecteurs de la boite de l'objet
 /// 
 ////////////////////////////////////////////////////////////////////////
 std::vector<glm::dvec3> NoeudTrou::obtenirVecteursEnglobants()
@@ -138,10 +140,14 @@ std::vector<glm::dvec3> NoeudTrou::obtenirVecteursEnglobants()
 
 ////////////////////////////////////////////////////////////////////////
 ///
-/// @fn void NoeudTrou::traiterCollisions(aidecollision::DetailsCollision details, NoeudAbstrait* bille)
+/// @fn void NoeudTrou::traiterCollisions(aidecollision::DetailsCollision details, NoeudAbstrait* bille, float facteurRebond)
 ///
-/// Cette fonction effectue la reaction a la collision de la bille sur 
+/// @brief Cette fonction effectue la reaction a la collision de la bille sur 
 /// un trou.  C'est-a-dire effacer la bille.  
+///
+/// @param[in] details Objet contenant les details de la collision a traiter
+/// @param bille Objet modifie par la collision
+/// @param[in] facteurRebond Inutilise
 ///
 /// @remark un pointeur vers la bille effacee existe encore dans la
 /// liste des noeuds et liste des billes.  Voir FacadeModele::traiterCollisions()

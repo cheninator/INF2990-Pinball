@@ -199,7 +199,7 @@ std::vector<glm::dvec3> NoeudButoirCirculaire::obtenirVecteursEnglobants()
 
 ////////////////////////////////////////////////////////////////////////
 ///
-/// @fn void aidecollision::DetailsCollision NoeudAbstrait::detecterCollisions(NoeudAbstrait* bille)
+/// @fn aidecollision::DetailsCollision NoeudAbstrait::detecterCollisions(NoeudAbstrait* bille)
 ///
 /// Cette fonction retourne un objet detail collision pour la 
 /// collision de la bille sur l'objet courant.
@@ -223,11 +223,14 @@ aidecollision::DetailsCollision NoeudButoirCirculaire::detecterCollisions(NoeudA
 
 ////////////////////////////////////////////////////////////////////////
 ///
-/// @fn void NoeudAbstrait::traiterCollisions(aidecollision::DetailsCollision details, NoeudAbstrait* bille)
+/// @fn void NoeudButoirCirculaire::traiterCollisions(aidecollision::DetailsCollision details, NoeudAbstrait* bille, float facteurRebond)
 ///
-/// Cette fonction effectue la réaction a la collision de la bille sur 
-/// l'objet courant. Cette fonction est a reimplementer si on veut autre 
-/// chose qu'un rebondissement ordinaire.
+/// @brief Cette fonction effectue la réaction a la collision de la bille sur 
+/// l'objet courant. La collision est plus forte si le mode force supplementaire est actif.
+///
+/// @param[in] details Objet contenant les details de la collision a traiter
+/// @param bille Objet modifie par la collision
+/// @param[in] facteurRebond Facteur par lequel la vitesse normale de la bille sera multipliee
 ///
 /// @return details contient l'information sur la collision de la bille avec *this.
 ///
