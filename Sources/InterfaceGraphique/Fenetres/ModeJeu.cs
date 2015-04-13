@@ -76,8 +76,7 @@ namespace InterfaceGraphique
         public void setVisibilityMenuStrip(bool vis) { menuStrip.Visible = vis; }
         public void setCurrentZoom(double val) { currentZoom = val; }
         public void setPeutAnimer(bool activation) { peutAnimer = activation; }
-        /*public void setPreviousP(Point prevP) { previousP = prevP; }
-        public void setCurrentP(Point currP) { currentP = currP; }*/
+       
 
 
         // Accesseurs
@@ -86,8 +85,7 @@ namespace InterfaceGraphique
         public bool getAmbiantLight() { return activateAmbiantLight; }
         public bool getDirectLight() { return activateDirectLight; }
         public bool getSpotLight() { return activateSpotLight; }
-       /* public Point getPreviousP() { return previousP ; }
-        public Point getCurrentP() { return currentP ; }*/
+  
 
         
         // Toggle des lumières

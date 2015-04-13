@@ -260,15 +260,18 @@ namespace InterfaceGraphique
                         }
                     case 2:
                         {
-                            labelDescOutil.Text = "Le déplacement des objets sélectionnés se fait en appuyant sur le bouton de milieu de la souris et, tout en gardant le bouton enfoncé, se déplaçant. Les objets sélectionnés suiveront la souris."+
-                                                  " Si vous n'avez pas de bouton milieu( laptop par exemple ), vous pouvez utiliser l'outil Déplacement et utiliser le bouton gauche de la souris.";
+                            labelDescOutil.Text = "Le Déplacement des objets sélectionnés se fait en appuyant sur le bouton de gauche de la souris "+
+                                                  " par-dessus les objets séléctionnés et, tout en gardant le bouton enfoncé, se déplaçant." +
+                                                  " Les objets sélectionnés suiveront la souris."+
+                                                  " Si l'objet sort de la zone d'édition, celui-ci est remis à sa position initiale."+
+                                                  " Vous pouvez aussi utiliser l'outil Déplacement avec le raccourci D.";
                             pictureBoxOutils.Image = Properties.Resources.Deplacement;
 
                             break;
                         }
                     case 3:
                         {
-                            labelDescOutil.Text = "La rotation des objets sélectionnés se fait en choisissant l'outil Rotation"+
+                            labelDescOutil.Text = "La Rotation des objets sélectionnés se fait en choisissant l'outil Rotation"+
                                                   " à l'aide du bouton Rotation ou le raccourci R puis en déplaçant la souris en gardant le bouton gauche enfoncé."+
                                                   " Un déplacement vers le haut fait tourner les objets dans le sens horaire."+
                                                   " Un déplacement vers le bas fait tourner les objets dans le sens anti-horaire.";
@@ -277,11 +280,11 @@ namespace InterfaceGraphique
                         }
                     case 4:
                         {
-                            labelDescOutil.Text = "La duplication des objets sélectionnés se fait en choisissant l'outil Duplication" +
+                            labelDescOutil.Text = "La Duplication des objets sélectionnés se fait en choisissant l'outil Duplication" +
                                                   " à l'aide du bouton Duplication ou le raccourci C." +
-                                                  " Les objets dupliqués sont créés et suivent la souris. Un déplacement de la souris fait bouger les objets copiés. " +
-                                                  " Le clic du bouton gauche de la souris confirme la duplication et place définitivement les objets." +
-                                                  " Le bouton Échapper annule la duplication et enlève les objets dupliqués.";
+                                                  " Les objets dupliqués sont créés et suivent la souris. Un mouvement de la souris déplace les objets copiés. " +
+                                                  " Le clic du bouton gauche de la souris confirme la duplication et rend fixes les objets." +
+                                                  " Le bouton Échapper annule la duplication et enlève les copies.";
                             pictureBoxOutils.Image = Properties.Resources.Duplication;
                             break;
                         }
@@ -298,7 +301,7 @@ namespace InterfaceGraphique
                     case 6:
                         {
                             labelDescOutil.Text = "La suppression des objets sélectionnés se fait à l'aide du bouton Suppression ou le raccourci Suppr."+
-                                                  "La suppression fait disparaitre les objets sélectionnés de la zone de jeu";
+                                                  "La suppression fait disparaitre les objets sélectionnés de la zone de jeu.";
                             pictureBoxOutils.Image = Properties.Resources.Suppression;
                             break;
                         }
