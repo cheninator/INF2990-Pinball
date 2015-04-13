@@ -230,14 +230,16 @@ public:
 	/// Ajouter jumeau
 	virtual void setTwin(NoeudAbstrait* twin);
 
-	//Obtenir les 4 vecteurs de la boite englobante modifie
+	///Obtenir les 4 vecteurs de la boite englobante modifie
 	virtual void obtenirVecteursBoite(glm::dvec3 &v1, glm::dvec3 &v2, glm::dvec3 &v3, glm::dvec3 &v4);
+
+	///Obtenir les 4 vecteurs de la boite englobante originale associee au modele.
 	virtual void obtenirBoiteModele(glm::dvec3 &v1, glm::dvec3 &v2, glm::dvec3 &v3, glm::dvec3 &v4);
 
-	// Nouveau format pour les boites englobantes
+	/// Nouveau format pour les boites englobantes
 	virtual std::vector<glm::dvec3> obtenirVecteursEnglobants();
 
-	//Verifie si un point est dans la boite englobante
+	/// Verifie si un point est dans la boite englobante
 	virtual bool pointEstDansBoite(glm::dvec3 point);
 
 	/// Pour la detections des collisions
@@ -749,7 +751,9 @@ inline const glm::dvec3& NoeudAbstrait::obtenirRotation() const
 ///
 /// @fn inline void NoeudAbstrait::assignerForcesExternes(glm::dvec3 forcesExternes)
 ///
-/// Assigne la resultante des forces externes agissant sur l'objet.
+/// @brief Assigne la resultante des forces externes agissant sur l'objet.
+///
+/// @param[in] forcesExternes Somme des forces creees par les portails.
 ///
 /// @return aucun.
 ///

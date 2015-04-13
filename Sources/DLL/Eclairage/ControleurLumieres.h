@@ -55,7 +55,7 @@ public:
 	void activerSpot();
 	/// Desactiver la lumiere spot
 	void desactiverSpot();
-
+	/// Pointer les spots sur les billes.
 	void trackerLesBilles(NoeudTable* table);
 
 private:

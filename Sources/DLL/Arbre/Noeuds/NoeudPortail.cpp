@@ -159,10 +159,13 @@ std::vector<glm::dvec3> NoeudPortail::obtenirVecteursEnglobants()
 ///
 /// @fn void NoeudPortail::traiterCollisions(aidecollision::DetailsCollision details, NoeudAbstrait* bille)
 ///
-/// Cette fonction effectue la reaction a la collision de la bille sur 
+/// @brief Cette fonction effectue la reaction a la collision de la bille sur 
 /// l'objet un portail.  C'est a dire de teleporter la bille au jumeau
 /// de l'objet courant.  De plus, la bille va se rappeler du portail d'ou
 /// elle est sortie pour ne pas rester pris dedans.
+/// 
+/// @param[in] details Objet contenant les details de la collision a traiter
+/// @param bille Objet modifie par la collision
 /// 
 /// @return aucun.
 ///
@@ -179,11 +182,13 @@ void NoeudPortail::traiterCollisions(aidecollision::DetailsCollision, NoeudAbstr
 
 ////////////////////////////////////////////////////////////////////////
 ///
-/// @fn void NoeudAbstrait::traiterCollisions(aidecollision::DetailsCollision details, NoeudAbstrait* bille)
+/// @fn aidecollision::DetailsCollision NoeudPortail::traiterCollisions(aidecollision::DetailsCollision details, NoeudAbstrait* bille)
 ///
-/// Reimplementation de detecterCollisions pour un objet circulaire.  De plus,
+/// @brief Reimplementation de detecterCollisions pour un objet circulaire.  De plus,
 /// pour le portail, on utilise rayonPortail/4 plutot que le rayonPortail parce
 /// qu'on veut que la bille soit plus proche du centre pour etre teleportee
+/// 
+/// @param[in] bille Objet avec le noeud se compare pour trouver une collision.
 /// 
 /// @return details contient l'information sur la collision de la bille avec *this.
 /// 

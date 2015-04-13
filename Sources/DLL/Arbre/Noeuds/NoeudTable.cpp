@@ -82,7 +82,7 @@ void NoeudTable::afficherConcret() const
 ///
 /// @fn void NoeudTable::animer(float temps)
 ///
-/// Cette fonction effectue l'animation du noeud pour un certain
+/// @brief Cette fonction effectue l'animation du noeud pour un certain
 /// intervalle de temps.
 ///
 /// @param[in] temps : Intervalle de temps sur lequel faire l'animation.
@@ -103,7 +103,9 @@ void NoeudTable::animer(float temps)
 ///
 /// @fn bool NoeudTable::accepterVisiteur(VisiteurAbstrait* vis)
 ///
-/// Cette fonction appelle la methode traiter du visiteur.
+/// @brief Cette fonction appelle la methode traiter du visiteur.
+///
+/// @param[in] vis Pointeur sur le visiteur a accepter
 ///
 /// @return reussi (TRUE)
 ///

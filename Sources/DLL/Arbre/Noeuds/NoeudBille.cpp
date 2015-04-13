@@ -344,13 +344,16 @@ std::vector<glm::dvec3> NoeudBille::obtenirVecteursEnglobants()
 	return{ glm::dvec3{ rayonModele * scale_.x, 0, 0 } };
 }
 
-///////////////////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////////////////////
 ///
-/// 
+/// @fn void NoeudBille::traiterCollisions(aidecollision::DetailsCollision details, NoeudAbstrait* bille)
 ///
-/// Cette fonction effectue la réaction a la collision de la bille sur 
+/// @brief Cette fonction effectue la réaction a la collision de la bille sur 
 /// l'objet courant. Cette fonction est a reimplementer si on veut autre 
 /// chose qu'un rebondissement ordinaire.
+///
+/// @param[in] details Objet contenant les details de la collision a traiter
+/// @param bille Objet modifie par la collision
 ///
 /// @return details contient l'information sur la collision de la bille avec *this.
 ///

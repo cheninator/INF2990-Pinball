@@ -51,7 +51,7 @@ ControleurLumieres::~ControleurLumieres()
 ///
 /// @fn void ControleurLumieres::initialiserLumieres() 
 /// 
-/// @Brief Place les lumieres et definit leur proprietes.
+/// @brief Place les lumieres et definit leur proprietes.
 /// 
 /// @return aucun.
 ///
@@ -246,9 +246,9 @@ void ControleurLumieres::desactiverSpot()
 ///
 /// @fn void ControleurLumieres::trackerLesBilles()
 ///
-/// @brief 
+/// @brief Pointe deux spotslights sur les billes de la zone de jeu. 
 /// 
-/// @return 
+/// @return aucun.
 ///
 ////////////////////////////////////////////////////////////////////////
 void ControleurLumieres::trackerLesBilles(NoeudTable* table)
@@ -287,8 +287,5 @@ void ControleurLumieres::trackerLesBilles(NoeudTable* table)
 		{
 			lumSpotB_->setDirection({ 0.0, 0.0, 1.0, 1.0 });
 		}
-
-		
 	}
-
 }

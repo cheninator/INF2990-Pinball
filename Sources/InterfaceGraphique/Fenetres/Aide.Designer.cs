@@ -144,7 +144,6 @@ namespace InterfaceGraphique
             this.checkBoxHelp.TabIndex = 1;
             this.checkBoxHelp.Text = "Ne pas montrer l\'aide au début";
             this.checkBoxHelp.UseVisualStyleBackColor = true;
-            this.checkBoxHelp.CheckedChanged += new System.EventHandler(this.checkBoxHelp_CheckedChanged);
             // 
             // tabControl1
             // 
