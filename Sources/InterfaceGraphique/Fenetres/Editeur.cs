@@ -2142,7 +2142,25 @@ namespace InterfaceGraphique
             currentP.X = e.X;
             currentP.Y = e.Y;
 
-            if (etat is EtatEditeurPortail && e.Button == MouseButtons.Left)
+            if (etat is EtatEditeurSelection)
+            {
+                if (e.Button == MouseButtons.Left)
+                {                    
+                    int h = panel_GL.Height;
+                    int w = panel_GL.Width;
+                    bool b;
+                    ((EtatEditeurSelection)etat).SourisSurObjet = FonctionsNatives.sourisEstSurObjet(currentP.X, currentP.Y, h, w, out b);
+                    ((EtatEditeurSelection)etat).SourisSurSelection = b;
+                    ((EtatEditeurSelection)etat).GaucheEnfonce = true;
+                    etat.traiterSouris(e);              
+
+                    panel_GL.MouseMove += new MouseEventHandler(panel_MouseMove);                   
+                }
+                else if (e.Button == MouseButtons.Right)
+                    panel_GL.MouseMove += new MouseEventHandler(panel_MouseMove);                               
+                
+            }
+            else if (etat is EtatEditeurPortail && e.Button == MouseButtons.Left)
             {
                 sauvegarderHistorique();
                 etat = new EtatEditeurSelection(this);
@@ -2156,9 +2174,7 @@ namespace InterfaceGraphique
                 etat = new EtatEditeurSelection(this);
                 deselection();
             }
-            else if ((e.Button == MouseButtons.Left && (etat is EtatEditeurSelection ||
-                                                        etat is EtatEditeurDeplacement ||
-                                                        etat is EtatEditeurRotation ||
+            else if ((e.Button == MouseButtons.Left && (etat is EtatEditeurRotation ||
                                                         etat is EtatEditeurScale ||
                                                         etat is EtatEditeurZoom ||
                                                         etat is EtatEditeurDuplication ||
@@ -2212,26 +2228,38 @@ namespace InterfaceGraphique
                 deplacementVueSouris(e);
 
             }
-
-            if (e.Button == MouseButtons.Middle)
+            else if (e.Button == MouseButtons.Middle)
             {
                 deplacementSouris(e);
-
             }
-            else if (!(clickValide(origin, currentP)) && (etat is EtatEditeurSelection) && e.Button == MouseButtons.Left)
+            else if (!(clickValide(origin, currentP)) && etat is EtatEditeurSelection)
             {
-                etat = new EtatEditeurSelectionMultiple(this);
-                FonctionsNatives.initialiserRectangleElastique(origin.X, origin.Y);
-            }
+                int h = panel_GL.Height;
+                int w = panel_GL.Width;
+                bool b;
+                ((EtatEditeurSelection)etat).SourisSurObjet = FonctionsNatives.sourisEstSurObjet(origin.X, origin.Y, h, w, out b);
+                ((EtatEditeurSelection)etat).SourisSurSelection = b;
+                ((EtatEditeurSelection)etat).GaucheEnfonce = true;
+                etat.traiterSouris(e);
+
+                if (nbSelection > 0 && ((EtatEditeurSelection)etat).SourisSurSelection == true)
+                    etat = new EtatEditeurDeplacement(this);
+                else if (!((EtatEditeurSelection)etat).SourisSurObjet)
+                {
+                    etat = new EtatEditeurSelectionMultiple(this);
+                    FonctionsNatives.initialiserRectangleElastique(origin.X, origin.Y);
+                }
+            }            
             else if (!(clickValide(origin, currentP)) && (etat is EtatEditeurZoom) && e.Button == MouseButtons.Left && ZoomElastique_ToolStrip.Enabled == true)
             {
                 etat = new EtatEditeurZoomElastique(this);
                 FonctionsNatives.initialiserRectangleElastique(origin.X, origin.Y);
             }
-            else if (!(etat is EtatEditeurSelectionMultiple) &&
-                     !(etat is EtatEditeurSelection) &&
-                     !(etat is EtatEditeurZoomElastique)
-                    )
+
+            if (!(etat is EtatEditeurSelectionMultiple) &&
+                !(etat is EtatEditeurSelection) &&
+                !(etat is EtatEditeurZoomElastique)
+               )
             {
                 etat.traiterSouris(e);
             }
@@ -2265,7 +2293,16 @@ namespace InterfaceGraphique
             if (etat is EtatEditeurDeplacement || etat is EtatEditeurScale || etat is EtatEditeurRotation)
                 sauvegarderHistorique();
 
-            if (etat is EtatEditeurDuplication && e.Button == MouseButtons.Left)
+            if (etat is EtatEditeurDeplacement)
+            {
+                etat = new EtatEditeurSelection(this);
+            }
+            else if (etat is EtatEditeurSelection)
+            {
+                ((EtatEditeurSelection)etat).GaucheEnfonce = false;
+                etat.traiterSouris(e);                
+            }
+            else if (etat is EtatEditeurDuplication && e.Button == MouseButtons.Left)
             {
                 if (FonctionsNatives.duplicationEstHorsTable())
                     FonctionsNatives.removeObject();
@@ -2274,7 +2311,6 @@ namespace InterfaceGraphique
                 deselection();
                 panel_GL.MouseMove -= panel_MouseMove;
                 etat = new EtatEditeurSelection(this);
-
             }
             else if (etat is EtatEditeurCreation && e.Button == MouseButtons.Left)
             {
@@ -2321,7 +2357,7 @@ namespace InterfaceGraphique
                     etat.traiterSouris(e);
                     etat = new EtatEditeurSelection(this);
                 }
-                else if (clickValide(origin, destination))
+                else if (clickValide(origin, destination) && !(etat is EtatEditeurSelection))
                 {
                     etat.traiterSouris(e);
                 }
@@ -2458,11 +2494,12 @@ namespace InterfaceGraphique
         /// @brief Gestion de la selection d'objet avec la souris.
         /// 
         /// @param[in] e : evenement qui lance la fonction.
+        /// @param[in] gaucheEnfonce : true si le bouton gauche de la souris est enfonce.
         /// 
         /// @return Aucune.
         ///
         ////////////////////////////////////////////////////////////////////////
-        public void selection(MouseEventArgs e)
+        public int selection(MouseEventArgs e, bool gaucheEnfonce, bool sourisSurSelection)
         {
             int x = panel_GL.PointToClient(MousePosition).X;
             int y = panel_GL.PointToClient(MousePosition).Y;
@@ -2472,9 +2509,9 @@ namespace InterfaceGraphique
 
             bool c = ctrlDown;
             int isSelected = nbSelection;
-            // TODO PHIL : Faire que ceci n'arrive que quand on relâche le bouton de gauche et qu'on n'a pas bouge de plus de 3 pixels.
-            nbSelection = FonctionsNatives.selectionnerObjetSousPointClique(x, y, h, w, c);
-            //Console.WriteLine("SELECTION: " + nbSelection);
+
+            nbSelection = FonctionsNatives.selectionnerObjetSousPointClique(x, y, h, w, c, gaucheEnfonce, sourisSurSelection);
+            
             if (nbSelection != 1)
             {
                 if (nbSelection == 0)
@@ -2485,7 +2522,9 @@ namespace InterfaceGraphique
                 {
                     outilsEnable(true);
                 }
+
                 proprietesEnable(false);
+
                 if (isSelected == 0)
                     playSound("no");
             }
@@ -2498,6 +2537,8 @@ namespace InterfaceGraphique
                 Anglebox.Text = Math.Round(FonctionsNatives.getAngle()).ToString();
                 FMEbox.Text = (Math.Round(FonctionsNatives.getScale() * 100) / 100).ToString();
             }
+
+            return nbSelection;
         }
 
         ////////////////////////////////////////////////////////////////////////

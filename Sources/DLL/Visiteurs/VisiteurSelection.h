@@ -30,7 +30,7 @@ class VisiteurSelection : public VisiteurAbstrait
 public:
 
 	/// Constructeur par parametre
-	VisiteurSelection(glm::dvec3 pointDansLeMonde, int valeurStencil);
+	VisiteurSelection(glm::dvec3 pointDansLeMonde, int valeurStencil, bool gaucheEnfonce, bool sourisSurSelection);
 
 	/// Destructeur
 	~VisiteurSelection();
@@ -52,6 +52,8 @@ private:
 	glm::dvec3 pointDansLeMonde_;	///> Point clique
 	int valeurStencil_;				///> Valeur du stencil a comparer au numero des noeuds
 	int nbObjetsSelectionne_;		///> Nombre d'objets selectionnes disponnible pour les clients
+	bool gaucheEnfonce_;			///> true si le bouton de gauche est enfonce
+	bool sourisSurSelection_;		///> true si la souris est sur un objet deja selectionne
 };
 
 #endif //__VISITEURS_VISITEURSELECTION_H__

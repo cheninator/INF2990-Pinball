@@ -138,7 +138,10 @@ public:
 	int obtenirCentreMasseY();
 
 	/// Selectionner les objets sous un point clique
-	int selectionnerObjetSousPointClique(int i, int j, int largeur, int hauteur, bool ctrlDown = false);
+	int selectionnerObjetSousPointClique(int i, int j, int hauteur, int largeur, bool ctrlDown = false, bool gaucheEnfonce = false, bool sourisSurSelection = false);
+
+	//Verifier si la souris est situe sur un objet
+	bool sourisEstSurObjet(int i, int j, int hauteur, int largeur, bool& estSelectionne);
 
 	/// Pour le rectangle elastique
 	void rectangleElastique(int i, int j);

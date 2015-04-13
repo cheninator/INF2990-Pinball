@@ -301,6 +301,45 @@ namespace InterfaceGraphique
     ///////////////////////////////////////////////////////////////////////////
     class EtatEditeurSelection : EtatEditeurAbstrait 
     {
+        private bool gaucheEnfonce;
+        public bool GaucheEnfonce
+        {
+            get
+            {
+                return gaucheEnfonce;
+            }
+            set
+            {
+                gaucheEnfonce = value;
+            }
+        }
+
+        private bool sourisSurObjet;
+        public bool SourisSurObjet
+        {
+            get
+            {
+                return sourisSurObjet;
+            }
+            set
+            {
+                sourisSurObjet = value;
+            }
+        }
+
+        private bool sourisSurSelection;
+        public bool SourisSurSelection
+        {
+            get
+            {
+                return sourisSurSelection;
+            }
+            set
+            {
+                sourisSurSelection = value;
+            }
+        }
+
         ////////////////////////////////////////////////////////////////////////
         ///
         /// @fn public EtatEditeurSelection(Editeur form)
@@ -311,9 +350,13 @@ namespace InterfaceGraphique
         /// @return Aucune (constructeur).
         ///
         ////////////////////////////////////////////////////////////////////////
-        public EtatEditeurSelection(Editeur form) : base(form) {
+        public EtatEditeurSelection(Editeur form) : base(form) 
+        {
             form_.outilCourant("Selection");
-            }
+            gaucheEnfonce = false;
+            sourisSurSelection = false;
+            sourisSurObjet = false;
+        }
 
         ////////////////////////////////////////////////////////////////////////
         ///
@@ -328,7 +371,6 @@ namespace InterfaceGraphique
         public override bool traiterClavier(KeyEventArgs e)
         {
             return base.traiterClavier(e);
-
         }
 
         ////////////////////////////////////////////////////////////////////////
@@ -344,11 +386,11 @@ namespace InterfaceGraphique
         public override bool traiterSouris(MouseEventArgs e)
         {
             if(e.Button== MouseButtons.Left)
-                form_.selection(e);
+                form_.selection(e, gaucheEnfonce, sourisSurSelection);
             if (e.Button == MouseButtons.Right)
                 form_.deplacementVueSouris(e);
-            return true;
-           
+
+            return true;           
         }
     }
 

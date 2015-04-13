@@ -38,11 +38,13 @@ VisiteurSelectionInverse::VisiteurSelectionInverse()
 /// @return Aucune (constructeur).
 ///
 //////////////////////////////////////////////////////////////////////////////////
-VisiteurSelectionInverse::VisiteurSelectionInverse(glm::dvec3 pointDansLeMonde, int valeurStencil)
+VisiteurSelectionInverse::VisiteurSelectionInverse(glm::dvec3 pointDansLeMonde, int valeurStencil, bool gaucheEnfonce, bool sourisSurSelection)
 :nbObjetsSelectionne_{ 0 }
 {
 	pointDansLeMonde_ = pointDansLeMonde;
 	valeurStencil_ = valeurStencil;
+	gaucheEnfonce_ = gaucheEnfonce;
+	sourisSurSelection_ = sourisSurSelection;
 }
 
 
@@ -126,27 +128,24 @@ bool VisiteurSelectionInverse::traiter(NoeudTable* table)
 ////////////////////////////////////////////////////////////////////////
 bool VisiteurSelectionInverse::traiter(NoeudAbstrait* noeud)
 {
-	if (valeurStencil_== noeud->getNumero() && noeud->estSelectionnable() /*&& noeud->estModifiable()*/)
+	if (!gaucheEnfonce_ && valeurStencil_ == noeud->getNumero() && noeud->estSelectionnable() /*&& noeud->estModifiable()*/)
 	{
-
 		if (noeud->estSelectionne())
 			noeud->assignerSelection(false);
-
 		else
 			noeud->assignerSelection(true);
 	}
 
-		if (noeud->estSelectionne())
-			nbObjetsSelectionne_++;
+	if (noeud->estSelectionne())
+		nbObjetsSelectionne_++;
 
 	return true;
-
 }
 
 bool VisiteurSelectionInverse::traiter(NoeudPortail* noeud)
 {
 	// Stencil -1 si le tore était dessiné 
-	if (valeurStencil_  == noeud->getNumero() && noeud->estSelectionnable() /*&& noeud->estModifiable()*/)
+	if (!gaucheEnfonce_ && valeurStencil_ == noeud->getNumero() && noeud->estSelectionnable() /*&& noeud->estModifiable()*/)
 	{
 
 		if (noeud->estSelectionne())

@@ -80,7 +80,7 @@ extern "C" {
 
 	__declspec(dllexport) void deselectAll(void);
 	__declspec(dllexport) void selectAll(void);
-	__declspec(dllexport) int selectionnerObjetSousPointClique(int i, int j, int largeur, int hauteur, bool ctrlDown = false);
+	__declspec(dllexport) int selectionnerObjetSousPointClique(int i, int j, int largeur, int hauteur, bool ctrlDown = false, bool gaucheEnfonce = false, bool sourisSurSelection = false);
 	__declspec(dllexport) int selectionMultiple(bool c);
 
 	__declspec(dllexport) void agrandirSelection(int x1, int y1, int x2, int y2);
@@ -97,6 +97,7 @@ extern "C" {
 	__declspec(dllexport) void rectangleElastique(int i, int j);
 	__declspec(dllexport) void initialiserRectangleElastique(int i, int j);
 	__declspec(dllexport) void terminerRectangleElastique();
+	__declspec(dllexport) bool sourisEstSurObjet(int i, int j, int hauteur, int largeur, bool& estSelectionne);
 
 	////////////////////////////////////////////////////////////////////////////////////////////////////////
 

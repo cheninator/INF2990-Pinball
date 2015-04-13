@@ -70,9 +70,9 @@ extern "C"
 	/// @return NoeudAbstrait.
 	///
 	////////////////////////////////////////////////////////////////////////
-	__declspec(dllexport) int __cdecl selectionnerObjetSousPointClique(int i, int j, int hauteur, int largeur, bool ctrlDown)
+	__declspec(dllexport) int __cdecl selectionnerObjetSousPointClique(int i, int j, int hauteur, int largeur, bool ctrlDown, bool gaucheEnfonce, bool sourisSurSelection)
 	{
-		return FacadeModele::obtenirInstance()->selectionnerObjetSousPointClique(i, j, hauteur, largeur, ctrlDown);	
+		return FacadeModele::obtenirInstance()->selectionnerObjetSousPointClique(i, j, hauteur, largeur, ctrlDown, gaucheEnfonce, sourisSurSelection);
 	}
 
 	////////////////////////////////////////////////////////////////////////
@@ -2301,6 +2301,18 @@ extern "C"
 	__declspec(dllexport) bool possedePrecedent()
 	{
 		return FacadeModele::obtenirInstance()->possedePrecedent();
+	}
+
+	///////////////////////////////////////////////////////////////////////////////
+	///
+	/// @fn bool sourisEstSurObjet(int i, int j, int hauteur, int largeur, bool& estSelectionne)
+	/// @brief Retourne vrai si la souris se situe sur un objet deja selectionne.
+	/// @return bool, true si la souris se situe sur un objet deja selectionne.
+	///
+	///////////////////////////////////////////////////////////////////////////////
+	__declspec(dllexport) bool sourisEstSurObjet(int i, int j, int hauteur, int largeur, bool& estSelectionne)
+	{
+		return FacadeModele::obtenirInstance()->sourisEstSurObjet(i, j, hauteur, largeur, estSelectionne);
 	}
 
 }// FIN DU extern "C"

@@ -588,11 +588,10 @@ void FacadeModele::animer(float temps)
 /// @return NoeudAbstrait.
 ///
 ////////////////////////////////////////////////////////////////////////
-int FacadeModele::selectionnerObjetSousPointClique(int i, int j, int hauteur, int largeur, bool ctrlDown)
+int FacadeModele::selectionnerObjetSousPointClique(int i, int j, int hauteur, int largeur, bool ctrlDown, bool gaucheEnfonce, bool sourisSurSelection)
 {
 	glm::dvec3 pointDansLeMonde;
 	vue_->convertirClotureAVirtuelle(i, j, pointDansLeMonde);
-
 
 	int valeurStencil = 0;
 	glReadPixels(i ,hauteur -j , 1, 1, GL_STENCIL_INDEX, GL_UNSIGNED_INT, &valeurStencil);
@@ -606,7 +605,7 @@ int FacadeModele::selectionnerObjetSousPointClique(int i, int j, int hauteur, in
 	//	<< "============= Visite des noeuds ========================" << std::endl;
 	if (!ctrlDown)
 	{
-		VisiteurSelection visSel(pointDansLeMonde, valeurStencil);
+		VisiteurSelection visSel(pointDansLeMonde, valeurStencil, gaucheEnfonce, sourisSurSelection);
 		arbre_->accepterVisiteur(&visSel);
 
 		// Demander au visiteur ce qu'il a trouve et faire quelque chose en consequence
@@ -614,7 +613,7 @@ int FacadeModele::selectionnerObjetSousPointClique(int i, int j, int hauteur, in
 	}
 	else
 	{
-		VisiteurSelectionInverse visSelInverse(pointDansLeMonde, valeurStencil);
+		VisiteurSelectionInverse visSelInverse(pointDansLeMonde, valeurStencil, gaucheEnfonce, sourisSurSelection);
 		arbre_->accepterVisiteur(&visSelInverse);
 
 		// Demander au visiteur ce qu'il a trouve et faire quelque chose en consequence
@@ -2522,7 +2521,6 @@ bool FacadeModele::cameraEstOrbite()
 	return vueEstOrbite_;
 }
 
-
 void FacadeModele::dessinerSkybox(double demiLargeur, bool vueOrtho, glm::dvec3 pointMilieu) const
 {
 	if (!vueOrtho)
@@ -2533,4 +2531,47 @@ void FacadeModele::dessinerSkybox(double demiLargeur, bool vueOrtho, glm::dvec3 
 	else
 		skybox_->afficher(pointMilieu,
 		demiLargeur);
+}
+
+////////////////////////////////////////////////////////////////////////
+///
+/// @fn void FacadeModele::sourisEstSurObjet(int i, int j, int hauteur, int largeur)
+///
+/// @brief Cette fonction verifie si la souris est situe sur un objet
+///
+/// @param[in] i : Position souris i
+/// @param[in] j : Position souris j
+/// @param[in] hauteur : Hauteur de la fenetre
+/// @param[in] largeur : Largeur de la fenetre
+///
+/// @return bool, true si la souris est situe sur un objet
+///
+////////////////////////////////////////////////////////////////////////
+bool FacadeModele::sourisEstSurObjet(int i, int j, int hauteur, int largeur, bool& estSelectionne)
+{
+	glm::dvec3 pointDansLeMonde;
+	vue_->convertirClotureAVirtuelle(i, j, pointDansLeMonde);
+
+	int valeurStencil = 0;
+	glReadPixels(i, hauteur - j, 1, 1, GL_STENCIL_INDEX, GL_UNSIGNED_INT, &valeurStencil);
+
+	bool estSurObjet = false;
+	NoeudAbstrait* table = arbre_->chercher(0);
+	for (unsigned int i = 0; i < table->obtenirNombreEnfants(); i++)
+	{
+		NoeudAbstrait* noeud = table->chercher(i);
+		if (noeud->getNumero() == valeurStencil)
+		{
+			if (noeud->estSelectionne())
+				estSelectionne = true;
+			else
+				estSelectionne = false;
+
+			estSurObjet = true;
+
+			break;
+		}
+	}
+
+	return estSurObjet;
 }

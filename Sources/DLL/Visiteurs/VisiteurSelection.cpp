@@ -39,11 +39,13 @@ VisiteurSelection::VisiteurSelection()
 /// @return Aucune (constructeur).
 ///
 //////////////////////////////////////////////////////////////////////////////////
-VisiteurSelection::VisiteurSelection(glm::dvec3 pointDansLeMonde, int valeurStencil)
+VisiteurSelection::VisiteurSelection(glm::dvec3 pointDansLeMonde, int valeurStencil, bool gaucheEnfonce, bool sourisSurSelection)
 :nbObjetsSelectionne_{ 0 }
 {
 	pointDansLeMonde_ = pointDansLeMonde;
 	valeurStencil_ = valeurStencil;
+	gaucheEnfonce_ = gaucheEnfonce;
+	sourisSurSelection_ = sourisSurSelection;
 }
 
 
@@ -128,7 +130,7 @@ bool VisiteurSelection::traiter(NoeudAbstrait* noeud)
 		//<< " avec numéro " << noeud->getNumero() << std::endl;
 	if (valeurStencil_ == noeud->getNumero() && noeud->estSelectionnable())
 		noeud->assignerSelection(true);
-	else
+	else if (!sourisSurSelection_ || gaucheEnfonce_ == false)
 		noeud->assignerSelection(false);
 
 	if (noeud->estSelectionne()) 
@@ -154,7 +156,7 @@ bool VisiteurSelection::traiter(NoeudPortail* noeud)
 	// Stencil - 1 si le tore était dessiné
 	if (valeurStencil_ == noeud->getNumero() && noeud->estSelectionnable())
 		noeud->assignerSelection(true);
-	else
+	else if (!sourisSurSelection_)
 		noeud->assignerSelection(false);
 
 	if (noeud->estSelectionne())

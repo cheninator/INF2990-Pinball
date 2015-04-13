@@ -126,7 +126,7 @@ namespace InterfaceGraphique
         public static extern int takeScreenShot(StringBuilder path, int taille, bool square = false, int maxSize = 0);
 
         [DllImport(@"Noyau.dll", CallingConvention = CallingConvention.Cdecl)]
-        public static extern int selectionnerObjetSousPointClique(int i, int j, int hauteur, int largeur, bool ctrlDown = false);
+        public static extern int selectionnerObjetSousPointClique(int i, int j, int hauteur, int largeur, bool ctrlDown = false, bool gaucheEnfonce = false, bool sourisSurSelection = false);
 
         [DllImport(@"Noyau.dll", CallingConvention = CallingConvention.Cdecl)]
         public static extern void zoomIn();
@@ -430,7 +430,10 @@ namespace InterfaceGraphique
         public static extern void suprimerText(StringBuilder text, int length);
 
         [DllImport(@"Noyau.dll", CallingConvention = CallingConvention.Cdecl)]
-        public static extern void afficherTextes(bool afficher = true);      
+        public static extern void afficherTextes(bool afficher = true);
+
+        [DllImport(@"Noyau.dll", CallingConvention = CallingConvention.Cdecl)]
+        public static extern bool sourisEstSurObjet(int i, int j, int hauteur, int largeur, out bool estSelectionne);
 
         public static void populateUsines()
         {

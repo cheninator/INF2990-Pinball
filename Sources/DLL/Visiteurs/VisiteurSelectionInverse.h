@@ -30,7 +30,7 @@ class VisiteurSelectionInverse : public VisiteurAbstrait
 public:
 
 	/// Constructeur par parametre
-	VisiteurSelectionInverse(glm::dvec3 pointDansLeMonde, int valeurStencil);
+	VisiteurSelectionInverse(glm::dvec3 pointDansLeMonde, int valeurStencil, bool gaucheEnfonce, bool sourisSurSelection);
 
 	/// Destructeur
 	~VisiteurSelectionInverse();
@@ -60,6 +60,8 @@ private:
 	glm::dvec3 pointDansLeMonde_;	///< Point clique
 	int valeurStencil_;				///< Valeur du stencil
 	int nbObjetsSelectionne_;		///< Nombre d'objets selectionnes
+	bool gaucheEnfonce_;			///> true si le bouton de gauche est enfonce
+	bool sourisSurSelection_;		///> true si la souris est sur un objet deja selectionne
 };
 
 
