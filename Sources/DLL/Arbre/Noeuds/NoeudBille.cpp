@@ -61,6 +61,8 @@ NoeudBille::NoeudBille(const std::string& typeNoeud)
 NoeudBille::~NoeudBille()
 {
 	SoundControl->jouerSon("rolling", true);
+	SoundControl->ajusterVolume("rolling", 0);
+	SoundControl->accelererSon("rolling", 0);
 }
 
 ////////////////////////////////////////////////////////////////////////
