@@ -84,9 +84,9 @@ namespace vue {
 
 
 		/// Positionner la caméra (appel à gluLookAt) en mode perspective 
-		void positionnerOrbite() const;
+		void positionnerOrbite(int frameCounter = 0) const;
 		/// Positionner la caméra (appel à gluLookAt) en mode ortho
-		void positionnerOrtho() const;
+		void positionnerOrtho(int frameCounter = 0) const;
 
 	private:
 		/// La position de la caméra.

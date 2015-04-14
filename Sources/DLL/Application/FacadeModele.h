@@ -309,7 +309,6 @@ private:
 
 	bool pause_{ false };
 	bool utiliserAI{ false };
-
 	bool vueEstOrbite_{ false };
 
    /// Listes de palettes à activer pour chaque touche

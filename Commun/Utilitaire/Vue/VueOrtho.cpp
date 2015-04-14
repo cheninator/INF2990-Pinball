@@ -48,6 +48,7 @@ namespace vue {
 		Vue{ camera },
 		projection_{projection}
 	{
+		frameCounter_ = 0;
 	}
 
 
@@ -93,7 +94,7 @@ namespace vue {
 	////////////////////////////////////////////////////////////////////////
 	void VueOrtho::appliquerCamera() const
 	{
-		camera_.positionnerOrtho();
+		camera_.positionnerOrtho(0);
 	}
 
 

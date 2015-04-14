@@ -100,11 +100,12 @@ namespace vue {
 		/// Animation de la vue en fonction du temps
 		virtual void animer(double temps);
 
-
+		void increaseFrame() { frameCounter_++; frameCounter_ = frameCounter_ % (360 * 15); }
+		int obtenirFrameCounter() const { return frameCounter_; }
 	protected:
 		/// Caméra utilisée pour cette vue
 		Camera camera_;
-
+		int frameCounter_;
 	};
 
 

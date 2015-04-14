@@ -326,6 +326,8 @@ void FacadeModele::afficher() const
 	// Efface l'ancien rendu
 	glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT | GL_STENCIL_BUFFER_BIT);
 	
+	vue_->increaseFrame();
+
 	// Ne devrait pas etre necessaire
 	vue_->appliquerProjection();
 
@@ -2531,13 +2533,18 @@ bool FacadeModele::cameraEstOrbite()
 void FacadeModele::dessinerSkybox(double demiLargeur, bool vueOrtho, glm::dvec3 pointMilieu) const
 {
 	if (!vueOrtho)
+	{
+		glRotated(vue_->obtenirFrameCounter() / 15.0, 0.0, 0.0, 1.0);
 		skybox_->afficher(glm::dvec3{ (double)(coinDroitTableX + coinGaucheTableX) / 2.0,
 			(double)(coinDroitTableY + coinGaucheTableY) / 2.0,
 			0.0 },
 			demiLargeur);
+	}
 	else
+	{
 		skybox_->afficher(pointMilieu,
-		demiLargeur);
+			demiLargeur);
+	}
 }
 
 ////////////////////////////////////////////////////////////////////////

@@ -42,6 +42,7 @@ namespace vue {
 		Vue{ camera },
 		projection_{ projection }
 	{
+		frameCounter_ = 0;
 	}
 
 

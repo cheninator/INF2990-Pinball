@@ -189,7 +189,7 @@ namespace vue {
 	/// @return Aucune.
 	///
 	////////////////////////////////////////////////////////////////////////
-	void Camera::positionnerOrbite() const
+	void Camera::positionnerOrbite(int frameCounter) const
 	{
 		glMatrixMode(GL_MODELVIEW);
 		glLoadIdentity();
@@ -200,8 +200,13 @@ namespace vue {
 		glPushMatrix();
 		glRotated(180.0 / 3.1415 * phi_ - 90.0, 1.0, 0.0, 0.0);
 		glRotated(180.0 / 3.1415 * theta_, 0.0, 0.0, 1.0);
+
+		glPushMatrix();
+		glRotated(frameCounter / 5.0, 0.0, 0.0, 1.0);
 		FacadeModele::obtenirInstance()->dessinerSkybox();
 		glPopMatrix();
+		glPopMatrix();
+
 
 		glTranslated(0.0, 0.0, -dist_);
 		glRotated(180.0 / utilitaire::PI * phi_ - 90.0, 1.0, 0.0, 0.0);
@@ -234,7 +239,7 @@ namespace vue {
 	/// @return Aucune.
 	///
 	////////////////////////////////////////////////////////////////////////
-	void Camera::positionnerOrtho() const
+	void Camera::positionnerOrtho(int frameCounter) const
 	{
 		glMatrixMode(GL_MODELVIEW);
 		glLoadIdentity();
@@ -245,11 +250,12 @@ namespace vue {
 		double xMin, xMax, yMin, yMax;
 		projectionDeLaCamera.obtenirCoordornneesFenetreVirtuelle(xMin, xMax, yMin, yMax);
 		glm::dvec3 pointMilieu = { (xMax + xMin) / 2.0, (yMax+ yMin) / 2.0, 0.0 };
+		
 
 		/* On trouve quel est la plus grande composante (en X et Y) pour faire la passer à la skybox */
 		double smallestComp = dimensionFenetreVirtuelle.x > dimensionFenetreVirtuelle.y ?
 						      dimensionFenetreVirtuelle.x : dimensionFenetreVirtuelle.y;
-
+	
 		FacadeModele::obtenirInstance()->dessinerSkybox(smallestComp / 2.0, true, pointMilieu);
 		gluLookAt(position_[0], position_[1], position_[2],
 			pointVise_[0], pointVise_[1], pointVise_[2],
