@@ -45,15 +45,6 @@ public:
 	/// Constructeur par défaut.
 	EtatOpenGL();
 
-	/// Pas de copie
-	EtatOpenGL(const EtatOpenGL &) = delete;
-
-	/// Pas d'assignation
-	EtatOpenGL& operator=(EtatOpenGL const&) = delete;
-
-	/// Destructeur
-	~EtatOpenGL(){};
-
 	/// Compare deux états OpenGL et affiche la différence entre les deux.
 	static void obtenirDifference(
 		std::ostream& o, const EtatOpenGL& etat1, const EtatOpenGL& etat2

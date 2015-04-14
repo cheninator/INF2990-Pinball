@@ -34,12 +34,9 @@ EtatOpenGL::EtatOpenGL()
 	// mémoire à zéro puis on réinitialise.
 	glClipPlanei_.~vector();
 	glLighti_.~vector();
-
+	memset(this, 0, sizeof(EtatOpenGL));
 	new (&glClipPlanei_) std::vector<GLboolean>();
 	new (&glLighti_) std::vector<GLboolean>();
-
-	memset(&glClipPlanei_[0], 0, sizeof(glClipPlanei_[0]) * glClipPlanei_.size());
-	memset(&glLighti_[0], 0, sizeof(glLighti_[0]) * glLighti_.size());
 
 	glGetIntegerv(GL_ACCUM_ALPHA_BITS, &glAccumAlphaBits_);
 	glGetIntegerv(GL_ACCUM_BLUE_BITS, &glAccumBlueBits_);
