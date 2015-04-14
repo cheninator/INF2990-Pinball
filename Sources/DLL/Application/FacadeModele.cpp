@@ -341,6 +341,13 @@ void FacadeModele::afficher() const
 	ControleurNuanceurs::obtenirInstance()->assignerSkybox(0);
 	ControleurNuanceurs::obtenirInstance()->desactiver();
 	// Afficher la scene
+
+	//glRotated(vue_->obtenirFrameCounter() / 15.0, 0.0, 0.0, 1.0);
+	//glRotated(-sin(vue_->obtenirFrameCounter() / 15.0), 0.0, 1.0, 0.0); 
+	vue_->obtenirCamera().assignerTheta((vue_->obtenirCamera().obtenirTheta() + utilitaire::DEG_TO_RAD(0.10)));
+	vue_->obtenirCamera().assignerPhi((vue_->obtenirCamera().obtenirPhi() - 1.5*utilitaire::DEG_TO_RAD(0.2) *
+																			sin(vue_->obtenirFrameCounter()/100.0)
+									   ));
 	afficherBase();
 
 	// Compte de l'affichage
@@ -2534,7 +2541,7 @@ void FacadeModele::dessinerSkybox(double demiLargeur, bool vueOrtho, glm::dvec3 
 {
 	if (!vueOrtho)
 	{
-		glRotated(vue_->obtenirFrameCounter() / 15.0, 0.0, 0.0, 1.0);
+
 		skybox_->afficher(glm::dvec3{ (double)(coinDroitTableX + coinGaucheTableX) / 2.0,
 			(double)(coinDroitTableY + coinGaucheTableY) / 2.0,
 			0.0 },

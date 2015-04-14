@@ -23,6 +23,8 @@
 ConfigScene::ConfigScene()
 {
 	config_ = new int[13];
+	derniereCampagne_ = "lastCampaign.txt";
+	derniereConfiguration_ = "lastConfig.bin";
 	lireConfiguration();
 	lireCampagne();
 }
