@@ -244,12 +244,11 @@ extern "C"
 	*/
 	////////////////////////////////////////////////////////////////////////
 	///
-	/// @fn void creerObjet()
+	/// @fn void creerObjet(char* value, int, bool isTwin, bool colorShift)
 	///
 	///
 	/// @param[in] value : Nom de l'objet
-	/// @param[in] length : Taille du nom de l'objet
-	/// @param[in] twin : si a un jumeau
+	/// @param[in] isTwin : si a un jumeau
 	/// @param[in] colorShift : la couleur
 	///
 	/// @return Aucun
@@ -298,15 +297,13 @@ extern "C"
 
 	////////////////////////////////////////////////////////////////////////
 	///
-	/// @fn void creerObjetAvecTests()
+	/// @fn bool creerObjetAvecTests(char* value, int, bool isTwin, bool colorShift, int posX, int posY, int, float angleX, float angleY, float angleZ)
 	///
 	/// @param[in] value : Nom de l'objet
-	/// @param[in] length : Taille du nom de l'objet
-	/// @param[in] twin : si a un jumeau
+	/// @param[in] isTwin : si a un jumeau
 	/// @param[in] colorShift : la couleur
 	/// @param[in] posX : la position en X de l'objet a creer.
 	/// @param[in] posY : la position en Y de l'objet a creer.
-	/// @param[in] posZ : la position en Z de l'objet a creer.
 	/// @param[in] angleX : l'angle en X de l'objet a creer.
 	/// @param[in] angleY : l'angle en Y de l'objet a creer.
 	/// @param[in] angleZ : l'angle en Z de l'objet a creer.
@@ -643,11 +640,11 @@ extern "C"
 
 	////////////////////////////////////////////////////////////////////////
 	///
-	/// @fn void creerXML(char* path, int length, int prop[6])
+	/// @fn void creerXML(char* path, int, int prop[6], bool force)
 	///
-	/// @param[in] position : Nom du path
-	/// @param[in] length : Taille du nom du path
+	/// @param[in] path : Nom du path
 	/// @param[in] prop : Proprietes de la zone de jeu
+	/// @param[in] force : Si on force le save ou non
 	///
 	/// @remark : Sauvegarde le path
 	///
@@ -668,10 +665,9 @@ extern "C"
 
 	////////////////////////////////////////////////////////////////////////
 	///
-	/// @fn void ouvrirXML(char* path, int length)
+	/// @fn void ouvrirXML(char* path, int)
 	///
 	/// @param[in] path : Chemin du path
-	/// @param[in] length : Taille du path
 	///
 	/// @return Aucun
 	///
@@ -699,10 +695,9 @@ extern "C"
 
 	////////////////////////////////////////////////////////////////////////
 	///
-	/// @fn void takeScreenShot(char* path, int length, bool square, int maxSize)
+	/// @fn void takeScreenShot(char* path, int, bool square, int maxSize)
 	///
 	/// @param[in] path : Nom du path
-	/// @param[in] length : Taille du nom du path
 	/// @param[in] square : forme de l'image carre
 	/// @param[in] maxSize : taille maximale (pixel) de l'image
 	///
@@ -1061,10 +1056,9 @@ extern "C"
 
 	////////////////////////////////////////////////////////////////////////
 	///
-	/// @fn void creeSon()
+	/// @fn void creeSon(char* value, int)
 	///
 	/// @param[in] value : Nom du son
-	/// @param[in] length : Taille du nom
 	///
 	/// @return Aucun
 	///
@@ -1078,10 +1072,9 @@ extern "C"
 
 	////////////////////////////////////////////////////////////////////////
 	///
-	/// @fn void jouerSon()
+	/// @fn void jouerSon(char* value, int, bool pause)
 	///
 	/// @param[in] value : Nom du son
-	/// @param[in] length : Taille du nom
 	/// @param[in] pause : Arret du son
 	///
 	/// @return Aucun
@@ -1096,10 +1089,9 @@ extern "C"
 
 	////////////////////////////////////////////////////////////////////////
 	///
-	/// @fn void bouclerSon()
+	/// @fn void bouclerSon(char* value, int, bool loop)
 	///
 	/// @param[in] value : Nom du son
-	/// @param[in] length : Taille du nom
 	/// @param[in] loop : Faire boucler le son en continue ou non
 	///
 	/// @return Aucun
@@ -1114,7 +1106,7 @@ extern "C"
 
 	////////////////////////////////////////////////////////////////////////
 	///
-	/// @fn void sourdine()
+	/// @fn void sourdine(bool mute)
 	///
 	/// @param[in] mute : Mute or unmute the sound
 	///
@@ -1131,10 +1123,9 @@ extern "C"
 
 	////////////////////////////////////////////////////////////////////////
 	///
-	/// @fn void arreterSon(char* value, int length)
+	/// @fn void arreterSon(char* value, int)
 	///
 	/// @param[in] value : Nom du son
-	/// @param[in] length : Taille du nom
 	///
 	/// @return Aucun
 	///
@@ -1148,7 +1139,7 @@ extern "C"
 
 	////////////////////////////////////////////////////////////////////////
 	///
-	/// @fn void arreterToutSon()
+	/// @fn void arreterToutSons()
 	///
 	/// @return Aucun
 	///
@@ -1179,10 +1170,9 @@ extern "C"
 
 	////////////////////////////////////////////////////////////////////////
 	///
-	/// @fn void ajusterVolume(char* value, float pourcentage)
+	/// @fn void ajusterVolume(char* value, int, float pourcentage)
 	///
 	/// @param[in] value : Nom du son
-	/// @param[in] length : Taille du nom
 	/// @param[in] pourcentage : Valeur entre 0 et 100 pour ajuster le volume
 	///
 	/// @return Aucun
@@ -1190,7 +1180,7 @@ extern "C"
 	/// @remark Cette fonction permet d'ajuster le volume d'un son precis
 	///
 	////////////////////////////////////////////////////////////////////////
-	__declspec(dllexport) void __cdecl ajusterVolume(char* value, float pourcentage)
+	__declspec(dllexport) void __cdecl ajusterVolume(char* value, int, float pourcentage)
 	{
 		SoundControl->ajusterVolume(value, pourcentage);
 	}
@@ -1485,10 +1475,9 @@ extern "C"
 
 	///////////////////////////////////////////////////////////////////////////////
 	///
-	/// @fn int obtenirDifficulte(char* nomFichier, int length)
+	/// @fn int obtenirDifficulte(char* nomFichier, int)
 	/// @brief Obtenir le niveau de difficulte de la zone.
 	/// @param[in] nomFichier : Mom du fichier de la zone.
-	/// @param[in] length : Longueur du fichier.
 	/// @return Le niveau de difficulte de la zone.
 	///
 	///////////////////////////////////////////////////////////////////////////////
@@ -1499,10 +1488,9 @@ extern "C"
 
 	///////////////////////////////////////////////////////////////////////////////
 	///
-	/// @fn int* obtenirProprietes(char* nomFichier, int length)
+	/// @fn int* obtenirProprietes(char* nomFichier, int)
 	/// @brief Obtenir les proprietes de la zone.
 	/// @param[in] nomFichier : Mom du fichier de la zone.
-	/// @param[in] length : Longueur du fichier.
 	/// @return Les proprietes de difficulte de la zone.
 	///
 	///////////////////////////////////////////////////////////////////////////////
@@ -1513,10 +1501,9 @@ extern "C"
 
 	///////////////////////////////////////////////////////////////////////////////
 	///
-	/// @fn void creerFichierCampagne(char* listMaps, int length)
+	/// @fn void creerFichierCampagne(char* listMaps, int)
 	/// @brief Creer un fichier contenant les zones de la campagne.
 	/// @param[in] listMaps : Liste des zones de jeu.
-	/// @param[in] length : Longueur de la liste.
 	/// @return Aucune.
 	///
 	///////////////////////////////////////////////////////////////////////////////
@@ -2066,7 +2053,7 @@ extern "C"
 
 	///////////////////////////////////////////////////////////////////////////////
 	///
-	/// @fn void updateText(char* oldText, int lengthO, char* newText, int lengthN)
+	/// @fn void updateText(char* oldText, int, char* newText, int)
 	/// @brief Modifie un texte existant
 	/// @param[in] oldText : Le texte a modifier
 	/// @param[in] newText : La texte apres modification
@@ -2082,7 +2069,7 @@ extern "C"
 	
 	///////////////////////////////////////////////////////////////////////////////
 	///
-	/// @fn void resize(char* text, int length, unsigned int size)
+	/// @fn void resize(char* text, int, unsigned int size)
 	/// @brief Modifie la taille du texte
 	/// @param[in] text : Le texte a modifier
 	/// @param[in] size : La taille a appliquer au text
@@ -2097,7 +2084,7 @@ extern "C"
 
 	///////////////////////////////////////////////////////////////////////////////
 	///
-	/// @fn void changerCouleur(char* text, int length, float rouge, float vert, float bleu)
+	/// @fn void changerCouleur(char* text, int, float rouge, float vert, float bleu)
 	/// @brief Change la couleur du texte
 	/// @param[in] text : Le texte a modifier
 	/// @param[in] rouge : La couleur rouge a appliquer (en RGB)
@@ -2114,7 +2101,7 @@ extern "C"
 
 	///////////////////////////////////////////////////////////////////////////////
 	///
-	/// @fn void changerCouleurV(char* text, int length, float couleur[3])
+	/// @fn void changerCouleurV(char* text, int, float couleur[3])
 	/// @brief Change la couleur du texte
 	/// @param[in] text : Le texte a modifier
 	/// @param[in] couleur : La couleur a appliquer (en RGB)
@@ -2130,7 +2117,7 @@ extern "C"
 
 	///////////////////////////////////////////////////////////////////////////////
 	///
-	/// @fn void repositionner(char* text, int length, int x, int y)
+	/// @fn void repositionner(char* text, int, int x, int y)
 	/// @brief Modifie la position du texte
 	/// @param[in] text : Le texte a modifier
 	/// @param[in] x : La position du texte en x
@@ -2147,7 +2134,7 @@ extern "C"
 
 	///////////////////////////////////////////////////////////////////////////////
 	///
-	/// @fn void suprimerText(char* text, int length)
+	/// @fn void suprimerText(char* text, int)
 	/// @brief Efface un texte du rendu
 	/// @param[in] text : Le texte a effacer
 	/// @return Aucune.
@@ -2174,10 +2161,9 @@ extern "C"
 
 	///////////////////////////////////////////////////////////////////////////////
 	///
-	/// @fn void preparerUsineArbre(char* text, int length)
+	/// @fn void preparerUsineArbre(char* text, int)
 	/// @brief Cree une usine
 	/// @param[in] text L'usine a cree
-	/// @param[in] length Taille d string de l'usine
 	/// @return Aucune.
 	///
 	///////////////////////////////////////////////////////////////////////////////

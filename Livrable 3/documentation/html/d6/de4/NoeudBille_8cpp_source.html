@@ -162,7 +162,7 @@ $(document).ready(function(){initNavTree('d6/de4/NoeudBille_8cpp_source.html','.
 <div class="line"><a name="l00087"></a><span class="lineno">   87</span>&#160;        <span class="comment">/* TO DO SOMETHING HERE */</span></div>
 <div class="line"><a name="l00088"></a><span class="lineno">   88</span>&#160;    }</div>
 <div class="line"><a name="l00089"></a><span class="lineno">   89</span>&#160;    <a class="code" href="../../d7/d8e/classNoeudAbstrait.html#afb47e14bf16a33e071e48da8ecbc0af1">NoeudAbstrait::appliquerAfficher</a>();</div>
-<div class="line"><a name="l00090"></a><span class="lineno">   90</span>&#160;    glTranslatef(0.0, -10, 0.0); <span class="comment">// Il faudrait changer le mod�le</span></div>
+<div class="line"><a name="l00090"></a><span class="lineno">   90</span>&#160;    glTranslatef(0.0, -10, 0.0); <span class="comment">// Il faudrait changer le modele</span></div>
 <div class="line"><a name="l00091"></a><span class="lineno">   91</span>&#160;    <a class="code" href="../../d7/d8e/classNoeudAbstrait.html#ae8a66829b09228bb7091481234abb672">liste_</a>-&gt;dessiner();</div>
 <div class="line"><a name="l00092"></a><span class="lineno">   92</span>&#160;    glPopAttrib();</div>
 <div class="line"><a name="l00093"></a><span class="lineno">   93</span>&#160;    glPopMatrix();</div>
@@ -231,7 +231,7 @@ $(document).ready(function(){initNavTree('d6/de4/NoeudBille_8cpp_source.html','.
 <div class="line"><a name="l00173"></a><span class="lineno">  173</span>&#160;</div>
 <div class="line"><a name="l00174"></a><span class="lineno">  174</span>&#160;    <span class="keywordflow">if</span> (glm::length(<a class="code" href="../../d7/d8e/classNoeudAbstrait.html#a7fadd189589f7f47ab3117ed4755d10d">vitesse_</a>) &gt; <a class="code" href="../../db/d8e/AnimationNoeudsDefine_8h.html#a93b5bed6aa9a628122fe30839530116b">VITESSE_MAX_NOEUD_BILLE</a>)</div>
 <div class="line"><a name="l00175"></a><span class="lineno">  175</span>&#160;    {</div>
-<div class="line"><a name="l00176"></a><span class="lineno">  176</span>&#160;        <a class="code" href="../../d7/d8e/classNoeudAbstrait.html#a7fadd189589f7f47ab3117ed4755d10d">vitesse_</a> = <a class="code" href="../../db/d8e/AnimationNoeudsDefine_8h.html#a93b5bed6aa9a628122fe30839530116b">VITESSE_MAX_NOEUD_BILLE</a> * glm::normalize(<a class="code" href="../../d7/d8e/classNoeudAbstrait.html#a7fadd189589f7f47ab3117ed4755d10d">vitesse_</a>); <span class="comment">// Meme direction, mais module ramen� a VITESSE_MAX</span></div>
+<div class="line"><a name="l00176"></a><span class="lineno">  176</span>&#160;        <a class="code" href="../../d7/d8e/classNoeudAbstrait.html#a7fadd189589f7f47ab3117ed4755d10d">vitesse_</a> = <a class="code" href="../../db/d8e/AnimationNoeudsDefine_8h.html#a93b5bed6aa9a628122fe30839530116b">VITESSE_MAX_NOEUD_BILLE</a> * glm::normalize(<a class="code" href="../../d7/d8e/classNoeudAbstrait.html#a7fadd189589f7f47ab3117ed4755d10d">vitesse_</a>); <span class="comment">// Meme direction, mais module ramene a VITESSE_MAX</span></div>
 <div class="line"><a name="l00177"></a><span class="lineno">  177</span>&#160;    }</div>
 <div class="line"><a name="l00178"></a><span class="lineno">  178</span>&#160;</div>
 <div class="line"><a name="l00179"></a><span class="lineno">  179</span>&#160;    <span class="comment">// Calcul de la nouvelle position </span></div>
@@ -245,7 +245,7 @@ $(document).ready(function(){initNavTree('d6/de4/NoeudBille_8cpp_source.html','.
 <div class="line"><a name="l00187"></a><span class="lineno">  187</span>&#160;</div>
 <div class="line"><a name="l00188"></a><span class="lineno">  188</span>&#160;    <span class="keywordflow">if</span> (glm::length(nouvelleVitesse) &gt; <a class="code" href="../../db/d8e/AnimationNoeudsDefine_8h.html#a93b5bed6aa9a628122fe30839530116b">VITESSE_MAX_NOEUD_BILLE</a>)</div>
 <div class="line"><a name="l00189"></a><span class="lineno">  189</span>&#160;    {</div>
-<div class="line"><a name="l00190"></a><span class="lineno">  190</span>&#160;        nouvelleVitesse = <a class="code" href="../../db/d8e/AnimationNoeudsDefine_8h.html#a93b5bed6aa9a628122fe30839530116b">VITESSE_MAX_NOEUD_BILLE</a> * glm::normalize(nouvelleVitesse);<span class="comment">// Meme direction, mais module ramen� a VITESSE_MAX</span></div>
+<div class="line"><a name="l00190"></a><span class="lineno">  190</span>&#160;        nouvelleVitesse = <a class="code" href="../../db/d8e/AnimationNoeudsDefine_8h.html#a93b5bed6aa9a628122fe30839530116b">VITESSE_MAX_NOEUD_BILLE</a> * glm::normalize(nouvelleVitesse);<span class="comment">// Meme direction, mais module ramene a VITESSE_MAX</span></div>
 <div class="line"><a name="l00191"></a><span class="lineno">  191</span>&#160;    }</div>
 <div class="line"><a name="l00192"></a><span class="lineno">  192</span>&#160;    <span class="comment">// Calcul de la rotation</span></div>
 <div class="line"><a name="l00193"></a><span class="lineno">  193</span>&#160;    <span class="comment">// =====================</span></div>
@@ -448,7 +448,7 @@ $(document).ready(function(){initNavTree('d6/de4/NoeudBille_8cpp_source.html','.
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="../../dir_937900b87e0c7a5fa01190c395fb83f7.html">Sources</a></li><li class="navelem"><a class="el" href="../../dir_5638be7ced97c879b21b23536e800e77.html">DLL</a></li><li class="navelem"><a class="el" href="../../dir_62d639a286ecc255a3a5ac9c06fd99c9.html">Arbre</a></li><li class="navelem"><a class="el" href="../../dir_e82573f31c5b178adacdeab0db63caa9.html">Noeuds</a></li><li class="navelem"><a class="el" href="../../d6/de4/NoeudBille_8cpp.html">NoeudBille.cpp</a></li>
-    <li class="footer">Généré le Lundi 13 Avril 2015 19:47:53 pour Pain Ball par
+    <li class="footer">Généré le Lundi 13 Avril 2015 21:43:47 pour Pain Ball par
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="../../doxygen.png" alt="doxygen"/></a> 1.8.9.1 </li>
   </ul>

@@ -11,7 +11,7 @@ var FacadeInterfaceNative_8h =
     [ "agrandirSelection", "db/dc9/FacadeInterfaceNative_8h.html#a15143f07a17a80f982440d3ab56e987e", null ],
     [ "ajusterBGM", "db/dc9/FacadeInterfaceNative_8h.html#ac226e2886201245488c04f7b3d82f960", null ],
     [ "ajusterSFX", "db/dc9/FacadeInterfaceNative_8h.html#a77cf3941213f1854d2409fcf5334ae02", null ],
-    [ "ajusterVolume", "db/dc9/FacadeInterfaceNative_8h.html#a75f7babb8fd8247d9c726abbd4427813", null ],
+    [ "ajusterVolume", "db/dc9/FacadeInterfaceNative_8h.html#abe42cab0e699b27df0fcae20c52e2089", null ],
     [ "animer", "db/dc9/FacadeInterfaceNative_8h.html#a227f201168cb574e742384dac0ddcd76", null ],
     [ "animerJeu", "db/dc9/FacadeInterfaceNative_8h.html#a60fdd61933f2194f1ddc847b3b82d51d", null ],
     [ "annulerModifications", "db/dc9/FacadeInterfaceNative_8h.html#ad1b5afc7c0fd15a5defa4ea9563d6767", null ],

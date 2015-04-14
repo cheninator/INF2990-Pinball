@@ -159,7 +159,7 @@ $(document).ready(function(){initNavTree('d3/d89/QuadTree_8cpp_source.html','../
 <div class="line"><a name="l00098"></a><span class="lineno">   98</span>&#160;<span class="comment">    //                  |      |      |</span></div>
 <div class="line"><a name="l00099"></a><span class="lineno">   99</span>&#160;<span class="comment">    //                  |  SO  |  SE  |</span></div>
 <div class="line"><a name="l00100"></a><span class="lineno">  100</span>&#160;<span class="comment">    //                  +------+------+</span></div>
-<div class="line"><a name="l00101"></a><span class="lineno">  101</span>&#160;<span class="comment">    //  inférieurGauche</span></div>
+<div class="line"><a name="l00101"></a><span class="lineno">  101</span>&#160;<span class="comment">    //  inferieurGauche</span></div>
 <div class="line"><a name="l00102"></a><span class="lineno">  102</span>&#160;<span class="comment"></span></div>
 <div class="line"><a name="l00103"></a><span class="lineno">  103</span>&#160;<span class="comment">    double centreX = ((superieurDroit_.x - inferieurGauche_.x) / 2.0) + inferieurGauche_.x;</span></div>
 <div class="line"><a name="l00104"></a><span class="lineno">  104</span>&#160;<span class="comment">    double centreY = ((superieurDroit_.y - inferieurGauche_.y) / 2.0) + inferieurGauche_.y;</span></div>
@@ -264,23 +264,23 @@ $(document).ready(function(){initNavTree('d3/d89/QuadTree_8cpp_source.html','../
 <div class="line"><a name="l00241"></a><span class="lineno">  241</span>&#160;<span class="comment"></span></div>
 <div class="line"><a name="l00255"></a><span class="lineno">  255</span>&#160;<span class="comment">QuadTree* QuadTree::obtenirQuadrant(NoeudAbstrait* noeud)</span></div>
 <div class="line"><a name="l00256"></a><span class="lineno">  256</span>&#160;<span class="comment">{</span></div>
-<div class="line"><a name="l00257"></a><span class="lineno">  257</span>&#160;<span class="comment">    // Si le noeud est complètement dans le quadrant Nord-Est</span></div>
+<div class="line"><a name="l00257"></a><span class="lineno">  257</span>&#160;<span class="comment">    // Si le noeud est completement dans le quadrant Nord-Est</span></div>
 <div class="line"><a name="l00258"></a><span class="lineno">  258</span>&#160;<span class="comment">    if (estDansQuadTree(noeud, nordEst_))</span></div>
 <div class="line"><a name="l00259"></a><span class="lineno">  259</span>&#160;<span class="comment">        return nordEst_;</span></div>
 <div class="line"><a name="l00260"></a><span class="lineno">  260</span>&#160;<span class="comment"></span></div>
-<div class="line"><a name="l00261"></a><span class="lineno">  261</span>&#160;<span class="comment">    // Si le noeud est complètement dans le quadrant Nord-Ouest</span></div>
+<div class="line"><a name="l00261"></a><span class="lineno">  261</span>&#160;<span class="comment">    // Si le noeud est completement dans le quadrant Nord-Ouest</span></div>
 <div class="line"><a name="l00262"></a><span class="lineno">  262</span>&#160;<span class="comment">    if (estDansQuadTree(noeud, nordOuest_))</span></div>
 <div class="line"><a name="l00263"></a><span class="lineno">  263</span>&#160;<span class="comment">        return nordOuest_;</span></div>
 <div class="line"><a name="l00264"></a><span class="lineno">  264</span>&#160;<span class="comment"></span></div>
-<div class="line"><a name="l00265"></a><span class="lineno">  265</span>&#160;<span class="comment">    // Si le noeud est complètement dans le quadrant Sud-Ouest</span></div>
+<div class="line"><a name="l00265"></a><span class="lineno">  265</span>&#160;<span class="comment">    // Si le noeud est completement dans le quadrant Sud-Ouest</span></div>
 <div class="line"><a name="l00266"></a><span class="lineno">  266</span>&#160;<span class="comment">    if (estDansQuadTree(noeud, sudOuest_))</span></div>
 <div class="line"><a name="l00267"></a><span class="lineno">  267</span>&#160;<span class="comment">        return sudOuest_;</span></div>
 <div class="line"><a name="l00268"></a><span class="lineno">  268</span>&#160;<span class="comment"></span></div>
-<div class="line"><a name="l00269"></a><span class="lineno">  269</span>&#160;<span class="comment">    // Si le noeud est complètement dans le quadrant Sud-Est</span></div>
+<div class="line"><a name="l00269"></a><span class="lineno">  269</span>&#160;<span class="comment">    // Si le noeud est completement dans le quadrant Sud-Est</span></div>
 <div class="line"><a name="l00270"></a><span class="lineno">  270</span>&#160;<span class="comment">    if (estDansQuadTree(noeud, sudEst_))</span></div>
 <div class="line"><a name="l00271"></a><span class="lineno">  271</span>&#160;<span class="comment">        return sudEst_;</span></div>
 <div class="line"><a name="l00272"></a><span class="lineno">  272</span>&#160;<span class="comment"></span></div>
-<div class="line"><a name="l00273"></a><span class="lineno">  273</span>&#160;<span class="comment">    // Si le noeud est à l&#39;intersection de deux quadrants et plus</span></div>
+<div class="line"><a name="l00273"></a><span class="lineno">  273</span>&#160;<span class="comment">    // Si le noeud est a l&#39;intersection de deux quadrants et plus</span></div>
 <div class="line"><a name="l00274"></a><span class="lineno">  274</span>&#160;<span class="comment">    else</span></div>
 <div class="line"><a name="l00275"></a><span class="lineno">  275</span>&#160;<span class="comment">        return this;</span></div>
 <div class="line"><a name="l00276"></a><span class="lineno">  276</span>&#160;<span class="comment">}</span></div>
@@ -291,17 +291,17 @@ $(document).ready(function(){initNavTree('d3/d89/QuadTree_8cpp_source.html','../
 <div class="line"><a name="l00292"></a><span class="lineno">  292</span>&#160;<span class="comment">    if (!noeud-&gt;estAffiche())</span></div>
 <div class="line"><a name="l00293"></a><span class="lineno">  293</span>&#160;<span class="comment">        return false;</span></div>
 <div class="line"><a name="l00294"></a><span class="lineno">  294</span>&#160;<span class="comment"></span></div>
-<div class="line"><a name="l00295"></a><span class="lineno">  295</span>&#160;<span class="comment">    // Insérer le noeud seulement si le noeud est dans le Quadtree</span></div>
+<div class="line"><a name="l00295"></a><span class="lineno">  295</span>&#160;<span class="comment">    // Inserer le noeud seulement si le noeud est dans le Quadtree</span></div>
 <div class="line"><a name="l00296"></a><span class="lineno">  296</span>&#160;<span class="comment">    if (estDansQuadTree(noeud, this))</span></div>
 <div class="line"><a name="l00297"></a><span class="lineno">  297</span>&#160;<span class="comment">    {</span></div>
-<div class="line"><a name="l00298"></a><span class="lineno">  298</span>&#160;<span class="comment">        // Insérer l&#39;objet dans le QuadTree courant si aucun de ses sous QuadTree ne peut l&#39;accueuillir</span></div>
+<div class="line"><a name="l00298"></a><span class="lineno">  298</span>&#160;<span class="comment">        // Inserer l&#39;objet dans le QuadTree courant si aucun de ses sous QuadTree ne peut l&#39;accueuillir</span></div>
 <div class="line"><a name="l00299"></a><span class="lineno">  299</span>&#160;<span class="comment">        if (objets_.size() &lt; MAX_CAPACITY &amp;&amp; niveauCourant_ &lt; MAX_LEVEL &amp;&amp; obtenirQuadrant(noeud) == this)</span></div>
 <div class="line"><a name="l00300"></a><span class="lineno">  300</span>&#160;<span class="comment">        {</span></div>
 <div class="line"><a name="l00301"></a><span class="lineno">  301</span>&#160;<span class="comment">            objets_.push_back(noeud);</span></div>
 <div class="line"><a name="l00302"></a><span class="lineno">  302</span>&#160;<span class="comment">            return true;</span></div>
 <div class="line"><a name="l00303"></a><span class="lineno">  303</span>&#160;<span class="comment">        }</span></div>
 <div class="line"><a name="l00304"></a><span class="lineno">  304</span>&#160;<span class="comment"></span></div>
-<div class="line"><a name="l00305"></a><span class="lineno">  305</span>&#160;<span class="comment">        // Subdiviser et reassigner les objets déjà existants</span></div>
+<div class="line"><a name="l00305"></a><span class="lineno">  305</span>&#160;<span class="comment">        // Subdiviser et reassigner les objets deja existants</span></div>
 <div class="line"><a name="l00306"></a><span class="lineno">  306</span>&#160;<span class="comment">        if (nordEst_ == nullptr)</span></div>
 <div class="line"><a name="l00307"></a><span class="lineno">  307</span>&#160;<span class="comment">        {</span></div>
 <div class="line"><a name="l00308"></a><span class="lineno">  308</span>&#160;<span class="comment">            divide();</span></div>
@@ -311,7 +311,7 @@ $(document).ready(function(){initNavTree('d3/d89/QuadTree_8cpp_source.html','../
 <div class="line"><a name="l00312"></a><span class="lineno">  312</span>&#160;<span class="comment"></span></div>
 <div class="line"><a name="l00313"></a><span class="lineno">  313</span>&#160;<span class="comment">            objets_.clear();</span></div>
 <div class="line"><a name="l00314"></a><span class="lineno">  314</span>&#160;<span class="comment"></span></div>
-<div class="line"><a name="l00315"></a><span class="lineno">  315</span>&#160;<span class="comment">            // Reassigner les objets qui étaient précédemment insérés </span></div>
+<div class="line"><a name="l00315"></a><span class="lineno">  315</span>&#160;<span class="comment">            // Reassigner les objets qui etaient precedemment inseres </span></div>
 <div class="line"><a name="l00316"></a><span class="lineno">  316</span>&#160;<span class="comment">            for (iter = copy.begin(); iter != copy.end(); iter++)</span></div>
 <div class="line"><a name="l00317"></a><span class="lineno">  317</span>&#160;<span class="comment">                obtenirQuadrant(*iter)-&gt;insert(*iter);</span></div>
 <div class="line"><a name="l00318"></a><span class="lineno">  318</span>&#160;<span class="comment"></span></div>
@@ -321,7 +321,7 @@ $(document).ready(function(){initNavTree('d3/d89/QuadTree_8cpp_source.html','../
 <div class="line"><a name="l00322"></a><span class="lineno">  322</span>&#160;<span class="comment">            return true;</span></div>
 <div class="line"><a name="l00323"></a><span class="lineno">  323</span>&#160;<span class="comment">        }</span></div>
 <div class="line"><a name="l00324"></a><span class="lineno">  324</span>&#160;<span class="comment"></span></div>
-<div class="line"><a name="l00325"></a><span class="lineno">  325</span>&#160;<span class="comment">        // Si le QuadTree contient déjà des sous QuadTree, insérer le noeud dans le bon QuadTree</span></div>
+<div class="line"><a name="l00325"></a><span class="lineno">  325</span>&#160;<span class="comment">        // Si le QuadTree contient deja des sous QuadTree, inserer le noeud dans le bon QuadTree</span></div>
 <div class="line"><a name="l00326"></a><span class="lineno">  326</span>&#160;<span class="comment">        else if (nordEst_ != nullptr &amp;&amp; obtenirQuadrant(noeud) != this)</span></div>
 <div class="line"><a name="l00327"></a><span class="lineno">  327</span>&#160;<span class="comment">        {</span></div>
 <div class="line"><a name="l00328"></a><span class="lineno">  328</span>&#160;<span class="comment">            obtenirQuadrant(noeud)-&gt;insert(noeud);</span></div>
@@ -334,7 +334,7 @@ $(document).ready(function(){initNavTree('d3/d89/QuadTree_8cpp_source.html','../
 <div class="line"><a name="l00335"></a><span class="lineno">  335</span>&#160;<span class="comment"></span></div>
 <div class="line"><a name="l00336"></a><span class="lineno">  336</span>&#160;<span class="comment">    }</span></div>
 <div class="line"><a name="l00337"></a><span class="lineno">  337</span>&#160;<span class="comment"></span></div>
-<div class="line"><a name="l00338"></a><span class="lineno">  338</span>&#160;<span class="comment">    // Ne pas insérer le noeud, il n&#39;est pas dans les limites</span></div>
+<div class="line"><a name="l00338"></a><span class="lineno">  338</span>&#160;<span class="comment">    // Ne pas inserer le noeud, il n&#39;est pas dans les limites</span></div>
 <div class="line"><a name="l00339"></a><span class="lineno">  339</span>&#160;<span class="comment">    else</span></div>
 <div class="line"><a name="l00340"></a><span class="lineno">  340</span>&#160;<span class="comment">        return false;</span></div>
 <div class="line"><a name="l00341"></a><span class="lineno">  341</span>&#160;<span class="comment"></span></div>
@@ -432,7 +432,7 @@ $(document).ready(function(){initNavTree('d3/d89/QuadTree_8cpp_source.html','../
 <div class="line"><a name="l00459"></a><span class="lineno">  459</span>&#160;<span class="comment">    {</span></div>
 <div class="line"><a name="l00460"></a><span class="lineno">  460</span>&#160;<span class="comment">        std::list&lt;NoeudAbstrait*&gt;::iterator iter;</span></div>
 <div class="line"><a name="l00461"></a><span class="lineno">  461</span>&#160;<span class="comment"></span></div>
-<div class="line"><a name="l00462"></a><span class="lineno">  462</span>&#160;<span class="comment">        // On vérifie s&#39;il est dans un sous QuadTree</span></div>
+<div class="line"><a name="l00462"></a><span class="lineno">  462</span>&#160;<span class="comment">        // On verifie s&#39;il est dans un sous QuadTree</span></div>
 <div class="line"><a name="l00463"></a><span class="lineno">  463</span>&#160;<span class="comment">        if (obtenirQuadrant(noeud) != this)</span></div>
 <div class="line"><a name="l00464"></a><span class="lineno">  464</span>&#160;<span class="comment">        {</span></div>
 <div class="line"><a name="l00465"></a><span class="lineno">  465</span>&#160;<span class="comment">            obtenirQuadrant(noeud)-&gt;remove(noeud);</span></div>
@@ -456,7 +456,7 @@ $(document).ready(function(){initNavTree('d3/d89/QuadTree_8cpp_source.html','../
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="../../dir_937900b87e0c7a5fa01190c395fb83f7.html">Sources</a></li><li class="navelem"><a class="el" href="../../dir_5638be7ced97c879b21b23536e800e77.html">DLL</a></li><li class="navelem"><a class="el" href="../../dir_eb5aff3ed5d7a0028d6609e90641f4f2.html">QuadTree</a></li><li class="navelem"><a class="el" href="../../d3/d89/QuadTree_8cpp.html">QuadTree.cpp</a></li>
-    <li class="footer">GÃ©nÃ©rÃ© le Lundi 13 Avril 2015 19:47:54 pour Pain Ball par
+    <li class="footer">GÃ©nÃ©rÃ© le Lundi 13 Avril 2015 21:43:50 pour Pain Ball par
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="../../doxygen.png" alt="doxygen"/></a> 1.8.9.1 </li>
   </ul>

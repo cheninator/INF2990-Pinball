@@ -163,7 +163,7 @@ $(document).ready(function(){initNavTree('dd/d5c/NoeudRessort_8cpp_source.html',
 <div class="line"><a name="l00100"></a><span class="lineno">  100</span>&#160;        <span class="keywordflow">if</span> (<a class="code" href="../../d7/d8e/classNoeudAbstrait.html#ac59068cb47bf47badf16e8e6c74ed05c">scale_</a>.y &gt; 0.3)</div>
 <div class="line"><a name="l00101"></a><span class="lineno">  101</span>&#160;        {</div>
 <div class="line"><a name="l00102"></a><span class="lineno">  102</span>&#160;            <a class="code" href="../../d7/d8e/classNoeudAbstrait.html#ac59068cb47bf47badf16e8e6c74ed05c">scale_</a> = { <a class="code" href="../../d7/d8e/classNoeudAbstrait.html#ac59068cb47bf47badf16e8e6c74ed05c">scale_</a>.x, <a class="code" href="../../d7/d8e/classNoeudAbstrait.html#ac59068cb47bf47badf16e8e6c74ed05c">scale_</a>.y * exp(temps * log(0.0002)), <a class="code" href="../../d7/d8e/classNoeudAbstrait.html#ac59068cb47bf47badf16e8e6c74ed05c">scale_</a>.z }; <span class="comment">// exp(temps * log(0.002)) = 0.002^temps</span></div>
-<div class="line"><a name="l00103"></a><span class="lineno">  103</span>&#160;            <a class="code" href="../../d7/d8e/classNoeudAbstrait.html#ae8a50095413ac131cd6d07a384a9ff5d">positionRelative_</a> -= <a class="code" href="../../d7/d8e/classNoeudAbstrait.html#ac59068cb47bf47badf16e8e6c74ed05c">scale_</a>.y /5 * <a class="code" href="../../d3/de7/classNoeudRessort.html#a2ba1435f57b9ac165be1273b97e9dfcc">translationCompression_</a> ; <span class="comment">// Très heuristique comme calcul </span></div>
+<div class="line"><a name="l00103"></a><span class="lineno">  103</span>&#160;            <a class="code" href="../../d7/d8e/classNoeudAbstrait.html#ae8a50095413ac131cd6d07a384a9ff5d">positionRelative_</a> -= <a class="code" href="../../d7/d8e/classNoeudAbstrait.html#ac59068cb47bf47badf16e8e6c74ed05c">scale_</a>.y /5 * <a class="code" href="../../d3/de7/classNoeudRessort.html#a2ba1435f57b9ac165be1273b97e9dfcc">translationCompression_</a> ; <span class="comment">// Tres heuristique comme calcul </span></div>
 <div class="line"><a name="l00104"></a><span class="lineno">  104</span>&#160;            <span class="comment">// Updater l&#39;attribut distanceCompresseion_</span></div>
 <div class="line"><a name="l00105"></a><span class="lineno">  105</span>&#160;        }</div>
 <div class="line"><a name="l00106"></a><span class="lineno">  106</span>&#160;        <span class="keywordflow">break</span>;</div>
@@ -248,7 +248,7 @@ $(document).ready(function(){initNavTree('dd/d5c/NoeudRessort_8cpp_source.html',
 <div class="line"><a name="l00216"></a><span class="lineno">  216</span>&#160;    {</div>
 <div class="line"><a name="l00217"></a><span class="lineno">  217</span>&#160;    <span class="keywordflow">case</span> <a class="code" href="../../d3/de7/classNoeudRessort.html#a7e0e63387b5ab76e8e193c873e101961a7d8c379d91fb2f693b06092f0d0cf725">EN_COMPRESSION</a>:</div>
 <div class="line"><a name="l00218"></a><span class="lineno">  218</span>&#160;    <span class="keywordflow">case</span> <a class="code" href="../../d3/de7/classNoeudRessort.html#a7e0e63387b5ab76e8e193c873e101961ad2b8636a404003e1add870a3349d0dc9">AU_REPOS</a>:</div>
-<div class="line"><a name="l00219"></a><span class="lineno">  219</span>&#160;            <span class="comment">// Modifier la vitesse de la bille en fonction de bille reçue en paramètre </span></div>
+<div class="line"><a name="l00219"></a><span class="lineno">  219</span>&#160;            <span class="comment">// Modifier la vitesse de la bille en fonction de bille reçue en parametre </span></div>
 <div class="line"><a name="l00220"></a><span class="lineno">  220</span>&#160;        {</div>
 <div class="line"><a name="l00221"></a><span class="lineno">  221</span>&#160;            glm::dvec3 vitesseInitiale = bille-&gt;<a class="code" href="../../d7/d8e/classNoeudAbstrait.html#aa0d8a8493fd9c26b50f8c256614f6e4a">obtenirVitesse</a>();</div>
 <div class="line"><a name="l00222"></a><span class="lineno">  222</span>&#160;            glm::dvec3 vitesseNormaleInitiale = glm::proj(vitesseInitiale, details.direction); <span class="comment">// Necessaire pour connaitre la vitesse tangentielle.</span></div>
@@ -334,7 +334,7 @@ $(document).ready(function(){initNavTree('dd/d5c/NoeudRessort_8cpp_source.html',
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="../../dir_937900b87e0c7a5fa01190c395fb83f7.html">Sources</a></li><li class="navelem"><a class="el" href="../../dir_5638be7ced97c879b21b23536e800e77.html">DLL</a></li><li class="navelem"><a class="el" href="../../dir_62d639a286ecc255a3a5ac9c06fd99c9.html">Arbre</a></li><li class="navelem"><a class="el" href="../../dir_e82573f31c5b178adacdeab0db63caa9.html">Noeuds</a></li><li class="navelem"><a class="el" href="../../dd/d5c/NoeudRessort_8cpp.html">NoeudRessort.cpp</a></li>
-    <li class="footer">GÃ©nÃ©rÃ© le Lundi 13 Avril 2015 19:47:53 pour Pain Ball par
+    <li class="footer">GÃ©nÃ©rÃ© le Lundi 13 Avril 2015 21:43:47 pour Pain Ball par
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="../../doxygen.png" alt="doxygen"/></a> 1.8.9.1 </li>
   </ul>

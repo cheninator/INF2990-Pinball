@@ -16,7 +16,7 @@
 /// @fn ConfigScene::ConfigScene()
 ///
 /// Assigne les valeurs par defaut des attributs de classe
-////
+///
 /// @return Aucune (constructeur).
 ///
 ////////////////////////////////////////////////////////////////////////
@@ -201,7 +201,6 @@ void ConfigScene::modifierConfiguration(int config[13])
 /// Cette fonction assigne les nouvelles informations de derniere campagne jouee.
 ///
 /// @param[in] maps : La liste des informations de derniere campagne
-/// @param[in] length : Taille du string maps
 ///
 /// @return Aucune.
 ///

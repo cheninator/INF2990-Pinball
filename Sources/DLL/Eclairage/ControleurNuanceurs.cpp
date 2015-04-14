@@ -232,7 +232,7 @@ void ControleurNuanceurs::assignerEtatSpot(int etat)
 /// 
 /// @brief Dit au nuanceur si le fragment vient de la scene ou du skybox.
 /// 
-/// @param[in] etat : 1 skybox, 0 pour pas skybox
+/// @param[in] skybox : 1 skybox, 0 pour pas skybox
 /// 
 /// @return aucun.
 ///
@@ -248,7 +248,7 @@ void ControleurNuanceurs::assignerSkybox(int skybox)
 /// 
 /// @brief Dit au nuanceur si le fragment vient de la scene ou du skybox.
 ///
-/// @param[in] etat : 1 skybox, 0 pour pas skybox
+/// @param[in] estTable : Si la noeud est une table
 /// 
 /// @return aucun.
 ///

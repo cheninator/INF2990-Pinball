@@ -152,7 +152,7 @@ void SingletonGlobal::getAndSetTempObjDirectory()
 
 ////////////////////////////////////////////////////////////////////////
 ///
-/// @fn ControleurSon* obtenirControleurSon()
+/// @fn ControleurSon* SingletonGlobal::obtenirControleurSon()
 ///
 /// Retourne un pointeur vers le controleur de son
 /// Et le construit si il n'existe pas
@@ -166,8 +166,16 @@ ControleurSon*  SingletonGlobal::obtenirControleurSon()
 		mySound_ = new ControleurSon(desactiverSon);
 	}
 	return mySound_;
-};
+}
 
+
+////////////////////////////////////////////////////////////////////////
+///
+/// @fn double SingletonGlobal::obtenirTableMaxX() const 
+///
+/// @return la position max X de la table
+///
+////////////////////////////////////////////////////////////////////////
 double SingletonGlobal::obtenirTableMaxX() const 
 { 
 	double position = boiteTable_.coinMax.x + TRANSLATE_X_NOEUD_TABLE;
@@ -176,6 +184,14 @@ double SingletonGlobal::obtenirTableMaxX() const
 	return position;
 }
 
+
+////////////////////////////////////////////////////////////////////////
+///
+/// @fn double SingletonGlobal::obtenirTableMaxY() const 
+///
+/// @return la position max Y de la table
+///
+////////////////////////////////////////////////////////////////////////
 double SingletonGlobal::obtenirTableMaxY() const
 { 
 	double position = boiteTable_.coinMax.y + TRANSLATE_Y_NOEUD_TABLE;
@@ -184,6 +200,14 @@ double SingletonGlobal::obtenirTableMaxY() const
 	return position;
 }
 
+
+////////////////////////////////////////////////////////////////////////
+///
+/// @fn double SingletonGlobal::obtenirTableMinX() const 
+///
+/// @return la position min X de la table
+///
+////////////////////////////////////////////////////////////////////////
 double SingletonGlobal::obtenirTableMinX() const
 { 
 	double position = boiteTable_.coinMin.x + TRANSLATE_X_NOEUD_TABLE;
@@ -192,6 +216,14 @@ double SingletonGlobal::obtenirTableMinX() const
 	return position;
 }
 
+
+////////////////////////////////////////////////////////////////////////
+///
+/// @fn double SingletonGlobal::obtenirTableMinY() const 
+///
+/// @return la position min Y de la table
+///
+////////////////////////////////////////////////////////////////////////
 double SingletonGlobal::obtenirTableMinY() const 
 {
 	double position = boiteTable_.coinMin.y + TRANSLATE_Y_NOEUD_TABLE; 
@@ -200,6 +232,14 @@ double SingletonGlobal::obtenirTableMinY() const
 	return position;
 }
 
+
+////////////////////////////////////////////////////////////////////////
+///
+/// @fn double SingletonGlobal::obtenirTableMinZ() const 
+///
+/// @return la position z de la table
+///
+////////////////////////////////////////////////////////////////////////
 double SingletonGlobal::obtenirTableMinZ() const
 {
 	double position = boiteTable_.coinMin.z;
