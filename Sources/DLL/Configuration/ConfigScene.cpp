@@ -21,6 +21,7 @@
 ///
 ////////////////////////////////////////////////////////////////////////
 ConfigScene::ConfigScene()
+	:derniereConfiguration_("lastConfig.bin"), derniereCampagne_("lastCampaign.txt")
 {
 	config_ = new int[13];
 	lireConfiguration();
