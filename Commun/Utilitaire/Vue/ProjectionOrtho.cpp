@@ -502,7 +502,7 @@ namespace vue {
 
 	////////////////////////////////////////////////////////////////////////
 	///
-	/// @fn bool zoomOutValide(double xBorneMin, double xBorneMax, double yBorneMin, double yBorneMax);
+	/// @fn bool zoomOutValide(double xBorneMin, double xBorneMax, double yBorneMin, double yBorneMax) const
 	///
 	/// Vérfie que les nouvelles bornes qui tentent d'être appliquées 
 	/// respecteront les bornes établies lors de la création de la Vue
@@ -516,7 +516,7 @@ namespace vue {
 	/// @return L'indication pour procéder au zoom
 	///
 	////////////////////////////////////////////////////////////////////////
-	bool ProjectionOrtho::zoomOutValide(double xBorneMin, double xBorneMax, double yBorneMin, double yBorneMax)
+	bool ProjectionOrtho::zoomOutValide(double xBorneMin, double xBorneMax, double yBorneMin, double yBorneMax) const
 	{
 		bool valide = false;
 		if (xBorneMax - xBorneMin >= zoomOutMax_ || yBorneMax - yBorneMin >= zoomOutMax_)
@@ -533,7 +533,7 @@ namespace vue {
 
 	////////////////////////////////////////////////////////////////////////
 	///
-	/// @fn bool zoomInValide(double xBorneMin, double xBorneMax, double yBorneMin, double yBorneMax);
+	/// @fn bool zoomInValide(double xBorneMin, double xBorneMax, double yBorneMin, double yBorneMax) const
 	///
 	/// Vérfie que les nouvelles bornes qui tentent d'être appliquées 
 	/// respecteront les bornes établies lors de la création de la Vue
@@ -547,7 +547,7 @@ namespace vue {
 	/// @return L'indication pour procéder au zoom
 	///
 	////////////////////////////////////////////////////////////////////////
-	bool ProjectionOrtho::zoomInValide(double xBorneMin, double xBorneMax, double yBorneMin, double yBorneMax)
+	bool ProjectionOrtho::zoomInValide(double xBorneMin, double xBorneMax, double yBorneMin, double yBorneMax) const
 	{
 		bool valide = false;
 		if ((xBorneMax - xBorneMin) <= zoomInMax_ || (yBorneMax - yBorneMin) <= zoomInMax_)

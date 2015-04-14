@@ -51,9 +51,9 @@ namespace opengl {
 		void initialiser();
 
 		/// Attacher un nuanceur
-		void attacherNuanceur(opengl::Nuanceur const& nuanceur);
+		void attacherNuanceur(const opengl::Nuanceur& nuanceur);
 		/// Détacher un nuanceur
-		void detacherNuanceur(opengl::Nuanceur const& nuanceur);
+		void detacherNuanceur(const opengl::Nuanceur& nuanceur);
 
 		/// Permet de savoir si au moins un nuanceur est attaché
 		inline bool possedeNuanceur() const;

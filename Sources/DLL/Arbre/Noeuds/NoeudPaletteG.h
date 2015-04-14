@@ -62,10 +62,10 @@ public:
 	virtual std::vector<glm::dvec3> obtenirVecteursEnglobants();
 
 	/// Fonction de droite pour la palette a l'etat original
-	double fonctionDroitePaletteOriginale(NoeudAbstrait* bille);
+	double fonctionDroitePaletteOriginale(NoeudAbstrait* bille) const;
 
 	/// Fonction de droite pour la palette lorsqu'elle est en mouvement
-	double fonctionDroitePaletteEnMouvement(NoeudAbstrait* bille);
+	double fonctionDroitePaletteEnMouvement(NoeudAbstrait* bille) const;
 
 private:
 

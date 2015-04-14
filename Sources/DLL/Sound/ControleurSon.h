@@ -89,7 +89,7 @@ private:
 	void setVolumeSFX();
 	
 	/// Retourne le path d'un fichier sonore
-	std::string getSFXPath(char* sName);
+	static std::string getSFXPath(char* sName);
 
 	/// Le FMOS SYSTEM des sons
 	FMOD::System* system_;

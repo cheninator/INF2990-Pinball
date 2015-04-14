@@ -71,11 +71,11 @@ namespace vue {
 		inline const double obtenirDistance() const;
 
 		/// Déplacement dans le plan perpendiculaire à la direction visée.
-		void deplacerXY(double deplacementX, double deplacementY);
+		static void deplacerXY(double deplacementX, double deplacementY);
 		/// Déplacement dans l'axe de la direction visée.
 		void deplacerZ(double deplacement, bool bougePointVise);
 		/// Rotation de la caméra autour de sa position.
-		void tournerXY(double rotationX, double rotationY, bool empecheInversion = true);
+		static void tournerXY(double rotationX, double rotationY, bool empecheInversion = true);
 		/// Rotation de la position de la caméra autour de son point de visé.
 		void orbiterXY(double rotationX, double rotationY, bool empecheInversion = true);
 		/// Appliquer la caméra orbite en fonction des angles
@@ -263,7 +263,7 @@ namespace vue {
 	/// @return Aucune
 	///
 	////////////////////////////////////////////////////////////////////////
-	inline void Camera::assignerDistance(double newDist)
+	inline void Camera::assignerDistance(const double newDist)
 	{
 		if (newDist > 0.0)
 			dist_ = newDist;

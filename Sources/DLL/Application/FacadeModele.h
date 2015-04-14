@@ -108,34 +108,34 @@ public:
 	void agrandirSelection(int x1, int y1, int x2, int y2);
 
 	/// Verifier si un point clique est dans la table
-	bool verifierCliqueDansTable(int x, int y);
+	static bool verifierCliqueDansTable(int x, int y);
 
 	/// Pour la duplication d'objets selectionnes
 	void dupliquerSelection(int i, int j);
 
 	/// Pour la sauvegarde de fichier XML
-	int creerXML(std::string path, int prop[6], bool force = false);
+	static int creerXML(std::string path, int prop[6], bool force = false);
 
 	/// Retourne true si la sauvegarde est autorise
-	int peutSauvegarder();
+	static int peutSauvegarder();
 
 	/// Verifier si un point clique est dans la table 
-	bool estDansTable(glm::dvec3 pointDuMonde);
+	static bool estDansTable(glm::dvec3 pointDuMonde);
 
 	/// Pour la suppression des objets selectionnes
-	bool supprimer();
+	static bool supprimer();
 
 	/// Obtenir le facteur de zoom applique
-	double obtenirZoomCourant();
+	double obtenirZoomCourant()  const;
 
 	/// Obtenir la taille de la fenetre
-	glm::ivec2 obtenirTailleFenetre();
+	glm::ivec2 obtenirTailleFenetre() const;
 
 	/// Obtenir le centre de masse en X
-	int obtenirCentreMasseX();
+	static int obtenirCentreMasseX();
 
 	/// Obtenir le centre de masse en Y
-	int obtenirCentreMasseY();
+	static int obtenirCentreMasseY();
 
 	/// Selectionner les objets sous un point clique
 	int selectionnerObjetSousPointClique(int i, int j, int hauteur, int largeur, bool ctrlDown = false, bool gaucheEnfonce = false, bool sourisSurSelection = false);
@@ -162,7 +162,7 @@ public:
 	static void positionnerMur(int originX, int originY, int x1, int y1, int x2, int y2, NoeudAbstrait* noeud);
 
 	/// Verifie si la selection est hors table lors de la duplication
-	bool duplicationEstHorsTable();
+	bool duplicationEstHorsTable() const;
 
 	/// Sauvegarde la derniere configuration valide et confirmee par l'usager
 	void sauvegarderConfig(int config[13]);
@@ -171,49 +171,49 @@ public:
 	int* obtenirProprietes(char* nomFichier);
 
 	/// Obtenir la difficulte du nom de la carte passe en parametre
-	int obtenirDifficulte(char* nomFichier);
+	static int obtenirDifficulte(char* nomFichier);
 
 	/// Sauvegarder la derniere campagne jouee par l'usager
 	void sauvegarderCampagne(char* nomFichier);
 
 	/// Obtenir les informations de derniere campagne jouee par l'usager
-	std::string obtenirDerniereCampagne();
+	std::string obtenirDerniereCampagne() const;
 
 	/// Compresser un ressort
-	void compresserRessort();
+	void compresserRessort() const;
 
 	/// Relacher le ressort
-	void relacherRessort();
+	void relacherRessort() const;
 
 	//void construireQuadTree();
 
 
 	int* obtenirConfiguration();
-	int	obtenirTouchePGJ1();
-	int  obtenirTouchePGJ2();
-	int  obtenirTouchePDJ1();
-	int  obtenirTouchePDJ2();
-	int  obtenirToucheRessort();
-	int  obtenirNombreDeBilles();
-	int  obtenirModeDoubleBille();
-	int  obtenirModeForceRebond();
-	int  obtenirAffichageGlobal();
+	int	obtenirTouchePGJ1() const;
+	int  obtenirTouchePGJ2() const;
+	int  obtenirTouchePDJ1() const;
+	int  obtenirTouchePDJ2() const;
+	int  obtenirToucheRessort() const;
+	int  obtenirNombreDeBilles() const;
+	int  obtenirModeDoubleBille() const;
+	int  obtenirModeForceRebond() const;
+	int  obtenirAffichageGlobal() const;
 	void bloquerAffichageGlobal(int active);
-	bool obtenirAI();
+	bool obtenirAI() const;
 
 	/// Construire des les 4 listes de palettes GJ1,DJ1, GJ2,DJ2
 	void construireListesPalettes();
 
 	/// Activer les palettes de chaque joueur
-	void activerPalettesGJ1();
-	void desactiverPalettesGJ1();
-	void activerPalettesDJ1();
-	void desactiverPalettesDJ1();
+	void activerPalettesGJ1() const;
+	void desactiverPalettesGJ1() const;
+	void activerPalettesDJ1() const;
+	void desactiverPalettesDJ1() const;
 
-	void activerPalettesGJ2();
-	void desactiverPalettesGJ2();
-	void activerPalettesDJ2();
-	void desactiverPalettesDJ2();
+	void activerPalettesGJ2() const;
+	void desactiverPalettesGJ2() const;
+	void activerPalettesDJ2() const;
+	void desactiverPalettesDJ2() const;
 
 	void supprimerBille();
 
@@ -223,7 +223,7 @@ public:
 	// Traiter l'ensemble des collisions
 	void traiterCollisions(float temps);
 	//void traiterCollisionsAvecQuadTree(float temps);
-	void updateForcesExternes();
+	void updateForcesExternes() const;
 
 	void mettreAJourListeBillesEtNoeuds();
 	void mettreAJourListeNoeuds();
@@ -234,15 +234,15 @@ public:
 	void assignerAI(bool actif);
 
 	/// Preare la creation de la bille (choisis le portail d'ou elle sera generee)
-	bool preparerBille();
+	static bool preparerBille();
 	/// Cree une bille a la position et scale demande
 	void creeBille(glm::dvec3 position, glm::dvec3 echelle);
 
-	void printCurrentTime();
-	double obtenirScaleMinMax();
+	static void printCurrentTime();
+	static double obtenirScaleMinMax();
 
 	void utiliserCameraOrbite(bool utiliseOrbite);
-	bool cameraEstOrbite();
+	bool cameraEstOrbite() const;
 
 	ControleurTexte* obtenircontroleurTexte();
 
@@ -252,7 +252,7 @@ public:
 	/// Pour transmettre les appels de lumiere du C# au controleur de Lumieres
 	void setLight(int lum, bool state);
 
-	glm::ivec2 obteniCoordonneeMax();
+	static glm::ivec2 obteniCoordonneeMax();
 
 	/// Journal des modifications
 	void sauvegarderHistorique();

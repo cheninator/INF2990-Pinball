@@ -287,7 +287,7 @@ void NoeudBille::setSpotLight(bool debug)
 /// @return aucun
 /// 
 ////////////////////////////////////////////////////////////////////////
-void NoeudBille::afficherVitesse(glm::dvec3 nouvelleVitesse)
+void NoeudBille::afficherVitesse(glm::dvec3 nouvelleVitesse) const
 {
 	if (debug_)
 	{

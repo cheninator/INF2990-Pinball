@@ -41,7 +41,7 @@ public:
 	//int getPointsTotales() { return pointsTotales_; };
 	//void setPointsTotales(int pointsTotales) { pointsTotales_ = pointsTotales; };
 
-	int getPointsPartie() { return pointsPartie_; };
+	int getPointsPartie() const { return pointsPartie_; };
 
 	void setPointsPartie(int pointsPartie) { pointsPartie_ = pointsPartie; };
 
@@ -60,13 +60,13 @@ public:
 	void retirerBille() { billesCourantes_--; billesPerdus_++; };
 	void ajouterBille() { billesCourantes_++; };
 	void afficherBille();
-	int obtenirBille() { return billesCourantes_; };
-	int obtenirNombreDeBillesPerdus()  { return billesPerdus_; };
+	int obtenirBille() const { return billesCourantes_; };
+	int obtenirNombreDeBillesPerdus() const { return billesPerdus_; };
 	void resetBille()  { billesCourantes_ = 0; };
 
 	void updateBilles();
 	void setAnimation(bool animer) { animer_ = animer; };
-	bool obtenirAnimation() { return animer_; };
+	bool obtenirAnimation() const { return animer_; };
 
 	void spawnBille(glm::dvec3 position, glm::dvec3 echelle, NoeudAbstrait* portail);
 

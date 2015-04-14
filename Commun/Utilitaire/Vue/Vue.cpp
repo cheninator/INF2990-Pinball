@@ -59,7 +59,7 @@ namespace vue {
 	///         autrement.
 	///
 	////////////////////////////////////////////////////////////////////////////
-	bool Vue::convertirClotureAVirtuelle(int x, int y, const math::Plan3D& plan, glm::dvec3& point) const
+	bool Vue::convertirClotureAVirtuelle(int x, int y, const math::Plan3D& plan, glm::dvec3& point)
 	{
 		//Initialisation de variables.
 		const GLdouble MinZ{ 0.0 };
@@ -118,7 +118,7 @@ namespace vue {
 	///         puisque le plan est parallèle à la direction de la caméra.
 	///
 	////////////////////////////////////////////////////////////////////////////
-	bool Vue::convertirClotureAVirtuelle(int x, int y, glm::dvec3& point) const
+	bool Vue::convertirClotureAVirtuelle(int x, int y, glm::dvec3& point)
 	{	
 		// Le plan est donné sous la forme (normale du plan, un point dans le plan.
 		const math::Plan3D plan{ glm::dvec3(0, 0, 1), glm::dvec3(0, 0, 10) };

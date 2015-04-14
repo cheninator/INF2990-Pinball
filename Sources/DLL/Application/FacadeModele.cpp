@@ -1031,7 +1031,7 @@ void FacadeModele::dupliquerSelection(int i, int j)
 
 ///////////////////////////////////////////////////////////////////////////////
 ///
-/// @fn void FacadeModele::creerXML(char* path, int prop[6])
+/// @fn int FacadeModele::creerXML(char* path, int prop[6])
 ///	@remark	Enregistre une zone de jeu en fichier XML
 ///
 /// @return Aucune.
@@ -1102,7 +1102,7 @@ int FacadeModele::creerXML(std::string path, int prop[6], bool force)
 
 ///////////////////////////////////////////////////////////////////////////////
 ///
-/// @fn void FacadeModele::creerXML(char* path, int prop[6])
+/// @fn int FacadeModele::peutSauvegarder()
 ///	@remark	Enregistre une zone de jeu en fichier XML
 ///
 /// @return Aucune.
@@ -1334,7 +1334,7 @@ void FacadeModele::setDebug(bool valeurSpotLight)
 
 ///////////////////////////////////////////////////////////////////////////////
 ///
-/// @fn double FacadeModele::obtenirZoomCourant();
+/// @fn double FacadeModele::obtenirZoomCourant() const
 /// @brief Obtient la valeur deu zoom applique.
 ///
 /// @return La valeur du zoom courant
@@ -1342,7 +1342,7 @@ void FacadeModele::setDebug(bool valeurSpotLight)
 /// @remark : la comparaison est faite entre les dimensions de la cloture et celles de la fenetre courante
 ///
 ///////////////////////////////////////////////////////////////////////////////
-double FacadeModele::obtenirZoomCourant()
+double FacadeModele::obtenirZoomCourant() const
 {
 	double zoom = -1;
 	glm::ivec2 dimClot = vue_->obtenirProjection().obtenirDimensionCloture();
@@ -1362,7 +1362,7 @@ double FacadeModele::obtenirZoomCourant()
 /// @return un vecteur de 2 int qui sont la taille de la fenetre courante
 ///
 ///////////////////////////////////////////////////////////////////////////////
-glm::ivec2 FacadeModele::obtenirTailleFenetre()
+glm::ivec2 FacadeModele::obtenirTailleFenetre() const
 {
 	return vue_->obtenirProjection().obtenirDimensionCloture();
 }
@@ -1430,12 +1430,12 @@ bool FacadeModele::appliquerZoomInitial()
 
 ///////////////////////////////////////////////////////////////////////////////
 ///
-/// @fn bool FacadeModele::duplicationEstHorsTable()
+/// @fn bool FacadeModele::duplicationEstHorsTable() const
 /// @brief Indique si la Duplication se produit hors table.
 /// @return true si la duplication est hors table
 ///
 ///////////////////////////////////////////////////////////////////////////////
-bool FacadeModele::duplicationEstHorsTable()
+bool FacadeModele::duplicationEstHorsTable() const
 {
 	return duplicationHorsTable_;
 }
@@ -1469,100 +1469,100 @@ int* FacadeModele::obtenirConfiguration()
 
 ///////////////////////////////////////////////////////////////////////////////
 ///
-/// @fn int	FacadeModele::obtenirTouchePGJ1()
+/// @fn int	FacadeModele::obtenirTouchePGJ1() const
 /// @brief Retourne la touche associee a Palette Gauche Joueur 1.
 /// @return La touche PGJ1.
 ///
 ///////////////////////////////////////////////////////////////////////////////
-int	FacadeModele::obtenirTouchePGJ1(){ 
+int	FacadeModele::obtenirTouchePGJ1() const{ 
 	return configuration_->obtenirRaccourciPGJ1(); 
 }
 
 ///////////////////////////////////////////////////////////////////////////////
 ///
-/// @fn int	FacadeModele::obtenirTouchePGJ2()
+/// @fn int	FacadeModele::obtenirTouchePGJ2() const
 /// @brief Retourne la touche associee a Palette Gauche Joueur 2.
 /// @return La touche PGJ2.
 ///
 ///////////////////////////////////////////////////////////////////////////////
-int FacadeModele::obtenirTouchePGJ2(){ 
+int FacadeModele::obtenirTouchePGJ2() const{ 
 	return configuration_->obtenirRaccourciPGJ2(); 
 }
 
 ///////////////////////////////////////////////////////////////////////////////
 ///
-/// @fn int	FacadeModele::obtenirTouchePDJ1()
+/// @fn int	FacadeModele::obtenirTouchePDJ1() const
 /// @brief Retourne la touche associee a Palette Droite Joueur 1.
 /// @return La touche PDJ1.
 ///
 ///////////////////////////////////////////////////////////////////////////////
-int FacadeModele::obtenirTouchePDJ1(){ 
+int FacadeModele::obtenirTouchePDJ1() const{ 
 	return configuration_->obtenirRaccourciPDJ1(); 
 }
 
 ///////////////////////////////////////////////////////////////////////////////
 ///
-/// @fn int	FacadeModele::obtenirTouchePDJ2()
+/// @fn int	FacadeModele::obtenirTouchePDJ2() const
 /// @brief Retourne la touche associee a Palette Droite Joueur 2.
 /// @return La touche PDJ2.
 ///
 ///////////////////////////////////////////////////////////////////////////////
-int FacadeModele::obtenirTouchePDJ2(){ 
+int FacadeModele::obtenirTouchePDJ2() const{ 
 	return configuration_->obtenirRaccourciPDJ2(); 
 }
 
 ///////////////////////////////////////////////////////////////////////////////
 ///
-/// @fn int	FacadeModele::obtenirToucheRessort()
+/// @fn int	FacadeModele::obtenirToucheRessort() const
 /// @brief Retourne la touche associee a l'activation du ressort.
 /// @return La touche d'acitvation du ressort.
 ///
 ///////////////////////////////////////////////////////////////////////////////
-int FacadeModele::obtenirToucheRessort(){ 
+int FacadeModele::obtenirToucheRessort() const{ 
 	return configuration_->obtenirRaccourciRessort(); 
 }
 
 ///////////////////////////////////////////////////////////////////////////////
 ///
-/// @fn int	FacadeModele::obtenirAffichageGlobal()
+/// @fn int	FacadeModele::obtenirAffichageGlobal() const
 /// @brief Retourne le mode d'affichage global.
 /// @return 1 si l'affichage galobal est active, 0 sinon.
 ///
 ///////////////////////////////////////////////////////////////////////////////
-int FacadeModele::obtenirAffichageGlobal(){ 
+int FacadeModele::obtenirAffichageGlobal() const{ 
 	return configuration_->obtenirAffichageGlobal(); 
 }
 
 ///////////////////////////////////////////////////////////////////////////////
 ///
-/// @fn int	FacadeModele::obtenirNombreDeBilles()
+/// @fn int	FacadeModele::obtenirNombreDeBilles() const
 /// @brief Retourne le nombre de billes.
 /// @return Le nombre de billes.
 ///
 ///////////////////////////////////////////////////////////////////////////////
-int	FacadeModele::obtenirNombreDeBilles(){ 
+int	FacadeModele::obtenirNombreDeBilles() const{ 
 	return configuration_->obtenirNombreBilles(); 
 }
 
 ///////////////////////////////////////////////////////////////////////////////
 ///
-/// @fn int	FacadeModele::obtenirModeDoubleBille()
+/// @fn int	FacadeModele::obtenirModeDoubleBille() const
 /// @brief Le mode double bille.
 /// @return 1 si le mode double bille est active, 0 sinon.
 ///
 ///////////////////////////////////////////////////////////////////////////////
-int FacadeModele::obtenirModeDoubleBille() { 
+int FacadeModele::obtenirModeDoubleBille() const{ 
 	return configuration_->obtenirModeDoubleBille(); 
 }
 
 ///////////////////////////////////////////////////////////////////////////////
 ///
-/// @fn int	FacadeModele::obtenirModeForceRebond()
+/// @fn int	FacadeModele::obtenirModeForceRebond() const
 /// @brief Le mode avec force dans les rebonds.
 /// @return 1 si le mode est active, 0 sinon.
 ///
 ///////////////////////////////////////////////////////////////////////////////
-int FacadeModele::obtenirModeForceRebond(){ 
+int FacadeModele::obtenirModeForceRebond() const{ 
 	return configuration_->obtenirModeForceRebond(); 
 }
 
@@ -1578,12 +1578,12 @@ void FacadeModele::bloquerAffichageGlobal(int active)
 
 ///////////////////////////////////////////////////////////////////////////////
 ///
-/// @fn bool FacadeModele::obtenirAI()
+/// @fn bool FacadeModele::obtenirAI() const
 /// @brief Le mode joueur virtuel.
 /// @return Vrai si le mode est active, faux sinon.
 ///
 ///////////////////////////////////////////////////////////////////////////////
-bool FacadeModele::obtenirAI()
+bool FacadeModele::obtenirAI() const
 { return utiliserAI; }
 
 ///////////////////////////////////////////////////////////////////////////////
@@ -1632,7 +1632,7 @@ void FacadeModele::sauvegarderCampagne(char* nomMap)
 /// @return Le niveau de difficulte.
 ///
 ///////////////////////////////////////////////////////////////////////////////
-std::string FacadeModele::obtenirDerniereCampagne()
+std::string FacadeModele::obtenirDerniereCampagne() const
 {
 	return configuration_->obtenirCampagne();
 }
@@ -1660,7 +1660,7 @@ void FacadeModele::construireListesPalettes()
 
 ///////////////////////////////////////////////////////////////////////////////
 ///
-/// @fn void FacadeModele::activerPalettesGJ1()
+/// @fn void FacadeModele::activerPalettesGJ1() const
 /// @brief Active les palettes gauches du joueur 1.
 ///
 ///	C'est la fonction qui dit a la palette de bouger.
@@ -1670,7 +1670,7 @@ void FacadeModele::construireListesPalettes()
 /// @return Aucune.
 /// 
 ///////////////////////////////////////////////////////////////////////////////
-void FacadeModele::activerPalettesGJ1()
+void FacadeModele::activerPalettesGJ1() const
 {
 	for (NoeudPaletteG* palette : listePalettesGJ1_)
 		palette->activer();
@@ -1678,7 +1678,7 @@ void FacadeModele::activerPalettesGJ1()
 
 ///////////////////////////////////////////////////////////////////////////////
 ///
-/// @fn void FacadeModele::desactiverPalettesGJ1()
+/// @fn void FacadeModele::desactiverPalettesGJ1() const
 /// @brief Desactive les palettes gauches du joueur 1. 
 /// 
 /// C'est la fonction qui dit a la palette de revenir et d'arreter de bouger.
@@ -1688,7 +1688,7 @@ void FacadeModele::activerPalettesGJ1()
 /// @return Aucune.
 /// 
 ///////////////////////////////////////////////////////////////////////////////
-void FacadeModele::desactiverPalettesGJ1()
+void FacadeModele::desactiverPalettesGJ1() const
 {
 	for (NoeudPaletteG* palette : listePalettesGJ1_)
 		palette->desactiver();
@@ -1696,7 +1696,7 @@ void FacadeModele::desactiverPalettesGJ1()
 
 ///////////////////////////////////////////////////////////////////////////////
 ///
-/// @fn void FacadeModele::activerPalettesDJ1()
+/// @fn void FacadeModele::activerPalettesDJ1() const
 /// @brief Active les palettes gauches du joueur 1.
 ///
 ///	C'est la fonction qui dit a la palette de bouger.
@@ -1706,7 +1706,7 @@ void FacadeModele::desactiverPalettesGJ1()
 /// @return Aucune.
 /// 
 ///////////////////////////////////////////////////////////////////////////////
-void FacadeModele::activerPalettesDJ1()
+void FacadeModele::activerPalettesDJ1() const
 {
 	for (NoeudPaletteD* palette : listePalettesDJ1_)
 		palette->activer();
@@ -1714,7 +1714,7 @@ void FacadeModele::activerPalettesDJ1()
 
 ///////////////////////////////////////////////////////////////////////////////
 ///
-/// @fn void FacadeModele::desactiverPalettesDJ1()
+/// @fn void FacadeModele::desactiverPalettesDJ1() const
 /// @brief Desactive les palettes gauches du joueur 1.
 ///
 /// C'est la fonction qui dit a la palette de revenir et d'arreter de bouger.
@@ -1724,7 +1724,7 @@ void FacadeModele::activerPalettesDJ1()
 /// @return Aucune.
 /// 
 ///////////////////////////////////////////////////////////////////////////////
-void FacadeModele::desactiverPalettesDJ1()
+void FacadeModele::desactiverPalettesDJ1() const
 {
 	for (NoeudPaletteD* palette : listePalettesDJ1_)
 		palette->desactiver();
@@ -1732,7 +1732,7 @@ void FacadeModele::desactiverPalettesDJ1()
 
 ///////////////////////////////////////////////////////////////////////////////
 ///
-/// @fn void FacadeModele::activerPalettesGJ2()
+/// @fn void FacadeModele::activerPalettesGJ2() const
 /// @brief Active les palettes gauches du joueur 2.
 ///
 /// C'est la fonction qui dit a la palette de revenir et d'arreter de bouger.
@@ -1742,7 +1742,7 @@ void FacadeModele::desactiverPalettesDJ1()
 /// @return Aucune.
 /// 
 ///////////////////////////////////////////////////////////////////////////////
-void FacadeModele::activerPalettesGJ2()
+void FacadeModele::activerPalettesGJ2() const
 {
 	for (NoeudPaletteG* palette : listePalettesGJ2_)
 		palette->activer();
@@ -1760,7 +1760,7 @@ void FacadeModele::activerPalettesGJ2()
 /// @return Aucune.
 /// 
 ///////////////////////////////////////////////////////////////////////////////
-void FacadeModele::desactiverPalettesGJ2()
+void FacadeModele::desactiverPalettesGJ2() const
 {
 	for (NoeudPaletteG* palette : listePalettesGJ2_)
 		palette->desactiver();
@@ -1778,7 +1778,7 @@ void FacadeModele::desactiverPalettesGJ2()
 /// @return Aucune.
 /// 
 ///////////////////////////////////////////////////////////////////////////////
-void FacadeModele::activerPalettesDJ2()
+void FacadeModele::activerPalettesDJ2() const
 {
 	for (NoeudPaletteD* palette : listePalettesDJ2_)
 		palette->activer();
@@ -1796,7 +1796,7 @@ void FacadeModele::activerPalettesDJ2()
 /// @return Aucune.
 /// 
 ///////////////////////////////////////////////////////////////////////////////
-void FacadeModele::desactiverPalettesDJ2()
+void FacadeModele::desactiverPalettesDJ2() const
 {
 	for (NoeudPaletteD* palette : listePalettesDJ2_)
 		palette->desactiver();
@@ -1960,7 +1960,7 @@ void FacadeModele::traiterCollisionsAvecQuadTree(float temps)
 
 ///////////////////////////////////////////////////////////////////////////////
 ///
-/// @fn void FacadeModele::updateForcesExternes()
+/// @fn void FacadeModele::updateForcesExternes() const
 /// 
 /// Pour chaque bille, calcule la somme des forces exercees par les portails 
 /// sur celle-ci. Si la distance entre la bille et le portail est plus grande
@@ -1976,7 +1976,7 @@ void FacadeModele::traiterCollisionsAvecQuadTree(float temps)
 /// @return Aucune.
 /// 
 ///////////////////////////////////////////////////////////////////////////////
-void FacadeModele::updateForcesExternes()
+void FacadeModele::updateForcesExternes() const
 {
 	for (NoeudAbstrait* bille : listeBilles_)
 	{
@@ -2069,7 +2069,7 @@ void FacadeModele::mettreAJourListeRessorts()
 /// @return Aucune.
 /// 
 ///////////////////////////////////////////////////////////////////////////////
-void FacadeModele::compresserRessort()
+void FacadeModele::compresserRessort() const
 {
 	for (NoeudAbstrait* ressort : listeRessorts_)
 		static_cast<NoeudRessort*>(ressort)->compresser();
@@ -2082,7 +2082,7 @@ void FacadeModele::compresserRessort()
 /// @return Aucune.
 /// 
 ///////////////////////////////////////////////////////////////////////////////
-void FacadeModele::relacherRessort()
+void FacadeModele::relacherRessort() const
 {
 	for (NoeudAbstrait* ressort : listeRessorts_)
 		static_cast<NoeudRessort*>(ressort)->relacher();
@@ -2516,14 +2516,14 @@ int FacadeModele::obtenirNombreSelection() const
 
 ////////////////////////////////////////////////////////////////////////
 ///
-/// @fn void FacadeModele::cameraEstOrbite()
+/// @fn void FacadeModele::cameraEstOrbite() const
 ///
 /// @brief Indique si le mode de camera est orbite ou non
 ///
 /// @return Si oui ou non la camera est en mode orbite
 ///
 ////////////////////////////////////////////////////////////////////////
-bool FacadeModele::cameraEstOrbite()
+bool FacadeModele::cameraEstOrbite() const
 {
 	return vueEstOrbite_;
 }

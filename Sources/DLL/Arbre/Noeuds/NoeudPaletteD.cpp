@@ -408,7 +408,7 @@ bool NoeudPaletteD::estActiveeParBille(NoeudAbstrait* bille)
 /// vectoriel pour determiner si on est au dessus de l'axe de la palette ou en dessous
 ///
 ////////////////////////////////////////////////////////////////////////
-double NoeudPaletteD::fonctionDroitePaletteOriginale(NoeudAbstrait* bille)
+double NoeudPaletteD::fonctionDroitePaletteOriginale(NoeudAbstrait* bille) const
 {
 	glm::dvec3 positionBille = bille->obtenirPositionRelative();
 	glm::dvec3 positionPalette = obtenirPositionRelative();
@@ -440,7 +440,7 @@ double NoeudPaletteD::fonctionDroitePaletteOriginale(NoeudAbstrait* bille)
 /// vectoriel pour determiner si on est au dessus de l'axe de la palette ou en dessous
 ///
 ////////////////////////////////////////////////////////////////////////
-double NoeudPaletteD::fonctionDroitePaletteEnMouvement(NoeudAbstrait* bille)
+double NoeudPaletteD::fonctionDroitePaletteEnMouvement(NoeudAbstrait* bille) const
 {
 	glm::dvec3 positionBille = bille->obtenirPositionRelative();
 	glm::dvec3 positionPalette = obtenirPositionRelative();
