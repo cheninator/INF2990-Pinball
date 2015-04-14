@@ -576,7 +576,7 @@ void FacadeModele::animer(float temps)
 
 ////////////////////////////////////////////////////////////////////////
 ///
-/// @fn int FacadeModele::selectionnerObjetSousPointClique(int i, int j, int hauteur, int largeur, bool ctrlDown)
+/// @fn int FacadeModele::selectionnerObjetSousPointClique(int i, int j, int hauteur, int, bool ctrlDown, bool gaucheEnfonce, bool sourisSurSelection)
 ///
 /// @remark Cette fonction permet de selectionner un objet. La methode regarde la valeur
 /// \remark du stencil et la donne a un visiteurSelection qui compare cette valeur
@@ -588,7 +588,8 @@ void FacadeModele::animer(float temps)
 /// @param[in] hauteur : Hauteur de la fenetre
 /// @param[in] largeur : Largeur de la fenetre
 /// @param[in] ctrlDown : Si le bouton ctrl est appuie
-///
+/// @param[in] gaucheEnfonce : Si le bouton gauche est appuier
+/// @param[in] sourisSurSelection : Si la souris est sur l'element selectionne
 /// @return NoeudAbstrait.
 ///
 ////////////////////////////////////////////////////////////////////////
@@ -1819,7 +1820,6 @@ void FacadeModele::supprimerBille()
 /// @fn int* FacadeModele::obtenirProprietes(char* nomFichier)
 /// @brief Retourne les proprietes de jeu de la zone.
 /// @param[in] nomFichier : Nom du fichier de la zone.
-/// @param[in] length : Longueur du nom du fichier.
 /// @return Les prorietes de jeu.
 /// 
 ///////////////////////////////////////////////////////////////////////////////
@@ -2542,7 +2542,7 @@ void FacadeModele::dessinerSkybox(double demiLargeur, bool vueOrtho, glm::dvec3 
 
 ////////////////////////////////////////////////////////////////////////
 ///
-/// @fn void FacadeModele::sourisEstSurObjet(int i, int j, int hauteur, int largeur)
+/// @fn void FacadeModele::sourisEstSurObjet(int i, int j, int hauteur, int, bool& estSelectionne)
 ///
 /// @brief Cette fonction verifie si la souris est situe sur un objet
 ///
@@ -2550,6 +2550,7 @@ void FacadeModele::dessinerSkybox(double demiLargeur, bool vueOrtho, glm::dvec3 
 /// @param[in] j : Position souris j
 /// @param[in] hauteur : Hauteur de la fenetre
 /// @param[in] largeur : Largeur de la fenetre
+/// @param[in] estSelectionne : Si l'element est selectionne
 ///
 /// @return bool, true si la souris est situe sur un objet
 ///

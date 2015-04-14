@@ -161,15 +161,15 @@ std::vector<glm::dvec3> NoeudPortail::obtenirVecteursEnglobants()
 
 ////////////////////////////////////////////////////////////////////////
 ///
-/// @fn void NoeudPortail::traiterCollisions(aidecollision::DetailsCollision details, NoeudAbstrait* bille)
+/// @fn void NoeudPortail::traiterCollisions(aidecollision::DetailsCollision, NoeudAbstrait* bille, float)
 ///
 /// @brief Cette fonction effectue la reaction a la collision de la bille sur 
 /// l'objet un portail.  C'est a dire de teleporter la bille au jumeau
 /// de l'objet courant.  De plus, la bille va se rappeler du portail d'ou
 /// elle est sortie pour ne pas rester pris dedans.
 /// 
-/// @param[in] details Objet contenant les details de la collision a traiter
-/// @param bille Objet modifie par la collision
+/// @param[in] bille Objet modifie par la collision
+/// @param[in] facteurRebond Valeur du facteur de rebondissement
 /// 
 /// @return aucun.
 ///
