@@ -80,13 +80,13 @@ private:
 	void creeFont(std::string path);
 
 	/// Obtiens le path vers la font
-	std::string getFontPath(std::string sName);
+	static std::string getFontPath(std::string sName);
 
 	/// populate le vecteur de font
 	void populateFontVector(std::string targetPath);
 
 	/// Cherche une font
-	unsigned int lookUpFont(std::string fileName);
+	unsigned int lookUpFont(std::string fileName) const;
 
 	/// Cherche un string
 	unsigned int lookUpText(std::string textString);

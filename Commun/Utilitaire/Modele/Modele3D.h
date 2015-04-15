@@ -77,7 +77,7 @@ namespace modele{
 	private:
 		/// Permet de charger les textures du modèle vers en mémoire gpu
 		void chargerTexturesExternes (aiScene const* scene);	/// À partir d'un fichier externe (jpg, bmp, png, etc.)
-		void chargerTexturesIntegrees(aiScene const* scene);	/// Contenues directement dans le fichier du modèle
+		static void chargerTexturesIntegrees(aiScene const* scene);	/// Contenues directement dans le fichier du modèle
 		/// Permet de libérer les textures du modèle de la mémoire de la carte graphique
 		void libererTextures();
 

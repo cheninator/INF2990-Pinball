@@ -45,7 +45,7 @@ public:
 	virtual void setSpotLight(bool debug);
 
 	/// Afficher la vitesse
-	void afficherVitesse(glm::dvec3 nouvelleVitesse);
+	void afficherVitesse(glm::dvec3 nouvelleVitesse) const;
 
 	/// Redefinition de boite englobante pour objet circulaire
 	virtual std::vector<glm::dvec3> obtenirVecteursEnglobants();
@@ -54,7 +54,7 @@ public:
 	void traiterCollisions(aidecollision::DetailsCollision details, NoeudAbstrait* bille, float facteurRebond = 1.0);
 
 	/// Met a jout le pointage des collisions
-	void mettreAJourCollision(NoeudAbstrait* noeud);
+	static void mettreAJourCollision(NoeudAbstrait* noeud);
 
 private:
 	float timerMove_{ 0 };

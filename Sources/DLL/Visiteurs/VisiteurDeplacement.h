@@ -35,7 +35,7 @@ public:
 	~VisiteurDeplacement();
 
 	/// Methode d'acces
-	glm::dvec3 getDeplacement() { return deplacement_; };
+	glm::dvec3 getDeplacement() const { return deplacement_; };
 
 	/// Methode de modifications
 	void setDeplacement(glm::dvec3 dep) { deplacement_ = dep; };

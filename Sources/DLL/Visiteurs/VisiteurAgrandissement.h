@@ -36,7 +36,7 @@ public:
 	~VisiteurAgrandissement();
 
 	/// Methode d'acces
-	glm::dvec3 getAgrandissement() { return homothetie_; };
+	glm::dvec3 getAgrandissement() const { return homothetie_; };
 
 	/// Methode de modifications
 	void setAgrandissement(glm::dvec3 homothetie) { homothetie_ = homothetie; };

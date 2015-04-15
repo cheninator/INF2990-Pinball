@@ -63,7 +63,7 @@ namespace vue {
 		/// Translater la fenêtre virtuelle d'un pourcentage en @a X ou en @a Y
 		void translater(double deplacementX, double deplacementY);
 		/// Translater la fenêtre virtuelle d'un vecteur
-		void translater(const glm::ivec2& deplacement);
+		static void translater(const glm::ivec2& deplacement);
 		/// Centrer la fenêtre virtuelle sur un point
 		void centrerSurPoint(const glm::dvec2& pointCentre);
 
@@ -80,7 +80,7 @@ namespace vue {
 	private:
 
 		/// Vérifie que la translation ne dépasse pas les bordures maximales du centre du jeu
-		bool translationDepasseBordure(double xBorneMin, double xBorneMax, double yBorneMin, double yBorneMax);
+		static bool translationDepasseBordure(double xBorneMin, double xBorneMax, double yBorneMin, double yBorneMax);
 
 		/// Décide la direction de correction en fonction du zoom.
 		void ajusterRapportAspect(DirectionZoom dir);
@@ -92,10 +92,10 @@ namespace vue {
 		void ajusterRapportAspectX(double rapportAspect, DirectionZoom dir);
 
 		/// Vérifie si les nouvelles bornes de la fanêtre viole les bornes des facteurs de zoom
-		bool zoomInValide(double xBorneMin, double xBorneMax, double yBorneMin, double yBorneMax);
+		bool zoomInValide(double xBorneMin, double xBorneMax, double yBorneMin, double yBorneMax) const;
 
 		/// Vérifie si les nouvelles bornes de la fanêtre viole les bornes des facteurs de zoom
-		bool zoomOutValide(double xBorneMin, double xBorneMax, double yBorneMin, double yBorneMax);
+		bool zoomOutValide(double xBorneMin, double xBorneMax, double yBorneMin, double yBorneMax) const;
 
 		/// Borne inférieure en X de la fenêtre virtuelle.
 		double xMinFenetre_;

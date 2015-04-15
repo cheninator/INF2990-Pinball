@@ -34,7 +34,7 @@ namespace math {
 	///
 	///////////////////////////////////////////////////////////////////////////////
 	Droite3D::Droite3D(const glm::dvec3& point1, const glm::dvec3& point2)
-		: direction_{ point2 - point1 }, pointDroite_{ point1 }
+		: pointDroite_{ point1 }, direction_{ point2 - point1 }
 	{
 		if (utilitaire::EGAL_ZERO(glm::length(direction_)))
 			throw ("Impossible de construire une droite 3d puisque le vecteur de direction est nul.");
@@ -143,7 +143,7 @@ namespace math {
 	///
 	///////////////////////////////////////////////////////////////////////////////
 	bool Droite3D::intersectionSegment(const glm::dvec3& point1,
-		const glm::dvec3& point2)
+		const glm::dvec3& point2) const
 	{
 		glm::dvec3 pointHaut;
 		glm::dvec3 pointBas;
@@ -207,7 +207,7 @@ namespace math {
 	/// @return Distance du point à la droite.
 	///
 	////////////////////////////////////////////////////////////////////////
-	double Droite3D::distancePoint(const glm::dvec3& centre)
+	double Droite3D::distancePoint(const glm::dvec3& centre) const
 	{
 		// En 2D
 		const double ad{ direction_[1] };
@@ -231,7 +231,7 @@ namespace math {
 
 	////////////////////////////////////////////////////////////////////////
 	///
-	/// @fn glm::dvec3 Droite3D::perpendiculaireDroite(const glm::dvec3& point)
+	/// @fn glm::dvec3 Droite3D::perpendiculaireDroite(const glm::dvec3& point) const
 	///
 	/// On trace la perpendicaulaire entre le point et le droite et on trouve
 	/// le point d'intersection.
@@ -242,7 +242,7 @@ namespace math {
 	/// @return Le point de rencontre entre la droite et la perpendiculaire.
 	///
 	////////////////////////////////////////////////////////////////////////
-	glm::dvec3 Droite3D::perpendiculaireDroite(const glm::dvec3& point)
+	glm::dvec3 Droite3D::perpendiculaireDroite(const glm::dvec3& point) const
 	{
 		const glm::dvec3& a{ direction_ };
 		const glm::dvec3& p1{ pointDroite_ };

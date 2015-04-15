@@ -524,7 +524,7 @@ void ControleurTexte::resize(std::string text, unsigned int size)
 /// @return la position dans le vecteur du font.
 ///
 ////////////////////////////////////////////////////////////////////////
-unsigned int ControleurTexte::lookUpFont(std::string fileName)
+unsigned int ControleurTexte::lookUpFont(std::string fileName) const
 {
 	for (unsigned int i = 0; i < fontTable_.size(); i++)
 		if (fontTable_[i].first == fileName)
