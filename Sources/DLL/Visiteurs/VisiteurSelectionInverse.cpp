@@ -28,12 +28,14 @@ VisiteurSelectionInverse::VisiteurSelectionInverse()
 
 //////////////////////////////////////////////////////////////////////////////////
 ///
-/// @fn VisiteurSelectionInverse::VisiteurSelectionInverse(glm::dvec3 pointDansLeMonde, int valeurStencil)
+/// @fn VisiteurSelectionInverse::VisiteurSelectionInverse(glm::dvec3 pointDansLeMonde, int valeurStencil, bool gaucheEnfonce, bool sourisSurSelection)
 ///
 /// Constructeur qui initialise les variables membres de la classe.
 ///
 /// @param[in] pointDansLeMonde : Le point de l'espace
 /// @param[in] valeurStencil : La valeur du stencil
+/// @param[in] gaucheEnfonce : Click gauche
+/// @param[in] sourisSurSelection : Souris a selectionner le bon item
 ///
 /// @return Aucune (constructeur).
 ///
@@ -144,7 +146,7 @@ bool VisiteurSelectionInverse::traiter(NoeudAbstrait* noeud)
 
 bool VisiteurSelectionInverse::traiter(NoeudPortail* noeud)
 {
-	// Stencil -1 si le tore était dessiné 
+	// Stencil -1 si le tore etait dessine 
 	if (!gaucheEnfonce_ && valeurStencil_ == noeud->getNumero() && noeud->estSelectionnable() /*&& noeud->estModifiable()*/)
 	{
 

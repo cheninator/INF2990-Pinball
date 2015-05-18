@@ -47,20 +47,20 @@ public:
 	void definirLumieres();
 
 	/// Activer la lumiere Ambiante
-	void activerAmbiante();
+	static void activerAmbiante();
 	/// Desactiver la lumiere ambiante
-	void desactiverAmbiante();
+	static void desactiverAmbiante();
 
 	/// Activer la lumiere directionnnelle
-	void activerDirectionnelle();
+	static void activerDirectionnelle();
 
 	/// Desactiver la lumiere directionnelle
-	void desactiverDirectionnelle();
+	static void desactiverDirectionnelle();
 
 	/// Activer la lumiere spot
-	void activerSpot();
+	static void activerSpot();
 	/// Desactiver la lumiere spot
-	void desactiverSpot();
+	static void desactiverSpot();
 	/// Pointer les spots sur les billes.
 	void trackerLesBilles(NoeudTable* table);
 

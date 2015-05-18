@@ -27,9 +27,9 @@ unsigned int NoeudAbstrait::compteurNoeuds_ = 0;
 NoeudAbstrait::NoeudAbstrait(
 	const std::string& type //= std::string{ "" }
 	) :
-	vitesse_{ 0.0, 0.0, 0.0 },
-	type_(type)
+	vitesse_{ 0.0, 0.0, 0.0 }
 {
+	type_ = type;
 	colorShift_ = false;
 	compteurNoeuds_ += 1;
 	numeroNoeud_ = compteurNoeuds_;
@@ -797,7 +797,7 @@ void NoeudAbstrait::setImpossible(bool impossible)
 ////////////////////////////////////////////////////////////////////////
 ///
 /// @fn bool NoeudAbstrait::pointEstDansBoite(glm::dvec3 point)
-/// @brief Cette fonction teste si un point se trouve dans la boîte englobante.
+/// @brief Cette fonction teste si un point se trouve dans la boite englobante.
 ///
 /// @param[in] point : Point a tester.
 ///
@@ -890,11 +890,11 @@ aidecollision::DetailsCollision NoeudAbstrait::detecterCollisions(NoeudAbstrait*
 		// Considerer tous les segments boite[i] --- boite[i+1 % size] 
 		for (unsigned int i = 0; i < boite.size(); i++)
 		{
-			// On veut calculer la collision en 2D et caster les paramêtres en glm::dvec2 "oublie" leur composante en Z et choisi la bonne surcharge de calculerCollisionSegment.
+			// On veut calculer la collision en 2D et caster les parametres en glm::dvec2 "oublie" leur composante en Z et choisi la bonne surcharge de calculerCollisionSegment.
 			details = aidecollision::calculerCollisionSegment((glm::dvec2)boite[i], (glm::dvec2)boite[(i + 1) % boite.size()], (glm::dvec2)bille->obtenirPositionRelative(), rayonBille, true);
 			if (details.type != aidecollision::COLLISION_AUCUNE)
 			{
-				// Donner priorité aux collision sur les segments plutot que sur les points.
+				// Donner priorite aux collision sur les segments plutot que sur les points.
 				if (details.type == aidecollision::COLLISION_SEGMENT)
 					return details;
 				else
@@ -920,7 +920,7 @@ aidecollision::DetailsCollision NoeudAbstrait::detecterCollisions(NoeudAbstrait*
 ///
 /// @fn void NoeudAbstrait::traiterCollisions(aidecollision::DetailsCollision details, NoeudAbstrait* bille, float facteurRebond)
 ///
-/// @brief Cette fonction effectue la réaction a la collision de la bille sur 
+/// @brief Cette fonction effectue la reaction a la collision de la bille sur 
 /// l'objet courant. Cette fonction est a reimplementer si on veut autre 
 /// chose qu'un rebondissement ordinaire.
 ///
@@ -941,7 +941,7 @@ void NoeudAbstrait::traiterCollisions(aidecollision::DetailsCollision details, N
 	if (bille == this)
 		return;
 
-	// Modifier la vitesse de la bille en fonction de bille reçue en paramètre 
+	// Modifier la vitesse de la bille en fonction de bille reçue en parametre 
 	glm::dvec3 vitesseInitiale = bille->obtenirVitesse();
 	glm::dvec3 vitesseNormaleInitiale = glm::proj(vitesseInitiale, details.direction); // Necessaire pour connaitre la vitesse tangentielle.
 	glm::dvec3 vitesseTangentielle = vitesseInitiale - vitesseNormaleInitiale;

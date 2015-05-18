@@ -14,6 +14,8 @@
 #include "Memento.h"
 #include <deque>
 
+#define tailleMax 15
+
 ///////////////////////////////////////////////////////////////////////////
 /// @class CareTaker
 /// @brief Structure de donnee qui contient des Memento. Offre des interfaces utiles.
@@ -29,7 +31,7 @@ public:
 	/// Constructeur
 	CareTaker();
 
-	/// Assignation par copie non-nécessaire dans le contexte
+	/// Assignation par copie non-necessaire dans le contexte
 	CareTaker& operator=(CareTaker const&) = delete;
 
 	/// Destructeur
@@ -51,16 +53,12 @@ public:
 	int size() const { return (int)historique_.size(); };
 
 	/// Obtenir la taille maximale
-	int obtenirTailleMaximale() const { return tailleMax; };
+	static int obtenirTailleMaximale() { return tailleMax; };
 
 private:
 
 	/// Liste de tous les etats passes
 	std::deque<Memento*> historique_;
-
-	/// Combien d'etat on veut enregistrer
-	const int tailleMax = 15;
-
 };
 
 

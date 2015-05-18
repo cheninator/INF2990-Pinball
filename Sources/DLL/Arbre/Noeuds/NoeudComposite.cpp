@@ -91,7 +91,7 @@ void NoeudComposite::vider()
 	// L'iteration doit etre faite ainsi pour eviter les problemes lorsque
 	// le desctructeur d'un noeud modifie l'arbre, par exemple en retirant
 	// d'autres noeuds.  Il pourrait y avoir une boucle infinie si la
-	// desctruction d'un enfant entraînerait l'ajout d'un autre.
+	// desctruction d'un enfant entrainerait l'ajout d'un autre.
 	while (!enfants_.empty()) {
 		NoeudAbstrait* enfantAEffacer{ enfants_.front() };
 		enfants_.erase(enfants_.begin());

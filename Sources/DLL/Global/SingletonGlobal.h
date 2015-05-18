@@ -32,7 +32,7 @@ public:
 	/// Obtient l'instance unique de la classe.
 	static SingletonGlobal* obtenirInstance();
 
-	/// Libère l'instance unique de la classe.
+	/// Libere l'instance unique de la classe.
 	static void libererInstance();
 
 	/// AJOUTER VOS GET/SET sur les variables ici
@@ -41,7 +41,7 @@ public:
 	//int getPointsTotales() { return pointsTotales_; };
 	//void setPointsTotales(int pointsTotales) { pointsTotales_ = pointsTotales; };
 
-	int getPointsPartie() { return pointsPartie_; };
+	int getPointsPartie() const { return pointsPartie_; };
 
 	void setPointsPartie(int pointsPartie) { pointsPartie_ = pointsPartie; };
 
@@ -60,13 +60,13 @@ public:
 	void retirerBille() { billesCourantes_--; billesPerdus_++; };
 	void ajouterBille() { billesCourantes_++; };
 	void afficherBille();
-	int obtenirBille() { return billesCourantes_; };
-	int obtenirNombreDeBillesPerdus()  { return billesPerdus_; };
+	int obtenirBille() const { return billesCourantes_; };
+	int obtenirNombreDeBillesPerdus() const { return billesPerdus_; };
 	void resetBille()  { billesCourantes_ = 0; };
 
 	void updateBilles();
 	void setAnimation(bool animer) { animer_ = animer; };
-	bool obtenirAnimation() { return animer_; };
+	bool obtenirAnimation() const { return animer_; };
 
 	void spawnBille(glm::dvec3 position, glm::dvec3 echelle, NoeudAbstrait* portail);
 
@@ -85,10 +85,10 @@ public:
 
 	void setBoiteTable(utilitaire::BoiteEnglobante boiteTable) { boiteTable_ = boiteTable; };
 protected:
-	/// Constructeur vide déclaré protected.
+	/// Constructeur vide declare protected.
 	SingletonGlobal() {   boiteTable_.coinMax = { 0, 0, 0 }; boiteTable_.coinMin = { 0, 0, 0 };   };
 
-	/// Destructeur vide déclaré protected.
+	/// Destructeur vide declare protected.
 	~SingletonGlobal() { delete mySound_; };
 
 private:
@@ -97,10 +97,10 @@ private:
 
 	static SingletonGlobal* singleton_;
 
-	/// Constructeur par copie déclaré mais non défini.
+	/// Constructeur par copie declare mais non defini.
 	SingletonGlobal(const SingletonGlobal&) = delete;
 
-	/// Opérateur d'assignation déclaré mais non défini.
+	/// Operateur d'assignation declare mais non defini.
 	SingletonGlobal& operator=(const SingletonGlobal&) = delete;
 
 	/// AJOUTER VOS VARIABLES GLOBAL ICI

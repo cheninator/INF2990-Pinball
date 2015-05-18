@@ -504,7 +504,7 @@ inline void NoeudAbstrait::assignerVitesse(glm::dvec3 nouvelleVitesse)
 ///
 /// @fn inline const std::string& NoeudAbstrait::obtenirType() const
 ///
-/// Cette fonction retourne une chaîne representante le type du noeud.
+/// Cette fonction retourne une chaine representante le type du noeud.
 ///
 /// @return Le type du noeud.
 ///

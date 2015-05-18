@@ -2492,6 +2492,7 @@ namespace InterfaceGraphique
         /// 
         /// @param[in] e : evenement qui lance la fonction.
         /// @param[in] gaucheEnfonce : true si le bouton gauche de la souris est enfonce.
+        /// @param[in] sourisSurSelection : true si la souris est sue la selection.
         /// 
         /// @return Aucune.
         ///
@@ -2629,10 +2630,9 @@ namespace InterfaceGraphique
 
         ////////////////////////////////////////////////////////////////////////
         ///
-        /// @fn public void creationObjet(MouseEventArgs e, bool twin = false)
+        /// @fn public void creationObjet(bool twin = false)
         /// @brief Creation d'un objet.
         /// 
-        /// @param[in] e : L'evenement qui lance la fonction.
         /// @param[in] twin : Indique que l'objet n'est jumeau.
         /// 
         /// @return Aucune.
@@ -3798,6 +3798,16 @@ namespace InterfaceGraphique
         {
             Trou_bouton.FlatAppearance.BorderColor = Color.Black;
 
+        }
+
+        private void toolStripButton1_Click(object sender, EventArgs e)
+        {
+            Orthographique_MenuItem_Click(sender, e);
+        }
+
+        private void toolStripButton2_Click(object sender, EventArgs e)
+        {
+            Orbite_MenuItem_Click(sender, e);
         }
 
     }

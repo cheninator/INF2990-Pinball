@@ -86,7 +86,7 @@ private:
 /// Cette fonction permet d'ajouter une usine qui sera ensuite utilisee
 /// pour creer de nouveaux noeuds.
 ///
-/// @param[in] type  : La chaîne qui identifie le type de noeuds a creer
+/// @param[in] type  : La chaine qui identifie le type de noeuds a creer
 ///                    avec cette usine.
 /// @param[in] usine : L'usine ajoutee.
 ///

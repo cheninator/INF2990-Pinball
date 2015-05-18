@@ -45,15 +45,15 @@ namespace vue {
 		const glm::dvec3& pointVise,
 		const glm::dvec3& directionHautCamera,
 		const glm::dvec3& directionHautMonde,
-		float angleTheta,
-		float anglePhi
+		float anglePhi,
+		float angleTheta
 		)
 		: position_{ position },
 		pointVise_{ pointVise },
 		directionHaut_{ directionHautCamera },
 		directionHautMonde_{ directionHautMonde },
-		theta_{angleTheta},
 		phi_{anglePhi},
+		theta_{angleTheta},
 		dist_{position.z}
 	{		
 	}
@@ -276,9 +276,6 @@ namespace vue {
 	////////////////////////////////////////////////////////////////////////
 	void Camera::clampAngles()
 	{
-#if _DEBUG
-		return;
-#endif
 		if (phi_ >= (utilitaire::PI/2.0))
 		{
 #ifdef SHOW_OUTPUT_CAMERA

@@ -330,6 +330,7 @@
     <None Include="Resources\duplicate.png" />
     <None Include="Resources\redo.png" />
     <None Include="Resources\DoUndo.gif" />
+    <None Include="Resources\camera.png" />
     <Content Include="Resources\save.png" />
     <None Include="Resources\cible.jpeg" />
     <None Include="Resources\winSound.wav" />

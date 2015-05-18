@@ -87,7 +87,7 @@ void NoeudBille::afficherConcret() const
 		/* TO DO SOMETHING HERE */
 	}
 	NoeudAbstrait::appliquerAfficher();
-	glTranslatef(0.0, -10, 0.0); // Il faudrait changer le modèle
+	glTranslatef(0.0, -10, 0.0); // Il faudrait changer le modele
 	liste_->dessiner();
 	glPopAttrib();
 	glPopMatrix();
@@ -98,12 +98,12 @@ void NoeudBille::afficherConcret() const
 ///
 /// @fn void NoeudBille::animer(float temps)
 ///
-/// Le travail fait dans cette méthode est comme suit,
+/// Le travail fait dans cette methode est comme suit,
 ///  - Calculer la somme des forces agissant sur la bille 
 ///  - Calculer la nouvelle vitesse
-///		- Calculer la vitesse apres la collision (présentement juste la détection)
+///		- Calculer la vitesse apres la collision (presentement juste la detection)
 ///		- Calculer la nouvelle vitesse en appliquant les forces
-///  - Calculer la nouvelle position à partir de la vitesse après la collision.
+///  - Calculer la nouvelle position a partir de la vitesse apres la collision.
 ///  - Changer l'oritentation de la bille pour faire comme si elle roule (TODO).
 ///
 /// @param[in] temps : Intervalle de temps sur lequel faire l'animation.
@@ -173,7 +173,7 @@ void NoeudBille::animer(float temps) // rajouter des parametres ou une fonction 
 
 	if (glm::length(vitesse_) > VITESSE_MAX_NOEUD_BILLE)
 	{
-		vitesse_ = VITESSE_MAX_NOEUD_BILLE * glm::normalize(vitesse_); // Meme direction, mais module ramené a VITESSE_MAX
+		vitesse_ = VITESSE_MAX_NOEUD_BILLE * glm::normalize(vitesse_); // Meme direction, mais module ramene a VITESSE_MAX
 	}
 
 	// Calcul de la nouvelle position 
@@ -187,7 +187,7 @@ void NoeudBille::animer(float temps) // rajouter des parametres ou une fonction 
 
 	if (glm::length(nouvelleVitesse) > VITESSE_MAX_NOEUD_BILLE)
 	{
-		nouvelleVitesse = VITESSE_MAX_NOEUD_BILLE * glm::normalize(nouvelleVitesse);// Meme direction, mais module ramené a VITESSE_MAX
+		nouvelleVitesse = VITESSE_MAX_NOEUD_BILLE * glm::normalize(nouvelleVitesse);// Meme direction, mais module ramene a VITESSE_MAX
 	}
 	// Calcul de la rotation
 	// =====================
@@ -287,7 +287,7 @@ void NoeudBille::setSpotLight(bool debug)
 /// @return aucun
 /// 
 ////////////////////////////////////////////////////////////////////////
-void NoeudBille::afficherVitesse(glm::dvec3 nouvelleVitesse)
+void NoeudBille::afficherVitesse(glm::dvec3 nouvelleVitesse) const
 {
 	if (debug_)
 	{
@@ -350,7 +350,7 @@ std::vector<glm::dvec3> NoeudBille::obtenirVecteursEnglobants()
 ///
 /// @fn void NoeudBille::traiterCollisions(aidecollision::DetailsCollision details, NoeudAbstrait* bille, float facteurRebond)
 ///
-/// @brief Cette fonction effectue la réaction a la collision de la bille sur 
+/// @brief Cette fonction effectue la reaction a la collision de la bille sur 
 /// l'objet courant. Cette fonction est a reimplementer si on veut autre 
 /// chose qu'un rebondissement ordinaire.
 ///

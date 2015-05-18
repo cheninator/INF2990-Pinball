@@ -39,7 +39,7 @@ public:
 	virtual bool traiter(NoeudTable* table);
 
 	/// Conteneur pour les boites englobantes des objets visites
-	std::vector<conteneur_boite_englobante> obtenirListeEnglobante(){ return boitesEnglobantes_; };
+	std::vector<conteneur_boite_englobante> obtenirListeEnglobante() const { return boitesEnglobantes_; };
 
 private:
 

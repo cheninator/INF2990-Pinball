@@ -29,12 +29,14 @@ VisiteurSelection::VisiteurSelection()
 
 //////////////////////////////////////////////////////////////////////////////////
 ///
-/// @fn VisiteurSelection::VisiteurSelection(glm::dvec3 pointDansLeMonde, int valeurStencil)
+/// @fn VisiteurSelection::VisiteurSelection(glm::dvec3 pointDansLeMonde, int valeurStencil, bool gaucheEnfonce, bool sourisSurSelection)
 ///
 /// Constructeur qui initialise les variables membres de la classe.
 ///
 /// @param[in] pointDansLeMonde : Le vecteur de points
 /// @param[in] valeurStencil : La valeur de la selection
+/// @param[in] gaucheEnfonce : Click gauche
+/// @param[in] sourisSurSelection : Souris a selectionner le bon item
 ///
 /// @return Aucune (constructeur).
 ///
@@ -125,9 +127,9 @@ bool VisiteurSelection::traiter(NoeudTable* table)
 ////////////////////////////////////////////////////////////////////////
 bool VisiteurSelection::traiter(NoeudAbstrait* noeud)
 {
-	// Merci de laisser le cout pour que je puisse le décommenter au besoin
+	// Merci de laisser le cout pour que je puisse le decommenter au besoin
 	//std::cout << "Visite d'un noeud de type " << noeud->getType()
-		//<< " avec numéro " << noeud->getNumero() << std::endl;
+		//<< " avec numero " << noeud->getNumero() << std::endl;
 	if (valeurStencil_ == noeud->getNumero() && noeud->estSelectionnable())
 		noeud->assignerSelection(true);
 	else if (!sourisSurSelection_ || gaucheEnfonce_ == false)
@@ -150,10 +152,10 @@ bool VisiteurSelection::traiter(NoeudAbstrait* noeud)
 
 bool VisiteurSelection::traiter(NoeudPortail* noeud)
 {
-	// Merci de laisser le cout pour que je puisse le décommenter au besoin
+	// Merci de laisser le cout pour que je puisse le decommenter au besoin
 	//std::cout << "Visite d'un noeudPortail de type " << noeud->getType()
-		//<< " avec numéro " << noeud->getNumero() << std::endl;
-	// Stencil - 1 si le tore était dessiné
+		//<< " avec numero " << noeud->getNumero() << std::endl;
+	// Stencil - 1 si le tore etait dessine
 	if (valeurStencil_ == noeud->getNumero() && noeud->estSelectionnable())
 		noeud->assignerSelection(true);
 	else if (!sourisSurSelection_)

@@ -20,7 +20,7 @@
 #include "../../Commun/Externe/glm/include/glm/gtx/Projection.hpp"
 
 ///////////////////////////////////////////////////////////////////////
-//  Vecteurs de la boite englobante sur mesure du modèle
+//  Vecteurs de la boite englobante sur mesure du modele
 ///////////////////////////////////////////////////////////////////////
 std::vector<glm::dvec3> NoeudPaletteD::boiteEnglobanteModele_{
 	{ 36.92, 11.96, 0 },
@@ -305,7 +305,7 @@ void NoeudPaletteD::desactiver()
 ///
 /// @fn void NoeudPaletteD::traiterCollisions(aidecollision::DetailsCollision details, NoeudAbstrait* bille)
 ///
-/// Cette fonction effectue la réaction a la collision de la bille sur 
+/// Cette fonction effectue la reaction a la collision de la bille sur 
 /// l'objet courant. Cette fonction est a reimplementer si on veut autre 
 /// chose qu'un rebondissement ordinaire.
 ///
@@ -408,7 +408,7 @@ bool NoeudPaletteD::estActiveeParBille(NoeudAbstrait* bille)
 /// vectoriel pour determiner si on est au dessus de l'axe de la palette ou en dessous
 ///
 ////////////////////////////////////////////////////////////////////////
-double NoeudPaletteD::fonctionDroitePaletteOriginale(NoeudAbstrait* bille)
+double NoeudPaletteD::fonctionDroitePaletteOriginale(NoeudAbstrait* bille) const
 {
 	glm::dvec3 positionBille = bille->obtenirPositionRelative();
 	glm::dvec3 positionPalette = obtenirPositionRelative();
@@ -440,7 +440,7 @@ double NoeudPaletteD::fonctionDroitePaletteOriginale(NoeudAbstrait* bille)
 /// vectoriel pour determiner si on est au dessus de l'axe de la palette ou en dessous
 ///
 ////////////////////////////////////////////////////////////////////////
-double NoeudPaletteD::fonctionDroitePaletteEnMouvement(NoeudAbstrait* bille)
+double NoeudPaletteD::fonctionDroitePaletteEnMouvement(NoeudAbstrait* bille) const
 {
 	glm::dvec3 positionBille = bille->obtenirPositionRelative();
 	glm::dvec3 positionPalette = obtenirPositionRelative();

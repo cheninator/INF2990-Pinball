@@ -1,9 +1,31 @@
+////////////////////////////////////////////////////////////////////////////////////
+/// @file ControleurTexte.cpp
+/// @author The Ballers
+/// @date 2015-02-25
+/// @version 1.0
+///
+/// @ingroup Texte
+///
+////////////////////////////////////////////////////////////////////////////////////
+
+
 #include "ControleurTexte.h"
 
 #include "../Application/FacadeModele.h"
 #include "../Global/SingletonGlobal.h"
 #define MARGE_X 5
 #define MARGE_Y 5
+
+
+////////////////////////////////////////////////////////////////////////
+///
+/// @fn ControleurTexte::ControleurTexte()
+///
+/// Constructeur
+///
+/// @return Aucune (constructeur).
+///
+////////////////////////////////////////////////////////////////////////
 ControleurTexte::ControleurTexte()
 {
 	TCHAR buffer[MAX_PATH];
@@ -19,6 +41,16 @@ ControleurTexte::ControleurTexte()
 	std::cout << "Fin de la generation des fonts." << std::endl;
 }
 
+
+////////////////////////////////////////////////////////////////////////
+///
+/// @fn ControleurTexte::~ControleurTexte()
+///
+/// Vide la table des fonts
+///
+/// @return Aucune (destructeur).
+///
+////////////////////////////////////////////////////////////////////////
 ControleurTexte::~ControleurTexte()
 {
 	// Si je fais delete ici, ca shie...
@@ -26,6 +58,18 @@ ControleurTexte::~ControleurTexte()
 		fontTable_[i].second = nullptr;
 }
 
+
+////////////////////////////////////////////////////////////////////////
+///
+/// @fn void ControleurTexte::populateFontVector(std::string targetPath)
+///
+/// Methode qui va chercher les fichiers ttf depuis un dossier
+///
+/// @param[in] targetPath : Le path du dossier
+///
+/// @return Aucune.
+///
+////////////////////////////////////////////////////////////////////////
 void ControleurTexte::populateFontVector(std::string targetPath)
 {
 	const char* d = targetPath.c_str();
@@ -58,6 +102,18 @@ void ControleurTexte::populateFontVector(std::string targetPath)
 	}
 }
 
+
+////////////////////////////////////////////////////////////////////////
+///
+/// @fn void ControleurTexte::creeFont(std::string sName)
+///
+/// Cree la font
+///
+/// @param[in] sName : Le nom de la font
+///
+/// @return Aucune.
+///
+////////////////////////////////////////////////////////////////////////
 void ControleurTexte::creeFont(std::string sName)
 {
 	std::string name(sName);
@@ -84,23 +140,72 @@ void ControleurTexte::creeFont(std::string sName)
 	}
 }
 
+
+////////////////////////////////////////////////////////////////////////
+///
+/// @fn void ControleurTexte::updateText(std::string oldText, std::string newText)
+///
+/// Modifie un texte
+///
+/// @param[in] oldText : Le texte afficher en ce moment
+/// @param[in] newText : Le texte qui modifiera le vieu
+///
+/// @return Aucune.
+///
+////////////////////////////////////////////////////////////////////////
 void ControleurTexte::updateText(std::string oldText, std::string newText)
 {
 	int textIndex = lookUpText(oldText);
 	texts_[textIndex].first = newText;
 }
+
+
+////////////////////////////////////////////////////////////////////////
+///
+/// @fn void ControleurTexte::suprimerText(std::string text)
+///
+/// Suprime un texte
+///
+/// @param[in] text : Le texte afficher en ce moment
+///
+/// @return Aucune.
+///
+////////////////////////////////////////////////////////////////////////
 void ControleurTexte::suprimerText(std::string  text)
 {
 	int textIndex = lookUpText(text);
 	texts_.erase(texts_.begin() + textIndex);
 }
 
+
+////////////////////////////////////////////////////////////////////////
+///
+/// @fn void ControleurTexte::creeTexte(std::string texte, std::string font)
+///
+/// Cree un texte
+///
+/// @param[in] texte : Le texte a cree
+/// @param[in] font : La font qu'on dois lier avec le texte
+///
+/// @return Aucune.
+///
+////////////////////////////////////////////////////////////////////////
 void ControleurTexte::creeTexte(std::string texte, std::string font)
 {
 	int textIndex = lookUpText(texte);
 	std::get<3>(texts_[textIndex].second) = font;
 }
 
+
+////////////////////////////////////////////////////////////////////////
+///
+/// @fn void ControleurTexte::refreshAffichage()
+///
+/// Refresh tout les affichages (oblige un reRender)
+///
+/// @return Aucune.
+///
+////////////////////////////////////////////////////////////////////////
 void ControleurTexte::refreshAffichage()
 {
 	if (fontTable_.size() <= 0 || !afficher_)
@@ -108,6 +213,18 @@ void ControleurTexte::refreshAffichage()
 	for (unsigned int i = 0; i < texts_.size(); i++)
 		renderText(i);
 }
+
+
+////////////////////////////////////////////////////////////////////////
+///
+/// @fn void ControleurTexte::renderText(int textIndex)
+///
+/// Affiche un texte
+/// @param[in] textIndex : la position du texte dans le vecteur
+///
+/// @return Aucune.
+///
+////////////////////////////////////////////////////////////////////////
 void ControleurTexte::renderText(int textIndex)
 {
 	char* useFont = (char*)(std::get<3>(texts_[textIndex].second)).c_str();
@@ -135,12 +252,38 @@ void ControleurTexte::renderText(int textIndex)
 }
 
 
+////////////////////////////////////////////////////////////////////////
+///
+/// @fn std::string ControleurTexte::getFontPath(std::string sName)
+///
+/// @remark ajout media/Fonts/ au string qu'il recoit 
+///
+/// @param[in] sName : un string
+///
+/// @return le nouveau string.
+///
+////////////////////////////////////////////////////////////////////////
 std::string ControleurTexte::getFontPath(std::string sName)
 {
 	std::string soundPath = "media/Fonts/" + std::string(sName);
 	return soundPath;
 }
 
+
+////////////////////////////////////////////////////////////////////////
+///
+/// @fn void ControleurTexte::changerCouleur(std::string text, float rouge, float vert, float bleu)
+///
+/// @remark Change la couleur
+///
+/// @param[in] text : le string
+/// @param[in] rouge : la couleur rouge
+/// @param[in] vert : la couleur vert
+/// @param[in] bleu : la couleur bleu
+///
+/// @return Rien.
+///
+////////////////////////////////////////////////////////////////////////
 void ControleurTexte::changerCouleur(std::string text, float rouge, float vert, float bleu)
 {
 	if (rouge > 1)
@@ -160,6 +303,19 @@ void ControleurTexte::changerCouleur(std::string text, float rouge, float vert, 
 	std::get<1>(texts_[textIndex].second) = {1 - rouge, 1 - vert, 1 - bleu};
 }
 
+
+////////////////////////////////////////////////////////////////////////
+///
+/// @fn void ControleurTexte::changerCouleurV(std::string text, glm::fvec3 couleur)
+///
+/// @remark Change la couleur via un vecteur
+///
+/// @param[in] text : le string
+/// @param[in] couleur : vecteur de couleur
+///
+/// @return Rien.
+///
+////////////////////////////////////////////////////////////////////////
 void ControleurTexte::changerCouleurV(std::string text, glm::fvec3 couleur)
 {
 	if (couleur.x > 1)
@@ -179,6 +335,20 @@ void ControleurTexte::changerCouleurV(std::string text, glm::fvec3 couleur)
 	std::get<1>(texts_[textIndex].second) = { 1 - couleur.x, 1 - couleur.y, 1 - couleur.z };
 }
 
+
+////////////////////////////////////////////////////////////////////////
+///
+/// @fn void ControleurTexte::repositionner(std::string text, float posX, float posY)
+///
+/// @remark Changer la position du texte
+///
+/// @param[in] text : le string
+/// @param[in] posX : position x
+/// @param[in] posY : position y
+///
+/// @return Rien.
+///
+////////////////////////////////////////////////////////////////////////
 void ControleurTexte::repositionner(std::string text, float posX, float posY)
 {
 	unsigned int textIndex = lookUpText(text);
@@ -250,6 +420,19 @@ void ControleurTexte::repositionner(std::string text, float posX, float posY)
 	std::get<0>(texts_[textIndex].second) = positionTexte;
 }
 
+
+////////////////////////////////////////////////////////////////////////
+///
+/// @fn void ControleurTexte::refresh(int x, int y)
+///
+/// @remark Repositionne les texte pour une continuitee
+///
+/// @param[in] x : position x
+/// @param[in] y : position y
+///
+/// @return Rien.
+///
+////////////////////////////////////////////////////////////////////////
 void ControleurTexte::refresh(int x, int y)
 {
 	posMax_ = glm::ivec2(x, y);
@@ -275,6 +458,18 @@ void ControleurTexte::refresh(int x, int y)
 	}
 }
 
+
+////////////////////////////////////////////////////////////////////////
+///
+/// @fn void ControleurTexte::obtenirDecalageY(unsigned int objectIndex)
+///
+/// @remark Obtiens le decalage en Y du string
+///
+/// @param[in] objectIndex : index du string
+///
+/// @return le decalage en y de l'objet.
+///
+////////////////////////////////////////////////////////////////////////
 float ControleurTexte::obtenirDecalageY(unsigned int objectIndex)
 {
 	// Foutre de quoi ici, je sais pas encore quoi	TODO
@@ -298,13 +493,38 @@ float ControleurTexte::obtenirDecalageY(unsigned int objectIndex)
  	return abs(decalage);
 }
 
+
+////////////////////////////////////////////////////////////////////////
+///
+/// @fn void ControleurTexte::resize(std::string text, unsigned int size)
+///
+/// @remark Modifie la taille du string
+///
+/// @param[in] text : le string
+/// @param[in] size : taille du texte
+///
+/// @return Aucun.
+///
+////////////////////////////////////////////////////////////////////////
 void ControleurTexte::resize(std::string text, unsigned int size)
 {
 	unsigned int textIndex = lookUpText(text);
 	std::get<2>(texts_[textIndex].second) = size;
 }
 
-unsigned int ControleurTexte::lookUpFont(std::string fileName)
+
+////////////////////////////////////////////////////////////////////////
+///
+/// @fn void ControleurTexte::lookUpFont(std::string fileName)
+///
+/// @remark cherche l'indexe d'une font
+///
+/// @param[in] fileName : le string du font
+///
+/// @return la position dans le vecteur du font.
+///
+////////////////////////////////////////////////////////////////////////
+unsigned int ControleurTexte::lookUpFont(std::string fileName) const
 {
 	for (unsigned int i = 0; i < fontTable_.size(); i++)
 		if (fontTable_[i].first == fileName)
@@ -312,6 +532,18 @@ unsigned int ControleurTexte::lookUpFont(std::string fileName)
 	return 0;
 }
 
+
+////////////////////////////////////////////////////////////////////////
+///
+/// @fn void ControleurTexte::lookUpText(std::string textString)
+///
+/// @remark cherche l'indexe d'un string
+///
+/// @param[in] textString : le string de text
+///
+/// @return la position dans le vecteur du text.
+///
+////////////////////////////////////////////////////////////////////////
 unsigned int ControleurTexte::lookUpText(std::string textString)
 {
 	for (unsigned int i = 0; i < texts_.size(); i++)

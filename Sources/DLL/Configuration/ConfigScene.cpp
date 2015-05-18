@@ -15,12 +15,13 @@
 ///
 /// @fn ConfigScene::ConfigScene()
 ///
-/// Assigne les valeurs par défaut des attributs de classe
-////
+/// Assigne les valeurs par defaut des attributs de classe
+///
 /// @return Aucune (constructeur).
 ///
 ////////////////////////////////////////////////////////////////////////
 ConfigScene::ConfigScene()
+	:derniereConfiguration_("lastConfig.bin"), derniereCampagne_("lastCampaign.txt")
 {
 	config_ = new int[13];
 	derniereCampagne_ = "lastCampaign.txt";
@@ -34,7 +35,7 @@ ConfigScene::ConfigScene()
 ///
 /// @fn ConfigScene::~ConfigScene()
 ///
-/// Detruit les informations internes relatives à la configuration
+/// Detruit les informations internes relatives a la configuration
 ///
 /// @return Aucune (destructeur).
 ///
@@ -50,7 +51,7 @@ ConfigScene::~ConfigScene()
 ///
 /// @fn void ConfigScene::sauvegarderConfiguration()
 ///
-/// Cette fonction écrit les valeurs de la configuration dans un fichier binaire.
+/// Cette fonction ecrit les valeurs de la configuration dans un fichier binaire.
 ///
 /// @return Aucune.
 ///
@@ -72,7 +73,7 @@ void ConfigScene::sauvegarderConfiguration()
 ///
 /// @fn void ConfigScene::sauvegarderCampagne()
 ///
-/// Cette fonction écrit les valeurs de la dernière campagne dans un fichier texte.
+/// Cette fonction ecrit les valeurs de la derniere campagne dans un fichier texte.
 ///
 /// @return Aucune.
 ///
@@ -95,7 +96,7 @@ void ConfigScene::sauvegarderCampagne()
 ///
 /// @fn bool ConfigScene::lireConfiguration()
 ///
-/// Cette fonction lit les valeurs de la configuration de la dernière
+/// Cette fonction lit les valeurs de la configuration de la derniere
 /// configuration de jeu.
 ///
 /// @return True pour indiquer que la lecture s'est bien faite. False autrement
@@ -116,7 +117,7 @@ bool ConfigScene::lireConfiguration()
 ///
 /// @fn bool ConfigScene::lireCampagne()
 ///
-/// Cette fonction lit les valeurs de la configuration de la dernière
+/// Cette fonction lit les valeurs de la configuration de la derniere
 /// campagne.
 ///
 /// @return True pour indiquer que la lecture s'est bien faite. False autrement
@@ -146,7 +147,7 @@ bool ConfigScene::lireCampagne()
 ///
 /// @fn void ConfigScene::lireFichierBinaire()
 ///
-/// Cette fonction lit les valeurs de la configuration à partir d'un fichier binaire.
+/// Cette fonction lit les valeurs de la configuration a partir d'un fichier binaire.
 ///
 /// @return Aucune.
 ///
@@ -188,9 +189,9 @@ void ConfigScene::modifierConfiguration(int config[13])
 	config_[5] = config[5];		// Nombre de billes par partie
 	config_[6] = config[6];		// Mode double bille
 	config_[7] = config[7];		// Mode force de rebond
-	config_[8] = config[8];		// Génération d'une bille
-	config_[9] = config[9];		// Vitesse après collision
-	config_[10] = config[10];	// Activation de l'éclairage
+	config_[8] = config[8];		// Generation d'une bille
+	config_[9] = config[9];		// Vitesse apres collision
+	config_[10] = config[10];	// Activation de l'eclairage
 	config_[11] = config[11];	// Champ d'attraction de portail
 	config_[12] = config[12];	// Interrupteur d'affichage de debug
 }
@@ -200,10 +201,9 @@ void ConfigScene::modifierConfiguration(int config[13])
 ///
 /// @fn void ConfigScene::modifierCampagne(char* maps, int length)
 ///
-/// Cette fonction assigne les nouvelles informations de derniere campagne jouée.
+/// Cette fonction assigne les nouvelles informations de derniere campagne jouee.
 ///
-/// @param[in] maps : La liste des informations de dernière campagne
-/// @param[in] length : Taille du string maps
+/// @param[in] maps : La liste des informations de derniere campagne
 ///
 /// @return Aucune.
 ///

@@ -68,7 +68,7 @@ private:
 ///
 /// @fn inline const std::string& UsineNoeud::obtenirNom() const
 ///
-/// Cette fonction retourne une chaîne representante le nom associe a
+/// Cette fonction retourne une chaine representante le nom associe a
 /// l'usine.
 ///
 /// @return Le nom associe a l'usine.

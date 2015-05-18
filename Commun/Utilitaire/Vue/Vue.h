@@ -50,9 +50,9 @@ namespace vue {
 		/// Destructeur virtuel vide.
 		virtual ~Vue() {}
 		/// Conversion de coordonnées de clôture à coordonnées virtuelles
-		bool convertirClotureAVirtuelle(int x, int y, glm::dvec3& point) const;
+		static bool convertirClotureAVirtuelle(int x, int y, glm::dvec3& point);
 		/// Conversion de coordonnées de clôture à coordonnées virtuelles sur un plan donné
-		bool convertirClotureAVirtuelle(int x, int y, const math::Plan3D& plan, glm::dvec3& point) const;
+		static bool convertirClotureAVirtuelle(int x, int y, const math::Plan3D& plan, glm::dvec3& point);
 
 		/// Obtient la caméra associée à cette vue.
 		inline Camera& obtenirCamera();

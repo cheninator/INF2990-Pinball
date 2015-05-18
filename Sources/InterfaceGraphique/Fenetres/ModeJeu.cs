@@ -173,13 +173,6 @@ namespace InterfaceGraphique
             etat = new EtatJeuJouer(this);
             FonctionsNatives.animerJeu(true);
 
-            StringBuilder billeSound = new StringBuilder("rolling");
-
-            FonctionsNatives.bouclerSon(bgm, bgm.Length);
-            FonctionsNatives.ajusterVolume(bgm, bgm.Length,90);
-            FonctionsNatives.ajusterVolume(billeSound, billeSound.Length, 100);
-            FonctionsNatives.jouerSon(bgm, bgm.Length);
-
             if (true)
             {
                 StringBuilder myFont = new StringBuilder("Bloodthirsty.ttf");
@@ -262,6 +255,11 @@ namespace InterfaceGraphique
             setProprietes();
             if (!firstStart)
                 Program.myCustomConsole.Update();
+            FonctionsNatives.bouclerSon(bgm, bgm.Length);
+            FonctionsNatives.ajusterVolume(bgm, bgm.Length, 90);
+            StringBuilder billeSound = new StringBuilder("rolling");
+            FonctionsNatives.ajusterVolume(billeSound, billeSound.Length, 100);
+            FonctionsNatives.jouerSon(bgm, bgm.Length);
         }
 
         ////////////////////////////////////////////////////////////////////////

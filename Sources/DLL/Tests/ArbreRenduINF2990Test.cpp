@@ -114,7 +114,7 @@ void ArbreRenduINF2990Test::testArbreDefaut()
 /// @fn void ArbreRenduINF2990Test::testXmlInexistant()
 ///
 /// Cas de test: Ouverture de fichier XML et initialisation de l'arbre
-///	à partir de ce que contient le fichier.
+///	a partir de ce que contient le fichier.
 ///
 /// @return Aucune.
 ///
@@ -197,7 +197,7 @@ void ArbreRenduINF2990Test::creerNoeudParUsine()
 ///
 /// @fn void ArbreRenduINF2990Test::boiteEnglobante()
 ///
-/// Cas de test: Test des limites de la boîte englobante d'un noeud.
+/// Cas de test: Test des limites de la boite englobante d'un noeud.
 ///
 /// @return Aucune.
 ///
@@ -221,7 +221,7 @@ void ArbreRenduINF2990Test::boiteEnglobante()
 	point[1] = 0;
 	point[2] = 0;
 
-	// On verifie qu'il est dans la boîte englobante de la cible.
+	// On verifie qu'il est dans la boite englobante de la cible.
 	CPPUNIT_ASSERT(noeudCible->pointEstDansBoite(point));
 
 	// On deplace le point en X.
@@ -229,7 +229,7 @@ void ArbreRenduINF2990Test::boiteEnglobante()
 	point[1] = 0;
 	point[2] = 0;
 
-	// On verifie qu'il n'est plus dans la boîte englobante de la cible.
+	// On verifie qu'il n'est plus dans la boite englobante de la cible.
 	CPPUNIT_ASSERT(!noeudCible->pointEstDansBoite(point));
 
 	// Nettoyage.
@@ -490,7 +490,7 @@ void ArbreRenduINF2990Test::testDuplication()
 ///
 /// @fn void ArbreRenduINF2990Test::testBoiteEnglobante()
 ///
-/// Cas de test: Test du visiteur qui cree une liste des boîtes
+/// Cas de test: Test du visiteur qui cree une liste des boites
 /// englobantes.
 ///
 /// @return Aucune.

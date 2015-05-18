@@ -274,7 +274,7 @@ void FacadeModele::initialiserOpenGL(HWND hWnd)
 
 	//arbre_->initialiser();
 	originator_->assignerArbre(arbre_);
-	/*Créer une caméra ortho*/
+	/*Creer une camera ortho*/
 	vue_ = new vue::VueOrtho{
 		vue::Camera{
 			glm::dvec3(0, 0, 200), glm::dvec3(0, 0, 0),
@@ -423,7 +423,7 @@ void FacadeModele::afficherBase() const
 		// le Texte a Ecrire
 		myText = "Hello World";
 		myFont = "arial.ttf"; // Ou encore Bloodthirsty.ttf
-		// On spécifie la font
+		// On specifie la font
 		controleurTexte_->creeTexte(myText, myFont);
 
 		// On specifie la taille (en 1/72 de pouce)
@@ -585,7 +585,7 @@ void FacadeModele::animer(float temps)
 
 ////////////////////////////////////////////////////////////////////////
 ///
-/// @fn int FacadeModele::selectionnerObjetSousPointClique(int i, int j, int hauteur, int largeur, bool ctrlDown)
+/// @fn int FacadeModele::selectionnerObjetSousPointClique(int i, int j, int hauteur, int, bool ctrlDown, bool gaucheEnfonce, bool sourisSurSelection)
 ///
 /// @remark Cette fonction permet de selectionner un objet. La methode regarde la valeur
 /// \remark du stencil et la donne a un visiteurSelection qui compare cette valeur
@@ -597,7 +597,8 @@ void FacadeModele::animer(float temps)
 /// @param[in] hauteur : Hauteur de la fenetre
 /// @param[in] largeur : Largeur de la fenetre
 /// @param[in] ctrlDown : Si le bouton ctrl est appuie
-///
+/// @param[in] gaucheEnfonce : Si le bouton gauche est appuier
+/// @param[in] sourisSurSelection : Si la souris est sur l'element selectionne
 /// @return NoeudAbstrait.
 ///
 ////////////////////////////////////////////////////////////////////////
@@ -609,7 +610,7 @@ int FacadeModele::selectionnerObjetSousPointClique(int i, int j, int hauteur, in
 	int valeurStencil = 0;
 	glReadPixels(i ,hauteur -j , 1, 1, GL_STENCIL_INDEX, GL_UNSIGNED_INT, &valeurStencil);
 
-	// Merci de laisser le cout pour que je puisse le décommenter au besoin
+	// Merci de laisser le cout pour que je puisse le decommenter au besoin
 	//std::cout << "Valeur du stencil sous le curseur " << valeurStencil << std::endl
 
 	// Merci de laisser le cout pour que je puisse le decommenter au besoin
@@ -720,7 +721,7 @@ void FacadeModele::deplacerSelection(int x1, int y1 ,int x2, int y2, bool duplic
 ///	\remark  	L'angle est calcule en fonction du deplacement de (x1,y1) a (x2,y2):
 ///	\remark 	Presentement, l'angle est proportionnel a (y1 - y2).
 ///	\remark 	
-///	\remark 	Pour tester si la rotation est faisable, on prend tous les points des boîtes
+///	\remark 	Pour tester si la rotation est faisable, on prend tous les points des boites
 ///	\remark 	englobantes.  Si un seul de ces points, une fois transforme, n'est pas dans la 
 ///	\remark 	table, on ne fait pas la rotation.
 ///		
@@ -1039,7 +1040,7 @@ void FacadeModele::dupliquerSelection(int i, int j)
 
 ///////////////////////////////////////////////////////////////////////////////
 ///
-/// @fn void FacadeModele::creerXML(char* path, int prop[6])
+/// @fn int FacadeModele::creerXML(char* path, int prop[6])
 ///	@remark	Enregistre une zone de jeu en fichier XML
 ///
 /// @return Aucune.
@@ -1110,7 +1111,7 @@ int FacadeModele::creerXML(std::string path, int prop[6], bool force)
 
 ///////////////////////////////////////////////////////////////////////////////
 ///
-/// @fn void FacadeModele::creerXML(char* path, int prop[6])
+/// @fn int FacadeModele::peutSauvegarder()
 ///	@remark	Enregistre une zone de jeu en fichier XML
 ///
 /// @return Aucune.
@@ -1342,7 +1343,7 @@ void FacadeModele::setDebug(bool valeurSpotLight)
 
 ///////////////////////////////////////////////////////////////////////////////
 ///
-/// @fn double FacadeModele::obtenirZoomCourant();
+/// @fn double FacadeModele::obtenirZoomCourant() const
 /// @brief Obtient la valeur deu zoom applique.
 ///
 /// @return La valeur du zoom courant
@@ -1350,7 +1351,7 @@ void FacadeModele::setDebug(bool valeurSpotLight)
 /// @remark : la comparaison est faite entre les dimensions de la cloture et celles de la fenetre courante
 ///
 ///////////////////////////////////////////////////////////////////////////////
-double FacadeModele::obtenirZoomCourant()
+double FacadeModele::obtenirZoomCourant() const
 {
 	double zoom = -1;
 	glm::ivec2 dimClot = vue_->obtenirProjection().obtenirDimensionCloture();
@@ -1370,7 +1371,7 @@ double FacadeModele::obtenirZoomCourant()
 /// @return un vecteur de 2 int qui sont la taille de la fenetre courante
 ///
 ///////////////////////////////////////////////////////////////////////////////
-glm::ivec2 FacadeModele::obtenirTailleFenetre()
+glm::ivec2 FacadeModele::obtenirTailleFenetre() const
 {
 	return vue_->obtenirProjection().obtenirDimensionCloture();
 }
@@ -1438,12 +1439,12 @@ bool FacadeModele::appliquerZoomInitial()
 
 ///////////////////////////////////////////////////////////////////////////////
 ///
-/// @fn bool FacadeModele::duplicationEstHorsTable()
+/// @fn bool FacadeModele::duplicationEstHorsTable() const
 /// @brief Indique si la Duplication se produit hors table.
 /// @return true si la duplication est hors table
 ///
 ///////////////////////////////////////////////////////////////////////////////
-bool FacadeModele::duplicationEstHorsTable()
+bool FacadeModele::duplicationEstHorsTable() const
 {
 	return duplicationHorsTable_;
 }
@@ -1477,100 +1478,100 @@ int* FacadeModele::obtenirConfiguration()
 
 ///////////////////////////////////////////////////////////////////////////////
 ///
-/// @fn int	FacadeModele::obtenirTouchePGJ1()
+/// @fn int	FacadeModele::obtenirTouchePGJ1() const
 /// @brief Retourne la touche associee a Palette Gauche Joueur 1.
 /// @return La touche PGJ1.
 ///
 ///////////////////////////////////////////////////////////////////////////////
-int	FacadeModele::obtenirTouchePGJ1(){ 
+int	FacadeModele::obtenirTouchePGJ1() const{ 
 	return configuration_->obtenirRaccourciPGJ1(); 
 }
 
 ///////////////////////////////////////////////////////////////////////////////
 ///
-/// @fn int	FacadeModele::obtenirTouchePGJ2()
+/// @fn int	FacadeModele::obtenirTouchePGJ2() const
 /// @brief Retourne la touche associee a Palette Gauche Joueur 2.
 /// @return La touche PGJ2.
 ///
 ///////////////////////////////////////////////////////////////////////////////
-int FacadeModele::obtenirTouchePGJ2(){ 
+int FacadeModele::obtenirTouchePGJ2() const{ 
 	return configuration_->obtenirRaccourciPGJ2(); 
 }
 
 ///////////////////////////////////////////////////////////////////////////////
 ///
-/// @fn int	FacadeModele::obtenirTouchePDJ1()
+/// @fn int	FacadeModele::obtenirTouchePDJ1() const
 /// @brief Retourne la touche associee a Palette Droite Joueur 1.
 /// @return La touche PDJ1.
 ///
 ///////////////////////////////////////////////////////////////////////////////
-int FacadeModele::obtenirTouchePDJ1(){ 
+int FacadeModele::obtenirTouchePDJ1() const{ 
 	return configuration_->obtenirRaccourciPDJ1(); 
 }
 
 ///////////////////////////////////////////////////////////////////////////////
 ///
-/// @fn int	FacadeModele::obtenirTouchePDJ2()
+/// @fn int	FacadeModele::obtenirTouchePDJ2() const
 /// @brief Retourne la touche associee a Palette Droite Joueur 2.
 /// @return La touche PDJ2.
 ///
 ///////////////////////////////////////////////////////////////////////////////
-int FacadeModele::obtenirTouchePDJ2(){ 
+int FacadeModele::obtenirTouchePDJ2() const{ 
 	return configuration_->obtenirRaccourciPDJ2(); 
 }
 
 ///////////////////////////////////////////////////////////////////////////////
 ///
-/// @fn int	FacadeModele::obtenirToucheRessort()
+/// @fn int	FacadeModele::obtenirToucheRessort() const
 /// @brief Retourne la touche associee a l'activation du ressort.
 /// @return La touche d'acitvation du ressort.
 ///
 ///////////////////////////////////////////////////////////////////////////////
-int FacadeModele::obtenirToucheRessort(){ 
+int FacadeModele::obtenirToucheRessort() const{ 
 	return configuration_->obtenirRaccourciRessort(); 
 }
 
 ///////////////////////////////////////////////////////////////////////////////
 ///
-/// @fn int	FacadeModele::obtenirAffichageGlobal()
+/// @fn int	FacadeModele::obtenirAffichageGlobal() const
 /// @brief Retourne le mode d'affichage global.
 /// @return 1 si l'affichage galobal est active, 0 sinon.
 ///
 ///////////////////////////////////////////////////////////////////////////////
-int FacadeModele::obtenirAffichageGlobal(){ 
+int FacadeModele::obtenirAffichageGlobal() const{ 
 	return configuration_->obtenirAffichageGlobal(); 
 }
 
 ///////////////////////////////////////////////////////////////////////////////
 ///
-/// @fn int	FacadeModele::obtenirNombreDeBilles()
+/// @fn int	FacadeModele::obtenirNombreDeBilles() const
 /// @brief Retourne le nombre de billes.
 /// @return Le nombre de billes.
 ///
 ///////////////////////////////////////////////////////////////////////////////
-int	FacadeModele::obtenirNombreDeBilles(){ 
+int	FacadeModele::obtenirNombreDeBilles() const{ 
 	return configuration_->obtenirNombreBilles(); 
 }
 
 ///////////////////////////////////////////////////////////////////////////////
 ///
-/// @fn int	FacadeModele::obtenirModeDoubleBille()
+/// @fn int	FacadeModele::obtenirModeDoubleBille() const
 /// @brief Le mode double bille.
 /// @return 1 si le mode double bille est active, 0 sinon.
 ///
 ///////////////////////////////////////////////////////////////////////////////
-int FacadeModele::obtenirModeDoubleBille() { 
+int FacadeModele::obtenirModeDoubleBille() const{ 
 	return configuration_->obtenirModeDoubleBille(); 
 }
 
 ///////////////////////////////////////////////////////////////////////////////
 ///
-/// @fn int	FacadeModele::obtenirModeForceRebond()
+/// @fn int	FacadeModele::obtenirModeForceRebond() const
 /// @brief Le mode avec force dans les rebonds.
 /// @return 1 si le mode est active, 0 sinon.
 ///
 ///////////////////////////////////////////////////////////////////////////////
-int FacadeModele::obtenirModeForceRebond(){ 
+int FacadeModele::obtenirModeForceRebond() const{ 
 	return configuration_->obtenirModeForceRebond(); 
 }
 
@@ -1586,12 +1587,12 @@ void FacadeModele::bloquerAffichageGlobal(int active)
 
 ///////////////////////////////////////////////////////////////////////////////
 ///
-/// @fn bool FacadeModele::obtenirAI()
+/// @fn bool FacadeModele::obtenirAI() const
 /// @brief Le mode joueur virtuel.
 /// @return Vrai si le mode est active, faux sinon.
 ///
 ///////////////////////////////////////////////////////////////////////////////
-bool FacadeModele::obtenirAI()
+bool FacadeModele::obtenirAI() const
 { return utiliserAI; }
 
 ///////////////////////////////////////////////////////////////////////////////
@@ -1640,7 +1641,7 @@ void FacadeModele::sauvegarderCampagne(char* nomMap)
 /// @return Le niveau de difficulte.
 ///
 ///////////////////////////////////////////////////////////////////////////////
-std::string FacadeModele::obtenirDerniereCampagne()
+std::string FacadeModele::obtenirDerniereCampagne() const
 {
 	return configuration_->obtenirCampagne();
 }
@@ -1668,7 +1669,7 @@ void FacadeModele::construireListesPalettes()
 
 ///////////////////////////////////////////////////////////////////////////////
 ///
-/// @fn void FacadeModele::activerPalettesGJ1()
+/// @fn void FacadeModele::activerPalettesGJ1() const
 /// @brief Active les palettes gauches du joueur 1.
 ///
 ///	C'est la fonction qui dit a la palette de bouger.
@@ -1678,7 +1679,7 @@ void FacadeModele::construireListesPalettes()
 /// @return Aucune.
 /// 
 ///////////////////////////////////////////////////////////////////////////////
-void FacadeModele::activerPalettesGJ1()
+void FacadeModele::activerPalettesGJ1() const
 {
 	for (NoeudPaletteG* palette : listePalettesGJ1_)
 		palette->activer();
@@ -1686,7 +1687,7 @@ void FacadeModele::activerPalettesGJ1()
 
 ///////////////////////////////////////////////////////////////////////////////
 ///
-/// @fn void FacadeModele::desactiverPalettesGJ1()
+/// @fn void FacadeModele::desactiverPalettesGJ1() const
 /// @brief Desactive les palettes gauches du joueur 1. 
 /// 
 /// C'est la fonction qui dit a la palette de revenir et d'arreter de bouger.
@@ -1696,7 +1697,7 @@ void FacadeModele::activerPalettesGJ1()
 /// @return Aucune.
 /// 
 ///////////////////////////////////////////////////////////////////////////////
-void FacadeModele::desactiverPalettesGJ1()
+void FacadeModele::desactiverPalettesGJ1() const
 {
 	for (NoeudPaletteG* palette : listePalettesGJ1_)
 		palette->desactiver();
@@ -1704,7 +1705,7 @@ void FacadeModele::desactiverPalettesGJ1()
 
 ///////////////////////////////////////////////////////////////////////////////
 ///
-/// @fn void FacadeModele::activerPalettesDJ1()
+/// @fn void FacadeModele::activerPalettesDJ1() const
 /// @brief Active les palettes gauches du joueur 1.
 ///
 ///	C'est la fonction qui dit a la palette de bouger.
@@ -1714,7 +1715,7 @@ void FacadeModele::desactiverPalettesGJ1()
 /// @return Aucune.
 /// 
 ///////////////////////////////////////////////////////////////////////////////
-void FacadeModele::activerPalettesDJ1()
+void FacadeModele::activerPalettesDJ1() const
 {
 	for (NoeudPaletteD* palette : listePalettesDJ1_)
 		palette->activer();
@@ -1722,7 +1723,7 @@ void FacadeModele::activerPalettesDJ1()
 
 ///////////////////////////////////////////////////////////////////////////////
 ///
-/// @fn void FacadeModele::desactiverPalettesDJ1()
+/// @fn void FacadeModele::desactiverPalettesDJ1() const
 /// @brief Desactive les palettes gauches du joueur 1.
 ///
 /// C'est la fonction qui dit a la palette de revenir et d'arreter de bouger.
@@ -1732,7 +1733,7 @@ void FacadeModele::activerPalettesDJ1()
 /// @return Aucune.
 /// 
 ///////////////////////////////////////////////////////////////////////////////
-void FacadeModele::desactiverPalettesDJ1()
+void FacadeModele::desactiverPalettesDJ1() const
 {
 	for (NoeudPaletteD* palette : listePalettesDJ1_)
 		palette->desactiver();
@@ -1740,7 +1741,7 @@ void FacadeModele::desactiverPalettesDJ1()
 
 ///////////////////////////////////////////////////////////////////////////////
 ///
-/// @fn void FacadeModele::activerPalettesGJ2()
+/// @fn void FacadeModele::activerPalettesGJ2() const
 /// @brief Active les palettes gauches du joueur 2.
 ///
 /// C'est la fonction qui dit a la palette de revenir et d'arreter de bouger.
@@ -1750,7 +1751,7 @@ void FacadeModele::desactiverPalettesDJ1()
 /// @return Aucune.
 /// 
 ///////////////////////////////////////////////////////////////////////////////
-void FacadeModele::activerPalettesGJ2()
+void FacadeModele::activerPalettesGJ2() const
 {
 	for (NoeudPaletteG* palette : listePalettesGJ2_)
 		palette->activer();
@@ -1768,7 +1769,7 @@ void FacadeModele::activerPalettesGJ2()
 /// @return Aucune.
 /// 
 ///////////////////////////////////////////////////////////////////////////////
-void FacadeModele::desactiverPalettesGJ2()
+void FacadeModele::desactiverPalettesGJ2() const
 {
 	for (NoeudPaletteG* palette : listePalettesGJ2_)
 		palette->desactiver();
@@ -1786,7 +1787,7 @@ void FacadeModele::desactiverPalettesGJ2()
 /// @return Aucune.
 /// 
 ///////////////////////////////////////////////////////////////////////////////
-void FacadeModele::activerPalettesDJ2()
+void FacadeModele::activerPalettesDJ2() const
 {
 	for (NoeudPaletteD* palette : listePalettesDJ2_)
 		palette->activer();
@@ -1804,7 +1805,7 @@ void FacadeModele::activerPalettesDJ2()
 /// @return Aucune.
 /// 
 ///////////////////////////////////////////////////////////////////////////////
-void FacadeModele::desactiverPalettesDJ2()
+void FacadeModele::desactiverPalettesDJ2() const
 {
 	for (NoeudPaletteD* palette : listePalettesDJ2_)
 		palette->desactiver();
@@ -1828,7 +1829,6 @@ void FacadeModele::supprimerBille()
 /// @fn int* FacadeModele::obtenirProprietes(char* nomFichier)
 /// @brief Retourne les proprietes de jeu de la zone.
 /// @param[in] nomFichier : Nom du fichier de la zone.
-/// @param[in] length : Longueur du nom du fichier.
 /// @return Les prorietes de jeu.
 /// 
 ///////////////////////////////////////////////////////////////////////////////
@@ -1900,7 +1900,7 @@ void FacadeModele::traiterCollisions(float)
 
 	if (miseAJourListeBillesRequise)
 		mettreAJourListeBillesEtNoeuds(); // Cette methode est appelee a chaque frame dand animer(temps)
-	// mais si on trouve toutes les places ou elle doit être appelee, 
+	// mais si on trouve toutes les places ou elle doit etre appelee, 
 	// on n'aura plus besoin de l'appeler a chaque frame et donc ici serait le bon endroit pour l'appeler quand on a efface une bille.
 }
 
@@ -1944,7 +1944,7 @@ void FacadeModele::traiterCollisionsAvecQuadTree(float temps)
 				// Traiter (reagir a) la collision. La bille n'est pas detruite maintenant que NoeudTrou::traiterCollisions n'efface plus la bille (il le faisait au commit d'avant)
 				noeudAVerifier->traiterCollisions(detail, bille);
 
-				if (noeudAVerifier->obtenirType() == "trou") // Traiter le cas où une bille entre en collision avec un trou
+				if (noeudAVerifier->obtenirType() == "trou") // Traiter le cas ou une bille entre en collision avec un trou
 				{
 					quad_->remove(bille);
 					break;                                   // MODIF
@@ -1954,7 +1954,7 @@ void FacadeModele::traiterCollisionsAvecQuadTree(float temps)
 		}// Fin du for( noeudAVerifier : listeNoeudsAVerifier)
 	}// Fin du for( bille : listeBilles_)
 
-	// Enlever les billes du quadTree avant de les detruire pour pouvoir acceder à leurs positions.
+	// Enlever les billes du quadTree avant de les detruire pour pouvoir acceder a leurs positions.
 	for (NoeudAbstrait* bille : listeBilles_)
 		quad_->remove(bille);
 
@@ -1969,7 +1969,7 @@ void FacadeModele::traiterCollisionsAvecQuadTree(float temps)
 
 ///////////////////////////////////////////////////////////////////////////////
 ///
-/// @fn void FacadeModele::updateForcesExternes()
+/// @fn void FacadeModele::updateForcesExternes() const
 /// 
 /// Pour chaque bille, calcule la somme des forces exercees par les portails 
 /// sur celle-ci. Si la distance entre la bille et le portail est plus grande
@@ -1985,7 +1985,7 @@ void FacadeModele::traiterCollisionsAvecQuadTree(float temps)
 /// @return Aucune.
 /// 
 ///////////////////////////////////////////////////////////////////////////////
-void FacadeModele::updateForcesExternes()
+void FacadeModele::updateForcesExternes() const
 {
 	for (NoeudAbstrait* bille : listeBilles_)
 	{
@@ -2078,7 +2078,7 @@ void FacadeModele::mettreAJourListeRessorts()
 /// @return Aucune.
 /// 
 ///////////////////////////////////////////////////////////////////////////////
-void FacadeModele::compresserRessort()
+void FacadeModele::compresserRessort() const
 {
 	for (NoeudAbstrait* ressort : listeRessorts_)
 		static_cast<NoeudRessort*>(ressort)->compresser();
@@ -2091,7 +2091,7 @@ void FacadeModele::compresserRessort()
 /// @return Aucune.
 /// 
 ///////////////////////////////////////////////////////////////////////////////
-void FacadeModele::relacherRessort()
+void FacadeModele::relacherRessort() const
 {
 	for (NoeudAbstrait* ressort : listeRessorts_)
 		static_cast<NoeudRessort*>(ressort)->relacher();
@@ -2325,16 +2325,16 @@ std::string FacadeModele::obtenirCout()
 ///
 /// @fn void FacadeModele::utiliserCameraOrbite(bool utiliseOrbite)
 ///
-/// @brief Cette fonction change la vision pour refléter une caméra orbite ou non
+/// @brief Cette fonction change la vision pour refleter une camera orbite ou non
 ///
-/// @param[in] utiliseOrbite : Indique s'il faut utiliser une caméra orbite ou non
+/// @param[in] utiliseOrbite : Indique s'il faut utiliser une camera orbite ou non
 ///
 /// @return Aucune
 ///
 ////////////////////////////////////////////////////////////////////////
 void FacadeModele::utiliserCameraOrbite(bool utiliseOrbite)
 {
-	// Si le mode désiré n'est pas celui qui est déjà présentement utilisé
+	// Si le mode desire n'est pas celui qui est deja presentement utilise
 	if (utiliseOrbite != vueEstOrbite_)
 	{
 		/*Sauvegarde des mesures de la clôture */
@@ -2354,15 +2354,15 @@ void FacadeModele::utiliserCameraOrbite(bool utiliseOrbite)
 								289),
 					glm::dvec3( (coinGaucheTableX + coinDroitTableX) / 2.0 ,
 								(coinGaucheTableY + coinDroitTableY) / 2.0,
-								100), /* Le point visé*/
+								100), /* Le point vise*/
 					glm::dvec3(0, 1, 0), glm::dvec3(0, 1, 0),
 				    0.0 , 0.0},
 					vue::ProjectionPerspective{
 						clotMinX, clotMaxX, clotMinY, clotMaxY,
 						10.0, 2000, /* La valeur minimale et maximale en Z dans le volume de visualisation*/
 						50, 1000,   /* La valeur minimal et maximale que l'on peut parcourir dans le jeu*/
-						1.10,       /* L'incrément de zoom*/
-						ratio,      /* Le rapport d'aspect précédent*/
+						1.10,       /* L'increment de zoom*/
+						ratio,      /* Le rapport d'aspect precedent*/
 						60.0,       /* L'angle de vision */ 
 					}
 			}; 
@@ -2372,7 +2372,7 @@ void FacadeModele::utiliserCameraOrbite(bool utiliseOrbite)
 		}
 		else
 		{
-			/*Créer une caméra ortho*/
+			/*Creer une camera ortho*/
 			vue_ = new vue::VueOrtho{
 				vue::Camera{
 					glm::dvec3(0, 0, 200), glm::dvec3(0, 0, 0),
@@ -2388,7 +2388,7 @@ void FacadeModele::utiliserCameraOrbite(bool utiliseOrbite)
 			std::cout << "La vue est passee en orthographique \n";
 		}
 
-		// On change l'attribut pour refléter la vue courante
+		// On change l'attribut pour refleter la vue courante
 		vueEstOrbite_ = utiliseOrbite;
 	}
 }
@@ -2525,14 +2525,14 @@ int FacadeModele::obtenirNombreSelection() const
 
 ////////////////////////////////////////////////////////////////////////
 ///
-/// @fn void FacadeModele::cameraEstOrbite()
+/// @fn void FacadeModele::cameraEstOrbite() const
 ///
-/// @brief Indique si le mode de caméra est orbite ou non
+/// @brief Indique si le mode de camera est orbite ou non
 ///
-/// @return Si oui ou non la caméra est en mode orbite
+/// @return Si oui ou non la camera est en mode orbite
 ///
 ////////////////////////////////////////////////////////////////////////
-bool FacadeModele::cameraEstOrbite()
+bool FacadeModele::cameraEstOrbite() const
 {
 	return vueEstOrbite_;
 }
@@ -2556,7 +2556,7 @@ void FacadeModele::dessinerSkybox(double demiLargeur, bool vueOrtho, glm::dvec3 
 
 ////////////////////////////////////////////////////////////////////////
 ///
-/// @fn void FacadeModele::sourisEstSurObjet(int i, int j, int hauteur, int largeur)
+/// @fn void FacadeModele::sourisEstSurObjet(int i, int j, int hauteur, int, bool& estSelectionne)
 ///
 /// @brief Cette fonction verifie si la souris est situe sur un objet
 ///
@@ -2564,6 +2564,7 @@ void FacadeModele::dessinerSkybox(double demiLargeur, bool vueOrtho, glm::dvec3 
 /// @param[in] j : Position souris j
 /// @param[in] hauteur : Hauteur de la fenetre
 /// @param[in] largeur : Largeur de la fenetre
+/// @param[in] estSelectionne : Si l'element est selectionne
 ///
 /// @return bool, true si la souris est situe sur un objet
 ///

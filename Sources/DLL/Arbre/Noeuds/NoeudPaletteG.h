@@ -55,17 +55,17 @@ public:
 	/// Obtenir l'angle initial de la palette
 	double obtenirAngleZOriginal() const { return angleZOriginal_; };
 
-	/// Savoir si la palette est activée par une bille
+	/// Savoir si la palette est activee par une bille
 	bool estActiveeParBille(NoeudAbstrait* noeud);
 
 	/// Obtenir la premiere boite englobante custom de l'histoire!
 	virtual std::vector<glm::dvec3> obtenirVecteursEnglobants();
 
 	/// Fonction de droite pour la palette a l'etat original
-	double fonctionDroitePaletteOriginale(NoeudAbstrait* bille);
+	double fonctionDroitePaletteOriginale(NoeudAbstrait* bille) const;
 
 	/// Fonction de droite pour la palette lorsqu'elle est en mouvement
-	double fonctionDroitePaletteEnMouvement(NoeudAbstrait* bille);
+	double fonctionDroitePaletteEnMouvement(NoeudAbstrait* bille) const;
 
 private:
 

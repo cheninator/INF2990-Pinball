@@ -21,7 +21,7 @@
 ///
 /// @param[in] handle openGL assignee par le controleur de lumieres.
 ///
-/// @remarks Doit être un handle entre GL_LIGHT1 et GL_LIGHT7
+/// @remarks Doit etre un handle entre GL_LIGHT1 et GL_LIGHT7
 ///
 /// @return aucun.
 ///

@@ -1,5 +1,26 @@
+////////////////////////////////////////////////////////////////////////////////////
+/// @file ControleurSon.cpp
+/// @author The Ballers
+/// @date 2015-02-25
+/// @version 1.0
+///
+/// @ingroup Sons
+///
+////////////////////////////////////////////////////////////////////////////////////
+
+
 #include "ControleurSon.h"
 #define DEFAULT_FREQUENCY 44100 // Hz
+
+////////////////////////////////////////////////////////////////////////
+///
+/// @fn ControleurSon::ControleurSon()
+///
+/// @param[in] desactiverSon Desactive tout les son et ne les load pas
+///
+/// @return Aucune (constructeur).
+///
+////////////////////////////////////////////////////////////////////////
 ControleurSon::ControleurSon(bool desactiverSon)
 {
 	sonDesactive = desactiverSon;
@@ -46,6 +67,16 @@ ControleurSon::ControleurSon(bool desactiverSon)
 	}
 }
 
+
+////////////////////////////////////////////////////////////////////////
+///
+/// @fn ControleurSon::~ControleurSon()
+///
+/// Vide la table des sons et delete le system
+///
+/// @return Aucune (destructeur).
+///
+////////////////////////////////////////////////////////////////////////
 ControleurSon::~ControleurSon()
 {
 	if (sonDesactive)
@@ -56,6 +87,18 @@ ControleurSon::~ControleurSon()
 	system_->close();
 }
 
+
+////////////////////////////////////////////////////////////////////////
+///
+/// @fn void ControleurSon::creeSon(char* sName)
+///
+/// Methode qui va chercher les fichiers son et le cree
+///
+/// @param[in] sName : Le nom du son
+///
+/// @return Aucune.
+///
+////////////////////////////////////////////////////////////////////////
 void ControleurSon::creeSon(char* sName)
 {
 	if (sonDesactive)
@@ -85,6 +128,18 @@ void ControleurSon::creeSon(char* sName)
 		== FMOD_OK) ? "OK" : "FAILED") << std::endl;
 }
 
+
+////////////////////////////////////////////////////////////////////////
+///
+/// @fn void ControleurSon::pauseGlobal(bool pause)
+///
+/// On pause tout les sons
+///
+/// @param[in] pause : Si les son sont pause ou non
+///
+/// @return Aucune.
+///
+////////////////////////////////////////////////////////////////////////
 void ControleurSon::pauseGlobal(bool pause)
 {
 	for (unsigned int i = 0; i < soundTable_.size(); i++)
@@ -93,6 +148,19 @@ void ControleurSon::pauseGlobal(bool pause)
 	}
 }
 
+
+////////////////////////////////////////////////////////////////////////
+///
+/// @fn void ControleurSon::jouerSon(char* sName, bool pause)
+///
+/// On joue le son (ou pas)
+///
+/// @param[in] sName : Le nom du son
+/// @param[in] pause : Si le son est pause ou non
+///
+/// @return Aucune.
+///
+////////////////////////////////////////////////////////////////////////
 void ControleurSon::jouerSon(char* sName, bool pause)
 {
 	if (sonDesactive)
@@ -104,6 +172,19 @@ void ControleurSon::jouerSon(char* sName, bool pause)
 	setVolumeLimiter();
 }
 
+
+////////////////////////////////////////////////////////////////////////
+///
+/// @fn void ControleurSon::accelererSon(char* sName, float facteurAcceleration)
+///
+/// On joue le son (ou pas)
+///
+/// @param[in] sName : Le nom du son
+/// @param[in] facteurAcceleration : X acceleration
+///
+/// @return Aucune.
+///
+////////////////////////////////////////////////////////////////////////
 void ControleurSon::accelererSon(char* sName, float facteurAcceleration)
 {
 	if (sonDesactive)
@@ -115,6 +196,19 @@ void ControleurSon::accelererSon(char* sName, float facteurAcceleration)
 	soundTable_[i].second.second->setFrequency(DEFAULT_FREQUENCY * facteurAcceleration);
 }
 
+
+////////////////////////////////////////////////////////////////////////
+///
+/// @fn void ControleurSon::bouclerSon(char* sName, bool loop)
+///
+/// On boucle sur le son (ou pas)
+///
+/// @param[in] sName : Le nom du son
+/// @param[in] loop : on boucle sur le son
+///
+/// @return Aucune.
+///
+////////////////////////////////////////////////////////////////////////
 void ControleurSon::bouclerSon(char* sName, bool loop)
 {
 	if (sonDesactive)
@@ -125,6 +219,18 @@ void ControleurSon::bouclerSon(char* sName, bool loop)
 	soundTable_[i].second.first->setMode(loop ? FMOD_LOOP_NORMAL : FMOD_LOOP_OFF);
 }
 
+
+////////////////////////////////////////////////////////////////////////
+///
+/// @fn void ControleurSon::arreterSon(char* sName)
+///
+/// On arrete le son (sans le detruire)
+///
+/// @param[in] sName : Le nom du son
+///
+/// @return Aucune.
+///
+////////////////////////////////////////////////////////////////////////
 void ControleurSon::arreterSon(char* sName)
 {
 	if (sonDesactive)
@@ -135,6 +241,16 @@ void ControleurSon::arreterSon(char* sName)
 	soundTable_[i].second.second->stop();
 }
 
+
+////////////////////////////////////////////////////////////////////////
+///
+/// @fn void ControleurSon::arreterSon()
+///
+/// On arrete tout les sons (sans les detruire)
+///
+/// @return Aucune.
+///
+////////////////////////////////////////////////////////////////////////
 void ControleurSon::arreterSon()
 {
 	if (sonDesactive)
@@ -146,6 +262,20 @@ void ControleurSon::arreterSon()
 	}
 }
 
+
+
+////////////////////////////////////////////////////////////////////////
+///
+/// @fn void ControleurSon::muteSound(char* sName, bool mute)
+///
+/// On mute le son
+///
+/// @param[in] sName : Le nom du son
+/// @param[in] mute : si on mute ou non
+///
+/// @return Aucune.
+///
+////////////////////////////////////////////////////////////////////////
 void ControleurSon::muteSound(char* sName, bool mute)
 {
 	if (sonDesactive)
@@ -156,6 +286,18 @@ void ControleurSon::muteSound(char* sName, bool mute)
 	soundTable_[i].second.second->setMute(mute);
 }
 
+
+////////////////////////////////////////////////////////////////////////
+///
+/// @fn void ControleurSon::sourdine(bool mute)
+///
+/// On mute les sons (sirectement depuis le system_)
+///
+/// @param[in] mute : si on mute ou non
+///
+/// @return Aucune.
+///
+////////////////////////////////////////////////////////////////////////
 void ControleurSon::sourdine(bool mute)
 {
 	if (sonDesactive)
@@ -165,6 +307,18 @@ void ControleurSon::sourdine(bool mute)
 	canal->setMute(mute);
 }
 
+
+////////////////////////////////////////////////////////////////////////
+///
+/// @fn void  ControleurSon::lookUp(std::string fileName)
+///
+/// @remark cherche l'index d'un son
+///
+/// @param[in] fileName : le string du son
+///
+/// @return la position dans le vecteur du son.
+///
+////////////////////////////////////////////////////////////////////////
 int ControleurSon::lookUp(std::string fileName)
 {
 	for (unsigned int i = 0; i < soundTable_.size(); i++)
@@ -181,6 +335,19 @@ int ControleurSon::lookUp(std::string fileName)
 	return -1;
 }
 
+
+////////////////////////////////////////////////////////////////////////
+///
+/// @fn void  ControleurSon::ajusterVolume(char* sName, float percent)
+///
+/// @remark on modifie le volume d'un son
+///
+/// @param[in] sName : Le nom du son
+/// @param[in] percent : pourcentage du volume
+///
+/// @return Aucun
+///
+////////////////////////////////////////////////////////////////////////
 void ControleurSon::ajusterVolume(char* sName, float percent)
 {
 	if (sonDesactive)
@@ -194,6 +361,19 @@ void ControleurSon::ajusterVolume(char* sName, float percent)
 		percent = -1;
 	soundTable_[i].second.second->setVolume(percent);
 }
+
+
+////////////////////////////////////////////////////////////////////////
+///
+/// @fn void ControleurSon::ajusterBGM(float percent)
+///
+/// @remark on modifie le volume des son de fond
+///
+/// @param[in] percent : pourcentage du volume
+///
+/// @return Aucun
+///
+////////////////////////////////////////////////////////////////////////
 void ControleurSon::ajusterBGM(float percent)
 {
 	if (sonDesactive)
@@ -206,6 +386,18 @@ void ControleurSon::ajusterBGM(float percent)
 	maxBGM_ = percent;
 }
 
+
+////////////////////////////////////////////////////////////////////////
+///
+/// @fn void ControleurSon::ajusterSFX(float percent)
+///
+/// @remark on modifie le volume des son des effets
+///
+/// @param[in] percent : pourcentage du volume
+///
+/// @return Aucun
+///
+////////////////////////////////////////////////////////////////////////
 void ControleurSon::ajusterSFX(float percent)
 {
 	if (sonDesactive)
@@ -218,6 +410,16 @@ void ControleurSon::ajusterSFX(float percent)
 	maxSFX_ = percent;
 }
 
+
+////////////////////////////////////////////////////////////////////////
+///
+/// @fn void ControleurSon::setVolumeLimiter()
+///
+/// @remark on met a jour le volume globale maximal
+///
+/// @return Aucun
+///
+////////////////////////////////////////////////////////////////////////
 void ControleurSon::setVolumeLimiter()
 {
 	if (sonDesactive)
@@ -226,6 +428,16 @@ void ControleurSon::setVolumeLimiter()
 	setVolumeSFX();
 }
 
+
+////////////////////////////////////////////////////////////////////////
+///
+/// @fn void ControleurSon::setVolumeLimiter()
+///
+/// @remark on met a jour le volume maximal des musiques de fond 
+///
+/// @return Aucun
+///
+////////////////////////////////////////////////////////////////////////
 void ControleurSon::setVolumeBGM()
 {
 	if (sonDesactive)
@@ -240,6 +452,16 @@ void ControleurSon::setVolumeBGM()
 	}
 }
 
+
+////////////////////////////////////////////////////////////////////////
+///
+/// @fn void ControleurSon::setVolumeSFX()
+///
+/// @remark on met a jour le volume maximal des effets sonores 
+///
+/// @return Aucun
+///
+////////////////////////////////////////////////////////////////////////
 void ControleurSon::setVolumeSFX()
 {
 	if (sonDesactive)
@@ -254,6 +476,18 @@ void ControleurSon::setVolumeSFX()
 	}
 }
 
+
+////////////////////////////////////////////////////////////////////////
+///
+/// @fn void ControleurSon::getSFXPath(char* sName)
+///
+/// ajout media/Fonts/ au string qu'il recoit 
+///
+/// @param[in] sName : Le nom du son
+///
+/// @return le nouveau string.
+///
+////////////////////////////////////////////////////////////////////////
 std::string ControleurSon::getSFXPath(char* sName)
 {
 	std::string soundPath = "media/SFX/" + std::string(sName);

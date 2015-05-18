@@ -95,7 +95,7 @@ void NoeudMur::animer(float temps)
 ///
 /// @fn void NoeudAbstrait::traiterCollisions(aidecollision::DetailsCollision details, NoeudAbstrait* bille)
 ///
-/// Cette fonction effectue la réaction a la collision de la bille sur 
+/// Cette fonction effectue la reaction a la collision de la bille sur 
 /// l'objet courant. Cette fonction est a reimplementer si on veut autre 
 /// chose qu'un rebondissement ordinaire.
 ///

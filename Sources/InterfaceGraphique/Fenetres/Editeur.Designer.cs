@@ -100,6 +100,7 @@ namespace InterfaceGraphique
             this.ZoomIn_ToolStrip = new System.Windows.Forms.ToolStripButton();
             this.ZoomOut_ToolStrip = new System.Windows.Forms.ToolStripButton();
             this.ZoomElastique_ToolStrip = new System.Windows.Forms.ToolStripButton();
+            this.toolStripButton1 = new System.Windows.Forms.ToolStripButton();
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.fichierToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.Nouveau_MenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -150,6 +151,8 @@ namespace InterfaceGraphique
             this.printPreviewDialog1 = new System.Windows.Forms.PrintPreviewDialog();
             this.toolTipPaneauCreation = new System.Windows.Forms.ToolTip(this.components);
             this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
+            this.toolStripSeparator5 = new System.Windows.Forms.ToolStripSeparator();
+            this.toolStripButton2 = new System.Windows.Forms.ToolStripButton();
             Enregistrer_ToolStrip = new System.Windows.Forms.ToolStripButton();
             this.panel1.SuspendLayout();
             this.panel_GL.SuspendLayout();
@@ -881,7 +884,10 @@ namespace InterfaceGraphique
             this.toolStripSeparator4,
             this.ZoomIn_ToolStrip,
             this.ZoomOut_ToolStrip,
-            this.ZoomElastique_ToolStrip});
+            this.ZoomElastique_ToolStrip,
+            this.toolStripSeparator5,
+            this.toolStripButton1,
+            this.toolStripButton2});
             this.toolStrip1.Location = new System.Drawing.Point(0, 24);
             this.toolStrip1.Name = "toolStrip1";
             this.toolStrip1.Size = new System.Drawing.Size(954, 35);
@@ -1054,6 +1060,20 @@ namespace InterfaceGraphique
             this.ZoomElastique_ToolStrip.ToolTipText = "Zoom Elastique";
             this.ZoomElastique_ToolStrip.Click += new System.EventHandler(this.ZoomElastique_ToolStrip_Click);
             // 
+            // toolStripButton1
+            // 
+            this.toolStripButton1.AutoSize = false;
+            this.toolStripButton1.AutoToolTip = false;
+            this.toolStripButton1.Font = new System.Drawing.Font("Segoe UI", 11F);
+            this.toolStripButton1.Image = global::InterfaceGraphique.Properties.Resources.camera;
+            this.toolStripButton1.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.toolStripButton1.Margin = new System.Windows.Forms.Padding(4, 0, 8, 0);
+            this.toolStripButton1.Name = "toolStripButton1";
+            this.toolStripButton1.Size = new System.Drawing.Size(85, 30);
+            this.toolStripButton1.Text = "Ortho";
+            this.toolStripButton1.ToolTipText = "Camera Orthographique (1)";
+            this.toolStripButton1.Click += new System.EventHandler(this.toolStripButton1_Click);
+            // 
             // menuStrip1
             // 
             this.menuStrip1.AutoSize = false;
@@ -1089,7 +1109,7 @@ namespace InterfaceGraphique
             this.Nouveau_MenuItem.Image = global::InterfaceGraphique.Properties.Resources.NouveauFichier;
             this.Nouveau_MenuItem.Name = "Nouveau_MenuItem";
             this.Nouveau_MenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.N)));
-            this.Nouveau_MenuItem.Size = new System.Drawing.Size(230, 22);
+            this.Nouveau_MenuItem.Size = new System.Drawing.Size(226, 22);
             this.Nouveau_MenuItem.Text = "Nouveau";
             this.Nouveau_MenuItem.Click += new System.EventHandler(this.Nouveau_MenuItem_Click);
             // 
@@ -1098,7 +1118,7 @@ namespace InterfaceGraphique
             this.Ouvrir_MenuItem.Image = global::InterfaceGraphique.Properties.Resources.open;
             this.Ouvrir_MenuItem.Name = "Ouvrir_MenuItem";
             this.Ouvrir_MenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.O)));
-            this.Ouvrir_MenuItem.Size = new System.Drawing.Size(230, 22);
+            this.Ouvrir_MenuItem.Size = new System.Drawing.Size(226, 22);
             this.Ouvrir_MenuItem.Text = "Ouvrir";
             this.Ouvrir_MenuItem.Click += new System.EventHandler(this.Ouvrir_MenuItem_Click);
             // 
@@ -1107,7 +1127,7 @@ namespace InterfaceGraphique
             this.Enregistrer_MenuItem.Image = global::InterfaceGraphique.Properties.Resources.save;
             this.Enregistrer_MenuItem.Name = "Enregistrer_MenuItem";
             this.Enregistrer_MenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.S)));
-            this.Enregistrer_MenuItem.Size = new System.Drawing.Size(230, 22);
+            this.Enregistrer_MenuItem.Size = new System.Drawing.Size(226, 22);
             this.Enregistrer_MenuItem.Text = "Enregistrer";
             this.Enregistrer_MenuItem.Click += new System.EventHandler(this.Enregistrer_MenuItem_Click);
             // 
@@ -1117,7 +1137,7 @@ namespace InterfaceGraphique
             this.EnregistrerS_MenuItem.Name = "EnregistrerS_MenuItem";
             this.EnregistrerS_MenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)(((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.Shift) 
             | System.Windows.Forms.Keys.S)));
-            this.EnregistrerS_MenuItem.Size = new System.Drawing.Size(230, 22);
+            this.EnregistrerS_MenuItem.Size = new System.Drawing.Size(226, 22);
             this.EnregistrerS_MenuItem.Text = "Enregistrer Sous";
             this.EnregistrerS_MenuItem.Click += new System.EventHandler(this.EnregistrerS_MenuItem_Click);
             // 
@@ -1125,7 +1145,7 @@ namespace InterfaceGraphique
             // 
             this.Proprietes_MenuItem.Image = global::InterfaceGraphique.Properties.Resources.settings;
             this.Proprietes_MenuItem.Name = "Proprietes_MenuItem";
-            this.Proprietes_MenuItem.Size = new System.Drawing.Size(230, 22);
+            this.Proprietes_MenuItem.Size = new System.Drawing.Size(226, 22);
             this.Proprietes_MenuItem.Text = "Propriétés";
             this.Proprietes_MenuItem.Click += new System.EventHandler(this.Proprietes_MenuItem_Click);
             // 
@@ -1134,7 +1154,7 @@ namespace InterfaceGraphique
             this.ModeTest_MenuItem.Image = global::InterfaceGraphique.Properties.Resources.Tester;
             this.ModeTest_MenuItem.Name = "ModeTest_MenuItem";
             this.ModeTest_MenuItem.ShortcutKeyDisplayString = "t";
-            this.ModeTest_MenuItem.Size = new System.Drawing.Size(230, 22);
+            this.ModeTest_MenuItem.Size = new System.Drawing.Size(226, 22);
             this.ModeTest_MenuItem.Text = "Mode Test";
             this.ModeTest_MenuItem.Click += new System.EventHandler(this.ModeTest_MenuItem_Click);
             // 
@@ -1143,7 +1163,7 @@ namespace InterfaceGraphique
             this.MenuP_MenuItem.Image = global::InterfaceGraphique.Properties.Resources.Return_home;
             this.MenuP_MenuItem.Name = "MenuP_MenuItem";
             this.MenuP_MenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.Q)));
-            this.MenuP_MenuItem.Size = new System.Drawing.Size(230, 22);
+            this.MenuP_MenuItem.Size = new System.Drawing.Size(226, 22);
             this.MenuP_MenuItem.Text = "Menu Principal";
             this.MenuP_MenuItem.Click += new System.EventHandler(this.MenuP_MenuItem_Click);
             // 
@@ -1513,6 +1533,26 @@ namespace InterfaceGraphique
             this.toolTip1.InitialDelay = 20;
             this.toolTip1.ReshowDelay = 110;
             // 
+            // toolStripSeparator5
+            // 
+            this.toolStripSeparator5.Margin = new System.Windows.Forms.Padding(10, 0, 10, 0);
+            this.toolStripSeparator5.Name = "toolStripSeparator5";
+            this.toolStripSeparator5.Size = new System.Drawing.Size(6, 35);
+            // 
+            // toolStripButton2
+            // 
+            this.toolStripButton2.AutoSize = false;
+            this.toolStripButton2.AutoToolTip = false;
+            this.toolStripButton2.Font = new System.Drawing.Font("Segoe UI", 11F);
+            this.toolStripButton2.Image = global::InterfaceGraphique.Properties.Resources.camera;
+            this.toolStripButton2.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.toolStripButton2.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.toolStripButton2.Name = "toolStripButton2";
+            this.toolStripButton2.Size = new System.Drawing.Size(90, 30);
+            this.toolStripButton2.Text = "Orbite";
+            this.toolStripButton2.ToolTipText = "Camera Orbite (2)";
+            this.toolStripButton2.Click += new System.EventHandler(this.toolStripButton2_Click);
+            // 
             // Editeur
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -1663,6 +1703,9 @@ namespace InterfaceGraphique
         private System.Windows.Forms.ToolStripMenuItem Retablir_MenuItem;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator4;
         private System.Windows.Forms.ToolStripMenuItem SelectAll_MenuItem;
+        private System.Windows.Forms.ToolStripButton toolStripButton1;
+        private System.Windows.Forms.ToolStripSeparator toolStripSeparator5;
+        private System.Windows.Forms.ToolStripButton toolStripButton2;
     }
 }
 

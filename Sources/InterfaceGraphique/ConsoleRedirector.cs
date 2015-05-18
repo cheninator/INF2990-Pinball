@@ -140,14 +140,14 @@ namespace InterfaceGraphique
                 cConsole.Show();
         }
 
-        ////////////////////////////////////////////////////////////////////////
-        ///
-        /// @fn public isVibile()
-        /// @brief Mettre a Jour la Console.
-        /// 
-        /// @return Aucune
-        ///
-        ////////////////////////////////////////////////////////////////////////
+        //////////////////////////////////////////////////////////////////////
+        //
+        // @fn public isVibile()
+        // @brief Mettre a Jour la Console.
+        // 
+        // @return Aucune
+        //
+        ///////////////////////////////////////////////////////////////////////
         public bool isVisible()
         {
             if (cConsole == null)

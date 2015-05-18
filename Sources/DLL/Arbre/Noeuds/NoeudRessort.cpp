@@ -100,7 +100,7 @@ void NoeudRessort::animer(float temps)
 		if (scale_.y > 0.3)
 		{
 			scale_ = { scale_.x, scale_.y * exp(temps * log(0.0002)), scale_.z }; // exp(temps * log(0.002)) = 0.002^temps
-			positionRelative_ -= scale_.y /5 * translationCompression_ ; // Très heuristique comme calcul 
+			positionRelative_ -= scale_.y /5 * translationCompression_ ; // Tres heuristique comme calcul 
 			// Updater l'attribut distanceCompresseion_
 		}
 		break;
@@ -216,7 +216,7 @@ void NoeudRessort::traiterCollisions(aidecollision::DetailsCollision details, No
 	{
 	case EN_COMPRESSION:
 	case AU_REPOS:
-			// Modifier la vitesse de la bille en fonction de bille reçue en paramètre 
+			// Modifier la vitesse de la bille en fonction de bille reçue en parametre 
 		{
 			glm::dvec3 vitesseInitiale = bille->obtenirVitesse();
 			glm::dvec3 vitesseNormaleInitiale = glm::proj(vitesseInitiale, details.direction); // Necessaire pour connaitre la vitesse tangentielle.

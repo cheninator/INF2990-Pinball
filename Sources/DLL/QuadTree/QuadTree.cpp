@@ -67,8 +67,8 @@ QuadTree::QuadTree(int level, glm::dvec3 inferieurGauche, glm::dvec3 superieurDr
 ///
 /// @fn QuadTree::~QuadTree()
 ///
-/// Le destructeur desalloue l'espace attribué dynamiquement. Il appelle
-///	la méthode clear().
+/// Le destructeur desalloue l'espace attribue dynamiquement. Il appelle
+///	la methode clear().
 ///
 /// @return Aucune (destructeur).
 ///
@@ -83,7 +83,7 @@ QuadTree::~QuadTree()
 ///
 /// @fn void QuadTree::divide()
 ///
-/// Cette méthode alloue dynamiquement les sous QuadTree avec les bonnes
+/// Cette methode alloue dynamiquement les sous QuadTree avec les bonnes
 ///	limites spaciales. 
 ///
 /// @return Aucune
@@ -98,7 +98,7 @@ void QuadTree::divide()
 	//					|      |      |
 	//					|  SO  |  SE  |
 	//					+------+------+
-	//	inférieurGauche
+	//	inferieurGauche
 
 	double centreX = ((superieurDroit_.x - inferieurGauche_.x) / 2.0) + inferieurGauche_.x;
 	double centreY = ((superieurDroit_.y - inferieurGauche_.y) / 2.0) + inferieurGauche_.y;
@@ -115,8 +115,8 @@ void QuadTree::divide()
 ///
 /// @fn void QuadTree::clear()
 ///
-///	Cette méthode vide la liste des noeuds d'un QuadTree et s'occupe de
-///	la désallocation de mémoire de ses sous QuadTree.
+///	Cette methode vide la liste des noeuds d'un QuadTree et s'occupe de
+///	la desallocation de memoire de ses sous QuadTree.
 ///
 /// @return Aucune
 ///
@@ -132,13 +132,13 @@ void QuadTree::clear()
 		sudEst_->clear();
 		sudOuest_->clear();
 
-		/// Desallouer la mémoire
+		/// Desallouer la memoire
 		delete nordEst_;
 		delete nordOuest_;
 		delete sudEst_;
 		delete sudOuest_;
 
-		/// Remettre les pointeurs à nullptr
+		/// Remettre les pointeurs a nullptr
 		nordEst_ = nullptr;
 		nordOuest_ = nullptr;
 		sudEst_ = nullptr;
@@ -152,13 +152,13 @@ void QuadTree::clear()
 ///
 /// @fn bool QuadTree::estDansQuadTree(NoeudAbstrait* noeud, QuadTree* quad) const
 ///
-/// Cette méthode permet de savoir si un noeud est complétement contenu dans
+/// Cette methode permet de savoir si un noeud est completement contenu dans
 ///	un QuadTree.
 ///
-/// @param[in] noeud : le noeud à insérer
-/// @param[in] quad : le quad dans lequel on veut insérer
+/// @param[in] noeud : le noeud a inserer
+/// @param[in] quad : le quad dans lequel on veut inserer
 ///
-/// @return True lorsque le noeud est dans le QuadTree passé en paramètre. False autrement
+/// @return True lorsque le noeud est dans le QuadTree passe en parametre. False autrement
 ///
 ////////////////////////////////////////////////////////////////////////
 bool QuadTree::estDansQuadTree(NoeudAbstrait* noeud, QuadTree* quad) const
@@ -216,13 +216,13 @@ bool QuadTree::estDansQuadTree(NoeudAbstrait* noeud, QuadTree* quad) const
 ///
 /// @fn bool QuadTree::estDansQuadTree(glm::dvec3 points, QuadTree* quad) const
 ///
-/// Cette méthode permet de savoir si un point est complétement contenu dans
+/// Cette methode permet de savoir si un point est completement contenu dans
 ///	un QuadTree.
 ///
-/// @param[in] points : le point à vérifier
-/// @param[in] quad : le quad dans lequel on veut insérer
+/// @param[in] points : le point a verifier
+/// @param[in] quad : le quad dans lequel on veut inserer
 ///
-/// @return True lorsque le point est dans le QuadTree passé en paramètre. False autrement
+/// @return True lorsque le point est dans le QuadTree passe en parametre. False autrement
 ///
 ////////////////////////////////////////////////////////////////////////
 bool QuadTree::estDansQuadTree(glm::dvec3 points, QuadTree* quad) const
@@ -243,34 +243,34 @@ bool QuadTree::estDansQuadTree(glm::dvec3 points, QuadTree* quad) const
 ///
 /// @fn QuadTree* QuadTree::obtenirQuadrant(NoeudAbstrait* noeud)
 ///
-/// Cette méthode retourne le quadrant dans lequel il faudra insérer
-/// un noeud. Retourne le parent des quadrants si le noeud est à l'intersection
+/// Cette methode retourne le quadrant dans lequel il faudra inserer
+/// un noeud. Retourne le parent des quadrants si le noeud est a l'intersection
 ///	de plusieurs quadrants
 ///
-/// @param[in] noeud : le noeud à insérer
+/// @param[in] noeud : le noeud a inserer
 ///
-/// @return QuadTree*, le quadTree dans lequel il faudra insérer le noeud
+/// @return QuadTree*, le quadTree dans lequel il faudra inserer le noeud
 ///
 ////////////////////////////////////////////////////////////////////////
 QuadTree* QuadTree::obtenirQuadrant(NoeudAbstrait* noeud)
 {
-	// Si le noeud est complètement dans le quadrant Nord-Est
+	// Si le noeud est completement dans le quadrant Nord-Est
 	if (estDansQuadTree(noeud, nordEst_))
 		return nordEst_;
 
-	// Si le noeud est complètement dans le quadrant Nord-Ouest
+	// Si le noeud est completement dans le quadrant Nord-Ouest
 	if (estDansQuadTree(noeud, nordOuest_))
 		return nordOuest_;
 
-	// Si le noeud est complètement dans le quadrant Sud-Ouest
+	// Si le noeud est completement dans le quadrant Sud-Ouest
 	if (estDansQuadTree(noeud, sudOuest_))
 		return sudOuest_;
 
-	// Si le noeud est complètement dans le quadrant Sud-Est
+	// Si le noeud est completement dans le quadrant Sud-Est
 	if (estDansQuadTree(noeud, sudEst_))
 		return sudEst_;
 
-	// Si le noeud est à l'intersection de deux quadrants et plus
+	// Si le noeud est a l'intersection de deux quadrants et plus
 	else
 		return this;
 }
@@ -280,11 +280,11 @@ QuadTree* QuadTree::obtenirQuadrant(NoeudAbstrait* noeud)
 ///
 /// @fn void QuadTree::insert(NoeudAbstrait* noeud)
 ///
-/// Cette méthode insère un noeud dans le QuadTree
+/// Cette methode insere un noeud dans le QuadTree
 ///
-/// @param[in] noeud : le noeud à insérer
+/// @param[in] noeud : le noeud a inserer
 ///
-/// @return True lorsque le noeud a été insérer, false autrement
+/// @return True lorsque le noeud a ete inserer, false autrement
 ///
 ////////////////////////////////////////////////////////////////////////
 bool QuadTree::insert(NoeudAbstrait* noeud)
@@ -292,17 +292,17 @@ bool QuadTree::insert(NoeudAbstrait* noeud)
 	if (!noeud->estAffiche())
 		return false;
 
-	// Insérer le noeud seulement si le noeud est dans le Quadtree
+	// Inserer le noeud seulement si le noeud est dans le Quadtree
 	if (estDansQuadTree(noeud, this))
 	{
-		// Insérer l'objet dans le QuadTree courant si aucun de ses sous QuadTree ne peut l'accueuillir
+		// Inserer l'objet dans le QuadTree courant si aucun de ses sous QuadTree ne peut l'accueuillir
 		if (objets_.size() < MAX_CAPACITY && niveauCourant_ < MAX_LEVEL && obtenirQuadrant(noeud) == this)
 		{
 			objets_.push_back(noeud);
 			return true;
 		}
 
-		// Subdiviser et reassigner les objets déjà existants
+		// Subdiviser et reassigner les objets deja existants
 		if (nordEst_ == nullptr)
 		{
 			divide();
@@ -312,7 +312,7 @@ bool QuadTree::insert(NoeudAbstrait* noeud)
 
 			objets_.clear();
 
-			// Reassigner les objets qui étaient précédemment insérés 
+			// Reassigner les objets qui etaient precedemment inseres 
 			for (iter = copy.begin(); iter != copy.end(); iter++)
 				obtenirQuadrant(*iter)->insert(*iter);
 
@@ -322,7 +322,7 @@ bool QuadTree::insert(NoeudAbstrait* noeud)
 			return true;
 		}
 
-		// Si le QuadTree contient déjà des sous QuadTree, insérer le noeud dans le bon QuadTree
+		// Si le QuadTree contient deja des sous QuadTree, inserer le noeud dans le bon QuadTree
 		else if (nordEst_ != nullptr && obtenirQuadrant(noeud) != this)
 		{
 			obtenirQuadrant(noeud)->insert(noeud);
@@ -335,7 +335,7 @@ bool QuadTree::insert(NoeudAbstrait* noeud)
 
 	}
 
-	// Ne pas insérer le noeud, il n'est pas dans les limites
+	// Ne pas inserer le noeud, il n'est pas dans les limites
 	else
 		return false;
 
@@ -346,13 +346,13 @@ bool QuadTree::insert(NoeudAbstrait* noeud)
 ///
 /// @fn std::vector<NoeudAbstrait*> QuadTree::retrieve(NoeudAbstrait* noeud)
 ///
-/// Cette méthode retourne la liste des noeuds qui sont dans le même QuadTree que
-/// le noeud passé en paramètre.
+/// Cette methode retourne la liste des noeuds qui sont dans le meme QuadTree que
+/// le noeud passe en parametre.
 ///
-/// @param[in] noeud : le noeud pour lequel on désire ses voisins
+/// @param[in] noeud : le noeud pour lequel on desire ses voisins
 ///
-/// @return l'ensemble des noeuds qui sont dans le même QuadTree que le noeud passé
-///			en paramètre
+/// @return l'ensemble des noeuds qui sont dans le meme QuadTree que le noeud passe
+///			en parametre
 ///
 ////////////////////////////////////////////////////////////////////////
 std::list<NoeudAbstrait*> QuadTree::retrieve(NoeudAbstrait* noeud)
@@ -441,13 +441,13 @@ std::list<NoeudAbstrait*> QuadTree::retrieve(NoeudAbstrait* noeud)
 ///
 /// @fn std::vector<NoeudAbstrait*> QuadTree::retrieve(NoeudAbstrait* noeud)
 ///
-/// Cette méthode retourne la liste des noeuds qui sont dans le même QuadTree que
-/// le noeud passé en paramètre.
+/// Cette methode retourne la liste des noeuds qui sont dans le meme QuadTree que
+/// le noeud passe en parametre.
 ///
-/// @param[in] noeud : le noeud pour lequel on désire ses voisins
+/// @param[in] noeud : le noeud pour lequel on desire ses voisins
 ///
-/// @return l'ensemble des noeuds qui sont dans le même QuadTree que le noeud passé
-///			en paramètre
+/// @return l'ensemble des noeuds qui sont dans le meme QuadTree que le noeud passe
+///			en parametre
 ///
 ////////////////////////////////////////////////////////////////////////
 bool QuadTree::remove(NoeudAbstrait* noeud)
@@ -459,7 +459,7 @@ bool QuadTree::remove(NoeudAbstrait* noeud)
 	{
 		std::list<NoeudAbstrait*>::iterator iter;
 
-		// On vérifie s'il est dans un sous QuadTree
+		// On verifie s'il est dans un sous QuadTree
 		if (obtenirQuadrant(noeud) != this)
 		{
 			obtenirQuadrant(noeud)->remove(noeud);

@@ -56,11 +56,11 @@ namespace math {
       /// Trouve l'intersection entre la droite et un plan.
       bool      intersection(const Plan3D& planCoupe, glm::dvec3& intersection);
       /// Trouve l'intersection entre la droite et un segment.
-      bool      intersectionSegment(const glm::dvec3& point1, const glm::dvec3& point2);
+      bool      intersectionSegment(const glm::dvec3& point1, const glm::dvec3& point2) const;
       /// Calcule la distance entre un point et la droite.
-      double    distancePoint(const glm::dvec3& centre);
+      double    distancePoint(const glm::dvec3& centre) const;
       /// Trouve le point de rencontre entre la droite et une perpendiculaire à partir d'un point.
-      glm::dvec3 perpendiculaireDroite(const glm::dvec3& point);
+      glm::dvec3 perpendiculaireDroite(const glm::dvec3& point) const;
 
       /// Avoir le vecteur directeur de la droite.
       inline const glm::dvec3& lireVecteur() const;

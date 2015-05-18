@@ -87,7 +87,7 @@ public:
 	/// Cas de test: Creer un noeud de type inexistant.
 	void creerNoeudParUsine();
 
-	/// Cas de test: Test boîte englobante.
+	/// Cas de test: Test boite englobante.
 	void boiteEnglobante();
 
 	/// Cas de test: Selectionner un objet non selectionnable (table).

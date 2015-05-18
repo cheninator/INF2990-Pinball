@@ -18,7 +18,7 @@
 ///
 /// @fn JoueurVirtuel::JoueurVirtuel()
 ///
-/// Constructeur par défaut
+/// Constructeur par defaut
 ///
 /// @return Aucune (constructeur).
 ///
@@ -51,7 +51,7 @@ JoueurVirtuel::~JoueurVirtuel()
 ///
 /// @fn JoueurVirtuel::jouer(std::vector<NoeudAbstrait*> listeBilles)
 ///
-///	Méthode qui implémente la logique du comportement que doit adopter
+///	Methode qui implemente la logique du comportement que doit adopter
 ///	le joueur virtuel.
 ///
 /// @return Aucune
@@ -59,13 +59,13 @@ JoueurVirtuel::~JoueurVirtuel()
 ////////////////////////////////////////////////////////////////////////
 void JoueurVirtuel::jouer(const std::vector<NoeudAbstrait*>& listeBilles, const std::set<NoeudPaletteG*>& listePalettesGauches, const std::set<NoeudPaletteD*>& listePalettesDroites, float temps)
 {
-	// Le joueur pourrait posséder des pointeurs vers listePalettesGJ2_ et listePalettesDJ2_ de facadeModele.
+	// Le joueur pourrait posseder des pointeurs vers listePalettesGJ2_ et listePalettesDJ2_ de facadeModele.
 	billes_.clear();
 	billes_ = listeBilles;
 	//bool detecter = false;
 
 	/// Traiter les palettes gauches
-	// Si le bouton n'est pas pesé, faire la vérification habituelle
+	// Si le bouton n'est pas pese, faire la verification habituelle
 	if (!boutonGauche_)
 	{
 		if (timerGauche_ > 0)
@@ -82,7 +82,7 @@ void JoueurVirtuel::jouer(const std::vector<NoeudAbstrait*>& listeBilles, const 
 	}
 	else
 	{
-		// Si le bouton EST pesé, compter du temps jusqu'à une certaine valeur et relacher le bouton après cette valeur.
+		// Si le bouton EST pese, compter du temps jusqu'a une certaine valeur et relacher le bouton apres cette valeur.
 		if (timerGauche_ > 0)
 			timerGauche_ -= temps;
 		else
@@ -92,7 +92,7 @@ void JoueurVirtuel::jouer(const std::vector<NoeudAbstrait*>& listeBilles, const 
 			boutonGauche_ = false;
 		}
 	}
-	// Même chose pour le bouton de droite.
+	// Meme chose pour le bouton de droite.
 	if (!boutonDroit_)
 	{
 		if (timerDroit_ > 0)
@@ -124,7 +124,7 @@ void JoueurVirtuel::jouer(const std::vector<NoeudAbstrait*>& listeBilles, const 
 ///
 /// @fn bool JoueurVirtuel::traiter(NoeudPaletteG* noeud)
 ///
-///	Méthode qui retourne vrai lorsque la palette passé en paramètre
+///	Methode qui retourne vrai lorsque la palette passe en parametre
 ///	detecte une bille proche de sa position. Faux autrement
 ///
 /// @return True ou false selon si la palette detecte une bille proche
@@ -148,7 +148,7 @@ bool JoueurVirtuel::traiter(NoeudPaletteG* noeud)
 ///
 /// @fn bool JoueurVirtuel::traiter(NoeudPaletteD* noeud)
 ///
-///	Méthode qui retourne vrai lorsque la palette passé en paramètre
+///	Methode qui retourne vrai lorsque la palette passe en parametre
 ///	detecte une bille proche de sa position. Faux autrement
 ///
 /// @return True ou false selon si la palette detecte une bille proche
@@ -172,7 +172,7 @@ bool JoueurVirtuel::traiter(NoeudPaletteD* noeud)
 ///
 /// @fn bool JoueurVirtuel::assignerPalettes(const std::set<NoeudPaletteG*>& gauche, const std::set<NoeudPaletteD*>& droite)
 ///
-///	Méthode qui assigne au joueur virtuel sa liste de palette
+///	Methode qui assigne au joueur virtuel sa liste de palette
 ///
 /// @param[in] gauche, droite : ses palettes gauches et droites
 ///
