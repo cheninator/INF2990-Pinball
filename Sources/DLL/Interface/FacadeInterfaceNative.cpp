@@ -2314,5 +2314,17 @@ extern "C"
 		return FacadeModele::obtenirInstance()->cameraEstOrbite();
 	}
 
+	///////////////////////////////////////////////////////////////////////////////
+	///
+	/// @fn void toggleStereo()
+	/// @brief Permet de changer le mode de visionnement en stéréo ou non
+	/// @return Aucune
+	///
+	///////////////////////////////////////////////////////////////////////////////
+	__declspec(dllexport) void toggleStereo()
+	{
+		return FacadeModele::obtenirInstance()->toggleStereo();
+	}
+
 
 }// FIN DU extern "C"

@@ -573,6 +573,9 @@ namespace vue {
 		return false;
 	}
 
+	void ProjectionOrtho::appliquerStereo(int)
+	{
+	}
 }; // Fin du namespace vue.
 
 

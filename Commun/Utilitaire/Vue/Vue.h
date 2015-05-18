@@ -20,7 +20,6 @@ namespace math {
 
 namespace vue {
 
-
 	class Projection;
 
 
@@ -99,6 +98,7 @@ namespace vue {
 
 		/// Animation de la vue en fonction du temps
 		virtual void animer(double temps);
+		virtual void modeStereo(int oeilMult) = 0;
 
 		void increaseFrame() { frameCounter_++; frameCounter_ = frameCounter_ % (360 * 15); }
 		int obtenirFrameCounter() const { return frameCounter_; }

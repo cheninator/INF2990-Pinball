@@ -76,7 +76,7 @@ namespace vue {
 		virtual inline glm::dvec2 obtenirDimensionFenetreVirtuelle() const;
 		
 		virtual void conserverRapportAspect();
-
+		virtual void appliquerStereo(int oeilMult);
 	private:
 
 		/// Vérifie que la translation ne dépasse pas les bordures maximales du centre du jeu

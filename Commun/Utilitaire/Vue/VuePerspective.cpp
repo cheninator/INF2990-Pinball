@@ -306,7 +306,11 @@ namespace vue {
 	{
 		camera_.orbiterXY(deplacement.x, deplacement.y, false);
 	}
-
+	
+	void VuePerspective::modeStereo(int oeilMult)
+	{
+		projection_.appliquerStereo(oeilMult);
+	}
 }; // Fin du namespace vue.
 
 

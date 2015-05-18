@@ -243,6 +243,8 @@ public:
 
 	void utiliserCameraOrbite(bool utiliseOrbite);
 	bool cameraEstOrbite() const;
+	void toggleStereo();
+
 
 	ControleurTexte* obtenircontroleurTexte();
 
@@ -267,7 +269,7 @@ public:
 	bool possedePrecedent() const;
 
 	/// Dessiner le skybox
-	void dessinerSkybox(double demiLargeur = 1000, bool vueOrtho = false, glm::dvec3 pointMilieu = {0.0,0.0,0.0}) const;
+	void dessinerSkybox(double demiLargeur = 1000, bool vueOrtho = false, glm::dvec3 pointMilieu = { 0.0, 0.0, 0.0 }) const;
 
 private:
 
@@ -310,6 +312,7 @@ private:
 	bool pause_{ false };
 	bool utiliserAI{ false };
 	bool vueEstOrbite_{ false };
+	bool vueEstStereo_{ false };
 
    /// Listes de palettes a activer pour chaque touche
    std::set<NoeudPaletteG*> listePalettesGJ1_; ///< Gauche joueur 1

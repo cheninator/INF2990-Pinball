@@ -438,6 +438,10 @@ namespace InterfaceGraphique
         [DllImport(@"Noyau.dll", CallingConvention = CallingConvention.Cdecl)]
         public static extern bool cameraEstOrbite();
 
+        [DllImport(@"Noyau.dll", CallingConvention = CallingConvention.Cdecl)]
+        public static extern void toggleStereo();
+
+
         public static void populateUsines()
         {
             WriteLine("Creation de l'arbre de rendu...");

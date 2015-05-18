@@ -12,7 +12,7 @@
 
 
 #include "Projection.h"
-
+#include "ParametresStereo.h"
 namespace vue {
 
 	////////////////////////////////////////////////////////////////////////
@@ -64,6 +64,7 @@ namespace vue {
 		virtual inline void obtenirCoordornneesFenetreVirtuelle(
 			double& xMin, double& xMax, double& yMin, double& yMax
 			) const;
+		virtual void appliquerStereo(int oeilMult);
 	private:
 		/// Le rapport d'aspect du plan avant de la projection perspective
 		double ratio_;

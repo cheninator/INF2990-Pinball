@@ -12,10 +12,7 @@
 
 
 #include "glm/glm.hpp"
-
 namespace vue {
-
-
 	////////////////////////////////////////////////////////////////////////
 	/// @class Projection
 	/// @brief Classe contrôlant la projection du monde à la fenêtre.
@@ -80,6 +77,7 @@ namespace vue {
 
 		virtual void conserverRapportAspect() const { return; };
 
+		virtual void appliquerStereo(int oeil) = 0;
 	protected:
 		/// Coordonnée inférieur de la clôture en X.
 		double xMinCloture_;

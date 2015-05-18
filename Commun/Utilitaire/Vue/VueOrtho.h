@@ -73,7 +73,7 @@ namespace vue {
 		/// Rotation selon l'axe des Z par rapport à la vue.
 		virtual void rotaterZ(double rotation);
 
-
+		virtual void modeStereo(int oeilMult);
 	private:
 		/// Projection utilisée pour cette vue.
 		ProjectionOrtho projection_;

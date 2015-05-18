@@ -329,7 +329,7 @@ void FacadeModele::afficher() const
 	vue_->increaseFrame();
 
 	// Ne devrait pas etre necessaire
-	vue_->appliquerProjection();
+	//vue_->appliquerProjection();
 
 	// Positionne la camera
 	glMatrixMode(GL_MODELVIEW);
@@ -344,12 +344,32 @@ void FacadeModele::afficher() const
 
 	//glRotated(vue_->obtenirFrameCounter() / 15.0, 0.0, 0.0, 1.0);
 	//glRotated(-sin(vue_->obtenirFrameCounter() / 15.0), 0.0, 1.0, 0.0); 
+#if 0
 	vue_->obtenirCamera().assignerTheta((vue_->obtenirCamera().obtenirTheta() + utilitaire::DEG_TO_RAD(0.10)));
 	vue_->obtenirCamera().assignerPhi((vue_->obtenirCamera().obtenirPhi() - 1.5*utilitaire::DEG_TO_RAD(0.2) *
 																			sin(vue_->obtenirFrameCounter()/100.0)
-									   ));
+								   ));
 	afficherBase();
+=======
+#endif
+	if (vueEstStereo_ == false || cameraEstOrbite() == false)
+		afficherBase();
+	else
+	{
+		glMatrixMode(GL_PROJECTION);
 
+		vue_->modeStereo(-1);
+		glColorMask(GL_TRUE, GL_FALSE, GL_FALSE, GL_TRUE);
+		afficherBase();
+
+		glClear(GL_DEPTH_BUFFER_BIT);
+		
+		vue_->modeStereo(+1);
+		glColorMask(GL_FALSE, GL_TRUE, GL_TRUE, GL_TRUE);
+		afficherBase();
+
+		glColorMask(GL_TRUE, GL_TRUE, GL_TRUE, GL_TRUE);
+	}
 	// Compte de l'affichage
 	utilitaire::CompteurAffichage::obtenirInstance()->signalerAffichage();
 	glMatrixMode(GL_MODELVIEW);
@@ -2393,6 +2413,11 @@ void FacadeModele::utiliserCameraOrbite(bool utiliseOrbite)
 	}
 }
 
+void FacadeModele::toggleStereo()
+{
+	vueEstStereo_ = !vueEstStereo_;
+	std::cout << "Toggling Stereo \n";
+}
 
 void FacadeModele::setLight(int lum, bool state)
 {

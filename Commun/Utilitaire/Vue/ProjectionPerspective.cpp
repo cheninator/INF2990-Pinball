@@ -11,7 +11,7 @@
 #include <GL/glew.h>
 #include <GL/gl.h>
 #include "ProjectionPerspective.h"
-
+#include "../Utilitaire.h"
 #include <iostream>
 
 namespace vue {
@@ -111,7 +111,16 @@ namespace vue {
 	////////////////////////////////////////////////////////////////////////
 	inline glm::dvec2 ProjectionPerspective::obtenirDimensionFenetreVirtuelle() const
 	{
-		return glm::dvec2(-1.0); // À changer
+		double w, h;
+		
+		glm::dvec2 dimClot = obtenirDimensionCloture();
+		double aspectRatio = dimClot.x / dimClot.y;
+		
+		
+		h = 2 * zAvant_ * tan(fovy_ / 2);
+		w = h * aspectRatio;
+
+		return glm::dvec2(w,h); // À changer
 	}
 
 	////////////////////////////////////////////////////////////////////////
@@ -235,5 +244,25 @@ namespace vue {
 	{
 		// S'assurer de ne pas renvoyer une valeur nulle
 		return (incrementZoom_ != 0.0 ? incrementZoom_ : 1);
+	}
+
+	void ProjectionPerspective::appliquerStereo(int oeilMult)
+	{
+		double zEcran = 10.0;
+		glm::dvec2 dim = obtenirDimensionCloture();
+		
+		const GLdouble resolution = 100.0; // pixels par pouce
+		GLdouble oeilDecalage = oeilMult * utilitaire::DIP;
+		GLdouble proportionProfondeur = zAvant_ / zEcran;  // la profondeur du plan de parallaxe nulle
+
+		glMatrixMode(GL_PROJECTION);
+		glLoadIdentity();
+		glFrustum((-0.5 * dim.x / resolution - oeilDecalage) * proportionProfondeur,
+			(0.5 * dim.x / resolution - oeilDecalage) * proportionProfondeur,
+			(-0.5 * dim.y / resolution) * proportionProfondeur,
+			(0.5 * dim.y / resolution) * proportionProfondeur,
+			zAvant_, zArriere_);
+		glTranslatef(-oeilDecalage, 0.0, 0.0);
+		glMatrixMode(GL_MODELVIEW);
 	}
 };

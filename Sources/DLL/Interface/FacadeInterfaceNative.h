@@ -31,6 +31,7 @@ extern "C" {
 	__declspec(dllexport) void orbite(double phi, double theta);
 	__declspec(dllexport) void utiliserCameraOrbite(bool utiliseOrbite);
 	__declspec(dllexport) bool cameraEstOrbite();
+	__declspec(dllexport) void toggleStereo();
 
 	/// Pour implementer undo/redo
 	__declspec(dllexport) void sauvegarderHistorique();

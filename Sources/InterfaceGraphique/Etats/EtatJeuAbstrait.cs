@@ -316,8 +316,6 @@ namespace InterfaceGraphique
                 FonctionsNatives.translater(0, -10);
 
 
-
-
             if ((e.KeyData == Keys.Subtract ||
                    e.KeyCode == Keys.OemMinus))
             {
@@ -340,7 +338,6 @@ namespace InterfaceGraphique
             {
                 FonctionsNatives.utiliserCameraOrbite(true);
             }
-          
             return true;
         }
 
@@ -395,6 +392,13 @@ namespace InterfaceGraphique
         ////////////////////////////////////////////////////////////////////////
         public override bool traiterKeyPress(object sender, KeyPressEventArgs e)
         {
+
+            if (Char.ToLower(e.KeyChar) == 't')
+            {
+                Console.WriteLine("Prochaine action toggle");
+                FonctionsNatives.toggleStereo();
+            }
+
             if (Char.ToLower(e.KeyChar) == 'b')
 
             {

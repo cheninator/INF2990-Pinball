@@ -326,7 +326,10 @@ namespace vue {
 		projection_.centrerSurPoint(pointCentre);
 	}
 
-
+	void VueOrtho::modeStereo(int)
+	{
+		
+	}
 }; // Fin du namespace vue.
 
 

@@ -27,7 +27,7 @@ namespace modele{
 namespace utilitaire {
 
 
-   /// Définition d'un type d'entier non signé.
+	/// Définition d'un type d'entier non signé.
 	using uint = unsigned int;
 
 	/// Constante pour la différence entre deux nombres réels.
@@ -36,6 +36,7 @@ namespace utilitaire {
 	static const double PI{ 3.1415926535897932384626433832795 };
 	static const double PI_180{ 2 * 3.1415926535897932384626433832795 / 360 };
 	static const double GRAVITE{ 9.80665 };
+	static const double DIP{ 0.80 };
 
 	/// Le vecteur i (dirigé vers l'axe des X positifs et unitaire).
 	static glm::dvec3 vi{ 1.0, 0.0, 0.0 };
