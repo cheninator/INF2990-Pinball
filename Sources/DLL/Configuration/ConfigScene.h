@@ -83,8 +83,8 @@ private:
 	void lireFichierBinaire();
 
 	// Nom de la derniere sauvegarde de configuration
-	std::string derniereConfiguration_{};
-	std::string derniereCampagne_{};
+	std::string derniereConfiguration_;
+	std::string derniereCampagne_;
 
 	// Contient toutes les informations relative a la configuration du jeu
 	int* config_;
